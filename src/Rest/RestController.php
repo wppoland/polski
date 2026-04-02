@@ -11,7 +11,8 @@ use WP_REST_Controller;
  */
 abstract class RestController extends WP_REST_Controller
 {
-    protected string $namespace = 'spolszczony/v1';
+    /** @var string */
+    protected $namespace = 'spolszczony/v1';
 
     /**
      * Check if the current user can manage WooCommerce.

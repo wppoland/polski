@@ -86,9 +86,9 @@ final class CheckboxService implements Bootable, HasHooks
      *
      * @param CheckboxContext      $context The context being validated.
      * @param array<string, mixed> $posted  The posted form data.
-     * @return true|\WP_Error True if valid, WP_Error with messages if not.
+     * @return bool|\WP_Error True if valid, WP_Error with messages if not.
      */
-    public function validate(CheckboxContext $context, array $posted): true|\WP_Error
+    public function validate(CheckboxContext $context, array $posted): bool|\WP_Error
     {
         $errors = new \WP_Error();
         $checkboxes = $this->getForContext($context);

@@ -50,8 +50,8 @@ final class Plugin
         // Register all hook subscribers.
         $this->registerHookSubscribers();
 
-        // Load text domain.
-        $this->loadTextDomain();
+        // Load text domain on init.
+        add_action('init', [$this, 'loadTextDomain']);
 
         /**
          * Fires after Spolszczony is fully booted.
@@ -137,7 +137,7 @@ final class Plugin
     /**
      * Load plugin text domain for translations.
      */
-    private function loadTextDomain(): void
+    public function loadTextDomain(): void
     {
         load_plugin_textdomain(
             'spolszczony',
