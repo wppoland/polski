@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Spolszczony\Admin;
 
 use Spolszczony\Contract\Bootable;
+use Spolszczony\Contract\HasHooks;
 
 /**
  * Registers custom taxonomies for the plugin.
@@ -12,9 +13,13 @@ use Spolszczony\Contract\Bootable;
  * No custom post types are needed — all data uses WooCommerce products,
  * custom tables, and product meta.
  */
-final class PostTypes implements Bootable
+final class PostTypes implements Bootable, HasHooks
 {
     public function boot(): void
+    {
+    }
+
+    public function registerHooks(): void
     {
         add_action('init', [$this, 'registerTaxonomies']);
     }

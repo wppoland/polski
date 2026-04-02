@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Spolszczony\Admin\PostTypes;
+use Spolszczony\Admin\ProductMetaBox;
 use Spolszczony\Hook\AdminHooks;
 use Spolszczony\Hook\ProductHooks;
 use Spolszczony\Hook\CartHooks;
@@ -28,6 +30,10 @@ return [
 
     // Integrations (detect third-party plugins).
     IntegrationManager::class,
+
+    // Admin (taxonomies + meta boxes).
+    PostTypes::class,
+    ProductMetaBox::class,
 
     // Hook subscribers.
     AdminHooks::class,

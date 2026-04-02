@@ -5,29 +5,105 @@ declare(strict_types=1);
 namespace Spolszczony\Service;
 
 use Spolszczony\Enum\TaxDisplayMode;
+use Spolszczony\Util\Formatter;
 
+/**
+ * Handles tax display logic: brutto/netto toggle, VAT notices, small business exemption.
+ */
 final class TaxDisplayService
 {
     public function getMode(): TaxDisplayMode
     {
-        $settings = get_option('spolszczony_taxes', []);
-        // Placeholder — will be fully implemented in Phase 2.
-        return TaxDisplayMode::Brutto;
+        $settings = $this->getSettings();
+        $mode = $settings['tax_display_mode'] ?? 'brutto';
+
+        return TaxDisplayMode::tryFrom($mode) ?? TaxDisplayMode::Brutto;
     }
 
     public function isSmallBusiness(): bool
     {
-        $settings = get_option('spolszczony_general', []);
-        return (bool) ($settings['small_business'] ?? false);
+        $general = get_option('spolszczony_general', []);
+        return is_array($general) && (bool) ($general['small_business'] ?? false);
     }
 
-    public function getVatNotice(\WC_Product $product): string
+    /**
+     * Get the VAT notice HTML for a product.
+     */
+    public function getVatNoticeHtml(\WC_Product $product): string
     {
         if ($this->isSmallBusiness()) {
-            $settings = get_option('spolszczony_taxes', []);
-            return $settings['vat_exempt_notice'] ?? '';
+            $text = $this->getSettings()['vat_exempt_notice'] ?? '';
+
+            if ($text === '') {
+                return '';
+            }
+
+            $html = sprintf(
+                '<span class="spolszczony-tax-info spolszczony-tax-info--exempt">%s</span>',
+                esc_html($text),
+            );
+
+            return (string) apply_filters('spolszczony/price/vat_notice', $html, $product);
         }
 
-        return '';
+        $taxRates = \WC_Tax::get_rates($product->get_tax_class());
+
+        if (empty($taxRates)) {
+            return '';
+        }
+
+        $rate = reset($taxRates);
+        $ratePercent = (float) ($rate['rate'] ?? 0);
+
+        $template = $this->getSettings()['vat_notice_text'] ?? 'w tym {rate}% VAT';
+
+        $text = Formatter::interpolate($template, [
+            'rate' => Formatter::vatRate($ratePercent),
+        ]);
+
+        $html = sprintf(
+            '<span class="spolszczony-tax-info">%s</span>',
+            esc_html($text),
+        );
+
+        return (string) apply_filters('spolszczony/price/vat_notice', $html, $product);
+    }
+
+    /**
+     * Get the shipping costs notice HTML.
+     */
+    public function getShippingNoticeHtml(): string
+    {
+        $priceSettings = get_option('spolszczony_prices', []);
+
+        if (! is_array($priceSettings) || ! ($priceSettings['shipping_costs_notice_enabled'] ?? true)) {
+            return '';
+        }
+
+        $text = $priceSettings['shipping_costs_text'] ?? '';
+
+        if ($text === '') {
+            return '';
+        }
+
+        $shippingPageId = wc_get_page_id('shop');
+        $shippingUrl = get_permalink($shippingPageId);
+
+        $html = sprintf(
+            '<span class="spolszczony-shipping-notice"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+            esc_url($shippingUrl ?: '#'),
+            esc_html($text),
+        );
+
+        return (string) apply_filters('spolszczony/price/shipping_notice', $html);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getSettings(): array
+    {
+        $settings = get_option('spolszczony_taxes', []);
+        return is_array($settings) ? $settings : [];
     }
 }

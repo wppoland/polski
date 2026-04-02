@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Spolszczony\Container;
 use Spolszczony\Admin\AdminPage;
+use Spolszczony\Admin\ProductMetaBox;
+use Spolszczony\Admin\PostTypes;
 use Spolszczony\Hook\AdminHooks;
 use Spolszczony\Hook\ProductHooks;
 use Spolszczony\Hook\CartHooks;
@@ -92,6 +94,8 @@ return static function (Container $c): void {
 
     // Admin.
     $c->singleton(AdminPage::class, static fn () => new AdminPage());
+    $c->singleton(ProductMetaBox::class, static fn () => new ProductMetaBox());
+    $c->singleton(PostTypes::class, static fn () => new PostTypes());
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());
