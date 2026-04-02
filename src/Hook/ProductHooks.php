@@ -134,6 +134,12 @@ final class ProductHooks implements Bootable, HasHooks
      */
     public function renderSingleProductShopmarks(): void
     {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
         $marks = $this->shopmarks->getForLocation(Location::SingleProduct);
 
         foreach ($marks as $mark) {

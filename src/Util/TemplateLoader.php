@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Spolszczony\Util;
 
-use Spolszczony\PLUGIN_DIR;
+use const Spolszczony\PLUGIN_DIR;
 
 /**
  * Loads templates with theme override support.
