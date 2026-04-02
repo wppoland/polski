@@ -6,7 +6,7 @@ namespace Spolszczony\Admin;
 
 use Spolszczony\Contract\Bootable;
 use Spolszczony\Contract\HasHooks;
-use Spolszczony\PLUGIN_FILE;
+use const Spolszczony\PLUGIN_FILE;
 
 /**
  * Registers the top-level admin menu page that hosts the React SPA.
