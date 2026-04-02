@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Spolszczony\Contract;
 
 /**
- * Extension point for PRO shipping provider integrations.
+ * Extension point for shipping provider integrations.
  */
 interface ShippingProvider
 {

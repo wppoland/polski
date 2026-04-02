@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Spolszczony\Contract;
 
 /**
- * Extension point for PRO accounting integrations.
+ * Extension point for accounting integrations.
  */
 interface AccountingProvider
 {

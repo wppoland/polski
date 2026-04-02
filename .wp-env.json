@@ -10,8 +10,5 @@
         "WP_DEBUG_LOG": true,
         "SCRIPT_DEBUG": true,
         "SPOLSZCZONY_DEV": true
-    },
-    "mappings": {
-        "wp-content/plugins/spolszczony-pro": "../spolszczony-pro"
     }
 }
