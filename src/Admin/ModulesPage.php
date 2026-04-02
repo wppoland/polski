@@ -299,6 +299,39 @@ final class ModulesPage implements HasHooks
                 'links' => [],
             ],
 
+            // === Sprzedaż i B2B ===
+            [
+                'id' => 'request_quote',
+                'name' => 'Zapytania ofertowe',
+                'description' => 'Formularz ofertowy dla B2B i większych zamówień, z obsługą firmy, telefonu, NIP, ilości oraz statusem leadu w panelu.',
+                'group' => 'Sprzedaż i B2B',
+                'enabled' => false,
+                'pro' => false,
+                'icon' => 'dashicons-media-text',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_quote|availability', 'label' => 'Zakres działania', 'type' => 'select', 'default' => 'selected', 'options' => ['selected' => 'Tylko wybrane produkty', 'all_products' => 'Wszystkie produkty']],
+                    ['key' => 'spolszczony_quote|show_on_single', 'label' => 'Pokazuj na stronie produktu', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_quote|show_on_loop', 'label' => 'Pokazuj na listach produktów', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_quote|allow_guest', 'label' => 'Pozwól gościom wysyłać zapytania', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_quote|replace_add_to_cart', 'label' => 'Zastąp koszyk trybem wyceny', 'type' => 'checkbox', 'default' => false, 'hint' => 'Działa dla produktów oznaczonych jako "tylko wycena"'],
+                    ['key' => 'spolszczony_quote|hide_prices', 'label' => 'Ukrywaj ceny przy "tylko wycena"', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_quote|button_text', 'label' => 'Tekst przycisku', 'type' => 'text', 'default' => 'Zapytaj o wycenę'],
+                    ['key' => 'spolszczony_quote|modal_title', 'label' => 'Tytuł formularza', 'type' => 'text', 'default' => 'Zapytaj o indywidualną wycenę'],
+                    ['key' => 'spolszczony_quote|intro_text', 'label' => 'Opis formularza', 'type' => 'textarea', 'default' => 'Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia.'],
+                    ['key' => 'spolszczony_quote|submit_text', 'label' => 'Tekst przycisku wysyłki', 'type' => 'text', 'default' => 'Wyślij zapytanie'],
+                    ['key' => 'spolszczony_quote|success_text', 'label' => 'Komunikat po wysyłce', 'type' => 'textarea', 'default' => 'Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe.'],
+                    ['key' => 'spolszczony_quote|recipient_email', 'label' => 'Email odbiorcy', 'type' => 'email', 'default' => '', 'hint' => 'Puste pole = email administratora'],
+                    ['key' => 'spolszczony_quote|require_company', 'label' => 'Wymagaj nazwy firmy', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_quote|require_phone', 'label' => 'Wymagaj telefonu', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_quote|require_nip', 'label' => 'Wymagaj NIP', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_quote|require_postcode', 'label' => 'Wymagaj kodu pocztowego', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_quote|privacy_required', 'label' => 'Wymagaj zgody prywatności', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_quote|privacy_label', 'label' => 'Treść zgody prywatności', 'type' => 'text', 'default' => 'Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny.'],
+                    ['key' => 'spolszczony_quote|customer_email_enabled', 'label' => 'Wysyłaj potwierdzenie do klienta', 'type' => 'checkbox', 'default' => true],
+                ],
+            ],
+
             // === Integracje ===
             [
                 'id' => 'wpdesk_integration',
@@ -414,6 +447,9 @@ final class ModulesPage implements HasHooks
         $modules = $this->getModules();
         $proActive = defined('Spolszczony\Pro\VERSION');
 
+        // Toggle CSS + JS.
+        $this->renderToggleStyles();
+
         // Group modules.
         $groups = [];
         foreach ($modules as $module) {
@@ -469,10 +505,9 @@ final class ModulesPage implements HasHooks
         $fieldName = "spolszczony_module_{$id}";
         $hasSettings = ! empty($module['settings']);
 
-        $borderColor = $enabled ? '#46b450' : '#ccd0d4';
-        $opacity = $locked ? '0.7' : '1';
+        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '') . ($locked ? ' sp-card--locked' : '');
 
-        echo '<div class="spolszczony-module-card" style="background:#fff;border:1px solid ' . esc_attr($borderColor) . ';padding:16px;opacity:' . $opacity . ';position:relative;">';
+        echo '<div class="' . esc_attr($classes) . '">';
 
         // Header with icon and toggle.
         echo '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">';
@@ -491,17 +526,15 @@ final class ModulesPage implements HasHooks
         echo '</div>';
 
         // Toggle switch.
-        echo '<label class="spolszczony-toggle" style="position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;">';
+        echo '<label class="sp-toggle' . ($locked ? ' sp-toggle--locked' : '') . '">';
         printf(
-            '<input type="checkbox" name="%s" value="1" %s %s style="opacity:0;width:0;height:0;">',
+            '<input type="checkbox" name="%s" value="1" %s %s>',
             esc_attr($fieldName),
             checked($enabled, true, false),
             $locked ? 'disabled' : '',
         );
-        $bgColor = $enabled ? '#46b450' : '#ccc';
-        $translate = $enabled ? '18px' : '2px';
-        echo '<span style="position:absolute;cursor:' . ($locked ? 'not-allowed' : 'pointer') . ';top:0;left:0;right:0;bottom:0;background:' . $bgColor . ';border-radius:22px;transition:.3s;"></span>';
-        echo '<span style="position:absolute;height:18px;width:18px;left:' . $translate . ';bottom:2px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2);"></span>';
+        echo '<span class="sp-toggle__track"></span>';
+        echo '<span class="sp-toggle__knob"></span>';
         echo '</label>';
 
         echo '</div>';
@@ -599,6 +632,12 @@ final class ModulesPage implements HasHooks
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
+            } elseif ($type === 'email') {
+                printf(
+                    '<input type="email" name="%s" value="%s" class="regular-text" style="width:100%%;font-size:12px;">',
+                    esc_attr($inputName),
+                    esc_attr((string) $currentValue),
+                );
             } elseif ($type === 'number') {
                 printf(
                     '<input type="number" name="%s" value="%s" class="small-text" style="width:80px;">',
@@ -691,7 +730,8 @@ final class ModulesPage implements HasHooks
 
                 foreach ($fields as $fieldKey => $value) {
                     $fieldKey = sanitize_key($fieldKey);
-                    $existing[$fieldKey] = is_string($value) ? sanitize_text_field($value) : $value;
+                    $field = $this->findFieldDefinition($modules, $optionName, $fieldKey);
+                    $existing[$fieldKey] = $this->sanitizeFieldValue($value, $field);
                 }
 
                 update_option($optionName, $existing);
@@ -759,6 +799,7 @@ final class ModulesPage implements HasHooks
                 'food_module' => false,
                 'power_supply' => false,
                 'double_opt_in' => false,
+                'request_quote' => false,
                 'wpdesk_integration' => true,
                 'payment_integration' => true,
             ];
@@ -767,6 +808,38 @@ final class ModulesPage implements HasHooks
         }
 
         return (bool) $saved[$moduleId];
+    }
+
+    /**
+     * Render CSS and JS for toggle switches.
+     */
+    private function renderToggleStyles(): void
+    {
+        echo '<style>
+            .sp-card{background:#fff;border:1px solid #ccd0d4;padding:16px;position:relative;transition:border-color .2s;}
+            .sp-card--active{border-color:#46b450;}
+            .sp-card--locked{opacity:.7;}
+
+            .sp-toggle{position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;}
+            .sp-toggle input{opacity:0;width:0;height:0;position:absolute;}
+            .sp-toggle__track{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:22px;transition:background .2s;}
+            .sp-toggle__knob{position:absolute;height:18px;width:18px;left:2px;bottom:2px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+            .sp-toggle input:checked ~ .sp-toggle__track{background:#46b450;}
+            .sp-toggle input:checked ~ .sp-toggle__knob{transform:translateX(18px);}
+            .sp-toggle--locked .sp-toggle__track{cursor:not-allowed;}
+        </style>
+        <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            document.querySelectorAll(".sp-toggle input[type=checkbox]").forEach(function(cb){
+                cb.addEventListener("change",function(){
+                    var card=this.closest(".sp-card");
+                    if(card){
+                        card.classList.toggle("sp-card--active",this.checked);
+                    }
+                });
+            });
+        });
+        </script>';
     }
 
     /**
@@ -814,5 +887,51 @@ final class ModulesPage implements HasHooks
         $html .= '</div>';
 
         return $html;
+    }
+
+    /**
+     * @param list<array<string, mixed>> $modules
+     * @return array<string, mixed>|null
+     */
+    private function findFieldDefinition(array $modules, string $optionName, string $fieldKey): ?array
+    {
+        foreach ($modules as $module) {
+            if (empty($module['settings']) || ! is_array($module['settings'])) {
+                continue;
+            }
+
+            foreach ($module['settings'] as $field) {
+                if (! is_array($field) || empty($field['key'])) {
+                    continue;
+                }
+
+                [$candidateOptionName, $candidateFieldKey] = explode('|', (string) $field['key'], 2) + ['', ''];
+
+                if ($candidateOptionName === $optionName && $candidateFieldKey === $fieldKey) {
+                    return $field;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param mixed                     $value
+     * @param array<string, mixed>|null $field
+     * @return mixed
+     */
+    private function sanitizeFieldValue(mixed $value, ?array $field): mixed
+    {
+        $type = $field['type'] ?? 'text';
+
+        return match ($type) {
+            'checkbox' => (bool) $value,
+            'number' => is_numeric($value) ? $value + 0 : 0,
+            'textarea' => sanitize_textarea_field((string) $value),
+            'email' => sanitize_email((string) $value),
+            'select', 'delivery_time_select', 'text' => sanitize_text_field((string) $value),
+            default => is_string($value) ? sanitize_text_field($value) : $value,
+        };
     }
 }

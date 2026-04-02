@@ -31,6 +31,12 @@ Spolszczony is a comprehensive compliance plugin that makes your WooCommerce sto
 - **Privacy policy checkbox** — GDPR consent at checkout
 - **Contract helper** — delayed payment flow with order confirmation before payment
 
+### Sales & B2B
+- **Request a Quote** — native B2B quote workflow with per-product activation
+- **Quote-only products** — replace add-to-cart with an enquiry flow for selected products
+- **Company and NIP capture** — Polish-market lead form fields for business customers
+- **Quote request inbox** — admin page to review and update lead statuses
+
 ### Consumer Rights & Withdrawal
 - **14-day withdrawal right** — online withdrawal form (prawo odstapienia od umowy)
 - **EU withdrawal button** — one-click withdrawal request from order history (EU Directive 2023/2673)
@@ -97,6 +103,7 @@ Spolszczony is a comprehensive compliance plugin that makes your WooCommerce sto
 - **Compliance dashboard** — one-click compliance check showing green/red status
 - **Admin notes** — contextual guidance, update notifications, compatibility alerts
 - **Product meta box** — "Spolszczony" tab in product editor with all compliance fields
+- **Lead inbox** — built-in request-a-quote management screen
 - **Bulk edit support** — edit Spolszczony fields across multiple products
 - **CSV import/export** — Spolszczony fields in WooCommerce product CSV
 

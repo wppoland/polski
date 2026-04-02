@@ -148,6 +148,40 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
+        // --- Quote Request Section ---
+        echo '<div class="options_group">';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Request a Quote', 'spolszczony') . '</h4>';
+
+        woocommerce_wp_checkbox([
+            'id' => '_spolszczony_quote_enabled',
+            'label' => __('Enable quote form', 'spolszczony'),
+            'description' => __('Show the quote request form for this product even if the module is limited to selected products.', 'spolszczony'),
+        ]);
+
+        woocommerce_wp_checkbox([
+            'id' => '_spolszczony_quote_only',
+            'label' => __('Quote only', 'spolszczony'),
+            'description' => __('Disable direct purchase and collect enquiries instead of add-to-cart.', 'spolszczony'),
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_spolszczony_quote_min_qty',
+            'label' => __('Minimum quote quantity', 'spolszczony'),
+            'description' => __('Minimum quantity prefilled in the quote form.', 'spolszczony'),
+            'desc_tip' => true,
+            'type' => 'number',
+            'custom_attributes' => ['step' => '0.001', 'min' => '1'],
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_spolszczony_quote_button_text',
+            'label' => __('Custom button text', 'spolszczony'),
+            'description' => __('Optional per-product override for the quote button label.', 'spolszczony'),
+            'desc_tip' => true,
+        ]);
+
+        echo '</div>';
+
         echo '</div>';
     }
 
@@ -168,6 +202,10 @@ final class ProductMetaBox implements HasHooks
             '_spolszczony_unit_price_unit' => 'string',
             '_spolszczony_delivery_time_id' => 'string',
             '_spolszczony_withdrawal_exempt' => 'checkbox',
+            '_spolszczony_quote_enabled' => 'checkbox',
+            '_spolszczony_quote_only' => 'checkbox',
+            '_spolszczony_quote_min_qty' => 'float',
+            '_spolszczony_quote_button_text' => 'string',
         ];
 
         foreach ($fields as $key => $type) {

@@ -80,8 +80,38 @@ final class AdminPage implements Bootable, HasHooks
             58,
         );
 
-        // Polish flag via CSS - WordPress can't override inline styles.
+        // Submenu items.
+        add_submenu_page(
+            self::PAGE_SLUG,
+            __('Modules', 'spolszczony'),
+            __('Modules', 'spolszczony'),
+            self::CAPABILITY,
+            self::PAGE_SLUG, // Same slug = replaces default "Spolszczony" submenu item.
+            [$this, 'renderPage'],
+        );
+
+        add_submenu_page(
+            self::PAGE_SLUG,
+            __('Dashboard', 'spolszczony'),
+            __('Dashboard', 'spolszczony'),
+            self::CAPABILITY,
+            self::PAGE_SLUG . '-dashboard',
+            [$this, 'renderDashboardPage'],
+        );
+
+        // Polish flag via CSS.
         add_action('admin_head', [$this, 'renderMenuIconCSS']);
+    }
+
+    /**
+     * Dashboard submenu page handler.
+     */
+    public function renderDashboardPage(): void
+    {
+        echo '<div class="wrap">';
+        echo '<h1>Spolszczony <small>v' . esc_html(\Spolszczony\VERSION) . '</small></h1>';
+        $this->renderDashboard();
+        echo '</div>';
     }
 
     /**

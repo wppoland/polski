@@ -20,6 +20,7 @@ use Spolszczony\Rest\CheckboxController;
 use Spolszczony\Rest\LegalPageController;
 use Spolszczony\Rest\SettingsController;
 use Spolszczony\Rest\WithdrawalController;
+use Spolszczony\Service\QuoteService;
 use Spolszczony\Service\WithdrawalService;
 use Spolszczony\Service\CheckboxService;
 use Spolszczony\Service\ContractService;
@@ -44,6 +45,7 @@ return [
     DoubleOptInService::class,
     EmailService::class,
     DisputeResolutionService::class,
+    QuoteService::class,
 
     // Integrations and compatibility.
     IntegrationManager::class,
@@ -55,6 +57,7 @@ return [
     AdminNotes::class,
     CSVImportExport::class,
     ModulesPage::class,
+    \Spolszczony\Admin\QuoteRequestsPage::class,
 
     // Hook subscribers.
     AdminHooks::class,

@@ -23,6 +23,7 @@ use Spolszczony\Service\ContractService;
 use Spolszczony\Shortcode\ShortcodeManager;
 use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\OmnibusService;
+use Spolszczony\Service\QuoteService;
 use Spolszczony\Service\TaxDisplayService;
 use Spolszczony\Service\DeliveryTimeService;
 use Spolszczony\Service\CheckboxService;
@@ -35,6 +36,7 @@ use Spolszczony\Service\DisputeResolutionService;
 use Spolszczony\Service\EmailService;
 use Spolszczony\Service\ComplianceCheckService;
 use Spolszczony\Repository\OmnibusPriceRepository;
+use Spolszczony\Repository\QuoteRequestRepository;
 use Spolszczony\Repository\ConsentLogRepository;
 use Spolszczony\Repository\WithdrawalRepository;
 use Spolszczony\Shopmark\ShopmarkManager;
@@ -58,6 +60,11 @@ return static function (Container $c): void {
     $c->singleton(ConsentLogRepository::class, static function () {
         global $wpdb;
         return new ConsentLogRepository($wpdb);
+    });
+
+    $c->singleton(QuoteRequestRepository::class, static function () {
+        global $wpdb;
+        return new QuoteRequestRepository($wpdb);
     });
 
     $c->singleton(WithdrawalRepository::class, static function () {
@@ -87,6 +94,11 @@ return static function (Container $c): void {
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
     $c->singleton(ComplianceCheckService::class, static fn () => new ComplianceCheckService());
     $c->singleton(ContractService::class, static fn () => new ContractService());
+    $c->singleton(QuoteService::class, static fn () => new QuoteService(
+        $c->get(QuoteRequestRepository::class),
+        $c->get(ConsentLogRepository::class),
+        $c->get(TemplateLoader::class),
+    ));
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
         $c->get(WithdrawalRepository::class),
@@ -109,6 +121,9 @@ return static function (Container $c): void {
     $c->singleton(\Spolszczony\Admin\AdminNotes::class, static fn () => new \Spolszczony\Admin\AdminNotes());
     $c->singleton(\Spolszczony\Admin\CSVImportExport::class, static fn () => new \Spolszczony\Admin\CSVImportExport());
     $c->singleton(\Spolszczony\Admin\ModulesPage::class, static fn () => new \Spolszczony\Admin\ModulesPage());
+    $c->singleton(\Spolszczony\Admin\QuoteRequestsPage::class, static fn () => new \Spolszczony\Admin\QuoteRequestsPage(
+        $c->get(QuoteService::class),
+    ));
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());

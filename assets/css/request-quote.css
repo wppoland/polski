@@ -1,0 +1,113 @@
+.spolszczony-quote {
+    margin-top: 1rem;
+}
+
+.spolszczony-quote__button,
+.spolszczony-quote-loop-button {
+    margin-top: 0.75rem;
+}
+
+.spolszczony-quote__help {
+    margin-top: 0.5rem;
+    font-size: 0.925rem;
+    color: #666;
+}
+
+.spolszczony-quote__modal[hidden] {
+    display: none;
+}
+
+.spolszczony-quote__modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.spolszczony-quote__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.55);
+}
+
+.spolszczony-quote__panel {
+    position: relative;
+    z-index: 1;
+    width: min(680px, calc(100vw - 2rem));
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 24px 80px rgba(17, 24, 39, 0.3);
+}
+
+.spolszczony-quote__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: 0;
+    background: transparent;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.spolszczony-quote__title {
+    margin: 0 0 0.5rem;
+}
+
+.spolszczony-quote__intro {
+    margin: 0 0 1rem;
+    color: #555;
+}
+
+.spolszczony-quote__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+}
+
+.spolszczony-quote__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.875rem;
+}
+
+.spolszczony-quote__field input,
+.spolszczony-quote__field textarea {
+    width: 100%;
+}
+
+.spolszczony-quote__field--full {
+    margin-top: 0.25rem;
+}
+
+.spolszczony-quote__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin: 1rem 0;
+    font-size: 0.925rem;
+}
+
+.spolszczony-quote__submit {
+    width: 100%;
+}
+
+.spolszczony-quote-price-placeholder {
+    display: inline-block;
+    font-weight: 600;
+    color: #7a0f12;
+}
+
+.spolszczony-quote-open {
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .spolszczony-quote__grid {
+        grid-template-columns: 1fr;
+    }
+}
