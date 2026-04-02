@@ -23,13 +23,21 @@ final class CheckboxService implements Bootable, HasHooks
 
     public function boot(): void
     {
-        $this->registerDefaults();
-        $this->loadCustomCheckboxes();
+        // Defer to init so __() calls don't trigger early textdomain loading.
     }
 
     public function registerHooks(): void
     {
-        // CheckboxService doesn't register hooks itself — CheckoutHooks handles rendering/validation.
+        add_action('init', [$this, 'initCheckboxes']);
+    }
+
+    /**
+     * Called on init - registers defaults and loads custom checkboxes.
+     */
+    public function initCheckboxes(): void
+    {
+        $this->registerDefaults();
+        $this->loadCustomCheckboxes();
     }
 
     /**
