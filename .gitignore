@@ -1,0 +1,32 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Build artifacts
+/build/
+
+# Environment
+.wp-env-home/
+.phpunit.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local config
+CLAUDE.local.md
+.env
+.env.local
+
+# Composer
+composer.lock
+
+# npm
+package-lock.json

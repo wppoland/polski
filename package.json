@@ -1,0 +1,40 @@
+{
+    "name": "@wppoland/spolszczony",
+    "version": "1.0.0",
+    "description": "Polish e-commerce legal compliance for WooCommerce",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build && wp-scripts build --webpack-src-dir=resources/js/blocks --output-path=build/blocks",
+        "build:admin": "vite build",
+        "build:blocks": "wp-scripts build --webpack-src-dir=resources/js/blocks --output-path=build/blocks",
+        "lint:js": "wp-scripts lint-js resources/js",
+        "lint:css": "wp-scripts lint-style resources/css",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui",
+        "env:start": "wp-env start",
+        "env:stop": "wp-env stop",
+        "env:clean": "wp-env clean all",
+        "env:cli": "wp-env run cli",
+        "i18n:pot": "wp i18n make-pot . languages/spolszczony.pot --exclude=node_modules,vendor,tests,_benchmark",
+        "i18n:json": "wp i18n make-json languages/"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.48",
+        "@types/react": "^18.3",
+        "@types/react-dom": "^18.3",
+        "@wordpress/block-editor": "^14.0",
+        "@wordpress/blocks": "^13.0",
+        "@wordpress/components": "^28.0",
+        "@wordpress/data": "^10.0",
+        "@wordpress/element": "^6.0",
+        "@wordpress/i18n": "^5.0",
+        "@wordpress/scripts": "^30.0",
+        "@wp-env/cli": "^10.0",
+        "react": "^18.3",
+        "react-dom": "^18.3",
+        "react-router-dom": "^7.0",
+        "typescript": "^5.6",
+        "vite": "^6.0"
+    }
+}
