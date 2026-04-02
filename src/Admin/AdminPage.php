@@ -26,6 +26,28 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_post_spolszczony_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
+
+        // "Settings" link on plugins page.
+        add_filter('plugin_action_links_' . plugin_basename(PLUGIN_FILE), [$this, 'addPluginActionLinks']);
+    }
+
+    /**
+     * Add "Settings" link to plugins page.
+     *
+     * @param list<string> $links
+     * @return list<string>
+     */
+    public function addPluginActionLinks(array $links): array
+    {
+        $settingsLink = sprintf(
+            '<a href="%s">%s</a>',
+            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG)),
+            esc_html__('Settings', 'spolszczony'),
+        );
+
+        array_unshift($links, $settingsLink);
+
+        return $links;
     }
 
     /**
@@ -107,10 +129,9 @@ final class AdminPage implements Bootable, HasHooks
     private function renderFallbackDashboard(): void
     {
         $version = \Spolszczony\VERSION;
-        $wizardDone = (bool) get_option('spolszczony_wizard_complete', false);
 
         echo '<div class="wrap spolszczony-admin-fallback">';
-        echo '<h1>' . esc_html__('Spolszczony', 'spolszczony') . ' <small>v' . esc_html($version) . '</small></h1>';
+        echo '<h1>Spolszczony <small>v' . esc_html($version) . '</small></h1>';
 
         // Success notice after generating pages.
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -120,35 +141,39 @@ final class AdminPage implements Bootable, HasHooks
             echo '</p></div>';
         }
 
-        // Setup wizard prompt.
-        if (! $wizardDone) {
-            echo '<div class="notice notice-info"><p>';
-            echo esc_html__('Welcome to Spolszczony. Configure your store for Polish legal compliance.', 'spolszczony');
-            echo '</p></div>';
-        }
+        // Gather status data.
+        $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
+        $pageStatus = $legalPages->getConfigurationStatus();
+        $allPagesConfigured = ! in_array(false, $pageStatus, true);
+        $configuredCount = count(array_filter($pageStatus));
+        $anyPageExists = $configuredCount > 0 || $this->anyLegalPageDraftExists($legalPages);
+
+        $omnibusSettings = get_option('spolszczony_omnibus', []);
+        $omnibusEnabled = is_array($omnibusSettings) && ($omnibusSettings['enabled'] ?? true);
+
+        $checkoutSettings = get_option('spolszczony_checkout', []);
+        $buttonText = is_array($checkoutSettings) ? ($checkoutSettings['order_button_text'] ?? '') : '';
+
+        $generalSettings = get_option('spolszczony_general', []);
+        $isSmallBusiness = is_array($generalSettings) && ($generalSettings['small_business'] ?? false);
+
+        $doiSettings = get_option('spolszczony_doi', []);
+        $doiEnabled = is_array($doiSettings) && ($doiSettings['enabled'] ?? false);
 
         // Status cards.
         echo '<div class="spolszczony-dashboard" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:20px;">';
 
         $this->renderStatusCard(
-            __('WooCommerce', 'spolszczony'),
+            'WooCommerce',
             defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Not active', 'spolszczony'),
             defined('WC_VERSION'),
         );
 
-        $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
-        $pageStatus = $legalPages->getConfigurationStatus();
-        $allConfigured = ! in_array(false, $pageStatus, true);
-        $configuredCount = count(array_filter($pageStatus));
-
         $this->renderStatusCard(
             __('Legal Pages', 'spolszczony'),
             sprintf(__('%d of %d configured', 'spolszczony'), $configuredCount, count($pageStatus)),
-            $allConfigured,
+            $allPagesConfigured,
         );
-
-        $omnibusSettings = get_option('spolszczony_omnibus', []);
-        $omnibusEnabled = is_array($omnibusSettings) && ($omnibusSettings['enabled'] ?? true);
 
         $this->renderStatusCard(
             __('Omnibus Directive', 'spolszczony'),
@@ -156,18 +181,11 @@ final class AdminPage implements Bootable, HasHooks
             $omnibusEnabled,
         );
 
-        $checkoutSettings = get_option('spolszczony_checkout', []);
-        $buttonText = is_array($checkoutSettings) ? ($checkoutSettings['order_button_text'] ?? '') : '';
-
         $this->renderStatusCard(
             __('Checkout Button', 'spolszczony'),
             $buttonText !== '' ? $buttonText : __('Not configured', 'spolszczony'),
             $buttonText !== '',
         );
-
-        $taxSettings = get_option('spolszczony_taxes', []);
-        $generalSettings = get_option('spolszczony_general', []);
-        $isSmallBusiness = is_array($generalSettings) && ($generalSettings['small_business'] ?? false);
 
         $this->renderStatusCard(
             __('Tax Display', 'spolszczony'),
@@ -175,61 +193,130 @@ final class AdminPage implements Bootable, HasHooks
             true,
         );
 
-        $doiSettings = get_option('spolszczony_doi', []);
-        $doiEnabled = is_array($doiSettings) && ($doiSettings['enabled'] ?? false);
-
         $this->renderStatusCard(
             __('Double Opt-In', 'spolszczony'),
             $doiEnabled ? __('Active', 'spolszczony') : __('Disabled', 'spolszczony'),
             null,
         );
 
-        echo '</div>'; // .spolszczony-dashboard
+        echo '</div>';
 
-        // Quick links.
+        // Legal pages section.
         echo '<div style="margin-top:30px;">';
-        echo '<h2>' . esc_html__('Quick Links', 'spolszczony') . '</h2>';
-        echo '<ul style="list-style:disc;padding-left:20px;">';
+        echo '<h2>' . esc_html__('Legal Pages', 'spolszczony') . '</h2>';
 
-        foreach ($pageStatus as $type => $configured) {
-            $pageType = \Spolszczony\Enum\LegalPageType::tryFrom($type);
-            if ($pageType === null) {
-                continue;
+        if ($anyPageExists) {
+            // Show page list with edit links.
+            echo '<table class="widefat striped" style="max-width:600px;">';
+            echo '<thead><tr><th>' . esc_html__('Page', 'spolszczony') . '</th><th>' . esc_html__('Status', 'spolszczony') . '</th><th></th></tr></thead><tbody>';
+
+            foreach ($pageStatus as $type => $configured) {
+                $pageType = \Spolszczony\Enum\LegalPageType::tryFrom($type);
+                if ($pageType === null) {
+                    continue;
+                }
+
+                $pageId = $legalPages->getPageId($pageType);
+                $label = $pageType->label();
+                $post = $pageId > 0 ? get_post($pageId) : null;
+
+                echo '<tr>';
+                echo '<td><strong>' . esc_html($label) . '</strong></td>';
+
+                if ($post instanceof \WP_Post) {
+                    $statusLabel = match ($post->post_status) {
+                        'publish' => '<span style="color:#46b450;">' . esc_html__('Published', 'spolszczony') . '</span>',
+                        'draft' => '<span style="color:#f0ad4e;">' . esc_html__('Draft', 'spolszczony') . '</span>',
+                        default => esc_html($post->post_status),
+                    };
+                    echo '<td>' . $statusLabel . '</td>';
+                    echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html__('Edit', 'spolszczony') . '</a></td>';
+                } else {
+                    echo '<td><span style="color:#dc3232;">' . esc_html__('Not created', 'spolszczony') . '</span></td>';
+                    echo '<td></td>';
+                }
+
+                echo '</tr>';
             }
 
-            $pageId = $legalPages->getPageId($pageType);
-            $label = $pageType->label();
+            echo '</tbody></table>';
 
-            if ($pageId > 0) {
-                printf(
-                    '<li>%s - <a href="%s">%s</a></li>',
-                    esc_html($label),
-                    esc_url(get_edit_post_link($pageId) ?: '#'),
-                    esc_html__('Edit', 'spolszczony'),
-                );
-            } else {
-                printf(
-                    '<li>%s - <em>%s</em></li>',
-                    esc_html($label),
-                    esc_html__('Not created', 'spolszczony'),
-                );
+            // Show generate button only if some pages are missing.
+            if (! $allPagesConfigured || ! $anyPageExists) {
+                $this->renderGenerateButton();
+            }
+        } else {
+            // No pages exist at all - show generate button.
+            echo '<p>' . esc_html__('No legal pages created yet. Generate them to get started.', 'spolszczony') . '</p>';
+            $this->renderGenerateButton();
+        }
+
+        echo '</div>';
+
+        // Next steps.
+        echo '<div style="margin-top:30px;">';
+        echo '<h2>' . esc_html__('Next steps', 'spolszczony') . '</h2>';
+        echo '<ol style="max-width:600px;">';
+
+        if (! $allPagesConfigured) {
+            echo '<li>' . esc_html__('Publish your legal pages (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje).', 'spolszczony') . '</li>';
+        }
+
+        echo '<li>' . sprintf(
+            /* translators: %s: link to WooCommerce settings */
+            __('Set up <a href="%s">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%).', 'spolszczony'),
+            esc_url(admin_url('admin.php?page=wc-settings&tab=tax')),
+        ) . '</li>';
+
+        echo '<li>' . sprintf(
+            __('Configure <a href="%s">shipping zones</a> for Polish delivery.', 'spolszczony'),
+            esc_url(admin_url('admin.php?page=wc-settings&tab=shipping')),
+        ) . '</li>';
+
+        echo '<li>' . sprintf(
+            __('Edit product data - add unit prices and delivery times in the <a href="%s">Spolszczony tab</a> of each product.', 'spolszczony'),
+            esc_url(admin_url('edit.php?post_type=product')),
+        ) . '</li>';
+
+        echo '<li>' . sprintf(
+            __('Test the checkout - add a product to cart and verify legal checkboxes and button text at <a href="%s">checkout</a>.', 'spolszczony'),
+            esc_url(wc_get_checkout_url()),
+        ) . '</li>';
+
+        echo '</ol>';
+        echo '</div>';
+
+        echo '</div>'; // .wrap
+    }
+
+    /**
+     * Check if any legal page exists (even as draft).
+     */
+    private function anyLegalPageDraftExists(\Spolszczony\Service\LegalPageService $service): bool
+    {
+        foreach (\Spolszczony\Enum\LegalPageType::cases() as $type) {
+            $pageId = $service->getPageId($type);
+            if ($pageId > 0 && get_post_status($pageId) !== false) {
+                return true;
             }
         }
 
-        echo '</ul>';
+        return false;
+    }
 
-        // Generate legal pages button (POST via form with nonce).
-        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+    /**
+     * Render the "Generate Legal Pages" form button.
+     */
+    private function renderGenerateButton(): void
+    {
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:10px;">';
         wp_nonce_field('spolszczony_generate_pages', '_spolszczony_nonce');
         echo '<input type="hidden" name="action" value="spolszczony_generate_legal_pages" />';
         printf(
-            '<p><button type="submit" class="button button-primary">%s</button></p>',
+            '<button type="submit" class="button button-primary">%s</button>',
             esc_html__('Generate Legal Pages', 'spolszczony'),
         );
         echo '</form>';
-
-        echo '</div>';
-        echo '</div>'; // .wrap
     }
 
     /**

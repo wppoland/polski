@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Spolszczony 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wppoland.com\n"
 "POT-Creation-Date: 2026-04-02 12:00+0000\n"
-"PO-Revision-Date: 2026-04-02 12:00+0000\n"
+"PO-Revision-Date: 2026-04-02 14:00+0000\n"
 "Last-Translator: WP Poland <kontakt@wppoland.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -16,9 +16,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Spolszczony\n"
 
-# Admin dashboard
+# === ADMIN DASHBOARD ===
+
 msgid "Welcome to Spolszczony. Configure your store for Polish legal compliance."
 msgstr "Witaj w Spolszczony. Skonfiguruj swoj sklep zgodnie z polskim prawem e-commerce."
+
+msgid "Legal pages have been generated as drafts. Edit and publish them."
+msgstr "Strony prawne zostaly wygenerowane jako szkice. Edytuj i opublikuj je."
 
 msgid "Legal Pages"
 msgstr "Strony prawne"
@@ -51,7 +55,7 @@ msgid "Standard VAT"
 msgstr "Standardowy VAT"
 
 msgid "Double Opt-In"
-msgstr "Podwojna weryfikacja"
+msgstr "Podwojna weryfikacja (DOI)"
 
 msgid "Quick Links"
 msgstr "Szybkie linki"
@@ -68,7 +72,20 @@ msgstr "Wygeneruj strony prawne"
 msgid "Not active"
 msgstr "Nieaktywna"
 
-# Checkout
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+msgid "Configure Spolszczony for your store"
+msgstr "Skonfiguruj Spolszczony dla Twojego sklepu"
+
+msgid "Complete the setup wizard to configure Polish legal compliance for your WooCommerce store. This includes legal pages, checkout settings, and price display options."
+msgstr "Ukonczenie kreatora konfiguracji pozwoli dostosowac Twoj sklep WooCommerce do polskich wymagan prawnych. Obejmuje to strony prawne, ustawienia kasy i opcje wyswietlania cen."
+
+msgid "Run Setup Wizard"
+msgstr "Uruchom kreator konfiguracji"
+
+# === CHECKOUT - Legal checkboxes ===
+
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
 msgstr "Zapoznalem/am sie i akceptuje <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
 
@@ -112,7 +129,7 @@ msgid "Optional consent for delivery notifications."
 msgstr "Opcjonalna zgoda na powiadomienia o dostawie."
 
 msgid "I agree to receive a product review reminder by email after my purchase."
-msgstr "Wyrazam zgode na otrzymanie przypomnienia o wystawieniu opinii drog mailowa po zakupie."
+msgstr "Wyrazam zgode na otrzymanie przypomnienia o wystawieniu opinii droga mailowa po zakupie."
 
 msgid "Optional consent for review reminder emails."
 msgstr "Opcjonalna zgoda na przypomnienia o opinii."
@@ -126,7 +143,8 @@ msgstr "Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a)."
 msgid "Please accept: %s"
 msgstr "Prosze zaakceptowac: %s"
 
-# Legal pages
+# === LEGAL PAGES ===
+
 msgid "Terms and Conditions (Regulamin)"
 msgstr "Regulamin sklepu"
 
@@ -158,14 +176,27 @@ msgid "Please fill in your Privacy Policy (Polityka prywatnosci)."
 msgstr "Prosze uzupelnic Polityke prywatnosci."
 
 msgid "Please fill in your Return and Withdrawal Policy (Prawo odstapienia od umowy). Consumers have 14 days to withdraw."
-msgstr "Prosze uzupelnic Polityke zwrotow (Prawo odstapienia od umowy). Konsumenci maja 14 dni na odstapienie."
+msgstr "Prosze uzupelnic Polityke zwrotow. Konsumenci maja 14 dni na odstapienie od umowy."
 
 msgid "Please fill in your Complaints procedure (Reklamacje)."
 msgstr "Prosze uzupelnic procedure reklamacyjna."
 
-# Product info
+# === PRODUCT INFO ===
+
 msgid "Manufacturer"
 msgstr "Producent"
+
+msgid "Manufacturers"
+msgstr "Producenci"
+
+msgid "Add Manufacturer"
+msgstr "Dodaj producenta"
+
+msgid "Edit Manufacturer"
+msgstr "Edytuj producenta"
+
+msgid "Search Manufacturers"
+msgstr "Szukaj producentow"
 
 msgid "Safety Documents"
 msgstr "Dokumenty bezpieczenstwa"
@@ -179,18 +210,40 @@ msgstr "Instrukcje bezpieczenstwa"
 msgid "Power Supply"
 msgstr "Zasilanie"
 
+msgid "Power supply"
+msgstr "Zasilanie"
+
 msgid "Defect Description"
+msgstr "Opis wady"
+
+msgid "Defect description"
 msgstr "Opis wady"
 
 msgid "Responsible person (GPSR)"
 msgstr "Osoba odpowiedzialna (GPSR)"
 
-# Food
+msgid "GPSR responsible"
+msgstr "Osoba odpowiedzialna (GPSR)"
+
+# === FOOD MODULE ===
+
 msgid "Ingredients"
 msgstr "Skladniki"
 
 msgid "Allergens"
 msgstr "Alergeny"
+
+msgid "Allergen"
+msgstr "Alergen"
+
+msgid "Add Allergen"
+msgstr "Dodaj alergen"
+
+msgid "Edit Allergen"
+msgstr "Edytuj alergen"
+
+msgid "Search Allergens"
+msgstr "Szukaj alergenow"
 
 msgid "Nutritional values per"
 msgstr "Wartosci odzywcze na"
@@ -200,6 +253,18 @@ msgstr "100 g"
 
 msgid "Nutrient"
 msgstr "Skladnik odzywczy"
+
+msgid "Nutrients"
+msgstr "Skladniki odzywcze"
+
+msgid "Add Nutrient"
+msgstr "Dodaj skladnik odzywczy"
+
+msgid "Edit Nutrient"
+msgstr "Edytuj skladnik odzywczy"
+
+msgid "Search Nutrients"
+msgstr "Szukaj skladnikow odzywczych"
 
 msgid "Value"
 msgstr "Wartosc"
@@ -216,11 +281,21 @@ msgstr "Dystrybutor"
 msgid "Net content"
 msgstr "Zawartosc netto"
 
-# Delivery
+msgid "Net filling quantity"
+msgstr "Ilosc netto"
+
+msgid "Nutri-Score"
+msgstr "Nutri-Score"
+
+# === DELIVERY TIMES ===
+
 msgid "Delivery Times"
-msgstr "Czas dostawy"
+msgstr "Czasy dostawy"
 
 msgid "Delivery Time"
+msgstr "Czas dostawy"
+
+msgid "Delivery time"
 msgstr "Czas dostawy"
 
 msgid "Add Delivery Time"
@@ -232,27 +307,76 @@ msgstr "Edytuj czas dostawy"
 msgid "Search Delivery Times"
 msgstr "Szukaj czasow dostawy"
 
-# Units
+msgid "Delivery time ID"
+msgstr "ID czasu dostawy"
+
+msgid "1-2 business days"
+msgstr "1-2 dni robocze"
+
+msgid "2-4 business days"
+msgstr "2-4 dni robocze"
+
+msgid "3-5 business days"
+msgstr "3-5 dni roboczych"
+
+msgid "5-7 business days"
+msgstr "5-7 dni roboczych"
+
+msgid "7-14 business days"
+msgstr "7-14 dni roboczych"
+
+msgid "Up to 24 hours"
+msgstr "Do 24 godzin"
+
+# === UNITS ===
+
 msgid "Units"
 msgstr "Jednostki"
 
 msgid "Unit"
 msgstr "Jednostka"
 
-# Manufacturers
-msgid "Manufacturers"
-msgstr "Producenci"
+msgid "Add Unit"
+msgstr "Dodaj jednostke"
 
-msgid "Add Manufacturer"
-msgstr "Dodaj producenta"
+msgid "Edit Unit"
+msgstr "Edytuj jednostke"
 
-msgid "Edit Manufacturer"
-msgstr "Edytuj producenta"
+msgid "Search Units"
+msgstr "Szukaj jednostek"
 
-msgid "Search Manufacturers"
-msgstr "Szukaj producentow"
+msgid "pcs (szt.)"
+msgstr "szt."
 
-# Product meta box
+msgid "kg"
+msgstr "kg"
+
+msgid "g"
+msgstr "g"
+
+msgid "l"
+msgstr "l"
+
+msgid "ml"
+msgstr "ml"
+
+msgid "m"
+msgstr "m"
+
+msgid "cm"
+msgstr "cm"
+
+msgid "m²"
+msgstr "m²"
+
+msgid "m³"
+msgstr "m³"
+
+# === PRODUCT META BOX ===
+
+msgid "Spolszczony"
+msgstr "Spolszczony"
+
 msgid "Unit Price (Cena jednostkowa)"
 msgstr "Cena jednostkowa"
 
@@ -280,7 +404,22 @@ msgstr "Wylaczenie z prawa odstapienia"
 msgid "This product is exempt from the 14-day withdrawal right (e.g., digital content, perishable goods)."
 msgstr "Ten produkt jest wylaczony z 14-dniowego prawa odstapienia (np. tresci cyfrowe, towary latwo psujace sie)."
 
-# Withdrawal
+msgid "Unit price base"
+msgstr "Bazowa cena jednostkowa"
+
+msgid "Unit price unit"
+msgstr "Jednostka ceny jednostkowej"
+
+# === SELECT DEFAULTS ===
+
+msgid "\342\200\224 Select unit \342\200\224"
+msgstr "\342\200\224 Wybierz jednostke \342\200\224"
+
+msgid "\342\200\224 Use default \342\200\224"
+msgstr "\342\200\224 Uzyj domyslnego \342\200\224"
+
+# === WITHDRAWAL ===
+
 msgid "Withdrawal Request"
 msgstr "Wniosek o odstapienie"
 
@@ -329,7 +468,6 @@ msgstr "Klient zlozyl wniosek o odstapienie od umowy."
 msgid "Withdrawal request confirmed."
 msgstr "Wniosek o odstapienie potwierdzony."
 
-# Withdrawal form
 msgid "You are requesting withdrawal from order #%1$s placed on %2$s."
 msgstr "Skladasz wniosek o odstapienie od zamowienia #%1$s zlozonego dnia %2$s."
 
@@ -354,7 +492,11 @@ msgstr "(Nie podlega prawu odstapienia)"
 msgid "Submit Withdrawal Request"
 msgstr "Zloz wniosek o odstapienie"
 
-# Emails
+msgid "Please provide an order ID."
+msgstr "Prosze podac numer zamowienia."
+
+# === EMAILS ===
+
 msgid "Withdrawal Confirmation"
 msgstr "Potwierdzenie odstapienia"
 
@@ -409,6 +551,9 @@ msgstr "Aktywuj konto"
 msgid "Or copy and paste this link into your browser:"
 msgstr "Lub skopiuj i wklej ten link w przegladarke:"
 
+msgid "Thank you for creating an account. Please visit the following link to activate your account:"
+msgstr "Dziekujemy za utworzenie konta. Odwiedz ponizszy link, aby aktywowac konto:"
+
 msgid "Your account has not been activated yet. Please check your email for the activation link."
 msgstr "Twoje konto nie zostalo jeszcze aktywowane. Sprawdz swoj email w poszukiwaniu linku aktywacyjnego."
 
@@ -418,18 +563,40 @@ msgstr "Nieprawidlowy link aktywacyjny."
 msgid "Your account has been activated. You can now log in."
 msgstr "Twoje konto zostalo aktywowane. Mozesz sie teraz zalogowac."
 
-# Gateway
+# === PAYMENT GATEWAY ===
+
 msgid "Invoice / Bank Transfer"
 msgstr "Przelew bankowy / Faktura"
 
 msgid "Customer pays via bank transfer after receiving an invoice. Order is set to on-hold until payment is received."
 msgstr "Klient placi przelewem bankowym po otrzymaniu faktury. Zamowienie jest wstrzymane do momentu otrzymania wplaty."
 
+msgid "Enable/Disable"
+msgstr "Wlacz/Wylacz"
+
+msgid "Enable Invoice / Bank Transfer payment"
+msgstr "Wlacz platnosc przelewem bankowym / faktura"
+
+msgid "Title"
+msgstr "Tytul"
+
 msgid "Bank Transfer (Przelew)"
 msgstr "Przelew bankowy"
 
+msgid "Description"
+msgstr "Opis"
+
 msgid "Pay via bank transfer. Your order will be processed after we receive payment."
 msgstr "Zaplac przelewem bankowym. Twoje zamowienie zostanie zrealizowane po otrzymaniu wplaty."
+
+msgid "Payment method title displayed at checkout."
+msgstr "Tytul metody platnosci wyswietlany przy kasie."
+
+msgid "Payment method description displayed at checkout."
+msgstr "Opis metody platnosci wyswietlany przy kasie."
+
+msgid "Instructions"
+msgstr "Instrukcje"
 
 msgid "Displayed on the thank-you page and in confirmation emails. Include your bank account details here."
 msgstr "Wyswietlane na stronie podziekowania i w emailach. Podaj tutaj dane konta bankowego."
@@ -479,11 +646,47 @@ msgstr "Tytul przelewu:"
 msgid "Amount:"
 msgstr "Kwota:"
 
-# Contract helper
+# === CONTRACT HELPER ===
+
 msgid "Pay Now"
 msgstr "Zaplac teraz"
 
-# Misc
+# === ENUM LABELS ===
+
+msgid "Prices include VAT (brutto)"
+msgstr "Ceny zawieraja VAT (brutto)"
+
+msgid "Prices exclude VAT (netto)"
+msgstr "Ceny nie zawieraja VAT (netto)"
+
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dzien"
+msgstr[1] "%d dni"
+msgstr[2] "%d dni"
+
+#, php-format
+msgid "%d business day"
+msgid_plural "%d business days"
+msgstr[0] "%d dzien roboczy"
+msgstr[1] "%d dni robocze"
+msgstr[2] "%d dni roboczych"
+
+#, php-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d tydzien"
+msgstr[1] "%d tygodnie"
+msgstr[2] "%d tygodni"
+
+# === SHORTCODES ===
+
+msgid "Available Payment Methods"
+msgstr "Dostepne metody platnosci"
+
+# === MISC / ERRORS ===
+
 msgid "You do not have permission to access this resource."
 msgstr "Nie masz uprawnien do tego zasobu."
 
@@ -502,40 +705,46 @@ msgstr "Nieprawidlowy status."
 msgid "Status transition not allowed."
 msgstr "Zmiana statusu niedozwolona."
 
-# Delivery time seed
-msgid "1-2 business days"
-msgstr "1-2 dni robocze"
+msgid "required"
+msgstr "wymagane"
 
-msgid "2-4 business days"
-msgstr "2-4 dni robocze"
+# === DASHBOARD ===
 
-msgid "3-5 business days"
-msgstr "3-5 dni roboczych"
+msgid "Page"
+msgstr "Strona"
 
-msgid "5-7 business days"
-msgstr "5-7 dni roboczych"
+msgid "Published"
+msgstr "Opublikowana"
 
-msgid "7-14 business days"
-msgstr "7-14 dni roboczych"
+msgid "Draft"
+msgstr "Szkic"
 
-msgid "Up to 24 hours"
-msgstr "Do 24 godzin"
+msgid "No legal pages created yet. Generate them to get started."
+msgstr "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpoczac."
 
-# Unit seed
-msgid "pcs (szt.)"
-msgstr "szt."
+msgid "Next steps"
+msgstr "Kolejne kroki"
 
-# Admin notes
-msgid "Configure Spolszczony for your store"
-msgstr "Skonfiguruj Spolszczony dla Twojego sklepu"
+msgid "Publish your legal pages (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje)."
+msgstr "Opublikuj strony prawne (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje)."
 
-msgid "Complete the setup wizard to configure Polish legal compliance for your WooCommerce store. This includes legal pages, checkout settings, and price display options."
-msgstr "Ukonczenie kreatora konfiguracji pozwoli dostosowac Twoj sklep WooCommerce do polskich wymagan prawnych. Obejmuje to strony prawne, ustawienia kasy i opcje wyswietlania cen."
+msgid "Set up <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
+msgstr "Skonfiguruj <a href=\"%s\">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%)."
 
-msgid "Run Setup Wizard"
-msgstr "Uruchom kreator konfiguracji"
+msgid "Configure <a href=\"%s\">shipping zones</a> for Polish delivery."
+msgstr "Skonfiguruj <a href=\"%s\">strefy wysylki</a> dla dostawy w Polsce."
 
-# Plugin requirements
+msgid "Edit product data - add unit prices and delivery times in the <a href=\"%s\">Spolszczony tab</a> of each product."
+msgstr "Edytuj dane produktow - dodaj ceny jednostkowe i czasy dostawy w <a href=\"%s\">zakladce Spolszczony</a> kazdego produktu."
+
+msgid "Test the checkout - add a product to cart and verify legal checkboxes and button text at <a href=\"%s\">checkout</a>."
+msgstr "Przetestuj kase - dodaj produkt do koszyka i sprawdz checkboxy prawne oraz tekst przycisku na <a href=\"%s\">stronie kasy</a>."
+
+msgid "Settings"
+msgstr "Ustawienia"
+
+# === PLUGIN REQUIREMENTS ===
+
 msgid "Spolszczony requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr "Spolszczony wymaga PHP %1$s lub nowszego. Uzywasz PHP %2$s."
 
@@ -547,10 +756,3 @@ msgstr "Spolszczony wymaga zainstalowania i aktywowania WooCommerce."
 
 msgid "Spolszczony requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
 msgstr "Spolszczony wymaga WooCommerce %1$s lub nowszego. Uzywasz WooCommerce %2$s."
-
-# Select defaults
-msgid "— Select unit —"
-msgstr "— Wybierz jednostke —"
-
-msgid "— Use default —"
-msgstr "— Uzyj domyslnego —"
