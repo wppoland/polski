@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
+use Spolszczony\Admin\AdminNotes;
+use Spolszczony\Admin\CSVImportExport;
 use Spolszczony\Admin\PostTypes;
 use Spolszczony\Admin\ProductMetaBox;
+use Spolszczony\Compatibility\ElementorCompat;
 use Spolszczony\Hook\AdminHooks;
 use Spolszczony\Hook\ProductHooks;
 use Spolszczony\Hook\CartHooks;
@@ -19,6 +22,8 @@ use Spolszczony\Rest\WithdrawalController;
 use Spolszczony\Service\WithdrawalService;
 use Spolszczony\Service\CheckboxService;
 use Spolszczony\Service\ContractService;
+use Spolszczony\Service\DoubleOptInService;
+use Spolszczony\Service\EmailService;
 use Spolszczony\Service\OmnibusService;
 use Spolszczony\Service\DisputeResolutionService;
 use Spolszczony\Shortcode\ShortcodeManager;
@@ -35,14 +40,19 @@ return [
     CheckboxService::class,
     OmnibusService::class,
     ContractService::class,
+    DoubleOptInService::class,
+    EmailService::class,
     DisputeResolutionService::class,
 
-    // Integrations (detect third-party plugins).
+    // Integrations and compatibility.
     IntegrationManager::class,
+    ElementorCompat::class,
 
-    // Admin (taxonomies + meta boxes).
+    // Admin (taxonomies + meta boxes + utilities).
     PostTypes::class,
     ProductMetaBox::class,
+    AdminNotes::class,
+    CSVImportExport::class,
 
     // Hook subscribers.
     AdminHooks::class,

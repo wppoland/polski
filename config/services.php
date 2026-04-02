@@ -99,10 +99,15 @@ return static function (Container $c): void {
     // Integration manager.
     $c->singleton(IntegrationManager::class, static fn () => new IntegrationManager($c));
 
+    // Compatibility.
+    $c->singleton(\Spolszczony\Compatibility\ElementorCompat::class, static fn () => new \Spolszczony\Compatibility\ElementorCompat());
+
     // Admin.
     $c->singleton(AdminPage::class, static fn () => new AdminPage());
     $c->singleton(ProductMetaBox::class, static fn () => new ProductMetaBox());
     $c->singleton(PostTypes::class, static fn () => new PostTypes());
+    $c->singleton(\Spolszczony\Admin\AdminNotes::class, static fn () => new \Spolszczony\Admin\AdminNotes());
+    $c->singleton(\Spolszczony\Admin\CSVImportExport::class, static fn () => new \Spolszczony\Admin\CSVImportExport());
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());

@@ -114,6 +114,9 @@ add_action('plugins_loaded', static function (): void {
     }
 
     Plugin::instance()->boot();
+
+    // Register WP-CLI commands.
+    CLI\SpolszczonyCommand::register();
 }, 10);
 
 /**

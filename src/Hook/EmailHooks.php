@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Spolszczony\Hook;
 
 use Spolszczony\Contract\HasHooks;
+use Spolszczony\Gateway\InvoiceGateway;
 use Spolszczony\Service\EmailService;
 
 final class EmailHooks implements HasHooks
@@ -16,6 +17,17 @@ final class EmailHooks implements HasHooks
 
     public function registerHooks(): void
     {
-        // Email hooks will be implemented in Phase 6.
+        // Register payment gateway.
+        add_filter('woocommerce_payment_gateways', [$this, 'registerGateways']);
+    }
+
+    /**
+     * @param list<string> $gateways
+     * @return list<string>
+     */
+    public function registerGateways(array $gateways): array
+    {
+        $gateways[] = InvoiceGateway::class;
+        return $gateways;
     }
 }
