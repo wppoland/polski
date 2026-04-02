@@ -30,7 +30,7 @@
         "@wordpress/element": "^6.0",
         "@wordpress/i18n": "^5.0",
         "@wordpress/scripts": "^30.0",
-        "@wp-env/cli": "^10.0",
+        "@wordpress/env": "^10.0",
         "react": "^18.3",
         "react-dom": "^18.3",
         "react-router-dom": "^7.0",
