@@ -29,20 +29,43 @@ final class AdminPage implements Bootable, HasHooks
 
     public function addMenuPage(): void
     {
-        // Polish flag as base64 SVG icon.
-        $icon = 'data:image/svg+xml;base64,' . base64_encode(
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect width="20" height="10" fill="#fff"/><rect y="10" width="20" height="10" fill="#dc143c"/></svg>',
-        );
-
         add_menu_page(
             __('Spolszczony', 'spolszczony'),
             __('Spolszczony', 'spolszczony'),
             self::CAPABILITY,
             self::PAGE_SLUG,
             [$this, 'renderPage'],
-            $icon,
+            'none',
             58,
         );
+
+        // Polish flag via CSS - WordPress can't override inline styles.
+        add_action('admin_head', [$this, 'renderMenuIconCSS']);
+    }
+
+    /**
+     * Render Polish flag as a CSS-based menu icon.
+     * WordPress overrides SVG fills, so we use a pseudo-element approach.
+     */
+    public function renderMenuIconCSS(): void
+    {
+        echo '<style>
+            #adminmenu .toplevel_page_spolszczony .wp-menu-image::before {
+                content: "" !important;
+                display: block !important;
+                width: 18px;
+                height: 14px;
+                margin: 7px auto 0;
+                border-radius: 2px;
+                background: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
+                border: 1px solid rgba(255,255,255,0.25);
+                box-sizing: border-box;
+            }
+            #adminmenu .toplevel_page_spolszczony:hover .wp-menu-image::before,
+            #adminmenu .toplevel_page_spolszczony.current .wp-menu-image::before {
+                border-color: rgba(255,255,255,0.5);
+            }
+        </style>';
     }
 
     public function renderPage(): void
