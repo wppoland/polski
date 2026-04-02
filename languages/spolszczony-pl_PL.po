@@ -1,0 +1,556 @@
+# Polish translations for Spolszczony plugin.
+# Copyright (C) 2026 WP Poland
+# This file is distributed under the same license as the Spolszczony package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spolszczony 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wppoland.com\n"
+"POT-Creation-Date: 2026-04-02 12:00+0000\n"
+"PO-Revision-Date: 2026-04-02 12:00+0000\n"
+"Last-Translator: WP Poland <kontakt@wppoland.com>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Spolszczony\n"
+
+# Admin dashboard
+msgid "Welcome to Spolszczony. Configure your store for Polish legal compliance."
+msgstr "Witaj w Spolszczony. Skonfiguruj swoj sklep zgodnie z polskim prawem e-commerce."
+
+msgid "Legal Pages"
+msgstr "Strony prawne"
+
+msgid "%d of %d configured"
+msgstr "%d z %d skonfigurowanych"
+
+msgid "Omnibus Directive"
+msgstr "Dyrektywa Omnibus"
+
+msgid "Active"
+msgstr "Aktywna"
+
+msgid "Disabled"
+msgstr "Wylaczona"
+
+msgid "Checkout Button"
+msgstr "Przycisk zamowienia"
+
+msgid "Not configured"
+msgstr "Nieskonfigurowany"
+
+msgid "Tax Display"
+msgstr "Wyswietlanie podatku"
+
+msgid "Small business (ZP)"
+msgstr "Zwolnienie podmiotowe (art. 113)"
+
+msgid "Standard VAT"
+msgstr "Standardowy VAT"
+
+msgid "Double Opt-In"
+msgstr "Podwojna weryfikacja"
+
+msgid "Quick Links"
+msgstr "Szybkie linki"
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Not created"
+msgstr "Nie utworzona"
+
+msgid "Generate Legal Pages"
+msgstr "Wygeneruj strony prawne"
+
+msgid "Not active"
+msgstr "Nieaktywna"
+
+# Checkout
+msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
+msgstr "Zapoznalem/am sie i akceptuje <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
+
+msgid "You must accept the Terms and Conditions to place an order."
+msgstr "Musisz zaakceptowac Regulamin, aby zlozyc zamowienie."
+
+msgid "Terms and Conditions acceptance (Regulamin sklepu)."
+msgstr "Akceptacja Regulaminu sklepu."
+
+msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>."
+msgstr "Zapoznalem/am sie i akceptuje <a href=\"%s\" target=\"_blank\">Polityke prywatnosci</a>."
+
+msgid "You must accept the Privacy Policy."
+msgstr "Musisz zaakceptowac Polityke prywatnosci."
+
+msgid "Privacy Policy acceptance (Polityka prywatnosci)."
+msgstr "Akceptacja Polityki prywatnosci."
+
+msgid "I have been informed about my <a href=\"%s\" target=\"_blank\">right to withdraw from the contract</a> within 14 days."
+msgstr "Zostal/am poinformowany/a o moim <a href=\"%s\" target=\"_blank\">prawie odstapienia od umowy</a> w ciagu 14 dni."
+
+msgid "You must acknowledge the withdrawal rights information."
+msgstr "Musisz potwierdzic zapoznanie sie z informacja o prawie odstapienia."
+
+msgid "14-day withdrawal right acknowledgment (Prawo odstapienia)."
+msgstr "Potwierdzenie prawa odstapienia od umowy (14 dni)."
+
+msgid "I agree that the digital content delivery begins immediately and I acknowledge that I lose my right to withdraw from the contract."
+msgstr "Wyrazam zgode na rozpoczecie dostarczania tresci cyfrowych przed uplywem terminu do odstapienia od umowy i przyjmuje do wiadomosci utrate prawa odstapienia."
+
+msgid "You must consent to immediate digital content delivery."
+msgstr "Musisz wyrazic zgode na natychmiastowe dostarczenie tresci cyfrowych."
+
+msgid "Waiver of withdrawal right for digital goods."
+msgstr "Zrzeczenie sie prawa odstapienia dla towarow cyfrowych."
+
+msgid "I agree to receive SMS/email notifications about parcel delivery status."
+msgstr "Wyrazam zgode na otrzymywanie powiadomien SMS/email o statusie dostawy przesylki."
+
+msgid "Optional consent for delivery notifications."
+msgstr "Opcjonalna zgoda na powiadomienia o dostawie."
+
+msgid "I agree to receive a product review reminder by email after my purchase."
+msgstr "Wyrazam zgode na otrzymanie przypomnienia o wystawieniu opinii drog mailowa po zakupie."
+
+msgid "Optional consent for review reminder emails."
+msgstr "Opcjonalna zgoda na przypomnienia o opinii."
+
+msgid "I agree to receive marketing communications and newsletters."
+msgstr "Wyrazam zgode na otrzymywanie komunikacji marketingowej i newslettera."
+
+msgid "Optional marketing consent (GDPR Art. 6.1.a)."
+msgstr "Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a)."
+
+msgid "Please accept: %s"
+msgstr "Prosze zaakceptowac: %s"
+
+# Legal pages
+msgid "Terms and Conditions (Regulamin)"
+msgstr "Regulamin sklepu"
+
+msgid "Privacy Policy (Polityka prywatnosci)"
+msgstr "Polityka prywatnosci"
+
+msgid "Return Policy (Prawo odstapienia)"
+msgstr "Prawo odstapienia od umowy"
+
+msgid "Complaints (Reklamacje)"
+msgstr "Reklamacje"
+
+msgid "Terms and Conditions"
+msgstr "Regulamin"
+
+msgid "Privacy Policy"
+msgstr "Polityka prywatnosci"
+
+msgid "Return and Withdrawal Policy"
+msgstr "Prawo odstapienia od umowy"
+
+msgid "Complaints"
+msgstr "Reklamacje"
+
+msgid "Please fill in your Terms and Conditions (Regulamin sklepu)."
+msgstr "Prosze uzupelnic Regulamin sklepu."
+
+msgid "Please fill in your Privacy Policy (Polityka prywatnosci)."
+msgstr "Prosze uzupelnic Polityke prywatnosci."
+
+msgid "Please fill in your Return and Withdrawal Policy (Prawo odstapienia od umowy). Consumers have 14 days to withdraw."
+msgstr "Prosze uzupelnic Polityke zwrotow (Prawo odstapienia od umowy). Konsumenci maja 14 dni na odstapienie."
+
+msgid "Please fill in your Complaints procedure (Reklamacje)."
+msgstr "Prosze uzupelnic procedure reklamacyjna."
+
+# Product info
+msgid "Manufacturer"
+msgstr "Producent"
+
+msgid "Safety Documents"
+msgstr "Dokumenty bezpieczenstwa"
+
+msgid "Safety Document"
+msgstr "Dokument bezpieczenstwa"
+
+msgid "Safety Instructions"
+msgstr "Instrukcje bezpieczenstwa"
+
+msgid "Power Supply"
+msgstr "Zasilanie"
+
+msgid "Defect Description"
+msgstr "Opis wady"
+
+msgid "Responsible person (GPSR)"
+msgstr "Osoba odpowiedzialna (GPSR)"
+
+# Food
+msgid "Ingredients"
+msgstr "Skladniki"
+
+msgid "Allergens"
+msgstr "Alergeny"
+
+msgid "Nutritional values per"
+msgstr "Wartosci odzywcze na"
+
+msgid "100 g"
+msgstr "100 g"
+
+msgid "Nutrient"
+msgstr "Skladnik odzywczy"
+
+msgid "Value"
+msgstr "Wartosc"
+
+msgid "Alcohol content"
+msgstr "Zawartosc alkoholu"
+
+msgid "Place of origin"
+msgstr "Kraj pochodzenia"
+
+msgid "Distributor"
+msgstr "Dystrybutor"
+
+msgid "Net content"
+msgstr "Zawartosc netto"
+
+# Delivery
+msgid "Delivery Times"
+msgstr "Czas dostawy"
+
+msgid "Delivery Time"
+msgstr "Czas dostawy"
+
+msgid "Add Delivery Time"
+msgstr "Dodaj czas dostawy"
+
+msgid "Edit Delivery Time"
+msgstr "Edytuj czas dostawy"
+
+msgid "Search Delivery Times"
+msgstr "Szukaj czasow dostawy"
+
+# Units
+msgid "Units"
+msgstr "Jednostki"
+
+msgid "Unit"
+msgstr "Jednostka"
+
+# Manufacturers
+msgid "Manufacturers"
+msgstr "Producenci"
+
+msgid "Add Manufacturer"
+msgstr "Dodaj producenta"
+
+msgid "Edit Manufacturer"
+msgstr "Edytuj producenta"
+
+msgid "Search Manufacturers"
+msgstr "Szukaj producentow"
+
+# Product meta box
+msgid "Unit Price (Cena jednostkowa)"
+msgstr "Cena jednostkowa"
+
+msgid "Product amount"
+msgstr "Ilosc produktu"
+
+msgid "Amount of product in the package (e.g., 500 for 500g)."
+msgstr "Ilosc produktu w opakowaniu (np. 500 dla 500g)."
+
+msgid "Base amount"
+msgstr "Ilosc bazowa"
+
+msgid "The reference base amount (e.g., 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
+msgstr "Bazowa ilosc referencyjna (np. 1 dla \"za 1 kg\", 100 dla \"za 100 ml\")."
+
+msgid "Measurement unit for the unit price display."
+msgstr "Jednostka miary dla wyswietlania ceny jednostkowej."
+
+msgid "Estimated delivery time displayed on product page."
+msgstr "Szacowany czas dostawy wyswietlany na stronie produktu."
+
+msgid "Withdrawal exempt"
+msgstr "Wylaczenie z prawa odstapienia"
+
+msgid "This product is exempt from the 14-day withdrawal right (e.g., digital content, perishable goods)."
+msgstr "Ten produkt jest wylaczony z 14-dniowego prawa odstapienia (np. tresci cyfrowe, towary latwo psujace sie)."
+
+# Withdrawal
+msgid "Withdrawal Request"
+msgstr "Wniosek o odstapienie"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Submitted"
+msgstr "Zlozono"
+
+msgid "Requested"
+msgstr "Zlozony"
+
+msgid "Confirmed"
+msgstr "Potwierdzony"
+
+msgid "Completed"
+msgstr "Zakonczony"
+
+msgid "Rejected"
+msgstr "Odrzucony"
+
+msgid "Withdraw"
+msgstr "Odstap od umowy"
+
+msgid "Your withdrawal request has been submitted. You will receive a confirmation email."
+msgstr "Twoj wniosek o odstapienie zostal zlozony. Otrzymasz potwierdzenie e-mailem."
+
+msgid "This order is not eligible for withdrawal."
+msgstr "To zamowienie nie kwalifikuje sie do odstapienia."
+
+msgid "Invalid request. Please try again."
+msgstr "Nieprawidlowe zadanie. Sprobuj ponownie."
+
+msgid "Order not found."
+msgstr "Zamowienie nie zostalo znalezione."
+
+msgid "You do not have permission to withdraw this order."
+msgstr "Nie masz uprawnien do odstapienia od tego zamowienia."
+
+msgid "Reason for withdrawal (optional)"
+msgstr "Powod odstapienia (opcjonalnie)"
+
+msgid "Customer submitted a withdrawal request."
+msgstr "Klient zlozyl wniosek o odstapienie od umowy."
+
+msgid "Withdrawal request confirmed."
+msgstr "Wniosek o odstapienie potwierdzony."
+
+# Withdrawal form
+msgid "You are requesting withdrawal from order #%1$s placed on %2$s."
+msgstr "Skladasz wniosek o odstapienie od zamowienia #%1$s zlozonego dnia %2$s."
+
+msgid "According to Polish law, you have the right to withdraw from the contract within 14 days without giving any reason."
+msgstr "Zgodnie z polskim prawem masz prawo odstapic od umowy w ciagu 14 dni bez podania przyczyny."
+
+msgid "Order Items"
+msgstr "Produkty z zamowienia"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Quantity"
+msgstr "Ilosc"
+
+msgid "Price"
+msgstr "Cena"
+
+msgid "(Not eligible for withdrawal)"
+msgstr "(Nie podlega prawu odstapienia)"
+
+msgid "Submit Withdrawal Request"
+msgstr "Zloz wniosek o odstapienie"
+
+# Emails
+msgid "Withdrawal Confirmation"
+msgstr "Potwierdzenie odstapienia"
+
+msgid "Sent to the customer when their withdrawal request is confirmed."
+msgstr "Wysylane do klienta po potwierdzeniu wniosku o odstapienie."
+
+msgid "Your withdrawal request for order #{order_number} has been confirmed"
+msgstr "Twoj wniosek o odstapienie od zamowienia #{order_number} zostal potwierdzony"
+
+msgid "Withdrawal Confirmed"
+msgstr "Odstapienie potwierdzone"
+
+msgid "Dear %s,"
+msgstr "Szanowny/a %s,"
+
+msgid "Your withdrawal request for order #%s has been confirmed."
+msgstr "Twoj wniosek o odstapienie od zamowienia #%s zostal potwierdzony."
+
+msgid "Your reason:"
+msgstr "Twoj powod:"
+
+msgid "Please return the items to the following address within 14 days:"
+msgstr "Prosimy o zwrot produktow na ponizszy adres w ciagu 14 dni:"
+
+msgid "Your refund will be processed within 14 days from the date we receive the returned items."
+msgstr "Zwrot srodkow zostanie zrealizowany w ciagu 14 dni od daty otrzymania zwroconych produktow."
+
+msgid "Account Activation (Double Opt-In)"
+msgstr "Aktywacja konta (Podwojna weryfikacja)"
+
+msgid "Sent to new customers to verify their email address."
+msgstr "Wysylane do nowych klientow w celu weryfikacji adresu email."
+
+msgid "Activate your account at {site_title}"
+msgstr "Aktywuj swoje konto w {site_title}"
+
+msgid "Confirm your email address"
+msgstr "Potwierdz swoj adres email"
+
+msgid "If you did not create an account, you can safely ignore this email."
+msgstr "Jezeli nie zakladales/as konta, mozesz bezpiecznie zignorowac te wiadomosc."
+
+msgid "Hello %s,"
+msgstr "Witaj %s,"
+
+msgid "Thank you for creating an account. Please click the button below to activate your account:"
+msgstr "Dziekujemy za utworzenie konta. Kliknij ponizszy przycisk, aby je aktywowac:"
+
+msgid "Activate Account"
+msgstr "Aktywuj konto"
+
+msgid "Or copy and paste this link into your browser:"
+msgstr "Lub skopiuj i wklej ten link w przegladarke:"
+
+msgid "Your account has not been activated yet. Please check your email for the activation link."
+msgstr "Twoje konto nie zostalo jeszcze aktywowane. Sprawdz swoj email w poszukiwaniu linku aktywacyjnego."
+
+msgid "Invalid activation link."
+msgstr "Nieprawidlowy link aktywacyjny."
+
+msgid "Your account has been activated. You can now log in."
+msgstr "Twoje konto zostalo aktywowane. Mozesz sie teraz zalogowac."
+
+# Gateway
+msgid "Invoice / Bank Transfer"
+msgstr "Przelew bankowy / Faktura"
+
+msgid "Customer pays via bank transfer after receiving an invoice. Order is set to on-hold until payment is received."
+msgstr "Klient placi przelewem bankowym po otrzymaniu faktury. Zamowienie jest wstrzymane do momentu otrzymania wplaty."
+
+msgid "Bank Transfer (Przelew)"
+msgstr "Przelew bankowy"
+
+msgid "Pay via bank transfer. Your order will be processed after we receive payment."
+msgstr "Zaplac przelewem bankowym. Twoje zamowienie zostanie zrealizowane po otrzymaniu wplaty."
+
+msgid "Displayed on the thank-you page and in confirmation emails. Include your bank account details here."
+msgstr "Wyswietlane na stronie podziekowania i w emailach. Podaj tutaj dane konta bankowego."
+
+msgid "Bank Account Number"
+msgstr "Numer konta bankowego"
+
+msgid "Your bank account number (IBAN format recommended)."
+msgstr "Numer konta bankowego (zalecany format IBAN)."
+
+msgid "Bank Name"
+msgstr "Nazwa banku"
+
+msgid "Name of your bank."
+msgstr "Nazwa Twojego banku."
+
+msgid "Awaiting bank transfer payment."
+msgstr "Oczekiwanie na przelew bankowy."
+
+msgid "Bank Transfer Details"
+msgstr "Dane do przelewu"
+
+msgid "Account number"
+msgstr "Numer konta"
+
+msgid "Bank"
+msgstr "Bank"
+
+msgid "Transfer title"
+msgstr "Tytul przelewu"
+
+msgid "Order %s"
+msgstr "Zamowienie %s"
+
+msgid "Amount"
+msgstr "Kwota"
+
+msgid "Bank account:"
+msgstr "Numer konta:"
+
+msgid "Bank:"
+msgstr "Bank:"
+
+msgid "Transfer title:"
+msgstr "Tytul przelewu:"
+
+msgid "Amount:"
+msgstr "Kwota:"
+
+# Contract helper
+msgid "Pay Now"
+msgstr "Zaplac teraz"
+
+# Misc
+msgid "You do not have permission to access this resource."
+msgstr "Nie masz uprawnien do tego zasobu."
+
+msgid "Unknown settings group."
+msgstr "Nieznana grupa ustawien."
+
+msgid "Checkbox ID is required."
+msgstr "ID checkboxa jest wymagane."
+
+msgid "Built-in checkboxes cannot be deleted. Disable them instead."
+msgstr "Wbudowane checkboxy nie moga byc usuniete. Mozesz je wylaczac."
+
+msgid "Invalid status."
+msgstr "Nieprawidlowy status."
+
+msgid "Status transition not allowed."
+msgstr "Zmiana statusu niedozwolona."
+
+# Delivery time seed
+msgid "1-2 business days"
+msgstr "1-2 dni robocze"
+
+msgid "2-4 business days"
+msgstr "2-4 dni robocze"
+
+msgid "3-5 business days"
+msgstr "3-5 dni roboczych"
+
+msgid "5-7 business days"
+msgstr "5-7 dni roboczych"
+
+msgid "7-14 business days"
+msgstr "7-14 dni roboczych"
+
+msgid "Up to 24 hours"
+msgstr "Do 24 godzin"
+
+# Unit seed
+msgid "pcs (szt.)"
+msgstr "szt."
+
+# Admin notes
+msgid "Configure Spolszczony for your store"
+msgstr "Skonfiguruj Spolszczony dla Twojego sklepu"
+
+msgid "Complete the setup wizard to configure Polish legal compliance for your WooCommerce store. This includes legal pages, checkout settings, and price display options."
+msgstr "Ukonczenie kreatora konfiguracji pozwoli dostosowac Twoj sklep WooCommerce do polskich wymagan prawnych. Obejmuje to strony prawne, ustawienia kasy i opcje wyswietlania cen."
+
+msgid "Run Setup Wizard"
+msgstr "Uruchom kreator konfiguracji"
+
+# Plugin requirements
+msgid "Spolszczony requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr "Spolszczony wymaga PHP %1$s lub nowszego. Uzywasz PHP %2$s."
+
+msgid "Spolszczony requires Composer autoloader. Run \"composer install\" in the plugin directory."
+msgstr "Spolszczony wymaga autoloadera Composera. Uruchom \"composer install\" w katalogu wtyczki."
+
+msgid "Spolszczony requires WooCommerce to be installed and activated."
+msgstr "Spolszczony wymaga zainstalowania i aktywowania WooCommerce."
+
+msgid "Spolszczony requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
+msgstr "Spolszczony wymaga WooCommerce %1$s lub nowszego. Uzywasz WooCommerce %2$s."
+
+# Select defaults
+msgid "— Select unit —"
+msgstr "— Wybierz jednostke —"
+
+msgid "— Use default —"
+msgstr "— Uzyj domyslnego —"
