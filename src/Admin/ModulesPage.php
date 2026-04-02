@@ -50,17 +50,37 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'omnibus',
                 'name' => 'Najniższa cena (Omnibus)',
-                'description' => 'Śledzenie historii cen i wyświetlanie najniższej ceny z ostatnich 30 dni przy produktach w promocji. Wymagane przez Dyrektywę Omnibus (UE 2019/2161). Współpracuje z wtyczkami WC Price History i Omnibus by iworks, jeśli zainstalowane.',
+                'description' => 'Śledzenie historii cen i wyświetlanie najniższej ceny z ostatnich 30 dni przy produktach w promocji. Wymagane przez Dyrektywę Omnibus (UE 2019/2161).',
                 'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
                 'settings' => [
+                    ['key' => '_omnibus_header_1', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;">Śledzenie cen</strong>'],
                     ['key' => 'spolszczony_omnibus|days', 'label' => 'Okres śledzenia (dni)', 'type' => 'number', 'default' => 30, 'hint' => 'Dyrektywa wymaga minimum 30 dni'],
-                    ['key' => 'spolszczony_omnibus|display_text', 'label' => 'Tekst wyświetlania', 'type' => 'text', 'default' => 'Najniższa cena z ostatnich {days} dni: {price}', 'hint' => 'Zmienne: {price}, {days}'],
-                    ['key' => 'spolszczony_omnibus|display_on_sale_only', 'label' => 'Pokazuj tylko przy przecenach', 'type' => 'checkbox', 'default' => true],
-                    ['key' => 'spolszczony_omnibus|prune_after_days', 'label' => 'Usuwaj dane starsze niż (dni)', 'type' => 'number', 'default' => 90],
+                    ['key' => 'spolszczony_omnibus|prune_after_days', 'label' => 'Przechowuj historię (dni)', 'type' => 'number', 'default' => 90, 'hint' => 'Dane starsze zostaną automatycznie usunięte'],
+                    ['key' => 'spolszczony_omnibus|include_tax', 'label' => 'Ceny z podatkiem', 'type' => 'checkbox', 'default' => true, 'hint' => 'Śledź i wyświetlaj ceny brutto'],
+
+                    ['key' => '_omnibus_header_2', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Wyświetlanie</strong>'],
+                    ['key' => 'spolszczony_omnibus|display_on_sale_only', 'label' => 'Tylko produkty w promocji', 'type' => 'checkbox', 'default' => true, 'hint' => 'Pokazuj informację tylko gdy produkt ma cenę promocyjną'],
+                    ['key' => 'spolszczony_omnibus|show_on_single', 'label' => 'Strona produktu', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_omnibus|show_on_loop', 'label' => 'Lista produktów (sklep, kategorie)', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_omnibus|show_on_related', 'label' => 'Produkty powiązane i polecane', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_omnibus|show_on_cart', 'label' => 'Koszyk', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_omnibus|show_regular_price', 'label' => 'Pokazuj cenę regularną (przed promocją)', 'type' => 'checkbox', 'default' => false, 'hint' => 'Wyświetl dodatkową informację o cenie przed rozpoczęciem promocji'],
+
+                    ['key' => '_omnibus_header_3', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Szablon wiadomości</strong>'],
+                    ['key' => 'spolszczony_omnibus|display_text', 'label' => 'Treść komunikatu', 'type' => 'text', 'default' => 'Najniższa cena z ostatnich {days} dni: {price}', 'hint' => 'Zmienne: {price}, {days}, {date}, {regular_price}'],
+                    ['key' => 'spolszczony_omnibus|no_history_text', 'label' => 'Brak historii cen', 'type' => 'select', 'default' => 'hide', 'options' => ['hide' => 'Ukryj komunikat', 'current' => 'Pokaż aktualną cenę', 'custom' => 'Własny tekst']],
+                    ['key' => 'spolszczony_omnibus|no_history_custom_text', 'label' => 'Własny tekst (brak historii)', 'type' => 'text', 'default' => 'Cena nie uległa zmianie w okresie {days} dni'],
+                    ['key' => 'spolszczony_omnibus|price_count_from', 'label' => 'Liczona od', 'type' => 'select', 'default' => 'sale_start', 'options' => ['sale_start' => 'Dnia rozpoczęcia promocji', 'today' => 'Dnia dzisiejszego'], 'hint' => 'Punkt odniesienia do obliczania najniższej ceny'],
+
+                    ['key' => '_omnibus_header_4', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Produkty wariantowe</strong>'],
+                    ['key' => 'spolszczony_omnibus|variable_tracking', 'label' => 'Śledź warianty oddzielnie', 'type' => 'checkbox', 'default' => true, 'hint' => 'Każdy wariant ma własną historię cen'],
+
+                    ['key' => '_omnibus_header_5', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Integracje</strong>'],
+                    ['key' => '_omnibus_integrations', 'label' => '', 'type' => 'html', 'html' => $this->getOmnibusIntegrationStatus()],
                 ],
             ],
             [
@@ -747,5 +767,52 @@ final class ModulesPage implements HasHooks
         }
 
         return (bool) $saved[$moduleId];
+    }
+
+    /**
+     * Get HTML showing Omnibus plugin integration status.
+     */
+    private function getOmnibusIntegrationStatus(): string
+    {
+        if (! function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugins = [
+            ['file' => 'wc-price-history/wc-price-history.php', 'name' => 'WC Price History (kkarpieszuk)', 'url' => 'https://wordpress.org/plugins/wc-price-history/'],
+            ['file' => 'omnibus/omnibus.php', 'name' => 'Omnibus (iworks)', 'url' => 'https://pl.wordpress.org/plugins/omnibus/'],
+        ];
+
+        $html = '<div style="font-size:12px;">';
+
+        $anyActive = false;
+
+        foreach ($plugins as $plugin) {
+            $active = is_plugin_active($plugin['file']);
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $status = $active ? 'wykryta, dane synchronizowane' : 'niezainstalowana';
+
+            if ($active) {
+                $anyActive = true;
+            }
+
+            $html .= sprintf(
+                '<div style="margin-bottom:4px;">%s <a href="%s" target="_blank">%s</a> - <em>%s</em></div>',
+                $icon,
+                esc_url($plugin['url']),
+                esc_html($plugin['name']),
+                esc_html($status),
+            );
+        }
+
+        if (! $anyActive) {
+            $html .= '<div style="margin-top:6px;color:#666;">Żadna zewnętrzna wtyczka Omnibus nie jest zainstalowana. Spolszczony używa wbudowanego systemu śledzenia cen.</div>';
+        } else {
+            $html .= '<div style="margin-top:6px;color:#46b450;">Zewnętrzna wtyczka wykryta. Spolszczony korzysta z jej danych zamiast wbudowanego systemu.</div>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
     }
 }
