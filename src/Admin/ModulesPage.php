@@ -32,189 +32,246 @@ final class ModulesPage implements HasHooks
         $saved = is_array($saved) ? $saved : [];
 
         $modules = [
-            // === Ceny i wyswietlanie ===
+            // === Ceny i wyświetlanie ===
             [
                 'id' => 'unit_price',
                 'name' => 'Cena jednostkowa',
-                'description' => 'Wyswietlanie ceny za jednostke miary (np. za 1 kg, za 100 ml) zgodnie z polskim prawem konsumenckim.',
-                'group' => 'Ceny i wyswietlanie',
+                'description' => 'Wyświetlanie ceny za jednostkę miary (np. za 1 kg, za 100 ml) zgodnie z polskim prawem konsumenckim.',
+                'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-tag',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_prices|unit_price_text', 'label' => 'Szablon wyświetlania', 'type' => 'text', 'default' => '{price} / {unit}', 'hint' => 'Zmienne: {price}, {unit}'],
+                    ['key' => 'spolszczony_prices|unit_price_show_loop', 'label' => 'Pokazuj na liście produktów', 'type' => 'checkbox', 'default' => true],
+                ],
             ],
             [
                 'id' => 'omnibus',
-                'name' => 'Dyrektywa Omnibus',
-                'description' => 'Automatyczne sledzenie i wyswietlanie najnizszej ceny z ostatnich 30 dni przy produktach przecenionych. Integracja z WC Price History i Omnibus by iworks.',
-                'group' => 'Ceny i wyswietlanie',
+                'name' => 'Najniższa cena (Omnibus)',
+                'description' => 'Śledzenie historii cen i wyświetlanie najniższej ceny z ostatnich 30 dni przy produktach w promocji. Wymagane przez Dyrektywę Omnibus (UE 2019/2161). Współpracuje z wtyczkami WC Price History i Omnibus by iworks, jeśli zainstalowane.',
+                'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_omnibus|days', 'label' => 'Okres śledzenia (dni)', 'type' => 'number', 'default' => 30, 'hint' => 'Dyrektywa wymaga minimum 30 dni'],
+                    ['key' => 'spolszczony_omnibus|display_text', 'label' => 'Tekst wyświetlania', 'type' => 'text', 'default' => 'Najniższa cena z ostatnich {days} dni: {price}', 'hint' => 'Zmienne: {price}, {days}'],
+                    ['key' => 'spolszczony_omnibus|display_on_sale_only', 'label' => 'Pokazuj tylko przy przecenach', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_omnibus|prune_after_days', 'label' => 'Usuwaj dane starsze niż (dni)', 'type' => 'number', 'default' => 90],
+                ],
             ],
             [
                 'id' => 'tax_display',
-                'name' => 'Wyswietlanie VAT',
-                'description' => 'Konfiguracja wyswietlania cen brutto/netto, informacja o stawce VAT, obsluga zwolnienia podmiotowego (art. 113 ustawy o VAT).',
-                'group' => 'Ceny i wyswietlanie',
+                'name' => 'Wyświetlanie VAT',
+                'description' => 'Konfiguracja wyświetlania cen brutto/netto, informacja o stawce VAT, obsługa zwolnienia podmiotowego (art. 113 ustawy o VAT).',
+                'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-money-alt',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_taxes|tax_display_mode', 'label' => 'Tryb wyświetlania cen', 'type' => 'select', 'default' => 'brutto', 'options' => ['brutto' => 'Brutto (z VAT)', 'netto' => 'Netto (bez VAT)']],
+                    ['key' => 'spolszczony_taxes|vat_notice_text', 'label' => 'Tekst informacji o VAT', 'type' => 'text', 'default' => 'w tym {rate}% VAT', 'hint' => 'Zmienne: {rate}'],
+                    ['key' => 'spolszczony_general|small_business', 'label' => 'Zwolnienie podmiotowe (art. 113)', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_taxes|vat_exempt_notice', 'label' => 'Tekst zwolnienia', 'type' => 'text', 'default' => 'Zwolniony z VAT na podstawie art. 113 ust. 1 ustawy o VAT'],
+                ],
             ],
             [
                 'id' => 'delivery_time',
                 'name' => 'Czas dostawy',
-                'description' => 'Wyswietlanie przewidywanego czasu dostawy na stronie produktu. Konfiguracja per produkt lub wariant z domyslnym fallbackiem.',
-                'group' => 'Ceny i wyswietlanie',
+                'description' => 'Wyświetlanie przewidywanego czasu dostawy na stronie produktu. Konfiguracja per produkt lub wariant z domyślnym fallbackiem.',
+                'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-clock',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_delivery|display_format', 'label' => 'Format wyświetlania', 'type' => 'text', 'default' => 'Czas dostawy: {time}', 'hint' => 'Zmienne: {time}'],
+                    ['key' => 'spolszczony_delivery|default_delivery_time', 'label' => 'Domyślny czas dostawy', 'type' => 'delivery_time_select'],
+                ],
             ],
             [
                 'id' => 'shipping_notice',
-                'name' => 'Informacja o kosztach wysylki',
-                'description' => 'Link do strony z kosztami wysylki wyswietlany przy cenie produktu.',
-                'group' => 'Ceny i wyswietlanie',
+                'name' => 'Informacja o kosztach wysyłki',
+                'description' => 'Link do strony z kosztami wysyłki wyświetlany przy cenie produktu.',
+                'group' => 'Ceny i wyświetlanie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-car',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_prices|shipping_costs_text', 'label' => 'Tekst linku', 'type' => 'text', 'default' => 'zzgl. kosztów wysyłki'],
+                ],
             ],
 
-            // === Kasa i zamowienia ===
+            // === Kasa i zamówienia ===
             [
                 'id' => 'checkout_button',
-                'name' => 'Przycisk zamowienia',
-                'description' => 'Zmiana tekstu przycisku zamowienia na "Zamawiam z obowiazkiem zaplaty" zgodnie z polskim prawem.',
-                'group' => 'Kasa i zamowienia',
+                'name' => 'Przycisk zamówienia',
+                'description' => 'Zmiana tekstu przycisku zamówienia na "Zamawiam z obowiązkiem zapłaty" zgodnie z polskim prawem.',
+                'group' => 'Kasa i zamówienia',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-cart',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_checkout|order_button_text', 'label' => 'Tekst przycisku', 'type' => 'text', 'default' => 'Zamawiam z obowiązkiem zapłaty'],
+                ],
             ],
             [
                 'id' => 'legal_checkboxes',
                 'name' => 'Checkboxy prawne',
-                'description' => '7 wbudowanych checkboxow: regulamin, polityka prywatnosci, prawo odstapienia, tresci cyfrowe, powiadomienia o dostawie, przypomnienie o opinii, marketing. Mozliwosc dodawania wlasnych.',
-                'group' => 'Kasa i zamowienia',
+                'description' => '7 wbudowanych checkboxów: regulamin, polityka prywatności, prawo odstąpienia, treści cyfrowe, powiadomienia o dostawie, przypomnienie o opinii, marketing.',
+                'group' => 'Kasa i zamówienia',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-yes-alt',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_checkout|terms_checkbox_enabled', 'label' => 'Regulamin sklepu', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_checkout|privacy_checkbox_enabled', 'label' => 'Polityka prywatności', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_checkout|withdrawal_checkbox_enabled', 'label' => 'Prawo odstąpienia', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_checkout|digital_waiver_checkbox_enabled', 'label' => 'Treści cyfrowe (zrzeczenie)', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_checkout|parcel_delivery_checkbox_enabled', 'label' => 'Powiadomienia o dostawie', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_checkout|review_reminder_checkbox_enabled', 'label' => 'Przypomnienie o opinii', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_checkout|marketing_checkbox_enabled', 'label' => 'Zgoda marketingowa', 'type' => 'checkbox', 'default' => false],
+                ],
             ],
             [
                 'id' => 'consent_logging',
-                'name' => 'Logowanie zgod (RODO)',
-                'description' => 'Rejestrowanie wszystkich zgod udzielonych przez klientow z adresem IP, user agentem i znacznikiem czasu. Zgodne z RODO.',
-                'group' => 'Kasa i zamowienia',
+                'name' => 'Logowanie zgód (RODO)',
+                'description' => 'Rejestrowanie wszystkich zgód udzielonych przez klientów z adresem IP, user agentem i znacznikiem czasu. Zgodne z RODO.',
+                'group' => 'Kasa i zamówienia',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-shield',
                 'links' => [],
+                'settings' => [],
             ],
             [
                 'id' => 'contract_helper',
-                'name' => 'Potwierdzenie zamowienia',
-                'description' => 'Obsluga odroczonych platnosci - potwierdzenie zamowienia przed platnoscia, przycisk "Zaplac teraz" na stronie podziekowania.',
-                'group' => 'Kasa i zamowienia',
+                'name' => 'Potwierdzenie zamówienia',
+                'description' => 'Obsługa odroczonych płatności - potwierdzenie zamówienia przed płatnością, przycisk "Zapłać teraz" na stronie podziękowania.',
+                'group' => 'Kasa i zamówienia',
                 'enabled' => false,
                 'pro' => false,
                 'icon' => 'dashicons-clipboard',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_checkout|delayed_payment_enabled', 'label' => 'Odroczona płatność', 'type' => 'checkbox', 'default' => false, 'hint' => 'Potwierdzenie zamówienia wysylane przed platnoscia'],
+                ],
             ],
             [
                 'id' => 'invoice_gateway',
-                'name' => 'Platnosc przelewem / faktura',
-                'description' => 'Bramka platnosci umozliwiajaca platnosc przelewem bankowym po otrzymaniu zamowienia. Wyswietla dane do przelewu na stronie podziekowania i w emailach.',
-                'group' => 'Kasa i zamowienia',
+                'name' => 'Przelew bankowy / faktura',
+                'description' => 'Bramka płatności umożliwiająca płatność przelewem bankowym. Dane do przelewu na stronie podziękowania i w emailach.',
+                'group' => 'Kasa i zamówienia',
                 'enabled' => false,
                 'pro' => false,
                 'icon' => 'dashicons-bank',
                 'links' => [],
+                'settings' => [
+                    ['key' => '_gateway_link', 'label' => '', 'type' => 'html', 'html' => '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=spolszczony_invoice') . '">Konfiguruj bramkę płatności w WooCommerce &rarr;</a>'],
+                ],
             ],
 
             // === Prawa konsumenta ===
             [
                 'id' => 'legal_pages',
                 'name' => 'Strony prawne',
-                'description' => 'Automatyczne generowanie stron: Regulamin, Polityka prywatnosci, Prawo odstapienia od umowy, Reklamacje.',
+                'description' => 'Automatyczne generowanie stron: Regulamin, Polityka prywatności, Prawo odstąpienia od umowy, Reklamacje.',
                 'group' => 'Prawa konsumenta',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-media-document',
                 'links' => [],
+                'settings' => [
+                    ['key' => '_legal_pages_link', 'label' => '', 'type' => 'html', 'html' => '<a href="' . admin_url('admin.php?page=spolszczony&tab=dashboard') . '">Zarządzaj stronami prawnymi na Pulpicie &rarr;</a>'],
+                ],
             ],
             [
                 'id' => 'withdrawal',
-                'name' => 'Prawo odstapienia (14 dni)',
-                'description' => 'Formularz odstapienia od umowy, przycisk "Odstap" w historii zamowien, potwierdzenie emailem, obsluga wylaczen per produkt.',
+                'name' => 'Prawo odstąpienia (14 dni)',
+                'description' => 'Formularz odstąpienia od umowy, przycisk "Odstąp" w historii zamówień, potwierdzenie emailem, obsługa wyłączeń per produkt.',
                 'group' => 'Prawa konsumenta',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-undo',
                 'links' => [],
+                'settings' => [],
             ],
             [
                 'id' => 'dispute_resolution',
-                'name' => 'Rozstrzyganie sporow (ODR)',
-                'description' => 'Wyswietlanie informacji o platformie ODR (Online Dispute Resolution) Komisji Europejskiej.',
+                'name' => 'Rozstrzyganie sporów (ODR)',
+                'description' => 'Wyświetlanie informacji o platformie ODR (Online Dispute Resolution) Komisji Europejskiej.',
                 'group' => 'Prawa konsumenta',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-admin-site-alt3',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_general|dispute_resolution_text', 'label' => 'Treść informacji ODR', 'type' => 'textarea', 'default' => 'Platforma ODR: https://ec.europa.eu/consumers/odr'],
+                ],
             ],
             [
                 'id' => 'email_attachments',
-                'name' => 'Zalaczniki prawne w emailach',
-                'description' => 'Dolaczanie tresci stron prawnych (regulamin, polityka prywatnosci, prawo odstapienia) do emaili z potwierdzeniem zamowienia.',
+                'name' => 'Załączniki prawne w emailach',
+                'description' => 'Dołączanie treści stron prawnych (regulamin, polityka prywatności, prawo odstąpienia) do emaili z potwierdzeniem zamówienia.',
                 'group' => 'Prawa konsumenta',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-email',
                 'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_emails|attach_terms', 'label' => 'Dołącz Regulamin', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_emails|attach_privacy', 'label' => 'Dołącz Politykę prywatności', 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'spolszczony_emails|attach_withdrawal', 'label' => 'Dołącz Prawo odstąpienia', 'type' => 'checkbox', 'default' => true],
+                ],
             ],
 
             // === Informacje o produkcie ===
             [
                 'id' => 'manufacturer',
                 'name' => 'Producent i GPSR',
-                'description' => 'Informacje o producencie, osoba odpowiedzialna (GPSR), dokumenty bezpieczenstwa, instrukcje bezpieczenstwa.',
+                'description' => 'Informacje o producencie, osoba odpowiedzialna (GPSR), dokumenty bezpieczeństwa, instrukcje bezpieczeństwa.',
                 'group' => 'Informacje o produkcie',
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-building',
                 'links' => [],
+                'settings' => [],
             ],
             [
                 'id' => 'food_module',
-                'name' => 'Zywnosc i suplementy',
-                'description' => 'Tabela wartosci odzywczych, alergeny, skladniki, Nutri-Score, zawartosc alkoholu, kraj pochodzenia, dystrybutor.',
+                'name' => 'Żywność i suplementy',
+                'description' => 'Tabela wartości odżywczych, alergeny, składniki, Nutri-Score, zawartość alkoholu, kraj pochodzenia, dystrybutor.',
                 'group' => 'Informacje o produkcie',
                 'enabled' => false,
                 'pro' => false,
                 'icon' => 'dashicons-carrot',
                 'links' => [],
+                'settings' => [],
             ],
             [
                 'id' => 'power_supply',
                 'name' => 'Informacje o zasilaniu',
-                'description' => 'Dane o zuzyciu energii dla urzadzen elektrycznych (etykiety energetyczne).',
+                'description' => 'Dane o zużyciu energii dla urządzeń elektrycznych (etykiety energetyczne).',
                 'group' => 'Informacje o produkcie',
                 'enabled' => false,
                 'pro' => false,
                 'icon' => 'dashicons-lightbulb',
                 'links' => [],
+                'settings' => [],
             ],
 
             // === Konto klienta ===
             [
                 'id' => 'double_opt_in',
-                'name' => 'Podwojna weryfikacja (DOI)',
-                'description' => 'Weryfikacja adresu email przy rejestracji konta. Link aktywacyjny wysylany emailem, blokada logowania dla nieaktywowanych kont.',
+                'name' => 'Podwójna weryfikacja (DOI)',
+                'description' => 'Weryfikacja adresu email przy rejestracji konta. Link aktywacyjny wysyłany emailem, blokada logowania dla nieaktywowanych kont.',
                 'group' => 'Konto klienta',
                 'enabled' => false,
                 'pro' => false,
@@ -224,22 +281,9 @@ final class ModulesPage implements HasHooks
 
             // === Integracje ===
             [
-                'id' => 'omnibus_integration',
-                'name' => 'Integracja Omnibus',
-                'description' => 'Automatyczne wykrywanie wtyczek WC Price History (kkarpieszuk) i Omnibus (iworks). Jesli zainstalowane, Spolszczony korzysta z ich danych.',
-                'group' => 'Integracje',
-                'enabled' => true,
-                'pro' => false,
-                'icon' => 'dashicons-admin-plugins',
-                'links' => [
-                    ['label' => 'WC Price History', 'url' => 'https://wordpress.org/plugins/wc-price-history/'],
-                    ['label' => 'Omnibus by iworks', 'url' => 'https://pl.wordpress.org/plugins/omnibus/'],
-                ],
-            ],
-            [
                 'id' => 'wpdesk_integration',
                 'name' => 'Integracja WP Desk',
-                'description' => 'Wspolpraca z Flexible Checkout Fields (80 000+ instalacji), Flexible Cookies, GPSR for WooCommerce.',
+                'description' => 'Współpraca z Flexible Checkout Fields (80 000+ instalacji), Flexible Cookies, GPSR for WooCommerce.',
                 'group' => 'Integracje',
                 'enabled' => true,
                 'pro' => false,
@@ -250,8 +294,8 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'payment_integration',
-                'name' => 'Integracja bramek platnosci',
-                'description' => 'Wykrywanie i dostosowanie Przelewy24, PayU, Tpay, BLIK, Autopay do wymagan prawnych.',
+                'name' => 'Integracja bramek płatności',
+                'description' => 'Wykrywanie i dostosowanie Przelewy24, PayU, Tpay, BLIK, Autopay do wymagań prawnych.',
                 'group' => 'Integracje',
                 'enabled' => true,
                 'pro' => false,
@@ -263,7 +307,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'pdf_invoices',
                 'name' => 'Faktury PDF',
-                'description' => 'Generowanie Faktur VAT, Faktur korygujacych i Paragonow w formacie PDF. Konfigurowalny format numeracji. Automatyczne generowanie przy zmianie statusu zamowienia.',
+                'description' => 'Generowanie Faktur VAT, Faktur korygujących i Paragonów w formacie PDF. Konfigurowalny format numeracji. Automatyczne generowanie przy zmianie statusu zamówienia.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -273,7 +317,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'ksef',
                 'name' => 'KSeF (e-Faktury)',
-                'description' => 'Integracja z Krajowym Systemem e-Faktur. Wysylanie faktur do KSeF, podpis cyfrowy, kolejka asynchroniczna, dashboard statusow.',
+                'description' => 'Integracja z Krajowym Systemem e-Faktur. Wysyłanie faktur do KSeF, podpis cyfrowy, kolejka asynchroniczna, dashboard statusów.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -283,7 +327,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'nip_validation',
                 'name' => 'Walidacja NIP',
-                'description' => 'Pole NIP na stronie kasy z walidacja sumy kontrolnej. Weryfikacja w bazie GUS/REGON. Automatyczne uzupelnianie danych firmy.',
+                'description' => 'Pole NIP na stronie kasy z walidacją sumy kontrolnej. Weryfikacja w bazie GUS/REGON. Automatyczne uzupełnianie danych firmy.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -292,8 +336,8 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'shipping_providers',
-                'name' => 'Integracje wysylkowe',
-                'description' => 'InPost (Paczkomaty), DPD, DHL, Poczta Polska, Orlen Paczka. Generowanie etykiet, mapa punktow odbioru, sledzenie przesylek.',
+                'name' => 'Integracje wysyłkowe',
+                'description' => 'InPost (Paczkomaty), DPD, DHL, Poczta Polska, Orlen Paczka. Generowanie etykiet, mapa punktów odbioru, śledzenie przesyłek.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -303,7 +347,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'multistep_checkout',
                 'name' => 'Kasa wieloetapowa',
-                'description' => 'Nowoczesna kasa podzielona na kroki: Adres > Wysylka > Platnosc > Podsumowanie. Responsywna, mobile-first.',
+                'description' => 'Nowoczesna kasa podzielona na kroki: Adres > Wysyłka > Płatność > Podsumowanie. Responsywna, mobile-first.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -312,7 +356,7 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'accounting',
-                'name' => 'Integracje ksiegowe',
+                'name' => 'Integracje księgowe',
                 'description' => 'Synchronizacja faktur z wFirma, Fakturownia, iFirma. Automatyczny eksport danych po wystawieniu faktury.',
                 'group' => 'PRO',
                 'enabled' => false,
@@ -322,8 +366,8 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'legal_generator',
-                'name' => 'Generator tekstow prawnych',
-                'description' => 'Automatyczne generowanie Regulaminu, Polityki prywatnosci i Polityki zwrotow na podstawie danych sklepu.',
+                'name' => 'Generator tekstów prawnych',
+                'description' => 'Automatyczne generowanie Regulaminu, Polityki prywatności i Polityki zwrotów na podstawie danych sklepu.',
                 'group' => 'PRO',
                 'enabled' => false,
                 'pro' => true,
@@ -403,11 +447,12 @@ final class ModulesPage implements HasHooks
         $id = $module['id'];
         $enabled = $module['enabled'];
         $fieldName = "spolszczony_module_{$id}";
+        $hasSettings = ! empty($module['settings']);
 
         $borderColor = $enabled ? '#46b450' : '#ccd0d4';
         $opacity = $locked ? '0.7' : '1';
 
-        echo '<div style="background:#fff;border:1px solid ' . esc_attr($borderColor) . ';padding:16px;opacity:' . $opacity . ';position:relative;">';
+        echo '<div class="spolszczony-module-card" style="background:#fff;border:1px solid ' . esc_attr($borderColor) . ';padding:16px;opacity:' . $opacity . ';position:relative;">';
 
         // Header with icon and toggle.
         echo '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">';
@@ -426,7 +471,7 @@ final class ModulesPage implements HasHooks
         echo '</div>';
 
         // Toggle switch.
-        echo '<label style="position:relative;display:inline-block;width:40px;height:22px;">';
+        echo '<label class="spolszczony-toggle" style="position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;">';
         printf(
             '<input type="checkbox" name="%s" value="1" %s %s style="opacity:0;width:0;height:0;">',
             esc_attr($fieldName),
@@ -436,7 +481,7 @@ final class ModulesPage implements HasHooks
         $bgColor = $enabled ? '#46b450' : '#ccc';
         $translate = $enabled ? '18px' : '2px';
         echo '<span style="position:absolute;cursor:' . ($locked ? 'not-allowed' : 'pointer') . ';top:0;left:0;right:0;bottom:0;background:' . $bgColor . ';border-radius:22px;transition:.3s;"></span>';
-        echo '<span style="position:absolute;content:\'\';height:18px;width:18px;left:' . $translate . ';bottom:2px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2);"></span>';
+        echo '<span style="position:absolute;height:18px;width:18px;left:' . $translate . ';bottom:2px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2);"></span>';
         echo '</label>';
 
         echo '</div>';
@@ -457,6 +502,21 @@ final class ModulesPage implements HasHooks
             echo '</div>';
         }
 
+        // Settings panel (collapsible).
+        if ($hasSettings && ! $locked) {
+            $detailsId = 'spolszczony-settings-' . $id;
+
+            echo '<details id="' . esc_attr($detailsId) . '" style="margin-top:12px;border-top:1px solid #eee;padding-top:10px;">';
+            echo '<summary style="cursor:pointer;font-size:12px;color:#0073aa;user-select:none;">Konfiguruj &darr;</summary>';
+            echo '<div style="margin-top:10px;">';
+
+            foreach ($module['settings'] as $field) {
+                $this->renderSettingsField($field);
+            }
+
+            echo '</div></details>';
+        }
+
         if ($locked) {
             echo '<div style="position:absolute;top:8px;right:8px;">';
             printf(
@@ -465,6 +525,105 @@ final class ModulesPage implements HasHooks
                 esc_html__('Get PRO', 'spolszczony'),
             );
             echo '</div>';
+        }
+
+        echo '</div>';
+    }
+
+    /**
+     * Render a single settings field within a module card.
+     *
+     * @param array<string, mixed> $field
+     */
+    private function renderSettingsField(array $field): void
+    {
+        $type = $field['type'] ?? 'text';
+        $key = $field['key'] ?? '';
+        $label = $field['label'] ?? '';
+        $hint = $field['hint'] ?? '';
+
+        // HTML type - raw output.
+        if ($type === 'html') {
+            echo '<div style="margin-bottom:8px;">' . wp_kses_post($field['html'] ?? '') . '</div>';
+            return;
+        }
+
+        // Parse key format: "option_name|field_key"
+        [$optionName, $fieldKey] = explode('|', $key, 2) + ['', ''];
+
+        // Get current value.
+        $options = get_option($optionName, []);
+        $options = is_array($options) ? $options : [];
+        $currentValue = $options[$fieldKey] ?? ($field['default'] ?? '');
+        $inputName = "spolszczony_setting[{$optionName}][{$fieldKey}]";
+
+        echo '<div style="margin-bottom:10px;">';
+
+        if ($type === 'checkbox') {
+            echo '<label style="display:flex;align-items:center;gap:6px;font-size:13px;">';
+            printf(
+                '<input type="checkbox" name="%s" value="1" %s>',
+                esc_attr($inputName),
+                checked($currentValue, true, false),
+            );
+            echo esc_html($label);
+            echo '</label>';
+        } else {
+            if ($label !== '') {
+                echo '<label style="display:block;font-size:12px;font-weight:600;margin-bottom:3px;">' . esc_html($label) . '</label>';
+            }
+
+            if ($type === 'text') {
+                printf(
+                    '<input type="text" name="%s" value="%s" class="regular-text" style="width:100%%;font-size:12px;">',
+                    esc_attr($inputName),
+                    esc_attr((string) $currentValue),
+                );
+            } elseif ($type === 'number') {
+                printf(
+                    '<input type="number" name="%s" value="%s" class="small-text" style="width:80px;">',
+                    esc_attr($inputName),
+                    esc_attr((string) $currentValue),
+                );
+            } elseif ($type === 'textarea') {
+                printf(
+                    '<textarea name="%s" rows="3" style="width:100%%;font-size:12px;">%s</textarea>',
+                    esc_attr($inputName),
+                    esc_textarea((string) $currentValue),
+                );
+            } elseif ($type === 'select') {
+                echo '<select name="' . esc_attr($inputName) . '" style="font-size:12px;">';
+                foreach (($field['options'] ?? []) as $val => $optLabel) {
+                    printf(
+                        '<option value="%s" %s>%s</option>',
+                        esc_attr($val),
+                        selected($currentValue, $val, false),
+                        esc_html($optLabel),
+                    );
+                }
+                echo '</select>';
+            } elseif ($type === 'delivery_time_select') {
+                $terms = get_terms(['taxonomy' => 'spolszczony_delivery_time', 'hide_empty' => false]);
+                echo '<select name="' . esc_attr($inputName) . '" style="font-size:12px;">';
+                echo '<option value="">-- brak --</option>';
+                if (is_array($terms)) {
+                    foreach ($terms as $term) {
+                        if ($term instanceof \WP_Term) {
+                            printf(
+                                '<option value="%s" %s>%s</option>',
+                                esc_attr((string) $term->term_id),
+                                selected($currentValue, (string) $term->term_id, false),
+                                esc_html($term->name),
+                            );
+                        }
+                    }
+                }
+                echo '</select>';
+            }
+        }
+
+        if ($hint !== '') {
+            echo '<p style="margin:2px 0 0;color:#999;font-size:11px;">' . esc_html($hint) . '</p>';
         }
 
         echo '</div>';
@@ -495,6 +654,56 @@ final class ModulesPage implements HasHooks
         }
 
         update_option(self::OPTION, $saved);
+
+        // Save per-module settings.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $settingsData = $_POST['spolszczony_setting'] ?? [];
+
+        if (is_array($settingsData)) {
+            foreach ($settingsData as $optionName => $fields) {
+                if (! is_array($fields)) {
+                    continue;
+                }
+
+                $optionName = sanitize_key($optionName);
+                $existing = get_option($optionName, []);
+                $existing = is_array($existing) ? $existing : [];
+
+                foreach ($fields as $fieldKey => $value) {
+                    $fieldKey = sanitize_key($fieldKey);
+                    $existing[$fieldKey] = is_string($value) ? sanitize_text_field($value) : $value;
+                }
+
+                update_option($optionName, $existing);
+            }
+        }
+
+        // Handle unchecked checkboxes (they don't send POST data).
+        foreach ($modules as $module) {
+            if ($module['pro'] || empty($module['settings'])) {
+                continue;
+            }
+
+            foreach ($module['settings'] as $field) {
+                if (($field['type'] ?? '') !== 'checkbox' || ! isset($field['key'])) {
+                    continue;
+                }
+
+                [$optName, $fKey] = explode('|', $field['key'], 2) + ['', ''];
+
+                if ($optName === '' || $fKey === '') {
+                    continue;
+                }
+
+                // If checkbox was not in POST, set to false.
+                if (! isset($settingsData[$optName][$fKey])) {
+                    $opt = get_option($optName, []);
+                    $opt = is_array($opt) ? $opt : [];
+                    $opt[$fKey] = false;
+                    update_option($optName, $opt);
+                }
+            }
+        }
 
         \Spolszczony\Service\CacheHelper::flush();
 
@@ -530,7 +739,6 @@ final class ModulesPage implements HasHooks
                 'food_module' => false,
                 'power_supply' => false,
                 'double_opt_in' => false,
-                'omnibus_integration' => true,
                 'wpdesk_integration' => true,
                 'payment_integration' => true,
             ];
