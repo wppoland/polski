@@ -21,6 +21,7 @@ use Spolszczony\Service\CheckboxService;
 use Spolszczony\Service\ContractService;
 use Spolszczony\Service\OmnibusService;
 use Spolszczony\Service\DisputeResolutionService;
+use Spolszczony\Shortcode\ShortcodeManager;
 
 /**
  * Hook subscriber classes to boot and register.
@@ -54,6 +55,9 @@ return [
 
     // Withdrawal service (needs hooks for My Account).
     WithdrawalService::class,
+
+    // Shortcodes.
+    ShortcodeManager::class,
 
     // REST API.
     SettingsController::class,

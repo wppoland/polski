@@ -20,6 +20,7 @@ use Spolszczony\Rest\LegalPageController;
 use Spolszczony\Rest\SettingsController;
 use Spolszczony\Rest\WithdrawalController;
 use Spolszczony\Service\ContractService;
+use Spolszczony\Shortcode\ShortcodeManager;
 use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\OmnibusService;
 use Spolszczony\Service\TaxDisplayService;
@@ -109,6 +110,9 @@ return static function (Container $c): void {
     $c->singleton(WithdrawalController::class, static fn () => new WithdrawalController());
     $c->singleton(LegalPageController::class, static fn () => new LegalPageController());
 
+    // Shortcodes.
+    $c->singleton(ShortcodeManager::class, static fn () => new ShortcodeManager());
+
     // Hook subscribers.
     $c->singleton(AdminHooks::class, static fn () => new AdminHooks(
         $c->get(AdminPage::class),
@@ -117,6 +121,8 @@ return static function (Container $c): void {
     $c->singleton(ProductHooks::class, static fn () => new ProductHooks(
         $c->get(PriceDisplayService::class),
         $c->get(DeliveryTimeService::class),
+        $c->get(ProductInfoService::class),
+        $c->get(FoodService::class),
         $c->get(ShopmarkManager::class),
         $c->get(TemplateLoader::class),
     ));

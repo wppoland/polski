@@ -6,8 +6,10 @@ namespace Spolszczony\Hook;
 
 use Spolszczony\Contract\Bootable;
 use Spolszczony\Contract\HasHooks;
-use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\DeliveryTimeService;
+use Spolszczony\Service\FoodService;
+use Spolszczony\Service\PriceDisplayService;
+use Spolszczony\Service\ProductInfoService;
 use Spolszczony\Shopmark\Location;
 use Spolszczony\Shopmark\Shopmark;
 use Spolszczony\Shopmark\ShopmarkManager;
@@ -21,6 +23,8 @@ final class ProductHooks implements Bootable, HasHooks
     public function __construct(
         private readonly PriceDisplayService $priceDisplay,
         private readonly DeliveryTimeService $deliveryTime,
+        private readonly ProductInfoService $productInfo,
+        private readonly FoodService $foodService,
         private readonly ShopmarkManager $shopmarks,
         private readonly TemplateLoader $templateLoader,
     ) {
@@ -79,6 +83,42 @@ final class ProductHooks implements Bootable, HasHooks
             hookName: 'woocommerce_single_product_summary',
             priority: 28,
             callback: fn () => $this->renderOmnibusPrice(),
+        ));
+
+        // Delivery time.
+        $this->shopmarks->register(new Shopmark(
+            id: 'delivery_time',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 29,
+            callback: fn () => $this->renderDeliveryTime(),
+        ));
+
+        // Manufacturer (GPSR).
+        $this->shopmarks->register(new Shopmark(
+            id: 'manufacturer',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 35,
+            callback: fn () => $this->renderManufacturer(),
+        ));
+
+        // Safety info (GPSR).
+        $this->shopmarks->register(new Shopmark(
+            id: 'safety_info',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 36,
+            callback: fn () => $this->renderSafetyInfo(),
+        ));
+
+        // Food info (nutrients, allergens, ingredients).
+        $this->shopmarks->register(new Shopmark(
+            id: 'food_info',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 40,
+            callback: fn () => $this->renderFoodInfo(),
         ));
 
         /**
@@ -161,6 +201,92 @@ final class ProductHooks implements Bootable, HasHooks
         if ($html !== '') {
             $this->templateLoader->include('single-product/omnibus-price', [
                 'omnibus_price_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderDeliveryTime(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $html = $this->deliveryTime->getDeliveryTimeHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/delivery-time', [
+                'delivery_time_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderManufacturer(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $html = $this->productInfo->getManufacturerHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/manufacturer', [
+                'manufacturer_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderSafetyInfo(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $parts = array_filter([
+            $this->productInfo->getSafetyDocumentsHtml($product),
+            $this->productInfo->getPowerSupplyHtml($product),
+            $this->productInfo->getDefectDescriptionHtml($product),
+        ]);
+
+        $gpsr = $this->productInfo->getGPSRResponsible($product);
+        if ($gpsr !== '') {
+            array_unshift($parts, sprintf(
+                '<div class="spolszczony-gpsr"><span class="spolszczony-gpsr__label">%s:</span> %s</div>',
+                esc_html__('Responsible person (GPSR)', 'spolszczony'),
+                esc_html($gpsr),
+            ));
+        }
+
+        if (! empty($parts)) {
+            $html = '<div class="spolszczony-safety">' . implode('', $parts) . '</div>';
+            $this->templateLoader->include('single-product/safety-info', [
+                'safety_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderFoodInfo(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $html = $this->foodService->getFoodInfoHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/food-info', [
+                'food_info_html' => $html,
                 'product' => $product,
             ]);
         }
