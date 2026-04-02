@@ -708,6 +708,23 @@ msgstr "Zmiana statusu niedozwolona."
 msgid "required"
 msgstr "wymagane"
 
+# === TABS ===
+
+msgid "Modules"
+msgstr "Moduly"
+
+msgid "Dashboard"
+msgstr "Pulpit"
+
+msgid "Modules saved."
+msgstr "Moduly zapisane."
+
+msgid "Save modules"
+msgstr "Zapisz moduly"
+
+msgid "Get PRO"
+msgstr "Kup PRO"
+
 # === DASHBOARD ===
 
 msgid "Page"

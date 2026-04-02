@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Spolszczony\Admin\AdminNotes;
 use Spolszczony\Admin\CSVImportExport;
+use Spolszczony\Admin\ModulesPage;
 use Spolszczony\Admin\PostTypes;
 use Spolszczony\Admin\ProductMetaBox;
 use Spolszczony\Compatibility\ElementorCompat;
@@ -53,6 +54,7 @@ return [
     ProductMetaBox::class,
     AdminNotes::class,
     CSVImportExport::class,
+    ModulesPage::class,
 
     // Hook subscribers.
     AdminHooks::class,

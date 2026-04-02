@@ -119,28 +119,59 @@ final class AdminPage implements Bootable, HasHooks
             return;
         }
 
-        // PHP fallback dashboard.
-        $this->renderFallbackDashboard();
-    }
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $tab = sanitize_key($_GET['tab'] ?? 'modules');
 
-    /**
-     * PHP-rendered dashboard shown when the React app is not built.
-     */
-    private function renderFallbackDashboard(): void
-    {
-        $version = \Spolszczony\VERSION;
+        echo '<div class="wrap">';
+        echo '<h1>Spolszczony <small>v' . esc_html(\Spolszczony\VERSION) . '</small></h1>';
 
-        echo '<div class="wrap spolszczony-admin-fallback">';
-        echo '<h1>Spolszczony <small>v' . esc_html($version) . '</small></h1>';
-
-        // Success notice after generating pages.
+        // Success notices.
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['spolszczony_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
             echo esc_html__('Legal pages have been generated as drafts. Edit and publish them.', 'spolszczony');
             echo '</p></div>';
         }
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if (isset($_GET['modules_saved'])) {
+            echo '<div class="notice notice-success is-dismissible"><p>';
+            echo esc_html__('Modules saved.', 'spolszczony');
+            echo '</p></div>';
+        }
 
+        // Tab navigation.
+        $tabs = [
+            'modules' => __('Modules', 'spolszczony'),
+            'dashboard' => __('Dashboard', 'spolszczony'),
+        ];
+
+        echo '<nav class="nav-tab-wrapper" style="margin-bottom:20px;">';
+        foreach ($tabs as $tabId => $tabLabel) {
+            $class = $tab === $tabId ? 'nav-tab nav-tab-active' : 'nav-tab';
+            $url = admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=' . $tabId);
+            printf('<a href="%s" class="%s">%s</a>', esc_url($url), esc_attr($class), esc_html($tabLabel));
+        }
+        echo '</nav>';
+
+        match ($tab) {
+            'dashboard' => $this->renderDashboard(),
+            default => $this->renderModulesTab(),
+        };
+
+        echo '</div>';
+    }
+
+    private function renderModulesTab(): void
+    {
+        $modulesPage = \Spolszczony\Plugin::instance()->container()->get(ModulesPage::class);
+        $modulesPage->render();
+    }
+
+    /**
+     * PHP-rendered dashboard shown when the React app is not built.
+     */
+    private function renderDashboard(): void
+    {
         // Gather status data.
         $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
         $pageStatus = $legalPages->getConfigurationStatus();
@@ -285,8 +316,6 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '</ol>';
         echo '</div>';
-
-        echo '</div>'; // .wrap
     }
 
     /**

@@ -108,6 +108,7 @@ return static function (Container $c): void {
     $c->singleton(PostTypes::class, static fn () => new PostTypes());
     $c->singleton(\Spolszczony\Admin\AdminNotes::class, static fn () => new \Spolszczony\Admin\AdminNotes());
     $c->singleton(\Spolszczony\Admin\CSVImportExport::class, static fn () => new \Spolszczony\Admin\CSVImportExport());
+    $c->singleton(\Spolszczony\Admin\ModulesPage::class, static fn () => new \Spolszczony\Admin\ModulesPage());
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());
