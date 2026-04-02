@@ -1,0 +1,119 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Spolszczony\Email;
+
+use Spolszczony\Model\WithdrawalRequest;
+
+/**
+ * Email sent to the customer when a withdrawal request is confirmed.
+ */
+class WithdrawalConfirmationEmail extends \WC_Email
+{
+    public ?WithdrawalRequest $request = null;
+
+    public function __construct()
+    {
+        $this->id = 'spolszczony_withdrawal_confirmation';
+        $this->customer_email = true;
+        $this->title = __('Withdrawal Confirmation', 'spolszczony');
+        $this->description = __('Sent to the customer when their withdrawal request is confirmed.', 'spolszczony');
+        $this->template_base = \Spolszczony\PLUGIN_DIR . '/templates/';
+        $this->template_html = 'emails/withdrawal-confirmation.php';
+        $this->template_plain = 'emails/plain/withdrawal-confirmation.php';
+        $this->placeholders = [
+            '{order_number}' => '',
+            '{order_date}' => '',
+            '{withdrawal_date}' => '',
+        ];
+
+        // Trigger on withdrawal confirmed action.
+        add_action('spolszczony/withdrawal/confirmed', [$this, 'trigger']);
+
+        parent::__construct();
+    }
+
+    /**
+     * Trigger the email.
+     */
+    public function trigger(WithdrawalRequest $request): void
+    {
+        $this->request = $request;
+        $order = wc_get_order($request->orderId);
+
+        if (! $order instanceof \WC_Order) {
+            return;
+        }
+
+        $this->object = $order;
+        $this->recipient = $order->get_billing_email();
+
+        $this->placeholders['{order_number}'] = $order->get_order_number();
+        $this->placeholders['{order_date}'] = wc_format_datetime($order->get_date_created());
+        $this->placeholders['{withdrawal_date}'] = $request->requestedAt->format(get_option('date_format'));
+
+        if (! $this->is_enabled() || ! $this->get_recipient()) {
+            return;
+        }
+
+        $this->send(
+            $this->get_recipient(),
+            $this->get_subject(),
+            $this->get_content(),
+            $this->get_headers(),
+            $this->get_attachments(),
+        );
+    }
+
+    public function get_default_subject(): string
+    {
+        return __('Your withdrawal request for order #{order_number} has been confirmed', 'spolszczony');
+    }
+
+    public function get_default_heading(): string
+    {
+        return __('Withdrawal Confirmed', 'spolszczony');
+    }
+
+    public function get_content_html(): string
+    {
+        return wc_get_template_html(
+            $this->template_html,
+            [
+                'order' => $this->object,
+                'request' => $this->request,
+                'email_heading' => $this->get_heading(),
+                'additional_content' => $this->get_additional_content(),
+                'sent_to_admin' => false,
+                'plain_text' => false,
+                'email' => $this,
+            ],
+            '',
+            $this->template_base,
+        );
+    }
+
+    public function get_content_plain(): string
+    {
+        return wc_get_template_html(
+            $this->template_plain,
+            [
+                'order' => $this->object,
+                'request' => $this->request,
+                'email_heading' => $this->get_heading(),
+                'additional_content' => $this->get_additional_content(),
+                'sent_to_admin' => false,
+                'plain_text' => true,
+                'email' => $this,
+            ],
+            '',
+            $this->template_base,
+        );
+    }
+
+    public function get_default_additional_content(): string
+    {
+        return __('Your refund will be processed within 14 days from the date we receive the returned items.', 'spolszczony');
+    }
+}

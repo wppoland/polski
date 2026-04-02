@@ -14,8 +14,11 @@ use Spolszczony\Hook\OrderHooks;
 use Spolszczony\Hook\EmailHooks;
 use Spolszczony\Hook\LoopHooks;
 use Spolszczony\Integration\IntegrationManager;
+use Spolszczony\Email\WithdrawalConfirmationEmail;
 use Spolszczony\Rest\CheckboxController;
+use Spolszczony\Rest\LegalPageController;
 use Spolszczony\Rest\SettingsController;
+use Spolszczony\Rest\WithdrawalController;
 use Spolszczony\Service\ContractService;
 use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\OmnibusService;
@@ -103,6 +106,8 @@ return static function (Container $c): void {
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());
     $c->singleton(CheckboxController::class, static fn () => new CheckboxController());
+    $c->singleton(WithdrawalController::class, static fn () => new WithdrawalController());
+    $c->singleton(LegalPageController::class, static fn () => new LegalPageController());
 
     // Hook subscribers.
     $c->singleton(AdminHooks::class, static fn () => new AdminHooks(

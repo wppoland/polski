@@ -13,7 +13,10 @@ use Spolszczony\Hook\EmailHooks;
 use Spolszczony\Hook\LoopHooks;
 use Spolszczony\Integration\IntegrationManager;
 use Spolszczony\Rest\CheckboxController;
+use Spolszczony\Rest\LegalPageController;
 use Spolszczony\Rest\SettingsController;
+use Spolszczony\Rest\WithdrawalController;
+use Spolszczony\Service\WithdrawalService;
 use Spolszczony\Service\CheckboxService;
 use Spolszczony\Service\ContractService;
 use Spolszczony\Service\OmnibusService;
@@ -49,7 +52,12 @@ return [
     OrderHooks::class,
     EmailHooks::class,
 
+    // Withdrawal service (needs hooks for My Account).
+    WithdrawalService::class,
+
     // REST API.
     SettingsController::class,
     CheckboxController::class,
+    WithdrawalController::class,
+    LegalPageController::class,
 ];
