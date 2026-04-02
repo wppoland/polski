@@ -14,7 +14,9 @@ use Spolszczony\Hook\OrderHooks;
 use Spolszczony\Hook\EmailHooks;
 use Spolszczony\Hook\LoopHooks;
 use Spolszczony\Integration\IntegrationManager;
+use Spolszczony\Rest\CheckboxController;
 use Spolszczony\Rest\SettingsController;
+use Spolszczony\Service\ContractService;
 use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\OmnibusService;
 use Spolszczony\Service\TaxDisplayService;
@@ -80,6 +82,7 @@ return static function (Container $c): void {
     $c->singleton(FoodService::class, static fn () => new FoodService());
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
     $c->singleton(ComplianceCheckService::class, static fn () => new ComplianceCheckService());
+    $c->singleton(ContractService::class, static fn () => new ContractService());
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
         $c->get(WithdrawalRepository::class),
@@ -99,6 +102,7 @@ return static function (Container $c): void {
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());
+    $c->singleton(CheckboxController::class, static fn () => new CheckboxController());
 
     // Hook subscribers.
     $c->singleton(AdminHooks::class, static fn () => new AdminHooks(

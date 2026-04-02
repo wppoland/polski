@@ -40,6 +40,11 @@ return [
         'terms_checkbox_enabled' => true,
         'privacy_checkbox_enabled' => true,
         'withdrawal_checkbox_enabled' => true,
+        'digital_waiver_checkbox_enabled' => false,
+        'parcel_delivery_checkbox_enabled' => false,
+        'review_reminder_checkbox_enabled' => false,
+        'marketing_checkbox_enabled' => false,
+        'delayed_payment_enabled' => false,
     ],
 
     // Emails.

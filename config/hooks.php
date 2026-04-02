@@ -12,7 +12,10 @@ use Spolszczony\Hook\OrderHooks;
 use Spolszczony\Hook\EmailHooks;
 use Spolszczony\Hook\LoopHooks;
 use Spolszczony\Integration\IntegrationManager;
+use Spolszczony\Rest\CheckboxController;
 use Spolszczony\Rest\SettingsController;
+use Spolszczony\Service\CheckboxService;
+use Spolszczony\Service\ContractService;
 use Spolszczony\Service\OmnibusService;
 use Spolszczony\Service\DisputeResolutionService;
 
@@ -25,7 +28,9 @@ use Spolszczony\Service\DisputeResolutionService;
  */
 return [
     // Core services.
+    CheckboxService::class,
     OmnibusService::class,
+    ContractService::class,
     DisputeResolutionService::class,
 
     // Integrations (detect third-party plugins).
@@ -46,4 +51,5 @@ return [
 
     // REST API.
     SettingsController::class,
+    CheckboxController::class,
 ];
