@@ -25,6 +25,25 @@ final class AdminPage implements Bootable, HasHooks
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
+        add_action('admin_post_spolszczony_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
+    }
+
+    /**
+     * Handle the "Generate Legal Pages" form submission.
+     */
+    public function handleGenerateLegalPages(): void
+    {
+        if (! current_user_can(self::CAPABILITY)) {
+            wp_die(__('You do not have permission to access this resource.', 'spolszczony'));
+        }
+
+        check_admin_referer('spolszczony_generate_pages', '_spolszczony_nonce');
+
+        $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
+        $legalPages->createDefaultPages();
+
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&spolszczony_pages_generated=1'));
+        exit;
     }
 
     public function addMenuPage(): void
@@ -92,6 +111,14 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '<div class="wrap spolszczony-admin-fallback">';
         echo '<h1>' . esc_html__('Spolszczony', 'spolszczony') . ' <small>v' . esc_html($version) . '</small></h1>';
+
+        // Success notice after generating pages.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if (isset($_GET['spolszczony_pages_generated'])) {
+            echo '<div class="notice notice-success is-dismissible"><p>';
+            echo esc_html__('Legal pages have been generated as drafts. Edit and publish them.', 'spolszczony');
+            echo '</p></div>';
+        }
 
         // Setup wizard prompt.
         if (! $wizardDone) {
@@ -191,12 +218,15 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '</ul>';
 
-        // Generate legal pages button.
+        // Generate legal pages button (POST via form with nonce).
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+        wp_nonce_field('spolszczony_generate_pages', '_spolszczony_nonce');
+        echo '<input type="hidden" name="action" value="spolszczony_generate_legal_pages" />';
         printf(
-            '<p><a href="%s" class="button button-primary">%s</a></p>',
-            esc_url(rest_url('spolszczony/v1/legal-pages/generate')),
+            '<p><button type="submit" class="button button-primary">%s</button></p>',
             esc_html__('Generate Legal Pages', 'spolszczony'),
         );
+        echo '</form>';
 
         echo '</div>';
         echo '</div>'; // .wrap
