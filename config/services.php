@@ -20,6 +20,7 @@ use Spolszczony\Rest\LegalPageController;
 use Spolszczony\Rest\SettingsController;
 use Spolszczony\Rest\WithdrawalController;
 use Spolszczony\Service\ContractService;
+use Spolszczony\Service\CatalogModeService;
 use Spolszczony\Shortcode\ShortcodeManager;
 use Spolszczony\Service\PriceDisplayService;
 use Spolszczony\Service\OmnibusService;
@@ -94,6 +95,10 @@ return static function (Container $c): void {
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
     $c->singleton(ComplianceCheckService::class, static fn () => new ComplianceCheckService());
     $c->singleton(ContractService::class, static fn () => new ContractService());
+    $c->singleton(CatalogModeService::class, static fn () => new CatalogModeService(
+        $c->get(TemplateLoader::class),
+        $c->get(QuoteService::class),
+    ));
     $c->singleton(QuoteService::class, static fn () => new QuoteService(
         $c->get(QuoteRequestRepository::class),
         $c->get(ConsentLogRepository::class),
@@ -111,8 +116,25 @@ return static function (Container $c): void {
     // Integration manager.
     $c->singleton(IntegrationManager::class, static fn () => new IntegrationManager($c));
 
+    // Store API / Block checkout.
+    $c->singleton(\Spolszczony\Block\StoreApi\ProductDataExtension::class, static fn () => new \Spolszczony\Block\StoreApi\ProductDataExtension(
+        $c->get(PriceDisplayService::class),
+        $c->get(OmnibusService::class),
+        $c->get(DeliveryTimeService::class),
+        $c->get(ProductInfoService::class),
+    ));
+    $c->singleton(\Spolszczony\Block\StoreApi\CheckoutValidation::class, static fn () => new \Spolszczony\Block\StoreApi\CheckoutValidation(
+        $c->get(CheckboxService::class),
+        $c->get(ConsentLogRepository::class),
+    ));
+
     // Compatibility.
     $c->singleton(\Spolszczony\Compatibility\ElementorCompat::class, static fn () => new \Spolszczony\Compatibility\ElementorCompat());
+    $c->singleton(\Spolszczony\Compatibility\DynamicPricingCompat::class, static fn () => new \Spolszczony\Compatibility\DynamicPricingCompat());
+    $c->singleton(\Spolszczony\Compatibility\ProductBundlesCompat::class, static fn () => new \Spolszczony\Compatibility\ProductBundlesCompat());
+    $c->singleton(\Spolszczony\Compatibility\SubscriptionsCompat::class, static fn () => new \Spolszczony\Compatibility\SubscriptionsCompat());
+    $c->singleton(\Spolszczony\Compatibility\CartFlowsCompat::class, static fn () => new \Spolszczony\Compatibility\CartFlowsCompat());
+    $c->singleton(\Spolszczony\Compatibility\GoogleCompat::class, static fn () => new \Spolszczony\Compatibility\GoogleCompat());
 
     // Admin.
     $c->singleton(AdminPage::class, static fn () => new AdminPage());

@@ -78,9 +78,6 @@ final class ModulesPage implements HasHooks
 
                     ['key' => '_omnibus_header_4', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Produkty wariantowe</strong>'],
                     ['key' => 'spolszczony_omnibus|variable_tracking', 'label' => 'Śledź warianty oddzielnie', 'type' => 'checkbox', 'default' => true, 'hint' => 'Każdy wariant ma własną historię cen'],
-
-                    ['key' => '_omnibus_header_5', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Integracje</strong>'],
-                    ['key' => '_omnibus_integrations', 'label' => '', 'type' => 'html', 'html' => $this->getOmnibusIntegrationStatus()],
                 ],
             ],
             [
@@ -329,6 +326,29 @@ final class ModulesPage implements HasHooks
                     ['key' => 'spolszczony_quote|privacy_required', 'label' => 'Wymagaj zgody prywatności', 'type' => 'checkbox', 'default' => true],
                     ['key' => 'spolszczony_quote|privacy_label', 'label' => 'Treść zgody prywatności', 'type' => 'text', 'default' => 'Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny.'],
                     ['key' => 'spolszczony_quote|customer_email_enabled', 'label' => 'Wysyłaj potwierdzenie do klienta', 'type' => 'checkbox', 'default' => true],
+                ],
+            ],
+            [
+                'id' => 'catalog_mode',
+                'name' => 'Tryb katalogowy B2B',
+                'description' => 'Ukrywanie cen i koszyka dla wybranych produktów lub grup odbiorców, z przekierowaniem do logowania albo zapytania ofertowego.',
+                'group' => 'Sprzedaż i B2B',
+                'enabled' => false,
+                'pro' => false,
+                'icon' => 'dashicons-visibility',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'spolszczony_catalog|availability', 'label' => 'Zakres działania', 'type' => 'select', 'default' => 'selected', 'options' => ['selected' => 'Tylko wybrane produkty', 'all_products' => 'Wszystkie produkty']],
+                    ['key' => 'spolszczony_catalog|audience', 'label' => 'Dla kogo aktywny', 'type' => 'select', 'default' => 'guests_only', 'options' => ['guests_only' => 'Tylko goście', 'logged_in' => 'Wszyscy zalogowani', 'all_users' => 'Wszyscy użytkownicy', 'selected_roles' => 'Wybrane role']],
+                    ['key' => 'spolszczony_catalog|selected_roles', 'label' => 'Role użytkowników', 'type' => 'textarea', 'default' => '', 'hint' => 'Podaj slug roli, po przecinku lub w osobnych liniach, np. customer, b2b_customer'],
+                    ['key' => 'spolszczony_catalog|hide_prices', 'label' => 'Ukrywaj ceny', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_catalog|hide_add_to_cart', 'label' => 'Ukrywaj koszyk / zakup', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'spolszczony_catalog|replacement_mode', 'label' => 'CTA zastępcze', 'type' => 'select', 'default' => 'quote', 'options' => ['quote' => 'Zapytanie ofertowe', 'login' => 'Logowanie', 'custom_url' => 'Własny link', 'none' => 'Brak CTA']],
+                    ['key' => 'spolszczony_catalog|cta_text', 'label' => 'Tekst CTA', 'type' => 'text', 'default' => 'Zapytaj o warunki handlowe'],
+                    ['key' => 'spolszczony_catalog|custom_url', 'label' => 'Własny link CTA', 'type' => 'text', 'default' => '', 'hint' => 'Używany tylko przy trybie "Własny link"'],
+                    ['key' => 'spolszczony_catalog|hidden_price_text', 'label' => 'Tekst zamiast ceny', 'type' => 'text', 'default' => 'Cena dostępna po zalogowaniu lub po kontakcie z obsługą.'],
+                    ['key' => 'spolszczony_catalog|single_notice', 'label' => 'Komunikat na stronie produktu', 'type' => 'textarea', 'default' => 'Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B.'],
+                    ['key' => 'spolszczony_catalog|loop_notice', 'label' => 'Komunikat na listingach', 'type' => 'text', 'default' => 'Zobacz warunki handlowe'],
                 ],
             ],
 
@@ -800,6 +820,7 @@ final class ModulesPage implements HasHooks
                 'power_supply' => false,
                 'double_opt_in' => false,
                 'request_quote' => false,
+                'catalog_mode' => false,
                 'wpdesk_integration' => true,
                 'payment_integration' => true,
             ];

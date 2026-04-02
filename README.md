@@ -33,7 +33,9 @@ Spolszczony is a comprehensive compliance plugin that makes your WooCommerce sto
 
 ### Sales & B2B
 - **Request a Quote** — native B2B quote workflow with per-product activation
+- **Catalog Mode** — native hidden-price and no-purchase mode for B2B, wholesale and dealer flows
 - **Quote-only products** — replace add-to-cart with an enquiry flow for selected products
+- **Audience targeting** — guests only, all logged-in users, or selected WordPress roles
 - **Company and NIP capture** — Polish-market lead form fields for business customers
 - **Quote request inbox** — admin page to review and update lead statuses
 

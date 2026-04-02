@@ -98,6 +98,22 @@ return [
         'customer_email_enabled' => true,
     ],
 
+    // Catalog mode.
+    'spolszczony_catalog' => [
+        'enabled' => false,
+        'availability' => 'selected',
+        'audience' => 'guests_only',
+        'selected_roles' => '',
+        'hide_prices' => true,
+        'hide_add_to_cart' => true,
+        'replacement_mode' => 'quote',
+        'cta_text' => 'Zapytaj o warunki handlowe',
+        'custom_url' => '',
+        'hidden_price_text' => 'Cena dostępna po zalogowaniu lub po kontakcie z obsługą.',
+        'single_notice' => 'Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B.',
+        'loop_notice' => 'Zobacz warunki handlowe',
+    ],
+
     // Food module.
     'spolszczony_food' => [
         'enabled' => false,

@@ -43,8 +43,28 @@ final class ElementorCompat implements HasHooks
      */
     public function registerWidgets(\Elementor\Widgets_Manager $widgets): void
     {
-        // Widgets will be registered here when implemented.
-        // Each widget extends \Elementor\Widget_Base and renders
-        // the same output as the corresponding Spolszczony shortcode.
+        $widgetClasses = [
+            Elementor\Widgets\UnitPriceWidget::class,
+            Elementor\Widgets\OmnibusPriceWidget::class,
+            Elementor\Widgets\TaxInfoWidget::class,
+            Elementor\Widgets\ShippingNoticeWidget::class,
+            Elementor\Widgets\DeliveryTimeWidget::class,
+            Elementor\Widgets\ManufacturerWidget::class,
+            Elementor\Widgets\SafetyDocsWidget::class,
+            Elementor\Widgets\SafetyInstructionsWidget::class,
+            Elementor\Widgets\PowerSupplyWidget::class,
+            Elementor\Widgets\DefectDescriptionWidget::class,
+            Elementor\Widgets\IngredientsWidget::class,
+            Elementor\Widgets\AllergensWidget::class,
+            Elementor\Widgets\NutrientsWidget::class,
+            Elementor\Widgets\NutriScoreWidget::class,
+            Elementor\Widgets\FoodInfoWidget::class,
+        ];
+
+        foreach ($widgetClasses as $className) {
+            if (class_exists($className)) {
+                $widgets->register(new $className());
+            }
+        }
     }
 }

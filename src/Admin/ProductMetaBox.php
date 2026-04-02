@@ -182,6 +182,44 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
+        // --- Catalog Mode Section ---
+        echo '<div class="options_group">';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Catalog Mode', 'spolszczony') . '</h4>';
+
+        woocommerce_wp_checkbox([
+            'id' => '_spolszczony_catalog_enabled',
+            'label' => __('Enable catalog mode', 'spolszczony'),
+            'description' => __('Apply catalog mode to this product even if the module is limited to selected products.', 'spolszczony'),
+        ]);
+
+        woocommerce_wp_checkbox([
+            'id' => '_spolszczony_catalog_hide_price',
+            'label' => __('Hide price', 'spolszczony'),
+            'description' => __('Hide price display for this product when catalog mode is active.', 'spolszczony'),
+        ]);
+
+        woocommerce_wp_checkbox([
+            'id' => '_spolszczony_catalog_hide_cart',
+            'label' => __('Hide add to cart', 'spolszczony'),
+            'description' => __('Disable direct purchase for this product when catalog mode is active.', 'spolszczony'),
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_spolszczony_catalog_message',
+            'label' => __('Catalog mode message', 'spolszczony'),
+            'description' => __('Optional product-specific message shown instead of the default catalog mode notice.', 'spolszczony'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_spolszczony_catalog_cta_text',
+            'label' => __('Catalog mode CTA text', 'spolszczony'),
+            'description' => __('Optional product-specific CTA label.', 'spolszczony'),
+            'desc_tip' => true,
+        ]);
+
+        echo '</div>';
+
         echo '</div>';
     }
 
@@ -206,6 +244,11 @@ final class ProductMetaBox implements HasHooks
             '_spolszczony_quote_only' => 'checkbox',
             '_spolszczony_quote_min_qty' => 'float',
             '_spolszczony_quote_button_text' => 'string',
+            '_spolszczony_catalog_enabled' => 'checkbox',
+            '_spolszczony_catalog_hide_price' => 'checkbox',
+            '_spolszczony_catalog_hide_cart' => 'checkbox',
+            '_spolszczony_catalog_message' => 'string',
+            '_spolszczony_catalog_cta_text' => 'string',
         ];
 
         foreach ($fields as $key => $type) {

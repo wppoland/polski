@@ -23,6 +23,7 @@ use Spolszczony\Rest\WithdrawalController;
 use Spolszczony\Service\QuoteService;
 use Spolszczony\Service\WithdrawalService;
 use Spolszczony\Service\CheckboxService;
+use Spolszczony\Service\CatalogModeService;
 use Spolszczony\Service\ContractService;
 use Spolszczony\Service\DoubleOptInService;
 use Spolszczony\Service\EmailService;
@@ -42,14 +43,24 @@ return [
     CheckboxService::class,
     OmnibusService::class,
     ContractService::class,
+    CatalogModeService::class,
     DoubleOptInService::class,
     EmailService::class,
     DisputeResolutionService::class,
     QuoteService::class,
 
+    // Store API / Block checkout.
+    \Spolszczony\Block\StoreApi\ProductDataExtension::class,
+    \Spolszczony\Block\StoreApi\CheckoutValidation::class,
+
     // Integrations and compatibility.
     IntegrationManager::class,
     ElementorCompat::class,
+    \Spolszczony\Compatibility\DynamicPricingCompat::class,
+    \Spolszczony\Compatibility\ProductBundlesCompat::class,
+    \Spolszczony\Compatibility\SubscriptionsCompat::class,
+    \Spolszczony\Compatibility\CartFlowsCompat::class,
+    \Spolszczony\Compatibility\GoogleCompat::class,
 
     // Admin (taxonomies + meta boxes + utilities).
     PostTypes::class,

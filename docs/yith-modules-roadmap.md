@@ -22,7 +22,7 @@ That means:
 | YITH plugin | Coverage target in Spolszczony | Status |
 |--------|--------|--------|
 | Request a Quote | Native quote workflow, quote-only products, B2B lead capture, admin inbox, privacy consent | covered |
-| WooCommerce Catalog Mode | Native catalogue-only mode, hidden prices, role/customer rules, quote pairing | planned |
+| WooCommerce Catalog Mode | Native catalogue-only mode, hidden prices, role/customer rules, quote pairing | covered |
 | WooCommerce Ajax Search | Native fast AJAX search, SKU support, result templates, mobile search UX | planned |
 | WooCommerce Ajax Product Filter | Native layered filtering with attributes, taxonomies, stock, price, AJAX updates | planned |
 | WooCommerce Wishlist | Native wishlist with guest/user support and account integration | planned |
@@ -68,7 +68,7 @@ Implement first because these features directly help Polish stores close manual 
    Native module implemented in this iteration.
    Polish extension: company, phone, NIP, postcode, consent logging, product-level quote-only mode.
 2. `Catalog Mode`
-   Best paired with quote requests for hidden-price or dealer-only catalogues.
+   Implemented as a native B2B catalogue mode with audience targeting, hidden prices, disabled cart and quote/login/custom CTA.
 3. `Ajax Search`
    High impact on product discovery, should stay lightweight and cache-friendly.
 4. `Ajax Product Filter`
