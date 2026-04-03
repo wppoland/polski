@@ -1,0 +1,47 @@
+.polski-compare {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.polski-compare-link {
+    font-size: 13px;
+}
+
+.polski-compare-button.is-active {
+    opacity: .85;
+}
+
+.polski-compare-account__header,
+.polski-compare-actions,
+.polski-compare-product__actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.polski-compare-table-wrapper {
+    overflow-x: auto;
+}
+
+.polski-compare-table {
+    min-width: 720px;
+}
+
+.polski-compare-table .is-different th,
+.polski-compare-table .is-different td {
+    background: rgba(255, 214, 10, .12);
+}
+
+.polski-compare-product {
+    min-width: 220px;
+}
+
+.polski-compare-product__name {
+    display: block;
+    margin-top: 8px;
+}

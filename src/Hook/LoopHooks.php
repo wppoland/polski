@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Service\PriceDisplayService;
-use Spolszczony\Shopmark\Location;
-use Spolszczony\Shopmark\Shopmark;
-use Spolszczony\Shopmark\ShopmarkManager;
-use Spolszczony\Util\TemplateLoader;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Service\PriceDisplayService;
+use Polski\Service\ProductInfoService;
+use Polski\Shopmark\Location;
+use Polski\Shopmark\Shopmark;
+use Polski\Shopmark\ShopmarkManager;
+use Polski\Util\TemplateLoader;
 
 /**
  * Registers shopmarks for product archive/loop pages.
@@ -19,6 +20,7 @@ final class LoopHooks implements Bootable, HasHooks
 {
     public function __construct(
         private readonly PriceDisplayService $priceDisplay,
+        private readonly ProductInfoService $productInfo,
         private readonly ShopmarkManager $shopmarks,
         private readonly TemplateLoader $templateLoader,
     ) {
@@ -50,6 +52,14 @@ final class LoopHooks implements Bootable, HasHooks
             hookName: 'woocommerce_after_shop_loop_item_title',
             priority: 16,
             callback: fn () => $this->renderOmnibusPrice(),
+        ));
+
+        $this->shopmarks->register(new Shopmark(
+            id: 'loop_brand',
+            location: Location::Loop,
+            hookName: 'woocommerce_after_shop_loop_item_title',
+            priority: 14,
+            callback: fn () => $this->renderBrand(),
         ));
     }
 
@@ -93,6 +103,30 @@ final class LoopHooks implements Bootable, HasHooks
         if ($html !== '') {
             $this->templateLoader->include('loop/omnibus-price', [
                 'omnibus_price_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderBrand(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $settings = get_option('polski_brand', []);
+
+        if (is_array($settings) && ! ($settings['show_on_loop'] ?? true)) {
+            return;
+        }
+
+        $html = $this->productInfo->getBrandHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('loop/brand', [
+                'brand_html' => $html,
                 'product' => $product,
             ]);
         }

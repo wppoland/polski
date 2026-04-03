@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony;
+namespace Polski;
 
 /**
  * Versioned database migration runner.
@@ -44,7 +44,7 @@ final class Migrator
              *
              * @param string $version The migration version.
              */
-            do_action('spolszczony/migrated', $version);
+            do_action('polski/migrated', $version);
         }
     }
 
@@ -57,7 +57,7 @@ final class Migrator
     {
         global $wpdb;
 
-        $table = $wpdb->prefix . 'spolszczony_migrations';
+        $table = $wpdb->prefix . 'polski_migrations';
 
         // Table might not exist during first activation.
         $tableExists = $wpdb->get_var(
@@ -80,7 +80,7 @@ final class Migrator
         global $wpdb;
 
         $wpdb->insert(
-            $wpdb->prefix . 'spolszczony_migrations',
+            $wpdb->prefix . 'polski_migrations',
             [
                 'version' => $version,
                 'executed_at' => current_time('mysql', true),
@@ -109,7 +109,7 @@ final class Migrator
         sort($files);
 
         foreach ($files as $file) {
-            $className = 'Spolszczony\\Migration\\' . basename($file, '.php');
+            $className = 'Polski\\Migration\\' . basename($file, '.php');
 
             if (class_exists($className)) {
                 $this->migrations[] = $className;

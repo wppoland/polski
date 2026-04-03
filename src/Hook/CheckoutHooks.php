@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\CheckboxContext;
-use Spolszczony\Model\LegalCheckbox;
-use Spolszczony\Repository\ConsentLogRepository;
-use Spolszczony\Service\CheckboxService;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Enum\CheckboxContext;
+use Polski\Repository\ConsentLogRepository;
+use Polski\Service\CheckboxService;
+use Polski\Util\TemplateLoader;
+
+use const Polski\PLUGIN_FILE;
+use const Polski\VERSION;
 
 /**
  * Checkout modifications: legal checkboxes, order button text, consent logging.
@@ -19,6 +22,7 @@ final class CheckoutHooks implements Bootable, HasHooks
     public function __construct(
         private readonly CheckboxService $checkboxes,
         private readonly ConsentLogRepository $consentLog,
+        private readonly TemplateLoader $templates,
     ) {
     }
 
@@ -52,6 +56,37 @@ final class CheckoutHooks implements Bootable, HasHooks
 
         // Store checkbox states in order meta.
         add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
+
+        // AJAX fragment refresh for conditional checkboxes.
+        add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
+
+        // Enqueue frontend checkout JS.
+        add_action('wp_enqueue_scripts', [$this, 'enqueueCheckoutAssets']);
+    }
+
+    /**
+     * Enqueue checkout assets on checkout, pay-for-order, and registration pages.
+     */
+    public function enqueueCheckoutAssets(): void
+    {
+        if (! function_exists('is_checkout') || (! is_checkout() && ! is_account_page())) {
+            return;
+        }
+
+        wp_enqueue_style(
+            'polski-frontend',
+            plugins_url('assets/css/frontend.css', PLUGIN_FILE),
+            [],
+            VERSION,
+        );
+
+        wp_enqueue_script(
+            'polski-checkout',
+            plugins_url('build/frontend-checkout.js', PLUGIN_FILE),
+            ['jquery'],
+            VERSION,
+            true,
+        );
     }
 
     /**
@@ -59,7 +94,7 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function filterOrderButtonText(string $text): string
     {
-        $settings = get_option('spolszczony_checkout', []);
+        $settings = get_option('polski_checkout', []);
         $customText = is_array($settings) ? ($settings['order_button_text'] ?? '') : '';
 
         if ($customText !== '') {
@@ -71,7 +106,7 @@ final class CheckoutHooks implements Bootable, HasHooks
          *
          * @param string $text The button text.
          */
-        return (string) apply_filters('spolszczony/checkout/order_button_text', $text);
+        return (string) apply_filters('polski/checkout/order_button_text', $text);
     }
 
     /**
@@ -79,7 +114,13 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function renderCheckoutCheckboxes(): void
     {
-        $this->renderCheckboxes(CheckboxContext::Checkout);
+        $cartContext = $this->buildCartContext();
+        $checkboxes = $this->checkboxes->getForContext(CheckboxContext::Checkout, $cartContext);
+
+        $this->templates->include('checkout/legal-checkboxes', [
+            'checkboxes' => $checkboxes,
+            'context' => CheckboxContext::Checkout,
+        ]);
     }
 
     /**
@@ -87,7 +128,12 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function renderRegistrationCheckboxes(): void
     {
-        $this->renderCheckboxes(CheckboxContext::Registration);
+        $checkboxes = $this->checkboxes->getForContext(CheckboxContext::Registration);
+
+        $this->templates->include('checkout/legal-checkboxes', [
+            'checkboxes' => $checkboxes,
+            'context' => CheckboxContext::Registration,
+        ]);
     }
 
     /**
@@ -95,7 +141,12 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function renderPayForOrderCheckboxes(): void
     {
-        $this->renderCheckboxes(CheckboxContext::PayForOrder);
+        $checkboxes = $this->checkboxes->getForContext(CheckboxContext::PayForOrder);
+
+        $this->templates->include('checkout/legal-checkboxes', [
+            'checkboxes' => $checkboxes,
+            'context' => CheckboxContext::PayForOrder,
+        ]);
     }
 
     /**
@@ -156,7 +207,7 @@ final class CheckoutHooks implements Bootable, HasHooks
          * @param array<string, bool> $states  The checkbox states.
          * @param \WC_Order           $order   The order.
          */
-        do_action('spolszczony/checkout/consents_logged', $states, $order);
+        do_action('polski/checkout/consents_logged', $states, $order);
     }
 
     /**
@@ -168,65 +219,86 @@ final class CheckoutHooks implements Bootable, HasHooks
         $states = $this->checkboxes->extractStates(CheckboxContext::Checkout, $_POST);
 
         if (! empty($states)) {
-            $order->update_meta_data('_spolszczony_checkboxes_accepted', $states);
+            $order->update_meta_data('_polski_checkboxes_accepted', $states);
         }
     }
 
     /**
-     * Render checkboxes for a given context.
+     * Refresh checkbox fragments on order review AJAX update.
+     *
+     * This allows conditional checkboxes (e.g., digital_waiver for downloadable
+     * products) to appear/disappear when cart contents or payment method changes.
+     *
+     * @param array<string, string> $fragments
+     * @return array<string, string>
      */
-    private function renderCheckboxes(CheckboxContext $context): void
+    public function refreshCheckboxFragments(array $fragments): array
     {
-        $checkboxes = $this->checkboxes->getForContext($context);
+        $cartContext = $this->buildCartContext();
+        $checkboxes = $this->checkboxes->getForContext(CheckboxContext::Checkout, $cartContext);
 
-        if (empty($checkboxes)) {
-            return;
-        }
+        $html = $this->templates->render('checkout/legal-checkboxes', [
+            'checkboxes' => $checkboxes,
+            'context' => CheckboxContext::Checkout,
+        ]);
 
-        echo '<div class="spolszczony-legal-checkboxes">';
+        $fragments['.polski-legal-checkboxes'] = $html;
 
-        foreach ($checkboxes as $checkbox) {
-            $this->renderSingleCheckbox($checkbox);
-        }
-
-        echo '</div>';
+        return $fragments;
     }
 
     /**
-     * Render a single checkbox field.
+     * Build cart context array for conditional checkbox display.
+     *
+     * @return array<string, mixed>
      */
-    private function renderSingleCheckbox(LegalCheckbox $checkbox): void
+    private function buildCartContext(): array
     {
-        $fieldName = 'spolszczony_checkbox_' . $checkbox->id;
-        $required = $checkbox->isRequired();
+        $context = [
+            'category_ids' => [],
+            'country' => '',
+            'payment_method' => '',
+            'product_types' => [],
+        ];
 
-        printf(
-            '<p class="form-row spolszczony-checkbox spolszczony-checkbox--%s %s">',
-            esc_attr($checkbox->id),
-            $required ? 'validate-required' : '',
-        );
+        if (! function_exists('WC') || WC()->cart === null) {
+            return $context;
+        }
 
-        printf(
-            '<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
-                       name="%s" id="%s" value="1" %s />
-                <span class="woocommerce-terms-and-conditions-checkbox-text">%s</span>
-                %s
-            </label>',
-            esc_attr($fieldName),
-            esc_attr($fieldName),
-            $required ? 'required' : '',
-            wp_kses(
-                $checkbox->label,
-                [
-                    'a' => ['href' => [], 'target' => [], 'rel' => [], 'class' => []],
-                    'strong' => [],
-                    'em' => [],
-                ],
-            ),
-            $required ? '<abbr class="required" title="' . esc_attr__('required', 'spolszczony') . '">*</abbr>' : '',
-        );
+        $cart = WC()->cart;
 
-        echo '</p>';
+        foreach ($cart->get_cart() as $item) {
+            $product = $item['data'] ?? null;
+            if (! $product instanceof \WC_Product) {
+                continue;
+            }
+
+            // Collect category IDs.
+            $categoryIds = $product->get_category_ids();
+            $context['category_ids'] = array_unique(array_merge($context['category_ids'], $categoryIds));
+
+            // Collect product types.
+            if ($product->is_downloadable()) {
+                $context['product_types'][] = 'downloadable';
+            }
+            if ($product->is_virtual()) {
+                $context['product_types'][] = 'virtual';
+            }
+            $context['product_types'][] = $product->get_type();
+        }
+
+        $context['product_types'] = array_unique($context['product_types']);
+
+        // Billing country.
+        $customer = WC()->customer;
+        if ($customer !== null) {
+            $context['country'] = $customer->get_billing_country();
+        }
+
+        // Selected payment method.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $context['payment_method'] = sanitize_key($_POST['payment_method'] ?? '');
+
+        return $context;
     }
 }

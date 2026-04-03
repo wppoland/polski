@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 final class DeliveryTimeWidget extends BaseProductWidget
 {
     public function get_name(): string
     {
-        return 'spolszczony-delivery-time';
+        return 'polski-delivery-time';
     }
 
     public function get_title(): string
@@ -24,7 +24,7 @@ final class DeliveryTimeWidget extends BaseProductWidget
     {
         $product = $this->getProduct();
         if ($product === null) { return; }
-        $html = $this->container()->get(\Spolszczony\Service\\DeliveryTimeService::class)->getDeliveryTimeHtml($product);
+        $html = $this->container()->get(\Polski\Service\DeliveryTimeService::class)->getDeliveryTimeHtml($product);
 
         if ($html !== '') {
             echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Enum;
+namespace Polski\Enum;
 
 enum DeliveryTimeUnit: string
 {
@@ -14,15 +14,15 @@ enum DeliveryTimeUnit: string
     {
         return match ($this) {
             self::Days => sprintf(
-                _n('%d day', '%d days', $count, 'spolszczony'),
+                _n('%d day', '%d days', $count, 'polski'),
                 $count,
             ),
             self::BusinessDays => sprintf(
-                _n('%d business day', '%d business days', $count, 'spolszczony'),
+                _n('%d business day', '%d business days', $count, 'polski'),
                 $count,
             ),
             self::Weeks => sprintf(
-                _n('%d week', '%d weeks', $count, 'spolszczony'),
+                _n('%d week', '%d weeks', $count, 'polski'),
                 $count,
             ),
         };

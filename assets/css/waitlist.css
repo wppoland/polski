@@ -1,0 +1,22 @@
+.polski-waitlist {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+.polski-waitlist-form {
+    display: grid;
+    gap: 12px;
+}
+
+.polski-waitlist__privacy {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.polski-waitlist__message {
+    margin: 0;
+}

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Repository;
+namespace Polski\Repository;
 
-use Spolszczony\Enum\QuoteRequestStatus;
-use Spolszczony\Model\QuoteRequest;
+use Polski\Enum\QuoteRequestStatus;
+use Polski\Model\QuoteRequest;
 use wpdb;
 
 /**
@@ -20,7 +20,7 @@ final class QuoteRequestRepository
 
     public function tableName(): string
     {
-        return $this->wpdb->prefix . 'spolszczony_quote_requests';
+        return $this->wpdb->prefix . 'polski_quote_requests';
     }
 
     /**

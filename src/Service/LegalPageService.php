@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Enum\LegalPageType;
+use Polski\Enum\LegalPageType;
 
 /**
  * Manages legal pages: auto-creation, retrieval, and email attachment.
@@ -47,7 +47,7 @@ final class LegalPageService
 
         update_option($type->optionKey(), $pageId);
 
-        do_action('spolszczony/legal_page/created', $pageId, $type);
+        do_action('polski/legal_page/created', $pageId, $type);
 
         return $pageId;
     }
@@ -118,7 +118,7 @@ final class LegalPageService
      */
     public function getEmailAttachments(): array
     {
-        $settings = get_option('spolszczony_emails', []);
+        $settings = get_option('polski_emails', []);
         if (! is_array($settings)) {
             $settings = [];
         }
@@ -151,26 +151,26 @@ final class LegalPageService
          *
          * @param array<string, string> $attachments Page type => content map.
          */
-        return (array) apply_filters('spolszczony/email/legal_attachments', $attachments);
+        return (array) apply_filters('polski/email/legal_attachments', $attachments);
     }
 
     private function getDefaultTitle(LegalPageType $type): string
     {
         return match ($type) {
-            LegalPageType::Terms => __('Terms and Conditions', 'spolszczony'),
-            LegalPageType::Privacy => __('Privacy Policy', 'spolszczony'),
-            LegalPageType::Returns => __('Return and Withdrawal Policy', 'spolszczony'),
-            LegalPageType::Complaints => __('Complaints', 'spolszczony'),
+            LegalPageType::Terms => __('Regulamin', 'polski'),
+            LegalPageType::Privacy => __('Polityka prywatności', 'polski'),
+            LegalPageType::Returns => __('Prawo odstąpienia od umowy', 'polski'),
+            LegalPageType::Complaints => __('Reklamacje', 'polski'),
         };
     }
 
     private function getDefaultContent(LegalPageType $type): string
     {
         return match ($type) {
-            LegalPageType::Terms => '<!-- ' . __('Please fill in your Terms and Conditions (Regulamin sklepu).', 'spolszczony') . ' -->',
-            LegalPageType::Privacy => '<!-- ' . __('Please fill in your Privacy Policy (Polityka prywatnosci).', 'spolszczony') . ' -->',
-            LegalPageType::Returns => '<!-- ' . __('Please fill in your Return and Withdrawal Policy (Prawo odstapienia od umowy). Consumers have 14 days to withdraw.', 'spolszczony') . ' -->',
-            LegalPageType::Complaints => '<!-- ' . __('Please fill in your Complaints procedure (Reklamacje).', 'spolszczony') . ' -->',
+            LegalPageType::Terms => '<!-- ' . __('Proszę uzupełnić Regulamin sklepu.', 'polski') . ' -->',
+            LegalPageType::Privacy => '<!-- ' . __('Please fill in your Privacy Policy (Polityka prywatności).', 'polski') . ' -->',
+            LegalPageType::Returns => '<!-- ' . __('Please fill in your Return and Withdrawal Policy (Prawo odstąpienia od umowy). Consumers have 14 days to withdraw.', 'polski') . ' -->',
+            LegalPageType::Complaints => '<!-- ' . __('Proszę uzupełnić procedurę reklamacyjną.', 'polski') . ' -->',
         };
     }
 }

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 final class ManufacturerWidget extends BaseProductWidget
 {
     public function get_name(): string
     {
-        return 'spolszczony-manufacturer';
+        return 'polski-manufacturer';
     }
 
     public function get_title(): string
@@ -24,7 +24,7 @@ final class ManufacturerWidget extends BaseProductWidget
     {
         $product = $this->getProduct();
         if ($product === null) { return; }
-        $html = $this->container()->get(\Spolszczony\Service\\ProductInfoService::class)->getManufacturerHtml($product);
+        $html = $this->container()->get(\Polski\Service\ProductInfoService::class)->getManufacturerHtml($product);
 
         if ($html !== '') {
             echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

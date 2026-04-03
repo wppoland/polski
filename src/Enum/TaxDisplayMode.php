@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Enum;
+namespace Polski\Enum;
 
 enum TaxDisplayMode: string
 {
@@ -12,8 +12,8 @@ enum TaxDisplayMode: string
     public function label(): string
     {
         return match ($this) {
-            self::Brutto => __('Prices include VAT (brutto)', 'spolszczony'),
-            self::Netto => __('Prices exclude VAT (netto)', 'spolszczony'),
+            self::Brutto => __('Ceny zawierają VAT (brutto)', 'polski'),
+            self::Netto => __('Ceny nie zawierają VAT (netto)', 'polski'),
         };
     }
 }

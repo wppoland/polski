@@ -1,0 +1,90 @@
+.polski-quick-view-trigger {
+    margin-top: 10px;
+}
+
+.polski-quick-view-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.polski-quick-view-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+}
+
+.polski-quick-view-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(960px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+    margin: 16px auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+}
+
+.polski-quick-view-close {
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    display: block;
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.polski-quick-view-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.1fr);
+    gap: 24px;
+}
+
+.polski-quick-view-main-image img,
+.polski-quick-view-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.polski-quick-view-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.polski-quick-view-summary > * + * {
+    margin-top: 12px;
+}
+
+.polski-quick-view-meta__label {
+    font-weight: 600;
+}
+
+.polski-quick-view-link {
+    margin-top: 8px;
+}
+
+body.polski-quick-view-open {
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .polski-quick-view-dialog {
+        width: calc(100vw - 16px);
+        max-height: calc(100vh - 16px);
+        margin: 8px auto;
+        padding: 16px;
+    }
+
+    .polski-quick-view-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Contract;
+namespace Polski\Contract;
 
 /**
  * Strategy interface for modifying how prices are displayed.

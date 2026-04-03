@@ -5,7 +5,7 @@
  * @var string      $delivery_time_html The formatted delivery time HTML.
  * @var WC_Product  $product            The product object.
  *
- * @package Spolszczony/Templates
+ * @package Polski/Templates
  */
 
 declare(strict_types=1);

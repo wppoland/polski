@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Email;
+namespace Polski\Email;
 
-use Spolszczony\Model\WithdrawalRequest;
+use Polski\Model\WithdrawalRequest;
 
 /**
  * Email sent to the customer when a withdrawal request is confirmed.
@@ -13,13 +13,23 @@ class WithdrawalConfirmationEmail extends \WC_Email
 {
     public ?WithdrawalRequest $request = null;
 
+    /**
+     * @return array<string, mixed>
+     */
+    private function getWithdrawalSettings(): array
+    {
+        $settings = get_option('polski_withdrawal', []);
+
+        return is_array($settings) ? $settings : [];
+    }
+
     public function __construct()
     {
-        $this->id = 'spolszczony_withdrawal_confirmation';
+        $this->id = 'polski_withdrawal_confirmation';
         $this->customer_email = true;
-        $this->title = __('Withdrawal Confirmation', 'spolszczony');
-        $this->description = __('Sent to the customer when their withdrawal request is confirmed.', 'spolszczony');
-        $this->template_base = \Spolszczony\PLUGIN_DIR . '/templates/';
+        $this->title = __('Potwierdzenie odstąpienia', 'polski');
+        $this->description = __('Ta wiadomość trafi do Twojego klienta z miłą informacją, gdy tylko zatwierdzisz jego zwrot.', 'polski');
+        $this->template_base = \Polski\PLUGIN_DIR . '/templates/';
         $this->template_html = 'emails/withdrawal-confirmation.php';
         $this->template_plain = 'emails/plain/withdrawal-confirmation.php';
         $this->placeholders = [
@@ -29,7 +39,7 @@ class WithdrawalConfirmationEmail extends \WC_Email
         ];
 
         // Trigger on withdrawal confirmed action.
-        add_action('spolszczony/withdrawal/confirmed', [$this, 'trigger']);
+        add_action('polski/withdrawal/confirmed', [$this, 'trigger']);
 
         parent::__construct();
     }
@@ -68,12 +78,12 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_subject(): string
     {
-        return __('Your withdrawal request for order #{order_number} has been confirmed', 'spolszczony');
+        return (string) ($this->getWithdrawalSettings()['email_subject'] ?? __('Dobra wiadomość! Twój wniosek o zwrot (zamówienie #{order_number}) został pomyślnie potwierdzony.', 'polski'));
     }
 
     public function get_default_heading(): string
     {
-        return __('Withdrawal Confirmed', 'spolszczony');
+        return (string) ($this->getWithdrawalSettings()['email_heading'] ?? __('Odstąpienie potwierdzone', 'polski'));
     }
 
     public function get_content_html(): string
@@ -114,6 +124,6 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_additional_content(): string
     {
-        return __('Your refund will be processed within 14 days from the date we receive the returned items.', 'spolszczony');
+        return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? __('Zwrot środków zostanie zrealizowany w ciągu 14 dni od daty otrzymania zwróconych produktów.', 'polski'));
     }
 }

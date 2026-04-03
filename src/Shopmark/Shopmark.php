@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Shopmark;
+namespace Polski\Shopmark;
 
 /**
  * A display element definition (e.g., unit price badge, delivery time notice).

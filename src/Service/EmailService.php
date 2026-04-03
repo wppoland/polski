@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\LegalPageType;
+use Polski\Contract\HasHooks;
+use Polski\Enum\LegalPageType;
 
 /**
  * Manages email enhancements: legal page attachments, custom email registration.
@@ -22,15 +22,15 @@ final class EmailService implements HasHooks
     }
 
     /**
-     * Register Spolszczony email classes.
+     * Register Polski email classes.
      *
      * @param array<string, \WC_Email> $emails
      * @return array<string, \WC_Email>
      */
     public function registerEmails(array $emails): array
     {
-        $emails['spolszczony_withdrawal_confirmation'] = new \Spolszczony\Email\WithdrawalConfirmationEmail();
-        $emails['spolszczony_double_opt_in'] = new \Spolszczony\Email\DoubleOptInEmail();
+        $emails['polski_withdrawal_confirmation'] = new \Polski\Email\WithdrawalConfirmationEmail();
+        $emails['polski_double_opt_in'] = new \Polski\Email\DoubleOptInEmail();
 
         return $emails;
     }
@@ -56,7 +56,7 @@ final class EmailService implements HasHooks
             return;
         }
 
-        $legalService = \Spolszczony\Plugin::instance()->container()->get(LegalPageService::class);
+        $legalService = \Polski\Plugin::instance()->container()->get(LegalPageService::class);
         $attachments = $legalService->getEmailAttachments();
 
         if (empty($attachments)) {
@@ -76,14 +76,14 @@ final class EmailService implements HasHooks
                 echo $content . "\n";
             }
         } else {
-            echo '<div class="spolszczony-email-legal-attachments" style="margin-top:30px;padding-top:20px;border-top:1px solid #e0e0e0;">';
+            echo '<div class="polski-email-legal-attachments" style="margin-top:30px;padding-top:20px;border-top:1px solid #e0e0e0;">';
 
             foreach ($attachments as $type => $content) {
                 $pageType = LegalPageType::tryFrom($type);
                 $label = $pageType?->label() ?? $type;
 
                 printf(
-                    '<div class="spolszczony-email-legal-attachment" style="margin-bottom:20px;"><h3 style="font-size:14px;margin-bottom:10px;">%s</h3><div style="font-size:12px;line-height:1.5;color:#666;">%s</div></div>',
+                    '<div class="polski-email-legal-attachment" style="margin-bottom:20px;"><h3 style="font-size:14px;margin-bottom:10px;">%s</h3><div style="font-size:12px;line-height:1.5;color:#666;">%s</div></div>',
                     esc_html($label),
                     wp_kses_post(nl2br($content)),
                 );

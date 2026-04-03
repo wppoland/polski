@@ -1,0 +1,84 @@
+.polski-addons {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+.polski-addons > * + * {
+    margin-top: 12px;
+}
+
+.polski-addon-field {
+    display: grid;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.polski-addons--boxed .polski-addon-field {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+}
+
+.polski-addons--minimal .polski-addon-field {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.polski-addon-field__header,
+.polski-addon-field__title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.polski-addon-field__title-wrap {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.polski-addon-field__title {
+    font-size: 14px;
+}
+
+.polski-addon-field__badge,
+.polski-addon-field__price {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.polski-addon-field__badge {
+    background: rgba(0, 0, 0, .06);
+}
+
+.polski-addon-field__price {
+    background: rgba(16, 124, 65, .1);
+    color: #107c41;
+    font-weight: 600;
+}
+
+.polski-addon-field__description {
+    margin: 0;
+    color: rgba(0, 0, 0, .68);
+    font-size: 13px;
+}
+
+.polski-addon-field__checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.polski-addon-field input[type="text"],
+.polski-addon-field select,
+.polski-addon-field textarea {
+    width: 100%;
+}

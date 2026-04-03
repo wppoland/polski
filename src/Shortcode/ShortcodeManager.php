@@ -2,20 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Shortcode;
+namespace Polski\Shortcode;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Plugin;
-use Spolszczony\Service\DeliveryTimeService;
-use Spolszczony\Service\FoodService;
-use Spolszczony\Service\LegalPageService;
-use Spolszczony\Service\PriceDisplayService;
-use Spolszczony\Service\ProductInfoService;
-use Spolszczony\Service\WithdrawalService;
-use Spolszczony\Util\TemplateLoader;
+use Polski\Contract\HasHooks;
+use Polski\Plugin;
+use Polski\Service\DeliveryTimeService;
+use Polski\Service\FoodService;
+use Polski\Service\LegalPageService;
+use Polski\Service\PriceDisplayService;
+use Polski\Service\ProductInfoService;
+use Polski\Service\WithdrawalService;
+use Polski\Service\CompareService;
+use Polski\Service\AffiliateService;
+use Polski\Service\GiftCardService;
+use Polski\Service\SubscriptionService;
+use Polski\Service\WishlistService;
+use Polski\Util\TemplateLoader;
 
 /**
- * Registers all Spolszczony shortcodes.
+ * Registers all Polski shortcodes.
  *
  * All shortcodes accept an optional `product` attribute to specify the product ID.
  * Without it, they use the global $product from the WooCommerce loop.
@@ -29,25 +34,30 @@ final class ShortcodeManager implements HasHooks
 
     public function registerShortcodes(): void
     {
-        add_shortcode('spolszczony_unit_price', [$this, 'unitPrice']);
-        add_shortcode('spolszczony_delivery_time', [$this, 'deliveryTime']);
-        add_shortcode('spolszczony_omnibus_price', [$this, 'omnibusPrice']);
-        add_shortcode('spolszczony_tax_notice', [$this, 'taxNotice']);
-        add_shortcode('spolszczony_shipping_notice', [$this, 'shippingNotice']);
-        add_shortcode('spolszczony_manufacturer', [$this, 'manufacturer']);
-        add_shortcode('spolszczony_safety_info', [$this, 'safetyInfo']);
-        add_shortcode('spolszczony_safety_docs', [$this, 'safetyDocs']);
-        add_shortcode('spolszczony_power_supply', [$this, 'powerSupply']);
-        add_shortcode('spolszczony_defect_description', [$this, 'defectDescription']);
-        add_shortcode('spolszczony_nutrients', [$this, 'nutrients']);
-        add_shortcode('spolszczony_allergens', [$this, 'allergens']);
-        add_shortcode('spolszczony_ingredients', [$this, 'ingredients']);
-        add_shortcode('spolszczony_nutri_score', [$this, 'nutriScore']);
-        add_shortcode('spolszczony_food_info', [$this, 'foodInfo']);
-        add_shortcode('spolszczony_withdrawal_form', [$this, 'withdrawalForm']);
-        add_shortcode('spolszczony_complaints', [$this, 'complaints']);
-        add_shortcode('spolszczony_payment_methods', [$this, 'paymentMethods']);
-        add_shortcode('spolszczony_small_business_notice', [$this, 'smallBusinessNotice']);
+        add_shortcode('polski_unit_price', [$this, 'unitPrice']);
+        add_shortcode('polski_delivery_time', [$this, 'deliveryTime']);
+        add_shortcode('polski_omnibus_price', [$this, 'omnibusPrice']);
+        add_shortcode('polski_tax_notice', [$this, 'taxNotice']);
+        add_shortcode('polski_shipping_notice', [$this, 'shippingNotice']);
+        add_shortcode('polski_manufacturer', [$this, 'manufacturer']);
+        add_shortcode('polski_safety_info', [$this, 'safetyInfo']);
+        add_shortcode('polski_safety_docs', [$this, 'safetyDocs']);
+        add_shortcode('polski_power_supply', [$this, 'powerSupply']);
+        add_shortcode('polski_defect_description', [$this, 'defectDescription']);
+        add_shortcode('polski_nutrients', [$this, 'nutrients']);
+        add_shortcode('polski_allergens', [$this, 'allergens']);
+        add_shortcode('polski_ingredients', [$this, 'ingredients']);
+        add_shortcode('polski_nutri_score', [$this, 'nutriScore']);
+        add_shortcode('polski_food_info', [$this, 'foodInfo']);
+        add_shortcode('polski_withdrawal_form', [$this, 'withdrawalForm']);
+        add_shortcode('polski_wishlist', [$this, 'wishlist']);
+        add_shortcode('polski_compare', [$this, 'compare']);
+        add_shortcode('polski_affiliate_dashboard', [$this, 'affiliateDashboard']);
+        add_shortcode('polski_gift_card_balance', [$this, 'giftCardBalance']);
+        add_shortcode('polski_subscriptions', [$this, 'subscriptions']);
+        add_shortcode('polski_complaints', [$this, 'complaints']);
+        add_shortcode('polski_payment_methods', [$this, 'paymentMethods']);
+        add_shortcode('polski_small_business_notice', [$this, 'smallBusinessNotice']);
     }
 
     /**
@@ -123,8 +133,8 @@ final class ShortcodeManager implements HasHooks
         }
 
         return sprintf(
-            '<div class="spolszczony-safety-instructions"><span class="spolszczony-safety-instructions__label">%s:</span> %s</div>',
-            esc_html__('Safety Instructions', 'spolszczony'),
+            '<div class="polski-safety-instructions"><span class="polski-safety-instructions__label">%s:</span> %s</div>',
+            esc_html__('Instrukcje bezpieczeństwa', 'polski'),
             esc_html($instructions),
         );
     }
@@ -215,18 +225,18 @@ final class ShortcodeManager implements HasHooks
         $orderId = (int) $atts['order_id'];
 
         if ($orderId <= 0) {
-            return '<p>' . esc_html__('Please provide an order ID.', 'spolszczony') . '</p>';
+            return '<p>' . esc_html__('Proszę podać numer zamówienia.', 'polski') . '</p>';
         }
 
         $order = wc_get_order($orderId);
         if (! $order instanceof \WC_Order) {
-            return '<p>' . esc_html__('Order not found.', 'spolszczony') . '</p>';
+            return '<p>' . esc_html__('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski') . '</p>';
         }
 
         $service = $this->container()->get(WithdrawalService::class);
 
         if (! $service->isEligible($order)) {
-            return '<p>' . esc_html__('This order is not eligible for withdrawal.', 'spolszczony') . '</p>';
+            return '<p>' . esc_html__('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski') . '</p>';
         }
 
         $templateLoader = $this->container()->get(TemplateLoader::class);
@@ -240,7 +250,7 @@ final class ShortcodeManager implements HasHooks
 
     public function complaints(array|string $atts = []): string
     {
-        $settings = get_option('spolszczony_general', []);
+        $settings = get_option('polski_general', []);
         $text = is_array($settings) ? ($settings['dispute_resolution_text'] ?? '') : '';
 
         if ($text === '') {
@@ -248,9 +258,34 @@ final class ShortcodeManager implements HasHooks
         }
 
         return sprintf(
-            '<div class="spolszczony-complaints"><p>%s</p></div>',
+            '<div class="polski-complaints"><p>%s</p></div>',
             wp_kses_post($text),
         );
+    }
+
+    public function wishlist(array|string $atts = []): string
+    {
+        return $this->container()->get(WishlistService::class)->renderWishlist();
+    }
+
+    public function compare(array|string $atts = []): string
+    {
+        return $this->container()->get(CompareService::class)->renderCompareTable();
+    }
+
+    public function affiliateDashboard(array|string $atts = []): string
+    {
+        return $this->container()->get(AffiliateService::class)->renderDashboard();
+    }
+
+    public function giftCardBalance(array|string $atts = []): string
+    {
+        return $this->container()->get(GiftCardService::class)->renderBalanceForm();
+    }
+
+    public function subscriptions(array|string $atts = []): string
+    {
+        return $this->container()->get(SubscriptionService::class)->renderSubscriptionsList();
     }
 
     public function paymentMethods(array|string $atts = []): string
@@ -270,17 +305,17 @@ final class ShortcodeManager implements HasHooks
         }
 
         return sprintf(
-            '<div class="spolszczony-payment-methods"><h4>%s</h4><ul>%s</ul></div>',
-            esc_html__('Available Payment Methods', 'spolszczony'),
+            '<div class="polski-payment-methods"><h4>%s</h4><ul>%s</ul></div>',
+            esc_html__('Dostępne metody płatności', 'polski'),
             $items,
         );
     }
 
     public function smallBusinessNotice(array|string $atts = []): string
     {
-        $settings = get_option('spolszczony_taxes', []);
+        $settings = get_option('polski_taxes', []);
         $notice = is_array($settings) ? ($settings['vat_exempt_notice'] ?? '') : '';
-        $isSmall = get_option('spolszczony_general', []);
+        $isSmall = get_option('polski_general', []);
         $isSmall = is_array($isSmall) && (bool) ($isSmall['small_business'] ?? false);
 
         if (! $isSmall || $notice === '') {
@@ -288,7 +323,7 @@ final class ShortcodeManager implements HasHooks
         }
 
         return sprintf(
-            '<div class="spolszczony-small-business-notice"><p>%s</p></div>',
+            '<div class="polski-small-business-notice"><p>%s</p></div>',
             esc_html($notice),
         );
     }
@@ -310,7 +345,7 @@ final class ShortcodeManager implements HasHooks
         return $product instanceof \WC_Product ? $product : null;
     }
 
-    private function container(): \Spolszczony\Container
+    private function container(): \Polski\Container
     {
         return Plugin::instance()->container();
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony;
+namespace Polski;
 
 /**
  * Handles plugin activation: creates custom tables, sets default options, runs migrations.
@@ -16,13 +16,13 @@ final class Activator
         self::runMigrations();
         self::scheduleEvents();
 
-        update_option('spolszczony_version', VERSION);
-        update_option('spolszczony_activated_at', time());
+        update_option('polski_version', VERSION);
+        update_option('polski_activated_at', time());
 
         /**
-         * Fires after Spolszczony is activated for the first time.
+         * Fires after Polski is activated for the first time.
          */
-        do_action('spolszczony/activated');
+        do_action('polski/activated');
 
         flush_rewrite_rules();
     }
@@ -35,7 +35,7 @@ final class Activator
 
         $sql = [
             // Omnibus directive price history.
-            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}spolszczony_price_history (
+            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}polski_price_history (
                 id BIGINT UNSIGNED AUTO_INCREMENT,
                 product_id BIGINT UNSIGNED NOT NULL,
                 price DECIMAL(19,4) NOT NULL,
@@ -49,7 +49,7 @@ final class Activator
             ) {$charsetCollate};",
 
             // Consent / legal checkbox log.
-            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}spolszczony_consent_log (
+            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}polski_consent_log (
                 id BIGINT UNSIGNED AUTO_INCREMENT,
                 user_id BIGINT UNSIGNED DEFAULT NULL,
                 session_id VARCHAR(64) DEFAULT NULL,
@@ -65,7 +65,7 @@ final class Activator
             ) {$charsetCollate};",
 
             // Withdrawal requests.
-            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}spolszczony_withdrawals (
+            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}polski_withdrawals (
                 id BIGINT UNSIGNED AUTO_INCREMENT,
                 order_id BIGINT UNSIGNED NOT NULL,
                 customer_id BIGINT UNSIGNED DEFAULT NULL,
@@ -81,7 +81,7 @@ final class Activator
             ) {$charsetCollate};",
 
             // Migration tracking.
-            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}spolszczony_migrations (
+            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}polski_migrations (
                 id INT UNSIGNED AUTO_INCREMENT,
                 version VARCHAR(20) NOT NULL,
                 executed_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -123,8 +123,8 @@ final class Activator
 
     private static function scheduleEvents(): void
     {
-        if (! wp_next_scheduled('spolszczony_daily_maintenance')) {
-            wp_schedule_event(time(), 'daily', 'spolszczony_daily_maintenance');
+        if (! wp_next_scheduled('polski_daily_maintenance')) {
+            wp_schedule_event(time(), 'daily', 'polski_daily_maintenance');
         }
     }
 }

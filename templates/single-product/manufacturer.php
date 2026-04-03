@@ -5,7 +5,7 @@
  * @var string      $manufacturer_html The formatted manufacturer HTML.
  * @var WC_Product  $product           The product object.
  *
- * @package Spolszczony/Templates
+ * @package Polski/Templates
  */
 
 declare(strict_types=1);

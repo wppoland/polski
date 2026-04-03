@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
+
+use Polski\Admin\ModulesPage;
 
 /**
  * Product information display: manufacturer, GPSR, safety docs, power supply, defect description.
@@ -14,7 +16,7 @@ final class ProductInfoService
      */
     public function getManufacturer(\WC_Product $product): string
     {
-        $terms = get_the_terms($product->get_id(), 'spolszczony_manufacturer');
+        $terms = get_the_terms($product->get_id(), 'polski_manufacturer');
 
         if (is_array($terms) && ! empty($terms)) {
             return $terms[0]->name;
@@ -35,9 +37,100 @@ final class ProductInfoService
         }
 
         return sprintf(
-            '<div class="spolszczony-manufacturer"><span class="spolszczony-manufacturer__label">%s:</span> <span class="spolszczony-manufacturer__name">%s</span></div>',
-            esc_html__('Manufacturer', 'spolszczony'),
+            '<div class="polski-manufacturer"><span class="polski-manufacturer__label">%s:</span> <span class="polski-manufacturer__name">%s</span></div>',
+            esc_html__('Producent', 'polski'),
             esc_html($name),
+        );
+    }
+
+    /**
+     * Get brand names for a product.
+     *
+     * @return list<string>
+     */
+    public function getBrands(\WC_Product $product): array
+    {
+        $terms = $this->getBrandTerms($product);
+
+        if (! is_array($terms) || $terms === []) {
+            return [];
+        }
+
+        $brands = [];
+
+        foreach ($terms as $term) {
+            if ($term instanceof \WP_Term) {
+                $brands[] = $term->name;
+            }
+        }
+
+        return $brands;
+    }
+
+    /**
+     * Get brand terms for a product.
+     *
+     * @return list<\WP_Term>
+     */
+    public function getBrandTerms(\WC_Product $product): array
+    {
+        $terms = get_the_terms($product->get_id(), 'polski_brand');
+
+        if (! is_array($terms) || $terms === []) {
+            return [];
+        }
+
+        return array_values(array_filter($terms, static fn ($term): bool => $term instanceof \WP_Term));
+    }
+
+    /**
+     * Get brand HTML for display.
+     */
+    public function getBrandHtml(\WC_Product $product): string
+    {
+        if (! ModulesPage::isModuleEnabled('brands')) {
+            return '';
+        }
+
+        $terms = $this->getBrandTerms($product);
+
+        if ($terms === []) {
+            return '';
+        }
+
+        $settings = get_option('polski_brand', []);
+        $label = is_array($settings) ? (string) ($settings['label'] ?? __('Marka', 'polski')) : __('Marka', 'polski');
+        $showLabel = ! is_array($settings) || (bool) ($settings['show_label'] ?? true);
+        $separator = is_array($settings) ? (string) ($settings['separator'] ?? ', ') : ', ';
+        $linkTerms = ! is_array($settings) || (bool) ($settings['link_terms'] ?? true);
+        $brandItems = [];
+
+        foreach ($terms as $term) {
+            $termName = esc_html($term->name);
+
+            if ($linkTerms) {
+                $termLink = get_term_link($term);
+
+                if (! is_wp_error($termLink)) {
+                    $brandItems[] = sprintf(
+                        '<a href="%s" class="polski-brand__link">%s</a>',
+                        esc_url($termLink),
+                        $termName,
+                    );
+                    continue;
+                }
+            }
+
+            $brandItems[] = sprintf(
+                '<span class="polski-brand__term">%s</span>',
+                $termName,
+            );
+        }
+
+        return sprintf(
+            '<div class="polski-brand">%s<span class="polski-brand__name">%s</span></div>',
+            $showLabel ? sprintf('<span class="polski-brand__label">%s:</span> ', esc_html($label)) : '',
+            implode(esc_html($separator), $brandItems),
         );
     }
 
@@ -46,7 +139,7 @@ final class ProductInfoService
      */
     public function getGPSRResponsible(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_gpsr_responsible', true);
+        return (string) $product->get_meta('_polski_gpsr_responsible', true);
     }
 
     /**
@@ -56,7 +149,7 @@ final class ProductInfoService
      */
     public function getSafetyDocuments(\WC_Product $product): array
     {
-        $raw = $product->get_meta('_spolszczony_safety_docs', true);
+        $raw = $product->get_meta('_polski_safety_docs', true);
 
         if (is_string($raw) && $raw !== '') {
             $decoded = json_decode($raw, true);
@@ -86,7 +179,7 @@ final class ProductInfoService
                 $links[] = sprintf(
                     '<a href="%s" target="_blank" rel="noopener">%s</a>',
                     esc_url($url),
-                    esc_html($title ?: __('Safety Document', 'spolszczony')),
+                    esc_html($title ?: __('Dokument bezpieczeństwa', 'polski')),
                 );
             }
         }
@@ -96,8 +189,8 @@ final class ProductInfoService
         }
 
         return sprintf(
-            '<div class="spolszczony-safety-docs"><span class="spolszczony-safety-docs__label">%s:</span><ul>%s</ul></div>',
-            esc_html__('Safety Documents', 'spolszczony'),
+            '<div class="polski-safety-docs"><span class="polski-safety-docs__label">%s:</span><ul>%s</ul></div>',
+            esc_html__('Dokumenty bezpieczeństwa', 'polski'),
             '<li>' . implode('</li><li>', $links) . '</li>',
         );
     }
@@ -107,7 +200,7 @@ final class ProductInfoService
      */
     public function getSafetyInstructions(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_safety_instructions', true);
+        return (string) $product->get_meta('_polski_safety_instructions', true);
     }
 
     /**
@@ -115,7 +208,7 @@ final class ProductInfoService
      */
     public function getPowerSupply(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_power_supply', true);
+        return (string) $product->get_meta('_polski_power_supply', true);
     }
 
     /**
@@ -130,8 +223,8 @@ final class ProductInfoService
         }
 
         return sprintf(
-            '<div class="spolszczony-power-supply"><span class="spolszczony-power-supply__label">%s:</span> <span>%s</span></div>',
-            esc_html__('Power Supply', 'spolszczony'),
+            '<div class="polski-power-supply"><span class="polski-power-supply__label">%s:</span> <span>%s</span></div>',
+            esc_html__('Zasilanie', 'polski'),
             esc_html($info),
         );
     }
@@ -141,7 +234,7 @@ final class ProductInfoService
      */
     public function getDefectDescription(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_defect_description', true);
+        return (string) $product->get_meta('_polski_defect_description', true);
     }
 
     /**
@@ -156,8 +249,8 @@ final class ProductInfoService
         }
 
         return sprintf(
-            '<div class="spolszczony-defect-description"><span class="spolszczony-defect-description__label">%s:</span> <span>%s</span></div>',
-            esc_html__('Defect Description', 'spolszczony'),
+            '<div class="polski-defect-description"><span class="polski-defect-description__label">%s:</span> <span>%s</span></div>',
+            esc_html__('Opis wady', 'polski'),
             esc_html($desc),
         );
     }
@@ -174,6 +267,6 @@ final class ProductInfoService
             return $gtin;
         }
 
-        return (string) $product->get_meta('_spolszczony_gtin', true);
+        return (string) $product->get_meta('_polski_gtin', true);
     }
 }

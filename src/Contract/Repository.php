@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Contract;
+namespace Polski\Contract;
 
 /**
  * Generic repository interface for data access.

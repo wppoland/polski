@@ -2,19 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
 /**
  * Food product module: nutrients, allergens, ingredients, Nutri-Score, etc.
  *
- * This module can be enabled/disabled via spolszczony_food settings.
+ * This module can be enabled/disabled via polski_food settings.
  */
 final class FoodService
 {
+    /**
+     * @return array<string, mixed>
+     */
+    private function getSettings(): array
+    {
+        $settings = get_option('polski_food', []);
+
+        return is_array($settings) ? $settings : [];
+    }
+
     public function isEnabled(): bool
     {
-        $settings = get_option('spolszczony_food', []);
-        return is_array($settings) && (bool) ($settings['enabled'] ?? false);
+        return (bool) ($this->getSettings()['enabled'] ?? false);
     }
 
     /**
@@ -22,7 +31,7 @@ final class FoodService
      */
     public function getIngredients(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_ingredients', true);
+        return (string) $product->get_meta('_polski_ingredients', true);
     }
 
     /**
@@ -30,6 +39,10 @@ final class FoodService
      */
     public function getIngredientsHtml(\WC_Product $product): string
     {
+        if (! (bool) ($this->getSettings()['show_ingredients'] ?? true)) {
+            return '';
+        }
+
         $ingredients = $this->getIngredients($product);
 
         if ($ingredients === '') {
@@ -37,8 +50,8 @@ final class FoodService
         }
 
         return sprintf(
-            '<div class="spolszczony-ingredients"><span class="spolszczony-ingredients__label">%s:</span> <span>%s</span></div>',
-            esc_html__('Ingredients', 'spolszczony'),
+            '<div class="polski-ingredients"><span class="polski-ingredients__label">%s:</span> <span>%s</span></div>',
+            esc_html((string) ($this->getSettings()['ingredients_label'] ?? __('Składniki', 'polski'))),
             esc_html($ingredients),
         );
     }
@@ -50,7 +63,7 @@ final class FoodService
      */
     public function getAllergens(\WC_Product $product): array
     {
-        $terms = get_the_terms($product->get_id(), 'spolszczony_allergen');
+        $terms = get_the_terms($product->get_id(), 'polski_allergen');
 
         if (! is_array($terms)) {
             return [];
@@ -64,6 +77,10 @@ final class FoodService
      */
     public function getAllergensHtml(\WC_Product $product): string
     {
+        if (! (bool) ($this->getSettings()['show_allergens'] ?? true)) {
+            return '';
+        }
+
         $allergens = $this->getAllergens($product);
 
         if (empty($allergens)) {
@@ -71,8 +88,8 @@ final class FoodService
         }
 
         return sprintf(
-            '<div class="spolszczony-allergens"><span class="spolszczony-allergens__label">%s:</span> <strong>%s</strong></div>',
-            esc_html__('Allergens', 'spolszczony'),
+            '<div class="polski-allergens"><span class="polski-allergens__label">%s:</span> <strong>%s</strong></div>',
+            esc_html((string) ($this->getSettings()['allergens_label'] ?? __('Alergeny', 'polski'))),
             esc_html(implode(', ', $allergens)),
         );
     }
@@ -84,10 +101,11 @@ final class FoodService
      */
     public function getNutrients(\WC_Product $product): array
     {
-        $raw = $product->get_meta('_spolszczony_nutrients', true);
+        $raw = $product->get_meta('_polski_nutrients', true);
 
         if (is_string($raw) && $raw !== '') {
             $decoded = json_decode($raw, true);
+
             return is_array($decoded) ? $decoded : [];
         }
 
@@ -99,18 +117,24 @@ final class FoodService
      */
     public function getNutrientsHtml(\WC_Product $product): string
     {
+        if (! (bool) ($this->getSettings()['show_nutrients'] ?? true)) {
+            return '';
+        }
+
         $nutrients = $this->getNutrients($product);
 
         if (empty($nutrients)) {
             return '';
         }
 
-        $referenceUnit = (string) $product->get_meta('_spolszczony_nutrient_reference_unit', true);
+        $referenceUnit = (string) $product->get_meta('_polski_nutrient_reference_unit', true);
+
         if ($referenceUnit === '') {
-            $referenceUnit = __('100 g', 'spolszczony');
+            $referenceUnit = (string) ($this->getSettings()['nutrients_reference_unit'] ?? __('100 g', 'polski'));
         }
 
         $rows = '';
+
         foreach ($nutrients as $name => $data) {
             $value = is_array($data) ? ($data['value'] ?? '') : $data;
             $unit = is_array($data) ? ($data['unit'] ?? '') : '';
@@ -124,17 +148,17 @@ final class FoodService
         }
 
         return sprintf(
-            '<div class="spolszczony-nutrients">
-                <table class="spolszczony-nutrients__table">
+            '<div class="polski-nutrients">
+                <table class="polski-nutrients__table">
                     <caption>%s %s</caption>
                     <thead><tr><th>%s</th><th>%s</th></tr></thead>
                     <tbody>%s</tbody>
                 </table>
             </div>',
-            esc_html__('Nutritional values per', 'spolszczony'),
+            esc_html((string) ($this->getSettings()['nutrients_caption_prefix'] ?? __('Wartości odżywcze na', 'polski'))),
             esc_html($referenceUnit),
-            esc_html__('Nutrient', 'spolszczony'),
-            esc_html__('Value', 'spolszczony'),
+            esc_html((string) ($this->getSettings()['nutrients_column_name'] ?? __('Składnik odżywczy', 'polski'))),
+            esc_html((string) ($this->getSettings()['nutrients_column_value'] ?? __('Wartość', 'polski'))),
             $rows,
         );
     }
@@ -144,7 +168,7 @@ final class FoodService
      */
     public function getNutriScore(\WC_Product $product): string
     {
-        $score = (string) $product->get_meta('_spolszczony_nutri_score', true);
+        $score = (string) $product->get_meta('_polski_nutri_score', true);
 
         if (! in_array($score, ['A', 'B', 'C', 'D', 'E'], true)) {
             return '';
@@ -158,6 +182,10 @@ final class FoodService
      */
     public function getNutriScoreHtml(\WC_Product $product): string
     {
+        if (! (bool) ($this->getSettings()['show_nutri_score'] ?? true)) {
+            return '';
+        }
+
         $score = $this->getNutriScore($product);
 
         if ($score === '') {
@@ -165,11 +193,12 @@ final class FoodService
         }
 
         return sprintf(
-            '<div class="spolszczony-nutri-score spolszczony-nutri-score--%s">
-                <span class="spolszczony-nutri-score__label">Nutri-Score:</span>
-                <span class="spolszczony-nutri-score__grade">%s</span>
+            '<div class="polski-nutri-score polski-nutri-score--%s">
+                <span class="polski-nutri-score__label">%s:</span>
+                <span class="polski-nutri-score__grade">%s</span>
             </div>',
             esc_attr(strtolower($score)),
+            esc_html((string) ($this->getSettings()['nutri_score_label'] ?? __('Nutri-Score', 'polski'))),
             esc_html($score),
         );
     }
@@ -179,7 +208,7 @@ final class FoodService
      */
     public function getNetFillingQuantity(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_net_filling_quantity', true);
+        return (string) $product->get_meta('_polski_net_filling_quantity', true);
     }
 
     /**
@@ -187,7 +216,7 @@ final class FoodService
      */
     public function getAlcoholContent(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_alcohol_content', true);
+        return (string) $product->get_meta('_polski_alcohol_content', true);
     }
 
     /**
@@ -195,6 +224,10 @@ final class FoodService
      */
     public function getAlcoholContentHtml(\WC_Product $product): string
     {
+        if (! (bool) ($this->getSettings()['show_alcohol'] ?? true)) {
+            return '';
+        }
+
         $content = $this->getAlcoholContent($product);
 
         if ($content === '') {
@@ -202,9 +235,10 @@ final class FoodService
         }
 
         return sprintf(
-            '<div class="spolszczony-alcohol"><span class="spolszczony-alcohol__label">%s:</span> %s%% vol.</div>',
-            esc_html__('Alcohol content', 'spolszczony'),
+            '<div class="polski-alcohol"><span class="polski-alcohol__label">%s:</span> %s%s</div>',
+            esc_html((string) ($this->getSettings()['alcohol_label'] ?? __('Zawartość alkoholu', 'polski'))),
             esc_html($content),
+            esc_html((string) ($this->getSettings()['alcohol_suffix'] ?? __('% vol.', 'polski'))),
         );
     }
 
@@ -213,7 +247,7 @@ final class FoodService
      */
     public function getPlaceOfOrigin(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_place_of_origin', true);
+        return (string) $product->get_meta('_polski_place_of_origin', true);
     }
 
     /**
@@ -221,7 +255,7 @@ final class FoodService
      */
     public function getDistributor(\WC_Product $product): string
     {
-        return (string) $product->get_meta('_spolszczony_food_distributor', true);
+        return (string) $product->get_meta('_polski_food_distributor', true);
     }
 
     /**
@@ -241,38 +275,38 @@ final class FoodService
             $this->getAlcoholContentHtml($product),
         ]);
 
-        if (empty($parts)) {
-            return '';
-        }
-
         $origin = $this->getPlaceOfOrigin($product);
         $distributor = $this->getDistributor($product);
         $netFilling = $this->getNetFillingQuantity($product);
 
-        if ($origin !== '') {
+        if ((bool) ($this->getSettings()['show_origin'] ?? true) && $origin !== '') {
             $parts[] = sprintf(
-                '<div class="spolszczony-origin"><span class="spolszczony-origin__label">%s:</span> %s</div>',
-                esc_html__('Place of origin', 'spolszczony'),
+                '<div class="polski-origin"><span class="polski-origin__label">%s:</span> %s</div>',
+                esc_html((string) ($this->getSettings()['origin_label'] ?? __('Kraj pochodzenia', 'polski'))),
                 esc_html($origin),
             );
         }
 
-        if ($distributor !== '') {
+        if ((bool) ($this->getSettings()['show_distributor'] ?? true) && $distributor !== '') {
             $parts[] = sprintf(
-                '<div class="spolszczony-distributor"><span class="spolszczony-distributor__label">%s:</span> %s</div>',
-                esc_html__('Distributor', 'spolszczony'),
+                '<div class="polski-distributor"><span class="polski-distributor__label">%s:</span> %s</div>',
+                esc_html((string) ($this->getSettings()['distributor_label'] ?? __('Dystrybutor', 'polski'))),
                 esc_html($distributor),
             );
         }
 
-        if ($netFilling !== '') {
+        if ((bool) ($this->getSettings()['show_net_filling'] ?? true) && $netFilling !== '') {
             $parts[] = sprintf(
-                '<div class="spolszczony-net-filling"><span class="spolszczony-net-filling__label">%s:</span> %s</div>',
-                esc_html__('Net content', 'spolszczony'),
+                '<div class="polski-net-filling"><span class="polski-net-filling__label">%s:</span> %s</div>',
+                esc_html((string) ($this->getSettings()['net_filling_label'] ?? __('Zawartość netto', 'polski'))),
                 esc_html($netFilling),
             );
         }
 
-        return '<div class="spolszczony-food-info">' . implode('', $parts) . '</div>';
+        if (empty($parts)) {
+            return '';
+        }
+
+        return '<div class="polski-food-info">' . implode('', $parts) . '</div>';
     }
 }

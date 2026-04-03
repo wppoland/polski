@@ -31,3 +31,10 @@ composer.lock
 
 # npm
 package-lock.json
+
+# Benchmark/reference - NEVER commit
+_benchmark/
+
+# Debug
+debug.log
+*.log

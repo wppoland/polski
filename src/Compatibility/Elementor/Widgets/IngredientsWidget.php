@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 final class IngredientsWidget extends BaseProductWidget
 {
     public function get_name(): string
     {
-        return 'spolszczony-ingredients';
+        return 'polski-ingredients';
     }
 
     public function get_title(): string
@@ -24,7 +24,7 @@ final class IngredientsWidget extends BaseProductWidget
     {
         $product = $this->getProduct();
         if ($product === null) { return; }
-        $html = $this->container()->get(\Spolszczony\Service\\FoodService::class)->getIngredientsHtml($product);
+        $html = $this->container()->get(\Polski\Service\FoodService::class)->getIngredientsHtml($product);
 
         if ($html !== '') {
             echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

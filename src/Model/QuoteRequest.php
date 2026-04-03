@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Model;
+namespace Polski\Model;
 
-use Spolszczony\Enum\QuoteRequestStatus;
+use Polski\Enum\QuoteRequestStatus;
 
 /**
  * Value object for a product quote request.

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * Google for WooCommerce (Google Merchant Center / GA4) compatibility.
  *
- * Adds Spolszczony product data to Google product feeds:
+ * Adds Polski product data to Google product feeds:
  * - Unit pricing for Google Shopping
  * - GTIN/EAN for product identification
  * - Manufacturer/brand for feed requirements
@@ -35,10 +35,10 @@ final class GoogleCompat implements HasHooks
      */
     public function addProductAttributes(array $attributes, \WC_Product $product, string $targetCountry): array
     {
-        $container = \Spolszczony\Plugin::instance()->container();
+        $container = \Polski\Plugin::instance()->container();
 
         // Add GTIN.
-        $productInfo = $container->get(\Spolszczony\Service\ProductInfoService::class);
+        $productInfo = $container->get(\Polski\Service\ProductInfoService::class);
         $gtin = $productInfo->getGTIN($product);
 
         if ($gtin !== '' && empty($attributes['gtin'])) {
@@ -53,7 +53,7 @@ final class GoogleCompat implements HasHooks
         }
 
         // Add unit pricing for Google Shopping (required in some countries).
-        $priceDisplay = $container->get(\Spolszczony\Service\PriceDisplayService::class);
+        $priceDisplay = $container->get(\Polski\Service\PriceDisplayService::class);
         $unitPrice = $priceDisplay->getUnitPrice($product);
 
         if ($unitPrice !== null) {

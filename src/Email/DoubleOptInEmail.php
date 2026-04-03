@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Email;
+namespace Polski\Email;
 
 /**
  * Email sent to new customers for account activation (Double Opt-In).
@@ -14,11 +14,11 @@ class DoubleOptInEmail extends \WC_Email
 
     public function __construct()
     {
-        $this->id = 'spolszczony_double_opt_in';
+        $this->id = 'polski_double_opt_in';
         $this->customer_email = true;
-        $this->title = __('Account Activation (Double Opt-In)', 'spolszczony');
-        $this->description = __('Sent to new customers to verify their email address.', 'spolszczony');
-        $this->template_base = \Spolszczony\PLUGIN_DIR . '/templates/';
+        $this->title = __('Aktywacja konta (Podwójna weryfikacja)', 'polski');
+        $this->description = __('Ciepłe powitanie wysyłane do Twoich nowych klientów, by zweryfikowali swój adres e-mail.', 'polski');
+        $this->template_base = \Polski\PLUGIN_DIR . '/templates/';
         $this->template_html = 'emails/double-opt-in.php';
         $this->template_plain = 'emails/plain/double-opt-in.php';
         $this->placeholders = [
@@ -26,7 +26,7 @@ class DoubleOptInEmail extends \WC_Email
         ];
 
         // Trigger on custom action.
-        add_action('spolszczony/doi/email_sent', [$this, 'trigger'], 10, 3);
+        add_action('polski/doi/email_sent', [$this, 'trigger'], 10, 3);
 
         parent::__construct();
     }
@@ -59,12 +59,20 @@ class DoubleOptInEmail extends \WC_Email
 
     public function get_default_subject(): string
     {
-        return __('Activate your account at {site_title}', 'spolszczony');
+        $settings = get_option('polski_doi', []);
+
+        return is_array($settings)
+            ? (string) ($settings['email_subject'] ?? __('Aktywuj swoje konto w {site_title}', 'polski'))
+            : __('Aktywuj swoje konto w {site_title}', 'polski');
     }
 
     public function get_default_heading(): string
     {
-        return __('Confirm your email address', 'spolszczony');
+        $settings = get_option('polski_doi', []);
+
+        return is_array($settings)
+            ? (string) ($settings['email_heading'] ?? __('Potwierdź swój adres email', 'polski'))
+            : __('Potwierdź swój adres email', 'polski');
     }
 
     public function get_content_html(): string
@@ -105,6 +113,10 @@ class DoubleOptInEmail extends \WC_Email
 
     public function get_default_additional_content(): string
     {
-        return __('If you did not create an account, you can safely ignore this email.', 'spolszczony');
+        $settings = get_option('polski_doi', []);
+
+        return is_array($settings)
+            ? (string) ($settings['additional_content'] ?? __('Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.', 'polski'))
+            : __('Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.', 'polski');
     }
 }

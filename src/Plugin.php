@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony;
+namespace Polski;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
 
 /**
  * Main plugin class. Singleton that wires the DI container and boots all services.
@@ -54,11 +54,11 @@ final class Plugin
         add_action('init', [$this, 'loadTextDomain']);
 
         /**
-         * Fires after Spolszczony is fully booted.
+         * Fires after Polski is fully booted.
          *
          * @param Plugin $plugin The plugin instance.
          */
-        do_action('spolszczony/booted', $this);
+        do_action('polski/booted', $this);
     }
 
     public function container(): Container
@@ -69,6 +69,26 @@ final class Plugin
     public function version(): string
     {
         return VERSION;
+    }
+
+    /**
+     * Check if the PRO plugin is active.
+     */
+    public function isProActive(): bool
+    {
+        return defined('Polski\Pro\VERSION');
+    }
+
+    /**
+     * Get PRO plugin version, or null if not active.
+     */
+    public function proVersion(): ?string
+    {
+        if (! $this->isProActive()) {
+            return null;
+        }
+
+        return constant('Polski\Pro\VERSION');
     }
 
     /**
@@ -140,7 +160,7 @@ final class Plugin
     public function loadTextDomain(): void
     {
         load_plugin_textdomain(
-            'spolszczony',
+            'polski',
             false,
             dirname(plugin_basename(PLUGIN_FILE)) . '/languages',
         );

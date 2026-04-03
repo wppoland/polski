@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Admin;
+namespace Polski\Admin;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use const Spolszczony\PLUGIN_FILE;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use const Polski\PLUGIN_FILE;
 
 /**
  * Registers the top-level admin menu page that hosts the React SPA.
@@ -14,7 +14,7 @@ use const Spolszczony\PLUGIN_FILE;
  */
 final class AdminPage implements Bootable, HasHooks
 {
-    private const PAGE_SLUG = 'spolszczony';
+    private const PAGE_SLUG = 'polski';
     private const CAPABILITY = 'manage_woocommerce';
 
     public function boot(): void
@@ -25,7 +25,7 @@ final class AdminPage implements Bootable, HasHooks
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
-        add_action('admin_post_spolszczony_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
+        add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
 
         // "Settings" link on plugins page.
         add_filter('plugin_action_links_' . plugin_basename(PLUGIN_FILE), [$this, 'addPluginActionLinks']);
@@ -41,8 +41,8 @@ final class AdminPage implements Bootable, HasHooks
     {
         $settingsLink = sprintf(
             '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG)),
-            esc_html__('Settings', 'spolszczony'),
+            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')),
+            esc_html__('Ustawienia', 'polski'),
         );
 
         array_unshift($links, $settingsLink);
@@ -56,23 +56,23 @@ final class AdminPage implements Bootable, HasHooks
     public function handleGenerateLegalPages(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(__('You do not have permission to access this resource.', 'spolszczony'));
+            wp_die(__('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'));
         }
 
-        check_admin_referer('spolszczony_generate_pages', '_spolszczony_nonce');
+        check_admin_referer('polski_generate_pages', '_polski_nonce');
 
-        $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
+        $legalPages = \Polski\Plugin::instance()->container()->get(\Polski\Service\LegalPageService::class);
         $legalPages->createDefaultPages();
 
-        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&spolszczony_pages_generated=1'));
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&polski_pages_generated=1'));
         exit;
     }
 
     public function addMenuPage(): void
     {
         add_menu_page(
-            __('Spolszczony', 'spolszczony'),
-            __('Spolszczony', 'spolszczony'),
+            __('Polski', 'polski'),
+            __('Polski', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG,
             [$this, 'renderPage'],
@@ -83,17 +83,17 @@ final class AdminPage implements Bootable, HasHooks
         // Submenu items.
         add_submenu_page(
             self::PAGE_SLUG,
-            __('Modules', 'spolszczony'),
-            __('Modules', 'spolszczony'),
+            __('Moduły', 'polski'),
+            __('Moduły', 'polski'),
             self::CAPABILITY,
-            self::PAGE_SLUG, // Same slug = replaces default "Spolszczony" submenu item.
+            self::PAGE_SLUG, // Same slug = replaces default "Polski" submenu item.
             [$this, 'renderPage'],
         );
 
         add_submenu_page(
             self::PAGE_SLUG,
-            __('Dashboard', 'spolszczony'),
-            __('Dashboard', 'spolszczony'),
+            __('Pulpit', 'polski'),
+            __('Pulpit', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG . '-dashboard',
             [$this, 'renderDashboardPage'],
@@ -109,7 +109,7 @@ final class AdminPage implements Bootable, HasHooks
     public function renderDashboardPage(): void
     {
         echo '<div class="wrap">';
-        echo '<h1>Spolszczony <small>v' . esc_html(\Spolszczony\VERSION) . '</small></h1>';
+        echo '<h1>Polski <small>v' . esc_html(\Polski\VERSION) . '</small></h1>';
         $this->renderDashboard();
         echo '</div>';
     }
@@ -121,7 +121,7 @@ final class AdminPage implements Bootable, HasHooks
     public function renderMenuIconCSS(): void
     {
         echo '<style>
-            #adminmenu .toplevel_page_spolszczony .wp-menu-image::before {
+            #adminmenu .toplevel_page_polski .wp-menu-image::before {
                 content: "" !important;
                 display: block !important;
                 width: 18px;
@@ -132,8 +132,8 @@ final class AdminPage implements Bootable, HasHooks
                 border: 1px solid rgba(255,255,255,0.25);
                 box-sizing: border-box;
             }
-            #adminmenu .toplevel_page_spolszczony:hover .wp-menu-image::before,
-            #adminmenu .toplevel_page_spolszczony.current .wp-menu-image::before {
+            #adminmenu .toplevel_page_polski:hover .wp-menu-image::before,
+            #adminmenu .toplevel_page_polski.current .wp-menu-image::before {
                 border-color: rgba(255,255,255,0.5);
             }
         </style>';
@@ -141,38 +141,31 @@ final class AdminPage implements Bootable, HasHooks
 
     public function renderPage(): void
     {
-        // If React app is built, render the mount point.
-        $jsFile = \Spolszczony\PLUGIN_DIR . '/build/admin.js';
-
-        if (file_exists($jsFile)) {
-            echo '<div id="spolszczony-admin" class="spolszczony-admin-app"></div>';
-            return;
-        }
-
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $tab = sanitize_key($_GET['tab'] ?? 'modules');
 
         echo '<div class="wrap">';
-        echo '<h1>Spolszczony <small>v' . esc_html(\Spolszczony\VERSION) . '</small></h1>';
+        echo '<h1>Polski <small>v' . esc_html(\Polski\VERSION) . '</small></h1>';
+        $generalSettings = $this->getGeneralSettings();
 
         // Success notices.
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        if (isset($_GET['spolszczony_pages_generated'])) {
+        if (isset($_GET['polski_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html__('Legal pages have been generated as drafts. Edit and publish them.', 'spolszczony');
+            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj.', 'polski')));
             echo '</p></div>';
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['modules_saved'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html__('Modules saved.', 'spolszczony');
+            echo esc_html((string) ($generalSettings['admin_modules_saved_notice'] ?? __('Moduły zapisane.', 'polski')));
             echo '</p></div>';
         }
 
         // Tab navigation.
         $tabs = [
-            'modules' => __('Modules', 'spolszczony'),
-            'dashboard' => __('Dashboard', 'spolszczony'),
+            'modules' => __('Moduły', 'polski'),
+            'dashboard' => __('Pulpit', 'polski'),
         ];
 
         echo '<nav class="nav-tab-wrapper" style="margin-bottom:20px;">';
@@ -193,7 +186,7 @@ final class AdminPage implements Bootable, HasHooks
 
     private function renderModulesTab(): void
     {
-        $modulesPage = \Spolszczony\Plugin::instance()->container()->get(ModulesPage::class);
+        $modulesPage = \Polski\Plugin::instance()->container()->get(ModulesPage::class);
         $modulesPage->render();
     }
 
@@ -203,60 +196,64 @@ final class AdminPage implements Bootable, HasHooks
     private function renderDashboard(): void
     {
         // Gather status data.
-        $legalPages = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Service\LegalPageService::class);
+        $legalPages = \Polski\Plugin::instance()->container()->get(\Polski\Service\LegalPageService::class);
         $pageStatus = $legalPages->getConfigurationStatus();
         $allPagesConfigured = ! in_array(false, $pageStatus, true);
         $configuredCount = count(array_filter($pageStatus));
         $anyPageExists = $configuredCount > 0 || $this->anyLegalPageDraftExists($legalPages);
 
-        $omnibusSettings = get_option('spolszczony_omnibus', []);
+        $omnibusSettings = get_option('polski_omnibus', []);
         $omnibusEnabled = is_array($omnibusSettings) && ($omnibusSettings['enabled'] ?? true);
 
-        $checkoutSettings = get_option('spolszczony_checkout', []);
+        $checkoutSettings = get_option('polski_checkout', []);
         $buttonText = is_array($checkoutSettings) ? ($checkoutSettings['order_button_text'] ?? '') : '';
 
-        $generalSettings = get_option('spolszczony_general', []);
-        $isSmallBusiness = is_array($generalSettings) && ($generalSettings['small_business'] ?? false);
+        $generalSettings = $this->getGeneralSettings();
+        $isSmallBusiness = (bool) ($generalSettings['small_business'] ?? false);
 
-        $doiSettings = get_option('spolszczony_doi', []);
+        $doiSettings = get_option('polski_doi', []);
         $doiEnabled = is_array($doiSettings) && ($doiSettings['enabled'] ?? false);
 
         // Status cards.
-        echo '<div class="spolszczony-dashboard" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:20px;">';
+        echo '<div class="polski-dashboard" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:20px;">';
 
         $this->renderStatusCard(
             'WooCommerce',
-            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Not active', 'spolszczony'),
+            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Nieaktywna', 'polski'),
             defined('WC_VERSION'),
         );
 
         $this->renderStatusCard(
-            __('Legal Pages', 'spolszczony'),
-            sprintf(__('%d of %d configured', 'spolszczony'), $configuredCount, count($pageStatus)),
+            __('Strony prawne', 'polski'),
+            str_replace(
+                ['{done}', '{total}'],
+                [(string) $configuredCount, (string) count($pageStatus)],
+                (string) ($generalSettings['admin_legal_pages_card_progress'] ?? __('Masz już za sobą %d z %d kroków. Znakomicie!', 'polski'))
+            ),
             $allPagesConfigured,
         );
 
         $this->renderStatusCard(
-            __('Omnibus Directive', 'spolszczony'),
-            $omnibusEnabled ? __('Active', 'spolszczony') : __('Disabled', 'spolszczony'),
+            __('Dyrektywa Omnibus', 'polski'),
+            $omnibusEnabled ? (string) ($generalSettings['admin_status_active'] ?? __('Aktywna', 'polski')) : (string) ($generalSettings['admin_status_inactive'] ?? __('Wyłączona', 'polski')),
             $omnibusEnabled,
         );
 
         $this->renderStatusCard(
-            __('Checkout Button', 'spolszczony'),
-            $buttonText !== '' ? $buttonText : __('Not configured', 'spolszczony'),
+            __('Przycisk zamówienia', 'polski'),
+            $buttonText !== '' ? $buttonText : (string) ($generalSettings['admin_status_unconfigured'] ?? __('Nieskonfigurowany', 'polski')),
             $buttonText !== '',
         );
 
         $this->renderStatusCard(
-            __('Tax Display', 'spolszczony'),
-            $isSmallBusiness ? __('Small business (ZP)', 'spolszczony') : __('Standard VAT', 'spolszczony'),
+            (string) ($generalSettings['admin_vat_card_title'] ?? __('Wyświetlanie podatku', 'polski')),
+            $isSmallBusiness ? (string) ($generalSettings['admin_vat_small_business_text'] ?? __('Zwolnienie podmiotowe (art. 113)', 'polski')) : (string) ($generalSettings['admin_vat_standard_text'] ?? __('Standardowy VAT', 'polski')),
             true,
         );
 
         $this->renderStatusCard(
-            __('Double Opt-In', 'spolszczony'),
-            $doiEnabled ? __('Active', 'spolszczony') : __('Disabled', 'spolszczony'),
+            (string) ($generalSettings['admin_doi_card_title'] ?? __('Podwójna weryfikacja (DOI)', 'polski')),
+            $doiEnabled ? (string) ($generalSettings['admin_status_active'] ?? __('Aktywna', 'polski')) : (string) ($generalSettings['admin_status_inactive'] ?? __('Wyłączona', 'polski')),
             null,
         );
 
@@ -264,15 +261,15 @@ final class AdminPage implements Bootable, HasHooks
 
         // Legal pages section.
         echo '<div style="margin-top:30px;">';
-        echo '<h2>' . esc_html__('Legal Pages', 'spolszczony') . '</h2>';
+        echo '<h2>' . esc_html((string) ($generalSettings['admin_legal_pages_section_title'] ?? __('Strony prawne', 'polski'))) . '</h2>';
 
         if ($anyPageExists) {
             // Show page list with edit links.
             echo '<table class="widefat striped" style="max-width:600px;">';
-            echo '<thead><tr><th>' . esc_html__('Page', 'spolszczony') . '</th><th>' . esc_html__('Status', 'spolszczony') . '</th><th></th></tr></thead><tbody>';
+            echo '<thead><tr><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_page'] ?? __('Strona', 'polski'))) . '</th><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_status'] ?? __('Status', 'polski'))) . '</th><th></th></tr></thead><tbody>';
 
             foreach ($pageStatus as $type => $configured) {
-                $pageType = \Spolszczony\Enum\LegalPageType::tryFrom($type);
+                $pageType = \Polski\Enum\LegalPageType::tryFrom($type);
                 if ($pageType === null) {
                     continue;
                 }
@@ -286,14 +283,14 @@ final class AdminPage implements Bootable, HasHooks
 
                 if ($post instanceof \WP_Post) {
                     $statusLabel = match ($post->post_status) {
-                        'publish' => '<span style="color:#46b450;">' . esc_html__('Published', 'spolszczony') . '</span>',
-                        'draft' => '<span style="color:#f0ad4e;">' . esc_html__('Draft', 'spolszczony') . '</span>',
+                        'publish' => '<span style="color:#46b450;">' . esc_html((string) ($generalSettings['admin_legal_pages_published'] ?? __('Opublikowana', 'polski'))) . '</span>',
+                        'draft' => '<span style="color:#f0ad4e;">' . esc_html((string) ($generalSettings['admin_legal_pages_draft'] ?? __('Szkic', 'polski'))) . '</span>',
                         default => esc_html($post->post_status),
                     };
                     echo '<td>' . $statusLabel . '</td>';
-                    echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html__('Edit', 'spolszczony') . '</a></td>';
+                    echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html((string) ($generalSettings['admin_edit_button_text'] ?? __('Edytuj', 'polski'))) . '</a></td>';
                 } else {
-                    echo '<td><span style="color:#dc3232;">' . esc_html__('Not created', 'spolszczony') . '</span></td>';
+                    echo '<td><span style="color:#dc3232;">' . esc_html((string) ($generalSettings['admin_legal_pages_missing'] ?? __('Nie utworzona', 'polski'))) . '</span></td>';
                     echo '<td></td>';
                 }
 
@@ -308,7 +305,7 @@ final class AdminPage implements Bootable, HasHooks
             }
         } else {
             // No pages exist at all - show generate button.
-            echo '<p>' . esc_html__('No legal pages created yet. Generate them to get started.', 'spolszczony') . '</p>';
+            echo '<p>' . esc_html((string) ($generalSettings['admin_generate_pages_empty_text'] ?? __('Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć.', 'polski'))) . '</p>';
             $this->renderGenerateButton();
         }
 
@@ -316,31 +313,30 @@ final class AdminPage implements Bootable, HasHooks
 
         // Next steps.
         echo '<div style="margin-top:30px;">';
-        echo '<h2>' . esc_html__('Next steps', 'spolszczony') . '</h2>';
+        echo '<h2>' . esc_html((string) ($generalSettings['admin_next_steps_title'] ?? __('Kolejne kroki', 'polski'))) . '</h2>';
         echo '<ol style="max-width:600px;">';
 
         if (! $allPagesConfigured) {
-            echo '<li>' . esc_html__('Publish your legal pages (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje).', 'spolszczony') . '</li>';
+            echo '<li>' . esc_html((string) ($generalSettings['admin_next_steps_publish_pages'] ?? __('Publish your legal pages (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje).', 'polski'))) . '</li>';
         }
 
         echo '<li>' . sprintf(
-            /* translators: %s: link to WooCommerce settings */
-            __('Set up <a href="%s">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%).', 'spolszczony'),
+            (string) ($generalSettings['admin_next_steps_tax'] ?? __('Set up <a href="%s">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%).', 'polski')),
             esc_url(admin_url('admin.php?page=wc-settings&tab=tax')),
         ) . '</li>';
 
         echo '<li>' . sprintf(
-            __('Configure <a href="%s">shipping zones</a> for Polish delivery.', 'spolszczony'),
+            (string) ($generalSettings['admin_next_steps_shipping'] ?? __('Configure <a href="%s">shipping zones</a> for Polish delivery.', 'polski')),
             esc_url(admin_url('admin.php?page=wc-settings&tab=shipping')),
         ) . '</li>';
 
         echo '<li>' . sprintf(
-            __('Edit product data - add unit prices and delivery times in the <a href="%s">Spolszczony tab</a> of each product.', 'spolszczony'),
+            (string) ($generalSettings['admin_next_steps_products'] ?? __('Edit product data - add unit prices and delivery times in the <a href="%s">Polski tab</a> of each product.', 'polski')),
             esc_url(admin_url('edit.php?post_type=product')),
         ) . '</li>';
 
         echo '<li>' . sprintf(
-            __('Test the checkout - add a product to cart and verify legal checkboxes and button text at <a href="%s">checkout</a>.', 'spolszczony'),
+            (string) ($generalSettings['admin_next_steps_checkout'] ?? __('Test the checkout - add a product to cart and verify legal checkboxes and button text at <a href="%s">checkout</a>.', 'polski')),
             esc_url(wc_get_checkout_url()),
         ) . '</li>';
 
@@ -351,9 +347,9 @@ final class AdminPage implements Bootable, HasHooks
     /**
      * Check if any legal page exists (even as draft).
      */
-    private function anyLegalPageDraftExists(\Spolszczony\Service\LegalPageService $service): bool
+    private function anyLegalPageDraftExists(\Polski\Service\LegalPageService $service): bool
     {
-        foreach (\Spolszczony\Enum\LegalPageType::cases() as $type) {
+        foreach (\Polski\Enum\LegalPageType::cases() as $type) {
             $pageId = $service->getPageId($type);
             if ($pageId > 0 && get_post_status($pageId) !== false) {
                 return true;
@@ -368,14 +364,25 @@ final class AdminPage implements Bootable, HasHooks
      */
     private function renderGenerateButton(): void
     {
+        $generalSettings = $this->getGeneralSettings();
         echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:10px;">';
-        wp_nonce_field('spolszczony_generate_pages', '_spolszczony_nonce');
-        echo '<input type="hidden" name="action" value="spolszczony_generate_legal_pages" />';
+        wp_nonce_field('polski_generate_pages', '_polski_nonce');
+        echo '<input type="hidden" name="action" value="polski_generate_legal_pages" />';
         printf(
             '<button type="submit" class="button button-primary">%s</button>',
-            esc_html__('Generate Legal Pages', 'spolszczony'),
+            esc_html((string) ($generalSettings['admin_generate_pages_button_text'] ?? __('Wygeneruj strony prawne', 'polski'))),
         );
         echo '</form>';
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getGeneralSettings(): array
+    {
+        $settings = get_option('polski_general', []);
+
+        return is_array($settings) ? $settings : [];
     }
 
     /**
@@ -410,26 +417,26 @@ final class AdminPage implements Bootable, HasHooks
             return;
         }
 
-        $jsFile = \Spolszczony\PLUGIN_DIR . '/build/admin.js';
+        $jsFile = \Polski\PLUGIN_DIR . '/build/admin.js';
 
         // Only enqueue if built.
         if (! file_exists($jsFile)) {
             return;
         }
 
-        $assetFile = \Spolszczony\PLUGIN_DIR . '/build/admin.asset.php';
+        $assetFile = \Polski\PLUGIN_DIR . '/build/admin.asset.php';
 
         if (file_exists($assetFile)) {
             $asset = require $assetFile;
         } else {
             $asset = [
                 'dependencies' => ['wp-element', 'wp-components', 'wp-i18n', 'wp-api-fetch', 'wp-data'],
-                'version' => \Spolszczony\VERSION,
+                'version' => \Polski\VERSION,
             ];
         }
 
         wp_enqueue_script(
-            'spolszczony-admin',
+            'polski-admin',
             plugins_url('build/admin.js', PLUGIN_FILE),
             $asset['dependencies'],
             $asset['version'],
@@ -437,19 +444,23 @@ final class AdminPage implements Bootable, HasHooks
         );
 
         wp_enqueue_style(
-            'spolszczony-admin',
+            'polski-admin',
             plugins_url('build/admin.css', PLUGIN_FILE),
             ['wp-components'],
             $asset['version'],
         );
 
-        wp_localize_script('spolszczony-admin', 'spolszczonyAdmin', [
-            'restUrl' => rest_url('spolszczony/v1/'),
+        $plugin = \Polski\Plugin::instance();
+
+        wp_localize_script('polski-admin', 'polskiAdmin', [
+            'restUrl' => rest_url('polski/v1/'),
             'nonce' => wp_create_nonce('wp_rest'),
-            'version' => \Spolszczony\VERSION,
-            'isWizardComplete' => (bool) get_option('spolszczony_wizard_complete', false),
+            'version' => \Polski\VERSION,
+            'isWizardComplete' => (bool) get_option('polski_wizard_complete', false),
+            'isProActive' => $plugin->isProActive(),
+            'proVersion' => $plugin->proVersion(),
         ]);
 
-        wp_set_script_translations('spolszczony-admin', 'spolszczony');
+        wp_set_script_translations('polski-admin', 'polski');
     }
 }

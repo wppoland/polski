@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * WooCommerce Subscriptions compatibility.
@@ -23,10 +23,10 @@ final class SubscriptionsCompat implements HasHooks
         }
 
         // Mark subscription products as withdrawal-exempt (digital content delivered over time).
-        add_filter('spolszczony/withdrawal/eligible', [$this, 'checkSubscriptionEligibility'], 10, 2);
+        add_filter('polski/withdrawal/eligible', [$this, 'checkSubscriptionEligibility'], 10, 2);
 
         // Adjust unit price display for subscriptions (per month/year).
-        add_filter('spolszczony/price/unit_price_html', [$this, 'adjustSubscriptionUnitPrice'], 10, 3);
+        add_filter('polski/price/unit_price_html', [$this, 'adjustSubscriptionUnitPrice'], 10, 3);
     }
 
     public function checkSubscriptionEligibility(bool $eligible, \WC_Order $order): bool

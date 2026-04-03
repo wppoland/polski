@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
 
 /**
  * Double Opt-In for customer registration.
@@ -17,12 +17,17 @@ final class DoubleOptInService implements Bootable, HasHooks
 {
     private bool $enabled = false;
     private int $cleanupDays = 7;
+    /**
+     * @var array<string, mixed>
+     */
+    private array $settings = [];
 
     public function boot(): void
     {
-        $settings = get_option('spolszczony_doi', []);
-        $this->enabled = is_array($settings) && (bool) ($settings['enabled'] ?? false);
-        $this->cleanupDays = is_array($settings) ? (int) ($settings['cleanup_days'] ?? 7) : 7;
+        $settings = get_option('polski_doi', []);
+        $this->settings = is_array($settings) ? $settings : [];
+        $this->enabled = (bool) ($this->settings['enabled'] ?? false);
+        $this->cleanupDays = (int) ($this->settings['cleanup_days'] ?? 7);
     }
 
     public function registerHooks(): void
@@ -41,7 +46,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         add_action('template_redirect', [$this, 'handleActivation']);
 
         // Cleanup old unactivated accounts.
-        add_action('spolszczony_daily_maintenance', [$this, 'cleanupUnactivated']);
+        add_action('polski_daily_maintenance', [$this, 'cleanupUnactivated']);
     }
 
     /**
@@ -51,12 +56,12 @@ final class DoubleOptInService implements Bootable, HasHooks
     {
         $token = wp_generate_password(32, false);
 
-        update_user_meta($customerId, '_spolszczony_doi_token', $token);
-        update_user_meta($customerId, '_spolszczony_doi_activated', 'no');
-        update_user_meta($customerId, '_spolszczony_doi_created', time());
+        update_user_meta($customerId, '_polski_doi_token', $token);
+        update_user_meta($customerId, '_polski_doi_activated', 'no');
+        update_user_meta($customerId, '_polski_doi_created', time());
 
         $activationUrl = add_query_arg([
-            'spolszczony_doi' => $customerId,
+            'polski_doi' => $customerId,
             'token' => $token,
         ], wc_get_page_permalink('myaccount'));
 
@@ -70,7 +75,7 @@ final class DoubleOptInService implements Bootable, HasHooks
          * @param string $email
          * @param string $activationUrl
          */
-        do_action('spolszczony/doi/email_sent', $customerId, $email, $activationUrl);
+        do_action('polski/doi/email_sent', $customerId, $email, $activationUrl);
     }
 
     /**
@@ -82,12 +87,12 @@ final class DoubleOptInService implements Bootable, HasHooks
             return $user;
         }
 
-        $activated = get_user_meta($user->ID, '_spolszczony_doi_activated', true);
+        $activated = get_user_meta($user->ID, '_polski_doi_activated', true);
 
         if ($activated === 'no') {
             return new \WP_Error(
-                'spolszczony_doi_not_activated',
-                __('Your account has not been activated yet. Please check your email for the activation link.', 'spolszczony'),
+                'polski_doi_not_activated',
+                (string) ($this->settings['login_blocked_text'] ?? __('Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link.', 'polski')),
             );
         }
 
@@ -99,32 +104,32 @@ final class DoubleOptInService implements Bootable, HasHooks
      */
     public function handleActivation(): void
     {
-        if (! isset($_GET['spolszczony_doi'], $_GET['token'])) {
+        if (! isset($_GET['polski_doi'], $_GET['token'])) {
             return;
         }
 
-        $userId = (int) $_GET['spolszczony_doi'];
+        $userId = (int) $_GET['polski_doi'];
         $token = sanitize_text_field(wp_unslash($_GET['token']));
 
-        $storedToken = get_user_meta($userId, '_spolszczony_doi_token', true);
+        $storedToken = get_user_meta($userId, '_polski_doi_token', true);
 
         if (! hash_equals((string) $storedToken, $token)) {
-            wc_add_notice(__('Invalid activation link.', 'spolszczony'), 'error');
+            wc_add_notice((string) ($this->settings['invalid_link_text'] ?? __('Nieprawidłowy link aktywacyjny.', 'polski')), 'error');
             wp_safe_redirect(wc_get_page_permalink('myaccount'));
             exit;
         }
 
-        update_user_meta($userId, '_spolszczony_doi_activated', 'yes');
-        delete_user_meta($userId, '_spolszczony_doi_token');
+        update_user_meta($userId, '_polski_doi_activated', 'yes');
+        delete_user_meta($userId, '_polski_doi_token');
 
         /**
          * Fires after a customer's account is activated via DOI.
          *
          * @param int $userId
          */
-        do_action('spolszczony/doi/confirmed', $userId);
+        do_action('polski/doi/confirmed', $userId);
 
-        wc_add_notice(__('Your account has been activated. You can now log in.', 'spolszczony'), 'success');
+        wc_add_notice((string) ($this->settings['activation_success_text'] ?? __('Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować.', 'polski')), 'success');
         wp_safe_redirect(wc_get_page_permalink('myaccount'));
         exit;
     }
@@ -140,11 +145,11 @@ final class DoubleOptInService implements Bootable, HasHooks
             'meta_query' => [
                 'relation' => 'AND',
                 [
-                    'key' => '_spolszczony_doi_activated',
+                    'key' => '_polski_doi_activated',
                     'value' => 'no',
                 ],
                 [
-                    'key' => '_spolszczony_doi_created',
+                    'key' => '_polski_doi_created',
                     'value' => $cutoff,
                     'compare' => '<',
                     'type' => 'NUMERIC',

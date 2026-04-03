@@ -1,0 +1,39 @@
+.polski-product-slider {
+    margin-top: 32px;
+}
+
+.polski-product-slider__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 1fr);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+}
+
+.polski-product-slider__item {
+    scroll-snap-align: start;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 16px;
+    background: #fff;
+}
+
+.polski-product-slider__item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.polski-product-slider__footer {
+    margin-top: 16px;
+}
+
+.polski-product-slider__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}

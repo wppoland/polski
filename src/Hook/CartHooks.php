@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Util\TemplateLoader;
+use Polski\Contract\HasHooks;
+use Polski\Util\TemplateLoader;
 
 final class CartHooks implements HasHooks
 {

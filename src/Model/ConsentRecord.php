@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Model;
+namespace Polski\Model;
 
-use Spolszczony\Enum\CheckboxContext;
+use Polski\Enum\CheckboxContext;
 
 /**
  * Value object for a consent log entry (GDPR audit trail).

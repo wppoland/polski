@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Shopmark;
+namespace Polski\Shopmark;
 
 /**
  * Registry for all display elements (shopmarks) shown on product pages, loops, cart, etc.

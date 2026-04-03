@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Gateway;
+namespace Polski\Gateway;
 
 /**
  * Invoice / Bank Transfer payment gateway (Przelew / Faktura).
@@ -14,9 +14,9 @@ class InvoiceGateway extends \WC_Payment_Gateway
 {
     public function __construct()
     {
-        $this->id = 'spolszczony_invoice';
-        $this->method_title = __('Invoice / Bank Transfer', 'spolszczony');
-        $this->method_description = __('Customer pays via bank transfer after receiving an invoice. Order is set to on-hold until payment is received.', 'spolszczony');
+        $this->id = 'polski_invoice';
+        $this->method_title = __('Przelew bankowy / Faktura', 'polski');
+        $this->method_description = __('Klient płaci przelewem bankowym po otrzymaniu faktury. Zamówienie jest wstrzymane do momentu otrzymania wpłaty.', 'polski');
         $this->has_fields = false;
         $this->icon = '';
 
@@ -36,43 +36,43 @@ class InvoiceGateway extends \WC_Payment_Gateway
     {
         $this->form_fields = [
             'enabled' => [
-                'title' => __('Enable/Disable', 'spolszczony'),
+                'title' => __('Włącz/Wyłącz', 'polski'),
                 'type' => 'checkbox',
-                'label' => __('Enable Invoice / Bank Transfer payment', 'spolszczony'),
+                'label' => __('Włącz płatność przelewem bankowym / faktura', 'polski'),
                 'default' => 'no',
             ],
             'title' => [
-                'title' => __('Title', 'spolszczony'),
+                'title' => __('Tytuł', 'polski'),
                 'type' => 'text',
-                'description' => __('Payment method title displayed at checkout.', 'spolszczony'),
-                'default' => __('Bank Transfer (Przelew)', 'spolszczony'),
+                'description' => __('Tytuł metody płatności wyświetlany przy kasie.', 'polski'),
+                'default' => __('Przelew bankowy', 'polski'),
                 'desc_tip' => true,
             ],
             'description' => [
-                'title' => __('Description', 'spolszczony'),
+                'title' => __('Opis', 'polski'),
                 'type' => 'textarea',
-                'description' => __('Payment method description displayed at checkout.', 'spolszczony'),
-                'default' => __('Pay via bank transfer. Your order will be processed after we receive payment.', 'spolszczony'),
+                'description' => __('Opis metody płatności wyświetlany przy kasie.', 'polski'),
+                'default' => __('Zapłać przelewem bankowym. Twoje zamówienie zostanie zrealizowane po otrzymaniu wpłaty.', 'polski'),
                 'desc_tip' => true,
             ],
             'instructions' => [
-                'title' => __('Instructions', 'spolszczony'),
+                'title' => __('Instrukcje', 'polski'),
                 'type' => 'textarea',
-                'description' => __('Displayed on the thank-you page and in confirmation emails. Include your bank account details here.', 'spolszczony'),
+                'description' => __('Wyświetlane na stronie podziękowania i w emailach. Podaj tutaj dane konta bankowego.', 'polski'),
                 'default' => '',
                 'desc_tip' => true,
             ],
             'account_number' => [
-                'title' => __('Bank Account Number', 'spolszczony'),
+                'title' => __('Numer konta bankowego', 'polski'),
                 'type' => 'text',
-                'description' => __('Your bank account number (IBAN format recommended).', 'spolszczony'),
+                'description' => __('Numer konta bankowego (zalecany format IBAN).', 'polski'),
                 'default' => '',
                 'desc_tip' => true,
             ],
             'bank_name' => [
-                'title' => __('Bank Name', 'spolszczony'),
+                'title' => __('Nazwa banku', 'polski'),
                 'type' => 'text',
-                'description' => __('Name of your bank.', 'spolszczony'),
+                'description' => __('Nazwa Twojego banku.', 'polski'),
                 'default' => '',
                 'desc_tip' => true,
             ],
@@ -93,7 +93,7 @@ class InvoiceGateway extends \WC_Payment_Gateway
             return ['result' => 'failure'];
         }
 
-        $order->update_status('on-hold', __('Awaiting bank transfer payment.', 'spolszczony'));
+        $order->update_status('on-hold', __('Oczekiwanie na przelew bankowy.', 'polski'));
         wc_reduce_stock_levels($orderId);
         WC()->cart->empty_cart();
 
@@ -143,31 +143,31 @@ class InvoiceGateway extends \WC_Payment_Gateway
             }
 
             if ($accountNumber !== '') {
-                echo __('Bank account:', 'spolszczony') . ' ' . $accountNumber . "\n";
+                echo __('Numer konta:', 'polski') . ' ' . $accountNumber . "\n";
             }
             if ($bankName !== '') {
-                echo __('Bank:', 'spolszczony') . ' ' . $bankName . "\n";
+                echo __('Bank:', 'polski') . ' ' . $bankName . "\n";
             }
 
-            echo __('Transfer title:', 'spolszczony') . ' ' . sprintf(
-                __('Order %s', 'spolszczony'),
+            echo __('Tytuł przelewu:', 'polski') . ' ' . sprintf(
+                __('Zamówienie %s', 'polski'),
                 $order->get_order_number(),
             ) . "\n";
-            echo __('Amount:', 'spolszczony') . ' ' . $order->get_formatted_order_total() . "\n";
+            echo __('Kwota:', 'polski') . ' ' . $order->get_formatted_order_total() . "\n";
         } else {
-            echo '<div class="spolszczony-invoice-instructions">';
+            echo '<div class="polski-invoice-instructions">';
 
             if ($instructions !== '') {
                 echo '<p>' . wp_kses_post($instructions) . '</p>';
             }
 
-            echo '<h3>' . esc_html__('Bank Transfer Details', 'spolszczony') . '</h3>';
+            echo '<h3>' . esc_html__('Dane do przelewu', 'polski') . '</h3>';
             echo '<table class="shop_table">';
 
             if ($accountNumber !== '') {
                 printf(
                     '<tr><th>%s</th><td><strong>%s</strong></td></tr>',
-                    esc_html__('Account number', 'spolszczony'),
+                    esc_html__('Numer konta', 'polski'),
                     esc_html($accountNumber),
                 );
             }
@@ -175,20 +175,20 @@ class InvoiceGateway extends \WC_Payment_Gateway
             if ($bankName !== '') {
                 printf(
                     '<tr><th>%s</th><td>%s</td></tr>',
-                    esc_html__('Bank', 'spolszczony'),
+                    esc_html__('Bank', 'polski'),
                     esc_html($bankName),
                 );
             }
 
             printf(
                 '<tr><th>%s</th><td>%s</td></tr>',
-                esc_html__('Transfer title', 'spolszczony'),
-                esc_html(sprintf(__('Order %s', 'spolszczony'), $order->get_order_number())),
+                esc_html__('Tytuł przelewu', 'polski'),
+                esc_html(sprintf(__('Zamówienie %s', 'polski'), $order->get_order_number())),
             );
 
             printf(
                 '<tr><th>%s</th><td><strong>%s</strong></td></tr>',
-                esc_html__('Amount', 'spolszczony'),
+                esc_html__('Kwota', 'polski'),
                 wp_kses_post($order->get_formatted_order_total()),
             );
 

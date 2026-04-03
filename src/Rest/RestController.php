@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Rest;
+namespace Polski\Rest;
 
 use WP_REST_Controller;
 
 /**
- * Abstract base for all Spolszczony REST API controllers.
+ * Abstract base for all Polski REST API controllers.
  */
 abstract class RestController extends WP_REST_Controller
 {
     /** @var string */
-    protected $namespace = 'spolszczony/v1';
+    protected $namespace = 'polski/v1';
 
     /**
      * Check if the current user can manage WooCommerce.
@@ -29,8 +29,8 @@ abstract class RestController extends WP_REST_Controller
     {
         if (! $this->hasAdminPermission()) {
             return new \WP_Error(
-                'spolszczony_rest_forbidden',
-                __('You do not have permission to access this resource.', 'spolszczony'),
+                'polski_rest_forbidden',
+                __('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'),
                 ['status' => 403],
             );
         }

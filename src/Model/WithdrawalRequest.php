@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Model;
+namespace Polski\Model;
 
-use Spolszczony\Enum\WithdrawalStatus;
+use Polski\Enum\WithdrawalStatus;
 
 /**
  * Value object for a consumer withdrawal (return) request.

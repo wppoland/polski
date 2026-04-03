@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Service\DeliveryTimeService;
-use Spolszczony\Service\FoodService;
-use Spolszczony\Service\PriceDisplayService;
-use Spolszczony\Service\ProductInfoService;
-use Spolszczony\Shopmark\Location;
-use Spolszczony\Shopmark\Shopmark;
-use Spolszczony\Shopmark\ShopmarkManager;
-use Spolszczony\Util\TemplateLoader;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Service\DeliveryTimeService;
+use Polski\Service\FoodService;
+use Polski\Service\PriceDisplayService;
+use Polski\Service\ProductInfoService;
+use Polski\Shopmark\Location;
+use Polski\Shopmark\Shopmark;
+use Polski\Shopmark\ShopmarkManager;
+use Polski\Util\TemplateLoader;
 
 /**
  * Registers shopmarks and hooks for single product page display.
@@ -42,6 +42,10 @@ final class ProductHooks implements Bootable, HasHooks
 
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
+
+        // Clear structured data cache on product save
+        add_action('woocommerce_update_product', [$this, 'clearSchemaCache'], 10, 1);
+        add_action('woocommerce_new_product', [$this, 'clearSchemaCache'], 10, 1);
     }
 
     /**
@@ -96,6 +100,15 @@ final class ProductHooks implements Bootable, HasHooks
 
         // Manufacturer (GPSR).
         $this->shopmarks->register(new Shopmark(
+            id: 'brand',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 34,
+            callback: fn () => $this->renderBrand(),
+        ));
+
+        // Manufacturer (GPSR).
+        $this->shopmarks->register(new Shopmark(
             id: 'manufacturer',
             location: Location::SingleProduct,
             hookName: 'woocommerce_single_product_summary',
@@ -126,7 +139,7 @@ final class ProductHooks implements Bootable, HasHooks
          *
          * @param ShopmarkManager $shopmarks The shopmark manager.
          */
-        do_action('spolszczony/shopmarks/registered', $this->shopmarks);
+        do_action('polski/shopmarks/registered', $this->shopmarks);
     }
 
     /**
@@ -248,6 +261,30 @@ final class ProductHooks implements Bootable, HasHooks
         }
     }
 
+    private function renderBrand(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $settings = get_option('polski_brand', []);
+
+        if (is_array($settings) && ! ($settings['show_on_single'] ?? true)) {
+            return;
+        }
+
+        $html = $this->productInfo->getBrandHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/brand', [
+                'brand_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
     private function renderSafetyInfo(): void
     {
         global $product;
@@ -265,14 +302,14 @@ final class ProductHooks implements Bootable, HasHooks
         $gpsr = $this->productInfo->getGPSRResponsible($product);
         if ($gpsr !== '') {
             array_unshift($parts, sprintf(
-                '<div class="spolszczony-gpsr"><span class="spolszczony-gpsr__label">%s:</span> %s</div>',
-                esc_html__('Responsible person (GPSR)', 'spolszczony'),
+                '<div class="polski-gpsr"><span class="polski-gpsr__label">%s:</span> %s</div>',
+                esc_html__('Osoba odpowiedzialna (GPSR)', 'polski'),
                 esc_html($gpsr),
             ));
         }
 
         if (! empty($parts)) {
-            $html = '<div class="spolszczony-safety">' . implode('', $parts) . '</div>';
+            $html = '<div class="polski-safety">' . implode('', $parts) . '</div>';
             $this->templateLoader->include('single-product/safety-info', [
                 'safety_html' => $html,
                 'product' => $product,
@@ -299,23 +336,102 @@ final class ProductHooks implements Bootable, HasHooks
     }
 
     /**
-     * Add Spolszczony data to structured data (Schema.org).
+     * Add Polski data to structured data (Schema.org).
      *
      * @param array<string, mixed> $data
      * @return array<string, mixed>
      */
     public function enrichStructuredData(array $data, \WC_Product $product): array
     {
-        $unitPrice = $this->priceDisplay->getUnitPrice($product);
-
-        if ($unitPrice !== null) {
-            $data['spolszczony_unit_price'] = [
-                'price' => $unitPrice->pricePerUnit,
-                'unit' => $unitPrice->unit,
-                'base_amount' => $unitPrice->baseAmount,
-            ];
+        // Check if Schema.org module and setting are enabled
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('schema_org')) {
+            return $data; // Fallback
+        }
+        
+        $settings = get_option('polski_seo', []);
+        if (is_array($settings) && ! ($settings['schema_enabled'] ?? true)) {
+            return $data;
         }
 
-        return $data;
+        $productId = $product->get_id();
+        $cacheKey = 'spol_schema_' . $productId;
+        $cachedExtra = get_transient($cacheKey);
+
+        if ($cachedExtra !== false && is_array($cachedExtra)) {
+            return array_merge($data, $cachedExtra);
+        }
+
+        $extraData = [];
+
+        // Add Brand if available AND enabled
+        if ($settings['schema_brand'] ?? true) {
+            $brands = $this->productInfo->getBrands($product);
+            if ($brands !== []) {
+                $extraData['brand'] = [
+                    '@type' => 'Brand',
+                    'name' => $brands[0],
+                ];
+            }
+        }
+
+        // Add Manufacturer if available AND enabled
+        if ($settings['schema_manufacturer'] ?? true) {
+            $manufacturer = $this->productInfo->getManufacturer($product);
+            if ($manufacturer !== '') {
+                $extraData['manufacturer'] = [
+                    '@type' => 'Organization',
+                    'name' => $manufacturer,
+                ];
+            }
+        }
+
+        // Add GTIN if available AND enabled
+        if ($settings['schema_gtin'] ?? true) {
+            $gtin = $this->productInfo->getGTIN($product);
+            if ($gtin !== '') {
+                if (strlen($gtin) === 8) {
+                    $extraData['gtin8'] = $gtin;
+                } elseif (strlen($gtin) === 12) {
+                    $extraData['gtin12'] = $gtin;
+                } elseif (strlen($gtin) === 13) {
+                    $extraData['gtin13'] = $gtin;
+                } elseif (strlen($gtin) === 14) {
+                    $extraData['gtin14'] = $gtin;
+                } else {
+                    $extraData['gtin'] = $gtin;
+                }
+            }
+        }
+
+        // Add Unit Price if enabled
+        if ($settings['schema_unit_price'] ?? true) {
+            $unitPrice = $this->priceDisplay->getUnitPrice($product);
+            if ($unitPrice !== null) {
+                $extraData['additionalProperty'][] = [
+                    '@type' => 'PropertyValue',
+                    'name' => 'Cena jednostkowa',
+                    'value' => sprintf('%s / %s %s', $unitPrice->pricePerUnit, $unitPrice->baseAmount, $unitPrice->unit),
+                ];
+                
+                $extraData['polski_unit_price'] = [
+                    'price' => $unitPrice->pricePerUnit,
+                    'unit' => $unitPrice->unit,
+                    'base_amount' => $unitPrice->baseAmount,
+                ];
+            }
+        }
+
+        // Cache the additional generated schema array for 12 hours (cache gets invalidated on product save)
+        set_transient($cacheKey, $extraData, 12 * HOUR_IN_SECONDS);
+
+        return array_merge($data, $extraData);
+    }
+
+    /**
+     * Clear the Schema.org object cache on product save.
+     */
+    public function clearSchemaCache(int $productId): void
+    {
+        delete_transient('spol_schema_' . $productId);
     }
 }

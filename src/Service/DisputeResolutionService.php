@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 final class DisputeResolutionService implements HasHooks
 {
     public function registerHooks(): void
     {
-        $settings = get_option('spolszczony_general', []);
+        $settings = get_option('polski_general', []);
 
         if (! ($settings['dispute_resolution_enabled'] ?? true)) {
             return;
@@ -25,7 +25,7 @@ final class DisputeResolutionService implements HasHooks
             return;
         }
 
-        $settings = get_option('spolszczony_general', []);
+        $settings = get_option('polski_general', []);
         $text = $settings['dispute_resolution_text'] ?? '';
 
         if ($text === '') {
@@ -33,7 +33,7 @@ final class DisputeResolutionService implements HasHooks
         }
 
         printf(
-            '<div class="spolszczony-dispute-resolution"><p>%s</p></div>',
+            '<div class="polski-dispute-resolution"><p>%s</p></div>',
             wp_kses_post($text),
         );
     }

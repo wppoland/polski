@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Block\StoreApi;
+namespace Polski\Block\StoreApi;
 
 use Automattic\WooCommerce\StoreApi\Schemas\V1\ProductSchema;
 use Automattic\WooCommerce\StoreApi\StoreApi;
 use Automattic\WooCommerce\StoreApi\SchemaController;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Service\DeliveryTimeService;
-use Spolszczony\Service\OmnibusService;
-use Spolszczony\Service\PriceDisplayService;
-use Spolszczony\Service\ProductInfoService;
+use Polski\Contract\HasHooks;
+use Polski\Service\DeliveryTimeService;
+use Polski\Service\OmnibusService;
+use Polski\Service\PriceDisplayService;
+use Polski\Service\ProductInfoService;
 
 /**
- * Extends WooCommerce Store API product data with Spolszczony fields.
+ * Extends WooCommerce Store API product data with Polski fields.
  *
  * This makes unit price, omnibus price, delivery time, manufacturer, etc.
  * available in block-based product displays and checkout.
  */
 final class ProductDataExtension implements HasHooks
 {
-    private const NAMESPACE = 'spolszczony';
+    private const NAMESPACE = 'polski';
 
     public function __construct(
         private readonly PriceDisplayService $priceDisplay,
@@ -86,7 +86,7 @@ final class ProductDataExtension implements HasHooks
             'manufacturer' => $this->productInfo->getManufacturer($product),
             'manufacturer_html' => $this->productInfo->getManufacturerHtml($product),
             'gpsr_responsible' => $this->productInfo->getGPSRResponsible($product),
-            'withdrawal_exempt' => $product->get_meta('_spolszczony_withdrawal_exempt', true) === 'yes',
+            'withdrawal_exempt' => $product->get_meta('_polski_withdrawal_exempt', true) === 'yes',
         ];
     }
 
@@ -171,7 +171,7 @@ final class ProductDataExtension implements HasHooks
                 'readonly' => true,
             ],
             'withdrawal_exempt' => [
-                'description' => 'Wylaczony z prawa odstapienia',
+                'description' => 'Wylaczony z prawa odstąpienia',
                 'type' => 'boolean',
                 'context' => ['view'],
                 'readonly' => true,

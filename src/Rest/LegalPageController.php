@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Rest;
+namespace Polski\Rest;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\LegalPageType;
-use Spolszczony\Service\LegalPageService;
+use Polski\Contract\HasHooks;
+use Polski\Enum\LegalPageType;
+use Polski\Service\LegalPageService;
 use WP_REST_Request;
 use WP_REST_Response;
 
 /**
  * REST API controller for legal pages.
  *
- * GET  /spolszczony/v1/legal-pages           - List all legal pages with status
- * POST /spolszczony/v1/legal-pages/generate   - Generate default legal pages
+ * GET  /polski/v1/legal-pages           - List all legal pages with status
+ * POST /polski/v1/legal-pages/generate   - Generate default legal pages
  */
 final class LegalPageController extends RestController implements HasHooks
 {
@@ -44,7 +44,7 @@ final class LegalPageController extends RestController implements HasHooks
 
     public function listPages(WP_REST_Request $request): WP_REST_Response
     {
-        $service = \Spolszczony\Plugin::instance()->container()->get(LegalPageService::class);
+        $service = \Polski\Plugin::instance()->container()->get(LegalPageService::class);
         $status = $service->getConfigurationStatus();
 
         $pages = [];
@@ -70,7 +70,7 @@ final class LegalPageController extends RestController implements HasHooks
 
     public function generatePages(WP_REST_Request $request): WP_REST_Response
     {
-        $service = \Spolszczony\Plugin::instance()->container()->get(LegalPageService::class);
+        $service = \Polski\Plugin::instance()->container()->get(LegalPageService::class);
         $service->createDefaultPages();
 
         // Return updated status.

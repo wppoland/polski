@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Repository;
+namespace Polski\Repository;
 
-use Spolszczony\Enum\CheckboxContext;
-use Spolszczony\Model\ConsentRecord;
+use Polski\Enum\CheckboxContext;
+use Polski\Model\ConsentRecord;
 use wpdb;
 
 /**
@@ -20,7 +20,7 @@ final class ConsentLogRepository
 
     public function tableName(): string
     {
-        return $this->wpdb->prefix . 'spolszczony_consent_log';
+        return $this->wpdb->prefix . 'polski_consent_log';
     }
 
     /**
@@ -130,6 +130,98 @@ final class ConsentLogRepository
     }
 
     /**
+     * Get consent statistics for the dashboard.
+     *
+     * @return array<string, mixed>
+     */
+    public function getStats(int $days = 30): array
+    {
+        $table = $this->tableName();
+        $since = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+
+        // Total consent records.
+        $totalRecords = (int) $this->wpdb->get_var(
+            $this->wpdb->prepare(
+                "SELECT COUNT(*) FROM {$table} WHERE created_at >= %s",
+                $since,
+            ),
+        );
+
+        // Consented vs declined.
+        $consentedCount = (int) $this->wpdb->get_var(
+            $this->wpdb->prepare(
+                "SELECT COUNT(*) FROM {$table} WHERE consented = 1 AND created_at >= %s",
+                $since,
+            ),
+        );
+
+        // Consents per checkbox.
+        $perCheckbox = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                "SELECT checkbox_id,
+                        SUM(consented = 1) AS accepted,
+                        SUM(consented = 0) AS declined,
+                        COUNT(*) AS total
+                 FROM {$table}
+                 WHERE created_at >= %s
+                 GROUP BY checkbox_id
+                 ORDER BY total DESC",
+                $since,
+            ),
+        );
+
+        // Daily consent trend (last N days).
+        $dailyTrend = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                "SELECT DATE(created_at) AS date,
+                        COUNT(*) AS total,
+                        SUM(consented = 1) AS accepted
+                 FROM {$table}
+                 WHERE created_at >= %s
+                 GROUP BY DATE(created_at)
+                 ORDER BY date ASC",
+                $since,
+            ),
+        );
+
+        // Consents by context.
+        $byContext = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                "SELECT context, COUNT(*) AS total, SUM(consented = 1) AS accepted
+                 FROM {$table}
+                 WHERE created_at >= %s
+                 GROUP BY context",
+                $since,
+            ),
+        );
+
+        return [
+            'period_days' => $days,
+            'total_records' => $totalRecords,
+            'consented' => $consentedCount,
+            'declined' => $totalRecords - $consentedCount,
+            'consent_rate' => $totalRecords > 0 ? round(($consentedCount / $totalRecords) * 100, 1) : 0,
+            'per_checkbox' => array_map(static fn (object $row) => [
+                'checkbox_id' => $row->checkbox_id,
+                'accepted' => (int) $row->accepted,
+                'declined' => (int) $row->declined,
+                'total' => (int) $row->total,
+                'rate' => (int) $row->total > 0 ? round(((int) $row->accepted / (int) $row->total) * 100, 1) : 0,
+            ], $perCheckbox),
+            'daily_trend' => array_map(static fn (object $row) => [
+                'date' => $row->date,
+                'total' => (int) $row->total,
+                'accepted' => (int) $row->accepted,
+            ], $dailyTrend),
+            'by_context' => array_map(static fn (object $row) => [
+                'context' => $row->context,
+                'total' => (int) $row->total,
+                'accepted' => (int) $row->accepted,
+            ], $byContext),
+        ];
+    }
+
+    /**
      * Delete all consent records for a user (GDPR data erasure).
      */
     public function deleteByUser(int $userId): int
@@ -142,7 +234,7 @@ final class ConsentLogRepository
     }
 
     /**
-     * Get anonymized client IP (GDPR compliant — last octet zeroed).
+     * Get anonymized client IP (GDPR compliant - last octet zeroed).
      */
     private function getClientIp(): ?string
     {

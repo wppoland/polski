@@ -17,5 +17,5 @@
         }
     },
     "include": ["resources/js/**/*"],
-    "exclude": ["node_modules", "build"]
+    "exclude": ["node_modules", "build", "resources/js/blocks"]
 }

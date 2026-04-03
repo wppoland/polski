@@ -1,0 +1,37 @@
+.polski-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.polski-badges--loop {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.polski-badges--single {
+    margin-bottom: 12px;
+}
+
+.polski-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #fff;
+}
+
+.polski-badge--pill { border-radius: 999px; }
+.polski-badge--rounded { border-radius: 10px; }
+.polski-badge--uppercase { text-transform: uppercase; }
+
+.polski-badge--accent { background: #14532d; }
+.polski-badge--success { background: #0f766e; }
+.polski-badge--warning { background: #b45309; }
+.polski-badge--neutral { background: #475569; }

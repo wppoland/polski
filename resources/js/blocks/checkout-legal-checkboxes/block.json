@@ -1,0 +1,11 @@
+{
+    "name": "polski/checkout-legal-checkboxes",
+    "version": "1.1.0",
+    "title": "Legal Checkboxes",
+    "description": "Polish legal compliance checkboxes for checkout.",
+    "category": "woocommerce",
+    "parent": ["woocommerce/checkout-totals-block"],
+    "attributes": {},
+    "textdomain": "polski",
+    "apiVersion": 3
+}

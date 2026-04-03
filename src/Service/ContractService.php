@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
 
 /**
  * Contract helper: manages delayed payment flow where the order confirmation
@@ -25,7 +25,7 @@ final class ContractService implements Bootable, HasHooks
 
     public function boot(): void
     {
-        $settings = get_option('spolszczony_checkout', []);
+        $settings = get_option('polski_checkout', []);
         $this->enabled = is_array($settings) && (bool) ($settings['delayed_payment_enabled'] ?? false);
     }
 
@@ -64,7 +64,7 @@ final class ContractService implements Bootable, HasHooks
         }
 
         // Store flag for thank-you page.
-        $order->update_meta_data('_spolszczony_delayed_payment', 'yes');
+        $order->update_meta_data('_polski_delayed_payment', 'yes');
         $order->save();
 
         return $result;
@@ -81,16 +81,16 @@ final class ContractService implements Bootable, HasHooks
             return;
         }
 
-        if ($order->is_paid() || $order->get_meta('_spolszczony_delayed_payment') !== 'yes') {
+        if ($order->is_paid() || $order->get_meta('_polski_delayed_payment') !== 'yes') {
             return;
         }
 
         $payUrl = $order->get_checkout_payment_url();
 
         printf(
-            '<div class="spolszczony-pay-now"><a href="%s" class="button alt">%s</a></div>',
+            '<div class="polski-pay-now"><a href="%s" class="button alt">%s</a></div>',
             esc_url($payUrl),
-            esc_html__('Pay Now', 'spolszczony'),
+            esc_html__('Zapłać teraz', 'polski'),
         );
     }
 
@@ -115,14 +115,14 @@ final class ContractService implements Bootable, HasHooks
      */
     private function isDelayedPaymentGateway(string $gatewayId): bool
     {
-        $delayed = ['bacs', 'cheque', 'spolszczony_invoice'];
+        $delayed = ['bacs', 'cheque', 'polski_invoice'];
 
         /**
          * Filter the list of payment gateways that support delayed payment.
          *
          * @param list<string> $delayed Gateway IDs.
          */
-        $delayed = apply_filters('spolszczony/contract/delayed_gateways', $delayed);
+        $delayed = apply_filters('polski/contract/delayed_gateways', $delayed);
 
         return in_array($gatewayId, $delayed, true);
     }

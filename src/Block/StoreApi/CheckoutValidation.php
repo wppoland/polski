@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Block\StoreApi;
+namespace Polski\Block\StoreApi;
 
 use Automattic\WooCommerce\StoreApi\Schemas\V1\CheckoutSchema;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\CheckboxContext;
-use Spolszczony\Service\CheckboxService;
-use Spolszczony\Repository\ConsentLogRepository;
+use Polski\Contract\HasHooks;
+use Polski\Enum\CheckboxContext;
+use Polski\Service\CheckboxService;
+use Polski\Repository\ConsentLogRepository;
 
 /**
- * Block checkout integration: adds Spolszczony validation and data
+ * Block checkout integration: adds Polski validation and data
  * to the WooCommerce checkout block via Store API.
  *
  * Handles:
@@ -39,7 +39,7 @@ final class CheckoutValidation implements HasHooks
         if (function_exists('woocommerce_store_api_register_endpoint_data')) {
             woocommerce_store_api_register_endpoint_data([
                 'endpoint' => CheckoutSchema::IDENTIFIER,
-                'namespace' => 'spolszczony',
+                'namespace' => 'polski',
                 'schema_callback' => [$this, 'getCheckoutSchema'],
                 'data_callback' => [$this, 'getCheckoutData'],
                 'schema_type' => ARRAY_A,
@@ -49,7 +49,7 @@ final class CheckoutValidation implements HasHooks
         // Validate on checkout.
         if (function_exists('woocommerce_store_api_register_update_callback')) {
             woocommerce_store_api_register_update_callback([
-                'namespace' => 'spolszczony',
+                'namespace' => 'polski',
                 'callback' => [$this, 'processCheckoutData'],
             ]);
         }
@@ -66,6 +66,31 @@ final class CheckoutValidation implements HasHooks
         add_filter(
             'render_block_woocommerce/checkout-actions-block',
             [$this, 'filterOrderButtonBlock'],
+        );
+
+        // Register the checkout block integration script.
+        add_action('woocommerce_blocks_enqueue_checkout_block_scripts_after', [$this, 'enqueueBlockScript']);
+    }
+
+    /**
+     * Enqueue the legal checkboxes block script for WC checkout block.
+     */
+    public function enqueueBlockScript(): void
+    {
+        $assetFile = \Polski\PLUGIN_DIR . '/build/blocks/checkout-legal-checkboxes/index.asset.php';
+
+        if (! file_exists($assetFile)) {
+            return;
+        }
+
+        $asset = require $assetFile;
+
+        wp_enqueue_script(
+            'polski-checkout-legal-checkboxes-block',
+            plugins_url('build/blocks/checkout-legal-checkboxes/index.js', \Polski\PLUGIN_FILE),
+            $asset['dependencies'] ?? [],
+            $asset['version'] ?? \Polski\VERSION,
+            true,
         );
     }
 
@@ -109,7 +134,7 @@ final class CheckoutValidation implements HasHooks
     {
         // Store checkbox states in session for later validation.
         if (isset($data['checkboxes']) && is_array($data['checkboxes'])) {
-            WC()->session?->set('spolszczony_checkboxes', $data['checkboxes']);
+            WC()->session?->set('polski_checkboxes', $data['checkboxes']);
         }
     }
 
@@ -119,31 +144,43 @@ final class CheckoutValidation implements HasHooks
     public function validateAndSaveCheckoutData(\WC_Order $order, \WP_REST_Request $request): void
     {
         $extensionData = $request->get_param('extensions') ?? [];
-        $spolszczonyData = $extensionData['spolszczony'] ?? [];
-        $checkboxStates = $spolszczonyData['checkboxes'] ?? [];
+        $polskiData = $extensionData['polski'] ?? [];
+        $checkboxStates = $polskiData['checkboxes'] ?? [];
 
         // Also check session fallback.
         if (empty($checkboxStates)) {
-            $checkboxStates = WC()->session?->get('spolszczony_checkboxes', []) ?? [];
+            $checkboxStates = WC()->session?->get('polski_checkboxes', []) ?? [];
         }
 
         // Validate required checkboxes.
         $checkboxes = $this->checkboxService->getForContext(CheckboxContext::Checkout);
 
         foreach ($checkboxes as $checkbox) {
-            if (! $checkbox->isRequired()) {
+            if (! $checkbox->isRequired() || $checkbox->hideInput) {
                 continue;
             }
 
             $checked = ! empty($checkboxStates[$checkbox->id]);
 
+            /** @see \Polski\Service\CheckboxService::validate() */
+            $shouldValidate = apply_filters(
+                "polski/checkboxes/validate/{$checkbox->id}",
+                true,
+                $checkbox,
+                $checked,
+            );
+
+            if (! $shouldValidate) {
+                continue;
+            }
+
             if (! $checked) {
                 $message = $checkbox->errorMessage !== ''
                     ? $checkbox->errorMessage
-                    : sprintf(__('Please accept: %s', 'spolszczony'), wp_strip_all_tags($checkbox->label));
+                    : sprintf(__('Prosz&#281; zaakceptowa&#263;: %s', 'polski'), wp_strip_all_tags($checkbox->label));
 
-                throw new \Automatic\WooCommerce\StoreApi\Exceptions\RouteException(
-                    'spolszczony_checkbox_' . $checkbox->id,
+                throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException(
+                    $checkbox->getFieldName(),
                     $message,
                     400,
                 );
@@ -152,7 +189,7 @@ final class CheckoutValidation implements HasHooks
 
         // Save to order meta.
         if (! empty($checkboxStates)) {
-            $order->update_meta_data('_spolszczony_checkboxes_accepted', $checkboxStates);
+            $order->update_meta_data('_polski_checkboxes_accepted', $checkboxStates);
         }
 
         // Log consents.
@@ -161,6 +198,9 @@ final class CheckoutValidation implements HasHooks
 
         $states = [];
         foreach ($checkboxes as $checkbox) {
+            if (! $checkbox->logConsent) {
+                continue;
+            }
             $states[$checkbox->id] = ! empty($checkboxStates[$checkbox->id]);
         }
 
@@ -169,7 +209,7 @@ final class CheckoutValidation implements HasHooks
         }
 
         // Clean up session.
-        WC()->session?->set('spolszczony_checkboxes', null);
+        WC()->session?->set('polski_checkboxes', null);
     }
 
     /**
@@ -177,7 +217,7 @@ final class CheckoutValidation implements HasHooks
      */
     public function filterOrderButtonBlock(string $blockContent): string
     {
-        $settings = get_option('spolszczony_checkout', []);
+        $settings = get_option('polski_checkout', []);
         $buttonText = is_array($settings) ? ($settings['order_button_text'] ?? '') : '';
 
         if ($buttonText === '') {

@@ -1,0 +1,94 @@
+DISCLAIMER / WYLACZENIE ODPOWIEDZIALNOSCI
+==========================================
+
+EN:
+
+This plugin ("Polski") is provided by WP Poland (wppoland.com) free of
+charge under the GNU General Public License v2 or later.
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS, COPYRIGHT HOLDERS, OR WP POLAND BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+WITHOUT LIMITING THE FOREGOING, WP POLAND SHALL NOT BE LIABLE FOR:
+- Any direct, indirect, incidental, special, consequential, or exemplary
+  damages, including but not limited to damages for loss of profits, goodwill,
+  data, business interruption, or other intangible losses;
+- Any penalties, fines, or sanctions imposed by regulatory authorities;
+- Any legal proceedings or claims brought against the user by third parties;
+- Any inaccuracies, errors, or omissions in the generated legal texts,
+  compliance suggestions, GDPR scores, or checkbox configurations;
+- Any data loss or corruption resulting from the use of this plugin;
+- Any incompatibilities with third-party plugins, themes, or hosting
+  environments.
+
+LEGAL COMPLIANCE NOTICE:
+This plugin provides tools and templates to assist with Polish and EU
+e-commerce legal compliance. However, it does NOT constitute legal advice
+and should NOT be relied upon as a substitute for professional legal counsel.
+Laws and regulations change frequently, and compliance requirements may vary
+depending on the nature of your business, the products you sell, and the
+jurisdictions in which you operate.
+
+YOU ARE SOLELY RESPONSIBLE FOR:
+- Verifying that all legal texts (terms, privacy policy, return policy) are
+  accurate, complete, and appropriate for your specific business;
+- Ensuring your store complies with all applicable Polish, EU, and
+  international laws and regulations;
+- Keeping your compliance measures up to date as laws change;
+- Seeking professional legal advice when needed.
+
+BY INSTALLING AND ACTIVATING THIS PLUGIN, YOU ACKNOWLEDGE AND AGREE TO THE
+ABOVE TERMS.
+
+--------------------------------------------------------------------------
+
+PL:
+
+Niniejsza wtyczka ("Polski") jest udostepniana przez WP Poland
+(wppoland.com) nieodplatnie na licencji GNU General Public License v2 lub
+pozniejszej.
+
+OPROGRAMOWANIE JEST DOSTARCZANE W STANIE "TAKIM, JAKIM JEST", BEZ JAKIEJKOLWIEK
+GWARANCJI, WYRAZNEJ LUB DOROZUMIANEJ, W TYM BEZ GWARANCJI PRZYDATNOSCI
+HANDLOWEJ, PRZYDATNOSCI DO OKRESLONEGO CELU ORAZ NIENARUSZALNOSCI PRAW. W ZADNYM
+WYPADKU AUTORZY, POSIADACZE PRAW AUTORSKICH ANI WP POLAND NIE PONOSZĄ
+ODPOWIEDZIALNOSCI ZA JAKIEKOLWIEK ROSZCZENIA, SZKODY LUB INNE ZOBOWIAZANIA,
+NIEZALEZNIE OD TEGO, CZY WYNIKAJA ONE Z UMOWY, CZYNU NIEDOZWOLONEGO CZY INNEJ
+PODSTAWY PRAWNEJ, A ZWIAZANE SA Z OPROGRAMOWANIEM LUB JEGO UZYWANIEM.
+
+W SZCZEGOLNOSCI WP POLAND NIE PONOSI ODPOWIEDZIALNOSCI ZA:
+- Jakiekolwiek szkody bezposrednie, posrednie, przypadkowe, szczegolne,
+  wynikowe lub przykladowe, w tym utrate zyskow, wartosci firmy, danych,
+  przerwy w dzialalnosci lub inne straty niematerialne;
+- Kary, grzywny lub sankcje nakladane przez organy regulacyjne;
+- Postepowania prawne lub roszczenia osob trzecich wobec uzytkownika;
+- Niedonosci, bledy lub braki w generowanych tekstach prawnych, sugestiach
+  dotyczacych zgodnosci, wynikach RODO lub konfiguracji checkboxow;
+- Utrate lub uszkodzenie danych w wyniku korzystania z wtyczki;
+- Niezgodnosci z wtyczkami, motywami lub srodowiskami hostingowymi osob
+  trzecich.
+
+INFORMACJA O ZGODNOSCI PRAWNEJ:
+Wtyczka zapewnia narzedzia i szablony wspomagajace zgodnosc z polskim
+i unijnym prawem e-commerce. Nie stanowi jednak porady prawnej i nie
+powinna byc traktowana jako substytut profesjonalnej konsultacji prawnej.
+Przepisy prawa zmieniaja sie czesto, a wymagania dotyczace zgodnosci
+moga sie roznic w zaleznosci od rodzaju dzialalnosci, oferowanych produktow
+i jurysdykcji, w ktorych prowadzona jest dzialalnosc.
+
+UZYTKOWNIK PONOSI WYLACZNA ODPOWIEDZIALNOSC ZA:
+- Weryfikacje, czy wszystkie teksty prawne (regulamin, polityka prywatnosci,
+  polityka zwrotow) sa dokladne, kompletne i odpowiednie dla jego
+  konkretnej dzialalnosci;
+- Zapewnienie, ze sklep jest zgodny ze wszystkimi obowiazujacymi przepisami
+  polskiego, unijnego i miedzynarodowego prawa;
+- Aktualizowanie srodkow zgodnosci w miare zmian przepisow;
+- Korzystanie z profesjonalnej pomocy prawnej w razie potrzeby.
+
+INSTALUJAC I AKTYWUJAC TE WTYCZKE, UZYTKOWNIK POTWIERDZA I AKCEPTUJE
+POWYZSZE WARUNKI.

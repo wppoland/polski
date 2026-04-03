@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * CartFlows compatibility.
  *
- * Ensures Spolszczony legal checkboxes and button text
+ * Ensures Polski legal checkboxes and button text
  * work correctly on CartFlows checkout pages.
  */
 final class CartFlowsCompat implements HasHooks
@@ -25,7 +25,7 @@ final class CartFlowsCompat implements HasHooks
     }
 
     /**
-     * Ensure Spolszczony checkout hooks fire on CartFlows checkout pages.
+     * Ensure Polski checkout hooks fire on CartFlows checkout pages.
      */
     public function ensureCheckoutHooks(): void
     {
@@ -33,10 +33,10 @@ final class CartFlowsCompat implements HasHooks
         // so our hooks on woocommerce_review_order_before_submit should fire.
         // This is a safety check.
         if (! has_action('woocommerce_review_order_before_submit', [
-            \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Hook\CheckoutHooks::class),
+            \Polski\Plugin::instance()->container()->get(\Polski\Hook\CheckoutHooks::class),
             'renderCheckoutCheckboxes',
         ])) {
-            $hooks = \Spolszczony\Plugin::instance()->container()->get(\Spolszczony\Hook\CheckoutHooks::class);
+            $hooks = \Polski\Plugin::instance()->container()->get(\Polski\Hook\CheckoutHooks::class);
             add_action('woocommerce_review_order_before_submit', [$hooks, 'renderCheckoutCheckboxes'], 10);
         }
     }

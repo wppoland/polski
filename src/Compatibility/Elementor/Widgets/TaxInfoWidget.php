@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 final class TaxInfoWidget extends BaseProductWidget
 {
     public function get_name(): string
     {
-        return 'spolszczony-tax-info';
+        return 'polski-tax-info';
     }
 
     public function get_title(): string
@@ -24,7 +24,7 @@ final class TaxInfoWidget extends BaseProductWidget
     {
         $product = $this->getProduct();
         if ($product === null) { return; }
-        $html = $this->container()->get(\Spolszczony\Service\\PriceDisplayService::class)->getVatNoticeHtml($product);
+        $html = $this->container()->get(\Polski\Service\PriceDisplayService::class)->getVatNoticeHtml($product);
 
         if ($html !== '') {
             echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

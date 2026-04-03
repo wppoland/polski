@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Util;
+namespace Polski\Util;
 
 /**
  * Input sanitization helpers that wrap WordPress functions for type safety.

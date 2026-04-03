@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Migration;
+namespace Polski\Migration;
 
 /**
  * Adds storage for B2B quote requests.
@@ -15,7 +15,7 @@ final class Migration_1_1_0
     {
         global $wpdb;
 
-        $table = $wpdb->prefix . 'spolszczony_quote_requests';
+        $table = $wpdb->prefix . 'polski_quote_requests';
         $charsetCollate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE {$table} (

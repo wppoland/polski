@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 use Elementor\Widget_Base;
 
 /**
- * Base class for all Spolszczony Elementor product widgets.
+ * Base class for all Polski Elementor product widgets.
  *
  * Each widget renders the same output as the corresponding PHP template
  * or shortcode, ensuring consistency between Elementor and non-Elementor pages.
  *
  * Ready for Elementor 4.0 migration - widgets use minimal controls
- * and delegate rendering to Spolszczony services.
+ * and delegate rendering to Polski services.
  */
 abstract class BaseProductWidget extends Widget_Base
 {
     public function get_categories(): array
     {
-        return ['spolszczony'];
+        return ['polski'];
     }
 
     public function get_icon(): string
@@ -52,10 +52,10 @@ abstract class BaseProductWidget extends Widget_Base
     }
 
     /**
-     * Get the Spolszczony DI container.
+     * Get the Polski DI container.
      */
-    protected function container(): \Spolszczony\Container
+    protected function container(): \Polski\Container
     {
-        return \Spolszczony\Plugin::instance()->container();
+        return \Polski\Plugin::instance()->container();
     }
 }

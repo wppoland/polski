@@ -1,0 +1,17 @@
+.polski-wishlist-button {
+    margin-top: 0.75rem;
+}
+
+.polski-wishlist-button.is-active {
+    background: #f3d6db;
+    border-color: #d97b8a;
+    color: #7b1f2e;
+}
+
+.polski-wishlist-button--loop {
+    width: 100%;
+}
+
+.polski-wishlist-account .products {
+    margin-top: 1rem;
+}

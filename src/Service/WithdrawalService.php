@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\WithdrawalStatus;
-use Spolszczony\Model\WithdrawalRequest;
-use Spolszczony\Repository\WithdrawalRepository;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Enum\WithdrawalStatus;
+use Polski\Model\WithdrawalRequest;
+use Polski\Repository\WithdrawalRepository;
 
 /**
- * 14-day consumer withdrawal right (prawo odstapienia od umowy).
+ * 14-day consumer withdrawal right (prawo odstąpienia od umowy).
  *
  * Handles the full flow: eligibility check, request creation, confirmation,
  * completion, and email notifications.
@@ -28,6 +28,16 @@ final class WithdrawalService implements Bootable, HasHooks
 
     public function boot(): void
     {
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getSettings(): array
+    {
+        $settings = get_option('polski_withdrawal', []);
+
+        return is_array($settings) ? $settings : [];
     }
 
     public function registerHooks(): void
@@ -78,7 +88,7 @@ final class WithdrawalService implements Bootable, HasHooks
             }
             $product = $item->get_product();
             if ($product instanceof \WC_Product) {
-                $exempt = $product->get_meta('_spolszczony_withdrawal_exempt', true);
+                $exempt = $product->get_meta('_polski_withdrawal_exempt', true);
                 if ($exempt !== 'yes') {
                     $allExempt = false;
                     break;
@@ -96,7 +106,7 @@ final class WithdrawalService implements Bootable, HasHooks
          * @param bool      $eligible Whether the order is eligible.
          * @param \WC_Order $order    The order.
          */
-        return (bool) apply_filters('spolszczony/withdrawal/eligible', true, $order);
+        return (bool) apply_filters('polski/withdrawal/eligible', true, $order);
     }
 
     /**
@@ -131,12 +141,12 @@ final class WithdrawalService implements Bootable, HasHooks
         if ($request !== null) {
             // Add order note.
             $order->add_order_note(
-                __('Customer submitted a withdrawal request.', 'spolszczony'),
+                (string) ($this->getSettings()['requested_order_note'] ?? __('Klient złożył wniosek o odstąpienie od umowy.', 'polski')),
                 false,
                 true,
             );
 
-            do_action('spolszczony/withdrawal/requested', $request);
+            do_action('polski/withdrawal/requested', $request);
         }
 
         return $request;
@@ -157,12 +167,12 @@ final class WithdrawalService implements Bootable, HasHooks
 
         if ($result) {
             $request->status = WithdrawalStatus::Confirmed;
-            do_action('spolszczony/withdrawal/confirmed', $request);
+            do_action('polski/withdrawal/confirmed', $request);
 
             $order = wc_get_order($request->orderId);
             if ($order instanceof \WC_Order) {
                 $order->add_order_note(
-                    __('Withdrawal request confirmed.', 'spolszczony'),
+                    (string) ($this->getSettings()['confirmed_order_note'] ?? __('Wniosek o odstąpienie potwierdzony.', 'polski')),
                     true,
                     true,
                 );
@@ -187,7 +197,7 @@ final class WithdrawalService implements Bootable, HasHooks
 
         if ($result) {
             $request->status = WithdrawalStatus::Completed;
-            do_action('spolszczony/withdrawal/completed', $request);
+            do_action('polski/withdrawal/completed', $request);
         }
 
         return $result;
@@ -211,14 +221,14 @@ final class WithdrawalService implements Bootable, HasHooks
     public function addWithdrawalAction(array $actions, \WC_Order $order): array
     {
         if ($this->isEligible($order)) {
-            $actions['spolszczony_withdraw'] = [
+            $actions['polski_withdraw'] = [
                 'url' => wp_nonce_url(
                     add_query_arg([
-                        'spolszczony_withdrawal' => $order->get_id(),
+                        'polski_withdrawal' => $order->get_id(),
                     ], wc_get_account_endpoint_url('orders')),
-                    'spolszczony_withdrawal_' . $order->get_id(),
+                    'polski_withdrawal_' . $order->get_id(),
                 ),
-                'name' => __('Withdraw', 'spolszczony'),
+                'name' => (string) ($this->getSettings()['button_text'] ?? __('Odstąp od umowy', 'polski')),
             ];
         }
 
@@ -230,45 +240,45 @@ final class WithdrawalService implements Bootable, HasHooks
      */
     public function handleWithdrawalFormSubmission(): void
     {
-        if (! isset($_GET['spolszczony_withdrawal'])) {
+        if (! isset($_GET['polski_withdrawal'])) {
             return;
         }
 
-        $orderId = (int) $_GET['spolszczony_withdrawal'];
+        $orderId = (int) $_GET['polski_withdrawal'];
         $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
 
-        if (! wp_verify_nonce($nonce, 'spolszczony_withdrawal_' . $orderId)) {
-            wc_add_notice(__('Invalid request. Please try again.', 'spolszczony'), 'error');
+        if (! wp_verify_nonce($nonce, 'polski_withdrawal_' . $orderId)) {
+            wc_add_notice((string) ($this->getSettings()['invalid_nonce_text'] ?? __('Ups, coś poszło nie tak po naszej stronie. Spróbuj ponownie, proszę!', 'polski')), 'error');
             return;
         }
 
         $order = wc_get_order($orderId);
 
         if (! $order instanceof \WC_Order) {
-            wc_add_notice(__('Order not found.', 'spolszczony'), 'error');
+            wc_add_notice((string) ($this->getSettings()['order_not_found_text'] ?? __('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski')), 'error');
             return;
         }
 
         // Verify ownership.
         if ($order->get_customer_id() !== get_current_user_id()) {
-            wc_add_notice(__('You do not have permission to withdraw this order.', 'spolszczony'), 'error');
+            wc_add_notice((string) ($this->getSettings()['permission_error_text'] ?? __('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski')), 'error');
             return;
         }
 
-        $reason = isset($_POST['spolszczony_withdrawal_reason'])
-            ? sanitize_textarea_field(wp_unslash($_POST['spolszczony_withdrawal_reason']))
+        $reason = isset($_POST['polski_withdrawal_reason'])
+            ? sanitize_textarea_field(wp_unslash($_POST['polski_withdrawal_reason']))
             : null;
 
         $request = $this->createRequest($orderId, $reason);
 
         if ($request !== null) {
             wc_add_notice(
-                __('Your withdrawal request has been submitted. You will receive a confirmation email.', 'spolszczony'),
+                (string) ($this->getSettings()['success_text'] ?? __('Twój wniosek o zwrot został przyjęty. Niedługo wyślemy Ci potwierdzenie na e-mail!', 'polski')),
                 'success',
             );
         } else {
             wc_add_notice(
-                __('This order is not eligible for withdrawal.', 'spolszczony'),
+                (string) ($this->getSettings()['not_eligible_text'] ?? __('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski')),
                 'error',
             );
         }
@@ -290,11 +300,11 @@ final class WithdrawalService implements Bootable, HasHooks
 
         printf(
             '<h2>%s</h2><p>%s: <strong>%s</strong></p><p>%s: %s</p>',
-            esc_html__('Withdrawal Request', 'spolszczony'),
-            esc_html__('Status', 'spolszczony'),
+            esc_html((string) ($this->getSettings()['status_heading'] ?? __('Wniosek o odstąpienie', 'polski'))),
+            esc_html((string) ($this->getSettings()['status_label'] ?? __('Status', 'polski'))),
             esc_html($request->status->label()),
-            esc_html__('Submitted', 'spolszczony'),
-            esc_html($request->requestedAt->format('Y-m-d H:i')),
+            esc_html((string) ($this->getSettings()['submitted_label'] ?? __('Złożono', 'polski'))),
+            esc_html($request->requestedAt->format((string) ($this->getSettings()['status_date_format'] ?? 'Y-m-d H:i'))),
         );
     }
 
@@ -308,7 +318,7 @@ final class WithdrawalService implements Bootable, HasHooks
         $fields = [
             'reason' => [
                 'type' => 'textarea',
-                'label' => __('Reason for withdrawal (optional)', 'spolszczony'),
+                'label' => (string) ($this->getSettings()['reason_label'] ?? __('Powód odstąpienia (opcjonalnie)', 'polski')),
                 'required' => false,
             ],
         ];
@@ -318,7 +328,7 @@ final class WithdrawalService implements Bootable, HasHooks
          *
          * @param array<string, array<string, mixed>> $fields
          */
-        return (array) apply_filters('spolszczony/withdrawal/form_fields', $fields);
+        return (array) apply_filters('polski/withdrawal/form_fields', $fields);
     }
 
     private function getWithdrawalDays(): int
@@ -328,6 +338,6 @@ final class WithdrawalService implements Bootable, HasHooks
          *
          * @param int $days Default 14.
          */
-        return (int) apply_filters('spolszczony/withdrawal/period_days', self::WITHDRAWAL_PERIOD_DAYS);
+        return (int) apply_filters('polski/withdrawal/period_days', self::WITHDRAWAL_PERIOD_DAYS);
     }
 }

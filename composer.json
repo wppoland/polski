@@ -1,5 +1,5 @@
 {
-    "name": "wppoland/spolszczony",
+    "name": "wppoland/polski",
     "description": "Polish e-commerce legal compliance for WooCommerce",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spolszczony\\": "src/"
+            "Polski\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spolszczony\\Tests\\": "tests/"
+            "Polski\\Tests\\": "tests/"
         }
     },
     "scripts": {

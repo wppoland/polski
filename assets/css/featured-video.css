@@ -1,0 +1,20 @@
+.polski-featured-video {
+    margin-top: 16px;
+}
+
+.polski-featured-video__title {
+    margin-bottom: 12px;
+}
+
+.polski-featured-video__embed {
+    position: relative;
+}
+
+.polski-featured-video__embed iframe,
+.polski-featured-video__embed video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    border-radius: 14px;
+}

@@ -3,52 +3,45 @@
  * Withdrawal confirmation email (HTML).
  *
  * @var WC_Order                              $order
- * @var \Spolszczony\Model\WithdrawalRequest  $request
+ * @var \Polski\Model\WithdrawalRequest  $request
  * @var string                                $email_heading
  * @var string                                $additional_content
  * @var bool                                  $sent_to_admin
  * @var bool                                  $plain_text
  * @var WC_Email                              $email
  *
- * @package Spolszczony/Templates/Emails
+ * @package Polski/Templates/Emails
  */
 
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+$settings = get_option('polski_withdrawal', []);
+$settings = is_array($settings) ? $settings : [];
+$greeting = str_replace('{name}', (string) $order->get_billing_first_name(), (string) ($settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')));
+$intro = str_replace('{order_number}', (string) $order->get_order_number(), (string) ($settings['email_intro_text'] ?? __('Twój wniosek o odstąpienie dla zamówienia #{order_number} został potwierdzony.', 'polski')));
+
 do_action('woocommerce_email_header', $email_heading, $email);
 ?>
 
 <p>
-    <?php
-    printf(
-        /* translators: %s: customer first name */
-        esc_html__('Dear %s,', 'spolszczony'),
-        esc_html($order->get_billing_first_name()),
-    );
-    ?>
+    <?php echo esc_html($greeting); ?>
 </p>
 
 <p>
-    <?php
-    printf(
-        /* translators: %s: order number */
-        esc_html__('Your withdrawal request for order #%s has been confirmed.', 'spolszczony'),
-        esc_html($order->get_order_number()),
-    );
-    ?>
+    <?php echo esc_html($intro); ?>
 </p>
 
 <?php if ($request->reason) : ?>
 <p>
-    <strong><?php esc_html_e('Your reason:', 'spolszczony'); ?></strong><br />
+    <strong><?php echo esc_html((string) ($settings['email_reason_label'] ?? __('Twój powód', 'polski'))); ?>:</strong><br />
     <?php echo esc_html($request->reason); ?>
 </p>
 <?php endif; ?>
 
 <p>
-    <?php esc_html_e('Please return the items to the following address within 14 days:', 'spolszczony'); ?>
+    <?php echo esc_html((string) ($settings['email_return_instruction'] ?? __('Odeślij produkty na poniższy adres w ciągu 14 dni:', 'polski'))); ?>
 </p>
 
 <p>

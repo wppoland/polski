@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Repository;
+namespace Polski\Repository;
 
-use Spolszczony\Enum\WithdrawalStatus;
-use Spolszczony\Model\WithdrawalRequest;
+use Polski\Enum\WithdrawalStatus;
+use Polski\Model\WithdrawalRequest;
 use wpdb;
 
 /**
@@ -20,7 +20,7 @@ final class WithdrawalRepository
 
     public function tableName(): string
     {
-        return $this->wpdb->prefix . 'spolszczony_withdrawals';
+        return $this->wpdb->prefix . 'polski_withdrawals';
     }
 
     /**

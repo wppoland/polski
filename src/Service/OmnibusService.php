@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\PriceType;
-use Spolszczony\Model\OmnibusPrice;
-use Spolszczony\Repository\OmnibusPriceRepository;
-use Spolszczony\Util\Formatter;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Enum\PriceType;
+use Polski\Model\OmnibusPrice;
+use Polski\Repository\OmnibusPriceRepository;
+use Polski\Util\Formatter;
 
 /**
- * Omnibus Directive compliance — tracks product prices and displays the lowest
+ * Omnibus Directive compliance - tracks product prices and displays the lowest
  * price from the last 30 days when a product is on sale.
  *
  * Acts as a built-in fallback. When WC Price History or Omnibus by iworks is
@@ -53,7 +53,7 @@ final class OmnibusService implements Bootable, HasHooks
         add_action('woocommerce_save_product_variation', [$this, 'onVariationSave'], 10, 2);
 
         // Daily cleanup.
-        add_action('spolszczony_daily_maintenance', [$this, 'pruneOldRecords']);
+        add_action('polski_daily_maintenance', [$this, 'pruneOldRecords']);
     }
 
     /**
@@ -120,7 +120,7 @@ final class OmnibusService implements Bootable, HasHooks
          * @param float $price     The regular price.
          * @param ?float $salePrice The sale price, or null.
          */
-        do_action('spolszczony/omnibus/price_recorded', $product->get_id(), $regularPrice, $saleFloat);
+        do_action('polski/omnibus/price_recorded', $product->get_id(), $regularPrice, $saleFloat);
     }
 
     /**
@@ -161,7 +161,7 @@ final class OmnibusService implements Bootable, HasHooks
         ]);
 
         $html = sprintf(
-            '<div class="spolszczony-omnibus-price"><span class="spolszczony-omnibus-price__text">%s</span></div>',
+            '<div class="polski-omnibus-price"><span class="polski-omnibus-price__text">%s</span></div>',
             esc_html($text),
         );
 
@@ -172,7 +172,7 @@ final class OmnibusService implements Bootable, HasHooks
          * @param ?OmnibusPrice $lowest  The lowest price record.
          * @param \WC_Product   $product The product.
          */
-        return (string) apply_filters('spolszczony/price/omnibus_html', $html, $lowest, $product);
+        return (string) apply_filters('polski/price/omnibus_html', $html, $lowest, $product);
     }
 
     /**
@@ -208,7 +208,7 @@ final class OmnibusService implements Bootable, HasHooks
          *
          * @param int $deleted Number of records deleted.
          */
-        do_action('spolszczony/omnibus/history_pruned', $deleted);
+        do_action('polski/omnibus/history_pruned', $deleted);
     }
 
     public function isEnabled(): bool
@@ -221,7 +221,7 @@ final class OmnibusService implements Bootable, HasHooks
      */
     private function getSettings(): array
     {
-        $settings = get_option('spolszczony_omnibus', []);
+        $settings = get_option('polski_omnibus', []);
         return is_array($settings) ? $settings : [];
     }
 }

@@ -1,0 +1,43 @@
+.woocommerce-product-gallery__image {
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.polski-gallery-zoomable {
+    transition: transform .22s ease;
+    cursor: zoom-in;
+}
+
+.woocommerce-product-gallery__image:hover .polski-gallery-zoomable {
+    transform: scale(var(--polski-gallery-zoom-scale, 1.45));
+}
+
+.polski-gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .82);
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+}
+
+.polski-gallery-lightbox img {
+    max-width: min(92vw, 1200px);
+    max-height: 88vh;
+    border-radius: 16px;
+}
+
+.polski-gallery-lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+body.polski-gallery-lightbox-open {
+    overflow: hidden;
+}

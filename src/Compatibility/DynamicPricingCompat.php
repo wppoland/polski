@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * WooCommerce Dynamic Pricing compatibility.
@@ -21,7 +21,7 @@ final class DynamicPricingCompat implements HasHooks
         }
 
         // Recalculate unit price after dynamic pricing adjusts the price.
-        add_filter('spolszczony/price/unit_price_html', [$this, 'recalculateUnitPrice'], 10, 3);
+        add_filter('polski/price/unit_price_html', [$this, 'recalculateUnitPrice'], 10, 3);
 
         // Record the adjusted price for Omnibus tracking.
         add_action('woocommerce_before_calculate_totals', [$this, 'trackAdjustedPrices'], 99);
@@ -29,7 +29,7 @@ final class DynamicPricingCompat implements HasHooks
 
     /**
      * @param string $html
-     * @param \Spolszczony\Model\UnitPrice $unitPrice
+     * @param \Polski\Model\UnitPrice $unitPrice
      * @param \WC_Product $product
      */
     public function recalculateUnitPrice(string $html, $unitPrice, \WC_Product $product): string

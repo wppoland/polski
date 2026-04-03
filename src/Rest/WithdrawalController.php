@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Rest;
+namespace Polski\Rest;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\WithdrawalStatus;
-use Spolszczony\Repository\WithdrawalRepository;
-use Spolszczony\Service\WithdrawalService;
+use Polski\Contract\HasHooks;
+use Polski\Enum\WithdrawalStatus;
+use Polski\Repository\WithdrawalRepository;
+use Polski\Service\WithdrawalService;
 use WP_REST_Request;
 use WP_REST_Response;
 
 /**
  * REST API controller for withdrawal requests.
  *
- * GET    /spolszczony/v1/withdrawals           - List all withdrawals (admin)
- * POST   /spolszczony/v1/withdrawals           - Submit withdrawal (customer)
- * PUT    /spolszczony/v1/withdrawals/{id}       - Update status (admin)
+ * GET    /polski/v1/withdrawals           - List all withdrawals (admin)
+ * POST   /polski/v1/withdrawals           - Submit withdrawal (customer)
+ * PUT    /polski/v1/withdrawals/{id}       - Update status (admin)
  */
 final class WithdrawalController extends RestController implements HasHooks
 {
@@ -89,7 +89,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
     public function listWithdrawals(WP_REST_Request $request): WP_REST_Response
     {
-        $container = \Spolszczony\Plugin::instance()->container();
+        $container = \Polski\Plugin::instance()->container();
         $repository = $container->get(WithdrawalRepository::class);
 
         $statusParam = $request->get_param('status');
@@ -118,7 +118,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if (! $order instanceof \WC_Order) {
             return new WP_REST_Response(
-                ['message' => __('Order not found.', 'spolszczony')],
+                ['message' => __('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski')],
                 404,
             );
         }
@@ -128,20 +128,20 @@ final class WithdrawalController extends RestController implements HasHooks
             $currentUser = get_current_user_id();
             if ($currentUser <= 0 || $order->get_customer_id() !== $currentUser) {
                 return new WP_REST_Response(
-                    ['message' => __('You do not have permission to withdraw this order.', 'spolszczony')],
+                    ['message' => __('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski')],
                     403,
                 );
             }
         }
 
-        $container = \Spolszczony\Plugin::instance()->container();
+        $container = \Polski\Plugin::instance()->container();
         $service = $container->get(WithdrawalService::class);
 
         $withdrawal = $service->createRequest($orderId, $reason);
 
         if ($withdrawal === null) {
             return new WP_REST_Response(
-                ['message' => __('This order is not eligible for withdrawal.', 'spolszczony')],
+                ['message' => __('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski')],
                 400,
             );
         }
@@ -157,12 +157,12 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if ($newStatus === null) {
             return new WP_REST_Response(
-                ['message' => __('Invalid status.', 'spolszczony')],
+                ['message' => __('Nieprawidłowy status.', 'polski')],
                 400,
             );
         }
 
-        $container = \Spolszczony\Plugin::instance()->container();
+        $container = \Polski\Plugin::instance()->container();
         $service = $container->get(WithdrawalService::class);
 
         $result = match ($newStatus) {
@@ -174,7 +174,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if (! $result) {
             return new WP_REST_Response(
-                ['message' => __('Status transition not allowed.', 'spolszczony')],
+                ['message' => __('Zmiana statusu niedozwolona.', 'polski')],
                 400,
             );
         }

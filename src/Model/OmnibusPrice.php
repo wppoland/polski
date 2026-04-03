@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Model;
+namespace Polski\Model;
 
-use Spolszczony\Enum\PriceType;
+use Polski\Enum\PriceType;
 
 /**
  * Value object representing a recorded price snapshot for Omnibus compliance.

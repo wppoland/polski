@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Util;
+namespace Polski\Util;
 
 /**
  * Polish-locale formatting utilities.

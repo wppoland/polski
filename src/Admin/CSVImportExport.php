@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Admin;
+namespace Polski\Admin;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
- * Extends WooCommerce product CSV import/export with Spolszczony fields.
+ * Extends WooCommerce product CSV import/export with Polski fields.
  */
 final class CSVImportExport implements HasHooks
 {
     /** @var array<string, string> */
     private const COLUMN_MAP = [
-        'spolszczony_unit_price_base' => '_spolszczony_unit_price_base',
-        'spolszczony_unit_price_unit' => '_spolszczony_unit_price_unit',
-        'spolszczony_unit_price_amount' => '_spolszczony_unit_price_product_amount',
-        'spolszczony_delivery_time' => '_spolszczony_delivery_time_id',
-        'spolszczony_gpsr_responsible' => '_spolszczony_gpsr_responsible',
-        'spolszczony_power_supply' => '_spolszczony_power_supply',
-        'spolszczony_defect_description' => '_spolszczony_defect_description',
-        'spolszczony_withdrawal_exempt' => '_spolszczony_withdrawal_exempt',
-        'spolszczony_ingredients' => '_spolszczony_ingredients',
-        'spolszczony_nutri_score' => '_spolszczony_nutri_score',
-        'spolszczony_alcohol_content' => '_spolszczony_alcohol_content',
-        'spolszczony_place_of_origin' => '_spolszczony_place_of_origin',
-        'spolszczony_net_filling' => '_spolszczony_net_filling_quantity',
+        'polski_unit_price_base' => '_polski_unit_price_base',
+        'polski_unit_price_unit' => '_polski_unit_price_unit',
+        'polski_unit_price_amount' => '_polski_unit_price_product_amount',
+        'polski_delivery_time' => '_polski_delivery_time_id',
+        'polski_gpsr_responsible' => '_polski_gpsr_responsible',
+        'polski_power_supply' => '_polski_power_supply',
+        'polski_defect_description' => '_polski_defect_description',
+        'polski_withdrawal_exempt' => '_polski_withdrawal_exempt',
+        'polski_ingredients' => '_polski_ingredients',
+        'polski_nutri_score' => '_polski_nutri_score',
+        'polski_alcohol_content' => '_polski_alcohol_content',
+        'polski_place_of_origin' => '_polski_place_of_origin',
+        'polski_net_filling' => '_polski_net_filling_quantity',
     ];
 
     public function registerHooks(): void
@@ -57,19 +57,19 @@ final class CSVImportExport implements HasHooks
      */
     public function addExportColumns(array $columns): array
     {
-        $columns['spolszczony_unit_price_base'] = __('Unit price base', 'spolszczony');
-        $columns['spolszczony_unit_price_unit'] = __('Unit price unit', 'spolszczony');
-        $columns['spolszczony_unit_price_amount'] = __('Product amount', 'spolszczony');
-        $columns['spolszczony_delivery_time'] = __('Delivery time ID', 'spolszczony');
-        $columns['spolszczony_gpsr_responsible'] = __('GPSR responsible', 'spolszczony');
-        $columns['spolszczony_power_supply'] = __('Power supply', 'spolszczony');
-        $columns['spolszczony_defect_description'] = __('Defect description', 'spolszczony');
-        $columns['spolszczony_withdrawal_exempt'] = __('Withdrawal exempt', 'spolszczony');
-        $columns['spolszczony_ingredients'] = __('Ingredients', 'spolszczony');
-        $columns['spolszczony_nutri_score'] = __('Nutri-Score', 'spolszczony');
-        $columns['spolszczony_alcohol_content'] = __('Alcohol content', 'spolszczony');
-        $columns['spolszczony_place_of_origin'] = __('Place of origin', 'spolszczony');
-        $columns['spolszczony_net_filling'] = __('Net filling quantity', 'spolszczony');
+        $columns['polski_unit_price_base'] = __('Bazowa cena jednostkowa', 'polski');
+        $columns['polski_unit_price_unit'] = __('Jednostka ceny jednostkowej', 'polski');
+        $columns['polski_unit_price_amount'] = __('Ilość produktu', 'polski');
+        $columns['polski_delivery_time'] = __('ID czasu dostawy', 'polski');
+        $columns['polski_gpsr_responsible'] = __('Osoba odpowiedzialna (GPSR)', 'polski');
+        $columns['polski_power_supply'] = __('Zasilanie', 'polski');
+        $columns['polski_defect_description'] = __('Opis wady', 'polski');
+        $columns['polski_withdrawal_exempt'] = __('Wyłączenie z prawa odstąpienia', 'polski');
+        $columns['polski_ingredients'] = __('Składniki', 'polski');
+        $columns['polski_nutri_score'] = __('Nutri-Score', 'polski');
+        $columns['polski_alcohol_content'] = __('Zawartość alkoholu', 'polski');
+        $columns['polski_place_of_origin'] = __('Kraj pochodzenia', 'polski');
+        $columns['polski_net_filling'] = __('Ilość netto', 'polski');
 
         return $columns;
     }
@@ -90,7 +90,7 @@ final class CSVImportExport implements HasHooks
     public function addImportMappingDefaults(array $columns): array
     {
         foreach (self::COLUMN_MAP as $csvKey => $metaKey) {
-            $label = str_replace('spolszczony_', 'Spolszczony: ', $csvKey);
+            $label = str_replace('polski_', 'Polski: ', $csvKey);
             $columns[$label] = $csvKey;
         }
 
@@ -98,7 +98,7 @@ final class CSVImportExport implements HasHooks
     }
 
     /**
-     * Process imported Spolszczony fields.
+     * Process imported Polski fields.
      *
      * @param \WC_Product          $product
      * @param array<string, mixed> $data

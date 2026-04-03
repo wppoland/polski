@@ -2,24 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Admin\ModulesPage;
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Util\TemplateLoader;
+use Polski\Admin\ModulesPage;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Util\SettingsCacheable;
+use Polski\Util\TemplateLoader;
 
 /**
  * B2B catalog mode for hiding prices and purchase actions.
  */
 final class CatalogModeService implements Bootable, HasHooks
 {
-    private const OPTION = 'spolszczony_catalog';
+    use SettingsCacheable;
 
-    /**
-     * @var array<string, mixed>|null
-     */
-    private ?array $settings = null;
+    private const OPTION = 'polski_catalog';
 
     public function __construct(
         private readonly TemplateLoader $templateLoader,
@@ -37,25 +35,6 @@ final class CatalogModeService implements Bootable, HasHooks
         add_filter('woocommerce_get_price_html', [$this, 'filterPriceHtml'], 30, 2);
         add_filter('woocommerce_loop_add_to_cart_link', [$this, 'filterLoopAddToCartLink'], 30, 3);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleNotice'], 30);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getSettings(): array
-    {
-        if ($this->settings !== null) {
-            return $this->settings;
-        }
-
-        $defaults = require \Spolszczony\PLUGIN_DIR . '/config/defaults.php';
-        $defaultSettings = is_array($defaults[self::OPTION] ?? null) ? $defaults[self::OPTION] : [];
-        $saved = get_option(self::OPTION, []);
-        $saved = is_array($saved) ? $saved : [];
-
-        $this->settings = wp_parse_args($saved, $defaultSettings);
-
-        return $this->settings;
     }
 
     public function isEnabled(): bool
@@ -87,7 +66,7 @@ final class CatalogModeService implements Bootable, HasHooks
         }
 
         return sprintf(
-            '<span class="spolszczony-catalog-mode-price">%s</span>',
+            '<span class="polski-catalog-mode-price">%s</span>',
             esc_html($this->getHiddenPriceText($product)),
         );
     }
@@ -106,7 +85,7 @@ final class CatalogModeService implements Bootable, HasHooks
         return $this->templateLoader->render('loop/catalog-mode-cta', [
             'cta' => $cta,
             'product' => $product,
-            'notice' => (string) ($this->getSettings()['loop_notice'] ?? ''),
+            'notice' => $this->shouldShowLoopNotice() ? (string) ($this->getSettings()['loop_notice'] ?? '') : '',
         ]);
     }
 
@@ -128,6 +107,10 @@ final class CatalogModeService implements Bootable, HasHooks
             'cta' => $this->getCtaData($product, true),
             'hide_price' => $this->shouldHidePrices($product),
             'hide_cart' => $this->shouldHideAddToCart($product),
+            'restriction_text' => $this->getRestrictionText($product),
+            'show_notice' => (bool) ($this->getSettings()['show_single_notice'] ?? true),
+            'show_restriction_text' => (bool) ($this->getSettings()['show_single_restriction_text'] ?? true),
+            'show_cta' => (bool) ($this->getSettings()['show_single_cta'] ?? true),
         ]);
     }
 
@@ -141,7 +124,7 @@ final class CatalogModeService implements Bootable, HasHooks
             return false;
         }
 
-        $enabled = $this->getProductSetting($product, '_spolszczony_catalog_enabled');
+        $enabled = $this->getProductSetting($product, '_polski_catalog_enabled');
 
         if ($enabled === 'yes') {
             return true;
@@ -156,7 +139,7 @@ final class CatalogModeService implements Bootable, HasHooks
             return false;
         }
 
-        $productSetting = $this->getProductSetting($product, '_spolszczony_catalog_hide_price');
+        $productSetting = $this->getProductSetting($product, '_polski_catalog_hide_price');
 
         if ($productSetting !== '') {
             return $productSetting === 'yes';
@@ -171,7 +154,7 @@ final class CatalogModeService implements Bootable, HasHooks
             return false;
         }
 
-        $productSetting = $this->getProductSetting($product, '_spolszczony_catalog_hide_cart');
+        $productSetting = $this->getProductSetting($product, '_polski_catalog_hide_cart');
 
         if ($productSetting !== '') {
             return $productSetting === 'yes';
@@ -181,7 +164,7 @@ final class CatalogModeService implements Bootable, HasHooks
     }
 
     /**
-     * @return array{mode: string, label: string, url: string}|null
+     * @return array{mode: string, label: string, url: string, target: string}|null
      */
     public function getCtaData(\WC_Product $product, bool $single): ?array
     {
@@ -197,8 +180,9 @@ final class CatalogModeService implements Bootable, HasHooks
         if ($mode === 'login') {
             return [
                 'mode' => $mode,
-                'label' => $label,
+                'label' => (string) ($settings['login_cta_text'] ?? $label),
                 'url' => wc_get_page_permalink('myaccount'),
+                'target' => 'same_tab',
             ];
         }
 
@@ -213,6 +197,7 @@ final class CatalogModeService implements Bootable, HasHooks
                 'mode' => $mode,
                 'label' => $label,
                 'url' => $url,
+                'target' => (string) ($settings['custom_url_target'] ?? 'same_tab'),
             ];
         }
 
@@ -221,6 +206,7 @@ final class CatalogModeService implements Bootable, HasHooks
                 'mode' => $mode,
                 'label' => $single ? $this->quoteService->getButtonText($product) : $label,
                 'url' => $this->quoteService->getLoopButtonUrl($product),
+                'target' => 'same_tab',
             ];
         }
 
@@ -289,7 +275,7 @@ final class CatalogModeService implements Bootable, HasHooks
 
     private function getHiddenPriceText(\WC_Product $product): string
     {
-        $message = $this->getProductSetting($product, '_spolszczony_catalog_message');
+        $message = $this->getProductSetting($product, '_polski_catalog_message');
 
         if ($message !== '') {
             return $message;
@@ -300,7 +286,7 @@ final class CatalogModeService implements Bootable, HasHooks
 
     private function getSingleNotice(\WC_Product $product): string
     {
-        $message = $this->getProductSetting($product, '_spolszczony_catalog_message');
+        $message = $this->getProductSetting($product, '_polski_catalog_message');
 
         if ($message !== '') {
             return $message;
@@ -309,14 +295,39 @@ final class CatalogModeService implements Bootable, HasHooks
         return (string) ($this->getSettings()['single_notice'] ?? '');
     }
 
+    private function getRestrictionText(\WC_Product $product): string
+    {
+        $hidePrice = $this->shouldHidePrices($product);
+        $hideCart = $this->shouldHideAddToCart($product);
+
+        if ($hidePrice && $hideCart) {
+            return (string) ($this->getSettings()['single_both_hidden_text'] ?? __('Ceny i zakup online są ukryte dla tego produktu.', 'polski'));
+        }
+
+        if ($hidePrice) {
+            return (string) ($this->getSettings()['single_price_hidden_text'] ?? __('Cena jest ukryta dla tego produktu.', 'polski'));
+        }
+
+        if ($hideCart) {
+            return (string) ($this->getSettings()['single_cart_hidden_text'] ?? __('Zakup online jest wyłączony dla tego produktu.', 'polski'));
+        }
+
+        return '';
+    }
+
+    private function shouldShowLoopNotice(): bool
+    {
+        return (bool) ($this->getSettings()['show_loop_notice'] ?? true);
+    }
+
     private function getCtaText(\WC_Product $product): string
     {
-        $label = $this->getProductSetting($product, '_spolszczony_catalog_cta_text');
+        $label = $this->getProductSetting($product, '_polski_catalog_cta_text');
 
         if ($label !== '') {
             return $label;
         }
 
-        return (string) ($this->getSettings()['cta_text'] ?? __('Zapytaj o warunki handlowe', 'spolszczony'));
+        return (string) ($this->getSettings()['cta_text'] ?? __('Zapytaj o warunki handlowe', 'polski'));
     }
 }

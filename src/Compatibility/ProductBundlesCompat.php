@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * WooCommerce Product Bundles compatibility.
  *
- * Ensures Spolszczony data (unit price, delivery time, Omnibus)
+ * Ensures Polski data (unit price, delivery time, Omnibus)
  * displays correctly for bundled products.
  */
 final class ProductBundlesCompat implements HasHooks
@@ -21,10 +21,10 @@ final class ProductBundlesCompat implements HasHooks
         }
 
         // Hide unit price for bundle container (individual items have their own).
-        add_filter('spolszczony/price/unit_price_html', [$this, 'maybeHideForBundle'], 10, 3);
+        add_filter('polski/price/unit_price_html', [$this, 'maybeHideForBundle'], 10, 3);
 
         // Use longest delivery time from bundle items.
-        add_filter('spolszczony/delivery_time/display', [$this, 'bundleDeliveryTime'], 10, 3);
+        add_filter('polski/delivery_time/display', [$this, 'bundleDeliveryTime'], 10, 3);
     }
 
     public function maybeHideForBundle(string $html, $unitPrice, \WC_Product $product): string

@@ -2,12 +2,12 @@
 /**
  * Single product unit price display.
  *
- * This template can be overridden by copying it to yourtheme/spolszczony/single-product/unit-price.php.
+ * This template can be overridden by copying it to yourtheme/polski/single-product/unit-price.php.
  *
  * @var string      $unit_price_html The formatted unit price HTML.
  * @var WC_Product  $product         The product object.
  *
- * @package Spolszczony/Templates
+ * @package Polski/Templates
  */
 
 declare(strict_types=1);

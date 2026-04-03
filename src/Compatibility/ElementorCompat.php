@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility;
+namespace Polski\Compatibility;
 
-use Spolszczony\Contract\HasHooks;
+use Polski\Contract\HasHooks;
 
 /**
  * Elementor compatibility layer.
  *
- * Registers Spolszczony widgets for the Elementor page builder.
+ * Registers Polski widgets for the Elementor page builder.
  * This is a stub that will be expanded with full widget implementations
  * when the Elementor integration is prioritized.
  */
@@ -26,18 +26,18 @@ final class ElementorCompat implements HasHooks
     }
 
     /**
-     * Register the Spolszczony widget category in Elementor.
+     * Register the Polski widget category in Elementor.
      */
     public function registerCategory(\Elementor\Elements_Manager $elements): void
     {
-        $elements->add_category('spolszczony', [
-            'title' => __('Spolszczony', 'spolszczony'),
+        $elements->add_category('polski', [
+            'title' => __('Polski', 'polski'),
             'icon' => 'eicon-woocommerce',
         ]);
     }
 
     /**
-     * Register Spolszczony Elementor widgets.
+     * Register Polski Elementor widgets.
      *
      * Widget implementations will be added in src/Compatibility/Elementor/Widgets/.
      */

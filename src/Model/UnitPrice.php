@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Model;
+namespace Polski\Model;
 
 /**
  * Value object for a calculated unit price.

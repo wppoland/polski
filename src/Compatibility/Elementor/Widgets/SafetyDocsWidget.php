@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Compatibility\Elementor\Widgets;
+namespace Polski\Compatibility\Elementor\Widgets;
 
 final class SafetyDocsWidget extends BaseProductWidget
 {
     public function get_name(): string
     {
-        return 'spolszczony-safety-docs';
+        return 'polski-safety-docs';
     }
 
     public function get_title(): string
@@ -24,7 +24,7 @@ final class SafetyDocsWidget extends BaseProductWidget
     {
         $product = $this->getProduct();
         if ($product === null) { return; }
-        $html = $this->container()->get(\Spolszczony\Service\\ProductInfoService::class)->getSafetyDocumentsHtml($product);
+        $html = $this->container()->get(\Polski\Service\ProductInfoService::class)->getSafetyDocumentsHtml($product);
 
         if ($html !== '') {
             echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

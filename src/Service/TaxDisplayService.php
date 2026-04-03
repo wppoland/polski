@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Enum\TaxDisplayMode;
-use Spolszczony\Util\Formatter;
+use Polski\Enum\TaxDisplayMode;
+use Polski\Util\Formatter;
 
 /**
  * Handles tax display logic: brutto/netto toggle, VAT notices, small business exemption.
@@ -22,7 +22,7 @@ final class TaxDisplayService
 
     public function isSmallBusiness(): bool
     {
-        $general = get_option('spolszczony_general', []);
+        $general = get_option('polski_general', []);
         return is_array($general) && (bool) ($general['small_business'] ?? false);
     }
 
@@ -39,11 +39,11 @@ final class TaxDisplayService
             }
 
             $html = sprintf(
-                '<span class="spolszczony-tax-info spolszczony-tax-info--exempt">%s</span>',
+                '<span class="polski-tax-info polski-tax-info--exempt">%s</span>',
                 esc_html($text),
             );
 
-            return (string) apply_filters('spolszczony/price/vat_notice', $html, $product);
+            return (string) apply_filters('polski/price/vat_notice', $html, $product);
         }
 
         $taxRates = \WC_Tax::get_rates($product->get_tax_class());
@@ -62,11 +62,11 @@ final class TaxDisplayService
         ]);
 
         $html = sprintf(
-            '<span class="spolszczony-tax-info">%s</span>',
+            '<span class="polski-tax-info">%s</span>',
             esc_html($text),
         );
 
-        return (string) apply_filters('spolszczony/price/vat_notice', $html, $product);
+        return (string) apply_filters('polski/price/vat_notice', $html, $product);
     }
 
     /**
@@ -74,7 +74,7 @@ final class TaxDisplayService
      */
     public function getShippingNoticeHtml(): string
     {
-        $priceSettings = get_option('spolszczony_prices', []);
+        $priceSettings = get_option('polski_prices', []);
 
         if (! is_array($priceSettings) || ! ($priceSettings['shipping_costs_notice_enabled'] ?? true)) {
             return '';
@@ -90,12 +90,12 @@ final class TaxDisplayService
         $shippingUrl = get_permalink($shippingPageId);
 
         $html = sprintf(
-            '<span class="spolszczony-shipping-notice"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+            '<span class="polski-shipping-notice"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
             esc_url($shippingUrl ?: '#'),
             esc_html($text),
         );
 
-        return (string) apply_filters('spolszczony/price/shipping_notice', $html);
+        return (string) apply_filters('polski/price/shipping_notice', $html);
     }
 
     /**
@@ -103,7 +103,7 @@ final class TaxDisplayService
      */
     private function getSettings(): array
     {
-        $settings = get_option('spolszczony_taxes', []);
+        $settings = get_option('polski_taxes', []);
         return is_array($settings) ? $settings : [];
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
 /**
  * Cache helper: flushes caches for popular caching plugins when
- * Spolszczony settings or product data changes.
+ * Polski settings or product data changes.
  */
 final class CacheHelper
 {
@@ -41,7 +41,7 @@ final class CacheHelper
         // WooCommerce transients.
         wc_delete_product_transients();
 
-        do_action('spolszczony/cache/flushed');
+        do_action('polski/cache/flushed');
     }
 
     /**
@@ -52,6 +52,6 @@ final class CacheHelper
         clean_post_cache($productId);
         wc_delete_product_transients($productId);
 
-        do_action('spolszczony/cache/product_flushed', $productId);
+        do_action('polski/cache/product_flushed', $productId);
     }
 }

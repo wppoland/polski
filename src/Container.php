@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony;
+namespace Polski;
 
 use InvalidArgumentException;
 

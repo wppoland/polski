@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Enum;
+namespace Polski\Enum;
 
 enum WithdrawalStatus: string
 {
@@ -14,10 +14,10 @@ enum WithdrawalStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Requested => __('Requested', 'spolszczony'),
-            self::Confirmed => __('Confirmed', 'spolszczony'),
-            self::Completed => __('Completed', 'spolszczony'),
-            self::Rejected => __('Rejected', 'spolszczony'),
+            self::Requested => __('Złożony', 'polski'),
+            self::Confirmed => __('Potwierdzony', 'polski'),
+            self::Completed => __('Zakończony', 'polski'),
+            self::Rejected => __('Odrzucony', 'polski'),
         };
     }
 }

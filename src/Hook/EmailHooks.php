@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Gateway\InvoiceGateway;
-use Spolszczony\Service\EmailService;
+use Polski\Contract\HasHooks;
+use Polski\Gateway\InvoiceGateway;
+use Polski\Service\EmailService;
 
 final class EmailHooks implements HasHooks
 {

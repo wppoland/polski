@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Util;
+namespace Polski\Util;
 
-use const Spolszczony\PLUGIN_DIR;
+use const Polski\PLUGIN_DIR;
 
 /**
  * Loads templates with theme override support.
  *
  * Templates are looked up in this order:
- * 1. {theme}/spolszczony/{template}.php
+ * 1. {theme}/polski/{template}.php
  * 2. {plugin}/templates/{template}.php
  */
 final class TemplateLoader
 {
-    private const THEME_DIR = 'spolszczony';
+    private const THEME_DIR = 'polski';
 
     /**
      * Render a template and return the HTML.
@@ -50,7 +50,7 @@ final class TemplateLoader
          * @param array<string, mixed> $args     Template arguments.
          * @param string               $template Template name.
          */
-        $args = apply_filters('spolszczony/template/args', $args, $template);
+        $args = apply_filters('polski/template/args', $args, $template);
 
         // phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Template variable extraction is intentional.
         extract($args, EXTR_SKIP);
@@ -74,7 +74,7 @@ final class TemplateLoader
 
         if ($themePath !== '') {
             /** @var string */
-            return apply_filters('spolszczony/template/path', $themePath, $template);
+            return apply_filters('polski/template/path', $themePath, $template);
         }
 
         // Fall back to plugin.
@@ -82,7 +82,7 @@ final class TemplateLoader
 
         if (file_exists($pluginPath)) {
             /** @var string */
-            return apply_filters('spolszczony/template/path', $pluginPath, $template);
+            return apply_filters('polski/template/path', $pluginPath, $template);
         }
 
         return null;

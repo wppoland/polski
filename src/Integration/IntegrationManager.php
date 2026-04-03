@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Integration;
+namespace Polski\Integration;
 
-use Spolszczony\Container;
-use Spolszczony\Contract\Bootable;
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Service\OmnibusService;
+use Polski\Container;
+use Polski\Contract\Bootable;
+use Polski\Contract\HasHooks;
+use Polski\Service\OmnibusService;
 
 /**
  * Detects installed third-party plugins and activates integration layers.
@@ -45,46 +45,46 @@ final class IntegrationManager implements Bootable, HasHooks
     private function detectOmnibusPlugins(): void
     {
         if ($this->isPluginActive('wc-price-history/wc-price-history.php')) {
-            // WC Price History by kkarpieszuk is active — integrate.
-            do_action('spolszczony/integration/omnibus_detected', 'wc-price-history');
+            // WC Price History by kkarpieszuk is active - integrate.
+            do_action('polski/integration/omnibus_detected', 'wc-price-history');
             return;
         }
 
         if ($this->isPluginActive('omnibus/omnibus.php')) {
-            // Omnibus by iworks is active — integrate.
-            do_action('spolszczony/integration/omnibus_detected', 'omnibus-iworks');
+            // Omnibus by iworks is active - integrate.
+            do_action('polski/integration/omnibus_detected', 'omnibus-iworks');
             return;
         }
 
-        // No external Omnibus plugin — use built-in fallback.
-        do_action('spolszczony/integration/omnibus_fallback');
+        // No external Omnibus plugin - use built-in fallback.
+        do_action('polski/integration/omnibus_fallback');
     }
 
     private function detectCheckoutFieldsPlugin(): void
     {
         if ($this->isPluginActive('flexible-checkout-fields/flexible-checkout-fields.php')) {
-            do_action('spolszczony/integration/checkout_fields_detected', 'wpdesk-fcf');
+            do_action('polski/integration/checkout_fields_detected', 'wpdesk-fcf');
         }
     }
 
     private function detectCookiesPlugin(): void
     {
         if ($this->isPluginActive('flexible-cookies/flexible-cookies.php')) {
-            do_action('spolszczony/integration/cookies_detected', 'wpdesk-cookies');
+            do_action('polski/integration/cookies_detected', 'wpdesk-cookies');
         }
     }
 
     private function detectGPSRPlugin(): void
     {
         if ($this->isPluginActive('gpsr-for-woocommerce/gpsr-for-woocommerce.php')) {
-            do_action('spolszczony/integration/gpsr_detected', 'wpdesk-gpsr');
+            do_action('polski/integration/gpsr_detected', 'wpdesk-gpsr');
         }
     }
 
     private function detectConsentModePlugin(): void
     {
         if ($this->isPluginActive('simple-consent-mode/simple-consent-mode.php')) {
-            do_action('spolszczony/integration/consent_mode_detected', 'iworks-consent');
+            do_action('polski/integration/consent_mode_detected', 'iworks-consent');
         }
     }
 
@@ -98,7 +98,7 @@ final class IntegrationManager implements Bootable, HasHooks
 
         foreach ($gateways as $name => $file) {
             if ($this->isPluginActive($file)) {
-                do_action('spolszczony/integration/payment_detected', $name);
+                do_action('polski/integration/payment_detected', $name);
             }
         }
     }

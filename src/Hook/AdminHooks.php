@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Hook;
+namespace Polski\Hook;
 
-use Spolszczony\Admin\AdminPage;
-use Spolszczony\Contract\HasHooks;
+use Polski\Admin\AdminPage;
+use Polski\Contract\HasHooks;
 
 final class AdminHooks implements HasHooks
 {

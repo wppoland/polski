@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Repository;
+namespace Polski\Repository;
 
-use Spolszczony\Enum\PriceType;
-use Spolszczony\Model\OmnibusPrice;
+use Polski\Enum\PriceType;
+use Polski\Model\OmnibusPrice;
 use wpdb;
 
 /**
@@ -20,7 +20,7 @@ final class OmnibusPriceRepository
 
     public function tableName(): string
     {
-        return $this->wpdb->prefix . 'spolszczony_price_history';
+        return $this->wpdb->prefix . 'polski_price_history';
     }
 
     /**

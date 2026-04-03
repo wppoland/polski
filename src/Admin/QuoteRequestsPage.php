@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Admin;
+namespace Polski\Admin;
 
-use Spolszczony\Contract\HasHooks;
-use Spolszczony\Enum\QuoteRequestStatus;
-use Spolszczony\Service\QuoteService;
+use Polski\Contract\HasHooks;
+use Polski\Enum\QuoteRequestStatus;
+use Polski\Service\QuoteService;
 
 /**
  * Admin list table for quote requests.
  */
 final class QuoteRequestsPage implements HasHooks
 {
-    private const PAGE_SLUG = 'spolszczony-quotes';
+    private const PAGE_SLUG = 'polski-quotes';
 
     public function __construct(
         private readonly QuoteService $quoteService,
@@ -22,29 +22,42 @@ final class QuoteRequestsPage implements HasHooks
 
     public function registerHooks(): void
     {
-        add_action('admin_menu', [$this, 'registerPage']);
-        add_action('admin_post_spolszczony_update_quote_request', [$this, 'handleStatusUpdate']);
+        // Register after the top-level Polski menu to avoid malformed submenu URLs.
+        add_action('admin_menu', [$this, 'registerPage'], 20);
+        add_action('admin_post_polski_update_quote_request', [$this, 'handleStatusUpdate']);
     }
 
     public function registerPage(): void
     {
+        $settings = $this->getSettings();
+
         add_submenu_page(
-            'spolszczony',
-            __('Zapytania ofertowe', 'spolszczony'),
-            __('Zapytania ofertowe', 'spolszczony'),
+            'polski',
+            (string) ($settings['admin_page_title'] ?? __('Zapytania ofertowe', 'polski')),
+            (string) ($settings['admin_page_title'] ?? __('Zapytania ofertowe', 'polski')),
             'manage_woocommerce',
             self::PAGE_SLUG,
             [$this, 'render'],
         );
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    private function getSettings(): array
+    {
+        $settings = get_option('polski_quote', []);
+
+        return is_array($settings) ? $settings : [];
+    }
+
     public function handleStatusUpdate(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(__('You do not have permission to access this resource.', 'spolszczony'));
+            wp_die(__('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'));
         }
 
-        check_admin_referer('spolszczony_update_quote_request');
+        check_admin_referer('polski_update_quote_request');
 
         $requestId = (int) wp_unslash($_GET['request_id'] ?? 0);
         $statusValue = sanitize_key((string) wp_unslash($_GET['status'] ?? ''));
@@ -72,24 +85,25 @@ final class QuoteRequestsPage implements HasHooks
     public function render(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(__('You do not have permission to access this resource.', 'spolszczony'));
+            wp_die(__('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'));
         }
 
+        $settings = $this->getSettings();
         $selectedStatus = QuoteRequestStatus::tryFrom(sanitize_key((string) wp_unslash($_GET['status'] ?? '')));
         $requests = $this->quoteService->getRequests(100, $selectedStatus);
         $counts = $this->quoteService->getStatusCounts();
 
         echo '<div class="wrap">';
-        echo '<h1>' . esc_html__('Zapytania ofertowe', 'spolszczony') . '</h1>';
+        echo '<h1>' . esc_html((string) ($settings['admin_page_title'] ?? __('Zapytania ofertowe', 'polski'))) . '</h1>';
 
         if (isset($_GET['quote_updated'])) {
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Status zapytania został zaktualizowany.', 'spolszczony') . '</p></div>';
+            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html((string) ($settings['admin_success_notice'] ?? __('Status zapytania został zaktualizowany.', 'polski'))) . '</p></div>';
         }
 
         echo '<div class="subsubsub" style="margin-bottom:16px;">';
         $allUrl = admin_url('admin.php?page=' . self::PAGE_SLUG);
         $allClass = $selectedStatus === null ? 'current' : '';
-        echo '<a class="' . esc_attr($allClass) . '" href="' . esc_url($allUrl) . '">' . esc_html__('Wszystkie', 'spolszczony') . '</a>';
+        echo '<a class="' . esc_attr($allClass) . '" href="' . esc_url($allUrl) . '">' . esc_html((string) ($settings['admin_filter_all_label'] ?? __('Wszystkie', 'polski'))) . '</a>';
 
         foreach (QuoteRequestStatus::cases() as $status) {
             $url = add_query_arg(
@@ -107,17 +121,17 @@ final class QuoteRequestsPage implements HasHooks
 
         echo '<table class="widefat striped" style="margin-top:16px;">';
         echo '<thead><tr>';
-        echo '<th>' . esc_html__('Data', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Produkt', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Klient', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Firma / NIP', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Ilość', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Status', 'spolszczony') . '</th>';
-        echo '<th>' . esc_html__('Akcje', 'spolszczony') . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_date'] ?? __('Data', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_product'] ?? __('Produkt', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_customer'] ?? __('Klient', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_company'] ?? __('Firma / NIP', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_quantity'] ?? __('Ilość', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_status'] ?? __('Status', 'polski'))) . '</th>';
+        echo '<th>' . esc_html((string) ($settings['admin_column_actions'] ?? __('Akcje', 'polski'))) . '</th>';
         echo '</tr></thead><tbody>';
 
         if ($requests === []) {
-            echo '<tr><td colspan="7">' . esc_html__('Brak zapytań ofertowych.', 'spolszczony') . '</td></tr>';
+            echo '<tr><td colspan="7">' . esc_html((string) ($settings['admin_empty_text'] ?? __('Brak zapytań ofertowych.', 'polski'))) . '</td></tr>';
         }
 
         foreach ($requests as $request) {
@@ -125,7 +139,7 @@ final class QuoteRequestsPage implements HasHooks
             $productLabel = $product instanceof \WC_Product ? $product->get_name() : '#' . $request->productId;
 
             echo '<tr>';
-            echo '<td>' . esc_html($request->createdAt->format('Y-m-d H:i')) . '</td>';
+            echo '<td>' . esc_html($request->createdAt->format((string) ($settings['admin_date_format'] ?? 'Y-m-d H:i'))) . '</td>';
             echo '<td><strong>' . esc_html($productLabel) . '</strong><br><small>' . esc_html($request->message ?? '-') . '</small></td>';
             echo '<td>';
             echo esc_html($request->customerName) . '<br>';
@@ -134,7 +148,7 @@ final class QuoteRequestsPage implements HasHooks
                 echo '<br><small>' . esc_html($request->customerPhone) . '</small>';
             }
             if ($request->postcode !== null) {
-                echo '<br><small>' . esc_html__('Kod:', 'spolszczony') . ' ' . esc_html($request->postcode) . '</small>';
+                echo '<br><small>' . esc_html((string) ($settings['admin_postcode_label'] ?? __('Kod', 'polski'))) . ': ' . esc_html($request->postcode) . '</small>';
             }
             echo '</td>';
             echo '<td>' . esc_html($request->companyName ?? '-') . '<br><small>' . esc_html($request->nip ?? '-') . '</small></td>';
@@ -190,13 +204,13 @@ final class QuoteRequestsPage implements HasHooks
         return wp_nonce_url(
             add_query_arg(
                 [
-                    'action' => 'spolszczony_update_quote_request',
+                    'action' => 'polski_update_quote_request',
                     'request_id' => $requestId,
                     'status' => $status->value,
                 ],
                 admin_url('admin-post.php'),
             ),
-            'spolszczony_update_quote_request',
+            'polski_update_quote_request',
         );
     }
 }

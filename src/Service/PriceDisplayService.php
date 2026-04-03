@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Service;
+namespace Polski\Service;
 
-use Spolszczony\Model\UnitPrice;
-use Spolszczony\Util\Formatter;
+use Polski\Model\UnitPrice;
+use Polski\Util\Formatter;
 
 /**
  * Orchestrates all price display elements: unit prices, VAT notices, Omnibus prices.
@@ -23,9 +23,9 @@ final class PriceDisplayService
      */
     public function getUnitPrice(\WC_Product $product): ?UnitPrice
     {
-        $baseAmount = (float) $product->get_meta('_spolszczony_unit_price_base', true);
-        $productAmount = (float) $product->get_meta('_spolszczony_unit_price_product_amount', true);
-        $unitSlug = (string) $product->get_meta('_spolszczony_unit_price_unit', true);
+        $baseAmount = (float) $product->get_meta('_polski_unit_price_base', true);
+        $productAmount = (float) $product->get_meta('_polski_unit_price_product_amount', true);
+        $unitSlug = (string) $product->get_meta('_polski_unit_price_unit', true);
 
         if ($baseAmount <= 0 || $productAmount <= 0 || $unitSlug === '') {
             return null;
@@ -51,7 +51,7 @@ final class PriceDisplayService
      */
     public function getUnitPriceHtml(\WC_Product $product): string
     {
-        $settings = get_option('spolszczony_prices', []);
+        $settings = get_option('polski_prices', []);
 
         if (! is_array($settings) || ! ($settings['unit_price_enabled'] ?? true)) {
             return '';
@@ -74,7 +74,7 @@ final class PriceDisplayService
         ]);
 
         $html = sprintf(
-            '<div class="spolszczony-unit-price"><span class="spolszczony-unit-price__text">%s</span></div>',
+            '<div class="polski-unit-price"><span class="polski-unit-price__text">%s</span></div>',
             esc_html($text),
         );
 
@@ -85,7 +85,7 @@ final class PriceDisplayService
          * @param UnitPrice   $unitPrice The calculated unit price.
          * @param \WC_Product $product   The product.
          */
-        return (string) apply_filters('spolszczony/price/unit_price_html', $html, $unitPrice, $product);
+        return (string) apply_filters('polski/price/unit_price_html', $html, $unitPrice, $product);
     }
 
     /**
@@ -121,7 +121,7 @@ final class PriceDisplayService
      */
     private function getUnitLabel(string $slug): string
     {
-        $term = get_term_by('slug', $slug, 'spolszczony_unit');
+        $term = get_term_by('slug', $slug, 'polski_unit');
 
         if ($term instanceof \WP_Term) {
             return $term->name;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spolszczony\Enum;
+namespace Polski\Enum;
 
 enum ConsentType: string
 {
