@@ -15,8 +15,8 @@ class InvoiceGateway extends \WC_Payment_Gateway
     public function __construct()
     {
         $this->id = 'polski_invoice';
-        $this->method_title = __('Przelew bankowy / Faktura', 'polski');
-        $this->method_description = __('Klient płaci przelewem bankowym po otrzymaniu faktury. Zamówienie jest wstrzymane do momentu otrzymania wpłaty.', 'polski');
+        $this->method_title = 'Przelew bankowy / Faktura';
+        $this->method_description = 'Klient płaci przelewem bankowym po otrzymaniu faktury. Zamówienie jest wstrzymane do momentu otrzymania wpłaty.';
         $this->has_fields = false;
         $this->icon = '';
 
@@ -36,43 +36,43 @@ class InvoiceGateway extends \WC_Payment_Gateway
     {
         $this->form_fields = [
             'enabled' => [
-                'title' => __('Włącz/Wyłącz', 'polski'),
+                'title' => 'Włącz/Wyłącz',
                 'type' => 'checkbox',
-                'label' => __('Włącz płatność przelewem bankowym / faktura', 'polski'),
+                'label' => 'Włącz płatność przelewem bankowym / faktura',
                 'default' => 'no',
             ],
             'title' => [
-                'title' => __('Tytuł', 'polski'),
+                'title' => 'Tytuł',
                 'type' => 'text',
-                'description' => __('Tytuł metody płatności wyświetlany przy kasie.', 'polski'),
-                'default' => __('Przelew bankowy', 'polski'),
+                'description' => 'Tytuł metody płatności wyświetlany przy kasie.',
+                'default' => 'Przelew bankowy',
                 'desc_tip' => true,
             ],
             'description' => [
-                'title' => __('Opis', 'polski'),
+                'title' => 'Opis',
                 'type' => 'textarea',
-                'description' => __('Opis metody płatności wyświetlany przy kasie.', 'polski'),
-                'default' => __('Zapłać przelewem bankowym. Twoje zamówienie zostanie zrealizowane po otrzymaniu wpłaty.', 'polski'),
+                'description' => 'Opis metody płatności wyświetlany przy kasie.',
+                'default' => 'Zapłać przelewem bankowym. Twoje zamówienie zostanie zrealizowane po otrzymaniu wpłaty.',
                 'desc_tip' => true,
             ],
             'instructions' => [
-                'title' => __('Instrukcje', 'polski'),
+                'title' => 'Instrukcje',
                 'type' => 'textarea',
-                'description' => __('Wyświetlane na stronie podziękowania i w emailach. Podaj tutaj dane konta bankowego.', 'polski'),
+                'description' => 'Wyświetlane na stronie podziękowania i w emailach. Podaj tutaj dane konta bankowego.',
                 'default' => '',
                 'desc_tip' => true,
             ],
             'account_number' => [
-                'title' => __('Numer konta bankowego', 'polski'),
+                'title' => 'Numer konta bankowego',
                 'type' => 'text',
-                'description' => __('Numer konta bankowego (zalecany format IBAN).', 'polski'),
+                'description' => 'Numer konta bankowego (zalecany format IBAN).',
                 'default' => '',
                 'desc_tip' => true,
             ],
             'bank_name' => [
-                'title' => __('Nazwa banku', 'polski'),
+                'title' => 'Nazwa banku',
                 'type' => 'text',
-                'description' => __('Nazwa Twojego banku.', 'polski'),
+                'description' => 'Nazwa Twojego banku.',
                 'default' => '',
                 'desc_tip' => true,
             ],

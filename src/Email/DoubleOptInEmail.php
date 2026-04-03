@@ -16,8 +16,8 @@ class DoubleOptInEmail extends \WC_Email
     {
         $this->id = 'polski_double_opt_in';
         $this->customer_email = true;
-        $this->title = __('Aktywacja konta (Podwójna weryfikacja)', 'polski');
-        $this->description = __('Ciepłe powitanie wysyłane do Twoich nowych klientów, by zweryfikowali swój adres e-mail.', 'polski');
+        $this->title = 'Aktywacja konta (Podwójna weryfikacja)';
+        $this->description = 'Ciepłe powitanie wysyłane do Twoich nowych klientów, by zweryfikowali swój adres e-mail.';
         $this->template_base = \Polski\PLUGIN_DIR . '/templates/';
         $this->template_html = 'emails/double-opt-in.php';
         $this->template_plain = 'emails/plain/double-opt-in.php';
@@ -62,8 +62,8 @@ class DoubleOptInEmail extends \WC_Email
         $settings = get_option('polski_doi', []);
 
         return is_array($settings)
-            ? (string) ($settings['email_subject'] ?? __('Aktywuj swoje konto w {site_title}', 'polski'))
-            : __('Aktywuj swoje konto w {site_title}', 'polski');
+            ? (string) ($settings['email_subject'] ?? 'Aktywuj swoje konto w {site_title}')
+            : 'Aktywuj swoje konto w {site_title}';
     }
 
     public function get_default_heading(): string
@@ -71,8 +71,8 @@ class DoubleOptInEmail extends \WC_Email
         $settings = get_option('polski_doi', []);
 
         return is_array($settings)
-            ? (string) ($settings['email_heading'] ?? __('Potwierdź swój adres email', 'polski'))
-            : __('Potwierdź swój adres email', 'polski');
+            ? (string) ($settings['email_heading'] ?? 'Potwierdź swój adres email')
+            : 'Potwierdź swój adres email';
     }
 
     public function get_content_html(): string
@@ -116,7 +116,7 @@ class DoubleOptInEmail extends \WC_Email
         $settings = get_option('polski_doi', []);
 
         return is_array($settings)
-            ? (string) ($settings['additional_content'] ?? __('Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.', 'polski'))
-            : __('Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.', 'polski');
+            ? (string) ($settings['additional_content'] ?? 'Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.')
+            : 'Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość.';
     }
 }

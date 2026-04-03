@@ -94,13 +94,87 @@ final class IntegrationManager implements Bootable, HasHooks
             'przelewy24' => 'woocommerce-przelewy24/woocommerce-przelewy24.php',
             'payu' => 'woo-payu-payment-gateway/woo-payu-payment-gateway.php',
             'tpay' => 'tpay-com-payment-gateway/tpay-com-payment-gateway.php',
+            'autopay' => 'autopay-woocommerce/autopay-woocommerce.php',
         ];
+
+        $detected = [];
 
         foreach ($gateways as $name => $file) {
             if ($this->isPluginActive($file)) {
+                $detected[] = $name;
                 do_action('polski/integration/payment_detected', $name);
             }
         }
+
+        foreach ($this->detectActiveGatewayIds() as $gatewayId) {
+            $gatewayName = $this->mapGatewayIdToIntegration($gatewayId);
+
+            if ($gatewayName === null || in_array($gatewayName, $detected, true)) {
+                continue;
+            }
+
+            $detected[] = $gatewayName;
+            do_action('polski/integration/payment_detected', $gatewayName);
+        }
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function detectActiveGatewayIds(): array
+    {
+        if (! function_exists('WC')) {
+            return [];
+        }
+
+        $wc = WC();
+
+        if (! $wc instanceof \WooCommerce) {
+            return [];
+        }
+
+        $paymentGateways = $wc->payment_gateways();
+
+        if (! $paymentGateways instanceof \WC_Payment_Gateways) {
+            return [];
+        }
+
+        $gatewayObjects = $paymentGateways->payment_gateways();
+
+        if (! is_array($gatewayObjects)) {
+            return [];
+        }
+
+        $detected = [];
+
+        foreach ($gatewayObjects as $gateway) {
+            if (! $gateway instanceof \WC_Payment_Gateway || ! $gateway->enabled === 'yes') {
+                continue;
+            }
+
+            $gatewayId = strtolower((string) $gateway->id);
+
+            if ($gatewayId !== '') {
+                $detected[] = $gatewayId;
+            }
+        }
+
+        return array_values(array_unique($detected));
+    }
+
+    private function mapGatewayIdToIntegration(string $gatewayId): ?string
+    {
+        return match (true) {
+            str_contains($gatewayId, 'przelewy24'),
+            str_contains($gatewayId, 'p24') => 'przelewy24',
+            str_contains($gatewayId, 'payu') => 'payu',
+            str_contains($gatewayId, 'tpay') => 'tpay',
+            str_contains($gatewayId, 'autopay'),
+            str_contains($gatewayId, 'bluepayment'),
+            str_contains($gatewayId, 'blue_media') => 'autopay',
+            str_contains($gatewayId, 'blik') => 'blik',
+            default => null,
+        };
     }
 
     private function isPluginActive(string $plugin): bool

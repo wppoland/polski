@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DIST_DIR="${1:-/tmp/spolszczony-wporg-trunk}"
+DIST_DIR="${1:-/tmp/polski-wporg-trunk}"
 
 if ! command -v rsync >/dev/null 2>&1; then
     echo "rsync is required to prepare a WordPress.org release package." >&2

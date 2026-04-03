@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Polski\Rest;
 
+use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 use Polski\Util\Sanitizer;
 use WP_REST_Request;
@@ -124,6 +125,12 @@ final class SettingsController extends RestController implements HasHooks
             $general = [];
         }
 
+        $general['company_name'] = sanitize_text_field((string) ($params['company_name'] ?? ''));
+        $general['company_address'] = sanitize_text_field((string) ($params['company_address'] ?? ''));
+        $general['company_email'] = sanitize_email((string) ($params['company_email'] ?? ''));
+        $general['company_phone'] = sanitize_text_field((string) ($params['company_phone'] ?? ''));
+        $general['company_nip'] = sanitize_text_field((string) ($params['company_nip'] ?? ''));
+
         update_option('polski_general', $general);
 
         // Save seller data for PRO invoices (if provided).
@@ -155,6 +162,10 @@ final class SettingsController extends RestController implements HasHooks
         $omnibus['enabled'] = (bool) ($params['omnibus_enabled'] ?? true);
         update_option('polski_omnibus', $omnibus);
 
+        $modules = ModulesPage::getDefaultModuleStates();
+        $modules['omnibus'] = $omnibus['enabled'];
+        update_option('polski_modules', $modules);
+
         // Generate legal pages if requested.
         if (! empty($params['generate_legal_pages'])) {
             $legalService = \Polski\Plugin::instance()->container()->get(
@@ -176,7 +187,7 @@ final class SettingsController extends RestController implements HasHooks
 
         return new WP_REST_Response([
             'success' => true,
-            'message' => __('Setup completed.', 'polski'),
+            'message' => __('Kreator został zakończony.', 'polski'),
         ], 200);
     }
 

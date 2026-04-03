@@ -27,8 +27,8 @@ class WithdrawalConfirmationEmail extends \WC_Email
     {
         $this->id = 'polski_withdrawal_confirmation';
         $this->customer_email = true;
-        $this->title = __('Potwierdzenie odstąpienia', 'polski');
-        $this->description = __('Ta wiadomość trafi do Twojego klienta z miłą informacją, gdy tylko zatwierdzisz jego zwrot.', 'polski');
+        $this->title = 'Potwierdzenie odstąpienia';
+        $this->description = 'Ta wiadomość trafi do Twojego klienta z miłą informacją, gdy tylko zatwierdzisz jego zwrot.';
         $this->template_base = \Polski\PLUGIN_DIR . '/templates/';
         $this->template_html = 'emails/withdrawal-confirmation.php';
         $this->template_plain = 'emails/plain/withdrawal-confirmation.php';
@@ -78,12 +78,12 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_subject(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_subject'] ?? __('Dobra wiadomość! Twój wniosek o zwrot (zamówienie #{order_number}) został pomyślnie potwierdzony.', 'polski'));
+        return (string) ($this->getWithdrawalSettings()['email_subject'] ?? 'Dobra wiadomość! Twój wniosek o zwrot (zamówienie #{order_number}) został pomyślnie potwierdzony.');
     }
 
     public function get_default_heading(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_heading'] ?? __('Odstąpienie potwierdzone', 'polski'));
+        return (string) ($this->getWithdrawalSettings()['email_heading'] ?? 'Odstąpienie potwierdzone');
     }
 
     public function get_content_html(): string
@@ -124,6 +124,6 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_additional_content(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? __('Zwrot środków zostanie zrealizowany w ciągu 14 dni od daty otrzymania zwróconych produktów.', 'polski'));
+        return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? 'Zwrot środków zostanie zrealizowany w ciągu 14 dni od daty otrzymania zwróconych produktów.');
     }
 }

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const config = window.spolszczonyQuickView;
-  const modal = document.querySelector('[data-spolszczony-quick-view-modal]');
-  const content = document.querySelector('[data-spolszczony-quick-view-content]');
+  const config = window.polskiQuickView;
+  const modal = document.querySelector('[data-polski-quick-view-modal]');
+  const content = document.querySelector('[data-polski-quick-view-content]');
 
   if (!config || !modal || !content) {
     return;
@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const openModal = () => {
     modal.hidden = false;
-    document.body.classList.add('spolszczony-quick-view-open');
+    document.body.classList.add('polski-quick-view-open');
   };
 
   const closeModal = () => {
     modal.hidden = true;
-    document.body.classList.remove('spolszczony-quick-view-open');
+    document.body.classList.remove('polski-quick-view-open');
   };
 
   const initVariations = () => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const $ = window.jQuery;
-    const forms = $('.spolszczony-quick-view-content form.variations_form');
+    const forms = $('.polski-quick-view-content form.variations_form');
 
     if (typeof forms.wc_variation_form === 'function') {
       forms.each(function init() {
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.addEventListener('click', async (event) => {
-    const trigger = event.target.closest('[data-spolszczony-quick-view]');
-    const close = event.target.closest('[data-spolszczony-quick-view-close]');
-    const backdrop = event.target.closest('[data-spolszczony-quick-view-backdrop]');
+    const trigger = event.target.closest('[data-polski-quick-view]');
+    const close = event.target.closest('[data-polski-quick-view-close]');
+    const backdrop = event.target.closest('[data-polski-quick-view-backdrop]');
 
     if (close) {
       event.preventDefault();
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     content.innerHTML = `<p>${config.loadingText}</p>`;
 
     const url = new URL(config.ajaxUrl, window.location.origin);
-    url.searchParams.set('action', 'spolszczony_quick_view');
+    url.searchParams.set('action', 'polski_quick_view');
     url.searchParams.set('nonce', config.nonce);
     url.searchParams.set('product_id', productId);
 

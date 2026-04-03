@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var config = window.spolszczonyAjaxSearch || null;
+    var config = window.polskiAjaxSearch || null;
 
     if (!config) {
         return;
     }
 
-    document.querySelectorAll('[data-spolszczony-ajax-search]').forEach(function (form) {
-        var input = form.querySelector('[data-spolszczony-ajax-search-input]');
-        var results = form.querySelector('[data-spolszczony-ajax-search-results]');
+    document.querySelectorAll('[data-polski-ajax-search]').forEach(function (form) {
+        var input = form.querySelector('[data-polski-ajax-search-input]');
+        var results = form.querySelector('[data-polski-ajax-search-results]');
         var timer = null;
 
         if (!input || !results) {
@@ -23,20 +23,20 @@ document.addEventListener('DOMContentLoaded', function () {
             var items = Array.isArray(payload.results) ? payload.results : [];
 
             if (items.length === 0) {
-                results.innerHTML = '<div class="spolszczony-ajax-search__empty">' + config.noResultsText + '</div>';
+                results.innerHTML = '<div class="polski-ajax-search__empty">' + config.noResultsText + '</div>';
                 results.hidden = false;
                 return;
             }
 
             var html = items.map(function (item) {
                 var image = config.showImage && item.image ? '<img src="' + item.image + '" alt="">' : '';
-                var sku = config.showSku && item.sku ? '<small class="spolszczony-ajax-search__sku">' + config.skuLabel + ': ' + item.sku + '</small>' : '';
-                var price = config.showPrice && item.price_html ? '<span class="spolszczony-ajax-search__price">' + item.price_html + '</span>' : '';
+                var sku = config.showSku && item.sku ? '<small class="polski-ajax-search__sku">' + config.skuLabel + ': ' + item.sku + '</small>' : '';
+                var price = config.showPrice && item.price_html ? '<span class="polski-ajax-search__price">' + item.price_html + '</span>' : '';
 
                 return (
-                    '<a class="spolszczony-ajax-search__item" href="' + item.url + '">' +
-                        '<span class="spolszczony-ajax-search__thumb">' + image + '</span>' +
-                        '<span class="spolszczony-ajax-search__meta">' +
+                    '<a class="polski-ajax-search__item" href="' + item.url + '">' +
+                        '<span class="polski-ajax-search__thumb">' + image + '</span>' +
+                        '<span class="polski-ajax-search__meta">' +
                             '<strong>' + item.name + '</strong>' +
                             sku +
                             price +
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).join('');
 
             if (config.showViewAllLink && payload.search_url) {
-                html += '<a class="spolszczony-ajax-search__all" href="' + payload.search_url + '">' + config.viewAllText + '</a>';
+                html += '<a class="polski-ajax-search__all" href="' + payload.search_url + '">' + config.viewAllText + '</a>';
             }
 
             results.innerHTML = html;

@@ -26,6 +26,7 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
+        add_action('admin_post_polski_complete_wizard', [$this, 'handleWizardCompletion']);
 
         // "Settings" link on plugins page.
         add_filter('plugin_action_links_' . plugin_basename(PLUGIN_FILE), [$this, 'addPluginActionLinks']);
@@ -65,6 +66,47 @@ final class AdminPage implements Bootable, HasHooks
         $legalPages->createDefaultPages();
 
         wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&polski_pages_generated=1'));
+        exit;
+    }
+
+    public function handleWizardCompletion(): void
+    {
+        if (! current_user_can(self::CAPABILITY)) {
+            wp_die(esc_html__('Brak uprawnień.', 'polski'));
+        }
+
+        check_admin_referer('polski_complete_wizard', '_polski_wizard_nonce');
+
+        $payload = [
+            'company_name' => sanitize_text_field((string) ($_POST['company_name'] ?? '')),
+            'company_address' => sanitize_text_field((string) ($_POST['company_address'] ?? '')),
+            'company_nip' => sanitize_text_field((string) ($_POST['company_nip'] ?? '')),
+            'company_email' => sanitize_email((string) ($_POST['company_email'] ?? '')),
+            'company_phone' => sanitize_text_field((string) ($_POST['company_phone'] ?? '')),
+            'terms_enabled' => ! empty($_POST['terms_enabled']),
+            'privacy_enabled' => ! empty($_POST['privacy_enabled']),
+            'withdrawal_enabled' => ! empty($_POST['withdrawal_enabled']),
+            'digital_waiver_enabled' => ! empty($_POST['digital_waiver_enabled']),
+            'marketing_enabled' => ! empty($_POST['marketing_enabled']),
+            'order_button_text' => sanitize_text_field((string) ($_POST['order_button_text'] ?? '')),
+            'generate_legal_pages' => ! empty($_POST['generate_legal_pages']),
+            'omnibus_enabled' => ! empty($_POST['omnibus_enabled']),
+        ];
+
+        $request = new \WP_REST_Request('POST', '/polski/v1/wizard/complete');
+        $request->set_header('content-type', 'application/json');
+        $request->set_body(wp_json_encode($payload) ?: '{}');
+
+        /** @var \Polski\Rest\SettingsController $controller */
+        $controller = \Polski\Plugin::instance()->container()->get(\Polski\Rest\SettingsController::class);
+        $response = $controller->completeWizard($request);
+
+        if ($response->get_status() >= 400) {
+            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=wizard'));
+            exit;
+        }
+
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=dashboard'));
         exit;
     }
 
@@ -166,6 +208,7 @@ final class AdminPage implements Bootable, HasHooks
         $tabs = [
             'modules' => __('Moduły', 'polski'),
             'dashboard' => __('Pulpit', 'polski'),
+            'wizard' => __('Kreator', 'polski'),
         ];
 
         echo '<nav class="nav-tab-wrapper" style="margin-bottom:20px;">';
@@ -178,6 +221,7 @@ final class AdminPage implements Bootable, HasHooks
 
         match ($tab) {
             'dashboard' => $this->renderDashboard(),
+            'wizard' => $this->renderWizardTab(),
             default => $this->renderModulesTab(),
         };
 
@@ -188,6 +232,70 @@ final class AdminPage implements Bootable, HasHooks
     {
         $modulesPage = \Polski\Plugin::instance()->container()->get(ModulesPage::class);
         $modulesPage->render();
+    }
+
+    private function renderWizardTab(): void
+    {
+        echo '<div id="polski-admin">';
+        $this->renderWizardFallback();
+        echo '</div>';
+    }
+
+    private function renderWizardFallback(): void
+    {
+        $generalSettings = $this->getGeneralSettings();
+        $checkoutSettings = get_option('polski_checkout', []);
+        $checkoutSettings = is_array($checkoutSettings) ? $checkoutSettings : [];
+        $omnibusSettings = get_option('polski_omnibus', []);
+        $omnibusSettings = is_array($omnibusSettings) ? $omnibusSettings : [];
+
+        echo '<div class="notice notice-info"><p>';
+        echo esc_html__('Jeśli panel kreatora nie załaduje się automatycznie, możesz dokończyć konfigurację z tego formularza.', 'polski');
+        echo '</p></div>';
+
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="max-width:840px;background:#fff;border:1px solid #ccd0d4;padding:24px;">';
+        wp_nonce_field('polski_complete_wizard', '_polski_wizard_nonce');
+        echo '<input type="hidden" name="action" value="polski_complete_wizard" />';
+
+        echo '<h2 style="margin-top:0;">' . esc_html__('Dane firmy', 'polski') . '</h2>';
+        echo '<table class="form-table" role="presentation"><tbody>';
+        $this->renderWizardInput('company_name', __('Nazwa firmy', 'polski'), (string) ($generalSettings['company_name'] ?? ''), true);
+        $this->renderWizardInput('company_address', __('Adres', 'polski'), (string) ($generalSettings['company_address'] ?? ''));
+        $this->renderWizardInput('company_nip', __('NIP', 'polski'), (string) ($generalSettings['company_nip'] ?? ''));
+        $this->renderWizardInput('company_email', __('Email', 'polski'), (string) ($generalSettings['company_email'] ?? get_option('admin_email', '')), true, 'email');
+        $this->renderWizardInput('company_phone', __('Telefon', 'polski'), (string) ($generalSettings['company_phone'] ?? ''));
+        echo '</tbody></table>';
+
+        echo '<h2>' . esc_html__('Checkout i zgodności', 'polski') . '</h2>';
+        echo '<table class="form-table" role="presentation"><tbody>';
+        $this->renderWizardInput('order_button_text', __('Tekst przycisku zamówienia', 'polski'), (string) ($checkoutSettings['order_button_text'] ?? __('Zamawiam z obowiązkiem zapłaty', 'polski')));
+        $this->renderWizardCheckbox('terms_enabled', __('Regulamin', 'polski'), (bool) ($checkoutSettings['terms_checkbox_enabled'] ?? true));
+        $this->renderWizardCheckbox('privacy_enabled', __('Polityka prywatności', 'polski'), (bool) ($checkoutSettings['privacy_checkbox_enabled'] ?? true));
+        $this->renderWizardCheckbox('withdrawal_enabled', __('Prawo odstąpienia', 'polski'), (bool) ($checkoutSettings['withdrawal_checkbox_enabled'] ?? true));
+        $this->renderWizardCheckbox('digital_waiver_enabled', __('Treści cyfrowe', 'polski'), (bool) ($checkoutSettings['digital_waiver_checkbox_enabled'] ?? false));
+        $this->renderWizardCheckbox('marketing_enabled', __('Marketing', 'polski'), (bool) ($checkoutSettings['marketing_checkbox_enabled'] ?? false));
+        $this->renderWizardCheckbox('omnibus_enabled', __('Omnibus', 'polski'), (bool) ($omnibusSettings['enabled'] ?? true));
+        $this->renderWizardCheckbox('generate_legal_pages', __('Wygeneruj strony prawne', 'polski'), true);
+        echo '</tbody></table>';
+
+        submit_button(__('Zapisz i zakończ kreator', 'polski'));
+        echo '</form>';
+    }
+
+    private function renderWizardInput(string $name, string $label, string $value, bool $required = false, string $type = 'text'): void
+    {
+        echo '<tr>';
+        echo '<th scope="row"><label for="polski-wizard-' . esc_attr($name) . '">' . esc_html($label) . '</label></th>';
+        echo '<td><input class="regular-text" type="' . esc_attr($type) . '" id="polski-wizard-' . esc_attr($name) . '" name="' . esc_attr($name) . '" value="' . esc_attr($value) . '"' . ($required ? ' required' : '') . ' /></td>';
+        echo '</tr>';
+    }
+
+    private function renderWizardCheckbox(string $name, string $label, bool $checked): void
+    {
+        echo '<tr>';
+        echo '<th scope="row">' . esc_html($label) . '</th>';
+        echo '<td><label><input type="checkbox" name="' . esc_attr($name) . '" value="1"' . checked($checked, true, false) . ' /> ' . esc_html__('Włącz', 'polski') . '</label></td>';
+        echo '</tr>';
     }
 
     /**

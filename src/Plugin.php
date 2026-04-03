@@ -15,6 +15,7 @@ final class Plugin
     private static ?self $instance = null;
     private Container $container;
     private bool $booted = false;
+    private bool $textDomainLoaded = false;
 
     private function __construct()
     {
@@ -50,7 +51,6 @@ final class Plugin
         // Register all hook subscribers.
         $this->registerHookSubscribers();
 
-        // Load text domain on init.
         add_action('init', [$this, 'loadTextDomain']);
 
         /**
@@ -159,6 +159,12 @@ final class Plugin
      */
     public function loadTextDomain(): void
     {
+        if ($this->textDomainLoaded || ! did_action('init')) {
+            return;
+        }
+
+        $this->textDomainLoaded = true;
+
         load_plugin_textdomain(
             'polski',
             false,

@@ -1190,6 +1190,26 @@ final class ModulesPage implements HasHooks
                 ],
             ],
 
+            // === SEO i Optymalizacja ===
+            [
+                'id' => 'schema_org',
+                'name' => 'Wzbogacone Dane (Schema.org)',
+                'description' => 'Automatyczne wstrzykiwanie zaawansowanych tagów JSON-LD, wspierających indeksowanie produktów przez Google z zachowaniem danych specyficznych dla wtyczki.',
+                'group' => 'SEO i Optymalizacja',
+                'enabled' => true,
+                'pro' => false,
+                'icon' => 'dashicons-search',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_seo|schema_enabled', 'label' => 'Włącz integrację danych ustrukturyzowanych', 'type' => 'checkbox', 'default' => true, 'hint' => 'Główny włącznik modyfikacji Schema.org JSON-LD.'],
+                    ['key' => '_schema_header', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">Dane do dołączenia</strong>'],
+                    ['key' => 'polski_seo|schema_brand', 'label' => 'Dołącz Markę (Brand)', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_seo|schema_manufacturer', 'label' => 'Dołącz Producenta (Manufacturer)', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_seo|schema_gtin', 'label' => 'Dołącz kody kreskowe (GTIN)', 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_seo|schema_unit_price', 'label' => 'Dołącz Cenę jednostkową', 'type' => 'checkbox', 'default' => true],
+                ],
+            ],
+
             // === Integracje ===
             [
                 'id' => 'wpdesk_integration',
@@ -1199,6 +1219,9 @@ final class ModulesPage implements HasHooks
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-admin-plugins',
+                'settings' => [
+                    ['key' => '_wpdesk_status', 'type' => 'html', 'html' => $this->getWpDeskIntegrationStatus()],
+                ],
                 'links' => [
                     ['label' => 'Flexible Checkout Fields', 'url' => 'https://wordpress.org/plugins/flexible-checkout-fields/'],
                 ],
@@ -1211,6 +1234,9 @@ final class ModulesPage implements HasHooks
                 'enabled' => true,
                 'pro' => false,
                 'icon' => 'dashicons-money',
+                'settings' => [
+                    ['key' => '_payment_status', 'type' => 'html', 'html' => $this->getPaymentIntegrationStatus()],
+                ],
                 'links' => [],
             ],
 
@@ -1630,6 +1656,59 @@ final class ModulesPage implements HasHooks
     }
 
     /**
+     * @return array<string, bool>
+     */
+    public static function getDefaultModuleStates(): array
+    {
+        return [
+            'unit_price' => true,
+            'omnibus' => true,
+            'tax_display' => true,
+            'delivery_time' => true,
+            'shipping_notice' => true,
+            'checkout_button' => true,
+            'legal_checkboxes' => true,
+            'consent_logging' => true,
+            'contract_helper' => false,
+            'invoice_gateway' => false,
+            'legal_pages' => true,
+            'withdrawal' => true,
+            'dispute_resolution' => true,
+            'email_attachments' => true,
+            'manufacturer' => true,
+            'food_module' => false,
+            'power_supply' => false,
+            'double_opt_in' => false,
+            'request_quote' => false,
+            'catalog_mode' => false,
+            'ajax_search' => false,
+            'brands' => false,
+            'ajax_filters' => false,
+            'wishlist' => false,
+            'compare' => false,
+            'quick_view' => false,
+            'frequently_bought_together' => false,
+            'badge_management' => false,
+            'tab_manager' => false,
+            'featured_video' => false,
+            'gallery_zoom' => false,
+            'product_slider_carousel' => false,
+            'pre_order' => false,
+            'waitlist' => false,
+            'product_add_ons' => false,
+            'product_bundles' => false,
+            'gift_cards' => false,
+            'subscriptions' => false,
+            'infinite_scroll' => false,
+            'popup' => false,
+            'affiliates' => false,
+            'schema_org' => true,
+            'wpdesk_integration' => true,
+            'payment_integration' => true,
+        ];
+    }
+
+    /**
      * Check if a module is enabled.
      */
     public static function isModuleEnabled(string $moduleId): bool
@@ -1637,52 +1716,7 @@ final class ModulesPage implements HasHooks
         $saved = get_option(self::OPTION, []);
 
         if (! is_array($saved) || ! isset($saved[$moduleId])) {
-            // Return default state from module definition.
-            $defaults = [
-                'unit_price' => true,
-                'omnibus' => true,
-                'tax_display' => true,
-                'delivery_time' => true,
-                'shipping_notice' => true,
-                'checkout_button' => true,
-                'legal_checkboxes' => true,
-                'consent_logging' => true,
-                'contract_helper' => false,
-                'invoice_gateway' => false,
-                'legal_pages' => true,
-                'withdrawal' => true,
-                'dispute_resolution' => true,
-                'email_attachments' => true,
-                'manufacturer' => true,
-                'food_module' => false,
-                'power_supply' => false,
-                'double_opt_in' => false,
-                'request_quote' => false,
-                'catalog_mode' => false,
-                'ajax_search' => false,
-                'brands' => false,
-                'ajax_filters' => false,
-                'wishlist' => false,
-                'compare' => false,
-                'quick_view' => false,
-                'frequently_bought_together' => false,
-                'badge_management' => false,
-                'tab_manager' => false,
-                'featured_video' => false,
-                'gallery_zoom' => false,
-                'product_slider_carousel' => false,
-                'pre_order' => false,
-                'waitlist' => false,
-                'product_add_ons' => false,
-                'product_bundles' => false,
-                'gift_cards' => false,
-                'subscriptions' => false,
-                'infinite_scroll' => false,
-                'popup' => false,
-                'affiliates' => false,
-                'wpdesk_integration' => true,
-                'payment_integration' => true,
-            ];
+            $defaults = self::getDefaultModuleStates();
 
             return $defaults[$moduleId] ?? false;
         }
@@ -1772,6 +1806,179 @@ final class ModulesPage implements HasHooks
         $html .= '</div>';
 
         return $html;
+    }
+
+    private function getWpDeskIntegrationStatus(): string
+    {
+        $generalSettings = get_option('polski_general', []);
+        $generalSettings = is_array($generalSettings) ? $generalSettings : [];
+
+        if (! function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugins = [
+            ['file' => 'flexible-checkout-fields/flexible-checkout-fields.php', 'name' => 'Flexible Checkout Fields'],
+            ['file' => 'flexible-cookies/flexible-cookies.php', 'name' => 'Flexible Cookies'],
+            ['file' => 'gpsr-for-woocommerce/gpsr-for-woocommerce.php', 'name' => 'GPSR for WooCommerce'],
+        ];
+
+        $html = '<div style="font-size:12px;">';
+        $anyActive = false;
+
+        foreach ($plugins as $plugin) {
+            $active = is_plugin_active($plugin['file']);
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $status = $active
+                ? (string) ($generalSettings['admin_integration_detected_text'] ?? 'wykryta, integracja aktywna')
+                : (string) ($generalSettings['admin_integration_missing_text'] ?? 'niewykryta');
+
+            if ($active) {
+                $anyActive = true;
+            }
+
+            $html .= sprintf(
+                '<div style="margin-bottom:4px;">%s %s - <em>%s</em></div>',
+                $icon,
+                esc_html($plugin['name']),
+                esc_html($status),
+            );
+        }
+
+        if (! $anyActive) {
+            $html .= '<div style="margin-top:6px;color:#666;">' . esc_html((string) ($generalSettings['admin_wpdesk_no_external_text'] ?? 'Nie wykryto wspieranych wtyczek WP Desk. Polski działa nadal samodzielnie.')) . '</div>';
+        } else {
+            $html .= '<div style="margin-top:6px;color:#46b450;">' . esc_html((string) ($generalSettings['admin_wpdesk_external_active_text'] ?? 'Wykryto wspierane wtyczki WP Desk. Polski może dopasować integrację do checkoutu, cookies i GPSR.')) . '</div>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    private function getPaymentIntegrationStatus(): string
+    {
+        $generalSettings = get_option('polski_general', []);
+        $generalSettings = is_array($generalSettings) ? $generalSettings : [];
+
+        if (! function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $items = [
+            ['id' => 'przelewy24', 'name' => 'Przelewy24', 'plugin' => 'woocommerce-przelewy24/woocommerce-przelewy24.php'],
+            ['id' => 'payu', 'name' => 'PayU', 'plugin' => 'woo-payu-payment-gateway/woo-payu-payment-gateway.php'],
+            ['id' => 'tpay', 'name' => 'Tpay', 'plugin' => 'tpay-com-payment-gateway/tpay-com-payment-gateway.php'],
+            ['id' => 'autopay', 'name' => 'Autopay', 'plugin' => 'autopay-woocommerce/autopay-woocommerce.php'],
+            ['id' => 'blik', 'name' => 'BLIK', 'plugin' => ''],
+        ];
+
+        $activeGatewayIds = $this->getActiveGatewayIds();
+        $html = '<div style="font-size:12px;">';
+        $anyActive = false;
+
+        foreach ($items as $item) {
+            $active = ($item['plugin'] !== '' && is_plugin_active($item['plugin'])) || $this->isGatewayDetected($item['id'], $activeGatewayIds);
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $status = $active
+                ? (string) ($generalSettings['admin_integration_detected_text'] ?? 'wykryta, integracja aktywna')
+                : (string) ($generalSettings['admin_integration_missing_text'] ?? 'niewykryta');
+
+            if ($active) {
+                $anyActive = true;
+            }
+
+            $html .= sprintf(
+                '<div style="margin-bottom:4px;">%s %s - <em>%s</em></div>',
+                $icon,
+                esc_html((string) $item['name']),
+                esc_html($status),
+            );
+        }
+
+        if (! $anyActive) {
+            $html .= '<div style="margin-top:6px;color:#666;">' . esc_html((string) ($generalSettings['admin_payment_no_external_text'] ?? 'Nie wykryto wspieranych polskich bramek płatności. Polski używa własnych ustawień checkoutu bez dodatkowych integracji.')) . '</div>';
+        } else {
+            $html .= '<div style="margin-top:6px;color:#46b450;">' . esc_html((string) ($generalSettings['admin_payment_external_active_text'] ?? 'Wykryto polskie bramki płatności. Polski może dopasować checkout i komunikaty prawne do aktywnych metod.')) . '</div>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getActiveGatewayIds(): array
+    {
+        if (! function_exists('WC')) {
+            return [];
+        }
+
+        $wc = WC();
+
+        if (! $wc instanceof \WooCommerce) {
+            return [];
+        }
+
+        $paymentGateways = $wc->payment_gateways();
+
+        if (! $paymentGateways instanceof \WC_Payment_Gateways) {
+            return [];
+        }
+
+        $gatewayObjects = $paymentGateways->payment_gateways();
+
+        if (! is_array($gatewayObjects)) {
+            return [];
+        }
+
+        $detected = [];
+
+        foreach ($gatewayObjects as $gateway) {
+            if (! $gateway instanceof \WC_Payment_Gateway || $gateway->enabled !== 'yes') {
+                continue;
+            }
+
+            $gatewayId = strtolower((string) $gateway->id);
+
+            if ($gatewayId !== '') {
+                $detected[] = $gatewayId;
+            }
+        }
+
+        return array_values(array_unique($detected));
+    }
+
+    /**
+     * @param list<string> $activeGatewayIds
+     */
+    private function isGatewayDetected(string $integrationId, array $activeGatewayIds): bool
+    {
+        foreach ($activeGatewayIds as $gatewayId) {
+            if ($integrationId === 'przelewy24' && (str_contains($gatewayId, 'przelewy24') || str_contains($gatewayId, 'p24'))) {
+                return true;
+            }
+
+            if ($integrationId === 'payu' && str_contains($gatewayId, 'payu')) {
+                return true;
+            }
+
+            if ($integrationId === 'tpay' && str_contains($gatewayId, 'tpay')) {
+                return true;
+            }
+
+            if ($integrationId === 'autopay' && (str_contains($gatewayId, 'autopay') || str_contains($gatewayId, 'bluepayment') || str_contains($gatewayId, 'blue_media'))) {
+                return true;
+            }
+
+            if ($integrationId === 'blik' && str_contains($gatewayId, 'blik')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

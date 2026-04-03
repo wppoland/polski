@@ -1,13 +1,13 @@
 (function () {
-    const root = document.querySelector('.spolszczony-infinite-scroll');
+    const root = document.querySelector('.polski-infinite-scroll');
 
     if (!root) {
         return;
     }
 
     const list = document.querySelector('ul.products');
-    const button = root.querySelector('.spolszczony-infinite-scroll__button');
-    const status = root.querySelector('.spolszczony-infinite-scroll__status');
+    const button = root.querySelector('.polski-infinite-scroll__button');
+    const status = root.querySelector('.polski-infinite-scroll__status');
     const pagination = document.querySelector('.woocommerce-pagination');
 
     if (!list || !button) {
@@ -18,8 +18,8 @@
         pagination.hidden = true;
     }
 
-    if ((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.mode) === 'auto'
-        && !((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.showButtonInAutoMode))) {
+    if ((window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) === 'auto'
+        && !((window.polskiInfiniteScroll && window.polskiInfiniteScroll.showButtonInAutoMode))) {
         button.hidden = true;
     }
 
@@ -36,7 +36,7 @@
     const updateDoneState = () => {
         if (!nextPageUrl) {
             button.hidden = true;
-            setStatus((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.endText) || '');
+            setStatus((window.polskiInfiniteScroll && window.polskiInfiniteScroll.endText) || '');
         }
     };
 
@@ -47,7 +47,7 @@
 
         loading = true;
         button.disabled = true;
-        setStatus((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.loadingText) || '');
+        setStatus((window.polskiInfiniteScroll && window.polskiInfiniteScroll.loadingText) || '');
 
         try {
             const response = await fetch(nextPageUrl, { credentials: 'same-origin' });
@@ -67,7 +67,7 @@
             setStatus('');
             updateDoneState();
         } catch (error) {
-            setStatus((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.errorText) || '');
+            setStatus((window.polskiInfiniteScroll && window.polskiInfiniteScroll.errorText) || '');
         } finally {
             loading = false;
             button.disabled = false;
@@ -76,7 +76,7 @@
 
     button.addEventListener('click', loadNextPage);
 
-    if ((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.mode) !== 'auto') {
+    if ((window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) !== 'auto') {
         return;
     }
 
@@ -86,7 +86,7 @@
                 return;
             }
 
-            const limit = Number((window.spolszczonyInfiniteScroll && window.spolszczonyInfiniteScroll.autoAfterPages) || 0);
+            const limit = Number((window.polskiInfiniteScroll && window.polskiInfiniteScroll.autoAfterPages) || 0);
 
             if (limit > 0 && autoLoaded >= limit) {
                 observer.disconnect();

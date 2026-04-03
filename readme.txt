@@ -12,20 +12,17 @@ WooCommerce tools for Polish storefront, checkout and product information requir
 
 == Description ==
 
-Polski provides WooCommerce tools for Polish storefront, checkout, pricing and product information flows.
+Polski helps WooCommerce stores handle Polish checkout, pricing, legal and product information requirements in one place.
 
 The free version includes:
 
-* Unit prices and VAT notices
-* Omnibus lowest price tracking
-* Legal consent checkboxes with consent logging
-* Compliant order button text
+* Unit prices, VAT notices and Omnibus price history
+* Legal checkout checkboxes with consent logging
 * Withdrawal flow with customer form and email confirmation
-* Delivery times, manufacturer data, GPSR and product information
-* Legal page generation
-* Double opt-in for account registration
+* Legal page generation and compliant order button text
+* Product information tools, delivery times and GPSR-related data
+* B2B, merchandising and storefront modules
 * WooCommerce Blocks and HPOS support
-* Shortcodes for storefront legal and product information
 
 = Main modules =
 
@@ -65,10 +62,10 @@ Extend your compliance setup with [Polski PRO](https://wppoland.com/polski-pro):
 == Installation ==
 
 1. Upload the `polski` folder to `/wp-content/plugins/`
-2. Activate through the Plugins menu in WordPress
-3. Open `Polski > Moduły`
-4. Review settings and enable the modules you need
-5. Open `Polski > Pulpit` to verify the compliance setup
+2. Activate the plugin in WordPress
+3. Open `Polski > Kreator` to complete the initial setup
+4. Review `Polski > Moduły` and enable the modules you need
+5. Check `Polski > Pulpit` to confirm the setup
 
 == Frequently Asked Questions ==
 

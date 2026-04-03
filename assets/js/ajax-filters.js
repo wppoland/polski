@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('[data-spolszczony-ajax-filters]').forEach(function (form) {
+    document.querySelectorAll('[data-polski-ajax-filters]').forEach(function (form) {
         form.addEventListener('submit', async function (event) {
             event.preventDefault();
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            shopContainer.classList.add('spolszczony-ajax-filters--loading');
+            shopContainer.classList.add('polski-ajax-filters--loading');
 
             try {
                 var response = await fetch(url.toString(), {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } catch (error) {
                 window.location.href = url.toString();
             } finally {
-                shopContainer.classList.remove('spolszczony-ajax-filters--loading');
+                shopContainer.classList.remove('polski-ajax-filters--loading');
             }
         });
     });

@@ -1,5 +1,5 @@
 /**
- * Spolszczony frontend JavaScript.
+ * Polski frontend JavaScript.
  *
  * Handles:
  * - Variable product: update unit price and omnibus when variation changes
@@ -9,7 +9,7 @@
     'use strict';
 
     /**
-     * Variable product: update Spolszczony data when variation is selected.
+     * Variable product: update Polski data when variation is selected.
      */
     function initVariationObserver() {
         var form = document.querySelector('form.variations_form');
@@ -31,21 +31,21 @@
     }
 
     function updateDisplayElements(variation) {
-        // Update unit price if variation has Spolszczony data.
-        var unitPriceEl = document.querySelector('.spolszczony-unit-price');
-        var omnibusEl = document.querySelector('.spolszczony-omnibus-price');
+        // Update unit price if variation has Polski data.
+        var unitPriceEl = document.querySelector('.polski-unit-price');
+        var omnibusEl = document.querySelector('.polski-omnibus-price');
 
-        // WooCommerce Store API provides spolszczony extension data.
+        // WooCommerce Store API provides Polski extension data.
         // For classic templates, we recalculate from variation data.
-        if (variation.spolszczony_unit_price_html) {
+        if (variation.polski_unit_price_html) {
             if (unitPriceEl) {
-                unitPriceEl.innerHTML = variation.spolszczony_unit_price_html;
+                unitPriceEl.innerHTML = variation.polski_unit_price_html;
             }
         }
 
-        if (variation.spolszczony_omnibus_html) {
+        if (variation.polski_omnibus_html) {
             if (omnibusEl) {
-                omnibusEl.innerHTML = variation.spolszczony_omnibus_html;
+                omnibusEl.innerHTML = variation.polski_omnibus_html;
             }
         }
     }
@@ -66,13 +66,13 @@
 
         checkoutForm.addEventListener('submit', function (e) {
             var requiredCheckboxes = checkoutForm.querySelectorAll(
-                '.spolszczony-checkbox.validate-required input[type="checkbox"]'
+                '.polski-checkbox.validate-required input[type="checkbox"]'
             );
 
             var hasError = false;
 
             requiredCheckboxes.forEach(function (checkbox) {
-                var wrapper = checkbox.closest('.spolszczony-checkbox');
+                var wrapper = checkbox.closest('.polski-checkbox');
 
                 if (!checkbox.checked) {
                     hasError = true;

@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('[data-spolszczony-wishlist-button]').forEach(function (button) {
+    document.querySelectorAll('[data-polski-wishlist-button]').forEach(function (button) {
         button.addEventListener('click', async function () {
-            if (!window.spolszczonyWishlist) {
+            if (!window.polskiWishlist) {
                 return;
             }
 
-            if (!window.spolszczonyWishlist.allowGuests && !document.body.classList.contains('logged-in')) {
-                window.location.href = window.spolszczonyWishlist.loginUrl;
+            if (!window.polskiWishlist.allowGuests && !document.body.classList.contains('logged-in')) {
+                window.location.href = window.polskiWishlist.loginUrl;
                 return;
             }
 
             var formData = new FormData();
-            formData.append('action', 'spolszczony_wishlist_toggle');
-            formData.append('nonce', window.spolszczonyWishlist.nonce);
+            formData.append('action', 'polski_wishlist_toggle');
+            formData.append('nonce', window.polskiWishlist.nonce);
             formData.append('product_id', button.dataset.productId || '');
 
             button.disabled = true;
 
             try {
-                var response = await fetch(window.spolszczonyWishlist.ajaxUrl, {
+                var response = await fetch(window.polskiWishlist.ajaxUrl, {
                     method: 'POST',
                     credentials: 'same-origin',
                     body: formData

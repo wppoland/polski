@@ -93,16 +93,15 @@ class PolskiCommand
         $installed = get_option('polski_version', 'unknown');
         $wizardDone = get_option('polski_wizard_complete', false) ? 'yes' : 'no';
 
-        $table = [
-            ['Setting', 'Value'],
-            ['Plugin version', $version],
-            ['Installed version', $installed],
-            ['Setup wizard complete', $wizardDone],
-            ['PHP version', PHP_VERSION],
-            ['WooCommerce version', defined('WC_VERSION') ? WC_VERSION : 'not loaded'],
+        $rows = [
+            ['setting' => 'Plugin version', 'value' => $version],
+            ['setting' => 'Installed version', 'value' => $installed],
+            ['setting' => 'Setup wizard complete', 'value' => $wizardDone],
+            ['setting' => 'PHP version', 'value' => PHP_VERSION],
+            ['setting' => 'WooCommerce version', 'value' => defined('WC_VERSION') ? WC_VERSION : 'not loaded'],
         ];
 
-        \WP_CLI\Utils\format_items('table', array_slice($table, 1), $table[0]);
+        \WP_CLI\Utils\format_items('table', $rows, ['setting', 'value']);
     }
 
     /**

@@ -354,7 +354,7 @@ final class ProductHooks implements Bootable, HasHooks
         }
 
         $productId = $product->get_id();
-        $cacheKey = 'spol_schema_' . $productId;
+        $cacheKey = 'polski_schema_' . $productId;
         $cachedExtra = get_transient($cacheKey);
 
         if ($cachedExtra !== false && is_array($cachedExtra)) {
@@ -432,6 +432,6 @@ final class ProductHooks implements Bootable, HasHooks
      */
     public function clearSchemaCache(int $productId): void
     {
-        delete_transient('spol_schema_' . $productId);
+        delete_transient('polski_schema_' . $productId);
     }
 }

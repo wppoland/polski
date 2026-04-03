@@ -47,6 +47,12 @@ return [
         'admin_omnibus_plugin_missing_text' => 'niezainstalowana',
         'admin_omnibus_no_external_text' => 'Żadna zewnętrzna wtyczka Omnibus nie jest zainstalowana. Polski używa wbudowanego systemu śledzenia cen.',
         'admin_omnibus_external_active_text' => 'Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego systemu.',
+        'admin_integration_detected_text' => 'wykryta, integracja aktywna',
+        'admin_integration_missing_text' => 'niewykryta',
+        'admin_wpdesk_no_external_text' => 'Nie wykryto wspieranych wtyczek WP Desk. Polski działa nadal samodzielnie.',
+        'admin_wpdesk_external_active_text' => 'Wykryto wspierane wtyczki WP Desk. Polski może dopasować integrację do checkoutu, cookies i GPSR.',
+        'admin_payment_no_external_text' => 'Nie wykryto wspieranych polskich bramek płatności. Polski używa własnych ustawień checkoutu bez dodatkowych integracji.',
+        'admin_payment_external_active_text' => 'Wykryto polskie bramki płatności. Polski może dopasować checkout i komunikaty prawne do aktywnych metod.',
     ],
 
     // Price display.

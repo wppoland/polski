@@ -2,77 +2,81 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spolszczony 1.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/spolszczony\n"
+"Project-Id-Version: Polski 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-03T13:26:33+00:00\n"
+"POT-Creation-Date: 2026-04-03T16:38:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: spolszczony\n"
+"X-Domain: polski\n"
 
 #. Plugin Name of the plugin
-#: spolszczony.php
+#: polski.php
 #: src/Admin/AdminPage.php:74
 #: src/Admin/AdminPage.php:75
 #: src/Admin/ProductMetaBox.php:44
 #: src/Admin/ProductMetaBox.php:629
 #: src/Compatibility/ElementorCompat.php:34
-msgid "Spolszczony"
+msgid "Polski"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: spolszczony.php
-msgid "https://wppoland.com/spolszczony"
+#: polski.php
+msgid "https://wppoland.com/polski"
 msgstr ""
 
 #. Description of the plugin
-#: spolszczony.php
-msgid "Polish e-commerce legal compliance for WooCommerce - unit prices, Omnibus directive, legal checkboxes, withdrawal rights, tax display, and more."
+#: polski.php
+msgid "WooCommerce tools for Polish storefront, checkout and product information requirements."
 msgstr ""
 
 #. Author of the plugin
-#: spolszczony.php
+#: polski.php
 msgid "WP Poland"
 msgstr ""
 
 #. Author URI of the plugin
-#: spolszczony.php
+#: polski.php
 msgid "https://wppoland.com"
 msgstr ""
 
 #. translators: 1: Required PHP version, 2: Current PHP version
-#: spolszczony.php:61
+#: polski.php:66
 #, php-format
-msgid "Spolszczony requires PHP %1$s or higher. You are running PHP %2$s."
+msgid "Polski requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
 
-#: spolszczony.php:79
-msgid "Spolszczony requires Composer autoloader. Run \"composer install\" in the plugin directory."
-msgstr ""
-
-#: spolszczony.php:95
-msgid "Spolszczony requires WooCommerce to be installed and activated."
+#: polski.php:88
+msgid "Polski requires WooCommerce to be installed and activated."
 msgstr ""
 
 #. translators: 1: Required WC version, 2: Current WC version
-#: spolszczony.php:107
+#: polski.php:100
 #, php-format
-msgid "Spolszczony requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
+msgid "Polski requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
 msgstr ""
 
-#: src/Admin/AdminNotes.php:44
-msgid "Skonfiguruj Spolszczony dla Twojego sklepu"
+#: src/Admin/AdminNotes.php:37
+msgid "This plugin provides tools to assist with Polish e-commerce compliance. It does not constitute legal advice. You are solely responsible for ensuring your store complies with all applicable laws. We recommend consulting a qualified legal professional."
 msgstr ""
 
-#: src/Admin/AdminNotes.php:46
+#: src/Admin/AdminNotes.php:38
+msgid "I understand, dismiss"
+msgstr ""
+
+#: src/Admin/AdminNotes.php:76
+msgid "Skonfiguruj Polski dla Twojego sklepu"
+msgstr ""
+
+#: src/Admin/AdminNotes.php:78
 msgid "Zaledwie kilka kliknięć dzieli Cię od w pełni przygotowanego, profesjonalnego sklepu WooCommerce. Wypełnij poniższe punkty w mig!"
 msgstr ""
 
-#: src/Admin/AdminNotes.php:53
+#: src/Admin/AdminNotes.php:85
 msgid "Uruchom kreator konfiguracji"
 msgstr ""
 
@@ -81,7 +85,7 @@ msgid "Ustawienia"
 msgstr ""
 
 #: src/Admin/AdminPage.php:59
-#: src/Admin/ModulesPage.php:1530
+#: src/Admin/ModulesPage.php:1555
 #: src/Admin/QuoteRequestsPage.php:57
 #: src/Admin/QuoteRequestsPage.php:88
 #: src/Rest/RestController.php:33
@@ -90,83 +94,83 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:86
 #: src/Admin/AdminPage.php:87
-#: src/Admin/AdminPage.php:175
+#: src/Admin/AdminPage.php:167
 msgid "Moduły"
 msgstr ""
 
 #: src/Admin/AdminPage.php:95
 #: src/Admin/AdminPage.php:96
-#: src/Admin/AdminPage.php:176
+#: src/Admin/AdminPage.php:168
 msgid "Pulpit"
 msgstr ""
 
-#: src/Admin/AdminPage.php:163
+#: src/Admin/AdminPage.php:155
 msgid "Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj."
 msgstr ""
 
-#: src/Admin/AdminPage.php:169
+#: src/Admin/AdminPage.php:161
 msgid "Moduły zapisane."
 msgstr ""
 
-#: src/Admin/AdminPage.php:230
+#: src/Admin/AdminPage.php:222
 msgid "Nieaktywna"
 msgstr ""
 
-#: src/Admin/AdminPage.php:235
-#: src/Admin/AdminPage.php:272
+#: src/Admin/AdminPage.php:227
+#: src/Admin/AdminPage.php:264
 msgid "Strony prawne"
 msgstr ""
 
-#: src/Admin/AdminPage.php:239
+#: src/Admin/AdminPage.php:231
 #, php-format
 msgid "Masz już za sobą %d z %d kroków. Znakomicie!"
 msgstr ""
 
-#: src/Admin/AdminPage.php:245
+#: src/Admin/AdminPage.php:237
 msgid "Dyrektywa Omnibus"
 msgstr ""
 
-#: src/Admin/AdminPage.php:246
-#: src/Admin/AdminPage.php:264
+#: src/Admin/AdminPage.php:238
+#: src/Admin/AdminPage.php:256
 #: src/Service/GiftCardService.php:537
 #: src/Service/SubscriptionService.php:457
 msgid "Aktywna"
 msgstr ""
 
-#: src/Admin/AdminPage.php:246
-#: src/Admin/AdminPage.php:264
+#: src/Admin/AdminPage.php:238
+#: src/Admin/AdminPage.php:256
 msgid "Wyłączona"
 msgstr ""
 
-#: src/Admin/AdminPage.php:251
+#: src/Admin/AdminPage.php:243
 msgid "Przycisk zamówienia"
 msgstr ""
 
-#: src/Admin/AdminPage.php:252
+#: src/Admin/AdminPage.php:244
 msgid "Nieskonfigurowany"
 msgstr ""
 
-#: src/Admin/AdminPage.php:257
+#: src/Admin/AdminPage.php:249
 msgid "Wyświetlanie podatku"
 msgstr ""
 
-#: src/Admin/AdminPage.php:258
+#: src/Admin/AdminPage.php:250
 msgid "Zwolnienie podmiotowe (art. 113)"
 msgstr ""
 
-#: src/Admin/AdminPage.php:258
+#: src/Admin/AdminPage.php:250
 msgid "Standardowy VAT"
 msgstr ""
 
-#: src/Admin/AdminPage.php:263
+#: src/Admin/AdminPage.php:255
 msgid "Podwójna weryfikacja (DOI)"
 msgstr ""
 
-#: src/Admin/AdminPage.php:277
+#: src/Admin/AdminPage.php:269
 msgid "Strona"
 msgstr ""
 
-#: src/Admin/AdminPage.php:277
+#: src/Admin/AdminPage.php:269
 #: src/Admin/QuoteRequestsPage.php:129
 #: src/Service/WithdrawalService.php:304
 #: templates/account/affiliates.php:58
@@ -175,55 +179,55 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: src/Admin/AdminPage.php:294
+#: src/Admin/AdminPage.php:286
 msgid "Opublikowana"
 msgstr ""
 
-#: src/Admin/AdminPage.php:295
+#: src/Admin/AdminPage.php:287
 msgid "Szkic"
 msgstr ""
 
-#: src/Admin/AdminPage.php:299
+#: src/Admin/AdminPage.php:291
 msgid "Edytuj"
 msgstr ""
 
-#: src/Admin/AdminPage.php:301
+#: src/Admin/AdminPage.php:293
 msgid "Nie utworzona"
 msgstr ""
 
-#: src/Admin/AdminPage.php:316
+#: src/Admin/AdminPage.php:308
 msgid "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
 msgstr ""
 
-#: src/Admin/AdminPage.php:324
+#: src/Admin/AdminPage.php:316
 msgid "Kolejne kroki"
 msgstr ""
 
-#: src/Admin/AdminPage.php:328
+#: src/Admin/AdminPage.php:320
 msgid "Publish your legal pages (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje)."
 msgstr ""
 
-#: src/Admin/AdminPage.php:332
+#: src/Admin/AdminPage.php:324
 #, php-format
 msgid "Set up <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
 msgstr ""
 
-#: src/Admin/AdminPage.php:337
+#: src/Admin/AdminPage.php:329
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for Polish delivery."
 msgstr ""
 
-#: src/Admin/AdminPage.php:342
+#: src/Admin/AdminPage.php:334
 #, php-format
-msgid "Edit product data - add unit prices and delivery times in the <a href=\"%s\">Spolszczony tab</a> of each product."
+msgid "Edit product data - add unit prices and delivery times in the <a href=\"%s\">Polski tab</a> of each product."
 msgstr ""
 
-#: src/Admin/AdminPage.php:347
+#: src/Admin/AdminPage.php:339
 #, php-format
 msgid "Test the checkout - add a product to cart and verify legal checkboxes and button text at <a href=\"%s\">checkout</a>."
 msgstr ""
 
-#: src/Admin/AdminPage.php:381
+#: src/Admin/AdminPage.php:373
 msgid "Wygeneruj strony prawne"
 msgstr ""
 
@@ -289,11 +293,11 @@ msgstr ""
 msgid "Ilość netto"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1321
+#: src/Admin/ModulesPage.php:1346
 msgid "Zapisz moduły"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1411
+#: src/Admin/ModulesPage.php:1436
 msgid "Kup PRO"
 msgstr ""
 
@@ -1386,80 +1390,80 @@ msgid "Review reminder consent should be optional - change it from required to o
 msgstr ""
 
 #. translators: %s: link to terms page
-#: src/Service/CheckboxService.php:449
+#: src/Service/CheckboxService.php:450
 #, php-format
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
 msgstr ""
 
-#: src/Service/CheckboxService.php:455
+#: src/Service/CheckboxService.php:456
 msgid "Musisz zaakceptować Regulamin, aby złożyć zamówienie."
 msgstr ""
 
-#: src/Service/CheckboxService.php:456
+#: src/Service/CheckboxService.php:457
 msgid "Akceptacja Regulaminu sklepu."
 msgstr ""
 
 #. translators: %s: link to privacy policy
-#: src/Service/CheckboxService.php:467
+#: src/Service/CheckboxService.php:468
 #, php-format
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>."
 msgstr ""
 
-#: src/Service/CheckboxService.php:473
+#: src/Service/CheckboxService.php:474
 msgid "Musisz zaakceptować Politykę prywatności."
 msgstr ""
 
-#: src/Service/CheckboxService.php:474
+#: src/Service/CheckboxService.php:475
 msgid "Privacy Policy acceptance (Polityka prywatności)."
 msgstr ""
 
 #. translators: %s: link to return policy
-#: src/Service/CheckboxService.php:485
+#: src/Service/CheckboxService.php:486
 #, php-format
 msgid "I have been informed about my <a href=\"%s\" target=\"_blank\">right to withdraw from the contract</a> within 14 days."
 msgstr ""
 
-#: src/Service/CheckboxService.php:491
+#: src/Service/CheckboxService.php:492
 msgid "Musisz potwierdzić zapoznanie się z informacją o prawie odstąpienia."
 msgstr ""
 
-#: src/Service/CheckboxService.php:492
+#: src/Service/CheckboxService.php:493
 msgid "14-day withdrawal right acknowledgment (Prawo odstąpienia)."
 msgstr ""
 
-#: src/Service/CheckboxService.php:498
+#: src/Service/CheckboxService.php:499
 msgid "Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia."
 msgstr ""
 
-#: src/Service/CheckboxService.php:503
+#: src/Service/CheckboxService.php:504
 msgid "Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych."
 msgstr ""
 
-#: src/Service/CheckboxService.php:504
+#: src/Service/CheckboxService.php:505
 msgid "Zrzeczenie się prawa odstąpienia dla towarów cyfrowych."
 msgstr ""
 
-#: src/Service/CheckboxService.php:511
+#: src/Service/CheckboxService.php:512
 msgid "Wyrażam zgodę na otrzymywanie powiadomień SMS/email o statusie dostawy przesyłki."
 msgstr ""
 
-#: src/Service/CheckboxService.php:516
+#: src/Service/CheckboxService.php:517
 msgid "Opcjonalna zgoda na powiadomienia o dostawie."
 msgstr ""
 
-#: src/Service/CheckboxService.php:522
+#: src/Service/CheckboxService.php:523
 msgid "Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie."
 msgstr ""
 
-#: src/Service/CheckboxService.php:527
+#: src/Service/CheckboxService.php:528
 msgid "Opcjonalna zgoda na przypomnienia o opinii."
 msgstr ""
 
-#: src/Service/CheckboxService.php:533
+#: src/Service/CheckboxService.php:534
 msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
 msgstr ""
 
-#: src/Service/CheckboxService.php:538
+#: src/Service/CheckboxService.php:539
 msgid "Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a)."
 msgstr ""
 

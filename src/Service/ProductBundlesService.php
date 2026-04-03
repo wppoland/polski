@@ -269,6 +269,11 @@ final class ProductBundlesService implements Bootable, HasHooks
         }
 
         $rows = preg_split('/\R+/', $raw) ?: [];
+
+        if (count($rows) === 1 && ! str_contains($raw, '|') && str_contains($raw, ',')) {
+            $rows = array_map('trim', explode(',', $raw));
+        }
+
         $items = [];
 
         foreach ($rows as $row) {
@@ -276,6 +281,10 @@ final class ProductBundlesService implements Bootable, HasHooks
 
             if ($row === '') {
                 continue;
+            }
+
+            if (! str_contains($row, '|')) {
+                $row .= '|1|';
             }
 
             [$relatedId, $quantity, $required] = array_pad(array_map('trim', explode('|', $row, 3)), 3, '');

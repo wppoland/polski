@@ -2,6 +2,7 @@
 .git
 .gitignore
 .github
+.phpunit.cache
 .phpstan.neon
 .wp-env.json
 .wp-env.override.json

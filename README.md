@@ -100,6 +100,7 @@ Polski provides WooCommerce tools for Polish storefront, checkout, pricing and p
 ### Payment Gateways
 - **Invoice payment (Przelew/Faktura)** - bank transfer payment with legal compliance
 - **Payment gateway enhancements** - legal notices and compliance for all gateways
+- **Polish gateway detection** - admin status for Przelewy24, PayU, Tpay, Autopay and BLIK-aware gateways, plus checkout-aware integration hooks
 
 ### Tax & VAT
 - **Brutto/netto toggle** - store-wide price display mode
@@ -148,6 +149,8 @@ Polski provides WooCommerce tools for Polish storefront, checkout, pricing and p
 - **Gutenberg blocks** - native blocks for all product display elements
 - **REST API** - full CRUD API for settings, checkboxes, withdrawals, delivery times
 - **WP-CLI commands** - database migrations and maintenance via CLI
+- **Smoke test script** - run `wp eval-file scripts/smoke-tests.php --allow-root` inside `wp-env` to verify wizard completion plus core quote, waitlist, add-ons, bundles, gift cards, subscriptions and affiliates flows
+- **WordPress 6.7-safe bootstrap** - plugin translations are loaded on `init`, avoiding early text-domain notices in plugin runtime
 - **Template overrides** - all templates overridable from theme (`yourtheme/polski/`)
 
 ---

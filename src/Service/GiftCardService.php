@@ -556,16 +556,26 @@ final class GiftCardService implements Bootable, HasHooks
             ['code' => $code],
         );
 
-        $message = sprintf(
-            "%s\n\n%s: %s\n%s: %s\n%s: %s\n%s",
+        $lines = [
             (string) ($this->getSettings()['email_heading'] ?? __('Ktoś wysłał Ci kartę podarunkową do sklepu', 'polski')),
-            __('Kod karty', 'polski'),
-            $code,
-            __('Wartość', 'polski'),
-            Formatter::price((float) ($purchase['amount'] ?? 0)),
-            __('Wiadomość', 'polski'),
-            (string) ($purchase['message'] ?? ''),
-        );
+            '',
+            sprintf('%s: %s', __('Kod karty', 'polski'), $code),
+            sprintf('%s: %s', __('Wartość', 'polski'), Formatter::price((float) ($purchase['amount'] ?? 0))),
+        ];
+
+        $senderName = trim((string) ($purchase['sender_name'] ?? ''));
+
+        if ($senderName !== '') {
+            $lines[] = sprintf('%s: %s', __('Od', 'polski'), $senderName);
+        }
+
+        $messageText = trim((string) ($purchase['message'] ?? ''));
+
+        if ($messageText !== '') {
+            $lines[] = sprintf('%s: %s', __('Wiadomość', 'polski'), $messageText);
+        }
+
+        $message = implode("\n", $lines);
 
         if ($expiresAt !== null) {
             $message .= "\n\n" . sprintf(

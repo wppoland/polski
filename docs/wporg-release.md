@@ -34,6 +34,14 @@ Default output:
 /tmp/polski-wporg-trunk
 ```
 
+## Sync local SVN checkout
+
+```bash
+svn checkout https://plugins.svn.wordpress.org/polski /tmp/polski-svn
+cd polski
+bash scripts/sync-wporg-svn.sh /tmp/polski-wporg-trunk /tmp/polski-svn
+```
+
 ## SVN layout
 
 - `trunk/` - contents of the prepared package
