@@ -13,7 +13,7 @@ final class ManufacturerWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Producent', 'polski');
+        return __('Manufacturer', 'polski');
     }
 
     protected function register_controls(): void

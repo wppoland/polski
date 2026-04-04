@@ -49,7 +49,7 @@ if (empty($checkboxes)) {
                     <?php echo wp_kses($checkbox->label, ['a' => ['href' => [], 'target' => [], 'rel' => [], 'class' => []], 'strong' => [], 'em' => [], 'br' => []]); ?>
                 </span>
                 <?php if ($required && ! $checkbox->hideInput) : ?>
-                    <abbr class="required" title="<?php esc_attr_e('wymagane', 'polski'); ?>">*</abbr>
+                    <abbr class="required" title="<?php esc_attr_e('required', 'polski'); ?>">*</abbr>
                 <?php endif; ?>
             </label>
             <?php // Hidden field for visibility detection during AJAX fragment refresh. ?>

@@ -13,7 +13,7 @@ final class IngredientsWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Składniki', 'polski');
+        return __('Ingredients', 'polski');
     }
 
     protected function register_controls(): void

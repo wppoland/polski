@@ -222,7 +222,7 @@ final class CompareService implements Bootable, HasHooks
         $logout = $items['customer-logout'] ?? null;
         unset($items['customer-logout']);
 
-        $items[self::ENDPOINT] = (string) ($this->getSettings()['account_label'] ?? __('Porównanie', 'polski'));
+        $items[self::ENDPOINT] = (string) ($this->getSettings()['account_label'] ?? __('Comparison', 'polski'));
 
         if ($logout !== null) {
             $items['customer-logout'] = $logout;
@@ -327,52 +327,52 @@ final class CompareService implements Bootable, HasHooks
 
     public function getAddText(): string
     {
-        return (string) ($this->getSettings()['button_add_text'] ?? __('Dodaj do porównania', 'polski'));
+        return (string) ($this->getSettings()['button_add_text'] ?? __('Add to compare', 'polski'));
     }
 
     public function getRemoveText(): string
     {
-        return (string) ($this->getSettings()['button_remove_text'] ?? __('Usuń z porównania', 'polski'));
+        return (string) ($this->getSettings()['button_remove_text'] ?? __('Remove from compare', 'polski'));
     }
 
     public function getClearText(): string
     {
-        return (string) ($this->getSettings()['clear_text'] ?? __('Wyczyść porównanie', 'polski'));
+        return (string) ($this->getSettings()['clear_text'] ?? __('Clear comparison', 'polski'));
     }
 
     public function getCompareLinkText(): string
     {
-        return (string) ($this->getSettings()['compare_link_text'] ?? __('Porównaj produkty', 'polski'));
+        return (string) ($this->getSettings()['compare_link_text'] ?? __('Compare products', 'polski'));
     }
 
     public function getLoginRequiredText(): string
     {
-        return (string) ($this->getSettings()['login_required_text'] ?? __('Zaloguj się, aby korzystać z porównania produktów.', 'polski'));
+        return (string) ($this->getSettings()['login_required_text'] ?? __('Log in to use product comparison.', 'polski'));
     }
 
     public function getProductNotFoundText(): string
     {
-        return (string) ($this->getSettings()['product_not_found_text'] ?? __('Nie znaleziono produktu.', 'polski'));
+        return (string) ($this->getSettings()['product_not_found_text'] ?? __('Product not found.', 'polski'));
     }
 
     public function getClearErrorText(): string
     {
-        return (string) ($this->getSettings()['clear_error_text'] ?? __('Nie możesz wyczyścić porównania.', 'polski'));
+        return (string) ($this->getSettings()['clear_error_text'] ?? __('You cannot clear the comparison.', 'polski'));
     }
 
     public function getFeatureLabel(): string
     {
-        return (string) ($this->getSettings()['feature_label'] ?? __('Cecha', 'polski'));
+        return (string) ($this->getSettings()['feature_label'] ?? __('Feature', 'polski'));
     }
 
     public function getDifferencesToggleText(): string
     {
-        return (string) ($this->getSettings()['differences_toggle_text'] ?? __('Pokazuj tylko różnice', 'polski'));
+        return (string) ($this->getSettings()['differences_toggle_text'] ?? __('Show only differences', 'polski'));
     }
 
     public function getLimitNoticeText(int $limit): string
     {
-        $template = (string) ($this->getSettings()['limit_notice_text'] ?? __('Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie.', 'polski'));
+        $template = (string) ($this->getSettings()['limit_notice_text'] ?? __('You can compare up to {limit} products at once. The oldest entry was automatically replaced.', 'polski'));
 
         return str_replace('{limit}', (string) $limit, $template);
     }
@@ -401,18 +401,18 @@ final class CompareService implements Bootable, HasHooks
 
         $rows = [];
         $rowMap = [
-            'price' => (string) ($this->getSettings()['price_label'] ?? __('Cena', 'polski')),
-            'unit_price' => (string) ($this->getSettings()['unit_price_label'] ?? __('Cena jednostkowa', 'polski')),
+            'price' => (string) ($this->getSettings()['price_label'] ?? __('Price', 'polski')),
+            'unit_price' => (string) ($this->getSettings()['unit_price_label'] ?? __('Unit price', 'polski')),
             'sku' => (string) ($this->getSettings()['sku_label'] ?? __('SKU', 'polski')),
-            'availability' => (string) ($this->getSettings()['availability_label'] ?? __('Dostępność', 'polski')),
-            'delivery_time' => (string) ($this->getSettings()['delivery_time_label'] ?? __('Czas dostawy', 'polski')),
-            'brand' => (string) ($this->getSettings()['brand_label'] ?? __('Marka', 'polski')),
-            'manufacturer' => (string) ($this->getSettings()['manufacturer_label'] ?? __('Producent', 'polski')),
+            'availability' => (string) ($this->getSettings()['availability_label'] ?? __('Availability', 'polski')),
+            'delivery_time' => (string) ($this->getSettings()['delivery_time_label'] ?? __('Delivery time', 'polski')),
+            'brand' => (string) ($this->getSettings()['brand_label'] ?? __('Brand', 'polski')),
+            'manufacturer' => (string) ($this->getSettings()['manufacturer_label'] ?? __('Manufacturer', 'polski')),
             'gtin' => (string) ($this->getSettings()['gtin_label'] ?? __('GTIN / EAN', 'polski')),
         ];
 
         if ((bool) ($this->getSettings()['show_description'] ?? true)) {
-            $rowMap['description'] = (string) ($this->getSettings()['description_label'] ?? __('Krótki opis', 'polski'));
+            $rowMap['description'] = (string) ($this->getSettings()['description_label'] ?? __('Short description', 'polski'));
         }
 
         foreach ($rowMap as $key => $label) {

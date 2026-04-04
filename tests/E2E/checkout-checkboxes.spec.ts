@@ -13,9 +13,12 @@ const ADMIN_PASS = 'password';
 
 test.describe('Checkout Legal Checkboxes', () => {
     test.beforeEach(async ({ page }) => {
-        // Add a product to cart via URL.
-        await page.goto('/?add-to-cart=1', { waitUntil: 'networkidle' });
-        await page.goto('/checkout/');
+        // Go to shop and add the first product to cart.
+        await page.goto('/shop/', { waitUntil: 'networkidle' });
+        await page.click('.ajax_add_to_cart, .add_to_cart_button');
+        
+        // Wait for cart to update or just go to checkout.
+        await page.goto('/checkout/', { waitUntil: 'networkidle' });
     });
 
     test('shows legal checkboxes container', async ({ page }) => {
@@ -46,7 +49,7 @@ test.describe('Checkout Legal Checkboxes', () => {
 
     test('order button has correct Polish text', async ({ page }) => {
         const button = page.locator('#place_order');
-        await expect(button).toContainText('Zamawiam');
+        await expect(button).toContainText('Place order');
     });
 
     test('checkout fails without accepting required checkboxes', async ({ page }) => {

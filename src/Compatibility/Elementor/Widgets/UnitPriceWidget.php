@@ -13,7 +13,7 @@ final class UnitPriceWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Cena jednostkowa', 'polski');
+        return __('Unit Price', 'polski');
     }
 
     protected function register_controls(): void

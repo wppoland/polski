@@ -13,7 +13,7 @@ final class FoodInfoWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Informacje o żywności', 'polski');
+        return __('Food Information', 'polski');
     }
 
     protected function register_controls(): void

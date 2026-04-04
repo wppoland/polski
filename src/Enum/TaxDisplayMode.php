@@ -12,8 +12,8 @@ enum TaxDisplayMode: string
     public function label(): string
     {
         return match ($this) {
-            self::Brutto => __('Ceny zawierają VAT (brutto)', 'polski'),
-            self::Netto => __('Ceny nie zawierają VAT (netto)', 'polski'),
+            self::Brutto => __('Prices include VAT (gross)', 'polski'),
+            self::Netto => __('Prices exclude VAT (net)', 'polski'),
         };
     }
 }

@@ -91,7 +91,7 @@ test.describe('Deactivation feedback', () => {
         await expect(page.getByText('Thanks, your feedback has been saved.')).toBeVisible();
 
         await page.goto('/wp-admin/admin.php?page=polski-reports&view=feedback');
-        await expect(page.getByText('Logi opinii z panelu')).toBeVisible();
+        await expect(page.getByText('Feedback Logs')).toBeVisible();
         await expect(page.getByText('Please make the onboarding easier for first-time merchants.')).toBeVisible();
     });
 });

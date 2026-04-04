@@ -13,7 +13,7 @@ final class TaxInfoWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Informacja o VAT', 'polski');
+        return __('Tax Information', 'polski');
     }
 
     protected function register_controls(): void

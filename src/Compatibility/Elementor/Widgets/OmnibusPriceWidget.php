@@ -13,7 +13,7 @@ final class OmnibusPriceWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Najniższa cena (Omnibus)', 'polski');
+        return __('Lowest Price (Omnibus)', 'polski');
     }
 
     protected function register_controls(): void

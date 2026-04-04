@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 /**
  * Value object for a calculated unit price.
  *
- * Example: "12,50 zł / 1 kg" for a 500g product priced at 6,25 zł.
+ * Example: "12.50 PLN / 1 kg" for a 500g product priced at 6.25 PLN.
  */
 final class UnitPrice
 {

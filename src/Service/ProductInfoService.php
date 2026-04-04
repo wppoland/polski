@@ -39,7 +39,7 @@ final class ProductInfoService
 
         return sprintf(
             '<div class="polski-manufacturer"><span class="polski-manufacturer__label">%s:</span> <span class="polski-manufacturer__name">%s</span></div>',
-            esc_html__('Producent', 'polski'),
+            esc_html__('Manufacturer', 'polski'),
             esc_html($name),
         );
     }
@@ -100,7 +100,7 @@ final class ProductInfoService
         }
 
         $settings = get_option('polski_brand', []);
-        $label = is_array($settings) ? (string) ($settings['label'] ?? __('Marka', 'polski')) : __('Marka', 'polski');
+        $label = is_array($settings) ? (string) ($settings['label'] ?? __('Brand', 'polski')) : __('Brand', 'polski');
         $showLabel = ! is_array($settings) || (bool) ($settings['show_label'] ?? true);
         $separator = is_array($settings) ? (string) ($settings['separator'] ?? ', ') : ', ';
         $linkTerms = ! is_array($settings) || (bool) ($settings['link_terms'] ?? true);
@@ -180,7 +180,7 @@ final class ProductInfoService
                 $links[] = sprintf(
                     '<a href="%s" target="_blank" rel="noopener">%s</a>',
                     esc_url($url),
-                    esc_html($title ?: __('Dokument bezpieczeństwa', 'polski')),
+                    esc_html($title ?: __('Safety Document', 'polski')),
                 );
             }
         }
@@ -191,7 +191,7 @@ final class ProductInfoService
 
         return sprintf(
             '<div class="polski-safety-docs"><span class="polski-safety-docs__label">%s:</span><ul>%s</ul></div>',
-            esc_html__('Dokumenty bezpieczeństwa', 'polski'),
+            esc_html__('Safety Documents', 'polski'),
             '<li>' . implode('</li><li>', $links) . '</li>',
         );
     }
@@ -225,7 +225,7 @@ final class ProductInfoService
 
         return sprintf(
             '<div class="polski-power-supply"><span class="polski-power-supply__label">%s:</span> <span>%s</span></div>',
-            esc_html__('Zasilanie', 'polski'),
+            esc_html__('Power Supply', 'polski'),
             esc_html($info),
         );
     }
@@ -251,7 +251,7 @@ final class ProductInfoService
 
         return sprintf(
             '<div class="polski-defect-description"><span class="polski-defect-description__label">%s:</span> <span>%s</span></div>',
-            esc_html__('Opis wady', 'polski'),
+            esc_html__('Defect Description', 'polski'),
             esc_html($desc),
         );
     }

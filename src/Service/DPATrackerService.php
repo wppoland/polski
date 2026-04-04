@@ -63,17 +63,17 @@ final class DPATrackerService implements HasHooks
         }
 
         echo '<div class="wrap">';
-        echo '<h1>' . esc_html__('Rejestr umów powierzenia danych (DPA)', 'polski') . '</h1>';
-        echo '<p>' . esc_html__('Wykryte usługi zewnętrzne przetwarzające dane osobowe Twoich klientów. Oznacz, dla których masz podpisaną umowę powierzenia.', 'polski') . '</p>';
+        echo '<h1>' . esc_html__('Data Processing Agreement (DPA) Registry', 'polski') . '</h1>';
+        echo '<p>' . esc_html__('Detected external services processing your customers\' personal data. Mark those for which you have a signed DPA.', 'polski') . '</p>';
 
         echo '<form method="post">';
         wp_nonce_field(self::NONCE_ACTION, self::NONCE_FIELD);
 
         echo '<table class="widefat fixed striped"><thead><tr>';
-        echo '<th>' . esc_html__('Usługa', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Typ', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Service', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Type', 'polski') . '</th>';
         echo '<th style="width:80px;">' . esc_html__('DPA', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Notatki', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Notes', 'polski') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($detectedServices as $service) {
@@ -90,7 +90,7 @@ final class DPATrackerService implements HasHooks
         }
 
         echo '</tbody></table>';
-        submit_button(__('Zapisz rejestr', 'polski'));
+        submit_button(__('Save Registry', 'polski'));
         echo '</form></div>';
     }
 
@@ -106,7 +106,7 @@ final class DPATrackerService implements HasHooks
         // Hosting is always present.
         $services[] = [
             'key'  => 'hosting',
-            'name' => __('Hosting (serwer)', 'polski'),
+            'name' => __('Hosting (server)', 'polski'),
             'type' => __('Hosting', 'polski'),
         ];
 
@@ -118,7 +118,7 @@ final class DPATrackerService implements HasHooks
                 $services[] = [
                     'key'  => 'payment_' . sanitize_key($gatewayId),
                     'name' => $gateway->get_title(),
-                    'type' => __('Płatności', 'polski'),
+                    'type' => __('Payments', 'polski'),
                 ];
             }
         }
@@ -142,7 +142,7 @@ final class DPATrackerService implements HasHooks
                     $services[] = [
                         'key'  => 'shipping_' . sanitize_key($methodId),
                         'name' => $method->get_title(),
-                        'type' => __('Wysyłka', 'polski'),
+                        'type' => __('Shipping', 'polski'),
                     ];
 
                     $seenMethodIds[$methodId] = true;
@@ -154,11 +154,11 @@ final class DPATrackerService implements HasHooks
         $knownPlugins = [
             'google-analytics-for-wordpress/googleanalytics.php' => [
                 'Google Analytics',
-                __('Analityka', 'polski'),
+                __('Analytics', 'polski'),
             ],
             'google-site-kit/google-site-kit.php' => [
                 'Google Site Kit',
-                __('Analityka', 'polski'),
+                __('Analytics', 'polski'),
             ],
             'mailchimp-for-woocommerce/mailchimp-woocommerce.php' => [
                 'Mailchimp',
@@ -170,15 +170,15 @@ final class DPATrackerService implements HasHooks
             ],
             'woocommerce-google-analytics-integration/woocommerce-google-analytics-integration.php' => [
                 'Google Analytics (WC)',
-                __('Analityka', 'polski'),
+                __('Analytics', 'polski'),
             ],
             'facebook-for-woocommerce/facebook-for-woocommerce.php' => [
                 'Meta/Facebook',
-                __('Reklamy', 'polski'),
+                __('Advertising', 'polski'),
             ],
             'pinterest-for-woocommerce/pinterest-for-woocommerce.php' => [
                 'Pinterest',
-                __('Reklamy', 'polski'),
+                __('Advertising', 'polski'),
             ],
         ];
 

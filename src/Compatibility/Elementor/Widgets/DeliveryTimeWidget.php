@@ -13,7 +13,7 @@ final class DeliveryTimeWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Czas dostawy', 'polski');
+        return __('Delivery Time', 'polski');
     }
 
     protected function register_controls(): void
