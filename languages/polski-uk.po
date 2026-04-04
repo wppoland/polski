@@ -25,7 +25,7 @@ msgstr "Polski для WooCommerce"
 #. Plugin URI of the plugin
 #: polski.php
 msgid "https://wppoland.com/pl/polski/"
-msgstr "https://wppoland.com/en/polski/"
+msgstr ""
 
 #. Description of the plugin
 #: polski.php

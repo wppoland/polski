@@ -35,12 +35,12 @@ msgstr "Passt WooCommerce und WordPress an die Anforderungen des polnischen Mark
 #. Author of the plugin
 #: polski.php
 msgid "WPPoland"
-msgstr "WP Poland"
+msgstr "WPPoland"
 
 #. Author URI of the plugin
 #: polski.php
 msgid "https://wppoland.com"
-msgstr ""
+msgstr "https://wppoland.com"
 
 #: config/defaults.php:18
 msgid "Platforma ODR: https://ec.europa.eu/consumers/odr"
@@ -157,7 +157,7 @@ msgstr "Es wurden noch keine rechtlichen Seiten erstellt. Generiere sie, um zu b
 #: config/defaults.php:41
 #: src/Admin/AdminPage.php:917
 msgid "Wygeneruj strony prawne"
-msgstr "Rechtliche Seiten generieren"
+msgstr "Rechtstexte generieren"
 
 #: config/defaults.php:42
 #: src/Admin/AdminPage.php:800
@@ -190,11 +190,11 @@ msgstr "Teste den Checkout, lege ein Produkt in den Warenkorb und prüfe die rec
 
 #: config/defaults.php:52
 msgid "wykryta, dane synchronizowane"
-msgstr ""
+msgstr "erkannt, Daten werden synchronisiert"
 
 #: config/defaults.php:53
 msgid "niezainstalowana"
-msgstr ""
+msgstr "nicht installiert"
 
 #: config/defaults.php:54
 #: src/Admin/ModulesPage.php:1420
@@ -208,11 +208,11 @@ msgstr "Externes Plugin erkannt. Polski verwendet dessen Daten statt des integri
 
 #: config/defaults.php:56
 msgid "wykryta, integracja aktywna"
-msgstr ""
+msgstr "erkannt, Integration aktiv"
 
 #: config/defaults.php:57
 msgid "niewykryta"
-msgstr ""
+msgstr "nicht erkannt"
 
 #: config/defaults.php:58
 #: src/Admin/ModulesPage.php:1468
@@ -226,24 +226,24 @@ msgstr "Unterstützte Checkout-, Cookie- oder Produktdaten-Erweiterungen wurden 
 
 #: config/defaults.php:60
 msgid "Nie wykryto wspieranych polskich bramek płatności. Polski używa własnych ustawień checkoutu bez dodatkowych integracji."
-msgstr ""
+msgstr "Es wurden keine unterstützten polnischen Zahlungsarten erkannt. Polski verwendet seine eigenen Checkout-Einstellungen ohne zusätzliche Integrationen."
 
 #: config/defaults.php:61
 msgid "Wykryto polskie bramki płatności. Polski może dopasować checkout i komunikaty prawne do aktywnych metod."
-msgstr ""
+msgstr "Polnische Zahlungsarten wurden erkannt. Polski kann Checkout und Rechtshinweise an die aktiven Methoden anpassen."
 
 #: config/defaults.php:68
 msgid "{price} / {unit}"
-msgstr ""
+msgstr "{price} / {unit}"
 
 #: config/defaults.php:70
 msgid "zzgl. kosztów wysyłki"
-msgstr ""
+msgstr "zzgl. Versandkosten"
 
 #: config/defaults.php:77
 #: src/Service/OmnibusService.php:39
 msgid "Najniższa cena z ostatnich {days} dni: {price}"
-msgstr ""
+msgstr "Niedrigster Preis der letzten {days} Tage: {price}"
 
 #: config/defaults.php:84
 #: src/Rest/SettingsController.php:143
@@ -253,109 +253,109 @@ msgstr "Zahlungspflichtig bestellen"
 #. translators: %s is the terms and conditions page URL.
 #: config/defaults.php:87
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
-msgstr ""
+msgstr "Ich habe die <a href=\"%s\" target=\"_blank\">Allgemeinen Geschäftsbedingungen</a> gelesen und akzeptiere sie."
 
 #: config/defaults.php:88
 #: src/Service/CheckboxService.php:457
 msgid "Musisz zaakceptować Regulamin, aby złożyć zamówienie."
-msgstr ""
+msgstr "Du musst die AGB akzeptieren, um die Bestellung aufzugeben."
 
 #: config/defaults.php:89
 #: src/Service/CheckboxService.php:458
 msgid "Akceptacja Regulaminu sklepu."
-msgstr ""
+msgstr "Akzeptanz der AGB des Shops."
 
 #. translators: %s is the privacy policy page URL.
 #: config/defaults.php:92
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Politykę prywatności</a>."
-msgstr ""
+msgstr "Ich habe die <a href=\"%s\" target=\"_blank\">Datenschutzerklärung</a> gelesen und akzeptiere sie."
 
 #: config/defaults.php:93
 #: src/Service/CheckboxService.php:475
 msgid "Musisz zaakceptować Politykę prywatności."
-msgstr ""
+msgstr "Du musst die Datenschutzerklärung akzeptieren."
 
 #: config/defaults.php:94
 msgid "Akceptacja Polityki prywatności."
-msgstr ""
+msgstr "Akzeptanz der Datenschutzerklärung."
 
 #. translators: %s is the withdrawal information page URL.
 #: config/defaults.php:97
 msgid "Potwierdzam, że zostałem poinformowany o <a href=\"%s\" target=\"_blank\">prawie odstąpienia od umowy</a> w ciągu 14 dni."
-msgstr ""
+msgstr "Ich bestätige, dass ich über das <a href=\"%s\" target=\"_blank\">14-tägige Widerrufsrecht</a> informiert wurde."
 
 #: config/defaults.php:98
 #: src/Service/CheckboxService.php:493
 msgid "Musisz potwierdzić zapoznanie się z informacją o prawie odstąpienia."
-msgstr ""
+msgstr "Du musst bestätigen, dass du die Informationen zum Widerrufsrecht gelesen hast."
 
 #: config/defaults.php:99
 msgid "Potwierdzenie informacji o 14-dniowym prawie odstąpienia."
-msgstr ""
+msgstr "Bestätigung der Information über das 14-tägige Widerrufsrecht."
 
 #: config/defaults.php:101
 #: src/Service/CheckboxService.php:500
 msgid "Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia."
-msgstr ""
+msgstr "Ich stimme zu, dass die Bereitstellung digitaler Inhalte vor Ablauf der Widerrufsfrist beginnt, und nehme zur Kenntnis, dass ich dadurch mein Widerrufsrecht verliere."
 
 #: config/defaults.php:102
 #: src/Service/CheckboxService.php:505
 msgid "Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych."
-msgstr ""
+msgstr "Du musst der sofortigen Bereitstellung digitaler Inhalte zustimmen."
 
 #: config/defaults.php:103
 msgid "Zrzeczenie się prawa odstąpienia dla treści cyfrowych."
-msgstr ""
+msgstr "Verzicht auf das Widerrufsrecht bei digitalen Inhalten."
 
 #: config/defaults.php:105
 #: src/Service/CheckboxService.php:513
 msgid "Wyrażam zgodę na otrzymywanie powiadomień SMS/email o statusie dostawy przesyłki."
-msgstr ""
+msgstr "Ich stimme zu, Benachrichtigungen per SMS/E-Mail über den Lieferstatus der Sendung zu erhalten."
 
 #: config/defaults.php:106
 #: src/Service/CheckboxService.php:518
 msgid "Opcjonalna zgoda na powiadomienia o dostawie."
-msgstr ""
+msgstr "Optionale Zustimmung zu Lieferbenachrichtigungen."
 
 #: config/defaults.php:108
 #: src/Service/CheckboxService.php:524
 msgid "Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie."
-msgstr ""
+msgstr "Ich stimme zu, nach dem Kauf per E-Mail an die Abgabe einer Bewertung erinnert zu werden."
 
 #: config/defaults.php:109
 #: src/Service/CheckboxService.php:529
 msgid "Opcjonalna zgoda na przypomnienia o opinii."
-msgstr ""
+msgstr "Optionale Zustimmung zu Erinnerungen an Bewertungen."
 
 #: config/defaults.php:111
 #: src/Service/CheckboxService.php:535
 msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
-msgstr ""
+msgstr "Ich stimme dem Erhalt von Marketingmitteilungen und dem Newsletter zu."
 
 #: config/defaults.php:112
 msgid "Opcjonalna zgoda marketingowa."
-msgstr ""
+msgstr "Optionale Marketingeinwilligung."
 
 #: config/defaults.php:124
 msgid "Odstąp od umowy"
-msgstr ""
+msgstr "Vom Vertrag zurücktreten"
 
 #: config/defaults.php:125
 #: templates/forms/withdrawal-form.php:27
 msgid "Wniosek o odstąpienie od umowy"
-msgstr ""
+msgstr "Widerrufsantrag"
 
 #: config/defaults.php:126
 msgid "Nawiążesz do zamówienia nr #{order_number} z dnia {order_date}."
-msgstr ""
+msgstr "Du beziehst dich auf die Bestellung Nr. #{order_number} vom {order_date}."
 
 #: config/defaults.php:127
 msgid "Zgodnie z polskim prawem konsumenckim masz prawo odstąpić od umowy w ciągu 14 dni bez podania przyczyny."
-msgstr ""
+msgstr "Nach polnischem Verbraucherrecht hast du das Recht, innerhalb von 14 Tagen ohne Angabe von Gründen vom Vertrag zurückzutreten."
 
 #: config/defaults.php:128
 msgid "Produkty w zamówieniu"
-msgstr ""
+msgstr "Produkte in der Bestellung"
 
 #: config/defaults.php:129
 #: config/defaults.php:234
@@ -379,7 +379,7 @@ msgstr "Preis"
 
 #: config/defaults.php:132
 msgid "(Ten produkt jest wyłączony z prawa odstąpienia)"
-msgstr ""
+msgstr "(Dieses Produkt ist vom Widerrufsrecht ausgeschlossen)"
 
 #: config/defaults.php:133
 #: src/Service/WithdrawalService.php:418
@@ -389,23 +389,23 @@ msgstr "Grund des Widerrufs (optional)"
 #: config/defaults.php:134
 #: templates/forms/withdrawal-form.php:98
 msgid "Wyślij wniosek o odstąpienie"
-msgstr ""
+msgstr "Widerrufsantrag senden"
 
 #: config/defaults.php:135
 msgid "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
-msgstr ""
+msgstr "Auf unserer Seite ist etwas schiefgelaufen. Bitte versuche es erneut."
 
 #: config/defaults.php:136
 msgid "Nie znaleźliśmy tego zamówienia."
-msgstr ""
+msgstr "Wir konnten diese Bestellung nicht finden."
 
 #: config/defaults.php:137
 msgid "Nie masz uprawnień, aby odstąpić od tego zamówienia."
-msgstr ""
+msgstr "Du bist nicht berechtigt, von dieser Bestellung zurückzutreten."
 
 #: config/defaults.php:138
 msgid "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z potwierdzeniem."
-msgstr ""
+msgstr "Dein Widerrufsantrag wurde angenommen. Wir senden dir in Kürze eine Bestätigungs-E-Mail."
 
 #: config/defaults.php:139
 #: src/Service/WithdrawalService.php:298
@@ -422,7 +422,7 @@ msgstr "Widerrufsantrag"
 #: config/defaults.php:142
 #: src/Enum/WithdrawalStatus.php:17
 msgid "Złożony"
-msgstr ""
+msgstr "Eingereicht"
 
 #: config/defaults.php:143
 #: src/Service/WithdrawalService.php:150
@@ -431,67 +431,67 @@ msgstr "Der Kunde hat einen Widerrufsantrag gestellt."
 
 #: config/defaults.php:144
 msgid "Wniosek o odstąpienie został potwierdzony."
-msgstr ""
+msgstr "Der Widerrufsantrag wurde bestätigt."
 
 #: config/defaults.php:146
 msgid "Potwierdzenie wniosku o odstąpienie od zamówienia nr #{order_number}"
-msgstr ""
+msgstr "Bestätigung des Widerrufsantrags für Bestellung Nr. #{order_number}"
 
 #: config/defaults.php:147
 msgid "Odstąpienie potwierdzone"
-msgstr ""
+msgstr "Widerruf bestätigt"
 
 #: config/defaults.php:148
 #: config/defaults.php:176
 #: templates/emails/double-opt-in.php:23
 #: templates/emails/plain/double-opt-in.php:20
 msgid "Cześć {name},"
-msgstr ""
+msgstr "Hallo {name},"
 
 #: config/defaults.php:149
 msgid "Twoje odstąpienie od umowy dla zamówienia nr #{order_number} zostało potwierdzone."
-msgstr ""
+msgstr "Dein Widerruf für die Bestellung Nr. #{order_number} wurde bestätigt."
 
 #: config/defaults.php:150
 #: templates/emails/plain/withdrawal-confirmation.php:26
 #: templates/emails/withdrawal-confirmation.php:37
 msgid "Twój powód"
-msgstr ""
+msgstr "Dein Grund"
 
 #: config/defaults.php:151
 msgid "Prosimy o zwrot produktów na powyższy adres w ciągu 14 dni:"
-msgstr ""
+msgstr "Bitte sende die Produkte innerhalb von 14 Tagen an die oben genannte Adresse zurück:"
 
 #: config/defaults.php:152
 msgid "Zwrot środków nastąpi w ciągu 14 dni od momentu otrzymania przez nas wracanych produktów."
-msgstr ""
+msgstr "Die Rückerstattung erfolgt innerhalb von 14 Tagen ab dem Zeitpunkt, an dem wir die zurückgesendeten Produkte erhalten."
 
 #: config/defaults.php:157
 msgid "w tym {rate}% VAT"
-msgstr ""
+msgstr "inkl. {rate}% MwSt."
 
 #: config/defaults.php:158
 msgid "Zwolniony z VAT na podstawie art. 113 ust. 1 ustawy o VAT"
-msgstr ""
+msgstr "Von der MwSt. befreit auf Grundlage von Art. 113 Abs. 1 des polnischen Umsatzsteuergesetzes"
 
 #: config/defaults.php:164
 msgid "Czas dostawy: {time}"
-msgstr ""
+msgstr "Lieferzeit: {time}"
 
 #: config/defaults.php:171
 #: src/Service/DoubleOptInService.php:96
 msgid "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link."
-msgstr ""
+msgstr "Dein Konto wartet auf die Aktivierung. Schau in dein E-Mail-Postfach und klicke auf den Link, den wir dir geschickt haben."
 
 #: config/defaults.php:172
 #: src/Service/DoubleOptInService.php:118
 msgid "Nieprawidłowy link aktywacyjny."
-msgstr ""
+msgstr "Ungültiger Aktivierungslink."
 
 #: config/defaults.php:173
 #: src/Service/DoubleOptInService.php:133
 msgid "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować."
-msgstr ""
+msgstr "Perfekt. Dein Konto ist jetzt aktiviert. Du kannst dich jetzt anmelden."
 
 #: config/defaults.php:174
 #: src/Email/DoubleOptInEmail.php:65
@@ -508,7 +508,7 @@ msgstr "Bestätige deine E-Mail-Adresse"
 #: config/defaults.php:177
 #: templates/emails/double-opt-in.php:28
 msgid "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
-msgstr ""
+msgstr "Danke für die Erstellung eines Kontos. Klicke auf die Schaltfläche unten, um dein Konto zu aktivieren:"
 
 #: config/defaults.php:178
 #: templates/emails/double-opt-in.php:32
@@ -518,12 +518,12 @@ msgstr "Konto aktivieren"
 #: config/defaults.php:179
 #: templates/emails/double-opt-in.php:36
 msgid "Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:"
-msgstr ""
+msgstr "Wenn du möchtest, kopiere diesen Link und füge ihn in deinen Browser ein:"
 
 #: config/defaults.php:180
 #: templates/emails/plain/double-opt-in.php:24
 msgid "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
-msgstr ""
+msgstr "Danke für die Erstellung eines Kontos. Öffne den folgenden Link, um dein Konto zu aktivieren:"
 
 #: config/defaults.php:181
 #: src/Email/DoubleOptInEmail.php:119
@@ -533,28 +533,28 @@ msgstr "Wenn du dieses Konto nicht erstellt hast, ignoriere diese Nachricht einf
 
 #: config/defaults.php:193
 msgid "Zapytaj o wycenę"
-msgstr ""
+msgstr "Preis anfragen"
 
 #: config/defaults.php:194
 msgid "Zapytaj o indywidualną wycenę"
-msgstr ""
+msgstr "Individuelles Angebot anfragen"
 
 #: config/defaults.php:195
 msgid "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia."
-msgstr ""
+msgstr "Fülle das kurze Formular aus und wir melden uns mit einem Angebot zurück, das zu deiner Bestellung passt."
 
 #: config/defaults.php:196
 msgid "Zamknij formularz wyceny"
-msgstr ""
+msgstr "Angebotsformular schließen"
 
 #: config/defaults.php:197
 msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
-msgstr ""
+msgstr "Melde dich an, um eine Angebotsanfrage für dieses Produkt zu senden."
 
 #: config/defaults.php:198
 #: templates/forms/dsa-report.php:41
 msgid "Imię i nazwisko"
-msgstr ""
+msgstr "Vor- und Nachname"
 
 #: config/defaults.php:199
 msgid "Email"
@@ -566,7 +566,7 @@ msgstr "Telefon"
 
 #: config/defaults.php:201
 msgid "Firma"
-msgstr ""
+msgstr "Firma"
 
 #: config/defaults.php:202
 #: src/Service/NipLookupService.php:66
@@ -577,43 +577,43 @@ msgstr "USt-IdNr."
 
 #: config/defaults.php:203
 msgid "Kod pocztowy"
-msgstr ""
+msgstr "Postleitzahl"
 
 #: config/defaults.php:205
 msgid "Szczegóły zapytania"
-msgstr ""
+msgstr "Anfragedetails"
 
 #: config/defaults.php:206
 msgid "Napisz czego potrzebujesz, jaki masz termin i jakie są założenia zamówienia."
-msgstr ""
+msgstr "Beschreibe, was du brauchst, welchen Termin du hast und welche Anforderungen deine Bestellung hat."
 
 #: config/defaults.php:207
 msgid "Wyślij zapytanie"
-msgstr ""
+msgstr "Anfrage senden"
 
 #: config/defaults.php:208
 msgid "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe."
-msgstr ""
+msgstr "Danke. Deine Anfrage wurde gesendet, wir melden uns so schnell wie möglich zurück."
 
 #: config/defaults.php:209
 msgid "Cena dostępna po wycenie"
-msgstr ""
+msgstr "Preis nach Angebot verfügbar"
 
 #: config/defaults.php:210
 msgid "Uzupełnij poprawnie imię i adres email."
-msgstr ""
+msgstr "Gib bitte einen gültigen Namen und eine gültige E-Mail-Adresse an."
 
 #: config/defaults.php:211
 msgid "Podaj numer telefonu do kontaktu."
-msgstr ""
+msgstr "Gib eine Telefonnummer für den Kontakt an."
 
 #: config/defaults.php:212
 msgid "Podaj nazwę firmy."
-msgstr ""
+msgstr "Gib den Firmennamen an."
 
 #: config/defaults.php:213
 msgid "Podaj numer NIP."
-msgstr ""
+msgstr "Gib die USt.-ID an."
 
 #: config/defaults.php:214
 msgid "Podaj poprawny numer NIP."
@@ -844,7 +844,7 @@ msgstr "Von der Wunschliste entfernen"
 #: config/defaults.php:351
 #: src/Service/WishlistService.php:276
 msgid "Zaloguj się, aby korzystać z listy życzeń."
-msgstr ""
+msgstr "Melde dich an, um die Wunschliste zu nutzen."
 
 #: config/defaults.php:352
 #: config/defaults.php:371
@@ -859,11 +859,11 @@ msgstr "Produkt nicht gefunden."
 
 #: config/defaults.php:353
 msgid "Lista ulubionych jest pusta."
-msgstr ""
+msgstr "Die Wunschliste ist leer."
 
 #: config/defaults.php:354
 msgid "Twoje ulubione produkty"
-msgstr ""
+msgstr "Deine Lieblingsprodukte"
 
 #: config/defaults.php:367
 #: src/Service/CompareService.php:225
@@ -883,21 +883,21 @@ msgstr "Vom Vergleich entfernen"
 #: config/defaults.php:370
 #: src/Service/CompareService.php:350
 msgid "Zaloguj się, aby korzystać z porównania produktów."
-msgstr ""
+msgstr "Melde dich an, um den Produktvergleich zu nutzen."
 
 #: config/defaults.php:372
 #: src/Service/CompareService.php:375
 msgid "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie."
-msgstr ""
+msgstr "Du kannst maximal {limit} Produkte gleichzeitig vergleichen. Der älteste Eintrag wurde automatisch ersetzt."
 
 #: config/defaults.php:373
 #: src/Service/CompareService.php:360
 msgid "Nie możesz wyczyścić porównania."
-msgstr ""
+msgstr "Du kannst den Vergleich nicht leeren."
 
 #: config/defaults.php:375
 msgid "Lista porównawcza jest pusta."
-msgstr ""
+msgstr "Die Vergleichsliste ist leer."
 
 #: config/defaults.php:376
 #: src/Admin/ModulesPage.php:507
@@ -912,17 +912,17 @@ msgstr "Produkte vergleichen"
 #: config/defaults.php:378
 #: src/Service/CompareService.php:340
 msgid "Wyczyść porównanie"
-msgstr ""
+msgstr "Vergleich leeren"
 
 #: config/defaults.php:379
 #: src/Service/CompareService.php:365
 msgid "Cecha"
-msgstr ""
+msgstr "Merkmal"
 
 #: config/defaults.php:380
 #: src/Service/CompareService.php:370
 msgid "Pokazuj tylko różnice"
-msgstr ""
+msgstr "Nur Unterschiede anzeigen"
 
 #: config/defaults.php:382
 #: src/Admin/ModulesPage.php:39
@@ -953,12 +953,12 @@ msgstr "Hersteller"
 #: config/defaults.php:388
 #: src/Service/CompareService.php:411
 msgid "GTIN / EAN"
-msgstr ""
+msgstr "GTIN / EAN"
 
 #: config/defaults.php:389
 #: src/Service/CompareService.php:415
 msgid "Krótki opis"
-msgstr ""
+msgstr "Kurzbeschreibung"
 
 #: config/defaults.php:401
 #: src/Admin/ModulesPage.php:553
@@ -982,12 +982,12 @@ msgstr "Schließen"
 #: src/Service/QuickViewService.php:75
 #: src/Service/QuickViewService.php:103
 msgid "Ładowanie produktu..."
-msgstr ""
+msgstr "Produkt wird geladen..."
 
 #: config/defaults.php:405
 #: src/Service/QuickViewService.php:76
 msgid "Nie udało się wczytać podglądu produktu."
-msgstr ""
+msgstr "Die Produktvorschau konnte nicht geladen werden."
 
 #: config/defaults.php:422
 #: templates/quick-view/content.php:96
@@ -996,28 +996,28 @@ msgstr "Vollständige Produktseite anzeigen"
 
 #: config/defaults.php:431
 msgid "Często kupowane razem"
-msgstr ""
+msgstr "Häufig zusammen gekauft"
 
 #: config/defaults.php:432
 msgid "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość do koszyka jednym kliknięciem."
-msgstr ""
+msgstr "Schlage dem Kunden ein fertiges Set ergänzender Produkte vor und füge alles mit einem Klick dem Warenkorb hinzu."
 
 #: config/defaults.php:433
 #: config/defaults.php:599
 msgid "Dodaj zestaw do koszyka"
-msgstr ""
+msgstr "Set in den Warenkorb legen"
 
 #: config/defaults.php:434
 msgid "Brak skonfigurowanych produktów do zestawu."
-msgstr ""
+msgstr "Für dieses Set sind keine Produkte konfiguriert."
 
 #: config/defaults.php:438
 msgid "Łącznie:"
-msgstr ""
+msgstr "Gesamt:"
 
 #: config/defaults.php:439
 msgid "Dodano {count} produktów z zestawu do koszyka."
-msgstr ""
+msgstr "{count} Produkte aus dem Set wurden dem Warenkorb hinzugefügt."
 
 #: config/defaults.php:468
 #: src/Service/BadgeService.php:101
@@ -1042,27 +1042,27 @@ msgstr "Bestseller"
 #: config/defaults.php:478
 #: src/Service/TabManagerService.php:76
 msgid "Dostawa i płatność"
-msgstr ""
+msgstr "Lieferung und Zahlung"
 
 #: config/defaults.php:482
 #: src/Service/TabManagerService.php:84
 msgid "Zwroty i reklamacje"
-msgstr ""
+msgstr "Rückgaben und Reklamationen"
 
 #: config/defaults.php:496
 #: src/Service/FeaturedVideoService.php:113
 msgid "Zobacz produkt w użyciu"
-msgstr ""
+msgstr "Produkt im Einsatz ansehen"
 
 #: config/defaults.php:509
 #: templates/shared/gallery-lightbox.php:18
 msgid "Podgląd galerii produktu"
-msgstr ""
+msgstr "Vorschau der Produktgalerie"
 
 #: config/defaults.php:510
 #: templates/shared/gallery-lightbox.php:21
 msgid "Zamknij podgląd galerii"
-msgstr ""
+msgstr "Galerievorschau schließen"
 
 #: config/defaults.php:519
 #: src/Service/ProductSliderService.php:119
@@ -1071,54 +1071,54 @@ msgstr "Empfohlene Produkte"
 
 #: config/defaults.php:530
 msgid "Brak produktów do wyświetlenia w tej sekcji."
-msgstr ""
+msgstr "In diesem Bereich gibt es keine Produkte zum Anzeigen."
 
 #: config/defaults.php:531
 #: templates/shared/product-slider.php:77
 msgid "Zobacz wszystkie produkty"
-msgstr ""
+msgstr "Alle Produkte anzeigen"
 
 #: config/defaults.php:541
 msgid "Zamów w przedsprzedaży"
-msgstr ""
+msgstr "Vorbestellen"
 
 #: config/defaults.php:542
 msgid "Przedsprzedaż, wysyłka od {date}"
-msgstr ""
+msgstr "Vorverkauf, Versand ab {date}"
 
 #: config/defaults.php:543
 msgid "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę zrealizujemy od {date}."
-msgstr ""
+msgstr "Dieses Produkt ist im Vorverkauf verfügbar. Bestelle jetzt, wir versenden ab {date}."
 
 #: config/defaults.php:544
 msgid "Przedsprzedaż"
-msgstr ""
+msgstr "Vorverkauf"
 
 #: config/defaults.php:548
 msgid "Produkty z przedsprzedaży nie mogą być łączone z innymi produktami w tym samym koszyku."
-msgstr ""
+msgstr "Vorverkaufsprodukte können nicht mit anderen Produkten im selben Warenkorb kombiniert werden."
 
 #: config/defaults.php:556
 msgid "Powiadom mnie o dostępności"
-msgstr ""
+msgstr "Benachrichtige mich bei Verfügbarkeit"
 
 #: config/defaults.php:558
 msgid "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
-msgstr ""
+msgstr "Hinterlasse deine E-Mail-Adresse und wir informieren dich, wenn das Produkt wieder verfügbar ist."
 
 #: config/defaults.php:560
 #: templates/single-product/waitlist-form.php:27
 msgid "Adres email"
-msgstr ""
+msgstr "E-Mail-Adresse"
 
 #: config/defaults.php:561
 #: templates/single-product/waitlist-form.php:28
 msgid "Twój adres email"
-msgstr ""
+msgstr "Deine E-Mail-Adresse"
 
 #: config/defaults.php:562
 msgid "Powiadom mnie"
-msgstr ""
+msgstr "Benachrichtige mich"
 
 #: config/defaults.php:563
 #: src/Service/WaitlistService.php:123
@@ -1127,7 +1127,7 @@ msgstr "Danke. Wir haben dich auf die Warteliste gesetzt."
 
 #: config/defaults.php:564
 msgid "Akceptuję kontakt email w sprawie dostępności tego produktu."
-msgstr ""
+msgstr "Ich stimme der Kontaktaufnahme per E-Mail zur Verfügbarkeit dieses Produkts zu."
 
 #: config/defaults.php:566
 #: src/Service/WaitlistService.php:105
@@ -1166,23 +1166,23 @@ msgstr "Wenn du solche Nachrichten nicht mehr erhalten möchtest, ignoriere dies
 
 #: config/defaults.php:579
 msgid "Dodatki do produktu"
-msgstr ""
+msgstr "Produktzusätze"
 
 #: config/defaults.php:580
 msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
-msgstr ""
+msgstr "Konfiguriere Zusatzoptionen und Services für dieses Produkt."
 
 #: config/defaults.php:584
 msgid "Wymagane"
-msgstr ""
+msgstr "Erforderlich"
 
 #: config/defaults.php:585
 msgid "Opcjonalne"
-msgstr ""
+msgstr "Optional"
 
 #: config/defaults.php:586
 msgid "Wybierz opcję"
-msgstr ""
+msgstr "Option wählen"
 
 #: config/defaults.php:587
 msgid "Wpisz wartość"
@@ -1501,204 +1501,204 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:516
 msgid "Use the path that fits the type of feedback. This keeps support easier for everyone."
-msgstr ""
+msgstr "Nutze den Weg, der zur Art des Feedbacks passt. So bleibt der Support für alle einfacher."
 
 #: src/Admin/AdminPage.php:517
 msgid "Open Discussions"
-msgstr ""
+msgstr "Diskussionen öffnen"
 
 #: src/Admin/AdminPage.php:518
 msgid "Best for questions, ideas, edge cases, and non-urgent conversations."
-msgstr ""
+msgstr "Am besten für Fragen, Ideen, Sonderfälle und nicht dringende Gespräche."
 
 #: src/Admin/AdminPage.php:519
 msgid "Open Issues"
-msgstr ""
+msgstr "Issues öffnen"
 
 #: src/Admin/AdminPage.php:520
 msgid "Best for reproducible bugs and clear technical problems."
-msgstr ""
+msgstr "Am besten für reproduzierbare Fehler und klare technische Probleme."
 
 #: src/Admin/AdminPage.php:524
 msgid "Deactivate vs uninstall"
-msgstr ""
+msgstr "Deaktivieren vs. deinstallieren"
 
 #: src/Admin/AdminPage.php:526
 msgid "Deactivating the plugin keeps your settings and stored data."
-msgstr ""
+msgstr "Beim Deaktivieren des Plugins bleiben deine Einstellungen und gespeicherten Daten erhalten."
 
 #: src/Admin/AdminPage.php:527
 msgid "Uninstalling removes plugin files. Data is deleted only when the remove-data setting is enabled."
-msgstr ""
+msgstr "Beim Deinstallieren werden die Plugin-Dateien entfernt. Daten werden nur gelöscht, wenn die Einstellung zur Datenentfernung aktiviert ist."
 
 #: src/Admin/AdminPage.php:528
 msgid "Your deactivation feedback stays in the local admin log unless data removal on uninstall is enabled."
-msgstr ""
+msgstr "Dein Deaktivierungs-Feedback bleibt im lokalen Admin-Protokoll, sofern das Löschen der Daten bei der Deinstallation nicht aktiviert ist."
 
 #: src/Admin/AdminPage.php:532
 msgid "Current setting: plugin data will be removed on uninstall."
-msgstr ""
+msgstr "Aktuelle Einstellung: Plugin-Daten werden bei der Deinstallation entfernt."
 
 #: src/Admin/AdminPage.php:533
 msgid "Current setting: plugin data will be kept on uninstall."
-msgstr ""
+msgstr "Aktuelle Einstellung: Plugin-Daten bleiben bei der Deinstallation erhalten."
 
 #: src/Admin/AdminPage.php:548
 msgid "Audyt zgodności"
-msgstr ""
+msgstr "Compliance-Audit"
 
 #: src/Admin/AdminPage.php:549
 msgid "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim eCommerce."
-msgstr ""
+msgstr "Automatische Prüfung der häufigsten rechtlichen Probleme im polnischen E-Commerce."
 
 #: src/Admin/AdminPage.php:555
 msgid "Raporty DSA"
-msgstr ""
+msgstr "DSA-Berichte"
 
 #: src/Admin/AdminPage.php:556
 msgid "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
-msgstr ""
+msgstr "Verwaltung von Meldungen über Verstöße bei digitalen Inhalten (Digital Services Act)."
 
 #: src/Admin/AdminPage.php:562
 msgid "Logi incydentów"
-msgstr ""
+msgstr "Vorfallprotokolle"
 
 #: src/Admin/AdminPage.php:563
 msgid "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
-msgstr ""
+msgstr "Register für Sicherheitsprobleme, Datenlecks und Infrastrukturausfälle."
 
 #: src/Admin/AdminPage.php:569
 msgid "Rejestr DPA (RODO)"
-msgstr ""
+msgstr "DPA-Register (DSGVO)"
 
 #: src/Admin/AdminPage.php:570
 msgid "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami trzecimi."
-msgstr ""
+msgstr "Verzeichnis der Vereinbarungen zur Auftragsverarbeitung personenbezogener Daten mit Drittparteien."
 
 #: src/Admin/AdminPage.php:576
 msgid "Logi opinii"
-msgstr ""
+msgstr "Feedback-Protokolle"
 
 #: src/Admin/AdminPage.php:577
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
-msgstr ""
+msgstr "Deaktivierungs-Feedback und lokales Admin-Feedback aus der Sidebar des Plugins."
 
 #: src/Admin/AdminPage.php:583
 msgid "Wybierz raport lub narzędzie, aby sprawdzić status zgodności Twojego sklepu."
-msgstr ""
+msgstr "Wähle einen Bericht oder ein Werkzeug, um den Compliance-Status deines Shops zu prüfen."
 
 #: src/Admin/AdminPage.php:598
 msgid "Otwórz raport"
-msgstr ""
+msgstr "Bericht öffnen"
 
 #: src/Admin/AdminPage.php:600
 msgid "Moduł wyłączony"
-msgstr ""
+msgstr "Modul deaktiviert"
 
 #: src/Admin/AdminPage.php:618
 msgid "Logi opinii z panelu"
-msgstr ""
+msgstr "Feedback-Protokolle aus dem Panel"
 
 #: src/Admin/AdminPage.php:621
 msgid "Brak opinii z panelu do wyświetlenia."
-msgstr ""
+msgstr "Keine Feedback-Einträge aus dem Panel zum Anzeigen."
 
 #: src/Admin/AdminPage.php:627
 msgid "Osoba"
-msgstr ""
+msgstr "Person"
 
 #: src/Admin/AdminPage.php:628
 msgid "Temat"
-msgstr ""
+msgstr "Thema"
 
 #: src/Admin/AdminPage.php:629
 msgid "Ekran"
-msgstr ""
+msgstr "Ansicht"
 
 #: src/Admin/AdminPage.php:630
 msgid "Wiadomość"
-msgstr ""
+msgstr "Nachricht"
 
 #: src/Admin/AdminPage.php:670
 msgid "Włącz"
-msgstr ""
+msgstr "Aktivieren"
 
 #: src/Admin/AdminPage.php:702
 msgid "Dzień dobry!"
-msgstr ""
+msgstr "Guten Tag."
 
 #: src/Admin/AdminPage.php:703
 msgid "Narzedzia wspomagajace dostosowanie sklepu do polskich wymagan."
-msgstr ""
+msgstr "Werkzeuge zur Anpassung des Shops an polnische Anforderungen."
 
 #: src/Admin/AdminPage.php:709
 msgid "Dokończ konfigurację"
-msgstr ""
+msgstr "Konfiguration abschließen"
 
 #: src/Admin/AdminPage.php:710
 msgid "Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi."
-msgstr ""
+msgstr "Einige wichtige Elemente deines Shops benötigen noch Aufmerksamkeit."
 
 #: src/Admin/AdminPage.php:711
 msgid "Uzupełnij dane firmy"
-msgstr ""
+msgstr "Firmendaten ergänzen"
 
 #: src/Admin/AdminPage.php:720
 msgid "Nieaktywna"
-msgstr ""
+msgstr "Inaktiv"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
 #: src/Admin/AdminPage.php:727
 msgid "%1$d z %2$d gotowych"
-msgstr ""
+msgstr "%1$d von %2$d fertig"
 
 #: src/Admin/AdminPage.php:732
 msgid "Dyrektywa Omnibus"
-msgstr ""
+msgstr "Omnibus-Richtlinie"
 
 #: src/Admin/AdminPage.php:738
 msgid "Analiza sklepu"
-msgstr ""
+msgstr "Shop-Analyse"
 
 #: src/Admin/AdminPage.php:739
 msgid "Sprawdź raporty"
-msgstr ""
+msgstr "Berichte prüfen"
 
 #: src/Admin/AdminPage.php:777
 msgid "Nie utworzona"
-msgstr ""
+msgstr "Nicht erstellt"
 
 #: src/Admin/AdminPage.php:852
 msgid "Opublikuj swoje strony prawne (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje)."
-msgstr ""
+msgstr "Veröffentliche deine Rechtstexte (AGB, Datenschutzerklärung, Widerrufsrecht, Reklamationen)."
 
 #. translators: %s: tax settings URL
 #: src/Admin/AdminPage.php:860
 msgid "Skonfiguruj <a href=\"%s\">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%)."
-msgstr ""
+msgstr "Konfiguriere die <a href=\"%s\">Steuersätze</a> in WooCommerce für die polnische Mehrwertsteuer (23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
 #: src/Admin/AdminPage.php:872
 msgid "Skonfiguruj <a href=\"%s\">strefy wysylki</a> dla dostaw w Polsce."
-msgstr ""
+msgstr "Konfiguriere die <a href=\"%s\">Versandzonen</a> für Lieferungen in Polen."
 
 #. translators: %s: product list URL
 #: src/Admin/AdminPage.php:883
 msgid "Uzupelnij dane produktow - dodaj ceny jednostkowe i czas dostawy w <a href=\"%s\">zakladce Polski</a> przy kazdym produkcie."
-msgstr ""
+msgstr "Ergänze die Produktdaten - füge bei jedem Produkt in der <a href=\"%s\">Registerkarte Polski</a> Grundpreise und Lieferzeit hinzu."
 
 #. translators: %s: checkout URL
 #: src/Admin/AdminPage.php:894
 msgid "Przetestuj proces zamowienia - dodaj produkt do koszyka i sprawdz pola wyboru oraz tekst przycisku w <a href=\"%s\">zamowieniu</a>."
-msgstr ""
+msgstr "Teste den Bestellprozess - lege ein Produkt in den Warenkorb und prüfe die Checkboxen sowie den Button-Text in der <a href=\"%s\">Bestellung</a>."
 
 #: src/Admin/AdminPage.php:964
 msgid "Otwórz &rarr;"
-msgstr ""
+msgstr "Öffnen &rarr;"
 
 #: src/Admin/CSVImportExport.php:72
 msgid "Bazowa cena jednostkowa"
-msgstr ""
+msgstr "Basis-Grundpreis"
 
 #: src/Admin/CSVImportExport.php:73
 msgid "Jednostka ceny jednostkowej"
@@ -2793,169 +2793,169 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:348
 msgid "Etykieta alkoholu"
-msgstr ""
+msgstr "Beschriftung Alkohol"
 
 #: src/Admin/ModulesPage.php:349
 msgid "Sufiks alkoholu"
-msgstr ""
+msgstr "Alkohol-Suffix"
 
 #: src/Admin/ModulesPage.php:350
 msgid "Etykieta kraju pochodzenia"
-msgstr ""
+msgstr "Beschriftung Herkunftsland"
 
 #: src/Admin/ModulesPage.php:351
 msgid "Etykieta dystrybutora"
-msgstr ""
+msgstr "Beschriftung Vertrieb"
 
 #: src/Admin/ModulesPage.php:352
 msgid "Etykieta zawartości netto"
-msgstr ""
+msgstr "Beschriftung Nettofüllmenge"
 
 #: src/Admin/ModulesPage.php:357
 msgid "Informacje o zasilaniu"
-msgstr ""
+msgstr "Informationen zur Stromversorgung"
 
 #: src/Admin/ModulesPage.php:358
 msgid "Dane o zużyciu energii dla urządzeń elektrycznych (etykiety energetyczne)."
-msgstr ""
+msgstr "Angaben zum Energieverbrauch für Elektrogeräte (Energieetiketten)."
 
 #: src/Admin/ModulesPage.php:370
 msgid "Weryfikacja adresu email przy rejestracji konta. Link aktywacyjny wysyłany emailem, blokada logowania dla nieaktywowanych kont."
-msgstr ""
+msgstr "Verifizierung der E-Mail-Adresse bei der Kontoerstellung. Aktivierungslink per E-Mail, Login-Sperre für nicht aktivierte Konten."
 
 #: src/Admin/ModulesPage.php:371
 msgid "Konto klienta"
-msgstr ""
+msgstr "Kundenkonto"
 
 #: src/Admin/ModulesPage.php:376
 msgid "Usuń nieaktywne konta po ilu dniach"
-msgstr ""
+msgstr "Inaktive Konten nach wie vielen Tagen löschen"
 
 #: src/Admin/ModulesPage.php:377
 msgid "Komunikat blokady logowania"
-msgstr ""
+msgstr "Meldung bei Login-Sperre"
 
 #: src/Admin/ModulesPage.php:378
 msgid "Komunikat błędnego linku"
-msgstr ""
+msgstr "Meldung bei ungültigem Link"
 
 #: src/Admin/ModulesPage.php:379
 msgid "Komunikat po aktywacji"
-msgstr ""
+msgstr "Meldung nach Aktivierung"
 
 #: src/Admin/ModulesPage.php:380
 msgid "Temat emaila"
-msgstr ""
+msgstr "E-Mail-Betreff"
 
 #: src/Admin/ModulesPage.php:380
 msgid "Zmienne: {site_title}"
-msgstr ""
+msgstr "Variablen: {site_title}"
 
 #: src/Admin/ModulesPage.php:381
 msgid "Nagłówek emaila"
-msgstr ""
+msgstr "E-Mail-Überschrift"
 
 #: src/Admin/ModulesPage.php:382
 msgid "Powitanie emaila"
-msgstr ""
+msgstr "E-Mail-Begrüßung"
 
 #: src/Admin/ModulesPage.php:382
 msgid "Zmienne: {name}"
-msgstr ""
+msgstr "Variablen: {name}"
 
 #: src/Admin/ModulesPage.php:383
 msgid "Treść emaila HTML"
-msgstr ""
+msgstr "HTML-E-Mail-Inhalt"
 
 #: src/Admin/ModulesPage.php:384
 msgid "Tekst przycisku emaila"
-msgstr ""
+msgstr "Text des E-Mail-Buttons"
 
 #: src/Admin/ModulesPage.php:385
 msgid "Tekst linku zapasowego"
-msgstr ""
+msgstr "Text des Ersatzlinks"
 
 #: src/Admin/ModulesPage.php:386
 msgid "Treść emaila plain text"
-msgstr ""
+msgstr "Plain-Text-E-Mail-Inhalt"
 
 #: src/Admin/ModulesPage.php:387
 msgid "Dodatkowa treść emaila"
-msgstr ""
+msgstr "Zusätzlicher E-Mail-Inhalt"
 
 #: src/Admin/ModulesPage.php:394
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:16
 msgid "Wyszukiwarka AJAX"
-msgstr ""
+msgstr "AJAX-Suche"
 
 #: src/Admin/ModulesPage.php:395
 msgid "Szybkie podpowiedzi produktów w trakcie pisania, z obsługą SKU, kategorii i lekkim frontem przyjaznym dla web vitals."
-msgstr ""
+msgstr "Schnelle Produktvorschläge während der Eingabe mit Unterstützung für SKU, Kategorien und einem leichten Frontend für gute Web Vitals."
 
 #: src/Admin/ModulesPage.php:396
 msgid "Sprzedaż i B2B"
-msgstr ""
+msgstr "Verkauf und B2B"
 
 #: src/Admin/ModulesPage.php:401
 msgid "Minimalna liczba znaków"
-msgstr ""
+msgstr "Minimale Zeichenzahl"
 
 #: src/Admin/ModulesPage.php:402
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:47
 msgid "Liczba wyników"
-msgstr ""
+msgstr "Anzahl der Ergebnisse"
 
 #: src/Admin/ModulesPage.php:403
 msgid "Opóźnienie zapytania (ms)"
-msgstr ""
+msgstr "Anfrageverzögerung (ms)"
 
 #: src/Admin/ModulesPage.php:404
 msgid "Pokazuj przycisk wyszukiwania"
-msgstr ""
+msgstr "Suchbutton anzeigen"
 
 #: src/Admin/ModulesPage.php:405
 msgid "Pokazuj miniatury"
-msgstr ""
+msgstr "Vorschaubilder anzeigen"
 
 #: src/Admin/ModulesPage.php:406
 #: src/Admin/ModulesPage.php:694
 msgid "Pokazuj ceny"
-msgstr ""
+msgstr "Preise anzeigen"
 
 #: src/Admin/ModulesPage.php:407
 #: src/Admin/ModulesPage.php:575
 msgid "Pokazuj SKU"
-msgstr ""
+msgstr "SKU anzeigen"
 
 #: src/Admin/ModulesPage.php:408
 msgid "Pokazuj link do pełnych wyników"
-msgstr ""
+msgstr "Link zu vollständigen Ergebnissen anzeigen"
 
 #: src/Admin/ModulesPage.php:409
 msgid "Szukaj po SKU"
-msgstr ""
+msgstr "Nach SKU suchen"
 
 #: src/Admin/ModulesPage.php:410
 msgid "Szukaj po kategoriach"
-msgstr ""
+msgstr "Nach Kategorien suchen"
 
 #: src/Admin/ModulesPage.php:411
 msgid "Uwzględniaj produkty bez stanu"
-msgstr ""
+msgstr "Produkte ohne Bestand einbeziehen"
 
 #: src/Admin/ModulesPage.php:412
 msgid "Etykieta pola wyszukiwania"
-msgstr ""
+msgstr "Beschriftung des Suchfelds"
 
 #: src/Admin/ModulesPage.php:413
 msgid "Etykieta wyników"
-msgstr ""
+msgstr "Beschriftung der Ergebnisse"
 
 #: src/Admin/ModulesPage.php:414
 #: src/Admin/ModulesPage.php:540
 #: src/Admin/ModulesPage.php:567
 msgid "Etykieta SKU"
-msgstr ""
+msgstr "SKU-Beschriftung"
 
 #: src/Admin/ModulesPage.php:415
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
@@ -2963,19 +2963,19 @@ msgstr ""
 #: resources/js/blocks/ajax-search/index.js:18
 #: build/blocks/ajax-search/index.js:79
 msgid "Placeholder"
-msgstr ""
+msgstr "Platzhalter"
 
 #: src/Admin/ModulesPage.php:417
 msgid "Brak wyników"
-msgstr ""
+msgstr "Keine Ergebnisse"
 
 #: src/Admin/ModulesPage.php:425
 msgid "Marki"
-msgstr ""
+msgstr "Marken"
 
 #: src/Admin/ModulesPage.php:426
 msgid "Obsługa marek produktowych niezależnie od producenta, z widokiem na produkcie i listach oraz własną taksonomią."
-msgstr ""
+msgstr "Unterstützung von Produktmarken unabhängig vom Hersteller, mit Anzeige auf Produktseiten und Listen sowie eigener Taxonomie."
 
 #: src/Admin/ModulesPage.php:427
 #: src/Admin/ModulesPage.php:444
@@ -2988,7 +2988,7 @@ msgstr ""
 #: src/Admin/ModulesPage.php:664
 #: src/Admin/ModulesPage.php:681
 msgid "Merchandising"
-msgstr ""
+msgstr "Merchandising"
 
 #: src/Admin/ModulesPage.php:432
 #: src/Admin/ModulesPage.php:485
@@ -2997,225 +2997,225 @@ msgstr ""
 #: src/Admin/ModulesPage.php:651
 #: src/Admin/ModulesPage.php:686
 msgid "Pokazuj na stronie produktu"
-msgstr ""
+msgstr "Auf der Produktseite anzeigen"
 
 #: src/Admin/ModulesPage.php:433
 msgid "Pokazuj na listach produktów"
-msgstr ""
+msgstr "In Produktlisten anzeigen"
 
 #: src/Admin/ModulesPage.php:434
 msgid "Etykieta"
-msgstr ""
+msgstr "Beschriftung"
 
 #: src/Admin/ModulesPage.php:435
 msgid "Pokazuj etykietę"
-msgstr ""
+msgstr "Beschriftung anzeigen"
 
 #: src/Admin/ModulesPage.php:436
 msgid "Separator marek"
-msgstr ""
+msgstr "Trennzeichen für Marken"
 
 #: src/Admin/ModulesPage.php:437
 msgid "Linkuj do archiwum marki"
-msgstr ""
+msgstr "Zum Markenarchiv verlinken"
 
 #: src/Admin/ModulesPage.php:442
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "Filtry AJAX"
-msgstr ""
+msgstr "AJAX-Filter"
 
 #: src/Admin/ModulesPage.php:443
 msgid "Filtrowanie list produktów bez przeładowania strony, z kategoriami, markami, ceną, stanem magazynowym, promocją i atrybutami."
-msgstr ""
+msgstr "Filterung von Produktlisten ohne Neuladen der Seite, mit Kategorien, Marken, Preis, Lagerbestand, Aktionen und Attributen."
 
 #: src/Admin/ModulesPage.php:449
 msgid "Pokazuj na archiwach sklepu"
-msgstr ""
+msgstr "In Shop-Archiven anzeigen"
 
 #: src/Admin/ModulesPage.php:450
 msgid "Pokazuj nagłówek formularza"
-msgstr ""
+msgstr "Formularüberschrift anzeigen"
 
 #: src/Admin/ModulesPage.php:451
 msgid "Filtr kategorii"
-msgstr ""
+msgstr "Kategoriefilter"
 
 #: src/Admin/ModulesPage.php:452
 msgid "Filtr marek"
-msgstr ""
+msgstr "Markenfilter"
 
 #: src/Admin/ModulesPage.php:453
 msgid "Filtr ceny"
-msgstr ""
+msgstr "Preisfilter"
 
 #: src/Admin/ModulesPage.php:454
 msgid "Filtr dostępności"
-msgstr ""
+msgstr "Verfügbarkeitsfilter"
 
 #: src/Admin/ModulesPage.php:455
 msgid "Filtr promocji"
-msgstr ""
+msgstr "Aktionsfilter"
 
 #: src/Admin/ModulesPage.php:456
 msgid "Filtry atrybutów"
-msgstr ""
+msgstr "Attributfilter"
 
 #: src/Admin/ModulesPage.php:457
 msgid "Maks. liczba atrybutów"
-msgstr ""
+msgstr "Max. Anzahl Attribute"
 
 #: src/Admin/ModulesPage.php:458
 msgid "Nagłówek"
-msgstr ""
+msgstr "Überschrift"
 
 #: src/Admin/ModulesPage.php:459
 msgid "Etykieta kategorii"
-msgstr ""
+msgstr "Beschriftung Kategorie"
 
 #: src/Admin/ModulesPage.php:460
 msgid "Tekst wszystkich kategorii"
-msgstr ""
+msgstr "Text für alle Kategorien"
 
 #: src/Admin/ModulesPage.php:461
 #: src/Admin/ModulesPage.php:543
 msgid "Etykieta marki"
-msgstr ""
+msgstr "Beschriftung Marke"
 
 #: src/Admin/ModulesPage.php:462
 msgid "Tekst wszystkich marek"
-msgstr ""
+msgstr "Text für alle Marken"
 
 #: src/Admin/ModulesPage.php:463
 msgid "Etykieta ceny od"
-msgstr ""
+msgstr "Beschriftung Preis von"
 
 #: src/Admin/ModulesPage.php:464
 msgid "Etykieta ceny do"
-msgstr ""
+msgstr "Beschriftung Preis bis"
 
 #: src/Admin/ModulesPage.php:465
 #: src/Admin/ModulesPage.php:541
 msgid "Etykieta dostępności"
-msgstr ""
+msgstr "Beschriftung Verfügbarkeit"
 
 #: src/Admin/ModulesPage.php:466
 msgid "Tekst dowolnej dostępności"
-msgstr ""
+msgstr "Text für beliebige Verfügbarkeit"
 
 #: src/Admin/ModulesPage.php:467
 msgid "Tekst dostępnego produktu"
-msgstr ""
+msgstr "Text für verfügbares Produkt"
 
 #: src/Admin/ModulesPage.php:468
 msgid "Etykieta promocji"
-msgstr ""
+msgstr "Beschriftung Aktion"
 
 #: src/Admin/ModulesPage.php:469
 msgid "Tekst dowolnej wartości atrybutu"
-msgstr ""
+msgstr "Text für jeden Attributwert"
 
 #: src/Admin/ModulesPage.php:470
 msgid "Pokazuj link resetu"
-msgstr ""
+msgstr "Reset-Link anzeigen"
 
 #: src/Admin/ModulesPage.php:472
 msgid "Tekst resetu"
-msgstr ""
+msgstr "Reset-Text"
 
 #: src/Admin/ModulesPage.php:477
 msgid "Lista życzeń"
-msgstr ""
+msgstr "Wunschliste"
 
 #: src/Admin/ModulesPage.php:478
 msgid "Zapisywanie ulubionych produktów dla gości i zalogowanych, z listą w koncie klienta i AJAX-owym dodawaniem/usuwaniem."
-msgstr ""
+msgstr "Speichern von Lieblingsprodukten für Gäste und eingeloggte Nutzer, mit Liste im Kundenkonto und AJAX-Hinzufügen/Entfernen."
 
 #: src/Admin/ModulesPage.php:484
 msgid "Pozwól gościom zapisywać ulubione"
-msgstr ""
+msgstr "Gästen erlauben, Favoriten zu speichern"
 
 #: src/Admin/ModulesPage.php:486
 #: src/Admin/ModulesPage.php:516
 #: src/Admin/ModulesPage.php:560
 #: src/Admin/ModulesPage.php:597
 msgid "Pokazuj na listingach"
-msgstr ""
+msgstr "In Listen anzeigen"
 
 #: src/Admin/ModulesPage.php:487
 #: src/Admin/ModulesPage.php:517
 msgid "Pokazuj w Moim koncie"
-msgstr ""
+msgstr "In Mein Konto anzeigen"
 
 #: src/Admin/ModulesPage.php:488
 msgid "Pokazuj tytuł listy"
-msgstr ""
+msgstr "Listentitel anzeigen"
 
 #: src/Admin/ModulesPage.php:489
 #: src/Admin/ModulesPage.php:518
 #: src/Admin/ModulesPage.php:693
 msgid "Pokazuj zdjęcia produktów"
-msgstr ""
+msgstr "Produktbilder anzeigen"
 
 #: src/Admin/ModulesPage.php:490
 msgid "Pokazuj nazwy produktów"
-msgstr ""
+msgstr "Produktnamen anzeigen"
 
 #: src/Admin/ModulesPage.php:491
 msgid "Pokazuj cenę w liście"
-msgstr ""
+msgstr "Preis in der Liste anzeigen"
 
 #: src/Admin/ModulesPage.php:492
 msgid "Pokazuj przycisk koszyka w liście"
-msgstr ""
+msgstr "Warenkorb-Button in der Liste anzeigen"
 
 #: src/Admin/ModulesPage.php:493
 msgid "Pokazuj przycisk usuwania w liście"
-msgstr ""
+msgstr "Entfernen-Button in der Liste anzeigen"
 
 #: src/Admin/ModulesPage.php:494
 msgid "Liczba kolumn w liście"
-msgstr ""
+msgstr "Anzahl Spalten in der Liste"
 
 #: src/Admin/ModulesPage.php:495
 #: src/Admin/ModulesPage.php:521
 msgid "Etykieta w Moim koncie"
-msgstr ""
+msgstr "Beschriftung in Mein Konto"
 
 #: src/Admin/ModulesPage.php:496
 msgid "Tytuł listy"
-msgstr ""
+msgstr "Listentitel"
 
 #: src/Admin/ModulesPage.php:497
 #: src/Admin/ModulesPage.php:534
 #: src/Admin/ModulesPage.php:654
 #: src/Admin/ModulesPage.php:692
 msgid "Opis sekcji"
-msgstr ""
+msgstr "Abschnittsbeschreibung"
 
 #: src/Admin/ModulesPage.php:498
 #: src/Admin/ModulesPage.php:524
 msgid "Tekst dodawania"
-msgstr ""
+msgstr "Hinzufügen-Text"
 
 #: src/Admin/ModulesPage.php:499
 #: src/Admin/ModulesPage.php:525
 msgid "Tekst usuwania"
-msgstr ""
+msgstr "Entfernen-Text"
 
 #: src/Admin/ModulesPage.php:500
 #: src/Admin/ModulesPage.php:530
 msgid "Komunikat logowania"
-msgstr ""
+msgstr "Anmeldehinweis"
 
 #: src/Admin/ModulesPage.php:501
 #: src/Admin/ModulesPage.php:531
 msgid "Komunikat braku produktu"
-msgstr ""
+msgstr "Meldung bei fehlendem Produkt"
 
 #: src/Admin/ModulesPage.php:502
 #: src/Admin/ModulesPage.php:535
 msgid "Pusty stan"
-msgstr ""
+msgstr "Leerer Zustand"
 
 #: src/Admin/ModulesPage.php:508
 msgid "Porównywarka produktów z tabelą cech, wyróżnianiem różnic, obsługą gości i klientów oraz widokiem w Moim koncie."

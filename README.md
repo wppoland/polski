@@ -1,15 +1,30 @@
-# Polski for WooCommerce
+<p align="center">
+  <img src="docs/wporg-assets/icon-256x256.png" alt="Polski for WooCommerce" width="128" height="128">
+</p>
 
-**Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal requests, unit prices, and selected storefront features. Free and open source.**
+<h1 align="center">Polski for WooCommerce 🇵🇱</h1>
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue)](https://wordpress.org)
-[![WooCommerce](https://img.shields.io/badge/WooCommerce-8.0%2B-purple)](https://woocommerce.com)
-[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4)](https://php.net)
-[![License](https://img.shields.io/badge/License-GPLv2-green)](https://www.gnu.org/licenses/gpl-2.0.html)
+<p align="center">
+  <strong>Narzędzia wspomagające dostosowanie sklepu WooCommerce do polskich wymagań.</strong><br>
+  GPSR · Omnibus · GDPR · prawo odstąpienia · ceny jednostkowe · moduły sklepowe
+</p>
 
-Polski for WooCommerce helps adapt a WooCommerce shop to Polish legal requirements while adding selected storefront features. The free plugin focuses on compliance essentials, product information, and lightweight merchandising.
+<p align="center">
+  <a href="https://wordpress.org"><img src="https://img.shields.io/badge/WordPress-6.4%2B-21759b?logo=wordpress&logoColor=white" alt="WordPress 6.4+"></a>
+  <a href="https://woocommerce.com"><img src="https://img.shields.io/badge/WooCommerce-8.0%2B-7f54b3?logo=woocommerce&logoColor=white" alt="WooCommerce 8.0+"></a>
+  <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white" alt="PHP 8.1+"></a>
+  <a href="https://www.gnu.org/licenses/gpl-2.0.html"><img src="https://img.shields.io/badge/Licencja-GPLv2-green" alt="GPLv2"></a>
+</p>
 
-**Author:** [WP Poland](https://wppoland.com)
+<p align="center">
+  <a href="https://wppoland.com/pl/polski/">📖 Dokumentacja</a> · <a href="https://github.com/wppoland/polski/discussions">💬 Dyskusje</a> · <a href="https://github.com/wppoland/polski/issues">🐛 Zgłoś błąd</a>
+</p>
+
+---
+
+Polski for WooCommerce helps adapt a WooCommerce shop to Polish market requirements while adding selected storefront features. The free plugin focuses on product information, checkout tools, and lightweight merchandising.
+
+**Author:** [WPPoland](https://wppoland.com)
 
 ---
 
@@ -167,7 +182,7 @@ Polski for WooCommerce helps adapt a WooCommerce shop to Polish legal requiremen
 
 ## Getting Started
 
-Follow these steps to ensure your store is compliant with Polish law:
+Follow these steps to configure the plugin for a Polish store. Always consult a qualified lawyer for your specific situation:
 
 1. **Verify Legal Pages**: Go to **Polski > Modules** and ensure **Legal Pages** is active. Go to its settings and select your Terms, Privacy Policy, and Withdrawal pages.
 2. **Configure Checkboxes**: Go to **Polski > Modules > Legal Checkboxes** (ensure it's active) and enable the required checkboxes for checkout (Terms, Privacy, Withdrawal).
