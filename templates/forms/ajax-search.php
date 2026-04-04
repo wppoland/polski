@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * AJAX product search form.
  *

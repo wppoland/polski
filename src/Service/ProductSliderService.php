@@ -72,7 +72,7 @@ final class ProductSliderService implements Bootable, HasHooks
 
         $atts = shortcode_atts([
             'source' => $this->getSettings()['source'] ?? 'related',
-            'title' => $this->getSettings()['title'] ?? 'Polecane produkty',
+            'title' => $this->getSettings()['title'] ?? __('Polecane produkty', 'polski'),
             'limit' => $this->getSettings()['limit'] ?? 8,
         ], is_array($atts) ? $atts : []);
 

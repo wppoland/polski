@@ -109,9 +109,9 @@ final class GPSRService implements HasHooks
         $filledCount = count($filled);
 
         if ($filledCount >= 3) {
-            echo '<span style="color:#46b450;" title="' . esc_attr($filledCount . '/8 pol wypelnionych') . '">&#10003;</span>';
+            echo '<span style="color:#46b450;" title="' . esc_attr(sprintf(__('%d/8 pól wypełnionych', 'polski'), $filledCount)) . '">&#10003;</span>';
         } elseif ($filledCount > 0) {
-            echo '<span style="color:#f0ad4e;" title="' . esc_attr($filledCount . '/8 pol wypelnionych') . '">&#9888;</span>';
+            echo '<span style="color:#f0ad4e;" title="' . esc_attr(sprintf(__('%d/8 pól wypełnionych', 'polski'), $filledCount)) . '">&#9888;</span>';
         } else {
             echo '<span style="color:#ccc;">—</span>';
         }

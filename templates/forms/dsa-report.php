@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * DSA illegal content report form.
  *
