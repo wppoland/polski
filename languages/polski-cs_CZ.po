@@ -1875,44 +1875,44 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:153
 msgid "Plugin"
-msgstr ""
+msgstr "Plugin"
 
 #: src/Admin/DeactivationHandler.php:154
 msgid "Powód"
-msgstr ""
+msgstr "Důvod"
 
 #: src/Admin/DeactivationHandler.php:155
 msgid "Co poprawić"
-msgstr ""
+msgstr "Co zlepšit"
 
 #: src/Admin/DeactivationHandler.php:156
 msgid "Co dodać"
-msgstr ""
+msgstr "Co přidat"
 
 #: src/Admin/DeactivationHandler.php:175
 msgid "Brakująca funkcja"
-msgstr ""
+msgstr "Chybějící funkce"
 
 #: src/Admin/DeactivationHandler.php:176
 msgid "Trudna obsługa"
-msgstr ""
+msgstr "Složité používání"
 
 #: src/Admin/DeactivationHandler.php:177
 msgid "Błąd lub konflikt"
-msgstr ""
+msgstr "Chyba nebo konflikt"
 
 #: src/Admin/DeactivationHandler.php:178
 msgid "Nie potrzebuję teraz"
-msgstr ""
+msgstr "Teď to nepotřebuji"
 
 #: src/Admin/DeactivationHandler.php:179
 msgid "Tymczasowe wyłączenie"
-msgstr ""
+msgstr "Dočasné vypnutí"
 
 #: src/Admin/DeactivationHandler.php:180
 #: templates/forms/dsa-report.php:19
 msgid "Inne"
-msgstr ""
+msgstr "Jiné"
 
 #: src/Admin/ModulesPage.php:40
 msgid "Wyświetlanie ceny za jednostkę miary (np. za 1 kg, za 100 ml) zgodnie z polskim prawem konsumenckim."
@@ -2306,15 +2306,15 @@ msgstr "Spravovat právní stránky v přehledu &rarr;"
 
 #: src/Admin/ModulesPage.php:215
 msgid "Right of withdrawal (14 days)"
-msgstr ""
+msgstr "Právo na odstoupení (14 dní)"
 
 #: src/Admin/ModulesPage.php:216
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
-msgstr ""
+msgstr "Formulář žádosti o odstoupení, akce v Můj účet s potvrzovacím krokem, potvrzovací e-mail a výjimky pro jednotlivé produkty."
 
 #: src/Admin/ModulesPage.php:222
 msgid "Order action label"
-msgstr ""
+msgstr "Štítek akce objednávky"
 
 #: src/Admin/ModulesPage.php:222
 #: src/Service/WithdrawalService.php:237
@@ -2324,181 +2324,181 @@ msgstr "Odstoupit od smlouvy"
 
 #: src/Admin/ModulesPage.php:223
 msgid "Form title"
-msgstr ""
+msgstr "Nadpis formuláře"
 
 #: src/Admin/ModulesPage.php:223
 #: src/Admin/ModulesPage.php:238
 msgid "Withdrawal request"
-msgstr ""
+msgstr "Žádost o odstoupení"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Form introduction"
-msgstr ""
+msgstr "Úvod formuláře"
 
 #: src/Admin/ModulesPage.php:224
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
-msgstr ""
+msgstr "Odesíláte žádost o odstoupení pro objednávku č. #{order_number} z {order_date}."
 
 #: src/Admin/ModulesPage.php:224
 msgid "Variables: {order_number}, {order_date}"
-msgstr ""
+msgstr "Proměnné: {order_number}, {order_date}"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Legal notice"
-msgstr ""
+msgstr "Právní upozornění"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
-msgstr ""
+msgstr "Podle polského spotřebitelského práva můžete od smlouvy odstoupit do 14 dnů bez udání důvodu."
 
 #: src/Admin/ModulesPage.php:226
 msgid "Order items heading"
-msgstr ""
+msgstr "Nadpis položek objednávky"
 
 #: src/Admin/ModulesPage.php:226
 msgid "Order items"
-msgstr ""
+msgstr "Položky objednávky"
 
 #: src/Admin/ModulesPage.php:227
 msgid "Product column"
-msgstr ""
+msgstr "Sloupec produkt"
 
 #: src/Admin/ModulesPage.php:227
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 #: src/Admin/ModulesPage.php:228
 msgid "Quantity column"
-msgstr ""
+msgstr "Sloupec množství"
 
 #: src/Admin/ModulesPage.php:228
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 msgid "Quantity"
-msgstr ""
+msgstr "Množství"
 
 #: src/Admin/ModulesPage.php:229
 msgid "Price column"
-msgstr ""
+msgstr "Sloupec cena"
 
 #: src/Admin/ModulesPage.php:229
 msgid "Price"
-msgstr ""
+msgstr "Cena"
 
 #: src/Admin/ModulesPage.php:230
 msgid "Exemption notice"
-msgstr ""
+msgstr "Upozornění na výjimku"
 
 #: src/Admin/ModulesPage.php:230
 msgid "(This product is excluded from the right of withdrawal)"
-msgstr ""
+msgstr "(Tento produkt je vyloučen z práva na odstoupení)"
 
 #: src/Admin/ModulesPage.php:231
 msgid "Reason field label"
-msgstr ""
+msgstr "Štítek pole důvodu"
 
 #: src/Admin/ModulesPage.php:231
 msgid "Reason for withdrawal (optional)"
-msgstr ""
+msgstr "Důvod odstoupení (volitelné)"
 
 #: src/Admin/ModulesPage.php:232
 #: build/blocks/ajax-search/index.js:212
 #: resources/js/blocks/ajax-search/index.js:39
 #: build/blocks/ajax-search/index.js:100
 msgid "Submit button text"
-msgstr ""
+msgstr "Text tlačítka odeslání"
 
 #: src/Admin/ModulesPage.php:232
 msgid "Submit withdrawal request"
-msgstr ""
+msgstr "Odeslat žádost o odstoupení"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Invalid nonce message"
-msgstr ""
+msgstr "Zpráva při neplatném nonce"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Something went wrong on our side. Please try again."
-msgstr ""
+msgstr "Na naší straně se něco pokazilo. Zkuste to prosím znovu."
 
 #: src/Admin/ModulesPage.php:234
 msgid "Order not found message"
-msgstr ""
+msgstr "Zpráva při nenalezené objednávce"
 
 #: src/Admin/ModulesPage.php:234
 #: src/Rest/WithdrawalController.php:133
 msgid "We could not find that order."
-msgstr ""
+msgstr "Tuto objednávku jsme nenašli."
 
 #: src/Admin/ModulesPage.php:235
 msgid "Permission error message"
-msgstr ""
+msgstr "Zpráva při chybě oprávnění"
 
 #: src/Admin/ModulesPage.php:235
 msgid "You do not have permission to withdraw from this order."
-msgstr ""
+msgstr "Nemáte oprávnění od této objednávky odstoupit."
 
 #: src/Admin/ModulesPage.php:236
 msgid "Success message"
-msgstr ""
+msgstr "Zpráva o úspěchu"
 
 #: src/Admin/ModulesPage.php:236
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
-msgstr ""
+msgstr "Vaše žádost o odstoupení byla přijata. Brzy vám pošleme potvrzovací e-mail."
 
 #: src/Admin/ModulesPage.php:237
 msgid "Not eligible message"
-msgstr ""
+msgstr "Zpráva při nezpůsobilosti"
 
 #: src/Admin/ModulesPage.php:237
 #: src/Rest/WithdrawalController.php:145
 msgid "This order is not eligible for withdrawal."
-msgstr ""
+msgstr "Tato objednávka nesplňuje podmínky pro odstoupení."
 
 #: src/Admin/ModulesPage.php:238
 msgid "Status section heading"
-msgstr ""
+msgstr "Nadpis sekce stavu"
 
 #: src/Admin/ModulesPage.php:239
 msgid "Status label"
-msgstr ""
+msgstr "Štítek stavu"
 
 #: src/Admin/ModulesPage.php:240
 msgid "Submitted label"
-msgstr ""
+msgstr "Štítek odesláno"
 
 #: src/Admin/ModulesPage.php:240
 msgid "Submitted"
-msgstr ""
+msgstr "Odesláno"
 
 #: src/Admin/ModulesPage.php:241
 msgid "Order note after request"
-msgstr ""
+msgstr "Poznámka k objednávce po žádosti"
 
 #: src/Admin/ModulesPage.php:241
 msgid "The customer submitted a withdrawal request."
-msgstr ""
+msgstr "Zákazník odeslal žádost o odstoupení."
 
 #: src/Admin/ModulesPage.php:242
 msgid "Order note after confirmation"
-msgstr ""
+msgstr "Poznámka k objednávce po potvrzení"
 
 #: src/Admin/ModulesPage.php:242
 msgid "The withdrawal request has been confirmed."
-msgstr ""
+msgstr "Žádost o odstoupení byla potvrzena."
 
 #: src/Admin/ModulesPage.php:243
 msgid "Status date format"
-msgstr ""
+msgstr "Formát data stavu"
 
 #: src/Admin/ModulesPage.php:243
 msgid "Y-m-d H:i"
-msgstr ""
+msgstr "Y-m-d H:i"
 
 #: src/Admin/ModulesPage.php:244
 msgid "Confirmation email subject"
-msgstr ""
+msgstr "Předmět potvrzovacího e-mailu"
 
 #: src/Admin/ModulesPage.php:244
 #: src/Admin/ModulesPage.php:247
@@ -2507,59 +2507,59 @@ msgstr "Vaše žádost o odstoupení od objednávky č. #{order_number} byla pot
 
 #: src/Admin/ModulesPage.php:244
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
-msgstr ""
+msgstr "Proměnné: {order_number}, {order_date}, {withdrawal_date}"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Confirmation email heading"
-msgstr ""
+msgstr "Nadpis potvrzovacího e-mailu"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Withdrawal confirmed"
-msgstr ""
+msgstr "Odstoupení potvrzeno"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Email greeting"
-msgstr ""
+msgstr "Pozdrav v e-mailu"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Hello {name},"
-msgstr ""
+msgstr "Ahoj {name},"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Variable: {name}"
-msgstr ""
+msgstr "Proměnná: {name}"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Confirmation email body"
-msgstr ""
+msgstr "Text potvrzovacího e-mailu"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Variable: {order_number}"
-msgstr ""
+msgstr "Proměnná: {order_number}"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Reason label in email"
-msgstr ""
+msgstr "Štítek důvodu v e-mailu"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Your reason"
-msgstr ""
+msgstr "Váš důvod"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Return instruction in email"
-msgstr ""
+msgstr "Pokyn k vrácení v e-mailu"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Please return the products to the address below within 14 days:"
-msgstr ""
+msgstr "Prosíme o vrácení produktů na níže uvedenou adresu do 14 dnů:"
 
 #: src/Admin/ModulesPage.php:250
 msgid "Additional email content"
-msgstr ""
+msgstr "Další obsah e-mailu"
 
 #: src/Admin/ModulesPage.php:250
 msgid "Your refund will be processed within 14 days after the returned products are received."
-msgstr ""
+msgstr "Vrácení peněz bude zpracováno do 14 dnů po obdržení vrácených produktů."
 
 #: src/Admin/ModulesPage.php:255
 msgid "Rozstrzyganie sporów (ODR)"

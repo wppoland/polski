@@ -64,12 +64,12 @@ final class ProductMetaBox implements HasHooks
 
         // --- Unit Price Section ---
         echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Cena jednostkowa', 'polski') . '</h4>';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Unit price', 'polski') . '</h4>';
 
         woocommerce_wp_text_input([
             'id' => '_polski_unit_price_product_amount',
-            'label' => __('Ilość produktu', 'polski'),
-            'description' => __('Ilość produktu w opakowaniu (np. 500 dla 500g).', 'polski'),
+            'label' => __('Product quantity', 'polski'),
+            'description' => __('Product quantity in package (e.g. 500 for 500g).', 'polski'),
             'desc_tip' => true,
             'type' => 'number',
             'custom_attributes' => ['step' => '0.01', 'min' => '0'],
@@ -77,8 +77,8 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_text_input([
             'id' => '_polski_unit_price_base',
-            'label' => __('Ilość bazowa', 'polski'),
-            'description' => __('Podstawowa ilość referencyjna (np. 1 dla "na 1 kg", 100 dla "na 100 ml").', 'polski'),
+            'label' => __('Base quantity', 'polski'),
+            'description' => __('Base reference quantity (e.g. 1 for "per 1 kg", 100 for "per 100 ml").', 'polski'),
             'desc_tip' => true,
             'type' => 'number',
             'custom_attributes' => ['step' => '0.01', 'min' => '0'],
@@ -102,9 +102,9 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_select([
             'id' => '_polski_unit_price_unit',
-            'label' => __('Jednostka', 'polski'),
+            'label' => __('Unit', 'polski'),
             'options' => $unitOptions,
-            'description' => __('Jednostka miary dla wyświetlania ceny jednostkowej.', 'polski'),
+            'description' => __('Unit of measure for unit price display.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -130,9 +130,9 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_select([
             'id' => '_polski_delivery_time_id',
-            'label' => __('Czas dostawy', 'polski'),
+            'label' => __('Delivery time', 'polski'),
             'options' => $dtOptions,
-            'description' => __('Szacowany czas dostawy wyświetlany na stronie produktu.', 'polski'),
+            'description' => __('Estimated delivery time displayed on the product page.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -143,8 +143,8 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_checkbox([
             'id' => '_polski_withdrawal_exempt',
-            'label' => __('Wyłączenie z prawa odstąpienia', 'polski'),
-            'description' => __('Ten produkt jest wyłączony z 14-dniowego prawa odstąpienia (np. treści cyfrowe, towary łatwo psujące sie).', 'polski'),
+            'label' => __('Right of withdrawal exemption', 'polski'),
+            'description' => __('This product is exempt from the 14-day right of withdrawal (e.g. digital content, perishable goods).', 'polski'),
         ]);
 
         echo '</div>';
@@ -155,29 +155,29 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_text_input([
             'id' => '_polski_badge_text',
-            'label' => __('Główny badge', 'polski'),
-            'description' => __('Ręczny badge wyświetlany niezależnie od automatycznych warunków.', 'polski'),
+            'label' => __('Main badge', 'polski'),
+            'description' => __('Manual badge displayed independently of automatic conditions.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_select([
             'id' => '_polski_badge_style',
-            'label' => __('Styl badge', 'polski'),
+            'label' => __('Badge style', 'polski'),
             'options' => [
-                '' => __('Domyślny', 'polski'),
+                '' => __('Default', 'polski'),
                 'accent' => __('Accent', 'polski'),
                 'success' => __('Success', 'polski'),
                 'warning' => __('Warning', 'polski'),
                 'neutral' => __('Neutral', 'polski'),
             ],
-            'description' => __('Styl ręcznego badge.', 'polski'),
+            'description' => __('Manual badge style.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_badge_secondary_text',
-            'label' => __('Drugi badge', 'polski'),
-            'description' => __('Opcjonalny drugi badge, np. Polska marka, Eko, Hit tygodnia.', 'polski'),
+            'label' => __('Secondary badge', 'polski'),
+            'description' => __('Optional second badge, e.g. Polish brand, Eco, Sale hit.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -189,29 +189,29 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_text_input([
             'id' => '_polski_tab_1_title',
-            'label' => __('Tytuł zakładki 1', 'polski'),
-            'description' => __('Opcjonalna dodatkowa zakładka dla tego produktu.', 'polski'),
+            'label' => __('Tab 1 title', 'polski'),
+            'description' => __('Optional additional tab for this product.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_tab_1_content',
-            'label' => __('Treść zakładki 1', 'polski'),
-            'description' => __('Treść HTML/tekst dla pierwszej dodatkowej zakładki.', 'polski'),
+            'label' => __('Tab 1 content', 'polski'),
+            'description' => __('HTML/text content for the first additional tab.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_tab_2_title',
-            'label' => __('Tytuł zakładki 2', 'polski'),
-            'description' => __('Druga opcjonalna zakładka produktowa.', 'polski'),
+            'label' => __('Tab 2 title', 'polski'),
+            'description' => __('Second optional product tab.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_tab_2_content',
-            'label' => __('Treść zakładki 2', 'polski'),
-            'description' => __('Treść HTML/tekst dla drugiej dodatkowej zakładki.', 'polski'),
+            'label' => __('Tab 2 content', 'polski'),
+            'description' => __('HTML/text content for the second additional tab.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -223,15 +223,15 @@ final class ProductMetaBox implements HasHooks
 
         woocommerce_wp_text_input([
             'id' => '_polski_featured_video_url',
-            'label' => __('URL wideo', 'polski'),
-            'description' => __('Obsługuje YouTube, Vimeo oraz bezpośredni link do pliku MP4.', 'polski'),
+            'label' => __('Video URL', 'polski'),
+            'description' => __('Supports YouTube, Vimeo, and direct MP4 file links.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_featured_video_title',
-            'label' => __('Nagłówek sekcji wideo', 'polski'),
-            'description' => __('Opcjonalny nagłówek tylko dla tego produktu.', 'polski'),
+            'label' => __('Video section heading', 'polski'),
+            'description' => __('Optional heading only for this product.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -239,61 +239,61 @@ final class ProductMetaBox implements HasHooks
 
         // --- GPSR Section ---
         echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('GPSR – Bezpieczeństwo produktu', 'polski') . '</h4>';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('GPSR – Product Safety', 'polski') . '</h4>';
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_manufacturer_name',
-            'label' => __('Nazwa producenta', 'polski'),
-            'description' => __('Pełna nazwa producenta wymagana przez GPSR.', 'polski'),
+            'label' => __('Manufacturer name', 'polski'),
+            'description' => __('Full manufacturer name required by GPSR.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_gpsr_manufacturer_address',
-            'label' => __('Adres producenta', 'polski'),
-            'description' => __('Pełny adres pocztowy producenta.', 'polski'),
+            'label' => __('Manufacturer address', 'polski'),
+            'description' => __('Full postal address of the manufacturer.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_importer_name',
-            'label' => __('Nazwa importera', 'polski'),
-            'description' => __('Pełna nazwa importera (jeśli dotyczy).', 'polski'),
+            'label' => __('Importer name', 'polski'),
+            'description' => __('Full importer name (if applicable).', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_gpsr_importer_address',
-            'label' => __('Adres importera', 'polski'),
-            'description' => __('Pełny adres pocztowy importera.', 'polski'),
+            'label' => __('Importer address', 'polski'),
+            'description' => __('Full postal address of the importer.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_responsible_person',
-            'label' => __('Osoba odpowiedzialna', 'polski'),
-            'description' => __('Osoba odpowiedzialna w UE za zgodność produktu z GPSR.', 'polski'),
+            'label' => __('Responsible person', 'polski'),
+            'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_product_identifier',
-            'label' => __('Identyfikator produktu', 'polski'),
-            'description' => __('Numer partii, numer seryjny lub inny identyfikator produktu.', 'polski'),
+            'label' => __('Product identifier', 'polski'),
+            'description' => __('Batch number, serial number, or other product identifier.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_gpsr_safety_warnings',
-            'label' => __('Ostrzeżenia bezpieczeństwa', 'polski'),
-            'description' => __('Ostrzeżenia dotyczące bezpieczeństwa produktu.', 'polski'),
+            'label' => __('Safety warnings', 'polski'),
+            'description' => __('Safety warnings regarding the product.', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_gpsr_instructions',
-            'label' => __('Instrukcje bezpieczeństwa', 'polski'),
-            'description' => __('Instrukcje dotyczące bezpiecznego użytkowania produktu.', 'polski'),
+            'label' => __('Safety instructions', 'polski'),
+            'description' => __('Instructions for safe use of the product.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -301,27 +301,27 @@ final class ProductMetaBox implements HasHooks
 
         // --- Anti-greenwashing Section ---
         echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Twierdzenia ekologiczne (Anti-greenwashing)', 'polski') . '</h4>';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Environmental claims (Anti-greenwashing)', 'polski') . '</h4>';
 
         woocommerce_wp_textarea_input([
             'id' => '_polski_green_claim_basis',
-            'label' => __('Podstawa twierdzenia ekologicznego', 'polski'),
-            'description' => __('Naukowa lub prawna podstawa twierdzenia ekologicznego (wymagana przez dyrektywę anty-greenwashingową).', 'polski'),
+            'label' => __('Environmental claim basis', 'polski'),
+            'description' => __('Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive).', 'polski'),
             'desc_tip' => true,
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_green_claim_cert_url',
-            'label' => __('Link do certyfikatu', 'polski'),
-            'description' => __('URL do oficjalnego certyfikatu potwierdzającego twierdzenie ekologiczne.', 'polski'),
+            'label' => __('Certificate link', 'polski'),
+            'description' => __('URL to the official certificate supporting the environmental claim.', 'polski'),
             'desc_tip' => true,
             'type' => 'url',
         ]);
 
         woocommerce_wp_text_input([
             'id' => '_polski_green_claim_expiry',
-            'label' => __('Data ważności certyfikatu (YYYY-MM-DD)', 'polski'),
-            'description' => __('Data wygaśnięcia certyfikatu ekologicznego w formacie YYYY-MM-DD.', 'polski'),
+            'label' => __('Certificate expiry date (YYYY-MM-DD)', 'polski'),
+            'description' => __('Environmental certificate expiry date in YYYY-MM-DD format.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -404,7 +404,7 @@ final class ProductMetaBox implements HasHooks
         woocommerce_wp_text_input([
             'id' => "_polski_unit_price_product_amount_{$loop}",
             'name' => "_polski_variation_unit_price_product_amount[{$loop}]",
-            'label' => __('Ilość produktu', 'polski'),
+            'label' => __('Product quantity', 'polski'),
             'value' => get_post_meta($variationId, '_polski_unit_price_product_amount', true),
             'type' => 'number',
             'custom_attributes' => ['step' => '0.01', 'min' => '0'],
@@ -414,7 +414,7 @@ final class ProductMetaBox implements HasHooks
         woocommerce_wp_text_input([
             'id' => "_polski_unit_price_base_{$loop}",
             'name' => "_polski_variation_unit_price_base[{$loop}]",
-            'label' => __('Ilość bazowa', 'polski'),
+            'label' => __('Base quantity', 'polski'),
             'value' => get_post_meta($variationId, '_polski_unit_price_base', true),
             'type' => 'number',
             'custom_attributes' => ['step' => '0.01', 'min' => '0'],
