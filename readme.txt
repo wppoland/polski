@@ -167,6 +167,19 @@ Yes. The plugin admin includes a simple feedback form that stores messages local
 
 Deactivating Polski keeps your settings and stored data. Uninstalling removes the plugin files. Plugin data is deleted only if the remove-data-on-uninstall setting is enabled.
 
+== External Services ==
+
+= GUS REGON API (Polish Central Statistical Office) =
+
+When the NIP Lookup module is enabled, this plugin connects to the GUS REGON public registry to retrieve company data based on the NIP (tax ID) entered by the user. This connection is made only when the user explicitly triggers a lookup.
+
+* Data sent: NIP number
+* Service URL: [https://wyszukiwarkaregon.stat.gov.pl/](https://wyszukiwarkaregon.stat.gov.pl/)
+* Service terms: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
+* Service privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
+
+No other external services are used. Deactivation feedback and all other data are stored locally in WordPress.
+
 == Screenshots ==
 
 1. Module management dashboard with toggles and per-module settings
