@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * Single product GPSR (General Product Safety Regulation) information.
  *

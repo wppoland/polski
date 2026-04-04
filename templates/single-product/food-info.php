@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * Single product food information (nutrients, allergens, ingredients, Nutri-Score).
  *

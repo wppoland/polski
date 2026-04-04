@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * Withdrawal confirmation email (plain text).
  *

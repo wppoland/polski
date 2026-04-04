@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * Loop compare button.
  *

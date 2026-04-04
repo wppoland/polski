@@ -1,17 +1,15 @@
-# Translation of Polski for WooCommerce in Slovak
-# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: Mariusz Szatkowski\n"
 "Language-Team: Slovak <sk_SK@li.org>\n"
-"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-04T06:47:36+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
+"Language: sk_SK\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Polski Translation Script 1.0\n"
 "X-Domain: polski\n"
@@ -5924,177 +5922,6 @@ msgstr "Bezpečnostné varovania"
 msgid "Bezpieczeństwo produktu (GPSR)"
 msgstr "Bezpečnosť produktu (GPSR)"
 
-#: build/blocks/ajax-filters/index.js:186
-#: resources/js/blocks/ajax-filters/index.js:16
-#: build/blocks/ajax-filters/index.js:77
-msgid "Filter settings"
-msgstr "Nastavenia filtrov"
-
-#: build/blocks/ajax-filters/index.js:194
-#: build/blocks/product-slider/index.js:229
-#: resources/js/blocks/ajax-filters/index.js:23
-#: resources/js/blocks/product-slider/index.js:48
-#: build/blocks/ajax-filters/index.js:84
-#: build/blocks/product-slider/index.js:109
-msgid "Show title"
-msgstr "Zobraziť názov"
-
-#: build/blocks/ajax-filters/index.js:200
-#: resources/js/blocks/ajax-filters/index.js:28
-#: build/blocks/ajax-filters/index.js:89
-msgid "Show categories"
-msgstr "Zobraziť kategórie"
-
-#: build/blocks/ajax-filters/index.js:206
-#: resources/js/blocks/ajax-filters/index.js:33
-#: build/blocks/ajax-filters/index.js:94
-msgid "Show brands"
-msgstr "Zobraziť značky"
-
-#: build/blocks/ajax-filters/index.js:218
-#: resources/js/blocks/ajax-filters/index.js:43
-#: build/blocks/ajax-filters/index.js:104
-msgid "Show stock"
-msgstr "Zobraziť sklad"
-
-#: build/blocks/ajax-filters/index.js:224
-#: resources/js/blocks/ajax-filters/index.js:48
-#: build/blocks/ajax-filters/index.js:109
-msgid "Show sale"
-msgstr "Zobraziť akcie"
-
-#: build/blocks/ajax-filters/index.js:230
-#: resources/js/blocks/ajax-filters/index.js:53
-#: build/blocks/ajax-filters/index.js:114
-msgid "Show attributes"
-msgstr "Zobraziť atribúty"
-
-#: build/blocks/ajax-filters/index.js:240
-#: resources/js/blocks/ajax-filters/index.js:60
-#: build/blocks/ajax-filters/index.js:121
-msgid "Polski AJAX Filters"
-msgstr "Polski AJAX filtre"
-
-#: build/blocks/ajax-filters/index.js:242
-#: resources/js/blocks/ajax-filters/index.js:61
-#: build/blocks/ajax-filters/index.js:122
-msgid "Dynamic product filters rendered on the frontend."
-msgstr "Dynamické filtre produktov vykreslené na frontende."
-
-#: build/blocks/ajax-search/index.js:186
-#: resources/js/blocks/ajax-search/index.js:16
-#: build/blocks/ajax-search/index.js:77
-msgid "Search settings"
-msgstr "Nastavenia vyhľadávania"
-
-#: build/blocks/ajax-search/index.js:194
-#: resources/js/blocks/ajax-search/index.js:23
-#: build/blocks/ajax-search/index.js:84
-msgid "Search label"
-msgstr "Štítok vyhľadávania"
-
-#: build/blocks/ajax-search/index.js:206
-#: resources/js/blocks/ajax-search/index.js:33
-#: build/blocks/ajax-search/index.js:94
-msgid "Show submit button"
-msgstr "Zobraziť tlačidlo odoslania"
-
-#: build/blocks/ajax-search/index.js:238
-#: resources/js/blocks/ajax-search/index.js:61
-#: build/blocks/ajax-search/index.js:122
-msgid "Polski AJAX Search"
-msgstr "Polski AJAX vyhľadávanie"
-
-#: build/blocks/ajax-search/index.js:240
-#: resources/js/blocks/ajax-search/index.js:62
-#: build/blocks/ajax-search/index.js:123
-msgid "Dynamic product search form rendered on the frontend."
-msgstr "Dynamický formulár vyhľadávania produktov vykreslený na frontende."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:66
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:53
-#: build/blocks/checkout-legal-checkboxes/index.js:53
-msgid "This field is required."
-msgstr "Toto pole je povinné."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:100
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:91
-#: build/blocks/checkout-legal-checkboxes/index.js:91
-msgid "required"
-msgstr "povinné"
-
-#: build/blocks/product-slider/index.js:186
-#: resources/js/blocks/product-slider/index.js:16
-#: build/blocks/product-slider/index.js:77
-msgid "Slider settings"
-msgstr "Nastavenia slidera"
-
-#: build/blocks/product-slider/index.js:194
-#: resources/js/blocks/product-slider/index.js:23
-#: build/blocks/product-slider/index.js:84
-msgid "Source"
-msgstr "Zdroj"
-
-#: build/blocks/product-slider/index.js:197
-#: resources/js/blocks/product-slider/index.js:26
-#: build/blocks/product-slider/index.js:87
-msgid "Related products"
-msgstr "Súvisiace produkty"
-
-#: build/blocks/product-slider/index.js:200
-#: resources/js/blocks/product-slider/index.js:27
-#: build/blocks/product-slider/index.js:88
-msgid "Upsell products"
-msgstr "Upsell produkty"
-
-#: build/blocks/product-slider/index.js:203
-#: resources/js/blocks/product-slider/index.js:28
-#: build/blocks/product-slider/index.js:89
-msgid "Sale products"
-msgstr "Akciové produkty"
-
-#: build/blocks/product-slider/index.js:206
-#: resources/js/blocks/product-slider/index.js:29
-#: build/blocks/product-slider/index.js:90
-msgid "Featured products"
-msgstr "Odporúčané produkty"
-
-#: build/blocks/product-slider/index.js:213
-#: resources/js/blocks/product-slider/index.js:34
-#: build/blocks/product-slider/index.js:95
-msgid "Product ID"
-msgstr "ID produktu"
-
-#: build/blocks/product-slider/index.js:216
-#: resources/js/blocks/product-slider/index.js:37
-#: build/blocks/product-slider/index.js:98
-msgid "Optional for related and upsell sliders outside product templates."
-msgstr "Voliteľné pre súvisiace a upsell slidery mimo šablón produktu."
-
-#: build/blocks/product-slider/index.js:221
-#: resources/js/blocks/product-slider/index.js:41
-#: build/blocks/product-slider/index.js:102
-msgid "Product limit"
-msgstr "Limit produktov"
-
-#: build/blocks/product-slider/index.js:241
-#: resources/js/blocks/product-slider/index.js:58
-#: build/blocks/product-slider/index.js:119
-msgid "Show add to cart"
-msgstr "Zobraziť pridanie do košíka"
-
-#: build/blocks/product-slider/index.js:251
-#: resources/js/blocks/product-slider/index.js:65
-#: build/blocks/product-slider/index.js:126
-msgid "Polski Product Slider"
-msgstr "Polski produktový slider"
-
-#: build/blocks/product-slider/index.js:253
-#: resources/js/blocks/product-slider/index.js:66
-#: build/blocks/product-slider/index.js:127
-msgid "Dynamic merchandising slider rendered on the frontend."
-msgstr "Dynamický merchandisingový slider vykreslený na frontende."
-
 #: build/blocks/ajax-filters/block.json
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
@@ -6143,3 +5970,862 @@ msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dynamický merchandisingový slider pre súvisiace, upsell, akciové a odporúčané produkty."
 
+#: added-by-translation-script
+msgid "Hello!"
+msgstr "Ahoj!"
+
+#: added-by-translation-script
+msgid "Finish configuration"
+msgstr "Dokončiť konfiguráciu"
+
+#: added-by-translation-script
+msgid "Some key elements of your store still require attention."
+msgstr "Niektoré kľúčové prvky vášho obchodu si stále vyžadujú pozornosť."
+
+#: added-by-translation-script
+msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
+msgstr "Publikovať právne stránky (Obchodné podmienky, Zásady ochrany osobných údajov, Právo na odstúpenie)"
+
+#: added-by-translation-script
+msgid "Complete product data"
+msgstr "Doplniť údaje o produktoch"
+
+#: added-by-translation-script
+msgid "Manage modules"
+msgstr "Spravovať moduly"
+
+#: added-by-translation-script
+msgid "Generate legal pages"
+msgstr "Vygenerovať právne stránky"
+
+#: added-by-translation-script
+msgid "No legal pages have been created yet. Generate them to get started."
+msgstr "Zatiaľ neboli vytvorené žiadne právne stránky. Vygenerujte ich pre začiatok."
+
+#: added-by-translation-script
+msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
+msgstr "Hotovo! Vygenerovali sme návrhy právnych stránok. Skontrolujte ich, upravte a publikujte."
+
+#: added-by-translation-script
+#, php-format
+msgid "%1$d of %2$d ready"
+msgstr "%1$d z %2$d pripravených"
+
+#: added-by-translation-script
+msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
+msgstr "Publikujte vaše právne stránky (Obchodné podmienky, Zásady ochrany osobných údajov, Právo na odstúpenie, Reklamácie)."
+
+#: added-by-translation-script
+#, php-format
+msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
+msgstr "Doplňte údaje o produktoch - pridajte jednotkové ceny a dodaciu dobu v <a href=\"%s\">záložke Polski</a> pre každý produkt."
+
+#: added-by-translation-script
+#, php-format
+msgid "%d/8 pól wypełnionych"
+msgstr "%d/8 polí vyplnených"
+
+#: added-by-translation-script
+msgid "Active"
+msgstr "Aktívny"
+
+#: added-by-translation-script
+msgid "Add Allergen"
+msgstr "Pridať alergén"
+
+#: added-by-translation-script
+msgid "Add Delivery Time"
+msgstr "Pridať dodaciu dobu"
+
+#: added-by-translation-script
+msgid "Add Manufacturer"
+msgstr "Pridať výrobcu"
+
+#: added-by-translation-script
+msgid "Add Nutrient"
+msgstr "Pridať živinu"
+
+#: added-by-translation-script
+msgid "Add Unit"
+msgstr "Pridať jednotku"
+
+#: added-by-translation-script
+msgid "Add to Wishlist"
+msgstr "Pridať na zoznam prianí"
+
+#: added-by-translation-script
+msgid "Add to compare"
+msgstr "Pridať k porovnaniu"
+
+#: added-by-translation-script
+msgid "Address"
+msgstr "Adresa"
+
+#: added-by-translation-script
+msgid "Admin Feedback Logs"
+msgstr "Protokoly spätnej väzby administrátora"
+
+#: added-by-translation-script
+msgid "Advertising"
+msgstr "Reklama"
+
+#: added-by-translation-script
+msgid "All basic company data is completed."
+msgstr "Všetky základné údaje o firme sú vyplnené."
+
+#: added-by-translation-script
+msgid "Allergen"
+msgstr "Alergén"
+
+#: added-by-translation-script
+msgid "Analytics"
+msgstr "Analytika"
+
+#: added-by-translation-script
+msgid "Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims."
+msgstr "Modul anti-greenwashing je deaktivovaný. Je dobrou praxou uchovávať zdroje pre environmentálne tvrdenia."
+
+#: added-by-translation-script
+msgid "Anti-greenwashing module is enabled - products can store claims basis and certificate links."
+msgstr "Modul anti-greenwashing je aktivovaný - produkty môžu uchovávať podklady tvrdení a odkazy na certifikáty."
+
+#: added-by-translation-script
+msgid "Automatic verification of common issues for Polish WooCommerce shops."
+msgstr "Automatická kontrola bežných problémov poľských obchodov WooCommerce."
+
+#: added-by-translation-script
+msgid "Availability"
+msgstr "Dostupnosť"
+
+#: added-by-translation-script
+msgid "Back to reports"
+msgstr "Späť na reporty"
+
+#: added-by-translation-script
+msgid "Business identification data"
+msgstr "Identifikačné údaje firmy"
+
+#: added-by-translation-script
+msgid "Button text is not configured. Default WooCommerce setting might lack required payment info."
+msgstr "Text tlačidla nie je nakonfigurovaný. Predvolené nastavenie WooCommerce nemusí obsahovať požadované platobné informácie."
+
+#: added-by-translation-script
+#, php-format
+msgid "Button: \"%s\" - contains info about payment obligation."
+msgstr "Tlačidlo: \"%s\" - obsahuje informácie o platobnej povinnosti."
+
+#: added-by-translation-script
+#, php-format
+msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
+msgstr "Tlačidlo: \"%s\" - nemusí obsahovať požadované platobné informácie (napr. \"Objednávka s povinnosťou platby\")."
+
+#: added-by-translation-script
+msgid "Check"
+msgstr "Skontrolovať"
+
+#: added-by-translation-script
+msgid "Check reports"
+msgstr "Skontrolovať reporty"
+
+#: added-by-translation-script
+msgid "Clear comparison"
+msgstr "Vymazať porovnanie"
+
+#: added-by-translation-script
+msgid "Company name"
+msgstr "Názov firmy"
+
+#: added-by-translation-script
+msgid "Compare products"
+msgstr "Porovnať produkty"
+
+#: added-by-translation-script
+msgid "Comparison"
+msgstr "Porovnanie"
+
+#: added-by-translation-script
+msgid "Complaints"
+msgstr "Reklamácie"
+
+#: added-by-translation-script
+msgid "Completed"
+msgstr "Dokončené"
+
+#: added-by-translation-script
+#, php-format
+msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Nakonfigurujte <a href=\"%s\">zóny dopravy</a> pre doručenie do Poľska."
+
+#: added-by-translation-script
+#, php-format
+msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
+msgstr "Nakonfigurujte <a href=\"%s\">sadzby daní</a> vo WooCommerce pre poľskú DPH (23%%, 8%%, 5%%, 0%%)."
+
+#: added-by-translation-script
+msgid "Confirmed"
+msgstr "Potvrdené"
+
+#: added-by-translation-script
+msgid "Contact email"
+msgstr "Kontaktný e-mail"
+
+#: added-by-translation-script
+msgid "DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services."
+msgstr "Modul DPA je aktivovaný, ale register je prázdny. Označte aspoň hosting, platby a ďalšie služby spracovania údajov."
+
+#: added-by-translation-script
+msgid "DPA registry (data processing agreements)"
+msgstr "Register DPA (zmluvy o spracovaní údajov)"
+
+#: added-by-translation-script
+#, php-format
+msgid "DPA registry covers %d services and all have an agreement status marked."
+msgstr "Register DPA pokrýva %d služieb a všetky majú označený stav zmluvy."
+
+#: added-by-translation-script
+msgid "DPA registry has no active data processing agreements marked."
+msgstr "Register DPA nemá označené žiadne aktívne zmluvy o spracovaní údajov."
+
+#: added-by-translation-script
+msgid "DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc."
+msgstr "Modul registra DPA je deaktivovaný. Je dobrou praxou sledovať stav DPA pre hosting, platby atď."
+
+#: added-by-translation-script
+msgid "DSA - reporting illegal content"
+msgstr "DSA - hlásenie nelegálneho obsahu"
+
+#: added-by-translation-script
+msgid "DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure."
+msgstr "Modul DSA je deaktivovaný. Trhoviská alebo obchody so sponzorovaným obsahom by mali mať postup oznámenia a reakcie."
+
+#: added-by-translation-script
+msgid "DSA module is enabled - report form and dashboard are available."
+msgstr "Modul DSA je aktivovaný - formulár hlásení a dashboard sú dostupné."
+
+#: added-by-translation-script
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: added-by-translation-script
+msgid "Data Processing Agreement (DPA) Registry"
+msgstr "Register zmlúv o spracovaní údajov (DPA)"
+
+#: added-by-translation-script
+msgid "Defect Description"
+msgstr "Popis vady"
+
+#: added-by-translation-script
+msgid "Delivery Time"
+msgstr "Dodacia doba"
+
+#: added-by-translation-script
+msgid "Delivery Times"
+msgstr "Dodacie doby"
+
+#: added-by-translation-script
+#, php-format
+msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
+msgstr "Detegovaných %d vopred zaškrtnutých checkboxov. Úrady to považujú za klamlivý vzor."
+
+#: added-by-translation-script
+msgid "Detected external services processing your customers' personal data. Mark those for which you have a signed DPA."
+msgstr "Detegované externé služby spracúvajúce osobné údaje vašich zákazníkov. Označte tie, pre ktoré máte podpísanú DPA."
+
+#: added-by-translation-script
+msgid "Disabled"
+msgstr "Deaktivované"
+
+#: added-by-translation-script
+msgid "Draft"
+msgstr "Koncept"
+
+#: added-by-translation-script
+msgid "Edit"
+msgstr "Upraviť"
+
+#: added-by-translation-script
+msgid "Edit Allergen"
+msgstr "Upraviť alergén"
+
+#: added-by-translation-script
+msgid "Edit Delivery Time"
+msgstr "Upraviť dodaciu dobu"
+
+#: added-by-translation-script
+msgid "Edit Manufacturer"
+msgstr "Upraviť výrobcu"
+
+#: added-by-translation-script
+msgid "Edit Nutrient"
+msgstr "Upraviť živinu"
+
+#: added-by-translation-script
+msgid "Edit Unit"
+msgstr "Upraviť jednotku"
+
+#: added-by-translation-script
+msgid "Enable"
+msgstr "Aktivovať"
+
+#: added-by-translation-script
+msgid "Environmental claims (anti-greenwashing)"
+msgstr "Environmentálne tvrdenia (anti-greenwashing)"
+
+#: added-by-translation-script
+msgid "Failed to load product preview."
+msgstr "Nepodarilo sa načítať náhľad produktu."
+
+#: added-by-translation-script
+msgid "Feature"
+msgstr "Funkcia"
+
+#: added-by-translation-script
+msgid "Feedback Logs"
+msgstr "Protokoly spätnej väzby"
+
+#: added-by-translation-script
+msgid "Food Information"
+msgstr "Informácie o potravinách"
+
+#: added-by-translation-script
+msgid "GPSR module (product safety)"
+msgstr "Modul GPSR (bezpečnosť produktov)"
+
+#: added-by-translation-script
+msgid "GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data."
+msgstr "Modul GPSR je deaktivovaný. Nariadenie (EÚ) 2023/988 vyžaduje poskytovanie údajov o výrobcovi/dovozcovi."
+
+#: added-by-translation-script
+msgid "GPSR module is enabled - manufacturer and importer data can be displayed."
+msgstr "Modul GPSR je aktivovaný - údaje o výrobcovi a dovozcovi môžu byť zobrazené."
+
+#: added-by-translation-script
+msgid "Go through the checklist below"
+msgstr "Prejdite si nižšie uvedený kontrolný zoznam"
+
+#: added-by-translation-script
+msgid "Hosting (server)"
+msgstr "Hosting (server)"
+
+#: added-by-translation-script
+msgid "If you no longer wish to receive these messages, simply ignore this email."
+msgstr "Ak si už neželáte dostávať tieto správy, jednoducho tento e-mail ignorujte."
+
+#: added-by-translation-script
+msgid "Inactive"
+msgstr "Neaktívny"
+
+#: added-by-translation-script
+msgid "Incident module is enabled and security contact is set. The registry is currently empty."
+msgstr "Modul incidentov je aktivovaný a bezpečnostný kontakt je nastavený. Register je momentálne prázdny."
+
+#: added-by-translation-script
+msgid "Incident module is enabled, but no security contact email is set."
+msgstr "Modul incidentov je aktivovaný, ale nie je nastavený e-mail bezpečnostného kontaktu."
+
+#: added-by-translation-script
+msgid "Issues"
+msgstr "Problémy"
+
+#: added-by-translation-script
+msgid "KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices."
+msgstr "Modul KSeF je deaktivovaný. B2B obchody môžu potrebovať automatické označovanie objednávok vyžadujúcich e-faktúry."
+
+#: added-by-translation-script
+msgid "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration."
+msgstr "Modul KSeF je aktivovaný - objednávky s IČ DPH môžu byť označené pre integráciu faktúr."
+
+#: added-by-translation-script
+msgid "Legal checkboxes (GDPR)"
+msgstr "Právne checkboxy (GDPR)"
+
+#: added-by-translation-script
+msgid "Legal checkboxes module is disabled. The shop might not collect required GDPR consents."
+msgstr "Modul právnych checkboxov je deaktivovaný. Obchod nemusí zbierať požadované súhlasy GDPR."
+
+#: added-by-translation-script
+msgid "Legal checkboxes module is enabled."
+msgstr "Modul právnych checkboxov je aktivovaný."
+
+#: added-by-translation-script
+msgid "Legal pages (Terms, Privacy Policy)"
+msgstr "Právne stránky (Obchodné podmienky, Zásady ochrany osobných údajov)"
+
+#: added-by-translation-script
+msgid "Loading product..."
+msgstr "Načítanie produktu..."
+
+#: added-by-translation-script
+msgid "Log in to use product comparison."
+msgstr "Prihláste sa pre použitie porovnania produktov."
+
+#: added-by-translation-script
+msgid "Login to join the waitlist."
+msgstr "Prihláste sa pre pridanie na čakací zoznam."
+
+#: added-by-translation-script
+msgid "Lowest Price (Omnibus)"
+msgstr "Najnižšia cena (Omnibus)"
+
+#: added-by-translation-script
+msgid "Manufacturers"
+msgstr "Výrobcovia"
+
+#: added-by-translation-script
+#, php-format
+msgid "Missing data: %s. Fill in Polski > Settings."
+msgstr "Chýbajúce údaje: %s. Vyplňte v Polski > Nastavenia."
+
+#: added-by-translation-script
+#, php-format
+msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
+msgstr "Chýbajúce stránky: %s. Nastavte ich vo WooCommerce > Nastavenia > Pokročilé."
+
+#: added-by-translation-script
+msgid "Module disabled"
+msgstr "Modul deaktivovaný"
+
+#: added-by-translation-script
+msgid "Modules"
+msgstr "Moduly"
+
+#: added-by-translation-script
+msgid "Modules saved."
+msgstr "Moduly uložené."
+
+#: added-by-translation-script
+msgid "Next steps"
+msgstr "Ďalšie kroky"
+
+#: added-by-translation-script
+msgid "No checkboxes are checked by default."
+msgstr "Žiadne checkboxy nie sú v predvolenom stave zaškrtnuté."
+
+#: added-by-translation-script
+msgid "No internal feedback to display."
+msgstr "Žiadna interná spätná väzba na zobrazenie."
+
+#: added-by-translation-script
+msgid "Not created"
+msgstr "Nevytvorené"
+
+#: added-by-translation-script
+msgid "Nutrients"
+msgstr "Živiny"
+
+#: added-by-translation-script
+msgid "Nutritional Information"
+msgstr "Nutričné informácie"
+
+#: added-by-translation-script
+msgid "Omnibus Directive"
+msgstr "Smernica Omnibus"
+
+#: added-by-translation-script
+msgid "Omnibus module (lowest price)"
+msgstr "Modul Omnibus (najnižšia cena)"
+
+#: added-by-translation-script
+msgid "Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales."
+msgstr "Modul Omnibus je deaktivovaný. Smernica Omnibus vyžaduje zobrazenie najnižšej ceny z 30 dní pri zľavách."
+
+#: added-by-translation-script
+msgid "Omnibus module is enabled - lowest price from 30 days will be shown on sales."
+msgstr "Modul Omnibus je aktivovaný - najnižšia cena z 30 dní bude zobrazená pri zľavách."
+
+#: added-by-translation-script
+msgid "On Sale"
+msgstr "V zľave"
+
+#: added-by-translation-script
+#, php-format
+msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
+msgstr "Iba %1$d z %2$d sledovaných služieb má označenú zmluvu o spracovaní údajov."
+
+#: added-by-translation-script
+msgid "Open &rarr;"
+msgstr "Otvoriť &rarr;"
+
+#: added-by-translation-script
+msgid "Open Report"
+msgstr "Otvoriť report"
+
+#: added-by-translation-script
+msgid "Optional: manually set ID for related/upsell sources outside product details page."
+msgstr "Voliteľné: ručne nastaviť ID pre súvisiace/upsell zdroje mimo stránku produktu."
+
+#: added-by-translation-script
+msgid "Order button text"
+msgstr "Text tlačidla objednávky"
+
+#: added-by-translation-script
+msgid "Page"
+msgstr "Stránka"
+
+#: added-by-translation-script
+msgid "Passed"
+msgstr "Úspešné"
+
+#: added-by-translation-script
+msgid "Payments"
+msgstr "Platby"
+
+#: added-by-translation-script
+msgid "Person"
+msgstr "Osoba"
+
+#: added-by-translation-script
+msgid "Please complete the Shop Terms and Conditions."
+msgstr "Vyplňte obchodné podmienky obchodu."
+
+#: added-by-translation-script
+msgid "Please complete the complaints procedure."
+msgstr "Vyplňte reklamačný poriadok."
+
+#: added-by-translation-script
+msgid "Please fill in your Privacy Policy."
+msgstr "Vyplňte zásady ochrany osobných údajov."
+
+#: added-by-translation-script
+msgid "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw."
+msgstr "Vyplňte zásady pre vrátenie a odstúpenie. Spotrebitelia majú 14 dní na odstúpenie."
+
+#: added-by-translation-script
+msgid "Please login to use the wishlist."
+msgstr "Prihláste sa pre použitie zoznamu prianí."
+
+#: added-by-translation-script
+msgid "Power Supply"
+msgstr "Napájanie"
+
+#: added-by-translation-script
+msgid "Pre-checked checkboxes (dark pattern)"
+msgstr "Vopred zaškrtnuté checkboxy (klamlivý vzor)"
+
+#: added-by-translation-script
+msgid "Prices exclude VAT (net)"
+msgstr "Ceny bez DPH (netto)"
+
+#: added-by-translation-script
+msgid "Prices include VAT (gross)"
+msgstr "Ceny s DPH (brutto)"
+
+#: added-by-translation-script
+#, php-format
+msgid "Privacy Policy contains %d characters."
+msgstr "Zásady ochrany osobných údajov obsahujú %d znakov."
+
+#: added-by-translation-script
+msgid "Privacy Policy content"
+msgstr "Obsah zásad ochrany osobných údajov"
+
+#: added-by-translation-script
+#, php-format
+msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
+msgstr "Zásady ochrany osobných údajov majú iba %d znakov - môžu byť príliš krátke pre súlad s čl. 13 GDPR."
+
+#: added-by-translation-script
+msgid "Privacy Policy page is not published."
+msgstr "Stránka zásad ochrany osobných údajov nie je publikovaná."
+
+#: added-by-translation-script
+msgid "Privacy Policy page is not set."
+msgstr "Stránka zásad ochrany osobných údajov nie je nastavená."
+
+#: added-by-translation-script
+msgid "Product ID"
+msgstr "ID produktu"
+
+#: added-by-translation-script
+msgid "Product Quick View"
+msgstr "Rýchly náhľad produktu"
+
+#: added-by-translation-script
+msgid "Product Slider"
+msgstr "Slider produktov"
+
+#: added-by-translation-script
+msgid "Product back in stock - {product_name}"
+msgstr "Produkt opäť skladom - {product_name}"
+
+#: added-by-translation-script
+msgid "Product count"
+msgstr "Počet produktov"
+
+#: added-by-translation-script
+msgid "Product not found."
+msgstr "Produkt nenájdený."
+
+#: added-by-translation-script
+msgid "Product {product_name} is back in stock."
+msgstr "Produkt {product_name} je opäť skladom."
+
+#: added-by-translation-script
+msgid "Provide a valid email address."
+msgstr "Zadajte platnú e-mailovú adresu."
+
+#: added-by-translation-script
+msgid "Published"
+msgstr "Publikované"
+
+#: added-by-translation-script
+msgid "Rejected"
+msgstr "Zamietnuté"
+
+#: added-by-translation-script
+msgid "Related products"
+msgstr "Súvisiace produkty"
+
+#: added-by-translation-script
+msgid "Remove from Wishlist"
+msgstr "Odobrať zo zoznamu prianí"
+
+#: added-by-translation-script
+msgid "Remove from compare"
+msgstr "Odobrať z porovnania"
+
+#: added-by-translation-script
+msgid "Reports & Tools"
+msgstr "Reporty a nástroje"
+
+#: added-by-translation-script
+msgid "Result limit"
+msgstr "Limit výsledkov"
+
+#: added-by-translation-script
+msgid "Return Policy"
+msgstr "Zásady vrátenia"
+
+#: added-by-translation-script
+msgid "Returns and Complaints"
+msgstr "Vrátenie a reklamácie"
+
+#: added-by-translation-script
+msgid "Right of Withdrawal"
+msgstr "Právo na odstúpenie od zmluvy"
+
+#: added-by-translation-script
+msgid "SSL/TLS encryption"
+msgstr "Šifrovanie SSL/TLS"
+
+#: added-by-translation-script
+msgid "Safety Document"
+msgstr "Bezpečnostný dokument"
+
+#: added-by-translation-script
+msgid "Safety Documents"
+msgstr "Bezpečnostné dokumenty"
+
+#: added-by-translation-script
+msgid "Safety Instructions"
+msgstr "Bezpečnostné pokyny"
+
+#: added-by-translation-script
+msgid "Save Registry"
+msgstr "Uložiť register"
+
+#: added-by-translation-script
+msgid "Save Settings"
+msgstr "Uložiť nastavenia"
+
+#: added-by-translation-script
+msgid "Screen"
+msgstr "Obrazovka"
+
+#: added-by-translation-script
+msgid "Search Allergens"
+msgstr "Hľadať alergény"
+
+#: added-by-translation-script
+msgid "Search Delivery Times"
+msgstr "Hľadať dodacie doby"
+
+#: added-by-translation-script
+msgid "Search Manufacturers"
+msgstr "Hľadať výrobcov"
+
+#: added-by-translation-script
+msgid "Search Nutrients"
+msgstr "Hľadať živiny"
+
+#: added-by-translation-script
+msgid "Search Units"
+msgstr "Hľadať jednotky"
+
+#: added-by-translation-script
+msgid "Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance."
+msgstr "Modul bezpečnostných incidentov je deaktivovaný. Je dobrou praxou viesť jednoduchý register incidentov."
+
+#: added-by-translation-script
+msgid "Security incident registry"
+msgstr "Register bezpečnostných incidentov"
+
+#: added-by-translation-script
+msgid "Select a report or tool to check your store compliance status."
+msgstr "Vyberte report alebo nástroj na kontrolu stavu súladu vášho obchodu."
+
+#: added-by-translation-script
+msgid "Service"
+msgstr "Služba"
+
+#: added-by-translation-script
+msgid "Settings have been saved."
+msgstr "Nastavenia boli uložené."
+
+#: added-by-translation-script
+msgid "Shipping"
+msgstr "Doprava"
+
+#: added-by-translation-script
+msgid "Shipping and Payment"
+msgstr "Doprava a platba"
+
+#: added-by-translation-script
+msgid "Shop compliance audit"
+msgstr "Audit súladu obchodu"
+
+#: added-by-translation-script
+msgid "Short description"
+msgstr "Krátky popis"
+
+#: added-by-translation-script
+msgid "Show add to cart button"
+msgstr "Zobraziť tlačidlo pridať do košíka"
+
+#: added-by-translation-script
+msgid "Show attributes"
+msgstr "Zobraziť atribúty"
+
+#: added-by-translation-script
+msgid "Show availability"
+msgstr "Zobraziť dostupnosť"
+
+#: added-by-translation-script
+msgid "Show brands"
+msgstr "Zobraziť značky"
+
+#: added-by-translation-script
+msgid "Show categories"
+msgstr "Zobraziť kategórie"
+
+#: added-by-translation-script
+msgid "Show on-sale"
+msgstr "Zobraziť v zľave"
+
+#: added-by-translation-script
+msgid "Show only differences"
+msgstr "Zobraziť iba rozdiely"
+
+#: added-by-translation-script
+msgid "Show title"
+msgstr "Zobraziť názov"
+
+#: added-by-translation-script
+msgid "Sorry, but you do not have permission to access this page."
+msgstr "Nemáte oprávnenie na prístup k tejto stránke."
+
+#: added-by-translation-script
+msgid "Store Analysis"
+msgstr "Analýza obchodu"
+
+#: added-by-translation-script
+msgid "Tax Information"
+msgstr "Daňové informácie"
+
+#: added-by-translation-script
+msgid "Terms"
+msgstr "Obchodné podmienky"
+
+#: added-by-translation-script
+msgid "Terms and Privacy Policy pages are set and published."
+msgstr "Stránky obchodných podmienok a zásad ochrany osobných údajov sú nastavené a publikované."
+
+#: added-by-translation-script
+#, php-format
+msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
+msgstr "Otestujte proces objednávky - pridajte produkt do košíka a skontrolujte checkboxy a text tlačidla na <a href=\"%s\">pokladni</a>."
+
+#: added-by-translation-script
+msgid "Thank you. You have been added to the waitlist."
+msgstr "Ďakujeme. Boli ste pridaní na čakací zoznam."
+
+#: added-by-translation-script
+msgid "The incident registry is active and has no open cases."
+msgstr "Register incidentov je aktívny a nemá otvorené prípady."
+
+#: added-by-translation-script
+msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
+msgstr "Web nepoužíva HTTPS. GDPR vyžaduje primerané technické opatrenia - SSL je minimum."
+
+#: added-by-translation-script
+msgid "The site is served over HTTPS."
+msgstr "Web je poskytovaný cez HTTPS."
+
+#: added-by-translation-script
+#, php-format
+msgid "There are %d open security incidents requiring further action in the registry."
+msgstr "V registri je %d otvorených bezpečnostných incidentov vyžadujúcich ďalšiu akciu."
+
+#: added-by-translation-script
+msgid "Unit Price"
+msgstr "Jednotková cena"
+
+#: added-by-translation-script
+msgid "Units"
+msgstr "Jednotky"
+
+#: added-by-translation-script
+msgid "Upsells"
+msgstr "Odporúčané produkty"
+
+#: added-by-translation-script
+msgid "VAT ID (NIP)"
+msgstr "IČ DPH (NIP)"
+
+#: added-by-translation-script
+msgid "Verified reviews"
+msgstr "Overené recenzie"
+
+#: added-by-translation-script
+msgid "Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers."
+msgstr "Modul overených recenzií je deaktivovaný. Sťažuje to rozlíšenie recenzií od skutočných zákazníkov."
+
+#: added-by-translation-script
+msgid "Verified reviews module is enabled - the shop can mark reviews from actual buyers."
+msgstr "Modul overených recenzií je aktivovaný - obchod môže označiť recenzie od skutočných kupujúcich."
+
+#: added-by-translation-script
+msgid "Waitlist is unavailable for this product."
+msgstr "Čakací zoznam nie je pre tento produkt dostupný."
+
+#: added-by-translation-script
+msgid "Warnings"
+msgstr "Varovania"
+
+#: added-by-translation-script
+msgid "Watch product in use"
+msgstr "Sledovať produkt v používaní"
+
+#: added-by-translation-script
+msgid "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
+msgstr "Modul odstúpenia je deaktivovaný. Spotrebitelia majú 14-dňové právo na odstúpenie od zmluvy."
+
+#: added-by-translation-script
+msgid "Withdrawal module is enabled."
+msgstr "Modul odstúpenia je aktivovaný."
+
+#: added-by-translation-script
+msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
+msgstr "Môžete porovnať maximálne {limit} produktov naraz. Najstarší záznam bol automaticky nahradený."
+
+#: added-by-translation-script
+msgid "You cannot clear the comparison."
+msgstr "Porovnanie nie je možné vymazať."
+
+#: added-by-translation-script
+msgid "You must accept the consent for email contact."
+msgstr "Musíte prijať súhlas s e-mailovým kontaktom."
+
+#: added-by-translation-script
+msgid "required"
+msgstr "povinné"

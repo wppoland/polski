@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * Product loop brand display.
  *

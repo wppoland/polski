@@ -46,9 +46,7 @@ final class Plugin
         // Store self in container for cross-references.
         $this->container->instance(self::class, $this);
 
-        if (did_action('init')) {
-            $this->loadTextDomain();
-        }
+        $this->ensureTextDomainLoaded();
 
         // Load service definitions.
         $this->loadServiceDefinitions();
@@ -73,6 +71,33 @@ final class Plugin
     public function version(): string
     {
         return VERSION;
+    }
+
+    /**
+     * Align admin locale with the site language on Polski menu pages so .mo and script JSON match WPLANG.
+     *
+     * @param string $determined_locale Value from core (typically get_user_locale() in admin).
+     */
+    public static function filterDetermineLocaleForPolskiAdminScreens(string $determined_locale): string
+    {
+        if (! is_admin()) {
+            return $determined_locale;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing context.
+        if (empty($_GET['page'])) {
+            return $determined_locale;
+        }
+
+        $page = sanitize_key((string) wp_unslash($_GET['page']));
+
+        if ($page !== 'polski' && ! str_starts_with($page, 'polski-')) {
+            return $determined_locale;
+        }
+
+        $siteLocale = get_locale();
+
+        return $siteLocale !== '' ? $siteLocale : $determined_locale;
     }
 
     /**
@@ -143,7 +168,7 @@ final class Plugin
      */
     public function loadTextDomain(): void
     {
-        if ($this->textDomainLoaded || ! did_action('init')) {
+        if ($this->textDomainLoaded) {
             return;
         }
 
@@ -154,6 +179,24 @@ final class Plugin
             false,
             dirname(plugin_basename(PLUGIN_FILE)) . '/languages',
         );
+    }
+
+    /**
+     * Load translations on init (or defer one tick if boot ever runs earlier).
+     */
+    private function ensureTextDomainLoaded(): void
+    {
+        if ($this->textDomainLoaded) {
+            return;
+        }
+
+        if (did_action('init')) {
+            $this->loadTextDomain();
+
+            return;
+        }
+
+        add_action('init', [$this, 'loadTextDomain'], 0);
     }
 
     private function syncInstalledVersion(): void

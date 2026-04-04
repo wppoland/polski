@@ -122,6 +122,7 @@ $enabledModules = [
     'wishlist' => true,
     'compare' => true,
     'quick_view' => true,
+    'legal_checkboxes' => true,
 ];
 
 update_option('polski_modules', array_merge(ModulesPage::getDefaultModuleStates(), $savedModules, $enabledModules));
@@ -242,12 +243,69 @@ update_option('polski_brand', array_merge(
     ],
 ));
 
+// Enable pretty permalinks so /shop/, /checkout/, etc. work.
+update_option('permalink_structure', '/%postname%/');
+
+// Ensure WooCommerce core pages exist.
 $shopPageId = (int) get_option('woocommerce_shop_page_id', 0);
 
 if ($shopPageId <= 0 || get_post_status($shopPageId) === false) {
-    $shopPageId = polski_e2e_ensure_page('shop', 'Sklep');
+    $shopPageId = polski_e2e_ensure_page('shop', 'Shop');
     update_option('woocommerce_shop_page_id', $shopPageId);
 }
+
+$cartPageId = (int) get_option('woocommerce_cart_page_id', 0);
+
+if ($cartPageId <= 0 || get_post_status($cartPageId) === false) {
+    $cartPageId = polski_e2e_ensure_page('cart', 'Cart', '<!-- wp:woocommerce/cart --><!-- /wp:woocommerce/cart -->');
+    update_option('woocommerce_cart_page_id', $cartPageId);
+}
+
+$checkoutPageId = (int) get_option('woocommerce_checkout_page_id', 0);
+
+// Classic [woocommerce_checkout] so PHP hooks (e.g. woocommerce_review_order_before_submit) run;
+// the WooCommerce Checkout block does not fire those hooks — E2E asserts .polski-legal-checkboxes from templates.
+$checkoutPageContent = "<!-- wp:shortcode -->\n[woocommerce_checkout]\n<!-- /wp:shortcode -->";
+
+if ($checkoutPageId <= 0 || get_post_status($checkoutPageId) === false) {
+    $checkoutPageId = polski_e2e_ensure_page('checkout', 'Checkout', $checkoutPageContent);
+    update_option('woocommerce_checkout_page_id', $checkoutPageId);
+} else {
+    polski_e2e_ensure_page('checkout', 'Checkout', $checkoutPageContent);
+}
+
+$myAccountPageId = (int) get_option('woocommerce_myaccount_page_id', 0);
+
+if ($myAccountPageId <= 0 || get_post_status($myAccountPageId) === false) {
+    $myAccountPageId = polski_e2e_ensure_page('my-account', 'My account', '<!-- wp:woocommerce/my-account --><!-- /wp:woocommerce/my-account -->');
+    update_option('woocommerce_myaccount_page_id', $myAccountPageId);
+}
+
+// Enable a payment gateway so checkout can complete.
+update_option('woocommerce_cod_settings', [
+    'enabled' => 'yes',
+    'title' => 'Cash on delivery',
+]);
+
+// Add a "Rest of the World" flat rate shipping method so checkout shows the order review.
+$defaultZone = \WC_Shipping_Zones::get_zone(0);
+
+if (count($defaultZone->get_shipping_methods()) === 0) {
+    $defaultZone->add_shipping_method('flat_rate');
+
+    // Configure the flat rate method.
+    $methods = $defaultZone->get_shipping_methods();
+    $method = reset($methods);
+
+    if ($method) {
+        $method->init_instance_settings();
+        $method->instance_settings['cost'] = '10';
+        update_option($method->get_instance_option_key(), $method->instance_settings);
+    }
+}
+
+// Mark wizard as complete.
+update_option('polski_wizard_complete', true);
 
 $searchPageId = polski_e2e_ensure_page(
     'polski-e2e-search',

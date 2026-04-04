@@ -9,23 +9,24 @@ import * as path from 'node:path';
 export default async function globalSetup(): Promise<void> {
     const projectRoot = path.resolve(__dirname, '..', '..');
 
-    execFileSync(
-        'npm',
-        [
-            'run',
-            'env:cli',
-            '--',
-            'wp',
-            'plugin',
-            'activate',
-            'polski',
-        ],
-        {
+    const run = (...args: string[]) =>
+        execFileSync('npm', ['run', 'env:cli', '--', ...args], {
             cwd: projectRoot,
             encoding: 'utf8',
-        },
-    );
+        });
 
+    // Activate plugin.
+    run('wp', 'plugin', 'activate', 'polski');
+
+    // Ensure English locale for consistent test selectors.
+    run('wp', 'language', 'core', 'install', 'en_US');
+    run('wp', 'site', 'switch-language', 'en_US');
+
+    // Enable pretty permalinks and flush rewrite rules so /shop/, /checkout/ etc. work.
+    run('wp', 'rewrite', 'structure', '/%postname%/', '--hard');
+    run('wp', 'rewrite', 'flush', '--hard');
+
+    // Run the storefront bootstrap fixture.
     const output = execFileSync(
         'npm',
         [

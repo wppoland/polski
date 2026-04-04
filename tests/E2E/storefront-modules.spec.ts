@@ -28,8 +28,9 @@ test.describe('Storefront merchandising modules', () => {
 
     test('filter query narrows archive results by brand', async ({ page }) => {
         await page.goto('/?post_type=product&polski_filter_brand=e2e-brand-beta', { waitUntil: 'networkidle' });
-        await expect(page.locator('a[href*="product=polski-e2e-beta-saw"]').first()).toBeVisible();
-        await expect(page.locator('a[href*="product=polski-e2e-alpha-drill"]')).toHaveCount(0);
+        // Pretty permalinks use /product/slug/; avoid relying on ?product= query args.
+        await expect(page.getByRole('link', { name: PRODUCT_BETA })).toBeVisible();
+        await expect(page.getByRole('link', { name: PRODUCT_ALPHA })).toHaveCount(0);
     });
 
     test('wishlist button toggles on product cards', async ({ page }) => {

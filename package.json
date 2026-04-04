@@ -17,7 +17,9 @@
         "env:clean": "wp-env clean all",
         "env:cli": "wp-env run cli",
         "i18n:pot": "wp i18n make-pot . languages/polski.pot --exclude=node_modules,vendor,tests,_benchmark",
-        "i18n:json": "wp i18n make-json languages/"
+        "i18n:mo": "wp i18n make-mo languages/",
+        "i18n:json": "wp i18n make-json languages/",
+        "i18n:compile": "npm run i18n:mo && npm run i18n:json"
     },
     "devDependencies": {
         "@playwright/test": "^1.48",
