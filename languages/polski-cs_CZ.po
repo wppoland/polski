@@ -1787,83 +1787,83 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:63
 msgid "Before you deactivate Polski"
-msgstr ""
+msgstr "Než deaktivujete Polski"
 
 #: src/Admin/DeactivationHandler.php:64
 msgid "A quick answer helps us improve the plugin and roadmap."
-msgstr ""
+msgstr "Krátká odpověď nám pomůže vylepšit plugin a naplánovat rozvoj."
 
 #: src/Admin/DeactivationHandler.php:65
 msgid "What is the main reason for deactivation?"
-msgstr ""
+msgstr "Jaký je hlavní důvod deaktivace?"
 
 #: src/Admin/DeactivationHandler.php:67
 msgid "A feature is missing"
-msgstr ""
+msgstr "Chybí potřebná funkce"
 
 #: src/Admin/DeactivationHandler.php:68
 msgid "It is hard to configure or use"
-msgstr ""
+msgstr "Je obtížné nastavit nebo používat"
 
 #: src/Admin/DeactivationHandler.php:69
 msgid "I found a bug or conflict"
-msgstr ""
+msgstr "Našel jsem chybu nebo konflikt"
 
 #: src/Admin/DeactivationHandler.php:70
 msgid "I do not need it right now"
-msgstr ""
+msgstr "Momentálně to nepotřebuji"
 
 #: src/Admin/DeactivationHandler.php:71
 msgid "This is only temporary"
-msgstr ""
+msgstr "Jde jen o dočasnou deaktivaci"
 
 #: src/Admin/DeactivationHandler.php:72
 msgid "Other reason"
-msgstr ""
+msgstr "Jiný důvod"
 
 #: src/Admin/DeactivationHandler.php:74
 msgid "What could we do better?"
-msgstr ""
+msgstr "Co bychom mohli udělat lépe?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr ""
+msgstr "Řekněte nám, co bylo frustrující, nejasné nebo nefungovalo dobře."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
-msgstr ""
+msgstr "Co bychom měli přidat příště?"
 
 #: src/Admin/DeactivationHandler.php:77
 msgid "Feature ideas, integrations, reports, builder support, or anything else you miss."
-msgstr ""
+msgstr "Nápady na funkce, integrace, reporty, podporu builderů nebo cokoliv dalšího, co vám chybí."
 
 #: src/Admin/DeactivationHandler.php:78
 msgid "Send feedback and deactivate"
-msgstr ""
+msgstr "Odeslat zpětnou vazbu a deaktivovat"
 
 #: src/Admin/DeactivationHandler.php:79
 msgid "Deactivate without feedback"
-msgstr ""
+msgstr "Deaktivovat bez zpětné vazby"
 
 #: src/Admin/DeactivationHandler.php:80
 msgid "Keep plugin active"
-msgstr ""
+msgstr "Ponechat plugin aktivní"
 
 #: src/Admin/DeactivationHandler.php:81
 msgid "Sending..."
-msgstr ""
+msgstr "Odesílání..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
-msgstr ""
+msgstr "Před odesláním vyberte hlavní důvod."
 
 #: src/Admin/DeactivationHandler.php:83
 msgid "Thank you for using Polski! We are sorry to see you go. If you have any ideas on how to make it better, we would love to hear from you."
-msgstr ""
+msgstr "Děkujeme za používání Polski! Je nám líto, že odcházíte. Pokud máte nápady na vylepšení, rádi si je vyslechneme."
 
 #: src/Admin/DeactivationHandler.php:84
 msgid "Post new ideas on GitHub"
-msgstr ""
+msgstr "Sdílejte nápady na GitHubu"
 
 #: src/Admin/DeactivationHandler.php:144
 msgid "Logi opinii przy odinstalowaniu"
@@ -3244,383 +3244,383 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:526
 msgid "Tekst linku do porównania"
-msgstr ""
+msgstr "Text odkazu porovnání"
 
 #: src/Admin/ModulesPage.php:527
 msgid "Tekst czyszczenia"
-msgstr ""
+msgstr "Text vymazání"
 
 #: src/Admin/ModulesPage.php:528
 msgid "Nagłówek kolumny cech"
-msgstr ""
+msgstr "Nadpis sloupce vlastností"
 
 #: src/Admin/ModulesPage.php:529
 msgid "Etykieta filtra różnic"
-msgstr ""
+msgstr "Štítek filtru rozdílů"
 
 #: src/Admin/ModulesPage.php:532
 msgid "Komunikat limitu"
-msgstr ""
+msgstr "Zpráva limitu"
 
 #: src/Admin/ModulesPage.php:532
 msgid "Zmienna: {limit}"
-msgstr ""
+msgstr "Proměnná: {limit}"
 
 #: src/Admin/ModulesPage.php:533
 msgid "Komunikat błędu czyszczenia"
-msgstr ""
+msgstr "Chybová zpráva při vymazání"
 
 #: src/Admin/ModulesPage.php:536
 msgid "Wyróżniaj różnice"
-msgstr ""
+msgstr "Zvýrazňovat rozdíly"
 
 #: src/Admin/ModulesPage.php:537
 msgid "Domyślnie pokazuj tylko różnice"
-msgstr ""
+msgstr "Výchozí zobrazení pouze rozdílů"
 
 #: src/Admin/ModulesPage.php:538
 msgid "Etykieta ceny"
-msgstr ""
+msgstr "Štítek ceny"
 
 #: src/Admin/ModulesPage.php:539
 msgid "Etykieta ceny jednostkowej"
-msgstr ""
+msgstr "Štítek jednotkové ceny"
 
 #: src/Admin/ModulesPage.php:542
 msgid "Etykieta czasu dostawy"
-msgstr ""
+msgstr "Štítek dodací lhůty"
 
 #: src/Admin/ModulesPage.php:544
 msgid "Etykieta producenta"
-msgstr ""
+msgstr "Štítek výrobce"
 
 #: src/Admin/ModulesPage.php:545
 msgid "Etykieta GTIN / EAN"
-msgstr ""
+msgstr "Štítek GTIN / EAN"
 
 #: src/Admin/ModulesPage.php:546
 msgid "Etykieta krótkiego opisu"
-msgstr ""
+msgstr "Štítek krátkého popisu"
 
 #: src/Admin/ModulesPage.php:547
 #: src/Admin/ModulesPage.php:579
 msgid "Pokazuj krótki opis"
-msgstr ""
+msgstr "Zobrazovat krátký popis"
 
 #: src/Admin/ModulesPage.php:548
 msgid "Pokazuj atrybuty produktu"
-msgstr ""
+msgstr "Zobrazovat atributy produktu"
 
 #: src/Admin/ModulesPage.php:554
 msgid "Lekki modal produktu na listingach, z obsługą wariantów, cen, galerii i podstawowych informacji zakupowych."
-msgstr ""
+msgstr "Lehký produktový modal na listingu s podporou variant, cen, galerie a základních nákupních informací."
 
 #: src/Admin/ModulesPage.php:562
 msgid "Etykieta modala"
-msgstr ""
+msgstr "Štítek modalu"
 
 #: src/Admin/ModulesPage.php:563
 #: src/Admin/ModulesPage.php:673
 msgid "Etykieta zamknięcia"
-msgstr ""
+msgstr "Štítek zavření"
 
 #: src/Admin/ModulesPage.php:564
 msgid "Tekst ładowania"
-msgstr ""
+msgstr "Text načítání"
 
 #: src/Admin/ModulesPage.php:565
 msgid "Tekst błędu AJAX"
-msgstr ""
+msgstr "Text chyby AJAX"
 
 #: src/Admin/ModulesPage.php:566
 msgid "Tekst braku produktu"
-msgstr ""
+msgstr "Text chybějícího produktu"
 
 #: src/Admin/ModulesPage.php:568
 msgid "Pokazuj tytuł modala w treści"
-msgstr ""
+msgstr "Zobrazovat název modalu v obsahu"
 
 #: src/Admin/ModulesPage.php:569
 msgid "Pokazuj przycisk zamknięcia"
-msgstr ""
+msgstr "Zobrazovat tlačítko zavření"
 
 #: src/Admin/ModulesPage.php:570
 #: src/Admin/ModulesPage.php:695
 msgid "Pokazuj nazwę produktu"
-msgstr ""
+msgstr "Zobrazovat název produktu"
 
 #: src/Admin/ModulesPage.php:571
 msgid "Pokazuj zdjęcie główne"
-msgstr ""
+msgstr "Zobrazovat hlavní obrázek"
 
 #: src/Admin/ModulesPage.php:572
 msgid "Pokazuj mini galerię"
-msgstr ""
+msgstr "Zobrazovat mini galerii"
 
 #: src/Admin/ModulesPage.php:573
 msgid "Pokazuj cenę"
-msgstr ""
+msgstr "Zobrazovat cenu"
 
 #: src/Admin/ModulesPage.php:574
 msgid "Pokazuj cenę jednostkową"
-msgstr ""
+msgstr "Zobrazovat jednotkovou cenu"
 
 #: src/Admin/ModulesPage.php:576
 msgid "Pokazuj czas dostawy"
-msgstr ""
+msgstr "Zobrazovat dodací lhůtu"
 
 #: src/Admin/ModulesPage.php:577
 msgid "Pokazuj markę"
-msgstr ""
+msgstr "Zobrazovat značku"
 
 #: src/Admin/ModulesPage.php:578
 msgid "Pokazuj producenta"
-msgstr ""
+msgstr "Zobrazovat výrobce"
 
 #: src/Admin/ModulesPage.php:580
 msgid "Pokazuj formularz zakupu"
-msgstr ""
+msgstr "Zobrazovat nákupní formulář"
 
 #: src/Admin/ModulesPage.php:581
 msgid "Pokazuj link do pełnej karty"
-msgstr ""
+msgstr "Zobrazovat odkaz na plnou kartu"
 
 #: src/Admin/ModulesPage.php:582
 msgid "Tekst linku do produktu"
-msgstr ""
+msgstr "Text odkazu produktu"
 
 #: src/Admin/ModulesPage.php:583
 msgid "Jak otwierać pełną kartę"
-msgstr ""
+msgstr "Jak otevírat plnou kartu"
 
 #: src/Admin/ModulesPage.php:583
 #: src/Admin/ModulesPage.php:701
 msgid "W tej samej karcie"
-msgstr ""
+msgstr "Ve stejné kartě"
 
 #: src/Admin/ModulesPage.php:583
 #: src/Admin/ModulesPage.php:701
 msgid "W nowej karcie"
-msgstr ""
+msgstr "V nové kartě"
 
 #: src/Admin/ModulesPage.php:584
 #: src/Admin/ModulesPage.php:674
 msgid "Zamykaj po kliknięciu tła"
-msgstr ""
+msgstr "Zavřít po kliknutí na pozadí"
 
 #: src/Admin/ModulesPage.php:589
 #: src/Admin/ProductMetaBox.php:154
 msgid "Badge Management"
-msgstr ""
+msgstr "Správa badge"
 
 #: src/Admin/ModulesPage.php:590
 msgid "Merchandisingowe badge na produkcie i listingu, z automatycznymi warunkami i ręcznymi wyróżnieniami per produkt."
-msgstr ""
+msgstr "Merchandising badge u produktu a v listingu, s automatickými podmínkami a ručním zvýrazněním pro jednotlivý produkt."
 
 #: src/Admin/ModulesPage.php:598
 msgid "Pokazuj badge ręczny"
-msgstr ""
+msgstr "Zobrazovat ruční badge"
 
 #: src/Admin/ModulesPage.php:599
 msgid "Domyślny styl badge ręcznego"
-msgstr ""
+msgstr "Výchozí styl ručního badge"
 
 #: src/Admin/ModulesPage.php:600
 msgid "Pokazuj badge dodatkowy"
-msgstr ""
+msgstr "Zobrazovat doplňkový badge"
 
 #: src/Admin/ModulesPage.php:601
 msgid "Styl badge dodatkowego"
-msgstr ""
+msgstr "Styl doplňkového badge"
 
 #: src/Admin/ModulesPage.php:602
 msgid "Kształt badge"
-msgstr ""
+msgstr "Tvar badge"
 
 #: src/Admin/ModulesPage.php:603
 msgid "Wielkie litery"
-msgstr ""
+msgstr "Velká písmena"
 
 #: src/Admin/ModulesPage.php:604
 msgid "Maks. badge na stronie produktu"
-msgstr ""
+msgstr "Max. badge na stránce produktu"
 
 #: src/Admin/ModulesPage.php:605
 msgid "Maks. badge na listingach"
-msgstr ""
+msgstr "Max. badge v listingu"
 
 #: src/Admin/ModulesPage.php:606
 msgid "Badge promocji"
-msgstr ""
+msgstr "Badge akce"
 
 #: src/Admin/ModulesPage.php:607
 msgid "Tekst badge promocji"
-msgstr ""
+msgstr "Text badge akce"
 
 #: src/Admin/ModulesPage.php:608
 msgid "Badge nowości"
-msgstr ""
+msgstr "Badge novinky"
 
 #: src/Admin/ModulesPage.php:609
 msgid "Tekst badge nowości"
-msgstr ""
+msgstr "Text badge novinky"
 
 #: src/Admin/ModulesPage.php:610
 msgid "Nowość przez ile dni"
-msgstr ""
+msgstr "Kolik dní jako novinka"
 
 #: src/Admin/ModulesPage.php:611
 msgid "Badge niskiego stanu"
-msgstr ""
+msgstr "Badge nízkého skladu"
 
 #: src/Admin/ModulesPage.php:612
 msgid "Tekst badge niskiego stanu"
-msgstr ""
+msgstr "Text badge nízkého skladu"
 
 #: src/Admin/ModulesPage.php:613
 msgid "Próg niskiego stanu"
-msgstr ""
+msgstr "Práh nízkého skladu"
 
 #: src/Admin/ModulesPage.php:614
 msgid "Badge bestseller"
-msgstr ""
+msgstr "Badge bestselleru"
 
 #: src/Admin/ModulesPage.php:615
 msgid "Tekst badge bestseller"
-msgstr ""
+msgstr "Text badge bestselleru"
 
 #: src/Admin/ModulesPage.php:616
 msgid "Próg bestselleru (sprzedaż)"
-msgstr ""
+msgstr "Práh bestselleru (prodeje)"
 
 #: src/Admin/ModulesPage.php:621
 #: src/Admin/ProductMetaBox.php:188
 msgid "Tab Manager"
-msgstr ""
+msgstr "Správa tabů"
 
 #: src/Admin/ModulesPage.php:622
 msgid "Dodatkowe zakładki produktu z treścią per produkt oraz zakładkami globalnymi dla dostawy, zwrotów i informacji handlowych."
-msgstr ""
+msgstr "Další záložky produktu s obsahem pro jednotlivý produkt a globální záložky pro dopravu, vrácení a obchodní informace."
 
 #: src/Admin/ModulesPage.php:628
 msgid "Globalna zakładka dostawy"
-msgstr ""
+msgstr "Globální záložka dopravy"
 
 #: src/Admin/ModulesPage.php:629
 msgid "Tytuł zakładki dostawy"
-msgstr ""
+msgstr "Nadpis záložky dopravy"
 
 #: src/Admin/ModulesPage.php:630
 msgid "Treść zakładki dostawy"
-msgstr ""
+msgstr "Obsah záložky dopravy"
 
 #: src/Admin/ModulesPage.php:631
 msgid "Priorytet zakładki dostawy"
-msgstr ""
+msgstr "Priorita záložky dopravy"
 
 #: src/Admin/ModulesPage.php:632
 msgid "Globalna zakładka zwrotów"
-msgstr ""
+msgstr "Globální záložka vrácení"
 
 #: src/Admin/ModulesPage.php:633
 msgid "Tytuł zakładki zwrotów"
-msgstr ""
+msgstr "Nadpis záložky vrácení"
 
 #: src/Admin/ModulesPage.php:634
 msgid "Treść zakładki zwrotów"
-msgstr ""
+msgstr "Obsah záložky vrácení"
 
 #: src/Admin/ModulesPage.php:635
 msgid "Priorytet zakładki zwrotów"
-msgstr ""
+msgstr "Priorita záložky vrácení"
 
 #: src/Admin/ModulesPage.php:636
 msgid "Włącz pierwszy tab produktowy"
-msgstr ""
+msgstr "Zapnout první produktový tab"
 
 #: src/Admin/ModulesPage.php:637
 msgid "Priorytet pierwszego tabu produktowego"
-msgstr ""
+msgstr "Priorita prvního produktového tabu"
 
 #: src/Admin/ModulesPage.php:638
 msgid "Włącz drugi tab produktowy"
-msgstr ""
+msgstr "Zapnout druhý produktový tab"
 
 #: src/Admin/ModulesPage.php:639
 msgid "Priorytet drugiego tabu produktowego"
-msgstr ""
+msgstr "Priorita druhého produktového tabu"
 
 #: src/Admin/ModulesPage.php:644
 #: src/Admin/ProductMetaBox.php:222
 msgid "Featured Video"
-msgstr ""
+msgstr "Featured Video"
 
 #: src/Admin/ModulesPage.php:645
 msgid "Wideo produktowe na karcie produktu, osadzone z YouTube, Vimeo albo jako lokalny plik MP4 w sekcji mediów."
-msgstr ""
+msgstr "Produktové video na kartě produktu, vložené z YouTube, Vimeo nebo jako lokální MP4 soubor v sekci médií."
 
 #: src/Admin/ModulesPage.php:652
 msgid "Pozycja"
-msgstr ""
+msgstr "Pozice"
 
 #: src/Admin/ModulesPage.php:652
 msgid "Pod galerią"
-msgstr ""
+msgstr "Pod galerií"
 
 #: src/Admin/ModulesPage.php:652
 msgid "Przed podsumowaniem produktu"
-msgstr ""
+msgstr "Před shrnutím produktu"
 
 #: src/Admin/ModulesPage.php:653
 #: src/Admin/ModulesPage.php:688
 msgid "Nagłówek sekcji"
-msgstr ""
+msgstr "Nadpis sekce"
 
 #: src/Admin/ModulesPage.php:655
 #: src/Admin/ModulesPage.php:690
 msgid "Pokazuj nagłówek sekcji"
-msgstr ""
+msgstr "Zobrazovat nadpis sekce"
 
 #: src/Admin/ModulesPage.php:656
 #: src/Admin/ModulesPage.php:691
 msgid "Pokazuj opis sekcji"
-msgstr ""
+msgstr "Zobrazovat popis sekce"
 
 #: src/Admin/ModulesPage.php:657
 msgid "Autoplay dla wspieranych osadzeń"
-msgstr ""
+msgstr "Autoplay pro podporovaná vložení"
 
 #: src/Admin/ModulesPage.php:662
 msgid "Gallery & Zoom"
-msgstr ""
+msgstr "Galerie a zoom"
 
 #: src/Admin/ModulesPage.php:663
 msgid "Lekki zoom zdjęć produktowych i prosty lightbox galerii bez zewnętrznych bibliotek sliderowych."
-msgstr ""
+msgstr "Lehký zoom produktových obrázků a jednoduchý lightbox galerie bez externích slider knihoven."
 
 #: src/Admin/ModulesPage.php:669
 msgid "Włącz zoom na hover"
-msgstr ""
+msgstr "Zapnout zoom při hoveru"
 
 #: src/Admin/ModulesPage.php:670
 msgid "Skala zoomu"
-msgstr ""
+msgstr "Úroveň zoomu"
 
 #: src/Admin/ModulesPage.php:671
 msgid "Włącz lightbox po kliknięciu"
-msgstr ""
+msgstr "Zapnout lightbox po kliknutí"
 
 #: src/Admin/ModulesPage.php:672
 msgid "Etykieta okna lightbox"
-msgstr ""
+msgstr "Štítek okna lightboxu"
 
 #: src/Admin/ModulesPage.php:679
 msgid "Product Slider Carousel"
-msgstr ""
+msgstr "Karusel produktového slideru"
 
 #: src/Admin/ModulesPage.php:680
 msgid "Lekki slider produktowy oparty o scroll-snap, z produktami powiązanymi, promocyjnymi lub wyróżnionymi."
-msgstr ""
+msgstr "Lehký produktový slider založený na scroll-snap, s propojenými, akčními nebo zvýrazněnými produkty."
 
 #: src/Admin/ModulesPage.php:687
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
@@ -4030,20 +4030,20 @@ msgstr ""
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 msgid "Tytuł"
-msgstr ""
+msgstr "Nadpis"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
 msgid "Pokaż tytuł"
-msgstr ""
+msgstr "Zobrazit nadpis"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
 msgid "Pokaż kategorie"
-msgstr ""
+msgstr "Zobrazit kategorie"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 msgid "Pokaż marki"
-msgstr ""
+msgstr "Zobrazit značky"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
@@ -4052,56 +4052,56 @@ msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:41
 msgid "Pokaż dostępność"
-msgstr ""
+msgstr "Zobrazit dostupnost"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:42
 msgid "Pokaż promocje"
-msgstr ""
+msgstr "Zobrazit akce"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
 msgid "Pokaż atrybuty"
-msgstr ""
+msgstr "Zobrazit atributy"
 
 #: src/Compatibility/Elementor/Widgets/FoodInfoWidget.php:16
 msgid "Informacje o żywności"
-msgstr ""
+msgstr "Informace o potravinách"
 
 #: src/Compatibility/Elementor/Widgets/NutrientsWidget.php:16
 msgid "Wartości odżywcze"
-msgstr ""
+msgstr "Výživové hodnoty"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:16
 msgid "Slider produktów"
-msgstr ""
+msgstr "Slider produktů"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:44
 msgid "ID produktu"
-msgstr ""
+msgstr "ID produktu"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:48
 msgid "Opcjonalnie, ustaw ręcznie dla źródeł powiązanych lub upsell poza kartą produktu."
-msgstr ""
+msgstr "Volitelně nastavte ručně pro propojené zdroje nebo upsell mimo kartu produktu."
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:72
 msgid "Pokaż przycisk koszyka"
-msgstr ""
+msgstr "Zobrazit tlačítko košíku"
 
 #: src/Compatibility/Elementor/Widgets/SafetyDocsWidget.php:16
 #: src/Service/ProductInfoService.php:194
 msgid "Dokumenty bezpieczeństwa"
-msgstr ""
+msgstr "Bezpečnostní dokumenty"
 
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
 msgid "Pokaż przycisk wyszukiwania"
-msgstr ""
+msgstr "Zobrazit tlačítko hledání"
 
 #: src/Compatibility/Elementor/Widgets/ShippingNoticeWidget.php:16
 msgid "Koszty wysyłki"
-msgstr ""
+msgstr "Náklady na dopravu"
 
 #: src/Compatibility/Elementor/Widgets/TaxInfoWidget.php:16
 msgid "Informacja o VAT"
-msgstr ""
+msgstr "Informace o DPH"
 
 #: src/Email/DoubleOptInEmail.php:19
 msgid "Aktywacja konta (Podwójna weryfikacja)"
@@ -4115,82 +4115,82 @@ msgstr "Přívětivá uvítací zpráva pro nové zákazníky, aby ověřili svo
 #: src/Enum/DeliveryTimeUnit.php:16
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d den"
+msgstr[1] "%d dny"
+msgstr[2] "%d dny"
 
 #. translators: %d: delivery time count in business days
 #: src/Enum/DeliveryTimeUnit.php:18
 msgid "%d business day"
 msgid_plural "%d business days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d pracovní den"
+msgstr[1] "%d pracovních dnů"
+msgstr[2] "%d pracovních dnů"
 
 #. translators: %d: delivery time count in weeks
 #: src/Enum/DeliveryTimeUnit.php:20
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d týden"
+msgstr[1] "%d týdnů"
+msgstr[2] "%d týdnů"
 
 #: src/Enum/LegalPageType.php:18
 msgid "Privacy Policy (Polityka prywatności)"
-msgstr ""
+msgstr "Zásady ochrany osobních údajů (Polityka prywatności)"
 
 #: src/Enum/LegalPageType.php:19
 msgid "Return Policy (Prawo odstąpienia)"
-msgstr ""
+msgstr "Podmínky vrácení (Prawo odstąpienia)"
 
 #: src/Enum/LegalPageType.php:20
 #: src/Service/LegalPageService.php:164
 msgid "Reklamacje"
-msgstr ""
+msgstr "Reklamace"
 
 #: src/Enum/TaxDisplayMode.php:15
 msgid "Ceny zawierają VAT (brutto)"
-msgstr ""
+msgstr "Ceny obsahují DPH (brutto)"
 
 #: src/Enum/TaxDisplayMode.php:16
 msgid "Ceny nie zawierają VAT (netto)"
-msgstr ""
+msgstr "Ceny neobsahují DPH (netto)"
 
 #: src/Enum/WithdrawalStatus.php:18
 msgid "Potwierdzony"
-msgstr ""
+msgstr "Potvrzený"
 
 #: src/Enum/WithdrawalStatus.php:19
 msgid "Zakończony"
-msgstr ""
+msgstr "Dokončený"
 
 #: src/Enum/WithdrawalStatus.php:20
 msgid "Odrzucony"
-msgstr ""
+msgstr "Zamítnutý"
 
 #: src/Migration/Migration_1_0_0.php:23
 msgid "1-2 dni robocze"
-msgstr ""
+msgstr "1-2 pracovní dny"
 
 #: src/Migration/Migration_1_0_0.php:24
 msgid "2-4 dni robocze"
-msgstr ""
+msgstr "2-4 pracovní dny"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "3-5 dni roboczych"
-msgstr ""
+msgstr "3-5 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:26
 msgid "5-7 dni roboczych"
-msgstr ""
+msgstr "5-7 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:27
 msgid "7-14 dni roboczych"
-msgstr ""
+msgstr "7-14 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:28
 msgid "Do 24 godzin"
-msgstr ""
+msgstr "Do 24 hodin"
 
 #: src/Migration/Migration_1_0_0.php:41
 msgid "szt."
@@ -4231,56 +4231,56 @@ msgstr ""
 #: src/Rest/CheckboxController.php:115
 #: src/Rest/CheckboxController.php:172
 msgid "Checkbox nie znaleziony."
-msgstr ""
+msgstr "Checkbox nebyl nalezen."
 
 #: src/Rest/CheckboxController.php:130
 msgid "ID checkboxa jest wymagane."
-msgstr ""
+msgstr "ID checkboxu je povinné."
 
 #: src/Rest/CheckboxController.php:139
 msgid "Nie można utworzyć checkboxa o zarezerwowanym ID."
-msgstr ""
+msgstr "Nelze vytvořit checkbox s rezervovaným ID."
 
 #: src/Rest/CheckboxController.php:213
 msgid "Wbudowane checkboxy nie mogą być usunięte. Możesz je wyłączać."
-msgstr ""
+msgstr "Vestavěné checkboxy nelze odstranit. Můžete je vypínat."
 
 #: src/Rest/RestController.php:53
 msgid "Please log in to continue."
-msgstr ""
+msgstr "Přihlaste se, chcete-li pokračovat."
 
 #: src/Rest/SettingsController.php:105
 #: src/Rest/SettingsController.php:197
 msgid "Nieznana grupa ustawień."
-msgstr ""
+msgstr "Neznámá skupina nastavení."
 
 #: src/Rest/SettingsController.php:186
 msgid "Kreator został zakończony."
-msgstr ""
+msgstr "Průvodce byl dokončen."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
-msgstr ""
+msgstr "Pro tuto objednávku se nepodařilo připravit žádost o odstoupení."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Nieprawidłowy status."
-msgstr ""
+msgstr "Neplatný stav."
 
 #: src/Rest/WithdrawalController.php:178
 msgid "Zmiana statusu niedozwolona."
-msgstr ""
+msgstr "Změna stavu není povolena."
 
 #: src/Service/CheckboxService.php:325
 msgid "Enable the Terms and Conditions checkbox - required by Polish consumer law."
-msgstr ""
+msgstr "Zapněte checkbox obchodních podmínek - vyžaduje ho polské spotřebitelské právo."
 
 #: src/Service/CheckboxService.php:337
 msgid "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
-msgstr ""
+msgstr "Zapněte checkbox zásad ochrany osobních údajů - vyžaduje ho GDPR čl. 6 odst. 1 písm. a a čl. 7."
 
 #: src/Service/CheckboxService.php:349
 msgid "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights Act (Art. 12)."
-msgstr ""
+msgstr "Zapněte checkbox práv na odstoupení - vyžaduje ho polský zákon o právech spotřebitele (čl. 12)."
 
 #: src/Service/CheckboxService.php:361
 msgid "Consider enabling Digital Content waiver if you sell digital products."
@@ -4288,46 +4288,46 @@ msgstr "Pokud prodáváte digitální produkty, zvažte aktivaci vzdání se pr�
 
 #: src/Service/CheckboxService.php:373
 msgid "Marketing consent must be optional under GDPR - change it from required to optional."
-msgstr ""
+msgstr "Marketingový souhlas musí být podle GDPR volitelný - změňte ho z povinného na volitelný."
 
 #: src/Service/CheckboxService.php:379
 msgid "Consider adding an optional marketing consent checkbox for newsletters."
-msgstr ""
+msgstr "Zvažte přidání volitelného marketingového checkboxu pro newslettery."
 
 #: src/Service/CheckboxService.php:391
 msgid "Review reminder consent should be optional - change it from required to optional."
-msgstr ""
+msgstr "Souhlas s připomínkou recenze by měl být volitelný - změňte ho z povinného na volitelný."
 
 #. translators: %s: link to terms page
 #: src/Service/CheckboxService.php:451
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
-msgstr ""
+msgstr "Seznámil(a) jsem se s <a href=\"%s\" target=\"_blank\">obchodními podmínkami</a> a souhlasím s nimi."
 
 #. translators: %s: link to privacy policy
 #: src/Service/CheckboxService.php:469
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>."
-msgstr ""
+msgstr "Seznámil(a) jsem se se <a href=\"%s\" target=\"_blank\">zásadami ochrany osobních údajů</a> a souhlasím s nimi."
 
 #: src/Service/CheckboxService.php:476
 msgid "Privacy Policy acceptance (Polityka prywatności)."
-msgstr ""
+msgstr "Souhlas se zásadami ochrany osobních údajů (Polityka prywatności)."
 
 #. translators: %s: link to return policy
 #: src/Service/CheckboxService.php:487
 msgid "I have been informed about my <a href=\"%s\" target=\"_blank\">right to withdraw from the contract</a> within 14 days."
-msgstr ""
+msgstr "Byl(a) jsem informován(a) o svém <a href=\"%s\" target=\"_blank\">právu odstoupit od smlouvy</a> do 14 dnů."
 
 #: src/Service/CheckboxService.php:494
 msgid "14-day withdrawal right acknowledgment (Prawo odstąpienia)."
-msgstr ""
+msgstr "Potvrzení 14denního práva na odstoupení (Prawo odstąpienia)."
 
 #: src/Service/CheckboxService.php:506
 msgid "Zrzeczenie się prawa odstąpienia dla towarów cyfrowych."
-msgstr ""
+msgstr "Vzdání se práva na odstoupení u digitálního zboží."
 
 #: src/Service/CheckboxService.php:540
 msgid "Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a)."
-msgstr ""
+msgstr "Volitelný marketingový souhlas (GDPR čl. 6 odst. 1 písm. a)."
 
 #: src/Service/DPATrackerService.php:36
 msgid "You do not have permission to manage DPA registry."
