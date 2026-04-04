@@ -42,7 +42,7 @@ final class AdminNotes implements HasHooks
 
         add_action('admin_post_polski_dismiss_disclaimer', static function (): void {
             if (! current_user_can('manage_woocommerce')) {
-                wp_die(esc_html__('Brak uprawnien.', 'polski'));
+                wp_die(esc_html__('Insufficient permissions.', 'polski'));
             }
             check_admin_referer('polski_dismiss_disclaimer');
             update_option('polski_disclaimer_dismissed', true);
@@ -77,16 +77,16 @@ final class AdminNotes implements HasHooks
 
         $settings = $this->getGeneralSettings();
         $note = new $noteClass();
-        $note->set_title((string) ($settings['admin_setup_note_title'] ?? __('Skonfiguruj Polski dla Twojego sklepu', 'polski')));
+        $note->set_title((string) ($settings['admin_setup_note_title'] ?? __('Configure Polski for your store', 'polski')));
         $note->set_content(
-            (string) ($settings['admin_setup_note_content'] ?? __('Zaledwie kilka kliknięć dzieli Cię od w pełni przygotowanego, profesjonalnego sklepu WooCommerce. Wypełnij poniższe punkty w mig!', 'polski')),
+            (string) ($settings['admin_setup_note_content'] ?? __('A few clicks away from a fully prepared, professional WooCommerce store. Complete these steps quickly!', 'polski')),
         );
         $note->set_type($noteClass::E_WC_ADMIN_NOTE_INFORMATIONAL);
         $note->set_name('polski-setup');
         $note->set_source('polski');
         $note->add_action(
             'polski-setup-wizard',
-            (string) ($settings['admin_setup_note_button'] ?? __('Uruchom kreator konfiguracji', 'polski')),
+            (string) ($settings['admin_setup_note_button'] ?? __('Launch setup wizard', 'polski')),
             admin_url('admin.php?page=polski&tab=wizard#/setup-wizard'),
         );
         $note->save();

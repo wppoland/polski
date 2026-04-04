@@ -2306,15 +2306,15 @@ msgstr "Rechtliche Seiten im Dashboard verwalten &rarr;"
 
 #: src/Admin/ModulesPage.php:215
 msgid "Right of withdrawal (14 days)"
-msgstr ""
+msgstr "Widerrufsrecht (14 Tage)"
 
 #: src/Admin/ModulesPage.php:216
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
-msgstr ""
+msgstr "Widerrufsformular, Aktion in Mein Konto mit Bestätigungsschritt, Bestätigungs-E-Mail und produktspezifischen Ausschlüssen."
 
 #: src/Admin/ModulesPage.php:222
 msgid "Order action label"
-msgstr ""
+msgstr "Beschriftung der Bestellaktion"
 
 #: src/Admin/ModulesPage.php:222
 #: src/Service/WithdrawalService.php:237
@@ -2324,181 +2324,181 @@ msgstr "Vom Vertrag zurücktreten"
 
 #: src/Admin/ModulesPage.php:223
 msgid "Form title"
-msgstr ""
+msgstr "Formulartitel"
 
 #: src/Admin/ModulesPage.php:223
 #: src/Admin/ModulesPage.php:238
 msgid "Withdrawal request"
-msgstr ""
+msgstr "Widerrufsantrag"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Form introduction"
-msgstr ""
+msgstr "Formulareinleitung"
 
 #: src/Admin/ModulesPage.php:224
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
-msgstr ""
+msgstr "Du reichst einen Widerrufsantrag für die Bestellung #{order_number} vom {order_date} ein."
 
 #: src/Admin/ModulesPage.php:224
 msgid "Variables: {order_number}, {order_date}"
-msgstr ""
+msgstr "Variablen: {order_number}, {order_date}"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Legal notice"
-msgstr ""
+msgstr "Rechtlicher Hinweis"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
-msgstr ""
+msgstr "Nach polnischem Verbraucherrecht kannst du innerhalb von 14 Tagen ohne Angabe von Gründen vom Vertrag zurücktreten."
 
 #: src/Admin/ModulesPage.php:226
 msgid "Order items heading"
-msgstr ""
+msgstr "Überschrift der Bestellpositionen"
 
 #: src/Admin/ModulesPage.php:226
 msgid "Order items"
-msgstr ""
+msgstr "Bestellpositionen"
 
 #: src/Admin/ModulesPage.php:227
 msgid "Product column"
-msgstr ""
+msgstr "Spalte Produkt"
 
 #: src/Admin/ModulesPage.php:227
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 #: src/Admin/ModulesPage.php:228
 msgid "Quantity column"
-msgstr ""
+msgstr "Spalte Menge"
 
 #: src/Admin/ModulesPage.php:228
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 msgid "Quantity"
-msgstr ""
+msgstr "Menge"
 
 #: src/Admin/ModulesPage.php:229
 msgid "Price column"
-msgstr ""
+msgstr "Spalte Preis"
 
 #: src/Admin/ModulesPage.php:229
 msgid "Price"
-msgstr ""
+msgstr "Preis"
 
 #: src/Admin/ModulesPage.php:230
 msgid "Exemption notice"
-msgstr ""
+msgstr "Hinweis zum Ausschluss"
 
 #: src/Admin/ModulesPage.php:230
 msgid "(This product is excluded from the right of withdrawal)"
-msgstr ""
+msgstr "(Dieses Produkt ist vom Widerrufsrecht ausgeschlossen)"
 
 #: src/Admin/ModulesPage.php:231
 msgid "Reason field label"
-msgstr ""
+msgstr "Beschriftung des Grund-Felds"
 
 #: src/Admin/ModulesPage.php:231
 msgid "Reason for withdrawal (optional)"
-msgstr ""
+msgstr "Grund des Widerrufs (optional)"
 
 #: src/Admin/ModulesPage.php:232
 #: build/blocks/ajax-search/index.js:212
 #: resources/js/blocks/ajax-search/index.js:39
 #: build/blocks/ajax-search/index.js:100
 msgid "Submit button text"
-msgstr ""
+msgstr "Text der Senden-Schaltfläche"
 
 #: src/Admin/ModulesPage.php:232
 msgid "Submit withdrawal request"
-msgstr ""
+msgstr "Widerrufsantrag senden"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Invalid nonce message"
-msgstr ""
+msgstr "Meldung bei ungültigem Nonce"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Something went wrong on our side. Please try again."
-msgstr ""
+msgstr "Auf unserer Seite ist etwas schiefgelaufen. Bitte versuche es erneut."
 
 #: src/Admin/ModulesPage.php:234
 msgid "Order not found message"
-msgstr ""
+msgstr "Meldung bei nicht gefundener Bestellung"
 
 #: src/Admin/ModulesPage.php:234
 #: src/Rest/WithdrawalController.php:133
 msgid "We could not find that order."
-msgstr ""
+msgstr "Wir konnten diese Bestellung nicht finden."
 
 #: src/Admin/ModulesPage.php:235
 msgid "Permission error message"
-msgstr ""
+msgstr "Meldung bei fehlender Berechtigung"
 
 #: src/Admin/ModulesPage.php:235
 msgid "You do not have permission to withdraw from this order."
-msgstr ""
+msgstr "Du bist nicht berechtigt, von dieser Bestellung zurückzutreten."
 
 #: src/Admin/ModulesPage.php:236
 msgid "Success message"
-msgstr ""
+msgstr "Erfolgsmeldung"
 
 #: src/Admin/ModulesPage.php:236
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
-msgstr ""
+msgstr "Dein Widerrufsantrag wurde empfangen. Wir senden dir in Kürze eine Bestätigungs-E-Mail."
 
 #: src/Admin/ModulesPage.php:237
 msgid "Not eligible message"
-msgstr ""
+msgstr "Meldung bei fehlender Berechtigung"
 
 #: src/Admin/ModulesPage.php:237
 #: src/Rest/WithdrawalController.php:145
 msgid "This order is not eligible for withdrawal."
-msgstr ""
+msgstr "Diese Bestellung ist nicht für einen Widerruf berechtigt."
 
 #: src/Admin/ModulesPage.php:238
 msgid "Status section heading"
-msgstr ""
+msgstr "Überschrift des Statusbereichs"
 
 #: src/Admin/ModulesPage.php:239
 msgid "Status label"
-msgstr ""
+msgstr "Status-Beschriftung"
 
 #: src/Admin/ModulesPage.php:240
 msgid "Submitted label"
-msgstr ""
+msgstr "Beschriftung Eingereicht"
 
 #: src/Admin/ModulesPage.php:240
 msgid "Submitted"
-msgstr ""
+msgstr "Eingereicht"
 
 #: src/Admin/ModulesPage.php:241
 msgid "Order note after request"
-msgstr ""
+msgstr "Bestellnotiz nach dem Antrag"
 
 #: src/Admin/ModulesPage.php:241
 msgid "The customer submitted a withdrawal request."
-msgstr ""
+msgstr "Der Kunde hat einen Widerrufsantrag eingereicht."
 
 #: src/Admin/ModulesPage.php:242
 msgid "Order note after confirmation"
-msgstr ""
+msgstr "Bestellnotiz nach der Bestätigung"
 
 #: src/Admin/ModulesPage.php:242
 msgid "The withdrawal request has been confirmed."
-msgstr ""
+msgstr "Der Widerrufsantrag wurde bestätigt."
 
 #: src/Admin/ModulesPage.php:243
 msgid "Status date format"
-msgstr ""
+msgstr "Datumsformat des Status"
 
 #: src/Admin/ModulesPage.php:243
 msgid "Y-m-d H:i"
-msgstr ""
+msgstr "Y-m-d H:i"
 
 #: src/Admin/ModulesPage.php:244
 msgid "Confirmation email subject"
-msgstr ""
+msgstr "Betreff der Bestätigungs-E-Mail"
 
 #: src/Admin/ModulesPage.php:244
 #: src/Admin/ModulesPage.php:247
@@ -2507,59 +2507,59 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:244
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
-msgstr ""
+msgstr "Variablen: {order_number}, {order_date}, {withdrawal_date}"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Confirmation email heading"
-msgstr ""
+msgstr "Überschrift der Bestätigungs-E-Mail"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Withdrawal confirmed"
-msgstr ""
+msgstr "Widerruf bestätigt"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Email greeting"
-msgstr ""
+msgstr "E-Mail-Begrüßung"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Hello {name},"
-msgstr ""
+msgstr "Hallo {name},"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Variable: {name}"
-msgstr ""
+msgstr "Variable: {name}"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Confirmation email body"
-msgstr ""
+msgstr "Text der Bestätigungs-E-Mail"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Variable: {order_number}"
-msgstr ""
+msgstr "Variable: {order_number}"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Reason label in email"
-msgstr ""
+msgstr "Beschriftung des Grundes in der E-Mail"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Your reason"
-msgstr ""
+msgstr "Dein Grund"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Return instruction in email"
-msgstr ""
+msgstr "Rücksendehinweis in der E-Mail"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Please return the products to the address below within 14 days:"
-msgstr ""
+msgstr "Bitte sende die Produkte innerhalb von 14 Tagen an die unten genannte Adresse zurück:"
 
 #: src/Admin/ModulesPage.php:250
 msgid "Additional email content"
-msgstr ""
+msgstr "Zusätzlicher E-Mail-Inhalt"
 
 #: src/Admin/ModulesPage.php:250
 msgid "Your refund will be processed within 14 days after the returned products are received."
-msgstr ""
+msgstr "Deine Rückerstattung wird innerhalb von 14 Tagen bearbeitet, nachdem die zurückgesendeten Produkte eingegangen sind."
 
 #: src/Admin/ModulesPage.php:255
 msgid "Rozstrzyganie sporów (ODR)"

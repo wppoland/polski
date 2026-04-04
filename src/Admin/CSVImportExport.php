@@ -69,30 +69,30 @@ final class CSVImportExport implements HasHooks
      */
     public function addExportColumns(array $columns): array
     {
-        $columns['polski_unit_price_base'] = __('Bazowa cena jednostkowa', 'polski');
-        $columns['polski_unit_price_unit'] = __('Jednostka ceny jednostkowej', 'polski');
-        $columns['polski_unit_price_amount'] = __('Ilość produktu', 'polski');
-        $columns['polski_delivery_time'] = __('ID czasu dostawy', 'polski');
-        $columns['polski_gpsr_responsible'] = __('Osoba odpowiedzialna (GPSR)', 'polski');
-        $columns['polski_power_supply'] = __('Zasilanie', 'polski');
-        $columns['polski_defect_description'] = __('Opis wady', 'polski');
-        $columns['polski_withdrawal_exempt'] = __('Wyłączenie z prawa odstąpienia', 'polski');
-        $columns['polski_ingredients'] = __('Składniki', 'polski');
+        $columns['polski_unit_price_base'] = __('Base unit price', 'polski');
+        $columns['polski_unit_price_unit'] = __('Unit price unit', 'polski');
+        $columns['polski_unit_price_amount'] = __('Product quantity', 'polski');
+        $columns['polski_delivery_time'] = __('Delivery time ID', 'polski');
+        $columns['polski_gpsr_responsible'] = __('Responsible person (GPSR)', 'polski');
+        $columns['polski_power_supply'] = __('Power supply', 'polski');
+        $columns['polski_defect_description'] = __('Defect description', 'polski');
+        $columns['polski_withdrawal_exempt'] = __('Right of withdrawal exemption', 'polski');
+        $columns['polski_ingredients'] = __('Ingredients', 'polski');
         $columns['polski_nutri_score'] = __('Nutri-Score', 'polski');
-        $columns['polski_alcohol_content'] = __('Zawartość alkoholu', 'polski');
-        $columns['polski_place_of_origin'] = __('Kraj pochodzenia', 'polski');
-        $columns['polski_net_filling'] = __('Ilość netto', 'polski');
-        $columns['polski_gpsr_manufacturer_name'] = __('GPSR – Nazwa producenta', 'polski');
-        $columns['polski_gpsr_manufacturer_address'] = __('GPSR – Adres producenta', 'polski');
-        $columns['polski_gpsr_importer_name'] = __('GPSR – Nazwa importera', 'polski');
-        $columns['polski_gpsr_importer_address'] = __('GPSR – Adres importera', 'polski');
-        $columns['polski_gpsr_responsible_person'] = __('GPSR – Osoba odpowiedzialna', 'polski');
-        $columns['polski_gpsr_product_identifier'] = __('GPSR – Identyfikator produktu', 'polski');
-        $columns['polski_gpsr_safety_warnings'] = __('GPSR – Ostrzeżenia bezpieczeństwa', 'polski');
-        $columns['polski_gpsr_instructions'] = __('GPSR – Instrukcje bezpieczeństwa', 'polski');
-        $columns['polski_green_claim_basis'] = __('Podstawa twierdzenia ekologicznego', 'polski');
-        $columns['polski_green_claim_cert_url'] = __('Link do certyfikatu ekologicznego', 'polski');
-        $columns['polski_green_claim_expiry'] = __('Data ważności certyfikatu ekologicznego', 'polski');
+        $columns['polski_alcohol_content'] = __('Alcohol content', 'polski');
+        $columns['polski_place_of_origin'] = __('Country of origin', 'polski');
+        $columns['polski_net_filling'] = __('Net quantity', 'polski');
+        $columns['polski_gpsr_manufacturer_name'] = __('GPSR – Manufacturer name', 'polski');
+        $columns['polski_gpsr_manufacturer_address'] = __('GPSR – Manufacturer address', 'polski');
+        $columns['polski_gpsr_importer_name'] = __('GPSR – Importer name', 'polski');
+        $columns['polski_gpsr_importer_address'] = __('GPSR – Importer address', 'polski');
+        $columns['polski_gpsr_responsible_person'] = __('GPSR – Responsible person', 'polski');
+        $columns['polski_gpsr_product_identifier'] = __('GPSR – Product identifier', 'polski');
+        $columns['polski_gpsr_safety_warnings'] = __('GPSR – Safety warnings', 'polski');
+        $columns['polski_gpsr_instructions'] = __('GPSR – Safety instructions', 'polski');
+        $columns['polski_green_claim_basis'] = __('Environmental claim basis', 'polski');
+        $columns['polski_green_claim_cert_url'] = __('Environmental certificate link', 'polski');
+        $columns['polski_green_claim_expiry'] = __('Environmental certificate expiry', 'polski');
 
         return $columns;
     }
