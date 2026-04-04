@@ -25,7 +25,7 @@ msgstr "Polski для WooCommerce"
 #. Plugin URI of the plugin
 #: polski.php
 msgid "https://wppoland.com/pl/polski/"
-msgstr ""
+msgstr "https://wppoland.com/en/polski/"
 
 #. Description of the plugin
 #: polski.php
@@ -197,10 +197,12 @@ msgid "niezainstalowana"
 msgstr ""
 
 #: config/defaults.php:54
+#: src/Admin/ModulesPage.php:1420
 msgid "Żadna zewnętrzna wtyczka Omnibus nie jest zainstalowana. Polski używa wbudowanego systemu śledzenia cen."
 msgstr ""
 
 #: config/defaults.php:55
+#: src/Admin/ModulesPage.php:1422
 msgid "Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego systemu."
 msgstr ""
 
@@ -213,10 +215,12 @@ msgid "niewykryta"
 msgstr ""
 
 #: config/defaults.php:58
+#: src/Admin/ModulesPage.php:1468
 msgid "Nie wykryto wspieranych rozszerzeń checkoutu i cookies. Polski działa nadal samodzielnie."
 msgstr ""
 
 #: config/defaults.php:59
+#: src/Admin/ModulesPage.php:1470
 msgid "Wykryto wspierane rozszerzenia checkoutu, cookies lub danych produktowych. Polski może dopasować integrację do aktywnego zestawu."
 msgstr ""
 

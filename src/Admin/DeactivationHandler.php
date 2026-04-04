@@ -141,19 +141,19 @@ final class DeactivationHandler implements HasHooks
 
         $feedback = array_reverse($feedback); // Newest first.
 
-        echo '<h3>' . esc_html__('Logi opinii przy odinstalowaniu', 'polski') . '</h3>';
+        echo '<h3>' . esc_html__('Deactivation feedback log', 'polski') . '</h3>';
 
         if (empty($feedback)) {
-            echo '<p>' . esc_html__('Brak opinii do wyświetlenia.', 'polski') . '</p>';
+            echo '<p>' . esc_html__('No feedback to display.', 'polski') . '</p>';
             return;
         }
 
         echo '<table class="widefat striped"><thead><tr>';
-        echo '<th>' . esc_html__('Data', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Date', 'polski') . '</th>';
         echo '<th>' . esc_html__('Plugin', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Powód', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Co poprawić', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Co dodać', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Reason', 'polski') . '</th>';
+        echo '<th>' . esc_html__('What to improve', 'polski') . '</th>';
+        echo '<th>' . esc_html__('What to add', 'polski') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($feedback as $entry) {
@@ -172,12 +172,12 @@ final class DeactivationHandler implements HasHooks
     private function getReasonLabel(string $key): string
     {
         $labels = [
-            'missing_feature' => __('Brakująca funkcja', 'polski'),
-            'hard_to_use'     => __('Trudna obsługa', 'polski'),
-            'bug'             => __('Błąd lub konflikt', 'polski'),
-            'not_needed'      => __('Nie potrzebuję teraz', 'polski'),
-            'temporary'       => __('Tymczasowe wyłączenie', 'polski'),
-            'other'           => __('Inne', 'polski'),
+            'missing_feature' => __('A feature is missing', 'polski'),
+            'hard_to_use'     => __('It is hard to configure or use', 'polski'),
+            'bug'             => __('I found a bug or conflict', 'polski'),
+            'not_needed'      => __('I do not need it right now', 'polski'),
+            'temporary'       => __('This is only temporary', 'polski'),
+            'other'           => __('Other reason', 'polski'),
         ];
 
         return $labels[$key] ?? $key;
