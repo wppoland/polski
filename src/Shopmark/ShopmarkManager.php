@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Shopmark;
 
+defined('ABSPATH') || exit;
 /**
  * Registry for all display elements (shopmarks) shown on product pages, loops, cart, etc.
  */

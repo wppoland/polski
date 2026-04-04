@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
@@ -131,7 +132,7 @@ final class WaitlistService implements Bootable, HasHooks
 
         foreach ($this->repository->findPendingByProduct($productId) as $subscription) {
             $subject = Formatter::interpolate(
-                (string) ($this->getSettings()['notify_subject'] ?? 'Produkt ponownie dostępny - {product_name}'),
+                (string) ($this->getSettings()['notify_subject'] ?? __('Produkt ponownie dostępny - {product_name}', 'polski')),
                 ['product_name' => $product->get_name()],
             );
 

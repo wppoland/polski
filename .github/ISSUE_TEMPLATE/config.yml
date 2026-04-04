@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WordPress.org support
+    url: https://wordpress.org/support/
+    about: Use the WordPress.org support forum for release support and setup help.
+  - name: GitHub Discussions
+    url: https://github.com/wppoland/polski/discussions
+    about: Use Discussions for questions, ideas, and product feedback.
+  - name: Security reports
+    url: mailto:security@wppoland.com
+    about: Please report security issues privately.

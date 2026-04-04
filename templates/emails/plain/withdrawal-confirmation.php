@@ -13,7 +13,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 $settings = get_option('polski_withdrawal', []);
 $settings = is_array($settings) ? $settings : [];
 $greeting = str_replace('{name}', (string) $order->get_billing_first_name(), (string) ($settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')));

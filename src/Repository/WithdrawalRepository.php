@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Repository;
+
+defined('ABSPATH') || exit;
 
 use Polski\Enum\WithdrawalStatus;
 use Polski\Model\WithdrawalRequest;

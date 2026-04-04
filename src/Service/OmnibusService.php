@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
@@ -15,8 +16,8 @@ use Polski\Util\Formatter;
  * Omnibus Directive compliance - tracks product prices and displays the lowest
  * price from the last 30 days when a product is on sale.
  *
- * Acts as a built-in fallback. When WC Price History or Omnibus by iworks is
- * detected, the IntegrationManager delegates to those plugins instead.
+ * Acts as a built-in fallback. When a compatible Omnibus extension is
+ * detected, the IntegrationManager delegates to that integration instead.
  */
 final class OmnibusService implements Bootable, HasHooks
 {
@@ -35,7 +36,7 @@ final class OmnibusService implements Bootable, HasHooks
         $settings = $this->getSettings();
         $this->enabled = (bool) ($settings['enabled'] ?? true);
         $this->days = (int) ($settings['days'] ?? 30);
-        $this->displayText = (string) ($settings['display_text'] ?? 'Najniższa cena z ostatnich {days} dni: {price}');
+        $this->displayText = (string) ($settings['display_text'] ?? __('Najniższa cena z ostatnich {days} dni: {price}', 'polski'));
         $this->saleOnly = (bool) ($settings['display_on_sale_only'] ?? true);
     }
 

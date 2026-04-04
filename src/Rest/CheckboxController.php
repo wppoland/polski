@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Rest;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 use Polski\Model\LegalCheckbox;
@@ -135,7 +136,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($service->isCore($id)) {
             return new WP_REST_Response(
-                ['message' => __('Nie mozna utworzyc checkboxa o zarezerwowanym ID.', 'polski')],
+                ['message' => __('Nie można utworzyć checkboxa o zarezerwowanym ID.', 'polski')],
                 400,
             );
         }
@@ -209,7 +210,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($service->isCore($id)) {
             return new WP_REST_Response(
-                ['message' => __('Wbudowane checkboxy nie moga byc usuniete. Mozesz je wylaczac.', 'polski')],
+                ['message' => __('Wbudowane checkboxy nie mogą być usunięte. Możesz je wyłączać.', 'polski')],
                 400,
             );
         }
@@ -237,12 +238,8 @@ final class CheckboxController extends RestController implements HasHooks
         $days = (int) ($request->get_param('days') ?? 30);
         $days = max(1, min($days, 365));
 
-        $plugin = \Polski\Plugin::instance();
-
         $stats = $service->getComplianceStats();
         $stats['consent_log'] = $consentLog->getStats($days);
-        $stats['pro_active'] = $plugin->isProActive();
-        $stats['pro_version'] = $plugin->proVersion();
 
         return new WP_REST_Response($stats, 200);
     }
@@ -250,8 +247,7 @@ final class CheckboxController extends RestController implements HasHooks
     /**
      * Extract editable override fields from request params.
      *
-     * All fields are available in the FREE version. PRO adds additional
-     * features (consent versioning, export, etc.) as a separate plugin.
+     * All fields available in the API can be stored as plain checkbox overrides.
      *
      * @param array<string, mixed> $params
      * @return array<string, mixed>

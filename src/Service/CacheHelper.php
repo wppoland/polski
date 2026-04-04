@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
 
+defined('ABSPATH') || exit;
 /**
  * Cache helper: flushes caches for popular caching plugins when
  * Polski settings or product data changes.

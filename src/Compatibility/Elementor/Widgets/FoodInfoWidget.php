@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility\Elementor\Widgets;
 
+defined('ABSPATH') || exit;
 final class FoodInfoWidget extends BaseProductWidget
 {
     public function get_name(): string
@@ -13,7 +13,7 @@ final class FoodInfoWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return 'Informacje o żywności';
+        return __('Informacje o żywności', 'polski');
     }
 
     protected function register_controls(): void

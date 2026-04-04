@@ -40,7 +40,7 @@ const INITIAL_DATA: WizardData = {
     withdrawal_enabled: true,
     digital_waiver_enabled: false,
     marketing_enabled: false,
-    order_button_text: 'Zamawiam z obowiązkiem zapłaty',
+    order_button_text: __('Zamawiam z obowiązkiem zapłaty', 'polski'),
     generate_legal_pages: true,
     omnibus_enabled: true,
 };

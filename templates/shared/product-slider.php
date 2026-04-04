@@ -23,6 +23,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <section class="polski-product-slider">
     <?php if ($show_title) : ?>

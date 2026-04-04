@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Contract;
 
+defined('ABSPATH') || exit;
 /**
  * Extension point for shipping provider integrations.
  */

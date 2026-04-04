@@ -12,5 +12,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <span class="polski-order-button-text"><?php echo esc_html($button_text); ?></span>

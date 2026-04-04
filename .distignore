@@ -23,3 +23,11 @@ tests
 tsconfig.json
 vendor
 vite.config.ts
+playwright.config.ts
+playwright-report
+test-results
+_benchmark
+AGENTS.md
+CLAUDE.md
+messages.mo
+languages/translate_po.py

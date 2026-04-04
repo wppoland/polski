@@ -6,6 +6,7 @@
  * @var list<WP_Term>        $categories
  * @var list<WP_Term>        $brands
  * @var list<string>         $attribute_taxonomies
+ * @var string               $action_url
  * @var string               $reset_url
  *
  * @package Polski/Templates
@@ -14,8 +15,9 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
-<form class="polski-ajax-filters" method="get" action="<?php echo esc_url(get_permalink(wc_get_page_id('shop')) ?: ''); ?>" data-polski-ajax-filters>
+<form class="polski-ajax-filters" method="get" action="<?php echo esc_url($action_url); ?>" data-polski-ajax-filters>
     <?php if ((bool) ($settings['show_title'] ?? true)) : ?>
         <h3 class="polski-ajax-filters__title"><?php echo esc_html((string) ($settings['title'] ?? '')); ?></h3>
     <?php endif; ?>

@@ -11,8 +11,6 @@ declare global {
             nonce: string;
             version: string;
             isWizardComplete: boolean;
-            isProActive: boolean;
-            proVersion: string | null;
         };
     }
 }

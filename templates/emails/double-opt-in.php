@@ -14,7 +14,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 do_action('woocommerce_email_header', $email_heading, $email);
 
 $user = get_user_by('id', $user_id);

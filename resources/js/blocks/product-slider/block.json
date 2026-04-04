@@ -1,0 +1,41 @@
+{
+    "name": "polski/product-slider",
+    "version": "1.3.0",
+    "title": "Polski Product Slider",
+    "description": "Dynamic merchandising slider for related, upsell, sale, and featured products.",
+    "category": "widgets",
+    "icon": "images-alt2",
+    "textdomain": "polski",
+    "apiVersion": 3,
+    "editorScript": "file:./index.js",
+    "attributes": {
+        "productId": {
+            "type": "number",
+            "default": 0
+        },
+        "source": {
+            "type": "string",
+            "default": "related"
+        },
+        "title": {
+            "type": "string",
+            "default": ""
+        },
+        "limit": {
+            "type": "number",
+            "default": 8
+        },
+        "showTitle": {
+            "type": "boolean",
+            "default": true
+        },
+        "showPrice": {
+            "type": "boolean",
+            "default": true
+        },
+        "showAddToCart": {
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

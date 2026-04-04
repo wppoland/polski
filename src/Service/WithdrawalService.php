@@ -1,14 +1,16 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
 use Polski\Enum\WithdrawalStatus;
 use Polski\Model\WithdrawalRequest;
 use Polski\Repository\WithdrawalRepository;
+use Polski\Util\TemplateLoader;
 
 /**
  * 14-day consumer withdrawal right (prawo odstąpienia od umowy).
@@ -23,6 +25,7 @@ final class WithdrawalService implements Bootable, HasHooks
     public function __construct(
         private readonly WithdrawalRepository $repository,
         private readonly EmailService $emailService,
+        private readonly TemplateLoader $templateLoader,
     ) {
     }
 
@@ -47,6 +50,9 @@ final class WithdrawalService implements Bootable, HasHooks
 
         // Handle withdrawal form submission.
         add_action('template_redirect', [$this, 'handleWithdrawalFormSubmission']);
+
+        // Handle one-click withdrawal flow.
+        add_action('template_redirect', [$this, 'handleOneClickWithdrawal'], 5);
 
         // Add withdrawal info to order details page.
         add_action('woocommerce_order_details_after_order_table', [$this, 'showWithdrawalStatus']);
@@ -228,8 +234,19 @@ final class WithdrawalService implements Bootable, HasHooks
                     ], wc_get_account_endpoint_url('orders')),
                     'polski_withdrawal_' . $order->get_id(),
                 ),
-                'name' => (string) ($this->getSettings()['button_text'] ?? __('Odstąp od umowy', 'polski')),
+                'name' => (string) ($this->getSettings()['button_text'] ?? __('Withdraw from contract', 'polski')),
             ];
+
+            $settings = $this->getSettings();
+            if (! empty($settings['oneclick_enabled'])) {
+                $actions['polski_oneclick_withdrawal'] = [
+                    'url' => wp_nonce_url(
+                        add_query_arg('polski_oneclick_withdrawal', $order->get_id(), wc_get_account_endpoint_url('orders')),
+                        'polski_oneclick_' . $order->get_id(),
+                    ),
+                    'name' => $settings['oneclick_button_text'] ?? __('Withdraw from contract', 'polski'),
+                ];
+            }
         }
 
         return $actions;
@@ -284,6 +301,86 @@ final class WithdrawalService implements Bootable, HasHooks
         }
 
         wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+        exit;
+    }
+
+    /**
+     * Handle one-click withdrawal: show confirmation page (GET) or process withdrawal (POST).
+     */
+    public function handleOneClickWithdrawal(): void
+    {
+        if (! isset($_GET['polski_oneclick_withdrawal'])) {
+            return;
+        }
+
+        $orderId = (int) $_GET['polski_oneclick_withdrawal'];
+        $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
+
+        if (! wp_verify_nonce($nonce, 'polski_oneclick_' . $orderId)) {
+            wc_add_notice(__('Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie.', 'polski'), 'error');
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        $order = wc_get_order($orderId);
+
+        if (! $order instanceof \WC_Order) {
+            wc_add_notice(__('Nie znaleziono zamówienia.', 'polski'), 'error');
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        if ($order->get_customer_id() !== get_current_user_id()) {
+            wc_add_notice(__('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski'), 'error');
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        if (! $this->isEligible($order)) {
+            wc_add_notice(__('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski'), 'error');
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        // POST: process the confirmed withdrawal.
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST'
+            && isset($_POST['_polski_confirm_withdrawal'])
+            && wp_verify_nonce(
+                sanitize_text_field(wp_unslash($_POST['_polski_confirm_withdrawal'])),
+                'polski_confirm_withdrawal_' . $orderId,
+            )
+        ) {
+            $request = $this->createRequest($orderId);
+
+            if ($request !== null) {
+                wc_add_notice(
+                    (string) ($this->getSettings()['success_text'] ?? __('Twój wniosek o odstąpienie od umowy został przyjęty.', 'polski')),
+                    'success',
+                );
+            } else {
+                wc_add_notice(__('Nie udało się złożyć wniosku o odstąpienie.', 'polski'), 'error');
+            }
+
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        // GET: render the confirmation page.
+        $settings = $this->getSettings();
+
+        // Output WooCommerce account page wrapper with confirmation template.
+        get_header('shop');
+
+        echo '<div class="woocommerce">';
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Template handles its own escaping.
+        echo $this->templateLoader->render('account/withdrawal-confirm', [
+            'order' => $order,
+            'settings' => $settings,
+        ]);
+        echo '</div>';
+
+        get_footer('shop');
         exit;
     }
 

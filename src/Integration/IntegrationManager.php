@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Integration;
+
+defined('ABSPATH') || exit;
 
 use Polski\Container;
 use Polski\Contract\Bootable;
@@ -39,20 +40,18 @@ final class IntegrationManager implements Bootable, HasHooks
     }
 
     /**
-     * Detect Omnibus directive plugins (WC Price History or Omnibus by iworks).
+     * Detect compatible Omnibus extensions.
      * If found, integrate. Otherwise the built-in OmnibusService is used as fallback.
      */
     private function detectOmnibusPlugins(): void
     {
         if ($this->isPluginActive('wc-price-history/wc-price-history.php')) {
-            // WC Price History by kkarpieszuk is active - integrate.
-            do_action('polski/integration/omnibus_detected', 'wc-price-history');
+            do_action('polski/integration/omnibus_detected', 'omnibus-extension-a');
             return;
         }
 
         if ($this->isPluginActive('omnibus/omnibus.php')) {
-            // Omnibus by iworks is active - integrate.
-            do_action('polski/integration/omnibus_detected', 'omnibus-iworks');
+            do_action('polski/integration/omnibus_detected', 'omnibus-extension-b');
             return;
         }
 
@@ -63,28 +62,28 @@ final class IntegrationManager implements Bootable, HasHooks
     private function detectCheckoutFieldsPlugin(): void
     {
         if ($this->isPluginActive('flexible-checkout-fields/flexible-checkout-fields.php')) {
-            do_action('polski/integration/checkout_fields_detected', 'wpdesk-fcf');
+            do_action('polski/integration/checkout_fields_detected', 'checkout-fields-extension');
         }
     }
 
     private function detectCookiesPlugin(): void
     {
         if ($this->isPluginActive('flexible-cookies/flexible-cookies.php')) {
-            do_action('polski/integration/cookies_detected', 'wpdesk-cookies');
+            do_action('polski/integration/cookies_detected', 'cookies-extension');
         }
     }
 
     private function detectGPSRPlugin(): void
     {
         if ($this->isPluginActive('gpsr-for-woocommerce/gpsr-for-woocommerce.php')) {
-            do_action('polski/integration/gpsr_detected', 'wpdesk-gpsr');
+            do_action('polski/integration/gpsr_detected', 'gpsr-extension');
         }
     }
 
     private function detectConsentModePlugin(): void
     {
         if ($this->isPluginActive('simple-consent-mode/simple-consent-mode.php')) {
-            do_action('polski/integration/consent_mode_detected', 'iworks-consent');
+            do_action('polski/integration/consent_mode_detected', 'consent-mode-extension');
         }
     }
 

@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
@@ -40,6 +41,7 @@ final class CompareService implements Bootable, HasHooks
         add_action('init', [$this, 'registerEndpoint']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_archive_description', [$this, 'renderArchiveCompare'], 5);
+        add_action('woocommerce_before_shop_loop', [$this, 'renderArchiveCompare'], 1);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleButton'], 34);
         add_action('woocommerce_after_shop_loop_item', [$this, 'renderLoopButton'], 20);
         add_action('wp_ajax_polski_compare_toggle', [$this, 'handleToggle']);
@@ -236,7 +238,7 @@ final class CompareService implements Bootable, HasHooks
 
     public function renderArchiveCompare(): void
     {
-        if (! is_shop() || ! isset($_GET['polski_compare'])) {
+        if (! (is_shop() || is_post_type_archive('product')) || ! isset($_GET['polski_compare'])) {
             return;
         }
 
@@ -381,7 +383,10 @@ final class CompareService implements Bootable, HasHooks
             return wc_get_account_endpoint_url(self::ENDPOINT);
         }
 
-        return add_query_arg('polski_compare', '1', wc_get_page_permalink('shop'));
+        return add_query_arg([
+            'post_type' => 'product',
+            'polski_compare' => '1',
+        ], home_url('/'));
     }
 
     /**

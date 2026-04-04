@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Admin;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 
@@ -26,6 +27,17 @@ final class CSVImportExport implements HasHooks
         'polski_alcohol_content' => '_polski_alcohol_content',
         'polski_place_of_origin' => '_polski_place_of_origin',
         'polski_net_filling' => '_polski_net_filling_quantity',
+        'polski_gpsr_manufacturer_name' => '_polski_gpsr_manufacturer_name',
+        'polski_gpsr_manufacturer_address' => '_polski_gpsr_manufacturer_address',
+        'polski_gpsr_importer_name' => '_polski_gpsr_importer_name',
+        'polski_gpsr_importer_address' => '_polski_gpsr_importer_address',
+        'polski_gpsr_responsible_person' => '_polski_gpsr_responsible_person',
+        'polski_gpsr_product_identifier' => '_polski_gpsr_product_identifier',
+        'polski_gpsr_safety_warnings' => '_polski_gpsr_safety_warnings',
+        'polski_gpsr_instructions' => '_polski_gpsr_instructions',
+        'polski_green_claim_basis' => '_polski_green_claim_basis',
+        'polski_green_claim_cert_url' => '_polski_green_claim_cert_url',
+        'polski_green_claim_expiry' => '_polski_green_claim_expiry',
     ];
 
     public function registerHooks(): void
@@ -70,6 +82,17 @@ final class CSVImportExport implements HasHooks
         $columns['polski_alcohol_content'] = __('Zawartość alkoholu', 'polski');
         $columns['polski_place_of_origin'] = __('Kraj pochodzenia', 'polski');
         $columns['polski_net_filling'] = __('Ilość netto', 'polski');
+        $columns['polski_gpsr_manufacturer_name'] = __('GPSR – Nazwa producenta', 'polski');
+        $columns['polski_gpsr_manufacturer_address'] = __('GPSR – Adres producenta', 'polski');
+        $columns['polski_gpsr_importer_name'] = __('GPSR – Nazwa importera', 'polski');
+        $columns['polski_gpsr_importer_address'] = __('GPSR – Adres importera', 'polski');
+        $columns['polski_gpsr_responsible_person'] = __('GPSR – Osoba odpowiedzialna', 'polski');
+        $columns['polski_gpsr_product_identifier'] = __('GPSR – Identyfikator produktu', 'polski');
+        $columns['polski_gpsr_safety_warnings'] = __('GPSR – Ostrzeżenia bezpieczeństwa', 'polski');
+        $columns['polski_gpsr_instructions'] = __('GPSR – Instrukcje bezpieczeństwa', 'polski');
+        $columns['polski_green_claim_basis'] = __('Podstawa twierdzenia ekologicznego', 'polski');
+        $columns['polski_green_claim_cert_url'] = __('Link do certyfikatu ekologicznego', 'polski');
+        $columns['polski_green_claim_expiry'] = __('Data ważności certyfikatu ekologicznego', 'polski');
 
         return $columns;
     }

@@ -11,7 +11,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 $button = $service->getButtonData($product);
 ?>
 <div class="polski-compare polski-compare--loop">

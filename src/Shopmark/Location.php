@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Shopmark;
 
+defined('ABSPATH') || exit;
 enum Location: string
 {
     case SingleProduct = 'single_product';

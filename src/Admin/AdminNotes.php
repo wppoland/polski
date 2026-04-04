@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Admin;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 
@@ -40,6 +41,9 @@ final class AdminNotes implements HasHooks
         });
 
         add_action('admin_post_polski_dismiss_disclaimer', static function (): void {
+            if (! current_user_can('manage_woocommerce')) {
+                wp_die(esc_html__('Brak uprawnien.', 'polski'));
+            }
             check_admin_referer('polski_dismiss_disclaimer');
             update_option('polski_disclaimer_dismissed', true);
             wp_safe_redirect(wp_get_referer() ?: admin_url());

@@ -1,0 +1,45 @@
+{
+    "name": "polski/ajax-filters",
+    "version": "1.3.0",
+    "title": "Polski AJAX Filters",
+    "description": "Dynamic WooCommerce product filters with archive-safe GET fallback.",
+    "category": "widgets",
+    "icon": "filter",
+    "textdomain": "polski",
+    "apiVersion": 3,
+    "editorScript": "file:./index.js",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": ""
+        },
+        "showTitle": {
+            "type": "boolean",
+            "default": true
+        },
+        "showCategories": {
+            "type": "boolean",
+            "default": true
+        },
+        "showBrands": {
+            "type": "boolean",
+            "default": true
+        },
+        "showPrice": {
+            "type": "boolean",
+            "default": true
+        },
+        "showStock": {
+            "type": "boolean",
+            "default": true
+        },
+        "showSale": {
+            "type": "boolean",
+            "default": true
+        },
+        "showAttributes": {
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

@@ -14,12 +14,11 @@ final class CheckboxContextTest extends TestCase
     {
         $cases = CheckboxContext::cases();
 
-        $this->assertCount(5, $cases);
+        $this->assertCount(4, $cases);
         $this->assertSame('checkout', CheckboxContext::Checkout->value);
         $this->assertSame('registration', CheckboxContext::Registration->value);
         $this->assertSame('review', CheckboxContext::Review->value);
         $this->assertSame('pay_for_order', CheckboxContext::PayForOrder->value);
-        $this->assertSame('quote', CheckboxContext::Quote->value);
     }
 
     public function testTryFromValidValue(): void

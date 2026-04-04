@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Util;
+
+defined('ABSPATH') || exit;
 
 use const Polski\PLUGIN_DIR;
 

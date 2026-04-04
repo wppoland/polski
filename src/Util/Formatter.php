@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Util;
 
+defined('ABSPATH') || exit;
 /**
  * Polish-locale formatting utilities.
  */

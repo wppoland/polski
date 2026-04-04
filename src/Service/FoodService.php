@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
 
+defined('ABSPATH') || exit;
 /**
  * Food product module: nutrients, allergens, ingredients, Nutri-Score, etc.
  *

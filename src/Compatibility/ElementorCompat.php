@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 
@@ -59,6 +60,9 @@ final class ElementorCompat implements HasHooks
             Elementor\Widgets\NutrientsWidget::class,
             Elementor\Widgets\NutriScoreWidget::class,
             Elementor\Widgets\FoodInfoWidget::class,
+            Elementor\Widgets\SearchWidget::class,
+            Elementor\Widgets\FiltersWidget::class,
+            Elementor\Widgets\ProductSliderWidget::class,
         ];
 
         foreach ($widgetClasses as $className) {

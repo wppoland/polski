@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <div class="polski-quick-view-modal" data-polski-quick-view-modal hidden>
     <div class="polski-quick-view-backdrop" data-polski-quick-view-backdrop></div>

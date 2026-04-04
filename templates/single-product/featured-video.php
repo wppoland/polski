@@ -15,6 +15,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <div class="polski-featured-video">
     <?php if ($show_title && $title !== '') : ?>

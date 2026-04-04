@@ -1,11 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility\Elementor\Widgets;
 
-use Elementor\Widget_Base;
-
+defined('ABSPATH') || exit;
 /**
  * Base class for all Polski Elementor product widgets.
  *
@@ -15,18 +13,8 @@ use Elementor\Widget_Base;
  * Ready for Elementor 4.0 migration - widgets use minimal controls
  * and delegate rendering to Polski services.
  */
-abstract class BaseProductWidget extends Widget_Base
+abstract class BaseProductWidget extends BaseWidget
 {
-    public function get_categories(): array
-    {
-        return ['polski'];
-    }
-
-    public function get_icon(): string
-    {
-        return 'eicon-woocommerce';
-    }
-
     /**
      * Resolve the current product for rendering.
      */
@@ -49,13 +37,5 @@ abstract class BaseProductWidget extends Widget_Base
         }
 
         return null;
-    }
-
-    /**
-     * Get the Polski DI container.
-     */
-    protected function container(): \Polski\Container
-    {
-        return \Polski\Plugin::instance()->container();
     }
 }

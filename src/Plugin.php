@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
@@ -45,14 +46,17 @@ final class Plugin
         // Store self in container for cross-references.
         $this->container->instance(self::class, $this);
 
+        if (did_action('init')) {
+            $this->loadTextDomain();
+        }
+
         // Load service definitions.
         $this->loadServiceDefinitions();
 
         // Register all hook subscribers.
         $this->registerHookSubscribers();
 
-        add_action('init', [$this, 'loadTextDomain']);
-
+        $this->syncInstalledVersion();
         /**
          * Fires after Polski is fully booted.
          *
@@ -69,26 +73,6 @@ final class Plugin
     public function version(): string
     {
         return VERSION;
-    }
-
-    /**
-     * Check if the PRO plugin is active.
-     */
-    public function isProActive(): bool
-    {
-        return defined('Polski\Pro\VERSION');
-    }
-
-    /**
-     * Get PRO plugin version, or null if not active.
-     */
-    public function proVersion(): ?string
-    {
-        if (! $this->isProActive()) {
-            return null;
-        }
-
-        return constant('Polski\Pro\VERSION');
     }
 
     /**
@@ -170,6 +154,13 @@ final class Plugin
             false,
             dirname(plugin_basename(PLUGIN_FILE)) . '/languages',
         );
+    }
+
+    private function syncInstalledVersion(): void
+    {
+        if (get_option('polski_version') !== VERSION) {
+            update_option('polski_version', VERSION);
+        }
     }
 
     /**

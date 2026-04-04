@@ -13,7 +13,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 $user = get_user_by('id', $user_id);
 $name = $user ? $user->display_name : '';
 $settings = get_option('polski_doi', []);

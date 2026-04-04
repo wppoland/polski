@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
@@ -68,7 +69,7 @@ final class SearchService implements Bootable, HasHooks
         $settings = $this->getAjaxSettings();
 
         wp_localize_script('polski-ajax-search', 'polskiAjaxSearch', [
-            'endpoint' => rest_url('polski/v1/search'),
+            'endpoint' => home_url('/?rest_route=/polski/v1/search'),
             'minChars' => max(1, (int) ($settings['min_chars'] ?? 2)),
             'debounceMs' => max(0, (int) ($settings['debounce_ms'] ?? 180)),
             'noResultsText' => (string) ($settings['no_results_text'] ?? ''),
@@ -90,9 +91,7 @@ final class SearchService implements Bootable, HasHooks
             return '';
         }
 
-        return $this->templateLoader->render('forms/ajax-search', [
-            'settings' => $this->getAjaxSettings(),
-        ]);
+        return $this->renderSearchForm();
     }
 
     /**
@@ -101,6 +100,22 @@ final class SearchService implements Bootable, HasHooks
     public function getAjaxSettings(): array
     {
         return $this->getSettings();
+    }
+
+    /**
+     * @param array<string, mixed> $overrides
+     */
+    public function renderSearchForm(array $overrides = []): string
+    {
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
+        $this->enqueueAssets();
+
+        return $this->templateLoader->render('forms/ajax-search', [
+            'settings' => array_merge($this->getAjaxSettings(), $overrides),
+        ]);
     }
 
     /**

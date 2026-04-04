@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Rest;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -133,18 +134,13 @@ final class SettingsController extends RestController implements HasHooks
 
         update_option('polski_general', $general);
 
-        // Save seller data for PRO invoices (if provided).
-        if (! empty($params['company_nip'])) {
-            update_option('polski_pro_seller_nip', sanitize_text_field($params['company_nip']));
-        }
-
         // Save checkout settings.
         $checkout = get_option('polski_checkout', []);
         if (! is_array($checkout)) {
             $checkout = [];
         }
 
-        $checkout['order_button_text'] = sanitize_text_field($params['order_button_text'] ?? 'Zamawiam z obowiązkiem zapłaty');
+        $checkout['order_button_text'] = sanitize_text_field($params['order_button_text'] ?? __('Zamawiam z obowiązkiem zapłaty', 'polski'));
         $checkout['terms_checkbox_enabled'] = (bool) ($params['terms_enabled'] ?? true);
         $checkout['privacy_checkbox_enabled'] = (bool) ($params['privacy_enabled'] ?? true);
         $checkout['withdrawal_checkbox_enabled'] = (bool) ($params['withdrawal_enabled'] ?? true);

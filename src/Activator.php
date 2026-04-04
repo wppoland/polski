@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski;
 
+defined('ABSPATH') || exit;
 /**
  * Handles plugin activation: creates custom tables, sets default options, runs migrations.
  */

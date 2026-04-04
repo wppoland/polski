@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility\Elementor\Widgets;
 
+defined('ABSPATH') || exit;
 final class PowerSupplyWidget extends BaseProductWidget
 {
     public function get_name(): string
@@ -13,7 +13,7 @@ final class PowerSupplyWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return 'Zasilanie';
+        return __('Zasilanie', 'polski');
     }
 
     protected function register_controls(): void

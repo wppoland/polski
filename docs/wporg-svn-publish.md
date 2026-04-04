@@ -9,13 +9,13 @@ Prepared package:
 ## Release flow
 
 ```bash
-svn checkout https://plugins.svn.wordpress.org/polski /tmp/polski-svn
+svn checkout https://plugins.svn.wordpress.org/polski-for-woocommerce /tmp/polski-svn
 bash scripts/prepare-wporg-release.sh
 bash scripts/sync-wporg-svn.sh /tmp/polski-wporg-trunk /tmp/polski-svn
 cd /tmp/polski-svn
 svn status
 svn add --force trunk tags assets --auto-props --parents
-svn commit -m "Release 1.1.0"
+svn commit -m "Release 1.3.0"
 ```
 
 ## Optional assets
@@ -33,3 +33,8 @@ Suggested filenames:
 - `banner-772x250.png`
 - `banner-1544x500.png`
 - `screenshot-1.png`
+
+Notes:
+
+- WordPress.org slug: `polski-for-woocommerce`
+- Main plugin bootstrap inside the package: `polski.php`

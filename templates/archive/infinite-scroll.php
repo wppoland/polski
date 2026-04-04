@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+defined('ABSPATH') || exit;
 /**
  * @var \Polski\Service\InfiniteScrollService $service
  * @var string                                      $next_page_url

@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Enum;
 
+defined('ABSPATH') || exit;
 enum TaxDisplayMode: string
 {
     case Brutto = 'brutto';

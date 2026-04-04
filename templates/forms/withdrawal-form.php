@@ -14,7 +14,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 $settings = get_option('polski_withdrawal', []);
 $settings = is_array($settings) ? $settings : [];
 $introText = (string) ($settings['form_intro_text'] ?? __('Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia {order_date}.', 'polski'));

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+defined('ABSPATH') || exit;
 /**
  * @var array<string, mixed> $settings
  * @var string               $cta_url

@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility\Elementor\Widgets;
 
+defined('ABSPATH') || exit;
 final class ManufacturerWidget extends BaseProductWidget
 {
     public function get_name(): string
@@ -13,7 +13,7 @@ final class ManufacturerWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return 'Producent';
+        return __('Producent', 'polski');
     }
 
     protected function register_controls(): void

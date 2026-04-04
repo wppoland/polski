@@ -1,24 +1,22 @@
 <?php
 
-use Polski\Enum\QuoteRequestStatus;
 use Polski\Plugin;
-use Polski\Repository\AffiliateRepository;
-use Polski\Repository\GiftCardRepository;
-use Polski\Repository\QuoteRequestRepository;
-use Polski\Repository\SubscriptionRepository;
 use Polski\Repository\WaitlistRepository;
 use Polski\Rest\SettingsController;
-use Polski\Service\AddOnsService;
-use Polski\Service\AffiliateService;
-use Polski\Service\ProductBundlesService;
-use Polski\Service\QuoteService;
-use Polski\Service\SubscriptionService;
-use Polski\Service\WaitlistService;
-use Polski\Service\GiftCardService;
+use Polski\Service\GPSRService;
+use Polski\Service\SecurityIncidentService;
+use Polski\Service\SiteAuditService;
+use Polski\Service\VerifiedReviewService;
 
 if (! defined('ABSPATH')) {
     exit(1);
 }
+
+if (! class_exists(Plugin::class)) {
+    require_once dirname(__DIR__) . '/polski.php';
+}
+
+Plugin::instance()->boot();
 
 $failures = [];
 $results = [];
@@ -92,51 +90,14 @@ $assert(is_array($generalSettings) && ($generalSettings['company_name'] ?? '') =
 $assert(is_array($moduleSettings) && ($moduleSettings['checkout_button'] ?? false) === true && ($moduleSettings['omnibus'] ?? false) === true, 'Wizard saves baseline module states', $results, $failures);
 
 update_option('polski_modules', [
-    'request_quote' => true,
-    'product_bundles' => true,
-    'gift_cards' => true,
-    'subscriptions' => true,
-    'affiliates' => true,
+    'checkout_button' => true,
+    'omnibus' => true,
+    'withdrawal' => true,
     'waitlist' => true,
-    'product_add_ons' => true,
-]);
-
-update_option('polski_quote', [
-    'enabled' => true,
-    'availability' => 'selected',
-    'show_on_single' => true,
-    'show_on_loop' => true,
-    'replace_add_to_cart' => true,
-    'hide_prices' => true,
-    'allow_guest' => true,
-    'privacy_required' => true,
-    'privacy_label' => 'Akceptuję kontakt w sprawie wyceny.',
-    'button_text' => 'Zapytaj o wycenę',
-    'submit_text' => 'Wyślij zapytanie',
-    'modal_title' => 'Zapytaj o wycenę',
-    'success_text' => 'Zapytanie zostało wysłane.',
-]);
-
-update_option('polski_bundles', [
-    'show_on_single' => true,
-    'show_total' => true,
-    'show_quantities' => true,
-]);
-
-update_option('polski_gift_cards', [
-    'show_on_single' => true,
-    'show_in_account' => true,
-]);
-
-update_option('polski_subscriptions', [
-    'show_on_single' => true,
-    'show_in_account' => true,
-]);
-
-update_option('polski_affiliates', [
-    'show_in_account' => true,
-    'commission_percent' => 7,
-    'pending_statuses' => 'processing,completed',
+    'gpsr' => true,
+    'dsa_toolkit' => true,
+    'verified_review' => true,
+    'security_incidents' => true,
 ]);
 
 update_option('polski_waitlist', [
@@ -144,41 +105,12 @@ update_option('polski_waitlist', [
     'allow_guests' => true,
 ]);
 
-update_option('polski_addons', [
-    'show_on_single' => true,
-]);
-
-$quoteProductId = $ensureProduct('produkt-quote', 'Produkt Quote', 123.0);
-update_post_meta($quoteProductId, '_polski_quote_enabled', 'yes');
-update_post_meta($quoteProductId, '_polski_quote_only', 'yes');
-update_post_meta($quoteProductId, '_polski_quote_min_qty', '2');
-
-$addOnProductId = $ensureProduct('produkt-dodatki', 'Produkt Dodatki', 50.0);
-update_post_meta($addOnProductId, '_polski_addons_config', "checkbox|Pakowanie na prezent|15|no||Eleganckie pakowanie||\ntext|Treść graweru|10|no||Maksymalnie 20 znaków|Np. Dla Ani|20");
-
-$bundleProductId = $ensureProduct('produkt-bundle', 'Produkt Bundle', 200.0);
-$bundleProductA = $ensureProduct('akcesorium-a', 'Akcesorium A', 20.0);
-$bundleProductB = $ensureProduct('akcesorium-b', 'Akcesorium B', 40.0);
-update_post_meta($bundleProductId, '_polski_bundle_items', $bundleProductA . ',' . $bundleProductB);
-update_post_meta($bundleProductId, '_polski_bundle_title', 'Dobierz akcesoria');
-update_post_meta($bundleProductId, '_polski_bundle_discount_type', 'percent');
-update_post_meta($bundleProductId, '_polski_bundle_discount_value', '10');
-update_post_meta($bundleProductId, '_polski_bundle_button_text', 'Dodaj zestaw');
-
-$giftProductId = $ensureProduct('karta-podarunkowa', 'Karta Podarunkowa', 50.0);
-update_post_meta($giftProductId, '_polski_gift_card_enabled', 'yes');
-update_post_meta($giftProductId, '_polski_gift_card_amounts', '50,100,200');
-update_post_meta($giftProductId, '_polski_gift_card_allow_custom_amount', 'yes');
-update_post_meta($giftProductId, '_polski_gift_card_min_amount', '25');
-update_post_meta($giftProductId, '_polski_gift_card_max_amount', '500');
-
-$subscriptionProductId = $ensureProduct('subskrypcja-test', 'Subskrypcja Test', 30.0);
-update_post_meta($subscriptionProductId, '_polski_subscription_enabled', 'yes');
-update_post_meta($subscriptionProductId, '_polski_subscription_interval', '1');
-update_post_meta($subscriptionProductId, '_polski_subscription_period', 'month');
-update_post_meta($subscriptionProductId, '_polski_subscription_length', '0');
-update_post_meta($subscriptionProductId, '_polski_subscription_signup_fee', '5');
-update_post_meta($subscriptionProductId, '_polski_subscription_trial_days', '7');
+$gpsrProductId = $ensureProduct('produkt-gpsr', 'Produkt GPSR', 123.0);
+update_post_meta($gpsrProductId, '_polski_gpsr_manufacturer_name', 'Smoke Manufacturer');
+update_post_meta($gpsrProductId, '_polski_gpsr_manufacturer_address', 'ul. Testowa 2, 00-002 Warszawa');
+update_post_meta($gpsrProductId, '_polski_gpsr_product_identifier', 'LOT-2026-001');
+update_post_meta($gpsrProductId, '_polski_gpsr_safety_warnings', 'Trzymaj z dala od dzieci.');
+update_post_meta($gpsrProductId, '_polski_gpsr_instructions', 'Używaj zgodnie z instrukcją.');
 
 $waitlistProductId = $ensureProduct('brakujacy-produkt', 'Brakujący Produkt', 80.0);
 $waitlistProduct = wc_get_product($waitlistProductId);
@@ -190,158 +122,72 @@ if ($waitlistProduct instanceof WC_Product) {
     $waitlistProduct->save();
 }
 
-$affiliateUser = get_user_by('login', 'affiliate_test');
-
-if (! $affiliateUser instanceof WP_User) {
-    $affiliateUserId = wp_create_user('affiliate_test', 'password', 'affiliate@example.com');
-    wp_update_user([
-        'ID' => $affiliateUserId,
-        'role' => 'customer',
-    ]);
-    $affiliateUser = get_user_by('id', $affiliateUserId);
-}
-
 $container = Plugin::instance()->container();
-
-/** @var QuoteService $quoteService */
-$quoteService = $container->get(QuoteService::class);
-/** @var QuoteRequestRepository $quoteRepository */
-$quoteRepository = $container->get(QuoteRequestRepository::class);
-/** @var WaitlistService $waitlistService */
-$waitlistService = $container->get(WaitlistService::class);
+/** @var GPSRService $gpsrService */
+$gpsrService = $container->get(GPSRService::class);
 /** @var WaitlistRepository $waitlistRepository */
 $waitlistRepository = $container->get(WaitlistRepository::class);
-/** @var AddOnsService $addOnsService */
-$addOnsService = $container->get(AddOnsService::class);
-/** @var ProductBundlesService $bundlesService */
-$bundlesService = $container->get(ProductBundlesService::class);
-/** @var GiftCardService $giftCardService */
-$giftCardService = $container->get(GiftCardService::class);
-/** @var GiftCardRepository $giftCardRepository */
-$giftCardRepository = $container->get(GiftCardRepository::class);
-/** @var SubscriptionService $subscriptionService */
-$subscriptionService = $container->get(SubscriptionService::class);
-/** @var SubscriptionRepository $subscriptionRepository */
-$subscriptionRepository = $container->get(SubscriptionRepository::class);
-/** @var AffiliateService $affiliateService */
-$affiliateService = $container->get(AffiliateService::class);
-/** @var AffiliateRepository $affiliateRepository */
-$affiliateRepository = $container->get(AffiliateRepository::class);
+/** @var SecurityIncidentService $securityIncidentService */
+$securityIncidentService = $container->get(SecurityIncidentService::class);
+/** @var SiteAuditService $siteAuditService */
+$siteAuditService = $container->get(SiteAuditService::class);
+/** @var VerifiedReviewService $verifiedReviewService */
+$verifiedReviewService = $container->get(VerifiedReviewService::class);
+$shortcodes = $container->get(\Polski\Shortcode\ShortcodeManager::class);
 
-$quoteProduct = wc_get_product($quoteProductId);
-$assert($quoteProduct instanceof WC_Product, 'Quote product created', $results, $failures);
-$assert($quoteProduct instanceof WC_Product && $quoteService->isAvailableForProduct($quoteProduct), 'Quote service enables configured product', $results, $failures);
-$assert($quoteProduct instanceof WC_Product && str_contains($quoteService->filterPriceHtml('123', $quoteProduct), 'polski-quote-price-placeholder'), 'Quote-only price placeholder renders', $results, $failures);
+$gpsrData = $gpsrService->getGPSRData(wc_get_product($gpsrProductId));
+$assert(($gpsrData['manufacturer_name'] ?? '') === 'Smoke Manufacturer', 'GPSR data is readable from product meta', $results, $failures);
+$assert($shortcodes->gpsrInfo(['product' => (string) $gpsrProductId]) !== '', 'GPSR shortcode renders for explicit product attribute', $results, $failures);
 
-$quoteBefore = $quoteRepository->countByStatus(QuoteRequestStatus::New);
-$_POST = [
-    '_polski_quote_nonce' => wp_create_nonce('polski_quote_request'),
-    'polski_quote_product_id' => (string) $quoteProductId,
-    'polski_quote_variation_id' => '0',
-    'polski_quote_source_url' => home_url('/?product=produkt-quote'),
-    'polski_quote_name' => 'Jan Kowalski',
-    'polski_quote_email' => 'smoke-quote@example.com',
-    'polski_quote_phone' => '500600700',
-    'polski_quote_company' => 'ACME',
-    'polski_quote_nip' => '5252445763',
-    'polski_quote_postcode' => '00-001',
-    'polski_quote_quantity' => '2',
-    'polski_quote_message' => 'Smoke test quote request',
-    'polski_quote_privacy' => '1',
-];
-$_REQUEST = $_POST;
-$storeRequest = new ReflectionMethod($quoteService, 'storeRequestFromCurrentPayload');
-$storeRequest->setAccessible(true);
-$quoteResult = $storeRequest->invoke($quoteService, false);
-$quoteAfter = $quoteRepository->countByStatus(QuoteRequestStatus::New);
-$assert(is_array($quoteResult) && ($quoteResult['success'] ?? false) === true, 'Quote request submission succeeds', $results, $failures);
-$assert($quoteAfter === $quoteBefore + 1, 'Quote request saved in repository', $results, $failures);
+$waitlistRepository->subscribe($waitlistProductId, 'waitlist@example.com', null);
+$pending = $waitlistRepository->findPendingByProduct($waitlistProductId);
+$assert(count($pending) === 1, 'Waitlist stores subscription for out-of-stock product', $results, $failures);
 
-$waitlistBefore = count($waitlistRepository->findPendingByProduct($waitlistProductId));
-$waitlistRenderCheck = new ReflectionMethod($waitlistService, 'shouldRenderForProduct');
-$waitlistRenderCheck->setAccessible(true);
-$waitlistCanRender = $waitlistProduct instanceof WC_Product ? (bool) $waitlistRenderCheck->invoke($waitlistService, $waitlistProduct) : false;
-$waitlistEmail = 'smoke-waitlist+' . wp_generate_password(8, false, false) . '@example.com';
-if ($waitlistCanRender) {
-    $waitlistRepository->subscribe($waitlistProductId, $waitlistEmail, null);
-}
-$waitlistAfter = count($waitlistRepository->findPendingByProduct($waitlistProductId));
-$assert($waitlistCanRender, 'Waitlist logic allows out-of-stock product signups', $results, $failures);
-$assert($waitlistAfter === $waitlistBefore + 1, 'Waitlist subscription saved in repository', $results, $failures);
+$dsaForm = $shortcodes->dsaReport();
+$assert($dsaForm !== '', 'DSA shortcode renders a report form when the module is enabled', $results, $failures);
 
-$addOnProduct = wc_get_product($addOnProductId);
-$addOns = $addOnProduct instanceof WC_Product ? $addOnsService->getAddOns($addOnProduct) : [];
-$assert(count($addOns) === 2, 'Product add-ons parser returns configured fields', $results, $failures);
+$incidentId = $securityIncidentService->createIncident([
+    'reported_at' => '2026-04-04T09:30',
+    'type' => 'vulnerability',
+    'severity' => 'high',
+    'title' => 'Smoke test security incident',
+    'affected_area' => 'Checkout',
+    'notes' => 'Synthetic record created by smoke tests.',
+]);
+$assert($incidentId !== '', 'Security incident service stores a new incident', $results, $failures);
+$assert($securityIncidentService->countOpenIncidents() >= 1, 'Security incident service counts open incidents', $results, $failures);
 
-$bundleProduct = wc_get_product($bundleProductId);
-$bundleItems = $bundleProduct instanceof WC_Product ? $bundlesService->getBundleItems($bundleProduct) : [];
-$assert(count($bundleItems) === 2, 'Bundle parser returns linked products', $results, $failures);
+$guestOrder = wc_create_order([
+    'customer_id' => 0,
+]);
 
-$giftOrder = wc_create_order();
-$giftOrder->set_billing_email('gift-buyer@example.com');
-$giftProduct = wc_get_product($giftProductId);
-
-if ($giftProduct instanceof WC_Product) {
-    $giftItem = new WC_Order_Item_Product();
-    $giftItem->set_product($giftProduct);
-    $giftItem->set_quantity(1);
-    $giftItem->set_subtotal(100.0);
-    $giftItem->set_total(100.0);
-    $giftItem->add_meta_data('_polski_gift_card_purchase', wp_json_encode([
-        'recipient_name' => 'Anna',
-        'recipient_email' => 'anna@example.com',
-        'sender_name' => 'Jan',
-        'message' => 'Powodzenia',
-        'amount' => 100,
-        'currency' => get_woocommerce_currency(),
-    ]), true);
-    $giftOrder->add_item($giftItem);
+if ($guestOrder instanceof WC_Order) {
+    $guestOrder->set_billing_email('guest-review@example.com');
+    $guestOrder->add_product(wc_get_product($gpsrProductId), 1);
+    $guestOrder->calculate_totals(false);
+    $guestOrder->payment_complete();
+    $guestOrder->update_status('completed');
+    $guestOrder->save();
 }
 
-$giftOrder->calculate_totals();
-$giftOrder->save();
-$giftCardService->createGiftCardsFromOrder($giftOrder->get_id());
-$giftCards = $giftCardRepository->findByOrder($giftOrder->get_id());
-$assert(count($giftCards) === 1, 'Gift card order creates a gift card record', $results, $failures);
+$guestCommentId = wp_insert_comment([
+    'comment_post_ID' => $gpsrProductId,
+    'comment_author' => 'Guest Reviewer',
+    'comment_author_email' => 'guest-review@example.com',
+    'comment_content' => 'Guest review content',
+    'comment_type' => 'review',
+    'comment_approved' => 1,
+    'user_id' => 0,
+]);
 
-$subscriptionOrder = wc_create_order();
-$subscriptionOrder->set_billing_email('subscription-buyer@example.com');
-$subscriptionProduct = wc_get_product($subscriptionProductId);
+$guestComment = $guestCommentId ? get_comment($guestCommentId) : null;
+$guestBadgeHtml = $guestComment instanceof WP_Comment ? $verifiedReviewService->appendBadge('Guest review content', $guestComment) : '';
+$assert(str_contains($guestBadgeHtml, 'polski-verified-badge'), 'Verified purchase badge works for guest purchases matched by email', $results, $failures);
 
-if ($subscriptionProduct instanceof WC_Product) {
-    $subscriptionOrder->add_product($subscriptionProduct, 1);
-}
-
-$subscriptionOrder->calculate_totals();
-$subscriptionOrder->save();
-$subscriptionService->activateSubscriptionsFromOrder($subscriptionOrder->get_id());
-$subscription = $subscriptionRepository->findByOrderAndProduct($subscriptionOrder->get_id(), $subscriptionProductId);
-$assert($subscription !== null, 'Subscription order creates subscription record', $results, $failures);
-
-wp_set_current_user($affiliateUser instanceof WP_User ? (int) $affiliateUser->ID : 0);
-$affiliate = $affiliateService->getOrCreateAffiliate();
-$assert($affiliate !== null, 'Affiliate account is created for current user', $results, $failures);
-
-if ($affiliate !== null) {
-    $affiliateOrder = wc_create_order();
-    $affiliateOrder->set_billing_email('buyer@example.com');
-
-    $affiliateProduct = wc_get_product($bundleProductA);
-
-    if ($affiliateProduct instanceof WC_Product) {
-        $affiliateOrder->add_product($affiliateProduct, 3);
-    }
-
-    $affiliateOrder->calculate_totals();
-    $affiliateOrder->update_meta_data('_polski_affiliate_id', $affiliate->id);
-    $affiliateOrder->update_meta_data('_polski_affiliate_token', $affiliate->token);
-    $affiliateOrder->save();
-    $affiliateOrder->set_status('processing');
-    $affiliateOrder->save();
-
-    $affiliateService->registerReferralForOrder($affiliateOrder->get_id());
-    $assert($affiliateRepository->referralExists($affiliate->id, $affiliateOrder->get_id()), 'Affiliate referral is registered for qualifying order', $results, $failures);
-}
+$auditResults = $siteAuditService->runAudit();
+$auditLabels = array_map(static fn (array $result): string => (string) ($result['label'] ?? ''), $auditResults);
+$assert(in_array('Rejestr DPA (umowy powierzenia)', $auditLabels, true), 'Site audit includes DPA registry coverage', $results, $failures);
+$assert(in_array('Rejestr incydentow bezpieczenstwa', $auditLabels, true), 'Site audit includes security incident coverage', $results, $failures);
 
 foreach ($results as $result) {
     echo $result . PHP_EOL;

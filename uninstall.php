@@ -12,27 +12,59 @@ defined('WP_UNINSTALL_PLUGIN') || exit;
 
 global $wpdb;
 
+$generalSettings = get_option('polski_general', []);
+$generalSettings = is_array($generalSettings) ? $generalSettings : [];
+
+$deleteData = (bool) apply_filters(
+    'polski/uninstall/delete_data',
+    (bool) ($generalSettings['remove_data_on_uninstall'] ?? false),
+);
+
+if (! $deleteData) {
+    return;
+}
+
 // Drop custom tables.
 $tables = [
     $wpdb->prefix . 'polski_price_history',
     $wpdb->prefix . 'polski_consent_log',
     $wpdb->prefix . 'polski_withdrawals',
+    $wpdb->prefix . 'polski_wishlist_items',
+    $wpdb->prefix . 'polski_compare_items',
+    $wpdb->prefix . 'polski_waitlist',
+    $wpdb->prefix . 'polski_dsa_reports',
     $wpdb->prefix . 'polski_migrations',
 ];
 
 foreach ($tables as $table) {
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
     $wpdb->query("DROP TABLE IF EXISTS {$table}");
 }
 
 // Remove plugin options.
-$wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE 'polski\_%'");
+$wpdb->query(
+    $wpdb->prepare(
+        "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+        'polski\_%',
+    ),
+);
 
 // Remove product meta.
-$wpdb->query("DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE '\_polski\_%'");
+$wpdb->query(
+    $wpdb->prepare(
+        "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s",
+        '\_polski\_%',
+    ),
+);
 
 // Remove order meta (HPOS).
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}wc_orders_meta'") !== null) {
-    $wpdb->query("DELETE FROM {$wpdb->prefix}wc_orders_meta WHERE meta_key LIKE '\_polski\_%'");
+if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->prefix . 'wc_orders_meta')) !== null) {
+    $wpdb->query(
+        $wpdb->prepare(
+            "DELETE FROM {$wpdb->prefix}wc_orders_meta WHERE meta_key LIKE %s",
+            '\_polski\_%',
+        ),
+    );
 }
 
 // Remove custom taxonomy terms.

@@ -12,6 +12,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <div class="polski-waitlist" data-polski-waitlist>
     <?php if (! empty($settings['show_title'])) : ?>
