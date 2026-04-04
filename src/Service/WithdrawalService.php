@@ -13,7 +13,7 @@ use Polski\Repository\WithdrawalRepository;
 use Polski\Util\TemplateLoader;
 
 /**
- * 14-day consumer withdrawal right (prawo odstąpienia od umowy).
+ * 14-day consumer withdrawal right.
  *
  * Handles the full flow: eligibility check, request creation, confirmation,
  * completion, and email notifications.
@@ -147,7 +147,7 @@ final class WithdrawalService implements Bootable, HasHooks
         if ($request !== null) {
             // Add order note.
             $order->add_order_note(
-                (string) ($this->getSettings()['requested_order_note'] ?? __('Klient złożył wniosek o odstąpienie od umowy.', 'polski')),
+                (string) ($this->getSettings()['requested_order_note'] ?? __('Customer has submitted a withdrawal request.', 'polski')),
                 false,
                 true,
             );
@@ -178,7 +178,7 @@ final class WithdrawalService implements Bootable, HasHooks
             $order = wc_get_order($request->orderId);
             if ($order instanceof \WC_Order) {
                 $order->add_order_note(
-                    (string) ($this->getSettings()['confirmed_order_note'] ?? __('Wniosek o odstąpienie potwierdzony.', 'polski')),
+                    (string) ($this->getSettings()['confirmed_order_note'] ?? __('Withdrawal request confirmed.', 'polski')),
                     true,
                     true,
                 );
@@ -265,20 +265,20 @@ final class WithdrawalService implements Bootable, HasHooks
         $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
 
         if (! wp_verify_nonce($nonce, 'polski_withdrawal_' . $orderId)) {
-            wc_add_notice((string) ($this->getSettings()['invalid_nonce_text'] ?? __('Ups, coś poszło nie tak po naszej stronie. Spróbuj ponownie, proszę!', 'polski')), 'error');
+            wc_add_notice((string) ($this->getSettings()['invalid_nonce_text'] ?? __('Oops, something went wrong on our side. Please try again!', 'polski')), 'error');
             return;
         }
 
         $order = wc_get_order($orderId);
 
         if (! $order instanceof \WC_Order) {
-            wc_add_notice((string) ($this->getSettings()['order_not_found_text'] ?? __('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski')), 'error');
+            wc_add_notice((string) ($this->getSettings()['order_not_found_text'] ?? __('Unfortunately, we could not find such an order.', 'polski')), 'error');
             return;
         }
 
         // Verify ownership.
         if ($order->get_customer_id() !== get_current_user_id()) {
-            wc_add_notice((string) ($this->getSettings()['permission_error_text'] ?? __('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski')), 'error');
+            wc_add_notice((string) ($this->getSettings()['permission_error_text'] ?? __('You do not have permission to withdraw from this order.', 'polski')), 'error');
             return;
         }
 
@@ -290,12 +290,12 @@ final class WithdrawalService implements Bootable, HasHooks
 
         if ($request !== null) {
             wc_add_notice(
-                (string) ($this->getSettings()['success_text'] ?? __('Twój wniosek o zwrot został przyjęty. Niedługo wyślemy Ci potwierdzenie na e-mail!', 'polski')),
+                (string) ($this->getSettings()['success_text'] ?? __('Your return request has been accepted. We will send you a confirmation email shortly!', 'polski')),
                 'success',
             );
         } else {
             wc_add_notice(
-                (string) ($this->getSettings()['not_eligible_text'] ?? __('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski')),
+                (string) ($this->getSettings()['not_eligible_text'] ?? __('This order is not eligible for withdrawal.', 'polski')),
                 'error',
             );
         }
@@ -317,7 +317,7 @@ final class WithdrawalService implements Bootable, HasHooks
         $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
 
         if (! wp_verify_nonce($nonce, 'polski_oneclick_' . $orderId)) {
-            wc_add_notice(__('Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie.', 'polski'), 'error');
+            wc_add_notice(__('Invalid security token. Please try again.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
             exit;
         }
@@ -325,19 +325,19 @@ final class WithdrawalService implements Bootable, HasHooks
         $order = wc_get_order($orderId);
 
         if (! $order instanceof \WC_Order) {
-            wc_add_notice(__('Nie znaleziono zamówienia.', 'polski'), 'error');
+            wc_add_notice(__('Order not found.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
             exit;
         }
 
         if ($order->get_customer_id() !== get_current_user_id()) {
-            wc_add_notice(__('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski'), 'error');
+            wc_add_notice(__('You do not have permission to withdraw from this order.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
             exit;
         }
 
         if (! $this->isEligible($order)) {
-            wc_add_notice(__('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski'), 'error');
+            wc_add_notice(__('This order is not eligible for withdrawal.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
             exit;
         }
@@ -355,11 +355,11 @@ final class WithdrawalService implements Bootable, HasHooks
 
             if ($request !== null) {
                 wc_add_notice(
-                    (string) ($this->getSettings()['success_text'] ?? __('Twój wniosek o odstąpienie od umowy został przyjęty.', 'polski')),
+                    (string) ($this->getSettings()['success_text'] ?? __('Your withdrawal request has been accepted.', 'polski')),
                     'success',
                 );
             } else {
-                wc_add_notice(__('Nie udało się złożyć wniosku o odstąpienie.', 'polski'), 'error');
+                wc_add_notice(__('Failed to submit the withdrawal request.', 'polski'), 'error');
             }
 
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
@@ -397,10 +397,10 @@ final class WithdrawalService implements Bootable, HasHooks
 
         printf(
             '<h2>%s</h2><p>%s: <strong>%s</strong></p><p>%s: %s</p>',
-            esc_html((string) ($this->getSettings()['status_heading'] ?? __('Wniosek o odstąpienie', 'polski'))),
+            esc_html((string) ($this->getSettings()['status_heading'] ?? __('Withdrawal request', 'polski'))),
             esc_html((string) ($this->getSettings()['status_label'] ?? __('Status', 'polski'))),
             esc_html($request->status->label()),
-            esc_html((string) ($this->getSettings()['submitted_label'] ?? __('Złożono', 'polski'))),
+            esc_html((string) ($this->getSettings()['submitted_label'] ?? __('Submitted', 'polski'))),
             esc_html($request->requestedAt->format((string) ($this->getSettings()['status_date_format'] ?? 'Y-m-d H:i'))),
         );
     }
@@ -415,7 +415,7 @@ final class WithdrawalService implements Bootable, HasHooks
         $fields = [
             'reason' => [
                 'type' => 'textarea',
-                'label' => (string) ($this->getSettings()['reason_label'] ?? __('Powód odstąpienia (opcjonalnie)', 'polski')),
+                'label' => (string) ($this->getSettings()['reason_label'] ?? __('Reason for withdrawal (optional)', 'polski')),
                 'required' => false,
             ],
         ];

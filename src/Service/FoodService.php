@@ -51,7 +51,7 @@ final class FoodService
 
         return sprintf(
             '<div class="polski-ingredients"><span class="polski-ingredients__label">%s:</span> <span>%s</span></div>',
-            esc_html((string) ($this->getSettings()['ingredients_label'] ?? __('Składniki', 'polski'))),
+            esc_html((string) ($this->getSettings()['ingredients_label'] ?? __('Ingredients', 'polski'))),
             esc_html($ingredients),
         );
     }
@@ -89,7 +89,7 @@ final class FoodService
 
         return sprintf(
             '<div class="polski-allergens"><span class="polski-allergens__label">%s:</span> <strong>%s</strong></div>',
-            esc_html((string) ($this->getSettings()['allergens_label'] ?? __('Alergeny', 'polski'))),
+            esc_html((string) ($this->getSettings()['allergens_label'] ?? __('Allergens', 'polski'))),
             esc_html(implode(', ', $allergens)),
         );
     }
@@ -155,10 +155,10 @@ final class FoodService
                     <tbody>%s</tbody>
                 </table>
             </div>',
-            esc_html((string) ($this->getSettings()['nutrients_caption_prefix'] ?? __('Wartości odżywcze na', 'polski'))),
+            esc_html((string) ($this->getSettings()['nutrients_caption_prefix'] ?? __('Nutrition facts per', 'polski'))),
             esc_html($referenceUnit),
-            esc_html((string) ($this->getSettings()['nutrients_column_name'] ?? __('Składnik odżywczy', 'polski'))),
-            esc_html((string) ($this->getSettings()['nutrients_column_value'] ?? __('Wartość', 'polski'))),
+            esc_html((string) ($this->getSettings()['nutrients_column_name'] ?? __('Nutrient', 'polski'))),
+            esc_html((string) ($this->getSettings()['nutrients_column_value'] ?? __('Value', 'polski'))),
             $rows,
         );
     }
@@ -236,7 +236,7 @@ final class FoodService
 
         return sprintf(
             '<div class="polski-alcohol"><span class="polski-alcohol__label">%s:</span> %s%s</div>',
-            esc_html((string) ($this->getSettings()['alcohol_label'] ?? __('Zawartość alkoholu', 'polski'))),
+            esc_html((string) ($this->getSettings()['alcohol_label'] ?? __('Alcohol content', 'polski'))),
             esc_html($content),
             esc_html((string) ($this->getSettings()['alcohol_suffix'] ?? __('% vol.', 'polski'))),
         );
@@ -282,7 +282,7 @@ final class FoodService
         if ((bool) ($this->getSettings()['show_origin'] ?? true) && $origin !== '') {
             $parts[] = sprintf(
                 '<div class="polski-origin"><span class="polski-origin__label">%s:</span> %s</div>',
-                esc_html((string) ($this->getSettings()['origin_label'] ?? __('Kraj pochodzenia', 'polski'))),
+                esc_html((string) ($this->getSettings()['origin_label'] ?? __('Country of origin', 'polski'))),
                 esc_html($origin),
             );
         }
@@ -290,7 +290,7 @@ final class FoodService
         if ((bool) ($this->getSettings()['show_distributor'] ?? true) && $distributor !== '') {
             $parts[] = sprintf(
                 '<div class="polski-distributor"><span class="polski-distributor__label">%s:</span> %s</div>',
-                esc_html((string) ($this->getSettings()['distributor_label'] ?? __('Dystrybutor', 'polski'))),
+                esc_html((string) ($this->getSettings()['distributor_label'] ?? __('Distributor', 'polski'))),
                 esc_html($distributor),
             );
         }
@@ -298,7 +298,7 @@ final class FoodService
         if ((bool) ($this->getSettings()['show_net_filling'] ?? true) && $netFilling !== '') {
             $parts[] = sprintf(
                 '<div class="polski-net-filling"><span class="polski-net-filling__label">%s:</span> %s</div>',
-                esc_html((string) ($this->getSettings()['net_filling_label'] ?? __('Zawartość netto', 'polski'))),
+                esc_html((string) ($this->getSettings()['net_filling_label'] ?? __('Net content', 'polski'))),
                 esc_html($netFilling),
             );
         }

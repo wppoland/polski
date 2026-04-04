@@ -93,7 +93,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         if ($activated === 'no') {
             return new \WP_Error(
                 'polski_doi_not_activated',
-                (string) ($this->settings['login_blocked_text'] ?? __('Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link.', 'polski')),
+                (string) ($this->settings['login_blocked_text'] ?? __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')),
             );
         }
 
@@ -115,7 +115,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         $storedToken = get_user_meta($userId, '_polski_doi_token', true);
 
         if (! hash_equals((string) $storedToken, $token)) {
-            wc_add_notice((string) ($this->settings['invalid_link_text'] ?? __('Nieprawidłowy link aktywacyjny.', 'polski')), 'error');
+            wc_add_notice((string) ($this->settings['invalid_link_text'] ?? __('Invalid activation link.', 'polski')), 'error');
             wp_safe_redirect(wc_get_page_permalink('myaccount'));
             exit;
         }
@@ -130,7 +130,7 @@ final class DoubleOptInService implements Bootable, HasHooks
          */
         do_action('polski/doi/confirmed', $userId);
 
-        wc_add_notice((string) ($this->settings['activation_success_text'] ?? __('Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować.', 'polski')), 'success');
+        wc_add_notice((string) ($this->settings['activation_success_text'] ?? __('Great! Your account is now activated. You can now log in.', 'polski')), 'success');
         wp_safe_redirect(wc_get_page_permalink('myaccount'));
         exit;
     }

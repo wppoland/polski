@@ -102,7 +102,7 @@ final class SettingsController extends RestController implements HasHooks
 
         if (! isset($this->defaults[$optionKey])) {
             return new WP_REST_Response(
-                ['message' => __('Nieznana grupa ustawień.', 'polski')],
+                ['message' => __('Unknown settings group.', 'polski')],
                 404,
             );
         }
@@ -140,7 +140,7 @@ final class SettingsController extends RestController implements HasHooks
             $checkout = [];
         }
 
-        $checkout['order_button_text'] = sanitize_text_field($params['order_button_text'] ?? __('Zamawiam z obowiązkiem zapłaty', 'polski'));
+        $checkout['order_button_text'] = sanitize_text_field($params['order_button_text'] ?? __('I order with an obligation to pay', 'polski'));
         $checkout['terms_checkbox_enabled'] = (bool) ($params['terms_enabled'] ?? true);
         $checkout['privacy_checkbox_enabled'] = (bool) ($params['privacy_enabled'] ?? true);
         $checkout['withdrawal_checkbox_enabled'] = (bool) ($params['withdrawal_enabled'] ?? true);
@@ -183,7 +183,7 @@ final class SettingsController extends RestController implements HasHooks
 
         return new WP_REST_Response([
             'success' => true,
-            'message' => __('Kreator został zakończony.', 'polski'),
+            'message' => __('Wizard completed.', 'polski'),
         ], 200);
     }
 
@@ -194,7 +194,7 @@ final class SettingsController extends RestController implements HasHooks
 
         if (! isset($this->defaults[$optionKey])) {
             return new WP_REST_Response(
-                ['message' => __('Nieznana grupa ustawień.', 'polski')],
+                ['message' => __('Unknown settings group.', 'polski')],
                 404,
             );
         }

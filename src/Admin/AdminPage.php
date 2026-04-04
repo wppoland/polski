@@ -52,7 +52,7 @@ final class AdminPage implements Bootable, HasHooks
     {
         $settingsLink = sprintf(
             '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')),
+            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')),
             esc_html__('Ustawienia', 'polski'),
         );
 
@@ -159,11 +159,11 @@ final class AdminPage implements Bootable, HasHooks
         $response = $controller->completeWizard($request);
 
         if ($response->get_status() >= 400) {
-            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=wizard'));
+            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules'));
             exit;
         }
 
-        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=dashboard'));
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));
         exit;
     }
 
@@ -475,9 +475,22 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '<aside aria-label="' . esc_attr__('Help and feedback', 'polski') . '">';
 
+        // GitHub links first
         echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
-        echo '<h2 style="margin-top:0;">' . esc_html__('Share feedback', 'polski') . '</h2>';
-        echo '<p style="color:#50575e;">' . esc_html__('Not technical? Send a quick note straight from the plugin. Tell us what feels unclear, what should be easier, or what we should add next.', 'polski') . '</p>';
+        echo '<h2 style="margin-top:0;">' . esc_html__('Need help or want to report something?', 'polski') . '</h2>';
+        echo '<p style="color:#50575e;">' . esc_html__('Use the path that fits the type of feedback. This keeps support easier for everyone.', 'polski') . '</p>';
+        echo '<p><a class="button" href="' . esc_url(self::GITHUB_ISSUES_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Issues', 'polski') . '</a></p>';
+        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for reproducible bugs and clear technical problems.', 'polski') . '</p>';
+        echo '<p><a class="button" href="' . esc_url(self::GITHUB_DISCUSSIONS_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Discussions', 'polski') . '</a></p>';
+        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for questions, ideas, edge cases, and non-urgent conversations.', 'polski') . '</p>';
+        echo '</div>';
+
+        // Feedback form - collapsible
+        echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
+        $feedbackOpen = isset($_GET['polski_feedback_saved']) || isset($_GET['polski_feedback_error']) ? ' open' : '';
+        echo '<details' . $feedbackOpen . '>';
+        echo '<summary style="cursor:pointer;font-weight:600;font-size:14px;padding:4px 0;">' . esc_html__('Share feedback', 'polski') . '</summary>';
+        echo '<p style="color:#50575e;margin-top:12px;">' . esc_html__('Not technical? Send a quick note straight from the plugin. Tell us what feels unclear, what should be easier, or what we should add next.', 'polski') . '</p>';
         if (isset($_GET['polski_feedback_saved'])) {
             echo '<div class="notice notice-success inline"><p>' . esc_html__('Thanks, your feedback has been saved.', 'polski') . '</p></div>';
         } elseif (isset($_GET['polski_feedback_error'])) {
@@ -509,15 +522,7 @@ final class AdminPage implements Bootable, HasHooks
         echo '<p style="margin-top:-4px;margin-bottom:12px;color:#646970;font-size:12px;">' . esc_html__('Do not include passwords, licence keys, or customer personal data.', 'polski') . '</p>';
         echo '<p style="margin-bottom:0;"><button type="submit" class="button button-primary">' . esc_html__('Send feedback', 'polski') . '</button></p>';
         echo '</form>';
-        echo '</div>';
-
-        echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
-        echo '<h2 style="margin-top:0;">' . esc_html__('Need help or want to report something?', 'polski') . '</h2>';
-        echo '<p style="color:#50575e;">' . esc_html__('Use the path that fits the type of feedback. This keeps support easier for everyone.', 'polski') . '</p>';
-        echo '<p><a class="button" href="' . esc_url(self::GITHUB_DISCUSSIONS_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Discussions', 'polski') . '</a></p>';
-        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for questions, ideas, edge cases, and non-urgent conversations.', 'polski') . '</p>';
-        echo '<p><a class="button" href="' . esc_url(self::GITHUB_ISSUES_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Issues', 'polski') . '</a></p>';
-        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for reproducible bugs and clear technical problems.', 'polski') . '</p>';
+        echo '</details>';
         echo '</div>';
 
         echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
@@ -700,7 +705,7 @@ final class AdminPage implements Bootable, HasHooks
         // Dashboard header
         echo '<div style="background: linear-gradient(135deg, #0073aa 0%, #00a0d2 100%); padding: 40px; border-radius: 12px; color: #fff; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
         echo '<h2 style="color:#fff; margin:0 0 10px; font-size:28px; font-weight:700;">' . esc_html__('Dzień dobry!', 'polski') . '</h2>';
-        echo '<p style="font-size:16px; margin:0; opacity:0.9;">' . esc_html__('Narzedzia wspomagajace dostosowanie sklepu do polskich wymagan.', 'polski') . '</p>';
+        echo '<p style="font-size:16px; margin:0; opacity:0.9;">' . esc_html__('Narzędzia wspomagające dostosowanie sklepu do polskich wymagań.', 'polski') . '</p>';
         echo '</div>';
 
         // Quick Setup Alert
@@ -708,7 +713,7 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div style="background:#fff; border-left:4px solid #f0ad4e; padding:20px; margin-bottom:30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">';
             echo '<h3 style="margin-top:0; color:#856404;">' . esc_html__('Dokończ konfigurację', 'polski') . '</h3>';
             echo '<p>' . esc_html__('Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi.', 'polski') . '</p>';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '" class="button button-primary">' . esc_html__('Uzupełnij dane firmy', 'polski') . '</a>';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button button-primary">' . esc_html__('Uzupełnij dane firmy', 'polski') . '</a>';
             echo '</div>';
         }
 
@@ -849,7 +854,7 @@ final class AdminPage implements Bootable, HasHooks
             'html' => sprintf(
                 '%s',
                 (string) ($generalSettings['admin_next_steps_publish_pages']
-                    ?? __('Opublikuj swoje strony prawne (Regulamin, Polityka prywatnosci, Prawo odstapienia, Reklamacje).', 'polski')),
+                    ?? __('Opublikuj swoje strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje).', 'polski')),
             ),
             'done' => $allPagesConfigured,
         ];
@@ -869,7 +874,7 @@ final class AdminPage implements Bootable, HasHooks
         // 3. Shipping zones.
         $shippingZones = function_exists('WC') ? \WC_Shipping_Zones::get_zones() : [];
         /* translators: %s: shipping settings URL */
-        $shippingText = __('Skonfiguruj <a href="%s">strefy wysylki</a> dla dostaw w Polsce.', 'polski');
+        $shippingText = __('Skonfiguruj <a href="%s">strefy wysyłki</a> dla dostaw w Polsce.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_shipping'] ?? $shippingText),
@@ -880,7 +885,7 @@ final class AdminPage implements Bootable, HasHooks
 
         // 4. Product data.
         /* translators: %s: product list URL */
-        $productsText = __('Uzupelnij dane produktow - dodaj ceny jednostkowe i czas dostawy w <a href="%s">zakladce Polski</a> przy kazdym produkcie.', 'polski');
+        $productsText = __('Uzupełnij dane produktów - dodaj ceny jednostkowe i czas dostawy w <a href="%s">zakładce Polski</a> przy każdym produkcie.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_products'] ?? $productsText),
@@ -891,7 +896,7 @@ final class AdminPage implements Bootable, HasHooks
 
         // 5. Checkout test.
         /* translators: %s: checkout URL */
-        $checkoutText = __('Przetestuj proces zamowienia - dodaj produkt do koszyka i sprawdz pola wyboru oraz tekst przycisku w <a href="%s">zamowieniu</a>.', 'polski');
+        $checkoutText = __('Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź pola wyboru oraz tekst przycisku w <a href="%s">zamówieniu</a>.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_checkout'] ?? $checkoutText),

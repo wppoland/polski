@@ -49,31 +49,31 @@ final class SiteAuditService implements HasHooks
         $failures = count(array_filter($results, static fn(array $r): bool => $r['status'] === self::STATUS_FAIL));
 
         echo '<div class="wrap">';
-        echo '<h1>' . esc_html__('Audyt zgodności sklepu', 'polski') . '</h1>';
-        echo '<p>' . esc_html__('Automatyczna weryfikacja najczęstszych problemów polskich sklepów WooCommerce.', 'polski') . '</p>';
+        echo '<h1>' . esc_html__('Shop compliance audit', 'polski') . '</h1>';
+        echo '<p>' . esc_html__('Automatic verification of common issues for Polish WooCommerce shops.', 'polski') . '</p>';
 
         echo '<div style="display:flex;gap:20px;margin:20px 0;">';
         printf(
             '<div style="padding:15px 25px;background:#46b450;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
             $passed,
-            esc_html__('OK', 'polski'),
+            esc_html__('Passed', 'polski'),
         );
         printf(
             '<div style="padding:15px 25px;background:#f0ad4e;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
             $warnings,
-            esc_html__('Ostrzeżenia', 'polski'),
+            esc_html__('Warnings', 'polski'),
         );
         printf(
             '<div style="padding:15px 25px;background:#dc3232;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
             $failures,
-            esc_html__('Problemy', 'polski'),
+            esc_html__('Issues', 'polski'),
         );
         echo '</div>';
 
         echo '<table class="widefat fixed striped"><thead><tr>';
         echo '<th style="width:40px;">' . esc_html__('Status', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Sprawdzenie', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Szczegóły', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Check', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Details', 'polski') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($results as $check) {
@@ -127,7 +127,7 @@ final class SiteAuditService implements HasHooks
      */
     private function checkLegalPages(): array
     {
-        $label = __('Strony prawne (regulamin, polityka prywatności)', 'polski');
+        $label = __('Legal pages (Terms, Privacy Policy)', 'polski');
 
         $termsPageId = (int) get_option('woocommerce_terms_page_id', 0);
         $privacyPageId = (int) get_option('wp_page_for_privacy_policy', 0);
@@ -135,18 +135,18 @@ final class SiteAuditService implements HasHooks
         $missingPages = [];
 
         if ($termsPageId <= 0 || get_post_status($termsPageId) !== 'publish') {
-            $missingPages[] = __('regulamin', 'polski');
+            $missingPages[] = __('Terms', 'polski');
         }
 
         if ($privacyPageId <= 0 || get_post_status($privacyPageId) !== 'publish') {
-            $missingPages[] = __('polityka prywatności', 'polski');
+            $missingPages[] = __('Privacy Policy', 'polski');
         }
 
         if (count($missingPages) === 0) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Strony regulaminu i polityki prywatności są ustawione i opublikowane.', 'polski'),
+                'detail' => __('Terms and Privacy Policy pages are set and published.', 'polski'),
             ];
         }
 
@@ -155,7 +155,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %s: comma-separated list of missing pages */
-                __('Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane.', 'polski'),
+                __('Missing pages: %s. Set them in WooCommerce > Settings > Advanced.', 'polski'),
                 implode(', ', $missingPages),
             ),
         ];
@@ -168,14 +168,14 @@ final class SiteAuditService implements HasHooks
      */
     private function checkPrivacyPolicy(): array
     {
-        $label = __('Treść polityki prywatności', 'polski');
+        $label = __('Privacy Policy content', 'polski');
         $privacyPageId = (int) get_option('wp_page_for_privacy_policy', 0);
 
         if ($privacyPageId <= 0) {
             return [
                 'status' => self::STATUS_FAIL,
                 'label'  => $label,
-                'detail' => __('Strona polityki prywatności nie jest ustawiona.', 'polski'),
+                'detail' => __('Privacy Policy page is not set.', 'polski'),
             ];
         }
 
@@ -185,7 +185,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_FAIL,
                 'label'  => $label,
-                'detail' => __('Strona polityki prywatności nie jest opublikowana.', 'polski'),
+                'detail' => __('Privacy Policy page is not published.', 'polski'),
             ];
         }
 
@@ -198,7 +198,7 @@ final class SiteAuditService implements HasHooks
                 'label'  => $label,
                 'detail' => sprintf(
                     /* translators: %d: character count */
-                    __('Polityka prywatności ma tylko %d znaków - może być zbyt krótka, aby spełnić wymogi RODO Art. 13.', 'polski'),
+                    __('Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13.', 'polski'),
                     $contentLength,
                 ),
             ];
@@ -209,7 +209,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %d: character count */
-                __('Polityka prywatności zawiera %d znaków.', 'polski'),
+                __('Privacy Policy contains %d characters.', 'polski'),
                 $contentLength,
             ),
         ];
@@ -222,7 +222,7 @@ final class SiteAuditService implements HasHooks
      */
     private function checkBusinessIdentification(): array
     {
-        $label = __('Dane identyfikacyjne firmy', 'polski');
+        $label = __('Business identification data', 'polski');
         $generalSettings = get_option('polski_general', []);
 
         if (! is_array($generalSettings)) {
@@ -230,10 +230,10 @@ final class SiteAuditService implements HasHooks
         }
 
         $requiredFields = [
-            'company_name'  => __('nazwa firmy', 'polski'),
-            'company_nip'   => __('NIP', 'polski'),
-            'company_address' => __('adres', 'polski'),
-            'company_email' => __('email kontaktowy', 'polski'),
+            'company_name'  => __('Company name', 'polski'),
+            'company_nip'   => __('VAT ID (NIP)', 'polski'),
+            'company_address' => __('Address', 'polski'),
+            'company_email' => __('Contact email', 'polski'),
         ];
 
         $missingFields = [];
@@ -250,7 +250,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Wszystkie podstawowe dane firmy są uzupełnione.', 'polski'),
+                'detail' => __('All basic company data is completed.', 'polski'),
             ];
         }
 
@@ -261,7 +261,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %s: comma-separated list of missing fields */
-                __('Brakujące dane: %s. Uzupełnij w Polski > Ustawienia.', 'polski'),
+                __('Missing data: %s. Fill in Polski > Settings.', 'polski'),
                 implode(', ', $missingFields),
             ),
         ];
@@ -274,7 +274,7 @@ final class SiteAuditService implements HasHooks
      */
     private function checkPreCheckedBoxes(): array
     {
-        $label = __('Pre-zaznaczone checkboxy (dark pattern)', 'polski');
+        $label = __('Pre-checked checkboxes (dark pattern)', 'polski');
         $checkoutSettings = get_option('polski_checkout', []);
 
         if (! is_array($checkoutSettings)) {
@@ -305,7 +305,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Żadne checkboxy nie są domyślnie zaznaczone.', 'polski'),
+                'detail' => __('No checkboxes are checked by default.', 'polski'),
             ];
         }
 
@@ -314,7 +314,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %d: number of pre-checked checkboxes */
-                __('Wykryto %d pre-zaznaczonych checkboxów. UOKiK uznaje to za ciemny wzorzec.', 'polski'),
+                __('Detected %d pre-checked checkboxes. Authorities consider this a dark pattern.', 'polski'),
                 count($preCheckedBoxes),
             ),
         ];
@@ -327,7 +327,7 @@ final class SiteAuditService implements HasHooks
      */
     private function checkOrderButtonText(): array
     {
-        $label = __('Tekst przycisku zamówienia', 'polski');
+        $label = __('Order button text', 'polski');
         $checkoutSettings = get_option('polski_checkout', []);
 
         if (! is_array($checkoutSettings)) {
@@ -337,7 +337,7 @@ final class SiteAuditService implements HasHooks
         $buttonText = $checkoutSettings['order_button_text'] ?? '';
         $buttonTextLower = mb_strtolower((string) $buttonText);
 
-        $requiredPhrases = ['oplacam', 'platnosc', 'zaplac', 'obowiazkiem zaplaty', 'obowiazkiem zapłaty'];
+        $requiredPhrases = ['pay', 'payment', 'oplacam', 'platnosc', 'zaplac', 'obowiazkiem zaplaty'];
 
         foreach ($requiredPhrases as $phrase) {
             if (mb_strpos($buttonTextLower, $phrase) !== false) {
@@ -346,7 +346,7 @@ final class SiteAuditService implements HasHooks
                     'label'  => $label,
                     'detail' => sprintf(
                         /* translators: %s: the button text */
-                        __('Przycisk: "%s" - zawiera informacje o obowiązku zapłaty.', 'polski'),
+                        __('Button: "%s" - contains info about payment obligation.', 'polski'),
                         $buttonText,
                     ),
                 ];
@@ -357,7 +357,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_WARNING,
                 'label'  => $label,
-                'detail' => __('Tekst przycisku nie jest skonfigurowany. Ustawienie domyślne WooCommerce może nie zawierać wymaganej informacji o płatności.', 'polski'),
+                'detail' => __('Button text is not configured. Default WooCommerce setting might lack required payment info.', 'polski'),
             ];
         }
 
@@ -366,7 +366,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %s: the button text */
-                __('Przycisk: "%s" - może nie zawierać wymaganej informacji o obowiązku zapłaty (np. "Zamawiam z obowiązkiem zapłaty").', 'polski'),
+                __('Button: "%s" - may not contain required payment info (e.g. "Order with obligation to pay").', 'polski'),
                 $buttonText,
             ),
         ];
@@ -379,20 +379,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkOmnibusEnabled(): array
     {
-        $label = __('Moduł Omnibus (najniższa cena)', 'polski');
+        $label = __('Omnibus module (lowest price)', 'polski');
 
         if (ModulesPage::isModuleEnabled('omnibus')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł Omnibus jest włączony - najniższa cena z 30 dni będzie wyświetlana przy promocjach.', 'polski'),
+                'detail' => __('Omnibus module is enabled - lowest price from 30 days will be shown on sales.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_FAIL,
             'label'  => $label,
-            'detail' => __('Moduł Omnibus jest wyłączony. Dyrektywa Omnibus wymaga wyświetlania najniższej ceny z 30 dni przy promocjach.', 'polski'),
+            'detail' => __('Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales.', 'polski'),
         ];
     }
 
@@ -403,20 +403,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkGDPRCheckboxes(): array
     {
-        $label = __('Checkboxy prawne (RODO)', 'polski');
+        $label = __('Legal checkboxes (GDPR)', 'polski');
 
         if (ModulesPage::isModuleEnabled('legal_checkboxes')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł checkboxów prawnych jest włączony.', 'polski'),
+                'detail' => __('Legal checkboxes module is enabled.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_FAIL,
             'label'  => $label,
-            'detail' => __('Moduł checkboxów prawnych jest wyłączony. Sklep może nie zbierać wymaganych zgód RODO.', 'polski'),
+            'detail' => __('Legal checkboxes module is disabled. The shop might not collect required GDPR consents.', 'polski'),
         ];
     }
 
@@ -427,20 +427,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkWithdrawalModule(): array
     {
-        $label = __('Prawo odstąpienia od umowy', 'polski');
+        $label = __('Right of withdrawal', 'polski');
 
         if (ModulesPage::isModuleEnabled('withdrawal')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł prawa odstąpienia jest włączony.', 'polski'),
+                'detail' => __('Withdrawal module is enabled.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł prawa odstąpienia jest wyłączony. Konsumenci mają 14-dniowe prawo odstąpienia od umowy.', 'polski'),
+            'detail' => __('Withdrawal module is disabled. Consumers have a 14-day right of withdrawal.', 'polski'),
         ];
     }
 
@@ -451,20 +451,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkGPSRModule(): array
     {
-        $label = __('Moduł GPSR (bezpieczeństwo produktów)', 'polski');
+        $label = __('GPSR module (product safety)', 'polski');
 
         if (ModulesPage::isModuleEnabled('gpsr')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł GPSR jest włączony - dane producenta i importera mogą być wyświetlane.', 'polski'),
+                'detail' => __('GPSR module is enabled - manufacturer and importer data can be displayed.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł GPSR jest wyłączony. Rozporządzenie (UE) 2023/988 wymaga podania danych producenta/importera.', 'polski'),
+            'detail' => __('GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data.', 'polski'),
         ];
     }
 
@@ -475,20 +475,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkVerifiedReviewModule(): array
     {
-        $label = __('Zweryfikowane opinie', 'polski');
+        $label = __('Verified reviews', 'polski');
 
         if (ModulesPage::isModuleEnabled('verified_review')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł zweryfikowanych opinii jest włączony - sklep może oznaczać recenzje od realnych kupujących.', 'polski'),
+                'detail' => __('Verified reviews module is enabled - the shop can mark reviews from actual buyers.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł zweryfikowanych opinii jest wyłączony. To utrudnia odróżnienie opinii od realnych klientów.', 'polski'),
+            'detail' => __('Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers.', 'polski'),
         ];
     }
 
@@ -499,20 +499,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkDSAModule(): array
     {
-        $label = __('DSA - zgłaszanie nielegalnych treści', 'polski');
+        $label = __('DSA - reporting illegal content', 'polski');
 
         if (ModulesPage::isModuleEnabled('dsa_toolkit')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł DSA jest włączony - formularz zgłoszeń i panel raportów są dostępne.', 'polski'),
+                'detail' => __('DSA module is enabled - report form and dashboard are available.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł DSA jest wyłączony. Marketplace lub sklep z treściami sponsorowanymi powinien mieć procedurę notice-and-action.', 'polski'),
+            'detail' => __('DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure.', 'polski'),
         ];
     }
 
@@ -529,14 +529,14 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł KSeF-ready jest włączony — zamówienia z NIP mogą być oznaczane i przekazywane do integracji fakturowych.', 'polski'),
+                'detail' => __('KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł KSeF-ready jest wyłączony. Sklep B2B może potrzebować automatycznego oznaczania zamówień wymagających e-faktury.', 'polski'),
+            'detail' => __('KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices.', 'polski'),
         ];
     }
 
@@ -547,20 +547,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkAntiGreenwashingModule(): array
     {
-        $label = __('Twierdzenia ekologiczne (anti-greenwashing)', 'polski');
+        $label = __('Environmental claims (anti-greenwashing)', 'polski');
 
         if (ModulesPage::isModuleEnabled('anti_greenwashing')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł anti-greenwashing jest włączony — produkty mogą przechowywać podstawę twierdzeń ekologicznych i linki do certyfikatów.', 'polski'),
+                'detail' => __('Anti-greenwashing module is enabled - products can store claims basis and certificate links.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Moduł anti-greenwashing jest wyłączony. Przy deklaracjach ekologicznych warto przechowywać źródło i podstawę twierdzeń.', 'polski'),
+            'detail' => __('Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims.', 'polski'),
         ];
     }
 
@@ -571,13 +571,13 @@ final class SiteAuditService implements HasHooks
      */
     private function checkDPARegistry(): array
     {
-        $label = __('Rejestr DPA (umowy powierzenia)', 'polski');
+        $label = __('DPA registry (data processing agreements)', 'polski');
 
         if (! ModulesPage::isModuleEnabled('dpa_tracker')) {
             return [
                 'status' => self::STATUS_WARNING,
                 'label'  => $label,
-                'detail' => __('Moduł rejestru DPA jest wyłączony. Przy hostingu, płatnościach i narzędziach zewnętrznych warto monitorować status umów powierzenia.', 'polski'),
+                'detail' => __('DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc.', 'polski'),
             ];
         }
 
@@ -603,7 +603,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_WARNING,
                 'label'  => $label,
-                'detail' => __('Moduł DPA jest włączony, ale rejestr jest pusty. Oznacz przynajmniej hosting, płatności i inne usługi przetwarzające dane.', 'polski'),
+                'detail' => __('DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services.', 'polski'),
             ];
         }
 
@@ -611,7 +611,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_FAIL,
                 'label'  => $label,
-                'detail' => __('Rejestr DPA nie ma oznaczonej żadnej aktywnej umowy powierzenia.', 'polski'),
+                'detail' => __('DPA registry has no active data processing agreements marked.', 'polski'),
             ];
         }
 
@@ -621,7 +621,7 @@ final class SiteAuditService implements HasHooks
                 'label'  => $label,
                 'detail' => sprintf(
                     /* translators: 1: number of services with DPA, 2: number of tracked services */
-                    __('Tylko %1$d z %2$d wykrytych usług ma oznaczoną umowę powierzenia.', 'polski'),
+                    __('Only %1$d of %2$d tracked services have a data processing agreement marked.', 'polski'),
                     $coveredServices,
                     $trackedServices,
                 ),
@@ -633,7 +633,7 @@ final class SiteAuditService implements HasHooks
             'label'  => $label,
             'detail' => sprintf(
                 /* translators: %d: number of tracked services */
-                __('Rejestr DPA obejmuje %d usług i wszystkie mają oznaczony status umowy powierzenia.', 'polski'),
+                __('DPA registry covers %d services and all have an agreement status marked.', 'polski'),
                 $trackedServices,
             ),
         ];
@@ -646,13 +646,13 @@ final class SiteAuditService implements HasHooks
      */
     private function checkSecurityIncidents(): array
     {
-        $label = __('Rejestr incydentów bezpieczeństwa', 'polski');
+        $label = __('Security incident registry', 'polski');
 
         if (! ModulesPage::isModuleEnabled('security_incidents')) {
             return [
                 'status' => self::STATUS_WARNING,
                 'label'  => $label,
-                'detail' => __('Moduł incydentów bezpieczeństwa jest wyłączony. Warto utrzymywać prosty rejestr incydentów pod CRA i wewnętrzne audyty.', 'polski'),
+                'detail' => __('Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance.', 'polski'),
             ];
         }
 
@@ -666,7 +666,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_WARNING,
                 'label'  => $label,
-                'detail' => __('Moduł incydentów jest włączony, ale nie ma ustawionego adresu kontaktowego security.', 'polski'),
+                'detail' => __('Incident module is enabled, but no security contact email is set.', 'polski'),
             ];
         }
 
@@ -674,7 +674,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Moduł incydentów jest włączony i ma ustawiony kontakt security. Rejestr jest obecnie pusty.', 'polski'),
+                'detail' => __('Incident module is enabled and security contact is set. The registry is currently empty.', 'polski'),
             ];
         }
 
@@ -693,10 +693,10 @@ final class SiteAuditService implements HasHooks
             'detail' => $openCount > 0
                 ? sprintf(
                     /* translators: %d: number of open incidents */
-                    __('W rejestrze są %d otwarte incydenty bezpieczeństwa wymagające dalszej obsługi.', 'polski'),
+                    __('There are %d open security incidents requiring further action in the registry.', 'polski'),
                     $openCount,
                 )
-                : __('Rejestr incydentów jest aktywny i nie ma otwartych spraw.', 'polski'),
+                : __('The incident registry is active and has no open cases.', 'polski'),
         ];
     }
 
@@ -707,20 +707,20 @@ final class SiteAuditService implements HasHooks
      */
     private function checkSSL(): array
     {
-        $label = __('Szyfrowanie SSL/TLS', 'polski');
+        $label = __('SSL/TLS encryption', 'polski');
 
         if (is_ssl()) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,
-                'detail' => __('Strona jest serwowana przez HTTPS.', 'polski'),
+                'detail' => __('The site is served over HTTPS.', 'polski'),
             ];
         }
 
         return [
             'status' => self::STATUS_FAIL,
             'label'  => $label,
-            'detail' => __('Strona nie używa HTTPS. RODO wymaga odpowiednich środków technicznych ochrony danych - SSL jest minimum.', 'polski'),
+            'detail' => __('The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum.', 'polski'),
         ];
     }
 
