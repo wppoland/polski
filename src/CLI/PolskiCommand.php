@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\CLI;
+
+defined('ABSPATH') || exit;
 
 use Polski\Migrator;
 use Polski\Service\CacheHelper;
@@ -92,11 +93,25 @@ class PolskiCommand
         $version = \Polski\VERSION;
         $installed = get_option('polski_version', 'unknown');
         $wizardDone = get_option('polski_wizard_complete', false) ? 'yes' : 'no';
+        $securityIncidents = get_option('polski_security_incidents', []);
+        $securityIncidents = is_array($securityIncidents) ? $securityIncidents : [];
+        $openIncidents = 0;
+
+        foreach ($securityIncidents as $incident) {
+            if (! is_array($incident)) {
+                continue;
+            }
+
+            if (in_array((string) ($incident['status'] ?? 'open'), ['open', 'investigating', 'monitoring'], true)) {
+                $openIncidents++;
+            }
+        }
 
         $rows = [
             ['setting' => 'Plugin version', 'value' => $version],
             ['setting' => 'Installed version', 'value' => $installed],
             ['setting' => 'Setup wizard complete', 'value' => $wizardDone],
+            ['setting' => 'Open security incidents', 'value' => (string) $openIncidents],
             ['setting' => 'PHP version', 'value' => PHP_VERSION],
             ['setting' => 'WooCommerce version', 'value' => defined('WC_VERSION') ? WC_VERSION : 'not loaded'],
         ];

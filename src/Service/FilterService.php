@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
@@ -69,7 +70,7 @@ final class FilterService implements Bootable, HasHooks
             return;
         }
 
-        echo $this->renderForm();
+        echo $this->renderFilterForm();
     }
 
     /**
@@ -81,10 +82,10 @@ final class FilterService implements Bootable, HasHooks
             return '';
         }
 
-        return $this->renderForm();
+        return $this->renderFilterForm();
     }
 
-    public function applyFiltersToQuery(\WC_Query $query): void
+    public function applyFiltersToQuery(\WP_Query $query): void
     {
         if (! $this->isEnabled() || is_admin()) {
             return;
@@ -190,18 +191,55 @@ final class FilterService implements Bootable, HasHooks
 
     private function shouldRenderOnCurrentPage(): bool
     {
-        return is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag();
+        return is_shop() || is_post_type_archive('product') || is_product_taxonomy() || is_product_category() || is_product_tag();
     }
 
-    private function renderForm(): string
+    /**
+     * @param array<string, mixed> $overrides
+     */
+    public function renderFilterForm(array $overrides = []): string
     {
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
+        $this->enqueueRenderedAssets();
+
         return $this->templateLoader->render('forms/ajax-filters', [
-            'settings' => $this->getSettings(),
+            'settings' => array_merge($this->getSettings(), $overrides),
             'categories' => $this->getTerms('product_cat'),
             'brands' => $this->getTerms('polski_brand'),
             'attribute_taxonomies' => $this->getAttributeTaxonomies(),
+            'action_url' => $this->getActionUrl(),
             'reset_url' => remove_query_arg(array_keys($_GET)),
         ]);
+    }
+
+    private function enqueueRenderedAssets(): void
+    {
+        wp_enqueue_style(
+            'polski-ajax-filters',
+            \Polski\Plugin::instance()->url('assets/css/ajax-filters.css'),
+            [],
+            \Polski\VERSION,
+        );
+
+        wp_enqueue_script(
+            'polski-ajax-filters',
+            \Polski\Plugin::instance()->url('assets/js/ajax-filters.js'),
+            [],
+            \Polski\VERSION,
+            true,
+        );
+    }
+
+    private function getActionUrl(): string
+    {
+        if (is_post_type_archive('product')) {
+            return home_url('/?post_type=product');
+        }
+
+        return (string) (get_permalink(wc_get_page_id('shop')) ?: '');
     }
 
     /**

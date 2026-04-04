@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
@@ -18,8 +19,8 @@ use Polski\Model\LegalCheckbox;
  * custom checkboxes via filters or REST API.
  *
  * All built-in checkbox properties are customizable via stored overrides.
- * Some conditional features (categories, countries, payment methods) are
- * reserved for the PRO version.
+ * Conditional features such as categories, countries, and payment methods
+ * can be configured through stored overrides and custom registrations.
  */
 final class CheckboxService implements Bootable, HasHooks
 {
@@ -375,7 +376,7 @@ final class CheckboxService implements Bootable, HasHooks
             $suggestions[] = [
                 'id' => 'enable_marketing',
                 'severity' => 'low',
-                'message' => __('Consider adding an optional marketing consent checkbox for newsletter compliance.', 'polski'),
+                'message' => __('Consider adding an optional marketing consent checkbox for newsletters.', 'polski'),
             ];
         }
 
@@ -435,7 +436,7 @@ final class CheckboxService implements Bootable, HasHooks
     }
 
     /**
-     * Register the built-in Polish compliance checkboxes.
+     * Register the built-in Polish checkout checkboxes.
      */
     private function registerDefaults(): void
     {

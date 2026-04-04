@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Migration;
 
+defined('ABSPATH') || exit;
 /**
  * Initial migration: seed default taxonomy terms for Polish market.
  */

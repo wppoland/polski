@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Shortcode;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 use Polski\Plugin;
@@ -13,9 +14,6 @@ use Polski\Service\PriceDisplayService;
 use Polski\Service\ProductInfoService;
 use Polski\Service\WithdrawalService;
 use Polski\Service\CompareService;
-use Polski\Service\AffiliateService;
-use Polski\Service\GiftCardService;
-use Polski\Service\SubscriptionService;
 use Polski\Service\WishlistService;
 use Polski\Util\TemplateLoader;
 
@@ -52,12 +50,11 @@ final class ShortcodeManager implements HasHooks
         add_shortcode('polski_withdrawal_form', [$this, 'withdrawalForm']);
         add_shortcode('polski_wishlist', [$this, 'wishlist']);
         add_shortcode('polski_compare', [$this, 'compare']);
-        add_shortcode('polski_affiliate_dashboard', [$this, 'affiliateDashboard']);
-        add_shortcode('polski_gift_card_balance', [$this, 'giftCardBalance']);
-        add_shortcode('polski_subscriptions', [$this, 'subscriptions']);
         add_shortcode('polski_complaints', [$this, 'complaints']);
         add_shortcode('polski_payment_methods', [$this, 'paymentMethods']);
         add_shortcode('polski_small_business_notice', [$this, 'smallBusinessNotice']);
+        add_shortcode('polski_dsa_report', [$this, 'dsaReport']);
+        add_shortcode('polski_gpsr', [$this, 'gpsrInfo']);
     }
 
     /**
@@ -273,21 +270,6 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(CompareService::class)->renderCompareTable();
     }
 
-    public function affiliateDashboard(array|string $atts = []): string
-    {
-        return $this->container()->get(AffiliateService::class)->renderDashboard();
-    }
-
-    public function giftCardBalance(array|string $atts = []): string
-    {
-        return $this->container()->get(GiftCardService::class)->renderBalanceForm();
-    }
-
-    public function subscriptions(array|string $atts = []): string
-    {
-        return $this->container()->get(SubscriptionService::class)->renderSubscriptionsList();
-    }
-
     public function paymentMethods(array|string $atts = []): string
     {
         $gateways = WC()->payment_gateways()->get_available_payment_gateways();
@@ -326,6 +308,43 @@ final class ShortcodeManager implements HasHooks
             '<div class="polski-small-business-notice"><p>%s</p></div>',
             esc_html($notice),
         );
+    }
+
+    /**
+     * Render the DSA report form.
+     */
+    public function dsaReport(array|string $atts = []): string
+    {
+        return \Polski\Plugin::instance()->container()->get(\Polski\Service\DSAService::class)->renderReportForm();
+    }
+
+    /**
+     * Render GPSR product safety information.
+     */
+    public function gpsrInfo(array|string $atts = []): string
+    {
+        $product = $this->resolveProduct($atts);
+
+        if ($product === null) {
+            return '';
+        }
+
+        $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\GPSRService::class);
+
+        if (! $service->isEnabled()) {
+            return '';
+        }
+
+        $data = $service->getGPSRData($product);
+        $hasData = array_filter($data, static fn (string $v): bool => $v !== '');
+
+        if (empty($hasData)) {
+            return '';
+        }
+
+        ob_start();
+        $service->renderGPSRSection($product);
+        return (string) ob_get_clean();
     }
 
     /**

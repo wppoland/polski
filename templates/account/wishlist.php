@@ -21,6 +21,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <div class="polski-wishlist-account">
     <?php if ($show_title) : ?>

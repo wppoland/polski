@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Polski for WooCommerce
- * Plugin URI:        https://wppoland.com/polski
- * Description:       Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal forms, unit prices, and 40+ shop features. Free and open source.
- * Version:           1.1.0
+ * Plugin URI:        https://wppoland.com/pl/polski/
+ * Description:       Adapts WooCommerce and WordPress to Polish market requirements: GPSR, Omnibus, GDPR, unit prices, withdrawal forms, and storefront tools.
+ * Version:           1.3.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
- * Author:            WP Poland
+ * Author:            WPPoland
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,17 +20,18 @@ declare(strict_types=1);
  * WC requires at least: 8.0
  * WC tested up to:      9.6
  *
- * DISCLAIMER: This plugin is provided "as is" without any warranty. WP Poland
- * (wppoland.com) is not liable for any damages arising from its use. This plugin
- * does not constitute legal advice. You are solely responsible for ensuring your
- * store complies with all applicable laws. Consult a qualified legal professional.
+ * DISCLAIMER: This plugin is provided "as is" without any warranty. WPPoland
+ * (wppoland.com) is not liable for any damages or consequences arising from its
+ * use. This plugin does not constitute legal advice. Always test in a development
+ * environment first. You are solely responsible for ensuring your store complies
+ * with all applicable laws.
  */
 
 namespace Polski;
 
 defined('ABSPATH') || exit;
 
-const VERSION = '1.1.0';
+const VERSION = '1.3.0';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR = __DIR__;
 const MIN_PHP_VERSION = '8.1.0';
@@ -106,10 +107,15 @@ add_action('plugins_loaded', static function (): void {
         return;
     }
 
-    Plugin::instance()->boot();
+    add_action('init', static function (): void {
+        Plugin::instance()->boot();
+    }, 0);
 
-    // Register WP-CLI commands.
-    CLI\PolskiCommand::register();
+    if (defined('WP_CLI') && WP_CLI) {
+        add_action('cli_init', static function (): void {
+            CLI\PolskiCommand::register();
+        });
+    }
 }, 10);
 
 /**

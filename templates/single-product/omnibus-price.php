@@ -13,6 +13,5 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is pre-escaped in OmnibusService.
 echo $omnibus_price_html;

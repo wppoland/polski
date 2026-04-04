@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
@@ -69,60 +70,80 @@ final class ProductSliderService implements Bootable, HasHooks
             return '';
         }
 
-        global $product;
-
-        if (! $product instanceof \WC_Product) {
-            return '';
-        }
-
         $atts = shortcode_atts([
             'source' => $this->getSettings()['source'] ?? 'related',
             'title' => $this->getSettings()['title'] ?? 'Polecane produkty',
             'limit' => $this->getSettings()['limit'] ?? 8,
         ], is_array($atts) ? $atts : []);
 
-        return $this->renderForProduct($product, $atts);
+        return $this->renderSlider($atts);
     }
 
     /**
      * @param array<string, mixed> $config
      */
-    private function renderForProduct(\WC_Product $product, array $config): string
+    public function renderSlider(array $config = []): string
     {
-        $products = $this->getProducts($product, (string) ($config['source'] ?? 'related'), (int) ($config['limit'] ?? 8));
+        if (! ModulesPage::isModuleEnabled('product_slider_carousel')) {
+            return '';
+        }
 
-        if ($products === [] && ! (bool) ($this->getSettings()['show_empty_state'] ?? false)) {
+        $this->enqueueAssets();
+
+        $productId = isset($config['product_id']) ? (int) $config['product_id'] : 0;
+        $source = (string) ($config['source'] ?? $this->getSettings()['source'] ?? 'related');
+        $product = $this->resolveContextProduct($productId);
+
+        if ($product === null && in_array($source, ['related', 'upsell'], true)) {
+            return '';
+        }
+
+        return $this->renderForContext($product, $config);
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     */
+    private function renderForContext(?\WC_Product $product, array $config): string
+    {
+        $settings = array_merge($this->getSettings(), $config);
+        $products = $this->getProducts($product, (string) ($settings['source'] ?? 'related'), (int) ($settings['limit'] ?? 8));
+
+        if ($products === [] && ! (bool) ($settings['show_empty_state'] ?? false)) {
             return '';
         }
 
         return $this->templateLoader->render('shared/product-slider', [
             'products' => $products,
-            'settings' => $this->getSettings(),
-            'title' => (string) ($config['title'] ?? __('Polecane produkty', 'polski')),
-            'show_title' => (bool) ($this->getSettings()['show_title'] ?? true),
-            'show_intro_text' => (bool) ($this->getSettings()['show_intro_text'] ?? false),
-            'intro_text' => (string) ($this->getSettings()['intro_text'] ?? ''),
-            'show_image' => (bool) ($this->getSettings()['show_image'] ?? true),
-            'show_name' => (bool) ($this->getSettings()['show_name'] ?? true),
-            'show_price' => (bool) ($this->getSettings()['show_price'] ?? true),
-            'show_add_to_cart' => (bool) ($this->getSettings()['show_add_to_cart'] ?? true),
-            'show_view_all_link' => (bool) ($this->getSettings()['show_view_all_link'] ?? false),
-            'show_empty_state' => (bool) ($this->getSettings()['show_empty_state'] ?? false),
-            'empty_text' => (string) ($this->getSettings()['empty_text'] ?? ''),
-            'view_all_url' => $this->getViewAllUrl((string) ($config['source'] ?? 'related')),
+            'settings' => $settings,
+            'title' => (string) ($settings['title'] ?? __('Polecane produkty', 'polski')),
+            'show_title' => (bool) ($settings['show_title'] ?? true),
+            'show_intro_text' => (bool) ($settings['show_intro_text'] ?? false),
+            'intro_text' => (string) ($settings['intro_text'] ?? ''),
+            'show_image' => (bool) ($settings['show_image'] ?? true),
+            'show_name' => (bool) ($settings['show_name'] ?? true),
+            'show_price' => (bool) ($settings['show_price'] ?? true),
+            'show_add_to_cart' => (bool) ($settings['show_add_to_cart'] ?? true),
+            'show_view_all_link' => (bool) ($settings['show_view_all_link'] ?? false),
+            'show_empty_state' => (bool) ($settings['show_empty_state'] ?? false),
+            'empty_text' => (string) ($settings['empty_text'] ?? ''),
+            'view_all_url' => $this->getViewAllUrl((string) ($settings['source'] ?? 'related')),
         ]);
     }
 
     /**
      * @return list<\WC_Product>
      */
-    private function getProducts(\WC_Product $product, string $source, int $limit): array
+    private function getProducts(?\WC_Product $product, string $source, int $limit): array
     {
         $limit = max(1, min(12, $limit));
         $ids = [];
 
         switch ($source) {
             case 'upsell':
+                if (! $product instanceof \WC_Product) {
+                    return [];
+                }
                 $ids = $product->get_upsell_ids();
                 break;
             case 'sale':
@@ -133,6 +154,9 @@ final class ProductSliderService implements Bootable, HasHooks
                 break;
             case 'related':
             default:
+                if (! $product instanceof \WC_Product) {
+                    return [];
+                }
                 $ids = wc_get_related_products($product->get_id(), $limit);
                 break;
         }
@@ -157,5 +181,20 @@ final class ProductSliderService implements Bootable, HasHooks
             'featured' => wc_get_page_permalink('shop') . '?featured=1',
             default => wc_get_page_permalink('shop'),
         };
+    }
+
+    private function resolveContextProduct(int $productId = 0): ?\WC_Product
+    {
+        if ($productId > 0) {
+            $product = wc_get_product($productId);
+
+            if ($product instanceof \WC_Product) {
+                return $product;
+            }
+        }
+
+        global $product;
+
+        return $product instanceof \WC_Product ? $product : null;
     }
 }

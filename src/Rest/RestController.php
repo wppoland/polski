@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Rest;
+
+defined('ABSPATH') || exit;
 
 use WP_REST_Controller;
 
@@ -36,6 +37,22 @@ abstract class RestController extends WP_REST_Controller
         }
 
         return true;
+    }
+
+    /**
+     * Allow access to authenticated customers and WooCommerce managers.
+     */
+    public function customerPermissionCheck(\WP_REST_Request $request): bool|\WP_Error
+    {
+        if ($this->hasAdminPermission() || get_current_user_id() > 0) {
+            return true;
+        }
+
+        return new \WP_Error(
+            'polski_rest_auth_required',
+            __('Please log in to continue.', 'polski'),
+            ['status' => 401],
+        );
     }
 
     /**

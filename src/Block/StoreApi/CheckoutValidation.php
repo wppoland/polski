@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Block\StoreApi;
+
+defined('ABSPATH') || exit;
 
 use Automattic\WooCommerce\StoreApi\Schemas\V1\CheckoutSchema;
 use Polski\Contract\HasHooks;
@@ -18,7 +19,7 @@ use Polski\Repository\ConsentLogRepository;
  * - Legal checkbox validation before order placement
  * - Consent logging after order creation
  * - Order button text override
- * - Additional checkout data (NIP field for PRO)
+ * - Additional checkout data via extension points
  */
 final class CheckoutValidation implements HasHooks
 {

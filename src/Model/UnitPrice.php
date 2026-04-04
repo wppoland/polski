@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Model;
 
+defined('ABSPATH') || exit;
 /**
  * Value object for a calculated unit price.
  *

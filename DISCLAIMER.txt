@@ -3,7 +3,7 @@ DISCLAIMER / WYLACZENIE ODPOWIEDZIALNOSCI
 
 EN:
 
-This plugin ("Polski") is provided by WP Poland (wppoland.com) free of
+This plugin ("Polski") is provided by WPPoland (wppoland.com) free of
 charge under the GNU General Public License v2 or later.
 
 THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -42,6 +42,12 @@ YOU ARE SOLELY RESPONSIBLE FOR:
 - Keeping your compliance measures up to date as laws change;
 - Seeking professional legal advice when needed.
 
+TESTING REQUIREMENT:
+Before deploying this plugin on a production store, you should always test
+it thoroughly in a development or staging environment. WPPoland is not
+responsible for any disruptions, data loss, or adverse effects resulting
+from deploying untested configurations to a live store.
+
 BY INSTALLING AND ACTIVATING THIS PLUGIN, YOU ACKNOWLEDGE AND AGREE TO THE
 ABOVE TERMS.
 
@@ -49,7 +55,7 @@ ABOVE TERMS.
 
 PL:
 
-Niniejsza wtyczka ("Polski") jest udostepniana przez WP Poland
+Niniejsza wtyczka ("Polski") jest udostepniana przez WPPoland
 (wppoland.com) nieodplatnie na licencji GNU General Public License v2 lub
 pozniejszej.
 
@@ -89,6 +95,13 @@ UZYTKOWNIK PONOSI WYLACZNA ODPOWIEDZIALNOSC ZA:
   polskiego, unijnego i miedzynarodowego prawa;
 - Aktualizowanie srodkow zgodnosci w miare zmian przepisow;
 - Korzystanie z profesjonalnej pomocy prawnej w razie potrzeby.
+
+WYMOG TESTOWANIA:
+Przed wdrozeniem wtyczki na sklepie produkcyjnym nalezy ja zawsze
+przetestowac w srodowisku deweloperskim lub stagingowym. WPPoland nie
+ponosi odpowiedzialnosci za jakiekolwiek zaklócenia, utrate danych lub
+negatywne skutki wynikajace z wdrozenia nieprzetestowanych konfiguracji
+na dzialajacym sklepie.
 
 INSTALUJAC I AKTYWUJAC TE WTYCZKE, UZYTKOWNIK POTWIERDZA I AKCEPTUJE
 POWYZSZE WARUNKI.

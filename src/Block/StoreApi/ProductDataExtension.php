@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Block\StoreApi;
+
+defined('ABSPATH') || exit;
 
 use Automattic\WooCommerce\StoreApi\Schemas\V1\ProductSchema;
 use Automattic\WooCommerce\StoreApi\StoreApi;
@@ -165,13 +166,13 @@ final class ProductDataExtension implements HasHooks
                 'readonly' => true,
             ],
             'gpsr_responsible' => [
-                'description' => 'Osoba odpowiedzialna GPSR',
+                'description' => __('Osoba odpowiedzialna GPSR', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'withdrawal_exempt' => [
-                'description' => 'Wylaczony z prawa odstąpienia',
+                'description' => __('Wyłączony z prawa odstąpienia', 'polski'),
                 'type' => 'boolean',
                 'context' => ['view'],
                 'readonly' => true,

@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Repository;
 
+defined('ABSPATH') || exit;
 /**
  * Data access for product compare items.
  *

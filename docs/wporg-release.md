@@ -37,7 +37,7 @@ Default output:
 ## Sync local SVN checkout
 
 ```bash
-svn checkout https://plugins.svn.wordpress.org/polski /tmp/polski-svn
+svn checkout https://plugins.svn.wordpress.org/polski-for-woocommerce /tmp/polski-svn
 cd polski
 bash scripts/sync-wporg-svn.sh /tmp/polski-wporg-trunk /tmp/polski-svn
 ```
@@ -45,5 +45,10 @@ bash scripts/sync-wporg-svn.sh /tmp/polski-wporg-trunk /tmp/polski-svn
 ## SVN layout
 
 - `trunk/` - contents of the prepared package
-- `tags/1.1.0/` - same contents for the release tag
+- `tags/1.3.0/` - same contents for the release tag
 - `assets/` - WordPress.org banner, icon and screenshots, if needed
+
+Note:
+
+- WordPress.org slug: `polski-for-woocommerce`
+- Main plugin bootstrap inside the package: `polski.php`

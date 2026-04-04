@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Compatibility\Elementor\Widgets;
 
+defined('ABSPATH') || exit;
 final class SafetyInstructionsWidget extends BaseProductWidget
 {
     public function get_name(): string
@@ -13,7 +13,7 @@ final class SafetyInstructionsWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return 'Instrukcje bezpieczeństwa';
+        return __('Instrukcje bezpieczeństwa', 'polski');
     }
 
     protected function register_controls(): void

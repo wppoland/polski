@@ -1,13 +1,13 @@
 # Polski for WooCommerce
 
-**Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal forms, unit prices, and 40+ shop features. Free and open source.**
+**Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal requests, unit prices, and selected storefront features. Free and open source.**
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue)](https://wordpress.org)
 [![WooCommerce](https://img.shields.io/badge/WooCommerce-8.0%2B-purple)](https://woocommerce.com)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4)](https://php.net)
 [![License](https://img.shields.io/badge/License-GPLv2-green)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-Polski for WooCommerce adapts your online shop to all Polish legal requirements while adding powerful merchandising and sales features - completely free. One plugin, 40+ features, zero paywalls.
+Polski for WooCommerce helps adapt a WooCommerce shop to Polish legal requirements while adding selected storefront features. The free plugin focuses on compliance essentials, product information, and lightweight merchandising.
 
 **Author:** [WP Poland](https://wppoland.com)
 
@@ -24,47 +24,34 @@ Polski for WooCommerce adapts your online shop to all Polish legal requirements 
 - **Price labels** - customizable price suffixes and sale labels
 
 ### Checkout Compliance
-- **Order button text** - "Zamawiam z obowiazkiem zaplaty" as required by Polish law
+- **Order button text** - "Order with an obligation to pay" wording required by Polish law
 - **Legal checkboxes** - configurable consent checkboxes for checkout, registration, reviews, and pay-for-order, with editable labels, descriptions, and validation copy
 - **Consent logging** - GDPR-compliant consent audit trail with IP, user agent, and timestamps
 - **Terms & conditions** - mandatory acceptance with link to legal pages
 - **Privacy policy checkbox** - GDPR consent at checkout
-- **Contract helper** - delayed payment flow with order confirmation before payment
 
-### Sales & B2B
-- **Request a Quote** - native B2B quote workflow with per-product activation, configurable field labels, placeholders, login message, price placeholder and validation copy
-- **Catalog Mode** - native hidden-price and no-purchase mode for B2B, wholesale and dealer flows, with configurable notice visibility, restriction copy and login CTA
-- **Ajax Search** - lightweight live product search with SKU and category support, editable labels and optional submit button
-- **Ajax Filters** - archive filtering by categories, brands, price, stock, sale and attributes, with configurable form heading visibility
-- **Wishlist** - guest and customer wishlists with account integration, configurable title, image/name visibility, account intro, grid columns, price/cart/remove controls and editable runtime messages
-- **Compare** - guest and customer compare lists with feature tables, difference highlighting, editable headings, intro, row labels, messages and configurable header actions
-- **Quick View** - lightweight product modal with variations, gallery, add-to-cart support and configurable modal labels, visible sections, close control, link target and close behaviour
-- **Frequently Bought Together** - ready-made product bundles with configurable section title, product price visibility, empty state, total label, selection behaviour and add-all-to-cart CTA
-- **Badge Management** - manual and automatic badges for promotions, newness, low stock and bestsellers, with configurable shape, casing, manual badge styles and limits per view
-- **Tab Manager** - extra product tabs with product-level and global storefront content, plus global toggles and configurable tab priorities
-- **Featured Video** - embedded YouTube, Vimeo or MP4 video in the product media area with configurable heading and intro visibility
-- **Gallery & Zoom** - lightweight hover zoom and product image lightbox with configurable dialog label, close label and backdrop-close behaviour
-- **Product Slider Carousel** - native merchandising slider for related, sale, upsell and featured products, with configurable section visibility, intro, empty state, card content and view-all CTA
-- **Pre-Order** - product-level pre-order flow with release date formatting, configurable notice title, notice visibility and dedicated CTA
-- **Waitlist** - back-in-stock signup and automatic email notification flow with configurable form labels, placeholders, title or intro visibility, validation messages and email copy
-- **Product Add-Ons** - configurable extras and services such as engraving, gift wrap, installation, carrying service, extended warranty or service packages, with field-level descriptions, placeholders, required/optional badges, text limits, cart price modifiers and order metadata
-- **Product Bundles** - package builder with optional bundle items, discount logic, grouped cart metadata and configurable bundle messages, labels and quantity display
-- **Gift Cards** - gift card products with recipient delivery, codes, balances, redemption in cart/checkout and configurable validation, storefront/account labels, title visibility, account columns, statuses, date formats and notices
-- **Subscriptions** - recurring products with signup fees, trial periods, account management, renewal reminders and configurable storefront/account labels, title visibility, cycle wording, account columns, statuses, actions, mail copy and renewal dates
-- **Infinite Scroll** - lightweight archive pagination replacement with button or automatic product loading, plus configurable status messages and auto-mode button visibility
-- **Popup** - lightweight promotional or B2B lead popup with page targeting, frequency control, configurable heading or close visibility and fallback CTA target
-- **Affiliates** - referral links, order attribution, commission calculation and partner dashboard in My Account with configurable labels, section visibility, stats and table columns
-- **Quote-only products** - replace add-to-cart with an enquiry flow for selected products
-- **Audience targeting** - guests only, all logged-in users, or selected WordPress roles
-- **Company and NIP capture** - Polish-market lead form fields for business customers
-- **Quote request inbox** - admin page to review and update lead statuses
+### Storefront Features
+- **AJAX search** - lightweight live product search with SKU support and a shortcode or block surface
+- **AJAX filters** - archive filtering by categories, brands, price, stock, sale and attributes
+- **Wishlist** - guest and customer wishlists with account integration
+- **Compare** - guest and customer compare lists with a table view
+- **Quick View** - lightweight product modal for archive browsing
+- **Badge Management** - manual and automatic badges for promotions, newness, low stock and bestsellers
+- **Tab Manager** - extra product tabs with product-level and global storefront content
+- **Featured Video** - embedded YouTube, Vimeo or MP4 video in the product media area
+- **Gallery & Zoom** - lightweight hover zoom and product image lightbox
+- **Product Slider Carousel** - merchandising slider for related, sale, upsell and featured products
+- **Waitlist** - back-in-stock signup for out-of-stock products
+- **Infinite Scroll** - lightweight archive pagination replacement with button or automatic product loading
+- **Popup** - lightweight promotional popup with page targeting and frequency control
 
 ### Consumer Rights & Withdrawal
-- **14-day withdrawal right** - online withdrawal form (prawo odstapienia od umowy), with configurable form copy, account button, status labels and notices
-- **EU withdrawal button** - one-click withdrawal request from order history (EU Directive 2023/2673)
+- **14-day withdrawal right** - online withdrawal form, with configurable form copy, account button, status labels and notices
+- **Withdrawal request action** - customer-initiated withdrawal flow from order history with a confirmation step
 - **Withdrawal confirmation emails** - automated email flow for withdrawal requests, with configurable subject, heading and body copy
 - **Withdrawal exemptions** - per-product exemption for digital goods, perishables, etc.
 - **Withdrawal tracking** - admin dashboard for managing withdrawal requests
+- **Security incidents** - CRA-oriented incident log for vulnerabilities, data breaches, payment failures, third-party outages, and internal follow-up with CSV export
 
 ### Legal Pages
 - **Auto-generate legal pages** - Regulamin, Polityka prywatnosci, Polityka zwrotow, Reklamacje
@@ -97,10 +84,8 @@ Polski for WooCommerce adapts your online shop to all Polish legal requirements 
 - **Double opt-in (DOI)** - email verification for customer registration, with configurable login errors, activation notices and email copy
 - **Custom email templates** - cancelled order, paid order, processing order emails
 
-### Payment Gateways
-- **Invoice payment (Przelew/Faktura)** - bank transfer payment with legal compliance
-- **Payment gateway enhancements** - legal notices and compliance for all gateways
-- **Polish gateway detection** - admin status for Przelewy24, PayU, Tpay, Autopay and BLIK-aware gateways, plus checkout-aware integration hooks
+### Checkout & Integrations
+- **Checkout toolkit integration** - compatibility layer for selected checkout-field, cookies, and product-data plugins
 
 ### Tax & VAT
 - **Brutto/netto toggle** - store-wide price display mode
@@ -109,15 +94,18 @@ Polski for WooCommerce adapts your online shop to all Polish legal requirements 
 - **OSS support** - One Stop Shop compliance for EU cross-border sales
 - **Split tax calculation** - separate shipping and fee tax handling
 
-### Shortcodes
+### Shortcodes and Blocks
 - `[polski_withdrawal_form]` - withdrawal request form
 - `[polski_ajax_search]` - AJAX product search form with configurable labels, field output and REST-backed suggestions
 - `[polski_ajax_filters]` - AJAX product filters form with editable field labels, reset behaviour and GET fallback
+- `[polski_product_slider]` - merchandising slider for related, upsell, sale or featured products
 - `[polski_wishlist]` - wishlist view
 - `[polski_compare]` - compare table view
 - `[polski_payment_methods]` - payment method information
 - `[polski_complaints]` - dispute resolution notice
 - `[polski_unit_price]` - product unit price
+- Gutenberg blocks for AJAX search, AJAX filters, and product sliders
+- Elementor widgets for search, filters, and product sliders
 - `[polski_delivery_time]` - product delivery time
 - `[polski_tax_notice]` - VAT information
 - `[polski_shipping_notice]` - shipping cost notice
@@ -129,27 +117,27 @@ Polski for WooCommerce adapts your online shop to all Polish legal requirements 
 ### Admin & UX
 - **React-based settings panel** - modern admin UI with live preview
 - **Compliance dashboard** - one-click compliance check showing green/red status, with configurable admin notices, status labels and onboarding checklist copy
+- **Expanded site audit** - central compliance review for legal pages, dark patterns, DPA registry, DSA, KSeF-ready, anti-greenwashing, and security incidents
 - **Admin notes** - contextual guidance, update notifications, compatibility alerts, with configurable onboarding note copy
+- **Incident logging** - lightweight store-side security incident register with status tracking and CSV export for internal reviews
 - **Product meta box** - "Polski" tab in product editor with all compliance fields
-- **Lead inbox** - built-in request-a-quote management screen
 - **Bulk edit support** - edit Polski fields across multiple products
 - **CSV import/export** - Polski fields in WooCommerce product CSV
 
 ### Compatibility
 - **Omnibus** - native price history tracking and display
+- **Verified reviews** - purchase badge works for logged-in customers and guest purchases matched by email
 - **Checkout and consent** - compatible with common checkout and cookie consent plugins
-- **Payment gateways** - compatible with major Polish payment methods
-- **Page builders** - compatible with Elementor storefront output
-- **Multilingual** - WPML and Polylang compatibility
+- **Page builders** - Elementor widgets for storefront search, filters, slider and product-info output
 - **Caching** - compatible with common WordPress cache plugins
 
 ### Technical
 - **WooCommerce HPOS** - native Custom Order Tables support
 - **WooCommerce Blocks** - Cart and Checkout Blocks integration via Store API
-- **Gutenberg blocks** - native blocks for all product display elements
+- **Gutenberg blocks** - native dynamic blocks for AJAX search, AJAX filters and product slider
 - **REST API** - full CRUD API for settings, checkboxes, withdrawals, delivery times
 - **WP-CLI commands** - database migrations and maintenance via CLI
-- **Smoke test script** - run `wp eval-file scripts/smoke-tests.php --allow-root` inside `wp-env` to verify wizard completion plus core quote, waitlist, add-ons, bundles, gift cards, subscriptions and affiliates flows
+- **Smoke test script** - run `wp eval-file scripts/smoke-tests.php --allow-root` inside `wp-env` to verify wizard completion plus core free compliance and storefront flows
 - **WordPress 6.7-safe bootstrap** - plugin translations are loaded on `init`, avoiding early text-domain notices in plugin runtime
 - **Template overrides** - all templates overridable from theme (`yourtheme/polski/`)
 
@@ -165,10 +153,38 @@ Polski for WooCommerce adapts your online shop to all Polish legal requirements 
 
 ## Installation
 
-1. Upload `polski` to `/wp-content/plugins/`
-2. Activate the plugin through the **Plugins** menu
-3. Navigate to **Polski** in the admin menu
-4. Follow the setup wizard to configure your store
+### From WordPress Dashboard
+1. Go to **Plugins > Add New**.
+2. Search for **Polski for WooCommerce**.
+3. Click **Install Now** and then **Activate**.
+4. Navigate to the new **Polski** menu item in your sidebar.
+
+### Manual Installation
+1. Download the plugin ZIP file.
+2. In your WordPress admin, go to **Plugins > Add New > Upload Plugin**.
+3. Choose the ZIP file and click **Install Now**.
+4. Click **Activate Plugin**.
+
+## Getting Started
+
+Follow these steps to ensure your store is compliant with Polish law:
+
+1. **Verify Legal Pages**: Go to **Polski > Modules** and ensure **Legal Pages** is active. Go to its settings and select your Terms, Privacy Policy, and Withdrawal pages.
+2. **Configure Checkboxes**: Go to **Polski > Modules > Legal Checkboxes** (ensure it's active) and enable the required checkboxes for checkout (Terms, Privacy, Withdrawal).
+3. **Set VAT Rates**: Ensure you have correct Polish VAT rates (23%, 8%, 5%, 0%) configured in **WooCommerce > Settings > Tax**.
+4. **Unit Prices**: For products sold by weight or volume, enter the unit pricing data in the **Polski** tab within the product editor.
+5. **Omnibus**: The plugin automatically tracks the lowest price from the last 30 days once a product goes on sale. No manual setup is required, but you can customize the display in **Polski > Modules > Omnibus**.
+6. **GPSR (2024)**: If you sell physical goods, fill in the Manufacturer and Responsible Person details in the **Polski** tab of your products to comply with the General Product Safety Regulation.
+
+## Configuration
+
+The plugin is modular. You can enable or disable features based on your needs:
+
+* **Compliance**: GDPR, Omnibus, GPSR, DSA, Withdrawal flow, and security incident logging.
+* **Shopmarks**: Unit prices and delivery times.
+* **Storefront**: Wishlist, Compare, Search, Filters, and Badges.
+
+Each active module with configuration options will appear as a sub-menu under **Polski** or have a "Settings" link on the Modules page.
 
 ## Development
 
@@ -204,10 +220,16 @@ For module work, keep a lightweight runtime check in the same pass as the code c
 2. Verify plugin activation with `npm run env:cli -- wp plugin list`.
 3. Check migrations with `npm run env:cli -- wp db query "SELECT version FROM wp_polski_migrations ORDER BY version;"`.
 4. Open the affected storefront URL with `curl` and look for PHP fatals before treating the module as done.
-5. For quote and B2B flows, submit at least one real form request in local `wp-env` and confirm DB persistence.
+5. For customer-facing flows, submit at least one real request in local `wp-env` and confirm DB persistence when the feature stores data.
+
+## Support
+
+- Use the WordPress.org support forum for release support and setup questions.
+- Use [GitHub Discussions](https://github.com/wppoland/polski/discussions) for product ideas and implementation questions.
+- Use [GitHub Issues](https://github.com/wppoland/polski/issues) only for reproducible bugs and concrete development tasks.
 
 ## Plugin Ecosystem
-Polski for WooCommerce works as a compliance hub for Polish WooCommerce stores and stays compatible with common payment, checkout, consent, multilingual and cache plugins.
+Polski for WooCommerce works as a compliance hub for Polish WooCommerce stores and stays compatible with common checkout, consent and cache plugins.
 
 ## Architecture
 
@@ -219,7 +241,7 @@ Polski for WooCommerce works as a compliance hub for Polish WooCommerce stores a
 - **Integration Manager** - auto-detects third-party plugins at boot
 - **Template Loader** - theme-overridable templates (`yourtheme/polski/`)
 - **React Admin SPA** - modern settings panel built on `@wordpress/components`
-- **Gutenberg Blocks** - server-side rendered blocks with `block.json`
+- **Gutenberg Blocks** - server-side rendered blocks with `block.json` for selected storefront modules
 - **REST API** - full CRUD under `polski/v1/` namespace
 
 ## License

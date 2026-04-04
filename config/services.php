@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+defined('ABSPATH') || exit;
 use Polski\Container;
 use Polski\Admin\AdminPage;
 use Polski\Admin\ProductMetaBox;
@@ -11,7 +12,6 @@ use Polski\Hook\ProductHooks;
 use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
 use Polski\Hook\OrderHooks;
-use Polski\Hook\EmailHooks;
 use Polski\Hook\LoopHooks;
 use Polski\Integration\IntegrationManager;
 use Polski\Email\WithdrawalConfirmationEmail;
@@ -20,32 +20,22 @@ use Polski\Rest\CheckboxController;
 use Polski\Rest\LegalPageController;
 use Polski\Rest\SettingsController;
 use Polski\Rest\WithdrawalController;
-use Polski\Service\ContractService;
-use Polski\Service\CatalogModeService;
 use Polski\Service\FilterService;
 use Polski\Service\SearchService;
 use Polski\Service\CompareService;
 use Polski\Service\QuickViewService;
-use Polski\Service\FrequentlyBoughtTogetherService;
 use Polski\Service\BadgeService;
 use Polski\Service\TabManagerService;
 use Polski\Service\FeaturedVideoService;
 use Polski\Service\GalleryZoomService;
 use Polski\Service\ProductSliderService;
-use Polski\Service\PreOrderService;
 use Polski\Service\WaitlistService;
-use Polski\Service\AddOnsService;
-use Polski\Service\ProductBundlesService;
-use Polski\Service\GiftCardService;
-use Polski\Service\SubscriptionService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
-use Polski\Service\AffiliateService;
 use Polski\Service\WishlistService;
 use Polski\Shortcode\ShortcodeManager;
 use Polski\Service\PriceDisplayService;
 use Polski\Service\OmnibusService;
-use Polski\Service\QuoteService;
 use Polski\Service\TaxDisplayService;
 use Polski\Service\DeliveryTimeService;
 use Polski\Service\CheckboxService;
@@ -57,14 +47,11 @@ use Polski\Service\FoodService;
 use Polski\Service\DisputeResolutionService;
 use Polski\Service\EmailService;
 use Polski\Service\ComplianceCheckService;
+use Polski\Service\SecurityIncidentService;
 use Polski\Repository\OmnibusPriceRepository;
-use Polski\Repository\QuoteRequestRepository;
 use Polski\Repository\CompareRepository;
 use Polski\Repository\WishlistRepository;
 use Polski\Repository\WaitlistRepository;
-use Polski\Repository\GiftCardRepository;
-use Polski\Repository\SubscriptionRepository;
-use Polski\Repository\AffiliateRepository;
 use Polski\Repository\ConsentLogRepository;
 use Polski\Repository\WithdrawalRepository;
 use Polski\Shopmark\ShopmarkManager;
@@ -90,11 +77,6 @@ return static function (Container $c): void {
         return new ConsentLogRepository($wpdb);
     });
 
-    $c->singleton(QuoteRequestRepository::class, static function () {
-        global $wpdb;
-        return new QuoteRequestRepository($wpdb);
-    });
-
     $c->singleton(WishlistRepository::class, static function () {
         global $wpdb;
         return new WishlistRepository($wpdb);
@@ -108,21 +90,6 @@ return static function (Container $c): void {
     $c->singleton(CompareRepository::class, static function () {
         global $wpdb;
         return new CompareRepository($wpdb);
-    });
-
-    $c->singleton(GiftCardRepository::class, static function () {
-        global $wpdb;
-        return new GiftCardRepository($wpdb);
-    });
-
-    $c->singleton(SubscriptionRepository::class, static function () {
-        global $wpdb;
-        return new SubscriptionRepository($wpdb);
-    });
-
-    $c->singleton(AffiliateRepository::class, static function () {
-        global $wpdb;
-        return new AffiliateRepository($wpdb);
     });
 
     $c->singleton(WithdrawalRepository::class, static function () {
@@ -151,11 +118,6 @@ return static function (Container $c): void {
     $c->singleton(FoodService::class, static fn () => new FoodService());
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
     $c->singleton(ComplianceCheckService::class, static fn () => new ComplianceCheckService());
-    $c->singleton(ContractService::class, static fn () => new ContractService());
-    $c->singleton(CatalogModeService::class, static fn () => new CatalogModeService(
-        $c->get(TemplateLoader::class),
-        $c->get(QuoteService::class),
-    ));
     $c->singleton(FilterService::class, static fn () => new FilterService(
         $c->get(TemplateLoader::class),
     ));
@@ -176,9 +138,6 @@ return static function (Container $c): void {
         $c->get(DeliveryTimeService::class),
         $c->get(ProductInfoService::class),
     ));
-    $c->singleton(FrequentlyBoughtTogetherService::class, static fn () => new FrequentlyBoughtTogetherService(
-        $c->get(TemplateLoader::class),
-    ));
     $c->singleton(BadgeService::class, static fn () => new BadgeService(
         $c->get(TemplateLoader::class),
     ));
@@ -192,25 +151,8 @@ return static function (Container $c): void {
     $c->singleton(ProductSliderService::class, static fn () => new ProductSliderService(
         $c->get(TemplateLoader::class),
     ));
-    $c->singleton(PreOrderService::class, static fn () => new PreOrderService(
-        $c->get(TemplateLoader::class),
-    ));
     $c->singleton(WaitlistService::class, static fn () => new WaitlistService(
         $c->get(WaitlistRepository::class),
-        $c->get(TemplateLoader::class),
-    ));
-    $c->singleton(AddOnsService::class, static fn () => new AddOnsService(
-        $c->get(TemplateLoader::class),
-    ));
-    $c->singleton(ProductBundlesService::class, static fn () => new ProductBundlesService(
-        $c->get(TemplateLoader::class),
-    ));
-    $c->singleton(GiftCardService::class, static fn () => new GiftCardService(
-        $c->get(GiftCardRepository::class),
-        $c->get(TemplateLoader::class),
-    ));
-    $c->singleton(SubscriptionService::class, static fn () => new SubscriptionService(
-        $c->get(SubscriptionRepository::class),
         $c->get(TemplateLoader::class),
     ));
     $c->singleton(InfiniteScrollService::class, static fn () => new InfiniteScrollService(
@@ -219,23 +161,30 @@ return static function (Container $c): void {
     $c->singleton(PopupService::class, static fn () => new PopupService(
         $c->get(TemplateLoader::class),
     ));
-    $c->singleton(AffiliateService::class, static fn () => new AffiliateService(
-        $c->get(AffiliateRepository::class),
-        $c->get(TemplateLoader::class),
-    ));
     $c->singleton(SearchService::class, static fn () => new SearchService(
-        $c->get(TemplateLoader::class),
-    ));
-    $c->singleton(QuoteService::class, static fn () => new QuoteService(
-        $c->get(QuoteRequestRepository::class),
-        $c->get(ConsentLogRepository::class),
         $c->get(TemplateLoader::class),
     ));
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
         $c->get(WithdrawalRepository::class),
         $c->get(EmailService::class),
+        $c->get(TemplateLoader::class),
     ));
+
+    // New modules: GPSR, Verified Review, DSA, KSeF-ready.
+    $c->singleton(\Polski\Service\GPSRService::class, static fn () => new \Polski\Service\GPSRService(
+        $c->get(TemplateLoader::class),
+    ));
+    $c->singleton(\Polski\Service\VerifiedReviewService::class, static fn () => new \Polski\Service\VerifiedReviewService());
+    $c->singleton(\Polski\Service\DSAService::class, static fn () => new \Polski\Service\DSAService(
+        $c->get(TemplateLoader::class),
+    ));
+    $c->singleton(\Polski\Service\KSeFReadyService::class, static fn () => new \Polski\Service\KSeFReadyService());
+    $c->singleton(SecurityIncidentService::class, static fn () => new SecurityIncidentService());
+    $c->singleton(\Polski\Service\SiteAuditService::class, static fn () => new \Polski\Service\SiteAuditService());
+    $c->singleton(\Polski\Service\CRAReadinessService::class, static fn () => new \Polski\Service\CRAReadinessService());
+    $c->singleton(\Polski\Service\DPATrackerService::class, static fn () => new \Polski\Service\DPATrackerService());
+    $c->singleton(\Polski\Service\NipLookupService::class, static fn () => new \Polski\Service\NipLookupService());
 
     // Shopmarks.
     $c->singleton(ShopmarkManager::class, static fn () => new ShopmarkManager());
@@ -254,12 +203,15 @@ return static function (Container $c): void {
         $c->get(CheckboxService::class),
         $c->get(ConsentLogRepository::class),
     ));
+    $c->singleton(\Polski\Block\ModuleBlocks::class, static fn () => new \Polski\Block\ModuleBlocks(
+        $c->get(SearchService::class),
+        $c->get(FilterService::class),
+        $c->get(ProductSliderService::class),
+    ));
 
     // Compatibility.
     $c->singleton(\Polski\Compatibility\ElementorCompat::class, static fn () => new \Polski\Compatibility\ElementorCompat());
     $c->singleton(\Polski\Compatibility\DynamicPricingCompat::class, static fn () => new \Polski\Compatibility\DynamicPricingCompat());
-    $c->singleton(\Polski\Compatibility\ProductBundlesCompat::class, static fn () => new \Polski\Compatibility\ProductBundlesCompat());
-    $c->singleton(\Polski\Compatibility\SubscriptionsCompat::class, static fn () => new \Polski\Compatibility\SubscriptionsCompat());
     $c->singleton(\Polski\Compatibility\CartFlowsCompat::class, static fn () => new \Polski\Compatibility\CartFlowsCompat());
     $c->singleton(\Polski\Compatibility\GoogleCompat::class, static fn () => new \Polski\Compatibility\GoogleCompat());
 
@@ -270,9 +222,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Admin\AdminNotes::class, static fn () => new \Polski\Admin\AdminNotes());
     $c->singleton(\Polski\Admin\CSVImportExport::class, static fn () => new \Polski\Admin\CSVImportExport());
     $c->singleton(\Polski\Admin\ModulesPage::class, static fn () => new \Polski\Admin\ModulesPage());
-    $c->singleton(\Polski\Admin\QuoteRequestsPage::class, static fn () => new \Polski\Admin\QuoteRequestsPage(
-        $c->get(QuoteService::class),
-    ));
+    $c->singleton(\Polski\Admin\DeactivationHandler::class, static fn () => new \Polski\Admin\DeactivationHandler());
 
     // REST API.
     $c->singleton(SettingsController::class, static fn () => new SettingsController());
@@ -319,7 +269,4 @@ return static function (Container $c): void {
 
     $c->singleton(OrderHooks::class, static fn () => new OrderHooks());
 
-    $c->singleton(EmailHooks::class, static fn () => new EmailHooks(
-        $c->get(EmailService::class),
-    ));
 };

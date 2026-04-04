@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Model;
+
+defined('ABSPATH') || exit;
 
 use Polski\Enum\PriceType;
 

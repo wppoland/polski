@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski;
 
+defined('ABSPATH') || exit;
 /**
  * Versioned database migration runner.
  *
@@ -69,6 +69,7 @@ final class Migrator
         }
 
         /** @var list<string> */
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is internal, not user input.
         return $wpdb->get_col("SELECT version FROM {$table} ORDER BY id ASC");
     }
 

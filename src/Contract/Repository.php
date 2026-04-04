@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Contract;
 
+defined('ABSPATH') || exit;
 /**
  * Generic repository interface for data access.
  *

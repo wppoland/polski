@@ -10,6 +10,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <form role="search" method="get" class="woocommerce-product-search polski-ajax-search" action="<?php echo esc_url(home_url('/')); ?>" data-polski-ajax-search>
     <label class="screen-reader-text" for="polski-ajax-search-input">

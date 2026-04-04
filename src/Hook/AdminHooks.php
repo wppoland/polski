@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Hook;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\AdminPage;
 use Polski\Contract\HasHooks;

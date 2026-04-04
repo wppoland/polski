@@ -14,6 +14,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+
 ?>
 <div class="polski-badges polski-badges--<?php echo esc_attr($context); ?>">
     <?php foreach ($badges as $badge) : ?>

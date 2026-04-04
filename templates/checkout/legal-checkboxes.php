@@ -13,7 +13,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 if (empty($checkboxes)) {
     return;
 }

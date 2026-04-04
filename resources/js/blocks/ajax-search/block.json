@@ -1,0 +1,41 @@
+{
+    "name": "polski/ajax-search",
+    "version": "1.3.0",
+    "title": "Polski AJAX Search",
+    "description": "Dynamic AJAX product search form for WooCommerce storefronts.",
+    "category": "widgets",
+    "icon": "search",
+    "textdomain": "polski",
+    "apiVersion": 3,
+    "editorScript": "file:./index.js",
+    "attributes": {
+        "placeholder": {
+            "type": "string",
+            "default": ""
+        },
+        "searchLabel": {
+            "type": "string",
+            "default": ""
+        },
+        "resultsLabel": {
+            "type": "string",
+            "default": ""
+        },
+        "submitButtonText": {
+            "type": "string",
+            "default": ""
+        },
+        "showSubmitButton": {
+            "type": "boolean",
+            "default": true
+        },
+        "minChars": {
+            "type": "number",
+            "default": 2
+        },
+        "limit": {
+            "type": "number",
+            "default": 6
+        }
+    }
+}

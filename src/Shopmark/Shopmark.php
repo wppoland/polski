@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Shopmark;
 
+defined('ABSPATH') || exit;
 /**
  * A display element definition (e.g., unit price badge, delivery time notice).
  */

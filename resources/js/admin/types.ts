@@ -67,6 +67,4 @@ export interface CheckboxStats {
     suggestions: Suggestion[];
     checkboxes: CheckboxInfo[];
     consent_log: ConsentLogStats;
-    pro_active: boolean;
-    pro_version: string | null;
 }

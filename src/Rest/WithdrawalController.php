@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Rest;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 use Polski\Enum\WithdrawalStatus;
@@ -53,7 +54,7 @@ final class WithdrawalController extends RestController implements HasHooks
             [
                 'methods' => \WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'createWithdrawal'],
-                'permission_callback' => '__return_true',
+                'permission_callback' => [$this, 'customerPermissionCheck'],
                 'args' => [
                     'order_id' => [
                         'required' => true,
@@ -113,25 +114,25 @@ final class WithdrawalController extends RestController implements HasHooks
     {
         $orderId = (int) $request->get_param('order_id');
         $reason = $request->get_param('reason');
+        $currentUser = get_current_user_id();
+        $isAdmin = $this->hasAdminPermission();
 
         $order = wc_get_order($orderId);
 
-        if (! $order instanceof \WC_Order) {
-            return new WP_REST_Response(
-                ['message' => __('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski')],
-                404,
-            );
-        }
-
-        // Verify ownership for non-admins.
-        if (! $this->hasAdminPermission()) {
-            $currentUser = get_current_user_id();
-            if ($currentUser <= 0 || $order->get_customer_id() !== $currentUser) {
+        if (! $isAdmin) {
+            if (! $order instanceof \WC_Order || $currentUser <= 0 || $order->get_customer_id() !== $currentUser) {
                 return new WP_REST_Response(
-                    ['message' => __('Nie masz uprawnień do odstąpienia od tego zamówienia.', 'polski')],
-                    403,
+                    ['message' => __('We could not prepare a withdrawal request for this order.', 'polski')],
+                    404,
                 );
             }
+        }
+
+        if (! $order instanceof \WC_Order) {
+            return new WP_REST_Response(
+                ['message' => __('We could not find that order.', 'polski')],
+                404,
+            );
         }
 
         $container = \Polski\Plugin::instance()->container();
@@ -141,7 +142,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if ($withdrawal === null) {
             return new WP_REST_Response(
-                ['message' => __('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski')],
+                ['message' => __('This order is not eligible for withdrawal.', 'polski')],
                 400,
             );
         }

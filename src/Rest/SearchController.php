@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Rest;
+
+defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 use Polski\Service\SearchService;

@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Enum;
 
+defined('ABSPATH') || exit;
 enum DeliveryTimeUnit: string
 {
     case Days = 'days';
@@ -12,17 +12,24 @@ enum DeliveryTimeUnit: string
 
     public function label(int $count): string
     {
+        /* translators: %d: delivery time count in days */
+        $daysLabel = _n('%d day', '%d days', $count, 'polski');
+        /* translators: %d: delivery time count in business days */
+        $businessDaysLabel = _n('%d business day', '%d business days', $count, 'polski');
+        /* translators: %d: delivery time count in weeks */
+        $weeksLabel = _n('%d week', '%d weeks', $count, 'polski');
+
         return match ($this) {
             self::Days => sprintf(
-                _n('%d day', '%d days', $count, 'polski'),
+                $daysLabel,
                 $count,
             ),
             self::BusinessDays => sprintf(
-                _n('%d business day', '%d business days', $count, 'polski'),
+                $businessDaysLabel,
                 $count,
             ),
             self::Weeks => sprintf(
-                _n('%d week', '%d weeks', $count, 'polski'),
+                $weeksLabel,
                 $count,
             ),
         };

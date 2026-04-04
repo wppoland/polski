@@ -13,7 +13,6 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-
 $images = $service->getProductImages($product);
 $priceHtml = $service->getPriceHtml($product);
 $unitPriceHtml = $service->getUnitPriceHtml($product);
