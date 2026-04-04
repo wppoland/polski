@@ -29,5 +29,8 @@ test-results
 _benchmark
 AGENTS.md
 CLAUDE.md
+SUPPORT.md
+build/.vite
+.claude
 messages.mo
 languages/translate_po.py

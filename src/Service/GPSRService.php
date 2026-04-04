@@ -109,8 +109,10 @@ final class GPSRService implements HasHooks
         $filledCount = count($filled);
 
         if ($filledCount >= 3) {
+            /* translators: %d: number of filled GPSR fields out of 8 */
             echo '<span style="color:#46b450;" title="' . esc_attr(sprintf(__('%d/8 pól wypełnionych', 'polski'), $filledCount)) . '">&#10003;</span>';
         } elseif ($filledCount > 0) {
+            /* translators: %d: number of filled GPSR fields out of 8 */
             echo '<span style="color:#f0ad4e;" title="' . esc_attr(sprintf(__('%d/8 pól wypełnionych', 'polski'), $filledCount)) . '">&#9888;</span>';
         } else {
             echo '<span style="color:#ccc;">—</span>';
