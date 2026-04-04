@@ -53,7 +53,7 @@ final class AdminPage implements Bootable, HasHooks
         $settingsLink = sprintf(
             '<a href="%s">%s</a>',
             esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')),
-            esc_html__('Ustawienia', 'polski'),
+            esc_html__('Settings', 'polski'),
         );
 
         array_unshift($links, $settingsLink);
@@ -114,7 +114,7 @@ final class AdminPage implements Bootable, HasHooks
     public function handleGenerateLegalPages(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(__('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'));
+            wp_die(__('Sorry, but you do not have permission to access this page.', 'polski'));
         }
 
         check_admin_referer('polski_generate_pages', '_polski_nonce');
@@ -180,7 +180,7 @@ final class AdminPage implements Bootable, HasHooks
 
         $moduleId = sanitize_text_field((string) ($_POST['module_id'] ?? ''));
         $groupSlug = sanitize_text_field((string) ($_POST['group_slug'] ?? ''));
-        $postSettings = $_POST['polski_setting'] ?? [];
+        $postSettings = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- individual values sanitized below
 
         if (is_array($postSettings)) {
             foreach ($postSettings as $optionName => $fields) {
@@ -223,8 +223,8 @@ final class AdminPage implements Bootable, HasHooks
         // Submenu items.
         add_submenu_page(
             self::PAGE_SLUG,
-            __('Pulpit', 'polski'),
-            __('Pulpit', 'polski'),
+            __('Dashboard', 'polski'),
+            __('Dashboard', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG, // Replaces default "Polski" submenu item with Dashboard.
             [$this, 'renderDashboardPage'],
@@ -232,8 +232,8 @@ final class AdminPage implements Bootable, HasHooks
 
         add_submenu_page(
             self::PAGE_SLUG,
-            __('Moduły', 'polski'),
-            __('Moduły', 'polski'),
+            __('Modules', 'polski'),
+            __('Modules', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG . '-modules',
             [$this, 'renderPage'],
@@ -241,8 +241,8 @@ final class AdminPage implements Bootable, HasHooks
 
         add_submenu_page(
             self::PAGE_SLUG,
-            __('Raporty i narzędzia', 'polski'),
-            __('Raporty i narzędzia', 'polski'),
+            __('Reports & Tools', 'polski'),
+            __('Reports & Tools', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG . '-reports',
             [$this, 'renderReportsHubPage'],
@@ -297,7 +297,7 @@ final class AdminPage implements Bootable, HasHooks
         echo '<h1>Polski &rsaquo; ' . esc_html($groupName) . '</h1>';
 
         if (isset($_GET['saved'])) {
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Ustawienia zostały zapisane.', 'polski') . '</p></div>';
+            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings have been saved.', 'polski') . '</p></div>';
         }
 
         foreach ($modules as $module) {
@@ -318,7 +318,7 @@ final class AdminPage implements Bootable, HasHooks
             }
 
             echo '</tbody></table>';
-            submit_button(__('Zapisz ustawienia', 'polski'));
+            submit_button(__('Save Settings', 'polski'));
             echo '</form>';
             echo '</div>';
         }
@@ -380,20 +380,20 @@ final class AdminPage implements Bootable, HasHooks
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['polski_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj.', 'polski')));
+            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Ready! We have generated draft legal pages for you. Please review, adjust, and publish them.', 'polski')));
             echo '</p></div>';
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['modules_saved'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html((string) ($generalSettings['admin_modules_saved_notice'] ?? __('Moduły zapisane.', 'polski')));
+            echo esc_html((string) ($generalSettings['admin_modules_saved_notice'] ?? __('Modules saved.', 'polski')));
             echo '</p></div>';
         }
 
         // Tab navigation.
         $tabs = [
-            'modules' => __('Moduły', 'polski'),
-            'dashboard' => __('Pulpit', 'polski'),
+            'modules' => __('Modules', 'polski'),
+            'dashboard' => __('Dashboard', 'polski'),
         ];
 
         echo '<nav class="nav-tab-wrapper" style="margin-bottom:20px;">';
@@ -426,7 +426,7 @@ final class AdminPage implements Bootable, HasHooks
         $view = sanitize_key($_GET['view'] ?? 'overview');
 
         echo '<div class="wrap">';
-        echo '<h1>Polski &rsaquo; ' . esc_html__('Raporty i narzędzia', 'polski') . '</h1>';
+        echo '<h1>Polski &rsaquo; ' . esc_html__('Reports & Tools', 'polski') . '</h1>';
 
         if ($view === 'overview') {
             echo '<div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
@@ -436,7 +436,7 @@ final class AdminPage implements Bootable, HasHooks
             $this->renderHelpSidebar('reports');
             echo '</div>';
         } else {
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports')) . '" class="button" style="margin-bottom:20px;">&larr; ' . esc_html__('Wróć do raportów', 'polski') . '</a>';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports')) . '" class="button" style="margin-bottom:20px;">&larr; ' . esc_html__('Back to reports', 'polski') . '</a>';
             
             switch ($view) {
                 case 'audit':
@@ -578,14 +578,14 @@ final class AdminPage implements Bootable, HasHooks
             ],
             [
                 'id' => 'feedback',
-                'name' => __('Logi opinii', 'polski'),
+                'name' => __('Feedback Logs', 'polski'),
                 'desc' => __('Deactivation feedback and local admin feedback from the plugin sidebar.', 'polski'),
                 'icon' => 'dashicons-format-chat',
                 'module' => null, // Always enabled
             ],
         ];
 
-        echo '<p>' . esc_html__('Wybierz raport lub narzędzie, aby sprawdzić status zgodności Twojego sklepu.', 'polski') . '</p>';
+        echo '<p>' . esc_html__('Select a report or tool to check your store compliance status.', 'polski') . '</p>';
 
         echo '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:20px;margin-top:20px;">';
 
@@ -600,9 +600,9 @@ final class AdminPage implements Bootable, HasHooks
             echo '<p style="margin:0 0 20px;color:#666;font-size:13px;">' . esc_html($report['desc']) . '</p>';
             
             if ($isEnabled) {
-                echo '<a href="' . esc_url($url) . '" class="button button-primary">' . esc_html__('Otwórz raport', 'polski') . '</a>';
+                echo '<a href="' . esc_url($url) . '" class="button button-primary">' . esc_html__('Open Report', 'polski') . '</a>';
             } else {
-                echo '<span class="description" style="color:#dc3232;">' . esc_html__('Moduł wyłączony', 'polski') . '</span>';
+                echo '<span class="description" style="color:#dc3232;">' . esc_html__('Module disabled', 'polski') . '</span>';
             }
             echo '</div>';
         }
@@ -620,19 +620,19 @@ final class AdminPage implements Bootable, HasHooks
 
         $feedback = array_reverse($feedback);
 
-        echo '<h3>' . esc_html__('Logi opinii z panelu', 'polski') . '</h3>';
+        echo '<h3>' . esc_html__('Admin Feedback Logs', 'polski') . '</h3>';
 
         if ($feedback === []) {
-            echo '<p>' . esc_html__('Brak opinii z panelu do wyświetlenia.', 'polski') . '</p>';
+            echo '<p>' . esc_html__('No internal feedback to display.', 'polski') . '</p>';
             return;
         }
 
         echo '<table class="widefat striped"><thead><tr>';
-        echo '<th>' . esc_html__('Data', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Osoba', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Temat', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Ekran', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Wiadomość', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Date', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Person', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Topic', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Screen', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Message', 'polski') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($feedback as $entry) {
@@ -672,7 +672,7 @@ final class AdminPage implements Bootable, HasHooks
     {
         echo '<tr>';
         echo '<th scope="row">' . esc_html($label) . '</th>';
-        echo '<td><label><input type="checkbox" name="' . esc_attr($name) . '" value="1"' . checked($checked, true, false) . ' /> ' . esc_html__('Włącz', 'polski') . '</label></td>';
+        echo '<td><label><input type="checkbox" name="' . esc_attr($name) . '" value="1"' . checked($checked, true, false) . ' /> ' . esc_html__('Enable', 'polski') . '</label></td>';
         echo '</tr>';
     }
 
@@ -704,25 +704,25 @@ final class AdminPage implements Bootable, HasHooks
 
         // Dashboard header
         echo '<div style="background: linear-gradient(135deg, #0073aa 0%, #00a0d2 100%); padding: 40px; border-radius: 12px; color: #fff; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
-        echo '<h2 style="color:#fff; margin:0 0 10px; font-size:28px; font-weight:700;">' . esc_html__('Dzień dobry!', 'polski') . '</h2>';
+        echo '<h2 style="color:#fff; margin:0 0 10px; font-size:28px; font-weight:700;">' . esc_html__('Hello!', 'polski') . '</h2>';
         echo '<p style="font-size:16px; margin:0; opacity:0.9;">' . esc_html__('Narzędzia wspomagające dostosowanie sklepu do polskich wymagań.', 'polski') . '</p>';
         echo '</div>';
 
         // Quick Setup Alert
         if (! $isWizardComplete || ! $allPagesConfigured) {
             echo '<div style="background:#fff; border-left:4px solid #f0ad4e; padding:20px; margin-bottom:30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">';
-            echo '<h3 style="margin-top:0; color:#856404;">' . esc_html__('Dokończ konfigurację', 'polski') . '</h3>';
-            echo '<p>' . esc_html__('Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi.', 'polski') . '</p>';
+            echo '<h3 style="margin-top:0; color:#856404;">' . esc_html__('Finish configuration', 'polski') . '</h3>';
+            echo '<p>' . esc_html__('Some key elements of your store still require attention.', 'polski') . '</p>';
             echo '<ul style="margin:10px 0 15px 20px;color:#856404;">';
             if (! $allPagesConfigured) {
-                echo '<li>' . esc_html__('Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia)', 'polski') . '</li>';
+                echo '<li>' . esc_html__('Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)', 'polski') . '</li>';
             }
             if (! $isWizardComplete) {
-                echo '<li>' . esc_html__('Przejdź przez listę kontrolną poniżej', 'polski') . '</li>';
+                echo '<li>' . esc_html__('Go through the checklist below', 'polski') . '</li>';
             }
             echo '</ul>';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-informacje-o-produkcie')) . '" class="button button-primary">' . esc_html__('Uzupełnij dane produktów', 'polski') . '</a> ';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button">' . esc_html__('Zarządzaj modułami', 'polski') . '</a>';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-informacje-o-produkcie')) . '" class="button button-primary">' . esc_html__('Complete product data', 'polski') . '</a> ';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button">' . esc_html__('Manage modules', 'polski') . '</a>';
             echo '</div>';
         }
 
@@ -731,26 +731,26 @@ final class AdminPage implements Bootable, HasHooks
 
         $this->renderStatusCard(
             'WooCommerce',
-            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Nieaktywna', 'polski'),
+            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Inactive', 'polski'),
             defined('WC_VERSION'),
         );
 
         $this->renderStatusCard(
-            __('Strony prawne', 'polski'),
+            __('Legal Pages', 'polski'),
             /* translators: 1: number of configured legal pages, 2: total number of required legal pages. */
-            sprintf(__('%1$d z %2$d gotowych', 'polski'), $configuredCount, count($pageStatus)),
+            sprintf(__('%1$d of %2$d ready', 'polski'), $configuredCount, count($pageStatus)),
             $allPagesConfigured,
         );
 
         $this->renderStatusCard(
-            __('Dyrektywa Omnibus', 'polski'),
-            $omnibusEnabled ? __('Aktywna', 'polski') : __('Wyłączona', 'polski'),
+            __('Omnibus Directive', 'polski'),
+            $omnibusEnabled ? __('Active', 'polski') : __('Disabled', 'polski'),
             $omnibusEnabled,
         );
 
         $this->renderStatusCard(
-            __('Analiza sklepu', 'polski'),
-            __('Sprawdź raporty', 'polski'),
+            __('Store Analysis', 'polski'),
+            __('Check reports', 'polski'),
             null,
             admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports')
         );
@@ -759,12 +759,12 @@ final class AdminPage implements Bootable, HasHooks
 
         // Legal pages section.
         echo '<div style="margin-top:30px;">';
-        echo '<h2>' . esc_html((string) ($generalSettings['admin_legal_pages_section_title'] ?? __('Strony prawne', 'polski'))) . '</h2>';
+        echo '<h2>' . esc_html((string) ($generalSettings['admin_legal_pages_section_title'] ?? __('Legal Pages', 'polski'))) . '</h2>';
 
         if ($anyPageExists) {
             // Show page list with edit links.
             echo '<table class="widefat striped" style="max-width:600px;">';
-            echo '<thead><tr><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_page'] ?? __('Strona', 'polski'))) . '</th><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_status'] ?? __('Status', 'polski'))) . '</th><th></th></tr></thead><tbody>';
+            echo '<thead><tr><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_page'] ?? __('Page', 'polski'))) . '</th><th>' . esc_html((string) ($generalSettings['admin_legal_pages_table_status'] ?? __('Status', 'polski'))) . '</th><th></th></tr></thead><tbody>';
 
             foreach ($pageStatus as $type => $configured) {
                 $pageType = \Polski\Enum\LegalPageType::tryFrom($type);
@@ -781,14 +781,14 @@ final class AdminPage implements Bootable, HasHooks
 
                 if ($post instanceof \WP_Post) {
                     $statusLabel = match ($post->post_status) {
-                        'publish' => '<span style="color:#46b450;">' . esc_html((string) ($generalSettings['admin_legal_pages_published'] ?? __('Opublikowana', 'polski'))) . '</span>',
-                        'draft' => '<span style="color:#f0ad4e;">' . esc_html((string) ($generalSettings['admin_legal_pages_draft'] ?? __('Szkic', 'polski'))) . '</span>',
+                        'publish' => '<span style="color:#46b450;">' . esc_html((string) ($generalSettings['admin_legal_pages_published'] ?? __('Published', 'polski'))) . '</span>',
+                        'draft' => '<span style="color:#f0ad4e;">' . esc_html((string) ($generalSettings['admin_legal_pages_draft'] ?? __('Draft', 'polski'))) . '</span>',
                         default => esc_html($post->post_status),
                     };
                     echo '<td>' . $statusLabel . '</td>';
-                    echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html((string) ($generalSettings['admin_edit_button_text'] ?? __('Edytuj', 'polski'))) . '</a></td>';
+                    echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html((string) ($generalSettings['admin_edit_button_text'] ?? __('Edit', 'polski'))) . '</a></td>';
                 } else {
-                    echo '<td><span style="color:#dc3232;">' . esc_html((string) ($generalSettings['admin_legal_pages_missing'] ?? __('Nie utworzona', 'polski'))) . '</span></td>';
+                    echo '<td><span style="color:#dc3232;">' . esc_html((string) ($generalSettings['admin_legal_pages_missing'] ?? __('Not created', 'polski'))) . '</span></td>';
                     echo '<td></td>';
                 }
 
@@ -803,7 +803,7 @@ final class AdminPage implements Bootable, HasHooks
             }
         } else {
             // No pages exist at all - show generate button.
-            echo '<p>' . esc_html((string) ($generalSettings['admin_generate_pages_empty_text'] ?? __('Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć.', 'polski'))) . '</p>';
+            echo '<p>' . esc_html((string) ($generalSettings['admin_generate_pages_empty_text'] ?? __('No legal pages have been created yet. Generate them to get started.', 'polski'))) . '</p>';
             $this->renderGenerateButton();
         }
 
@@ -811,7 +811,7 @@ final class AdminPage implements Bootable, HasHooks
 
         // Next steps checklist.
         echo '<div style="margin-top:30px;">';
-        echo '<h2>' . esc_html((string) ($generalSettings['admin_next_steps_title'] ?? __('Kolejne kroki', 'polski'))) . '</h2>';
+        echo '<h2>' . esc_html((string) ($generalSettings['admin_next_steps_title'] ?? __('Next steps', 'polski'))) . '</h2>';
         echo '<ul style="max-width:700px;list-style:none;padding:0;margin:0;">';
 
         $steps = $this->buildNextSteps($generalSettings, $allPagesConfigured);
@@ -863,7 +863,7 @@ final class AdminPage implements Bootable, HasHooks
             'html' => sprintf(
                 '%s',
                 (string) ($generalSettings['admin_next_steps_publish_pages']
-                    ?? __('Opublikuj swoje strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje).', 'polski')),
+                    ?? __('Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints).', 'polski')),
             ),
             'done' => $allPagesConfigured,
         ];
@@ -871,7 +871,7 @@ final class AdminPage implements Bootable, HasHooks
         // 2. VAT rates.
         $taxEnabled = get_option('woocommerce_calc_taxes') === 'yes';
         /* translators: %s: tax settings URL */
-        $taxText = __('Skonfiguruj <a href="%s">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%).', 'polski');
+        $taxText = __('Configure <a href="%s">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%).', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_tax'] ?? $taxText),
@@ -883,7 +883,7 @@ final class AdminPage implements Bootable, HasHooks
         // 3. Shipping zones.
         $shippingZones = function_exists('WC') ? \WC_Shipping_Zones::get_zones() : [];
         /* translators: %s: shipping settings URL */
-        $shippingText = __('Skonfiguruj <a href="%s">strefy wysyłki</a> dla dostaw w Polsce.', 'polski');
+        $shippingText = __('Configure <a href="%s">shipping zones</a> for deliveries in Poland.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_shipping'] ?? $shippingText),
@@ -894,7 +894,7 @@ final class AdminPage implements Bootable, HasHooks
 
         // 4. Product data.
         /* translators: %s: product list URL */
-        $productsText = __('Uzupełnij dane produktów - dodaj ceny jednostkowe i czas dostawy w <a href="%s">zakładce Polski</a> przy każdym produkcie.', 'polski');
+        $productsText = __('Complete product data - add unit prices and delivery time in the <a href="%s">Polski tab</a> for each product.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_products'] ?? $productsText),
@@ -905,7 +905,7 @@ final class AdminPage implements Bootable, HasHooks
 
         // 5. Checkout test.
         /* translators: %s: checkout URL */
-        $checkoutText = __('Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź pola wyboru oraz tekst przycisku w <a href="%s">zamówieniu</a>.', 'polski');
+        $checkoutText = __('Test the order process - add a product to the cart and check the checkboxes and button text in <a href="%s">checkout</a>.', 'polski');
         $steps[] = [
             'html' => sprintf(
                 (string) ($generalSettings['admin_next_steps_checkout'] ?? $checkoutText),
@@ -928,7 +928,7 @@ final class AdminPage implements Bootable, HasHooks
         echo '<input type="hidden" name="action" value="polski_generate_legal_pages" />';
         printf(
             '<button type="submit" class="button button-primary">%s</button>',
-            esc_html((string) ($generalSettings['admin_generate_pages_button_text'] ?? __('Wygeneruj strony prawne', 'polski'))),
+            esc_html((string) ($generalSettings['admin_generate_pages_button_text'] ?? __('Generate legal pages', 'polski'))),
         );
         echo '</form>';
     }
@@ -975,7 +975,7 @@ final class AdminPage implements Bootable, HasHooks
         );
 
         if ($link !== '') {
-            echo '<div style="position:absolute;bottom:10px;right:10px;font-size:12px;color:#0073aa;font-weight:600;">' . esc_html__('Otwórz &rarr;', 'polski') . '</div>';
+            echo '<div style="position:absolute;bottom:10px;right:10px;font-size:12px;color:#0073aa;font-weight:600;">' . esc_html__('Open &rarr;', 'polski') . '</div>';
         }
 
         echo '</div>';

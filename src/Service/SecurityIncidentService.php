@@ -177,7 +177,7 @@ final class SecurityIncidentService implements HasHooks
                 echo ((bool) ($incident['notified_hosting'] ?? false) && (bool) ($incident['notified_authority'] ?? false)) ? '<br>' : '';
                 echo ((bool) ($incident['notified_authority'] ?? false)) ? esc_html__('Authority', 'polski') : '';
                 echo '</td>';
-                echo '<td><details><summary>' . esc_html__('Details', 'polski') . '</summary><div style="margin-top:8px;max-width:360px;white-space:pre-wrap;">' . esc_html((string) ($incident['notes'] ?? '')) . ($incident['mitigation'] ? "\n\n" . __('Mitigation:', 'polski') . ' ' . (string) $incident['mitigation'] : '') . '</div></details></td>';
+                echo '<td><details><summary>' . esc_html__('Details', 'polski') . '</summary><div style="margin-top:8px;max-width:360px;white-space:pre-wrap;">' . esc_html((string) ($incident['notes'] ?? '')) . ($incident['mitigation'] ? "\n\n" . esc_html__('Mitigation:', 'polski') . ' ' . esc_html((string) $incident['mitigation']) : '') . '</div></details></td>';
                 echo '</tr>';
             }
 
