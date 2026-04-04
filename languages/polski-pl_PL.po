@@ -1787,75 +1787,75 @@ msgstr "Data ważności certyfikatu ekologicznego"
 
 #: src/Admin/DeactivationHandler.php:63
 msgid "Before you deactivate Polski"
-msgstr "Zanim wyłączysz Polski"
+msgstr "Before you deactivate Polski"
 
 #: src/Admin/DeactivationHandler.php:64
 msgid "A quick answer helps us improve the plugin and roadmap."
-msgstr "Krótka odpowiedź pomoże nam ulepszyć wtyczkę i plan rozwoju."
+msgstr "A quick answer helps us improve the plugin and roadmap."
 
 #: src/Admin/DeactivationHandler.php:65
 msgid "What is the main reason for deactivation?"
-msgstr "Jaki jest główny powód wyłączenia?"
+msgstr "What is the main reason for deactivation?"
 
 #: src/Admin/DeactivationHandler.php:67
 msgid "A feature is missing"
-msgstr "Brakuje jakiejś funkcji"
+msgstr "A feature is missing"
 
 #: src/Admin/DeactivationHandler.php:68
 msgid "It is hard to configure or use"
-msgstr "Trudno skonfigurować lub używać"
+msgstr "It is hard to configure or use"
 
 #: src/Admin/DeactivationHandler.php:69
 msgid "I found a bug or conflict"
-msgstr "Znalazłem(-am) błąd lub konflikt"
+msgstr "I found a bug or conflict"
 
 #: src/Admin/DeactivationHandler.php:70
 msgid "I do not need it right now"
-msgstr "Nie potrzebuję jej w tej chwili"
+msgstr "I do not need it right now"
 
 #: src/Admin/DeactivationHandler.php:71
 msgid "This is only temporary"
-msgstr "To tylko tymczasowe"
+msgstr "This is only temporary"
 
 #: src/Admin/DeactivationHandler.php:72
 msgid "Other reason"
-msgstr "Inny powód"
+msgstr "Other reason"
 
 #: src/Admin/DeactivationHandler.php:74
 msgid "What could we do better?"
-msgstr "Co moglibyśmy zrobić lepiej?"
+msgstr "What could we do better?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr "Napisz, co było frustrujące, niejasne lub nie działało dobrze."
+msgstr "Tell us what was frustrating, unclear, or not working well."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
-msgstr "Co powinniśmy dodać w następnej kolejności?"
+msgstr "What should we add next?"
 
 #: src/Admin/DeactivationHandler.php:77
 msgid "Feature ideas, integrations, reports, builder support, or anything else you miss."
-msgstr "Pomysły na funkcje, integracje, raporty, wsparcie dla builderów lub cokolwiek innego, czego Ci brakuje."
+msgstr "Feature ideas, integrations, reports, builder support, or anything else you miss."
 
 #: src/Admin/DeactivationHandler.php:78
 msgid "Send feedback and deactivate"
-msgstr "Wyślij opinię i wyłącz"
+msgstr "Send feedback and deactivate"
 
 #: src/Admin/DeactivationHandler.php:79
 msgid "Deactivate without feedback"
-msgstr "Wyłącz bez wysyłania opinii"
+msgstr "Deactivate without feedback"
 
 #: src/Admin/DeactivationHandler.php:80
 msgid "Keep plugin active"
-msgstr "Pozostaw wtyczkę aktywną"
+msgstr "Keep plugin active"
 
 #: src/Admin/DeactivationHandler.php:81
 msgid "Sending..."
-msgstr "Wysyłanie..."
+msgstr "Sending..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
-msgstr "Wybierz główny powód przed wysłaniem opinii."
+msgstr "Please choose the main reason before sending feedback."
 
 #: src/Admin/DeactivationHandler.php:83
 msgid "Thank you for using Polski! We are sorry to see you go. If you have any ideas on how to make it better, we would love to hear from you."
