@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Single product safety information (GPSR, safety docs, instructions).
  *

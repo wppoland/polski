@@ -713,7 +713,16 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div style="background:#fff; border-left:4px solid #f0ad4e; padding:20px; margin-bottom:30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">';
             echo '<h3 style="margin-top:0; color:#856404;">' . esc_html__('Dokończ konfigurację', 'polski') . '</h3>';
             echo '<p>' . esc_html__('Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi.', 'polski') . '</p>';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button button-primary">' . esc_html__('Uzupełnij dane firmy', 'polski') . '</a>';
+            echo '<ul style="margin:10px 0 15px 20px;color:#856404;">';
+            if (! $allPagesConfigured) {
+                echo '<li>' . esc_html__('Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia)', 'polski') . '</li>';
+            }
+            if (! $isWizardComplete) {
+                echo '<li>' . esc_html__('Przejdź przez listę kontrolną poniżej', 'polski') . '</li>';
+            }
+            echo '</ul>';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-informacje-o-produkcie')) . '" class="button button-primary">' . esc_html__('Uzupełnij dane produktów', 'polski') . '</a> ';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button">' . esc_html__('Zarządzaj modułami', 'polski') . '</a>';
             echo '</div>';
         }
 
