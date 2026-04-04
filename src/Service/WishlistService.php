@@ -171,7 +171,7 @@ final class WishlistService implements Bootable, HasHooks
         $logout = $items['customer-logout'] ?? null;
         unset($items['customer-logout']);
 
-        $items[self::ENDPOINT] = (string) ($this->getSettings()['account_label'] ?? __('Ulubione', 'polski'));
+        $items[self::ENDPOINT] = (string) ($this->getSettings()['account_label'] ?? __('Wishlist', 'polski'));
 
         if ($logout !== null) {
             $items['customer-logout'] = $logout;
@@ -263,22 +263,22 @@ final class WishlistService implements Bootable, HasHooks
 
     public function getAddText(): string
     {
-        return (string) ($this->getSettings()['button_add_text'] ?? __('Dodaj do ulubionych', 'polski'));
+        return (string) ($this->getSettings()['button_add_text'] ?? __('Add to Wishlist', 'polski'));
     }
 
     public function getRemoveText(): string
     {
-        return (string) ($this->getSettings()['button_remove_text'] ?? __('Usuń z ulubionych', 'polski'));
+        return (string) ($this->getSettings()['button_remove_text'] ?? __('Remove from Wishlist', 'polski'));
     }
 
     public function getLoginRequiredText(): string
     {
-        return (string) ($this->getSettings()['login_required_text'] ?? __('Zaloguj się, aby korzystać z listy życzeń.', 'polski'));
+        return (string) ($this->getSettings()['login_required_text'] ?? __('Please login to use the wishlist.', 'polski'));
     }
 
     public function getProductNotFoundText(): string
     {
-        return (string) ($this->getSettings()['product_not_found_text'] ?? __('Nie znaleziono produktu.', 'polski'));
+        return (string) ($this->getSettings()['product_not_found_text'] ?? __('Product not found.', 'polski'));
     }
 
     public function canUseWishlist(): bool

@@ -98,29 +98,29 @@ final class WaitlistService implements Bootable, HasHooks
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['product_not_found_text'] ?? __('Nie znaleziono produktu.', 'polski'))], 404);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['product_not_found_text'] ?? __('Product not found.', 'polski'))], 404);
         }
 
         if (! $this->shouldRenderForProduct($product)) {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['disabled_text'] ?? __('Lista oczekujących jest niedostępna dla tego produktu.', 'polski'))], 400);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['disabled_text'] ?? __('Waitlist is unavailable for this product.', 'polski'))], 400);
         }
 
         if ($email === '' || ! is_email($email)) {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['invalid_email_text'] ?? __('Podaj poprawny adres email.', 'polski'))], 422);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['invalid_email_text'] ?? __('Provide a valid email address.', 'polski'))], 422);
         }
 
         if ($privacy !== '1') {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['privacy_error_text'] ?? __('Musisz zaakceptować zgodę na kontakt email.', 'polski'))], 422);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['privacy_error_text'] ?? __('You must accept the consent for email contact.', 'polski'))], 422);
         }
 
         if (! ($this->getSettings()['allow_guests'] ?? true) && ! is_user_logged_in()) {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['login_required_text'] ?? __('Zaloguj się, aby zapisać się na listę oczekujących.', 'polski'))], 403);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['login_required_text'] ?? __('Login to join the waitlist.', 'polski'))], 403);
         }
 
         $this->repository->subscribe($productId, $email, get_current_user_id() ?: null);
 
         wp_send_json_success([
-            'message' => (string) ($this->getSettings()['success_text'] ?? __('Dziękujemy. Zapisaliśmy Cię na listę oczekujących.', 'polski')),
+            'message' => (string) ($this->getSettings()['success_text'] ?? __('Thank you. You have been added to the waitlist.', 'polski')),
         ]);
     }
 
@@ -132,15 +132,15 @@ final class WaitlistService implements Bootable, HasHooks
 
         foreach ($this->repository->findPendingByProduct($productId) as $subscription) {
             $subject = Formatter::interpolate(
-                (string) ($this->getSettings()['notify_subject'] ?? __('Produkt ponownie dostępny - {product_name}', 'polski')),
+                (string) ($this->getSettings()['notify_subject'] ?? __('Product back in stock - {product_name}', 'polski')),
                 ['product_name' => $product->get_name()],
             );
 
             $message = sprintf(
                 "%s\n\n%s\n%s",
-                str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? __('Produkt {product_name} jest ponownie dostępny.', 'polski'))),
+                str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? __('Product {product_name} is back in stock.', 'polski'))),
                 get_permalink($productId),
-                (string) ($this->getSettings()['notify_outro_text'] ?? __('Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten email.', 'polski')),
+                (string) ($this->getSettings()['notify_outro_text'] ?? __('If you no longer wish to receive these messages, simply ignore this email.', 'polski')),
             );
 
             if (wp_mail($subscription->email, $subject, $message)) {
