@@ -54,16 +54,20 @@ final class ModuleBlocks implements HasHooks
 
         $asset = require $assetPath;
 
+        $handle = 'polski-' . $slug . '-block';
+
         wp_register_script(
-            'polski-' . $slug . '-block',
+            $handle,
             plugins_url('build/blocks/' . $slug . '/index.js', \Polski\PLUGIN_FILE),
             $asset['dependencies'] ?? [],
             $asset['version'] ?? \Polski\VERSION,
             true,
         );
 
+        wp_set_script_translations($handle, 'polski', \Polski\PLUGIN_DIR . '/languages');
+
         register_block_type($metadataPath, [
-            'editor_script' => 'polski-' . $slug . '-block',
+            'editor_script' => $handle,
             'render_callback' => $renderCallback,
         ]);
     }

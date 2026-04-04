@@ -17,6 +17,9 @@
     background: #fff;
     width: 100%;
     max-width: 620px;
+    max-height: calc(100vh - 48px);
+    overflow-x: hidden;
+    overflow-y: auto;
     border-radius: 16px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     padding: 32px;

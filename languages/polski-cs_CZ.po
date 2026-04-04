@@ -1,17 +1,15 @@
-# Translation of Polski for WooCommerce in Czech
-# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: Mariusz Szatkowski\n"
 "Language-Team: Czech <cs_CZ@li.org>\n"
-"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-04T06:47:36+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Polski Translation Script 1.0\n"
 "X-Domain: polski\n"
@@ -5924,177 +5922,6 @@ msgstr "Bezpečnostní varování"
 msgid "Bezpieczeństwo produktu (GPSR)"
 msgstr "Bezpečnost produktu (GPSR)"
 
-#: build/blocks/ajax-filters/index.js:186
-#: resources/js/blocks/ajax-filters/index.js:16
-#: build/blocks/ajax-filters/index.js:77
-msgid "Filter settings"
-msgstr "Nastavení filtrů"
-
-#: build/blocks/ajax-filters/index.js:194
-#: build/blocks/product-slider/index.js:229
-#: resources/js/blocks/ajax-filters/index.js:23
-#: resources/js/blocks/product-slider/index.js:48
-#: build/blocks/ajax-filters/index.js:84
-#: build/blocks/product-slider/index.js:109
-msgid "Show title"
-msgstr "Zobrazit název"
-
-#: build/blocks/ajax-filters/index.js:200
-#: resources/js/blocks/ajax-filters/index.js:28
-#: build/blocks/ajax-filters/index.js:89
-msgid "Show categories"
-msgstr "Zobrazit kategorie"
-
-#: build/blocks/ajax-filters/index.js:206
-#: resources/js/blocks/ajax-filters/index.js:33
-#: build/blocks/ajax-filters/index.js:94
-msgid "Show brands"
-msgstr "Zobrazit značky"
-
-#: build/blocks/ajax-filters/index.js:218
-#: resources/js/blocks/ajax-filters/index.js:43
-#: build/blocks/ajax-filters/index.js:104
-msgid "Show stock"
-msgstr "Zobrazit sklad"
-
-#: build/blocks/ajax-filters/index.js:224
-#: resources/js/blocks/ajax-filters/index.js:48
-#: build/blocks/ajax-filters/index.js:109
-msgid "Show sale"
-msgstr "Zobrazit akce"
-
-#: build/blocks/ajax-filters/index.js:230
-#: resources/js/blocks/ajax-filters/index.js:53
-#: build/blocks/ajax-filters/index.js:114
-msgid "Show attributes"
-msgstr "Zobrazit atributy"
-
-#: build/blocks/ajax-filters/index.js:240
-#: resources/js/blocks/ajax-filters/index.js:60
-#: build/blocks/ajax-filters/index.js:121
-msgid "Polski AJAX Filters"
-msgstr "Polski AJAX filtry"
-
-#: build/blocks/ajax-filters/index.js:242
-#: resources/js/blocks/ajax-filters/index.js:61
-#: build/blocks/ajax-filters/index.js:122
-msgid "Dynamic product filters rendered on the frontend."
-msgstr "Dynamické filtry produktů vykreslované na frontendu."
-
-#: build/blocks/ajax-search/index.js:186
-#: resources/js/blocks/ajax-search/index.js:16
-#: build/blocks/ajax-search/index.js:77
-msgid "Search settings"
-msgstr "Nastavení vyhledávání"
-
-#: build/blocks/ajax-search/index.js:194
-#: resources/js/blocks/ajax-search/index.js:23
-#: build/blocks/ajax-search/index.js:84
-msgid "Search label"
-msgstr "Štítek vyhledávání"
-
-#: build/blocks/ajax-search/index.js:206
-#: resources/js/blocks/ajax-search/index.js:33
-#: build/blocks/ajax-search/index.js:94
-msgid "Show submit button"
-msgstr "Zobrazit tlačítko odeslání"
-
-#: build/blocks/ajax-search/index.js:238
-#: resources/js/blocks/ajax-search/index.js:61
-#: build/blocks/ajax-search/index.js:122
-msgid "Polski AJAX Search"
-msgstr "Polski AJAX vyhledávání"
-
-#: build/blocks/ajax-search/index.js:240
-#: resources/js/blocks/ajax-search/index.js:62
-#: build/blocks/ajax-search/index.js:123
-msgid "Dynamic product search form rendered on the frontend."
-msgstr "Dynamický vyhledávací formulář produktů vykreslovaný na frontendu."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:66
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:53
-#: build/blocks/checkout-legal-checkboxes/index.js:53
-msgid "This field is required."
-msgstr "Toto pole je povinné."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:100
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:91
-#: build/blocks/checkout-legal-checkboxes/index.js:91
-msgid "required"
-msgstr "povinné"
-
-#: build/blocks/product-slider/index.js:186
-#: resources/js/blocks/product-slider/index.js:16
-#: build/blocks/product-slider/index.js:77
-msgid "Slider settings"
-msgstr "Nastavení slideru"
-
-#: build/blocks/product-slider/index.js:194
-#: resources/js/blocks/product-slider/index.js:23
-#: build/blocks/product-slider/index.js:84
-msgid "Source"
-msgstr "Zdroj"
-
-#: build/blocks/product-slider/index.js:197
-#: resources/js/blocks/product-slider/index.js:26
-#: build/blocks/product-slider/index.js:87
-msgid "Related products"
-msgstr "Související produkty"
-
-#: build/blocks/product-slider/index.js:200
-#: resources/js/blocks/product-slider/index.js:27
-#: build/blocks/product-slider/index.js:88
-msgid "Upsell products"
-msgstr "Upsell produkty"
-
-#: build/blocks/product-slider/index.js:203
-#: resources/js/blocks/product-slider/index.js:28
-#: build/blocks/product-slider/index.js:89
-msgid "Sale products"
-msgstr "Akční produkty"
-
-#: build/blocks/product-slider/index.js:206
-#: resources/js/blocks/product-slider/index.js:29
-#: build/blocks/product-slider/index.js:90
-msgid "Featured products"
-msgstr "Vyzdvižené produkty"
-
-#: build/blocks/product-slider/index.js:213
-#: resources/js/blocks/product-slider/index.js:34
-#: build/blocks/product-slider/index.js:95
-msgid "Product ID"
-msgstr "ID produktu"
-
-#: build/blocks/product-slider/index.js:216
-#: resources/js/blocks/product-slider/index.js:37
-#: build/blocks/product-slider/index.js:98
-msgid "Optional for related and upsell sliders outside product templates."
-msgstr "Volitelné pro slidery se souvisejícími a upsell produkty mimo šablony produktu."
-
-#: build/blocks/product-slider/index.js:221
-#: resources/js/blocks/product-slider/index.js:41
-#: build/blocks/product-slider/index.js:102
-msgid "Product limit"
-msgstr "Limit produktů"
-
-#: build/blocks/product-slider/index.js:241
-#: resources/js/blocks/product-slider/index.js:58
-#: build/blocks/product-slider/index.js:119
-msgid "Show add to cart"
-msgstr "Zobrazit přidat do košíku"
-
-#: build/blocks/product-slider/index.js:251
-#: resources/js/blocks/product-slider/index.js:65
-#: build/blocks/product-slider/index.js:126
-msgid "Polski Product Slider"
-msgstr "Polski slider produktů"
-
-#: build/blocks/product-slider/index.js:253
-#: resources/js/blocks/product-slider/index.js:66
-#: build/blocks/product-slider/index.js:127
-msgid "Dynamic merchandising slider rendered on the frontend."
-msgstr "Dynamický merchandisingový slider vykreslovaný na frontendu."
-
 #: build/blocks/ajax-filters/block.json
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
@@ -6143,3 +5970,635 @@ msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dynamický merchandisingový slider pro související, upsell, akční a vyzdvižené produkty."
 
+msgid "Hello!"
+msgstr "Ahoj!"
+
+msgid "Finish configuration"
+msgstr "Dokončit konfiguraci"
+
+msgid "Some key elements of your store still require attention."
+msgstr "Některé klíčové prvky vašeho obchodu stále vyžadují pozornost."
+
+msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
+msgstr "Publikovat právní stránky (Obchodní podmínky, Zásady ochrany osobních údajů, Právo na odstoupení)"
+
+msgid "Complete product data"
+msgstr "Doplnit údaje o produktech"
+
+msgid "Manage modules"
+msgstr "Spravovat moduly"
+
+msgid "Generate legal pages"
+msgstr "Vygenerovat právní stránky"
+
+msgid "No legal pages have been created yet. Generate them to get started."
+msgstr "Zatím nebyly vytvořeny žádné právní stránky. Vygenerujte je pro začátek."
+
+msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
+msgstr "Hotovo! Vygenerovali jsme návrhy právních stránek. Zkontrolujte je, upravte a publikujte."
+
+msgid "%1$d of %2$d ready"
+msgstr "%1$d z %2$d připraveno"
+
+msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
+msgstr "Publikujte své právní stránky (Obchodní podmínky, Zásady ochrany osobních údajů, Právo na odstoupení, Reklamace)."
+
+msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
+msgstr "Doplňte údaje o produktech - přidejte jednotkové ceny a dobu dodání v <a href=\"%s\">záložce Polski</a> pro každý produkt."
+
+msgid "%d/8 pól wypełnionych"
+msgstr "%d/8 polí vyplněno"
+
+msgid "Active"
+msgstr "Aktivní"
+
+msgid "Add Allergen"
+msgstr "Přidat alergen"
+
+msgid "Add Delivery Time"
+msgstr "Přidat dobu dodání"
+
+msgid "Add Manufacturer"
+msgstr "Přidat výrobce"
+
+msgid "Add Nutrient"
+msgstr "Přidat živinu"
+
+msgid "Add Unit"
+msgstr "Přidat jednotku"
+
+msgid "Add to Wishlist"
+msgstr "Přidat na seznam přání"
+
+msgid "Add to compare"
+msgstr "Přidat k porovnání"
+
+msgid "Address"
+msgstr "Adresa"
+
+msgid "Admin Feedback Logs"
+msgstr "Protokoly zpětné vazby administrátora"
+
+msgid "Advertising"
+msgstr "Reklama"
+
+msgid "All basic company data is completed."
+msgstr "Všechny základní údaje o firmě jsou vyplněny."
+
+msgid "Allergen"
+msgstr "Alergen"
+
+msgid "Analytics"
+msgstr "Analytika"
+
+msgid "Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims."
+msgstr "Modul anti-greenwashing je deaktivován. Je dobrým zvykem uchovávat zdroje pro environmentální tvrzení."
+
+msgid "Anti-greenwashing module is enabled - products can store claims basis and certificate links."
+msgstr "Modul anti-greenwashing je aktivován - produkty mohou uchovávat podklady tvrzení a odkazy na certifikáty."
+
+msgid "Automatic verification of common issues for Polish WooCommerce shops."
+msgstr "Automatická kontrola běžných problémů polských obchodů WooCommerce."
+
+msgid "Availability"
+msgstr "Dostupnost"
+
+msgid "Back to reports"
+msgstr "Zpět na reporty"
+
+msgid "Business identification data"
+msgstr "Identifikační údaje firmy"
+
+msgid "Button text is not configured. Default WooCommerce setting might lack required payment info."
+msgstr "Text tlačítka není nakonfigurován. Výchozí nastavení WooCommerce nemusí obsahovat požadované platební informace."
+
+msgid "Button: \"%s\" - contains info about payment obligation."
+msgstr "Tlačítko: \"%s\" - obsahuje informace o platební povinnosti."
+
+msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
+msgstr "Tlačítko: \"%s\" - nemusí obsahovat požadované platební informace (např. \"Objednávka s povinností platby\")."
+
+msgid "Check"
+msgstr "Zkontrolovat"
+
+msgid "Check reports"
+msgstr "Zkontrolovat reporty"
+
+msgid "Clear comparison"
+msgstr "Vymazat porovnání"
+
+msgid "Company name"
+msgstr "Název firmy"
+
+msgid "Compare products"
+msgstr "Porovnat produkty"
+
+msgid "Comparison"
+msgstr "Porovnání"
+
+msgid "Complaints"
+msgstr "Reklamace"
+
+msgid "Completed"
+msgstr "Dokončeno"
+
+msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Nakonfigurujte <a href=\"%s\">zóny dopravy</a> pro doručení do Polska."
+
+msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
+msgstr "Nakonfigurujte <a href=\"%s\">sazby daní</a> ve WooCommerce pro polskou DPH (23%%, 8%%, 5%%, 0%%)."
+
+msgid "Confirmed"
+msgstr "Potvrzeno"
+
+msgid "Contact email"
+msgstr "Kontaktní e-mail"
+
+msgid "DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services."
+msgstr "Modul DPA je aktivován, ale registr je prázdný. Označte alespoň hosting, platby a další služby zpracování dat."
+
+msgid "DPA registry (data processing agreements)"
+msgstr "Registr DPA (smlouvy o zpracování dat)"
+
+msgid "DPA registry covers %d services and all have an agreement status marked."
+msgstr "Registr DPA pokrývá %d služeb a všechny mají označený stav smlouvy."
+
+msgid "DPA registry has no active data processing agreements marked."
+msgstr "Registr DPA nemá označené žádné aktivní smlouvy o zpracování dat."
+
+msgid "DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc."
+msgstr "Modul registru DPA je deaktivován. Je dobrým zvykem sledovat stav DPA pro hosting, platby atd."
+
+msgid "DSA - reporting illegal content"
+msgstr "DSA - hlášení nelegálního obsahu"
+
+msgid "DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure."
+msgstr "Modul DSA je deaktivován. Tržiště nebo obchody se sponzorovaným obsahem by měly mít postup oznámení a reakce."
+
+msgid "DSA module is enabled - report form and dashboard are available."
+msgstr "Modul DSA je aktivován - formulář hlášení a dashboard jsou dostupné."
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Data Processing Agreement (DPA) Registry"
+msgstr "Registr smluv o zpracování dat (DPA)"
+
+msgid "Defect Description"
+msgstr "Popis vady"
+
+msgid "Delivery Time"
+msgstr "Doba dodání"
+
+msgid "Delivery Times"
+msgstr "Doby dodání"
+
+msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
+msgstr "Detekováno %d předem zaškrtnutých checkboxů. Úřady to považují za klamavý vzor."
+
+msgid "Detected external services processing your customers' personal data. Mark those for which you have a signed DPA."
+msgstr "Detekované externí služby zpracovávající osobní údaje vašich zákazníků. Označte ty, pro které máte podepsanou DPA."
+
+msgid "Disabled"
+msgstr "Deaktivováno"
+
+msgid "Draft"
+msgstr "Koncept"
+
+msgid "Edit"
+msgstr "Upravit"
+
+msgid "Edit Allergen"
+msgstr "Upravit alergen"
+
+msgid "Edit Delivery Time"
+msgstr "Upravit dobu dodání"
+
+msgid "Edit Manufacturer"
+msgstr "Upravit výrobce"
+
+msgid "Edit Nutrient"
+msgstr "Upravit živinu"
+
+msgid "Edit Unit"
+msgstr "Upravit jednotku"
+
+msgid "Enable"
+msgstr "Aktivovat"
+
+msgid "Environmental claims (anti-greenwashing)"
+msgstr "Environmentální tvrzení (anti-greenwashing)"
+
+msgid "Failed to load product preview."
+msgstr "Nepodařilo se načíst náhled produktu."
+
+msgid "Feature"
+msgstr "Funkce"
+
+msgid "Feedback Logs"
+msgstr "Protokoly zpětné vazby"
+
+msgid "Food Information"
+msgstr "Informace o potravinách"
+
+msgid "GPSR module (product safety)"
+msgstr "Modul GPSR (bezpečnost produktů)"
+
+msgid "GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data."
+msgstr "Modul GPSR je deaktivován. Nařízení (EU) 2023/988 vyžaduje poskytování údajů o výrobci/dovozci."
+
+msgid "GPSR module is enabled - manufacturer and importer data can be displayed."
+msgstr "Modul GPSR je aktivován - údaje o výrobci a dovozci mohou být zobrazeny."
+
+msgid "Go through the checklist below"
+msgstr "Projděte si níže uvedený kontrolní seznam"
+
+msgid "Hosting (server)"
+msgstr "Hosting (server)"
+
+msgid "If you no longer wish to receive these messages, simply ignore this email."
+msgstr "Pokud si již nepřejete dostávat tyto zprávy, jednoduše tento e-mail ignorujte."
+
+msgid "Inactive"
+msgstr "Neaktivní"
+
+msgid "Incident module is enabled and security contact is set. The registry is currently empty."
+msgstr "Modul incidentů je aktivován a bezpečnostní kontakt je nastaven. Registr je momentálně prázdný."
+
+msgid "Incident module is enabled, but no security contact email is set."
+msgstr "Modul incidentů je aktivován, ale není nastaven e-mail bezpečnostního kontaktu."
+
+msgid "Issues"
+msgstr "Problémy"
+
+msgid "KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices."
+msgstr "Modul KSeF je deaktivován. B2B obchody mohou potřebovat automatické označování objednávek vyžadujících e-faktury."
+
+msgid "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration."
+msgstr "Modul KSeF je aktivován - objednávky s DIČ mohou být označeny pro integraci faktur."
+
+msgid "Legal checkboxes (GDPR)"
+msgstr "Právní checkboxy (GDPR)"
+
+msgid "Legal checkboxes module is disabled. The shop might not collect required GDPR consents."
+msgstr "Modul právních checkboxů je deaktivován. Obchod nemusí sbírat požadované souhlasy GDPR."
+
+msgid "Legal checkboxes module is enabled."
+msgstr "Modul právních checkboxů je aktivován."
+
+msgid "Legal pages (Terms, Privacy Policy)"
+msgstr "Právní stránky (Obchodní podmínky, Zásady ochrany osobních údajů)"
+
+msgid "Loading product..."
+msgstr "Načítání produktu..."
+
+msgid "Log in to use product comparison."
+msgstr "Přihlaste se pro použití porovnání produktů."
+
+msgid "Login to join the waitlist."
+msgstr "Přihlaste se pro přidání na čekací listinu."
+
+msgid "Lowest Price (Omnibus)"
+msgstr "Nejnižší cena (Omnibus)"
+
+msgid "Manufacturers"
+msgstr "Výrobci"
+
+msgid "Missing data: %s. Fill in Polski > Settings."
+msgstr "Chybějící údaje: %s. Vyplňte v Polski > Nastavení."
+
+msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
+msgstr "Chybějící stránky: %s. Nastavte je ve WooCommerce > Nastavení > Pokročilé."
+
+msgid "Module disabled"
+msgstr "Modul deaktivován"
+
+msgid "Modules"
+msgstr "Moduly"
+
+msgid "Modules saved."
+msgstr "Moduly uloženy."
+
+msgid "Next steps"
+msgstr "Další kroky"
+
+msgid "No checkboxes are checked by default."
+msgstr "Žádné checkboxy nejsou ve výchozím stavu zaškrtnuté."
+
+msgid "No internal feedback to display."
+msgstr "Žádná interní zpětná vazba k zobrazení."
+
+msgid "Not created"
+msgstr "Nevytvořeno"
+
+msgid "Nutrients"
+msgstr "Živiny"
+
+msgid "Nutritional Information"
+msgstr "Nutriční informace"
+
+msgid "Omnibus Directive"
+msgstr "Směrnice Omnibus"
+
+msgid "Omnibus module (lowest price)"
+msgstr "Modul Omnibus (nejnižší cena)"
+
+msgid "Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales."
+msgstr "Modul Omnibus je deaktivován. Směrnice Omnibus vyžaduje zobrazení nejnižší ceny z 30 dnů při slevách."
+
+msgid "Omnibus module is enabled - lowest price from 30 days will be shown on sales."
+msgstr "Modul Omnibus je aktivován - nejnižší cena z 30 dnů bude zobrazena při slevách."
+
+msgid "On Sale"
+msgstr "Ve slevě"
+
+msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
+msgstr "Pouze %1$d z %2$d sledovaných služeb má označenou smlouvu o zpracování dat."
+
+msgid "Open &rarr;"
+msgstr "Otevřít &rarr;"
+
+msgid "Open Report"
+msgstr "Otevřít report"
+
+msgid "Optional: manually set ID for related/upsell sources outside product details page."
+msgstr "Volitelné: ručně nastavit ID pro související/upsell zdroje mimo stránku produktu."
+
+msgid "Order button text"
+msgstr "Text tlačítka objednávky"
+
+msgid "Page"
+msgstr "Stránka"
+
+msgid "Passed"
+msgstr "Úspěšné"
+
+msgid "Payments"
+msgstr "Platby"
+
+msgid "Person"
+msgstr "Osoba"
+
+msgid "Please complete the Shop Terms and Conditions."
+msgstr "Vyplňte obchodní podmínky obchodu."
+
+msgid "Please complete the complaints procedure."
+msgstr "Vyplňte reklamační řád."
+
+msgid "Please fill in your Privacy Policy."
+msgstr "Vyplňte zásady ochrany osobních údajů."
+
+msgid "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw."
+msgstr "Vyplňte zásady pro vrácení a odstoupení. Spotřebitelé mají 14 dní na odstoupení."
+
+msgid "Please login to use the wishlist."
+msgstr "Přihlaste se pro použití seznamu přání."
+
+msgid "Power Supply"
+msgstr "Napájení"
+
+msgid "Pre-checked checkboxes (dark pattern)"
+msgstr "Předem zaškrtnuté checkboxy (klamavý vzor)"
+
+msgid "Prices exclude VAT (net)"
+msgstr "Ceny bez DPH (netto)"
+
+msgid "Prices include VAT (gross)"
+msgstr "Ceny s DPH (brutto)"
+
+msgid "Privacy Policy contains %d characters."
+msgstr "Zásady ochrany osobních údajů obsahují %d znaků."
+
+msgid "Privacy Policy content"
+msgstr "Obsah zásad ochrany osobních údajů"
+
+msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
+msgstr "Zásady ochrany osobních údajů mají pouze %d znaků - mohou být příliš krátké pro soulad s čl. 13 GDPR."
+
+msgid "Privacy Policy page is not published."
+msgstr "Stránka zásad ochrany osobních údajů není publikována."
+
+msgid "Privacy Policy page is not set."
+msgstr "Stránka zásad ochrany osobních údajů není nastavena."
+
+msgid "Product ID"
+msgstr "ID produktu"
+
+msgid "Product Quick View"
+msgstr "Rychlý náhled produktu"
+
+msgid "Product Slider"
+msgstr "Slider produktů"
+
+msgid "Product back in stock - {product_name}"
+msgstr "Produkt opět skladem - {product_name}"
+
+msgid "Product count"
+msgstr "Počet produktů"
+
+msgid "Product not found."
+msgstr "Produkt nenalezen."
+
+msgid "Product {product_name} is back in stock."
+msgstr "Produkt {product_name} je opět skladem."
+
+msgid "Provide a valid email address."
+msgstr "Zadejte platnou e-mailovou adresu."
+
+msgid "Published"
+msgstr "Publikováno"
+
+msgid "Rejected"
+msgstr "Zamítnuto"
+
+msgid "Related products"
+msgstr "Související produkty"
+
+msgid "Remove from Wishlist"
+msgstr "Odebrat ze seznamu přání"
+
+msgid "Remove from compare"
+msgstr "Odebrat z porovnání"
+
+msgid "Reports & Tools"
+msgstr "Reporty a nástroje"
+
+msgid "Result limit"
+msgstr "Limit výsledků"
+
+msgid "Return Policy"
+msgstr "Zásady vrácení"
+
+msgid "Returns and Complaints"
+msgstr "Vrácení a reklamace"
+
+msgid "Right of Withdrawal"
+msgstr "Právo na odstoupení od smlouvy"
+
+msgid "SSL/TLS encryption"
+msgstr "Šifrování SSL/TLS"
+
+msgid "Safety Document"
+msgstr "Bezpečnostní dokument"
+
+msgid "Safety Documents"
+msgstr "Bezpečnostní dokumenty"
+
+msgid "Safety Instructions"
+msgstr "Bezpečnostní pokyny"
+
+msgid "Save Registry"
+msgstr "Uložit registr"
+
+msgid "Save Settings"
+msgstr "Uložit nastavení"
+
+msgid "Screen"
+msgstr "Obrazovka"
+
+msgid "Search Allergens"
+msgstr "Hledat alergeny"
+
+msgid "Search Delivery Times"
+msgstr "Hledat doby dodání"
+
+msgid "Search Manufacturers"
+msgstr "Hledat výrobce"
+
+msgid "Search Nutrients"
+msgstr "Hledat živiny"
+
+msgid "Search Units"
+msgstr "Hledat jednotky"
+
+msgid "Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance."
+msgstr "Modul bezpečnostních incidentů je deaktivován. Je dobrým zvykem vést jednoduchý registr incidentů."
+
+msgid "Security incident registry"
+msgstr "Registr bezpečnostních incidentů"
+
+msgid "Select a report or tool to check your store compliance status."
+msgstr "Vyberte report nebo nástroj pro kontrolu stavu shody vašeho obchodu."
+
+msgid "Service"
+msgstr "Služba"
+
+msgid "Settings have been saved."
+msgstr "Nastavení byla uložena."
+
+msgid "Shipping"
+msgstr "Doprava"
+
+msgid "Shipping and Payment"
+msgstr "Doprava a platba"
+
+msgid "Shop compliance audit"
+msgstr "Audit shody obchodu"
+
+msgid "Short description"
+msgstr "Krátký popis"
+
+msgid "Show add to cart button"
+msgstr "Zobrazit tlačítko přidat do košíku"
+
+msgid "Show attributes"
+msgstr "Zobrazit atributy"
+
+msgid "Show availability"
+msgstr "Zobrazit dostupnost"
+
+msgid "Show brands"
+msgstr "Zobrazit značky"
+
+msgid "Show categories"
+msgstr "Zobrazit kategorie"
+
+msgid "Show on-sale"
+msgstr "Zobrazit ve slevě"
+
+msgid "Show only differences"
+msgstr "Zobrazit pouze rozdíly"
+
+msgid "Show title"
+msgstr "Zobrazit název"
+
+msgid "Sorry, but you do not have permission to access this page."
+msgstr "Nemáte oprávnění pro přístup k této stránce."
+
+msgid "Store Analysis"
+msgstr "Analýza obchodu"
+
+msgid "Tax Information"
+msgstr "Daňové informace"
+
+msgid "Terms"
+msgstr "Obchodní podmínky"
+
+msgid "Terms and Privacy Policy pages are set and published."
+msgstr "Stránky obchodních podmínek a zásad ochrany osobních údajů jsou nastaveny a publikovány."
+
+msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
+msgstr "Otestujte proces objednávky - přidejte produkt do košíku a zkontrolujte checkboxy a text tlačítka na <a href=\"%s\">pokladně</a>."
+
+msgid "Thank you. You have been added to the waitlist."
+msgstr "Děkujeme. Byli jste přidáni na čekací listinu."
+
+msgid "The incident registry is active and has no open cases."
+msgstr "Registr incidentů je aktivní a nemá otevřené případy."
+
+msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
+msgstr "Web nepoužívá HTTPS. GDPR vyžaduje odpovídající technická opatření - SSL je minimum."
+
+msgid "The site is served over HTTPS."
+msgstr "Web je poskytován přes HTTPS."
+
+msgid "There are %d open security incidents requiring further action in the registry."
+msgstr "V registru je %d otevřených bezpečnostních incidentů vyžadujících další akci."
+
+msgid "Unit Price"
+msgstr "Jednotková cena"
+
+msgid "Units"
+msgstr "Jednotky"
+
+msgid "Upsells"
+msgstr "Doporučené produkty"
+
+msgid "VAT ID (NIP)"
+msgstr "DIČ (NIP)"
+
+msgid "Verified reviews"
+msgstr "Ověřené recenze"
+
+msgid "Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers."
+msgstr "Modul ověřených recenzí je deaktivován. Ztěžuje to rozlišení recenzí od skutečných zákazníků."
+
+msgid "Verified reviews module is enabled - the shop can mark reviews from actual buyers."
+msgstr "Modul ověřených recenzí je aktivován - obchod může označit recenze od skutečných kupujících."
+
+msgid "Waitlist is unavailable for this product."
+msgstr "Čekací listina není pro tento produkt dostupná."
+
+msgid "Warnings"
+msgstr "Varování"
+
+msgid "Watch product in use"
+msgstr "Sledovat produkt v použití"
+
+msgid "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
+msgstr "Modul odstoupení je deaktivován. Spotřebitelé mají 14denní právo na odstoupení od smlouvy."
+
+msgid "Withdrawal module is enabled."
+msgstr "Modul odstoupení je aktivován."
+
+msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
+msgstr "Můžete porovnat až {limit} produktů najednou. Nejstarší položka byla automaticky nahrazena."
+
+msgid "You cannot clear the comparison."
+msgstr "Porovnání nelze vymazat."
+
+msgid "You must accept the consent for email contact."
+msgstr "Musíte přijmout souhlas s e-mailovým kontaktem."
+
+msgid "required"
+msgstr "povinné"

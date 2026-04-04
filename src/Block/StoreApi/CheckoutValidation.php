@@ -86,13 +86,17 @@ final class CheckoutValidation implements HasHooks
 
         $asset = require $assetFile;
 
+        $handle = 'polski-checkout-legal-checkboxes-block';
+
         wp_enqueue_script(
-            'polski-checkout-legal-checkboxes-block',
+            $handle,
             plugins_url('build/blocks/checkout-legal-checkboxes/index.js', \Polski\PLUGIN_FILE),
             $asset['dependencies'] ?? [],
             $asset['version'] ?? \Polski\VERSION,
             true,
         );
+
+        wp_set_script_translations($handle, 'polski', \Polski\PLUGIN_DIR . '/languages');
     }
 
     /**

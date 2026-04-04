@@ -5293,8 +5293,11 @@ msgstr ""
 
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:390
-#: templates/forms/dsa-report.php:19
 msgid "Other"
+msgstr ""
+
+#: templates/forms/dsa-report.php:19
+msgid "Inne"
 msgstr ""
 
 #: src/Service/SecurityIncidentService.php:110

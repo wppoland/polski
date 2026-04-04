@@ -1027,6 +1027,6 @@ final class AdminPage implements Bootable, HasHooks
             'isWizardComplete' => (bool) get_option('polski_wizard_complete', false),
         ]);
 
-        wp_set_script_translations('polski-admin', 'polski');
+        wp_set_script_translations('polski-admin', 'polski', \Polski\PLUGIN_DIR . '/languages');
     }
 }

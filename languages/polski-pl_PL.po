@@ -1,17 +1,15 @@
-# Translation of Polski for WooCommerce in Polish
-# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: Mariusz Szatkowski\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
-"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-04T06:47:36+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
+"Language: pl_PL\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Polski Translation Script 1.0\n"
 "X-Domain: polski\n"
@@ -1308,7 +1306,7 @@ msgstr "Rozumiem, zamknij"
 
 #: src/Admin/AdminNotes.php:45
 msgid "Insufficient permissions."
-msgstr "Insufficient permissions."
+msgstr "Brak uprawnień."
 
 #: src/Admin/AdminNotes.php:80
 msgid "Configure Polski for your store"
@@ -1320,7 +1318,7 @@ msgstr "Kilka kliknięć dzieli Cię od w pełni przygotowanego, profesjonalnego
 
 #: src/Admin/AdminNotes.php:89
 msgid "Launch setup wizard"
-msgstr "Launch setup wizard"
+msgstr "Uruchom kreator konfiguracji"
 
 #: src/Admin/AdminPage.php:56
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
@@ -1331,7 +1329,7 @@ msgstr "Ustawienia"
 
 #: src/Admin/AdminPage.php:69
 msgid "You do not have permission to send feedback."
-msgstr "You do not have permission to send feedback."
+msgstr "Nie masz uprawnień do wysyłania opinii."
 
 #: src/Admin/AdminPage.php:117
 msgid "Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony."
@@ -1664,11 +1662,11 @@ msgstr "Ilość produktu"
 
 #: src/Admin/CSVImportExport.php:75
 msgid "Delivery time ID"
-msgstr "Delivery time ID"
+msgstr "ID czasu dostawy"
 
 #: src/Admin/CSVImportExport.php:76
 msgid "Responsible person (GPSR)"
-msgstr "Responsible person (GPSR)"
+msgstr "Osoba odpowiedzialna (GPSR)"
 
 #: src/Admin/CSVImportExport.php:77
 msgid "Power supply"
@@ -1676,54 +1674,54 @@ msgstr "Power supply"
 
 #: src/Admin/CSVImportExport.php:78
 msgid "Defect description"
-msgstr "Defect description"
+msgstr "Opis wady"
 
 #: src/Admin/CSVImportExport.php:79
 #: src/Admin/ProductMetaBox.php:146
 msgid "Right of withdrawal exemption"
-msgstr "Right of withdrawal exemption"
+msgstr "Wyłączenie prawa odstąpienia"
 
 #: src/Admin/CSVImportExport.php:80
 #: src/Admin/ModulesPage.php:341
 #: src/Service/FoodService.php:54
 msgid "Ingredients"
-msgstr "Ingredients"
+msgstr "Składniki"
 
 #: src/Admin/CSVImportExport.php:82
 #: src/Admin/ModulesPage.php:348
 #: src/Service/FoodService.php:239
 msgid "Alcohol content"
-msgstr "Alcohol content"
+msgstr "Zawartość alkoholu"
 
 #: src/Admin/CSVImportExport.php:83
 #: src/Admin/ModulesPage.php:350
 #: src/Service/FoodService.php:285
 msgid "Country of origin"
-msgstr "Country of origin"
+msgstr "Kraj pochodzenia"
 
 #: src/Admin/CSVImportExport.php:84
 msgid "Net quantity"
-msgstr "Net quantity"
+msgstr "Ilość netto"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR – Manufacturer name"
-msgstr "GPSR – Manufacturer name"
+msgstr "GPSR – Nazwa producenta"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR – Manufacturer address"
-msgstr "GPSR – Manufacturer address"
+msgstr "GPSR – Adres producenta"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR – Importer name"
-msgstr "GPSR – Importer name"
+msgstr "GPSR – Nazwa importera"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR – Importer address"
-msgstr "GPSR – Importer address"
+msgstr "GPSR – Adres importera"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR – Responsible person"
-msgstr "GPSR – Responsible person"
+msgstr "GPSR – Osoba odpowiedzialna"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR – Product identifier"
@@ -1731,28 +1729,28 @@ msgstr "GPSR – Identyfikator produktu"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR – Safety warnings"
-msgstr "GPSR – Safety warnings"
+msgstr "GPSR – Ostrzeżenia dotyczące bezpieczeństwa"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR – Safety instructions"
-msgstr "GPSR – Safety instructions"
+msgstr "GPSR – Instrukcje bezpieczeństwa"
 
 #: src/Admin/CSVImportExport.php:93
 #: src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
-msgstr "Environmental claim basis"
+msgstr "Podstawa twierdzeń ekologicznych"
 
 #: src/Admin/CSVImportExport.php:94
 msgid "Environmental certificate link"
-msgstr "Environmental certificate link"
+msgstr "Link do certyfikatu środowiskowego"
 
 #: src/Admin/CSVImportExport.php:95
 msgid "Environmental certificate expiry"
-msgstr "Environmental certificate expiry"
+msgstr "Data ważności certyfikatu środowiskowego"
 
 #: src/Admin/DeactivationHandler.php:63
 msgid "Before you deactivate Polski"
-msgstr "Before you deactivate Polski"
+msgstr "Zanim wyłączysz Polski"
 
 #: src/Admin/DeactivationHandler.php:64
 msgid "A quick answer helps us improve the plugin and roadmap."
@@ -1765,48 +1763,48 @@ msgstr "Jaki jest główny powód dezaktywacji?"
 #: src/Admin/DeactivationHandler.php:67
 #: src/Admin/DeactivationHandler.php:175
 msgid "A feature is missing"
-msgstr "A feature is missing"
+msgstr "Brakuje funkcji"
 
 #: src/Admin/DeactivationHandler.php:68
 #: src/Admin/DeactivationHandler.php:176
 msgid "It is hard to configure or use"
-msgstr "It is hard to configure or use"
+msgstr "Jest trudna w konfiguracji lub obsłudze"
 
 #: src/Admin/DeactivationHandler.php:69
 #: src/Admin/DeactivationHandler.php:177
 msgid "I found a bug or conflict"
-msgstr "I found a bug or conflict"
+msgstr "Znalazłem błąd lub konflikt"
 
 #: src/Admin/DeactivationHandler.php:70
 #: src/Admin/DeactivationHandler.php:178
 msgid "I do not need it right now"
-msgstr "I do not need it right now"
+msgstr "Nie potrzebuję jej teraz"
 
 #: src/Admin/DeactivationHandler.php:71
 #: src/Admin/DeactivationHandler.php:179
 msgid "This is only temporary"
-msgstr "This is only temporary"
+msgstr "To jest tymczasowe"
 
 #: src/Admin/DeactivationHandler.php:72
 #: src/Admin/DeactivationHandler.php:180
 msgid "Other reason"
-msgstr "Other reason"
+msgstr "Inny powód"
 
 #: src/Admin/DeactivationHandler.php:74
 msgid "What could we do better?"
-msgstr "What could we do better?"
+msgstr "Co moglibyśmy zrobić lepiej?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr "Tell us what was frustrating, unclear, or not working well."
+msgstr "Powiedz nam, co było frustrujące, niejasne lub nie działało poprawnie."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
-msgstr "What should we add next?"
+msgstr "Co powinniśmy dodać w następnej kolejności?"
 
 #: src/Admin/DeactivationHandler.php:77
 msgid "Feature ideas, integrations, reports, builder support, or anything else you miss."
-msgstr "Feature ideas, integrations, reports, builder support, or anything else you miss."
+msgstr "Pomysły na funkcje, integracje, raporty, wsparcie builderów lub cokolwiek innego, czego brakuje."
 
 #: src/Admin/DeactivationHandler.php:78
 msgid "Send feedback and deactivate"
@@ -1814,15 +1812,15 @@ msgstr "Wyślij opinię i dezaktywuj"
 
 #: src/Admin/DeactivationHandler.php:79
 msgid "Deactivate without feedback"
-msgstr "Deactivate without feedback"
+msgstr "Dezaktywuj bez opinii"
 
 #: src/Admin/DeactivationHandler.php:80
 msgid "Keep plugin active"
-msgstr "Keep plugin active"
+msgstr "Pozostaw wtyczkę aktywną"
 
 #: src/Admin/DeactivationHandler.php:81
 msgid "Sending..."
-msgstr "Sending..."
+msgstr "Wysyłanie..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
@@ -1834,39 +1832,39 @@ msgstr "Dziękujemy za korzystanie z Polski! Szkoda, że odchodzisz. Jeśli masz
 
 #: src/Admin/DeactivationHandler.php:84
 msgid "Post new ideas on GitHub"
-msgstr "Post new ideas on GitHub"
+msgstr "Zgłoś nowe pomysły na GitHub"
 
 #: src/Admin/DeactivationHandler.php:144
 msgid "Deactivation feedback log"
-msgstr "Deactivation feedback log"
+msgstr "Log opinii o dezaktywacji"
 
 #: src/Admin/DeactivationHandler.php:147
 msgid "No feedback to display."
-msgstr "No feedback to display."
+msgstr "Brak opinii do wyświetlenia."
 
 #: src/Admin/DeactivationHandler.php:152
 #: src/Service/DSAService.php:157
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
 #: src/Admin/DeactivationHandler.php:153
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Wtyczka"
 
 #: src/Admin/DeactivationHandler.php:154
 #: src/Service/DSAService.php:160
 msgid "Reason"
-msgstr "Reason"
+msgstr "Powód"
 
 #: src/Admin/DeactivationHandler.php:155
 msgid "What to improve"
-msgstr "What to improve"
+msgstr "Co poprawić"
 
 #: src/Admin/DeactivationHandler.php:156
 msgid "What to add"
-msgstr "What to add"
+msgstr "Co dodać"
 
 #: src/Admin/ModulesPage.php:39
 #: src/Admin/ProductMetaBox.php:67
@@ -1892,7 +1890,7 @@ msgstr "Format wyświetlania"
 
 #: src/Admin/ModulesPage.php:46
 msgid "Variables: {price}, {unit}"
-msgstr "Variables: {price}, {unit}"
+msgstr "Zmienne: {price}, {unit}"
 
 #: src/Admin/ModulesPage.php:47
 msgid "Show on product lists"
@@ -1916,7 +1914,7 @@ msgstr "Okres śledzenia (dni)"
 
 #: src/Admin/ModulesPage.php:60
 msgid "Directive requires a minimum of 30 days"
-msgstr "Directive requires a minimum of 30 days"
+msgstr "Dyrektywa wymaga minimum 30 dni"
 
 #: src/Admin/ModulesPage.php:61
 msgid "Keep history (days)"
@@ -1924,7 +1922,7 @@ msgstr "Przechowuj historię (dni)"
 
 #: src/Admin/ModulesPage.php:61
 msgid "Older data will be automatically deleted"
-msgstr "Older data will be automatically deleted"
+msgstr "Starsze dane zostaną automatycznie usunięte"
 
 #: src/Admin/ModulesPage.php:62
 msgid "Prices with tax"
@@ -1982,7 +1980,7 @@ msgstr "Treść wiadomości"
 
 #: src/Admin/ModulesPage.php:73
 msgid "Variables: {price}, {days}, {date}, {regular_price}"
-msgstr "Variables: {price}, {days}, {date}, {regular_price}"
+msgstr "Zmienne: {price}, {days}, {date}, {regular_price}"
 
 #: src/Admin/ModulesPage.php:74
 msgid "No price history"
@@ -2022,7 +2020,7 @@ msgstr "Punkt odniesienia do obliczania najniższej ceny"
 
 #: src/Admin/ModulesPage.php:78
 msgid "Variable products"
-msgstr "Variable products"
+msgstr "Produkty ze zmiennymi"
 
 #: src/Admin/ModulesPage.php:79
 msgid "Track variations separately"
@@ -2058,7 +2056,7 @@ msgstr "Tekst informacji o VAT"
 
 #: src/Admin/ModulesPage.php:92
 msgid "Variables: {rate}"
-msgstr "Variables: {rate}"
+msgstr "Zmienne: {rate}"
 
 #: src/Admin/ModulesPage.php:93
 msgid "Small business exemption (Art. 113)"
@@ -2080,7 +2078,7 @@ msgstr "Wyświetlaj szacowany czas dostawy na stronie produktu. Konfiguracja dla
 
 #: src/Admin/ModulesPage.php:106
 msgid "Variables: {time}"
-msgstr "Variables: {time}"
+msgstr "Zmienne: {time}"
 
 #: src/Admin/ModulesPage.php:107
 msgid "Default delivery time"
@@ -2124,7 +2122,7 @@ msgstr "Tekst przycisku"
 
 #: src/Admin/ModulesPage.php:138
 msgid "Legal checkboxes"
-msgstr "Legal checkboxes"
+msgstr "Checkboxy prawne"
 
 #: src/Admin/ModulesPage.php:139
 msgid "7 built-in checkboxes: terms and conditions, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing."
@@ -2147,15 +2145,15 @@ msgstr "Użyj %s jako symbolu zastępczego dla linku do strony regulaminu"
 
 #: src/Admin/ModulesPage.php:148
 msgid "Error - Terms"
-msgstr "Error - Terms"
+msgstr "Błąd – Regulamin"
 
 #: src/Admin/ModulesPage.php:149
 msgid "Description - Terms"
-msgstr "Description - Terms"
+msgstr "Opis – Regulamin"
 
 #: src/Admin/ModulesPage.php:150
 msgid "Privacy Policy"
-msgstr "Privacy Policy"
+msgstr "Polityka prywatności"
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:152
@@ -2170,15 +2168,15 @@ msgstr "Użyj %s jako symbolu zastępczego dla linku do polityki prywatności"
 
 #: src/Admin/ModulesPage.php:153
 msgid "Error - Privacy Policy"
-msgstr "Error - Privacy Policy"
+msgstr "Błąd – Polityka prywatności"
 
 #: src/Admin/ModulesPage.php:154
 msgid "Description - Privacy Policy"
-msgstr "Description - Privacy Policy"
+msgstr "Opis – Polityka prywatności"
 
 #: src/Admin/ModulesPage.php:155
 msgid "Right of withdrawal"
-msgstr "Right of withdrawal"
+msgstr "Prawo odstąpienia od umowy"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:157
@@ -2193,15 +2191,15 @@ msgstr "Użyj %s jako symbolu zastępczego dla linku do strony zwrotów lub odst
 
 #: src/Admin/ModulesPage.php:158
 msgid "Error - Right of withdrawal"
-msgstr "Error - Right of withdrawal"
+msgstr "Błąd – Prawo odstąpienia"
 
 #: src/Admin/ModulesPage.php:159
 msgid "Description - Right of withdrawal"
-msgstr "Description - Right of withdrawal"
+msgstr "Opis – Prawo odstąpienia"
 
 #: src/Admin/ModulesPage.php:160
 msgid "Digital content (waiver)"
-msgstr "Digital content (waiver)"
+msgstr "Treści cyfrowe (zrzeczenie)"
 
 #: src/Admin/ModulesPage.php:161
 msgid "Label - Digital content"
@@ -2209,15 +2207,15 @@ msgstr "Etykieta – Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:162
 msgid "Error - Digital content"
-msgstr "Error - Digital content"
+msgstr "Błąd – Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:163
 msgid "Description - Digital content"
-msgstr "Description - Digital content"
+msgstr "Opis – Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:164
 msgid "Delivery notifications"
-msgstr "Delivery notifications"
+msgstr "Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:165
 msgid "Label - Delivery notifications"
@@ -2225,11 +2223,11 @@ msgstr "Etykieta – Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:166
 msgid "Description - Delivery notifications"
-msgstr "Description - Delivery notifications"
+msgstr "Opis – Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:167
 msgid "Review reminder"
-msgstr "Review reminder"
+msgstr "Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:168
 msgid "Label - Review reminder"
@@ -2237,11 +2235,11 @@ msgstr "Etykieta – Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:169
 msgid "Description - Review reminder"
-msgstr "Description - Review reminder"
+msgstr "Opis – Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:170
 msgid "Marketing consent"
-msgstr "Marketing consent"
+msgstr "Zgoda marketingowa"
 
 #: src/Admin/ModulesPage.php:171
 msgid "Label - Marketing"
@@ -2249,7 +2247,7 @@ msgstr "Etykieta – Marketing"
 
 #: src/Admin/ModulesPage.php:172
 msgid "Description - Marketing"
-msgstr "Description - Marketing"
+msgstr "Opis – Marketing"
 
 #: src/Admin/ModulesPage.php:177
 msgid "NIP - Verification and Autocomplete"
@@ -2265,19 +2263,19 @@ msgstr "NIP wymagany przy zamówieniu"
 
 #: src/Admin/ModulesPage.php:186
 msgid "GUS API environment"
-msgstr "GUS API environment"
+msgstr "Środowisko API GUS"
 
 #: src/Admin/ModulesPage.php:186
 msgid "Testing"
-msgstr "Testing"
+msgstr "Testowe"
 
 #: src/Admin/ModulesPage.php:186
 msgid "Production"
-msgstr "Production"
+msgstr "Produkcyjne"
 
 #: src/Admin/ModulesPage.php:187
 msgid "GUS API Key (production)"
-msgstr "GUS API Key (production)"
+msgstr "Klucz API GUS (produkcja)"
 
 #: src/Admin/ModulesPage.php:187
 msgid "Request a key on the stat.gov.pl website. In test mode, a test key will be used."
@@ -2285,7 +2283,7 @@ msgstr "Wygeneruj klucz na stronie stat.gov.pl. W trybie testowym zostanie użyt
 
 #: src/Admin/ModulesPage.php:192
 msgid "Consent Logging (GDPR)"
-msgstr "Consent Logging (GDPR)"
+msgstr "Logowanie zgód (RODO)"
 
 #: src/Admin/ModulesPage.php:193
 msgid "Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant."
@@ -2293,7 +2291,7 @@ msgstr "Rejestrowanie wszystkich zgód udzielonych przez klientów wraz z adrese
 
 #: src/Admin/ModulesPage.php:203
 msgid "Legal Pages"
-msgstr "Legal Pages"
+msgstr "Strony prawne"
 
 #: src/Admin/ModulesPage.php:204
 msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
@@ -2308,11 +2306,11 @@ msgstr "Prawa konsumenta"
 
 #: src/Admin/ModulesPage.php:210
 msgid "Manage legal pages on Dashboard &rarr;"
-msgstr "Manage legal pages on Dashboard &rarr;"
+msgstr "Zarządzaj stronami prawnymi na Pulpicie &rarr;"
 
 #: src/Admin/ModulesPage.php:215
 msgid "Right of withdrawal (14 days)"
-msgstr "Right of withdrawal (14 days)"
+msgstr "Prawo odstąpienia (14 dni)"
 
 #: src/Admin/ModulesPage.php:216
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
@@ -2331,17 +2329,17 @@ msgstr "Odstąp od umowy"
 #: src/Admin/ModulesPage.php:223
 #: src/Admin/ModulesPage.php:833
 msgid "Form title"
-msgstr "Form title"
+msgstr "Tytuł formularza"
 
 #: src/Admin/ModulesPage.php:223
 #: src/Admin/ModulesPage.php:238
 #: src/Service/WithdrawalService.php:400
 msgid "Withdrawal request"
-msgstr "Withdrawal request"
+msgstr "Wniosek o odstąpienie"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Form introduction"
-msgstr "Form introduction"
+msgstr "Wprowadzenie formularza"
 
 #: src/Admin/ModulesPage.php:224
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
@@ -2349,11 +2347,11 @@ msgstr "Składasz wniosek o odstąpienie od umowy dla zamówienia #{order_number
 
 #: src/Admin/ModulesPage.php:224
 msgid "Variables: {order_number}, {order_date}"
-msgstr "Variables: {order_number}, {order_date}"
+msgstr "Zmienne: {order_number}, {order_date}"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Legal notice"
-msgstr "Legal notice"
+msgstr "Informacja prawna"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
@@ -2379,13 +2377,13 @@ msgstr "Produkt"
 
 #: src/Admin/ModulesPage.php:228
 msgid "Quantity column"
-msgstr "Quantity column"
+msgstr "Kolumna ilości"
 
 #: src/Admin/ModulesPage.php:228
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 msgid "Quantity"
-msgstr "Quantity"
+msgstr "Ilość"
 
 #: src/Admin/ModulesPage.php:229
 msgid "Price column"
@@ -2397,7 +2395,7 @@ msgstr "Cena"
 
 #: src/Admin/ModulesPage.php:230
 msgid "Exemption notice"
-msgstr "Exemption notice"
+msgstr "Informacja o wyłączeniu"
 
 #: src/Admin/ModulesPage.php:230
 msgid "(This product is excluded from the right of withdrawal)"
@@ -2421,7 +2419,7 @@ msgstr "Tekst przycisku"
 
 #: src/Admin/ModulesPage.php:232
 msgid "Submit withdrawal request"
-msgstr "Submit withdrawal request"
+msgstr "Wyślij wniosek o odstąpienie"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Invalid nonce message"
@@ -2429,7 +2427,7 @@ msgstr "Komunikat o nieprawidłowym tokenie"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Something went wrong on our side. Please try again."
-msgstr "Something went wrong on our side. Please try again."
+msgstr "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
 
 #: src/Admin/ModulesPage.php:234
 msgid "Order not found message"
@@ -2438,7 +2436,7 @@ msgstr "Komunikat o nieznalezionym zamówieniu"
 #: src/Admin/ModulesPage.php:234
 #: src/Rest/WithdrawalController.php:133
 msgid "We could not find that order."
-msgstr "We could not find that order."
+msgstr "Nie udało się znaleźć tego zamówienia."
 
 #: src/Admin/ModulesPage.php:235
 msgid "Permission error message"
@@ -2458,7 +2456,7 @@ msgstr "Komunikat o powodzeniu"
 
 #: src/Admin/ModulesPage.php:236
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
-msgstr "Your withdrawal request has been received. We will send a confirmation email shortly."
+msgstr "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z potwierdzeniem."
 
 #: src/Admin/ModulesPage.php:237
 msgid "Not eligible message"
@@ -2473,7 +2471,7 @@ msgstr "To zamówienie nie kwalifikuje się do odstąpienia."
 
 #: src/Admin/ModulesPage.php:238
 msgid "Status section heading"
-msgstr "Status section heading"
+msgstr "Nagłówek sekcji statusu"
 
 #: src/Admin/ModulesPage.php:239
 msgid "Status label"
@@ -2486,7 +2484,7 @@ msgstr "Etykieta zgłoszenia"
 #: src/Admin/ModulesPage.php:240
 #: src/Service/WithdrawalService.php:403
 msgid "Submitted"
-msgstr "Submitted"
+msgstr "Złożony"
 
 #: src/Admin/ModulesPage.php:241
 msgid "Order note after request"
@@ -2506,7 +2504,7 @@ msgstr "Wniosek o odstąpienie od umowy został potwierdzony."
 
 #: src/Admin/ModulesPage.php:243
 msgid "Status date format"
-msgstr "Status date format"
+msgstr "Format daty statusu"
 
 #: src/Admin/ModulesPage.php:243
 msgid "Y-m-d H:i"
@@ -2514,7 +2512,7 @@ msgstr "Y-m-d H:i"
 
 #: src/Admin/ModulesPage.php:244
 msgid "Confirmation email subject"
-msgstr "Confirmation email subject"
+msgstr "Temat e-maila z potwierdzeniem"
 
 #: src/Admin/ModulesPage.php:244
 #: src/Admin/ModulesPage.php:247
@@ -2523,37 +2521,37 @@ msgstr "Twój wniosek o odstąpienie od umowy dla zamówienia #{order_number} zo
 
 #: src/Admin/ModulesPage.php:244
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
-msgstr "Variables: {order_number}, {order_date}, {withdrawal_date}"
+msgstr "Zmienne: {order_number}, {order_date}, {withdrawal_date}"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Confirmation email heading"
-msgstr "Confirmation email heading"
+msgstr "Nagłówek e-maila z potwierdzeniem"
 
 #: src/Admin/ModulesPage.php:245
 msgid "Withdrawal confirmed"
-msgstr "Withdrawal confirmed"
+msgstr "Odstąpienie potwierdzone"
 
 #: src/Admin/ModulesPage.php:246
 #: src/Admin/ModulesPage.php:382
 msgid "Email greeting"
-msgstr "Email greeting"
+msgstr "Powitanie w e-mailu"
 
 #: src/Admin/ModulesPage.php:246
 #: src/Admin/ModulesPage.php:382
 msgid "Hello {name},"
-msgstr "Hello {name},"
+msgstr "Dzień dobry {name},"
 
 #: src/Admin/ModulesPage.php:246
 msgid "Variable: {name}"
-msgstr "Variable: {name}"
+msgstr "Zmienna: {name}"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Confirmation email body"
-msgstr "Confirmation email body"
+msgstr "Treść e-maila z potwierdzeniem"
 
 #: src/Admin/ModulesPage.php:247
 msgid "Variable: {order_number}"
-msgstr "Variable: {order_number}"
+msgstr "Zmienna: {order_number}"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Reason label in email"
@@ -2561,11 +2559,11 @@ msgstr "Etykieta powodu w e-mailu"
 
 #: src/Admin/ModulesPage.php:248
 msgid "Your reason"
-msgstr "Your reason"
+msgstr "Twój powód"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Return instruction in email"
-msgstr "Return instruction in email"
+msgstr "Instrukcja zwrotu w e-mailu"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Please return the products to the address below within 14 days:"
@@ -2574,7 +2572,7 @@ msgstr "Prosimy o zwrot produktów na poniższy adres w ciągu 14 dni:"
 #: src/Admin/ModulesPage.php:250
 #: src/Admin/ModulesPage.php:387
 msgid "Additional email content"
-msgstr "Additional email content"
+msgstr "Dodatkowa treść e-maila"
 
 #: src/Admin/ModulesPage.php:250
 msgid "Your refund will be processed within 14 days after the returned products are received."
@@ -2582,7 +2580,7 @@ msgstr "Zwrot środków zostanie zrealizowany w ciągu 14 dni od otrzymania zwr�
 
 #: src/Admin/ModulesPage.php:255
 msgid "Dispute Resolution (ODR)"
-msgstr "Dispute Resolution (ODR)"
+msgstr "Rozwiązywanie sporów (ODR)"
 
 #: src/Admin/ModulesPage.php:256
 msgid "Displaying information about the European Commission's Online Dispute Resolution (ODR) platform."
@@ -2590,7 +2588,7 @@ msgstr "Wyświetlanie informacji o platformie Online Dispute Resolution (ODR) Ko
 
 #: src/Admin/ModulesPage.php:262
 msgid "ODR info content"
-msgstr "ODR info content"
+msgstr "Treść informacji ODR"
 
 #: src/Admin/ModulesPage.php:263
 msgid "Message after generating legal pages"
@@ -2602,11 +2600,11 @@ msgstr "Komunikat po zapisaniu modułów"
 
 #: src/Admin/ModulesPage.php:265
 msgid "Onboarding note title"
-msgstr "Onboarding note title"
+msgstr "Tytuł notatki powitalnej"
 
 #: src/Admin/ModulesPage.php:266
 msgid "Onboarding note content"
-msgstr "Onboarding note content"
+msgstr "Treść notatki powitalnej"
 
 #: src/Admin/ModulesPage.php:267
 msgid "Onboarding note button"
@@ -2614,31 +2612,31 @@ msgstr "Przycisk notatki powitalnej"
 
 #: src/Admin/ModulesPage.php:268
 msgid "Active status"
-msgstr "Active status"
+msgstr "Status: aktywna"
 
 #: src/Admin/ModulesPage.php:269
 msgid "Inactive status"
-msgstr "Inactive status"
+msgstr "Status: nieaktywna"
 
 #: src/Admin/ModulesPage.php:270
 msgid "Unconfigured status"
-msgstr "Unconfigured status"
+msgstr "Status: nieskonfigurowany"
 
 #: src/Admin/ModulesPage.php:271
 msgid "Legal pages card title"
-msgstr "Legal pages card title"
+msgstr "Tytuł karty stron prawnych"
 
 #: src/Admin/ModulesPage.php:272
 msgid "Legal pages configuration progress"
-msgstr "Legal pages configuration progress"
+msgstr "Postęp konfiguracji stron prawnych"
 
 #: src/Admin/ModulesPage.php:272
 msgid "Variables: {done}, {total}"
-msgstr "Variables: {done}, {total}"
+msgstr "Zmienne: {done}, {total}"
 
 #: src/Admin/ModulesPage.php:273
 msgid "VAT card title"
-msgstr "VAT card title"
+msgstr "Tytuł karty VAT"
 
 #: src/Admin/ModulesPage.php:274
 msgid "Small business exemption text"
@@ -2650,31 +2648,31 @@ msgstr "Standardowy tekst VAT"
 
 #: src/Admin/ModulesPage.php:276
 msgid "DOI card title"
-msgstr "DOI card title"
+msgstr "Tytuł karty DOI"
 
 #: src/Admin/ModulesPage.php:277
 msgid "Legal pages section title"
-msgstr "Legal pages section title"
+msgstr "Tytuł sekcji stron prawnych"
 
 #: src/Admin/ModulesPage.php:278
 msgid "Page column header"
-msgstr "Page column header"
+msgstr "Nagłówek kolumny strony"
 
 #: src/Admin/ModulesPage.php:279
 msgid "Status column header"
-msgstr "Status column header"
+msgstr "Nagłówek kolumny statusu"
 
 #: src/Admin/ModulesPage.php:280
 msgid "Published status"
-msgstr "Published status"
+msgstr "Status: opublikowana"
 
 #: src/Admin/ModulesPage.php:281
 msgid "Draft status"
-msgstr "Draft status"
+msgstr "Status: szkic"
 
 #: src/Admin/ModulesPage.php:282
 msgid "Missing status"
-msgstr "Missing status"
+msgstr "Status: nieutworzona"
 
 #: src/Admin/ModulesPage.php:283
 msgid "Edit button text"
@@ -2682,7 +2680,7 @@ msgstr "Tekst przycisku edycji"
 
 #: src/Admin/ModulesPage.php:284
 msgid "Legal pages empty state"
-msgstr "Legal pages empty state"
+msgstr "Strony prawne – stan pusty"
 
 #: src/Admin/ModulesPage.php:285
 msgid "Generate pages button text"
@@ -2690,19 +2688,19 @@ msgstr "Tekst przycisku generowania stron"
 
 #: src/Admin/ModulesPage.php:286
 msgid "Next steps title"
-msgstr "Next steps title"
+msgstr "Tytuł kolejnych kroków"
 
 #: src/Admin/ModulesPage.php:287
 msgid "Step - publish pages"
-msgstr "Step - publish pages"
+msgstr "Krok – opublikuj strony"
 
 #: src/Admin/ModulesPage.php:288
 msgid "Step - VAT rates"
-msgstr "Step - VAT rates"
+msgstr "Krok – stawki VAT"
 
 #: src/Admin/ModulesPage.php:289
 msgid "Step - shipping zones"
-msgstr "Step - shipping zones"
+msgstr "Krok – strefy wysyłki"
 
 #: src/Admin/ModulesPage.php:290
 msgid "Step - product data"
@@ -2714,23 +2712,23 @@ msgstr "Krok – test zamówienia"
 
 #: src/Admin/ModulesPage.php:292
 msgid "Omnibus plugin detected status"
-msgstr "Omnibus plugin detected status"
+msgstr "Status: wykryto wtyczkę Omnibus"
 
 #: src/Admin/ModulesPage.php:293
 msgid "Omnibus plugin missing status"
-msgstr "Omnibus plugin missing status"
+msgstr "Status: brak wtyczki Omnibus"
 
 #: src/Admin/ModulesPage.php:294
 msgid "Communication without external Omnibus plugin"
-msgstr "Communication without external Omnibus plugin"
+msgstr "Komunikat bez zewnętrznej wtyczki Omnibus"
 
 #: src/Admin/ModulesPage.php:295
 msgid "Communication after external Omnibus plugin detection"
-msgstr "Communication after external Omnibus plugin detection"
+msgstr "Komunikat po wykryciu zewnętrznej wtyczki Omnibus"
 
 #: src/Admin/ModulesPage.php:300
 msgid "Legal Email Attachments"
-msgstr "Legal Email Attachments"
+msgstr "Załączniki prawne do e-maili"
 
 #: src/Admin/ModulesPage.php:301
 msgid "Attaching legal pages content (terms, privacy policy, right of withdrawal) to order confirmation emails."
@@ -2738,15 +2736,15 @@ msgstr "Dołączanie treści stron prawnych (regulamin, polityka prywatności, p
 
 #: src/Admin/ModulesPage.php:307
 msgid "Attach Terms"
-msgstr "Attach Terms"
+msgstr "Dołącz Regulamin"
 
 #: src/Admin/ModulesPage.php:308
 msgid "Attach Privacy Policy"
-msgstr "Attach Privacy Policy"
+msgstr "Dołącz Politykę prywatności"
 
 #: src/Admin/ModulesPage.php:309
 msgid "Attach Right of Withdrawal"
-msgstr "Attach Right of Withdrawal"
+msgstr "Dołącz Prawo odstąpienia"
 
 #: src/Admin/ModulesPage.php:316
 msgid "Manufacturer and GPSR"
@@ -2754,7 +2752,7 @@ msgstr "Producent i GPSR"
 
 #: src/Admin/ModulesPage.php:317
 msgid "Manufacturer information, responsible person (GPSR), safety documents, safety instructions."
-msgstr "Manufacturer information, responsible person (GPSR), safety documents, safety instructions."
+msgstr "Informacje o producencie, osobie odpowiedzialnej (GPSR), dokumentach i instrukcjach bezpieczeństwa."
 
 #: src/Admin/ModulesPage.php:318
 #: src/Admin/ModulesPage.php:328
@@ -2768,7 +2766,7 @@ msgstr "Żywność i suplementy"
 
 #: src/Admin/ModulesPage.php:327
 msgid "Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor."
-msgstr "Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor."
+msgstr "Tabela wartości odżywczych, alergeny, składniki, Nutri-Score, zawartość alkoholu, kraj pochodzenia, dystrybutor."
 
 #: src/Admin/ModulesPage.php:333
 msgid "Show ingredients"
@@ -2813,16 +2811,16 @@ msgstr "Etykieta alergenów"
 #: src/Admin/ModulesPage.php:342
 #: src/Service/FoodService.php:92
 msgid "Allergens"
-msgstr "Allergens"
+msgstr "Alergeny"
 
 #: src/Admin/ModulesPage.php:343
 msgid "Nutrition facts table header prefix"
-msgstr "Nutrition facts table header prefix"
+msgstr "Prefiks nagłówka tabeli wartości odżywczych"
 
 #: src/Admin/ModulesPage.php:343
 #: src/Service/FoodService.php:158
 msgid "Nutrition facts per"
-msgstr "Nutrition facts per"
+msgstr "Wartości odżywcze na"
 
 #: src/Admin/ModulesPage.php:344
 msgid "Default reference unit"
@@ -2830,21 +2828,21 @@ msgstr "Domyślna jednostka odniesienia"
 
 #: src/Admin/ModulesPage.php:345
 msgid "Nutrient column name"
-msgstr "Nutrient column name"
+msgstr "Nazwa kolumny składnika"
 
 #: src/Admin/ModulesPage.php:345
 #: src/Service/FoodService.php:160
 msgid "Nutrient"
-msgstr "Nutrient"
+msgstr "Składnik odżywczy"
 
 #: src/Admin/ModulesPage.php:346
 msgid "Value column name"
-msgstr "Value column name"
+msgstr "Nazwa kolumny wartości"
 
 #: src/Admin/ModulesPage.php:346
 #: src/Service/FoodService.php:161
 msgid "Value"
-msgstr "Value"
+msgstr "Wartość"
 
 #: src/Admin/ModulesPage.php:347
 msgid "Nutri-Score label"
@@ -2856,7 +2854,7 @@ msgstr "Etykieta zawartości alkoholu"
 
 #: src/Admin/ModulesPage.php:349
 msgid "Alcohol suffix"
-msgstr "Alcohol suffix"
+msgstr "Przyrostek alkoholu"
 
 #: src/Admin/ModulesPage.php:350
 msgid "Country of origin label"
@@ -2869,7 +2867,7 @@ msgstr "Etykieta dystrybutora"
 #: src/Admin/ModulesPage.php:351
 #: src/Service/FoodService.php:293
 msgid "Distributor"
-msgstr "Distributor"
+msgstr "Dystrybutor"
 
 #: src/Admin/ModulesPage.php:352
 msgid "Net content label"
@@ -2878,11 +2876,11 @@ msgstr "Etykieta zawartości netto"
 #: src/Admin/ModulesPage.php:352
 #: src/Service/FoodService.php:301
 msgid "Net content"
-msgstr "Net content"
+msgstr "Zawartość netto"
 
 #: src/Admin/ModulesPage.php:357
 msgid "Power Supply Info"
-msgstr "Power Supply Info"
+msgstr "Informacje o zasilaniu"
 
 #: src/Admin/ModulesPage.php:358
 msgid "Energy consumption data for electrical devices (energy labels)."
@@ -2890,7 +2888,7 @@ msgstr "Dane o zużyciu energii dla urządzeń elektrycznych (etykiety energetyc
 
 #: src/Admin/ModulesPage.php:369
 msgid "Double Opt-In (DOI)"
-msgstr "Double Opt-In (DOI)"
+msgstr "Podwójna weryfikacja (DOI)"
 
 #: src/Admin/ModulesPage.php:370
 msgid "Email address verification during account registration. Activation link sent by email, login block for unactivated accounts."
@@ -2898,11 +2896,11 @@ msgstr "Weryfikacja adresu e-mail podczas rejestracji konta. Link aktywacyjny wy
 
 #: src/Admin/ModulesPage.php:371
 msgid "Customer Account"
-msgstr "Customer Account"
+msgstr "Konto klienta"
 
 #: src/Admin/ModulesPage.php:376
 msgid "Delete inactive accounts after (days)"
-msgstr "Delete inactive accounts after (days)"
+msgstr "Usuń nieaktywne konta po (dni)"
 
 #: src/Admin/ModulesPage.php:377
 msgid "Login block message"
@@ -2919,7 +2917,7 @@ msgstr "Komunikat o nieprawidłowym linku"
 #: src/Admin/ModulesPage.php:378
 #: src/Service/DoubleOptInService.php:118
 msgid "Invalid activation link."
-msgstr "Invalid activation link."
+msgstr "Nieprawidłowy link aktywacyjny."
 
 #: src/Admin/ModulesPage.php:379
 msgid "Activation success message"
@@ -2927,40 +2925,40 @@ msgstr "Komunikat o udanej aktywacji"
 
 #: src/Admin/ModulesPage.php:379
 msgid "Excellent! Your account has been activated. You can now log in."
-msgstr "Excellent! Your account has been activated. You can now log in."
+msgstr "Wspaniale! Twoje konto zostało aktywowane. Możesz się teraz zalogować."
 
 #: src/Admin/ModulesPage.php:380
 #: src/Admin/ModulesPage.php:729
 msgid "Email subject"
-msgstr "Email subject"
+msgstr "Temat e-maila"
 
 #: src/Admin/ModulesPage.php:380
 #: src/Email/DoubleOptInEmail.php:65
 #: src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
-msgstr "Activate your account at {site_title}"
+msgstr "Aktywuj swoje konto w {site_title}"
 
 #: src/Admin/ModulesPage.php:380
 msgid "Variables: {site_title}"
-msgstr "Variables: {site_title}"
+msgstr "Zmienne: {site_title}"
 
 #: src/Admin/ModulesPage.php:381
 msgid "Email heading"
-msgstr "Email heading"
+msgstr "Nagłówek e-maila"
 
 #: src/Admin/ModulesPage.php:381
 #: src/Email/DoubleOptInEmail.php:74
 #: src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
-msgstr "Confirm your email address"
+msgstr "Potwierdź swój adres e-mail"
 
 #: src/Admin/ModulesPage.php:382
 msgid "Variables: {name}"
-msgstr "Variables: {name}"
+msgstr "Zmienne: {name}"
 
 #: src/Admin/ModulesPage.php:383
 msgid "Email content HTML"
-msgstr "Email content HTML"
+msgstr "Treść e-maila HTML"
 
 #: src/Admin/ModulesPage.php:383
 msgid "Thank you for creating an account. Click the button below to activate your account:"
@@ -2972,7 +2970,7 @@ msgstr "Tekst przycisku w e-mailu"
 
 #: src/Admin/ModulesPage.php:384
 msgid "Activate account"
-msgstr "Activate account"
+msgstr "Aktywuj konto"
 
 #: src/Admin/ModulesPage.php:385
 msgid "Fallback link text"
@@ -3022,7 +3020,7 @@ msgstr "Limit wyników"
 
 #: src/Admin/ModulesPage.php:403
 msgid "Query debounce (ms)"
-msgstr "Query debounce (ms)"
+msgstr "Opóźnienie zapytania (ms)"
 
 #: src/Admin/ModulesPage.php:404
 msgid "Show search button"
@@ -3056,7 +3054,7 @@ msgstr "Szukaj po kategoriach"
 
 #: src/Admin/ModulesPage.php:411
 msgid "Include out of stock products"
-msgstr "Include out of stock products"
+msgstr "Uwzględnij produkty niedostępne"
 
 #: src/Admin/ModulesPage.php:412
 msgid "Search field label"
@@ -3113,7 +3111,7 @@ msgstr "Tekst wyświetlania wszystkich wyników"
 
 #: src/Admin/ModulesPage.php:418
 msgid "View all results"
-msgstr "View all results"
+msgstr "Zobacz wszystkie wyniki"
 
 #: src/Admin/ModulesPage.php:425
 #: src/Admin/PostTypes.php:117
@@ -3164,15 +3162,15 @@ msgstr "Pokazuj etykietę"
 
 #: src/Admin/ModulesPage.php:436
 msgid "Brand separator"
-msgstr "Brand separator"
+msgstr "Separator marki"
 
 #: src/Admin/ModulesPage.php:437
 msgid "Link to brand archive"
-msgstr "Link to brand archive"
+msgstr "Link do archiwum marki"
 
 #: src/Admin/ModulesPage.php:442
 msgid "AJAX Filters"
-msgstr "AJAX Filters"
+msgstr "Filtry AJAX"
 
 #: src/Admin/ModulesPage.php:443
 msgid "Filtering product listings without page reload, including categories, brands, price, stock status, sale, and attributes."
@@ -3208,17 +3206,17 @@ msgstr "Filtr promocji"
 
 #: src/Admin/ModulesPage.php:456
 msgid "Attribute filters"
-msgstr "Attribute filters"
+msgstr "Filtry atrybutów"
 
 #: src/Admin/ModulesPage.php:457
 msgid "Max number of attributes"
-msgstr "Max number of attributes"
+msgstr "Maksymalna liczba atrybutów"
 
 #: src/Admin/ModulesPage.php:458
 #: src/Admin/ModulesPage.php:715
 #: src/Admin/ModulesPage.php:764
 msgid "Header"
-msgstr "Header"
+msgstr "Nagłówek"
 
 #: src/Admin/ModulesPage.php:459
 msgid "Category label"
@@ -3284,7 +3282,7 @@ msgstr "Zapisywanie ulubionych produktów dla gości i zalogowanych użytkownik�
 
 #: src/Admin/ModulesPage.php:484
 msgid "Allow guests to save favorites"
-msgstr "Allow guests to save favorites"
+msgstr "Pozwól gościom zapisywać ulubione"
 
 #: src/Admin/ModulesPage.php:486
 #: src/Admin/ModulesPage.php:516
@@ -3326,7 +3324,7 @@ msgstr "Pokazuj przycisk usuwania na liście"
 
 #: src/Admin/ModulesPage.php:494
 msgid "Number of columns in list"
-msgstr "Number of columns in list"
+msgstr "Liczba kolumn na liście"
 
 #: src/Admin/ModulesPage.php:495
 #: src/Admin/ModulesPage.php:521
@@ -3335,14 +3333,14 @@ msgstr "Etykieta w Moim koncie"
 
 #: src/Admin/ModulesPage.php:496
 msgid "List title"
-msgstr "List title"
+msgstr "Tytuł listy"
 
 #: src/Admin/ModulesPage.php:497
 #: src/Admin/ModulesPage.php:534
 #: src/Admin/ModulesPage.php:654
 #: src/Admin/ModulesPage.php:692
 msgid "Section description"
-msgstr "Section description"
+msgstr "Opis sekcji"
 
 #: src/Admin/ModulesPage.php:498
 #: src/Admin/ModulesPage.php:524
@@ -3367,7 +3365,7 @@ msgstr "Komunikat o nieznalezionym produkcie"
 #: src/Admin/ModulesPage.php:502
 #: src/Admin/ModulesPage.php:535
 msgid "Empty state"
-msgstr "Empty state"
+msgstr "Stan pusty"
 
 #: src/Admin/ModulesPage.php:507
 msgid "Product Comparison"
@@ -3392,11 +3390,11 @@ msgstr "Pokazuj przycisk usuwania"
 
 #: src/Admin/ModulesPage.php:522
 msgid "Comparison title"
-msgstr "Comparison title"
+msgstr "Tytuł porównania"
 
 #: src/Admin/ModulesPage.php:523
 msgid "Maximum number of products"
-msgstr "Maximum number of products"
+msgstr "Maksymalna liczba produktów"
 
 #: src/Admin/ModulesPage.php:526
 msgid "Comparison link text"
@@ -3408,7 +3406,7 @@ msgstr "Tekst czyszczenia"
 
 #: src/Admin/ModulesPage.php:528
 msgid "Feature column header"
-msgstr "Feature column header"
+msgstr "Nagłówek kolumny cech"
 
 #: src/Admin/ModulesPage.php:529
 msgid "Difference filter label"
@@ -3420,7 +3418,7 @@ msgstr "Komunikat o limicie"
 
 #: src/Admin/ModulesPage.php:532
 msgid "Variable: {limit}"
-msgstr "Variable: {limit}"
+msgstr "Zmienna: {limit}"
 
 #: src/Admin/ModulesPage.php:533
 msgid "Clear error message"
@@ -3428,7 +3426,7 @@ msgstr "Komunikat błędu czyszczenia"
 
 #: src/Admin/ModulesPage.php:536
 msgid "Highlight differences"
-msgstr "Highlight differences"
+msgstr "Podświetl różnice"
 
 #: src/Admin/ModulesPage.php:537
 msgid "Show only differences by default"
@@ -3469,7 +3467,7 @@ msgstr "Pokazuj atrybuty produktu"
 
 #: src/Admin/ModulesPage.php:553
 msgid "Quick View"
-msgstr "Quick View"
+msgstr "Szybki podgląd"
 
 #: src/Admin/ModulesPage.php:554
 msgid "Lightweight product modal on listings, with support for variations, prices, gallery, and basic purchase information."
@@ -3560,7 +3558,7 @@ msgstr "Tekst linku do produktu"
 
 #: src/Admin/ModulesPage.php:583
 msgid "How to open full page"
-msgstr "How to open full page"
+msgstr "Jak otworzyć pełną stronę"
 
 #: src/Admin/ModulesPage.php:583
 #: src/Admin/ModulesPage.php:701
@@ -3572,13 +3570,13 @@ msgstr "W tej samej karcie"
 #: src/Admin/ModulesPage.php:701
 #: src/Admin/ModulesPage.php:774
 msgid "In a new tab"
-msgstr "In a new tab"
+msgstr "W nowej karcie"
 
 #: src/Admin/ModulesPage.php:584
 #: src/Admin/ModulesPage.php:674
 #: src/Admin/ModulesPage.php:775
 msgid "Close by clicking background"
-msgstr "Close by clicking background"
+msgstr "Zamknij klikając tło"
 
 #: src/Admin/ModulesPage.php:589
 #: src/Admin/ProductMetaBox.php:154
@@ -3611,7 +3609,7 @@ msgstr "Kształt odznaki"
 
 #: src/Admin/ModulesPage.php:603
 msgid "Uppercase"
-msgstr "Uppercase"
+msgstr "Wielkie litery"
 
 #: src/Admin/ModulesPage.php:604
 msgid "Max badges on product page"
@@ -3619,7 +3617,7 @@ msgstr "Maks. odznak na stronie produktu"
 
 #: src/Admin/ModulesPage.php:605
 msgid "Max badges on listings"
-msgstr "Max badges on listings"
+msgstr "Maks. odznak na listingach"
 
 #: src/Admin/ModulesPage.php:606
 msgid "Sale badge"
@@ -3651,7 +3649,7 @@ msgstr "Tekst odznaki niskiego stanu"
 
 #: src/Admin/ModulesPage.php:613
 msgid "Low stock threshold"
-msgstr "Low stock threshold"
+msgstr "Próg niskiego stanu magazynowego"
 
 #: src/Admin/ModulesPage.php:614
 msgid "Bestseller badge"
@@ -3663,7 +3661,7 @@ msgstr "Tekst odznaki bestsellera"
 
 #: src/Admin/ModulesPage.php:616
 msgid "Bestseller threshold (sales)"
-msgstr "Bestseller threshold (sales)"
+msgstr "Próg bestsellera (sprzedaż)"
 
 #: src/Admin/ModulesPage.php:621
 #: src/Admin/ProductMetaBox.php:188
@@ -3676,35 +3674,35 @@ msgstr "Dodatkowe zakładki produktowe z treścią na produkt oraz globalne zak�
 
 #: src/Admin/ModulesPage.php:628
 msgid "Global shipping tab"
-msgstr "Global shipping tab"
+msgstr "Globalna zakładka wysyłki"
 
 #: src/Admin/ModulesPage.php:629
 msgid "Shipping tab title"
-msgstr "Shipping tab title"
+msgstr "Tytuł zakładki wysyłki"
 
 #: src/Admin/ModulesPage.php:630
 msgid "Shipping tab content"
-msgstr "Shipping tab content"
+msgstr "Treść zakładki wysyłki"
 
 #: src/Admin/ModulesPage.php:631
 msgid "Shipping tab priority"
-msgstr "Shipping tab priority"
+msgstr "Priorytet zakładki wysyłki"
 
 #: src/Admin/ModulesPage.php:632
 msgid "Global returns tab"
-msgstr "Global returns tab"
+msgstr "Globalna zakładka zwrotów"
 
 #: src/Admin/ModulesPage.php:633
 msgid "Returns tab title"
-msgstr "Returns tab title"
+msgstr "Tytuł zakładki zwrotów"
 
 #: src/Admin/ModulesPage.php:634
 msgid "Returns tab content"
-msgstr "Returns tab content"
+msgstr "Treść zakładki zwrotów"
 
 #: src/Admin/ModulesPage.php:635
 msgid "Returns tab priority"
-msgstr "Returns tab priority"
+msgstr "Priorytet zakładki zwrotów"
 
 #: src/Admin/ModulesPage.php:636
 msgid "Enable first product tab"
@@ -3733,7 +3731,7 @@ msgstr "Wideo produktu na stronie produktu, osadzone z YouTube, Vimeo lub jako l
 
 #: src/Admin/ModulesPage.php:652
 msgid "Position"
-msgstr "Position"
+msgstr "Pozycja"
 
 #: src/Admin/ModulesPage.php:652
 msgid "Below gallery"
@@ -3746,7 +3744,7 @@ msgstr "Przed podsumowaniem produktu"
 #: src/Admin/ModulesPage.php:653
 #: src/Admin/ModulesPage.php:688
 msgid "Section header"
-msgstr "Section header"
+msgstr "Nagłówek sekcji"
 
 #: src/Admin/ModulesPage.php:655
 #: src/Admin/ModulesPage.php:690
@@ -3776,7 +3774,7 @@ msgstr "Włącz zoom po najechaniu"
 
 #: src/Admin/ModulesPage.php:670
 msgid "Zoom scale"
-msgstr "Zoom scale"
+msgstr "Skala powiększenia"
 
 #: src/Admin/ModulesPage.php:671
 msgid "Enable lightbox on click"
@@ -3800,7 +3798,7 @@ msgstr "Źródło produktów"
 
 #: src/Admin/ModulesPage.php:687
 msgid "Related"
-msgstr "Related"
+msgstr "Powiązane"
 
 #: src/Admin/ModulesPage.php:687
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:37
@@ -3810,15 +3808,15 @@ msgstr "Upsell"
 #: src/Admin/ModulesPage.php:687
 #: src/Service/BadgeService.php:101
 msgid "Sale"
-msgstr "Sale"
+msgstr "Promocja"
 
 #: src/Admin/ModulesPage.php:687
 msgid "Featured"
-msgstr "Featured"
+msgstr "Wyróżnione"
 
 #: src/Admin/ModulesPage.php:689
 msgid "Number of products"
-msgstr "Number of products"
+msgstr "Liczba produktów"
 
 #: src/Admin/ModulesPage.php:697
 msgid "Show \"view all\" link"
@@ -3842,7 +3840,7 @@ msgstr "How to open \"view all\" link"
 
 #: src/Admin/ModulesPage.php:706
 msgid "Waitlist"
-msgstr "Waitlist"
+msgstr "Lista oczekujących"
 
 #: src/Admin/ModulesPage.php:707
 msgid "Waitlist for out-of-stock products, with email signup and automatic notifications upon restock."
@@ -3850,7 +3848,7 @@ msgstr "Lista oczekujących dla produktów niedostępnych, z zapisem przez e-mai
 
 #: src/Admin/ModulesPage.php:714
 msgid "Allow guests to sign up"
-msgstr "Allow guests to sign up"
+msgstr "Pozwól gościom się zapisywać"
 
 #: src/Admin/ModulesPage.php:716
 #: src/Admin/ModulesPage.php:767
@@ -3859,7 +3857,7 @@ msgstr "Pokazuj nagłówek"
 
 #: src/Admin/ModulesPage.php:717
 msgid "Description"
-msgstr "Description"
+msgstr "Opis"
 
 #: src/Admin/ModulesPage.php:718
 msgid "Show description"
@@ -3871,7 +3869,7 @@ msgstr "Etykieta pola e-mail"
 
 #: src/Admin/ModulesPage.php:720
 msgid "Email field placeholder"
-msgstr "Email field placeholder"
+msgstr "Tekst zastępczy pola e-mail"
 
 #: src/Admin/ModulesPage.php:723
 msgid "Consent text"
@@ -3883,19 +3881,19 @@ msgstr "Błąd nieznalezionego produktu"
 
 #: src/Admin/ModulesPage.php:725
 msgid "Waitlist unavailable error"
-msgstr "Waitlist unavailable error"
+msgstr "Błąd niedostępności listy oczekujących"
 
 #: src/Admin/ModulesPage.php:726
 msgid "Invalid email error"
-msgstr "Invalid email error"
+msgstr "Błąd nieprawidłowego e-maila"
 
 #: src/Admin/ModulesPage.php:727
 msgid "Missing consent error"
-msgstr "Missing consent error"
+msgstr "Błąd brakującej zgody"
 
 #: src/Admin/ModulesPage.php:728
 msgid "Login required error"
-msgstr "Login required error"
+msgstr "Błąd wymaganego logowania"
 
 #: src/Admin/ModulesPage.php:730
 msgid "Email intro text"
@@ -3907,7 +3905,7 @@ msgstr "Tekst stopki e-maila"
 
 #: src/Admin/ModulesPage.php:736
 msgid "Infinite Scrolling"
-msgstr "Infinite Scrolling"
+msgstr "Nieskończone przewijanie"
 
 #: src/Admin/ModulesPage.php:737
 msgid "Lightweight loading of subsequent products on WooCommerce archives, with button mode or automatic loading."
@@ -3915,7 +3913,7 @@ msgstr "Lekkie doładowywanie kolejnych produktów w archiwach WooCommerce, w tr
 
 #: src/Admin/ModulesPage.php:743
 msgid "Operation mode"
-msgstr "Operation mode"
+msgstr "Tryb działania"
 
 #: src/Admin/ModulesPage.php:743
 msgid "Button"
@@ -3923,7 +3921,7 @@ msgstr "Przycisk"
 
 #: src/Admin/ModulesPage.php:743
 msgid "Automatic scroll"
-msgstr "Automatic scroll"
+msgstr "Automatyczne przewijanie"
 
 #: src/Admin/ModulesPage.php:746
 msgid "Loading error text"
@@ -3951,7 +3949,7 @@ msgstr "Pokazuj w kategoriach i tagach"
 
 #: src/Admin/ModulesPage.php:752
 msgid "How many pages to auto-load"
-msgstr "How many pages to auto-load"
+msgstr "Ile stron załadować automatycznie"
 
 #: src/Admin/ModulesPage.php:757
 msgid "WooCommerce Popup"
@@ -3963,7 +3961,7 @@ msgstr "Lekki popup promocyjny lub lead z kontrolą częstotliwości, opóźnien
 
 #: src/Admin/ModulesPage.php:765
 msgid "Content"
-msgstr "Content"
+msgstr "Treść"
 
 #: src/Admin/ModulesPage.php:766
 msgid "CTA text"
@@ -3975,24 +3973,24 @@ msgstr "Etykieta okna dialogowego"
 
 #: src/Admin/ModulesPage.php:771
 msgid "CTA URL"
-msgstr "CTA URL"
+msgstr "URL przycisku CTA"
 
 #: src/Admin/ModulesPage.php:772
 msgid "CTA Fallback URL"
-msgstr "CTA Fallback URL"
+msgstr "Zapasowy URL CTA"
 
 #: src/Admin/ModulesPage.php:772
 msgid "My account"
-msgstr "My account"
+msgstr "Moje konto"
 
 #: src/Admin/ModulesPage.php:772
 #: src/Admin/ModulesPage.php:776
 msgid "Home page"
-msgstr "Home page"
+msgstr "Strona główna"
 
 #: src/Admin/ModulesPage.php:772
 msgid "Shop"
-msgstr "Shop"
+msgstr "Sklep"
 
 #: src/Admin/ModulesPage.php:773
 msgid "Show CTA button"
@@ -4000,7 +3998,7 @@ msgstr "Pokazuj przycisk CTA"
 
 #: src/Admin/ModulesPage.php:774
 msgid "How to open CTA"
-msgstr "How to open CTA"
+msgstr "Jak otworzyć CTA"
 
 #: src/Admin/ModulesPage.php:777
 msgid "Shop and archives"
@@ -4012,11 +4010,11 @@ msgstr "Kasa"
 
 #: src/Admin/ModulesPage.php:781
 msgid "Delay in seconds"
-msgstr "Delay in seconds"
+msgstr "Opóźnienie w sekundach"
 
 #: src/Admin/ModulesPage.php:782
 msgid "Frequency of re-showing (days)"
-msgstr "Frequency of re-showing (days)"
+msgstr "Częstotliwość ponownego wyświetlania (dni)"
 
 #: src/Admin/ModulesPage.php:813
 msgid "Anti-greenwashing"
@@ -4032,7 +4030,7 @@ msgstr "Informacje o produkcie"
 
 #: src/Admin/ModulesPage.php:823
 msgid "DSA Toolkit"
-msgstr "DSA Toolkit"
+msgstr "Narzędzia DSA"
 
 #: src/Admin/ModulesPage.php:824
 msgid "Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report]."
@@ -4046,19 +4044,19 @@ msgstr "Prawa konsumenta"
 
 #: src/Admin/ModulesPage.php:830
 msgid "DSA contact name"
-msgstr "DSA contact name"
+msgstr "Kontakt DSA – imię"
 
 #: src/Admin/ModulesPage.php:831
 msgid "DSA contact email"
-msgstr "DSA contact email"
+msgstr "Kontakt DSA – e-mail"
 
 #: src/Admin/ModulesPage.php:832
 msgid "DSA contact phone"
-msgstr "DSA contact phone"
+msgstr "Kontakt DSA – telefon"
 
 #: src/Admin/ModulesPage.php:839
 msgid "KSeF readiness"
-msgstr "KSeF readiness"
+msgstr "Gotowość KSeF"
 
 #: src/Admin/ModulesPage.php:840
 msgid "Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator."
@@ -4066,12 +4064,12 @@ msgstr "Automatyczne wykrywanie zamówień wymagających fakturowania KSeF na po
 
 #: src/Admin/ModulesPage.php:846
 msgid "Automatically detect based on NIP"
-msgstr "Automatically detect based on NIP"
+msgstr "Automatyczne wykrywanie na podstawie NIP"
 
 #: src/Admin/ModulesPage.php:851
 #: src/Service/SecurityIncidentService.php:90
 msgid "Security incidents"
-msgstr "Security incidents"
+msgstr "Incydenty bezpieczeństwa"
 
 #: src/Admin/ModulesPage.php:852
 msgid "CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export."
@@ -4080,12 +4078,12 @@ msgstr "Dziennik incydentów zgodny z CRA dla podatności, naruszeń, awarii zew
 #: src/Admin/ModulesPage.php:857
 #: src/Service/SecurityIncidentService.php:131
 msgid "Incident log"
-msgstr "Incident log"
+msgstr "Rejestr incydentów"
 
 #: src/Admin/ModulesPage.php:860
 #: src/Admin/ModulesPage.php:922
 msgid "Security contact email"
-msgstr "Security contact email"
+msgstr "E-mail kontaktu ds. bezpieczeństwa"
 
 #: src/Admin/ModulesPage.php:861
 msgid "Default reporter name"
@@ -4093,7 +4091,7 @@ msgstr "Domyślna nazwa zgłaszającego"
 
 #: src/Admin/ModulesPage.php:868
 msgid "Structured Data (Schema.org)"
-msgstr "Structured Data (Schema.org)"
+msgstr "Dane strukturalne (Schema.org)"
 
 #: src/Admin/ModulesPage.php:869
 msgid "Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation."
@@ -4113,19 +4111,19 @@ msgstr "Główny przełącznik modyfikacji JSON-LD Schema.org."
 
 #: src/Admin/ModulesPage.php:876
 msgid "Data to include"
-msgstr "Data to include"
+msgstr "Dane do uwzględnienia"
 
 #: src/Admin/ModulesPage.php:877
 msgid "Include Brand"
-msgstr "Include Brand"
+msgstr "Uwzględnij markę"
 
 #: src/Admin/ModulesPage.php:878
 msgid "Include Manufacturer"
-msgstr "Include Manufacturer"
+msgstr "Uwzględnij producenta"
 
 #: src/Admin/ModulesPage.php:879
 msgid "Include barcodes (GTIN)"
-msgstr "Include barcodes (GTIN)"
+msgstr "Uwzględnij kody kreskowe (GTIN)"
 
 #: src/Admin/ModulesPage.php:880
 msgid "Include Unit Price"
@@ -4145,7 +4143,7 @@ msgstr "Integracje"
 
 #: src/Admin/ModulesPage.php:903
 msgid "Store Audit"
-msgstr "Store Audit"
+msgstr "Audyt sklepu"
 
 #: src/Admin/ModulesPage.php:904
 msgid "Automatic verification of the most common issues: missing legal pages, pre-selected checkboxes, company data, GDPR, Omnibus."
@@ -4159,7 +4157,7 @@ msgstr "Narzędzia"
 
 #: src/Admin/ModulesPage.php:910
 msgid "Delete plugin data on uninstall"
-msgstr "Delete plugin data on uninstall"
+msgstr "Usuń dane wtyczki przy odinstalowaniu"
 
 #: src/Admin/ModulesPage.php:910
 msgid "If enabled, uninstall removes plugin tables, settings, and stored logs including deactivation feedback."
@@ -4167,19 +4165,19 @@ msgstr "Po włączeniu odinstalowanie usuwa tabele wtyczki, ustawienia i zapisan
 
 #: src/Admin/ModulesPage.php:915
 msgid "CRA - Cyber Resilience"
-msgstr "CRA - Cyber Resilience"
+msgstr "CRA – Cyberodporność"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy."
-msgstr "Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy."
+msgstr "Rozporządzenie o cyberodporności: plik security.txt (RFC 9116), kontakt ds. bezpieczeństwa, polityka zgłaszania podatności."
 
 #: src/Admin/ModulesPage.php:923
 msgid "Security policy URL"
-msgstr "Security policy URL"
+msgstr "URL polityki bezpieczeństwa"
 
 #: src/Admin/ModulesPage.php:928
 msgid "DPA Registry (GDPR)"
-msgstr "DPA Registry (GDPR)"
+msgstr "Rejestr DPA (RODO)"
 
 #: src/Admin/ModulesPage.php:929
 msgid "Detection of third-party services processing customers' personal data. Tracking the status of data processing agreements."
@@ -4187,7 +4185,7 @@ msgstr "Wykrywanie usług zewnętrznych przetwarzających dane osobowe klientów
 
 #: src/Admin/ModulesPage.php:986
 msgid "Save modules"
-msgstr "Save modules"
+msgstr "Zapisz moduły"
 
 #: src/Admin/ModulesPage.php:1058
 msgid "Settings"
@@ -4195,35 +4193,35 @@ msgstr "Ustawienia"
 
 #: src/Admin/ModulesPage.php:1067
 msgid "Configure &darr;"
-msgstr "Configure &darr;"
+msgstr "Konfiguruj &darr;"
 
 #: src/Admin/ModulesPage.php:1079
 msgid "Coming Soon"
-msgstr "Coming Soon"
+msgstr "Wkrótce"
 
 #: src/Admin/ModulesPage.php:1173
 msgid "none"
-msgstr "none"
+msgstr "brak"
 
 #: src/Admin/ModulesPage.php:1207
 msgid "Sorry, you are not allowed to access this page."
-msgstr "Sorry, you are not allowed to access this page."
+msgstr "Nie masz uprawnień do tej strony."
 
 #: src/Admin/ModulesPage.php:1392
 msgid "Compatible Omnibus Extension A"
-msgstr "Compatible Omnibus Extension A"
+msgstr "Kompatybilne rozszerzenie Omnibus A"
 
 #: src/Admin/ModulesPage.php:1393
 msgid "Compatible Omnibus Extension B"
-msgstr "Compatible Omnibus Extension B"
+msgstr "Kompatybilne rozszerzenie Omnibus B"
 
 #: src/Admin/ModulesPage.php:1404
 msgid "detected, data synchronized"
-msgstr "detected, data synchronized"
+msgstr "wykryta, dane zsynchronizowane"
 
 #: src/Admin/ModulesPage.php:1405
 msgid "not installed"
-msgstr "not installed"
+msgstr "niezainstalowana"
 
 #: src/Admin/ModulesPage.php:1420
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
@@ -4356,7 +4354,7 @@ msgstr "Ilość produktu w opakowaniu (np. 500 dla 500g)."
 #: src/Admin/ProductMetaBox.php:80
 #: src/Admin/ProductMetaBox.php:417
 msgid "Base quantity"
-msgstr "Base quantity"
+msgstr "Ilość bazowa"
 
 #: src/Admin/ProductMetaBox.php:81
 msgid "Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
@@ -4428,11 +4426,11 @@ msgstr "Dodatkowa odznaka"
 
 #: src/Admin/ProductMetaBox.php:180
 msgid "Optional second badge, e.g. Polish brand, Eco, Sale hit."
-msgstr "Optional second badge, e.g. Polish brand, Eco, Sale hit."
+msgstr "Opcjonalna druga odznaka, np. Polska marka, Eko, Hit sprzedaży."
 
 #: src/Admin/ProductMetaBox.php:192
 msgid "Tab 1 title"
-msgstr "Tab 1 title"
+msgstr "Tytuł zakładki 1"
 
 #: src/Admin/ProductMetaBox.php:193
 msgid "Optional additional tab for this product."
@@ -4440,7 +4438,7 @@ msgstr "Opcjonalna dodatkowa zakładka dla tego produktu."
 
 #: src/Admin/ProductMetaBox.php:199
 msgid "Tab 1 content"
-msgstr "Tab 1 content"
+msgstr "Treść zakładki 1"
 
 #: src/Admin/ProductMetaBox.php:200
 msgid "HTML/text content for the first additional tab."
@@ -4448,7 +4446,7 @@ msgstr "Treść HTML/tekst dla pierwszej dodatkowej zakładki."
 
 #: src/Admin/ProductMetaBox.php:206
 msgid "Tab 2 title"
-msgstr "Tab 2 title"
+msgstr "Tytuł zakładki 2"
 
 #: src/Admin/ProductMetaBox.php:207
 msgid "Second optional product tab."
@@ -4456,7 +4454,7 @@ msgstr "Druga opcjonalna zakładka produktu."
 
 #: src/Admin/ProductMetaBox.php:213
 msgid "Tab 2 content"
-msgstr "Tab 2 content"
+msgstr "Treść zakładki 2"
 
 #: src/Admin/ProductMetaBox.php:214
 msgid "HTML/text content for the second additional tab."
@@ -4484,15 +4482,15 @@ msgstr "GPSR – Bezpieczeństwo produktu"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
-msgstr "Manufacturer name"
+msgstr "Nazwa producenta"
 
 #: src/Admin/ProductMetaBox.php:247
 msgid "Full manufacturer name required by GPSR."
-msgstr "Full manufacturer name required by GPSR."
+msgstr "Pełna nazwa producenta wymagana przez GPSR."
 
 #: src/Admin/ProductMetaBox.php:253
 msgid "Manufacturer address"
-msgstr "Manufacturer address"
+msgstr "Adres producenta"
 
 #: src/Admin/ProductMetaBox.php:254
 msgid "Full postal address of the manufacturer."
@@ -4500,15 +4498,15 @@ msgstr "Pełny adres pocztowy producenta."
 
 #: src/Admin/ProductMetaBox.php:260
 msgid "Importer name"
-msgstr "Importer name"
+msgstr "Nazwa importera"
 
 #: src/Admin/ProductMetaBox.php:261
 msgid "Full importer name (if applicable)."
-msgstr "Full importer name (if applicable)."
+msgstr "Pełna nazwa importera (jeśli dotyczy)."
 
 #: src/Admin/ProductMetaBox.php:267
 msgid "Importer address"
-msgstr "Importer address"
+msgstr "Adres importera"
 
 #: src/Admin/ProductMetaBox.php:268
 msgid "Full postal address of the importer."
@@ -4516,7 +4514,7 @@ msgstr "Pełny adres pocztowy importera."
 
 #: src/Admin/ProductMetaBox.php:274
 msgid "Responsible person"
-msgstr "Responsible person"
+msgstr "Osoba odpowiedzialna"
 
 #: src/Admin/ProductMetaBox.php:275
 msgid "Person responsible in the EU for product compliance with GPSR."
@@ -4532,7 +4530,7 @@ msgstr "Numer partii, numer seryjny lub inny identyfikator produktu."
 
 #: src/Admin/ProductMetaBox.php:288
 msgid "Safety warnings"
-msgstr "Safety warnings"
+msgstr "Ostrzeżenia dotyczące bezpieczeństwa"
 
 #: src/Admin/ProductMetaBox.php:289
 msgid "Safety warnings regarding the product."
@@ -4540,7 +4538,7 @@ msgstr "Ostrzeżenia dotyczące bezpieczeństwa produktu."
 
 #: src/Admin/ProductMetaBox.php:295
 msgid "Safety instructions"
-msgstr "Safety instructions"
+msgstr "Instrukcje bezpieczeństwa"
 
 #: src/Admin/ProductMetaBox.php:296
 msgid "Instructions for safe use of the product."
@@ -4548,7 +4546,7 @@ msgstr "Instrukcje bezpiecznego użytkowania produktu."
 
 #: src/Admin/ProductMetaBox.php:304
 msgid "Environmental claims (Anti-greenwashing)"
-msgstr "Environmental claims (Anti-greenwashing)"
+msgstr "Twierdzenia ekologiczne (Anti-greenwashing)"
 
 #: src/Admin/ProductMetaBox.php:309
 msgid "Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive)."
@@ -4556,7 +4554,7 @@ msgstr "Naukowa lub prawna podstawa deklaracji środowiskowej (wymagana przez dy
 
 #: src/Admin/ProductMetaBox.php:315
 msgid "Certificate link"
-msgstr "Certificate link"
+msgstr "Link do certyfikatu"
 
 #: src/Admin/ProductMetaBox.php:316
 msgid "URL to the official certificate supporting the environmental claim."
@@ -4564,11 +4562,11 @@ msgstr "URL do oficjalnego certyfikatu potwierdzającego deklarację środowisko
 
 #: src/Admin/ProductMetaBox.php:323
 msgid "Certificate expiry date (YYYY-MM-DD)"
-msgstr "Certificate expiry date (YYYY-MM-DD)"
+msgstr "Data ważności certyfikatu (RRRR-MM-DD)"
 
 #: src/Admin/ProductMetaBox.php:324
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
-msgstr "Environmental certificate expiry date in YYYY-MM-DD format."
+msgstr "Data ważności certyfikatu środowiskowego w formacie RRRR-MM-DD."
 
 #: src/Block/StoreApi/CheckoutValidation.php:181
 #, php-format
@@ -4594,31 +4592,31 @@ msgstr "Najniższa cena Omnibus (dane)"
 
 #: src/Block/StoreApi/ProductDataExtension.php:133
 msgid "Delivery time HTML"
-msgstr "Delivery time HTML"
+msgstr "HTML czasu dostawy"
 
 #: src/Block/StoreApi/ProductDataExtension.php:139
 msgid "Delivery time (text)"
-msgstr "Delivery time (text)"
+msgstr "Czas dostawy (tekst)"
 
 #: src/Block/StoreApi/ProductDataExtension.php:145
 msgid "VAT notice HTML"
-msgstr "VAT notice HTML"
+msgstr "HTML informacji o VAT"
 
 #: src/Block/StoreApi/ProductDataExtension.php:151
 msgid "Shipping notice HTML"
-msgstr "Shipping notice HTML"
+msgstr "HTML informacji o wysyłce"
 
 #: src/Block/StoreApi/ProductDataExtension.php:157
 msgid "Manufacturer"
-msgstr "Manufacturer"
+msgstr "Producent"
 
 #: src/Block/StoreApi/ProductDataExtension.php:163
 msgid "Manufacturer HTML"
-msgstr "Manufacturer HTML"
+msgstr "HTML producenta"
 
 #: src/Block/StoreApi/ProductDataExtension.php:169
 msgid "GPSR Responsible Person"
-msgstr "GPSR Responsible Person"
+msgstr "GPSR – Osoba odpowiedzialna"
 
 #: src/Block/StoreApi/ProductDataExtension.php:175
 msgid "Excluded from the right of withdrawal"
@@ -4755,11 +4753,11 @@ msgstr "Informacja o VAT"
 
 #: src/Email/DoubleOptInEmail.php:19
 msgid "Account Activation (Double Opt-In)"
-msgstr "Account Activation (Double Opt-In)"
+msgstr "Aktywacja konta (Double Opt-In)"
 
 #: src/Email/DoubleOptInEmail.php:20
 msgid "A warm welcome sent to your new customers to verify their email address."
-msgstr "A warm welcome sent to your new customers to verify their email address."
+msgstr "Ciepłe powitanie dla nowych klientów w celu weryfikacji adresu e-mail."
 
 #: src/Email/DoubleOptInEmail.php:119
 #: src/Email/DoubleOptInEmail.php:120
@@ -4897,11 +4895,11 @@ msgstr "m³"
 #: src/Rest/CheckboxController.php:115
 #: src/Rest/CheckboxController.php:172
 msgid "Checkbox not found."
-msgstr "Checkbox not found."
+msgstr "Nie znaleziono checkboxa."
 
 #: src/Rest/CheckboxController.php:130
 msgid "Checkbox ID is required."
-msgstr "Checkbox ID is required."
+msgstr "ID checkboxa jest wymagane."
 
 #: src/Rest/CheckboxController.php:139
 msgid "Cannot create a checkbox with a reserved ID."
@@ -4909,20 +4907,20 @@ msgstr "Nie można utworzyć checkboxa z zarezerwowanym identyfikatorem."
 
 #: src/Rest/CheckboxController.php:213
 msgid "Built-in checkboxes cannot be deleted. You can only disable them."
-msgstr "Built-in checkboxes cannot be deleted. You can only disable them."
+msgstr "Wbudowane checkboxy nie mogą być usunięte. Możesz je tylko wyłączyć."
 
 #: src/Rest/RestController.php:34
 msgid "Sorry, it seems you do not have access to this page."
-msgstr "Sorry, it seems you do not have access to this page."
+msgstr "Nie masz dostępu do tej strony."
 
 #: src/Rest/RestController.php:53
 msgid "Please log in to continue."
-msgstr "Please log in to continue."
+msgstr "Zaloguj się, aby kontynuować."
 
 #: src/Rest/SettingsController.php:105
 #: src/Rest/SettingsController.php:197
 msgid "Unknown settings group."
-msgstr "Unknown settings group."
+msgstr "Nieznana grupa ustawień."
 
 #: src/Rest/SettingsController.php:143
 msgid "I order with an obligation to pay"
@@ -4930,7 +4928,7 @@ msgstr "Zamawiam z obowiązkiem zapłaty"
 
 #: src/Rest/SettingsController.php:186
 msgid "Wizard completed."
-msgstr "Wizard completed."
+msgstr "Kreator zakończony."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
@@ -4938,25 +4936,25 @@ msgstr "Nie udało się przygotować wniosku o odstąpienie od umowy dla tego za
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Invalid status."
-msgstr "Invalid status."
+msgstr "Nieprawidłowy status."
 
 #: src/Rest/WithdrawalController.php:178
 msgid "Status change not allowed."
-msgstr "Status change not allowed."
+msgstr "Zmiana statusu niedozwolona."
 
 #: src/Service/BadgeService.php:105
 msgid "New"
-msgstr "New"
+msgstr "Nowy"
 
 #: src/Service/BadgeService.php:109
 msgid "Last items"
-msgstr "Last items"
+msgstr "Ostatnie sztuki"
 
 #. translators: %s: checkbox label (stripped of HTML)
 #: src/Service/CheckboxService.php:172
 #, php-format
 msgid "Please accept: %s"
-msgstr "Please accept: %s"
+msgstr "Proszę zaakceptować: %s"
 
 #: src/Service/CheckboxService.php:325
 msgid "Enable the Terms and Conditions checkbox - required by Polish consumer law."
@@ -5012,7 +5010,7 @@ msgstr "Musisz zaakceptować politykę prywatności."
 
 #: src/Service/CheckboxService.php:476
 msgid "Privacy Policy acceptance."
-msgstr "Privacy Policy acceptance."
+msgstr "Akceptacja Polityki prywatności."
 
 #. translators: %s: link to return policy
 #: src/Service/CheckboxService.php:487
@@ -5026,7 +5024,7 @@ msgstr "Musisz potwierdzić, że zapoznałeś się z informacjami o prawie odst�
 
 #: src/Service/CheckboxService.php:494
 msgid "14-day withdrawal right acknowledgment."
-msgstr "14-day withdrawal right acknowledgment."
+msgstr "Potwierdzenie informacji o 14-dniowym prawie odstąpienia."
 
 #: src/Service/CheckboxService.php:500
 msgid "I agree to the immediate delivery of digital content and acknowledge that I lose my right of withdrawal."
@@ -5046,15 +5044,15 @@ msgstr "Zgadzam się na otrzymywanie powiadomień SMS/e-mail o statusie dostawy 
 
 #: src/Service/CheckboxService.php:518
 msgid "Optional delivery notification consent."
-msgstr "Optional delivery notification consent."
+msgstr "Opcjonalna zgoda na powiadomienia o dostawie."
 
 #: src/Service/CheckboxService.php:524
 msgid "I agree to receive an email reminder to leave a review after my purchase."
-msgstr "I agree to receive an email reminder to leave a review after my purchase."
+msgstr "Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie."
 
 #: src/Service/CheckboxService.php:529
 msgid "Optional review reminder consent."
-msgstr "Optional review reminder consent."
+msgstr "Opcjonalna zgoda na przypomnienia o opinii."
 
 #: src/Service/CheckboxService.php:535
 msgid "I agree to receive marketing communications and the newsletter."
@@ -5062,7 +5060,7 @@ msgstr "Zgadzam się na otrzymywanie komunikatów marketingowych i newslettera."
 
 #: src/Service/CheckboxService.php:540
 msgid "Optional marketing consent (GDPR Art. 6.1.a)."
-msgstr "Optional marketing consent (GDPR Art. 6.1.a)."
+msgstr "Opcjonalna zgoda marketingowa (RODO Art. 6 ust. 1 lit. a)."
 
 #: src/Service/DoubleOptInService.php:96
 msgid "Your account is awaiting activation! Please check your email and click the activation link."
@@ -5070,11 +5068,11 @@ msgstr "Twoje konto oczekuje na aktywację! Sprawdź swoją skrzynkę e-mail i k
 
 #: src/Service/DoubleOptInService.php:133
 msgid "Great! Your account is now activated. You can now log in."
-msgstr "Great! Your account is now activated. You can now log in."
+msgstr "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz zalogować."
 
 #: src/Service/DPATrackerService.php:36
 msgid "You do not have permission to manage DPA registry."
-msgstr "You do not have permission to manage DPA registry."
+msgstr "Nie masz uprawnień do zarządzania rejestrem DPA."
 
 #: src/Service/DPATrackerService.php:66
 msgid "Rejestr umów powierzenia danych (DPA)"
@@ -5139,33 +5137,33 @@ msgstr "Reklamy"
 
 #: src/Service/DSAService.php:57
 msgid "Invalid security token."
-msgstr "Invalid security token."
+msgstr "Nieprawidłowy token bezpieczeństwa."
 
 #. translators: %d: report ID
 #: src/Service/DSAService.php:86
 #, php-format
 msgid "[Polski DSA] New report #%d"
-msgstr "[Polski DSA] New report #%d"
+msgstr "[Polski DSA] Nowe zgłoszenie #%d"
 
 #: src/Service/DSAService.php:114
 msgid "You do not have permission to manage DSA reports."
-msgstr "You do not have permission to manage DSA reports."
+msgstr "Nie masz uprawnień do zarządzania zgłoszeniami DSA."
 
 #: src/Service/DSAService.php:129
 msgid "Invalid DSA report status."
-msgstr "Invalid DSA report status."
+msgstr "Nieprawidłowy status zgłoszenia DSA."
 
 #: src/Service/DSAService.php:149
 msgid "DSA Reports"
-msgstr "DSA Reports"
+msgstr "Zgłoszenia DSA"
 
 #: src/Service/DSAService.php:152
 msgid "No reports found."
-msgstr "No reports found."
+msgstr "Nie znaleziono zgłoszeń."
 
 #: src/Service/DSAService.php:158
 msgid "Reporter"
-msgstr "Reporter"
+msgstr "Zgłaszający"
 
 #: src/Service/DSAService.php:159
 msgid "URL"
@@ -5174,11 +5172,11 @@ msgstr "URL"
 #: src/Service/DSAService.php:162
 #: src/Service/SecurityIncidentService.php:152
 msgid "Action"
-msgstr "Action"
+msgstr "Akcja"
 
 #: src/Service/DSAService.php:183
 msgid "Mark as resolved"
-msgstr "Mark as resolved"
+msgstr "Oznacz jako rozwiązane"
 
 #: src/Service/GPSRService.php:86
 msgid "GPSR"
@@ -5186,7 +5184,7 @@ msgstr "GPSR"
 
 #: src/Service/KSeFReadyService.php:76
 msgid "pending"
-msgstr "pending"
+msgstr "oczekujące"
 
 #: src/Service/KSeFReadyService.php:80
 #: src/Service/KSeFReadyService.php:93
@@ -5251,7 +5249,7 @@ msgstr "Dokument bezpieczeństwa"
 #: src/Service/SecurityIncidentService.php:209
 #: src/Service/SecurityIncidentService.php:243
 msgid "You do not have permission to access this page."
-msgstr "You do not have permission to access this page."
+msgstr "Nie masz uprawnień do tej strony."
 
 #: src/Service/SecurityIncidentService.php:91
 msgid "Track security incidents, product vulnerabilities, data breaches, and hosting or payment issues in one place. This helps with internal audit trails and CRA readiness work."
@@ -5259,74 +5257,77 @@ msgstr "Śledź incydenty bezpieczeństwa, podatności produktów, naruszenia da
 
 #: src/Service/SecurityIncidentService.php:96
 msgid "Add incident"
-msgstr "Add incident"
+msgstr "Dodaj incydent"
 
 #: src/Service/SecurityIncidentService.php:101
 #: src/Service/SecurityIncidentService.php:146
 msgid "Reported at"
-msgstr "Reported at"
+msgstr "Zgłoszono"
 
 #: src/Service/SecurityIncidentService.php:102
 #: src/Service/SecurityIncidentService.php:148
 msgid "Type"
-msgstr "Type"
+msgstr "Typ"
 
 #: src/Service/SecurityIncidentService.php:103
 #: src/Service/SecurityIncidentService.php:385
 msgid "Vulnerability"
-msgstr "Vulnerability"
+msgstr "Podatność"
 
 #: src/Service/SecurityIncidentService.php:104
 #: src/Service/SecurityIncidentService.php:386
 msgid "Data breach"
-msgstr "Data breach"
+msgstr "Naruszenie danych"
 
 #: src/Service/SecurityIncidentService.php:105
 #: src/Service/SecurityIncidentService.php:387
 msgid "Payment issue"
-msgstr "Payment issue"
+msgstr "Problem z płatnością"
 
 #: src/Service/SecurityIncidentService.php:106
 #: src/Service/SecurityIncidentService.php:388
 msgid "Availability issue"
-msgstr "Availability issue"
+msgstr "Problem z dostępnością"
 
 #: src/Service/SecurityIncidentService.php:107
 #: src/Service/SecurityIncidentService.php:389
 msgid "Third-party incident"
-msgstr "Third-party incident"
+msgstr "Incydent strony trzeciej"
 
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:390
-#: templates/forms/dsa-report.php:19
 msgid "Other"
-msgstr "Other"
+msgstr "Inne"
+
+#: templates/forms/dsa-report.php:19
+msgid "Inne"
+msgstr "Inne"
 
 #: src/Service/SecurityIncidentService.php:110
 #: src/Service/SecurityIncidentService.php:149
 msgid "Severity"
-msgstr "Severity"
+msgstr "Ważność"
 
 #: src/Service/SecurityIncidentService.php:111
 #: src/Service/SecurityIncidentService.php:397
 msgid "Low"
-msgstr "Low"
+msgstr "Niska"
 
 #: src/Service/SecurityIncidentService.php:112
 #: src/Service/SecurityIncidentService.php:398
 #: src/Service/SecurityIncidentService.php:401
 msgid "Medium"
-msgstr "Medium"
+msgstr "Średnia"
 
 #: src/Service/SecurityIncidentService.php:113
 #: src/Service/SecurityIncidentService.php:399
 msgid "High"
-msgstr "High"
+msgstr "Wysoka"
 
 #: src/Service/SecurityIncidentService.php:114
 #: src/Service/SecurityIncidentService.php:400
 msgid "Critical"
-msgstr "Critical"
+msgstr "Krytyczna"
 
 #: src/Service/SecurityIncidentService.php:116
 #: src/Service/SecurityIncidentService.php:147
@@ -5341,90 +5342,90 @@ msgstr "Tytuł"
 
 #: src/Service/SecurityIncidentService.php:117
 msgid "Affected area"
-msgstr "Affected area"
+msgstr "Dotknięty obszar"
 
 #: src/Service/SecurityIncidentService.php:117
 msgid "Checkout, hosting, orders, API, plugin update..."
-msgstr "Checkout, hosting, orders, API, plugin update..."
+msgstr "Checkout, hosting, zamówienia, API, aktualizacja wtyczki..."
 
 #: src/Service/SecurityIncidentService.php:118
 msgid "Mitigation"
-msgstr "Mitigation"
+msgstr "Łagodzenie skutków"
 
 #: src/Service/SecurityIncidentService.php:119
 msgid "Notes"
-msgstr "Notes"
+msgstr "Notatki"
 
 #: src/Service/SecurityIncidentService.php:120
 msgid "Reported by"
-msgstr "Reported by"
+msgstr "Zgłoszone przez"
 
 #: src/Service/SecurityIncidentService.php:121
 msgid "Reporter email"
-msgstr "Reporter email"
+msgstr "Email zgłaszającego"
 
 #: src/Service/SecurityIncidentService.php:122
 #: src/Service/SecurityIncidentService.php:151
 msgid "Notifications"
-msgstr "Notifications"
+msgstr "Powiadomienia"
 
 #: src/Service/SecurityIncidentService.php:122
 msgid "Hosting provider notified"
-msgstr "Hosting provider notified"
+msgstr "Powiadomiono hosting"
 
 #: src/Service/SecurityIncidentService.php:122
 msgid "Authority or regulator notified"
-msgstr "Authority or regulator notified"
+msgstr "Powiadomiono organ nadzorczy"
 
 #: src/Service/SecurityIncidentService.php:124
 msgid "Save incident"
-msgstr "Save incident"
+msgstr "Zapisz incydent"
 
 #. translators: %d: number of currently open incidents
 #: src/Service/SecurityIncidentService.php:134
 #, php-format
 msgid "Currently open incidents: %d"
-msgstr "Currently open incidents: %d"
+msgstr "Aktualnie otwarte incydenty: %d"
 
 #: src/Service/SecurityIncidentService.php:138
 msgid "Export CSV"
-msgstr "Export CSV"
+msgstr "Eksportuj CSV"
 
 #: src/Service/SecurityIncidentService.php:142
 msgid "No incidents logged yet."
-msgstr "No incidents logged yet."
+msgstr "Brak zarejestrowanych incydentów."
 
 #: src/Service/SecurityIncidentService.php:167
 msgid "Open"
-msgstr "Open"
+msgstr "Otwarty"
 
 #: src/Service/SecurityIncidentService.php:168
 msgid "Investigating"
-msgstr "Investigating"
+msgstr "W trakcie badania"
 
 #: src/Service/SecurityIncidentService.php:169
 msgid "Monitoring"
-msgstr "Monitoring"
+msgstr "Monitorowanie"
 
 #: src/Service/SecurityIncidentService.php:170
 msgid "Resolved"
-msgstr "Resolved"
+msgstr "Rozwiązany"
 
 #: src/Service/SecurityIncidentService.php:172
 msgid "Update"
-msgstr "Update"
+msgstr "Aktualizuj"
 
 #: src/Service/SecurityIncidentService.php:178
 msgid "Authority"
-msgstr "Authority"
+msgstr "Organ nadzorczy"
 
 #: src/Service/SecurityIncidentService.php:180
 msgid "Details"
-msgstr "Details"
+msgstr "Szczegóły"
 
 #: src/Service/SecurityIncidentService.php:180
 msgid "Mitigation:"
-msgstr "Mitigation:"
+msgstr "Łagodzenie skutków:"
 
 #: src/Service/SiteAuditService.php:52
 msgid "Audyt zgodności sklepu"
@@ -5720,31 +5721,31 @@ msgstr "Strona nie używa HTTPS. RODO wymaga odpowiednich środków technicznych
 
 #: src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
-msgstr "Verified purchase"
+msgstr "Zweryfikowany zakup"
 
 #: src/Service/WithdrawalService.php:150
 msgid "Customer has submitted a withdrawal request."
-msgstr "Customer has submitted a withdrawal request."
+msgstr "Klient złożył wniosek o odstąpienie od umowy."
 
 #: src/Service/WithdrawalService.php:181
 msgid "Withdrawal request confirmed."
-msgstr "Withdrawal request confirmed."
+msgstr "Wniosek o odstąpienie potwierdzony."
 
 #: src/Service/WithdrawalService.php:268
 msgid "Oops, something went wrong on our side. Please try again!"
-msgstr "Oops, something went wrong on our side. Please try again!"
+msgstr "Ups, coś poszło nie tak po naszej stronie. Spróbuj ponownie!"
 
 #: src/Service/WithdrawalService.php:275
 msgid "Unfortunately, we could not find such an order."
-msgstr "Unfortunately, we could not find such an order."
+msgstr "Niestety, nie udało nam się znaleźć takiego zamówienia."
 
 #: src/Service/WithdrawalService.php:293
 msgid "Your return request has been accepted. We will send you a confirmation email shortly!"
-msgstr "Your return request has been accepted. We will send you a confirmation email shortly!"
+msgstr "Twój wniosek o zwrot został zaakceptowany. Wkrótce wyślemy e-mail z potwierdzeniem!"
 
 #: src/Service/WithdrawalService.php:320
 msgid "Invalid security token. Please try again."
-msgstr "Invalid security token. Please try again."
+msgstr "Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie."
 
 #: src/Service/WithdrawalService.php:328
 msgid "Order not found."
@@ -5752,7 +5753,7 @@ msgstr "Zamówienie nie zostało znalezione."
 
 #: src/Service/WithdrawalService.php:358
 msgid "Your withdrawal request has been accepted."
-msgstr "Your withdrawal request has been accepted."
+msgstr "Twój wniosek o odstąpienie został zaakceptowany."
 
 #: src/Service/WithdrawalService.php:362
 msgid "Failed to submit the withdrawal request."
@@ -5784,7 +5785,7 @@ msgstr "Zamówienie"
 #: templates/account/withdrawal-confirm.php:38
 #: templates/account/withdrawal-confirm.php:49
 msgid "Amount"
-msgstr "Amount"
+msgstr "Kwota"
 
 #: templates/account/withdrawal-confirm.php:58
 msgid "Products in this order"
@@ -5798,11 +5799,11 @@ msgstr "Czy na pewno chcesz złożyć wniosek o odstąpienie od umowy dla zamów
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
-msgstr "Confirm withdrawal request"
+msgstr "Potwierdź wniosek o odstąpienie"
 
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuluj"
 
 #: templates/checkout/legal-checkboxes.php:51
 #: templates/forms/dsa-report.php:41
@@ -5924,177 +5925,6 @@ msgstr "Ostrzeżenia dotyczące bezpieczeństwa"
 msgid "Bezpieczeństwo produktu (GPSR)"
 msgstr "Bezpieczeństwo produktu (GPSR)"
 
-#: build/blocks/ajax-filters/index.js:186
-#: resources/js/blocks/ajax-filters/index.js:16
-#: build/blocks/ajax-filters/index.js:77
-msgid "Filter settings"
-msgstr "Ustawienia filtrów"
-
-#: build/blocks/ajax-filters/index.js:194
-#: build/blocks/product-slider/index.js:229
-#: resources/js/blocks/ajax-filters/index.js:23
-#: resources/js/blocks/product-slider/index.js:48
-#: build/blocks/ajax-filters/index.js:84
-#: build/blocks/product-slider/index.js:109
-msgid "Show title"
-msgstr "Pokaż tytuł"
-
-#: build/blocks/ajax-filters/index.js:200
-#: resources/js/blocks/ajax-filters/index.js:28
-#: build/blocks/ajax-filters/index.js:89
-msgid "Show categories"
-msgstr "Pokaż kategorie"
-
-#: build/blocks/ajax-filters/index.js:206
-#: resources/js/blocks/ajax-filters/index.js:33
-#: build/blocks/ajax-filters/index.js:94
-msgid "Show brands"
-msgstr "Pokaż marki"
-
-#: build/blocks/ajax-filters/index.js:218
-#: resources/js/blocks/ajax-filters/index.js:43
-#: build/blocks/ajax-filters/index.js:104
-msgid "Show stock"
-msgstr "Pokaż dostępność"
-
-#: build/blocks/ajax-filters/index.js:224
-#: resources/js/blocks/ajax-filters/index.js:48
-#: build/blocks/ajax-filters/index.js:109
-msgid "Show sale"
-msgstr "Pokaż promocje"
-
-#: build/blocks/ajax-filters/index.js:230
-#: resources/js/blocks/ajax-filters/index.js:53
-#: build/blocks/ajax-filters/index.js:114
-msgid "Show attributes"
-msgstr "Pokaż atrybuty"
-
-#: build/blocks/ajax-filters/index.js:240
-#: resources/js/blocks/ajax-filters/index.js:60
-#: build/blocks/ajax-filters/index.js:121
-msgid "Polski AJAX Filters"
-msgstr "Polski — Filtry AJAX"
-
-#: build/blocks/ajax-filters/index.js:242
-#: resources/js/blocks/ajax-filters/index.js:61
-#: build/blocks/ajax-filters/index.js:122
-msgid "Dynamic product filters rendered on the frontend."
-msgstr "Dynamiczne filtry produktowe renderowane na stronie."
-
-#: build/blocks/ajax-search/index.js:186
-#: resources/js/blocks/ajax-search/index.js:16
-#: build/blocks/ajax-search/index.js:77
-msgid "Search settings"
-msgstr "Ustawienia wyszukiwania"
-
-#: build/blocks/ajax-search/index.js:194
-#: resources/js/blocks/ajax-search/index.js:23
-#: build/blocks/ajax-search/index.js:84
-msgid "Search label"
-msgstr "Etykieta wyszukiwania"
-
-#: build/blocks/ajax-search/index.js:206
-#: resources/js/blocks/ajax-search/index.js:33
-#: build/blocks/ajax-search/index.js:94
-msgid "Show submit button"
-msgstr "Pokaż przycisk wyszukiwania"
-
-#: build/blocks/ajax-search/index.js:238
-#: resources/js/blocks/ajax-search/index.js:61
-#: build/blocks/ajax-search/index.js:122
-msgid "Polski AJAX Search"
-msgstr "Polski — Wyszukiwarka AJAX"
-
-#: build/blocks/ajax-search/index.js:240
-#: resources/js/blocks/ajax-search/index.js:62
-#: build/blocks/ajax-search/index.js:123
-msgid "Dynamic product search form rendered on the frontend."
-msgstr "Dynamiczny formularz wyszukiwania produktów AJAX dla sklepów WooCommerce."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:66
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:53
-#: build/blocks/checkout-legal-checkboxes/index.js:53
-msgid "This field is required."
-msgstr "To pole jest wymagane."
-
-#: build/blocks/checkout-legal-checkboxes/index.js:100
-#: resources/js/blocks/checkout-legal-checkboxes/block.js:91
-#: build/blocks/checkout-legal-checkboxes/index.js:91
-msgid "required"
-msgstr "wymagane"
-
-#: build/blocks/product-slider/index.js:186
-#: resources/js/blocks/product-slider/index.js:16
-#: build/blocks/product-slider/index.js:77
-msgid "Slider settings"
-msgstr "Ustawienia slidera"
-
-#: build/blocks/product-slider/index.js:194
-#: resources/js/blocks/product-slider/index.js:23
-#: build/blocks/product-slider/index.js:84
-msgid "Source"
-msgstr "Źródło"
-
-#: build/blocks/product-slider/index.js:197
-#: resources/js/blocks/product-slider/index.js:26
-#: build/blocks/product-slider/index.js:87
-msgid "Related products"
-msgstr "Produkty powiązane"
-
-#: build/blocks/product-slider/index.js:200
-#: resources/js/blocks/product-slider/index.js:27
-#: build/blocks/product-slider/index.js:88
-msgid "Upsell products"
-msgstr "Produkty upsell"
-
-#: build/blocks/product-slider/index.js:203
-#: resources/js/blocks/product-slider/index.js:28
-#: build/blocks/product-slider/index.js:89
-msgid "Sale products"
-msgstr "Produkty w promocji"
-
-#: build/blocks/product-slider/index.js:206
-#: resources/js/blocks/product-slider/index.js:29
-#: build/blocks/product-slider/index.js:90
-msgid "Featured products"
-msgstr "Produkty wyróżnione"
-
-#: build/blocks/product-slider/index.js:213
-#: resources/js/blocks/product-slider/index.js:34
-#: build/blocks/product-slider/index.js:95
-msgid "Product ID"
-msgstr "ID produktu"
-
-#: build/blocks/product-slider/index.js:216
-#: resources/js/blocks/product-slider/index.js:37
-#: build/blocks/product-slider/index.js:98
-msgid "Optional for related and upsell sliders outside product templates."
-msgstr "Opcjonalne dla sliderów powiązanych i upsell poza szablonem produktu."
-
-#: build/blocks/product-slider/index.js:221
-#: resources/js/blocks/product-slider/index.js:41
-#: build/blocks/product-slider/index.js:102
-msgid "Product limit"
-msgstr "Limit produktów"
-
-#: build/blocks/product-slider/index.js:241
-#: resources/js/blocks/product-slider/index.js:58
-#: build/blocks/product-slider/index.js:119
-msgid "Show add to cart"
-msgstr "Pokaż przycisk koszyka"
-
-#: build/blocks/product-slider/index.js:251
-#: resources/js/blocks/product-slider/index.js:65
-#: build/blocks/product-slider/index.js:126
-msgid "Polski Product Slider"
-msgstr "Polski — Slider produktów"
-
-#: build/blocks/product-slider/index.js:253
-#: resources/js/blocks/product-slider/index.js:66
-#: build/blocks/product-slider/index.js:127
-msgid "Dynamic merchandising slider rendered on the frontend."
-msgstr "Dynamiczny slider merchandisingowy renderowany na stronie."
-
 #: build/blocks/ajax-filters/block.json
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
@@ -6142,4 +5972,641 @@ msgstr "Polski — Slider produktów"
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dynamiczny slider merchandisingowy dla produktów powiązanych, upsell, promocyjnych i wyróżnionych."
+
+msgid "Hello!"
+msgstr "Cześć!"
+
+msgid "Finish configuration"
+msgstr "Dokończ konfigurację"
+
+msgid "Some key elements of your store still require attention."
+msgstr "Niektóre kluczowe elementy Twojego sklepu wciąż wymagają uwagi."
+
+msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
+msgstr "Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo do odstąpienia)"
+
+msgid "Complete product data"
+msgstr "Uzupełnij dane produktów"
+
+msgid "Manage modules"
+msgstr "Zarządzaj modułami"
+
+msgid "Generate legal pages"
+msgstr "Wygeneruj strony prawne"
+
+msgid "No legal pages have been created yet. Generate them to get started."
+msgstr "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
+
+msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
+msgstr "Gotowe! Wygenerowaliśmy szkice stron prawnych. Przejrzyj je, dostosuj i opublikuj."
+
+msgid "%1$d of %2$d ready"
+msgstr "%1$d z %2$d gotowe"
+
+msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
+msgstr "Opublikuj swoje strony prawne (Regulamin, Polityka prywatności, Prawo do odstąpienia, Reklamacje)."
+
+msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
+msgstr "Uzupełnij dane produktów - dodaj ceny jednostkowe i czas dostawy w <a href=\"%s\">zakładce Polski</a> dla każdego produktu."
+
+msgid "%d/8 pól wypełnionych"
+msgstr "%d/8 pól wypełnionych"
+
+msgid "Active"
+msgstr "Aktywny"
+
+msgid "Add Allergen"
+msgstr "Dodaj alergen"
+
+msgid "Add Delivery Time"
+msgstr "Dodaj czas dostawy"
+
+msgid "Add Manufacturer"
+msgstr "Dodaj producenta"
+
+msgid "Add Nutrient"
+msgstr "Dodaj składnik odżywczy"
+
+msgid "Add Unit"
+msgstr "Dodaj jednostkę"
+
+msgid "Add to Wishlist"
+msgstr "Dodaj do listy życzeń"
+
+msgid "Add to compare"
+msgstr "Dodaj do porównania"
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Admin Feedback Logs"
+msgstr "Dziennik opinii administratora"
+
+msgid "Advertising"
+msgstr "Reklama"
+
+msgid "All basic company data is completed."
+msgstr "Wszystkie podstawowe dane firmy są uzupełnione."
+
+msgid "Allergen"
+msgstr "Alergen"
+
+msgid "Analytics"
+msgstr "Analityka"
+
+msgid "Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims."
+msgstr "Moduł anty-greenwashing jest wyłączony. Dobrą praktyką jest przechowywanie źródeł dla deklaracji środowiskowych."
+
+msgid "Anti-greenwashing module is enabled - products can store claims basis and certificate links."
+msgstr "Moduł anty-greenwashing jest włączony - produkty mogą przechowywać podstawy deklaracji i linki do certyfikatów."
+
+msgid "Automatic verification of common issues for Polish WooCommerce shops."
+msgstr "Automatyczna weryfikacja typowych problemów polskich sklepów WooCommerce."
+
+msgid "Availability"
+msgstr "Dostępność"
+
+msgid "Back to reports"
+msgstr "Powrót do raportów"
+
+msgid "Business identification data"
+msgstr "Dane identyfikacyjne firmy"
+
+msgid "Button text is not configured. Default WooCommerce setting might lack required payment info."
+msgstr "Tekst przycisku nie jest skonfigurowany. Domyślne ustawienie WooCommerce może nie zawierać wymaganych informacji o płatności."
+
+msgid "Button: \"%s\" - contains info about payment obligation."
+msgstr "Przycisk: \"%s\" - zawiera informację o obowiązku zapłaty."
+
+msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
+msgstr "Przycisk: \"%s\" - może nie zawierać wymaganych informacji o płatności (np. \"Zamówienie z obowiązkiem zapłaty\")."
+
+msgid "Check"
+msgstr "Sprawdź"
+
+msgid "Check reports"
+msgstr "Sprawdź raporty"
+
+msgid "Clear comparison"
+msgstr "Wyczyść porównanie"
+
+msgid "Company name"
+msgstr "Nazwa firmy"
+
+msgid "Compare products"
+msgstr "Porównaj produkty"
+
+msgid "Comparison"
+msgstr "Porównanie"
+
+msgid "Complaints"
+msgstr "Reklamacje"
+
+msgid "Completed"
+msgstr "Ukończone"
+
+msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
+
+msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
+msgstr "Skonfiguruj <a href=\"%s\">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%)."
+
+msgid "Confirmed"
+msgstr "Potwierdzone"
+
+msgid "Contact email"
+msgstr "Email kontaktowy"
+
+msgid "DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services."
+msgstr "Moduł DPA jest włączony, ale rejestr jest pusty. Zaznacz co najmniej hosting, płatności i inne usługi przetwarzania danych."
+
+msgid "DPA registry (data processing agreements)"
+msgstr "Rejestr DPA (umowy powierzenia przetwarzania danych)"
+
+msgid "DPA registry covers %d services and all have an agreement status marked."
+msgstr "Rejestr DPA obejmuje %d usług i wszystkie mają zaznaczony status umowy."
+
+msgid "DPA registry has no active data processing agreements marked."
+msgstr "Rejestr DPA nie ma zaznaczonych aktywnych umów powierzenia przetwarzania danych."
+
+msgid "DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc."
+msgstr "Moduł rejestru DPA jest wyłączony. Dobrą praktyką jest monitorowanie statusu DPA dla hostingu, płatności itp."
+
+msgid "DSA - reporting illegal content"
+msgstr "DSA - zgłaszanie nielegalnych treści"
+
+msgid "DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure."
+msgstr "Moduł DSA jest wyłączony. Platformy handlowe lub sklepy z treściami sponsorowanymi powinny mieć procedurę zgłaszania i reagowania."
+
+msgid "DSA module is enabled - report form and dashboard are available."
+msgstr "Moduł DSA jest włączony - formularz zgłoszeń i panel są dostępne."
+
+msgid "Dashboard"
+msgstr "Pulpit"
+
+msgid "Data Processing Agreement (DPA) Registry"
+msgstr "Rejestr umów powierzenia przetwarzania danych (DPA)"
+
+msgid "Defect Description"
+msgstr "Opis wady"
+
+msgid "Delivery Time"
+msgstr "Czas dostawy"
+
+msgid "Delivery Times"
+msgstr "Czasy dostawy"
+
+msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
+msgstr "Wykryto %d wstępnie zaznaczonych checkboxów. Organy nadzorcze uznają to za ciemny wzorzec."
+
+msgid "Detected external services processing your customers' personal data. Mark those for which you have a signed DPA."
+msgstr "Wykryto zewnętrzne usługi przetwarzające dane osobowe Twoich klientów. Zaznacz te, dla których masz podpisaną DPA."
+
+msgid "Disabled"
+msgstr "Wyłączony"
+
+msgid "Draft"
+msgstr "Szkic"
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Edit Allergen"
+msgstr "Edytuj alergen"
+
+msgid "Edit Delivery Time"
+msgstr "Edytuj czas dostawy"
+
+msgid "Edit Manufacturer"
+msgstr "Edytuj producenta"
+
+msgid "Edit Nutrient"
+msgstr "Edytuj składnik odżywczy"
+
+msgid "Edit Unit"
+msgstr "Edytuj jednostkę"
+
+msgid "Enable"
+msgstr "Włącz"
+
+msgid "Environmental claims (anti-greenwashing)"
+msgstr "Deklaracje środowiskowe (anty-greenwashing)"
+
+msgid "Failed to load product preview."
+msgstr "Nie udało się załadować podglądu produktu."
+
+msgid "Feature"
+msgstr "Funkcja"
+
+msgid "Feedback Logs"
+msgstr "Dziennik opinii"
+
+msgid "Food Information"
+msgstr "Informacje o żywności"
+
+msgid "GPSR module (product safety)"
+msgstr "Moduł GPSR (bezpieczeństwo produktów)"
+
+msgid "GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data."
+msgstr "Moduł GPSR jest wyłączony. Rozporządzenie (UE) 2023/988 wymaga podawania danych producenta/importera."
+
+msgid "GPSR module is enabled - manufacturer and importer data can be displayed."
+msgstr "Moduł GPSR jest włączony - dane producenta i importera mogą być wyświetlane."
+
+msgid "Go through the checklist below"
+msgstr "Przejdź przez poniższą listę kontrolną"
+
+msgid "Hosting (server)"
+msgstr "Hosting (serwer)"
+
+msgid "If you no longer wish to receive these messages, simply ignore this email."
+msgstr "Jeśli nie chcesz już otrzymywać tych wiadomości, po prostu zignoruj tego e-maila."
+
+msgid "Inactive"
+msgstr "Nieaktywny"
+
+msgid "Incident module is enabled and security contact is set. The registry is currently empty."
+msgstr "Moduł incydentów jest włączony i kontakt bezpieczeństwa jest ustawiony. Rejestr jest obecnie pusty."
+
+msgid "Incident module is enabled, but no security contact email is set."
+msgstr "Moduł incydentów jest włączony, ale nie ustawiono adresu e-mail kontaktu bezpieczeństwa."
+
+msgid "Issues"
+msgstr "Problemy"
+
+msgid "KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices."
+msgstr "Moduł KSeF jest wyłączony. Sklepy B2B mogą potrzebować automatycznego oznaczania zamówień wymagających e-faktur."
+
+msgid "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration."
+msgstr "Moduł KSeF jest włączony - zamówienia z NIP mogą być oznaczane do integracji z fakturami."
+
+msgid "Legal checkboxes (GDPR)"
+msgstr "Checkboxy prawne (GDPR)"
+
+msgid "Legal checkboxes module is disabled. The shop might not collect required GDPR consents."
+msgstr "Moduł checkboxów prawnych jest wyłączony. Sklep może nie zbierać wymaganych zgód GDPR."
+
+msgid "Legal checkboxes module is enabled."
+msgstr "Moduł checkboxów prawnych jest włączony."
+
+msgid "Legal pages (Terms, Privacy Policy)"
+msgstr "Strony prawne (Regulamin, Polityka prywatności)"
+
+msgid "Loading product..."
+msgstr "Ładowanie produktu..."
+
+msgid "Log in to use product comparison."
+msgstr "Zaloguj się, aby korzystać z porównywania produktów."
+
+msgid "Login to join the waitlist."
+msgstr "Zaloguj się, aby dołączyć do listy oczekujących."
+
+msgid "Lowest Price (Omnibus)"
+msgstr "Najniższa cena (Omnibus)"
+
+msgid "Manufacturers"
+msgstr "Producenci"
+
+msgid "Missing data: %s. Fill in Polski > Settings."
+msgstr "Brakujące dane: %s. Uzupełnij w Polski > Ustawienia."
+
+msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
+msgstr "Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane."
+
+msgid "Module disabled"
+msgstr "Moduł wyłączony"
+
+msgid "Modules"
+msgstr "Moduły"
+
+msgid "Modules saved."
+msgstr "Moduły zapisane."
+
+msgid "Next steps"
+msgstr "Następne kroki"
+
+msgid "No checkboxes are checked by default."
+msgstr "Żadne checkboxy nie są domyślnie zaznaczone."
+
+msgid "No internal feedback to display."
+msgstr "Brak opinii wewnętrznych do wyświetlenia."
+
+msgid "Not created"
+msgstr "Nie utworzono"
+
+msgid "Nutrients"
+msgstr "Składniki odżywcze"
+
+msgid "Nutritional Information"
+msgstr "Informacje o wartości odżywczej"
+
+msgid "Omnibus Directive"
+msgstr "Dyrektywa Omnibus"
+
+msgid "Omnibus module (lowest price)"
+msgstr "Moduł Omnibus (najniższa cena)"
+
+msgid "Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales."
+msgstr "Moduł Omnibus jest wyłączony. Dyrektywa Omnibus wymaga pokazywania najniższej ceny z 30 dni przy promocjach."
+
+msgid "Omnibus module is enabled - lowest price from 30 days will be shown on sales."
+msgstr "Moduł Omnibus jest włączony - najniższa cena z 30 dni będzie wyświetlana przy promocjach."
+
+msgid "On Sale"
+msgstr "W promocji"
+
+msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
+msgstr "Tylko %1$d z %2$d śledzonych usług ma zaznaczoną umowę powierzenia przetwarzania danych."
+
+msgid "Open &rarr;"
+msgstr "Otwórz &rarr;"
+
+msgid "Open Report"
+msgstr "Otwórz raport"
+
+msgid "Optional: manually set ID for related/upsell sources outside product details page."
+msgstr "Opcjonalnie: ręcznie ustaw ID dla źródeł powiązanych/upsell poza stroną szczegółów produktu."
+
+msgid "Order button text"
+msgstr "Tekst przycisku zamówienia"
+
+msgid "Page"
+msgstr "Strona"
+
+msgid "Passed"
+msgstr "Zaliczony"
+
+msgid "Payments"
+msgstr "Płatności"
+
+msgid "Person"
+msgstr "Osoba"
+
+msgid "Please complete the Shop Terms and Conditions."
+msgstr "Uzupełnij regulamin sklepu."
+
+msgid "Please complete the complaints procedure."
+msgstr "Uzupełnij procedurę reklamacyjną."
+
+msgid "Please fill in your Privacy Policy."
+msgstr "Uzupełnij politykę prywatności."
+
+msgid "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw."
+msgstr "Uzupełnij politykę zwrotów i odstąpienia od umowy. Konsumenci mają 14 dni na odstąpienie."
+
+msgid "Please login to use the wishlist."
+msgstr "Zaloguj się, aby korzystać z listy życzeń."
+
+msgid "Power Supply"
+msgstr "Zasilanie"
+
+msgid "Pre-checked checkboxes (dark pattern)"
+msgstr "Wstępnie zaznaczone checkboxy (ciemny wzorzec)"
+
+msgid "Prices exclude VAT (net)"
+msgstr "Ceny bez VAT (netto)"
+
+msgid "Prices include VAT (gross)"
+msgstr "Ceny z VAT (brutto)"
+
+msgid "Privacy Policy contains %d characters."
+msgstr "Polityka prywatności zawiera %d znaków."
+
+msgid "Privacy Policy content"
+msgstr "Treść polityki prywatności"
+
+msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
+msgstr "Polityka prywatności ma tylko %d znaków - może być za krótka, aby spełnić wymagania Art. 13 GDPR."
+
+msgid "Privacy Policy page is not published."
+msgstr "Strona polityki prywatności nie jest opublikowana."
+
+msgid "Privacy Policy page is not set."
+msgstr "Strona polityki prywatności nie jest ustawiona."
+
+msgid "Product ID"
+msgstr "ID produktu"
+
+msgid "Product Quick View"
+msgstr "Szybki podgląd produktu"
+
+msgid "Product Slider"
+msgstr "Slider produktów"
+
+msgid "Product back in stock - {product_name}"
+msgstr "Produkt ponownie dostępny - {product_name}"
+
+msgid "Product count"
+msgstr "Liczba produktów"
+
+msgid "Product not found."
+msgstr "Nie znaleziono produktu."
+
+msgid "Product {product_name} is back in stock."
+msgstr "Produkt {product_name} jest ponownie dostępny."
+
+msgid "Provide a valid email address."
+msgstr "Podaj prawidłowy adres e-mail."
+
+msgid "Published"
+msgstr "Opublikowane"
+
+msgid "Rejected"
+msgstr "Odrzucone"
+
+msgid "Related products"
+msgstr "Powiązane produkty"
+
+msgid "Remove from Wishlist"
+msgstr "Usuń z listy życzeń"
+
+msgid "Remove from compare"
+msgstr "Usuń z porównania"
+
+msgid "Reports & Tools"
+msgstr "Raporty i narzędzia"
+
+msgid "Result limit"
+msgstr "Limit wyników"
+
+msgid "Return Policy"
+msgstr "Polityka zwrotów"
+
+msgid "Returns and Complaints"
+msgstr "Zwroty i reklamacje"
+
+msgid "Right of Withdrawal"
+msgstr "Prawo do odstąpienia od umowy"
+
+msgid "SSL/TLS encryption"
+msgstr "Szyfrowanie SSL/TLS"
+
+msgid "Safety Document"
+msgstr "Dokument bezpieczeństwa"
+
+msgid "Safety Documents"
+msgstr "Dokumenty bezpieczeństwa"
+
+msgid "Safety Instructions"
+msgstr "Instrukcje bezpieczeństwa"
+
+msgid "Save Registry"
+msgstr "Zapisz rejestr"
+
+msgid "Save Settings"
+msgstr "Zapisz ustawienia"
+
+msgid "Screen"
+msgstr "Ekran"
+
+msgid "Search Allergens"
+msgstr "Szukaj alergenów"
+
+msgid "Search Delivery Times"
+msgstr "Szukaj czasów dostawy"
+
+msgid "Search Manufacturers"
+msgstr "Szukaj producentów"
+
+msgid "Search Nutrients"
+msgstr "Szukaj składników odżywczych"
+
+msgid "Search Units"
+msgstr "Szukaj jednostek"
+
+msgid "Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance."
+msgstr "Moduł incydentów bezpieczeństwa jest wyłączony. Dobrą praktyką jest prowadzenie prostego rejestru incydentów."
+
+msgid "Security incident registry"
+msgstr "Rejestr incydentów bezpieczeństwa"
+
+msgid "Select a report or tool to check your store compliance status."
+msgstr "Wybierz raport lub narzędzie, aby sprawdzić stan zgodności Twojego sklepu."
+
+msgid "Service"
+msgstr "Usługa"
+
+msgid "Settings have been saved."
+msgstr "Ustawienia zostały zapisane."
+
+msgid "Shipping"
+msgstr "Wysyłka"
+
+msgid "Shipping and Payment"
+msgstr "Wysyłka i płatność"
+
+msgid "Shop compliance audit"
+msgstr "Audyt zgodności sklepu"
+
+msgid "Short description"
+msgstr "Krótki opis"
+
+msgid "Show add to cart button"
+msgstr "Pokaż przycisk dodawania do koszyka"
+
+msgid "Show attributes"
+msgstr "Pokaż atrybuty"
+
+msgid "Show availability"
+msgstr "Pokaż dostępność"
+
+msgid "Show brands"
+msgstr "Pokaż marki"
+
+msgid "Show categories"
+msgstr "Pokaż kategorie"
+
+msgid "Show on-sale"
+msgstr "Pokaż w promocji"
+
+msgid "Show only differences"
+msgstr "Pokaż tylko różnice"
+
+msgid "Show title"
+msgstr "Pokaż tytuł"
+
+msgid "Sorry, but you do not have permission to access this page."
+msgstr "Nie masz uprawnień do wyświetlenia tej strony."
+
+msgid "Store Analysis"
+msgstr "Analiza sklepu"
+
+msgid "Tax Information"
+msgstr "Informacje podatkowe"
+
+msgid "Terms"
+msgstr "Regulamin"
+
+msgid "Terms and Privacy Policy pages are set and published."
+msgstr "Strony regulaminu i polityki prywatności są ustawione i opublikowane."
+
+msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
+msgstr "Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź checkboxy oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
+
+msgid "Thank you. You have been added to the waitlist."
+msgstr "Dziękujemy. Zostałeś dodany do listy oczekujących."
+
+msgid "The incident registry is active and has no open cases."
+msgstr "Rejestr incydentów jest aktywny i nie ma otwartych spraw."
+
+msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
+msgstr "Witryna nie używa HTTPS. GDPR wymaga odpowiednich środków technicznych - SSL to minimum."
+
+msgid "The site is served over HTTPS."
+msgstr "Witryna jest serwowana przez HTTPS."
+
+msgid "There are %d open security incidents requiring further action in the registry."
+msgstr "W rejestrze jest %d otwartych incydentów bezpieczeństwa wymagających dalszych działań."
+
+msgid "Unit Price"
+msgstr "Cena jednostkowa"
+
+msgid "Units"
+msgstr "Jednostki"
+
+msgid "Upsells"
+msgstr "Produkty polecane"
+
+msgid "VAT ID (NIP)"
+msgstr "NIP"
+
+msgid "Verified reviews"
+msgstr "Zweryfikowane opinie"
+
+msgid "Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers."
+msgstr "Moduł zweryfikowanych opinii jest wyłączony. Utrudnia to odróżnienie opinii od rzeczywistych klientów."
+
+msgid "Verified reviews module is enabled - the shop can mark reviews from actual buyers."
+msgstr "Moduł zweryfikowanych opinii jest włączony - sklep może oznaczać opinie od rzeczywistych kupujących."
+
+msgid "Waitlist is unavailable for this product."
+msgstr "Lista oczekujących jest niedostępna dla tego produktu."
+
+msgid "Warnings"
+msgstr "Ostrzeżenia"
+
+msgid "Watch product in use"
+msgstr "Zobacz produkt w użyciu"
+
+msgid "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
+msgstr "Moduł odstąpienia jest wyłączony. Konsumenci mają 14-dniowe prawo do odstąpienia od umowy."
+
+msgid "Withdrawal module is enabled."
+msgstr "Moduł odstąpienia jest włączony."
+
+msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
+msgstr "Możesz porównać maksymalnie {limit} produktów jednocześnie. Najstarszy wpis został automatycznie zastąpiony."
+
+msgid "You cannot clear the comparison."
+msgstr "Nie można wyczyścić porównania."
+
+msgid "You must accept the consent for email contact."
+msgstr "Musisz zaakceptować zgodę na kontakt e-mailowy."
+
+msgid "required"
+msgstr "wymagane"
+
+#: src/Admin/DeactivationHandler.php:98
+msgid "Unauthorized"
+msgstr "Brak autoryzacji"
 

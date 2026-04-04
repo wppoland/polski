@@ -1,5 +1,4 @@
 <?php
-defined('ABSPATH') || exit;
 /**
  * One-click withdrawal confirmation page.
  *

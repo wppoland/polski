@@ -35,8 +35,8 @@ final class AdminNotes implements HasHooks
 
             echo '<div class="notice notice-info is-dismissible polski-disclaimer-notice">';
             echo '<p><strong>Polski</strong></p>';
-            echo '<p>' . esc_html__('This plugin provides tools to assist with Polish e-commerce compliance. It does not constitute legal advice. You are solely responsible for ensuring your store complies with all applicable laws. We recommend consulting a qualified legal professional.', 'polski') . '</p>';
-            echo '<p><a href="' . esc_url($dismissUrl) . '" class="button button-small">' . esc_html__('I understand, dismiss', 'polski') . '</a></p>';
+            echo '<p>' . esc_html(self::disclaimerNoticeParagraph()) . '</p>';
+            echo '<p><a href="' . esc_url($dismissUrl) . '" class="button button-small">' . esc_html(self::dismissDisclaimerButtonText()) . '</a></p>';
             echo '</div>';
         });
 
@@ -92,6 +92,62 @@ final class AdminNotes implements HasHooks
         $note->save();
 
         update_option('polski_setup_note_shown', true);
+    }
+
+    /**
+     * Disclaimer body: use site language, not only the current user's admin UI language.
+     *
+     * In wp-admin, __() normally follows get_user_locale(). A Polish store with an English
+     * profile would otherwise show English even when polski-pl_PL.mo is present.
+     */
+    private static function disclaimerNoticeParagraph(): string
+    {
+        $msgid = 'This plugin provides tools to assist with Polish e-commerce compliance. It does not constitute legal advice. You are solely responsible for ensuring your store complies with all applicable laws. We recommend consulting a qualified legal professional.';
+
+        $siteLocale = get_locale();
+        $userLocale = function_exists('get_user_locale') ? get_user_locale() : $siteLocale;
+
+        if ($siteLocale !== $userLocale && str_starts_with($siteLocale, 'pl')) {
+            $switched = switch_to_locale($siteLocale);
+            $text = __($msgid, 'polski');
+            if ($switched) {
+                restore_previous_locale();
+            }
+        } else {
+            $text = __($msgid, 'polski');
+        }
+
+        if ($text === $msgid && str_starts_with($siteLocale, 'pl')) {
+            return 'Ta wtyczka udostępnia narzędzia wspierające zgodność sklepu z polskim prawem e-commerce. Nie stanowi porady prawnej. Odpowiedzialność za zgodność sklepu z obowiązującym prawem spoczywa wyłącznie na Tobie. Zalecamy konsultację z wykwalifikowanym prawnikiem.';
+        }
+
+        return $text;
+    }
+
+    /**
+     * Dismiss control: same site-locale rule as the disclaimer paragraph.
+     */
+    private static function dismissDisclaimerButtonText(): string
+    {
+        $msgid = 'I understand, dismiss';
+        $siteLocale = get_locale();
+        $userLocale = function_exists('get_user_locale') ? get_user_locale() : $siteLocale;
+
+        if ($siteLocale !== $userLocale && str_starts_with($siteLocale, 'pl')) {
+            $switched = switch_to_locale($siteLocale);
+            $text = __($msgid, 'polski');
+            if ($switched) {
+                restore_previous_locale();
+            }
+        } else {
+            $text = __($msgid, 'polski');
+        }
+
+        if ($text === $msgid && str_starts_with($siteLocale, 'pl')) {
+            return 'Rozumiem, zamknij';
+        }
+
+        return $text;
     }
 
     /**

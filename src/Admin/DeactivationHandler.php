@@ -95,7 +95,7 @@ final class DeactivationHandler implements HasHooks
         check_ajax_referer(self::NONCE_ACTION, 'nonce');
 
         if (! current_user_can('activate_plugins')) {
-            wp_send_json_error(['message' => 'Unauthorized']);
+            wp_send_json_error(['message' => __('Unauthorized', 'polski')]);
         }
 
         $reason = sanitize_text_field($_POST['reason'] ?? 'other');
