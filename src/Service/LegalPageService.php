@@ -158,20 +158,20 @@ final class LegalPageService
     private function getDefaultTitle(LegalPageType $type): string
     {
         return match ($type) {
-            LegalPageType::Terms => __('Regulamin', 'polski'),
-            LegalPageType::Privacy => __('Polityka prywatności', 'polski'),
-            LegalPageType::Returns => __('Prawo odstąpienia od umowy', 'polski'),
-            LegalPageType::Complaints => __('Reklamacje', 'polski'),
+            LegalPageType::Terms => __('Terms and Conditions', 'polski'),
+            LegalPageType::Privacy => __('Privacy Policy', 'polski'),
+            LegalPageType::Returns => __('Right of Withdrawal', 'polski'),
+            LegalPageType::Complaints => __('Complaints', 'polski'),
         };
     }
 
     private function getDefaultContent(LegalPageType $type): string
     {
         return match ($type) {
-            LegalPageType::Terms => '<!-- ' . __('Proszę uzupełnić Regulamin sklepu.', 'polski') . ' -->',
+            LegalPageType::Terms => '<!-- ' . __('Please complete the Shop Terms and Conditions.', 'polski') . ' -->',
             LegalPageType::Privacy => '<!-- ' . __('Please fill in your Privacy Policy (Polityka prywatności).', 'polski') . ' -->',
             LegalPageType::Returns => '<!-- ' . __('Please fill in your Return and Withdrawal Policy (Prawo odstąpienia od umowy). Consumers have 14 days to withdraw.', 'polski') . ' -->',
-            LegalPageType::Complaints => '<!-- ' . __('Proszę uzupełnić procedurę reklamacyjną.', 'polski') . ' -->',
+            LegalPageType::Complaints => '<!-- ' . __('Please complete the complaints procedure.', 'polski') . ' -->',
         };
     }
 }

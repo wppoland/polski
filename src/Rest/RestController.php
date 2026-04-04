@@ -31,7 +31,7 @@ abstract class RestController extends WP_REST_Controller
         if (! $this->hasAdminPermission()) {
             return new \WP_Error(
                 'polski_rest_forbidden',
-                __('Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony.', 'polski'),
+                __('Sorry, it seems you do not have access to this page.', 'polski'),
                 ['status' => 403],
             );
         }

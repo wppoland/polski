@@ -110,7 +110,7 @@ final class FeaturedVideoService implements Bootable, HasHooks
         $title = trim((string) $product->get_meta('_polski_featured_video_title', true));
 
         if ($title === '') {
-            $title = (string) ($this->getSettings()['title'] ?? __('Zobacz produkt w użyciu', 'polski'));
+            $title = (string) ($this->getSettings()['title'] ?? __('Watch product in use', 'polski'));
         }
 
         $this->templateLoader->include('single-product/featured-video', [

@@ -98,15 +98,15 @@ final class BadgeService implements Bootable, HasHooks
         }
 
         if ((bool) ($settings['show_sale_badge'] ?? true) && $product->is_on_sale()) {
-            $badges[] = ['text' => (string) ($settings['sale_badge_text'] ?? __('Promocja', 'polski')), 'style' => 'warning'];
+            $badges[] = ['text' => (string) ($settings['sale_badge_text'] ?? __('Sale', 'polski')), 'style' => 'warning'];
         }
 
         if ((bool) ($settings['show_new_badge'] ?? true) && $this->isNew($product)) {
-            $badges[] = ['text' => (string) ($settings['new_badge_text'] ?? __('Nowość', 'polski')), 'style' => 'success'];
+            $badges[] = ['text' => (string) ($settings['new_badge_text'] ?? __('New', 'polski')), 'style' => 'success'];
         }
 
         if ((bool) ($settings['show_low_stock_badge'] ?? true) && $this->isLowStock($product)) {
-            $badges[] = ['text' => (string) ($settings['low_stock_badge_text'] ?? __('Ostatnie sztuki', 'polski')), 'style' => 'warning'];
+            $badges[] = ['text' => (string) ($settings['low_stock_badge_text'] ?? __('Last items', 'polski')), 'style' => 'warning'];
         }
 
         if ((bool) ($settings['show_bestseller_badge'] ?? true) && $this->isBestseller($product)) {

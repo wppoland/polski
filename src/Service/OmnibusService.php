@@ -36,7 +36,7 @@ final class OmnibusService implements Bootable, HasHooks
         $settings = $this->getSettings();
         $this->enabled = (bool) ($settings['enabled'] ?? true);
         $this->days = (int) ($settings['days'] ?? 30);
-        $this->displayText = (string) ($settings['display_text'] ?? __('Najniższa cena z ostatnich {days} dni: {price}', 'polski'));
+        $this->displayText = (string) ($settings['display_text'] ?? __('Lowest price from the last {days} days: {price}', 'polski'));
         $this->saleOnly = (bool) ($settings['display_on_sale_only'] ?? true);
     }
 

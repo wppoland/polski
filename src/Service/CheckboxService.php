@@ -169,7 +169,7 @@ final class CheckboxService implements Bootable, HasHooks
                     ? $checkbox->errorMessage
                     : sprintf(
                         /* translators: %s: checkbox label (stripped of HTML) */
-                        __('Prosz&#281; zaakceptowa&#263;: %s', 'polski'),
+                        __('Please accept: %s', 'polski'),
                         wp_strip_all_tags($checkbox->label),
                     );
 
@@ -454,8 +454,8 @@ final class CheckboxService implements Bootable, HasHooks
             type: ConsentType::Required,
             contexts: [CheckboxContext::Checkout, CheckboxContext::PayForOrder],
             priority: 1,
-            errorMessage: (string) ($checkoutSettings['terms_checkbox_error'] ?? __('Musisz zaakceptować Regulamin, aby złożyć zamówienie.', 'polski')),
-            description: (string) ($checkoutSettings['terms_checkbox_description'] ?? __('Akceptacja Regulaminu sklepu.', 'polski')),
+            errorMessage: (string) ($checkoutSettings['terms_checkbox_error'] ?? __('You must accept the Terms and Conditions to place an order.', 'polski')),
+            description: (string) ($checkoutSettings['terms_checkbox_description'] ?? __('Shop Terms and Conditions acceptance.', 'polski')),
             isCore: true,
         ));
 
@@ -472,8 +472,8 @@ final class CheckboxService implements Bootable, HasHooks
             type: ConsentType::Required,
             contexts: [CheckboxContext::Checkout, CheckboxContext::Registration, CheckboxContext::PayForOrder],
             priority: 2,
-            errorMessage: (string) ($checkoutSettings['privacy_checkbox_error'] ?? __('Musisz zaakceptować Politykę prywatności.', 'polski')),
-            description: (string) ($checkoutSettings['privacy_checkbox_description'] ?? __('Privacy Policy acceptance (Polityka prywatności).', 'polski')),
+            errorMessage: (string) ($checkoutSettings['privacy_checkbox_error'] ?? __('You must accept the Privacy Policy.', 'polski')),
+            description: (string) ($checkoutSettings['privacy_checkbox_description'] ?? __('Privacy Policy acceptance.', 'polski')),
             isCore: true,
         ));
 
@@ -490,54 +490,54 @@ final class CheckboxService implements Bootable, HasHooks
             type: ConsentType::Required,
             contexts: [CheckboxContext::Checkout],
             priority: 3,
-            errorMessage: (string) ($checkoutSettings['withdrawal_checkbox_error'] ?? __('Musisz potwierdzić zapoznanie się z informacją o prawie odstąpienia.', 'polski')),
-            description: (string) ($checkoutSettings['withdrawal_checkbox_description'] ?? __('14-day withdrawal right acknowledgment (Prawo odstąpienia).', 'polski')),
+            errorMessage: (string) ($checkoutSettings['withdrawal_checkbox_error'] ?? __('You must confirm that you have read the information about the right of withdrawal.', 'polski')),
+            description: (string) ($checkoutSettings['withdrawal_checkbox_description'] ?? __('14-day withdrawal right acknowledgment.', 'polski')),
             isCore: true,
         ));
 
         $this->register(new LegalCheckbox(
             id: 'digital_waiver',
-            label: (string) ($checkoutSettings['digital_waiver_checkbox_label'] ?? __('Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia.', 'polski')),
+            label: (string) ($checkoutSettings['digital_waiver_checkbox_label'] ?? __('I agree to the immediate delivery of digital content and acknowledge that I lose my right of withdrawal.', 'polski')),
             type: ConsentType::Required,
             contexts: [CheckboxContext::Checkout],
             priority: 4,
             enabled: false,
-            errorMessage: (string) ($checkoutSettings['digital_waiver_checkbox_error'] ?? __('Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych.', 'polski')),
-            description: (string) ($checkoutSettings['digital_waiver_checkbox_description'] ?? __('Zrzeczenie się prawa odstąpienia dla towarów cyfrowych.', 'polski')),
+            errorMessage: (string) ($checkoutSettings['digital_waiver_checkbox_error'] ?? __('You must agree to the immediate delivery of digital content.', 'polski')),
+            description: (string) ($checkoutSettings['digital_waiver_checkbox_description'] ?? __('Waiver of the right of withdrawal for digital goods.', 'polski')),
             isCore: true,
             productTypes: ['downloadable'],
         ));
 
         $this->register(new LegalCheckbox(
             id: 'parcel_delivery',
-            label: (string) ($checkoutSettings['parcel_delivery_checkbox_label'] ?? __('Wyrażam zgodę na otrzymywanie powiadomień SMS/email o statusie dostawy przesyłki.', 'polski')),
+            label: (string) ($checkoutSettings['parcel_delivery_checkbox_label'] ?? __('I agree to receive SMS/email notifications about the delivery status of my parcel.', 'polski')),
             type: ConsentType::Optional,
             contexts: [CheckboxContext::Checkout],
             priority: 10,
             enabled: false,
-            description: (string) ($checkoutSettings['parcel_delivery_checkbox_description'] ?? __('Opcjonalna zgoda na powiadomienia o dostawie.', 'polski')),
+            description: (string) ($checkoutSettings['parcel_delivery_checkbox_description'] ?? __('Optional delivery notification consent.', 'polski')),
             isCore: true,
         ));
 
         $this->register(new LegalCheckbox(
             id: 'review_reminder',
-            label: (string) ($checkoutSettings['review_reminder_checkbox_label'] ?? __('Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie.', 'polski')),
+            label: (string) ($checkoutSettings['review_reminder_checkbox_label'] ?? __('I agree to receive an email reminder to leave a review after my purchase.', 'polski')),
             type: ConsentType::Optional,
             contexts: [CheckboxContext::Checkout],
             priority: 11,
             enabled: false,
-            description: (string) ($checkoutSettings['review_reminder_checkbox_description'] ?? __('Opcjonalna zgoda na przypomnienia o opinii.', 'polski')),
+            description: (string) ($checkoutSettings['review_reminder_checkbox_description'] ?? __('Optional review reminder consent.', 'polski')),
             isCore: true,
         ));
 
         $this->register(new LegalCheckbox(
             id: 'marketing',
-            label: (string) ($checkoutSettings['marketing_checkbox_label'] ?? __('Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera.', 'polski')),
+            label: (string) ($checkoutSettings['marketing_checkbox_label'] ?? __('I agree to receive marketing communications and the newsletter.', 'polski')),
             type: ConsentType::Optional,
             contexts: [CheckboxContext::Checkout, CheckboxContext::Registration],
             priority: 12,
             enabled: false,
-            description: (string) ($checkoutSettings['marketing_checkbox_description'] ?? __('Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a).', 'polski')),
+            description: (string) ($checkoutSettings['marketing_checkbox_description'] ?? __('Optional marketing consent (GDPR Art. 6.1.a).', 'polski')),
             isCore: true,
         ));
     }

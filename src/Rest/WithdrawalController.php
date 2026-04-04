@@ -158,7 +158,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if ($newStatus === null) {
             return new WP_REST_Response(
-                ['message' => __('Nieprawidłowy status.', 'polski')],
+                ['message' => __('Invalid status.', 'polski')],
                 400,
             );
         }
@@ -175,7 +175,7 @@ final class WithdrawalController extends RestController implements HasHooks
 
         if (! $result) {
             return new WP_REST_Response(
-                ['message' => __('Zmiana statusu niedozwolona.', 'polski')],
+                ['message' => __('Status change not allowed.', 'polski')],
                 400,
             );
         }

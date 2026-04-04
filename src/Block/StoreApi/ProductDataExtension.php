@@ -100,13 +100,13 @@ final class ProductDataExtension implements HasHooks
     {
         return [
             'unit_price_html' => [
-                'description' => 'Cena jednostkowa HTML',
+                'description' => __('Unit price HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view', 'edit'],
                 'readonly' => true,
             ],
             'unit_price' => [
-                'description' => 'Cena jednostkowa (dane)',
+                'description' => __('Unit price (data)', 'polski'),
                 'type' => ['object', 'null'],
                 'context' => ['view', 'edit'],
                 'readonly' => true,
@@ -118,61 +118,61 @@ final class ProductDataExtension implements HasHooks
                 ],
             ],
             'omnibus_price_html' => [
-                'description' => 'Najnizsza cena Omnibus HTML',
+                'description' => __('Lowest Omnibus price HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'omnibus_lowest' => [
-                'description' => 'Najnizsza cena Omnibus (dane)',
+                'description' => __('Lowest Omnibus price (data)', 'polski'),
                 'type' => ['object', 'null'],
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'delivery_time_html' => [
-                'description' => 'Czas dostawy HTML',
+                'description' => __('Delivery time HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'delivery_time_text' => [
-                'description' => 'Czas dostawy (tekst)',
+                'description' => __('Delivery time (text)', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'vat_notice_html' => [
-                'description' => 'Informacja o VAT HTML',
+                'description' => __('VAT notice HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'shipping_notice_html' => [
-                'description' => 'Informacja o wysylce HTML',
+                'description' => __('Shipping notice HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'manufacturer' => [
-                'description' => 'Producent',
+                'description' => __('Manufacturer', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'manufacturer_html' => [
-                'description' => 'Producent HTML',
+                'description' => __('Manufacturer HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'gpsr_responsible' => [
-                'description' => __('Osoba odpowiedzialna GPSR', 'polski'),
+                'description' => __('GPSR Responsible Person', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'withdrawal_exempt' => [
-                'description' => __('Wyłączony z prawa odstąpienia', 'polski'),
+                'description' => __('Excluded from the right of withdrawal', 'polski'),
                 'type' => 'boolean',
                 'context' => ['view'],
                 'readonly' => true,
@@ -207,13 +207,13 @@ final class ProductDataExtension implements HasHooks
     {
         return [
             'unit_price_html' => [
-                'description' => 'Cena jednostkowa HTML',
+                'description' => __('Unit price HTML', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,
             ],
             'delivery_time_text' => [
-                'description' => 'Czas dostawy',
+                'description' => __('Delivery time', 'polski'),
                 'type' => 'string',
                 'context' => ['view'],
                 'readonly' => true,

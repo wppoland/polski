@@ -112,7 +112,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($checkbox === null) {
             return new WP_REST_Response(
-                ['message' => __('Checkbox nie znaleziony.', 'polski')],
+                ['message' => __('Checkbox not found.', 'polski')],
                 404,
             );
         }
@@ -127,7 +127,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($id === '') {
             return new WP_REST_Response(
-                ['message' => __('ID checkboxa jest wymagane.', 'polski')],
+                ['message' => __('Checkbox ID is required.', 'polski')],
                 400,
             );
         }
@@ -136,7 +136,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($service->isCore($id)) {
             return new WP_REST_Response(
-                ['message' => __('Nie można utworzyć checkboxa o zarezerwowanym ID.', 'polski')],
+                ['message' => __('Cannot create a checkbox with a reserved ID.', 'polski')],
                 400,
             );
         }
@@ -169,7 +169,7 @@ final class CheckboxController extends RestController implements HasHooks
         $existing = $service->get($id);
         if ($existing === null) {
             return new WP_REST_Response(
-                ['message' => __('Checkbox nie znaleziony.', 'polski')],
+                ['message' => __('Checkbox not found.', 'polski')],
                 404,
             );
         }
@@ -210,7 +210,7 @@ final class CheckboxController extends RestController implements HasHooks
 
         if ($service->isCore($id)) {
             return new WP_REST_Response(
-                ['message' => __('Wbudowane checkboxy nie mogą być usunięte. Możesz je wyłączać.', 'polski')],
+                ['message' => __('Built-in checkboxes cannot be deleted. You can only disable them.', 'polski')],
                 400,
             );
         }
