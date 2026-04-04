@@ -14,6 +14,8 @@ use wpdb;
  */
 final class WithdrawalRepository
 {
+    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
+
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -138,4 +140,6 @@ final class WithdrawalRepository
             ),
         );
     }
+
+    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

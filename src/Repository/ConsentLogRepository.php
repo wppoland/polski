@@ -14,6 +14,8 @@ use wpdb;
  */
 final class ConsentLogRepository
 {
+    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
+
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -262,4 +264,6 @@ final class ConsentLogRepository
         $ua = sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'] ?? ''));
         return $ua !== '' ? mb_substr($ua, 0, 500) : null;
     }
+
+    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

@@ -72,9 +72,9 @@ final class EmailService implements HasHooks
                 $pageType = LegalPageType::tryFrom($type);
                 $label = $pageType?->label() ?? $type;
 
-                echo "\n" . strtoupper($label) . "\n";
+                echo "\n" . esc_html(strtoupper($label)) . "\n";
                 echo "----------------------------------------\n";
-                echo $content . "\n";
+                echo wp_kses_post($content) . "\n";
             }
         } else {
             echo '<div class="polski-email-legal-attachments" style="margin-top:30px;padding-top:20px;border-top:1px solid #e0e0e0;">';

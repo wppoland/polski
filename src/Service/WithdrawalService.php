@@ -373,11 +373,12 @@ final class WithdrawalService implements Bootable, HasHooks
         get_header('shop');
 
         echo '<div class="woocommerce">';
-        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Template handles its own escaping.
+        // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Template handles its own escaping.
         echo $this->templateLoader->render('account/withdrawal-confirm', [
             'order' => $order,
             'settings' => $settings,
         ]);
+        // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
         echo '</div>';
 
         get_footer('shop');

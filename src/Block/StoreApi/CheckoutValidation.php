@@ -186,8 +186,8 @@ final class CheckoutValidation implements HasHooks
                     : sprintf(__('Prosz&#281; zaakceptowa&#263;: %s', 'polski'), wp_strip_all_tags($checkbox->label));
 
                 throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException(
-                    $checkbox->getFieldName(),
-                    $message,
+                    esc_html($checkbox->getFieldName()),
+                    esc_html($message),
                     400,
                 );
             }

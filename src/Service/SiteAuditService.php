@@ -55,17 +55,17 @@ final class SiteAuditService implements HasHooks
         echo '<div style="display:flex;gap:20px;margin:20px 0;">';
         printf(
             '<div style="padding:15px 25px;background:#46b450;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
-            $passed,
+            (int) $passed,
             esc_html__('Passed', 'polski'),
         );
         printf(
             '<div style="padding:15px 25px;background:#f0ad4e;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
-            $warnings,
+            (int) $warnings,
             esc_html__('Warnings', 'polski'),
         );
         printf(
             '<div style="padding:15px 25px;background:#dc3232;color:#fff;border-radius:4px;"><strong>%d</strong> %s</div>',
-            $failures,
+            (int) $failures,
             esc_html__('Issues', 'polski'),
         );
         echo '</div>';
@@ -83,6 +83,7 @@ final class SiteAuditService implements HasHooks
                 self::STATUS_FAIL => '<span style="color:#dc3232;">&#10007;</span>',
             };
             echo '<tr>';
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $icon contains static HTML entities
             echo '<td>' . $icon . '</td>';
             echo '<td><strong>' . esc_html($check['label']) . '</strong></td>';
             echo '<td>' . esc_html($check['detail']) . '</td>';

@@ -14,6 +14,8 @@ use wpdb;
  */
 final class OmnibusPriceRepository
 {
+    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
+
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -187,4 +189,6 @@ final class OmnibusPriceRepository
 
         return OmnibusPrice::fromRow($row);
     }
+
+    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

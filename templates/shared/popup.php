@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
         <?php if ($show_title) : ?>
             <h3 id="polski-popup-title" class="polski-popup__title"><?php echo esc_html((string) ($settings['title'] ?? '')); ?></h3>
         <?php endif; ?>
-        <div class="polski-popup__content"><?php echo wpautop(wp_kses_post((string) ($settings['content'] ?? ''))); ?></div>
+        <div class="polski-popup__content"><?php echo wp_kses_post(wpautop(wp_kses_post((string) ($settings['content'] ?? '')))); ?></div>
         <?php if ($show_cta) : ?>
             <a
                 class="button alt polski-popup__cta"
