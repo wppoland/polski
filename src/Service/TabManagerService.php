@@ -73,7 +73,7 @@ final class TabManagerService implements Bootable, HasHooks
 
         if ((bool) ($settings['enable_global_shipping_tab'] ?? false) && trim((string) ($settings['shipping_tab_content'] ?? '')) !== '') {
             $tabs['polski_shipping_tab'] = $this->buildTab(
-                (string) ($settings['shipping_tab_title'] ?? __('Dostawa i płatność', 'polski')),
+                (string) ($settings['shipping_tab_title'] ?? __('Shipping and Payment', 'polski')),
                 (string) ($settings['shipping_tab_content'] ?? ''),
                 max(1, (int) ($settings['shipping_tab_priority'] ?? 47)),
             );
@@ -81,7 +81,7 @@ final class TabManagerService implements Bootable, HasHooks
 
         if ((bool) ($settings['enable_global_returns_tab'] ?? false) && trim((string) ($settings['returns_tab_content'] ?? '')) !== '') {
             $tabs['polski_returns_tab'] = $this->buildTab(
-                (string) ($settings['returns_tab_title'] ?? __('Zwroty i reklamacje', 'polski')),
+                (string) ($settings['returns_tab_title'] ?? __('Returns and Complaints', 'polski')),
                 (string) ($settings['returns_tab_content'] ?? ''),
                 max(1, (int) ($settings['returns_tab_priority'] ?? 48)),
             );

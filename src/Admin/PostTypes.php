@@ -39,11 +39,11 @@ final class PostTypes implements Bootable, HasHooks
     {
         register_taxonomy('polski_delivery_time', ['product', 'product_variation'], [
             'labels' => [
-                'name' => __('Czasy dostawy', 'polski'),
-                'singular_name' => __('Czas dostawy', 'polski'),
-                'add_new_item' => __('Dodaj czas dostawy', 'polski'),
-                'edit_item' => __('Edytuj czas dostawy', 'polski'),
-                'search_items' => __('Szukaj czasów dostawy', 'polski'),
+                'name' => __('Delivery Times', 'polski'),
+                'singular_name' => __('Delivery Time', 'polski'),
+                'add_new_item' => __('Add Delivery Time', 'polski'),
+                'edit_item' => __('Edit Delivery Time', 'polski'),
+                'search_items' => __('Search Delivery Times', 'polski'),
             ],
             'hierarchical' => false,
             'public' => false,
@@ -64,11 +64,11 @@ final class PostTypes implements Bootable, HasHooks
     {
         register_taxonomy('polski_manufacturer', ['product', 'product_variation'], [
             'labels' => [
-                'name' => __('Producenci', 'polski'),
-                'singular_name' => __('Producent', 'polski'),
-                'add_new_item' => __('Dodaj producenta', 'polski'),
-                'edit_item' => __('Edytuj producenta', 'polski'),
-                'search_items' => __('Szukaj producentów', 'polski'),
+                'name' => __('Manufacturers', 'polski'),
+                'singular_name' => __('Manufacturer', 'polski'),
+                'add_new_item' => __('Add Manufacturer', 'polski'),
+                'edit_item' => __('Edit Manufacturer', 'polski'),
+                'search_items' => __('Search Manufacturers', 'polski'),
             ],
             'hierarchical' => false,
             'public' => false,
@@ -89,11 +89,11 @@ final class PostTypes implements Bootable, HasHooks
     {
         register_taxonomy('polski_unit', ['product'], [
             'labels' => [
-                'name' => __('Jednostki', 'polski'),
-                'singular_name' => __('Jednostka', 'polski'),
-                'add_new_item' => __('Dodaj jednostkę', 'polski'),
-                'edit_item' => __('Edytuj jednostkę', 'polski'),
-                'search_items' => __('Szukaj jednostek', 'polski'),
+                'name' => __('Units', 'polski'),
+                'singular_name' => __('Unit', 'polski'),
+                'add_new_item' => __('Add Unit', 'polski'),
+                'edit_item' => __('Edit Unit', 'polski'),
+                'search_items' => __('Search Units', 'polski'),
             ],
             'hierarchical' => false,
             'public' => false,
@@ -139,11 +139,11 @@ final class PostTypes implements Bootable, HasHooks
     {
         register_taxonomy('polski_allergen', ['product'], [
             'labels' => [
-                'name' => __('Alergeny', 'polski'),
-                'singular_name' => __('Alergen', 'polski'),
-                'add_new_item' => __('Dodaj alergen', 'polski'),
-                'edit_item' => __('Edytuj alergen', 'polski'),
-                'search_items' => __('Szukaj alergenów', 'polski'),
+                'name' => __('Allergens', 'polski'),
+                'singular_name' => __('Allergen', 'polski'),
+                'add_new_item' => __('Add Allergen', 'polski'),
+                'edit_item' => __('Edit Allergen', 'polski'),
+                'search_items' => __('Search Allergens', 'polski'),
             ],
             'hierarchical' => false,
             'public' => false,
@@ -164,11 +164,11 @@ final class PostTypes implements Bootable, HasHooks
     {
         register_taxonomy('polski_nutrient', ['product'], [
             'labels' => [
-                'name' => __('Składniki odżywcze', 'polski'),
-                'singular_name' => __('Składnik odżywczy', 'polski'),
-                'add_new_item' => __('Dodaj składnik odżywczy', 'polski'),
-                'edit_item' => __('Edytuj składnik odżywczy', 'polski'),
-                'search_items' => __('Szukaj składników odżywczych', 'polski'),
+                'name' => __('Nutrients', 'polski'),
+                'singular_name' => __('Nutrient', 'polski'),
+                'add_new_item' => __('Add Nutrient', 'polski'),
+                'edit_item' => __('Edit Nutrient', 'polski'),
+                'search_items' => __('Search Nutrients', 'polski'),
             ],
             'hierarchical' => true,
             'public' => false,

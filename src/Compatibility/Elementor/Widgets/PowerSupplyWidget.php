@@ -13,7 +13,7 @@ final class PowerSupplyWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Zasilanie', 'polski');
+        return __('Power Supply', 'polski');
     }
 
     protected function register_controls(): void

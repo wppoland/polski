@@ -13,7 +13,7 @@ final class SafetyDocsWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Dokumenty bezpieczeństwa', 'polski');
+        return __('Safety Documents', 'polski');
     }
 
     protected function register_controls(): void

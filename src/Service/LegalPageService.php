@@ -169,8 +169,8 @@ final class LegalPageService
     {
         return match ($type) {
             LegalPageType::Terms => '<!-- ' . __('Please complete the Shop Terms and Conditions.', 'polski') . ' -->',
-            LegalPageType::Privacy => '<!-- ' . __('Please fill in your Privacy Policy (Polityka prywatności).', 'polski') . ' -->',
-            LegalPageType::Returns => '<!-- ' . __('Please fill in your Return and Withdrawal Policy (Prawo odstąpienia od umowy). Consumers have 14 days to withdraw.', 'polski') . ' -->',
+            LegalPageType::Privacy => '<!-- ' . __('Please fill in your Privacy Policy.', 'polski') . ' -->',
+            LegalPageType::Returns => '<!-- ' . __('Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw.', 'polski') . ' -->',
             LegalPageType::Complaints => '<!-- ' . __('Please complete the complaints procedure.', 'polski') . ' -->',
         };
     }

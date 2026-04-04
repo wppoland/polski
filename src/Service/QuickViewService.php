@@ -72,8 +72,8 @@ final class QuickViewService implements Bootable, HasHooks
         wp_localize_script('polski-quick-view', 'polskiQuickView', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('polski_quick_view'),
-            'loadingText' => (string) ($this->getSettings()['loading_text'] ?? __('Ładowanie produktu...', 'polski')),
-            'errorText' => (string) ($this->getSettings()['error_text'] ?? __('Nie udało się wczytać podglądu produktu.', 'polski')),
+            'loadingText' => (string) ($this->getSettings()['loading_text'] ?? __('Loading product...', 'polski')),
+            'errorText' => (string) ($this->getSettings()['error_text'] ?? __('Failed to load product preview.', 'polski')),
             'showBackdropClose' => (bool) ($this->getSettings()['show_backdrop_close'] ?? true),
         ]);
     }
@@ -100,7 +100,7 @@ final class QuickViewService implements Bootable, HasHooks
 
         $this->templateLoader->include('shared/quick-view-modal', [
             'settings' => $this->getSettings(),
-            'loading_text' => (string) ($this->getSettings()['loading_text'] ?? __('Ładowanie produktu...', 'polski')),
+            'loading_text' => (string) ($this->getSettings()['loading_text'] ?? __('Loading product...', 'polski')),
             'show_modal_label' => (bool) ($this->getSettings()['show_modal_label'] ?? true),
             'show_close_button' => (bool) ($this->getSettings()['show_close_button'] ?? true),
         ]);
@@ -114,7 +114,7 @@ final class QuickViewService implements Bootable, HasHooks
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {
-            wp_send_json_error(['message' => (string) ($this->getSettings()['product_not_found_text'] ?? __('Nie znaleziono produktu.', 'polski'))], 404);
+            wp_send_json_error(['message' => (string) ($this->getSettings()['product_not_found_text'] ?? __('Product not found.', 'polski'))], 404);
         }
 
         wp_send_json_success([
@@ -134,12 +134,12 @@ final class QuickViewService implements Bootable, HasHooks
 
     public function getButtonText(): string
     {
-        return (string) ($this->getSettings()['button_text'] ?? __('Szybki podgląd', 'polski'));
+        return (string) ($this->getSettings()['button_text'] ?? __('Quick View', 'polski'));
     }
 
     public function getModalTitle(): string
     {
-        return (string) ($this->getSettings()['modal_title'] ?? __('Szybki podgląd produktu', 'polski'));
+        return (string) ($this->getSettings()['modal_title'] ?? __('Product Quick View', 'polski'));
     }
 
     public function getProductImages(\WC_Product $product): array

@@ -13,13 +13,13 @@ final class SearchWidget extends BaseWidget
 
     public function get_title(): string
     {
-        return __('Wyszukiwarka AJAX', 'polski');
+        return __('AJAX Search', 'polski');
     }
 
     protected function register_controls(): void
     {
         $this->start_controls_section('content', [
-            'label' => __('Ustawienia', 'polski'),
+            'label' => __('Settings', 'polski'),
         ]);
 
         $this->add_control('placeholder', [
@@ -29,13 +29,13 @@ final class SearchWidget extends BaseWidget
         ]);
 
         $this->add_control('show_submit_button', [
-            'label' => __('Pokaż przycisk wyszukiwania', 'polski'),
+            'label' => __('Show search button', 'polski'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'default' => 'yes',
         ]);
 
         $this->add_control('submit_button_text', [
-            'label' => __('Tekst przycisku', 'polski'),
+            'label' => __('Button text', 'polski'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'default' => '',
             'condition' => [
@@ -44,7 +44,7 @@ final class SearchWidget extends BaseWidget
         ]);
 
         $this->add_control('limit', [
-            'label' => __('Liczba wyników', 'polski'),
+            'label' => __('Result limit', 'polski'),
             'type' => \Elementor\Controls_Manager::NUMBER,
             'default' => 6,
             'min' => 1,

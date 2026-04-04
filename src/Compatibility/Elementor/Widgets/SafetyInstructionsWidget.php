@@ -13,7 +13,7 @@ final class SafetyInstructionsWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Instrukcje bezpieczeństwa', 'polski');
+        return __('Safety Instructions', 'polski');
     }
 
     protected function register_controls(): void
@@ -31,7 +31,7 @@ final class SafetyInstructionsWidget extends BaseProductWidget
         if ($instructions !== '') {
             printf(
                 '<div class="polski-safety-instructions"><span class="polski-safety-instructions__label">%s:</span> %s</div>',
-                esc_html__('Instrukcje bezpieczeństwa', 'polski'),
+                esc_html__('Safety Instructions', 'polski'),
                 esc_html($instructions),
             );
         }

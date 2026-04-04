@@ -39,12 +39,12 @@ test.describe('Storefront merchandising modules', () => {
         const button = card.locator('[data-polski-wishlist-button]');
 
         await expect(button).toBeVisible();
-        await expect(button).toContainText('Dodaj do ulubionych');
+        await expect(button).toContainText('Add to Wishlist');
 
         await button.click();
 
         await expect(button).toHaveClass(/is-active/);
-        await expect(button).toContainText('Usuń z ulubionych');
+        await expect(button).toContainText('Remove from Wishlist');
     });
 
     test('compare flow adds a product and opens the compare table', async ({ page }) => {

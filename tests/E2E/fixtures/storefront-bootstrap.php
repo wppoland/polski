@@ -129,20 +129,38 @@ update_option('polski_setup_wizard_completed', 'yes');
 update_option('woocommerce_coming_soon', 'no');
 update_option('woocommerce_store_pages_only', 'no');
 
+$termsPageId = polski_e2e_ensure_page('terms', 'Terms and Conditions', 'Our terms...');
+$privacyPageId = polski_e2e_ensure_page('privacy', 'Privacy Policy', 'Our privacy policy...');
+$returnsPageId = polski_e2e_ensure_page('returns', 'Right of Withdrawal', 'Information about returns...');
+
+update_option('polski_terms_page_id', $termsPageId);
+update_option('polski_privacy_page_id', $privacyPageId);
+update_option('polski_returns_page_id', $returnsPageId);
+
+update_option('polski_checkout', [
+    'order_button_text' => 'Place order',
+    'terms_checkbox_enabled' => true,
+    'terms_checkbox_label' => 'I have read and accept the <a href="%s" target="_blank">Terms and Conditions</a>.',
+    'privacy_checkbox_enabled' => true,
+    'privacy_checkbox_label' => 'I have read and accept the <a href="%s" target="_blank">Privacy Policy</a>.',
+    'withdrawal_checkbox_enabled' => true,
+    'withdrawal_checkbox_label' => 'I have been informed about my <a href="%s" target="_blank">right to withdraw from the contract</a> within 14 days.',
+]);
+
 update_option('polski_search', array_merge(
     (array) get_option('polski_search', []),
     [
-        'search_label' => 'Szukaj produktów',
-        'placeholder' => 'Szukaj produktu E2E',
-        'results_label' => 'Wyniki wyszukiwania produktów',
-        'submit_button_text' => 'Szukaj',
+        'search_label' => 'Search products',
+        'placeholder' => 'Search E2E product',
+        'results_label' => 'Product search results',
+        'submit_button_text' => 'Search',
         'show_submit_button' => true,
         'show_image' => false,
         'show_price' => true,
         'show_sku' => true,
         'show_view_all_link' => true,
-        'view_all_text' => 'Zobacz wszystkie wyniki',
-        'no_results_text' => 'Brak wyników',
+        'view_all_text' => 'See all results',
+        'no_results_text' => 'No results',
         'min_chars' => 2,
         'debounce_ms' => 50,
         'limit' => 6,
@@ -155,7 +173,7 @@ update_option('polski_filters', array_merge(
     [
         'show_on_shop' => true,
         'show_title' => true,
-        'title' => 'Filtruj produkty',
+        'title' => 'Filter products',
         'show_categories' => true,
         'show_brands' => true,
         'show_price' => true,
@@ -163,8 +181,8 @@ update_option('polski_filters', array_merge(
         'show_sale' => false,
         'show_attributes' => false,
         'show_reset_link' => true,
-        'submit_text' => 'Filtruj',
-        'reset_text' => 'Resetuj',
+        'submit_text' => 'Filter',
+        'reset_text' => 'Reset',
     ],
 ));
 
@@ -175,8 +193,8 @@ update_option('polski_wishlist', array_merge(
         'show_on_single' => true,
         'show_on_loop' => true,
         'show_in_account' => true,
-        'button_add_text' => 'Dodaj do ulubionych',
-        'button_remove_text' => 'Usuń z ulubionych',
+        'button_add_text' => 'Add to Wishlist',
+        'button_remove_text' => 'Remove from Wishlist',
     ],
 ));
 
@@ -187,11 +205,11 @@ update_option('polski_compare', array_merge(
         'show_on_single' => true,
         'show_on_loop' => true,
         'show_in_account' => false,
-        'button_add_text' => 'Dodaj do porównania',
-        'button_remove_text' => 'Usuń z porównania',
-        'compare_link_text' => 'Porównaj produkty',
-        'title' => 'Porównanie produktów',
-        'empty_text' => 'Brak produktów do porównania.',
+        'button_add_text' => 'Add to comparison',
+        'button_remove_text' => 'Remove from comparison',
+        'compare_link_text' => 'Compare products',
+        'title' => 'Product Comparison',
+        'empty_text' => 'No products to compare.',
     ],
 ));
 
@@ -202,10 +220,10 @@ update_option('polski_quick_view', array_merge(
         'show_modal_label' => true,
         'show_close_button' => true,
         'show_view_product_link' => true,
-        'button_text' => 'Szybki podgląd',
-        'modal_title' => 'Szybki podgląd produktu',
-        'loading_text' => 'Ładowanie produktu...',
-        'error_text' => 'Nie udało się wczytać podglądu produktu.',
+        'button_text' => 'Quick View',
+        'modal_title' => 'Product Quick View',
+        'loading_text' => 'Loading product...',
+        'error_text' => 'Could not load product preview.',
         'show_price' => true,
         'show_sku' => true,
         'show_short_description' => true,

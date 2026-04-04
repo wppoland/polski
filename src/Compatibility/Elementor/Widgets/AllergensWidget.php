@@ -13,7 +13,7 @@ final class AllergensWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Alergeny', 'polski');
+        return __('Allergens', 'polski');
     }
 
     protected function register_controls(): void

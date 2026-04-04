@@ -13,7 +13,7 @@ final class NutrientsWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Wartości odżywcze', 'polski');
+        return __('Nutritional Information', 'polski');
     }
 
     protected function register_controls(): void

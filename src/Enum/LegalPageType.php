@@ -14,10 +14,10 @@ enum LegalPageType: string
     public function label(): string
     {
         return match ($this) {
-            self::Terms => __('Regulamin sklepu', 'polski'),
-            self::Privacy => __('Privacy Policy (Polityka prywatności)', 'polski'),
-            self::Returns => __('Return Policy (Prawo odstąpienia)', 'polski'),
-            self::Complaints => __('Reklamacje', 'polski'),
+            self::Terms => __('Terms and Conditions', 'polski'),
+            self::Privacy => __('Privacy Policy', 'polski'),
+            self::Returns => __('Return Policy', 'polski'),
+            self::Complaints => __('Complaints', 'polski'),
         };
     }
 

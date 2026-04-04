@@ -13,34 +13,34 @@ final class FiltersWidget extends BaseWidget
 
     public function get_title(): string
     {
-        return __('Filtry AJAX', 'polski');
+        return __('AJAX Filters', 'polski');
     }
 
     protected function register_controls(): void
     {
         $this->start_controls_section('content', [
-            'label' => __('Ustawienia', 'polski'),
+            'label' => __('Settings', 'polski'),
         ]);
 
         $this->add_control('title', [
-            'label' => __('Tytuł', 'polski'),
+            'label' => __('Title', 'polski'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'default' => '',
         ]);
 
         $this->add_control('show_title', [
-            'label' => __('Pokaż tytuł', 'polski'),
+            'label' => __('Show title', 'polski'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'default' => 'yes',
         ]);
 
         foreach ([
-            'show_categories' => __('Pokaż kategorie', 'polski'),
-            'show_brands' => __('Pokaż marki', 'polski'),
-            'show_price' => __('Pokaż cenę', 'polski'),
-            'show_stock' => __('Pokaż dostępność', 'polski'),
-            'show_sale' => __('Pokaż promocje', 'polski'),
-            'show_attributes' => __('Pokaż atrybuty', 'polski'),
+            'show_categories' => __('Show categories', 'polski'),
+            'show_brands' => __('Show brands', 'polski'),
+            'show_price' => __('Show price', 'polski'),
+            'show_stock' => __('Show availability', 'polski'),
+            'show_sale' => __('Show on-sale', 'polski'),
+            'show_attributes' => __('Show attributes', 'polski'),
         ] as $key => $label) {
             $this->add_control($key, [
                 'label' => $label,

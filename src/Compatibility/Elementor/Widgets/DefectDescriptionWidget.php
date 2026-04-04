@@ -13,7 +13,7 @@ final class DefectDescriptionWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Opis wady', 'polski');
+        return __('Defect Description', 'polski');
     }
 
     protected function register_controls(): void

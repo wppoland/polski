@@ -14,10 +14,10 @@ enum WithdrawalStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Requested => __('Złożony', 'polski'),
-            self::Confirmed => __('Potwierdzony', 'polski'),
-            self::Completed => __('Zakończony', 'polski'),
-            self::Rejected => __('Odrzucony', 'polski'),
+            self::Requested => __('Submitted', 'polski'),
+            self::Confirmed => __('Confirmed', 'polski'),
+            self::Completed => __('Completed', 'polski'),
+            self::Rejected => __('Rejected', 'polski'),
         };
     }
 }
