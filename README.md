@@ -1,19 +1,19 @@
-# Polski
+# Polski for WooCommerce
 
-**WooCommerce tools for Polish storefront, checkout and product information**
+**Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal forms, unit prices, and 40+ shop features. Free and open source.**
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue)](https://wordpress.org)
 [![WooCommerce](https://img.shields.io/badge/WooCommerce-8.0%2B-purple)](https://woocommerce.com)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4)](https://php.net)
 [![License](https://img.shields.io/badge/License-GPLv2-green)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-Polski provides WooCommerce tools for Polish storefront, checkout, pricing and product information flows. It centralises recurring Polish market requirements in one plugin.
+Polski for WooCommerce adapts your online shop to all Polish legal requirements while adding powerful merchandising and sales features - completely free. One plugin, 40+ features, zero paywalls.
 
 **Author:** [WP Poland](https://wppoland.com)
 
 ---
 
-## Features (FREE)
+## Features
 
 ### Price Display & Omnibus Directive
 - **Unit prices (cena jednostkowa)** - per-unit pricing as required by Polish consumer law
@@ -155,72 +155,6 @@ Polski provides WooCommerce tools for Polish storefront, checkout, pricing and p
 
 ---
 
-## PRO Features
-
-### PDF Invoices (Polish Tax Law)
-- **Faktura VAT** - compliant with Polish tax regulations
-- **Faktura korygujaca** - correction/cancellation invoices
-- **Paragon** - receipt generation
-- **Invoice numbering** - configurable sequential numbering (FV/2026/04/001)
-- **PDF generation** - customizable templates with visual editor
-- **Bulk operations** - bulk invoice generation and printing
-- **Packing slips** - per-shipment packing slip generation
-- **Email delivery** - automatic invoice attachment to order emails
-
-### KSeF (Krajowy System e-Faktur)
-- **API integration** - submit invoices to the Polish National e-Invoice System
-- **Digital signatures** - qualified electronic signature support
-- **Async queue** - Action Scheduler-based submission with retry logic
-- **Status dashboard** - monitor KSeF submission status, accepted/rejected invoices
-- **Batch submission** - bulk submit pending invoices
-
-### NIP Validation
-- **Polish NIP checksum** - local validation before API call
-- **GUS/REGON API** - verify NIP against the Polish government database
-- **VIES validation** - EU VAT ID verification for B2B
-- **Auto-fill company data** - populate company name and address from NIP
-- **Validation cache** - reduce API calls with smart caching
-- **Checkout integration** - real-time NIP validation in checkout
-
-### Multi-Step Checkout
-- **Modern React-based UI** - stepped checkout flow with progress indicator
-- **Address step** - billing and shipping with NIP/company fields
-- **Shipping step** - carrier selection with pickup point picker
-- **Payment step** - payment method selection
-- **Review step** - order summary with legal confirmations
-- **Mobile-first** - responsive design optimized for mobile
-
-### Shipping Integrations
-- **InPost (Paczkomaty)** - label generation, pickup point map picker, tracking
-- **DPD** - domestic and international shipping labels
-- **DHL** - label generation and tracking
-- **Poczta Polska** - Polish national postal service integration
-- **Orlen Paczka** - Orlen pickup point network
-- **Pickup point picker** - interactive map widget for carrier point selection
-
-### Accounting Integrations
-- **wFirma** - invoice sync, customer sync, payment status
-- **Fakturownia** - automatic invoice export
-- **iFirma** - invoice and expense sync
-
-### Legal Text Generator
-- **Regulamin (Terms)** - auto-generate compliant terms and conditions
-- **Polityka prywatnosci** - privacy policy generator
-- **Polityka zwrotow** - return/withdrawal policy generator
-- **Template variables** - dynamic company data insertion
-
-### Advanced Consent Management
-- **GDPR audit trail** - full consent history with export capability
-- **Consent versioning** - track which version of terms was accepted
-- **Data export** - GDPR-compliant personal data export
-- **Consent withdrawal** - customer self-service consent management
-
-### Fiscal Printer Integration
-- **Paragon fiskalny** - direct printing to fiscal devices
-- **Supported devices** - Posnet, Elzab, Novitus drivers
-
----
-
 ## Requirements
 
 | Requirement | Version |
@@ -273,8 +207,7 @@ For module work, keep a lightweight runtime check in the same pass as the code c
 5. For quote and B2B flows, submit at least one real form request in local `wp-env` and confirm DB persistence.
 
 ## Plugin Ecosystem
-
-Polski works as a compliance hub for Polish WooCommerce stores and stays compatible with common payment, checkout, consent, multilingual and cache plugins.
+Polski for WooCommerce works as a compliance hub for Polish WooCommerce stores and stays compatible with common payment, checkout, consent, multilingual and cache plugins.
 
 ## Architecture
 

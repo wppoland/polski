@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /**
- * Plugin Name:       Polski
+ * Plugin Name:       Polski for WooCommerce
  * Plugin URI:        https://wppoland.com/polski
- * Description:       WooCommerce tools for Polish storefront, checkout and product information requirements.
+ * Description:       Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal forms, unit prices, and 40+ shop features. Free and open source.
  * Version:           1.1.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
