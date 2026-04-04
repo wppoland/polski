@@ -13,6 +13,8 @@ use wpdb;
  */
 final class WaitlistRepository
 {
+    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
+
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -90,4 +92,6 @@ final class WaitlistRepository
             ['%d'],
         );
     }
+
+    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

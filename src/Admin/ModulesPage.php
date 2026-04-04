@@ -1064,7 +1064,7 @@ final class ModulesPage implements HasHooks
             $detailsId = 'polski-settings-' . $id;
 
             echo '<details id="' . esc_attr($detailsId) . '" style="margin-top:12px;border-top:1px solid #eee;padding-top:10px;">';
-            echo '<summary style="cursor:pointer;font-size:12px;color:#0073aa;user-select:none;">' . __('Configure &darr;', 'polski') . '</summary>';
+            echo '<summary style="cursor:pointer;font-size:12px;color:#0073aa;user-select:none;">' . wp_kses_post(__('Configure &darr;', 'polski')) . '</summary>';
             echo '<div style="margin-top:10px;">';
 
             foreach ($module['settings'] as $field) {
@@ -1170,7 +1170,7 @@ final class ModulesPage implements HasHooks
             } elseif ($type === 'delivery_time_select') {
                 $terms = get_terms(['taxonomy' => 'polski_delivery_time', 'hide_empty' => false]);
                 echo '<select name="' . esc_attr($inputName) . '" style="font-size:12px;">';
-                echo '<option value="">-- ' . __('none', 'polski') . ' --</option>';
+                echo '<option value="">-- ' . esc_html__('none', 'polski') . ' --</option>';
                 if (is_array($terms)) {
                     foreach ($terms as $term) {
                         if ($term instanceof \WP_Term) {
@@ -1204,7 +1204,7 @@ final class ModulesPage implements HasHooks
     public function handleSave(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(__('Sorry, you are not allowed to access this page.', 'polski'));
+            wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'polski'));
         }
 
         check_admin_referer('polski_save_modules', '_polski_modules_nonce');

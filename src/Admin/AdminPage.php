@@ -114,7 +114,7 @@ final class AdminPage implements Bootable, HasHooks
     public function handleGenerateLegalPages(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(__('Sorry, but you do not have permission to access this page.', 'polski'));
+            wp_die(esc_html__('Sorry, but you do not have permission to access this page.', 'polski'));
         }
 
         check_admin_referer('polski_generate_pages', '_polski_nonce');
@@ -488,7 +488,7 @@ final class AdminPage implements Bootable, HasHooks
         // Feedback form - collapsible
         echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
         $feedbackOpen = isset($_GET['polski_feedback_saved']) || isset($_GET['polski_feedback_error']) ? ' open' : '';
-        echo '<details' . $feedbackOpen . '>';
+        echo '<details' . esc_attr($feedbackOpen) . '>';
         echo '<summary style="cursor:pointer;font-weight:600;font-size:14px;padding:4px 0;">' . esc_html__('Share feedback', 'polski') . '</summary>';
         echo '<p style="color:#50575e;margin-top:12px;">' . esc_html__('Not technical? Send a quick note straight from the plugin. Tell us what feels unclear, what should be easier, or what we should add next.', 'polski') . '</p>';
         if (isset($_GET['polski_feedback_saved'])) {
@@ -594,7 +594,7 @@ final class AdminPage implements Bootable, HasHooks
             $opacity = $isEnabled ? '1' : '0.5';
             $url = $isEnabled ? admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports&view=' . $report['id']) : '#';
             
-            echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:24px;opacity:' . $opacity . ';position:relative;">';
+            echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:24px;opacity:' . esc_attr($opacity) . ';position:relative;">';
             echo '<div class="dashicons ' . esc_attr($report['icon']) . '" style="font-size:32px;width:32px;height:32px;margin-bottom:12px;color:#0071a1;"></div>';
             echo '<h3 style="margin:0 0 10px;">' . esc_html($report['name']) . '</h3>';
             echo '<p style="margin:0 0 20px;color:#666;font-size:13px;">' . esc_html($report['desc']) . '</p>';
@@ -785,6 +785,7 @@ final class AdminPage implements Bootable, HasHooks
                         'draft' => '<span style="color:#f0ad4e;">' . esc_html((string) ($generalSettings['admin_legal_pages_draft'] ?? __('Draft', 'polski'))) . '</span>',
                         default => esc_html($post->post_status),
                     };
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $statusLabel contains pre-escaped HTML spans
                     echo '<td>' . $statusLabel . '</td>';
                     echo '<td><a href="' . esc_url(get_edit_post_link($pageId) ?: '#') . '" class="button button-small">' . esc_html((string) ($generalSettings['admin_edit_button_text'] ?? __('Edit', 'polski'))) . '</a></td>';
                 } else {
@@ -822,7 +823,7 @@ final class AdminPage implements Bootable, HasHooks
                 : '<span style="color:#ccc;margin-right:8px;">&#9744;</span>';
             $style = $step['done'] ? 'color:#666;' : '';
 
-            echo '<li style="padding:6px 0;border-bottom:1px solid #f0f0f0;' . $style . '">';
+            echo '<li style="padding:6px 0;border-bottom:1px solid #f0f0f0;' . esc_attr($style) . '">';
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML links are built with esc_url()
             echo $icon . $step['html'];
             echo '</li>';

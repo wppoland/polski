@@ -30,7 +30,7 @@ defined('ABSPATH') || exit;
         <h2><?php echo esc_html($title); ?></h2>
 
         <?php if ($intro_text !== '') : ?>
-            <div class="polski-compare-account__intro"><?php echo wpautop(wp_kses_post($intro_text)); ?></div>
+            <div class="polski-compare-account__intro"><?php echo wp_kses_post(wpautop(wp_kses_post($intro_text))); ?></div>
         <?php endif; ?>
 
         <?php if ($products !== []) : ?>

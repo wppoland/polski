@@ -233,6 +233,7 @@ final class CompareService implements Bootable, HasHooks
 
     public function renderAccountPage(): void
     {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
         echo $this->renderCompareTable();
     }
 
@@ -242,6 +243,7 @@ final class CompareService implements Bootable, HasHooks
             return;
         }
 
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
         echo $this->renderCompareTable();
     }
 

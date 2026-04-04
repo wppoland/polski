@@ -67,7 +67,7 @@ final class CRAReadinessService implements HasHooks
         }
 
         header('Content-Type: text/plain; charset=utf-8');
-        echo 'Contact: mailto:' . sanitize_email($contactEmail) . "\n";
+        echo 'Contact: mailto:' . esc_html(sanitize_email($contactEmail)) . "\n";
 
         if (! empty($policyUrl)) {
             echo 'Policy: ' . esc_url($policyUrl) . "\n";

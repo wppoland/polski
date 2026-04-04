@@ -99,7 +99,7 @@ final class TabManagerService implements Bootable, HasHooks
             'title' => $title,
             'priority' => $priority,
             'callback' => static function () use ($content): void {
-                echo wpautop(wp_kses_post($content));
+                echo wp_kses_post(wpautop(wp_kses_post($content)));
             },
         ];
     }

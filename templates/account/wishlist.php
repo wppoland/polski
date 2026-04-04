@@ -30,7 +30,7 @@ defined('ABSPATH') || exit;
 
     <?php if ($intro_text !== '') : ?>
         <div class="polski-wishlist-account__intro">
-            <?php echo wpautop(wp_kses_post($intro_text)); ?>
+            <?php echo wp_kses_post(wpautop(wp_kses_post($intro_text))); ?>
         </div>
     <?php endif; ?>
 

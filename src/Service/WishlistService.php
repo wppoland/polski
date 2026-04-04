@@ -182,6 +182,7 @@ final class WishlistService implements Bootable, HasHooks
 
     public function renderAccountPage(): void
     {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
         echo $this->renderWishlist();
     }
 

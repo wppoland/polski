@@ -66,7 +66,7 @@ final class Container
 
         if (! isset($this->factories[$id])) {
             throw new InvalidArgumentException(
-                sprintf('Service "%s" is not registered in the container.', $id),
+                sprintf('Service "%s" is not registered in the container.', esc_html($id)),
             );
         }
 

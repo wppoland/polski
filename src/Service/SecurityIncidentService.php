@@ -163,12 +163,13 @@ final class SecurityIncidentService implements HasHooks
                 wp_nonce_field('polski_update_security_incident', '_polski_security_update_nonce');
                 echo '<input type="hidden" name="action" value="polski_update_security_incident" />';
                 echo '<input type="hidden" name="incident_id" value="' . esc_attr((string) ($incident['id'] ?? '')) . '" />';
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- renderSelect escapes all values
                 echo $this->renderSelect('status', [
-                    'open' => __('Open', 'polski'),
-                    'investigating' => __('Investigating', 'polski'),
-                    'monitoring' => __('Monitoring', 'polski'),
-                    'resolved' => __('Resolved', 'polski'),
-                ], (string) ($incident['status'] ?? 'open'));
+                    'open' => esc_html__('Open', 'polski'),
+                    'investigating' => esc_html__('Investigating', 'polski'),
+                    'monitoring' => esc_html__('Monitoring', 'polski'),
+                    'resolved' => esc_html__('Resolved', 'polski'),
+                ], esc_html((string) ($incident['status'] ?? 'open')));
                 echo '<button type="submit" class="button button-small">' . esc_html__('Update', 'polski') . '</button>';
                 echo '</form>';
                 echo '</td>';
@@ -302,6 +303,7 @@ final class SecurityIncidentService implements HasHooks
     {
         echo '<p style="margin:0 0 14px;">';
         echo '<label style="display:block;font-weight:600;margin-bottom:6px;">' . esc_html($label) . '</label>';
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $controlHtml contains pre-escaped form elements
         echo $controlHtml;
         echo '</p>';
     }

@@ -109,11 +109,13 @@ final class AdminNotes implements HasHooks
 
         if ($siteLocale !== $userLocale && str_starts_with($siteLocale, 'pl')) {
             $switched = switch_to_locale($siteLocale);
+            // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
             $text = __($msgid, 'polski');
             if ($switched) {
                 restore_previous_locale();
             }
         } else {
+            // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
             $text = __($msgid, 'polski');
         }
 
@@ -135,11 +137,13 @@ final class AdminNotes implements HasHooks
 
         if ($siteLocale !== $userLocale && str_starts_with($siteLocale, 'pl')) {
             $switched = switch_to_locale($siteLocale);
+            // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
             $text = __($msgid, 'polski');
             if ($switched) {
                 restore_previous_locale();
             }
         } else {
+            // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
             $text = __($msgid, 'polski');
         }
 
