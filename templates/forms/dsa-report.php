@@ -16,7 +16,7 @@ $reasons = [
     'illegal_content' => __('Nielegalne treści', 'polski'),
     'illegal_product' => __('Nielegalny produkt', 'polski'),
     'misleading_ad'   => __('Wprowadzająca w błąd reklama', 'polski'),
-    'other'           => __('Inne', 'polski'),
+    'other'           => __('Other', 'polski'),
 ];
 ?>
 <div class="polski-dsa-report-form">
