@@ -182,6 +182,7 @@ final class CheckoutValidation implements HasHooks
             if (! $checked) {
                 $message = $checkbox->errorMessage !== ''
                     ? $checkbox->errorMessage
+                    /* translators: %s: label of the legal checkbox that must be accepted */
                     : sprintf(__('Prosz&#281; zaakceptowa&#263;: %s', 'polski'), wp_strip_all_tags($checkbox->label));
 
                 throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException(

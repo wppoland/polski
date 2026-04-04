@@ -293,6 +293,7 @@ final class SecurityIncidentService implements HasHooks
             ]);
         }
 
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- writing CSV to php://output stream
         fclose($output);
         exit;
     }

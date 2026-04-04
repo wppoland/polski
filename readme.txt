@@ -3,7 +3,7 @@ Contributors: wppoland
 Donate link: https://wppoland.com/donate
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 1.3.0
 Requires PHP: 8.1
 License: GPLv2 or later
