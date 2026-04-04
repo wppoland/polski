@@ -1787,83 +1787,83 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:63
 msgid "Before you deactivate Polski"
-msgstr ""
+msgstr "Перш ніж вимкнути Polski"
 
 #: src/Admin/DeactivationHandler.php:64
 msgid "A quick answer helps us improve the plugin and roadmap."
-msgstr ""
+msgstr "Коротка відповідь допоможе нам покращити плагін та спланувати розвиток."
 
 #: src/Admin/DeactivationHandler.php:65
 msgid "What is the main reason for deactivation?"
-msgstr ""
+msgstr "Яка основна причина вимкнення?"
 
 #: src/Admin/DeactivationHandler.php:67
 msgid "A feature is missing"
-msgstr ""
+msgstr "Бракує потрібної функції"
 
 #: src/Admin/DeactivationHandler.php:68
 msgid "It is hard to configure or use"
-msgstr ""
+msgstr "Складно налаштувати або використовувати"
 
 #: src/Admin/DeactivationHandler.php:69
 msgid "I found a bug or conflict"
-msgstr ""
+msgstr "Знайшов помилку або конфлікт"
 
 #: src/Admin/DeactivationHandler.php:70
 msgid "I do not need it right now"
-msgstr ""
+msgstr "Зараз мені це не потрібно"
 
 #: src/Admin/DeactivationHandler.php:71
 msgid "This is only temporary"
-msgstr ""
+msgstr "Це лише тимчасове вимкнення"
 
 #: src/Admin/DeactivationHandler.php:72
 msgid "Other reason"
-msgstr ""
+msgstr "Інша причина"
 
 #: src/Admin/DeactivationHandler.php:74
 msgid "What could we do better?"
-msgstr ""
+msgstr "Що ми могли б зробити краще?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr ""
+msgstr "Розкажіть, що було незрозумілим, дратівливим або працювало погано."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
-msgstr ""
+msgstr "Що додати в наступній версії?"
 
 #: src/Admin/DeactivationHandler.php:77
 msgid "Feature ideas, integrations, reports, builder support, or anything else you miss."
-msgstr ""
+msgstr "Ідеї функцій, інтеграцій, звітів, підтримки білдерів або будь-що інше, чого бракує."
 
 #: src/Admin/DeactivationHandler.php:78
 msgid "Send feedback and deactivate"
-msgstr ""
+msgstr "Надіслати відгук і вимкнути"
 
 #: src/Admin/DeactivationHandler.php:79
 msgid "Deactivate without feedback"
-msgstr ""
+msgstr "Вимкнути без відгуку"
 
 #: src/Admin/DeactivationHandler.php:80
 msgid "Keep plugin active"
-msgstr ""
+msgstr "Залишити плагін увімкненим"
 
 #: src/Admin/DeactivationHandler.php:81
 msgid "Sending..."
-msgstr ""
+msgstr "Надсилання..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
-msgstr ""
+msgstr "Оберіть основну причину перед надсиланням відгуку."
 
 #: src/Admin/DeactivationHandler.php:83
 msgid "Thank you for using Polski! We are sorry to see you go. If you have any ideas on how to make it better, we would love to hear from you."
-msgstr ""
+msgstr "Дякуємо за використання Polski! Шкода, що ви йдете. Якщо маєте ідеї, як покращити плагін, будемо раді їх почути."
 
 #: src/Admin/DeactivationHandler.php:84
 msgid "Post new ideas on GitHub"
-msgstr ""
+msgstr "Поділіться ідеями на GitHub"
 
 #: src/Admin/DeactivationHandler.php:144
 msgid "Logi opinii przy odinstalowaniu"

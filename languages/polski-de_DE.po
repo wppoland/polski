@@ -1787,83 +1787,83 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:63
 msgid "Before you deactivate Polski"
-msgstr ""
+msgstr "Bevor Sie Polski deaktivieren"
 
 #: src/Admin/DeactivationHandler.php:64
 msgid "A quick answer helps us improve the plugin and roadmap."
-msgstr ""
+msgstr "Eine kurze Antwort hilft uns, das Plugin und die Roadmap zu verbessern."
 
 #: src/Admin/DeactivationHandler.php:65
 msgid "What is the main reason for deactivation?"
-msgstr ""
+msgstr "Was ist der Hauptgrund für die Deaktivierung?"
 
 #: src/Admin/DeactivationHandler.php:67
 msgid "A feature is missing"
-msgstr ""
+msgstr "Eine Funktion fehlt"
 
 #: src/Admin/DeactivationHandler.php:68
 msgid "It is hard to configure or use"
-msgstr ""
+msgstr "Es ist schwer zu konfigurieren oder zu verwenden"
 
 #: src/Admin/DeactivationHandler.php:69
 msgid "I found a bug or conflict"
-msgstr ""
+msgstr "Ich habe einen Fehler oder Konflikt gefunden"
 
 #: src/Admin/DeactivationHandler.php:70
 msgid "I do not need it right now"
-msgstr ""
+msgstr "Ich brauche es momentan nicht"
 
 #: src/Admin/DeactivationHandler.php:71
 msgid "This is only temporary"
-msgstr ""
+msgstr "Das ist nur vorübergehend"
 
 #: src/Admin/DeactivationHandler.php:72
 msgid "Other reason"
-msgstr ""
+msgstr "Anderer Grund"
 
 #: src/Admin/DeactivationHandler.php:74
 msgid "What could we do better?"
-msgstr ""
+msgstr "Was könnten wir besser machen?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr ""
+msgstr "Sagen Sie uns, was frustrierend, unklar oder fehlerhaft war."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
-msgstr ""
+msgstr "Was sollten wir als nächstes hinzufügen?"
 
 #: src/Admin/DeactivationHandler.php:77
 msgid "Feature ideas, integrations, reports, builder support, or anything else you miss."
-msgstr ""
+msgstr "Ideen für Funktionen, Integrationen, Berichte, Builder-Unterstützung oder alles andere, was Ihnen fehlt."
 
 #: src/Admin/DeactivationHandler.php:78
 msgid "Send feedback and deactivate"
-msgstr ""
+msgstr "Feedback senden und deaktivieren"
 
 #: src/Admin/DeactivationHandler.php:79
 msgid "Deactivate without feedback"
-msgstr ""
+msgstr "Ohne Feedback deaktivieren"
 
 #: src/Admin/DeactivationHandler.php:80
 msgid "Keep plugin active"
-msgstr ""
+msgstr "Plugin aktiv lassen"
 
 #: src/Admin/DeactivationHandler.php:81
 msgid "Sending..."
-msgstr ""
+msgstr "Wird gesendet..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
-msgstr ""
+msgstr "Bitte wählen Sie den Hauptgrund vor dem Absenden."
 
 #: src/Admin/DeactivationHandler.php:83
 msgid "Thank you for using Polski! We are sorry to see you go. If you have any ideas on how to make it better, we would love to hear from you."
-msgstr ""
+msgstr "Vielen Dank für die Nutzung von Polski! Es tut uns leid, dass Sie gehen. Wenn Sie Ideen zur Verbesserung haben, freuen wir uns auf Ihr Feedback."
 
 #: src/Admin/DeactivationHandler.php:84
 msgid "Post new ideas on GitHub"
-msgstr ""
+msgstr "Ideen auf GitHub teilen"
 
 #: src/Admin/DeactivationHandler.php:144
 msgid "Logi opinii przy odinstalowaniu"
@@ -3236,391 +3236,391 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:522
 msgid "Tytuł porównania"
-msgstr ""
+msgstr "Titel des Vergleichs"
 
 #: src/Admin/ModulesPage.php:523
 msgid "Maksymalna liczba produktów"
-msgstr ""
+msgstr "Maximale Anzahl Produkte"
 
 #: src/Admin/ModulesPage.php:526
 msgid "Tekst linku do porównania"
-msgstr ""
+msgstr "Text des Vergleichslinks"
 
 #: src/Admin/ModulesPage.php:527
 msgid "Tekst czyszczenia"
-msgstr ""
+msgstr "Text zum Leeren"
 
 #: src/Admin/ModulesPage.php:528
 msgid "Nagłówek kolumny cech"
-msgstr ""
+msgstr "Überschrift der Merkmals-Spalte"
 
 #: src/Admin/ModulesPage.php:529
 msgid "Etykieta filtra różnic"
-msgstr ""
+msgstr "Beschriftung des Differenzfilters"
 
 #: src/Admin/ModulesPage.php:532
 msgid "Komunikat limitu"
-msgstr ""
+msgstr "Hinweis zum Limit"
 
 #: src/Admin/ModulesPage.php:532
 msgid "Zmienna: {limit}"
-msgstr ""
+msgstr "Variable: {limit}"
 
 #: src/Admin/ModulesPage.php:533
 msgid "Komunikat błędu czyszczenia"
-msgstr ""
+msgstr "Fehlermeldung beim Leeren"
 
 #: src/Admin/ModulesPage.php:536
 msgid "Wyróżniaj różnice"
-msgstr ""
+msgstr "Unterschiede hervorheben"
 
 #: src/Admin/ModulesPage.php:537
 msgid "Domyślnie pokazuj tylko różnice"
-msgstr ""
+msgstr "Standardmäßig nur Unterschiede anzeigen"
 
 #: src/Admin/ModulesPage.php:538
 msgid "Etykieta ceny"
-msgstr ""
+msgstr "Preis-Beschriftung"
 
 #: src/Admin/ModulesPage.php:539
 msgid "Etykieta ceny jednostkowej"
-msgstr ""
+msgstr "Beschriftung des Grundpreises"
 
 #: src/Admin/ModulesPage.php:542
 msgid "Etykieta czasu dostawy"
-msgstr ""
+msgstr "Beschriftung der Lieferzeit"
 
 #: src/Admin/ModulesPage.php:544
 msgid "Etykieta producenta"
-msgstr ""
+msgstr "Beschriftung des Herstellers"
 
 #: src/Admin/ModulesPage.php:545
 msgid "Etykieta GTIN / EAN"
-msgstr ""
+msgstr "Beschriftung von GTIN / EAN"
 
 #: src/Admin/ModulesPage.php:546
 msgid "Etykieta krótkiego opisu"
-msgstr ""
+msgstr "Beschriftung der Kurzbeschreibung"
 
 #: src/Admin/ModulesPage.php:547
 #: src/Admin/ModulesPage.php:579
 msgid "Pokazuj krótki opis"
-msgstr ""
+msgstr "Kurzbeschreibung anzeigen"
 
 #: src/Admin/ModulesPage.php:548
 msgid "Pokazuj atrybuty produktu"
-msgstr ""
+msgstr "Produktattribute anzeigen"
 
 #: src/Admin/ModulesPage.php:554
 msgid "Lekki modal produktu na listingach, z obsługą wariantów, cen, galerii i podstawowych informacji zakupowych."
-msgstr ""
+msgstr "Leichtes Produktmodal auf Listing-Seiten, mit Unterstützung für Varianten, Preise, Galerie und grundlegende Kaufinformationen."
 
 #: src/Admin/ModulesPage.php:562
 msgid "Etykieta modala"
-msgstr ""
+msgstr "Beschriftung des Modals"
 
 #: src/Admin/ModulesPage.php:563
 #: src/Admin/ModulesPage.php:673
 msgid "Etykieta zamknięcia"
-msgstr ""
+msgstr "Beschriftung zum Schließen"
 
 #: src/Admin/ModulesPage.php:564
 msgid "Tekst ładowania"
-msgstr ""
+msgstr "Ladetext"
 
 #: src/Admin/ModulesPage.php:565
 msgid "Tekst błędu AJAX"
-msgstr ""
+msgstr "AJAX-Fehlertext"
 
 #: src/Admin/ModulesPage.php:566
 msgid "Tekst braku produktu"
-msgstr ""
+msgstr "Text bei fehlendem Produkt"
 
 #: src/Admin/ModulesPage.php:568
 msgid "Pokazuj tytuł modala w treści"
-msgstr ""
+msgstr "Titel des Modals im Inhalt anzeigen"
 
 #: src/Admin/ModulesPage.php:569
 msgid "Pokazuj przycisk zamknięcia"
-msgstr ""
+msgstr "Schließen-Button anzeigen"
 
 #: src/Admin/ModulesPage.php:570
 #: src/Admin/ModulesPage.php:695
 msgid "Pokazuj nazwę produktu"
-msgstr ""
+msgstr "Produktname anzeigen"
 
 #: src/Admin/ModulesPage.php:571
 msgid "Pokazuj zdjęcie główne"
-msgstr ""
+msgstr "Hauptbild anzeigen"
 
 #: src/Admin/ModulesPage.php:572
 msgid "Pokazuj mini galerię"
-msgstr ""
+msgstr "Mini-Galerie anzeigen"
 
 #: src/Admin/ModulesPage.php:573
 msgid "Pokazuj cenę"
-msgstr ""
+msgstr "Preis anzeigen"
 
 #: src/Admin/ModulesPage.php:574
 msgid "Pokazuj cenę jednostkową"
-msgstr ""
+msgstr "Grundpreis anzeigen"
 
 #: src/Admin/ModulesPage.php:576
 msgid "Pokazuj czas dostawy"
-msgstr ""
+msgstr "Lieferzeit anzeigen"
 
 #: src/Admin/ModulesPage.php:577
 msgid "Pokazuj markę"
-msgstr ""
+msgstr "Marke anzeigen"
 
 #: src/Admin/ModulesPage.php:578
 msgid "Pokazuj producenta"
-msgstr ""
+msgstr "Hersteller anzeigen"
 
 #: src/Admin/ModulesPage.php:580
 msgid "Pokazuj formularz zakupu"
-msgstr ""
+msgstr "Kaufformular anzeigen"
 
 #: src/Admin/ModulesPage.php:581
 msgid "Pokazuj link do pełnej karty"
-msgstr ""
+msgstr "Link zur vollständigen Produktkarte anzeigen"
 
 #: src/Admin/ModulesPage.php:582
 msgid "Tekst linku do produktu"
-msgstr ""
+msgstr "Text des Produktlinks"
 
 #: src/Admin/ModulesPage.php:583
 msgid "Jak otwierać pełną kartę"
-msgstr ""
+msgstr "Wie die vollständige Karte geöffnet wird"
 
 #: src/Admin/ModulesPage.php:583
 #: src/Admin/ModulesPage.php:701
 msgid "W tej samej karcie"
-msgstr ""
+msgstr "Im selben Tab"
 
 #: src/Admin/ModulesPage.php:583
 #: src/Admin/ModulesPage.php:701
 msgid "W nowej karcie"
-msgstr ""
+msgstr "In einem neuen Tab"
 
 #: src/Admin/ModulesPage.php:584
 #: src/Admin/ModulesPage.php:674
 msgid "Zamykaj po kliknięciu tła"
-msgstr ""
+msgstr "Beim Klick auf den Hintergrund schließen"
 
 #: src/Admin/ModulesPage.php:589
 #: src/Admin/ProductMetaBox.php:154
 msgid "Badge Management"
-msgstr ""
+msgstr "Badge-Verwaltung"
 
 #: src/Admin/ModulesPage.php:590
 msgid "Merchandisingowe badge na produkcie i listingu, z automatycznymi warunkami i ręcznymi wyróżnieniami per produkt."
-msgstr ""
+msgstr "Merchandising-Badges auf Produktseiten und Listen, mit automatischen Bedingungen und manuellen Hervorhebungen pro Produkt."
 
 #: src/Admin/ModulesPage.php:598
 msgid "Pokazuj badge ręczny"
-msgstr ""
+msgstr "Manuelles Badge anzeigen"
 
 #: src/Admin/ModulesPage.php:599
 msgid "Domyślny styl badge ręcznego"
-msgstr ""
+msgstr "Standardstil des manuellen Badges"
 
 #: src/Admin/ModulesPage.php:600
 msgid "Pokazuj badge dodatkowy"
-msgstr ""
+msgstr "Zusätzliches Badge anzeigen"
 
 #: src/Admin/ModulesPage.php:601
 msgid "Styl badge dodatkowego"
-msgstr ""
+msgstr "Stil des zusätzlichen Badges"
 
 #: src/Admin/ModulesPage.php:602
 msgid "Kształt badge"
-msgstr ""
+msgstr "Form des Badges"
 
 #: src/Admin/ModulesPage.php:603
 msgid "Wielkie litery"
-msgstr ""
+msgstr "Großbuchstaben"
 
 #: src/Admin/ModulesPage.php:604
 msgid "Maks. badge na stronie produktu"
-msgstr ""
+msgstr "Max. Badges auf der Produktseite"
 
 #: src/Admin/ModulesPage.php:605
 msgid "Maks. badge na listingach"
-msgstr ""
+msgstr "Max. Badges in Listen"
 
 #: src/Admin/ModulesPage.php:606
 msgid "Badge promocji"
-msgstr ""
+msgstr "Angebots-Badge"
 
 #: src/Admin/ModulesPage.php:607
 msgid "Tekst badge promocji"
-msgstr ""
+msgstr "Text des Angebots-Badges"
 
 #: src/Admin/ModulesPage.php:608
 msgid "Badge nowości"
-msgstr ""
+msgstr "Neuheits-Badge"
 
 #: src/Admin/ModulesPage.php:609
 msgid "Tekst badge nowości"
-msgstr ""
+msgstr "Text des Neuheits-Badges"
 
 #: src/Admin/ModulesPage.php:610
 msgid "Nowość przez ile dni"
-msgstr ""
+msgstr "Wie viele Tage als neu"
 
 #: src/Admin/ModulesPage.php:611
 msgid "Badge niskiego stanu"
-msgstr ""
+msgstr "Badge für niedrigen Bestand"
 
 #: src/Admin/ModulesPage.php:612
 msgid "Tekst badge niskiego stanu"
-msgstr ""
+msgstr "Text des Low-Stock-Badges"
 
 #: src/Admin/ModulesPage.php:613
 msgid "Próg niskiego stanu"
-msgstr ""
+msgstr "Schwelle für niedrigen Bestand"
 
 #: src/Admin/ModulesPage.php:614
 msgid "Badge bestseller"
-msgstr ""
+msgstr "Bestseller-Badge"
 
 #: src/Admin/ModulesPage.php:615
 msgid "Tekst badge bestseller"
-msgstr ""
+msgstr "Text des Bestseller-Badges"
 
 #: src/Admin/ModulesPage.php:616
 msgid "Próg bestselleru (sprzedaż)"
-msgstr ""
+msgstr "Bestseller-Schwelle (Verkäufe)"
 
 #: src/Admin/ModulesPage.php:621
 #: src/Admin/ProductMetaBox.php:188
 msgid "Tab Manager"
-msgstr ""
+msgstr "Tab-Manager"
 
 #: src/Admin/ModulesPage.php:622
 msgid "Dodatkowe zakładki produktu z treścią per produkt oraz zakładkami globalnymi dla dostawy, zwrotów i informacji handlowych."
-msgstr ""
+msgstr "Zusätzliche Produkt-Tabs mit Inhalten pro Produkt sowie globale Tabs für Lieferung, Rückgaben und Handelsinformationen."
 
 #: src/Admin/ModulesPage.php:628
 msgid "Globalna zakładka dostawy"
-msgstr ""
+msgstr "Globaler Versand-Tab"
 
 #: src/Admin/ModulesPage.php:629
 msgid "Tytuł zakładki dostawy"
-msgstr ""
+msgstr "Titel des Versand-Tabs"
 
 #: src/Admin/ModulesPage.php:630
 msgid "Treść zakładki dostawy"
-msgstr ""
+msgstr "Inhalt des Versand-Tabs"
 
 #: src/Admin/ModulesPage.php:631
 msgid "Priorytet zakładki dostawy"
-msgstr ""
+msgstr "Priorität des Versand-Tabs"
 
 #: src/Admin/ModulesPage.php:632
 msgid "Globalna zakładka zwrotów"
-msgstr ""
+msgstr "Globaler Rückgabe-Tab"
 
 #: src/Admin/ModulesPage.php:633
 msgid "Tytuł zakładki zwrotów"
-msgstr ""
+msgstr "Titel des Rückgabe-Tabs"
 
 #: src/Admin/ModulesPage.php:634
 msgid "Treść zakładki zwrotów"
-msgstr ""
+msgstr "Inhalt des Rückgabe-Tabs"
 
 #: src/Admin/ModulesPage.php:635
 msgid "Priorytet zakładki zwrotów"
-msgstr ""
+msgstr "Priorität des Rückgabe-Tabs"
 
 #: src/Admin/ModulesPage.php:636
 msgid "Włącz pierwszy tab produktowy"
-msgstr ""
+msgstr "Ersten Produkt-Tab aktivieren"
 
 #: src/Admin/ModulesPage.php:637
 msgid "Priorytet pierwszego tabu produktowego"
-msgstr ""
+msgstr "Priorität des ersten Produkt-Tabs"
 
 #: src/Admin/ModulesPage.php:638
 msgid "Włącz drugi tab produktowy"
-msgstr ""
+msgstr "Zweiten Produkt-Tab aktivieren"
 
 #: src/Admin/ModulesPage.php:639
 msgid "Priorytet drugiego tabu produktowego"
-msgstr ""
+msgstr "Priorität des zweiten Produkt-Tabs"
 
 #: src/Admin/ModulesPage.php:644
 #: src/Admin/ProductMetaBox.php:222
 msgid "Featured Video"
-msgstr ""
+msgstr "Featured Video"
 
 #: src/Admin/ModulesPage.php:645
 msgid "Wideo produktowe na karcie produktu, osadzone z YouTube, Vimeo albo jako lokalny plik MP4 w sekcji mediów."
-msgstr ""
+msgstr "Produktvideo auf der Produktseite, eingebettet von YouTube, Vimeo oder als lokale MP4-Datei im Medienbereich."
 
 #: src/Admin/ModulesPage.php:652
 msgid "Pozycja"
-msgstr ""
+msgstr "Position"
 
 #: src/Admin/ModulesPage.php:652
 msgid "Pod galerią"
-msgstr ""
+msgstr "Unter der Galerie"
 
 #: src/Admin/ModulesPage.php:652
 msgid "Przed podsumowaniem produktu"
-msgstr ""
+msgstr "Vor der Produktzusammenfassung"
 
 #: src/Admin/ModulesPage.php:653
 #: src/Admin/ModulesPage.php:688
 msgid "Nagłówek sekcji"
-msgstr ""
+msgstr "Abschnittsüberschrift"
 
 #: src/Admin/ModulesPage.php:655
 #: src/Admin/ModulesPage.php:690
 msgid "Pokazuj nagłówek sekcji"
-msgstr ""
+msgstr "Abschnittsüberschrift anzeigen"
 
 #: src/Admin/ModulesPage.php:656
 #: src/Admin/ModulesPage.php:691
 msgid "Pokazuj opis sekcji"
-msgstr ""
+msgstr "Abschnittsbeschreibung anzeigen"
 
 #: src/Admin/ModulesPage.php:657
 msgid "Autoplay dla wspieranych osadzeń"
-msgstr ""
+msgstr "Autoplay für unterstützte Einbettungen"
 
 #: src/Admin/ModulesPage.php:662
 msgid "Gallery & Zoom"
-msgstr ""
+msgstr "Galerie und Zoom"
 
 #: src/Admin/ModulesPage.php:663
 msgid "Lekki zoom zdjęć produktowych i prosty lightbox galerii bez zewnętrznych bibliotek sliderowych."
-msgstr ""
+msgstr "Leichter Zoom für Produktbilder und einfache Galerie-Lightbox ohne externe Slider-Bibliotheken."
 
 #: src/Admin/ModulesPage.php:669
 msgid "Włącz zoom na hover"
-msgstr ""
+msgstr "Zoom bei Hover aktivieren"
 
 #: src/Admin/ModulesPage.php:670
 msgid "Skala zoomu"
-msgstr ""
+msgstr "Zoom-Stufe"
 
 #: src/Admin/ModulesPage.php:671
 msgid "Włącz lightbox po kliknięciu"
-msgstr ""
+msgstr "Lightbox bei Klick aktivieren"
 
 #: src/Admin/ModulesPage.php:672
 msgid "Etykieta okna lightbox"
-msgstr ""
+msgstr "Beschriftung des Lightbox-Fensters"
 
 #: src/Admin/ModulesPage.php:679
 msgid "Product Slider Carousel"
-msgstr ""
+msgstr "Produkt-Slider-Karussell"
 
 #: src/Admin/ModulesPage.php:680
 msgid "Lekki slider produktowy oparty o scroll-snap, z produktami powiązanymi, promocyjnymi lub wyróżnionymi."
-msgstr ""
+msgstr "Leichter Produkt-Slider auf Basis von Scroll-Snap, mit verwandten, reduzierten oder hervorgehobenen Produkten."
 
 #: src/Admin/ModulesPage.php:687
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
@@ -4025,25 +4025,25 @@ msgstr ""
 
 #: src/Block/StoreApi/ProductDataExtension.php:175
 msgid "Wyłączony z prawa odstąpienia"
-msgstr ""
+msgstr "Vom Widerrufsrecht ausgeschlossen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 msgid "Tytuł"
-msgstr ""
+msgstr "Titel"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
 msgid "Pokaż tytuł"
-msgstr ""
+msgstr "Titel anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
 msgid "Pokaż kategorie"
-msgstr ""
+msgstr "Kategorien anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 msgid "Pokaż marki"
-msgstr ""
+msgstr "Marken anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
@@ -4052,56 +4052,56 @@ msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:41
 msgid "Pokaż dostępność"
-msgstr ""
+msgstr "Verfügbarkeit anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:42
 msgid "Pokaż promocje"
-msgstr ""
+msgstr "Angebote anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
 msgid "Pokaż atrybuty"
-msgstr ""
+msgstr "Attribute anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/FoodInfoWidget.php:16
 msgid "Informacje o żywności"
-msgstr ""
+msgstr "Lebensmittelinformationen"
 
 #: src/Compatibility/Elementor/Widgets/NutrientsWidget.php:16
 msgid "Wartości odżywcze"
-msgstr ""
+msgstr "Nährwerte"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:16
 msgid "Slider produktów"
-msgstr ""
+msgstr "Produkt-Slider"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:44
 msgid "ID produktu"
-msgstr ""
+msgstr "Produkt-ID"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:48
 msgid "Opcjonalnie, ustaw ręcznie dla źródeł powiązanych lub upsell poza kartą produktu."
-msgstr ""
+msgstr "Optional, manuell setzen für verwandte Quellen oder Upsell außerhalb der Produktseite."
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:72
 msgid "Pokaż przycisk koszyka"
-msgstr ""
+msgstr "Warenkorb-Button anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/SafetyDocsWidget.php:16
 #: src/Service/ProductInfoService.php:194
 msgid "Dokumenty bezpieczeństwa"
-msgstr ""
+msgstr "Sicherheitsdokumente"
 
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
 msgid "Pokaż przycisk wyszukiwania"
-msgstr ""
+msgstr "Suchbutton anzeigen"
 
 #: src/Compatibility/Elementor/Widgets/ShippingNoticeWidget.php:16
 msgid "Koszty wysyłki"
-msgstr ""
+msgstr "Versandkosten"
 
 #: src/Compatibility/Elementor/Widgets/TaxInfoWidget.php:16
 msgid "Informacja o VAT"
-msgstr ""
+msgstr "MwSt.-Information"
 
 #: src/Email/DoubleOptInEmail.php:19
 msgid "Aktywacja konta (Podwójna weryfikacja)"
@@ -4115,79 +4115,79 @@ msgstr "Eine freundliche Nachricht an neue Kunden, damit sie ihre E-Mail-Adresse
 #: src/Enum/DeliveryTimeUnit.php:16
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Tag"
+msgstr[1] "%d Tage"
 
 #. translators: %d: delivery time count in business days
 #: src/Enum/DeliveryTimeUnit.php:18
 msgid "%d business day"
 msgid_plural "%d business days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Werktag"
+msgstr[1] "%d Werktage"
 
 #. translators: %d: delivery time count in weeks
 #: src/Enum/DeliveryTimeUnit.php:20
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Woche"
+msgstr[1] "%d Wochen"
 
 #: src/Enum/LegalPageType.php:18
 msgid "Privacy Policy (Polityka prywatności)"
-msgstr ""
+msgstr "Datenschutzerklärung (Polityka prywatności)"
 
 #: src/Enum/LegalPageType.php:19
 msgid "Return Policy (Prawo odstąpienia)"
-msgstr ""
+msgstr "Widerrufsbelehrung (Prawo odstąpienia)"
 
 #: src/Enum/LegalPageType.php:20
 #: src/Service/LegalPageService.php:164
 msgid "Reklamacje"
-msgstr ""
+msgstr "Reklamationen"
 
 #: src/Enum/TaxDisplayMode.php:15
 msgid "Ceny zawierają VAT (brutto)"
-msgstr ""
+msgstr "Preise enthalten MwSt. (brutto)"
 
 #: src/Enum/TaxDisplayMode.php:16
 msgid "Ceny nie zawierają VAT (netto)"
-msgstr ""
+msgstr "Preise enthalten keine MwSt. (netto)"
 
 #: src/Enum/WithdrawalStatus.php:18
 msgid "Potwierdzony"
-msgstr ""
+msgstr "Bestätigt"
 
 #: src/Enum/WithdrawalStatus.php:19
 msgid "Zakończony"
-msgstr ""
+msgstr "Abgeschlossen"
 
 #: src/Enum/WithdrawalStatus.php:20
 msgid "Odrzucony"
-msgstr ""
+msgstr "Abgelehnt"
 
 #: src/Migration/Migration_1_0_0.php:23
 msgid "1-2 dni robocze"
-msgstr ""
+msgstr "1-2 Werktage"
 
 #: src/Migration/Migration_1_0_0.php:24
 msgid "2-4 dni robocze"
-msgstr ""
+msgstr "2-4 Werktage"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "3-5 dni roboczych"
-msgstr ""
+msgstr "3-5 Werktage"
 
 #: src/Migration/Migration_1_0_0.php:26
 msgid "5-7 dni roboczych"
-msgstr ""
+msgstr "5-7 Werktage"
 
 #: src/Migration/Migration_1_0_0.php:27
 msgid "7-14 dni roboczych"
-msgstr ""
+msgstr "7-14 Werktage"
 
 #: src/Migration/Migration_1_0_0.php:28
 msgid "Do 24 godzin"
-msgstr ""
+msgstr "Bis zu 24 Stunden"
 
 #: src/Migration/Migration_1_0_0.php:41
 msgid "szt."
@@ -4228,56 +4228,56 @@ msgstr ""
 #: src/Rest/CheckboxController.php:115
 #: src/Rest/CheckboxController.php:172
 msgid "Checkbox nie znaleziony."
-msgstr ""
+msgstr "Checkbox nicht gefunden."
 
 #: src/Rest/CheckboxController.php:130
 msgid "ID checkboxa jest wymagane."
-msgstr ""
+msgstr "Die Checkbox-ID ist erforderlich."
 
 #: src/Rest/CheckboxController.php:139
 msgid "Nie można utworzyć checkboxa o zarezerwowanym ID."
-msgstr ""
+msgstr "Es kann keine Checkbox mit reservierter ID erstellt werden."
 
 #: src/Rest/CheckboxController.php:213
 msgid "Wbudowane checkboxy nie mogą być usunięte. Możesz je wyłączać."
-msgstr ""
+msgstr "Integrierte Checkboxen können nicht gelöscht werden. Du kannst sie deaktivieren."
 
 #: src/Rest/RestController.php:53
 msgid "Please log in to continue."
-msgstr ""
+msgstr "Bitte melde dich an, um fortzufahren."
 
 #: src/Rest/SettingsController.php:105
 #: src/Rest/SettingsController.php:197
 msgid "Nieznana grupa ustawień."
-msgstr ""
+msgstr "Unbekannte Einstellungsgruppe."
 
 #: src/Rest/SettingsController.php:186
 msgid "Kreator został zakończony."
-msgstr ""
+msgstr "Der Assistent wurde abgeschlossen."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
-msgstr ""
+msgstr "Wir konnten für diese Bestellung keinen Widerrufsantrag vorbereiten."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Nieprawidłowy status."
-msgstr ""
+msgstr "Ungültiger Status."
 
 #: src/Rest/WithdrawalController.php:178
 msgid "Zmiana statusu niedozwolona."
-msgstr ""
+msgstr "Statusänderung nicht erlaubt."
 
 #: src/Service/CheckboxService.php:325
 msgid "Enable the Terms and Conditions checkbox - required by Polish consumer law."
-msgstr ""
+msgstr "Aktiviere die Checkbox für die Allgemeinen Geschäftsbedingungen - nach polnischem Verbraucherrecht erforderlich."
 
 #: src/Service/CheckboxService.php:337
 msgid "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
-msgstr ""
+msgstr "Aktiviere die Checkbox für die Datenschutzerklärung - erforderlich nach DSGVO Art. 6 Abs. 1 lit. a und Art. 7."
 
 #: src/Service/CheckboxService.php:349
 msgid "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights Act (Art. 12)."
-msgstr ""
+msgstr "Aktiviere die Checkbox zum Widerrufsrecht - erforderlich nach dem polnischen Verbraucherrechtegesetz (Art. 12)."
 
 #: src/Service/CheckboxService.php:361
 msgid "Consider enabling Digital Content waiver if you sell digital products."
@@ -4285,46 +4285,46 @@ msgstr ""
 
 #: src/Service/CheckboxService.php:373
 msgid "Marketing consent must be optional under GDPR - change it from required to optional."
-msgstr ""
+msgstr "Die Marketingeinwilligung muss nach DSGVO optional sein - ändere sie von erforderlich zu optional."
 
 #: src/Service/CheckboxService.php:379
 msgid "Consider adding an optional marketing consent checkbox for newsletters."
-msgstr ""
+msgstr "Erwäge, eine optionale Marketing-Checkbox für Newsletter hinzuzufügen."
 
 #: src/Service/CheckboxService.php:391
 msgid "Review reminder consent should be optional - change it from required to optional."
-msgstr ""
+msgstr "Die Einwilligung für Bewertungs-Erinnerungen sollte optional sein - ändere sie von erforderlich zu optional."
 
 #. translators: %s: link to terms page
 #: src/Service/CheckboxService.php:451
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
-msgstr ""
+msgstr "Ich habe die <a href=\"%s\" target=\"_blank\">Allgemeinen Geschäftsbedingungen</a> gelesen und akzeptiere sie."
 
 #. translators: %s: link to privacy policy
 #: src/Service/CheckboxService.php:469
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>."
-msgstr ""
+msgstr "Ich habe die <a href=\"%s\" target=\"_blank\">Datenschutzerklärung</a> gelesen und akzeptiere sie."
 
 #: src/Service/CheckboxService.php:476
 msgid "Privacy Policy acceptance (Polityka prywatności)."
-msgstr ""
+msgstr "Akzeptanz der Datenschutzerklärung (Polityka prywatności)."
 
 #. translators: %s: link to return policy
 #: src/Service/CheckboxService.php:487
 msgid "I have been informed about my <a href=\"%s\" target=\"_blank\">right to withdraw from the contract</a> within 14 days."
-msgstr ""
+msgstr "Ich wurde über mein <a href=\"%s\" target=\"_blank\">Recht informiert, innerhalb von 14 Tagen vom Vertrag zurückzutreten</a>."
 
 #: src/Service/CheckboxService.php:494
 msgid "14-day withdrawal right acknowledgment (Prawo odstąpienia)."
-msgstr ""
+msgstr "Bestätigung des 14-tägigen Widerrufsrechts (Prawo odstąpienia)."
 
 #: src/Service/CheckboxService.php:506
 msgid "Zrzeczenie się prawa odstąpienia dla towarów cyfrowych."
-msgstr ""
+msgstr "Verzicht auf das Widerrufsrecht bei digitalen Waren."
 
 #: src/Service/CheckboxService.php:540
 msgid "Opcjonalna zgoda marketingowa (RODO art. 6 ust. 1 lit. a)."
-msgstr ""
+msgstr "Optionale Marketingeinwilligung (DSGVO Art. 6 Abs. 1 lit. a)."
 
 #: src/Service/DPATrackerService.php:36
 msgid "You do not have permission to manage DPA registry."
