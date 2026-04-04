@@ -33,7 +33,7 @@ final class ModulesPage implements HasHooks
         $saved = is_array($saved) ? $saved : [];
 
         $modules = [
-            // === Ceny i wyświetlanie ===
+            // === Prices and Display ===
             [
                 'id' => 'unit_price',
                 'name' => __('Unit price', 'polski'),
@@ -120,7 +120,7 @@ final class ModulesPage implements HasHooks
                 ],
             ],
 
-            // === Kasa i zamówienia ===
+            // === Checkout and Orders ===
             [
                 'id' => 'checkout_button',
                 'name' => __('Checkout button', 'polski'),
@@ -197,7 +197,7 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [],
             ],
-            // === Prawa konsumenta ===
+            // === Consumer Rights ===
             [
                 'id' => 'legal_pages',
                 'name' => __('Legal Pages', 'polski'),
@@ -782,12 +782,12 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_popup|frequency_days', 'label' => __('Frequency of re-showing (days)', 'polski'), 'type' => 'number', 'default' => 7],
                 ],
             ],
-            // === Nowe moduly compliance 2026 ===
+            // === New Compliance Modules 2026 ===
             [
                 'id' => 'gpsr',
                 'name' => 'GPSR - Product safety',
                 'description' => 'GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export.',
-                'group' => 'Informacje o produkcie',
+                'group' => __('Product Information', 'polski'),
                 'enabled' => true,
                 'icon' => 'dashicons-shield-alt',
                 'links' => [],
@@ -800,7 +800,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'verified_review',
                 'name' => 'Verified purchase badge',
                 'description' => 'Badge shown on reviews from customers who actually purchased the product.',
-                'group' => 'Informacje o produkcie',
+                'group' => __('Product Information', 'polski'),
                 'enabled' => false,
                 'icon' => 'dashicons-star-filled',
                 'links' => [],
@@ -862,7 +862,7 @@ final class ModulesPage implements HasHooks
                 ],
             ],
 
-            // === SEO i Optymalizacja ===
+            // === SEO and Optimization ===
             [
                 'id' => 'schema_org',
                 'name' => __('Structured Data (Schema.org)', 'polski'),
@@ -881,7 +881,7 @@ final class ModulesPage implements HasHooks
                 ],
             ],
 
-            // === Integracje ===
+            // === Integrations ===
             [
                 'id' => 'checkout_toolkit_integration',
                 'name' => __('Checkout and consent integration', 'polski'),
@@ -1221,8 +1221,8 @@ final class ModulesPage implements HasHooks
         update_option(self::OPTION, $saved);
 
         // Save per-module settings.
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        $settingsData = $_POST['polski_setting'] ?? [];
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- individual values sanitized in sanitizeFieldValue()
+        $settingsData = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : [];
 
         if (is_array($settingsData)) {
             foreach ($settingsData as $optionName => $fields) {
