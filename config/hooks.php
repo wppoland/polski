@@ -37,6 +37,7 @@ use Polski\Service\GalleryZoomService;
 use Polski\Service\ProductSliderService;
 use Polski\Service\WaitlistService;
 use Polski\Service\MinimumOrderService;
+use Polski\Service\ReviewRequestService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
 use Polski\Service\WishlistService;
@@ -78,6 +79,7 @@ return [
     ProductSliderService::class,
     WaitlistService::class,
     MinimumOrderService::class,
+    ReviewRequestService::class,
     InfiniteScrollService::class,
     PopupService::class,
 

@@ -81,6 +81,16 @@ return [
         'prune_after_days' => 90,
     ],
 
+    // Review request emails.
+    'polski_review_requests' => [
+        'delay_days' => 7,
+        'email_subject' => __('Jak oceniasz swoje zakupy? Zostaw opinię', 'polski'),
+        'email_intro' => __('Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za Twoją opinię.', 'polski'),
+        'review_cta_text' => __('Zostaw opinię', 'polski'),
+        'optout_link_text' => __('Zrezygnuj z próśb o opinię', 'polski'),
+        'optout_success_text' => __('Nie będziemy już wysyłać próśb o opinię.', 'polski'),
+    ],
+
     // Minimum order rules.
     'polski_minimum_order' => [
         'min_value' => 0,
