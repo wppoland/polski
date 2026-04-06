@@ -133,7 +133,12 @@ final class PriceDisplayService
             $text,
         );
 
-        /** @param string $html The "from price" HTML. */
+        /**
+         * Filter the "from price" HTML.
+         *
+         * @param string      $html    The HTML output.
+         * @param \WC_Product $product The product.
+         */
         return (string) apply_filters('polski/price/from_price_html', $html, $product);
     }
 

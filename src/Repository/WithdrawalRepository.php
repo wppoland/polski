@@ -104,9 +104,11 @@ final class WithdrawalRepository
             );
         }
 
+        $list = is_array($rows) ? $rows : [];
+
         return array_map(
-            static fn (object $row) => WithdrawalRequest::fromRow($row),
-            $rows,
+            static fn (\stdClass $row) => WithdrawalRequest::fromRow($row),
+            $list,
         );
     }
 

@@ -26,9 +26,9 @@ final class ConsentRecord
     }
 
     /**
-     * @param object $row Database row.
+     * @param \stdClass $row Database row (wpdb).
      */
-    public static function fromRow(object $row): self
+    public static function fromRow(\stdClass $row): self
     {
         return new self(
             id: (int) $row->id,

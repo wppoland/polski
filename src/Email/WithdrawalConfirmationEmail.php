@@ -61,7 +61,10 @@ class WithdrawalConfirmationEmail extends \WC_Email
         $this->recipient = $order->get_billing_email();
 
         $this->placeholders['{order_number}'] = $order->get_order_number();
-        $this->placeholders['{order_date}'] = wc_format_datetime($order->get_date_created());
+        $dateCreated = $order->get_date_created();
+        $this->placeholders['{order_date}'] = $dateCreated instanceof \WC_DateTime
+            ? wc_format_datetime($dateCreated)
+            : '';
         $this->placeholders['{withdrawal_date}'] = $request->requestedAt->format(get_option('date_format'));
 
         if (! $this->is_enabled() || ! $this->get_recipient()) {

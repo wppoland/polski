@@ -27,14 +27,16 @@ final class WithdrawalRequest
     }
 
     /**
-     * @param object $row Database row.
+     * @phpstan-type WithdrawalItem array{product_id: int, quantity: int}
+     *
+     * @param \stdClass $row Database row (wpdb).
      */
-    public static function fromRow(object $row): self
+    public static function fromRow(\stdClass $row): self
     {
         $items = null;
         if ($row->items_json !== null) {
             $decoded = json_decode($row->items_json, true);
-            $items = is_array($decoded) ? $decoded : null;
+            $items = self::parseItemsFromJsonDecoded($decoded);
         }
 
         return new self(
@@ -48,6 +50,44 @@ final class WithdrawalRequest
             confirmedAt: $row->confirmed_at !== null ? new \DateTimeImmutable($row->confirmed_at) : null,
             completedAt: $row->completed_at !== null ? new \DateTimeImmutable($row->completed_at) : null,
         );
+    }
+
+    /**
+     * @phpstan-param mixed $decoded
+     *
+     * @return list<array{product_id: int, quantity: int}>|null
+     */
+    private static function parseItemsFromJsonDecoded($decoded): ?array
+    {
+        if (! is_array($decoded)) {
+            return null;
+        }
+
+        $items = [];
+
+        foreach ($decoded as $item) {
+            if (! is_array($item)) {
+                return null;
+            }
+
+            if (! isset($item['product_id'], $item['quantity'])) {
+                return null;
+            }
+
+            $productId = filter_var($item['product_id'], FILTER_VALIDATE_INT);
+            $quantity = filter_var($item['quantity'], FILTER_VALIDATE_INT);
+
+            if ($productId === false || $quantity === false) {
+                return null;
+            }
+
+            $items[] = [
+                'product_id' => (int) $productId,
+                'quantity' => (int) $quantity,
+            ];
+        }
+
+        return $items;
     }
 
     /**

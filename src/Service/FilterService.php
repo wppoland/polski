@@ -257,6 +257,6 @@ final class FilterService implements Bootable, HasHooks
             return [];
         }
 
-        return array_values(array_filter($terms, static fn ($term): bool => $term instanceof \WP_Term));
+        return array_values($terms);
     }
 }

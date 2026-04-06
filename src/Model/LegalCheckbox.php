@@ -194,19 +194,19 @@ final class LegalCheckbox
         }
 
         if (isset($overrides['categories']) && is_array($overrides['categories'])) {
-            $this->categories = array_map('intval', $overrides['categories']);
+            $this->categories = array_values(array_map('intval', $overrides['categories']));
         }
 
         if (isset($overrides['countries']) && is_array($overrides['countries'])) {
-            $this->countries = array_map('strval', $overrides['countries']);
+            $this->countries = array_values(array_map('strval', $overrides['countries']));
         }
 
         if (isset($overrides['payment_methods']) && is_array($overrides['payment_methods'])) {
-            $this->paymentMethods = array_map('strval', $overrides['payment_methods']);
+            $this->paymentMethods = array_values(array_map('strval', $overrides['payment_methods']));
         }
 
         if (isset($overrides['product_types']) && is_array($overrides['product_types'])) {
-            $this->productTypes = array_map('strval', $overrides['product_types']);
+            $this->productTypes = array_values(array_map('strval', $overrides['product_types']));
         }
     }
 
@@ -272,10 +272,10 @@ final class LegalCheckbox
             templateName: (string) ($data['template_name'] ?? ''),
             refreshFragments: (bool) ($data['refresh_fragments'] ?? false),
             logConsent: (bool) ($data['log_consent'] ?? true),
-            categories: array_map('intval', (array) ($data['categories'] ?? [])),
-            countries: array_map('strval', (array) ($data['countries'] ?? [])),
-            paymentMethods: array_map('strval', (array) ($data['payment_methods'] ?? [])),
-            productTypes: array_map('strval', (array) ($data['product_types'] ?? [])),
+            categories: array_values(array_map('intval', (array) ($data['categories'] ?? []))),
+            countries: array_values(array_map('strval', (array) ($data['countries'] ?? []))),
+            paymentMethods: array_values(array_map('strval', (array) ($data['payment_methods'] ?? []))),
+            productTypes: array_values(array_map('strval', (array) ($data['product_types'] ?? []))),
         );
     }
 }

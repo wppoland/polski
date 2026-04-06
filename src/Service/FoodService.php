@@ -69,7 +69,7 @@ final class FoodService
             return [];
         }
 
-        return array_map(static fn (\WP_Term $t) => $t->name, $terms);
+        return array_values(array_map(static fn (\WP_Term $t) => $t->name, $terms));
     }
 
     /**
@@ -136,8 +136,8 @@ final class FoodService
         $rows = '';
 
         foreach ($nutrients as $name => $data) {
-            $value = is_array($data) ? ($data['value'] ?? '') : $data;
-            $unit = is_array($data) ? ($data['unit'] ?? '') : '';
+            $value = $data['value'] ?? '';
+            $unit = $data['unit'] ?? '';
 
             $rows .= sprintf(
                 '<tr><td>%s</td><td>%s %s</td></tr>',

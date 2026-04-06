@@ -53,16 +53,14 @@ final class ProductInfoService
     {
         $terms = $this->getBrandTerms($product);
 
-        if (! is_array($terms) || $terms === []) {
+        if ($terms === []) {
             return [];
         }
 
         $brands = [];
 
         foreach ($terms as $term) {
-            if ($term instanceof \WP_Term) {
-                $brands[] = $term->name;
-            }
+            $brands[] = $term->name;
         }
 
         return $brands;
@@ -81,7 +79,7 @@ final class ProductInfoService
             return [];
         }
 
-        return array_values(array_filter($terms, static fn ($term): bool => $term instanceof \WP_Term));
+        return array_values($terms);
     }
 
     /**
@@ -154,10 +152,10 @@ final class ProductInfoService
 
         if (is_string($raw) && $raw !== '') {
             $decoded = json_decode($raw, true);
-            return is_array($decoded) ? array_map('intval', $decoded) : [];
+            return is_array($decoded) ? array_values(array_map('intval', $decoded)) : [];
         }
 
-        return is_array($raw) ? array_map('intval', $raw) : [];
+        return is_array($raw) ? array_values(array_map('intval', $raw)) : [];
     }
 
     /**

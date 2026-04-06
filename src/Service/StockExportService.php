@@ -116,7 +116,7 @@ final class StockExportService implements HasHooks
 
         check_admin_referer('polski_stock_export', '_polski_export_nonce');
 
-        $fields = array_map('sanitize_key', $_POST['fields'] ?? ['id', 'sku', 'name', 'stock']);
+        $fields = array_values(array_map('sanitize_key', $_POST['fields'] ?? ['id', 'sku', 'name', 'stock']));
         $managedOnly = ! empty($_POST['managed_only']);
         $includeVariations = ! empty($_POST['include_variations']);
         $stockCompare = sanitize_key($_POST['stock_compare'] ?? '');
@@ -154,6 +154,7 @@ final class StockExportService implements HasHooks
         }
 
         $products = wc_get_products($args);
+        $products = is_array($products) ? $products : [];
         $result = [];
 
         foreach ($products as $product) {
@@ -221,6 +222,9 @@ final class StockExportService implements HasHooks
         header('Expires: 0');
 
         $output = fopen('php://output', 'w');
+        if ($output === false) {
+            exit;
+        }
 
         // BOM for Excel.
         fwrite($output, "\xEF\xBB\xBF");
@@ -276,6 +280,20 @@ final class StockExportService implements HasHooks
     }
 
     /**
+     * @return list<string>
+     */
+    private function getProductCategoryNames(\WC_Product $product): array
+    {
+        $terms = wp_get_post_terms($product->get_parent_id() ?: $product->get_id(), 'product_cat', ['fields' => 'names']);
+
+        if (! is_array($terms)) {
+            return [];
+        }
+
+        return array_values(array_map('strval', $terms));
+    }
+
+    /**
      * @param list<string> $fields
      * @return list<string>
      */
@@ -293,7 +311,7 @@ final class StockExportService implements HasHooks
                 'stock_status' => $product->get_stock_status(),
                 'regular_price' => $product->get_regular_price(),
                 'sale_price' => $product->get_sale_price(),
-                'categories' => implode(' | ', wp_get_post_terms($product->get_parent_id() ?: $product->get_id(), 'product_cat', ['fields' => 'names'])),
+                'categories' => implode(' | ', $this->getProductCategoryNames($product)),
                 'weight' => $product->get_weight(),
                 default => '',
             };

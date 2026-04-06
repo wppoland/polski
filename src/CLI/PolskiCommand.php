@@ -28,6 +28,9 @@ class PolskiCommand
      *     wp polski migrate
      *
      * @subcommand migrate
+     *
+     * @param list<string>         $args
+     * @param array<string, mixed> $assocArgs
      */
     public function migrate(array $args, array $assocArgs): void
     {
@@ -47,6 +50,9 @@ class PolskiCommand
      *     wp polski cache-flush
      *
      * @subcommand cache-flush
+     *
+     * @param list<string>         $args
+     * @param array<string, mixed> $assocArgs
      */
     public function cacheFlush(array $args, array $assocArgs): void
     {
@@ -68,6 +74,9 @@ class PolskiCommand
      *     wp polski omnibus-prune --days=60
      *
      * @subcommand omnibus-prune
+     *
+     * @param list<string>         $args
+     * @param array<string, mixed> $assocArgs
      */
     public function omnibusPrune(array $args, array $assocArgs): void
     {
@@ -87,6 +96,9 @@ class PolskiCommand
      * ## EXAMPLES
      *
      *     wp polski status
+     *
+     * @param list<string>         $args
+     * @param array<string, mixed> $assocArgs
      */
     public function status(array $args, array $assocArgs): void
     {

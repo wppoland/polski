@@ -46,7 +46,7 @@ final class SecurityIncidentService implements HasHooks
             return strcmp((string) ($right['reported_at'] ?? ''), (string) ($left['reported_at'] ?? ''));
         });
 
-        return array_values($incidents);
+        return $incidents;
     }
 
     public function countOpenIncidents(): int
@@ -379,7 +379,13 @@ final class SecurityIncidentService implements HasHooks
 
         $timestamp = strtotime($value);
 
-        return $timestamp ? wp_date('Y-m-d H:i', $timestamp) : $value;
+        if ($timestamp === false) {
+            return $value;
+        }
+
+        $formatted = wp_date('Y-m-d H:i', $timestamp);
+
+        return is_string($formatted) ? $formatted : $value;
     }
 
     private function labelForType(string $value): string

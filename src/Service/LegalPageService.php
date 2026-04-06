@@ -24,6 +24,17 @@ final class LegalPageService
     }
 
     /**
+     * REST wizard: create legal pages (placeholders reserved for future template variables).
+     *
+     * @param array<string, string> $variables
+     */
+    public function generateDefaultPages(array $variables = []): void
+    {
+        unset($variables);
+        $this->createDefaultPages();
+    }
+
+    /**
      * Create a legal page if not already assigned.
      */
     public function ensurePageExists(LegalPageType $type): int
@@ -42,7 +53,7 @@ final class LegalPageService
             'post_author' => get_current_user_id() ?: 1,
         ]);
 
-        if (is_wp_error($pageId)) {
+        if (! is_int($pageId) || $pageId < 1) {
             return 0;
         }
 

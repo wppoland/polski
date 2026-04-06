@@ -53,6 +53,9 @@ final class DoubleOptInService implements Bootable, HasHooks
     /**
      * Mark new customer as unactivated and send activation email.
      */
+    /**
+     * @param array<string, mixed> $newCustomerData
+     */
     public function onCustomerCreated(int $customerId, array $newCustomerData, bool $passwordGenerated): void
     {
         $token = wp_generate_password(32, false);

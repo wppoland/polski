@@ -19,21 +19,36 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
       - name: PHP Syntax Check
-        run: find src config templates -name "*.php" -exec php -l {} \; 2>&1 | grep -v "No syntax errors" && exit 1 || true
+        run: |
+          failed=0
+          while IFS= read -r -d '' f; do
+            php -l "$f" || failed=1
+          done < <(find src config templates -name '*.php' -print0)
+          exit "$failed"
 
   phpstan:
     name: PHPStan
+    runs-on: ubuntu-latest
+    env:
+      PHPStan_PARALLEL_JOB_COUNT: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpstan analyse -c .phpstan.neon --memory-limit=2G
+
+  phpcs:
+    name: PHPCS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          tools: phpstan
       - run: composer install --no-interaction --prefer-dist
-        if: hashFiles('composer.json') != ''
-      - run: phpstan analyse --level=6 src/
-        continue-on-error: true
+      - run: vendor/bin/phpcs --standard=phpcs.xml.dist -n
 
   typescript:
     name: TypeScript Check
@@ -76,6 +91,23 @@ jobs:
       - run: composer install --no-interaction --prefer-dist
       - run: vendor/bin/phpunit --testsuite unit
 
+  dependency-audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer audit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm audit --audit-level=high
+
   i18n:
     name: i18n Check
     runs-on: ubuntu-latest
@@ -92,4 +124,4 @@ jobs:
       - name: Generate POT and check for changes
         run: |
           wp i18n make-pot . /tmp/polski-check.pot --exclude=node_modules,vendor,_benchmark,build,tests --domain=polski
-          echo "POT file generated successfully"
+          diff -u languages/polski.pot /tmp/polski-check.pot

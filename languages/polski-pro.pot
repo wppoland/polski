@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-06T16:09:35+00:00\n"
+"POT-Creation-Date: 2026-04-06T16:19:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -1332,7 +1332,7 @@ msgid "Launch setup wizard"
 msgstr ""
 
 #: src/Admin/AdminPage.php:56
-#: src/Admin/ModulesPage.php:1299
+#: src/Admin/ModulesPage.php:1433
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
@@ -4789,63 +4789,183 @@ msgstr ""
 msgid "Manage fields"
 msgstr ""
 
+#: src/Admin/ModulesPage.php:1181
+msgid "Fulfillment Statuses"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1182
+msgid "Custom order fulfillment statuses: Packed, Shipped, Delivered. Tracking numbers and customer notifications."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1183
+#: src/Admin/ModulesPage.php:1194
+#: src/Admin/ModulesPage.php:1205
+msgid "PRO - Orders"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1192
+msgid "Delivery Date Picker"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1193
+msgid "Let customers choose preferred delivery date at checkout. Block weekends and holidays."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1203
+msgid "Abandoned Cart Recovery"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1204
+msgid "Track abandoned carts and send automated recovery emails with coupon incentives."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1214
+msgid "Gift Cards"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1215
+msgid "Sell digital gift cards with unique codes. Recipients redeem at checkout for store credit."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1216
 #: src/Admin/ModulesPage.php:1227
+#: src/Admin/ModulesPage.php:1249
+#: src/Admin/ModulesPage.php:1260
+#: src/Admin/ModulesPage.php:1271
+#: src/Admin/ModulesPage.php:1282
+#: src/Admin/ModulesPage.php:1293
+msgid "PRO - Products"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1225
+msgid "Subscriptions"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1226
+msgid "Recurring product subscriptions with automatic renewals, pause/resume, and customer management."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1236
+msgid "Affiliate Program"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1237
+msgid "Built-in affiliate system with referral tracking, commission management, and payout dashboard."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1238
+msgid "PRO - Marketing"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1247
+msgid "Pre-Orders"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1248
+msgid "Accept pre-orders for upcoming products. Charge immediately or when product ships."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1258
+msgid "Product Bundles"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1259
+msgid "Create product bundles and kits with combined pricing and inventory tracking."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1269
+msgid "Product Add-Ons"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1270
+msgid "Extra options on product pages: engraving, gift wrapping, custom text. Fixed or percentage pricing."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1280
+msgid "Frequently Bought Together"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1281
+msgid "Amazon-style \"frequently bought together\" recommendations with bundled discount."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1291
+msgid "Catalog Mode"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1292
+msgid "Hide prices and add-to-cart buttons. Show \"Request a quote\" instead. Per-product or global."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1302
+msgid "AI Product Descriptions"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1303
+msgid "Generate SEO-optimized product descriptions using OpenAI-compatible APIs. Supports tone selection, bulk generation, and Yoast/RankMath integration."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1304
+msgid "PRO - Tools"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1361
 msgid "Save modules"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1308
+#: src/Admin/ModulesPage.php:1442
 msgid "Configure &darr;"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1320
+#: src/Admin/ModulesPage.php:1454
 msgid "Coming Soon"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1414
+#: src/Admin/ModulesPage.php:1548
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1448
+#: src/Admin/ModulesPage.php:1582
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1651
+#: src/Admin/ModulesPage.php:1798
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1652
+#: src/Admin/ModulesPage.php:1799
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1663
+#: src/Admin/ModulesPage.php:1810
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1664
+#: src/Admin/ModulesPage.php:1811
 msgid "not installed"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1679
+#: src/Admin/ModulesPage.php:1826
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1681
+#: src/Admin/ModulesPage.php:1828
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1713
+#: src/Admin/ModulesPage.php:1860
 msgid "detected, integration active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1863
 msgid "install"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1728
+#: src/Admin/ModulesPage.php:1875
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1730
+#: src/Admin/ModulesPage.php:1877
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr ""
 

@@ -103,7 +103,7 @@ final class SocialLoginService implements HasHooks
                 '<a href="%s" class="polski-social-btn" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;margin:4px;border-radius:6px;background:%s;color:#fff;text-decoration:none;font-size:14px;font-weight:500;transition:opacity .2s" onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'">%s %s</a>',
                 esc_url($btn['url']),
                 esc_attr($btn['color']),
-                $btn['icon'],
+                wp_kses_post($btn['icon']),
                 esc_html($btn['label']),
             );
         }
@@ -435,7 +435,9 @@ final class SocialLoginService implements HasHooks
         update_user_meta($userId, 'billing_last_name', $profile['last_name']);
         update_user_meta($userId, 'billing_email', $profile['email']);
 
-        return get_user_by('ID', $userId);
+        $user = get_user_by('ID', $userId);
+
+        return $user instanceof \WP_User ? $user : null;
     }
 
     private function ensureUniqueUsername(string $username): string

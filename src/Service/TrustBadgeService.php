@@ -91,12 +91,11 @@ final class TrustBadgeService implements HasHooks
 
         foreach ($activeBadges as $badge) {
             $icon = $this->getSvgIcon($badge['icon'] ?? 'shield');
-            $text = esc_html($badge['text'] ?? '');
 
             printf(
                 '<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#475569">%s <span>%s</span></div>',
-                $icon,
-                $text,
+                wp_kses($icon, $this->trustBadgeSvgAllowedTags()),
+                esc_html($badge['text'] ?? ''),
             );
         }
 
@@ -116,5 +115,46 @@ final class TrustBadgeService implements HasHooks
         ];
 
         return $icons[$name] ?? $icons['shield'];
+    }
+
+    /**
+     * @return array<string, array<string, bool>>
+     */
+    private function trustBadgeSvgAllowedTags(): array
+    {
+        return [
+            'svg' => [
+                'width' => true,
+                'height' => true,
+                'viewbox' => true,
+                'fill' => true,
+                'stroke' => true,
+                'stroke-width' => true,
+            ],
+            'path' => [
+                'd' => true,
+                'fill' => true,
+                'stroke' => true,
+                'stroke-width' => true,
+            ],
+            'rect' => [
+                'x' => true,
+                'y' => true,
+                'width' => true,
+                'height' => true,
+                'rx' => true,
+            ],
+            'circle' => [
+                'cx' => true,
+                'cy' => true,
+                'r' => true,
+            ],
+            'polyline' => [
+                'points' => true,
+            ],
+            'polygon' => [
+                'points' => true,
+            ],
+        ];
     }
 }

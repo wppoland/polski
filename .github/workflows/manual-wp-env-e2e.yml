@@ -1,0 +1,52 @@
+# Run locally-equivalent checks: WordPress + WooCommerce via wp-env, then Playwright.
+# Trigger: Actions → Manual wp-env E2E → Run workflow.
+# Note: Strips polski-pro from .wp-env.json and removes .wp-env.override.json so CI does not require a sibling repo clone.
+# Marked continue-on-error until the job is proven stable on GitHub-hosted runners.
+
+name: Manual wp-env E2E
+
+on:
+  workflow_dispatch:
+
+jobs:
+  wp-env-e2e:
+    name: wp-env + Playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Prepare wp-env (WooCommerce + Polski only)
+        run: |
+          rm -f .wp-env.override.json
+          node <<'NODE'
+          const fs = require('fs');
+          const p = '.wp-env.json';
+          const j = JSON.parse(fs.readFileSync(p, 'utf8'));
+          j.plugins = [
+            'https://downloads.wordpress.org/plugin/woocommerce.zip',
+            '.',
+          ];
+          fs.writeFileSync(p, JSON.stringify(j, null, '\t') + '\n');
+          NODE
+
+      - run: npm ci
+
+      - name: Start wp-env
+        run: npx wp-env start
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: npm run test:e2e

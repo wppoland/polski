@@ -132,9 +132,11 @@ abstract class AbstractProductListRepository
             return [];
         }
 
+        $list = is_array($rows) ? $rows : [];
+
         return array_map(
-            static fn (object $row): ProductListItem => ProductListItem::fromRow($row),
-            is_array($rows) ? $rows : [],
+            static fn (\stdClass $row): ProductListItem => ProductListItem::fromRow($row),
+            $list,
         );
     }
 

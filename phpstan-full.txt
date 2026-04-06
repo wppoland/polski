@@ -1,0 +1,474 @@
+Instructions for interpreting errors
+---------
+
+Each error has an associated identifier, like `argument.type`
+or `return.missing`.
+
+Each error identifier has documentation at URL https://phpstan.org/error-identifiers/<identifier>
+This page contains code example, explanation why is this an error
+and instruction how to fix it.
+Before fixing the error, fetch the documentation page for its identifier.
+
+The error usually indicates a real bug or incorrect type in the code. Fix the underlying cause, do not just make the error go away.
+Do not add `@phpstan-ignore` comments, `@phpstan-ignore-next-line` comments, or baseline entries to suppress the error.
+Do not use assert() or inline @var PHPDoc tag to override PHPStan's inferred type.
+Do not add type casts just to silence errors.
+Do not widen parameter or return types just to make the error go away.
+ ------ ----------------------------------------------------------------------- 
+  Line   Admin/AdminPage.php                                                    
+ ------ ----------------------------------------------------------------------- 
+  663    Method Polski\Admin\AdminPage::renderWizardInput() is unused.          
+         🪪  method.unused                                                      
+  671    Method Polski\Admin\AdminPage::renderWizardCheckbox() is unused.       
+         🪪  method.unused                                                      
+  802    Negated boolean expression is always false.                            
+         🪪  booleanNot.alwaysFalse                                             
+  1001   Path in require()                                                      
+         "/Users/mariuszszatkowskipromax/local/polski/polski/tests/phpstan/../  
+         ../build/admin.asset.php" is not a file or it does not exist.          
+         🪪  require.fileNotFound                                               
+ ------ ----------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   Admin/ModulesPage.php                                                
+ ------ --------------------------------------------------------------------- 
+  1628   Offset 'settings' does not exist on array{id: string, name: string,  
+         description: string, group: string, enabled: bool, icon: string,     
+         links: list<array{label: string, url: string}>}.                     
+         🪪  offsetAccess.notFound                                            
+  1788   Method Polski\Admin\ModulesPage::getOmnibusIntegrationStatus() is    
+         unused.                                                              
+         🪪  method.unused                                                    
+ ------ --------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   Block/StoreApi/CheckoutValidation.php                               
+ ------ -------------------------------------------------------------------- 
+  142    Using nullsafe method call on non-nullable type WC_Session. Use ->  
+         instead.                                                            
+         🪪  nullsafe.neverNull                                              
+  157    Using nullsafe method call on non-nullable type WC_Session. Use ->  
+         instead.                                                            
+         🪪  nullsafe.neverNull                                              
+  218    Using nullsafe method call on non-nullable type WC_Session. Use ->  
+         instead.                                                            
+         🪪  nullsafe.neverNull                                              
+ ------ -------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------- 
+  Line   Email/WithdrawalConfirmationEmail.php                      
+ ------ ----------------------------------------------------------- 
+  64     Parameter #1 $date of function wc_format_datetime expects  
+         WC_DateTime, WC_DateTime|null given.                       
+         🪪  argument.type                                          
+ ------ ----------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Hook/CartHooks.php                                                     
+ ------ ----------------------------------------------------------------------- 
+  14     Property Polski\Hook\CartHooks::$templateLoader is never read, only    
+         written.                                                               
+         🪪  property.onlyWritten                                               
+         💡  See:                                                               
+         https://phpstan.org/developing-extensions/always-read-written-propert  
+         ies                                                                    
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Hook/CheckoutHooks.php                                                 
+ ------ ----------------------------------------------------------------------- 
+  50     Callback expects 1 parameter, $accepted_args is set to 4.              
+         🪪  arguments.count                                                    
+  217    Method Polski\Hook\CheckoutHooks::saveCheckboxStatesToOrder() has      
+         parameter $data with no value type specified in iterable type array.   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------- 
+  Line   Hook/ProductHooks.php                                            
+ ------ ----------------------------------------------------------------- 
+  439    Strict comparison using !== between string and null will always  
+         evaluate to true.                                                
+         🪪  notIdentical.alwaysTrue                                      
+ ------ ----------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Integration/IntegrationManager.php                                     
+ ------ ----------------------------------------------------------------------- 
+  19     Property Polski\Integration\IntegrationManager::$container is never    
+         read, only written.                                                    
+         🪪  property.onlyWritten                                               
+         💡  See:                                                               
+         https://phpstan.org/developing-extensions/always-read-written-propert  
+         ies                                                                    
+  150    Strict comparison using === between bool and 'yes' will always         
+         evaluate to false.                                                     
+         🪪  identical.alwaysFalse                                              
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/CompareService.php                                             
+ ------ ----------------------------------------------------------------------- 
+  310    Method Polski\Service\CompareService::getButtonData() return type has  
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+  521    Ternary operator condition is always true.                             
+         🪪  ternary.alwaysTrue                                                 
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------- 
+  Line   Service/DataLayerService.php                                       
+ ------ ------------------------------------------------------------------- 
+  265    Binary operation "/" between string and int<1, max> results in an  
+         error.                                                             
+         🪪  binaryOp.invalid                                               
+ ------ ------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/DoubleOptInService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  56     Method Polski\Service\DoubleOptInService::onCustomerCreated() has      
+         parameter $newCustomerData with no value type specified in iterable    
+         type array.                                                            
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/ExpertReviewService.php                                        
+ ------ ----------------------------------------------------------------------- 
+  88     Argument of an invalid type array|stdClass supplied for foreach, only  
+         iterables are supported.                                               
+         🪪  foreach.nonIterable                                                
+  155    Parameter #2 $user_id of function get_the_author_meta expects          
+         int|false, string given.                                               
+         🪪  argument.type                                                      
+  188    Parameter #1 $text of function esc_html expects string,                
+         int|string|false given.                                                
+         🪪  argument.type                                                      
+  221    Parameter #2 $user_id of function get_the_author_meta expects          
+         int|false, string given.                                               
+         🪪  argument.type                                                      
+  271    Method Polski\Service\ExpertReviewService::getReviewsForProduct()      
+         should return list<WP_Post> but returns array<int|WP_Post>.            
+         🪪  return.type                                                        
+         💡  array<int|WP_Post> might not be a list.                            
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/FaqService.php                                                 
+ ------ ----------------------------------------------------------------------- 
+  90     Parameter #2 $atts of function shortcode_atts expects array, array<st  
+         ring, string>|string given.                                            
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/FeaturedVideoService.php                                       
+ ------ ----------------------------------------------------------------------- 
+  82     Method Polski\Service\FeaturedVideoService::getVideoHtml() should      
+         return string but returns string|null.                                 
+         🪪  return.type                                                        
+  82     Parameter #1 $attr of function wp_video_shortcode expects array{src?:  
+         string, height?: int, width?: int, poster?: string, loop?: string,     
+         autoplay?: string, muted?: string, preload?: string, ...}, array{src:  
+         non-empty-string, autoplay: bool, preload: 'metadata'} given.          
+         🪪  argument.type                                                      
+         💡  Offset 'autoplay' (string) does not accept type bool.              
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Service/FilterService.php                                             
+ ------ ---------------------------------------------------------------------- 
+  260    Instanceof between WP_Term and WP_Term will always evaluate to true.  
+         🪪  instanceof.alwaysTrue                                             
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/FoodService.php                                                
+ ------ ----------------------------------------------------------------------- 
+  72     Method Polski\Service\FoodService::getAllergens() should return list<  
+         string> but returns array<string>.                                     
+         🪪  return.type                                                        
+         💡  array<string> might not be a list.                                 
+  140    Call to function is_array() with array<mixed> will always evaluate to  
+          true.                                                                 
+         🪪  function.alreadyNarrowedType                                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   Service/KSeFReadyService.php                                        
+ ------ -------------------------------------------------------------------- 
+  113    Parameter #1 $order of method                                       
+         Polski\Service\KSeFReadyService::echoKSeFBadge() expects WC_Order,  
+         WC_Order|WC_Order_Refund given.                                     
+         🪪  argument.type                                                   
+ ------ -------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Service/LiveCartService.php                                           
+ ------ ---------------------------------------------------------------------- 
+  113    Method Polski\Service\LiveCartService::cartFragments() should return  
+         array<string, string> but returns array<string, bool|string>.         
+         🪪  return.type                                                       
+  176    Parameter #1 $size of method WC_Product::get_image() expects string,  
+         array<int, int> given.                                                
+         🪪  argument.type                                                     
+  179    Method WC_Product::get_permalink() invoked with 1 parameter, 0        
+         required.                                                             
+         🪪  arguments.count                                                   
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/NipLookupService.php                                           
+ ------ ----------------------------------------------------------------------- 
+  127    Method Polski\Service\NipLookupService::saveNipToOrder() has           
+         parameter $data with no value type specified in iterable type array.   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/OrderExportService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  166    Parameter #1 $stream of function fwrite expects resource,              
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  170    Parameter #1 $stream of function fputcsv expects resource,             
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  172    Argument of an invalid type array<WC_Order>|stdClass supplied for for  
+         each, only iterables are supported.                                    
+         🪪  foreach.nonIterable                                                
+  174    Parameter #1 $stream of function fputcsv expects resource,             
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  177    Parameter #1 $stream of function fclose expects resource,              
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  235    Call to an undefined method WC_Order_Item::get_product().              
+         🪪  method.notFound                                                    
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ---------------------------------- 
+  Line   Service/PriceDisplayService.php   
+ ------ ---------------------------------- 
+  137    Expected 2 @param tags, found 1.  
+         🪪  paramTag.count                
+ ------ ---------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/ProductAuthorService.php                                       
+ ------ ----------------------------------------------------------------------- 
+  86     Parameter #1 $url of function esc_url expects string, string|WP_Error  
+         given.                                                                 
+         🪪  argument.type                                                      
+  170    Call to function is_wp_error() with array<mixed, mixed> will always e  
+         valuate to false.                                                      
+         🪪  function.impossibleType                                            
+  170    Method Polski\Service\ProductAuthorService::getProductAuthors()        
+         should return list<WP_Term> but returns array<int, WP_Term>.           
+         🪪  return.type                                                        
+         💡  array<int, WP_Term> might not be a list.                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/ProductInfoService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  56     Call to function is_array() with array will always evaluate to true.   
+         🪪  function.alreadyNarrowedType                                       
+  84     Instanceof between WP_Term and WP_Term will always evaluate to true.   
+         🪪  instanceof.alwaysTrue                                              
+  157    Method Polski\Service\ProductInfoService::getSafetyDocuments() should  
+         return list<int> but returns array<int>.                               
+         🪪  return.type                                                        
+         💡  array<int> might not be a list.                                    
+  160    Method Polski\Service\ProductInfoService::getSafetyDocuments() should  
+         return list<int> but returns array<int>.                               
+         🪪  return.type                                                        
+         💡  array<int> might not be a list.                                    
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Service/ProductQAService.php                                          
+ ------ ---------------------------------------------------------------------- 
+  127    Parameter #1 $text of function esc_html expects string, string|false  
+         given.                                                                
+         🪪  argument.type                                                     
+  127    Parameter #2 $timestamp of function wp_date expects int|null,         
+         int|false given.                                                      
+         🪪  argument.type                                                     
+  132    Parameter #1 $comment_id of function get_comment_meta expects int,    
+         string given.                                                         
+         🪪  argument.type                                                     
+  141    Parameter #1 $text of function esc_html expects string, string|false  
+         given.                                                                
+         🪪  argument.type                                                     
+  141    Parameter #2 $timestamp of function wp_date expects int|null,         
+         int|false given.                                                      
+         🪪  argument.type                                                     
+  351    Parameter #1 $comment_id of function get_comment_meta expects int,    
+         string given.                                                         
+         🪪  argument.type                                                     
+  400    Method Polski\Service\ProductQAService::getQuestions() should return  
+         list<WP_Comment> but returns array<int|WP_Comment>|int.               
+         🪪  return.type                                                       
+         💡  array<int|WP_Comment>|int might not be a list.                    
+  416    Method Polski\Service\ProductQAService::getAnswers() should return    
+         list<WP_Comment> but returns array<int|WP_Comment>|int.               
+         🪪  return.type                                                       
+         💡  array<int|WP_Comment>|int might not be a list.                    
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/QuickViewService.php                                           
+ ------ ----------------------------------------------------------------------- 
+  145    Method Polski\Service\QuickViewService::getProductImages() return      
+         type has no value type specified in iterable type array.               
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/ReviewRequestService.php                                       
+ ------ ----------------------------------------------------------------------- 
+  95     Argument of an invalid type array<WC_Order>|stdClass supplied for for  
+         each, only iterables are supported.                                    
+         🪪  foreach.nonIterable                                                
+  245    Call to an undefined method WC_Order_Item::get_product().              
+         🪪  method.notFound                                                    
+  264    Parameter #1 $attachment_id of function wp_get_attachment_image_url    
+         expects int, string given.                                             
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/SearchService.php                                              
+ ------ ----------------------------------------------------------------------- 
+  141    Argument of an invalid type array|stdClass supplied for foreach, only  
+         iterables are supported.                                               
+         🪪  foreach.nonIterable                                                
+  150    Parameter #1 $attachment_id of function wp_get_attachment_image_url    
+         expects int, string given.                                             
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------- 
+  Line   Service/SecurityIncidentService.php                                
+ ------ ------------------------------------------------------------------- 
+  382    Method Polski\Service\SecurityIncidentService::formatReportedAt()  
+         should return string but returns string|false.                     
+         🪪  return.type                                                    
+ ------ ------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/SiteAuditService.php                                           
+ ------ ----------------------------------------------------------------------- 
+  80     Match expression does not handle remaining value: string               
+         🪪  match.unhandled                                                    
+  733    Parameter #1 $message of function wp_die expects string|WP_Error, int  
+         given.                                                                 
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   Service/SocialLoginService.php                                       
+ ------ --------------------------------------------------------------------- 
+  438    Method Polski\Service\SocialLoginService::findOrCreateUser() should  
+         return WP_User|null but returns WP_User|false.                       
+         🪪  return.type                                                      
+ ------ --------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/SocialProofService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  122    Method Polski\Service\SocialProofService::getRecentPurchases() should  
+         return list<array{name: string, city: string, product: string, image:  
+          string, time: string, url: string}> but returns array<mixed, mixed>.  
+         🪪  return.type                                                        
+         💡  array<mixed, mixed> might not be a list.                           
+  138    Argument of an invalid type array<WC_Order>|stdClass supplied for for  
+         each, only iterables are supported.                                    
+         🪪  foreach.nonIterable                                                
+  176    Parameter #1 $attachment_id of function wp_get_attachment_image_url    
+         expects int, string given.                                             
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/StockExportService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  132    Parameter #2 $fields of method                                         
+         Polski\Service\StockExportService::renderPreview() expects list<strin  
+         g>, array<string> given.                                               
+         🪪  argument.type                                                      
+         💡  array<string> might not be a list.                                 
+  136    Parameter #2 $fields of method                                         
+         Polski\Service\StockExportService::outputCsv() expects list<string>,   
+         array<string> given.                                                   
+         🪪  argument.type                                                      
+         💡  array<string> might not be a list.                                 
+  159    Argument of an invalid type array|stdClass supplied for foreach, only  
+         iterables are supported.                                               
+         🪪  foreach.nonIterable                                                
+  226    Parameter #1 $stream of function fwrite expects resource,              
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  230    Parameter #1 $stream of function fputcsv expects resource,             
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  234    Parameter #1 $stream of function fputcsv expects resource,             
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  237    Parameter #1 $stream of function fclose expects resource,              
+         resource|false given.                                                  
+         🪪  argument.type                                                      
+  296    Parameter #2 $array of function implode expects array, list<string>|W  
+         P_Error given.                                                         
+         🪪  argument.type                                                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/TabManagerService.php                                          
+ ------ ----------------------------------------------------------------------- 
+  31     Method Polski\Service\TabManagerService::filterTabs() has parameter    
+         $tabs with no value type specified in iterable type array.             
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+  31     Method Polski\Service\TabManagerService::filterTabs() return type has  
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Service/WishlistService.php                                            
+ ------ ----------------------------------------------------------------------- 
+  254    Method Polski\Service\WishlistService::getButtonData() return type     
+         has no value type specified in iterable type array.                    
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+  321    Ternary operator condition is always true.                             
+         🪪  ternary.alwaysTrue                                                 
+ ------ ----------------------------------------------------------------------- 
+
+ [ERROR] Found 83 errors                                                        
+

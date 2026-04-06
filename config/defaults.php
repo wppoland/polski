@@ -716,8 +716,11 @@ return [
         'position' => 'bottom-left',
         'anonymize_name' => false,
         'hide_on_mobile' => false,
-        'message_template' => __('%s kupił(a) %s', 'polski'),
+        /* translators: 1: customer first name (possibly anonymized), 2: product name */
+        'message_template' => __('%1$s kupił(a) %2$s', 'polski'),
+        /* translators: %d: number of minutes since the order */
         'time_ago_minutes' => __('%d min temu', 'polski'),
+        /* translators: %d: number of hours since the order */
         'time_ago_hours' => __('%d godz. temu', 'polski'),
     ],
 

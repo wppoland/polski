@@ -59,7 +59,7 @@ final class ProductSliderService implements Bootable, HasHooks
         }
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
-        echo $this->renderForProduct($product, $this->getSettings());
+        echo $this->renderForContext($product, $this->getSettings());
     }
 
     /**

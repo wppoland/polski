@@ -203,7 +203,6 @@ return static function (Container $c): void {
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
         $c->get(WithdrawalRepository::class),
-        $c->get(EmailService::class),
         $c->get(TemplateLoader::class),
     ));
 
@@ -226,7 +225,7 @@ return static function (Container $c): void {
     $c->singleton(ShopmarkManager::class, static fn () => new ShopmarkManager());
 
     // Integration manager.
-    $c->singleton(IntegrationManager::class, static fn () => new IntegrationManager($c));
+    $c->singleton(IntegrationManager::class, static fn () => new IntegrationManager());
 
     // Store API / Block checkout.
     $c->singleton(\Polski\Block\StoreApi\ProductDataExtension::class, static fn () => new \Polski\Block\StoreApi\ProductDataExtension(
@@ -299,9 +298,7 @@ return static function (Container $c): void {
         $c->get(TemplateLoader::class),
     ));
 
-    $c->singleton(CartHooks::class, static fn () => new CartHooks(
-        $c->get(TemplateLoader::class),
-    ));
+    $c->singleton(CartHooks::class, static fn () => new CartHooks());
 
     $c->singleton(OrderHooks::class, static fn () => new OrderHooks());
 

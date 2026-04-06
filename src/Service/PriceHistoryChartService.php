@@ -6,6 +6,7 @@ namespace Polski\Service;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
+use Polski\Model\OmnibusPrice;
 use Polski\Repository\OmnibusPriceRepository;
 
 /**
@@ -63,16 +64,19 @@ final class PriceHistoryChartService implements HasHooks
 
         $settings = $this->getSettings();
         $days = max(7, min(365, (int) $settings['days']));
-        $history = $this->priceRepository->getPriceHistory($product->get_id(), $days);
+        $history = $this->priceRepository->findHistory($product->get_id(), $days);
 
         if (count($history) < 2) {
             return;
         }
 
-        $prices = array_column($history, 'price');
-        $dates = array_column($history, 'date');
-        $minPrice = min($prices);
-        $maxPrice = max($prices);
+        $prices = array_map(
+            static fn (OmnibusPrice $row) => $row->effectivePrice(),
+            $history,
+        );
+
+        $minPrice = min(...$prices);
+        $maxPrice = max(...$prices);
         $currentPrice = (float) $product->get_price();
 
         // Don't show if price never changed.
@@ -98,7 +102,7 @@ final class PriceHistoryChartService implements HasHooks
             )),
         );
 
-        echo $svg;
+        echo wp_kses($svg, $this->inlineSvgAllowedTags());
 
         if ($settings['show_min_max']) {
             printf(
@@ -126,8 +130,8 @@ final class PriceHistoryChartService implements HasHooks
             return '';
         }
 
-        $min = min($prices);
-        $max = max($prices);
+        $min = min(...$prices);
+        $max = max(...$prices);
         $range = $max - $min;
 
         if ($range <= 0) {
@@ -173,5 +177,40 @@ final class PriceHistoryChartService implements HasHooks
             round($padding + $innerHeight - (($prices[$count - 1] - $min) / $range * $innerHeight), 1),
             esc_attr($lineColor),
         );
+    }
+
+    /**
+     * @return array<string, array<string, bool>>
+     */
+    private function inlineSvgAllowedTags(): array
+    {
+        return [
+            'svg' => [
+                'width' => true,
+                'height' => true,
+                'viewbox' => true,
+                'xmlns' => true,
+                'style' => true,
+            ],
+            'polygon' => [
+                'points' => true,
+                'fill' => true,
+                'opacity' => true,
+            ],
+            'polyline' => [
+                'points' => true,
+                'fill' => true,
+                'stroke' => true,
+                'stroke-width' => true,
+                'stroke-linejoin' => true,
+                'stroke-linecap' => true,
+            ],
+            'circle' => [
+                'cx' => true,
+                'cy' => true,
+                'r' => true,
+                'fill' => true,
+            ],
+        ];
     }
 }

@@ -24,7 +24,6 @@ final class WithdrawalService implements Bootable, HasHooks
 
     public function __construct(
         private readonly WithdrawalRepository $repository,
-        private readonly EmailService $emailService,
         private readonly TemplateLoader $templateLoader,
     ) {
     }
@@ -148,7 +147,7 @@ final class WithdrawalService implements Bootable, HasHooks
             // Add order note.
             $order->add_order_note(
                 (string) ($this->getSettings()['requested_order_note'] ?? __('Customer has submitted a withdrawal request.', 'polski')),
-                false,
+                0,
                 true,
             );
 
@@ -179,7 +178,7 @@ final class WithdrawalService implements Bootable, HasHooks
             if ($order instanceof \WC_Order) {
                 $order->add_order_note(
                     (string) ($this->getSettings()['confirmed_order_note'] ?? __('Withdrawal request confirmed.', 'polski')),
-                    true,
+                    1,
                     true,
                 );
             }

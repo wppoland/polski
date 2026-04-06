@@ -1,6 +1,6 @@
 {
     "name": "polski/ajax-filters",
-    "version": "1.3.0",
+    "version": "1.6.0",
     "title": "Polski AJAX Filters",
     "description": "Dynamic WooCommerce product filters with archive-safe GET fallback.",
     "category": "widgets",

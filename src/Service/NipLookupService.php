@@ -123,6 +123,8 @@ final class NipLookupService implements HasHooks
 
     /**
      * Save NIP to order meta on checkout.
+     *
+     * @param array<string, mixed> $data
      */
     public function saveNipToOrder(\WC_Order $order, array $data): void
     {

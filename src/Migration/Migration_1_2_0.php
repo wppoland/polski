@@ -3,11 +3,13 @@
 declare(strict_types=1);
 namespace Polski\Migration;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Adds storage for wishlist items.
  */
-final class Migration_1_2_0
+final class Migration_1_2_0 implements Migration
 {
     public const VERSION = '1.2.0';
 

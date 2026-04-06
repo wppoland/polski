@@ -142,12 +142,15 @@ final class QuickViewService implements Bootable, HasHooks
         return (string) ($this->getSettings()['modal_title'] ?? __('Product Quick View', 'polski'));
     }
 
+    /**
+     * @return list<int>
+     */
     public function getProductImages(\WC_Product $product): array
     {
         $images = [];
 
         if ((bool) ($this->getSettings()['show_image'] ?? true)) {
-            $mainId = $product->get_image_id();
+            $mainId = (int) $product->get_image_id();
 
             if ($mainId > 0) {
                 $images[] = $mainId;

@@ -3,11 +3,13 @@
 declare(strict_types=1);
 namespace Polski\Migration;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Initial migration: seed default taxonomy terms for Polish market.
  */
-final class Migration_1_0_0
+final class Migration_1_0_0 implements Migration
 {
     public const VERSION = '1.0.0';
 

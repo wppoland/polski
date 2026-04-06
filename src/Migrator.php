@@ -3,6 +3,8 @@
 declare(strict_types=1);
 namespace Polski;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Versioned database migration runner.
@@ -12,7 +14,7 @@ defined('ABSPATH') || exit;
  */
 final class Migrator
 {
-    /** @var list<class-string> */
+    /** @var list<class-string<Migration>> */
     private array $migrations = [];
 
     public function __construct()
@@ -28,23 +30,28 @@ final class Migrator
         $executed = $this->getExecutedVersions();
 
         foreach ($this->migrations as $migrationClass) {
-            /** @var object{VERSION: string} $migration */
-            $migration = new $migrationClass();
-            $version = $migration::VERSION;
-
-            if (in_array($version, $executed, true)) {
+            if (! is_subclass_of($migrationClass, Migration::class, true)) {
                 continue;
             }
 
-            $migration->run();
-            $this->markExecuted($version);
+            $versionConstant = (new \ReflectionClass($migrationClass))->getConstant('VERSION');
+            if (! is_string($versionConstant)) {
+                continue;
+            }
+
+            if (in_array($versionConstant, $executed, true)) {
+                continue;
+            }
+
+            $this->newMigration($migrationClass)->run();
+            $this->markExecuted($versionConstant);
 
             /**
              * Fires after a migration is executed.
              *
              * @param string $version The migration version.
              */
-            do_action('polski/migrated', $version);
+            do_action('polski/migrated', $versionConstant);
         }
     }
 
@@ -76,6 +83,14 @@ final class Migrator
     /**
      * Record a migration version as executed.
      */
+    /**
+     * @param class-string<Migration> $migrationClass
+     */
+    private function newMigration(string $migrationClass): Migration
+    {
+        return new $migrationClass();
+    }
+
     private function markExecuted(string $version): void
     {
         global $wpdb;
@@ -112,7 +127,7 @@ final class Migrator
         foreach ($files as $file) {
             $className = 'Polski\\Migration\\' . basename($file, '.php');
 
-            if (class_exists($className)) {
+            if (class_exists($className) && is_subclass_of($className, Migration::class, true)) {
                 $this->migrations[] = $className;
             }
         }

@@ -106,7 +106,7 @@ final class KSeFReadyService implements HasHooks
 
         $order = wc_get_order($postId);
 
-        if (!$order) {
+        if (! $order instanceof \WC_Order) {
             return;
         }
 

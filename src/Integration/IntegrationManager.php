@@ -5,19 +5,16 @@ namespace Polski\Integration;
 
 defined('ABSPATH') || exit;
 
-use Polski\Container;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
-use Polski\Service\OmnibusService;
 
 /**
  * Detects installed third-party plugins and activates integration layers.
  */
 final class IntegrationManager implements Bootable, HasHooks
 {
-    public function __construct(
-        private readonly Container $container,
-    ) {
+    public function __construct()
+    {
     }
 
     public function boot(): void
@@ -147,7 +144,7 @@ final class IntegrationManager implements Bootable, HasHooks
         $detected = [];
 
         foreach ($gatewayObjects as $gateway) {
-            if (! $gateway instanceof \WC_Payment_Gateway || ! $gateway->enabled === 'yes') {
+            if (! $gateway instanceof \WC_Payment_Gateway || $gateway->enabled !== 'yes') {
                 continue;
             }
 

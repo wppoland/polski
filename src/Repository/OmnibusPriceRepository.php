@@ -58,7 +58,7 @@ final class OmnibusPriceRepository
     public function findLowest(int $productId, int $days = 30): ?OmnibusPrice
     {
         $table = $this->tableName();
-        $date = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+        $date = $this->gmDateDaysAgo($days);
 
         $row = $this->wpdb->get_row(
             $this->wpdb->prepare(
@@ -84,7 +84,7 @@ final class OmnibusPriceRepository
     public function findLowestEffective(int $productId, int $days = 30): ?OmnibusPrice
     {
         $table = $this->tableName();
-        $date = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+        $date = $this->gmDateDaysAgo($days);
 
         $row = $this->wpdb->get_row(
             $this->wpdb->prepare(
@@ -112,7 +112,7 @@ final class OmnibusPriceRepository
     public function findHistory(int $productId, int $days = 30): array
     {
         $table = $this->tableName();
-        $date = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+        $date = $this->gmDateDaysAgo($days);
 
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
@@ -124,9 +124,11 @@ final class OmnibusPriceRepository
             ),
         );
 
+        $list = is_array($rows) ? $rows : [];
+
         return array_map(
-            static fn (object $row) => OmnibusPrice::fromRow($row),
-            $rows,
+            static fn (\stdClass $row) => OmnibusPrice::fromRow($row),
+            $list,
         );
     }
 
@@ -156,7 +158,7 @@ final class OmnibusPriceRepository
     public function deleteOlderThan(int $days): int
     {
         $table = $this->tableName();
-        $date = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+        $date = $this->gmDateDaysAgo($days);
 
         return (int) $this->wpdb->query(
             $this->wpdb->prepare(
@@ -188,6 +190,13 @@ final class OmnibusPriceRepository
         }
 
         return OmnibusPrice::fromRow($row);
+    }
+
+    private function gmDateDaysAgo(int $days): string
+    {
+        $ts = strtotime("-{$days} days");
+
+        return gmdate('Y-m-d H:i:s', $ts !== false ? $ts : time());
     }
 
     // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared

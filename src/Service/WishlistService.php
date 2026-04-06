@@ -251,6 +251,9 @@ final class WishlistService implements Bootable, HasHooks
         return count($this->getProducts());
     }
 
+    /**
+     * @return array{product_id: int, in_wishlist: bool, label: string}
+     */
     public function getButtonData(\WC_Product $product): array
     {
         $inWishlist = $this->isInWishlist($product->get_id());
@@ -318,7 +321,7 @@ final class WishlistService implements Bootable, HasHooks
             $sessionId,
             [
                 'expires' => time() + MONTH_IN_SECONDS * 6,
-                'path' => COOKIEPATH ?: '/',
+                'path' => COOKIEPATH,
                 'domain' => COOKIE_DOMAIN ?: '',
                 'secure' => is_ssl(),
                 'httponly' => true,

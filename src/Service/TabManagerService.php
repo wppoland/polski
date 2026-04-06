@@ -28,6 +28,10 @@ final class TabManagerService implements Bootable, HasHooks
         add_filter('woocommerce_product_tabs', [$this, 'filterTabs'], 30);
     }
 
+    /**
+     * @param array<string, mixed> $tabs
+     * @return array<string, mixed>
+     */
     public function filterTabs(array $tabs): array
     {
         if (! ModulesPage::isModuleEnabled('tab_manager')) {
