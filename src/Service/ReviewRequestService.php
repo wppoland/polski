@@ -98,17 +98,6 @@ final class ReviewRequestService implements HasHooks
             }
 
             $metaValue = (string) $order->get_meta(self::META_KEY, true);
-
-            if (! str_starts_with($metaValue, 'scheduled:')) {
-                continue;
-            }
-
-            $scheduledDate = substr($metaValue, 10); // After "scheduled:"
-
-            if ($scheduledDate > $today) {
-                continue; // Not yet due.
-            }
-
             $email = $order->get_billing_email();
 
             if ($email === '') {
@@ -123,14 +112,47 @@ final class ReviewRequestService implements HasHooks
                 continue;
             }
 
-            // Send the email.
-            if ($this->sendReviewRequestEmail($order)) {
-                $order->update_meta_data(self::META_KEY, 'sent:' . $today);
-            } else {
-                $order->update_meta_data(self::META_KEY, 'failed:' . $today);
+            // First email: scheduled:{date}.
+            if (str_starts_with($metaValue, 'scheduled:')) {
+                $scheduledDate = substr($metaValue, 10);
+
+                if ($scheduledDate > $today) {
+                    continue;
+                }
+
+                if ($this->sendReviewRequestEmail($order)) {
+                    $order->update_meta_data(self::META_KEY, 'sent1:' . $today);
+                } else {
+                    $order->update_meta_data(self::META_KEY, 'failed:' . $today);
+                }
+
+                $order->save();
+                continue;
             }
 
-            $order->save();
+            // Second reminder: sent1:{date} + reminder_delay days later.
+            if (str_starts_with($metaValue, 'sent1:')) {
+                $settings = $this->getSettings();
+                $reminderDelay = max(3, (int) ($settings['reminder_delay_days'] ?? 7));
+                $firstSentDate = substr($metaValue, 6);
+
+                try {
+                    $reminderDue = (new \DateTimeImmutable($firstSentDate))->modify('+' . $reminderDelay . ' days')->format('Y-m-d');
+                } catch (\Exception) {
+                    continue;
+                }
+
+                if ($reminderDue > $today) {
+                    continue;
+                }
+
+                if ($this->sendReviewRequestEmail($order, true)) {
+                    $order->update_meta_data(self::META_KEY, 'sent2:' . $today);
+                }
+
+                $order->save();
+                continue;
+            }
         }
     }
 
@@ -166,21 +188,32 @@ final class ReviewRequestService implements HasHooks
         exit;
     }
 
-    private function sendReviewRequestEmail(\WC_Order $order): bool
+    private function sendReviewRequestEmail(\WC_Order $order, bool $isReminder = false): bool
     {
         $settings = $this->getSettings();
         $email = $order->get_billing_email();
         $firstName = $order->get_billing_first_name();
+        $tokens = ['first_name' => $firstName, 'order_number' => $order->get_order_number()];
 
-        $subject = Formatter::interpolate(
-            (string) ($settings['email_subject'] ?? __('How was your purchase? Leave a review', 'polski')),
-            ['first_name' => $firstName, 'order_number' => $order->get_order_number()],
-        );
-
-        $intro = Formatter::interpolate(
-            (string) ($settings['email_intro'] ?? __('Hi {first_name}, thank you for your recent purchase. We would love to hear your feedback.', 'polski')),
-            ['first_name' => $firstName],
-        );
+        if ($isReminder) {
+            $subject = Formatter::interpolate(
+                (string) ($settings['reminder_subject'] ?? __('We still want to hear from you, {first_name}!', 'polski')),
+                $tokens,
+            );
+            $intro = Formatter::interpolate(
+                (string) ($settings['reminder_intro'] ?? __('Hi {first_name}, you have not yet reviewed your recent purchase. Your opinion helps other customers and helps us improve.', 'polski')),
+                $tokens,
+            );
+        } else {
+            $subject = Formatter::interpolate(
+                (string) ($settings['email_subject'] ?? __('How was your purchase? Leave a review', 'polski')),
+                $tokens,
+            );
+            $intro = Formatter::interpolate(
+                (string) ($settings['email_intro'] ?? __('Hi {first_name}, thank you for your recent purchase. We would love to hear your feedback.', 'polski')),
+                $tokens,
+            );
+        }
 
         $productRows = $this->buildProductReviewLinks($order);
 

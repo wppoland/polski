@@ -113,6 +113,28 @@ final class BadgeService implements Bootable, HasHooks
             $badges[] = ['text' => (string) ($settings['bestseller_badge_text'] ?? __('Bestseller', 'polski')), 'style' => 'accent'];
         }
 
+        // Discount percentage badge (e.g. "-25%").
+        if ((bool) ($settings['show_discount_percent_badge'] ?? false) && $product->is_on_sale()) {
+            $discount = $this->getDiscountPercent($product);
+            if ($discount > 0) {
+                $badges[] = ['text' => '-' . $discount . '%', 'style' => 'danger'];
+            }
+        }
+
+        // Free shipping badge.
+        if ((bool) ($settings['show_free_shipping_badge'] ?? false)) {
+            $shippingClass = $product->get_shipping_class();
+            $freeShippingClasses = array_filter(array_map('trim', explode(',', (string) ($settings['free_shipping_classes'] ?? 'free-shipping'))));
+            if (in_array($shippingClass, $freeShippingClasses, true)) {
+                $badges[] = ['text' => (string) ($settings['free_shipping_badge_text'] ?? __('Free shipping', 'polski')), 'style' => 'success'];
+            }
+        }
+
+        // Out of stock badge.
+        if ((bool) ($settings['show_out_of_stock_badge'] ?? true) && ! $product->is_in_stock()) {
+            $badges[] = ['text' => (string) ($settings['out_of_stock_badge_text'] ?? __('Out of stock', 'polski')), 'style' => 'neutral'];
+        }
+
         $unique = [];
 
         foreach ($badges as $badge) {
@@ -180,5 +202,17 @@ final class BadgeService implements Bootable, HasHooks
     {
         $threshold = max(1, (int) ($this->getSettings()['bestseller_threshold'] ?? 25));
         return (int) $product->get_total_sales() >= $threshold;
+    }
+
+    private function getDiscountPercent(\WC_Product $product): int
+    {
+        $regular = (float) $product->get_regular_price();
+        $sale = (float) $product->get_sale_price();
+
+        if ($regular <= 0 || $sale <= 0 || $sale >= $regular) {
+            return 0;
+        }
+
+        return (int) round((($regular - $sale) / $regular) * 100);
     }
 }

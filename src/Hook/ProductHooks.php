@@ -433,6 +433,77 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
+        // Add Delivery Time (OfferShippingDetails) if available.
+        if ($settings['schema_delivery_time'] ?? true) {
+            $deliveryTime = $this->deliveryTime->getDeliveryTime($product);
+            if ($deliveryTime !== null && $deliveryTime !== '') {
+                $extraData['shippingDetails'] = [
+                    '@type' => 'OfferShippingDetails',
+                    'deliveryTime' => [
+                        '@type' => 'ShippingDeliveryTime',
+                        'handlingTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => 0,
+                            'maxValue' => 1,
+                            'unitCode' => 'DAY',
+                        ],
+                        'transitTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => 1,
+                            'maxValue' => (int) preg_replace('/\D/', '', $deliveryTime) ?: 5,
+                            'unitCode' => 'DAY',
+                        ],
+                    ],
+                    'shippingDestination' => [
+                        '@type' => 'DefinedRegion',
+                        'addressCountry' => 'PL',
+                    ],
+                ];
+            }
+        }
+
+        // Add GPSR (Product Safety) data if available.
+        $gpsrManufacturer = get_post_meta($productId, '_polski_manufacturer_name', true);
+        $gpsrContact = get_post_meta($productId, '_polski_manufacturer_contact', true);
+        if (! empty($gpsrManufacturer)) {
+            $extraData['manufacturer'] = $extraData['manufacturer'] ?? [
+                '@type' => 'Organization',
+                'name' => $gpsrManufacturer,
+            ];
+            if (! empty($gpsrContact)) {
+                $extraData['manufacturer']['contactPoint'] = [
+                    '@type' => 'ContactPoint',
+                    'contactType' => 'product safety',
+                    'description' => $gpsrContact,
+                ];
+            }
+        }
+
+        // Add Food/Nutrition data if available.
+        $nutrients = get_post_meta($productId, '_polski_nutrients', true);
+        if (is_array($nutrients) && ! empty($nutrients)) {
+            $nutritionData = ['@type' => 'NutritionInformation'];
+            $nutrientMap = [
+                'energy_kcal' => 'calories',
+                'fat' => 'fatContent',
+                'saturated_fat' => 'saturatedFatContent',
+                'carbohydrates' => 'carbohydrateContent',
+                'sugars' => 'sugarContent',
+                'protein' => 'proteinContent',
+                'salt' => 'sodiumContent',
+                'fiber' => 'fiberContent',
+            ];
+            foreach ($nutrientMap as $metaKey => $schemaKey) {
+                if (isset($nutrients[$metaKey]) && $nutrients[$metaKey] !== '') {
+                    $unit = $metaKey === 'energy_kcal' ? ' kcal' : ' g';
+                    $nutritionData[$schemaKey] = $nutrients[$metaKey] . $unit;
+                }
+            }
+            if (count($nutritionData) > 1) {
+                $extraData['nutrition'] = $nutritionData;
+            }
+        }
+
         // Cache the additional generated schema array for 12 hours (cache gets invalidated on product save)
         set_transient($cacheKey, $extraData, 12 * HOUR_IN_SECONDS);
 

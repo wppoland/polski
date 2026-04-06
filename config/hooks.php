@@ -38,8 +38,23 @@ use Polski\Service\ProductSliderService;
 use Polski\Service\WaitlistService;
 use Polski\Service\MinimumOrderService;
 use Polski\Service\ReviewRequestService;
+use Polski\Service\AutoRestoreStockService;
+use Polski\Service\AjaxAddToCartService;
+use Polski\Service\CustomCheckoutFieldsService;
+use Polski\Service\DataLayerService;
+use Polski\Service\StockExportService;
+use Polski\Service\ExpertReviewService;
+use Polski\Service\SocialLoginService;
+use Polski\Service\ProductAuthorService;
+use Polski\Service\OrderExportService;
+use Polski\Service\FaqService;
+use Polski\Service\SocialProofService;
+use Polski\Service\ProductQAService;
+use Polski\Service\PriceHistoryChartService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
+use Polski\Service\TrustBadgeService;
+use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
 use Polski\Service\DisputeResolutionService;
 use Polski\Shortcode\ShortcodeManager;
@@ -80,8 +95,23 @@ return [
     WaitlistService::class,
     MinimumOrderService::class,
     ReviewRequestService::class,
+    AutoRestoreStockService::class,
+    AjaxAddToCartService::class,
+    CustomCheckoutFieldsService::class,
+    DataLayerService::class,
+    StockExportService::class,
+    ExpertReviewService::class,
+    SocialLoginService::class,
+    ProductAuthorService::class,
+    OrderExportService::class,
+    FaqService::class,
+    SocialProofService::class,
+    ProductQAService::class,
+    PriceHistoryChartService::class,
     InfiniteScrollService::class,
     PopupService::class,
+    TrustBadgeService::class,
+    LiveCartService::class,
 
     // New compliance & feature modules.
     \Polski\Service\GPSRService::class,

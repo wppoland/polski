@@ -4,7 +4,7 @@ Donate link: https://wppoland.com/donate
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.4.0
+Stable tag: 1.6.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,20 @@ No other external services are used. Deactivation feedback and all other data ar
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.6.0 =
+* Added Social Login module (Google + Facebook OAuth2 with auto-registration)
+* Added Product Authors taxonomy for bookstores and publishers
+* Added Expert Reviews custom post type with ratings and Schema.org markup
+* Added Order Export module (CSV with 30+ configurable fields)
+* Added FAQ module with categories, accordion shortcode, and Schema.org FAQPage
+* Enhanced Custom Checkout Fields with 5 conditional logic types (field value, shipping, payment, category, cart total)
+
+= 1.5.0 =
+* Added Auto Restore Stock module - automatically restores product stock on order cancellation, refund or failure
+* Added AJAX Add to Cart module - add products to cart without page reload, including variable products
+* Added Custom Checkout Fields module - add, modify and reorder checkout fields with multiple field types and validation
+* New "Stock & Cart" and "Checkout" module groups in the admin panel
 
 = 1.4.0 =
 * Added "From price" display for variable products (shows "from XX PLN" instead of price range)
