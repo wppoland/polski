@@ -139,7 +139,7 @@ final class CheckoutValidation implements HasHooks
     {
         // Store checkbox states in session for later validation.
         if (isset($data['checkboxes']) && is_array($data['checkboxes'])) {
-            WC()->session?->set('polski_checkboxes', $data['checkboxes']);
+            WC()->session->set('polski_checkboxes', $data['checkboxes']);
         }
     }
 
@@ -154,7 +154,7 @@ final class CheckoutValidation implements HasHooks
 
         // Also check session fallback.
         if (empty($checkboxStates)) {
-            $checkboxStates = WC()->session?->get('polski_checkboxes', []) ?? [];
+            $checkboxStates = WC()->session->get('polski_checkboxes', []) ?? [];
         }
 
         // Validate required checkboxes.
@@ -215,7 +215,7 @@ final class CheckoutValidation implements HasHooks
         }
 
         // Clean up session.
-        WC()->session?->set('polski_checkboxes', null);
+        WC()->session->set('polski_checkboxes', null);
     }
 
     /**

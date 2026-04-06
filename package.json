@@ -1,6 +1,6 @@
 {
     "name": "@wppoland/polski",
-    "version": "1.3.2",
+    "version": "1.6.0",
     "description": "Polish e-commerce legal compliance for WooCommerce",
     "private": true,
     "scripts": {

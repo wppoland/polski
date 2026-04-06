@@ -79,18 +79,22 @@ final class FeaturedVideoService implements Bootable, HasHooks
         $autoplay = (bool) ($this->getSettings()['autoplay'] ?? false);
 
         if (preg_match('/\.(mp4|m4v|webm|ogv)(\?.*)?$/i', $url) === 1) {
-            return wp_video_shortcode([
+            $shortcode = wp_video_shortcode([
                 'src' => $url,
-                'autoplay' => $autoplay,
+                'autoplay' => $autoplay ? 'on' : '',
                 'preload' => 'metadata',
             ]);
+
+            return is_string($shortcode) ? $shortcode : '';
         }
 
         if ($autoplay) {
             $url = add_query_arg('autoplay', '1', $url);
         }
 
-        return (string) wp_oembed_get($url);
+        $embed = wp_oembed_get($url);
+
+        return is_string($embed) ? $embed : '';
     }
 
     private function renderCurrentProductVideo(): void

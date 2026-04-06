@@ -67,7 +67,11 @@ final class ProductQAService implements HasHooks
         $count = $this->getQuestionCount($product->get_id());
 
         $tabs['product_qa'] = [
-            'title' => sprintf(__('Questions (%d)', 'polski'), $count),
+            'title' => sprintf(
+                /* translators: %d: number of questions */
+                __('Questions (%d)', 'polski'),
+                $count,
+            ),
             'priority' => 25,
             'callback' => [$this, 'renderTabContent'],
         ];
@@ -116,28 +120,32 @@ final class ProductQAService implements HasHooks
                 echo '<div class="polski-qa-item" style="border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;overflow:hidden">';
 
                 // Question.
+                $questionDateTs = strtotime((string) $question->comment_date);
+                $questionDateFormatted = wp_date(get_option('date_format'), $questionDateTs !== false ? $questionDateTs : null);
                 printf(
                     '<div style="padding:12px 16px;background:#f8fafc;display:flex;gap:8px;align-items:flex-start"><span style="color:#0369a1;font-weight:700;font-size:16px">Q</span><div><div style="font-weight:600">%s</div><div style="font-size:12px;color:#94a3b8;margin-top:4px">%s - %s</div></div></div>',
-                    esc_html($question->comment_content),
-                    esc_html($question->comment_author),
-                    esc_html(wp_date(get_option('date_format'), strtotime($question->comment_date))),
+                    esc_html((string) $question->comment_content),
+                    esc_html((string) $question->comment_author),
+                    esc_html(is_string($questionDateFormatted) ? $questionDateFormatted : ''),
                 );
 
                 // Answers.
                 foreach ($answers as $answer) {
-                    $votes = (int) get_comment_meta($answer->comment_ID, '_polski_qa_votes', true);
+                    $votes = (int) get_comment_meta((int) $answer->comment_ID, '_polski_qa_votes', true);
                     $isAdmin = user_can((int) $answer->user_id, 'manage_woocommerce');
                     $authorBadge = $isAdmin ? ' <span style="background:#0369a1;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px">' . esc_html__('Store', 'polski') . '</span>' : '';
 
+                    $answerDateTs = strtotime((string) $answer->comment_date);
+                    $answerDateFormatted = wp_date(get_option('date_format'), $answerDateTs !== false ? $answerDateTs : null);
                     printf(
                         '<div style="padding:12px 16px;border-top:1px solid #f1f5f9;display:flex;gap:8px;align-items:flex-start"><span style="color:#16a34a;font-weight:700;font-size:16px">A</span><div style="flex:1"><div>%s</div><div style="font-size:12px;color:#94a3b8;margin-top:4px">%s%s - %s | <button onclick="polskiQaVote(%d)" style="background:none;border:none;cursor:pointer;color:#64748b;font-size:12px">%s (%d)</button></div></div></div>',
-                        wp_kses_post($answer->comment_content),
-                        esc_html($answer->comment_author),
-                        $authorBadge,
-                        esc_html(wp_date(get_option('date_format'), strtotime($answer->comment_date))),
+                        wp_kses_post((string) $answer->comment_content),
+                        esc_html((string) $answer->comment_author),
+                        wp_kses_post($authorBadge),
+                        esc_html(is_string($answerDateFormatted) ? $answerDateFormatted : ''),
                         (int) $answer->comment_ID,
                         esc_html__('Helpful', 'polski'),
-                        $votes,
+                        (int) $votes,
                     );
                 }
 
@@ -147,7 +155,7 @@ final class ProductQAService implements HasHooks
                     echo '<form method="post" style="display:flex;gap:8px">';
                     wp_nonce_field('polski_qa_answer', '_polski_qa_answer_nonce');
                     printf('<input type="hidden" name="question_id" value="%d">', (int) $question->comment_ID);
-                    printf('<input type="hidden" name="product_id" value="%d">', $productId);
+                    printf('<input type="hidden" name="product_id" value="%d">', (int) $productId);
                     echo '<input type="hidden" name="polski_qa_action" value="answer">';
                     printf('<input type="text" name="answer_text" placeholder="%s" required style="flex:1;padding:8px 12px;border:1px solid #d1d5db;border-radius:6px;font-size:13px">', esc_attr__('Write an answer...', 'polski'));
                     printf('<button type="submit" style="padding:8px 16px;background:#16a34a;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;white-space:nowrap">%s</button>', esc_html__('Answer', 'polski'));
@@ -165,7 +173,7 @@ final class ProductQAService implements HasHooks
         printf('<h4 style="margin-bottom:8px">%s</h4>', esc_html__('Ask a question', 'polski'));
         echo '<form method="post" style="display:flex;gap:8px">';
         wp_nonce_field('polski_qa_question', '_polski_qa_question_nonce');
-        printf('<input type="hidden" name="product_id" value="%d">', $productId);
+        printf('<input type="hidden" name="product_id" value="%d">', (int) $productId);
         echo '<input type="hidden" name="polski_qa_action" value="question">';
         printf('<input type="text" name="question_text" placeholder="%s" required style="flex:1;padding:10px 14px;border:1px solid #d1d5db;border-radius:6px;font-size:14px">', esc_attr__('Your question about this product...', 'polski'));
 
@@ -305,7 +313,11 @@ final class ProductQAService implements HasHooks
         $message = sprintf(
             '<p><strong>%s</strong></p><p>%s</p><p><a href="%s">%s</a></p>',
             esc_html($commentData['comment_content'] ?? ''),
-            esc_html(sprintf(__('Asked by: %s', 'polski'), $commentData['comment_author'] ?? '')),
+            esc_html(sprintf(
+                /* translators: %s: name of the person who asked the question */
+                __('Asked by: %s', 'polski'),
+                $commentData['comment_author'] ?? '',
+            )),
             esc_url(get_edit_post_link($product->get_id()) . '#tab-product_qa'),
             esc_html__('Answer this question', 'polski'),
         );
@@ -340,7 +352,7 @@ final class ProductQAService implements HasHooks
             $schemaAnswers = [];
 
             foreach ($answers as $answer) {
-                $votes = (int) get_comment_meta($answer->comment_ID, '_polski_qa_votes', true);
+                $votes = (int) get_comment_meta((int) $answer->comment_ID, '_polski_qa_votes', true);
                 $schemaAnswers[] = [
                     '@type' => 'Answer',
                     'text' => $answer->comment_content,
@@ -389,7 +401,7 @@ final class ProductQAService implements HasHooks
      */
     private function getQuestions(int $productId): array
     {
-        return get_comments([
+        $comments = get_comments([
             'post_id' => $productId,
             'type' => self::COMMENT_TYPE_Q,
             'parent' => 0,
@@ -398,6 +410,10 @@ final class ProductQAService implements HasHooks
             'order' => 'DESC',
             'number' => 50,
         ]);
+
+        return is_array($comments)
+            ? array_values(array_filter($comments, static fn ($c): bool => $c instanceof \WP_Comment))
+            : [];
     }
 
     /**
@@ -405,13 +421,17 @@ final class ProductQAService implements HasHooks
      */
     private function getAnswers(int $questionId): array
     {
-        return get_comments([
+        $comments = get_comments([
             'type' => self::COMMENT_TYPE_A,
             'parent' => $questionId,
             'status' => 'approve',
             'orderby' => 'comment_date',
             'order' => 'ASC',
         ]);
+
+        return is_array($comments)
+            ? array_values(array_filter($comments, static fn ($c): bool => $c instanceof \WP_Comment))
+            : [];
     }
 
     private function getQuestionCount(int $productId): int

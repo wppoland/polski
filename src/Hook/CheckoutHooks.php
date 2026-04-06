@@ -169,9 +169,13 @@ final class CheckoutHooks implements Bootable, HasHooks
      * Validate registration form checkboxes.
      *
      * @param \WP_Error $errors
-     * @return \WP_Error
      */
-    public function validateRegistrationCheckboxes(\WP_Error $errors): \WP_Error
+    public function validateRegistrationCheckboxes(
+        \WP_Error $errors,
+        string $username = '',
+        string $password = '',
+        string $email = '',
+    ): \WP_Error
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $result = $this->checkboxes->validate(CheckboxContext::Registration, $_POST);
@@ -213,6 +217,8 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     /**
      * Save checkbox states to order meta for reference.
+     *
+     * @param array<string, mixed> $data
      */
     public function saveCheckboxStatesToOrder(\WC_Order $order, array $data): void
     {

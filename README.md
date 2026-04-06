@@ -225,7 +225,21 @@ npm run test:e2e
 
 # Static analysis
 composer analyse
+
+# PHPCS (security-focused ruleset; see phpcs.xml.dist)
+composer cs
+
+# Bump release version (updates plugin header, blocks, stubs, then npm package + lockfile)
+# ./scripts/bump-version.sh 1.7.0
 ```
+
+CI runs `composer audit` and `npm audit --audit-level=high` (fails the job if Composer reports a vulnerability or npm reports high/critical issues).
+
+### PHPUnit integration suite and Playwright E2E
+
+GitHub Actions runs the **unit** PHPUnit suite only (`composer test` / `vendor/bin/phpunit --testsuite unit`). The **integration** suite in `tests/Integration` expects a full WordPress + WooCommerce runtime (bootstrap in `tests/bootstrap.php`). Run it locally after `npm run env:start` and installing WooCommerce in that environment, for example: `vendor/bin/phpunit --testsuite integration`.
+
+Playwright end-to-end tests (`npm run test:e2e`) are not executed on every push. Run them locally after `npm run env:start`, or trigger the **Manual wp-env E2E** workflow in GitHub Actions (`.github/workflows/manual-wp-env-e2e.yml`) for a Docker-based run without a sibling `polski-pro` checkout. That workflow uses `continue-on-error` until it is validated on your runners.
 
 ### Local smoke checks
 

@@ -99,8 +99,12 @@ final class OrderExportService implements HasHooks
         echo '<tr><th>' . esc_html__('Order statuses', 'polski') . '</th><td>';
 
         foreach ($statuses as $slug => $label) {
-            $checked = in_array($slug, ['wc-processing', 'wc-completed'], true) ? 'checked' : '';
-            printf('<label style="display:inline-block;margin-right:12px"><input type="checkbox" name="statuses[]" value="%s" %s> %s</label>', esc_attr($slug), $checked, esc_html($label));
+            printf(
+                '<label style="display:inline-block;margin-right:12px"><input type="checkbox" name="statuses[]" value="%s" %s> %s</label>',
+                esc_attr($slug),
+                checked(in_array($slug, ['wc-processing', 'wc-completed'], true), true, false),
+                esc_html($label),
+            );
         }
 
         echo '</td></tr>';
@@ -140,7 +144,7 @@ final class OrderExportService implements HasHooks
         $dateFrom = sanitize_text_field($_POST['date_from'] ?? date('Y-m-01'));
         $dateTo = sanitize_text_field($_POST['date_to'] ?? date('Y-m-d'));
         $statuses = array_map('sanitize_text_field', $_POST['statuses'] ?? ['wc-processing', 'wc-completed']);
-        $fields = array_map('sanitize_key', $_POST['fields'] ?? ['order_id', 'order_date', 'order_total']);
+        $fields = array_values(array_map('sanitize_key', $_POST['fields'] ?? ['order_id', 'order_date', 'order_total']));
 
         update_option('polski_order_export_fields', $fields);
 
@@ -151,6 +155,7 @@ final class OrderExportService implements HasHooks
             'orderby' => 'date',
             'order' => 'DESC',
         ]);
+        $orders = is_array($orders) ? $orders : [];
 
         $filename = 'orders_' . $dateFrom . '_' . $dateTo . '.csv';
 
@@ -159,6 +164,10 @@ final class OrderExportService implements HasHooks
         header('Pragma: no-cache');
 
         $output = fopen('php://output', 'w');
+        if ($output === false) {
+            exit;
+        }
+
         fwrite($output, "\xEF\xBB\xBF"); // BOM.
 
         // Header row.
@@ -228,7 +237,19 @@ final class OrderExportService implements HasHooks
             'shipping_country' => $order->get_shipping_country(),
             'customer_note' => $order->get_customer_note(),
             'product_names' => implode(' | ', array_map(fn ($item) => $item->get_name() . ' x' . $item->get_quantity(), $order->get_items())),
-            'product_skus' => implode(' | ', array_filter(array_map(fn ($item) => $item->get_product()?->get_sku() ?? '', $order->get_items()))),
+            'product_skus' => implode(' | ', array_filter(array_map(static function (\WC_Order_Item $item): string {
+                if (! $item instanceof \WC_Order_Item_Product) {
+                    return '';
+                }
+
+                $product = $item->get_product();
+
+                if (! $product instanceof \WC_Product) {
+                    return '';
+                }
+
+                return (string) $product->get_sku();
+            }, $order->get_items()))),
             'product_quantities' => implode(' | ', array_map(fn ($item) => (string) $item->get_quantity(), $order->get_items())),
             'coupon_codes' => implode(', ', $order->get_coupon_codes()),
             default => '',

@@ -307,6 +307,9 @@ final class CompareService implements Bootable, HasHooks
         return count($this->getProducts());
     }
 
+    /**
+     * @return array{product_id: int, in_compare: bool, label: string, count: int, compare_url: string}
+     */
     public function getButtonData(\WC_Product $product): array
     {
         $inCompare = $this->isInCompare($product->get_id());
@@ -518,7 +521,7 @@ final class CompareService implements Bootable, HasHooks
             $sessionId,
             [
                 'expires' => time() + MONTH_IN_SECONDS * 6,
-                'path' => COOKIEPATH ?: '/',
+                'path' => COOKIEPATH,
                 'domain' => COOKIE_DOMAIN ?: '',
                 'secure' => is_ssl(),
                 'httponly' => true,

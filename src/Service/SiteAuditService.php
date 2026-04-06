@@ -81,6 +81,7 @@ final class SiteAuditService implements HasHooks
                 self::STATUS_PASS => '<span style="color:#46b450;">&#10003;</span>',
                 self::STATUS_WARNING => '<span style="color:#f0ad4e;">&#9888;</span>',
                 self::STATUS_FAIL => '<span style="color:#dc3232;">&#10007;</span>',
+                default => '<span style="color:#999;">?</span>',
             };
             echo '<tr>';
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $icon contains static HTML entities
@@ -730,7 +731,7 @@ final class SiteAuditService implements HasHooks
         check_ajax_referer('polski_site_audit');
 
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(-1);
+            wp_die('0');
         }
 
         wp_send_json_success($this->runAudit());

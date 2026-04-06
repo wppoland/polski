@@ -9,6 +9,9 @@ use Elementor\Widget_Base;
 
 abstract class BaseWidget extends Widget_Base
 {
+    /**
+     * @return list<string>
+     */
     public function get_categories(): array
     {
         return ['polski'];

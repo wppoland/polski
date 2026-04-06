@@ -117,7 +117,7 @@ final class CheckboxService implements Bootable, HasHooks
          * @param CheckboxContext      $context     The display context.
          * @param array<string, mixed> $cartContext The cart context for conditionals.
          */
-        $filtered = apply_filters('polski/checkboxes/for_context', array_values($filtered), $context, $cartContext);
+        $filtered = apply_filters('polski/checkboxes/for_context', $filtered, $context, $cartContext);
 
         return $filtered;
     }

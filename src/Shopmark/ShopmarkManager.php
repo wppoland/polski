@@ -34,7 +34,7 @@ final class ShopmarkManager
 
         usort($filtered, static fn (Shopmark $a, Shopmark $b) => $a->priority <=> $b->priority);
 
-        return array_values($filtered);
+        return $filtered;
     }
 
     public function isEnabled(string $id): bool

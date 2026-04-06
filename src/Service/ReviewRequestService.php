@@ -91,6 +91,7 @@ final class ReviewRequestService implements HasHooks
             'orderby' => 'date',
             'order' => 'ASC',
         ]);
+        $orders = is_array($orders) ? $orders : [];
 
         foreach ($orders as $order) {
             if (! $order instanceof \WC_Order) {
@@ -242,6 +243,10 @@ final class ReviewRequestService implements HasHooks
         $rows = '';
 
         foreach ($order->get_items('line_item') as $item) {
+            if (! $item instanceof \WC_Order_Item_Product) {
+                continue;
+            }
+
             $product = $item->get_product();
 
             if (! $product instanceof \WC_Product) {
@@ -261,7 +266,7 @@ final class ReviewRequestService implements HasHooks
             }
 
             $name = esc_html($product->get_name());
-            $image = wp_get_attachment_image_url($product->get_image_id(), 'woocommerce_thumbnail') ?: '';
+            $image = wp_get_attachment_image_url((int) $product->get_image_id(), 'woocommerce_thumbnail') ?: '';
             $reviewUrl = esc_url($product->get_permalink() . '#reviews');
             $ctaText = (string) ($this->getSettings()['review_cta_text'] ?? __('Leave a review', 'polski'));
 

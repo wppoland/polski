@@ -660,22 +660,6 @@ final class AdminPage implements Bootable, HasHooks
         return $labels[$topic] ?? $topic;
     }
 
-    private function renderWizardInput(string $name, string $label, string $value, bool $required = false, string $type = 'text'): void
-    {
-        echo '<tr>';
-        echo '<th scope="row"><label for="polski-wizard-' . esc_attr($name) . '">' . esc_html($label) . '</label></th>';
-        echo '<td><input class="regular-text" type="' . esc_attr($type) . '" id="polski-wizard-' . esc_attr($name) . '" name="' . esc_attr($name) . '" value="' . esc_attr($value) . '"' . ($required ? ' required' : '') . ' /></td>';
-        echo '</tr>';
-    }
-
-    private function renderWizardCheckbox(string $name, string $label, bool $checked): void
-    {
-        echo '<tr>';
-        echo '<th scope="row">' . esc_html($label) . '</th>';
-        echo '<td><label><input type="checkbox" name="' . esc_attr($name) . '" value="1"' . checked($checked, true, false) . ' /> ' . esc_html__('Enable', 'polski') . '</label></td>';
-        echo '</tr>';
-    }
-
     /**
      * PHP-rendered dashboard shown when the React app is not built.
      */
@@ -799,7 +783,7 @@ final class AdminPage implements Bootable, HasHooks
             echo '</tbody></table>';
 
             // Show generate button only if some pages are missing.
-            if (! $allPagesConfigured || ! $anyPageExists) {
+            if (! $allPagesConfigured) {
                 $this->renderGenerateButton();
             }
         } else {

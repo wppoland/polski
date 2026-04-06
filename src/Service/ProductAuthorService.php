@@ -81,14 +81,16 @@ final class ProductAuthorService implements HasHooks
         $links = [];
 
         foreach ($authors as $author) {
+            $termLink = get_term_link($author);
+            $href = is_wp_error($termLink) ? '#' : $termLink;
             $links[] = sprintf(
                 '<a href="%s" style="color:#0369a1;text-decoration:none">%s</a>',
-                esc_url(get_term_link($author)),
+                esc_url($href),
                 esc_html($author->name),
             );
         }
 
-        printf('%s: %s', esc_html__('Author', 'polski'), implode(', ', $links));
+        printf('%s: %s', esc_html__('Author', 'polski'), wp_kses_post(implode(', ', $links)));
 
         echo '</div>';
     }
@@ -110,11 +112,9 @@ final class ProductAuthorService implements HasHooks
             return;
         }
 
-        $names = array_map(fn ($a) => esc_html($a->name), $authors);
-
         printf(
             '<div class="polski-product-author-loop" style="font-size:12px;color:#94a3b8;margin-bottom:4px">%s</div>',
-            implode(', ', $names),
+            esc_html(implode(', ', array_map(static fn ($a) => $a->name, $authors))),
         );
     }
 
@@ -142,10 +142,12 @@ final class ProductAuthorService implements HasHooks
         $persons = [];
 
         foreach ($authors as $author) {
+            $termLink = get_term_link($author);
+            $url = is_wp_error($termLink) ? '' : $termLink;
             $persons[] = [
                 '@type' => 'Person',
                 'name' => $author->name,
-                'url' => get_term_link($author),
+                'url' => $url,
             ];
         }
 
@@ -169,6 +171,10 @@ final class ProductAuthorService implements HasHooks
     {
         $terms = wp_get_post_terms($productId, self::TAXONOMY);
 
-        return (is_array($terms) && ! is_wp_error($terms)) ? $terms : [];
+        if (is_wp_error($terms)) {
+            return [];
+        }
+
+        return array_values($terms);
     }
 }

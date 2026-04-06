@@ -15,6 +15,28 @@ use Polski\Contract\HasHooks;
  * Fields are saved as order meta and displayed in admin, emails, and My Account.
  *
  * Inspired by Flexible Checkout Fields but with a simpler, WordPress-native approach.
+ *
+ * @phpstan-type CheckoutField array{
+ *     name: string,
+ *     label: string,
+ *     type: string,
+ *     section: string,
+ *     required: bool,
+ *     priority: int,
+ *     placeholder: string,
+ *     options: string,
+ *     css_class: string,
+ *     show_in_email: bool,
+ *     show_in_admin: bool,
+ *     show_in_account: bool,
+ *     enabled: bool,
+ *     conditional_shipping: string,
+ *     conditional_payment: string,
+ *     conditional_field: string,
+ *     conditional_value: string,
+ *     conditional_category: int,
+ *     conditional_cart_min: float
+ * }
  */
 final class CustomCheckoutFieldsService implements HasHooks
 {
@@ -51,15 +73,59 @@ final class CustomCheckoutFieldsService implements HasHooks
     }
 
     /**
-     * Get configured custom fields.
+     * Get configured custom fields (normalized for consistent keys and types).
      *
-     * @return list<array{name: string, label: string, type: string, section: string, required: bool, priority: int, placeholder: string, options: string, css_class: string, show_in_email: bool, show_in_admin: bool, show_in_account: bool, enabled: bool, conditional_shipping: string}>
+     * @return list<CheckoutField>
      */
     public function getFields(): array
     {
-        $fields = get_option(self::OPTION, []);
+        $raw = get_option(self::OPTION, []);
 
-        return is_array($fields) ? $fields : [];
+        if (! is_array($raw)) {
+            return [];
+        }
+
+        $out = [];
+
+        foreach ($raw as $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+
+            $out[] = $this->normalizeCheckoutField($row);
+        }
+
+        return $out;
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     *
+     * @return CheckoutField
+     */
+    private function normalizeCheckoutField(array $row): array
+    {
+        return [
+            'name' => sanitize_key($row['name'] ?? ''),
+            'label' => sanitize_text_field($row['label'] ?? ''),
+            'type' => sanitize_text_field($row['type'] ?? 'text'),
+            'section' => sanitize_text_field($row['section'] ?? 'billing'),
+            'required' => ! empty($row['required']),
+            'priority' => max(1, min(999, (int) ($row['priority'] ?? 100))),
+            'placeholder' => sanitize_text_field($row['placeholder'] ?? ''),
+            'options' => sanitize_textarea_field($row['options'] ?? ''),
+            'css_class' => sanitize_text_field($row['css_class'] ?? 'form-row-wide'),
+            'show_in_email' => ! empty($row['show_in_email']),
+            'show_in_admin' => ! empty($row['show_in_admin']),
+            'show_in_account' => ! empty($row['show_in_account']),
+            'enabled' => ! empty($row['enabled']),
+            'conditional_shipping' => sanitize_text_field($row['conditional_shipping'] ?? ''),
+            'conditional_payment' => sanitize_text_field($row['conditional_payment'] ?? ''),
+            'conditional_field' => sanitize_key($row['conditional_field'] ?? ''),
+            'conditional_value' => sanitize_text_field($row['conditional_value'] ?? ''),
+            'conditional_category' => absint($row['conditional_category'] ?? 0),
+            'conditional_cart_min' => (float) ($row['conditional_cart_min'] ?? 0),
+        ];
     }
 
     /**
@@ -75,20 +141,20 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $section = $field['section'] ?? 'billing';
-            $key = $field['name'] ?? '';
+            $section = $field['section'];
+            $key = $field['name'];
 
-            if (empty($key)) {
+            if ($key === '') {
                 continue;
             }
 
             $fieldConfig = [
-                'type' => $field['type'] ?? 'text',
-                'label' => $field['label'] ?? '',
-                'required' => ! empty($field['required']),
-                'priority' => (int) ($field['priority'] ?? 100),
-                'placeholder' => $field['placeholder'] ?? '',
-                'class' => array_filter(explode(' ', $field['css_class'] ?? 'form-row-wide')),
+                'type' => $field['type'],
+                'label' => $field['label'],
+                'required' => $field['required'],
+                'priority' => $field['priority'],
+                'placeholder' => $field['placeholder'],
+                'class' => array_filter(explode(' ', $field['css_class'])),
             ];
 
             // Select/radio options.
@@ -129,16 +195,21 @@ final class CustomCheckoutFieldsService implements HasHooks
      */
     public function validateFields(): void
     {
+        if (! $this->isVerifiedCheckoutPost()) {
+            return;
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- WooCommerce checkout nonce verified above.
         foreach ($this->getFields() as $field) {
             if (empty($field['enabled']) || empty($field['required'])) {
                 continue;
             }
 
-            $name = $field['name'] ?? '';
+            $name = $field['name'];
             $value = $_POST[$name] ?? '';
 
             if (empty($value) && $value !== '0') {
-                $label = $field['label'] ?? $name;
+                $label = $field['label'];
                 wc_add_notice(
                     sprintf(
                         /* translators: %s: field label */
@@ -150,17 +221,18 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             // Email validation.
-            if (($field['type'] ?? '') === 'email' && ! empty($value) && ! is_email($value)) {
+            if ($field['type'] === 'email' && ! empty($value) && ! is_email($value)) {
                 wc_add_notice(
                     sprintf(
                         /* translators: %s: field label */
                         __('%s is not a valid email address.', 'polski'),
-                        '<strong>' . esc_html($field['label'] ?? $name) . '</strong>',
+                        '<strong>' . esc_html($field['label']) . '</strong>',
                     ),
                     'error',
                 );
             }
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     /**
@@ -168,29 +240,35 @@ final class CustomCheckoutFieldsService implements HasHooks
      */
     public function saveFieldsToOrder(int $orderId): void
     {
+        if (! $this->isVerifiedCheckoutPost()) {
+            return;
+        }
+
         $order = wc_get_order($orderId);
 
         if (! $order) {
             return;
         }
 
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- WooCommerce checkout nonce verified above.
         foreach ($this->getFields() as $field) {
             if (empty($field['enabled'])) {
                 continue;
             }
 
-            $name = $field['name'] ?? '';
+            $name = $field['name'];
 
-            if (empty($name) || ! isset($_POST[$name])) {
+            if ($name === '' || ! isset($_POST[$name])) {
                 continue;
             }
 
-            $value = ($field['type'] ?? '') === 'textarea'
+            $value = $field['type'] === 'textarea'
                 ? sanitize_textarea_field($_POST[$name])
                 : sanitize_text_field($_POST[$name]);
 
             $order->update_meta_data('_' . $name, $value);
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
 
         $order->save();
     }
@@ -220,11 +298,11 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            if (($field['section'] ?? 'billing') !== $section) {
+            if ($field['section'] !== $section) {
                 continue;
             }
 
-            $name = $field['name'] ?? '';
+            $name = $field['name'];
             $value = $order->get_meta('_' . $name);
 
             if (empty($value) && $value !== '0') {
@@ -233,7 +311,7 @@ final class CustomCheckoutFieldsService implements HasHooks
 
             printf(
                 '<p><strong>%s:</strong> %s</p>',
-                esc_html($field['label'] ?? $name),
+                esc_html($field['label']),
                 esc_html($value),
             );
         }
@@ -255,7 +333,7 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $name = $field['name'] ?? '';
+            $name = $field['name'];
             $value = $order->get_meta('_' . $name);
 
             if (empty($value) && $value !== '0') {
@@ -263,18 +341,18 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             if ($plainText) {
-                $output .= esc_html($field['label'] ?? $name) . ': ' . esc_html($value) . "\n";
+                $output .= esc_html($field['label']) . ': ' . esc_html($value) . "\n";
             } else {
                 $output .= sprintf(
                     '<p><strong>%s:</strong> %s</p>',
-                    esc_html($field['label'] ?? $name),
+                    esc_html($field['label']),
                     esc_html($value),
                 );
             }
         }
 
         if ($output) {
-            echo $output;
+            echo wp_kses_post($output);
         }
     }
 
@@ -292,7 +370,7 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $name = $field['name'] ?? '';
+            $name = $field['name'];
             $value = $order->get_meta('_' . $name);
 
             if (empty($value) && $value !== '0') {
@@ -306,7 +384,7 @@ final class CustomCheckoutFieldsService implements HasHooks
 
             printf(
                 '<p><strong>%s:</strong> %s</p>',
-                esc_html($field['label'] ?? $name),
+                esc_html($field['label']),
                 esc_html($value),
             );
         }
@@ -324,13 +402,13 @@ final class CustomCheckoutFieldsService implements HasHooks
      * - conditional_category: show only when a product from category is in cart
      * - conditional_cart_min: show only when cart total >= value
      *
-     * @param array<string, mixed> $field
+     * @param CheckoutField $field
      */
     private function evaluateConditions(array $field): bool
     {
         // Shipping method condition.
         if (! empty($field['conditional_shipping'])) {
-            $chosen = WC()->session?->get('chosen_shipping_methods', []);
+            $chosen = WC()->session->get('chosen_shipping_methods', []);
             $chosenMethod = $chosen[0] ?? '';
 
             if (! empty($chosenMethod) && ! str_starts_with($chosenMethod, $field['conditional_shipping'])) {
@@ -340,7 +418,7 @@ final class CustomCheckoutFieldsService implements HasHooks
 
         // Payment method condition.
         if (! empty($field['conditional_payment'])) {
-            $chosenPayment = WC()->session?->get('chosen_payment_method', '');
+            $chosenPayment = WC()->session->get('chosen_payment_method', '');
 
             if (! empty($chosenPayment) && $chosenPayment !== $field['conditional_payment']) {
                 return false;
@@ -352,8 +430,7 @@ final class CustomCheckoutFieldsService implements HasHooks
             $otherFieldName = $field['conditional_field'];
             $expectedValue = $field['conditional_value'];
 
-            // Check POST data (during checkout validation) or session.
-            $actualValue = $_POST[$otherFieldName] ?? '';
+            $actualValue = $this->readTrustedCheckoutPostString($otherFieldName);
 
             if ((string) $actualValue !== (string) $expectedValue) {
                 return false;
@@ -365,14 +442,12 @@ final class CustomCheckoutFieldsService implements HasHooks
             $categoryId = (int) $field['conditional_category'];
             $found = false;
 
-            if (WC()->cart) {
-                foreach (WC()->cart->get_cart() as $item) {
-                    $product = $item['data'] ?? null;
+            foreach (WC()->cart->get_cart() as $item) {
+                $product = $item['data'] ?? null;
 
-                    if ($product instanceof \WC_Product && in_array($categoryId, $product->get_category_ids(), true)) {
-                        $found = true;
-                        break;
-                    }
+                if ($product instanceof \WC_Product && in_array($categoryId, $product->get_category_ids(), true)) {
+                    $found = true;
+                    break;
                 }
             }
 
@@ -385,7 +460,7 @@ final class CustomCheckoutFieldsService implements HasHooks
         if (! empty($field['conditional_cart_min'])) {
             $minTotal = (float) $field['conditional_cart_min'];
 
-            if (WC()->cart && (float) WC()->cart->get_subtotal() < $minTotal) {
+            if ((float) WC()->cart->get_subtotal() < $minTotal) {
                 return false;
             }
         }
@@ -569,9 +644,21 @@ final class CustomCheckoutFieldsService implements HasHooks
         );
 
         // Show in email/admin/account.
-        printf('<input type="hidden" name="%s[show_in_email]" value="%s">', esc_attr($prefix), $field['show_in_email'] ?? '1');
-        printf('<input type="hidden" name="%s[show_in_admin]" value="%s">', esc_attr($prefix), $field['show_in_admin'] ?? '1');
-        printf('<input type="hidden" name="%s[show_in_account]" value="%s">', esc_attr($prefix), $field['show_in_account'] ?? '1');
+        printf(
+            '<input type="hidden" name="%s[show_in_email]" value="%s">',
+            esc_attr($prefix),
+            esc_attr(! empty($field['show_in_email']) ? '1' : '0'),
+        );
+        printf(
+            '<input type="hidden" name="%s[show_in_admin]" value="%s">',
+            esc_attr($prefix),
+            esc_attr(! empty($field['show_in_admin']) ? '1' : '0'),
+        );
+        printf(
+            '<input type="hidden" name="%s[show_in_account]" value="%s">',
+            esc_attr($prefix),
+            esc_attr(! empty($field['show_in_account']) ? '1' : '0'),
+        );
 
         // Conditional shipping.
         printf(
@@ -608,11 +695,12 @@ final class CustomCheckoutFieldsService implements HasHooks
     public function handleSave(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(__('Unauthorized', 'polski'));
+            wp_die(esc_html__('Unauthorized', 'polski'));
         }
 
         check_admin_referer('polski_checkout_fields', '_polski_cf_nonce');
 
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Admin referer verified above.
         $rawFields = $_POST['fields'] ?? [];
 
         if (! is_array($rawFields)) {
@@ -652,8 +740,50 @@ final class CustomCheckoutFieldsService implements HasHooks
         }
 
         update_option(self::OPTION, $fields);
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
 
         wp_safe_redirect(admin_url('admin.php?page=polski-checkout-fields&saved=1'));
         exit;
+    }
+
+    private function isVerifiedCheckoutPost(): bool
+    {
+        $nonce = isset($_POST['woocommerce-process-checkout-nonce'])
+            ? sanitize_text_field(wp_unslash((string) $_POST['woocommerce-process-checkout-nonce']))
+            : '';
+
+        return $nonce !== '' && wp_verify_nonce($nonce, 'woocommerce-process_checkout');
+    }
+
+    private function canTrustCheckoutPostData(): bool
+    {
+        if ($this->isVerifiedCheckoutPost()) {
+            return true;
+        }
+
+        if (! wp_doing_ajax()) {
+            return false;
+        }
+
+        $security = isset($_POST['security'])
+            ? sanitize_text_field(wp_unslash((string) $_POST['security']))
+            : '';
+
+        return $security !== '' && wp_verify_nonce($security, 'woocommerce-update-order-review');
+    }
+
+    private function readTrustedCheckoutPostString(string $fieldName): string
+    {
+        if (! $this->canTrustCheckoutPostData()) {
+            return '';
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified in canTrustCheckoutPostData().
+        $value = isset($_POST[$fieldName])
+            ? sanitize_text_field(wp_unslash($_POST[$fieldName]))
+            : '';
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
+
+        return $value;
     }
 }

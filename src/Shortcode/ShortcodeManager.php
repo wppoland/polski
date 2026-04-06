@@ -22,6 +22,8 @@ use Polski\Util\TemplateLoader;
  *
  * All shortcodes accept an optional `product` attribute to specify the product ID.
  * Without it, they use the global $product from the WooCommerce loop.
+ *
+ * @phpstan-type ShortcodeAtts array<string, string>|string
  */
 final class ShortcodeManager implements HasHooks
 {
@@ -58,7 +60,7 @@ final class ShortcodeManager implements HasHooks
     }
 
     /**
-     * @param array<string, string>|string $atts
+     * @param ShortcodeAtts $atts
      */
     public function unitPrice(array|string $atts = []): string
     {
@@ -70,6 +72,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(PriceDisplayService::class)->getUnitPriceHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function deliveryTime(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -80,6 +83,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(DeliveryTimeService::class)->getDeliveryTimeHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function omnibusPrice(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -90,6 +94,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(PriceDisplayService::class)->getOmnibusPriceHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function taxNotice(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -100,11 +105,13 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(PriceDisplayService::class)->getVatNoticeHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function shippingNotice(array|string $atts = []): string
     {
         return $this->container()->get(PriceDisplayService::class)->getShippingNoticeHtml();
     }
 
+    /** @param ShortcodeAtts $atts */
     public function manufacturer(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -115,6 +122,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(ProductInfoService::class)->getManufacturerHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function safetyInfo(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -136,6 +144,7 @@ final class ShortcodeManager implements HasHooks
         );
     }
 
+    /** @param ShortcodeAtts $atts */
     public function safetyDocs(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -146,6 +155,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(ProductInfoService::class)->getSafetyDocumentsHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function powerSupply(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -156,6 +166,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(ProductInfoService::class)->getPowerSupplyHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function defectDescription(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -166,6 +177,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(ProductInfoService::class)->getDefectDescriptionHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function nutrients(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -176,6 +188,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(FoodService::class)->getNutrientsHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function allergens(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -186,6 +199,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(FoodService::class)->getAllergensHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function ingredients(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -196,6 +210,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(FoodService::class)->getIngredientsHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function nutriScore(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -206,6 +221,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(FoodService::class)->getNutriScoreHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function foodInfo(array|string $atts = []): string
     {
         $product = $this->resolveProduct($atts);
@@ -216,6 +232,7 @@ final class ShortcodeManager implements HasHooks
         return $this->container()->get(FoodService::class)->getFoodInfoHtml($product);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function withdrawalForm(array|string $atts = []): string
     {
         $atts = shortcode_atts(['order_id' => 0], is_array($atts) ? $atts : []);
@@ -245,6 +262,7 @@ final class ShortcodeManager implements HasHooks
         ]);
     }
 
+    /** @param ShortcodeAtts $atts */
     public function complaints(array|string $atts = []): string
     {
         $settings = get_option('polski_general', []);
@@ -260,16 +278,19 @@ final class ShortcodeManager implements HasHooks
         );
     }
 
+    /** @param ShortcodeAtts $atts */
     public function wishlist(array|string $atts = []): string
     {
         return $this->container()->get(WishlistService::class)->renderWishlist();
     }
 
+    /** @param ShortcodeAtts $atts */
     public function compare(array|string $atts = []): string
     {
         return $this->container()->get(CompareService::class)->renderCompareTable();
     }
 
+    /** @param ShortcodeAtts $atts */
     public function paymentMethods(array|string $atts = []): string
     {
         $gateways = WC()->payment_gateways()->get_available_payment_gateways();
@@ -293,6 +314,7 @@ final class ShortcodeManager implements HasHooks
         );
     }
 
+    /** @param ShortcodeAtts $atts */
     public function smallBusinessNotice(array|string $atts = []): string
     {
         $settings = get_option('polski_taxes', []);
@@ -312,6 +334,8 @@ final class ShortcodeManager implements HasHooks
 
     /**
      * Render the DSA report form.
+     *
+     * @param ShortcodeAtts $atts
      */
     public function dsaReport(array|string $atts = []): string
     {
@@ -320,6 +344,8 @@ final class ShortcodeManager implements HasHooks
 
     /**
      * Render GPSR product safety information.
+     *
+     * @param ShortcodeAtts $atts
      */
     public function gpsrInfo(array|string $atts = []): string
     {
@@ -349,6 +375,8 @@ final class ShortcodeManager implements HasHooks
 
     /**
      * Resolve a WC_Product from shortcode attributes or global.
+     *
+     * @param ShortcodeAtts $atts
      */
     private function resolveProduct(array|string $atts): ?\WC_Product
     {

@@ -66,9 +66,9 @@ final class SocialProofService implements HasHooks
 
         wp_enqueue_script(
             'polski-social-proof',
-            plugins_url('assets/js/social-proof.js', POLSKI_PLUGIN_FILE),
+            plugins_url('assets/js/social-proof.js', \Polski\PLUGIN_FILE),
             ['jquery'],
-            defined('POLSKI_VERSION') ? POLSKI_VERSION : '1.0.0',
+            \Polski\VERSION,
             true,
         );
 
@@ -119,7 +119,7 @@ final class SocialProofService implements HasHooks
         $cached = get_transient($cacheKey);
 
         if (is_array($cached)) {
-            return array_slice($cached, 0, $limit);
+            return array_values(array_slice($cached, 0, $limit));
         }
 
         $dateAfter = (new \DateTimeImmutable())->modify("-{$lookbackHours} hours")->format('Y-m-d H:i:s');
@@ -131,6 +131,7 @@ final class SocialProofService implements HasHooks
             'orderby' => 'date',
             'order' => 'DESC',
         ]);
+        $orders = is_array($orders) ? $orders : [];
 
         $notifications = [];
         $seen = [];
@@ -153,8 +154,11 @@ final class SocialProofService implements HasHooks
 
             $timeAgo = $this->humanTimeAgo($order->get_date_created()?->getTimestamp() ?? time());
 
-            /** @var \WC_Order_Item_Product $item */
             foreach ($order->get_items() as $item) {
+                if (! $item instanceof \WC_Order_Item_Product) {
+                    continue;
+                }
+
                 $product = $item->get_product();
 
                 if (! $product instanceof \WC_Product) {
@@ -173,12 +177,12 @@ final class SocialProofService implements HasHooks
                 $image = '';
 
                 if ($showImage) {
-                    $image = wp_get_attachment_image_url($product->get_image_id(), 'woocommerce_gallery_thumbnail') ?: '';
+                    $image = wp_get_attachment_image_url((int) $product->get_image_id(), 'woocommerce_gallery_thumbnail') ?: '';
                 }
 
                 $notifications[] = [
-                    'name' => $firstName,
-                    'city' => $city,
+                    'name' => (string) $firstName,
+                    'city' => (string) $city,
                     'product' => $product->get_name(),
                     'image' => $image,
                     'time' => $timeAgo,
@@ -207,12 +211,21 @@ final class SocialProofService implements HasHooks
 
         if ($diff < 3600) {
             $mins = (int) floor($diff / 60);
-            return sprintf(_n('%d minute ago', '%d minutes ago', $mins, 'polski'), $mins);
+
+            return sprintf(
+                /* translators: %d: number of minutes since purchase */
+                _n('%d minute ago', '%d minutes ago', $mins, 'polski'),
+                $mins,
+            );
         }
 
         $hours = (int) floor($diff / 3600);
 
-        return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'polski'), $hours);
+        return sprintf(
+            /* translators: %d: number of hours since purchase */
+            _n('%d hour ago', '%d hours ago', $hours, 'polski'),
+            $hours,
+        );
     }
 
     private function shouldHide(): bool

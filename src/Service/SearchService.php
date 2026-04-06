@@ -136,6 +136,7 @@ final class SearchService implements Bootable, HasHooks
         }
 
         $products = wc_get_products($queryArgs);
+        $products = is_array($products) ? $products : [];
         $results = [];
 
         foreach ($products as $product) {
@@ -147,7 +148,7 @@ final class SearchService implements Bootable, HasHooks
                 'id' => $product->get_id(),
                 'name' => $product->get_name(),
                 'url' => $product->get_permalink(),
-                'image' => (bool) ($settings['show_image'] ?? true) ? wp_get_attachment_image_url($product->get_image_id(), 'thumbnail') : '',
+                'image' => (bool) ($settings['show_image'] ?? true) ? wp_get_attachment_image_url((int) $product->get_image_id(), 'thumbnail') : '',
                 'sku' => (bool) ($settings['show_sku'] ?? true) ? $product->get_sku() : '',
                 'price_html' => (bool) ($settings['show_price'] ?? true) ? $product->get_price_html() : '',
             ];

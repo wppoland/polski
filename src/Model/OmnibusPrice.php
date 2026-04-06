@@ -26,9 +26,9 @@ final class OmnibusPrice
     /**
      * Create from a database row.
      *
-     * @param object $row Database row with named properties.
+     * @param \stdClass $row Database row (wpdb).
      */
-    public static function fromRow(object $row): self
+    public static function fromRow(\stdClass $row): self
     {
         return new self(
             id: (int) $row->id,

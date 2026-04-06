@@ -3,11 +3,13 @@
 declare(strict_types=1);
 namespace Polski\Migration;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Migration 2.0.0: Create DSA reports table.
  */
-final class Migration_2_0_0
+final class Migration_2_0_0 implements Migration
 {
     public const VERSION = '2.0.0';
 

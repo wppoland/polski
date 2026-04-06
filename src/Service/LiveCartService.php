@@ -55,16 +55,16 @@ final class LiveCartService implements HasHooks
 
         wp_enqueue_style(
             'polski-live-cart',
-            plugins_url('assets/css/live-cart.css', POLSKI_FILE),
+            plugins_url('assets/css/live-cart.css', \Polski\PLUGIN_FILE),
             [],
-            POLSKI_VERSION,
+            \Polski\VERSION,
         );
 
         wp_enqueue_script(
             'polski-live-cart',
-            plugins_url('assets/js/live-cart.js', POLSKI_FILE),
+            plugins_url('assets/js/live-cart.js', \Polski\PLUGIN_FILE),
             ['jquery'],
-            POLSKI_VERSION,
+            \Polski\VERSION,
             true,
         );
 
@@ -100,15 +100,15 @@ final class LiveCartService implements HasHooks
     {
         ob_start();
         $this->renderCartItems();
-        $fragments['.polski-cart-drawer__items'] = ob_get_clean();
+        $fragments['.polski-cart-drawer__items'] = (string) ob_get_clean();
 
         ob_start();
         $this->renderCartFooter();
-        $fragments['.polski-cart-drawer__footer'] = ob_get_clean();
+        $fragments['.polski-cart-drawer__footer'] = (string) ob_get_clean();
 
         ob_start();
         $this->renderCartCount();
-        $fragments['.polski-cart-drawer__count'] = ob_get_clean();
+        $fragments['.polski-cart-drawer__count'] = (string) ob_get_clean();
 
         return $fragments;
     }
@@ -154,10 +154,7 @@ final class LiveCartService implements HasHooks
     private function renderCartCount(): void
     {
         $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-        printf(
-            '<span class="polski-cart-drawer__count">(%d)</span>',
-            $count,
-        );
+        echo '<span class="polski-cart-drawer__count">(' . esc_html((string) (int) $count) . ')</span>';
     }
 
     private function renderCartItems(): void
@@ -176,20 +173,20 @@ final class LiveCartService implements HasHooks
             /** @var \WC_Product $product */
             $product = $cartItem['data'];
             $quantity = $cartItem['quantity'];
-            $thumbnail = $product->get_image([60, 60]);
+            $thumbnail = $product->get_image('woocommerce_thumbnail');
             $name = $product->get_name();
             $price = WC()->cart->get_product_price($product);
-            $permalink = $product->get_permalink($cartItem);
+            $permalink = $product->get_permalink();
 
             echo '<div class="polski-cart-drawer__item" data-key="' . esc_attr($cartItemKey) . '">';
             echo '<div class="polski-cart-drawer__item-image">';
-            echo '<a href="' . esc_url($permalink) . '">' . $thumbnail . '</a>';
+            echo '<a href="' . esc_url($permalink) . '">' . wp_kses_post($thumbnail) . '</a>';
             echo '</div>';
             echo '<div class="polski-cart-drawer__item-details">';
             echo '<a href="' . esc_url($permalink) . '" class="polski-cart-drawer__item-name">' . esc_html($name) . '</a>';
             echo '<div class="polski-cart-drawer__item-meta">';
             echo '<span class="polski-cart-drawer__item-qty">' . esc_html((string) $quantity) . ' &times;</span> ';
-            echo '<span class="polski-cart-drawer__item-price">' . $price . '</span>';
+            echo '<span class="polski-cart-drawer__item-price">' . wp_kses_post($price) . '</span>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -221,10 +218,13 @@ final class LiveCartService implements HasHooks
                 echo '<div class="polski-cart-drawer__shipping">';
                 $progress = min(100, ($total / $threshold) * 100);
                 echo '<div class="polski-cart-drawer__shipping-bar"><div class="polski-cart-drawer__shipping-fill" style="width:' . esc_attr((string) round($progress)) . '%"></div></div>';
-                printf(
-                    '<span>' . esc_html__('Add %s for free shipping', 'polski') . '</span>',
-                    wc_price($remaining),
-                );
+                echo '<span>' . wp_kses_post(
+                    sprintf(
+                        /* translators: %s: formatted price amount */
+                        __('Add %s for free shipping', 'polski'),
+                        wc_price($remaining),
+                    ),
+                ) . '</span>';
                 echo '</div>';
             }
         }
@@ -233,7 +233,7 @@ final class LiveCartService implements HasHooks
         if ($settings['show_subtotal'] && $cart && ! $cart->is_empty()) {
             echo '<div class="polski-cart-drawer__subtotal">';
             echo '<span>' . esc_html__('Subtotal', 'polski') . '</span>';
-            echo '<strong>' . $subtotal . '</strong>';
+            echo '<strong>' . wp_kses_post($subtotal) . '</strong>';
             echo '</div>';
         }
 

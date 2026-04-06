@@ -3,11 +3,13 @@
 declare(strict_types=1);
 namespace Polski\Migration;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Adds storage for waitlist subscriptions.
  */
-final class Migration_1_4_0
+final class Migration_1_4_0 implements Migration
 {
     public const VERSION = '1.4.0';
 

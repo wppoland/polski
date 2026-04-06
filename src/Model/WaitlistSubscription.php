@@ -20,7 +20,10 @@ final class WaitlistSubscription
     ) {
     }
 
-    public static function fromRow(object $row): self
+    /**
+     * @param \stdClass $row Database row (wpdb).
+     */
+    public static function fromRow(\stdClass $row): self
     {
         return new self(
             id: (int) $row->id,

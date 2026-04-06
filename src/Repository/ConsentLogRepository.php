@@ -104,9 +104,11 @@ final class ConsentLogRepository
             ),
         );
 
+        $list = is_array($rows) ? $rows : [];
+
         return array_map(
-            static fn (object $row) => ConsentRecord::fromRow($row),
-            $rows,
+            static fn (\stdClass $row) => ConsentRecord::fromRow($row),
+            $list,
         );
     }
 
@@ -126,9 +128,11 @@ final class ConsentLogRepository
             ),
         );
 
+        $list = is_array($rows) ? $rows : [];
+
         return array_map(
-            static fn (object $row) => ConsentRecord::fromRow($row),
-            $rows,
+            static fn (\stdClass $row) => ConsentRecord::fromRow($row),
+            $list,
         );
     }
 
@@ -140,7 +144,8 @@ final class ConsentLogRepository
     public function getStats(int $days = 30): array
     {
         $table = $this->tableName();
-        $since = gmdate('Y-m-d H:i:s', strtotime("-{$days} days"));
+        $sinceTs = strtotime("-{$days} days");
+        $since = gmdate('Y-m-d H:i:s', $sinceTs !== false ? $sinceTs : time());
 
         // Total consent records.
         $totalRecords = (int) $this->wpdb->get_var(
@@ -210,17 +215,17 @@ final class ConsentLogRepository
                 'declined' => (int) $row->declined,
                 'total' => (int) $row->total,
                 'rate' => (int) $row->total > 0 ? round(((int) $row->accepted / (int) $row->total) * 100, 1) : 0,
-            ], $perCheckbox),
+            ], is_array($perCheckbox) ? $perCheckbox : []),
             'daily_trend' => array_map(static fn (object $row) => [
                 'date' => $row->date,
                 'total' => (int) $row->total,
                 'accepted' => (int) $row->accepted,
-            ], $dailyTrend),
+            ], is_array($dailyTrend) ? $dailyTrend : []),
             'by_context' => array_map(static fn (object $row) => [
                 'context' => $row->context,
                 'total' => (int) $row->total,
                 'accepted' => (int) $row->accepted,
-            ], $byContext),
+            ], is_array($byContext) ? $byContext : []),
         ];
     }
 

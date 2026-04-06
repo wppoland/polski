@@ -40,9 +40,9 @@ final class AjaxAddToCartService implements HasHooks
 
         wp_enqueue_script(
             'polski-ajax-cart',
-            plugins_url('assets/js/ajax-add-to-cart.js', POLSKI_PLUGIN_FILE),
+            plugins_url('assets/js/ajax-add-to-cart.js', \Polski\PLUGIN_FILE),
             ['jquery', 'wc-add-to-cart'],
-            defined('POLSKI_VERSION') ? POLSKI_VERSION : '1.0.0',
+            \Polski\VERSION,
             true,
         );
 

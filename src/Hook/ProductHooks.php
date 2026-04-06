@@ -435,8 +435,8 @@ final class ProductHooks implements Bootable, HasHooks
 
         // Add Delivery Time (OfferShippingDetails) if available.
         if ($settings['schema_delivery_time'] ?? true) {
-            $deliveryTime = $this->deliveryTime->getDeliveryTime($product);
-            if ($deliveryTime !== null && $deliveryTime !== '') {
+            $deliveryTime = $this->deliveryTime->getDeliveryTimeText($product);
+            if ($deliveryTime !== '') {
                 $extraData['shippingDetails'] = [
                     '@type' => 'OfferShippingDetails',
                     'deliveryTime' => [
@@ -466,17 +466,18 @@ final class ProductHooks implements Bootable, HasHooks
         $gpsrManufacturer = get_post_meta($productId, '_polski_manufacturer_name', true);
         $gpsrContact = get_post_meta($productId, '_polski_manufacturer_contact', true);
         if (! empty($gpsrManufacturer)) {
-            $extraData['manufacturer'] = $extraData['manufacturer'] ?? [
+            $manufacturerSchema = [
                 '@type' => 'Organization',
                 'name' => $gpsrManufacturer,
             ];
             if (! empty($gpsrContact)) {
-                $extraData['manufacturer']['contactPoint'] = [
+                $manufacturerSchema['contactPoint'] = [
                     '@type' => 'ContactPoint',
                     'contactType' => 'product safety',
                     'description' => $gpsrContact,
                 ];
             }
+            $extraData['manufacturer'] = $manufacturerSchema;
         }
 
         // Add Food/Nutrition data if available.

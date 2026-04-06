@@ -87,7 +87,7 @@ final class FaqService implements HasHooks
             'category' => '',
             'limit' => -1,
             'schema' => 'yes',
-        ], $atts, 'polski_faq');
+        ], is_array($atts) ? $atts : [], 'polski_faq');
 
         $args = [
             'post_type' => self::CPT,

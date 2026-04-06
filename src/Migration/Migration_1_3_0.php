@@ -3,11 +3,13 @@
 declare(strict_types=1);
 namespace Polski\Migration;
 
+use Polski\Contract\Migration;
+
 defined('ABSPATH') || exit;
 /**
  * Adds storage for compare items.
  */
-final class Migration_1_3_0
+final class Migration_1_3_0 implements Migration
 {
     public const VERSION = '1.3.0';
 

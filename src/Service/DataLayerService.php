@@ -262,7 +262,8 @@ final class DataLayerService implements HasHooks
 
             $itemData = $this->buildItemData($product);
             $itemData['quantity'] = $item->get_quantity();
-            $itemData['price'] = (float) wc_format_decimal($item->get_total() / max(1, $item->get_quantity()), 2);
+            $lineTotal = (float) wc_format_decimal((string) $item->get_total(), 2);
+            $itemData['price'] = (float) wc_format_decimal((string) ($lineTotal / max(1, $item->get_quantity())), 2);
             $items[] = $itemData;
         }
 

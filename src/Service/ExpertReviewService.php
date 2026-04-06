@@ -84,14 +84,13 @@ final class ExpertReviewService implements HasHooks
         echo '<option value="">' . esc_html__('Select product...', 'polski') . '</option>';
 
         $products = wc_get_products(['limit' => -1, 'status' => 'publish', 'orderby' => 'title', 'order' => 'ASC']);
+        $products = is_array($products) ? $products : [];
 
         foreach ($products as $product) {
-            printf(
-                '<option value="%d" %s>%s</option>',
-                $product->get_id(),
-                selected($productId, $product->get_id(), false),
-                esc_html($product->get_name()),
-            );
+            echo '<option value="' . esc_attr((string) $product->get_id()) . '"'
+                . selected($productId, $product->get_id(), false) . '>'
+                . esc_html($product->get_name())
+                . '</option>';
         }
 
         echo '</select></p>';
@@ -154,7 +153,7 @@ final class ExpertReviewService implements HasHooks
         foreach ($reviews as $review) {
             $rating = (float) get_post_meta($review->ID, self::META_RATING, true);
             $verdict = get_post_meta($review->ID, self::META_VERDICT, true);
-            $author = get_the_author_meta('display_name', $review->post_author);
+            $author = get_the_author_meta('display_name', (int) $review->post_author);
             $date = get_the_date('', $review);
             $thumbnail = get_the_post_thumbnail($review->ID, 'thumbnail');
 
@@ -183,11 +182,11 @@ final class ExpertReviewService implements HasHooks
                 printf(
                     '<div style="margin-top:12px;padding:8px 12px;background:#f0f9ff;border-radius:6px"><strong>%s:</strong> %s</div>',
                     esc_html__('Verdict', 'polski'),
-                    esc_html($verdict),
+                    esc_html(is_string($verdict) ? $verdict : ''),
                 );
             }
 
-            printf('<div style="color:#94a3b8;font-size:12px;margin-top:8px">%s</div>', esc_html($date));
+            printf('<div style="color:#94a3b8;font-size:12px;margin-top:8px">%s</div>', esc_html(is_scalar($date) ? (string) $date : ''));
 
             echo '</div>';
         }
@@ -220,7 +219,7 @@ final class ExpertReviewService implements HasHooks
 
         foreach ($reviews as $review) {
             $rating = (float) get_post_meta($review->ID, self::META_RATING, true);
-            $author = get_the_author_meta('display_name', $review->post_author);
+            $author = get_the_author_meta('display_name', (int) $review->post_author);
 
             $schemaReview = [
                 '@type' => 'Review',
@@ -270,6 +269,8 @@ final class ExpertReviewService implements HasHooks
             'order' => 'DESC',
         ]);
 
-        return $query->posts;
+        $posts = is_array($query->posts) ? $query->posts : [];
+
+        return array_values(array_filter($posts, static fn ($post): bool => $post instanceof \WP_Post));
     }
 }
