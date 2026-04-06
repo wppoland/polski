@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-04T06:47:36+00:00\n"
+"POT-Creation-Date: 2026-04-06T12:41:29+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -45,12 +45,10 @@ msgid "Platforma ODR: https://ec.europa.eu/consumers/odr"
 msgstr "Платформа ODR: https://ec.europa.eu/consumers/odr"
 
 #: config/defaults.php:19
-#: src/Admin/AdminPage.php:383
 msgid "Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj."
 msgstr "Готово! Ми створили для вас попередні чернетки правових сторінок. Перегляньте їх, адаптуйте під свої потреби та сміливо публікуйте."
 
 #: config/defaults.php:20
-#: src/Admin/AdminPage.php:389
 msgid "Moduły zapisane."
 msgstr "Модулі збережено."
 
@@ -67,12 +65,10 @@ msgid "Otwórz konfigurację Polski"
 msgstr "Відкрити конфігурацію Polski"
 
 #: config/defaults.php:24
-#: src/Admin/AdminPage.php:738
 msgid "Aktywna"
 msgstr "Активна"
 
 #: config/defaults.php:25
-#: src/Admin/AdminPage.php:738
 msgid "Wyłączona"
 msgstr "Вимкнена"
 
@@ -82,8 +78,6 @@ msgstr "Не налаштовано"
 
 #: config/defaults.php:27
 #: config/defaults.php:33
-#: src/Admin/AdminPage.php:730
-#: src/Admin/AdminPage.php:753
 msgid "Strony prawne"
 msgstr "Правові сторінки"
 
@@ -108,29 +102,26 @@ msgid "Podwójna weryfikacja (DOI)"
 msgstr "Подвійна верифікація (DOI)"
 
 #: config/defaults.php:34
-#: src/Admin/AdminPage.php:758
 msgid "Strona"
 msgstr "Сторінка"
 
 #: config/defaults.php:35
-#: config/defaults.php:141
-#: config/defaults.php:238
-#: src/Admin/AdminPage.php:758
+#: config/defaults.php:162
+#: config/defaults.php:259
+#: src/Admin/AdminPage.php:767
 #: src/Admin/ModulesPage.php:239
 #: src/Service/DSAService.php:161
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
-#: src/Service/WithdrawalService.php:401
+#: src/Service/WithdrawalService.php:402
 msgid "Status"
 msgstr "Статус"
 
 #: config/defaults.php:36
-#: src/Admin/AdminPage.php:775
 msgid "Opublikowana"
 msgstr "Опублікована"
 
 #: config/defaults.php:37
-#: src/Admin/AdminPage.php:776
 msgid "Szkic"
 msgstr "Чернетка"
 
@@ -139,22 +130,18 @@ msgid "Nieutworzona"
 msgstr "Не створена"
 
 #: config/defaults.php:39
-#: src/Admin/AdminPage.php:780
 msgid "Edytuj"
 msgstr "Редагувати"
 
 #: config/defaults.php:40
-#: src/Admin/AdminPage.php:797
 msgid "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
 msgstr "Правові сторінки ще не створено. Згенеруйте їх, щоб розпочати."
 
 #: config/defaults.php:41
-#: src/Admin/AdminPage.php:922
 msgid "Wygeneruj strony prawne"
 msgstr "Згенерувати правові сторінки"
 
 #: config/defaults.php:42
-#: src/Admin/AdminPage.php:805
 msgid "Kolejne kroki"
 msgstr "Наступні кроки"
 
@@ -169,9 +156,7 @@ msgid "Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego ryn
 msgstr "Налаштуйте <a href=\"%s\">ставки ПДВ</a> у WooCommerce для польського ринку: 23%%, 8%%, 5%% та 0%%."
 
 #. translators: %s is the WooCommerce shipping zones URL.
-#. translators: %s: shipping settings URL
 #: config/defaults.php:47
-#: src/Admin/AdminPage.php:877
 #, php-format
 msgid "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 msgstr "Налаштуйте <a href=\"%s\">зони доставки</a> для відправлень у Польщі."
@@ -236,1047 +221,1025 @@ msgstr "{price} / {unit}"
 msgid "zzgl. kosztów wysyłki"
 msgstr "без урахування вартості доставки"
 
-#: config/defaults.php:77
+#: config/defaults.php:72
+msgid "od {price}"
+msgstr ""
+
+#: config/defaults.php:79
 msgid "Najniższa cena z ostatnich {days} dni: {price}"
 msgstr "Найнижча ціна за останні {days} днів: {price}"
 
-#: config/defaults.php:84
+#: config/defaults.php:87
+msgid "Jak oceniasz swoje zakupy? Zostaw opinię"
+msgstr ""
+
+#: config/defaults.php:88
+msgid "Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za Twoją opinię."
+msgstr ""
+
+#: config/defaults.php:89
+msgid "Zostaw opinię"
+msgstr ""
+
+#: config/defaults.php:90
+msgid "Zrezygnuj z próśb o opinię"
+msgstr ""
+
+#: config/defaults.php:91
+msgid "Nie będziemy już wysyłać próśb o opinię."
+msgstr ""
+
+#: config/defaults.php:99
+msgid "Minimalna wartość zamówienia to {min_value}. Aktualna wartość koszyka: {current_value}."
+msgstr ""
+
+#: config/defaults.php:100
+msgid "Minimalna liczba produktów w zamówieniu to {min_quantity}. Aktualna liczba: {current_quantity}."
+msgstr ""
+
+#: config/defaults.php:105
 msgid "Zamawiam z obowiązkiem zapłaty"
 msgstr "Замовляю з зобов'язанням оплати"
 
 #. translators: %s is the terms and conditions page URL.
-#: config/defaults.php:87
+#: config/defaults.php:108
 #, php-format
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
 msgstr "Я ознайомився(-лась) та приймаю <a href=\"%s\" target=\"_blank\">Умови та положення магазину</a>."
 
-#: config/defaults.php:88
+#: config/defaults.php:109
 msgid "Musisz zaakceptować Regulamin, aby złożyć zamówienie."
 msgstr "Ви повинні прийняти Умови та положення, щоб оформити замовлення."
 
-#: config/defaults.php:89
+#: config/defaults.php:110
 msgid "Akceptacja Regulaminu sklepu."
 msgstr "Прийняття Умов та положень магазину."
 
 #. translators: %s is the privacy policy page URL.
-#: config/defaults.php:92
+#: config/defaults.php:113
 #, php-format
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Politykę prywatności</a>."
 msgstr "Я ознайомився(-лась) та приймаю <a href=\"%s\" target=\"_blank\">Політику конфіденційності</a>."
 
-#: config/defaults.php:93
+#: config/defaults.php:114
 msgid "Musisz zaakceptować Politykę prywatności."
 msgstr "Ви повинні прийняти Політику конфіденційності."
 
-#: config/defaults.php:94
+#: config/defaults.php:115
 msgid "Akceptacja Polityki prywatności."
 msgstr "Прийняття Політики конфіденційності."
 
 #. translators: %s is the withdrawal information page URL.
-#: config/defaults.php:97
+#: config/defaults.php:118
 #, php-format
 msgid "Potwierdzam, że zostałem poinformowany o <a href=\"%s\" target=\"_blank\">prawie odstąpienia od umowy</a> w ciągu 14 dni."
 msgstr "Підтверджую, що мене поінформовано про <a href=\"%s\" target=\"_blank\">право на відмову від договору</a> протягом 14 днів."
 
-#: config/defaults.php:98
+#: config/defaults.php:119
 msgid "Musisz potwierdzić zapoznanie się z informacją o prawie odstąpienia."
 msgstr "Ви повинні підтвердити ознайомлення з інформацією про право на відмову."
 
-#: config/defaults.php:99
+#: config/defaults.php:120
 msgid "Potwierdzenie informacji o 14-dniowym prawie odstąpienia."
 msgstr "Підтвердження інформації про 14-денне право на відмову."
 
-#: config/defaults.php:101
+#: config/defaults.php:122
 msgid "Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia."
 msgstr "Я погоджуюся на початок доставки цифрового контенту до закінчення терміну відмови від договору та приймаю до відома втрату права на відмову."
 
-#: config/defaults.php:102
+#: config/defaults.php:123
 msgid "Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych."
 msgstr "Ви повинні погодитися на негайну доставку цифрового контенту."
 
-#: config/defaults.php:103
+#: config/defaults.php:124
 msgid "Zrzeczenie się prawa odstąpienia dla treści cyfrowych."
 msgstr "Відмова від права на відмову для цифрового контенту."
 
-#: config/defaults.php:105
+#: config/defaults.php:126
 msgid "Wyrażam zgodę na otrzymywanie powiadomień SMS/email o statusie dostawy przesyłki."
 msgstr "Я погоджуюся на отримання SMS/email-повідомлень про статус доставки."
 
-#: config/defaults.php:106
+#: config/defaults.php:127
 msgid "Opcjonalna zgoda na powiadomienia o dostawie."
 msgstr "Необов'язкова згода на повідомлення про доставку."
 
-#: config/defaults.php:108
+#: config/defaults.php:129
 msgid "Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie."
 msgstr "Я погоджуюся на отримання нагадування про залишення відгуку електронною поштою після покупки."
 
-#: config/defaults.php:109
+#: config/defaults.php:130
 msgid "Opcjonalna zgoda na przypomnienia o opinii."
 msgstr "Необов'язкова згода на нагадування про відгук."
 
-#: config/defaults.php:111
+#: config/defaults.php:132
 msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
 msgstr "Я погоджуюся на отримання маркетингових повідомлень та розсилки."
 
-#: config/defaults.php:112
+#: config/defaults.php:133
 msgid "Opcjonalna zgoda marketingowa."
 msgstr "Необов'язкова маркетингова згода."
 
-#: config/defaults.php:124
+#: config/defaults.php:145
 msgid "Odstąp od umowy"
 msgstr "Відмовитися від договору"
 
-#: config/defaults.php:125
+#: config/defaults.php:146
 #: templates/forms/withdrawal-form.php:27
 msgid "Wniosek o odstąpienie od umowy"
 msgstr "Заява про відмову від договору"
 
-#: config/defaults.php:126
+#: config/defaults.php:147
 msgid "Nawiążesz do zamówienia nr #{order_number} z dnia {order_date}."
 msgstr "Ви посилаєтесь на замовлення № #{order_number} від {order_date}."
 
-#: config/defaults.php:127
+#: config/defaults.php:148
 msgid "Zgodnie z polskim prawem konsumenckim masz prawo odstąpić od umowy w ciągu 14 dni bez podania przyczyny."
 msgstr "Відповідно до польського споживчого законодавства ви маєте право відмовитися від договору протягом 14 днів без зазначення причини."
 
-#: config/defaults.php:128
+#: config/defaults.php:149
 msgid "Produkty w zamówieniu"
 msgstr "Товари в замовленні"
 
-#: config/defaults.php:129
-#: config/defaults.php:234
+#: config/defaults.php:150
+#: config/defaults.php:255
 #: templates/forms/withdrawal-form.php:45
 msgid "Produkt"
 msgstr "Товар"
 
-#: config/defaults.php:130
-#: config/defaults.php:204
-#: config/defaults.php:237
+#: config/defaults.php:151
+#: config/defaults.php:225
+#: config/defaults.php:258
 #: templates/forms/withdrawal-form.php:46
 msgid "Ilość"
 msgstr "Кількість"
 
-#: config/defaults.php:131
-#: config/defaults.php:381
-#: src/Service/CompareService.php:404
+#: config/defaults.php:152
+#: config/defaults.php:402
 #: templates/forms/withdrawal-form.php:47
 msgid "Cena"
 msgstr "Ціна"
 
-#: config/defaults.php:132
+#: config/defaults.php:153
 msgid "(Ten produkt jest wyłączony z prawa odstąpienia)"
 msgstr "(Цей товар виключено з права на відмову)"
 
-#: config/defaults.php:133
+#: config/defaults.php:154
 msgid "Powód odstąpienia (opcjonalnie)"
 msgstr "Причина відмови (необов'язково)"
 
-#: config/defaults.php:134
+#: config/defaults.php:155
 #: templates/forms/withdrawal-form.php:98
 msgid "Wyślij wniosek o odstąpienie"
 msgstr "Надіслати заяву про відмову"
 
-#: config/defaults.php:135
+#: config/defaults.php:156
 msgid "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
 msgstr "Щось пішло не так з нашого боку. Спробуйте ще раз."
 
-#: config/defaults.php:136
+#: config/defaults.php:157
 msgid "Nie znaleźliśmy tego zamówienia."
 msgstr "Ми не знайшли це замовлення."
 
-#: config/defaults.php:137
+#: config/defaults.php:158
 msgid "Nie masz uprawnień, aby odstąpić od tego zamówienia."
 msgstr "У вас немає прав для відмови від цього замовлення."
 
-#: config/defaults.php:138
+#: config/defaults.php:159
 msgid "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z potwierdzeniem."
 msgstr "Вашу заяву про відмову прийнято. Незабаром ми надішлемо підтвердження електронною поштою."
 
-#: config/defaults.php:139
+#: config/defaults.php:160
 #: src/Shortcode/ShortcodeManager.php:236
 msgid "To zamówienie nie kwalifikuje się do odstąpienia."
 msgstr "Це замовлення не підлягає відмові."
 
-#: config/defaults.php:140
+#: config/defaults.php:161
 msgid "Wniosek o odstąpienie"
 msgstr "Заява про відмову"
 
-#: config/defaults.php:142
-#: src/Enum/WithdrawalStatus.php:17
+#: config/defaults.php:163
 msgid "Złożony"
 msgstr "Подано"
 
-#: config/defaults.php:143
+#: config/defaults.php:164
 msgid "Klient złożył wniosek o odstąpienie od umowy."
 msgstr "Клієнт подав заяву про відмову від договору."
 
-#: config/defaults.php:144
+#: config/defaults.php:165
 msgid "Wniosek o odstąpienie został potwierdzony."
 msgstr "Заяву про відмову підтверджено."
 
-#: config/defaults.php:146
+#: config/defaults.php:167
 msgid "Potwierdzenie wniosku o odstąpienie od zamówienia nr #{order_number}"
 msgstr "Підтвердження заяви про відмову від замовлення № #{order_number}"
 
-#: config/defaults.php:147
+#: config/defaults.php:168
 msgid "Odstąpienie potwierdzone"
 msgstr "Відмову підтверджено"
 
-#: config/defaults.php:148
-#: config/defaults.php:176
+#: config/defaults.php:169
+#: config/defaults.php:197
 #: templates/emails/double-opt-in.php:23
 #: templates/emails/plain/double-opt-in.php:20
 msgid "Cześć {name},"
 msgstr "Привіт, {name}!"
 
-#: config/defaults.php:149
+#: config/defaults.php:170
 msgid "Twoje odstąpienie od umowy dla zamówienia nr #{order_number} zostało potwierdzone."
 msgstr "Вашу відмову від договору для замовлення № #{order_number} підтверджено."
 
-#: config/defaults.php:150
+#: config/defaults.php:171
 #: templates/emails/plain/withdrawal-confirmation.php:26
 #: templates/emails/withdrawal-confirmation.php:37
 msgid "Twój powód"
 msgstr "Ваша причина"
 
-#: config/defaults.php:151
+#: config/defaults.php:172
 msgid "Prosimy o zwrot produktów na powyższy adres w ciągu 14 dni:"
 msgstr "Просимо повернути товари на вказану адресу протягом 14 днів:"
 
-#: config/defaults.php:152
+#: config/defaults.php:173
 msgid "Zwrot środków nastąpi w ciągu 14 dni od momentu otrzymania przez nas wracanych produktów."
 msgstr "Повернення коштів відбудеться протягом 14 днів з моменту отримання нами повернених товарів."
 
-#: config/defaults.php:157
+#: config/defaults.php:178
 msgid "w tym {rate}% VAT"
 msgstr "в т.ч. {rate}% ПДВ"
 
-#: config/defaults.php:158
+#: config/defaults.php:179
 msgid "Zwolniony z VAT na podstawie art. 113 ust. 1 ustawy o VAT"
 msgstr "Звільнено від ПДВ на підставі ст. 113 п. 1 Закону про ПДВ"
 
-#: config/defaults.php:164
+#: config/defaults.php:185
 msgid "Czas dostawy: {time}"
 msgstr "Термін доставки: {time}"
 
-#: config/defaults.php:171
+#: config/defaults.php:192
 msgid "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link."
 msgstr "Ваш обліковий запис очікує на активацію! Перевірте свою електронну пошту та натисніть на надіслане нами посилання."
 
-#: config/defaults.php:172
+#: config/defaults.php:193
 msgid "Nieprawidłowy link aktywacyjny."
 msgstr "Недійсне посилання для активації."
 
-#: config/defaults.php:173
+#: config/defaults.php:194
 msgid "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować."
 msgstr "Чудово! Ваш обліковий запис вже активовано. Тепер ви можете увійти."
 
-#: config/defaults.php:174
+#: config/defaults.php:195
 msgid "Aktywuj swoje konto w {site_title}"
 msgstr "Активуйте свій обліковий запис на {site_title}"
 
-#: config/defaults.php:175
+#: config/defaults.php:196
 msgid "Potwierdź swój adres email"
 msgstr "Підтвердьте свою електронну адресу"
 
-#: config/defaults.php:177
+#: config/defaults.php:198
 #: templates/emails/double-opt-in.php:28
 msgid "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
 msgstr "Дякуємо за створення облікового запису. Натисніть кнопку нижче, щоб активувати обліковий запис:"
 
-#: config/defaults.php:178
+#: config/defaults.php:199
 #: templates/emails/double-opt-in.php:32
 msgid "Aktywuj konto"
 msgstr "Активувати обліковий запис"
 
-#: config/defaults.php:179
+#: config/defaults.php:200
 #: templates/emails/double-opt-in.php:36
 msgid "Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:"
 msgstr "Якщо бажаєте, скопіюйте та вставте це посилання у браузер:"
 
-#: config/defaults.php:180
+#: config/defaults.php:201
 #: templates/emails/plain/double-opt-in.php:24
 msgid "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
 msgstr "Дякуємо за створення облікового запису. Перейдіть за посиланням нижче, щоб активувати обліковий запис:"
 
-#: config/defaults.php:181
+#: config/defaults.php:202
 msgid "Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość."
 msgstr "Якщо це не ви створювали обліковий запис, не хвилюйтеся — просто видаліть це повідомлення."
 
-#: config/defaults.php:193
+#: config/defaults.php:214
 msgid "Zapytaj o wycenę"
 msgstr "Запитати ціну"
 
-#: config/defaults.php:194
+#: config/defaults.php:215
 msgid "Zapytaj o indywidualną wycenę"
 msgstr "Запитати індивідуальну ціну"
 
-#: config/defaults.php:195
+#: config/defaults.php:216
 msgid "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia."
 msgstr "Заповніть коротку форму, і ми повернемося з ціною, адаптованою до вашого замовлення."
 
-#: config/defaults.php:196
+#: config/defaults.php:217
 msgid "Zamknij formularz wyceny"
 msgstr "Закрити форму запиту ціни"
 
-#: config/defaults.php:197
+#: config/defaults.php:218
 msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
 msgstr "Увійдіть, щоб надіслати запит на ціну для цього товару."
 
-#: config/defaults.php:198
+#: config/defaults.php:219
 #: templates/forms/dsa-report.php:41
 msgid "Imię i nazwisko"
 msgstr "Ім'я та прізвище"
 
-#: config/defaults.php:199
+#: config/defaults.php:220
+#: src/Admin/ModulesPage.php:956
 msgid "Email"
 msgstr "Електронна пошта"
 
-#: config/defaults.php:200
+#: config/defaults.php:221
 msgid "Telefon"
 msgstr "Телефон"
 
-#: config/defaults.php:201
+#: config/defaults.php:222
 msgid "Firma"
 msgstr "Компанія"
 
-#: config/defaults.php:202
+#: config/defaults.php:223
 #: src/Service/NipLookupService.php:66
 #: src/Service/NipLookupService.php:147
-#: src/Service/SiteAuditService.php:234
 msgid "NIP"
 msgstr "NIP"
 
-#: config/defaults.php:203
+#: config/defaults.php:224
 msgid "Kod pocztowy"
 msgstr "Поштовий індекс"
 
-#: config/defaults.php:205
+#: config/defaults.php:226
 msgid "Szczegóły zapytania"
 msgstr "Деталі запиту"
 
-#: config/defaults.php:206
+#: config/defaults.php:227
 msgid "Napisz czego potrzebujesz, jaki masz termin i jakie są założenia zamówienia."
 msgstr "Напишіть, що вам потрібно, які у вас терміни та які умови замовлення."
 
-#: config/defaults.php:207
+#: config/defaults.php:228
 msgid "Wyślij zapytanie"
 msgstr "Надіслати запит"
 
-#: config/defaults.php:208
+#: config/defaults.php:229
 msgid "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe."
 msgstr "Дякуємо. Ваш запит надіслано, ми відповімо якнайшвидше."
 
-#: config/defaults.php:209
+#: config/defaults.php:230
 msgid "Cena dostępna po wycenie"
 msgstr "Ціна доступна після оцінки"
 
-#: config/defaults.php:210
+#: config/defaults.php:231
 msgid "Uzupełnij poprawnie imię i adres email."
 msgstr "Правильно заповніть ім'я та адресу електронної пошти."
 
-#: config/defaults.php:211
+#: config/defaults.php:232
 msgid "Podaj numer telefonu do kontaktu."
 msgstr "Вкажіть контактний номер телефону."
 
-#: config/defaults.php:212
+#: config/defaults.php:233
 msgid "Podaj nazwę firmy."
 msgstr "Вкажіть назву компанії."
 
-#: config/defaults.php:213
+#: config/defaults.php:234
 msgid "Podaj numer NIP."
 msgstr "Вкажіть номер NIP."
 
-#: config/defaults.php:214
+#: config/defaults.php:235
 msgid "Podaj poprawny numer NIP."
 msgstr "Вкажіть правильний номер NIP."
 
-#: config/defaults.php:215
+#: config/defaults.php:236
 msgid "Podaj kod pocztowy."
 msgstr "Вкажіть поштовий індекс."
 
-#: config/defaults.php:216
+#: config/defaults.php:237
 msgid "Musisz zaakceptować zgodę prywatności."
 msgstr "Ви повинні прийняти згоду на конфіденційність."
 
-#: config/defaults.php:217
+#: config/defaults.php:238
 msgid "Minimalna ilość dla tego zapytania to {quantity}."
 msgstr "Мінімальна кількість для цього запиту — {quantity}."
 
-#: config/defaults.php:218
+#: config/defaults.php:239
 msgid "Nie udało się zapisać zapytania. Spróbuj ponownie."
 msgstr "Не вдалося зберегти запит. Спробуйте ще раз."
 
-#: config/defaults.php:219
+#: config/defaults.php:240
 msgid "Nie udało się przygotować zapytania dla tego produktu."
 msgstr "Не вдалося підготувати запит для цього товару."
 
-#: config/defaults.php:226
+#: config/defaults.php:247
 msgid "Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny."
 msgstr "Я приймаю політику конфіденційності та погоджуюся на контакт щодо ціни."
 
-#: config/defaults.php:227
+#: config/defaults.php:248
 msgid "Nowe zapytanie ofertowe - {product_name}"
 msgstr "Новий запит на ціну — {product_name}"
 
-#: config/defaults.php:228
+#: config/defaults.php:249
 msgid "Potwierdzenie zapytania ofertowego - {product_name}"
 msgstr "Підтвердження запиту на ціну — {product_name}"
 
-#: config/defaults.php:230
+#: config/defaults.php:251
 msgid "Zapytania ofertowe"
 msgstr "Запити на ціну"
 
-#: config/defaults.php:231
+#: config/defaults.php:252
 msgid "Status zapytania został zaktualizowany."
 msgstr "Статус запиту оновлено."
 
-#: config/defaults.php:232
-#: config/defaults.php:317
-#: config/defaults.php:319
+#: config/defaults.php:253
+#: config/defaults.php:338
+#: config/defaults.php:340
 #: templates/forms/ajax-filters.php:30
 #: templates/forms/ajax-filters.php:44
 msgid "Wszystkie"
 msgstr "Усі"
 
-#: config/defaults.php:233
-#: src/Admin/AdminPage.php:631
+#: config/defaults.php:254
 msgid "Data"
 msgstr "Дата"
 
-#: config/defaults.php:235
+#: config/defaults.php:256
 msgid "Klient"
 msgstr "Клієнт"
 
-#: config/defaults.php:236
+#: config/defaults.php:257
 msgid "Firma / NIP"
 msgstr "Компанія / NIP"
 
-#: config/defaults.php:239
+#: config/defaults.php:260
 msgid "Akcje"
 msgstr "Дії"
 
-#: config/defaults.php:240
+#: config/defaults.php:261
 msgid "Brak zapytań ofertowych."
 msgstr "Запитів на ціну немає."
 
-#: config/defaults.php:241
+#: config/defaults.php:262
 msgid "Kod"
 msgstr "Код"
 
-#: config/defaults.php:254
+#: config/defaults.php:275
 msgid "Zapytaj o warunki handlowe"
 msgstr "Запитати про комерційні умови"
 
-#: config/defaults.php:255
+#: config/defaults.php:276
 msgid "Zaloguj się, aby zobaczyć ofertę"
 msgstr "Увійдіть, щоб побачити пропозицію"
 
-#: config/defaults.php:258
+#: config/defaults.php:279
 msgid "Cena dostępna po zalogowaniu lub po kontakcie z obsługą."
 msgstr "Ціна доступна після входу або після контакту зі службою підтримки."
 
-#: config/defaults.php:259
+#: config/defaults.php:280
 msgid "Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B."
 msgstr "Товар доступний у каталожному режимі. Зв'яжіться з нами для отримання комерційних умов або пропозиції B2B."
 
-#: config/defaults.php:260
+#: config/defaults.php:281
 msgid "Zobacz warunki handlowe"
 msgstr "Переглянути комерційні умови"
 
-#: config/defaults.php:261
+#: config/defaults.php:282
 msgid "Ceny i zakup online są ukryte dla tego produktu."
 msgstr "Ціни та онлайн-покупка приховані для цього товару."
 
-#: config/defaults.php:262
+#: config/defaults.php:283
 msgid "Cena jest ukryta dla tego produktu."
 msgstr "Ціна прихована для цього товару."
 
-#: config/defaults.php:263
+#: config/defaults.php:284
 msgid "Zakup online jest wyłączony dla tego produktu."
 msgstr "Онлайн-покупка вимкнена для цього товару."
 
-#: config/defaults.php:284
+#: config/defaults.php:305
 #: templates/forms/ajax-search.php:17
 msgid "Szukaj produktów"
 msgstr "Шукати товари"
 
-#: config/defaults.php:285
+#: config/defaults.php:306
 #: templates/forms/ajax-search.php:40
 msgid "Wyniki wyszukiwania produktów"
 msgstr "Результати пошуку товарів"
 
-#: config/defaults.php:286
-#: config/defaults.php:383
-#: config/defaults.php:407
-#: src/Service/CompareService.php:406
+#: config/defaults.php:307
+#: config/defaults.php:404
+#: config/defaults.php:428
+#: src/Service/CompareService.php:408
 #: src/Service/SearchService.php:81
 #: templates/quick-view/content.php:55
 msgid "SKU"
 msgstr "SKU"
 
-#: config/defaults.php:287
+#: config/defaults.php:308
 msgid "Szukaj produktów, kodów SKU lub kategorii"
 msgstr "Шукати товари, коди SKU або категорії"
 
-#: config/defaults.php:288
+#: config/defaults.php:309
 msgid "Szukaj"
 msgstr "Шукати"
 
-#: config/defaults.php:289
+#: config/defaults.php:310
 msgid "Brak wyników dla podanego zapytania."
 msgstr "Немає результатів за вашим запитом."
 
-#: config/defaults.php:290
+#: config/defaults.php:311
 msgid "Zobacz wszystkie wyniki"
 msgstr "Переглянути всі результати"
 
-#: config/defaults.php:298
-#: config/defaults.php:318
-#: config/defaults.php:386
-#: src/Service/CompareService.php:409
-#: src/Service/ProductInfoService.php:103
+#: config/defaults.php:319
+#: config/defaults.php:339
+#: config/defaults.php:407
 #: templates/forms/ajax-filters.php:42
 msgid "Marka"
 msgstr "Бренд"
 
-#: config/defaults.php:316
+#: config/defaults.php:337
 #: templates/forms/ajax-filters.php:28
 msgid "Kategoria"
 msgstr "Категорія"
 
-#: config/defaults.php:320
+#: config/defaults.php:341
 #: templates/forms/ajax-filters.php:56
 msgid "Cena od"
 msgstr "Ціна від"
 
-#: config/defaults.php:321
+#: config/defaults.php:342
 #: templates/forms/ajax-filters.php:60
 msgid "Cena do"
 msgstr "Ціна до"
 
-#: config/defaults.php:322
-#: config/defaults.php:384
-#: src/Service/CompareService.php:407
+#: config/defaults.php:343
+#: config/defaults.php:405
 #: templates/forms/ajax-filters.php:67
 msgid "Dostępność"
 msgstr "Наявність"
 
-#: config/defaults.php:323
+#: config/defaults.php:344
 #: templates/forms/ajax-filters.php:69
 msgid "Dowolna"
 msgstr "Будь-яка"
 
-#: config/defaults.php:324
+#: config/defaults.php:345
 #: templates/forms/ajax-filters.php:71
 msgid "Dostępne od ręki"
 msgstr "В наявності"
 
-#: config/defaults.php:325
-#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:38
+#: config/defaults.php:346
 #: templates/forms/ajax-filters.php:79
 msgid "Promocje"
 msgstr "Акції"
 
-#: config/defaults.php:326
+#: config/defaults.php:347
 #: templates/forms/ajax-filters.php:93
 msgid "Dowolny"
 msgstr "Будь-який"
 
-#: config/defaults.php:328
+#: config/defaults.php:349
 msgid "Filtruj"
 msgstr "Фільтрувати"
 
-#: config/defaults.php:329
+#: config/defaults.php:350
 msgid "Wyczyść filtry"
 msgstr "Очистити фільтри"
 
-#: config/defaults.php:330
+#: config/defaults.php:351
 msgid "Filtry produktów"
 msgstr "Фільтри товарів"
 
-#: config/defaults.php:347
-#: src/Service/WishlistService.php:174
+#: config/defaults.php:368
 msgid "Ulubione"
 msgstr "Обране"
 
-#: config/defaults.php:348
-#: src/Service/WishlistService.php:266
+#: config/defaults.php:369
 msgid "Dodaj do ulubionych"
 msgstr "Додати до обраного"
 
-#: config/defaults.php:349
-#: src/Service/WishlistService.php:271
+#: config/defaults.php:370
 msgid "Usuń z ulubionych"
 msgstr "Видалити з обраного"
 
-#: config/defaults.php:351
-#: src/Service/WishlistService.php:276
+#: config/defaults.php:372
 msgid "Zaloguj się, aby korzystać z listy życzeń."
 msgstr "Увійдіть, щоб використовувати список бажань."
 
-#: config/defaults.php:352
-#: config/defaults.php:371
-#: config/defaults.php:406
-#: config/defaults.php:565
-#: src/Service/CompareService.php:355
-#: src/Service/QuickViewService.php:117
-#: src/Service/WaitlistService.php:101
-#: src/Service/WishlistService.php:281
+#: config/defaults.php:373
+#: config/defaults.php:392
+#: config/defaults.php:427
+#: config/defaults.php:586
 msgid "Nie znaleziono produktu."
 msgstr "Товар не знайдено."
 
-#: config/defaults.php:353
+#: config/defaults.php:374
 msgid "Lista ulubionych jest pusta."
 msgstr "Список обраного порожній."
 
-#: config/defaults.php:354
+#: config/defaults.php:375
 msgid "Twoje ulubione produkty"
 msgstr "Ваші обрані товари"
 
-#: config/defaults.php:367
-#: src/Service/CompareService.php:225
+#: config/defaults.php:388
 msgid "Porównanie"
 msgstr "Порівняння"
 
-#: config/defaults.php:368
-#: src/Service/CompareService.php:330
+#: config/defaults.php:389
 msgid "Dodaj do porównania"
 msgstr "Додати до порівняння"
 
-#: config/defaults.php:369
-#: src/Service/CompareService.php:335
+#: config/defaults.php:390
 msgid "Usuń z porównania"
 msgstr "Видалити з порівняння"
 
-#: config/defaults.php:370
-#: src/Service/CompareService.php:350
+#: config/defaults.php:391
 msgid "Zaloguj się, aby korzystać z porównania produktów."
 msgstr "Увійдіть, щоб використовувати порівняння товарів."
 
-#: config/defaults.php:372
-#: src/Service/CompareService.php:375
+#: config/defaults.php:393
 msgid "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie."
 msgstr "Ви можете порівняти максимум {limit} товарів одночасно. Найстаріший запис замінено автоматично."
 
-#: config/defaults.php:373
-#: src/Service/CompareService.php:360
+#: config/defaults.php:394
 msgid "Nie możesz wyczyścić porównania."
 msgstr "Не вдалося очистити порівняння."
 
-#: config/defaults.php:375
+#: config/defaults.php:396
 msgid "Lista porównawcza jest pusta."
 msgstr "Список порівняння порожній."
 
-#: config/defaults.php:376
+#: config/defaults.php:397
 msgid "Porównanie produktów"
 msgstr "Порівняння товарів"
 
-#: config/defaults.php:377
-#: src/Service/CompareService.php:345
+#: config/defaults.php:398
 msgid "Porównaj produkty"
 msgstr "Порівняти товари"
 
-#: config/defaults.php:378
-#: src/Service/CompareService.php:340
+#: config/defaults.php:399
 msgid "Wyczyść porównanie"
 msgstr "Очистити порівняння"
 
-#: config/defaults.php:379
-#: src/Service/CompareService.php:365
+#: config/defaults.php:400
 msgid "Cecha"
 msgstr "Характеристика"
 
-#: config/defaults.php:380
-#: src/Service/CompareService.php:370
+#: config/defaults.php:401
 msgid "Pokazuj tylko różnice"
 msgstr "Показувати лише відмінності"
 
-#: config/defaults.php:382
-#: src/Compatibility/Elementor/Widgets/UnitPriceWidget.php:16
-#: src/Service/CompareService.php:405
+#: config/defaults.php:403
 msgid "Cena jednostkowa"
 msgstr "Ціна за одиницю"
 
-#: config/defaults.php:385
-#: src/Admin/PostTypes.php:43
-#: src/Compatibility/Elementor/Widgets/DeliveryTimeWidget.php:16
-#: src/Service/CompareService.php:408
+#: config/defaults.php:406
 msgid "Czas dostawy"
 msgstr "Термін доставки"
 
-#: config/defaults.php:387
-#: src/Admin/PostTypes.php:68
-#: src/Compatibility/Elementor/Widgets/ManufacturerWidget.php:16
-#: src/Service/CompareService.php:410
-#: src/Service/ProductInfoService.php:42
+#: config/defaults.php:408
 #: templates/single-product/gpsr-info.php:15
 msgid "Producent"
 msgstr "Виробник"
 
-#: config/defaults.php:388
-#: src/Service/CompareService.php:411
+#: config/defaults.php:409
+#: src/Service/CompareService.php:413
 msgid "GTIN / EAN"
 msgstr "GTIN / EAN"
 
-#: config/defaults.php:389
-#: src/Service/CompareService.php:415
+#: config/defaults.php:410
 msgid "Krótki opis"
 msgstr "Короткий опис"
 
-#: config/defaults.php:401
-#: src/Service/QuickViewService.php:137
+#: config/defaults.php:422
 msgid "Szybki podgląd"
 msgstr "Швидкий перегляд"
 
-#: config/defaults.php:402
-#: src/Service/QuickViewService.php:142
+#: config/defaults.php:423
 #: templates/shared/quick-view-modal.php:20
 #: templates/shared/quick-view-modal.php:28
 msgid "Szybki podgląd produktu"
 msgstr "Швидкий перегляд товару"
 
-#: config/defaults.php:403
+#: config/defaults.php:424
 #: templates/shared/quick-view-modal.php:22
 msgid "Zamknij"
 msgstr "Закрити"
 
-#: config/defaults.php:404
-#: src/Service/QuickViewService.php:75
-#: src/Service/QuickViewService.php:103
+#: config/defaults.php:425
 msgid "Ładowanie produktu..."
 msgstr "Завантаження товару..."
 
-#: config/defaults.php:405
-#: src/Service/QuickViewService.php:76
+#: config/defaults.php:426
 msgid "Nie udało się wczytać podglądu produktu."
 msgstr "Не вдалося завантажити попередній перегляд товару."
 
-#: config/defaults.php:422
+#: config/defaults.php:443
 #: templates/quick-view/content.php:96
 msgid "Zobacz pełną kartę produktu"
 msgstr "Переглянути повну картку товару"
 
-#: config/defaults.php:431
+#: config/defaults.php:452
 msgid "Często kupowane razem"
 msgstr "Часто купують разом"
 
-#: config/defaults.php:432
+#: config/defaults.php:453
 msgid "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość do koszyka jednym kliknięciem."
 msgstr "Запропонуйте клієнту готовий набір додаткових товарів та додайте все до кошика одним натисканням."
 
-#: config/defaults.php:433
-#: config/defaults.php:599
+#: config/defaults.php:454
+#: config/defaults.php:620
 msgid "Dodaj zestaw do koszyka"
 msgstr "Додати набір до кошика"
 
-#: config/defaults.php:434
+#: config/defaults.php:455
 msgid "Brak skonfigurowanych produktów do zestawu."
 msgstr "Немає налаштованих товарів для набору."
 
-#: config/defaults.php:438
+#: config/defaults.php:459
 msgid "Łącznie:"
 msgstr "Разом:"
 
-#: config/defaults.php:439
+#: config/defaults.php:460
 msgid "Dodano {count} produktów z zestawu do koszyka."
 msgstr "Додано {count} товарів з набору до кошика."
 
-#: config/defaults.php:468
+#: config/defaults.php:489
 msgid "Promocja"
 msgstr "Акція"
 
-#: config/defaults.php:469
+#: config/defaults.php:490
 msgid "Nowość"
 msgstr "Новинка"
 
-#: config/defaults.php:470
+#: config/defaults.php:491
 msgid "Ostatnie sztuki"
 msgstr "Останні одиниці"
 
-#: config/defaults.php:471
+#: config/defaults.php:492
 #: src/Service/BadgeService.php:113
 msgid "Bestseller"
 msgstr "Бестселер"
 
-#: config/defaults.php:478
-#: src/Service/TabManagerService.php:76
+#: config/defaults.php:499
 msgid "Dostawa i płatność"
 msgstr "Доставка та оплата"
 
-#: config/defaults.php:482
-#: src/Service/TabManagerService.php:84
+#: config/defaults.php:503
 msgid "Zwroty i reklamacje"
 msgstr "Повернення та рекламації"
 
-#: config/defaults.php:496
-#: src/Service/FeaturedVideoService.php:113
+#: config/defaults.php:517
 msgid "Zobacz produkt w użyciu"
 msgstr "Подивіться товар у використанні"
 
-#: config/defaults.php:509
+#: config/defaults.php:530
 #: templates/shared/gallery-lightbox.php:18
 msgid "Podgląd galerii produktu"
 msgstr "Попередній перегляд галереї товару"
 
-#: config/defaults.php:510
+#: config/defaults.php:531
 #: templates/shared/gallery-lightbox.php:21
 msgid "Zamknij podgląd galerii"
 msgstr "Закрити попередній перегляд галереї"
 
-#: config/defaults.php:519
-#: src/Service/ProductSliderService.php:119
+#: config/defaults.php:540
+#: src/Service/ProductSliderService.php:76
+#: src/Service/ProductSliderService.php:120
 msgid "Polecane produkty"
 msgstr "Рекомендовані товари"
 
-#: config/defaults.php:530
+#: config/defaults.php:551
 msgid "Brak produktów do wyświetlenia w tej sekcji."
 msgstr "Немає товарів для показу в цьому розділі."
 
-#: config/defaults.php:531
+#: config/defaults.php:552
 #: templates/shared/product-slider.php:77
 msgid "Zobacz wszystkie produkty"
 msgstr "Переглянути всі товари"
 
-#: config/defaults.php:541
+#: config/defaults.php:562
 msgid "Zamów w przedsprzedaży"
 msgstr "Замовити за передзамовленням"
 
-#: config/defaults.php:542
+#: config/defaults.php:563
 msgid "Przedsprzedaż, wysyłka od {date}"
 msgstr "Передзамовлення, відправка від {date}"
 
-#: config/defaults.php:543
+#: config/defaults.php:564
 msgid "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę zrealizujemy od {date}."
 msgstr "Цей товар доступний за передзамовленням. Замовте зараз, а доставку здійснимо від {date}."
 
-#: config/defaults.php:544
+#: config/defaults.php:565
 msgid "Przedsprzedaż"
 msgstr "Передзамовлення"
 
-#: config/defaults.php:548
+#: config/defaults.php:569
 msgid "Produkty z przedsprzedaży nie mogą być łączone z innymi produktami w tym samym koszyku."
 msgstr "Товари з передзамовлення не можуть бути об'єднані з іншими товарами в одному кошику."
 
-#: config/defaults.php:556
+#: config/defaults.php:577
 msgid "Powiadom mnie o dostępności"
 msgstr "Повідомити мене про наявність"
 
-#: config/defaults.php:558
+#: config/defaults.php:579
 msgid "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
 msgstr "Залиште адресу електронної пошти, і ми повідомимо, коли товар з'явиться на складі."
 
-#: config/defaults.php:560
+#: config/defaults.php:581
 #: templates/single-product/waitlist-form.php:27
 msgid "Adres email"
 msgstr "Адреса електронної пошти"
 
-#: config/defaults.php:561
+#: config/defaults.php:582
 #: templates/single-product/waitlist-form.php:28
 msgid "Twój adres email"
 msgstr "Ваша адреса електронної пошти"
 
-#: config/defaults.php:562
+#: config/defaults.php:583
 msgid "Powiadom mnie"
 msgstr "Повідомити мене"
 
-#: config/defaults.php:563
-#: src/Service/WaitlistService.php:123
+#: config/defaults.php:584
 msgid "Dziękujemy. Zapisaliśmy Cię na listę oczekujących."
 msgstr "Дякуємо. Ми записали вас до списку очікування."
 
-#: config/defaults.php:564
+#: config/defaults.php:585
 msgid "Akceptuję kontakt email w sprawie dostępności tego produktu."
 msgstr "Я погоджуюся на контакт електронною поштою щодо наявності цього товару."
 
-#: config/defaults.php:566
-#: src/Service/WaitlistService.php:105
+#: config/defaults.php:587
 msgid "Lista oczekujących jest niedostępna dla tego produktu."
 msgstr "Список очікування недоступний для цього товару."
 
-#: config/defaults.php:567
-#: src/Service/WaitlistService.php:109
+#: config/defaults.php:588
 msgid "Podaj poprawny adres email."
 msgstr "Вкажіть правильну адресу електронної пошти."
 
-#: config/defaults.php:568
-#: src/Service/WaitlistService.php:113
+#: config/defaults.php:589
 msgid "Musisz zaakceptować zgodę na kontakt email."
 msgstr "Ви повинні прийняти згоду на контакт електронною поштою."
 
-#: config/defaults.php:569
-#: src/Service/WaitlistService.php:117
+#: config/defaults.php:590
 msgid "Zaloguj się, aby zapisać się na listę oczekujących."
 msgstr "Увійдіть, щоб записатися до списку очікування."
 
-#: config/defaults.php:570
-#: src/Service/WaitlistService.php:135
+#: config/defaults.php:591
 msgid "Produkt ponownie dostępny - {product_name}"
 msgstr "Товар знову доступний — {product_name}"
 
-#: config/defaults.php:571
-#: src/Service/WaitlistService.php:141
+#: config/defaults.php:592
 msgid "Produkt {product_name} jest ponownie dostępny."
 msgstr "Товар {product_name} знову доступний."
 
-#: config/defaults.php:572
-#: src/Service/WaitlistService.php:143
+#: config/defaults.php:593
 msgid "Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten email."
 msgstr "Якщо ви більше не бажаєте отримувати такі повідомлення, просто проігноруйте цей лист."
 
-#: config/defaults.php:579
+#: config/defaults.php:600
 msgid "Dodatki do produktu"
 msgstr "Додатки до товару"
 
-#: config/defaults.php:580
+#: config/defaults.php:601
 msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
 msgstr "Налаштуйте додатки та послуги, пов'язані з цим товаром."
 
-#: config/defaults.php:584
+#: config/defaults.php:605
 msgid "Wymagane"
 msgstr "Обов'язково"
 
-#: config/defaults.php:585
+#: config/defaults.php:606
 msgid "Opcjonalne"
 msgstr "Необов'язково"
 
-#: config/defaults.php:586
+#: config/defaults.php:607
 msgid "Wybierz opcję"
 msgstr "Виберіть опцію"
 
-#: config/defaults.php:587
+#: config/defaults.php:608
 msgid "Wpisz wartość"
 msgstr "Введіть значення"
 
-#: config/defaults.php:588
+#: config/defaults.php:609
 msgid "Wpisz szczegóły"
 msgstr "Введіть деталі"
 
-#: config/defaults.php:597
+#: config/defaults.php:618
 msgid "Kup w zestawie"
 msgstr "Купити в наборі"
 
-#: config/defaults.php:598
+#: config/defaults.php:619
 msgid "Połącz produkt główny z akcesoriami i kup całość w jednym pakiecie."
 msgstr "Поєднайте основний товар з аксесуарами та купіть все в одному наборі."
 
-#: config/defaults.php:600
+#: config/defaults.php:621
 msgid "Wybierz przynajmniej jeden dodatkowy produkt do zestawu."
 msgstr "Виберіть хоча б один додатковий товар до набору."
 
-#: config/defaults.php:601
+#: config/defaults.php:622
 msgid "Dodano zestaw do koszyka."
 msgstr "Набір додано до кошика."
 
-#: config/defaults.php:604
+#: config/defaults.php:625
 msgid "Cena zestawu"
 msgstr "Ціна набору"
 
-#: config/defaults.php:605
+#: config/defaults.php:626
 msgid "w zestawie"
 msgstr "у наборі"
 
-#: config/defaults.php:606
+#: config/defaults.php:627
 msgid "x {quantity}"
 msgstr "x {quantity}"
 
-#: config/defaults.php:607
+#: config/defaults.php:628
 msgid "Oszczędzasz"
 msgstr "Ви заощаджуєте"
 
-#: config/defaults.php:614
+#: config/defaults.php:635
 #: templates/archive/infinite-scroll.php:11
 msgid "Załaduj więcej produktów"
 msgstr "Завантажити більше товарів"
 
-#: config/defaults.php:615
+#: config/defaults.php:636
 msgid "Ładowanie produktów..."
 msgstr "Завантаження товарів..."
 
-#: config/defaults.php:616
+#: config/defaults.php:637
 msgid "Nie udało się załadować kolejnych produktów."
 msgstr "Не вдалося завантажити більше товарів."
 
-#: config/defaults.php:617
+#: config/defaults.php:638
 msgid "To już wszystkie produkty."
 msgstr "Це всі товари."
 
-#: config/defaults.php:628
+#: config/defaults.php:649
 msgid "Masz pytanie o produkt lub warunki handlowe?"
 msgstr "Маєте питання про товар або комерційні умови?"
 
-#: config/defaults.php:629
+#: config/defaults.php:650
 msgid "Skontaktuj się z nami, jeśli chcesz dostać ofertę B2B, rabat dla hurtu albo pomoc z doborem produktu."
 msgstr "Зв'яжіться з нами, якщо хочете отримати пропозицію B2B, оптову знижку або допомогу з вибором товару."
 
-#: config/defaults.php:630
+#: config/defaults.php:651
 msgid "Przejdź do kontaktu"
 msgstr "Перейти до контакту"
 
-#: config/defaults.php:633
+#: config/defaults.php:654
 #: src/Service/PopupService.php:80
 msgid "Zamknij popup"
 msgstr "Закрити спливаюче вікно"
 
-#: config/defaults.php:634
+#: config/defaults.php:655
 #: src/Service/PopupService.php:81
 msgid "Popup promocyjny"
 msgstr "Рекламне спливаюче вікно"
 
-#: config/defaults.php:660
-#: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
+#: config/defaults.php:681
 msgid "Składniki"
 msgstr "Склад"
 
-#: config/defaults.php:661
-#: src/Admin/PostTypes.php:142
-#: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
+#: config/defaults.php:682
 msgid "Alergeny"
 msgstr "Алергени"
 
-#: config/defaults.php:662
+#: config/defaults.php:683
 msgid "Wartości odżywcze na"
 msgstr "Харчова цінність на"
 
-#: config/defaults.php:663
-#: src/Admin/PostTypes.php:168
+#: config/defaults.php:684
 msgid "Składnik odżywczy"
 msgstr "Поживна речовина"
 
-#: config/defaults.php:664
+#: config/defaults.php:685
 msgid "Wartość"
 msgstr "Значення"
 
-#: config/defaults.php:665
+#: config/defaults.php:686
 #: src/Service/FoodService.php:133
 msgid "100 g"
 msgstr "100 г"
 
-#: config/defaults.php:666
+#: config/defaults.php:687
 #: src/Admin/CSVImportExport.php:81
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
 #: src/Service/FoodService.php:201
 msgid "Nutri-Score"
 msgstr "Nutri-Score"
 
-#: config/defaults.php:667
+#: config/defaults.php:688
 msgid "Zawartość alkoholu"
 msgstr "Вміст алкоголю"
 
-#: config/defaults.php:668
+#: config/defaults.php:689
 #: src/Service/FoodService.php:241
 msgid "% vol."
 msgstr "% об."
 
-#: config/defaults.php:669
+#: config/defaults.php:690
 msgid "Kraj pochodzenia"
 msgstr "Країна походження"
 
-#: config/defaults.php:670
+#: config/defaults.php:691
 msgid "Dystrybutor"
 msgstr "Дистриб'ютор"
 
-#: config/defaults.php:671
+#: config/defaults.php:692
 msgid "Zawartość netto"
 msgstr "Маса нетто"
 
@@ -1286,23 +1249,15 @@ msgstr "Маса нетто"
 msgid "Polski requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr "Polski потребує PHP %1$s або вище. У вас встановлено PHP %2$s."
 
-#: polski.php:89
+#: polski.php:99
 msgid "Polski requires WooCommerce to be installed and activated."
 msgstr "Polski потребує встановлення та активації WooCommerce."
 
 #. translators: 1: Required WC version, 2: Current WC version
-#: polski.php:101
+#: polski.php:111
 #, php-format
 msgid "Polski requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
 msgstr "Polski потребує WooCommerce %1$s або вище. У вас встановлено WooCommerce %2$s."
-
-#: src/Admin/AdminNotes.php:38
-msgid "This plugin provides tools to assist with Polish e-commerce compliance. It does not constitute legal advice. You are solely responsible for ensuring your store complies with all applicable laws. We recommend consulting a qualified legal professional."
-msgstr "Цей плагін надає інструменти для допомоги у відповідності польського e-commerce. Він не є юридичною консультацією. Ви несете повну відповідальність за дотримання всіх чинних законів вашим магазином. Ми рекомендуємо звернутися до кваліфікованого юриста."
-
-#: src/Admin/AdminNotes.php:39
-msgid "I understand, dismiss"
-msgstr "Зрозуміло, закрити"
 
 #: src/Admin/AdminNotes.php:45
 msgid "Insufficient permissions."
@@ -1321,10 +1276,11 @@ msgid "Launch setup wizard"
 msgstr "Запустити майстер налаштування"
 
 #: src/Admin/AdminPage.php:56
+#: src/Admin/ModulesPage.php:1102
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
-msgid "Ustawienia"
+msgid "Settings"
 msgstr "Налаштування"
 
 #: src/Admin/AdminPage.php:69
@@ -1332,8 +1288,8 @@ msgid "You do not have permission to send feedback."
 msgstr "У вас немає дозволу на надсилання відгуку."
 
 #: src/Admin/AdminPage.php:117
-msgid "Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony."
-msgstr "На жаль, здається, що у вас немає доступу до цієї сторінки."
+msgid "Sorry, but you do not have permission to access this page."
+msgstr "У вас немає дозволу для доступу до цієї сторінки."
 
 #: src/Admin/AdminPage.php:132
 #: src/Admin/AdminPage.php:176
@@ -1351,32 +1307,40 @@ msgstr "Polski"
 #: src/Admin/AdminPage.php:226
 #: src/Admin/AdminPage.php:227
 #: src/Admin/AdminPage.php:396
-msgid "Pulpit"
-msgstr "Панель"
+msgid "Dashboard"
+msgstr "Панель керування"
 
 #: src/Admin/AdminPage.php:235
 #: src/Admin/AdminPage.php:236
 #: src/Admin/AdminPage.php:395
-msgid "Moduły"
+msgid "Modules"
 msgstr "Модулі"
 
 #: src/Admin/AdminPage.php:244
 #: src/Admin/AdminPage.php:245
 #: src/Admin/AdminPage.php:429
-msgid "Raporty i narzędzia"
+msgid "Reports & Tools"
 msgstr "Звіти та інструменти"
 
 #: src/Admin/AdminPage.php:300
-msgid "Ustawienia zostały zapisane."
+msgid "Settings have been saved."
 msgstr "Налаштування збережено."
 
 #: src/Admin/AdminPage.php:321
-msgid "Zapisz ustawienia"
+msgid "Save Settings"
 msgstr "Зберегти налаштування"
 
+#: src/Admin/AdminPage.php:383
+msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
+msgstr "Готово! Ми створили чернетки правових сторінок. Перегляньте, відредагуйте та опублікуйте їх."
+
+#: src/Admin/AdminPage.php:389
+msgid "Modules saved."
+msgstr "Модулі збережено."
+
 #: src/Admin/AdminPage.php:439
-msgid "Wróć do raportów"
-msgstr "Повернутися до звітів"
+msgid "Back to reports"
+msgstr "Назад до звітів"
 
 #: src/Admin/AdminPage.php:476
 msgid "Help and feedback"
@@ -1431,6 +1395,7 @@ msgid "Your email"
 msgstr "Ваша електронна пошта"
 
 #: src/Admin/AdminPage.php:505
+#: src/Admin/AdminPage.php:633
 msgid "Topic"
 msgstr "Тема"
 
@@ -1455,6 +1420,7 @@ msgid "Support question"
 msgstr "Питання підтримки"
 
 #: src/Admin/AdminPage.php:512
+#: src/Admin/AdminPage.php:635
 msgid "Message"
 msgstr "Повідомлення"
 
@@ -1527,123 +1493,183 @@ msgid "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami t
 msgstr "Облік договорів доручення обробки персональних даних з третіми сторонами."
 
 #: src/Admin/AdminPage.php:581
-msgid "Logi opinii"
-msgstr "Журнали відгуків"
+msgid "Feedback Logs"
+msgstr "Журнал відгуків"
 
 #: src/Admin/AdminPage.php:582
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr "Відгуки про деактивацію та локальні відгуки адміністратора з бічної панелі плагіна."
 
 #: src/Admin/AdminPage.php:588
-msgid "Wybierz raport lub narzędzie, aby sprawdzić status zgodności Twojego sklepu."
-msgstr "Виберіть звіт або інструмент для перевірки статусу відповідності вашого магазину."
+msgid "Select a report or tool to check your store compliance status."
+msgstr "Виберіть звіт або інструмент для перевірки стану відповідності вашого магазину."
 
 #: src/Admin/AdminPage.php:603
-msgid "Otwórz raport"
+msgid "Open Report"
 msgstr "Відкрити звіт"
 
 #: src/Admin/AdminPage.php:605
-msgid "Moduł wyłączony"
-msgstr "Модуль вимкнено"
+msgid "Module disabled"
+msgstr "Модуль деактивований"
 
 #: src/Admin/AdminPage.php:623
-msgid "Logi opinii z panelu"
-msgstr "Журнали відгуків з панелі"
+msgid "Admin Feedback Logs"
+msgstr "Журнал відгуків адміністратора"
 
 #: src/Admin/AdminPage.php:626
-msgid "Brak opinii z panelu do wyświetlenia."
-msgstr "Немає відгуків з панелі для показу."
+msgid "No internal feedback to display."
+msgstr "Немає внутрішніх відгуків для відображення."
+
+#: src/Admin/AdminPage.php:631
+#: src/Admin/DeactivationHandler.php:152
+#: src/Service/DSAService.php:157
+#: templates/account/withdrawal-confirm.php:37
+#: templates/account/withdrawal-confirm.php:46
+msgid "Date"
+msgstr "Дата"
 
 #: src/Admin/AdminPage.php:632
-msgid "Osoba"
+msgid "Person"
 msgstr "Особа"
 
-#: src/Admin/AdminPage.php:633
-msgid "Temat"
-msgstr "Тема"
-
 #: src/Admin/AdminPage.php:634
-msgid "Ekran"
+msgid "Screen"
 msgstr "Екран"
 
-#: src/Admin/AdminPage.php:635
-msgid "Wiadomość"
-msgstr "Повідомлення"
-
 #: src/Admin/AdminPage.php:675
-msgid "Włącz"
-msgstr "Увімкнути"
+msgid "Enable"
+msgstr "Активувати"
 
 #: src/Admin/AdminPage.php:707
-msgid "Dzień dobry!"
-msgstr "Доброго дня!"
+msgid "Hello!"
+msgstr "Привіт!"
 
 #: src/Admin/AdminPage.php:708
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "Інструменти для адаптації магазину до вимог польського ринку."
 
 #: src/Admin/AdminPage.php:714
-msgid "Dokończ konfigurację"
-msgstr "Завершити конфігурацію"
+msgid "Finish configuration"
+msgstr "Завершити налаштування"
 
 #: src/Admin/AdminPage.php:715
-msgid "Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi."
-msgstr "Деякі ключові елементи вашого магазину ще потребують уваги."
+msgid "Some key elements of your store still require attention."
+msgstr "Деякі ключові елементи вашого магазину все ще потребують уваги."
 
-#: src/Admin/AdminPage.php:716
-msgid "Uzupełnij dane firmy"
-msgstr "Заповніть дані компанії"
+#: src/Admin/AdminPage.php:718
+msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
+msgstr "Опублікувати правові сторінки (Умови, Політика конфіденційності, Право на відмову)"
+
+#: src/Admin/AdminPage.php:721
+msgid "Go through the checklist below"
+msgstr "Перегляньте контрольний список нижче"
+
+#: src/Admin/AdminPage.php:724
+msgid "Complete product data"
+msgstr "Заповнити дані продуктів"
 
 #: src/Admin/AdminPage.php:725
-msgid "Nieaktywna"
-msgstr "Неактивна"
+msgid "Manage modules"
+msgstr "Керувати модулями"
+
+#: src/Admin/AdminPage.php:734
+msgid "Inactive"
+msgstr "Неактивний"
+
+#: src/Admin/AdminPage.php:739
+#: src/Admin/AdminPage.php:762
+#: src/Admin/ModulesPage.php:203
+msgid "Legal Pages"
+msgstr "Правові сторінки"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:732
+#: src/Admin/AdminPage.php:741
 #, php-format
-msgid "%1$d z %2$d gotowych"
-msgstr "%1$d з %2$d готових"
+msgid "%1$d of %2$d ready"
+msgstr "%1$d з %2$d готово"
 
-#: src/Admin/AdminPage.php:737
-msgid "Dyrektywa Omnibus"
+#: src/Admin/AdminPage.php:746
+msgid "Omnibus Directive"
 msgstr "Директива Omnibus"
 
-#: src/Admin/AdminPage.php:743
-msgid "Analiza sklepu"
+#: src/Admin/AdminPage.php:747
+msgid "Active"
+msgstr "Активний"
+
+#: src/Admin/AdminPage.php:747
+msgid "Disabled"
+msgstr "Деактивований"
+
+#: src/Admin/AdminPage.php:752
+msgid "Store Analysis"
 msgstr "Аналіз магазину"
 
-#: src/Admin/AdminPage.php:744
-msgid "Sprawdź raporty"
+#: src/Admin/AdminPage.php:753
+msgid "Check reports"
 msgstr "Перевірити звіти"
 
-#: src/Admin/AdminPage.php:782
-msgid "Nie utworzona"
-msgstr "Не створена"
+#: src/Admin/AdminPage.php:767
+msgid "Page"
+msgstr "Сторінка"
 
-#: src/Admin/AdminPage.php:857
-msgid "Opublikuj swoje strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje)."
-msgstr "Опублікуйте ваші правові сторінки (Умови та положення, Політика конфіденційності, Право на відмову, Рекламації)."
+#: src/Admin/AdminPage.php:784
+msgid "Published"
+msgstr "Опубліковано"
+
+#: src/Admin/AdminPage.php:785
+msgid "Draft"
+msgstr "Чернетка"
+
+#: src/Admin/AdminPage.php:790
+msgid "Edit"
+msgstr "Редагувати"
+
+#: src/Admin/AdminPage.php:792
+msgid "Not created"
+msgstr "Не створено"
+
+#: src/Admin/AdminPage.php:807
+msgid "No legal pages have been created yet. Generate them to get started."
+msgstr "Правові сторінки ще не створені. Згенеруйте їх для початку."
+
+#: src/Admin/AdminPage.php:815
+msgid "Next steps"
+msgstr "Наступні кроки"
+
+#: src/Admin/AdminPage.php:867
+msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
+msgstr "Опублікуйте свої правові сторінки (Умови, Політика конфіденційності, Право на відмову, Рекламації)."
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:865
+#: src/Admin/AdminPage.php:875
 #, php-format
-msgid "Skonfiguruj <a href=\"%s\">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%)."
+msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
 msgstr "Налаштуйте <a href=\"%s\">ставки податків</a> у WooCommerce для польського ПДВ (23%%, 8%%, 5%%, 0%%)."
 
-#. translators: %s: product list URL
-#: src/Admin/AdminPage.php:888
+#. translators: %s: shipping settings URL
+#: src/Admin/AdminPage.php:887
 #, php-format
-msgid "Uzupełnij dane produktów - dodaj ceny jednostkowe i czas dostawy w <a href=\"%s\">zakładce Polski</a> przy każdym produkcie."
-msgstr "Заповніть дані товарів — додайте ціни за одиницю та термін доставки на <a href=\"%s\">вкладці Polski</a> для кожного товару."
+msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Налаштуйте <a href=\"%s\">зони доставки</a> для відправлень до Польщі."
+
+#. translators: %s: product list URL
+#: src/Admin/AdminPage.php:898
+#, php-format
+msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
+msgstr "Заповніть дані продуктів - додайте ціни за одиницю та час доставки в <a href=\"%s\">вкладці Polski</a> для кожного продукту."
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:899
+#: src/Admin/AdminPage.php:909
 #, php-format
-msgid "Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź pola wyboru oraz tekst przycisku w <a href=\"%s\">zamówieniu</a>."
-msgstr "Протестуйте процес замовлення — додайте товар до кошика та перевірте чекбокси й текст кнопки в <a href=\"%s\">замовленні</a>."
+msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
+msgstr "Протестуйте процес замовлення - додайте продукт до кошика та перевірте чекбокси і текст кнопки на <a href=\"%s\">сторінці оформлення</a>."
 
-#: src/Admin/AdminPage.php:969
-msgid "Otwórz &rarr;"
+#: src/Admin/AdminPage.php:932
+msgid "Generate legal pages"
+msgstr "Згенерувати правові сторінки"
+
+#: src/Admin/AdminPage.php:979
+msgid "Open &rarr;"
 msgstr "Відкрити &rarr;"
 
 #: src/Admin/CSVImportExport.php:72
@@ -1683,6 +1709,7 @@ msgstr "Виключення з права на відмову"
 
 #: src/Admin/CSVImportExport.php:80
 #: src/Admin/ModulesPage.php:341
+#: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
 #: src/Service/FoodService.php:54
 msgid "Ingredients"
 msgstr "Склад"
@@ -1834,6 +1861,10 @@ msgstr "Дякуємо за використання Polski! Нам шкода, 
 msgid "Post new ideas on GitHub"
 msgstr "Публікуйте нові ідеї на GitHub"
 
+#: src/Admin/DeactivationHandler.php:98
+msgid "Unauthorized"
+msgstr ""
+
 #: src/Admin/DeactivationHandler.php:144
 msgid "Deactivation feedback log"
 msgstr "Журнал відгуків про деактивацію"
@@ -1841,13 +1872,6 @@ msgstr "Журнал відгуків про деактивацію"
 #: src/Admin/DeactivationHandler.php:147
 msgid "No feedback to display."
 msgstr "Немає відгуків для показу."
-
-#: src/Admin/DeactivationHandler.php:152
-#: src/Service/DSAService.php:157
-#: templates/account/withdrawal-confirm.php:37
-#: templates/account/withdrawal-confirm.php:46
-msgid "Date"
-msgstr "Дата"
 
 #: src/Admin/DeactivationHandler.php:153
 msgid "Plugin"
@@ -1868,6 +1892,7 @@ msgstr "Що додати"
 
 #: src/Admin/ModulesPage.php:39
 #: src/Admin/ProductMetaBox.php:67
+#: src/Service/CompareService.php:407
 msgid "Unit price"
 msgstr "Ціна за одиницю"
 
@@ -2069,6 +2094,7 @@ msgstr "Текст звільнення"
 #: src/Admin/ModulesPage.php:99
 #: src/Admin/ProductMetaBox.php:133
 #: src/Block/StoreApi/ProductDataExtension.php:216
+#: src/Service/CompareService.php:410
 msgid "Delivery time"
 msgstr "Термін доставки"
 
@@ -2108,6 +2134,7 @@ msgstr "Змінити текст кнопки замовлення на \"За�
 #: src/Admin/ModulesPage.php:140
 #: src/Admin/ModulesPage.php:179
 #: src/Admin/ModulesPage.php:194
+#: src/Admin/ModulesPage.php:940
 msgid "Checkout and Orders"
 msgstr "Оформлення замовлення та замовлення"
 
@@ -2117,6 +2144,7 @@ msgstr "Оформлення замовлення та замовлення"
 #: src/Admin/ModulesPage.php:561
 #: src/Admin/ModulesPage.php:721
 #: src/Admin/ModulesPage.php:744
+#: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
 msgid "Button text"
 msgstr "Текст кнопки"
 
@@ -2129,6 +2157,8 @@ msgid "7 built-in checkboxes: terms and conditions, privacy policy, right of wit
 msgstr "7 вбудованих чекбоксів: умови та положення, політика конфіденційності, право на відмову, цифровий контент, повідомлення про доставку, нагадування про відгук, маркетинг."
 
 #: src/Admin/ModulesPage.php:145
+#: src/Enum/LegalPageType.php:17
+#: src/Service/LegalPageService.php:161
 msgid "Terms and Conditions"
 msgstr "Умови та положення"
 
@@ -2152,6 +2182,9 @@ msgid "Description - Terms"
 msgstr "Опис — Умови"
 
 #: src/Admin/ModulesPage.php:150
+#: src/Enum/LegalPageType.php:18
+#: src/Service/LegalPageService.php:162
+#: src/Service/SiteAuditService.php:143
 msgid "Privacy Policy"
 msgstr "Політика конфіденційності"
 
@@ -2175,6 +2208,7 @@ msgid "Description - Privacy Policy"
 msgstr "Опис — Політика конфіденційності"
 
 #: src/Admin/ModulesPage.php:155
+#: src/Service/SiteAuditService.php:431
 msgid "Right of withdrawal"
 msgstr "Право на відмову"
 
@@ -2289,10 +2323,6 @@ msgstr "Журнал згод (GDPR)"
 msgid "Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant."
 msgstr "Запис усіх згод, наданих клієнтами, з IP-адресою, user agent та часовою міткою. Відповідає GDPR."
 
-#: src/Admin/ModulesPage.php:203
-msgid "Legal Pages"
-msgstr "Правові сторінки"
-
 #: src/Admin/ModulesPage.php:204
 msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
 msgstr "Автоматична генерація сторінок: Умови та положення, Політика конфіденційності, Право на відмову, Рекламації."
@@ -2333,7 +2363,7 @@ msgstr "Заголовок форми"
 
 #: src/Admin/ModulesPage.php:223
 #: src/Admin/ModulesPage.php:238
-#: src/Service/WithdrawalService.php:400
+#: src/Service/WithdrawalService.php:401
 msgid "Withdrawal request"
 msgstr "Заява про відмову"
 
@@ -2390,6 +2420,7 @@ msgid "Price column"
 msgstr "Стовпець ціни"
 
 #: src/Admin/ModulesPage.php:229
+#: src/Service/CompareService.php:406
 msgid "Price"
 msgstr "Ціна"
 
@@ -2406,7 +2437,7 @@ msgid "Reason field label"
 msgstr "Мітка поля причини"
 
 #: src/Admin/ModulesPage.php:231
-#: src/Service/WithdrawalService.php:418
+#: src/Service/WithdrawalService.php:419
 msgid "Reason for withdrawal (optional)"
 msgstr "Причина відмови (необов'язково)"
 
@@ -2482,7 +2513,8 @@ msgid "Submitted label"
 msgstr "Мітка подано"
 
 #: src/Admin/ModulesPage.php:240
-#: src/Service/WithdrawalService.php:403
+#: src/Enum/WithdrawalStatus.php:17
+#: src/Service/WithdrawalService.php:404
 msgid "Submitted"
 msgstr "Подано"
 
@@ -2757,6 +2789,8 @@ msgstr "Інформація про виробника, відповідальн
 #: src/Admin/ModulesPage.php:318
 #: src/Admin/ModulesPage.php:328
 #: src/Admin/ModulesPage.php:359
+#: src/Admin/ModulesPage.php:790
+#: src/Admin/ModulesPage.php:803
 msgid "Product Information"
 msgstr "Інформація про товар"
 
@@ -2809,6 +2843,8 @@ msgid "Allergens label"
 msgstr "Мітка алергенів"
 
 #: src/Admin/ModulesPage.php:342
+#: src/Admin/PostTypes.php:142
+#: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
 #: src/Service/FoodService.php:92
 msgid "Allergens"
 msgstr "Алергени"
@@ -2831,6 +2867,7 @@ msgid "Nutrient column name"
 msgstr "Назва стовпця поживної речовини"
 
 #: src/Admin/ModulesPage.php:345
+#: src/Admin/PostTypes.php:168
 #: src/Service/FoodService.php:160
 msgid "Nutrient"
 msgstr "Поживна речовина"
@@ -2929,6 +2966,7 @@ msgstr "Чудово! Ваш обліковий запис активовано.
 
 #: src/Admin/ModulesPage.php:380
 #: src/Admin/ModulesPage.php:729
+#: src/Admin/ModulesPage.php:962
 msgid "Email subject"
 msgstr "Тема листа"
 
@@ -2993,6 +3031,7 @@ msgid "If you did not create an account with us, please ignore this email."
 msgstr "Якщо ви не створювали у нас обліковий запис, просто проігноруйте цей лист."
 
 #: src/Admin/ModulesPage.php:394
+#: src/Compatibility/Elementor/Widgets/SearchWidget.php:16
 msgid "AJAX Search"
 msgstr "AJAX-пошук"
 
@@ -3023,6 +3062,7 @@ msgid "Query debounce (ms)"
 msgstr "Затримка запиту (мс)"
 
 #: src/Admin/ModulesPage.php:404
+#: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
 msgid "Show search button"
 msgstr "Показувати кнопку пошуку"
 
@@ -3169,6 +3209,7 @@ msgid "Link to brand archive"
 msgstr "Посилання на архів бренду"
 
 #: src/Admin/ModulesPage.php:442
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "AJAX Filters"
 msgstr "AJAX-фільтри"
 
@@ -3273,6 +3314,7 @@ msgid "Reset text"
 msgstr "Текст скидання"
 
 #: src/Admin/ModulesPage.php:477
+#: src/Service/WishlistService.php:174
 msgid "Wishlist"
 msgstr "Список бажань"
 
@@ -3466,6 +3508,7 @@ msgid "Show product attributes"
 msgstr "Показувати атрибути товару"
 
 #: src/Admin/ModulesPage.php:553
+#: src/Service/QuickViewService.php:137
 msgid "Quick View"
 msgstr "Швидкий перегляд"
 
@@ -3519,6 +3562,8 @@ msgid "Show mini gallery"
 msgstr "Показувати міні-галерею"
 
 #: src/Admin/ModulesPage.php:573
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
+#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
 #: build/blocks/ajax-filters/index.js:212
 #: build/blocks/product-slider/index.js:235
 #: resources/js/blocks/ajax-filters/index.js:38
@@ -3793,6 +3838,7 @@ msgid "Lightweight product slider based on scroll-snap, with related, sale, or f
 msgstr "Легкий слайдер товарів на основі scroll-snap, з пов'язаними, акційними або вибраними товарами."
 
 #: src/Admin/ModulesPage.php:687
+#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
 msgid "Product source"
 msgstr "Джерело товарів"
 
@@ -3801,7 +3847,6 @@ msgid "Related"
 msgstr "Пов'язані"
 
 #: src/Admin/ModulesPage.php:687
-#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:37
 msgid "Upsell"
 msgstr "Upsell"
 
@@ -3811,6 +3856,7 @@ msgid "Sale"
 msgstr "Акція"
 
 #: src/Admin/ModulesPage.php:687
+#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:39
 msgid "Featured"
 msgstr "Вибрані"
 
@@ -3896,6 +3942,7 @@ msgid "Login required error"
 msgstr "Помилка: потрібен вхід"
 
 #: src/Admin/ModulesPage.php:730
+#: src/Admin/ModulesPage.php:963
 msgid "Email intro text"
 msgstr "Вступний текст листа"
 
@@ -4183,123 +4230,231 @@ msgstr "Реєстр DPA (GDPR)"
 msgid "Detection of third-party services processing customers' personal data. Tracking the status of data processing agreements."
 msgstr "Виявлення сторонніх сервісів, що обробляють персональні дані клієнтів. Відстеження статусу договорів обробки даних."
 
-#: src/Admin/ModulesPage.php:986
+#: src/Admin/ModulesPage.php:938
+msgid "Minimum Order Value / Quantity"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:939
+msgid "Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:945
+msgid "Minimum order value (0 = disabled)"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:945
+msgid "Cart subtotal must reach this amount to proceed to checkout."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:946
+msgid "Minimum number of items (0 = disabled)"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:946
+msgid "Total number of items in cart must reach this count."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:947
+msgid "Exclude sale items from minimum value"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:948
+msgid "Message for minimum value"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:948
+msgid "Tokens: {min_value}, {current_value}"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:949
+msgid "Message for minimum quantity"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:949
+msgid "Tokens: {min_quantity}, {current_quantity}"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:954
+msgid "Review Request Emails"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:955
+msgid "Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:961
+msgid "Send after (days)"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:961
+msgid "Number of days after order completion before sending the review request."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:962
+msgid "Tokens: {first_name}, {order_number}"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:963
+msgid "Tokens: {first_name}"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:964
+msgid "Review button text"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:969
+msgid "From Price for Variable Products"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:970
+msgid "Display \"from {price}\" instead of a price range for variable products. Cleaner presentation on archives and product pages."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:971
+msgid "Prices and Omnibus"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:976
+msgid "Enable \"from\" price display"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:977
+msgid "Price text template"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:977
+msgid "Token: {price}"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1030
 msgid "Save modules"
 msgstr "Зберегти модулі"
 
-#: src/Admin/ModulesPage.php:1058
-msgid "Settings"
-msgstr "Налаштування"
-
-#: src/Admin/ModulesPage.php:1067
+#: src/Admin/ModulesPage.php:1111
 msgid "Configure &darr;"
 msgstr "Налаштувати &darr;"
 
-#: src/Admin/ModulesPage.php:1079
+#: src/Admin/ModulesPage.php:1123
 msgid "Coming Soon"
 msgstr "Скоро буде"
 
-#: src/Admin/ModulesPage.php:1173
+#: src/Admin/ModulesPage.php:1217
 msgid "none"
 msgstr "немає"
 
-#: src/Admin/ModulesPage.php:1207
+#: src/Admin/ModulesPage.php:1251
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Вибачте, у вас немає доступу до цієї сторінки."
 
-#: src/Admin/ModulesPage.php:1392
+#: src/Admin/ModulesPage.php:1439
 msgid "Compatible Omnibus Extension A"
 msgstr "Сумісне розширення Omnibus A"
 
-#: src/Admin/ModulesPage.php:1393
+#: src/Admin/ModulesPage.php:1440
 msgid "Compatible Omnibus Extension B"
 msgstr "Сумісне розширення Omnibus B"
 
-#: src/Admin/ModulesPage.php:1404
+#: src/Admin/ModulesPage.php:1451
 msgid "detected, data synchronized"
 msgstr "виявлено, дані синхронізовано"
 
-#: src/Admin/ModulesPage.php:1405
+#: src/Admin/ModulesPage.php:1452
 msgid "not installed"
 msgstr "не встановлено"
 
-#: src/Admin/ModulesPage.php:1420
+#: src/Admin/ModulesPage.php:1467
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Зовнішній плагін Omnibus не встановлено. Polski використовує вбудовану систему відстеження цін."
 
-#: src/Admin/ModulesPage.php:1422
+#: src/Admin/ModulesPage.php:1469
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Виявлено зовнішній плагін. Polski використовує його дані замість вбудованої системи."
 
-#: src/Admin/ModulesPage.php:1454
+#: src/Admin/ModulesPage.php:1501
 msgid "detected, integration active"
 msgstr "виявлено, інтеграція активна"
 
-#: src/Admin/ModulesPage.php:1457
+#: src/Admin/ModulesPage.php:1504
 msgid "install"
 msgstr "встановити"
 
-#: src/Admin/ModulesPage.php:1469
+#: src/Admin/ModulesPage.php:1516
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Не виявлено підтримуваних розширень оформлення замовлення та cookies. Polski продовжує працювати самостійно."
 
-#: src/Admin/ModulesPage.php:1471
+#: src/Admin/ModulesPage.php:1518
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Виявлено підтримувані розширення оформлення замовлення, cookies або даних товарів. Polski може адаптувати інтеграцію до активного набору."
 
 #: src/Admin/PostTypes.php:42
-msgid "Czasy dostawy"
-msgstr "Терміни доставки"
+msgid "Delivery Times"
+msgstr "Часи доставки"
+
+#: src/Admin/PostTypes.php:43
+#: src/Compatibility/Elementor/Widgets/DeliveryTimeWidget.php:16
+msgid "Delivery Time"
+msgstr "Час доставки"
 
 #: src/Admin/PostTypes.php:44
-msgid "Dodaj czas dostawy"
-msgstr "Додати термін доставки"
+msgid "Add Delivery Time"
+msgstr "Додати час доставки"
 
 #: src/Admin/PostTypes.php:45
-msgid "Edytuj czas dostawy"
-msgstr "Редагувати термін доставки"
+msgid "Edit Delivery Time"
+msgstr "Редагувати час доставки"
 
 #: src/Admin/PostTypes.php:46
-msgid "Szukaj czasów dostawy"
-msgstr "Шукати терміни доставки"
+msgid "Search Delivery Times"
+msgstr "Шукати часи доставки"
 
 #: src/Admin/PostTypes.php:67
-msgid "Producenci"
+msgid "Manufacturers"
 msgstr "Виробники"
 
+#: src/Admin/PostTypes.php:68
+#: src/Block/StoreApi/ProductDataExtension.php:157
+#: src/Compatibility/Elementor/Widgets/ManufacturerWidget.php:16
+#: src/Service/CompareService.php:412
+#: src/Service/ProductInfoService.php:42
+msgid "Manufacturer"
+msgstr "Виробник"
+
 #: src/Admin/PostTypes.php:69
-msgid "Dodaj producenta"
+msgid "Add Manufacturer"
 msgstr "Додати виробника"
 
 #: src/Admin/PostTypes.php:70
-msgid "Edytuj producenta"
+msgid "Edit Manufacturer"
 msgstr "Редагувати виробника"
 
 #: src/Admin/PostTypes.php:71
-msgid "Szukaj producentów"
+msgid "Search Manufacturers"
 msgstr "Шукати виробників"
 
 #: src/Admin/PostTypes.php:92
-msgid "Jednostki"
+msgid "Units"
 msgstr "Одиниці"
 
 #: src/Admin/PostTypes.php:93
-msgid "Jednostka"
+#: src/Admin/ProductMetaBox.php:105
+msgid "Unit"
 msgstr "Одиниця"
 
 #: src/Admin/PostTypes.php:94
-msgid "Dodaj jednostkę"
+msgid "Add Unit"
 msgstr "Додати одиницю"
 
 #: src/Admin/PostTypes.php:95
-msgid "Edytuj jednostkę"
+msgid "Edit Unit"
 msgstr "Редагувати одиницю"
 
 #: src/Admin/PostTypes.php:96
-msgid "Szukaj jednostek"
+msgid "Search Units"
 msgstr "Шукати одиниці"
 
 #: src/Admin/PostTypes.php:118
+#: src/Service/CompareService.php:411
+#: src/Service/ProductInfoService.php:103
 msgid "Brand"
 msgstr "Бренд"
 
@@ -4316,35 +4471,35 @@ msgid "Search Brands"
 msgstr "Шукати бренди"
 
 #: src/Admin/PostTypes.php:143
-msgid "Alergen"
+msgid "Allergen"
 msgstr "Алерген"
 
 #: src/Admin/PostTypes.php:144
-msgid "Dodaj alergen"
+msgid "Add Allergen"
 msgstr "Додати алерген"
 
 #: src/Admin/PostTypes.php:145
-msgid "Edytuj alergen"
+msgid "Edit Allergen"
 msgstr "Редагувати алерген"
 
 #: src/Admin/PostTypes.php:146
-msgid "Szukaj alergenów"
+msgid "Search Allergens"
 msgstr "Шукати алергени"
 
 #: src/Admin/PostTypes.php:167
-msgid "Składniki odżywcze"
+msgid "Nutrients"
 msgstr "Поживні речовини"
 
 #: src/Admin/PostTypes.php:169
-msgid "Dodaj składnik odżywczy"
+msgid "Add Nutrient"
 msgstr "Додати поживну речовину"
 
 #: src/Admin/PostTypes.php:170
-msgid "Edytuj składnik odżywczy"
+msgid "Edit Nutrient"
 msgstr "Редагувати поживну речовину"
 
 #: src/Admin/PostTypes.php:171
-msgid "Szukaj składników odżywczych"
+msgid "Search Nutrients"
 msgstr "Шукати поживні речовини"
 
 #: src/Admin/ProductMetaBox.php:72
@@ -4363,10 +4518,6 @@ msgstr "Базова кількість для розрахунку (напр., 
 #: src/Admin/ProductMetaBox.php:93
 msgid "- Select unit -"
 msgstr "- Виберіть одиницю -"
-
-#: src/Admin/ProductMetaBox.php:105
-msgid "Unit"
-msgstr "Одиниця"
 
 #: src/Admin/ProductMetaBox.php:107
 msgid "Unit of measure for unit price display."
@@ -4568,7 +4719,8 @@ msgstr "Дата закінчення терміну дії сертифікат
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Дата закінчення терміну дії екологічного сертифіката у форматі РРРР-ММ-ДД."
 
-#: src/Block/StoreApi/CheckoutValidation.php:181
+#. translators: %s: label of the legal checkbox that must be accepted
+#: src/Block/StoreApi/CheckoutValidation.php:186
 #, php-format
 msgid "Prosz&#281; zaakceptowa&#263;: %s"
 msgstr "Прийміть, будь ласка: %s"
@@ -4606,10 +4758,6 @@ msgstr "HTML повідомлення про ПДВ"
 msgid "Shipping notice HTML"
 msgstr "HTML повідомлення про доставку"
 
-#: src/Block/StoreApi/ProductDataExtension.php:157
-msgid "Manufacturer"
-msgstr "Виробник"
-
 #: src/Block/StoreApi/ProductDataExtension.php:163
 msgid "Manufacturer HTML"
 msgstr "HTML виробника"
@@ -4624,132 +4772,142 @@ msgstr "Виключено з права на відмову"
 
 #: src/Compatibility/Elementor/Widgets/DefectDescriptionWidget.php:16
 #: src/Service/ProductInfoService.php:254
-msgid "Opis wady"
+msgid "Defect Description"
 msgstr "Опис дефекту"
-
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
-msgid "Filtry AJAX"
-msgstr "AJAX-фільтри"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
-msgid "Tytuł"
+#: src/Service/SecurityIncidentService.php:116
+#: src/Service/SecurityIncidentService.php:147
+#: build/blocks/ajax-filters/index.js:188
+#: build/blocks/product-slider/index.js:188
+#: resources/js/blocks/ajax-filters/index.js:18
+#: resources/js/blocks/product-slider/index.js:18
+#: build/blocks/ajax-filters/index.js:79
+#: build/blocks/product-slider/index.js:79
+msgid "Title"
 msgstr "Заголовок"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
-msgid "Pokaż tytuł"
+#: build/blocks/ajax-filters/index.js:194
+#: build/blocks/product-slider/index.js:229
+#: resources/js/blocks/ajax-filters/index.js:23
+#: resources/js/blocks/product-slider/index.js:48
+#: build/blocks/ajax-filters/index.js:84
+#: build/blocks/product-slider/index.js:109
+msgid "Show title"
 msgstr "Показати заголовок"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
-msgid "Pokaż kategorie"
+#: build/blocks/ajax-filters/index.js:200
+#: resources/js/blocks/ajax-filters/index.js:28
+#: build/blocks/ajax-filters/index.js:89
+msgid "Show categories"
 msgstr "Показати категорії"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
-msgid "Pokaż marki"
+#: build/blocks/ajax-filters/index.js:206
+#: resources/js/blocks/ajax-filters/index.js:33
+#: build/blocks/ajax-filters/index.js:94
+msgid "Show brands"
 msgstr "Показати бренди"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
-#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
-msgid "Pokaż cenę"
-msgstr "Показати ціну"
-
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:41
-msgid "Pokaż dostępność"
+msgid "Show availability"
 msgstr "Показати наявність"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:42
-msgid "Pokaż promocje"
-msgstr "Показати акції"
+msgid "Show on-sale"
+msgstr "Показати зі знижкою"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
-msgid "Pokaż atrybuty"
+#: build/blocks/ajax-filters/index.js:230
+#: resources/js/blocks/ajax-filters/index.js:53
+#: build/blocks/ajax-filters/index.js:114
+msgid "Show attributes"
 msgstr "Показати атрибути"
 
 #: src/Compatibility/Elementor/Widgets/FoodInfoWidget.php:16
-msgid "Informacje o żywności"
-msgstr "Інформація про їжу"
+msgid "Food Information"
+msgstr "Інформація про харчування"
 
 #: src/Compatibility/Elementor/Widgets/NutrientsWidget.php:16
-msgid "Wartości odżywcze"
-msgstr "Харчова цінність"
+msgid "Nutritional Information"
+msgstr "Інформація про харчову цінність"
 
 #: src/Compatibility/Elementor/Widgets/OmnibusPriceWidget.php:16
-msgid "Najniższa cena (Omnibus)"
+msgid "Lowest Price (Omnibus)"
 msgstr "Найнижча ціна (Omnibus)"
 
 #: src/Compatibility/Elementor/Widgets/PowerSupplyWidget.php:16
 #: src/Service/ProductInfoService.php:228
-msgid "Zasilanie"
+msgid "Power Supply"
 msgstr "Живлення"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:16
-msgid "Slider produktów"
-msgstr "Слайдер товарів"
-
-#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
-msgid "Źródło produktów"
-msgstr "Джерело товарів"
+msgid "Product Slider"
+msgstr "Слайдер продуктів"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:36
-msgid "Powiązane"
-msgstr "Пов'язані"
+#: build/blocks/product-slider/index.js:197
+#: resources/js/blocks/product-slider/index.js:26
+#: build/blocks/product-slider/index.js:87
+msgid "Related products"
+msgstr "Пов'язані продукти"
 
-#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:39
-msgid "Wyróżnione"
-msgstr "Вибрані"
+#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:37
+msgid "Upsells"
+msgstr "Рекомендовані продукти"
+
+#: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:38
+msgid "On Sale"
+msgstr "Зі знижкою"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:44
-msgid "ID produktu"
-msgstr "ID товару"
+#: build/blocks/product-slider/index.js:213
+#: resources/js/blocks/product-slider/index.js:34
+#: build/blocks/product-slider/index.js:95
+msgid "Product ID"
+msgstr "ID продукту"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:48
-msgid "Opcjonalnie, ustaw ręcznie dla źródeł powiązanych lub upsell poza kartą produktu."
-msgstr "Необов'язково, встановіть вручну для пов'язаних джерел або upsell поза карткою товару."
+msgid "Optional: manually set ID for related/upsell sources outside product details page."
+msgstr "Необов'язково: вручну встановити ID для пов'язаних/upsell джерел поза сторінкою продукту."
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:52
-msgid "Liczba produktów"
-msgstr "Кількість товарів"
+msgid "Product count"
+msgstr "Кількість продуктів"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:72
-msgid "Pokaż przycisk koszyka"
-msgstr "Показати кнопку кошика"
+msgid "Show add to cart button"
+msgstr "Показати кнопку додавання до кошика"
 
 #: src/Compatibility/Elementor/Widgets/SafetyDocsWidget.php:16
 #: src/Service/ProductInfoService.php:194
-msgid "Dokumenty bezpieczeństwa"
+msgid "Safety Documents"
 msgstr "Документи безпеки"
 
 #: src/Compatibility/Elementor/Widgets/SafetyInstructionsWidget.php:16
 #: src/Compatibility/Elementor/Widgets/SafetyInstructionsWidget.php:34
-#: src/Shortcode/ShortcodeManager.php:134
-#: templates/single-product/gpsr-info.php:22
-msgid "Instrukcje bezpieczeństwa"
+msgid "Safety Instructions"
 msgstr "Інструкції з безпеки"
 
-#: src/Compatibility/Elementor/Widgets/SearchWidget.php:16
-msgid "Wyszukiwarka AJAX"
-msgstr "AJAX-пошук"
-
-#: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
-msgid "Pokaż przycisk wyszukiwania"
-msgstr "Показати кнопку пошуку"
-
-#: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
-msgid "Tekst przycisku"
-msgstr "Текст кнопки"
-
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:47
-msgid "Liczba wyników"
-msgstr "Кількість результатів"
+msgid "Result limit"
+msgstr "Ліміт результатів"
 
 #: src/Compatibility/Elementor/Widgets/ShippingNoticeWidget.php:16
 msgid "Koszty wysyłki"
 msgstr "Вартість доставки"
 
 #: src/Compatibility/Elementor/Widgets/TaxInfoWidget.php:16
-msgid "Informacja o VAT"
-msgstr "Інформація про ПДВ"
+msgid "Tax Information"
+msgstr "Податкова інформація"
+
+#: src/Compatibility/Elementor/Widgets/UnitPriceWidget.php:16
+msgid "Unit Price"
+msgstr "Ціна за одиницю"
 
 #: src/Email/DoubleOptInEmail.php:19
 msgid "Account Activation (Double Opt-In)"
@@ -4791,44 +4949,36 @@ msgstr[0] "%d тиждень"
 msgstr[1] "%d тижні"
 msgstr[2] "%d тижнів"
 
-#: src/Enum/LegalPageType.php:17
-msgid "Regulamin sklepu"
-msgstr "Умови та положення магазину"
-
-#: src/Enum/LegalPageType.php:18
-msgid "Privacy Policy (Polityka prywatności)"
-msgstr "Політика конфіденційності (Privacy Policy)"
-
 #: src/Enum/LegalPageType.php:19
-msgid "Return Policy (Prawo odstąpienia)"
-msgstr "Право на відмову (Return Policy)"
+msgid "Return Policy"
+msgstr "Політика повернення"
 
 #: src/Enum/LegalPageType.php:20
 #: src/Service/LegalPageService.php:164
-msgid "Reklamacje"
+msgid "Complaints"
 msgstr "Рекламації"
 
 #: src/Enum/TaxDisplayMode.php:15
-msgid "Ceny zawierają VAT (brutto)"
-msgstr "Ціни включають ПДВ (брутто)"
+msgid "Prices include VAT (gross)"
+msgstr "Ціни з ПДВ (брутто)"
 
 #: src/Enum/TaxDisplayMode.php:16
-msgid "Ceny nie zawierają VAT (netto)"
-msgstr "Ціни не включають ПДВ (нетто)"
+msgid "Prices exclude VAT (net)"
+msgstr "Ціни без ПДВ (нетто)"
 
 #: src/Enum/WithdrawalStatus.php:18
-msgid "Potwierdzony"
-msgstr "Підтверджений"
+msgid "Confirmed"
+msgstr "Підтверджено"
 
 #: src/Enum/WithdrawalStatus.php:19
-msgid "Zakończony"
-msgstr "Завершений"
+msgid "Completed"
+msgstr "Завершено"
 
 #: src/Enum/WithdrawalStatus.php:20
-msgid "Odrzucony"
-msgstr "Відхилений"
+msgid "Rejected"
+msgstr "Відхилено"
 
-#: src/Hook/ProductHooks.php:307
+#: src/Hook/ProductHooks.php:318
 msgid "Osoba odpowiedzialna (GPSR)"
 msgstr "Відповідальна особа (GPSR)"
 
@@ -5062,6 +5212,61 @@ msgstr "Даю згоду на отримання маркетингових к�
 msgid "Optional marketing consent (GDPR Art. 6.1.a)."
 msgstr "Необов'язкова маркетингова згода (GDPR ст. 6.1.a)."
 
+#: src/Service/CompareService.php:225
+msgid "Comparison"
+msgstr "Порівняння"
+
+#: src/Service/CompareService.php:332
+msgid "Add to compare"
+msgstr "Додати до порівняння"
+
+#: src/Service/CompareService.php:337
+msgid "Remove from compare"
+msgstr "Видалити з порівняння"
+
+#: src/Service/CompareService.php:342
+msgid "Clear comparison"
+msgstr "Очистити порівняння"
+
+#: src/Service/CompareService.php:347
+msgid "Compare products"
+msgstr "Порівняти продукти"
+
+#: src/Service/CompareService.php:352
+msgid "Log in to use product comparison."
+msgstr "Увійдіть, щоб використовувати порівняння продуктів."
+
+#: src/Service/CompareService.php:357
+#: src/Service/QuickViewService.php:117
+#: src/Service/WaitlistService.php:101
+#: src/Service/WishlistService.php:282
+msgid "Product not found."
+msgstr "Продукт не знайдено."
+
+#: src/Service/CompareService.php:362
+msgid "You cannot clear the comparison."
+msgstr "Не вдається очистити порівняння."
+
+#: src/Service/CompareService.php:367
+msgid "Feature"
+msgstr "Функція"
+
+#: src/Service/CompareService.php:372
+msgid "Show only differences"
+msgstr "Показати лише відмінності"
+
+#: src/Service/CompareService.php:377
+msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
+msgstr "Ви можете порівняти до {limit} продуктів одночасно. Найстаріший запис було автоматично замінено."
+
+#: src/Service/CompareService.php:409
+msgid "Availability"
+msgstr "Наявність"
+
+#: src/Service/CompareService.php:417
+msgid "Short description"
+msgstr "Короткий опис"
+
 #: src/Service/DoubleOptInService.php:96
 msgid "Your account is awaiting activation! Please check your email and click the activation link."
 msgstr "Ваш обліковий запис очікує на активацію! Перевірте свою електронну пошту та натисніть на посилання для активації."
@@ -5075,19 +5280,21 @@ msgid "You do not have permission to manage DPA registry."
 msgstr "У вас немає дозволу на управління реєстром DPA."
 
 #: src/Service/DPATrackerService.php:66
-msgid "Rejestr umów powierzenia danych (DPA)"
-msgstr "Реєстр договорів доручення обробки даних (DPA)"
+msgid "Data Processing Agreement (DPA) Registry"
+msgstr "Реєстр угод про обробку даних (DPA)"
 
 #: src/Service/DPATrackerService.php:67
-msgid "Wykryte usługi zewnętrzne przetwarzające dane osobowe Twoich klientów. Oznacz, dla których masz podpisaną umowę powierzenia."
-msgstr "Виявлені зовнішні сервіси, що обробляють персональні дані ваших клієнтів. Позначте, для яких у вас підписано договір доручення."
+msgid "Detected external services processing your customers' personal data. Mark those for which you have a signed DPA."
+msgstr "Виявлено зовнішні сервіси, що обробляють персональні дані ваших клієнтів. Позначте ті, для яких ви маєте підписану DPA."
 
 #: src/Service/DPATrackerService.php:73
-msgid "Usługa"
+msgid "Service"
 msgstr "Сервіс"
 
 #: src/Service/DPATrackerService.php:74
-msgid "Typ"
+#: src/Service/SecurityIncidentService.php:102
+#: src/Service/SecurityIncidentService.php:148
+msgid "Type"
 msgstr "Тип"
 
 #: src/Service/DPATrackerService.php:75
@@ -5095,34 +5302,35 @@ msgid "DPA"
 msgstr "DPA"
 
 #: src/Service/DPATrackerService.php:76
-msgid "Notatki"
+#: src/Service/SecurityIncidentService.php:119
+msgid "Notes"
 msgstr "Нотатки"
 
 #: src/Service/DPATrackerService.php:93
-msgid "Zapisz rejestr"
+msgid "Save Registry"
 msgstr "Зберегти реєстр"
 
 #: src/Service/DPATrackerService.php:109
-msgid "Hosting (serwer)"
+msgid "Hosting (server)"
 msgstr "Хостинг (сервер)"
 
 #: src/Service/DPATrackerService.php:110
-#: src/Service/SecurityIncidentService.php:176
+#: src/Service/SecurityIncidentService.php:177
 msgid "Hosting"
 msgstr "Хостинг"
 
 #: src/Service/DPATrackerService.php:121
-msgid "Płatności"
+msgid "Payments"
 msgstr "Платежі"
 
 #: src/Service/DPATrackerService.php:145
-msgid "Wysyłka"
+msgid "Shipping"
 msgstr "Доставка"
 
 #: src/Service/DPATrackerService.php:157
 #: src/Service/DPATrackerService.php:161
 #: src/Service/DPATrackerService.php:173
-msgid "Analityka"
+msgid "Analytics"
 msgstr "Аналітика"
 
 #: src/Service/DPATrackerService.php:165
@@ -5132,7 +5340,7 @@ msgstr "Email-маркетинг"
 
 #: src/Service/DPATrackerService.php:177
 #: src/Service/DPATrackerService.php:181
-msgid "Reklamy"
+msgid "Advertising"
 msgstr "Реклама"
 
 #: src/Service/DSAService.php:57
@@ -5178,9 +5386,20 @@ msgstr "Дія"
 msgid "Mark as resolved"
 msgstr "Позначити як вирішене"
 
+#: src/Service/FeaturedVideoService.php:113
+msgid "Watch product in use"
+msgstr "Переглянути продукт у використанні"
+
 #: src/Service/GPSRService.php:86
 msgid "GPSR"
 msgstr "GPSR"
+
+#. translators: %d: number of filled GPSR fields out of 8
+#: src/Service/GPSRService.php:113
+#: src/Service/GPSRService.php:116
+#, php-format
+msgid "%d/8 pól wypełnionych"
+msgstr "%d/8 полів заповнено"
 
 #: src/Service/KSeFReadyService.php:76
 msgid "pending"
@@ -5191,34 +5410,33 @@ msgstr "очікує"
 msgid "KSeF"
 msgstr "KSeF"
 
-#: src/Service/LegalPageService.php:161
-msgid "Regulamin"
-msgstr "Умови та положення"
-
-#: src/Service/LegalPageService.php:162
-msgid "Polityka prywatności"
-msgstr "Політика конфіденційності"
-
 #: src/Service/LegalPageService.php:163
-#: src/Service/SiteAuditService.php:430
-msgid "Prawo odstąpienia od umowy"
+msgid "Right of Withdrawal"
 msgstr "Право на відмову від договору"
 
 #: src/Service/LegalPageService.php:171
-msgid "Proszę uzupełnić Regulamin sklepu."
-msgstr "Заповніть Умови та положення магазину."
+msgid "Please complete the Shop Terms and Conditions."
+msgstr "Заповніть умови та правила магазину."
 
 #: src/Service/LegalPageService.php:172
-msgid "Please fill in your Privacy Policy (Polityka prywatności)."
-msgstr "Заповніть Політику конфіденційності (Privacy Policy)."
+msgid "Please fill in your Privacy Policy."
+msgstr "Заповніть політику конфіденційності."
 
 #: src/Service/LegalPageService.php:173
-msgid "Please fill in your Return and Withdrawal Policy (Prawo odstąpienia od umowy). Consumers have 14 days to withdraw."
-msgstr "Заповніть Політику повернень та відмови (Право на відмову). Споживачі мають 14 днів на відмову."
+msgid "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw."
+msgstr "Заповніть політику повернення та відмови. Споживачі мають 14 днів на відмову."
 
 #: src/Service/LegalPageService.php:174
-msgid "Proszę uzupełnić procedurę reklamacyjną."
+msgid "Please complete the complaints procedure."
 msgstr "Заповніть процедуру рекламації."
+
+#: src/Service/MinimumOrderService.php:69
+msgid "Minimum order value is {min_value}. Current cart value: {current_value}."
+msgstr ""
+
+#: src/Service/MinimumOrderService.php:84
+msgid "Minimum number of items per order is {min_quantity}. Current quantity: {current_quantity}."
+msgstr ""
 
 #: src/Service/NipLookupService.php:67
 msgid "np. 1234563218"
@@ -5240,14 +5458,51 @@ msgstr "Не знайдено даних для вказаного NIP. Пере
 msgid "Lowest price from the last {days} days: {price}"
 msgstr "Найнижча ціна за останні {days} днів: {price}"
 
+#: src/Service/PriceDisplayService.php:124
+msgid "from {price}"
+msgstr ""
+
 #: src/Service/ProductInfoService.php:183
-msgid "Dokument bezpieczeństwa"
+msgid "Safety Document"
 msgstr "Документ безпеки"
 
+#: src/Service/QuickViewService.php:75
+#: src/Service/QuickViewService.php:103
+msgid "Loading product..."
+msgstr "Завантаження продукту..."
+
+#: src/Service/QuickViewService.php:76
+msgid "Failed to load product preview."
+msgstr "Не вдалося завантажити попередній перегляд продукту."
+
+#: src/Service/QuickViewService.php:142
+msgid "Product Quick View"
+msgstr "Швидкий перегляд продукту"
+
+#: src/Service/ReviewRequestService.php:161
+msgid "You have been unsubscribed from review request emails."
+msgstr ""
+
+#: src/Service/ReviewRequestService.php:176
+msgid "How was your purchase? Leave a review"
+msgstr ""
+
+#: src/Service/ReviewRequestService.php:181
+msgid "Hi {first_name}, thank you for your recent purchase. We would love to hear your feedback."
+msgstr ""
+
+#: src/Service/ReviewRequestService.php:192
+msgid "Unsubscribe from review requests"
+msgstr ""
+
+#: src/Service/ReviewRequestService.php:233
+msgid "Leave a review"
+msgstr ""
+
 #: src/Service/SecurityIncidentService.php:82
-#: src/Service/SecurityIncidentService.php:195
-#: src/Service/SecurityIncidentService.php:209
-#: src/Service/SecurityIncidentService.php:243
+#: src/Service/SecurityIncidentService.php:196
+#: src/Service/SecurityIncidentService.php:210
+#: src/Service/SecurityIncidentService.php:244
 msgid "You do not have permission to access this page."
 msgstr "У вас немає дозволу на доступ до цієї сторінки."
 
@@ -5264,39 +5519,33 @@ msgstr "Додати інцидент"
 msgid "Reported at"
 msgstr "Повідомлено"
 
-#: src/Service/SecurityIncidentService.php:102
-#: src/Service/SecurityIncidentService.php:148
-msgid "Type"
-msgstr "Тип"
-
 #: src/Service/SecurityIncidentService.php:103
-#: src/Service/SecurityIncidentService.php:385
+#: src/Service/SecurityIncidentService.php:388
 msgid "Vulnerability"
 msgstr "Вразливість"
 
 #: src/Service/SecurityIncidentService.php:104
-#: src/Service/SecurityIncidentService.php:386
+#: src/Service/SecurityIncidentService.php:389
 msgid "Data breach"
 msgstr "Витік даних"
 
 #: src/Service/SecurityIncidentService.php:105
-#: src/Service/SecurityIncidentService.php:387
+#: src/Service/SecurityIncidentService.php:390
 msgid "Payment issue"
 msgstr "Проблема з платежами"
 
 #: src/Service/SecurityIncidentService.php:106
-#: src/Service/SecurityIncidentService.php:388
+#: src/Service/SecurityIncidentService.php:391
 msgid "Availability issue"
 msgstr "Проблема з доступністю"
 
 #: src/Service/SecurityIncidentService.php:107
-#: src/Service/SecurityIncidentService.php:389
+#: src/Service/SecurityIncidentService.php:392
 msgid "Third-party incident"
 msgstr "Інцидент третьої сторони"
 
 #: src/Service/SecurityIncidentService.php:108
-#: src/Service/SecurityIncidentService.php:390
-#: templates/forms/dsa-report.php:19
+#: src/Service/SecurityIncidentService.php:393
 msgid "Other"
 msgstr "Інше"
 
@@ -5306,36 +5555,25 @@ msgid "Severity"
 msgstr "Серйозність"
 
 #: src/Service/SecurityIncidentService.php:111
-#: src/Service/SecurityIncidentService.php:397
+#: src/Service/SecurityIncidentService.php:400
 msgid "Low"
 msgstr "Низька"
 
 #: src/Service/SecurityIncidentService.php:112
-#: src/Service/SecurityIncidentService.php:398
 #: src/Service/SecurityIncidentService.php:401
+#: src/Service/SecurityIncidentService.php:404
 msgid "Medium"
 msgstr "Середня"
 
 #: src/Service/SecurityIncidentService.php:113
-#: src/Service/SecurityIncidentService.php:399
+#: src/Service/SecurityIncidentService.php:402
 msgid "High"
 msgstr "Висока"
 
 #: src/Service/SecurityIncidentService.php:114
-#: src/Service/SecurityIncidentService.php:400
+#: src/Service/SecurityIncidentService.php:403
 msgid "Critical"
 msgstr "Критична"
-
-#: src/Service/SecurityIncidentService.php:116
-#: src/Service/SecurityIncidentService.php:147
-#: build/blocks/ajax-filters/index.js:188
-#: build/blocks/product-slider/index.js:188
-#: resources/js/blocks/ajax-filters/index.js:18
-#: resources/js/blocks/product-slider/index.js:18
-#: build/blocks/ajax-filters/index.js:79
-#: build/blocks/product-slider/index.js:79
-msgid "Title"
-msgstr "Заголовок"
 
 #: src/Service/SecurityIncidentService.php:117
 msgid "Affected area"
@@ -5348,10 +5586,6 @@ msgstr "Оформлення, хостинг, замовлення, API, оно�
 #: src/Service/SecurityIncidentService.php:118
 msgid "Mitigation"
 msgstr "Усунення"
-
-#: src/Service/SecurityIncidentService.php:119
-msgid "Notes"
-msgstr "Нотатки"
 
 #: src/Service/SecurityIncidentService.php:120
 msgid "Reported by"
@@ -5392,333 +5626,382 @@ msgstr "Експортувати CSV"
 msgid "No incidents logged yet."
 msgstr "Інцидентів ще не зафіксовано."
 
-#: src/Service/SecurityIncidentService.php:167
+#: src/Service/SecurityIncidentService.php:168
 msgid "Open"
 msgstr "Відкритий"
 
-#: src/Service/SecurityIncidentService.php:168
+#: src/Service/SecurityIncidentService.php:169
 msgid "Investigating"
 msgstr "Розслідування"
 
-#: src/Service/SecurityIncidentService.php:169
+#: src/Service/SecurityIncidentService.php:170
 msgid "Monitoring"
 msgstr "Моніторинг"
 
-#: src/Service/SecurityIncidentService.php:170
+#: src/Service/SecurityIncidentService.php:171
 msgid "Resolved"
 msgstr "Вирішений"
 
-#: src/Service/SecurityIncidentService.php:172
+#: src/Service/SecurityIncidentService.php:173
 msgid "Update"
 msgstr "Оновити"
 
-#: src/Service/SecurityIncidentService.php:178
+#: src/Service/SecurityIncidentService.php:179
 msgid "Authority"
 msgstr "Орган влади"
 
-#: src/Service/SecurityIncidentService.php:180
+#: src/Service/SecurityIncidentService.php:181
+#: src/Service/SiteAuditService.php:76
 msgid "Details"
 msgstr "Деталі"
 
-#: src/Service/SecurityIncidentService.php:180
+#: src/Service/SecurityIncidentService.php:181
 msgid "Mitigation:"
 msgstr "Усунення:"
 
 #: src/Service/SiteAuditService.php:52
-msgid "Audyt zgodności sklepu"
+msgid "Shop compliance audit"
 msgstr "Аудит відповідності магазину"
 
 #: src/Service/SiteAuditService.php:53
-msgid "Automatyczna weryfikacja najczęstszych problemów polskich sklepów WooCommerce."
-msgstr "Автоматична перевірка найпоширеніших проблем польських магазинів WooCommerce."
+msgid "Automatic verification of common issues for Polish WooCommerce shops."
+msgstr "Автоматична перевірка типових проблем польських магазинів WooCommerce."
 
 #: src/Service/SiteAuditService.php:59
-msgid "OK"
-msgstr "OK"
+msgid "Passed"
+msgstr "Пройдено"
 
 #: src/Service/SiteAuditService.php:64
-msgid "Ostrzeżenia"
+msgid "Warnings"
 msgstr "Попередження"
 
 #: src/Service/SiteAuditService.php:69
-msgid "Problemy"
+msgid "Issues"
 msgstr "Проблеми"
 
 #: src/Service/SiteAuditService.php:75
-msgid "Sprawdzenie"
-msgstr "Перевірка"
+msgid "Check"
+msgstr "Перевірити"
 
-#: src/Service/SiteAuditService.php:76
-msgid "Szczegóły"
-msgstr "Деталі"
+#: src/Service/SiteAuditService.php:131
+msgid "Legal pages (Terms, Privacy Policy)"
+msgstr "Правові сторінки (Умови, Політика конфіденційності)"
 
-#: src/Service/SiteAuditService.php:130
-msgid "Strony prawne (regulamin, polityka prywatności)"
-msgstr "Правові сторінки (умови та положення, політика конфіденційності)"
+#: src/Service/SiteAuditService.php:139
+msgid "Terms"
+msgstr "Умови"
 
-#: src/Service/SiteAuditService.php:138
-msgid "regulamin"
-msgstr "умови та положення"
-
-#: src/Service/SiteAuditService.php:142
-msgid "polityka prywatności"
-msgstr "політика конфіденційності"
-
-#: src/Service/SiteAuditService.php:149
-msgid "Strony regulaminu i polityki prywatności są ustawione i opublikowane."
-msgstr "Сторінки умов та положень і політики конфіденційності налаштовані та опубліковані."
+#: src/Service/SiteAuditService.php:150
+msgid "Terms and Privacy Policy pages are set and published."
+msgstr "Сторінки умов та політики конфіденційності встановлені та опубліковані."
 
 #. translators: %s: comma-separated list of missing pages
-#: src/Service/SiteAuditService.php:158
+#: src/Service/SiteAuditService.php:159
 #, php-format
-msgid "Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane."
+msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
 msgstr "Відсутні сторінки: %s. Налаштуйте їх у WooCommerce > Налаштування > Розширені."
 
-#: src/Service/SiteAuditService.php:171
-msgid "Treść polityki prywatności"
-msgstr "Вміст політики конфіденційності"
+#: src/Service/SiteAuditService.php:172
+msgid "Privacy Policy content"
+msgstr "Зміст політики конфіденційності"
 
-#: src/Service/SiteAuditService.php:178
-msgid "Strona polityki prywatności nie jest ustawiona."
-msgstr "Сторінку політики конфіденційності не налаштовано."
+#: src/Service/SiteAuditService.php:179
+msgid "Privacy Policy page is not set."
+msgstr "Сторінка політики конфіденційності не встановлена."
 
-#: src/Service/SiteAuditService.php:188
-msgid "Strona polityki prywatności nie jest opublikowana."
-msgstr "Сторінку політики конфіденційності не опубліковано."
-
-#. translators: %d: character count
-#: src/Service/SiteAuditService.php:201
-#, php-format
-msgid "Polityka prywatności ma tylko %d znaków - może być zbyt krótka, aby spełnić wymogi RODO Art. 13."
-msgstr "Політика конфіденційності має лише %d символів — може бути занадто короткою для відповідності вимогам GDPR ст. 13."
+#: src/Service/SiteAuditService.php:189
+msgid "Privacy Policy page is not published."
+msgstr "Сторінка політики конфіденційності не опублікована."
 
 #. translators: %d: character count
-#: src/Service/SiteAuditService.php:212
+#: src/Service/SiteAuditService.php:202
 #, php-format
-msgid "Polityka prywatności zawiera %d znaków."
+msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
+msgstr "Політика конфіденційності містить лише %d символів - може бути занадто коротка для відповідності ст. 13 GDPR."
+
+#. translators: %d: character count
+#: src/Service/SiteAuditService.php:213
+#, php-format
+msgid "Privacy Policy contains %d characters."
 msgstr "Політика конфіденційності містить %d символів."
 
-#: src/Service/SiteAuditService.php:225
-msgid "Dane identyfikacyjne firmy"
+#: src/Service/SiteAuditService.php:226
+msgid "Business identification data"
 msgstr "Ідентифікаційні дані компанії"
 
-#: src/Service/SiteAuditService.php:233
-msgid "nazwa firmy"
-msgstr "назва компанії"
+#: src/Service/SiteAuditService.php:234
+msgid "Company name"
+msgstr "Назва компанії"
 
 #: src/Service/SiteAuditService.php:235
-msgid "adres"
-msgstr "адреса"
+msgid "VAT ID (NIP)"
+msgstr "ІПН (NIP)"
 
 #: src/Service/SiteAuditService.php:236
-msgid "email kontaktowy"
-msgstr "контактний email"
+msgid "Address"
+msgstr "Адреса"
 
-#: src/Service/SiteAuditService.php:253
-msgid "Wszystkie podstawowe dane firmy są uzupełnione."
-msgstr "Усі базові дані компанії заповнені."
+#: src/Service/SiteAuditService.php:237
+msgid "Contact email"
+msgstr "Контактний e-mail"
+
+#: src/Service/SiteAuditService.php:254
+msgid "All basic company data is completed."
+msgstr "Всі основні дані компанії заповнені."
 
 #. translators: %s: comma-separated list of missing fields
-#: src/Service/SiteAuditService.php:264
+#: src/Service/SiteAuditService.php:265
 #, php-format
-msgid "Brakujące dane: %s. Uzupełnij w Polski > Ustawienia."
+msgid "Missing data: %s. Fill in Polski > Settings."
 msgstr "Відсутні дані: %s. Заповніть у Polski > Налаштування."
 
-#: src/Service/SiteAuditService.php:277
-msgid "Pre-zaznaczone checkboxy (dark pattern)"
-msgstr "Попередньо позначені чекбокси (dark pattern)"
+#: src/Service/SiteAuditService.php:278
+msgid "Pre-checked checkboxes (dark pattern)"
+msgstr "Попередньо позначені чекбокси (темний патерн)"
 
-#: src/Service/SiteAuditService.php:308
-msgid "Żadne checkboxy nie są domyślnie zaznaczone."
+#: src/Service/SiteAuditService.php:309
+msgid "No checkboxes are checked by default."
 msgstr "Жодні чекбокси не позначені за замовчуванням."
 
 #. translators: %d: number of pre-checked checkboxes
-#: src/Service/SiteAuditService.php:317
+#: src/Service/SiteAuditService.php:318
 #, php-format
-msgid "Wykryto %d pre-zaznaczonych checkboxów. UOKiK uznaje to za ciemny wzorzec."
-msgstr "Виявлено %d попередньо позначених чекбоксів. UOKiK вважає це темним патерном."
+msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
+msgstr "Виявлено %d попередньо позначених чекбоксів. Наглядові органи вважають це темним патерном."
 
-#: src/Service/SiteAuditService.php:330
-msgid "Tekst przycisku zamówienia"
+#: src/Service/SiteAuditService.php:331
+msgid "Order button text"
 msgstr "Текст кнопки замовлення"
 
 #. translators: %s: the button text
-#: src/Service/SiteAuditService.php:349
+#: src/Service/SiteAuditService.php:350
 #, php-format
-msgid "Przycisk: \"%s\" - zawiera informacje o obowiązku zapłaty."
-msgstr "Кнопка: \"%s\" — містить інформацію про зобов'язання оплати."
+msgid "Button: \"%s\" - contains info about payment obligation."
+msgstr "Кнопка: \"%s\" - містить інформацію про обов'язок оплати."
 
-#: src/Service/SiteAuditService.php:360
-msgid "Tekst przycisku nie jest skonfigurowany. Ustawienie domyślne WooCommerce może nie zawierać wymaganej informacji o płatności."
-msgstr "Текст кнопки не налаштовано. Типове налаштування WooCommerce може не містити необхідної інформації про оплату."
+#: src/Service/SiteAuditService.php:361
+msgid "Button text is not configured. Default WooCommerce setting might lack required payment info."
+msgstr "Текст кнопки не налаштований. Стандартне налаштування WooCommerce може не містити необхідної платіжної інформації."
 
 #. translators: %s: the button text
-#: src/Service/SiteAuditService.php:369
+#: src/Service/SiteAuditService.php:370
 #, php-format
-msgid "Przycisk: \"%s\" - może nie zawierać wymaganej informacji o obowiązku zapłaty (np. \"Zamawiam z obowiązkiem zapłaty\")."
-msgstr "Кнопка: \"%s\" — може не містити необхідної інформації про зобов'язання оплати (напр., \"Замовляю з зобов'язанням оплати\")."
+msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
+msgstr "Кнопка: \"%s\" - може не містити необхідної платіжної інформації (напр. \"Замовлення з обов'язком оплати\")."
 
-#: src/Service/SiteAuditService.php:382
-msgid "Moduł Omnibus (najniższa cena)"
+#: src/Service/SiteAuditService.php:383
+msgid "Omnibus module (lowest price)"
 msgstr "Модуль Omnibus (найнижча ціна)"
 
-#: src/Service/SiteAuditService.php:388
-msgid "Moduł Omnibus jest włączony - najniższa cena z 30 dni będzie wyświetlana przy promocjach."
-msgstr "Модуль Omnibus увімкнено — найнижча ціна за 30 днів буде відображатися при акціях."
+#: src/Service/SiteAuditService.php:389
+msgid "Omnibus module is enabled - lowest price from 30 days will be shown on sales."
+msgstr "Модуль Omnibus активований - найнижча ціна за 30 днів буде показана при знижках."
 
-#: src/Service/SiteAuditService.php:395
-msgid "Moduł Omnibus jest wyłączony. Dyrektywa Omnibus wymaga wyświetlania najniższej ceny z 30 dni przy promocjach."
-msgstr "Модуль Omnibus вимкнено. Директива Omnibus вимагає відображення найнижчої ціни за 30 днів при акціях."
+#: src/Service/SiteAuditService.php:396
+msgid "Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales."
+msgstr "Модуль Omnibus деактивований. Директива Omnibus вимагає показу найнижчої ціни за 30 днів при знижках."
 
-#: src/Service/SiteAuditService.php:406
-msgid "Checkboxy prawne (RODO)"
+#: src/Service/SiteAuditService.php:407
+msgid "Legal checkboxes (GDPR)"
 msgstr "Правові чекбокси (GDPR)"
 
-#: src/Service/SiteAuditService.php:412
-msgid "Moduł checkboxów prawnych jest włączony."
-msgstr "Модуль правових чекбоксів увімкнено."
+#: src/Service/SiteAuditService.php:413
+msgid "Legal checkboxes module is enabled."
+msgstr "Модуль правових чекбоксів активований."
 
-#: src/Service/SiteAuditService.php:419
-msgid "Moduł checkboxów prawnych jest wyłączony. Sklep może nie zbierać wymaganych zgód RODO."
-msgstr "Модуль правових чекбоксів вимкнено. Магазин може не збирати необхідних згод GDPR."
+#: src/Service/SiteAuditService.php:420
+msgid "Legal checkboxes module is disabled. The shop might not collect required GDPR consents."
+msgstr "Модуль правових чекбоксів деактивований. Магазин може не збирати необхідні згоди GDPR."
 
-#: src/Service/SiteAuditService.php:436
-msgid "Moduł prawa odstąpienia jest włączony."
-msgstr "Модуль права на відмову увімкнено."
+#: src/Service/SiteAuditService.php:437
+msgid "Withdrawal module is enabled."
+msgstr "Модуль відмови активований."
 
-#: src/Service/SiteAuditService.php:443
-msgid "Moduł prawa odstąpienia jest wyłączony. Konsumenci mają 14-dniowe prawo odstąpienia od umowy."
-msgstr "Модуль права на відмову вимкнено. Споживачі мають 14-денне право на відмову від договору."
+#: src/Service/SiteAuditService.php:444
+msgid "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
+msgstr "Модуль відмови деактивований. Споживачі мають 14-денне право на відмову від договору."
 
-#: src/Service/SiteAuditService.php:454
-msgid "Moduł GPSR (bezpieczeństwo produktów)"
-msgstr "Модуль GPSR (безпека товарів)"
+#: src/Service/SiteAuditService.php:455
+msgid "GPSR module (product safety)"
+msgstr "Модуль GPSR (безпека продуктів)"
 
-#: src/Service/SiteAuditService.php:460
-msgid "Moduł GPSR jest włączony - dane producenta i importera mogą być wyświetlane."
-msgstr "Модуль GPSR увімкнено — дані виробника та імпортера можуть відображатися."
+#: src/Service/SiteAuditService.php:461
+msgid "GPSR module is enabled - manufacturer and importer data can be displayed."
+msgstr "Модуль GPSR активований - дані виробника та імпортера можуть бути відображені."
 
-#: src/Service/SiteAuditService.php:467
-msgid "Moduł GPSR jest wyłączony. Rozporządzenie (UE) 2023/988 wymaga podania danych producenta/importera."
-msgstr "Модуль GPSR вимкнено. Регламент (ЄС) 2023/988 вимагає надання даних виробника/імпортера."
+#: src/Service/SiteAuditService.php:468
+msgid "GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data."
+msgstr "Модуль GPSR деактивований. Регламент (ЄС) 2023/988 вимагає надання даних виробника/імпортера."
 
-#: src/Service/SiteAuditService.php:478
-msgid "Zweryfikowane opinie"
-msgstr "Верифіковані відгуки"
+#: src/Service/SiteAuditService.php:479
+msgid "Verified reviews"
+msgstr "Підтверджені відгуки"
 
-#: src/Service/SiteAuditService.php:484
-msgid "Moduł zweryfikowanych opinii jest włączony - sklep może oznaczać recenzje od realnych kupujących."
-msgstr "Модуль верифікованих відгуків увімкнено — магазин може позначати рецензії від реальних покупців."
+#: src/Service/SiteAuditService.php:485
+msgid "Verified reviews module is enabled - the shop can mark reviews from actual buyers."
+msgstr "Модуль підтверджених відгуків активований - магазин може позначати відгуки від реальних покупців."
 
-#: src/Service/SiteAuditService.php:491
-msgid "Moduł zweryfikowanych opinii jest wyłączony. To utrudnia odróżnienie opinii od realnych klientów."
-msgstr "Модуль верифікованих відгуків вимкнено. Це ускладнює розрізнення відгуків від реальних клієнтів."
+#: src/Service/SiteAuditService.php:492
+msgid "Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers."
+msgstr "Модуль підтверджених відгуків деактивований. Це ускладнює розрізнення відгуків від реальних клієнтів."
 
-#: src/Service/SiteAuditService.php:502
-msgid "DSA - zgłaszanie nielegalnych treści"
-msgstr "DSA — повідомлення про незаконний контент"
+#: src/Service/SiteAuditService.php:503
+msgid "DSA - reporting illegal content"
+msgstr "DSA - повідомлення про нелегальний контент"
 
-#: src/Service/SiteAuditService.php:508
-msgid "Moduł DSA jest włączony - formularz zgłoszeń i panel raportów są dostępne."
-msgstr "Модуль DSA увімкнено — форма повідомлень та панель звітів доступні."
+#: src/Service/SiteAuditService.php:509
+msgid "DSA module is enabled - report form and dashboard are available."
+msgstr "Модуль DSA активований - форма звітів та панель доступні."
 
-#: src/Service/SiteAuditService.php:515
-msgid "Moduł DSA jest wyłączony. Marketplace lub sklep z treściami sponsorowanymi powinien mieć procedurę notice-and-action."
-msgstr "Модуль DSA вимкнено. Маркетплейс або магазин зі спонсорським контентом повинен мати процедуру notice-and-action."
+#: src/Service/SiteAuditService.php:516
+msgid "DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure."
+msgstr "Модуль DSA деактивований. Торгові майданчики або магазини зі спонсорованим контентом повинні мати процедуру повідомлення та реагування."
 
-#: src/Service/SiteAuditService.php:526
+#: src/Service/SiteAuditService.php:527
 msgid "KSeF-ready"
 msgstr "KSeF-ready"
 
-#: src/Service/SiteAuditService.php:532
-msgid "Moduł KSeF-ready jest włączony — zamówienia z NIP mogą być oznaczane i przekazywane do integracji fakturowych."
-msgstr "Модуль KSeF-ready увімкнено — замовлення з NIP можуть позначатися та передаватися до інтеграцій виставлення рахунків."
+#: src/Service/SiteAuditService.php:533
+msgid "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration."
+msgstr "Модуль KSeF активований - замовлення з ІПН можуть бути позначені для інтеграції рахунків."
 
-#: src/Service/SiteAuditService.php:539
-msgid "Moduł KSeF-ready jest wyłączony. Sklep B2B może potrzebować automatycznego oznaczania zamówień wymagających e-faktury."
-msgstr "Модуль KSeF-ready вимкнено. Магазин B2B може потребувати автоматичного позначення замовлень, що потребують е-фактури."
+#: src/Service/SiteAuditService.php:540
+msgid "KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices."
+msgstr "Модуль KSeF деактивований. B2B магазини можуть потребувати автоматичного маркування замовлень для e-рахунків."
 
-#: src/Service/SiteAuditService.php:550
-msgid "Twierdzenia ekologiczne (anti-greenwashing)"
-msgstr "Екологічні заяви (anti-greenwashing)"
+#: src/Service/SiteAuditService.php:551
+msgid "Environmental claims (anti-greenwashing)"
+msgstr "Екологічні твердження (анти-грінвошинг)"
 
-#: src/Service/SiteAuditService.php:556
-msgid "Moduł anti-greenwashing jest włączony — produkty mogą przechowywać podstawę twierdzeń ekologicznych i linki do certyfikatów."
-msgstr "Модуль anti-greenwashing увімкнено — товари можуть зберігати підставу екологічних заяв та посилання на сертифікати."
+#: src/Service/SiteAuditService.php:557
+msgid "Anti-greenwashing module is enabled - products can store claims basis and certificate links."
+msgstr "Модуль анти-грінвошингу активований - продукти можуть зберігати підстави тверджень та посилання на сертифікати."
 
-#: src/Service/SiteAuditService.php:563
-msgid "Moduł anti-greenwashing jest wyłączony. Przy deklaracjach ekologicznych warto przechowywać źródło i podstawę twierdzeń."
-msgstr "Модуль anti-greenwashing вимкнено. При екологічних деклараціях варто зберігати джерело та підставу заяв."
+#: src/Service/SiteAuditService.php:564
+msgid "Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims."
+msgstr "Модуль анти-грінвошингу деактивований. Добра практика зберігати джерела для екологічних тверджень."
 
-#: src/Service/SiteAuditService.php:574
-msgid "Rejestr DPA (umowy powierzenia)"
-msgstr "Реєстр DPA (договори доручення)"
+#: src/Service/SiteAuditService.php:575
+msgid "DPA registry (data processing agreements)"
+msgstr "Реєстр DPA (угоди про обробку даних)"
 
-#: src/Service/SiteAuditService.php:580
-msgid "Moduł rejestru DPA jest wyłączony. Przy hostingu, płatnościach i narzędziach zewnętrznych warto monitorować status umów powierzenia."
-msgstr "Модуль реєстру DPA вимкнено. При хостингу, платежах та зовнішніх інструментах варто моніторити статус договорів доручення."
+#: src/Service/SiteAuditService.php:581
+msgid "DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc."
+msgstr "Модуль реєстру DPA деактивований. Добра практика відстежувати статус DPA для хостингу, платежів тощо."
 
-#: src/Service/SiteAuditService.php:606
-msgid "Moduł DPA jest włączony, ale rejestr jest pusty. Oznacz przynajmniej hosting, płatności i inne usługi przetwarzające dane."
-msgstr "Модуль DPA увімкнено, але реєстр порожній. Позначте принаймні хостинг, платежі та інші сервіси, що обробляють дані."
+#: src/Service/SiteAuditService.php:607
+msgid "DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services."
+msgstr "Модуль DPA активований, але реєстр порожній. Позначте принаймні хостинг, платежі та інші служби обробки даних."
 
-#: src/Service/SiteAuditService.php:614
-msgid "Rejestr DPA nie ma oznaczonej żadnej aktywnej umowy powierzenia."
-msgstr "Реєстр DPA не має позначеного жодного активного договору доручення."
+#: src/Service/SiteAuditService.php:615
+msgid "DPA registry has no active data processing agreements marked."
+msgstr "Реєстр DPA не має позначених активних угод про обробку даних."
 
 #. translators: 1: number of services with DPA, 2: number of tracked services
-#: src/Service/SiteAuditService.php:624
+#: src/Service/SiteAuditService.php:625
 #, php-format
-msgid "Tylko %1$d z %2$d wykrytych usług ma oznaczoną umowę powierzenia."
-msgstr "Лише %1$d з %2$d виявлених сервісів має позначений договір доручення."
+msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
+msgstr "Лише %1$d з %2$d відстежуваних сервісів мають позначену угоду про обробку даних."
 
 #. translators: %d: number of tracked services
-#: src/Service/SiteAuditService.php:636
+#: src/Service/SiteAuditService.php:637
 #, php-format
-msgid "Rejestr DPA obejmuje %d usług i wszystkie mają oznaczony status umowy powierzenia."
-msgstr "Реєстр DPA охоплює %d сервісів і всі мають позначений статус договору доручення."
+msgid "DPA registry covers %d services and all have an agreement status marked."
+msgstr "Реєстр DPA охоплює %d сервісів і всі мають позначений статус угоди."
 
-#: src/Service/SiteAuditService.php:649
-msgid "Rejestr incydentów bezpieczeństwa"
+#: src/Service/SiteAuditService.php:650
+msgid "Security incident registry"
 msgstr "Реєстр інцидентів безпеки"
 
-#: src/Service/SiteAuditService.php:655
-msgid "Moduł incydentów bezpieczeństwa jest wyłączony. Warto utrzymywać prosty rejestr incydentów pod CRA i wewnętrzne audyty."
-msgstr "Модуль інцидентів безпеки вимкнено. Варто вести простий реєстр інцидентів для CRA та внутрішніх аудитів."
+#: src/Service/SiteAuditService.php:656
+msgid "Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance."
+msgstr "Модуль інцидентів безпеки деактивований. Добра практика вести простий реєстр інцидентів."
 
-#: src/Service/SiteAuditService.php:669
-msgid "Moduł incydentów jest włączony, ale nie ma ustawionego adresu kontaktowego security."
-msgstr "Модуль інцидентів увімкнено, але не налаштовано контактну адресу безпеки."
+#: src/Service/SiteAuditService.php:670
+msgid "Incident module is enabled, but no security contact email is set."
+msgstr "Модуль інцидентів активований, але e-mail контакту безпеки не встановлений."
 
-#: src/Service/SiteAuditService.php:677
-msgid "Moduł incydentów jest włączony i ma ustawiony kontakt security. Rejestr jest obecnie pusty."
-msgstr "Модуль інцидентів увімкнено та має налаштований контакт безпеки. Реєстр наразі порожній."
+#: src/Service/SiteAuditService.php:678
+msgid "Incident module is enabled and security contact is set. The registry is currently empty."
+msgstr "Модуль інцидентів активований і контакт безпеки встановлений. Реєстр наразі порожній."
 
 #. translators: %d: number of open incidents
-#: src/Service/SiteAuditService.php:696
+#: src/Service/SiteAuditService.php:697
 #, php-format
-msgid "W rejestrze są %d otwarte incydenty bezpieczeństwa wymagające dalszej obsługi."
-msgstr "У реєстрі є %d відкритих інцидентів безпеки, що потребують подальшого опрацювання."
+msgid "There are %d open security incidents requiring further action in the registry."
+msgstr "У реєстрі є %d відкритих інцидентів безпеки, що потребують подальших дій."
 
-#: src/Service/SiteAuditService.php:699
-msgid "Rejestr incydentów jest aktywny i nie ma otwartych spraw."
+#: src/Service/SiteAuditService.php:700
+msgid "The incident registry is active and has no open cases."
 msgstr "Реєстр інцидентів активний і не має відкритих справ."
 
-#: src/Service/SiteAuditService.php:710
-msgid "Szyfrowanie SSL/TLS"
+#: src/Service/SiteAuditService.php:711
+msgid "SSL/TLS encryption"
 msgstr "Шифрування SSL/TLS"
 
-#: src/Service/SiteAuditService.php:716
-msgid "Strona jest serwowana przez HTTPS."
+#: src/Service/SiteAuditService.php:717
+msgid "The site is served over HTTPS."
 msgstr "Сайт обслуговується через HTTPS."
 
-#: src/Service/SiteAuditService.php:723
-msgid "Strona nie używa HTTPS. RODO wymaga odpowiednich środków technicznych ochrony danych - SSL jest minimum."
-msgstr "Сайт не використовує HTTPS. GDPR вимагає відповідних технічних засобів захисту даних — SSL є мінімумом."
+#: src/Service/SiteAuditService.php:724
+msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
+msgstr "Сайт не використовує HTTPS. GDPR вимагає відповідних технічних заходів - SSL є мінімумом."
+
+#: src/Service/TabManagerService.php:76
+msgid "Shipping and Payment"
+msgstr "Доставка та оплата"
+
+#: src/Service/TabManagerService.php:84
+msgid "Returns and Complaints"
+msgstr "Повернення та рекламації"
 
 #: src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
 msgstr "Підтверджена покупка"
+
+#: src/Service/WaitlistService.php:105
+msgid "Waitlist is unavailable for this product."
+msgstr "Список очікування недоступний для цього продукту."
+
+#: src/Service/WaitlistService.php:109
+msgid "Provide a valid email address."
+msgstr "Вкажіть дійсну адресу e-mail."
+
+#: src/Service/WaitlistService.php:113
+msgid "You must accept the consent for email contact."
+msgstr "Ви повинні прийняти згоду на e-mail контакт."
+
+#: src/Service/WaitlistService.php:117
+msgid "Login to join the waitlist."
+msgstr "Увійдіть, щоб приєднатися до списку очікування."
+
+#: src/Service/WaitlistService.php:123
+msgid "Thank you. You have been added to the waitlist."
+msgstr "Дякуємо. Вас додано до списку очікування."
+
+#: src/Service/WaitlistService.php:135
+msgid "Product back in stock - {product_name}"
+msgstr "Продукт знову в наявності - {product_name}"
+
+#: src/Service/WaitlistService.php:141
+msgid "Product {product_name} is back in stock."
+msgstr "Продукт {product_name} знову в наявності."
+
+#: src/Service/WaitlistService.php:143
+msgid "If you no longer wish to receive these messages, simply ignore this email."
+msgstr "Якщо ви більше не бажаєте отримувати ці повідомлення, просто ігноруйте цей лист."
+
+#: src/Service/WishlistService.php:267
+msgid "Add to Wishlist"
+msgstr "Додати до списку бажань"
+
+#: src/Service/WishlistService.php:272
+msgid "Remove from Wishlist"
+msgstr "Видалити зі списку бажань"
+
+#: src/Service/WishlistService.php:277
+msgid "Please login to use the wishlist."
+msgstr "Увійдіть, щоб використовувати список бажань."
 
 #: src/Service/WithdrawalService.php:150
 msgid "Customer has submitted a withdrawal request."
@@ -5755,6 +6038,11 @@ msgstr "Вашу заяву про відмову прийнято."
 #: src/Service/WithdrawalService.php:362
 msgid "Failed to submit the withdrawal request."
 msgstr "Не вдалося подати заяву про відмову."
+
+#: src/Shortcode/ShortcodeManager.php:134
+#: templates/single-product/gpsr-info.php:22
+msgid "Instrukcje bezpieczeństwa"
+msgstr "Інструкції з безпеки"
 
 #: src/Shortcode/ShortcodeManager.php:225
 msgid "Proszę podać numer zamówienia."
@@ -5803,12 +6091,10 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: templates/checkout/legal-checkboxes.php:51
-#: templates/forms/dsa-report.php:41
-#: templates/forms/dsa-report.php:46
-#: templates/forms/dsa-report.php:51
-#: templates/forms/dsa-report.php:56
-#: templates/forms/dsa-report.php:66
-msgid "wymagane"
+#: build/blocks/checkout-legal-checkboxes/index.js:100
+#: resources/js/blocks/checkout-legal-checkboxes/block.js:91
+#: build/blocks/checkout-legal-checkboxes/index.js:91
+msgid "required"
 msgstr "обов'язково"
 
 #: templates/emails/plain/withdrawal-confirmation.php:18
@@ -5838,6 +6124,10 @@ msgstr "Незаконний товар"
 msgid "Wprowadzająca w błąd reklama"
 msgstr "Оманлива реклама"
 
+#: templates/forms/dsa-report.php:19
+msgid "Inne"
+msgstr ""
+
 #: templates/forms/dsa-report.php:26
 msgid "Dziękujemy! Twoje zgłoszenie zostało wysłane i zostanie rozpatrzone."
 msgstr "Дякуємо! Ваше повідомлення надіслано та буде розглянуте."
@@ -5849,6 +6139,14 @@ msgstr "Повідомити про незаконний контент (DSA)"
 #: templates/forms/dsa-report.php:33
 msgid "Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA)."
 msgstr "Заповніть форму нижче, щоб повідомити про контент, який ви вважаєте незаконним відповідно до Акта про цифрові послуги (DSA)."
+
+#: templates/forms/dsa-report.php:41
+#: templates/forms/dsa-report.php:46
+#: templates/forms/dsa-report.php:51
+#: templates/forms/dsa-report.php:56
+#: templates/forms/dsa-report.php:66
+msgid "wymagane"
+msgstr "обов'язково"
 
 #: templates/forms/dsa-report.php:46
 msgid "Adres e-mail"
@@ -5970,651 +6268,556 @@ msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Динамічний мерчандайзинговий слайдер для пов'язаних, upsell, акційних та вибраних товарів."
 
-msgid "Hello!"
-msgstr "Привіт!"
+#~ msgid "This plugin provides tools to assist with Polish e-commerce compliance. It does not constitute legal advice. You are solely responsible for ensuring your store complies with all applicable laws. We recommend consulting a qualified legal professional."
+#~ msgstr "Цей плагін надає інструменти для допомоги у відповідності польського e-commerce. Він не є юридичною консультацією. Ви несете повну відповідальність за дотримання всіх чинних законів вашим магазином. Ми рекомендуємо звернутися до кваліфікованого юриста."
 
-msgid "Finish configuration"
-msgstr "Завершити налаштування"
+#~ msgid "I understand, dismiss"
+#~ msgstr "Зрозуміло, закрити"
 
-msgid "Some key elements of your store still require attention."
-msgstr "Деякі ключові елементи вашого магазину все ще потребують уваги."
+#~ msgid "Ustawienia"
+#~ msgstr "Налаштування"
 
-msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
-msgstr "Опублікувати правові сторінки (Умови, Політика конфіденційності, Право на відмову)"
+#~ msgid "Przepraszamy, ale wydaje się, że nie masz dostępu do tej strony."
+#~ msgstr "На жаль, здається, що у вас немає доступу до цієї сторінки."
 
-msgid "Complete product data"
-msgstr "Заповнити дані продуктів"
+#~ msgid "Pulpit"
+#~ msgstr "Панель"
 
-msgid "Manage modules"
-msgstr "Керувати модулями"
+#~ msgid "Moduły"
+#~ msgstr "Модулі"
 
-msgid "Generate legal pages"
-msgstr "Згенерувати правові сторінки"
+#~ msgid "Raporty i narzędzia"
+#~ msgstr "Звіти та інструменти"
 
-msgid "No legal pages have been created yet. Generate them to get started."
-msgstr "Правові сторінки ще не створені. Згенеруйте їх для початку."
+#~ msgid "Ustawienia zostały zapisane."
+#~ msgstr "Налаштування збережено."
 
-msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
-msgstr "Готово! Ми створили чернетки правових сторінок. Перегляньте, відредагуйте та опублікуйте їх."
+#~ msgid "Zapisz ustawienia"
+#~ msgstr "Зберегти налаштування"
 
-#, php-format
-msgid "%1$d of %2$d ready"
-msgstr "%1$d з %2$d готово"
+#~ msgid "Wróć do raportów"
+#~ msgstr "Повернутися до звітів"
 
-msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
-msgstr "Опублікуйте свої правові сторінки (Умови, Політика конфіденційності, Право на відмову, Рекламації)."
+#~ msgid "Logi opinii"
+#~ msgstr "Журнали відгуків"
 
-#, php-format
-msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
-msgstr "Заповніть дані продуктів - додайте ціни за одиницю та час доставки в <a href=\"%s\">вкладці Polski</a> для кожного продукту."
+#~ msgid "Wybierz raport lub narzędzie, aby sprawdzić status zgodności Twojego sklepu."
+#~ msgstr "Виберіть звіт або інструмент для перевірки статусу відповідності вашого магазину."
 
-#, php-format
-msgid "%d/8 pól wypełnionych"
-msgstr "%d/8 полів заповнено"
+#~ msgid "Otwórz raport"
+#~ msgstr "Відкрити звіт"
 
-msgid "Active"
-msgstr "Активний"
+#~ msgid "Moduł wyłączony"
+#~ msgstr "Модуль вимкнено"
 
-msgid "Add Allergen"
-msgstr "Додати алерген"
+#~ msgid "Logi opinii z panelu"
+#~ msgstr "Журнали відгуків з панелі"
 
-msgid "Add Delivery Time"
-msgstr "Додати час доставки"
+#~ msgid "Brak opinii z panelu do wyświetlenia."
+#~ msgstr "Немає відгуків з панелі для показу."
 
-msgid "Add Manufacturer"
-msgstr "Додати виробника"
+#~ msgid "Osoba"
+#~ msgstr "Особа"
 
-msgid "Add Nutrient"
-msgstr "Додати поживну речовину"
+#~ msgid "Temat"
+#~ msgstr "Тема"
 
-msgid "Add Unit"
-msgstr "Додати одиницю"
+#~ msgid "Ekran"
+#~ msgstr "Екран"
 
-msgid "Add to Wishlist"
-msgstr "Додати до списку бажань"
+#~ msgid "Wiadomość"
+#~ msgstr "Повідомлення"
 
-msgid "Add to compare"
-msgstr "Додати до порівняння"
+#~ msgid "Włącz"
+#~ msgstr "Увімкнути"
 
-msgid "Address"
-msgstr "Адреса"
+#~ msgid "Dzień dobry!"
+#~ msgstr "Доброго дня!"
 
-msgid "Admin Feedback Logs"
-msgstr "Журнал відгуків адміністратора"
+#~ msgid "Dokończ konfigurację"
+#~ msgstr "Завершити конфігурацію"
 
-msgid "Advertising"
-msgstr "Реклама"
+#~ msgid "Niektóre kluczowe elementy Twojego sklepu jeszcze wymagają uwagi."
+#~ msgstr "Деякі ключові елементи вашого магазину ще потребують уваги."
 
-msgid "All basic company data is completed."
-msgstr "Всі основні дані компанії заповнені."
+#~ msgid "Uzupełnij dane firmy"
+#~ msgstr "Заповніть дані компанії"
 
-msgid "Allergen"
-msgstr "Алерген"
-
-msgid "Analytics"
-msgstr "Аналітика"
-
-msgid "Anti-greenwashing module is disabled. It is good practice to store sources for environmental claims."
-msgstr "Модуль анти-грінвошингу деактивований. Добра практика зберігати джерела для екологічних тверджень."
-
-msgid "Anti-greenwashing module is enabled - products can store claims basis and certificate links."
-msgstr "Модуль анти-грінвошингу активований - продукти можуть зберігати підстави тверджень та посилання на сертифікати."
-
-msgid "Automatic verification of common issues for Polish WooCommerce shops."
-msgstr "Автоматична перевірка типових проблем польських магазинів WooCommerce."
-
-msgid "Availability"
-msgstr "Наявність"
-
-msgid "Back to reports"
-msgstr "Назад до звітів"
-
-msgid "Business identification data"
-msgstr "Ідентифікаційні дані компанії"
-
-msgid "Button text is not configured. Default WooCommerce setting might lack required payment info."
-msgstr "Текст кнопки не налаштований. Стандартне налаштування WooCommerce може не містити необхідної платіжної інформації."
+#~ msgid "Nieaktywna"
+#~ msgstr "Неактивна"
 
 #, php-format
-msgid "Button: \"%s\" - contains info about payment obligation."
-msgstr "Кнопка: \"%s\" - містить інформацію про обов'язок оплати."
+#~ msgid "%1$d z %2$d gotowych"
+#~ msgstr "%1$d з %2$d готових"
+
+#~ msgid "Dyrektywa Omnibus"
+#~ msgstr "Директива Omnibus"
+
+#~ msgid "Analiza sklepu"
+#~ msgstr "Аналіз магазину"
+
+#~ msgid "Sprawdź raporty"
+#~ msgstr "Перевірити звіти"
+
+#~ msgid "Nie utworzona"
+#~ msgstr "Не створена"
+
+#~ msgid "Opublikuj swoje strony prawne (Regulamin, Polityka prywatności, Prawo odstąpienia, Reklamacje)."
+#~ msgstr "Опублікуйте ваші правові сторінки (Умови та положення, Політика конфіденційності, Право на відмову, Рекламації)."
 
 #, php-format
-msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
-msgstr "Кнопка: \"%s\" - може не містити необхідної платіжної інформації (напр. \"Замовлення з обов'язком оплати\")."
-
-msgid "Check"
-msgstr "Перевірити"
-
-msgid "Check reports"
-msgstr "Перевірити звіти"
-
-msgid "Clear comparison"
-msgstr "Очистити порівняння"
-
-msgid "Company name"
-msgstr "Назва компанії"
-
-msgid "Compare products"
-msgstr "Порівняти продукти"
-
-msgid "Comparison"
-msgstr "Порівняння"
-
-msgid "Complaints"
-msgstr "Рекламації"
-
-msgid "Completed"
-msgstr "Завершено"
+#~ msgid "Skonfiguruj <a href=\"%s\">stawki podatkowe</a> w WooCommerce dla polskiego VAT (23%%, 8%%, 5%%, 0%%)."
+#~ msgstr "Налаштуйте <a href=\"%s\">ставки податків</a> у WooCommerce для польського ПДВ (23%%, 8%%, 5%%, 0%%)."
 
 #, php-format
-msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
-msgstr "Налаштуйте <a href=\"%s\">зони доставки</a> для відправлень до Польщі."
+#~ msgid "Uzupełnij dane produktów - dodaj ceny jednostkowe i czas dostawy w <a href=\"%s\">zakładce Polski</a> przy każdym produkcie."
+#~ msgstr "Заповніть дані товарів — додайте ціни за одиницю та термін доставки на <a href=\"%s\">вкладці Polski</a> для кожного товару."
 
 #, php-format
-msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
-msgstr "Налаштуйте <a href=\"%s\">ставки податків</a> у WooCommerce для польського ПДВ (23%%, 8%%, 5%%, 0%%)."
+#~ msgid "Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź pola wyboru oraz tekst przycisku w <a href=\"%s\">zamówieniu</a>."
+#~ msgstr "Протестуйте процес замовлення — додайте товар до кошика та перевірте чекбокси й текст кнопки в <a href=\"%s\">замовленні</a>."
 
-msgid "Confirmed"
-msgstr "Підтверджено"
+#~ msgid "Otwórz &rarr;"
+#~ msgstr "Відкрити &rarr;"
 
-msgid "Contact email"
-msgstr "Контактний e-mail"
+#~ msgid "Czasy dostawy"
+#~ msgstr "Терміни доставки"
 
-msgid "DPA module is enabled, but the registry is empty. Mark at least hosting, payments, and other data processing services."
-msgstr "Модуль DPA активований, але реєстр порожній. Позначте принаймні хостинг, платежі та інші служби обробки даних."
+#~ msgid "Dodaj czas dostawy"
+#~ msgstr "Додати термін доставки"
 
-msgid "DPA registry (data processing agreements)"
-msgstr "Реєстр DPA (угоди про обробку даних)"
+#~ msgid "Edytuj czas dostawy"
+#~ msgstr "Редагувати термін доставки"
+
+#~ msgid "Szukaj czasów dostawy"
+#~ msgstr "Шукати терміни доставки"
+
+#~ msgid "Producenci"
+#~ msgstr "Виробники"
+
+#~ msgid "Dodaj producenta"
+#~ msgstr "Додати виробника"
+
+#~ msgid "Edytuj producenta"
+#~ msgstr "Редагувати виробника"
+
+#~ msgid "Szukaj producentów"
+#~ msgstr "Шукати виробників"
+
+#~ msgid "Jednostki"
+#~ msgstr "Одиниці"
+
+#~ msgid "Jednostka"
+#~ msgstr "Одиниця"
+
+#~ msgid "Dodaj jednostkę"
+#~ msgstr "Додати одиницю"
+
+#~ msgid "Edytuj jednostkę"
+#~ msgstr "Редагувати одиницю"
+
+#~ msgid "Szukaj jednostek"
+#~ msgstr "Шукати одиниці"
+
+#~ msgid "Alergen"
+#~ msgstr "Алерген"
+
+#~ msgid "Dodaj alergen"
+#~ msgstr "Додати алерген"
+
+#~ msgid "Edytuj alergen"
+#~ msgstr "Редагувати алерген"
+
+#~ msgid "Szukaj alergenów"
+#~ msgstr "Шукати алергени"
+
+#~ msgid "Składniki odżywcze"
+#~ msgstr "Поживні речовини"
+
+#~ msgid "Dodaj składnik odżywczy"
+#~ msgstr "Додати поживну речовину"
+
+#~ msgid "Edytuj składnik odżywczy"
+#~ msgstr "Редагувати поживну речовину"
+
+#~ msgid "Szukaj składników odżywczych"
+#~ msgstr "Шукати поживні речовини"
+
+#~ msgid "Opis wady"
+#~ msgstr "Опис дефекту"
+
+#~ msgid "Filtry AJAX"
+#~ msgstr "AJAX-фільтри"
+
+#~ msgid "Tytuł"
+#~ msgstr "Заголовок"
+
+#~ msgid "Pokaż tytuł"
+#~ msgstr "Показати заголовок"
+
+#~ msgid "Pokaż kategorie"
+#~ msgstr "Показати категорії"
+
+#~ msgid "Pokaż marki"
+#~ msgstr "Показати бренди"
+
+#~ msgid "Pokaż cenę"
+#~ msgstr "Показати ціну"
+
+#~ msgid "Pokaż dostępność"
+#~ msgstr "Показати наявність"
+
+#~ msgid "Pokaż promocje"
+#~ msgstr "Показати акції"
+
+#~ msgid "Pokaż atrybuty"
+#~ msgstr "Показати атрибути"
+
+#~ msgid "Informacje o żywności"
+#~ msgstr "Інформація про їжу"
+
+#~ msgid "Wartości odżywcze"
+#~ msgstr "Харчова цінність"
+
+#~ msgid "Najniższa cena (Omnibus)"
+#~ msgstr "Найнижча ціна (Omnibus)"
+
+#~ msgid "Zasilanie"
+#~ msgstr "Живлення"
+
+#~ msgid "Slider produktów"
+#~ msgstr "Слайдер товарів"
+
+#~ msgid "Źródło produktów"
+#~ msgstr "Джерело товарів"
+
+#~ msgid "Powiązane"
+#~ msgstr "Пов'язані"
+
+#~ msgid "Wyróżnione"
+#~ msgstr "Вибрані"
+
+#~ msgid "ID produktu"
+#~ msgstr "ID товару"
+
+#~ msgid "Opcjonalnie, ustaw ręcznie dla źródeł powiązanych lub upsell poza kartą produktu."
+#~ msgstr "Необов'язково, встановіть вручну для пов'язаних джерел або upsell поза карткою товару."
+
+#~ msgid "Liczba produktów"
+#~ msgstr "Кількість товарів"
+
+#~ msgid "Pokaż przycisk koszyka"
+#~ msgstr "Показати кнопку кошика"
+
+#~ msgid "Dokumenty bezpieczeństwa"
+#~ msgstr "Документи безпеки"
+
+#~ msgid "Wyszukiwarka AJAX"
+#~ msgstr "AJAX-пошук"
+
+#~ msgid "Pokaż przycisk wyszukiwania"
+#~ msgstr "Показати кнопку пошуку"
+
+#~ msgid "Tekst przycisku"
+#~ msgstr "Текст кнопки"
+
+#~ msgid "Liczba wyników"
+#~ msgstr "Кількість результатів"
+
+#~ msgid "Informacja o VAT"
+#~ msgstr "Інформація про ПДВ"
+
+#~ msgid "Regulamin sklepu"
+#~ msgstr "Умови та положення магазину"
+
+#~ msgid "Privacy Policy (Polityka prywatności)"
+#~ msgstr "Політика конфіденційності (Privacy Policy)"
+
+#~ msgid "Return Policy (Prawo odstąpienia)"
+#~ msgstr "Право на відмову (Return Policy)"
+
+#~ msgid "Reklamacje"
+#~ msgstr "Рекламації"
+
+#~ msgid "Ceny zawierają VAT (brutto)"
+#~ msgstr "Ціни включають ПДВ (брутто)"
+
+#~ msgid "Ceny nie zawierają VAT (netto)"
+#~ msgstr "Ціни не включають ПДВ (нетто)"
+
+#~ msgid "Potwierdzony"
+#~ msgstr "Підтверджений"
+
+#~ msgid "Zakończony"
+#~ msgstr "Завершений"
+
+#~ msgid "Odrzucony"
+#~ msgstr "Відхилений"
+
+#~ msgid "Rejestr umów powierzenia danych (DPA)"
+#~ msgstr "Реєстр договорів доручення обробки даних (DPA)"
+
+#~ msgid "Wykryte usługi zewnętrzne przetwarzające dane osobowe Twoich klientów. Oznacz, dla których masz podpisaną umowę powierzenia."
+#~ msgstr "Виявлені зовнішні сервіси, що обробляють персональні дані ваших клієнтів. Позначте, для яких у вас підписано договір доручення."
+
+#~ msgid "Usługa"
+#~ msgstr "Сервіс"
+
+#~ msgid "Typ"
+#~ msgstr "Тип"
+
+#~ msgid "Notatki"
+#~ msgstr "Нотатки"
+
+#~ msgid "Zapisz rejestr"
+#~ msgstr "Зберегти реєстр"
+
+#~ msgid "Hosting (serwer)"
+#~ msgstr "Хостинг (сервер)"
+
+#~ msgid "Płatności"
+#~ msgstr "Платежі"
+
+#~ msgid "Wysyłka"
+#~ msgstr "Доставка"
+
+#~ msgid "Analityka"
+#~ msgstr "Аналітика"
+
+#~ msgid "Reklamy"
+#~ msgstr "Реклама"
+
+#~ msgid "Regulamin"
+#~ msgstr "Умови та положення"
+
+#~ msgid "Polityka prywatności"
+#~ msgstr "Політика конфіденційності"
+
+#~ msgid "Prawo odstąpienia od umowy"
+#~ msgstr "Право на відмову від договору"
+
+#~ msgid "Proszę uzupełnić Regulamin sklepu."
+#~ msgstr "Заповніть Умови та положення магазину."
+
+#~ msgid "Please fill in your Privacy Policy (Polityka prywatności)."
+#~ msgstr "Заповніть Політику конфіденційності (Privacy Policy)."
+
+#~ msgid "Please fill in your Return and Withdrawal Policy (Prawo odstąpienia od umowy). Consumers have 14 days to withdraw."
+#~ msgstr "Заповніть Політику повернень та відмови (Право на відмову). Споживачі мають 14 днів на відмову."
+
+#~ msgid "Proszę uzupełnić procedurę reklamacyjną."
+#~ msgstr "Заповніть процедуру рекламації."
+
+#~ msgid "Dokument bezpieczeństwa"
+#~ msgstr "Документ безпеки"
+
+#~ msgid "Audyt zgodności sklepu"
+#~ msgstr "Аудит відповідності магазину"
+
+#~ msgid "Automatyczna weryfikacja najczęstszych problemów polskich sklepów WooCommerce."
+#~ msgstr "Автоматична перевірка найпоширеніших проблем польських магазинів WooCommerce."
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Ostrzeżenia"
+#~ msgstr "Попередження"
+
+#~ msgid "Problemy"
+#~ msgstr "Проблеми"
+
+#~ msgid "Sprawdzenie"
+#~ msgstr "Перевірка"
+
+#~ msgid "Szczegóły"
+#~ msgstr "Деталі"
+
+#~ msgid "Strony prawne (regulamin, polityka prywatności)"
+#~ msgstr "Правові сторінки (умови та положення, політика конфіденційності)"
+
+#~ msgid "regulamin"
+#~ msgstr "умови та положення"
+
+#~ msgid "polityka prywatności"
+#~ msgstr "політика конфіденційності"
+
+#~ msgid "Strony regulaminu i polityki prywatności są ustawione i opublikowane."
+#~ msgstr "Сторінки умов та положень і політики конфіденційності налаштовані та опубліковані."
 
 #, php-format
-msgid "DPA registry covers %d services and all have an agreement status marked."
-msgstr "Реєстр DPA охоплює %d сервісів і всі мають позначений статус угоди."
+#~ msgid "Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane."
+#~ msgstr "Відсутні сторінки: %s. Налаштуйте їх у WooCommerce > Налаштування > Розширені."
 
-msgid "DPA registry has no active data processing agreements marked."
-msgstr "Реєстр DPA не має позначених активних угод про обробку даних."
+#~ msgid "Treść polityki prywatności"
+#~ msgstr "Вміст політики конфіденційності"
 
-msgid "DPA registry module is disabled. It is good practice to monitor DPA status for hosting, payments, etc."
-msgstr "Модуль реєстру DPA деактивований. Добра практика відстежувати статус DPA для хостингу, платежів тощо."
+#~ msgid "Strona polityki prywatności nie jest ustawiona."
+#~ msgstr "Сторінку політики конфіденційності не налаштовано."
 
-msgid "DSA - reporting illegal content"
-msgstr "DSA - повідомлення про нелегальний контент"
-
-msgid "DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure."
-msgstr "Модуль DSA деактивований. Торгові майданчики або магазини зі спонсорованим контентом повинні мати процедуру повідомлення та реагування."
-
-msgid "DSA module is enabled - report form and dashboard are available."
-msgstr "Модуль DSA активований - форма звітів та панель доступні."
-
-msgid "Dashboard"
-msgstr "Панель керування"
-
-msgid "Data Processing Agreement (DPA) Registry"
-msgstr "Реєстр угод про обробку даних (DPA)"
-
-msgid "Defect Description"
-msgstr "Опис дефекту"
-
-msgid "Delivery Time"
-msgstr "Час доставки"
-
-msgid "Delivery Times"
-msgstr "Часи доставки"
+#~ msgid "Strona polityki prywatności nie jest opublikowana."
+#~ msgstr "Сторінку політики конфіденційності не опубліковано."
 
 #, php-format
-msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
-msgstr "Виявлено %d попередньо позначених чекбоксів. Наглядові органи вважають це темним патерном."
-
-msgid "Detected external services processing your customers' personal data. Mark those for which you have a signed DPA."
-msgstr "Виявлено зовнішні сервіси, що обробляють персональні дані ваших клієнтів. Позначте ті, для яких ви маєте підписану DPA."
-
-msgid "Disabled"
-msgstr "Деактивований"
-
-msgid "Draft"
-msgstr "Чернетка"
-
-msgid "Edit"
-msgstr "Редагувати"
-
-msgid "Edit Allergen"
-msgstr "Редагувати алерген"
-
-msgid "Edit Delivery Time"
-msgstr "Редагувати час доставки"
-
-msgid "Edit Manufacturer"
-msgstr "Редагувати виробника"
-
-msgid "Edit Nutrient"
-msgstr "Редагувати поживну речовину"
-
-msgid "Edit Unit"
-msgstr "Редагувати одиницю"
-
-msgid "Enable"
-msgstr "Активувати"
-
-msgid "Environmental claims (anti-greenwashing)"
-msgstr "Екологічні твердження (анти-грінвошинг)"
-
-msgid "Failed to load product preview."
-msgstr "Не вдалося завантажити попередній перегляд продукту."
-
-msgid "Feature"
-msgstr "Функція"
-
-msgid "Feedback Logs"
-msgstr "Журнал відгуків"
-
-msgid "Food Information"
-msgstr "Інформація про харчування"
-
-msgid "GPSR module (product safety)"
-msgstr "Модуль GPSR (безпека продуктів)"
-
-msgid "GPSR module is disabled. Regulation (EU) 2023/988 requires providing manufacturer/importer data."
-msgstr "Модуль GPSR деактивований. Регламент (ЄС) 2023/988 вимагає надання даних виробника/імпортера."
-
-msgid "GPSR module is enabled - manufacturer and importer data can be displayed."
-msgstr "Модуль GPSR активований - дані виробника та імпортера можуть бути відображені."
-
-msgid "Go through the checklist below"
-msgstr "Перегляньте контрольний список нижче"
-
-msgid "Hosting (server)"
-msgstr "Хостинг (сервер)"
-
-msgid "If you no longer wish to receive these messages, simply ignore this email."
-msgstr "Якщо ви більше не бажаєте отримувати ці повідомлення, просто ігноруйте цей лист."
-
-msgid "Inactive"
-msgstr "Неактивний"
-
-msgid "Incident module is enabled and security contact is set. The registry is currently empty."
-msgstr "Модуль інцидентів активований і контакт безпеки встановлений. Реєстр наразі порожній."
-
-msgid "Incident module is enabled, but no security contact email is set."
-msgstr "Модуль інцидентів активований, але e-mail контакту безпеки не встановлений."
-
-msgid "Issues"
-msgstr "Проблеми"
-
-msgid "KSeF-ready module is disabled. B2B shops might need automatic marking of orders requiring e-invoices."
-msgstr "Модуль KSeF деактивований. B2B магазини можуть потребувати автоматичного маркування замовлень для e-рахунків."
-
-msgid "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice integration."
-msgstr "Модуль KSeF активований - замовлення з ІПН можуть бути позначені для інтеграції рахунків."
-
-msgid "Legal checkboxes (GDPR)"
-msgstr "Правові чекбокси (GDPR)"
-
-msgid "Legal checkboxes module is disabled. The shop might not collect required GDPR consents."
-msgstr "Модуль правових чекбоксів деактивований. Магазин може не збирати необхідні згоди GDPR."
-
-msgid "Legal checkboxes module is enabled."
-msgstr "Модуль правових чекбоксів активований."
-
-msgid "Legal pages (Terms, Privacy Policy)"
-msgstr "Правові сторінки (Умови, Політика конфіденційності)"
-
-msgid "Loading product..."
-msgstr "Завантаження продукту..."
-
-msgid "Log in to use product comparison."
-msgstr "Увійдіть, щоб використовувати порівняння продуктів."
-
-msgid "Login to join the waitlist."
-msgstr "Увійдіть, щоб приєднатися до списку очікування."
-
-msgid "Lowest Price (Omnibus)"
-msgstr "Найнижча ціна (Omnibus)"
-
-msgid "Manufacturers"
-msgstr "Виробники"
+#~ msgid "Polityka prywatności ma tylko %d znaków - może być zbyt krótka, aby spełnić wymogi RODO Art. 13."
+#~ msgstr "Політика конфіденційності має лише %d символів — може бути занадто короткою для відповідності вимогам GDPR ст. 13."
 
 #, php-format
-msgid "Missing data: %s. Fill in Polski > Settings."
-msgstr "Відсутні дані: %s. Заповніть у Polski > Налаштування."
+#~ msgid "Polityka prywatności zawiera %d znaków."
+#~ msgstr "Політика конфіденційності містить %d символів."
+
+#~ msgid "Dane identyfikacyjne firmy"
+#~ msgstr "Ідентифікаційні дані компанії"
+
+#~ msgid "nazwa firmy"
+#~ msgstr "назва компанії"
+
+#~ msgid "adres"
+#~ msgstr "адреса"
+
+#~ msgid "email kontaktowy"
+#~ msgstr "контактний email"
+
+#~ msgid "Wszystkie podstawowe dane firmy są uzupełnione."
+#~ msgstr "Усі базові дані компанії заповнені."
 
 #, php-format
-msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
-msgstr "Відсутні сторінки: %s. Налаштуйте їх у WooCommerce > Налаштування > Розширені."
+#~ msgid "Brakujące dane: %s. Uzupełnij w Polski > Ustawienia."
+#~ msgstr "Відсутні дані: %s. Заповніть у Polski > Налаштування."
 
-msgid "Module disabled"
-msgstr "Модуль деактивований"
+#~ msgid "Pre-zaznaczone checkboxy (dark pattern)"
+#~ msgstr "Попередньо позначені чекбокси (dark pattern)"
 
-msgid "Modules"
-msgstr "Модулі"
-
-msgid "Modules saved."
-msgstr "Модулі збережено."
-
-msgid "Next steps"
-msgstr "Наступні кроки"
-
-msgid "No checkboxes are checked by default."
-msgstr "Жодні чекбокси не позначені за замовчуванням."
-
-msgid "No internal feedback to display."
-msgstr "Немає внутрішніх відгуків для відображення."
-
-msgid "Not created"
-msgstr "Не створено"
-
-msgid "Nutrients"
-msgstr "Поживні речовини"
-
-msgid "Nutritional Information"
-msgstr "Інформація про харчову цінність"
-
-msgid "Omnibus Directive"
-msgstr "Директива Omnibus"
-
-msgid "Omnibus module (lowest price)"
-msgstr "Модуль Omnibus (найнижча ціна)"
-
-msgid "Omnibus module is disabled. Omnibus Directive requires showing lowest price from 30 days on sales."
-msgstr "Модуль Omnibus деактивований. Директива Omnibus вимагає показу найнижчої ціни за 30 днів при знижках."
-
-msgid "Omnibus module is enabled - lowest price from 30 days will be shown on sales."
-msgstr "Модуль Omnibus активований - найнижча ціна за 30 днів буде показана при знижках."
-
-msgid "On Sale"
-msgstr "Зі знижкою"
+#~ msgid "Żadne checkboxy nie są domyślnie zaznaczone."
+#~ msgstr "Жодні чекбокси не позначені за замовчуванням."
 
 #, php-format
-msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
-msgstr "Лише %1$d з %2$d відстежуваних сервісів мають позначену угоду про обробку даних."
+#~ msgid "Wykryto %d pre-zaznaczonych checkboxów. UOKiK uznaje to za ciemny wzorzec."
+#~ msgstr "Виявлено %d попередньо позначених чекбоксів. UOKiK вважає це темним патерном."
 
-msgid "Open &rarr;"
-msgstr "Відкрити &rarr;"
-
-msgid "Open Report"
-msgstr "Відкрити звіт"
-
-msgid "Optional: manually set ID for related/upsell sources outside product details page."
-msgstr "Необов'язково: вручну встановити ID для пов'язаних/upsell джерел поза сторінкою продукту."
-
-msgid "Order button text"
-msgstr "Текст кнопки замовлення"
-
-msgid "Page"
-msgstr "Сторінка"
-
-msgid "Passed"
-msgstr "Пройдено"
-
-msgid "Payments"
-msgstr "Платежі"
-
-msgid "Person"
-msgstr "Особа"
-
-msgid "Please complete the Shop Terms and Conditions."
-msgstr "Заповніть умови та правила магазину."
-
-msgid "Please complete the complaints procedure."
-msgstr "Заповніть процедуру рекламації."
-
-msgid "Please fill in your Privacy Policy."
-msgstr "Заповніть політику конфіденційності."
-
-msgid "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to withdraw."
-msgstr "Заповніть політику повернення та відмови. Споживачі мають 14 днів на відмову."
-
-msgid "Please login to use the wishlist."
-msgstr "Увійдіть, щоб використовувати список бажань."
-
-msgid "Power Supply"
-msgstr "Живлення"
-
-msgid "Pre-checked checkboxes (dark pattern)"
-msgstr "Попередньо позначені чекбокси (темний патерн)"
-
-msgid "Prices exclude VAT (net)"
-msgstr "Ціни без ПДВ (нетто)"
-
-msgid "Prices include VAT (gross)"
-msgstr "Ціни з ПДВ (брутто)"
+#~ msgid "Tekst przycisku zamówienia"
+#~ msgstr "Текст кнопки замовлення"
 
 #, php-format
-msgid "Privacy Policy contains %d characters."
-msgstr "Політика конфіденційності містить %d символів."
+#~ msgid "Przycisk: \"%s\" - zawiera informacje o obowiązku zapłaty."
+#~ msgstr "Кнопка: \"%s\" — містить інформацію про зобов'язання оплати."
 
-msgid "Privacy Policy content"
-msgstr "Зміст політики конфіденційності"
-
-#, php-format
-msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
-msgstr "Політика конфіденційності містить лише %d символів - може бути занадто коротка для відповідності ст. 13 GDPR."
-
-msgid "Privacy Policy page is not published."
-msgstr "Сторінка політики конфіденційності не опублікована."
-
-msgid "Privacy Policy page is not set."
-msgstr "Сторінка політики конфіденційності не встановлена."
-
-msgid "Product ID"
-msgstr "ID продукту"
-
-msgid "Product Quick View"
-msgstr "Швидкий перегляд продукту"
-
-msgid "Product Slider"
-msgstr "Слайдер продуктів"
-
-msgid "Product back in stock - {product_name}"
-msgstr "Продукт знову в наявності - {product_name}"
-
-msgid "Product count"
-msgstr "Кількість продуктів"
-
-msgid "Product not found."
-msgstr "Продукт не знайдено."
-
-msgid "Product {product_name} is back in stock."
-msgstr "Продукт {product_name} знову в наявності."
-
-msgid "Provide a valid email address."
-msgstr "Вкажіть дійсну адресу e-mail."
-
-msgid "Published"
-msgstr "Опубліковано"
-
-msgid "Rejected"
-msgstr "Відхилено"
-
-msgid "Related products"
-msgstr "Пов'язані продукти"
-
-msgid "Remove from Wishlist"
-msgstr "Видалити зі списку бажань"
-
-msgid "Remove from compare"
-msgstr "Видалити з порівняння"
-
-msgid "Reports & Tools"
-msgstr "Звіти та інструменти"
-
-msgid "Result limit"
-msgstr "Ліміт результатів"
-
-msgid "Return Policy"
-msgstr "Політика повернення"
-
-msgid "Returns and Complaints"
-msgstr "Повернення та рекламації"
-
-msgid "Right of Withdrawal"
-msgstr "Право на відмову від договору"
-
-msgid "SSL/TLS encryption"
-msgstr "Шифрування SSL/TLS"
-
-msgid "Safety Document"
-msgstr "Документ безпеки"
-
-msgid "Safety Documents"
-msgstr "Документи безпеки"
-
-msgid "Safety Instructions"
-msgstr "Інструкції з безпеки"
-
-msgid "Save Registry"
-msgstr "Зберегти реєстр"
-
-msgid "Save Settings"
-msgstr "Зберегти налаштування"
-
-msgid "Screen"
-msgstr "Екран"
-
-msgid "Search Allergens"
-msgstr "Шукати алергени"
-
-msgid "Search Delivery Times"
-msgstr "Шукати часи доставки"
-
-msgid "Search Manufacturers"
-msgstr "Шукати виробників"
-
-msgid "Search Nutrients"
-msgstr "Шукати поживні речовини"
-
-msgid "Search Units"
-msgstr "Шукати одиниці"
-
-msgid "Security incident module is disabled. It is good practice to maintain a simple incident registry for compliance."
-msgstr "Модуль інцидентів безпеки деактивований. Добра практика вести простий реєстр інцидентів."
-
-msgid "Security incident registry"
-msgstr "Реєстр інцидентів безпеки"
-
-msgid "Select a report or tool to check your store compliance status."
-msgstr "Виберіть звіт або інструмент для перевірки стану відповідності вашого магазину."
-
-msgid "Service"
-msgstr "Сервіс"
-
-msgid "Settings have been saved."
-msgstr "Налаштування збережено."
-
-msgid "Shipping"
-msgstr "Доставка"
-
-msgid "Shipping and Payment"
-msgstr "Доставка та оплата"
-
-msgid "Shop compliance audit"
-msgstr "Аудит відповідності магазину"
-
-msgid "Short description"
-msgstr "Короткий опис"
-
-msgid "Show add to cart button"
-msgstr "Показати кнопку додавання до кошика"
-
-msgid "Show attributes"
-msgstr "Показати атрибути"
-
-msgid "Show availability"
-msgstr "Показати наявність"
-
-msgid "Show brands"
-msgstr "Показати бренди"
-
-msgid "Show categories"
-msgstr "Показати категорії"
-
-msgid "Show on-sale"
-msgstr "Показати зі знижкою"
-
-msgid "Show only differences"
-msgstr "Показати лише відмінності"
-
-msgid "Show title"
-msgstr "Показати заголовок"
-
-msgid "Sorry, but you do not have permission to access this page."
-msgstr "У вас немає дозволу для доступу до цієї сторінки."
-
-msgid "Store Analysis"
-msgstr "Аналіз магазину"
-
-msgid "Tax Information"
-msgstr "Податкова інформація"
-
-msgid "Terms"
-msgstr "Умови"
-
-msgid "Terms and Privacy Policy pages are set and published."
-msgstr "Сторінки умов та політики конфіденційності встановлені та опубліковані."
+#~ msgid "Tekst przycisku nie jest skonfigurowany. Ustawienie domyślne WooCommerce może nie zawierać wymaganej informacji o płatności."
+#~ msgstr "Текст кнопки не налаштовано. Типове налаштування WooCommerce може не містити необхідної інформації про оплату."
 
 #, php-format
-msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
-msgstr "Протестуйте процес замовлення - додайте продукт до кошика та перевірте чекбокси і текст кнопки на <a href=\"%s\">сторінці оформлення</a>."
+#~ msgid "Przycisk: \"%s\" - może nie zawierać wymaganej informacji o obowiązku zapłaty (np. \"Zamawiam z obowiązkiem zapłaty\")."
+#~ msgstr "Кнопка: \"%s\" — може не містити необхідної інформації про зобов'язання оплати (напр., \"Замовляю з зобов'язанням оплати\")."
 
-msgid "Thank you. You have been added to the waitlist."
-msgstr "Дякуємо. Вас додано до списку очікування."
+#~ msgid "Moduł Omnibus (najniższa cena)"
+#~ msgstr "Модуль Omnibus (найнижча ціна)"
 
-msgid "The incident registry is active and has no open cases."
-msgstr "Реєстр інцидентів активний і не має відкритих справ."
+#~ msgid "Moduł Omnibus jest włączony - najniższa cena z 30 dni będzie wyświetlana przy promocjach."
+#~ msgstr "Модуль Omnibus увімкнено — найнижча ціна за 30 днів буде відображатися при акціях."
 
-msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
-msgstr "Сайт не використовує HTTPS. GDPR вимагає відповідних технічних заходів - SSL є мінімумом."
+#~ msgid "Moduł Omnibus jest wyłączony. Dyrektywa Omnibus wymaga wyświetlania najniższej ceny z 30 dni przy promocjach."
+#~ msgstr "Модуль Omnibus вимкнено. Директива Omnibus вимагає відображення найнижчої ціни за 30 днів при акціях."
 
-msgid "The site is served over HTTPS."
-msgstr "Сайт обслуговується через HTTPS."
+#~ msgid "Checkboxy prawne (RODO)"
+#~ msgstr "Правові чекбокси (GDPR)"
+
+#~ msgid "Moduł checkboxów prawnych jest włączony."
+#~ msgstr "Модуль правових чекбоксів увімкнено."
+
+#~ msgid "Moduł checkboxów prawnych jest wyłączony. Sklep może nie zbierać wymaganych zgód RODO."
+#~ msgstr "Модуль правових чекбоксів вимкнено. Магазин може не збирати необхідних згод GDPR."
+
+#~ msgid "Moduł prawa odstąpienia jest włączony."
+#~ msgstr "Модуль права на відмову увімкнено."
+
+#~ msgid "Moduł prawa odstąpienia jest wyłączony. Konsumenci mają 14-dniowe prawo odstąpienia od umowy."
+#~ msgstr "Модуль права на відмову вимкнено. Споживачі мають 14-денне право на відмову від договору."
+
+#~ msgid "Moduł GPSR (bezpieczeństwo produktów)"
+#~ msgstr "Модуль GPSR (безпека товарів)"
+
+#~ msgid "Moduł GPSR jest włączony - dane producenta i importera mogą być wyświetlane."
+#~ msgstr "Модуль GPSR увімкнено — дані виробника та імпортера можуть відображатися."
+
+#~ msgid "Moduł GPSR jest wyłączony. Rozporządzenie (UE) 2023/988 wymaga podania danych producenta/importera."
+#~ msgstr "Модуль GPSR вимкнено. Регламент (ЄС) 2023/988 вимагає надання даних виробника/імпортера."
+
+#~ msgid "Zweryfikowane opinie"
+#~ msgstr "Верифіковані відгуки"
+
+#~ msgid "Moduł zweryfikowanych opinii jest włączony - sklep może oznaczać recenzje od realnych kupujących."
+#~ msgstr "Модуль верифікованих відгуків увімкнено — магазин може позначати рецензії від реальних покупців."
+
+#~ msgid "Moduł zweryfikowanych opinii jest wyłączony. To utrudnia odróżnienie opinii od realnych klientów."
+#~ msgstr "Модуль верифікованих відгуків вимкнено. Це ускладнює розрізнення відгуків від реальних клієнтів."
+
+#~ msgid "DSA - zgłaszanie nielegalnych treści"
+#~ msgstr "DSA — повідомлення про незаконний контент"
+
+#~ msgid "Moduł DSA jest włączony - formularz zgłoszeń i panel raportów są dostępne."
+#~ msgstr "Модуль DSA увімкнено — форма повідомлень та панель звітів доступні."
+
+#~ msgid "Moduł DSA jest wyłączony. Marketplace lub sklep z treściami sponsorowanymi powinien mieć procedurę notice-and-action."
+#~ msgstr "Модуль DSA вимкнено. Маркетплейс або магазин зі спонсорським контентом повинен мати процедуру notice-and-action."
+
+#~ msgid "Moduł KSeF-ready jest włączony — zamówienia z NIP mogą być oznaczane i przekazywane do integracji fakturowych."
+#~ msgstr "Модуль KSeF-ready увімкнено — замовлення з NIP можуть позначатися та передаватися до інтеграцій виставлення рахунків."
+
+#~ msgid "Moduł KSeF-ready jest wyłączony. Sklep B2B może potrzebować automatycznego oznaczania zamówień wymagających e-faktury."
+#~ msgstr "Модуль KSeF-ready вимкнено. Магазин B2B може потребувати автоматичного позначення замовлень, що потребують е-фактури."
+
+#~ msgid "Twierdzenia ekologiczne (anti-greenwashing)"
+#~ msgstr "Екологічні заяви (anti-greenwashing)"
+
+#~ msgid "Moduł anti-greenwashing jest włączony — produkty mogą przechowywać podstawę twierdzeń ekologicznych i linki do certyfikatów."
+#~ msgstr "Модуль anti-greenwashing увімкнено — товари можуть зберігати підставу екологічних заяв та посилання на сертифікати."
+
+#~ msgid "Moduł anti-greenwashing jest wyłączony. Przy deklaracjach ekologicznych warto przechowywać źródło i podstawę twierdzeń."
+#~ msgstr "Модуль anti-greenwashing вимкнено. При екологічних деклараціях варто зберігати джерело та підставу заяв."
+
+#~ msgid "Rejestr DPA (umowy powierzenia)"
+#~ msgstr "Реєстр DPA (договори доручення)"
+
+#~ msgid "Moduł rejestru DPA jest wyłączony. Przy hostingu, płatnościach i narzędziach zewnętrznych warto monitorować status umów powierzenia."
+#~ msgstr "Модуль реєстру DPA вимкнено. При хостингу, платежах та зовнішніх інструментах варто моніторити статус договорів доручення."
+
+#~ msgid "Moduł DPA jest włączony, ale rejestr jest pusty. Oznacz przynajmniej hosting, płatności i inne usługi przetwarzające dane."
+#~ msgstr "Модуль DPA увімкнено, але реєстр порожній. Позначте принаймні хостинг, платежі та інші сервіси, що обробляють дані."
+
+#~ msgid "Rejestr DPA nie ma oznaczonej żadnej aktywnej umowy powierzenia."
+#~ msgstr "Реєстр DPA не має позначеного жодного активного договору доручення."
 
 #, php-format
-msgid "There are %d open security incidents requiring further action in the registry."
-msgstr "У реєстрі є %d відкритих інцидентів безпеки, що потребують подальших дій."
+#~ msgid "Tylko %1$d z %2$d wykrytych usług ma oznaczoną umowę powierzenia."
+#~ msgstr "Лише %1$d з %2$d виявлених сервісів має позначений договір доручення."
 
-msgid "Unit Price"
-msgstr "Ціна за одиницю"
+#, php-format
+#~ msgid "Rejestr DPA obejmuje %d usług i wszystkie mają oznaczony status umowy powierzenia."
+#~ msgstr "Реєстр DPA охоплює %d сервісів і всі мають позначений статус договору доручення."
 
-msgid "Units"
-msgstr "Одиниці"
+#~ msgid "Rejestr incydentów bezpieczeństwa"
+#~ msgstr "Реєстр інцидентів безпеки"
 
-msgid "Upsells"
-msgstr "Рекомендовані продукти"
+#~ msgid "Moduł incydentów bezpieczeństwa jest wyłączony. Warto utrzymywać prosty rejestr incydentów pod CRA i wewnętrzne audyty."
+#~ msgstr "Модуль інцидентів безпеки вимкнено. Варто вести простий реєстр інцидентів для CRA та внутрішніх аудитів."
 
-msgid "VAT ID (NIP)"
-msgstr "ІПН (NIP)"
+#~ msgid "Moduł incydentów jest włączony, ale nie ma ustawionego adresu kontaktowego security."
+#~ msgstr "Модуль інцидентів увімкнено, але не налаштовано контактну адресу безпеки."
 
-msgid "Verified reviews"
-msgstr "Підтверджені відгуки"
+#~ msgid "Moduł incydentów jest włączony i ma ustawiony kontakt security. Rejestr jest obecnie pusty."
+#~ msgstr "Модуль інцидентів увімкнено та має налаштований контакт безпеки. Реєстр наразі порожній."
 
-msgid "Verified reviews module is disabled. It makes it harder to distinguish reviews from actual customers."
-msgstr "Модуль підтверджених відгуків деактивований. Це ускладнює розрізнення відгуків від реальних клієнтів."
+#, php-format
+#~ msgid "W rejestrze są %d otwarte incydenty bezpieczeństwa wymagające dalszej obsługi."
+#~ msgstr "У реєстрі є %d відкритих інцидентів безпеки, що потребують подальшого опрацювання."
 
-msgid "Verified reviews module is enabled - the shop can mark reviews from actual buyers."
-msgstr "Модуль підтверджених відгуків активований - магазин може позначати відгуки від реальних покупців."
+#~ msgid "Rejestr incydentów jest aktywny i nie ma otwartych spraw."
+#~ msgstr "Реєстр інцидентів активний і не має відкритих справ."
 
-msgid "Waitlist is unavailable for this product."
-msgstr "Список очікування недоступний для цього продукту."
+#~ msgid "Szyfrowanie SSL/TLS"
+#~ msgstr "Шифрування SSL/TLS"
 
-msgid "Warnings"
-msgstr "Попередження"
+#~ msgid "Strona jest serwowana przez HTTPS."
+#~ msgstr "Сайт обслуговується через HTTPS."
 
-msgid "Watch product in use"
-msgstr "Переглянути продукт у використанні"
-
-msgid "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
-msgstr "Модуль відмови деактивований. Споживачі мають 14-денне право на відмову від договору."
-
-msgid "Withdrawal module is enabled."
-msgstr "Модуль відмови активований."
-
-msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
-msgstr "Ви можете порівняти до {limit} продуктів одночасно. Найстаріший запис було автоматично замінено."
-
-msgid "You cannot clear the comparison."
-msgstr "Не вдається очистити порівняння."
-
-msgid "You must accept the consent for email contact."
-msgstr "Ви повинні прийняти згоду на e-mail контакт."
-
-msgid "required"
-msgstr "обов'язково"
+#~ msgid "Strona nie używa HTTPS. RODO wymaga odpowiednich środków technicznych ochrony danych - SSL jest minimum."
+#~ msgstr "Сайт не використовує HTTPS. GDPR вимагає відповідних технічних засобів захисту даних — SSL є мінімумом."
