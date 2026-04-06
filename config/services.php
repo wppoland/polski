@@ -32,8 +32,23 @@ use Polski\Service\ProductSliderService;
 use Polski\Service\WaitlistService;
 use Polski\Service\MinimumOrderService;
 use Polski\Service\ReviewRequestService;
+use Polski\Service\AutoRestoreStockService;
+use Polski\Service\AjaxAddToCartService;
+use Polski\Service\CustomCheckoutFieldsService;
+use Polski\Service\DataLayerService;
+use Polski\Service\StockExportService;
+use Polski\Service\ExpertReviewService;
+use Polski\Service\SocialLoginService;
+use Polski\Service\ProductAuthorService;
+use Polski\Service\OrderExportService;
+use Polski\Service\FaqService;
+use Polski\Service\SocialProofService;
+use Polski\Service\ProductQAService;
+use Polski\Service\PriceHistoryChartService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
+use Polski\Service\TrustBadgeService;
+use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
 use Polski\Shortcode\ShortcodeManager;
 use Polski\Service\PriceDisplayService;
@@ -155,6 +170,21 @@ return static function (Container $c): void {
     ));
     $c->singleton(MinimumOrderService::class, static fn () => new MinimumOrderService());
     $c->singleton(ReviewRequestService::class, static fn () => new ReviewRequestService());
+    $c->singleton(AutoRestoreStockService::class, static fn () => new AutoRestoreStockService());
+    $c->singleton(AjaxAddToCartService::class, static fn () => new AjaxAddToCartService());
+    $c->singleton(CustomCheckoutFieldsService::class, static fn () => new CustomCheckoutFieldsService());
+    $c->singleton(DataLayerService::class, static fn () => new DataLayerService());
+    $c->singleton(StockExportService::class, static fn () => new StockExportService());
+    $c->singleton(ExpertReviewService::class, static fn () => new ExpertReviewService());
+    $c->singleton(SocialLoginService::class, static fn () => new SocialLoginService());
+    $c->singleton(ProductAuthorService::class, static fn () => new ProductAuthorService());
+    $c->singleton(OrderExportService::class, static fn () => new OrderExportService());
+    $c->singleton(FaqService::class, static fn () => new FaqService());
+    $c->singleton(SocialProofService::class, static fn () => new SocialProofService());
+    $c->singleton(ProductQAService::class, static fn () => new ProductQAService());
+    $c->singleton(PriceHistoryChartService::class, static fn () => new PriceHistoryChartService(
+        $c->get(OmnibusPriceRepository::class),
+    ));
     $c->singleton(WaitlistService::class, static fn () => new WaitlistService(
         $c->get(WaitlistRepository::class),
         $c->get(TemplateLoader::class),
@@ -165,6 +195,8 @@ return static function (Container $c): void {
     $c->singleton(PopupService::class, static fn () => new PopupService(
         $c->get(TemplateLoader::class),
     ));
+    $c->singleton(TrustBadgeService::class, static fn () => new TrustBadgeService());
+    $c->singleton(LiveCartService::class, static fn () => new LiveCartService());
     $c->singleton(SearchService::class, static fn () => new SearchService(
         $c->get(TemplateLoader::class),
     ));

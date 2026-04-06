@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.4.0\n"
+"Project-Id-Version: Polski for WooCommerce 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-06T12:41:29+00:00\n"
+"POT-Creation-Date: 2026-04-06T14:20:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -111,8 +111,10 @@ msgstr ""
 #: src/Admin/AdminPage.php:767
 #: src/Admin/ModulesPage.php:239
 #: src/Service/DSAService.php:161
+#: src/Service/OrderExportService.php:48
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
+#: src/Service/StockExportService.php:317
 #: src/Service/WithdrawalService.php:402
 msgid "Status"
 msgstr ""
@@ -545,6 +547,7 @@ msgstr ""
 
 #: config/defaults.php:220
 #: src/Admin/ModulesPage.php:956
+#: src/Service/CustomCheckoutFieldsService.php:420
 msgid "Email"
 msgstr ""
 
@@ -725,6 +728,8 @@ msgstr ""
 #: config/defaults.php:428
 #: src/Service/CompareService.php:408
 #: src/Service/SearchService.php:81
+#: src/Service/StockExportService.php:45
+#: src/Service/StockExportService.php:313
 #: templates/quick-view/content.php:55
 msgid "SKU"
 msgstr ""
@@ -1276,7 +1281,7 @@ msgid "Launch setup wizard"
 msgstr ""
 
 #: src/Admin/AdminPage.php:56
-#: src/Admin/ModulesPage.php:1102
+#: src/Admin/ModulesPage.php:1228
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
@@ -1522,6 +1527,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:631
 #: src/Admin/DeactivationHandler.php:152
+#: src/Service/CustomCheckoutFieldsService.php:421
 #: src/Service/DSAService.php:157
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
@@ -1862,6 +1868,7 @@ msgid "Post new ideas on GitHub"
 msgstr ""
 
 #: src/Admin/DeactivationHandler.php:98
+#: src/Service/CustomCheckoutFieldsService.php:611
 msgid "Unauthorized"
 msgstr ""
 
@@ -2400,6 +2407,7 @@ msgid "Product column"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:227
+#: src/Service/ExpertReviewService.php:82
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
 msgid "Product"
@@ -2442,9 +2450,7 @@ msgid "Reason for withdrawal (optional)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:232
-#: build/blocks/ajax-search/index.js:212
 #: resources/js/blocks/ajax-search/index.js:39
-#: build/blocks/ajax-search/index.js:100
 msgid "Submit button text"
 msgstr ""
 
@@ -3044,16 +3050,12 @@ msgid "Sales and B2B"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:401
-#: build/blocks/ajax-search/index.js:218
 #: resources/js/blocks/ajax-search/index.js:45
-#: build/blocks/ajax-search/index.js:106
 msgid "Minimum characters"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:402
-#: build/blocks/ajax-search/index.js:226
 #: resources/js/blocks/ajax-search/index.js:52
-#: build/blocks/ajax-search/index.js:113
 msgid "Results limit"
 msgstr ""
 
@@ -3105,9 +3107,7 @@ msgid "Search products"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:413
-#: build/blocks/ajax-search/index.js:200
 #: resources/js/blocks/ajax-search/index.js:28
-#: build/blocks/ajax-search/index.js:89
 msgid "Results label"
 msgstr ""
 
@@ -3123,9 +3123,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:415
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
-#: build/blocks/ajax-search/index.js:188
 #: resources/js/blocks/ajax-search/index.js:18
-#: build/blocks/ajax-search/index.js:79
 msgid "Placeholder"
 msgstr ""
 
@@ -3193,6 +3191,7 @@ msgid "Show on product listings"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:434
+#: src/Service/CustomCheckoutFieldsService.php:445
 msgid "Label"
 msgstr ""
 
@@ -3564,12 +3563,8 @@ msgstr ""
 #: src/Admin/ModulesPage.php:573
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
-#: build/blocks/ajax-filters/index.js:212
-#: build/blocks/product-slider/index.js:235
 #: resources/js/blocks/ajax-filters/index.js:38
 #: resources/js/blocks/product-slider/index.js:53
-#: build/blocks/ajax-filters/index.js:99
-#: build/blocks/product-slider/index.js:114
 msgid "Show price"
 msgstr ""
 
@@ -4052,6 +4047,7 @@ msgid "Shop and archives"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:1098
 msgid "Checkout"
 msgstr ""
 
@@ -4199,6 +4195,8 @@ msgstr ""
 #: src/Admin/ModulesPage.php:905
 #: src/Admin/ModulesPage.php:917
 #: src/Admin/ModulesPage.php:930
+#: src/Admin/ModulesPage.php:1022
+#: src/Admin/ModulesPage.php:1074
 msgid "Tools"
 msgstr ""
 
@@ -4326,63 +4324,234 @@ msgstr ""
 msgid "Token: {price}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1030
+#: src/Admin/ModulesPage.php:984
+msgid "Auto Restore Stock"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:985
+msgid "Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:986
+#: src/Admin/ModulesPage.php:996
+msgid "Stock & Cart"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:994
+msgid "AJAX Add to Cart"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:995
+msgid "Add products to cart without page reload, including variable products on single product pages. Shows a toast notification on success."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1006
+msgid "GA4 DataLayer / GTM"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1007
+msgid "Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, add_to_cart, begin_checkout, purchase events. Supports GTM container and gtag.js."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1008
+#: src/Service/DPATrackerService.php:157
+#: src/Service/DPATrackerService.php:161
+#: src/Service/DPATrackerService.php:173
+msgid "Analytics"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1013
+msgid "GTM Container ID"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1014
+msgid "GA4 Measurement ID"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1015
+msgid "Use SKU as product ID"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1020
+#: src/Service/StockExportService.php:33
+#: src/Service/StockExportService.php:34
+#: src/Service/StockExportService.php:58
+msgid "Stock Export"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1021
+msgid "Export WooCommerce product stock data as CSV. Configurable fields, stock threshold filters, variation support. Available under Products > Stock Export."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1026
+msgid "Export stock"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1032
+msgid "Social Login"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1033
+msgid "Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1034
+#: src/Admin/ModulesPage.php:1052
+#: src/Admin/ModulesPage.php:1062
+#: src/Admin/ModulesPage.php:1086
+msgid "Storefront"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1039
+msgid "Enable Google login"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1040
+msgid "Google Client ID"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1041
+msgid "Google Client Secret"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1042
+msgid "Enable Facebook login"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1043
+msgid "Facebook App ID"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1044
+msgid "Facebook App Secret"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1045
+msgid "Auto-register new users"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1050
+msgid "Product Authors"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1051
+msgid "Custom taxonomy for product authors/creators. Adds author names on product pages and archives with Schema.org Person markup. Ideal for bookstores and publishers."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1060
+#: src/Service/ExpertReviewService.php:45
+#: src/Service/ExpertReviewService.php:152
+msgid "Expert Reviews"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1061
+msgid "Custom post type for editorial product reviews. Link expert reviews to products with ratings (1-10), verdicts, and Schema.org markup for SEO."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1066
+msgid "Manage reviews"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1072
+#: src/Service/OrderExportService.php:32
+#: src/Service/OrderExportService.php:33
+#: src/Service/OrderExportService.php:84
+msgid "Order Export"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1073
+msgid "Export WooCommerce orders to CSV with configurable fields, date range and status filters. 30+ exportable fields including products, customer data, and coupons."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1078
+msgid "Export orders"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1084
+#: src/Service/FaqService.php:39
+#: src/Service/FaqService.php:40
+#: src/Service/FaqService.php:45
+msgid "FAQ"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1085
+msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1090
+msgid "Manage FAQ"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1096
+#: src/Service/CustomCheckoutFieldsService.php:431
+msgid "Custom Checkout Fields"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1097
+msgid "Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1102
+msgid "Manage fields"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1156
 msgid "Save modules"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1111
+#: src/Admin/ModulesPage.php:1237
 msgid "Configure &darr;"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1123
+#: src/Admin/ModulesPage.php:1249
 msgid "Coming Soon"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1217
+#: src/Admin/ModulesPage.php:1343
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1251
+#: src/Admin/ModulesPage.php:1377
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1439
+#: src/Admin/ModulesPage.php:1575
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1440
+#: src/Admin/ModulesPage.php:1576
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1451
+#: src/Admin/ModulesPage.php:1587
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1452
+#: src/Admin/ModulesPage.php:1588
 msgid "not installed"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1467
+#: src/Admin/ModulesPage.php:1603
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1469
+#: src/Admin/ModulesPage.php:1605
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1501
+#: src/Admin/ModulesPage.php:1637
 msgid "detected, integration active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1504
+#: src/Admin/ModulesPage.php:1640
 msgid "install"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1516
+#: src/Admin/ModulesPage.php:1652
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1518
+#: src/Admin/ModulesPage.php:1654
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr ""
 
@@ -4779,37 +4948,25 @@ msgstr ""
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 #: src/Service/SecurityIncidentService.php:116
 #: src/Service/SecurityIncidentService.php:147
-#: build/blocks/ajax-filters/index.js:188
-#: build/blocks/product-slider/index.js:188
 #: resources/js/blocks/ajax-filters/index.js:18
 #: resources/js/blocks/product-slider/index.js:18
-#: build/blocks/ajax-filters/index.js:79
-#: build/blocks/product-slider/index.js:79
 msgid "Title"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
-#: build/blocks/ajax-filters/index.js:194
-#: build/blocks/product-slider/index.js:229
 #: resources/js/blocks/ajax-filters/index.js:23
 #: resources/js/blocks/product-slider/index.js:48
-#: build/blocks/ajax-filters/index.js:84
-#: build/blocks/product-slider/index.js:109
 msgid "Show title"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
-#: build/blocks/ajax-filters/index.js:200
 #: resources/js/blocks/ajax-filters/index.js:28
-#: build/blocks/ajax-filters/index.js:89
 msgid "Show categories"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
-#: build/blocks/ajax-filters/index.js:206
 #: resources/js/blocks/ajax-filters/index.js:33
-#: build/blocks/ajax-filters/index.js:94
 msgid "Show brands"
 msgstr ""
 
@@ -4822,9 +4979,7 @@ msgid "Show on-sale"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
-#: build/blocks/ajax-filters/index.js:230
 #: resources/js/blocks/ajax-filters/index.js:53
-#: build/blocks/ajax-filters/index.js:114
 msgid "Show attributes"
 msgstr ""
 
@@ -4850,9 +5005,7 @@ msgid "Product Slider"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:36
-#: build/blocks/product-slider/index.js:197
 #: resources/js/blocks/product-slider/index.js:26
-#: build/blocks/product-slider/index.js:87
 msgid "Related products"
 msgstr ""
 
@@ -4865,9 +5018,8 @@ msgid "On Sale"
 msgstr ""
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:44
-#: build/blocks/product-slider/index.js:213
+#: src/Service/StockExportService.php:44
 #: resources/js/blocks/product-slider/index.js:34
-#: build/blocks/product-slider/index.js:95
 msgid "Product ID"
 msgstr ""
 
@@ -5089,6 +5241,44 @@ msgstr ""
 msgid "Status change not allowed."
 msgstr ""
 
+#: src/Service/AjaxAddToCartService.php:54
+msgid "Added to cart!"
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:55
+msgid "View cart"
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:56
+msgid "Could not add to cart. Please try again."
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:104
+msgid "Invalid product."
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:110
+#: src/Service/CompareService.php:357
+#: src/Service/QuickViewService.php:117
+#: src/Service/WaitlistService.php:101
+#: src/Service/WishlistService.php:282
+msgid "Product not found."
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:128
+msgid "Validation failed."
+msgstr ""
+
+#: src/Service/AjaxAddToCartService.php:136
+msgid "Could not add to cart."
+msgstr ""
+
+#. translators: 1: product name, 2: old stock, 3: new stock
+#: src/Service/AutoRestoreStockService.php:82
+#, php-format
+msgid "Stock restored: %1$s (%2$d -> %3$d)"
+msgstr ""
+
 #: src/Service/BadgeService.php:105
 msgid "New"
 msgstr ""
@@ -5233,13 +5423,6 @@ msgstr ""
 msgid "Log in to use product comparison."
 msgstr ""
 
-#: src/Service/CompareService.php:357
-#: src/Service/QuickViewService.php:117
-#: src/Service/WaitlistService.php:101
-#: src/Service/WishlistService.php:282
-msgid "Product not found."
-msgstr ""
-
 #: src/Service/CompareService.php:362
 msgid "You cannot clear the comparison."
 msgstr ""
@@ -5262,6 +5445,113 @@ msgstr ""
 
 #: src/Service/CompareService.php:417
 msgid "Short description"
+msgstr ""
+
+#. translators: %s: field label
+#: src/Service/CustomCheckoutFieldsService.php:145
+#, php-format
+msgid "%s is a required field."
+msgstr ""
+
+#. translators: %s: field label
+#: src/Service/CustomCheckoutFieldsService.php:157
+#, php-format
+msgid "%s is not a valid email address."
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:303
+msgid "Additional information"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:402
+#: src/Service/CustomCheckoutFieldsService.php:403
+msgid "Checkout Fields"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:414
+msgid "Text"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:415
+msgid "Textarea"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:416
+msgid "Select"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:417
+msgid "Checkbox"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:418
+msgid "Radio"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:419
+msgid "Number"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:422
+msgid "Phone"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:426
+msgid "Billing"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:427
+#: src/Service/DPATrackerService.php:145
+#: src/Service/OrderExportService.php:52
+msgid "Shipping"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:428
+msgid "Order notes"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:434
+msgid "Fields saved."
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:443
+msgid "Enabled"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:444
+msgid "Name (meta key)"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:446
+#: src/Service/DPATrackerService.php:74
+#: src/Service/SecurityIncidentService.php:102
+#: src/Service/SecurityIncidentService.php:148
+#: src/Service/StockExportService.php:315
+msgid "Type"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:447
+msgid "Section"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:448
+msgid "Required"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:449
+msgid "Priority"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:450
+msgid "Actions"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:462
+msgid "Add field"
+msgstr ""
+
+#: src/Service/CustomCheckoutFieldsService.php:464
+msgid "Save fields"
 msgstr ""
 
 #: src/Service/DoubleOptInService.php:96
@@ -5288,12 +5578,6 @@ msgstr ""
 msgid "Service"
 msgstr ""
 
-#: src/Service/DPATrackerService.php:74
-#: src/Service/SecurityIncidentService.php:102
-#: src/Service/SecurityIncidentService.php:148
-msgid "Type"
-msgstr ""
-
 #: src/Service/DPATrackerService.php:75
 msgid "DPA"
 msgstr ""
@@ -5318,16 +5602,6 @@ msgstr ""
 
 #: src/Service/DPATrackerService.php:121
 msgid "Payments"
-msgstr ""
-
-#: src/Service/DPATrackerService.php:145
-msgid "Shipping"
-msgstr ""
-
-#: src/Service/DPATrackerService.php:157
-#: src/Service/DPATrackerService.php:161
-#: src/Service/DPATrackerService.php:173
-msgid "Analytics"
 msgstr ""
 
 #: src/Service/DPATrackerService.php:165
@@ -5381,6 +5655,83 @@ msgstr ""
 
 #: src/Service/DSAService.php:183
 msgid "Mark as resolved"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:46
+msgid "Expert Review"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:47
+msgid "Add review"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:48
+msgid "Add expert review"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:49
+msgid "Edit expert review"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:50
+msgid "Search expert reviews"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:65
+msgid "Review Details"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:84
+msgid "Select product..."
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:102
+msgid "Rating"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:109
+#: src/Service/ExpertReviewService.php:185
+msgid "Verdict"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:111
+msgid "e.g. Recommended, Best in class"
+msgstr ""
+
+#: src/Service/ExpertReviewService.php:165
+msgid "by"
+msgstr ""
+
+#: src/Service/FaqService.php:41
+msgid "Add question"
+msgstr ""
+
+#: src/Service/FaqService.php:42
+msgid "Add FAQ question"
+msgstr ""
+
+#: src/Service/FaqService.php:43
+msgid "Edit FAQ"
+msgstr ""
+
+#: src/Service/FaqService.php:44
+msgid "Search FAQ"
+msgstr ""
+
+#: src/Service/FaqService.php:61
+msgid "FAQ Categories"
+msgstr ""
+
+#: src/Service/FaqService.php:62
+msgid "FAQ Category"
+msgstr ""
+
+#: src/Service/FaqService.php:63
+msgid "Add FAQ category"
+msgstr ""
+
+#: src/Service/FaqService.php:64
+msgid "Search FAQ categories"
 msgstr ""
 
 #: src/Service/FeaturedVideoService.php:113
@@ -5455,8 +5806,181 @@ msgstr ""
 msgid "Lowest price from the last {days} days: {price}"
 msgstr ""
 
+#: src/Service/OrderExportService.php:45
+msgid "Order ID"
+msgstr ""
+
+#: src/Service/OrderExportService.php:46
+msgid "Order number"
+msgstr ""
+
+#: src/Service/OrderExportService.php:47
+msgid "Order date"
+msgstr ""
+
+#: src/Service/OrderExportService.php:49
+msgid "Total"
+msgstr ""
+
+#: src/Service/OrderExportService.php:50
+msgid "Subtotal"
+msgstr ""
+
+#: src/Service/OrderExportService.php:51
+msgid "Tax"
+msgstr ""
+
+#: src/Service/OrderExportService.php:53
+msgid "Discount"
+msgstr ""
+
+#: src/Service/OrderExportService.php:54
+msgid "Payment method"
+msgstr ""
+
+#: src/Service/OrderExportService.php:55
+msgid "Shipping method"
+msgstr ""
+
+#: src/Service/OrderExportService.php:56
+msgid "Billing first name"
+msgstr ""
+
+#: src/Service/OrderExportService.php:57
+msgid "Billing last name"
+msgstr ""
+
+#: src/Service/OrderExportService.php:58
+msgid "Billing email"
+msgstr ""
+
+#: src/Service/OrderExportService.php:59
+msgid "Billing phone"
+msgstr ""
+
+#: src/Service/OrderExportService.php:60
+msgid "Billing company"
+msgstr ""
+
+#: src/Service/OrderExportService.php:61
+msgid "Billing address"
+msgstr ""
+
+#: src/Service/OrderExportService.php:62
+msgid "Billing city"
+msgstr ""
+
+#: src/Service/OrderExportService.php:63
+msgid "Billing postcode"
+msgstr ""
+
+#: src/Service/OrderExportService.php:64
+msgid "Billing country"
+msgstr ""
+
+#: src/Service/OrderExportService.php:65
+msgid "Shipping first name"
+msgstr ""
+
+#: src/Service/OrderExportService.php:66
+msgid "Shipping last name"
+msgstr ""
+
+#: src/Service/OrderExportService.php:67
+msgid "Shipping address"
+msgstr ""
+
+#: src/Service/OrderExportService.php:68
+msgid "Shipping city"
+msgstr ""
+
+#: src/Service/OrderExportService.php:69
+msgid "Shipping postcode"
+msgstr ""
+
+#: src/Service/OrderExportService.php:70
+msgid "Shipping country"
+msgstr ""
+
+#: src/Service/OrderExportService.php:71
+msgid "Customer note"
+msgstr ""
+
+#: src/Service/OrderExportService.php:72
+msgid "Product names"
+msgstr ""
+
+#: src/Service/OrderExportService.php:73
+msgid "Product SKUs"
+msgstr ""
+
+#: src/Service/OrderExportService.php:74
+msgid "Product quantities"
+msgstr ""
+
+#: src/Service/OrderExportService.php:75
+msgid "Coupon codes"
+msgstr ""
+
+#: src/Service/OrderExportService.php:92
+msgid "Date range"
+msgstr ""
+
+#: src/Service/OrderExportService.php:94
+msgid "to"
+msgstr ""
+
+#: src/Service/OrderExportService.php:99
+msgid "Order statuses"
+msgstr ""
+
+#: src/Service/OrderExportService.php:109
+#: src/Service/StockExportService.php:66
+msgid "Export fields"
+msgstr ""
+
+#: src/Service/OrderExportService.php:124
+#: src/Service/SecurityIncidentService.php:138
+#: src/Service/StockExportService.php:101
+msgid "Export CSV"
+msgstr ""
+
 #: src/Service/PriceDisplayService.php:124
 msgid "from {price}"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:43
+#: src/Service/ProductAuthorService.php:51
+msgid "Authors"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:44
+#: src/Service/ProductAuthorService.php:91
+msgid "Author"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:45
+msgid "Search authors"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:46
+msgid "All authors"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:47
+msgid "Edit author"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:48
+msgid "Update author"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:49
+msgid "Add new author"
+msgstr ""
+
+#: src/Service/ProductAuthorService.php:50
+msgid "New author name"
 msgstr ""
 
 #: src/Service/ProductInfoService.php:183
@@ -5613,10 +6137,6 @@ msgstr ""
 #: src/Service/SecurityIncidentService.php:134
 #, php-format
 msgid "Currently open incidents: %d"
-msgstr ""
-
-#: src/Service/SecurityIncidentService.php:138
-msgid "Export CSV"
 msgstr ""
 
 #: src/Service/SecurityIncidentService.php:142
@@ -5944,6 +6464,148 @@ msgstr ""
 msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
 msgstr ""
 
+#: src/Service/SocialLoginService.php:77
+msgid "Continue with Google"
+msgstr ""
+
+#: src/Service/SocialLoginService.php:87
+msgid "Continue with Facebook"
+msgstr ""
+
+#: src/Service/SocialLoginService.php:99
+msgid "Or sign in with"
+msgstr ""
+
+#: src/Service/SocialLoginService.php:190
+msgid "Social login verification failed. Please try again."
+msgstr ""
+
+#: src/Service/SocialLoginService.php:199
+msgid "Could not authenticate with the social provider. Please try again."
+msgstr ""
+
+#: src/Service/SocialLoginService.php:208
+msgid "Could not retrieve your profile. Please ensure email access is granted."
+msgstr ""
+
+#: src/Service/SocialLoginService.php:217
+msgid "Could not create your account. Please try again."
+msgstr ""
+
+#: src/Service/StockExportService.php:46
+msgid "Product name"
+msgstr ""
+
+#: src/Service/StockExportService.php:47
+msgid "Product type"
+msgstr ""
+
+#: src/Service/StockExportService.php:48
+msgid "Stock quantity"
+msgstr ""
+
+#: src/Service/StockExportService.php:49
+msgid "Stock status"
+msgstr ""
+
+#: src/Service/StockExportService.php:50
+msgid "Regular price"
+msgstr ""
+
+#: src/Service/StockExportService.php:51
+msgid "Sale price"
+msgstr ""
+
+#: src/Service/StockExportService.php:52
+#: src/Service/StockExportService.php:320
+msgid "Categories"
+msgstr ""
+
+#: src/Service/StockExportService.php:53
+#: src/Service/StockExportService.php:321
+msgid "Weight"
+msgstr ""
+
+#: src/Service/StockExportService.php:80
+msgid "Products"
+msgstr ""
+
+#: src/Service/StockExportService.php:81
+msgid "Only products with managed stock"
+msgstr ""
+
+#: src/Service/StockExportService.php:85
+msgid "Stock filter"
+msgstr ""
+
+#: src/Service/StockExportService.php:86
+msgid "No filter"
+msgstr ""
+
+#: src/Service/StockExportService.php:87
+msgid "Stock <="
+msgstr ""
+
+#: src/Service/StockExportService.php:88
+msgid "Stock >="
+msgstr ""
+
+#: src/Service/StockExportService.php:89
+msgid "Stock ="
+msgstr ""
+
+#: src/Service/StockExportService.php:95
+msgid "Variations"
+msgstr ""
+
+#: src/Service/StockExportService.php:96
+msgid "Include product variations"
+msgstr ""
+
+#: src/Service/StockExportService.php:102
+msgid "Preview on screen"
+msgstr ""
+
+#: src/Service/StockExportService.php:247
+msgid "Stock Export Preview"
+msgstr ""
+
+#: src/Service/StockExportService.php:248
+msgid "Products found"
+msgstr ""
+
+#: src/Service/StockExportService.php:270
+msgid "Preview limited to 500 rows. Use CSV export for full data."
+msgstr ""
+
+#: src/Service/StockExportService.php:273
+msgid "Back to export"
+msgstr ""
+
+#: src/Service/StockExportService.php:292
+msgid "Not managed"
+msgstr ""
+
+#: src/Service/StockExportService.php:312
+msgid "ID"
+msgstr ""
+
+#: src/Service/StockExportService.php:314
+msgid "Name"
+msgstr ""
+
+#: src/Service/StockExportService.php:316
+msgid "Stock"
+msgstr ""
+
+#: src/Service/StockExportService.php:318
+msgid "Regular Price"
+msgstr ""
+
+#: src/Service/StockExportService.php:319
+msgid "Sale Price"
+msgstr ""
+
 #: src/Service/TabManagerService.php:76
 msgid "Shipping and Payment"
 msgstr ""
@@ -6088,9 +6750,7 @@ msgid "Cancel"
 msgstr ""
 
 #: templates/checkout/legal-checkboxes.php:51
-#: build/blocks/checkout-legal-checkboxes/index.js:100
 #: resources/js/blocks/checkout-legal-checkboxes/block.js:91
-#: build/blocks/checkout-legal-checkboxes/index.js:91
 msgid "required"
 msgstr ""
 
@@ -6217,175 +6877,125 @@ msgstr ""
 msgid "Bezpieczeństwo produktu (GPSR)"
 msgstr ""
 
-#: build/blocks/ajax-filters/index.js:186
 #: resources/js/blocks/ajax-filters/index.js:16
-#: build/blocks/ajax-filters/index.js:77
 msgid "Filter settings"
 msgstr ""
 
-#: build/blocks/ajax-filters/index.js:218
 #: resources/js/blocks/ajax-filters/index.js:43
-#: build/blocks/ajax-filters/index.js:104
 msgid "Show stock"
 msgstr ""
 
-#: build/blocks/ajax-filters/index.js:224
 #: resources/js/blocks/ajax-filters/index.js:48
-#: build/blocks/ajax-filters/index.js:109
 msgid "Show sale"
 msgstr ""
 
-#: build/blocks/ajax-filters/index.js:240
 #: resources/js/blocks/ajax-filters/index.js:60
-#: build/blocks/ajax-filters/index.js:121
 msgid "Polski AJAX Filters"
 msgstr ""
 
-#: build/blocks/ajax-filters/index.js:242
 #: resources/js/blocks/ajax-filters/index.js:61
-#: build/blocks/ajax-filters/index.js:122
 msgid "Dynamic product filters rendered on the frontend."
 msgstr ""
 
-#: build/blocks/ajax-search/index.js:186
 #: resources/js/blocks/ajax-search/index.js:16
-#: build/blocks/ajax-search/index.js:77
 msgid "Search settings"
 msgstr ""
 
-#: build/blocks/ajax-search/index.js:194
 #: resources/js/blocks/ajax-search/index.js:23
-#: build/blocks/ajax-search/index.js:84
 msgid "Search label"
 msgstr ""
 
-#: build/blocks/ajax-search/index.js:206
 #: resources/js/blocks/ajax-search/index.js:33
-#: build/blocks/ajax-search/index.js:94
 msgid "Show submit button"
 msgstr ""
 
-#: build/blocks/ajax-search/index.js:238
 #: resources/js/blocks/ajax-search/index.js:61
-#: build/blocks/ajax-search/index.js:122
 msgid "Polski AJAX Search"
 msgstr ""
 
-#: build/blocks/ajax-search/index.js:240
 #: resources/js/blocks/ajax-search/index.js:62
-#: build/blocks/ajax-search/index.js:123
 msgid "Dynamic product search form rendered on the frontend."
 msgstr ""
 
-#: build/blocks/checkout-legal-checkboxes/index.js:66
 #: resources/js/blocks/checkout-legal-checkboxes/block.js:53
-#: build/blocks/checkout-legal-checkboxes/index.js:53
 msgid "This field is required."
 msgstr ""
 
-#: build/blocks/product-slider/index.js:186
 #: resources/js/blocks/product-slider/index.js:16
-#: build/blocks/product-slider/index.js:77
 msgid "Slider settings"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:194
 #: resources/js/blocks/product-slider/index.js:23
-#: build/blocks/product-slider/index.js:84
 msgid "Source"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:200
 #: resources/js/blocks/product-slider/index.js:27
-#: build/blocks/product-slider/index.js:88
 msgid "Upsell products"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:203
 #: resources/js/blocks/product-slider/index.js:28
-#: build/blocks/product-slider/index.js:89
 msgid "Sale products"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:206
 #: resources/js/blocks/product-slider/index.js:29
-#: build/blocks/product-slider/index.js:90
 msgid "Featured products"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:216
 #: resources/js/blocks/product-slider/index.js:37
-#: build/blocks/product-slider/index.js:98
 msgid "Optional for related and upsell sliders outside product templates."
 msgstr ""
 
-#: build/blocks/product-slider/index.js:221
 #: resources/js/blocks/product-slider/index.js:41
-#: build/blocks/product-slider/index.js:102
 msgid "Product limit"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:241
 #: resources/js/blocks/product-slider/index.js:58
-#: build/blocks/product-slider/index.js:119
 msgid "Show add to cart"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:251
 #: resources/js/blocks/product-slider/index.js:65
-#: build/blocks/product-slider/index.js:126
 msgid "Polski Product Slider"
 msgstr ""
 
-#: build/blocks/product-slider/index.js:253
 #: resources/js/blocks/product-slider/index.js:66
-#: build/blocks/product-slider/index.js:127
 msgid "Dynamic merchandising slider rendered on the frontend."
 msgstr ""
 
-#: build/blocks/ajax-filters/block.json
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
 msgid "Polski AJAX Filters"
 msgstr ""
 
-#: build/blocks/ajax-filters/block.json
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block description"
 msgid "Dynamic WooCommerce product filters with archive-safe GET fallback."
 msgstr ""
 
-#: build/blocks/ajax-search/block.json
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block title"
 msgid "Polski AJAX Search"
 msgstr ""
 
-#: build/blocks/ajax-search/block.json
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block description"
 msgid "Dynamic AJAX product search form for WooCommerce storefronts."
 msgstr ""
 
-#: build/blocks/checkout-legal-checkboxes/block.json
 #: resources/js/blocks/checkout-legal-checkboxes/block.json
 msgctxt "block title"
 msgid "Legal Checkboxes"
 msgstr ""
 
-#: build/blocks/checkout-legal-checkboxes/block.json
 #: resources/js/blocks/checkout-legal-checkboxes/block.json
 msgctxt "block description"
 msgid "Polish legal compliance checkboxes for checkout."
 msgstr ""
 
-#: build/blocks/product-slider/block.json
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block title"
 msgid "Polski Product Slider"
 msgstr ""
 
-#: build/blocks/product-slider/block.json
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."

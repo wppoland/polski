@@ -52,8 +52,25 @@ final class MinimumOrderService implements HasHooks
         }
 
         $settings = $this->getSettings();
-        $minValue = (float) ($settings['min_value'] ?? 0);
-        $minQuantity = (int) ($settings['min_quantity'] ?? 0);
+
+        // Per-role override: check if current user's role has specific minimums.
+        $roleOverrides = $settings['role_overrides'] ?? [];
+        $currentRole = '';
+
+        if (is_user_logged_in()) {
+            $user = wp_get_current_user();
+            $currentRole = $user->roles[0] ?? '';
+        }
+
+        if (! empty($currentRole) && isset($roleOverrides[$currentRole])) {
+            $override = $roleOverrides[$currentRole];
+            $minValue = (float) ($override['min_value'] ?? 0);
+            $minQuantity = (int) ($override['min_quantity'] ?? 0);
+        } else {
+            $minValue = (float) ($settings['min_value'] ?? 0);
+            $minQuantity = (int) ($settings['min_quantity'] ?? 0);
+        }
+
         $excludeSale = (bool) ($settings['exclude_sale_items'] ?? false);
 
         // Check minimum value.
