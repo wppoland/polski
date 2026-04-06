@@ -933,6 +933,50 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [],
             ],
+            [
+                'id' => 'minimum_order',
+                'name' => __('Minimum Order Value / Quantity', 'polski'),
+                'description' => __('Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages.', 'polski'),
+                'group' => __('Checkout and Orders', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-lock',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_minimum_order|min_value', 'label' => __('Minimum order value (0 = disabled)', 'polski'), 'type' => 'number', 'default' => 0, 'hint' => __('Cart subtotal must reach this amount to proceed to checkout.', 'polski')],
+                    ['key' => 'polski_minimum_order|min_quantity', 'label' => __('Minimum number of items (0 = disabled)', 'polski'), 'type' => 'number', 'default' => 0, 'hint' => __('Total number of items in cart must reach this count.', 'polski')],
+                    ['key' => 'polski_minimum_order|exclude_sale_items', 'label' => __('Exclude sale items from minimum value', 'polski'), 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'polski_minimum_order|min_value_message', 'label' => __('Message for minimum value', 'polski'), 'type' => 'textarea', 'default' => 'Minimum order value is {min_value}. Current cart value: {current_value}.', 'hint' => __('Tokens: {min_value}, {current_value}', 'polski')],
+                    ['key' => 'polski_minimum_order|min_quantity_message', 'label' => __('Message for minimum quantity', 'polski'), 'type' => 'textarea', 'default' => 'Minimum number of items per order is {min_quantity}. Current quantity: {current_quantity}.', 'hint' => __('Tokens: {min_quantity}, {current_quantity}', 'polski')],
+                ],
+            ],
+            [
+                'id' => 'review_requests',
+                'name' => __('Review Request Emails', 'polski'),
+                'description' => __('Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out.', 'polski'),
+                'group' => __('Email', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-star-filled',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_review_requests|delay_days', 'label' => __('Send after (days)', 'polski'), 'type' => 'number', 'default' => 7, 'hint' => __('Number of days after order completion before sending the review request.', 'polski')],
+                    ['key' => 'polski_review_requests|email_subject', 'label' => __('Email subject', 'polski'), 'type' => 'text', 'default' => 'How was your purchase? Leave a review', 'hint' => __('Tokens: {first_name}, {order_number}', 'polski')],
+                    ['key' => 'polski_review_requests|email_intro', 'label' => __('Email intro text', 'polski'), 'type' => 'textarea', 'default' => 'Hi {first_name}, thank you for your recent purchase. We would love to hear your feedback.', 'hint' => __('Tokens: {first_name}', 'polski')],
+                    ['key' => 'polski_review_requests|review_cta_text', 'label' => __('Review button text', 'polski'), 'type' => 'text', 'default' => 'Leave a review'],
+                ],
+            ],
+            [
+                'id' => 'from_price',
+                'name' => __('From Price for Variable Products', 'polski'),
+                'description' => __('Display "from {price}" instead of a price range for variable products. Cleaner presentation on archives and product pages.', 'polski'),
+                'group' => __('Prices and Omnibus', 'polski'),
+                'enabled' => true,
+                'icon' => 'dashicons-tag',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_prices|from_price_enabled', 'label' => __('Enable "from" price display', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_prices|from_price_text', 'label' => __('Price text template', 'polski'), 'type' => 'text', 'default' => 'from {price}', 'hint' => __('Token: {price}', 'polski')],
+                ],
+            ],
         ];
 
         // Apply saved states.
@@ -1325,6 +1369,9 @@ final class ModulesPage implements HasHooks
             'cra_readiness' => false,
             'dpa_tracker' => false,
             'nip_lookup' => false,
+            'minimum_order' => false,
+            'review_requests' => false,
+            'from_price' => true,
         ];
     }
 
