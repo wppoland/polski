@@ -691,4 +691,57 @@ return [
         'distributor_label' => __('Dystrybutor', 'polski'),
         'net_filling_label' => __('Zawartość netto', 'polski'),
     ],
+
+    // Trust Badges.
+    'polski_trust_badges' => [
+        'show_on_product' => true,
+        'show_on_cart' => true,
+        'show_on_checkout' => true,
+    ],
+
+    // Live Cart Sidebar.
+    'polski_live_cart' => [
+        'auto_open' => true,
+        'show_subtotal' => true,
+        'show_shipping_notice' => true,
+        'free_shipping_threshold' => 0,
+        'position' => 'right',
+        'overlay' => true,
+    ],
+
+    // Social Proof.
+    'polski_social_proof' => [
+        'display_interval' => 8,
+        'display_duration' => 5,
+        'position' => 'bottom-left',
+        'anonymize_name' => false,
+        'hide_on_mobile' => false,
+        'message_template' => __('%s kupił(a) %s', 'polski'),
+        'time_ago_minutes' => __('%d min temu', 'polski'),
+        'time_ago_hours' => __('%d godz. temu', 'polski'),
+    ],
+
+    // Product Q&A.
+    'polski_product_qa' => [
+        'tab_title' => __('Pytania i odpowiedzi', 'polski'),
+        'ask_placeholder' => __('Zadaj pytanie o ten produkt...', 'polski'),
+        'ask_button' => __('Zadaj pytanie', 'polski'),
+        'answer_button' => __('Odpowiedz', 'polski'),
+        'no_questions' => __('Brak pytań. Zadaj pierwsze pytanie!', 'polski'),
+    ],
+
+    // Price History Chart.
+    'polski_price_history' => [
+        'days' => 30,
+        'show_min_max' => true,
+        'color' => '#0369a1',
+        'title' => __('Historia cen', 'polski'),
+        'lowest_label' => __('Najniższa', 'polski'),
+        'highest_label' => __('Najwyższa', 'polski'),
+    ],
+
+    // FAQ.
+    'polski_faq' => [
+        'section_title' => __('Często zadawane pytania', 'polski'),
+    ],
 ];
