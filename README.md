@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://wppoland.com/pl/polski/">📖 Dokumentacja</a> · <a href="https://github.com/wppoland/polski/discussions">💬 Dyskusje</a> · <a href="https://github.com/wppoland/polski/issues">🐛 Zgłoś błąd</a>
+  <a href="https://polski.wppoland.com/">📖 Dokumentacja</a> · <a href="https://github.com/wppoland/polski/discussions">💬 Dyskusje</a> · <a href="https://github.com/wppoland/polski/issues">🐛 Zgłoś błąd</a>
 </p>
 
 ---

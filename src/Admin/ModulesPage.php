@@ -6,6 +6,7 @@ namespace Polski\Admin;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
+use Polski\Service\CacheHelper;
 
 /**
  * Module management page - toggleable feature groups.
@@ -17,9 +18,47 @@ final class ModulesPage implements HasHooks
 {
     private const OPTION = 'polski_modules';
 
+    /**
+     * Default documentation URL when a module has no dedicated article on polski.wppoland.com yet.
+     */
+    private const MODULE_DOCS_FALLBACK_URL = 'https://polski.wppoland.com/getting-started/configuration/';
+
+    /** @var array<string, string>|null */
+    private static ?array $moduleDocumentationUrls = null;
+
     public function registerHooks(): void
     {
-        add_action('admin_post_polski_save_modules', [$this, 'handleSave']);
+        add_action('admin_post_polski_save_module_settings', [$this, 'handleSaveModuleSettings']);
+        add_action('wp_ajax_polski_toggle_module', [$this, 'ajaxToggleModule']);
+    }
+
+    /**
+     * Public documentation URL for a module on polski.wppoland.com.
+     */
+    private function getModuleDocumentationUrl(string $moduleId): string
+    {
+        $slug = preg_replace('/[^a-z0-9_-]/', '', $moduleId);
+
+        if (self::$moduleDocumentationUrls === null) {
+            $loaded = require dirname(__DIR__, 2) . '/config/module-documentation-urls.php';
+            self::$moduleDocumentationUrls = is_array($loaded) ? $loaded : [];
+        }
+
+        return self::$moduleDocumentationUrls[$slug] ?? self::MODULE_DOCS_FALLBACK_URL;
+    }
+
+    /**
+     * Tooltip text: optional `tooltip` on the module, otherwise the card description.
+     *
+     * @param array<string, mixed> $module
+     */
+    private function getModuleHelpTooltip(array $module): string
+    {
+        if (isset($module['tooltip']) && is_string($module['tooltip']) && $module['tooltip'] !== '') {
+            return $module['tooltip'];
+        }
+
+        return (string) ($module['description'] ?? '');
     }
 
     /**
@@ -786,34 +825,34 @@ final class ModulesPage implements HasHooks
             // === New Compliance Modules 2026 ===
             [
                 'id' => 'gpsr',
-                'name' => 'GPSR - Product safety',
-                'description' => 'GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export.',
+                'name' => __('GPSR - Product safety', 'polski'),
+                'description' => __('GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export.', 'polski'),
                 'group' => __('Product Information', 'polski'),
                 'enabled' => true,
                 'icon' => 'dashicons-shield-alt',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_gpsr|display_mode', 'label' => 'Display mode', 'type' => 'select', 'default' => 'accordion', 'options' => ['accordion' => 'Accordion', 'section' => 'Section']],
-                    ['key' => 'polski_gpsr|section_title', 'label' => 'Section title', 'type' => 'text', 'default' => 'Product safety'],
+                    ['key' => 'polski_gpsr|display_mode', 'label' => __('Display mode', 'polski'), 'type' => 'select', 'default' => 'accordion', 'options' => ['accordion' => __('Accordion', 'polski'), 'section' => __('Section', 'polski')]],
+                    ['key' => 'polski_gpsr|section_title', 'label' => __('Section title', 'polski'), 'type' => 'text', 'default' => __('Product safety', 'polski')],
                 ],
             ],
             [
                 'id' => 'verified_review',
-                'name' => 'Verified purchase badge',
-                'description' => 'Badge shown on reviews from customers who actually purchased the product.',
+                'name' => __('Verified purchase badge', 'polski'),
+                'description' => __('Badge shown on reviews from customers who actually purchased the product.', 'polski'),
                 'group' => __('Product Information', 'polski'),
                 'enabled' => false,
                 'icon' => 'dashicons-star-filled',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_verified_review|badge_text', 'label' => 'Badge text', 'type' => 'text', 'default' => 'Verified purchase'],
+                    ['key' => 'polski_verified_review|badge_text', 'label' => __('Badge text', 'polski'), 'type' => 'text', 'default' => __('Verified purchase', 'polski')],
                 ],
             ],
             [
                 'id' => 'green_claims',
                 'name' => __('Anti-greenwashing', 'polski'),
                 'description' => __('Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026).', 'polski'),
-                'group' => __('Product information', 'polski'),
+                'group' => __('Product Information', 'polski'),
                 'enabled' => false,
                 'icon' => 'dashicons-palmtree',
                 'links' => [],
@@ -906,6 +945,18 @@ final class ModulesPage implements HasHooks
                 'group' => __('Tools', 'polski'),
                 'enabled' => true,
                 'icon' => 'dashicons-search',
+                'links' => [],
+                'settings' => [
+                    ['key' => '_site_audit_open', 'label' => '', 'type' => 'html', 'html' => '<a class="button button-secondary" href="' . esc_url(admin_url('admin.php?page=polski&tab=reports&view=audit')) . '">' . esc_html__('Open compliance audit report', 'polski') . '</a>'],
+                ],
+            ],
+            [
+                'id' => 'plugin_data',
+                'name' => __('Plugin data on uninstall', 'polski'),
+                'description' => __('Choose whether Polski deletes its database tables, settings, and stored logs when the plugin is removed from WordPress.', 'polski'),
+                'group' => __('Tools', 'polski'),
+                'enabled' => true,
+                'icon' => 'dashicons-trash',
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_general|remove_data_on_uninstall', 'label' => __('Delete plugin data on uninstall', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('If enabled, uninstall removes plugin tables, settings, and stored logs including deactivation feedback.', 'polski')],
@@ -1301,7 +1352,11 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'ai_descriptions',
                 'name' => __('AI Product Descriptions', 'polski'),
-                'description' => __('Generate SEO-optimized product descriptions using OpenAI-compatible APIs. Supports tone selection, bulk generation, and Yoast/RankMath integration.', 'polski'),
+                'description' => __('Draft product descriptions with AI from your catalog data (Polski Pro; requires your API key).', 'polski'),
+                'tooltip' => __(
+                    'Connects to OpenAI-compatible APIs you configure. Builds draft text from product names, attributes, and categories; supports tone presets, bulk generation, and optional mapping to SEO plugins. Review all output before publishing.',
+                    'polski',
+                ),
                 'group' => __('PRO - Tools', 'polski'),
                 'enabled' => false,
                 'icon' => 'dashicons-edit-large',
@@ -1359,10 +1414,6 @@ final class ModulesPage implements HasHooks
             $groups[$module['group']][] = $module;
         }
 
-        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
-        wp_nonce_field('polski_save_modules', '_polski_modules_nonce');
-        echo '<input type="hidden" name="action" value="polski_save_modules" />';
-
         foreach ($groups as $groupName => $groupModules) {
             echo '<div style="margin-top:30px;">';
             echo '<h2 style="display:flex;align-items:center;gap:8px;">';
@@ -1377,15 +1428,6 @@ final class ModulesPage implements HasHooks
 
             echo '</div></div>';
         }
-
-        echo '<p class="submit" style="margin-top:20px;">';
-        printf(
-            '<button type="submit" class="button button-primary button-hero">%s</button>',
-            esc_html__('Save modules', 'polski'),
-        );
-        echo '</p>';
-
-        echo '</form>';
     }
 
     /**
@@ -1398,30 +1440,50 @@ final class ModulesPage implements HasHooks
     {
         $id = $module['id'];
         $enabled = $module['enabled'];
-        $fieldName = "polski_module_{$id}";
         $hasSettings = ! empty($module['settings']);
 
-        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '') . ($locked ? ' sp-card--locked' : '');
+        $isPro = ! empty($module['pro']);
+        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '') . ($locked ? ' sp-card--locked' : '') . ($isPro ? ' sp-card--pro' : '');
 
-        echo '<div class="' . esc_attr($classes) . '">';
+        echo '<div id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($classes) . '">';
 
-        // Header with icon and toggle.
-        echo '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">';
-        echo '<div style="display:flex;align-items:center;gap:8px;">';
+        // Header with icon, title, optional Pro badge, and toggle (badge inline so it never covers the toggle).
+        echo '<div class="sp-card__head" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;">';
+        echo '<div style="display:flex;align-items:flex-start;gap:8px;min-width:0;flex:1;">';
 
         if (! empty($module['icon'])) {
-            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" style="color:#666;"></span>';
+            $iconColor = $isPro ? '#8f6a1e' : '#666';
+            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" style="color:' . esc_attr($iconColor) . ';flex-shrink:0;"></span>';
         }
 
-        echo '<strong>' . esc_html($module['name']) . '</strong>';
+        echo '<span style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-width:0;">';
+        echo '<strong style="line-height:1.3;">' . esc_html($module['name']) . '</strong>';
 
+        $helpTooltip = $this->getModuleHelpTooltip($module);
+        if ($helpTooltip !== '') {
+            $helpPlain = wp_strip_all_tags($helpTooltip);
+            $helpSrId = 'polski-help-sr-' . $id;
+            echo '<span class="sp-card__help-wrap">';
+            echo '<span id="' . esc_attr($helpSrId) . '" class="screen-reader-text">' . esc_html($helpPlain) . '</span>';
+            echo '<button type="button" class="sp-card__help" aria-describedby="' . esc_attr($helpSrId) . '" aria-label="' . esc_attr__('Help', 'polski') . '">';
+            echo '<span class="dashicons dashicons-editor-help" aria-hidden="true"></span>';
+            echo '</button>';
+            echo '<span class="sp-card__help-tooltip" aria-hidden="true">' . esc_html($helpPlain) . '</span>';
+            echo '</span>';
+        }
+
+        if ($isPro) {
+            echo '<span class="sp-card__pro-badge" title="' . esc_attr__('Polski Pro module — requires Polski Pro', 'polski') . '">' . esc_html__('Pro', 'polski') . '</span>';
+        }
+
+        echo '</span>';
         echo '</div>';
 
         // Toggle switch.
         echo '<label class="sp-toggle' . ($locked ? ' sp-toggle--locked' : '') . '">';
         printf(
-            '<input type="checkbox" name="%s" value="1" %s %s>',
-            esc_attr($fieldName),
+            '<input type="checkbox" data-polski-module-id="%s" value="1" %s %s>',
+            esc_attr($id),
             checked($enabled, true, false),
             $locked ? 'disabled' : '',
         );
@@ -1433,6 +1495,15 @@ final class ModulesPage implements HasHooks
 
         // Description.
         echo '<p style="margin:0;color:#666;font-size:13px;line-height:1.5;">' . esc_html($module['description']) . '</p>';
+
+        $docsUrl = isset($module['docs_url']) && is_string($module['docs_url']) && $module['docs_url'] !== ''
+            ? $module['docs_url']
+            : $this->getModuleDocumentationUrl($id);
+        printf(
+            '<p class="sp-card__docs" style="margin:10px 0 0;font-size:12px;"><a href="%s" target="_blank" rel="noopener noreferrer" class="sp-card__docs-link">%s</a></p>',
+            esc_url($docsUrl),
+            esc_html__('Pełna dokumentacja', 'polski'),
+        );
 
         // Links.
         if (! empty($module['links'])) {
@@ -1457,19 +1528,29 @@ final class ModulesPage implements HasHooks
             );
         }
 
-        // Settings panel (collapsible).
+        // Settings panel (collapsible) — separate form per module so Save is always next to fields.
         if ($hasSettings && ! $locked) {
             $detailsId = 'polski-settings-' . $id;
 
             echo '<details id="' . esc_attr($detailsId) . '" style="margin-top:12px;border-top:1px solid #eee;padding-top:10px;">';
             echo '<summary style="cursor:pointer;font-size:12px;color:#0073aa;user-select:none;">' . wp_kses_post(__('Configure &darr;', 'polski')) . '</summary>';
-            echo '<div style="margin-top:10px;">';
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:10px;">';
+            wp_nonce_field('polski_save_module_' . $id, '_polski_module_nonce_' . $id);
+            echo '<input type="hidden" name="action" value="polski_save_module_settings" />';
+            echo '<input type="hidden" name="module_id" value="' . esc_attr($id) . '" />';
 
             foreach ($module['settings'] as $field) {
                 $this->renderSettingsField($field);
             }
 
-            echo '</div></details>';
+            echo '<p class="submit" style="margin:12px 0 0;">';
+            printf(
+                '<button type="submit" class="button button-primary button-small">%s</button>',
+                esc_html__('Save', 'polski'),
+            );
+            echo '</p>';
+            echo '</form>';
+            echo '</details>';
         }
 
         if ($locked) {
@@ -1597,81 +1678,115 @@ final class ModulesPage implements HasHooks
     }
 
     /**
-     * Handle module save form submission.
+     * AJAX: persist a single module enabled state (toggle). No separate Save button.
      */
-    public function handleSave(): void
+    public function ajaxToggleModule(): void
+    {
+        if (! current_user_can('manage_woocommerce')) {
+            wp_send_json_error(['message' => 'forbidden'], 403);
+        }
+
+        check_ajax_referer('polski_modules', 'nonce');
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $moduleId = isset($_POST['module_id']) ? sanitize_key((string) wp_unslash($_POST['module_id'])) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $enabled = isset($_POST['enabled']) && (string) $_POST['enabled'] === '1';
+
+        if ($moduleId === '') {
+            wp_send_json_error(['message' => 'invalid'], 400);
+        }
+
+        $modules = $this->getModules();
+        $validIds = array_column($modules, 'id');
+        if (! in_array($moduleId, $validIds, true)) {
+            wp_send_json_error(['message' => 'invalid'], 400);
+        }
+
+        $saved = get_option(self::OPTION, []);
+        $saved = is_array($saved) ? $saved : [];
+        $saved[$moduleId] = $enabled;
+        update_option(self::OPTION, $saved);
+
+        CacheHelper::flush();
+
+        wp_send_json_success(['enabled' => $enabled]);
+    }
+
+    /**
+     * Handle per-module settings form submission (Save button on that module card only).
+     */
+    public function handleSaveModuleSettings(): void
     {
         if (! current_user_can('manage_woocommerce')) {
             wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'polski'));
         }
 
-        check_admin_referer('polski_save_modules', '_polski_modules_nonce');
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $moduleId = isset($_POST['module_id']) ? sanitize_key((string) wp_unslash($_POST['module_id'])) : '';
 
-        $modules = $this->getModules();
-        $saved = [];
-
-        foreach ($modules as $module) {
-            $fieldName = 'polski_module_' . $module['id'];
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing
-            $saved[$module['id']] = isset($_POST[$fieldName]) ? true : false;
+        if ($moduleId === '') {
+            wp_die(esc_html__('Invalid request.', 'polski'));
         }
 
-        update_option(self::OPTION, $saved);
+        check_admin_referer('polski_save_module_' . $moduleId, '_polski_module_nonce_' . $moduleId);
 
-        // Save per-module settings.
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- individual values sanitized in sanitizeFieldValue()
-        $settingsData = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : [];
+        $modules = $this->getModules();
+        $module = null;
 
-        if (is_array($settingsData)) {
-            foreach ($settingsData as $optionName => $fields) {
-                if (! is_array($fields)) {
-                    continue;
-                }
-
-                $optionName = sanitize_key($optionName);
-                $existing = get_option($optionName, []);
-                $existing = is_array($existing) ? $existing : [];
-
-                foreach ($fields as $fieldKey => $value) {
-                    $fieldKey = sanitize_key($fieldKey);
-                    $field = $this->findFieldDefinition($modules, $optionName, $fieldKey);
-                    $existing[$fieldKey] = $this->sanitizeFieldValue($value, $field);
-                }
-
-                update_option($optionName, $existing);
+        foreach ($modules as $m) {
+            if ($m['id'] === $moduleId) {
+                $module = $m;
+                break;
             }
         }
 
-        // Handle unchecked checkboxes (they don't send POST data).
-        foreach ($modules as $module) {
-            if (empty($module['settings'])) {
+        if ($module === null || empty($module['settings'])) {
+            wp_die(esc_html__('Invalid request.', 'polski'));
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $settingsData = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : [];
+        $settingsData = is_array($settingsData) ? $settingsData : [];
+
+        // Group fields by option name; only keys defined for this module.
+        $byOption = [];
+
+        foreach ($module['settings'] as $field) {
+            if (! is_array($field) || empty($field['key'])) {
                 continue;
             }
 
-            foreach ($module['settings'] as $field) {
-                if (($field['type'] ?? '') !== 'checkbox' || ! isset($field['key'])) {
-                    continue;
-                }
+            [$optName, $fKey] = explode('|', (string) $field['key'], 2) + ['', ''];
 
-                [$optName, $fKey] = explode('|', $field['key'], 2) + ['', ''];
-
-                if ($optName === '' || $fKey === '') {
-                    continue;
-                }
-
-                // If checkbox was not in POST, set to false.
-                if (! isset($settingsData[$optName][$fKey])) {
-                    $opt = get_option($optName, []);
-                    $opt = is_array($opt) ? $opt : [];
-                    $opt[$fKey] = false;
-                    update_option($optName, $opt);
-                }
+            if ($optName === '' || $fKey === '') {
+                continue;
             }
+
+            $byOption[$optName][] = ['field' => $field, 'fieldKey' => $fKey];
         }
 
-        \Polski\Service\CacheHelper::flush();
+        foreach ($byOption as $optionName => $items) {
+            $existing = get_option($optionName, []);
+            $existing = is_array($existing) ? $existing : [];
 
-        wp_safe_redirect(admin_url('admin.php?page=polski&modules_saved=1'));
+            foreach ($items as $item) {
+                $field = $item['field'];
+                $fKey = $item['fieldKey'];
+
+                if (isset($settingsData[$optionName][$fKey])) {
+                    $existing[$fKey] = $this->sanitizeFieldValue($settingsData[$optionName][$fKey], $field);
+                } elseif (($field['type'] ?? '') === 'checkbox') {
+                    $existing[$fKey] = false;
+                }
+            }
+
+            update_option($optionName, $existing);
+        }
+
+        CacheHelper::flush();
+
+        wp_safe_redirect(admin_url('admin.php?page=polski&tab=modules&modules_saved=1'));
         exit;
     }
 
@@ -1720,6 +1835,7 @@ final class ModulesPage implements HasHooks
             'ksef_ready' => false,
             'security_incidents' => true,
             'site_audit' => true,
+            'plugin_data' => true,
             'cra_readiness' => false,
             'dpa_tracker' => false,
             'nip_lookup' => false,
@@ -1781,9 +1897,48 @@ final class ModulesPage implements HasHooks
     private function renderToggleStyles(): void
     {
         echo '<style>
-            .sp-card{background:#fff;border:1px solid #ccd0d4;padding:16px;position:relative;transition:border-color .2s;}
+            [id^="polski-module-"]{scroll-margin-top:56px;}
+            .sp-card{background:#fff;border:1px solid #ccd0d4;padding:16px;position:relative;overflow:visible;transition:border-color .2s,box-shadow .2s;}
             .sp-card--active{border-color:#46b450;}
             .sp-card--locked{opacity:.7;}
+            .sp-card--pro{
+                border-color:#d4a012;
+                background:linear-gradient(165deg,#fffdf6 0%,#fff 55%);
+                box-shadow:0 1px 0 rgba(212,160,18,.2);
+            }
+            .sp-card--pro.sp-card--active{
+                border-color:#46b450;
+                box-shadow:0 0 0 1px rgba(212,160,18,.35),0 1px 0 rgba(70,180,80,.15);
+            }
+            .sp-card__pro-badge{
+                flex-shrink:0;
+                align-self:center;
+                font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+                line-height:1;padding:3px 7px;border-radius:3px;
+                color:#5c420a;background:linear-gradient(180deg,#f5e6b8 0%,#e8cf7a 100%);
+                border:1px solid #c9a227;
+            }
+            .sp-card__help-wrap{position:relative;display:inline-flex;align-items:center;flex-shrink:0;margin-left:2px;vertical-align:middle;}
+            .sp-card__help{
+                display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+                margin:0;padding:0;border:0;background:transparent;box-shadow:none;
+                cursor:help;color:#646970;font:inherit;line-height:1;
+                -webkit-appearance:none;appearance:none;
+            }
+            .sp-card__help .dashicons{font-size:18px;width:18px;height:18px;}
+            .sp-card__help:focus{outline:1px solid #2271b1;outline-offset:1px;border-radius:2px;}
+            .sp-card__help-tooltip{
+                display:none;position:absolute;left:0;bottom:100%;margin-bottom:6px;z-index:100050;
+                box-sizing:border-box;min-width:200px;max-width:min(340px, 90vw);
+                padding:8px 10px;background:#1d2327;color:#f0f0f1;font-size:12px;line-height:1.45;font-weight:400;
+                text-align:left;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,.25);
+                pointer-events:none;
+            }
+            .sp-card__help-wrap:hover .sp-card__help-tooltip,
+            .sp-card__help-wrap:focus-within .sp-card__help-tooltip{display:block;}
+            .sp-card__docs-link{color:#2271b1;text-decoration:none;}
+            .sp-card__docs-link:hover,.sp-card__docs-link:focus{text-decoration:underline;}
+            .sp-card__head .sp-toggle{flex-shrink:0;margin-top:0;}
 
             .sp-toggle{position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;}
             .sp-toggle input{opacity:0;width:0;height:0;position:absolute;}
@@ -1792,15 +1947,42 @@ final class ModulesPage implements HasHooks
             .sp-toggle input:checked ~ .sp-toggle__track{background:#46b450;}
             .sp-toggle input:checked ~ .sp-toggle__knob{transform:translateX(18px);}
             .sp-toggle--locked .sp-toggle__track{cursor:not-allowed;}
-        </style>
-        <script>
+        </style>';
+
+        $toggleScriptConfig = wp_json_encode(
+            [
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('polski_modules'),
+                'errorGeneric' => __('Could not save module state. Please try again.', 'polski'),
+            ],
+            JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+        );
+
+        echo '<script>
+        var polskiModules=' . $toggleScriptConfig . ';
         document.addEventListener("DOMContentLoaded",function(){
-            document.querySelectorAll(".sp-toggle input[type=checkbox]").forEach(function(cb){
+            document.querySelectorAll(".sp-card .sp-toggle input[type=checkbox][data-polski-module-id]").forEach(function(cb){
                 cb.addEventListener("change",function(){
+                    if(this.disabled){return;}
+                    var mid=this.getAttribute("data-polski-module-id");
+                    if(!mid){return;}
                     var card=this.closest(".sp-card");
-                    if(card){
-                        card.classList.toggle("sp-card--active",this.checked);
-                    }
+                    if(card){card.classList.toggle("sp-card--active",this.checked);}
+                    var fd=new FormData();
+                    fd.append("action","polski_toggle_module");
+                    fd.append("nonce",polskiModules.nonce);
+                    fd.append("module_id",mid);
+                    fd.append("enabled",this.checked?"1":"0");
+                    fetch(polskiModules.ajaxUrl,{method:"POST",credentials:"same-origin",body:fd})
+                    .then(function(r){return r.json();})
+                    .then(function(data){
+                        if(!data||!data.success){throw new Error("save");}
+                    })
+                    .catch(function(){
+                        cb.checked=!cb.checked;
+                        if(card){card.classList.toggle("sp-card--active",cb.checked);}
+                        window.alert(polskiModules.errorGeneric);
+                    });
                 });
             });
         });
@@ -1905,33 +2087,6 @@ final class ModulesPage implements HasHooks
         $html .= '</div>';
 
         return $html;
-    }
-
-    /**
-     * @param list<array<string, mixed>> $modules
-     * @return array<string, mixed>|null
-     */
-    private function findFieldDefinition(array $modules, string $optionName, string $fieldKey): ?array
-    {
-        foreach ($modules as $module) {
-            if (empty($module['settings']) || ! is_array($module['settings'])) {
-                continue;
-            }
-
-            foreach ($module['settings'] as $field) {
-                if (! is_array($field) || empty($field['key'])) {
-                    continue;
-                }
-
-                [$candidateOptionName, $candidateFieldKey] = explode('|', (string) $field['key'], 2) + ['', ''];
-
-                if ($candidateOptionName === $optionName && $candidateFieldKey === $fieldKey) {
-                    return $field;
-                }
-            }
-        }
-
-        return null;
     }
 
     /**

@@ -107,7 +107,7 @@ test.describe('Admin Dashboard', () => {
     });
 
     test('Polski modules page loads', async ({ page }) => {
-        await page.goto('/wp-admin/admin.php?page=polski-modules');
+        await page.goto('/wp-admin/admin.php?page=polski&tab=modules');
         const heading = page.locator('.wrap h1').filter({ hasText: 'Polski' });
         await expect(heading).toBeVisible({ timeout: 10000 });
     });

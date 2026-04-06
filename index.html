@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polski — Vite dev</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 42rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+        color: #1e293b;
+      }
+      code {
+        background: #f1f5f9;
+        padding: 0.1em 0.35em;
+        border-radius: 4px;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Polski for WooCommerce</h1>
+    <p>
+      This project does <strong>not</strong> ship a standalone page here. Vite only bundles assets that WordPress loads
+      (<code>build/admin.js</code>, frontend entries, etc.).
+    </p>
+    <p>
+      To work on the admin React UI: run <code>npm run build</code>, activate the plugin in a local WordPress site, and open
+      <strong>WP Admin → Polski</strong>. Use <code>npm run dev</code> only if you wire HMR against that site; opening this
+      URL alone will not mirror wp-admin.
+    </p>
+    <p>
+      Gutenberg blocks are built by the second step of <code>npm run build</code> (webpack) into <code>build/blocks/</code>.
+    </p>
+  </body>
+</html>

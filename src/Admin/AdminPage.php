@@ -32,6 +32,7 @@ final class AdminPage implements Bootable, HasHooks
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
+        add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
         add_action('admin_post_polski_complete_wizard', [$this, 'handleWizardCompletion']);
@@ -52,7 +53,7 @@ final class AdminPage implements Bootable, HasHooks
     {
         $settingsLink = sprintf(
             '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')),
+            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')),
             esc_html__('Settings', 'polski'),
         );
 
@@ -159,7 +160,7 @@ final class AdminPage implements Bootable, HasHooks
         $response = $controller->completeWizard($request);
 
         if ($response->get_status() >= 400) {
-            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules'));
+            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules'));
             exit;
         }
 
@@ -284,6 +285,49 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
+     * Highlight the matching Polski submenu entry when using the unified ?tab= shell.
+     *
+     * @param string|false $submenu_file
+     * @param string       $parent_file
+     * @return string|false
+     */
+    public function highlightPolskiShellSubmenu($submenu_file, string $parent_file)
+    {
+        unset($parent_file);
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if (! isset($_GET['page']) || $_GET['page'] !== self::PAGE_SLUG || ! isset($_GET['tab'])) {
+            return $submenu_file;
+        }
+
+        $tab = sanitize_key((string) $_GET['tab']);
+
+        return match ($tab) {
+            'modules' => self::PAGE_SLUG . '-modules',
+            'reports' => self::PAGE_SLUG . '-reports',
+            'pro-license' => 'polski-pro-license',
+            default => $submenu_file,
+        };
+    }
+
+    /**
+     * Tab definitions for the unified Polski admin screen (?page=polski&tab=).
+     *
+     * @return array<string, string> tab slug => label
+     */
+    private function getShellTabs(): array
+    {
+        return apply_filters(
+            'polski_admin_shell_tabs',
+            [
+                'dashboard' => __('Dashboard', 'polski'),
+                'modules' => __('Modules', 'polski'),
+                'reports' => __('Reports & Tools', 'polski'),
+            ],
+        );
+    }
+
+    /**
      * Render a settings page for a group of modules.
      *
      * @param ModulesPage          $modulesPage
@@ -327,19 +371,18 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
-     * Dashboard submenu page handler.
+     * Dashboard submenu page handler (unified with modules via ?tab=).
      */
     public function renderDashboardPage(): void
     {
-        echo '<div class="wrap">';
-        echo '<h1>Polski <small>v' . esc_html(\Polski\VERSION) . '</small></h1>';
-        echo '<div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
-        echo '<div>';
-        $this->renderDashboard();
-        echo '</div>';
-        $this->renderHelpSidebar('dashboard');
-        echo '</div>';
-        echo '</div>';
+        $tabs = $this->getShellTabs();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $tab = isset($_GET['tab']) ? sanitize_key((string) $_GET['tab']) : 'dashboard';
+        if (! array_key_exists($tab, $tabs)) {
+            $tab = 'dashboard';
+        }
+
+        $this->renderPolskiShell($tab);
     }
 
     /**
@@ -367,16 +410,25 @@ final class AdminPage implements Bootable, HasHooks
         </style>';
     }
 
+    /**
+     * Legacy "Modules" menu slug: redirect to the unified Polski screen.
+     */
     public function renderPage(): void
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $tab = sanitize_key($_GET['tab'] ?? 'modules');
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules'));
+        exit;
+    }
 
-        echo '<div class="wrap">';
-        echo '<h1>Polski <small>v' . esc_html(\Polski\VERSION) . '</small></h1>';
+    /**
+     * Shared shell: Dashboard, Modules, Reports, and extensible tabs (e.g. Polski Pro license).
+     */
+    private function renderPolskiShell(string $tab): void
+    {
         $generalSettings = $this->getGeneralSettings();
 
-        // Success notices.
+        echo '<div class="wrap polski-admin-shell">';
+        echo '<h1>Polski <small>v' . esc_html(\Polski\VERSION) . '</small></h1>';
+
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['polski_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
@@ -390,24 +442,36 @@ final class AdminPage implements Bootable, HasHooks
             echo '</p></div>';
         }
 
-        // Tab navigation.
-        $tabs = [
-            'modules' => __('Modules', 'polski'),
-            'dashboard' => __('Dashboard', 'polski'),
-        ];
+        $tabs = $this->getShellTabs();
 
-        echo '<nav class="nav-tab-wrapper" style="margin-bottom:20px;">';
+        echo '<nav class="nav-tab-wrapper polski-admin-shell__tabs" style="margin-bottom:20px;">';
         foreach ($tabs as $tabId => $tabLabel) {
             $class = $tab === $tabId ? 'nav-tab nav-tab-active' : 'nav-tab';
-            $url = admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=' . $tabId);
+            $url = add_query_arg(
+                [
+                    'page' => self::PAGE_SLUG,
+                    'tab' => $tabId,
+                ],
+                admin_url('admin.php'),
+            );
             printf('<a href="%s" class="%s">%s</a>', esc_url($url), esc_attr($class), esc_html($tabLabel));
         }
         echo '</nav>';
 
-        match ($tab) {
-            'dashboard' => $this->renderDashboard(),
-            default => $this->renderModulesTab(),
-        };
+        if ($tab === 'dashboard') {
+            echo '<div class="polski-admin-shell__layout" style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
+            echo '<div class="polski-admin-shell__main">';
+            $this->renderDashboard();
+            echo '</div>';
+            $this->renderHelpSidebar('dashboard');
+            echo '</div>';
+        } elseif ($tab === 'modules') {
+            $this->renderModulesTab();
+        } elseif ($tab === 'reports') {
+            $this->renderReportsHubInner();
+        } else {
+            do_action('polski_admin_shell_tab_' . $tab);
+        }
 
         echo '</div>';
     }
@@ -419,49 +483,70 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
-     * Render the Reports & Tools Hub page.
+     * Legacy "Reports" menu slug: redirect to the unified Polski screen.
      */
     public function renderReportsHubPage(): void
     {
-        $view = sanitize_key($_GET['view'] ?? 'overview');
+        $args = [
+            'page' => self::PAGE_SLUG,
+            'tab' => 'reports',
+        ];
 
-        echo '<div class="wrap">';
-        echo '<h1>Polski &rsaquo; ' . esc_html__('Reports & Tools', 'polski') . '</h1>';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if (isset($_GET['view'])) {
+            $args['view'] = sanitize_key((string) $_GET['view']);
+        }
+
+        wp_safe_redirect(add_query_arg($args, admin_url('admin.php')));
+        exit;
+    }
+
+    /**
+     * Reports & tools content inside the unified shell (no duplicate wrap/h1).
+     */
+    private function renderReportsHubInner(): void
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $view = isset($_GET['view']) ? sanitize_key((string) $_GET['view']) : 'overview';
 
         if ($view === 'overview') {
+            echo '<p class="description" style="margin:0 0 16px;">' . esc_html__('Reports, audits, and compliance tools for your store.', 'polski') . '</p>';
             echo '<div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
             echo '<div>';
             $this->renderReportsOverview();
             echo '</div>';
             $this->renderHelpSidebar('reports');
             echo '</div>';
-        } else {
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports')) . '" class="button" style="margin-bottom:20px;">&larr; ' . esc_html__('Back to reports', 'polski') . '</a>';
-            
-            switch ($view) {
-                case 'audit':
-                    $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\SiteAuditService::class);
-                    $service->renderAuditPage();
-                    break;
-                case 'dsa':
-                    $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\DSAService::class);
-                    $service->renderReportsPage();
-                    break;
-                case 'incidents':
-                    $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\SecurityIncidentService::class);
-                    $service->renderPage();
-                    break;
-                case 'dpa':
-                    $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\DPATrackerService::class);
-                    $service->renderTrackerPage();
-                    break;
-                case 'feedback':
-                    $handler = \Polski\Plugin::instance()->container()->get(\Polski\Admin\DeactivationHandler::class);
-                    $handler->renderFeedbackLog();
-                    echo '<div style="margin-top:24px;"></div>';
-                    $this->renderAdminFeedbackLog();
-                    break;
-            }
+
+            return;
+        }
+
+        echo '<div class="polski-reports-detail">';
+        echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=reports')) . '" class="button" style="margin-bottom:20px;">&larr; ' . esc_html__('Back to reports', 'polski') . '</a>';
+
+        switch ($view) {
+            case 'audit':
+                $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\SiteAuditService::class);
+                $service->renderAuditPage();
+                break;
+            case 'dsa':
+                $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\DSAService::class);
+                $service->renderReportsPage();
+                break;
+            case 'incidents':
+                $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\SecurityIncidentService::class);
+                $service->renderPage();
+                break;
+            case 'dpa':
+                $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\DPATrackerService::class);
+                $service->renderTrackerPage();
+                break;
+            case 'feedback':
+                $handler = \Polski\Plugin::instance()->container()->get(\Polski\Admin\DeactivationHandler::class);
+                $handler->renderFeedbackLog();
+                echo '<div style="margin-top:24px;"></div>';
+                $this->renderAdminFeedbackLog();
+                break;
         }
 
         echo '</div>';
@@ -592,17 +677,44 @@ final class AdminPage implements Bootable, HasHooks
         foreach ($reports as $report) {
             $isEnabled = $report['module'] ? ModulesPage::isModuleEnabled($report['module']) : true;
             $opacity = $isEnabled ? '1' : '0.5';
-            $url = $isEnabled ? admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports&view=' . $report['id']) : '#';
-            
+            $url = $isEnabled
+                ? add_query_arg(
+                    [
+                        'page' => self::PAGE_SLUG,
+                        'tab' => 'reports',
+                        'view' => $report['id'],
+                    ],
+                    admin_url('admin.php'),
+                )
+                : '#';
+
+            $moduleToggleUrl = '';
+            if ($report['module'] !== null && $report['module'] !== '') {
+                $moduleToggleUrl = esc_url(
+                    add_query_arg(
+                        [
+                            'page' => self::PAGE_SLUG,
+                            'tab' => 'modules',
+                        ],
+                        admin_url('admin.php'),
+                    ),
+                ) . '#polski-module-' . sanitize_key($report['module']);
+            }
+
             echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:24px;opacity:' . esc_attr($opacity) . ';position:relative;">';
             echo '<div class="dashicons ' . esc_attr($report['icon']) . '" style="font-size:32px;width:32px;height:32px;margin-bottom:12px;color:#0071a1;"></div>';
             echo '<h3 style="margin:0 0 10px;">' . esc_html($report['name']) . '</h3>';
             echo '<p style="margin:0 0 20px;color:#666;font-size:13px;">' . esc_html($report['desc']) . '</p>';
-            
+
             if ($isEnabled) {
                 echo '<a href="' . esc_url($url) . '" class="button button-primary">' . esc_html__('Open Report', 'polski') . '</a>';
             } else {
-                echo '<span class="description" style="color:#dc3232;">' . esc_html__('Module disabled', 'polski') . '</span>';
+                echo '<p class="description" style="margin:0 0 12px;color:#646970;">' . esc_html__('This report needs its module enabled first (optional features are off by default).', 'polski') . '</p>';
+                if ($moduleToggleUrl !== '') {
+                    echo '<a href="' . esc_url($moduleToggleUrl) . '" class="button button-primary">' . esc_html__('Enable module', 'polski') . '</a>';
+                } else {
+                    echo '<span class="description" style="color:#dc3232;">' . esc_html__('Module disabled', 'polski') . '</span>';
+                }
             }
             echo '</div>';
         }
@@ -706,7 +818,7 @@ final class AdminPage implements Bootable, HasHooks
             }
             echo '</ul>';
             echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-informacje-o-produkcie')) . '" class="button button-primary">' . esc_html__('Complete product data', 'polski') . '</a> ';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-modules')) . '" class="button">' . esc_html__('Manage modules', 'polski') . '</a>';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '" class="button">' . esc_html__('Manage modules', 'polski') . '</a>';
             echo '</div>';
         }
 
@@ -736,7 +848,13 @@ final class AdminPage implements Bootable, HasHooks
             __('Store Analysis', 'polski'),
             __('Check reports', 'polski'),
             null,
-            admin_url('admin.php?page=' . self::PAGE_SLUG . '-reports')
+            add_query_arg(
+                [
+                    'page' => self::PAGE_SLUG,
+                    'tab' => 'reports',
+                ],
+                admin_url('admin.php'),
+            )
         );
 
         echo '</div>';
