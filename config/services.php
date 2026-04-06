@@ -30,6 +30,7 @@ use Polski\Service\FeaturedVideoService;
 use Polski\Service\GalleryZoomService;
 use Polski\Service\ProductSliderService;
 use Polski\Service\WaitlistService;
+use Polski\Service\MinimumOrderService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
 use Polski\Service\WishlistService;
@@ -151,6 +152,7 @@ return static function (Container $c): void {
     $c->singleton(ProductSliderService::class, static fn () => new ProductSliderService(
         $c->get(TemplateLoader::class),
     ));
+    $c->singleton(MinimumOrderService::class, static fn () => new MinimumOrderService());
     $c->singleton(WaitlistService::class, static fn () => new WaitlistService(
         $c->get(WaitlistRepository::class),
         $c->get(TemplateLoader::class),

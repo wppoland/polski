@@ -36,6 +36,7 @@ use Polski\Service\FeaturedVideoService;
 use Polski\Service\GalleryZoomService;
 use Polski\Service\ProductSliderService;
 use Polski\Service\WaitlistService;
+use Polski\Service\MinimumOrderService;
 use Polski\Service\InfiniteScrollService;
 use Polski\Service\PopupService;
 use Polski\Service\WishlistService;
@@ -76,6 +77,7 @@ return [
     GalleryZoomService::class,
     ProductSliderService::class,
     WaitlistService::class,
+    MinimumOrderService::class,
     InfiniteScrollService::class,
     PopupService::class,
 

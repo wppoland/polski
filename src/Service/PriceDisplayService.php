@@ -90,6 +90,54 @@ final class PriceDisplayService
     }
 
     /**
+     * Get "From {price}" HTML for variable products.
+     *
+     * Replaces the default price range (e.g. "19.99 - 49.99") with
+     * a cleaner "od 19.99" format on archives and single product pages.
+     */
+    public function getFromPriceHtml(string $priceHtml, \WC_Product $product): string
+    {
+        if (! $product instanceof \WC_Product_Variable) {
+            return $priceHtml;
+        }
+
+        $settings = get_option('polski_prices', []);
+
+        if (! is_array($settings) || ! ($settings['from_price_enabled'] ?? true)) {
+            return $priceHtml;
+        }
+
+        $prices = $product->get_variation_prices(true);
+
+        if (empty($prices['price'])) {
+            return $priceHtml;
+        }
+
+        $minPrice = current($prices['price']);
+        $maxPrice = end($prices['price']);
+
+        // Only show "from" when there is an actual price range.
+        if ((float) $minPrice === (float) $maxPrice) {
+            return $priceHtml;
+        }
+
+        $template = $settings['from_price_text'] ?? __('od {price}', 'polski');
+        $formattedPrice = wc_price((float) $minPrice);
+
+        $text = Formatter::interpolate($template, [
+            'price' => $formattedPrice,
+        ]);
+
+        $html = sprintf(
+            '<span class="polski-from-price">%s</span>',
+            $text,
+        );
+
+        /** @param string $html The "from price" HTML. */
+        return (string) apply_filters('polski/price/from_price_html', $html, $product);
+    }
+
+    /**
      * Get the VAT notice for a product.
      */
     public function getVatNoticeHtml(\WC_Product $product): string
