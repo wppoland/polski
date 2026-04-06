@@ -41,12 +41,23 @@ final class ProductHooks implements Bootable, HasHooks
         // Attach registered shopmarks to WooCommerce hooks.
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleProductShopmarks'], 25);
 
+        // "From {price}" for variable products (replaces price range with "od XX PLN").
+        add_filter('woocommerce_get_price_html', [$this, 'filterVariablePriceHtml'], 10, 2);
+
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
 
         // Clear structured data cache on product save
         add_action('woocommerce_update_product', [$this, 'clearSchemaCache'], 10, 1);
         add_action('woocommerce_new_product', [$this, 'clearSchemaCache'], 10, 1);
+    }
+
+    /**
+     * Filter variable product price HTML to show "od {lowest_price}" instead of a range.
+     */
+    public function filterVariablePriceHtml(string $priceHtml, \WC_Product $product): string
+    {
+        return $this->priceDisplay->getFromPriceHtml($priceHtml, $product);
     }
 
     /**

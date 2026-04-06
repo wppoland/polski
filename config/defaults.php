@@ -68,6 +68,8 @@ return [
         'unit_price_text' => __('{price} / {unit}', 'polski'),
         'shipping_costs_notice_enabled' => true,
         'shipping_costs_text' => __('zzgl. kosztów wysyłki', 'polski'),
+        'from_price_enabled' => true,
+        'from_price_text' => __('od {price}', 'polski'),
     ],
 
     // Omnibus directive.
@@ -77,6 +79,15 @@ return [
         'display_text' => __('Najniższa cena z ostatnich {days} dni: {price}', 'polski'),
         'display_on_sale_only' => true,
         'prune_after_days' => 90,
+    ],
+
+    // Minimum order rules.
+    'polski_minimum_order' => [
+        'min_value' => 0,
+        'min_quantity' => 0,
+        'exclude_sale_items' => false,
+        'min_value_message' => __('Minimalna wartość zamówienia to {min_value}. Aktualna wartość koszyka: {current_value}.', 'polski'),
+        'min_quantity_message' => __('Minimalna liczba produktów w zamówieniu to {min_quantity}. Aktualna liczba: {current_quantity}.', 'polski'),
     ],
 
     // Checkout.
