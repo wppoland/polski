@@ -121,7 +121,7 @@ final class PriceDisplayService
             return $priceHtml;
         }
 
-        $template = $settings['from_price_text'] ?? __('od {price}', 'polski');
+        $template = $settings['from_price_text'] ?? __('from {price}', 'polski');
         $formattedPrice = wc_price((float) $minPrice);
 
         $text = Formatter::interpolate($template, [

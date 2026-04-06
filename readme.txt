@@ -4,7 +4,7 @@ Donate link: https://wppoland.com/donate
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,13 @@ No other external services are used. Deactivation feedback and all other data ar
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.4.0 =
+* Added "From price" display for variable products (shows "from XX PLN" instead of price range)
+* Added minimum order value and quantity rules with cart validation
+* Added automated review request emails after order completion
+* Added opt-out support for review request emails
+* Improved localization: all __() fallback strings now use English source language
 
 = 1.3.0 =
 * Added GPSR module: 8 product fields, CSV bulk import/export, status column in product list, product page display

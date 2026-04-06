@@ -66,7 +66,7 @@ final class MinimumOrderService implements HasHooks
                 $message = str_replace(
                     ['{min_value}', '{current_value}'],
                     [wp_strip_all_tags(wc_price($minValue)), wp_strip_all_tags(wc_price($cartTotal))],
-                    (string) ($settings['min_value_message'] ?? __('Minimalna wartość zamówienia to {min_value}. Aktualna wartość koszyka: {current_value}.', 'polski')),
+                    (string) ($settings['min_value_message'] ?? __('Minimum order value is {min_value}. Current cart value: {current_value}.', 'polski')),
                 );
 
                 wc_add_notice($message, 'error');
@@ -81,7 +81,7 @@ final class MinimumOrderService implements HasHooks
                 $message = str_replace(
                     ['{min_quantity}', '{current_quantity}'],
                     [(string) $minQuantity, (string) $cartQuantity],
-                    (string) ($settings['min_quantity_message'] ?? __('Minimalna liczba produktów w zamówieniu to {min_quantity}. Aktualna liczba: {current_quantity}.', 'polski')),
+                    (string) ($settings['min_quantity_message'] ?? __('Minimum number of items per order is {min_quantity}. Current quantity: {current_quantity}.', 'polski')),
                 );
 
                 wc_add_notice($message, 'error');
