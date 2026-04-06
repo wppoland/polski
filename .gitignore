@@ -38,3 +38,14 @@ _benchmark/
 # Debug
 debug.log
 *.log
+
+# Build artifacts / release packages
+*.zip
+messages.mo
+
+# Static analysis dumps
+polski-*.json
+!languages/polski.pot
+
+# JS translation cache (auto-generated)
+languages/polski-*-*.json
