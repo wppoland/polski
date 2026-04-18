@@ -225,15 +225,11 @@ final class ReviewRequestService implements HasHooks
         $optoutUrl = $this->buildOptOutUrl($order);
         $optoutText = (string) ($settings['optout_link_text'] ?? __('Unsubscribe from review requests', 'polski'));
 
-        $message = <<<HTML
-        <div style="max-width:600px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1e293b;">
-            <p>{$intro}</p>
-            {$productRows}
-            <p style="font-size:12px;color:#94a3b8;margin-top:24px;">
-                <a href="{$optoutUrl}" style="color:#94a3b8;">{$optoutText}</a>
-            </p>
-        </div>
-        HTML;
+        $message = '<div style="max-width:600px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,sans-serif;color:#1e293b;">';
+        $message .= '<p>' . $intro . '</p>';
+        $message .= $productRows;
+        $message .= '<p style="font-size:12px;color:#94a3b8;margin-top:24px;"><a href="' . $optoutUrl . '" style="color:#94a3b8;">' . $optoutText . '</a></p>';
+        $message .= '</div>';
 
         return wp_mail($email, $subject, $message, ['Content-Type: text/html; charset=UTF-8']);
     }
@@ -272,15 +268,13 @@ final class ReviewRequestService implements HasHooks
 
             $imgHtml = $image !== '' ? "<img src=\"{$image}\" width=\"64\" height=\"64\" style=\"border-radius:8px;\" alt=\"\">" : '';
 
-            $rows .= <<<HTML
-            <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0;">
-                {$imgHtml}
-                <div style="flex:1;">
-                    <div style="font-weight:600;">{$name}</div>
-                    <a href="{$reviewUrl}" style="display:inline-block;margin-top:4px;padding:6px 16px;background:#0ea5a4;color:#fff;text-decoration:none;border-radius:6px;font-size:13px;">{$ctaText}</a>
-                </div>
-            </div>
-            HTML;
+            $rows .= '<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0;">';
+            $rows .= $imgHtml;
+            $rows .= '<div style="flex:1;">';
+            $rows .= '<div style="font-weight:600;">' . $name . '</div>';
+            $rows .= '<a href="' . $reviewUrl . '" style="display:inline-block;margin-top:4px;padding:6px 16px;background:#0ea5a4;color:#fff;text-decoration:none;border-radius:6px;font-size:13px;">' . esc_html($ctaText) . '</a>';
+            $rows .= '</div>';
+            $rows .= '</div>';
         }
 
         return $rows;

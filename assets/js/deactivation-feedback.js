@@ -46,10 +46,6 @@
                     <div class="polski-modal-footer">
                         <div class="polski-goodbye-message" style="margin-bottom:16px;text-align:left;font-size:13px;color:#666;">
                             <p>${config.i18n.goodbye}</p>
-                            <a href="${config.i18n.githubUrl}" target="_blank" style="text-decoration:none;font-weight:bold;color:#2271b1;">
-                                <span class="dashicons dashicons-external" style="font-size:16px;vertical-align:middle;margin-right:4px;"></span>
-                                ${config.i18n.githubLabel}
-                            </a>
                         </div>
                         <div class="polski-footer-actions">
                             <button id="polski-submit-feedback" class="button button-primary">${config.i18n.submit}</button>

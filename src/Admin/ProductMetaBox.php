@@ -370,15 +370,15 @@ final class ProductMetaBox implements HasHooks
         ];
 
         foreach ($fields as $key => $type) {
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
-            $value = $_POST[$key] ?? '';
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce and capability before this hook fires.
+            $rawValue = isset($_POST[$key]) ? wp_unslash($_POST[$key]) : '';
 
             $sanitized = match ($type) {
-                'float' => (string) (float) $value,
-                'textarea' => sanitize_textarea_field((string) $value),
-                'url' => esc_url_raw((string) $value),
-                'string' => sanitize_text_field((string) $value),
-                'checkbox' => ($value === 'yes') ? 'yes' : 'no',
+                'float' => (string) (float) $rawValue,
+                'textarea' => sanitize_textarea_field((string) $rawValue),
+                'url' => esc_url_raw((string) $rawValue),
+                'string' => sanitize_text_field((string) $rawValue),
+                'checkbox' => ($rawValue === 'yes') ? 'yes' : 'no',
             };
 
             $product->update_meta_data($key, $sanitized);
@@ -429,10 +429,17 @@ final class ProductMetaBox implements HasHooks
      */
     public function saveVariationMeta(int $variationId, int $loop): void
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
-        $productAmount = $_POST['_polski_variation_unit_price_product_amount'][$loop] ?? '';
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        $baseAmount = $_POST['_polski_variation_unit_price_base'][$loop] ?? '';
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce/capability before this hook fires.
+        $productAmountRaw = isset($_POST['_polski_variation_unit_price_product_amount'][$loop])
+            ? wp_unslash($_POST['_polski_variation_unit_price_product_amount'][$loop])
+            : '';
+        $baseAmountRaw = isset($_POST['_polski_variation_unit_price_base'][$loop])
+            ? wp_unslash($_POST['_polski_variation_unit_price_base'][$loop])
+            : '';
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
+
+        $productAmount = sanitize_text_field((string) $productAmountRaw);
+        $baseAmount = sanitize_text_field((string) $baseAmountRaw);
 
         update_post_meta($variationId, '_polski_unit_price_product_amount', (string) (float) $productAmount);
         update_post_meta($variationId, '_polski_unit_price_base', (string) (float) $baseAmount);

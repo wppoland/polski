@@ -138,7 +138,7 @@ final class ProductQAService implements HasHooks
                     $answerDateTs = strtotime((string) $answer->comment_date);
                     $answerDateFormatted = wp_date(get_option('date_format'), $answerDateTs !== false ? $answerDateTs : null);
                     printf(
-                        '<div style="padding:12px 16px;border-top:1px solid #f1f5f9;display:flex;gap:8px;align-items:flex-start"><span style="color:#16a34a;font-weight:700;font-size:16px">A</span><div style="flex:1"><div>%s</div><div style="font-size:12px;color:#94a3b8;margin-top:4px">%s%s - %s | <button onclick="polskiQaVote(%d)" style="background:none;border:none;cursor:pointer;color:#64748b;font-size:12px">%s (%d)</button></div></div></div>',
+                        '<div style="padding:12px 16px;border-top:1px solid #f1f5f9;display:flex;gap:8px;align-items:flex-start"><span style="color:#16a34a;font-weight:700;font-size:16px">A</span><div style="flex:1"><div>%s</div><div style="font-size:12px;color:#94a3b8;margin-top:4px">%s%s - %s | <button type="button" data-polski-qa-vote="%d" style="background:none;border:none;cursor:pointer;color:#64748b;font-size:12px">%s (%d)</button></div></div></div>',
                         wp_kses_post((string) $answer->comment_content),
                         esc_html((string) $answer->comment_author),
                         wp_kses_post($authorBadge),
@@ -184,8 +184,19 @@ final class ProductQAService implements HasHooks
         printf('<button type="submit" style="padding:10px 20px;background:#0369a1;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;white-space:nowrap">%s</button>', esc_html__('Ask', 'polski'));
         echo '</form></div>';
 
-        // Vote JS.
-        echo '<script>function polskiQaVote(id){jQuery.post("' . esc_js(admin_url('admin-ajax.php')) . '",{action:"polski_qa_vote",comment_id:id,nonce:"' . esc_js(wp_create_nonce('polski_qa_vote')) . '"},function(r){if(r.success)location.reload()})}</script>';
+        // Vote JS (enqueued).
+        wp_enqueue_script(
+            'polski-product-qa',
+            plugins_url('assets/js/product-qa.js', \Polski\PLUGIN_FILE),
+            [],
+            \Polski\VERSION,
+            true,
+        );
+
+        wp_localize_script('polski-product-qa', 'polskiQa', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('polski_qa_vote'),
+        ]);
 
         echo '</div>';
     }
@@ -194,16 +205,16 @@ final class ProductQAService implements HasHooks
 
     public function handleQuestionSubmit(): void
     {
-        if (empty($_POST['polski_qa_action']) || $_POST['polski_qa_action'] !== 'question') {
+        if (empty($_POST['polski_qa_action']) || sanitize_key((string) wp_unslash($_POST['polski_qa_action'])) !== 'question') {
             return;
         }
 
-        if (! isset($_POST['_polski_qa_question_nonce']) || ! wp_verify_nonce($_POST['_polski_qa_question_nonce'], 'polski_qa_question')) {
+        if (! isset($_POST['_polski_qa_question_nonce']) || ! wp_verify_nonce(sanitize_text_field((string) wp_unslash($_POST['_polski_qa_question_nonce'])), 'polski_qa_question')) {
             return;
         }
 
         $productId = absint($_POST['product_id'] ?? 0);
-        $text = sanitize_textarea_field($_POST['question_text'] ?? '');
+        $text = sanitize_textarea_field((string) wp_unslash($_POST['question_text'] ?? ''));
 
         if ($productId <= 0 || empty($text)) {
             return;
@@ -223,7 +234,7 @@ final class ProductQAService implements HasHooks
             $commentData['comment_author_email'] = $user->user_email;
         } else {
             $commentData['comment_author'] = __('Customer', 'polski');
-            $commentData['comment_author_email'] = sanitize_email($_POST['question_email'] ?? '');
+            $commentData['comment_author_email'] = sanitize_email((string) wp_unslash($_POST['question_email'] ?? ''));
         }
 
         wp_insert_comment($commentData);
@@ -234,11 +245,11 @@ final class ProductQAService implements HasHooks
 
     public function handleAnswerSubmit(): void
     {
-        if (empty($_POST['polski_qa_action']) || $_POST['polski_qa_action'] !== 'answer') {
+        if (empty($_POST['polski_qa_action']) || sanitize_key((string) wp_unslash($_POST['polski_qa_action'])) !== 'answer') {
             return;
         }
 
-        if (! isset($_POST['_polski_qa_answer_nonce']) || ! wp_verify_nonce($_POST['_polski_qa_answer_nonce'], 'polski_qa_answer')) {
+        if (! isset($_POST['_polski_qa_answer_nonce']) || ! wp_verify_nonce(sanitize_text_field((string) wp_unslash($_POST['_polski_qa_answer_nonce'])), 'polski_qa_answer')) {
             return;
         }
 
@@ -248,7 +259,7 @@ final class ProductQAService implements HasHooks
 
         $questionId = absint($_POST['question_id'] ?? 0);
         $productId = absint($_POST['product_id'] ?? 0);
-        $text = sanitize_textarea_field($_POST['answer_text'] ?? '');
+        $text = sanitize_textarea_field((string) wp_unslash($_POST['answer_text'] ?? ''));
 
         if ($questionId <= 0 || $productId <= 0 || empty($text)) {
             return;
@@ -388,9 +399,9 @@ final class ProductQAService implements HasHooks
             'mainEntity' => $schemaQuestions,
         ];
 
-        printf(
-            '<script type="application/ld+json">%s</script>' . "\n",
-            wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        wp_print_inline_script_tag(
+            (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            ['type' => 'application/ld+json'],
         );
     }
 

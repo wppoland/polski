@@ -1,7 +1,7 @@
 {
     "name": "@wppoland/polski",
-    "version": "1.6.0",
-    "description": "Polish e-commerce legal compliance for WooCommerce",
+    "version": "1.6.2",
+    "description": "Product information, checkout, consent, and storefront tools for WooCommerce stores in Poland",
     "private": true,
     "scripts": {
         "dev": "vite",

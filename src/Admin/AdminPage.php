@@ -17,8 +17,6 @@ final class AdminPage implements Bootable, HasHooks
 {
     private const PAGE_SLUG = 'polski';
     private const CAPABILITY = 'manage_woocommerce';
-    private const GITHUB_DISCUSSIONS_URL = 'https://github.com/wppoland/polski/discussions';
-    private const GITHUB_ISSUES_URL = 'https://github.com/wppoland/polski/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen';
     private const ADMIN_FEEDBACK_OPTION = 'polski_admin_feedback';
     private const ADMIN_FEEDBACK_NONCE_ACTION = 'polski_admin_feedback_nonce';
     private const ADMIN_FEEDBACK_NONCE_FIELD = '_polski_admin_feedback_nonce';
@@ -34,6 +32,7 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
         add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueMenuIconStyle']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
         add_action('admin_post_polski_complete_wizard', [$this, 'handleWizardCompletion']);
         add_action('admin_post_polski_save_module_settings', [$this, 'handleModuleSettingsSave']);
@@ -70,7 +69,7 @@ final class AdminPage implements Bootable, HasHooks
             wp_die(esc_html__('You do not have permission to send feedback.', 'polski'));
         }
 
-        $message = sanitize_textarea_field((string) ($_POST['message'] ?? ''));
+        $message = sanitize_textarea_field((string) wp_unslash($_POST['message'] ?? ''));
         $redirectUrl = wp_get_referer() ?: admin_url('admin.php?page=' . self::PAGE_SLUG);
 
         if ($message === '') {
@@ -85,15 +84,15 @@ final class AdminPage implements Bootable, HasHooks
         }
 
         $currentUser = wp_get_current_user();
-        $name = sanitize_text_field((string) ($_POST['name'] ?? ''));
-        $email = sanitize_email((string) ($_POST['email'] ?? ''));
+        $name = sanitize_text_field((string) wp_unslash($_POST['name'] ?? ''));
+        $email = sanitize_email((string) wp_unslash($_POST['email'] ?? ''));
 
         $feedback[] = [
             'timestamp' => current_time('mysql'),
             'name' => $name !== '' ? $name : $currentUser->display_name,
             'email' => $email !== '' ? $email : $currentUser->user_email,
-            'topic' => sanitize_key((string) ($_POST['topic'] ?? 'general_feedback')),
-            'screen' => sanitize_key((string) ($_POST['admin_screen'] ?? 'dashboard')),
+            'topic' => sanitize_key((string) wp_unslash($_POST['topic'] ?? 'general_feedback')),
+            'screen' => sanitize_key((string) wp_unslash($_POST['admin_screen'] ?? 'dashboard')),
             'message' => $message,
             'plugin_version' => \Polski\VERSION,
             'site_url' => home_url(),
@@ -280,8 +279,6 @@ final class AdminPage implements Bootable, HasHooks
             );
         }
 
-        // Polish flag via CSS.
-        add_action('admin_head', [$this, 'renderMenuIconCSS']);
     }
 
     /**
@@ -295,17 +292,20 @@ final class AdminPage implements Bootable, HasHooks
     {
         unset($parent_file);
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        if (! isset($_GET['page']) || $_GET['page'] !== self::PAGE_SLUG || ! isset($_GET['tab'])) {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin routing context.
+        if (
+            ! isset($_GET['page'], $_GET['tab'])
+            || sanitize_key((string) wp_unslash($_GET['page'])) !== self::PAGE_SLUG
+        ) {
             return $submenu_file;
         }
 
-        $tab = sanitize_key((string) $_GET['tab']);
+        $tab = sanitize_key((string) wp_unslash($_GET['tab']));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         return match ($tab) {
             'modules' => self::PAGE_SLUG . '-modules',
             'reports' => self::PAGE_SLUG . '-reports',
-            'pro-license' => 'polski-pro-license',
             default => $submenu_file,
         };
     }
@@ -340,7 +340,9 @@ final class AdminPage implements Bootable, HasHooks
         echo '<div class="wrap">';
         echo '<h1>Polski &rsaquo; ' . esc_html($groupName) . '</h1>';
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only success flag.
         if (isset($_GET['saved'])) {
+            // phpcs:enable WordPress.Security.NonceVerification.Recommended
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings have been saved.', 'polski') . '</p></div>';
         }
 
@@ -386,28 +388,17 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
-     * Render Polish flag as a CSS-based menu icon.
+     * Enqueue the Polish flag menu icon stylesheet on every admin screen.
      * WordPress overrides SVG fills, so we use a pseudo-element approach.
      */
-    public function renderMenuIconCSS(): void
+    public function enqueueMenuIconStyle(): void
     {
-        echo '<style>
-            #adminmenu .toplevel_page_polski .wp-menu-image::before {
-                content: "" !important;
-                display: block !important;
-                width: 18px;
-                height: 14px;
-                margin: 7px auto 0;
-                border-radius: 2px;
-                background: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
-                border: 1px solid rgba(255,255,255,0.25);
-                box-sizing: border-box;
-            }
-            #adminmenu .toplevel_page_polski:hover .wp-menu-image::before,
-            #adminmenu .toplevel_page_polski.current .wp-menu-image::before {
-                border-color: rgba(255,255,255,0.5);
-            }
-        </style>';
+        wp_enqueue_style(
+            'polski-admin-menu-icon',
+            plugins_url('assets/css/admin-menu-icon.css', PLUGIN_FILE),
+            [],
+            \Polski\VERSION,
+        );
     }
 
     /**
@@ -420,7 +411,7 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
-     * Shared shell: Dashboard, Modules, Reports, and extensible tabs (e.g. Polski Pro license).
+     * Shared shell: Dashboard, Modules, Reports, and extensible tabs.
      */
     private function renderPolskiShell(string $tab): void
     {
@@ -492,10 +483,11 @@ final class AdminPage implements Bootable, HasHooks
             'tab' => 'reports',
         ];
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only routing flag.
         if (isset($_GET['view'])) {
-            $args['view'] = sanitize_key((string) $_GET['view']);
+            $args['view'] = sanitize_key((string) wp_unslash($_GET['view']));
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         wp_safe_redirect(add_query_arg($args, admin_url('admin.php')));
         exit;
@@ -506,11 +498,12 @@ final class AdminPage implements Bootable, HasHooks
      */
     private function renderReportsHubInner(): void
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $view = isset($_GET['view']) ? sanitize_key((string) $_GET['view']) : 'overview';
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only routing flag.
+        $view = isset($_GET['view']) ? sanitize_key((string) wp_unslash($_GET['view'])) : 'overview';
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ($view === 'overview') {
-            echo '<p class="description" style="margin:0 0 16px;">' . esc_html__('Reports, audits, and compliance tools for your store.', 'polski') . '</p>';
+            echo '<p class="description" style="margin:0 0 16px;">' . esc_html__('Reports, audits, and store setup tools for your shop.', 'polski') . '</p>';
             echo '<div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
             echo '<div>';
             $this->renderReportsOverview();
@@ -557,28 +550,27 @@ final class AdminPage implements Bootable, HasHooks
         $formId = 'polski-feedback-form-' . sanitize_html_class($screen);
         $generalSettings = $this->getGeneralSettings();
         $removeDataOnUninstall = (bool) ($generalSettings['remove_data_on_uninstall'] ?? false);
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only UI flags.
+        $feedbackSaved = isset($_GET['polski_feedback_saved']);
+        $feedbackError = isset($_GET['polski_feedback_error']);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         echo '<aside aria-label="' . esc_attr__('Help and feedback', 'polski') . '">';
 
-        // GitHub links first
         echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
-        echo '<h2 style="margin-top:0;">' . esc_html__('Need help or want to report something?', 'polski') . '</h2>';
-        echo '<p style="color:#50575e;">' . esc_html__('Use the path that fits the type of feedback. This keeps support easier for everyone.', 'polski') . '</p>';
-        echo '<p><a class="button" href="' . esc_url(self::GITHUB_ISSUES_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Issues', 'polski') . '</a></p>';
-        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for reproducible bugs and clear technical problems.', 'polski') . '</p>';
-        echo '<p><a class="button" href="' . esc_url(self::GITHUB_DISCUSSIONS_URL) . '" target="_blank" rel="noopener noreferrer">' . esc_html__('Open Discussions', 'polski') . '</a></p>';
-        echo '<p style="margin-top:-4px;color:#646970;font-size:12px;">' . esc_html__('Best for questions, ideas, edge cases, and non-urgent conversations.', 'polski') . '</p>';
+        echo '<h2 style="margin-top:0;">' . esc_html__('Need help?', 'polski') . '</h2>';
+        echo '<p style="color:#50575e;margin-bottom:0;">' . esc_html__('Use the feedback form below for questions, ideas, or workflow problems. Messages stay in WordPress and are not sent to any external service.', 'polski') . '</p>';
         echo '</div>';
 
         // Feedback form - collapsible
         echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
-        $feedbackOpen = isset($_GET['polski_feedback_saved']) || isset($_GET['polski_feedback_error']) ? ' open' : '';
+        $feedbackOpen = ($feedbackSaved || $feedbackError) ? ' open' : '';
         echo '<details' . esc_attr($feedbackOpen) . '>';
         echo '<summary style="cursor:pointer;font-weight:600;font-size:14px;padding:4px 0;">' . esc_html__('Share feedback', 'polski') . '</summary>';
         echo '<p style="color:#50575e;margin-top:12px;">' . esc_html__('Not technical? Send a quick note straight from the plugin. Tell us what feels unclear, what should be easier, or what we should add next.', 'polski') . '</p>';
-        if (isset($_GET['polski_feedback_saved'])) {
+        if ($feedbackSaved) {
             echo '<div class="notice notice-success inline"><p>' . esc_html__('Thanks, your feedback has been saved.', 'polski') . '</p></div>';
-        } elseif (isset($_GET['polski_feedback_error'])) {
+        } elseif ($feedbackError) {
             echo '<div class="notice notice-error inline"><p>' . esc_html__('Please enter your message before sending feedback.', 'polski') . '</p></div>';
         }
 
@@ -670,7 +662,7 @@ final class AdminPage implements Bootable, HasHooks
             ],
         ];
 
-        echo '<p>' . esc_html__('Select a report or tool to check your store compliance status.', 'polski') . '</p>';
+        echo '<p>' . esc_html__('Select a report or tool to review your store setup status.', 'polski') . '</p>';
 
         echo '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:20px;margin-top:20px;">';
 

@@ -16,6 +16,31 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+// Read-only filter parameters from URL query string. The form uses GET (storefront browsing),
+// so a nonce is not appropriate here per WordPress guidance for read-only navigation.
+// All inputs are sanitized before any use or output.
+// phpcs:disable WordPress.Security.NonceVerification.Recommended
+$polski_filter_category  = isset($_GET['polski_filter_category'])  ? sanitize_title((string) wp_unslash($_GET['polski_filter_category']))  : '';
+$polski_filter_brand     = isset($_GET['polski_filter_brand'])     ? sanitize_title((string) wp_unslash($_GET['polski_filter_brand']))     : '';
+$polski_filter_min_price = isset($_GET['polski_filter_min_price']) ? sanitize_text_field((string) wp_unslash($_GET['polski_filter_min_price'])) : '';
+$polski_filter_max_price = isset($_GET['polski_filter_max_price']) ? sanitize_text_field((string) wp_unslash($_GET['polski_filter_max_price'])) : '';
+$polski_filter_stock     = isset($_GET['polski_filter_stock'])     ? sanitize_key((string) wp_unslash($_GET['polski_filter_stock']))       : '';
+$polski_filter_sale      = isset($_GET['polski_filter_sale'])      ? sanitize_key((string) wp_unslash($_GET['polski_filter_sale']))        : '';
+// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+// Numeric coercion for price inputs (allows decimals; empty string preserved when not provided).
+if ($polski_filter_min_price !== '' && is_numeric($polski_filter_min_price)) {
+    $polski_filter_min_price = (string) (float) $polski_filter_min_price;
+} else {
+    $polski_filter_min_price = '';
+}
+
+if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
+    $polski_filter_max_price = (string) (float) $polski_filter_max_price;
+} else {
+    $polski_filter_max_price = '';
+}
+
 ?>
 <form class="polski-ajax-filters" method="get" action="<?php echo esc_url($action_url); ?>" data-polski-ajax-filters>
     <?php if ((bool) ($settings['show_title'] ?? true)) : ?>
@@ -29,7 +54,7 @@ defined('ABSPATH') || exit;
                 <select name="polski_filter_category">
                     <option value=""><?php echo esc_html((string) ($settings['category_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
                     <?php foreach ($categories as $term) : ?>
-                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected(sanitize_title((string) wp_unslash($_GET['polski_filter_category'] ?? '')), $term->slug); ?>>
+                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected($polski_filter_category, $term->slug); ?>>
                             <?php echo esc_html($term->name); ?>
                         </option>
                     <?php endforeach; ?>
@@ -43,7 +68,7 @@ defined('ABSPATH') || exit;
                 <select name="polski_filter_brand">
                     <option value=""><?php echo esc_html((string) ($settings['brand_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
                     <?php foreach ($brands as $term) : ?>
-                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected(sanitize_title((string) wp_unslash($_GET['polski_filter_brand'] ?? '')), $term->slug); ?>>
+                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected($polski_filter_brand, $term->slug); ?>>
                             <?php echo esc_html($term->name); ?>
                         </option>
                     <?php endforeach; ?>
@@ -54,11 +79,11 @@ defined('ABSPATH') || exit;
         <?php if (! empty($settings['show_price'])) : ?>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html((string) ($settings['min_price_label'] ?? __('Cena od', 'polski'))); ?></span>
-                <input type="number" step="0.01" min="0" name="polski_filter_min_price" value="<?php echo esc_attr((string) wp_unslash($_GET['polski_filter_min_price'] ?? '')); ?>">
+                <input type="number" step="0.01" min="0" name="polski_filter_min_price" value="<?php echo esc_attr($polski_filter_min_price); ?>">
             </label>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html((string) ($settings['max_price_label'] ?? __('Cena do', 'polski'))); ?></span>
-                <input type="number" step="0.01" min="0" name="polski_filter_max_price" value="<?php echo esc_attr((string) wp_unslash($_GET['polski_filter_max_price'] ?? '')); ?>">
+                <input type="number" step="0.01" min="0" name="polski_filter_max_price" value="<?php echo esc_attr($polski_filter_max_price); ?>">
             </label>
         <?php endif; ?>
 
@@ -67,7 +92,7 @@ defined('ABSPATH') || exit;
                 <span><?php echo esc_html((string) ($settings['stock_label'] ?? __('Dostępność', 'polski'))); ?></span>
                 <select name="polski_filter_stock">
                     <option value=""><?php echo esc_html((string) ($settings['stock_any_text'] ?? __('Dowolna', 'polski'))); ?></option>
-                    <option value="instock" <?php selected(sanitize_key((string) wp_unslash($_GET['polski_filter_stock'] ?? '')), 'instock'); ?>>
+                    <option value="instock" <?php selected($polski_filter_stock, 'instock'); ?>>
                         <?php echo esc_html((string) ($settings['stock_instock_text'] ?? __('Dostępne od ręki', 'polski'))); ?>
                     </option>
                 </select>
@@ -77,7 +102,7 @@ defined('ABSPATH') || exit;
         <?php if (! empty($settings['show_sale'])) : ?>
             <label class="polski-ajax-filters__field polski-ajax-filters__field--checkbox">
                 <span><?php echo esc_html((string) ($settings['sale_label'] ?? __('Promocje', 'polski'))); ?></span>
-                <input type="checkbox" name="polski_filter_sale" value="1" <?php checked(sanitize_key((string) wp_unslash($_GET['polski_filter_sale'] ?? '')), '1'); ?>>
+                <input type="checkbox" name="polski_filter_sale" value="1" <?php checked($polski_filter_sale, '1'); ?>>
             </label>
         <?php endif; ?>
 
@@ -87,6 +112,8 @@ defined('ABSPATH') || exit;
                 <?php continue; ?>
             <?php endif; ?>
             <?php $param = 'polski_filter_' . $taxonomy; ?>
+            <?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only filter, sanitized below. ?>
+            <?php $polski_filter_attr_value = isset($_GET[$param]) ? sanitize_title((string) wp_unslash($_GET[$param])) : ''; ?>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html(wc_attribute_label($taxonomy)); ?></span>
                 <select name="<?php echo esc_attr($param); ?>">
@@ -95,7 +122,7 @@ defined('ABSPATH') || exit;
                         <?php if (! $term instanceof WP_Term) : ?>
                             <?php continue; ?>
                         <?php endif; ?>
-                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected(sanitize_title((string) wp_unslash($_GET[$param] ?? '')), $term->slug); ?>>
+                        <option value="<?php echo esc_attr($term->slug); ?>" <?php selected($polski_filter_attr_value, $term->slug); ?>>
                             <?php echo esc_html($term->name); ?>
                         </option>
                     <?php endforeach; ?>

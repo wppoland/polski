@@ -1,8 +1,8 @@
 {
     "name": "polski/checkout-legal-checkboxes",
-    "version": "1.6.0",
+    "version": "1.6.2",
     "title": "Legal Checkboxes",
-    "description": "Polish legal compliance checkboxes for checkout.",
+    "description": "Checkout consent and acknowledgement checkboxes for WooCommerce stores in Poland.",
     "category": "woocommerce",
     "parent": ["woocommerce/checkout-totals-block"],
     "script": "file:./index.js",

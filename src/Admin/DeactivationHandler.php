@@ -80,9 +80,7 @@ final class DeactivationHandler implements HasHooks
                 'close'           => __('Keep plugin active', 'polski'),
                 'wait'            => __('Sending...', 'polski'),
                 'validation'      => __('Please choose the main reason before sending feedback.', 'polski'),
-                'goodbye'         => __('Thank you for using Polski! We are sorry to see you go. If you have any ideas on how to make it better, we would love to hear from you.', 'polski'),
-                'githubLabel'     => __('Post new ideas on GitHub', 'polski'),
-                'githubUrl'       => 'https://github.com/WPPoland/polski/issues',
+                'goodbye'         => __('Thank you for using Polski. If you want to tell us what was missing or frustrating, you can leave feedback in the form above before deactivation.', 'polski'),
             ]
         ]);
     }
@@ -98,9 +96,9 @@ final class DeactivationHandler implements HasHooks
             wp_send_json_error(['message' => __('Unauthorized', 'polski')]);
         }
 
-        $reason = sanitize_text_field($_POST['reason'] ?? 'other');
-        $improvement = sanitize_textarea_field($_POST['improvement'] ?? '');
-        $requestedFeature = sanitize_textarea_field($_POST['requested_feature'] ?? '');
+        $reason = sanitize_text_field((string) wp_unslash($_POST['reason'] ?? 'other'));
+        $improvement = sanitize_textarea_field((string) wp_unslash($_POST['improvement'] ?? ''));
+        $requestedFeature = sanitize_textarea_field((string) wp_unslash($_POST['requested_feature'] ?? ''));
 
         $feedback = get_option(self::OPTION_NAME, []);
         if (! is_array($feedback)) {

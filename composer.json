@@ -1,6 +1,6 @@
 {
     "name": "wppoland/polski",
-    "description": "Polish e-commerce legal compliance for WooCommerce",
+    "description": "Product information, checkout, consent, and storefront tools for WooCommerce stores in Poland",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "authors": [

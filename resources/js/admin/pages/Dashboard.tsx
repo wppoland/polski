@@ -37,7 +37,7 @@ export default function Dashboard() {
 
     return (
         <div className="polski-dashboard">
-            {/* Top row: Compliance gauge + stat cards */}
+            {/* Top row: setup gauge + stat cards */}
             <div className="polski-dashboard__top">
                 <Card className="polski-dashboard__gauge-card">
                     <CardBody>
@@ -85,7 +85,7 @@ export default function Dashboard() {
             {data.suggestions.length > 0 && (
                 <Card className="polski-dashboard__card">
                     <CardHeader>
-                        <h2>{__('Compliance Suggestions', 'polski')}</h2>
+                        <h2>{__('Store Setup Suggestions', 'polski')}</h2>
                     </CardHeader>
                     <CardBody>
                         <SuggestionList suggestions={data.suggestions} />

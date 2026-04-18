@@ -98,6 +98,7 @@ final class FilterService implements Bootable, HasHooks
         $taxQuery = is_array($taxQuery) ? $taxQuery : [];
         $metaQuery = is_array($metaQuery) ? $metaQuery : [];
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
         $category = sanitize_title((string) wp_unslash($_GET['polski_filter_category'] ?? ''));
         if ($category !== '') {
             $taxQuery[] = [
@@ -168,6 +169,8 @@ final class FilterService implements Bootable, HasHooks
             $query->set('tax_query', $taxQuery);
         }
 
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
         if ($metaQuery !== []) {
             $query->set('meta_query', $metaQuery);
         }
@@ -206,13 +209,17 @@ final class FilterService implements Bootable, HasHooks
 
         $this->enqueueRenderedAssets();
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
+        $queryKeys = array_keys(wp_unslash($_GET));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
         return $this->templateLoader->render('forms/ajax-filters', [
             'settings' => array_merge($this->getSettings(), $overrides),
             'categories' => $this->getTerms('product_cat'),
             'brands' => $this->getTerms('polski_brand'),
             'attribute_taxonomies' => $this->getAttributeTaxonomies(),
             'action_url' => $this->getActionUrl(),
-            'reset_url' => remove_query_arg(array_keys($_GET)),
+            'reset_url' => remove_query_arg($queryKeys),
         ]);
     }
 

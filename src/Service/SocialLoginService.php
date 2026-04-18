@@ -158,12 +158,14 @@ final class SocialLoginService implements HasHooks
         $provider = $request->get_param('provider');
         $redirectUrl = $this->buildProviderAuthUrl($provider);
 
+        // phpcs:disable WordPressVIPMinimum.Security.SafeRedirect.wp_redirect_wp_redirect, WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- External OAuth providers cannot use wp_safe_redirect().
         if ($redirectUrl) {
             wp_redirect($redirectUrl);
             exit;
         }
+        // phpcs:enable WordPressVIPMinimum.Security.SafeRedirect.wp_redirect_wp_redirect, WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
 
-        wp_redirect(wc_get_account_endpoint_url('dashboard'));
+        wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
         exit;
     }
 
@@ -172,23 +174,26 @@ final class SocialLoginService implements HasHooks
      */
     public function handleOAuthCallback(): void
     {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- OAuth callback verification uses the provider state token.
         if (! isset($_GET['polski_social_callback'], $_GET['provider'], $_GET['code'])) {
+            // phpcs:enable WordPress.Security.NonceVerification.Recommended
             return;
         }
 
-        $provider = sanitize_key($_GET['provider']);
-        $code = sanitize_text_field($_GET['code']);
+        $provider = sanitize_key((string) wp_unslash($_GET['provider']));
+        $code = sanitize_text_field((string) wp_unslash($_GET['code']));
 
         if (! in_array($provider, ['google', 'facebook'], true) || empty($code)) {
             return;
         }
 
         // Verify state nonce.
-        $state = sanitize_text_field($_GET['state'] ?? '');
+        $state = sanitize_text_field((string) wp_unslash($_GET['state'] ?? ''));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (! wp_verify_nonce($state, 'polski_social_' . $provider)) {
             wc_add_notice(__('Social login verification failed. Please try again.', 'polski'), 'error');
-            wp_redirect(wc_get_account_endpoint_url('dashboard'));
+            wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
         }
 
@@ -197,7 +202,7 @@ final class SocialLoginService implements HasHooks
 
         if (! $tokenData) {
             wc_add_notice(__('Could not authenticate with the social provider. Please try again.', 'polski'), 'error');
-            wp_redirect(wc_get_account_endpoint_url('dashboard'));
+            wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
         }
 
@@ -206,7 +211,7 @@ final class SocialLoginService implements HasHooks
 
         if (! $profile || empty($profile['email'])) {
             wc_add_notice(__('Could not retrieve your profile. Please ensure email access is granted.', 'polski'), 'error');
-            wp_redirect(wc_get_account_endpoint_url('dashboard'));
+            wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
         }
 
@@ -215,7 +220,7 @@ final class SocialLoginService implements HasHooks
 
         if (! $user) {
             wc_add_notice(__('Could not create your account. Please try again.', 'polski'), 'error');
-            wp_redirect(wc_get_account_endpoint_url('dashboard'));
+            wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
         }
 
@@ -232,7 +237,7 @@ final class SocialLoginService implements HasHooks
          */
         do_action('polski/social_login/authenticated', $user, $provider, $profile);
 
-        wp_redirect(wc_get_account_endpoint_url('dashboard'));
+        wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
         exit;
     }
 

@@ -1226,166 +1226,6 @@ final class ModulesPage implements HasHooks
                 ],
                 'settings' => [],
             ],
-
-            // === PRO Modules (require Polski PRO plugin) ===
-            [
-                'id' => 'fulfillment',
-                'name' => __('Fulfillment Statuses', 'polski'),
-                'description' => __('Custom order fulfillment statuses: Packed, Shipped, Delivered. Tracking numbers and customer notifications.', 'polski'),
-                'group' => __('PRO - Orders', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-airplane',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'delivery_date',
-                'name' => __('Delivery Date Picker', 'polski'),
-                'description' => __('Let customers choose preferred delivery date at checkout. Block weekends and holidays.', 'polski'),
-                'group' => __('PRO - Orders', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-calendar-alt',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'abandoned_carts',
-                'name' => __('Abandoned Cart Recovery', 'polski'),
-                'description' => __('Track abandoned carts and send automated recovery emails with coupon incentives.', 'polski'),
-                'group' => __('PRO - Orders', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-cart',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'gift_cards',
-                'name' => __('Gift Cards', 'polski'),
-                'description' => __('Sell digital gift cards with unique codes. Recipients redeem at checkout for store credit.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-tickets-alt',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'subscriptions',
-                'name' => __('Subscriptions', 'polski'),
-                'description' => __('Recurring product subscriptions with automatic renewals, pause/resume, and customer management.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-update',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'affiliates',
-                'name' => __('Affiliate Program', 'polski'),
-                'description' => __('Built-in affiliate system with referral tracking, commission management, and payout dashboard.', 'polski'),
-                'group' => __('PRO - Marketing', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-groups',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'pre_order',
-                'name' => __('Pre-Orders', 'polski'),
-                'description' => __('Accept pre-orders for upcoming products. Charge immediately or when product ships.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-clock',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'product_bundles',
-                'name' => __('Product Bundles', 'polski'),
-                'description' => __('Create product bundles and kits with combined pricing and inventory tracking.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-archive',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'product_add_ons',
-                'name' => __('Product Add-Ons', 'polski'),
-                'description' => __('Extra options on product pages: engraving, gift wrapping, custom text. Fixed or percentage pricing.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-plus-alt2',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'frequently_bought_together',
-                'name' => __('Frequently Bought Together', 'polski'),
-                'description' => __('Amazon-style "frequently bought together" recommendations with bundled discount.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-products',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'catalog_mode',
-                'name' => __('Catalog Mode', 'polski'),
-                'description' => __('Hide prices and add-to-cart buttons. Show "Request a quote" instead. Per-product or global.', 'polski'),
-                'group' => __('PRO - Products', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-book',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'ai_descriptions',
-                'name' => __('AI Product Descriptions', 'polski'),
-                'description' => __('Draft product descriptions with AI from your catalog data (Polski Pro; requires your API key).', 'polski'),
-                'tooltip' => __(
-                    'Connects to OpenAI-compatible APIs you configure. Builds draft text from product names, attributes, and categories; supports tone presets, bulk generation, and optional mapping to SEO plugins. Review all output before publishing.',
-                    'polski',
-                ),
-                'group' => __('PRO - Tools', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-edit-large',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'inventory_forecast',
-                'name' => __('Inventory Forecasting', 'polski'),
-                'description' => __('Predict stock run-out dates from recent sales velocity. Adds a forecast column on the product list and a WooCommerce dashboard for inventory planning.', 'polski'),
-                'group' => __('PRO - Analytics', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-chart-area',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
-            [
-                'id' => 'customer_insights',
-                'name' => __('Customer Insights', 'polski'),
-                'description' => __('RFM segmentation, customer lifetime value, and cohort-style analytics in a WooCommerce admin dashboard.', 'polski'),
-                'group' => __('PRO - Analytics', 'polski'),
-                'enabled' => false,
-                'icon' => 'dashicons-groups',
-                'pro' => true,
-                'links' => [],
-                'settings' => [],
-            ],
         ];
 
         // Apply saved states.
@@ -1423,7 +1263,7 @@ final class ModulesPage implements HasHooks
             echo '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px;">';
 
             foreach ($groupModules as $module) {
-                $this->renderModuleCard($module, false);
+                $this->renderModuleCard($module);
             }
 
             echo '</div></div>';
@@ -1434,26 +1274,22 @@ final class ModulesPage implements HasHooks
      * Render a single module card with toggle.
      *
      * @param array<string, mixed> $module
-     * @param bool                 $locked
      */
-    private function renderModuleCard(array $module, bool $locked): void
+    private function renderModuleCard(array $module): void
     {
         $id = $module['id'];
         $enabled = $module['enabled'];
         $hasSettings = ! empty($module['settings']);
-
-        $isPro = ! empty($module['pro']);
-        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '') . ($locked ? ' sp-card--locked' : '') . ($isPro ? ' sp-card--pro' : '');
+        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '');
 
         echo '<div id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($classes) . '">';
 
-        // Header with icon, title, optional Pro badge, and toggle (badge inline so it never covers the toggle).
+        // Header with icon, title, optional help tooltip, and toggle.
         echo '<div class="sp-card__head" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;">';
         echo '<div style="display:flex;align-items:flex-start;gap:8px;min-width:0;flex:1;">';
 
         if (! empty($module['icon'])) {
-            $iconColor = $isPro ? '#8f6a1e' : '#666';
-            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" style="color:' . esc_attr($iconColor) . ';flex-shrink:0;"></span>';
+            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" style="color:#666;flex-shrink:0;"></span>';
         }
 
         echo '<span style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-width:0;">';
@@ -1472,20 +1308,15 @@ final class ModulesPage implements HasHooks
             echo '</span>';
         }
 
-        if ($isPro) {
-            echo '<span class="sp-card__pro-badge" title="' . esc_attr__('Polski Pro module — requires Polski Pro', 'polski') . '">' . esc_html__('Pro', 'polski') . '</span>';
-        }
-
         echo '</span>';
         echo '</div>';
 
         // Toggle switch.
-        echo '<label class="sp-toggle' . ($locked ? ' sp-toggle--locked' : '') . '">';
+        echo '<label class="sp-toggle">';
         printf(
-            '<input type="checkbox" data-polski-module-id="%s" value="1" %s %s>',
+            '<input type="checkbox" data-polski-module-id="%s" value="1" %s>',
             esc_attr($id),
             checked($enabled, true, false),
-            $locked ? 'disabled' : '',
         );
         echo '<span class="sp-toggle__track"></span>';
         echo '<span class="sp-toggle__knob"></span>';
@@ -1519,7 +1350,7 @@ final class ModulesPage implements HasHooks
         }
 
         // Settings link button.
-        if ($hasSettings && $enabled && ! $locked) {
+        if ($hasSettings && $enabled) {
             $settingsUrl = admin_url('admin.php?page=polski-module-' . $id);
             printf(
                 '<div style="margin-top:8px;"><a href="%s" class="button button-small">%s</a></div>',
@@ -1529,7 +1360,7 @@ final class ModulesPage implements HasHooks
         }
 
         // Settings panel (collapsible) — separate form per module so Save is always next to fields.
-        if ($hasSettings && ! $locked) {
+        if ($hasSettings) {
             $detailsId = 'polski-settings-' . $id;
 
             echo '<details id="' . esc_attr($detailsId) . '" style="margin-top:12px;border-top:1px solid #eee;padding-top:10px;">';
@@ -1551,12 +1382,6 @@ final class ModulesPage implements HasHooks
             echo '</p>';
             echo '</form>';
             echo '</details>';
-        }
-
-        if ($locked) {
-            echo '<div style="position:absolute;top:8px;right:8px;">';
-            echo '<span style="font-size:11px;color:#7f54b3;">' . esc_html__('Coming Soon', 'polski') . '</span>';
-            echo '</div>';
         }
 
         echo '</div>';
@@ -1892,101 +1717,30 @@ final class ModulesPage implements HasHooks
     }
 
     /**
-     * Render CSS and JS for toggle switches.
+     * Enqueue CSS and JS for toggle switches on the Polski Modules screen.
      */
     private function renderToggleStyles(): void
     {
-        echo '<style>
-            [id^="polski-module-"]{scroll-margin-top:56px;}
-            .sp-card{background:#fff;border:1px solid #ccd0d4;padding:16px;position:relative;overflow:visible;transition:border-color .2s,box-shadow .2s;}
-            .sp-card--active{border-color:#46b450;}
-            .sp-card--locked{opacity:.7;}
-            .sp-card--pro{
-                border-color:#d4a012;
-                background:linear-gradient(165deg,#fffdf6 0%,#fff 55%);
-                box-shadow:0 1px 0 rgba(212,160,18,.2);
-            }
-            .sp-card--pro.sp-card--active{
-                border-color:#46b450;
-                box-shadow:0 0 0 1px rgba(212,160,18,.35),0 1px 0 rgba(70,180,80,.15);
-            }
-            .sp-card__pro-badge{
-                flex-shrink:0;
-                align-self:center;
-                font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-                line-height:1;padding:3px 7px;border-radius:3px;
-                color:#5c420a;background:linear-gradient(180deg,#f5e6b8 0%,#e8cf7a 100%);
-                border:1px solid #c9a227;
-            }
-            .sp-card__help-wrap{position:relative;display:inline-flex;align-items:center;flex-shrink:0;margin-left:2px;vertical-align:middle;}
-            .sp-card__help{
-                display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
-                margin:0;padding:0;border:0;background:transparent;box-shadow:none;
-                cursor:help;color:#646970;font:inherit;line-height:1;
-                -webkit-appearance:none;appearance:none;
-            }
-            .sp-card__help .dashicons{font-size:18px;width:18px;height:18px;}
-            .sp-card__help:focus{outline:1px solid #2271b1;outline-offset:1px;border-radius:2px;}
-            .sp-card__help-tooltip{
-                display:none;position:absolute;left:0;bottom:100%;margin-bottom:6px;z-index:100050;
-                box-sizing:border-box;min-width:200px;max-width:min(340px, 90vw);
-                padding:8px 10px;background:#1d2327;color:#f0f0f1;font-size:12px;line-height:1.45;font-weight:400;
-                text-align:left;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,.25);
-                pointer-events:none;
-            }
-            .sp-card__help-wrap:hover .sp-card__help-tooltip,
-            .sp-card__help-wrap:focus-within .sp-card__help-tooltip{display:block;}
-            .sp-card__docs-link{color:#2271b1;text-decoration:none;}
-            .sp-card__docs-link:hover,.sp-card__docs-link:focus{text-decoration:underline;}
-            .sp-card__head .sp-toggle{flex-shrink:0;margin-top:0;}
-
-            .sp-toggle{position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;}
-            .sp-toggle input{opacity:0;width:0;height:0;position:absolute;}
-            .sp-toggle__track{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:22px;transition:background .2s;}
-            .sp-toggle__knob{position:absolute;height:18px;width:18px;left:2px;bottom:2px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
-            .sp-toggle input:checked ~ .sp-toggle__track{background:#46b450;}
-            .sp-toggle input:checked ~ .sp-toggle__knob{transform:translateX(18px);}
-            .sp-toggle--locked .sp-toggle__track{cursor:not-allowed;}
-        </style>';
-
-        $toggleScriptConfig = wp_json_encode(
-            [
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce' => wp_create_nonce('polski_modules'),
-                'errorGeneric' => __('Could not save module state. Please try again.', 'polski'),
-            ],
-            JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+        wp_enqueue_style(
+            'polski-admin-modules',
+            plugins_url('assets/css/admin-modules.css', \Polski\PLUGIN_FILE),
+            [],
+            \Polski\VERSION,
         );
 
-        echo '<script>
-        var polskiModules=' . $toggleScriptConfig . ';
-        document.addEventListener("DOMContentLoaded",function(){
-            document.querySelectorAll(".sp-card .sp-toggle input[type=checkbox][data-polski-module-id]").forEach(function(cb){
-                cb.addEventListener("change",function(){
-                    if(this.disabled){return;}
-                    var mid=this.getAttribute("data-polski-module-id");
-                    if(!mid){return;}
-                    var card=this.closest(".sp-card");
-                    if(card){card.classList.toggle("sp-card--active",this.checked);}
-                    var fd=new FormData();
-                    fd.append("action","polski_toggle_module");
-                    fd.append("nonce",polskiModules.nonce);
-                    fd.append("module_id",mid);
-                    fd.append("enabled",this.checked?"1":"0");
-                    fetch(polskiModules.ajaxUrl,{method:"POST",credentials:"same-origin",body:fd})
-                    .then(function(r){return r.json();})
-                    .then(function(data){
-                        if(!data||!data.success){throw new Error("save");}
-                    })
-                    .catch(function(){
-                        cb.checked=!cb.checked;
-                        if(card){card.classList.toggle("sp-card--active",cb.checked);}
-                        window.alert(polskiModules.errorGeneric);
-                    });
-                });
-            });
-        });
-        </script>';
+        wp_enqueue_script(
+            'polski-admin-modules',
+            plugins_url('assets/js/admin-modules.js', \Polski\PLUGIN_FILE),
+            [],
+            \Polski\VERSION,
+            true,
+        );
+
+        wp_localize_script('polski-admin-modules', 'polskiModules', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('polski_modules'),
+            'errorGeneric' => __('Could not save module state. Please try again.', 'polski'),
+        ]);
     }
 
     /**

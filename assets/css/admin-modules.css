@@ -1,0 +1,124 @@
+[id^="polski-module-"] { scroll-margin-top: 56px; }
+
+.sp-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    padding: 16px;
+    position: relative;
+    overflow: visible;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.sp-card--active { border-color: #46b450; }
+
+.sp-card__help-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.sp-card__help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: help;
+    color: #646970;
+    font: inherit;
+    line-height: 1;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.sp-card__help .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.sp-card__help:focus {
+    outline: 1px solid #2271b1;
+    outline-offset: 1px;
+    border-radius: 2px;
+}
+
+.sp-card__help-tooltip {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    margin-bottom: 6px;
+    z-index: 100050;
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: min(340px, 90vw);
+    padding: 8px 10px;
+    background: #1d2327;
+    color: #f0f0f1;
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 400;
+    text-align: left;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+    pointer-events: none;
+}
+
+.sp-card__help-wrap:hover .sp-card__help-tooltip,
+.sp-card__help-wrap:focus-within .sp-card__help-tooltip { display: block; }
+
+.sp-card__docs-link { color: #2271b1; text-decoration: none; }
+.sp-card__docs-link:hover,
+.sp-card__docs-link:focus { text-decoration: underline; }
+
+.sp-card__head .sp-toggle { flex-shrink: 0; margin-top: 0; }
+
+.sp-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.sp-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.sp-toggle__track {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    border-radius: 22px;
+    transition: background .2s;
+}
+
+.sp-toggle__knob {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.sp-toggle input:checked ~ .sp-toggle__track { background: #46b450; }
+.sp-toggle input:checked ~ .sp-toggle__knob { transform: translateX(18px); }

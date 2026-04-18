@@ -158,9 +158,9 @@ final class ProductAuthorService implements HasHooks
             'author' => count($persons) === 1 ? $persons[0] : $persons,
         ];
 
-        printf(
-            '<script type="application/ld+json">%s</script>' . "\n",
-            wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        wp_print_inline_script_tag(
+            (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            ['type' => 'application/ld+json'],
         );
     }
 

@@ -302,9 +302,13 @@ final class CheckoutHooks implements Bootable, HasHooks
             $context['country'] = $customer->get_billing_country();
         }
 
-        // Selected payment method.
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        $context['payment_method'] = sanitize_key($_POST['payment_method'] ?? '');
+        // Selected payment method (read-only context lookup; WooCommerce handles checkout nonce).
+        // phpcs:disable WordPress.Security.NonceVerification.Missing
+        $paymentMethod = isset($_POST['payment_method'])
+            ? wp_unslash($_POST['payment_method'])
+            : '';
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
+        $context['payment_method'] = sanitize_key((string) $paymentMethod);
 
         return $context;
     }

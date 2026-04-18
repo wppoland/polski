@@ -16,6 +16,12 @@ node_modules
 package-lock.json
 package.json
 phpunit.xml.dist
+phpcs.xml.dist
+phpstan-baseline.neon
+phpstan-errors.txt
+phpstan-full.txt
+phpstan-raw-full.txt
+phpstan-raw2.txt
 README.md
 resources
 scripts
@@ -33,4 +39,11 @@ SUPPORT.md
 build/.vite
 .claude
 messages.mo
+languages/*.mo
+languages/*.po
+languages/*.pot
 languages/translate_po.py
+languages/*.po~
+languages/polski-pro.pot
+index.html
+TODO.md

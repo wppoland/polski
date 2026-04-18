@@ -1,0 +1,16 @@
+#adminmenu .toplevel_page_polski .wp-menu-image::before {
+    content: "" !important;
+    display: block !important;
+    width: 18px;
+    height: 14px;
+    margin: 7px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+}
+
+#adminmenu .toplevel_page_polski:hover .wp-menu-image::before,
+#adminmenu .toplevel_page_polski.current .wp-menu-image::before {
+    border-color: rgba(255, 255, 255, 0.5);
+}

@@ -505,7 +505,9 @@ final class CustomCheckoutFieldsService implements HasHooks
 
         echo '<div class="wrap"><h1>' . esc_html__('Custom Checkout Fields', 'polski') . '</h1>';
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only success flag.
         if (isset($_GET['saved'])) {
+            // phpcs:enable WordPress.Security.NonceVerification.Recommended
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Fields saved.', 'polski') . '</p></div>';
         }
 
@@ -534,13 +536,13 @@ final class CustomCheckoutFieldsService implements HasHooks
 
         echo '</tbody></table>';
 
-        echo '<p><button type="button" class="button" onclick="addFieldRow()">' . esc_html__('Add field', 'polski') . '</button></p>';
+        echo '<p><button type="button" class="button" data-polski-cf-add-row>' . esc_html__('Add field', 'polski') . '</button></p>';
 
         submit_button(__('Save fields', 'polski'));
 
         echo '</form>';
 
-        $this->renderAdminScript();
+        $this->enqueueAdminScript();
 
         echo '</div>';
     }
@@ -670,23 +672,15 @@ final class CustomCheckoutFieldsService implements HasHooks
         echo '</td></tr>';
     }
 
-    private function renderAdminScript(): void
+    private function enqueueAdminScript(): void
     {
-        echo '<script>
-        var fieldIndex = document.querySelectorAll("#polski-checkout-fields tbody tr").length;
-        function addFieldRow() {
-            var tbody = document.querySelector("#polski-checkout-fields tbody");
-            var firstRow = tbody.querySelector("tr");
-            var newRow = firstRow.cloneNode(true);
-            newRow.querySelectorAll("input, select").forEach(function(el) {
-                el.name = el.name.replace(/fields\[\d+\]/, "fields[" + fieldIndex + "]");
-                if (el.type === "checkbox") el.checked = false;
-                else if (el.type === "text" || el.type === "number") el.value = el.type === "number" ? "100" : "";
-            });
-            tbody.appendChild(newRow);
-            fieldIndex++;
-        }
-        </script>';
+        wp_enqueue_script(
+            'polski-admin-checkout-fields',
+            plugins_url('assets/js/admin-checkout-fields.js', \Polski\PLUGIN_FILE),
+            [],
+            \Polski\VERSION,
+            true,
+        );
     }
 
     /**
