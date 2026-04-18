@@ -14,8 +14,6 @@ use wpdb;
  */
 final class ConsentLogRepository
 {
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
-
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -94,11 +92,13 @@ final class ConsentLogRepository
      */
     public function findByUser(int $userId, int $limit = 50): array
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table} WHERE user_id = %d ORDER BY created_at DESC LIMIT %d",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE user_id = %d ORDER BY created_at DESC LIMIT %d',
+                $this->tableName(),
                 $userId,
                 $limit,
             ),
@@ -119,11 +119,13 @@ final class ConsentLogRepository
      */
     public function findBySession(string $sessionId): array
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table} WHERE session_id = %s ORDER BY created_at ASC",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE session_id = %s ORDER BY created_at ASC',
+                $this->tableName(),
                 $sessionId,
             ),
         );
@@ -143,62 +145,74 @@ final class ConsentLogRepository
      */
     public function getStats(int $days = 30): array
     {
+        global $wpdb;
+
         $table = $this->tableName();
         $sinceTs = strtotime("-{$days} days");
         $since = gmdate('Y-m-d H:i:s', $sinceTs !== false ? $sinceTs : time());
 
         // Total consent records.
-        $totalRecords = (int) $this->wpdb->get_var(
-            $this->wpdb->prepare(
-                "SELECT COUNT(*) FROM {$table} WHERE created_at >= %s",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $totalRecords = (int) $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT COUNT(*) FROM %i WHERE created_at >= %s',
+                $table,
                 $since,
             ),
         );
 
         // Consented vs declined.
-        $consentedCount = (int) $this->wpdb->get_var(
-            $this->wpdb->prepare(
-                "SELECT COUNT(*) FROM {$table} WHERE consented = 1 AND created_at >= %s",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $consentedCount = (int) $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT COUNT(*) FROM %i WHERE consented = 1 AND created_at >= %s',
+                $table,
                 $since,
             ),
         );
 
         // Consents per checkbox.
-        $perCheckbox = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT checkbox_id,
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $perCheckbox = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT checkbox_id,
                         SUM(consented = 1) AS accepted,
                         SUM(consented = 0) AS declined,
                         COUNT(*) AS total
-                 FROM {$table}
+                 FROM %i
                  WHERE created_at >= %s
                  GROUP BY checkbox_id
-                 ORDER BY total DESC",
+                 ORDER BY total DESC',
+                $table,
                 $since,
             ),
         );
 
         // Daily consent trend (last N days).
-        $dailyTrend = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT DATE(created_at) AS date,
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $dailyTrend = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT DATE(created_at) AS date,
                         COUNT(*) AS total,
                         SUM(consented = 1) AS accepted
-                 FROM {$table}
+                 FROM %i
                  WHERE created_at >= %s
                  GROUP BY DATE(created_at)
-                 ORDER BY date ASC",
+                 ORDER BY date ASC',
+                $table,
                 $since,
             ),
         );
 
         // Consents by context.
-        $byContext = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT context, COUNT(*) AS total, SUM(consented = 1) AS accepted
-                 FROM {$table}
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $byContext = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT context, COUNT(*) AS total, SUM(consented = 1) AS accepted
+                 FROM %i
                  WHERE created_at >= %s
-                 GROUP BY context",
+                 GROUP BY context',
+                $table,
                 $since,
             ),
         );
@@ -246,7 +260,9 @@ final class ConsentLogRepository
      */
     private function getClientIp(): ?string
     {
-        $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? ''));
+        $ip = isset($_SERVER['REMOTE_ADDR'])
+            ? sanitize_text_field((string) wp_unslash($_SERVER['REMOTE_ADDR']))
+            : '';
 
         if ($ip === '') {
             return null;
@@ -266,9 +282,9 @@ final class ConsentLogRepository
 
     private function getUserAgent(): ?string
     {
-        $ua = sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'] ?? ''));
+        $ua = isset($_SERVER['HTTP_USER_AGENT'])
+            ? sanitize_text_field((string) wp_unslash($_SERVER['HTTP_USER_AGENT']))
+            : '';
         return $ua !== '' ? mb_substr($ua, 0, 500) : null;
     }
-
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

@@ -2,8 +2,8 @@
 /**
  * Single product safety information (GPSR, safety docs, instructions).
  *
- * @var string      $safety_html The safety information HTML.
- * @var WC_Product  $product     The product object.
+ * @var string      $polski_safety_html The safety information HTML.
+ * @var WC_Product  $polski_product     The product object.
  *
  * @package Polski/Templates
  */
@@ -12,4 +12,4 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-echo $safety_html;
+echo $polski_safety_html;

@@ -40,23 +40,31 @@ final class GPSRService implements HasHooks
             return;
         }
 
-        if (! $product instanceof \WC_Product) {
-            global $product;
-        }
+        $resolvedProduct = $product instanceof \WC_Product ? $product : null;
 
-        if (! $product instanceof \WC_Product) {
-            $queriedProductId = get_the_ID();
-
-            if (is_numeric($queriedProductId) && (int) $queriedProductId > 0) {
-                $product = wc_get_product((int) $queriedProductId);
+        if ($resolvedProduct === null) {
+            $globalProduct = $GLOBALS['product'] ?? null;
+            if ($globalProduct instanceof \WC_Product) {
+                $resolvedProduct = $globalProduct;
             }
         }
 
-        if (! $product instanceof \WC_Product) {
+        if ($resolvedProduct === null) {
+            $queriedProductId = get_the_ID();
+
+            if (is_numeric($queriedProductId) && (int) $queriedProductId > 0) {
+                $candidate = wc_get_product((int) $queriedProductId);
+                if ($candidate instanceof \WC_Product) {
+                    $resolvedProduct = $candidate;
+                }
+            }
+        }
+
+        if ($resolvedProduct === null) {
             return;
         }
 
-        $data = $this->getGPSRData($product);
+        $data = $this->getGPSRData($resolvedProduct);
 
         // Only render if at least one field is filled.
         $hasData = array_filter($data, static fn (string $value): bool => $value !== '');

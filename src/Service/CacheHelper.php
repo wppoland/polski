@@ -27,6 +27,7 @@ final class CacheHelper
 
         // LiteSpeed Cache.
         if (class_exists(\LiteSpeed\Purge::class)) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official LiteSpeed Cache integration hook.
             do_action('litespeed_purge_all');
         }
 

@@ -12,20 +12,20 @@ defined('WP_UNINSTALL_PLUGIN') || exit;
 
 global $wpdb;
 
-$generalSettings = get_option('polski_general', []);
-$generalSettings = is_array($generalSettings) ? $generalSettings : [];
+$polski_general_settings = get_option('polski_general', []);
+$polski_general_settings = is_array($polski_general_settings) ? $polski_general_settings : [];
 
-$deleteData = (bool) apply_filters(
+$polski_delete_data = (bool) apply_filters(
     'polski/uninstall/delete_data',
-    (bool) ($generalSettings['remove_data_on_uninstall'] ?? false),
+    (bool) ($polski_general_settings['remove_data_on_uninstall'] ?? false),
 );
 
-if (! $deleteData) {
+if (! $polski_delete_data) {
     return;
 }
 
 // Drop custom tables.
-$tables = [
+$polski_tables = [
     $wpdb->prefix . 'polski_price_history',
     $wpdb->prefix . 'polski_consent_log',
     $wpdb->prefix . 'polski_withdrawals',
@@ -36,39 +36,46 @@ $tables = [
     $wpdb->prefix . 'polski_migrations',
 ];
 
-foreach ($tables as $table) {
-    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
-    $wpdb->query("DROP TABLE IF EXISTS {$table}");
+foreach ($polski_tables as $polski_table) {
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Uninstall cleanup of custom plugin tables, prepared statement.
+    $wpdb->query($wpdb->prepare('DROP TABLE IF EXISTS %i', $polski_table));
 }
 
 // Remove plugin options.
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of plugin options, prepared statement.
 $wpdb->query(
     $wpdb->prepare(
-        "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+        'DELETE FROM %i WHERE option_name LIKE %s',
+        $wpdb->options,
         'polski\_%',
     ),
 );
 
 // Remove product meta.
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of plugin post meta, prepared statement.
 $wpdb->query(
     $wpdb->prepare(
-        "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s",
+        'DELETE FROM %i WHERE meta_key LIKE %s',
+        $wpdb->postmeta,
         '\_polski\_%',
     ),
 );
 
 // Remove order meta (HPOS).
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; schema probe on HPOS table, prepared statement.
 if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->prefix . 'wc_orders_meta')) !== null) {
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of HPOS order meta, prepared statement.
     $wpdb->query(
         $wpdb->prepare(
-            "DELETE FROM {$wpdb->prefix}wc_orders_meta WHERE meta_key LIKE %s",
+            'DELETE FROM %i WHERE meta_key LIKE %s',
+            $wpdb->prefix . 'wc_orders_meta',
             '\_polski\_%',
         ),
     );
 }
 
 // Remove custom taxonomy terms.
-$taxonomies = [
+$polski_taxonomies = [
     'polski_delivery_time',
     'polski_manufacturer',
     'polski_unit',
@@ -76,12 +83,12 @@ $taxonomies = [
     'polski_nutrient',
 ];
 
-foreach ($taxonomies as $taxonomy) {
-    $terms = get_terms(['taxonomy' => $taxonomy, 'hide_empty' => false, 'fields' => 'ids']);
+foreach ($polski_taxonomies as $taxonomy) {
+    $polski_terms = get_terms(['taxonomy' => $taxonomy, 'hide_empty' => false, 'fields' => 'ids']);
 
-    if (is_array($terms)) {
-        foreach ($terms as $termId) {
-            wp_delete_term((int) $termId, $taxonomy);
+    if (is_array($polski_terms)) {
+        foreach ($polski_terms as $polski_term_id) {
+            wp_delete_term((int) $polski_term_id, $taxonomy);
         }
     }
 }

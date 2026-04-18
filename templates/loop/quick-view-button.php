@@ -2,8 +2,8 @@
 /**
  * Loop quick view button.
  *
- * @var \Polski\Service\QuickViewService $service
- * @var \WC_Product                           $product
+ * @var \Polski\Service\QuickViewService $polski_service
+ * @var \WC_Product                           $polski_product
  *
  * @package Polski/Templates
  */
@@ -18,8 +18,8 @@ defined('ABSPATH') || exit;
         type="button"
         class="button polski-quick-view-button"
         data-polski-quick-view
-        data-product-id="<?php echo esc_attr((string) $product->get_id()); ?>"
+        data-product-id="<?php echo esc_attr((string) $polski_product->get_id()); ?>"
     >
-        <?php echo esc_html($service->getButtonText()); ?>
+        <?php echo esc_html($polski_service->getButtonText()); ?>
     </button>
 </div>

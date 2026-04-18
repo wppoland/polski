@@ -212,8 +212,8 @@ final class SecurityIncidentService implements HasHooks
 
         check_admin_referer('polski_update_security_incident', '_polski_security_update_nonce');
 
-        $incidentId = sanitize_text_field((string) ($_POST['incident_id'] ?? ''));
-        $status = sanitize_key((string) ($_POST['status'] ?? 'open'));
+        $incidentId = isset($_POST['incident_id']) ? sanitize_text_field((string) wp_unslash($_POST['incident_id'])) : '';
+        $status = isset($_POST['status']) ? sanitize_key((string) wp_unslash($_POST['status'])) : 'open';
         $allowedStatuses = ['open', 'investigating', 'monitoring', 'resolved'];
 
         if ($incidentId === '' || ! in_array($status, $allowedStatuses, true)) {

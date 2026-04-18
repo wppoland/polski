@@ -53,8 +53,19 @@ final class TemplateLoader
          */
         $args = apply_filters('polski/template/args', $args, $template);
 
-        // phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Template variable extraction is intentional.
-        extract($args, EXTR_SKIP);
+        // Prefix every template variable with `polski_` to keep templates within
+        // the plugin's variable namespace (per WordPress.org coding standards).
+        $polski_args = [];
+        foreach ($args as $polski_args_key => $polski_args_value) {
+            if (! is_string($polski_args_key) || $polski_args_key === '') {
+                continue;
+            }
+            $polski_args[str_starts_with($polski_args_key, 'polski_') ? $polski_args_key : 'polski_' . $polski_args_key] = $polski_args_value;
+        }
+
+        unset($args, $polski_args_key, $polski_args_value);
+
+        extract($polski_args, EXTR_SKIP); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 
         include $path;
     }

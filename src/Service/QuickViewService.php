@@ -110,7 +110,13 @@ final class QuickViewService implements Bootable, HasHooks
     {
         check_ajax_referer('polski_quick_view', 'nonce');
 
-        $productId = (int) wp_unslash($_GET['product_id'] ?? $_POST['product_id'] ?? 0);
+        if (isset($_GET['product_id'])) {
+            $productId = absint(wp_unslash($_GET['product_id']));
+        } elseif (isset($_POST['product_id'])) {
+            $productId = absint(wp_unslash($_POST['product_id']));
+        } else {
+            $productId = 0;
+        }
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {
@@ -235,6 +241,7 @@ final class QuickViewService implements Bootable, HasHooks
             return '';
         }
 
+        // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WooCommerce single add-to-cart rendering relies on the global product object.
         $previousProduct = $GLOBALS['product'] ?? null;
         $GLOBALS['product'] = $product;
 
@@ -247,6 +254,7 @@ final class QuickViewService implements Bootable, HasHooks
         } else {
             unset($GLOBALS['product']);
         }
+        // phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
         return $html;
     }

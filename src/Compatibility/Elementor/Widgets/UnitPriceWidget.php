@@ -27,7 +27,7 @@ final class UnitPriceWidget extends BaseProductWidget
         $html = $this->container()->get(\Polski\Service\PriceDisplayService::class)->getUnitPriceHtml($product);
 
         if ($html !== '') {
-            echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo wp_kses_post($html);
         }
     }
 }

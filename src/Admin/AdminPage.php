@@ -135,17 +135,17 @@ final class AdminPage implements Bootable, HasHooks
         check_admin_referer('polski_complete_wizard', '_polski_wizard_nonce');
 
         $payload = [
-            'company_name' => sanitize_text_field((string) ($_POST['company_name'] ?? '')),
-            'company_address' => sanitize_text_field((string) ($_POST['company_address'] ?? '')),
-            'company_nip' => sanitize_text_field((string) ($_POST['company_nip'] ?? '')),
-            'company_email' => sanitize_email((string) ($_POST['company_email'] ?? '')),
-            'company_phone' => sanitize_text_field((string) ($_POST['company_phone'] ?? '')),
+            'company_name' => isset($_POST['company_name']) ? sanitize_text_field((string) wp_unslash($_POST['company_name'])) : '',
+            'company_address' => isset($_POST['company_address']) ? sanitize_text_field((string) wp_unslash($_POST['company_address'])) : '',
+            'company_nip' => isset($_POST['company_nip']) ? sanitize_text_field((string) wp_unslash($_POST['company_nip'])) : '',
+            'company_email' => isset($_POST['company_email']) ? sanitize_email((string) wp_unslash($_POST['company_email'])) : '',
+            'company_phone' => isset($_POST['company_phone']) ? sanitize_text_field((string) wp_unslash($_POST['company_phone'])) : '',
             'terms_enabled' => ! empty($_POST['terms_enabled']),
             'privacy_enabled' => ! empty($_POST['privacy_enabled']),
             'withdrawal_enabled' => ! empty($_POST['withdrawal_enabled']),
             'digital_waiver_enabled' => ! empty($_POST['digital_waiver_enabled']),
             'marketing_enabled' => ! empty($_POST['marketing_enabled']),
-            'order_button_text' => sanitize_text_field((string) ($_POST['order_button_text'] ?? '')),
+            'order_button_text' => isset($_POST['order_button_text']) ? sanitize_text_field((string) wp_unslash($_POST['order_button_text'])) : '',
             'generate_legal_pages' => ! empty($_POST['generate_legal_pages']),
             'omnibus_enabled' => ! empty($_POST['omnibus_enabled']),
         ];
@@ -178,8 +178,8 @@ final class AdminPage implements Bootable, HasHooks
 
         check_admin_referer('polski_save_module_settings', '_polski_module_nonce');
 
-        $moduleId = sanitize_text_field((string) ($_POST['module_id'] ?? ''));
-        $groupSlug = sanitize_text_field((string) ($_POST['group_slug'] ?? ''));
+        $moduleId = isset($_POST['module_id']) ? sanitize_text_field((string) wp_unslash($_POST['module_id'])) : '';
+        $groupSlug = isset($_POST['group_slug']) ? sanitize_text_field((string) wp_unslash($_POST['group_slug'])) : '';
         $postSettings = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- individual values sanitized below
 
         if (is_array($postSettings)) {

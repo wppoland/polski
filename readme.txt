@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -231,6 +231,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * Fixed: Replaced internal `wp_redirect()` calls with `wp_safe_redirect()` where the target stays on-site
 * Fixed: Removed HEREDOC usage from review request emails for better Plugin Check compatibility
 * Fixed: Replaced all remaining inline `<script>` tags (DataLayer events, JSON-LD schema) with `wp_print_inline_script_tag()` / `wp_print_script_tag()`
+* Fixed: Refactored repository queries to use `$wpdb->prepare()` with `%i` table-name placeholder (eliminates table-name interpolation suppressions)
+* Fixed: Replaced raw `echo $html` in Elementor widgets with `wp_kses_post()`
+* Fixed: Prefixed all template variables with `polski_` to satisfy WordPress.org naming conventions
+* Fixed: Removed dozens of phpcs:ignore suppressions in favour of real fixes
 
 = 1.6.1 =
 * Fixed: Moved inline admin CSS and JS to enqueued asset files (wp_enqueue_style / wp_enqueue_script)

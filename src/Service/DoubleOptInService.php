@@ -113,7 +113,7 @@ final class DoubleOptInService implements Bootable, HasHooks
             return;
         }
 
-        $userId = (int) wp_unslash($_GET['polski_doi']);
+        $userId = absint(wp_unslash($_GET['polski_doi']));
         $token = sanitize_text_field((string) wp_unslash($_GET['token']));
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -148,6 +148,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         $cutoff = time() - ($this->cleanupDays * DAY_IN_SECONDS);
 
         $users = get_users([
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for cleanup cron: find unactivated accounts older than cutoff.
             'meta_query' => [
                 'relation' => 'AND',
                 [

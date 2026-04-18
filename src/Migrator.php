@@ -64,9 +64,10 @@ final class Migrator
     {
         global $wpdb;
 
-        $table = $wpdb->prefix . 'polski_migrations';
+        $table = esc_sql($wpdb->prefix . 'polski_migrations');
 
         // Table might not exist during first activation.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Schema probe on custom plugin table, prepared statement below.
         $tableExists = $wpdb->get_var(
             $wpdb->prepare('SHOW TABLES LIKE %s', $table),
         );
@@ -76,8 +77,10 @@ final class Migrator
         }
 
         /** @var list<string> */
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is internal, not user input.
-        return $wpdb->get_col("SELECT version FROM {$table} ORDER BY id ASC");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        return $wpdb->get_col(
+            $wpdb->prepare('SELECT version FROM %i ORDER BY id ASC', $table),
+        );
     }
 
     /**
@@ -95,6 +98,7 @@ final class Migrator
     {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, using $wpdb->insert() with typed placeholders.
         $wpdb->insert(
             $wpdb->prefix . 'polski_migrations',
             [

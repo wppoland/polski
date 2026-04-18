@@ -147,7 +147,7 @@ final class CompareService implements Bootable, HasHooks
             wp_send_json_error(['message' => $this->getLoginRequiredText()], 403);
         }
 
-        $productId = (int) wp_unslash($_POST['product_id'] ?? 0);
+        $productId = isset($_POST['product_id']) ? absint(wp_unslash($_POST['product_id'])) : 0;
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {

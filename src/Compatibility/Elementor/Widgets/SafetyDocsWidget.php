@@ -27,7 +27,7 @@ final class SafetyDocsWidget extends BaseProductWidget
         $html = $this->container()->get(\Polski\Service\ProductInfoService::class)->getSafetyDocumentsHtml($product);
 
         if ($html !== '') {
-            echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo wp_kses_post($html);
         }
     }
 }

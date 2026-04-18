@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -40,6 +41,8 @@ final class OrderExportService implements HasHooks
     public function renderPage(): void
     {
         $statuses = wc_get_order_statuses();
+        $defaultDateFrom = wp_date('Y-m-01');
+        $defaultDateTo = wp_date('Y-m-d');
 
         $availableFields = [
             'order_id' => __('Order ID', 'polski'),
@@ -90,9 +93,9 @@ final class OrderExportService implements HasHooks
 
         // Date range.
         echo '<tr><th>' . esc_html__('Date range', 'polski') . '</th><td>';
-        echo '<input type="date" name="date_from" value="' . esc_attr(date('Y-m-01')) . '"> ';
+        echo '<input type="date" name="date_from" value="' . esc_attr($defaultDateFrom) . '"> ';
         echo esc_html__('to', 'polski') . ' ';
-        echo '<input type="date" name="date_to" value="' . esc_attr(date('Y-m-d')) . '">';
+        echo '<input type="date" name="date_to" value="' . esc_attr($defaultDateTo) . '">';
         echo '</td></tr>';
 
         // Status filter.
@@ -141,10 +144,33 @@ final class OrderExportService implements HasHooks
 
         check_admin_referer('polski_order_export', '_polski_oe_nonce');
 
-        $dateFrom = sanitize_text_field($_POST['date_from'] ?? date('Y-m-01'));
-        $dateTo = sanitize_text_field($_POST['date_to'] ?? date('Y-m-d'));
-        $statuses = array_map('sanitize_text_field', $_POST['statuses'] ?? ['wc-processing', 'wc-completed']);
-        $fields = array_values(array_map('sanitize_key', $_POST['fields'] ?? ['order_id', 'order_date', 'order_total']));
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Admin referer verified above.
+        $dateFrom = isset($_POST['date_from'])
+            ? sanitize_text_field((string) wp_unslash($_POST['date_from']))
+            : wp_date('Y-m-01');
+        $dateTo = isset($_POST['date_to'])
+            ? sanitize_text_field((string) wp_unslash($_POST['date_to']))
+            : wp_date('Y-m-d');
+
+        $statuses = ['wc-processing', 'wc-completed'];
+        if (isset($_POST['statuses']) && is_array($_POST['statuses'])) {
+            $statuses = [];
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each item is sanitized in the loop body.
+            foreach (wp_unslash($_POST['statuses']) as $value) {
+                $statuses[] = sanitize_text_field((string) $value);
+            }
+        }
+
+        $fields = ['order_id', 'order_date', 'order_total'];
+        if (isset($_POST['fields']) && is_array($_POST['fields'])) {
+            $fields = [];
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each item is sanitized in the loop body.
+            foreach (wp_unslash($_POST['fields']) as $value) {
+                $fields[] = sanitize_key((string) $value);
+            }
+            $fields = array_values($fields);
+        }
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
 
         update_option('polski_order_export_fields', $fields);
 
@@ -168,7 +194,7 @@ final class OrderExportService implements HasHooks
             exit;
         }
 
-        fwrite($output, "\xEF\xBB\xBF"); // BOM.
+        echo "\xEF\xBB\xBF"; // BOM.
 
         // Header row.
         $headers = array_map(fn ($f) => $this->getFieldLabel($f), $fields);
@@ -179,7 +205,6 @@ final class OrderExportService implements HasHooks
             fputcsv($output, $row, ';');
         }
 
-        fclose($output);
         exit;
     }
 

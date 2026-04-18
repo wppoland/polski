@@ -14,8 +14,6 @@ use wpdb;
  */
 final class WithdrawalRepository
 {
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
-
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -55,10 +53,15 @@ final class WithdrawalRepository
 
     public function findById(int $id): ?WithdrawalRequest
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare("SELECT * FROM {$table} WHERE id = %d", $id),
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE id = %d',
+                $this->tableName(),
+                $id,
+            ),
         );
 
         return $row !== null ? WithdrawalRequest::fromRow($row) : null;
@@ -66,11 +69,13 @@ final class WithdrawalRepository
 
     public function findByOrder(int $orderId): ?WithdrawalRequest
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table} WHERE order_id = %d ORDER BY requested_at DESC LIMIT 1",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE order_id = %d ORDER BY requested_at DESC LIMIT 1',
+                $this->tableName(),
                 $orderId,
             ),
         );
@@ -83,21 +88,25 @@ final class WithdrawalRepository
      */
     public function findAll(int $limit = 50, int $offset = 0, ?WithdrawalStatus $status = null): array
     {
-        $table = $this->tableName();
+        global $wpdb;
 
         if ($status !== null) {
-            $rows = $this->wpdb->get_results(
-                $this->wpdb->prepare(
-                    "SELECT * FROM {$table} WHERE status = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            $rows = $wpdb->get_results(
+                $wpdb->prepare(
+                    'SELECT * FROM %i WHERE status = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                    $this->tableName(),
                     $status->value,
                     $limit,
                     $offset,
                 ),
             );
         } else {
-            $rows = $this->wpdb->get_results(
-                $this->wpdb->prepare(
-                    "SELECT * FROM {$table} ORDER BY requested_at DESC LIMIT %d OFFSET %d",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            $rows = $wpdb->get_results(
+                $wpdb->prepare(
+                    'SELECT * FROM %i ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                    $this->tableName(),
                     $limit,
                     $offset,
                 ),
@@ -133,15 +142,15 @@ final class WithdrawalRepository
 
     public function countByStatus(WithdrawalStatus $status): int
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        return (int) $this->wpdb->get_var(
-            $this->wpdb->prepare(
-                "SELECT COUNT(*) FROM {$table} WHERE status = %s",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        return (int) $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT COUNT(*) FROM %i WHERE status = %s',
+                $this->tableName(),
                 $status->value,
             ),
         );
     }
-
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

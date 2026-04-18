@@ -16,8 +16,6 @@ use wpdb;
  */
 abstract class AbstractProductListRepository
 {
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
-
     public function __construct(
         protected readonly wpdb $wpdb,
     ) {
@@ -81,12 +79,14 @@ abstract class AbstractProductListRepository
 
     public function exists(int $productId, ?int $userId, ?string $sessionId): bool
     {
-        $table = $this->tableName();
+        global $wpdb;
 
         if ($userId !== null) {
-            return (int) $this->wpdb->get_var(
-                $this->wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$table} WHERE product_id = %d AND user_id = %d",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            return (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    'SELECT COUNT(*) FROM %i WHERE product_id = %d AND user_id = %d',
+                    $this->tableName(),
                     $productId,
                     $userId,
                 ),
@@ -94,9 +94,11 @@ abstract class AbstractProductListRepository
         }
 
         if ($sessionId !== null) {
-            return (int) $this->wpdb->get_var(
-                $this->wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$table} WHERE product_id = %d AND session_id = %s",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            return (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    'SELECT COUNT(*) FROM %i WHERE product_id = %d AND session_id = %s',
+                    $this->tableName(),
                     $productId,
                     $sessionId,
                 ),
@@ -111,23 +113,46 @@ abstract class AbstractProductListRepository
      */
     public function findAll(?int $userId, ?string $sessionId): array
     {
-        $table = $this->tableName();
-        $order = $this->defaultOrder();
+        global $wpdb;
+
+        $isAsc = $this->defaultOrder() === 'ASC';
 
         if ($userId !== null) {
-            $rows = $this->wpdb->get_results(
-                $this->wpdb->prepare(
-                    "SELECT * FROM {$table} WHERE user_id = %d ORDER BY created_at {$order}",
-                    $userId,
-                ),
-            );
+            $rows = $isAsc
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+                ? $wpdb->get_results(
+                    $wpdb->prepare(
+                        'SELECT * FROM %i WHERE user_id = %d ORDER BY created_at ASC',
+                        $this->tableName(),
+                        $userId,
+                    ),
+                )
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+                : $wpdb->get_results(
+                    $wpdb->prepare(
+                        'SELECT * FROM %i WHERE user_id = %d ORDER BY created_at DESC',
+                        $this->tableName(),
+                        $userId,
+                    ),
+                );
         } elseif ($sessionId !== null) {
-            $rows = $this->wpdb->get_results(
-                $this->wpdb->prepare(
-                    "SELECT * FROM {$table} WHERE session_id = %s ORDER BY created_at {$order}",
-                    $sessionId,
-                ),
-            );
+            $rows = $isAsc
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+                ? $wpdb->get_results(
+                    $wpdb->prepare(
+                        'SELECT * FROM %i WHERE session_id = %s ORDER BY created_at ASC',
+                        $this->tableName(),
+                        $sessionId,
+                    ),
+                )
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+                : $wpdb->get_results(
+                    $wpdb->prepare(
+                        'SELECT * FROM %i WHERE session_id = %s ORDER BY created_at DESC',
+                        $this->tableName(),
+                        $sessionId,
+                    ),
+                );
         } else {
             return [];
         }
@@ -142,21 +167,25 @@ abstract class AbstractProductListRepository
 
     public function count(?int $userId, ?string $sessionId): int
     {
-        $table = $this->tableName();
+        global $wpdb;
 
         if ($userId !== null) {
-            return (int) $this->wpdb->get_var(
-                $this->wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$table} WHERE user_id = %d",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            return (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    'SELECT COUNT(*) FROM %i WHERE user_id = %d',
+                    $this->tableName(),
                     $userId,
                 ),
             );
         }
 
         if ($sessionId !== null) {
-            return (int) $this->wpdb->get_var(
-                $this->wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$table} WHERE session_id = %s",
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            return (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    'SELECT COUNT(*) FROM %i WHERE session_id = %s',
+                    $this->tableName(),
                     $sessionId,
                 ),
             );
@@ -180,14 +209,16 @@ abstract class AbstractProductListRepository
 
     public function transferSessionToUser(string $sessionId, int $userId): void
     {
-        $this->wpdb->query(
-            $this->wpdb->prepare(
-                "UPDATE {$this->tableName()} SET user_id = %d WHERE session_id = %s AND (user_id IS NULL OR user_id = 0)",
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $wpdb->query(
+            $wpdb->prepare(
+                'UPDATE %i SET user_id = %d WHERE session_id = %s AND (user_id IS NULL OR user_id = 0)',
+                $this->tableName(),
                 $userId,
                 $sessionId,
             ),
         );
     }
-
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

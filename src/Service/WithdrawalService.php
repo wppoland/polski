@@ -342,11 +342,14 @@ final class WithdrawalService implements Bootable, HasHooks
         }
 
         // POST: process the confirmed withdrawal.
+        $requestMethod = isset($_SERVER['REQUEST_METHOD'])
+            ? sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD']))
+            : '';
         if (
-            $_SERVER['REQUEST_METHOD'] === 'POST'
+            $requestMethod === 'POST'
             && isset($_POST['_polski_confirm_withdrawal'])
             && wp_verify_nonce(
-                sanitize_text_field(wp_unslash($_POST['_polski_confirm_withdrawal'])),
+                sanitize_text_field((string) wp_unslash($_POST['_polski_confirm_withdrawal'])),
                 'polski_confirm_withdrawal_' . $orderId,
             )
         ) {

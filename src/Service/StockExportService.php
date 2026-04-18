@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -116,12 +117,26 @@ final class StockExportService implements HasHooks
 
         check_admin_referer('polski_stock_export', '_polski_export_nonce');
 
-        $fields = array_values(array_map('sanitize_key', $_POST['fields'] ?? ['id', 'sku', 'name', 'stock']));
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Admin referer verified above.
+        $fields = ['id', 'sku', 'name', 'stock'];
+        if (isset($_POST['fields']) && is_array($_POST['fields'])) {
+            $fields = [];
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each item is sanitized in the loop body.
+            foreach (wp_unslash($_POST['fields']) as $value) {
+                $fields[] = sanitize_key((string) $value);
+            }
+            $fields = array_values($fields);
+        }
+        $stockCompare = isset($_POST['stock_compare'])
+            ? sanitize_key((string) wp_unslash($_POST['stock_compare']))
+            : '';
+        $stockValue = isset($_POST['stock_value'])
+            ? absint(wp_unslash($_POST['stock_value']))
+            : 0;
         $managedOnly = ! empty($_POST['managed_only']);
         $includeVariations = ! empty($_POST['include_variations']);
-        $stockCompare = sanitize_key($_POST['stock_compare'] ?? '');
-        $stockValue = (int) ($_POST['stock_value'] ?? 0);
         $isPreview = isset($_POST['preview']);
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
 
         // Save field selection.
         update_option('polski_stock_export_fields', $fields);
@@ -214,7 +229,7 @@ final class StockExportService implements HasHooks
      */
     private function outputCsv(array $products, array $fields): void
     {
-        $filename = 'stock_export_' . date('Y-m-d') . '.csv';
+        $filename = 'stock_export_' . wp_date('Y-m-d') . '.csv';
 
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $filename . '"');
@@ -227,7 +242,7 @@ final class StockExportService implements HasHooks
         }
 
         // BOM for Excel.
-        fwrite($output, "\xEF\xBB\xBF");
+        echo "\xEF\xBB\xBF";
 
         // Header row.
         $headers = $this->getFieldLabels($fields);
@@ -238,7 +253,6 @@ final class StockExportService implements HasHooks
             fputcsv($output, $row, ';');
         }
 
-        fclose($output);
         exit;
     }
 

@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -125,9 +126,10 @@ final class ExpertReviewService implements HasHooks
             return;
         }
 
-        $productId = absint($_POST['expert_review_product_id'] ?? 0);
-        $rating = min(10, max(0, (float) ($_POST['expert_review_rating'] ?? 0)));
-        $verdict = sanitize_text_field((string) wp_unslash($_POST['expert_review_verdict'] ?? ''));
+        $productId = isset($_POST['expert_review_product_id']) ? absint(wp_unslash($_POST['expert_review_product_id'])) : 0;
+        $ratingInput = isset($_POST['expert_review_rating']) ? sanitize_text_field((string) wp_unslash($_POST['expert_review_rating'])) : '0';
+        $rating = min(10.0, max(0.0, (float) $ratingInput));
+        $verdict = isset($_POST['expert_review_verdict']) ? sanitize_text_field((string) wp_unslash($_POST['expert_review_verdict'])) : '';
 
         update_post_meta($postId, self::META_PRODUCT, $productId);
         update_post_meta($postId, self::META_RATING, $rating);
@@ -266,7 +268,9 @@ final class ExpertReviewService implements HasHooks
         $query = new \WP_Query([
             'post_type' => self::CPT,
             'post_status' => 'publish',
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Filtering reviews by plugin's product meta key; acceptable scope (per-product list).
             'meta_key' => self::META_PRODUCT,
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Filtering reviews by plugin's product meta value; acceptable scope (per-product list).
             'meta_value' => $productId,
             'posts_per_page' => 10,
             'orderby' => 'date',

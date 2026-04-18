@@ -84,8 +84,10 @@ final class ReviewRequestService implements HasHooks
 
         $orders = wc_get_orders([
             'status' => 'completed',
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for cron: pick orders scheduled for review request (meta key).
             'meta_key' => self::META_KEY,
             'meta_compare' => 'LIKE',
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Required for cron: pick orders scheduled for review request (meta value).
             'meta_value' => 'scheduled:',
             'limit' => 50,
             'orderby' => 'date',

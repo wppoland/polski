@@ -41,13 +41,18 @@ final class DPATrackerService implements HasHooks
             check_admin_referer(self::NONCE_ACTION, self::NONCE_FIELD);
 
             $registry = [];
-            $submittedServices = $_POST['polski_dpa'] ?? [];
 
-            if (is_array($submittedServices)) {
+            if (isset($_POST['polski_dpa']) && is_array($_POST['polski_dpa'])) {
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each nested value is sanitized inside the loop below.
+                $submittedServices = wp_unslash($_POST['polski_dpa']);
+
                 foreach ($submittedServices as $serviceKey => $serviceData) {
-                    $registry[sanitize_key($serviceKey)] = [
+                    if (! is_array($serviceData)) {
+                        continue;
+                    }
+                    $registry[sanitize_key((string) $serviceKey)] = [
                         'has_dpa' => ! empty($serviceData['has_dpa']),
-                        'notes'   => sanitize_textarea_field($serviceData['notes'] ?? ''),
+                        'notes'   => sanitize_textarea_field((string) ($serviceData['notes'] ?? '')),
                     ];
                 }
             }
