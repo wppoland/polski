@@ -223,6 +223,12 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 
 == Changelog ==
 
+= 1.6.3 =
+* Fixed: Added per-line `phpcs:ignore` annotations with justifications on all `$wpdb` custom-table calls (repositories, Migrator, DSAService, uninstall.php)
+* Fixed: Added `phpcs:ignore` annotations on `meta_key` / `meta_value` / `meta_query` / `tax_query` lookups in service classes (ExpertReview, DoubleOptIn, SocialLogin, ReviewRequest, Faq)
+* Fixed: Added `phpcs:ignore` on WooCommerce email header/footer `do_action()` invocations in email templates
+* Result: Plugin Check now reports 0 errors and 0 warnings on the built release package
+
 = 1.6.2 =
 * Fixed: Softened plugin description and FAQ wording to avoid implying legal compliance or legal guarantees
 * Fixed: Documented Google OAuth, Facebook OAuth, and Google Tag Manager / Google Analytics in External Services
@@ -305,6 +311,9 @@ This plugin provides technical tools and templates for WooCommerce stores. It do
 WPPoland bears no responsibility for any legal, financial, regulatory, or other consequences arising from the use of this plugin. By installing and activating this plugin, you acknowledge that you do so entirely at your own risk.
 
 == Upgrade Notice ==
+
+= 1.6.3 =
+Plugin Check cleanup: annotated custom-table queries with justifications. No functional changes.
 
 = 1.6.2 =
 WordPress.org review hardening update: safer input handling, expanded external service disclosure, and revised readme wording.
