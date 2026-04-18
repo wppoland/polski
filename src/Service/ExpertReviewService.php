@@ -113,7 +113,7 @@ final class ExpertReviewService implements HasHooks
 
     public function saveMetaBoxes(int $postId): void
     {
-        if (! isset($_POST['_polski_er_nonce']) || ! wp_verify_nonce($_POST['_polski_er_nonce'], 'polski_expert_review')) {
+        if (! isset($_POST['_polski_er_nonce']) || ! wp_verify_nonce(sanitize_text_field((string) wp_unslash($_POST['_polski_er_nonce'])), 'polski_expert_review')) {
             return;
         }
 
@@ -121,9 +121,13 @@ final class ExpertReviewService implements HasHooks
             return;
         }
 
+        if (! current_user_can('edit_post', $postId)) {
+            return;
+        }
+
         $productId = absint($_POST['expert_review_product_id'] ?? 0);
         $rating = min(10, max(0, (float) ($_POST['expert_review_rating'] ?? 0)));
-        $verdict = sanitize_text_field($_POST['expert_review_verdict'] ?? '');
+        $verdict = sanitize_text_field((string) wp_unslash($_POST['expert_review_verdict'] ?? ''));
 
         update_post_meta($postId, self::META_PRODUCT, $productId);
         update_post_meta($postId, self::META_RATING, $rating);
@@ -248,9 +252,9 @@ final class ExpertReviewService implements HasHooks
             'review' => $schemaReviews,
         ];
 
-        printf(
-            '<script type="application/ld+json">%s</script>' . "\n",
-            wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        wp_print_inline_script_tag(
+            (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            ['type' => 'application/ld+json'],
         );
     }
 

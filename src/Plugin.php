@@ -16,7 +16,6 @@ final class Plugin
     private static ?self $instance = null;
     private Container $container;
     private bool $booted = false;
-    private bool $textDomainLoaded = false;
 
     private function __construct()
     {
@@ -46,7 +45,9 @@ final class Plugin
         // Store self in container for cross-references.
         $this->container->instance(self::class, $this);
 
-        $this->ensureTextDomainLoaded();
+        // Translations are loaded automatically by WordPress for .org-hosted
+        // plugins (since WP 4.6). Just-in-time loading triggers on first
+        // gettext call, so no explicit load_plugin_textdomain() is required.
 
         // Load service definitions.
         $this->loadServiceDefinitions();
@@ -84,12 +85,13 @@ final class Plugin
             return $determined_locale;
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing context.
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin routing context.
         if (empty($_GET['page'])) {
             return $determined_locale;
         }
 
         $page = sanitize_key((string) wp_unslash($_GET['page']));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ($page !== 'polski' && ! str_starts_with($page, 'polski-')) {
             return $determined_locale;
@@ -161,42 +163,6 @@ final class Plugin
                 $service->registerHooks();
             }
         }
-    }
-
-    /**
-     * Load plugin text domain for translations.
-     */
-    public function loadTextDomain(): void
-    {
-        if ($this->textDomainLoaded) {
-            return;
-        }
-
-        $this->textDomainLoaded = true;
-
-        load_plugin_textdomain(
-            'polski',
-            false,
-            dirname(plugin_basename(PLUGIN_FILE)) . '/languages',
-        );
-    }
-
-    /**
-     * Load translations on init (or defer one tick if boot ever runs earlier).
-     */
-    private function ensureTextDomainLoaded(): void
-    {
-        if ($this->textDomainLoaded) {
-            return;
-        }
-
-        if (did_action('init')) {
-            $this->loadTextDomain();
-
-            return;
-        }
-
-        add_action('init', [$this, 'loadTextDomain'], 0);
     }
 
     private function syncInstalledVersion(): void

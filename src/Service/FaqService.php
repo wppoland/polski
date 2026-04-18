@@ -159,10 +159,12 @@ final class FaqService implements HasHooks
                 'mainEntity' => $schemaItems,
             ];
 
-            $output .= sprintf(
-                '<script type="application/ld+json">%s</script>',
-                wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            ob_start();
+            wp_print_inline_script_tag(
+                (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                ['type' => 'application/ld+json'],
             );
+            $output .= (string) ob_get_clean();
         }
 
         return $output;

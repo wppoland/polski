@@ -223,7 +223,7 @@ export default function SetupWizard() {
                             label={__('Order Button Text', 'polski')}
                             value={data.order_button_text}
                             onChange={(v) => update('order_button_text', v)}
-                            help={__('Polish law requires clear payment obligation text.', 'polski')}
+                            help={__('Use a clear payment obligation text for the final order button.', 'polski')}
                         />
                         <ToggleControl
                             label={__('Omnibus Directive', 'polski')}
@@ -250,7 +250,7 @@ export default function SetupWizard() {
                     <CardBody>
                         {completed ? (
                             <div className="polski-wizard__done">
-                                <p>{__('Your store is now configured for Polish legal compliance.', 'polski')}</p>
+                                <p>{__('Your store setup is ready for review.', 'polski')}</p>
                                 <Button variant="primary" href="#/">
                                     {__('Go to Dashboard', 'polski')}
                                 </Button>

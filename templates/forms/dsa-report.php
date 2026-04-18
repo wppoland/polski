@@ -21,11 +21,13 @@ $reasons = [
 ?>
 <div class="polski-dsa-report-form">
 
+    <?php // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only success flag. ?>
     <?php if (isset($_GET['polski_dsa_sent'])) : ?>
         <div class="polski-dsa-report-form__success">
             <p><?php echo esc_html__('Dziękujemy! Twoje zgłoszenie zostało wysłane i zostanie rozpatrzone.', 'polski'); ?></p>
         </div>
     <?php endif; ?>
+    <?php // phpcs:enable WordPress.Security.NonceVerification.Recommended ?>
 
     <h3><?php echo esc_html($settings['form_title'] ?? __('Zgłoś nielegalne treści (DSA)', 'polski')); ?></h3>
 

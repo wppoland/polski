@@ -239,7 +239,11 @@ final class CompareService implements Bootable, HasHooks
 
     public function renderArchiveCompare(): void
     {
-        if (! (is_shop() || is_post_type_archive('product')) || ! isset($_GET['polski_compare'])) {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only display toggle.
+        $showCompare = isset($_GET['polski_compare']);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+        if (! (is_shop() || is_post_type_archive('product')) || ! $showCompare) {
             return;
         }
 

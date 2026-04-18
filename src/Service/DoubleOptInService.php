@@ -108,12 +108,14 @@ final class DoubleOptInService implements Bootable, HasHooks
      */
     public function handleActivation(): void
     {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verification is handled by the activation token itself.
         if (! isset($_GET['polski_doi'], $_GET['token'])) {
             return;
         }
 
-        $userId = (int) $_GET['polski_doi'];
-        $token = sanitize_text_field(wp_unslash($_GET['token']));
+        $userId = (int) wp_unslash($_GET['polski_doi']);
+        $token = sanitize_text_field((string) wp_unslash($_GET['token']));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $storedToken = get_user_meta($userId, '_polski_doi_token', true);
 

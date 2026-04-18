@@ -26,7 +26,7 @@ export default function SuggestionList({ suggestions }: Props) {
     if (suggestions.length === 0) {
         return (
             <div className="polski-suggestions__empty">
-                {__('All good! No compliance issues found.', 'polski')}
+                {__('All good! No store checklist issues found.', 'polski')}
             </div>
         );
     }

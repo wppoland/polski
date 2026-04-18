@@ -74,18 +74,18 @@ final class DataLayerService implements HasHooks
      */
     public function initDataLayer(): void
     {
-        echo '<script>window.dataLayer=window.dataLayer||[];</script>' . "\n";
+        wp_print_inline_script_tag('window.dataLayer=window.dataLayer||[];');
 
         $ga4Id = $this->getSettings()['ga4_measurement_id'] ?? '';
 
         if (! empty($ga4Id)) {
-            printf(
-                '<script async src="https://www.googletagmanager.com/gtag/js?id=%s"></script>' . "\n",
-                esc_attr($ga4Id),
-            );
-            printf(
-                '<script>function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","%s");</script>' . "\n",
-                esc_js($ga4Id),
+            wp_print_script_tag([
+                'src' => 'https://www.googletagmanager.com/gtag/js?id=' . rawurlencode($ga4Id),
+                'async' => true,
+            ]);
+            wp_print_inline_script_tag(
+                'function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config",'
+                . wp_json_encode($ga4Id) . ');',
             );
         }
     }
@@ -101,9 +101,9 @@ final class DataLayerService implements HasHooks
             return;
         }
 
-        printf(
-            "<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','%s');</script>\n<!-- End Google Tag Manager -->\n",
-            esc_js($containerId),
+        wp_print_inline_script_tag(
+            "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',"
+            . wp_json_encode($containerId) . ');',
         );
     }
 
@@ -139,9 +139,9 @@ final class DataLayerService implements HasHooks
         $item['index'] = (int) ($woocommerce_loop['loop'] ?? 0);
         $item['item_list_name'] = is_search() ? 'Search Results' : 'Product List';
 
-        printf(
-            '<script>window.dataLayer.push({event:"view_item_list",ecommerce:{items:[%s]}});</script>',
-            wp_json_encode($item),
+        wp_print_inline_script_tag(
+            'window.dataLayer.push({event:"view_item_list",ecommerce:{items:['
+            . wp_json_encode($item) . ']}});',
         );
     }
 
@@ -158,11 +158,17 @@ final class DataLayerService implements HasHooks
 
         $item = $this->buildItemData($product);
 
-        printf(
-            '<script>window.dataLayer.push({event:"view_item",ecommerce:{currency:"%s",value:%s,items:[%s]}});</script>',
-            esc_js(get_woocommerce_currency()),
-            esc_js(wc_format_decimal($product->get_price(), 2)),
-            wp_json_encode($item),
+        $payload = [
+            'event' => 'view_item',
+            'ecommerce' => [
+                'currency' => get_woocommerce_currency(),
+                'value' => (float) wc_format_decimal($product->get_price(), 2),
+                'items' => [$item],
+            ],
+        ];
+
+        wp_print_inline_script_tag(
+            'window.dataLayer.push(' . wp_json_encode($payload) . ');',
         );
     }
 
@@ -176,29 +182,29 @@ final class DataLayerService implements HasHooks
         }
 
         $useSku = $this->getSettings()['use_sku_as_id'] ?? false;
+        $currency = get_woocommerce_currency();
 
-        ?>
-        <script>
-        (function(){
-            var useSku = <?php echo $useSku ? 'true' : 'false'; ?>;
-            jQuery(document.body).on('added_to_cart',function(e,fragments,hash,$btn){
-                var $item = $btn.closest('.product,.type-product');
-                var id = $btn.data('product_id') || $item.find('.add_to_cart_button').data('product_id') || '';
-                var name = $item.find('.woocommerce-loop-product__title, .product_title').first().text().trim();
-                var price = $item.find('.woocommerce-Price-amount').first().text().replace(/[^\d.,]/g,'').replace(',','.');
-                window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:'<?php echo esc_js(get_woocommerce_currency()); ?>',value:parseFloat(price)||0,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:1}]}});
-            });
-            jQuery(document).on('submit','form.cart',function(){
-                var $f = jQuery(this);
-                var id = $f.find('input[name="product_id"]').val() || $f.find('button[name="add-to-cart"]').val() || '';
-                var name = jQuery('.product_title').first().text().trim();
-                var price = jQuery('.woocommerce-Price-amount').first().text().replace(/[^\d.,]/g,'').replace(',','.');
-                var qty = parseInt($f.find('input[name="quantity"]').val()) || 1;
-                window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:'<?php echo esc_js(get_woocommerce_currency()); ?>',value:(parseFloat(price)||0)*qty,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:qty}]}});
-            });
-        })();
-        </script>
-        <?php
+        $script = "(function(){"
+            . "var useSku=" . ($useSku ? 'true' : 'false') . ";"
+            . "var currency=" . wp_json_encode($currency) . ";"
+            . "jQuery(document.body).on('added_to_cart',function(e,fragments,hash,\$btn){"
+            . "var \$item=\$btn.closest('.product,.type-product');"
+            . "var id=\$btn.data('product_id')||\$item.find('.add_to_cart_button').data('product_id')||'';"
+            . "var name=\$item.find('.woocommerce-loop-product__title, .product_title').first().text().trim();"
+            . "var price=\$item.find('.woocommerce-Price-amount').first().text().replace(/[^\\d.,]/g,'').replace(',','.');"
+            . "window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:currency,value:parseFloat(price)||0,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:1}]}});"
+            . "});"
+            . "jQuery(document).on('submit','form.cart',function(){"
+            . "var \$f=jQuery(this);"
+            . "var id=\$f.find('input[name=\"product_id\"]').val()||\$f.find('button[name=\"add-to-cart\"]').val()||'';"
+            . "var name=jQuery('.product_title').first().text().trim();"
+            . "var price=jQuery('.woocommerce-Price-amount').first().text().replace(/[^\\d.,]/g,'').replace(',','.');"
+            . "var qty=parseInt(\$f.find('input[name=\"quantity\"]').val())||1;"
+            . "window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:currency,value:(parseFloat(price)||0)*qty,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:qty}]}});"
+            . "});"
+            . "})();";
+
+        wp_print_inline_script_tag($script);
     }
 
     /**
@@ -226,11 +232,17 @@ final class DataLayerService implements HasHooks
             $value += (float) $product->get_price() * (int) $cartItem['quantity'];
         }
 
-        printf(
-            '<script>window.dataLayer.push({event:"begin_checkout",ecommerce:{currency:"%s",value:%s,items:%s}});</script>',
-            esc_js(get_woocommerce_currency()),
-            esc_js(wc_format_decimal($value, 2)),
-            wp_json_encode($items),
+        $payload = [
+            'event' => 'begin_checkout',
+            'ecommerce' => [
+                'currency' => get_woocommerce_currency(),
+                'value' => (float) wc_format_decimal($value, 2),
+                'items' => $items,
+            ],
+        ];
+
+        wp_print_inline_script_tag(
+            'window.dataLayer.push(' . wp_json_encode($payload) . ');',
         );
     }
 
@@ -280,9 +292,8 @@ final class DataLayerService implements HasHooks
             'items' => $items,
         ];
 
-        printf(
-            '<script>window.dataLayer.push({event:"purchase",ecommerce:%s});</script>',
-            wp_json_encode($ecommerce),
+        wp_print_inline_script_tag(
+            'window.dataLayer.push({event:"purchase",ecommerce:' . wp_json_encode($ecommerce) . '});',
         );
 
         $order->update_meta_data('_polski_datalayer_tracked', '1');
@@ -298,14 +309,12 @@ final class DataLayerService implements HasHooks
             return;
         }
 
-        ?>
-        <script>
-        jQuery(document.body).on('removed_from_cart',function(e,fragments,hash,$btn){
-            var name = $btn.closest('tr').find('.product-name a').first().text().trim();
-            window.dataLayer.push({event:'remove_from_cart',ecommerce:{items:[{item_name:name}]}});
-        });
-        </script>
-        <?php
+        wp_print_inline_script_tag(
+            "jQuery(document.body).on('removed_from_cart',function(e,fragments,hash,\$btn){"
+            . "var name=\$btn.closest('tr').find('.product-name a').first().text().trim();"
+            . "window.dataLayer.push({event:'remove_from_cart',ecommerce:{items:[{item_name:name}]}});"
+            . "});"
+        );
     }
 
     // ── Helpers ──────────────────────────────────────────
