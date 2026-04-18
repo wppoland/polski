@@ -2,8 +2,8 @@
 /**
  * Single product GPSR (General Product Safety Regulation) information.
  *
- * @var array<string, string> $data     GPSR field values.
- * @var array<string, mixed>  $settings GPSR module settings.
+ * @var array<string, string> $polski_data     GPSR field values.
+ * @var array<string, mixed>  $polski_settings GPSR module settings.
  *
  * @package Polski/Templates
  */
@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-$labels = [
+$polski_labels = [
     'manufacturer_name'    => __('Producent', 'polski'),
     'manufacturer_address' => __('Adres producenta', 'polski'),
     'importer_name'        => __('Importer', 'polski'),
@@ -28,10 +28,10 @@ $labels = [
             <?php esc_html_e('Bezpieczeństwo produktu (GPSR)', 'polski'); ?>
         </summary>
         <dl class="polski-gpsr-info__list">
-            <?php foreach ($data as $key => $value) : ?>
-                <?php if ($value !== '') : ?>
-                    <dt class="polski-gpsr-info__term"><?php echo esc_html($labels[$key] ?? $key); ?></dt>
-                    <dd class="polski-gpsr-info__description"><?php echo esc_html($value); ?></dd>
+            <?php foreach ($polski_data as $polski_key => $polski_value) : ?>
+                <?php if ($polski_value !== '') : ?>
+                    <dt class="polski-gpsr-info__term"><?php echo esc_html($polski_labels[$polski_key] ?? $polski_key); ?></dt>
+                    <dd class="polski-gpsr-info__description"><?php echo esc_html($polski_value); ?></dd>
                 <?php endif; ?>
             <?php endforeach; ?>
         </dl>

@@ -13,8 +13,6 @@ use wpdb;
  */
 final class WaitlistRepository
 {
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
-
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -50,9 +48,13 @@ final class WaitlistRepository
 
     public function findByProductAndEmail(int $productId, string $email): ?WaitlistSubscription
     {
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare(
-                'SELECT * FROM ' . $this->tableName() . ' WHERE product_id = %d AND email = %s LIMIT 1',
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE product_id = %d AND email = %s LIMIT 1',
+                $this->tableName(),
                 $productId,
                 $email,
             ),
@@ -66,9 +68,13 @@ final class WaitlistRepository
      */
     public function findPendingByProduct(int $productId): array
     {
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                'SELECT * FROM ' . $this->tableName() . ' WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
+                $this->tableName(),
                 $productId,
             ),
         );
@@ -92,6 +98,4 @@ final class WaitlistRepository
             ['%d'],
         );
     }
-
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }

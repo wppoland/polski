@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/polski/forms/dsa-report.php.
  *
- * @var array<string, mixed> $settings DSA module settings.
+ * @var array<string, mixed> $polski_settings DSA module settings.
  *
  * @package Polski/Templates
  */
@@ -12,7 +12,7 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-$reasons = [
+$polski_reasons = [
     'illegal_content' => __('Nielegalne treści', 'polski'),
     'illegal_product' => __('Nielegalny produkt', 'polski'),
     'misleading_ad'   => __('Wprowadzająca w błąd reklama', 'polski'),
@@ -29,10 +29,10 @@ $reasons = [
     <?php endif; ?>
     <?php // phpcs:enable WordPress.Security.NonceVerification.Recommended ?>
 
-    <h3><?php echo esc_html($settings['form_title'] ?? __('Zgłoś nielegalne treści (DSA)', 'polski')); ?></h3>
+    <h3><?php echo esc_html($polski_settings['form_title'] ?? __('Zgłoś nielegalne treści (DSA)', 'polski')); ?></h3>
 
     <p class="polski-dsa-report-form__intro">
-        <?php echo esc_html($settings['form_intro'] ?? __('Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA).', 'polski')); ?>
+        <?php echo esc_html($polski_settings['form_intro'] ?? __('Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA).', 'polski')); ?>
     </p>
 
     <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
@@ -58,8 +58,8 @@ $reasons = [
             <label for="polski-dsa-reason"><?php echo esc_html__('Powód zgłoszenia', 'polski'); ?> <abbr class="required" title="<?php echo esc_attr__('wymagane', 'polski'); ?>">*</abbr></label>
             <select id="polski-dsa-reason" name="reason" required>
                 <option value=""><?php echo esc_html__('— Wybierz powód —', 'polski'); ?></option>
-                <?php foreach ($reasons as $reasonValue => $reasonLabel) : ?>
-                    <option value="<?php echo esc_attr($reasonValue); ?>"><?php echo esc_html($reasonLabel); ?></option>
+                <?php foreach ($polski_reasons as $polski_reasonValue => $polski_reasonLabel) : ?>
+                    <option value="<?php echo esc_attr($polski_reasonValue); ?>"><?php echo esc_html($polski_reasonLabel); ?></option>
                 <?php endforeach; ?>
             </select>
         </p>

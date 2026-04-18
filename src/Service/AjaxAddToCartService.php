@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -121,6 +122,7 @@ final class AjaxAddToCartService implements HasHooks
             }
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official WooCommerce validation hook.
         $passedValidation = apply_filters('woocommerce_add_to_cart_validation', true, $productId, $quantity, $variationId, $variation);
 
         if (! $passedValidation) {
@@ -136,6 +138,7 @@ final class AjaxAddToCartService implements HasHooks
             wp_send_json_error(['message' => __('Could not add to cart.', 'polski')]);
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official WooCommerce post-add-to-cart hook.
         do_action('woocommerce_ajax_added_to_cart', $productId);
 
         // Return updated cart fragments.

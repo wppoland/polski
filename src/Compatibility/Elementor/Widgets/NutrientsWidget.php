@@ -27,7 +27,7 @@ final class NutrientsWidget extends BaseProductWidget
         $html = $this->container()->get(\Polski\Service\FoodService::class)->getNutrientsHtml($product);
 
         if ($html !== '') {
-            echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo wp_kses_post($html);
         }
     }
 }

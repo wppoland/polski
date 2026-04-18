@@ -117,7 +117,9 @@ final class FilterService implements Bootable, HasHooks
             ];
         }
 
-        $minPrice = wc_format_decimal((string) wp_unslash($_GET['polski_filter_min_price'] ?? ''));
+        $minPrice = isset($_GET['polski_filter_min_price'])
+            ? wc_format_decimal(sanitize_text_field((string) wp_unslash($_GET['polski_filter_min_price'])))
+            : '';
         if ($minPrice !== '') {
             $metaQuery[] = [
                 'key' => '_price',
@@ -127,7 +129,9 @@ final class FilterService implements Bootable, HasHooks
             ];
         }
 
-        $maxPrice = wc_format_decimal((string) wp_unslash($_GET['polski_filter_max_price'] ?? ''));
+        $maxPrice = isset($_GET['polski_filter_max_price'])
+            ? wc_format_decimal(sanitize_text_field((string) wp_unslash($_GET['polski_filter_max_price'])))
+            : '';
         if ($maxPrice !== '') {
             $metaQuery[] = [
                 'key' => '_price',

@@ -58,7 +58,7 @@ final class DSAService implements HasHooks
         }
 
         global $wpdb;
-        $table = $wpdb->prefix . 'polski_dsa_reports';
+        $table = esc_sql($wpdb->prefix . 'polski_dsa_reports');
 
         $data = [
             'reporter_name'  => sanitize_text_field(wp_unslash($_POST['reporter_name'] ?? '')),
@@ -70,6 +70,7 @@ final class DSAService implements HasHooks
             'created_at'     => current_time('mysql'),
         ];
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Writing custom DSA reports table.
         $wpdb->insert($table, $data);
         $reportId = (int) $wpdb->insert_id;
 
@@ -120,29 +121,34 @@ final class DSAService implements HasHooks
         // Handle status update.
         if (isset($_POST['report_id'], $_POST['new_status'], $_POST['_polski_dsa_admin_nonce'])) {
             if (wp_verify_nonce(
-                sanitize_text_field(wp_unslash($_POST['_polski_dsa_admin_nonce'])),
+                sanitize_text_field((string) wp_unslash($_POST['_polski_dsa_admin_nonce'])),
                 'polski_dsa_admin',
             )) {
-                $newStatus = sanitize_key(wp_unslash($_POST['new_status']));
+                $newStatus = sanitize_key((string) wp_unslash($_POST['new_status']));
 
                 if (! in_array($newStatus, ['new', 'resolved'], true)) {
                     wp_die(esc_html__('Invalid DSA report status.', 'polski'));
                 }
 
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, typed placeholders via $wpdb->update().
                 $wpdb->update(
                     $table,
                     [
                         'status'      => $newStatus,
                         'resolved_at' => current_time('mysql'),
                     ],
-                    ['id' => absint($_POST['report_id'])],
+                    ['id' => absint(wp_unslash($_POST['report_id']))],
                 );
             }
         }
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
         $reports = $wpdb->get_results(
-            $wpdb->prepare("SELECT * FROM {$table} ORDER BY created_at DESC LIMIT %d", 100),
+            $wpdb->prepare(
+                'SELECT * FROM %i ORDER BY created_at DESC LIMIT %d',
+                $table,
+                100,
+            ),
         );
 
         echo '<div class="wrap">';

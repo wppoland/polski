@@ -92,9 +92,9 @@ final class WaitlistService implements Bootable, HasHooks
     {
         check_ajax_referer('polski_waitlist', 'nonce');
 
-        $productId = (int) wp_unslash($_POST['product_id'] ?? 0);
-        $email = sanitize_email(wp_unslash($_POST['email'] ?? ''));
-        $privacy = (string) wp_unslash($_POST['privacy'] ?? '');
+        $productId = isset($_POST['product_id']) ? absint(wp_unslash($_POST['product_id'])) : 0;
+        $email = isset($_POST['email']) ? sanitize_email((string) wp_unslash($_POST['email'])) : '';
+        $privacy = isset($_POST['privacy']) ? sanitize_text_field((string) wp_unslash($_POST['privacy'])) : '';
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {

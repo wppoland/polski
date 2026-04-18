@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -385,7 +386,9 @@ final class SocialLoginService implements HasHooks
     {
         // Check if user exists by provider ID.
         $users = get_users([
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Exact lookup by plugin's provider ID meta key, limited to 1 result.
             'meta_key' => self::META_PROVIDER_ID,
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Exact lookup by plugin's provider ID meta value, limited to 1 result.
             'meta_value' => $provider . ':' . $profile['provider_id'],
             'number' => 1,
         ]);

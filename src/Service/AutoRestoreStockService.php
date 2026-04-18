@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -67,6 +68,7 @@ final class AutoRestoreStockService implements HasHooks
                 continue;
             }
 
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official WooCommerce order-item quantity hook.
             $qty = apply_filters('woocommerce_order_item_quantity', $item->get_quantity(), $order, $item);
 
             if ($qty <= 0) {

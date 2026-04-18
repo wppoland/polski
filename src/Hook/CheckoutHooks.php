@@ -303,12 +303,9 @@ final class CheckoutHooks implements Bootable, HasHooks
         }
 
         // Selected payment method (read-only context lookup; WooCommerce handles checkout nonce).
-        // phpcs:disable WordPress.Security.NonceVerification.Missing
-        $paymentMethod = isset($_POST['payment_method'])
-            ? wp_unslash($_POST['payment_method'])
-            : '';
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- WooCommerce verifies the checkout nonce before this filter fires.
+        $context['payment_method'] = isset($_POST['payment_method']) ? sanitize_key((string) wp_unslash($_POST['payment_method'])) : '';
         // phpcs:enable WordPress.Security.NonceVerification.Missing
-        $context['payment_method'] = sanitize_key((string) $paymentMethod);
 
         return $context;
     }

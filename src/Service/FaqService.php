@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -99,6 +100,7 @@ final class FaqService implements HasHooks
         // Category filter.
         if (! empty($atts['category'])) {
             $field = is_numeric($atts['category']) ? 'term_id' : 'slug';
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for shortcode filtering by FAQ category.
             $args['tax_query'] = [[
                 'taxonomy' => self::TAXONOMY,
                 'field' => $field,
@@ -119,6 +121,7 @@ final class FaqService implements HasHooks
             $query->the_post();
 
             $question = get_the_title();
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the standard WordPress content formatting hook.
             $answer = apply_filters('the_content', get_the_content());
             $id = 'polski-faq-' . get_the_ID();
 

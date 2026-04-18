@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Polski\Service;
+
+defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
@@ -206,7 +207,8 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             $name = $field['name'];
-            $value = $_POST[$name] ?? '';
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Dynamic checkout field names are validated by configuration and only used for presence/value checks here.
+            $value = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : '';
 
             if (empty($value) && $value !== '0') {
                 $label = $field['label'];
@@ -262,9 +264,11 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Dynamic checkout field name is validated by configuration and sanitized immediately below.
+            $rawValue = wp_unslash($_POST[$name]);
             $value = $field['type'] === 'textarea'
-                ? sanitize_textarea_field($_POST[$name])
-                : sanitize_text_field($_POST[$name]);
+                ? sanitize_textarea_field($rawValue)
+                : sanitize_text_field($rawValue);
 
             $order->update_meta_data('_' . $name, $value);
         }
@@ -695,7 +699,8 @@ final class CustomCheckoutFieldsService implements HasHooks
         check_admin_referer('polski_checkout_fields', '_polski_cf_nonce');
 
         // phpcs:disable WordPress.Security.NonceVerification.Missing -- Admin referer verified above.
-        $rawFields = $_POST['fields'] ?? [];
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Submitted field definitions are unslashed here and sanitized field-by-field below.
+        $rawFields = isset($_POST['fields']) ? wp_unslash($_POST['fields']) : [];
 
         if (! is_array($rawFields)) {
             $rawFields = [];

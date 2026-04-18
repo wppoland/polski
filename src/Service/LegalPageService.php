@@ -103,6 +103,7 @@ final class LegalPageService
             return '';
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the standard WordPress content formatting hook.
         return wp_strip_all_tags(apply_filters('the_content', $post->post_content));
     }
 

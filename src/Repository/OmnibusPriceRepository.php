@@ -14,8 +14,6 @@ use wpdb;
  */
 final class OmnibusPriceRepository
 {
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- Table names are from $this->tableName() (safe, not user input).
-
     public function __construct(
         private readonly wpdb $wpdb,
     ) {
@@ -57,17 +55,18 @@ final class OmnibusPriceRepository
      */
     public function findLowest(int $productId, int $days = 30): ?OmnibusPrice
     {
-        $table = $this->tableName();
-        $date = $this->gmDateDaysAgo($days);
+        global $wpdb;
 
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table}
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
                  ORDER BY price ASC
-                 LIMIT 1",
+                 LIMIT 1',
+                $this->tableName(),
                 $productId,
-                $date,
+                $this->gmDateDaysAgo($days),
             ),
         );
 
@@ -83,17 +82,18 @@ final class OmnibusPriceRepository
      */
     public function findLowestEffective(int $productId, int $days = 30): ?OmnibusPrice
     {
-        $table = $this->tableName();
-        $date = $this->gmDateDaysAgo($days);
+        global $wpdb;
 
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table}
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
                  ORDER BY COALESCE(sale_price, price) ASC
-                 LIMIT 1",
+                 LIMIT 1',
+                $this->tableName(),
                 $productId,
-                $date,
+                $this->gmDateDaysAgo($days),
             ),
         );
 
@@ -111,16 +111,17 @@ final class OmnibusPriceRepository
      */
     public function findHistory(int $productId, int $days = 30): array
     {
-        $table = $this->tableName();
-        $date = $this->gmDateDaysAgo($days);
+        global $wpdb;
 
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table}
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
-                 ORDER BY recorded_at DESC",
+                 ORDER BY recorded_at DESC',
+                $this->tableName(),
                 $productId,
-                $date,
+                $this->gmDateDaysAgo($days),
             ),
         );
 
@@ -137,15 +138,16 @@ final class OmnibusPriceRepository
      */
     public function hasRecordedToday(int $productId): bool
     {
-        $table = $this->tableName();
-        $today = gmdate('Y-m-d 00:00:00');
+        global $wpdb;
 
-        $count = (int) $this->wpdb->get_var(
-            $this->wpdb->prepare(
-                "SELECT COUNT(*) FROM {$table}
-                 WHERE product_id = %d AND recorded_at >= %s",
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $count = (int) $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT COUNT(*) FROM %i
+                 WHERE product_id = %d AND recorded_at >= %s',
+                $this->tableName(),
                 $productId,
-                $today,
+                gmdate('Y-m-d 00:00:00'),
             ),
         );
 
@@ -157,13 +159,14 @@ final class OmnibusPriceRepository
      */
     public function deleteOlderThan(int $days): int
     {
-        $table = $this->tableName();
-        $date = $this->gmDateDaysAgo($days);
+        global $wpdb;
 
-        return (int) $this->wpdb->query(
-            $this->wpdb->prepare(
-                "DELETE FROM {$table} WHERE recorded_at < %s",
-                $date,
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        return (int) $wpdb->query(
+            $wpdb->prepare(
+                'DELETE FROM %i WHERE recorded_at < %s',
+                $this->tableName(),
+                $this->gmDateDaysAgo($days),
             ),
         );
     }
@@ -173,14 +176,16 @@ final class OmnibusPriceRepository
      */
     public function findLatest(int $productId): ?OmnibusPrice
     {
-        $table = $this->tableName();
+        global $wpdb;
 
-        $row = $this->wpdb->get_row(
-            $this->wpdb->prepare(
-                "SELECT * FROM {$table}
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i
                  WHERE product_id = %d
                  ORDER BY recorded_at DESC
-                 LIMIT 1",
+                 LIMIT 1',
+                $this->tableName(),
                 $productId,
             ),
         );
@@ -198,6 +203,4 @@ final class OmnibusPriceRepository
 
         return gmdate('Y-m-d H:i:s', $ts !== false ? $ts : time());
     }
-
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 }
