@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.6.3
+Stable tag: 1.9.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,38 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.9.1 =
+* Compliance checklist: Accessibility (WCAG) section - 9 heuristic rules scanned against the static homepage HTML (html lang, skip link, h1, viewport meta, main landmark, search role, focus outline, autoplay sound, missing img alt). REST: `GET /polski/v1/compliance/accessibility`.
+* Compliance checklist: Cookie banner now includes a push-notification prompt detector - flags `Notification.requestPermission`, `PushManager.subscribe` and common third-party push SDKs triggered without user interaction.
+* New module: RODO training documentation generator. Admin page `Polski > RODO training docs` downloads three printable HTML templates (training logbook, principles summary, data-breach response playbook). Pre-branded with shop data from the setup wizard.
+
+= 1.9.0 =
+* New module: Complaint template generator. Ready-to-print complaint form (formularz reklamacyjny) auto-populated with seller data. Admin page `Polski > Complaint template` with preview + download as standalone HTML. `[polski_complaint_template]` shortcode to embed on customer pages.
+* New module: Copyright / license notice helpers. `[polski_copyright]` shortcode + `polski/copyright` block with year, owner and optional license. `[polski_image_credit]` shortcode for per-image credits with source link and license.
+
+= 1.8.2 =
+* New module: Business identification. Renders the shop's business data (name, address, NIP, REGON, email, phone) as a `[polski_business_info]` shortcode and a dynamic Gutenberg block `polski/business-info`. Reads values set in the setup wizard (`polski_general` option). Block and inline formats with configurable separator.
+
+= 1.8.1 =
+* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` — ready for Dependency-Track / Trivy.
+
+= 1.8.0 =
+* New module: CRA incident reporting. Records actively-exploited vulnerabilities and security incidents with a CRA Article 14 early-warning deadline (24h for incidents/exploits, 72h for near misses). Admin page `Polski > CRA incidents` to record, dispatch (webhook + email) and mark resolved. JSON export per ENISA SRP draft schema. Hourly cron checks for deadlines approaching. Action hooks `polski_cra_incident_recorded` and `polski_cra_incident_deadline_approaching`. Migration 2.1.0 creates `polski_cra_incidents`.
+
+= 1.7.2 =
+* Site audit: four new dark-pattern checks. Forced account creation (EU Directive 2023/2673), stale/fake sale countdowns (products still on-sale after date_to passed), misleading "from" price on variable products with >50% min/max spread, false urgency via oversized low-stock threshold (>5).
+
+= 1.7.1 =
+* Compliance checklist: added Cookie banner (active consent) section. Scans the homepage HTML with a 1h transient cache and reports 9 rules (banner presence, Accept, Reject with equal prominence, granular settings, Analytics/Marketing categories, privacy-policy link, withdrawal hint, implied-consent phrase trap).
+* REST API: `GET /polski/v1/compliance/cookie-banner?url=` returns the cookie-banner checklist as JSON.
+* 5 new unit tests.
+
+= 1.7.0 =
+* New module: Compliance checklist for Privacy Policy (RODO Art. 13) and Regulamin (Ustawa o swiadczeniu uslug / Ustawa o prawach konsumenta). Structural heuristic scanner with 17 + 15 rules, severity levels (Required/Recommended/Optional), and a WP-admin checklist page showing score and per-element pass/fail.
+* REST API: `GET /polski/v1/compliance/page/{privacy|terms}` returns the full checklist as JSON.
+* Admin: new submenu Polski > Compliance checklist.
+* 12 unit tests covering normalization (HTML + diacritic strip), rule evaluation, score math and default rule sets.
 
 = 1.6.3 =
 * Fixed: Added per-line `phpcs:ignore` annotations with justifications on all `$wpdb` custom-table calls (repositories, Migrator, DSAService, uninstall.php)

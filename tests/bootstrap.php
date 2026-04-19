@@ -14,6 +14,20 @@ if (! defined('ABSPATH')) {
 // Composer autoloader.
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+// WordPress time constants (used as class-constant values in some services).
+if (! defined('MINUTE_IN_SECONDS')) {
+    define('MINUTE_IN_SECONDS', 60);
+}
+if (! defined('HOUR_IN_SECONDS')) {
+    define('HOUR_IN_SECONDS', 60 * 60);
+}
+if (! defined('DAY_IN_SECONDS')) {
+    define('DAY_IN_SECONDS', 60 * 60 * 24);
+}
+if (! defined('WEEK_IN_SECONDS')) {
+    define('WEEK_IN_SECONDS', 60 * 60 * 24 * 7);
+}
+
 // ── Minimal WordPress function stubs for unit tests ─────────────────────────
 // These stubs allow services to be instantiated without a full WordPress load.
 // They return sensible defaults and are intentionally simple.
@@ -78,6 +92,13 @@ if (! function_exists('sanitize_text_field')) {
     function sanitize_text_field(string $str): string
     {
         return trim(strip_tags($str));
+    }
+}
+
+if (! function_exists('wp_json_encode')) {
+    function wp_json_encode(mixed $data, int $options = 0, int $depth = 512): string|false
+    {
+        return json_encode($data, $options, $depth);
     }
 }
 

@@ -18,6 +18,14 @@ use Polski\Email\WithdrawalConfirmationEmail;
 use Polski\Rest\SearchController;
 use Polski\Rest\CheckboxController;
 use Polski\Rest\LegalPageController;
+use Polski\Rest\PageComplianceController;
+use Polski\PageCompliance\PageComplianceService;
+use Polski\Admin\PageCompliancePage;
+use Polski\CRA\IncidentService as CRAIncidentService;
+use Polski\CRA\Repository\IncidentRepository as CRAIncidentRepository;
+use Polski\Admin\CRAIncidentsPage;
+use Polski\SBOM\SBOMGenerator;
+use Polski\Admin\SBOMPage;
 use Polski\Rest\SettingsController;
 use Polski\Rest\WithdrawalController;
 use Polski\Service\FilterService;
@@ -50,6 +58,10 @@ use Polski\Service\PopupService;
 use Polski\Service\TrustBadgeService;
 use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
+use Polski\Service\BusinessInfoService;
+use Polski\Service\ComplaintTemplateService;
+use Polski\Service\CopyrightNoticeService;
+use Polski\Service\RodoTrainingDocsService;
 use Polski\Shortcode\ShortcodeManager;
 use Polski\Service\PriceDisplayService;
 use Polski\Service\OmnibusService;
@@ -264,6 +276,46 @@ return static function (Container $c): void {
     $c->singleton(CheckboxController::class, static fn () => new CheckboxController());
     $c->singleton(WithdrawalController::class, static fn () => new WithdrawalController());
     $c->singleton(LegalPageController::class, static fn () => new LegalPageController());
+
+    // Page compliance (Privacy Policy / Regulamin checker).
+    $c->singleton(PageComplianceService::class, static fn () => new PageComplianceService());
+    $c->singleton(PageComplianceController::class, static fn () => new PageComplianceController(
+        $c->get(PageComplianceService::class),
+    ));
+    $c->singleton(PageCompliancePage::class, static fn () => new PageCompliancePage(
+        $c->get(PageComplianceService::class),
+    ));
+
+    // CRA incident reporting.
+    $c->singleton(CRAIncidentRepository::class, static function () {
+        global $wpdb;
+        return new CRAIncidentRepository($wpdb);
+    });
+    $c->singleton(CRAIncidentService::class, static fn () => new CRAIncidentService(
+        $c->get(CRAIncidentRepository::class),
+    ));
+    $c->singleton(CRAIncidentsPage::class, static fn () => new CRAIncidentsPage(
+        $c->get(CRAIncidentService::class),
+        $c->get(CRAIncidentRepository::class),
+    ));
+
+    // SBOM generator.
+    $c->singleton(SBOMGenerator::class, static fn () => new SBOMGenerator());
+    $c->singleton(SBOMPage::class, static fn () => new SBOMPage(
+        $c->get(SBOMGenerator::class),
+    ));
+
+    // Business identification footer/block/shortcode.
+    $c->singleton(BusinessInfoService::class, static fn () => new BusinessInfoService());
+
+    // Complaint template generator.
+    $c->singleton(ComplaintTemplateService::class, static fn () => new ComplaintTemplateService());
+
+    // Copyright / license notice helpers.
+    $c->singleton(CopyrightNoticeService::class, static fn () => new CopyrightNoticeService());
+
+    // RODO training documentation generator.
+    $c->singleton(RodoTrainingDocsService::class, static fn () => new RodoTrainingDocsService());
     $c->singleton(SearchController::class, static fn () => new SearchController(
         $c->get(SearchService::class),
     ));

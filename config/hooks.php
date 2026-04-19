@@ -18,9 +18,14 @@ use Polski\Hook\LoopHooks;
 use Polski\Integration\IntegrationManager;
 use Polski\Rest\CheckboxController;
 use Polski\Rest\LegalPageController;
+use Polski\Rest\PageComplianceController;
 use Polski\Rest\SearchController;
 use Polski\Rest\SettingsController;
 use Polski\Rest\WithdrawalController;
+use Polski\Admin\PageCompliancePage;
+use Polski\CRA\IncidentService as CRAIncidentService;
+use Polski\Admin\CRAIncidentsPage;
+use Polski\Admin\SBOMPage;
 use Polski\Service\WithdrawalService;
 use Polski\Service\CheckboxService;
 use Polski\Service\DoubleOptInService;
@@ -57,6 +62,10 @@ use Polski\Service\TrustBadgeService;
 use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
 use Polski\Service\DisputeResolutionService;
+use Polski\Service\BusinessInfoService;
+use Polski\Service\ComplaintTemplateService;
+use Polski\Service\CopyrightNoticeService;
+use Polski\Service\RodoTrainingDocsService;
 use Polski\Shortcode\ShortcodeManager;
 
 /**
@@ -141,4 +150,27 @@ return [
     WithdrawalController::class,
     LegalPageController::class,
     SearchController::class,
+    PageComplianceController::class,
+
+    // Page compliance checker admin.
+    PageCompliancePage::class,
+
+    // CRA incident reporting.
+    CRAIncidentService::class,
+    CRAIncidentsPage::class,
+
+    // SBOM generator.
+    SBOMPage::class,
+
+    // Business identification footer / block / shortcode.
+    BusinessInfoService::class,
+
+    // Complaint template generator.
+    ComplaintTemplateService::class,
+
+    // Copyright / license notice helpers.
+    CopyrightNoticeService::class,
+
+    // RODO training documentation generator.
+    RodoTrainingDocsService::class,
 ];

@@ -1697,6 +1697,13 @@ final class ModulesPage implements HasHooks
             'ai_descriptions' => false,
             'inventory_forecast' => false,
             'customer_insights' => false,
+            'tax_rules' => false,
+            'page_compliance' => true,
+            'sbom' => false,
+            'business_info' => false,
+            'complaint_template' => false,
+            'copyright_notice' => false,
+            'rodo_training_docs' => false,
         ];
     }
 
