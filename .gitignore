@@ -35,6 +35,22 @@ package-lock.json
 # Benchmark/reference - NEVER commit
 _benchmark/
 
+# Private tooling / agent configs - NEVER commit
+.claude/
+.agents/
+AGENTS.md
+CLAUDE.md
+CLAUDE.local.md
+TODO.md
+.phpstan.neon
+
+# Private docs (internal notes, competitive research, roadmaps)
+docs/yith-*
+docs/private-*
+docs/module-surface-*
+docs/positioning-*
+docs/internal-*
+
 # Debug
 debug.log
 *.log
