@@ -119,6 +119,233 @@ final class SiteAuditService implements HasHooks
             $this->checkDPARegistry(),
             $this->checkSecurityIncidents(),
             $this->checkSSL(),
+            // Dark pattern enhancements.
+            $this->checkForcedAccountCreation(),
+            $this->checkStaleSaleDates(),
+            $this->checkMisleadingFromPrice(),
+            $this->checkFakeLowStockThreshold(),
+        ];
+    }
+
+    /**
+     * Forced account creation is a dark pattern per EU Directive 2023/2673
+     * unless the store has a legitimate B2B reason to require an account.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkForcedAccountCreation(): array
+    {
+        $label = __('Forced account creation (dark pattern)', 'polski');
+
+        $guestCheckout = get_option('woocommerce_enable_guest_checkout', 'yes');
+        $mustLogin = get_option('woocommerce_enable_checkout_login_reminder', 'no');
+
+        if ($guestCheckout === 'yes') {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('Guest checkout is enabled. Customers are not forced to create an account.', 'polski'),
+            ];
+        }
+
+        if ($mustLogin === 'yes') {
+            return [
+                'status' => self::STATUS_FAIL,
+                'label' => $label,
+                'detail' => __('Guest checkout is disabled AND login is required — customers are forced to create an account. EU Directive 2023/2673 considers this a dark pattern unless justified (e.g. B2B). Enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
+            ];
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => __('Guest checkout is disabled. If this is not a B2B-only store, enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
+        ];
+    }
+
+    /**
+     * Flag products whose sale date ended in the past but are still listed
+     * as on-sale (fake flash-sale countdown). Scans the 100 most recent
+     * published products; a conservative sample for the admin audit.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkStaleSaleDates(): array
+    {
+        $label = __('Stale or fake sale countdown (dark pattern)', 'polski');
+
+        if (! function_exists('wc_get_products')) {
+            return [
+                'status' => self::STATUS_WARNING,
+                'label' => $label,
+                'detail' => __('WooCommerce not active.', 'polski'),
+            ];
+        }
+
+        $productIds = wc_get_products([
+            'status' => 'publish',
+            'limit' => 100,
+            'return' => 'ids',
+            'orderby' => 'modified',
+            'order' => 'DESC',
+        ]);
+
+        if (! is_array($productIds) || $productIds === []) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('No products to scan.', 'polski'),
+            ];
+        }
+
+        $now = time();
+        $stale = 0;
+
+        foreach ($productIds as $productId) {
+            $product = wc_get_product((int) $productId);
+
+            if (! $product) {
+                continue;
+            }
+
+            $salesTo = $product->get_date_on_sale_to('edit');
+
+            if ($salesTo === null) {
+                continue;
+            }
+
+            $ts = is_numeric($salesTo) ? (int) $salesTo : strtotime((string) $salesTo);
+
+            if ($ts > 0 && $ts < $now - DAY_IN_SECONDS && $product->is_on_sale()) {
+                ++$stale;
+            }
+        }
+
+        if ($stale === 0) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('No products with expired sale dates are still on sale.', 'polski'),
+            ];
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => sprintf(
+                /* translators: %d: number of products */
+                __('%d product(s) have a sale-to date in the past but still appear on sale. Ensure your countdown or promo widgets do not silently reset after expiry.', 'polski'),
+                $stale,
+            ),
+        ];
+    }
+
+    /**
+     * Variable products showing a "from" price where the minimum is less
+     * than 50 percent of the maximum can mislead buyers into expecting the
+     * lower price. Flag as warning for manual review.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkMisleadingFromPrice(): array
+    {
+        $label = __('Misleading "from" price on variable products', 'polski');
+
+        if (! function_exists('wc_get_products')) {
+            return [
+                'status' => self::STATUS_WARNING,
+                'label' => $label,
+                'detail' => __('WooCommerce not active.', 'polski'),
+            ];
+        }
+
+        $productIds = wc_get_products([
+            'status' => 'publish',
+            'type' => 'variable',
+            'limit' => 100,
+            'return' => 'ids',
+        ]);
+
+        if (! is_array($productIds) || $productIds === []) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('No variable products to scan.', 'polski'),
+            ];
+        }
+
+        $suspects = 0;
+
+        foreach ($productIds as $productId) {
+            $product = wc_get_product((int) $productId);
+
+            if (! $product || $product->get_type() !== 'variable') {
+                continue;
+            }
+
+            $min = (float) $product->get_variation_price('min', true);
+            $max = (float) $product->get_variation_price('max', true);
+
+            if ($min <= 0 || $max <= 0) {
+                continue;
+            }
+
+            if ($min < $max * 0.5) {
+                ++$suspects;
+            }
+        }
+
+        if ($suspects === 0) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('All variable products have a reasonable min/max price spread.', 'polski'),
+            ];
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => sprintf(
+                /* translators: %d: number of products */
+                __('%d variable product(s) show a "from" price where the cheapest variant is less than 50%% of the most expensive. Consider showing a price range or clarifying the variant context to avoid misleading buyers.', 'polski'),
+                $suspects,
+            ),
+        ];
+    }
+
+    /**
+     * WooCommerce low-stock messaging ("Only X left") becomes a false
+     * urgency signal when the stock threshold is set unreasonably high.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkFakeLowStockThreshold(): array
+    {
+        $label = __('False urgency via low-stock threshold (dark pattern)', 'polski');
+
+        $threshold = (int) get_option('woocommerce_notify_low_stock_amount', 2);
+
+        if ($threshold <= 5) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => sprintf(
+                    /* translators: %d: threshold value */
+                    __('Low-stock threshold is %d, within a reasonable range.', 'polski'),
+                    $threshold,
+                ),
+            ];
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => sprintf(
+                /* translators: %d: threshold value */
+                __('Low-stock threshold is %d, which is high. A threshold above 5 can make "Only X left" appear on plentiful stock and create artificial urgency. Consider lowering it under WooCommerce > Settings > Products > Inventory.', 'polski'),
+                $threshold,
+            ),
         ];
     }
 
