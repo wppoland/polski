@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python3:*)",
-      "Bash(brew list:*)",
-      "Bash(msgfmt -o polski-pl_PL.mo polski-pl_PL.po)"
-    ]
-  }
-}
