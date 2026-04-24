@@ -474,3 +474,61 @@
     font-size: 15px;
     margin-bottom: 16px;
 }
+
+.polski-wizard {
+    max-width: 780px;
+}
+
+.polski-wizard__row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid #f0f0f1;
+}
+
+.polski-wizard__row:first-of-type {
+    border-top: 0;
+}
+
+.polski-wizard__row-label {
+    font-weight: 600;
+    color: #1d2327;
+    padding-top: 4px;
+}
+
+.polski-wizard__row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.polski-wizard__row-control .components-base-control {
+    margin-bottom: 0;
+}
+
+.polski-wizard__row-info {
+    background: #f5f3ff;
+    color: #3f3f46;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.polski-wizard__escape {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.polski-wizard__escape a {
+    color: #6b7280;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .polski-wizard__row {
+        grid-template-columns: 1fr;
+    }
+}

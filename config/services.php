@@ -146,6 +146,7 @@ return static function (Container $c): void {
     $c->singleton(ProductInfoService::class, static fn () => new ProductInfoService());
     $c->singleton(FoodService::class, static fn () => new FoodService());
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
+    $c->singleton(\Polski\Service\OssObserverService::class, static fn () => new \Polski\Service\OssObserverService());
     $c->singleton(ComplianceCheckService::class, static fn () => new ComplianceCheckService());
     $c->singleton(FilterService::class, static fn () => new FilterService(
         $c->get(TemplateLoader::class),

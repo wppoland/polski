@@ -11,6 +11,7 @@ declare global {
             nonce: string;
             version: string;
             isWizardComplete: boolean;
+            adminUrl: string;
         };
     }
 }

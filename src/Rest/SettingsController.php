@@ -131,6 +131,7 @@ final class SettingsController extends RestController implements HasHooks
         $general['company_email'] = sanitize_email((string) ($params['company_email'] ?? ''));
         $general['company_phone'] = sanitize_text_field((string) ($params['company_phone'] ?? ''));
         $general['company_nip'] = sanitize_text_field((string) ($params['company_nip'] ?? ''));
+        $general['small_business'] = (bool) ($params['small_business'] ?? false);
 
         update_option('polski_general', $general);
 
@@ -160,6 +161,7 @@ final class SettingsController extends RestController implements HasHooks
 
         $modules = ModulesPage::getDefaultModuleStates();
         $modules['omnibus'] = $omnibus['enabled'];
+        $modules['oss_observer'] = (bool) ($params['oss_observer_enabled'] ?? false);
         update_option('polski_modules', $modules);
 
         // Generate legal pages if requested.

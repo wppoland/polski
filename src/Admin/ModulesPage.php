@@ -135,6 +135,20 @@ final class ModulesPage implements HasHooks
                 ],
             ],
             [
+                'id' => 'oss_observer',
+                'name' => __('OSS observer', 'polski'),
+                'description' => __('Observe the OSS delivery threshold of the current year. Enabling this will install the One Stop Shop plugin, which monitors your intra-EU B2C sales and flags when you approach the €10,000 threshold.', 'polski'),
+                'group' => __('Prices and Display', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-chart-area',
+                'links' => [
+                    ['label' => __('About OSS procedure', 'polski'), 'url' => 'https://vendidero.github.io/one-stop-shop-woocommerce'],
+                ],
+                'settings' => [
+                    ['key' => '_oss_integration_status', 'label' => '', 'type' => 'html', 'html' => $this->getOssStatusHtml()],
+                ],
+            ],
+            [
                 'id' => 'delivery_time',
                 'name' => __('Delivery time', 'polski'),
                 'description' => __('Display estimated delivery time on the product page. Configuration per product or variation with default fallback.', 'polski'),
@@ -494,8 +508,14 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_filters|show_stock', 'label' => __('Availability filter', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_filters|show_sale', 'label' => __('Sale filter', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_filters|show_attributes', 'label' => __('Attribute filters', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_filters|show_active_filters', 'label' => __('Active filters chips', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_filters|show_counts', 'label' => __('Show term counts', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_filters|show_hierarchical_categories', 'label' => __('Hierarchical categories', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_filters|enable_taxonomy_multiselect', 'label' => __('Enable taxonomy multi-select', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_filters|taxonomy_multi_select_relation', 'label' => __('Multi-select relation', 'polski'), 'type' => 'select', 'default' => 'or', 'options' => ['or' => __('OR - match any selected term', 'polski'), 'and' => __('AND - match all selected terms', 'polski')]],
                     ['key' => 'polski_filters|max_attribute_taxonomies', 'label' => __('Max number of attributes', 'polski'), 'type' => 'number', 'default' => 4, 'hint' => __('How many product attributes to show as filter dropdowns', 'polski')],
                     ['key' => 'polski_filters|title', 'label' => __('Header', 'polski'), 'type' => 'text', 'default' => 'Product Filters'],
+                    ['key' => 'polski_filters|active_filters_label', 'label' => __('Active filters label', 'polski'), 'type' => 'text', 'default' => 'Active filters'],
                     ['key' => 'polski_filters|category_label', 'label' => __('Category label', 'polski'), 'type' => 'text', 'default' => 'Category'],
                     ['key' => 'polski_filters|category_all_text', 'label' => __('All categories text', 'polski'), 'type' => 'text', 'default' => 'All'],
                     ['key' => 'polski_filters|brand_label', 'label' => __('Brand label', 'polski'), 'type' => 'text', 'default' => 'Brand'],
@@ -506,6 +526,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_filters|stock_any_text', 'label' => __('Any availability text', 'polski'), 'type' => 'text', 'default' => 'Any'],
                     ['key' => 'polski_filters|stock_instock_text', 'label' => __('Instock product text', 'polski'), 'type' => 'text', 'default' => 'Available immediately'],
                     ['key' => 'polski_filters|sale_label', 'label' => __('Sale label', 'polski'), 'type' => 'text', 'default' => 'Sales'],
+                    ['key' => 'polski_filters|sale_active_text', 'label' => __('Active sale filter text', 'polski'), 'type' => 'text', 'default' => 'On sale only'],
                     ['key' => 'polski_filters|attribute_any_text', 'label' => __('Any attribute value text', 'polski'), 'type' => 'text', 'default' => 'Any'],
                     ['key' => 'polski_filters|show_reset_link', 'label' => __('Show reset link', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_filters|submit_text', 'label' => __('Button text', 'polski'), 'type' => 'text', 'default' => 'Filter'],
@@ -1239,61 +1260,100 @@ final class ModulesPage implements HasHooks
     }
 
     /**
-     * Render the modules management page.
+     * Group modules into MoSCoW-priority buckets for both the modules table
+     * and the per-bucket settings subpages. Returns a stable ordered map.
+     *
+     * @return array<string, array{label: string, modules: list<array<string, mixed>>}>
      */
-    public function render(): void
+    public function getBucketedModules(): array
     {
-        $modules = $this->getModules();
-
-        // Toggle CSS + JS.
-        $this->renderToggleStyles();
-
-        // Group modules.
-        $groups = [];
-        foreach ($modules as $module) {
-            $groups[$module['group']][] = $module;
+        $bucketed = [];
+        foreach ($this->getModules() as $module) {
+            $originalLabel = isset($module['group']) && is_string($module['group']) ? $module['group'] : '';
+            $bucketKey = $this->remapGroup($originalLabel);
+            $bucketed[$bucketKey][] = $module;
         }
 
-        foreach ($groups as $groupName => $groupModules) {
-            echo '<div style="margin-top:30px;">';
-            echo '<h2 style="display:flex;align-items:center;gap:8px;">';
-            echo esc_html($groupName);
-            echo '</h2>';
-
-            echo '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px;">';
-
-            foreach ($groupModules as $module) {
-                $this->renderModuleCard($module);
+        $ordered = [];
+        foreach ($this->getGroupOrder() as $bucketKey) {
+            if (! empty($bucketed[$bucketKey])) {
+                $ordered[$bucketKey] = [
+                    'label'   => $this->getGroupLabel($bucketKey),
+                    'modules' => $bucketed[$bucketKey],
+                ];
             }
-
-            echo '</div></div>';
         }
+
+        return $ordered;
     }
 
     /**
-     * Render a single module card with toggle.
+     * Map a module to its bucket key so the modules table can build pencil
+     * links to the correct settings subpage.
+     */
+    public function getBucketKeyForModule(array $module): string
+    {
+        $originalLabel = isset($module['group']) && is_string($module['group']) ? $module['group'] : '';
+        return $this->remapGroup($originalLabel);
+    }
+
+    /**
+     * Render the modules management page as a WP list-table grouped by MoSCoW-prioritised bucket.
+     */
+    public function render(): void
+    {
+        $this->renderToggleStyles();
+
+        echo '<table class="wp-list-table widefat polski-modules-table">';
+        echo '<thead><tr>';
+        echo '<th class="polski-modules-col-name">' . esc_html__('Name', 'polski') . '</th>';
+        echo '<th class="polski-modules-col-toggle">' . esc_html__('Enabled', 'polski') . '</th>';
+        echo '<th class="polski-modules-col-desc">' . esc_html__('Description', 'polski') . '</th>';
+        echo '<th class="polski-modules-col-actions"><span class="screen-reader-text">' . esc_html__('Actions', 'polski') . '</span></th>';
+        echo '</tr></thead>';
+        echo '<tbody>';
+
+        foreach ($this->getBucketedModules() as $bucketKey => $bucket) {
+            echo '<tr class="polski-modules-group-header"><th colspan="4">' . esc_html($bucket['label']) . '</th></tr>';
+
+            foreach ($bucket['modules'] as $module) {
+                $this->renderModuleRow($module, $bucketKey);
+            }
+        }
+
+        echo '</tbody></table>';
+    }
+
+    /**
+     * Render a single module row in the list-table, plus an optional settings details row.
      *
      * @param array<string, mixed> $module
      */
-    private function renderModuleCard(array $module): void
+    private function renderModuleRow(array $module, string $bucketKey = ''): void
     {
         $id = $module['id'];
-        $enabled = $module['enabled'];
+        $enabled = (bool) $module['enabled'];
         $hasSettings = ! empty($module['settings']);
-        $classes = 'sp-card' . ($enabled ? ' sp-card--active' : '');
+        $isPro = ! empty($module['pro']);
 
-        echo '<div id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($classes) . '">';
+        $rowClasses = 'polski-modules-row' . ($enabled ? ' polski-modules-row--active' : '');
 
-        // Header with icon, title, optional help tooltip, and toggle.
-        echo '<div class="sp-card__head" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;">';
-        echo '<div style="display:flex;align-items:flex-start;gap:8px;min-width:0;flex:1;">';
+        echo '<tr id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($rowClasses) . '">';
+
+        // --- Name column.
+        echo '<td class="polski-modules-col-name">';
+        echo '<div class="polski-modules-name-inner">';
 
         if (! empty($module['icon'])) {
-            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" style="color:#666;flex-shrink:0;"></span>';
+            echo '<span class="dashicons ' . esc_attr($module['icon']) . '" aria-hidden="true"></span>';
         }
 
-        echo '<span style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-width:0;">';
-        echo '<strong style="line-height:1.3;">' . esc_html($module['name']) . '</strong>';
+        echo '<span class="polski-modules-name-text">';
+        echo '<strong>' . esc_html($module['name']) . '</strong>';
+
+        if ($isPro) {
+            echo ' <span class="polski-modules-pro-badge">' . esc_html__('PRO', 'polski') . '</span>';
+        }
 
         $helpTooltip = $this->getModuleHelpTooltip($module);
         if ($helpTooltip !== '') {
@@ -1310,8 +1370,10 @@ final class ModulesPage implements HasHooks
 
         echo '</span>';
         echo '</div>';
+        echo '</td>';
 
-        // Toggle switch.
+        // --- Toggle column.
+        echo '<td class="polski-modules-col-toggle">';
         echo '<label class="sp-toggle">';
         printf(
             '<input type="checkbox" data-polski-module-id="%s" value="1" %s>',
@@ -1321,69 +1383,90 @@ final class ModulesPage implements HasHooks
         echo '<span class="sp-toggle__track"></span>';
         echo '<span class="sp-toggle__knob"></span>';
         echo '</label>';
+        echo '</td>';
 
-        echo '</div>';
+        // --- Description column.
+        echo '<td class="polski-modules-col-desc">';
+        echo '<span class="polski-modules-desc-text">' . esc_html($module['description']) . '</span>';
 
-        // Description.
-        echo '<p style="margin:0;color:#666;font-size:13px;line-height:1.5;">' . esc_html($module['description']) . '</p>';
+        if (! empty($module['links'])) {
+            echo '<span class="polski-modules-links">';
+            foreach ($module['links'] as $link) {
+                printf(
+                    ' &middot; <a href="%s" target="_blank" rel="noopener">%s &rarr;</a>',
+                    esc_url($link['url']),
+                    esc_html($link['label']),
+                );
+            }
+            echo '</span>';
+        }
+
+        echo '</td>';
+
+        // --- Actions column (edit pencil + docs).
+        echo '<td class="polski-modules-col-actions">';
+
+        if ($hasSettings) {
+            $bucket = $bucketKey !== '' ? $bucketKey : $this->getBucketKeyForModule($module);
+            $settingsUrl = admin_url(
+                'admin.php?page=polski-group-' . $bucket . '#polski-module-' . $id
+            );
+            printf(
+                '<a href="%s" class="button-link polski-modules-edit" aria-label="%s" title="%s"><span class="dashicons dashicons-edit" aria-hidden="true"></span></a>',
+                esc_url($settingsUrl),
+                esc_attr(sprintf(
+                    /* translators: %s: module name */
+                    __('Edit %s settings', 'polski'),
+                    $module['name'],
+                )),
+                esc_attr__('Edit settings', 'polski'),
+            );
+        }
 
         $docsUrl = isset($module['docs_url']) && is_string($module['docs_url']) && $module['docs_url'] !== ''
             ? $module['docs_url']
             : $this->getModuleDocumentationUrl($id);
         printf(
-            '<p class="sp-card__docs" style="margin:10px 0 0;font-size:12px;"><a href="%s" target="_blank" rel="noopener noreferrer" class="sp-card__docs-link">%s</a></p>',
+            ' <a href="%s" target="_blank" rel="noopener noreferrer" class="button-link polski-modules-docs" aria-label="%s" title="%s"><span class="dashicons dashicons-book" aria-hidden="true"></span></a>',
             esc_url($docsUrl),
-            esc_html__('Pełna dokumentacja', 'polski'),
+            esc_attr__('Open documentation', 'polski'),
+            esc_attr__('Open documentation', 'polski'),
         );
 
-        // Links.
-        if (! empty($module['links'])) {
-            echo '<div style="margin-top:8px;">';
-            foreach ($module['links'] as $link) {
-                printf(
-                    '<a href="%s" target="_blank" rel="noopener" style="font-size:12px;margin-right:12px;">%s &rarr;</a>',
-                    esc_url($link['url']),
-                    esc_html($link['label']),
-                );
-            }
-            echo '</div>';
+        echo '</td>';
+
+        echo '</tr>';
+    }
+
+    /**
+     * Render a single module's settings form on a dedicated page (used by per-bucket subpages).
+     *
+     * @param array<string, mixed> $module
+     */
+    public function renderModuleSettingsForm(array $module): void
+    {
+        if (empty($module['settings'])) {
+            return;
         }
 
-        // Settings link button.
-        if ($hasSettings && $enabled) {
-            $settingsUrl = admin_url('admin.php?page=polski-module-' . $id);
-            printf(
-                '<div style="margin-top:8px;"><a href="%s" class="button button-small">%s</a></div>',
-                esc_url($settingsUrl),
-                esc_html__('Settings', 'polski'),
-            );
+        $id = $module['id'];
+        echo '<div class="polski-modules-settings-panel">';
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+        wp_nonce_field('polski_save_module_' . $id, '_polski_module_nonce_' . $id);
+        echo '<input type="hidden" name="action" value="polski_save_module_settings" />';
+        echo '<input type="hidden" name="module_id" value="' . esc_attr($id) . '" />';
+
+        foreach ($module['settings'] as $field) {
+            $this->renderSettingsField($field);
         }
 
-        // Settings panel (collapsible) — separate form per module so Save is always next to fields.
-        if ($hasSettings) {
-            $detailsId = 'polski-settings-' . $id;
-
-            echo '<details id="' . esc_attr($detailsId) . '" style="margin-top:12px;border-top:1px solid #eee;padding-top:10px;">';
-            echo '<summary style="cursor:pointer;font-size:12px;color:#0073aa;user-select:none;">' . wp_kses_post(__('Configure &darr;', 'polski')) . '</summary>';
-            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:10px;">';
-            wp_nonce_field('polski_save_module_' . $id, '_polski_module_nonce_' . $id);
-            echo '<input type="hidden" name="action" value="polski_save_module_settings" />';
-            echo '<input type="hidden" name="module_id" value="' . esc_attr($id) . '" />';
-
-            foreach ($module['settings'] as $field) {
-                $this->renderSettingsField($field);
-            }
-
-            echo '<p class="submit" style="margin:12px 0 0;">';
-            printf(
-                '<button type="submit" class="button button-primary button-small">%s</button>',
-                esc_html__('Save', 'polski'),
-            );
-            echo '</p>';
-            echo '</form>';
-            echo '</details>';
-        }
-
+        echo '<p class="submit" style="margin:12px 0 0;">';
+        printf(
+            '<button type="submit" class="button button-primary button-small">%s</button>',
+            esc_html__('Save', 'polski'),
+        );
+        echo '</p>';
+        echo '</form>';
         echo '</div>';
     }
 
@@ -1624,6 +1707,7 @@ final class ModulesPage implements HasHooks
             'unit_price' => true,
             'omnibus' => true,
             'tax_display' => true,
+            'oss_observer' => false,
             'delivery_time' => true,
             'shipping_notice' => true,
             'checkout_button' => true,
@@ -1726,6 +1810,90 @@ final class ModulesPage implements HasHooks
     /**
      * Enqueue CSS and JS for toggle switches on the Polski Modules screen.
      */
+    /**
+     * MoSCoW-prioritised bucket keys in display order.
+     *
+     * @return list<string>
+     */
+    private function getGroupOrder(): array
+    {
+        return [
+            'legal',
+            'tax_pricing',
+            'checkout_orders',
+            'content_trust',
+            'advanced_tools',
+        ];
+    }
+
+    /**
+     * Localised label for a bucket key.
+     */
+    private function getGroupLabel(string $bucketKey): string
+    {
+        switch ($bucketKey) {
+            case 'legal':
+                return __('Legal & Compliance', 'polski');
+            case 'tax_pricing':
+                return __('Tax & Pricing', 'polski');
+            case 'checkout_orders':
+                return __('Checkout & Orders', 'polski');
+            case 'content_trust':
+                return __('Content & Trust', 'polski');
+            case 'advanced_tools':
+                return __('Advanced & Tools', 'polski');
+            default:
+                return __('Other', 'polski');
+        }
+    }
+
+    /**
+     * Map legacy group labels (various casings, multiple synonyms) to one of the MoSCoW buckets.
+     */
+    private function remapGroup(string $originalLabel): string
+    {
+        $normalised = strtolower(trim($originalLabel));
+
+        $map = [
+            // Legal & Compliance.
+            'consumer rights'        => 'legal',
+            'legal'                  => 'legal',
+            'legal & compliance'     => 'legal',
+            'compliance'             => 'legal',
+            // Tax & Pricing.
+            'prices and display'     => 'tax_pricing',
+            'prices and omnibus'     => 'tax_pricing',
+            'tax & pricing'          => 'tax_pricing',
+            'pricing'                => 'tax_pricing',
+            // Checkout & Orders.
+            'checkout'               => 'checkout_orders',
+            'checkout and orders'    => 'checkout_orders',
+            'checkout & orders'      => 'checkout_orders',
+            'email'                  => 'checkout_orders',
+            'emails'                 => 'checkout_orders',
+            'stock & cart'           => 'checkout_orders',
+            'stock and cart'         => 'checkout_orders',
+            // Content & Trust.
+            'product information'    => 'content_trust',
+            'storefront'             => 'content_trust',
+            'merchandising'          => 'content_trust',
+            'sales and b2b'          => 'content_trust',
+            'sales & b2b'            => 'content_trust',
+            'customer account'      => 'content_trust',
+            'content & trust'        => 'content_trust',
+            // Advanced & Tools.
+            'analytics'              => 'advanced_tools',
+            'seo & optimization'     => 'advanced_tools',
+            'seo and optimization'   => 'advanced_tools',
+            'integrations'           => 'advanced_tools',
+            'tools'                  => 'advanced_tools',
+            'advanced'               => 'advanced_tools',
+            'advanced & tools'       => 'advanced_tools',
+        ];
+
+        return $map[$normalised] ?? 'advanced_tools';
+    }
+
     private function renderToggleStyles(): void
     {
         wp_enqueue_style(
@@ -1799,6 +1967,98 @@ final class ModulesPage implements HasHooks
         $html .= '</div>';
 
         return $html;
+    }
+
+    /**
+     * Live-status panel shown inside the OSS observer module settings row.
+     *
+     * Mirrors the Germanized "OSS plugin is missing" note pattern: when the
+     * external plugin is inactive we render an install CTA; when active we
+     * confirm detection + link to the OSS settings tab.
+     */
+    private function getOssStatusHtml(): string
+    {
+        $service = $this->getOssObserverService();
+
+        if ($service === null) {
+            return '<div style="font-size:12px;color:#666;">' . esc_html__('OSS observer service is unavailable.', 'polski') . '</div>';
+        }
+
+        $html = '<div style="font-size:13px;line-height:1.6;">';
+
+        if ($service->needsInstall()) {
+            $html .= '<p style="margin:0 0 10px;color:#1d2327;">';
+            $html .= esc_html__('The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically.', 'polski');
+            $html .= '</p>';
+
+            if (current_user_can('install_plugins')) {
+                $html .= '<p style="margin:0;">';
+                $html .= '<a href="' . esc_url($service->getInstallUrl()) . '" class="button button-primary button-small">';
+                $html .= esc_html__('Install One Stop Shop', 'polski');
+                $html .= '</a>';
+                $html .= '</p>';
+            } else {
+                $html .= '<p style="margin:0;color:#d63638;">';
+                $html .= esc_html__('You need the install_plugins capability to install it from here.', 'polski');
+                $html .= '</p>';
+            }
+        } else {
+            $ossActive = $service->isOssEnabled();
+            $autoObserver = $service->isAutoObserverEnabled();
+
+            $html .= '<p style="margin:0 0 6px;color:#2271b1;">';
+            $html .= '<span class="dashicons dashicons-yes-alt" style="color:#46b450;vertical-align:text-bottom;"></span> ';
+            $html .= esc_html__('One Stop Shop plugin detected.', 'polski');
+            $html .= '</p>';
+
+            $html .= '<p style="margin:0 0 4px;">';
+            $html .= '<strong>' . esc_html__('OSS procedure', 'polski') . ':</strong> ';
+            $html .= $ossActive
+                ? '<em>' . esc_html__('enabled', 'polski') . '</em>'
+                : '<em style="color:#646970;">' . esc_html__('disabled', 'polski') . '</em>';
+            $html .= '</p>';
+
+            $html .= '<p style="margin:0 0 10px;">';
+            $html .= '<strong>' . esc_html__('Auto observer', 'polski') . ':</strong> ';
+            $html .= $autoObserver
+                ? '<em>' . esc_html__('watching threshold', 'polski') . '</em>'
+                : '<em style="color:#646970;">' . esc_html__('off', 'polski') . '</em>';
+            $html .= '</p>';
+
+            $html .= '<p style="margin:0;">';
+            $html .= '<a href="' . esc_url($service->getSettingsUrl()) . '" class="button button-small">';
+            $html .= esc_html__('Open OSS settings', 'polski');
+            $html .= '</a>';
+            $html .= '</p>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * Resolve OssObserverService from the plugin container.
+     */
+    private function getOssObserverService(): ?\Polski\Service\OssObserverService
+    {
+        if (! class_exists(\Polski\Plugin::class) || ! class_exists(\Polski\Service\OssObserverService::class)) {
+            return null;
+        }
+
+        try {
+            $plugin = \Polski\Plugin::instance();
+            $container = $plugin->container();
+            if ($container->has(\Polski\Service\OssObserverService::class)) {
+                /** @var \Polski\Service\OssObserverService $service */
+                $service = $container->get(\Polski\Service\OssObserverService::class);
+                return $service;
+            }
+        } catch (\Throwable $e) {
+            return null;
+        }
+
+        return null;
     }
 
     private function getCheckoutToolkitStatus(): string

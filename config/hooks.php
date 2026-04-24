@@ -90,6 +90,7 @@ return [
     OmnibusService::class,
     FilterService::class,
     DoubleOptInService::class,
+    \Polski\Service\OssObserverService::class,
     EmailService::class,
     DisputeResolutionService::class,
     SearchService::class,
