@@ -16,6 +16,7 @@ final class AdminNotes implements HasHooks
     {
         add_action('admin_init', [$this, 'maybeAddSetupNote']);
         add_action('admin_init', [$this, 'maybeShowDisclaimerNotice']);
+        add_action('admin_init', [$this, 'maybeAddOssInstallNote']);
     }
 
     /**
@@ -92,6 +93,56 @@ final class AdminNotes implements HasHooks
         $note->save();
 
         update_option('polski_setup_note_shown', true);
+    }
+
+    /**
+     * Admin note prompting the merchant to install the standalone OSS plugin when
+     * the OSS observer module is enabled but the plugin is missing.
+     *
+     * Mirrors Germanized's `WC_GZD_Admin_Note_OSS_Install` pattern.
+     */
+    public function maybeAddOssInstallNote(): void
+    {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('oss_observer')) {
+            return;
+        }
+
+        if (! class_exists(\Polski\Service\OssObserverService::class)) {
+            return;
+        }
+
+        $service = new \Polski\Service\OssObserverService();
+        if (! $service->needsInstall()) {
+            return;
+        }
+
+        if (! class_exists(\Automattic\WooCommerce\Admin\Notes\Note::class)) {
+            return;
+        }
+
+        $noteClass = \Automattic\WooCommerce\Admin\Notes\Note::class;
+        $existingNote = \Automattic\WooCommerce\Admin\Notes\Notes::get_note_by_name('polski-oss-install');
+
+        if ($existingNote !== false) {
+            return;
+        }
+
+        $note = new $noteClass();
+        $note->set_title(__('OSS plugin is missing', 'polski'));
+        $note->set_content(
+            __('You enabled the OSS observer, which requires the standalone One Stop Shop plugin. Install it to start monitoring the €10,000 intra-EU B2C delivery threshold automatically.', 'polski'),
+        );
+        $note->set_type($noteClass::E_WC_ADMIN_NOTE_WARNING);
+        $note->set_name('polski-oss-install');
+        $note->set_source('polski');
+        $note->add_action(
+            'polski-oss-install',
+            __('Install now', 'polski'),
+            $service->getInstallUrl(),
+            $noteClass::E_WC_ADMIN_NOTE_UNACTIONED,
+            true,
+        );
+        $note->save();
     }
 
     /**

@@ -204,7 +204,11 @@ final class AdminPage implements Bootable, HasHooks
         }
 
         $redirectPage = $groupSlug ? self::PAGE_SLUG . '-group-' . $groupSlug : self::PAGE_SLUG;
-        wp_safe_redirect(admin_url('admin.php?page=' . $redirectPage . '&saved=1&module=' . $moduleId));
+        $redirectUrl = admin_url('admin.php?page=' . $redirectPage . '&saved=1&module=' . $moduleId);
+        if ($moduleId !== '') {
+            $redirectUrl .= '#polski-module-' . $moduleId;
+        }
+        wp_safe_redirect($redirectUrl);
         exit;
     }
 
@@ -248,37 +252,34 @@ final class AdminPage implements Bootable, HasHooks
             [$this, 'renderReportsHubPage'],
         );
 
-        // Dynamic module settings submenus grouped by category.
+        // Dynamic settings subpages: one per MoSCoW bucket. Every module that has
+        // settings shows up on its bucket's page, regardless of enabled state, so
+        // pencil links from the modules table always resolve.
         $modulesPage = \Polski\Plugin::instance()->container()->get(\Polski\Admin\ModulesPage::class);
-        $groups = [];
 
-        foreach ($modulesPage->getModules() as $module) {
-            if (empty($module['settings'])) {
+        foreach ($modulesPage->getBucketedModules() as $bucketKey => $bucket) {
+            $modulesWithSettings = array_values(array_filter(
+                $bucket['modules'],
+                static fn (array $module): bool => ! empty($module['settings']),
+            ));
+
+            if ($modulesWithSettings === []) {
                 continue;
             }
 
-            if (! ModulesPage::isModuleEnabled($module['id'])) {
-                continue;
-            }
-
-            $groups[$module['group']][] = $module;
-        }
-
-        foreach ($groups as $groupName => $groupModules) {
-            $groupSlug = sanitize_title($groupName);
+            $label = $bucket['label'];
 
             add_submenu_page(
                 self::PAGE_SLUG,
-                $groupName,
-                $groupName,
+                $label,
+                $label,
                 self::CAPABILITY,
-                self::PAGE_SLUG . '-group-' . $groupSlug,
-                function () use ($modulesPage, $groupName, $groupModules, $groupSlug): void {
-                    $this->renderGroupSettingsPage($modulesPage, $groupName, $groupModules, $groupSlug);
+                'polski-group-' . $bucketKey,
+                function () use ($modulesPage, $label, $modulesWithSettings, $bucketKey): void {
+                    $this->renderGroupSettingsPage($modulesPage, $label, $modulesWithSettings, $bucketKey);
                 },
             );
         }
-
     }
 
     /**
@@ -346,15 +347,25 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings have been saved.', 'polski') . '</p></div>';
         }
 
+        echo '<p style="margin:12px 0;"><a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '">&larr; ' . esc_html__('Back to modules', 'polski') . '</a></p>';
+
         foreach ($modules as $module) {
-            echo '<div class="polski-module-settings-section" style="background:#fff; border:1px solid #ccd0d4; padding:20px; margin-top:20px;">';
-            echo '<h2 style="margin-top:0; border-bottom:1px solid #eee; padding-bottom:10px;">' . esc_html($module['name']) . '</h2>';
+            $moduleId = (string) $module['id'];
+            $isEnabled = ModulesPage::isModuleEnabled($moduleId);
+            $statusLabel = $isEnabled ? __('Enabled', 'polski') : __('Disabled', 'polski');
+            $statusColor = $isEnabled ? '#46b450' : '#d63638';
+
+            echo '<div id="polski-module-' . esc_attr($moduleId) . '" class="polski-module-settings-section" style="background:#fff; border:1px solid #ccd0d4; padding:20px; margin-top:20px;">';
+            echo '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px;">';
+            echo '<h2 style="margin:0;">' . esc_html($module['name']) . '</h2>';
+            echo '<span style="font-size:12px;color:' . esc_attr($statusColor) . ';font-weight:600;">' . esc_html($statusLabel) . '</span>';
+            echo '</div>';
             echo '<p>' . esc_html($module['description']) . '</p>';
 
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('polski_save_module_settings', '_polski_module_nonce');
             echo '<input type="hidden" name="action" value="polski_save_module_settings" />';
-            echo '<input type="hidden" name="module_id" value="' . esc_attr($module['id']) . '" />';
+            echo '<input type="hidden" name="module_id" value="' . esc_attr($moduleId) . '" />';
             echo '<input type="hidden" name="group_slug" value="' . esc_attr($groupSlug) . '" />';
 
             echo '<table class="form-table" role="presentation"><tbody>';
@@ -809,8 +820,17 @@ final class AdminPage implements Bootable, HasHooks
                 echo '<li>' . esc_html__('Go through the checklist below', 'polski') . '</li>';
             }
             echo '</ul>';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-informacje-o-produkcie')) . '" class="button button-primary">' . esc_html__('Complete product data', 'polski') . '</a> ';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-content_trust')) . '" class="button button-primary">' . esc_html__('Complete product data', 'polski') . '</a> ';
             echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '" class="button">' . esc_html__('Manage modules', 'polski') . '</a>';
+            echo '</div>';
+        } else {
+            // Wizard already finished: offer a safety-net relaunch link for merchants
+            // who want to rerun the guided setup without digging through the modules page.
+            echo '<div class="polski-dashboard-relaunch" style="margin-bottom:24px;font-size:13px;color:#646970;">';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=wizard#/setup-wizard')) . '" class="button button-small">';
+            echo '<span class="dashicons dashicons-update" style="vertical-align:text-bottom;"></span> ';
+            echo esc_html__('Relaunch setup wizard', 'polski');
+            echo '</a>';
             echo '</div>';
         }
 
@@ -1120,6 +1140,7 @@ final class AdminPage implements Bootable, HasHooks
             'nonce' => wp_create_nonce('wp_rest'),
             'version' => \Polski\VERSION,
             'isWizardComplete' => (bool) get_option('polski_wizard_complete', false),
+            'adminUrl' => admin_url('admin.php?page=' . self::PAGE_SLUG),
         ]);
 
         wp_set_script_translations('polski-admin', 'polski', \Polski\PLUGIN_DIR . '/languages');

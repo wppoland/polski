@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.9.1
+Stable tag: 1.10.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,12 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.10.0 =
+* New module: OSS observer. Tracks the EU intra-community €10,000 B2C delivery threshold by integrating with the standalone One Stop Shop plugin. One-click install + activation directly from the module row. WooCommerce admin note prompts install when the observer is toggled on without the external plugin present. Exposes the filter `polski_tax_oss_enabled` so polski-pro and third-party code can branch tax logic on OSS state.
+* Modules page: redesigned as a WP list-table (Name / Enabled / Description / Edit) with MoSCoW-prioritised grouping - Legal & Compliance, Tax & Pricing, Checkout & Orders, Content & Trust, Advanced & Tools. Pencil icon opens a dedicated settings subpage per bucket (`admin.php?page=polski-group-<bucket>#polski-module-<id>`) registered dynamically for every module with settings, enabled or not.
+* Setup wizard: rewritten as a 5-step guided flow (Company > Legal > Tax & OSS > Checkout > Finish). Each step uses toggle rows with inline description panels; optional steps have Skip Step + Continue; OSS toggle on the Tax step triggers One Stop Shop plugin install on Finish.
+* Dashboard: "Relaunch setup wizard" button for merchants who want to rerun the guided setup after completion.
 
 = 1.9.1 =
 * Compliance checklist: Accessibility (WCAG) section - 9 heuristic rules scanned against the static homepage HTML (html lang, skip link, h1, viewport meta, main landmark, search role, focus outline, autoplay sound, missing img alt). REST: `GET /polski/v1/compliance/accessibility`.

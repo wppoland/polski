@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    function init() {
+    function initToggles() {
         var config = window.polskiModules || {};
 
-        document.querySelectorAll('.sp-card .sp-toggle input[type=checkbox][data-polski-module-id]').forEach(function (cb) {
+        document.querySelectorAll('.sp-toggle input[type=checkbox][data-polski-module-id]').forEach(function (cb) {
             cb.addEventListener('change', function () {
                 if (this.disabled) {
                     return;
@@ -15,9 +15,9 @@
                     return;
                 }
 
-                var card = this.closest('.sp-card');
-                if (card) {
-                    card.classList.toggle('sp-card--active', this.checked);
+                var row = this.closest('.polski-modules-row');
+                if (row) {
+                    row.classList.toggle('polski-modules-row--active', this.checked);
                 }
 
                 var formData = new FormData();
@@ -39,8 +39,8 @@
                     })
                     .catch(function () {
                         cb.checked = !cb.checked;
-                        if (card) {
-                            card.classList.toggle('sp-card--active', cb.checked);
+                        if (row) {
+                            row.classList.toggle('polski-modules-row--active', cb.checked);
                         }
                         window.alert(config.errorGeneric || '');
                     });
@@ -49,8 +49,8 @@
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', initToggles);
     } else {
-        init();
+        initToggles();
     }
 })();
