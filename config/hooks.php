@@ -10,6 +10,7 @@ use Polski\Admin\PostTypes;
 use Polski\Admin\ProductMetaBox;
 use Polski\Compatibility\ElementorCompat;
 use Polski\Hook\AdminHooks;
+use Polski\Hook\AIFeedHooks;
 use Polski\Hook\ProductHooks;
 use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
@@ -174,4 +175,7 @@ return [
 
     // RODO training documentation generator.
     RodoTrainingDocsService::class,
+
+    // AI Feed: Markdown content negotiation for AI agents.
+    AIFeedHooks::class,
 ];

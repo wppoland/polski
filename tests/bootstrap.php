@@ -11,6 +11,10 @@ if (! defined('ABSPATH')) {
     define('ABSPATH', dirname(__DIR__) . '/');
 }
 
+if (! defined('Polski\\PLUGIN_DIR')) {
+    define('Polski\\PLUGIN_DIR', dirname(__DIR__));
+}
+
 // Composer autoloader.
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -185,6 +189,17 @@ if (! function_exists('wc_get_product')) {
     function wc_get_product(int $productId): ?object
     {
         return null;
+    }
+}
+
+if (! function_exists('wc_attribute_label')) {
+    function wc_attribute_label(string $name, string $product = ''): string
+    {
+        return match ($name) {
+            'pa_color' => 'Kolor',
+            'pa_size' => 'Rozmiar',
+            default => $name,
+        };
     }
 }
 

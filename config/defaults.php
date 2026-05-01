@@ -333,6 +333,11 @@ return [
         'show_stock' => true,
         'show_sale' => true,
         'show_attributes' => true,
+        'show_active_filters' => true,
+        'show_counts' => true,
+        'show_hierarchical_categories' => true,
+        'enable_taxonomy_multiselect' => true,
+        'taxonomy_multi_select_relation' => 'or',
         'max_attribute_taxonomies' => 4,
         'category_label' => __('Kategoria', 'polski'),
         'category_all_text' => __('Wszystkie', 'polski'),
@@ -344,11 +349,13 @@ return [
         'stock_any_text' => __('Dowolna', 'polski'),
         'stock_instock_text' => __('Dostępne od ręki', 'polski'),
         'sale_label' => __('Promocje', 'polski'),
+        'sale_active_text' => __('Tylko promocje', 'polski'),
         'attribute_any_text' => __('Dowolny', 'polski'),
         'show_reset_link' => true,
         'submit_text' => __('Filtruj', 'polski'),
         'reset_text' => __('Wyczyść filtry', 'polski'),
         'title' => __('Filtry produktów', 'polski'),
+        'active_filters_label' => __('Aktywne filtry', 'polski'),
     ],
 
     // Wishlist.
@@ -746,5 +753,11 @@ return [
     // FAQ.
     'polski_faq' => [
         'section_title' => __('Często zadawane pytania', 'polski'),
+    ],
+
+    // AI Feed: Markdown content negotiation for AI agents.
+    'polski_ai_feed' => [
+        'enabled' => true,
+        'post_types' => ['post', 'page', 'product'],
     ],
 ];

@@ -98,22 +98,25 @@ final class FilterService implements Bootable, HasHooks
         $taxQuery = is_array($taxQuery) ? $taxQuery : [];
         $metaQuery = is_array($metaQuery) ? $metaQuery : [];
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
-        $category = sanitize_title((string) wp_unslash($_GET['polski_filter_category'] ?? ''));
-        if ($category !== '') {
+        $taxonomyOperator = $this->getTaxonomyOperator();
+
+        $categories = $this->getRequestedTermValues('polski_filter_category');
+        if ($categories !== []) {
             $taxQuery[] = [
                 'taxonomy' => 'product_cat',
                 'field' => 'slug',
-                'terms' => [$category],
+                'terms' => $categories,
+                'operator' => $taxonomyOperator,
             ];
         }
 
-        $brand = sanitize_title((string) wp_unslash($_GET['polski_filter_brand'] ?? ''));
-        if ($brand !== '') {
+        $brands = $this->getRequestedTermValues('polski_filter_brand');
+        if ($brands !== []) {
             $taxQuery[] = [
                 'taxonomy' => 'polski_brand',
                 'field' => 'slug',
-                'terms' => [$brand],
+                'terms' => $brands,
+                'operator' => $taxonomyOperator,
             ];
         }
 
@@ -156,24 +159,23 @@ final class FilterService implements Bootable, HasHooks
 
         foreach ($this->getAttributeTaxonomies() as $taxonomy) {
             $param = 'polski_filter_' . $taxonomy;
-            $term = sanitize_title((string) wp_unslash($_GET[$param] ?? ''));
+            $terms = $this->getRequestedTermValues($param);
 
-            if ($term === '') {
+            if ($terms === []) {
                 continue;
             }
 
             $taxQuery[] = [
                 'taxonomy' => $taxonomy,
                 'field' => 'slug',
-                'terms' => [$term],
+                'terms' => $terms,
+                'operator' => $taxonomyOperator,
             ];
         }
 
         if ($taxQuery !== []) {
             $query->set('tax_query', $taxQuery);
         }
-
-        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ($metaQuery !== []) {
             $query->set('meta_query', $metaQuery);
@@ -213,18 +215,98 @@ final class FilterService implements Bootable, HasHooks
 
         $this->enqueueRenderedAssets();
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
-        $queryKeys = array_keys(wp_unslash($_GET));
-        // phpcs:enable WordPress.Security.NonceVerification.Recommended
-
         return $this->templateLoader->render('forms/ajax-filters', [
             'settings' => array_merge($this->getSettings(), $overrides),
-            'categories' => $this->getTerms('product_cat'),
-            'brands' => $this->getTerms('polski_brand'),
+            'categories' => $this->getTermOptions('product_cat', (bool) ($this->getSettings()['show_hierarchical_categories'] ?? true)),
+            'brands' => $this->getTermOptions('polski_brand'),
+            'attribute_options' => $this->getAttributeOptions(),
             'attribute_taxonomies' => $this->getAttributeTaxonomies(),
             'action_url' => $this->getActionUrl(),
-            'reset_url' => remove_query_arg($queryKeys),
+            'reset_url' => $this->getResetUrl(),
+            'active_filters' => $this->getActiveFilters(),
         ]);
+    }
+
+    /**
+     * @param array<string, string|list<string>> $query
+     * @param list<string> $attributeTaxonomies
+     * @param callable(string, string): string $labelResolver
+     * @return list<array{param: string, label: string, value: string, raw_value: string}>
+     */
+    public function buildActiveFilterItems(array $query, array $attributeTaxonomies, callable $labelResolver): array
+    {
+        $settings = $this->getSettings();
+        $items = [];
+
+        $items = array_merge(
+            $items,
+            $this->buildTaxonomyActiveItems(
+                'polski_filter_category',
+                'product_cat',
+                (string) ($settings['category_label'] ?? __('Kategoria', 'polski')),
+                $query,
+                $labelResolver,
+            ),
+            $this->buildTaxonomyActiveItems(
+                'polski_filter_brand',
+                'polski_brand',
+                (string) ($settings['brand_label'] ?? __('Marka', 'polski')),
+                $query,
+                $labelResolver,
+            ),
+        );
+
+        if (($query['polski_filter_min_price'] ?? '') !== '') {
+            $items[] = [
+                'param' => 'polski_filter_min_price',
+                'label' => (string) ($settings['min_price_label'] ?? __('Cena od', 'polski')),
+                'value' => (string) $query['polski_filter_min_price'],
+                'raw_value' => (string) $query['polski_filter_min_price'],
+            ];
+        }
+
+        if (($query['polski_filter_max_price'] ?? '') !== '') {
+            $items[] = [
+                'param' => 'polski_filter_max_price',
+                'label' => (string) ($settings['max_price_label'] ?? __('Cena do', 'polski')),
+                'value' => (string) $query['polski_filter_max_price'],
+                'raw_value' => (string) $query['polski_filter_max_price'],
+            ];
+        }
+
+        if (($query['polski_filter_stock'] ?? '') === 'instock') {
+            $items[] = [
+                'param' => 'polski_filter_stock',
+                'label' => (string) ($settings['stock_label'] ?? __('Dostępność', 'polski')),
+                'value' => (string) ($settings['stock_instock_text'] ?? __('Dostępne od ręki', 'polski')),
+                'raw_value' => 'instock',
+            ];
+        }
+
+        if (($query['polski_filter_sale'] ?? '') === '1') {
+            $items[] = [
+                'param' => 'polski_filter_sale',
+                'label' => (string) ($settings['sale_label'] ?? __('Promocje', 'polski')),
+                'value' => (string) ($settings['sale_active_text'] ?? __('Tylko promocje', 'polski')),
+                'raw_value' => '1',
+            ];
+        }
+
+        foreach ($attributeTaxonomies as $taxonomy) {
+            $param = 'polski_filter_' . $taxonomy;
+            $items = array_merge(
+                $items,
+                $this->buildTaxonomyActiveItems(
+                    $param,
+                    $taxonomy,
+                    wc_attribute_label($taxonomy),
+                    $query,
+                    $labelResolver,
+                ),
+            );
+        }
+
+        return $items;
     }
 
     private function enqueueRenderedAssets(): void
@@ -247,6 +329,34 @@ final class FilterService implements Bootable, HasHooks
 
     private function getActionUrl(): string
     {
+        if (is_product_category() || is_product_tag() || is_product_taxonomy()) {
+            $term = get_queried_object();
+
+            if ($term instanceof \WP_Term) {
+                $url = get_term_link($term);
+
+                if (! is_wp_error($url)) {
+                    return $url;
+                }
+            }
+        }
+
+        if (is_shop()) {
+            $shopUrl = get_permalink(wc_get_page_id('shop'));
+
+            if (is_string($shopUrl) && $shopUrl !== '') {
+                return $shopUrl;
+            }
+        }
+
+        if (is_singular()) {
+            $url = get_permalink();
+
+            if (is_string($url) && $url !== '') {
+                return $url;
+            }
+        }
+
         if (is_post_type_archive('product')) {
             return home_url('/?post_type=product');
         }
@@ -255,19 +365,263 @@ final class FilterService implements Bootable, HasHooks
     }
 
     /**
-     * @return list<\WP_Term>
+     * @return list<array{term: \WP_Term, label: string, depth: int}>
      */
-    private function getTerms(string $taxonomy): array
+    private function getTermOptions(string $taxonomy, bool $hierarchical = false): array
     {
         $terms = get_terms([
             'taxonomy' => $taxonomy,
             'hide_empty' => true,
+            'orderby' => 'name',
+            'order' => 'ASC',
         ]);
 
         if (! is_array($terms)) {
             return [];
         }
 
-        return array_values($terms);
+        $terms = array_values(array_filter(
+            $terms,
+            static fn (mixed $term): bool => $term instanceof \WP_Term,
+        ));
+
+        if (! $hierarchical || ! is_taxonomy_hierarchical($taxonomy)) {
+            return array_map(
+                static fn (\WP_Term $term): array => [
+                    'term' => $term,
+                    'label' => $term->name,
+                    'depth' => 0,
+                ],
+                $terms,
+            );
+        }
+
+        return $this->flattenHierarchicalTerms($terms);
+    }
+
+    /**
+     * @return array<string, list<array{term: \WP_Term, label: string, depth: int}>>
+     */
+    private function getAttributeOptions(): array
+    {
+        $options = [];
+
+        foreach ($this->getAttributeTaxonomies() as $taxonomy) {
+            $options[$taxonomy] = $this->getTermOptions($taxonomy);
+        }
+
+        return $options;
+    }
+
+    private function getResetUrl(): string
+    {
+        return add_query_arg($this->getPersistedQueryArgs([]), $this->getActionUrl());
+    }
+
+    /**
+     * @return list<array{param: string, label: string, value: string, raw_value: string, remove_url: string}>
+     */
+    private function getActiveFilters(): array
+    {
+        $query = $this->getActiveQueryValues();
+
+        $items = $this->buildActiveFilterItems(
+            $query,
+            $this->getAttributeTaxonomies(),
+            fn (string $taxonomy, string $slug): string => $this->resolveTermLabel($taxonomy, $slug),
+        );
+
+        return array_map(
+            fn (array $item): array => [
+                'param' => $item['param'],
+                'label' => $item['label'],
+                'value' => $item['value'],
+                'raw_value' => $item['raw_value'],
+                'remove_url' => add_query_arg(
+                    $this->getPersistedQueryArgs([$item]),
+                    $this->getActionUrl(),
+                ),
+            ],
+            $items,
+        );
+    }
+
+    /**
+     * @return array<string, string|list<string>>
+     */
+    private function getActiveQueryValues(): array
+    {
+        $values = [
+            'polski_filter_category' => $this->getRequestedTermValues('polski_filter_category'),
+            'polski_filter_brand' => $this->getRequestedTermValues('polski_filter_brand'),
+            'polski_filter_min_price' => sanitize_text_field((string) wp_unslash($_GET['polski_filter_min_price'] ?? '')),
+            'polski_filter_max_price' => sanitize_text_field((string) wp_unslash($_GET['polski_filter_max_price'] ?? '')),
+            'polski_filter_stock' => sanitize_key((string) wp_unslash($_GET['polski_filter_stock'] ?? '')),
+            'polski_filter_sale' => sanitize_key((string) wp_unslash($_GET['polski_filter_sale'] ?? '')),
+        ];
+
+        foreach ($this->getAttributeTaxonomies() as $taxonomy) {
+            $param = 'polski_filter_' . $taxonomy;
+            $values[$param] = $this->getRequestedTermValues($param);
+        }
+
+        return array_filter(
+            $values,
+            static fn (string|array $value): bool => is_array($value) ? $value !== [] : $value !== '',
+        );
+    }
+
+    private function resolveTermLabel(string $taxonomy, string $slug): string
+    {
+        $term = get_term_by('slug', $slug, $taxonomy);
+
+        if ($term instanceof \WP_Term && $term->name !== '') {
+            return $term->name;
+        }
+
+        return $slug;
+    }
+
+    /**
+     * @param list<array{param: string, label: string, value: string, raw_value: string}> $excludedItems
+     * @return array<string, string|list<string>>
+     */
+    private function getPersistedQueryArgs(array $excludedItems): array
+    {
+        $query = $this->getActiveQueryValues();
+        unset($query['paged']);
+
+        foreach ($excludedItems as $item) {
+            $param = $item['param'];
+
+            if (! array_key_exists($param, $query)) {
+                continue;
+            }
+
+            $value = $query[$param];
+
+            if (! is_array($value)) {
+                unset($query[$param]);
+                continue;
+            }
+
+            $remaining = array_values(array_filter(
+                $value,
+                static fn (string $candidate): bool => $candidate !== $item['raw_value'],
+            ));
+
+            if ($remaining === []) {
+                unset($query[$param]);
+                continue;
+            }
+
+            $query[$param] = $remaining;
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param list<\WP_Term> $terms
+     * @return list<array{term: \WP_Term, label: string, depth: int}>
+     */
+    private function flattenHierarchicalTerms(array $terms): array
+    {
+        $grouped = [];
+
+        foreach ($terms as $term) {
+            $grouped[(int) $term->parent][] = $term;
+        }
+
+        foreach ($grouped as &$children) {
+            usort(
+                $children,
+                static fn (\WP_Term $left, \WP_Term $right): int => strcasecmp($left->name, $right->name),
+            );
+        }
+        unset($children);
+
+        return $this->flattenChildren($grouped, 0, 0);
+    }
+
+    /**
+     * @param array<int, list<\WP_Term>> $grouped
+     * @return list<array{term: \WP_Term, label: string, depth: int}>
+     */
+    private function flattenChildren(array $grouped, int $parentId, int $depth): array
+    {
+        $items = [];
+
+        foreach ($grouped[$parentId] ?? [] as $term) {
+            $items[] = [
+                'term' => $term,
+                'label' => str_repeat('— ', $depth) . $term->name,
+                'depth' => $depth,
+            ];
+
+            $items = array_merge(
+                $items,
+                $this->flattenChildren($grouped, (int) $term->term_id, $depth + 1),
+            );
+        }
+
+        return $items;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getRequestedTermValues(string $param): array
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
+        $raw = wp_unslash($_GET[$param] ?? []);
+
+        if (is_string($raw)) {
+            $raw = [$raw];
+        }
+
+        if (! is_array($raw)) {
+            return [];
+        }
+
+        $values = array_map(
+            static fn (mixed $value): string => sanitize_title((string) $value),
+            $raw,
+        );
+
+        return array_values(array_filter(array_unique($values)));
+    }
+
+    private function getTaxonomyOperator(): string
+    {
+        return strtolower((string) ($this->getSettings()['taxonomy_multi_select_relation'] ?? 'or')) === 'and'
+            ? 'AND'
+            : 'IN';
+    }
+
+    /**
+     * @param array<string, string|list<string>> $query
+     * @param callable(string, string): string $labelResolver
+     * @return list<array{param: string, label: string, value: string, raw_value: string}>
+     */
+    private function buildTaxonomyActiveItems(
+        string $param,
+        string $taxonomy,
+        string $label,
+        array $query,
+        callable $labelResolver,
+    ): array {
+        $rawValues = $query[$param] ?? [];
+        $values = is_array($rawValues) ? $rawValues : (($rawValues !== '') ? [(string) $rawValues] : []);
+
+        return array_map(
+            static fn (string $value) => [
+                'param' => $param,
+                'label' => $label,
+                'value' => $labelResolver($taxonomy, $value),
+                'raw_value' => $value,
+            ],
+            $values,
+        );
     }
 }
