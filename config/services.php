@@ -3,11 +3,16 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
+use Polski\AIFeed\MarkdownConverter;
+use Polski\AIFeed\PostMarkdownBuilder;
+use Polski\AIFeed\ProductMarkdownBuilder;
+use Polski\AIFeed\RequestNegotiator;
 use Polski\Container;
 use Polski\Admin\AdminPage;
 use Polski\Admin\ProductMetaBox;
 use Polski\Admin\PostTypes;
 use Polski\Hook\AdminHooks;
+use Polski\Hook\AIFeedHooks;
 use Polski\Hook\ProductHooks;
 use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
@@ -354,5 +359,24 @@ return static function (Container $c): void {
     $c->singleton(CartHooks::class, static fn () => new CartHooks());
 
     $c->singleton(OrderHooks::class, static fn () => new OrderHooks());
+
+    // AI Feed: Markdown content negotiation for AI agents.
+    $c->singleton(MarkdownConverter::class, static fn () => new MarkdownConverter());
+    $c->singleton(RequestNegotiator::class, static fn () => new RequestNegotiator());
+    $c->singleton(PostMarkdownBuilder::class, static fn () => new PostMarkdownBuilder(
+        $c->get(MarkdownConverter::class),
+    ));
+    $c->singleton(ProductMarkdownBuilder::class, static fn () => new ProductMarkdownBuilder(
+        $c->get(MarkdownConverter::class),
+        $c->get(PostMarkdownBuilder::class),
+        $c->get(OmnibusService::class),
+        $c->get(DeliveryTimeService::class),
+        $c->get(ProductInfoService::class),
+    ));
+    $c->singleton(AIFeedHooks::class, static fn () => new AIFeedHooks(
+        $c->get(RequestNegotiator::class),
+        $c->get(PostMarkdownBuilder::class),
+        $c->get(ProductMarkdownBuilder::class),
+    ));
 
 };

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.10.0
+Stable tag: 1.11.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,11 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.11.0 =
+* New module: AI Feed. Serves singular posts, pages, and WooCommerce products as Markdown via content negotiation so AI agents and LLM crawlers can ingest store content without scraping HTML. Triggered by `Accept: text/markdown` header or `?output_format=md` query argument. Adds `<link rel="alternate" type="text/markdown">` to single views for discovery and a "View AI Version" row action on the Posts, Pages, and Products list screens.
+* AI Feed: product Markdown enriched with Polish-market data - SKU, GTIN/EAN, gross/regular/sale price, currency, tax class, Omnibus lowest price (last 30 days), delivery time, stock quantity and availability, weight, dimensions, brand, manufacturer, GPSR responsible person, and product categories. Front matter exposes the same fields as YAML for structured ingestion.
+* AI Feed: filters `polski/ai_feed/enabled`, `polski/ai_feed/post_types`, `polski/ai_feed/post_markdown`, `polski/ai_feed/product_markdown`, `polski/ai_feed/product_facts`, `polski/ai_feed/password_required`. Settings group `polski_ai_feed` (`enabled`, `post_types`). Default post types: `post`, `page`, `product`.
 
 = 1.10.0 =
 * New module: OSS observer. Tracks the EU intra-community €10,000 B2C delivery threshold by integrating with the standalone One Stop Shop plugin. One-click install + activation directly from the module row. WooCommerce admin note prompts install when the observer is toggled on without the external plugin present. Exposes the filter `polski_tax_oss_enabled` so polski-pro and third-party code can branch tax logic on OSS state.

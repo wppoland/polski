@@ -3,11 +3,13 @@
  * AJAX product filters form.
  *
  * @var array<string, mixed> $polski_settings
- * @var list<WP_Term>        $polski_categories
- * @var list<WP_Term>        $polski_brands
+ * @var list<array{term: WP_Term, label: string, depth: int}> $polski_categories
+ * @var list<array{term: WP_Term, label: string, depth: int}> $polski_brands
+ * @var array<string, list<array{term: WP_Term, label: string, depth: int}>> $polski_attribute_options
  * @var list<string>         $polski_attribute_taxonomies
  * @var string               $polski_action_url
  * @var string               $polski_reset_url
+ * @var list<array{param: string, label: string, value: string, raw_value: string, remove_url: string}> $polski_active_filters
  *
  * @package Polski/Templates
  */
@@ -20,13 +22,34 @@ defined('ABSPATH') || exit;
 // so a nonce is not appropriate here per WordPress guidance for read-only navigation.
 // All inputs are sanitized before any use or output.
 // phpcs:disable WordPress.Security.NonceVerification.Recommended
-$polski_filter_category  = isset($_GET['polski_filter_category'])  ? sanitize_title((string) wp_unslash($_GET['polski_filter_category']))  : '';
-$polski_filter_brand     = isset($_GET['polski_filter_brand'])     ? sanitize_title((string) wp_unslash($_GET['polski_filter_brand']))     : '';
+$polski_read_terms = static function (string $polski_key): array {
+    $polski_raw = wp_unslash($_GET[$polski_key] ?? []);
+
+    if (is_string($polski_raw)) {
+        $polski_raw = [$polski_raw];
+    }
+
+    if (! is_array($polski_raw)) {
+        return [];
+    }
+
+    $polski_values = array_map(
+        static fn (mixed $polski_value): string => sanitize_title((string) $polski_value),
+        $polski_raw,
+    );
+
+    return array_values(array_filter(array_unique($polski_values)));
+};
+
+$polski_filter_category  = $polski_read_terms('polski_filter_category');
+$polski_filter_brand     = $polski_read_terms('polski_filter_brand');
 $polski_filter_min_price = isset($_GET['polski_filter_min_price']) ? sanitize_text_field((string) wp_unslash($_GET['polski_filter_min_price'])) : '';
 $polski_filter_max_price = isset($_GET['polski_filter_max_price']) ? sanitize_text_field((string) wp_unslash($_GET['polski_filter_max_price'])) : '';
 $polski_filter_stock     = isset($_GET['polski_filter_stock'])     ? sanitize_key((string) wp_unslash($_GET['polski_filter_stock']))       : '';
 $polski_filter_sale      = isset($_GET['polski_filter_sale'])      ? sanitize_key((string) wp_unslash($_GET['polski_filter_sale']))        : '';
 // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+$polski_taxonomy_multiselect = (bool) ($polski_settings['enable_taxonomy_multiselect'] ?? true);
 
 // Numeric coercion for price inputs (allows decimals; empty string preserved when not provided).
 if ($polski_filter_min_price !== '' && is_numeric($polski_filter_min_price)) {
@@ -47,15 +70,47 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
         <h3 class="polski-ajax-filters__title"><?php echo esc_html((string) ($polski_settings['title'] ?? '')); ?></h3>
     <?php endif; ?>
 
+    <?php if ((bool) ($polski_settings['show_active_filters'] ?? true) && $polski_active_filters !== []) : ?>
+        <div class="polski-ajax-filters__active">
+            <span class="polski-ajax-filters__active-label">
+                <?php echo esc_html((string) ($polski_settings['active_filters_label'] ?? __('Aktywne filtry', 'polski'))); ?>
+            </span>
+            <div class="polski-ajax-filters__chips">
+                <?php foreach ($polski_active_filters as $polski_filter_item) : ?>
+                    <a
+                        class="polski-ajax-filters__chip"
+                        href="<?php echo esc_url($polski_filter_item['remove_url']); ?>"
+                        data-polski-ajax-filters-chip
+                    >
+                        <span class="polski-ajax-filters__chip-text">
+                            <?php echo esc_html($polski_filter_item['label'] . ': ' . $polski_filter_item['value']); ?>
+                        </span>
+                        <span class="polski-ajax-filters__chip-remove" aria-hidden="true">×</span>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <div class="polski-ajax-filters__grid">
         <?php if (! empty($polski_settings['show_categories']) && $polski_categories !== []) : ?>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html((string) ($polski_settings['category_label'] ?? __('Kategoria', 'polski'))); ?></span>
-                <select name="polski_filter_category">
-                    <option value=""><?php echo esc_html((string) ($polski_settings['category_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
-                    <?php foreach ($polski_categories as $polski_term) : ?>
-                        <option value="<?php echo esc_attr($polski_term->slug); ?>" <?php selected($polski_filter_category, $polski_term->slug); ?>>
-                            <?php echo esc_html($polski_term->name); ?>
+                <select
+                    name="<?php echo esc_attr($polski_taxonomy_multiselect ? 'polski_filter_category[]' : 'polski_filter_category'); ?>"
+                    <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
+                >
+                    <?php if (! $polski_taxonomy_multiselect) : ?>
+                        <option value=""><?php echo esc_html((string) ($polski_settings['category_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
+                    <?php endif; ?>
+                    <?php foreach ($polski_categories as $polski_option) : ?>
+                        <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_category, true)); ?>>
+                            <?php
+                            echo esc_html(
+                                $polski_option['label']
+                                . (! empty($polski_settings['show_counts']) ? ' (' . (int) $polski_option['term']->count . ')' : '')
+                            );
+                            ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -65,11 +120,21 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
         <?php if (! empty($polski_settings['show_brands']) && $polski_brands !== []) : ?>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html((string) ($polski_settings['brand_label'] ?? __('Marka', 'polski'))); ?></span>
-                <select name="polski_filter_brand">
-                    <option value=""><?php echo esc_html((string) ($polski_settings['brand_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
-                    <?php foreach ($polski_brands as $polski_term) : ?>
-                        <option value="<?php echo esc_attr($polski_term->slug); ?>" <?php selected($polski_filter_brand, $polski_term->slug); ?>>
-                            <?php echo esc_html($polski_term->name); ?>
+                <select
+                    name="<?php echo esc_attr($polski_taxonomy_multiselect ? 'polski_filter_brand[]' : 'polski_filter_brand'); ?>"
+                    <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
+                >
+                    <?php if (! $polski_taxonomy_multiselect) : ?>
+                        <option value=""><?php echo esc_html((string) ($polski_settings['brand_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
+                    <?php endif; ?>
+                    <?php foreach ($polski_brands as $polski_option) : ?>
+                        <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_brand, true)); ?>>
+                            <?php
+                            echo esc_html(
+                                $polski_option['label']
+                                . (! empty($polski_settings['show_counts']) ? ' (' . (int) $polski_option['term']->count . ')' : '')
+                            );
+                            ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -107,24 +172,29 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
         <?php endif; ?>
 
         <?php foreach ($polski_attribute_taxonomies as $polski_taxonomy) : ?>
-            <?php $polski_terms = get_terms(['taxonomy' => $polski_taxonomy, 'hide_empty' => true]); ?>
-            <?php if (! is_array($polski_terms) || $polski_terms === []) : ?>
+            <?php $polski_terms = $polski_attribute_options[$polski_taxonomy] ?? []; ?>
+            <?php if ($polski_terms === []) : ?>
                 <?php continue; ?>
             <?php endif; ?>
             <?php $polski_param = 'polski_filter_' . $polski_taxonomy; ?>
-            <?php // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only filter, sanitized below. ?>
-            <?php $polski_filter_attr_value = isset($_GET[$polski_param]) ? sanitize_title((string) wp_unslash($_GET[$polski_param])) : ''; ?>
-            <?php // phpcs:enable WordPress.Security.NonceVerification.Recommended ?>
+            <?php $polski_filter_attr_values = $polski_read_terms($polski_param); ?>
             <label class="polski-ajax-filters__field">
                 <span><?php echo esc_html(wc_attribute_label($polski_taxonomy)); ?></span>
-                <select name="<?php echo esc_attr($polski_param); ?>">
-                    <option value=""><?php echo esc_html((string) ($polski_settings['attribute_any_text'] ?? __('Dowolny', 'polski'))); ?></option>
-                    <?php foreach ($polski_terms as $polski_term) : ?>
-                        <?php if (! $polski_term instanceof WP_Term) : ?>
-                            <?php continue; ?>
-                        <?php endif; ?>
-                        <option value="<?php echo esc_attr($polski_term->slug); ?>" <?php selected($polski_filter_attr_value, $polski_term->slug); ?>>
-                            <?php echo esc_html($polski_term->name); ?>
+                <select
+                    name="<?php echo esc_attr($polski_taxonomy_multiselect ? $polski_param . '[]' : $polski_param); ?>"
+                    <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
+                >
+                    <?php if (! $polski_taxonomy_multiselect) : ?>
+                        <option value=""><?php echo esc_html((string) ($polski_settings['attribute_any_text'] ?? __('Dowolny', 'polski'))); ?></option>
+                    <?php endif; ?>
+                    <?php foreach ($polski_terms as $polski_option) : ?>
+                        <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_attr_values, true)); ?>>
+                            <?php
+                            echo esc_html(
+                                $polski_option['label']
+                                . (! empty($polski_settings['show_counts']) ? ' (' . (int) $polski_option['term']->count . ')' : '')
+                            );
+                            ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

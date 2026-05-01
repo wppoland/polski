@@ -130,21 +130,38 @@ final class WaitlistService implements Bootable, HasHooks
             return;
         }
 
-        foreach ($this->repository->findPendingByProduct($productId) as $subscription) {
-            $subject = Formatter::interpolate(
-                (string) ($this->getSettings()['notify_subject'] ?? __('Product back in stock - {product_name}', 'polski')),
-                ['product_name' => $product->get_name()],
-            );
+        $targetProductIds = [$productId];
+        $parentId = $product->get_parent_id();
 
-            $message = sprintf(
-                "%s\n\n%s\n%s",
-                str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? __('Product {product_name} is back in stock.', 'polski'))),
-                get_permalink($productId),
-                (string) ($this->getSettings()['notify_outro_text'] ?? __('If you no longer wish to receive these messages, simply ignore this email.', 'polski')),
-            );
+        if ($parentId > 0 && ! in_array($parentId, $targetProductIds, true)) {
+            $targetProductIds[] = $parentId;
+        }
 
-            if (wp_mail($subscription->email, $subject, $message)) {
-                $this->repository->markNotified($subscription->id);
+        $processedSubscriptions = [];
+
+        foreach ($targetProductIds as $targetProductId) {
+            foreach ($this->repository->findPendingByProduct($targetProductId) as $subscription) {
+                if (isset($processedSubscriptions[$subscription->id])) {
+                    continue;
+                }
+
+                $processedSubscriptions[$subscription->id] = true;
+
+                $subject = Formatter::interpolate(
+                    (string) ($this->getSettings()['notify_subject'] ?? __('Product back in stock - {product_name}', 'polski')),
+                    ['product_name' => $product->get_name()],
+                );
+
+                $message = sprintf(
+                    "%s\n\n%s\n%s",
+                    str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? __('Product {product_name} is back in stock.', 'polski'))),
+                    get_permalink($targetProductId),
+                    (string) ($this->getSettings()['notify_outro_text'] ?? __('If you no longer wish to receive these messages, simply ignore this email.', 'polski')),
+                );
+
+                if (wp_mail($subscription->email, $subject, $message)) {
+                    $this->repository->markNotified($subscription->id);
+                }
             }
         }
     }

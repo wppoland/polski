@@ -28,6 +28,21 @@ final class WaitlistRepository
         $existing = $this->findByProductAndEmail($productId, $email);
 
         if ($existing !== null) {
+            if ($existing->notified) {
+                $this->wpdb->update(
+                    $this->tableName(),
+                    [
+                        'user_id' => $userId,
+                        'notified' => 0,
+                        'created_at' => current_time('mysql', true),
+                        'notified_at' => null,
+                    ],
+                    ['id' => $existing->id],
+                    ['%d', '%d', '%s', '%s'],
+                    ['%d'],
+                );
+            }
+
             return $existing->id;
         }
 
@@ -48,11 +63,9 @@ final class WaitlistRepository
 
     public function findByProductAndEmail(int $productId, string $email): ?WaitlistSubscription
     {
-        global $wpdb;
-
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
-        $row = $wpdb->get_row(
-            $wpdb->prepare(
+        $row = $this->wpdb->get_row(
+            $this->wpdb->prepare(
                 'SELECT * FROM %i WHERE product_id = %d AND email = %s LIMIT 1',
                 $this->tableName(),
                 $productId,
@@ -68,11 +81,9 @@ final class WaitlistRepository
      */
     public function findPendingByProduct(int $productId): array
     {
-        global $wpdb;
-
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
-        $rows = $wpdb->get_results(
-            $wpdb->prepare(
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
                 'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
                 $this->tableName(),
                 $productId,
