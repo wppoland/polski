@@ -24,7 +24,26 @@ run_cli() {
 }
 
 find_container() {
-    docker ps --format '{{.Names}}' | grep -E 'wordpress-1$' | grep -v tests | head -1
+    # Resolve the WordPress container that backs `npx wp-env run cli` from THIS
+    # project. wp-env names containers <hash>-wordpress-1 where <hash> is the
+    # basename of the install path, so deriving from install-path is the only
+    # way to pick the correct instance when multiple wp-env projects are
+    # running concurrently. A naive `docker ps | grep wordpress-1 | head -1`
+    # picks an arbitrary instance and silently deploys to the wrong one.
+    local install_path
+    install_path="$( cd "${ROOT_DIR}" && npx wp-env install-path 2>/dev/null | tail -1 )"
+
+    if [[ -z "${install_path}" ]]; then
+        return 1
+    fi
+
+    local container="$(basename "${install_path}")-wordpress-1"
+
+    if ! docker ps --format '{{.Names}}' | grep -Fxq "${container}"; then
+        return 1
+    fi
+
+    echo "${container}"
 }
 
 ensure_plugin_check() {
@@ -75,6 +94,23 @@ install_release() {
 
     docker exec "${container}" rm -rf "/var/www/html/wp-content/plugins/${slug}"
     docker cp "${release_dir}" "${container}:/var/www/html/wp-content/plugins/${slug}"
+
+    # Sanity check: confirm the file we ship landed in the container that
+    # `npx wp-env run cli` will actually scan. A mismatch here means
+    # find_container picked the wrong instance and PCP is about to report
+    # against stale code.
+    local plugin_file="${release_dir}/${plugin}.php"
+    if [[ -f "${plugin_file}" ]]; then
+        local host_hash container_hash
+        host_hash="$(md5 -q "${plugin_file}" 2>/dev/null || md5sum "${plugin_file}" | cut -d' ' -f1)"
+        container_hash="$(docker exec "${container}" md5sum "/var/www/html/wp-content/plugins/${slug}/${plugin}.php" 2>/dev/null | cut -d' ' -f1)"
+        if [[ -n "${host_hash}" && -n "${container_hash}" && "${host_hash}" != "${container_hash}" ]]; then
+            echo "Plugin file hash mismatch between host build and container ${container}." >&2
+            echo "  host:      ${host_hash}" >&2
+            echo "  container: ${container_hash}" >&2
+            exit 1
+        fi
+    fi
 
     echo "${slug}"
 }
