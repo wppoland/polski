@@ -63,7 +63,7 @@ final class WaitlistRepository
 
     public function findByProductAndEmail(int $productId, string $email): ?WaitlistSubscription
     {
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $row = $this->wpdb->get_row(
             $this->wpdb->prepare(
                 'SELECT * FROM %i WHERE product_id = %d AND email = %s LIMIT 1',
@@ -72,6 +72,7 @@ final class WaitlistRepository
                 $email,
             ),
         );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return $row !== null ? WaitlistSubscription::fromRow($row) : null;
     }
@@ -81,7 +82,7 @@ final class WaitlistRepository
      */
     public function findPendingByProduct(int $productId): array
     {
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
                 'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
@@ -89,6 +90,7 @@ final class WaitlistRepository
                 $productId,
             ),
         );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return array_map(
             static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),

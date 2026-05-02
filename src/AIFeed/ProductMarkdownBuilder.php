@@ -93,6 +93,7 @@ final class ProductMarkdownBuilder
         $lines[] = '# ' . trim(wp_strip_all_tags($product->get_name()));
         $lines[] = '';
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core WooCommerce filter, applied to mirror storefront short-description rendering.
         $shortDescriptionRaw = (string) apply_filters('woocommerce_short_description', $product->get_short_description());
         if (trim(wp_strip_all_tags($shortDescriptionRaw)) !== '') {
             $lines[] = trim($this->converter->htmlToMarkdown($shortDescriptionRaw));
