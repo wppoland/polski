@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.12.0 =
+* AI Feed: `/llms.txt` manifest at the site root following the open standard at https://llmstxt.org. AI agents that look for the well-known file at `/llms.txt` now get a Markdown index of the site - title, description, legal pages with `?output_format=md` links, the WooCommerce shop page, and the top product categories. Filters: `polski/ai_feed/llms_txt_enabled`, `polski/ai_feed/llms_txt_sections`, `polski/ai_feed/llms_txt_category_limit`. Setting `polski_ai_feed.llms_txt_enabled` (default `true`).
 
 = 1.11.0 =
 * New module: AI Feed. Serves singular posts, pages, and WooCommerce products as Markdown via content negotiation so AI agents and LLM crawlers can ingest store content without scraping HTML. Triggered by `Accept: text/markdown` header or `?output_format=md` query argument. Adds `<link rel="alternate" type="text/markdown">` to single views for discovery and a "View AI Version" row action on the Posts, Pages, and Products list screens.
