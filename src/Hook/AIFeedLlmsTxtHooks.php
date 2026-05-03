@@ -24,7 +24,11 @@ final class AIFeedLlmsTxtHooks implements HasHooks
 
     public function registerHooks(): void
     {
-        add_action('init', [$this, 'maybeServe'], 0);
+        // Plugin::boot() itself runs at init priority 0 and our registerHooks
+        // is invoked from there, so a hook added at the same priority would
+        // miss the current init cycle. Priority 5 keeps us ahead of theme
+        // and template_redirect work while still firing within init.
+        add_action('init', [$this, 'maybeServe'], 5);
     }
 
     public function maybeServe(): void
