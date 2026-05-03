@@ -39,6 +39,11 @@ if (! defined('WEEK_IN_SECONDS')) {
 if (! function_exists('get_option')) {
     function get_option(string $option, mixed $default = false): mixed
     {
+        if (isset($GLOBALS['polski_test_options']) && is_array($GLOBALS['polski_test_options'])
+            && array_key_exists($option, $GLOBALS['polski_test_options'])) {
+            return $GLOBALS['polski_test_options'][$option];
+        }
+
         return $default;
     }
 }

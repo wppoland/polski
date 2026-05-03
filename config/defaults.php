@@ -759,5 +759,6 @@ return [
     'polski_ai_feed' => [
         'enabled' => true,
         'post_types' => ['post', 'page', 'product'],
+        'llms_txt_enabled' => true,
     ],
 ];
