@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.12.0
+Stable tag: 1.13.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.13.0 =
+* New module: B2B checkout fields. Adds an optional "Buying as a company" toggle plus NIP, REGON, and IBAN fields to WooCommerce classic checkout, with conditional show/hide tied to the toggle. NIP is validated on submit using the official Polish checksum algorithm and saved to standard `_billing_nip` meta so the existing KSeF and invoice modules pick it up without changes. REGON accepts 9- or 14-digit numbers; IBAN passes a structural sanity check (country prefix + 13-32 alphanumeric body, length 15-34). Settings group `polski_b2b` (`enabled`, `show_company_toggle`, `nip`, `regon`, `iban`). New static utility `Polski\Util\NipValidator` (`isValid`, `normalize`, `format`). When polski-pro's NipValidator is active, free skips its own NIP registration to avoid a duplicate field.
 
 = 1.12.0 =
 * AI Feed: `/llms.txt` manifest at the site root following the open standard at https://llmstxt.org. AI agents that look for the well-known file at `/llms.txt` now get a Markdown index of the site - title, description, legal pages with `?output_format=md` links, the WooCommerce shop page, and the top product categories. Filters: `polski/ai_feed/llms_txt_enabled`, `polski/ai_feed/llms_txt_sections`, `polski/ai_feed/llms_txt_category_limit`. Setting `polski_ai_feed.llms_txt_enabled` (default `true`).
