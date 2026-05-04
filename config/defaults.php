@@ -761,4 +761,13 @@ return [
         'post_types' => ['post', 'page', 'product'],
         'llms_txt_enabled' => true,
     ],
+
+    // B2B checkout: company toggle, NIP / REGON / IBAN.
+    'polski_b2b' => [
+        'enabled' => true,
+        'show_company_toggle' => true,
+        'nip' => true,
+        'regon' => false,
+        'iban' => false,
+    ],
 ];

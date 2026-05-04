@@ -15,6 +15,7 @@ use Polski\Admin\PostTypes;
 use Polski\Hook\AdminHooks;
 use Polski\Hook\AIFeedHooks;
 use Polski\Hook\AIFeedLlmsTxtHooks;
+use Polski\Hook\B2BCheckoutHooks;
 use Polski\Hook\ProductHooks;
 use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
@@ -70,6 +71,7 @@ use Polski\Service\ComplaintTemplateService;
 use Polski\Service\CopyrightNoticeService;
 use Polski\Service\RodoTrainingDocsService;
 use Polski\Shortcode\ShortcodeManager;
+use Polski\Service\B2BCheckoutService;
 use Polski\Service\PriceDisplayService;
 use Polski\Service\OmnibusService;
 use Polski\Service\TaxDisplayService;
@@ -384,6 +386,12 @@ return static function (Container $c): void {
     $c->singleton(LlmsTxtService::class, static fn () => new LlmsTxtService());
     $c->singleton(AIFeedLlmsTxtHooks::class, static fn () => new AIFeedLlmsTxtHooks(
         $c->get(LlmsTxtService::class),
+    ));
+
+    // B2B checkout: company toggle, NIP / REGON / IBAN fields.
+    $c->singleton(B2BCheckoutService::class, static fn () => new B2BCheckoutService());
+    $c->singleton(B2BCheckoutHooks::class, static fn () => new B2BCheckoutHooks(
+        $c->get(B2BCheckoutService::class),
     ));
 
 };
