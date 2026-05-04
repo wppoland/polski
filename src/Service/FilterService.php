@@ -88,6 +88,7 @@ final class FilterService implements Bootable, HasHooks
 
     public function applyFiltersToQuery(\WP_Query $query): void
     {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- GET-based product list filters; bookmarkable URLs must work without a nonce.
         if (! $this->isEnabled() || is_admin()) {
             return;
         }
@@ -180,6 +181,7 @@ final class FilterService implements Bootable, HasHooks
         if ($metaQuery !== []) {
             $query->set('meta_query', $metaQuery);
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
     }
 
     /**
@@ -451,6 +453,7 @@ final class FilterService implements Bootable, HasHooks
      */
     private function getActiveQueryValues(): array
     {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- GET-based product list filters; bookmarkable URLs must work without a nonce.
         $values = [
             'polski_filter_category' => $this->getRequestedTermValues('polski_filter_category'),
             'polski_filter_brand' => $this->getRequestedTermValues('polski_filter_brand'),
@@ -459,6 +462,7 @@ final class FilterService implements Bootable, HasHooks
             'polski_filter_stock' => sanitize_key((string) wp_unslash($_GET['polski_filter_stock'] ?? '')),
             'polski_filter_sale' => sanitize_key((string) wp_unslash($_GET['polski_filter_sale'] ?? '')),
         ];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         foreach ($this->getAttributeTaxonomies() as $taxonomy) {
             $param = 'polski_filter_' . $taxonomy;
@@ -573,7 +577,7 @@ final class FilterService implements Bootable, HasHooks
      */
     private function getRequestedTermValues(string $param): array
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only storefront filters; each value sanitised via sanitize_title() below.
         $raw = wp_unslash($_GET[$param] ?? []);
 
         if (is_string($raw)) {

@@ -23,10 +23,16 @@ final class IncidentRepository
 
     public function find(int $id): ?Incident
     {
-        $table = $this->tableName();
-        $sql = $this->wpdb->prepare("SELECT * FROM {$table} WHERE id = %d", $id);
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $sql is already prepared above.
-        $row = $this->wpdb->get_row($sql, ARRAY_A);
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with %i and %d placeholders.
+        $row = $this->wpdb->get_row(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE id = %d',
+                $this->tableName(),
+                $id,
+            ),
+            ARRAY_A,
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return is_array($row) ? Incident::fromRow($row) : null;
     }
@@ -36,10 +42,16 @@ final class IncidentRepository
      */
     public function all(int $limit = 200): array
     {
-        $table = $this->tableName();
-        $sql = $this->wpdb->prepare("SELECT * FROM {$table} ORDER BY discovered_at DESC LIMIT %d", $limit);
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $sql is already prepared above.
-        $rows = $this->wpdb->get_results($sql, ARRAY_A);
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with %i and %d placeholders.
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i ORDER BY discovered_at DESC LIMIT %d',
+                $this->tableName(),
+                $limit,
+            ),
+            ARRAY_A,
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         if (! is_array($rows)) {
             return [];
