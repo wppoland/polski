@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.13.0
+Stable tag: 1.14.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,11 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.14.0 =
+* B2B checkout fields: Block-checkout support via `woocommerce_register_additional_checkout_field` (WC 8.6+). NIP, REGON, and IBAN now appear in both classic and Block checkouts from a single registration. Values written by the WC additional-fields API are mirrored to legacy `_billing_nip`, `_billing_regon`, `_billing_iban` order meta on save (`woocommerce_set_additional_field_value`) so the existing KSeF and invoice modules pick them up unchanged. The classic-only `woocommerce_billing_fields` path is automatically skipped when the modern API is available, preventing duplicate billing rows. Stores on WC < 8.6 continue to use the classic-only path with the company toggle.
+* DSA module: per-product report widget. Optional collapsible "Zgłoś nielegalne treści (DSA)" section on single product pages with the report form prefilled with the product permalink and human-readable name. The form posts to the existing `polski_dsa_report` admin-post handler, so reports flow into the same admin queue as shortcode submissions. Configurable position (after product summary or in product meta block). New filter `polski/dsa/product_widget_enabled`. Defaults `polski_dsa.product_widget_enabled` (off) and `polski_dsa.product_widget_position` (`after_summary`).
+* DSA module: defaults populated for `polski_dsa` (`contact_email`, `form_title`, `form_intro`, plus the new widget keys) so admins see seeded values on first activation instead of empty strings.
 
 = 1.13.0 =
 * New module: B2B checkout fields. Adds an optional "Buying as a company" toggle plus NIP, REGON, and IBAN fields to WooCommerce classic checkout, with conditional show/hide tied to the toggle. NIP is validated on submit using the official Polish checksum algorithm and saved to standard `_billing_nip` meta so the existing KSeF and invoice modules pick it up without changes. REGON accepts 9- or 14-digit numbers; IBAN passes a structural sanity check (country prefix + 13-32 alphanumeric body, length 15-34). Settings group `polski_b2b` (`enabled`, `show_company_toggle`, `nip`, `regon`, `iban`). New static utility `Polski\Util\NipValidator` (`isValid`, `normalize`, `format`). When polski-pro's NipValidator is active, free skips its own NIP registration to avoid a duplicate field.
