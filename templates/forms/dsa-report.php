@@ -4,7 +4,9 @@
  *
  * This template can be overridden by copying it to yourtheme/polski/forms/dsa-report.php.
  *
- * @var array<string, mixed> $polski_settings DSA module settings.
+ * @var array<string, mixed> $polski_settings   DSA module settings.
+ * @var string               $polski_prefill_url Optional URL to lock the report to.
+ * @var string               $polski_prefill_label Optional human-readable label of the reported item.
  *
  * @package Polski/Templates
  */
@@ -18,6 +20,9 @@ $polski_reasons = [
     'misleading_ad'   => __('Wprowadzająca w błąd reklama', 'polski'),
     'other'           => __('Inne', 'polski'),
 ];
+
+$polski_prefill_url = isset($polski_prefill_url) ? (string) $polski_prefill_url : '';
+$polski_prefill_label = isset($polski_prefill_label) ? (string) $polski_prefill_label : '';
 ?>
 <div class="polski-dsa-report-form">
 
@@ -49,10 +54,32 @@ $polski_reasons = [
             <input type="email" id="polski-dsa-reporter-email" name="reporter_email" required>
         </p>
 
+        <?php if ($polski_prefill_url !== '') : ?>
+            <p class="polski-dsa-report-form__prefilled">
+                <?php
+                if ($polski_prefill_label !== '') {
+                    printf(
+                        /* translators: 1: human label, 2: URL */
+                        esc_html__('Zgłaszasz: %1$s (%2$s)', 'polski'),
+                        '<strong>' . esc_html($polski_prefill_label) . '</strong>',
+                        '<a href="' . esc_url($polski_prefill_url) . '" target="_blank" rel="noopener noreferrer">' . esc_html($polski_prefill_url) . '</a>',
+                    );
+                } else {
+                    printf(
+                        /* translators: %s: URL */
+                        esc_html__('Zgłaszasz: %s', 'polski'),
+                        '<a href="' . esc_url($polski_prefill_url) . '" target="_blank" rel="noopener noreferrer">' . esc_html($polski_prefill_url) . '</a>',
+                    );
+                }
+                ?>
+            </p>
+            <input type="hidden" name="content_url" value="<?php echo esc_url($polski_prefill_url); ?>">
+        <?php else : ?>
         <p class="polski-dsa-report-form__field">
             <label for="polski-dsa-content-url"><?php echo esc_html__('URL zgłaszanej treści', 'polski'); ?> <abbr class="required" title="<?php echo esc_attr__('wymagane', 'polski'); ?>">*</abbr></label>
             <input type="url" id="polski-dsa-content-url" name="content_url" required>
         </p>
+        <?php endif; ?>
 
         <p class="polski-dsa-report-form__field">
             <label for="polski-dsa-reason"><?php echo esc_html__('Powód zgłoszenia', 'polski'); ?> <abbr class="required" title="<?php echo esc_attr__('wymagane', 'polski'); ?>">*</abbr></label>

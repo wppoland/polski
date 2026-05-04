@@ -13,6 +13,7 @@ use Polski\Hook\AdminHooks;
 use Polski\Hook\AIFeedHooks;
 use Polski\Hook\AIFeedLlmsTxtHooks;
 use Polski\Hook\B2BCheckoutHooks;
+use Polski\Hook\DSAProductReportHooks;
 use Polski\Hook\ProductHooks;
 use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
@@ -184,4 +185,7 @@ return [
 
     // B2B checkout fields (company toggle, NIP / REGON / IBAN).
     B2BCheckoutHooks::class,
+
+    // Per-product DSA report widget.
+    DSAProductReportHooks::class,
 ];

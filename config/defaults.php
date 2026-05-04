@@ -770,4 +770,13 @@ return [
         'regon' => false,
         'iban' => false,
     ],
+
+    // DSA module: report form, contact email, per-product widget.
+    'polski_dsa' => [
+        'contact_email' => '',
+        'form_title' => __('Zgłoś nielegalne treści (DSA)', 'polski'),
+        'form_intro' => __('Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA).', 'polski'),
+        'product_widget_enabled' => false,
+        'product_widget_position' => 'after_summary',
+    ],
 ];
