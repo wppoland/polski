@@ -57,6 +57,14 @@ final class DSAService implements HasHooks
             wp_die(esc_html__('Invalid security token.', 'polski'));
         }
 
+        if ($this->isRateLimited()) {
+            wp_die(
+                esc_html__('Zbyt wiele zgłoszeń z tego adresu IP. Spróbuj ponownie za godzinę.', 'polski'),
+                esc_html__('Rate limited', 'polski'),
+                ['response' => 429],
+            );
+        }
+
         global $wpdb;
         $table = esc_sql($wpdb->prefix . 'polski_dsa_reports');
 
@@ -207,5 +215,55 @@ final class DSAService implements HasHooks
     {
         $settings = get_option('polski_dsa', []);
         return is_array($settings) ? $settings : [];
+    }
+
+    /**
+     * Per-IP rate limit. Default: 5 reports per hour per IP. The IP and
+     * window are filterable so operators can tune them or short-circuit
+     * the check entirely (e.g. behind an authenticated portal).
+     */
+    private function isRateLimited(): bool
+    {
+        $window = (int) apply_filters('polski/dsa/rate_limit_window_seconds', HOUR_IN_SECONDS);
+        $maxAttempts = (int) apply_filters('polski/dsa/rate_limit_max_attempts', 5);
+
+        if ($window <= 0 || $maxAttempts <= 0) {
+            return false;
+        }
+
+        $ip = $this->detectClientIp();
+        if ($ip === '') {
+            return false;
+        }
+
+        $key = 'polski_dsa_rl_' . md5($ip);
+
+        $current = get_transient($key);
+        $count = is_int($current) ? $current : 0;
+
+        if ($count >= $maxAttempts) {
+            return true;
+        }
+
+        set_transient($key, $count + 1, $window);
+
+        return false;
+    }
+
+    private function detectClientIp(): string
+    {
+        $candidate = isset($_SERVER['REMOTE_ADDR'])
+            ? sanitize_text_field(wp_unslash((string) $_SERVER['REMOTE_ADDR']))
+            : '';
+
+        /**
+         * Filter the client IP used for DSA rate limiting. Useful for sites
+         * behind a reverse proxy that need to read X-Forwarded-For instead.
+         *
+         * @param string $candidate Default IP from REMOTE_ADDR.
+         */
+        $ip = (string) apply_filters('polski/dsa/rate_limit_ip', $candidate);
+
+        return filter_var($ip, FILTER_VALIDATE_IP) === false ? '' : $ip;
     }
 }
