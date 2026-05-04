@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.14.0
+Stable tag: 1.14.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,11 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.14.1 =
+* B2B fields: full IBAN validation. `B2BCheckoutService::isPlausibleIban()` now performs the ISO 13616 mod-97 checksum and a country-code length lookup (PL=28, DE=22, GB=22, FR=27, IT=27, plus 25 more EU/CH/GB markets). Replaces the previous structural-only sanity check.
+* DSA: per-IP rate limiting on the report submission handler. Default 5 reports per hour per IP; window and limit are filterable via `polski/dsa/rate_limit_window_seconds` and `polski/dsa/rate_limit_max_attempts`. Source IP is filterable via `polski/dsa/rate_limit_ip` for sites behind a reverse proxy.
+* Code quality: tighter Plugin Check compliance in pre-existing modules. CRA `IncidentRepository` now uses `%i` placeholders instead of interpolated `{$table}` queries; `FilterService` documents the read-only GET-based filter context with a scoped `phpcs:disable`/`enable` block instead of leaving a Recommended warning open; `CRAIncidentsPage` adds `wp_unslash()` + `sanitize_key()` before passing `$_POST['kind']` and `$_POST['severity']` to `IncidentKind::tryFrom()` and `Severity::tryFrom()`; `templates/forms/ajax-filters.php` sanitises single-string `$_GET[$key]` reads.
 
 = 1.14.0 =
 * B2B checkout fields: Block-checkout support via `woocommerce_register_additional_checkout_field` (WC 8.6+). NIP, REGON, and IBAN now appear in both classic and Block checkouts from a single registration. Values written by the WC additional-fields API are mirrored to legacy `_billing_nip`, `_billing_regon`, `_billing_iban` order meta on save (`woocommerce_set_additional_field_value`) so the existing KSeF and invoice modules pick them up unchanged. The classic-only `woocommerce_billing_fields` path is automatically skipped when the modern API is available, preventing duplicate billing rows. Stores on WC < 8.6 continue to use the classic-only path with the company toggle.

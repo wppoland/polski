@@ -276,9 +276,9 @@ final class CRAIncidentsPage implements HasHooks
             wp_die(esc_html__('Insufficient permissions.', 'polski'));
         }
 
-        $kind = IncidentKind::tryFrom((string) ($_POST['kind'] ?? ''))
+        $kind = IncidentKind::tryFrom(sanitize_key(wp_unslash((string) ($_POST['kind'] ?? ''))))
             ?? IncidentKind::ActivelyExploitedVulnerability;
-        $severity = Severity::tryFrom((string) ($_POST['severity'] ?? '')) ?? Severity::Medium;
+        $severity = Severity::tryFrom(sanitize_key(wp_unslash((string) ($_POST['severity'] ?? '')))) ?? Severity::Medium;
 
         $title = sanitize_text_field(wp_unslash((string) ($_POST['title'] ?? '')));
         $summary = sanitize_textarea_field(wp_unslash((string) ($_POST['summary'] ?? '')));

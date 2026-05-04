@@ -23,10 +23,11 @@ defined('ABSPATH') || exit;
 // All inputs are sanitized before any use or output.
 // phpcs:disable WordPress.Security.NonceVerification.Recommended
 $polski_read_terms = static function (string $polski_key): array {
+    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitised per item below.
     $polski_raw = wp_unslash($_GET[$polski_key] ?? []);
 
     if (is_string($polski_raw)) {
-        $polski_raw = [$polski_raw];
+        $polski_raw = [sanitize_text_field($polski_raw)];
     }
 
     if (! is_array($polski_raw)) {
