@@ -171,7 +171,7 @@ final class B2BCheckoutService
             $iban = preg_replace('/\s+/', '', strtoupper(sanitize_text_field((string) ($post['billing_iban'] ?? ''))));
             if ($iban !== '' && ! $this->isPlausibleIban((string) $iban)) {
                 wc_add_notice(
-                    __('The IBAN format is not recognised. Use PL followed by 26 digits, or another valid IBAN.', 'polski'),
+                    __('The IBAN is invalid. Check the country code, length, and check digits.', 'polski'),
                     'error',
                 );
             }
@@ -335,7 +335,7 @@ final class B2BCheckoutService
                     if (! $this->isPlausibleIban($value)) {
                         return new \WP_Error(
                             'polski_invalid_iban',
-                            __('The IBAN format is not recognised. Use PL followed by 26 digits, or another valid IBAN.', 'polski'),
+                            __('The IBAN is invalid. Check the country code, length, and check digits.', 'polski'),
                         );
                     }
                     return null;
@@ -388,16 +388,83 @@ final class B2BCheckoutService
     }
 
     /**
-     * Plausible IBAN: 2 letters + 2 digits + up to 30 alphanumeric chars,
-     * length 15..34. Strict mod-97 check is left to integrators.
+     * Validate an IBAN end to end: country prefix, length, character set,
+     * country-specific length, and the mod-97 checksum (ISO 13616).
+     *
+     * The official algorithm:
+     *   1. Move the first four characters (country code + check digits) to the end.
+     *   2. Replace each letter with two digits (A=10, B=11, ..., Z=35).
+     *   3. The resulting integer must be congruent to 1 mod 97.
      */
     private function isPlausibleIban(string $iban): bool
     {
         if ($iban === '') {
             return false;
         }
-        $length = strlen($iban);
 
-        return $length >= 15 && $length <= 34 && (bool) preg_match('/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/', $iban);
+        $length = strlen($iban);
+        if ($length < 15 || $length > 34) {
+            return false;
+        }
+
+        if (! preg_match('/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/', $iban)) {
+            return false;
+        }
+
+        $countryLength = self::IBAN_COUNTRY_LENGTHS[substr($iban, 0, 2)] ?? null;
+        if ($countryLength !== null && $countryLength !== $length) {
+            return false;
+        }
+
+        return $this->ibanChecksumMatches($iban);
     }
+
+    /**
+     * Mod-97 check digit verification per ISO 13616.
+     *
+     * BCMath isn't always available, so we compute the modulo digit by
+     * digit, carrying an integer remainder small enough to fit in PHP_INT.
+     */
+    private function ibanChecksumMatches(string $iban): bool
+    {
+        $rearranged = substr($iban, 4) . substr($iban, 0, 4);
+
+        $expanded = '';
+        $length = strlen($rearranged);
+        for ($i = 0; $i < $length; $i++) {
+            $char = $rearranged[$i];
+            if ($char >= '0' && $char <= '9') {
+                $expanded .= $char;
+                continue;
+            }
+            if ($char >= 'A' && $char <= 'Z') {
+                $expanded .= (string) (ord($char) - 55);
+                continue;
+            }
+            return false;
+        }
+
+        $remainder = 0;
+        $expandedLength = strlen($expanded);
+        for ($i = 0; $i < $expandedLength; $i++) {
+            $remainder = ($remainder * 10 + (int) $expanded[$i]) % 97;
+        }
+
+        return $remainder === 1;
+    }
+
+    /**
+     * Country-code -> total IBAN length lookup (selected EU/CH/GB markets
+     * a Polish merchant is most likely to encounter). Unknown country codes
+     * pass length validation; the mod-97 check still applies.
+     *
+     * @var array<string, int>
+     */
+    private const IBAN_COUNTRY_LENGTHS = [
+        'AT' => 20, 'BE' => 16, 'BG' => 22, 'CH' => 21, 'CY' => 28, 'CZ' => 24,
+        'DE' => 22, 'DK' => 18, 'EE' => 20, 'ES' => 24, 'FI' => 18, 'FR' => 27,
+        'GB' => 22, 'GR' => 27, 'HR' => 21, 'HU' => 28, 'IE' => 22, 'IT' => 27,
+        'LT' => 20, 'LU' => 20, 'LV' => 21, 'MT' => 31, 'NL' => 18, 'NO' => 15,
+        'PL' => 28, 'PT' => 25, 'RO' => 24, 'SE' => 24, 'SI' => 19, 'SK' => 24,
+    ];
 }
