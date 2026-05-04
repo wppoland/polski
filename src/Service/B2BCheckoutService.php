@@ -80,7 +80,11 @@ final class B2BCheckoutService
      */
     public function addBillingFields(array $fields): array
     {
-        if (! $this->isEnabled()) {
+        if (! $this->isEnabled() || self::hasAdditionalFieldsApi()) {
+            // When the unified WC 8.6+ API is available, fields are
+            // registered through registerAdditionalCheckoutFields() and
+            // appear in classic checkout automatically. Skipping here
+            // prevents duplicate billing rows.
             return $fields;
         }
 
@@ -245,6 +249,142 @@ final class B2BCheckoutService
         }
 
         return $fields;
+    }
+
+    /**
+     * Whether WooCommerce 8.6+ unified additional checkout fields API is available.
+     */
+    public static function hasAdditionalFieldsApi(): bool
+    {
+        return function_exists('woocommerce_register_additional_checkout_field');
+    }
+
+    /**
+     * Register fields via the unified WooCommerce API (WC 8.6+). Fields appear
+     * in both classic and Block checkouts. Values land under
+     * _wc_billing/<id> on the order; we mirror them to legacy
+     * _billing_nip / _billing_regon / _billing_iban meta on save so the KSeF
+     * and invoice modules pick them up without changes.
+     */
+    public function registerAdditionalCheckoutFields(): void
+    {
+        if (! $this->isEnabled() || ! self::hasAdditionalFieldsApi()) {
+            return;
+        }
+
+        $settings = $this->fieldSettings();
+
+        if ($this->shouldRegisterNipField()) {
+            woocommerce_register_additional_checkout_field([
+                'id' => 'polski/nip',
+                'label' => __('NIP (Tax ID)', 'polski'),
+                'location' => 'address',
+                'type' => 'text',
+                'required' => false,
+                'sanitize_callback' => static fn (string $value): string => NipValidator::normalize(sanitize_text_field($value)),
+                'validate_callback' => static function (string $value) {
+                    if ($value === '') {
+                        return null;
+                    }
+                    if (! NipValidator::isValid($value)) {
+                        return new \WP_Error(
+                            'polski_invalid_nip',
+                            __('The provided NIP number is invalid. Please check and try again.', 'polski'),
+                        );
+                    }
+                    return null;
+                },
+            ]);
+        }
+
+        if ($settings['regon']) {
+            woocommerce_register_additional_checkout_field([
+                'id' => 'polski/regon',
+                'label' => __('REGON (statistical number)', 'polski'),
+                'location' => 'address',
+                'type' => 'text',
+                'required' => false,
+                'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/\s+/', '', sanitize_text_field($value)),
+                'validate_callback' => static function (string $value) {
+                    if ($value === '') {
+                        return null;
+                    }
+                    if (! preg_match('/^\d{9}$|^\d{14}$/', $value)) {
+                        return new \WP_Error(
+                            'polski_invalid_regon',
+                            __('REGON must contain exactly 9 or 14 digits.', 'polski'),
+                        );
+                    }
+                    return null;
+                },
+            ]);
+        }
+
+        if ($settings['iban']) {
+            woocommerce_register_additional_checkout_field([
+                'id' => 'polski/iban',
+                'label' => __('Bank account (IBAN)', 'polski'),
+                'location' => 'address',
+                'type' => 'text',
+                'required' => false,
+                'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/\s+/', '', strtoupper(sanitize_text_field($value))),
+                'validate_callback' => function (string $value) {
+                    if ($value === '') {
+                        return null;
+                    }
+                    if (! $this->isPlausibleIban($value)) {
+                        return new \WP_Error(
+                            'polski_invalid_iban',
+                            __('The IBAN format is not recognised. Use PL followed by 26 digits, or another valid IBAN.', 'polski'),
+                        );
+                    }
+                    return null;
+                },
+            ]);
+        }
+    }
+
+    /**
+     * Mirror values written by WC's additional-fields API to the legacy
+     * _billing_* meta keys consumed by KSeF, the invoice module, and the
+     * AI Feed invoice exporter.
+     *
+     * Hook: woocommerce_set_additional_field_value (5 args).
+     *
+     * @param string $key      Field key, e.g. polski/nip.
+     * @param mixed  $value    Sanitized value.
+     * @param string $group    Group, e.g. billing|shipping|other.
+     * @param mixed  $document Either WC_Customer or WC_Order depending on context.
+     */
+    public function mirrorAdditionalFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
+    {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
+        if ($group !== 'billing') {
+            return;
+        }
+
+        $metaKey = match ($key) {
+            'polski/nip' => '_billing_nip',
+            'polski/regon' => self::META_REGON,
+            'polski/iban' => self::META_IBAN,
+            default => null,
+        };
+
+        if ($metaKey === null) {
+            return;
+        }
+
+        $stringValue = is_scalar($value) ? (string) $value : '';
+        if ($stringValue === '') {
+            return;
+        }
+
+        if (is_object($document) && method_exists($document, 'update_meta_data')) {
+            $document->update_meta_data($metaKey, $stringValue);
+        }
     }
 
     /**

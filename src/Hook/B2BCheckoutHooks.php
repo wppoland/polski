@@ -23,9 +23,21 @@ final class B2BCheckoutHooks implements HasHooks
 
     public function registerHooks(): void
     {
+        // Modern WC 8.6+ unified field API (Block + classic in one go).
+        add_action('woocommerce_init', [$this->service, 'registerAdditionalCheckoutFields']);
+        add_action(
+            'woocommerce_set_additional_field_value',
+            [$this->service, 'mirrorAdditionalFieldToLegacyMeta'],
+            10,
+            4,
+        );
+
+        // Classic-only fallback for stores on WC < 8.6. The service skips
+        // this path internally when the modern API is available.
         add_filter('woocommerce_billing_fields', [$this->service, 'addBillingFields'], 20);
         add_action('woocommerce_checkout_process', [$this->service, 'validateAtCheckout']);
         add_action('woocommerce_checkout_create_order', [$this->service, 'saveToOrder'], 10, 2);
+
         add_filter('woocommerce_admin_billing_fields', [$this->service, 'addAdminBillingFields']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueToggleScript']);
     }
