@@ -225,7 +225,8 @@ final class CRAIncidentsPage implements HasHooks
             $links[] = sprintf('<a href="%s">%s</a>', esc_url($resolveUrl), esc_html__('Mark resolved', 'polski'));
         }
 
-        $confirmAttr = sprintf(' onclick="return confirm(%s)"', esc_attr(wp_json_encode(__('Delete incident?', 'polski'))));
+        $confirmJson = wp_json_encode(__('Delete incident?', 'polski'));
+        $confirmAttr = sprintf(' onclick="return confirm(%s)"', esc_attr(is_string($confirmJson) ? $confirmJson : '""'));
         $links[] = sprintf('<a href="%s"%s>%s</a>', esc_url($deleteUrl), $confirmAttr, esc_html__('Delete', 'polski'));
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Parts pre-built with esc_url/esc_html.
@@ -343,6 +344,7 @@ final class CRAIncidentsPage implements HasHooks
 
         if ($incident === null) {
             $this->redirectTo('list', 'error');
+            return;
         }
 
         $filename = sprintf('cra-incident-%d-%s.json', $id, gmdate('Ymd-His'));
