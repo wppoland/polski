@@ -258,21 +258,27 @@ final class FilterService implements Bootable, HasHooks
             ),
         );
 
-        if (($query['polski_filter_min_price'] ?? '') !== '') {
+        $minPrice = is_string($query['polski_filter_min_price'] ?? null)
+            ? (string) $query['polski_filter_min_price']
+            : '';
+        if ($minPrice !== '') {
             $items[] = [
                 'param' => 'polski_filter_min_price',
                 'label' => (string) ($settings['min_price_label'] ?? __('Cena od', 'polski')),
-                'value' => (string) $query['polski_filter_min_price'],
-                'raw_value' => (string) $query['polski_filter_min_price'],
+                'value' => $minPrice,
+                'raw_value' => $minPrice,
             ];
         }
 
-        if (($query['polski_filter_max_price'] ?? '') !== '') {
+        $maxPrice = is_string($query['polski_filter_max_price'] ?? null)
+            ? (string) $query['polski_filter_max_price']
+            : '';
+        if ($maxPrice !== '') {
             $items[] = [
                 'param' => 'polski_filter_max_price',
                 'label' => (string) ($settings['max_price_label'] ?? __('Cena do', 'polski')),
-                'value' => (string) $query['polski_filter_max_price'],
-                'raw_value' => (string) $query['polski_filter_max_price'],
+                'value' => $maxPrice,
+                'raw_value' => $maxPrice,
             ];
         }
 
@@ -382,10 +388,7 @@ final class FilterService implements Bootable, HasHooks
             return [];
         }
 
-        $terms = array_values(array_filter(
-            $terms,
-            static fn (mixed $term): bool => $term instanceof \WP_Term,
-        ));
+        $terms = array_values($terms);
 
         if (! $hierarchical || ! is_taxonomy_hierarchical($taxonomy)) {
             return array_map(
