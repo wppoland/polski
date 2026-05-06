@@ -64,6 +64,28 @@ final class FilterService implements Bootable, HasHooks
         );
     }
 
+    /**
+     * Resolve which preset should drive the current archive view. Themes and
+     * site-specific code can hook `polski/filters/archive_preset` to map
+     * categories, tags, or arbitrary archive contexts to a preset slug.
+     *
+     * @return array<string, mixed>
+     */
+    private function getArchivePresetOverrides(): array
+    {
+        /**
+         * Filter the preset slug for the current archive. Default: empty
+         * string (no preset); return a slug to apply that preset's overrides.
+         */
+        $name = (string) apply_filters('polski/filters/archive_preset', '');
+
+        if ($name === '') {
+            return [];
+        }
+
+        return $this->getPreset($name);
+    }
+
     public function renderArchiveFilters(): void
     {
         if (! $this->shouldRenderOnCurrentPage() || ! ($this->getSettings()['show_on_shop'] ?? true)) {
@@ -71,7 +93,7 @@ final class FilterService implements Bootable, HasHooks
         }
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
-        echo $this->renderFilterForm();
+        echo $this->renderFilterForm($this->getArchivePresetOverrides());
     }
 
     /**
@@ -83,7 +105,37 @@ final class FilterService implements Bootable, HasHooks
             return '';
         }
 
-        return $this->renderFilterForm();
+        $atts = is_array($atts) ? $atts : [];
+        $overrides = [];
+
+        if (isset($atts['preset']) && is_string($atts['preset']) && $atts['preset'] !== '') {
+            $overrides = $this->getPreset((string) $atts['preset']);
+        }
+
+        return $this->renderFilterForm($overrides);
+    }
+
+    /**
+     * Look up a named filter preset. Presets live in the `polski_filter_presets`
+     * option as `[name => array<string, mixed>]`; the inner array is merged
+     * over the global filter settings before rendering.
+     *
+     * @return array<string, mixed>
+     */
+    public function getPreset(string $name): array
+    {
+        $stored = get_option('polski_filter_presets', []);
+        $presets = is_array($stored) ? $stored : [];
+        $preset = isset($presets[$name]) && is_array($presets[$name]) ? $presets[$name] : [];
+
+        /**
+         * Filter a named preset before it is applied. Useful for per-page or
+         * per-archive variants that the admin UI does not (yet) expose.
+         *
+         * @param array<string, mixed> $preset Preset overrides keyed by filter setting.
+         * @param string               $name   Preset slug.
+         */
+        return (array) apply_filters('polski/filters/preset', $preset, $name);
     }
 
     public function applyFiltersToQuery(\WP_Query $query): void
