@@ -26,6 +26,7 @@ final class B2BCheckoutService
     public const OPTION = 'polski_b2b';
 
     private const META_COMPANY_FLAG = '_polski_buying_as_company';
+    private const META_NEEDS_INVOICE = '_polski_needs_invoice';
     private const META_REGON = '_billing_regon';
     private const META_IBAN = '_billing_iban';
 
@@ -38,6 +39,7 @@ final class B2BCheckoutService
         $defaults = [
             'enabled' => true,
             'show_company_toggle' => true,
+            'show_needs_invoice_toggle' => false,
             'nip' => true,
             'regon' => false,
             'iban' => false,
@@ -96,6 +98,16 @@ final class B2BCheckoutService
                 'required' => false,
                 'class' => ['form-row-wide'],
                 'priority' => 25,
+                'type' => 'checkbox',
+            ];
+        }
+
+        if ($settings['show_needs_invoice_toggle']) {
+            $fields['polski_needs_invoice'] = [
+                'label' => __('Potrzebuję faktury VAT', 'polski'),
+                'required' => false,
+                'class' => ['form-row-wide'],
+                'priority' => 26,
                 'type' => 'checkbox',
             ];
         }
@@ -200,6 +212,11 @@ final class B2BCheckoutService
             $order->update_meta_data(self::META_COMPANY_FLAG, $isCompany ? 'yes' : 'no');
         }
 
+        if ($settings['show_needs_invoice_toggle']) {
+            $needsInvoice = ! empty($post['polski_needs_invoice']);
+            $order->update_meta_data(self::META_NEEDS_INVOICE, $needsInvoice ? 'yes' : 'no');
+        }
+
         if ($this->shouldRegisterNipField()) {
             $nip = NipValidator::normalize(sanitize_text_field((string) ($post['billing_nip'] ?? '')));
             if ($nip !== '') {
@@ -273,6 +290,16 @@ final class B2BCheckoutService
         }
 
         $settings = $this->fieldSettings();
+
+        if ($settings['show_needs_invoice_toggle']) {
+            woocommerce_register_additional_checkout_field([
+                'id' => 'polski/needs_invoice',
+                'label' => __('Potrzebuję faktury VAT', 'polski'),
+                'location' => 'order',
+                'type' => 'checkbox',
+                'required' => false,
+            ]);
+        }
 
         if ($this->shouldRegisterNipField()) {
             woocommerce_register_additional_checkout_field([
@@ -370,6 +397,7 @@ final class B2BCheckoutService
             'polski/nip' => '_billing_nip',
             'polski/regon' => self::META_REGON,
             'polski/iban' => self::META_IBAN,
+            'polski/needs_invoice' => self::META_NEEDS_INVOICE,
             default => null,
         };
 
@@ -377,9 +405,13 @@ final class B2BCheckoutService
             return;
         }
 
-        $stringValue = is_scalar($value) ? (string) $value : '';
-        if ($stringValue === '') {
-            return;
+        if ($key === 'polski/needs_invoice') {
+            $stringValue = ! empty($value) ? 'yes' : 'no';
+        } else {
+            $stringValue = is_scalar($value) ? (string) $value : '';
+            if ($stringValue === '') {
+                return;
+            }
         }
 
         if (is_object($document) && method_exists($document, 'update_meta_data')) {

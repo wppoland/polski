@@ -51,6 +51,7 @@ final class CompareService implements Bootable, HasHooks
         add_filter('woocommerce_account_menu_items', [$this, 'addAccountMenuItem']);
         add_action('woocommerce_account_' . self::ENDPOINT . '_endpoint', [$this, 'renderAccountPage']);
         add_action('wp_login', [$this, 'transferGuestCompareToUser'], 10, 2);
+        add_action('wp_footer', [$this, 'renderStickyBar'], 99);
     }
 
     public function isEnabled(): bool
@@ -235,6 +236,67 @@ final class CompareService implements Bootable, HasHooks
     {
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
         echo $this->renderCompareTable();
+    }
+
+    /**
+     * Sticky bottom drawer with compared product thumbnails + a Compare button.
+     * Hidden when the list is empty or the customer is already on the compare
+     * page. Behaviour is opt-in via polski_compare.show_sticky_bar so existing
+     * stores upgrade without an unexpected new UI element.
+     */
+    public function renderStickyBar(): void
+    {
+        if (! $this->isEnabled() || ! $this->canUseCompare()) {
+            return;
+        }
+
+        if (function_exists('is_admin') && is_admin()) {
+            return;
+        }
+
+        $settings = $this->getSettings();
+        if (empty($settings['show_sticky_bar'])) {
+            return;
+        }
+
+        $products = $this->getProducts();
+        if ($products === []) {
+            return;
+        }
+
+        $compareUrl = (string) (get_permalink((int) wc_get_page_id('compare')) ?: '');
+
+        // Hide on the compare page itself.
+        if ($compareUrl !== '' && is_page((int) wc_get_page_id('compare'))) {
+            return;
+        }
+
+        echo '<div class="polski-compare-sticky" data-polski-compare-sticky aria-live="polite">';
+        echo '<div class="polski-compare-sticky__items">';
+        foreach (array_slice($products, 0, 4) as $product) {
+            $image = $product->get_image('thumbnail', ['class' => 'polski-compare-sticky__thumb']);
+            echo '<a class="polski-compare-sticky__item" href="' . esc_url($product->get_permalink()) . '" title="' . esc_attr($product->get_name()) . '">';
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WC produces escaped <img>.
+            echo $image;
+            echo '</a>';
+        }
+        $extra = max(0, count($products) - 4);
+        if ($extra > 0) {
+            echo '<span class="polski-compare-sticky__more">+' . (int) $extra . '</span>';
+        }
+        echo '</div>';
+
+        echo '<a class="polski-compare-sticky__cta button" href="' . esc_url($compareUrl) . '">';
+        echo esc_html(sprintf(
+            /* translators: %d: number of products in the compare list */
+            _n('Porównaj (%d)', 'Porównaj (%d)', count($products), 'polski'),
+            count($products),
+        ));
+        echo '</a>';
+
+        echo '<button type="button" class="polski-compare-sticky__clear" data-polski-compare-clear-all aria-label="' . esc_attr__('Wyczyść porównanie', 'polski') . '">×</button>';
+
+        echo '</div>';
     }
 
     public function renderArchiveCompare(): void

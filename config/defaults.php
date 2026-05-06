@@ -388,6 +388,7 @@ return [
         'allow_guests' => true,
         'show_on_single' => true,
         'show_on_loop' => true,
+        'show_sticky_bar' => false,
         'show_in_account' => true,
         'show_product_image' => true,
         'show_add_to_cart' => true,
@@ -766,6 +767,7 @@ return [
     'polski_b2b' => [
         'enabled' => true,
         'show_company_toggle' => true,
+        'show_needs_invoice_toggle' => false,
         'nip' => true,
         'regon' => false,
         'iban' => false,

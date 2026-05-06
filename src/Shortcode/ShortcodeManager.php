@@ -52,6 +52,7 @@ final class ShortcodeManager implements HasHooks
         add_shortcode('polski_withdrawal_form', [$this, 'withdrawalForm']);
         add_shortcode('polski_wishlist', [$this, 'wishlist']);
         add_shortcode('polski_compare', [$this, 'compare']);
+        add_shortcode('polski_compare_count', [$this, 'compareCount']);
         add_shortcode('polski_complaints', [$this, 'complaints']);
         add_shortcode('polski_payment_methods', [$this, 'paymentMethods']);
         add_shortcode('polski_small_business_notice', [$this, 'smallBusinessNotice']);
@@ -288,6 +289,39 @@ final class ShortcodeManager implements HasHooks
     public function compare(array|string $atts = []): string
     {
         return $this->container()->get(CompareService::class)->renderCompareTable();
+    }
+
+    /** @param ShortcodeAtts $atts */
+    public function compareCount(array|string $atts = []): string
+    {
+        $service = $this->container()->get(CompareService::class);
+        if (! $service->isEnabled()) {
+            return '';
+        }
+
+        $atts = is_array($atts) ? $atts : [];
+        $defaults = [
+            'class' => 'polski-compare-count',
+            /* translators: %d: number of products in the compare list */
+            'template' => __('Porównaj (%d)', 'polski'),
+            'hide_when_empty' => 'no',
+        ];
+        $atts = array_merge($defaults, $atts);
+
+        $count = $service->getCount();
+        if ($count === 0 && (string) $atts['hide_when_empty'] === 'yes') {
+            return '';
+        }
+
+        $compareUrl = (string) (get_permalink((int) wc_get_page_id('compare')) ?: '');
+
+        return sprintf(
+            '<a class="%s" href="%s" data-polski-compare-count="%d">%s</a>',
+            esc_attr((string) $atts['class']),
+            esc_url($compareUrl),
+            $count,
+            esc_html(sprintf((string) $atts['template'], $count)),
+        );
     }
 
     /** @param ShortcodeAtts $atts */
