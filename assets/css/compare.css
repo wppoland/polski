@@ -45,3 +45,60 @@
     display: block;
     margin-top: 8px;
 }
+
+/* Sticky compare bar (1.15.0+). */
+.polski-compare-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: #fff;
+    box-shadow: 0 -2px 12px rgba(0,0,0,.12);
+    border-top: 1px solid rgba(0,0,0,.08);
+}
+.polski-compare-sticky__items {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 1 1 auto;
+    overflow: hidden;
+}
+.polski-compare-sticky__item {
+    flex: 0 0 auto;
+    display: inline-block;
+}
+.polski-compare-sticky__thumb {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+.polski-compare-sticky__more {
+    font-size: 0.875em;
+    color: #555;
+    padding: 0 6px;
+}
+.polski-compare-sticky__cta {
+    flex: 0 0 auto;
+}
+.polski-compare-sticky__clear {
+    flex: 0 0 auto;
+    background: transparent;
+    border: 0;
+    font-size: 1.5em;
+    line-height: 1;
+    cursor: pointer;
+    color: #555;
+    padding: 0 8px;
+}
+.polski-compare-sticky__clear:hover { color: #000; }
+@media (max-width: 600px) {
+    .polski-compare-sticky { padding: 8px 10px; gap: 8px; }
+    .polski-compare-sticky__thumb { width: 32px; height: 32px; }
+}

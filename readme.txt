@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 6.9
-Stable tag: 1.14.1
+Stable tag: 1.15.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -222,6 +222,11 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.15.0 =
+* B2B fields: optional "Potrzebuję faktury VAT" toggle, separate from the existing "Buying as a company" checkbox. Polish e-commerce convention treats invoice-need as orthogonal to company-vs-consumer (paragon vs faktura), so the field is its own opt-in. Saves to `_polski_needs_invoice` order meta. Wired through both classic checkout and the WC 8.6+ additional-fields API. New setting `polski_b2b.show_needs_invoice_toggle` (default off).
+* Compare: sticky bottom drawer (`polski_compare.show_sticky_bar`, default off) showing thumbnails of compared products with a "Porównaj (N)" CTA and a clear-all button. Hidden on the compare page itself; auto-suppressed when the list is empty. Mobile-responsive CSS.
+* Compare: new shortcode `[polski_compare_count]` for the header counter, with `template`, `class`, and `hide_when_empty` attributes. Renders an anchor to the compare page with a `data-polski-compare-count` attribute that the existing AJAX layer can update live.
 
 = 1.14.1 =
 * B2B fields: full IBAN validation. `B2BCheckoutService::isPlausibleIban()` now performs the ISO 13616 mod-97 checksum and a country-code length lookup (PL=28, DE=22, GB=22, FR=27, IT=27, plus 25 more EU/CH/GB markets). Replaces the previous structural-only sanity check.
