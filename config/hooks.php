@@ -145,6 +145,17 @@ return [
 
     // Withdrawal service (needs hooks for My Account).
     WithdrawalService::class,
+    \Polski\Service\WithdrawalOrderStatusService::class,
+    \Polski\Service\GuestWithdrawalService::class,
+    \Polski\Service\AnnexGeneratorService::class,
+    \Polski\Service\WithdrawalExemptionService::class,
+    \Polski\Service\DigitalConsentService::class,
+    \Polski\Admin\WithdrawalsAdminPage::class,
+    \Polski\Admin\WithdrawalSettingsPage::class,
+    \Polski\Service\WithdrawalBlocksService::class,
+    \Polski\Service\WithdrawalAssetsService::class,
+    \Polski\Service\MyAccountWithdrawalsService::class,
+    \Polski\Service\AbilitiesService::class,
 
     // Shortcodes.
     ShortcodeManager::class,

@@ -23,6 +23,15 @@ final class WithdrawalRequest
         public readonly \DateTimeImmutable $requestedAt,
         public readonly ?\DateTimeImmutable $confirmedAt,
         public readonly ?\DateTimeImmutable $completedAt,
+        public readonly string $channel = 'online',
+        public readonly ?string $guestEmail = null,
+        public readonly ?int $registeredByUserId = null,
+        public readonly ?\DateTimeImmutable $rejectedAt = null,
+        public readonly ?string $rejectedReason = null,
+        public readonly ?int $refundId = null,
+        public readonly ?float $refundAmount = null,
+        public readonly ?\DateTimeImmutable $clockStartedAt = null,
+        public readonly string $languageCode = 'pl',
     ) {
     }
 
@@ -34,7 +43,7 @@ final class WithdrawalRequest
     public static function fromRow(\stdClass $row): self
     {
         $items = null;
-        if ($row->items_json !== null) {
+        if (isset($row->items_json) && $row->items_json !== null) {
             $decoded = json_decode($row->items_json, true);
             $items = self::parseItemsFromJsonDecoded($decoded);
         }
@@ -49,6 +58,25 @@ final class WithdrawalRequest
             requestedAt: new \DateTimeImmutable($row->requested_at),
             confirmedAt: $row->confirmed_at !== null ? new \DateTimeImmutable($row->confirmed_at) : null,
             completedAt: $row->completed_at !== null ? new \DateTimeImmutable($row->completed_at) : null,
+            channel: isset($row->channel) ? (string) $row->channel : 'online',
+            guestEmail: isset($row->guest_email) && $row->guest_email !== null ? (string) $row->guest_email : null,
+            registeredByUserId: isset($row->registered_by_user_id) && $row->registered_by_user_id !== null
+                ? (int) $row->registered_by_user_id
+                : null,
+            rejectedAt: isset($row->rejected_at) && $row->rejected_at !== null
+                ? new \DateTimeImmutable((string) $row->rejected_at)
+                : null,
+            rejectedReason: isset($row->rejected_reason) && $row->rejected_reason !== null
+                ? (string) $row->rejected_reason
+                : null,
+            refundId: isset($row->refund_id) && $row->refund_id !== null ? (int) $row->refund_id : null,
+            refundAmount: isset($row->refund_amount) && $row->refund_amount !== null
+                ? (float) $row->refund_amount
+                : null,
+            clockStartedAt: isset($row->clock_started_at) && $row->clock_started_at !== null
+                ? new \DateTimeImmutable((string) $row->clock_started_at)
+                : null,
+            languageCode: isset($row->language_code) ? (string) $row->language_code : 'pl',
         );
     }
 
@@ -115,13 +143,22 @@ final class WithdrawalRequest
             'id' => $this->id,
             'order_id' => $this->orderId,
             'customer_id' => $this->customerId,
+            'channel' => $this->channel,
             'status' => $this->status->value,
             'status_label' => $this->status->label(),
             'reason' => $this->reason,
             'items' => $this->items,
+            'guest_email' => $this->guestEmail,
+            'registered_by_user_id' => $this->registeredByUserId,
+            'refund_id' => $this->refundId,
+            'refund_amount' => $this->refundAmount,
+            'language_code' => $this->languageCode,
             'requested_at' => $this->requestedAt->format('c'),
             'confirmed_at' => $this->confirmedAt?->format('c'),
             'completed_at' => $this->completedAt?->format('c'),
+            'rejected_at' => $this->rejectedAt?->format('c'),
+            'rejected_reason' => $this->rejectedReason,
+            'clock_started_at' => $this->clockStartedAt?->format('c'),
         ];
     }
 }

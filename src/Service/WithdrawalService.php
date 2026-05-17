@@ -9,7 +9,9 @@ use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
 use Polski\Enum\WithdrawalStatus;
 use Polski\Model\WithdrawalRequest;
+use Polski\Repository\WithdrawalItemsRepository;
 use Polski\Repository\WithdrawalRepository;
+use Polski\Service\WithdrawalOrderStatusService;
 use Polski\Util\TemplateLoader;
 
 /**
@@ -21,15 +23,53 @@ use Polski\Util\TemplateLoader;
 final class WithdrawalService implements Bootable, HasHooks
 {
     private const WITHDRAWAL_PERIOD_DAYS = 14;
+    private const CLOCK_START_META = '_polski_withdrawal_clock_start';
 
     public function __construct(
         private readonly WithdrawalRepository $repository,
         private readonly TemplateLoader $templateLoader,
+        private readonly WithdrawalItemsRepository $itemsRepository,
     ) {
     }
 
     public function boot(): void
     {
+    }
+
+    /**
+     * Order statuses (without the wc- prefix) that start the withdrawal countdown
+     * when an order transitions into them. Configurable via settings + filter.
+     *
+     * @return list<string>
+     */
+    public function getTriggerStatuses(): array
+    {
+        $settings = $this->getSettings();
+        $raw = $settings['trigger_statuses'] ?? ['completed'];
+
+        if (! is_array($raw)) {
+            $raw = ['completed'];
+        }
+
+        $clean = [];
+        foreach ($raw as $status) {
+            $key = sanitize_key((string) $status);
+            if ($key === '') {
+                continue;
+            }
+            $clean[] = str_starts_with($key, 'wc-') ? substr($key, 3) : $key;
+        }
+
+        if ($clean === []) {
+            $clean = ['completed'];
+        }
+
+        /**
+         * Filter the list of order statuses (without wc- prefix) that start the withdrawal countdown.
+         *
+         * @param list<string> $statuses
+         */
+        return (array) apply_filters('polski/withdrawal/trigger_statuses', array_values(array_unique($clean)));
     }
 
     /**
@@ -55,6 +95,29 @@ final class WithdrawalService implements Bootable, HasHooks
 
         // Add withdrawal info to order details page.
         add_action('woocommerce_order_details_after_order_table', [$this, 'showWithdrawalStatus']);
+
+        // Record the moment the 14-day clock starts when an order enters a trigger status.
+        add_action('woocommerce_order_status_changed', [$this, 'maybeStampClockStart'], 10, 4);
+    }
+
+    /**
+     * Stamp `_polski_withdrawal_clock_start` the first time an order enters a configured
+     * trigger status. The stamp is HPOS-safe (uses WC_Order meta API).
+     */
+    public function maybeStampClockStart(int $orderId, string $oldStatus, string $newStatus, \WC_Order $order): void
+    {
+        $newStatus = str_starts_with($newStatus, 'wc-') ? substr($newStatus, 3) : $newStatus;
+
+        if (! in_array($newStatus, $this->getTriggerStatuses(), true)) {
+            return;
+        }
+
+        if ($order->get_meta(self::CLOCK_START_META, true) !== '') {
+            return;
+        }
+
+        $order->update_meta_data(self::CLOCK_START_META, current_time('mysql', true));
+        $order->save();
     }
 
     /**
@@ -65,7 +128,7 @@ final class WithdrawalService implements Bootable, HasHooks
     public function isEligible(\WC_Order $order): bool
     {
         // Check if order is within the withdrawal period.
-        $orderDate = $order->get_date_completed() ?? $order->get_date_created();
+        $orderDate = $this->getClockStart($order);
 
         if ($orderDate === null) {
             return false;
@@ -79,34 +142,16 @@ final class WithdrawalService implements Bootable, HasHooks
             return false;
         }
 
-        // Check if a withdrawal already exists.
-        $existing = $this->repository->findByOrder($order->get_id());
-        if ($existing !== null && $existing->status !== WithdrawalStatus::Rejected) {
-            return false;
-        }
-
-        // Check if all items are exempt.
-        $allExempt = true;
-        foreach ($order->get_items() as $item) {
-            if (! $item instanceof \WC_Order_Item_Product) {
-                continue;
-            }
-            $product = $item->get_product();
-            if ($product instanceof \WC_Product) {
-                $exempt = $product->get_meta('_polski_withdrawal_exempt', true);
-                if ($exempt !== 'yes') {
-                    $allExempt = false;
-                    break;
-                }
-            }
-        }
-
-        if ($allExempt) {
+        // Allow new requests only if at least one item still has remaining quantity.
+        $remaining = $this->getRemainingItems($order);
+        if ($remaining === []) {
             return false;
         }
 
         /**
-         * Filter withdrawal eligibility.
+         * Filter withdrawal eligibility. Listeners (notably
+         * {@see WithdrawalExemptionService}) refine the answer based on product/
+         * category exemptions, digital-content consent, etc.
          *
          * @param bool      $eligible Whether the order is eligible.
          * @param \WC_Order $order    The order.
@@ -115,13 +160,74 @@ final class WithdrawalService implements Bootable, HasHooks
     }
 
     /**
+     * Return the items on this order that are still withdrawable, with the qty
+     * remaining for each. Excludes fully-withdrawn items and exempt categories
+     * (the exemption check is delegated to the eligibility filter at the order
+     * level; here we strictly report quantities).
+     *
+     * @return list<array{
+     *     order_item_id: int,
+     *     product_id: int,
+     *     variation_id: int|null,
+     *     name: string,
+     *     attributes: string,
+     *     sku: string,
+     *     quantity_total: float,
+     *     quantity_remaining: float,
+     *     line_total: float,
+     *     line_tax: float,
+     *     currency: string,
+     * }>
+     */
+    public function getRemainingItems(\WC_Order $order): array
+    {
+        $withdrawn = $this->itemsRepository->withdrawnQuantitiesForOrder($order->get_id());
+        $rows = [];
+
+        foreach ($order->get_items() as $itemId => $item) {
+            if (! $item instanceof \WC_Order_Item_Product) {
+                continue;
+            }
+
+            $product = $item->get_product();
+            $totalQty = (float) $item->get_quantity();
+            $remainingQty = $totalQty - ($withdrawn[(int) $itemId] ?? 0);
+
+            if ($remainingQty <= 0) {
+                continue;
+            }
+
+            $attrs = '';
+            $variationId = $item->get_variation_id();
+            if ($variationId > 0 && $product instanceof \WC_Product && $product->is_type('variation')) {
+                $attrs = wc_get_formatted_variation($product, true, true, false);
+            }
+
+            $rows[] = [
+                'order_item_id' => (int) $itemId,
+                'product_id' => (int) $item->get_product_id(),
+                'variation_id' => $variationId > 0 ? $variationId : null,
+                'name' => (string) $item->get_name(),
+                'attributes' => $attrs,
+                'sku' => $product instanceof \WC_Product ? (string) $product->get_sku() : '',
+                'quantity_total' => $totalQty,
+                'quantity_remaining' => $remainingQty,
+                'line_total' => (float) $item->get_total(),
+                'line_tax' => (float) $item->get_total_tax(),
+                'currency' => $order->get_currency(),
+            ];
+        }
+
+        return $rows;
+    }
+
+    /**
      * Create a withdrawal request.
      *
-     * @param int         $orderId
-     * @param string|null $reason
-     * @param list<array{product_id: int, quantity: int}>|null $items
+     * @param array<int, float|int>|null $selection Map of order_item_id => quantity to
+     *   withdraw. When null the whole remaining order is taken; when empty the call fails.
      */
-    public function createRequest(int $orderId, ?string $reason = null, ?array $items = null): ?WithdrawalRequest
+    public function createRequest(int $orderId, ?string $reason = null, ?array $selection = null): ?WithdrawalRequest
     {
         $order = wc_get_order($orderId);
 
@@ -133,23 +239,59 @@ final class WithdrawalService implements Bootable, HasHooks
             return null;
         }
 
+        $resolved = $this->resolveSelection($order, $selection);
+        if ($resolved === []) {
+            return null;
+        }
+
         $customerId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
 
-        $id = $this->repository->create($orderId, $customerId, $reason, $items);
+        // Keep the legacy JSON column populated for backwards-compat readers.
+        $legacyItems = [];
+        foreach ($resolved as $entry) {
+            $legacyItems[] = [
+                'product_id' => $entry['product_id'],
+                'quantity' => (int) ceil($entry['quantity']),
+            ];
+        }
+
+        $id = $this->repository->create($orderId, $customerId, $reason, $legacyItems);
 
         if ($id <= 0) {
             return null;
         }
 
+        $this->itemsRepository->insertMany($id, $resolved);
+
         $request = $this->repository->findById($id);
 
         if ($request !== null) {
-            // Add order note.
+            // Add order note with declaration id, items summary, and reason.
             $order->add_order_note(
-                (string) ($this->getSettings()['requested_order_note'] ?? __('Customer has submitted a withdrawal request.', 'polski')),
+                $this->formatRequestedNote($request, $reason, $resolved),
                 0,
                 true,
             );
+
+            // Move the order to the dedicated withdrawal status (unless the store
+            // has opted out via filter — e.g. integrations with custom workflow).
+            $newStatus = (string) apply_filters(
+                'polski/withdrawal/order_status_on_request',
+                WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_REQUESTED),
+                $order,
+                $request,
+            );
+
+            if ($newStatus !== '' && $order->get_status() !== $newStatus) {
+                $order->update_status(
+                    $newStatus,
+                    sprintf(
+                        /* translators: %d = withdrawal request id */
+                        __('[Polski] Withdrawal request #%d filed.', 'polski'),
+                        $request->id,
+                    ),
+                );
+            }
 
             do_action('polski/withdrawal/requested', $request);
         }
@@ -176,8 +318,18 @@ final class WithdrawalService implements Bootable, HasHooks
 
             $order = wc_get_order($request->orderId);
             if ($order instanceof \WC_Order) {
+                $actor = wp_get_current_user();
+                $actorLabel = ($actor instanceof \WP_User && $actor->ID > 0)
+                    ? sprintf('%s (#%d)', $actor->user_login, $actor->ID)
+                    : __('system', 'polski');
+
                 $order->add_order_note(
-                    (string) ($this->getSettings()['confirmed_order_note'] ?? __('Withdrawal request confirmed.', 'polski')),
+                    sprintf(
+                        /* translators: 1: declaration id, 2: actor label */
+                        __('[Polski] Withdrawal request #%1$d confirmed by %2$s.', 'polski'),
+                        $request->id,
+                        $actorLabel,
+                    ),
                     1,
                     true,
                 );
@@ -202,6 +354,35 @@ final class WithdrawalService implements Bootable, HasHooks
 
         if ($result) {
             $request->status = WithdrawalStatus::Completed;
+
+            $order = wc_get_order($request->orderId);
+            if ($order instanceof \WC_Order) {
+                // If anything still remains to be withdrawn on this order, prefer the
+                // "partial" status so the operator knows the lifecycle is not closed.
+                $stillRemaining = $this->getRemainingItems($order) !== [];
+                $defaultStatus = $stillRemaining
+                    ? WithdrawalOrderStatusService::STATUS_PARTIAL
+                    : WithdrawalOrderStatusService::STATUS_COMPLETED;
+
+                $newStatus = (string) apply_filters(
+                    'polski/withdrawal/order_status_on_complete',
+                    WithdrawalOrderStatusService::statusKey($defaultStatus),
+                    $order,
+                    $request,
+                );
+
+                if ($newStatus !== '' && $order->get_status() !== $newStatus) {
+                    $order->update_status(
+                        $newStatus,
+                        sprintf(
+                            /* translators: %d = withdrawal request id */
+                            __('[Polski] Withdrawal request #%d completed.', 'polski'),
+                            $request->id,
+                        ),
+                    );
+                }
+            }
+
             do_action('polski/withdrawal/completed', $request);
         }
 
@@ -209,11 +390,182 @@ final class WithdrawalService implements Bootable, HasHooks
     }
 
     /**
-     * Reject a withdrawal request.
+     * Reject a withdrawal request. Captures the operator and a free-text reason in
+     * the order notes for audit purposes.
      */
-    public function reject(int $requestId): bool
+    public function reject(int $requestId, ?string $reason = null): bool
     {
-        return $this->repository->updateStatus($requestId, WithdrawalStatus::Rejected);
+        $request = $this->repository->findById($requestId);
+        $result = $this->repository->updateStatus($requestId, WithdrawalStatus::Rejected);
+
+        if ($result && $request !== null) {
+            $order = wc_get_order($request->orderId);
+            if ($order instanceof \WC_Order) {
+                $actor = wp_get_current_user();
+                $actorLabel = ($actor instanceof \WP_User && $actor->ID > 0)
+                    ? sprintf('%s (#%d)', $actor->user_login, $actor->ID)
+                    : __('system', 'polski');
+
+                $note = sprintf(
+                    /* translators: 1: declaration id, 2: actor label */
+                    __('[Polski] Withdrawal request #%1$d rejected by %2$s.', 'polski'),
+                    $request->id,
+                    $actorLabel,
+                );
+
+                if ($reason !== null && trim($reason) !== '') {
+                    $note .= "\n" . sprintf(
+                        /* translators: %s: rejection reason */
+                        __('Reason: %s', 'polski'),
+                        wp_strip_all_tags($reason),
+                    );
+                }
+
+                $order->add_order_note($note, 1, true);
+            }
+
+            // Refresh model snapshot so listeners (e.g. Pro audit log) see the new status.
+            $latest = $this->repository->findById($requestId);
+            if ($latest !== null) {
+                do_action('polski/withdrawal/rejected', $latest);
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Format the customer-visible note added at request time. Includes declaration id,
+     * itemised summary (with variation attributes for variants), and the trimmed reason.
+     *
+     * @param list<array{
+     *     order_item_id: int,
+     *     product_id: int,
+     *     variation_id: int|null,
+     *     name: string,
+     *     attributes: string,
+     *     quantity: float,
+     * }> $resolved
+     */
+    private function formatRequestedNote(WithdrawalRequest $request, ?string $reason, array $resolved): string
+    {
+        $note = sprintf(
+            /* translators: %d: declaration id */
+            __('[Polski] Withdrawal request #%d filed by customer.', 'polski'),
+            $request->id,
+        );
+
+        if ($resolved !== []) {
+            $lines = [];
+            foreach ($resolved as $entry) {
+                $line = sprintf('- %s', $entry['name']);
+                if ($entry['attributes'] !== '') {
+                    $line .= ' (' . $entry['attributes'] . ')';
+                }
+                $line .= ' x ' . rtrim(rtrim((string) $entry['quantity'], '0'), '.');
+                $lines[] = $line;
+            }
+            $note .= "\n" . __('Items:', 'polski') . "\n" . implode("\n", $lines);
+        }
+
+        if ($reason !== null && trim($reason) !== '') {
+            $note .= "\n" . sprintf(
+                /* translators: %s: customer reason */
+                __('Reason: %s', 'polski'),
+                wp_strip_all_tags($reason),
+            );
+        }
+
+        return $note;
+    }
+
+    /**
+     * Translate the user selection (map of order_item_id => qty) into a fully-
+     * populated list of items ready for the items repository. Caps each requested
+     * qty at the remaining qty; drops zeros; falls back to the full remaining set
+     * when no selection was supplied.
+     *
+     * @param array<int, float|int>|null $selection
+     *
+     * @return list<array{
+     *     order_item_id: int,
+     *     product_id: int,
+     *     variation_id: int|null,
+     *     name: string,
+     *     attributes: string,
+     *     sku: string,
+     *     quantity: float,
+     *     line_total: float,
+     *     line_tax: float,
+     * }>
+     */
+    private function resolveSelection(\WC_Order $order, ?array $selection): array
+    {
+        $remaining = $this->getRemainingItems($order);
+
+        if ($remaining === []) {
+            return [];
+        }
+
+        if ($selection === null) {
+            // Full order: take all remaining items at their remaining qty.
+            $resolved = [];
+            foreach ($remaining as $entry) {
+                $resolved[] = [
+                    'order_item_id' => $entry['order_item_id'],
+                    'product_id' => $entry['product_id'],
+                    'variation_id' => $entry['variation_id'],
+                    'name' => $entry['name'],
+                    'attributes' => $entry['attributes'],
+                    'sku' => $entry['sku'],
+                    'quantity' => $entry['quantity_remaining'],
+                    'line_subtotal' => $entry['line_total'],
+                    'line_total' => $entry['line_total'],
+                    'line_tax' => $entry['line_tax'],
+                ];
+            }
+            return $resolved;
+        }
+
+        $resolved = [];
+        $remainingById = [];
+        foreach ($remaining as $entry) {
+            $remainingById[$entry['order_item_id']] = $entry;
+        }
+
+        foreach ($selection as $orderItemId => $qty) {
+            $orderItemId = (int) $orderItemId;
+            $qty = max(0.0, (float) $qty);
+
+            if ($qty <= 0 || ! isset($remainingById[$orderItemId])) {
+                continue;
+            }
+
+            $entry = $remainingById[$orderItemId];
+            $qty = min($qty, $entry['quantity_remaining']);
+
+            if ($qty <= 0) {
+                continue;
+            }
+
+            // Pro-rata totals so per-item refunds reflect the partial qty.
+            $ratio = $entry['quantity_total'] > 0 ? $qty / $entry['quantity_total'] : 1;
+
+            $resolved[] = [
+                'order_item_id' => $orderItemId,
+                'product_id' => $entry['product_id'],
+                'variation_id' => $entry['variation_id'],
+                'name' => $entry['name'],
+                'attributes' => $entry['attributes'],
+                'sku' => $entry['sku'],
+                'quantity' => $qty,
+                'line_subtotal' => round($entry['line_total'] * $ratio, 2),
+                'line_total' => round($entry['line_total'] * $ratio, 2),
+                'line_tax' => round($entry['line_tax'] * $ratio, 2),
+            ];
+        }
+
+        return $resolved;
     }
 
     /**
@@ -252,15 +604,20 @@ final class WithdrawalService implements Bootable, HasHooks
     }
 
     /**
-     * Handle withdrawal form submission from My Account.
+     * Handle the My Account withdrawal flow. On GET we render the item-selection
+     * form (step 1); on POST we process the submission (step 2). The same URL serves
+     * both stages so the customer never leaves it.
      */
     public function handleWithdrawalFormSubmission(): void
     {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified before any state change below.
         if (! isset($_GET['polski_withdrawal'])) {
             return;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $orderId = (int) $_GET['polski_withdrawal'];
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
 
         if (! wp_verify_nonce($nonce, 'polski_withdrawal_' . $orderId)) {
@@ -281,11 +638,36 @@ final class WithdrawalService implements Bootable, HasHooks
             return;
         }
 
+        $requestMethod = isset($_SERVER['REQUEST_METHOD'])
+            ? strtoupper(sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD'])))
+            : 'GET';
+
+        // Step 1: GET → render the form (items + reason).
+        if ($requestMethod !== 'POST') {
+            $this->renderItemSelectionForm($order);
+            exit;
+        }
+
+        // Step 2: POST → verify submission nonce and create the request.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified immediately below.
+        $submitNonce = isset($_POST['polski_submit_nonce'])
+            ? sanitize_text_field(wp_unslash((string) $_POST['polski_submit_nonce']))
+            : '';
+
+        if (! wp_verify_nonce($submitNonce, 'polski_submit_withdrawal_' . $orderId)) {
+            wc_add_notice((string) ($this->getSettings()['invalid_nonce_text'] ?? __('Oops, something went wrong on our side. Please try again!', 'polski')), 'error');
+            wp_safe_redirect(wc_get_account_endpoint_url('orders'));
+            exit;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
         $reason = isset($_POST['polski_withdrawal_reason'])
-            ? sanitize_textarea_field(wp_unslash($_POST['polski_withdrawal_reason']))
+            ? sanitize_textarea_field(wp_unslash((string) $_POST['polski_withdrawal_reason']))
             : null;
 
-        $request = $this->createRequest($orderId, $reason);
+        $selection = $this->parseItemSelectionFromPost();
+
+        $request = $this->createRequest($orderId, $reason, $selection);
 
         if ($request !== null) {
             wc_add_notice(
@@ -301,6 +683,60 @@ final class WithdrawalService implements Bootable, HasHooks
 
         wp_safe_redirect(wc_get_account_endpoint_url('orders'));
         exit;
+    }
+
+    /**
+     * Render the My Account item-selection template (step 1 of the two-step flow).
+     */
+    private function renderItemSelectionForm(\WC_Order $order): void
+    {
+        $remaining = $this->getRemainingItems($order);
+
+        get_header('shop');
+        echo '<div class="woocommerce">';
+        // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Template handles its own escaping.
+        echo $this->templateLoader->render('forms/withdrawal-form', [
+            'polski_order' => $order,
+            'polski_remaining_items' => $remaining,
+            'polski_submit_nonce' => wp_create_nonce('polski_submit_withdrawal_' . $order->get_id()),
+            'polski_form_action' => wp_nonce_url(
+                add_query_arg('polski_withdrawal', $order->get_id(), wc_get_account_endpoint_url('orders')),
+                'polski_withdrawal_' . $order->get_id(),
+            ),
+        ]);
+        // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo '</div>';
+        get_footer('shop');
+    }
+
+    /**
+     * Extract a sanitised {order_item_id: qty} selection from the submitted form.
+     * Expected POST shape: polski_items[order_item_id] = quantity.
+     *
+     * @return array<int, float>|null Null when no selection was sent (caller should
+     *   fall back to "entire order").
+     */
+    private function parseItemSelectionFromPost(): ?array
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by caller.
+        if (! isset($_POST['polski_items']) || ! is_array($_POST['polski_items'])) {
+            return null;
+        }
+
+        $selection = [];
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by caller.
+        foreach ((array) wp_unslash($_POST['polski_items']) as $itemId => $qty) {
+            $itemId = (int) $itemId;
+            $qty = is_numeric($qty) ? (float) $qty : 0.0;
+
+            if ($itemId <= 0 || $qty <= 0) {
+                continue;
+            }
+
+            $selection[$itemId] = $qty;
+        }
+
+        return $selection !== [] ? $selection : null;
     }
 
     /**
@@ -433,11 +869,62 @@ final class WithdrawalService implements Bootable, HasHooks
 
     private function getWithdrawalDays(): int
     {
+        $settings = $this->getSettings();
+        $days = isset($settings['period_days']) ? (int) $settings['period_days'] : self::WITHDRAWAL_PERIOD_DAYS;
+
+        if ($days < 1) {
+            $days = self::WITHDRAWAL_PERIOD_DAYS;
+        }
+
         /**
          * Filter the withdrawal period in days.
          *
          * @param int $days Default 14.
          */
-        return (int) apply_filters('polski/withdrawal/period_days', self::WITHDRAWAL_PERIOD_DAYS);
+        return (int) apply_filters('polski/withdrawal/period_days', $days);
+    }
+
+    /**
+     * Return the timestamp that starts the withdrawal countdown for the given order.
+     * Priority: explicit clock-start meta (set when entering a trigger status) ->
+     * date_completed -> date_created.
+     */
+    public function getClockStart(\WC_Order $order): ?\WC_DateTime
+    {
+        $stamp = (string) $order->get_meta(self::CLOCK_START_META, true);
+
+        if ($stamp !== '') {
+            try {
+                $dt = new \WC_DateTime($stamp, new \DateTimeZone('UTC'));
+                $dt->setTimezone(wp_timezone());
+                return $dt;
+            } catch (\Throwable) {
+                // Fall through to fallback.
+            }
+        }
+
+        $completed = $order->get_date_completed();
+        if ($completed !== null) {
+            return $completed;
+        }
+
+        return $order->get_date_created();
+    }
+
+    /**
+     * Deadline (last second of the withdrawal window) for the given order, or null if
+     * the clock has not started yet.
+     */
+    public function getDeadline(\WC_Order $order): ?\WC_DateTime
+    {
+        $start = $this->getClockStart($order);
+        if ($start === null) {
+            return null;
+        }
+
+        $deadline = clone $start;
+        $deadline->modify('+' . $this->getWithdrawalDays() . ' days');
+
+        return $deadline;
     }
 }
