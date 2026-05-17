@@ -132,6 +132,11 @@ return static function (Container $c): void {
         return new CompareRepository($wpdb);
     });
 
+    $c->singleton(\Polski\Repository\WithdrawalItemsRepository::class, static function () {
+        global $wpdb;
+        return new \Polski\Repository\WithdrawalItemsRepository($wpdb);
+    });
+
     $c->singleton(WithdrawalRepository::class, static function () {
         global $wpdb;
         return new WithdrawalRepository($wpdb);
@@ -228,6 +233,33 @@ return static function (Container $c): void {
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
         $c->get(WithdrawalRepository::class),
         $c->get(TemplateLoader::class),
+        $c->get(\Polski\Repository\WithdrawalItemsRepository::class),
+    ));
+    $c->singleton(\Polski\Service\WithdrawalOrderStatusService::class, static fn () => new \Polski\Service\WithdrawalOrderStatusService());
+    $c->singleton(\Polski\Service\GuestWithdrawalService::class, static fn () => new \Polski\Service\GuestWithdrawalService(
+        $c->get(WithdrawalService::class),
+        $c->get(WithdrawalRepository::class),
+        $c->get(TemplateLoader::class),
+    ));
+    $c->singleton(\Polski\Service\AnnexGeneratorService::class, static fn () => new \Polski\Service\AnnexGeneratorService());
+    $c->singleton(\Polski\Service\WithdrawalExemptionService::class, static fn () => new \Polski\Service\WithdrawalExemptionService());
+    $c->singleton(\Polski\Service\DigitalConsentService::class, static fn () => new \Polski\Service\DigitalConsentService());
+    $c->singleton(\Polski\Admin\WithdrawalsAdminPage::class, static fn () => new \Polski\Admin\WithdrawalsAdminPage(
+        $c->get(WithdrawalRepository::class),
+    ));
+    $c->singleton(\Polski\Admin\WithdrawalSettingsPage::class, static fn () => new \Polski\Admin\WithdrawalSettingsPage());
+    $c->singleton(\Polski\Service\WithdrawalBlocksService::class, static fn () => new \Polski\Service\WithdrawalBlocksService());
+    $c->singleton(\Polski\Service\WithdrawalAssetsService::class, static fn () => new \Polski\Service\WithdrawalAssetsService());
+    $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
+        $c->get(WithdrawalRepository::class),
+    ));
+    $c->singleton(\Polski\Service\AbilitiesService::class, static fn () => new \Polski\Service\AbilitiesService(
+        $c->get(WithdrawalService::class),
+        $c->get(\Polski\Service\WithdrawalExemptionService::class),
+        $c->get(\Polski\Service\AnnexGeneratorService::class),
+        $c->get(WithdrawalRepository::class),
+        $c->get(\Polski\Service\LegalPageService::class),
+        $c->get(\Polski\PageCompliance\PageComplianceService::class),
     ));
 
     // New modules: GPSR, Verified Review, DSA, KSeF-ready.

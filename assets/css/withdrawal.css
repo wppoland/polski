@@ -1,0 +1,150 @@
+/**
+ * Withdrawal flow styles — focus rings, touch targets, responsive table.
+ * Loaded on pages that render any of the three withdrawal templates.
+ *
+ * Compliance:
+ *   - WCAG 2.4.7 Focus visible (AA): every interactive element gets a 2px
+ *     focus ring with sufficient contrast against any background.
+ *   - WCAG 2.5.5 Target size (AAA, recommended for forms): 44×44px CSS pixels
+ *     for buttons and qty inputs.
+ *   - WCAG 1.4.10 Reflow (AA): items table reflows to stacked cards under 640px.
+ *   - prefers-reduced-motion respected; no decorative animation by default.
+ */
+
+.polski-withdrawal-lookup,
+.polski-withdrawal-guest-form,
+.polski-withdrawal-form {
+    color: #1e293b;
+    line-height: 1.55;
+}
+
+.polski-withdrawal-lookup :focus-visible,
+.polski-withdrawal-guest-form :focus-visible,
+.polski-withdrawal-form :focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.18);
+}
+
+/* Inputs + qty spinner: minimum 44×44 hit area. */
+.polski-withdrawal-lookup input[type="text"],
+.polski-withdrawal-lookup input[type="email"],
+.polski-withdrawal-guest-form textarea,
+.polski-withdrawal-form input[type="number"],
+.polski-withdrawal-form textarea {
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.polski-withdrawal-form input[type="number"] {
+    /* Wider hit area than the 5rem visual width to comfortably tap on mobile. */
+    min-width: 5rem;
+    width: 5rem;
+}
+
+.polski-withdrawal-lookup button[type="submit"],
+.polski-withdrawal-guest-form button[type="submit"],
+.polski-withdrawal-form button[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
+}
+
+/* Loading state: data-loading="1" disables the button visually + via aria-busy. */
+.polski-withdrawal-lookup button[type="submit"][data-loading="1"],
+.polski-withdrawal-guest-form button[type="submit"][data-loading="1"],
+.polski-withdrawal-form button[type="submit"][data-loading="1"] {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.polski-withdrawal-notice {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid #94a3b8;
+    border-radius: 4px;
+    background: #f1f5f9;
+}
+
+.polski-withdrawal-notice--success {
+    border-left-color: #15803d;
+    background: #f0fdf4;
+}
+
+.polski-withdrawal-notice--error {
+    border-left-color: #b91c1c;
+    background: #fef2f2;
+}
+
+/* Items table responsive reflow. */
+.polski-withdrawal-items {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.polski-withdrawal-items th,
+.polski-withdrawal-items td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: top;
+}
+
+@media (max-width: 640px) {
+    .polski-withdrawal-items thead {
+        position: absolute;
+        left: -9999px;
+    }
+    .polski-withdrawal-items,
+    .polski-withdrawal-items tbody,
+    .polski-withdrawal-items tr {
+        display: block;
+        width: 100%;
+    }
+    .polski-withdrawal-items tr {
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 0.5rem;
+    }
+    .polski-withdrawal-items th,
+    .polski-withdrawal-items td {
+        display: block;
+        border: none;
+        padding: 0.5rem;
+    }
+    .polski-withdrawal-items td::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+        color: #475569;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Skip-link for embedded full-page templates (one-click confirm, guest form). */
+.polski-withdrawal-skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.polski-withdrawal-skip-link:focus {
+    position: static;
+    left: auto;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #1d4ed8;
+    color: #fff;
+    text-decoration: none;
+}

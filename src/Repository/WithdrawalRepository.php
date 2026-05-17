@@ -41,11 +41,73 @@ final class WithdrawalRepository
                 'order_id' => $orderId,
                 'customer_id' => $customerId,
                 'status' => WithdrawalStatus::Requested->value,
+                'channel' => 'online',
                 'reason' => $reason,
                 'items_json' => $items !== null ? wp_json_encode($items) : null,
                 'requested_at' => current_time('mysql', true),
             ],
-            ['%d', '%d', '%s', '%s', '%s', '%s'],
+            ['%d', '%d', '%s', '%s', '%s', '%s', '%s'],
+        );
+
+        return (int) $this->wpdb->insert_id;
+    }
+
+    /**
+     * Create a withdrawal request initiated by an unauthenticated guest. The visitor's
+     * billing email has already been verified by GuestWithdrawalService.
+     *
+     * @param list<array{product_id: int, quantity: int}>|null $items
+     */
+    public function createForGuest(
+        int $orderId,
+        string $guestEmail,
+        ?string $reason,
+        ?array $items = null,
+    ): int {
+        $this->wpdb->insert(
+            $this->tableName(),
+            [
+                'order_id' => $orderId,
+                'customer_id' => null,
+                'status' => WithdrawalStatus::Requested->value,
+                'channel' => 'guest',
+                'guest_email' => $guestEmail,
+                'reason' => $reason,
+                'items_json' => $items !== null ? wp_json_encode($items) : null,
+                'requested_at' => current_time('mysql', true),
+            ],
+            ['%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s'],
+        );
+
+        return (int) $this->wpdb->insert_id;
+    }
+
+    /**
+     * Manual / offline registration (phone, mail, letter received by the store).
+     *
+     * @param list<array{product_id: int, quantity: int}>|null $items
+     */
+    public function createManual(
+        int $orderId,
+        ?int $customerId,
+        string $channel,
+        int $registeredByUserId,
+        ?string $reason,
+        ?array $items = null,
+    ): int {
+        $this->wpdb->insert(
+            $this->tableName(),
+            [
+                'order_id' => $orderId,
+                'customer_id' => $customerId,
+                'status' => WithdrawalStatus::Requested->value,
+                'channel' => sanitize_key($channel),
+                'registered_by_user_id' => $registeredByUserId,
+                'reason' => $reason,
+                'items_json' => $items !== null ? wp_json_encode($items) : null,
+                'requested_at' => current_time('mysql', true),
+            ],
+            ['%d', '%d', '%s', '%s', '%d', '%s', '%s', '%s'],
         );
 
         return (int) $this->wpdb->insert_id;
@@ -121,6 +183,26 @@ final class WithdrawalRepository
         );
     }
 
+    /**
+     * Persist refund metadata onto a withdrawal request (called by Pro after a
+     * refund has been processed against the order).
+     */
+    public function recordRefund(int $id, int $refundId, float $amount): bool
+    {
+        $updated = $this->wpdb->update(
+            $this->tableName(),
+            [
+                'refund_id' => $refundId,
+                'refund_amount' => $amount,
+            ],
+            ['id' => $id],
+            ['%d', '%f'],
+            ['%d'],
+        );
+
+        return $updated !== false;
+    }
+
     public function updateStatus(int $id, WithdrawalStatus $status): bool
     {
         $data = ['status' => $status->value];
@@ -138,6 +220,31 @@ final class WithdrawalRepository
         );
 
         return $updated !== false;
+    }
+
+    /**
+     * @return list<WithdrawalRequest>
+     */
+    public function findByCustomer(int $customerId, int $limit = 50): array
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table, prepared.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE customer_id = %d ORDER BY requested_at DESC LIMIT %d',
+                $this->tableName(),
+                $customerId,
+                $limit,
+            ),
+        );
+
+        $list = is_array($rows) ? $rows : [];
+
+        return array_map(
+            static fn (\stdClass $row) => WithdrawalRequest::fromRow($row),
+            $list,
+        );
     }
 
     public function countByStatus(WithdrawalStatus $status): int

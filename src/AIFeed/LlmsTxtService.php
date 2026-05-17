@@ -104,7 +104,55 @@ final class LlmsTxtService
             $sections[__('Product categories', 'polski')] = $categories;
         }
 
+        $consumerRights = $this->consumerRightsItems();
+        if ($consumerRights !== []) {
+            $sections[__('Consumer rights', 'polski')] = $consumerRights;
+        }
+
         return $sections;
+    }
+
+    /**
+     * Surface the consumer right of withdrawal flow to AI agents so they can
+     * answer "how do I return this" questions accurately, and link to the
+     * machine-readable abilities catalog when WP 6.9+ is active.
+     *
+     * @return array<int, array{0: string, 1: string, 2?: string}>
+     */
+    private function consumerRightsItems(): array
+    {
+        $items = [];
+
+        $settings = get_option('polski_withdrawal', []);
+        $settings = is_array($settings) ? $settings : [];
+
+        $lookupPageId = (int) ($settings['lookup_page_id'] ?? 0);
+        if ($lookupPageId > 0) {
+            $lookupUrl = (string) get_permalink($lookupPageId);
+            if ($lookupUrl !== '') {
+                $items[] = [
+                    __('Withdrawal lookup (file an Art. 11a declaration)', 'polski'),
+                    $this->withMarkdown($lookupUrl),
+                    __('Public form for consumers (including guests) to start the 14-day withdrawal process. Authenticates via order number + billing email + one-time magic-link.', 'polski'),
+                ];
+            }
+        }
+
+        if (function_exists('wp_register_ability')) {
+            $items[] = [
+                __('Abilities catalog (machine-readable actions)', 'polski'),
+                rest_url('wp-abilities/v1/abilities'),
+                __('JSON list of every action this site exposes via the WP Abilities API. Use it to discover withdrawal, refund, audit, reporting and compliance operations.', 'polski'),
+            ];
+        }
+
+        $items[] = [
+            __('Withdrawal documentation', 'polski'),
+            'https://wppoland.com/pl/polski/dokumentacja/odstapienie/',
+            __('Architecture, settings, shortcodes, blocks, abilities and REST endpoints for the withdrawal module.', 'polski'),
+        ];
+
+        return $items;
     }
 
     /**
