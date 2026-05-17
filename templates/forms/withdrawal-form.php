@@ -56,7 +56,16 @@ $polski_intro_text = str_replace(
                 </legend>
 
                 <p style="color:#475569;">
-                    <?php esc_html_e('Wpisz liczbę sztuk, które chcesz zwrócić. Pole „Pozostało” pokazuje maksymalną liczbę, którą można jeszcze odstąpić w tej pozycji.', 'polski'); ?>
+                    <?php esc_html_e('Wpisz liczbę sztuk, które chcesz objąć odstąpieniem. Pole „Pozostało" pokazuje maksymalną liczbę, którą można jeszcze odstąpić w tej pozycji.', 'polski'); ?>
+                </p>
+
+                <p class="polski-withdrawal-form__quick-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <button type="button" data-polski-select="all" class="button">
+                        <?php esc_html_e('Wybierz wszystkie pozycje', 'polski'); ?>
+                    </button>
+                    <button type="button" data-polski-select="none" class="button">
+                        <?php esc_html_e('Wyczyść wybór', 'polski'); ?>
+                    </button>
                 </p>
 
                 <table class="shop_table polski-withdrawal-items" style="width: 100%;">
@@ -143,7 +152,7 @@ $polski_intro_text = str_replace(
                     </small>
                 </p>
 
-                <p>
+                <p style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
                     <input type="hidden" name="polski_submit_nonce" value="<?php echo esc_attr($polski_submit_nonce); ?>">
                     <button
                         type="submit"
@@ -153,6 +162,9 @@ $polski_intro_text = str_replace(
                     >
                         <?php esc_html_e('Złóż oświadczenie i wyślij potwierdzenie na e-mail', 'polski'); ?>
                     </button>
+                    <a href="<?php echo esc_url(wc_get_account_endpoint_url('orders')); ?>" class="polski-withdrawal-cancel" style="color: #475569;">
+                        <?php esc_html_e('Anuluj i wróć do listy zamówień', 'polski'); ?>
+                    </a>
                 </p>
             </fieldset>
         </form>

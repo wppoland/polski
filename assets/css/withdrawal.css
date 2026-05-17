@@ -38,6 +38,17 @@
     border: 1px solid #94a3b8;
     border-radius: 6px;
     background: #fff;
+    /* WCAG 2.4.11 Focus Not Obscured (Minimum, AA): if the host theme has a
+       sticky header, keep the focused field visible by scrolling it past the
+       likely header height (5rem ≈ 80px) instead of having it land underneath. */
+    scroll-margin-top: 5rem;
+}
+
+.polski-withdrawal-lookup button[type="submit"],
+.polski-withdrawal-guest-form button[type="submit"],
+.polski-withdrawal-form button[type="submit"],
+.polski-withdrawal-notice {
+    scroll-margin-top: 5rem;
 }
 
 .polski-withdrawal-form input[type="number"] {

@@ -52,17 +52,39 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
     <p class="polski-withdrawal-lookup__intro">
         <?php
         printf(
-            /* translators: 1: merchant name, 2: number of days, 3: directive reference */
+            /* translators: 1: merchant name, 2: number of days */
             esc_html__(
-                'Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. To uprawnienie wynika z art. 27 ustawy o prawach konsumenta wdrażającej dyrektywę %3$s. Aby złożyć oświadczenie, nie musisz logować się do konta w sklepie — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia. Po weryfikacji wyślemy na ten adres jednorazowy link, który otworzy formularz odstąpienia. Link jest ważny przez 30 minut i można go użyć tylko raz, dzięki czemu Twoje oświadczenie pozostaje bezpieczne, a my zachowujemy dowód jego złożenia na trwałym nośniku. W kolejnym kroku wybierzesz, czy chcesz zwrócić całe zamówienie, czy tylko wybrane pozycje (możliwe są też zwroty częściowe, np. jednej z kilku sztuk). Po przesłaniu oświadczenia otrzymasz e-mail z potwierdzeniem zawierającym numer deklaracji, datę złożenia oraz pełne podsumowanie zamówienia.',
+                'Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia.',
                 'polski',
             ),
             esc_html($polski_merchant),
             (int) $polski_days,
-            '2011/83/UE (zmienionej przez 2023/2673)',
         );
         ?>
     </p>
+
+    <details class="polski-withdrawal-lookup__more" style="margin: 0.5rem 0 1.5rem;">
+        <summary style="cursor: pointer; color: #1d4ed8;">
+            <?php esc_html_e('Jak to działa? (rozwiń)', 'polski'); ?>
+        </summary>
+        <div style="padding: 0.75rem 0 0;">
+            <p>
+                <?php esc_html_e('Po weryfikacji wyślemy na podany adres jednorazowy link, który otworzy formularz odstąpienia. Link będzie ważny przez 30 minut i można go użyć tylko raz.', 'polski'); ?>
+            </p>
+            <p>
+                <?php esc_html_e('W kolejnym kroku wybierzesz, czy chcesz zwrócić całe zamówienie, czy tylko wybrane pozycje (możliwe są też częściowe odstąpienia od pojedynczych sztuk).', 'polski'); ?>
+            </p>
+            <p>
+                <?php
+                printf(
+                    /* translators: %s = directive reference */
+                    esc_html__('Po przesłaniu oświadczenia otrzymasz e-mail z numerem deklaracji, datą złożenia i podsumowaniem zamówienia. Uprawnienie wynika z art. 27 ustawy o prawach konsumenta wdrażającej dyrektywę %s.', 'polski'),
+                    '2011/83/UE (zmienionej przez 2023/2673)',
+                );
+                ?>
+            </p>
+        </div>
+    </details>
 
     <?php if ($polski_notice !== null) : ?>
         <div
@@ -140,6 +162,45 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
             <?php esc_html_e('Link będzie ważny przez 30 minut i można go użyć tylko raz. Jeśli nie otrzymasz wiadomości, sprawdź folder Spam i wpisz adres ponownie.', 'polski'); ?>
         </p>
     </form>
+
+    <?php
+    // Visible FAQ — mirrors the FAQPage JSON-LD so it benefits cognitive users, not just search engines.
+    $polski_faq_visible = [
+        ['q' => __('W jakim terminie mogę odstąpić od umowy?', 'polski'), 'a' => sprintf(/* translators: %d = days */ __('Domyślnie masz %d dni od dnia otrzymania zamówienia. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu osoby trzeciej innej niż przewoźnik.', 'polski'), $polski_days)],
+        ['q' => __('Czy mogę zwrócić tylko niektóre produkty?', 'polski'), 'a' => __('Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie. Można odstąpić od wybranej liczby sztuk — pozostałe pozostaną w zamówieniu.', 'polski')],
+        ['q' => __('Co się stanie po wysłaniu formularza?', 'polski'), 'a' => __('Otrzymasz e-mail potwierdzający z unikalnym numerem deklaracji i pełnym podsumowaniem zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia.', 'polski')],
+        ['q' => __('Czy są produkty, których nie można zwrócić?', 'polski'), 'a' => __('Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, oraz zapieczętowane ze względów higienicznych po otwarciu opakowania.', 'polski')],
+    ];
+    ?>
+    <section aria-labelledby="polski-withdrawal-faq-title" style="margin-top: 2rem;">
+        <h3 id="polski-withdrawal-faq-title"><?php esc_html_e('Najczęstsze pytania', 'polski'); ?></h3>
+        <?php foreach ($polski_faq_visible as $polski_qa) : ?>
+            <details style="margin: 0.5rem 0; border-left: 3px solid #e2e8f0; padding-left: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 600;">
+                    <?php echo esc_html($polski_qa['q']); ?>
+                </summary>
+                <p style="margin: 0.5rem 0 0;"><?php echo esc_html($polski_qa['a']); ?></p>
+            </details>
+        <?php endforeach; ?>
+    </section>
+
+    <p style="margin-top: 1.5rem; color: #475569;">
+        <?php
+        $polski_support_email = '';
+        if (! empty($polski_general['company_email'])) {
+            $polski_support_email = (string) $polski_general['company_email'];
+        } elseif (function_exists('get_option')) {
+            $polski_support_email = (string) get_option('admin_email', '');
+        }
+        if ($polski_support_email !== '') {
+            printf(
+                /* translators: %s = support email link */
+                esc_html__('Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie ręcznie.', 'polski'),
+                '<a href="' . esc_url('mailto:' . $polski_support_email) . '">' . esc_html($polski_support_email) . '</a>',
+            );
+        }
+        ?>
+    </p>
 </section>
 
 <?php
