@@ -66,18 +66,26 @@ final class GuestWithdrawalService implements HasHooks
             ? sanitize_email(wp_unslash((string) $_POST['polski_email']))
             : '';
 
-        if ($orderNumber === '' || $email === '' || ! is_email($email)) {
-            $this->setNotice('error', __('Please provide a valid order number and email address.', 'polski'));
+        if ($orderNumber === '' && $email === '') {
+            $this->setNotice('error', __('Wpisz numer zamówienia (znajdziesz go w e-mailu potwierdzającym) i adres e-mail użyty przy zakupie.', 'polski'));
+            return;
+        }
+        if ($orderNumber === '') {
+            $this->setNotice('error', __('Brakuje numeru zamówienia. Sprawdź e-mail potwierdzający zakup i wpisz numer z linii „Twoje zamówienie #…".', 'polski'));
+            return;
+        }
+        if ($email === '' || ! is_email($email)) {
+            $this->setNotice('error', __('Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie ty@example.com — ten sam, który podałeś przy zakupie.', 'polski'));
             return;
         }
 
         if (! $this->checkRateLimit($email)) {
-            $this->setNotice('error', __('Too many attempts. Please try again later.', 'polski'));
+            $this->setNotice('error', __('Zbyt wiele prób w krótkim czasie. Spróbuj ponownie za 15 minut. Jeśli nie otrzymałeś wcześniej wysłanego linku, sprawdź folder Spam.', 'polski'));
             return;
         }
 
         $order = $this->locateOrder($orderNumber);
-        $maskedNotice = __('If this order exists, we have sent a confirmation link to the email on file.', 'polski');
+        $maskedNotice = __('Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) — wiadomość powinna dotrzeć w ciągu kilku minut.', 'polski');
 
         // Always show the same response so the form does not leak order-existence info.
         if (! $order instanceof \WC_Order || strcasecmp($order->get_billing_email(), $email) !== 0) {
@@ -150,7 +158,7 @@ final class GuestWithdrawalService implements HasHooks
                 : '';
 
             if (! wp_verify_nonce($submitNonce, 'polski_guest_submit_' . $token)) {
-                return $this->renderError(__('Security check failed. Please reload the page.', 'polski'));
+                return $this->renderError(__('Weryfikacja bezpieczeństwa nie powiodła się. Załaduj stronę ponownie i spróbuj jeszcze raz.', 'polski'));
             }
 
             $reason = isset($_POST['polski_withdrawal_reason'])
@@ -165,15 +173,22 @@ final class GuestWithdrawalService implements HasHooks
             );
 
             if ($created <= 0) {
-                return $this->renderError(__('Failed to submit your withdrawal request.', 'polski'));
+                return $this->renderError(__('Nie udało się zapisać oświadczenia. Spróbuj ponownie za chwilę albo skontaktuj się ze sklepem.', 'polski'));
             }
 
             $this->consumeToken($token);
 
             do_action('polski/withdrawal/guest_requested', $created, $order, $payload['email']);
 
-            return '<div class="polski-withdrawal-success">'
-                . esc_html__('Your withdrawal request has been recorded. A confirmation message has been sent to your email address.', 'polski')
+            $declarationId = sprintf('POL-WD-%06d', $created);
+            return '<div class="polski-withdrawal-success" role="status" aria-live="polite" lang="pl">'
+                . '<h2>' . esc_html__('Oświadczenie złożone', 'polski') . '</h2>'
+                . '<p>' . sprintf(
+                    /* translators: %s = declaration id (POL-WD-XXXXXX) */
+                    esc_html__('Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie — sprawdź skrzynkę odbiorczą oraz folder Spam.', 'polski'),
+                    '<strong>' . esc_html($declarationId) . '</strong>',
+                ) . '</p>'
+                . '<p>' . esc_html__('Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem.', 'polski') . '</p>'
                 . '</div>';
         }
 
@@ -285,19 +300,17 @@ final class GuestWithdrawalService implements HasHooks
 
         $subject = sprintf(
             /* translators: %s = order number */
-            __('Withdrawal request for order #%s', 'polski'),
+            __('Link do odstąpienia od umowy — zamówienie #%s', 'polski'),
             $order->get_order_number(),
         );
 
         $body = sprintf(
-            /* translators: 1: order number, 2: magic link, 3: TTL minutes */
-            __('We received a request to withdraw from order #%1$s. To continue, click the link below within %3$d minutes:%2$s%2$s%2$sIf you did not request this, you can safely ignore this message.', 'polski'),
+            /* translators: 1: order number, 2: minutes until expiry, 3: magic link URL */
+            __("Otrzymaliśmy prośbę o złożenie oświadczenia o odstąpieniu od umowy dla zamówienia #%1\$s.\n\nAby kontynuować, kliknij poniższy link w ciągu %2\$d minut:\n\n%3\$s\n\nLink jest jednorazowy. Jeśli to nie Ty wysłałeś prośbę, możesz zignorować tę wiadomość.", 'polski'),
             $order->get_order_number(),
-            "\r\n",
             (int) round(self::TOKEN_TTL_SECONDS / 60),
+            $link,
         );
-
-        $body .= "\r\n\r\n" . $link;
 
         wp_mail($email, $subject, $body);
     }

@@ -58,7 +58,7 @@
         });
     }
 
-    // 3. Items live counter.
+    // 3. Items live counter + bulk select handlers.
     var itemsTable = document.querySelector('.polski-withdrawal-items');
     if (itemsTable) {
         var counter = document.createElement('p');
@@ -78,13 +78,28 @@
                 }
             });
             counter.textContent = total === 0
-                ? 'Nie wybrano żadnej pozycji do zwrotu.'
-                : 'Wybrano łącznie ' + total + ' sztuk do zwrotu.';
+                ? 'Nie wybrano żadnej pozycji.'
+                : 'Wybrano łącznie ' + total + ' sztuk do odstąpienia.';
         };
         inputs.forEach(function (input) {
             input.addEventListener('input', update);
             input.addEventListener('change', update);
         });
         update();
+
+        // Bulk-select quick actions.
+        document.querySelectorAll('[data-polski-select]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var mode = btn.getAttribute('data-polski-select');
+                inputs.forEach(function (input) {
+                    if (mode === 'all') {
+                        input.value = input.getAttribute('max') || input.value;
+                    } else if (mode === 'none') {
+                        input.value = '0';
+                    }
+                });
+                update();
+            });
+        });
     }
 })();
