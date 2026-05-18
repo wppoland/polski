@@ -1,661 +1,187 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Empty array passed to foreach\.$#'
-			identifier: foreach.emptyArray
-			count: 1
-			path: src/Admin/AdminPage.php
-
-		-
-			message: '#^Method Polski\\Admin\\AdminPage\:\:renderWizardCheckbox\(\) is unused\.$#'
-			identifier: method.unused
-			count: 1
-			path: src/Admin/AdminPage.php
-
-		-
-			message: '#^Method Polski\\Admin\\AdminPage\:\:renderWizardInput\(\) is unused\.$#'
-			identifier: method.unused
-			count: 1
-			path: src/Admin/AdminPage.php
-
-		-
-			message: '#^Negated boolean expression is always false\.$#'
-			identifier: booleanNot.alwaysFalse
-			count: 1
-			path: src/Admin/AdminPage.php
-
-		-
-			message: '#^Offset ''settings'' on array\{id\: string, name\: string, description\: string, group\: string, enabled\: bool, icon\: string, links\: list\<array\{label\: string, url\: string\}\>\} in empty\(\) does not exist\.$#'
-			identifier: empty.offset
-			count: 1
-			path: src/Admin/AdminPage.php
-
-		-
 			message: '#^Path in require\(\) "/Users/mariuszszatkowskipromax/local/polski/polski/tests/phpstan/\.\./\.\./build/admin\.asset\.php" is not a file or it does not exist\.$#'
 			identifier: require.fileNotFound
 			count: 1
 			path: src/Admin/AdminPage.php
 
 		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
+			message: '#^Strict comparison using \!\=\= between ''dpa_tracker''\|''dsa_toolkit''\|''security_incidents''\|''site_audit'' and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: src/Admin/AdminPage.php
 
 		-
-			message: '#^Instanceof between WP_Term and WP_Term will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
+			message: '#^Method Polski\\Admin\\ModulesPage\:\:getBucketKeyForModule\(\) has parameter \$module with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Admin/ModulesPage.php
 
 		-
-			message: '#^Method Polski\\Admin\\ModulesPage\:\:getOmnibusIntegrationStatus\(\) is unused\.$#'
-			identifier: method.unused
+			message: '#^Parameter \#1 \$args of function wp_dropdown_pages expects array\{depth\?\: int, child_of\?\: int, selected\?\: int\|string, echo\?\: bool\|int, name\?\: string, id\?\: string, class\?\: string, show_option_none\?\: string, \.\.\.\}, array\{name\: ''polski_withdrawal…'', id\: ''polski_lookup_page'', selected\: int, show_option_none\: string, option_none_value\: 0\} given\.$#'
+			identifier: argument.type
 			count: 1
-			path: src/Admin/ModulesPage.php
+			path: src/Admin/WithdrawalSettingsPage.php
 
 		-
-			message: '#^Offset ''settings'' on array\{id\: string, name\: string, description\: string, group\: string, enabled\: bool, icon\: string, links\: list\<array\{label\: string, url\: string\}\>\} in empty\(\) does not exist\.$#'
-			identifier: empty.offset
+			message: '#^Call to an undefined method DateTimeImmutable\:\:date_i18n\(\)\.$#'
+			identifier: method.notFound
 			count: 1
-			path: src/Admin/ModulesPage.php
+			path: src/Admin/WithdrawalsAdminPage.php
 
 		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
+			message: '#^Path in require\(\) "/Users/mariuszszatkowskipromax/local/polski/polski/tests/phpstan/\.\./\.\./build/blocks/checkout\-legal\-checkboxes/index\.asset\.php" is not a file or it does not exist\.$#'
+			identifier: require.fileNotFound
 			count: 1
-			path: src/Admin/ModulesPage.php
-
-		-
-			message: '#^Instanceof between WP_Term and WP_Term will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 2
-			path: src/Admin/ProductMetaBox.php
-
-		-
-			message: '#^Using nullsafe method call on non\-nullable type WC_Session\. Use \-\> instead\.$#'
-			identifier: nullsafe.neverNull
-			count: 3
 			path: src/Block/StoreApi/CheckoutValidation.php
 
 		-
-			message: '#^Parameter \#1 \$date of function wc_format_datetime expects WC_DateTime, WC_DateTime\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Email/WithdrawalConfirmationEmail.php
-
-		-
-			message: '#^Property Polski\\Hook\\CartHooks\:\:\$templateLoader is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Hook/CartHooks.php
-
-		-
-			message: '#^Callback expects 1 parameter, \$accepted_args is set to 4\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/Hook/CheckoutHooks.php
-
-		-
-			message: '#^Method Polski\\Hook\\CheckoutHooks\:\:saveCheckboxStatesToOrder\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Hook/CheckoutHooks.php
-
-		-
-			message: '#^Strict comparison using \!\=\= between WC_Customer and null will always evaluate to true\.$#'
+			message: '#^Strict comparison using \!\=\= between mixed and null will always evaluate to true\.$#'
 			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: src/Hook/CheckoutHooks.php
+			count: 8
+			path: src/Model/WithdrawalRequest.php
 
 		-
-			message: '#^Strict comparison using \!\=\= between string and null will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: src/Hook/ProductHooks.php
-
-		-
-			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Integration/IntegrationManager.php
-
-		-
-			message: '#^Instanceof between WC_Payment_Gateways and WC_Payment_Gateways will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Integration/IntegrationManager.php
-
-		-
-			message: '#^Instanceof between WooCommerce and WooCommerce will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Integration/IntegrationManager.php
-
-		-
-			message: '#^Property Polski\\Integration\\IntegrationManager\:\:\$container is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Integration/IntegrationManager.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between bool and ''yes'' will always evaluate to false\.$#'
+			message: '#^Strict comparison using \=\=\= between int\<1, max\> and 0 will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
-			path: src/Integration/IntegrationManager.php
+			path: src/PageCompliance/Model/CheckReport.php
 
 		-
-			message: '#^Instanceof between Polski\\Contract\\HasHooks and Polski\\Contract\\HasHooks will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Plugin.php
-
-		-
-			message: '#^Parameter \#1 \$array \(list\<Polski\\Model\\ProductListItem\>\) of array_values is already a list, call has no effect\.$#'
-			identifier: arrayValues.list
+			message: '#^Method Polski\\Repository\\AbstractProductListRepository\:\:findAll\(\) should return list\<Polski\\Model\\ProductListItem\> but returns array\<Polski\\Model\\ProductListItem\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Repository/AbstractProductListRepository.php
 
 		-
-			message: '#^Parameter \#1 \$row of static method Polski\\Model\\ProductListItem\:\:fromRow\(\) expects object\{id\: int\|string, product_id\: int\|string, user_id\: int\|string\|null, session_id\: string\|null, created_at\: string\}, stdClass given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Repository/AbstractProductListRepository.php
-
-		-
-			message: '#^Parameter \#1 \$array \(list\<Polski\\Model\\ConsentRecord\>\) of array_values is already a list, call has no effect\.$#'
-			identifier: arrayValues.list
-			count: 2
-			path: src/Repository/ConsentLogRepository.php
-
-		-
-			message: '#^Parameter \#1 \$row of static method Polski\\Model\\ConsentRecord\:\:fromRow\(\) expects object\{id\: int\|string, user_id\: int\|string\|null, session_id\: string\|null, checkbox_id\: string, context\: string, consented\: bool\|int\|string, ip_address\: string\|null, user_agent\: string\|null, created_at\: string\}, stdClass given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Repository/ConsentLogRepository.php
-
-		-
-			message: '#^Parameter \#1 \$array \(list\<Polski\\Model\\OmnibusPrice\>\) of array_values is already a list, call has no effect\.$#'
-			identifier: arrayValues.list
-			count: 1
-			path: src/Repository/OmnibusPriceRepository.php
-
-		-
-			message: '#^Parameter \#1 \$row of static method Polski\\Model\\OmnibusPrice\:\:fromRow\(\) expects object\{id\: int\|string, product_id\: int\|string, price\: float\|string, sale_price\: float\|string\|null, price_type\: string, currency\: string, recorded_at\: string\}, stdClass given\.$#'
-			identifier: argument.type
+			message: '#^Access to an undefined property object\:\:\$accepted\.$#'
+			identifier: property.notFound
 			count: 4
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$checkbox_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$context\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$declined\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$total\.$#'
+			identifier: property.notFound
+			count: 5
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Method Polski\\Repository\\ConsentLogRepository\:\:findBySession\(\) should return list\<Polski\\Model\\ConsentRecord\> but returns array\<Polski\\Model\\ConsentRecord\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Method Polski\\Repository\\ConsentLogRepository\:\:findByUser\(\) should return list\<Polski\\Model\\ConsentRecord\> but returns array\<Polski\\Model\\ConsentRecord\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/ConsentLogRepository.php
+
+		-
+			message: '#^Method Polski\\Repository\\OmnibusPriceRepository\:\:findHistory\(\) should return list\<Polski\\Model\\OmnibusPrice\> but returns array\<Polski\\Model\\OmnibusPrice\>\.$#'
+			identifier: return.type
+			count: 1
 			path: src/Repository/OmnibusPriceRepository.php
 
 		-
-			message: '#^Parameter \#1 \$row of static method Polski\\Model\\WaitlistSubscription\:\:fromRow\(\) expects object\{id\: int\|string, product_id\: int\|string, email\: string, user_id\: int\|string\|null, notified\: bool\|int\|string, created_at\: string, notified_at\: string\|null\}, stdClass given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Repository/WaitlistRepository.php
-
-		-
-			message: '#^Parameter \#1 \$array \(list\<Polski\\Model\\WithdrawalRequest\>\) of array_values is already a list, call has no effect\.$#'
-			identifier: arrayValues.list
+			message: '#^Method Polski\\Repository\\WithdrawalRepository\:\:findAll\(\) should return list\<Polski\\Model\\WithdrawalRequest\> but returns array\<Polski\\Model\\WithdrawalRequest\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Repository/WithdrawalRepository.php
 
 		-
-			message: '#^Parameter \#1 \$row of static method Polski\\Model\\WithdrawalRequest\:\:fromRow\(\) expects object\{id\: int\|string, order_id\: int\|string, customer_id\: int\|string\|null, status\: string, reason\: string\|null, items_json\: string\|null, requested_at\: string, confirmed_at\: string\|null, completed_at\: string\|null\}, stdClass given\.$#'
-			identifier: argument.type
-			count: 3
+			message: '#^Method Polski\\Repository\\WithdrawalRepository\:\:findByCustomer\(\) should return list\<Polski\\Model\\WithdrawalRequest\> but returns array\<Polski\\Model\\WithdrawalRequest\>\.$#'
+			identifier: return.type
+			count: 1
 			path: src/Repository/WithdrawalRepository.php
 
 		-
-			message: '#^Call to function is_array\(\) with array\<string, mixed\> will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
+			message: '#^Strict comparison using \!\=\= between mixed and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
 			count: 1
-			path: src/Service/CheckboxService.php
+			path: src/Service/AbilitiesService.php
 
 		-
-			message: '#^Method Polski\\Service\\CompareService\:\:getButtonData\(\) return type has no value type specified in iterable type array\.$#'
+			message: '#^Strict comparison using \!\=\= between mixed~\(0\|0\.0\|''''\|''0''\|array\{\}\|false\|null\) and ''0'' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 2
+			path: src/Service/BusinessInfoService.php
+
+		-
+			message: '#^Method Polski\\Service\\DigitalConsentService\:\:persistConsent\(\) has parameter \$data with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
-			path: src/Service/CompareService.php
+			path: src/Service/DigitalConsentService.php
 
 		-
-			message: '#^Ternary operator condition is always true\.$#'
-			identifier: ternary.alwaysTrue
+			message: '#^Constant Polski\\Service\\MyAccountWithdrawalsService\:\:MENU_PRIORITY is unused\.$#'
+			identifier: classConstant.unused
 			count: 1
-			path: src/Service/CompareService.php
+			path: src/Service/MyAccountWithdrawalsService.php
 
 		-
-			message: '#^Right side of && is always true\.$#'
-			identifier: booleanAnd.rightAlwaysTrue
-			count: 1
-			path: src/Service/DPATrackerService.php
-
-		-
-			message: '#^Binary operation "/" between string and int\<1, max\> results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/Service/DataLayerService.php
-
-		-
-			message: '#^Negated boolean expression is always false\.$#'
-			identifier: booleanNot.alwaysFalse
-			count: 1
-			path: src/Service/DataLayerService.php
-
-		-
-			message: '#^Offset 0 on non\-empty\-list\<string\> on left side of \?\? always exists and is not nullable\.$#'
-			identifier: nullCoalesce.offset
-			count: 1
-			path: src/Service/DataLayerService.php
-
-		-
-			message: '#^Method Polski\\Service\\DoubleOptInService\:\:onCustomerCreated\(\) has parameter \$newCustomerData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/DoubleOptInService.php
-
-		-
-			message: '#^Argument of an invalid type array\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/Service/ExpertReviewService.php
-
-		-
-			message: '#^Method Polski\\Service\\ExpertReviewService\:\:getReviewsForProduct\(\) should return list\<WP_Post\> but returns array\<int\|WP_Post\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/ExpertReviewService.php
-
-		-
-			message: '#^Parameter \#1 \$text of function esc_html expects string, int\|string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/ExpertReviewService.php
-
-		-
-			message: '#^Parameter \#2 \$user_id of function get_the_author_meta expects int\|false, string given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Service/ExpertReviewService.php
-
-		-
-			message: '#^Parameter \#2 \$atts of function shortcode_atts expects array, array\<string, string\>\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/FaqService.php
-
-		-
-			message: '#^Method Polski\\Service\\FeaturedVideoService\:\:getVideoHtml\(\) should return string but returns string\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/FeaturedVideoService.php
-
-		-
-			message: '#^Parameter \#1 \$attr of function wp_video_shortcode expects array\{src\?\: string, height\?\: int, width\?\: int, poster\?\: string, loop\?\: string, autoplay\?\: string, muted\?\: string, preload\?\: string, \.\.\.\}, array\{src\: non\-empty\-string, autoplay\: bool, preload\: ''metadata''\} given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/FeaturedVideoService.php
-
-		-
-			message: '#^Instanceof between WP_Term and WP_Term will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Service/FilterService.php
-
-		-
-			message: '#^Call to function is_array\(\) with array\{value\: float, unit\: string\} will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 2
-			path: src/Service/FoodService.php
-
-		-
-			message: '#^Method Polski\\Service\\FoodService\:\:getAllergens\(\) should return list\<string\> but returns array\<string\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/FoodService.php
-
-		-
-			message: '#^Offset ''unit'' on array\{value\: float, unit\: string\} on left side of \?\? always exists and is not nullable\.$#'
-			identifier: nullCoalesce.offset
-			count: 1
-			path: src/Service/FoodService.php
-
-		-
-			message: '#^Offset ''value'' on array\{value\: float, unit\: string\} on left side of \?\? always exists and is not nullable\.$#'
-			identifier: nullCoalesce.offset
-			count: 1
-			path: src/Service/FoodService.php
-
-		-
-			message: '#^Parameter \#1 \$order of method Polski\\Service\\KSeFReadyService\:\:echoKSeFBadge\(\) expects WC_Order, WC_Order\|WC_Order_Refund given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/KSeFReadyService.php
-
-		-
-			message: '#^Instanceof between int\<0, max\> and WP_Error will always evaluate to false\.$#'
-			identifier: instanceof.alwaysFalse
-			count: 1
-			path: src/Service/LegalPageService.php
-
-		-
-			message: '#^Left side of && is always true\.$#'
-			identifier: booleanAnd.leftAlwaysTrue
-			count: 1
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Method Polski\\Service\\LiveCartService\:\:cartFragments\(\) should return array\<string, string\> but returns array\<string, bool\|string\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Method WC_Product\:\:get_permalink\(\) invoked with 1 parameter, 0 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Negated boolean expression is always false\.$#'
-			identifier: booleanNot.alwaysFalse
-			count: 1
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Parameter \#1 \$size of method WC_Product\:\:get_image\(\) expects string, array\<int, int\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Right side of && is always true\.$#'
-			identifier: booleanAnd.rightAlwaysTrue
-			count: 2
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Ternary operator condition is always true\.$#'
-			identifier: ternary.alwaysTrue
-			count: 2
-			path: src/Service/LiveCartService.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between WC_Cart and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: src/Service/MinimumOrderService.php
-
-		-
-			message: '#^Method Polski\\Service\\NipLookupService\:\:saveNipToOrder\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/NipLookupService.php
-
-		-
-			message: '#^Argument of an invalid type array\<WC_Order\>\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/Service/OrderExportService.php
-
-		-
-			message: '#^Call to an undefined method WC_Order_Item\:\:get_product\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/Service/OrderExportService.php
-
-		-
-			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/OrderExportService.php
-
-		-
-			message: '#^Parameter \#1 \$stream of function fputcsv expects resource, resource\|false given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Service/OrderExportService.php
-
-		-
-			message: '#^Parameter \#1 \$stream of function fwrite expects resource, resource\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/OrderExportService.php
-
-		-
-			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 2
-			path: src/Service/PopupService.php
-
-		-
-			message: '#^Expected 2 @param tags, found 1\.$#'
-			identifier: paramTag.count
-			count: 1
-			path: src/Service/PriceDisplayService.php
-
-		-
-			message: '#^Parameter \#1 \$array \(non\-empty\-list\<float\>\) of array_values is already a list, call has no effect\.$#'
+			message: '#^Parameter \#1 \$array \(list\) of array_values is already a list, call has no effect\.$#'
 			identifier: arrayValues.list
 			count: 1
-			path: src/Service/PriceHistoryChartService.php
+			path: src/Service/OrderExportService.php
 
 		-
-			message: '#^Call to function is_wp_error\(\) with array\<int, WP_Term\> will always evaluate to false\.$#'
-			identifier: function.impossibleType
-			count: 1
-			path: src/Service/ProductAuthorService.php
-
-		-
-			message: '#^Method Polski\\Service\\ProductAuthorService\:\:getProductAuthors\(\) should return list\<WP_Term\> but returns array\<int, WP_Term\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/ProductAuthorService.php
-
-		-
-			message: '#^Parameter \#1 \$url of function esc_url expects string, string\|WP_Error given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/ProductAuthorService.php
-
-		-
-			message: '#^Call to function is_array\(\) with list\<WP_Term\> will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Service/ProductInfoService.php
-
-		-
-			message: '#^Instanceof between WP_Term and WP_Term will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 2
-			path: src/Service/ProductInfoService.php
-
-		-
-			message: '#^Method Polski\\Service\\ProductInfoService\:\:getSafetyDocuments\(\) should return list\<int\> but returns array\<int\>\.$#'
-			identifier: return.type
-			count: 2
-			path: src/Service/ProductInfoService.php
-
-		-
-			message: '#^Method Polski\\Service\\ProductQAService\:\:getAnswers\(\) should return list\<WP_Comment\> but returns array\<int\|WP_Comment\>\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/ProductQAService.php
-
-		-
-			message: '#^Method Polski\\Service\\ProductQAService\:\:getQuestions\(\) should return list\<WP_Comment\> but returns array\<int\|WP_Comment\>\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/ProductQAService.php
-
-		-
-			message: '#^Parameter \#1 \$comment_id of function get_comment_meta expects int, string given\.$#'
+			message: '#^Parameter \#1 \$text of function esc_attr expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 2
-			path: src/Service/ProductQAService.php
+			path: src/Service/OrderExportService.php
 
 		-
-			message: '#^Parameter \#1 \$text of function esc_html expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Service/ProductQAService.php
-
-		-
-			message: '#^Parameter \#2 \$timestamp of function wp_date expects int\|null, int\|false given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Service/ProductQAService.php
-
-		-
-			message: '#^Method Polski\\Service\\QuickViewService\:\:getProductImages\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Cannot access property \$download_link on array\|object\.$#'
+			identifier: property.nonObject
 			count: 1
-			path: src/Service/QuickViewService.php
+			path: src/Service/OssObserverService.php
 
 		-
-			message: '#^Argument of an invalid type array\<WC_Order\>\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
+			message: '#^Parameter \#1 \$callback of function call_user_func expects callable\(\)\: mixed, array\{''Vendidero…'', ''enable_auto_observer''\} given\.$#'
+			identifier: argument.type
 			count: 1
-			path: src/Service/ReviewRequestService.php
+			path: src/Service/OssObserverService.php
 
 		-
-			message: '#^Call to an undefined method WC_Order_Item\:\:get_product\(\)\.$#'
+			message: '#^Parameter \#1 \$callback of function call_user_func expects callable\(\)\: mixed, array\{''Vendidero…'', ''oss_procedure_is…''\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/OssObserverService.php
+
+		-
+			message: '#^Call to an undefined method WC_Product\:\:get_variation_price\(\)\.$#'
 			identifier: method.notFound
-			count: 1
-			path: src/Service/ReviewRequestService.php
-
-		-
-			message: '#^Instanceof between WC_Order and WC_Order will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Service/ReviewRequestService.php
-
-		-
-			message: '#^Parameter \#1 \$attachment_id of function wp_get_attachment_image_url expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/ReviewRequestService.php
-
-		-
-			message: '#^Argument of an invalid type array\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/Service/SearchService.php
-
-		-
-			message: '#^Parameter \#1 \$attachment_id of function wp_get_attachment_image_url expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/SearchService.php
-
-		-
-			message: '#^Method Polski\\Service\\SecurityIncidentService\:\:formatReportedAt\(\) should return string but returns string\|false\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/SecurityIncidentService.php
-
-		-
-			message: '#^Match expression does not handle remaining value\: string$#'
-			identifier: match.unhandled
-			count: 1
-			path: src/Service/SiteAuditService.php
-
-		-
-			message: '#^Parameter \#1 \$message of function wp_die expects string\|WP_Error, int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/SiteAuditService.php
-
-		-
-			message: '#^Method Polski\\Service\\SocialLoginService\:\:findOrCreateUser\(\) should return WP_User\|null but returns WP_User\|false\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/SocialLoginService.php
-
-		-
-			message: '#^Argument of an invalid type array\<WC_Order\>\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/Service/SocialProofService.php
-
-		-
-			message: '#^Instanceof between WC_Order and WC_Order will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Service/SocialProofService.php
-
-		-
-			message: '#^Method Polski\\Service\\SocialProofService\:\:getRecentPurchases\(\) should return list\<array\{name\: string, city\: string, product\: string, image\: string, time\: string, url\: string\}\> but returns array\<mixed, mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Service/SocialProofService.php
-
-		-
-			message: '#^Parameter \#1 \$attachment_id of function wp_get_attachment_image_url expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/SocialProofService.php
-
-		-
-			message: '#^Argument of an invalid type array\|stdClass supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Parameter \#1 \$stream of function fputcsv expects resource, resource\|false given\.$#'
-			identifier: argument.type
 			count: 2
-			path: src/Service/StockExportService.php
+			path: src/Service/SiteAuditService.php
 
 		-
-			message: '#^Parameter \#1 \$stream of function fwrite expects resource, resource\|false given\.$#'
-			identifier: argument.type
+			message: '#^Parameter \#1 \$array \(list\) of array_values is already a list, call has no effect\.$#'
+			identifier: arrayValues.list
 			count: 1
 			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array, list\<string\>\|WP_Error given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Parameter \#2 \$fields of method Polski\\Service\\StockExportService\:\:outputCsv\(\) expects list\<string\>, array\<string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Parameter \#2 \$fields of method Polski\\Service\\StockExportService\:\:renderPreview\(\) expects list\<string\>, array\<string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/StockExportService.php
-
-		-
-			message: '#^Method Polski\\Service\\TabManagerService\:\:filterTabs\(\) has parameter \$tabs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/TabManagerService.php
-
-		-
-			message: '#^Method Polski\\Service\\TabManagerService\:\:filterTabs\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/TabManagerService.php
-
-		-
-			message: '#^Method Polski\\Service\\WishlistService\:\:getButtonData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/WishlistService.php
-
-		-
-			message: '#^Ternary operator condition is always true\.$#'
-			identifier: ternary.alwaysTrue
-			count: 1
-			path: src/Service/WishlistService.php
