@@ -246,6 +246,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\DigitalConsentService::class, static fn () => new \Polski\Service\DigitalConsentService());
     $c->singleton(\Polski\Admin\WithdrawalsAdminPage::class, static fn () => new \Polski\Admin\WithdrawalsAdminPage(
         $c->get(WithdrawalRepository::class),
+        $c->get(WithdrawalService::class),
     ));
     $c->singleton(\Polski\Admin\WithdrawalSettingsPage::class, static fn () => new \Polski\Admin\WithdrawalSettingsPage());
     $c->singleton(\Polski\Service\WithdrawalBlocksService::class, static fn () => new \Polski\Service\WithdrawalBlocksService());
