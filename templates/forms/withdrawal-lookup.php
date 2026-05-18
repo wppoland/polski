@@ -39,6 +39,10 @@ $polski_sticky_email = isset($_POST['polski_email']) ? sanitize_email(wp_unslash
 
 $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') === 'error';
 ?>
+<a href="#polski-withdrawal-lookup-form" class="polski-withdrawal-skip-link">
+    <?php esc_html_e('Przejdź do formularza odstąpienia', 'polski'); ?>
+</a>
+
 <section
     class="polski-withdrawal-lookup"
     aria-labelledby="polski-withdrawal-lookup-title"
@@ -97,7 +101,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
         </div>
     <?php endif; ?>
 
-    <form method="post" action="" novalidate aria-describedby="polski-withdrawal-lookup-help">
+    <form id="polski-withdrawal-lookup-form" method="post" action="" novalidate aria-describedby="polski-withdrawal-lookup-help">
         <p>
             <label for="polski_order_number">
                 <?php esc_html_e('Numer zamówienia', 'polski'); ?>
