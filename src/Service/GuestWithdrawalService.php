@@ -173,6 +173,12 @@ final class GuestWithdrawalService implements HasHooks
             );
 
             if ($created <= 0) {
+                do_action(
+                    'polski/withdrawal/persist_failed',
+                    $order->get_id(),
+                    ['flow' => 'guest', 'email' => $payload['email']],
+                );
+
                 return $this->renderError(__('Nie udało się zapisać oświadczenia. Spróbuj ponownie za chwilę albo skontaktuj się ze sklepem.', 'polski'));
             }
 
@@ -312,7 +318,16 @@ final class GuestWithdrawalService implements HasHooks
             $link,
         );
 
-        wp_mail($email, $subject, $body);
+        $sent = wp_mail($email, $subject, $body);
+
+        if (! $sent) {
+            do_action(
+                'polski/withdrawal/mail_failed',
+                $email,
+                (string) $order->get_order_number(),
+                ['order_id' => $order->get_id(), 'context' => 'magic_link'],
+            );
+        }
     }
 
     private function getLookupUrl(): string

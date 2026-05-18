@@ -250,6 +250,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Admin\WithdrawalSettingsPage::class, static fn () => new \Polski\Admin\WithdrawalSettingsPage());
     $c->singleton(\Polski\Service\WithdrawalBlocksService::class, static fn () => new \Polski\Service\WithdrawalBlocksService());
     $c->singleton(\Polski\Service\WithdrawalAssetsService::class, static fn () => new \Polski\Service\WithdrawalAssetsService());
+    $c->singleton(\Polski\Service\WithdrawalErrorTelemetry::class, static fn () => new \Polski\Service\WithdrawalErrorTelemetry());
     $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
         $c->get(WithdrawalRepository::class),
     ));

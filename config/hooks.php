@@ -154,6 +154,7 @@ return [
     \Polski\Admin\WithdrawalSettingsPage::class,
     \Polski\Service\WithdrawalBlocksService::class,
     \Polski\Service\WithdrawalAssetsService::class,
+    \Polski\Service\WithdrawalErrorTelemetry::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
