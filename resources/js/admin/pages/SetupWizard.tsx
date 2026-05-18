@@ -32,6 +32,11 @@ interface WizardData {
 
     order_button_text: string;
     digital_waiver_enabled: boolean;
+
+    // Withdrawal flow (Polski 1.16.0+)
+    withdrawal_period_days: number;
+    withdrawal_create_lookup_page: boolean;
+    withdrawal_digital_consent_mode: 'required' | 'optional' | 'hidden';
 }
 
 const INITIAL_DATA: WizardData = {
@@ -53,6 +58,10 @@ const INITIAL_DATA: WizardData = {
 
     order_button_text: __('Zamawiam z obowiązkiem zapłaty', 'polski'),
     digital_waiver_enabled: false,
+
+    withdrawal_period_days: 14,
+    withdrawal_create_lookup_page: true,
+    withdrawal_digital_consent_mode: 'optional',
 };
 
 const STEPS = [
@@ -268,6 +277,67 @@ export default function SetupWizard() {
                                 onChange={(v) => update('withdrawal_enabled', v)}
                             />
                         </WizardRow>
+
+                        {data.withdrawal_enabled && (
+                            <>
+                                <WizardRow
+                                    label={__('Withdrawal period (days)', 'polski')}
+                                    description={__(
+                                        'Standard EU period is 14 days. Increase only if your store voluntarily offers a longer return window. The clock starts when an order enters a completed/shipped status.',
+                                        'polski',
+                                    )}
+                                >
+                                    <TextControl
+                                        type="number"
+                                        min={1}
+                                        value={String(data.withdrawal_period_days)}
+                                        onChange={(v) => update('withdrawal_period_days', Math.max(1, parseInt(v, 10) || 14))}
+                                    />
+                                </WizardRow>
+
+                                <WizardRow
+                                    label={__('Create a public withdrawal form page', 'polski')}
+                                    description={__(
+                                        'Required by Art. 11a of Directive 2023/2673 (in force 19 June 2026) for guest customers without a shop account. We will publish a page at /odstapienie/ containing the [polski_withdrawal_lookup] shortcode. You can rename or move it later.',
+                                        'polski',
+                                    )}
+                                >
+                                    <ToggleControl
+                                        label={__('Publish /odstapienie/ on Finish', 'polski')}
+                                        checked={data.withdrawal_create_lookup_page}
+                                        onChange={(v) => update('withdrawal_create_lookup_page', v)}
+                                    />
+                                </WizardRow>
+
+                                <WizardRow
+                                    label={__('Digital products consent (Art. 16(m))', 'polski')}
+                                    description={__(
+                                        'For downloadable / virtual products, the consumer must actively consent to losing the right of withdrawal before delivery starts. Pick the prompt mode best fitting your catalog. "Hidden" preserves the right of withdrawal regardless of digital nature.',
+                                        'polski',
+                                    )}
+                                >
+                                    <select
+                                        value={data.withdrawal_digital_consent_mode}
+                                        onChange={(e) =>
+                                            update(
+                                                'withdrawal_digital_consent_mode',
+                                                e.target.value as WizardData['withdrawal_digital_consent_mode'],
+                                            )
+                                        }
+                                    >
+                                        <option value="required">
+                                            {__('Required — checkout blocked until ticked', 'polski')}
+                                        </option>
+                                        <option value="optional">
+                                            {__('Optional — show unchecked, only ticked orders are exempt', 'polski')}
+                                        </option>
+                                        <option value="hidden">
+                                            {__("Hidden — don't collect consent", 'polski')}
+                                        </option>
+                                    </select>
+                                </WizardRow>
+                            </>
+                        )}
 
                         <WizardRow
                             label={__('Marketing consent', 'polski')}
