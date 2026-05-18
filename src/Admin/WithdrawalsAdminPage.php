@@ -9,6 +9,7 @@ use Polski\Contract\HasHooks;
 use Polski\Enum\WithdrawalStatus;
 use Polski\Repository\WithdrawalRepository;
 use Polski\Service\WithdrawalOrderStatusService;
+use Polski\Service\WithdrawalService;
 
 /**
  * Admin screens for the withdrawal module:
@@ -21,9 +22,11 @@ final class WithdrawalsAdminPage implements HasHooks
     private const CAPABILITY = 'manage_woocommerce';
     private const PAGE_SLUG = 'polski-withdrawals';
     private const NONCE_ACTION = 'polski_manual_withdrawal';
+    private const BULK_NONCE_ACTION = 'polski_withdrawal_bulk';
 
     public function __construct(
         private readonly WithdrawalRepository $repository,
+        private readonly WithdrawalService $withdrawal,
     ) {
     }
 
@@ -31,6 +34,7 @@ final class WithdrawalsAdminPage implements HasHooks
     {
         add_action('admin_menu', [$this, 'registerMenu'], 65);
         add_action('admin_post_polski_register_manual_withdrawal', [$this, 'handleManualSubmission']);
+        add_action('admin_post_polski_withdrawal_bulk', [$this, 'handleBulkAction']);
     }
 
     public function registerMenu(): void
@@ -62,6 +66,7 @@ final class WithdrawalsAdminPage implements HasHooks
 
         $statusFilter = $this->readStatusFilter();
         $rows = $this->repository->findAll(50, 0, $statusFilter);
+        $notice = $this->popNotice();
 
         ?>
         <div class="wrap">
@@ -70,6 +75,12 @@ final class WithdrawalsAdminPage implements HasHooks
                 <?php esc_html_e('Register manually', 'polski'); ?>
             </a>
             <hr class="wp-header-end" />
+
+            <?php if ($notice !== null) : ?>
+                <div class="notice notice-<?php echo esc_attr($notice['type']); ?> is-dismissible">
+                    <p><?php echo esc_html($notice['message']); ?></p>
+                </div>
+            <?php endif; ?>
 
             <form method="get">
                 <input type="hidden" name="page" value="<?php echo esc_attr(self::PAGE_SLUG); ?>">
@@ -85,49 +96,212 @@ final class WithdrawalsAdminPage implements HasHooks
                 <?php submit_button(__('Filter', 'polski'), 'secondary', '', false); ?>
             </form>
 
-            <table class="wp-list-table widefat fixed striped">
-                <thead>
-                    <tr>
-                        <th><?php esc_html_e('ID', 'polski'); ?></th>
-                        <th><?php esc_html_e('Order', 'polski'); ?></th>
-                        <th><?php esc_html_e('Channel', 'polski'); ?></th>
-                        <th><?php esc_html_e('Status', 'polski'); ?></th>
-                        <th><?php esc_html_e('Reason', 'polski'); ?></th>
-                        <th><?php esc_html_e('Filed at', 'polski'); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php if ($rows === []) : ?>
-                    <tr><td colspan="6"><?php esc_html_e('No withdrawal requests yet.', 'polski'); ?></td></tr>
-                <?php else : ?>
-                    <?php foreach ($rows as $row) : ?>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <input type="hidden" name="action" value="polski_withdrawal_bulk">
+                <?php wp_nonce_field(self::BULK_NONCE_ACTION); ?>
+
+                <div class="tablenav top">
+                    <div class="alignleft actions bulkactions">
+                        <label for="bulk-action-selector-top" class="screen-reader-text">
+                            <?php esc_html_e('Select bulk action', 'polski'); ?>
+                        </label>
+                        <select id="bulk-action-selector-top" name="bulk_action">
+                            <option value="-1"><?php esc_html_e('Bulk actions', 'polski'); ?></option>
+                            <option value="confirm"><?php esc_html_e('Mark as confirmed', 'polski'); ?></option>
+                            <option value="reject"><?php esc_html_e('Mark as rejected', 'polski'); ?></option>
+                            <option value="export_csv"><?php esc_html_e('Export selection to CSV', 'polski'); ?></option>
+                        </select>
+                        <?php submit_button(__('Apply', 'polski'), 'action', '', false); ?>
+                    </div>
+                </div>
+
+                <table class="wp-list-table widefat fixed striped">
+                    <thead>
                         <tr>
-                            <td>#<?php echo esc_html((string) $row->id); ?></td>
-                            <td>
-                                <?php
-                                $orderUrl = $this->orderEditUrl($row->orderId);
-                                if ($orderUrl !== '') {
-                                    printf(
-                                        '<a href="%s">#%d</a>',
-                                        esc_url($orderUrl),
-                                        (int) $row->orderId,
-                                    );
-                                } else {
-                                    echo '#' . (int) $row->orderId;
-                                }
-                                ?>
+                            <td class="manage-column column-cb check-column">
+                                <label class="screen-reader-text" for="cb-select-all">
+                                    <?php esc_html_e('Select all', 'polski'); ?>
+                                </label>
+                                <input id="cb-select-all" type="checkbox"
+                                    onclick="document.querySelectorAll('input[name=\'ids[]\']').forEach(function(c){c.checked=this.checked;}.bind(this));">
                             </td>
-                            <td><?php echo esc_html($row->channel ?? 'online'); ?></td>
-                            <td><?php echo esc_html($row->status->label()); ?></td>
-                            <td><?php echo esc_html(wp_trim_words((string) ($row->reason ?? ''), 12)); ?></td>
-                            <td><?php echo esc_html($row->requestedAt->date_i18n(get_option('date_format') . ' H:i')); ?></td>
+                            <th><?php esc_html_e('ID', 'polski'); ?></th>
+                            <th><?php esc_html_e('Order', 'polski'); ?></th>
+                            <th><?php esc_html_e('Channel', 'polski'); ?></th>
+                            <th><?php esc_html_e('Status', 'polski'); ?></th>
+                            <th><?php esc_html_e('Reason', 'polski'); ?></th>
+                            <th><?php esc_html_e('Filed at', 'polski'); ?></th>
                         </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php if ($rows === []) : ?>
+                        <tr><td colspan="7"><?php esc_html_e('No withdrawal requests yet.', 'polski'); ?></td></tr>
+                    <?php else : ?>
+                        <?php foreach ($rows as $row) : ?>
+                            <tr>
+                                <th scope="row" class="check-column">
+                                    <label class="screen-reader-text" for="cb-select-<?php echo esc_attr((string) $row->id); ?>">
+                                        <?php
+                                        printf(
+                                            /* translators: %d: declaration id */
+                                            esc_html__('Select withdrawal #%d', 'polski'),
+                                            (int) $row->id,
+                                        );
+                                        ?>
+                                    </label>
+                                    <input id="cb-select-<?php echo esc_attr((string) $row->id); ?>"
+                                        type="checkbox" name="ids[]" value="<?php echo esc_attr((string) $row->id); ?>">
+                                </th>
+                                <td>#<?php echo esc_html((string) $row->id); ?></td>
+                                <td>
+                                    <?php
+                                    $orderUrl = $this->orderEditUrl($row->orderId);
+                                    if ($orderUrl !== '') {
+                                        printf(
+                                            '<a href="%s">#%d</a>',
+                                            esc_url($orderUrl),
+                                            (int) $row->orderId,
+                                        );
+                                    } else {
+                                        echo '#' . (int) $row->orderId;
+                                    }
+                                    ?>
+                                </td>
+                                <td><?php echo esc_html($row->channel ?? 'online'); ?></td>
+                                <td><?php echo esc_html($row->status->label()); ?></td>
+                                <td><?php echo esc_html(wp_trim_words((string) ($row->reason ?? ''), 12)); ?></td>
+                                <td><?php echo esc_html($row->requestedAt->date_i18n(get_option('date_format') . ' H:i')); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </form>
         </div>
         <?php
+    }
+
+    public function handleBulkAction(): void
+    {
+        if (! current_user_can(self::CAPABILITY)) {
+            wp_die(esc_html__('You are not allowed to perform this action.', 'polski'));
+        }
+
+        check_admin_referer(self::BULK_NONCE_ACTION);
+
+        $rawAction = isset($_POST['bulk_action']) ? sanitize_key((string) wp_unslash($_POST['bulk_action'])) : '';
+        $ids = isset($_POST['ids']) && is_array($_POST['ids'])
+            ? array_values(array_unique(array_filter(array_map('intval', (array) wp_unslash($_POST['ids'])))))
+            : [];
+
+        if ($rawAction === '' || $rawAction === '-1' || $ids === []) {
+            $this->setNotice('warning', __('Wybierz akcję i co najmniej jedną pozycję.', 'polski'));
+            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));
+            exit;
+        }
+
+        match ($rawAction) {
+            'confirm' => $this->bulkConfirm($ids),
+            'reject' => $this->bulkReject($ids),
+            'export_csv' => $this->bulkExportCsv($ids),
+            default => $this->setNotice('error', __('Nieznana akcja zbiorcza.', 'polski')),
+        };
+
+        if ($rawAction !== 'export_csv') {
+            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));
+            exit;
+        }
+    }
+
+    /**
+     * @param list<int> $ids
+     */
+    private function bulkConfirm(array $ids): void
+    {
+        $done = 0;
+        foreach ($ids as $id) {
+            if ($this->withdrawal->confirm($id)) {
+                $done++;
+            }
+        }
+        $this->setNotice(
+            $done > 0 ? 'success' : 'warning',
+            sprintf(
+                /* translators: 1: succeeded, 2: total selected */
+                _n('Potwierdzono %1$d z %2$d zaznaczonych oświadczeń.', 'Potwierdzono %1$d z %2$d zaznaczonych oświadczeń.', count($ids), 'polski'),
+                $done,
+                count($ids),
+            ),
+        );
+    }
+
+    /**
+     * @param list<int> $ids
+     */
+    private function bulkReject(array $ids): void
+    {
+        $done = 0;
+        foreach ($ids as $id) {
+            if ($this->withdrawal->reject($id, __('Odrzucone akcją zbiorczą.', 'polski'))) {
+                $done++;
+            }
+        }
+        $this->setNotice(
+            $done > 0 ? 'success' : 'warning',
+            sprintf(
+                /* translators: 1: succeeded, 2: total selected */
+                _n('Odrzucono %1$d z %2$d zaznaczonych oświadczeń.', 'Odrzucono %1$d z %2$d zaznaczonych oświadczeń.', count($ids), 'polski'),
+                $done,
+                count($ids),
+            ),
+        );
+    }
+
+    /**
+     * @param list<int> $ids
+     */
+    private function bulkExportCsv(array $ids): void
+    {
+        nocache_headers();
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=polski-withdrawals-' . gmdate('Y-m-d-His') . '.csv');
+
+        $handle = fopen('php://output', 'wb');
+        if ($handle === false) {
+            wp_die(esc_html__('Could not open output stream.', 'polski'));
+        }
+
+        fputcsv($handle, [
+            'id', 'order_id', 'customer_id', 'channel', 'status', 'guest_email',
+            'reason', 'requested_at', 'confirmed_at', 'completed_at', 'rejected_at',
+            'refund_id', 'refund_amount', 'language_code',
+        ]);
+
+        foreach ($ids as $id) {
+            $request = $this->repository->findById($id);
+            if ($request === null) {
+                continue;
+            }
+            fputcsv($handle, [
+                (string) $request->id,
+                (string) $request->orderId,
+                (string) ($request->customerId ?? ''),
+                (string) ($request->channel ?? ''),
+                (string) $request->status->value,
+                (string) ($request->guestEmail ?? ''),
+                (string) ($request->reason ?? ''),
+                $request->requestedAt->format('c'),
+                $request->confirmedAt?->format('c') ?? '',
+                $request->completedAt?->format('c') ?? '',
+                $request->rejectedAt?->format('c') ?? '',
+                (string) ($request->refundId ?? ''),
+                (string) ($request->refundAmount ?? ''),
+                (string) ($request->languageCode ?? ''),
+            ]);
+        }
+
+        fclose($handle);
+        exit;
     }
 
     public function renderManualPage(): void
