@@ -1,0 +1,124 @@
+name: Release
+
+on:
+    push:
+        tags:
+            - 'v[0-9]+.[0-9]+.[0-9]+'
+    workflow_dispatch:
+        inputs:
+            tag:
+                description: 'Tag to build (e.g. v1.16.0)'
+                required: true
+
+permissions:
+    contents: write
+
+concurrency:
+    group: release-${{ github.ref }}
+    cancel-in-progress: false
+
+jobs:
+    build-and-release:
+        name: Build SVN-ready zip + create GitHub release
+        runs-on: ubuntu-latest
+        timeout-minutes: 20
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.inputs.tag || github.ref }}
+                  fetch-depth: 0
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.2'
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Resolve version
+              id: ver
+              run: |
+                  TAG="${{ github.event.inputs.tag || github.ref_name }}"
+                  VERSION="${TAG#v}"
+                  echo "tag=$TAG" >> $GITHUB_OUTPUT
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+                  echo "Tag: $TAG | Version: $VERSION"
+
+            - name: Verify plugin header matches tag
+              run: |
+                  HEADER=$(grep "Version:" polski.php | head -1 | awk '{print $3}')
+                  EXPECTED="${{ steps.ver.outputs.version }}"
+                  if [ "$HEADER" != "$EXPECTED" ]; then
+                      echo "Plugin header Version: $HEADER does not match tag $EXPECTED"
+                      exit 1
+                  fi
+                  echo "Plugin Version: $HEADER matches tag"
+
+            - name: Install Composer deps (no-dev for shipping)
+              run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+            - name: Install npm deps + build
+              run: |
+                  npm ci
+                  npm run build
+
+            - name: Generate POT and compile MO
+              run: |
+                  curl -sO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+                  chmod +x wp-cli.phar
+                  ./wp-cli.phar i18n make-pot . languages/polski.pot --exclude=node_modules,vendor,tests,_benchmark,build
+                  ./wp-cli.phar i18n make-mo languages/
+
+            - name: Prepare SVN-ready distribution
+              run: bash scripts/prepare-wporg-release.sh /tmp/polski-dist
+
+            - name: Create zip
+              id: zip
+              run: |
+                  ZIP_NAME="polski-${{ steps.ver.outputs.version }}.zip"
+                  cd /tmp/polski-dist
+                  # Move into a top-level `polski/` directory so unzipping creates
+                  # wp-content/plugins/polski as wp.org expects.
+                  mkdir -p /tmp/zip-staging/polski
+                  cp -R . /tmp/zip-staging/polski/
+                  cd /tmp/zip-staging
+                  zip -rq "/tmp/$ZIP_NAME" polski
+                  echo "zip_path=/tmp/$ZIP_NAME" >> $GITHUB_OUTPUT
+                  ls -lh "/tmp/$ZIP_NAME"
+
+            - name: Generate release notes from CHANGELOG
+              id: notes
+              run: |
+                  # Pull the section for this version out of readme.txt's Changelog.
+                  python3 - <<'PY' > /tmp/release-notes.md
+                  import re, sys, pathlib
+                  version = "${{ steps.ver.outputs.version }}"
+                  readme = pathlib.Path('readme.txt').read_text(encoding='utf-8')
+                  # Match "= 1.16.0 =" through next "= x.y.z =" or EOF.
+                  pattern = re.compile(rf'(^=\s*{re.escape(version)}\s*=\s*$)(.*?)(?=^=\s*\d+\.\d+\.\d+\s*=|\Z)', re.S | re.M)
+                  m = pattern.search(readme)
+                  if not m:
+                      print(f"No changelog entry for {version} in readme.txt — using a generic note.")
+                      sys.exit(0)
+                  body = m.group(2).strip()
+                  print(f"## {version}\n\n{body}")
+                  PY
+
+            - name: Create GitHub release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: ${{ steps.ver.outputs.tag }}
+                  name: 'Polski ${{ steps.ver.outputs.version }}'
+                  body_path: /tmp/release-notes.md
+                  files: ${{ steps.zip.outputs.zip_path }}
+                  draft: false
+                  prerelease: false
+
+            - name: Upload SVN-ready dir as artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: polski-${{ steps.ver.outputs.version }}-svn-ready
+                  path: /tmp/polski-dist
+                  retention-days: 90
