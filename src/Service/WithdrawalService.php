@@ -199,7 +199,7 @@ final class WithdrawalService implements Bootable, HasHooks
 
             $attrs = '';
             $variationId = $item->get_variation_id();
-            if ($variationId > 0 && $product instanceof \WC_Product && $product->is_type('variation')) {
+            if ($variationId > 0 && $product instanceof \WC_Product_Variation) {
                 $attrs = wc_get_formatted_variation($product, true, true, false);
             }
 

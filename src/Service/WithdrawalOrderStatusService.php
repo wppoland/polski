@@ -40,11 +40,9 @@ final class WithdrawalOrderStatusService implements HasHooks
                 'exclude_from_search' => true,
                 'show_in_admin_all_list' => true,
                 'show_in_admin_status_list' => true,
-                'label_count' => _n_noop(
-                    $config['label'] . ' <span class="count">(%s)</span>',
-                    $config['label'] . ' <span class="count">(%s)</span>',
-                    'polski',
-                ),
+                // label_count intentionally omitted: it must use a literal noop
+                // string for the i18n parser, but our labels are runtime values.
+                // WordPress falls back to `label` when label_count is missing.
             ]);
         }
     }

@@ -376,7 +376,12 @@ final class GuestWithdrawalService implements HasHooks
 
         $key = wp_generate_password(16, false, false);
         if (! headers_sent()) {
-            setcookie($cookieName, $key, time() + 300, COOKIEPATH ?: '/', COOKIE_DOMAIN ?: '', is_ssl(), true);
+            $cookiePath = defined('COOKIEPATH') ? (string) COOKIEPATH : '';
+            if ($cookiePath === '') {
+                $cookiePath = '/';
+            }
+            $cookieDomain = defined('COOKIE_DOMAIN') ? (string) COOKIE_DOMAIN : '';
+            setcookie($cookieName, $key, time() + 300, $cookiePath, $cookieDomain, is_ssl(), true);
         }
 
         return $key;

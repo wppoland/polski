@@ -36,30 +36,35 @@ final class WithdrawalItemsRepository
      *     line_tax?: float,
      *     sku?: string|null,
      *     name?: string,
-     *     attributes?: array<string, string>|null,
+     *     attributes?: array<string, string>|string|null,
      * }> $items
      */
     public function insertMany(int $withdrawalId, array $items): void
     {
         foreach ($items as $item) {
+            $rawAttributes = $item['attributes'] ?? null;
+            if (is_string($rawAttributes)) {
+                $attributesJson = $rawAttributes !== '' ? wp_json_encode(['display' => $rawAttributes]) : null;
+            } elseif (is_array($rawAttributes)) {
+                $attributesJson = wp_json_encode($rawAttributes);
+            } else {
+                $attributesJson = null;
+            }
+
             $this->wpdb->insert(
                 $this->tableName(),
                 [
                     'withdrawal_id' => $withdrawalId,
                     'order_item_id' => (int) $item['order_item_id'],
                     'product_id' => (int) $item['product_id'],
-                    'variation_id' => isset($item['variation_id']) && $item['variation_id'] !== null
-                        ? (int) $item['variation_id']
-                        : null,
+                    'variation_id' => ! empty($item['variation_id']) ? (int) $item['variation_id'] : null,
                     'quantity' => (float) $item['quantity'],
                     'line_subtotal' => isset($item['line_subtotal']) ? (float) $item['line_subtotal'] : 0,
                     'line_total' => isset($item['line_total']) ? (float) $item['line_total'] : 0,
                     'line_tax' => isset($item['line_tax']) ? (float) $item['line_tax'] : 0,
                     'sku' => isset($item['sku']) ? (string) $item['sku'] : null,
                     'name' => isset($item['name']) ? mb_substr((string) $item['name'], 0, 255) : '',
-                    'attributes_json' => isset($item['attributes']) && $item['attributes'] !== null
-                        ? wp_json_encode($item['attributes'])
-                        : null,
+                    'attributes_json' => $attributesJson,
                     'created_at' => current_time('mysql', true),
                 ],
                 ['%d', '%d', '%d', '%d', '%f', '%f', '%f', '%f', '%s', '%s', '%s', '%s'],
@@ -122,6 +127,10 @@ final class WithdrawalItemsRepository
             ),
         );
 
-        return is_array($rows) ? $rows : [];
+        if (! is_array($rows)) {
+            return [];
+        }
+
+        return array_values(array_filter($rows, static fn ($row) => $row instanceof \stdClass));
     }
 }
