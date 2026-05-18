@@ -1,0 +1,27 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    treatPhpDocTypesAsCertain: false
+    level: 8
+    paths:
+        - src/
+    excludePaths:
+        - vendor/
+    bootstrapFiles:
+        - vendor/autoload.php
+        - tests/phpstan/polski-plugin-constants.php
+        - tests/phpstan/wp-path-constants.php
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+        - tests/phpstan/elementor-phpstan-stubs.php
+        - tests/phpstan/wp-cli-phpstan-stubs.php
+    # Don't fail if a global ignoreErrors pattern no longer matches anything —
+    # the per-file baseline below already captures every legacy error precisely.
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        # Table names use $wpdb->prefix; SQL template is not a PHP literal-string.
+        -
+            message: '~Parameter #1 \$query of method wpdb::prepare\(\) expects literal-string~'
+        -
+            message: '~Parameter #1 \$query of method wpdb::query\(\) expects string, string\|null given~'
