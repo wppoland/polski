@@ -1,0 +1,119 @@
+name: Accessibility
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - 'src/Service/Withdrawal**'
+            - 'src/Service/Guest**'
+            - 'src/Service/Annex**'
+            - 'src/Service/Digital**'
+            - 'src/Service/MyAccount**'
+            - 'src/Admin/Withdrawal**'
+            - 'templates/forms/**'
+            - 'templates/emails/**'
+            - 'assets/css/withdrawal.css'
+            - 'assets/js/withdrawal-form.js'
+            - 'tests/E2E/withdrawal-**'
+            - 'lighthouserc.json'
+            - '.github/workflows/a11y.yml'
+    pull_request:
+        branches: [main]
+    schedule:
+        # Nightly run at 02:00 UTC to catch theme/WP-core regressions.
+        - cron: '0 2 * * *'
+    workflow_dispatch:
+
+concurrency:
+    group: a11y-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    axe-and-lighthouse:
+        name: axe + Lighthouse on /odstapienie/
+        runs-on: ubuntu-latest
+        timeout-minutes: 25
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Install dependencies (npm)
+              run: npm ci
+
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps chromium
+
+            - name: Install axe + Lighthouse CI (devDeps)
+              run: npm install --no-save @axe-core/playwright @lhci/cli
+
+            - name: Start wp-env
+              run: |
+                  npm run env:start
+                  # wp-env exposes the test site on :8888 by default; wait until ready.
+                  timeout 90 bash -c 'until curl -sf http://localhost:8888/wp-login.php > /dev/null; do sleep 2; done'
+
+            - name: Seed minimum fixtures
+              run: |
+                  npx wp-env run cli wp post create --post_type=page \
+                    --post_title="Odstąpienie" --post_status=publish --post_name=odstapienie \
+                    --post_content='[polski_withdrawal_lookup]'
+                  npx wp-env run cli wp option update polski_withdrawal \
+                    '{"lookup_page_id":$(npx wp-env run cli wp post list --post_type=page --name=odstapienie --field=ID),"period_days":14}' \
+                    --format=json || true
+
+            - name: Run axe-core via Playwright
+              run: npm run test:a11y -- --reporter=line
+              continue-on-error: false
+
+            - name: Run Lighthouse CI
+              run: npm run test:lhci
+              continue-on-error: true
+
+            - name: Upload axe + Lighthouse reports
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: a11y-reports-${{ github.run_id }}
+                  path: |
+                      reports/lighthouse/**
+                      playwright-report/**
+                      test-results/**
+                  retention-days: 30
+
+            - name: Stop wp-env
+              if: always()
+              run: npm run env:stop || true
+
+    keyboard-nav:
+        name: Keyboard navigation (Playwright)
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Install dependencies (npm)
+              run: npm ci
+
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps chromium
+
+            - name: Start wp-env
+              run: |
+                  npm run env:start
+                  timeout 90 bash -c 'until curl -sf http://localhost:8888/wp-login.php > /dev/null; do sleep 2; done'
+
+            - name: Run keyboard navigation tests
+              run: npx playwright test withdrawal-guest-flow --project=chromium --reporter=line
+
+            - name: Stop wp-env
+              if: always()
+              run: npm run env:stop || true

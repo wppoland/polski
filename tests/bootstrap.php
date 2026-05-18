@@ -423,12 +423,9 @@ if (! function_exists('sanitize_key')) {
     }
 }
 
-if (! function_exists('current_time')) {
-    function current_time(string $type, bool|int $gmt = 0): string|int
-    {
-        return $type === 'timestamp' ? time() : gmdate('Y-m-d H:i:s');
-    }
-}
+// Intentionally not stubbing current_time() here — WaitlistRepositoryTest defines
+// its own namespaced shim that returns a fixed fixture string. Withdrawal tests
+// don't exercise code paths that hit current_time().
 
 // Intentionally not stubbing get_bloginfo() here — existing tests
 // (LlmsTxtServiceTest) define their own namespaced shim guarded by function_exists().
@@ -441,38 +438,129 @@ if (! function_exists('nl2br')) {
 }
 
 if (! class_exists('wpdb')) {
+    /**
+     * Test stub for the WordPress wpdb class. Combines:
+     *  - a generic "no-op" surface used by the withdrawal tests, which only need
+     *    a type-compatible instance to satisfy reflection-set typed properties,
+     *  - an in-memory row store used by WaitlistRepositoryTest (and any future
+     *    test that wants to record state across prepare/insert/update calls).
+     *
+     * Methods accept either the WordPress contract (string $query) or the
+     * specialised test contract (array $prepared = [$sql, $args]). They detect
+     * which form was passed and dispatch accordingly so both patterns coexist.
+     */
     class wpdb
     {
         public string $prefix = 'wp_';
+        public int $insert_id = 0;
 
-        /** @param mixed ...$args */
-        public function get_results(string $sql, mixed $output = 0): array
+        /** @var array<int, array<string, mixed>> */
+        public array $rows = [];
+
+        /**
+         * @return string|array{0: string, 1: array<int, mixed>}
+         */
+        public function prepare(string|array $query, mixed ...$args): string|array
         {
-            return [];
+            // Some tests pass an array tuple; mirror it back as-is.
+            if (is_array($query)) {
+                return $query;
+            }
+            // WP-style: return a packed tuple so consumers using the test
+            // wpdb can introspect (sql, args). The first arg may itself be
+            // an array; flatten one level.
+            if (count($args) === 1 && is_array($args[0])) {
+                return [$query, $args[0]];
+            }
+            return [$query, $args];
         }
-        public function get_row(string $sql, mixed $output = 0): ?object
+
+        public function get_var(string|array $prepared, int $col = 0, int $row = 0): mixed
         {
             return null;
         }
-        public function get_var(string $sql, int $col = 0, int $row = 0): mixed
-        {
-            return null;
-        }
-        public function get_col(string $sql, int $col = 0): array
+
+        /**
+         * @return list<\stdClass>
+         */
+        public function get_col(string|array $prepared, int $col = 0): array
         {
             return [];
         }
-        public function insert(string $table, array $data, mixed $format = null): int|false
+
+        /**
+         * @return ?\stdClass
+         */
+        public function get_row(string|array $prepared, mixed $output = 0): ?\stdClass
         {
-            return 1;
+            if (! is_array($prepared)) {
+                return null;
+            }
+            [, $args] = $prepared;
+            if (! is_array($args) || count($args) < 3) {
+                return null;
+            }
+            $productId = (int) ($args[1] ?? 0);
+            $email = (string) ($args[2] ?? '');
+
+            foreach ($this->rows as $row) {
+                if ((int) ($row['product_id'] ?? 0) === $productId && (string) ($row['email'] ?? '') === $email) {
+                    return (object) $row;
+                }
+            }
+            return null;
         }
-        public function update(string $table, array $data, array $where, mixed $format = null, mixed $whereFormat = null): int|false
+
+        /**
+         * @return list<\stdClass>
+         */
+        public function get_results(string|array $prepared, mixed $output = 0): array
         {
-            return 1;
+            if (! is_array($prepared)) {
+                return [];
+            }
+            [, $args] = $prepared;
+            if (! is_array($args)) {
+                return [];
+            }
+            $productId = (int) ($args[1] ?? 0);
+            $results = [];
+            foreach ($this->rows as $row) {
+                if ((int) ($row['product_id'] ?? 0) === $productId && (int) ($row['notified'] ?? 0) === 0) {
+                    $results[] = (object) $row;
+                }
+            }
+            return $results;
         }
-        public function prepare(string $query, mixed ...$args): string
+
+        /**
+         * @param array<string, mixed> $data
+         * @param array<int, string>|null $format
+         */
+        public function insert(string $table, array $data, ?array $format = null): bool
         {
-            return $query;
+            $this->insert_id++;
+            $data['id'] = $this->insert_id;
+            $this->rows[] = $data;
+            return true;
+        }
+
+        /**
+         * @param array<string, mixed> $data
+         * @param array<string, mixed> $where
+         * @param array<int, string>|null $format
+         * @param array<int, string>|null $whereFormat
+         */
+        public function update(string $table, array $data, array $where, ?array $format = null, ?array $whereFormat = null): bool
+        {
+            foreach ($this->rows as &$row) {
+                if ((int) ($row['id'] ?? 0) === (int) ($where['id'] ?? 0)) {
+                    $row = array_merge($row, $data);
+                    return true;
+                }
+            }
+            unset($row);
+            return false;
         }
     }
 }
