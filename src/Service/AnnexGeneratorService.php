@@ -201,9 +201,19 @@ final class AnnexGeneratorService implements HasHooks
         /**
          * Filter merchant data used by the Annex generator.
          *
-         * @param array<string, string> $data
+         * @param array{name: string, address: string, nip: string, regon: string, email: string, phone: string} $data
          */
-        return (array) apply_filters('polski/annex/merchant_data', $data);
+        $filtered = apply_filters('polski/annex/merchant_data', $data);
+
+        // Defend against bad filter implementations: ensure each expected key is a string.
+        return [
+            'name' => isset($filtered['name']) ? (string) $filtered['name'] : '',
+            'address' => isset($filtered['address']) ? (string) $filtered['address'] : '',
+            'nip' => isset($filtered['nip']) ? (string) $filtered['nip'] : '',
+            'regon' => isset($filtered['regon']) ? (string) $filtered['regon'] : '',
+            'email' => isset($filtered['email']) ? (string) $filtered['email'] : '',
+            'phone' => isset($filtered['phone']) ? (string) $filtered['phone'] : '',
+        ];
     }
 
     private function periodDays(): int
