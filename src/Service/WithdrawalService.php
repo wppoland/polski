@@ -258,6 +258,11 @@ final class WithdrawalService implements Bootable, HasHooks
         $id = $this->repository->create($orderId, $customerId, $reason, $legacyItems);
 
         if ($id <= 0) {
+            do_action(
+                'polski/withdrawal/persist_failed',
+                $orderId,
+                ['flow' => 'logged_in', 'customer_id' => $customerId],
+            );
             return null;
         }
 
