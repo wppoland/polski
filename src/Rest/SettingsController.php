@@ -164,6 +164,56 @@ final class SettingsController extends RestController implements HasHooks
         $modules['oss_observer'] = (bool) ($params['oss_observer_enabled'] ?? false);
         update_option('polski_modules', $modules);
 
+        // Save withdrawal-flow specific settings (introduced in 1.16.0). When the
+        // wizard runs on an existing install we merge with the current option so
+        // we don't clobber per-store tweaks made directly in
+        // Polski > Withdrawal settings.
+        $withdrawal = get_option('polski_withdrawal', []);
+        if (! is_array($withdrawal)) {
+            $withdrawal = [];
+        }
+
+        $withdrawal['period_days'] = isset($params['withdrawal_period_days'])
+            ? max(1, (int) $params['withdrawal_period_days'])
+            : ($withdrawal['period_days'] ?? 14);
+
+        if (isset($params['withdrawal_trigger_statuses']) && is_array($params['withdrawal_trigger_statuses'])) {
+            $triggers = [];
+            foreach ($params['withdrawal_trigger_statuses'] as $status) {
+                $key = sanitize_key((string) $status);
+                if ($key !== '') {
+                    $triggers[] = str_starts_with($key, 'wc-') ? substr($key, 3) : $key;
+                }
+            }
+            $withdrawal['trigger_statuses'] = $triggers !== [] ? $triggers : ['completed'];
+        }
+
+        if (isset($params['withdrawal_digital_consent_mode'])) {
+            $mode = sanitize_key((string) $params['withdrawal_digital_consent_mode']);
+            if (in_array($mode, ['required', 'optional', 'hidden'], true)) {
+                $withdrawal['digital_consent_mode'] = $mode;
+            }
+        }
+
+        // Auto-create the lookup page if the wizard asked for it (and it's not
+        // already configured to point somewhere else).
+        if (! empty($params['withdrawal_create_lookup_page']) && empty($withdrawal['lookup_page_id'])) {
+            $lookupPageId = wp_insert_post([
+                'post_title' => __('Odstąpienie od umowy', 'polski'),
+                'post_content' => '[polski_withdrawal_lookup]',
+                'post_status' => 'publish',
+                'post_type' => 'page',
+                'post_name' => 'odstapienie',
+                'post_author' => get_current_user_id() ?: 1,
+            ]);
+
+            if (is_int($lookupPageId) && $lookupPageId > 0) {
+                $withdrawal['lookup_page_id'] = $lookupPageId;
+            }
+        }
+
+        update_option('polski_withdrawal', $withdrawal);
+
         // Generate legal pages if requested.
         if (! empty($params['generate_legal_pages'])) {
             $legalService = \Polski\Plugin::instance()->container()->get(
