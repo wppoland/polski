@@ -261,6 +261,9 @@ return static function (Container $c): void {
         $c->get(WithdrawalRepository::class),
         $c->get(WithdrawalService::class),
     ));
+    $c->singleton(\Polski\Service\WithdrawalQueryHelper::class, static fn () => new \Polski\Service\WithdrawalQueryHelper(
+        $c->get(WithdrawalRepository::class),
+    ));
     $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
         $c->get(WithdrawalRepository::class),
     ));
