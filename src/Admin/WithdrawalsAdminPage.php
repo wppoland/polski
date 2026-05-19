@@ -35,14 +35,48 @@ final class WithdrawalsAdminPage implements HasHooks
         add_action('admin_menu', [$this, 'registerMenu'], 65);
         add_action('admin_post_polski_register_manual_withdrawal', [$this, 'handleManualSubmission']);
         add_action('admin_post_polski_withdrawal_bulk', [$this, 'handleBulkAction']);
+
+        // Invalidate the pending-count cache whenever a withdrawal changes state.
+        $events = [
+            'polski/withdrawal/requested',
+            'polski/withdrawal/guest_requested',
+            'polski/withdrawal/manual_registered',
+            'polski/withdrawal/confirmed',
+            'polski/withdrawal/completed',
+            'polski/withdrawal/rejected',
+        ];
+        foreach ($events as $event) {
+            add_action($event, [$this, 'invalidatePendingCount']);
+        }
+    }
+
+    public function invalidatePendingCount(): void
+    {
+        delete_transient('polski_withdrawal_pending_count');
     }
 
     public function registerMenu(): void
     {
+        $pending = $this->pendingCount();
+        $label = __('Withdrawals', 'polski');
+
+        if ($pending > 0) {
+            $label .= sprintf(
+                ' <span class="awaiting-mod"><span class="pending-count" aria-hidden="true">%d</span>'
+                . '<span class="screen-reader-text"> %s</span></span>',
+                $pending,
+                sprintf(
+                    /* translators: %d = pending withdrawals count */
+                    esc_html(_n('%d pending withdrawal', '%d pending withdrawals', $pending, 'polski')),
+                    $pending,
+                ),
+            );
+        }
+
         add_submenu_page(
             'polski',
             __('Withdrawals', 'polski'),
-            __('Withdrawals', 'polski'),
+            $label,
             self::CAPABILITY,
             self::PAGE_SLUG,
             [$this, 'renderListPage'],
@@ -56,6 +90,26 @@ final class WithdrawalsAdminPage implements HasHooks
             self::PAGE_SLUG . '-new',
             [$this, 'renderManualPage'],
         );
+    }
+
+    /**
+     * Cache-aware count of pending withdrawal requests (status: requested or
+     * confirmed). Refreshed automatically whenever a withdrawal transitions
+     * state — see invalidatePendingCount() hooked to the lifecycle actions.
+     */
+    private function pendingCount(): int
+    {
+        $cached = get_transient('polski_withdrawal_pending_count');
+        if ($cached !== false) {
+            return (int) $cached;
+        }
+
+        $count = $this->repository->countByStatus(WithdrawalStatus::Requested)
+            + $this->repository->countByStatus(WithdrawalStatus::Confirmed);
+
+        set_transient('polski_withdrawal_pending_count', $count, 5 * MINUTE_IN_SECONDS);
+
+        return $count;
     }
 
     public function renderListPage(): void
