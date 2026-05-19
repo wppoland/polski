@@ -155,6 +155,7 @@ return [
     \Polski\Service\WithdrawalBlocksService::class,
     \Polski\Service\WithdrawalAssetsService::class,
     \Polski\Service\WithdrawalErrorTelemetry::class,
+    \Polski\Rest\GuestWithdrawalController::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
