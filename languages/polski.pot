@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-17T18:17:02+00:00\n"
+"POT-Creation-Date: 2026-05-19T09:40:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -114,7 +114,7 @@ msgstr ""
 #: src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152
 #: src/Admin/PageCompliancePage.php:201
-#: src/Admin/WithdrawalsAdminPage.php:94
+#: src/Admin/WithdrawalsAdminPage.php:185
 #: src/Service/DSAService.php:175
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
@@ -122,7 +122,7 @@ msgstr ""
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
 #: src/Service/StockExportService.php:349
-#: src/Service/WithdrawalService.php:840
+#: src/Service/WithdrawalService.php:845
 msgid "Status"
 msgstr ""
 
@@ -353,7 +353,7 @@ msgid "Odstąp od umowy"
 msgstr ""
 
 #: config/defaults.php:146
-#: templates/forms/withdrawal-form.php:37
+#: templates/forms/withdrawal-form.php:42
 msgid "Wniosek o odstąpienie od umowy"
 msgstr ""
 
@@ -371,12 +371,16 @@ msgstr ""
 
 #: config/defaults.php:150
 #: config/defaults.php:255
+#: templates/forms/withdrawal-guest.php:61
+#: templates/forms/withdrawal-guest.php:78
 msgid "Produkt"
 msgstr ""
 
 #: config/defaults.php:151
 #: config/defaults.php:225
 #: config/defaults.php:258
+#: templates/forms/withdrawal-guest.php:62
+#: templates/forms/withdrawal-guest.php:84
 msgid "Ilość"
 msgstr ""
 
@@ -390,7 +394,8 @@ msgid "(Ten produkt jest wyłączony z prawa odstąpienia)"
 msgstr ""
 
 #: config/defaults.php:154
-#: templates/forms/withdrawal-form.php:87
+#: templates/forms/withdrawal-form.php:141
+#: templates/forms/withdrawal-guest.php:120
 msgid "Powód odstąpienia (opcjonalnie)"
 msgstr ""
 
@@ -1237,6 +1242,8 @@ msgid "Składnik odżywczy"
 msgstr ""
 
 #: config/defaults.php:693
+#: templates/forms/withdrawal-guest.php:63
+#: templates/forms/withdrawal-guest.php:87
 msgid "Wartość"
 msgstr ""
 
@@ -1404,6 +1411,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:132
 #: src/Admin/AdminPage.php:176
+#: src/Admin/WithdrawalOrderMetaBox.php:137
 msgid "Brak uprawnień."
 msgstr ""
 
@@ -1412,6 +1420,8 @@ msgstr ""
 #: src/Admin/ProductMetaBox.php:45
 #: src/Admin/ProductMetaBox.php:406
 #: src/Compatibility/ElementorCompat.php:35
+#: src/Service/WithdrawalSiteHealthService.php:177
+#: src/Service/WithdrawalSiteHealthService.php:191
 msgid "Polski"
 msgstr ""
 
@@ -2134,7 +2144,7 @@ msgid "Plugin"
 msgstr ""
 
 #: src/Admin/DeactivationHandler.php:152
-#: src/Admin/WithdrawalsAdminPage.php:95
+#: src/Admin/WithdrawalsAdminPage.php:186
 #: src/Service/DSAService.php:174
 msgid "Reason"
 msgstr ""
@@ -2625,9 +2635,8 @@ msgid "Order action label"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:276
-#: src/Service/WithdrawalService.php:588
-#: src/Service/WithdrawalService.php:598
-#: templates/forms/withdrawal-lookup.php:16
+#: src/Service/WithdrawalService.php:593
+#: src/Service/WithdrawalService.php:603
 msgid "Withdraw from contract"
 msgstr ""
 
@@ -2638,7 +2647,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:277
 #: src/Admin/ModulesPage.php:292
-#: src/Service/WithdrawalService.php:839
+#: src/Service/WithdrawalService.php:844
 msgid "Withdrawal request"
 msgstr ""
 
@@ -2715,8 +2724,7 @@ msgid "Reason field label"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:285
-#: src/Service/WithdrawalService.php:857
-#: templates/forms/withdrawal-guest.php:38
+#: src/Service/WithdrawalService.php:862
 msgid "Reason for withdrawal (optional)"
 msgstr ""
 
@@ -2726,7 +2734,6 @@ msgid "Submit button text"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:286
-#: templates/forms/withdrawal-guest.php:44
 msgid "Submit withdrawal request"
 msgstr ""
 
@@ -2752,8 +2759,8 @@ msgid "Permission error message"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:289
-#: src/Service/WithdrawalService.php:637
-#: src/Service/WithdrawalService.php:769
+#: src/Service/WithdrawalService.php:642
+#: src/Service/WithdrawalService.php:774
 msgid "You do not have permission to withdraw from this order."
 msgstr ""
 
@@ -2773,8 +2780,8 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:291
 #: src/Rest/WithdrawalController.php:145
-#: src/Service/WithdrawalService.php:679
-#: src/Service/WithdrawalService.php:775
+#: src/Service/WithdrawalService.php:684
+#: src/Service/WithdrawalService.php:780
 msgid "This order is not eligible for withdrawal."
 msgstr ""
 
@@ -2792,7 +2799,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:294
 #: src/Enum/WithdrawalStatus.php:17
-#: src/Service/WithdrawalService.php:842
+#: src/Service/WithdrawalService.php:847
 msgid "Submitted"
 msgstr ""
 
@@ -4498,6 +4505,7 @@ msgstr ""
 #: src/Admin/ModulesPage.php:886
 #: src/Admin/ModulesPage.php:902
 #: src/Admin/ModulesPage.php:914
+#: src/AIFeed/LlmsTxtService.php:109
 msgid "Consumer rights"
 msgstr ""
 
@@ -4837,7 +4845,7 @@ msgstr ""
 #: src/Admin/ModulesPage.php:1173
 #: src/Admin/ModulesPage.php:1187
 #: src/Admin/ModulesPage.php:1230
-#: src/AIFeed/LlmsTxtService.php:161
+#: src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr ""
 
@@ -5156,7 +5164,7 @@ msgid "Advanced & Tools"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1846
-#: src/Admin/WithdrawalsAdminPage.php:170
+#: src/Admin/WithdrawalsAdminPage.php:398
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
@@ -5700,40 +5708,112 @@ msgstr ""
 msgid "Polski Pro for WooCommerce"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:40
-#: src/Admin/WithdrawalsAdminPage.php:41
-#: src/Admin/WithdrawalsAdminPage.php:68
+#: src/Admin/WithdrawalOrderMetaBox.php:43
+msgid "Polski — odstąpienie"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:69
+msgid "Brak oświadczenia o odstąpieniu dla tego zamówienia."
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:73
+msgid "Zarejestruj ręcznie"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:107
+msgid "Potwierdź"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:114
+msgid "Oznacz jako rozliczone"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:121
+msgid "Odrzucić to oświadczenie?"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:122
+msgid "Odrzuć"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:128
+msgid "Otwórz listę"
+msgstr ""
+
+#: src/Admin/WithdrawalOrderMetaBox.php:148
+msgid "Odrzucone z ekranu zamówienia."
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:61
+#: src/Admin/WithdrawalsAdminPage.php:78
+#: src/Admin/WithdrawalsAdminPage.php:127
 msgid "Withdrawals"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:49
-#: src/Admin/WithdrawalsAdminPage.php:50
-#: src/Admin/WithdrawalsAdminPage.php:180
+#. translators: %d = pending withdrawals count
+#: src/Admin/WithdrawalsAdminPage.php:70
+#, php-format
+msgid "%d pending withdrawal"
+msgid_plural "%d pending withdrawals"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/WithdrawalsAdminPage.php:87
+#: src/Admin/WithdrawalsAdminPage.php:88
+#: src/Admin/WithdrawalsAdminPage.php:408
 msgid "Register withdrawal"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:70
+#: src/Admin/WithdrawalsAdminPage.php:129
 msgid "Register manually"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:76
+#: src/Admin/WithdrawalsAdminPage.php:141
 msgid "Status:"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:78
+#: src/Admin/WithdrawalsAdminPage.php:143
 msgid "All"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:85
+#: src/Admin/WithdrawalsAdminPage.php:150
 msgid "Filter"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:91
+#: src/Admin/WithdrawalsAdminPage.php:160
+msgid "Select bulk action"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:163
+msgid "Bulk actions"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:164
+msgid "Mark as confirmed"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:165
+msgid "Mark as rejected"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:166
+msgid "Export selection to CSV"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:168
+msgid "Apply"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:177
+msgid "Select all"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:182
 #: src/Service/StockExportService.php:344
 msgid "ID"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:92
+#: src/Admin/WithdrawalsAdminPage.php:183
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
 #: templates/emails/plain/withdrawal-confirmation.php:47
@@ -5741,80 +5821,119 @@ msgstr ""
 msgid "Order"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:93
-#: src/Admin/WithdrawalsAdminPage.php:163
+#: src/Admin/WithdrawalsAdminPage.php:184
+#: src/Admin/WithdrawalsAdminPage.php:391
 msgid "Channel"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:96
+#: src/Admin/WithdrawalsAdminPage.php:187
 #: templates/emails/plain/withdrawal-confirmation.php:46
 #: templates/emails/withdrawal-confirmation.php:57
 msgid "Filed at"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:101
+#: src/Admin/WithdrawalsAdminPage.php:192
 msgid "No withdrawal requests yet."
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:142
+#. translators: %d: declaration id
+#: src/Admin/WithdrawalsAdminPage.php:201
+#, php-format
+msgid "Select withdrawal #%d"
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:241
+#: src/Admin/WithdrawalsAdminPage.php:417
+msgid "You are not allowed to perform this action."
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:252
+msgid "Wybierz akcję i co najmniej jedną pozycję."
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:261
+msgid "Nieznana akcja zbiorcza."
+msgstr ""
+
+#. translators: 1: succeeded, 2: total selected
+#: src/Admin/WithdrawalsAdminPage.php:285
+#, php-format
+msgid "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
+msgid_plural "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/WithdrawalsAdminPage.php:299
+msgid "Odrzucone akcją zbiorczą."
+msgstr ""
+
+#. translators: 1: succeeded, 2: total selected
+#: src/Admin/WithdrawalsAdminPage.php:307
+#, php-format
+msgid "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
+msgid_plural "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/WithdrawalsAdminPage.php:325
+msgid "Could not open output stream."
+msgstr ""
+
+#: src/Admin/WithdrawalsAdminPage.php:370
 msgid "Register withdrawal manually"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:144
+#: src/Admin/WithdrawalsAdminPage.php:372
 msgid "Use this form to record a withdrawal received outside the shop (phone, e-mail, letter, in-store). The order will be moved to the withdrawal status just like an online request."
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:159
+#: src/Admin/WithdrawalsAdminPage.php:387
 msgid "Order number or ID"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:166
+#: src/Admin/WithdrawalsAdminPage.php:394
 #: src/Service/CustomCheckoutFieldsService.php:501
 msgid "Phone"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:167
+#: src/Admin/WithdrawalsAdminPage.php:395
 msgid "E-mail"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:168
+#: src/Admin/WithdrawalsAdminPage.php:396
 msgid "Letter / post"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:169
+#: src/Admin/WithdrawalsAdminPage.php:397
 msgid "In-store / in-person"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:175
+#: src/Admin/WithdrawalsAdminPage.php:403
 msgid "Reason / notes"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:189
-msgid "You are not allowed to perform this action."
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:211
-#: src/Service/WithdrawalService.php:763
+#: src/Admin/WithdrawalsAdminPage.php:439
+#: src/Service/WithdrawalService.php:768
 msgid "Order not found."
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:227
+#: src/Admin/WithdrawalsAdminPage.php:455
 msgid "Could not save the withdrawal request."
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:234
-#: src/Service/WithdrawalService.php:324
-#: src/Service/WithdrawalService.php:407
+#: src/Admin/WithdrawalsAdminPage.php:462
+#: src/Service/WithdrawalService.php:329
+#: src/Service/WithdrawalService.php:412
 msgid "system"
 msgstr ""
 
 #. translators: 1: declaration id, 2: channel, 3: actor
-#: src/Admin/WithdrawalsAdminPage.php:239
+#: src/Admin/WithdrawalsAdminPage.php:467
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d registered manually (channel: %2$s) by %3$s."
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:255
+#: src/Admin/WithdrawalsAdminPage.php:483
 msgid "Withdrawal request registered."
 msgstr ""
 
@@ -5948,19 +6067,43 @@ msgstr ""
 msgid "Product categories"
 msgstr ""
 
-#: src/AIFeed/LlmsTxtService.php:218
+#: src/AIFeed/LlmsTxtService.php:134
+msgid "Withdrawal lookup (file an Art. 11a declaration)"
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:136
+msgid "Public form for consumers (including guests) to start the 14-day withdrawal process. Authenticates via order number + billing email + one-time magic-link."
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:143
+msgid "Abilities catalog (machine-readable actions)"
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:145
+msgid "JSON list of every action this site exposes via the WP Abilities API. Use it to discover withdrawal, refund, audit, reporting and compliance operations."
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:150
+msgid "Withdrawal documentation"
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:152
+msgid "Architecture, settings, shortcodes, blocks, abilities and REST endpoints for the withdrawal module."
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:266
 msgid "Terms and conditions"
 msgstr ""
 
-#: src/AIFeed/LlmsTxtService.php:219
+#: src/AIFeed/LlmsTxtService.php:267
 msgid "Privacy policy"
 msgstr ""
 
-#: src/AIFeed/LlmsTxtService.php:220
+#: src/AIFeed/LlmsTxtService.php:268
 msgid "Returns and withdrawal policy"
 msgstr ""
 
-#: src/AIFeed/LlmsTxtService.php:221
+#: src/AIFeed/LlmsTxtService.php:269
 msgid "Complaints procedure"
 msgstr ""
 
@@ -6936,6 +7079,14 @@ msgstr ""
 msgid "Built-in checkboxes cannot be deleted. You can only disable them."
 msgstr ""
 
+#: src/Rest/GuestWithdrawalController.php:75
+msgid "Brakuje numeru zamówienia lub adres e-mail jest nieprawidłowy."
+msgstr ""
+
+#: src/Rest/GuestWithdrawalController.php:86
+msgid "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą oraz folder Spam."
+msgstr ""
+
 #: src/Rest/PageComplianceController.php:42
 msgid "Legal page type (privacy, terms)."
 msgstr ""
@@ -6958,7 +7109,7 @@ msgid "Please log in to continue."
 msgstr ""
 
 #: src/Rest/SettingsController.php:105
-#: src/Rest/SettingsController.php:199
+#: src/Rest/SettingsController.php:249
 msgid "Unknown settings group."
 msgstr ""
 
@@ -6966,7 +7117,11 @@ msgstr ""
 msgid "I order with an obligation to pay"
 msgstr ""
 
-#: src/Rest/SettingsController.php:188
+#: src/Rest/SettingsController.php:202
+msgid "Odstąpienie od umowy"
+msgstr ""
+
+#: src/Rest/SettingsController.php:238
 msgid "Wizard completed."
 msgstr ""
 
@@ -7291,7 +7446,8 @@ msgstr ""
 msgid "(*) Niepotrzebne skreślić."
 msgstr ""
 
-#: src/Service/AnnexGeneratorService.php:135
+#. translators: %s: lookup page URL where the consumer can file an online withdrawal declaration
+#: src/Service/AnnexGeneratorService.php:133
 #, php-format
 msgid "Możesz także złożyć oświadczenie online: <a href=\"%s\">formularz odstąpienia</a>."
 msgstr ""
@@ -7999,45 +8155,68 @@ msgid "Security check failed. Please refresh the page and try again."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:70
-msgid "Please provide a valid order number and email address."
+msgid "Wpisz numer zamówienia (znajdziesz go w e-mailu potwierdzającym) i adres e-mail użyty przy zakupie."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:75
-msgid "Too many attempts. Please try again later."
+#: src/Service/GuestWithdrawalService.php:74
+msgid "Brakuje numeru zamówienia. Sprawdź e-mail potwierdzający zakup i wpisz numer z linii „Twoje zamówienie #…\"."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:80
-msgid "If this order exists, we have sent a confirmation link to the email on file."
+#: src/Service/GuestWithdrawalService.php:78
+msgid "Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie ty@example.com — ten sam, który podałeś przy zakupie."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:140
+#: src/Service/GuestWithdrawalService.php:83
+msgid "Zbyt wiele prób w krótkim czasie. Spróbuj ponownie za 15 minut. Jeśli nie otrzymałeś wcześniej wysłanego linku, sprawdź folder Spam."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:88
+msgid "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) — wiadomość powinna dotrzeć w ciągu kilku minut."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:148
 msgid "This link is no longer valid."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:153
-msgid "Security check failed. Please reload the page."
+#: src/Service/GuestWithdrawalService.php:161
+msgid "Weryfikacja bezpieczeństwa nie powiodła się. Załaduj stronę ponownie i spróbuj jeszcze raz."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:168
-msgid "Failed to submit your withdrawal request."
+#: src/Service/GuestWithdrawalService.php:182
+msgid "Nie udało się zapisać oświadczenia. Spróbuj ponownie za chwilę albo skontaktuj się ze sklepem."
 msgstr ""
 
-#: src/Service/GuestWithdrawalService.php:176
-msgid "Your withdrawal request has been recorded. A confirmation message has been sent to your email address."
+#: src/Service/GuestWithdrawalService.php:191
+msgid "Oświadczenie złożone"
+msgstr ""
+
+#. translators: %s = declaration id (POL-WD-XXXXXX)
+#: src/Service/GuestWithdrawalService.php:194
+#, php-format
+msgid "Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie — sprawdź skrzynkę odbiorczą oraz folder Spam."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:197
+msgid "Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem."
 msgstr ""
 
 #. translators: %s = order number
-#. translators: %s: order number
-#: src/Service/GuestWithdrawalService.php:288
-#: templates/account/withdrawal-confirm.php:26
+#: src/Service/GuestWithdrawalService.php:364
 #, php-format
-msgid "Withdrawal request for order #%s"
+msgid "Link do odstąpienia od umowy — zamówienie #%s"
 msgstr ""
 
-#. translators: 1: order number, 2: magic link, 3: TTL minutes
-#: src/Service/GuestWithdrawalService.php:294
+#. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
+#: src/Service/GuestWithdrawalService.php:370
 #, php-format
-msgid "We received a request to withdraw from order #%1$s. To continue, click the link below within %3$d minutes:%2$s%2$s%2$sIf you did not request this, you can safely ignore this message."
+msgid ""
+"Otrzymaliśmy prośbę o złożenie oświadczenia o odstąpieniu od umowy dla zamówienia #%1$s.\n"
+"\n"
+"Aby kontynuować, kliknij poniższy link w ciągu %2$d minut:\n"
+"\n"
+"%3$s\n"
+"\n"
+"Link jest jednorazowy. Jeśli to nie Ty wysłałeś prośbę, możesz zignorować tę wiadomość."
 msgstr ""
 
 #: src/Service/KSeFReadyService.php:76
@@ -8126,6 +8305,10 @@ msgid "Numer"
 msgstr ""
 
 #: src/Service/MyAccountWithdrawalsService.php:98
+#: templates/emails/plain/withdrawal-completed.php:40
+#: templates/emails/plain/withdrawal-rejected.php:42
+#: templates/emails/withdrawal-completed.php:69
+#: templates/emails/withdrawal-rejected.php:67
 msgid "Zamówienie"
 msgstr ""
 
@@ -8154,7 +8337,6 @@ msgid "Order ID"
 msgstr ""
 
 #: src/Service/OrderExportService.php:49
-#: templates/forms/withdrawal-lookup.php:27
 msgid "Order number"
 msgstr ""
 
@@ -9378,6 +9560,30 @@ msgstr ""
 msgid "Please login to use the wishlist."
 msgstr ""
 
+#: src/Service/WithdrawalBlocksService.php:33
+msgid "Polski — withdrawal lookup"
+msgstr ""
+
+#: src/Service/WithdrawalBlocksService.php:34
+msgid "Email + order number lookup form for guests to file a withdrawal."
+msgstr ""
+
+#: src/Service/WithdrawalBlocksService.php:42
+msgid "Polski — Annex I(A) information"
+msgstr ""
+
+#: src/Service/WithdrawalBlocksService.php:43
+msgid "Generated information about the consumer right of withdrawal (Annex I(A))."
+msgstr ""
+
+#: src/Service/WithdrawalBlocksService.php:51
+msgid "Polski — Annex I(B) form template"
+msgstr ""
+
+#: src/Service/WithdrawalBlocksService.php:52
+msgid "The model withdrawal form template (Annex I(B)) pre-filled with merchant data."
+msgstr ""
+
 #: src/Service/WithdrawalExemptionService.php:145
 #: src/Service/WithdrawalExemptionService.php:179
 msgid "Wyklucz produkty z tej kategorii z prawa odstąpienia"
@@ -9414,95 +9620,172 @@ msgstr ""
 msgid "Używane tylko, jeśli wybrano „Inne\"."
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:119
+#: src/Service/WithdrawalOrderStatusService.php:117
 msgid "Mark as withdrawal requested"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:120
+#: src/Service/WithdrawalOrderStatusService.php:118
 msgid "Mark as partial withdrawal"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:121
+#: src/Service/WithdrawalOrderStatusService.php:119
 msgid "Mark as withdrawal completed"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:168
+#: src/Service/WithdrawalOrderStatusService.php:166
 msgid "Withdrawal requested"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:173
+#: src/Service/WithdrawalOrderStatusService.php:171
 msgid "Withdrawal — partial"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:178
+#: src/Service/WithdrawalOrderStatusService.php:176
 msgid "Withdrawal completed"
 msgstr ""
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:290
+#: src/Service/WithdrawalService.php:295
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed."
 msgstr ""
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:329
+#: src/Service/WithdrawalService.php:334
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d confirmed by %2$s."
 msgstr ""
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:379
+#: src/Service/WithdrawalService.php:384
 #, php-format
 msgid "[Polski] Withdrawal request #%d completed."
 msgstr ""
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:411
+#: src/Service/WithdrawalService.php:416
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
 msgstr ""
 
-#. translators: %s: rejection reason
-#. translators: %s: customer reason
-#: src/Service/WithdrawalService.php:419
-#: src/Service/WithdrawalService.php:474
+#. translators: %s: free-text reason (customer-supplied for filing, operator-supplied for rejection)
+#: src/Service/WithdrawalService.php:424
+#: src/Service/WithdrawalService.php:479
 #, php-format
 msgid "Reason: %s"
 msgstr ""
 
 #. translators: %d: declaration id
-#: src/Service/WithdrawalService.php:454
+#: src/Service/WithdrawalService.php:459
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed by customer."
 msgstr ""
 
-#: src/Service/WithdrawalService.php:468
+#: src/Service/WithdrawalService.php:473
 msgid "Items:"
 msgstr ""
 
-#: src/Service/WithdrawalService.php:624
-#: src/Service/WithdrawalService.php:658
+#: src/Service/WithdrawalService.php:629
+#: src/Service/WithdrawalService.php:663
 msgid "Oops, something went wrong on our side. Please try again!"
 msgstr ""
 
-#: src/Service/WithdrawalService.php:631
+#: src/Service/WithdrawalService.php:636
 msgid "Unfortunately, we could not find such an order."
 msgstr ""
 
-#: src/Service/WithdrawalService.php:674
+#: src/Service/WithdrawalService.php:679
 msgid "Your return request has been accepted. We will send you a confirmation email shortly!"
 msgstr ""
 
-#: src/Service/WithdrawalService.php:755
+#: src/Service/WithdrawalService.php:760
 msgid "Invalid security token. Please try again."
 msgstr ""
 
-#: src/Service/WithdrawalService.php:796
+#: src/Service/WithdrawalService.php:801
 msgid "Your withdrawal request has been accepted."
 msgstr ""
 
-#: src/Service/WithdrawalService.php:800
+#: src/Service/WithdrawalService.php:805
 msgid "Failed to submit the withdrawal request."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:41
+msgid "Withdrawal: guest lookup page"
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:45
+msgid "Withdrawal: trigger statuses"
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:49
+msgid "Withdrawal: Annex locale"
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:68
+msgid "Guest withdrawal lookup page configured."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:69
+msgid "Guests can file an Art. 11a withdrawal declaration without logging in. Required from 19 June 2026 by Directive 2023/2673."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:77
+msgid "No public withdrawal lookup page configured."
+msgstr ""
+
+#. translators: %s = settings page URL
+#: src/Service/WithdrawalSiteHealthService.php:80
+#, php-format
+msgid "Art. 11a of Directive 2023/2673 (in force from 19 June 2026) requires that every distance-selling shop provides a working withdrawal feature inside the shop, including for guests. Open <a href=\"%s\">Polski › Withdrawal settings</a> and pick a page containing the [polski_withdrawal_lookup] shortcode (or run the setup wizard's \"Publish /odstapienie/ on Finish\" step)."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:98
+msgid "Trigger statuses configured."
+msgstr ""
+
+#. translators: %s = comma-separated status slugs
+#: src/Service/WithdrawalSiteHealthService.php:101
+#, php-format
+msgid "The 14-day withdrawal clock starts when an order enters: %s."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:111
+msgid "No trigger statuses configured for the withdrawal clock."
+msgstr ""
+
+#. translators: %s = settings page URL
+#: src/Service/WithdrawalSiteHealthService.php:114
+#, php-format
+msgid "Without a trigger status, the 14-day withdrawal countdown never starts and no order is eligible. Open <a href=\"%s\">Polski › Withdrawal settings</a> and tick at least one status (commonly \"Completed\" or \"Delivered\")."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:132
+msgid "Annex I(B) locale explicitly set."
+msgstr ""
+
+#. translators: %s = locale slug
+#: src/Service/WithdrawalSiteHealthService.php:135
+#, php-format
+msgid "Annex I(B) is generated in: %s."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:153
+msgid "Annex I(B) auto-locale matches site language."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:154
+msgid "Annex I(B) generator auto-detects the site locale. No action needed."
+msgstr ""
+
+#: src/Service/WithdrawalSiteHealthService.php:160
+msgid "Annex I(B) auto-locale may fall back to EN."
+msgstr ""
+
+#. translators: %s = site locale
+#: src/Service/WithdrawalSiteHealthService.php:163
+#, php-format
+msgid "Site locale is \"%s\" but no matching Annex I(B) translation ships with the Pro plugin. Either pick an explicit locale in Polski › Withdrawal settings (PL, DE, AT, FR, NL, IT, ES) or accept the generic EN fallback."
 msgstr ""
 
 #: src/Shortcode/ShortcodeManager.php:143
@@ -9520,6 +9803,12 @@ msgstr ""
 
 #: src/Shortcode/ShortcodeManager.php:346
 msgid "Dostępne metody płatności"
+msgstr ""
+
+#. translators: %s: order number
+#: templates/account/withdrawal-confirm.php:26
+#, php-format
+msgid "Withdrawal request for order #%s"
 msgstr ""
 
 #: templates/account/withdrawal-confirm.php:38
@@ -9543,6 +9832,42 @@ msgstr ""
 
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
+msgstr ""
+
+#. translators: %s = customer first name
+#: templates/emails/plain/withdrawal-completed.php:23
+#: templates/emails/plain/withdrawal-rejected.php:24
+#: templates/emails/withdrawal-completed.php:31
+#: templates/emails/withdrawal-rejected.php:32
+#, php-format
+msgid "Dzień dobry %s,"
+msgstr ""
+
+#. translators: 1: order number, 2: declaration id
+#: templates/emails/plain/withdrawal-completed.php:28
+#, php-format
+msgid "Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
+msgstr ""
+
+#: templates/emails/plain/withdrawal-completed.php:34
+#: templates/emails/plain/withdrawal-rejected.php:40
+#: templates/emails/withdrawal-completed.php:51
+#: templates/emails/withdrawal-rejected.php:59
+msgid "Numer oświadczenia"
+msgstr ""
+
+#: templates/emails/plain/withdrawal-completed.php:35
+#: templates/emails/withdrawal-completed.php:55
+msgid "Data rozliczenia"
+msgstr ""
+
+#: templates/emails/plain/withdrawal-completed.php:37
+#: templates/emails/withdrawal-completed.php:60
+msgid "Kwota zwrotu"
+msgstr ""
+
+#: templates/emails/plain/withdrawal-completed.php:43
+msgid "Zwrot zostanie wykonany na pierwotną metodę płatności użytą przy zakupie. Środki mogą pojawić się na koncie w ciągu kilku dni roboczych."
 msgstr ""
 
 #: templates/emails/plain/withdrawal-confirmation.php:26
@@ -9585,12 +9910,47 @@ msgstr ""
 msgid "Zachowaj tę wiadomość jako potwierdzenie złożenia oświadczenia. Zawiera ona niezbędne dane oświadczenia (numer, datę i czas złożenia, podsumowanie zamówienia)."
 msgstr ""
 
+#. translators: 1: declaration id, 2: order number
+#: templates/emails/plain/withdrawal-rejected.php:29
+#: templates/emails/withdrawal-rejected.php:42
+#, php-format
+msgid "Niestety nie możemy zaakceptować Twojego oświadczenia o odstąpieniu (%1$s) dla zamówienia #%2$s."
+msgstr ""
+
+#: templates/emails/plain/withdrawal-rejected.php:35
+#: templates/emails/withdrawal-rejected.php:51
+msgid "Powód odmowy:"
+msgstr ""
+
+#: templates/emails/plain/withdrawal-rejected.php:41
+#: templates/emails/withdrawal-rejected.php:63
+msgid "Data decyzji"
+msgstr ""
+
+#: templates/emails/plain/withdrawal-rejected.php:45
+msgid "Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem."
+msgstr ""
+
+#. translators: 1: order number, 2: declaration id
+#: templates/emails/withdrawal-completed.php:41
+#, php-format
+msgid "Z przyjemnością informujemy, że Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
+msgstr ""
+
+#: templates/emails/withdrawal-completed.php:76
+msgid "Zwrot zostanie wykonany na pierwotną metodę płatności użytą przy zakupie. W zależności od banku środki mogą pojawić się na koncie w ciągu kilku dni roboczych."
+msgstr ""
+
 #: templates/emails/withdrawal-confirmation.php:94
 msgid "Qty"
 msgstr ""
 
 #: templates/emails/withdrawal-confirmation.php:95
 msgid "Line total"
+msgstr ""
+
+#: templates/emails/withdrawal-rejected.php:74
+msgid "Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem. Chętnie wyjaśnimy szczegóły."
 msgstr ""
 
 #: templates/forms/dsa-report.php:18
@@ -9653,64 +10013,256 @@ msgstr ""
 msgid "Wyślij zgłoszenie"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:25
+#: templates/forms/withdrawal-form.php:24
 msgid "Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia {order_date}."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:42
+#: templates/forms/withdrawal-form.php:49
 msgid "Wszystkie pozycje z tego zamówienia zostały już objęte odstąpieniem lub nie kwalifikują się do zwrotu."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:45
+#: templates/forms/withdrawal-form.php:55
 msgid "Krok 1. Wybierz pozycje do odstąpienia"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:50
-msgid "Pozycja"
-msgstr ""
-
-#: templates/forms/withdrawal-form.php:51
-msgid "Pozostało"
-msgstr ""
-
-#: templates/forms/withdrawal-form.php:52
-msgid "Liczba sztuk do zwrotu"
+#: templates/forms/withdrawal-form.php:59
+msgid "Wpisz liczbę sztuk, które chcesz objąć odstąpieniem. Pole „Pozostało\" pokazuje maksymalną liczbę, którą można jeszcze odstąpić w tej pozycji."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:64
+msgid "Wybierz wszystkie pozycje"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:67
+msgid "Wyczyść wybór"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:73
+msgid "Pozycje zamówienia dostępne do odstąpienia."
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:77
+#: templates/forms/withdrawal-form.php:88
+msgid "Pozycja"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:78
+#: templates/forms/withdrawal-form.php:99
+msgid "Pozostało"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:79
+#: templates/forms/withdrawal-form.php:104
+msgid "Liczba sztuk do zwrotu"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:96
 msgid "SKU:"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:84
-msgid "Krok 2. Powód (opcjonalnie) i potwierdzenie"
+#: templates/forms/withdrawal-form.php:100
+msgid "Pozostało do zwrotu"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:99
-msgid "Złóż wniosek o odstąpienie"
+#. translators: 1: product name, 2: max qty
+#: templates/forms/withdrawal-form.php:121
+#, php-format
+msgid "Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s\" wynosi %2$s."
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:136
+msgid "Krok 2. Powód i potwierdzenie"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:151
+#: templates/forms/withdrawal-guest.php:130
+msgid "Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia."
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:163
+#: templates/forms/withdrawal-guest.php:142
+msgid "Złóż oświadczenie i wyślij potwierdzenie na e-mail"
+msgstr ""
+
+#: templates/forms/withdrawal-form.php:166
+msgid "Anuluj i wróć do listy zamówień"
 msgstr ""
 
 #. translators: %s = order number
-#: templates/forms/withdrawal-guest.php:21
+#: templates/forms/withdrawal-guest.php:34
 #, php-format
-msgid "Withdraw from order #%s"
+msgid "Odstąpienie od umowy — zamówienie #%s"
 msgstr ""
 
 #. translators: %s = email address
-#: templates/forms/withdrawal-guest.php:30
+#: templates/forms/withdrawal-guest.php:44
 #, php-format
-msgid "Submitting on behalf of: %s"
+msgid "Składasz oświadczenie na rzecz adresu: %s"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:17
-msgid "Provide the email address used to place the order and the order number. We will send you a confirmation link to continue."
+#: templates/forms/withdrawal-guest.php:50
+msgid "Pozycje objęte odstąpieniem"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:31
-msgid "Email address"
+#: templates/forms/withdrawal-guest.php:52
+msgid "Złożenie tego oświadczenia obejmuje całe poniższe zamówienie. Jeżeli chcesz odstąpić tylko od części pozycji, skontaktuj się ze sklepem lub złóż osobne oświadczenie po zalogowaniu się na konto."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:37
-msgid "Continue"
+#: templates/forms/withdrawal-guest.php:57
+msgid "Pozycje zamówienia objęte oświadczeniem."
+msgstr ""
+
+#: templates/forms/withdrawal-guest.php:96
+msgid "Wartość zamówienia:"
+msgstr ""
+
+#: templates/forms/withdrawal-guest.php:105
+msgid "Data zamówienia:"
+msgstr ""
+
+#: templates/forms/withdrawal-guest.php:114
+msgid "Po wysłaniu formularza otrzymasz e-mail potwierdzający z numerem deklaracji oraz podsumowaniem zamówienia."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:43
+msgid "Przejdź do formularza odstąpienia"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:53
+msgid "Odstąpienie od umowy — formularz online"
+msgstr ""
+
+#. translators: 1: merchant name, 2: number of days
+#: templates/forms/withdrawal-lookup.php:60
+#, php-format
+msgid "Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:72
+msgid "Jak to działa? (rozwiń)"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:76
+msgid "Po weryfikacji wyślemy na podany adres jednorazowy link, który otworzy formularz odstąpienia. Link będzie ważny przez 30 minut i można go użyć tylko raz."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:79
+msgid "W kolejnym kroku wybierzesz, czy chcesz zwrócić całe zamówienie, czy tylko wybrane pozycje (możliwe są też częściowe odstąpienia od pojedynczych sztuk)."
+msgstr ""
+
+#. translators: %s = directive reference
+#: templates/forms/withdrawal-lookup.php:85
+#, php-format
+msgid "Po przesłaniu oświadczenia otrzymasz e-mail z numerem deklaracji, datą złożenia i podsumowaniem zamówienia. Uprawnienie wynika z art. 27 ustawy o prawach konsumenta wdrażającej dyrektywę %s."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:107
+msgid "Numer zamówienia"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:123
+msgid "Numer znajdziesz w e-mailu potwierdzającym zakup, w pozycji „Twoje zamówienie #…”."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:129
+msgid "Adres e-mail użyty przy zakupie"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:145
+msgid "Wyślemy na ten adres bezpieczny link otwierający formularz odstąpienia."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:150
+msgid "Wszystkie pola są wymagane."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:161
+msgid "Wyślij link do formularza"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:166
+msgid "Link będzie ważny przez 30 minut i można go użyć tylko raz. Jeśli nie otrzymasz wiadomości, sprawdź folder Spam i wpisz adres ponownie."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:173
+#: templates/forms/withdrawal-lookup.php:228
+msgid "W jakim terminie mogę odstąpić od umowy?"
+msgstr ""
+
+#. translators: %d = days
+#: templates/forms/withdrawal-lookup.php:173
+#, php-format
+msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu osoby trzeciej innej niż przewoźnik."
+msgstr ""
+
+#. translators: %d = days
+#: templates/forms/withdrawal-lookup.php:174
+msgid "Czy mogę zwrócić tylko niektóre produkty?"
+msgstr ""
+
+#. translators: %d = days
+#: templates/forms/withdrawal-lookup.php:174
+msgid "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie. Można odstąpić od wybranej liczby sztuk — pozostałe pozostaną w zamówieniu."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:175
+#: templates/forms/withdrawal-lookup.php:236
+msgid "Co się stanie po wysłaniu formularza?"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:175
+msgid "Otrzymasz e-mail potwierdzający z unikalnym numerem deklaracji i pełnym podsumowaniem zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:176
+#: templates/forms/withdrawal-lookup.php:240
+msgid "Czy są produkty, których nie można zwrócić?"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:176
+msgid "Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, oraz zapieczętowane ze względów higienicznych po otwarciu opakowania."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:180
+msgid "Najczęstsze pytania"
+msgstr ""
+
+#. translators: %s = support email link
+#: templates/forms/withdrawal-lookup.php:202
+#, php-format
+msgid "Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie ręcznie."
+msgstr ""
+
+#. translators: %s: merchant / shop name
+#: templates/forms/withdrawal-lookup.php:218
+#, php-format
+msgid "Kto może odstąpić od umowy w sklepie %s?"
+msgstr ""
+
+#. translators: %d: withdrawal period in days (typically 14)
+#: templates/forms/withdrawal-lookup.php:220
+#, php-format
+msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia, aby złożyć oświadczenie. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu wskazanej przez Ciebie osoby trzeciej innej niż przewoźnik."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:225
+msgid "Każdy konsument, czyli osoba fizyczna kupująca w celach niezwiązanych z działalnością gospodarczą. W przypadku zakupu jako firma uprawnienie do odstąpienia bez podania przyczyny przysługuje tylko w ograniczonym zakresie."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:232
+msgid "Czy mogę zwrócić tylko niektóre produkty z zamówienia?"
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:233
+msgid "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie — możesz zwrócić wszystkie produkty, jeden produkt lub tylko wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:237
+msgid "Otrzymasz e-mail potwierdzający przyjęcie oświadczenia, zawierający unikalny numer deklaracji oraz pełne podsumowanie zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia."
+msgstr ""
+
+#: templates/forms/withdrawal-lookup.php:241
+msgid "Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, zapieczętowane ze względów higienicznych po otwarciu opakowania, oraz treści cyfrowe spełnione za wyraźną zgodą konsumenta przed upływem terminu."
 msgstr ""
 
 #: templates/shared/popup.php:33

@@ -214,14 +214,19 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
 if (! isset($GLOBALS['polski_withdrawal_lookup_schema_emitted'])) {
     $GLOBALS['polski_withdrawal_lookup_schema_emitted'] = true;
 
+    /* translators: %s: merchant / shop name */
+    $polski_faq_q_who = __('Kto może odstąpić od umowy w sklepie %s?', 'polski');
+    /* translators: %d: withdrawal period in days (typically 14) */
+    $polski_faq_a_when = __('Domyślnie masz %d dni od dnia otrzymania zamówienia, aby złożyć oświadczenie. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu wskazanej przez Ciebie osoby trzeciej innej niż przewoźnik.', 'polski');
+
     $polski_faq = [
         [
-            'q' => sprintf(__('Kto może odstąpić od umowy w sklepie %s?', 'polski'), $polski_merchant),
+            'q' => sprintf($polski_faq_q_who, $polski_merchant),
             'a' => __('Każdy konsument, czyli osoba fizyczna kupująca w celach niezwiązanych z działalnością gospodarczą. W przypadku zakupu jako firma uprawnienie do odstąpienia bez podania przyczyny przysługuje tylko w ograniczonym zakresie.', 'polski'),
         ],
         [
             'q' => __('W jakim terminie mogę odstąpić od umowy?', 'polski'),
-            'a' => sprintf(__('Domyślnie masz %d dni od dnia otrzymania zamówienia, aby złożyć oświadczenie. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu wskazanej przez Ciebie osoby trzeciej innej niż przewoźnik.', 'polski'), $polski_days),
+            'a' => sprintf($polski_faq_a_when, $polski_days),
         ],
         [
             'q' => __('Czy mogę zwrócić tylko niektóre produkty z zamówienia?', 'polski'),

@@ -129,12 +129,10 @@ final class AnnexGeneratorService implements HasHooks
         $html .= '<p><em>' . esc_html__('(*) Niepotrzebne skreślić.', 'polski') . '</em></p>';
 
         if ($lookupUrl !== '') {
+            /* translators: %s: lookup page URL where the consumer can file an online withdrawal declaration */
+            $onlineLinkTemplate = __('Możesz także złożyć oświadczenie online: <a href="%s">formularz odstąpienia</a>.', 'polski');
             $html .= '<p>' . sprintf(
-                /* translators: %s: lookup page URL */
-                wp_kses(
-                    __('Możesz także złożyć oświadczenie online: <a href="%s">formularz odstąpienia</a>.', 'polski'),
-                    ['a' => ['href' => true]],
-                ),
+                wp_kses($onlineLinkTemplate, ['a' => ['href' => true]]),
                 esc_url($lookupUrl),
             ) . '</p>';
         }
