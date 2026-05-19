@@ -214,6 +214,61 @@ final class GuestWithdrawalService implements HasHooks
     /**
      * @return array{order_id: int, email: string, created: int}|null
      */
+    /**
+     * REST-facing variant of the magic-link dispatch — shares the same rate
+     * limiter, order lookup and e-mail body as the shortcode flow. The
+     * masking step is the caller's responsibility (the REST controller
+     * always returns the same response shape).
+     */
+    public function dispatchMagicLinkForRest(string $orderNumber, string $email): void
+    {
+        if (! $this->checkRateLimit($email)) {
+            // Silent — caller will still return the masked notice.
+            return;
+        }
+
+        $order = $this->locateOrder($orderNumber);
+        if (! $order instanceof \WC_Order || strcasecmp($order->get_billing_email(), $email) !== 0) {
+            return;
+        }
+
+        if (! $this->withdrawal->isEligible($order)) {
+            return;
+        }
+
+        $token = bin2hex(random_bytes(16));
+        $payload = [
+            'order_id' => $order->get_id(),
+            'email' => $email,
+            'created' => time(),
+        ];
+        set_transient(self::TRANSIENT_PREFIX . hash('sha256', $token), $payload, self::TOKEN_TTL_SECONDS);
+
+        $this->sendMagicLink($order, $email, $token);
+    }
+
+    /**
+     * REST-facing token redeem. Mirrors the private redeemToken() so the
+     * controller does not have to reach into private state.
+     *
+     * @return array{order_id: int, email: string, created: int}|null
+     */
+    public function redeemTokenForRest(string $token): ?array
+    {
+        return $this->redeemToken($token);
+    }
+
+    /**
+     * REST-facing single-use token consumption.
+     */
+    public function consumeTokenForRest(string $token): void
+    {
+        $this->consumeToken($token);
+    }
+
+    /**
+     * @return array{order_id: int, email: string, created: int}|null
+     */
     private function redeemToken(string $token): ?array
     {
         $key = self::TRANSIENT_PREFIX . hash('sha256', $token);
