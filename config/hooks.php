@@ -159,6 +159,7 @@ return [
     \Polski\Service\WithdrawalSiteHealthService::class,
     \Polski\Admin\WithdrawalOrderMetaBox::class,
     \Polski\Service\WithdrawalQueryHelper::class,
+    \Polski\Service\WithdrawalAnalyticsService::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
