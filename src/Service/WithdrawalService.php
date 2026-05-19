@@ -420,7 +420,7 @@ final class WithdrawalService implements Bootable, HasHooks
 
                 if ($reason !== null && trim($reason) !== '') {
                     $note .= "\n" . sprintf(
-                        /* translators: %s: rejection reason */
+                        /* translators: %s: free-text reason (customer-supplied for filing, operator-supplied for rejection) */
                         __('Reason: %s', 'polski'),
                         wp_strip_all_tags($reason),
                     );
@@ -475,7 +475,7 @@ final class WithdrawalService implements Bootable, HasHooks
 
         if ($reason !== null && trim($reason) !== '') {
             $note .= "\n" . sprintf(
-                /* translators: %s: customer reason */
+                /* translators: %s: free-text reason (customer-supplied for filing, operator-supplied for rejection) */
                 __('Reason: %s', 'polski'),
                 wp_strip_all_tags($reason),
             );
