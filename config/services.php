@@ -256,6 +256,7 @@ return static function (Container $c): void {
         $c->get(\Polski\Service\GuestWithdrawalService::class),
         $c->get(WithdrawalRepository::class),
     ));
+    $c->singleton(\Polski\Service\WithdrawalSiteHealthService::class, static fn () => new \Polski\Service\WithdrawalSiteHealthService());
     $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
         $c->get(WithdrawalRepository::class),
     ));
