@@ -103,6 +103,8 @@ final class WithdrawalAnalyticsService implements HasHooks
          * predictable shape and can attach store-specific dimensions.
          *
          * @param array<string, mixed> $payload
+         * @param string               $event
+         * @param WithdrawalRequest    $request
          */
         $payload = (array) apply_filters('polski/withdrawal/event_payload', $payload, $event, $request);
 
