@@ -157,6 +157,7 @@ return [
     \Polski\Service\WithdrawalErrorTelemetry::class,
     \Polski\Rest\GuestWithdrawalController::class,
     \Polski\Service\WithdrawalSiteHealthService::class,
+    \Polski\Admin\WithdrawalOrderMetaBox::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
