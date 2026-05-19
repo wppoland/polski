@@ -30,13 +30,29 @@ namespace {
         public static function success(string $message): void
         {
         }
+
+        /**
+         * @phpstan-return never
+         */
+        public static function error(string $message, bool $exit = true): void
+        {
+            exit;
+        }
+
+        public static function warning(string $message): void
+        {
+        }
+
+        public static function line(string $message = ''): void
+        {
+        }
     }
 }
 
 namespace WP_CLI\Utils {
     /**
-     * @param array<int, array<string, string>> $items
-     * @param list<string>                     $fields
+     * @param array<int|string, array<string, mixed>> $items
+     * @param list<string>                            $fields
      */
     function format_items(string $format, array $items, array $fields): void
     {
