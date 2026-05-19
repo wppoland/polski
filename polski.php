@@ -125,6 +125,7 @@ add_action('plugins_loaded', static function (): void {
     if (defined('WP_CLI') && WP_CLI) {
         add_action('cli_init', static function (): void {
             CLI\PolskiCommand::register();
+            CLI\WithdrawalCommand::register();
         });
     }
 }, 10);
