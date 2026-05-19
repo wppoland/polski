@@ -156,6 +156,7 @@ return [
     \Polski\Service\WithdrawalAssetsService::class,
     \Polski\Service\WithdrawalErrorTelemetry::class,
     \Polski\Rest\GuestWithdrawalController::class,
+    \Polski\Service\WithdrawalSiteHealthService::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
