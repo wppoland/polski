@@ -39,10 +39,42 @@ class WithdrawalConfirmationEmail extends \WC_Email
             '{withdrawal_date}' => '',
         ];
 
-        // Trigger on withdrawal confirmed action.
-        add_action('polski/withdrawal/confirmed', [$this, 'trigger']);
+        // Fire as soon as a withdrawal is filed (logged-in customer / guest /
+        // manual admin registration) so the consumer immediately receives the
+        // durable-medium record carrying the declaration ID, frozen snapshot
+        // and timestamp — required by Art. 11a(3). Admin "confirm" / "complete"
+        // / "reject" trigger their own dedicated emails further down the flow.
+        add_action('polski/withdrawal/requested', [$this, 'trigger']);
+        add_action('polski/withdrawal/guest_requested', [$this, 'triggerFromGuest'], 10, 3);
+        add_action('polski/withdrawal/manual_registered', [$this, 'triggerFromManual'], 10, 3);
 
         parent::__construct();
+    }
+
+    /**
+     * Adapter for the guest_requested action signature — fetches the request
+     * model from the repository and delegates to the canonical trigger().
+     */
+    public function triggerFromGuest(int $withdrawalId, \WC_Order $order, string $email): void
+    {
+        unset($order, $email);
+        $request = \Polski\Plugin::instance()->container()
+            ->get(\Polski\Repository\WithdrawalRepository::class)
+            ->findById($withdrawalId);
+        if ($request !== null) {
+            $this->trigger($request);
+        }
+    }
+
+    public function triggerFromManual(int $withdrawalId, \WC_Order $order, string $channel): void
+    {
+        unset($order, $channel);
+        $request = \Polski\Plugin::instance()->container()
+            ->get(\Polski\Repository\WithdrawalRepository::class)
+            ->findById($withdrawalId);
+        if ($request !== null) {
+            $this->trigger($request);
+        }
     }
 
     /**
