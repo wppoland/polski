@@ -158,6 +158,7 @@ return [
     \Polski\Rest\GuestWithdrawalController::class,
     \Polski\Service\WithdrawalSiteHealthService::class,
     \Polski\Admin\WithdrawalOrderMetaBox::class,
+    \Polski\Service\WithdrawalQueryHelper::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
