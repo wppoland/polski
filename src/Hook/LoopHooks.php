@@ -117,7 +117,7 @@ final class LoopHooks implements Bootable, HasHooks
             return;
         }
 
-        $settings = get_option('polski_brand', []);
+        $settings = \Polski\Util\OptionCache::get('polski_brand', []);
 
         if (is_array($settings) && ! ($settings['show_on_loop'] ?? true)) {
             return;

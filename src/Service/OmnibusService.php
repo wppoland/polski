@@ -21,6 +21,9 @@ use Polski\Util\Formatter;
  */
 final class OmnibusService implements Bootable, HasHooks
 {
+    private const CACHE_GROUP = 'polski_omnibus';
+    private const CACHE_TTL = 3600; // 1 hour - product prices change rarely; invalidated on save.
+
     private bool $enabled = true;
     private int $days = 30;
     private string $displayText = '';
@@ -114,6 +117,8 @@ final class OmnibusService implements Bootable, HasHooks
             $currency,
         );
 
+        $this->invalidateLowestPriceCache($product->get_id());
+
         /**
          * Fires after a price is recorded for Omnibus tracking.
          *
@@ -126,10 +131,41 @@ final class OmnibusService implements Bootable, HasHooks
 
     /**
      * Get the lowest price in the tracking period for a product.
+     *
+     * Cached per-product in the WP object cache for one hour. On stores with
+     * a persistent object cache (memcached / redis) this turns a 12-product
+     * archive render from 12 lookups against polski_price_history into 12
+     * cache hits. The cache is invalidated whenever a new price is recorded
+     * for the product (see onProductSave -> invalidateLowestPriceCache).
      */
     public function getLowestPrice(int $productId): ?OmnibusPrice
     {
-        return $this->repository->findLowestEffective($productId, $this->days);
+        $cacheKey = (string) $productId . ':' . (string) $this->days;
+
+        $found = false;
+        $cached = wp_cache_get($cacheKey, self::CACHE_GROUP, false, $found);
+
+        if ($found) {
+            if ($cached === null || $cached instanceof OmnibusPrice) {
+                /** @var ?OmnibusPrice */
+                return $cached;
+            }
+        }
+
+        $result = $this->repository->findLowestEffective($productId, $this->days);
+
+        wp_cache_set($cacheKey, $result, self::CACHE_GROUP, self::CACHE_TTL);
+
+        return $result;
+    }
+
+    /**
+     * Forget the cached lowest price for a product. Called after a new price
+     * snapshot is recorded so the next read sees the fresh window.
+     */
+    private function invalidateLowestPriceCache(int $productId): void
+    {
+        wp_cache_delete((string) $productId . ':' . (string) $this->days, self::CACHE_GROUP);
     }
 
     /**
