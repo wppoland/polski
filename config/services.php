@@ -265,6 +265,10 @@ return static function (Container $c): void {
         $c->get(WithdrawalRepository::class),
     ));
     $c->singleton(\Polski\Service\WithdrawalAnalyticsService::class, static fn () => new \Polski\Service\WithdrawalAnalyticsService());
+    $c->singleton(\Polski\Privacy\WithdrawalPrivacyService::class, static fn () => new \Polski\Privacy\WithdrawalPrivacyService(
+        $c->get(WithdrawalRepository::class),
+        $c->get(ConsentLogRepository::class),
+    ));
     $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
         $c->get(WithdrawalRepository::class),
     ));

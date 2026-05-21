@@ -160,6 +160,7 @@ return [
     \Polski\Admin\WithdrawalOrderMetaBox::class,
     \Polski\Service\WithdrawalQueryHelper::class,
     \Polski\Service\WithdrawalAnalyticsService::class,
+    \Polski\Privacy\WithdrawalPrivacyService::class,
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
