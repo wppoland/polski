@@ -19,6 +19,18 @@ final class ProductAuthorService implements HasHooks
 {
     private const TAXONOMY = 'product_author';
 
+    /**
+     * Per-request memo for `getProductAuthors()`. The display, loop, and
+     * schema callbacks all read the same taxonomy terms for the same
+     * product, often in the same request; the WordPress term cache
+     * de-duplicates the database hit but not the PHP function-call
+     * overhead, which is meaningful when 20+ products render in a shop
+     * archive loop.
+     *
+     * @var array<int, list<\WP_Term>>
+     */
+    private array $authorsCache = [];
+
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('product_authors')) {
@@ -170,12 +182,20 @@ final class ProductAuthorService implements HasHooks
      */
     private function getProductAuthors(int $productId): array
     {
+        if (isset($this->authorsCache[$productId])) {
+            return $this->authorsCache[$productId];
+        }
+
         $terms = wp_get_post_terms($productId, self::TAXONOMY);
 
         if (is_wp_error($terms)) {
-            return [];
+            $this->authorsCache[$productId] = [];
+
+            return $this->authorsCache[$productId];
         }
 
-        return array_values($terms);
+        $this->authorsCache[$productId] = array_values($terms);
+
+        return $this->authorsCache[$productId];
     }
 }

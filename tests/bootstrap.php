@@ -133,6 +133,38 @@ if (! function_exists('wp_salt')) {
     }
 }
 
+if (! function_exists('get_the_terms')) {
+    function get_the_terms(int $postId, string $taxonomy): array|false|\WP_Error
+    {
+        $store = $GLOBALS['polski_test_terms'][$taxonomy][$postId] ?? null;
+        if ($store === null) {
+            return false;
+        }
+        if (is_callable($store)) {
+            return $store();
+        }
+        return $store;
+    }
+}
+
+if (! class_exists('WP_Term')) {
+    class WP_Term
+    {
+        public int $term_id = 0;
+        public string $name = '';
+        public string $slug = '';
+        public string $taxonomy = '';
+
+        public function __construct(int $term_id = 0, string $name = '', string $taxonomy = '', string $slug = '')
+        {
+            $this->term_id = $term_id;
+            $this->name = $name;
+            $this->taxonomy = $taxonomy;
+            $this->slug = $slug;
+        }
+    }
+}
+
 if (! class_exists('WP_Post')) {
     class WP_Post
     {
