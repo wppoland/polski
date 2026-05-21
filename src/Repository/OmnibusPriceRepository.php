@@ -12,7 +12,7 @@ use wpdb;
 /**
  * Data access for the Omnibus price history table.
  */
-final class OmnibusPriceRepository
+class OmnibusPriceRepository
 {
     public function __construct(
         private readonly wpdb $wpdb,
