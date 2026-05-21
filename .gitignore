@@ -65,3 +65,4 @@ polski-*.json
 
 # JS translation cache (auto-generated)
 languages/polski-*-*.json
+.lighthouseci/
