@@ -58,6 +58,11 @@ final class OmnibusService implements Bootable, HasHooks
 
         // Daily cleanup.
         add_action('polski_daily_maintenance', [$this, 'pruneOldRecords']);
+
+        // Warm the per-product lowest-price cache once at the top of every
+        // WooCommerce archive loop so individual product callbacks downstream
+        // hit the object cache instead of running their own DB query.
+        add_action('woocommerce_before_shop_loop', [$this, 'warmCacheForArchive'], 5);
     }
 
     /**
@@ -166,6 +171,61 @@ final class OmnibusService implements Bootable, HasHooks
     private function invalidateLowestPriceCache(int $productId): void
     {
         wp_cache_delete((string) $productId . ':' . (string) $this->days, self::CACHE_GROUP);
+    }
+
+    /**
+     * Pre-warm the per-product cache for every product about to be rendered in
+     * a WooCommerce archive. One SQL query against polski_price_history
+     * replaces the N separate queries that would otherwise fire as each
+     * product callback in the loop reads its own lowest price.
+     *
+     * Products without a recorded history in the window are still cached -
+     * as `null` - so the next read short-circuits without re-querying.
+     */
+    public function warmCacheForArchive(): void
+    {
+        global $wp_query;
+
+        if (! $wp_query instanceof \WP_Query || empty($wp_query->posts)) {
+            return;
+        }
+
+        $productIds = [];
+        foreach ($wp_query->posts as $post) {
+            if ($post instanceof \WP_Post && $post->post_type === 'product') {
+                $productIds[] = (int) $post->ID;
+            }
+        }
+
+        if ($productIds === []) {
+            return;
+        }
+
+        $days = (string) $this->days;
+        $uncached = [];
+
+        foreach (array_unique($productIds) as $id) {
+            $found = false;
+            wp_cache_get((string) $id . ':' . $days, self::CACHE_GROUP, false, $found);
+            if (! $found) {
+                $uncached[] = $id;
+            }
+        }
+
+        if ($uncached === []) {
+            return;
+        }
+
+        $batch = $this->repository->findLowestEffectiveBatch($uncached, $this->days);
+
+        foreach ($uncached as $id) {
+            wp_cache_set(
+                (string) $id . ':' . $days,
+                $batch[$id] ?? null,
+                self::CACHE_GROUP,
+                self::CACHE_TTL,
+            );
+        }
     }
 
     /**

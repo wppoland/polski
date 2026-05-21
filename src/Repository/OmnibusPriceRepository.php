@@ -105,6 +105,78 @@ final class OmnibusPriceRepository
     }
 
     /**
+     * Batch-fetch the lowest effective price for every product ID in `$productIds`,
+     * in a single query. Returns a map keyed by product_id; products that have no
+     * recorded history in the window are simply absent from the result.
+     *
+     * Used by OmnibusService to warm the per-product object cache once at the top
+     * of a WooCommerce archive loop, avoiding the N+1 query pattern that would
+     * otherwise happen as each product callback in the loop runs.
+     *
+     * @param list<int> $productIds
+     * @return array<int, OmnibusPrice>
+     */
+    public function findLowestEffectiveBatch(array $productIds, int $days = 30): array
+    {
+        if ($productIds === []) {
+            return [];
+        }
+
+        global $wpdb;
+
+        $cleanIds = array_values(array_unique(array_filter(array_map('intval', $productIds), static fn ($v) => $v > 0)));
+
+        if ($cleanIds === []) {
+            return [];
+        }
+
+        $idList = implode(',', $cleanIds);
+        $table = $this->tableName();
+        $cutoff = $this->gmDateDaysAgo($days);
+
+        // The subquery picks the lowest effective price per product within the window;
+        // the outer join recovers full row data for currency / sale_price / recorded_at.
+        // %i can't placeholder-substitute table names inside subqueries reliably across
+        // wpdb versions, and $idList is built exclusively from intval() above, so
+        // direct interpolation is safe here.
+        $sql = $wpdb->prepare(
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $idList = ints from intval() above.
+            "SELECT t1.*
+             FROM `{$table}` t1
+             INNER JOIN (
+                 SELECT product_id, MIN(COALESCE(sale_price, price)) AS lowest
+                 FROM `{$table}`
+                 WHERE product_id IN ({$idList}) AND recorded_at >= %s
+                 GROUP BY product_id
+             ) t2
+                 ON t1.product_id = t2.product_id
+                 AND COALESCE(t1.sale_price, t1.price) = t2.lowest
+             WHERE t1.recorded_at >= %s
+             ORDER BY t1.recorded_at DESC",
+            $cutoff,
+            $cutoff,
+        );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom plugin table, prepared above.
+        $rows = $wpdb->get_results($sql);
+
+        if (! is_array($rows)) {
+            return [];
+        }
+
+        $map = [];
+        foreach ($rows as $row) {
+            $productId = (int) $row->product_id;
+            if ($productId <= 0 || isset($map[$productId])) {
+                continue;
+            }
+            $map[$productId] = OmnibusPrice::fromRow($row);
+        }
+
+        return $map;
+    }
+
+    /**
      * Get complete price history for a product.
      *
      * @return list<OmnibusPrice>
