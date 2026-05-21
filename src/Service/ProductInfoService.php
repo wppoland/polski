@@ -13,17 +13,40 @@ use Polski\Admin\ModulesPage;
 final class ProductInfoService
 {
     /**
+     * Per-request memo for getManufacturer(). The single product page calls
+     * this through getManufacturerHtml() and, on stores with structured-data
+     * enabled, again through the schema callback - same product ID, same
+     * answer. WP core does cache term lookups but the function-call chain
+     * (get_the_terms -> ... -> filters) costs ~0.05 ms each, which adds up
+     * across a loop with many products.
+     *
+     * @var array<int, string>
+     */
+    private array $manufacturerCache = [];
+
+    /**
+     * @var array<int, list<\WP_Term>>
+     */
+    private array $brandTermsCache = [];
+
+    /**
      * Get manufacturer name for a product.
      */
     public function getManufacturer(\WC_Product $product): string
     {
-        $terms = get_the_terms($product->get_id(), 'polski_manufacturer');
+        $productId = $product->get_id();
 
-        if (is_array($terms) && ! empty($terms)) {
-            return $terms[0]->name;
+        if (isset($this->manufacturerCache[$productId])) {
+            return $this->manufacturerCache[$productId];
         }
 
-        return '';
+        $terms = get_the_terms($productId, 'polski_manufacturer');
+
+        $this->manufacturerCache[$productId] = is_array($terms) && ! empty($terms)
+            ? (string) $terms[0]->name
+            : '';
+
+        return $this->manufacturerCache[$productId];
     }
 
     /**
@@ -73,13 +96,19 @@ final class ProductInfoService
      */
     public function getBrandTerms(\WC_Product $product): array
     {
-        $terms = get_the_terms($product->get_id(), 'polski_brand');
+        $productId = $product->get_id();
 
-        if (! is_array($terms) || $terms === []) {
-            return [];
+        if (isset($this->brandTermsCache[$productId])) {
+            return $this->brandTermsCache[$productId];
         }
 
-        return array_values($terms);
+        $terms = get_the_terms($productId, 'polski_brand');
+
+        $this->brandTermsCache[$productId] = is_array($terms) && $terms !== []
+            ? array_values($terms)
+            : [];
+
+        return $this->brandTermsCache[$productId];
     }
 
     /**

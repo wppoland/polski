@@ -539,14 +539,23 @@ final class WithdrawalsAdminPage implements HasHooks
         return $value;
     }
 
+    /**
+     * @var array<int, string>
+     */
+    private array $orderEditUrlCache = [];
+
     private function orderEditUrl(int $orderId): string
     {
-        $order = wc_get_order($orderId);
-        if (! $order instanceof \WC_Order) {
-            return '';
+        if (array_key_exists($orderId, $this->orderEditUrlCache)) {
+            return $this->orderEditUrlCache[$orderId];
         }
 
-        return (string) $order->get_edit_order_url();
+        $order = wc_get_order($orderId);
+        $url = $order instanceof \WC_Order ? (string) $order->get_edit_order_url() : '';
+
+        $this->orderEditUrlCache[$orderId] = $url;
+
+        return $url;
     }
 
     private function setNotice(string $type, string $message): void
