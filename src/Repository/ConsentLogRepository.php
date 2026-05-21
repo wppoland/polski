@@ -90,17 +90,18 @@ final class ConsentLogRepository
      *
      * @return list<ConsentRecord>
      */
-    public function findByUser(int $userId, int $limit = 50): array
+    public function findByUser(int $userId, int $limit = 50, int $offset = 0): array
     {
         global $wpdb;
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
         $rows = $wpdb->get_results(
             $wpdb->prepare(
-                'SELECT * FROM %i WHERE user_id = %d ORDER BY created_at DESC LIMIT %d',
+                'SELECT * FROM %i WHERE user_id = %d ORDER BY created_at DESC LIMIT %d OFFSET %d',
                 $this->tableName(),
                 $userId,
                 $limit,
+                max(0, $offset),
             ),
         );
 

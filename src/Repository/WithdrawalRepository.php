@@ -246,17 +246,18 @@ final class WithdrawalRepository
     /**
      * @return list<WithdrawalRequest>
      */
-    public function findByCustomer(int $customerId, int $limit = 50): array
+    public function findByCustomer(int $customerId, int $limit = 50, int $offset = 0): array
     {
         global $wpdb;
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table, prepared.
         $rows = $wpdb->get_results(
             $wpdb->prepare(
-                'SELECT * FROM %i WHERE customer_id = %d ORDER BY requested_at DESC LIMIT %d',
+                'SELECT * FROM %i WHERE customer_id = %d ORDER BY requested_at DESC LIMIT %d OFFSET %d',
                 $this->tableName(),
                 $customerId,
                 $limit,
+                max(0, $offset),
             ),
         );
 
@@ -318,7 +319,7 @@ final class WithdrawalRepository
      *
      * @return list<WithdrawalRequest>
      */
-    public function findByGuestEmail(string $email, int $limit = 200): array
+    public function findByGuestEmail(string $email, int $limit = 200, int $offset = 0): array
     {
         $email = strtolower(trim($email));
 
@@ -326,7 +327,7 @@ final class WithdrawalRepository
             return [];
         }
 
-        $sql = $this->wpdb->prepare('SELECT * FROM %i WHERE LOWER(guest_email) = %s ORDER BY requested_at DESC LIMIT %d', $this->tableName(), $email, $limit);
+        $sql = $this->wpdb->prepare('SELECT * FROM %i WHERE LOWER(guest_email) = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d', $this->tableName(), $email, $limit, max(0, $offset));
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom table, prepared above.
         $rows = $this->wpdb->get_results($sql);
