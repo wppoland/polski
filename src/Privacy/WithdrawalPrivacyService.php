@@ -19,6 +19,14 @@ use Polski\Repository\WithdrawalRepository;
  */
 final class WithdrawalPrivacyService implements HasHooks
 {
+    /**
+     * WordPress core invokes exporters and erasers iteratively with $page
+     * starting at 1 and increasing until the callback returns `done: true`.
+     * Keep the per-page batch small enough that even very large customer
+     * histories do not exhaust PHP memory in a single request.
+     */
+    private const PAGE_SIZE = 100;
+
     public function __construct(
         private readonly WithdrawalRepository $withdrawals,
         private readonly ConsentLogRepository $consentLog,
@@ -74,21 +82,34 @@ final class WithdrawalPrivacyService implements HasHooks
      */
     public function exportWithdrawals(string $email, int $page = 1): array
     {
+        $page = max(1, $page);
+        $offset = ($page - 1) * self::PAGE_SIZE;
+
         $items = [];
+        $customerRowsFetched = 0;
+        $guestRowsFetched = 0;
 
         $user = get_user_by('email', $email);
 
         if ($user instanceof \WP_User) {
-            foreach ($this->withdrawals->findByCustomer((int) $user->ID, 500) as $row) {
+            $customerRows = $this->withdrawals->findByCustomer((int) $user->ID, self::PAGE_SIZE, $offset);
+            $customerRowsFetched = count($customerRows);
+            foreach ($customerRows as $row) {
                 $items[] = $this->formatWithdrawal($row);
             }
         }
 
-        foreach ($this->withdrawals->findByGuestEmail($email, 500) as $row) {
+        $guestRows = $this->withdrawals->findByGuestEmail($email, self::PAGE_SIZE, $offset);
+        $guestRowsFetched = count($guestRows);
+        foreach ($guestRows as $row) {
             $items[] = $this->formatWithdrawal($row);
         }
 
-        return ['data' => $items, 'done' => true];
+        // Done when *both* sources returned fewer than a full page on this
+        // iteration. WP core keeps calling with page+1 until done is true.
+        $done = $customerRowsFetched < self::PAGE_SIZE && $guestRowsFetched < self::PAGE_SIZE;
+
+        return ['data' => $items, 'done' => $done];
     }
 
     /**
@@ -102,9 +123,14 @@ final class WithdrawalPrivacyService implements HasHooks
             return ['data' => [], 'done' => true];
         }
 
+        $page = max(1, $page);
+        $offset = ($page - 1) * self::PAGE_SIZE;
+
+        $records = $this->consentLog->findByUser((int) $user->ID, self::PAGE_SIZE, $offset);
+
         $items = [];
 
-        foreach ($this->consentLog->findByUser((int) $user->ID, 500) as $record) {
+        foreach ($records as $record) {
             $items[] = [
                 'group_id' => 'polski-consents',
                 'group_label' => __('Polski Consent Records', 'polski'),
@@ -118,7 +144,7 @@ final class WithdrawalPrivacyService implements HasHooks
             ];
         }
 
-        return ['data' => $items, 'done' => true];
+        return ['data' => $items, 'done' => count($records) < self::PAGE_SIZE];
     }
 
     /**
