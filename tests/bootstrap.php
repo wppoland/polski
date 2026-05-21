@@ -133,6 +133,67 @@ if (! function_exists('wp_salt')) {
     }
 }
 
+if (! class_exists('WP_Post')) {
+    class WP_Post
+    {
+        public int $ID = 0;
+        public string $post_type = 'post';
+
+        public function __construct(int $id = 0, string $post_type = 'post')
+        {
+            $this->ID = $id;
+            $this->post_type = $post_type;
+        }
+    }
+}
+
+if (! class_exists('WP_Query')) {
+    class WP_Query
+    {
+        /** @var list<WP_Post> */
+        public array $posts = [];
+
+        /**
+         * @param list<WP_Post> $posts
+         */
+        public function __construct(array $posts = [])
+        {
+            $this->posts = $posts;
+        }
+    }
+}
+
+if (! function_exists('wp_cache_get')) {
+    function wp_cache_get(string $key, string $group = '', bool $force = false, ?bool &$found = null): mixed
+    {
+        unset($force);
+        $store = $GLOBALS['polski_test_object_cache'][$group] ?? [];
+        if (array_key_exists($key, $store)) {
+            $found = true;
+            return $store[$key];
+        }
+        $found = false;
+        return false;
+    }
+}
+
+if (! function_exists('wp_cache_set')) {
+    function wp_cache_set(string $key, mixed $value, string $group = '', int $ttl = 0): bool
+    {
+        unset($ttl);
+        $GLOBALS['polski_test_object_cache'][$group][$key] = $value;
+        return true;
+    }
+}
+
+if (! function_exists('wp_cache_delete')) {
+    function wp_cache_delete(string $key, string $group = ''): bool
+    {
+        unset($GLOBALS['polski_test_object_cache'][$group][$key]);
+        return true;
+    }
+}
+
 if (! function_exists('set_transient')) {
     function set_transient(string $transient, mixed $value, int $expiration = 0): bool
     {
