@@ -43,19 +43,31 @@ final class GuestWithdrawalServiceTest extends TestCase
         self::assertFalse($check->invoke($service, 'consumer@example.test'), '6th attempt must be blocked');
     }
 
-    public function testRateLimitIsScopedPerEmailAndIp(): void
+    public function testRateLimitIsScopedPerHashedIpRegardlessOfEmail(): void
     {
         $service = $this->makeService();
         $check = (new \ReflectionClass(GuestWithdrawalService::class))->getMethod('checkRateLimit');
         $check->setAccessible(true);
 
-        // Exhaust one email's budget.
+        // Exhaust the budget for the current IP using one email...
         for ($i = 0; $i < 5; $i++) {
             $check->invoke($service, 'a@example.test');
         }
 
         self::assertFalse($check->invoke($service, 'a@example.test'));
-        self::assertTrue($check->invoke($service, 'b@example.test'), 'Different email must have its own bucket');
+
+        // ...rotating to a different email from the same IP must NOT issue a fresh budget.
+        self::assertFalse(
+            $check->invoke($service, 'b@example.test'),
+            'Rotating email from the same IP must not grant a fresh rate-limit budget.'
+        );
+
+        // A different IP gets its own budget.
+        $_SERVER['REMOTE_ADDR'] = '198.51.100.7';
+        self::assertTrue(
+            $check->invoke($service, 'a@example.test'),
+            'Different client IP must have its own bucket.'
+        );
     }
 
     public function testTokenRedeemRoundTrip(): void

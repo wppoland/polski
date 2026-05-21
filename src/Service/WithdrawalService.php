@@ -190,8 +190,8 @@ final class WithdrawalService implements Bootable, HasHooks
             }
 
             $product = $item->get_product();
-            $totalQty = (float) $item->get_quantity();
-            $remainingQty = $totalQty - ($withdrawn[(int) $itemId] ?? 0);
+            $totalQty = round((float) $item->get_quantity(), 10);
+            $remainingQty = round($totalQty - ($withdrawn[(int) $itemId] ?? 0), 10);
 
             if ($remainingQty <= 0) {
                 continue;
@@ -540,21 +540,38 @@ final class WithdrawalService implements Bootable, HasHooks
 
         foreach ($selection as $orderItemId => $qty) {
             $orderItemId = (int) $orderItemId;
-            $qty = max(0.0, (float) $qty);
+            $qty = round(max(0.0, (float) $qty), 10);
 
-            if ($qty <= 0 || ! isset($remainingById[$orderItemId])) {
+            if ($qty <= 0) {
+                continue;
+            }
+
+            // Defence in depth: reject any posted order_item_id that does not
+            // belong to this order. The nonce binds the submission to the
+            // order id, but a tampered POST could still try to slip a foreign
+            // item id through; we silently drop and fire a telemetry hook so
+            // operators can detect probing.
+            if (! isset($remainingById[$orderItemId])) {
+                /**
+                 * Fired when a withdrawal submission references an item id that
+                 * is not part of the order.
+                 *
+                 * @param int       $orderItemId The posted item id.
+                 * @param \WC_Order $order       The order the submission targeted.
+                 */
+                do_action('polski/withdrawal/foreign_item_rejected', $orderItemId, $order);
                 continue;
             }
 
             $entry = $remainingById[$orderItemId];
-            $qty = min($qty, $entry['quantity_remaining']);
+            $qty = round(min($qty, $entry['quantity_remaining']), 10);
 
             if ($qty <= 0) {
                 continue;
             }
 
             // Pro-rata totals so per-item refunds reflect the partial qty.
-            $ratio = $entry['quantity_total'] > 0 ? $qty / $entry['quantity_total'] : 1;
+            $ratio = $entry['quantity_total'] > 0 ? round($qty / $entry['quantity_total'], 10) : 1;
 
             $resolved[] = [
                 'order_item_id' => $orderItemId,

@@ -48,6 +48,9 @@ final class WithdrawalRequest
             $items = self::parseItemsFromJsonDecoded($decoded);
         }
 
+        $requestedAt = self::parseDate(isset($row->requested_at) ? (string) $row->requested_at : '')
+            ?? new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+
         return new self(
             id: (int) $row->id,
             orderId: (int) $row->order_id,
@@ -55,17 +58,15 @@ final class WithdrawalRequest
             status: WithdrawalStatus::from($row->status),
             reason: $row->reason,
             items: $items,
-            requestedAt: new \DateTimeImmutable($row->requested_at),
-            confirmedAt: $row->confirmed_at !== null ? new \DateTimeImmutable($row->confirmed_at) : null,
-            completedAt: $row->completed_at !== null ? new \DateTimeImmutable($row->completed_at) : null,
+            requestedAt: $requestedAt,
+            confirmedAt: self::parseDate(isset($row->confirmed_at) ? (string) $row->confirmed_at : null),
+            completedAt: self::parseDate(isset($row->completed_at) ? (string) $row->completed_at : null),
             channel: isset($row->channel) ? (string) $row->channel : 'online',
             guestEmail: isset($row->guest_email) && $row->guest_email !== null ? (string) $row->guest_email : null,
             registeredByUserId: isset($row->registered_by_user_id) && $row->registered_by_user_id !== null
                 ? (int) $row->registered_by_user_id
                 : null,
-            rejectedAt: isset($row->rejected_at) && $row->rejected_at !== null
-                ? new \DateTimeImmutable((string) $row->rejected_at)
-                : null,
+            rejectedAt: self::parseDate(isset($row->rejected_at) ? (string) $row->rejected_at : null),
             rejectedReason: isset($row->rejected_reason) && $row->rejected_reason !== null
                 ? (string) $row->rejected_reason
                 : null,
@@ -73,11 +74,30 @@ final class WithdrawalRequest
             refundAmount: isset($row->refund_amount) && $row->refund_amount !== null
                 ? (float) $row->refund_amount
                 : null,
-            clockStartedAt: isset($row->clock_started_at) && $row->clock_started_at !== null
-                ? new \DateTimeImmutable((string) $row->clock_started_at)
-                : null,
+            clockStartedAt: self::parseDate(isset($row->clock_started_at) ? (string) $row->clock_started_at : null),
             languageCode: isset($row->language_code) ? (string) $row->language_code : 'pl',
         );
+    }
+
+    /**
+     * Parse a MySQL DATETIME string into DateTimeImmutable, rejecting zero-dates
+     * and any value that does not match the canonical `Y-m-d H:i:s` format.
+     */
+    private static function parseDate(?string $raw): ?\DateTimeImmutable
+    {
+        if ($raw === null) {
+            return null;
+        }
+
+        $raw = trim($raw);
+
+        if ($raw === '' || str_starts_with($raw, '0000')) {
+            return null;
+        }
+
+        $parsed = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $raw, new \DateTimeZone('UTC'));
+
+        return $parsed instanceof \DateTimeImmutable ? $parsed : null;
     }
 
     /**
