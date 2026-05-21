@@ -22,6 +22,15 @@ final class ExpertReviewService implements HasHooks
     private const META_RATING = '_expert_review_rating';
     private const META_VERDICT = '_expert_review_verdict';
 
+    /**
+     * Per-request memo for `getReviewsForProduct()`. The single product page
+     * calls the query twice (once from `displayOnProduct` and once from
+     * `outputSchema`) so memoising on the productId saves a duplicate WP_Query.
+     *
+     * @var array<int, list<\WP_Post>>
+     */
+    private array $reviewsCache = [];
+
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('expert_reviews')) {
@@ -265,6 +274,10 @@ final class ExpertReviewService implements HasHooks
      */
     private function getReviewsForProduct(int $productId): array
     {
+        if (isset($this->reviewsCache[$productId])) {
+            return $this->reviewsCache[$productId];
+        }
+
         $query = new \WP_Query([
             'post_type' => self::CPT,
             'post_status' => 'publish',
@@ -279,6 +292,10 @@ final class ExpertReviewService implements HasHooks
 
         $posts = is_array($query->posts) ? $query->posts : [];
 
-        return array_values(array_filter($posts, static fn ($post): bool => $post instanceof \WP_Post));
+        $this->reviewsCache[$productId] = array_values(
+            array_filter($posts, static fn ($post): bool => $post instanceof \WP_Post)
+        );
+
+        return $this->reviewsCache[$productId];
     }
 }
