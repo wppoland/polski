@@ -269,6 +269,10 @@ return static function (Container $c): void {
         $c->get(WithdrawalRepository::class),
         $c->get(ConsentLogRepository::class),
     ));
+    $c->singleton(\Polski\AI\WithdrawalReasonClassifier::class, static fn () => new \Polski\AI\WithdrawalReasonClassifier(
+        $c->get(WithdrawalRepository::class),
+    ));
+    $c->singleton(\Polski\AI\AnnexTranslator::class, static fn () => new \Polski\AI\AnnexTranslator());
     $c->singleton(\Polski\Service\MyAccountWithdrawalsService::class, static fn () => new \Polski\Service\MyAccountWithdrawalsService(
         $c->get(WithdrawalRepository::class),
     ));

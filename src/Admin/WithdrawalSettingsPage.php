@@ -51,6 +51,21 @@ final class WithdrawalSettingsPage implements HasHooks
                 'default' => [],
             ],
         );
+
+        register_setting(
+            self::SETTINGS_GROUP,
+            'polski_ai_features_enabled',
+            [
+                'type' => 'string',
+                'sanitize_callback' => [$this, 'sanitizeAiFeaturesEnabled'],
+                'default' => 'no',
+            ],
+        );
+    }
+
+    public function sanitizeAiFeaturesEnabled(mixed $value): string
+    {
+        return $value === 'yes' || $value === '1' || $value === true ? 'yes' : 'no';
     }
 
     /**
@@ -245,6 +260,43 @@ final class WithdrawalSettingsPage implements HasHooks
                                 <option value="proportional" <?php selected($settings['bundle_refund_mode'] ?? '', 'proportional'); ?>><?php esc_html_e('Proportional (refund only the withdrawn child\'s share)', 'polski'); ?></option>
                                 <option value="remove_discount" <?php selected($settings['bundle_refund_mode'] ?? '', 'remove_discount'); ?>><?php esc_html_e('Remove bundle discount (refund at standalone price)', 'polski'); ?></option>
                             </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <h2><?php esc_html_e('AI features (WordPress AI Client)', 'polski'); ?></h2>
+                <table class="form-table" role="presentation">
+                    <tr>
+                        <th><?php esc_html_e('Status', 'polski'); ?></th>
+                        <td>
+                            <?php $polski_ai_available = \Polski\AI\AiClient::isAvailableForText(); ?>
+                            <p class="description">
+                                <?php if ($polski_ai_available) : ?>
+                                    <strong style="color:#008a20;"><?php esc_html_e('Available.', 'polski'); ?></strong>
+                                    <?php esc_html_e('WordPress AI Client is loaded and at least one provider is configured for text generation.', 'polski'); ?>
+                                <?php else : ?>
+                                    <strong style="color:#996800;"><?php esc_html_e('Not available.', 'polski'); ?></strong>
+                                    <?php esc_html_e('Install WordPress 7.0 or higher and at least one AI Client provider plugin (for example Vercel AI Gateway, AI Provider for Anthropic, AI Provider for Google, or AI Provider for OpenAI) to enable AI augmentation.', 'polski'); ?>
+                                <?php endif; ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php esc_html_e('Classify withdrawal reasons', 'polski'); ?></th>
+                        <td>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="polski_ai_features_enabled"
+                                    value="yes"
+                                    <?php checked(get_option('polski_ai_features_enabled', 'no'), 'yes'); ?>
+                                    <?php disabled(! $polski_ai_available); ?>
+                                />
+                                <?php esc_html_e('Ask the AI Client to classify the free-text reason on every new withdrawal into one of a fixed set of categories (defective, wrong item, size mismatch, changed mind, late delivery, damaged in transit, not as described, other).', 'polski'); ?>
+                            </label>
+                            <p class="description">
+                                <?php esc_html_e('Disabled by default. No outbound HTTP request is ever made by this plugin; the AI Client provider plugin you install handles the network call. Classification runs silently in the background after a customer or operator files a declaration; failures (no provider, prevented prompt, network error) are absorbed and never block the withdrawal flow.', 'polski'); ?>
+                            </p>
                         </td>
                     </tr>
                 </table>

@@ -119,7 +119,8 @@ final class WithdrawalsAdminPage implements HasHooks
         }
 
         $statusFilter = $this->readStatusFilter();
-        $rows = $this->repository->findAll(50, 0, $statusFilter);
+        $aiCategoryFilter = $this->readAiCategoryFilter();
+        $rows = $this->repository->findAll(50, 0, $statusFilter, $aiCategoryFilter);
         $notice = $this->popNotice();
 
         ?>
@@ -144,6 +145,15 @@ final class WithdrawalsAdminPage implements HasHooks
                     <?php foreach (WithdrawalStatus::cases() as $case) : ?>
                         <option value="<?php echo esc_attr($case->value); ?>" <?php selected($statusFilter?->value, $case->value); ?>>
                             <?php echo esc_html($case->label()); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <label for="polski-filter-ai-category" style="margin-left:1em;"><?php esc_html_e('AI category:', 'polski'); ?></label>
+                <select id="polski-filter-ai-category" name="ai_category">
+                    <option value=""><?php esc_html_e('All', 'polski'); ?></option>
+                    <?php foreach (\Polski\AI\WithdrawalReasonClassifier::categories() as $polski_category) : ?>
+                        <option value="<?php echo esc_attr($polski_category); ?>" <?php selected($aiCategoryFilter, $polski_category); ?>>
+                            <?php echo esc_html(ucwords(str_replace('_', ' ', $polski_category))); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -184,12 +194,13 @@ final class WithdrawalsAdminPage implements HasHooks
                             <th><?php esc_html_e('Channel', 'polski'); ?></th>
                             <th><?php esc_html_e('Status', 'polski'); ?></th>
                             <th><?php esc_html_e('Reason', 'polski'); ?></th>
+                            <th><?php esc_html_e('AI category', 'polski'); ?></th>
                             <th><?php esc_html_e('Filed at', 'polski'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php if ($rows === []) : ?>
-                        <tr><td colspan="7"><?php esc_html_e('No withdrawal requests yet.', 'polski'); ?></td></tr>
+                        <tr><td colspan="8"><?php esc_html_e('No withdrawal requests yet.', 'polski'); ?></td></tr>
                     <?php else : ?>
                         <?php foreach ($rows as $row) : ?>
                             <tr>
@@ -224,6 +235,16 @@ final class WithdrawalsAdminPage implements HasHooks
                                 <td><?php echo esc_html($row->channel ?? 'online'); ?></td>
                                 <td><?php echo esc_html($row->status->label()); ?></td>
                                 <td><?php echo esc_html(wp_trim_words((string) ($row->reason ?? ''), 12)); ?></td>
+                                <td>
+                                    <?php if ($row->aiCategory !== null) : ?>
+                                        <code class="polski-ai-badge"><?php echo esc_html(ucwords(str_replace('_', ' ', $row->aiCategory))); ?></code>
+                                        <?php if ($row->aiConfidence !== null) : ?>
+                                            <small class="polski-ai-confidence" style="color:#666;"><?php echo esc_html(sprintf('%d%%', (int) round($row->aiConfidence * 100))); ?></small>
+                                        <?php endif; ?>
+                                    <?php else : ?>
+                                        <span style="color:#999;">&mdash;</span>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php echo esc_html($row->requestedAt->date_i18n(get_option('date_format') . ' H:i')); ?></td>
                             </tr>
                         <?php endforeach; ?>
@@ -329,6 +350,7 @@ final class WithdrawalsAdminPage implements HasHooks
             'id', 'order_id', 'customer_id', 'channel', 'status', 'guest_email',
             'reason', 'requested_at', 'confirmed_at', 'completed_at', 'rejected_at',
             'refund_id', 'refund_amount', 'language_code',
+            'ai_category', 'ai_confidence',
         ]);
 
         foreach ($ids as $id) {
@@ -351,6 +373,8 @@ final class WithdrawalsAdminPage implements HasHooks
                 (string) ($request->refundId ?? ''),
                 (string) ($request->refundAmount ?? ''),
                 (string) ($request->languageCode ?? ''),
+                (string) ($request->aiCategory ?? ''),
+                $request->aiConfidence !== null ? number_format($request->aiConfidence, 3, '.', '') : '',
             ]);
         }
 
@@ -496,6 +520,23 @@ final class WithdrawalsAdminPage implements HasHooks
         $value = sanitize_key((string) wp_unslash($_GET['status']));
 
         return WithdrawalStatus::tryFrom($value);
+    }
+
+    private function readAiCategoryFilter(): ?string
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin filter.
+        if (empty($_GET['ai_category'])) {
+            return null;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin filter.
+        $value = sanitize_key((string) wp_unslash($_GET['ai_category']));
+
+        if ($value === '' || ! in_array($value, \Polski\AI\WithdrawalReasonClassifier::categories(), true)) {
+            return null;
+        }
+
+        return $value;
     }
 
     private function orderEditUrl(int $orderId): string

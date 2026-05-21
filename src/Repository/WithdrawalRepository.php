@@ -148,32 +148,53 @@ final class WithdrawalRepository
     /**
      * @return list<WithdrawalRequest>
      */
-    public function findAll(int $limit = 50, int $offset = 0, ?WithdrawalStatus $status = null): array
-    {
+    public function findAll(
+        int $limit = 50,
+        int $offset = 0,
+        ?WithdrawalStatus $status = null,
+        ?string $aiCategory = null
+    ): array {
         global $wpdb;
 
-        if ($status !== null) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
-            $rows = $wpdb->get_results(
-                $wpdb->prepare(
-                    'SELECT * FROM %i WHERE status = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d',
-                    $this->tableName(),
-                    $status->value,
-                    $limit,
-                    $offset,
-                ),
+        $hasStatus = $status !== null;
+        $hasCategory = $aiCategory !== null && $aiCategory !== '';
+
+        if ($hasStatus && $hasCategory) {
+            $sql = $wpdb->prepare(
+                'SELECT * FROM %i WHERE status = %s AND ai_category = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $status->value,
+                $aiCategory,
+                $limit,
+                $offset,
+            );
+        } elseif ($hasStatus) {
+            $sql = $wpdb->prepare(
+                'SELECT * FROM %i WHERE status = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $status->value,
+                $limit,
+                $offset,
+            );
+        } elseif ($hasCategory) {
+            $sql = $wpdb->prepare(
+                'SELECT * FROM %i WHERE ai_category = %s ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $aiCategory,
+                $limit,
+                $offset,
             );
         } else {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
-            $rows = $wpdb->get_results(
-                $wpdb->prepare(
-                    'SELECT * FROM %i ORDER BY requested_at DESC LIMIT %d OFFSET %d',
-                    $this->tableName(),
-                    $limit,
-                    $offset,
-                ),
+            $sql = $wpdb->prepare(
+                'SELECT * FROM %i ORDER BY requested_at DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $limit,
+                $offset,
             );
         }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom plugin table, prepared above.
+        $rows = $wpdb->get_results($sql);
 
         $list = is_array($rows) ? $rows : [];
 
@@ -259,6 +280,37 @@ final class WithdrawalRepository
                 $status->value,
             ),
         );
+    }
+
+    /**
+     * Persist the WordPress AI Client classification of the withdrawal reason.
+     *
+     * @param string     $category   Whitelisted category string.
+     * @param float|null $confidence 0..1 confidence reported by the provider.
+     */
+    public function setAiClassification(int $id, string $category, ?float $confidence): bool
+    {
+        if ($id <= 0 || $category === '') {
+            return false;
+        }
+
+        $data = ['ai_category' => $category];
+        $formats = ['%s'];
+
+        if ($confidence !== null) {
+            $data['ai_confidence'] = max(0.0, min(1.0, $confidence));
+            $formats[] = '%f';
+        }
+
+        $updated = $this->wpdb->update(
+            $this->tableName(),
+            $data,
+            ['id' => $id],
+            $formats,
+            ['%d'],
+        );
+
+        return $updated !== false;
     }
 
     /**

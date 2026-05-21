@@ -32,6 +32,8 @@ final class WithdrawalRequest
         public readonly ?float $refundAmount = null,
         public readonly ?\DateTimeImmutable $clockStartedAt = null,
         public readonly string $languageCode = 'pl',
+        public readonly ?string $aiCategory = null,
+        public readonly ?float $aiConfidence = null,
     ) {
     }
 
@@ -76,6 +78,12 @@ final class WithdrawalRequest
                 : null,
             clockStartedAt: self::parseDate(isset($row->clock_started_at) ? (string) $row->clock_started_at : null),
             languageCode: isset($row->language_code) ? (string) $row->language_code : 'pl',
+            aiCategory: isset($row->ai_category) && $row->ai_category !== null && $row->ai_category !== ''
+                ? (string) $row->ai_category
+                : null,
+            aiConfidence: isset($row->ai_confidence) && $row->ai_confidence !== null
+                ? (float) $row->ai_confidence
+                : null,
         );
     }
 
@@ -179,6 +187,8 @@ final class WithdrawalRequest
             'rejected_at' => $this->rejectedAt?->format('c'),
             'rejected_reason' => $this->rejectedReason,
             'clock_started_at' => $this->clockStartedAt?->format('c'),
+            'ai_category' => $this->aiCategory,
+            'ai_confidence' => $this->aiConfidence,
         ];
     }
 }
