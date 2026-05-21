@@ -95,6 +95,8 @@ final class WithdrawalAnalyticsService implements HasHooks
             'currency' => $order instanceof \WC_Order ? $order->get_currency() : '',
             'channel' => (string) ($request->channel ?? 'online'),
             'refund_amount' => $request->refundAmount,
+            'ai_category' => $request->aiCategory,
+            'ai_confidence' => $request->aiConfidence,
             'timestamp' => gmdate('c'),
         ];
 

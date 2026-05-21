@@ -167,9 +167,20 @@ final class Plugin
 
     private function syncInstalledVersion(): void
     {
-        if (get_option('polski_version') !== VERSION) {
-            update_option('polski_version', VERSION);
+        $installed = get_option('polski_version');
+
+        if ($installed === VERSION) {
+            return;
         }
+
+        // Version changed (fresh install, manual reactivation, or background
+        // plugin upgrade). `register_activation_hook` does not fire on the WP
+        // auto-update path, so we run pending migrations here as well; the
+        // Migrator tracks executed versions and is safe to call repeatedly.
+        $migrator = new Migrator();
+        $migrator->runPending();
+
+        update_option('polski_version', VERSION);
     }
 
     /**
