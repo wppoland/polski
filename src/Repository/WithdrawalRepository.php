@@ -260,4 +260,76 @@ final class WithdrawalRepository
             ),
         );
     }
+
+    /**
+     * Find every withdrawal filed by a guest using the given email address.
+     *
+     * @return list<WithdrawalRequest>
+     */
+    public function findByGuestEmail(string $email, int $limit = 200): array
+    {
+        $email = strtolower(trim($email));
+
+        if ($email === '') {
+            return [];
+        }
+
+        $sql = $this->wpdb->prepare('SELECT * FROM %i WHERE LOWER(guest_email) = %s ORDER BY requested_at DESC LIMIT %d', $this->tableName(), $email, $limit);
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom table, prepared above.
+        $rows = $this->wpdb->get_results($sql);
+
+        $list = is_array($rows) ? $rows : [];
+
+        return array_map(
+            static fn (\stdClass $row) => WithdrawalRequest::fromRow($row),
+            $list,
+        );
+    }
+
+    /**
+     * Scrub personally identifiable information from withdrawals belonging to a customer.
+     *
+     * Withdrawals are legal artifacts and cannot be deleted under accounting and tax
+     * retention rules, so the row is kept and only PII columns are reset.
+     */
+    public function anonymizeForCustomer(int $customerId): int
+    {
+        if ($customerId <= 0) {
+            return 0;
+        }
+
+        $affected = $this->wpdb->update(
+            $this->tableName(),
+            [
+                'guest_email' => null,
+                'reason' => null,
+                'rejected_reason' => null,
+            ],
+            ['customer_id' => $customerId],
+            ['%s', '%s', '%s'],
+            ['%d'],
+        );
+
+        return (int) $affected;
+    }
+
+    /**
+     * Scrub personally identifiable information from guest withdrawals filed for a given email.
+     */
+    public function anonymizeForGuestEmail(string $email): int
+    {
+        $email = strtolower(trim($email));
+
+        if ($email === '') {
+            return 0;
+        }
+
+        $sql = $this->wpdb->prepare('UPDATE %i SET guest_email = NULL, guest_token_hash = NULL, reason = NULL, rejected_reason = NULL WHERE LOWER(guest_email) = %s', $this->tableName(), $email);
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom table, prepared above.
+        $affected = $this->wpdb->query($sql);
+
+        return (int) $affected;
+    }
 }
