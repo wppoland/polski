@@ -126,6 +126,13 @@ if (! function_exists('admin_url')) {
     }
 }
 
+if (! function_exists('wp_salt')) {
+    function wp_salt(string $scheme = 'auth'): string
+    {
+        return 'polski-test-salt-' . $scheme;
+    }
+}
+
 if (! function_exists('set_transient')) {
     function set_transient(string $transient, mixed $value, int $expiration = 0): bool
     {

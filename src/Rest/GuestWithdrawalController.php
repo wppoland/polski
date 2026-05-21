@@ -63,10 +63,19 @@ final class GuestWithdrawalController implements HasHooks
 
     /**
      * Start the flow. Returns 202 Accepted with a generic message regardless
-     * of order existence — callers should display the message verbatim.
+     * of order existence - callers should display the message verbatim.
      */
     public function requestMagicLink(\WP_REST_Request $request): \WP_REST_Response
     {
+        // Defence in depth: if the client provided a WordPress REST nonce, it
+        // must be valid. CSRF probes from third-party origins typically fail
+        // this check, so we reject them BEFORE the rate-limit slot is consumed.
+        // Endpoints remain callable by non-browser clients (no header at all).
+        $nonce = (string) $request->get_header('X-WP-Nonce');
+        if ($nonce !== '' && ! wp_verify_nonce($nonce, 'wp_rest')) {
+            return new \WP_REST_Response(['accepted' => false, 'message' => 'invalid_nonce'], 403);
+        }
+
         $orderNumber = sanitize_text_field((string) $request->get_param('order_number'));
         $email = sanitize_email((string) $request->get_param('email'));
 
@@ -97,6 +106,12 @@ final class GuestWithdrawalController implements HasHooks
      */
     public function redeemToken(\WP_REST_Request $request): \WP_REST_Response
     {
+        // Same defence-in-depth nonce check as requestMagicLink().
+        $nonce = (string) $request->get_header('X-WP-Nonce');
+        if ($nonce !== '' && ! wp_verify_nonce($nonce, 'wp_rest')) {
+            return new \WP_REST_Response(['error' => 'invalid_nonce'], 403);
+        }
+
         $token = sanitize_text_field((string) $request->get_param('token'));
         $reason = $request->get_param('reason');
         $reason = is_string($reason) ? sanitize_textarea_field($reason) : null;

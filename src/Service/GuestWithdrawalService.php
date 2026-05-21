@@ -114,6 +114,7 @@ final class GuestWithdrawalService implements HasHooks
     public function renderLookupShortcode(): string
     {
         // If a token is present, attempt to redeem it and render the actual withdrawal form.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Magic-link token from email; authenticity verified via the transient lookup below.
         $token = isset($_GET['polski_wt']) ? sanitize_text_field(wp_unslash((string) $_GET['polski_wt'])) : '';
 
         if ($token !== '') {
@@ -325,16 +326,36 @@ final class GuestWithdrawalService implements HasHooks
         return null;
     }
 
+    /**
+     * Enforce a per-IP attempt budget for guest withdrawal requests.
+     *
+     * The bucket is scoped exclusively by a salted SHA-256 hash of the client IP
+     * so an attacker rotating through email addresses cannot escape rate limiting.
+     * The function fails closed: if the transient store cannot record the new
+     * count (storage broken, write rejected), the request is treated as rate
+     * limited rather than letting the limiter become a silent no-op.
+     *
+     * The `$email` parameter is retained for caller compatibility but is no
+     * longer part of the bucket key.
+     */
     private function checkRateLimit(string $email): bool
     {
-        $key = self::RATE_PREFIX . md5(strtolower($email) . '|' . $this->clientIp());
+        unset($email); // intentionally unused.
+
+        $key = self::RATE_PREFIX . hash('sha256', $this->clientIp() . wp_salt('auth'));
         $count = (int) get_transient($key);
 
         if ($count >= self::RATE_LIMIT_MAX_REQUESTS) {
             return false;
         }
 
-        set_transient($key, $count + 1, self::RATE_LIMIT_WINDOW_SECONDS);
+        $stored = set_transient($key, $count + 1, self::RATE_LIMIT_WINDOW_SECONDS);
+
+        if ($stored === false) {
+            // Fail closed: never let a broken transient backend turn the limiter
+            // into a silent no-op.
+            return false;
+        }
 
         return true;
     }
