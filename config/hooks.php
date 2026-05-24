@@ -96,6 +96,7 @@ return [
     DoubleOptInService::class,
     \Polski\Service\OssObserverService::class,
     EmailService::class,
+    \Polski\Email\WithdrawalEmailCta::class,
     DisputeResolutionService::class,
     SearchService::class,
     WishlistService::class,

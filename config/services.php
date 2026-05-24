@@ -158,6 +158,9 @@ return static function (Container $c): void {
     $c->singleton(CheckboxService::class, static fn () => new CheckboxService());
     $c->singleton(LegalPageService::class, static fn () => new LegalPageService());
     $c->singleton(EmailService::class, static fn () => new EmailService());
+    $c->singleton(\Polski\Email\WithdrawalEmailCta::class, static fn () => new \Polski\Email\WithdrawalEmailCta(
+        $c->get(\Polski\Service\WithdrawalService::class),
+    ));
     $c->singleton(DisputeResolutionService::class, static fn () => new DisputeResolutionService());
     $c->singleton(ProductInfoService::class, static fn () => new ProductInfoService());
     $c->singleton(FoodService::class, static fn () => new FoodService());
