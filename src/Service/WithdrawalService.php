@@ -215,10 +215,21 @@ final class WithdrawalService implements Bootable, HasHooks
                 'line_total' => (float) $item->get_total(),
                 'line_tax' => (float) $item->get_total_tax(),
                 'currency' => $order->get_currency(),
+                'is_exempt' => false,
+                'exempt_reason' => '',
             ];
         }
 
-        return $rows;
+        /**
+         * Allow exemption-aware services (eg. WithdrawalExemptionService) to
+         * decorate each row with `is_exempt` and `exempt_reason` so the form
+         * can render them as info-only and the server-side selection parser
+         * can drop them. Subscribers MUST preserve the rest of the row shape.
+         *
+         * @param array<int, array<string, mixed>> $rows
+         * @param \WC_Order                        $order
+         */
+        return (array) apply_filters('polski/withdrawal/items', $rows, $order);
     }
 
     /**
@@ -512,10 +523,25 @@ final class WithdrawalService implements Bootable, HasHooks
             return [];
         }
 
+        // Build a quick lookup of exempt item ids so we can strip them from
+        // both the full-order path and the explicit selection path. Items are
+        // marked exempt by subscribers of the `polski/withdrawal/items` filter
+        // applied at the end of getRemainingItems().
+        $exemptIds = [];
+        foreach ($remaining as $entry) {
+            if (! empty($entry['is_exempt'])) {
+                $exemptIds[(int) $entry['order_item_id']] = true;
+            }
+        }
+
         if ($selection === null) {
-            // Full order: take all remaining items at their remaining qty.
+            // Full order: take all remaining non-exempt items at their remaining qty.
             $resolved = [];
             foreach ($remaining as $entry) {
+                if (isset($exemptIds[(int) $entry['order_item_id']])) {
+                    do_action('polski/withdrawal/exempt_item_skipped', (int) $entry['order_item_id'], $order, (string) ($entry['exempt_reason'] ?? ''));
+                    continue;
+                }
                 $resolved[] = [
                     'order_item_id' => $entry['order_item_id'],
                     'product_id' => $entry['product_id'],
@@ -543,6 +569,15 @@ final class WithdrawalService implements Bootable, HasHooks
             $qty = round(max(0.0, (float) $qty), 10);
 
             if ($qty <= 0) {
+                continue;
+            }
+
+            // Strip any posted exempt item silently. The form should already
+            // render them as info-only, but a tampered POST or a client that
+            // ignores the disabled attribute could still try to include them.
+            if (isset($exemptIds[$orderItemId])) {
+                $reasonForTelemetry = (string) ($remainingById[$orderItemId]['exempt_reason'] ?? '');
+                do_action('polski/withdrawal/exempt_item_skipped', $orderItemId, $order, $reasonForTelemetry);
                 continue;
             }
 
