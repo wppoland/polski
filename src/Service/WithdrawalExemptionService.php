@@ -40,6 +40,46 @@ final class WithdrawalExemptionService implements HasHooks
 
         // Plug into the central eligibility filter so this service is the single source of truth.
         add_filter('polski/withdrawal/eligible', [$this, 'filterOrderEligibility'], 10, 2);
+
+        // Decorate per-item rows with is_exempt + exempt_reason so the form
+        // can render exempt items as info-only and the server-side selection
+        // parser can drop them in a mixed cart.
+        add_filter('polski/withdrawal/items', [$this, 'decorateRowsWithExemption'], 10, 2);
+    }
+
+    /**
+     * Mark each item row with `is_exempt` + `exempt_reason` when the product
+     * (or one of its categories) is excluded from the right of withdrawal.
+     *
+     * Subscribers further down the chain receive the decorated row and can
+     * skip exempt items without re-running the lookup themselves.
+     *
+     * @param array<int, array<string, mixed>> $rows
+     * @return array<int, array<string, mixed>>
+     */
+    public function decorateRowsWithExemption(array $rows, \WC_Order $order): array
+    {
+        unset($order);
+
+        foreach ($rows as &$row) {
+            $productId = (int) ($row['product_id'] ?? 0);
+            if ($productId <= 0) {
+                continue;
+            }
+
+            $product = wc_get_product($productId);
+            if (! $product instanceof \WC_Product) {
+                continue;
+            }
+
+            if ($this->isProductExempt($product)) {
+                $row['is_exempt'] = true;
+                $row['exempt_reason'] = $this->getProductExemptionReason($product);
+            }
+        }
+        unset($row);
+
+        return $rows;
     }
 
     /**

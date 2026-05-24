@@ -83,9 +83,11 @@ $polski_intro_text = str_replace(
                     <?php foreach ($polski_remaining_items as $polski_item) :
                         $polski_field_id = 'polski_qty_' . (int) $polski_item['order_item_id'];
                         $polski_help_id = $polski_field_id . '_help';
+                        $polski_is_exempt = ! empty($polski_item['is_exempt']);
+                        $polski_exempt_reason = $polski_is_exempt ? (string) ($polski_item['exempt_reason'] ?? '') : '';
                     ?>
-                        <tr>
-                            <th scope="row" style="text-align: left;" data-label="<?php esc_attr_e('Pozycja', 'polski'); ?>">
+                        <tr<?php echo $polski_is_exempt ? ' class="polski-withdrawal-item--exempt" aria-disabled="true"' : ''; ?>>
+                            <th scope="row" style="text-align: left;<?php echo $polski_is_exempt ? ' opacity:0.65;' : ''; ?>" data-label="<?php esc_attr_e('Pozycja', 'polski'); ?>">
                                 <label for="<?php echo esc_attr($polski_field_id); ?>">
                                     <strong><?php echo esc_html((string) $polski_item['name']); ?></strong>
                                 </label>
@@ -95,35 +97,48 @@ $polski_intro_text = str_replace(
                                 <?php if (! empty($polski_item['sku'])) : ?>
                                     <br><span style="color:#475569;"><?php esc_html_e('SKU:', 'polski'); ?> <?php echo esc_html((string) $polski_item['sku']); ?></span>
                                 <?php endif; ?>
+                                <?php if ($polski_is_exempt) : ?>
+                                    <br>
+                                    <span class="polski-withdrawal-item__exempt-badge" style="display:inline-block;margin-top:0.25rem;padding:0.15rem 0.45rem;border-radius:0.25rem;background:#fef3c7;color:#92400e;font-size:0.85em;">
+                                        <?php esc_html_e('Wyłączone ze zwrotu', 'polski'); ?><?php if ($polski_exempt_reason !== '') : ?>: <?php echo esc_html($polski_exempt_reason); ?><?php endif; ?>
+                                    </span>
+                                <?php endif; ?>
                             </th>
-                            <td data-label="<?php esc_attr_e('Pozostało', 'polski'); ?>">
+                            <td data-label="<?php esc_attr_e('Pozostało', 'polski'); ?>"<?php echo $polski_is_exempt ? ' style="opacity:0.65;"' : ''; ?>>
                                 <span aria-label="<?php esc_attr_e('Pozostało do zwrotu', 'polski'); ?>">
                                     <?php echo esc_html((string) $polski_item['quantity_remaining']); ?> / <?php echo esc_html((string) $polski_item['quantity_total']); ?>
                                 </span>
                             </td>
                             <td data-label="<?php esc_attr_e('Liczba sztuk do zwrotu', 'polski'); ?>">
-                                <input
-                                    type="number"
-                                    id="<?php echo esc_attr($polski_field_id); ?>"
-                                    min="0"
-                                    max="<?php echo esc_attr((string) $polski_item['quantity_remaining']); ?>"
-                                    step="1"
-                                    name="polski_items[<?php echo esc_attr((string) $polski_item['order_item_id']); ?>]"
-                                    value="<?php echo esc_attr((string) $polski_item['quantity_remaining']); ?>"
-                                    aria-describedby="<?php echo esc_attr($polski_help_id); ?>"
-                                    inputmode="numeric"
-                                    style="width: 5rem;"
-                                >
-                                <small id="<?php echo esc_attr($polski_help_id); ?>" class="screen-reader-text" style="position:absolute;left:-9999px;">
-                                    <?php
-                                    printf(
-                                        /* translators: 1: product name, 2: max qty */
-                                        esc_html__('Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s" wynosi %2$s.', 'polski'),
-                                        esc_html((string) $polski_item['name']),
-                                        esc_html((string) $polski_item['quantity_remaining']),
-                                    );
-                                    ?>
-                                </small>
+                                <?php if ($polski_is_exempt) : ?>
+                                    <span aria-hidden="true" style="color:#94a3b8;">&mdash;</span>
+                                    <span class="screen-reader-text" style="position:absolute;left:-9999px;">
+                                        <?php esc_html_e('Ta pozycja jest wyłączona ze zwrotu i nie może być wybrana.', 'polski'); ?>
+                                    </span>
+                                <?php else : ?>
+                                    <input
+                                        type="number"
+                                        id="<?php echo esc_attr($polski_field_id); ?>"
+                                        min="0"
+                                        max="<?php echo esc_attr((string) $polski_item['quantity_remaining']); ?>"
+                                        step="1"
+                                        name="polski_items[<?php echo esc_attr((string) $polski_item['order_item_id']); ?>]"
+                                        value="<?php echo esc_attr((string) $polski_item['quantity_remaining']); ?>"
+                                        aria-describedby="<?php echo esc_attr($polski_help_id); ?>"
+                                        inputmode="numeric"
+                                        style="width: 5rem;"
+                                    >
+                                    <small id="<?php echo esc_attr($polski_help_id); ?>" class="screen-reader-text" style="position:absolute;left:-9999px;">
+                                        <?php
+                                        printf(
+                                            /* translators: 1: product name, 2: max qty */
+                                            esc_html__('Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s" wynosi %2$s.', 'polski'),
+                                            esc_html((string) $polski_item['name']),
+                                            esc_html((string) $polski_item['quantity_remaining']),
+                                        );
+                                        ?>
+                                    </small>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
