@@ -4,6 +4,7 @@
 .github
 .phpunit.cache
 .phpstan.neon
+phpstan.neon.dist
 .wp-env.json
 .wp-env.override.json
 .distignore
