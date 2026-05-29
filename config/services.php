@@ -299,6 +299,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\KSeFReadyService::class, static fn () => new \Polski\Service\KSeFReadyService());
     $c->singleton(SecurityIncidentService::class, static fn () => new SecurityIncidentService());
     $c->singleton(\Polski\Service\SiteAuditService::class, static fn () => new \Polski\Service\SiteAuditService());
+    $c->singleton(\Polski\Service\StoreHealthMonitorService::class, static fn () => new \Polski\Service\StoreHealthMonitorService());
     $c->singleton(\Polski\Service\CRAReadinessService::class, static fn () => new \Polski\Service\CRAReadinessService());
     $c->singleton(\Polski\Service\DPATrackerService::class, static fn () => new \Polski\Service\DPATrackerService());
     $c->singleton(\Polski\Service\NipLookupService::class, static fn () => new \Polski\Service\NipLookupService());

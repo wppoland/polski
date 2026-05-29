@@ -135,6 +135,7 @@ return [
     \Polski\Service\KSeFReadyService::class,
     \Polski\Service\SecurityIncidentService::class,
     \Polski\Service\SiteAuditService::class,
+    \Polski\Service\StoreHealthMonitorService::class,
     \Polski\Service\CRAReadinessService::class,
     \Polski\Service\DPATrackerService::class,
     \Polski\Service\NipLookupService::class,

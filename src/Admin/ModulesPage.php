@@ -922,6 +922,25 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_security|default_reporter_name', 'label' => __('Default reporter name', 'polski'), 'type' => 'text', 'default' => 'Store administrator'],
                 ],
             ],
+            [
+                'id' => 'store_health',
+                'name' => __('Store health monitor', 'polski'),
+                'description' => __('Continuous, passive monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies ("traffic but no orders"). Sends email or webhook alerts. Checks run every 5 minutes and never place synthetic orders.', 'polski'),
+                'group' => __('Consumer rights', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-heart',
+                'links' => [
+                    ['label' => __('Health dashboard', 'polski'), 'url' => admin_url('admin.php?page=polski&tab=reports&view=health')],
+                ],
+                'settings' => [
+                    ['key' => 'polski_store_health|alert_email', 'label' => __('Alert email', 'polski'), 'type' => 'email', 'default' => (string) get_option('admin_email'), 'hint' => __('Where to send health alerts. Defaults to the site admin email.', 'polski')],
+                    ['key' => 'polski_store_health|webhook_url', 'label' => __('Alert webhook URL', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Optional. Sends a JSON {"text": ...} payload (Slack/Discord-compatible).', 'polski')],
+                    ['key' => 'polski_store_health|payments_fail_percent', 'label' => __('Checkout failure threshold (%)', 'polski'), 'type' => 'number', 'default' => 30, 'hint' => __('Alert when this share of checkouts fails within the last 2 hours.', 'polski')],
+                    ['key' => 'polski_store_health|payments_min_sample', 'label' => __('Minimum checkout sample', 'polski'), 'type' => 'number', 'default' => 5, 'hint' => __('Ignore the failure rate until at least this many checkouts are observed.', 'polski')],
+                    ['key' => 'polski_store_health|sales_min_expected', 'label' => __('Sales anomaly threshold', 'polski'), 'type' => 'number', 'default' => 3, 'hint' => __('Alert only when this many orders are typical for the hour but none arrive.', 'polski')],
+                    ['key' => 'polski_store_health|cooldown_minutes', 'label' => __('Alert cooldown (minutes)', 'polski'), 'type' => 'number', 'default' => 60, 'hint' => __('Minimum time between repeat alerts for an ongoing problem.', 'polski')],
+                ],
+            ],
 
             // === SEO and Optimization ===
             [
@@ -1743,6 +1762,7 @@ final class ModulesPage implements HasHooks
             'dsa_toolkit' => false,
             'ksef_ready' => false,
             'security_incidents' => true,
+            'store_health' => false,
             'site_audit' => true,
             'plugin_data' => true,
             'cra_readiness' => false,
