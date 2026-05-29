@@ -4,7 +4,6 @@
 .github
 .phpunit.cache
 .phpstan.neon
-phpstan.neon.dist
 .wp-env.json
 .wp-env.override.json
 .distignore
@@ -40,6 +39,8 @@ _benchmark
 AGENTS.md
 CLAUDE.md
 SUPPORT.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
 build/.vite
 .claude
 messages.mo
