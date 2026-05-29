@@ -7,6 +7,8 @@
 .wp-env.json
 .wp-env.override.json
 .distignore
+.lighthouseci
+lighthouserc.json
 bin
 composer.json
 composer.lock
@@ -17,6 +19,7 @@ package-lock.json
 package.json
 phpunit.xml.dist
 phpcs.xml.dist
+phpstan.neon.dist
 phpstan-baseline.neon
 phpstan-errors.txt
 phpstan-full.txt
@@ -39,9 +42,7 @@ SUPPORT.md
 build/.vite
 .claude
 messages.mo
-languages/*.mo
 languages/*.po
-languages/*.pot
 languages/translate_po.py
 languages/*.po~
 languages/polski-pro.pot
