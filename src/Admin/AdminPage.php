@@ -407,7 +407,7 @@ final class AdminPage implements Bootable, HasHooks
         wp_enqueue_style(
             'polski-admin-menu-icon',
             plugins_url('assets/css/admin-menu-icon.css', PLUGIN_FILE),
-            [],
+            ['polski-brand'],
             \Polski\VERSION,
         );
     }
@@ -1142,7 +1142,7 @@ final class AdminPage implements Bootable, HasHooks
         wp_enqueue_style(
             'polski-admin',
             plugins_url('build/admin.css', PLUGIN_FILE),
-            ['wp-components'],
+            ['wp-components', 'polski-brand'],
             $asset['version'],
         );
 

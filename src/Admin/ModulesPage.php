@@ -1919,7 +1919,7 @@ final class ModulesPage implements HasHooks
         wp_enqueue_style(
             'polski-admin-modules',
             plugins_url('assets/css/admin-modules.css', \Polski\PLUGIN_FILE),
-            [],
+            ['polski-brand'],
             \Polski\VERSION,
         );
 

@@ -1,15 +1,26 @@
+/* ==========================================================================
+   Polski — Modules / settings list, rebranded.
+   Pairs with polski-brand.css. Uses --pl-* tokens with literal fallbacks
+   so it is safe even on screens where the brand wrapper class is absent.
+   ========================================================================== */
+
 [id^="polski-module-"] { scroll-margin-top: 56px; }
 
 .sp-card {
-    background: #fff;
-    border: 1px solid #ccd0d4;
+    background: var(--pl-white, #fff);
+    border: 1px solid var(--pl-line, #D9D7D4);
+    border-radius: var(--pl-r-md, 10px);
     padding: 16px;
     position: relative;
     overflow: visible;
     transition: border-color .2s, box-shadow .2s;
 }
 
-.sp-card--active { border-color: #46b450; }
+/* active module → brand crimson edge + soft lift */
+.sp-card--active {
+    border-color: var(--pl-crimson, #D4213D);
+    box-shadow: var(--pl-sh-1, 0 1px 2px rgba(24,25,28,.06));
+}
 
 .sp-card__help-wrap {
     position: relative;
@@ -31,21 +42,17 @@
     background: transparent;
     box-shadow: none;
     cursor: help;
-    color: #646970;
+    color: var(--pl-slate, #6B6E78);
     font: inherit;
     line-height: 1;
     -webkit-appearance: none;
     appearance: none;
 }
 
-.sp-card__help .dashicons {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
-}
+.sp-card__help .dashicons { font-size: 18px; width: 18px; height: 18px; }
 
 .sp-card__help:focus {
-    outline: 1px solid #2271b1;
+    outline: 2px solid var(--pl-crimson, #D4213D);
     outline-offset: 1px;
     border-radius: 2px;
 }
@@ -61,13 +68,13 @@
     min-width: 200px;
     max-width: min(340px, 90vw);
     padding: 8px 10px;
-    background: #1d2327;
+    background: var(--pl-ink, #18191C);
     color: #f0f0f1;
     font-size: 12px;
     line-height: 1.45;
     font-weight: 400;
     text-align: left;
-    border-radius: 4px;
+    border-radius: var(--pl-r-sm, 6px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
     pointer-events: none;
 }
@@ -75,7 +82,7 @@
 .sp-card__help-wrap:hover .sp-card__help-tooltip,
 .sp-card__help-wrap:focus-within .sp-card__help-tooltip { display: block; }
 
-.sp-card__docs-link { color: #2271b1; text-decoration: none; }
+.sp-card__docs-link { color: var(--pl-crimson-600, #B81A33); text-decoration: none; }
 .sp-card__docs-link:hover,
 .sp-card__docs-link:focus { text-decoration: underline; }
 
@@ -89,21 +96,13 @@
     flex-shrink: 0;
 }
 
-.sp-toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
+.sp-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
 
 .sp-toggle__track {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #ccc;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #c9c7c3;
     border-radius: 22px;
     transition: background .2s;
 }
@@ -120,8 +119,10 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
 }
 
-.sp-toggle input:checked ~ .sp-toggle__track { background: #46b450; }
+/* ON → brand crimson (primary action state) */
+.sp-toggle input:checked ~ .sp-toggle__track { background: var(--pl-crimson, #D4213D); }
 .sp-toggle input:checked ~ .sp-toggle__knob { transform: translateX(18px); }
+.sp-toggle input:focus-visible ~ .sp-toggle__track { box-shadow: var(--pl-ring, 0 0 0 3px rgba(212,33,61,.22)); }
 
 .polski-modules-table { margin-top: 16px; }
 .polski-modules-table thead th { font-weight: 600; }
@@ -132,20 +133,23 @@
 .polski-modules-col-actions { width: 90px; text-align: right; white-space: nowrap; }
 
 .polski-modules-group-header th {
-    background: #f0f0f1;
-    font-weight: 600;
-    font-size: 13px;
+    background: var(--pl-surface, #E9E8E7);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
     padding: 10px 12px;
-    border-top: 1px solid #dcdcde;
-    border-bottom: 1px solid #dcdcde;
-    color: #1d2327;
+    border-top: 1px solid var(--pl-line, #D9D7D4);
+    border-bottom: 1px solid var(--pl-line, #D9D7D4);
+    color: var(--pl-ink, #18191C);
 }
 
 .polski-modules-row td { vertical-align: middle; }
-.polski-modules-row--active .polski-modules-name-inner > .dashicons { color: #46b450; }
+/* active module marker → brand crimson */
+.polski-modules-row--active .polski-modules-name-inner > .dashicons { color: var(--pl-crimson, #D4213D); }
 
 .polski-modules-name-inner { display: flex; align-items: center; gap: 8px; }
-.polski-modules-name-inner > .dashicons { color: #646970; flex-shrink: 0; }
+.polski-modules-name-inner > .dashicons { color: var(--pl-slate, #6B6E78); flex-shrink: 0; }
 .polski-modules-name-text { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; min-width: 0; }
 .polski-modules-name-text strong { line-height: 1.3; }
 
@@ -153,24 +157,28 @@
     display: inline-block;
     padding: 1px 6px;
     font-size: 10px;
-    font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: .4px;
-    background: #2271b1;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: .8px;
+    background: var(--pl-crimson, #D4213D);
     color: #fff;
     border-radius: 3px;
     text-transform: uppercase;
 }
 
-.polski-modules-desc-text { color: #50575e; font-size: 13px; line-height: 1.5; }
-.polski-modules-links a { text-decoration: none; color: #2271b1; }
+.polski-modules-desc-text { color: var(--pl-ink-soft, #3A3D45); font-size: 13px; line-height: 1.5; }
+.polski-modules-links a { text-decoration: none; color: var(--pl-crimson-600, #B81A33); }
 .polski-modules-links a:hover { text-decoration: underline; }
 
-.polski-modules-col-actions .button-link { padding: 4px; color: #646970; }
+.polski-modules-col-actions .button-link { padding: 4px; color: var(--pl-slate, #6B6E78); }
 .polski-modules-col-actions .button-link:hover,
-.polski-modules-col-actions .button-link:focus { color: #2271b1; }
+.polski-modules-col-actions .button-link:focus { color: var(--pl-crimson-600, #B81A33); }
 .polski-modules-col-actions .dashicons { width: 18px; height: 18px; font-size: 18px; }
-.polski-modules-edit[aria-expanded="true"] { color: #2271b1; }
+.polski-modules-edit[aria-expanded="true"] { color: var(--pl-crimson-600, #B81A33); }
 
-.polski-modules-settings-cell { background: #f6f7f7; padding: 16px 20px; border-left: 3px solid #2271b1; }
+.polski-modules-settings-cell {
+    background: #f6f5f3;
+    padding: 16px 20px;
+    border-left: 3px solid var(--pl-crimson, #D4213D);
+}
 .polski-modules-settings-panel form { max-width: 760px; }

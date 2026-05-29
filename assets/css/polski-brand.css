@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Polski — Brand layer (design tokens + identity components)
+   Load this FIRST on every Polski admin screen, before admin-dashboard.css
+   and admin-modules.css. Tokens are namespaced --pl-* and scoped to the
+   plugin wrappers so they never leak into the wider wp-admin.
+
+   Identity: crimson #D4213D · surface #E9E8E7 · ink #18191C
+   Type: Schibsted Grotesk (display/wordmark) · Hanken Grotesk (UI text)
+   ========================================================================== */
+
+/* Fonts: enqueue assets/css/polski-fonts.css FIRST (self-hosted woff2,
+   font-display:swap). The dev-only Google Fonts @import has been removed so
+   shipped CSS has no render-blocking import — see integration/IMPLEMENTATION.md. */
+
+.polski-admin,
+.polski-modules-wrap,
+.toplevel_page_polski #wpbody-content {
+    --pl-crimson:       #D4213D;
+    --pl-crimson-600:   #B81A33;
+    --pl-crimson-700:   #951528;
+    --pl-crimson-tint:  #FCEBED;
+    --pl-crimson-100:   #F6D9DD;
+
+    --pl-ink:           #18191C;
+    --pl-ink-soft:      #3A3D45;
+    --pl-slate:         #6B6E78;
+    --pl-surface:       #E9E8E7;
+    --pl-white:         #FFFFFF;
+    --pl-line:          #D9D7D4;
+    --pl-line-soft:     #ECEAE7;
+
+    --pl-ok:    #1F7A4D;  --pl-ok-tint:   #E4F2EA;
+    --pl-warn:  #B5701A;  --pl-warn-tint: #F8EEDD;
+    --pl-err:   #B81A33;  --pl-err-tint:  #FCEBED;
+
+    --pl-font-display: 'Schibsted Grotesk', system-ui, sans-serif;
+    --pl-font-text: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --pl-font-mono: 'Space Mono', ui-monospace, monospace;
+
+    --pl-r-sm: 6px;  --pl-r-md: 10px;  --pl-r-lg: 14px;  --pl-r-pill: 999px;
+    --pl-ring: 0 0 0 3px rgba(212, 33, 61, 0.22);
+    --pl-sh-1: 0 1px 2px rgba(24,25,28,.06), 0 1px 3px rgba(24,25,28,.05);
+    --pl-sh-2: 0 2px 4px rgba(24,25,28,.06), 0 8px 22px rgba(24,25,28,.07);
+}
+
+/* ---- App shell ---------------------------------------------------------- */
+.polski-admin {
+    font-family: var(--pl-font-text);
+    color: var(--pl-ink);
+}
+
+.polski-admin__header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 4px 0 18px;
+    margin: 0 0 8px;
+}
+
+/* The monogram tile (app icon) */
+.polski-logo-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 23%;
+    background: var(--pl-crimson);
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.polski-logo-mark svg { width: 62%; height: 62%; display: block; }
+
+/* The wordmark "Polski" — fat 900, with the lifted verified-square tittle */
+.polski-logo-word {
+    font-family: var(--pl-font-display);
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    color: var(--pl-ink);
+    -webkit-text-stroke: 1.1px var(--pl-ink);
+    display: inline-block;
+}
+.polski-logo-word .pl-i {
+    position: relative;
+    display: inline-block;
+}
+.polski-logo-word .pl-i .pl-dot {
+    position: absolute;
+    bottom: 0.72em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.24em;
+    height: 0.245em;
+    background: var(--pl-crimson);
+    border-radius: 0.06em;
+    -webkit-text-stroke: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.polski-logo-word .pl-dot svg { width: 62%; height: 62%; }
+
+.polski-admin__header h1 { margin: 0; padding: 0; }   /* neutralize wp h1 */
+
+.polski-admin__version {
+    font-family: var(--pl-font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--pl-slate);
+    background: var(--pl-surface);
+    border: 1px solid var(--pl-line);
+    padding: 3px 8px;
+    border-radius: var(--pl-r-pill);
+    align-self: center;
+}
+.polski-admin__pro-tag {
+    font-family: var(--pl-font-text);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--pl-crimson);
+    border: 1.5px solid var(--pl-crimson);
+    border-radius: 5px;
+    padding: 3px 7px;
+    text-transform: uppercase;
+}
+
+/* WordPress CardHeader h2 — give headings the brand display face */
+.polski-admin .components-card__header h2,
+.polski-admin .polski-dashboard__card h2 {
+    font-family: var(--pl-font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--pl-ink);
+}
+
+/* Brand-aligned WordPress buttons inside the Polski app */
+.polski-admin .components-button.is-primary {
+    background: var(--pl-crimson);
+    border-color: var(--pl-crimson);
+    box-shadow: none;
+}
+.polski-admin .components-button.is-primary:hover:not(:disabled) {
+    background: var(--pl-crimson-600);
+    border-color: var(--pl-crimson-600);
+}
+.polski-admin .components-button.is-primary:active:not(:disabled) {
+    background: var(--pl-crimson-700);
+}
+.polski-admin .components-button.is-primary:focus:not(:disabled) {
+    box-shadow: var(--pl-ring);
+}
+.polski-admin a { color: var(--pl-crimson-600); }
+.polski-admin a:hover { color: var(--pl-crimson-700); }
