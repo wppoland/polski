@@ -399,6 +399,12 @@ return static function (Container $c): void {
         $c->get(AdminPage::class),
     ));
 
+    $c->singleton(\Polski\Admin\BrandAssets::class, static fn () => new \Polski\Admin\BrandAssets());
+
+    $c->singleton(\Polski\Hook\StructuredDataHooks::class, static fn () => new \Polski\Hook\StructuredDataHooks(
+        $c->get(OmnibusService::class),
+    ));
+
     $c->singleton(ProductHooks::class, static fn () => new ProductHooks(
         $c->get(PriceDisplayService::class),
         $c->get(DeliveryTimeService::class),

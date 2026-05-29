@@ -1,16 +1,24 @@
+/* ==========================================================================
+   Polski — wp-admin menu icon. Replaces the old flag gradient with the
+   Polski monogram (crimson tile + white P), crisp at any DPI via SVG.
+   ========================================================================== */
+
 #adminmenu .toplevel_page_polski .wp-menu-image::before {
     content: "" !important;
     display: block !important;
-    width: 18px;
-    height: 14px;
-    margin: 7px auto 0;
-    border-radius: 2px;
-    background: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin: 6px auto 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    /* monogram tile */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='4.6' fill='%23D4213D'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' transform='translate(3.8 3.8) scale(0.124)' d='M32 24H58C71 24 79 32.5 79 44C79 55.5 71 64 58 64H46V82H32ZM46 37H56.5C61 37 63 39.6 63 44C63 48.4 61 51 56.5 51H46Z'/%3E%3C/svg%3E") !important;
+    opacity: 0.92;
 }
 
 #adminmenu .toplevel_page_polski:hover .wp-menu-image::before,
-#adminmenu .toplevel_page_polski.current .wp-menu-image::before {
-    border-color: rgba(255, 255, 255, 0.5);
+#adminmenu .toplevel_page_polski.current .wp-menu-image::before,
+#adminmenu .toplevel_page_polski.wp-has-current-submenu .wp-menu-image::before {
+    opacity: 1;
 }

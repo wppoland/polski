@@ -82,6 +82,7 @@ use Polski\Shortcode\ShortcodeManager;
 return [
     // Administration and Core Infrastructure.
     AdminHooks::class,
+    \Polski\Admin\BrandAssets::class,
     ModulesPage::class,
     PostTypes::class,
     ProductMetaBox::class,
@@ -140,6 +141,7 @@ return [
     \Polski\Service\DPATrackerService::class,
     \Polski\Service\NipLookupService::class,
     ProductHooks::class,
+    \Polski\Hook\StructuredDataHooks::class,
     LoopHooks::class,
     CartHooks::class,
     CheckoutHooks::class,

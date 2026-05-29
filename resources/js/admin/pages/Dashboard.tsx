@@ -66,7 +66,7 @@ export default function Dashboard() {
                         label={__('Optional', 'polski')}
                         value={data.optional_enabled}
                         subtitle={__('active optional consents', 'polski')}
-                        color="#7c3aed"
+                        color="#D4213D"
                     />
                     <StatCard
                         label={__('Consent Rate', 'polski')}
