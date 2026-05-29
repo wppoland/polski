@@ -545,6 +545,10 @@ final class AdminPage implements Bootable, HasHooks
                 $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\DPATrackerService::class);
                 $service->renderTrackerPage();
                 break;
+            case 'health':
+                $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\StoreHealthMonitorService::class);
+                $service->renderPage();
+                break;
             case 'feedback':
                 $handler = \Polski\Plugin::instance()->container()->get(\Polski\Admin\DeactivationHandler::class);
                 $handler->renderFeedbackLog();
@@ -656,6 +660,13 @@ final class AdminPage implements Bootable, HasHooks
                 'desc' => __('Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury.', 'polski'),
                 'icon' => 'dashicons-shield',
                 'module' => 'security_incidents',
+            ],
+            [
+                'id' => 'health',
+                'name' => __('Kondycja sklepu', 'polski'),
+                'desc' => __('Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii sprzedaży, z alertami.', 'polski'),
+                'icon' => 'dashicons-heart',
+                'module' => 'store_health',
             ],
             [
                 'id' => 'dpa',
