@@ -3,18 +3,26 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.16.0
+Stable tag: 1.17.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Adds product information, checkout, consent, and storefront tools for WooCommerce stores serving customers in Poland.
+Polish WooCommerce toolkit: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF-ready hooks, unit prices and storefront modules.
 
 == Description ==
 
-**Polski for WooCommerce** adds WooCommerce tools commonly used by stores that sell in Poland. It includes product information fields, checkout and consent tools, withdrawal flows, optional integrations, and storefront modules in one plugin.
+**Polski for WooCommerce** is a free, all-in-one toolkit that adapts your WooCommerce store to the Polish market and EU e-commerce practices. It bundles product safety information (GPSR), 30-day lowest price history (Omnibus), GDPR consent, the right of withdrawal, unit prices, KSeF-ready invoicing hooks, and a full set of storefront features into one modular plugin - so you can replace a stack of single-purpose plugins with one.
 
-This plugin can help you configure store workflows related to Polish and EU market practices. It does not provide legal advice or guarantee compliance. Always review your setup for your own business, products, and obligations.
+Built for Polish online stores, dropshippers, and agencies, it keeps the most common Polish and EU requirements in one place and lets you turn each module on or off as you need it.
+
+This plugin helps you configure store workflows related to Polish and EU market practices. It does not provide legal advice or guarantee compliance. Always review your setup for your own business, products, and obligations.
+
+= Documentation and useful links =
+
+* **Documentation** - https://polski.wppoland.com/
+* **Plugin page (Polish)** - https://wppoland.com/pl/polski/
+* **Plugin page (English)** - https://wppoland.com/en/polski/
 
 = Why Polski for WooCommerce? =
 
@@ -27,6 +35,7 @@ This plugin can help you configure store workflows related to Polish and EU mark
 
 = Recent Tools Added =
 
+* **Store health monitor** - Passive background monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies, with email and webhook alerts and a status dashboard
 * **GPSR-related product fields** - Manufacturer, importer, EU responsible person, product identifiers, safety warnings, and instructions with bulk CSV import or export
 * **Withdrawal request flow** - My Account withdrawal action with confirmation page, request logging, email confirmation, and audit trail
 * **DSA report tools** - Contact point settings, illegal content report form via shortcode [polski_dsa_report], admin report management page, and email notifications
@@ -222,6 +231,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.17.0 =
+* Store health monitor: new optional module (off by default) for continuous, passive monitoring of store operations. Three sensors run every 5 minutes via WP-Cron: front-end fatal errors (`shutdown` handler, storefront only), the checkout failure rate (observes `woocommerce_checkout_order_processed`, the Store API equivalent, and `woocommerce_order_status_failed` over a rolling 2-hour window), and a sales anomaly check (previous full hour vs the typical order count for the same weekday/hour over the past 8 weeks, evaluated at most once per hour). No synthetic orders are ever placed. Alerts go out by email and optional JSON webhook (Slack/Discord-compatible) with a configurable cooldown; a hard outage also records an entry in the security incident log when that module is enabled. Health dashboard under Reports & Tools with a manual "Run check now", an admin notice when status is not OK, and a read-only REST endpoint `GET /polski/v1/store-health`. Block checkout is covered through the Store API hook. Settings: alert email/webhook, failure-rate threshold and minimum sample, sales anomaly threshold, and alert cooldown.
 
 = 1.15.0 =
 * B2B fields: optional "Potrzebuję faktury VAT" toggle, separate from the existing "Buying as a company" checkbox. Polish e-commerce convention treats invoice-need as orthogonal to company-vs-consumer (paragon vs faktura), so the field is its own opt-in. Saves to `_polski_needs_invoice` order meta. Wired through both classic checkout and the WC 8.6+ additional-fields API. New setting `polski_b2b.show_needs_invoice_toggle` (default off).

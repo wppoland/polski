@@ -19,7 +19,7 @@ fi
 
 if [[ ! -d "${SVN_DIR}/.svn" ]]; then
     echo "SVN checkout not found in: ${SVN_DIR}" >&2
-    echo "Run: svn checkout https://plugins.svn.wordpress.org/polski-for-woocommerce ${SVN_DIR}" >&2
+    echo "Run: svn checkout https://plugins.svn.wordpress.org/polski ${SVN_DIR}" >&2
     exit 1
 fi
 
