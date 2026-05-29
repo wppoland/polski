@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.17.0
+Stable tag: 1.18.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -231,6 +231,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.18.0 =
+* Visual identity refresh across the admin: a new Polski brand with self-hosted Schibsted Grotesk and Hanken Grotesk webfonts (font-display swap), a monogram menu icon and a wordmark dashboard header. Admin styling loads only on the plugin's own screens, never on the storefront, to protect Core Web Vitals.
+* Storefront structured data: the plugin now augments WooCommerce's own Product and Offer JSON-LD (no duplicate graph) with a priceValidUntil value and, on sale products, the truthful Omnibus lowest 30-day price as a MinimumPrice specification for better rich results and machine readability.
 
 = 1.17.0 =
 * Store health monitor: new optional module (off by default) for continuous, passive monitoring of store operations. Three sensors run every 5 minutes via WP-Cron: front-end fatal errors (`shutdown` handler, storefront only), the checkout failure rate (observes `woocommerce_checkout_order_processed`, the Store API equivalent, and `woocommerce_order_status_failed` over a rolling 2-hour window), and a sales anomaly check (previous full hour vs the typical order count for the same weekday/hour over the past 8 weeks, evaluated at most once per hour). No synthetic orders are ever placed. Alerts go out by email and optional JSON webhook (Slack/Discord-compatible) with a configurable cooldown; a hard outage also records an entry in the security incident log when that module is enabled. Health dashboard under Reports & Tools with a manual "Run check now", an admin notice when status is not OK, and a read-only REST endpoint `GET /polski/v1/store-health`. Block checkout is covered through the Store API hook. Settings: alert email/webhook, failure-rate threshold and minimum sample, sales anomaly threshold, and alert cooldown.
