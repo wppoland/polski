@@ -8,7 +8,7 @@ import { test, expect, type Page } from '@playwright/test';
  *      accessible markup (single h2, labelled fields, aria-required, max-width).
  *   2. Submitting an unknown order returns the masked success notice (anti-enumeration).
  *   3. Posting a known email + order number triggers a magic-link e-mail
- *      (asserted indirectly via the success notice — actual mail is captured
+ *      (asserted indirectly via the success notice - actual mail is captured
  *      by wp-env's MailHog or by stubbing wp_mail in a mu-plugin).
  *
  * Prerequisites:

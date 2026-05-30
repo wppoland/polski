@@ -75,7 +75,7 @@ final class GuestWithdrawalService implements HasHooks
             return;
         }
         if ($email === '' || ! is_email($email)) {
-            $this->setNotice('error', __('Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie ty@example.com — ten sam, który podałeś przy zakupie.', 'polski'));
+            $this->setNotice('error', __('Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie ty@example.com - ten sam, który podałeś przy zakupie.', 'polski'));
             return;
         }
 
@@ -85,7 +85,7 @@ final class GuestWithdrawalService implements HasHooks
         }
 
         $order = $this->locateOrder($orderNumber);
-        $maskedNotice = __('Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) — wiadomość powinna dotrzeć w ciągu kilku minut.', 'polski');
+        $maskedNotice = __('Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) - wiadomość powinna dotrzeć w ciągu kilku minut.', 'polski');
 
         // Always show the same response so the form does not leak order-existence info.
         if (! $order instanceof \WC_Order || strcasecmp($order->get_billing_email(), $email) !== 0) {
@@ -192,7 +192,7 @@ final class GuestWithdrawalService implements HasHooks
                 . '<h2>' . esc_html__('Oświadczenie złożone', 'polski') . '</h2>'
                 . '<p>' . sprintf(
                     /* translators: %s = declaration id (POL-WD-XXXXXX) */
-                    esc_html__('Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie — sprawdź skrzynkę odbiorczą oraz folder Spam.', 'polski'),
+                    esc_html__('Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie - sprawdź skrzynkę odbiorczą oraz folder Spam.', 'polski'),
                     '<strong>' . esc_html($declarationId) . '</strong>',
                 ) . '</p>'
                 . '<p>' . esc_html__('Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem.', 'polski') . '</p>'
@@ -216,7 +216,7 @@ final class GuestWithdrawalService implements HasHooks
      * @return array{order_id: int, email: string, created: int}|null
      */
     /**
-     * REST-facing variant of the magic-link dispatch — shares the same rate
+     * REST-facing variant of the magic-link dispatch - shares the same rate
      * limiter, order lookup and e-mail body as the shortcode flow. The
      * masking step is the caller's responsibility (the REST controller
      * always returns the same response shape).
@@ -224,7 +224,7 @@ final class GuestWithdrawalService implements HasHooks
     public function dispatchMagicLinkForRest(string $orderNumber, string $email): void
     {
         if (! $this->checkRateLimit($email)) {
-            // Silent — caller will still return the masked notice.
+            // Silent - caller will still return the masked notice.
             return;
         }
 
@@ -382,7 +382,7 @@ final class GuestWithdrawalService implements HasHooks
 
         $subject = sprintf(
             /* translators: %s = order number */
-            __('Link do odstąpienia od umowy — zamówienie #%s', 'polski'),
+            __('Link do odstąpienia od umowy - zamówienie #%s', 'polski'),
             $order->get_order_number(),
         );
 

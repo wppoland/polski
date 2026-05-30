@@ -1,11 +1,11 @@
-# Manual testing harness — withdrawal flow
+# Manual testing harness - withdrawal flow
 
 Three runnable protocols for the manual validation that can't be automated
 in the unit/E2E suites:
 
-1. **Screen reader test** (NVDA on Windows, VoiceOver on macOS) — 30 min
-2. **Lighthouse + axe live audit** — 15 min
-3. **User testing with 5 personas** — 60–90 min per session
+1. **Screen reader test** (NVDA on Windows, VoiceOver on macOS) - 30 min
+2. **Lighthouse + axe live audit** - 15 min
+3. **User testing with 5 personas** - 60-90 min per session
 
 Each protocol lists the exact steps, expected outputs and a pass/fail
 checkpoint. Run against `wp-env` (`npm run env:start`) with a seeded
@@ -21,25 +21,25 @@ checkpoint. Run against `wp-env` (`npm run env:start`) with a seeded
 Install NVDA 2025.1 from <https://www.nvaccess.org/>. Start before opening
 the browser so it picks up everything.
 
-**Test 1 — Lookup page (5 min)**
+**Test 1 - Lookup page (5 min)**
 
 1. Navigate to `http://localhost:8888/odstapienie/`
 2. Press `H` to jump heading-to-heading. **Expected**:
-   - "Odstąpienie od umowy — formularz online" (h2, the only h2 in the section)
+   - "Odstąpienie od umowy - formularz online" (h2, the only h2 in the section)
    - "Najczęstsze pytania" (h3 lower on the page)
 3. Press `F` to jump form-by-form. **Expected**: lands on the lookup form. NVDA announces "form, edit, Numer zamówienia, required".
 4. Press `Tab` from the order-number field. **Expected** announcements (in order):
    - "Numer zamówienia, edit, required, Numer znajdziesz w e-mailu potwierdzającym zakup..." (label + aria-describedby help)
    - "Adres e-mail użyty przy zakupie, edit, required, Wyślemy na ten adres bezpieczny link..."
    - "Wyślij link do formularza, button"
-5. Press `D` to jump landmark-to-landmark. **Expected**: section with aria-labelledby is announced as "Odstąpienie od umowy — formularz online region".
+5. Press `D` to jump landmark-to-landmark. **Expected**: section with aria-labelledby is announced as "Odstąpienie od umowy - formularz online region".
 6. Submit empty form. NVDA must read the error notice without keyboard intervention:
    **Expected**: "Wpisz numer zamówienia (znajdziesz go w e-mailu potwierdzającym) i adres e-mail użyty przy zakupie."
 
 **Pass criteria:** every announcement above heard, no double-announcements,
 no "blank" or "unlabeled" announcements.
 
-**Test 2 — Two-step My Account form (10 min)**
+**Test 2 - Two-step My Account form (10 min)**
 
 1. Log in as `customer` / `password`, navigate to `Moje konto › Zamówienia`,
    activate "Withdraw from contract" on the seeded order.
@@ -58,20 +58,20 @@ no "blank" or "unlabeled" announcements.
 **Pass criteria:** spinbutton role, live counter announces on change, table
 caption read once at the start.
 
-**Test 3 — Guest form after magic link (5 min)**
+**Test 3 - Guest form after magic link (5 min)**
 
 1. Visit `/odstapienie/?polski_wt=DUMMY` (use a valid token from a test request).
-2. Heading "Odstąpienie od umowy — zamówienie #1001" announced.
+2. Heading "Odstąpienie od umowy - zamówienie #1001" announced.
 3. The order summary table must be announced row-by-row with column headers
    ("Produkt", "Ilość", "Wartość"). The merchant has a chance to verify
-   exactly what is being withdrawn — critical for cognitive accessibility
+   exactly what is being withdrawn - critical for cognitive accessibility
    (Bovelett clarity-dividend).
 4. Tab to reason textarea, then submit.
 
 **Pass criteria:** order summary is fully readable before the submit;
 success message reads the declaration id `POL-WD-NNNNNN` as a single token.
 
-**Test 4 — Settings page (10 min)**
+**Test 4 - Settings page (10 min)**
 
 1. Log in as `admin` / `password`, visit `Polski › Withdrawal settings`.
 2. Each settings section heading should be announced as h2/h3.
@@ -115,7 +115,7 @@ specific to VO:
 
 ---
 
-## 3. User testing with 5 personas (60–90 min per session)
+## 3. User testing with 5 personas (60-90 min per session)
 
 Find five testers matching these personas. Pay €30/session via PayPal or
 similar to incentivise honest feedback.
@@ -132,10 +132,10 @@ similar to incentivise honest feedback.
 
 1. **Intro (5 min):** "Sklep odebrał Twoje zamówienie #1001 na trzy
    produkty. Zmieniłeś zdanie i chcesz zwrócić jeden produkt. Pokaż mi,
-   jak to zrobisz — myśl na głos."
-2. **Task (15–30 min):** observer not interferes. Track: completion (yes/no),
+   jak to zrobisz - myśl na głos."
+2. **Task (15-30 min):** observer not interferes. Track: completion (yes/no),
    time-on-task, click count, error count, frustration cues.
-3. **Debrief (15 min):** SEQ scale ("How easy was this?", 1–7), three
+3. **Debrief (15 min):** SEQ scale ("How easy was this?", 1-7), three
    "what would you change", verbatim quotes.
 
 **Metrics to track in a shared sheet:**
@@ -155,11 +155,11 @@ covering the 3 most cited issues plus the actual quotes.
 Use this template after running all three protocols:
 
 ```markdown
-# Withdrawal — manual validation results (YYYY-MM-DD)
+# Withdrawal - manual validation results (YYYY-MM-DD)
 
 ## Screen reader
-- NVDA: ✅ / ❌ — notes
-- VoiceOver: ✅ / ❌ — notes
+- NVDA: ✅ / ❌ - notes
+- VoiceOver: ✅ / ❌ - notes
 - Critical issues: [list]
 
 ## Automated a11y

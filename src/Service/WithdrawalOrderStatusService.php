@@ -77,7 +77,7 @@ final class WithdrawalOrderStatusService implements HasHooks
     }
 
     /**
-     * Treat partial/completed withdrawals as "paid" for reporting and refund permissions —
+     * Treat partial/completed withdrawals as "paid" for reporting and refund permissions -
      * the original payment was successful; refund accounting is separate.
      *
      * @param list<string> $statuses
@@ -168,7 +168,7 @@ final class WithdrawalOrderStatusService implements HasHooks
                 'color' => '#7c5e10',
             ],
             self::STATUS_PARTIAL => [
-                'label' => __('Withdrawal — partial', 'polski'),
+                'label' => __('Withdrawal - partial', 'polski'),
                 'background' => '#e7f3ff',
                 'color' => '#0a4b78',
             ],

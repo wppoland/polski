@@ -9,7 +9,7 @@ use Polski\Contract\HasHooks;
 
 /**
  * Reports unexpected withdrawal-flow failures to whatever the storefront
- * has plugged in — Sentry, Datadog, internal Slack hook, anything — by
+ * has plugged in - Sentry, Datadog, internal Slack hook, anything - by
  * firing a single canonical filter and action.
  *
  * The service is opt-in: a storefront subscribes to `polski/withdrawal/error`
@@ -20,7 +20,7 @@ use Polski\Contract\HasHooks;
  *
  *  - Magic-link e-mail dispatch (`wp_mail` returned false)
  *  - Withdrawal request persistence (repository insert returned 0)
- *  - PDF generation (Pro hook — fired from polski-pro's PDF service)
+ *  - PDF generation (Pro hook - fired from polski-pro's PDF service)
  *
  * Each report includes:
  *  - `code` (machine-readable, namespaced under `polski/withdrawal/`)
@@ -77,7 +77,7 @@ final class WithdrawalErrorTelemetry implements HasHooks
     }
 
     /**
-     * Generic entry point — any module can call this directly for ad-hoc
+     * Generic entry point - any module can call this directly for ad-hoc
      * reports. Pro's PDF service uses it for `polski/withdrawal/pdf_failed`.
      *
      * @param array<string, mixed> $context
@@ -109,7 +109,7 @@ final class WithdrawalErrorTelemetry implements HasHooks
         $report = (array) apply_filters('polski/withdrawal/error_report', $report);
 
         /**
-         * Dispatch the (potentially mutated) report to subscribers — Sentry,
+         * Dispatch the (potentially mutated) report to subscribers - Sentry,
          * Datadog, custom Slack hook, etc. No-op when nothing subscribes.
          *
          * @param array<string, mixed> $report

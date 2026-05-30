@@ -239,7 +239,7 @@ final class ProductMetaBox implements HasHooks
 
         // --- GPSR Section ---
         echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('GPSR – Product Safety', 'polski') . '</h4>';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('GPSR - Product Safety', 'polski') . '</h4>';
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_manufacturer_name',

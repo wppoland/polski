@@ -163,7 +163,7 @@ $polski_intro_text = str_replace(
                         aria-describedby="polski_withdrawal_reason_help"
                     ></textarea>
                     <small id="polski_withdrawal_reason_help" style="display:block; color:#475569;">
-                        <?php esc_html_e('Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
+                        <?php esc_html_e('Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
                     </small>
                 </p>
 

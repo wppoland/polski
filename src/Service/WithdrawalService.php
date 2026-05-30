@@ -290,7 +290,7 @@ final class WithdrawalService implements Bootable, HasHooks
             );
 
             // Move the order to the dedicated withdrawal status (unless the store
-            // has opted out via filter — e.g. integrations with custom workflow).
+            // has opted out via filter - e.g. integrations with custom workflow).
             $newStatus = (string) apply_filters(
                 'polski/withdrawal/order_status_on_request',
                 WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_REQUESTED),

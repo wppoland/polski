@@ -1789,35 +1789,35 @@ msgid "Net quantity"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:85
-msgid "GPSR – Manufacturer name"
+msgid "GPSR - Manufacturer name"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:86
-msgid "GPSR – Manufacturer address"
+msgid "GPSR - Manufacturer address"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:87
-msgid "GPSR – Importer name"
+msgid "GPSR - Importer name"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:88
-msgid "GPSR – Importer address"
+msgid "GPSR - Importer address"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:89
-msgid "GPSR – Responsible person"
+msgid "GPSR - Responsible person"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:90
-msgid "GPSR – Product identifier"
+msgid "GPSR - Product identifier"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:91
-msgid "GPSR – Safety warnings"
+msgid "GPSR - Safety warnings"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:92
-msgid "GPSR – Safety instructions"
+msgid "GPSR - Safety instructions"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:93
@@ -5211,7 +5211,7 @@ msgid "Optional heading only for this product."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:242
-msgid "GPSR – Product Safety"
+msgid "GPSR - Product Safety"
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:246
@@ -7396,7 +7396,7 @@ msgid "Powód zgłoszenia"
 msgstr ""
 
 #: templates/forms/dsa-report.php:58
-msgid "— Wybierz powód —"
+msgid "- Wybierz powód -"
 msgstr ""
 
 #: templates/forms/dsa-report.php:66
