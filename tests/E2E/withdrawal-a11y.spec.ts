@@ -7,7 +7,7 @@ import AxeBuilder from '@axe-core/playwright';
  * Runs axe-core against the three public templates (lookup, guest form,
  * two-step) plus the admin list and settings page. Each scan asserts zero
  * violations against the tags `wcag2a`, `wcag2aa`, `wcag22a`, `wcag22aa`
- * and `best-practice` — the same suite axe DevTools surfaces by default.
+ * and `best-practice` - the same suite axe DevTools surfaces by default.
  *
  * Install dependency before running:
  *   npm install --save-dev @axe-core/playwright
@@ -23,7 +23,7 @@ import AxeBuilder from '@axe-core/playwright';
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'];
 const BEST_PRACTICE_TAGS = [...WCAG_TAGS, 'best-practice'];
 
-test.describe('Withdrawal flow — axe-core WCAG 2.2 AA', () => {
+test.describe('Withdrawal flow - axe-core WCAG 2.2 AA', () => {
     test('lookup page (guest entry point)', async ({ page }) => {
         await page.goto('/odstapienie/', { waitUntil: 'domcontentloaded' });
         await page.locator('section.polski-withdrawal-lookup').waitFor();
@@ -92,7 +92,7 @@ test.describe('Withdrawal flow — axe-core WCAG 2.2 AA', () => {
         await page.keyboard.press('Tab');
         await expect(page.getByRole('button', { name: /Wyślij link/ })).toBeFocused();
 
-        // Visible focus ring asserted via CSS — at minimum, focus-visible should
+        // Visible focus ring asserted via CSS - at minimum, focus-visible should
         // apply outline. We can't easily measure outline width in Playwright but
         // the absence of `outline: none !important` is enough.
         const outline = await page.evaluate(() => {
@@ -121,7 +121,7 @@ test.describe('Withdrawal flow — axe-core WCAG 2.2 AA', () => {
 
 function formatViolations(label: string, violations: Awaited<ReturnType<AxeBuilder['analyze']>>['violations']): void {
     if (violations.length === 0) return;
-    console.log(`\n=== ${label} — ${violations.length} violations ===`);
+    console.log(`\n=== ${label} - ${violations.length} violations ===`);
     for (const v of violations) {
         console.log(`  [${v.impact}] ${v.id}: ${v.help}`);
         console.log(`    ${v.helpUrl}`);

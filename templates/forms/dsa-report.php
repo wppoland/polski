@@ -84,7 +84,7 @@ $polski_prefill_label = isset($polski_prefill_label) ? (string) $polski_prefill_
         <p class="polski-dsa-report-form__field">
             <label for="polski-dsa-reason"><?php echo esc_html__('Powód zgłoszenia', 'polski'); ?> <abbr class="required" title="<?php echo esc_attr__('wymagane', 'polski'); ?>">*</abbr></label>
             <select id="polski-dsa-reason" name="reason" required>
-                <option value=""><?php echo esc_html__('— Wybierz powód —', 'polski'); ?></option>
+                <option value=""><?php echo esc_html__('- Wybierz powód -', 'polski'); ?></option>
                 <?php foreach ($polski_reasons as $polski_reasonValue => $polski_reasonLabel) : ?>
                     <option value="<?php echo esc_attr($polski_reasonValue); ?>"><?php echo esc_html($polski_reasonLabel); ?></option>
                 <?php endforeach; ?>

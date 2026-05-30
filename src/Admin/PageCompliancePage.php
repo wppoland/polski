@@ -144,7 +144,7 @@ final class PageCompliancePage implements HasHooks
             return;
         }
 
-        echo '<p class="description">' . esc_html__('Heuristic scan of the homepage HTML. JS-rendered banners may not be visible here — use this as a starting point, not a verdict.', 'polski') . '</p>';
+        echo '<p class="description">' . esc_html__('Heuristic scan of the homepage HTML. JS-rendered banners may not be visible here - use this as a starting point, not a verdict.', 'polski') . '</p>';
 
         echo '<table class="wp-list-table widefat striped" style="margin-top:8px"><thead><tr>';
         printf('<th style="width:42%%">%s</th>', esc_html__('Element', 'polski'));

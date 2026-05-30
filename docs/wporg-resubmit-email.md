@@ -1,4 +1,4 @@
-# WP.org plugin team — resubmit reply
+# WP.org plugin team - resubmit reply
 
 **Reply-to thread:** `Re: [WordPress Plugin Directory] Review in Progress: Polski for WooCommerce`
 **From:** `szatkowski.mariusz@gmail.com`

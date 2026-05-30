@@ -16,7 +16,7 @@ use Polski\Util\TemplateLoader;
  *  - token redeem round-trip (single-use, expiry-aware),
  *  - notice channel is set without exposing order existence.
  *
- * Email delivery and template rendering are intentionally not exercised — they're
+ * Email delivery and template rendering are intentionally not exercised - they're
  * thin wrappers around wp_mail and TemplateLoader.
  */
 final class GuestWithdrawalServiceTest extends TestCase

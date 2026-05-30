@@ -13,11 +13,11 @@ use Polski\Contract\HasHooks;
  * non-tangible medium only if they actively consented before performance began.
  *
  * Three operating modes (configurable on the withdrawal settings page):
- *  - `required` — checkout blocks until the consumer ticks the consent box, the
+ *  - `required` - checkout blocks until the consumer ticks the consent box, the
  *    consent is then stored on the order and any digital-only order is exempt.
- *  - `optional` — the box is shown but unchecked; only orders where the consumer
+ *  - `optional` - the box is shown but unchecked; only orders where the consumer
  *    ticked it become exempt.
- *  - `hidden`   — no box is shown; digital orders retain the right of withdrawal.
+ *  - `hidden`   - no box is shown; digital orders retain the right of withdrawal.
  *
  * The stored consent record is a JSON blob in order meta with the wording snapshot,
  * timestamp and IP, so the store can prove the consent was collected.

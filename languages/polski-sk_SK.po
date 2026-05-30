@@ -2163,35 +2163,35 @@ msgid "Net quantity"
 msgstr "Čistá hmotnosť"
 
 #: src/Admin/CSVImportExport.php:85
-msgid "GPSR – Manufacturer name"
+msgid "GPSR - Manufacturer name"
 msgstr "GPSR - Názov výrobcu"
 
 #: src/Admin/CSVImportExport.php:86
-msgid "GPSR – Manufacturer address"
+msgid "GPSR - Manufacturer address"
 msgstr "GPSR - Adresa výrobcu"
 
 #: src/Admin/CSVImportExport.php:87
-msgid "GPSR – Importer name"
+msgid "GPSR - Importer name"
 msgstr "GPSR - Názov dovozcu"
 
 #: src/Admin/CSVImportExport.php:88
-msgid "GPSR – Importer address"
+msgid "GPSR - Importer address"
 msgstr "GPSR - Adresa dovozcu"
 
 #: src/Admin/CSVImportExport.php:89
-msgid "GPSR – Responsible person"
+msgid "GPSR - Responsible person"
 msgstr "GPSR - Zodpovedná osoba"
 
 #: src/Admin/CSVImportExport.php:90
-msgid "GPSR – Product identifier"
+msgid "GPSR - Product identifier"
 msgstr "GPSR - Identifikátor produktu"
 
 #: src/Admin/CSVImportExport.php:91
-msgid "GPSR – Safety warnings"
+msgid "GPSR - Safety warnings"
 msgstr "GPSR - Bezpečnostné varovania"
 
 #: src/Admin/CSVImportExport.php:92
-msgid "GPSR – Safety instructions"
+msgid "GPSR - Safety instructions"
 msgstr "GPSR - Bezpečnostné pokyny"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
@@ -5804,7 +5804,7 @@ msgstr "Cookie baner (aktívny súhlas)"
 #: src/Admin/PageCompliancePage.php:147
 msgid ""
 "Heuristic scan of the homepage HTML. JS-rendered banners may not be visible "
-"here — use this as a starting point, not a verdict."
+"here - use this as a starting point, not a verdict."
 msgstr ""
 "Heuristické skenovanie HTML domovskej stránky. Banery renderované cez JS tu "
 "nemusia byť viditeľné - berte to ako východiskový bod, nie verdikt."
@@ -6079,7 +6079,7 @@ msgid "Optional heading only for this product."
 msgstr "Voliteľný nadpis iba pre tento produkt."
 
 #: src/Admin/ProductMetaBox.php:242
-msgid "GPSR – Product Safety"
+msgid "GPSR - Product Safety"
 msgstr "GPSR - Bezpečnosť produktu"
 
 #: src/Admin/ProductMetaBox.php:246
@@ -6213,7 +6213,7 @@ msgid "Polski Pro for WooCommerce"
 msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
-msgid "Polski — odstąpienie"
+msgid "Polski - odstąpienie"
 msgstr "Polski - odstúpenie"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:69
@@ -6513,7 +6513,7 @@ msgid "Guest lookup page"
 msgstr "Stránka vyhľadávania pre hostí"
 
 #: src/Admin/WithdrawalSettingsPage.php:178
-msgid "— none —"
+msgid "- none -"
 msgstr "- žiadna -"
 
 #: src/Admin/WithdrawalSettingsPage.php:184
@@ -6545,20 +6545,20 @@ msgid "Consent mode"
 msgstr "Režim súhlasu"
 
 #: src/Admin/WithdrawalSettingsPage.php:203
-msgid "Required — block checkout unless the consumer ticks the consent box."
+msgid "Required - block checkout unless the consumer ticks the consent box."
 msgstr ""
 "Povinný - zablokovať pokladňu, kým spotrebiteľ nezaškrtne políčko súhlasu."
 
 #: src/Admin/WithdrawalSettingsPage.php:204
 msgid ""
-"Optional — show an unchecked consent box. Only ticked orders become exempt."
+"Optional - show an unchecked consent box. Only ticked orders become exempt."
 msgstr ""
 "Voliteľný - zobraziť nezaškrtnuté políčko súhlasu. Iba zaškrtnuté objednávky"
 " sa stanú vyňatými."
 
 #: src/Admin/WithdrawalSettingsPage.php:205
 msgid ""
-"Hidden — do not collect consent. Digital orders retain the right of "
+"Hidden - do not collect consent. Digital orders retain the right of "
 "withdrawal."
 msgstr ""
 "Skrytý - nezbierať súhlas. Digitálne objednávky si zachovávajú právo na "
@@ -8000,7 +8000,7 @@ msgid "Status change not allowed."
 msgstr "Zmena stavu nie je povolená."
 
 #: src/Service/AbilitiesService.php:58
-msgid "Polski — withdrawal"
+msgid "Polski - withdrawal"
 msgstr "Polski - odstúpenie od zmluvy"
 
 #: src/Service/AbilitiesService.php:59
@@ -8010,7 +8010,7 @@ msgstr ""
 "do 14 dní)."
 
 #: src/Service/AbilitiesService.php:63
-msgid "Polski — legal documents"
+msgid "Polski - legal documents"
 msgstr "Polski - právne dokumenty"
 
 #: src/Service/AbilitiesService.php:64
@@ -8020,7 +8020,7 @@ msgstr ""
 "atď.)."
 
 #: src/Service/AbilitiesService.php:68
-msgid "Polski — compliance checks"
+msgid "Polski - compliance checks"
 msgstr "Polski - kontroly súladu"
 
 #: src/Service/AbilitiesService.php:69
@@ -8032,7 +8032,7 @@ msgstr ""
 "kontexte poľského a EÚ spotrebiteľského práva."
 
 #: src/Service/AbilitiesService.php:73
-msgid "Polski — shop identification"
+msgid "Polski - shop identification"
 msgstr "Polski - identifikácia obchodu"
 
 #: src/Service/AbilitiesService.php:74
@@ -8129,7 +8129,7 @@ msgid "Returns withdrawal requests, optionally filtered by status."
 msgstr "Vracia žiadosti o odstúpenie, voliteľne filtrované podľa stavu."
 
 #: src/Service/AbilitiesService.php:401
-msgid "Generate Annex I(A) — withdrawal information"
+msgid "Generate Annex I(A) - withdrawal information"
 msgstr "Vygenerovať Prílohu I(A) - informácie o odstúpení"
 
 #: src/Service/AbilitiesService.php:402
@@ -8141,7 +8141,7 @@ msgstr ""
 "vyplnenými údajmi predajcu."
 
 #: src/Service/AbilitiesService.php:415
-msgid "Generate Annex I(B) — withdrawal form template"
+msgid "Generate Annex I(B) - withdrawal form template"
 msgstr "Vygenerovať Prílohu I(B) - vzor formulára na odstúpenie"
 
 #: src/Service/AbilitiesService.php:416
@@ -9267,7 +9267,7 @@ msgstr ""
 #: src/Service/GuestWithdrawalService.php:78
 msgid ""
 "Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie "
-"ty@example.com — ten sam, który podałeś przy zakupie."
+"ty@example.com - ten sam, który podałeś przy zakupie."
 msgstr ""
 "E-mailová adresa vyzerá neplatne. Zadajte úplnú adresu vo formáte "
 "ty@example.com - tú istú, ktorú ste uviedli pri nákupe."
@@ -9283,7 +9283,7 @@ msgstr ""
 #: src/Service/GuestWithdrawalService.php:88
 msgid ""
 "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail "
-"podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) — "
+"podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) - "
 "wiadomość powinna dotrzeć w ciągu kilku minut."
 msgstr ""
 "Ak táto objednávka existuje, odoslali sme odkaz na formulár na e-mailovú "
@@ -9318,7 +9318,7 @@ msgstr "Vyhlásenie podané"
 #, php-format
 msgid ""
 "Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy "
-"potwierdzenie na adres podany przy zakupie — sprawdź skrzynkę odbiorczą oraz"
+"potwierdzenie na adres podany przy zakupie - sprawdź skrzynkę odbiorczą oraz"
 " folder Spam."
 msgstr ""
 "Vaše vyhlásenie bolo zaregistrované pod číslom %s. Potvrdenie sme odoslali "
@@ -9332,7 +9332,7 @@ msgstr "Číslo vyhlásenia si uschovajte pre prípad kontaktu s obchodom."
 #. translators: %s = order number
 #: src/Service/GuestWithdrawalService.php:385
 #, php-format
-msgid "Link do odstąpienia od umowy — zamówienie #%s"
+msgid "Link do odstąpienia od umowy - zamówienie #%s"
 msgstr "Odkaz na odstúpenie od zmluvy - objednávka #%s"
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
@@ -10224,7 +10224,7 @@ msgstr "Nákup ako hosť je povolený. Zákazníci nie sú nútení vytvoriť si
 
 #: src/Service/SiteAuditService.php:155
 msgid ""
-"Guest checkout is disabled AND login is required — customers are forced to "
+"Guest checkout is disabled AND login is required - customers are forced to "
 "create an account. EU Directive 2023/2673 considers this a dark pattern "
 "unless justified (e.g. B2B). Enable guest checkout under WooCommerce > "
 "Settings > Accounts."
@@ -11032,7 +11032,7 @@ msgid "Please login to use the wishlist."
 msgstr "Prihláste sa pre použitie zoznamu prianí."
 
 #: src/Service/WithdrawalBlocksService.php:33
-msgid "Polski — withdrawal lookup"
+msgid "Polski - withdrawal lookup"
 msgstr "Polski - vyhľadávanie odstúpenia"
 
 #: src/Service/WithdrawalBlocksService.php:34
@@ -11042,7 +11042,7 @@ msgstr ""
 "umožňuje podať odstúpenie."
 
 #: src/Service/WithdrawalBlocksService.php:42
-msgid "Polski — Annex I(A) information"
+msgid "Polski - Annex I(A) information"
 msgstr "Polski - informácie z Prílohy I(A)"
 
 #: src/Service/WithdrawalBlocksService.php:43
@@ -11053,7 +11053,7 @@ msgstr ""
 "(Príloha I(A))."
 
 #: src/Service/WithdrawalBlocksService.php:51
-msgid "Polski — Annex I(B) form template"
+msgid "Polski - Annex I(B) form template"
 msgstr "Polski - vzor formulára z Prílohy I(B)"
 
 #: src/Service/WithdrawalBlocksService.php:52
@@ -11085,7 +11085,7 @@ msgstr "Základ vylúčenia"
 
 #: src/Service/WithdrawalExemptionService.php:192
 #: src/Service/WithdrawalExemptionService.php:228
-msgid "— wybierz —"
+msgid "- wybierz -"
 msgstr "- vyberte -"
 
 #: src/Service/WithdrawalExemptionService.php:199
@@ -11121,7 +11121,7 @@ msgid "Withdrawal requested"
 msgstr "Žiadosť o odstúpenie podaná"
 
 #: src/Service/WithdrawalOrderStatusService.php:171
-msgid "Withdrawal — partial"
+msgid "Withdrawal - partial"
 msgstr "Odstúpenie - čiastočné"
 
 #: src/Service/WithdrawalOrderStatusService.php:176
@@ -11563,7 +11563,7 @@ msgid "Powód zgłoszenia"
 msgstr "Dôvod hlásenia"
 
 #: templates/forms/dsa-report.php:87
-msgid "— Wybierz powód —"
+msgid "- Wybierz powód -"
 msgstr "- Vyberte dôvod -"
 
 #: templates/forms/dsa-report.php:95
@@ -11660,7 +11660,7 @@ msgstr "Krok 2. Dôvod a potvrdenie"
 
 #: templates/forms/withdrawal-form.php:166
 #: templates/forms/withdrawal-guest.php:130
-msgid "Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia."
+msgid "Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia."
 msgstr "Dôvod nie je povinný - odstúpenie nevyžaduje odôvodnenie."
 
 #: templates/forms/withdrawal-form.php:178
@@ -11675,7 +11675,7 @@ msgstr "Zrušiť a vrátiť sa na zoznam objednávok"
 #. translators: %s = order number
 #: templates/forms/withdrawal-guest.php:34
 #, php-format
-msgid "Odstąpienie od umowy — zamówienie #%s"
+msgid "Odstąpienie od umowy - zamówienie #%s"
 msgstr "Odstúpenie od zmluvy - objednávka #%s"
 
 #. translators: %s = email address
@@ -11723,7 +11723,7 @@ msgid "Przejdź do formularza odstąpienia"
 msgstr "Prejsť na formulár odstúpenia"
 
 #: templates/forms/withdrawal-lookup.php:53
-msgid "Odstąpienie od umowy — formularz online"
+msgid "Odstąpienie od umowy - formularz online"
 msgstr "Odstúpenie od zmluvy - online formulár"
 
 #. translators: 1: merchant name, 2: number of days
@@ -11733,7 +11733,7 @@ msgid ""
 "Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy"
 " zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, "
 "w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować "
-"się — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz "
+"się - wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz "
 "numer zamówienia."
 msgstr ""
 "Ste spotrebiteľ a nakúpili ste u predajcu %1$s? Máte právo odstúpiť od "
@@ -11838,7 +11838,7 @@ msgstr "Môžem vrátiť iba niektoré produkty?"
 #: templates/forms/withdrawal-lookup.php:174
 msgid ""
 "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć "
-"odstąpienie. Można odstąpić od wybranej liczby sztuk — pozostałe pozostaną w"
+"odstąpienie. Można odstąpić od wybranej liczby sztuk - pozostałe pozostaną w"
 " zamówieniu."
 msgstr ""
 "Áno. Po otvorení formulára vyberiete, ktorých položiek sa má odstúpenie "
@@ -11884,7 +11884,7 @@ msgstr "Najčastejšie otázky"
 #: templates/forms/withdrawal-lookup.php:202
 #, php-format
 msgid ""
-"Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie "
+"Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie "
 "ręcznie."
 msgstr ""
 "Máte problém s formulárom? Napíšte na %s - pomôžeme vám podať vyhlásenie "
@@ -11926,7 +11926,7 @@ msgstr "Môžem vrátiť iba niektoré produkty z objednávky?"
 #: templates/forms/withdrawal-lookup.php:233
 msgid ""
 "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć "
-"odstąpienie — możesz zwrócić wszystkie produkty, jeden produkt lub tylko "
+"odstąpienie - możesz zwrócić wszystkie produkty, jeden produkt lub tylko "
 "wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu."
 msgstr ""
 "Áno. Po otvorení formulára vyberiete, ktorých položiek sa má odstúpenie "

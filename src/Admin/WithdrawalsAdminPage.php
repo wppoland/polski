@@ -95,7 +95,7 @@ final class WithdrawalsAdminPage implements HasHooks
     /**
      * Cache-aware count of pending withdrawal requests (status: requested or
      * confirmed). Refreshed automatically whenever a withdrawal transitions
-     * state — see invalidatePendingCount() hooked to the lifecycle actions.
+     * state - see invalidatePendingCount() hooked to the lifecycle actions.
      */
     private function pendingCount(): int
     {

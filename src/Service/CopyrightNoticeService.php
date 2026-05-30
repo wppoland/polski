@@ -13,8 +13,8 @@ use Polski\Contract\HasHooks;
  * Copyright / license notice helpers.
  *
  * Provides three reusable outputs:
- *   - [polski_copyright year="" owner="" license=""]  — a standard copyright line
- *   - [polski_image_credit image_id="" credit="" source=""] — per-image credit footer
+ *   - [polski_copyright year="" owner="" license=""]  - a standard copyright line
+ *   - [polski_image_credit image_id="" credit="" source=""] - per-image credit footer
  *   - Gutenberg block `polski/copyright` (dynamic)
  *
  * Defaults:

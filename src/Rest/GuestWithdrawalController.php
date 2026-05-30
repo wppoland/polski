@@ -13,8 +13,8 @@ use Polski\Service\GuestWithdrawalService;
  * REST endpoints mirroring the guest magic-link flow so headless and
  * mobile clients can drive it without rendering the shortcode page.
  *
- *  POST /polski/v1/withdrawals/guest/request  — start the flow (email + order#)
- *  POST /polski/v1/withdrawals/guest/redeem   — submit the declaration once the
+ *  POST /polski/v1/withdrawals/guest/request  - start the flow (email + order#)
+ *  POST /polski/v1/withdrawals/guest/redeem   - submit the declaration once the
  *                                                customer has clicked the link
  *
  * Both endpoints are intentionally `permission_callback => __return_true`
@@ -88,7 +88,7 @@ final class GuestWithdrawalController implements HasHooks
 
         $this->guest->dispatchMagicLinkForRest($orderNumber, $email);
 
-        // Always 202 + masked notice — never reveal whether the order exists.
+        // Always 202 + masked notice - never reveal whether the order exists.
         return new \WP_REST_Response(
             [
                 'accepted' => true,

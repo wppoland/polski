@@ -1,7 +1,7 @@
 # Upgrading to Polski 1.16.0 (withdrawal module)
 
 This document walks shop owners through what happens when their site
-upgrades from Polski 1.9.x or earlier to 1.16.0 — the release that ships
+upgrades from Polski 1.9.x or earlier to 1.16.0 - the release that ships
 the full Art. 11a withdrawal flow.
 
 If you are on a fresh install you can ignore everything below: the
@@ -10,7 +10,7 @@ everything in a few clicks.
 
 ## TL;DR
 
-Five things change. All are additive — your existing checkout, terms
+Five things change. All are additive - your existing checkout, terms
 page and order flow keep working.
 
 1. New database tables (`polski_withdrawals`, `polski_withdrawal_items`)
@@ -27,7 +27,7 @@ page and order flow keep working.
 Run these checks (5 min):
 
 ```bash
-# Back up first — the migration is idempotent but better safe than sorry.
+# Back up first - the migration is idempotent but better safe than sorry.
 wp db export polski-pre-1.16.sql
 
 # Inventory your custom code touching withdrawal-related options or
@@ -85,7 +85,7 @@ wp post create --post_type=page --post_status=publish \
 wp option patch update polski_withdrawal lookup_page_id <NEW_PAGE_ID>
 ```
 
-Or use Gutenberg directly — the block `polski/withdrawal-lookup` is in
+Or use Gutenberg directly - the block `polski/withdrawal-lookup` is in
 the inserter under "Widgets".
 
 ### 4. Configure exempt products and categories
@@ -93,10 +93,10 @@ the inserter under "Widgets".
 The `_polski_withdrawal_exempt` post meta from earlier releases is
 still respected. Two new meta keys layer on top:
 
-- `_polski_withdrawal_exempt_reason` — value from
+- `_polski_withdrawal_exempt_reason` - value from
   `Polski\Enum\WithdrawalExemptionReason` (`art38_3` through `art38_13`,
   or `custom`).
-- `_polski_withdrawal_exempt_reason_custom` — free text shown when
+- `_polski_withdrawal_exempt_reason_custom` - free text shown when
   reason is `custom`.
 
 At the term (`product_cat`) level the keys are:
@@ -137,7 +137,7 @@ wp plugin update polski --version=1.15.0
 ```
 
 The schema changes from Migration_2_2_0 are **not** reverted by code
-downgrade — the extra columns simply sit unused. Restore the database
+downgrade - the extra columns simply sit unused. Restore the database
 backup taken before the upgrade if you need a clean slate.
 
 ## Troubleshooting
@@ -145,7 +145,7 @@ backup taken before the upgrade if you need a clean slate.
 | Symptom | Cause | Fix |
 |---|---|---|
 | Guest form returns "Order not found" for valid orders | `billing_email` mismatch | Confirm the e-mail on the order matches what the customer is typing (case-insensitive but exact otherwise). |
-| Magic-link e-mail never arrives | wp-cron not running / SMTP misconfig | Send a test e-mail via `wp eval 'wp_mail(...)'`. The lookup form returns the same masked notice regardless — by design (anti-enumeration). |
+| Magic-link e-mail never arrives | wp-cron not running / SMTP misconfig | Send a test e-mail via `wp eval 'wp_mail(...)'`. The lookup form returns the same masked notice regardless - by design (anti-enumeration). |
 | Two-step form shows "wszystkie pozycje wyłączone" | Every product/category is marked exempt | Audit term meta `polski_withdrawal_exempt` on each category. |
 | Customer can withdraw past the 14-day window | Trigger statuses misconfigured | Check that `wc-completed` (or your chosen status) is set in `polski_withdrawal.trigger_statuses` and the order actually entered that status (look for `_polski_withdrawal_clock_start` order meta). |
 | Subscription cancelled by withdrawal but you didn't want that | Pro `SubscriptionsCompat` always cancels on complete | Add `add_filter('polski_pro/subscriptions/treat_as_exempt', '__return_true');` to opt out. |

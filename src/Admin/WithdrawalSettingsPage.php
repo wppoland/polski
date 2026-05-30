@@ -13,7 +13,7 @@ use Polski\Service\DigitalConsentService;
  *
  * All values are persisted to the existing `polski_withdrawal` option (shared
  * with the FREE service and Pro extensions). Sections are intentionally
- * server-rendered with the WordPress Settings API — no React build step needed.
+ * server-rendered with the WordPress Settings API - no React build step needed.
  */
 final class WithdrawalSettingsPage implements HasHooks
 {
@@ -175,7 +175,7 @@ final class WithdrawalSettingsPage implements HasHooks
                                 'name' => self::OPTION . '[lookup_page_id]',
                                 'id' => 'polski_lookup_page',
                                 'selected' => (int) ($settings['lookup_page_id'] ?? 0),
-                                'show_option_none' => esc_html__('— none —', 'polski'),
+                                'show_option_none' => esc_html__('- none -', 'polski'),
                                 'option_none_value' => 0,
                             ];
                             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_dropdown_pages handles its own escaping.
@@ -200,9 +200,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         <td>
                             <?php
                             $modes = [
-                                DigitalConsentService::MODE_REQUIRED => __('Required — block checkout unless the consumer ticks the consent box.', 'polski'),
-                                DigitalConsentService::MODE_OPTIONAL => __('Optional — show an unchecked consent box. Only ticked orders become exempt.', 'polski'),
-                                DigitalConsentService::MODE_HIDDEN => __('Hidden — do not collect consent. Digital orders retain the right of withdrawal.', 'polski'),
+                                DigitalConsentService::MODE_REQUIRED => __('Required - block checkout unless the consumer ticks the consent box.', 'polski'),
+                                DigitalConsentService::MODE_OPTIONAL => __('Optional - show an unchecked consent box. Only ticked orders become exempt.', 'polski'),
+                                DigitalConsentService::MODE_HIDDEN => __('Hidden - do not collect consent. Digital orders retain the right of withdrawal.', 'polski'),
                             ];
                             $currentMode = (string) ($settings['digital_consent_mode'] ?? DigitalConsentService::MODE_OPTIONAL);
                             foreach ($modes as $value => $label) :

@@ -108,7 +108,7 @@ final class GPSRService implements HasHooks
         $product = wc_get_product($postId);
 
         if (!$product) {
-            echo '—';
+            echo '-';
             return;
         }
 
@@ -123,7 +123,7 @@ final class GPSRService implements HasHooks
             /* translators: %d: number of filled GPSR fields out of 8 */
             echo '<span style="color:#f0ad4e;" title="' . esc_attr(sprintf(__('%d/8 pól wypełnionych', 'polski'), $filledCount)) . '">&#9888;</span>';
         } else {
-            echo '<span style="color:#ccc;">—</span>';
+            echo '<span style="color:#ccc;">-</span>';
         }
     }
 
