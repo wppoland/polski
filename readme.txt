@@ -23,6 +23,8 @@ This plugin helps you configure store workflows related to Polish and EU market 
 * **Documentation** - https://polski.wppoland.com/
 * **Plugin page (Polish)** - https://wppoland.com/pl/polski/
 * **Plugin page (English)** - https://wppoland.com/en/polski/
+* **Source code (GitHub)** - https://github.com/wppoland/polski
+* **Report issues or request features** - https://github.com/wppoland/polski/issues
 
 = Why Polski for WooCommerce? =
 
