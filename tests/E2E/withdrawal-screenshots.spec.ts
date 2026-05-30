@@ -4,7 +4,7 @@ import * as path from 'path';
 
 /**
  * Automated capture for the 8 wp.org screenshots covering the withdrawal module.
- * Mirrors docs/wporg-assets/withdrawal-screenshots.md — see that file for the
+ * Mirrors docs/wporg-assets/withdrawal-screenshots.md - see that file for the
  * setup-state contract per shot.
  *
  * Run with wp-env up + plugin activated + seeded fixture orders:
@@ -23,18 +23,18 @@ test.use({
     locale: 'pl-PL',
 });
 
-test.describe('Withdrawal — wp.org screenshots', () => {
+test.describe('Withdrawal - wp.org screenshots', () => {
     test.beforeAll(() => {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     });
 
-    test('9 — lookup form (guest)', async ({ page }) => {
+    test('9 - lookup form (guest)', async ({ page }) => {
         await page.goto('/odstapienie/', { waitUntil: 'domcontentloaded' });
         await page.locator('section.polski-withdrawal-lookup').waitFor();
         await captureSection(page, 'section.polski-withdrawal-lookup', 'screenshot-9-withdrawal-lookup-form.png');
     });
 
-    test('10 — two-step form (My Account)', async ({ page }) => {
+    test('10 - two-step form (My Account)', async ({ page }) => {
         await loginAsCustomer(page);
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
         await page.getByRole('link', { name: /Withdraw|Odstąp/ }).first().click();
@@ -42,28 +42,28 @@ test.describe('Withdrawal — wp.org screenshots', () => {
         await captureSection(page, 'section.polski-withdrawal-form', 'screenshot-10-withdrawal-two-step-form.png');
     });
 
-    test('11 — admin list', async ({ page }) => {
+    test('11 - admin list', async ({ page }) => {
         await loginAsAdmin(page);
         await page.goto('/wp-admin/admin.php?page=polski-withdrawals');
         await page.locator('.wp-list-table').waitFor();
         await captureFullPage(page, 'screenshot-11-withdrawal-admin-list.png');
     });
 
-    test('12 — admin manual registration', async ({ page }) => {
+    test('12 - admin manual registration', async ({ page }) => {
         await loginAsAdmin(page);
         await page.goto('/wp-admin/admin.php?page=polski-withdrawals-new');
         await page.locator('table.form-table').waitFor();
         await captureFullPage(page, 'screenshot-12-withdrawal-admin-manual.png');
     });
 
-    test('13 — settings page', async ({ page }) => {
+    test('13 - settings page', async ({ page }) => {
         await loginAsAdmin(page);
         await page.goto('/wp-admin/admin.php?page=polski-withdrawal-settings');
         await page.locator('form[action="options.php"]').waitFor();
         await captureFullPage(page, 'screenshot-13-withdrawal-settings.png');
     });
 
-    test('14 — product exemption metabox', async ({ page }) => {
+    test('14 - product exemption metabox', async ({ page }) => {
         await loginAsAdmin(page);
         // Assumes a product id 42 exists (seeded by global-setup).
         await page.goto('/wp-admin/post.php?post=42&action=edit');
@@ -71,7 +71,7 @@ test.describe('Withdrawal — wp.org screenshots', () => {
         await captureFullPage(page, 'screenshot-14-withdrawal-product-exemption.png');
     });
 
-    test('15 — category exemption term-edit (PRO)', async ({ page }) => {
+    test('15 - category exemption term-edit (PRO)', async ({ page }) => {
         await loginAsAdmin(page);
         // Assumes a product_cat term id 5 exists.
         await page.goto('/wp-admin/term.php?taxonomy=product_cat&tag_ID=5&post_type=product');
@@ -79,7 +79,7 @@ test.describe('Withdrawal — wp.org screenshots', () => {
         await captureFullPage(page, 'screenshot-15-withdrawal-category-exemption.png');
     });
 
-    test('16 — reports dashboard (PRO)', async ({ page }) => {
+    test('16 - reports dashboard (PRO)', async ({ page }) => {
         await loginAsAdmin(page);
         await page.goto('/wp-admin/admin.php?page=polski-pro-withdrawal-reports');
         await page.locator('.polski-pro-scorecards').waitFor({ timeout: 8_000 }).catch(() => {});

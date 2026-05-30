@@ -14,7 +14,7 @@ use Polski\Repository\WithdrawalRepository;
 /**
  * Exposes the withdrawal module via the WordPress Abilities API (WP 6.9+).
  *
- * Each ability is a stable, namespaced contract — a structured way for the
+ * Each ability is a stable, namespaced contract - a structured way for the
  * Site Editor, the command palette, MCP servers, and AI assistants to invoke
  * the same operations the human admin / customer would.
  *
@@ -22,8 +22,8 @@ use Polski\Repository\WithdrawalRepository;
  * runtime; nothing else in the plugin depends on it).
  *
  * Categories:
- *   - polski/withdrawal — consumer right of withdrawal flow.
- *   - polski/legal      — generated legal documents (Annex I(A), I(B), etc.).
+ *   - polski/withdrawal - consumer right of withdrawal flow.
+ *   - polski/legal      - generated legal documents (Annex I(A), I(B), etc.).
  */
 final class AbilitiesService implements HasHooks
 {
@@ -55,22 +55,22 @@ final class AbilitiesService implements HasHooks
         }
 
         wp_register_ability_category('polski/withdrawal', [
-            'label' => __('Polski — withdrawal', 'polski'),
+            'label' => __('Polski - withdrawal', 'polski'),
             'description' => __('Consumer right of withdrawal (14-day return) operations.', 'polski'),
         ]);
 
         wp_register_ability_category('polski/legal', [
-            'label' => __('Polski — legal documents', 'polski'),
+            'label' => __('Polski - legal documents', 'polski'),
             'description' => __('Generated consumer-law documents (Annex I(A), I(B), etc.).', 'polski'),
         ]);
 
         wp_register_ability_category('polski/compliance', [
-            'label' => __('Polski — compliance checks', 'polski'),
+            'label' => __('Polski - compliance checks', 'polski'),
             'description' => __('Static page / cookie banner / accessibility heuristics for Polish & EU consumer law.', 'polski'),
         ]);
 
         wp_register_ability_category('polski/shop', [
-            'label' => __('Polski — shop identification', 'polski'),
+            'label' => __('Polski - shop identification', 'polski'),
             'description' => __('Business identification (name, NIP, REGON, address, contact) and legal pages registry.', 'polski'),
         ]);
     }
@@ -94,7 +94,7 @@ final class AbilitiesService implements HasHooks
         $this->registerGetExemptionReason();
 
         // Compliance + shop identification surface (analogous to how Yoast exposes
-        // SEO operations as abilities — discoverable from the command palette and
+        // SEO operations as abilities - discoverable from the command palette and
         // callable by AI agents).
         $this->registerCompliancePrivacy();
         $this->registerComplianceTerms();
@@ -398,7 +398,7 @@ final class AbilitiesService implements HasHooks
     private function registerAnnexInfo(): void
     {
         wp_register_ability('polski/annex-generate-info', [
-            'label' => __('Generate Annex I(A) — withdrawal information', 'polski'),
+            'label' => __('Generate Annex I(A) - withdrawal information', 'polski'),
             'description' => __('Renders Annex I(A) (information about the right of withdrawal) with the merchant data filled in.', 'polski'),
             'category' => 'polski/legal',
             'input_schema' => ['type' => 'object', 'properties' => []],
@@ -412,7 +412,7 @@ final class AbilitiesService implements HasHooks
     private function registerAnnexForm(): void
     {
         wp_register_ability('polski/annex-generate-form', [
-            'label' => __('Generate Annex I(B) — withdrawal form template', 'polski'),
+            'label' => __('Generate Annex I(B) - withdrawal form template', 'polski'),
             'description' => __('Renders Annex I(B) (the model withdrawal form template) with the merchant data filled in.', 'polski'),
             'category' => 'polski/legal',
             'input_schema' => ['type' => 'object', 'properties' => []],

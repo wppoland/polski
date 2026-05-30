@@ -50,7 +50,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
     style="max-width: 65ch;"
 >
     <h2 id="polski-withdrawal-lookup-title">
-        <?php esc_html_e('Odstąpienie od umowy — formularz online', 'polski'); ?>
+        <?php esc_html_e('Odstąpienie od umowy - formularz online', 'polski'); ?>
     </h2>
 
     <p class="polski-withdrawal-lookup__intro">
@@ -58,7 +58,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
         printf(
             /* translators: 1: merchant name, 2: number of days */
             esc_html__(
-                'Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia.',
+                'Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się - wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia.',
                 'polski',
             ),
             esc_html($polski_merchant),
@@ -168,10 +168,10 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
     </form>
 
     <?php
-    // Visible FAQ — mirrors the FAQPage JSON-LD so it benefits cognitive users, not just search engines.
+    // Visible FAQ - mirrors the FAQPage JSON-LD so it benefits cognitive users, not just search engines.
     $polski_faq_visible = [
         ['q' => __('W jakim terminie mogę odstąpić od umowy?', 'polski'), 'a' => sprintf(/* translators: %d = days */ __('Domyślnie masz %d dni od dnia otrzymania zamówienia. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu osoby trzeciej innej niż przewoźnik.', 'polski'), $polski_days)],
-        ['q' => __('Czy mogę zwrócić tylko niektóre produkty?', 'polski'), 'a' => __('Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie. Można odstąpić od wybranej liczby sztuk — pozostałe pozostaną w zamówieniu.', 'polski')],
+        ['q' => __('Czy mogę zwrócić tylko niektóre produkty?', 'polski'), 'a' => __('Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie. Można odstąpić od wybranej liczby sztuk - pozostałe pozostaną w zamówieniu.', 'polski')],
         ['q' => __('Co się stanie po wysłaniu formularza?', 'polski'), 'a' => __('Otrzymasz e-mail potwierdzający z unikalnym numerem deklaracji i pełnym podsumowaniem zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia.', 'polski')],
         ['q' => __('Czy są produkty, których nie można zwrócić?', 'polski'), 'a' => __('Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, oraz zapieczętowane ze względów higienicznych po otwarciu opakowania.', 'polski')],
     ];
@@ -199,7 +199,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
         if ($polski_support_email !== '') {
             printf(
                 /* translators: %s = support email link */
-                esc_html__('Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie ręcznie.', 'polski'),
+                esc_html__('Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie ręcznie.', 'polski'),
                 '<a href="' . esc_url('mailto:' . $polski_support_email) . '">' . esc_html($polski_support_email) . '</a>',
             );
         }
@@ -208,7 +208,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
 </section>
 
 <?php
-// FAQPage schema — surfaced once per page render, helps search engines and AI
+// FAQPage schema - surfaced once per page render, helps search engines and AI
 // assistants answer common withdrawal questions about this store. Cached as a
 // static guard to avoid double-printing if the shortcode appears twice.
 if (! isset($GLOBALS['polski_withdrawal_lookup_schema_emitted'])) {
@@ -230,7 +230,7 @@ if (! isset($GLOBALS['polski_withdrawal_lookup_schema_emitted'])) {
         ],
         [
             'q' => __('Czy mogę zwrócić tylko niektóre produkty z zamówienia?', 'polski'),
-            'a' => __('Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie — możesz zwrócić wszystkie produkty, jeden produkt lub tylko wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu.', 'polski'),
+            'a' => __('Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie - możesz zwrócić wszystkie produkty, jeden produkt lub tylko wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu.', 'polski'),
         ],
         [
             'q' => __('Co się stanie po wysłaniu formularza?', 'polski'),

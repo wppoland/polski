@@ -2,7 +2,7 @@
 
 Every withdrawal operation is reachable through a REST endpoint or through
 the WP 6.9+ Abilities API (whichever your client prefers). This document
-focuses on REST — for the Abilities catalog see [abilities.md](abilities.md).
+focuses on REST - for the Abilities catalog see [abilities.md](abilities.md).
 
 All examples assume:
 
@@ -60,8 +60,8 @@ Query parameters:
 
 | Param | Type | Default | Notes |
 |---|---|---|---|
-| `status` | string | — | `requested` / `confirmed` / `completed` / `rejected` |
-| `per_page` | int | 20 | 1–100 |
+| `status` | string | - | `requested` / `confirmed` / `completed` / `rejected` |
+| `per_page` | int | 20 | 1-100 |
 | `page` | int | 1 | |
 
 ### `POST /polski/v1/withdrawals`
@@ -152,7 +152,7 @@ Filters: `action`, `from`, `to` (ISO 8601), `withdrawal_id`, `order_id`.
 
 #### `GET /polski-pro/v1/withdrawals/audit/export`
 
-Streamed CSV of the same data (no pagination — applies filters and writes
+Streamed CSV of the same data (no pagination - applies filters and writes
 all matching rows to the response).
 
 ```bash
@@ -237,14 +237,14 @@ curl -X GET \
 | `401` | Not authenticated (missing nonce / Application Password) |
 | `403` | Authenticated but lacks `manage_woocommerce` (or not the order owner) |
 | `404` | Withdrawal or order not found |
-| `429` | Rate-limited (guest lookup only — 5 attempts / 15 min per e-mail+IP) |
-| `500` | Database error during refund — payload returned `{"error": "…"}` |
+| `429` | Rate-limited (guest lookup only - 5 attempts / 15 min per e-mail+IP) |
+| `500` | Database error during refund - payload returned `{"error": "…"}` |
 
 ---
 
 ## Programmatic use without REST: the Abilities API
 
-If you target WP 6.9+, prefer the Abilities API — it auto-generates request
+If you target WP 6.9+, prefer the Abilities API - it auto-generates request
 validation from the JSON Schema declared in PHP and integrates with the
 Site Editor command palette and `@wordpress/abilities` JS package.
 

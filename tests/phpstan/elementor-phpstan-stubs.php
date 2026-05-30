@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * PHPStan-only stubs for Elementor (plugin is optional at runtime; not Composer-installed).
- * Loaded via .phpstan.neon bootstrapFiles — never autoloaded in WordPress.
+ * Loaded via .phpstan.neon bootstrapFiles - never autoloaded in WordPress.
  *
  * @see https://developers.elementor.com/docs/widgets/
  */

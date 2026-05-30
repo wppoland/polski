@@ -326,13 +326,13 @@ export default function SetupWizard() {
                                         }
                                     >
                                         <option value="required">
-                                            {__('Required — checkout blocked until ticked', 'polski')}
+                                            {__('Required - checkout blocked until ticked', 'polski')}
                                         </option>
                                         <option value="optional">
-                                            {__('Optional — show unchecked, only ticked orders are exempt', 'polski')}
+                                            {__('Optional - show unchecked, only ticked orders are exempt', 'polski')}
                                         </option>
                                         <option value="hidden">
-                                            {__("Hidden — don't collect consent", 'polski')}
+                                            {__("Hidden - don't collect consent", 'polski')}
                                         </option>
                                     </select>
                                 </WizardRow>

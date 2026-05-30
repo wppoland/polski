@@ -16,10 +16,10 @@ use Polski\Repository\WithdrawalRepository;
  *
  * Two new parameters are exposed:
  *
- *  - `polski_has_withdrawal` (bool)        — filter to orders that do (or do
+ *  - `polski_has_withdrawal` (bool)        - filter to orders that do (or do
  *                                            not) have any non-rejected
  *                                            withdrawal record.
- *  - `polski_withdrawal_status` (string)   — exact match on the withdrawal
+ *  - `polski_withdrawal_status` (string)   - exact match on the withdrawal
  *                                            status: requested / confirmed /
  *                                            completed / rejected.
  *
@@ -90,7 +90,7 @@ final class WithdrawalQueryHelper implements HasHooks
      */
     private function matchingOrderIds(?WithdrawalStatus $status): array
     {
-        // Pull up to 5_000 records — enough for any reasonable filtered query.
+        // Pull up to 5_000 records - enough for any reasonable filtered query.
         // Storefronts needing more should narrow with date_created upstream.
         $rows = $this->repository->findAll(5000, 0, $status);
 

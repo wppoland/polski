@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Polski — self-hosted webfonts (PRODUCTION)
+   Polski - self-hosted webfonts (PRODUCTION)
    Enqueue this FIRST (before polski-brand.css). Replaces the dev-only
    @import in polski-brand.css so shipped CSS has no render-blocking import.
 
@@ -8,7 +8,7 @@
      only when those glyphs are actually used.
    - Only the weights the UI uses are shipped (Schibsted 700/800/900,
      Hanken 400/600/700/800). Preload just Schibsted 900 (the wordmark,
-     above the fold) — see the PHP snippet in integration/IMPLEMENTATION.md.
+     above the fold) - see the PHP snippet in integration/IMPLEMENTATION.md.
 
    Paths assume this file sits in assets/css/ and fonts in assets/fonts/.
    ========================================================================== */

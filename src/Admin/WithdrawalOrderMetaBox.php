@@ -40,7 +40,7 @@ final class WithdrawalOrderMetaBox implements HasHooks
         foreach ($screens as $screen) {
             add_meta_box(
                 'polski-withdrawal-status',
-                __('Polski — odstąpienie', 'polski'),
+                __('Polski - odstąpienie', 'polski'),
                 [$this, 'render'],
                 $screen,
                 'side',

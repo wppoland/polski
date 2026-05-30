@@ -2,18 +2,18 @@
 
 20 abilities registered across 5 categories. Available on WordPress 6.9+ via
 `/wp-json/wp-abilities/v1/abilities` and the `@wordpress/abilities` JS package.
-On older WordPress versions the plugin functions normally — abilities just
+On older WordPress versions the plugin functions normally - abilities just
 aren't exposed.
 
 ## Categories
 
 | ID | Source |
 |---|---|
-| `polski/withdrawal` | FREE — withdrawal flow |
-| `polski/legal` | FREE — generated legal documents |
-| `polski/compliance` | FREE — compliance audits |
-| `polski/shop` | FREE — shop identification |
-| `polski-pro/withdrawal` | PRO — refund / pdf / audit / reports |
+| `polski/withdrawal` | FREE - withdrawal flow |
+| `polski/legal` | FREE - generated legal documents |
+| `polski/compliance` | FREE - compliance audits |
+| `polski/shop` | FREE - shop identification |
+| `polski-pro/withdrawal` | PRO - refund / pdf / audit / reports |
 
 ## FREE abilities (16)
 
@@ -35,23 +35,23 @@ aren't exposed.
 
 | ID | Input | Output | Permission |
 |---|---|---|---|
-| `polski/annex-generate-info` | — | `{html}` | public |
-| `polski/annex-generate-form` | — | `{html}` | public |
+| `polski/annex-generate-info` | - | `{html}` | public |
+| `polski/annex-generate-form` | - | `{html}` | public |
 
 ### `polski/compliance` category
 
 | ID | Input | Output | Permission |
 |---|---|---|---|
-| `polski/compliance-check-privacy` | — | CheckReport | options manager |
-| `polski/compliance-check-terms` | — | CheckReport | options manager |
+| `polski/compliance-check-privacy` | - | CheckReport | options manager |
+| `polski/compliance-check-terms` | - | CheckReport | options manager |
 | `polski/compliance-check-cookie-banner` | `{url?}` | CheckReport | options manager |
 
 ### `polski/shop` category
 
 | ID | Input | Output | Permission |
 |---|---|---|---|
-| `polski/shop-get-business-info` | — | `{name, address, nip, regon, email, phone}` | public |
-| `polski/shop-legal-pages-status` | — | `{pages: {type: bool}}` | options manager |
+| `polski/shop-get-business-info` | - | `{name, address, nip, regon, email, phone}` | public |
+| `polski/shop-legal-pages-status` | - | `{pages: {type: bool}}` | options manager |
 
 ## PRO abilities (4)
 

@@ -264,7 +264,7 @@ if ($cartPageId <= 0 || get_post_status($cartPageId) === false) {
 $checkoutPageId = (int) get_option('woocommerce_checkout_page_id', 0);
 
 // Classic [woocommerce_checkout] so PHP hooks (e.g. woocommerce_review_order_before_submit) run;
-// the WooCommerce Checkout block does not fire those hooks — E2E asserts .polski-legal-checkboxes from templates.
+// the WooCommerce Checkout block does not fire those hooks - E2E asserts .polski-legal-checkboxes from templates.
 $checkoutPageContent = "<!-- wp:shortcode -->\n[woocommerce_checkout]\n<!-- /wp:shortcode -->";
 
 if ($checkoutPageId <= 0 || get_post_status($checkoutPageId) === false) {
