@@ -1,10 +1,10 @@
-# Telemetry subscribers — copy-pasteable snippets
+# Telemetry subscribers - copy-pasteable snippets
 
 The withdrawal module fires a single canonical action
 `polski/withdrawal/error` carrying a normalised report payload. Drop any
 of the snippets below into a `mu-plugin` or a small site-specific plugin
 to forward those events to your stack of choice. They all run
-out-of-process from the customer flow — a failing subscriber will not
+out-of-process from the customer flow - a failing subscriber will not
 break the consumer's submission.
 
 The payload shape is:
@@ -28,7 +28,7 @@ URL below.
 ```php
 <?php
 add_action('polski/withdrawal/error', static function (array $report): void {
-    $webhook = 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX';
+    $webhook = 'https://hooks.slack.com/services/REPLACE_WITH_YOUR_WEBHOOK_PATH';
 
     $contextLines = [];
     foreach ($report['context'] ?? [] as $k => $v) {
@@ -172,5 +172,5 @@ add_filter('polski/withdrawal/error_report', static function (array $report): ar
 });
 ```
 
-Filters always run before the action — your subscriber sees the
+Filters always run before the action - your subscriber sees the
 already-redacted payload. Multiple filters and subscribers can coexist.
