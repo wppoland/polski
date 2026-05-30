@@ -50,3 +50,4 @@ languages/*.po~
 languages/polski-pro.pot
 index.html
 TODO.md
+*.map
