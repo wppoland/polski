@@ -2198,35 +2198,35 @@ msgstr "Nettomenge"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR – Manufacturer name"
-msgstr "GPSR – Herstellername"
+msgstr "GPSR - Herstellername"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR – Manufacturer address"
-msgstr "GPSR – Herstelleradresse"
+msgstr "GPSR - Herstelleradresse"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR – Importer name"
-msgstr "GPSR – Importeurname"
+msgstr "GPSR - Importeurname"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR – Importer address"
-msgstr "GPSR – Importeuradresse"
+msgstr "GPSR - Importeuradresse"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR – Responsible person"
-msgstr "GPSR – Verantwortliche Person"
+msgstr "GPSR - Verantwortliche Person"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR – Product identifier"
-msgstr "GPSR – Produktidentifikator"
+msgstr "GPSR - Produktidentifikator"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR – Safety warnings"
-msgstr "GPSR – Sicherheitswarnungen"
+msgstr "GPSR - Sicherheitswarnungen"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR – Safety instructions"
-msgstr "GPSR – Sicherheitsanweisungen"
+msgstr "GPSR - Sicherheitsanweisungen"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -6149,7 +6149,7 @@ msgstr "Optionale Überschrift nur für dieses Produkt."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR – Product Safety"
-msgstr "GPSR – Produktsicherheit"
+msgstr "GPSR - Produktsicherheit"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -6580,7 +6580,7 @@ msgstr "Suchseite für Gäste"
 
 #: src/Admin/WithdrawalSettingsPage.php:178
 msgid "— none —"
-msgstr "— keine —"
+msgstr "- keine -"
 
 #: src/Admin/WithdrawalSettingsPage.php:184
 msgid ""
