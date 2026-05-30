@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Polski — Brand layer (design tokens + identity components)
+   Polski - Brand layer (design tokens + identity components)
    Load this FIRST on every Polski admin screen, before admin-dashboard.css
    and admin-modules.css. Tokens are namespaced --pl-* and scoped to the
    plugin wrappers so they never leak into the wider wp-admin.
@@ -10,7 +10,7 @@
 
 /* Fonts: enqueue assets/css/polski-fonts.css FIRST (self-hosted woff2,
    font-display:swap). The dev-only Google Fonts @import has been removed so
-   shipped CSS has no render-blocking import — see integration/IMPLEMENTATION.md. */
+   shipped CSS has no render-blocking import - see integration/IMPLEMENTATION.md. */
 
 .polski-admin,
 .polski-modules-wrap,
@@ -70,7 +70,7 @@
 }
 .polski-logo-mark svg { width: 62%; height: 62%; display: block; }
 
-/* The wordmark "Polski" — fat 900, with the lifted verified-square tittle */
+/* The wordmark "Polski" - fat 900, with the lifted verified-square tittle */
 .polski-logo-word {
     font-family: var(--pl-font-display);
     font-weight: 900;
@@ -126,7 +126,7 @@
     text-transform: uppercase;
 }
 
-/* WordPress CardHeader h2 — give headings the brand display face */
+/* WordPress CardHeader h2 - give headings the brand display face */
 .polski-admin .components-card__header h2,
 .polski-admin .polski-dashboard__card h2 {
     font-family: var(--pl-font-display);

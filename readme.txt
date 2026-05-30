@@ -287,7 +287,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * New module: Business identification. Renders the shop's business data (name, address, NIP, REGON, email, phone) as a `[polski_business_info]` shortcode and a dynamic Gutenberg block `polski/business-info`. Reads values set in the setup wizard (`polski_general` option). Block and inline formats with configurable separator.
 
 = 1.8.1 =
-* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` — ready for Dependency-Track / Trivy.
+* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` - ready for Dependency-Track / Trivy.
 
 = 1.8.0 =
 * New module: CRA incident reporting. Records actively-exploited vulnerabilities and security incidents with a CRA Article 14 early-warning deadline (24h for incidents/exploits, 72h for near misses). Admin page `Polski > CRA incidents` to record, dispatch (webhook + email) and mark resolved. JSON export per ENISA SRP draft schema. Hourly cron checks for deadlines approaching. Action hooks `polski_cra_incident_recorded` and `polski_cra_incident_deadline_approaching`. Migration 2.1.0 creates `polski_cra_incidents`.

@@ -17,7 +17,7 @@ use Polski\Contract\HasHooks;
  *  - trigger statuses empty (the 14-day clock would never start)
  *  - Annex locale auto-detect but site_locale not in the supported set
  *
- * Each test returns either a "good" or "recommended" status — never
+ * Each test returns either a "good" or "recommended" status - never
  * "critical", because the plugin still works without these (just less
  * compliant / harder to discover). The dashboard tile uses the
  * critical/recommended split for the headline number.

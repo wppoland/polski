@@ -44,7 +44,7 @@ final class B2BCheckoutHooks implements HasHooks
 
     /**
      * Inline script that hides B2B fields until the "Buying as a company"
-     * checkbox is ticked. Keeps the dependency surface to zero — no asset
+     * checkbox is ticked. Keeps the dependency surface to zero - no asset
      * pipeline required.
      */
     public function enqueueToggleScript(): void

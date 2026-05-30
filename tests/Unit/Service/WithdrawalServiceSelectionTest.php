@@ -11,7 +11,7 @@ use Polski\Service\WithdrawalService;
 use Polski\Util\TemplateLoader;
 
 /**
- * Covers the private resolveSelection() — partial refund math, qty capping,
+ * Covers the private resolveSelection() - partial refund math, qty capping,
  * pro-rata totals, and the "entire remaining order" fallback. WithdrawalService
  * is final; we exercise it via Reflection, with a wpdb stub that reports
  * "nothing previously withdrawn" so the remaining-items computation is

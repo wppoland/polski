@@ -3,7 +3,7 @@
  * Authenticated guest withdrawal form (revealed after redeeming the magic-link token).
  *
  * Shows the order summary so the visitor can verify what they are about to
- * withdraw — critical for cognitive accessibility and error prevention
+ * withdraw - critical for cognitive accessibility and error prevention
  * (WCAG 3.3.4: review before final submission).
  *
  * @var \WC_Order $polski_order
@@ -31,7 +31,7 @@ $polski_order_date = $polski_order->get_date_created();
         <?php
         printf(
             /* translators: %s = order number */
-            esc_html__('Odstąpienie od umowy — zamówienie #%s', 'polski'),
+            esc_html__('Odstąpienie od umowy - zamówienie #%s', 'polski'),
             esc_html($polski_order->get_order_number()),
         );
         ?>
@@ -127,7 +127,7 @@ $polski_order_date = $polski_order->get_date_created();
                 aria-describedby="polski_withdrawal_reason_help"
             ></textarea>
             <small id="polski_withdrawal_reason_help" style="display:block; color:#475569;">
-                <?php esc_html_e('Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
+                <?php esc_html_e('Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
             </small>
         </p>
 

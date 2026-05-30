@@ -2,7 +2,7 @@
 /**
  * Withdrawal confirmation email (plain text).
  *
- * Mirror of the HTML template — captures the same frozen declaration snapshot so
+ * Mirror of the HTML template - captures the same frozen declaration snapshot so
  * the message can serve as a record on a durable medium.
  *
  * @var WC_Order                          $polski_order

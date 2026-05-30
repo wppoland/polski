@@ -1,4 +1,4 @@
-# Analytics subscribers — withdrawal funnel
+# Analytics subscribers - withdrawal funnel
 
 The withdrawal module fires a single canonical analytics action
 `polski/withdrawal/event` with a normalised payload covering every
@@ -164,4 +164,4 @@ add_filter('polski/withdrawal/event_payload', static function (array $payload, s
 }, 10, 3);
 ```
 
-Subscribers see the augmented payload — no need to repeat the lookup.
+Subscribers see the augmented payload - no need to repeat the lookup.
