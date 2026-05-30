@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.19.0
+Stable tag: 1.20.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -232,7 +232,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 
 == Changelog ==
 
-= 1.19.0 =
+= 1.20.0 =
 * New module: Promotions / dynamic pricing (basic). Optional, off by default. Two automatic cart discounts you configure in the module settings: a bulk discount (a percentage off a product line once its quantity reaches a threshold) and a cart discount (a percentage off when the cart subtotal reaches a threshold, applied as a cart fee). Recomputed idempotently from the regular price, safe across WooCommerce's repeated total calculations.
 
 = 1.18.0 =
