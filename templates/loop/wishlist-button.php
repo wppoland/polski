@@ -18,6 +18,7 @@ $polski_button = $polski_service->getButtonData($polski_product);
     class="button polski-wishlist-button polski-wishlist-button--loop<?php echo $polski_button['in_wishlist'] ? ' is-active' : ''; ?>"
     data-polski-wishlist-button
     data-product-id="<?php echo esc_attr((string) $polski_button['product_id']); ?>"
+    aria-pressed="<?php echo $polski_button['in_wishlist'] ? 'true' : 'false'; ?>"
 >
     <?php echo esc_html($polski_button['label']); ?>
 </button>

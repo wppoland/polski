@@ -7,14 +7,76 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const openModal = () => {
+  const dialog = modal.querySelector('.polski-quick-view-dialog') || modal;
+  const FOCUSABLE = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled]):not([type="hidden"])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+
+  // Element that had focus before the modal opened, so we can restore it.
+  let lastFocused = null;
+
+  const focusableInDialog = () =>
+    Array.prototype.slice
+      .call(dialog.querySelectorAll(FOCUSABLE))
+      .filter((el) => el.offsetParent !== null || el === document.activeElement);
+
+  const focusFirst = () => {
+    const items = focusableInDialog();
+    if (items.length > 0) {
+      items[0].focus();
+    } else if (typeof dialog.focus === 'function') {
+      dialog.focus();
+    }
+  };
+
+  const openModal = (trigger) => {
+    lastFocused = trigger || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     modal.hidden = false;
     document.body.classList.add('polski-quick-view-open');
+    focusFirst();
   };
 
   const closeModal = () => {
     modal.hidden = true;
     document.body.classList.remove('polski-quick-view-open');
+
+    // Return focus to the control that opened the modal (accessibility).
+    if (lastFocused && typeof lastFocused.focus === 'function' && document.contains(lastFocused)) {
+      lastFocused.focus();
+    }
+    lastFocused = null;
+  };
+
+  const trapFocus = (event) => {
+    if (event.key !== 'Tab' || modal.hidden) {
+      return;
+    }
+
+    const items = focusableInDialog();
+    if (items.length === 0) {
+      event.preventDefault();
+      if (typeof dialog.focus === 'function') {
+        dialog.focus();
+      }
+      return;
+    }
+
+    const first = items[0];
+    const last = items[items.length - 1];
+    const active = document.activeElement;
+
+    if (event.shiftKey && (active === first || active === dialog)) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
   };
 
   const initVariations = () => {
@@ -61,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    openModal();
+    openModal(trigger);
+    content.setAttribute('aria-busy', 'true');
     content.innerHTML = `<p>${config.loadingText}</p>`;
 
     const url = new URL(config.ajaxUrl, window.location.origin);
@@ -79,14 +142,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
       content.innerHTML = payload.data.html;
       initVariations();
+      // Move focus into the freshly loaded content if the modal is still open.
+      if (!modal.hidden) {
+        focusFirst();
+      }
     } catch (error) {
       content.innerHTML = `<p>${config.errorText}</p>`;
+    } finally {
+      content.removeAttribute('aria-busy');
     }
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.hidden) {
-      closeModal();
+    if (modal.hidden) {
+      return;
     }
+
+    if (event.key === 'Escape') {
+      closeModal();
+      return;
+    }
+
+    trapFocus(event);
   });
 });

@@ -39,7 +39,7 @@
             }
         }
 
-        $button.addClass('loading').prop('disabled', true);
+        $button.addClass('loading').prop('disabled', true).attr('aria-busy', 'true');
 
         $(document.body).trigger('polski_adding_to_cart', [$button, formData]);
 
@@ -80,13 +80,20 @@
                 showNotice(config.i18n.error, 'error');
             },
             complete: function () {
-                $button.removeClass('loading').prop('disabled', false);
+                $button.removeClass('loading').prop('disabled', false).removeAttr('aria-busy');
             }
         });
     });
 
     function showNotice(message, type) {
-        var $notice = $('<div class="polski-ajax-cart-notice' + (type === 'error' ? ' error' : '') + '">' + message + '</div>');
+        var isError = type === 'error';
+        var $notice = $('<div class="polski-ajax-cart-notice' + (isError ? ' error' : '') + '">' + message + '</div>');
+
+        // Announce the outcome to assistive tech: errors assertively, the
+        // success confirmation politely.
+        $notice.attr('role', isError ? 'alert' : 'status');
+        $notice.attr('aria-live', isError ? 'assertive' : 'polite');
+
         $('body').append($notice);
 
         setTimeout(function () {

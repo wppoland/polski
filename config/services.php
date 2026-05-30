@@ -233,6 +233,7 @@ return static function (Container $c): void {
     $c->singleton(LiveCartService::class, static fn () => new LiveCartService());
     $c->singleton(SearchService::class, static fn () => new SearchService(
         $c->get(TemplateLoader::class),
+        $c->get(PriceDisplayService::class),
     ));
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
@@ -425,6 +426,7 @@ return static function (Container $c): void {
     $c->singleton(LoopHooks::class, static fn () => new LoopHooks(
         $c->get(PriceDisplayService::class),
         $c->get(ProductInfoService::class),
+        $c->get(DeliveryTimeService::class),
         $c->get(ShopmarkManager::class),
         $c->get(TemplateLoader::class),
     ));

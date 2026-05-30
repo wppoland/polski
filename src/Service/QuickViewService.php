@@ -221,6 +221,24 @@ final class QuickViewService implements Bootable, HasHooks
         return $this->priceDisplay->getUnitPriceHtml($product);
     }
 
+    public function getOmnibusPriceHtml(\WC_Product $product): string
+    {
+        if (! ($this->getSettings()['show_price'] ?? true) || ! ($this->getSettings()['show_omnibus'] ?? true)) {
+            return '';
+        }
+
+        return $this->priceDisplay->getOmnibusPriceHtml($product);
+    }
+
+    public function getGpsrInfoHtml(\WC_Product $product): string
+    {
+        if (! ($this->getSettings()['show_gpsr'] ?? true)) {
+            return '';
+        }
+
+        return $this->productInfo->getSafetyInfoHtml($product);
+    }
+
     public function getSku(\WC_Product $product): string
     {
         if (! ($this->getSettings()['show_sku'] ?? true)) {

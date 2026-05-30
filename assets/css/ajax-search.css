@@ -1,3 +1,5 @@
+@import url('polski-ui-tokens.css');
+
 .polski-ajax-search {
     position: relative;
 }
@@ -18,10 +20,10 @@
     left: 0;
     right: 0;
     z-index: 40;
-    background: #fff;
-    border: 1px solid #dcdcdc;
-    border-radius: 12px;
-    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.14);
+    background: var(--polski-surface-bg);
+    border: 1px solid var(--polski-surface-border);
+    border-radius: var(--polski-surface-radius-md);
+    box-shadow: var(--polski-surface-shadow);
     padding: 0.5rem;
 }
 
@@ -35,8 +37,17 @@
     color: inherit;
 }
 
-.polski-ajax-search__item:hover {
-    background: #f7f7f7;
+.polski-ajax-search__item:hover,
+.polski-ajax-search__item--active {
+    background: var(--polski-surface-muted);
+}
+
+.polski-ajax-search__all.polski-ajax-search__item--active {
+    background: #f0f0f0;
+}
+
+.polski-ajax-search__results[aria-busy="true"] {
+    cursor: progress;
 }
 
 .polski-ajax-search__thumb {
@@ -71,4 +82,10 @@
     text-align: center;
     font-weight: 600;
     text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .polski-ajax-search__all.polski-ajax-search__item--active {
+        background: var(--polski-surface-muted);
+    }
 }

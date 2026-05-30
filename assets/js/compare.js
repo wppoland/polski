@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateButtons = (productId, active, label) => {
     document.querySelectorAll(`[data-polski-compare-button][data-product-id="${productId}"]`).forEach((button) => {
       button.classList.toggle('is-active', active);
-      button.textContent = label;
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      if (label) {
+        button.textContent = label;
+      }
     });
   };
 
@@ -56,7 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Guard against double submissions while a request is in flight.
+    if (button.getAttribute('aria-busy') === 'true') {
+      return;
+    }
+
     button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
 
     try {
       const body = new URLSearchParams({
@@ -78,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } finally {
       button.disabled = false;
+      button.removeAttribute('aria-busy');
     }
   });
 

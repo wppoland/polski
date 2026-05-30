@@ -1,0 +1,123 @@
+/**
+ * Polski storefront UI tokens — modal, drawer, dropdown surfaces.
+ * Imported by module stylesheets; scoped to :root so themes can override.
+ */
+:root {
+    --polski-overlay-bg: rgba(0, 0, 0, 0.5);
+    --polski-surface-bg: #fff;
+    --polski-surface-border: #dcdcdc;
+    --polski-surface-muted: #f7f7f7;
+    --polski-surface-radius-lg: 16px;
+    --polski-surface-radius-md: 12px;
+    --polski-surface-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+    --polski-crimson: #D4213D;
+    --polski-focus-ring: 0 0 0 3px rgba(212, 33, 61, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --polski-overlay-bg: rgba(0, 0, 0, 0.72);
+        --polski-surface-bg: #1e1f24;
+        --polski-surface-border: #3a3d45;
+        --polski-surface-muted: #2a2c32;
+        --polski-surface-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .polski-quick-view-dialog,
+    .polski-popup__dialog,
+    .polski-ajax-search__results,
+    .polski-cart-drawer__panel,
+    .polski-ajax-filters.is-mobile-open .polski-ajax-filters__panel {
+        color: #eceae7;
+    }
+
+    .polski-ajax-search__sku,
+    .polski-ajax-search__price,
+    .polski-ajax-search__empty,
+    .polski-cart-drawer__count,
+    .polski-cart-drawer__item-meta,
+    .polski-cart-drawer__subtotal,
+    .polski-cart-drawer__shipping,
+    .polski-cart-drawer__empty {
+        color: #a8abb4;
+    }
+
+    .polski-cart-drawer__header,
+    .polski-cart-drawer__footer,
+    .polski-cart-drawer__item {
+        border-color: #3a3d45;
+    }
+
+    .polski-cart-drawer__title,
+    .polski-cart-drawer__item-name,
+    .polski-cart-drawer__subtotal strong,
+    .polski-cart-drawer__item-price {
+        color: #eceae7;
+    }
+
+    .polski-cart-drawer__close:hover,
+    .polski-cart-drawer__btn--secondary {
+        background: #2a2c32;
+        color: #eceae7;
+    }
+
+    .polski-cart-drawer__btn--secondary:hover {
+        background: #3a3d45;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polski-quick-view-modal,
+    .polski-quick-view-backdrop,
+    .polski-quick-view-dialog,
+    .polski-popup,
+    .polski-popup__backdrop,
+    .polski-popup__dialog,
+    .polski-cart-drawer__overlay,
+    .polski-cart-drawer__panel,
+    .polski-cart-drawer__shipping-fill,
+    .polski-cart-drawer__close,
+    .polski-cart-drawer__btn,
+    .polski-gallery-zoomable,
+    .polski-ajax-filters__chip,
+    .polski-ajax-filters--loading,
+    .polski-ajax-filters__backdrop,
+    .polski-ajax-filters__panel {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .woocommerce-product-gallery__image:hover .polski-gallery-zoomable {
+        transform: none;
+    }
+}
+
+/* Shared :focus-visible rings — Polski interactive storefront UI */
+.polski-ajax-search__input:focus-visible,
+.polski-ajax-search__submit:focus-visible,
+.polski-ajax-search__item:focus-visible,
+.polski-quick-view-button:focus-visible,
+.polski-quick-view-close:focus-visible,
+.polski-popup__close:focus-visible,
+.polski-popup__cta:focus-visible,
+.polski-gallery-lightbox-trigger:focus-visible,
+.polski-gallery-lightbox__close:focus-visible,
+.polski-cart-drawer__close:focus-visible,
+.polski-cart-drawer__btn:focus-visible,
+.polski-wishlist-button:focus-visible,
+.polski-compare-button:focus-visible,
+.polski-compare-sticky__clear:focus-visible,
+.polski-ajax-filters__mobile-toggle:focus-visible,
+.polski-ajax-filters__chip:focus-visible {
+    outline: 2px solid var(--polski-crimson);
+    outline-offset: 2px;
+}
+
+.polski-ajax-search__input:focus-visible,
+.polski-quick-view-button:focus-visible,
+.polski-popup__cta:focus-visible,
+.polski-cart-drawer__btn:focus-visible,
+.polski-wishlist-button:focus-visible,
+.polski-compare-button:focus-visible {
+    box-shadow: var(--polski-focus-ring);
+}

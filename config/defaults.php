@@ -183,6 +183,7 @@ return [
     'polski_delivery' => [
         'default_delivery_time' => '',
         'display_format' => __('Czas dostawy: {time}', 'polski'),
+        'show_in_loop' => false,
     ],
 
     // Double opt-in.
@@ -297,6 +298,8 @@ return [
         'show_submit_button' => true,
         'show_image' => true,
         'show_price' => true,
+        'show_unit_price' => true,
+        'show_omnibus' => true,
         'show_sku' => true,
         'show_view_all_link' => true,
         'search_sku' => true,
@@ -338,6 +341,12 @@ return [
         'show_hierarchical_categories' => true,
         'enable_taxonomy_multiselect' => true,
         'taxonomy_multi_select_relation' => 'or',
+        'enable_mobile_panel' => true,
+        'enable_instant_filtering' => true,
+        'instant_filtering_debounce_ms' => 350,
+        'presets_json' => '',
+        'archive_presets_json' => '',
+        'attribute_taxonomies' => '',
         'max_attribute_taxonomies' => 4,
         'category_label' => __('Kategoria', 'polski'),
         'category_all_text' => __('Wszystkie', 'polski'),
@@ -356,6 +365,9 @@ return [
         'reset_text' => __('Wyczyść filtry', 'polski'),
         'title' => __('Filtry produktów', 'polski'),
         'active_filters_label' => __('Aktywne filtry', 'polski'),
+        'mobile_toggle_text' => __('Pokaż filtry', 'polski'),
+        'mobile_close_text' => __('Zamknij', 'polski'),
+        'mobile_panel_title' => __('Filtry produktów', 'polski'),
     ],
 
     // Wishlist.
@@ -441,8 +453,10 @@ return [
         'show_gallery' => true,
         'show_price' => true,
         'show_unit_price' => true,
+        'show_omnibus' => true,
         'show_sku' => true,
         'show_delivery_time' => true,
+        'show_gpsr' => true,
         'show_brand' => true,
         'show_manufacturer' => true,
         'show_short_description' => true,
@@ -537,6 +551,7 @@ return [
         'enable_lightbox' => true,
         'dialog_label' => __('Podgląd galerii produktu', 'polski'),
         'close_label' => __('Zamknij podgląd galerii', 'polski'),
+        'trigger_label' => __('Powiększ zdjęcie produktu', 'polski'),
         'show_backdrop_close' => true,
     ],
 
@@ -644,6 +659,7 @@ return [
         'loading_text' => __('Ładowanie produktów...', 'polski'),
         'error_text' => __('Nie udało się załadować kolejnych produktów.', 'polski'),
         'end_text' => __('To już wszystkie produkty.', 'polski'),
+        'loaded_text' => __('Załadowano kolejne produkty.', 'polski'),
         'show_on_shop' => true,
         'show_on_taxonomies' => true,
         'auto_after_pages' => 0,

@@ -177,6 +177,8 @@ final class WithdrawalService implements Bootable, HasHooks
      *     line_total: float,
      *     line_tax: float,
      *     currency: string,
+     *     is_exempt: bool,
+     *     exempt_reason: string,
      * }>
      */
     public function getRemainingItems(\WC_Order $order): array
@@ -229,7 +231,39 @@ final class WithdrawalService implements Bootable, HasHooks
          * @param array<int, array<string, mixed>> $rows
          * @param \WC_Order                        $order
          */
-        return (array) apply_filters('polski/withdrawal/items', $rows, $order);
+        $decorated = apply_filters('polski/withdrawal/items', $rows, $order);
+
+        if (! is_array($decorated)) {
+            return $rows;
+        }
+
+        // Re-key the trusted, server-built rows so we can overlay only the two
+        // fields subscribers are allowed to influence. This enforces the
+        // documented contract ("preserve the rest of the row shape") and keeps
+        // malformed third-party filter output from corrupting order data.
+        $baseById = [];
+        foreach ($rows as $row) {
+            $baseById[$row['order_item_id']] = $row;
+        }
+
+        $result = [];
+        foreach ($decorated as $entry) {
+            if (! is_array($entry) || ! isset($entry['order_item_id'])) {
+                continue;
+            }
+
+            $itemId = (int) $entry['order_item_id'];
+            if (! isset($baseById[$itemId])) {
+                continue;
+            }
+
+            $row = $baseById[$itemId];
+            $row['is_exempt'] = ! empty($entry['is_exempt']);
+            $row['exempt_reason'] = isset($entry['exempt_reason']) ? (string) $entry['exempt_reason'] : '';
+            $result[] = $row;
+        }
+
+        return $result;
     }
 
     /**
