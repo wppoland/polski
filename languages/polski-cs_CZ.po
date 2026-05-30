@@ -2157,35 +2157,35 @@ msgstr "Netto množství"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR – Manufacturer name"
-msgstr "GPSR – Název výrobce"
+msgstr "GPSR - Název výrobce"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR – Manufacturer address"
-msgstr "GPSR – Adresa výrobce"
+msgstr "GPSR - Adresa výrobce"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR – Importer name"
-msgstr "GPSR – Název dovozce"
+msgstr "GPSR - Název dovozce"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR – Importer address"
-msgstr "GPSR – Adresa dovozce"
+msgstr "GPSR - Adresa dovozce"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR – Responsible person"
-msgstr "GPSR – Odpovědná osoba"
+msgstr "GPSR - Odpovědná osoba"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR – Product identifier"
-msgstr "GPSR – Identifikátor produktu"
+msgstr "GPSR - Identifikátor produktu"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR – Safety warnings"
-msgstr "GPSR – Bezpečnostní varování"
+msgstr "GPSR - Bezpečnostní varování"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR – Safety instructions"
-msgstr "GPSR – Bezpečnostní pokyny"
+msgstr "GPSR - Bezpečnostní pokyny"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -4719,7 +4719,7 @@ msgstr "Ověřený nákup"
 
 #: src/Admin/ModulesPage.php:874
 msgid "Anti-greenwashing"
-msgstr "Anti-greenwashing"
+msgstr "Proti greenwashingu"
 
 #: src/Admin/ModulesPage.php:875
 msgid ""
@@ -6055,7 +6055,7 @@ msgstr "Volitelný nadpis jen pro tento produkt."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR – Product Safety"
-msgstr "GPSR – Bezpečnost produktu"
+msgstr "GPSR - Bezpečnost produktu"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -6489,7 +6489,7 @@ msgstr "Stránka vyhledávání pro hosty"
 
 #: src/Admin/WithdrawalSettingsPage.php:178
 msgid "— none —"
-msgstr "— žádná —"
+msgstr "- žádná -"
 
 #: src/Admin/WithdrawalSettingsPage.php:184
 msgid ""
@@ -7220,23 +7220,23 @@ msgstr "Odpovědná osoba (GPSR)"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "1-2 dni robocze"
-msgstr "1–2 pracovní dny"
+msgstr "1-2 pracovní dny"
 
 #: src/Migration/Migration_1_0_0.php:26
 msgid "2-4 dni robocze"
-msgstr "2–4 pracovní dny"
+msgstr "2-4 pracovní dny"
 
 #: src/Migration/Migration_1_0_0.php:27
 msgid "3-5 dni roboczych"
-msgstr "3–5 pracovních dnů"
+msgstr "3-5 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:28
 msgid "5-7 dni roboczych"
-msgstr "5–7 pracovních dnů"
+msgstr "5-7 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:29
 msgid "7-14 dni roboczych"
-msgstr "7–14 pracovních dnů"
+msgstr "7-14 pracovních dnů"
 
 #: src/Migration/Migration_1_0_0.php:30
 msgid "Do 24 godzin"
@@ -8006,7 +8006,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:73
 msgid "Polski — shop identification"
-msgstr "Polski — identifikace obchodu"
+msgstr "Polski - identifikace obchodu"
 
 #: src/Service/AbilitiesService.php:74
 msgid ""
@@ -8103,7 +8103,7 @@ msgstr "Vrací žádosti o odstoupení, volitelně filtrované podle stavu."
 
 #: src/Service/AbilitiesService.php:401
 msgid "Generate Annex I(A) — withdrawal information"
-msgstr "Vygenerovat Přílohu I(A) — informace o odstoupení"
+msgstr "Vygenerovat Přílohu I(A) - informace o odstoupení"
 
 #: src/Service/AbilitiesService.php:402
 msgid ""
@@ -8115,7 +8115,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:415
 msgid "Generate Annex I(B) — withdrawal form template"
-msgstr "Vygenerovat Přílohu I(B) — vzorový formulář pro odstoupení"
+msgstr "Vygenerovat Přílohu I(B) - vzorový formulář pro odstoupení"
 
 #: src/Service/AbilitiesService.php:416
 msgid ""
@@ -9238,7 +9238,7 @@ msgid ""
 "ty@example.com — ten sam, który podałeś przy zakupie."
 msgstr ""
 "E-mailová adresa vypadá jako neplatná. Zadejte úplnou adresu ve formátu "
-"ty@example.com — tutéž, kterou jste uvedli při nákupu."
+"ty@example.com - tutéž, kterou jste uvedli při nákupu."
 
 #: src/Service/GuestWithdrawalService.php:83
 msgid ""
@@ -9256,7 +9256,7 @@ msgid ""
 msgstr ""
 "Pokud tato objednávka existuje, odeslali jsme odkaz na formulář na "
 "e-mailovou adresu uvedenou při nákupu. Zkontrolujte doručenou poštu (a "
-"složku Spam) — zpráva by měla dorazit během několika minut."
+"složku Spam) - zpráva by měla dorazit během několika minut."
 
 #: src/Service/GuestWithdrawalService.php:149
 msgid "This link is no longer valid."
@@ -9291,7 +9291,7 @@ msgid ""
 " folder Spam."
 msgstr ""
 "Vaše prohlášení bylo zaregistrováno pod číslem %s. Odeslali jsme potvrzení "
-"na adresu uvedenou při nákupu — zkontrolujte doručenou poštu a složku Spam."
+"na adresu uvedenou při nákupu - zkontrolujte doručenou poštu a složku Spam."
 
 #: src/Service/GuestWithdrawalService.php:198
 msgid "Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem."
@@ -9301,7 +9301,7 @@ msgstr "Uschovejte si číslo prohlášení pro případ kontaktu s obchodem."
 #: src/Service/GuestWithdrawalService.php:385
 #, php-format
 msgid "Link do odstąpienia od umowy — zamówienie #%s"
-msgstr "Odkaz pro odstoupení od smlouvy — objednávka #%s"
+msgstr "Odkaz pro odstoupení od smlouvy - objednávka #%s"
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:391
@@ -11006,7 +11006,7 @@ msgstr "Přihlaste se pro použití seznamu přání."
 
 #: src/Service/WithdrawalBlocksService.php:33
 msgid "Polski — withdrawal lookup"
-msgstr "Polski — vyhledávání odstoupení"
+msgstr "Polski - vyhledávání odstoupení"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
@@ -11016,7 +11016,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:42
 msgid "Polski — Annex I(A) information"
-msgstr "Polski — informace z Přílohy I(A)"
+msgstr "Polski - informace z Přílohy I(A)"
 
 #: src/Service/WithdrawalBlocksService.php:43
 msgid ""
@@ -11027,7 +11027,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:51
 msgid "Polski — Annex I(B) form template"
-msgstr "Polski — vzorový formulář z Přílohy I(B)"
+msgstr "Polski - vzorový formulář z Přílohy I(B)"
 
 #: src/Service/WithdrawalBlocksService.php:52
 msgid ""
@@ -11059,7 +11059,7 @@ msgstr "Důvod vyloučení"
 #: src/Service/WithdrawalExemptionService.php:192
 #: src/Service/WithdrawalExemptionService.php:228
 msgid "— wybierz —"
-msgstr "— vyberte —"
+msgstr "- vyberte -"
 
 #: src/Service/WithdrawalExemptionService.php:199
 msgid "Własne uzasadnienie (jeśli wybrano „Inne\")"
@@ -11095,7 +11095,7 @@ msgstr "Žádost o odstoupení podána"
 
 #: src/Service/WithdrawalOrderStatusService.php:171
 msgid "Withdrawal — partial"
-msgstr "Odstoupení — částečné"
+msgstr "Odstoupení - částečné"
 
 #: src/Service/WithdrawalOrderStatusService.php:176
 msgid "Withdrawal completed"
@@ -11534,7 +11534,7 @@ msgstr "Důvod hlášení"
 
 #: templates/forms/dsa-report.php:87
 msgid "— Wybierz powód —"
-msgstr "— Vyberte důvod —"
+msgstr "- Vyberte důvod -"
 
 #: templates/forms/dsa-report.php:95
 msgid "Opis"

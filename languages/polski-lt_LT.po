@@ -2172,35 +2172,35 @@ msgstr "Grynasis kiekis"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR – Manufacturer name"
-msgstr "GPSR – Gamintojo pavadinimas"
+msgstr "GPSR - Gamintojo pavadinimas"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR – Manufacturer address"
-msgstr "GPSR – Gamintojo adresas"
+msgstr "GPSR - Gamintojo adresas"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR – Importer name"
-msgstr "GPSR – Importuotojo pavadinimas"
+msgstr "GPSR - Importuotojo pavadinimas"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR – Importer address"
-msgstr "GPSR – Importuotojo adresas"
+msgstr "GPSR - Importuotojo adresas"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR – Responsible person"
-msgstr "GPSR – Atsakingas asmuo"
+msgstr "GPSR - Atsakingas asmuo"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR – Product identifier"
-msgstr "GPSR – Produkto identifikatorius"
+msgstr "GPSR - Produkto identifikatorius"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR – Safety warnings"
-msgstr "GPSR – Saugos įspėjimai"
+msgstr "GPSR - Saugos įspėjimai"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR – Safety instructions"
-msgstr "GPSR – Saugos instrukcijos"
+msgstr "GPSR - Saugos instrukcijos"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -2639,7 +2639,7 @@ msgstr "Taisyklės ir sąlygos"
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:201
 msgid "Label - Terms"
-msgstr "Etiketė – Taisyklės"
+msgstr "Etiketė - Taisyklės"
 
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:201
@@ -2650,11 +2650,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:202
 msgid "Error - Terms"
-msgstr "Klaida – Taisyklės"
+msgstr "Klaida - Taisyklės"
 
 #: src/Admin/ModulesPage.php:203
 msgid "Description - Terms"
-msgstr "Aprašymas – Taisyklės"
+msgstr "Aprašymas - Taisyklės"
 
 #: src/Admin/ModulesPage.php:204 src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174 src/Service/SiteAuditService.php:371
@@ -2664,7 +2664,7 @@ msgstr "Privatumo politika"
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:206
 msgid "Label - Privacy Policy"
-msgstr "Etiketė – Privatumo politika"
+msgstr "Etiketė - Privatumo politika"
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:206
@@ -2675,11 +2675,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:207
 msgid "Error - Privacy Policy"
-msgstr "Klaida – Privatumo politika"
+msgstr "Klaida - Privatumo politika"
 
 #: src/Admin/ModulesPage.php:208
 msgid "Description - Privacy Policy"
-msgstr "Aprašymas – Privatumo politika"
+msgstr "Aprašymas - Privatumo politika"
 
 #: src/Admin/ModulesPage.php:209 src/Email/WithdrawalEmailCta.php:65
 #: src/Service/SiteAuditService.php:659
@@ -2689,7 +2689,7 @@ msgstr "Teisė atsisakyti sutarties"
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:211
 msgid "Label - Right of withdrawal"
-msgstr "Etiketė – Teisė atsisakyti sutarties"
+msgstr "Etiketė - Teisė atsisakyti sutarties"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:211
@@ -2701,11 +2701,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:212
 msgid "Error - Right of withdrawal"
-msgstr "Klaida – Teisė atsisakyti sutarties"
+msgstr "Klaida - Teisė atsisakyti sutarties"
 
 #: src/Admin/ModulesPage.php:213
 msgid "Description - Right of withdrawal"
-msgstr "Aprašymas – Teisė atsisakyti sutarties"
+msgstr "Aprašymas - Teisė atsisakyti sutarties"
 
 #: src/Admin/ModulesPage.php:214
 msgid "Digital content (waiver)"
@@ -2713,15 +2713,15 @@ msgstr "Skaitmeninis turinys (atsisakymas)"
 
 #: src/Admin/ModulesPage.php:215
 msgid "Label - Digital content"
-msgstr "Etiketė – Skaitmeninis turinys"
+msgstr "Etiketė - Skaitmeninis turinys"
 
 #: src/Admin/ModulesPage.php:216
 msgid "Error - Digital content"
-msgstr "Klaida – Skaitmeninis turinys"
+msgstr "Klaida - Skaitmeninis turinys"
 
 #: src/Admin/ModulesPage.php:217
 msgid "Description - Digital content"
-msgstr "Aprašymas – Skaitmeninis turinys"
+msgstr "Aprašymas - Skaitmeninis turinys"
 
 #: src/Admin/ModulesPage.php:218
 msgid "Delivery notifications"
@@ -2729,11 +2729,11 @@ msgstr "Pristatymo pranešimai"
 
 #: src/Admin/ModulesPage.php:219
 msgid "Label - Delivery notifications"
-msgstr "Etiketė – Pristatymo pranešimai"
+msgstr "Etiketė - Pristatymo pranešimai"
 
 #: src/Admin/ModulesPage.php:220
 msgid "Description - Delivery notifications"
-msgstr "Aprašymas – Pristatymo pranešimai"
+msgstr "Aprašymas - Pristatymo pranešimai"
 
 #: src/Admin/ModulesPage.php:221
 msgid "Review reminder"
@@ -2741,11 +2741,11 @@ msgstr "Atsiliepimo priminimas"
 
 #: src/Admin/ModulesPage.php:222
 msgid "Label - Review reminder"
-msgstr "Etiketė – Atsiliepimo priminimas"
+msgstr "Etiketė - Atsiliepimo priminimas"
 
 #: src/Admin/ModulesPage.php:223
 msgid "Description - Review reminder"
-msgstr "Aprašymas – Atsiliepimo priminimas"
+msgstr "Aprašymas - Atsiliepimo priminimas"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Marketing consent"
@@ -2753,15 +2753,15 @@ msgstr "Rinkodaros sutikimas"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Label - Marketing"
-msgstr "Etiketė – Rinkodara"
+msgstr "Etiketė - Rinkodara"
 
 #: src/Admin/ModulesPage.php:226
 msgid "Description - Marketing"
-msgstr "Aprašymas – Rinkodara"
+msgstr "Aprašymas - Rinkodara"
 
 #: src/Admin/ModulesPage.php:231
 msgid "NIP - Verification and Autocomplete"
-msgstr "NIP – Patikra ir automatinis užpildymas"
+msgstr "NIP - Patikra ir automatinis užpildymas"
 
 #: src/Admin/ModulesPage.php:232
 msgid ""
@@ -3207,7 +3207,7 @@ msgstr "Redagavimo mygtuko tekstas"
 
 #: src/Admin/ModulesPage.php:338
 msgid "Legal pages empty state"
-msgstr "Teisiniai puslapiai – tuščia būsena"
+msgstr "Teisiniai puslapiai - tuščia būsena"
 
 #: src/Admin/ModulesPage.php:339
 msgid "Generate pages button text"
@@ -3219,23 +3219,23 @@ msgstr "Kitų žingsnių pavadinimas"
 
 #: src/Admin/ModulesPage.php:341
 msgid "Step - publish pages"
-msgstr "Žingsnis – paskelbti puslapius"
+msgstr "Žingsnis - paskelbti puslapius"
 
 #: src/Admin/ModulesPage.php:342
 msgid "Step - VAT rates"
-msgstr "Žingsnis – PVM tarifai"
+msgstr "Žingsnis - PVM tarifai"
 
 #: src/Admin/ModulesPage.php:343
 msgid "Step - shipping zones"
-msgstr "Žingsnis – siuntimo zonos"
+msgstr "Žingsnis - siuntimo zonos"
 
 #: src/Admin/ModulesPage.php:344
 msgid "Step - product data"
-msgstr "Žingsnis – produkto duomenys"
+msgstr "Žingsnis - produkto duomenys"
 
 #: src/Admin/ModulesPage.php:345
 msgid "Step - checkout test"
-msgstr "Žingsnis – užsakymo testas"
+msgstr "Žingsnis - užsakymo testas"
 
 #: src/Admin/ModulesPage.php:346
 msgid "Omnibus plugin detected status"
@@ -3567,7 +3567,7 @@ msgstr "Mažiausias simbolių skaičius"
 #: src/Admin/ModulesPage.php:455
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr ""
-"Mažiausias simbolių skaičius prieš pradedant paiešką. Rekomenduojama: 2–3"
+"Mažiausias simbolių skaičius prieš pradedant paiešką. Rekomenduojama: 2-3"
 
 #: src/Admin/ModulesPage.php:456 resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
@@ -3576,7 +3576,7 @@ msgstr "Rezultatų riba"
 #: src/Admin/ModulesPage.php:456
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
 msgstr ""
-"Didžiausias produktų skaičius išskleidžiamajame sąraše. Rekomenduojama: 4–8"
+"Didžiausias produktų skaičius išskleidžiamajame sąraše. Rekomenduojama: 4-8"
 
 #: src/Admin/ModulesPage.php:457
 msgid "Query debounce (ms)"
@@ -6098,7 +6098,7 @@ msgstr "Pasirenkama antraštė tik šiam produktui."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR – Product Safety"
-msgstr "GPSR – Produkto sauga"
+msgstr "GPSR - Produkto sauga"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -6234,15 +6234,15 @@ msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski — odstąpienie"
-msgstr "Polski — odstąpienie"
+msgstr "Polski - atsisakymas"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:69
 msgid "Brak oświadczenia o odstąpieniu dla tego zamówienia."
-msgstr "Brak oświadczenia o odstąpieniu dla tego zamówienia."
+msgstr "Šiam užsakymui nėra pareiškimo apie sutarties atsisakymą."
 
 #: src/Admin/WithdrawalOrderMetaBox.php:73
 msgid "Zarejestruj ręcznie"
-msgstr "Zarejestruj ręcznie"
+msgstr "Registruoti rankiniu būdu"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:107
 msgid "Potwierdź"
@@ -6250,11 +6250,11 @@ msgstr "Potwierdź"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:114
 msgid "Oznacz jako rozliczone"
-msgstr "Oznacz jako rozliczone"
+msgstr "Pažymėti kaip apdorotą"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:121
 msgid "Odrzucić to oświadczenie?"
-msgstr "Odrzucić to oświadczenie?"
+msgstr "Atmesti šį pareiškimą?"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:122
 msgid "Odrzuć"
@@ -6262,11 +6262,11 @@ msgstr "Odrzuć"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:128
 msgid "Otwórz listę"
-msgstr "Otwórz listę"
+msgstr "Atidaryti sąrašą"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:148
 msgid "Odrzucone z ekranu zamówienia."
-msgstr "Odrzucone z ekranu zamówienia."
+msgstr "Atmesta iš užsakymo ekrano."
 
 #: src/Admin/WithdrawalsAdminPage.php:61 src/Admin/WithdrawalsAdminPage.php:78
 #: src/Admin/WithdrawalsAdminPage.php:128
@@ -6383,33 +6383,33 @@ msgstr "Jums neleidžiama atlikti šio veiksmo."
 
 #: src/Admin/WithdrawalsAdminPage.php:273
 msgid "Wybierz akcję i co najmniej jedną pozycję."
-msgstr "Wybierz akcję i co najmniej jedną pozycję."
+msgstr "Pasirinkite veiksmą ir bent vieną elementą."
 
 #: src/Admin/WithdrawalsAdminPage.php:282
 msgid "Nieznana akcja zbiorcza."
-msgstr "Nieznana akcja zbiorcza."
+msgstr "Nežinomas masinis veiksmas."
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:306
 #, php-format
 msgid "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
 msgid_plural "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[0] "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[1] "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[2] "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
+msgstr[0] "Patvirtinta %1$d iš %2$d pasirinktų pareiškimų."
+msgstr[1] "Patvirtinta %1$d iš %2$d pasirinktų pareiškimų."
+msgstr[2] "Patvirtinta %1$d iš %2$d pasirinktų pareiškimų."
 
 #: src/Admin/WithdrawalsAdminPage.php:320
 msgid "Odrzucone akcją zbiorczą."
-msgstr "Odrzucone akcją zbiorczą."
+msgstr "Atmesta masiniu veiksmu."
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:328
 #, php-format
 msgid "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
 msgid_plural "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[0] "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[1] "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
-msgstr[2] "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
+msgstr[0] "Atmesta %1$d iš %2$d pasirinktų pareiškimų."
+msgstr[1] "Atmesta %1$d iš %2$d pasirinktų pareiškimų."
+msgstr[2] "Atmesta %1$d iš %2$d pasirinktų pareiškimų."
 
 #: src/Admin/WithdrawalsAdminPage.php:346
 msgid "Could not open output stream."
@@ -6534,7 +6534,7 @@ msgstr "Svečio paieškos puslapis"
 
 #: src/Admin/WithdrawalSettingsPage.php:178
 msgid "— none —"
-msgstr "— nėra —"
+msgstr "- nėra -"
 
 #: src/Admin/WithdrawalSettingsPage.php:184
 msgid ""
@@ -6829,7 +6829,7 @@ msgstr "Matmenys"
 #: src/Block/StoreApi/CheckoutValidation.php:186
 #, php-format
 msgid "Prosz&#281; zaakceptowa&#263;: %s"
-msgstr "Prosz&#281; zaakceptowa&#263;: %s"
+msgstr "Prašome sutikti: %s"
 
 #: src/Block/StoreApi/ProductDataExtension.php:103
 #: src/Block/StoreApi/ProductDataExtension.php:210
@@ -8039,7 +8039,7 @@ msgstr "Statuso keitimas neleidžiamas."
 
 #: src/Service/AbilitiesService.php:58
 msgid "Polski — withdrawal"
-msgstr "Polski — atsisakymas"
+msgstr "Polski - atsisakymas"
 
 #: src/Service/AbilitiesService.php:59
 msgid "Consumer right of withdrawal (14-day return) operations."
@@ -8048,7 +8048,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:63
 msgid "Polski — legal documents"
-msgstr "Polski — teisiniai dokumentai"
+msgstr "Polski - teisiniai dokumentai"
 
 #: src/Service/AbilitiesService.php:64
 msgid "Generated consumer-law documents (Annex I(A), I(B), etc.)."
@@ -8057,7 +8057,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:68
 msgid "Polski — compliance checks"
-msgstr "Polski — atitikties patikros"
+msgstr "Polski - atitikties patikros"
 
 #: src/Service/AbilitiesService.php:69
 msgid ""
@@ -8069,7 +8069,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:73
 msgid "Polski — shop identification"
-msgstr "Polski — parduotuvės identifikavimas"
+msgstr "Polski - parduotuvės identifikavimas"
 
 #: src/Service/AbilitiesService.php:74
 msgid ""
@@ -8167,7 +8167,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:401
 msgid "Generate Annex I(A) — withdrawal information"
-msgstr "Sugeneruoti I priedą (A) — informaciją apie atsisakymą"
+msgstr "Sugeneruoti I priedą (A) - informaciją apie atsisakymą"
 
 #: src/Service/AbilitiesService.php:402
 msgid ""
@@ -8179,7 +8179,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:415
 msgid "Generate Annex I(B) — withdrawal form template"
-msgstr "Sugeneruoti I priedą (B) — atsisakymo formos šabloną"
+msgstr "Sugeneruoti I priedą (B) - atsisakymo formos šabloną"
 
 #: src/Service/AbilitiesService.php:416
 msgid ""
@@ -8458,7 +8458,7 @@ msgid ""
 "świadczenie następującej usługi(*):"
 msgstr ""
 "Aš/Mes(*) šiuo informuoju/informuojame(*) apie mano/mūsų atsisakymą nuo šių "
-"daiktų pirkimo–pardavimo sutarties(*) šių daiktų tiekimo sutarties(*) rangos"
+"daiktų pirkimo-pardavimo sutarties(*) šių daiktų tiekimo sutarties(*) rangos"
 " sutarties dėl šių daiktų pagaminimo(*)/dėl šios paslaugos teikimo(*):"
 
 #: src/Service/AnnexGeneratorService.php:119
@@ -8605,14 +8605,14 @@ msgstr "Prašome sutikti: %s"
 msgid ""
 "Enable the Terms and Conditions checkbox - required by Polish consumer law."
 msgstr ""
-"Įjunkite Taisyklių ir sąlygų žymimąjį langelį — to reikalauja Lenkijos "
+"Įjunkite Taisyklių ir sąlygų žymimąjį langelį - to reikalauja Lenkijos "
 "vartotojų teisė."
 
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
 msgstr ""
-"Įjunkite Privatumo politikos žymimąjį langelį — to reikalauja GDPR 6.1.a ir "
+"Įjunkite Privatumo politikos žymimąjį langelį - to reikalauja GDPR 6.1.a ir "
 "7 straipsniai."
 
 #: src/Service/CheckboxService.php:349
@@ -8620,7 +8620,7 @@ msgid ""
 "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights "
 "Act (Art. 12)."
 msgstr ""
-"Įjunkite Atsisakymo teisės žymimąjį langelį — to reikalauja Lenkijos "
+"Įjunkite Atsisakymo teisės žymimąjį langelį - to reikalauja Lenkijos "
 "vartotojų teisių įstatymas (12 str.)."
 
 #: src/Service/CheckboxService.php:361
@@ -8634,7 +8634,7 @@ msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
 msgstr ""
-"Rinkodaros sutikimas pagal GDPR turi būti neprivalomas — pakeiskite jį iš "
+"Rinkodaros sutikimas pagal GDPR turi būti neprivalomas - pakeiskite jį iš "
 "privalomo į neprivalomą."
 
 #: src/Service/CheckboxService.php:379
@@ -8649,7 +8649,7 @@ msgid ""
 "Review reminder consent should be optional - change it from required to "
 "optional."
 msgstr ""
-"Sutikimas dėl atsiliepimo priminimų turėtų būti neprivalomas — pakeiskite jį"
+"Sutikimas dėl atsiliepimo priminimų turėtų būti neprivalomas - pakeiskite jį"
 " iš privalomo į neprivalomą."
 
 #. translators: %s: link to terms page
@@ -9308,7 +9308,7 @@ msgid ""
 "ty@example.com — ten sam, który podałeś przy zakupie."
 msgstr ""
 "El. pašto adresas atrodo neteisingas. Įveskite visą adresą formatu "
-"jus@example.com — tą patį, kurį nurodėte perkant."
+"jus@example.com - tą patį, kurį nurodėte perkant."
 
 #: src/Service/GuestWithdrawalService.php:83
 msgid ""
@@ -9325,7 +9325,7 @@ msgid ""
 "wiadomość powinna dotrzeć w ciągu kilku minut."
 msgstr ""
 "Jei šis užsakymas egzistuoja, išsiuntėme nuorodą į formą perkant nurodytu "
-"el. pašto adresu. Patikrinkite gautųjų aplanką (taip pat šlamšto aplanką) — "
+"el. pašto adresu. Patikrinkite gautųjų aplanką (taip pat šlamšto aplanką) - "
 "žinutė turėtų ateiti per kelias minutes."
 
 #: src/Service/GuestWithdrawalService.php:149
@@ -9360,7 +9360,7 @@ msgid ""
 " folder Spam."
 msgstr ""
 "Jūsų pareiškimas užregistruotas numeriu %s. Išsiuntėme patvirtinimą perkant "
-"nurodytu adresu — patikrinkite gautųjų aplanką ir šlamšto aplanką."
+"nurodytu adresu - patikrinkite gautųjų aplanką ir šlamšto aplanką."
 
 #: src/Service/GuestWithdrawalService.php:198
 msgid "Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem."
@@ -9371,7 +9371,7 @@ msgstr ""
 #: src/Service/GuestWithdrawalService.php:385
 #, php-format
 msgid "Link do odstąpienia od umowy — zamówienie #%s"
-msgstr "Sutarties atsisakymo nuoroda — užsakymas #%s"
+msgstr "Sutarties atsisakymo nuoroda - užsakymas #%s"
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:391
@@ -11073,7 +11073,7 @@ msgstr "Prisijunkite, kad galėtumėte naudoti pageidavimų sąrašą."
 
 #: src/Service/WithdrawalBlocksService.php:33
 msgid "Polski — withdrawal lookup"
-msgstr "Polski — atsisakymo paieška"
+msgstr "Polski - atsisakymo paieška"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
@@ -11083,7 +11083,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:42
 msgid "Polski — Annex I(A) information"
-msgstr "Polski — I(A) priedo informacija"
+msgstr "Polski - I(A) priedo informacija"
 
 #: src/Service/WithdrawalBlocksService.php:43
 msgid ""
@@ -11094,7 +11094,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:51
 msgid "Polski — Annex I(B) form template"
-msgstr "Polski — I(B) priedo formos šablonas"
+msgstr "Polski - I(B) priedo formos šablonas"
 
 #: src/Service/WithdrawalBlocksService.php:52
 msgid ""
@@ -11126,7 +11126,7 @@ msgstr "Išimties pagrindas"
 #: src/Service/WithdrawalExemptionService.php:192
 #: src/Service/WithdrawalExemptionService.php:228
 msgid "— wybierz —"
-msgstr "— pasirinkite —"
+msgstr "- pasirinkite -"
 
 #: src/Service/WithdrawalExemptionService.php:199
 msgid "Własne uzasadnienie (jeśli wybrano „Inne\")"
@@ -11162,7 +11162,7 @@ msgstr "Atsisakymo prašymas pateiktas"
 
 #: src/Service/WithdrawalOrderStatusService.php:171
 msgid "Withdrawal — partial"
-msgstr "Atsisakymas — dalinis"
+msgstr "Atsisakymas - dalinis"
 
 #: src/Service/WithdrawalOrderStatusService.php:176
 msgid "Withdrawal completed"
@@ -11599,7 +11599,7 @@ msgstr "Pranešimo priežastis"
 
 #: templates/forms/dsa-report.php:87
 msgid "— Wybierz powód —"
-msgstr "— Pasirinkite priežastį —"
+msgstr "- Pasirinkite priežastį -"
 
 #: templates/forms/dsa-report.php:95
 msgid "Opis"
@@ -11695,7 +11695,7 @@ msgstr "2 žingsnis. Priežastis ir patvirtinimas"
 #: templates/forms/withdrawal-form.php:166
 #: templates/forms/withdrawal-guest.php:130
 msgid "Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia."
-msgstr "Priežastis neprivaloma — atsisakymas nereikalauja pagrindimo."
+msgstr "Priežastis neprivaloma - atsisakymas nereikalauja pagrindimo."
 
 #: templates/forms/withdrawal-form.php:178
 #: templates/forms/withdrawal-guest.php:142
@@ -11710,7 +11710,7 @@ msgstr "Atšaukti ir grįžti į užsakymų sąrašą"
 #: templates/forms/withdrawal-guest.php:34
 #, php-format
 msgid "Odstąpienie od umowy — zamówienie #%s"
-msgstr "Atsisakymas nuo sutarties — užsakymas #%s"
+msgstr "Atsisakymas nuo sutarties - užsakymas #%s"
 
 #. translators: %s = email address
 #: templates/forms/withdrawal-guest.php:44
@@ -11758,7 +11758,7 @@ msgstr "Pereiti prie atsisakymo formos"
 
 #: templates/forms/withdrawal-lookup.php:53
 msgid "Odstąpienie od umowy — formularz online"
-msgstr "Atsisakymas nuo sutarties — internetinė forma"
+msgstr "Atsisakymas nuo sutarties - internetinė forma"
 
 #. translators: 1: merchant name, 2: number of days
 #: templates/forms/withdrawal-lookup.php:60
@@ -11773,7 +11773,7 @@ msgstr ""
 "Esate vartotojas ir pirkote iš pardavėjo %1$s? Turite teisę atsisakyti "
 "nuotoliniu būdu sudarytos sutarties nenurodydami priežasties per %2$d dienų "
 "nuo dienos, kurią gavote užsakymą. Norėdami pateikti pareiškimą, neturite "
-"prisijungti — pakanka, kad žemiau nurodytumėte pirkimo metu naudotą el. "
+"prisijungti - pakanka, kad žemiau nurodytumėte pirkimo metu naudotą el. "
 "pašto adresą ir užsakymo numerį."
 
 #: templates/forms/withdrawal-lookup.php:72

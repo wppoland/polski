@@ -2173,35 +2173,35 @@ msgstr "Ilość netto"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR – Manufacturer name"
-msgstr "GPSR – Nazwa producenta"
+msgstr "GPSR - Nazwa producenta"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR – Manufacturer address"
-msgstr "GPSR – Adres producenta"
+msgstr "GPSR - Adres producenta"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR – Importer name"
-msgstr "GPSR – Nazwa importera"
+msgstr "GPSR - Nazwa importera"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR – Importer address"
-msgstr "GPSR – Adres importera"
+msgstr "GPSR - Adres importera"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR – Responsible person"
-msgstr "GPSR – Osoba odpowiedzialna"
+msgstr "GPSR - Osoba odpowiedzialna"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR – Product identifier"
-msgstr "GPSR – Identyfikator produktu"
+msgstr "GPSR - Identyfikator produktu"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR – Safety warnings"
-msgstr "GPSR – Ostrzeżenia dotyczące bezpieczeństwa"
+msgstr "GPSR - Ostrzeżenia dotyczące bezpieczeństwa"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR – Safety instructions"
-msgstr "GPSR – Instrukcje bezpieczeństwa"
+msgstr "GPSR - Instrukcje bezpieczeństwa"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -2640,7 +2640,7 @@ msgstr "Regulamin"
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:201
 msgid "Label - Terms"
-msgstr "Etykieta – Regulamin"
+msgstr "Etykieta - Regulamin"
 
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:201
@@ -2650,11 +2650,11 @@ msgstr "Użyj %s jako symbolu zastępczego dla linku do strony regulaminu"
 
 #: src/Admin/ModulesPage.php:202
 msgid "Error - Terms"
-msgstr "Błąd – Regulamin"
+msgstr "Błąd - Regulamin"
 
 #: src/Admin/ModulesPage.php:203
 msgid "Description - Terms"
-msgstr "Opis – Regulamin"
+msgstr "Opis - Regulamin"
 
 #: src/Admin/ModulesPage.php:204 src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174 src/Service/SiteAuditService.php:371
@@ -2664,7 +2664,7 @@ msgstr "Polityka prywatności"
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:206
 msgid "Label - Privacy Policy"
-msgstr "Etykieta – Polityka prywatności"
+msgstr "Etykieta - Polityka prywatności"
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:206
@@ -2674,11 +2674,11 @@ msgstr "Użyj %s jako symbolu zastępczego dla linku do polityki prywatności"
 
 #: src/Admin/ModulesPage.php:207
 msgid "Error - Privacy Policy"
-msgstr "Błąd – Polityka prywatności"
+msgstr "Błąd - Polityka prywatności"
 
 #: src/Admin/ModulesPage.php:208
 msgid "Description - Privacy Policy"
-msgstr "Opis – Polityka prywatności"
+msgstr "Opis - Polityka prywatności"
 
 #: src/Admin/ModulesPage.php:209 src/Email/WithdrawalEmailCta.php:65
 #: src/Service/SiteAuditService.php:659
@@ -2688,7 +2688,7 @@ msgstr "Prawo odstąpienia od umowy"
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:211
 msgid "Label - Right of withdrawal"
-msgstr "Etykieta – Prawo odstąpienia"
+msgstr "Etykieta - Prawo odstąpienia"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:211
@@ -2700,11 +2700,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:212
 msgid "Error - Right of withdrawal"
-msgstr "Błąd – Prawo odstąpienia"
+msgstr "Błąd - Prawo odstąpienia"
 
 #: src/Admin/ModulesPage.php:213
 msgid "Description - Right of withdrawal"
-msgstr "Opis – Prawo odstąpienia"
+msgstr "Opis - Prawo odstąpienia"
 
 #: src/Admin/ModulesPage.php:214
 msgid "Digital content (waiver)"
@@ -2712,15 +2712,15 @@ msgstr "Treści cyfrowe (zrzeczenie)"
 
 #: src/Admin/ModulesPage.php:215
 msgid "Label - Digital content"
-msgstr "Etykieta – Treści cyfrowe"
+msgstr "Etykieta - Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:216
 msgid "Error - Digital content"
-msgstr "Błąd – Treści cyfrowe"
+msgstr "Błąd - Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:217
 msgid "Description - Digital content"
-msgstr "Opis – Treści cyfrowe"
+msgstr "Opis - Treści cyfrowe"
 
 #: src/Admin/ModulesPage.php:218
 msgid "Delivery notifications"
@@ -2728,11 +2728,11 @@ msgstr "Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:219
 msgid "Label - Delivery notifications"
-msgstr "Etykieta – Powiadomienia o dostawie"
+msgstr "Etykieta - Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:220
 msgid "Description - Delivery notifications"
-msgstr "Opis – Powiadomienia o dostawie"
+msgstr "Opis - Powiadomienia o dostawie"
 
 #: src/Admin/ModulesPage.php:221
 msgid "Review reminder"
@@ -2740,11 +2740,11 @@ msgstr "Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:222
 msgid "Label - Review reminder"
-msgstr "Etykieta – Przypomnienie o opinii"
+msgstr "Etykieta - Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:223
 msgid "Description - Review reminder"
-msgstr "Opis – Przypomnienie o opinii"
+msgstr "Opis - Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Marketing consent"
@@ -2752,15 +2752,15 @@ msgstr "Zgoda marketingowa"
 
 #: src/Admin/ModulesPage.php:225
 msgid "Label - Marketing"
-msgstr "Etykieta – Marketing"
+msgstr "Etykieta - Marketing"
 
 #: src/Admin/ModulesPage.php:226
 msgid "Description - Marketing"
-msgstr "Opis – Marketing"
+msgstr "Opis - Marketing"
 
 #: src/Admin/ModulesPage.php:231
 msgid "NIP - Verification and Autocomplete"
-msgstr "NIP – Weryfikacja i autouzupełnianie"
+msgstr "NIP - Weryfikacja i autouzupełnianie"
 
 #: src/Admin/ModulesPage.php:232
 msgid ""
@@ -3210,7 +3210,7 @@ msgstr "Tekst przycisku edycji"
 
 #: src/Admin/ModulesPage.php:338
 msgid "Legal pages empty state"
-msgstr "Strony prawne – stan pusty"
+msgstr "Strony prawne - stan pusty"
 
 #: src/Admin/ModulesPage.php:339
 msgid "Generate pages button text"
@@ -3222,23 +3222,23 @@ msgstr "Tytuł kolejnych kroków"
 
 #: src/Admin/ModulesPage.php:341
 msgid "Step - publish pages"
-msgstr "Krok – opublikuj strony"
+msgstr "Krok - opublikuj strony"
 
 #: src/Admin/ModulesPage.php:342
 msgid "Step - VAT rates"
-msgstr "Krok – stawki VAT"
+msgstr "Krok - stawki VAT"
 
 #: src/Admin/ModulesPage.php:343
 msgid "Step - shipping zones"
-msgstr "Krok – strefy wysyłki"
+msgstr "Krok - strefy wysyłki"
 
 #: src/Admin/ModulesPage.php:344
 msgid "Step - product data"
-msgstr "Krok – dane produktu"
+msgstr "Krok - dane produktu"
 
 #: src/Admin/ModulesPage.php:345
 msgid "Step - checkout test"
-msgstr "Krok – test zamówienia"
+msgstr "Krok - test zamówienia"
 
 #: src/Admin/ModulesPage.php:346
 msgid "Omnibus plugin detected status"
@@ -3571,7 +3571,7 @@ msgstr "Minimalna liczba znaków"
 #: src/Admin/ModulesPage.php:455
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr ""
-"Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2–3"
+"Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
 
 #: src/Admin/ModulesPage.php:456 resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
@@ -3579,7 +3579,7 @@ msgstr "Limit wyników"
 
 #: src/Admin/ModulesPage.php:456
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
-msgstr "Maksymalna liczba produktów na liście rozwijanej. Zalecane: 4–8"
+msgstr "Maksymalna liczba produktów na liście rozwijanej. Zalecane: 4-8"
 
 #: src/Admin/ModulesPage.php:457
 msgid "Query debounce (ms)"
@@ -3929,7 +3929,7 @@ msgstr "Liczba kolumn na liście"
 
 #: src/Admin/ModulesPage.php:555
 msgid "Number of product columns in grid layout. Recommended: 3-4"
-msgstr "Liczba kolumn produktów w siatce. Zalecane: 3–4"
+msgstr "Liczba kolumn produktów w siatce. Zalecane: 3-4"
 
 #: src/Admin/ModulesPage.php:556 src/Admin/ModulesPage.php:582
 msgid "Label in My Account"
@@ -3998,7 +3998,7 @@ msgstr "Maksymalna liczba produktów"
 
 #: src/Admin/ModulesPage.php:584
 msgid "Maximum products that can be compared side-by-side. Recommended: 3-5"
-msgstr "Maksymalna liczba produktów do porównania obok siebie. Zalecane: 3–5"
+msgstr "Maksymalna liczba produktów do porównania obok siebie. Zalecane: 3-5"
 
 #: src/Admin/ModulesPage.php:587
 msgid "Comparison link text"
@@ -4688,7 +4688,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:849
 msgid "GPSR - Product safety"
-msgstr "GPSR — bezpieczeństwo produktów"
+msgstr "GPSR - bezpieczeństwo produktów"
 
 #: src/Admin/ModulesPage.php:850
 msgid ""
@@ -4771,15 +4771,15 @@ msgstr "Prawa konsumenta"
 
 #: src/Admin/ModulesPage.php:891
 msgid "DSA contact name"
-msgstr "Kontakt DSA – imię"
+msgstr "Kontakt DSA - imię"
 
 #: src/Admin/ModulesPage.php:892
 msgid "DSA contact email"
-msgstr "Kontakt DSA – e-mail"
+msgstr "Kontakt DSA - e-mail"
 
 #: src/Admin/ModulesPage.php:893
 msgid "DSA contact phone"
-msgstr "Kontakt DSA – telefon"
+msgstr "Kontakt DSA - telefon"
 
 #: src/Admin/ModulesPage.php:900
 msgid "KSeF readiness"
@@ -5011,7 +5011,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1007
 msgid "CRA - Cyber Resilience"
-msgstr "CRA – Cyberodporność"
+msgstr "CRA - Cyberodporność"
 
 #: src/Admin/ModulesPage.php:1008
 msgid ""
@@ -5324,7 +5324,7 @@ msgid ""
 "products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr ""
 "Własny typ wpisów dla redakcyjnych recenzji produktów. Łączenie z "
-"produktami, oceny 1–10, werdykty i oznaczenia Schema dla SEO."
+"produktami, oceny 1-10, werdykty i oznaczenia Schema dla SEO."
 
 #: src/Admin/ModulesPage.php:1158
 msgid "Manage reviews"
@@ -5341,7 +5341,7 @@ msgid ""
 "AJAX-loaded, configurable position and timing."
 msgstr ""
 "Pływające powiadomienia o zakupach z ostatnich zamówień („Jan z Warszawa "
-"właśnie kupił…”). Zwiększają konwersje o ok. 10–15%. Prywatność, AJAX, "
+"właśnie kupił…”). Zwiększają konwersje o ok. 10-15%. Prywatność, AJAX, "
 "konfigurowalna pozycja i czas."
 
 #: src/Admin/ModulesPage.php:1171
@@ -5350,7 +5350,7 @@ msgstr "Interwał między oknami (sekundy)"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Time between showing consecutive notifications. Recommended: 6-12"
-msgstr "Czas między kolejnymi powiadomieniami. Zalecane: 6–12"
+msgstr "Czas między kolejnymi powiadomieniami. Zalecane: 6-12"
 
 #: src/Admin/ModulesPage.php:1172
 msgid "Display duration (seconds)"
@@ -5358,7 +5358,7 @@ msgstr "Czas wyświetlania (sekundy)"
 
 #: src/Admin/ModulesPage.php:1172
 msgid "How long each notification stays visible. Recommended: 4-6"
-msgstr "Jak długo widoczne jest każde powiadomienie. Zalecane: 4–6"
+msgstr "Jak długo widoczne jest każde powiadomienie. Zalecane: 4-6"
 
 #: src/Admin/ModulesPage.php:1174
 msgid "Anonymize customer names"
@@ -6078,7 +6078,7 @@ msgstr "Opcjonalny nagłówek tylko dla tego produktu."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR – Product Safety"
-msgstr "GPSR – Bezpieczeństwo produktu"
+msgstr "GPSR - Bezpieczeństwo produktu"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -6513,7 +6513,7 @@ msgstr "Strona wyszukiwania dla gości"
 
 #: src/Admin/WithdrawalSettingsPage.php:178
 msgid "— none —"
-msgstr "— brak —"
+msgstr "- brak -"
 
 #: src/Admin/WithdrawalSettingsPage.php:184
 msgid ""
@@ -6851,7 +6851,7 @@ msgstr "HTML producenta"
 
 #: src/Block/StoreApi/ProductDataExtension.php:169
 msgid "GPSR Responsible Person"
-msgstr "GPSR – Osoba odpowiedzialna"
+msgstr "GPSR - Osoba odpowiedzialna"
 
 #: src/Block/StoreApi/ProductDataExtension.php:175
 msgid "Excluded from the right of withdrawal"
@@ -8009,7 +8009,7 @@ msgstr "Zmiana statusu niedozwolona."
 
 #: src/Service/AbilitiesService.php:58
 msgid "Polski — withdrawal"
-msgstr "Polski — odstąpienie od umowy"
+msgstr "Polski - odstąpienie od umowy"
 
 #: src/Service/AbilitiesService.php:59
 msgid "Consumer right of withdrawal (14-day return) operations."
@@ -8019,7 +8019,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:63
 msgid "Polski — legal documents"
-msgstr "Polski — dokumenty prawne"
+msgstr "Polski - dokumenty prawne"
 
 #: src/Service/AbilitiesService.php:64
 msgid "Generated consumer-law documents (Annex I(A), I(B), etc.)."
@@ -8029,7 +8029,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:68
 msgid "Polski — compliance checks"
-msgstr "Polski — sprawdzenia zgodności"
+msgstr "Polski - sprawdzenia zgodności"
 
 #: src/Service/AbilitiesService.php:69
 msgid ""
@@ -8041,7 +8041,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:73
 msgid "Polski — shop identification"
-msgstr "Polski — identyfikacja sklepu"
+msgstr "Polski - identyfikacja sklepu"
 
 #: src/Service/AbilitiesService.php:74
 msgid ""
@@ -8140,7 +8140,7 @@ msgstr "Zwraca wnioski o odstąpienie, opcjonalnie filtrowane według statusu."
 
 #: src/Service/AbilitiesService.php:401
 msgid "Generate Annex I(A) — withdrawal information"
-msgstr "Wygeneruj Załącznik I(A) — informacje o odstąpieniu od umowy"
+msgstr "Wygeneruj Załącznik I(A) - informacje o odstąpieniu od umowy"
 
 #: src/Service/AbilitiesService.php:402
 msgid ""
@@ -8152,7 +8152,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:415
 msgid "Generate Annex I(B) — withdrawal form template"
-msgstr "Wygeneruj Załącznik I(B) — wzór formularza odstąpienia"
+msgstr "Wygeneruj Załącznik I(B) - wzór formularza odstąpienia"
 
 #: src/Service/AbilitiesService.php:416
 msgid ""
@@ -8581,13 +8581,13 @@ msgstr "Proszę zaakceptować: %s"
 msgid ""
 "Enable the Terms and Conditions checkbox - required by Polish consumer law."
 msgstr ""
-"Włącz checkbox regulaminu — wymagany przez polskie prawo konsumenckie."
+"Włącz checkbox regulaminu - wymagany przez polskie prawo konsumenckie."
 
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
 msgstr ""
-"Włącz checkbox polityki prywatności — wymagany przez RODO art. 6 ust. 1 lit."
+"Włącz checkbox polityki prywatności - wymagany przez RODO art. 6 ust. 1 lit."
 " a i art. 7."
 
 #: src/Service/CheckboxService.php:349
@@ -8595,7 +8595,7 @@ msgid ""
 "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights "
 "Act (Art. 12)."
 msgstr ""
-"Włącz checkbox prawa odstąpienia — wymagany przez ustawę o prawach "
+"Włącz checkbox prawa odstąpienia - wymagany przez ustawę o prawach "
 "konsumenta (art. 12)."
 
 #: src/Service/CheckboxService.php:361
@@ -8609,7 +8609,7 @@ msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
 msgstr ""
-"Zgoda marketingowa musi być opcjonalna zgodnie z RODO — zmień z wymaganej na"
+"Zgoda marketingowa musi być opcjonalna zgodnie z RODO - zmień z wymaganej na"
 " opcjonalną."
 
 #: src/Service/CheckboxService.php:379
@@ -8623,7 +8623,7 @@ msgid ""
 "Review reminder consent should be optional - change it from required to "
 "optional."
 msgstr ""
-"Zgoda na przypomnienia o opinii powinna być opcjonalna — zmień z wymaganej "
+"Zgoda na przypomnienia o opinii powinna być opcjonalna - zmień z wymaganej "
 "na opcjonalną."
 
 #. translators: %s: link to terms page
@@ -9284,7 +9284,7 @@ msgid ""
 "ty@example.com — ten sam, który podałeś przy zakupie."
 msgstr ""
 "Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie "
-"ty@example.com — ten sam, który podałeś przy zakupie."
+"ty@example.com - ten sam, który podałeś przy zakupie."
 
 #: src/Service/GuestWithdrawalService.php:83
 msgid ""
@@ -9301,7 +9301,7 @@ msgid ""
 "wiadomość powinna dotrzeć w ciągu kilku minut."
 msgstr ""
 "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail "
-"podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) — "
+"podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) - "
 "wiadomość powinna dotrzeć w ciągu kilku minut."
 
 #: src/Service/GuestWithdrawalService.php:149
@@ -9337,7 +9337,7 @@ msgid ""
 " folder Spam."
 msgstr ""
 "Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy "
-"potwierdzenie na adres podany przy zakupie — sprawdź skrzynkę odbiorczą oraz"
+"potwierdzenie na adres podany przy zakupie - sprawdź skrzynkę odbiorczą oraz"
 " folder Spam."
 
 #: src/Service/GuestWithdrawalService.php:198
@@ -9348,7 +9348,7 @@ msgstr "Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem."
 #: src/Service/GuestWithdrawalService.php:385
 #, php-format
 msgid "Link do odstąpienia od umowy — zamówienie #%s"
-msgstr "Link do odstąpienia od umowy — zamówienie #%s"
+msgstr "Link do odstąpienia od umowy - zamówienie #%s"
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:391
@@ -11063,7 +11063,7 @@ msgstr "Zaloguj się, aby korzystać z listy życzeń."
 
 #: src/Service/WithdrawalBlocksService.php:33
 msgid "Polski — withdrawal lookup"
-msgstr "Polski — wyszukiwanie odstąpienia"
+msgstr "Polski - wyszukiwanie odstąpienia"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
@@ -11073,7 +11073,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:42
 msgid "Polski — Annex I(A) information"
-msgstr "Polski — informacje z Załącznika I(A)"
+msgstr "Polski - informacje z Załącznika I(A)"
 
 #: src/Service/WithdrawalBlocksService.php:43
 msgid ""
@@ -11084,7 +11084,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:51
 msgid "Polski — Annex I(B) form template"
-msgstr "Polski — szablon formularza z Załącznika I(B)"
+msgstr "Polski - szablon formularza z Załącznika I(B)"
 
 #: src/Service/WithdrawalBlocksService.php:52
 msgid ""
@@ -11116,7 +11116,7 @@ msgstr "Podstawa wyłączenia"
 #: src/Service/WithdrawalExemptionService.php:192
 #: src/Service/WithdrawalExemptionService.php:228
 msgid "— wybierz —"
-msgstr "— wybierz —"
+msgstr "- wybierz -"
 
 #: src/Service/WithdrawalExemptionService.php:199
 msgid "Własne uzasadnienie (jeśli wybrano „Inne\")"
@@ -11152,7 +11152,7 @@ msgstr "Wniosek o odstąpienie złożony"
 
 #: src/Service/WithdrawalOrderStatusService.php:171
 msgid "Withdrawal — partial"
-msgstr "Odstąpienie — częściowe"
+msgstr "Odstąpienie - częściowe"
 
 #: src/Service/WithdrawalOrderStatusService.php:176
 msgid "Withdrawal completed"
@@ -11598,7 +11598,7 @@ msgstr "Powód zgłoszenia"
 
 #: templates/forms/dsa-report.php:87
 msgid "— Wybierz powód —"
-msgstr "— Wybierz powód —"
+msgstr "- Wybierz powód -"
 
 #: templates/forms/dsa-report.php:95
 msgid "Opis"
@@ -11696,7 +11696,7 @@ msgstr "Krok 2. Powód i potwierdzenie"
 #: templates/forms/withdrawal-form.php:166
 #: templates/forms/withdrawal-guest.php:130
 msgid "Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia."
-msgstr "Powód nie jest wymagany — odstąpienie nie wymaga uzasadnienia."
+msgstr "Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia."
 
 #: templates/forms/withdrawal-form.php:178
 #: templates/forms/withdrawal-guest.php:142
@@ -11711,7 +11711,7 @@ msgstr "Anuluj i wróć do listy zamówień"
 #: templates/forms/withdrawal-guest.php:34
 #, php-format
 msgid "Odstąpienie od umowy — zamówienie #%s"
-msgstr "Odstąpienie od umowy — zamówienie #%s"
+msgstr "Odstąpienie od umowy - zamówienie #%s"
 
 #. translators: %s = email address
 #: templates/forms/withdrawal-guest.php:44
@@ -11759,7 +11759,7 @@ msgstr "Przejdź do formularza odstąpienia"
 
 #: templates/forms/withdrawal-lookup.php:53
 msgid "Odstąpienie od umowy — formularz online"
-msgstr "Odstąpienie od umowy — formularz online"
+msgstr "Odstąpienie od umowy - formularz online"
 
 #. translators: 1: merchant name, 2: number of days
 #: templates/forms/withdrawal-lookup.php:60
@@ -11774,7 +11774,7 @@ msgstr ""
 "Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy"
 " zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, "
 "w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować "
-"się — wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz "
+"się - wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz "
 "numer zamówienia."
 
 #: templates/forms/withdrawal-lookup.php:72
@@ -11881,7 +11881,7 @@ msgid ""
 " zamówieniu."
 msgstr ""
 "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć "
-"odstąpienie. Można odstąpić od wybranej liczby sztuk — pozostałe pozostaną w"
+"odstąpienie. Można odstąpić od wybranej liczby sztuk - pozostałe pozostaną w"
 " zamówieniu."
 
 #: templates/forms/withdrawal-lookup.php:175
@@ -11927,7 +11927,7 @@ msgid ""
 "Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie "
 "ręcznie."
 msgstr ""
-"Masz problem z formularzem? Napisz na %s — pomożemy złożyć oświadczenie "
+"Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie "
 "ręcznie."
 
 #. translators: %s: merchant / shop name
@@ -11971,7 +11971,7 @@ msgid ""
 "wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu."
 msgstr ""
 "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć "
-"odstąpienie — możesz zwrócić wszystkie produkty, jeden produkt lub tylko "
+"odstąpienie - możesz zwrócić wszystkie produkty, jeden produkt lub tylko "
 "wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu."
 
 #: templates/forms/withdrawal-lookup.php:237
