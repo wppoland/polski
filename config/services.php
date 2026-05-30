@@ -190,6 +190,8 @@ return static function (Container $c): void {
     $c->singleton(BadgeService::class, static fn () => new BadgeService(
         $c->get(TemplateLoader::class),
     ));
+
+    $c->singleton(\Polski\Service\DynamicPricingService::class, static fn () => new \Polski\Service\DynamicPricingService());
     $c->singleton(TabManagerService::class, static fn () => new TabManagerService());
     $c->singleton(FeaturedVideoService::class, static fn () => new FeaturedVideoService(
         $c->get(TemplateLoader::class),

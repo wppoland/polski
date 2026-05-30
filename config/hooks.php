@@ -104,6 +104,7 @@ return [
     CompareService::class,
     QuickViewService::class,
     BadgeService::class,
+    \Polski\Service\DynamicPricingService::class,
     TabManagerService::class,
     FeaturedVideoService::class,
     GalleryZoomService::class,

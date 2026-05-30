@@ -72,6 +72,22 @@ final class ModulesPage implements HasHooks
         $saved = is_array($saved) ? $saved : [];
 
         $modules = [
+            // === Merchandising ===
+            [
+                'id' => 'dynamic_pricing',
+                'name' => __('Promotions / dynamic pricing', 'polski'),
+                'description' => __('Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default.', 'polski'),
+                'group' => __('Merchandising', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-tag',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_pricing|bulk_min_qty', 'label' => __('Bulk discount: minimum quantity per product', 'polski'), 'type' => 'number', 'default' => 0, 'hint' => __('0 disables the bulk discount', 'polski')],
+                    ['key' => 'polski_pricing|bulk_discount_percent', 'label' => __('Bulk discount: percent off (%)', 'polski'), 'type' => 'number', 'default' => 0],
+                    ['key' => 'polski_pricing|cart_threshold', 'label' => __('Cart discount: subtotal threshold', 'polski'), 'type' => 'number', 'default' => 0, 'hint' => __('0 disables the cart discount', 'polski')],
+                    ['key' => 'polski_pricing|cart_discount_percent', 'label' => __('Cart discount: percent off (%)', 'polski'), 'type' => 'number', 'default' => 0],
+                ],
+            ],
             // === Prices and Display ===
             [
                 'id' => 'unit_price',
