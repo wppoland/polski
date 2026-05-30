@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.20.0
+Stable tag: 1.19.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,8 +234,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 
 == Changelog ==
 
-= 1.20.0 =
+= 1.19.0 =
+* New module: Returns and complaints (RMA). Optional, off by default. Customers can open a complaint (reklamacja) or return (zwrot) request for an eligible order from My Account; the request is stored, confirmed by email to the customer and the shop, and managed in a new admin queue (WooCommerce > Polski > Returns & complaints) with status changes (submitted, in progress, resolved, rejected). Mirrors the withdrawal request flow and reuses the consent/order infrastructure. Configurable eligibility window and notification email. Provides tools and templates, not legal advice.
 * New module: Promotions / dynamic pricing (basic). Optional, off by default. Two automatic cart discounts you configure in the module settings: a bulk discount (a percentage off a product line once its quantity reaches a threshold) and a cart discount (a percentage off when the cart subtotal reaches a threshold, applied as a cart fee). Recomputed idempotently from the regular price, safe across WooCommerce's repeated total calculations.
+* Storefront module orchestration: unified loader so wishlist, quick-view and other buttons rendered after page load (infinite scroll, AJAX filters, quick-view modal) keep working, with accessibility and performance improvements.
 
 = 1.18.0 =
 * Visual identity refresh across the admin: a new Polski brand with self-hosted Schibsted Grotesk and Hanken Grotesk webfonts (font-display swap), a monogram menu icon and a wordmark dashboard header. Admin styling loads only on the plugin's own screens, never on the storefront, to protect Core Web Vitals.

@@ -142,6 +142,15 @@ return static function (Container $c): void {
         return new WithdrawalRepository($wpdb);
     });
 
+    $c->singleton(\Polski\Repository\ReturnRepository::class, static function () {
+        global $wpdb;
+        return new \Polski\Repository\ReturnRepository($wpdb);
+    });
+
+    $c->singleton(\Polski\Service\ReturnRequestService::class, static fn () => new \Polski\Service\ReturnRequestService(
+        $c->get(\Polski\Repository\ReturnRepository::class),
+    ));
+
     // Services.
     $c->singleton(TaxDisplayService::class, static fn () => new TaxDisplayService());
 
