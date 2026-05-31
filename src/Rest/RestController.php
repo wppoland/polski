@@ -12,7 +12,7 @@ use WP_REST_Controller;
  */
 abstract class RestController extends WP_REST_Controller
 {
-    /** @var non-empty-string */
+    /** @var string */
     protected $namespace = 'polski/v1';
 
     /**
