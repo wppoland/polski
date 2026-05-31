@@ -83,7 +83,7 @@ final class WithdrawalOrderMetaBox implements HasHooks
             <strong><?php echo esc_html($declarationId); ?></strong><br>
             <span style="color:#475569;">
                 <?php echo esc_html($request->status->label()); ?> &middot;
-                <?php echo esc_html($request->channel ?? 'online'); ?>
+                <?php echo esc_html($request->channel); ?>
             </span>
         </p>
 
