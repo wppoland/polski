@@ -25,6 +25,7 @@ final class SearchService implements Bootable, HasHooks
 
     public function __construct(
         private readonly TemplateLoader $templateLoader,
+        private readonly PriceDisplayService $priceDisplay,
     ) {
     }
 
@@ -63,7 +64,7 @@ final class SearchService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/ajax-search.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         $settings = $this->getAjaxSettings();
@@ -76,6 +77,8 @@ final class SearchService implements Bootable, HasHooks
             'viewAllText' => (string) ($settings['view_all_text'] ?? ''),
             'showImage' => (bool) ($settings['show_image'] ?? true),
             'showPrice' => (bool) ($settings['show_price'] ?? true),
+            'showUnitPrice' => (bool) ($settings['show_unit_price'] ?? true),
+            'showOmnibus' => (bool) ($settings['show_omnibus'] ?? true),
             'showSku' => (bool) ($settings['show_sku'] ?? true),
             'showViewAllLink' => (bool) ($settings['show_view_all_link'] ?? true),
             'skuLabel' => (string) ($settings['sku_label'] ?? __('SKU', 'polski')),
@@ -151,6 +154,8 @@ final class SearchService implements Bootable, HasHooks
                 'image' => (bool) ($settings['show_image'] ?? true) ? wp_get_attachment_image_url((int) $product->get_image_id(), 'thumbnail') : '',
                 'sku' => (bool) ($settings['show_sku'] ?? true) ? $product->get_sku() : '',
                 'price_html' => (bool) ($settings['show_price'] ?? true) ? $product->get_price_html() : '',
+                'unit_price_html' => (bool) ($settings['show_unit_price'] ?? true) ? $this->priceDisplay->getUnitPriceHtml($product) : '',
+                'omnibus_html' => (bool) ($settings['show_omnibus'] ?? true) ? $this->priceDisplay->getOmnibusPriceHtml($product) : '',
             ];
         }
 

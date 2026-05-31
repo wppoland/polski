@@ -64,12 +64,13 @@ final class WaitlistService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/waitlist.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-waitlist', 'polskiWaitlist', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('polski_waitlist'),
+            'errorText' => __('Something went wrong. Please try again.', 'polski'),
         ]);
     }
 

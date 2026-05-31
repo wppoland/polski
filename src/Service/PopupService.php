@@ -58,7 +58,7 @@ final class PopupService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/popup.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-popup', 'polskiPopup', [

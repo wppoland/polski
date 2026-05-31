@@ -58,7 +58,7 @@ final class WishlistService implements Bootable, HasHooks
 
     public function enqueueAssets(): void
     {
-        if (! $this->isEnabled()) {
+        if (! $this->isEnabled() || ! $this->shouldEnqueueAssets()) {
             return;
         }
 
@@ -74,7 +74,7 @@ final class WishlistService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/wishlist.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-wishlist', 'polskiWishlist', [
@@ -292,6 +292,19 @@ final class WishlistService implements Bootable, HasHooks
         }
 
         return (bool) ($this->getSettings()['allow_guests'] ?? true) || is_user_logged_in();
+    }
+
+    /**
+     * Wishlist buttons render on shop/taxonomy loops and single products,
+     * and the wishlist table on the account endpoint - load assets only there.
+     */
+    private function shouldEnqueueAssets(): bool
+    {
+        if (is_admin()) {
+            return false;
+        }
+
+        return is_shop() || is_product() || is_product_taxonomy() || is_account_page();
     }
 
     private function getGridColumns(): int

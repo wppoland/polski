@@ -53,7 +53,7 @@ final class GalleryZoomService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/gallery-zoom.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-gallery-zoom', 'polskiGalleryZoom', [
@@ -61,6 +61,7 @@ final class GalleryZoomService implements Bootable, HasHooks
             'enableZoom' => (bool) ($this->getSettings()['enable_zoom'] ?? true),
             'enableLightbox' => (bool) ($this->getSettings()['enable_lightbox'] ?? true),
             'showBackdropClose' => (bool) ($this->getSettings()['show_backdrop_close'] ?? true),
+            'triggerLabel' => (string) ($this->getSettings()['trigger_label'] ?? __('Powiększ zdjęcie produktu', 'polski')),
         ]);
     }
 

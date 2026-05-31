@@ -15,6 +15,9 @@ defined('ABSPATH') || exit;
 <div
     class="polski-gallery-lightbox"
     data-polski-gallery-lightbox
+    role="dialog"
+    aria-modal="true"
+    tabindex="-1"
     aria-label="<?php echo esc_attr((string) ($polski_settings['dialog_label'] ?? __('Podgląd galerii produktu', 'polski'))); ?>"
     hidden
 >

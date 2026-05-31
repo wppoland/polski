@@ -58,7 +58,7 @@ final class InfiniteScrollService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/infinite-scroll.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-infinite-scroll', 'polskiInfiniteScroll', [
@@ -66,6 +66,7 @@ final class InfiniteScrollService implements Bootable, HasHooks
             'loadingText' => (string) ($this->getSettings()['loading_text'] ?? ''),
             'errorText' => (string) ($this->getSettings()['error_text'] ?? ''),
             'endText' => (string) ($this->getSettings()['end_text'] ?? ''),
+            'loadedText' => (string) ($this->getSettings()['loaded_text'] ?? ''),
             'showStatus' => (bool) ($this->getSettings()['show_status'] ?? true),
             'showButtonInAutoMode' => (bool) ($this->getSettings()['show_button_in_auto_mode'] ?? false),
             'autoAfterPages' => max(0, (int) ($this->getSettings()['auto_after_pages'] ?? 0)),

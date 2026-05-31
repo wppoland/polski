@@ -35,18 +35,11 @@ final class AiClient
             return false;
         }
 
+        // Any deviation from the expected builder surface (older WordPress, a
+        // partial provider, a prevented prompt) throws; we treat that as
+        // "not available" rather than letting it bubble up.
         try {
-            $builder = wp_ai_client_prompt();
-        } catch (\Throwable $e) {
-            return false;
-        }
-
-        if (! is_object($builder) || ! method_exists($builder, 'is_supported_for_text_generation')) {
-            return false;
-        }
-
-        try {
-            return (bool) $builder->is_supported_for_text_generation();
+            return (bool) wp_ai_client_prompt()->is_supported_for_text_generation();
         } catch (\Throwable $e) {
             return false;
         }
@@ -75,22 +68,16 @@ final class AiClient
             return null;
         }
 
+        // The fluent builder methods are part of the documented AI Client
+        // contract; any provider that deviates throws and is caught below,
+        // degrading gracefully to the deterministic (non-AI) path.
         try {
-            $builder = wp_ai_client_prompt($prompt);
+            $builder = wp_ai_client_prompt($prompt)
+                ->using_system_instruction($instruction)
+                ->as_json_response($schema)
+                ->using_temperature(max(0.0, min(1.0, $temperature)));
 
-            if (method_exists($builder, 'using_system_instruction')) {
-                $builder = $builder->using_system_instruction($instruction);
-            }
-
-            if (method_exists($builder, 'as_json_response')) {
-                $builder = $builder->as_json_response($schema);
-            }
-
-            if (method_exists($builder, 'using_temperature')) {
-                $builder = $builder->using_temperature(max(0.0, min(1.0, $temperature)));
-            }
-
-            if ($modelHints !== [] && method_exists($builder, 'using_model_preference')) {
+            if ($modelHints !== []) {
                 $builder = $builder->using_model_preference(...$modelHints);
             }
 

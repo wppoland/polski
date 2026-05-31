@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
 ?>
 <div class="polski-popup" hidden="hidden" data-polski-popup>
     <div class="polski-popup__backdrop" data-polski-popup-backdrop></div>
-    <div class="polski-popup__dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr($polski_dialog_label); ?>" <?php echo $polski_show_title ? 'aria-labelledby="polski-popup-title"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+    <div class="polski-popup__dialog" role="dialog" aria-modal="true" tabindex="-1" aria-label="<?php echo esc_attr($polski_dialog_label); ?>" <?php echo $polski_show_title ? 'aria-labelledby="polski-popup-title"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
         <?php if ($polski_show_close_button) : ?>
             <button type="button" class="polski-popup__close" data-polski-popup-close aria-label="<?php echo esc_attr($polski_close_label); ?>">&times;</button>
         <?php endif; ?>

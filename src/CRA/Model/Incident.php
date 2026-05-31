@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
 /**
  * Aggregate for a single CRA-reportable incident or vulnerability record.
  */
-final readonly class Incident
+final class Incident
 {
     /**
      * @param array<string, mixed> $payload Arbitrary structured details
@@ -22,23 +22,23 @@ final readonly class Incident
      *     incident and shipped verbatim in the export.
      */
     public function __construct(
-        public ?int $id,
-        public IncidentKind $kind,
-        public Severity $severity,
-        public IncidentStatus $status,
-        public string $title,
-        public string $summary,
-        public string $affectedComponent,
-        public string $affectedVersions,
-        public DateTimeImmutable $discoveredAt,
-        public DateTimeImmutable $deadlineAt,
-        public ?DateTimeImmutable $notifiedAt,
-        public ?DateTimeImmutable $resolvedAt,
-        public string $reporter,
-        public string $referenceId,
-        public array $payload,
-        public ?string $createdAt = null,
-        public ?string $updatedAt = null,
+        public readonly ?int $id,
+        public readonly IncidentKind $kind,
+        public readonly Severity $severity,
+        public readonly IncidentStatus $status,
+        public readonly string $title,
+        public readonly string $summary,
+        public readonly string $affectedComponent,
+        public readonly string $affectedVersions,
+        public readonly DateTimeImmutable $discoveredAt,
+        public readonly DateTimeImmutable $deadlineAt,
+        public readonly ?DateTimeImmutable $notifiedAt,
+        public readonly ?DateTimeImmutable $resolvedAt,
+        public readonly string $reporter,
+        public readonly string $referenceId,
+        public readonly array $payload,
+        public readonly ?string $createdAt = null,
+        public readonly ?string $updatedAt = null,
     ) {
     }
 

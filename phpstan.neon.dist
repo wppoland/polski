@@ -16,6 +16,7 @@ parameters:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - tests/phpstan/elementor-phpstan-stubs.php
         - tests/phpstan/wp-cli-phpstan-stubs.php
+        - tests/phpstan/ai-client-phpstan-stubs.php
     # Don't fail if a global ignoreErrors pattern no longer matches anything —
     # the per-file baseline below already captures every legacy error precisely.
     reportUnmatchedIgnoredErrors: false

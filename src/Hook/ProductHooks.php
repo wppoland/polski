@@ -305,23 +305,9 @@ final class ProductHooks implements Bootable, HasHooks
             return;
         }
 
-        $parts = array_filter([
-            $this->productInfo->getSafetyDocumentsHtml($product),
-            $this->productInfo->getPowerSupplyHtml($product),
-            $this->productInfo->getDefectDescriptionHtml($product),
-        ]);
+        $html = $this->productInfo->getSafetyInfoHtml($product);
 
-        $gpsr = $this->productInfo->getGPSRResponsible($product);
-        if ($gpsr !== '') {
-            array_unshift($parts, sprintf(
-                '<div class="polski-gpsr"><span class="polski-gpsr__label">%s:</span> %s</div>',
-                esc_html__('Osoba odpowiedzialna (GPSR)', 'polski'),
-                esc_html($gpsr),
-            ));
-        }
-
-        if (! empty($parts)) {
-            $html = '<div class="polski-safety">' . implode('', $parts) . '</div>';
+        if ($html !== '') {
             $this->templateLoader->include('single-product/safety-info', [
                 'safety_html' => $html,
                 'product' => $product,

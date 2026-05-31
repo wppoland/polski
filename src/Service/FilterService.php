@@ -60,8 +60,19 @@ final class FilterService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/ajax-filters.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
+
+        $this->localizeAssets();
+    }
+
+    private function localizeAssets(): void
+    {
+        wp_localize_script('polski-ajax-filters', 'polskiAjaxFilters', [
+            /* translators: %d: number of products shown after filtering. */
+            'resultsUpdatedText' => __('Zaktualizowano wyniki: %d produktów.', 'polski'),
+            'resultsUpdatedGenericText' => __('Zaktualizowano wyniki.', 'polski'),
+        ]);
     }
 
     /**
@@ -73,17 +84,24 @@ final class FilterService implements Bootable, HasHooks
      */
     private function getArchivePresetOverrides(): array
     {
-        /**
-         * Filter the preset slug for the current archive. Default: empty
-         * string (no preset); return a slug to apply that preset's overrides.
-         */
-        $name = (string) apply_filters('polski/filters/archive_preset', '');
+        $name = $this->getArchivePresetSlug();
 
         if ($name === '') {
             return [];
         }
 
         return $this->getPreset($name);
+    }
+
+    public function getArchivePresetSlug(): string
+    {
+        $mapped = $this->resolveArchivePresetSlugFromSettings();
+
+        /**
+         * Filter the preset slug for the current archive. Default: resolved
+         * from settings or empty string if no mapping matched.
+         */
+        return (string) apply_filters('polski/filters/archive_preset', $mapped);
     }
 
     public function renderArchiveFilters(): void
@@ -112,20 +130,19 @@ final class FilterService implements Bootable, HasHooks
             $overrides = $this->getPreset((string) $atts['preset']);
         }
 
-        return $this->renderFilterForm($overrides);
+        return $this->renderFilterForm(array_merge($overrides, $this->parseShortcodeOverrides($atts)));
     }
 
     /**
-     * Look up a named filter preset. Presets live in the `polski_filter_presets`
-     * option as `[name => array<string, mixed>]`; the inner array is merged
-     * over the global filter settings before rendering.
+     * Look up a named filter preset. Presets can be stored either in the
+     * legacy `polski_filter_presets` option or in the admin-managed
+     * `polski_filters[presets_json]` setting.
      *
      * @return array<string, mixed>
      */
     public function getPreset(string $name): array
     {
-        $stored = get_option('polski_filter_presets', []);
-        $presets = is_array($stored) ? $stored : [];
+        $presets = $this->getStoredPresets();
         $preset = isset($presets[$name]) && is_array($presets[$name]) ? $presets[$name] : [];
 
         /**
@@ -136,6 +153,246 @@ final class FilterService implements Bootable, HasHooks
          * @param string               $name   Preset slug.
          */
         return (array) apply_filters('polski/filters/preset', $preset, $name);
+    }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    private function getStoredPresets(): array
+    {
+        $legacyPresets = $this->sanitizePresetCollection(get_option('polski_filter_presets', []));
+        $jsonPresets = $this->parsePresetsJson((string) ($this->getSettings()['presets_json'] ?? ''));
+
+        return array_replace($legacyPresets, $jsonPresets);
+    }
+
+    private function resolveArchivePresetSlugFromSettings(): string
+    {
+        $mappings = $this->parseArchivePresetMappings((string) ($this->getSettings()['archive_presets_json'] ?? ''));
+
+        if ($mappings === []) {
+            return '';
+        }
+
+        foreach ($this->getCurrentArchivePresetCandidates() as $candidate) {
+            if (isset($mappings[$candidate])) {
+                return $mappings[$candidate];
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    private function parsePresetsJson(string $raw): array
+    {
+        if ($raw === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        return $this->sanitizePresetCollection($decoded);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function parseArchivePresetMappings(string $raw): array
+    {
+        if ($raw === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        $mappings = [];
+
+        foreach ($decoded as $context => $preset) {
+            if (! is_string($context) || ! is_string($preset)) {
+                continue;
+            }
+
+            $normalizedContext = $this->normalizeArchivePresetContext($context);
+            $normalizedPreset = sanitize_key($preset);
+
+            if ($normalizedContext === '' || $normalizedPreset === '') {
+                continue;
+            }
+
+            $mappings[$normalizedContext] = $normalizedPreset;
+        }
+
+        return $mappings;
+    }
+
+    /**
+     * @param mixed $presets
+     * @return array<string, array<string, mixed>>
+     */
+    private function sanitizePresetCollection(mixed $presets): array
+    {
+        if (! is_array($presets)) {
+            return [];
+        }
+
+        $sanitized = [];
+
+        foreach ($presets as $name => $preset) {
+            if (! is_string($name) || ! is_array($preset)) {
+                continue;
+            }
+
+            $slug = sanitize_key($name);
+
+            if ($slug === '') {
+                continue;
+            }
+
+            $sanitized[$slug] = $this->sanitizePresetOverrides($preset);
+        }
+
+        return $sanitized;
+    }
+
+    /**
+     * @param array<string, mixed> $preset
+     * @return array<string, mixed>
+     */
+    private function sanitizePresetOverrides(array $preset): array
+    {
+        $allowedKeys = [
+            'show_on_shop',
+            'show_title',
+            'show_categories',
+            'show_brands',
+            'show_price',
+            'show_stock',
+            'show_sale',
+            'show_attributes',
+            'show_active_filters',
+            'show_counts',
+            'show_hierarchical_categories',
+            'enable_taxonomy_multiselect',
+            'taxonomy_multi_select_relation',
+            'enable_mobile_panel',
+            'enable_instant_filtering',
+            'instant_filtering_debounce_ms',
+            'attribute_taxonomies',
+            'max_attribute_taxonomies',
+            'title',
+            'active_filters_label',
+            'mobile_toggle_text',
+            'mobile_close_text',
+            'mobile_panel_title',
+            'category_label',
+            'category_all_text',
+            'brand_label',
+            'brand_all_text',
+            'min_price_label',
+            'max_price_label',
+            'stock_label',
+            'stock_any_text',
+            'stock_instock_text',
+            'sale_label',
+            'sale_active_text',
+            'attribute_any_text',
+            'show_reset_link',
+            'submit_text',
+            'reset_text',
+        ];
+
+        $sanitized = [];
+
+        foreach ($allowedKeys as $key) {
+            if (! array_key_exists($key, $preset)) {
+                continue;
+            }
+
+            $value = $preset[$key];
+
+            if (is_bool($value) || is_int($value) || is_float($value) || $value === null) {
+                $sanitized[$key] = $value;
+                continue;
+            }
+
+            if (is_string($value)) {
+                $sanitized[$key] = sanitize_text_field($value);
+            }
+        }
+
+        return $sanitized;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getCurrentArchivePresetCandidates(): array
+    {
+        $candidates = [];
+
+        if (is_shop()) {
+            $candidates[] = 'shop';
+        }
+
+        if (is_post_type_archive('product')) {
+            $candidates[] = 'post_type_archive:product';
+        }
+
+        $object = get_queried_object();
+
+        if ($object instanceof \WP_Term) {
+            $short = $this->normalizeArchivePresetContext($object->taxonomy . ':' . $object->slug);
+            $explicit = $this->normalizeArchivePresetContext('taxonomy:' . $object->taxonomy . ':' . $object->slug);
+            $taxonomyShort = $this->normalizeArchivePresetContext($object->taxonomy);
+            $taxonomyExplicit = $this->normalizeArchivePresetContext('taxonomy:' . $object->taxonomy);
+
+            if ($short !== '') {
+                $candidates[] = $short;
+            }
+
+            if ($explicit !== '') {
+                $candidates[] = $explicit;
+            }
+
+            if ($taxonomyShort !== '') {
+                $candidates[] = $taxonomyShort;
+            }
+
+            if ($taxonomyExplicit !== '') {
+                $candidates[] = $taxonomyExplicit;
+            }
+        }
+
+        return array_values(array_unique($candidates));
+    }
+
+    private function normalizeArchivePresetContext(string $context): string
+    {
+        $context = strtolower(trim($context));
+
+        if ($context === '') {
+            return '';
+        }
+
+        $parts = array_map(
+            static fn (string $part): string => sanitize_key($part),
+            explode(':', $context),
+        );
+
+        $parts = array_values(array_filter($parts, static fn (string $part): bool => $part !== ''));
+
+        return implode(':', $parts);
     }
 
     public function applyFiltersToQuery(\WP_Query $query): void
@@ -210,7 +467,7 @@ final class FilterService implements Bootable, HasHooks
             $query->set('post__in', wc_get_product_ids_on_sale());
         }
 
-        foreach ($this->getAttributeTaxonomies() as $taxonomy) {
+        foreach ($this->getRequestedAttributeTaxonomies() as $taxonomy) {
             $param = 'polski_filter_' . $taxonomy;
             $terms = $this->getRequestedTermValues($param);
 
@@ -237,14 +494,21 @@ final class FilterService implements Bootable, HasHooks
     }
 
     /**
+     * @param array<string, mixed>|null $settings
      * @return list<string>
      */
-    public function getAttributeTaxonomies(): array
+    public function getAttributeTaxonomies(?array $settings = null): array
     {
-        $settings = $this->getSettings();
+        $settings = $settings ?? $this->getSettings();
 
         if (! ($settings['show_attributes'] ?? true)) {
             return [];
+        }
+
+        $configuredTaxonomies = $this->parseAttributeTaxonomiesList((string) ($settings['attribute_taxonomies'] ?? ''));
+
+        if ($configuredTaxonomies !== []) {
+            return $configuredTaxonomies;
         }
 
         $max = max(0, (int) ($settings['max_attribute_taxonomies'] ?? 4));
@@ -268,16 +532,18 @@ final class FilterService implements Bootable, HasHooks
         }
 
         $this->enqueueRenderedAssets();
+        $settings = array_merge($this->getSettings(), $overrides);
+        $attributeTaxonomies = $this->getAttributeTaxonomies($settings);
 
         return $this->templateLoader->render('forms/ajax-filters', [
-            'settings' => array_merge($this->getSettings(), $overrides),
-            'categories' => $this->getTermOptions('product_cat', (bool) ($this->getSettings()['show_hierarchical_categories'] ?? true)),
+            'settings' => $settings,
+            'categories' => $this->getTermOptions('product_cat', (bool) ($settings['show_hierarchical_categories'] ?? true)),
             'brands' => $this->getTermOptions('polski_brand'),
-            'attribute_options' => $this->getAttributeOptions(),
-            'attribute_taxonomies' => $this->getAttributeTaxonomies(),
+            'attribute_options' => $this->getAttributeOptions($attributeTaxonomies),
+            'attribute_taxonomies' => $attributeTaxonomies,
             'action_url' => $this->getActionUrl(),
-            'reset_url' => $this->getResetUrl(),
-            'active_filters' => $this->getActiveFilters(),
+            'reset_url' => $this->getResetUrl($attributeTaxonomies),
+            'active_filters' => $this->getActiveFilters($settings, $attributeTaxonomies),
         ]);
     }
 
@@ -383,8 +649,10 @@ final class FilterService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/ajax-filters.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
+
+        $this->localizeAssets();
     }
 
     private function getActionUrl(): string
@@ -459,32 +727,41 @@ final class FilterService implements Bootable, HasHooks
     /**
      * @return array<string, list<array{term: \WP_Term, label: string, depth: int}>>
      */
-    private function getAttributeOptions(): array
+    /**
+     * @param list<string> $attributeTaxonomies
+     * @return array<string, list<array{term: \WP_Term, label: string, depth: int}>>
+     */
+    private function getAttributeOptions(array $attributeTaxonomies): array
     {
         $options = [];
 
-        foreach ($this->getAttributeTaxonomies() as $taxonomy) {
+        foreach ($attributeTaxonomies as $taxonomy) {
             $options[$taxonomy] = $this->getTermOptions($taxonomy);
         }
 
         return $options;
     }
 
-    private function getResetUrl(): string
+    /**
+     * @param list<string> $attributeTaxonomies
+     */
+    private function getResetUrl(array $attributeTaxonomies): string
     {
-        return add_query_arg($this->getPersistedQueryArgs([]), $this->getActionUrl());
+        return add_query_arg($this->getPersistedQueryArgs([], $attributeTaxonomies), $this->getActionUrl());
     }
 
     /**
+     * @param array<string, mixed> $settings
+     * @param list<string> $attributeTaxonomies
      * @return list<array{param: string, label: string, value: string, raw_value: string, remove_url: string}>
      */
-    private function getActiveFilters(): array
+    private function getActiveFilters(array $settings, array $attributeTaxonomies): array
     {
-        $query = $this->getActiveQueryValues();
+        $query = $this->getActiveQueryValues($attributeTaxonomies);
 
         $items = $this->buildActiveFilterItems(
             $query,
-            $this->getAttributeTaxonomies(),
+            $attributeTaxonomies,
             fn (string $taxonomy, string $slug): string => $this->resolveTermLabel($taxonomy, $slug),
         );
 
@@ -495,7 +772,7 @@ final class FilterService implements Bootable, HasHooks
                 'value' => $item['value'],
                 'raw_value' => $item['raw_value'],
                 'remove_url' => add_query_arg(
-                    $this->getPersistedQueryArgs([$item]),
+                    $this->getPersistedQueryArgs([$item], $attributeTaxonomies),
                     $this->getActionUrl(),
                 ),
             ],
@@ -504,9 +781,10 @@ final class FilterService implements Bootable, HasHooks
     }
 
     /**
+     * @param list<string> $attributeTaxonomies
      * @return array<string, string|list<string>>
      */
-    private function getActiveQueryValues(): array
+    private function getActiveQueryValues(array $attributeTaxonomies): array
     {
         // phpcs:disable WordPress.Security.NonceVerification.Recommended -- GET-based product list filters; bookmarkable URLs must work without a nonce.
         $values = [
@@ -519,7 +797,7 @@ final class FilterService implements Bootable, HasHooks
         ];
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        foreach ($this->getAttributeTaxonomies() as $taxonomy) {
+        foreach ($attributeTaxonomies as $taxonomy) {
             $param = 'polski_filter_' . $taxonomy;
             $values[$param] = $this->getRequestedTermValues($param);
         }
@@ -543,11 +821,12 @@ final class FilterService implements Bootable, HasHooks
 
     /**
      * @param list<array{param: string, label: string, value: string, raw_value: string}> $excludedItems
+     * @param list<string> $attributeTaxonomies
      * @return array<string, string|list<string>>
      */
-    private function getPersistedQueryArgs(array $excludedItems): array
+    private function getPersistedQueryArgs(array $excludedItems, array $attributeTaxonomies): array
     {
-        $query = $this->getActiveQueryValues();
+        $query = $this->getActiveQueryValues($attributeTaxonomies);
         unset($query['paged']);
 
         foreach ($excludedItems as $item) {
@@ -651,11 +930,143 @@ final class FilterService implements Bootable, HasHooks
         return array_values(array_filter(array_unique($values)));
     }
 
+    /**
+     * @return list<string>
+     */
+    private function getRequestedAttributeTaxonomies(): array
+    {
+        $allowed = wc_get_attribute_taxonomy_names();
+        $requested = [];
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only storefront filters; only query-string keys are inspected, then validated against registered attribute taxonomies.
+        foreach (array_keys($_GET) as $key) {
+            if (! is_string($key) || ! str_starts_with($key, 'polski_filter_pa_')) {
+                continue;
+            }
+
+            $taxonomy = substr($key, strlen('polski_filter_'));
+
+            if (in_array($taxonomy, $allowed, true)) {
+                $requested[] = $taxonomy;
+            }
+        }
+
+        return array_values(array_unique($requested));
+    }
+
     private function getTaxonomyOperator(): string
     {
         return strtolower((string) ($this->getSettings()['taxonomy_multi_select_relation'] ?? 'or')) === 'and'
             ? 'AND'
             : 'IN';
+    }
+
+    /**
+     * @param array<string, mixed> $atts
+     * @return array<string, mixed>
+     */
+    private function parseShortcodeOverrides(array $atts): array
+    {
+        $atts = shortcode_atts([
+            'title' => null,
+            'show_title' => null,
+            'show_categories' => null,
+            'show_brands' => null,
+            'show_price' => null,
+            'show_stock' => null,
+            'show_sale' => null,
+            'show_attributes' => null,
+            'show_active_filters' => null,
+            'show_counts' => null,
+            'enable_mobile_panel' => null,
+            'enable_instant_filtering' => null,
+            'enable_taxonomy_multiselect' => null,
+            'taxonomy_multi_select_relation' => null,
+            'max_attribute_taxonomies' => null,
+            'attribute_taxonomies' => null,
+        ], $atts, 'polski_ajax_filters');
+
+        $overrides = [];
+
+        foreach (['title', 'attribute_taxonomies'] as $key) {
+            if (is_string($atts[$key]) && $atts[$key] !== '') {
+                $overrides[$key] = sanitize_text_field($atts[$key]);
+            }
+        }
+
+        foreach ([
+            'show_title',
+            'show_categories',
+            'show_brands',
+            'show_price',
+            'show_stock',
+            'show_sale',
+            'show_attributes',
+            'show_active_filters',
+            'show_counts',
+            'enable_mobile_panel',
+            'enable_instant_filtering',
+            'enable_taxonomy_multiselect',
+        ] as $key) {
+            $parsed = $this->parseOptionalBoolean($atts[$key]);
+
+            if ($parsed !== null) {
+                $overrides[$key] = $parsed;
+            }
+        }
+
+        if (is_string($atts['taxonomy_multi_select_relation'])) {
+            $relation = strtolower(sanitize_key($atts['taxonomy_multi_select_relation']));
+
+            if (in_array($relation, ['and', 'or'], true)) {
+                $overrides['taxonomy_multi_select_relation'] = $relation;
+            }
+        }
+
+        if ($atts['max_attribute_taxonomies'] !== null && $atts['max_attribute_taxonomies'] !== '') {
+            $overrides['max_attribute_taxonomies'] = max(0, (int) $atts['max_attribute_taxonomies']);
+        }
+
+        return $overrides;
+    }
+
+    private function parseOptionalBoolean(mixed $value): ?bool
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        $normalized = strtolower((string) $value);
+
+        return match ($normalized) {
+            '1', 'true', 'yes', 'on' => true,
+            '0', 'false', 'no', 'off' => false,
+            default => null,
+        };
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function parseAttributeTaxonomiesList(string $raw): array
+    {
+        if ($raw === '') {
+            return [];
+        }
+
+        $requested = preg_split('/[\s,]+/', $raw) ?: [];
+        $requested = array_values(array_filter(array_map('sanitize_key', $requested)));
+
+        if ($requested === []) {
+            return [];
+        }
+
+        $allowed = wc_get_attribute_taxonomy_names();
+
+        return array_values(array_filter(
+            $requested,
+            static fn (string $taxonomy): bool => in_array($taxonomy, $allowed, true),
+        ));
     }
 
     /**

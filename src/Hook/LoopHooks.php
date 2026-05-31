@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Service\DeliveryTimeService;
 use Polski\Service\PriceDisplayService;
 use Polski\Service\ProductInfoService;
 use Polski\Shopmark\Location;
@@ -22,6 +23,7 @@ final class LoopHooks implements Bootable, HasHooks
     public function __construct(
         private readonly PriceDisplayService $priceDisplay,
         private readonly ProductInfoService $productInfo,
+        private readonly DeliveryTimeService $deliveryTime,
         private readonly ShopmarkManager $shopmarks,
         private readonly TemplateLoader $templateLoader,
     ) {
@@ -53,6 +55,14 @@ final class LoopHooks implements Bootable, HasHooks
             hookName: 'woocommerce_after_shop_loop_item_title',
             priority: 16,
             callback: fn () => $this->renderOmnibusPrice(),
+        ));
+
+        $this->shopmarks->register(new Shopmark(
+            id: 'loop_delivery_time',
+            location: Location::Loop,
+            hookName: 'woocommerce_after_shop_loop_item_title',
+            priority: 17,
+            callback: fn () => $this->renderDeliveryTime(),
         ));
 
         $this->shopmarks->register(new Shopmark(
@@ -104,6 +114,30 @@ final class LoopHooks implements Bootable, HasHooks
         if ($html !== '') {
             $this->templateLoader->include('loop/omnibus-price', [
                 'omnibus_price_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderDeliveryTime(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $settings = \Polski\Util\OptionCache::get('polski_delivery', []);
+
+        if (! is_array($settings) || ! ($settings['show_in_loop'] ?? false)) {
+            return;
+        }
+
+        $html = $this->deliveryTime->getDeliveryTimeHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('loop/delivery-time', [
+                'delivery_time_html' => $html,
                 'product' => $product,
             ]);
         }

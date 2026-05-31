@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-29T04:22:57+00:00\n"
+"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Language: be\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -107,10 +107,10 @@ msgstr "Старонка"
 
 #: config/defaults.php:35
 #: config/defaults.php:162
-#: config/defaults.php:259
+#: config/defaults.php:260
 #: src/Admin/AdminPage.php:892
 #: src/Admin/CRAIncidentsPage.php:123
-#: src/Admin/ModulesPage.php:293
+#: src/Admin/ModulesPage.php:323
 #: src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152
 #: src/Admin/PageCompliancePage.php:201
@@ -120,12 +120,13 @@ msgstr "Старонка"
 #: src/Service/DSAService.php:175
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
+#: src/Service/ReturnRequestService.php:232
 #: src/Service/RodoTrainingDocsService.php:267
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
 #: src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
-#: src/Service/WithdrawalService.php:897
+#: src/Service/WithdrawalService.php:931
 msgid "Status"
 msgstr "Статус"
 
@@ -374,22 +375,22 @@ msgid "Produkty w zamówieniu"
 msgstr "Тавары ў замове"
 
 #: config/defaults.php:150
-#: config/defaults.php:255
+#: config/defaults.php:256
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
 msgid "Produkt"
 msgstr "Тавар"
 
 #: config/defaults.php:151
-#: config/defaults.php:225
-#: config/defaults.php:258
+#: config/defaults.php:226
+#: config/defaults.php:259
 #: templates/forms/withdrawal-guest.php:62
 #: templates/forms/withdrawal-guest.php:84
 msgid "Ilość"
 msgstr "Колькасць"
 
 #: config/defaults.php:152
-#: config/defaults.php:410
+#: config/defaults.php:422
 msgid "Cena"
 msgstr "Цана"
 
@@ -453,7 +454,7 @@ msgid "Odstąpienie potwierdzone"
 msgstr "Адмова пацверджана"
 
 #: config/defaults.php:169
-#: config/defaults.php:197
+#: config/defaults.php:198
 #: templates/emails/double-opt-in.php:24
 #: templates/emails/plain/double-opt-in.php:20
 msgid "Cześć {name},"
@@ -489,862 +490,880 @@ msgstr "Вызвалены ад VAT на падставе арт. 113 ч. 1 за
 msgid "Czas dostawy: {time}"
 msgstr "Час дастаўкі: {time}"
 
-#: config/defaults.php:192
+#: config/defaults.php:193
 msgid "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link."
 msgstr "Ваш акаўнт чакае актывацыі! Зазірніце ў сваю паштовую скрыню і націсніце на дасланую намі спасылку."
 
-#: config/defaults.php:193
+#: config/defaults.php:194
 msgid "Nieprawidłowy link aktywacyjny."
 msgstr "Няправільная спасылка актывацыі."
 
-#: config/defaults.php:194
+#: config/defaults.php:195
 msgid "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować."
 msgstr "Цудоўна! Ваш акаўнт ужо актываваны. Цяпер вы можаце смела ўвайсці."
 
-#: config/defaults.php:195
+#: config/defaults.php:196
 msgid "Aktywuj swoje konto w {site_title}"
 msgstr "Актывуйце свой акаўнт у {site_title}"
 
-#: config/defaults.php:196
+#: config/defaults.php:197
 msgid "Potwierdź swój adres email"
 msgstr "Пацвердзіце свой адрас email"
 
-#: config/defaults.php:198
+#: config/defaults.php:199
 #: templates/emails/double-opt-in.php:29
 msgid "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
 msgstr "Дзякуй за стварэнне акаўнта. Націсніце кнопку ніжэй, каб актываваць акаўнт:"
 
-#: config/defaults.php:199
+#: config/defaults.php:200
 #: templates/emails/double-opt-in.php:33
 msgid "Aktywuj konto"
 msgstr "Актываваць акаўнт"
 
-#: config/defaults.php:200
+#: config/defaults.php:201
 #: templates/emails/double-opt-in.php:37
 msgid "Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:"
 msgstr "Калі хочаце, скапіруйце і ўстаўце гэтую спасылку ў браўзер:"
 
-#: config/defaults.php:201
+#: config/defaults.php:202
 #: templates/emails/plain/double-opt-in.php:24
 msgid "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
 msgstr "Дзякуй за стварэнне акаўнта. Наведайце спасылку ніжэй, каб актываваць акаўнт:"
 
-#: config/defaults.php:202
+#: config/defaults.php:203
 msgid "Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość."
 msgstr "Калі гэта не вы стваралі ў нас акаўнт, не хвалюйцеся і проста выдаліце гэта паведамленне."
 
-#: config/defaults.php:214
+#: config/defaults.php:215
 msgid "Zapytaj o wycenę"
 msgstr "Запытаць разлік"
 
-#: config/defaults.php:215
+#: config/defaults.php:216
 msgid "Zapytaj o indywidualną wycenę"
 msgstr "Запытаць індывідуальны разлік"
 
-#: config/defaults.php:216
+#: config/defaults.php:217
 msgid "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia."
 msgstr "Запоўніце кароткую форму, і мы вернемся з разлікам, прыстасаваным да вашай замовы."
 
-#: config/defaults.php:217
+#: config/defaults.php:218
 msgid "Zamknij formularz wyceny"
 msgstr "Закрыць форму разліку"
 
-#: config/defaults.php:218
+#: config/defaults.php:219
 msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
 msgstr "Увайдзіце, каб даслаць запыт прапановы для гэтага тавару."
 
-#: config/defaults.php:219
+#: config/defaults.php:220
 #: templates/forms/dsa-report.php:48
 msgid "Imię i nazwisko"
 msgstr "Імя і прозвішча"
 
-#: config/defaults.php:220
-#: src/Admin/ModulesPage.php:1048
+#: config/defaults.php:221
+#: src/Admin/ModulesPage.php:1091
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "Email"
 
-#: config/defaults.php:221
+#: config/defaults.php:222
 msgid "Telefon"
 msgstr "Тэлефон"
 
-#: config/defaults.php:222
+#: config/defaults.php:223
 msgid "Firma"
 msgstr "Фірма"
 
-#: config/defaults.php:223
+#: config/defaults.php:224
 #: src/Service/B2BCheckoutService.php:257
 #: src/Service/NipLookupService.php:66
 #: src/Service/NipLookupService.php:149
 msgid "NIP"
 msgstr "NIP"
 
-#: config/defaults.php:224
+#: config/defaults.php:225
 msgid "Kod pocztowy"
 msgstr "Паштовы індэкс"
 
-#: config/defaults.php:226
+#: config/defaults.php:227
 msgid "Szczegóły zapytania"
 msgstr "Дэталі запыту"
 
-#: config/defaults.php:227
+#: config/defaults.php:228
 msgid "Napisz czego potrzebujesz, jaki masz termin i jakie są założenia zamówienia."
 msgstr "Напішыце, чаго вы патрабуеце, які ў вас тэрмін і якія ўмовы замовы."
 
-#: config/defaults.php:228
+#: config/defaults.php:229
 msgid "Wyślij zapytanie"
 msgstr "Адправіць запыт"
 
-#: config/defaults.php:229
+#: config/defaults.php:230
 msgid "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe."
 msgstr "Дзякуй. Ваш запыт адпраўлены, мы вернемся з адказам як мага хутчэй."
 
-#: config/defaults.php:230
+#: config/defaults.php:231
 msgid "Cena dostępna po wycenie"
 msgstr "Цана даступная пасля разліку"
 
-#: config/defaults.php:231
+#: config/defaults.php:232
 msgid "Uzupełnij poprawnie imię i adres email."
 msgstr "Правільна запоўніце імя і адрас email."
 
-#: config/defaults.php:232
+#: config/defaults.php:233
 msgid "Podaj numer telefonu do kontaktu."
 msgstr "Падайце нумар тэлефона для кантакту."
 
-#: config/defaults.php:233
+#: config/defaults.php:234
 msgid "Podaj nazwę firmy."
 msgstr "Падайце назву фірмы."
 
-#: config/defaults.php:234
+#: config/defaults.php:235
 msgid "Podaj numer NIP."
 msgstr "Падайце нумар NIP."
 
-#: config/defaults.php:235
+#: config/defaults.php:236
 msgid "Podaj poprawny numer NIP."
 msgstr "Падайце правільны нумар NIP."
 
-#: config/defaults.php:236
+#: config/defaults.php:237
 msgid "Podaj kod pocztowy."
 msgstr "Падайце паштовы індэкс."
 
-#: config/defaults.php:237
+#: config/defaults.php:238
 msgid "Musisz zaakceptować zgodę prywatności."
 msgstr "Вы павінны прыняць згоду на прыватнасць."
 
-#: config/defaults.php:238
+#: config/defaults.php:239
 msgid "Minimalna ilość dla tego zapytania to {quantity}."
 msgstr "Мінімальная колькасць для гэтага запыту складае {quantity}."
 
-#: config/defaults.php:239
+#: config/defaults.php:240
 msgid "Nie udało się zapisać zapytania. Spróbuj ponownie."
 msgstr "Не ўдалося захаваць запыт. Паспрабуйце зноў."
 
-#: config/defaults.php:240
+#: config/defaults.php:241
 msgid "Nie udało się przygotować zapytania dla tego produktu."
 msgstr "Не ўдалося падрыхтаваць запыт для гэтага тавару."
 
-#: config/defaults.php:247
+#: config/defaults.php:248
 msgid "Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny."
 msgstr "Я прымаю палітыку прыватнасці і згаджаюся на кантакт у справе разліку."
 
-#: config/defaults.php:248
+#: config/defaults.php:249
 msgid "Nowe zapytanie ofertowe - {product_name}"
 msgstr "Новы запыт прапановы - {product_name}"
 
-#: config/defaults.php:249
+#: config/defaults.php:250
 msgid "Potwierdzenie zapytania ofertowego - {product_name}"
 msgstr "Пацвярджэнне запыту прапановы - {product_name}"
 
-#: config/defaults.php:251
+#: config/defaults.php:252
 msgid "Zapytania ofertowe"
 msgstr "Запыты прапаноў"
 
-#: config/defaults.php:252
+#: config/defaults.php:253
 msgid "Status zapytania został zaktualizowany."
 msgstr "Статус запыту абноўлены."
 
-#: config/defaults.php:253
-#: config/defaults.php:343
-#: config/defaults.php:345
-#: templates/forms/ajax-filters.php:105
-#: templates/forms/ajax-filters.php:129
+#: config/defaults.php:254
+#: config/defaults.php:352
+#: config/defaults.php:354
+#: templates/forms/ajax-filters.php:153
+#: templates/forms/ajax-filters.php:177
 msgid "Wszystkie"
 msgstr "Усе"
 
-#: config/defaults.php:254
+#: config/defaults.php:255
 #: src/Service/MyAccountWithdrawalsService.php:99
 msgid "Data"
 msgstr "Дата"
 
-#: config/defaults.php:256
+#: config/defaults.php:257
 msgid "Klient"
 msgstr "Кліент"
 
-#: config/defaults.php:257
+#: config/defaults.php:258
 msgid "Firma / NIP"
 msgstr "Фірма / NIP"
 
-#: config/defaults.php:260
+#: config/defaults.php:261
 msgid "Akcje"
 msgstr "Дзеянні"
 
-#: config/defaults.php:261
+#: config/defaults.php:262
 msgid "Brak zapytań ofertowych."
 msgstr "Няма запытаў прапаноў."
 
-#: config/defaults.php:262
+#: config/defaults.php:263
 msgid "Kod"
 msgstr "Код"
 
-#: config/defaults.php:275
+#: config/defaults.php:276
 msgid "Zapytaj o warunki handlowe"
 msgstr "Запытаць гандлёвыя ўмовы"
 
-#: config/defaults.php:276
+#: config/defaults.php:277
 msgid "Zaloguj się, aby zobaczyć ofertę"
 msgstr "Увайдзіце, каб убачыць прапанову"
 
-#: config/defaults.php:279
+#: config/defaults.php:280
 msgid "Cena dostępna po zalogowaniu lub po kontakcie z obsługą."
 msgstr "Цана даступная пасля ўваходу або пасля кантакту з абслугоўваннем."
 
-#: config/defaults.php:280
+#: config/defaults.php:281
 msgid "Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B."
 msgstr "Тавар даступны ў каталожным рэжыме. Звяжыцеся з намі, каб атрымаць гандлёвыя ўмовы або прапанову B2B."
 
-#: config/defaults.php:281
+#: config/defaults.php:282
 msgid "Zobacz warunki handlowe"
 msgstr "Глядзець гандлёвыя ўмовы"
 
-#: config/defaults.php:282
+#: config/defaults.php:283
 msgid "Ceny i zakup online są ukryte dla tego produktu."
 msgstr "Цэны і пакупка онлайн схаваныя для гэтага тавару."
 
-#: config/defaults.php:283
+#: config/defaults.php:284
 msgid "Cena jest ukryta dla tego produktu."
 msgstr "Цана схаваная для гэтага тавару."
 
-#: config/defaults.php:284
+#: config/defaults.php:285
 msgid "Zakup online jest wyłączony dla tego produktu."
 msgstr "Пакупка онлайн выключана для гэтага тавару."
 
-#: config/defaults.php:305
+#: config/defaults.php:308
 #: templates/forms/ajax-search.php:17
 msgid "Szukaj produktów"
 msgstr "Шукаць тавары"
 
-#: config/defaults.php:306
+#: config/defaults.php:309
 #: templates/forms/ajax-search.php:40
 msgid "Wyniki wyszukiwania produktów"
 msgstr "Вынікі пошуку тавараў"
 
-#: config/defaults.php:307
-#: config/defaults.php:412
-#: config/defaults.php:436
+#: config/defaults.php:310
+#: config/defaults.php:424
+#: config/defaults.php:448
 #: src/AIFeed/ProductMarkdownBuilder.php:145
 #: src/Service/CompareService.php:477
-#: src/Service/SearchService.php:81
+#: src/Service/SearchService.php:84
 #: src/Service/StockExportService.php:46
 #: src/Service/StockExportService.php:345
-#: templates/quick-view/content.php:55
+#: templates/quick-view/content.php:57
 msgid "SKU"
 msgstr "SKU"
 
-#: config/defaults.php:308
+#: config/defaults.php:311
 msgid "Szukaj produktów, kodów SKU lub kategorii"
 msgstr "Шукаць тавары, коды SKU або катэгорыі"
 
-#: config/defaults.php:309
+#: config/defaults.php:312
 msgid "Szukaj"
 msgstr "Шукаць"
 
-#: config/defaults.php:310
+#: config/defaults.php:313
 msgid "Brak wyników dla podanego zapytania."
 msgstr "Няма вынікаў для пададзенага запыту."
 
-#: config/defaults.php:311
+#: config/defaults.php:314
 msgid "Zobacz wszystkie wyniki"
 msgstr "Глядзець усе вынікі"
 
-#: config/defaults.php:319
-#: config/defaults.php:344
-#: config/defaults.php:415
-#: src/Service/FilterService.php:307
-#: templates/forms/ajax-filters.php:123
+#: config/defaults.php:322
+#: config/defaults.php:353
+#: config/defaults.php:427
+#: src/Service/FilterService.php:573
+#: templates/forms/ajax-filters.php:171
 msgid "Marka"
 msgstr "Брэнд"
 
-#: config/defaults.php:342
-#: src/Service/FilterService.php:300
-#: templates/forms/ajax-filters.php:99
+#: config/defaults.php:351
+#: src/Service/FilterService.php:566
+#: templates/forms/ajax-filters.php:147
 msgid "Kategoria"
 msgstr "Катэгорыя"
 
-#: config/defaults.php:346
-#: src/Service/FilterService.php:319
-#: templates/forms/ajax-filters.php:147
+#: config/defaults.php:355
+#: src/Service/FilterService.php:585
+#: templates/forms/ajax-filters.php:195
 msgid "Cena od"
 msgstr "Цана ад"
 
-#: config/defaults.php:347
-#: src/Service/FilterService.php:331
-#: templates/forms/ajax-filters.php:151
+#: config/defaults.php:356
+#: src/Service/FilterService.php:597
+#: templates/forms/ajax-filters.php:199
 msgid "Cena do"
 msgstr "Цана да"
 
-#: config/defaults.php:348
-#: config/defaults.php:413
-#: src/Service/FilterService.php:340
-#: templates/forms/ajax-filters.php:158
+#: config/defaults.php:357
+#: config/defaults.php:425
+#: src/Service/FilterService.php:606
+#: templates/forms/ajax-filters.php:206
 msgid "Dostępność"
 msgstr "Даступнасць"
 
-#: config/defaults.php:349
-#: templates/forms/ajax-filters.php:160
+#: config/defaults.php:358
+#: templates/forms/ajax-filters.php:208
 msgid "Dowolna"
 msgstr "Любая"
 
-#: config/defaults.php:350
-#: src/Service/FilterService.php:341
-#: templates/forms/ajax-filters.php:162
+#: config/defaults.php:359
+#: src/Service/FilterService.php:607
+#: templates/forms/ajax-filters.php:210
 msgid "Dostępne od ręki"
 msgstr "Даступныя адразу"
 
-#: config/defaults.php:351
-#: src/Service/FilterService.php:349
-#: templates/forms/ajax-filters.php:170
+#: config/defaults.php:360
+#: src/Service/FilterService.php:615
+#: templates/forms/ajax-filters.php:218
 msgid "Promocje"
 msgstr "Акцыі"
 
-#: config/defaults.php:352
-#: src/Service/FilterService.php:350
+#: config/defaults.php:361
+#: src/Service/FilterService.php:616
 msgid "Tylko promocje"
 msgstr "Толькі акцыі"
 
-#: config/defaults.php:353
-#: templates/forms/ajax-filters.php:189
+#: config/defaults.php:362
+#: templates/forms/ajax-filters.php:237
 msgid "Dowolny"
 msgstr "Любы"
 
-#: config/defaults.php:355
+#: config/defaults.php:364
 msgid "Filtruj"
 msgstr "Фільтраваць"
 
-#: config/defaults.php:356
+#: config/defaults.php:365
 msgid "Wyczyść filtry"
 msgstr "Ачысціць фільтры"
 
-#: config/defaults.php:357
+#: config/defaults.php:366
+#: config/defaults.php:370
+#: templates/forms/ajax-filters.php:133
 msgid "Filtry produktów"
 msgstr "Фільтры тавараў"
 
-#: config/defaults.php:358
-#: templates/forms/ajax-filters.php:77
+#: config/defaults.php:367
+#: templates/forms/ajax-filters.php:110
 msgid "Aktywne filtry"
 msgstr "Актыўныя фільтры"
 
-#: config/defaults.php:375
+#: config/defaults.php:368
+#: templates/forms/ajax-filters.php:99
+msgid "Pokaż filtry"
+msgstr "Паказаць фільтры"
+
+#: config/defaults.php:369
+#: config/defaults.php:444
+#: templates/forms/ajax-filters.php:139
+#: templates/shared/quick-view-modal.php:22
+msgid "Zamknij"
+msgstr "Закрыць"
+
+#: config/defaults.php:387
 msgid "Ulubione"
 msgstr "Упадабаныя"
 
-#: config/defaults.php:376
+#: config/defaults.php:388
 msgid "Dodaj do ulubionych"
 msgstr "Дадаць ва ўпадабаныя"
 
-#: config/defaults.php:377
+#: config/defaults.php:389
 msgid "Usuń z ulubionych"
 msgstr "Выдаліць з упадабаных"
 
-#: config/defaults.php:379
+#: config/defaults.php:391
 msgid "Zaloguj się, aby korzystać z listy życzeń."
 msgstr "Увайдзіце, каб карыстацца спісам жаданняў."
 
-#: config/defaults.php:380
-#: config/defaults.php:400
-#: config/defaults.php:435
-#: config/defaults.php:594
+#: config/defaults.php:392
+#: config/defaults.php:412
+#: config/defaults.php:447
+#: config/defaults.php:609
 msgid "Nie znaleziono produktu."
 msgstr "Тавар не знойдзены."
 
-#: config/defaults.php:381
+#: config/defaults.php:393
 msgid "Lista ulubionych jest pusta."
 msgstr "Спіс упадабаных пусты."
 
-#: config/defaults.php:382
+#: config/defaults.php:394
 msgid "Twoje ulubione produkty"
 msgstr "Вашы ўпадабаныя тавары"
 
-#: config/defaults.php:396
+#: config/defaults.php:408
 msgid "Porównanie"
 msgstr "Параўнанне"
 
-#: config/defaults.php:397
+#: config/defaults.php:409
 msgid "Dodaj do porównania"
 msgstr "Дадаць у параўнанне"
 
-#: config/defaults.php:398
+#: config/defaults.php:410
 msgid "Usuń z porównania"
 msgstr "Выдаліць з параўнання"
 
-#: config/defaults.php:399
+#: config/defaults.php:411
 msgid "Zaloguj się, aby korzystać z porównania produktów."
 msgstr "Увайдзіце, каб карыстацца параўнаннем тавараў."
 
-#: config/defaults.php:401
+#: config/defaults.php:413
 msgid "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie."
 msgstr "Вы можаце параўнаць максімум {limit} тавары адначасова. Найстарэйшы запіс быў заменены аўтаматычна."
 
-#: config/defaults.php:402
+#: config/defaults.php:414
 msgid "Nie możesz wyczyścić porównania."
 msgstr "Вы не можаце ачысціць параўнанне."
 
-#: config/defaults.php:404
+#: config/defaults.php:416
 msgid "Lista porównawcza jest pusta."
 msgstr "Спіс параўнання пусты."
 
-#: config/defaults.php:405
+#: config/defaults.php:417
 msgid "Porównanie produktów"
 msgstr "Параўнанне тавараў"
 
-#: config/defaults.php:406
+#: config/defaults.php:418
 msgid "Porównaj produkty"
 msgstr "Параўнаць тавары"
 
-#: config/defaults.php:407
+#: config/defaults.php:419
 #: src/Service/CompareService.php:297
 msgid "Wyczyść porównanie"
 msgstr "Ачысціць параўнанне"
 
-#: config/defaults.php:408
+#: config/defaults.php:420
 msgid "Cecha"
 msgstr "Характарыстыка"
 
-#: config/defaults.php:409
+#: config/defaults.php:421
 msgid "Pokazuj tylko różnice"
 msgstr "Паказваць толькі адрозненні"
 
-#: config/defaults.php:411
+#: config/defaults.php:423
 msgid "Cena jednostkowa"
 msgstr "Цана за адзінку"
 
-#: config/defaults.php:414
+#: config/defaults.php:426
 msgid "Czas dostawy"
 msgstr "Тэрмін дастаўкі"
 
-#: config/defaults.php:416
+#: config/defaults.php:428
 #: templates/single-product/gpsr-info.php:15
 msgid "Producent"
 msgstr "Вытворца"
 
-#: config/defaults.php:417
+#: config/defaults.php:429
 #: src/Service/CompareService.php:482
 msgid "GTIN / EAN"
 msgstr "GTIN / EAN"
 
-#: config/defaults.php:418
+#: config/defaults.php:430
 msgid "Krótki opis"
 msgstr "Кароткае апісанне"
 
-#: config/defaults.php:430
+#: config/defaults.php:442
 msgid "Szybki podgląd"
 msgstr "Хуткі прагляд"
 
-#: config/defaults.php:431
+#: config/defaults.php:443
 #: templates/shared/quick-view-modal.php:20
 #: templates/shared/quick-view-modal.php:28
 msgid "Szybki podgląd produktu"
 msgstr "Хуткі прагляд тавару"
 
-#: config/defaults.php:432
-#: templates/shared/quick-view-modal.php:22
-msgid "Zamknij"
-msgstr "Закрыць"
-
-#: config/defaults.php:433
+#: config/defaults.php:445
 msgid "Ładowanie produktu..."
 msgstr "Загрузка тавару..."
 
-#: config/defaults.php:434
+#: config/defaults.php:446
 msgid "Nie udało się wczytać podglądu produktu."
 msgstr "Не ўдалося загрузіць прагляд тавару."
 
-#: config/defaults.php:451
-#: templates/quick-view/content.php:96
+#: config/defaults.php:465
+#: templates/quick-view/content.php:106
 msgid "Zobacz pełną kartę produktu"
 msgstr "Глядзець поўную картку тавару"
 
-#: config/defaults.php:460
+#: config/defaults.php:474
 msgid "Często kupowane razem"
 msgstr "Часта купляюць разам"
 
-#: config/defaults.php:461
+#: config/defaults.php:475
 msgid "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość do koszyka jednym kliknięciem."
 msgstr "Прапануйце кліенту гатовы набор дадатковых тавараў і дадайце ўсё ў кошык адным націскам."
 
-#: config/defaults.php:462
-#: config/defaults.php:628
+#: config/defaults.php:476
+#: config/defaults.php:643
 msgid "Dodaj zestaw do koszyka"
 msgstr "Дадаць набор у кошык"
 
-#: config/defaults.php:463
+#: config/defaults.php:477
 msgid "Brak skonfigurowanych produktów do zestawu."
 msgstr "Няма наладжаных тавараў для набору."
 
-#: config/defaults.php:467
+#: config/defaults.php:481
 msgid "Łącznie:"
 msgstr "Разам:"
 
-#: config/defaults.php:468
+#: config/defaults.php:482
 msgid "Dodano {count} produktów z zestawu do koszyka."
 msgstr "Дададзена {count} тавараў з набору ў кошык."
 
-#: config/defaults.php:497
+#: config/defaults.php:511
 msgid "Promocja"
 msgstr "Акцыя"
 
-#: config/defaults.php:498
+#: config/defaults.php:512
 msgid "Nowość"
 msgstr "Навінка"
 
-#: config/defaults.php:499
+#: config/defaults.php:513
 msgid "Ostatnie sztuki"
 msgstr "Апошнія штукі"
 
-#: config/defaults.php:500
+#: config/defaults.php:514
 #: src/Service/BadgeService.php:113
 msgid "Bestseller"
 msgstr "Бестселер"
 
-#: config/defaults.php:507
+#: config/defaults.php:521
 msgid "Dostawa i płatność"
 msgstr "Дастаўка і аплата"
 
-#: config/defaults.php:511
+#: config/defaults.php:525
 msgid "Zwroty i reklamacje"
 msgstr "Звароты і рэкламацыі"
 
-#: config/defaults.php:525
+#: config/defaults.php:539
 msgid "Zobacz produkt w użyciu"
 msgstr "Глядзець тавар у выкарыстанні"
 
-#: config/defaults.php:538
-#: templates/shared/gallery-lightbox.php:18
+#: config/defaults.php:552
+#: templates/shared/gallery-lightbox.php:21
 msgid "Podgląd galerii produktu"
 msgstr "Прагляд галерэі тавару"
 
-#: config/defaults.php:539
-#: templates/shared/gallery-lightbox.php:21
+#: config/defaults.php:553
+#: templates/shared/gallery-lightbox.php:24
 msgid "Zamknij podgląd galerii"
 msgstr "Закрыць прагляд галерэі"
 
-#: config/defaults.php:548
+#: config/defaults.php:554
+#: src/Service/GalleryZoomService.php:64
+msgid "Powiększ zdjęcie produktu"
+msgstr "Павялічыць фота тавару"
+
+#: config/defaults.php:563
 #: src/Service/ProductSliderService.php:76
 #: src/Service/ProductSliderService.php:120
 msgid "Polecane produkty"
 msgstr "Рэкамендаваныя тавары"
 
-#: config/defaults.php:559
+#: config/defaults.php:574
 msgid "Brak produktów do wyświetlenia w tej sekcji."
 msgstr "Няма тавараў для адлюстравання ў гэтым раздзеле."
 
-#: config/defaults.php:560
+#: config/defaults.php:575
 #: templates/shared/product-slider.php:77
 msgid "Zobacz wszystkie produkty"
 msgstr "Глядзець усе тавары"
 
-#: config/defaults.php:570
+#: config/defaults.php:585
 msgid "Zamów w przedsprzedaży"
 msgstr "Замовіць у перадпродажы"
 
-#: config/defaults.php:571
+#: config/defaults.php:586
 msgid "Przedsprzedaż, wysyłka od {date}"
 msgstr "Перадпродаж, адпраўка ад {date}"
 
-#: config/defaults.php:572
+#: config/defaults.php:587
 msgid "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę zrealizujemy od {date}."
 msgstr "Гэты тавар даступны ў перадпродажы. Замовіце зараз, і мы зробім адпраўку ад {date}."
 
-#: config/defaults.php:573
+#: config/defaults.php:588
 msgid "Przedsprzedaż"
 msgstr "Перадпродаж"
 
-#: config/defaults.php:577
+#: config/defaults.php:592
 msgid "Produkty z przedsprzedaży nie mogą być łączone z innymi produktami w tym samym koszyku."
 msgstr "Тавары з перадпродажу нельга спалучаць з іншымі таварамі ў адным кошыку."
 
-#: config/defaults.php:585
+#: config/defaults.php:600
 msgid "Powiadom mnie o dostępności"
 msgstr "Паведаміць мне аб даступнасці"
 
-#: config/defaults.php:587
+#: config/defaults.php:602
 msgid "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
 msgstr "Пакіньце адрас электроннай пошты, і мы паведамім, калі тавар вернецца ў наяўнасць."
 
-#: config/defaults.php:589
+#: config/defaults.php:604
 #: templates/single-product/waitlist-form.php:27
 msgid "Adres email"
 msgstr "Адрас электроннай пошты"
 
-#: config/defaults.php:590
+#: config/defaults.php:605
 #: templates/single-product/waitlist-form.php:28
 msgid "Twój adres email"
 msgstr "Ваш адрас электроннай пошты"
 
-#: config/defaults.php:591
+#: config/defaults.php:606
 msgid "Powiadom mnie"
 msgstr "Паведаміць мне"
 
-#: config/defaults.php:592
+#: config/defaults.php:607
 msgid "Dziękujemy. Zapisaliśmy Cię na listę oczekujących."
 msgstr "Дзякуй. Мы запісалі вас у спіс чакання."
 
-#: config/defaults.php:593
+#: config/defaults.php:608
 msgid "Akceptuję kontakt email w sprawie dostępności tego produktu."
 msgstr "Я згаджаюся на кантакт па электроннай пошце адносна даступнасці гэтага тавару."
 
-#: config/defaults.php:595
+#: config/defaults.php:610
 msgid "Lista oczekujących jest niedostępna dla tego produktu."
 msgstr "Спіс чакання недаступны для гэтага тавару."
 
-#: config/defaults.php:596
+#: config/defaults.php:611
 msgid "Podaj poprawny adres email."
 msgstr "Увядзіце правільны адрас электроннай пошты."
 
-#: config/defaults.php:597
+#: config/defaults.php:612
 msgid "Musisz zaakceptować zgodę na kontakt email."
 msgstr "Вы павінны пагадзіцца на кантакт па электроннай пошце."
 
-#: config/defaults.php:598
+#: config/defaults.php:613
 msgid "Zaloguj się, aby zapisać się na listę oczekujących."
 msgstr "Увайдзіце, каб запісацца ў спіс чакання."
 
-#: config/defaults.php:599
+#: config/defaults.php:614
 msgid "Produkt ponownie dostępny - {product_name}"
 msgstr "Тавар зноў даступны - {product_name}"
 
-#: config/defaults.php:600
+#: config/defaults.php:615
 msgid "Produkt {product_name} jest ponownie dostępny."
 msgstr "Тавар {product_name} зноў даступны."
 
-#: config/defaults.php:601
+#: config/defaults.php:616
 msgid "Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten email."
 msgstr "Калі вы больш не жадаеце атрымліваць такія паведамленні, проста праігнаруйце гэты ліст."
 
-#: config/defaults.php:608
+#: config/defaults.php:623
 msgid "Dodatki do produktu"
 msgstr "Дадаткі да тавару"
 
-#: config/defaults.php:609
+#: config/defaults.php:624
 msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
 msgstr "Наладзьце дадаткі і паслугі, звязаныя з гэтым таварам."
 
-#: config/defaults.php:613
+#: config/defaults.php:628
 msgid "Wymagane"
 msgstr "Абавязкова"
 
-#: config/defaults.php:614
+#: config/defaults.php:629
 msgid "Opcjonalne"
 msgstr "Неабавязкова"
 
-#: config/defaults.php:615
+#: config/defaults.php:630
 msgid "Wybierz opcję"
 msgstr "Выберыце варыянт"
 
-#: config/defaults.php:616
+#: config/defaults.php:631
 msgid "Wpisz wartość"
 msgstr "Увядзіце значэнне"
 
-#: config/defaults.php:617
+#: config/defaults.php:632
 msgid "Wpisz szczegóły"
 msgstr "Увядзіце дэталі"
 
-#: config/defaults.php:626
+#: config/defaults.php:641
 msgid "Kup w zestawie"
 msgstr "Купіць у наборы"
 
-#: config/defaults.php:627
+#: config/defaults.php:642
 msgid "Połącz produkt główny z akcesoriami i kup całość w jednym pakiecie."
 msgstr "Спалучыце асноўны тавар з аксесуарамі і купіце ўсё адным пакетам."
 
-#: config/defaults.php:629
+#: config/defaults.php:644
 msgid "Wybierz przynajmniej jeden dodatkowy produkt do zestawu."
 msgstr "Выберыце прынамсі адзін дадатковы тавар для набору."
 
-#: config/defaults.php:630
+#: config/defaults.php:645
 msgid "Dodano zestaw do koszyka."
 msgstr "Набор дададзены ў кошык."
 
-#: config/defaults.php:633
+#: config/defaults.php:648
 msgid "Cena zestawu"
 msgstr "Цана набору"
 
-#: config/defaults.php:634
+#: config/defaults.php:649
 msgid "w zestawie"
 msgstr "у наборы"
 
-#: config/defaults.php:635
+#: config/defaults.php:650
 msgid "x {quantity}"
 msgstr "x {quantity}"
 
-#: config/defaults.php:636
+#: config/defaults.php:651
 msgid "Oszczędzasz"
 msgstr "Вы эканоміце"
 
-#: config/defaults.php:643
+#: config/defaults.php:658
 #: templates/archive/infinite-scroll.php:11
 msgid "Załaduj więcej produktów"
 msgstr "Загрузіць больш тавараў"
 
-#: config/defaults.php:644
+#: config/defaults.php:659
 msgid "Ładowanie produktów..."
 msgstr "Загрузка тавараў..."
 
-#: config/defaults.php:645
+#: config/defaults.php:660
 msgid "Nie udało się załadować kolejnych produktów."
 msgstr "Не ўдалося загрузіць наступныя тавары."
 
-#: config/defaults.php:646
+#: config/defaults.php:661
 msgid "To już wszystkie produkty."
 msgstr "Гэта ўжо ўсе тавары."
 
-#: config/defaults.php:657
+#: config/defaults.php:662
+msgid "Załadowano kolejne produkty."
+msgstr "Загружаны наступныя тавары."
+
+#: config/defaults.php:673
 msgid "Masz pytanie o produkt lub warunki handlowe?"
 msgstr "Маеце пытанне аб тавары ці гандлёвых умовах?"
 
-#: config/defaults.php:658
+#: config/defaults.php:674
 msgid "Skontaktuj się z nami, jeśli chcesz dostać ofertę B2B, rabat dla hurtu albo pomoc z doborem produktu."
 msgstr "Звяжыцеся з намі, калі жадаеце атрымаць прапанову B2B, зніжку для оптавікоў ці дапамогу з выбарам тавару."
 
-#: config/defaults.php:659
+#: config/defaults.php:675
 msgid "Przejdź do kontaktu"
 msgstr "Перайсці да кантактаў"
 
-#: config/defaults.php:662
+#: config/defaults.php:678
 #: src/Service/PopupService.php:80
 msgid "Zamknij popup"
 msgstr "Закрыць папап"
 
-#: config/defaults.php:663
+#: config/defaults.php:679
 #: src/Service/PopupService.php:81
 msgid "Popup promocyjny"
 msgstr "Рэкламны папап"
 
-#: config/defaults.php:689
+#: config/defaults.php:705
 msgid "Składniki"
 msgstr "Інгрэдыенты"
 
-#: config/defaults.php:690
+#: config/defaults.php:706
 msgid "Alergeny"
 msgstr "Алергены"
 
-#: config/defaults.php:691
+#: config/defaults.php:707
 msgid "Wartości odżywcze na"
 msgstr "Харчовая каштоўнасць на"
 
-#: config/defaults.php:692
+#: config/defaults.php:708
 msgid "Składnik odżywczy"
 msgstr "Харчовы кампанент"
 
-#: config/defaults.php:693
+#: config/defaults.php:709
 #: templates/forms/withdrawal-guest.php:63
 #: templates/forms/withdrawal-guest.php:87
 msgid "Wartość"
 msgstr "Значэнне"
 
-#: config/defaults.php:694
+#: config/defaults.php:710
 #: src/Service/FoodService.php:133
 msgid "100 g"
 msgstr "100 г"
 
-#: config/defaults.php:695
+#: config/defaults.php:711
 #: src/Admin/CSVImportExport.php:81
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
 #: src/Service/FoodService.php:201
 msgid "Nutri-Score"
 msgstr "Nutri-Score"
 
-#: config/defaults.php:696
+#: config/defaults.php:712
 msgid "Zawartość alkoholu"
 msgstr "Утрыманне алкаголю"
 
-#: config/defaults.php:697
+#: config/defaults.php:713
 #: src/Service/FoodService.php:241
 msgid "% vol."
 msgstr "% аб."
 
-#: config/defaults.php:698
+#: config/defaults.php:714
 msgid "Kraj pochodzenia"
 msgstr "Краіна паходжання"
 
-#: config/defaults.php:699
+#: config/defaults.php:715
 msgid "Dystrybutor"
 msgstr "Дыстрыб'ютар"
 
-#: config/defaults.php:700
+#: config/defaults.php:716
 msgid "Zawartość netto"
 msgstr "Чыстае ўтрыманне"
 
 #. translators: 1: customer first name (possibly anonymized), 2: product name
-#: config/defaults.php:728
+#: config/defaults.php:744
 #, php-format
 msgid "%1$s kupił(a) %2$s"
 msgstr "%1$s купіў(ла) %2$s"
 
 #. translators: %d: number of minutes since the order
-#: config/defaults.php:730
+#: config/defaults.php:746
 #, php-format
 msgid "%d min temu"
 msgstr "%d хв таму"
 
 #. translators: %d: number of hours since the order
-#: config/defaults.php:732
+#: config/defaults.php:748
 #, php-format
 msgid "%d godz. temu"
 msgstr "%d гадз таму"
 
-#: config/defaults.php:737
+#: config/defaults.php:753
 msgid "Pytania i odpowiedzi"
 msgstr "Пытанні і адказы"
 
-#: config/defaults.php:738
+#: config/defaults.php:754
 msgid "Zadaj pytanie o ten produkt..."
 msgstr "Задайце пытанне аб гэтым тавары..."
 
-#: config/defaults.php:739
+#: config/defaults.php:755
 msgid "Zadaj pytanie"
 msgstr "Задаць пытанне"
 
-#: config/defaults.php:740
+#: config/defaults.php:756
 msgid "Odpowiedz"
 msgstr "Адказаць"
 
-#: config/defaults.php:741
+#: config/defaults.php:757
 msgid "Brak pytań. Zadaj pierwsze pytanie!"
 msgstr "Няма пытанняў. Задайце першае пытанне!"
 
-#: config/defaults.php:749
+#: config/defaults.php:765
 msgid "Historia cen"
 msgstr "Гісторыя цэн"
 
-#: config/defaults.php:750
+#: config/defaults.php:766
 msgid "Najniższa"
 msgstr "Найніжэйшая"
 
-#: config/defaults.php:751
+#: config/defaults.php:767
 msgid "Najwyższa"
 msgstr "Найвышэйшая"
 
-#: config/defaults.php:756
+#: config/defaults.php:772
 msgid "Często zadawane pytania"
 msgstr "Часта задаваныя пытанні"
 
-#: config/defaults.php:779
+#: config/defaults.php:795
 #: src/Service/DSAProductReportService.php:100
 #: templates/forms/dsa-report.php:37
 msgid "Zgłoś nielegalne treści (DSA)"
 msgstr "Паведаміць пра нелегальны кантэнт (DSA)"
 
-#: config/defaults.php:780
+#: config/defaults.php:796
 #: templates/forms/dsa-report.php:40
 msgid "Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA)."
 msgstr "Запоўніце форму ніжэй, каб паведаміць пра кантэнт, які вы лічыце нелегальным згодна з Актам аб лічбавых паслугах (DSA)."
@@ -1456,7 +1475,7 @@ msgid "Back to modules"
 msgstr "Назад да модуляў"
 
 #: src/Admin/AdminPage.php:355
-#: src/Admin/ModulesPage.php:1329
+#: src/Admin/ModulesPage.php:1372
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr "Уключана"
@@ -1669,6 +1688,7 @@ msgstr "Няма ўнутраных водгукаў для адлюстрава
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171
+#: src/Service/ReturnRequestService.php:231
 #: src/Service/RodoTrainingDocsService.php:164
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
@@ -1725,7 +1745,7 @@ msgstr "Неактыўны"
 
 #: src/Admin/AdminPage.php:858
 #: src/Admin/AdminPage.php:887
-#: src/Admin/ModulesPage.php:257
+#: src/Admin/ModulesPage.php:287
 msgid "Legal Pages"
 msgstr "Прававыя старонкі"
 
@@ -1885,7 +1905,7 @@ msgid "Deadline"
 msgstr "Тэрмін"
 
 #: src/Admin/CRAIncidentsPage.php:125
-#: src/Admin/ModulesPage.php:1331
+#: src/Admin/ModulesPage.php:1374
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr "Дзеянні"
@@ -1990,20 +2010,20 @@ msgid "Right of withdrawal exemption"
 msgstr "Выключэнне права на адмову"
 
 #: src/Admin/CSVImportExport.php:80
-#: src/Admin/ModulesPage.php:395
+#: src/Admin/ModulesPage.php:425
 #: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
 #: src/Service/FoodService.php:54
 msgid "Ingredients"
 msgstr "Інгрэдыенты"
 
 #: src/Admin/CSVImportExport.php:82
-#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:432
 #: src/Service/FoodService.php:239
 msgid "Alcohol content"
 msgstr "Утрыманне алкаголю"
 
 #: src/Admin/CSVImportExport.php:83
-#: src/Admin/ModulesPage.php:404
+#: src/Admin/ModulesPage.php:434
 #: src/Service/FoodService.php:285
 msgid "Country of origin"
 msgstr "Краіна паходжання"
@@ -2159,6 +2179,8 @@ msgstr "Плагін"
 #: src/Admin/DeactivationHandler.php:152
 #: src/Admin/WithdrawalsAdminPage.php:196
 #: src/Service/DSAService.php:174
+#: src/Service/ReturnRequestService.php:144
+#: src/Service/ReturnRequestService.php:230
 msgid "Reason"
 msgstr "Прычына"
 
@@ -2171,223 +2193,272 @@ msgid "What to add"
 msgstr "Што дадаць"
 
 #: src/Admin/ModulesPage.php:78
+msgid "Promotions / dynamic pricing"
+msgstr "Акцыі / дынамічныя цэны"
+
+#: src/Admin/ModulesPage.php:79
+msgid "Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default."
+msgstr "Аўтаматычныя зніжкі на кошык: працэнт зніжкі, калі сума кошыка дасягае парога, і працэнт зніжкі на пазіцыю тавару, калі яе колькасць дасягае парога (аптовая зніжка). Па змаўчанні выключана."
+
+#: src/Admin/ModulesPage.php:80
+#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:530
+#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:611
+#: src/Admin/ModulesPage.php:657
+#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:727
+#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:812
+#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:863
+msgid "Merchandising"
+msgstr "Мерчандайзінг"
+
+#: src/Admin/ModulesPage.php:85
+msgid "Bulk discount: minimum quantity per product"
+msgstr "Аптовая зніжка: мінімальная колькасць на тавар"
+
+#: src/Admin/ModulesPage.php:85
+msgid "0 disables the bulk discount"
+msgstr "0 адключае аптовую зніжку"
+
+#: src/Admin/ModulesPage.php:86
+msgid "Bulk discount: percent off (%)"
+msgstr "Аптовая зніжка: працэнт зніжкі (%)"
+
+#: src/Admin/ModulesPage.php:87
+msgid "Cart discount: subtotal threshold"
+msgstr "Зніжка на кошык: парог сумы кошыка"
+
+#: src/Admin/ModulesPage.php:87
+msgid "0 disables the cart discount"
+msgstr "0 адключае зніжку на кошык"
+
+#: src/Admin/ModulesPage.php:88
+msgid "Cart discount: percent off (%)"
+msgstr "Зніжка на кошык: працэнт зніжкі (%)"
+
+#: src/Admin/ModulesPage.php:94
 #: src/Admin/ProductMetaBox.php:67
 #: src/Service/CompareService.php:476
 msgid "Unit price"
 msgstr "Цана за адзінку"
 
-#: src/Admin/ModulesPage.php:79
+#: src/Admin/ModulesPage.php:95
 msgid "Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish consumer law."
 msgstr "Адлюстроўвайце цану за адзінку (напрыклад, за 1 кг, за 100 мл) згодна з польскім спажывецкім правам."
 
-#: src/Admin/ModulesPage.php:80
-#: src/Admin/ModulesPage.php:93
-#: src/Admin/ModulesPage.php:126
-#: src/Admin/ModulesPage.php:141
-#: src/Admin/ModulesPage.php:155
-#: src/Admin/ModulesPage.php:168
+#: src/Admin/ModulesPage.php:96
+#: src/Admin/ModulesPage.php:109
+#: src/Admin/ModulesPage.php:142
+#: src/Admin/ModulesPage.php:157
+#: src/Admin/ModulesPage.php:171
+#: src/Admin/ModulesPage.php:185
 msgid "Prices and Display"
 msgstr "Цэны і адлюстраванне"
 
-#: src/Admin/ModulesPage.php:85
-#: src/Admin/ModulesPage.php:160
+#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:176
 msgid "Display format"
 msgstr "Фармат адлюстравання"
 
-#: src/Admin/ModulesPage.php:85
+#: src/Admin/ModulesPage.php:101
 msgid "Variables: {price}, {unit}"
 msgstr "Зменныя: {price}, {unit}"
 
-#: src/Admin/ModulesPage.php:86
+#: src/Admin/ModulesPage.php:102
 msgid "Show on product lists"
 msgstr "Паказваць у спісах тавараў"
 
-#: src/Admin/ModulesPage.php:91
+#: src/Admin/ModulesPage.php:107
 msgid "Lowest price (Omnibus)"
 msgstr "Найніжэйшая цана (Omnibus)"
 
-#: src/Admin/ModulesPage.php:92
+#: src/Admin/ModulesPage.php:108
 msgid "Track price history and display the lowest price from the last 30 days for products on sale. Required by the Omnibus Directive (EU 2019/2161)."
 msgstr "Адсочвайце гісторыю цэн і адлюстроўвайце найніжэйшую цану за апошнія 30 дзён для тавараў на распродажы. Патрабуецца дырэктывай Omnibus (EU 2019/2161)."
 
-#: src/Admin/ModulesPage.php:99
+#: src/Admin/ModulesPage.php:115
 msgid "Price tracking"
 msgstr "Адсочванне цэн"
 
-#: src/Admin/ModulesPage.php:100
+#: src/Admin/ModulesPage.php:116
 msgid "Tracking period (days)"
 msgstr "Перыяд адсочвання (дні)"
 
-#: src/Admin/ModulesPage.php:100
+#: src/Admin/ModulesPage.php:116
 msgid "Directive requires a minimum of 30 days"
 msgstr "Дырэктыва патрабуе мінімум 30 дзён"
 
-#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:117
 msgid "Keep history (days)"
 msgstr "Захоўваць гісторыю (дні)"
 
-#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:117
 msgid "Older data will be automatically deleted"
 msgstr "Старэйшыя дадзеныя будуць аўтаматычна выдалены"
 
-#: src/Admin/ModulesPage.php:102
+#: src/Admin/ModulesPage.php:118
 msgid "Prices with tax"
 msgstr "Цэны з падаткам"
 
-#: src/Admin/ModulesPage.php:102
+#: src/Admin/ModulesPage.php:118
 msgid "Track and display gross prices"
 msgstr "Адсочваць і адлюстроўваць цэны брута"
 
-#: src/Admin/ModulesPage.php:104
+#: src/Admin/ModulesPage.php:120
 msgid "Display"
 msgstr "Адлюстраванне"
 
-#: src/Admin/ModulesPage.php:105
+#: src/Admin/ModulesPage.php:121
 msgid "Only products on sale"
 msgstr "Толькі тавары на распродажы"
 
-#: src/Admin/ModulesPage.php:105
+#: src/Admin/ModulesPage.php:121
 msgid "Show info only when the product has a sale price"
 msgstr "Паказваць інфармацыю толькі калі тавар мае цану распродажу"
 
-#: src/Admin/ModulesPage.php:106
-#: src/Admin/ModulesPage.php:839
+#: src/Admin/ModulesPage.php:122
+#: src/Admin/ModulesPage.php:882
 msgid "Product page"
 msgstr "Старонка тавару"
 
-#: src/Admin/ModulesPage.php:107
+#: src/Admin/ModulesPage.php:123
 msgid "Product lists (shop, categories)"
 msgstr "Спісы тавараў (крама, катэгорыі)"
 
-#: src/Admin/ModulesPage.php:108
+#: src/Admin/ModulesPage.php:124
 msgid "Related and featured products"
 msgstr "Звязаныя і рэкамендаваныя тавары"
 
-#: src/Admin/ModulesPage.php:109
-#: src/Admin/ModulesPage.php:840
+#: src/Admin/ModulesPage.php:125
+#: src/Admin/ModulesPage.php:883
 #: src/Service/LiveCartService.php:79
 #: src/Service/LiveCartService.php:126
 #: src/Service/LiveCartService.php:137
 msgid "Cart"
 msgstr "Кошык"
 
-#: src/Admin/ModulesPage.php:110
+#: src/Admin/ModulesPage.php:126
 msgid "Show regular price (before sale)"
 msgstr "Паказваць звычайную цану (да распродажу)"
 
-#: src/Admin/ModulesPage.php:110
+#: src/Admin/ModulesPage.php:126
 msgid "Display additional information about the price before the sale started"
 msgstr "Адлюстроўвайце дадатковую інфармацыю аб цане да пачатку распродажу"
 
-#: src/Admin/ModulesPage.php:112
+#: src/Admin/ModulesPage.php:128
 msgid "Message template"
 msgstr "Шаблон паведамлення"
 
-#: src/Admin/ModulesPage.php:113
+#: src/Admin/ModulesPage.php:129
 msgid "Message content"
 msgstr "Змест паведамлення"
 
-#: src/Admin/ModulesPage.php:113
+#: src/Admin/ModulesPage.php:129
 msgid "Variables: {price}, {days}, {date}, {regular_price}"
 msgstr "Зменныя: {price}, {days}, {date}, {regular_price}"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "No price history"
 msgstr "Няма гісторыі цэн"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Hide message"
 msgstr "Схаваць паведамленне"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Show current price"
 msgstr "Паказаць актуальную цану"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Custom text"
 msgstr "Уласны тэкст"
 
-#: src/Admin/ModulesPage.php:115
+#: src/Admin/ModulesPage.php:131
 msgid "Custom text (no history)"
 msgstr "Уласны тэкст (без гісторыі)"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Calculated from"
 msgstr "Разлічваецца з"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Sale start date"
 msgstr "Дня пачатку распродажу"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Today"
 msgstr "Сёння"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Reference point for calculating the lowest price"
 msgstr "Кропка адліку для разліку найніжэйшай цаны"
 
-#: src/Admin/ModulesPage.php:118
+#: src/Admin/ModulesPage.php:134
 msgid "Variable products"
 msgstr "Зменныя тавары"
 
-#: src/Admin/ModulesPage.php:119
+#: src/Admin/ModulesPage.php:135
 msgid "Track variations separately"
 msgstr "Адсочваць варыяцыі асобна"
 
-#: src/Admin/ModulesPage.php:119
+#: src/Admin/ModulesPage.php:135
 msgid "Each variation has its own price history"
 msgstr "Кожная варыяцыя мае ўласную гісторыю цэн"
 
-#: src/Admin/ModulesPage.php:124
+#: src/Admin/ModulesPage.php:140
 msgid "VAT Display"
 msgstr "Адлюстраванне ПДВ"
 
-#: src/Admin/ModulesPage.php:125
+#: src/Admin/ModulesPage.php:141
 msgid "Configuration for gross/net prices display, VAT rate info, and small business exemption support (Art. 113 of the VAT Act)."
 msgstr "Канфігурацыя адлюстравання цэн брута/нета, інфармацыі аб стаўцы ПДВ і падтрымка суб'ектыўнага вызвалення (арт. 113 закона аб ПДВ)."
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Price display mode"
 msgstr "Рэжым адлюстравання цэн"
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Gross (including VAT)"
 msgstr "Брута (уключаючы ПДВ)"
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Net (excluding VAT)"
 msgstr "Нета (без ПДВ)"
 
-#: src/Admin/ModulesPage.php:132
+#: src/Admin/ModulesPage.php:148
 msgid "VAT notice text"
 msgstr "Тэкст інфармацыі аб ПДВ"
 
-#: src/Admin/ModulesPage.php:132
+#: src/Admin/ModulesPage.php:148
 msgid "Variables: {rate}"
 msgstr "Зменныя: {rate}"
 
-#: src/Admin/ModulesPage.php:133
+#: src/Admin/ModulesPage.php:149
 msgid "Small business exemption (Art. 113)"
 msgstr "Суб'ектыўнае вызваленне (арт. 113)"
 
-#: src/Admin/ModulesPage.php:134
+#: src/Admin/ModulesPage.php:150
 msgid "Exemption text"
 msgstr "Тэкст вызвалення"
 
-#: src/Admin/ModulesPage.php:139
+#: src/Admin/ModulesPage.php:155
 msgid "OSS observer"
 msgstr "Назіральнік OSS"
 
-#: src/Admin/ModulesPage.php:140
+#: src/Admin/ModulesPage.php:156
 msgid "Observe the OSS delivery threshold of the current year. Enabling this will install the One Stop Shop plugin, which monitors your intra-EU B2C sales and flags when you approach the €10,000 threshold."
 msgstr "Назірайце за парогам дастаўкі OSS у бягучым годзе. Уключэнне гэтай опцыі ўсталюе плагін One Stop Shop, які маніторыць ваш унутрысаюзны продаж B2C і сігналізуе пра набліжэнне да парога 10 000 €."
 
-#: src/Admin/ModulesPage.php:145
+#: src/Admin/ModulesPage.php:161
 msgid "About OSS procedure"
 msgstr "Аб працэдуры OSS"
 
-#: src/Admin/ModulesPage.php:153
+#: src/Admin/ModulesPage.php:169
 #: src/Admin/ProductMetaBox.php:133
 #: src/AIFeed/ProductMarkdownBuilder.php:180
 #: src/Block/StoreApi/ProductDataExtension.php:216
@@ -2395,90 +2466,99 @@ msgstr "Аб працэдуры OSS"
 msgid "Delivery time"
 msgstr "Час дастаўкі"
 
-#: src/Admin/ModulesPage.php:154
+#: src/Admin/ModulesPage.php:170
 msgid "Display estimated delivery time on the product page. Configuration per product or variation with default fallback."
 msgstr "Адлюстроўвайце прыблізны час дастаўкі на старонцы тавару. Канфігурацыя для тавару або варыяцыі з дамоўчным запасным значэннем."
 
-#: src/Admin/ModulesPage.php:160
+#: src/Admin/ModulesPage.php:176
 msgid "Variables: {time}"
 msgstr "Зменныя: {time}"
 
-#: src/Admin/ModulesPage.php:161
+#: src/Admin/ModulesPage.php:177
 msgid "Default delivery time"
 msgstr "Дамоўчны час дастаўкі"
 
-#: src/Admin/ModulesPage.php:166
+#: src/Admin/ModulesPage.php:178
+#: src/Admin/ModulesPage.php:519
+msgid "Show on product listings"
+msgstr "Паказваць у спісах тавараў"
+
+#: src/Admin/ModulesPage.php:178
+msgid "Also display the delivery time on shop and archive product cards."
+msgstr "Таксама паказваць час дастаўкі на картках тавараў у краме і архівах."
+
+#: src/Admin/ModulesPage.php:183
 msgid "Shipping costs info"
 msgstr "Інфармацыя аб коштах дастаўкі"
 
-#: src/Admin/ModulesPage.php:167
+#: src/Admin/ModulesPage.php:184
 msgid "Link to a shipping costs page displayed next to the product price."
 msgstr "Спасылка на старонку коштаў дастаўкі, якая адлюстроўваецца побач з цаной тавару."
 
-#: src/Admin/ModulesPage.php:173
+#: src/Admin/ModulesPage.php:190
 msgid "Link text"
 msgstr "Тэкст спасылкі"
 
-#: src/Admin/ModulesPage.php:180
+#: src/Admin/ModulesPage.php:197
 msgid "Checkout button"
 msgstr "Кнопка афармлення заказу"
 
-#: src/Admin/ModulesPage.php:181
+#: src/Admin/ModulesPage.php:198
 msgid "Change order button text to \"Order with obligation to pay\" according to Polish law."
 msgstr "Змяніць тэкст кнопкі заказу на \"Заказаць з абавязкам аплаты\" згодна з польскім заканадаўствам."
 
-#: src/Admin/ModulesPage.php:182
-#: src/Admin/ModulesPage.php:194
-#: src/Admin/ModulesPage.php:233
-#: src/Admin/ModulesPage.php:248
-#: src/Admin/ModulesPage.php:1032
+#: src/Admin/ModulesPage.php:199
+#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:250
+#: src/Admin/ModulesPage.php:265
+#: src/Admin/ModulesPage.php:1075
 msgid "Checkout and Orders"
 msgstr "Заказы і афармленне"
 
-#: src/Admin/ModulesPage.php:187
-#: src/Admin/ModulesPage.php:470
-#: src/Admin/ModulesPage.php:532
-#: src/Admin/ModulesPage.php:622
-#: src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:204
+#: src/Admin/ModulesPage.php:502
+#: src/Admin/ModulesPage.php:573
+#: src/Admin/ModulesPage.php:663
+#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:848
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
 msgid "Button text"
 msgstr "Тэкст кнопкі"
 
-#: src/Admin/ModulesPage.php:192
+#: src/Admin/ModulesPage.php:209
 msgid "Legal checkboxes"
 msgstr "Прававыя сцяжкі"
 
-#: src/Admin/ModulesPage.php:193
+#: src/Admin/ModulesPage.php:210
 msgid "7 built-in checkboxes: terms and conditions, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing."
 msgstr "7 убудаваных сцяжкоў: правілы і ўмовы, палітыка прыватнасці, права на адмову, лічбавы змест, апавяшчэнні аб дастаўцы, напамін аб водгуку, маркетынг."
 
-#: src/Admin/ModulesPage.php:199
+#: src/Admin/ModulesPage.php:216
 #: src/Enum/LegalPageType.php:17
 #: src/Service/LegalPageService.php:173
 msgid "Terms and Conditions"
 msgstr "Правілы і ўмовы"
 
 #. translators: %s: terms page URL placeholder
-#: src/Admin/ModulesPage.php:201
+#: src/Admin/ModulesPage.php:218
 msgid "Label - Terms"
 msgstr "Этыкетка - Правілы"
 
 #. translators: %s: terms page URL placeholder
-#: src/Admin/ModulesPage.php:201
+#: src/Admin/ModulesPage.php:218
 #, php-format
 msgid "Use %s as a placeholder for the terms page link"
 msgstr "Выкарыстоўвайце %s як замяшчальнік для спасылкі на старонку правілаў"
 
-#: src/Admin/ModulesPage.php:202
+#: src/Admin/ModulesPage.php:219
 msgid "Error - Terms"
 msgstr "Памылка - Правілы"
 
-#: src/Admin/ModulesPage.php:203
+#: src/Admin/ModulesPage.php:220
 msgid "Description - Terms"
 msgstr "Апісанне - Правілы"
 
-#: src/Admin/ModulesPage.php:204
+#: src/Admin/ModulesPage.php:221
 #: src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174
 #: src/Service/SiteAuditService.php:371
@@ -2486,218 +2566,235 @@ msgid "Privacy Policy"
 msgstr "Палітыка прыватнасці"
 
 #. translators: %s: privacy policy URL placeholder
-#: src/Admin/ModulesPage.php:206
+#: src/Admin/ModulesPage.php:223
 msgid "Label - Privacy Policy"
 msgstr "Этыкетка - Палітыка прыватнасці"
 
 #. translators: %s: privacy policy URL placeholder
-#: src/Admin/ModulesPage.php:206
+#: src/Admin/ModulesPage.php:223
 #, php-format
 msgid "Use %s as a placeholder for the privacy policy link"
 msgstr "Выкарыстоўвайце %s як замяшчальнік для спасылкі на палітыку прыватнасці"
 
-#: src/Admin/ModulesPage.php:207
+#: src/Admin/ModulesPage.php:224
 msgid "Error - Privacy Policy"
 msgstr "Памылка - Палітыка прыватнасці"
 
-#: src/Admin/ModulesPage.php:208
+#: src/Admin/ModulesPage.php:225
 msgid "Description - Privacy Policy"
 msgstr "Апісанне - Палітыка прыватнасці"
 
-#: src/Admin/ModulesPage.php:209
+#: src/Admin/ModulesPage.php:226
 #: src/Email/WithdrawalEmailCta.php:65
 #: src/Service/SiteAuditService.php:659
 msgid "Right of withdrawal"
 msgstr "Права на адмову ад дамовы"
 
 #. translators: %s: withdrawal information URL placeholder
-#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:228
 msgid "Label - Right of withdrawal"
 msgstr "Этыкетка - Права на адмову"
 
 #. translators: %s: withdrawal information URL placeholder
-#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:228
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr "Выкарыстоўвайце %s як замяшчальнік для спасылкі на старонку вяртанняў або адмовы ад дамовы"
 
-#: src/Admin/ModulesPage.php:212
+#: src/Admin/ModulesPage.php:229
 msgid "Error - Right of withdrawal"
 msgstr "Памылка - Права на адмову"
 
-#: src/Admin/ModulesPage.php:213
+#: src/Admin/ModulesPage.php:230
 msgid "Description - Right of withdrawal"
 msgstr "Апісанне - Права на адмову"
 
-#: src/Admin/ModulesPage.php:214
+#: src/Admin/ModulesPage.php:231
 msgid "Digital content (waiver)"
 msgstr "Лічбавы змест (адмова)"
 
-#: src/Admin/ModulesPage.php:215
+#: src/Admin/ModulesPage.php:232
 msgid "Label - Digital content"
 msgstr "Этыкетка - Лічбавы змест"
 
-#: src/Admin/ModulesPage.php:216
+#: src/Admin/ModulesPage.php:233
 msgid "Error - Digital content"
 msgstr "Памылка - Лічбавы змест"
 
-#: src/Admin/ModulesPage.php:217
+#: src/Admin/ModulesPage.php:234
 msgid "Description - Digital content"
 msgstr "Апісанне - Лічбавы змест"
 
-#: src/Admin/ModulesPage.php:218
+#: src/Admin/ModulesPage.php:235
 msgid "Delivery notifications"
 msgstr "Апавяшчэнні аб дастаўцы"
 
-#: src/Admin/ModulesPage.php:219
+#: src/Admin/ModulesPage.php:236
 msgid "Label - Delivery notifications"
 msgstr "Этыкетка - Апавяшчэнні аб дастаўцы"
 
-#: src/Admin/ModulesPage.php:220
+#: src/Admin/ModulesPage.php:237
 msgid "Description - Delivery notifications"
 msgstr "Апісанне - Апавяшчэнні аб дастаўцы"
 
-#: src/Admin/ModulesPage.php:221
+#: src/Admin/ModulesPage.php:238
 msgid "Review reminder"
 msgstr "Напамін аб водгуку"
 
-#: src/Admin/ModulesPage.php:222
+#: src/Admin/ModulesPage.php:239
 msgid "Label - Review reminder"
 msgstr "Этыкетка - Напамін аб водгуку"
 
-#: src/Admin/ModulesPage.php:223
+#: src/Admin/ModulesPage.php:240
 msgid "Description - Review reminder"
 msgstr "Апісанне - Напамін аб водгуку"
 
-#: src/Admin/ModulesPage.php:224
+#: src/Admin/ModulesPage.php:241
 msgid "Marketing consent"
 msgstr "Маркетынгавая згода"
 
-#: src/Admin/ModulesPage.php:225
+#: src/Admin/ModulesPage.php:242
 msgid "Label - Marketing"
 msgstr "Этыкетка - Маркетынг"
 
-#: src/Admin/ModulesPage.php:226
+#: src/Admin/ModulesPage.php:243
 msgid "Description - Marketing"
 msgstr "Апісанне - Маркетынг"
 
-#: src/Admin/ModulesPage.php:231
+#: src/Admin/ModulesPage.php:248
 msgid "NIP - Verification and Autocomplete"
 msgstr "NIP - Праверка і аўтазапаўненне"
 
-#: src/Admin/ModulesPage.php:232
+#: src/Admin/ModulesPage.php:249
 msgid "NIP field on the checkout page with checksum validation. Automatic retrieval of company data from the GUS REGON database after entering NIP."
 msgstr "Поле NIP на старонцы афармлення заказу з праверкай кантрольнай сумы. Аўтаматычнае атрыманне дадзеных кампаніі з базы GUS REGON пасля ўводу NIP."
 
-#: src/Admin/ModulesPage.php:239
+#: src/Admin/ModulesPage.php:256
 msgid "NIP required on checkout"
 msgstr "NIP абавязковы пры афармленні заказу"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "GUS API environment"
 msgstr "Асяроддзе API GUS"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "Testing"
 msgstr "Тэставае"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "Production"
 msgstr "Прадукцыйнае"
 
-#: src/Admin/ModulesPage.php:241
+#: src/Admin/ModulesPage.php:258
 msgid "GUS API Key (production)"
 msgstr "Ключ API GUS (прадукцыя)"
 
-#: src/Admin/ModulesPage.php:241
+#: src/Admin/ModulesPage.php:258
 msgid "Request a key on the stat.gov.pl website. In test mode, a test key will be used."
 msgstr "Запытайце ключ на сайце stat.gov.pl. У тэставым рэжыме будзе выкарыстаны тэставы ключ."
 
-#: src/Admin/ModulesPage.php:246
+#: src/Admin/ModulesPage.php:263
 msgid "Consent Logging (GDPR)"
 msgstr "Журналаванне згод (GDPR)"
 
-#: src/Admin/ModulesPage.php:247
+#: src/Admin/ModulesPage.php:264
 msgid "Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant."
 msgstr "Запіс усіх згод, дадзеных кліентамі, разам з IP-адрасам, агентам карыстальніка і пазнакай часу. Адпавядае GDPR."
 
-#: src/Admin/ModulesPage.php:258
-msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
-msgstr "Аўтаматычная генерацыя старонак: Правілы і ўмовы, Палітыка прыватнасці, Права на адмову ад дамовы, Рэкламацыі."
+#: src/Admin/ModulesPage.php:274
+msgid "Returns & complaints (RMA)"
+msgstr "Звароты і рэкламацыі (RMA)"
 
-#: src/Admin/ModulesPage.php:259
-#: src/Admin/ModulesPage.php:271
-#: src/Admin/ModulesPage.php:311
-#: src/Admin/ModulesPage.php:356
+#: src/Admin/ModulesPage.php:275
+msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
+msgstr "Дазвольце кліентам падаць рэкламацыю або запыт на зварот з раздзела «Мой акаўнт» для прыдатных заказаў, з лістом-пацвярджэннем і чаргой адміністратара са статусамі. Дае інструменты, а не юрыдычныя парады."
+
+#: src/Admin/ModulesPage.php:276
+#: src/Admin/ModulesPage.php:289
+#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:341
+#: src/Admin/ModulesPage.php:386
 msgid "Consumer Rights"
 msgstr "Правы спажыўца"
 
-#: src/Admin/ModulesPage.php:264
+#: src/Admin/ModulesPage.php:281
+msgid "Eligibility window (days from order date)"
+msgstr "Акно прыдатнасці (дні ад даты заказу)"
+
+#: src/Admin/ModulesPage.php:282
+msgid "Notification email (admin)"
+msgstr "Электронная пошта для апавяшчэнняў (адміністратар)"
+
+#: src/Admin/ModulesPage.php:288
+msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
+msgstr "Аўтаматычная генерацыя старонак: Правілы і ўмовы, Палітыка прыватнасці, Права на адмову ад дамовы, Рэкламацыі."
+
+#: src/Admin/ModulesPage.php:294
 msgid "Manage legal pages on Dashboard &rarr;"
 msgstr "Кіруйце прававымі старонкамі на Панэлі &rarr;"
 
-#: src/Admin/ModulesPage.php:269
+#: src/Admin/ModulesPage.php:299
 msgid "Right of withdrawal (14 days)"
 msgstr "Права на адмову (14 дзён)"
 
-#: src/Admin/ModulesPage.php:270
+#: src/Admin/ModulesPage.php:300
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
 msgstr "Форма запыту на адмову, дзеянне ў Маім рахунку з крокам пацвярджэння, пацвярджальны электронны ліст і выключэнні для асобных тавараў."
 
-#: src/Admin/ModulesPage.php:276
+#: src/Admin/ModulesPage.php:306
 msgid "Order action label"
 msgstr "Этыкетка дзеяння заказу"
 
-#: src/Admin/ModulesPage.php:276
-#: src/Service/WithdrawalService.php:645
-#: src/Service/WithdrawalService.php:655
+#: src/Admin/ModulesPage.php:306
+#: src/Service/WithdrawalService.php:679
+#: src/Service/WithdrawalService.php:689
 msgid "Withdraw from contract"
 msgstr "Адмовіцца ад дамовы"
 
-#: src/Admin/ModulesPage.php:277
-#: src/Admin/ModulesPage.php:894
+#: src/Admin/ModulesPage.php:307
+#: src/Admin/ModulesPage.php:937
 msgid "Form title"
 msgstr "Назва формы"
 
-#: src/Admin/ModulesPage.php:277
-#: src/Admin/ModulesPage.php:292
-#: src/Service/WithdrawalService.php:896
+#: src/Admin/ModulesPage.php:307
+#: src/Admin/ModulesPage.php:322
+#: src/Service/WithdrawalService.php:930
 msgid "Withdrawal request"
 msgstr "Запыт на адмову"
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "Form introduction"
 msgstr "Уводзіны формы"
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
 msgstr "Вы падаеце запыт на адмову ад дамовы для заказу #{order_number}, размешчанага {order_date}."
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "Variables: {order_number}, {order_date}"
 msgstr "Зменныя: {order_number}, {order_date}"
 
-#: src/Admin/ModulesPage.php:279
+#: src/Admin/ModulesPage.php:309
 msgid "Legal notice"
 msgstr "Прававая інфармацыя"
 
-#: src/Admin/ModulesPage.php:279
+#: src/Admin/ModulesPage.php:309
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
 msgstr "Згодна з польскім спажывецкім правам вы можаце адмовіцца ад дамовы на працягу 14 дзён без указання прычыны."
 
-#: src/Admin/ModulesPage.php:280
+#: src/Admin/ModulesPage.php:310
 msgid "Order items heading"
 msgstr "Загаловак пазіцый заказу"
 
-#: src/Admin/ModulesPage.php:280
+#: src/Admin/ModulesPage.php:310
 msgid "Order items"
 msgstr "Пазіцыі заказу"
 
-#: src/Admin/ModulesPage.php:281
+#: src/Admin/ModulesPage.php:311
 msgid "Product column"
 msgstr "Слупок тавару"
 
-#: src/Admin/ModulesPage.php:281
+#: src/Admin/ModulesPage.php:311
 #: src/Service/ExpertReviewService.php:92
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
@@ -2705,2635 +2802,2678 @@ msgstr "Слупок тавару"
 msgid "Product"
 msgstr "Тавар"
 
-#: src/Admin/ModulesPage.php:282
+#: src/Admin/ModulesPage.php:312
 msgid "Quantity column"
 msgstr "Слупок колькасці"
 
-#: src/Admin/ModulesPage.php:282
+#: src/Admin/ModulesPage.php:312
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 msgid "Quantity"
 msgstr "Колькасць"
 
-#: src/Admin/ModulesPage.php:283
+#: src/Admin/ModulesPage.php:313
 msgid "Price column"
 msgstr "Слупок цаны"
 
-#: src/Admin/ModulesPage.php:283
+#: src/Admin/ModulesPage.php:313
 #: src/AIFeed/ProductMarkdownBuilder.php:155
 #: src/Service/CompareService.php:475
 msgid "Price"
 msgstr "Цана"
 
-#: src/Admin/ModulesPage.php:284
+#: src/Admin/ModulesPage.php:314
 msgid "Exemption notice"
 msgstr "Паведамленне аб выключэнні"
 
-#: src/Admin/ModulesPage.php:284
+#: src/Admin/ModulesPage.php:314
 msgid "(This product is excluded from the right of withdrawal)"
 msgstr "(Гэты тавар выключаны з права на адмову ад дамовы)"
 
-#: src/Admin/ModulesPage.php:285
+#: src/Admin/ModulesPage.php:315
 msgid "Reason field label"
 msgstr "Подпіс поля прычыны"
 
-#: src/Admin/ModulesPage.php:285
-#: src/Service/WithdrawalService.php:914
+#: src/Admin/ModulesPage.php:315
+#: src/Service/WithdrawalService.php:948
 msgid "Reason for withdrawal (optional)"
 msgstr "Прычына адмовы (неабавязкова)"
 
-#: src/Admin/ModulesPage.php:286
+#: src/Admin/ModulesPage.php:316
 #: resources/js/blocks/ajax-search/index.js:39
 msgid "Submit button text"
 msgstr "Тэкст кнопкі адпраўкі"
 
-#: src/Admin/ModulesPage.php:286
+#: src/Admin/ModulesPage.php:316
 msgid "Submit withdrawal request"
 msgstr "Адправіць запыт на адмову"
 
-#: src/Admin/ModulesPage.php:287
+#: src/Admin/ModulesPage.php:317
 msgid "Invalid nonce message"
 msgstr "Паведамленне аб няправільным nonce"
 
-#: src/Admin/ModulesPage.php:287
+#: src/Admin/ModulesPage.php:317
 msgid "Something went wrong on our side. Please try again."
 msgstr "Нешта пайшло не так з нашага боку. Паспрабуйце яшчэ раз."
 
-#: src/Admin/ModulesPage.php:288
+#: src/Admin/ModulesPage.php:318
 msgid "Order not found message"
 msgstr "Паведамленне аб ненайдзеным заказе"
 
-#: src/Admin/ModulesPage.php:288
+#: src/Admin/ModulesPage.php:318
 #: src/Rest/WithdrawalController.php:133
 msgid "We could not find that order."
 msgstr "Не ўдалося знайсці гэты заказ."
 
-#: src/Admin/ModulesPage.php:289
+#: src/Admin/ModulesPage.php:319
 msgid "Permission error message"
 msgstr "Паведамленне аб памылцы доступу"
 
-#: src/Admin/ModulesPage.php:289
-#: src/Service/WithdrawalService.php:694
-#: src/Service/WithdrawalService.php:826
+#: src/Admin/ModulesPage.php:319
+#: src/Service/WithdrawalService.php:728
+#: src/Service/WithdrawalService.php:860
 msgid "You do not have permission to withdraw from this order."
 msgstr "У вас няма дазволу на адмову ад гэтага заказу."
 
-#: src/Admin/ModulesPage.php:290
-#: src/Admin/ModulesPage.php:783
-#: src/Admin/ModulesPage.php:895
+#: src/Admin/ModulesPage.php:320
+#: src/Admin/ModulesPage.php:826
+#: src/Admin/ModulesPage.php:938
 msgid "Success message"
 msgstr "Паведамленне аб поспеху"
 
-#: src/Admin/ModulesPage.php:290
+#: src/Admin/ModulesPage.php:320
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
 msgstr "Ваш запыт на адмову прыняты. Неўзабаве мы дашлём ліст з пацвярджэннем."
 
-#: src/Admin/ModulesPage.php:291
+#: src/Admin/ModulesPage.php:321
 msgid "Not eligible message"
 msgstr "Паведамленне аб неадпаведнасці"
 
-#: src/Admin/ModulesPage.php:291
+#: src/Admin/ModulesPage.php:321
 #: src/Rest/WithdrawalController.php:145
-#: src/Service/WithdrawalService.php:736
-#: src/Service/WithdrawalService.php:832
+#: src/Service/WithdrawalService.php:770
+#: src/Service/WithdrawalService.php:866
 msgid "This order is not eligible for withdrawal."
 msgstr "Гэты заказ не падыходзіць для адмовы."
 
-#: src/Admin/ModulesPage.php:292
+#: src/Admin/ModulesPage.php:322
 msgid "Status section heading"
 msgstr "Загаловак раздзела стану"
 
-#: src/Admin/ModulesPage.php:293
+#: src/Admin/ModulesPage.php:323
 msgid "Status label"
 msgstr "Подпіс стану"
 
-#: src/Admin/ModulesPage.php:294
+#: src/Admin/ModulesPage.php:324
 msgid "Submitted label"
 msgstr "Подпіс адпраўкі"
 
-#: src/Admin/ModulesPage.php:294
+#: src/Admin/ModulesPage.php:324
+#: src/Enum/ReturnRequestStatus.php:19
 #: src/Enum/WithdrawalStatus.php:17
-#: src/Service/WithdrawalService.php:899
+#: src/Service/WithdrawalService.php:933
 msgid "Submitted"
 msgstr "Адпраўлена"
 
-#: src/Admin/ModulesPage.php:295
+#: src/Admin/ModulesPage.php:325
 msgid "Order note after request"
 msgstr "Нататка да заказу пасля запыту"
 
-#: src/Admin/ModulesPage.php:295
+#: src/Admin/ModulesPage.php:325
 msgid "The customer submitted a withdrawal request."
 msgstr "Кліент адправіў запыт на адмову."
 
-#: src/Admin/ModulesPage.php:296
+#: src/Admin/ModulesPage.php:326
 msgid "Order note after confirmation"
 msgstr "Нататка да заказу пасля пацвярджэння"
 
-#: src/Admin/ModulesPage.php:296
+#: src/Admin/ModulesPage.php:326
 msgid "The withdrawal request has been confirmed."
 msgstr "Запыт на адмову пацверджаны."
 
-#: src/Admin/ModulesPage.php:297
+#: src/Admin/ModulesPage.php:327
 msgid "Status date format"
 msgstr "Фармат даты стану"
 
-#: src/Admin/ModulesPage.php:297
+#: src/Admin/ModulesPage.php:327
 msgid "Y-m-d H:i"
 msgstr "Y-m-d H:i"
 
-#: src/Admin/ModulesPage.php:298
+#: src/Admin/ModulesPage.php:328
 msgid "Confirmation email subject"
 msgstr "Тэма ліста з пацвярджэннем"
 
-#: src/Admin/ModulesPage.php:298
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:328
+#: src/Admin/ModulesPage.php:331
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
 msgstr "Ваш запыт на адмову па заказе #{order_number} пацверджаны."
 
-#: src/Admin/ModulesPage.php:298
+#: src/Admin/ModulesPage.php:328
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
 msgstr "Зменныя: {order_number}, {order_date}, {withdrawal_date}"
 
-#: src/Admin/ModulesPage.php:299
+#: src/Admin/ModulesPage.php:329
 msgid "Confirmation email heading"
 msgstr "Загаловак ліста з пацвярджэннем"
 
-#: src/Admin/ModulesPage.php:299
+#: src/Admin/ModulesPage.php:329
 msgid "Withdrawal confirmed"
 msgstr "Адмова пацверджана"
 
-#: src/Admin/ModulesPage.php:300
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:466
 msgid "Email greeting"
 msgstr "Прывітанне ў лісце"
 
-#: src/Admin/ModulesPage.php:300
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:466
 msgid "Hello {name},"
 msgstr "Добры дзень, {name},"
 
-#: src/Admin/ModulesPage.php:300
+#: src/Admin/ModulesPage.php:330
 msgid "Variable: {name}"
 msgstr "Зменная: {name}"
 
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:331
 msgid "Confirmation email body"
 msgstr "Тэкст ліста з пацвярджэннем"
 
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:331
 msgid "Variable: {order_number}"
 msgstr "Зменная: {order_number}"
 
-#: src/Admin/ModulesPage.php:302
+#: src/Admin/ModulesPage.php:332
 msgid "Reason label in email"
 msgstr "Подпіс прычыны ў лісце"
 
-#: src/Admin/ModulesPage.php:302
+#: src/Admin/ModulesPage.php:332
 msgid "Your reason"
 msgstr "Ваша прычына"
 
-#: src/Admin/ModulesPage.php:303
+#: src/Admin/ModulesPage.php:333
 msgid "Return instruction in email"
 msgstr "Інструкцыя па вяртанні ў лісце"
 
-#: src/Admin/ModulesPage.php:303
+#: src/Admin/ModulesPage.php:333
 msgid "Please return the products to the address below within 14 days:"
 msgstr "Калі ласка, вярніце тавары на ніжэйпададзены адрас на працягу 14 дзён:"
 
-#: src/Admin/ModulesPage.php:304
-#: src/Admin/ModulesPage.php:441
+#: src/Admin/ModulesPage.php:334
+#: src/Admin/ModulesPage.php:471
 msgid "Additional email content"
 msgstr "Дадатковы тэкст ліста"
 
-#: src/Admin/ModulesPage.php:304
+#: src/Admin/ModulesPage.php:334
 msgid "Your refund will be processed within 14 days after the returned products are received."
 msgstr "Вяртанне сродкаў будзе апрацавана на працягу 14 дзён пасля атрымання вернутых тавараў."
 
-#: src/Admin/ModulesPage.php:309
+#: src/Admin/ModulesPage.php:339
 msgid "Dispute Resolution (ODR)"
 msgstr "Вырашэнне спрэчак (ODR)"
 
-#: src/Admin/ModulesPage.php:310
+#: src/Admin/ModulesPage.php:340
 msgid "Displaying information about the European Commission's Online Dispute Resolution (ODR) platform."
 msgstr "Адлюстраванне інфармацыі аб платформе Online Dispute Resolution (ODR) Еўрапейскай камісіі."
 
-#: src/Admin/ModulesPage.php:316
+#: src/Admin/ModulesPage.php:346
 msgid "ODR info content"
 msgstr "Тэкст інфармацыі ODR"
 
-#: src/Admin/ModulesPage.php:317
+#: src/Admin/ModulesPage.php:347
 msgid "Message after generating legal pages"
 msgstr "Паведамленне пасля стварэння прававых старонак"
 
-#: src/Admin/ModulesPage.php:318
+#: src/Admin/ModulesPage.php:348
 msgid "Message after saving modules"
 msgstr "Паведамленне пасля захавання модуляў"
 
-#: src/Admin/ModulesPage.php:319
+#: src/Admin/ModulesPage.php:349
 msgid "Onboarding note title"
 msgstr "Загаловак вітальнай нататкі"
 
-#: src/Admin/ModulesPage.php:320
+#: src/Admin/ModulesPage.php:350
 msgid "Onboarding note content"
 msgstr "Тэкст вітальнай нататкі"
 
-#: src/Admin/ModulesPage.php:321
+#: src/Admin/ModulesPage.php:351
 msgid "Onboarding note button"
 msgstr "Кнопка вітальнай нататкі"
 
-#: src/Admin/ModulesPage.php:322
+#: src/Admin/ModulesPage.php:352
 msgid "Active status"
 msgstr "Стан: актыўны"
 
-#: src/Admin/ModulesPage.php:323
+#: src/Admin/ModulesPage.php:353
 msgid "Inactive status"
 msgstr "Стан: неактыўны"
 
-#: src/Admin/ModulesPage.php:324
+#: src/Admin/ModulesPage.php:354
 msgid "Unconfigured status"
 msgstr "Стан: не наладжаны"
 
-#: src/Admin/ModulesPage.php:325
+#: src/Admin/ModulesPage.php:355
 msgid "Legal pages card title"
 msgstr "Загаловак карткі прававых старонак"
 
-#: src/Admin/ModulesPage.php:326
+#: src/Admin/ModulesPage.php:356
 msgid "Legal pages configuration progress"
 msgstr "Прагрэс наладкі прававых старонак"
 
-#: src/Admin/ModulesPage.php:326
+#: src/Admin/ModulesPage.php:356
 msgid "Variables: {done}, {total}"
 msgstr "Зменныя: {done}, {total}"
 
-#: src/Admin/ModulesPage.php:327
+#: src/Admin/ModulesPage.php:357
 msgid "VAT card title"
 msgstr "Загаловак карткі ПДВ"
 
-#: src/Admin/ModulesPage.php:328
+#: src/Admin/ModulesPage.php:358
 msgid "Small business exemption text"
 msgstr "Тэкст вызвалення для малога бізнесу"
 
-#: src/Admin/ModulesPage.php:329
+#: src/Admin/ModulesPage.php:359
 msgid "Standard VAT text"
 msgstr "Стандартны тэкст ПДВ"
 
-#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:360
 msgid "DOI card title"
 msgstr "Загаловак карткі DOI"
 
-#: src/Admin/ModulesPage.php:331
+#: src/Admin/ModulesPage.php:361
 msgid "Legal pages section title"
 msgstr "Загаловак раздзела прававых старонак"
 
-#: src/Admin/ModulesPage.php:332
+#: src/Admin/ModulesPage.php:362
 msgid "Page column header"
 msgstr "Загаловак слупка старонкі"
 
-#: src/Admin/ModulesPage.php:333
+#: src/Admin/ModulesPage.php:363
 msgid "Status column header"
 msgstr "Загаловак слупка стану"
 
-#: src/Admin/ModulesPage.php:334
+#: src/Admin/ModulesPage.php:364
 msgid "Published status"
 msgstr "Стан: апублікавана"
 
-#: src/Admin/ModulesPage.php:335
+#: src/Admin/ModulesPage.php:365
 msgid "Draft status"
 msgstr "Стан: чарнавік"
 
-#: src/Admin/ModulesPage.php:336
+#: src/Admin/ModulesPage.php:366
 msgid "Missing status"
 msgstr "Стан: не створана"
 
-#: src/Admin/ModulesPage.php:337
+#: src/Admin/ModulesPage.php:367
 msgid "Edit button text"
 msgstr "Тэкст кнопкі рэдагавання"
 
-#: src/Admin/ModulesPage.php:338
+#: src/Admin/ModulesPage.php:368
 msgid "Legal pages empty state"
 msgstr "Прававыя старонкі - пусты стан"
 
-#: src/Admin/ModulesPage.php:339
+#: src/Admin/ModulesPage.php:369
 msgid "Generate pages button text"
 msgstr "Тэкст кнопкі стварэння старонак"
 
-#: src/Admin/ModulesPage.php:340
+#: src/Admin/ModulesPage.php:370
 msgid "Next steps title"
 msgstr "Загаловак наступных крокаў"
 
-#: src/Admin/ModulesPage.php:341
+#: src/Admin/ModulesPage.php:371
 msgid "Step - publish pages"
 msgstr "Крок - апублікуйце старонкі"
 
-#: src/Admin/ModulesPage.php:342
+#: src/Admin/ModulesPage.php:372
 msgid "Step - VAT rates"
 msgstr "Крок - стаўкі ПДВ"
 
-#: src/Admin/ModulesPage.php:343
+#: src/Admin/ModulesPage.php:373
 msgid "Step - shipping zones"
 msgstr "Крок - зоны дастаўкі"
 
-#: src/Admin/ModulesPage.php:344
+#: src/Admin/ModulesPage.php:374
 msgid "Step - product data"
 msgstr "Крок - дадзеныя тавару"
 
-#: src/Admin/ModulesPage.php:345
+#: src/Admin/ModulesPage.php:375
 msgid "Step - checkout test"
 msgstr "Крок - тэст афармлення заказу"
 
-#: src/Admin/ModulesPage.php:346
+#: src/Admin/ModulesPage.php:376
 msgid "Omnibus plugin detected status"
 msgstr "Стан: выяўлены плагін Omnibus"
 
-#: src/Admin/ModulesPage.php:347
+#: src/Admin/ModulesPage.php:377
 msgid "Omnibus plugin missing status"
 msgstr "Стан: плагін Omnibus адсутнічае"
 
-#: src/Admin/ModulesPage.php:348
+#: src/Admin/ModulesPage.php:378
 msgid "Communication without external Omnibus plugin"
 msgstr "Паведамленне без знешняга плагіна Omnibus"
 
-#: src/Admin/ModulesPage.php:349
+#: src/Admin/ModulesPage.php:379
 msgid "Communication after external Omnibus plugin detection"
 msgstr "Паведамленне пасля выяўлення знешняга плагіна Omnibus"
 
-#: src/Admin/ModulesPage.php:354
+#: src/Admin/ModulesPage.php:384
 msgid "Legal Email Attachments"
 msgstr "Прававыя ўкладанні да лістоў"
 
-#: src/Admin/ModulesPage.php:355
+#: src/Admin/ModulesPage.php:385
 msgid "Attaching legal pages content (terms, privacy policy, right of withdrawal) to order confirmation emails."
 msgstr "Далучэнне тэксту прававых старонак (правілы, палітыка прыватнасці, права на адмову) да лістоў з пацвярджэннем заказу."
 
-#: src/Admin/ModulesPage.php:361
+#: src/Admin/ModulesPage.php:391
 msgid "Attach Terms"
 msgstr "Далучыць правілы"
 
-#: src/Admin/ModulesPage.php:362
+#: src/Admin/ModulesPage.php:392
 msgid "Attach Privacy Policy"
 msgstr "Далучыць палітыку прыватнасці"
 
-#: src/Admin/ModulesPage.php:363
+#: src/Admin/ModulesPage.php:393
 msgid "Attach Right of Withdrawal"
 msgstr "Далучыць права на адмову"
 
-#: src/Admin/ModulesPage.php:370
+#: src/Admin/ModulesPage.php:400
 msgid "Manufacturer and GPSR"
 msgstr "Вытворца і GPSR"
 
-#: src/Admin/ModulesPage.php:371
+#: src/Admin/ModulesPage.php:401
 msgid "Manufacturer information, responsible person (GPSR), safety documents, safety instructions."
 msgstr "Інфармацыя аб вытворцы, адказнай асобе (GPSR), дакументах і інструкцыях бяспекі."
 
-#: src/Admin/ModulesPage.php:372
-#: src/Admin/ModulesPage.php:382
-#: src/Admin/ModulesPage.php:413
-#: src/Admin/ModulesPage.php:851
-#: src/Admin/ModulesPage.php:864
-#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:412
+#: src/Admin/ModulesPage.php:443
+#: src/Admin/ModulesPage.php:894
+#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:919
 msgid "Product Information"
 msgstr "Інфармацыя аб тавары"
 
-#: src/Admin/ModulesPage.php:380
+#: src/Admin/ModulesPage.php:410
 msgid "Food and Supplements"
 msgstr "Ежа і дабаўкі"
 
-#: src/Admin/ModulesPage.php:381
+#: src/Admin/ModulesPage.php:411
 msgid "Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor."
 msgstr "Табліца харчовай каштоўнасці, алергены, інгрэдыенты, Nutri-Score, утрыманне алкаголю, краіна паходжання, дыстрыб'ютар."
 
-#: src/Admin/ModulesPage.php:387
+#: src/Admin/ModulesPage.php:417
 msgid "Show ingredients"
 msgstr "Паказваць інгрэдыенты"
 
-#: src/Admin/ModulesPage.php:388
+#: src/Admin/ModulesPage.php:418
 msgid "Show allergens"
 msgstr "Паказваць алергены"
 
-#: src/Admin/ModulesPage.php:389
+#: src/Admin/ModulesPage.php:419
 msgid "Show nutrition facts table"
 msgstr "Паказваць табліцу харчовай каштоўнасці"
 
-#: src/Admin/ModulesPage.php:390
+#: src/Admin/ModulesPage.php:420
 msgid "Show Nutri-Score"
 msgstr "Паказваць Nutri-Score"
 
-#: src/Admin/ModulesPage.php:391
+#: src/Admin/ModulesPage.php:421
 msgid "Show alcohol content"
 msgstr "Паказваць утрыманне алкаголю"
 
-#: src/Admin/ModulesPage.php:392
+#: src/Admin/ModulesPage.php:422
 msgid "Show country of origin"
 msgstr "Паказваць краіну паходжання"
 
-#: src/Admin/ModulesPage.php:393
+#: src/Admin/ModulesPage.php:423
 msgid "Show distributor"
 msgstr "Паказваць дыстрыб'ютара"
 
-#: src/Admin/ModulesPage.php:394
+#: src/Admin/ModulesPage.php:424
 msgid "Show net content"
 msgstr "Паказваць чыстае ўтрыманне"
 
-#: src/Admin/ModulesPage.php:395
+#: src/Admin/ModulesPage.php:425
 msgid "Ingredients label"
 msgstr "Подпіс інгрэдыентаў"
 
-#: src/Admin/ModulesPage.php:396
+#: src/Admin/ModulesPage.php:426
 msgid "Allergens label"
 msgstr "Подпіс алергенаў"
 
-#: src/Admin/ModulesPage.php:396
+#: src/Admin/ModulesPage.php:426
 #: src/Admin/PostTypes.php:142
 #: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
 #: src/Service/FoodService.php:92
 msgid "Allergens"
 msgstr "Алергены"
 
-#: src/Admin/ModulesPage.php:397
+#: src/Admin/ModulesPage.php:427
 msgid "Nutrition facts table header prefix"
 msgstr "Прэфікс загалоўка табліцы харчовай каштоўнасці"
 
-#: src/Admin/ModulesPage.php:397
+#: src/Admin/ModulesPage.php:427
 #: src/Service/FoodService.php:158
 msgid "Nutrition facts per"
 msgstr "Харчовая каштоўнасць на"
 
-#: src/Admin/ModulesPage.php:398
+#: src/Admin/ModulesPage.php:428
 msgid "Default reference unit"
 msgstr "Прадвызначаная адзінка вымярэння"
 
-#: src/Admin/ModulesPage.php:399
+#: src/Admin/ModulesPage.php:429
 msgid "Nutrient column name"
 msgstr "Назва слупка кампанента"
 
-#: src/Admin/ModulesPage.php:399
+#: src/Admin/ModulesPage.php:429
 #: src/Admin/PostTypes.php:168
 #: src/Service/FoodService.php:160
 msgid "Nutrient"
 msgstr "Харчовы кампанент"
 
-#: src/Admin/ModulesPage.php:400
+#: src/Admin/ModulesPage.php:430
 msgid "Value column name"
 msgstr "Назва слупка значэння"
 
-#: src/Admin/ModulesPage.php:400
+#: src/Admin/ModulesPage.php:430
 #: src/Service/FoodService.php:161
 #: src/Service/RodoTrainingDocsService.php:254
 msgid "Value"
 msgstr "Значэнне"
 
-#: src/Admin/ModulesPage.php:401
+#: src/Admin/ModulesPage.php:431
 msgid "Nutri-Score label"
 msgstr "Подпіс Nutri-Score"
 
-#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:432
 msgid "Alcohol content label"
 msgstr "Подпіс утрымання алкаголю"
 
-#: src/Admin/ModulesPage.php:403
+#: src/Admin/ModulesPage.php:433
 msgid "Alcohol suffix"
 msgstr "Суфікс алкаголю"
 
-#: src/Admin/ModulesPage.php:404
+#: src/Admin/ModulesPage.php:434
 msgid "Country of origin label"
 msgstr "Подпіс краіны паходжання"
 
-#: src/Admin/ModulesPage.php:405
+#: src/Admin/ModulesPage.php:435
 msgid "Distributor label"
 msgstr "Подпіс дыстрыб'ютара"
 
-#: src/Admin/ModulesPage.php:405
+#: src/Admin/ModulesPage.php:435
 #: src/Service/FoodService.php:293
 msgid "Distributor"
 msgstr "Дыстрыб'ютар"
 
-#: src/Admin/ModulesPage.php:406
+#: src/Admin/ModulesPage.php:436
 msgid "Net content label"
 msgstr "Подпіс чыстага ўтрымання"
 
-#: src/Admin/ModulesPage.php:406
+#: src/Admin/ModulesPage.php:436
 #: src/Service/FoodService.php:301
 msgid "Net content"
 msgstr "Чыстае ўтрыманне"
 
-#: src/Admin/ModulesPage.php:411
+#: src/Admin/ModulesPage.php:441
 msgid "Power Supply Info"
 msgstr "Інфармацыя аб сілкаванні"
 
-#: src/Admin/ModulesPage.php:412
+#: src/Admin/ModulesPage.php:442
 msgid "Energy consumption data for electrical devices (energy labels)."
 msgstr "Дадзеныя аб спажыванні энергіі для электрапрыбораў (энергетычныя этыкеткі)."
 
-#: src/Admin/ModulesPage.php:423
+#: src/Admin/ModulesPage.php:453
 msgid "Double Opt-In (DOI)"
 msgstr "Падвойнае пацвярджэнне (DOI)"
 
-#: src/Admin/ModulesPage.php:424
+#: src/Admin/ModulesPage.php:454
 msgid "Email address verification during account registration. Activation link sent by email, login block for unactivated accounts."
 msgstr "Праверка адраса электроннай пошты пры рэгістрацыі ўліковага запісу. Спасылка актывацыі дасылаецца лістом, блакіроўка ўваходу для неактываваных уліковых запісаў."
 
-#: src/Admin/ModulesPage.php:425
+#: src/Admin/ModulesPage.php:455
 msgid "Customer Account"
 msgstr "Уліковы запіс кліента"
 
-#: src/Admin/ModulesPage.php:430
+#: src/Admin/ModulesPage.php:460
 msgid "Delete inactive accounts after (days)"
 msgstr "Выдаляць неактыўныя ўліковыя запісы праз (дзён)"
 
-#: src/Admin/ModulesPage.php:431
+#: src/Admin/ModulesPage.php:461
 msgid "Login block message"
 msgstr "Паведамленне аб блакіроўцы ўваходу"
 
-#: src/Admin/ModulesPage.php:431
+#: src/Admin/ModulesPage.php:461
 msgid "Your account is pending activation! Please check your email and click the activation link."
 msgstr "Ваш уліковы запіс чакае актывацыі! Калі ласка, праверце сваю электронную пошту і націсніце спасылку актывацыі."
 
-#: src/Admin/ModulesPage.php:432
+#: src/Admin/ModulesPage.php:462
 msgid "Invalid link message"
 msgstr "Паведамленне аб няправільнай спасылцы"
 
-#: src/Admin/ModulesPage.php:432
+#: src/Admin/ModulesPage.php:462
 #: src/Service/DoubleOptInService.php:123
 msgid "Invalid activation link."
 msgstr "Няправільная спасылка актывацыі."
 
-#: src/Admin/ModulesPage.php:433
+#: src/Admin/ModulesPage.php:463
 msgid "Activation success message"
 msgstr "Паведамленне аб удалай актывацыі"
 
-#: src/Admin/ModulesPage.php:433
+#: src/Admin/ModulesPage.php:463
 msgid "Excellent! Your account has been activated. You can now log in."
 msgstr "Выдатна! Ваш уліковы запіс актываваны. Цяпер вы можаце ўвайсці."
 
-#: src/Admin/ModulesPage.php:434
-#: src/Admin/ModulesPage.php:790
-#: src/Admin/ModulesPage.php:1054
+#: src/Admin/ModulesPage.php:464
+#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:1097
 msgid "Email subject"
 msgstr "Тэма ліста"
 
-#: src/Admin/ModulesPage.php:434
+#: src/Admin/ModulesPage.php:464
 #: src/Email/DoubleOptInEmail.php:65
 #: src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
 msgstr "Актывуйце свой уліковы запіс на {site_title}"
 
-#: src/Admin/ModulesPage.php:434
+#: src/Admin/ModulesPage.php:464
 msgid "Variables: {site_title}"
 msgstr "Зменныя: {site_title}"
 
-#: src/Admin/ModulesPage.php:435
+#: src/Admin/ModulesPage.php:465
 msgid "Email heading"
 msgstr "Загаловак ліста"
 
-#: src/Admin/ModulesPage.php:435
+#: src/Admin/ModulesPage.php:465
 #: src/Email/DoubleOptInEmail.php:74
 #: src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
 msgstr "Пацвердзіце свой адрас электроннай пошты"
 
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:466
 msgid "Variables: {name}"
 msgstr "Зменныя: {name}"
 
-#: src/Admin/ModulesPage.php:437
+#: src/Admin/ModulesPage.php:467
 msgid "Email content HTML"
 msgstr "Тэкст ліста HTML"
 
-#: src/Admin/ModulesPage.php:437
+#: src/Admin/ModulesPage.php:467
 msgid "Thank you for creating an account. Click the button below to activate your account:"
 msgstr "Дзякуем за стварэнне ўліковага запісу. Націсніце кнопку ніжэй, каб актываваць свой уліковы запіс:"
 
-#: src/Admin/ModulesPage.php:438
+#: src/Admin/ModulesPage.php:468
 msgid "Email button text"
 msgstr "Тэкст кнопкі ў лісце"
 
-#: src/Admin/ModulesPage.php:438
+#: src/Admin/ModulesPage.php:468
 msgid "Activate account"
 msgstr "Актываваць уліковы запіс"
 
-#: src/Admin/ModulesPage.php:439
+#: src/Admin/ModulesPage.php:469
 msgid "Fallback link text"
 msgstr "Тэкст рэзервовай спасылкі"
 
-#: src/Admin/ModulesPage.php:439
+#: src/Admin/ModulesPage.php:469
 msgid "If you prefer, copy and paste this link into your browser:"
 msgstr "Калі хочаце, скапіруйце і ўстаўце гэту спасылку ў ваш браўзер:"
 
-#: src/Admin/ModulesPage.php:440
+#: src/Admin/ModulesPage.php:470
 msgid "Email content plain text"
 msgstr "Тэкст ліста ў тэкставым фармаце"
 
-#: src/Admin/ModulesPage.php:440
+#: src/Admin/ModulesPage.php:470
 msgid "Thank you for creating an account. Visit the link below to activate your account:"
 msgstr "Дзякуем за стварэнне ўліковага запісу. Перайдзіце па спасылцы ніжэй, каб актываваць свой уліковы запіс:"
 
-#: src/Admin/ModulesPage.php:441
+#: src/Admin/ModulesPage.php:471
 msgid "If you did not create an account with us, please ignore this email."
 msgstr "Калі вы не стваралі ў нас уліковага запісу, праігнаруйце гэты ліст."
 
-#: src/Admin/ModulesPage.php:448
+#: src/Admin/ModulesPage.php:478
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:16
 msgid "AJAX Search"
 msgstr "Пошук AJAX"
 
-#: src/Admin/ModulesPage.php:449
+#: src/Admin/ModulesPage.php:479
 msgid "Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals."
 msgstr "Хуткія падказкі тавараў падчас уводу, з падтрымкай SKU, катэгорый і лёгкім франтэндам, прыязным да web vitals."
 
-#: src/Admin/ModulesPage.php:450
+#: src/Admin/ModulesPage.php:480
 msgid "Sales and B2B"
 msgstr "Продажы і B2B"
 
-#: src/Admin/ModulesPage.php:455
+#: src/Admin/ModulesPage.php:485
 #: resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
 msgstr "Мінімальная колькасць сімвалаў"
 
-#: src/Admin/ModulesPage.php:455
+#: src/Admin/ModulesPage.php:485
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr "Мінімальная колькасць сімвалаў перад пачаткам пошуку. Рэкамендуецца: 2-3"
 
-#: src/Admin/ModulesPage.php:456
+#: src/Admin/ModulesPage.php:486
 #: resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
 msgstr "Ліміт вынікаў"
 
-#: src/Admin/ModulesPage.php:456
+#: src/Admin/ModulesPage.php:486
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
 msgstr "Максімальная колькасць тавараў, што паказваюцца ў выпадальным спісе. Рэкамендуецца: 4-8"
 
-#: src/Admin/ModulesPage.php:457
+#: src/Admin/ModulesPage.php:487
 msgid "Query debounce (ms)"
 msgstr "Затрымка запыту (мс)"
 
-#: src/Admin/ModulesPage.php:457
+#: src/Admin/ModulesPage.php:487
 msgid "Delay in milliseconds before sending search request. Lower = faster but more server load"
 msgstr "Затрымка ў мілісекундах перад адпраўкай запыту пошуку. Менш = хутчэй, але большая нагрузка на сервер"
 
-#: src/Admin/ModulesPage.php:458
+#: src/Admin/ModulesPage.php:488
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
 msgid "Show search button"
 msgstr "Паказваць кнопку пошуку"
 
-#: src/Admin/ModulesPage.php:459
+#: src/Admin/ModulesPage.php:489
 msgid "Show thumbnails"
 msgstr "Паказваць мініяцюры"
 
-#: src/Admin/ModulesPage.php:460
-#: src/Admin/ModulesPage.php:755
+#: src/Admin/ModulesPage.php:490
+#: src/Admin/ModulesPage.php:798
 msgid "Show prices"
 msgstr "Паказваць цэны"
 
-#: src/Admin/ModulesPage.php:461
-#: src/Admin/ModulesPage.php:636
+#: src/Admin/ModulesPage.php:491
+#: src/Admin/ModulesPage.php:676
+msgid "Show unit price"
+msgstr "Паказваць цану за адзінку"
+
+#: src/Admin/ModulesPage.php:492
+#: src/Admin/ModulesPage.php:677
+msgid "Show Omnibus lowest price"
+msgstr "Паказаць найніжэйшую цану Omnibus"
+
+#: src/Admin/ModulesPage.php:493
+#: src/Admin/ModulesPage.php:678
 msgid "Show SKU"
 msgstr "Паказваць SKU"
 
-#: src/Admin/ModulesPage.php:462
+#: src/Admin/ModulesPage.php:494
 msgid "Show view all results link"
 msgstr "Паказваць спасылку на ўсе вынікі"
 
-#: src/Admin/ModulesPage.php:463
+#: src/Admin/ModulesPage.php:495
 msgid "Search by SKU"
 msgstr "Шукаць па SKU"
 
-#: src/Admin/ModulesPage.php:464
+#: src/Admin/ModulesPage.php:496
 msgid "Search by categories"
 msgstr "Шукаць па катэгорыях"
 
-#: src/Admin/ModulesPage.php:465
+#: src/Admin/ModulesPage.php:497
 msgid "Include out of stock products"
 msgstr "Уключаць тавары, якіх няма ў наяўнасці"
 
-#: src/Admin/ModulesPage.php:466
+#: src/Admin/ModulesPage.php:498
 msgid "Search field label"
 msgstr "Подпіс поля пошуку"
 
-#: src/Admin/ModulesPage.php:466
+#: src/Admin/ModulesPage.php:498
 msgid "Search products"
 msgstr "Шукаць тавары"
 
-#: src/Admin/ModulesPage.php:467
+#: src/Admin/ModulesPage.php:499
 #: resources/js/blocks/ajax-search/index.js:28
 msgid "Results label"
 msgstr "Подпіс вынікаў"
 
-#: src/Admin/ModulesPage.php:467
+#: src/Admin/ModulesPage.php:499
 msgid "Product search results"
 msgstr "Вынікі пошуку тавараў"
 
-#: src/Admin/ModulesPage.php:468
-#: src/Admin/ModulesPage.php:601
-#: src/Admin/ModulesPage.php:628
+#: src/Admin/ModulesPage.php:500
+#: src/Admin/ModulesPage.php:642
+#: src/Admin/ModulesPage.php:669
 msgid "SKU label"
 msgstr "Подпіс SKU"
 
-#: src/Admin/ModulesPage.php:469
+#: src/Admin/ModulesPage.php:501
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
 #: resources/js/blocks/ajax-search/index.js:18
 msgid "Placeholder"
 msgstr "Тэкст-запаўняльнік (Placeholder)"
 
-#: src/Admin/ModulesPage.php:469
+#: src/Admin/ModulesPage.php:501
 msgid "Search products, SKU codes or categories"
 msgstr "Шукайце тавары, коды SKU або катэгорыі"
 
-#: src/Admin/ModulesPage.php:470
+#: src/Admin/ModulesPage.php:502
 msgid "Search"
 msgstr "Шукаць"
 
-#: src/Admin/ModulesPage.php:471
+#: src/Admin/ModulesPage.php:503
 msgid "No results text"
 msgstr "Тэкст адсутнасці вынікаў"
 
-#: src/Admin/ModulesPage.php:471
+#: src/Admin/ModulesPage.php:503
 msgid "No results found for your query."
 msgstr "Па вашым запыце нічога не знойдзена."
 
-#: src/Admin/ModulesPage.php:472
+#: src/Admin/ModulesPage.php:504
 msgid "View all results text"
 msgstr "Тэкст паказу ўсіх вынікаў"
 
-#: src/Admin/ModulesPage.php:472
+#: src/Admin/ModulesPage.php:504
 msgid "View all results"
 msgstr "Паказаць усе вынікі"
 
-#: src/Admin/ModulesPage.php:479
+#: src/Admin/ModulesPage.php:511
 #: src/Admin/PostTypes.php:117
 msgid "Brands"
 msgstr "Брэнды"
 
-#: src/Admin/ModulesPage.php:480
+#: src/Admin/ModulesPage.php:512
 msgid "Support for product brands independent of the manufacturer, with views on product pages and listings, and its own taxonomy."
 msgstr "Падтрымка брэндаў тавараў незалежна ад вытворцы, з адлюстраваннем на старонках тавараў і ў спісах, а таксама ўласнай таксанаміяй."
 
-#: src/Admin/ModulesPage.php:481
-#: src/Admin/ModulesPage.php:498
-#: src/Admin/ModulesPage.php:540
-#: src/Admin/ModulesPage.php:570
-#: src/Admin/ModulesPage.php:616
-#: src/Admin/ModulesPage.php:652
-#: src/Admin/ModulesPage.php:684
-#: src/Admin/ModulesPage.php:707
-#: src/Admin/ModulesPage.php:725
-#: src/Admin/ModulesPage.php:742
-#: src/Admin/ModulesPage.php:769
-#: src/Admin/ModulesPage.php:799
-#: src/Admin/ModulesPage.php:820
-msgid "Merchandising"
-msgstr "Мерчандайзінг"
-
-#: src/Admin/ModulesPage.php:486
-#: src/Admin/ModulesPage.php:546
-#: src/Admin/ModulesPage.php:576
-#: src/Admin/ModulesPage.php:657
-#: src/Admin/ModulesPage.php:712
-#: src/Admin/ModulesPage.php:747
-#: src/Admin/ModulesPage.php:774
-#: src/Admin/ModulesPage.php:1197
+#: src/Admin/ModulesPage.php:518
+#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:617
+#: src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:755
+#: src/Admin/ModulesPage.php:790
+#: src/Admin/ModulesPage.php:817
+#: src/Admin/ModulesPage.php:1240
 msgid "Show on product page"
 msgstr "Паказваць на старонцы тавару"
 
-#: src/Admin/ModulesPage.php:487
-msgid "Show on product listings"
-msgstr "Паказваць у спісах тавараў"
-
-#: src/Admin/ModulesPage.php:488
+#: src/Admin/ModulesPage.php:520
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Подпіс"
 
-#: src/Admin/ModulesPage.php:489
+#: src/Admin/ModulesPage.php:521
 msgid "Show label"
 msgstr "Паказваць подпіс"
 
-#: src/Admin/ModulesPage.php:490
+#: src/Admin/ModulesPage.php:522
 msgid "Brand separator"
 msgstr "Раздзяляльнік брэнда"
 
-#: src/Admin/ModulesPage.php:491
+#: src/Admin/ModulesPage.php:523
 msgid "Link to brand archive"
 msgstr "Спасылка на архіў брэнда"
 
-#: src/Admin/ModulesPage.php:496
+#: src/Admin/ModulesPage.php:528
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "AJAX Filters"
 msgstr "Фільтры AJAX"
 
-#: src/Admin/ModulesPage.php:497
+#: src/Admin/ModulesPage.php:529
 msgid "Filtering product listings without page reload, including categories, brands, price, stock status, sale, and attributes."
 msgstr "Фільтраванне спісаў тавараў без перазагрузкі старонкі, уключаючы катэгорыі, брэнды, цану, стан складу, акцыі і атрыбуты."
 
-#: src/Admin/ModulesPage.php:503
+#: src/Admin/ModulesPage.php:535
 msgid "Show on shop archives"
 msgstr "Паказваць у архівах крамы"
 
-#: src/Admin/ModulesPage.php:504
+#: src/Admin/ModulesPage.php:536
 msgid "Show form header"
 msgstr "Паказваць загаловак формы"
 
-#: src/Admin/ModulesPage.php:505
+#: src/Admin/ModulesPage.php:537
 msgid "Category filter"
 msgstr "Фільтр катэгорый"
 
-#: src/Admin/ModulesPage.php:506
+#: src/Admin/ModulesPage.php:538
 msgid "Brand filter"
 msgstr "Фільтр брэндаў"
 
-#: src/Admin/ModulesPage.php:507
+#: src/Admin/ModulesPage.php:539
 msgid "Price filter"
 msgstr "Фільтр цэн"
 
-#: src/Admin/ModulesPage.php:508
+#: src/Admin/ModulesPage.php:540
 msgid "Availability filter"
 msgstr "Фільтр наяўнасці"
 
-#: src/Admin/ModulesPage.php:509
+#: src/Admin/ModulesPage.php:541
 msgid "Sale filter"
 msgstr "Фільтр акцый"
 
-#: src/Admin/ModulesPage.php:510
+#: src/Admin/ModulesPage.php:542
 msgid "Attribute filters"
 msgstr "Фільтры атрыбутаў"
 
-#: src/Admin/ModulesPage.php:511
+#: src/Admin/ModulesPage.php:543
 msgid "Active filters chips"
 msgstr "Плашкі актыўных фільтраў"
 
-#: src/Admin/ModulesPage.php:512
+#: src/Admin/ModulesPage.php:544
 msgid "Show term counts"
 msgstr "Паказваць колькасць элементаў"
 
-#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:545
 msgid "Hierarchical categories"
 msgstr "Іерархічныя катэгорыі"
 
-#: src/Admin/ModulesPage.php:514
+#: src/Admin/ModulesPage.php:546
 msgid "Enable taxonomy multi-select"
 msgstr "Уключыць множны выбар таксанаміі"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "Multi-select relation"
 msgstr "Адносіны множнага выбару"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "OR - match any selected term"
 msgstr "АБО - супадзенне любога абранага элемента"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "AND - match all selected terms"
 msgstr "І - супадзенне ўсіх абраных элементаў"
 
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:548
+msgid "Enable mobile filter panel"
+msgstr "Уключыць мабільную панэль фільтраў"
+
+#: src/Admin/ModulesPage.php:549
+msgid "Enable instant filtering"
+msgstr "Уключыць імгненную фільтрацыю"
+
+#: src/Admin/ModulesPage.php:550
+msgid "Instant filtering debounce (ms)"
+msgstr "Затрымка імгненнай фільтрацыі (мс)"
+
+#: src/Admin/ModulesPage.php:550
+msgid "Delay before auto-submitting text and price fields"
+msgstr "Затрымка перад аўтаматычнай адпраўкай тэкставых палёў і палёў цаны"
+
+#: src/Admin/ModulesPage.php:551
+msgid "Named presets JSON"
+msgstr "JSON названых шаблонаў"
+
+#: src/Admin/ModulesPage.php:551
+msgid "Optional JSON map for shortcode preset=\"...\". Example: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
+msgstr "Неабавязковая карта JSON для shortcode preset=\"...\". Прыклад: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
+
+#: src/Admin/ModulesPage.php:552
+msgid "Archive preset mapping JSON"
+msgstr "JSON супастаўлення шаблонаў архіва"
+
+#: src/Admin/ModulesPage.php:552
+msgid "Optional JSON map from archive context to preset slug. Examples: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+msgstr "Неабавязковая карта JSON з кантэксту архіва на slug шаблону. Прыклады: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+
+#: src/Admin/ModulesPage.php:553
+msgid "Specific attribute taxonomies"
+msgstr "Канкрэтныя таксаноміі атрыбутаў"
+
+#: src/Admin/ModulesPage.php:553
+msgid "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N attributes are used."
+msgstr "Неабавязковы спіс праз коскі, напр. pa_color,pa_size. Калі пусты, выкарыстоўваюцца першыя N атрыбутаў."
+
+#: src/Admin/ModulesPage.php:554
 msgid "Max number of attributes"
 msgstr "Максімальная колькасць атрыбутаў"
 
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:554
 msgid "How many product attributes to show as filter dropdowns"
 msgstr "Колькі атрыбутаў тавараў паказваць у выглядзе выпадальных спісаў фільтраў"
 
-#: src/Admin/ModulesPage.php:517
-#: src/Admin/ModulesPage.php:776
-#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:819
+#: src/Admin/ModulesPage.php:868
 msgid "Header"
 msgstr "Загаловак"
 
-#: src/Admin/ModulesPage.php:518
+#: src/Admin/ModulesPage.php:556
 msgid "Active filters label"
 msgstr "Подпіс актыўных фільтраў"
 
-#: src/Admin/ModulesPage.php:519
+#: src/Admin/ModulesPage.php:557
+msgid "Mobile toggle button text"
+msgstr "Тэкст кнопкі пераключэння на мабільных прыладах"
+
+#: src/Admin/ModulesPage.php:558
+msgid "Mobile close button text"
+msgstr "Тэкст кнопкі закрыцця на мабільных прыладах"
+
+#: src/Admin/ModulesPage.php:559
+msgid "Mobile panel title"
+msgstr "Загаловак мабільнай панэлі"
+
+#: src/Admin/ModulesPage.php:560
 msgid "Category label"
 msgstr "Подпіс катэгорыі"
 
-#: src/Admin/ModulesPage.php:520
+#: src/Admin/ModulesPage.php:561
 msgid "All categories text"
 msgstr "Тэкст усіх катэгорый"
 
-#: src/Admin/ModulesPage.php:521
-#: src/Admin/ModulesPage.php:604
+#: src/Admin/ModulesPage.php:562
+#: src/Admin/ModulesPage.php:645
 msgid "Brand label"
 msgstr "Подпіс брэнда"
 
-#: src/Admin/ModulesPage.php:522
+#: src/Admin/ModulesPage.php:563
 msgid "All brands text"
 msgstr "Тэкст усіх брэндаў"
 
-#: src/Admin/ModulesPage.php:523
+#: src/Admin/ModulesPage.php:564
 msgid "Price from label"
 msgstr "Подпіс цэны ад"
 
-#: src/Admin/ModulesPage.php:524
+#: src/Admin/ModulesPage.php:565
 msgid "Price to label"
 msgstr "Подпіс цэны да"
 
-#: src/Admin/ModulesPage.php:525
-#: src/Admin/ModulesPage.php:602
+#: src/Admin/ModulesPage.php:566
+#: src/Admin/ModulesPage.php:643
 msgid "Availability label"
 msgstr "Подпіс наяўнасці"
 
-#: src/Admin/ModulesPage.php:526
+#: src/Admin/ModulesPage.php:567
 msgid "Any availability text"
 msgstr "Тэкст любой наяўнасці"
 
-#: src/Admin/ModulesPage.php:527
+#: src/Admin/ModulesPage.php:568
 msgid "Instock product text"
 msgstr "Тэкст тавару ў наяўнасці"
 
-#: src/Admin/ModulesPage.php:528
+#: src/Admin/ModulesPage.php:569
 msgid "Sale label"
 msgstr "Подпіс акцыі"
 
-#: src/Admin/ModulesPage.php:529
+#: src/Admin/ModulesPage.php:570
 msgid "Active sale filter text"
 msgstr "Тэкст фільтра актыўных акцый"
 
-#: src/Admin/ModulesPage.php:530
+#: src/Admin/ModulesPage.php:571
 msgid "Any attribute value text"
 msgstr "Тэкст любога значэння атрыбута"
 
-#: src/Admin/ModulesPage.php:531
+#: src/Admin/ModulesPage.php:572
 msgid "Show reset link"
 msgstr "Паказваць спасылку скіду"
 
-#: src/Admin/ModulesPage.php:533
+#: src/Admin/ModulesPage.php:574
 msgid "Reset text"
 msgstr "Тэкст скіду"
 
-#: src/Admin/ModulesPage.php:538
+#: src/Admin/ModulesPage.php:579
 #: src/Service/WishlistService.php:174
 msgid "Wishlist"
 msgstr "Спіс жаданняў"
 
-#: src/Admin/ModulesPage.php:539
+#: src/Admin/ModulesPage.php:580
 msgid "Saving favorite products for guests and logged-in users, with a list in the customer account and AJAX add/remove."
 msgstr "Захаванне ўпадабаных тавараў для гасцей і аўтарызаваных карыстальнікаў, са спісам у акаўнце кліента і даданнем/выдаленнем праз AJAX."
 
-#: src/Admin/ModulesPage.php:545
+#: src/Admin/ModulesPage.php:586
 msgid "Allow guests to save favorites"
 msgstr "Дазволіць гасцям захоўваць упадабанае"
 
-#: src/Admin/ModulesPage.php:547
-#: src/Admin/ModulesPage.php:577
-#: src/Admin/ModulesPage.php:621
-#: src/Admin/ModulesPage.php:658
+#: src/Admin/ModulesPage.php:588
+#: src/Admin/ModulesPage.php:618
+#: src/Admin/ModulesPage.php:662
+#: src/Admin/ModulesPage.php:701
 msgid "Show on listings"
 msgstr "Паказваць у спісах"
 
-#: src/Admin/ModulesPage.php:548
-#: src/Admin/ModulesPage.php:578
+#: src/Admin/ModulesPage.php:589
+#: src/Admin/ModulesPage.php:619
 msgid "Show in My Account"
 msgstr "Паказваць у Маім акаўнце"
 
-#: src/Admin/ModulesPage.php:549
+#: src/Admin/ModulesPage.php:590
 msgid "Show list title"
 msgstr "Паказваць загаловак спіса"
 
-#: src/Admin/ModulesPage.php:550
-#: src/Admin/ModulesPage.php:579
-#: src/Admin/ModulesPage.php:754
+#: src/Admin/ModulesPage.php:591
+#: src/Admin/ModulesPage.php:620
+#: src/Admin/ModulesPage.php:797
 msgid "Show product images"
 msgstr "Паказваць выявы тавараў"
 
-#: src/Admin/ModulesPage.php:551
+#: src/Admin/ModulesPage.php:592
 msgid "Show product names"
 msgstr "Паказваць назвы тавараў"
 
-#: src/Admin/ModulesPage.php:552
+#: src/Admin/ModulesPage.php:593
 msgid "Show price in list"
 msgstr "Паказваць цану ў спісе"
 
-#: src/Admin/ModulesPage.php:553
+#: src/Admin/ModulesPage.php:594
 msgid "Show cart button in list"
 msgstr "Паказваць кнопку кошыка ў спісе"
 
-#: src/Admin/ModulesPage.php:554
+#: src/Admin/ModulesPage.php:595
 msgid "Show remove button in list"
 msgstr "Паказваць кнопку выдалення ў спісе"
 
-#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:596
 msgid "Number of columns in list"
 msgstr "Колькасць слупкоў у спісе"
 
-#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:596
 msgid "Number of product columns in grid layout. Recommended: 3-4"
 msgstr "Колькасць слупкоў тавараў у сетцы. Рэкамендавана: 3-4"
 
-#: src/Admin/ModulesPage.php:556
-#: src/Admin/ModulesPage.php:582
+#: src/Admin/ModulesPage.php:597
+#: src/Admin/ModulesPage.php:623
 msgid "Label in My Account"
 msgstr "Подпіс у Маім акаўнце"
 
-#: src/Admin/ModulesPage.php:557
+#: src/Admin/ModulesPage.php:598
 msgid "List title"
 msgstr "Загаловак спіса"
 
-#: src/Admin/ModulesPage.php:558
-#: src/Admin/ModulesPage.php:595
-#: src/Admin/ModulesPage.php:715
-#: src/Admin/ModulesPage.php:753
+#: src/Admin/ModulesPage.php:599
+#: src/Admin/ModulesPage.php:636
+#: src/Admin/ModulesPage.php:758
+#: src/Admin/ModulesPage.php:796
 msgid "Section description"
 msgstr "Апісанне раздзела"
 
-#: src/Admin/ModulesPage.php:559
-#: src/Admin/ModulesPage.php:585
+#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:626
 msgid "Add text"
 msgstr "Тэкст дадання"
 
-#: src/Admin/ModulesPage.php:560
-#: src/Admin/ModulesPage.php:586
+#: src/Admin/ModulesPage.php:601
+#: src/Admin/ModulesPage.php:627
 msgid "Remove text"
 msgstr "Тэкст выдалення"
 
-#: src/Admin/ModulesPage.php:561
-#: src/Admin/ModulesPage.php:591
+#: src/Admin/ModulesPage.php:602
+#: src/Admin/ModulesPage.php:632
 msgid "Login message"
 msgstr "Паведамленне ўваходу"
 
-#: src/Admin/ModulesPage.php:562
-#: src/Admin/ModulesPage.php:592
+#: src/Admin/ModulesPage.php:603
+#: src/Admin/ModulesPage.php:633
 msgid "Product not found message"
 msgstr "Паведамленне аб ненайдзеным тавары"
 
-#: src/Admin/ModulesPage.php:563
-#: src/Admin/ModulesPage.php:596
+#: src/Admin/ModulesPage.php:604
+#: src/Admin/ModulesPage.php:637
 msgid "Empty state"
 msgstr "Пусты стан"
 
-#: src/Admin/ModulesPage.php:568
+#: src/Admin/ModulesPage.php:609
 msgid "Product Comparison"
 msgstr "Параўнанне тавараў"
 
-#: src/Admin/ModulesPage.php:569
+#: src/Admin/ModulesPage.php:610
 msgid "Product comparison tool with features table, highlight differences, guest and customer support, and view in My Account."
 msgstr "Інструмент параўнання тавараў з табліцай характарыстык, падсветкай адрозненняў, падтрымкай гасцей і кліентаў, а таксама праглядам у Маім акаўнце."
 
-#: src/Admin/ModulesPage.php:575
+#: src/Admin/ModulesPage.php:616
 msgid "Allow guests to compare products"
 msgstr "Дазволіць гасцям параўноўваць тавары"
 
-#: src/Admin/ModulesPage.php:580
-#: src/Admin/ModulesPage.php:757
+#: src/Admin/ModulesPage.php:621
+#: src/Admin/ModulesPage.php:800
 msgid "Show cart button"
 msgstr "Паказваць кнопку кошыка"
 
-#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:622
 msgid "Show remove button"
 msgstr "Паказваць кнопку выдалення"
 
-#: src/Admin/ModulesPage.php:583
+#: src/Admin/ModulesPage.php:624
 msgid "Comparison title"
 msgstr "Загаловак параўнання"
 
-#: src/Admin/ModulesPage.php:584
+#: src/Admin/ModulesPage.php:625
 msgid "Maximum number of products"
 msgstr "Максімальная колькасць тавараў"
 
-#: src/Admin/ModulesPage.php:584
+#: src/Admin/ModulesPage.php:625
 msgid "Maximum products that can be compared side-by-side. Recommended: 3-5"
 msgstr "Максімум тавараў, якія можна параўноўваць побач. Рэкамендавана: 3-5"
 
-#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:628
 msgid "Comparison link text"
 msgstr "Тэкст спасылкі на параўнанне"
 
-#: src/Admin/ModulesPage.php:588
+#: src/Admin/ModulesPage.php:629
 msgid "Clear text"
 msgstr "Тэкст ачысткі"
 
-#: src/Admin/ModulesPage.php:589
+#: src/Admin/ModulesPage.php:630
 msgid "Feature column header"
 msgstr "Загаловак слупка характарыстык"
 
-#: src/Admin/ModulesPage.php:590
+#: src/Admin/ModulesPage.php:631
 msgid "Difference filter label"
 msgstr "Подпіс фільтра адрозненняў"
 
-#: src/Admin/ModulesPage.php:593
+#: src/Admin/ModulesPage.php:634
 msgid "Limit message"
 msgstr "Паведамленне аб ліміце"
 
-#: src/Admin/ModulesPage.php:593
+#: src/Admin/ModulesPage.php:634
 msgid "Variable: {limit}"
 msgstr "Зменная: {limit}"
 
-#: src/Admin/ModulesPage.php:594
+#: src/Admin/ModulesPage.php:635
 msgid "Clear error message"
 msgstr "Паведамленне пра памылку ачысткі"
 
-#: src/Admin/ModulesPage.php:597
+#: src/Admin/ModulesPage.php:638
 msgid "Highlight differences"
 msgstr "Падсвяціць адрозненні"
 
-#: src/Admin/ModulesPage.php:598
+#: src/Admin/ModulesPage.php:639
 msgid "Show only differences by default"
 msgstr "Па змаўчанні паказваць толькі адрозненні"
 
-#: src/Admin/ModulesPage.php:599
+#: src/Admin/ModulesPage.php:640
 msgid "Price label"
 msgstr "Подпіс цаны"
 
-#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:641
 msgid "Unit price label"
 msgstr "Подпіс цаны за адзінку"
 
-#: src/Admin/ModulesPage.php:603
+#: src/Admin/ModulesPage.php:644
 msgid "Delivery time label"
 msgstr "Подпіс часу дастаўкі"
 
-#: src/Admin/ModulesPage.php:605
+#: src/Admin/ModulesPage.php:646
 msgid "Manufacturer label"
 msgstr "Подпіс вытворцы"
 
-#: src/Admin/ModulesPage.php:606
+#: src/Admin/ModulesPage.php:647
 msgid "GTIN / EAN label"
 msgstr "Подпіс GTIN / EAN"
 
-#: src/Admin/ModulesPage.php:607
+#: src/Admin/ModulesPage.php:648
 msgid "Short description label"
 msgstr "Подпіс кароткага апісання"
 
-#: src/Admin/ModulesPage.php:608
-#: src/Admin/ModulesPage.php:640
+#: src/Admin/ModulesPage.php:649
+#: src/Admin/ModulesPage.php:683
 msgid "Show short description"
 msgstr "Паказваць кароткае апісанне"
 
-#: src/Admin/ModulesPage.php:609
+#: src/Admin/ModulesPage.php:650
 msgid "Show product attributes"
 msgstr "Паказваць атрыбуты тавару"
 
-#: src/Admin/ModulesPage.php:614
+#: src/Admin/ModulesPage.php:655
 #: src/Service/QuickViewService.php:143
 msgid "Quick View"
 msgstr "Хуткі прагляд"
 
-#: src/Admin/ModulesPage.php:615
+#: src/Admin/ModulesPage.php:656
 msgid "Lightweight product modal on listings, with support for variations, prices, gallery, and basic purchase information."
 msgstr "Лёгкае мадальнае акно тавару ў спісах, з падтрымкай варыяцый, цэн, галерэі і асноўнай інфармацыі аб пакупцы."
 
-#: src/Admin/ModulesPage.php:623
+#: src/Admin/ModulesPage.php:664
 msgid "Modal label"
 msgstr "Подпіс мадальнага акна"
 
-#: src/Admin/ModulesPage.php:624
-#: src/Admin/ModulesPage.php:734
-#: src/Admin/ModulesPage.php:830
+#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:777
+#: src/Admin/ModulesPage.php:873
 msgid "Close label"
 msgstr "Подпіс закрыцця"
 
-#: src/Admin/ModulesPage.php:625
-#: src/Admin/ModulesPage.php:806
+#: src/Admin/ModulesPage.php:666
+#: src/Admin/ModulesPage.php:849
 msgid "Loading text"
 msgstr "Тэкст загрузкі"
 
-#: src/Admin/ModulesPage.php:626
+#: src/Admin/ModulesPage.php:667
 msgid "AJAX error text"
 msgstr "Тэкст памылкі AJAX"
 
-#: src/Admin/ModulesPage.php:627
+#: src/Admin/ModulesPage.php:668
 msgid "Product not found text"
 msgstr "Тэкст ненайдзенага тавару"
 
-#: src/Admin/ModulesPage.php:629
+#: src/Admin/ModulesPage.php:670
 msgid "Show modal title in content"
 msgstr "Паказваць загаловак мадальнага акна ў змесце"
 
-#: src/Admin/ModulesPage.php:630
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:872
 msgid "Show close button"
 msgstr "Паказваць кнопку закрыцця"
 
-#: src/Admin/ModulesPage.php:631
-#: src/Admin/ModulesPage.php:756
+#: src/Admin/ModulesPage.php:672
+#: src/Admin/ModulesPage.php:799
 msgid "Show product name"
 msgstr "Паказваць назву тавару"
 
-#: src/Admin/ModulesPage.php:632
+#: src/Admin/ModulesPage.php:673
 msgid "Show main image"
 msgstr "Паказваць асноўную выяву"
 
-#: src/Admin/ModulesPage.php:633
+#: src/Admin/ModulesPage.php:674
 msgid "Show mini gallery"
 msgstr "Паказваць міні-галерэю"
 
-#: src/Admin/ModulesPage.php:634
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
+#: src/Admin/ModulesPage.php:675
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:54
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
 #: resources/js/blocks/ajax-filters/index.js:38
 #: resources/js/blocks/product-slider/index.js:53
 msgid "Show price"
 msgstr "Паказваць цану"
 
-#: src/Admin/ModulesPage.php:635
-msgid "Show unit price"
-msgstr "Паказваць цану за адзінку"
-
-#: src/Admin/ModulesPage.php:637
+#: src/Admin/ModulesPage.php:679
 msgid "Show delivery time"
 msgstr "Паказваць час дастаўкі"
 
-#: src/Admin/ModulesPage.php:638
+#: src/Admin/ModulesPage.php:680
+msgid "Show product safety (GPSR)"
+msgstr "Паказаць бяспеку тавару (GPSR)"
+
+#: src/Admin/ModulesPage.php:681
 msgid "Show brand"
 msgstr "Паказваць брэнд"
 
-#: src/Admin/ModulesPage.php:639
+#: src/Admin/ModulesPage.php:682
 msgid "Show manufacturer"
 msgstr "Паказваць вытворцу"
 
-#: src/Admin/ModulesPage.php:641
+#: src/Admin/ModulesPage.php:684
 msgid "Show purchase form"
 msgstr "Паказваць форму пакупкі"
 
-#: src/Admin/ModulesPage.php:642
+#: src/Admin/ModulesPage.php:685
 msgid "Show full product link"
 msgstr "Паказваць спасылку на поўную старонку тавару"
 
-#: src/Admin/ModulesPage.php:643
+#: src/Admin/ModulesPage.php:686
 msgid "Link text to product"
 msgstr "Тэкст спасылкі на тавар"
 
-#: src/Admin/ModulesPage.php:644
+#: src/Admin/ModulesPage.php:687
 msgid "How to open full page"
 msgstr "Як адкрываць поўную старонку"
 
-#: src/Admin/ModulesPage.php:644
-#: src/Admin/ModulesPage.php:762
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:878
 msgid "In the same tab"
 msgstr "У той жа ўкладцы"
 
-#: src/Admin/ModulesPage.php:644
-#: src/Admin/ModulesPage.php:762
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:878
 msgid "In a new tab"
 msgstr "У новай укладцы"
 
-#: src/Admin/ModulesPage.php:645
-#: src/Admin/ModulesPage.php:735
-#: src/Admin/ModulesPage.php:836
+#: src/Admin/ModulesPage.php:688
+#: src/Admin/ModulesPage.php:778
+#: src/Admin/ModulesPage.php:879
 msgid "Close by clicking background"
 msgstr "Закрываць клікам па фоне"
 
-#: src/Admin/ModulesPage.php:650
+#: src/Admin/ModulesPage.php:693
 #: src/Admin/ProductMetaBox.php:154
 msgid "Badge Management"
 msgstr "Кіраванне значкамі"
 
-#: src/Admin/ModulesPage.php:651
+#: src/Admin/ModulesPage.php:694
 msgid "Merchandising badges on product pages and listings, with automatic conditions and manual per-product highlights."
 msgstr "Мерчандайзінгавыя значкі на старонках і ў спісах тавараў, з аўтаматычнымі ўмовамі і ручным вылучэннем асобных тавараў."
 
-#: src/Admin/ModulesPage.php:659
+#: src/Admin/ModulesPage.php:702
 msgid "Show manual badge"
 msgstr "Паказваць ручны значок"
 
-#: src/Admin/ModulesPage.php:660
+#: src/Admin/ModulesPage.php:703
 msgid "Default manual badge style"
 msgstr "Стыль ручнога значка па змаўчанні"
 
-#: src/Admin/ModulesPage.php:661
+#: src/Admin/ModulesPage.php:704
 msgid "Show secondary badge"
 msgstr "Паказваць дадатковы значок"
 
-#: src/Admin/ModulesPage.php:662
+#: src/Admin/ModulesPage.php:705
 msgid "Secondary badge style"
 msgstr "Стыль дадатковага значка"
 
-#: src/Admin/ModulesPage.php:663
+#: src/Admin/ModulesPage.php:706
 msgid "Badge shape"
 msgstr "Форма значка"
 
-#: src/Admin/ModulesPage.php:664
+#: src/Admin/ModulesPage.php:707
 msgid "Uppercase"
 msgstr "Вялікія літары"
 
-#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:708
 msgid "Max badges on product page"
 msgstr "Макс. значкоў на старонцы тавару"
 
-#: src/Admin/ModulesPage.php:666
+#: src/Admin/ModulesPage.php:709
 msgid "Max badges on listings"
 msgstr "Макс. значкоў у спісах"
 
-#: src/Admin/ModulesPage.php:667
+#: src/Admin/ModulesPage.php:710
 msgid "Sale badge"
 msgstr "Значок акцыі"
 
-#: src/Admin/ModulesPage.php:668
+#: src/Admin/ModulesPage.php:711
 msgid "Sale badge text"
 msgstr "Тэкст значка акцыі"
 
-#: src/Admin/ModulesPage.php:669
+#: src/Admin/ModulesPage.php:712
 msgid "New badge"
 msgstr "Значок навінкі"
 
-#: src/Admin/ModulesPage.php:670
+#: src/Admin/ModulesPage.php:713
 msgid "New badge text"
 msgstr "Тэкст значка навінкі"
 
-#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:714
 msgid "New for how many days"
 msgstr "Навінка на колькі дзён"
 
-#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:714
 msgid "Products published within this many days will show the \"New\" badge"
 msgstr "Тавары, апублікаваныя на працягу такой колькасці дзён, атрымаюць значок «Навінка»"
 
-#: src/Admin/ModulesPage.php:672
+#: src/Admin/ModulesPage.php:715
 msgid "Low stock badge"
 msgstr "Значок нізкага запасу"
 
-#: src/Admin/ModulesPage.php:673
+#: src/Admin/ModulesPage.php:716
 msgid "Low stock badge text"
 msgstr "Тэкст значка нізкага запасу"
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:717
 msgid "Low stock threshold"
 msgstr "Парог нізкага запасу"
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:717
 msgid "Badge appears when stock quantity is at or below this number"
 msgstr "Значок з'яўляецца, калі колькасць запасу роўная гэтаму ліку або ніжэйшая"
 
-#: src/Admin/ModulesPage.php:675
+#: src/Admin/ModulesPage.php:718
 msgid "Bestseller badge"
 msgstr "Значок бэстсэлера"
 
-#: src/Admin/ModulesPage.php:676
+#: src/Admin/ModulesPage.php:719
 msgid "Bestseller badge text"
 msgstr "Тэкст значка бэстсэлера"
 
-#: src/Admin/ModulesPage.php:677
+#: src/Admin/ModulesPage.php:720
 msgid "Bestseller threshold (sales)"
 msgstr "Парог бэстсэлера (продажы)"
 
-#: src/Admin/ModulesPage.php:677
+#: src/Admin/ModulesPage.php:720
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr "Мінімальная агульная колькасць продажаў, каб з'явіўся значок «Бэстсэлер»"
 
-#: src/Admin/ModulesPage.php:682
+#: src/Admin/ModulesPage.php:725
 #: src/Admin/ProductMetaBox.php:188
 msgid "Tab Manager"
 msgstr "Менеджар укладак"
 
-#: src/Admin/ModulesPage.php:683
+#: src/Admin/ModulesPage.php:726
 msgid "Additional product tabs with content per product and global tabs for shipping, returns, and business information."
 msgstr "Дадатковыя ўкладкі тавару са змесцівам для кожнага тавару і глабальныя ўкладкі для дастаўкі, вяртанняў і дзелавой інфармацыі."
 
-#: src/Admin/ModulesPage.php:689
+#: src/Admin/ModulesPage.php:732
 msgid "Global shipping tab"
 msgstr "Глабальная ўкладка дастаўкі"
 
-#: src/Admin/ModulesPage.php:690
+#: src/Admin/ModulesPage.php:733
 msgid "Shipping tab title"
 msgstr "Загаловак укладкі дастаўкі"
 
-#: src/Admin/ModulesPage.php:691
+#: src/Admin/ModulesPage.php:734
 msgid "Shipping tab content"
 msgstr "Змесціва ўкладкі дастаўкі"
 
-#: src/Admin/ModulesPage.php:692
+#: src/Admin/ModulesPage.php:735
 msgid "Shipping tab priority"
 msgstr "Прыярытэт укладкі дастаўкі"
 
-#: src/Admin/ModulesPage.php:692
+#: src/Admin/ModulesPage.php:735
 msgid "Lower number = appears earlier. WooCommerce default: Description=10, Reviews=30"
 msgstr "Меншы лік = з'яўляецца раней. Па змаўчанні WooCommerce: Апісанне=10, Водгукі=30"
 
-#: src/Admin/ModulesPage.php:693
+#: src/Admin/ModulesPage.php:736
 msgid "Global returns tab"
 msgstr "Глабальная ўкладка вяртанняў"
 
-#: src/Admin/ModulesPage.php:694
+#: src/Admin/ModulesPage.php:737
 msgid "Returns tab title"
 msgstr "Загаловак укладкі вяртанняў"
 
-#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:738
 msgid "Returns tab content"
 msgstr "Змесціва ўкладкі вяртанняў"
 
-#: src/Admin/ModulesPage.php:696
+#: src/Admin/ModulesPage.php:739
 msgid "Returns tab priority"
 msgstr "Прыярытэт укладкі вяртанняў"
 
-#: src/Admin/ModulesPage.php:697
+#: src/Admin/ModulesPage.php:740
 msgid "Enable first product tab"
 msgstr "Уключыць першую ўкладку тавару"
 
-#: src/Admin/ModulesPage.php:698
+#: src/Admin/ModulesPage.php:741
 msgid "First product tab priority"
 msgstr "Прыярытэт першай укладкі тавару"
 
-#: src/Admin/ModulesPage.php:699
+#: src/Admin/ModulesPage.php:742
 msgid "Enable second product tab"
 msgstr "Уключыць другую ўкладку тавару"
 
-#: src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:743
 msgid "Second product tab priority"
 msgstr "Прыярытэт другой укладкі тавару"
 
-#: src/Admin/ModulesPage.php:705
+#: src/Admin/ModulesPage.php:748
 #: src/Admin/ProductMetaBox.php:222
 msgid "Featured Video"
 msgstr "Вылучанае відэа"
 
-#: src/Admin/ModulesPage.php:706
+#: src/Admin/ModulesPage.php:749
 msgid "Product video on the product page, embedded from YouTube, Vimeo, or as a local MP4 file in the media section."
 msgstr "Відэа тавару на старонцы тавару, убудаванае з YouTube, Vimeo або як лакальны файл MP4 у раздзеле медыя."
 
-#: src/Admin/ModulesPage.php:713
-#: src/Admin/ModulesPage.php:1173
+#: src/Admin/ModulesPage.php:756
+#: src/Admin/ModulesPage.php:1216
 msgid "Position"
 msgstr "Пазіцыя"
 
-#: src/Admin/ModulesPage.php:713
+#: src/Admin/ModulesPage.php:756
 msgid "Below gallery"
 msgstr "Пад галерэяй"
 
-#: src/Admin/ModulesPage.php:713
+#: src/Admin/ModulesPage.php:756
 msgid "Before product summary"
 msgstr "Перад зводкай тавару"
 
-#: src/Admin/ModulesPage.php:714
-#: src/Admin/ModulesPage.php:749
+#: src/Admin/ModulesPage.php:757
+#: src/Admin/ModulesPage.php:792
 msgid "Section header"
 msgstr "Загаловак раздзела"
 
-#: src/Admin/ModulesPage.php:716
-#: src/Admin/ModulesPage.php:751
+#: src/Admin/ModulesPage.php:759
+#: src/Admin/ModulesPage.php:794
 msgid "Show section header"
 msgstr "Паказваць загаловак раздзела"
 
-#: src/Admin/ModulesPage.php:717
-#: src/Admin/ModulesPage.php:752
+#: src/Admin/ModulesPage.php:760
+#: src/Admin/ModulesPage.php:795
 msgid "Show section description"
 msgstr "Паказваць апісанне раздзела"
 
-#: src/Admin/ModulesPage.php:718
+#: src/Admin/ModulesPage.php:761
 msgid "Autoplay for supported embeds"
 msgstr "Аўтапрайграванне для падтрымліваных убудаванняў"
 
-#: src/Admin/ModulesPage.php:723
+#: src/Admin/ModulesPage.php:766
 msgid "Gallery & Zoom"
 msgstr "Галерэя і маштабаванне"
 
-#: src/Admin/ModulesPage.php:724
+#: src/Admin/ModulesPage.php:767
 msgid "Lightweight image zoom and simple gallery lightbox without external slider libraries."
 msgstr "Лёгкае маштабаванне выявы і просты лайтбокс галерэі без знешніх бібліятэк слайдараў."
 
-#: src/Admin/ModulesPage.php:730
+#: src/Admin/ModulesPage.php:773
 msgid "Enable zoom on hover"
 msgstr "Уключыць маштабаванне пры навядзенні"
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:774
 msgid "Zoom scale"
 msgstr "Маштаб павелічэння"
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:774
 msgid "Magnification factor on hover. 1.0 = no zoom, 2.0 = double size"
 msgstr "Каэфіцыент павелічэння пры навядзенні. 1.0 = без маштабавання, 2.0 = падвоены памер"
 
-#: src/Admin/ModulesPage.php:732
+#: src/Admin/ModulesPage.php:775
 msgid "Enable lightbox on click"
 msgstr "Уключыць лайтбокс пры кліку"
 
-#: src/Admin/ModulesPage.php:733
+#: src/Admin/ModulesPage.php:776
 msgid "Lightbox window label"
 msgstr "Подпіс акна лайтбокса"
 
-#: src/Admin/ModulesPage.php:740
+#: src/Admin/ModulesPage.php:783
 msgid "Product Slider Carousel"
 msgstr "Карусель слайдара тавараў"
 
-#: src/Admin/ModulesPage.php:741
+#: src/Admin/ModulesPage.php:784
 msgid "Lightweight product slider based on scroll-snap, with related, sale, or featured products."
 msgstr "Лёгкі слайдар тавараў на аснове scroll-snap, са звязанымі, акцыйнымі або вылучанымі таварамі."
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
 msgid "Product source"
 msgstr "Крыніца тавараў"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 msgid "Related"
 msgstr "Звязаныя"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 msgid "Upsell"
 msgstr "Upsell"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Service/BadgeService.php:101
 msgid "Sale"
 msgstr "Акцыя"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:39
 msgid "Featured"
 msgstr "Вылучаныя"
 
-#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:793
 msgid "Number of products"
 msgstr "Колькасць тавараў"
 
-#: src/Admin/ModulesPage.php:758
+#: src/Admin/ModulesPage.php:801
 msgid "Show \"view all\" link"
 msgstr "Паказваць спасылку «паглядзець усё»"
 
-#: src/Admin/ModulesPage.php:759
+#: src/Admin/ModulesPage.php:802
 msgid "Show empty state without products"
 msgstr "Паказваць пусты стан без тавараў"
 
-#: src/Admin/ModulesPage.php:760
+#: src/Admin/ModulesPage.php:803
 msgid "Empty state text"
 msgstr "Тэкст пустога стану"
 
-#: src/Admin/ModulesPage.php:761
+#: src/Admin/ModulesPage.php:804
 msgid "\"view all\" link text"
 msgstr "Тэкст спасылкі «паглядзець усё»"
 
-#: src/Admin/ModulesPage.php:762
+#: src/Admin/ModulesPage.php:805
 msgid "How to open \"view all\" link"
 msgstr "Як адкрываць спасылку «паглядзець усё»"
 
-#: src/Admin/ModulesPage.php:767
+#: src/Admin/ModulesPage.php:810
 msgid "Waitlist"
 msgstr "Спіс чакання"
 
-#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:811
 msgid "Waitlist for out-of-stock products, with email signup and automatic notifications upon restock."
 msgstr "Спіс чакання для тавараў не ў наяўнасці, з падпіскай праз e-mail і аўтаматычнымі апавяшчэннямі пасля папаўнення запасу."
 
-#: src/Admin/ModulesPage.php:775
+#: src/Admin/ModulesPage.php:818
 msgid "Allow guests to sign up"
 msgstr "Дазволіць гасцям падпісвацца"
 
-#: src/Admin/ModulesPage.php:777
-#: src/Admin/ModulesPage.php:828
+#: src/Admin/ModulesPage.php:820
+#: src/Admin/ModulesPage.php:871
 msgid "Show header"
 msgstr "Паказваць загаловак"
 
-#: src/Admin/ModulesPage.php:778
-#: src/Admin/ModulesPage.php:1330
+#: src/Admin/ModulesPage.php:821
+#: src/Admin/ModulesPage.php:1373
 #: src/AIFeed/ProductMarkdownBuilder.php:127
 msgid "Description"
 msgstr "Апісанне"
 
-#: src/Admin/ModulesPage.php:779
+#: src/Admin/ModulesPage.php:822
 msgid "Show description"
 msgstr "Паказваць апісанне"
 
-#: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:823
 msgid "Email field label"
 msgstr "Подпіс поля e-mail"
 
-#: src/Admin/ModulesPage.php:781
+#: src/Admin/ModulesPage.php:824
 msgid "Email field placeholder"
 msgstr "Тэкст-падказка поля e-mail"
 
-#: src/Admin/ModulesPage.php:784
+#: src/Admin/ModulesPage.php:827
 #: src/Admin/WithdrawalSettingsPage.php:218
 msgid "Consent text"
 msgstr "Тэкст згоды"
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:828
 msgid "Product not found error"
 msgstr "Памылка ненайдзенага тавару"
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:829
 msgid "Waitlist unavailable error"
 msgstr "Памылка недаступнасці спіса чакання"
 
-#: src/Admin/ModulesPage.php:787
+#: src/Admin/ModulesPage.php:830
 msgid "Invalid email error"
 msgstr "Памылка няправільнага e-mail"
 
-#: src/Admin/ModulesPage.php:788
+#: src/Admin/ModulesPage.php:831
 msgid "Missing consent error"
 msgstr "Памылка адсутнай згоды"
 
-#: src/Admin/ModulesPage.php:789
+#: src/Admin/ModulesPage.php:832
 msgid "Login required error"
 msgstr "Памылка неабходнага ўваходу"
 
-#: src/Admin/ModulesPage.php:791
-#: src/Admin/ModulesPage.php:1055
+#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:1098
 msgid "Email intro text"
 msgstr "Тэкст уступу e-mail"
 
-#: src/Admin/ModulesPage.php:792
+#: src/Admin/ModulesPage.php:835
 msgid "Email footer text"
 msgstr "Тэкст ніжняга калонтытула e-mail"
 
-#: src/Admin/ModulesPage.php:797
+#: src/Admin/ModulesPage.php:840
 msgid "Infinite Scrolling"
 msgstr "Бясконцая пракрутка"
 
-#: src/Admin/ModulesPage.php:798
+#: src/Admin/ModulesPage.php:841
 msgid "Lightweight loading of subsequent products on WooCommerce archives, with button mode or automatic loading."
 msgstr "Лёгкая загрузка наступных тавараў у архівах WooCommerce, у рэжыме кнопкі або аўтаматычнай загрузкі."
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Operation mode"
 msgstr "Рэжым працы"
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Button"
 msgstr "Кнопка"
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Automatic scroll"
 msgstr "Аўтаматычная пракрутка"
 
-#: src/Admin/ModulesPage.php:807
+#: src/Admin/ModulesPage.php:850
 msgid "Loading error text"
 msgstr "Тэкст памылкі загрузкі"
 
-#: src/Admin/ModulesPage.php:808
+#: src/Admin/ModulesPage.php:851
 msgid "End of list text"
 msgstr "Тэкст канца спіса"
 
-#: src/Admin/ModulesPage.php:809
+#: src/Admin/ModulesPage.php:852
 msgid "Show status messages"
 msgstr "Паказваць паведамленні статусу"
 
-#: src/Admin/ModulesPage.php:810
+#: src/Admin/ModulesPage.php:853
 msgid "Show button also in auto mode"
 msgstr "Паказваць кнопку таксама ў аўтаматычным рэжыме"
 
-#: src/Admin/ModulesPage.php:811
+#: src/Admin/ModulesPage.php:854
 msgid "Show on shop page"
 msgstr "Паказваць на старонцы крамы"
 
-#: src/Admin/ModulesPage.php:812
+#: src/Admin/ModulesPage.php:855
 msgid "Show on categories and tags"
 msgstr "Паказваць у катэгорыях і тэгах"
 
-#: src/Admin/ModulesPage.php:813
+#: src/Admin/ModulesPage.php:856
 msgid "How many pages to auto-load"
 msgstr "Колькі старонак загружаць аўтаматычна"
 
-#: src/Admin/ModulesPage.php:813
+#: src/Admin/ModulesPage.php:856
 msgid "0 = unlimited. After this many pages, auto-loading stops and shows a manual button"
 msgstr "0 = без абмежавання. Пасля такой колькасці старонак аўтазагрузка спыняецца і з'яўляецца ручная кнопка"
 
-#: src/Admin/ModulesPage.php:818
+#: src/Admin/ModulesPage.php:861
 msgid "WooCommerce Popup"
 msgstr "Папап WooCommerce"
 
-#: src/Admin/ModulesPage.php:819
+#: src/Admin/ModulesPage.php:862
 msgid "Lightweight promotional or lead popup with frequency, delay, and display location control."
 msgstr "Лёгкі прамацыйны або лід-папап з кіраваннем частатой, затрымкай і месцам адлюстравання."
 
-#: src/Admin/ModulesPage.php:826
+#: src/Admin/ModulesPage.php:869
 msgid "Content"
 msgstr "Змесціва"
 
-#: src/Admin/ModulesPage.php:827
+#: src/Admin/ModulesPage.php:870
 msgid "CTA text"
 msgstr "Тэкст CTA"
 
-#: src/Admin/ModulesPage.php:831
+#: src/Admin/ModulesPage.php:874
 msgid "Dialog box label"
 msgstr "Подпіс дыялогавага акна"
 
-#: src/Admin/ModulesPage.php:832
+#: src/Admin/ModulesPage.php:875
 msgid "CTA URL"
 msgstr "URL CTA"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 msgid "CTA Fallback URL"
 msgstr "Запасны URL CTA"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 msgid "My account"
 msgstr "Маё конто"
 
-#: src/Admin/ModulesPage.php:833
-#: src/Admin/ModulesPage.php:837
+#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:880
 msgid "Home page"
 msgstr "Галоўная старонка"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 #: src/AIFeed/LlmsTxtService.php:99
 msgid "Shop"
 msgstr "Крама"
 
-#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:877
 msgid "Show CTA button"
 msgstr "Паказваць кнопку CTA"
 
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:878
 msgid "How to open CTA"
 msgstr "Як адкрываць CTA"
 
-#: src/Admin/ModulesPage.php:838
+#: src/Admin/ModulesPage.php:881
 msgid "Shop and archives"
 msgstr "Крама і архівы"
 
-#: src/Admin/ModulesPage.php:841
-#: src/Admin/ModulesPage.php:1261
+#: src/Admin/ModulesPage.php:884
+#: src/Admin/ModulesPage.php:1304
 #: src/Service/LiveCartService.php:82
 #: src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Каса"
 
-#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:885
 msgid "Delay in seconds"
 msgstr "Затрымка ў секундах"
 
-#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:885
 msgid "How long to wait after page load before showing the popup"
 msgstr "Як доўга чакаць пасля загрузкі старонкі перад паказам папапа"
 
-#: src/Admin/ModulesPage.php:843
+#: src/Admin/ModulesPage.php:886
 msgid "Frequency of re-showing (days)"
 msgstr "Частата паўторнага паказу (дні)"
 
-#: src/Admin/ModulesPage.php:843
+#: src/Admin/ModulesPage.php:886
 msgid "After closing, the popup will not appear again for this many days (uses cookie)"
 msgstr "Пасля закрыцця акно не з'явіцца зноў на працягу гэтай колькасці дзён (выкарыстоўвае cookie)"
 
-#: src/Admin/ModulesPage.php:849
+#: src/Admin/ModulesPage.php:892
 msgid "GPSR - Product safety"
 msgstr "GPSR - бяспека прадукцыі"
 
-#: src/Admin/ModulesPage.php:850
+#: src/Admin/ModulesPage.php:893
 msgid "GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export."
 msgstr "Інструменты бяспекі прадукцыі GPSR: даныя вытворцы і імпарцёра, адказная асоба, ідэнтыфікатары прадукту, папярэджанні аб бяспецы, інструкцыі, а таксама масавы імпарт або экспарт CSV."
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 msgid "Display mode"
 msgstr "Рэжым адлюстравання"
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 msgid "Accordion"
 msgstr "Акардэон"
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 #: src/Service/CustomCheckoutFieldsService.php:528
 msgid "Section"
 msgstr "Раздзел"
 
-#: src/Admin/ModulesPage.php:857
+#: src/Admin/ModulesPage.php:900
 msgid "Section title"
 msgstr "Загаловак раздзела"
 
-#: src/Admin/ModulesPage.php:857
+#: src/Admin/ModulesPage.php:900
 msgid "Product safety"
 msgstr "Бяспека прадукту"
 
-#: src/Admin/ModulesPage.php:862
+#: src/Admin/ModulesPage.php:905
 msgid "Verified purchase badge"
 msgstr "Значок пацверджанай пакупкі"
 
-#: src/Admin/ModulesPage.php:863
+#: src/Admin/ModulesPage.php:906
 msgid "Badge shown on reviews from customers who actually purchased the product."
 msgstr "Значок, які паказваецца на водгуках кліентаў, што сапраўды набылі прадукт."
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:912
 msgid "Badge text"
 msgstr "Тэкст значка"
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:912
 #: src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
 msgstr "Пацверджаная пакупка"
 
-#: src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:917
 msgid "Anti-greenwashing"
 msgstr "Анты-грынвошынг"
 
-#: src/Admin/ModulesPage.php:875
+#: src/Admin/ModulesPage.php:918
 msgid "Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026)."
 msgstr "Палі для прадуктаў: падстава экалагічнай заявы, спасылка на сертыфікат, тэрмін дзеяння. Адпаведнасць дырэктыве супраць грынвошынгу (верасень 2026)."
 
-#: src/Admin/ModulesPage.php:884
+#: src/Admin/ModulesPage.php:927
 msgid "DSA Toolkit"
 msgstr "Інструменты DSA"
 
-#: src/Admin/ModulesPage.php:885
+#: src/Admin/ModulesPage.php:928
 msgid "Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report]."
 msgstr "Інструменты Digital Services Act: налады кантактнага пункта, форма паведамлення пра нелегальны кантэнт або прадукты і экран справаздач для адміністратара. Шорткод: [polski_dsa_report]."
 
-#: src/Admin/ModulesPage.php:886
-#: src/Admin/ModulesPage.php:902
-#: src/Admin/ModulesPage.php:914
 #: src/Admin/ModulesPage.php:929
+#: src/Admin/ModulesPage.php:945
+#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:972
 #: src/AIFeed/LlmsTxtService.php:109
 msgid "Consumer rights"
 msgstr "Правы спажыўца"
 
-#: src/Admin/ModulesPage.php:891
+#: src/Admin/ModulesPage.php:934
 msgid "DSA contact name"
 msgstr "Кантакт DSA - імя"
 
-#: src/Admin/ModulesPage.php:892
+#: src/Admin/ModulesPage.php:935
 msgid "DSA contact email"
 msgstr "Кантакт DSA - email"
 
-#: src/Admin/ModulesPage.php:893
+#: src/Admin/ModulesPage.php:936
 msgid "DSA contact phone"
 msgstr "Кантакт DSA - тэлефон"
 
-#: src/Admin/ModulesPage.php:900
+#: src/Admin/ModulesPage.php:943
 msgid "KSeF readiness"
 msgstr "Гатоўнасць да KSeF"
 
-#: src/Admin/ModulesPage.php:901
+#: src/Admin/ModulesPage.php:944
 msgid "Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator."
 msgstr "Аўтаматычнае выяўленне заказаў, якія могуць патрабаваць выстаўлення рахункаў KSeF на падставе NIP, а таксама хукі для інтэграцыі і індыкатар стану ў панэлі адміністратара."
 
-#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:950
 msgid "Automatically detect based on NIP"
 msgstr "Аўтаматычна выяўляць на падставе NIP"
 
-#: src/Admin/ModulesPage.php:912
+#: src/Admin/ModulesPage.php:955
 #: src/Service/SecurityIncidentService.php:90
 msgid "Security incidents"
 msgstr "Інцыдэнты бяспекі"
 
-#: src/Admin/ModulesPage.php:913
+#: src/Admin/ModulesPage.php:956
 msgid "CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export."
 msgstr "Журнал інцыдэнтаў, арыентаваны на CRA, для ўразлівасцей, парушэнняў, збояў староннніх пастаўшчыкоў і далейшых аперацыйных дзеянняў. Уключае адсочванне стану і экспарт CSV."
 
-#: src/Admin/ModulesPage.php:918
+#: src/Admin/ModulesPage.php:961
 #: src/Service/SecurityIncidentService.php:131
 msgid "Incident log"
 msgstr "Журнал інцыдэнтаў"
 
-#: src/Admin/ModulesPage.php:921
-#: src/Admin/ModulesPage.php:1014
+#: src/Admin/ModulesPage.php:964
+#: src/Admin/ModulesPage.php:1057
 msgid "Security contact email"
 msgstr "Кантактны email па бяспецы"
 
-#: src/Admin/ModulesPage.php:922
+#: src/Admin/ModulesPage.php:965
 msgid "Default reporter name"
 msgstr "Прадвызначанае імя заяўніка"
 
-#: src/Admin/ModulesPage.php:927
+#: src/Admin/ModulesPage.php:970
 msgid "Store health monitor"
 msgstr "Манітор стану крамы"
 
-#: src/Admin/ModulesPage.php:928
+#: src/Admin/ModulesPage.php:971
 msgid "Continuous, passive monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies (\"traffic but no orders\"). Sends email or webhook alerts. Checks run every 5 minutes and never place synthetic orders."
 msgstr "Бесперапынны пасіўны маніторынг фатальных памылак на фронтэндзе, доля няўдалых аплат і анамаліі продажаў («ёсць трафік, але няма заказаў»). Адпраўляе апавяшчэнні па email або webhook. Праверкі выконваюцца кожныя 5 хвілін і ніколі не ствараюць тэставых заказаў."
 
-#: src/Admin/ModulesPage.php:933
+#: src/Admin/ModulesPage.php:976
 msgid "Health dashboard"
 msgstr "Панэль стану"
 
-#: src/Admin/ModulesPage.php:936
+#: src/Admin/ModulesPage.php:979
 msgid "Alert email"
 msgstr "Email для апавяшчэнняў"
 
-#: src/Admin/ModulesPage.php:936
+#: src/Admin/ModulesPage.php:979
 msgid "Where to send health alerts. Defaults to the site admin email."
 msgstr "Куды адпраўляць апавяшчэнні пра стан. Прадвызначана email адміністратара сайта."
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:980
 msgid "Alert webhook URL"
 msgstr "URL webhook для апавяшчэнняў"
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:980
 msgid "Optional. Sends a JSON {\"text\": ...} payload (Slack/Discord-compatible)."
 msgstr "Неабавязкова. Адпраўляе нагрузку JSON {\"text\": ...} (сумяшчальна са Slack/Discord)."
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:981
 msgid "Checkout failure threshold (%)"
 msgstr "Парог няўдалых аплат (%)"
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:981
 msgid "Alert when this share of checkouts fails within the last 2 hours."
 msgstr "Апавяшчаць, калі такая доля аплат завяршаецца няўдала за апошнія 2 гадзіны."
 
-#: src/Admin/ModulesPage.php:939
+#: src/Admin/ModulesPage.php:982
 msgid "Minimum checkout sample"
 msgstr "Мінімальная выбарка аплат"
 
-#: src/Admin/ModulesPage.php:939
+#: src/Admin/ModulesPage.php:982
 msgid "Ignore the failure rate until at least this many checkouts are observed."
 msgstr "Ігнараваць долю няўдач, пакуль не назіраецца прынамсі такая колькасць аплат."
 
-#: src/Admin/ModulesPage.php:940
+#: src/Admin/ModulesPage.php:983
 msgid "Sales anomaly threshold"
 msgstr "Парог анамаліі продажаў"
 
-#: src/Admin/ModulesPage.php:940
+#: src/Admin/ModulesPage.php:983
 msgid "Alert only when this many orders are typical for the hour but none arrive."
 msgstr "Апавяшчаць толькі тады, калі для гадзіны звычайна гэтулькі заказаў, але ні аднаго не паступае."
 
-#: src/Admin/ModulesPage.php:941
+#: src/Admin/ModulesPage.php:984
 msgid "Alert cooldown (minutes)"
 msgstr "Перапынак паміж апавяшчэннямі (хвіліны)"
 
-#: src/Admin/ModulesPage.php:941
+#: src/Admin/ModulesPage.php:984
 msgid "Minimum time between repeat alerts for an ongoing problem."
 msgstr "Мінімальны час паміж паўторнымі апавяшчэннямі пра бягучую праблему."
 
-#: src/Admin/ModulesPage.php:948
+#: src/Admin/ModulesPage.php:991
 msgid "Structured Data (Schema.org)"
 msgstr "Структураваныя даныя (Schema.org)"
 
-#: src/Admin/ModulesPage.php:949
+#: src/Admin/ModulesPage.php:992
 msgid "Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation."
 msgstr "Аўтаматычнае ўкараненне пашыраных тэгаў JSON-LD, што падтрымлівае індэксаванне прадуктаў у Google са захаваннем даных, спецыфічных для плагіна."
 
-#: src/Admin/ModulesPage.php:950
+#: src/Admin/ModulesPage.php:993
 msgid "SEO & Optimization"
 msgstr "SEO і аптымізацыя"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:998
 msgid "Enable structured data integration"
 msgstr "Уключыць інтэграцыю структураваных даных"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:998
 msgid "Main switch for Schema.org JSON-LD modifications."
 msgstr "Галоўны пераключальнік мадыфікацый JSON-LD Schema.org."
 
-#: src/Admin/ModulesPage.php:956
+#: src/Admin/ModulesPage.php:999
 msgid "Data to include"
 msgstr "Даныя для ўключэння"
 
-#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:1000
 msgid "Include Brand"
 msgstr "Уключыць брэнд"
 
-#: src/Admin/ModulesPage.php:958
+#: src/Admin/ModulesPage.php:1001
 msgid "Include Manufacturer"
 msgstr "Уключыць вытворцу"
 
-#: src/Admin/ModulesPage.php:959
+#: src/Admin/ModulesPage.php:1002
 msgid "Include barcodes (GTIN)"
 msgstr "Уключыць штрых-коды (GTIN)"
 
-#: src/Admin/ModulesPage.php:960
+#: src/Admin/ModulesPage.php:1003
 msgid "Include Unit Price"
 msgstr "Уключыць цану за адзінку"
 
-#: src/Admin/ModulesPage.php:967
+#: src/Admin/ModulesPage.php:1010
 msgid "Checkout and consent integration"
 msgstr "Інтэграцыя афармлення заказу і згод"
 
-#: src/Admin/ModulesPage.php:968
+#: src/Admin/ModulesPage.php:1011
 msgid "Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages."
 msgstr "Выяўленне папулярных пашырэнняў палёў афармлення заказу, cookie і даных прадукту для захавання сумяшчальнасці налад і паведамленняў."
 
-#: src/Admin/ModulesPage.php:969
+#: src/Admin/ModulesPage.php:1012
 msgid "Integrations"
 msgstr "Інтэграцыі"
 
-#: src/Admin/ModulesPage.php:983
+#: src/Admin/ModulesPage.php:1026
 msgid "Store Audit"
 msgstr "Аўдыт крамы"
 
-#: src/Admin/ModulesPage.php:984
+#: src/Admin/ModulesPage.php:1027
 msgid "Automatic verification of the most common issues: missing legal pages, pre-selected checkboxes, company data, GDPR, Omnibus."
 msgstr "Аўтаматычная праверка найбольш частых праблем: адсутныя прававыя старонкі, загадзя адзначаныя сцяжкі, даныя кампаніі, GDPR, Omnibus."
 
-#: src/Admin/ModulesPage.php:985
-#: src/Admin/ModulesPage.php:997
-#: src/Admin/ModulesPage.php:1009
-#: src/Admin/ModulesPage.php:1022
-#: src/Admin/ModulesPage.php:1114
-#: src/Admin/ModulesPage.php:1237
+#: src/Admin/ModulesPage.php:1028
+#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1052
+#: src/Admin/ModulesPage.php:1065
+#: src/Admin/ModulesPage.php:1157
+#: src/Admin/ModulesPage.php:1280
 msgid "Tools"
 msgstr "Інструменты"
 
-#: src/Admin/ModulesPage.php:990
+#: src/Admin/ModulesPage.php:1033
 msgid "Open compliance audit report"
 msgstr "Адкрыць справаздачу аўдыту адпаведнасці"
 
-#: src/Admin/ModulesPage.php:995
+#: src/Admin/ModulesPage.php:1038
 msgid "Plugin data on uninstall"
 msgstr "Даныя плагіна пры выдаленні"
 
-#: src/Admin/ModulesPage.php:996
+#: src/Admin/ModulesPage.php:1039
 msgid "Choose whether Polski deletes its database tables, settings, and stored logs when the plugin is removed from WordPress."
 msgstr "Выберыце, ці выдаляе Polski свае табліцы базы даных, налады і захаваныя журналы, калі плагін выдаляецца з WordPress."
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1045
 msgid "Delete plugin data on uninstall"
 msgstr "Выдаляць даныя плагіна пры выдаленні"
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1045
 msgid "If enabled, uninstall removes plugin tables, settings, and stored logs including deactivation feedback."
 msgstr "Калі ўключана, выдаленне прыбірае табліцы плагіна, налады і захаваныя журналы, уключаючы водгукі пры дэактывацыі."
 
-#: src/Admin/ModulesPage.php:1007
+#: src/Admin/ModulesPage.php:1050
 msgid "CRA - Cyber Resilience"
 msgstr "CRA - кіберустойлівасць"
 
-#: src/Admin/ModulesPage.php:1008
+#: src/Admin/ModulesPage.php:1051
 msgid "Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy."
 msgstr "Cyber Resilience Act: файл security.txt (RFC 9116), кантакт па бяспецы, палітыка паведамлення пра ўразлівасці."
 
-#: src/Admin/ModulesPage.php:1015
+#: src/Admin/ModulesPage.php:1058
 msgid "Security policy URL"
 msgstr "URL палітыкі бяспекі"
 
-#: src/Admin/ModulesPage.php:1020
+#: src/Admin/ModulesPage.php:1063
 msgid "DPA Registry (GDPR)"
 msgstr "Рэестр DPA (GDPR)"
 
-#: src/Admin/ModulesPage.php:1021
+#: src/Admin/ModulesPage.php:1064
 msgid "Detection of third-party services processing customers' personal data. Tracking the status of data processing agreements."
 msgstr "Выяўленне старонніх сэрвісаў, якія апрацоўваюць персанальныя даныя кліентаў. Адсочванне стану пагадненняў аб апрацоўцы даных."
 
-#: src/Admin/ModulesPage.php:1030
+#: src/Admin/ModulesPage.php:1073
 msgid "Minimum Order Value / Quantity"
 msgstr "Мінімальная вартасць заказу / колькасць"
 
-#: src/Admin/ModulesPage.php:1031
+#: src/Admin/ModulesPage.php:1074
 msgid "Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages."
 msgstr "Блакіраваць афармленне заказу, калі кошык не дасягае мінімальнай вартасці заказу або мінімальнай колькасці пазіцый. Паказвае паведамленне на старонках кошыка і афармлення заказу."
 
-#: src/Admin/ModulesPage.php:1037
+#: src/Admin/ModulesPage.php:1080
 msgid "Minimum order value (0 = disabled)"
 msgstr "Мінімальная вартасць заказу (0 = адключана)"
 
-#: src/Admin/ModulesPage.php:1037
+#: src/Admin/ModulesPage.php:1080
 msgid "Cart subtotal must reach this amount to proceed to checkout."
 msgstr "Прамежкавая сума кошыка павінна дасягнуць гэтай велічыні, каб перайсці да афармлення заказу."
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1081
 msgid "Minimum number of items (0 = disabled)"
 msgstr "Мінімальная колькасць пазіцый (0 = адключана)"
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1081
 msgid "Total number of items in cart must reach this count."
 msgstr "Агульная колькасць пазіцый у кошыку павінна дасягнуць гэтай велічыні."
 
-#: src/Admin/ModulesPage.php:1039
+#: src/Admin/ModulesPage.php:1082
 msgid "Exclude sale items from minimum value"
 msgstr "Выключыць тавары са зніжкай з мінімальнай вартасці"
 
-#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1083
 msgid "Message for minimum value"
 msgstr "Паведамленне для мінімальнай вартасці"
 
-#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1083
 msgid "Tokens: {min_value}, {current_value}"
 msgstr "Зменныя: {min_value}, {current_value}"
 
-#: src/Admin/ModulesPage.php:1041
+#: src/Admin/ModulesPage.php:1084
 msgid "Message for minimum quantity"
 msgstr "Паведамленне для мінімальнай колькасці"
 
-#: src/Admin/ModulesPage.php:1041
+#: src/Admin/ModulesPage.php:1084
 msgid "Tokens: {min_quantity}, {current_quantity}"
 msgstr "Зменныя: {min_quantity}, {current_quantity}"
 
-#: src/Admin/ModulesPage.php:1046
+#: src/Admin/ModulesPage.php:1089
 msgid "Review Request Emails"
 msgstr "Лісты з просьбай пра водгук"
 
-#: src/Admin/ModulesPage.php:1047
+#: src/Admin/ModulesPage.php:1090
 msgid "Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out."
 msgstr "Аўтаматычна адпраўляць кліентам лісты з просьбай пра водгук пасля завяршэння заказу. Уключае выявы прадуктаў, спасылкі на водгукі і магчымасць адмовы."
 
-#: src/Admin/ModulesPage.php:1053
+#: src/Admin/ModulesPage.php:1096
 msgid "Send after (days)"
 msgstr "Адправіць праз (дзён)"
 
-#: src/Admin/ModulesPage.php:1053
+#: src/Admin/ModulesPage.php:1096
 msgid "Number of days after order completion before sending the review request."
 msgstr "Колькасць дзён пасля завяршэння заказу да адпраўкі просьбы пра водгук."
 
-#: src/Admin/ModulesPage.php:1054
+#: src/Admin/ModulesPage.php:1097
 msgid "Tokens: {first_name}, {order_number}"
 msgstr "Зменныя: {first_name}, {order_number}"
 
-#: src/Admin/ModulesPage.php:1055
+#: src/Admin/ModulesPage.php:1098
 msgid "Tokens: {first_name}"
 msgstr "Зменныя: {first_name}"
 
-#: src/Admin/ModulesPage.php:1056
+#: src/Admin/ModulesPage.php:1099
 msgid "Review button text"
 msgstr "Тэкст кнопкі водгуку"
 
-#: src/Admin/ModulesPage.php:1061
+#: src/Admin/ModulesPage.php:1104
 msgid "From Price for Variable Products"
 msgstr "Цана «ад» для варыятыўных прадуктаў"
 
-#: src/Admin/ModulesPage.php:1062
+#: src/Admin/ModulesPage.php:1105
 msgid "Display \"from {price}\" instead of a price range for variable products. Cleaner presentation on archives and product pages."
 msgstr "Паказваць «ад {price}» замест дыяпазону цэн для варыятыўных прадуктаў. Больш чыстае адлюстраванне ў архівах і на старонках прадуктаў."
 
-#: src/Admin/ModulesPage.php:1063
-#: src/Admin/ModulesPage.php:1223
+#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1266
 msgid "Prices and Omnibus"
 msgstr "Цэны і Omnibus"
 
-#: src/Admin/ModulesPage.php:1068
+#: src/Admin/ModulesPage.php:1111
 msgid "Enable \"from\" price display"
 msgstr "Уключыць адлюстраванне цаны «ад»"
 
-#: src/Admin/ModulesPage.php:1069
+#: src/Admin/ModulesPage.php:1112
 msgid "Price text template"
 msgstr "Шаблон тэксту цаны"
 
-#: src/Admin/ModulesPage.php:1069
+#: src/Admin/ModulesPage.php:1112
 msgid "Token: {price}"
 msgstr "Зменная: {price}"
 
-#: src/Admin/ModulesPage.php:1076
+#: src/Admin/ModulesPage.php:1119
 msgid "Auto Restore Stock"
 msgstr "Аўтаматычнае аднаўленне запасаў"
 
-#: src/Admin/ModulesPage.php:1077
+#: src/Admin/ModulesPage.php:1120
 msgid "Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention."
 msgstr "Аўтаматычна аднаўляць запасы прадуктаў пры скасаванні, вяртанні або няўдачы заказаў. Падтрымлівае дакладнасць інвентару без ручнога ўмяшання."
 
-#: src/Admin/ModulesPage.php:1078
-#: src/Admin/ModulesPage.php:1088
+#: src/Admin/ModulesPage.php:1121
+#: src/Admin/ModulesPage.php:1131
 msgid "Stock & Cart"
 msgstr "Склад і кошык"
 
-#: src/Admin/ModulesPage.php:1086
+#: src/Admin/ModulesPage.php:1129
 msgid "AJAX Add to Cart"
 msgstr "Дадаванне ў кошык праз AJAX"
 
-#: src/Admin/ModulesPage.php:1087
+#: src/Admin/ModulesPage.php:1130
 msgid "Add products to cart without page reload, including variable products on single product pages. Shows a toast notification on success."
 msgstr "Дадавайце прадукты ў кошык без перазагрузкі старонкі, уключаючы варыятыўныя прадукты на старонках асобных прадуктаў. Паказвае ўсплываючае паведамленне пры поспеху."
 
-#: src/Admin/ModulesPage.php:1098
+#: src/Admin/ModulesPage.php:1141
 msgid "GA4 DataLayer / GTM"
 msgstr "GA4 DataLayer / GTM"
 
-#: src/Admin/ModulesPage.php:1099
+#: src/Admin/ModulesPage.php:1142
 msgid "Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, add_to_cart, begin_checkout, purchase events. Supports GTM container and gtag.js."
 msgstr "Адсочванне электроннага гандлю Google Analytics 4 праз dataLayer. Адсочвае падзеі view_item, add_to_cart, begin_checkout, purchase. Падтрымлівае кантэйнер GTM і gtag.js."
 
-#: src/Admin/ModulesPage.php:1100
+#: src/Admin/ModulesPage.php:1143
 #: src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166
 #: src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Аналітыка"
 
-#: src/Admin/ModulesPage.php:1105
+#: src/Admin/ModulesPage.php:1148
 msgid "GTM Container ID"
 msgstr "ID кантэйнера GTM"
 
-#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1149
 msgid "GA4 Measurement ID"
 msgstr "ID вымярэння GA4"
 
-#: src/Admin/ModulesPage.php:1107
+#: src/Admin/ModulesPage.php:1150
 msgid "Use SKU as product ID"
 msgstr "Выкарыстоўваць SKU як ID прадукту"
 
-#: src/Admin/ModulesPage.php:1107
+#: src/Admin/ModulesPage.php:1150
 msgid "Send SKU instead of WooCommerce product ID in ecommerce events"
 msgstr "Адпраўляць SKU замест ID прадукту WooCommerce у падзеях электроннага гандлю"
 
-#: src/Admin/ModulesPage.php:1112
+#: src/Admin/ModulesPage.php:1155
 #: src/Service/StockExportService.php:34
 #: src/Service/StockExportService.php:35
 #: src/Service/StockExportService.php:59
 msgid "Stock Export"
 msgstr "Экспарт запасаў"
 
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:1156
 msgid "Export WooCommerce product stock data as CSV. Configurable fields, stock threshold filters, variation support. Available under Products > Stock Export."
 msgstr "Экспартуйце даныя запасаў прадуктаў WooCommerce у CSV. Наладжвальныя палі, фільтры па парозе запасаў, падтрымка варыяцый. Даступна ў Прадукты > Экспарт запасаў."
 
-#: src/Admin/ModulesPage.php:1118
+#: src/Admin/ModulesPage.php:1161
 msgid "Export stock"
 msgstr "Экспартаваць запасы"
 
-#: src/Admin/ModulesPage.php:1124
+#: src/Admin/ModulesPage.php:1167
 msgid "Social Login"
 msgstr "Сацыяльны ўваход"
 
-#: src/Admin/ModulesPage.php:1125
+#: src/Admin/ModulesPage.php:1168
 msgid "Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts."
 msgstr "Дазвольце кліентам рэгістравацца і ўваходзіць праз Google або Facebook. Паказвае фірмовыя кнопкі на старонках Мой акаўнт, афармлення заказу і ўваходу WordPress. Аўтаматычна стварае акаўнты кліентаў WooCommerce."
 
-#: src/Admin/ModulesPage.php:1126
-#: src/Admin/ModulesPage.php:1144
-#: src/Admin/ModulesPage.php:1154
-#: src/Admin/ModulesPage.php:1166
-#: src/Admin/ModulesPage.php:1182
-#: src/Admin/ModulesPage.php:1192
-#: src/Admin/ModulesPage.php:1206
+#: src/Admin/ModulesPage.php:1169
+#: src/Admin/ModulesPage.php:1187
+#: src/Admin/ModulesPage.php:1197
+#: src/Admin/ModulesPage.php:1209
+#: src/Admin/ModulesPage.php:1225
+#: src/Admin/ModulesPage.php:1235
 #: src/Admin/ModulesPage.php:1249
+#: src/Admin/ModulesPage.php:1292
 #: src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "Вітрына крамы"
 
-#: src/Admin/ModulesPage.php:1131
+#: src/Admin/ModulesPage.php:1174
 msgid "Enable Google login"
 msgstr "Уключыць уваход праз Google"
 
-#: src/Admin/ModulesPage.php:1132
+#: src/Admin/ModulesPage.php:1175
 msgid "Google Client ID"
 msgstr "ID кліента Google"
 
-#: src/Admin/ModulesPage.php:1132
+#: src/Admin/ModulesPage.php:1175
 msgid "From Google Cloud Console > APIs & Services > Credentials"
 msgstr "З Google Cloud Console > APIs & Services > Credentials"
 
-#: src/Admin/ModulesPage.php:1133
+#: src/Admin/ModulesPage.php:1176
 msgid "Google Client Secret"
 msgstr "Сакрэт кліента Google"
 
-#: src/Admin/ModulesPage.php:1133
+#: src/Admin/ModulesPage.php:1176
 msgid "OAuth 2.0 Client Secret from the same credential"
 msgstr "Сакрэт кліента OAuth 2.0 з той жа крэдэнцыялі"
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1177
 msgid "Enable Facebook login"
 msgstr "Уключыць уваход праз Facebook"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1178
 msgid "Facebook App ID"
 msgstr "ID праграмы Facebook"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1178
 msgid "From Meta for Developers > App Dashboard > Settings > Basic"
 msgstr "З Meta for Developers > App Dashboard > Settings > Basic"
 
-#: src/Admin/ModulesPage.php:1136
+#: src/Admin/ModulesPage.php:1179
 msgid "Facebook App Secret"
 msgstr "Сакрэт праграмы Facebook"
 
-#: src/Admin/ModulesPage.php:1136
+#: src/Admin/ModulesPage.php:1179
 msgid "App Secret from the same page"
 msgstr "Сакрэт праграмы з той жа старонкі"
 
-#: src/Admin/ModulesPage.php:1137
+#: src/Admin/ModulesPage.php:1180
 msgid "Auto-register new users"
 msgstr "Аўтарэгістрацыя новых карыстальнікаў"
 
-#: src/Admin/ModulesPage.php:1137
+#: src/Admin/ModulesPage.php:1180
 msgid "Create WooCommerce accounts automatically on first social login"
 msgstr "Аўтаматычна ствараць акаўнты WooCommerce пры першым сацыяльным уваходзе"
 
-#: src/Admin/ModulesPage.php:1142
+#: src/Admin/ModulesPage.php:1185
 msgid "Product Authors"
 msgstr "Аўтары прадуктаў"
 
-#: src/Admin/ModulesPage.php:1143
+#: src/Admin/ModulesPage.php:1186
 msgid "Custom taxonomy for product authors/creators. Adds author names on product pages and archives with Schema.org Person markup. Ideal for bookstores and publishers."
 msgstr "Уласная таксанамія для аўтараў/стваральнікаў прадуктаў. Дадае імёны аўтараў на старонках прадуктаў і ў архівах з разметкай Schema.org Person. Ідэальна для кнігарняў і выдаўцоў."
 
-#: src/Admin/ModulesPage.php:1152
+#: src/Admin/ModulesPage.php:1195
 #: src/Service/ExpertReviewService.php:55
 #: src/Service/ExpertReviewService.php:166
 msgid "Expert Reviews"
 msgstr "Экспертныя агляды"
 
-#: src/Admin/ModulesPage.php:1153
+#: src/Admin/ModulesPage.php:1196
 msgid "Custom post type for editorial product reviews. Link expert reviews to products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr "Уласны тып запісаў для рэдакцыйных аглядаў прадуктаў. Звязвайце экспертныя агляды з прадуктамі з ацэнкамі (1-10), вердыктамі і разметкай Schema.org для SEO."
 
-#: src/Admin/ModulesPage.php:1158
+#: src/Admin/ModulesPage.php:1201
 msgid "Manage reviews"
 msgstr "Кіраваць аглядамі"
 
-#: src/Admin/ModulesPage.php:1164
+#: src/Admin/ModulesPage.php:1207
 msgid "Social Proof Notifications"
 msgstr "Апавяшчэнні сацыяльнага доказу"
 
-#: src/Admin/ModulesPage.php:1165
+#: src/Admin/ModulesPage.php:1208
 msgid "Floating purchase notifications showing recent orders (\"Jan from Warszawa just bought...\"). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing."
 msgstr "Плывучыя апавяшчэнні пра пакупкі, што паказваюць нядаўнія заказы («Jan з Warszawa толькі што купіў…»). Даказана павялічваюць канверсіі на 10-15%. Улічваюць прыватнасць, загружаюцца праз AJAX, наладжвальныя пазіцыя і час."
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1214
 msgid "Interval between popups (seconds)"
 msgstr "Інтэрвал паміж акенцамі (секунды)"
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1214
 msgid "Time between showing consecutive notifications. Recommended: 6-12"
 msgstr "Час паміж паказам паслядоўных апавяшчэнняў. Рэкамендуецца: 6-12"
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1215
 msgid "Display duration (seconds)"
 msgstr "Працягласць паказу (секунды)"
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1215
 msgid "How long each notification stays visible. Recommended: 4-6"
 msgstr "Як доўга кожнае апавяшчэнне застаецца бачным. Рэкамендуецца: 4-6"
 
-#: src/Admin/ModulesPage.php:1174
+#: src/Admin/ModulesPage.php:1217
 msgid "Anonymize customer names"
 msgstr "Ананімізаваць імёны кліентаў"
 
-#: src/Admin/ModulesPage.php:1174
+#: src/Admin/ModulesPage.php:1217
 msgid "Shows \"J. from Warszawa\" instead of full names. Recommended for GDPR"
 msgstr "Паказвае «J. з Warszawa» замест поўных імёнаў. Рэкамендуецца для GDPR"
 
-#: src/Admin/ModulesPage.php:1175
+#: src/Admin/ModulesPage.php:1218
 msgid "Hide on mobile devices"
 msgstr "Хаваць на мабільных прыладах"
 
-#: src/Admin/ModulesPage.php:1175
+#: src/Admin/ModulesPage.php:1218
 msgid "Disable on small screens to avoid obstructing content"
 msgstr "Адключыць на малых экранах, каб не засланяць кантэнт"
 
-#: src/Admin/ModulesPage.php:1180
+#: src/Admin/ModulesPage.php:1223
 msgid "Product Q&A"
 msgstr "Пытанні і адказы пра прадукт"
 
-#: src/Admin/ModulesPage.php:1181
+#: src/Admin/ModulesPage.php:1224
 msgid "Amazon-style questions and answers on product pages. Customers ask, anyone answers. Admin email notifications, answer voting, Schema.org QAPage markup for SEO."
 msgstr "Пытанні і адказы на старонках прадуктаў у стылі Amazon. Кліенты пытаюць, хто заўгодна адказвае. Email-апавяшчэнні адміністратару, галасаванне за адказы, разметка Schema.org QAPage для SEO."
 
-#: src/Admin/ModulesPage.php:1190
+#: src/Admin/ModulesPage.php:1233
 msgid "Trust Badges"
 msgstr "Значкі даверу"
 
-#: src/Admin/ModulesPage.php:1191
+#: src/Admin/ModulesPage.php:1234
 msgid "Configurable trust signals on product, cart, and checkout pages: secure payment, fast delivery, returns, quality guarantee. Pure CSS + inline SVG for zero performance impact."
 msgstr "Наладжвальныя сігналы даверу на старонках прадукту, кошыка і афармлення заказу: бяспечная аплата, хуткая дастаўка, вяртанні, гарантыя якасці. Чысты CSS + убудаваны SVG без уплыву на прадукцыйнасць."
 
-#: src/Admin/ModulesPage.php:1198
+#: src/Admin/ModulesPage.php:1241
 msgid "Show on cart"
 msgstr "Паказваць у кошыку"
 
-#: src/Admin/ModulesPage.php:1199
+#: src/Admin/ModulesPage.php:1242
 msgid "Show on checkout"
 msgstr "Паказваць пры афармленні заказу"
 
-#: src/Admin/ModulesPage.php:1204
+#: src/Admin/ModulesPage.php:1247
 msgid "Live Cart Sidebar"
 msgstr "Бакавая панэль кошыка ў рэжыме рэальнага часу"
 
-#: src/Admin/ModulesPage.php:1205
+#: src/Admin/ModulesPage.php:1248
 msgid "Slide-in cart drawer that opens when a product is added to cart. Shows cart items, subtotal, free shipping progress bar, and quick checkout link. No page reload needed."
 msgstr "Выязная панэль кошыка, якая адкрываецца пры дадаванні прадукту ў кошык. Паказвае пазіцыі кошыка, прамежкавую суму, паласу прагрэсу бясплатнай дастаўкі і спасылку хуткага афармлення заказу. Перазагрузка старонкі не патрэбна."
 
-#: src/Admin/ModulesPage.php:1211
+#: src/Admin/ModulesPage.php:1254
 msgid "Auto-open on add to cart"
 msgstr "Аўтаматычна адкрываць пры дадаванні ў кошык"
 
-#: src/Admin/ModulesPage.php:1212
+#: src/Admin/ModulesPage.php:1255
 msgid "Show subtotal"
 msgstr "Паказваць прамежкавую суму"
 
-#: src/Admin/ModulesPage.php:1213
+#: src/Admin/ModulesPage.php:1256
 msgid "Show free shipping progress"
 msgstr "Паказваць прагрэс бясплатнай дастаўкі"
 
-#: src/Admin/ModulesPage.php:1214
+#: src/Admin/ModulesPage.php:1257
 msgid "Free shipping threshold"
 msgstr "Парог бясплатнай дастаўкі"
 
-#: src/Admin/ModulesPage.php:1214
+#: src/Admin/ModulesPage.php:1257
 msgid "Set to 0 to disable progress bar"
 msgstr "Усталюйце 0, каб адключыць паласу прагрэсу"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Panel position"
 msgstr "Пазіцыя панэлі"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Right"
 msgstr "Справа"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Left"
 msgstr "Злева"
 
-#: src/Admin/ModulesPage.php:1216
+#: src/Admin/ModulesPage.php:1259
 msgid "Show background overlay"
 msgstr "Паказваць фонавае зацямненне"
 
-#: src/Admin/ModulesPage.php:1221
+#: src/Admin/ModulesPage.php:1264
 msgid "Price History Chart"
 msgstr "Графік гісторыі цэн"
 
-#: src/Admin/ModulesPage.php:1222
+#: src/Admin/ModulesPage.php:1265
 msgid "Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency."
 msgstr "Візуальны SVG-спарклайн, які паказвае трэнды цэн за 30/90/180 дзён на старонках прадуктаў. Выкарыстоўвае даныя цэн Omnibus. Паказвае найніжэйшыя/найвышэйшыя цэны. Павышае давер і празрыстасць Omnibus."
 
-#: src/Admin/ModulesPage.php:1228
+#: src/Admin/ModulesPage.php:1271
 msgid "History period (days)"
 msgstr "Перыяд гісторыі (дні)"
 
-#: src/Admin/ModulesPage.php:1228
+#: src/Admin/ModulesPage.php:1271
 msgid "Show price data from the last N days. Options: 30, 90, or 180"
 msgstr "Паказваць даныя цэн за апошнія N дзён. Варыянты: 30, 90 або 180"
 
-#: src/Admin/ModulesPage.php:1229
+#: src/Admin/ModulesPage.php:1272
 msgid "Show min/max prices"
 msgstr "Паказваць мін./макс. цэны"
 
-#: src/Admin/ModulesPage.php:1230
+#: src/Admin/ModulesPage.php:1273
 msgid "Line color"
 msgstr "Колер лініі"
 
-#: src/Admin/ModulesPage.php:1230
+#: src/Admin/ModulesPage.php:1273
 msgid "CSS hex color for the chart line, e.g. #0369a1"
 msgstr "Шаснаццатковы CSS-колер лініі графіка, напрыклад #0369a1"
 
-#: src/Admin/ModulesPage.php:1235
+#: src/Admin/ModulesPage.php:1278
 #: src/Service/OrderExportService.php:33
 #: src/Service/OrderExportService.php:34
 #: src/Service/OrderExportService.php:87
 msgid "Order Export"
 msgstr "Экспарт заказаў"
 
-#: src/Admin/ModulesPage.php:1236
+#: src/Admin/ModulesPage.php:1279
 msgid "Export WooCommerce orders to CSV with configurable fields, date range and status filters. 30+ exportable fields including products, customer data, and coupons."
 msgstr "Экспартуйце заказы WooCommerce у CSV з наладжвальнымі палямі, дыяпазонам дат і фільтрамі стану. Больш за 30 палёў для экспарту, уключаючы прадукты, даныя кліентаў і купоны."
 
-#: src/Admin/ModulesPage.php:1241
+#: src/Admin/ModulesPage.php:1284
 msgid "Export orders"
 msgstr "Экспартаваць заказы"
 
-#: src/Admin/ModulesPage.php:1247
+#: src/Admin/ModulesPage.php:1290
 #: src/Service/FaqService.php:40
 #: src/Service/FaqService.php:41
 #: src/Service/FaqService.php:46
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/Admin/ModulesPage.php:1248
+#: src/Admin/ModulesPage.php:1291
 msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
 msgstr "Уласны тып запісаў FAQ з катэгорыямі і шорткодам акардэона [polski_faq]. Уключае структураваныя даныя Schema.org FAQPage для пашыраных фрагментаў SEO."
 
-#: src/Admin/ModulesPage.php:1253
+#: src/Admin/ModulesPage.php:1296
 msgid "Manage FAQ"
 msgstr "Кіраваць FAQ"
 
-#: src/Admin/ModulesPage.php:1259
+#: src/Admin/ModulesPage.php:1302
 #: src/Service/CustomCheckoutFieldsService.php:510
 msgid "Custom Checkout Fields"
 msgstr "Уласныя палі афармлення заказу"
 
-#: src/Admin/ModulesPage.php:1260
+#: src/Admin/ModulesPage.php:1303
 msgid "Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account."
 msgstr "Дадавайце, змяняйце і пераўпарадкоўвайце палі афармлення заказу. Падтрымлівае тыпы text, textarea, select, checkbox, radio, number, email, date і phone. Палі з'яўляюцца ў панэлі адміністратара, лістах і Маім акаўнце."
 
-#: src/Admin/ModulesPage.php:1265
+#: src/Admin/ModulesPage.php:1308
 msgid "Manage fields"
 msgstr "Кіраваць палямі"
 
-#: src/Admin/ModulesPage.php:1328
+#: src/Admin/ModulesPage.php:1371
 #: src/Service/StockExportService.php:346
 msgid "Name"
 msgstr "Назва"
 
-#: src/Admin/ModulesPage.php:1374
+#: src/Admin/ModulesPage.php:1417
 msgid "PRO"
 msgstr "PRO"
 
-#: src/Admin/ModulesPage.php:1383
+#: src/Admin/ModulesPage.php:1426
 msgid "Help"
 msgstr "Дапамога"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1438
+#: src/Admin/ModulesPage.php:1481
 #, php-format
 msgid "Edit %s settings"
 msgstr "Рэдагаваць налады %s"
 
-#: src/Admin/ModulesPage.php:1441
+#: src/Admin/ModulesPage.php:1484
 msgid "Edit settings"
 msgstr "Рэдагаваць налады"
 
-#: src/Admin/ModulesPage.php:1451
-#: src/Admin/ModulesPage.php:1452
+#: src/Admin/ModulesPage.php:1494
+#: src/Admin/ModulesPage.php:1495
 msgid "Open documentation"
 msgstr "Адкрыць дакументацыю"
 
-#: src/Admin/ModulesPage.php:1485
+#: src/Admin/ModulesPage.php:1528
 msgid "Save"
 msgstr "Захаваць"
 
-#: src/Admin/ModulesPage.php:1579
+#: src/Admin/ModulesPage.php:1622
 msgid "none"
 msgstr "няма"
 
-#: src/Admin/ModulesPage.php:1649
+#: src/Admin/ModulesPage.php:1692
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Прабачце, у вас няма доступу да гэтай старонкі."
 
-#: src/Admin/ModulesPage.php:1656
-#: src/Admin/ModulesPage.php:1672
+#: src/Admin/ModulesPage.php:1699
+#: src/Admin/ModulesPage.php:1715
 msgid "Invalid request."
 msgstr "Несапраўдны запыт."
 
-#: src/Admin/ModulesPage.php:1856
+#: src/Admin/ModulesPage.php:1899
 msgid "Legal & Compliance"
 msgstr "Права і адпаведнасць"
 
-#: src/Admin/ModulesPage.php:1858
+#: src/Admin/ModulesPage.php:1901
 msgid "Tax & Pricing"
 msgstr "Падаткі і цэны"
 
-#: src/Admin/ModulesPage.php:1860
+#: src/Admin/ModulesPage.php:1903
 msgid "Checkout & Orders"
 msgstr "Афармленне заказу і заказы"
 
-#: src/Admin/ModulesPage.php:1862
+#: src/Admin/ModulesPage.php:1905
 msgid "Content & Trust"
 msgstr "Кантэнт і давер"
 
-#: src/Admin/ModulesPage.php:1864
+#: src/Admin/ModulesPage.php:1907
 msgid "Advanced & Tools"
 msgstr "Пашыранае і інструменты"
 
-#: src/Admin/ModulesPage.php:1866
+#: src/Admin/ModulesPage.php:1909
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Іншае"
 
-#: src/Admin/ModulesPage.php:1937
+#: src/Admin/ModulesPage.php:1980
 msgid "Could not save module state. Please try again."
 msgstr "Не ўдалося захаваць стан модуля. Калі ласка, паспрабуйце яшчэ раз."
 
-#: src/Admin/ModulesPage.php:1954
+#: src/Admin/ModulesPage.php:1997
 msgid "Compatible Omnibus Extension A"
 msgstr "Сумяшчальнае пашырэнне Omnibus A"
 
-#: src/Admin/ModulesPage.php:1955
+#: src/Admin/ModulesPage.php:1998
 msgid "Compatible Omnibus Extension B"
 msgstr "Сумяшчальнае пашырэнне Omnibus B"
 
-#: src/Admin/ModulesPage.php:1966
+#: src/Admin/ModulesPage.php:2009
 msgid "detected, data synchronized"
 msgstr "выяўлена, даныя сінхранізаваны"
 
-#: src/Admin/ModulesPage.php:1967
+#: src/Admin/ModulesPage.php:2010
 msgid "not installed"
 msgstr "не ўсталявана"
 
-#: src/Admin/ModulesPage.php:1982
+#: src/Admin/ModulesPage.php:2025
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Знешні плагін Omnibus не ўсталяваны. Polski выкарыстоўвае ўбудаваную сістэму адсочвання цэн."
 
-#: src/Admin/ModulesPage.php:1984
+#: src/Admin/ModulesPage.php:2027
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Выяўлены знешні плагін. Polski выкарыстоўвае яго даныя замест убудаванай сістэмы."
 
-#: src/Admin/ModulesPage.php:2004
+#: src/Admin/ModulesPage.php:2047
 msgid "OSS observer service is unavailable."
 msgstr "Сэрвіс назіральніка OSS недаступны."
 
-#: src/Admin/ModulesPage.php:2011
+#: src/Admin/ModulesPage.php:2054
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "Плагін One Stop Shop не ўсталяваны. Усталюйце яго, каб аўтаматычна назіраць за ўнутрыеўрапейскім парогам B2C у 10 000 €."
 
-#: src/Admin/ModulesPage.php:2017
+#: src/Admin/ModulesPage.php:2060
 msgid "Install One Stop Shop"
 msgstr "Усталяваць One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2022
+#: src/Admin/ModulesPage.php:2065
 msgid "You need the install_plugins capability to install it from here."
 msgstr "Каб усталяваць яго адсюль, вам патрэбна паўнамоцтва install_plugins."
 
-#: src/Admin/ModulesPage.php:2031
+#: src/Admin/ModulesPage.php:2074
 msgid "One Stop Shop plugin detected."
 msgstr "Выяўлены плагін One Stop Shop."
 
-#: src/Admin/ModulesPage.php:2035
+#: src/Admin/ModulesPage.php:2078
 msgid "OSS procedure"
 msgstr "Працэдура OSS"
 
-#: src/Admin/ModulesPage.php:2037
+#: src/Admin/ModulesPage.php:2080
 msgid "enabled"
 msgstr "уключана"
 
-#: src/Admin/ModulesPage.php:2038
+#: src/Admin/ModulesPage.php:2081
 msgid "disabled"
 msgstr "адключана"
 
-#: src/Admin/ModulesPage.php:2042
+#: src/Admin/ModulesPage.php:2085
 msgid "Auto observer"
 msgstr "Аўтаматычны назіральнік"
 
-#: src/Admin/ModulesPage.php:2044
+#: src/Admin/ModulesPage.php:2087
 msgid "watching threshold"
 msgstr "назіранне за парогам"
 
-#: src/Admin/ModulesPage.php:2045
+#: src/Admin/ModulesPage.php:2088
 msgid "off"
 msgstr "выключана"
 
-#: src/Admin/ModulesPage.php:2050
+#: src/Admin/ModulesPage.php:2093
 msgid "Open OSS settings"
 msgstr "Адкрыць налады OSS"
 
-#: src/Admin/ModulesPage.php:2108
+#: src/Admin/ModulesPage.php:2151
 msgid "detected, integration active"
 msgstr "выяўлена, інтэграцыя актыўная"
 
-#: src/Admin/ModulesPage.php:2111
+#: src/Admin/ModulesPage.php:2154
 msgid "install"
 msgstr "усталяваць"
 
-#: src/Admin/ModulesPage.php:2123
+#: src/Admin/ModulesPage.php:2166
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Не выяўлена падтрымоўваных пашырэнняў касы і файлаў cookie. Polski працягвае працаваць самастойна."
 
-#: src/Admin/ModulesPage.php:2125
+#: src/Admin/ModulesPage.php:2168
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Выяўлены падтрымоўваныя пашырэнні касы, файлаў cookie або даных пра тавары. Polski можа наладзіць інтэграцыю пад актыўны набор."
 
@@ -5896,6 +6036,7 @@ msgid "ID"
 msgstr "ID"
 
 #: src/Admin/WithdrawalsAdminPage.php:193
+#: src/Service/ReturnRequestService.php:228
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
 #: templates/emails/plain/withdrawal-confirmation.php:47
@@ -6003,7 +6144,7 @@ msgid "Reason / notes"
 msgstr "Прычына / нататкі"
 
 #: src/Admin/WithdrawalsAdminPage.php:463
-#: src/Service/WithdrawalService.php:820
+#: src/Service/WithdrawalService.php:854
 msgid "Order not found."
 msgstr "Замова не знойдзена."
 
@@ -6012,8 +6153,8 @@ msgid "Could not save the withdrawal request."
 msgstr "Не ўдалося захаваць запыт на адмову."
 
 #: src/Admin/WithdrawalsAdminPage.php:486
-#: src/Service/WithdrawalService.php:340
-#: src/Service/WithdrawalService.php:423
+#: src/Service/WithdrawalService.php:374
+#: src/Service/WithdrawalService.php:457
 msgid "system"
 msgstr "сістэма"
 
@@ -6343,36 +6484,52 @@ msgid "Excluded from the right of withdrawal"
 msgstr "Выключаны з права адмовы"
 
 #: src/Compatibility/Elementor/Widgets/DefectDescriptionWidget.php:16
-#: src/Service/ProductInfoService.php:281
+#: src/Service/ProductInfoService.php:311
 msgid "Defect Description"
 msgstr "Апісанне браку"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
+msgid "Preset slug"
+msgstr "Slug шаблону"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:34
+msgid "Optional named preset from AJAX Filters settings, e.g. fashion"
+msgstr "Неабавязковы названы шаблон з налад Фільтраў AJAX, напр. fashion"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
 #: resources/js/blocks/ajax-filters/index.js:23
 #: resources/js/blocks/product-slider/index.js:48
 msgid "Show title"
 msgstr "Паказваць назву"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:45
+msgid "Attribute taxonomies"
+msgstr "Таксаноміі атрыбутаў"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:47
+msgid "Comma-separated list, e.g. pa_color,pa_size"
+msgstr "Спіс праз коскі, напр. pa_color,pa_size"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:52
 #: resources/js/blocks/ajax-filters/index.js:28
 msgid "Show categories"
 msgstr "Паказваць катэгорыі"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:53
 #: resources/js/blocks/ajax-filters/index.js:33
 msgid "Show brands"
 msgstr "Паказваць брэнды"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:41
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:55
 msgid "Show availability"
 msgstr "Паказваць даступнасць"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:42
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:56
 msgid "Show on-sale"
 msgstr "Паказваць акцыю"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:57
 #: resources/js/blocks/ajax-filters/index.js:53
 msgid "Show attributes"
 msgstr "Паказваць атрыбуты"
@@ -6390,7 +6547,7 @@ msgid "Lowest Price (Omnibus)"
 msgstr "Найніжэйшая цана (Omnibus)"
 
 #: src/Compatibility/Elementor/Widgets/PowerSupplyWidget.php:16
-#: src/Service/ProductInfoService.php:255
+#: src/Service/ProductInfoService.php:285
 msgid "Power Supply"
 msgstr "Сілкаванне"
 
@@ -6430,7 +6587,7 @@ msgid "Show add to cart button"
 msgstr "Паказваць кнопку дадавання ў кошык"
 
 #: src/Compatibility/Elementor/Widgets/SafetyDocsWidget.php:16
-#: src/Service/ProductInfoService.php:221
+#: src/Service/ProductInfoService.php:251
 msgid "Safety Documents"
 msgstr "Дакументы бяспекі"
 
@@ -6481,6 +6638,7 @@ msgid "Under investigation"
 msgstr "У стадыі расследавання"
 
 #: src/CRA/Enum/IncidentStatus.php:23
+#: src/Enum/ReturnRequestStatus.php:21
 #: src/Service/SecurityIncidentService.php:171
 msgid "Resolved"
 msgstr "Вырашаны"
@@ -6621,6 +6779,15 @@ msgstr "Палітыка вяртанняў"
 msgid "Complaints"
 msgstr "Рэкламацыі"
 
+#: src/Enum/ReturnRequestStatus.php:20
+msgid "In progress"
+msgstr "У працэсе"
+
+#: src/Enum/ReturnRequestStatus.php:22
+#: src/Enum/WithdrawalStatus.php:20
+msgid "Rejected"
+msgstr "Адхілена"
+
 #: src/Enum/TaxDisplayMode.php:15
 msgid "Prices include VAT (gross)"
 msgstr "Цэны з VAT (брута)"
@@ -6702,17 +6869,13 @@ msgstr "Пацверджана"
 msgid "Completed"
 msgstr "Завершана"
 
-#: src/Enum/WithdrawalStatus.php:20
-msgid "Rejected"
-msgstr "Адхілена"
-
 #: src/Hook/AIFeedHooks.php:145
 msgid "View AI Version"
 msgstr "Прагледзець версію AI"
 
-#: src/Hook/ProductHooks.php:318
-msgid "Osoba odpowiedzialna (GPSR)"
-msgstr "Адказная асоба (GPSR)"
+#: src/Hook/StructuredDataHooks.php:61
+msgid "Najniższa cena z 30 dni"
+msgstr "Найніжэйшая цана за 30 дзён"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "1-2 dni robocze"
@@ -7504,7 +7667,7 @@ msgstr "Няправільны тавар."
 #: src/Service/AjaxAddToCartService.php:111
 #: src/Service/CompareService.php:426
 #: src/Service/QuickViewService.php:123
-#: src/Service/WaitlistService.php:101
+#: src/Service/WaitlistService.php:102
 #: src/Service/WishlistService.php:285
 msgid "Product not found."
 msgstr "Тавар не знойдзены."
@@ -8103,6 +8266,8 @@ msgstr "Назва (ключ meta)"
 
 #: src/Service/CustomCheckoutFieldsService.php:527
 #: src/Service/DPATrackerService.php:79
+#: src/Service/ReturnRequestService.php:140
+#: src/Service/ReturnRequestService.php:229
 #: src/Service/SecurityIncidentService.php:102
 #: src/Service/SecurityIncidentService.php:148
 #: src/Service/StockExportService.php:347
@@ -8242,6 +8407,11 @@ msgstr "Дзеянне"
 msgid "Mark as resolved"
 msgstr "Адзначыць як вырашанае"
 
+#: src/Service/DynamicPricingService.php:118
+#: src/Service/OrderExportService.php:56
+msgid "Discount"
+msgstr "Зніжка"
+
 #: src/Service/ExpertReviewService.php:56
 msgid "Expert Review"
 msgstr "Экспертны агляд"
@@ -8322,6 +8492,16 @@ msgstr "Шукаць катэгорыі FAQ"
 #: src/Service/FeaturedVideoService.php:117
 msgid "Watch product in use"
 msgstr "Паглядзець тавар у выкарыстанні"
+
+#. translators: %d: number of products shown after filtering.
+#: src/Service/FilterService.php:73
+#, php-format
+msgid "Zaktualizowano wyniki: %d produktów."
+msgstr "Абноўлены вынікі: %d тавараў."
+
+#: src/Service/FilterService.php:74
+msgid "Zaktualizowano wyniki."
+msgstr "Абноўлены вынікі."
 
 #: src/Service/GPSRService.php:94
 msgid "GPSR"
@@ -8541,10 +8721,6 @@ msgstr "Усяго"
 msgid "Tax"
 msgstr "Падатак"
 
-#: src/Service/OrderExportService.php:56
-msgid "Discount"
-msgstr "Зніжка"
-
 #: src/Service/OrderExportService.php:57
 msgid "Payment method"
 msgstr "Спосаб аплаты"
@@ -8716,7 +8892,11 @@ msgstr "Дадаць новага аўтара"
 msgid "New author name"
 msgstr "Імя новага аўтара"
 
-#: src/Service/ProductInfoService.php:210
+#: src/Service/ProductInfoService.php:191
+msgid "Osoba odpowiedzialna (GPSR)"
+msgstr "Адказная асоба (GPSR)"
+
+#: src/Service/ProductInfoService.php:240
 msgid "Safety Document"
 msgstr "Дакумент бяспекі"
 
@@ -8782,6 +8962,76 @@ msgstr "Не атрымалася загрузіць папярэдні праг
 #: src/Service/QuickViewService.php:148
 msgid "Product Quick View"
 msgstr "Хуткі прагляд тавару"
+
+#: src/Service/ReturnRequestService.php:102
+msgid "Complaint / return"
+msgstr "Рэкламацыя / зварот"
+
+#: src/Service/ReturnRequestService.php:117
+msgid "Your complaints and returns"
+msgstr "Вашы рэкламацыі і звароты"
+
+#: src/Service/ReturnRequestService.php:120
+#: src/Service/ReturnRequestService.php:177
+#: src/Service/ReturnRequestService.php:235
+msgid "Return"
+msgstr "Зварот"
+
+#: src/Service/ReturnRequestService.php:120
+#: src/Service/ReturnRequestService.php:177
+#: src/Service/ReturnRequestService.php:235
+msgid "Complaint"
+msgstr "Рэкламацыя"
+
+#: src/Service/ReturnRequestService.php:134
+msgid "Submit a complaint or return"
+msgstr "Падаць рэкламацыю або зварот"
+
+#: src/Service/ReturnRequestService.php:141
+msgid "Complaint (reklamacja)"
+msgstr "Рэкламацыя"
+
+#: src/Service/ReturnRequestService.php:142
+msgid "Return (zwrot)"
+msgstr "Зварот"
+
+#: src/Service/ReturnRequestService.php:145
+msgid "Submit request"
+msgstr "Адправіць запыт"
+
+#: src/Service/ReturnRequestService.php:154
+#: src/Service/ReturnRequestService.php:263
+msgid "Security check failed."
+msgstr "Праверка бяспекі не атрымалася."
+
+#: src/Service/ReturnRequestService.php:160
+msgid "This order is not eligible."
+msgstr "Гэты заказ не прыдатны."
+
+#. translators: 1: type, 2: order number
+#: src/Service/ReturnRequestService.php:180
+#, php-format
+msgid "%1$s received for order #%2$s"
+msgstr "Атрымана %1$s для заказу #%2$s"
+
+#: src/Service/ReturnRequestService.php:203
+#: src/Service/ReturnRequestService.php:204
+#: src/Service/ReturnRequestService.php:217
+msgid "Returns & complaints"
+msgstr "Звароты і рэкламацыі"
+
+#: src/Service/ReturnRequestService.php:222
+msgid "No requests yet."
+msgstr "Пакуль няма запытаў."
+
+#: src/Service/ReturnRequestService.php:251
+#: src/Service/SecurityIncidentService.php:173
+msgid "Update"
+msgstr "Абнавіць"
+
+#: src/Service/ReturnRequestService.php:267
+msgid "You do not have permission."
+msgstr "У вас няма дазволу."
 
 #: src/Service/ReviewRequestService.php:186
 msgid "You have been unsubscribed from review request emails."
@@ -9161,10 +9411,6 @@ msgstr "У працэсе расследавання"
 #: src/Service/SecurityIncidentService.php:170
 msgid "Monitoring"
 msgstr "Маніторынг"
-
-#: src/Service/SecurityIncidentService.php:173
-msgid "Update"
-msgstr "Абнавіць"
 
 #: src/Service/SecurityIncidentService.php:179
 msgid "Authority"
@@ -9832,35 +10078,39 @@ msgstr "Зварот цягам 14 дзён"
 msgid "Quality guarantee"
 msgstr "Гарантыя якасці"
 
-#: src/Service/WaitlistService.php:105
+#: src/Service/WaitlistService.php:73
+msgid "Something went wrong. Please try again."
+msgstr "Нешта пайшло не так. Калі ласка, паспрабуйце яшчэ раз."
+
+#: src/Service/WaitlistService.php:106
 msgid "Waitlist is unavailable for this product."
 msgstr "Спіс чакання недаступны для гэтага тавару."
 
-#: src/Service/WaitlistService.php:109
+#: src/Service/WaitlistService.php:110
 msgid "Provide a valid email address."
 msgstr "Увядзіце сапраўдны адрас электроннай пошты."
 
-#: src/Service/WaitlistService.php:113
+#: src/Service/WaitlistService.php:114
 msgid "You must accept the consent for email contact."
 msgstr "Вы павінны пагадзіцца на кантакт па электроннай пошце."
 
-#: src/Service/WaitlistService.php:117
+#: src/Service/WaitlistService.php:118
 msgid "Login to join the waitlist."
 msgstr "Увайдзіце, каб далучыцца да спіса чакання."
 
-#: src/Service/WaitlistService.php:123
+#: src/Service/WaitlistService.php:124
 msgid "Thank you. You have been added to the waitlist."
 msgstr "Дзякуй. Вы дададзены ў спіс чакання."
 
-#: src/Service/WaitlistService.php:151
+#: src/Service/WaitlistService.php:152
 msgid "Product back in stock - {product_name}"
 msgstr "Тавар зноў у наяўнасці - {product_name}"
 
-#: src/Service/WaitlistService.php:157
+#: src/Service/WaitlistService.php:158
 msgid "Product {product_name} is back in stock."
 msgstr "Тавар {product_name} зноў у наяўнасці."
 
-#: src/Service/WaitlistService.php:159
+#: src/Service/WaitlistService.php:160
 msgid "If you no longer wish to receive these messages, simply ignore this email."
 msgstr "Калі вы больш не жадаеце атрымліваць гэтыя паведамленні, проста праігнаруйце гэты ліст."
 
@@ -9961,69 +10211,69 @@ msgid "Withdrawal completed"
 msgstr "Адмова завершана"
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:306
+#: src/Service/WithdrawalService.php:340
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed."
 msgstr "[Polski] Падасны запыт на адмову #%d."
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:345
+#: src/Service/WithdrawalService.php:379
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d confirmed by %2$s."
 msgstr "[Polski] Запыт на адмову #%1$d пацверджаны %2$s."
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:395
+#: src/Service/WithdrawalService.php:429
 #, php-format
 msgid "[Polski] Withdrawal request #%d completed."
 msgstr "[Polski] Запыт на адмову #%d завершаны."
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:427
+#: src/Service/WithdrawalService.php:461
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
 msgstr "[Polski] Запыт на адмову #%1$d адхілены %2$s."
 
 #. translators: %s: free-text reason (customer-supplied for filing, operator-
 #. supplied for rejection)
-#: src/Service/WithdrawalService.php:435
-#: src/Service/WithdrawalService.php:490
+#: src/Service/WithdrawalService.php:469
+#: src/Service/WithdrawalService.php:524
 #, php-format
 msgid "Reason: %s"
 msgstr "Прычына: %s"
 
 #. translators: %d: declaration id
-#: src/Service/WithdrawalService.php:470
+#: src/Service/WithdrawalService.php:504
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed by customer."
 msgstr "[Polski] Запыт на адмову #%d пададзены кліентам."
 
-#: src/Service/WithdrawalService.php:484
+#: src/Service/WithdrawalService.php:518
 msgid "Items:"
 msgstr "Пазіцыі:"
 
-#: src/Service/WithdrawalService.php:681
 #: src/Service/WithdrawalService.php:715
+#: src/Service/WithdrawalService.php:749
 msgid "Oops, something went wrong on our side. Please try again!"
 msgstr "Ой, нешта пайшло не так з нашага боку. Калі ласка, паспрабуйце яшчэ раз!"
 
-#: src/Service/WithdrawalService.php:688
+#: src/Service/WithdrawalService.php:722
 msgid "Unfortunately, we could not find such an order."
 msgstr "На жаль, нам не ўдалося знайсці такую замову."
 
-#: src/Service/WithdrawalService.php:731
+#: src/Service/WithdrawalService.php:765
 msgid "Your return request has been accepted. We will send you a confirmation email shortly!"
 msgstr "Ваш запыт на зварот прыняты. Неўзабаве мы дашлём вам ліст з пацвярджэннем!"
 
-#: src/Service/WithdrawalService.php:812
+#: src/Service/WithdrawalService.php:846
 msgid "Invalid security token. Please try again."
 msgstr "Несапраўдны токен бяспекі. Калі ласка, паспрабуйце яшчэ раз."
 
-#: src/Service/WithdrawalService.php:853
+#: src/Service/WithdrawalService.php:887
 msgid "Your withdrawal request has been accepted."
 msgstr "Ваш запыт на адмову прыняты."
 
-#: src/Service/WithdrawalService.php:857
+#: src/Service/WithdrawalService.php:891
 msgid "Failed to submit the withdrawal request."
 msgstr "Не ўдалося адправіць запыт на адмову."
 

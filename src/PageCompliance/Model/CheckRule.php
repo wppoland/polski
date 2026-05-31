@@ -15,18 +15,18 @@ defined('ABSPATH') || exit;
  * diacritic-insensitive). The list is OR-combined so Polish-language sites
  * can provide multiple phrasings that count as the same requirement.
  */
-final readonly class CheckRule
+final class CheckRule
 {
     /**
      * @param list<string> $patterns Lowercased, diacritic-stripped substrings to search for.
      */
     public function __construct(
-        public string $id,
-        public string $label,
-        public Severity $severity,
-        public array $patterns,
-        public string $hint,
-        public int $minLength = 0,
+        public readonly string $id,
+        public readonly string $label,
+        public readonly Severity $severity,
+        public readonly array $patterns,
+        public readonly string $hint,
+        public readonly int $minLength = 0,
     ) {
     }
 }

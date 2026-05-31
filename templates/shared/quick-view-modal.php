@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
 ?>
 <div class="polski-quick-view-modal" data-polski-quick-view-modal hidden>
     <div class="polski-quick-view-backdrop" data-polski-quick-view-backdrop></div>
-    <div class="polski-quick-view-dialog" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr((string) ($polski_settings['modal_title'] ?? __('Szybki podgląd produktu', 'polski'))); ?>">
+    <div class="polski-quick-view-dialog" role="dialog" aria-modal="true" tabindex="-1" aria-label="<?php echo esc_attr((string) ($polski_settings['modal_title'] ?? __('Szybki podgląd produktu', 'polski'))); ?>">
         <?php if ($polski_show_close_button) : ?>
             <button type="button" class="polski-quick-view-close" data-polski-quick-view-close aria-label="<?php echo esc_attr((string) ($polski_settings['close_label'] ?? __('Zamknij', 'polski'))); ?>">
                 ×

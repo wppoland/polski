@@ -123,7 +123,7 @@ final class LiveCartService implements HasHooks
         $settings = $this->getSettings();
         $position = $settings['position'] === 'left' ? 'left' : 'right';
 
-        echo '<div class="polski-cart-drawer" data-position="' . esc_attr($position) . '" aria-hidden="true" role="dialog" aria-label="' . esc_attr__('Cart', 'polski') . '">';
+        echo '<div class="polski-cart-drawer" data-position="' . esc_attr($position) . '" aria-hidden="true" role="dialog" aria-modal="true" aria-label="' . esc_attr__('Cart', 'polski') . '">';
 
         // Overlay.
         if ($settings['overlay']) {

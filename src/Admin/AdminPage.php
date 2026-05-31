@@ -703,7 +703,7 @@ final class AdminPage implements Bootable, HasHooks
                 : '#';
 
             $moduleToggleUrl = '';
-            if ($report['module'] !== null && $report['module'] !== '') {
+            if ($report['module'] !== null) {
                 $moduleToggleUrl = esc_url(
                     add_query_arg(
                         [

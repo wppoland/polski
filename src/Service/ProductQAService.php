@@ -191,7 +191,7 @@ final class ProductQAService implements HasHooks
             plugins_url('assets/js/product-qa.js', \Polski\PLUGIN_FILE),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-product-qa', 'polskiQa', [

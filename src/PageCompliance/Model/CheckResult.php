@@ -11,14 +11,14 @@ defined('ABSPATH') || exit;
 /**
  * Outcome of applying a CheckRule to page content.
  */
-final readonly class CheckResult
+final class CheckResult
 {
     public function __construct(
-        public string $ruleId,
-        public string $label,
-        public Severity $severity,
-        public bool $passed,
-        public string $hint,
+        public readonly string $ruleId,
+        public readonly string $label,
+        public readonly Severity $severity,
+        public readonly bool $passed,
+        public readonly string $hint,
     ) {
     }
 
