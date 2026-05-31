@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
+"POT-Creation-Date: 2026-05-31T10:49:46+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
+#: src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
 msgstr "Polski pro WooCommerce"
 
@@ -1387,7 +1388,7 @@ msgstr "Polski vyžaduje WooCommerce %1$s nebo vyšší. Používáte WooCommerc
 #: src/Admin/AdminNotes.php:46
 #: src/Admin/CRAIncidentsPage.php:277
 #: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:83
+#: src/Admin/SBOMPage.php:81
 #: src/Service/ComplaintTemplateService.php:78
 #: src/Service/RodoTrainingDocsService.php:76
 msgid "Insufficient permissions."
@@ -5318,162 +5319,158 @@ msgstr "Spravovat pole"
 msgid "Name"
 msgstr "Název"
 
-#: src/Admin/ModulesPage.php:1417
-msgid "PRO"
-msgstr "PRO"
-
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1420
 msgid "Help"
 msgstr "Nápověda"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1481
+#: src/Admin/ModulesPage.php:1475
 #, php-format
 msgid "Edit %s settings"
 msgstr "Upravit nastavení %s"
 
-#: src/Admin/ModulesPage.php:1484
+#: src/Admin/ModulesPage.php:1478
 msgid "Edit settings"
 msgstr "Upravit nastavení"
 
-#: src/Admin/ModulesPage.php:1494
-#: src/Admin/ModulesPage.php:1495
+#: src/Admin/ModulesPage.php:1488
+#: src/Admin/ModulesPage.php:1489
 msgid "Open documentation"
 msgstr "Otevřít dokumentaci"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1522
 msgid "Save"
 msgstr "Uložit"
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1616
 msgid "none"
 msgstr "žádné"
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1686
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Omlouváme se, ale na tuto stránku nemáte přístup."
 
-#: src/Admin/ModulesPage.php:1699
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1693
+#: src/Admin/ModulesPage.php:1709
 msgid "Invalid request."
 msgstr "Neplatný požadavek."
 
-#: src/Admin/ModulesPage.php:1899
+#: src/Admin/ModulesPage.php:1893
 msgid "Legal & Compliance"
 msgstr "Právo a shoda"
 
-#: src/Admin/ModulesPage.php:1901
+#: src/Admin/ModulesPage.php:1895
 msgid "Tax & Pricing"
 msgstr "Daně a ceny"
 
-#: src/Admin/ModulesPage.php:1903
+#: src/Admin/ModulesPage.php:1897
 msgid "Checkout & Orders"
 msgstr "Pokladna a objednávky"
 
-#: src/Admin/ModulesPage.php:1905
+#: src/Admin/ModulesPage.php:1899
 msgid "Content & Trust"
 msgstr "Obsah a důvěra"
 
-#: src/Admin/ModulesPage.php:1907
+#: src/Admin/ModulesPage.php:1901
 msgid "Advanced & Tools"
 msgstr "Pokročilé a nástroje"
 
-#: src/Admin/ModulesPage.php:1909
+#: src/Admin/ModulesPage.php:1903
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Andere"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1974
 msgid "Could not save module state. Please try again."
 msgstr "Nepodařilo se uložit stav modulu. Zkuste to prosím znovu."
 
-#: src/Admin/ModulesPage.php:1997
+#: src/Admin/ModulesPage.php:1991
 msgid "Compatible Omnibus Extension A"
 msgstr "Kompatibilní rozšíření Omnibus A"
 
-#: src/Admin/ModulesPage.php:1998
+#: src/Admin/ModulesPage.php:1992
 msgid "Compatible Omnibus Extension B"
 msgstr "Kompatibilní rozšíření Omnibus B"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2003
 msgid "detected, data synchronized"
 msgstr "zjištěno, data jsou synchronizována"
 
-#: src/Admin/ModulesPage.php:2010
+#: src/Admin/ModulesPage.php:2004
 msgid "not installed"
 msgstr "nenainstalováno"
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2019
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Není nainstalován žádný externí plugin Omnibus. Polski používá vestavěný systém sledování cen."
 
-#: src/Admin/ModulesPage.php:2027
+#: src/Admin/ModulesPage.php:2021
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Byl rozpoznán externí plugin. Polski používá jeho data místo vestavěného systému."
 
-#: src/Admin/ModulesPage.php:2047
+#: src/Admin/ModulesPage.php:2041
 msgid "OSS observer service is unavailable."
 msgstr "Služba pozorovatele OSS není dostupná."
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2048
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "Plugin One Stop Shop není nainstalován. Nainstalujte jej, abyste mohli automaticky sledovat prahovou hodnotu 10 000 € pro B2C v rámci EU."
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2054
 msgid "Install One Stop Shop"
 msgstr "Nainstalovat One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2059
 msgid "You need the install_plugins capability to install it from here."
 msgstr "K instalaci odsud potřebujete oprávnění install_plugins."
 
-#: src/Admin/ModulesPage.php:2074
+#: src/Admin/ModulesPage.php:2068
 msgid "One Stop Shop plugin detected."
 msgstr "Zjištěn plugin One Stop Shop."
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2072
 msgid "OSS procedure"
 msgstr "Procedura OSS"
 
-#: src/Admin/ModulesPage.php:2080
+#: src/Admin/ModulesPage.php:2074
 msgid "enabled"
 msgstr "zapnuto"
 
-#: src/Admin/ModulesPage.php:2081
+#: src/Admin/ModulesPage.php:2075
 msgid "disabled"
 msgstr "vypnuto"
 
-#: src/Admin/ModulesPage.php:2085
+#: src/Admin/ModulesPage.php:2079
 msgid "Auto observer"
 msgstr "Automatický pozorovatel"
 
-#: src/Admin/ModulesPage.php:2087
+#: src/Admin/ModulesPage.php:2081
 msgid "watching threshold"
 msgstr "sledování prahové hodnoty"
 
-#: src/Admin/ModulesPage.php:2088
+#: src/Admin/ModulesPage.php:2082
 msgid "off"
 msgstr "vypnuto"
 
-#: src/Admin/ModulesPage.php:2093
+#: src/Admin/ModulesPage.php:2087
 msgid "Open OSS settings"
 msgstr "Otevřít nastavení OSS"
 
-#: src/Admin/ModulesPage.php:2151
+#: src/Admin/ModulesPage.php:2145
 msgid "detected, integration active"
 msgstr "zjištěno, integrace aktivní"
 
-#: src/Admin/ModulesPage.php:2154
+#: src/Admin/ModulesPage.php:2148
 msgid "install"
 msgstr "nainstalovat"
 
-#: src/Admin/ModulesPage.php:2166
+#: src/Admin/ModulesPage.php:2160
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Nebyla rozpoznána podporovaná rozšíření checkoutu ani cookies. Polski stále funguje samostatně."
 
-#: src/Admin/ModulesPage.php:2168
+#: src/Admin/ModulesPage.php:2162
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Byla rozpoznána podporovaná rozšíření checkoutu, cookies nebo produktových dat. Polski může přizpůsobit integraci aktivní sestavě."
 
@@ -5891,38 +5888,30 @@ msgstr "Datum platnosti certifikátu (RRRR-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Datum platnosti ekologického certifikátu ve formátu RRRR-MM-DD."
 
-#: src/Admin/SBOMPage.php:41
-#: src/Admin/SBOMPage.php:42
+#: src/Admin/SBOMPage.php:39
+#: src/Admin/SBOMPage.php:40
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/SBOMPage.php:51
+#: src/Admin/SBOMPage.php:49
 msgid "Software Bill of Materials (SBOM)"
 msgstr "Soupis komponent softwaru (SBOM)"
 
-#: src/Admin/SBOMPage.php:52
+#: src/Admin/SBOMPage.php:50
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr "Vygenerujte dokument CycloneDX 1.4 JSON se seznamem závislostí PHP (composer) a JS (npm). Užitečné pro bezpečnostní audity, balíčky shody s CRA a skenery zranitelností."
 
-#: src/Admin/SBOMPage.php:58
+#: src/Admin/SBOMPage.php:56
 msgid "Path"
 msgstr "Cesta"
 
-#: src/Admin/SBOMPage.php:74
+#: src/Admin/SBOMPage.php:72
 msgid "Download SBOM (JSON)"
 msgstr "Stáhnout SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:90
+#: src/Admin/SBOMPage.php:88
 msgid "Unknown plugin target."
 msgstr "Neznámý cíl pluginu."
-
-#: src/Admin/SBOMPage.php:114
-msgid "Polski for WooCommerce (FREE)"
-msgstr "Polski for WooCommerce (FREE)"
-
-#: src/Admin/SBOMPage.php:122
-msgid "Polski Pro for WooCommerce"
-msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski - odstąpienie"
@@ -10911,6 +10900,15 @@ msgstr "Posuvník produktů Polski"
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dynamický merchandisingový posuvník pro související, upsell, slevové a doporučené produkty."
+
+#~ msgid "PRO"
+#~ msgstr "PRO"
+
+#~ msgid "Polski for WooCommerce (FREE)"
+#~ msgstr "Polski for WooCommerce (FREE)"
+
+#~ msgid "Polski Pro for WooCommerce"
+#~ msgstr "Polski Pro for WooCommerce"
 
 #~ msgid "Configure &darr;"
 #~ msgstr "Nastavit &darr;"

@@ -1,18 +1,18 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
-Tags: woocommerce, polish, gdpr, omnibus, gpsr
+Tags: woocommerce, polish, polski, gdpr, omnibus, gpsr, ksef, withdrawal, dsa, unit-price, compliance, woocommerce-blocks
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.19.0
+Stable tag: 1.20.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Polish WooCommerce toolkit: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF-ready hooks, unit prices and storefront modules.
+WooCommerce plugin for Polish stores: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF-ready hooks, unit prices, DSA and storefront modules.
 
 == Description ==
 
-**Polski for WooCommerce** is a free, all-in-one toolkit that adapts your WooCommerce store to the Polish market and EU e-commerce practices. It bundles product safety information (GPSR), 30-day lowest price history (Omnibus), GDPR consent, the right of withdrawal, unit prices, KSeF-ready invoicing hooks, and a full set of storefront features into one modular plugin - so you can replace a stack of single-purpose plugins with one.
+**Polski for WooCommerce** is a free WooCommerce plugin for Polish stores. It helps with GPSR product safety information, Omnibus 30-day lowest price history, GDPR consent, withdrawal forms, unit prices, KSeF-ready invoicing hooks, DSA reporting, and storefront modules.
 
 Built for Polish online stores, dropshippers, and agencies, it keeps the most common Polish and EU requirements in one place and lets you turn each module on or off as you need it.
 
@@ -25,6 +25,7 @@ This plugin helps you configure store workflows related to Polish and EU market 
 * **Plugin page (English)** - https://wppoland.com/en/polski/
 * **Source code (GitHub)** - https://github.com/wppoland/polski
 * **Report issues or request features** - https://github.com/wppoland/polski/issues
+* **Discuss ideas and questions** - https://github.com/wppoland/polski/discussions
 
 = Why Polski for WooCommerce? =
 
@@ -139,23 +140,23 @@ Each active module with configuration options will appear as a sub-menu under **
 
 Yes. Polski for WooCommerce is free and open source under GPLv2 or later.
 
-= Does Polski support GPSR (General Product Safety Regulation)? =
+= Does Polski support GPSR for WooCommerce products? =
 
 Yes. Polski includes 8 dedicated product fields for GPSR-related data, bulk CSV import or export, a status column in the product list, and product page display tools. You should review which fields and presentation are appropriate for your own products and obligations.
 
-= Does it support customer withdrawal requests (EU Directive 2023/2673)? =
+= Does it support withdrawal forms for WooCommerce orders? =
 
 Yes. Polski adds a withdrawal action directly in My Account > Orders for eligible orders. The customer opens a confirmation page, submits the request, then receives confirmation and the request is logged in the audit trail.
 
-= Is Polski ready for KSeF? =
+= Is Polski ready for KSeF workflows in WooCommerce? =
 
 Polski can flag orders that may require KSeF invoicing based on NIP in billing data and provides action hooks (`polski/ksef/invoice_ready`, `polski/ksef/is_required`) for invoice plugin integration. A KSeF status column appears in the orders list.
 
-= Does Polski support GDPR for Polish shops? =
+= Does Polski support GDPR consent workflows for Polish WooCommerce shops? =
 
 Yes. Polski includes configurable consent checkboxes, consent logging, double opt-in registration, and related data-handling tools that can support GDPR workflows. Review the configuration for your own store and obligations.
 
-= Does it support the Omnibus Directive (EU Directive 2019/2161)? =
+= Does it support Omnibus price history for WooCommerce sale products? =
 
 Yes. Polski tracks and displays the lowest price from the last 30 days on sale products. Review the output and pricing workflow for your own store before relying on it in production.
 
@@ -234,15 +235,17 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 
 == Changelog ==
 
+= 1.20.0 =
+* New module: Promotions / dynamic pricing (basic). Optional, off by default. Two automatic cart discounts you configure in the module settings: a bulk discount (a percentage off a product line once its quantity reaches a threshold) and a cart discount (a percentage off when the cart subtotal reaches a threshold, applied as a cart fee). Recomputed idempotently from the regular price, safe across WooCommerce's repeated total calculations.
+
 = 1.19.0 =
 * New module: Returns and complaints (RMA). Optional, off by default. Customers can open a complaint (reklamacja) or return (zwrot) request for an eligible order from My Account; the request is stored, confirmed by email to the customer and the shop, and managed in a new admin queue (WooCommerce > Polski > Returns & complaints) with status changes (submitted, in progress, resolved, rejected). Mirrors the withdrawal request flow and reuses the consent/order infrastructure. Configurable eligibility window and notification email. Provides tools and templates, not legal advice.
-* New module: Promotions / dynamic pricing (basic). Optional, off by default. Two automatic cart discounts you configure in the module settings: a bulk discount (a percentage off a product line once its quantity reaches a threshold) and a cart discount (a percentage off when the cart subtotal reaches a threshold, applied as a cart fee). Recomputed idempotently from the regular price, safe across WooCommerce's repeated total calculations.
 * Storefront module orchestration: unified loader so wishlist, quick-view and other buttons rendered after page load (infinite scroll, AJAX filters, quick-view modal) keep working, with accessibility and performance improvements.
 
 = 1.18.0 =
 * Visual identity refresh across the admin: a new Polski brand with self-hosted Schibsted Grotesk and Hanken Grotesk webfonts (font-display swap), a monogram menu icon and a wordmark dashboard header. Admin styling loads only on the plugin's own screens, never on the storefront, to protect Core Web Vitals.
 * Storefront structured data: the plugin now augments WooCommerce's own Product and Offer JSON-LD (no duplicate graph) with a priceValidUntil value and, on sale products, the truthful Omnibus lowest 30-day price as a MinimumPrice specification for better rich results and machine readability.
-* Full localization: complete, reviewed translations for eight languages - Polish, German, Czech, Slovak, Ukrainian, Simplified Chinese, Belarusian, and Lithuanian - with every interface string covered and no fuzzy entries.
+* Expanded localization catalogues for Polish, German, Czech, Slovak, Ukrainian, Simplified Chinese, Belarusian, and Lithuanian, with ongoing translation maintenance.
 * Typography cleanup: replaced long dashes with hyphens across interface strings and all translation catalogs for consistent rendering.
 
 = 1.17.0 =
@@ -265,7 +268,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * DSA module: defaults populated for `polski_dsa` (`contact_email`, `form_title`, `form_intro`, plus the new widget keys) so admins see seeded values on first activation instead of empty strings.
 
 = 1.13.0 =
-* New module: B2B checkout fields. Adds an optional "Buying as a company" toggle plus NIP, REGON, and IBAN fields to WooCommerce classic checkout, with conditional show/hide tied to the toggle. NIP is validated on submit using the official Polish checksum algorithm and saved to standard `_billing_nip` meta so the existing KSeF and invoice modules pick it up without changes. REGON accepts 9- or 14-digit numbers; IBAN passes a structural sanity check (country prefix + 13-32 alphanumeric body, length 15-34). Settings group `polski_b2b` (`enabled`, `show_company_toggle`, `nip`, `regon`, `iban`). New static utility `Polski\Util\NipValidator` (`isValid`, `normalize`, `format`). When polski-pro's NipValidator is active, free skips its own NIP registration to avoid a duplicate field.
+* New module: B2B checkout fields. Adds an optional "Buying as a company" toggle plus NIP, REGON, and IBAN fields to WooCommerce classic checkout, with conditional show/hide tied to the toggle. NIP is validated on submit using the official Polish checksum algorithm and saved to standard `_billing_nip` meta so existing KSeF and invoice integrations can pick it up without changes. REGON accepts 9- or 14-digit numbers; IBAN passes a structural sanity check (country prefix + 13-32 alphanumeric body, length 15-34). Settings group `polski_b2b` (`enabled`, `show_company_toggle`, `nip`, `regon`, `iban`). New static utility `Polski\Util\NipValidator` (`isValid`, `normalize`, `format`). If another integration registers a NIP field, Polski skips its own NIP registration to avoid a duplicate field.
 
 = 1.12.0 =
 * AI Feed: `/llms.txt` manifest at the site root following the open standard at https://llmstxt.org. AI agents that look for the well-known file at `/llms.txt` now get a Markdown index of the site - title, description, legal pages with `?output_format=md` links, the WooCommerce shop page, and the top product categories. Filters: `polski/ai_feed/llms_txt_enabled`, `polski/ai_feed/llms_txt_sections`, `polski/ai_feed/llms_txt_category_limit`. Setting `polski_ai_feed.llms_txt_enabled` (default `true`).
@@ -276,7 +279,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * AI Feed: filters `polski/ai_feed/enabled`, `polski/ai_feed/post_types`, `polski/ai_feed/post_markdown`, `polski/ai_feed/product_markdown`, `polski/ai_feed/product_facts`, `polski/ai_feed/password_required`. Settings group `polski_ai_feed` (`enabled`, `post_types`). Default post types: `post`, `page`, `product`.
 
 = 1.10.0 =
-* New module: OSS observer. Tracks the EU intra-community €10,000 B2C delivery threshold by integrating with the standalone One Stop Shop plugin. One-click install + activation directly from the module row. WooCommerce admin note prompts install when the observer is toggled on without the external plugin present. Exposes the filter `polski_tax_oss_enabled` so polski-pro and third-party code can branch tax logic on OSS state.
+* New module: OSS observer. Tracks the EU intra-community €10,000 B2C delivery threshold by integrating with the standalone One Stop Shop plugin. One-click install + activation directly from the module row. WooCommerce admin note prompts install when the observer is toggled on without the external plugin present. Exposes the filter `polski_tax_oss_enabled` so custom tax integrations can branch tax logic on OSS state.
 * Modules page: redesigned as a WP list-table (Name / Enabled / Description / Edit) with MoSCoW-prioritised grouping - Legal & Compliance, Tax & Pricing, Checkout & Orders, Content & Trust, Advanced & Tools. Pencil icon opens a dedicated settings subpage per bucket (`admin.php?page=polski-group-<bucket>#polski-module-<id>`) registered dynamically for every module with settings, enabled or not.
 * Setup wizard: rewritten as a 5-step guided flow (Company > Legal > Tax & OSS > Checkout > Finish). Each step uses toggle rows with inline description panels; optional steps have Skip Step + Continue; OSS toggle on the Tax step triggers One Stop Shop plugin install on Finish.
 * Dashboard: "Relaunch setup wizard" button for merchants who want to rerun the guided setup after completion.
@@ -294,7 +297,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * New module: Business identification. Renders the shop's business data (name, address, NIP, REGON, email, phone) as a `[polski_business_info]` shortcode and a dynamic Gutenberg block `polski/business-info`. Reads values set in the setup wizard (`polski_general` option). Block and inline formats with configurable separator.
 
 = 1.8.1 =
-* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` - ready for Dependency-Track / Trivy.
+* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download. Content-Type `application/vnd.cyclonedx+json` - ready for Dependency-Track / Trivy.
 
 = 1.8.0 =
 * New module: CRA incident reporting. Records actively-exploited vulnerabilities and security incidents with a CRA Article 14 early-warning deadline (24h for incidents/exploits, 72h for near misses). Admin page `Polski > CRA incidents` to record, dispatch (webhook + email) and mark resolved. JSON export per ENISA SRP draft schema. Hourly cron checks for deadlines approaching. Action hooks `polski_cra_incident_recorded` and `polski_cra_incident_deadline_approaching`. Migration 2.1.0 creates `polski_cra_incidents`.

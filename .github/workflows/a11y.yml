@@ -49,6 +49,19 @@ jobs:
             - name: Install axe + Lighthouse CI (devDeps)
               run: npm install --no-save @axe-core/playwright @lhci/cli
 
+            - name: Prepare wp-env (WooCommerce + Polski only)
+              run: |
+                  rm -f .wp-env.override.json
+                  node <<'NODE'
+                  const fs = require('fs');
+                  const j = JSON.parse(fs.readFileSync('.wp-env.json', 'utf8'));
+                  j.plugins = [
+                    'https://downloads.wordpress.org/plugin/woocommerce.zip',
+                    '.',
+                  ];
+                  fs.writeFileSync('.wp-env.json', JSON.stringify(j, null, '\t') + '\n');
+                  NODE
+
             - name: Start wp-env
               run: |
                   npm run env:start
@@ -103,6 +116,19 @@ jobs:
 
             - name: Install Playwright browsers
               run: npx playwright install --with-deps chromium
+
+            - name: Prepare wp-env (WooCommerce + Polski only)
+              run: |
+                  rm -f .wp-env.override.json
+                  node <<'NODE'
+                  const fs = require('fs');
+                  const j = JSON.parse(fs.readFileSync('.wp-env.json', 'utf8'));
+                  j.plugins = [
+                    'https://downloads.wordpress.org/plugin/woocommerce.zip',
+                    '.',
+                  ];
+                  fs.writeFileSync('.wp-env.json', JSON.stringify(j, null, '\t') + '\n');
+                  NODE
 
             - name: Start wp-env
               run: |

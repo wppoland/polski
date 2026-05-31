@@ -20,7 +20,7 @@ use Polski\Contract\HasHooks;
  *
  *  - Magic-link e-mail dispatch (`wp_mail` returned false)
  *  - Withdrawal request persistence (repository insert returned 0)
- *  - PDF generation (Pro hook - fired from polski-pro's PDF service)
+ *  - PDF generation hooks fired by document integrations
  *
  * Each report includes:
  *  - `code` (machine-readable, namespaced under `polski/withdrawal/`)

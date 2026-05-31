@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build && wp-scripts build --webpack-src-dir=resources/js/blocks --output-path=build/blocks",
+    "build": "vite build && node scripts/generate-vite-asset-php.mjs && wp-scripts build --webpack-src-dir=resources/js/blocks --output-path=build/blocks",
     "build:admin": "vite build",
     "build:blocks": "wp-scripts build --webpack-src-dir=resources/js/blocks --output-path=build/blocks",
     "lint:js": "wp-scripts lint-js resources/js",

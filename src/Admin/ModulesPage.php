@@ -1396,8 +1396,6 @@ final class ModulesPage implements HasHooks
         $id = $module['id'];
         $enabled = (bool) $module['enabled'];
         $hasSettings = ! empty($module['settings']);
-        $isPro = ! empty($module['pro']);
-
         $rowClasses = 'polski-modules-row' . ($enabled ? ' polski-modules-row--active' : '');
 
         echo '<tr id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($rowClasses) . '">';
@@ -1412,10 +1410,6 @@ final class ModulesPage implements HasHooks
 
         echo '<span class="polski-modules-name-text">';
         echo '<strong>' . esc_html($module['name']) . '</strong>';
-
-        if ($isPro) {
-            echo ' <span class="polski-modules-pro-badge">' . esc_html__('PRO', 'polski') . '</span>';
-        }
 
         $helpTooltip = $this->getModuleHelpTooltip($module);
         if ($helpTooltip !== '') {
@@ -1829,7 +1823,7 @@ final class ModulesPage implements HasHooks
             'live_cart' => false,
             'price_history_chart' => false,
             'custom_checkout_fields' => false,
-            // PRO modules.
+            // Extended commerce modules.
             'fulfillment' => false,
             'delivery_date' => false,
             'abandoned_carts' => false,

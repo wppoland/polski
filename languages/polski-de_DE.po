@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
+"POT-Creation-Date: 2026-05-31T10:49:46+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
+#: src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
 msgstr "Polski für WooCommerce"
 
@@ -1387,7 +1388,7 @@ msgstr "Polski benötigt WooCommerce %1$s oder höher. Du verwendest WooCommerce
 #: src/Admin/AdminNotes.php:46
 #: src/Admin/CRAIncidentsPage.php:277
 #: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:83
+#: src/Admin/SBOMPage.php:81
 #: src/Service/ComplaintTemplateService.php:78
 #: src/Service/RodoTrainingDocsService.php:76
 msgid "Insufficient permissions."
@@ -5318,162 +5319,158 @@ msgstr "Felder verwalten"
 msgid "Name"
 msgstr "Name"
 
-#: src/Admin/ModulesPage.php:1417
-msgid "PRO"
-msgstr "PRO"
-
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1420
 msgid "Help"
 msgstr "Hilfe"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1481
+#: src/Admin/ModulesPage.php:1475
 #, php-format
 msgid "Edit %s settings"
 msgstr "Einstellungen für %s bearbeiten"
 
-#: src/Admin/ModulesPage.php:1484
+#: src/Admin/ModulesPage.php:1478
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
-#: src/Admin/ModulesPage.php:1494
-#: src/Admin/ModulesPage.php:1495
+#: src/Admin/ModulesPage.php:1488
+#: src/Admin/ModulesPage.php:1489
 msgid "Open documentation"
 msgstr "Dokumentation öffnen"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1522
 msgid "Save"
 msgstr "Speichern"
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1616
 msgid "none"
 msgstr "keine"
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1686
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Sie haben leider keine Berechtigung, auf diese Seite zuzugreifen."
 
-#: src/Admin/ModulesPage.php:1699
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1693
+#: src/Admin/ModulesPage.php:1709
 msgid "Invalid request."
 msgstr "Ungültige Anfrage."
 
-#: src/Admin/ModulesPage.php:1899
+#: src/Admin/ModulesPage.php:1893
 msgid "Legal & Compliance"
 msgstr "Recht & Konformität"
 
-#: src/Admin/ModulesPage.php:1901
+#: src/Admin/ModulesPage.php:1895
 msgid "Tax & Pricing"
 msgstr "Steuern & Preise"
 
-#: src/Admin/ModulesPage.php:1903
+#: src/Admin/ModulesPage.php:1897
 msgid "Checkout & Orders"
 msgstr "Bezahlvorgang & Bestellungen"
 
-#: src/Admin/ModulesPage.php:1905
+#: src/Admin/ModulesPage.php:1899
 msgid "Content & Trust"
 msgstr "Inhalt & Vertrauen"
 
-#: src/Admin/ModulesPage.php:1907
+#: src/Admin/ModulesPage.php:1901
 msgid "Advanced & Tools"
 msgstr "Erweitert & Werkzeuge"
 
-#: src/Admin/ModulesPage.php:1909
+#: src/Admin/ModulesPage.php:1903
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Andere"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1974
 msgid "Could not save module state. Please try again."
 msgstr "Modulstatus konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
-#: src/Admin/ModulesPage.php:1997
+#: src/Admin/ModulesPage.php:1991
 msgid "Compatible Omnibus Extension A"
 msgstr "Kompatible Omnibus-Erweiterung A"
 
-#: src/Admin/ModulesPage.php:1998
+#: src/Admin/ModulesPage.php:1992
 msgid "Compatible Omnibus Extension B"
 msgstr "Kompatible Omnibus-Erweiterung B"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2003
 msgid "detected, data synchronized"
 msgstr "erkannt, Daten synchronisiert"
 
-#: src/Admin/ModulesPage.php:2010
+#: src/Admin/ModulesPage.php:2004
 msgid "not installed"
 msgstr "nicht installiert"
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2019
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Es ist kein externes Omnibus-Plugin installiert. Polski verwendet das integrierte Preisverfolgungssystem."
 
-#: src/Admin/ModulesPage.php:2027
+#: src/Admin/ModulesPage.php:2021
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Externes Plugin erkannt. Polski verwendet dessen Daten anstelle des integrierten Systems."
 
-#: src/Admin/ModulesPage.php:2047
+#: src/Admin/ModulesPage.php:2041
 msgid "OSS observer service is unavailable."
 msgstr "Der OSS-Beobachter-Dienst ist nicht verfügbar."
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2048
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "Das One-Stop-Shop-Plugin ist nicht installiert. Installieren Sie es, um den innergemeinschaftlichen B2C-Schwellenwert von 10.000 € automatisch zu beobachten."
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2054
 msgid "Install One Stop Shop"
 msgstr "One Stop Shop installieren"
 
-#: src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2059
 msgid "You need the install_plugins capability to install it from here."
 msgstr "Sie benötigen die Berechtigung install_plugins, um es von hier aus zu installieren."
 
-#: src/Admin/ModulesPage.php:2074
+#: src/Admin/ModulesPage.php:2068
 msgid "One Stop Shop plugin detected."
 msgstr "One-Stop-Shop-Plugin erkannt."
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2072
 msgid "OSS procedure"
 msgstr "OSS-Verfahren"
 
-#: src/Admin/ModulesPage.php:2080
+#: src/Admin/ModulesPage.php:2074
 msgid "enabled"
 msgstr "aktiviert"
 
-#: src/Admin/ModulesPage.php:2081
+#: src/Admin/ModulesPage.php:2075
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: src/Admin/ModulesPage.php:2085
+#: src/Admin/ModulesPage.php:2079
 msgid "Auto observer"
 msgstr "Automatischer Beobachter"
 
-#: src/Admin/ModulesPage.php:2087
+#: src/Admin/ModulesPage.php:2081
 msgid "watching threshold"
 msgstr "Schwellenwert wird beobachtet"
 
-#: src/Admin/ModulesPage.php:2088
+#: src/Admin/ModulesPage.php:2082
 msgid "off"
 msgstr "aus"
 
-#: src/Admin/ModulesPage.php:2093
+#: src/Admin/ModulesPage.php:2087
 msgid "Open OSS settings"
 msgstr "OSS-Einstellungen öffnen"
 
-#: src/Admin/ModulesPage.php:2151
+#: src/Admin/ModulesPage.php:2145
 msgid "detected, integration active"
 msgstr "erkannt, Integration aktiv"
 
-#: src/Admin/ModulesPage.php:2154
+#: src/Admin/ModulesPage.php:2148
 msgid "install"
 msgstr "installieren"
 
-#: src/Admin/ModulesPage.php:2166
+#: src/Admin/ModulesPage.php:2160
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Keine unterstützten Checkout- und Cookie-Erweiterungen erkannt. Polski arbeitet weiterhin unabhängig."
 
-#: src/Admin/ModulesPage.php:2168
+#: src/Admin/ModulesPage.php:2162
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Unterstützte Checkout-, Cookie- oder Produktdatenerweiterungen erkannt. Polski kann die Integration an das aktive Set anpassen."
 
@@ -5891,38 +5888,30 @@ msgstr "Ablaufdatum des Zertifikats (JJJJ-MM-TT)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Ablaufdatum des Umweltzertifikats im Format JJJJ-MM-TT."
 
-#: src/Admin/SBOMPage.php:41
-#: src/Admin/SBOMPage.php:42
+#: src/Admin/SBOMPage.php:39
+#: src/Admin/SBOMPage.php:40
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/SBOMPage.php:51
+#: src/Admin/SBOMPage.php:49
 msgid "Software Bill of Materials (SBOM)"
 msgstr "Software Bill of Materials (SBOM)"
 
-#: src/Admin/SBOMPage.php:52
+#: src/Admin/SBOMPage.php:50
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr "Erstellen Sie ein CycloneDX-1.4-JSON-Dokument mit einer Liste der PHP- (Composer) und JS- (npm) Abhängigkeiten. Nützlich für Sicherheitsaudits, CRA-Compliance-Pakete und Schwachstellen-Scanner."
 
-#: src/Admin/SBOMPage.php:58
+#: src/Admin/SBOMPage.php:56
 msgid "Path"
 msgstr "Pfad"
 
-#: src/Admin/SBOMPage.php:74
+#: src/Admin/SBOMPage.php:72
 msgid "Download SBOM (JSON)"
 msgstr "SBOM herunterladen (JSON)"
 
-#: src/Admin/SBOMPage.php:90
+#: src/Admin/SBOMPage.php:88
 msgid "Unknown plugin target."
 msgstr "Unbekanntes Plugin-Ziel."
-
-#: src/Admin/SBOMPage.php:114
-msgid "Polski for WooCommerce (FREE)"
-msgstr "Polski for WooCommerce (FREE)"
-
-#: src/Admin/SBOMPage.php:122
-msgid "Polski Pro for WooCommerce"
-msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski - odstąpienie"
@@ -10902,6 +10891,15 @@ msgstr "Polski Produkt-Schieberegler"
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dynamischer Merchandising-Schieberegler für verwandte, Upsell-, Angebots- und hervorgehobene Produkte."
+
+#~ msgid "PRO"
+#~ msgstr "PRO"
+
+#~ msgid "Polski for WooCommerce (FREE)"
+#~ msgstr "Polski for WooCommerce (FREE)"
+
+#~ msgid "Polski Pro for WooCommerce"
+#~ msgstr "Polski Pro for WooCommerce"
 
 #~ msgid "Configure &darr;"
 #~ msgstr "Konfigurieren &darr;"
