@@ -11,16 +11,16 @@ defined('ABSPATH') || exit;
 /**
  * Aggregated compliance check report for a single legal page.
  */
-final readonly class CheckReport
+final class CheckReport
 {
     /**
      * @param list<CheckResult> $results
      */
     public function __construct(
-        public string $pageType,
-        public ?int $pageId,
-        public int $contentLength,
-        public array $results,
+        public readonly string $pageType,
+        public readonly ?int $pageId,
+        public readonly int $contentLength,
+        public readonly array $results,
     ) {
     }
 

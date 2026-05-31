@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-29T04:22:57+00:00\n"
+"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
@@ -107,10 +107,10 @@ msgstr "Stránka"
 
 #: config/defaults.php:35
 #: config/defaults.php:162
-#: config/defaults.php:259
+#: config/defaults.php:260
 #: src/Admin/AdminPage.php:892
 #: src/Admin/CRAIncidentsPage.php:123
-#: src/Admin/ModulesPage.php:293
+#: src/Admin/ModulesPage.php:323
 #: src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152
 #: src/Admin/PageCompliancePage.php:201
@@ -120,12 +120,13 @@ msgstr "Stránka"
 #: src/Service/DSAService.php:175
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
+#: src/Service/ReturnRequestService.php:232
 #: src/Service/RodoTrainingDocsService.php:267
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
 #: src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
-#: src/Service/WithdrawalService.php:897
+#: src/Service/WithdrawalService.php:931
 msgid "Status"
 msgstr "Stav"
 
@@ -374,22 +375,22 @@ msgid "Produkty w zamówieniu"
 msgstr "Produkty v objednávce"
 
 #: config/defaults.php:150
-#: config/defaults.php:255
+#: config/defaults.php:256
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
 msgid "Produkt"
 msgstr "Produkt"
 
 #: config/defaults.php:151
-#: config/defaults.php:225
-#: config/defaults.php:258
+#: config/defaults.php:226
+#: config/defaults.php:259
 #: templates/forms/withdrawal-guest.php:62
 #: templates/forms/withdrawal-guest.php:84
 msgid "Ilość"
 msgstr "Množství"
 
 #: config/defaults.php:152
-#: config/defaults.php:410
+#: config/defaults.php:422
 msgid "Cena"
 msgstr "Cena"
 
@@ -453,7 +454,7 @@ msgid "Odstąpienie potwierdzone"
 msgstr "Odstoupení potvrzeno"
 
 #: config/defaults.php:169
-#: config/defaults.php:197
+#: config/defaults.php:198
 #: templates/emails/double-opt-in.php:24
 #: templates/emails/plain/double-opt-in.php:20
 msgid "Cześć {name},"
@@ -489,862 +490,880 @@ msgstr "Osvobozeno od DPH na základě čl. 113 odst. 1 polského zákona o DPH"
 msgid "Czas dostawy: {time}"
 msgstr "Dodací lhůta: {time}"
 
-#: config/defaults.php:192
+#: config/defaults.php:193
 msgid "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link."
 msgstr "Váš účet čeká na aktivaci. Podívejte se do e-mailové schránky a klikněte na odkaz, který jsme vám poslali."
 
-#: config/defaults.php:193
+#: config/defaults.php:194
 msgid "Nieprawidłowy link aktywacyjny."
 msgstr "Neplatný aktivační odkaz."
 
-#: config/defaults.php:194
+#: config/defaults.php:195
 msgid "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować."
 msgstr "Skvělé. Váš účet je už aktivní. Teď se můžete přihlásit."
 
-#: config/defaults.php:195
+#: config/defaults.php:196
 msgid "Aktywuj swoje konto w {site_title}"
 msgstr "Aktivujte svůj účet na {site_title}"
 
-#: config/defaults.php:196
+#: config/defaults.php:197
 msgid "Potwierdź swój adres email"
 msgstr "Potvrďte svou e-mailovou adresu"
 
-#: config/defaults.php:198
+#: config/defaults.php:199
 #: templates/emails/double-opt-in.php:29
 msgid "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
 msgstr "Děkujeme za založení účtu. Klikněte na tlačítko níže a aktivujte svůj účet:"
 
-#: config/defaults.php:199
+#: config/defaults.php:200
 #: templates/emails/double-opt-in.php:33
 msgid "Aktywuj konto"
 msgstr "Aktivovat účet"
 
-#: config/defaults.php:200
+#: config/defaults.php:201
 #: templates/emails/double-opt-in.php:37
 msgid "Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:"
 msgstr "Pokud chcete, zkopírujte tento odkaz a vložte ho do prohlížeče:"
 
-#: config/defaults.php:201
+#: config/defaults.php:202
 #: templates/emails/plain/double-opt-in.php:24
 msgid "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
 msgstr "Děkujeme za založení účtu. Otevřete následující odkaz a aktivujte svůj účet:"
 
-#: config/defaults.php:202
+#: config/defaults.php:203
 msgid "Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość."
 msgstr "Pokud jste si u nás účet nezakládali vy, nemusíte se ničeho obávat a tuto zprávu jednoduše smažte."
 
-#: config/defaults.php:214
+#: config/defaults.php:215
 msgid "Zapytaj o wycenę"
 msgstr "Požádat o cenovou nabídku"
 
-#: config/defaults.php:215
+#: config/defaults.php:216
 msgid "Zapytaj o indywidualną wycenę"
 msgstr "Požádat o individuální cenovou nabídku"
 
-#: config/defaults.php:216
+#: config/defaults.php:217
 msgid "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia."
 msgstr "Vyplňte krátký formulář a vrátíme se s nabídkou přizpůsobenou vaší objednávce."
 
-#: config/defaults.php:217
+#: config/defaults.php:218
 msgid "Zamknij formularz wyceny"
 msgstr "Zavřít formulář nabídky"
 
-#: config/defaults.php:218
+#: config/defaults.php:219
 msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
 msgstr "Přihlaste se, abyste mohli odeslat poptávku k tomuto produktu."
 
-#: config/defaults.php:219
+#: config/defaults.php:220
 #: templates/forms/dsa-report.php:48
 msgid "Imię i nazwisko"
 msgstr "Jméno a příjmení"
 
-#: config/defaults.php:220
-#: src/Admin/ModulesPage.php:1048
+#: config/defaults.php:221
+#: src/Admin/ModulesPage.php:1091
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "E-mail"
 
-#: config/defaults.php:221
+#: config/defaults.php:222
 msgid "Telefon"
 msgstr "Telefon"
 
-#: config/defaults.php:222
+#: config/defaults.php:223
 msgid "Firma"
 msgstr "Firma"
 
-#: config/defaults.php:223
+#: config/defaults.php:224
 #: src/Service/B2BCheckoutService.php:257
 #: src/Service/NipLookupService.php:66
 #: src/Service/NipLookupService.php:149
 msgid "NIP"
 msgstr "DIČ"
 
-#: config/defaults.php:224
+#: config/defaults.php:225
 msgid "Kod pocztowy"
 msgstr "PSČ"
 
-#: config/defaults.php:226
+#: config/defaults.php:227
 msgid "Szczegóły zapytania"
 msgstr "Podrobnosti poptávky"
 
-#: config/defaults.php:227
+#: config/defaults.php:228
 msgid "Napisz czego potrzebujesz, jaki masz termin i jakie są założenia zamówienia."
 msgstr "Napište, co potřebujete, jaký máte termín a jaké jsou požadavky objednávky."
 
-#: config/defaults.php:228
+#: config/defaults.php:229
 msgid "Wyślij zapytanie"
 msgstr "Odeslat poptávku"
 
-#: config/defaults.php:229
+#: config/defaults.php:230
 msgid "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe."
 msgstr "Děkujeme. Vaše poptávka byla odeslána, ozveme se co nejdříve."
 
-#: config/defaults.php:230
+#: config/defaults.php:231
 msgid "Cena dostępna po wycenie"
 msgstr "Cena dostupná po nacenění"
 
-#: config/defaults.php:231
+#: config/defaults.php:232
 msgid "Uzupełnij poprawnie imię i adres email."
 msgstr "Vyplňte správně jméno a e-mailovou adresu."
 
-#: config/defaults.php:232
+#: config/defaults.php:233
 msgid "Podaj numer telefonu do kontaktu."
 msgstr "Zadejte telefonní číslo pro kontakt."
 
-#: config/defaults.php:233
+#: config/defaults.php:234
 msgid "Podaj nazwę firmy."
 msgstr "Zadejte název firmy."
 
-#: config/defaults.php:234
+#: config/defaults.php:235
 msgid "Podaj numer NIP."
 msgstr "Zadejte DIČ."
 
-#: config/defaults.php:235
+#: config/defaults.php:236
 msgid "Podaj poprawny numer NIP."
 msgstr "Zadejte platné DIČ."
 
-#: config/defaults.php:236
+#: config/defaults.php:237
 msgid "Podaj kod pocztowy."
 msgstr "Zadejte PSČ."
 
-#: config/defaults.php:237
+#: config/defaults.php:238
 msgid "Musisz zaakceptować zgodę prywatności."
 msgstr "Musíte přijmout souhlas se zásadami ochrany osobních údajů."
 
-#: config/defaults.php:238
+#: config/defaults.php:239
 msgid "Minimalna ilość dla tego zapytania to {quantity}."
 msgstr "Minimální množství pro tuto poptávku je {quantity}."
 
-#: config/defaults.php:239
+#: config/defaults.php:240
 msgid "Nie udało się zapisać zapytania. Spróbuj ponownie."
 msgstr "Poptávku se nepodařilo uložit. Zkuste to prosím znovu."
 
-#: config/defaults.php:240
+#: config/defaults.php:241
 msgid "Nie udało się przygotować zapytania dla tego produktu."
 msgstr "Pro tento produkt se nepodařilo připravit poptávku."
 
-#: config/defaults.php:247
+#: config/defaults.php:248
 msgid "Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny."
 msgstr "Souhlasím se zásadami ochrany osobních údajů a souhlasím s kontaktem ohledně cenové nabídky."
 
-#: config/defaults.php:248
+#: config/defaults.php:249
 msgid "Nowe zapytanie ofertowe - {product_name}"
 msgstr "Nová poptávka na nabídku - {product_name}"
 
-#: config/defaults.php:249
+#: config/defaults.php:250
 msgid "Potwierdzenie zapytania ofertowego - {product_name}"
 msgstr "Potvrzení poptávky na nabídku - {product_name}"
 
-#: config/defaults.php:251
+#: config/defaults.php:252
 msgid "Zapytania ofertowe"
 msgstr "Poptávky na nabídku"
 
-#: config/defaults.php:252
+#: config/defaults.php:253
 msgid "Status zapytania został zaktualizowany."
 msgstr "Stav poptávky byl aktualizován."
 
-#: config/defaults.php:253
-#: config/defaults.php:343
-#: config/defaults.php:345
-#: templates/forms/ajax-filters.php:105
-#: templates/forms/ajax-filters.php:129
+#: config/defaults.php:254
+#: config/defaults.php:352
+#: config/defaults.php:354
+#: templates/forms/ajax-filters.php:153
+#: templates/forms/ajax-filters.php:177
 msgid "Wszystkie"
 msgstr "Všechny"
 
-#: config/defaults.php:254
+#: config/defaults.php:255
 #: src/Service/MyAccountWithdrawalsService.php:99
 msgid "Data"
 msgstr "Datum"
 
-#: config/defaults.php:256
+#: config/defaults.php:257
 msgid "Klient"
 msgstr "Zákazník"
 
-#: config/defaults.php:257
+#: config/defaults.php:258
 msgid "Firma / NIP"
 msgstr "Firma / DIČ"
 
-#: config/defaults.php:260
+#: config/defaults.php:261
 msgid "Akcje"
 msgstr "Akce"
 
-#: config/defaults.php:261
+#: config/defaults.php:262
 msgid "Brak zapytań ofertowych."
 msgstr "Žádné poptávky na nabídku."
 
-#: config/defaults.php:262
+#: config/defaults.php:263
 msgid "Kod"
 msgstr "Kód"
 
-#: config/defaults.php:275
+#: config/defaults.php:276
 msgid "Zapytaj o warunki handlowe"
 msgstr "Zeptat se na obchodní podmínky"
 
-#: config/defaults.php:276
+#: config/defaults.php:277
 msgid "Zaloguj się, aby zobaczyć ofertę"
 msgstr "Přihlaste se, abyste viděli nabídku"
 
-#: config/defaults.php:279
+#: config/defaults.php:280
 msgid "Cena dostępna po zalogowaniu lub po kontakcie z obsługą."
 msgstr "Cena je dostupná po přihlášení nebo po kontaktu s podporou."
 
-#: config/defaults.php:280
+#: config/defaults.php:281
 msgid "Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B."
 msgstr "Produkt je dostupný v katalogovém režimu. Kontaktujte nás pro obchodní podmínky nebo B2B nabídku."
 
-#: config/defaults.php:281
+#: config/defaults.php:282
 msgid "Zobacz warunki handlowe"
 msgstr "Zobrazit obchodní podmínky"
 
-#: config/defaults.php:282
+#: config/defaults.php:283
 msgid "Ceny i zakup online są ukryte dla tego produktu."
 msgstr "Ceny a online nákup jsou pro tento produkt skryté."
 
-#: config/defaults.php:283
+#: config/defaults.php:284
 msgid "Cena jest ukryta dla tego produktu."
 msgstr "Cena je pro tento produkt skrytá."
 
-#: config/defaults.php:284
+#: config/defaults.php:285
 msgid "Zakup online jest wyłączony dla tego produktu."
 msgstr "Online nákup je pro tento produkt vypnutý."
 
-#: config/defaults.php:305
+#: config/defaults.php:308
 #: templates/forms/ajax-search.php:17
 msgid "Szukaj produktów"
 msgstr "Hledat produkty"
 
-#: config/defaults.php:306
+#: config/defaults.php:309
 #: templates/forms/ajax-search.php:40
 msgid "Wyniki wyszukiwania produktów"
 msgstr "Výsledky vyhledávání produktů"
 
-#: config/defaults.php:307
-#: config/defaults.php:412
-#: config/defaults.php:436
+#: config/defaults.php:310
+#: config/defaults.php:424
+#: config/defaults.php:448
 #: src/AIFeed/ProductMarkdownBuilder.php:145
 #: src/Service/CompareService.php:477
-#: src/Service/SearchService.php:81
+#: src/Service/SearchService.php:84
 #: src/Service/StockExportService.php:46
 #: src/Service/StockExportService.php:345
-#: templates/quick-view/content.php:55
+#: templates/quick-view/content.php:57
 msgid "SKU"
 msgstr "SKU"
 
-#: config/defaults.php:308
+#: config/defaults.php:311
 msgid "Szukaj produktów, kodów SKU lub kategorii"
 msgstr "Hledat produkty, SKU kódy nebo kategorie"
 
-#: config/defaults.php:309
+#: config/defaults.php:312
 msgid "Szukaj"
 msgstr "Hledat"
 
-#: config/defaults.php:310
+#: config/defaults.php:313
 msgid "Brak wyników dla podanego zapytania."
 msgstr "Pro zadaný dotaz nebyly nalezeny žádné výsledky."
 
-#: config/defaults.php:311
+#: config/defaults.php:314
 msgid "Zobacz wszystkie wyniki"
 msgstr "Zobrazit všechny výsledky"
 
-#: config/defaults.php:319
-#: config/defaults.php:344
-#: config/defaults.php:415
-#: src/Service/FilterService.php:307
-#: templates/forms/ajax-filters.php:123
+#: config/defaults.php:322
+#: config/defaults.php:353
+#: config/defaults.php:427
+#: src/Service/FilterService.php:573
+#: templates/forms/ajax-filters.php:171
 msgid "Marka"
 msgstr "Značka"
 
-#: config/defaults.php:342
-#: src/Service/FilterService.php:300
-#: templates/forms/ajax-filters.php:99
+#: config/defaults.php:351
+#: src/Service/FilterService.php:566
+#: templates/forms/ajax-filters.php:147
 msgid "Kategoria"
 msgstr "Kategorie"
 
-#: config/defaults.php:346
-#: src/Service/FilterService.php:319
-#: templates/forms/ajax-filters.php:147
+#: config/defaults.php:355
+#: src/Service/FilterService.php:585
+#: templates/forms/ajax-filters.php:195
 msgid "Cena od"
 msgstr "Cena od"
 
-#: config/defaults.php:347
-#: src/Service/FilterService.php:331
-#: templates/forms/ajax-filters.php:151
+#: config/defaults.php:356
+#: src/Service/FilterService.php:597
+#: templates/forms/ajax-filters.php:199
 msgid "Cena do"
 msgstr "Cena do"
 
-#: config/defaults.php:348
-#: config/defaults.php:413
-#: src/Service/FilterService.php:340
-#: templates/forms/ajax-filters.php:158
+#: config/defaults.php:357
+#: config/defaults.php:425
+#: src/Service/FilterService.php:606
+#: templates/forms/ajax-filters.php:206
 msgid "Dostępność"
 msgstr "Dostupnost"
 
-#: config/defaults.php:349
-#: templates/forms/ajax-filters.php:160
+#: config/defaults.php:358
+#: templates/forms/ajax-filters.php:208
 msgid "Dowolna"
 msgstr "Libovolná"
 
-#: config/defaults.php:350
-#: src/Service/FilterService.php:341
-#: templates/forms/ajax-filters.php:162
+#: config/defaults.php:359
+#: src/Service/FilterService.php:607
+#: templates/forms/ajax-filters.php:210
 msgid "Dostępne od ręki"
 msgstr "Ihned skladem"
 
-#: config/defaults.php:351
-#: src/Service/FilterService.php:349
-#: templates/forms/ajax-filters.php:170
+#: config/defaults.php:360
+#: src/Service/FilterService.php:615
+#: templates/forms/ajax-filters.php:218
 msgid "Promocje"
 msgstr "Akce"
 
-#: config/defaults.php:352
-#: src/Service/FilterService.php:350
+#: config/defaults.php:361
+#: src/Service/FilterService.php:616
 msgid "Tylko promocje"
 msgstr "Pouze akce"
 
-#: config/defaults.php:353
-#: templates/forms/ajax-filters.php:189
+#: config/defaults.php:362
+#: templates/forms/ajax-filters.php:237
 msgid "Dowolny"
 msgstr "Libovolný"
 
-#: config/defaults.php:355
+#: config/defaults.php:364
 msgid "Filtruj"
 msgstr "Filtrovat"
 
-#: config/defaults.php:356
+#: config/defaults.php:365
 msgid "Wyczyść filtry"
 msgstr "Vymazat filtry"
 
-#: config/defaults.php:357
+#: config/defaults.php:366
+#: config/defaults.php:370
+#: templates/forms/ajax-filters.php:133
 msgid "Filtry produktów"
 msgstr "Filtry produktů"
 
-#: config/defaults.php:358
-#: templates/forms/ajax-filters.php:77
+#: config/defaults.php:367
+#: templates/forms/ajax-filters.php:110
 msgid "Aktywne filtry"
 msgstr "Aktivní filtry"
 
-#: config/defaults.php:375
+#: config/defaults.php:368
+#: templates/forms/ajax-filters.php:99
+msgid "Pokaż filtry"
+msgstr "Zobrazit filtry"
+
+#: config/defaults.php:369
+#: config/defaults.php:444
+#: templates/forms/ajax-filters.php:139
+#: templates/shared/quick-view-modal.php:22
+msgid "Zamknij"
+msgstr "Zavřít"
+
+#: config/defaults.php:387
 msgid "Ulubione"
 msgstr "Oblíbené"
 
-#: config/defaults.php:376
+#: config/defaults.php:388
 msgid "Dodaj do ulubionych"
 msgstr "Přidat do oblíbených"
 
-#: config/defaults.php:377
+#: config/defaults.php:389
 msgid "Usuń z ulubionych"
 msgstr "Odstranit z oblíbených"
 
-#: config/defaults.php:379
+#: config/defaults.php:391
 msgid "Zaloguj się, aby korzystać z listy życzeń."
 msgstr "Přihlaste se, abyste mohli používat seznam přání."
 
-#: config/defaults.php:380
-#: config/defaults.php:400
-#: config/defaults.php:435
-#: config/defaults.php:594
+#: config/defaults.php:392
+#: config/defaults.php:412
+#: config/defaults.php:447
+#: config/defaults.php:609
 msgid "Nie znaleziono produktu."
 msgstr "Produkt nebyl nalezen."
 
-#: config/defaults.php:381
+#: config/defaults.php:393
 msgid "Lista ulubionych jest pusta."
 msgstr "Seznam oblíbených je prázdný."
 
-#: config/defaults.php:382
+#: config/defaults.php:394
 msgid "Twoje ulubione produkty"
 msgstr "Vaše oblíbené produkty"
 
-#: config/defaults.php:396
+#: config/defaults.php:408
 msgid "Porównanie"
 msgstr "Porovnání"
 
-#: config/defaults.php:397
+#: config/defaults.php:409
 msgid "Dodaj do porównania"
 msgstr "Přidat k porovnání"
 
-#: config/defaults.php:398
+#: config/defaults.php:410
 msgid "Usuń z porównania"
 msgstr "Odstranit z porovnání"
 
-#: config/defaults.php:399
+#: config/defaults.php:411
 msgid "Zaloguj się, aby korzystać z porównania produktów."
 msgstr "Přihlaste se, abyste mohli používat porovnání produktů."
 
-#: config/defaults.php:401
+#: config/defaults.php:413
 msgid "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie."
 msgstr "Najednou můžete porovnat maximálně {limit} produktů. Nejstarší položka byla automaticky nahrazena."
 
-#: config/defaults.php:402
+#: config/defaults.php:414
 msgid "Nie możesz wyczyścić porównania."
 msgstr "Porovnání nelze vymazat."
 
-#: config/defaults.php:404
+#: config/defaults.php:416
 msgid "Lista porównawcza jest pusta."
 msgstr "Srovnávací seznam je prázdný."
 
-#: config/defaults.php:405
+#: config/defaults.php:417
 msgid "Porównanie produktów"
 msgstr "Porovnání produktů"
 
-#: config/defaults.php:406
+#: config/defaults.php:418
 msgid "Porównaj produkty"
 msgstr "Porovnat produkty"
 
-#: config/defaults.php:407
+#: config/defaults.php:419
 #: src/Service/CompareService.php:297
 msgid "Wyczyść porównanie"
 msgstr "Vymazat porovnání"
 
-#: config/defaults.php:408
+#: config/defaults.php:420
 msgid "Cecha"
 msgstr "Vlastnost"
 
-#: config/defaults.php:409
+#: config/defaults.php:421
 msgid "Pokazuj tylko różnice"
 msgstr "Zobrazovat pouze rozdíly"
 
-#: config/defaults.php:411
+#: config/defaults.php:423
 msgid "Cena jednostkowa"
 msgstr "Jednotková cena"
 
-#: config/defaults.php:414
+#: config/defaults.php:426
 msgid "Czas dostawy"
 msgstr "Dodací lhůta"
 
-#: config/defaults.php:416
+#: config/defaults.php:428
 #: templates/single-product/gpsr-info.php:15
 msgid "Producent"
 msgstr "Výrobce"
 
-#: config/defaults.php:417
+#: config/defaults.php:429
 #: src/Service/CompareService.php:482
 msgid "GTIN / EAN"
 msgstr "GTIN / EAN"
 
-#: config/defaults.php:418
+#: config/defaults.php:430
 msgid "Krótki opis"
 msgstr "Krátký popis"
 
-#: config/defaults.php:430
+#: config/defaults.php:442
 msgid "Szybki podgląd"
 msgstr "Rychlý náhled"
 
-#: config/defaults.php:431
+#: config/defaults.php:443
 #: templates/shared/quick-view-modal.php:20
 #: templates/shared/quick-view-modal.php:28
 msgid "Szybki podgląd produktu"
 msgstr "Rychlý náhled produktu"
 
-#: config/defaults.php:432
-#: templates/shared/quick-view-modal.php:22
-msgid "Zamknij"
-msgstr "Zavřít"
-
-#: config/defaults.php:433
+#: config/defaults.php:445
 msgid "Ładowanie produktu..."
 msgstr "Načítání produktu..."
 
-#: config/defaults.php:434
+#: config/defaults.php:446
 msgid "Nie udało się wczytać podglądu produktu."
 msgstr "Nepodařilo se načíst náhled produktu."
 
-#: config/defaults.php:451
-#: templates/quick-view/content.php:96
+#: config/defaults.php:465
+#: templates/quick-view/content.php:106
 msgid "Zobacz pełną kartę produktu"
 msgstr "Zobrazit celou kartu produktu"
 
-#: config/defaults.php:460
+#: config/defaults.php:474
 msgid "Często kupowane razem"
 msgstr "Často kupováno společně"
 
-#: config/defaults.php:461
+#: config/defaults.php:475
 msgid "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość do koszyka jednym kliknięciem."
 msgstr "Nabídněte zákazníkovi hotový set doplňkových produktů a přidejte vše do košíku jedním kliknutím."
 
-#: config/defaults.php:462
-#: config/defaults.php:628
+#: config/defaults.php:476
+#: config/defaults.php:643
 msgid "Dodaj zestaw do koszyka"
 msgstr "Přidat set do košíku"
 
-#: config/defaults.php:463
+#: config/defaults.php:477
 msgid "Brak skonfigurowanych produktów do zestawu."
 msgstr "Pro tento set nejsou nakonfigurovány žádné produkty."
 
-#: config/defaults.php:467
+#: config/defaults.php:481
 msgid "Łącznie:"
 msgstr "Celkem:"
 
-#: config/defaults.php:468
+#: config/defaults.php:482
 msgid "Dodano {count} produktów z zestawu do koszyka."
 msgstr "{count} produktů ze setu bylo přidáno do košíku."
 
-#: config/defaults.php:497
+#: config/defaults.php:511
 msgid "Promocja"
 msgstr "Akce"
 
-#: config/defaults.php:498
+#: config/defaults.php:512
 msgid "Nowość"
 msgstr "Novinka"
 
-#: config/defaults.php:499
+#: config/defaults.php:513
 msgid "Ostatnie sztuki"
 msgstr "Poslední kusy"
 
-#: config/defaults.php:500
+#: config/defaults.php:514
 #: src/Service/BadgeService.php:113
 msgid "Bestseller"
 msgstr "Bestseller"
 
-#: config/defaults.php:507
+#: config/defaults.php:521
 msgid "Dostawa i płatność"
 msgstr "Doprava a platba"
 
-#: config/defaults.php:511
+#: config/defaults.php:525
 msgid "Zwroty i reklamacje"
 msgstr "Vrácení a reklamace"
 
-#: config/defaults.php:525
+#: config/defaults.php:539
 msgid "Zobacz produkt w użyciu"
 msgstr "Podívejte se na produkt v použití"
 
-#: config/defaults.php:538
-#: templates/shared/gallery-lightbox.php:18
+#: config/defaults.php:552
+#: templates/shared/gallery-lightbox.php:21
 msgid "Podgląd galerii produktu"
 msgstr "Náhled galerie produktu"
 
-#: config/defaults.php:539
-#: templates/shared/gallery-lightbox.php:21
+#: config/defaults.php:553
+#: templates/shared/gallery-lightbox.php:24
 msgid "Zamknij podgląd galerii"
 msgstr "Zavřít náhled galerie"
 
-#: config/defaults.php:548
+#: config/defaults.php:554
+#: src/Service/GalleryZoomService.php:64
+msgid "Powiększ zdjęcie produktu"
+msgstr "Přiblížit fotku produktu"
+
+#: config/defaults.php:563
 #: src/Service/ProductSliderService.php:76
 #: src/Service/ProductSliderService.php:120
 msgid "Polecane produkty"
 msgstr "Doporučené produkty"
 
-#: config/defaults.php:559
+#: config/defaults.php:574
 msgid "Brak produktów do wyświetlenia w tej sekcji."
 msgstr "V této sekci nejsou žádné produkty k zobrazení."
 
-#: config/defaults.php:560
+#: config/defaults.php:575
 #: templates/shared/product-slider.php:77
 msgid "Zobacz wszystkie produkty"
 msgstr "Zobrazit všechny produkty"
 
-#: config/defaults.php:570
+#: config/defaults.php:585
 msgid "Zamów w przedsprzedaży"
 msgstr "Objednat v předprodeji"
 
-#: config/defaults.php:571
+#: config/defaults.php:586
 msgid "Przedsprzedaż, wysyłka od {date}"
 msgstr "Předprodej, odeslání od {date}"
 
-#: config/defaults.php:572
+#: config/defaults.php:587
 msgid "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę zrealizujemy od {date}."
 msgstr "Tento produkt je dostupný v předprodeji. Objednejte nyní a odešleme ho od {date}."
 
-#: config/defaults.php:573
+#: config/defaults.php:588
 msgid "Przedsprzedaż"
 msgstr "Předprodej"
 
-#: config/defaults.php:577
+#: config/defaults.php:592
 msgid "Produkty z przedsprzedaży nie mogą być łączone z innymi produktami w tym samym koszyku."
 msgstr "Produkty z předprodeje nelze kombinovat s jinými produkty ve stejném košíku."
 
-#: config/defaults.php:585
+#: config/defaults.php:600
 msgid "Powiadom mnie o dostępności"
 msgstr "Upozornit mě na dostupnost"
 
-#: config/defaults.php:587
+#: config/defaults.php:602
 msgid "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
 msgstr "Zanechte e-mailovou adresu a dáme vám vědět, až bude produkt znovu skladem."
 
-#: config/defaults.php:589
+#: config/defaults.php:604
 #: templates/single-product/waitlist-form.php:27
 msgid "Adres email"
 msgstr "E-mailová adresa"
 
-#: config/defaults.php:590
+#: config/defaults.php:605
 #: templates/single-product/waitlist-form.php:28
 msgid "Twój adres email"
 msgstr "Vaše e-mailová adresa"
 
-#: config/defaults.php:591
+#: config/defaults.php:606
 msgid "Powiadom mnie"
 msgstr "Upozornit mě"
 
-#: config/defaults.php:592
+#: config/defaults.php:607
 msgid "Dziękujemy. Zapisaliśmy Cię na listę oczekujących."
 msgstr "Děkujeme. Zapsali jsme vás na čekací listinu."
 
-#: config/defaults.php:593
+#: config/defaults.php:608
 msgid "Akceptuję kontakt email w sprawie dostępności tego produktu."
 msgstr "Souhlasím s e-mailovým kontaktem ohledně dostupnosti tohoto produktu."
 
-#: config/defaults.php:595
+#: config/defaults.php:610
 msgid "Lista oczekujących jest niedostępna dla tego produktu."
 msgstr "Čekací listina není pro tento produkt dostupná."
 
-#: config/defaults.php:596
+#: config/defaults.php:611
 msgid "Podaj poprawny adres email."
 msgstr "Zadejte platnou e-mailovou adresu."
 
-#: config/defaults.php:597
+#: config/defaults.php:612
 msgid "Musisz zaakceptować zgodę na kontakt email."
 msgstr "Musíte souhlasit s kontaktem e-mailem."
 
-#: config/defaults.php:598
+#: config/defaults.php:613
 msgid "Zaloguj się, aby zapisać się na listę oczekujących."
 msgstr "Přihlaste se, abyste se zapsali na čekací listinu."
 
-#: config/defaults.php:599
+#: config/defaults.php:614
 msgid "Produkt ponownie dostępny - {product_name}"
 msgstr "Produkt je znovu skladem - {product_name}"
 
-#: config/defaults.php:600
+#: config/defaults.php:615
 msgid "Produkt {product_name} jest ponownie dostępny."
 msgstr "Produkt {product_name} je znovu skladem."
 
-#: config/defaults.php:601
+#: config/defaults.php:616
 msgid "Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten email."
 msgstr "Wenn du solche Nachrichten nicht mehr erhalten möchtest, ignoriere diese E-Mail einfach."
 
-#: config/defaults.php:608
+#: config/defaults.php:623
 msgid "Dodatki do produktu"
 msgstr "Doplňky k produktu"
 
-#: config/defaults.php:609
+#: config/defaults.php:624
 msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
 msgstr "Nakonfigurujte doplňky a služby spojené s tímto produktem."
 
-#: config/defaults.php:613
+#: config/defaults.php:628
 msgid "Wymagane"
 msgstr "Povinné"
 
-#: config/defaults.php:614
+#: config/defaults.php:629
 msgid "Opcjonalne"
 msgstr "Volitelné"
 
-#: config/defaults.php:615
+#: config/defaults.php:630
 msgid "Wybierz opcję"
 msgstr "Vyberte možnost"
 
-#: config/defaults.php:616
+#: config/defaults.php:631
 msgid "Wpisz wartość"
 msgstr "Zadejte hodnotu"
 
-#: config/defaults.php:617
+#: config/defaults.php:632
 msgid "Wpisz szczegóły"
 msgstr "Zadejte podrobnosti"
 
-#: config/defaults.php:626
+#: config/defaults.php:641
 msgid "Kup w zestawie"
 msgstr "Koupit v setu"
 
-#: config/defaults.php:627
+#: config/defaults.php:642
 msgid "Połącz produkt główny z akcesoriami i kup całość w jednym pakiecie."
 msgstr "Spojte hlavní produkt s příslušenstvím a kupte vše v jednom balíčku."
 
-#: config/defaults.php:629
+#: config/defaults.php:644
 msgid "Wybierz przynajmniej jeden dodatkowy produkt do zestawu."
 msgstr "Vyberte alespoň jeden doplňkový produkt do setu."
 
-#: config/defaults.php:630
+#: config/defaults.php:645
 msgid "Dodano zestaw do koszyka."
 msgstr "Set byl přidán do košíku."
 
-#: config/defaults.php:633
+#: config/defaults.php:648
 msgid "Cena zestawu"
 msgstr "Cena setu"
 
-#: config/defaults.php:634
+#: config/defaults.php:649
 msgid "w zestawie"
 msgstr "v setu"
 
-#: config/defaults.php:635
+#: config/defaults.php:650
 msgid "x {quantity}"
 msgstr "x {quantity}"
 
-#: config/defaults.php:636
+#: config/defaults.php:651
 msgid "Oszczędzasz"
 msgstr "Ušetříte"
 
-#: config/defaults.php:643
+#: config/defaults.php:658
 #: templates/archive/infinite-scroll.php:11
 msgid "Załaduj więcej produktów"
 msgstr "Načíst více produktů"
 
-#: config/defaults.php:644
+#: config/defaults.php:659
 msgid "Ładowanie produktów..."
 msgstr "Načítání produktů..."
 
-#: config/defaults.php:645
+#: config/defaults.php:660
 msgid "Nie udało się załadować kolejnych produktów."
 msgstr "Nepodařilo se načíst další produkty."
 
-#: config/defaults.php:646
+#: config/defaults.php:661
 msgid "To już wszystkie produkty."
 msgstr "To jsou všechny produkty."
 
-#: config/defaults.php:657
+#: config/defaults.php:662
+msgid "Załadowano kolejne produkty."
+msgstr "Byly načteny další produkty."
+
+#: config/defaults.php:673
 msgid "Masz pytanie o produkt lub warunki handlowe?"
 msgstr "Máte otázku k produktu nebo obchodním podmínkám?"
 
-#: config/defaults.php:658
+#: config/defaults.php:674
 msgid "Skontaktuj się z nami, jeśli chcesz dostać ofertę B2B, rabat dla hurtu albo pomoc z doborem produktu."
 msgstr "Kontaktujte nás, pokud chcete B2B nabídku, velkoobchodní slevu nebo pomoc s výběrem produktu."
 
-#: config/defaults.php:659
+#: config/defaults.php:675
 msgid "Przejdź do kontaktu"
 msgstr "Přejít na kontakt"
 
-#: config/defaults.php:662
+#: config/defaults.php:678
 #: src/Service/PopupService.php:80
 msgid "Zamknij popup"
 msgstr "Zavřít popup"
 
-#: config/defaults.php:663
+#: config/defaults.php:679
 #: src/Service/PopupService.php:81
 msgid "Popup promocyjny"
 msgstr "Propagační popup"
 
-#: config/defaults.php:689
+#: config/defaults.php:705
 msgid "Składniki"
 msgstr "Složení"
 
-#: config/defaults.php:690
+#: config/defaults.php:706
 msgid "Alergeny"
 msgstr "Alergeny"
 
-#: config/defaults.php:691
+#: config/defaults.php:707
 msgid "Wartości odżywcze na"
 msgstr "Výživové hodnoty na"
 
-#: config/defaults.php:692
+#: config/defaults.php:708
 msgid "Składnik odżywczy"
 msgstr "Živina"
 
-#: config/defaults.php:693
+#: config/defaults.php:709
 #: templates/forms/withdrawal-guest.php:63
 #: templates/forms/withdrawal-guest.php:87
 msgid "Wartość"
 msgstr "Hodnota"
 
-#: config/defaults.php:694
+#: config/defaults.php:710
 #: src/Service/FoodService.php:133
 msgid "100 g"
 msgstr "100 g"
 
-#: config/defaults.php:695
+#: config/defaults.php:711
 #: src/Admin/CSVImportExport.php:81
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
 #: src/Service/FoodService.php:201
 msgid "Nutri-Score"
 msgstr "Nutri-Score"
 
-#: config/defaults.php:696
+#: config/defaults.php:712
 msgid "Zawartość alkoholu"
 msgstr "Obsah alkoholu"
 
-#: config/defaults.php:697
+#: config/defaults.php:713
 #: src/Service/FoodService.php:241
 msgid "% vol."
 msgstr "% obj."
 
-#: config/defaults.php:698
+#: config/defaults.php:714
 msgid "Kraj pochodzenia"
 msgstr "Země původu"
 
-#: config/defaults.php:699
+#: config/defaults.php:715
 msgid "Dystrybutor"
 msgstr "Distributor"
 
-#: config/defaults.php:700
+#: config/defaults.php:716
 msgid "Zawartość netto"
 msgstr "Netto obsah"
 
 #. translators: 1: customer first name (possibly anonymized), 2: product name
-#: config/defaults.php:728
+#: config/defaults.php:744
 #, php-format
 msgid "%1$s kupił(a) %2$s"
 msgstr "%1$s koupil(a) %2$s"
 
 #. translators: %d: number of minutes since the order
-#: config/defaults.php:730
+#: config/defaults.php:746
 #, php-format
 msgid "%d min temu"
 msgstr "před %d min"
 
 #. translators: %d: number of hours since the order
-#: config/defaults.php:732
+#: config/defaults.php:748
 #, php-format
 msgid "%d godz. temu"
 msgstr "před %d hod"
 
-#: config/defaults.php:737
+#: config/defaults.php:753
 msgid "Pytania i odpowiedzi"
 msgstr "Otázky a odpovědi"
 
-#: config/defaults.php:738
+#: config/defaults.php:754
 msgid "Zadaj pytanie o ten produkt..."
 msgstr "Zeptejte se na tento produkt..."
 
-#: config/defaults.php:739
+#: config/defaults.php:755
 msgid "Zadaj pytanie"
 msgstr "Položit otázku"
 
-#: config/defaults.php:740
+#: config/defaults.php:756
 msgid "Odpowiedz"
 msgstr "Odpovědět"
 
-#: config/defaults.php:741
+#: config/defaults.php:757
 msgid "Brak pytań. Zadaj pierwsze pytanie!"
 msgstr "Žádné otázky. Položte první otázku!"
 
-#: config/defaults.php:749
+#: config/defaults.php:765
 msgid "Historia cen"
 msgstr "Historie cen"
 
-#: config/defaults.php:750
+#: config/defaults.php:766
 msgid "Najniższa"
 msgstr "Nejnižší"
 
-#: config/defaults.php:751
+#: config/defaults.php:767
 msgid "Najwyższa"
 msgstr "Nejvyšší"
 
-#: config/defaults.php:756
+#: config/defaults.php:772
 msgid "Często zadawane pytania"
 msgstr "Často kladené otázky"
 
-#: config/defaults.php:779
+#: config/defaults.php:795
 #: src/Service/DSAProductReportService.php:100
 #: templates/forms/dsa-report.php:37
 msgid "Zgłoś nielegalne treści (DSA)"
 msgstr "Nahlásit nelegální obsah (DSA)"
 
-#: config/defaults.php:780
+#: config/defaults.php:796
 #: templates/forms/dsa-report.php:40
 msgid "Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA)."
 msgstr "Vyplňte následující formulář pro nahlášení obsahu, který považujete za nelegální podle Aktu o digitálních službách (DSA)."
@@ -1456,7 +1475,7 @@ msgid "Back to modules"
 msgstr "Zpět na moduly"
 
 #: src/Admin/AdminPage.php:355
-#: src/Admin/ModulesPage.php:1329
+#: src/Admin/ModulesPage.php:1372
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr "Povoleno"
@@ -1669,6 +1688,7 @@ msgstr "Žádná interní zpětná vazba k zobrazení."
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171
+#: src/Service/ReturnRequestService.php:231
 #: src/Service/RodoTrainingDocsService.php:164
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
@@ -1725,7 +1745,7 @@ msgstr "Neaktivní"
 
 #: src/Admin/AdminPage.php:858
 #: src/Admin/AdminPage.php:887
-#: src/Admin/ModulesPage.php:257
+#: src/Admin/ModulesPage.php:287
 msgid "Legal Pages"
 msgstr "Právní stránky"
 
@@ -1885,7 +1905,7 @@ msgid "Deadline"
 msgstr "Lhůta"
 
 #: src/Admin/CRAIncidentsPage.php:125
-#: src/Admin/ModulesPage.php:1331
+#: src/Admin/ModulesPage.php:1374
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr "Akce"
@@ -1990,20 +2010,20 @@ msgid "Right of withdrawal exemption"
 msgstr "Vyloučení z práva na odstoupení"
 
 #: src/Admin/CSVImportExport.php:80
-#: src/Admin/ModulesPage.php:395
+#: src/Admin/ModulesPage.php:425
 #: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
 #: src/Service/FoodService.php:54
 msgid "Ingredients"
 msgstr "Složení"
 
 #: src/Admin/CSVImportExport.php:82
-#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:432
 #: src/Service/FoodService.php:239
 msgid "Alcohol content"
 msgstr "Obsah alkoholu"
 
 #: src/Admin/CSVImportExport.php:83
-#: src/Admin/ModulesPage.php:404
+#: src/Admin/ModulesPage.php:434
 #: src/Service/FoodService.php:285
 msgid "Country of origin"
 msgstr "Země původu"
@@ -2159,6 +2179,8 @@ msgstr "Plugin"
 #: src/Admin/DeactivationHandler.php:152
 #: src/Admin/WithdrawalsAdminPage.php:196
 #: src/Service/DSAService.php:174
+#: src/Service/ReturnRequestService.php:144
+#: src/Service/ReturnRequestService.php:230
 msgid "Reason"
 msgstr "Grund"
 
@@ -2171,223 +2193,272 @@ msgid "What to add"
 msgstr "Co přidat"
 
 #: src/Admin/ModulesPage.php:78
+msgid "Promotions / dynamic pricing"
+msgstr "Akce / dynamické ceny"
+
+#: src/Admin/ModulesPage.php:79
+msgid "Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default."
+msgstr "Automatické slevy v košíku: procentuální sleva, když mezisoučet košíku dosáhne prahové hodnoty, a procentuální sleva na položku produktu, když její množství dosáhne prahové hodnoty (množstevní sleva). Ve výchozím nastavení vypnuto."
+
+#: src/Admin/ModulesPage.php:80
+#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:530
+#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:611
+#: src/Admin/ModulesPage.php:657
+#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:727
+#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:812
+#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:863
+msgid "Merchandising"
+msgstr "Merchandising"
+
+#: src/Admin/ModulesPage.php:85
+msgid "Bulk discount: minimum quantity per product"
+msgstr "Množstevní sleva: minimální množství na produkt"
+
+#: src/Admin/ModulesPage.php:85
+msgid "0 disables the bulk discount"
+msgstr "0 vypne množstevní slevu"
+
+#: src/Admin/ModulesPage.php:86
+msgid "Bulk discount: percent off (%)"
+msgstr "Množstevní sleva: procentuální sleva (%)"
+
+#: src/Admin/ModulesPage.php:87
+msgid "Cart discount: subtotal threshold"
+msgstr "Sleva v košíku: prahová hodnota mezisoučtu"
+
+#: src/Admin/ModulesPage.php:87
+msgid "0 disables the cart discount"
+msgstr "0 vypne slevu v košíku"
+
+#: src/Admin/ModulesPage.php:88
+msgid "Cart discount: percent off (%)"
+msgstr "Sleva v košíku: procentuální sleva (%)"
+
+#: src/Admin/ModulesPage.php:94
 #: src/Admin/ProductMetaBox.php:67
 #: src/Service/CompareService.php:476
 msgid "Unit price"
 msgstr "Jednotková cena"
 
-#: src/Admin/ModulesPage.php:79
+#: src/Admin/ModulesPage.php:95
 msgid "Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish consumer law."
 msgstr "Zobrazení ceny za jednotku míry (např. za 1 kg, za 100 ml) podle polského spotřebitelského práva."
 
-#: src/Admin/ModulesPage.php:80
-#: src/Admin/ModulesPage.php:93
-#: src/Admin/ModulesPage.php:126
-#: src/Admin/ModulesPage.php:141
-#: src/Admin/ModulesPage.php:155
-#: src/Admin/ModulesPage.php:168
+#: src/Admin/ModulesPage.php:96
+#: src/Admin/ModulesPage.php:109
+#: src/Admin/ModulesPage.php:142
+#: src/Admin/ModulesPage.php:157
+#: src/Admin/ModulesPage.php:171
+#: src/Admin/ModulesPage.php:185
 msgid "Prices and Display"
 msgstr "Ceny a zobrazení"
 
-#: src/Admin/ModulesPage.php:85
-#: src/Admin/ModulesPage.php:160
+#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:176
 msgid "Display format"
 msgstr "Formát zobrazení"
 
-#: src/Admin/ModulesPage.php:85
+#: src/Admin/ModulesPage.php:101
 msgid "Variables: {price}, {unit}"
 msgstr "Proměnné: {price}, {unit}"
 
-#: src/Admin/ModulesPage.php:86
+#: src/Admin/ModulesPage.php:102
 msgid "Show on product lists"
 msgstr "Zobrazovat v seznamu produktů"
 
-#: src/Admin/ModulesPage.php:91
+#: src/Admin/ModulesPage.php:107
 msgid "Lowest price (Omnibus)"
 msgstr "Nejnižší cena (Omnibus)"
 
-#: src/Admin/ModulesPage.php:92
+#: src/Admin/ModulesPage.php:108
 msgid "Track price history and display the lowest price from the last 30 days for products on sale. Required by the Omnibus Directive (EU 2019/2161)."
 msgstr "Sleduje historii cen a zobrazuje nejnižší cenu za posledních 30 dní u produktů v akci. Vyžaduje směrnice Omnibus (EU 2019/2161)."
 
-#: src/Admin/ModulesPage.php:99
+#: src/Admin/ModulesPage.php:115
 msgid "Price tracking"
 msgstr "Sledování cen"
 
-#: src/Admin/ModulesPage.php:100
+#: src/Admin/ModulesPage.php:116
 msgid "Tracking period (days)"
 msgstr "Období sledování (dny)"
 
-#: src/Admin/ModulesPage.php:100
+#: src/Admin/ModulesPage.php:116
 msgid "Directive requires a minimum of 30 days"
 msgstr "Směrnice vyžaduje minimálně 30 dní"
 
-#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:117
 msgid "Keep history (days)"
 msgstr "Uchovávat historii (dny)"
 
-#: src/Admin/ModulesPage.php:101
+#: src/Admin/ModulesPage.php:117
 msgid "Older data will be automatically deleted"
 msgstr "Starší data budou automaticky odstraněna"
 
-#: src/Admin/ModulesPage.php:102
+#: src/Admin/ModulesPage.php:118
 msgid "Prices with tax"
 msgstr "Ceny s daní"
 
-#: src/Admin/ModulesPage.php:102
+#: src/Admin/ModulesPage.php:118
 msgid "Track and display gross prices"
 msgstr "Sledovat a zobrazovat ceny včetně DPH"
 
-#: src/Admin/ModulesPage.php:104
+#: src/Admin/ModulesPage.php:120
 msgid "Display"
 msgstr "Zobrazení"
 
-#: src/Admin/ModulesPage.php:105
+#: src/Admin/ModulesPage.php:121
 msgid "Only products on sale"
 msgstr "Pouze produkty v akci"
 
-#: src/Admin/ModulesPage.php:105
+#: src/Admin/ModulesPage.php:121
 msgid "Show info only when the product has a sale price"
 msgstr "Informaci zobrazit jen tehdy, když má produkt akční cenu"
 
-#: src/Admin/ModulesPage.php:106
-#: src/Admin/ModulesPage.php:839
+#: src/Admin/ModulesPage.php:122
+#: src/Admin/ModulesPage.php:882
 msgid "Product page"
 msgstr "Stránka produktu"
 
-#: src/Admin/ModulesPage.php:107
+#: src/Admin/ModulesPage.php:123
 msgid "Product lists (shop, categories)"
 msgstr "Seznam produktů (obchod, kategorie)"
 
-#: src/Admin/ModulesPage.php:108
+#: src/Admin/ModulesPage.php:124
 msgid "Related and featured products"
 msgstr "Související a doporučené produkty"
 
-#: src/Admin/ModulesPage.php:109
-#: src/Admin/ModulesPage.php:840
+#: src/Admin/ModulesPage.php:125
+#: src/Admin/ModulesPage.php:883
 #: src/Service/LiveCartService.php:79
 #: src/Service/LiveCartService.php:126
 #: src/Service/LiveCartService.php:137
 msgid "Cart"
 msgstr "Košík"
 
-#: src/Admin/ModulesPage.php:110
+#: src/Admin/ModulesPage.php:126
 msgid "Show regular price (before sale)"
 msgstr "Zobrazovat běžnou cenu (před akcí)"
 
-#: src/Admin/ModulesPage.php:110
+#: src/Admin/ModulesPage.php:126
 msgid "Display additional information about the price before the sale started"
 msgstr "Zobrazit doplňující informaci o ceně před začátkem akce"
 
-#: src/Admin/ModulesPage.php:112
+#: src/Admin/ModulesPage.php:128
 msgid "Message template"
 msgstr "Šablona zprávy"
 
-#: src/Admin/ModulesPage.php:113
+#: src/Admin/ModulesPage.php:129
 msgid "Message content"
 msgstr "Text zprávy"
 
-#: src/Admin/ModulesPage.php:113
+#: src/Admin/ModulesPage.php:129
 msgid "Variables: {price}, {days}, {date}, {regular_price}"
 msgstr "Proměnné: {price}, {days}, {date}, {regular_price}"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "No price history"
 msgstr "Bez historie cen"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Hide message"
 msgstr "Skrýt zprávu"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Show current price"
 msgstr "Zobrazit aktuální cenu"
 
-#: src/Admin/ModulesPage.php:114
+#: src/Admin/ModulesPage.php:130
 msgid "Custom text"
 msgstr "Vlastní text"
 
-#: src/Admin/ModulesPage.php:115
+#: src/Admin/ModulesPage.php:131
 msgid "Custom text (no history)"
 msgstr "Vlastní text (bez historie)"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Calculated from"
 msgstr "Počítat od"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Sale start date"
 msgstr "Dne zahájení akce"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Today"
 msgstr "Dneška"
 
-#: src/Admin/ModulesPage.php:116
+#: src/Admin/ModulesPage.php:132
 msgid "Reference point for calculating the lowest price"
 msgstr "Referenční bod pro výpočet nejnižší ceny"
 
-#: src/Admin/ModulesPage.php:118
+#: src/Admin/ModulesPage.php:134
 msgid "Variable products"
 msgstr "Variantní produkty"
 
-#: src/Admin/ModulesPage.php:119
+#: src/Admin/ModulesPage.php:135
 msgid "Track variations separately"
 msgstr "Sledovat varianty odděleně"
 
-#: src/Admin/ModulesPage.php:119
+#: src/Admin/ModulesPage.php:135
 msgid "Each variation has its own price history"
 msgstr "Každá varianta má vlastní historii cen"
 
-#: src/Admin/ModulesPage.php:124
+#: src/Admin/ModulesPage.php:140
 msgid "VAT Display"
 msgstr "Zobrazení DPH"
 
-#: src/Admin/ModulesPage.php:125
+#: src/Admin/ModulesPage.php:141
 msgid "Configuration for gross/net prices display, VAT rate info, and small business exemption support (Art. 113 of the VAT Act)."
 msgstr "Nastavení zobrazení cen s DPH a bez DPH, informace o sazbě DPH a podpora osvobození malého podnikatele (čl. 113 zákona o DPH)."
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Price display mode"
 msgstr "Režim zobrazení cen"
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Gross (including VAT)"
 msgstr "Brutto (s DPH)"
 
-#: src/Admin/ModulesPage.php:131
+#: src/Admin/ModulesPage.php:147
 msgid "Net (excluding VAT)"
 msgstr "Netto (bez DPH)"
 
-#: src/Admin/ModulesPage.php:132
+#: src/Admin/ModulesPage.php:148
 msgid "VAT notice text"
 msgstr "Text informace o DPH"
 
-#: src/Admin/ModulesPage.php:132
+#: src/Admin/ModulesPage.php:148
 msgid "Variables: {rate}"
 msgstr "Proměnné: {rate}"
 
-#: src/Admin/ModulesPage.php:133
+#: src/Admin/ModulesPage.php:149
 msgid "Small business exemption (Art. 113)"
 msgstr "Osvobození malého podnikatele (čl. 113)"
 
-#: src/Admin/ModulesPage.php:134
+#: src/Admin/ModulesPage.php:150
 msgid "Exemption text"
 msgstr "Text osvobození"
 
-#: src/Admin/ModulesPage.php:139
+#: src/Admin/ModulesPage.php:155
 msgid "OSS observer"
 msgstr "Pozorovatel OSS"
 
-#: src/Admin/ModulesPage.php:140
+#: src/Admin/ModulesPage.php:156
 msgid "Observe the OSS delivery threshold of the current year. Enabling this will install the One Stop Shop plugin, which monitors your intra-EU B2C sales and flags when you approach the €10,000 threshold."
 msgstr "Sledujte prahovou hodnotu dodávek OSS v aktuálním roce. Zapnutím této možnosti nainstalujete plugin One Stop Shop, který sleduje váš prodej B2C v rámci EU a signalizuje, když se blížíte k prahové hodnotě 10 000 €."
 
-#: src/Admin/ModulesPage.php:145
+#: src/Admin/ModulesPage.php:161
 msgid "About OSS procedure"
 msgstr "O proceduře OSS"
 
-#: src/Admin/ModulesPage.php:153
+#: src/Admin/ModulesPage.php:169
 #: src/Admin/ProductMetaBox.php:133
 #: src/AIFeed/ProductMarkdownBuilder.php:180
 #: src/Block/StoreApi/ProductDataExtension.php:216
@@ -2395,90 +2466,99 @@ msgstr "O proceduře OSS"
 msgid "Delivery time"
 msgstr "Dodací lhůta"
 
-#: src/Admin/ModulesPage.php:154
+#: src/Admin/ModulesPage.php:170
 msgid "Display estimated delivery time on the product page. Configuration per product or variation with default fallback."
 msgstr "Zobrazení předpokládané dodací lhůty na stránce produktu. Nastavení po produktu nebo variantě s výchozím fallbackem."
 
-#: src/Admin/ModulesPage.php:160
+#: src/Admin/ModulesPage.php:176
 msgid "Variables: {time}"
 msgstr "Proměnné: {time}"
 
-#: src/Admin/ModulesPage.php:161
+#: src/Admin/ModulesPage.php:177
 msgid "Default delivery time"
 msgstr "Výchozí dodací lhůta"
 
-#: src/Admin/ModulesPage.php:166
+#: src/Admin/ModulesPage.php:178
+#: src/Admin/ModulesPage.php:519
+msgid "Show on product listings"
+msgstr "Zobrazovat v seznamech produktů"
+
+#: src/Admin/ModulesPage.php:178
+msgid "Also display the delivery time on shop and archive product cards."
+msgstr "Zobrazit dodací lhůtu také na kartách produktů v obchodě a archivech."
+
+#: src/Admin/ModulesPage.php:183
 msgid "Shipping costs info"
 msgstr "Informace o nákladech na dopravu"
 
-#: src/Admin/ModulesPage.php:167
+#: src/Admin/ModulesPage.php:184
 msgid "Link to a shipping costs page displayed next to the product price."
 msgstr "Odkaz na stránku s náklady na dopravu zobrazený u ceny produktu."
 
-#: src/Admin/ModulesPage.php:173
+#: src/Admin/ModulesPage.php:190
 msgid "Link text"
 msgstr "Text odkazu"
 
-#: src/Admin/ModulesPage.php:180
+#: src/Admin/ModulesPage.php:197
 msgid "Checkout button"
 msgstr "Tlačítko objednávky"
 
-#: src/Admin/ModulesPage.php:181
+#: src/Admin/ModulesPage.php:198
 msgid "Change order button text to \"Order with obligation to pay\" according to Polish law."
 msgstr "Změní text tlačítka objednávky na \"Objednávám s povinností platby\" podle polského práva."
 
-#: src/Admin/ModulesPage.php:182
-#: src/Admin/ModulesPage.php:194
-#: src/Admin/ModulesPage.php:233
-#: src/Admin/ModulesPage.php:248
-#: src/Admin/ModulesPage.php:1032
+#: src/Admin/ModulesPage.php:199
+#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:250
+#: src/Admin/ModulesPage.php:265
+#: src/Admin/ModulesPage.php:1075
 msgid "Checkout and Orders"
 msgstr "Pokladna a objednávky"
 
-#: src/Admin/ModulesPage.php:187
-#: src/Admin/ModulesPage.php:470
-#: src/Admin/ModulesPage.php:532
-#: src/Admin/ModulesPage.php:622
-#: src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:204
+#: src/Admin/ModulesPage.php:502
+#: src/Admin/ModulesPage.php:573
+#: src/Admin/ModulesPage.php:663
+#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:848
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
 msgid "Button text"
 msgstr "Text tlačítka"
 
-#: src/Admin/ModulesPage.php:192
+#: src/Admin/ModulesPage.php:209
 msgid "Legal checkboxes"
 msgstr "Právní checkboxy"
 
-#: src/Admin/ModulesPage.php:193
+#: src/Admin/ModulesPage.php:210
 msgid "7 built-in checkboxes: terms and conditions, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing."
 msgstr "7 vestavěných checkboxů: obchodní podmínky, zásady ochrany osobních údajů, právo na odstoupení, digitální obsah, oznámení o doručení, připomínka recenze a marketing."
 
-#: src/Admin/ModulesPage.php:199
+#: src/Admin/ModulesPage.php:216
 #: src/Enum/LegalPageType.php:17
 #: src/Service/LegalPageService.php:173
 msgid "Terms and Conditions"
 msgstr "Obchodní podmínky"
 
 #. translators: %s: terms page URL placeholder
-#: src/Admin/ModulesPage.php:201
+#: src/Admin/ModulesPage.php:218
 msgid "Label - Terms"
 msgstr "Štítek - obchodní podmínky"
 
 #. translators: %s: terms page URL placeholder
-#: src/Admin/ModulesPage.php:201
+#: src/Admin/ModulesPage.php:218
 #, php-format
 msgid "Use %s as a placeholder for the terms page link"
 msgstr "Použijte %s jako místo pro odkaz na obchodní podmínky"
 
-#: src/Admin/ModulesPage.php:202
+#: src/Admin/ModulesPage.php:219
 msgid "Error - Terms"
 msgstr "Chyba - obchodní podmínky"
 
-#: src/Admin/ModulesPage.php:203
+#: src/Admin/ModulesPage.php:220
 msgid "Description - Terms"
 msgstr "Popis - obchodní podmínky"
 
-#: src/Admin/ModulesPage.php:204
+#: src/Admin/ModulesPage.php:221
 #: src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174
 #: src/Service/SiteAuditService.php:371
@@ -2486,218 +2566,235 @@ msgid "Privacy Policy"
 msgstr "Zásady ochrany osobních údajů"
 
 #. translators: %s: privacy policy URL placeholder
-#: src/Admin/ModulesPage.php:206
+#: src/Admin/ModulesPage.php:223
 msgid "Label - Privacy Policy"
 msgstr "Štítek - zásady ochrany osobních údajů"
 
 #. translators: %s: privacy policy URL placeholder
-#: src/Admin/ModulesPage.php:206
+#: src/Admin/ModulesPage.php:223
 #, php-format
 msgid "Use %s as a placeholder for the privacy policy link"
 msgstr "Použijte %s jako místo pro odkaz na zásady ochrany osobních údajů"
 
-#: src/Admin/ModulesPage.php:207
+#: src/Admin/ModulesPage.php:224
 msgid "Error - Privacy Policy"
 msgstr "Chyba - zásady ochrany osobních údajů"
 
-#: src/Admin/ModulesPage.php:208
+#: src/Admin/ModulesPage.php:225
 msgid "Description - Privacy Policy"
 msgstr "Popis - zásady ochrany osobních údajů"
 
-#: src/Admin/ModulesPage.php:209
+#: src/Admin/ModulesPage.php:226
 #: src/Email/WithdrawalEmailCta.php:65
 #: src/Service/SiteAuditService.php:659
 msgid "Right of withdrawal"
 msgstr "Právo na odstoupení"
 
 #. translators: %s: withdrawal information URL placeholder
-#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:228
 msgid "Label - Right of withdrawal"
 msgstr "Štítek - právo na odstoupení"
 
 #. translators: %s: withdrawal information URL placeholder
-#: src/Admin/ModulesPage.php:211
+#: src/Admin/ModulesPage.php:228
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr "Použijte %s jako místo pro odkaz na stránku vrácení zboží nebo odstoupení"
 
-#: src/Admin/ModulesPage.php:212
+#: src/Admin/ModulesPage.php:229
 msgid "Error - Right of withdrawal"
 msgstr "Chyba - právo na odstoupení"
 
-#: src/Admin/ModulesPage.php:213
+#: src/Admin/ModulesPage.php:230
 msgid "Description - Right of withdrawal"
 msgstr "Popis - právo na odstoupení"
 
-#: src/Admin/ModulesPage.php:214
+#: src/Admin/ModulesPage.php:231
 msgid "Digital content (waiver)"
 msgstr "Digitální obsah (vzdání se práva)"
 
-#: src/Admin/ModulesPage.php:215
+#: src/Admin/ModulesPage.php:232
 msgid "Label - Digital content"
 msgstr "Štítek - digitální obsah"
 
-#: src/Admin/ModulesPage.php:216
+#: src/Admin/ModulesPage.php:233
 msgid "Error - Digital content"
 msgstr "Chyba - digitální obsah"
 
-#: src/Admin/ModulesPage.php:217
+#: src/Admin/ModulesPage.php:234
 msgid "Description - Digital content"
 msgstr "Popis - digitální obsah"
 
-#: src/Admin/ModulesPage.php:218
+#: src/Admin/ModulesPage.php:235
 msgid "Delivery notifications"
 msgstr "Oznámení o doručení"
 
-#: src/Admin/ModulesPage.php:219
+#: src/Admin/ModulesPage.php:236
 msgid "Label - Delivery notifications"
 msgstr "Štítek - oznámení o doručení"
 
-#: src/Admin/ModulesPage.php:220
+#: src/Admin/ModulesPage.php:237
 msgid "Description - Delivery notifications"
 msgstr "Popis - oznámení o doručení"
 
-#: src/Admin/ModulesPage.php:221
+#: src/Admin/ModulesPage.php:238
 msgid "Review reminder"
 msgstr "Připomínka recenze"
 
-#: src/Admin/ModulesPage.php:222
+#: src/Admin/ModulesPage.php:239
 msgid "Label - Review reminder"
 msgstr "Štítek - připomínka recenze"
 
-#: src/Admin/ModulesPage.php:223
+#: src/Admin/ModulesPage.php:240
 msgid "Description - Review reminder"
 msgstr "Popis - připomínka recenze"
 
-#: src/Admin/ModulesPage.php:224
+#: src/Admin/ModulesPage.php:241
 msgid "Marketing consent"
 msgstr "Marketingový souhlas"
 
-#: src/Admin/ModulesPage.php:225
+#: src/Admin/ModulesPage.php:242
 msgid "Label - Marketing"
 msgstr "Štítek - marketing"
 
-#: src/Admin/ModulesPage.php:226
+#: src/Admin/ModulesPage.php:243
 msgid "Description - Marketing"
 msgstr "Popis - marketing"
 
-#: src/Admin/ModulesPage.php:231
+#: src/Admin/ModulesPage.php:248
 msgid "NIP - Verification and Autocomplete"
 msgstr "NIP - ověření a automatické doplnění"
 
-#: src/Admin/ModulesPage.php:232
+#: src/Admin/ModulesPage.php:249
 msgid "NIP field on the checkout page with checksum validation. Automatic retrieval of company data from the GUS REGON database after entering NIP."
 msgstr "Pole NIP na stránce objednávky s kontrolou kontrolního součtu. Automatické načtení firemních údajů z databáze GUS REGON po zadání NIP."
 
-#: src/Admin/ModulesPage.php:239
+#: src/Admin/ModulesPage.php:256
 msgid "NIP required on checkout"
 msgstr "NIP povinný při objednávce"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "GUS API environment"
 msgstr "GUS API prostředí"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "Testing"
 msgstr "Testovací"
 
-#: src/Admin/ModulesPage.php:240
+#: src/Admin/ModulesPage.php:257
 msgid "Production"
 msgstr "Produkční"
 
-#: src/Admin/ModulesPage.php:241
+#: src/Admin/ModulesPage.php:258
 msgid "GUS API Key (production)"
 msgstr "GUS API klíč (produkční)"
 
-#: src/Admin/ModulesPage.php:241
+#: src/Admin/ModulesPage.php:258
 msgid "Request a key on the stat.gov.pl website. In test mode, a test key will be used."
 msgstr "Požádejte o klíč na webu stat.gov.pl. V testovacím režimu bude použit testovací klíč."
 
-#: src/Admin/ModulesPage.php:246
+#: src/Admin/ModulesPage.php:263
 msgid "Consent Logging (GDPR)"
 msgstr "Protokolování souhlasů (GDPR)"
 
-#: src/Admin/ModulesPage.php:247
+#: src/Admin/ModulesPage.php:264
 msgid "Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant."
 msgstr "Zaznamenává všechny souhlasy udělené zákazníky s IP adresou, user agentem a časovým razítkem. V souladu s GDPR."
 
-#: src/Admin/ModulesPage.php:258
-msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
-msgstr "Automatické generování stránek: obchodní podmínky, zásady ochrany osobních údajů, právo na odstoupení, reklamace."
+#: src/Admin/ModulesPage.php:274
+msgid "Returns & complaints (RMA)"
+msgstr "Vrácení a reklamace (RMA)"
 
-#: src/Admin/ModulesPage.php:259
-#: src/Admin/ModulesPage.php:271
-#: src/Admin/ModulesPage.php:311
-#: src/Admin/ModulesPage.php:356
+#: src/Admin/ModulesPage.php:275
+msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
+msgstr "Umožněte zákazníkům podat reklamaci nebo žádost o vrácení z Mého účtu pro způsobilé objednávky, s potvrzovacím e-mailem a administrátorskou frontou se stavy. Poskytuje nástroje, nikoli právní poradenství."
+
+#: src/Admin/ModulesPage.php:276
+#: src/Admin/ModulesPage.php:289
+#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:341
+#: src/Admin/ModulesPage.php:386
 msgid "Consumer Rights"
 msgstr "Práva spotřebitele"
 
-#: src/Admin/ModulesPage.php:264
+#: src/Admin/ModulesPage.php:281
+msgid "Eligibility window (days from order date)"
+msgstr "Lhůta způsobilosti (dny od data objednávky)"
+
+#: src/Admin/ModulesPage.php:282
+msgid "Notification email (admin)"
+msgstr "E-mail pro oznámení (administrátor)"
+
+#: src/Admin/ModulesPage.php:288
+msgid "Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints."
+msgstr "Automatické generování stránek: obchodní podmínky, zásady ochrany osobních údajů, právo na odstoupení, reklamace."
+
+#: src/Admin/ModulesPage.php:294
 msgid "Manage legal pages on Dashboard &rarr;"
 msgstr "Spravovat právní stránky v přehledu &rarr;"
 
-#: src/Admin/ModulesPage.php:269
+#: src/Admin/ModulesPage.php:299
 msgid "Right of withdrawal (14 days)"
 msgstr "Právo na odstoupení (14 dní)"
 
-#: src/Admin/ModulesPage.php:270
+#: src/Admin/ModulesPage.php:300
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
 msgstr "Formulář žádosti o odstoupení, akce v Můj účet s potvrzovacím krokem, potvrzovací e-mail a výjimky pro jednotlivé produkty."
 
-#: src/Admin/ModulesPage.php:276
+#: src/Admin/ModulesPage.php:306
 msgid "Order action label"
 msgstr "Štítek akce objednávky"
 
-#: src/Admin/ModulesPage.php:276
-#: src/Service/WithdrawalService.php:645
-#: src/Service/WithdrawalService.php:655
+#: src/Admin/ModulesPage.php:306
+#: src/Service/WithdrawalService.php:679
+#: src/Service/WithdrawalService.php:689
 msgid "Withdraw from contract"
 msgstr "Odstoupit od smlouvy"
 
-#: src/Admin/ModulesPage.php:277
-#: src/Admin/ModulesPage.php:894
+#: src/Admin/ModulesPage.php:307
+#: src/Admin/ModulesPage.php:937
 msgid "Form title"
 msgstr "Nadpis formuláře"
 
-#: src/Admin/ModulesPage.php:277
-#: src/Admin/ModulesPage.php:292
-#: src/Service/WithdrawalService.php:896
+#: src/Admin/ModulesPage.php:307
+#: src/Admin/ModulesPage.php:322
+#: src/Service/WithdrawalService.php:930
 msgid "Withdrawal request"
 msgstr "Žádost o odstoupení"
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "Form introduction"
 msgstr "Úvod formuláře"
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
 msgstr "Odesíláte žádost o odstoupení pro objednávku č. #{order_number} z {order_date}."
 
-#: src/Admin/ModulesPage.php:278
+#: src/Admin/ModulesPage.php:308
 msgid "Variables: {order_number}, {order_date}"
 msgstr "Proměnné: {order_number}, {order_date}"
 
-#: src/Admin/ModulesPage.php:279
+#: src/Admin/ModulesPage.php:309
 msgid "Legal notice"
 msgstr "Právní upozornění"
 
-#: src/Admin/ModulesPage.php:279
+#: src/Admin/ModulesPage.php:309
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
 msgstr "Podle polského spotřebitelského práva můžete od smlouvy odstoupit do 14 dnů bez udání důvodu."
 
-#: src/Admin/ModulesPage.php:280
+#: src/Admin/ModulesPage.php:310
 msgid "Order items heading"
 msgstr "Nadpis položek objednávky"
 
-#: src/Admin/ModulesPage.php:280
+#: src/Admin/ModulesPage.php:310
 msgid "Order items"
 msgstr "Položky objednávky"
 
-#: src/Admin/ModulesPage.php:281
+#: src/Admin/ModulesPage.php:311
 msgid "Product column"
 msgstr "Sloupec produkt"
 
-#: src/Admin/ModulesPage.php:281
+#: src/Admin/ModulesPage.php:311
 #: src/Service/ExpertReviewService.php:92
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
@@ -2705,2635 +2802,2678 @@ msgstr "Sloupec produkt"
 msgid "Product"
 msgstr "Produkt"
 
-#: src/Admin/ModulesPage.php:282
+#: src/Admin/ModulesPage.php:312
 msgid "Quantity column"
 msgstr "Sloupec množství"
 
-#: src/Admin/ModulesPage.php:282
+#: src/Admin/ModulesPage.php:312
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 msgid "Quantity"
 msgstr "Množství"
 
-#: src/Admin/ModulesPage.php:283
+#: src/Admin/ModulesPage.php:313
 msgid "Price column"
 msgstr "Sloupec cena"
 
-#: src/Admin/ModulesPage.php:283
+#: src/Admin/ModulesPage.php:313
 #: src/AIFeed/ProductMarkdownBuilder.php:155
 #: src/Service/CompareService.php:475
 msgid "Price"
 msgstr "Cena"
 
-#: src/Admin/ModulesPage.php:284
+#: src/Admin/ModulesPage.php:314
 msgid "Exemption notice"
 msgstr "Upozornění na výjimku"
 
-#: src/Admin/ModulesPage.php:284
+#: src/Admin/ModulesPage.php:314
 msgid "(This product is excluded from the right of withdrawal)"
 msgstr "(Tento produkt je vyloučen z práva na odstoupení)"
 
-#: src/Admin/ModulesPage.php:285
+#: src/Admin/ModulesPage.php:315
 msgid "Reason field label"
 msgstr "Štítek pole důvodu"
 
-#: src/Admin/ModulesPage.php:285
-#: src/Service/WithdrawalService.php:914
+#: src/Admin/ModulesPage.php:315
+#: src/Service/WithdrawalService.php:948
 msgid "Reason for withdrawal (optional)"
 msgstr "Důvod odstoupení (volitelné)"
 
-#: src/Admin/ModulesPage.php:286
+#: src/Admin/ModulesPage.php:316
 #: resources/js/blocks/ajax-search/index.js:39
 msgid "Submit button text"
 msgstr "Text tlačítka odeslání"
 
-#: src/Admin/ModulesPage.php:286
+#: src/Admin/ModulesPage.php:316
 msgid "Submit withdrawal request"
 msgstr "Odeslat žádost o odstoupení"
 
-#: src/Admin/ModulesPage.php:287
+#: src/Admin/ModulesPage.php:317
 msgid "Invalid nonce message"
 msgstr "Zpráva při neplatném nonce"
 
-#: src/Admin/ModulesPage.php:287
+#: src/Admin/ModulesPage.php:317
 msgid "Something went wrong on our side. Please try again."
 msgstr "Na naší straně se něco pokazilo. Zkuste to prosím znovu."
 
-#: src/Admin/ModulesPage.php:288
+#: src/Admin/ModulesPage.php:318
 msgid "Order not found message"
 msgstr "Zpráva při nenalezené objednávce"
 
-#: src/Admin/ModulesPage.php:288
+#: src/Admin/ModulesPage.php:318
 #: src/Rest/WithdrawalController.php:133
 msgid "We could not find that order."
 msgstr "Tuto objednávku jsme nenašli."
 
-#: src/Admin/ModulesPage.php:289
+#: src/Admin/ModulesPage.php:319
 msgid "Permission error message"
 msgstr "Zpráva při chybě oprávnění"
 
-#: src/Admin/ModulesPage.php:289
-#: src/Service/WithdrawalService.php:694
-#: src/Service/WithdrawalService.php:826
+#: src/Admin/ModulesPage.php:319
+#: src/Service/WithdrawalService.php:728
+#: src/Service/WithdrawalService.php:860
 msgid "You do not have permission to withdraw from this order."
 msgstr "Nemáte oprávnění od této objednávky odstoupit."
 
-#: src/Admin/ModulesPage.php:290
-#: src/Admin/ModulesPage.php:783
-#: src/Admin/ModulesPage.php:895
+#: src/Admin/ModulesPage.php:320
+#: src/Admin/ModulesPage.php:826
+#: src/Admin/ModulesPage.php:938
 msgid "Success message"
 msgstr "Zpráva o úspěchu"
 
-#: src/Admin/ModulesPage.php:290
+#: src/Admin/ModulesPage.php:320
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
 msgstr "Vaše žádost o odstoupení byla přijata. Brzy vám pošleme potvrzovací e-mail."
 
-#: src/Admin/ModulesPage.php:291
+#: src/Admin/ModulesPage.php:321
 msgid "Not eligible message"
 msgstr "Zpráva při nezpůsobilosti"
 
-#: src/Admin/ModulesPage.php:291
+#: src/Admin/ModulesPage.php:321
 #: src/Rest/WithdrawalController.php:145
-#: src/Service/WithdrawalService.php:736
-#: src/Service/WithdrawalService.php:832
+#: src/Service/WithdrawalService.php:770
+#: src/Service/WithdrawalService.php:866
 msgid "This order is not eligible for withdrawal."
 msgstr "Tato objednávka nesplňuje podmínky pro odstoupení."
 
-#: src/Admin/ModulesPage.php:292
+#: src/Admin/ModulesPage.php:322
 msgid "Status section heading"
 msgstr "Nadpis sekce stavu"
 
-#: src/Admin/ModulesPage.php:293
+#: src/Admin/ModulesPage.php:323
 msgid "Status label"
 msgstr "Štítek stavu"
 
-#: src/Admin/ModulesPage.php:294
+#: src/Admin/ModulesPage.php:324
 msgid "Submitted label"
 msgstr "Štítek odesláno"
 
-#: src/Admin/ModulesPage.php:294
+#: src/Admin/ModulesPage.php:324
+#: src/Enum/ReturnRequestStatus.php:19
 #: src/Enum/WithdrawalStatus.php:17
-#: src/Service/WithdrawalService.php:899
+#: src/Service/WithdrawalService.php:933
 msgid "Submitted"
 msgstr "Odesláno"
 
-#: src/Admin/ModulesPage.php:295
+#: src/Admin/ModulesPage.php:325
 msgid "Order note after request"
 msgstr "Poznámka k objednávce po žádosti"
 
-#: src/Admin/ModulesPage.php:295
+#: src/Admin/ModulesPage.php:325
 msgid "The customer submitted a withdrawal request."
 msgstr "Zákazník odeslal žádost o odstoupení."
 
-#: src/Admin/ModulesPage.php:296
+#: src/Admin/ModulesPage.php:326
 msgid "Order note after confirmation"
 msgstr "Poznámka k objednávce po potvrzení"
 
-#: src/Admin/ModulesPage.php:296
+#: src/Admin/ModulesPage.php:326
 msgid "The withdrawal request has been confirmed."
 msgstr "Žádost o odstoupení byla potvrzena."
 
-#: src/Admin/ModulesPage.php:297
+#: src/Admin/ModulesPage.php:327
 msgid "Status date format"
 msgstr "Formát data stavu"
 
-#: src/Admin/ModulesPage.php:297
+#: src/Admin/ModulesPage.php:327
 msgid "Y-m-d H:i"
 msgstr "Y-m-d H:i"
 
-#: src/Admin/ModulesPage.php:298
+#: src/Admin/ModulesPage.php:328
 msgid "Confirmation email subject"
 msgstr "Předmět potvrzovacího e-mailu"
 
-#: src/Admin/ModulesPage.php:298
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:328
+#: src/Admin/ModulesPage.php:331
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
 msgstr "Vaše žádost o odstoupení od objednávky č. #{order_number} byla potvrzena."
 
-#: src/Admin/ModulesPage.php:298
+#: src/Admin/ModulesPage.php:328
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
 msgstr "Proměnné: {order_number}, {order_date}, {withdrawal_date}"
 
-#: src/Admin/ModulesPage.php:299
+#: src/Admin/ModulesPage.php:329
 msgid "Confirmation email heading"
 msgstr "Nadpis potvrzovacího e-mailu"
 
-#: src/Admin/ModulesPage.php:299
+#: src/Admin/ModulesPage.php:329
 msgid "Withdrawal confirmed"
 msgstr "Odstoupení potvrzeno"
 
-#: src/Admin/ModulesPage.php:300
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:466
 msgid "Email greeting"
 msgstr "Pozdrav v e-mailu"
 
-#: src/Admin/ModulesPage.php:300
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:466
 msgid "Hello {name},"
 msgstr "Ahoj {name},"
 
-#: src/Admin/ModulesPage.php:300
+#: src/Admin/ModulesPage.php:330
 msgid "Variable: {name}"
 msgstr "Proměnná: {name}"
 
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:331
 msgid "Confirmation email body"
 msgstr "Text potvrzovacího e-mailu"
 
-#: src/Admin/ModulesPage.php:301
+#: src/Admin/ModulesPage.php:331
 msgid "Variable: {order_number}"
 msgstr "Proměnná: {order_number}"
 
-#: src/Admin/ModulesPage.php:302
+#: src/Admin/ModulesPage.php:332
 msgid "Reason label in email"
 msgstr "Štítek důvodu v e-mailu"
 
-#: src/Admin/ModulesPage.php:302
+#: src/Admin/ModulesPage.php:332
 msgid "Your reason"
 msgstr "Váš důvod"
 
-#: src/Admin/ModulesPage.php:303
+#: src/Admin/ModulesPage.php:333
 msgid "Return instruction in email"
 msgstr "Pokyn k vrácení v e-mailu"
 
-#: src/Admin/ModulesPage.php:303
+#: src/Admin/ModulesPage.php:333
 msgid "Please return the products to the address below within 14 days:"
 msgstr "Prosíme o vrácení produktů na níže uvedenou adresu do 14 dnů:"
 
-#: src/Admin/ModulesPage.php:304
-#: src/Admin/ModulesPage.php:441
+#: src/Admin/ModulesPage.php:334
+#: src/Admin/ModulesPage.php:471
 msgid "Additional email content"
 msgstr "Další obsah e-mailu"
 
-#: src/Admin/ModulesPage.php:304
+#: src/Admin/ModulesPage.php:334
 msgid "Your refund will be processed within 14 days after the returned products are received."
 msgstr "Vrácení peněz bude zpracováno do 14 dnů po obdržení vrácených produktů."
 
-#: src/Admin/ModulesPage.php:309
+#: src/Admin/ModulesPage.php:339
 msgid "Dispute Resolution (ODR)"
 msgstr "Řešení sporů (ODR)"
 
-#: src/Admin/ModulesPage.php:310
+#: src/Admin/ModulesPage.php:340
 msgid "Displaying information about the European Commission's Online Dispute Resolution (ODR) platform."
 msgstr "Zobrazení informací o platformě ODR (Online Dispute Resolution) Evropské komise."
 
-#: src/Admin/ModulesPage.php:316
+#: src/Admin/ModulesPage.php:346
 msgid "ODR info content"
 msgstr "Text informace ODR"
 
-#: src/Admin/ModulesPage.php:317
+#: src/Admin/ModulesPage.php:347
 msgid "Message after generating legal pages"
 msgstr "Zpráva po vygenerování právních stránek"
 
-#: src/Admin/ModulesPage.php:318
+#: src/Admin/ModulesPage.php:348
 msgid "Message after saving modules"
 msgstr "Zpráva po uložení modulů"
 
-#: src/Admin/ModulesPage.php:319
+#: src/Admin/ModulesPage.php:349
 msgid "Onboarding note title"
 msgstr "Nadpis onboardingové poznámky"
 
-#: src/Admin/ModulesPage.php:320
+#: src/Admin/ModulesPage.php:350
 msgid "Onboarding note content"
 msgstr "Text onboardingové poznámky"
 
-#: src/Admin/ModulesPage.php:321
+#: src/Admin/ModulesPage.php:351
 msgid "Onboarding note button"
 msgstr "Tlačítko onboardingové poznámky"
 
-#: src/Admin/ModulesPage.php:322
+#: src/Admin/ModulesPage.php:352
 msgid "Active status"
 msgstr "Stav aktivní"
 
-#: src/Admin/ModulesPage.php:323
+#: src/Admin/ModulesPage.php:353
 msgid "Inactive status"
 msgstr "Stav neaktivní"
 
-#: src/Admin/ModulesPage.php:324
+#: src/Admin/ModulesPage.php:354
 msgid "Unconfigured status"
 msgstr "Stav nenastaveno"
 
-#: src/Admin/ModulesPage.php:325
+#: src/Admin/ModulesPage.php:355
 msgid "Legal pages card title"
 msgstr "Nadpis karty právních stránek"
 
-#: src/Admin/ModulesPage.php:326
+#: src/Admin/ModulesPage.php:356
 msgid "Legal pages configuration progress"
 msgstr "Průběh nastavení právních stránek"
 
-#: src/Admin/ModulesPage.php:326
+#: src/Admin/ModulesPage.php:356
 msgid "Variables: {done}, {total}"
 msgstr "Proměnné: {done}, {total}"
 
-#: src/Admin/ModulesPage.php:327
+#: src/Admin/ModulesPage.php:357
 msgid "VAT card title"
 msgstr "Nadpis karty DPH"
 
-#: src/Admin/ModulesPage.php:328
+#: src/Admin/ModulesPage.php:358
 msgid "Small business exemption text"
 msgstr "Text osvobození malého podnikatele"
 
-#: src/Admin/ModulesPage.php:329
+#: src/Admin/ModulesPage.php:359
 msgid "Standard VAT text"
 msgstr "Text standardní DPH"
 
-#: src/Admin/ModulesPage.php:330
+#: src/Admin/ModulesPage.php:360
 msgid "DOI card title"
 msgstr "Nadpis karty DOI"
 
-#: src/Admin/ModulesPage.php:331
+#: src/Admin/ModulesPage.php:361
 msgid "Legal pages section title"
 msgstr "Nadpis sekce právních stránek"
 
-#: src/Admin/ModulesPage.php:332
+#: src/Admin/ModulesPage.php:362
 msgid "Page column header"
 msgstr "Záhlaví sloupce stránka"
 
-#: src/Admin/ModulesPage.php:333
+#: src/Admin/ModulesPage.php:363
 msgid "Status column header"
 msgstr "Záhlaví sloupce stav"
 
-#: src/Admin/ModulesPage.php:334
+#: src/Admin/ModulesPage.php:364
 msgid "Published status"
 msgstr "Stav publikováno"
 
-#: src/Admin/ModulesPage.php:335
+#: src/Admin/ModulesPage.php:365
 msgid "Draft status"
 msgstr "Stav koncept"
 
-#: src/Admin/ModulesPage.php:336
+#: src/Admin/ModulesPage.php:366
 msgid "Missing status"
 msgstr "Stav nevytvořeno"
 
-#: src/Admin/ModulesPage.php:337
+#: src/Admin/ModulesPage.php:367
 msgid "Edit button text"
 msgstr "Text tlačítka úpravy"
 
-#: src/Admin/ModulesPage.php:338
+#: src/Admin/ModulesPage.php:368
 msgid "Legal pages empty state"
 msgstr "Prázdný stav právních stránek"
 
-#: src/Admin/ModulesPage.php:339
+#: src/Admin/ModulesPage.php:369
 msgid "Generate pages button text"
 msgstr "Text tlačítka generování stránek"
 
-#: src/Admin/ModulesPage.php:340
+#: src/Admin/ModulesPage.php:370
 msgid "Next steps title"
 msgstr "Nadpis dalších kroků"
 
-#: src/Admin/ModulesPage.php:341
+#: src/Admin/ModulesPage.php:371
 msgid "Step - publish pages"
 msgstr "Krok - publikování stránek"
 
-#: src/Admin/ModulesPage.php:342
+#: src/Admin/ModulesPage.php:372
 msgid "Step - VAT rates"
 msgstr "Krok - sazby DPH"
 
-#: src/Admin/ModulesPage.php:343
+#: src/Admin/ModulesPage.php:373
 msgid "Step - shipping zones"
 msgstr "Krok - dopravní zóny"
 
-#: src/Admin/ModulesPage.php:344
+#: src/Admin/ModulesPage.php:374
 msgid "Step - product data"
 msgstr "Krok - údaje produktů"
 
-#: src/Admin/ModulesPage.php:345
+#: src/Admin/ModulesPage.php:375
 msgid "Step - checkout test"
 msgstr "Krok - test checkoutu"
 
-#: src/Admin/ModulesPage.php:346
+#: src/Admin/ModulesPage.php:376
 msgid "Omnibus plugin detected status"
 msgstr "Stav rozpoznaného pluginu Omnibus"
 
-#: src/Admin/ModulesPage.php:347
+#: src/Admin/ModulesPage.php:377
 msgid "Omnibus plugin missing status"
 msgstr "Stav chybějícího pluginu Omnibus"
 
-#: src/Admin/ModulesPage.php:348
+#: src/Admin/ModulesPage.php:378
 msgid "Communication without external Omnibus plugin"
 msgstr "Zpráva bez externího pluginu Omnibus"
 
-#: src/Admin/ModulesPage.php:349
+#: src/Admin/ModulesPage.php:379
 msgid "Communication after external Omnibus plugin detection"
 msgstr "Zpráva po rozpoznání externího pluginu Omnibus"
 
-#: src/Admin/ModulesPage.php:354
+#: src/Admin/ModulesPage.php:384
 msgid "Legal Email Attachments"
 msgstr "Přílohy právních e-mailů"
 
-#: src/Admin/ModulesPage.php:355
+#: src/Admin/ModulesPage.php:385
 msgid "Attaching legal pages content (terms, privacy policy, right of withdrawal) to order confirmation emails."
 msgstr "Přikládání obsahu právních stránek (obchodní podmínky, zásady ochrany osobních údajů, právo na odstoupení) k e-mailům s potvrzením objednávky."
 
-#: src/Admin/ModulesPage.php:361
+#: src/Admin/ModulesPage.php:391
 msgid "Attach Terms"
 msgstr "Přiložit obchodní podmínky"
 
-#: src/Admin/ModulesPage.php:362
+#: src/Admin/ModulesPage.php:392
 msgid "Attach Privacy Policy"
 msgstr "Přiložit zásady ochrany osobních údajů"
 
-#: src/Admin/ModulesPage.php:363
+#: src/Admin/ModulesPage.php:393
 msgid "Attach Right of Withdrawal"
 msgstr "Přiložit právo na odstoupení"
 
-#: src/Admin/ModulesPage.php:370
+#: src/Admin/ModulesPage.php:400
 msgid "Manufacturer and GPSR"
 msgstr "Výrobce a GPSR"
 
-#: src/Admin/ModulesPage.php:371
+#: src/Admin/ModulesPage.php:401
 msgid "Manufacturer information, responsible person (GPSR), safety documents, safety instructions."
 msgstr "Informace o výrobci, odpovědná osoba (GPSR), bezpečnostní dokumenty, bezpečnostní pokyny."
 
-#: src/Admin/ModulesPage.php:372
-#: src/Admin/ModulesPage.php:382
-#: src/Admin/ModulesPage.php:413
-#: src/Admin/ModulesPage.php:851
-#: src/Admin/ModulesPage.php:864
-#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:412
+#: src/Admin/ModulesPage.php:443
+#: src/Admin/ModulesPage.php:894
+#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:919
 msgid "Product Information"
 msgstr "Informace o produktu"
 
-#: src/Admin/ModulesPage.php:380
+#: src/Admin/ModulesPage.php:410
 msgid "Food and Supplements"
 msgstr "Potraviny a doplňky"
 
-#: src/Admin/ModulesPage.php:381
+#: src/Admin/ModulesPage.php:411
 msgid "Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor."
 msgstr "Tabulka výživových hodnot, alergeny, složení, Nutri-Score, obsah alkoholu, země původu, distributor."
 
-#: src/Admin/ModulesPage.php:387
+#: src/Admin/ModulesPage.php:417
 msgid "Show ingredients"
 msgstr "Zobrazovat složení"
 
-#: src/Admin/ModulesPage.php:388
+#: src/Admin/ModulesPage.php:418
 msgid "Show allergens"
 msgstr "Zobrazovat alergeny"
 
-#: src/Admin/ModulesPage.php:389
+#: src/Admin/ModulesPage.php:419
 msgid "Show nutrition facts table"
 msgstr "Zobrazovat tabulku výživových hodnot"
 
-#: src/Admin/ModulesPage.php:390
+#: src/Admin/ModulesPage.php:420
 msgid "Show Nutri-Score"
 msgstr "Zobrazovat Nutri-Score"
 
-#: src/Admin/ModulesPage.php:391
+#: src/Admin/ModulesPage.php:421
 msgid "Show alcohol content"
 msgstr "Zobrazovat obsah alkoholu"
 
-#: src/Admin/ModulesPage.php:392
+#: src/Admin/ModulesPage.php:422
 msgid "Show country of origin"
 msgstr "Zobrazovat zemi původu"
 
-#: src/Admin/ModulesPage.php:393
+#: src/Admin/ModulesPage.php:423
 msgid "Show distributor"
 msgstr "Zobrazovat distributora"
 
-#: src/Admin/ModulesPage.php:394
+#: src/Admin/ModulesPage.php:424
 msgid "Show net content"
 msgstr "Zobrazovat netto obsah"
 
-#: src/Admin/ModulesPage.php:395
+#: src/Admin/ModulesPage.php:425
 msgid "Ingredients label"
 msgstr "Štítek složení"
 
-#: src/Admin/ModulesPage.php:396
+#: src/Admin/ModulesPage.php:426
 msgid "Allergens label"
 msgstr "Štítek alergenů"
 
-#: src/Admin/ModulesPage.php:396
+#: src/Admin/ModulesPage.php:426
 #: src/Admin/PostTypes.php:142
 #: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
 #: src/Service/FoodService.php:92
 msgid "Allergens"
 msgstr "Alergeny"
 
-#: src/Admin/ModulesPage.php:397
+#: src/Admin/ModulesPage.php:427
 msgid "Nutrition facts table header prefix"
 msgstr "Prefix záhlaví tabulky"
 
-#: src/Admin/ModulesPage.php:397
+#: src/Admin/ModulesPage.php:427
 #: src/Service/FoodService.php:158
 msgid "Nutrition facts per"
 msgstr "Výživové hodnoty na"
 
-#: src/Admin/ModulesPage.php:398
+#: src/Admin/ModulesPage.php:428
 msgid "Default reference unit"
 msgstr "Výchozí referenční jednotka"
 
-#: src/Admin/ModulesPage.php:399
+#: src/Admin/ModulesPage.php:429
 msgid "Nutrient column name"
 msgstr "Sloupec živiny"
 
-#: src/Admin/ModulesPage.php:399
+#: src/Admin/ModulesPage.php:429
 #: src/Admin/PostTypes.php:168
 #: src/Service/FoodService.php:160
 msgid "Nutrient"
 msgstr "Živina"
 
-#: src/Admin/ModulesPage.php:400
+#: src/Admin/ModulesPage.php:430
 msgid "Value column name"
 msgstr "Sloupec hodnoty"
 
-#: src/Admin/ModulesPage.php:400
+#: src/Admin/ModulesPage.php:430
 #: src/Service/FoodService.php:161
 #: src/Service/RodoTrainingDocsService.php:254
 msgid "Value"
 msgstr "Hodnota"
 
-#: src/Admin/ModulesPage.php:401
+#: src/Admin/ModulesPage.php:431
 msgid "Nutri-Score label"
 msgstr "Štítek Nutri-Score"
 
-#: src/Admin/ModulesPage.php:402
+#: src/Admin/ModulesPage.php:432
 msgid "Alcohol content label"
 msgstr "Štítek alkoholu"
 
-#: src/Admin/ModulesPage.php:403
+#: src/Admin/ModulesPage.php:433
 msgid "Alcohol suffix"
 msgstr "Přípona alkoholu"
 
-#: src/Admin/ModulesPage.php:404
+#: src/Admin/ModulesPage.php:434
 msgid "Country of origin label"
 msgstr "Štítek země původu"
 
-#: src/Admin/ModulesPage.php:405
+#: src/Admin/ModulesPage.php:435
 msgid "Distributor label"
 msgstr "Štítek distributora"
 
-#: src/Admin/ModulesPage.php:405
+#: src/Admin/ModulesPage.php:435
 #: src/Service/FoodService.php:293
 msgid "Distributor"
 msgstr "Distributor"
 
-#: src/Admin/ModulesPage.php:406
+#: src/Admin/ModulesPage.php:436
 msgid "Net content label"
 msgstr "Štítek netto obsahu"
 
-#: src/Admin/ModulesPage.php:406
+#: src/Admin/ModulesPage.php:436
 #: src/Service/FoodService.php:301
 msgid "Net content"
 msgstr "Netto obsah"
 
-#: src/Admin/ModulesPage.php:411
+#: src/Admin/ModulesPage.php:441
 msgid "Power Supply Info"
 msgstr "Informace o napájení"
 
-#: src/Admin/ModulesPage.php:412
+#: src/Admin/ModulesPage.php:442
 msgid "Energy consumption data for electrical devices (energy labels)."
 msgstr "Údaje o spotřebě energie pro elektrická zařízení (energetické štítky)."
 
-#: src/Admin/ModulesPage.php:423
+#: src/Admin/ModulesPage.php:453
 msgid "Double Opt-In (DOI)"
 msgstr "Dvojité ověření (DOI)"
 
-#: src/Admin/ModulesPage.php:424
+#: src/Admin/ModulesPage.php:454
 msgid "Email address verification during account registration. Activation link sent by email, login block for unactivated accounts."
 msgstr "Ověření e-mailové adresy při registraci účtu. Aktivační odkaz se posílá e-mailem, přihlášení je blokováno pro neaktivované účty."
 
-#: src/Admin/ModulesPage.php:425
+#: src/Admin/ModulesPage.php:455
 msgid "Customer Account"
 msgstr "Účet zákazníka"
 
-#: src/Admin/ModulesPage.php:430
+#: src/Admin/ModulesPage.php:460
 msgid "Delete inactive accounts after (days)"
 msgstr "Po kolika dnech odstranit neaktivní účty"
 
-#: src/Admin/ModulesPage.php:431
+#: src/Admin/ModulesPage.php:461
 msgid "Login block message"
 msgstr "Zpráva při blokaci přihlášení"
 
-#: src/Admin/ModulesPage.php:431
+#: src/Admin/ModulesPage.php:461
 msgid "Your account is pending activation! Please check your email and click the activation link."
 msgstr "Váš účet čeká na aktivaci. Podívejte se do e-mailové schránky a klikněte na aktivační odkaz."
 
-#: src/Admin/ModulesPage.php:432
+#: src/Admin/ModulesPage.php:462
 msgid "Invalid link message"
 msgstr "Zpráva při neplatném odkazu"
 
-#: src/Admin/ModulesPage.php:432
+#: src/Admin/ModulesPage.php:462
 #: src/Service/DoubleOptInService.php:123
 msgid "Invalid activation link."
 msgstr "Neplatný aktivační odkaz."
 
-#: src/Admin/ModulesPage.php:433
+#: src/Admin/ModulesPage.php:463
 msgid "Activation success message"
 msgstr "Zpráva po aktivaci"
 
-#: src/Admin/ModulesPage.php:433
+#: src/Admin/ModulesPage.php:463
 msgid "Excellent! Your account has been activated. You can now log in."
 msgstr "Skvělé. Váš účet je už aktivní. Teď se můžete přihlásit."
 
-#: src/Admin/ModulesPage.php:434
-#: src/Admin/ModulesPage.php:790
-#: src/Admin/ModulesPage.php:1054
+#: src/Admin/ModulesPage.php:464
+#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:1097
 msgid "Email subject"
 msgstr "Předmět e-mailu"
 
-#: src/Admin/ModulesPage.php:434
+#: src/Admin/ModulesPage.php:464
 #: src/Email/DoubleOptInEmail.php:65
 #: src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
 msgstr "Aktivujte svůj účet na {site_title}"
 
-#: src/Admin/ModulesPage.php:434
+#: src/Admin/ModulesPage.php:464
 msgid "Variables: {site_title}"
 msgstr "Proměnné: {site_title}"
 
-#: src/Admin/ModulesPage.php:435
+#: src/Admin/ModulesPage.php:465
 msgid "Email heading"
 msgstr "Nadpis e-mailu"
 
-#: src/Admin/ModulesPage.php:435
+#: src/Admin/ModulesPage.php:465
 #: src/Email/DoubleOptInEmail.php:74
 #: src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
 msgstr "Potvrďte svou e-mailovou adresu"
 
-#: src/Admin/ModulesPage.php:436
+#: src/Admin/ModulesPage.php:466
 msgid "Variables: {name}"
 msgstr "Proměnné: {name}"
 
-#: src/Admin/ModulesPage.php:437
+#: src/Admin/ModulesPage.php:467
 msgid "Email content HTML"
 msgstr "HTML obsah e-mailu"
 
-#: src/Admin/ModulesPage.php:437
+#: src/Admin/ModulesPage.php:467
 msgid "Thank you for creating an account. Click the button below to activate your account:"
 msgstr "Děkujeme za založení účtu. Klikněte na tlačítko níže a aktivujte svůj účet:"
 
-#: src/Admin/ModulesPage.php:438
+#: src/Admin/ModulesPage.php:468
 msgid "Email button text"
 msgstr "Text tlačítka v e-mailu"
 
-#: src/Admin/ModulesPage.php:438
+#: src/Admin/ModulesPage.php:468
 msgid "Activate account"
 msgstr "Aktivovat účet"
 
-#: src/Admin/ModulesPage.php:439
+#: src/Admin/ModulesPage.php:469
 msgid "Fallback link text"
 msgstr "Text záložního odkazu"
 
-#: src/Admin/ModulesPage.php:439
+#: src/Admin/ModulesPage.php:469
 msgid "If you prefer, copy and paste this link into your browser:"
 msgstr "Pokud chcete, zkopírujte tento odkaz a vložte ho do prohlížeče:"
 
-#: src/Admin/ModulesPage.php:440
+#: src/Admin/ModulesPage.php:470
 msgid "Email content plain text"
 msgstr "Plain text obsah e-mailu"
 
-#: src/Admin/ModulesPage.php:440
+#: src/Admin/ModulesPage.php:470
 msgid "Thank you for creating an account. Visit the link below to activate your account:"
 msgstr "Děkujeme za založení účtu. Otevřete následující odkaz a aktivujte svůj účet:"
 
-#: src/Admin/ModulesPage.php:441
+#: src/Admin/ModulesPage.php:471
 msgid "If you did not create an account with us, please ignore this email."
 msgstr "Pokud jste si u nás účet nezakládali, nemusíte se ničeho obávat a tuto zprávu jednoduše smažte."
 
-#: src/Admin/ModulesPage.php:448
+#: src/Admin/ModulesPage.php:478
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:16
 msgid "AJAX Search"
 msgstr "AJAX vyhledávání"
 
-#: src/Admin/ModulesPage.php:449
+#: src/Admin/ModulesPage.php:479
 msgid "Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals."
 msgstr "Rychlé návrhy produktů během psaní, s podporou SKU, kategorií a lehkým frontendem šetrným k web vitals."
 
-#: src/Admin/ModulesPage.php:450
+#: src/Admin/ModulesPage.php:480
 msgid "Sales and B2B"
 msgstr "Prodej a B2B"
 
-#: src/Admin/ModulesPage.php:455
+#: src/Admin/ModulesPage.php:485
 #: resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
 msgstr "Minimální počet znaků"
 
-#: src/Admin/ModulesPage.php:455
+#: src/Admin/ModulesPage.php:485
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr "Minimální počet znaků před zahájením vyhledávání. Doporučeno: 2-3"
 
-#: src/Admin/ModulesPage.php:456
+#: src/Admin/ModulesPage.php:486
 #: resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
 msgstr "Limit výsledků"
 
-#: src/Admin/ModulesPage.php:456
+#: src/Admin/ModulesPage.php:486
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
 msgstr "Maximální počet produktů zobrazených v rozbalovací nabídce. Doporučeno: 4-8"
 
-#: src/Admin/ModulesPage.php:457
+#: src/Admin/ModulesPage.php:487
 msgid "Query debounce (ms)"
 msgstr "Zpoždění dotazu (ms)"
 
-#: src/Admin/ModulesPage.php:457
+#: src/Admin/ModulesPage.php:487
 msgid "Delay in milliseconds before sending search request. Lower = faster but more server load"
 msgstr "Prodleva v milisekundách před odesláním vyhledávacího požadavku. Nižší = rychlejší, ale větší zátěž serveru"
 
-#: src/Admin/ModulesPage.php:458
+#: src/Admin/ModulesPage.php:488
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:32
 msgid "Show search button"
 msgstr "Zobrazovat tlačítko hledání"
 
-#: src/Admin/ModulesPage.php:459
+#: src/Admin/ModulesPage.php:489
 msgid "Show thumbnails"
 msgstr "Zobrazovat náhledy"
 
-#: src/Admin/ModulesPage.php:460
-#: src/Admin/ModulesPage.php:755
+#: src/Admin/ModulesPage.php:490
+#: src/Admin/ModulesPage.php:798
 msgid "Show prices"
 msgstr "Zobrazovat ceny"
 
-#: src/Admin/ModulesPage.php:461
-#: src/Admin/ModulesPage.php:636
+#: src/Admin/ModulesPage.php:491
+#: src/Admin/ModulesPage.php:676
+msgid "Show unit price"
+msgstr "Zobrazovat jednotkovou cenu"
+
+#: src/Admin/ModulesPage.php:492
+#: src/Admin/ModulesPage.php:677
+msgid "Show Omnibus lowest price"
+msgstr "Zobrazit nejnižší cenu Omnibus"
+
+#: src/Admin/ModulesPage.php:493
+#: src/Admin/ModulesPage.php:678
 msgid "Show SKU"
 msgstr "Zobrazovat SKU"
 
-#: src/Admin/ModulesPage.php:462
+#: src/Admin/ModulesPage.php:494
 msgid "Show view all results link"
 msgstr "Zobrazovat odkaz na plné výsledky"
 
-#: src/Admin/ModulesPage.php:463
+#: src/Admin/ModulesPage.php:495
 msgid "Search by SKU"
 msgstr "Hledat podle SKU"
 
-#: src/Admin/ModulesPage.php:464
+#: src/Admin/ModulesPage.php:496
 msgid "Search by categories"
 msgstr "Hledat podle kategorií"
 
-#: src/Admin/ModulesPage.php:465
+#: src/Admin/ModulesPage.php:497
 msgid "Include out of stock products"
 msgstr "Zahrnout produkty bez skladu"
 
-#: src/Admin/ModulesPage.php:466
+#: src/Admin/ModulesPage.php:498
 msgid "Search field label"
 msgstr "Štítek vyhledávacího pole"
 
-#: src/Admin/ModulesPage.php:466
+#: src/Admin/ModulesPage.php:498
 msgid "Search products"
 msgstr "Hledat produkty"
 
-#: src/Admin/ModulesPage.php:467
+#: src/Admin/ModulesPage.php:499
 #: resources/js/blocks/ajax-search/index.js:28
 msgid "Results label"
 msgstr "Štítek výsledků"
 
-#: src/Admin/ModulesPage.php:467
+#: src/Admin/ModulesPage.php:499
 msgid "Product search results"
 msgstr "Výsledky vyhledávání produktů"
 
-#: src/Admin/ModulesPage.php:468
-#: src/Admin/ModulesPage.php:601
-#: src/Admin/ModulesPage.php:628
+#: src/Admin/ModulesPage.php:500
+#: src/Admin/ModulesPage.php:642
+#: src/Admin/ModulesPage.php:669
 msgid "SKU label"
 msgstr "Štítek SKU"
 
-#: src/Admin/ModulesPage.php:469
+#: src/Admin/ModulesPage.php:501
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
 #: resources/js/blocks/ajax-search/index.js:18
 msgid "Placeholder"
 msgstr "Placeholder"
 
-#: src/Admin/ModulesPage.php:469
+#: src/Admin/ModulesPage.php:501
 msgid "Search products, SKU codes or categories"
 msgstr "Hledat produkty, kódy SKU nebo kategorie"
 
-#: src/Admin/ModulesPage.php:470
+#: src/Admin/ModulesPage.php:502
 msgid "Search"
 msgstr "Hledat"
 
-#: src/Admin/ModulesPage.php:471
+#: src/Admin/ModulesPage.php:503
 msgid "No results text"
 msgstr "Žádné výsledky"
 
-#: src/Admin/ModulesPage.php:471
+#: src/Admin/ModulesPage.php:503
 msgid "No results found for your query."
 msgstr "Pro zadaný dotaz nebyly nalezeny žádné výsledky."
 
-#: src/Admin/ModulesPage.php:472
+#: src/Admin/ModulesPage.php:504
 msgid "View all results text"
 msgstr "Text zobrazení všech výsledků"
 
-#: src/Admin/ModulesPage.php:472
+#: src/Admin/ModulesPage.php:504
 msgid "View all results"
 msgstr "Zobrazit všechny výsledky"
 
-#: src/Admin/ModulesPage.php:479
+#: src/Admin/ModulesPage.php:511
 #: src/Admin/PostTypes.php:117
 msgid "Brands"
 msgstr "Značky"
 
-#: src/Admin/ModulesPage.php:480
+#: src/Admin/ModulesPage.php:512
 msgid "Support for product brands independent of the manufacturer, with views on product pages and listings, and its own taxonomy."
 msgstr "Podpora produktových značek nezávisle na výrobci, se zobrazením u produktu a v seznamech i vlastní taxonomií."
 
-#: src/Admin/ModulesPage.php:481
-#: src/Admin/ModulesPage.php:498
-#: src/Admin/ModulesPage.php:540
-#: src/Admin/ModulesPage.php:570
-#: src/Admin/ModulesPage.php:616
-#: src/Admin/ModulesPage.php:652
-#: src/Admin/ModulesPage.php:684
-#: src/Admin/ModulesPage.php:707
-#: src/Admin/ModulesPage.php:725
-#: src/Admin/ModulesPage.php:742
-#: src/Admin/ModulesPage.php:769
-#: src/Admin/ModulesPage.php:799
-#: src/Admin/ModulesPage.php:820
-msgid "Merchandising"
-msgstr "Merchandising"
-
-#: src/Admin/ModulesPage.php:486
-#: src/Admin/ModulesPage.php:546
-#: src/Admin/ModulesPage.php:576
-#: src/Admin/ModulesPage.php:657
-#: src/Admin/ModulesPage.php:712
-#: src/Admin/ModulesPage.php:747
-#: src/Admin/ModulesPage.php:774
-#: src/Admin/ModulesPage.php:1197
+#: src/Admin/ModulesPage.php:518
+#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:617
+#: src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:755
+#: src/Admin/ModulesPage.php:790
+#: src/Admin/ModulesPage.php:817
+#: src/Admin/ModulesPage.php:1240
 msgid "Show on product page"
 msgstr "Zobrazovat na stránce produktu"
 
-#: src/Admin/ModulesPage.php:487
-msgid "Show on product listings"
-msgstr "Zobrazovat v seznamech produktů"
-
-#: src/Admin/ModulesPage.php:488
+#: src/Admin/ModulesPage.php:520
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Štítek"
 
-#: src/Admin/ModulesPage.php:489
+#: src/Admin/ModulesPage.php:521
 msgid "Show label"
 msgstr "Zobrazovat štítek"
 
-#: src/Admin/ModulesPage.php:490
+#: src/Admin/ModulesPage.php:522
 msgid "Brand separator"
 msgstr "Oddělovač značek"
 
-#: src/Admin/ModulesPage.php:491
+#: src/Admin/ModulesPage.php:523
 msgid "Link to brand archive"
 msgstr "Odkazovat na archiv značky"
 
-#: src/Admin/ModulesPage.php:496
+#: src/Admin/ModulesPage.php:528
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "AJAX Filters"
 msgstr "AJAX filtry"
 
-#: src/Admin/ModulesPage.php:497
+#: src/Admin/ModulesPage.php:529
 msgid "Filtering product listings without page reload, including categories, brands, price, stock status, sale, and attributes."
 msgstr "Filtrování seznamů produktů bez znovunačtení stránky, s kategoriemi, značkami, cenou, skladem, akcí a atributy."
 
-#: src/Admin/ModulesPage.php:503
+#: src/Admin/ModulesPage.php:535
 msgid "Show on shop archives"
 msgstr "Zobrazovat v archivech obchodu"
 
-#: src/Admin/ModulesPage.php:504
+#: src/Admin/ModulesPage.php:536
 msgid "Show form header"
 msgstr "Zobrazovat nadpis formuláře"
 
-#: src/Admin/ModulesPage.php:505
+#: src/Admin/ModulesPage.php:537
 msgid "Category filter"
 msgstr "Filtr kategorií"
 
-#: src/Admin/ModulesPage.php:506
+#: src/Admin/ModulesPage.php:538
 msgid "Brand filter"
 msgstr "Filtr značek"
 
-#: src/Admin/ModulesPage.php:507
+#: src/Admin/ModulesPage.php:539
 msgid "Price filter"
 msgstr "Filtr ceny"
 
-#: src/Admin/ModulesPage.php:508
+#: src/Admin/ModulesPage.php:540
 msgid "Availability filter"
 msgstr "Filtr dostupnosti"
 
-#: src/Admin/ModulesPage.php:509
+#: src/Admin/ModulesPage.php:541
 msgid "Sale filter"
 msgstr "Filtr akcí"
 
-#: src/Admin/ModulesPage.php:510
+#: src/Admin/ModulesPage.php:542
 msgid "Attribute filters"
 msgstr "Filtry atributů"
 
-#: src/Admin/ModulesPage.php:511
+#: src/Admin/ModulesPage.php:543
 msgid "Active filters chips"
 msgstr "Štítky aktivních filtrů"
 
-#: src/Admin/ModulesPage.php:512
+#: src/Admin/ModulesPage.php:544
 msgid "Show term counts"
 msgstr "Zobrazovat počty položek"
 
-#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:545
 msgid "Hierarchical categories"
 msgstr "Hierarchické kategorie"
 
-#: src/Admin/ModulesPage.php:514
+#: src/Admin/ModulesPage.php:546
 msgid "Enable taxonomy multi-select"
 msgstr "Povolit vícenásobný výběr taxonomie"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "Multi-select relation"
 msgstr "Vztah vícenásobného výběru"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "OR - match any selected term"
 msgstr "NEBO - odpovídá libovolné vybrané položce"
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:547
 msgid "AND - match all selected terms"
 msgstr "A - odpovídá všem vybraným položkám"
 
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:548
+msgid "Enable mobile filter panel"
+msgstr "Povolit mobilní panel filtrů"
+
+#: src/Admin/ModulesPage.php:549
+msgid "Enable instant filtering"
+msgstr "Povolit okamžité filtrování"
+
+#: src/Admin/ModulesPage.php:550
+msgid "Instant filtering debounce (ms)"
+msgstr "Prodleva okamžitého filtrování (ms)"
+
+#: src/Admin/ModulesPage.php:550
+msgid "Delay before auto-submitting text and price fields"
+msgstr "Prodleva před automatickým odesláním textových a cenových polí"
+
+#: src/Admin/ModulesPage.php:551
+msgid "Named presets JSON"
+msgstr "JSON pojmenovaných předvoleb"
+
+#: src/Admin/ModulesPage.php:551
+msgid "Optional JSON map for shortcode preset=\"...\". Example: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
+msgstr "Volitelná JSON mapa pro shortcode preset=\"...\". Příklad: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
+
+#: src/Admin/ModulesPage.php:552
+msgid "Archive preset mapping JSON"
+msgstr "JSON mapování předvoleb archivu"
+
+#: src/Admin/ModulesPage.php:552
+msgid "Optional JSON map from archive context to preset slug. Examples: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+msgstr "Volitelná JSON mapa z kontextu archivu na slug předvolby. Příklady: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+
+#: src/Admin/ModulesPage.php:553
+msgid "Specific attribute taxonomies"
+msgstr "Konkrétní taxonomie atributů"
+
+#: src/Admin/ModulesPage.php:553
+msgid "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N attributes are used."
+msgstr "Volitelný seznam oddělený čárkami, např. pa_color,pa_size. Pokud je prázdný, použije se prvních N atributů."
+
+#: src/Admin/ModulesPage.php:554
 msgid "Max number of attributes"
 msgstr "Max. počet atributů"
 
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:554
 msgid "How many product attributes to show as filter dropdowns"
 msgstr "Kolik atributů produktu zobrazit jako rozbalovací filtry"
 
-#: src/Admin/ModulesPage.php:517
-#: src/Admin/ModulesPage.php:776
-#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:819
+#: src/Admin/ModulesPage.php:868
 msgid "Header"
 msgstr "Nadpis"
 
-#: src/Admin/ModulesPage.php:518
+#: src/Admin/ModulesPage.php:556
 msgid "Active filters label"
 msgstr "Popisek aktivních filtrů"
 
-#: src/Admin/ModulesPage.php:519
+#: src/Admin/ModulesPage.php:557
+msgid "Mobile toggle button text"
+msgstr "Text tlačítka přepínání na mobilních zařízeních"
+
+#: src/Admin/ModulesPage.php:558
+msgid "Mobile close button text"
+msgstr "Text tlačítka zavření na mobilních zařízeních"
+
+#: src/Admin/ModulesPage.php:559
+msgid "Mobile panel title"
+msgstr "Název mobilního panelu"
+
+#: src/Admin/ModulesPage.php:560
 msgid "Category label"
 msgstr "Štítek kategorie"
 
-#: src/Admin/ModulesPage.php:520
+#: src/Admin/ModulesPage.php:561
 msgid "All categories text"
 msgstr "Text všech kategorií"
 
-#: src/Admin/ModulesPage.php:521
-#: src/Admin/ModulesPage.php:604
+#: src/Admin/ModulesPage.php:562
+#: src/Admin/ModulesPage.php:645
 msgid "Brand label"
 msgstr "Štítek značky"
 
-#: src/Admin/ModulesPage.php:522
+#: src/Admin/ModulesPage.php:563
 msgid "All brands text"
 msgstr "Text všech značek"
 
-#: src/Admin/ModulesPage.php:523
+#: src/Admin/ModulesPage.php:564
 msgid "Price from label"
 msgstr "Štítek cena od"
 
-#: src/Admin/ModulesPage.php:524
+#: src/Admin/ModulesPage.php:565
 msgid "Price to label"
 msgstr "Štítek cena do"
 
-#: src/Admin/ModulesPage.php:525
-#: src/Admin/ModulesPage.php:602
+#: src/Admin/ModulesPage.php:566
+#: src/Admin/ModulesPage.php:643
 msgid "Availability label"
 msgstr "Štítek dostupnosti"
 
-#: src/Admin/ModulesPage.php:526
+#: src/Admin/ModulesPage.php:567
 msgid "Any availability text"
 msgstr "Text jakékoli dostupnosti"
 
-#: src/Admin/ModulesPage.php:527
+#: src/Admin/ModulesPage.php:568
 msgid "Instock product text"
 msgstr "Text dostupného produktu"
 
-#: src/Admin/ModulesPage.php:528
+#: src/Admin/ModulesPage.php:569
 msgid "Sale label"
 msgstr "Štítek akce"
 
-#: src/Admin/ModulesPage.php:529
+#: src/Admin/ModulesPage.php:570
 msgid "Active sale filter text"
 msgstr "Text filtru aktivních akcí"
 
-#: src/Admin/ModulesPage.php:530
+#: src/Admin/ModulesPage.php:571
 msgid "Any attribute value text"
 msgstr "Text pro libovolnou hodnotu atributu"
 
-#: src/Admin/ModulesPage.php:531
+#: src/Admin/ModulesPage.php:572
 msgid "Show reset link"
 msgstr "Zobrazovat odkaz resetu"
 
-#: src/Admin/ModulesPage.php:533
+#: src/Admin/ModulesPage.php:574
 msgid "Reset text"
 msgstr "Text resetu"
 
-#: src/Admin/ModulesPage.php:538
+#: src/Admin/ModulesPage.php:579
 #: src/Service/WishlistService.php:174
 msgid "Wishlist"
 msgstr "Seznam přání"
 
-#: src/Admin/ModulesPage.php:539
+#: src/Admin/ModulesPage.php:580
 msgid "Saving favorite products for guests and logged-in users, with a list in the customer account and AJAX add/remove."
 msgstr "Ukládání oblíbených produktů pro hosty i přihlášené, se seznamem v účtu zákazníka a AJAX přidáváním/odebíráním."
 
-#: src/Admin/ModulesPage.php:545
+#: src/Admin/ModulesPage.php:586
 msgid "Allow guests to save favorites"
 msgstr "Povolit hostům ukládat oblíbené"
 
-#: src/Admin/ModulesPage.php:547
-#: src/Admin/ModulesPage.php:577
-#: src/Admin/ModulesPage.php:621
-#: src/Admin/ModulesPage.php:658
+#: src/Admin/ModulesPage.php:588
+#: src/Admin/ModulesPage.php:618
+#: src/Admin/ModulesPage.php:662
+#: src/Admin/ModulesPage.php:701
 msgid "Show on listings"
 msgstr "Zobrazovat v seznamech"
 
-#: src/Admin/ModulesPage.php:548
-#: src/Admin/ModulesPage.php:578
+#: src/Admin/ModulesPage.php:589
+#: src/Admin/ModulesPage.php:619
 msgid "Show in My Account"
 msgstr "Zobrazovat v Můj účet"
 
-#: src/Admin/ModulesPage.php:549
+#: src/Admin/ModulesPage.php:590
 msgid "Show list title"
 msgstr "Zobrazovat název seznamu"
 
-#: src/Admin/ModulesPage.php:550
-#: src/Admin/ModulesPage.php:579
-#: src/Admin/ModulesPage.php:754
+#: src/Admin/ModulesPage.php:591
+#: src/Admin/ModulesPage.php:620
+#: src/Admin/ModulesPage.php:797
 msgid "Show product images"
 msgstr "Zobrazovat obrázky produktů"
 
-#: src/Admin/ModulesPage.php:551
+#: src/Admin/ModulesPage.php:592
 msgid "Show product names"
 msgstr "Zobrazovat názvy produktů"
 
-#: src/Admin/ModulesPage.php:552
+#: src/Admin/ModulesPage.php:593
 msgid "Show price in list"
 msgstr "Zobrazovat cenu v seznamu"
 
-#: src/Admin/ModulesPage.php:553
+#: src/Admin/ModulesPage.php:594
 msgid "Show cart button in list"
 msgstr "Zobrazovat tlačítko košíku v seznamu"
 
-#: src/Admin/ModulesPage.php:554
+#: src/Admin/ModulesPage.php:595
 msgid "Show remove button in list"
 msgstr "Zobrazovat tlačítko odstranění v seznamu"
 
-#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:596
 msgid "Number of columns in list"
 msgstr "Počet sloupců v seznamu"
 
-#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:596
 msgid "Number of product columns in grid layout. Recommended: 3-4"
 msgstr "Počet sloupců produktů v mřížce. Doporučeno: 3-4"
 
-#: src/Admin/ModulesPage.php:556
-#: src/Admin/ModulesPage.php:582
+#: src/Admin/ModulesPage.php:597
+#: src/Admin/ModulesPage.php:623
 msgid "Label in My Account"
 msgstr "Štítek v Můj účet"
 
-#: src/Admin/ModulesPage.php:557
+#: src/Admin/ModulesPage.php:598
 msgid "List title"
 msgstr "Název seznamu"
 
-#: src/Admin/ModulesPage.php:558
-#: src/Admin/ModulesPage.php:595
-#: src/Admin/ModulesPage.php:715
-#: src/Admin/ModulesPage.php:753
+#: src/Admin/ModulesPage.php:599
+#: src/Admin/ModulesPage.php:636
+#: src/Admin/ModulesPage.php:758
+#: src/Admin/ModulesPage.php:796
 msgid "Section description"
 msgstr "Popis sekce"
 
-#: src/Admin/ModulesPage.php:559
-#: src/Admin/ModulesPage.php:585
+#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:626
 msgid "Add text"
 msgstr "Text přidání"
 
-#: src/Admin/ModulesPage.php:560
-#: src/Admin/ModulesPage.php:586
+#: src/Admin/ModulesPage.php:601
+#: src/Admin/ModulesPage.php:627
 msgid "Remove text"
 msgstr "Text odstranění"
 
-#: src/Admin/ModulesPage.php:561
-#: src/Admin/ModulesPage.php:591
+#: src/Admin/ModulesPage.php:602
+#: src/Admin/ModulesPage.php:632
 msgid "Login message"
 msgstr "Zpráva pro přihlášení"
 
-#: src/Admin/ModulesPage.php:562
-#: src/Admin/ModulesPage.php:592
+#: src/Admin/ModulesPage.php:603
+#: src/Admin/ModulesPage.php:633
 msgid "Product not found message"
 msgstr "Zpráva při chybějícím produktu"
 
-#: src/Admin/ModulesPage.php:563
-#: src/Admin/ModulesPage.php:596
+#: src/Admin/ModulesPage.php:604
+#: src/Admin/ModulesPage.php:637
 msgid "Empty state"
 msgstr "Prázdný stav"
 
-#: src/Admin/ModulesPage.php:568
+#: src/Admin/ModulesPage.php:609
 msgid "Product Comparison"
 msgstr "Porovnání produktů"
 
-#: src/Admin/ModulesPage.php:569
+#: src/Admin/ModulesPage.php:610
 msgid "Product comparison tool with features table, highlight differences, guest and customer support, and view in My Account."
 msgstr "Porovnávač produktů s tabulkou vlastností, zvýrazněním rozdílů, podporou hostů i zákazníků a zobrazením v Můj účet."
 
-#: src/Admin/ModulesPage.php:575
+#: src/Admin/ModulesPage.php:616
 msgid "Allow guests to compare products"
 msgstr "Povolit hostům porovnávat produkty"
 
-#: src/Admin/ModulesPage.php:580
-#: src/Admin/ModulesPage.php:757
+#: src/Admin/ModulesPage.php:621
+#: src/Admin/ModulesPage.php:800
 msgid "Show cart button"
 msgstr "Zobrazovat tlačítko košíku"
 
-#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:622
 msgid "Show remove button"
 msgstr "Zobrazovat tlačítko odstranění"
 
-#: src/Admin/ModulesPage.php:583
+#: src/Admin/ModulesPage.php:624
 msgid "Comparison title"
 msgstr "Název porovnání"
 
-#: src/Admin/ModulesPage.php:584
+#: src/Admin/ModulesPage.php:625
 msgid "Maximum number of products"
 msgstr "Maximální počet produktů"
 
-#: src/Admin/ModulesPage.php:584
+#: src/Admin/ModulesPage.php:625
 msgid "Maximum products that can be compared side-by-side. Recommended: 3-5"
 msgstr "Maximální počet produktů, které lze porovnat vedle sebe. Doporučeno: 3-5"
 
-#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:628
 msgid "Comparison link text"
 msgstr "Text odkazu na porovnání"
 
-#: src/Admin/ModulesPage.php:588
+#: src/Admin/ModulesPage.php:629
 msgid "Clear text"
 msgstr "Text vymazání"
 
-#: src/Admin/ModulesPage.php:589
+#: src/Admin/ModulesPage.php:630
 msgid "Feature column header"
 msgstr "Záhlaví sloupce vlastností"
 
-#: src/Admin/ModulesPage.php:590
+#: src/Admin/ModulesPage.php:631
 msgid "Difference filter label"
 msgstr "Štítek filtru rozdílů"
 
-#: src/Admin/ModulesPage.php:593
+#: src/Admin/ModulesPage.php:634
 msgid "Limit message"
 msgstr "Zpráva o limitu"
 
-#: src/Admin/ModulesPage.php:593
+#: src/Admin/ModulesPage.php:634
 msgid "Variable: {limit}"
 msgstr "Proměnná: {limit}"
 
-#: src/Admin/ModulesPage.php:594
+#: src/Admin/ModulesPage.php:635
 msgid "Clear error message"
 msgstr "Zpráva chyby při vymazání"
 
-#: src/Admin/ModulesPage.php:597
+#: src/Admin/ModulesPage.php:638
 msgid "Highlight differences"
 msgstr "Zvýrazňovat rozdíly"
 
-#: src/Admin/ModulesPage.php:598
+#: src/Admin/ModulesPage.php:639
 msgid "Show only differences by default"
 msgstr "Výchozí zobrazení pouze rozdílů"
 
-#: src/Admin/ModulesPage.php:599
+#: src/Admin/ModulesPage.php:640
 msgid "Price label"
 msgstr "Štítek ceny"
 
-#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:641
 msgid "Unit price label"
 msgstr "Štítek jednotkové ceny"
 
-#: src/Admin/ModulesPage.php:603
+#: src/Admin/ModulesPage.php:644
 msgid "Delivery time label"
 msgstr "Štítek dodací lhůty"
 
-#: src/Admin/ModulesPage.php:605
+#: src/Admin/ModulesPage.php:646
 msgid "Manufacturer label"
 msgstr "Štítek výrobce"
 
-#: src/Admin/ModulesPage.php:606
+#: src/Admin/ModulesPage.php:647
 msgid "GTIN / EAN label"
 msgstr "Štítek GTIN / EAN"
 
-#: src/Admin/ModulesPage.php:607
+#: src/Admin/ModulesPage.php:648
 msgid "Short description label"
 msgstr "Štítek krátkého popisu"
 
-#: src/Admin/ModulesPage.php:608
-#: src/Admin/ModulesPage.php:640
+#: src/Admin/ModulesPage.php:649
+#: src/Admin/ModulesPage.php:683
 msgid "Show short description"
 msgstr "Zobrazovat krátký popis"
 
-#: src/Admin/ModulesPage.php:609
+#: src/Admin/ModulesPage.php:650
 msgid "Show product attributes"
 msgstr "Zobrazovat atributy produktu"
 
-#: src/Admin/ModulesPage.php:614
+#: src/Admin/ModulesPage.php:655
 #: src/Service/QuickViewService.php:143
 msgid "Quick View"
 msgstr "Rychlý náhled"
 
-#: src/Admin/ModulesPage.php:615
+#: src/Admin/ModulesPage.php:656
 msgid "Lightweight product modal on listings, with support for variations, prices, gallery, and basic purchase information."
 msgstr "Lehký modální dialog produktu v seznamech, s podporou variant, cen, galerie a základních nákupních informací."
 
-#: src/Admin/ModulesPage.php:623
+#: src/Admin/ModulesPage.php:664
 msgid "Modal label"
 msgstr "Štítek modálního dialogu"
 
-#: src/Admin/ModulesPage.php:624
-#: src/Admin/ModulesPage.php:734
-#: src/Admin/ModulesPage.php:830
+#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:777
+#: src/Admin/ModulesPage.php:873
 msgid "Close label"
 msgstr "Štítek zavření"
 
-#: src/Admin/ModulesPage.php:625
-#: src/Admin/ModulesPage.php:806
+#: src/Admin/ModulesPage.php:666
+#: src/Admin/ModulesPage.php:849
 msgid "Loading text"
 msgstr "Text načítání"
 
-#: src/Admin/ModulesPage.php:626
+#: src/Admin/ModulesPage.php:667
 msgid "AJAX error text"
 msgstr "Text AJAX chyby"
 
-#: src/Admin/ModulesPage.php:627
+#: src/Admin/ModulesPage.php:668
 msgid "Product not found text"
 msgstr "Text chybějícího produktu"
 
-#: src/Admin/ModulesPage.php:629
+#: src/Admin/ModulesPage.php:670
 msgid "Show modal title in content"
 msgstr "Zobrazovat nadpis modálního dialogu v obsahu"
 
-#: src/Admin/ModulesPage.php:630
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:872
 msgid "Show close button"
 msgstr "Zobrazovat tlačítko zavření"
 
-#: src/Admin/ModulesPage.php:631
-#: src/Admin/ModulesPage.php:756
+#: src/Admin/ModulesPage.php:672
+#: src/Admin/ModulesPage.php:799
 msgid "Show product name"
 msgstr "Zobrazovat název produktu"
 
-#: src/Admin/ModulesPage.php:632
+#: src/Admin/ModulesPage.php:673
 msgid "Show main image"
 msgstr "Zobrazovat hlavní obrázek"
 
-#: src/Admin/ModulesPage.php:633
+#: src/Admin/ModulesPage.php:674
 msgid "Show mini gallery"
 msgstr "Zobrazovat mini galerii"
 
-#: src/Admin/ModulesPage.php:634
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:40
+#: src/Admin/ModulesPage.php:675
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:54
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:66
 #: resources/js/blocks/ajax-filters/index.js:38
 #: resources/js/blocks/product-slider/index.js:53
 msgid "Show price"
 msgstr "Zobrazit cenu"
 
-#: src/Admin/ModulesPage.php:635
-msgid "Show unit price"
-msgstr "Zobrazovat jednotkovou cenu"
-
-#: src/Admin/ModulesPage.php:637
+#: src/Admin/ModulesPage.php:679
 msgid "Show delivery time"
 msgstr "Zobrazovat dodací lhůtu"
 
-#: src/Admin/ModulesPage.php:638
+#: src/Admin/ModulesPage.php:680
+msgid "Show product safety (GPSR)"
+msgstr "Zobrazit bezpečnost produktu (GPSR)"
+
+#: src/Admin/ModulesPage.php:681
 msgid "Show brand"
 msgstr "Zobrazovat značku"
 
-#: src/Admin/ModulesPage.php:639
+#: src/Admin/ModulesPage.php:682
 msgid "Show manufacturer"
 msgstr "Zobrazovat výrobce"
 
-#: src/Admin/ModulesPage.php:641
+#: src/Admin/ModulesPage.php:684
 msgid "Show purchase form"
 msgstr "Zobrazovat nákupní formulář"
 
-#: src/Admin/ModulesPage.php:642
+#: src/Admin/ModulesPage.php:685
 msgid "Show full product link"
 msgstr "Zobrazovat odkaz na celou kartu"
 
-#: src/Admin/ModulesPage.php:643
+#: src/Admin/ModulesPage.php:686
 msgid "Link text to product"
 msgstr "Text odkazu na produkt"
 
-#: src/Admin/ModulesPage.php:644
+#: src/Admin/ModulesPage.php:687
 msgid "How to open full page"
 msgstr "Jak otevírat celou kartu"
 
-#: src/Admin/ModulesPage.php:644
-#: src/Admin/ModulesPage.php:762
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:878
 msgid "In the same tab"
 msgstr "Ve stejné kartě"
 
-#: src/Admin/ModulesPage.php:644
-#: src/Admin/ModulesPage.php:762
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:878
 msgid "In a new tab"
 msgstr "V nové kartě"
 
-#: src/Admin/ModulesPage.php:645
-#: src/Admin/ModulesPage.php:735
-#: src/Admin/ModulesPage.php:836
+#: src/Admin/ModulesPage.php:688
+#: src/Admin/ModulesPage.php:778
+#: src/Admin/ModulesPage.php:879
 msgid "Close by clicking background"
 msgstr "Zavřít po kliknutí na pozadí"
 
-#: src/Admin/ModulesPage.php:650
+#: src/Admin/ModulesPage.php:693
 #: src/Admin/ProductMetaBox.php:154
 msgid "Badge Management"
 msgstr "Správa badge"
 
-#: src/Admin/ModulesPage.php:651
+#: src/Admin/ModulesPage.php:694
 msgid "Merchandising badges on product pages and listings, with automatic conditions and manual per-product highlights."
 msgstr "Merchandisingové badge na stránkách produktů a v seznamech, s automatickými podmínkami a ručními zvýrazněními pro jednotlivé produkty."
 
-#: src/Admin/ModulesPage.php:659
+#: src/Admin/ModulesPage.php:702
 msgid "Show manual badge"
 msgstr "Zobrazovat ruční badge"
 
-#: src/Admin/ModulesPage.php:660
+#: src/Admin/ModulesPage.php:703
 msgid "Default manual badge style"
 msgstr "Výchozí styl ručního badge"
 
-#: src/Admin/ModulesPage.php:661
+#: src/Admin/ModulesPage.php:704
 msgid "Show secondary badge"
 msgstr "Zobrazovat doplňkový badge"
 
-#: src/Admin/ModulesPage.php:662
+#: src/Admin/ModulesPage.php:705
 msgid "Secondary badge style"
 msgstr "Styl doplňkového badge"
 
-#: src/Admin/ModulesPage.php:663
+#: src/Admin/ModulesPage.php:706
 msgid "Badge shape"
 msgstr "Tvar badge"
 
-#: src/Admin/ModulesPage.php:664
+#: src/Admin/ModulesPage.php:707
 msgid "Uppercase"
 msgstr "Velká písmena"
 
-#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:708
 msgid "Max badges on product page"
 msgstr "Max. badge na stránce produktu"
 
-#: src/Admin/ModulesPage.php:666
+#: src/Admin/ModulesPage.php:709
 msgid "Max badges on listings"
 msgstr "Max. badge v seznamech"
 
-#: src/Admin/ModulesPage.php:667
+#: src/Admin/ModulesPage.php:710
 msgid "Sale badge"
 msgstr "Badge akce"
 
-#: src/Admin/ModulesPage.php:668
+#: src/Admin/ModulesPage.php:711
 msgid "Sale badge text"
 msgstr "Text badge akce"
 
-#: src/Admin/ModulesPage.php:669
+#: src/Admin/ModulesPage.php:712
 msgid "New badge"
 msgstr "Badge novinek"
 
-#: src/Admin/ModulesPage.php:670
+#: src/Admin/ModulesPage.php:713
 msgid "New badge text"
 msgstr "Text badge novinek"
 
-#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:714
 msgid "New for how many days"
 msgstr "Novinka po kolik dní"
 
-#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:714
 msgid "Products published within this many days will show the \"New\" badge"
 msgstr "Produkty publikované během tohoto počtu dní zobrazí odznak \"Novinka\""
 
-#: src/Admin/ModulesPage.php:672
+#: src/Admin/ModulesPage.php:715
 msgid "Low stock badge"
 msgstr "Badge nízkého skladu"
 
-#: src/Admin/ModulesPage.php:673
+#: src/Admin/ModulesPage.php:716
 msgid "Low stock badge text"
 msgstr "Text badge nízkého skladu"
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:717
 msgid "Low stock threshold"
 msgstr "Práh nízkého skladu"
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:717
 msgid "Badge appears when stock quantity is at or below this number"
 msgstr "Odznak se zobrazí, když je skladové množství na této hodnotě nebo nižší"
 
-#: src/Admin/ModulesPage.php:675
+#: src/Admin/ModulesPage.php:718
 msgid "Bestseller badge"
 msgstr "Badge bestseller"
 
-#: src/Admin/ModulesPage.php:676
+#: src/Admin/ModulesPage.php:719
 msgid "Bestseller badge text"
 msgstr "Text badge bestseller"
 
-#: src/Admin/ModulesPage.php:677
+#: src/Admin/ModulesPage.php:720
 msgid "Bestseller threshold (sales)"
 msgstr "Práh bestselleru (prodej)"
 
-#: src/Admin/ModulesPage.php:677
+#: src/Admin/ModulesPage.php:720
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr "Minimální celkový počet prodejů pro zobrazení odznaku \"Bestseller\""
 
-#: src/Admin/ModulesPage.php:682
+#: src/Admin/ModulesPage.php:725
 #: src/Admin/ProductMetaBox.php:188
 msgid "Tab Manager"
 msgstr "Správa záložek"
 
-#: src/Admin/ModulesPage.php:683
+#: src/Admin/ModulesPage.php:726
 msgid "Additional product tabs with content per product and global tabs for shipping, returns, and business information."
 msgstr "Dodatečné záložky produktu s obsahem pro jednotlivé produkty a globálními záložkami pro dopravu, vrácení a obchodní informace."
 
-#: src/Admin/ModulesPage.php:689
+#: src/Admin/ModulesPage.php:732
 msgid "Global shipping tab"
 msgstr "Globální záložka dopravy"
 
-#: src/Admin/ModulesPage.php:690
+#: src/Admin/ModulesPage.php:733
 msgid "Shipping tab title"
 msgstr "Nadpis záložky dopravy"
 
-#: src/Admin/ModulesPage.php:691
+#: src/Admin/ModulesPage.php:734
 msgid "Shipping tab content"
 msgstr "Obsah záložky dopravy"
 
-#: src/Admin/ModulesPage.php:692
+#: src/Admin/ModulesPage.php:735
 msgid "Shipping tab priority"
 msgstr "Priorita záložky dopravy"
 
-#: src/Admin/ModulesPage.php:692
+#: src/Admin/ModulesPage.php:735
 msgid "Lower number = appears earlier. WooCommerce default: Description=10, Reviews=30"
 msgstr "Nižší číslo = zobrazí se dříve. Výchozí WooCommerce: Popis=10, Recenze=30"
 
-#: src/Admin/ModulesPage.php:693
+#: src/Admin/ModulesPage.php:736
 msgid "Global returns tab"
 msgstr "Globální záložka vrácení"
 
-#: src/Admin/ModulesPage.php:694
+#: src/Admin/ModulesPage.php:737
 msgid "Returns tab title"
 msgstr "Nadpis záložky vrácení"
 
-#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:738
 msgid "Returns tab content"
 msgstr "Obsah záložky vrácení"
 
-#: src/Admin/ModulesPage.php:696
+#: src/Admin/ModulesPage.php:739
 msgid "Returns tab priority"
 msgstr "Priorita záložky vrácení"
 
-#: src/Admin/ModulesPage.php:697
+#: src/Admin/ModulesPage.php:740
 msgid "Enable first product tab"
 msgstr "Zapnout první produktovou záložku"
 
-#: src/Admin/ModulesPage.php:698
+#: src/Admin/ModulesPage.php:741
 msgid "First product tab priority"
 msgstr "Priorita první produktové záložky"
 
-#: src/Admin/ModulesPage.php:699
+#: src/Admin/ModulesPage.php:742
 msgid "Enable second product tab"
 msgstr "Zapnout druhou produktovou záložku"
 
-#: src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:743
 msgid "Second product tab priority"
 msgstr "Priorita druhé produktové záložky"
 
-#: src/Admin/ModulesPage.php:705
+#: src/Admin/ModulesPage.php:748
 #: src/Admin/ProductMetaBox.php:222
 msgid "Featured Video"
 msgstr "Video produktu"
 
-#: src/Admin/ModulesPage.php:706
+#: src/Admin/ModulesPage.php:749
 msgid "Product video on the product page, embedded from YouTube, Vimeo, or as a local MP4 file in the media section."
 msgstr "Video produktu na kartě produktu, vložené z YouTube, Vimeo nebo jako lokální MP4 soubor v sekci médií."
 
-#: src/Admin/ModulesPage.php:713
-#: src/Admin/ModulesPage.php:1173
+#: src/Admin/ModulesPage.php:756
+#: src/Admin/ModulesPage.php:1216
 msgid "Position"
 msgstr "Pozice"
 
-#: src/Admin/ModulesPage.php:713
+#: src/Admin/ModulesPage.php:756
 msgid "Below gallery"
 msgstr "Pod galerií"
 
-#: src/Admin/ModulesPage.php:713
+#: src/Admin/ModulesPage.php:756
 msgid "Before product summary"
 msgstr "Před souhrnem produktu"
 
-#: src/Admin/ModulesPage.php:714
-#: src/Admin/ModulesPage.php:749
+#: src/Admin/ModulesPage.php:757
+#: src/Admin/ModulesPage.php:792
 msgid "Section header"
 msgstr "Nadpis sekce"
 
-#: src/Admin/ModulesPage.php:716
-#: src/Admin/ModulesPage.php:751
+#: src/Admin/ModulesPage.php:759
+#: src/Admin/ModulesPage.php:794
 msgid "Show section header"
 msgstr "Zobrazovat nadpis sekce"
 
-#: src/Admin/ModulesPage.php:717
-#: src/Admin/ModulesPage.php:752
+#: src/Admin/ModulesPage.php:760
+#: src/Admin/ModulesPage.php:795
 msgid "Show section description"
 msgstr "Zobrazovat popis sekce"
 
-#: src/Admin/ModulesPage.php:718
+#: src/Admin/ModulesPage.php:761
 msgid "Autoplay for supported embeds"
 msgstr "Automatické přehrávání pro podporované vložení"
 
-#: src/Admin/ModulesPage.php:723
+#: src/Admin/ModulesPage.php:766
 msgid "Gallery & Zoom"
 msgstr "Galerie a zoom"
 
-#: src/Admin/ModulesPage.php:724
+#: src/Admin/ModulesPage.php:767
 msgid "Lightweight image zoom and simple gallery lightbox without external slider libraries."
 msgstr "Lehký zoom produktových obrázků a jednoduchý lightbox galerie bez externích sliderových knihoven."
 
-#: src/Admin/ModulesPage.php:730
+#: src/Admin/ModulesPage.php:773
 msgid "Enable zoom on hover"
 msgstr "Zapnout zoom při najetí"
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:774
 msgid "Zoom scale"
 msgstr "Měřítko zoomu"
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:774
 msgid "Magnification factor on hover. 1.0 = no zoom, 2.0 = double size"
 msgstr "Faktor zvětšení při najetí myší. 1.0 = bez zoomu, 2.0 = dvojnásobná velikost"
 
-#: src/Admin/ModulesPage.php:732
+#: src/Admin/ModulesPage.php:775
 msgid "Enable lightbox on click"
 msgstr "Zapnout lightbox po kliknutí"
 
-#: src/Admin/ModulesPage.php:733
+#: src/Admin/ModulesPage.php:776
 msgid "Lightbox window label"
 msgstr "Štítek okna lightbox"
 
-#: src/Admin/ModulesPage.php:740
+#: src/Admin/ModulesPage.php:783
 msgid "Product Slider Carousel"
 msgstr "Produktový slider"
 
-#: src/Admin/ModulesPage.php:741
+#: src/Admin/ModulesPage.php:784
 msgid "Lightweight product slider based on scroll-snap, with related, sale, or featured products."
 msgstr "Lehký produktový slider na bázi scroll-snap, se souvisejícími, akčními nebo vyzdviženými produkty."
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:32
 msgid "Product source"
 msgstr "Zdroj produktů"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 msgid "Related"
 msgstr "Související"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 msgid "Upsell"
 msgstr "Upsell"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Service/BadgeService.php:101
 msgid "Sale"
 msgstr "Akce"
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:791
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:39
 msgid "Featured"
 msgstr "Vyzdvižené"
 
-#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:793
 msgid "Number of products"
 msgstr "Počet produktů"
 
-#: src/Admin/ModulesPage.php:758
+#: src/Admin/ModulesPage.php:801
 msgid "Show \"view all\" link"
 msgstr "Zobrazovat odkaz \"zobrazit vše\""
 
-#: src/Admin/ModulesPage.php:759
+#: src/Admin/ModulesPage.php:802
 msgid "Show empty state without products"
 msgstr "Zobrazovat prázdný stav bez produktů"
 
-#: src/Admin/ModulesPage.php:760
+#: src/Admin/ModulesPage.php:803
 msgid "Empty state text"
 msgstr "Text prázdného stavu"
 
-#: src/Admin/ModulesPage.php:761
+#: src/Admin/ModulesPage.php:804
 msgid "\"view all\" link text"
 msgstr "Text odkazu \"zobrazit vše\""
 
-#: src/Admin/ModulesPage.php:762
+#: src/Admin/ModulesPage.php:805
 msgid "How to open \"view all\" link"
 msgstr "Jak otevírat odkaz \"zobrazit vše\""
 
-#: src/Admin/ModulesPage.php:767
+#: src/Admin/ModulesPage.php:810
 msgid "Waitlist"
 msgstr "Čekací listina"
 
-#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:811
 msgid "Waitlist for out-of-stock products, with email signup and automatic notifications upon restock."
 msgstr "Čekací listina pro vyprodané produkty, s registrací e-mailem a automatickými oznámeními při naskladnění."
 
-#: src/Admin/ModulesPage.php:775
+#: src/Admin/ModulesPage.php:818
 msgid "Allow guests to sign up"
 msgstr "Povolit hostům registraci"
 
-#: src/Admin/ModulesPage.php:777
-#: src/Admin/ModulesPage.php:828
+#: src/Admin/ModulesPage.php:820
+#: src/Admin/ModulesPage.php:871
 msgid "Show header"
 msgstr "Zobrazovat nadpis"
 
-#: src/Admin/ModulesPage.php:778
-#: src/Admin/ModulesPage.php:1330
+#: src/Admin/ModulesPage.php:821
+#: src/Admin/ModulesPage.php:1373
 #: src/AIFeed/ProductMarkdownBuilder.php:127
 msgid "Description"
 msgstr "Popis"
 
-#: src/Admin/ModulesPage.php:779
+#: src/Admin/ModulesPage.php:822
 msgid "Show description"
 msgstr "Zobrazovat popis"
 
-#: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:823
 msgid "Email field label"
 msgstr "Štítek pole e-mailu"
 
-#: src/Admin/ModulesPage.php:781
+#: src/Admin/ModulesPage.php:824
 msgid "Email field placeholder"
 msgstr "Placeholder pole e-mailu"
 
-#: src/Admin/ModulesPage.php:784
+#: src/Admin/ModulesPage.php:827
 #: src/Admin/WithdrawalSettingsPage.php:218
 msgid "Consent text"
 msgstr "Text souhlasu"
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:828
 msgid "Product not found error"
 msgstr "Chyba - produkt nenalezen"
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:829
 msgid "Waitlist unavailable error"
 msgstr "Chyba - čekací listina nedostupná"
 
-#: src/Admin/ModulesPage.php:787
+#: src/Admin/ModulesPage.php:830
 msgid "Invalid email error"
 msgstr "Chyba - neplatný e-mail"
 
-#: src/Admin/ModulesPage.php:788
+#: src/Admin/ModulesPage.php:831
 msgid "Missing consent error"
 msgstr "Chyba - chybějící souhlas"
 
-#: src/Admin/ModulesPage.php:789
+#: src/Admin/ModulesPage.php:832
 msgid "Login required error"
 msgstr "Chyba - vyžadováno přihlášení"
 
-#: src/Admin/ModulesPage.php:791
-#: src/Admin/ModulesPage.php:1055
+#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:1098
 msgid "Email intro text"
 msgstr "Úvodní text e-mailu"
 
-#: src/Admin/ModulesPage.php:792
+#: src/Admin/ModulesPage.php:835
 msgid "Email footer text"
 msgstr "Zápatí e-mailu"
 
-#: src/Admin/ModulesPage.php:797
+#: src/Admin/ModulesPage.php:840
 msgid "Infinite Scrolling"
 msgstr "Nekonečné posouvání"
 
-#: src/Admin/ModulesPage.php:798
+#: src/Admin/ModulesPage.php:841
 msgid "Lightweight loading of subsequent products on WooCommerce archives, with button mode or automatic loading."
 msgstr "Lehké načítání dalších produktů na archivech WooCommerce, s režimem tlačítka nebo automatickým načítáním."
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Operation mode"
 msgstr "Režim fungování"
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Button"
 msgstr "Tlačítko"
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:847
 msgid "Automatic scroll"
 msgstr "Automatické posouvání"
 
-#: src/Admin/ModulesPage.php:807
+#: src/Admin/ModulesPage.php:850
 msgid "Loading error text"
 msgstr "Text chyby načítání"
 
-#: src/Admin/ModulesPage.php:808
+#: src/Admin/ModulesPage.php:851
 msgid "End of list text"
 msgstr "Text konce seznamu"
 
-#: src/Admin/ModulesPage.php:809
+#: src/Admin/ModulesPage.php:852
 msgid "Show status messages"
 msgstr "Zobrazovat stavové zprávy"
 
-#: src/Admin/ModulesPage.php:810
+#: src/Admin/ModulesPage.php:853
 msgid "Show button also in auto mode"
 msgstr "Zobrazovat tlačítko i v automatickém režimu"
 
-#: src/Admin/ModulesPage.php:811
+#: src/Admin/ModulesPage.php:854
 msgid "Show on shop page"
 msgstr "Zobrazovat na stránce obchodu"
 
-#: src/Admin/ModulesPage.php:812
+#: src/Admin/ModulesPage.php:855
 msgid "Show on categories and tags"
 msgstr "Zobrazovat na kategoriích a štítcích"
 
-#: src/Admin/ModulesPage.php:813
+#: src/Admin/ModulesPage.php:856
 msgid "How many pages to auto-load"
 msgstr "Kolik stránek automaticky načíst"
 
-#: src/Admin/ModulesPage.php:813
+#: src/Admin/ModulesPage.php:856
 msgid "0 = unlimited. After this many pages, auto-loading stops and shows a manual button"
 msgstr "0 = bez limitu. Po tomto počtu stránek se automatické načítání zastaví a zobrazí se ruční tlačítko"
 
-#: src/Admin/ModulesPage.php:818
+#: src/Admin/ModulesPage.php:861
 msgid "WooCommerce Popup"
 msgstr "WooCommerce popup"
 
-#: src/Admin/ModulesPage.php:819
+#: src/Admin/ModulesPage.php:862
 msgid "Lightweight promotional or lead popup with frequency, delay, and display location control."
 msgstr "Lehký propagační popup s řízením frekvence, zpoždění a místa zobrazení."
 
-#: src/Admin/ModulesPage.php:826
+#: src/Admin/ModulesPage.php:869
 msgid "Content"
 msgstr "Obsah"
 
-#: src/Admin/ModulesPage.php:827
+#: src/Admin/ModulesPage.php:870
 msgid "CTA text"
 msgstr "Text CTA"
 
-#: src/Admin/ModulesPage.php:831
+#: src/Admin/ModulesPage.php:874
 msgid "Dialog box label"
 msgstr "Štítek dialogového okna"
 
-#: src/Admin/ModulesPage.php:832
+#: src/Admin/ModulesPage.php:875
 msgid "CTA URL"
 msgstr "URL CTA"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 msgid "CTA Fallback URL"
 msgstr "Záložní URL CTA"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 msgid "My account"
 msgstr "Můj účet"
 
-#: src/Admin/ModulesPage.php:833
-#: src/Admin/ModulesPage.php:837
+#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:880
 msgid "Home page"
 msgstr "Úvodní stránka"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:876
 #: src/AIFeed/LlmsTxtService.php:99
 msgid "Shop"
 msgstr "Obchod"
 
-#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:877
 msgid "Show CTA button"
 msgstr "Zobrazovat CTA tlačítko"
 
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:878
 msgid "How to open CTA"
 msgstr "Jak otevírat CTA"
 
-#: src/Admin/ModulesPage.php:838
+#: src/Admin/ModulesPage.php:881
 msgid "Shop and archives"
 msgstr "Obchod a archivy"
 
-#: src/Admin/ModulesPage.php:841
-#: src/Admin/ModulesPage.php:1261
+#: src/Admin/ModulesPage.php:884
+#: src/Admin/ModulesPage.php:1304
 #: src/Service/LiveCartService.php:82
 #: src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Pokladna"
 
-#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:885
 msgid "Delay in seconds"
 msgstr "Zpoždění v sekundách"
 
-#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:885
 msgid "How long to wait after page load before showing the popup"
 msgstr "Jak dlouho čekat po načtení stránky před zobrazením vyskakovacího okna"
 
-#: src/Admin/ModulesPage.php:843
+#: src/Admin/ModulesPage.php:886
 msgid "Frequency of re-showing (days)"
 msgstr "Frekvence opětovného zobrazení (dny)"
 
-#: src/Admin/ModulesPage.php:843
+#: src/Admin/ModulesPage.php:886
 msgid "After closing, the popup will not appear again for this many days (uses cookie)"
 msgstr "Po zavření se vyskakovací okno znovu nezobrazí po tento počet dní (používá soubor cookie)"
 
-#: src/Admin/ModulesPage.php:849
+#: src/Admin/ModulesPage.php:892
 msgid "GPSR - Product safety"
 msgstr "GPSR - Bezpečnost produktů"
 
-#: src/Admin/ModulesPage.php:850
+#: src/Admin/ModulesPage.php:893
 msgid "GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export."
 msgstr "Nástroje pro bezpečnost produktů GPSR: údaje o výrobci a dovozci, odpovědná osoba, identifikátory produktu, bezpečnostní varování, návody a hromadný import nebo export CSV."
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 msgid "Display mode"
 msgstr "Režim zobrazení"
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 msgid "Accordion"
 msgstr "Akordeon"
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:899
 #: src/Service/CustomCheckoutFieldsService.php:528
 msgid "Section"
 msgstr "Sekce"
 
-#: src/Admin/ModulesPage.php:857
+#: src/Admin/ModulesPage.php:900
 msgid "Section title"
 msgstr "Název sekce"
 
-#: src/Admin/ModulesPage.php:857
+#: src/Admin/ModulesPage.php:900
 msgid "Product safety"
 msgstr "Bezpečnost produktu"
 
-#: src/Admin/ModulesPage.php:862
+#: src/Admin/ModulesPage.php:905
 msgid "Verified purchase badge"
 msgstr "Odznak ověřeného nákupu"
 
-#: src/Admin/ModulesPage.php:863
+#: src/Admin/ModulesPage.php:906
 msgid "Badge shown on reviews from customers who actually purchased the product."
 msgstr "Odznak zobrazený u recenzí od zákazníků, kteří produkt skutečně zakoupili."
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:912
 msgid "Badge text"
 msgstr "Text odznaku"
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:912
 #: src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
 msgstr "Ověřený nákup"
 
-#: src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:917
 msgid "Anti-greenwashing"
 msgstr "Proti greenwashingu"
 
-#: src/Admin/ModulesPage.php:875
+#: src/Admin/ModulesPage.php:918
 msgid "Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026)."
 msgstr "Pole pro produkty: základ ekologického tvrzení, odkaz na certifikát, datum platnosti. Soulad se směrnicí proti greenwashingu (září 2026)."
 
-#: src/Admin/ModulesPage.php:884
+#: src/Admin/ModulesPage.php:927
 msgid "DSA Toolkit"
 msgstr "DSA nástroje"
 
-#: src/Admin/ModulesPage.php:885
+#: src/Admin/ModulesPage.php:928
 msgid "Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report]."
 msgstr "Nástroje pro Akt o digitálních službách: nastavení kontaktního místa, formulář pro hlášení nelegálního obsahu nebo produktů a administrátorská obrazovka reportů. Shortcode: [polski_dsa_report]."
 
-#: src/Admin/ModulesPage.php:886
-#: src/Admin/ModulesPage.php:902
-#: src/Admin/ModulesPage.php:914
 #: src/Admin/ModulesPage.php:929
+#: src/Admin/ModulesPage.php:945
+#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:972
 #: src/AIFeed/LlmsTxtService.php:109
 msgid "Consumer rights"
 msgstr "Práva spotřebitele"
 
-#: src/Admin/ModulesPage.php:891
+#: src/Admin/ModulesPage.php:934
 msgid "DSA contact name"
 msgstr "DSA kontaktní jméno"
 
-#: src/Admin/ModulesPage.php:892
+#: src/Admin/ModulesPage.php:935
 msgid "DSA contact email"
 msgstr "DSA kontaktní e-mail"
 
-#: src/Admin/ModulesPage.php:893
+#: src/Admin/ModulesPage.php:936
 msgid "DSA contact phone"
 msgstr "DSA kontaktní telefon"
 
-#: src/Admin/ModulesPage.php:900
+#: src/Admin/ModulesPage.php:943
 msgid "KSeF readiness"
 msgstr "KSeF připravenost"
 
-#: src/Admin/ModulesPage.php:901
+#: src/Admin/ModulesPage.php:944
 msgid "Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator."
 msgstr "Automatická detekce objednávek, které mohou vyžadovat fakturaci KSeF na základě NIP, plus integrační hooky a administrátorský ukazatel stavu."
 
-#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:950
 msgid "Automatically detect based on NIP"
 msgstr "Automaticky detekovat na základě NIP"
 
-#: src/Admin/ModulesPage.php:912
+#: src/Admin/ModulesPage.php:955
 #: src/Service/SecurityIncidentService.php:90
 msgid "Security incidents"
 msgstr "Sicherheitsvorfälle"
 
-#: src/Admin/ModulesPage.php:913
+#: src/Admin/ModulesPage.php:956
 msgid "CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export."
 msgstr "CRA protokol incidentů pro zranitelnosti, úniky dat, selhání třetích stran a operativní řešení. Zahrnuje sledování stavu a CSV export."
 
-#: src/Admin/ModulesPage.php:918
+#: src/Admin/ModulesPage.php:961
 #: src/Service/SecurityIncidentService.php:131
 msgid "Incident log"
 msgstr "Vorfallsprotokoll"
 
-#: src/Admin/ModulesPage.php:921
-#: src/Admin/ModulesPage.php:1014
+#: src/Admin/ModulesPage.php:964
+#: src/Admin/ModulesPage.php:1057
 msgid "Security contact email"
 msgstr "Bezpečnostní kontaktní e-mail"
 
-#: src/Admin/ModulesPage.php:922
+#: src/Admin/ModulesPage.php:965
 msgid "Default reporter name"
 msgstr "Výchozí jméno nahlašujícího"
 
-#: src/Admin/ModulesPage.php:927
+#: src/Admin/ModulesPage.php:970
 msgid "Store health monitor"
 msgstr "Monitor kondice obchodu"
 
-#: src/Admin/ModulesPage.php:928
+#: src/Admin/ModulesPage.php:971
 msgid "Continuous, passive monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies (\"traffic but no orders\"). Sends email or webhook alerts. Checks run every 5 minutes and never place synthetic orders."
 msgstr "Nepřetržité, pasivní sledování kritických chyb na frontendu, míry selhání pokladny a anomálií prodeje („návštěvnost je, ale žádné objednávky“). Odesílá upozornění e-mailem nebo webhookem. Kontroly probíhají každých 5 minut a nikdy nevytvářejí testovací objednávky."
 
-#: src/Admin/ModulesPage.php:933
+#: src/Admin/ModulesPage.php:976
 msgid "Health dashboard"
 msgstr "Přehled kondice"
 
-#: src/Admin/ModulesPage.php:936
+#: src/Admin/ModulesPage.php:979
 msgid "Alert email"
 msgstr "E-mail pro upozornění"
 
-#: src/Admin/ModulesPage.php:936
+#: src/Admin/ModulesPage.php:979
 msgid "Where to send health alerts. Defaults to the site admin email."
 msgstr "Kam odesílat upozornění o kondici. Výchozí je e-mail správce webu."
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:980
 msgid "Alert webhook URL"
 msgstr "URL webhooku pro upozornění"
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:980
 msgid "Optional. Sends a JSON {\"text\": ...} payload (Slack/Discord-compatible)."
 msgstr "Volitelné. Odesílá datovou zátěž JSON {\"text\": ...} (kompatibilní se Slack/Discord)."
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:981
 msgid "Checkout failure threshold (%)"
 msgstr "Prahová hodnota selhání pokladny (%)"
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:981
 msgid "Alert when this share of checkouts fails within the last 2 hours."
 msgstr "Upozornit, když tento podíl pokladen selže během posledních 2 hodin."
 
-#: src/Admin/ModulesPage.php:939
+#: src/Admin/ModulesPage.php:982
 msgid "Minimum checkout sample"
 msgstr "Minimální vzorek pokladen"
 
-#: src/Admin/ModulesPage.php:939
+#: src/Admin/ModulesPage.php:982
 msgid "Ignore the failure rate until at least this many checkouts are observed."
 msgstr "Ignorovat míru selhání, dokud není pozorováno alespoň tolik pokladen."
 
-#: src/Admin/ModulesPage.php:940
+#: src/Admin/ModulesPage.php:983
 msgid "Sales anomaly threshold"
 msgstr "Prahová hodnota anomálie prodeje"
 
-#: src/Admin/ModulesPage.php:940
+#: src/Admin/ModulesPage.php:983
 msgid "Alert only when this many orders are typical for the hour but none arrive."
 msgstr "Upozornit pouze tehdy, když je pro danou hodinu typický tento počet objednávek, ale žádná nepřijde."
 
-#: src/Admin/ModulesPage.php:941
+#: src/Admin/ModulesPage.php:984
 msgid "Alert cooldown (minutes)"
 msgstr "Prodleva upozornění (minuty)"
 
-#: src/Admin/ModulesPage.php:941
+#: src/Admin/ModulesPage.php:984
 msgid "Minimum time between repeat alerts for an ongoing problem."
 msgstr "Minimální doba mezi opakovanými upozorněními na probíhající problém."
 
-#: src/Admin/ModulesPage.php:948
+#: src/Admin/ModulesPage.php:991
 msgid "Structured Data (Schema.org)"
 msgstr "Strukturovaná data (Schema.org)"
 
-#: src/Admin/ModulesPage.php:949
+#: src/Admin/ModulesPage.php:992
 msgid "Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation."
 msgstr "Automatické vkládání pokročilých JSON-LD značek, podporující indexaci produktů Googlem se zachováním dat specifických pro plugin."
 
-#: src/Admin/ModulesPage.php:950
+#: src/Admin/ModulesPage.php:993
 msgid "SEO & Optimization"
 msgstr "SEO a optimalizace"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:998
 msgid "Enable structured data integration"
 msgstr "Zapnout integraci strukturovaných dat"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:998
 msgid "Main switch for Schema.org JSON-LD modifications."
 msgstr "Hlavní přepínač pro modifikace Schema.org JSON-LD."
 
-#: src/Admin/ModulesPage.php:956
+#: src/Admin/ModulesPage.php:999
 msgid "Data to include"
 msgstr "Data k zahrnutí"
 
-#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:1000
 msgid "Include Brand"
 msgstr "Zahrnout značku"
 
-#: src/Admin/ModulesPage.php:958
+#: src/Admin/ModulesPage.php:1001
 msgid "Include Manufacturer"
 msgstr "Zahrnout výrobce"
 
-#: src/Admin/ModulesPage.php:959
+#: src/Admin/ModulesPage.php:1002
 msgid "Include barcodes (GTIN)"
 msgstr "Zahrnout čárové kódy (GTIN)"
 
-#: src/Admin/ModulesPage.php:960
+#: src/Admin/ModulesPage.php:1003
 msgid "Include Unit Price"
 msgstr "Zahrnout jednotkovou cenu"
 
-#: src/Admin/ModulesPage.php:967
+#: src/Admin/ModulesPage.php:1010
 msgid "Checkout and consent integration"
 msgstr "Integrace checkoutu a souhlasů"
 
-#: src/Admin/ModulesPage.php:968
+#: src/Admin/ModulesPage.php:1011
 msgid "Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages."
 msgstr "Detekce populárních rozšíření polí checkoutu, cookies a dat produktů pro zachování kompatibility nastavení a zpráv."
 
-#: src/Admin/ModulesPage.php:969
+#: src/Admin/ModulesPage.php:1012
 msgid "Integrations"
 msgstr "Integrace"
 
-#: src/Admin/ModulesPage.php:983
+#: src/Admin/ModulesPage.php:1026
 msgid "Store Audit"
 msgstr "Audit obchodu"
 
-#: src/Admin/ModulesPage.php:984
+#: src/Admin/ModulesPage.php:1027
 msgid "Automatic verification of the most common issues: missing legal pages, pre-selected checkboxes, company data, GDPR, Omnibus."
 msgstr "Automatické ověření nejčastějších problémů: chybějící právní stránky, předem zaškrtnuté checkboxy, firemní údaje, GDPR, Omnibus."
 
-#: src/Admin/ModulesPage.php:985
-#: src/Admin/ModulesPage.php:997
-#: src/Admin/ModulesPage.php:1009
-#: src/Admin/ModulesPage.php:1022
-#: src/Admin/ModulesPage.php:1114
-#: src/Admin/ModulesPage.php:1237
+#: src/Admin/ModulesPage.php:1028
+#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1052
+#: src/Admin/ModulesPage.php:1065
+#: src/Admin/ModulesPage.php:1157
+#: src/Admin/ModulesPage.php:1280
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/Admin/ModulesPage.php:990
+#: src/Admin/ModulesPage.php:1033
 msgid "Open compliance audit report"
 msgstr "Otevřít přehled auditu shody"
 
-#: src/Admin/ModulesPage.php:995
+#: src/Admin/ModulesPage.php:1038
 msgid "Plugin data on uninstall"
 msgstr "Data pluginu při odinstalaci"
 
-#: src/Admin/ModulesPage.php:996
+#: src/Admin/ModulesPage.php:1039
 msgid "Choose whether Polski deletes its database tables, settings, and stored logs when the plugin is removed from WordPress."
 msgstr "Zvolte, zda Polski při odebrání pluginu z WordPressu smaže své databázové tabulky, nastavení a uložené záznamy."
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1045
 msgid "Delete plugin data on uninstall"
 msgstr "Smazat data pluginu při odinstalaci"
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1045
 msgid "If enabled, uninstall removes plugin tables, settings, and stored logs including deactivation feedback."
 msgstr "Pokud je zapnuto, odinstalace odstraní tabulky pluginu, nastavení a uložené logy včetně zpětné vazby při deaktivaci."
 
-#: src/Admin/ModulesPage.php:1007
+#: src/Admin/ModulesPage.php:1050
 msgid "CRA - Cyber Resilience"
 msgstr "CRA - kybernetická odolnost"
 
-#: src/Admin/ModulesPage.php:1008
+#: src/Admin/ModulesPage.php:1051
 msgid "Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy."
 msgstr "Cyber Resilience Act: soubor security.txt (RFC 9116), bezpečnostní kontakt, zásady hlášení zranitelností."
 
-#: src/Admin/ModulesPage.php:1015
+#: src/Admin/ModulesPage.php:1058
 msgid "Security policy URL"
 msgstr "URL bezpečnostní politiky"
 
-#: src/Admin/ModulesPage.php:1020
+#: src/Admin/ModulesPage.php:1063
 msgid "DPA Registry (GDPR)"
 msgstr "Registr DPA (GDPR)"
 
-#: src/Admin/ModulesPage.php:1021
+#: src/Admin/ModulesPage.php:1064
 msgid "Detection of third-party services processing customers' personal data. Tracking the status of data processing agreements."
 msgstr "Detekce služeb třetích stran zpracovávajících osobní údaje zákazníků. Sledování stavu smluv o zpracování dat."
 
-#: src/Admin/ModulesPage.php:1030
+#: src/Admin/ModulesPage.php:1073
 msgid "Minimum Order Value / Quantity"
 msgstr "Minimální hodnota / počet kusů objednávky"
 
-#: src/Admin/ModulesPage.php:1031
+#: src/Admin/ModulesPage.php:1074
 msgid "Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages."
 msgstr "Zablokuje objednávku, když košík nesplňuje minimální hodnotu nebo minimální počet položek. Zobrazí upozornění na stránce košíku a pokladny."
 
-#: src/Admin/ModulesPage.php:1037
+#: src/Admin/ModulesPage.php:1080
 msgid "Minimum order value (0 = disabled)"
 msgstr "Minimální hodnota objednávky (0 = vypnuto)"
 
-#: src/Admin/ModulesPage.php:1037
+#: src/Admin/ModulesPage.php:1080
 msgid "Cart subtotal must reach this amount to proceed to checkout."
 msgstr "Mezisoučet košíku musí dosáhnout této částky, aby bylo možné přejít k pokladně."
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1081
 msgid "Minimum number of items (0 = disabled)"
 msgstr "Minimální počet položek (0 = vypnuto)"
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1081
 msgid "Total number of items in cart must reach this count."
 msgstr "Celkový počet položek v košíku musí dosáhnout tohoto počtu."
 
-#: src/Admin/ModulesPage.php:1039
+#: src/Admin/ModulesPage.php:1082
 msgid "Exclude sale items from minimum value"
 msgstr "Vyloučit zlevněné produkty z minimální hodnoty"
 
-#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1083
 msgid "Message for minimum value"
 msgstr "Zpráva pro minimální hodnotu"
 
-#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1083
 msgid "Tokens: {min_value}, {current_value}"
 msgstr "Tokeny: {min_value}, {current_value}"
 
-#: src/Admin/ModulesPage.php:1041
+#: src/Admin/ModulesPage.php:1084
 msgid "Message for minimum quantity"
 msgstr "Zpráva pro minimální počet"
 
-#: src/Admin/ModulesPage.php:1041
+#: src/Admin/ModulesPage.php:1084
 msgid "Tokens: {min_quantity}, {current_quantity}"
 msgstr "Tokeny: {min_quantity}, {current_quantity}"
 
-#: src/Admin/ModulesPage.php:1046
+#: src/Admin/ModulesPage.php:1089
 msgid "Review Request Emails"
 msgstr "E-maily s žádostí o recenzi"
 
-#: src/Admin/ModulesPage.php:1047
+#: src/Admin/ModulesPage.php:1090
 msgid "Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out."
 msgstr "Automaticky odesílá zákazníkům e-maily s žádostí o recenzi po dokončení objednávky. Obsahuje obrázky produktů, odkazy na recenze a možnost odhlášení."
 
-#: src/Admin/ModulesPage.php:1053
+#: src/Admin/ModulesPage.php:1096
 msgid "Send after (days)"
 msgstr "Odeslat po (dnech)"
 
-#: src/Admin/ModulesPage.php:1053
+#: src/Admin/ModulesPage.php:1096
 msgid "Number of days after order completion before sending the review request."
 msgstr "Počet dní po dokončení objednávky před odesláním žádosti o recenzi."
 
-#: src/Admin/ModulesPage.php:1054
+#: src/Admin/ModulesPage.php:1097
 msgid "Tokens: {first_name}, {order_number}"
 msgstr "Tokeny: {first_name}, {order_number}"
 
-#: src/Admin/ModulesPage.php:1055
+#: src/Admin/ModulesPage.php:1098
 msgid "Tokens: {first_name}"
 msgstr "Tokeny: {first_name}"
 
-#: src/Admin/ModulesPage.php:1056
+#: src/Admin/ModulesPage.php:1099
 msgid "Review button text"
 msgstr "Text tlačítka recenze"
 
-#: src/Admin/ModulesPage.php:1061
+#: src/Admin/ModulesPage.php:1104
 msgid "From Price for Variable Products"
 msgstr "Cena \"od\" pro variabilní produkty"
 
-#: src/Admin/ModulesPage.php:1062
+#: src/Admin/ModulesPage.php:1105
 msgid "Display \"from {price}\" instead of a price range for variable products. Cleaner presentation on archives and product pages."
 msgstr "Zobrazí \"od {price}\" místo cenového rozpětí u variabilních produktů. Přehlednější prezentace v archivech a na stránkách produktů."
 
-#: src/Admin/ModulesPage.php:1063
-#: src/Admin/ModulesPage.php:1223
+#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1266
 msgid "Prices and Omnibus"
 msgstr "Ceny a Omnibus"
 
-#: src/Admin/ModulesPage.php:1068
+#: src/Admin/ModulesPage.php:1111
 msgid "Enable \"from\" price display"
 msgstr "Povolit zobrazení ceny \"od\""
 
-#: src/Admin/ModulesPage.php:1069
+#: src/Admin/ModulesPage.php:1112
 msgid "Price text template"
 msgstr "Šablona textu ceny"
 
-#: src/Admin/ModulesPage.php:1069
+#: src/Admin/ModulesPage.php:1112
 msgid "Token: {price}"
 msgstr "Token: {price}"
 
-#: src/Admin/ModulesPage.php:1076
+#: src/Admin/ModulesPage.php:1119
 msgid "Auto Restore Stock"
 msgstr "Automatické obnovení skladu"
 
-#: src/Admin/ModulesPage.php:1077
+#: src/Admin/ModulesPage.php:1120
 msgid "Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention."
 msgstr "Automaticky obnoví skladové zásoby produktů při zrušení, vrácení nebo neúspěšné objednávce. Udržuje přesné zásoby bez ručního zásahu."
 
-#: src/Admin/ModulesPage.php:1078
-#: src/Admin/ModulesPage.php:1088
+#: src/Admin/ModulesPage.php:1121
+#: src/Admin/ModulesPage.php:1131
 msgid "Stock & Cart"
 msgstr "Sklad a košík"
 
-#: src/Admin/ModulesPage.php:1086
+#: src/Admin/ModulesPage.php:1129
 msgid "AJAX Add to Cart"
 msgstr "AJAX přidání do košíku"
 
-#: src/Admin/ModulesPage.php:1087
+#: src/Admin/ModulesPage.php:1130
 msgid "Add products to cart without page reload, including variable products on single product pages. Shows a toast notification on success."
 msgstr "Přidávejte produkty do košíku bez načtení stránky, včetně variabilních produktů na stránkách jednotlivých produktů. Po úspěchu zobrazí oznámení typu toast."
 
-#: src/Admin/ModulesPage.php:1098
+#: src/Admin/ModulesPage.php:1141
 msgid "GA4 DataLayer / GTM"
 msgstr "GA4 DataLayer / GTM"
 
-#: src/Admin/ModulesPage.php:1099
+#: src/Admin/ModulesPage.php:1142
 msgid "Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, add_to_cart, begin_checkout, purchase events. Supports GTM container and gtag.js."
 msgstr "Sledování e-commerce Google Analytics 4 přes dataLayer. Sleduje události view_item, add_to_cart, begin_checkout, purchase. Podporuje kontejner GTM a gtag.js."
 
-#: src/Admin/ModulesPage.php:1100
+#: src/Admin/ModulesPage.php:1143
 #: src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166
 #: src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Analytika"
 
-#: src/Admin/ModulesPage.php:1105
+#: src/Admin/ModulesPage.php:1148
 msgid "GTM Container ID"
 msgstr "ID kontejneru GTM"
 
-#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1149
 msgid "GA4 Measurement ID"
 msgstr "ID měření GA4"
 
-#: src/Admin/ModulesPage.php:1107
+#: src/Admin/ModulesPage.php:1150
 msgid "Use SKU as product ID"
 msgstr "Použít SKU jako ID produktu"
 
-#: src/Admin/ModulesPage.php:1107
+#: src/Admin/ModulesPage.php:1150
 msgid "Send SKU instead of WooCommerce product ID in ecommerce events"
 msgstr "Odesílat SKU místo ID produktu WooCommerce v e-commerce událostech"
 
-#: src/Admin/ModulesPage.php:1112
+#: src/Admin/ModulesPage.php:1155
 #: src/Service/StockExportService.php:34
 #: src/Service/StockExportService.php:35
 #: src/Service/StockExportService.php:59
 msgid "Stock Export"
 msgstr "Export skladu"
 
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:1156
 msgid "Export WooCommerce product stock data as CSV. Configurable fields, stock threshold filters, variation support. Available under Products > Stock Export."
 msgstr "Exportujte skladová data produktů WooCommerce do CSV. Konfigurovatelná pole, filtry prahových hodnot skladu, podpora variant. Dostupné v sekci Produkty > Export skladu."
 
-#: src/Admin/ModulesPage.php:1118
+#: src/Admin/ModulesPage.php:1161
 msgid "Export stock"
 msgstr "Exportovat sklad"
 
-#: src/Admin/ModulesPage.php:1124
+#: src/Admin/ModulesPage.php:1167
 msgid "Social Login"
 msgstr "Přihlášení přes sociální sítě"
 
-#: src/Admin/ModulesPage.php:1125
+#: src/Admin/ModulesPage.php:1168
 msgid "Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts."
 msgstr "Umožněte zákazníkům registraci a přihlášení přes Google nebo Facebook. Zobrazí značková tlačítka na stránce Můj účet, pokladně a přihlašovacích formulářích WordPressu. Automaticky vytváří zákaznické účty WooCommerce."
 
-#: src/Admin/ModulesPage.php:1126
-#: src/Admin/ModulesPage.php:1144
-#: src/Admin/ModulesPage.php:1154
-#: src/Admin/ModulesPage.php:1166
-#: src/Admin/ModulesPage.php:1182
-#: src/Admin/ModulesPage.php:1192
-#: src/Admin/ModulesPage.php:1206
+#: src/Admin/ModulesPage.php:1169
+#: src/Admin/ModulesPage.php:1187
+#: src/Admin/ModulesPage.php:1197
+#: src/Admin/ModulesPage.php:1209
+#: src/Admin/ModulesPage.php:1225
+#: src/Admin/ModulesPage.php:1235
 #: src/Admin/ModulesPage.php:1249
+#: src/Admin/ModulesPage.php:1292
 #: src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "Obchod"
 
-#: src/Admin/ModulesPage.php:1131
+#: src/Admin/ModulesPage.php:1174
 msgid "Enable Google login"
 msgstr "Povolit přihlášení přes Google"
 
-#: src/Admin/ModulesPage.php:1132
+#: src/Admin/ModulesPage.php:1175
 msgid "Google Client ID"
 msgstr "ID klienta Google"
 
-#: src/Admin/ModulesPage.php:1132
+#: src/Admin/ModulesPage.php:1175
 msgid "From Google Cloud Console > APIs & Services > Credentials"
 msgstr "Z Google Cloud Console > API a služby > Přihlašovací údaje"
 
-#: src/Admin/ModulesPage.php:1133
+#: src/Admin/ModulesPage.php:1176
 msgid "Google Client Secret"
 msgstr "Tajný klíč klienta Google"
 
-#: src/Admin/ModulesPage.php:1133
+#: src/Admin/ModulesPage.php:1176
 msgid "OAuth 2.0 Client Secret from the same credential"
 msgstr "Tajný klíč klienta OAuth 2.0 ze stejných přihlašovacích údajů"
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1177
 msgid "Enable Facebook login"
 msgstr "Povolit přihlášení přes Facebook"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1178
 msgid "Facebook App ID"
 msgstr "ID aplikace Facebook"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1178
 msgid "From Meta for Developers > App Dashboard > Settings > Basic"
 msgstr "Z Meta for Developers > Panel aplikace > Nastavení > Základní"
 
-#: src/Admin/ModulesPage.php:1136
+#: src/Admin/ModulesPage.php:1179
 msgid "Facebook App Secret"
 msgstr "Tajný klíč aplikace Facebook"
 
-#: src/Admin/ModulesPage.php:1136
+#: src/Admin/ModulesPage.php:1179
 msgid "App Secret from the same page"
 msgstr "App Secret ze stejné stránky"
 
-#: src/Admin/ModulesPage.php:1137
+#: src/Admin/ModulesPage.php:1180
 msgid "Auto-register new users"
 msgstr "Automaticky registrovat nové uživatele"
 
-#: src/Admin/ModulesPage.php:1137
+#: src/Admin/ModulesPage.php:1180
 msgid "Create WooCommerce accounts automatically on first social login"
 msgstr "Automaticky vytvářet účty WooCommerce při prvním přihlášení přes sociální síť"
 
-#: src/Admin/ModulesPage.php:1142
+#: src/Admin/ModulesPage.php:1185
 msgid "Product Authors"
 msgstr "Autoři produktů"
 
-#: src/Admin/ModulesPage.php:1143
+#: src/Admin/ModulesPage.php:1186
 msgid "Custom taxonomy for product authors/creators. Adds author names on product pages and archives with Schema.org Person markup. Ideal for bookstores and publishers."
 msgstr "Vlastní taxonomie pro autory/tvůrce produktů. Přidává jména autorů na stránky produktů a archivy se značením Schema.org Person. Ideální pro knihkupectví a vydavatele."
 
-#: src/Admin/ModulesPage.php:1152
+#: src/Admin/ModulesPage.php:1195
 #: src/Service/ExpertReviewService.php:55
 #: src/Service/ExpertReviewService.php:166
 msgid "Expert Reviews"
 msgstr "Expertní recenze"
 
-#: src/Admin/ModulesPage.php:1153
+#: src/Admin/ModulesPage.php:1196
 msgid "Custom post type for editorial product reviews. Link expert reviews to products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr "Vlastní typ příspěvku pro redakční recenze produktů. Propojte expertní recenze s produkty pomocí hodnocení (1-10), verdiktů a značení Schema.org pro SEO."
 
-#: src/Admin/ModulesPage.php:1158
+#: src/Admin/ModulesPage.php:1201
 msgid "Manage reviews"
 msgstr "Spravovat recenze"
 
-#: src/Admin/ModulesPage.php:1164
+#: src/Admin/ModulesPage.php:1207
 msgid "Social Proof Notifications"
 msgstr "Oznámení social proof"
 
-#: src/Admin/ModulesPage.php:1165
+#: src/Admin/ModulesPage.php:1208
 msgid "Floating purchase notifications showing recent orders (\"Jan from Warszawa just bought...\"). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing."
 msgstr "Plovoucí oznámení o nákupech zobrazující nedávné objednávky (\"Jan z Varšavy právě koupil...\"). Prokazatelně zvyšují konverze o 10-15 %. Respektuje soukromí, načítání přes AJAX, konfigurovatelná pozice a načasování."
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1214
 msgid "Interval between popups (seconds)"
 msgstr "Interval mezi vyskakovacími okny (sekundy)"
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1214
 msgid "Time between showing consecutive notifications. Recommended: 6-12"
 msgstr "Čas mezi zobrazením po sobě jdoucích oznámení. Doporučeno: 6-12"
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1215
 msgid "Display duration (seconds)"
 msgstr "Doba zobrazení (sekundy)"
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1215
 msgid "How long each notification stays visible. Recommended: 4-6"
 msgstr "Jak dlouho zůstává každé oznámení viditelné. Doporučeno: 4-6"
 
-#: src/Admin/ModulesPage.php:1174
+#: src/Admin/ModulesPage.php:1217
 msgid "Anonymize customer names"
 msgstr "Anonymizovat jména zákazníků"
 
-#: src/Admin/ModulesPage.php:1174
+#: src/Admin/ModulesPage.php:1217
 msgid "Shows \"J. from Warszawa\" instead of full names. Recommended for GDPR"
 msgstr "Zobrazí \"J. z Varšavy\" místo celých jmen. Doporučeno pro GDPR"
 
-#: src/Admin/ModulesPage.php:1175
+#: src/Admin/ModulesPage.php:1218
 msgid "Hide on mobile devices"
 msgstr "Skrýt na mobilních zařízeních"
 
-#: src/Admin/ModulesPage.php:1175
+#: src/Admin/ModulesPage.php:1218
 msgid "Disable on small screens to avoid obstructing content"
 msgstr "Vypnout na malých obrazovkách, aby nezakrývalo obsah"
 
-#: src/Admin/ModulesPage.php:1180
+#: src/Admin/ModulesPage.php:1223
 msgid "Product Q&A"
 msgstr "Otázky a odpovědi k produktu"
 
-#: src/Admin/ModulesPage.php:1181
+#: src/Admin/ModulesPage.php:1224
 msgid "Amazon-style questions and answers on product pages. Customers ask, anyone answers. Admin email notifications, answer voting, Schema.org QAPage markup for SEO."
 msgstr "Otázky a odpovědi na stránkách produktů ve stylu Amazonu. Zákazníci se ptají, kdokoli odpovídá. E-mailová oznámení pro administrátora, hlasování o odpovědích, značkování Schema.org QAPage pro SEO."
 
-#: src/Admin/ModulesPage.php:1190
+#: src/Admin/ModulesPage.php:1233
 msgid "Trust Badges"
 msgstr "Znaky důvěry"
 
-#: src/Admin/ModulesPage.php:1191
+#: src/Admin/ModulesPage.php:1234
 msgid "Configurable trust signals on product, cart, and checkout pages: secure payment, fast delivery, returns, quality guarantee. Pure CSS + inline SVG for zero performance impact."
 msgstr "Konfigurovatelné signály důvěry na stránkách produktu, košíku a pokladny: bezpečná platba, rychlé doručení, vrácení zboží, záruka kvality. Čistý CSS + inline SVG bez vlivu na výkon."
 
-#: src/Admin/ModulesPage.php:1198
+#: src/Admin/ModulesPage.php:1241
 msgid "Show on cart"
 msgstr "Zobrazit v košíku"
 
-#: src/Admin/ModulesPage.php:1199
+#: src/Admin/ModulesPage.php:1242
 msgid "Show on checkout"
 msgstr "Zobrazit při pokladně"
 
-#: src/Admin/ModulesPage.php:1204
+#: src/Admin/ModulesPage.php:1247
 msgid "Live Cart Sidebar"
 msgstr "Postranní košík v reálném čase"
 
-#: src/Admin/ModulesPage.php:1205
+#: src/Admin/ModulesPage.php:1248
 msgid "Slide-in cart drawer that opens when a product is added to cart. Shows cart items, subtotal, free shipping progress bar, and quick checkout link. No page reload needed."
 msgstr "Vysouvací panel košíku, který se otevře po přidání produktu do košíku. Zobrazuje položky košíku, mezisoučet, ukazatel postupu k dopravě zdarma a odkaz na rychlou pokladnu. Není potřeba znovu načítat stránku."
 
-#: src/Admin/ModulesPage.php:1211
+#: src/Admin/ModulesPage.php:1254
 msgid "Auto-open on add to cart"
 msgstr "Automaticky otevřít po přidání do košíku"
 
-#: src/Admin/ModulesPage.php:1212
+#: src/Admin/ModulesPage.php:1255
 msgid "Show subtotal"
 msgstr "Zobrazit mezisoučet"
 
-#: src/Admin/ModulesPage.php:1213
+#: src/Admin/ModulesPage.php:1256
 msgid "Show free shipping progress"
 msgstr "Zobrazit postup k dopravě zdarma"
 
-#: src/Admin/ModulesPage.php:1214
+#: src/Admin/ModulesPage.php:1257
 msgid "Free shipping threshold"
 msgstr "Práh pro dopravu zdarma"
 
-#: src/Admin/ModulesPage.php:1214
+#: src/Admin/ModulesPage.php:1257
 msgid "Set to 0 to disable progress bar"
 msgstr "Nastavte na 0 pro vypnutí ukazatele postupu"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Panel position"
 msgstr "Pozice panelu"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Right"
 msgstr "Vpravo"
 
-#: src/Admin/ModulesPage.php:1215
+#: src/Admin/ModulesPage.php:1258
 msgid "Left"
 msgstr "Vlevo"
 
-#: src/Admin/ModulesPage.php:1216
+#: src/Admin/ModulesPage.php:1259
 msgid "Show background overlay"
 msgstr "Zobrazit ztmavení pozadí"
 
-#: src/Admin/ModulesPage.php:1221
+#: src/Admin/ModulesPage.php:1264
 msgid "Price History Chart"
 msgstr "Graf historie cen"
 
-#: src/Admin/ModulesPage.php:1222
+#: src/Admin/ModulesPage.php:1265
 msgid "Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency."
 msgstr "Vizuální SVG sparkline zobrazující cenové trendy za 30/90/180 dní na stránkách produktů. Využívá cenová data Omnibus. Zobrazuje nejnižší/nejvyšší ceny. Zvyšuje důvěru a transparentnost Omnibus."
 
-#: src/Admin/ModulesPage.php:1228
+#: src/Admin/ModulesPage.php:1271
 msgid "History period (days)"
 msgstr "Období historie (dny)"
 
-#: src/Admin/ModulesPage.php:1228
+#: src/Admin/ModulesPage.php:1271
 msgid "Show price data from the last N days. Options: 30, 90, or 180"
 msgstr "Zobrazit cenová data za posledních N dní. Možnosti: 30, 90 nebo 180"
 
-#: src/Admin/ModulesPage.php:1229
+#: src/Admin/ModulesPage.php:1272
 msgid "Show min/max prices"
 msgstr "Zobrazit min./max. ceny"
 
-#: src/Admin/ModulesPage.php:1230
+#: src/Admin/ModulesPage.php:1273
 msgid "Line color"
 msgstr "Barva čáry"
 
-#: src/Admin/ModulesPage.php:1230
+#: src/Admin/ModulesPage.php:1273
 msgid "CSS hex color for the chart line, e.g. #0369a1"
 msgstr "CSS hex barva pro čáru grafu, např. #0369a1"
 
-#: src/Admin/ModulesPage.php:1235
+#: src/Admin/ModulesPage.php:1278
 #: src/Service/OrderExportService.php:33
 #: src/Service/OrderExportService.php:34
 #: src/Service/OrderExportService.php:87
 msgid "Order Export"
 msgstr "Export objednávek"
 
-#: src/Admin/ModulesPage.php:1236
+#: src/Admin/ModulesPage.php:1279
 msgid "Export WooCommerce orders to CSV with configurable fields, date range and status filters. 30+ exportable fields including products, customer data, and coupons."
 msgstr "Exportujte objednávky WooCommerce do CSV s konfigurovatelnými poli, rozsahem dat a filtry stavů. Více než 30 exportovatelných polí včetně produktů, údajů o zákaznících a kupónů."
 
-#: src/Admin/ModulesPage.php:1241
+#: src/Admin/ModulesPage.php:1284
 msgid "Export orders"
 msgstr "Exportovat objednávky"
 
-#: src/Admin/ModulesPage.php:1247
+#: src/Admin/ModulesPage.php:1290
 #: src/Service/FaqService.php:40
 #: src/Service/FaqService.php:41
 #: src/Service/FaqService.php:46
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/Admin/ModulesPage.php:1248
+#: src/Admin/ModulesPage.php:1291
 msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
 msgstr "Vlastní typ příspěvku FAQ s kategoriemi a shortcode akordeonu [polski_faq]. Obsahuje strukturovaná data Schema.org FAQPage pro SEO rich snippety."
 
-#: src/Admin/ModulesPage.php:1253
+#: src/Admin/ModulesPage.php:1296
 msgid "Manage FAQ"
 msgstr "Spravovat FAQ"
 
-#: src/Admin/ModulesPage.php:1259
+#: src/Admin/ModulesPage.php:1302
 #: src/Service/CustomCheckoutFieldsService.php:510
 msgid "Custom Checkout Fields"
 msgstr "Vlastní pole pokladny"
 
-#: src/Admin/ModulesPage.php:1260
+#: src/Admin/ModulesPage.php:1303
 msgid "Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account."
 msgstr "Přidávejte, upravujte a měňte pořadí polí pokladny. Podporuje typy text, textová oblast, výběr, zaškrtávací pole, přepínač, číslo, e-mail, datum a telefon. Pole se zobrazují v administraci, e-mailech a na stránce Můj účet."
 
-#: src/Admin/ModulesPage.php:1265
+#: src/Admin/ModulesPage.php:1308
 msgid "Manage fields"
 msgstr "Spravovat pole"
 
-#: src/Admin/ModulesPage.php:1328
+#: src/Admin/ModulesPage.php:1371
 #: src/Service/StockExportService.php:346
 msgid "Name"
 msgstr "Název"
 
-#: src/Admin/ModulesPage.php:1374
+#: src/Admin/ModulesPage.php:1417
 msgid "PRO"
 msgstr "PRO"
 
-#: src/Admin/ModulesPage.php:1383
+#: src/Admin/ModulesPage.php:1426
 msgid "Help"
 msgstr "Nápověda"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1438
+#: src/Admin/ModulesPage.php:1481
 #, php-format
 msgid "Edit %s settings"
 msgstr "Upravit nastavení %s"
 
-#: src/Admin/ModulesPage.php:1441
+#: src/Admin/ModulesPage.php:1484
 msgid "Edit settings"
 msgstr "Upravit nastavení"
 
-#: src/Admin/ModulesPage.php:1451
-#: src/Admin/ModulesPage.php:1452
+#: src/Admin/ModulesPage.php:1494
+#: src/Admin/ModulesPage.php:1495
 msgid "Open documentation"
 msgstr "Otevřít dokumentaci"
 
-#: src/Admin/ModulesPage.php:1485
+#: src/Admin/ModulesPage.php:1528
 msgid "Save"
 msgstr "Uložit"
 
-#: src/Admin/ModulesPage.php:1579
+#: src/Admin/ModulesPage.php:1622
 msgid "none"
 msgstr "žádné"
 
-#: src/Admin/ModulesPage.php:1649
+#: src/Admin/ModulesPage.php:1692
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Omlouváme se, ale na tuto stránku nemáte přístup."
 
-#: src/Admin/ModulesPage.php:1656
-#: src/Admin/ModulesPage.php:1672
+#: src/Admin/ModulesPage.php:1699
+#: src/Admin/ModulesPage.php:1715
 msgid "Invalid request."
 msgstr "Neplatný požadavek."
 
-#: src/Admin/ModulesPage.php:1856
+#: src/Admin/ModulesPage.php:1899
 msgid "Legal & Compliance"
 msgstr "Právo a shoda"
 
-#: src/Admin/ModulesPage.php:1858
+#: src/Admin/ModulesPage.php:1901
 msgid "Tax & Pricing"
 msgstr "Daně a ceny"
 
-#: src/Admin/ModulesPage.php:1860
+#: src/Admin/ModulesPage.php:1903
 msgid "Checkout & Orders"
 msgstr "Pokladna a objednávky"
 
-#: src/Admin/ModulesPage.php:1862
+#: src/Admin/ModulesPage.php:1905
 msgid "Content & Trust"
 msgstr "Obsah a důvěra"
 
-#: src/Admin/ModulesPage.php:1864
+#: src/Admin/ModulesPage.php:1907
 msgid "Advanced & Tools"
 msgstr "Pokročilé a nástroje"
 
-#: src/Admin/ModulesPage.php:1866
+#: src/Admin/ModulesPage.php:1909
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Andere"
 
-#: src/Admin/ModulesPage.php:1937
+#: src/Admin/ModulesPage.php:1980
 msgid "Could not save module state. Please try again."
 msgstr "Nepodařilo se uložit stav modulu. Zkuste to prosím znovu."
 
-#: src/Admin/ModulesPage.php:1954
+#: src/Admin/ModulesPage.php:1997
 msgid "Compatible Omnibus Extension A"
 msgstr "Kompatibilní rozšíření Omnibus A"
 
-#: src/Admin/ModulesPage.php:1955
+#: src/Admin/ModulesPage.php:1998
 msgid "Compatible Omnibus Extension B"
 msgstr "Kompatibilní rozšíření Omnibus B"
 
-#: src/Admin/ModulesPage.php:1966
+#: src/Admin/ModulesPage.php:2009
 msgid "detected, data synchronized"
 msgstr "zjištěno, data jsou synchronizována"
 
-#: src/Admin/ModulesPage.php:1967
+#: src/Admin/ModulesPage.php:2010
 msgid "not installed"
 msgstr "nenainstalováno"
 
-#: src/Admin/ModulesPage.php:1982
+#: src/Admin/ModulesPage.php:2025
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Není nainstalován žádný externí plugin Omnibus. Polski používá vestavěný systém sledování cen."
 
-#: src/Admin/ModulesPage.php:1984
+#: src/Admin/ModulesPage.php:2027
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Byl rozpoznán externí plugin. Polski používá jeho data místo vestavěného systému."
 
-#: src/Admin/ModulesPage.php:2004
+#: src/Admin/ModulesPage.php:2047
 msgid "OSS observer service is unavailable."
 msgstr "Služba pozorovatele OSS není dostupná."
 
-#: src/Admin/ModulesPage.php:2011
+#: src/Admin/ModulesPage.php:2054
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "Plugin One Stop Shop není nainstalován. Nainstalujte jej, abyste mohli automaticky sledovat prahovou hodnotu 10 000 € pro B2C v rámci EU."
 
-#: src/Admin/ModulesPage.php:2017
+#: src/Admin/ModulesPage.php:2060
 msgid "Install One Stop Shop"
 msgstr "Nainstalovat One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2022
+#: src/Admin/ModulesPage.php:2065
 msgid "You need the install_plugins capability to install it from here."
 msgstr "K instalaci odsud potřebujete oprávnění install_plugins."
 
-#: src/Admin/ModulesPage.php:2031
+#: src/Admin/ModulesPage.php:2074
 msgid "One Stop Shop plugin detected."
 msgstr "Zjištěn plugin One Stop Shop."
 
-#: src/Admin/ModulesPage.php:2035
+#: src/Admin/ModulesPage.php:2078
 msgid "OSS procedure"
 msgstr "Procedura OSS"
 
-#: src/Admin/ModulesPage.php:2037
+#: src/Admin/ModulesPage.php:2080
 msgid "enabled"
 msgstr "zapnuto"
 
-#: src/Admin/ModulesPage.php:2038
+#: src/Admin/ModulesPage.php:2081
 msgid "disabled"
 msgstr "vypnuto"
 
-#: src/Admin/ModulesPage.php:2042
+#: src/Admin/ModulesPage.php:2085
 msgid "Auto observer"
 msgstr "Automatický pozorovatel"
 
-#: src/Admin/ModulesPage.php:2044
+#: src/Admin/ModulesPage.php:2087
 msgid "watching threshold"
 msgstr "sledování prahové hodnoty"
 
-#: src/Admin/ModulesPage.php:2045
+#: src/Admin/ModulesPage.php:2088
 msgid "off"
 msgstr "vypnuto"
 
-#: src/Admin/ModulesPage.php:2050
+#: src/Admin/ModulesPage.php:2093
 msgid "Open OSS settings"
 msgstr "Otevřít nastavení OSS"
 
-#: src/Admin/ModulesPage.php:2108
+#: src/Admin/ModulesPage.php:2151
 msgid "detected, integration active"
 msgstr "zjištěno, integrace aktivní"
 
-#: src/Admin/ModulesPage.php:2111
+#: src/Admin/ModulesPage.php:2154
 msgid "install"
 msgstr "nainstalovat"
 
-#: src/Admin/ModulesPage.php:2123
+#: src/Admin/ModulesPage.php:2166
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Nebyla rozpoznána podporovaná rozšíření checkoutu ani cookies. Polski stále funguje samostatně."
 
-#: src/Admin/ModulesPage.php:2125
+#: src/Admin/ModulesPage.php:2168
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Byla rozpoznána podporovaná rozšíření checkoutu, cookies nebo produktových dat. Polski může přizpůsobit integraci aktivní sestavě."
 
@@ -5896,6 +6036,7 @@ msgid "ID"
 msgstr "ID"
 
 #: src/Admin/WithdrawalsAdminPage.php:193
+#: src/Service/ReturnRequestService.php:228
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
 #: templates/emails/plain/withdrawal-confirmation.php:47
@@ -6003,7 +6144,7 @@ msgid "Reason / notes"
 msgstr "Důvod / poznámky"
 
 #: src/Admin/WithdrawalsAdminPage.php:463
-#: src/Service/WithdrawalService.php:820
+#: src/Service/WithdrawalService.php:854
 msgid "Order not found."
 msgstr "Objednávka nebyla nalezena."
 
@@ -6012,8 +6153,8 @@ msgid "Could not save the withdrawal request."
 msgstr "Nepodařilo se uložit žádost o odstoupení."
 
 #: src/Admin/WithdrawalsAdminPage.php:486
-#: src/Service/WithdrawalService.php:340
-#: src/Service/WithdrawalService.php:423
+#: src/Service/WithdrawalService.php:374
+#: src/Service/WithdrawalService.php:457
 msgid "system"
 msgstr "systém"
 
@@ -6343,36 +6484,52 @@ msgid "Excluded from the right of withdrawal"
 msgstr "Vyloučen z práva na odstoupení"
 
 #: src/Compatibility/Elementor/Widgets/DefectDescriptionWidget.php:16
-#: src/Service/ProductInfoService.php:281
+#: src/Service/ProductInfoService.php:311
 msgid "Defect Description"
 msgstr "Popis vady"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
+msgid "Preset slug"
+msgstr "Slug předvolby"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:34
+msgid "Optional named preset from AJAX Filters settings, e.g. fashion"
+msgstr "Volitelná pojmenovaná předvolba z nastavení AJAX filtrů, např. fashion"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
 #: resources/js/blocks/ajax-filters/index.js:23
 #: resources/js/blocks/product-slider/index.js:48
 msgid "Show title"
 msgstr "Zobrazit název"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:38
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:45
+msgid "Attribute taxonomies"
+msgstr "Taxonomie atributů"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:47
+msgid "Comma-separated list, e.g. pa_color,pa_size"
+msgstr "Seznam oddělený čárkami, např. pa_color,pa_size"
+
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:52
 #: resources/js/blocks/ajax-filters/index.js:28
 msgid "Show categories"
 msgstr "Zobrazit kategorie"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:53
 #: resources/js/blocks/ajax-filters/index.js:33
 msgid "Show brands"
 msgstr "Zobrazit značky"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:41
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:55
 msgid "Show availability"
 msgstr "Zobrazit dostupnost"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:42
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:56
 msgid "Show on-sale"
 msgstr "Zobrazit ve slevě"
 
-#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:43
+#: src/Compatibility/Elementor/Widgets/FiltersWidget.php:57
 #: resources/js/blocks/ajax-filters/index.js:53
 msgid "Show attributes"
 msgstr "Zobrazit atributy"
@@ -6390,7 +6547,7 @@ msgid "Lowest Price (Omnibus)"
 msgstr "Nejnižší cena (Omnibus)"
 
 #: src/Compatibility/Elementor/Widgets/PowerSupplyWidget.php:16
-#: src/Service/ProductInfoService.php:255
+#: src/Service/ProductInfoService.php:285
 msgid "Power Supply"
 msgstr "Napájení"
 
@@ -6430,7 +6587,7 @@ msgid "Show add to cart button"
 msgstr "Zobrazit tlačítko přidat do košíku"
 
 #: src/Compatibility/Elementor/Widgets/SafetyDocsWidget.php:16
-#: src/Service/ProductInfoService.php:221
+#: src/Service/ProductInfoService.php:251
 msgid "Safety Documents"
 msgstr "Bezpečnostní dokumenty"
 
@@ -6481,6 +6638,7 @@ msgid "Under investigation"
 msgstr "Ve vyšetřování"
 
 #: src/CRA/Enum/IncidentStatus.php:23
+#: src/Enum/ReturnRequestStatus.php:21
 #: src/Service/SecurityIncidentService.php:171
 msgid "Resolved"
 msgstr "Gelöst"
@@ -6621,6 +6779,15 @@ msgstr "Zásady vrácení"
 msgid "Complaints"
 msgstr "Reklamace"
 
+#: src/Enum/ReturnRequestStatus.php:20
+msgid "In progress"
+msgstr "Probíhá"
+
+#: src/Enum/ReturnRequestStatus.php:22
+#: src/Enum/WithdrawalStatus.php:20
+msgid "Rejected"
+msgstr "Zamítnuto"
+
 #: src/Enum/TaxDisplayMode.php:15
 msgid "Prices include VAT (gross)"
 msgstr "Ceny s DPH (brutto)"
@@ -6702,17 +6869,13 @@ msgstr "Potvrzeno"
 msgid "Completed"
 msgstr "Dokončeno"
 
-#: src/Enum/WithdrawalStatus.php:20
-msgid "Rejected"
-msgstr "Zamítnuto"
-
 #: src/Hook/AIFeedHooks.php:145
 msgid "View AI Version"
 msgstr "Zobrazit verzi AI"
 
-#: src/Hook/ProductHooks.php:318
-msgid "Osoba odpowiedzialna (GPSR)"
-msgstr "Odpovědná osoba (GPSR)"
+#: src/Hook/StructuredDataHooks.php:61
+msgid "Najniższa cena z 30 dni"
+msgstr "Nejnižší cena za 30 dní"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "1-2 dni robocze"
@@ -7504,7 +7667,7 @@ msgstr "Neplatný produkt."
 #: src/Service/AjaxAddToCartService.php:111
 #: src/Service/CompareService.php:426
 #: src/Service/QuickViewService.php:123
-#: src/Service/WaitlistService.php:101
+#: src/Service/WaitlistService.php:102
 #: src/Service/WishlistService.php:285
 msgid "Product not found."
 msgstr "Produkt nenalezen."
@@ -8103,6 +8266,8 @@ msgstr "Název (meta klíč)"
 
 #: src/Service/CustomCheckoutFieldsService.php:527
 #: src/Service/DPATrackerService.php:79
+#: src/Service/ReturnRequestService.php:140
+#: src/Service/ReturnRequestService.php:229
 #: src/Service/SecurityIncidentService.php:102
 #: src/Service/SecurityIncidentService.php:148
 #: src/Service/StockExportService.php:347
@@ -8242,6 +8407,11 @@ msgstr "Aktion"
 msgid "Mark as resolved"
 msgstr "Als gelöst markieren"
 
+#: src/Service/DynamicPricingService.php:118
+#: src/Service/OrderExportService.php:56
+msgid "Discount"
+msgstr "Sleva"
+
 #: src/Service/ExpertReviewService.php:56
 msgid "Expert Review"
 msgstr "Expertní recenze"
@@ -8322,6 +8492,16 @@ msgstr "Hledat kategorie FAQ"
 #: src/Service/FeaturedVideoService.php:117
 msgid "Watch product in use"
 msgstr "Sledovat produkt v použití"
+
+#. translators: %d: number of products shown after filtering.
+#: src/Service/FilterService.php:73
+#, php-format
+msgid "Zaktualizowano wyniki: %d produktów."
+msgstr "Výsledky aktualizovány: %d produktů."
+
+#: src/Service/FilterService.php:74
+msgid "Zaktualizowano wyniki."
+msgstr "Výsledky aktualizovány."
 
 #: src/Service/GPSRService.php:94
 msgid "GPSR"
@@ -8541,10 +8721,6 @@ msgstr "Celkem"
 msgid "Tax"
 msgstr "Daň"
 
-#: src/Service/OrderExportService.php:56
-msgid "Discount"
-msgstr "Sleva"
-
 #: src/Service/OrderExportService.php:57
 msgid "Payment method"
 msgstr "Způsob platby"
@@ -8716,7 +8892,11 @@ msgstr "Přidat nového autora"
 msgid "New author name"
 msgstr "Jméno nového autora"
 
-#: src/Service/ProductInfoService.php:210
+#: src/Service/ProductInfoService.php:191
+msgid "Osoba odpowiedzialna (GPSR)"
+msgstr "Odpovědná osoba (GPSR)"
+
+#: src/Service/ProductInfoService.php:240
 msgid "Safety Document"
 msgstr "Bezpečnostní dokument"
 
@@ -8782,6 +8962,76 @@ msgstr "Nepodařilo se načíst náhled produktu."
 #: src/Service/QuickViewService.php:148
 msgid "Product Quick View"
 msgstr "Rychlý náhled produktu"
+
+#: src/Service/ReturnRequestService.php:102
+msgid "Complaint / return"
+msgstr "Reklamace / vrácení"
+
+#: src/Service/ReturnRequestService.php:117
+msgid "Your complaints and returns"
+msgstr "Vaše reklamace a vrácení"
+
+#: src/Service/ReturnRequestService.php:120
+#: src/Service/ReturnRequestService.php:177
+#: src/Service/ReturnRequestService.php:235
+msgid "Return"
+msgstr "Vrácení"
+
+#: src/Service/ReturnRequestService.php:120
+#: src/Service/ReturnRequestService.php:177
+#: src/Service/ReturnRequestService.php:235
+msgid "Complaint"
+msgstr "Reklamace"
+
+#: src/Service/ReturnRequestService.php:134
+msgid "Submit a complaint or return"
+msgstr "Podat reklamaci nebo vrácení"
+
+#: src/Service/ReturnRequestService.php:141
+msgid "Complaint (reklamacja)"
+msgstr "Reklamace"
+
+#: src/Service/ReturnRequestService.php:142
+msgid "Return (zwrot)"
+msgstr "Vrácení"
+
+#: src/Service/ReturnRequestService.php:145
+msgid "Submit request"
+msgstr "Odeslat žádost"
+
+#: src/Service/ReturnRequestService.php:154
+#: src/Service/ReturnRequestService.php:263
+msgid "Security check failed."
+msgstr "Bezpečnostní kontrola se nezdařila."
+
+#: src/Service/ReturnRequestService.php:160
+msgid "This order is not eligible."
+msgstr "Tato objednávka není způsobilá."
+
+#. translators: 1: type, 2: order number
+#: src/Service/ReturnRequestService.php:180
+#, php-format
+msgid "%1$s received for order #%2$s"
+msgstr "Přijato %1$s pro objednávku #%2$s"
+
+#: src/Service/ReturnRequestService.php:203
+#: src/Service/ReturnRequestService.php:204
+#: src/Service/ReturnRequestService.php:217
+msgid "Returns & complaints"
+msgstr "Vrácení a reklamace"
+
+#: src/Service/ReturnRequestService.php:222
+msgid "No requests yet."
+msgstr "Zatím žádné žádosti."
+
+#: src/Service/ReturnRequestService.php:251
+#: src/Service/SecurityIncidentService.php:173
+msgid "Update"
+msgstr "Aktualisierung"
+
+#: src/Service/ReturnRequestService.php:267
+msgid "You do not have permission."
+msgstr "Nemáte oprávnění."
 
 #: src/Service/ReviewRequestService.php:186
 msgid "You have been unsubscribed from review request emails."
@@ -9161,10 +9411,6 @@ msgstr "In Untersuchung"
 #: src/Service/SecurityIncidentService.php:170
 msgid "Monitoring"
 msgstr "Beobachtung"
-
-#: src/Service/SecurityIncidentService.php:173
-msgid "Update"
-msgstr "Aktualisierung"
 
 #: src/Service/SecurityIncidentService.php:179
 msgid "Authority"
@@ -9832,35 +10078,39 @@ msgstr "14denní vrácení"
 msgid "Quality guarantee"
 msgstr "Záruka kvality"
 
-#: src/Service/WaitlistService.php:105
+#: src/Service/WaitlistService.php:73
+msgid "Something went wrong. Please try again."
+msgstr "Něco se pokazilo. Zkuste to prosím znovu."
+
+#: src/Service/WaitlistService.php:106
 msgid "Waitlist is unavailable for this product."
 msgstr "Čekací listina není pro tento produkt dostupná."
 
-#: src/Service/WaitlistService.php:109
+#: src/Service/WaitlistService.php:110
 msgid "Provide a valid email address."
 msgstr "Zadejte platnou e-mailovou adresu."
 
-#: src/Service/WaitlistService.php:113
+#: src/Service/WaitlistService.php:114
 msgid "You must accept the consent for email contact."
 msgstr "Musíte přijmout souhlas s e-mailovým kontaktem."
 
-#: src/Service/WaitlistService.php:117
+#: src/Service/WaitlistService.php:118
 msgid "Login to join the waitlist."
 msgstr "Přihlaste se pro přidání na čekací listinu."
 
-#: src/Service/WaitlistService.php:123
+#: src/Service/WaitlistService.php:124
 msgid "Thank you. You have been added to the waitlist."
 msgstr "Děkujeme. Byli jste přidáni na čekací listinu."
 
-#: src/Service/WaitlistService.php:151
+#: src/Service/WaitlistService.php:152
 msgid "Product back in stock - {product_name}"
 msgstr "Produkt opět skladem - {product_name}"
 
-#: src/Service/WaitlistService.php:157
+#: src/Service/WaitlistService.php:158
 msgid "Product {product_name} is back in stock."
 msgstr "Produkt {product_name} je opět skladem."
 
-#: src/Service/WaitlistService.php:159
+#: src/Service/WaitlistService.php:160
 msgid "If you no longer wish to receive these messages, simply ignore this email."
 msgstr "Pokud si již nepřejete dostávat tyto zprávy, jednoduše tento e-mail ignorujte."
 
@@ -9961,69 +10211,69 @@ msgid "Withdrawal completed"
 msgstr "Odstoupení dokončeno"
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:306
+#: src/Service/WithdrawalService.php:340
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed."
 msgstr "[Polski] Žádost o odstoupení #%d podána."
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:345
+#: src/Service/WithdrawalService.php:379
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d confirmed by %2$s."
 msgstr "[Polski] Žádost o odstoupení #%1$d potvrzena uživatelem %2$s."
 
 #. translators: %d = withdrawal request id
-#: src/Service/WithdrawalService.php:395
+#: src/Service/WithdrawalService.php:429
 #, php-format
 msgid "[Polski] Withdrawal request #%d completed."
 msgstr "[Polski] Žádost o odstoupení #%d dokončena."
 
 #. translators: 1: declaration id, 2: actor label
-#: src/Service/WithdrawalService.php:427
+#: src/Service/WithdrawalService.php:461
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
 msgstr "[Polski] Žádost o odstoupení #%1$d zamítnuta uživatelem %2$s."
 
 #. translators: %s: free-text reason (customer-supplied for filing, operator-
 #. supplied for rejection)
-#: src/Service/WithdrawalService.php:435
-#: src/Service/WithdrawalService.php:490
+#: src/Service/WithdrawalService.php:469
+#: src/Service/WithdrawalService.php:524
 #, php-format
 msgid "Reason: %s"
 msgstr "Důvod: %s"
 
 #. translators: %d: declaration id
-#: src/Service/WithdrawalService.php:470
+#: src/Service/WithdrawalService.php:504
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed by customer."
 msgstr "[Polski] Žádost o odstoupení #%d podána zákazníkem."
 
-#: src/Service/WithdrawalService.php:484
+#: src/Service/WithdrawalService.php:518
 msgid "Items:"
 msgstr "Položky:"
 
-#: src/Service/WithdrawalService.php:681
 #: src/Service/WithdrawalService.php:715
+#: src/Service/WithdrawalService.php:749
 msgid "Oops, something went wrong on our side. Please try again!"
 msgstr "Jejda, na naší straně se něco pokazilo. Zkuste to prosím znovu."
 
-#: src/Service/WithdrawalService.php:688
+#: src/Service/WithdrawalService.php:722
 msgid "Unfortunately, we could not find such an order."
 msgstr "Bohužel se nám takovou objednávku nepodařilo najít."
 
-#: src/Service/WithdrawalService.php:731
+#: src/Service/WithdrawalService.php:765
 msgid "Your return request has been accepted. We will send you a confirmation email shortly!"
 msgstr "Vaše žádost o vrácení byla přijata. Brzy vám pošleme potvrzení e-mailem."
 
-#: src/Service/WithdrawalService.php:812
+#: src/Service/WithdrawalService.php:846
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
 
-#: src/Service/WithdrawalService.php:853
+#: src/Service/WithdrawalService.php:887
 msgid "Your withdrawal request has been accepted."
 msgstr "Vaše žádost o odstoupení od smlouvy byla přijata."
 
-#: src/Service/WithdrawalService.php:857
+#: src/Service/WithdrawalService.php:891
 msgid "Failed to submit the withdrawal request."
 msgstr "Žádost o odstoupení se nepodařilo odeslat."
 

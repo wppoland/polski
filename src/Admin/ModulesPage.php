@@ -270,6 +270,19 @@ final class ModulesPage implements HasHooks
             ],
             // === Consumer Rights ===
             [
+                'id' => 'returns_rma',
+                'name' => __('Returns & complaints (RMA)', 'polski'),
+                'description' => __('Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice.', 'polski'),
+                'group' => __('Consumer Rights', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-undo',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_returns|window_days', 'label' => __('Eligibility window (days from order date)', 'polski'), 'type' => 'number', 'default' => 365],
+                    ['key' => 'polski_returns|notify_email', 'label' => __('Notification email (admin)', 'polski'), 'type' => 'text', 'default' => ''],
+                ],
+            ],
+            [
                 'id' => 'legal_pages',
                 'name' => __('Legal Pages', 'polski'),
                 'description' => __('Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints.', 'polski'),
