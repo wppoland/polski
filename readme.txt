@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, polish, gdpr, omnibus, gpsr
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.18.0
+Stable tag: 1.18.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,6 +233,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.18.1 =
+* PHP 8.1 compatibility fix: a few model classes used the PHP 8.2 'readonly class' syntax, which is a parse error on PHP 8.1 (the plugin's minimum supported version). Replaced with individual readonly properties; behaviour is unchanged.
 
 = 1.18.0 =
 * Visual identity refresh across the admin: a new Polski brand with self-hosted Schibsted Grotesk and Hanken Grotesk webfonts (font-display swap), a monogram menu icon and a wordmark dashboard header. Admin styling loads only on the plugin's own screens, never on the storefront, to protect Core Web Vitals.
