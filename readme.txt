@@ -1,6 +1,6 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
-Tags: woocommerce, polish, polski, gdpr, omnibus, gpsr, ksef, withdrawal, dsa, unit-price, compliance, woocommerce-blocks
+Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
 Stable tag: 1.20.0
@@ -8,7 +8,7 @@ Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce plugin for Polish stores: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF-ready hooks, unit prices, DSA and storefront modules.
+WooCommerce for Polish stores: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF hooks, unit prices and storefront modules.
 
 == Description ==
 
