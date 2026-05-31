@@ -232,7 +232,7 @@ final class WithdrawalsAdminPage implements HasHooks
                                     }
                                     ?>
                                 </td>
-                                <td><?php echo esc_html($row->channel ?? 'online'); ?></td>
+                                <td><?php echo esc_html($row->channel); ?></td>
                                 <td><?php echo esc_html($row->status->label()); ?></td>
                                 <td><?php echo esc_html(wp_trim_words((string) ($row->reason ?? ''), 12)); ?></td>
                                 <td>
@@ -362,7 +362,7 @@ final class WithdrawalsAdminPage implements HasHooks
                 (string) $request->id,
                 (string) $request->orderId,
                 (string) ($request->customerId ?? ''),
-                (string) ($request->channel ?? ''),
+                $request->channel,
                 (string) $request->status->value,
                 (string) ($request->guestEmail ?? ''),
                 (string) ($request->reason ?? ''),
@@ -372,7 +372,7 @@ final class WithdrawalsAdminPage implements HasHooks
                 $request->rejectedAt?->format('c') ?? '',
                 (string) ($request->refundId ?? ''),
                 (string) ($request->refundAmount ?? ''),
-                (string) ($request->languageCode ?? ''),
+                $request->languageCode,
                 (string) ($request->aiCategory ?? ''),
                 $request->aiConfidence !== null ? number_format($request->aiConfidence, 3, '.', '') : '',
             ]);

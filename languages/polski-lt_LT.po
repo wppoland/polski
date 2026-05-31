@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
+"POT-Creation-Date: 2026-05-31T10:49:46+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Language: lt\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
+#: src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
 msgstr "Polski for WooCommerce"
 
@@ -1387,7 +1388,7 @@ msgstr "Polski reikia WooCommerce %1$s arba naujesnės versijos. Jūs naudojate 
 #: src/Admin/AdminNotes.php:46
 #: src/Admin/CRAIncidentsPage.php:277
 #: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:83
+#: src/Admin/SBOMPage.php:81
 #: src/Service/ComplaintTemplateService.php:78
 #: src/Service/RodoTrainingDocsService.php:76
 msgid "Insufficient permissions."
@@ -2198,7 +2199,7 @@ msgstr "Akcijos / dinaminės kainos"
 
 #: src/Admin/ModulesPage.php:79
 msgid "Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default."
-msgstr "Automatinės krepšelio nuolaidos: procentinė nuolaida, kai krepšelio tarpinė suma pasiekia ribą, ir procentinė nuolaida produkto eilutei, kai jos kiekis pasiekia ribą (didmeninė nuolaida). Pagal numatytuosius nustatymus išjungta."
+msgstr "Automatinės krepšelio nuolaidos: procentinė nuolaida, kai krepšelio tarpinė suma pasiekia ribą, ir procentinė nuolaida produkto eilutei, kai jos kiekis pasiekia ribą (didmeninė nuolaida). Pagal numatymą išjungta."
 
 #: src/Admin/ModulesPage.php:80
 #: src/Admin/ModulesPage.php:513
@@ -2227,7 +2228,7 @@ msgstr "0 išjungia didmeninę nuolaidą"
 
 #: src/Admin/ModulesPage.php:86
 msgid "Bulk discount: percent off (%)"
-msgstr "Didmeninė nuolaida: procentinė nuolaida (%)"
+msgstr "Didmeninė nuolaida: nuolaida procentais (%)"
 
 #: src/Admin/ModulesPage.php:87
 msgid "Cart discount: subtotal threshold"
@@ -2239,7 +2240,7 @@ msgstr "0 išjungia krepšelio nuolaidą"
 
 #: src/Admin/ModulesPage.php:88
 msgid "Cart discount: percent off (%)"
-msgstr "Krepšelio nuolaida: procentinė nuolaida (%)"
+msgstr "Krepšelio nuolaida: nuolaida procentais (%)"
 
 #: src/Admin/ModulesPage.php:94
 #: src/Admin/ProductMetaBox.php:67
@@ -2703,11 +2704,11 @@ msgstr "Visų klientų suteiktų sutikimų registravimas su IP adresu, naršykl�
 
 #: src/Admin/ModulesPage.php:274
 msgid "Returns & complaints (RMA)"
-msgstr "Grąžinimai ir reklamacijos (RMA)"
+msgstr "Grąžinimai ir skundai (RMA)"
 
 #: src/Admin/ModulesPage.php:275
 msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
-msgstr "Leiskite klientams pateikti reklamaciją arba grąžinimo prašymą iš skilties Mano paskyra už tinkamus užsakymus, su patvirtinimo el. laišku ir administratoriaus eile su būsenomis. Suteikia įrankius, ne teisines konsultacijas."
+msgstr "Leiskite klientams pateikti skundą (reklamacja) arba grąžinimo (zwrot) prašymą iš Mano paskyros tinkamiems užsakymams, su patvirtinimo el. laišku ir administratoriaus eile su būsenomis. Suteikia įrankius, ne teisines konsultacijas."
 
 #: src/Admin/ModulesPage.php:276
 #: src/Admin/ModulesPage.php:289
@@ -2719,7 +2720,7 @@ msgstr "Vartotojų teisės"
 
 #: src/Admin/ModulesPage.php:281
 msgid "Eligibility window (days from order date)"
-msgstr "Tinkamumo laikotarpis (dienos nuo užsakymo datos)"
+msgstr "Tinkamumo langas (dienos nuo užsakymo datos)"
 
 #: src/Admin/ModulesPage.php:282
 msgid "Notification email (admin)"
@@ -3490,7 +3491,7 @@ msgstr "Rodyti vieneto kainą"
 #: src/Admin/ModulesPage.php:492
 #: src/Admin/ModulesPage.php:677
 msgid "Show Omnibus lowest price"
-msgstr "Rodyti Omnibus mažiausią kainą"
+msgstr "Rodyti mažiausią Omnibus kainą"
 
 #: src/Admin/ModulesPage.php:493
 #: src/Admin/ModulesPage.php:678
@@ -3682,19 +3683,19 @@ msgstr "Įjungti momentinį filtravimą"
 
 #: src/Admin/ModulesPage.php:550
 msgid "Instant filtering debounce (ms)"
-msgstr "Momentinio filtravimo delsa (ms)"
+msgstr "Momentinio filtravimo uždelsimas (ms)"
 
 #: src/Admin/ModulesPage.php:550
 msgid "Delay before auto-submitting text and price fields"
-msgstr "Delsa prieš automatinį teksto ir kainos laukų pateikimą"
+msgstr "Uždelsimas prieš automatinį teksto ir kainos laukų pateikimą"
 
 #: src/Admin/ModulesPage.php:551
 msgid "Named presets JSON"
-msgstr "Įvardytų išankstinių nustatymų JSON"
+msgstr "Pavadintų išankstinių nustatymų JSON"
 
 #: src/Admin/ModulesPage.php:551
 msgid "Optional JSON map for shortcode preset=\"...\". Example: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
-msgstr "Neprivaloma JSON struktūra trumpinio preset=\"...\". Pavyzdys: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
+msgstr "Pasirenkamas JSON žemėlapis trumpinukui preset=\"...\". Pavyzdys: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
 
 #: src/Admin/ModulesPage.php:552
 msgid "Archive preset mapping JSON"
@@ -3702,7 +3703,7 @@ msgstr "Archyvo išankstinių nustatymų susiejimo JSON"
 
 #: src/Admin/ModulesPage.php:552
 msgid "Optional JSON map from archive context to preset slug. Examples: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
-msgstr "Neprivaloma JSON struktūra, susiejanti archyvo kontekstą su išankstinio nustatymo slug. Pavyzdžiai: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+msgstr "Pasirenkamas JSON žemėlapis nuo archyvo konteksto iki išankstinio nustatymo slug. Pavyzdžiai: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
 
 #: src/Admin/ModulesPage.php:553
 msgid "Specific attribute taxonomies"
@@ -3710,7 +3711,7 @@ msgstr "Konkrečios atributų taksonomijos"
 
 #: src/Admin/ModulesPage.php:553
 msgid "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N attributes are used."
-msgstr "Neprivalomas kableliais atskirtas sąrašas, pvz. pa_color,pa_size. Jei tuščia, naudojami pirmieji N atributų."
+msgstr "Pasirenkamas kableliais atskirtas sąrašas, pvz. pa_color,pa_size. Jei tuščia, naudojami pirmieji N atributų."
 
 #: src/Admin/ModulesPage.php:554
 msgid "Max number of attributes"
@@ -5318,162 +5319,158 @@ msgstr "Tvarkyti laukus"
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/Admin/ModulesPage.php:1417
-msgid "PRO"
-msgstr "PRO"
-
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1420
 msgid "Help"
 msgstr "Pagalba"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1481
+#: src/Admin/ModulesPage.php:1475
 #, php-format
 msgid "Edit %s settings"
 msgstr "Redaguoti %s nustatymus"
 
-#: src/Admin/ModulesPage.php:1484
+#: src/Admin/ModulesPage.php:1478
 msgid "Edit settings"
 msgstr "Redaguoti nustatymus"
 
-#: src/Admin/ModulesPage.php:1494
-#: src/Admin/ModulesPage.php:1495
+#: src/Admin/ModulesPage.php:1488
+#: src/Admin/ModulesPage.php:1489
 msgid "Open documentation"
 msgstr "Atidaryti dokumentaciją"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1522
 msgid "Save"
 msgstr "Įrašyti"
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1616
 msgid "none"
 msgstr "nėra"
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1686
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Atsiprašome, jums neleidžiama pasiekti šio puslapio."
 
-#: src/Admin/ModulesPage.php:1699
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1693
+#: src/Admin/ModulesPage.php:1709
 msgid "Invalid request."
 msgstr "Netinkama užklausa."
 
-#: src/Admin/ModulesPage.php:1899
+#: src/Admin/ModulesPage.php:1893
 msgid "Legal & Compliance"
 msgstr "Teisė ir atitiktis"
 
-#: src/Admin/ModulesPage.php:1901
+#: src/Admin/ModulesPage.php:1895
 msgid "Tax & Pricing"
 msgstr "Mokesčiai ir kainodara"
 
-#: src/Admin/ModulesPage.php:1903
+#: src/Admin/ModulesPage.php:1897
 msgid "Checkout & Orders"
 msgstr "Atsiskaitymas ir užsakymai"
 
-#: src/Admin/ModulesPage.php:1905
+#: src/Admin/ModulesPage.php:1899
 msgid "Content & Trust"
 msgstr "Turinys ir pasitikėjimas"
 
-#: src/Admin/ModulesPage.php:1907
+#: src/Admin/ModulesPage.php:1901
 msgid "Advanced & Tools"
 msgstr "Išplėstinės parinktys ir įrankiai"
 
-#: src/Admin/ModulesPage.php:1909
+#: src/Admin/ModulesPage.php:1903
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Kita"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1974
 msgid "Could not save module state. Please try again."
 msgstr "Nepavyko įrašyti modulio būsenos. Bandykite dar kartą."
 
-#: src/Admin/ModulesPage.php:1997
+#: src/Admin/ModulesPage.php:1991
 msgid "Compatible Omnibus Extension A"
 msgstr "Suderinamas Omnibus plėtinys A"
 
-#: src/Admin/ModulesPage.php:1998
+#: src/Admin/ModulesPage.php:1992
 msgid "Compatible Omnibus Extension B"
 msgstr "Suderinamas Omnibus plėtinys B"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2003
 msgid "detected, data synchronized"
 msgstr "aptikta, duomenys sinchronizuoti"
 
-#: src/Admin/ModulesPage.php:2010
+#: src/Admin/ModulesPage.php:2004
 msgid "not installed"
 msgstr "neįdiegta"
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2019
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "Joks išorinis Omnibus įskiepis nėra įdiegtas. Polski naudoja įmontuotą kainų sekimo sistemą."
 
-#: src/Admin/ModulesPage.php:2027
+#: src/Admin/ModulesPage.php:2021
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "Aptiktas išorinis įskiepis. Polski naudoja jo duomenis vietoj įmontuotos sistemos."
 
-#: src/Admin/ModulesPage.php:2047
+#: src/Admin/ModulesPage.php:2041
 msgid "OSS observer service is unavailable."
 msgstr "OSS stebėtojo paslauga nepasiekiama."
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2048
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "One Stop Shop įskiepis nėra įdiegtas. Įdiekite jį, kad pradėtumėte automatiškai stebėti 10 000 € ES vidaus B2C ribą."
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2054
 msgid "Install One Stop Shop"
 msgstr "Įdiegti One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2059
 msgid "You need the install_plugins capability to install it from here."
 msgstr "Norėdami įdiegti jį iš čia, jums reikia install_plugins teisės."
 
-#: src/Admin/ModulesPage.php:2074
+#: src/Admin/ModulesPage.php:2068
 msgid "One Stop Shop plugin detected."
 msgstr "Aptiktas One Stop Shop įskiepis."
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2072
 msgid "OSS procedure"
 msgstr "OSS procedūra"
 
-#: src/Admin/ModulesPage.php:2080
+#: src/Admin/ModulesPage.php:2074
 msgid "enabled"
 msgstr "įjungta"
 
-#: src/Admin/ModulesPage.php:2081
+#: src/Admin/ModulesPage.php:2075
 msgid "disabled"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2085
+#: src/Admin/ModulesPage.php:2079
 msgid "Auto observer"
 msgstr "Automatinis stebėtojas"
 
-#: src/Admin/ModulesPage.php:2087
+#: src/Admin/ModulesPage.php:2081
 msgid "watching threshold"
 msgstr "stebėjimo riba"
 
-#: src/Admin/ModulesPage.php:2088
+#: src/Admin/ModulesPage.php:2082
 msgid "off"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2093
+#: src/Admin/ModulesPage.php:2087
 msgid "Open OSS settings"
 msgstr "Atidaryti OSS nustatymus"
 
-#: src/Admin/ModulesPage.php:2151
+#: src/Admin/ModulesPage.php:2145
 msgid "detected, integration active"
 msgstr "aptikta, integracija aktyvi"
 
-#: src/Admin/ModulesPage.php:2154
+#: src/Admin/ModulesPage.php:2148
 msgid "install"
 msgstr "įdiegti"
 
-#: src/Admin/ModulesPage.php:2166
+#: src/Admin/ModulesPage.php:2160
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "Nerasta palaikomų atsiskaitymo ir slapukų plėtinių. Polski toliau veikia savarankiškai."
 
-#: src/Admin/ModulesPage.php:2168
+#: src/Admin/ModulesPage.php:2162
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "Aptikti palaikomi atsiskaitymo, slapukų arba produktų duomenų plėtiniai. Polski gali pritaikyti integraciją prie aktyvaus rinkinio."
 
@@ -5891,38 +5888,30 @@ msgstr "Sertifikato galiojimo pabaigos data (MMMM-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Aplinkosauginio sertifikato galiojimo pabaigos data MMMM-MM-DD formatu."
 
-#: src/Admin/SBOMPage.php:41
-#: src/Admin/SBOMPage.php:42
+#: src/Admin/SBOMPage.php:39
+#: src/Admin/SBOMPage.php:40
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/SBOMPage.php:51
+#: src/Admin/SBOMPage.php:49
 msgid "Software Bill of Materials (SBOM)"
 msgstr "Programinės įrangos sudedamųjų dalių sąrašas (SBOM)"
 
-#: src/Admin/SBOMPage.php:52
+#: src/Admin/SBOMPage.php:50
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr "Sugeneruokite CycloneDX 1.4 JSON dokumentą, kuriame išvardytos PHP (composer) ir JS (npm) priklausomybės. Naudinga saugos auditams, CRA atitikties paketams ir pažeidžiamumų skaitytuvams."
 
-#: src/Admin/SBOMPage.php:58
+#: src/Admin/SBOMPage.php:56
 msgid "Path"
 msgstr "Kelias"
 
-#: src/Admin/SBOMPage.php:74
+#: src/Admin/SBOMPage.php:72
 msgid "Download SBOM (JSON)"
 msgstr "Atsisiųsti SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:90
+#: src/Admin/SBOMPage.php:88
 msgid "Unknown plugin target."
 msgstr "Nežinomas papildinio tikslas."
-
-#: src/Admin/SBOMPage.php:114
-msgid "Polski for WooCommerce (FREE)"
-msgstr "Polski for WooCommerce (FREE)"
-
-#: src/Admin/SBOMPage.php:122
-msgid "Polski Pro for WooCommerce"
-msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski - odstąpienie"
@@ -6494,7 +6483,7 @@ msgstr "Išankstinio nustatymo slug"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:34
 msgid "Optional named preset from AJAX Filters settings, e.g. fashion"
-msgstr "Neprivalomas įvardytas išankstinis nustatymas iš AJAX filtrų nustatymų, pvz. fashion"
+msgstr "Pasirenkamas pavadintas išankstinis nustatymas iš AJAX Filters nustatymų, pvz. fashion"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
@@ -8965,11 +8954,11 @@ msgstr "Greita produkto peržiūra"
 
 #: src/Service/ReturnRequestService.php:102
 msgid "Complaint / return"
-msgstr "Reklamacija / grąžinimas"
+msgstr "Skundas / grąžinimas"
 
 #: src/Service/ReturnRequestService.php:117
 msgid "Your complaints and returns"
-msgstr "Jūsų reklamacijos ir grąžinimai"
+msgstr "Jūsų skundai ir grąžinimai"
 
 #: src/Service/ReturnRequestService.php:120
 #: src/Service/ReturnRequestService.php:177
@@ -8981,15 +8970,15 @@ msgstr "Grąžinimas"
 #: src/Service/ReturnRequestService.php:177
 #: src/Service/ReturnRequestService.php:235
 msgid "Complaint"
-msgstr "Reklamacija"
+msgstr "Skundas"
 
 #: src/Service/ReturnRequestService.php:134
 msgid "Submit a complaint or return"
-msgstr "Pateikti reklamaciją arba grąžinimą"
+msgstr "Pateikti skundą arba grąžinimą"
 
 #: src/Service/ReturnRequestService.php:141
 msgid "Complaint (reklamacja)"
-msgstr "Reklamacija (reklamacja)"
+msgstr "Skundas (reklamacja)"
 
 #: src/Service/ReturnRequestService.php:142
 msgid "Return (zwrot)"
@@ -9018,7 +9007,7 @@ msgstr "Gauta %1$s užsakymui #%2$s"
 #: src/Service/ReturnRequestService.php:204
 #: src/Service/ReturnRequestService.php:217
 msgid "Returns & complaints"
-msgstr "Grąžinimai ir reklamacijos"
+msgstr "Grąžinimai ir skundai"
 
 #: src/Service/ReturnRequestService.php:222
 msgid "No requests yet."
@@ -10911,3 +10900,12 @@ msgstr "Polski produktų slankiklis"
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "Dinaminis prekybos slankiklis susijusiems, papildomo pardavimo, išpardavimo ir išskirtiniams produktams."
+
+#~ msgid "PRO"
+#~ msgstr "PRO"
+
+#~ msgid "Polski for WooCommerce (FREE)"
+#~ msgstr "Polski for WooCommerce (FREE)"
+
+#~ msgid "Polski Pro for WooCommerce"
+#~ msgstr "Polski Pro for WooCommerce"

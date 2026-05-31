@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-31T07:11:15+00:00\n"
+"POT-Creation-Date: 2026-05-31T10:49:46+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
+#: src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
 msgstr "Polski for WooCommerce"
 
@@ -1387,7 +1388,7 @@ msgstr "Polski 需要 WooCommerce %1$s 或更高版本。您当前运行的是 W
 #: src/Admin/AdminNotes.php:46
 #: src/Admin/CRAIncidentsPage.php:277
 #: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:83
+#: src/Admin/SBOMPage.php:81
 #: src/Service/ComplaintTemplateService.php:78
 #: src/Service/RodoTrainingDocsService.php:76
 msgid "Insufficient permissions."
@@ -2198,7 +2199,7 @@ msgstr "促销 / 动态定价"
 
 #: src/Admin/ModulesPage.php:79
 msgid "Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default."
-msgstr "自动购物车折扣：当购物车小计达到阈值时按百分比减价，当某产品行的数量达到阈值时对该产品行按百分比减价（批量折扣）。默认关闭。"
+msgstr "自动购物车折扣：当购物车小计达到阈值时按百分比减免，当某产品行的数量达到阈值时对该产品行按百分比减免（批量折扣）。默认关闭。"
 
 #: src/Admin/ModulesPage.php:80
 #: src/Admin/ModulesPage.php:513
@@ -2219,7 +2220,7 @@ msgstr "商品陈列"
 
 #: src/Admin/ModulesPage.php:85
 msgid "Bulk discount: minimum quantity per product"
-msgstr "批量折扣：每件产品的最低数量"
+msgstr "批量折扣：每个产品的最低数量"
 
 #: src/Admin/ModulesPage.php:85
 msgid "0 disables the bulk discount"
@@ -2227,7 +2228,7 @@ msgstr "0 表示禁用批量折扣"
 
 #: src/Admin/ModulesPage.php:86
 msgid "Bulk discount: percent off (%)"
-msgstr "批量折扣：减价百分比 (%)"
+msgstr "批量折扣：减免百分比 (%)"
 
 #: src/Admin/ModulesPage.php:87
 msgid "Cart discount: subtotal threshold"
@@ -2239,7 +2240,7 @@ msgstr "0 表示禁用购物车折扣"
 
 #: src/Admin/ModulesPage.php:88
 msgid "Cart discount: percent off (%)"
-msgstr "购物车折扣：减价百分比 (%)"
+msgstr "购物车折扣：减免百分比 (%)"
 
 #: src/Admin/ModulesPage.php:94
 #: src/Admin/ProductMetaBox.php:67
@@ -2485,7 +2486,7 @@ msgstr "在商品列表显示"
 
 #: src/Admin/ModulesPage.php:178
 msgid "Also display the delivery time on shop and archive product cards."
-msgstr "同时在商店和产品归档卡片上显示配送时间。"
+msgstr "同时在商店和产品归档卡片上显示交货时间。"
 
 #: src/Admin/ModulesPage.php:183
 msgid "Shipping costs info"
@@ -2707,7 +2708,7 @@ msgstr "退货与投诉 (RMA)"
 
 #: src/Admin/ModulesPage.php:275
 msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
-msgstr "允许客户在符合条件的订单中从“我的账户”发起投诉（reklamacja）或退货（zwrot）请求，并附带确认邮件以及带状态的管理员队列。提供工具，而非法律建议。"
+msgstr "允许客户从“我的账户”中为符合条件的订单发起投诉（reklamacja）或退货（zwrot）请求，并提供确认邮件以及带状态的管理员队列。提供工具，而非法律建议。"
 
 #: src/Admin/ModulesPage.php:276
 #: src/Admin/ModulesPage.php:289
@@ -2719,7 +2720,7 @@ msgstr "消费者权利"
 
 #: src/Admin/ModulesPage.php:281
 msgid "Eligibility window (days from order date)"
-msgstr "符合条件的时间窗口（自下单日期起的天数）"
+msgstr "符合条件的时限（自下单日期起的天数）"
 
 #: src/Admin/ModulesPage.php:282
 msgid "Notification email (admin)"
@@ -3682,11 +3683,11 @@ msgstr "启用即时筛选"
 
 #: src/Admin/ModulesPage.php:550
 msgid "Instant filtering debounce (ms)"
-msgstr "即时筛选防抖 (ms)"
+msgstr "即时筛选防抖延迟 (ms)"
 
 #: src/Admin/ModulesPage.php:550
 msgid "Delay before auto-submitting text and price fields"
-msgstr "在自动提交文本和价格字段前的延迟"
+msgstr "自动提交文本和价格字段前的延迟"
 
 #: src/Admin/ModulesPage.php:551
 msgid "Named presets JSON"
@@ -3702,7 +3703,7 @@ msgstr "归档预设映射 JSON"
 
 #: src/Admin/ModulesPage.php:552
 msgid "Optional JSON map from archive context to preset slug. Examples: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
-msgstr "从归档上下文到预设 slug 的可选 JSON 映射。示例：{\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
+msgstr "从归档上下文到预设别名的可选 JSON 映射。示例：{\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
 
 #: src/Admin/ModulesPage.php:553
 msgid "Specific attribute taxonomies"
@@ -3710,7 +3711,7 @@ msgstr "特定的属性分类法"
 
 #: src/Admin/ModulesPage.php:553
 msgid "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N attributes are used."
-msgstr "可选的逗号分隔列表，例如 pa_color,pa_size。如果为空，则使用前 N 个属性。"
+msgstr "可选的以逗号分隔的列表，例如 pa_color,pa_size。如果为空，则使用前 N 个属性。"
 
 #: src/Admin/ModulesPage.php:554
 msgid "Max number of attributes"
@@ -3732,11 +3733,11 @@ msgstr "已启用筛选标签"
 
 #: src/Admin/ModulesPage.php:557
 msgid "Mobile toggle button text"
-msgstr "移动端切换按钮文本"
+msgstr "移动端切换按钮文字"
 
 #: src/Admin/ModulesPage.php:558
 msgid "Mobile close button text"
-msgstr "移动端关闭按钮文本"
+msgstr "移动端关闭按钮文字"
 
 #: src/Admin/ModulesPage.php:559
 msgid "Mobile panel title"
@@ -5318,162 +5319,158 @@ msgstr "管理字段"
 msgid "Name"
 msgstr "名称"
 
-#: src/Admin/ModulesPage.php:1417
-msgid "PRO"
-msgstr "PRO"
-
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1420
 msgid "Help"
 msgstr "帮助"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1481
+#: src/Admin/ModulesPage.php:1475
 #, php-format
 msgid "Edit %s settings"
 msgstr "编辑 %s 设置"
 
-#: src/Admin/ModulesPage.php:1484
+#: src/Admin/ModulesPage.php:1478
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: src/Admin/ModulesPage.php:1494
-#: src/Admin/ModulesPage.php:1495
+#: src/Admin/ModulesPage.php:1488
+#: src/Admin/ModulesPage.php:1489
 msgid "Open documentation"
 msgstr "打开文档"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1522
 msgid "Save"
 msgstr "保存"
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1616
 msgid "none"
 msgstr "无"
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1686
 msgid "Sorry, you are not allowed to access this page."
 msgstr "抱歉，您无权访问此页面。"
 
-#: src/Admin/ModulesPage.php:1699
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1693
+#: src/Admin/ModulesPage.php:1709
 msgid "Invalid request."
 msgstr "无效请求。"
 
-#: src/Admin/ModulesPage.php:1899
+#: src/Admin/ModulesPage.php:1893
 msgid "Legal & Compliance"
 msgstr "法律与合规"
 
-#: src/Admin/ModulesPage.php:1901
+#: src/Admin/ModulesPage.php:1895
 msgid "Tax & Pricing"
 msgstr "税费与定价"
 
-#: src/Admin/ModulesPage.php:1903
+#: src/Admin/ModulesPage.php:1897
 msgid "Checkout & Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:1905
+#: src/Admin/ModulesPage.php:1899
 msgid "Content & Trust"
 msgstr "内容与信任"
 
-#: src/Admin/ModulesPage.php:1907
+#: src/Admin/ModulesPage.php:1901
 msgid "Advanced & Tools"
 msgstr "高级与工具"
 
-#: src/Admin/ModulesPage.php:1909
+#: src/Admin/ModulesPage.php:1903
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "其他"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1974
 msgid "Could not save module state. Please try again."
 msgstr "无法保存模块状态。请重试。"
 
-#: src/Admin/ModulesPage.php:1997
+#: src/Admin/ModulesPage.php:1991
 msgid "Compatible Omnibus Extension A"
 msgstr "兼容的 Omnibus 扩展 A"
 
-#: src/Admin/ModulesPage.php:1998
+#: src/Admin/ModulesPage.php:1992
 msgid "Compatible Omnibus Extension B"
 msgstr "兼容的 Omnibus 扩展 B"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2003
 msgid "detected, data synchronized"
 msgstr "已检测到，数据已同步"
 
-#: src/Admin/ModulesPage.php:2010
+#: src/Admin/ModulesPage.php:2004
 msgid "not installed"
 msgstr "未安装"
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2019
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr "未安装外部 Omnibus 插件。Polski 使用内置的价格跟踪系统。"
 
-#: src/Admin/ModulesPage.php:2027
+#: src/Admin/ModulesPage.php:2021
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr "检测到外部插件。Polski 使用其数据而非内置系统。"
 
-#: src/Admin/ModulesPage.php:2047
+#: src/Admin/ModulesPage.php:2041
 msgid "OSS observer service is unavailable."
 msgstr "OSS 观察器服务不可用。"
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2048
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr "未安装 One Stop Shop 插件。安装它即可自动开始观察 10,000 € 的欧盟内 B2C 阈值。"
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2054
 msgid "Install One Stop Shop"
 msgstr "安装 One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2059
 msgid "You need the install_plugins capability to install it from here."
 msgstr "您需要 install_plugins 权限才能从此处安装它。"
 
-#: src/Admin/ModulesPage.php:2074
+#: src/Admin/ModulesPage.php:2068
 msgid "One Stop Shop plugin detected."
 msgstr "已检测到 One Stop Shop 插件。"
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2072
 msgid "OSS procedure"
 msgstr "OSS 程序"
 
-#: src/Admin/ModulesPage.php:2080
+#: src/Admin/ModulesPage.php:2074
 msgid "enabled"
 msgstr "已启用"
 
-#: src/Admin/ModulesPage.php:2081
+#: src/Admin/ModulesPage.php:2075
 msgid "disabled"
 msgstr "已禁用"
 
-#: src/Admin/ModulesPage.php:2085
+#: src/Admin/ModulesPage.php:2079
 msgid "Auto observer"
 msgstr "自动观察器"
 
-#: src/Admin/ModulesPage.php:2087
+#: src/Admin/ModulesPage.php:2081
 msgid "watching threshold"
 msgstr "监控阈值"
 
-#: src/Admin/ModulesPage.php:2088
+#: src/Admin/ModulesPage.php:2082
 msgid "off"
 msgstr "关闭"
 
-#: src/Admin/ModulesPage.php:2093
+#: src/Admin/ModulesPage.php:2087
 msgid "Open OSS settings"
 msgstr "打开 OSS 设置"
 
-#: src/Admin/ModulesPage.php:2151
+#: src/Admin/ModulesPage.php:2145
 msgid "detected, integration active"
 msgstr "已检测到，集成已激活"
 
-#: src/Admin/ModulesPage.php:2154
+#: src/Admin/ModulesPage.php:2148
 msgid "install"
 msgstr "安装"
 
-#: src/Admin/ModulesPage.php:2166
+#: src/Admin/ModulesPage.php:2160
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr "未检测到受支持的结账和 Cookie 扩展。Polski 将继续独立运行。"
 
-#: src/Admin/ModulesPage.php:2168
+#: src/Admin/ModulesPage.php:2162
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr "已检测到受支持的结账、Cookie 或产品数据扩展。Polski 可以根据已激活的组合调整集成。"
 
@@ -5891,38 +5888,30 @@ msgstr "证书到期日期 (YYYY-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "环境证书到期日期，格式为 YYYY-MM-DD。"
 
-#: src/Admin/SBOMPage.php:41
-#: src/Admin/SBOMPage.php:42
+#: src/Admin/SBOMPage.php:39
+#: src/Admin/SBOMPage.php:40
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/SBOMPage.php:51
+#: src/Admin/SBOMPage.php:49
 msgid "Software Bill of Materials (SBOM)"
 msgstr "软件物料清单 (SBOM)"
 
-#: src/Admin/SBOMPage.php:52
+#: src/Admin/SBOMPage.php:50
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr "生成一份 CycloneDX 1.4 JSON 文档，列出 PHP (composer) 和 JS (npm) 依赖项。可用于安全审计、CRA 合规包和漏洞扫描工具。"
 
-#: src/Admin/SBOMPage.php:58
+#: src/Admin/SBOMPage.php:56
 msgid "Path"
 msgstr "路径"
 
-#: src/Admin/SBOMPage.php:74
+#: src/Admin/SBOMPage.php:72
 msgid "Download SBOM (JSON)"
 msgstr "下载 SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:90
+#: src/Admin/SBOMPage.php:88
 msgid "Unknown plugin target."
 msgstr "未知的插件目标。"
-
-#: src/Admin/SBOMPage.php:114
-msgid "Polski for WooCommerce (FREE)"
-msgstr "Polski for WooCommerce (FREE)"
-
-#: src/Admin/SBOMPage.php:122
-msgid "Polski Pro for WooCommerce"
-msgstr "Polski Pro for WooCommerce"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski - odstąpienie"
@@ -6484,11 +6473,11 @@ msgstr "缺陷描述"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:32
 msgid "Preset slug"
-msgstr "预设 slug"
+msgstr "预设别名"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:34
 msgid "Optional named preset from AJAX Filters settings, e.g. fashion"
-msgstr "来自 AJAX 筛选器设置的可选命名预设，例如 fashion"
+msgstr "来自 AJAX Filters 设置的可选命名预设，例如 fashion"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:39
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:60
@@ -6503,7 +6492,7 @@ msgstr "属性分类法"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:47
 msgid "Comma-separated list, e.g. pa_color,pa_size"
-msgstr "逗号分隔列表，例如 pa_color,pa_size"
+msgstr "以逗号分隔的列表，例如 pa_color,pa_size"
 
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:52
 #: resources/js/blocks/ajax-filters/index.js:28
@@ -6863,7 +6852,7 @@ msgstr "查看 AI 版本"
 
 #: src/Hook/StructuredDataHooks.php:61
 msgid "Najniższa cena z 30 dni"
-msgstr "30 天内最低价格"
+msgstr "30 天内最低价"
 
 #: src/Migration/Migration_1_0_0.php:25
 msgid "1-2 dni robocze"
@@ -8955,7 +8944,7 @@ msgstr "投诉 / 退货"
 
 #: src/Service/ReturnRequestService.php:117
 msgid "Your complaints and returns"
-msgstr "您的投诉与退货"
+msgstr "您的投诉和退货"
 
 #: src/Service/ReturnRequestService.php:120
 #: src/Service/ReturnRequestService.php:177
@@ -8988,7 +8977,7 @@ msgstr "提交请求"
 #: src/Service/ReturnRequestService.php:154
 #: src/Service/ReturnRequestService.php:263
 msgid "Security check failed."
-msgstr "安全检查失败。"
+msgstr "安全验证失败。"
 
 #: src/Service/ReturnRequestService.php:160
 msgid "This order is not eligible."
@@ -8998,7 +8987,7 @@ msgstr "此订单不符合条件。"
 #: src/Service/ReturnRequestService.php:180
 #, php-format
 msgid "%1$s received for order #%2$s"
-msgstr "已收到针对订单 #%2$s 的%1$s"
+msgstr "已收到 %1$s，对应订单 #%2$s"
 
 #: src/Service/ReturnRequestService.php:203
 #: src/Service/ReturnRequestService.php:204
@@ -10893,3 +10882,12 @@ msgstr "Polski 产品滑块"
 msgctxt "block description"
 msgid "Dynamic merchandising slider for related, upsell, sale, and featured products."
 msgstr "适用于相关、追加销售、促销和精选产品的动态营销滑块。"
+
+#~ msgid "PRO"
+#~ msgstr "PRO"
+
+#~ msgid "Polski for WooCommerce (FREE)"
+#~ msgstr "Polski for WooCommerce (FREE)"
+
+#~ msgid "Polski Pro for WooCommerce"
+#~ msgstr "Polski Pro for WooCommerce"

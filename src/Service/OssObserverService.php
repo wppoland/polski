@@ -15,7 +15,7 @@ use Polski\Contract\HasHooks;
  * whether the plugin is active, whether the OSS procedure is enabled,
  * and whether the auto-observer is watching the current-year threshold.
  * Exposes a stable surface (`isOssEnabled`, `isAutoObserverEnabled`) so
- * polski / polski-pro modules can branch tax logic without coupling to
+ * modules can branch tax logic without coupling to
  * the external plugin.
  *
  * Also provides an admin-post handler to install + activate the plugin
@@ -49,7 +49,7 @@ final class OssObserverService implements HasHooks
      * The external plugin exposes `\Vendidero\OneStopShop\Package::oss_procedure_is_enabled()`
      * once active. Returns false when the plugin is missing so callers get a safe default.
      *
-     * Filterable via `polski_tax_oss_enabled` so polski-pro (and third parties) can override
+     * Filterable via `polski_tax_oss_enabled` so custom integrations can override
      * the signal for testing, forced modes, or site-specific policies.
      */
     public function isOssEnabled(): bool
@@ -61,7 +61,7 @@ final class OssObserverService implements HasHooks
         }
 
         /**
-         * Filter the OSS-enabled signal used by polski and polski-pro tax branches.
+         * Filter the OSS-enabled signal used by custom tax branches.
          *
          * @param bool $value True when the external OSS plugin is active and the procedure is on.
          */

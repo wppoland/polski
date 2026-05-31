@@ -86,7 +86,7 @@ class WithdrawalCommand
                 'id' => $r->id,
                 'order_id' => $r->orderId,
                 'status' => $r->status->value,
-                'channel' => $r->channel ?? 'online',
+                'channel' => $r->channel,
                 'guest_email' => $r->guestEmail ?? '',
                 'requested_at' => $r->requestedAt->format('Y-m-d H:i'),
                 'reason' => mb_substr((string) ($r->reason ?? ''), 0, 60),
@@ -304,7 +304,7 @@ class WithdrawalCommand
                 (string) $r->id,
                 (string) $r->orderId,
                 (string) ($r->customerId ?? ''),
-                (string) ($r->channel ?? ''),
+                $r->channel,
                 $r->status->value,
                 (string) ($r->guestEmail ?? ''),
                 (string) ($r->reason ?? ''),
@@ -314,7 +314,7 @@ class WithdrawalCommand
                 $r->rejectedAt?->format('c') ?? '',
                 (string) ($r->refundId ?? ''),
                 (string) ($r->refundAmount ?? ''),
-                (string) ($r->languageCode ?? ''),
+                $r->languageCode,
             ]);
         }
 

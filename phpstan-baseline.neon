@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Path in require\(\) "/Users/mariuszszatkowskipromax/local/polski/polski/tests/phpstan/\.\./\.\./build/admin\.asset\.php" is not a file or it does not exist\.$#'
+			message: '#^Path in require\(\) ".+/build/admin\.asset\.php" is not a file or it does not exist\.$#'
 			identifier: require.fileNotFound
 			count: 1
 			path: src/Admin/AdminPage.php
@@ -31,7 +31,7 @@ parameters:
 			path: src/Admin/WithdrawalsAdminPage.php
 
 		-
-			message: '#^Path in require\(\) "/Users/mariuszszatkowskipromax/local/polski/polski/tests/phpstan/\.\./\.\./build/blocks/checkout\-legal\-checkboxes/index\.asset\.php" is not a file or it does not exist\.$#'
+			message: '#^Path in require\(\) ".+/build/blocks/checkout\-legal\-checkboxes/index\.asset\.php" is not a file or it does not exist\.$#'
 			identifier: require.fileNotFound
 			count: 1
 			path: src/Block/StoreApi/CheckoutValidation.php
