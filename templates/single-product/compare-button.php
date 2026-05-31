@@ -19,6 +19,7 @@ $polski_button = $polski_service->getButtonData($polski_product);
         class="button polski-compare-button<?php echo $polski_button['in_compare'] ? ' is-active' : ''; ?>"
         data-polski-compare-button
         data-product-id="<?php echo esc_attr((string) $polski_button['product_id']); ?>"
+        aria-pressed="<?php echo $polski_button['in_compare'] ? 'true' : 'false'; ?>"
     >
         <?php echo esc_html($polski_button['label']); ?>
     </button>

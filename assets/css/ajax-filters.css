@@ -1,4 +1,7 @@
+@import url('polski-ui-tokens.css');
+
 .polski-ajax-filters {
+    position: relative;
     margin: 0 0 1.5rem;
     padding: 1rem;
     border: 1px solid #e4e4e4;
@@ -8,6 +11,31 @@
 
 .polski-ajax-filters__title {
     margin: 0 0 0.85rem;
+}
+
+.polski-ajax-filters__mobile-toolbar {
+    display: none;
+    margin: 0 0 1rem;
+}
+
+.polski-ajax-filters__mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.polski-ajax-filters__mobile-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1;
 }
 
 .polski-ajax-filters__active {
@@ -72,6 +100,14 @@
     justify-content: flex-end;
 }
 
+.polski-ajax-filters__backdrop {
+    display: none;
+}
+
+.polski-ajax-filters__panel-header {
+    display: none;
+}
+
 .polski-ajax-filters__actions {
     display: flex;
     flex-wrap: wrap;
@@ -86,12 +122,66 @@
 }
 
 @media (max-width: 640px) {
+    .polski-ajax-filters__mobile-toolbar {
+        display: block;
+    }
+
     .polski-ajax-filters__chip {
         width: 100%;
         justify-content: space-between;
     }
 
+    .polski-ajax-filters__backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9997;
+        background: var(--polski-overlay-bg);
+    }
+
+    .polski-ajax-filters.is-mobile-open .polski-ajax-filters__backdrop {
+        display: block;
+    }
+
+    .polski-ajax-filters__panel {
+        display: none;
+    }
+
+    .polski-ajax-filters.is-mobile-open .polski-ajax-filters__panel {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9998;
+        display: block;
+        max-height: min(85vh, 46rem);
+        overflow: auto;
+        padding: 1rem;
+        border-radius: 18px 18px 0 0;
+        background: var(--polski-surface-bg);
+        box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .polski-ajax-filters__panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0 0 1rem;
+    }
+
     .polski-ajax-filters__field select[multiple] {
         min-height: 8rem;
     }
+}
+
+.polski-ajax-filters__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

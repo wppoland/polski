@@ -104,6 +104,7 @@ return [
     CompareService::class,
     QuickViewService::class,
     BadgeService::class,
+    \Polski\Service\DynamicPricingService::class,
     TabManagerService::class,
     FeaturedVideoService::class,
     GalleryZoomService::class,
@@ -149,6 +150,7 @@ return [
 
     // Withdrawal service (needs hooks for My Account).
     WithdrawalService::class,
+    \Polski\Service\ReturnRequestService::class,
     \Polski\Service\WithdrawalOrderStatusService::class,
     \Polski\Service\GuestWithdrawalService::class,
     \Polski\Service\AnnexGeneratorService::class,

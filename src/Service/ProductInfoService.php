@@ -171,6 +171,36 @@ final class ProductInfoService
     }
 
     /**
+     * Build the combined safety summary HTML (GPSR responsible person, safety
+     * documents, power supply, defect description). Returns an empty string
+     * when no safety data is present so callers can skip empty wrappers.
+     */
+    public function getSafetyInfoHtml(\WC_Product $product): string
+    {
+        $parts = array_filter([
+            $this->getSafetyDocumentsHtml($product),
+            $this->getPowerSupplyHtml($product),
+            $this->getDefectDescriptionHtml($product),
+        ]);
+
+        $gpsr = $this->getGPSRResponsible($product);
+
+        if ($gpsr !== '') {
+            array_unshift($parts, sprintf(
+                '<div class="polski-gpsr"><span class="polski-gpsr__label">%s:</span> %s</div>',
+                esc_html__('Osoba odpowiedzialna (GPSR)', 'polski'),
+                esc_html($gpsr),
+            ));
+        }
+
+        if ($parts === []) {
+            return '';
+        }
+
+        return '<div class="polski-safety">' . implode('', $parts) . '</div>';
+    }
+
+    /**
      * Get safety document attachment IDs.
      *
      * @return list<int>

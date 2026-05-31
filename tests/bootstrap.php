@@ -410,10 +410,59 @@ if (! function_exists('wp_parse_args')) {
     }
 }
 
+if (! function_exists('shortcode_atts')) {
+    function shortcode_atts(array $pairs, array $atts, string $shortcode = ''): array
+    {
+        return array_merge($pairs, array_intersect_key($atts, $pairs));
+    }
+}
+
 if (! function_exists('apply_filters')) {
     function apply_filters(string $hookName, mixed $value, mixed ...$args): mixed
     {
         return $value;
+    }
+}
+
+if (! function_exists('get_queried_object')) {
+    function get_queried_object(): mixed
+    {
+        return $GLOBALS['polski_test_queried_object'] ?? null;
+    }
+}
+
+if (! function_exists('is_shop')) {
+    function is_shop(): bool
+    {
+        return (bool) ($GLOBALS['polski_test_is_shop'] ?? false);
+    }
+}
+
+if (! function_exists('is_post_type_archive')) {
+    function is_post_type_archive(string $postType = ''): bool
+    {
+        return $postType === 'product' && (bool) ($GLOBALS['polski_test_is_product_archive'] ?? false);
+    }
+}
+
+if (! function_exists('is_product_category')) {
+    function is_product_category(): bool
+    {
+        return (bool) ($GLOBALS['polski_test_is_product_category'] ?? false);
+    }
+}
+
+if (! function_exists('is_product_tag')) {
+    function is_product_tag(): bool
+    {
+        return (bool) ($GLOBALS['polski_test_is_product_tag'] ?? false);
+    }
+}
+
+if (! function_exists('is_product_taxonomy')) {
+    function is_product_taxonomy(): bool
+    {
+        return (bool) ($GLOBALS['polski_test_is_product_taxonomy'] ?? false);
     }
 }
 
@@ -487,6 +536,13 @@ if (! function_exists('wc_get_product')) {
     function wc_get_product(int $productId): ?object
     {
         return null;
+    }
+}
+
+if (! function_exists('wc_get_attribute_taxonomy_names')) {
+    function wc_get_attribute_taxonomy_names(): array
+    {
+        return ['pa_color', 'pa_size', 'pa_brand'];
     }
 }
 

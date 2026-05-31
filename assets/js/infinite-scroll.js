@@ -26,11 +26,26 @@
     let nextPageUrl = root.dataset.nextPage || '';
     let loading = false;
     let autoLoaded = 0;
+    let statusClearTimer = null;
 
     const setStatus = (message) => {
+        if (statusClearTimer) {
+            window.clearTimeout(statusClearTimer);
+            statusClearTimer = null;
+        }
         if (status) {
             status.textContent = message || '';
         }
+    };
+
+    // Announce a transient message via the aria-live status region, then clear
+    // it so the live region is not left cluttered for sighted users.
+    const announce = (message) => {
+        if (!message) {
+            return;
+        }
+        setStatus(message);
+        statusClearTimer = window.setTimeout(() => setStatus(''), 3000);
     };
 
     const updateDoneState = () => {
@@ -47,6 +62,7 @@
 
         loading = true;
         button.disabled = true;
+        button.setAttribute('aria-busy', 'true');
         setStatus((window.polskiInfiniteScroll && window.polskiInfiniteScroll.loadingText) || '');
 
         try {
@@ -64,13 +80,18 @@
             }
 
             nextPageUrl = newPaginationNext ? newPaginationNext.href : '';
-            setStatus('');
+
+            if (nextPageUrl) {
+                announce((window.polskiInfiniteScroll && window.polskiInfiniteScroll.loadedText) || '');
+            }
+
             updateDoneState();
         } catch (error) {
             setStatus((window.polskiInfiniteScroll && window.polskiInfiniteScroll.errorText) || '');
         } finally {
             loading = false;
             button.disabled = false;
+            button.removeAttribute('aria-busy');
         }
     };
 

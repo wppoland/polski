@@ -1,3 +1,5 @@
+@import url('polski-ui-tokens.css');
+
 .polski-quick-view-trigger {
     margin-top: 10px;
 }
@@ -11,7 +13,7 @@
 .polski-quick-view-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, .55);
+    background: var(--polski-overlay-bg);
 }
 
 .polski-quick-view-dialog {
@@ -21,10 +23,10 @@
     max-height: calc(100vh - 32px);
     overflow: auto;
     margin: 16px auto;
-    background: #fff;
-    border-radius: 16px;
+    background: var(--polski-surface-bg);
+    border-radius: var(--polski-surface-radius-lg);
     padding: 24px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+    box-shadow: var(--polski-surface-shadow);
 }
 
 .polski-quick-view-close {
@@ -50,7 +52,7 @@
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: var(--polski-surface-radius-md);
 }
 
 .polski-quick-view-gallery {

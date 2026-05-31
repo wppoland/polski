@@ -75,7 +75,7 @@ final class CompareService implements Bootable, HasHooks
 
     public function enqueueAssets(): void
     {
-        if (! $this->isEnabled()) {
+        if (! $this->isEnabled() || ! $this->shouldEnqueueAssets()) {
             return;
         }
 
@@ -91,7 +91,7 @@ final class CompareService implements Bootable, HasHooks
             \Polski\Plugin::instance()->url('assets/js/compare.js'),
             [],
             \Polski\VERSION,
-            true,
+            ['in_footer' => true, 'strategy' => 'defer'],
         );
 
         wp_localize_script('polski-compare', 'polskiCompare', [
@@ -545,6 +545,24 @@ final class CompareService implements Bootable, HasHooks
         }
 
         return $differences;
+    }
+
+    /**
+     * Limit asset output to the contexts where compare UI can surface:
+     * shop/taxonomy/single loops, the account comparison endpoint, and -
+     * when the opt-in sticky bar is enabled - anywhere in the footer.
+     */
+    private function shouldEnqueueAssets(): bool
+    {
+        if (is_admin()) {
+            return false;
+        }
+
+        if (is_shop() || is_product() || is_product_taxonomy() || is_account_page()) {
+            return true;
+        }
+
+        return ! empty($this->getSettings()['show_sticky_bar']);
     }
 
     private function getMaxItems(): int

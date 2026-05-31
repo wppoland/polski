@@ -16,10 +16,12 @@ defined('ABSPATH') || exit;
 $polski_images = $polski_service->getProductImages($polski_product);
 $polski_priceHtml = $polski_service->getPriceHtml($polski_product);
 $polski_unitPriceHtml = $polski_service->getUnitPriceHtml($polski_product);
+$polski_omnibusPriceHtml = $polski_service->getOmnibusPriceHtml($polski_product);
 $polski_sku = $polski_service->getSku($polski_product);
 $polski_deliveryTimeHtml = $polski_service->getDeliveryTimeHtml($polski_product);
 $polski_brandHtml = $polski_service->getBrandHtml($polski_product);
 $polski_manufacturerHtml = $polski_service->getManufacturerHtml($polski_product);
+$polski_gpsrHtml = $polski_service->getGpsrInfoHtml($polski_product);
 $polski_description = (bool) ($polski_settings['show_short_description'] ?? true) ? wpautop(wp_kses_post($polski_product->get_short_description())) : '';
 ?>
 <div class="polski-quick-view-product product product-type-<?php echo esc_attr($polski_product->get_type()); ?>">
@@ -65,6 +67,10 @@ $polski_description = (bool) ($polski_settings['show_short_description'] ?? true
                 <div class="polski-quick-view-unit-price"><?php echo wp_kses_post($polski_unitPriceHtml); ?></div>
             <?php endif; ?>
 
+            <?php if ($polski_omnibusPriceHtml !== '') : ?>
+                <div class="polski-quick-view-omnibus"><?php echo wp_kses_post($polski_omnibusPriceHtml); ?></div>
+            <?php endif; ?>
+
             <?php if ($polski_deliveryTimeHtml !== '') : ?>
                 <div class="polski-quick-view-delivery"><?php echo wp_kses_post($polski_deliveryTimeHtml); ?></div>
             <?php endif; ?>
@@ -75,6 +81,10 @@ $polski_description = (bool) ($polski_settings['show_short_description'] ?? true
 
             <?php if ($polski_manufacturerHtml !== '') : ?>
                 <div class="polski-quick-view-manufacturer"><?php echo wp_kses_post($polski_manufacturerHtml); ?></div>
+            <?php endif; ?>
+
+            <?php if ($polski_gpsrHtml !== '') : ?>
+                <div class="polski-quick-view-gpsr"><?php echo wp_kses_post($polski_gpsrHtml); ?></div>
             <?php endif; ?>
 
             <?php if ($polski_description !== '') : ?>

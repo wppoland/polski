@@ -142,6 +142,15 @@ return static function (Container $c): void {
         return new WithdrawalRepository($wpdb);
     });
 
+    $c->singleton(\Polski\Repository\ReturnRepository::class, static function () {
+        global $wpdb;
+        return new \Polski\Repository\ReturnRepository($wpdb);
+    });
+
+    $c->singleton(\Polski\Service\ReturnRequestService::class, static fn () => new \Polski\Service\ReturnRequestService(
+        $c->get(\Polski\Repository\ReturnRepository::class),
+    ));
+
     // Services.
     $c->singleton(TaxDisplayService::class, static fn () => new TaxDisplayService());
 
@@ -190,6 +199,8 @@ return static function (Container $c): void {
     $c->singleton(BadgeService::class, static fn () => new BadgeService(
         $c->get(TemplateLoader::class),
     ));
+
+    $c->singleton(\Polski\Service\DynamicPricingService::class, static fn () => new \Polski\Service\DynamicPricingService());
     $c->singleton(TabManagerService::class, static fn () => new TabManagerService());
     $c->singleton(FeaturedVideoService::class, static fn () => new FeaturedVideoService(
         $c->get(TemplateLoader::class),
@@ -231,6 +242,7 @@ return static function (Container $c): void {
     $c->singleton(LiveCartService::class, static fn () => new LiveCartService());
     $c->singleton(SearchService::class, static fn () => new SearchService(
         $c->get(TemplateLoader::class),
+        $c->get(PriceDisplayService::class),
     ));
 
     $c->singleton(WithdrawalService::class, static fn () => new WithdrawalService(
@@ -423,6 +435,7 @@ return static function (Container $c): void {
     $c->singleton(LoopHooks::class, static fn () => new LoopHooks(
         $c->get(PriceDisplayService::class),
         $c->get(ProductInfoService::class),
+        $c->get(DeliveryTimeService::class),
         $c->get(ShopmarkManager::class),
         $c->get(TemplateLoader::class),
     ));
