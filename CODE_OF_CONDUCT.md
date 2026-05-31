@@ -22,7 +22,7 @@ permission.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behaviour may be reported
-to the maintainers at **kontakt@wppoland.com**. All complaints will be reviewed and
+to the maintainers at **hello@wppoland.com**. All complaints will be reviewed and
 investigated promptly and fairly.
 
 ## Attribution

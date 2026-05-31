@@ -174,7 +174,7 @@ final class WithdrawalExemptionService implements HasHooks
 
     /**
      * Render Add form fields for product_cat. The "Add" screen does not pre-fill from
-     * existing term meta — just emits the controls.
+     * existing term meta - just emits the controls.
      */
     public function renderAddTermFields(): void
     {
@@ -189,7 +189,7 @@ final class WithdrawalExemptionService implements HasHooks
         <div class="form-field">
             <label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Podstawa wyłączenia', 'polski'); ?></label>
             <select id="polski_withdrawal_exempt_reason" name="polski_withdrawal_exempt_reason">
-                <option value=""><?php esc_html_e('— wybierz —', 'polski'); ?></option>
+                <option value=""><?php esc_html_e('- wybierz -', 'polski'); ?></option>
                 <?php foreach (WithdrawalExemptionReason::choices() as $choice) : ?>
                     <option value="<?php echo esc_attr($choice['value']); ?>"><?php echo esc_html($choice['label']); ?></option>
                 <?php endforeach; ?>
@@ -225,7 +225,7 @@ final class WithdrawalExemptionService implements HasHooks
             <th scope="row"><label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Podstawa wyłączenia', 'polski'); ?></label></th>
             <td>
                 <select id="polski_withdrawal_exempt_reason" name="polski_withdrawal_exempt_reason">
-                    <option value=""><?php esc_html_e('— wybierz —', 'polski'); ?></option>
+                    <option value=""><?php esc_html_e('- wybierz -', 'polski'); ?></option>
                     <?php foreach (WithdrawalExemptionReason::choices() as $choice) : ?>
                         <option value="<?php echo esc_attr($choice['value']); ?>" <?php selected($reason, $choice['value']); ?>>
                             <?php echo esc_html($choice['label']); ?>

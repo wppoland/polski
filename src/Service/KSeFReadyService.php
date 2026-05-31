@@ -133,7 +133,7 @@ final class KSeFReadyService implements HasHooks
         $required = $order->get_meta('_polski_ksef_required', true);
 
         if ($required !== 'yes') {
-            echo '<span style="color:#ccc;">—</span>';
+            echo '<span style="color:#ccc;">-</span>';
             return;
         }
 

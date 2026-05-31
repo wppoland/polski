@@ -30,7 +30,7 @@ final class WithdrawalBlocksService implements HasHooks
         }
 
         register_block_type('polski/withdrawal-lookup', [
-            'title' => __('Polski — withdrawal lookup', 'polski'),
+            'title' => __('Polski - withdrawal lookup', 'polski'),
             'description' => __('Email + order number lookup form for guests to file a withdrawal.', 'polski'),
             'category' => 'widgets',
             'icon' => 'undo',
@@ -39,7 +39,7 @@ final class WithdrawalBlocksService implements HasHooks
         ]);
 
         register_block_type('polski/withdrawal-info', [
-            'title' => __('Polski — Annex I(A) information', 'polski'),
+            'title' => __('Polski - Annex I(A) information', 'polski'),
             'description' => __('Generated information about the consumer right of withdrawal (Annex I(A)).', 'polski'),
             'category' => 'widgets',
             'icon' => 'info',
@@ -48,7 +48,7 @@ final class WithdrawalBlocksService implements HasHooks
         ]);
 
         register_block_type('polski/withdrawal-form', [
-            'title' => __('Polski — Annex I(B) form template', 'polski'),
+            'title' => __('Polski - Annex I(B) form template', 'polski'),
             'description' => __('The model withdrawal form template (Annex I(B)) pre-filled with merchant data.', 'polski'),
             'category' => 'widgets',
             'icon' => 'media-document',

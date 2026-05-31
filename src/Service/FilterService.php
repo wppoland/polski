@@ -893,7 +893,7 @@ final class FilterService implements Bootable, HasHooks
         foreach ($grouped[$parentId] ?? [] as $term) {
             $items[] = [
                 'term' => $term,
-                'label' => str_repeat('— ', $depth) . $term->name,
+                'label' => str_repeat('- ', $depth) . $term->name,
                 'depth' => $depth,
             ];
 

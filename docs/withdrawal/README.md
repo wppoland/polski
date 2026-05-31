@@ -13,7 +13,7 @@ reporting, multi-language Annex, integrations).
 | Custom order statuses (`wc-withdrawal-requested`, `-partial`, `-completed`) | `Polski\Service\WithdrawalOrderStatusService` |
 | Guest flow (email + order number → magic-link) | `Polski\Service\GuestWithdrawalService` |
 | Annex I(A) + I(B) generator (PL) | `Polski\Service\AnnexGeneratorService` |
-| Per-product + per-category exemptions (Art. 38 pkt 3–13) | `Polski\Service\WithdrawalExemptionService` + `Polski\Enum\WithdrawalExemptionReason` |
+| Per-product + per-category exemptions (Art. 38 pkt 3-13) | `Polski\Service\WithdrawalExemptionService` + `Polski\Enum\WithdrawalExemptionReason` |
 | Art. 16(m) digital consent (required / optional / hidden) | `Polski\Service\DigitalConsentService` |
 | "Moje odstąpienia" My Account tab | `Polski\Service\MyAccountWithdrawalsService` |
 | Admin manual registration (phone / e-mail / letter / in-store) | `Polski\Admin\WithdrawalsAdminPage` |

@@ -595,11 +595,11 @@ if (! function_exists('sanitize_key')) {
     }
 }
 
-// Intentionally not stubbing current_time() here — WaitlistRepositoryTest defines
+// Intentionally not stubbing current_time() here - WaitlistRepositoryTest defines
 // its own namespaced shim that returns a fixed fixture string. Withdrawal tests
 // don't exercise code paths that hit current_time().
 
-// Intentionally not stubbing get_bloginfo() here — existing tests
+// Intentionally not stubbing get_bloginfo() here - existing tests
 // (LlmsTxtServiceTest) define their own namespaced shim guarded by function_exists().
 // Tests that exercise code paths reaching get_bloginfo() either seed
 // polski_general.company_name (so the ?? fallback short-circuits) or define

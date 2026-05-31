@@ -152,7 +152,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_FAIL,
                 'label' => $label,
-                'detail' => __('Guest checkout is disabled AND login is required — customers are forced to create an account. EU Directive 2023/2673 considers this a dark pattern unless justified (e.g. B2B). Enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
+                'detail' => __('Guest checkout is disabled AND login is required - customers are forced to create an account. EU Directive 2023/2673 considers this a dark pattern unless justified (e.g. B2B). Enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
             ];
         }
 

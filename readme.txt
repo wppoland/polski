@@ -23,6 +23,8 @@ This plugin helps you configure store workflows related to Polish and EU market 
 * **Documentation** - https://polski.wppoland.com/
 * **Plugin page (Polish)** - https://wppoland.com/pl/polski/
 * **Plugin page (English)** - https://wppoland.com/en/polski/
+* **Source code (GitHub)** - https://github.com/wppoland/polski
+* **Report issues or request features** - https://github.com/wppoland/polski/issues
 
 = Why Polski for WooCommerce? =
 
@@ -238,6 +240,8 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 = 1.18.0 =
 * Visual identity refresh across the admin: a new Polski brand with self-hosted Schibsted Grotesk and Hanken Grotesk webfonts (font-display swap), a monogram menu icon and a wordmark dashboard header. Admin styling loads only on the plugin's own screens, never on the storefront, to protect Core Web Vitals.
 * Storefront structured data: the plugin now augments WooCommerce's own Product and Offer JSON-LD (no duplicate graph) with a priceValidUntil value and, on sale products, the truthful Omnibus lowest 30-day price as a MinimumPrice specification for better rich results and machine readability.
+* Full localization: complete, reviewed translations for eight languages - Polish, German, Czech, Slovak, Ukrainian, Simplified Chinese, Belarusian, and Lithuanian - with every interface string covered and no fuzzy entries.
+* Typography cleanup: replaced long dashes with hyphens across interface strings and all translation catalogs for consistent rendering.
 
 = 1.17.0 =
 * Store health monitor: new optional module (off by default) for continuous, passive monitoring of store operations. Three sensors run every 5 minutes via WP-Cron: front-end fatal errors (`shutdown` handler, storefront only), the checkout failure rate (observes `woocommerce_checkout_order_processed`, the Store API equivalent, and `woocommerce_order_status_failed` over a rolling 2-hour window), and a sales anomaly check (previous full hour vs the typical order count for the same weekday/hour over the past 8 weeks, evaluated at most once per hour). No synthetic orders are ever placed. Alerts go out by email and optional JSON webhook (Slack/Discord-compatible) with a configurable cooldown; a hard outage also records an entry in the security incident log when that module is enabled. Health dashboard under Reports & Tools with a manual "Run check now", an admin notice when status is not OK, and a read-only REST endpoint `GET /polski/v1/store-health`. Block checkout is covered through the Store API hook. Settings: alert email/webhook, failure-rate threshold and minimum sample, sales anomaly threshold, and alert cooldown.
@@ -288,7 +292,7 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 * New module: Business identification. Renders the shop's business data (name, address, NIP, REGON, email, phone) as a `[polski_business_info]` shortcode and a dynamic Gutenberg block `polski/business-info`. Reads values set in the setup wizard (`polski_general` option). Block and inline formats with configurable separator.
 
 = 1.8.1 =
-* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` — ready for Dependency-Track / Trivy.
+* New module: SBOM generator. Emits a CycloneDX 1.4 JSON document listing PHP (composer.lock) and JS (package-lock.json) dependencies plus plugin metadata. Admin page `Polski > SBOM` with one-click download for FREE and (when installed) PRO. Content-Type `application/vnd.cyclonedx+json` - ready for Dependency-Track / Trivy.
 
 = 1.8.0 =
 * New module: CRA incident reporting. Records actively-exploited vulnerabilities and security incidents with a CRA Article 14 early-warning deadline (24h for incidents/exploits, 72h for near misses). Admin page `Polski > CRA incidents` to record, dispatch (webhook + email) and mark resolved. JSON export per ENISA SRP draft schema. Hourly cron checks for deadlines approaching. Action hooks `polski_cra_incident_recorded` and `polski_cra_incident_deadline_approaching`. Migration 2.1.0 creates `polski_cra_incidents`.
