@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Polski - self-hosted webfonts (PRODUCTION)
+   Polski - self-hosted webfonts for production
    Enqueue this FIRST (before polski-brand.css). Replaces the dev-only
    @import in polski-brand.css so shipped CSS has no render-blocking import.
 

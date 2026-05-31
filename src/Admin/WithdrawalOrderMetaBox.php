@@ -13,7 +13,7 @@ use Polski\Service\WithdrawalService;
  * Sidebar metabox on the WooCommerce order edit screen that surfaces the
  * current withdrawal request (if any) and offers one-click Confirm /
  * Reject buttons. Pro adds a "Process refund" button via the existing
- * polski-pro-withdrawal-refund metabox.
+ * refund metabox.
  *
  * Lives on both the classic post.php?post=…&action=edit screen and the
  * HPOS woocommerce_page_wc-orders screen.

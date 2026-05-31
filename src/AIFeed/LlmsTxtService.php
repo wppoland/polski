@@ -19,7 +19,7 @@ use Polski\Enum\LegalPageType;
  *   ## Section
  *   - [Title](url): description
  *
- * Sections are extensible via filters so polski-pro and integrators can add
+ * Sections are extensible via filters so integrations can add
  * their own without touching this class.
  */
 final class LlmsTxtService

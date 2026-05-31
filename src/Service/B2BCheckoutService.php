@@ -14,10 +14,10 @@ use WC_Order;
  *
  * Adds an optional "Buying as company" toggle plus optional REGON, IBAN,
  * and NIP fields to WooCommerce classic checkout. The fields are saved
- * to standard order meta keys so polski-pro (KSeF, invoices) can consume
+ * to standard order meta keys so KSeF and invoice integrations can consume
  * them without additional integration.
  *
- * Coexistence with polski-pro NipValidator: when pro registers its own
+ * Coexistence with custom NIP validators: when an integration registers its own
  * billing_nip field this service skips its own NIP registration to avoid
  * a duplicate field. REGON and IBAN are always added by free.
  */
@@ -58,7 +58,7 @@ final class B2BCheckoutService
     }
 
     /**
-     * Should we register our own NIP field? Skipped when polski-pro's
+     * Should we register our own NIP field? Skipped when an integration's
      * NipValidator is active to avoid double registration.
      */
     public function shouldRegisterNipField(): bool

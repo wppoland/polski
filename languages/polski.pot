@@ -9,14 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-31T10:27:12+00:00\n"
+"POT-Creation-Date: 2026-05-31T10:35:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: polski\n"
 
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
+#: src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
 msgstr ""
 
@@ -164,25 +165,21 @@ msgstr ""
 
 #. translators: %s is the WooCommerce tax settings URL.
 #: config/defaults.php:45
-#, php-format
 msgid "Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku, 23%%, 8%%, 5%% i 0%%."
 msgstr ""
 
 #. translators: %s is the WooCommerce shipping zones URL.
 #: config/defaults.php:47
-#, php-format
 msgid "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 msgstr ""
 
 #. translators: %s is the WooCommerce product edit URL for Polski product data.
 #: config/defaults.php:49
-#, php-format
 msgid "Uzupełnij dane produktów, dodaj ceny jednostkowe i czasy dostawy w <a href=\"%s\">zakładce Polski</a> dla każdego produktu."
 msgstr ""
 
 #. translators: %s is the WooCommerce checkout page URL.
 #: config/defaults.php:51
-#, php-format
 msgid "Przetestuj checkout, dodaj produkt do koszyka i sprawdź checkboxy prawne oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
 msgstr ""
 
@@ -276,7 +273,6 @@ msgstr ""
 
 #. translators: %s is the terms and conditions page URL.
 #: config/defaults.php:108
-#, php-format
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
 msgstr ""
 
@@ -290,7 +286,6 @@ msgstr ""
 
 #. translators: %s is the privacy policy page URL.
 #: config/defaults.php:113
-#, php-format
 msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Politykę prywatności</a>."
 msgstr ""
 
@@ -304,7 +299,6 @@ msgstr ""
 
 #. translators: %s is the withdrawal information page URL.
 #: config/defaults.php:118
-#, php-format
 msgid "Potwierdzam, że zostałem poinformowany o <a href=\"%s\" target=\"_blank\">prawie odstąpienia od umowy</a> w ciągu 14 dni."
 msgstr ""
 
@@ -1304,19 +1298,16 @@ msgstr ""
 
 #. translators: 1: customer first name (possibly anonymized), 2: product name
 #: config/defaults.php:744
-#, php-format
 msgid "%1$s kupił(a) %2$s"
 msgstr ""
 
 #. translators: %d: number of minutes since the order
 #: config/defaults.php:746
-#, php-format
 msgid "%d min temu"
 msgstr ""
 
 #. translators: %d: number of hours since the order
 #: config/defaults.php:748
-#, php-format
 msgid "%d godz. temu"
 msgstr ""
 
@@ -1369,7 +1360,6 @@ msgstr ""
 
 #. translators: 1: Required PHP version, 2: Current PHP version
 #: polski.php:68
-#, php-format
 msgid "Polski requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
 
@@ -1379,14 +1369,13 @@ msgstr ""
 
 #. translators: 1: Required WC version, 2: Current WC version
 #: polski.php:112
-#, php-format
 msgid "Polski requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
 msgstr ""
 
 #: src/Admin/AdminNotes.php:46
 #: src/Admin/CRAIncidentsPage.php:277
 #: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:83
+#: src/Admin/SBOMPage.php:81
 #: src/Service/ComplaintTemplateService.php:78
 #: src/Service/RodoTrainingDocsService.php:76
 msgid "Insufficient permissions."
@@ -1750,7 +1739,6 @@ msgstr ""
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
 #: src/Admin/AdminPage.php:860
-#, php-format
 msgid "%1$d of %2$d ready"
 msgstr ""
 
@@ -1804,25 +1792,21 @@ msgstr ""
 
 #. translators: %s: tax settings URL
 #: src/Admin/AdminPage.php:1000
-#, php-format
 msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
 msgstr ""
 
 #. translators: %s: shipping settings URL
 #: src/Admin/AdminPage.php:1012
-#, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr ""
 
 #. translators: %s: product list URL
 #: src/Admin/AdminPage.php:1023
-#, php-format
 msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
 msgstr ""
 
 #. translators: %s: checkout URL
 #: src/Admin/AdminPage.php:1034
-#, php-format
 msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
 msgstr ""
 
@@ -1910,19 +1894,16 @@ msgstr ""
 
 #. translators: %s: notification timestamp
 #: src/Admin/CRAIncidentsPage.php:155
-#, php-format
 msgid "Notified %s"
 msgstr ""
 
 #. translators: %d: hours
 #: src/Admin/CRAIncidentsPage.php:164
-#, php-format
 msgid "Overdue by %dh"
 msgstr ""
 
 #. translators: %d: hours
 #: src/Admin/CRAIncidentsPage.php:173
-#, php-format
 msgid "%dh remaining"
 msgstr ""
 
@@ -2544,7 +2525,6 @@ msgstr ""
 
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:218
-#, php-format
 msgid "Use %s as a placeholder for the terms page link"
 msgstr ""
 
@@ -2570,7 +2550,6 @@ msgstr ""
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:223
-#, php-format
 msgid "Use %s as a placeholder for the privacy policy link"
 msgstr ""
 
@@ -2595,7 +2574,6 @@ msgstr ""
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:228
-#, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr ""
 
@@ -5316,162 +5294,157 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1417
-msgid "PRO"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1420
 msgid "Help"
 msgstr ""
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1481
-#, php-format
+#: src/Admin/ModulesPage.php:1475
 msgid "Edit %s settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1484
+#: src/Admin/ModulesPage.php:1478
 msgid "Edit settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1494
-#: src/Admin/ModulesPage.php:1495
+#: src/Admin/ModulesPage.php:1488
+#: src/Admin/ModulesPage.php:1489
 msgid "Open documentation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1522
 msgid "Save"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1616
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1686
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1699
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1693
+#: src/Admin/ModulesPage.php:1709
 msgid "Invalid request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1899
+#: src/Admin/ModulesPage.php:1893
 msgid "Legal & Compliance"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1901
+#: src/Admin/ModulesPage.php:1895
 msgid "Tax & Pricing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1903
+#: src/Admin/ModulesPage.php:1897
 msgid "Checkout & Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1905
+#: src/Admin/ModulesPage.php:1899
 msgid "Content & Trust"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1907
+#: src/Admin/ModulesPage.php:1901
 msgid "Advanced & Tools"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1909
+#: src/Admin/ModulesPage.php:1903
 #: src/Admin/WithdrawalsAdminPage.php:422
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1974
 msgid "Could not save module state. Please try again."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1997
+#: src/Admin/ModulesPage.php:1991
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1998
+#: src/Admin/ModulesPage.php:1992
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2003
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2010
+#: src/Admin/ModulesPage.php:2004
 msgid "not installed"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2019
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2027
+#: src/Admin/ModulesPage.php:2021
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2047
+#: src/Admin/ModulesPage.php:2041
 msgid "OSS observer service is unavailable."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2048
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2054
 msgid "Install One Stop Shop"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2059
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2074
+#: src/Admin/ModulesPage.php:2068
 msgid "One Stop Shop plugin detected."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2072
 msgid "OSS procedure"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2080
+#: src/Admin/ModulesPage.php:2074
 msgid "enabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2081
+#: src/Admin/ModulesPage.php:2075
 msgid "disabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2085
+#: src/Admin/ModulesPage.php:2079
 msgid "Auto observer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2087
+#: src/Admin/ModulesPage.php:2081
 msgid "watching threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2088
+#: src/Admin/ModulesPage.php:2082
 msgid "off"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2093
+#: src/Admin/ModulesPage.php:2087
 msgid "Open OSS settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2151
+#: src/Admin/ModulesPage.php:2145
 msgid "detected, integration active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2154
+#: src/Admin/ModulesPage.php:2148
 msgid "install"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2166
+#: src/Admin/ModulesPage.php:2160
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2168
+#: src/Admin/ModulesPage.php:2162
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr ""
 
@@ -5541,7 +5514,6 @@ msgstr ""
 
 #. translators: %d: content length in characters
 #: src/Admin/PageCompliancePage.php:193
-#, php-format
 msgid "Content length: %d chars"
 msgstr ""
 
@@ -5889,37 +5861,29 @@ msgstr ""
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr ""
 
-#: src/Admin/SBOMPage.php:41
-#: src/Admin/SBOMPage.php:42
+#: src/Admin/SBOMPage.php:39
+#: src/Admin/SBOMPage.php:40
 msgid "SBOM"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:51
+#: src/Admin/SBOMPage.php:49
 msgid "Software Bill of Materials (SBOM)"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:52
+#: src/Admin/SBOMPage.php:50
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr ""
 
-#: src/Admin/SBOMPage.php:58
+#: src/Admin/SBOMPage.php:56
 msgid "Path"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:74
+#: src/Admin/SBOMPage.php:72
 msgid "Download SBOM (JSON)"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:90
+#: src/Admin/SBOMPage.php:88
 msgid "Unknown plugin target."
-msgstr ""
-
-#: src/Admin/SBOMPage.php:114
-msgid "Polski for WooCommerce (FREE)"
-msgstr ""
-
-#: src/Admin/SBOMPage.php:122
-msgid "Polski Pro for WooCommerce"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
@@ -5966,7 +5930,6 @@ msgstr ""
 
 #. translators: %d = pending withdrawals count
 #: src/Admin/WithdrawalsAdminPage.php:70
-#, php-format
 msgid "%d pending withdrawal"
 msgid_plural "%d pending withdrawals"
 msgstr[0] ""
@@ -6064,7 +6027,6 @@ msgstr ""
 
 #. translators: %d: declaration id
 #: src/Admin/WithdrawalsAdminPage.php:212
-#, php-format
 msgid "Select withdrawal #%d"
 msgstr ""
 
@@ -6083,7 +6045,6 @@ msgstr ""
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:306
-#, php-format
 msgid "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
 msgid_plural "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
 msgstr[0] ""
@@ -6095,7 +6056,6 @@ msgstr ""
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:328
-#, php-format
 msgid "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
 msgid_plural "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
 msgstr[0] ""
@@ -6155,7 +6115,6 @@ msgstr ""
 
 #. translators: 1: declaration id, 2: channel, 3: actor
 #: src/Admin/WithdrawalsAdminPage.php:491
-#, php-format
 msgid "[Polski] Withdrawal request #%1$d registered manually (channel: %2$s) by %3$s."
 msgstr ""
 
@@ -6429,7 +6388,6 @@ msgstr ""
 
 #. translators: %s: label of the legal checkbox that must be accepted
 #: src/Block/StoreApi/CheckoutValidation.php:186
-#, php-format
 msgid "Prosz&#281; zaakceptowa&#263;: %s"
 msgstr ""
 
@@ -6669,7 +6627,6 @@ msgstr ""
 
 #. translators: 1: severity, 2: component
 #: src/CRA/IncidentService.php:236
-#, php-format
 msgid "[CRA early warning] %1$s - %2$s"
 msgstr ""
 
@@ -6679,37 +6636,31 @@ msgstr ""
 
 #. translators: %s: incident title
 #: src/CRA/IncidentService.php:245
-#, php-format
 msgid "Title: %s"
 msgstr ""
 
 #. translators: %s: incident kind label
 #: src/CRA/IncidentService.php:247
-#, php-format
 msgid "Kind: %s"
 msgstr ""
 
 #. translators: %s: incident severity label
 #: src/CRA/IncidentService.php:249
-#, php-format
 msgid "Severity: %s"
 msgstr ""
 
 #. translators: 1: affected component name, 2: affected version range
 #: src/CRA/IncidentService.php:252
-#, php-format
 msgid "Affected: %1$s %2$s"
 msgstr ""
 
 #. translators: %s: ISO 8601 datetime when the incident was discovered
 #: src/CRA/IncidentService.php:257
-#, php-format
 msgid "Discovered: %s"
 msgstr ""
 
 #. translators: %s: ISO 8601 datetime by which the report must be filed
 #: src/CRA/IncidentService.php:259
-#, php-format
 msgid "Deadline: %s"
 msgstr ""
 
@@ -6740,7 +6691,6 @@ msgstr ""
 
 #. translators: %d: delivery time count in days
 #: src/Enum/DeliveryTimeUnit.php:16
-#, php-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
@@ -6748,7 +6698,6 @@ msgstr[1] ""
 
 #. translators: %d: delivery time count in business days
 #: src/Enum/DeliveryTimeUnit.php:18
-#, php-format
 msgid "%d business day"
 msgid_plural "%d business days"
 msgstr[0] ""
@@ -6756,7 +6705,6 @@ msgstr[1] ""
 
 #. translators: %d: delivery time count in weeks
 #: src/Enum/DeliveryTimeUnit.php:20
-#, php-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
@@ -7679,13 +7627,11 @@ msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:41
-#, php-format
 msgid "Mają Państwo prawo odstąpić od niniejszej umowy w terminie %d dni bez podania jakiejkolwiek przyczyny."
 msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:46
-#, php-format
 msgid "Termin do odstąpienia od umowy wygasa po upływie %d dni od dnia, w którym weszli Państwo w posiadanie rzeczy lub w którym osoba trzecia inna niż przewoźnik i wskazana przez Państwa weszła w posiadanie rzeczy."
 msgstr ""
 
@@ -7723,7 +7669,6 @@ msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:75
-#, php-format
 msgid "W przypadku odstąpienia od niniejszej umowy zwracamy Państwu wszystkie otrzymane od Państwa płatności, w tym koszty dostarczenia rzeczy (z wyjątkiem dodatkowych kosztów wynikających z wybranego przez Państwa sposobu dostarczenia innego niż najtańszy zwykły sposób dostarczenia oferowany przez nas), niezwłocznie, a w każdym przypadku nie później niż %d dni od dnia, w którym zostaliśmy poinformowani o Państwa decyzji o wykonaniu prawa odstąpienia od niniejszej umowy."
 msgstr ""
 
@@ -7789,13 +7734,11 @@ msgstr ""
 
 #. translators: %s: lookup page URL where the consumer can file an online withdrawal declaration
 #: src/Service/AnnexGeneratorService.php:133
-#, php-format
 msgid "Możesz także złożyć oświadczenie online: <a href=\"%s\">formularz odstąpienia</a>."
 msgstr ""
 
 #. translators: 1: product name, 2: old stock, 3: new stock
 #: src/Service/AutoRestoreStockService.php:84
-#, php-format
 msgid "Stock restored: %1$s (%2$d -> %3$d)"
 msgstr ""
 
@@ -7884,7 +7827,6 @@ msgstr ""
 
 #. translators: %s: checkbox label (stripped of HTML)
 #: src/Service/CheckboxService.php:172
-#, php-format
 msgid "Please accept: %s"
 msgstr ""
 
@@ -7918,7 +7860,6 @@ msgstr ""
 
 #. translators: %s: link to terms page
 #: src/Service/CheckboxService.php:451
-#, php-format
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and Conditions</a>."
 msgstr ""
 
@@ -7932,7 +7873,6 @@ msgstr ""
 
 #. translators: %s: link to privacy policy
 #: src/Service/CheckboxService.php:469
-#, php-format
 msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>."
 msgstr ""
 
@@ -7946,7 +7886,6 @@ msgstr ""
 
 #. translators: %s: link to return policy
 #: src/Service/CheckboxService.php:487
-#, php-format
 msgid "I have been informed about my <a href=\"%s\" target=\"_blank\">right to withdraw from the contract</a> within 14 days."
 msgstr ""
 
@@ -8001,7 +7940,6 @@ msgstr ""
 #. translators: %d: number of products in the compare list
 #: src/Service/CompareService.php:292
 #: src/Shortcode/ShortcodeManager.php:306
-#, php-format
 msgid "Porównaj (%d)"
 msgid_plural "Porównaj (%d)"
 msgstr[0] ""
@@ -8179,7 +8117,6 @@ msgstr ""
 #. translators: %s: license identifier
 #: src/Service/CopyrightNoticeService.php:92
 #: src/Service/CopyrightNoticeService.php:155
-#, php-format
 msgid "License: %s"
 msgstr ""
 
@@ -8193,13 +8130,11 @@ msgstr ""
 
 #. translators: %s: field label
 #: src/Service/CustomCheckoutFieldsService.php:218
-#, php-format
 msgid "%s is a required field."
 msgstr ""
 
 #. translators: %s: field label
 #: src/Service/CustomCheckoutFieldsService.php:230
-#, php-format
 msgid "%s is not a valid email address."
 msgstr ""
 
@@ -8364,7 +8299,6 @@ msgstr ""
 
 #. translators: %d: report ID
 #: src/Service/DSAService.php:95
-#, php-format
 msgid "[Polski DSA] New report #%d"
 msgstr ""
 
@@ -8485,7 +8419,6 @@ msgstr ""
 
 #. translators: %d: number of products shown after filtering.
 #: src/Service/FilterService.php:73
-#, php-format
 msgid "Zaktualizowano wyniki: %d produktów."
 msgstr ""
 
@@ -8500,7 +8433,6 @@ msgstr ""
 #. translators: %d: number of filled GPSR fields out of 8
 #: src/Service/GPSRService.php:121
 #: src/Service/GPSRService.php:124
-#, php-format
 msgid "%d/8 pól wypełnionych"
 msgstr ""
 
@@ -8546,7 +8478,6 @@ msgstr ""
 
 #. translators: %s = declaration id (POL-WD-XXXXXX)
 #: src/Service/GuestWithdrawalService.php:195
-#, php-format
 msgid "Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie - sprawdź skrzynkę odbiorczą oraz folder Spam."
 msgstr ""
 
@@ -8556,13 +8487,11 @@ msgstr ""
 
 #. translators: %s = order number
 #: src/Service/GuestWithdrawalService.php:385
-#, php-format
 msgid "Link do odstąpienia od umowy - zamówienie #%s"
 msgstr ""
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:391
-#, php-format
 msgid ""
 "Otrzymaliśmy prośbę o złożenie oświadczenia o odstąpieniu od umowy dla zamówienia #%1$s.\n"
 "\n"
@@ -8629,7 +8558,6 @@ msgstr ""
 
 #. translators: %s: formatted price amount
 #: src/Service/LiveCartService.php:225
-#, php-format
 msgid "Add %s for free shipping"
 msgstr ""
 
@@ -8829,7 +8757,6 @@ msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/PriceHistoryChartService.php:101
-#, php-format
 msgid "Price history (%d days)"
 msgstr ""
 
@@ -8885,7 +8812,6 @@ msgstr ""
 
 #. translators: %d: number of questions
 #: src/Service/ProductQAService.php:73
-#, php-format
 msgid "Questions (%d)"
 msgstr ""
 
@@ -8919,13 +8845,11 @@ msgstr ""
 
 #. translators: %s: product name
 #: src/Service/ProductQAService.php:322
-#, php-format
 msgid "New question about: %s"
 msgstr ""
 
 #. translators: %s: name of the person who asked the question
 #: src/Service/ProductQAService.php:330
-#, php-format
 msgid "Asked by: %s"
 msgstr ""
 
@@ -8993,7 +8917,6 @@ msgstr ""
 
 #. translators: 1: type, 2: order number
 #: src/Service/ReturnRequestService.php:180
-#, php-format
 msgid "%1$s received for order #%2$s"
 msgstr ""
 
@@ -9379,7 +9302,6 @@ msgstr ""
 
 #. translators: %d: number of currently open incidents
 #: src/Service/SecurityIncidentService.php:134
-#, php-format
 msgid "Currently open incidents: %d"
 msgstr ""
 
@@ -9468,7 +9390,6 @@ msgstr ""
 
 #. translators: %d: number of products
 #: src/Service/SiteAuditService.php:237
-#, php-format
 msgid "%d product(s) have a sale-to date in the past but still appear on sale. Ensure your countdown or promo widgets do not silently reset after expiry."
 msgstr ""
 
@@ -9486,7 +9407,6 @@ msgstr ""
 
 #. translators: %d: number of products
 #: src/Service/SiteAuditService.php:311
-#, php-format
 msgid "%d variable product(s) show a \"from\" price where the cheapest variant is less than 50%% of the most expensive. Consider showing a price range or clarifying the variant context to avoid misleading buyers."
 msgstr ""
 
@@ -9496,13 +9416,11 @@ msgstr ""
 
 #. translators: %d: threshold value
 #: src/Service/SiteAuditService.php:335
-#, php-format
 msgid "Low-stock threshold is %d, within a reasonable range."
 msgstr ""
 
 #. translators: %d: threshold value
 #: src/Service/SiteAuditService.php:346
-#, php-format
 msgid "Low-stock threshold is %d, which is high. A threshold above 5 can make \"Only X left\" appear on plentiful stock and create artificial urgency. Consider lowering it under WooCommerce > Settings > Products > Inventory."
 msgstr ""
 
@@ -9520,7 +9438,6 @@ msgstr ""
 
 #. translators: %s: comma-separated list of missing pages
 #: src/Service/SiteAuditService.php:387
-#, php-format
 msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
 msgstr ""
 
@@ -9538,13 +9455,11 @@ msgstr ""
 
 #. translators: %d: character count
 #: src/Service/SiteAuditService.php:430
-#, php-format
 msgid "Privacy Policy has only %d characters - it may be too short to comply with GDPR Art. 13."
 msgstr ""
 
 #. translators: %d: character count
 #: src/Service/SiteAuditService.php:441
-#, php-format
 msgid "Privacy Policy contains %d characters."
 msgstr ""
 
@@ -9574,7 +9489,6 @@ msgstr ""
 
 #. translators: %s: comma-separated list of missing fields
 #: src/Service/SiteAuditService.php:493
-#, php-format
 msgid "Missing data: %s. Fill in Polski > Settings."
 msgstr ""
 
@@ -9588,7 +9502,6 @@ msgstr ""
 
 #. translators: %d: number of pre-checked checkboxes
 #: src/Service/SiteAuditService.php:546
-#, php-format
 msgid "Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
 msgstr ""
 
@@ -9598,7 +9511,6 @@ msgstr ""
 
 #. translators: %s: the button text
 #: src/Service/SiteAuditService.php:578
-#, php-format
 msgid "Button: \"%s\" - contains info about payment obligation."
 msgstr ""
 
@@ -9608,7 +9520,6 @@ msgstr ""
 
 #. translators: %s: the button text
 #: src/Service/SiteAuditService.php:598
-#, php-format
 msgid "Button: \"%s\" - may not contain required payment info (e.g. \"Order with obligation to pay\")."
 msgstr ""
 
@@ -9722,13 +9633,11 @@ msgstr ""
 
 #. translators: 1: number of services with DPA, 2: number of tracked services
 #: src/Service/SiteAuditService.php:853
-#, php-format
 msgid "Only %1$d of %2$d tracked services have a data processing agreement marked."
 msgstr ""
 
 #. translators: %d: number of tracked services
 #: src/Service/SiteAuditService.php:865
-#, php-format
 msgid "DPA registry covers %d services and all have an agreement status marked."
 msgstr ""
 
@@ -9750,7 +9659,6 @@ msgstr ""
 
 #. translators: %d: number of open incidents
 #: src/Service/SiteAuditService.php:925
-#, php-format
 msgid "There are %d open security incidents requiring further action in the registry."
 msgstr ""
 
@@ -9804,7 +9712,6 @@ msgstr ""
 
 #. translators: %d: number of minutes since purchase
 #: src/Service/SocialProofService.php:218
-#, php-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] ""
@@ -9812,7 +9719,6 @@ msgstr[1] ""
 
 #. translators: %d: number of hours since purchase
 #: src/Service/SocialProofService.php:227
-#, php-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] ""
@@ -9937,7 +9843,6 @@ msgstr ""
 
 #. translators: %s: last check timestamp
 #: src/Service/StoreHealthMonitorService.php:268
-#, php-format
 msgid "Last check: %s UTC"
 msgstr ""
 
@@ -9967,43 +9872,36 @@ msgstr ""
 
 #. translators: 1: error message, 2: file, 3: line
 #: src/Service/StoreHealthMonitorService.php:322
-#, php-format
 msgid "Fatal error: %1$s (%2$s:%3$d)"
 msgstr ""
 
 #. translators: 1: observed checkout count, 2: minimum sample size
 #: src/Service/StoreHealthMonitorService.php:346
-#, php-format
 msgid "Insufficient data (%1$d/%2$d checkouts in the last 2h)."
 msgstr ""
 
 #. translators: 1: failed count, 2: total count, 3: failure percentage
 #: src/Service/StoreHealthMonitorService.php:361
-#, php-format
 msgid "%1$d of %2$d checkouts failed (%3$d%%) in the last 2h."
 msgstr ""
 
 #. translators: 1: failed count, 2: total count
 #: src/Service/StoreHealthMonitorService.php:373
-#, php-format
 msgid "%1$d of %2$d checkouts failed in the last 2h."
 msgstr ""
 
 #. translators: 1: expected order count
 #: src/Service/StoreHealthMonitorService.php:425
-#, php-format
 msgid "No orders in the last full hour, but ~%1$.1f are typical for this time. Traffic may not be converting."
 msgstr ""
 
 #. translators: 1: actual orders, 2: expected orders
 #: src/Service/StoreHealthMonitorService.php:434
-#, php-format
 msgid "%1$d order(s) last hour (typical ~%2$.1f)."
 msgstr ""
 
 #. translators: 1: site name, 2: status label
 #: src/Service/StoreHealthMonitorService.php:500
-#, php-format
 msgid "[%1$s] Store health: %2$s"
 msgstr ""
 
@@ -10193,38 +10091,32 @@ msgstr ""
 
 #. translators: %d = withdrawal request id
 #: src/Service/WithdrawalService.php:340
-#, php-format
 msgid "[Polski] Withdrawal request #%d filed."
 msgstr ""
 
 #. translators: 1: declaration id, 2: actor label
 #: src/Service/WithdrawalService.php:379
-#, php-format
 msgid "[Polski] Withdrawal request #%1$d confirmed by %2$s."
 msgstr ""
 
 #. translators: %d = withdrawal request id
 #: src/Service/WithdrawalService.php:429
-#, php-format
 msgid "[Polski] Withdrawal request #%d completed."
 msgstr ""
 
 #. translators: 1: declaration id, 2: actor label
 #: src/Service/WithdrawalService.php:461
-#, php-format
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
 msgstr ""
 
 #. translators: %s: free-text reason (customer-supplied for filing, operator-supplied for rejection)
 #: src/Service/WithdrawalService.php:469
 #: src/Service/WithdrawalService.php:524
-#, php-format
 msgid "Reason: %s"
 msgstr ""
 
 #. translators: %d: declaration id
 #: src/Service/WithdrawalService.php:504
-#, php-format
 msgid "[Polski] Withdrawal request #%d filed by customer."
 msgstr ""
 
@@ -10283,7 +10175,6 @@ msgstr ""
 
 #. translators: %s = settings page URL
 #: src/Service/WithdrawalSiteHealthService.php:80
-#, php-format
 msgid "Art. 11a of Directive 2023/2673 (in force from 19 June 2026) requires that every distance-selling shop provides a working withdrawal feature inside the shop, including for guests. Open <a href=\"%s\">Polski › Withdrawal settings</a> and pick a page containing the [polski_withdrawal_lookup] shortcode (or run the setup wizard's \"Publish /odstapienie/ on Finish\" step)."
 msgstr ""
 
@@ -10293,7 +10184,6 @@ msgstr ""
 
 #. translators: %s = comma-separated status slugs
 #: src/Service/WithdrawalSiteHealthService.php:101
-#, php-format
 msgid "The 14-day withdrawal clock starts when an order enters: %s."
 msgstr ""
 
@@ -10303,7 +10193,6 @@ msgstr ""
 
 #. translators: %s = settings page URL
 #: src/Service/WithdrawalSiteHealthService.php:114
-#, php-format
 msgid "Without a trigger status, the 14-day withdrawal countdown never starts and no order is eligible. Open <a href=\"%s\">Polski › Withdrawal settings</a> and tick at least one status (commonly \"Completed\" or \"Delivered\")."
 msgstr ""
 
@@ -10313,7 +10202,6 @@ msgstr ""
 
 #. translators: %s = locale slug
 #: src/Service/WithdrawalSiteHealthService.php:135
-#, php-format
 msgid "Annex I(B) is generated in: %s."
 msgstr ""
 
@@ -10331,7 +10219,6 @@ msgstr ""
 
 #. translators: %s = site locale
 #: src/Service/WithdrawalSiteHealthService.php:163
-#, php-format
 msgid "Site locale is \"%s\" but no matching Annex I(B) translation ships with the Pro plugin. Either pick an explicit locale in Polski › Withdrawal settings (PL, DE, AT, FR, NL, IT, ES) or accept the generic EN fallback."
 msgstr ""
 
@@ -10354,7 +10241,6 @@ msgstr ""
 
 #. translators: %s: order number
 #: templates/account/withdrawal-confirm.php:26
-#, php-format
 msgid "Withdrawal request for order #%s"
 msgstr ""
 
@@ -10369,7 +10255,6 @@ msgstr ""
 
 #. translators: %s: order number
 #: templates/account/withdrawal-confirm.php:87
-#, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
 msgstr ""
 
@@ -10386,13 +10271,11 @@ msgstr ""
 #: templates/emails/plain/withdrawal-rejected.php:24
 #: templates/emails/withdrawal-completed.php:31
 #: templates/emails/withdrawal-rejected.php:32
-#, php-format
 msgid "Dzień dobry %s,"
 msgstr ""
 
 #. translators: 1: order number, 2: declaration id
 #: templates/emails/plain/withdrawal-completed.php:28
-#, php-format
 msgid "Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
 msgstr ""
 
@@ -10460,7 +10343,6 @@ msgstr ""
 #. translators: 1: declaration id, 2: order number
 #: templates/emails/plain/withdrawal-rejected.php:29
 #: templates/emails/withdrawal-rejected.php:42
-#, php-format
 msgid "Niestety nie możemy zaakceptować Twojego oświadczenia o odstąpieniu (%1$s) dla zamówienia #%2$s."
 msgstr ""
 
@@ -10480,7 +10362,6 @@ msgstr ""
 
 #. translators: 1: order number, 2: declaration id
 #: templates/emails/withdrawal-completed.php:41
-#, php-format
 msgid "Z przyjemnością informujemy, że Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
 msgstr ""
 
@@ -10530,13 +10411,11 @@ msgstr ""
 
 #. translators: 1: human label, 2: URL
 #: templates/forms/dsa-report.php:63
-#, php-format
 msgid "Zgłaszasz: %1$s (%2$s)"
 msgstr ""
 
 #. translators: %s: URL
 #: templates/forms/dsa-report.php:70
-#, php-format
 msgid "Zgłaszasz: %s"
 msgstr ""
 
@@ -10621,7 +10500,6 @@ msgstr ""
 
 #. translators: 1: product name, 2: max qty
 #: templates/forms/withdrawal-form.php:135
-#, php-format
 msgid "Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s\" wynosi %2$s."
 msgstr ""
 
@@ -10645,13 +10523,11 @@ msgstr ""
 
 #. translators: %s = order number
 #: templates/forms/withdrawal-guest.php:34
-#, php-format
 msgid "Odstąpienie od umowy - zamówienie #%s"
 msgstr ""
 
 #. translators: %s = email address
 #: templates/forms/withdrawal-guest.php:44
-#, php-format
 msgid "Składasz oświadczenie na rzecz adresu: %s"
 msgstr ""
 
@@ -10689,7 +10565,6 @@ msgstr ""
 
 #. translators: 1: merchant name, 2: number of days
 #: templates/forms/withdrawal-lookup.php:60
-#, php-format
 msgid "Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się - wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia."
 msgstr ""
 
@@ -10707,7 +10582,6 @@ msgstr ""
 
 #. translators: %s = directive reference
 #: templates/forms/withdrawal-lookup.php:85
-#, php-format
 msgid "Po przesłaniu oświadczenia otrzymasz e-mail z numerem deklaracji, datą złożenia i podsumowaniem zamówienia. Uprawnienie wynika z art. 27 ustawy o prawach konsumenta wdrażającej dyrektywę %s."
 msgstr ""
 
@@ -10746,7 +10620,6 @@ msgstr ""
 
 #. translators: %d = days
 #: templates/forms/withdrawal-lookup.php:173
-#, php-format
 msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu osoby trzeciej innej niż przewoźnik."
 msgstr ""
 
@@ -10784,19 +10657,16 @@ msgstr ""
 
 #. translators: %s = support email link
 #: templates/forms/withdrawal-lookup.php:202
-#, php-format
 msgid "Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie ręcznie."
 msgstr ""
 
 #. translators: %s: merchant / shop name
 #: templates/forms/withdrawal-lookup.php:218
-#, php-format
 msgid "Kto może odstąpić od umowy w sklepie %s?"
 msgstr ""
 
 #. translators: %d: withdrawal period in days (typically 14)
 #: templates/forms/withdrawal-lookup.php:220
-#, php-format
 msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia, aby złożyć oświadczenie. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu wskazanej przez Ciebie osoby trzeciej innej niż przewoźnik."
 msgstr ""
 

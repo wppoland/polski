@@ -10,9 +10,7 @@ use Polski\Contract\HasHooks;
 use Polski\SBOM\SBOMGenerator;
 
 /**
- * Admin entry point for downloading a CycloneDX SBOM for the FREE plugin
- * and (when installed) the PRO plugin. The page is useful for security
- * audits, CRA documentation packages and Dependency-Track imports.
+ * Admin entry point for downloading a CycloneDX SBOM for this plugin.
  */
 final class SBOMPage implements HasHooks
 {
@@ -111,19 +109,11 @@ final class SBOMPage implements HasHooks
     {
         $targets = [
             'polski' => [
-                'label' => __('Polski for WooCommerce (FREE)', 'polski'),
+                'label' => __('Polski for WooCommerce', 'polski'),
                 'dir' => defined('Polski\\PLUGIN_DIR') ? \Polski\PLUGIN_DIR : WP_PLUGIN_DIR . '/polski',
                 'version' => defined('Polski\\VERSION') ? \Polski\VERSION : '',
             ],
         ];
-
-        if (defined('Polski\\Pro\\PLUGIN_DIR') && defined('Polski\\Pro\\VERSION')) {
-            $targets['polski-pro'] = [
-                'label' => __('Polski Pro for WooCommerce', 'polski'),
-                'dir' => \Polski\Pro\PLUGIN_DIR,
-                'version' => \Polski\Pro\VERSION,
-            ];
-        }
 
         return $targets;
     }
