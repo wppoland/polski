@@ -19,7 +19,7 @@
     "check:wporg": "bash scripts/plugin-check.sh",
     "check:wporg:free": "bash scripts/plugin-check.sh polski",
     "check:wporg:pro": "bash scripts/plugin-check.sh polski-pro",
-    "i18n:pot": "wp i18n make-pot . languages/polski.pot --exclude=node_modules,vendor,tests,_benchmark",
+    "i18n:pot": "wp i18n make-pot . languages/polski.pot --exclude=node_modules,vendor,_benchmark,build,tests --domain=polski",
     "i18n:mo": "wp i18n make-mo languages/",
     "i18n:json": "wp i18n make-json languages/",
     "i18n:compile": "npm run i18n:mo && npm run i18n:json",
