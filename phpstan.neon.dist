@@ -17,6 +17,11 @@ parameters:
         - tests/phpstan/elementor-phpstan-stubs.php
         - tests/phpstan/wp-cli-phpstan-stubs.php
         - tests/phpstan/ai-client-phpstan-stubs.php
+    stubFiles:
+        # Store API (Blocks) classes are not in php-stubs/woocommerce-stubs; provide
+        # parse-only stubs so CI (stubs-only) resolves them without conflicting with a
+        # local vendor that has full WooCommerce installed.
+        - tests/phpstan/woocommerce-store-api-stubs.php
     # Don't fail if a global ignoreErrors pattern no longer matches anything —
     # the per-file baseline below already captures every legacy error precisely.
     reportUnmatchedIgnoredErrors: false
