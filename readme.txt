@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.21.0
+Stable tag: 1.22.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,14 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.0 =
+* New: Consent Manager - a native cookie-consent banner with categories (necessary, preferences, analytics, marketing), Google Consent Mode v2 (signals default to denied and update when the visitor chooses), consent-gated script loading, and a records-of-consent log with CSV export. Module is off by default.
+* New: unified Tag Manager - load common marketing and analytics tags (such as Meta Pixel, TikTok, Microsoft Ads, Clarity, LinkedIn, Pinterest, X, Matomo, Plausible, PostHog, Hotjar, Inspectlet, Crazy Egg, Simple Analytics) by entering your own IDs. Every tag is loaded only after the matching consent category is granted. Module is off by default.
+* New: Custom Integrations - add your own header or footer snippets, each assigned to a consent category so it runs only after that category is granted.
+* New: Safe Fonts - help reduce layout shift and defer Google Fonts, with an option to hold the fonts stylesheet until the chosen consent category is granted.
+* New: Custom Triggers - push custom data-layer events on page or click conditions, optionally gated by consent.
+* All new modules are off by default and integrate with the Consent Manager.
 
 = 1.21.0 =
 * New: AI Bridge - exposes read-only store information to AI assistants and agents through the WordPress Abilities API (WordPress 6.9 or newer). Abilities cover product facts, Omnibus price history, GPSR product-safety data, products still missing GPSR data, compliance status and overall store health. Every ability is read-only and protected by a WooCommerce capability check; nothing in your store is changed automatically.
