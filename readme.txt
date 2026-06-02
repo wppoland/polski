@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.20.0
+Stable tag: 1.20.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -235,6 +235,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 
 == Changelog ==
 
+= 1.20.1 =
+* Fixed: the admin screens now load their scripts reliably. The bundled admin and frontend scripts are emitted as classic browser scripts (with their WordPress script dependencies declared) instead of ES modules, so the React-based admin renders correctly across setups.
+* Translations: refreshed all bundled locales (Polish, German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian, Simplified Chinese) so every interface string is up to date.
+
 = 1.20.0 =
 * New module: Promotions / dynamic pricing (basic). Optional, off by default. Two automatic cart discounts you configure in the module settings: a bulk discount (a percentage off a product line once its quantity reaches a threshold) and a cart discount (a percentage off when the cart subtotal reaches a threshold, applied as a cart fee). Recomputed idempotently from the regular price, safe across WooCommerce's repeated total calculations.
 
@@ -404,6 +408,9 @@ This plugin provides technical tools and templates for WooCommerce stores. It do
 WPPoland bears no responsibility for any legal, financial, regulatory, or other consequences arising from the use of this plugin. By installing and activating this plugin, you acknowledge that you do so entirely at your own risk.
 
 == Upgrade Notice ==
+
+= 1.20.1 =
+Fixes the admin screens not loading their scripts on some setups, and refreshes all bundled translations.
 
 = 1.6.3 =
 Plugin Check cleanup: annotated custom-table queries with justifications. No functional changes.
