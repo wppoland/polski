@@ -178,6 +178,9 @@ return [
     \Polski\Rest\AiProductSummaryController::class,
     \Polski\Hook\AiProductSummaryHooks::class,
 
+    // AI Bridge: draft-only AI-assisted GPSR safety-text generator (REST routes).
+    \Polski\Rest\AiGpsrDraftController::class,
+
     // Shortcodes.
     ShortcodeManager::class,
 
