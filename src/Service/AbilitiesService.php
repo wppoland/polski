@@ -54,22 +54,22 @@ final class AbilitiesService implements HasHooks
             return;
         }
 
-        wp_register_ability_category('polski/withdrawal', [
+        wp_register_ability_category('polski-withdrawal', [
             'label' => __('Polski - withdrawal', 'polski'),
             'description' => __('Consumer right of withdrawal (14-day return) operations.', 'polski'),
         ]);
 
-        wp_register_ability_category('polski/legal', [
+        wp_register_ability_category('polski-legal', [
             'label' => __('Polski - legal documents', 'polski'),
             'description' => __('Generated consumer-law documents (Annex I(A), I(B), etc.).', 'polski'),
         ]);
 
-        wp_register_ability_category('polski/compliance', [
+        wp_register_ability_category('polski-compliance', [
             'label' => __('Polski - compliance checks', 'polski'),
             'description' => __('Static page / cookie banner / accessibility heuristics for Polish & EU consumer law.', 'polski'),
         ]);
 
-        wp_register_ability_category('polski/shop', [
+        wp_register_ability_category('polski-shop', [
             'label' => __('Polski - shop identification', 'polski'),
             'description' => __('Business identification (name, NIP, REGON, address, contact) and legal pages registry.', 'polski'),
         ]);
@@ -108,7 +108,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-is-eligible', [
             'label' => __('Check withdrawal eligibility', 'polski'),
             'description' => __('Returns whether an order can still be withdrawn from (within window, not all-exempt, items remaining).', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['order_id'],
@@ -144,7 +144,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-get-remaining-items', [
             'label' => __('Get remaining withdrawable items', 'polski'),
             'description' => __('Lists order line items that can still be withdrawn (qty not yet returned).', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['order_id'],
@@ -192,7 +192,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-get-deadline', [
             'label' => __('Get withdrawal deadline', 'polski'),
             'description' => __('Returns the last moment the consumer can still file a withdrawal for the given order.', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['order_id'],
@@ -233,7 +233,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-create', [
             'label' => __('Create a withdrawal request', 'polski'),
             'description' => __('Files a withdrawal request on behalf of the current user for the given order (and optional item selection).', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['order_id'],
@@ -291,7 +291,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-confirm', [
             'label' => __('Confirm a withdrawal request', 'polski'),
             'description' => __('Moves a requested withdrawal to the confirmed state (admin action).', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['declaration_id'],
@@ -313,7 +313,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-complete', [
             'label' => __('Complete a withdrawal request', 'polski'),
             'description' => __('Marks a confirmed withdrawal as completed (after the refund has been processed).', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['declaration_id'],
@@ -335,7 +335,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-reject', [
             'label' => __('Reject a withdrawal request', 'polski'),
             'description' => __('Rejects a withdrawal request with an audit-trailed reason.', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['declaration_id'],
@@ -361,7 +361,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-list', [
             'label' => __('List withdrawal requests', 'polski'),
             'description' => __('Returns withdrawal requests, optionally filtered by status.', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'properties' => [
@@ -400,7 +400,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/annex-generate-info', [
             'label' => __('Generate Annex I(A) - withdrawal information', 'polski'),
             'description' => __('Renders Annex I(A) (information about the right of withdrawal) with the merchant data filled in.', 'polski'),
-            'category' => 'polski/legal',
+            'category' => 'polski-legal',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => ['type' => 'object', 'properties' => ['html' => ['type' => 'string']]],
             'execute_callback' => fn (): array => ['html' => $this->annex->getInfoHtml()],
@@ -414,7 +414,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/annex-generate-form', [
             'label' => __('Generate Annex I(B) - withdrawal form template', 'polski'),
             'description' => __('Renders Annex I(B) (the model withdrawal form template) with the merchant data filled in.', 'polski'),
-            'category' => 'polski/legal',
+            'category' => 'polski-legal',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => ['type' => 'object', 'properties' => ['html' => ['type' => 'string']]],
             'execute_callback' => fn (): array => ['html' => $this->annex->getFormHtml()],
@@ -428,7 +428,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/withdrawal-get-exemption-reason', [
             'label' => __('Get exemption reason for a product', 'polski'),
             'description' => __('Returns the Art. 38 exemption reason (if any) for a given product, considering both product- and category-level settings.', 'polski'),
-            'category' => 'polski/withdrawal',
+            'category' => 'polski-withdrawal',
             'input_schema' => [
                 'type' => 'object',
                 'required' => ['product_id'],
@@ -463,7 +463,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/compliance-check-privacy', [
             'label' => __('Audit Privacy Policy page', 'polski'),
             'description' => __('Runs the RODO Art. 13 heuristic rules against the configured Privacy Policy page and returns a CheckReport (pass/fail + score).', 'polski'),
-            'category' => 'polski/compliance',
+            'category' => 'polski-compliance',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => ['type' => 'object'],
             'execute_callback' => fn (): array => $this->pageCompliance->check(LegalPageType::Privacy)->toArray(),
@@ -477,7 +477,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/compliance-check-terms', [
             'label' => __('Audit Terms (Regulamin) page', 'polski'),
             'description' => __('Runs UŚUDE + Ustawa o prawach konsumenta rules against the configured Terms page.', 'polski'),
-            'category' => 'polski/compliance',
+            'category' => 'polski-compliance',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => ['type' => 'object'],
             'execute_callback' => fn (): array => $this->pageCompliance->check(LegalPageType::Terms)->toArray(),
@@ -491,7 +491,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/compliance-check-cookie-banner', [
             'label' => __('Audit cookie banner', 'polski'),
             'description' => __('Fetches the home page and runs active-consent rules (presence, Accept/Reject parity, granular categories, etc.).', 'polski'),
-            'category' => 'polski/compliance',
+            'category' => 'polski-compliance',
             'input_schema' => [
                 'type' => 'object',
                 'properties' => [
@@ -513,7 +513,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/shop-get-business-info', [
             'label' => __('Get shop business identification', 'polski'),
             'description' => __('Returns the merchant data (name, NIP, REGON, address, contact) captured by the setup wizard, with fallbacks to WooCommerce store options.', 'polski'),
-            'category' => 'polski/shop',
+            'category' => 'polski-shop',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => [
                 'type' => 'object',
@@ -549,7 +549,7 @@ final class AbilitiesService implements HasHooks
         wp_register_ability('polski/shop-legal-pages-status', [
             'label' => __('Get legal pages configuration status', 'polski'),
             'description' => __('Returns which legal pages (Terms, Privacy, Returns/Withdrawal, Complaints) are configured and published.', 'polski'),
-            'category' => 'polski/shop',
+            'category' => 'polski-shop',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => [
                 'type' => 'object',
