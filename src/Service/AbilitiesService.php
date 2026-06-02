@@ -535,7 +535,9 @@ final class AbilitiesService implements HasHooks
                     'address' => trim((string) ($general['company_address'] ?? '')),
                     'nip' => trim((string) ($general['company_nip'] ?? '')),
                     'regon' => trim((string) ($general['company_regon'] ?? '')),
-                    'email' => trim((string) ($general['company_email'] ?? get_option('admin_email', ''))),
+                    // Only the merchant-configured public contact email; never
+                    // fall back to admin_email (this ability is publicly callable).
+                    'email' => trim((string) ($general['company_email'] ?? '')),
                     'phone' => trim((string) ($general['company_phone'] ?? '')),
                 ];
             },
