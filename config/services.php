@@ -53,6 +53,7 @@ use Polski\Service\AutoRestoreStockService;
 use Polski\Service\AjaxAddToCartService;
 use Polski\Service\CustomCheckoutFieldsService;
 use Polski\Service\DataLayerService;
+use Polski\Service\TrackingTagsService;
 use Polski\Service\ConsentManagerService;
 use Polski\Rest\ConsentController;
 use Polski\Admin\ConsentRecordsPage;
@@ -220,6 +221,7 @@ return static function (Container $c): void {
     $c->singleton(AjaxAddToCartService::class, static fn () => new AjaxAddToCartService());
     $c->singleton(CustomCheckoutFieldsService::class, static fn () => new CustomCheckoutFieldsService());
     $c->singleton(DataLayerService::class, static fn () => new DataLayerService());
+    $c->singleton(TrackingTagsService::class, static fn () => new TrackingTagsService());
     $c->singleton(ConsentManagerService::class, static fn () => new ConsentManagerService());
     $c->singleton(ConsentController::class, static fn () => new ConsentController(
         $c->get(ConsentLogRepository::class),
