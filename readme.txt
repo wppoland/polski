@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.22.0
+Stable tag: 1.22.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.1 =
+* Fixed (privacy): the shop business-identification ability and the withdrawal annex documents no longer fall back to the site administrator email when no public contact email is configured. They now return an empty email instead, so the administrator address is never exposed through publicly readable output.
 
 = 1.22.0 =
 * New: Consent Manager - a native cookie-consent banner with categories (necessary, preferences, analytics, marketing), Google Consent Mode v2 (signals default to denied and update when the visitor chooses), consent-gated script loading, and a records-of-consent log with CSV export. Module is off by default.
