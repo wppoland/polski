@@ -841,6 +841,32 @@ return [
         'simple_analytics_enabled' => false,
     ],
 
+    // Custom Integrations: merchant-supplied snippets emitted to head or footer,
+    // each assigned a consent category and gated through the Consent Manager so
+    // it only runs after the matching category is granted. The repeatable list is
+    // stored as a JSON-encoded string under `snippets`.
+    'polski_custom_integrations' => [
+        'snippets' => '',
+    ],
+
+    // Safe Fonts: reduce and gate external Google Fonts requests. `optimize`
+    // appends display=swap and emits preconnect hints; `gate_until_consent`
+    // defers the Google Fonts stylesheet until the chosen consent category is
+    // granted. Self-hosting font files is out of scope for v1.
+    'polski_safe_fonts' => [
+        'optimize' => true,
+        'gate_until_consent' => false,
+        'consent_category' => 'preferences',
+    ],
+
+    // Custom Triggers: merchant-defined dataLayer events fired on simple page
+    // conditions (URL contains, or click on a CSS selector). The repeatable list
+    // is stored as a JSON-encoded string under `triggers`. A trigger may be
+    // gated behind a consent category.
+    'polski_custom_triggers' => [
+        'triggers' => '',
+    ],
+
     // DSA module: report form, contact email, per-product widget.
     'polski_dsa' => [
         'contact_email' => '',

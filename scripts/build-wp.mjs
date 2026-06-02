@@ -23,17 +23,28 @@ const ENTRIES = {
     'frontend-omnibus': 'resources/js/frontend/omnibus-badge.ts',
     'frontend-price-toggle': 'resources/js/frontend/price-toggle.ts',
     'frontend-consent': 'resources/js/frontend/consent.ts',
+    'frontend-safefonts': 'resources/js/frontend/safefonts.ts',
+    'frontend-triggers': 'resources/js/frontend/triggers.ts',
 };
 
 // The React admin bundle needs WordPress script dependencies. The consent banner
 // is vanilla but still emits an .asset.php (with no deps) so the PHP enqueue can
 // read a cache-busting version; the remaining frontend bundles get none, matching
 // the prior behaviour.
-const ASSET_PHP = new Set(['admin', 'frontend-consent']);
+const ASSET_PHP = new Set([
+    'admin',
+    'frontend-consent',
+    'frontend-safefonts',
+    'frontend-triggers',
+]);
 
 // Bundles that are framework-free: emit an empty dependency list in their
 // .asset.php rather than the WordPress React deps.
-const VANILLA = new Set(['frontend-consent']);
+const VANILLA = new Set([
+    'frontend-consent',
+    'frontend-safefonts',
+    'frontend-triggers',
+]);
 
 const GLOBALS = {
     react: 'React',

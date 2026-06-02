@@ -55,6 +55,9 @@ use Polski\Service\CustomCheckoutFieldsService;
 use Polski\Service\DataLayerService;
 use Polski\Service\TrackingTagsService;
 use Polski\Service\ConsentManagerService;
+use Polski\Service\CustomIntegrationsService;
+use Polski\Service\SafeFontsService;
+use Polski\Service\CustomTriggersService;
 use Polski\Rest\ConsentController;
 use Polski\Admin\ConsentRecordsPage;
 use Polski\Service\StockExportService;
@@ -223,6 +226,9 @@ return static function (Container $c): void {
     $c->singleton(DataLayerService::class, static fn () => new DataLayerService());
     $c->singleton(TrackingTagsService::class, static fn () => new TrackingTagsService());
     $c->singleton(ConsentManagerService::class, static fn () => new ConsentManagerService());
+    $c->singleton(CustomIntegrationsService::class, static fn () => new CustomIntegrationsService());
+    $c->singleton(SafeFontsService::class, static fn () => new SafeFontsService());
+    $c->singleton(CustomTriggersService::class, static fn () => new CustomTriggersService());
     $c->singleton(ConsentController::class, static fn () => new ConsentController(
         $c->get(ConsentLogRepository::class),
         $c->get(ConsentManagerService::class),

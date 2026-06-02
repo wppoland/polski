@@ -53,6 +53,9 @@ use Polski\Service\CustomCheckoutFieldsService;
 use Polski\Service\DataLayerService;
 use Polski\Service\TrackingTagsService;
 use Polski\Service\ConsentManagerService;
+use Polski\Service\CustomIntegrationsService;
+use Polski\Service\SafeFontsService;
+use Polski\Service\CustomTriggersService;
 use Polski\Rest\ConsentController;
 use Polski\Admin\ConsentRecordsPage;
 use Polski\Service\StockExportService;
@@ -122,6 +125,9 @@ return [
     DataLayerService::class,
     TrackingTagsService::class,
     ConsentManagerService::class,
+    CustomIntegrationsService::class,
+    SafeFontsService::class,
+    CustomTriggersService::class,
     StockExportService::class,
     ExpertReviewService::class,
     SocialLoginService::class,
