@@ -22,6 +22,7 @@ final class ConsentRecord
         public readonly ?string $ipAddress,
         public readonly ?string $userAgent,
         public readonly \DateTimeImmutable $createdAt,
+        public readonly ?string $consentVersion = null,
     ) {
     }
 
@@ -40,6 +41,7 @@ final class ConsentRecord
             ipAddress: $row->ip_address,
             userAgent: $row->user_agent,
             createdAt: new \DateTimeImmutable($row->created_at),
+            consentVersion: property_exists($row, 'consent_version') ? $row->consent_version : null,
         );
     }
 }

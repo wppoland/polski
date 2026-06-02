@@ -268,6 +268,35 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [],
             ],
+            [
+                'id' => 'consent_manager',
+                'name' => __('Consent Manager (cookie banner)', 'polski'),
+                'description' => __('A native cookie-consent banner with consent categories, Google Consent Mode v2 signalling, and blocking of scripts and iframes until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
+                'group' => __('Legal & Compliance', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-privacy',
+                'links' => [
+                    ['label' => __('Consent records', 'polski'), 'url' => admin_url('admin.php?page=polski-consent-records')],
+                ],
+                'settings' => [
+                    ['key' => '_consent_categories_header', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;">' . esc_html__('Enabled categories', 'polski') . '</strong><br><span class="description">' . esc_html__('Necessary cookies are always on and cannot be switched off.', 'polski') . '</span>'],
+                    ['key' => 'polski_consent_manager|category_analytics', 'label' => __('Analytics', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_consent_manager|category_marketing', 'label' => __('Marketing', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_consent_manager|category_preferences', 'label' => __('Preferences', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_consent_manager|heading', 'label' => __('Banner heading', 'polski'), 'type' => 'text', 'default' => ''],
+                    ['key' => 'polski_consent_manager|banner_text', 'label' => __('Banner text', 'polski'), 'type' => 'textarea', 'default' => __('We use cookies and similar technologies to run this site, measure traffic, and personalise content. You can accept all, reject non-essential ones, or manage your choices.', 'polski')],
+                    ['key' => 'polski_consent_manager|accept_label', 'label' => __('Accept all label', 'polski'), 'type' => 'text', 'default' => __('Accept all', 'polski')],
+                    ['key' => 'polski_consent_manager|reject_label', 'label' => __('Reject all label', 'polski'), 'type' => 'text', 'default' => __('Reject all', 'polski')],
+                    ['key' => 'polski_consent_manager|manage_label', 'label' => __('Manage label', 'polski'), 'type' => 'text', 'default' => __('Manage', 'polski')],
+                    ['key' => 'polski_consent_manager|save_label', 'label' => __('Save choices label', 'polski'), 'type' => 'text', 'default' => __('Save choices', 'polski')],
+                    ['key' => 'polski_consent_manager|position', 'label' => __('Banner position', 'polski'), 'type' => 'select', 'default' => 'bottom', 'options' => [
+                        'bottom' => __('Bottom', 'polski'),
+                        'top' => __('Top', 'polski'),
+                        'center' => __('Center', 'polski'),
+                    ]],
+                    ['key' => 'polski_consent_manager|google_consent_mode', 'label' => __('Google Consent Mode v2', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Sends consent signals to Google tags (gtag / GTM) before they run.', 'polski')],
+                ],
+            ],
             // === Consumer Rights ===
             [
                 'id' => 'returns_rma',
@@ -1779,6 +1808,7 @@ final class ModulesPage implements HasHooks
             'checkout_button' => true,
             'legal_checkboxes' => true,
             'consent_logging' => true,
+            'consent_manager' => false,
             'legal_pages' => true,
             'withdrawal' => true,
             'dispute_resolution' => true,

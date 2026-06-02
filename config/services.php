@@ -53,6 +53,9 @@ use Polski\Service\AutoRestoreStockService;
 use Polski\Service\AjaxAddToCartService;
 use Polski\Service\CustomCheckoutFieldsService;
 use Polski\Service\DataLayerService;
+use Polski\Service\ConsentManagerService;
+use Polski\Rest\ConsentController;
+use Polski\Admin\ConsentRecordsPage;
 use Polski\Service\StockExportService;
 use Polski\Service\ExpertReviewService;
 use Polski\Service\SocialLoginService;
@@ -217,6 +220,14 @@ return static function (Container $c): void {
     $c->singleton(AjaxAddToCartService::class, static fn () => new AjaxAddToCartService());
     $c->singleton(CustomCheckoutFieldsService::class, static fn () => new CustomCheckoutFieldsService());
     $c->singleton(DataLayerService::class, static fn () => new DataLayerService());
+    $c->singleton(ConsentManagerService::class, static fn () => new ConsentManagerService());
+    $c->singleton(ConsentController::class, static fn () => new ConsentController(
+        $c->get(ConsentLogRepository::class),
+        $c->get(ConsentManagerService::class),
+    ));
+    $c->singleton(ConsentRecordsPage::class, static fn () => new ConsentRecordsPage(
+        $c->get(ConsentLogRepository::class),
+    ));
     $c->singleton(StockExportService::class, static fn () => new StockExportService());
     $c->singleton(ExpertReviewService::class, static fn () => new ExpertReviewService());
     $c->singleton(SocialLoginService::class, static fn () => new SocialLoginService());
