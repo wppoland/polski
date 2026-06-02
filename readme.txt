@@ -97,35 +97,6 @@ This plugin helps you configure store workflows related to Polish and EU market 
 * **Expanded audit scope** - Includes DPA registry, DSA, KSeF-ready, anti-greenwashing, verified reviews, and security incident coverage
 * **Incident logging** - Record store-side security incidents and export them for internal reviews
 
-= Polski PRO (optional premium upgrade) =
-
-Polski for WooCommerce is free and fully functional on its own. Every module listed above works without any licence key, account, or payment, and the free plugin never depends on the paid version.
-
-Polski PRO is an optional, separate commercial product for larger stores and agencies that want premium integrations, multi-store licences, automatic premium updates, and priority support. You do not need it to use this free plugin.
-
-Polski PRO adds:
-
-* **Premium invoicing** - full KSeF e-invoicing flow and connectors for wFirma, Fakturownia, and iFirma (the free plugin ships KSeF detection and integration hooks only)
-* **Courier integrations** - InPost, DPD, and DHL shipping connectors
-* **All sales and conversion modules** - the complete premium module set on top of the free storefront tools
-* **Multi-store licences** - activate PRO on 1, 3, or 10 stores depending on your plan
-* **Automatic premium updates** - signed updates delivered directly to your WordPress admin
-* **Priority support** - faster email support, with response targets on the higher plans
-* **Agency use** - the Scale plan permits use in client stores
-
-Plans are annual subscriptions (prices in PLN, applicable VAT handled at checkout):
-
-* **Basic** - 1 store, premium modules, email support
-* **Pro** - 3 stores, all PRO modules including courier and invoicing connectors, priority email support
-* **Scale** - 10 stores, fastest support, early access to new features, and use in client stores
-
-Checkout, payment, invoicing, and EU and non-EU tax are handled by our checkout provider acting as the merchant of record, so you automatically receive a proper invoice. A 14-day money-back guarantee applies.
-
-Learn more, see the full feature comparison, and choose a plan:
-
-* **Polski PRO (Polish)** - https://wppoland.com/pl/polski/
-* **Polski PRO (English)** - https://wppoland.com/en/polski/
-
 == Installation ==
 
 = Automatic Installation =
@@ -168,26 +139,6 @@ Each active module with configuration options will appear as a sub-menu under **
 = Is Polski for WooCommerce free? =
 
 Yes. Polski for WooCommerce is free and open source under GPLv2 or later.
-
-= Is there a premium or PRO version of Polski? =
-
-Yes. Polski PRO is an optional paid upgrade for larger stores and agencies. The free plugin on WordPress.org is fully functional on its own and does not require PRO. PRO is a separate commercial product available at https://wppoland.com/pl/polski/ (Polish) and https://wppoland.com/en/polski/ (English).
-
-= Do I need Polski PRO to use the free features? =
-
-No. Every feature in this WordPress.org version works without a licence key, account, or payment. PRO only adds extra premium integrations, multi-store licences, automatic premium updates, and priority support.
-
-= What does Polski PRO add over the free plugin? =
-
-PRO adds premium integrations (the full KSeF e-invoicing flow plus wFirma, Fakturownia, and iFirma connectors, and InPost, DPD, and DHL couriers), the complete premium module set, multi-store licences (1, 3, or 10 stores), automatic signed premium updates in your WordPress admin, and priority support. See the full comparison at https://wppoland.com/pl/polski/.
-
-= How many stores can I use a Polski PRO licence on? =
-
-It depends on the plan: Basic covers 1 store, Pro covers 3 stores, and Scale covers 10 stores and allows use in client stores. You activate and deactivate stores from your WordPress admin.
-
-= How do I buy Polski PRO and how are invoices handled? =
-
-You can buy PRO from https://wppoland.com/pl/polski/. Checkout, payment, invoicing, and EU and non-EU tax are handled by our checkout provider acting as the merchant of record, so you receive a proper invoice automatically. A 14-day money-back guarantee applies.
 
 = Does Polski support GPSR for WooCommerce products? =
 
