@@ -804,6 +804,43 @@ return [
         'google_consent_mode' => true,
     ],
 
+    // Tracking Tags: consent-gated client-side tags for marketing and analytics
+    // providers. The merchant enters their own ID/domain per provider. Ad pixels
+    // gate under the `marketing` consent category, analytics tools under
+    // `analytics`. GA4 / GTM are handled separately by the DataLayer module.
+    'polski_tracking_tags' => [
+        'meta_pixel_enabled' => false,
+        'meta_pixel_id' => '',
+        'tiktok_enabled' => false,
+        'tiktok_id' => '',
+        'microsoft_ads_enabled' => false,
+        'microsoft_ads_id' => '',
+        'clarity_enabled' => false,
+        'clarity_id' => '',
+        'linkedin_enabled' => false,
+        'linkedin_id' => '',
+        'pinterest_enabled' => false,
+        'pinterest_id' => '',
+        'matomo_enabled' => false,
+        'matomo_site_id' => '',
+        'matomo_url' => '',
+        'plausible_enabled' => false,
+        'plausible_domain' => '',
+        'posthog_enabled' => false,
+        'posthog_key' => '',
+        'twitter_enabled' => false,
+        'twitter_id' => '',
+        'google_ads_enabled' => false,
+        'google_ads_id' => '',
+        'hotjar_enabled' => false,
+        'hotjar_id' => '',
+        'inspectlet_enabled' => false,
+        'inspectlet_id' => '',
+        'crazy_egg_enabled' => false,
+        'crazy_egg_id' => '',
+        'simple_analytics_enabled' => false,
+    ],
+
     // DSA module: report form, contact email, per-product widget.
     'polski_dsa' => [
         'contact_email' => '',
