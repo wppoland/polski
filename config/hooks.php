@@ -174,6 +174,10 @@ return [
     // AI Bridge: read-only commerce abilities (WP 6.9+ Abilities API).
     \Polski\Service\CommerceAbilitiesService::class,
 
+    // AI Bridge: draft-only AI-assisted product summary (REST route + AI Feed surfacing).
+    \Polski\Rest\AiProductSummaryController::class,
+    \Polski\Hook\AiProductSummaryHooks::class,
+
     // Shortcodes.
     ShortcodeManager::class,
 
