@@ -11,6 +11,7 @@ export default defineConfig({
                 'frontend-checkout': resolve(__dirname, 'resources/js/frontend/checkout.ts'),
                 'frontend-omnibus': resolve(__dirname, 'resources/js/frontend/omnibus-badge.ts'),
                 'frontend-price-toggle': resolve(__dirname, 'resources/js/frontend/price-toggle.ts'),
+                'frontend-consent': resolve(__dirname, 'resources/js/frontend/consent.ts'),
             },
             output: {
                 entryFileNames: '[name].js',

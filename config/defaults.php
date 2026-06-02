@@ -789,6 +789,21 @@ return [
         'iban' => false,
     ],
 
+    // Consent Manager: cookie banner, categories, Google Consent Mode v2.
+    'polski_consent_manager' => [
+        'category_analytics' => true,
+        'category_marketing' => true,
+        'category_preferences' => true,
+        'heading' => '',
+        'banner_text' => __('Używamy plików cookie i podobnych technologii, aby zapewnić działanie serwisu, mierzyć ruch i personalizować treści. Możesz zaakceptować wszystkie, odrzucić nieobowiązkowe lub samodzielnie zarządzać wyborami.', 'polski'),
+        'accept_label' => __('Akceptuję wszystkie', 'polski'),
+        'reject_label' => __('Odrzuć nieobowiązkowe', 'polski'),
+        'manage_label' => __('Zarządzaj', 'polski'),
+        'save_label' => __('Zapisz wybory', 'polski'),
+        'position' => 'bottom',
+        'google_consent_mode' => true,
+    ],
+
     // DSA module: report form, contact email, per-product widget.
     'polski_dsa' => [
         'contact_email' => '',

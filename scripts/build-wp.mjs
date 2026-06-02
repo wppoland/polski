@@ -22,11 +22,18 @@ const ENTRIES = {
     'frontend-checkout': 'resources/js/frontend/checkout.ts',
     'frontend-omnibus': 'resources/js/frontend/omnibus-badge.ts',
     'frontend-price-toggle': 'resources/js/frontend/price-toggle.ts',
+    'frontend-consent': 'resources/js/frontend/consent.ts',
 };
 
-// Only the React admin bundle needs WordPress script dependencies; the frontend
-// bundles are vanilla, so they get no .asset.php (matching the prior behaviour).
-const ASSET_PHP = new Set(['admin']);
+// The React admin bundle needs WordPress script dependencies. The consent banner
+// is vanilla but still emits an .asset.php (with no deps) so the PHP enqueue can
+// read a cache-busting version; the remaining frontend bundles get none, matching
+// the prior behaviour.
+const ASSET_PHP = new Set(['admin', 'frontend-consent']);
+
+// Bundles that are framework-free: emit an empty dependency list in their
+// .asset.php rather than the WordPress React deps.
+const VANILLA = new Set(['frontend-consent']);
 
 const GLOBALS = {
     react: 'React',
@@ -76,9 +83,10 @@ for (const [name, entry] of Object.entries(ENTRIES)) {
     });
 
     if (ASSET_PHP.has(name)) {
+        const deps = VANILLA.has(name) ? [] : DEPENDENCIES;
         writeFileSync(
             resolve(ROOT, `build/${name}.asset.php`),
-            `<?php return array(\n    'dependencies' => array(${DEPENDENCIES.map((d) => `'${d}'`).join(', ')}),\n    'version' => '${version}',\n);\n`,
+            `<?php return array(\n    'dependencies' => array(${deps.map((d) => `'${d}'`).join(', ')}),\n    'version' => '${version}',\n);\n`,
             'utf8',
         );
     }

@@ -1,0 +1,199 @@
+/**
+ * Polski Consent Manager banner styles.
+ *
+ * Theme-neutral, dark-mode friendly, fixed-positioned so it never shifts page
+ * layout (no CLS). Uses CSS custom properties with sane fallbacks so a theme can
+ * override colours without touching the markup. The banner is hidden until the
+ * controller decides to show it (the [hidden] attribute).
+ */
+
+.polski-consent-banner {
+	--polski-cc-bg: #ffffff;
+	--polski-cc-fg: #1e293b;
+	--polski-cc-muted: #64748b;
+	--polski-cc-border: #e2e8f0;
+	--polski-cc-accent: #0369a1;
+	--polski-cc-accent-fg: #ffffff;
+	--polski-cc-btn-bg: #f1f5f9;
+	--polski-cc-btn-fg: #1e293b;
+	--polski-cc-shadow: 0 6px 28px rgba(15, 23, 42, 0.18);
+
+	position: fixed;
+	left: 16px;
+	right: 16px;
+	z-index: 99999;
+	box-sizing: border-box;
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 18px 20px;
+	background: var(--polski-cc-bg);
+	color: var(--polski-cc-fg);
+	border: 1px solid var(--polski-cc-border);
+	border-radius: 12px;
+	box-shadow: var(--polski-cc-shadow);
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.polski-consent-banner[hidden] {
+	display: none;
+}
+
+.polski-consent-banner *,
+.polski-consent-banner *::before,
+.polski-consent-banner *::after {
+	box-sizing: border-box;
+}
+
+.polski-consent-banner--bottom {
+	bottom: 16px;
+}
+
+.polski-consent-banner--top {
+	top: 16px;
+}
+
+.polski-consent-banner--center {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.polski-consent-banner__body {
+	margin-bottom: 14px;
+}
+
+.polski-consent-banner__heading {
+	margin: 0 0 6px;
+	font-size: 15px;
+}
+
+.polski-consent-banner__text {
+	margin: 0;
+	color: var(--polski-cc-fg);
+}
+
+.polski-consent-banner__text a {
+	color: var(--polski-cc-accent);
+}
+
+.polski-consent-banner__categories {
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid var(--polski-cc-border);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 22px;
+}
+
+.polski-consent-banner__categories[hidden] {
+	display: none;
+}
+
+.polski-consent-banner__category {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	color: var(--polski-cc-fg);
+	cursor: pointer;
+}
+
+.polski-consent-banner__category input {
+	margin: 0;
+	flex-shrink: 0;
+}
+
+.polski-consent-banner__category input:disabled {
+	cursor: not-allowed;
+}
+
+.polski-consent-banner__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-end;
+}
+
+.polski-consent-banner__btn {
+	appearance: none;
+	cursor: pointer;
+	padding: 9px 16px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.2;
+	border-radius: 8px;
+	border: 1px solid var(--polski-cc-border);
+	background: var(--polski-cc-btn-bg);
+	color: var(--polski-cc-btn-fg);
+	transition: filter 0.15s ease, background 0.15s ease;
+}
+
+.polski-consent-banner__btn:hover {
+	filter: brightness(0.96);
+}
+
+.polski-consent-banner__btn:focus-visible {
+	outline: 2px solid var(--polski-cc-accent);
+	outline-offset: 2px;
+}
+
+.polski-consent-banner__btn[hidden] {
+	display: none;
+}
+
+.polski-consent-banner__btn--accept {
+	background: var(--polski-cc-accent);
+	color: var(--polski-cc-accent-fg);
+	border-color: var(--polski-cc-accent);
+}
+
+.polski-consent-banner__btn--save {
+	border-color: var(--polski-cc-accent);
+	color: var(--polski-cc-accent);
+	background: transparent;
+}
+
+@media (max-width: 600px) {
+	.polski-consent-banner {
+		left: 8px;
+		right: 8px;
+		padding: 16px;
+	}
+
+	.polski-consent-banner--bottom {
+		bottom: 8px;
+	}
+
+	.polski-consent-banner--top {
+		top: 8px;
+	}
+
+	.polski-consent-banner__actions {
+		justify-content: stretch;
+	}
+
+	.polski-consent-banner__btn {
+		flex: 1 1 auto;
+		text-align: center;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.polski-consent-banner {
+		--polski-cc-bg: #1e293b;
+		--polski-cc-fg: #e2e8f0;
+		--polski-cc-muted: #94a3b8;
+		--polski-cc-border: #334155;
+		--polski-cc-accent: #38bdf8;
+		--polski-cc-accent-fg: #0b1220;
+		--polski-cc-btn-bg: #334155;
+		--polski-cc-btn-fg: #e2e8f0;
+		--polski-cc-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.polski-consent-banner__btn {
+		transition: none;
+	}
+}

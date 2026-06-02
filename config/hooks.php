@@ -51,6 +51,9 @@ use Polski\Service\AutoRestoreStockService;
 use Polski\Service\AjaxAddToCartService;
 use Polski\Service\CustomCheckoutFieldsService;
 use Polski\Service\DataLayerService;
+use Polski\Service\ConsentManagerService;
+use Polski\Rest\ConsentController;
+use Polski\Admin\ConsentRecordsPage;
 use Polski\Service\StockExportService;
 use Polski\Service\ExpertReviewService;
 use Polski\Service\SocialLoginService;
@@ -116,6 +119,7 @@ return [
     AjaxAddToCartService::class,
     CustomCheckoutFieldsService::class,
     DataLayerService::class,
+    ConsentManagerService::class,
     StockExportService::class,
     ExpertReviewService::class,
     SocialLoginService::class,
@@ -191,6 +195,10 @@ return [
     LegalPageController::class,
     SearchController::class,
     PageComplianceController::class,
+    ConsentController::class,
+
+    // Consent Manager admin records view.
+    ConsentRecordsPage::class,
 
     // Page compliance checker admin.
     PageCompliancePage::class,

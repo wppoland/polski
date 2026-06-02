@@ -10,4 +10,5 @@ enum CheckboxContext: string
     case Registration = 'registration';
     case Review = 'review';
     case PayForOrder = 'pay_for_order';
+    case CookieBanner = 'cookie_banner';
 }

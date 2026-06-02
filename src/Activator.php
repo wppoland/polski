@@ -58,6 +58,7 @@ final class Activator
                 consented TINYINT(1) NOT NULL DEFAULT 1,
                 ip_address VARCHAR(45) DEFAULT NULL,
                 user_agent TEXT DEFAULT NULL,
+                consent_version VARCHAR(64) DEFAULT NULL,
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (id),
                 INDEX idx_user (user_id),

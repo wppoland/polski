@@ -86,6 +86,86 @@ final class ConsentLogRepository
     }
 
     /**
+     * Record a Consent Manager banner decision: one row per category with the
+     * granted/denied flag and the wording/version hash the visitor agreed to.
+     *
+     * @param array<string, bool> $categoryStates Map of category key => granted.
+     */
+    public function logCookieConsent(
+        array $categoryStates,
+        string $consentVersion,
+        ?int $userId = null,
+        ?string $sessionId = null,
+    ): void {
+        $ip = $this->getClientIp();
+        $ua = $this->getUserAgent();
+        $now = current_time('mysql', true);
+
+        foreach ($categoryStates as $category => $granted) {
+            $this->wpdb->insert(
+                $this->tableName(),
+                [
+                    'user_id' => $userId,
+                    'session_id' => $sessionId,
+                    'checkbox_id' => 'cookie_' . $category,
+                    'context' => CheckboxContext::CookieBanner->value,
+                    'consented' => $granted ? 1 : 0,
+                    'ip_address' => $ip,
+                    'user_agent' => $ua,
+                    'consent_version' => $consentVersion,
+                    'created_at' => $now,
+                ],
+                ['%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s'],
+            );
+        }
+    }
+
+    /**
+     * List Consent Manager banner records (newest first).
+     *
+     * @return list<ConsentRecord>
+     */
+    public function findCookieConsents(int $limit = 100, int $offset = 0): array
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM %i WHERE context = %s ORDER BY created_at DESC, id DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                CheckboxContext::CookieBanner->value,
+                $limit,
+                max(0, $offset),
+            ),
+        );
+
+        $list = is_array($rows) ? array_values($rows) : [];
+
+        return array_map(
+            static fn (\stdClass $row) => ConsentRecord::fromRow($row),
+            $list,
+        );
+    }
+
+    /**
+     * Count Consent Manager banner records.
+     */
+    public function countCookieConsents(): int
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        return (int) $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT COUNT(*) FROM %i WHERE context = %s',
+                $this->tableName(),
+                CheckboxContext::CookieBanner->value,
+            ),
+        );
+    }
+
+    /**
      * Find consent records for a specific user.
      *
      * @return list<ConsentRecord>
