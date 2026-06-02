@@ -38,7 +38,7 @@ final class CommerceAbilitiesService implements HasHooks
 {
     public const MODULE = 'ai_bridge';
 
-    private const CATEGORY = 'polski/commerce';
+    private const CATEGORY = 'polski-commerce';
 
     private const CAPABILITY = 'manage_woocommerce';
 

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.20.1
+Stable tag: 1.21.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,12 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.21.0 =
+* New: AI Bridge - exposes read-only store information to AI assistants and agents through the WordPress Abilities API (WordPress 6.9 or newer). Abilities cover product facts, Omnibus price history, GPSR product-safety data, products still missing GPSR data, compliance status and overall store health. Every ability is read-only and protected by a WooCommerce capability check; nothing in your store is changed automatically.
+* New: AI product summary - generate a short, plain-language product summary on demand from the product editor. Uses your site's configured AI provider when one is available (WordPress AI Client) and simply does nothing when none is configured.
+* New: GPSR safety-text draft helper - generate a draft product-safety text that you review and edit before saving. Drafts only; nothing is published automatically.
+* Compatibility: the AI features degrade gracefully when no AI provider is configured, and are forward-compatible with the WordPress AI Client. No third-party AI keys are stored by the plugin.
 
 = 1.20.1 =
 * Fixed: the admin screens now load their scripts reliably. The bundled admin and frontend scripts are emitted as classic browser scripts (with their WordPress script dependencies declared) instead of ES modules, so the React-based admin renders correctly across setups.
