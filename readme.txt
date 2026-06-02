@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.22.1
+Stable tag: 1.22.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.2 =
+* Translations: translated all interface strings added in 1.21.0 and 1.22.0 (Consent Manager, Tag Manager, AI Bridge, Custom Integrations, Safe Fonts, and Custom Triggers) into every bundled locale (Polish, German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian, Simplified Chinese). Recompiled the binary and JavaScript translation files.
 
 = 1.22.1 =
 * Fixed (privacy): the shop business-identification ability and the withdrawal annex documents no longer fall back to the site administrator email when no public contact email is configured. They now return an empty email instead, so the administrator address is never exposed through publicly readable output.
