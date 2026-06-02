@@ -308,6 +308,15 @@ return static function (Container $c): void {
         $c->get(\Polski\Service\StoreHealthMonitorService::class),
     ));
 
+    // AI Bridge: draft-only AI-assisted product summary generator.
+    $c->singleton(\Polski\Service\AiProductSummaryService::class, static fn () => new \Polski\Service\AiProductSummaryService());
+    $c->singleton(\Polski\Rest\AiProductSummaryController::class, static fn () => new \Polski\Rest\AiProductSummaryController(
+        $c->get(\Polski\Service\AiProductSummaryService::class),
+    ));
+    $c->singleton(\Polski\Hook\AiProductSummaryHooks::class, static fn () => new \Polski\Hook\AiProductSummaryHooks(
+        $c->get(\Polski\Service\AiProductSummaryService::class),
+    ));
+
     // New modules: GPSR, Verified Review, DSA, KSeF-ready.
     $c->singleton(\Polski\Service\GPSRService::class, static fn () => new \Polski\Service\GPSRService(
         $c->get(TemplateLoader::class),
