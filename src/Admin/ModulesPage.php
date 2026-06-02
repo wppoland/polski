@@ -1087,6 +1087,54 @@ final class ModulesPage implements HasHooks
                 ],
             ],
 
+            [
+                'id' => 'safe_fonts',
+                'name' => __('Safe Fonts', 'polski'),
+                'description' => __('Reduce and gate external Google Fonts requests. Adds font-display and preconnect hints, and can defer the Google Fonts stylesheet until the visitor grants consent. Self-hosting font files is out of scope; this lowers and gates the external calls.', 'polski'),
+                'group' => __('SEO & Optimization', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-editor-textcolor',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_safe_fonts|optimize', 'label' => __('Optimise Google Fonts', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts.', 'polski')],
+                    ['key' => 'polski_safe_fonts|gate_until_consent', 'label' => __('Defer Google Fonts until consent', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Hold the Google Fonts stylesheet until the visitor grants the chosen consent category. A no-script fallback keeps fonts working when JavaScript is off.', 'polski')],
+                    ['key' => 'polski_safe_fonts|consent_category', 'label' => __('Consent category', 'polski'), 'type' => 'select', 'default' => 'preferences', 'options' => [
+                        'necessary' => __('Necessary', 'polski'),
+                        'preferences' => __('Preferences', 'polski'),
+                        'analytics' => __('Analytics', 'polski'),
+                        'marketing' => __('Marketing', 'polski'),
+                    ], 'hint' => __('Used only when deferring fonts until consent. Requires the Consent Manager module to be enabled.', 'polski')],
+                ],
+            ],
+
+            [
+                'id' => 'custom_integrations',
+                'name' => __('Custom Integrations', 'polski'),
+                'description' => __('Add your own scripts or snippets to the page head or footer. Each snippet is assigned a consent category and runs only after the visitor grants it, via the Consent Manager.', 'polski'),
+                'group' => __('Advanced & Tools', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-editor-code',
+                'links' => [],
+                'settings' => [
+                    ['key' => '_ci_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each snippet is emitted as a consent-gated placeholder and only executes once the matching category is granted. Necessary snippets always run. Requires the Consent Manager module to actually gate execution.', 'polski') . '</span>'],
+                    ['key' => 'polski_custom_integrations|snippets', 'label' => __('Snippets', 'polski'), 'type' => 'integration_repeater', 'default' => ''],
+                ],
+            ],
+
+            [
+                'id' => 'custom_triggers',
+                'name' => __('Custom Triggers', 'polski'),
+                'description' => __('Push your own dataLayer events on simple page conditions, such as visiting a URL or clicking an element. Integrates with the GA4 DataLayer module.', 'polski'),
+                'group' => __('Advanced & Tools', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-randomize',
+                'links' => [],
+                'settings' => [
+                    ['key' => '_ct_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each trigger pushes an event into window.dataLayer. Assign a consent category to hold a trigger until that category is granted (necessary always fires).', 'polski') . '</span>'],
+                    ['key' => 'polski_custom_triggers|triggers', 'label' => __('Triggers', 'polski'), 'type' => 'trigger_repeater', 'default' => ''],
+                ],
+            ],
+
             // === Integrations ===
             [
                 'id' => 'checkout_toolkit_integration',
@@ -1710,6 +1758,10 @@ final class ModulesPage implements HasHooks
                     }
                 }
                 echo '</select>';
+            } elseif ($type === 'integration_repeater') {
+                $this->renderIntegrationRepeater($inputName, (string) $currentValue);
+            } elseif ($type === 'trigger_repeater') {
+                $this->renderTriggerRepeater($inputName, (string) $currentValue);
             }
         }
 
@@ -1722,6 +1774,266 @@ final class ModulesPage implements HasHooks
         } else {
             echo '</div>';
         }
+    }
+
+    /**
+     * Consent category <option> list shared by the repeater editors.
+     *
+     * @return array<string, string>
+     */
+    private function consentCategoryOptions(): array
+    {
+        return [
+            'necessary' => __('Necessary', 'polski'),
+            'analytics' => __('Analytics', 'polski'),
+            'marketing' => __('Marketing', 'polski'),
+            'preferences' => __('Preferences', 'polski'),
+        ];
+    }
+
+    /**
+     * Decode a repeater JSON string into a list of associative rows.
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function decodeRepeater(string $json): array
+    {
+        $decoded = $json !== '' ? json_decode($json, true) : [];
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        $rows = [];
+        foreach ($decoded as $row) {
+            if (is_array($row)) {
+                $rows[] = $row;
+            }
+        }
+
+        return $rows;
+    }
+
+    /**
+     * Render the Custom Integrations repeatable editor. Each row carries a label,
+     * placement, consent category and code; the rows are serialised to a single
+     * hidden JSON field on submit by an inline controller.
+     */
+    private function renderIntegrationRepeater(string $inputName, string $json): void
+    {
+        $rows = $this->decodeRepeater($json);
+        $categories = $this->consentCategoryOptions();
+        $uid = 'polski-ci-' . wp_rand();
+
+        echo '<div class="polski-repeater" data-polski-repeater="integration" id="' . esc_attr($uid) . '">';
+        echo '<input type="hidden" name="' . esc_attr($inputName) . '" value="" data-polski-repeater-store>';
+        echo '<div data-polski-repeater-rows>';
+
+        if ($rows === []) {
+            $rows[] = ['label' => '', 'placement' => 'head', 'category' => 'necessary', 'code' => ''];
+        }
+
+        foreach ($rows as $row) {
+            $this->renderIntegrationRow($row, $categories);
+        }
+
+        echo '</div>';
+        printf(
+            '<button type="button" class="button button-small" data-polski-repeater-add>%s</button>',
+            esc_html__('Add snippet', 'polski'),
+        );
+        echo '</div>';
+
+        $this->printRepeaterScript($uid);
+    }
+
+    /**
+     * @param array<string, mixed>  $row
+     * @param array<string, string> $categories
+     */
+    private function renderIntegrationRow(array $row, array $categories): void
+    {
+        $label = isset($row['label']) ? (string) $row['label'] : '';
+        $placement = (isset($row['placement']) && $row['placement'] === 'footer') ? 'footer' : 'head';
+        $category = isset($row['category']) ? (string) $row['category'] : 'necessary';
+        $code = isset($row['code']) ? (string) $row['code'] : '';
+
+        echo '<div class="polski-repeater-row" data-polski-repeater-row style="border:1px solid #dcdcde;padding:8px;margin-bottom:8px;border-radius:4px;">';
+
+        printf(
+            '<input type="text" data-f="label" placeholder="%s" value="%s" style="width:100%%;font-size:12px;margin-bottom:4px;">',
+            esc_attr__('Label', 'polski'),
+            esc_attr($label),
+        );
+
+        echo '<div style="display:flex;gap:6px;margin-bottom:4px;">';
+
+        echo '<select data-f="placement" style="font-size:12px;">';
+        printf('<option value="head" %s>%s</option>', selected($placement, 'head', false), esc_html__('Head', 'polski'));
+        printf('<option value="footer" %s>%s</option>', selected($placement, 'footer', false), esc_html__('Footer', 'polski'));
+        echo '</select>';
+
+        echo '<select data-f="category" style="font-size:12px;">';
+        foreach ($categories as $val => $catLabel) {
+            printf('<option value="%s" %s>%s</option>', esc_attr($val), selected($category, $val, false), esc_html($catLabel));
+        }
+        echo '</select>';
+
+        echo '</div>';
+
+        printf(
+            '<textarea data-f="code" rows="3" placeholder="%s" style="width:100%%;font-size:12px;font-family:monospace;">%s</textarea>',
+            esc_attr__('<script>...</script> or inline JS', 'polski'),
+            esc_textarea($code),
+        );
+
+        printf(
+            '<button type="button" class="button-link" data-polski-repeater-remove style="color:#b32d2e;font-size:12px;">%s</button>',
+            esc_html__('Remove', 'polski'),
+        );
+
+        echo '</div>';
+    }
+
+    /**
+     * Render the Custom Triggers repeatable editor.
+     */
+    private function renderTriggerRepeater(string $inputName, string $json): void
+    {
+        $rows = $this->decodeRepeater($json);
+        $categories = $this->consentCategoryOptions();
+        $uid = 'polski-ct-' . wp_rand();
+
+        echo '<div class="polski-repeater" data-polski-repeater="trigger" id="' . esc_attr($uid) . '">';
+        echo '<input type="hidden" name="' . esc_attr($inputName) . '" value="" data-polski-repeater-store>';
+        echo '<div data-polski-repeater-rows>';
+
+        if ($rows === []) {
+            $rows[] = ['event' => '', 'condition' => 'page_url', 'value' => '', 'selector' => '', 'category' => 'necessary'];
+        }
+
+        foreach ($rows as $row) {
+            $this->renderTriggerRow($row, $categories);
+        }
+
+        echo '</div>';
+        printf(
+            '<button type="button" class="button button-small" data-polski-repeater-add>%s</button>',
+            esc_html__('Add trigger', 'polski'),
+        );
+        echo '</div>';
+
+        $this->printRepeaterScript($uid);
+    }
+
+    /**
+     * @param array<string, mixed>  $row
+     * @param array<string, string> $categories
+     */
+    private function renderTriggerRow(array $row, array $categories): void
+    {
+        $event = isset($row['event']) ? (string) $row['event'] : '';
+        $condition = (isset($row['condition']) && $row['condition'] === 'click') ? 'click' : 'page_url';
+        $value = isset($row['value']) ? (string) $row['value'] : '';
+        $selector = isset($row['selector']) ? (string) $row['selector'] : '';
+        $category = isset($row['category']) ? (string) $row['category'] : 'necessary';
+
+        echo '<div class="polski-repeater-row" data-polski-repeater-row style="border:1px solid #dcdcde;padding:8px;margin-bottom:8px;border-radius:4px;">';
+
+        printf(
+            '<input type="text" data-f="event" placeholder="%s" value="%s" style="width:100%%;font-size:12px;margin-bottom:4px;">',
+            esc_attr__('Event name (e.g. cta_click)', 'polski'),
+            esc_attr($event),
+        );
+
+        echo '<div style="display:flex;gap:6px;margin-bottom:4px;">';
+
+        echo '<select data-f="condition" style="font-size:12px;">';
+        printf('<option value="page_url" %s>%s</option>', selected($condition, 'page_url', false), esc_html__('URL contains', 'polski'));
+        printf('<option value="click" %s>%s</option>', selected($condition, 'click', false), esc_html__('Click on selector', 'polski'));
+        echo '</select>';
+
+        echo '<select data-f="category" style="font-size:12px;">';
+        foreach ($categories as $val => $catLabel) {
+            printf('<option value="%s" %s>%s</option>', esc_attr($val), selected($category, $val, false), esc_html($catLabel));
+        }
+        echo '</select>';
+
+        echo '</div>';
+
+        printf(
+            '<input type="text" data-f="value" placeholder="%s" value="%s" style="width:100%%;font-size:12px;margin-bottom:4px;">',
+            esc_attr__('URL fragment (for URL contains)', 'polski'),
+            esc_attr($value),
+        );
+        printf(
+            '<input type="text" data-f="selector" placeholder="%s" value="%s" style="width:100%%;font-size:12px;margin-bottom:4px;">',
+            esc_attr__('CSS selector (for click)', 'polski'),
+            esc_attr($selector),
+        );
+
+        printf(
+            '<button type="button" class="button-link" data-polski-repeater-remove style="color:#b32d2e;font-size:12px;">%s</button>',
+            esc_html__('Remove', 'polski'),
+        );
+
+        echo '</div>';
+    }
+
+    /**
+     * Inline controller that clones rows, removes rows, and serialises the
+     * repeater into its hidden JSON field on form submit. Scoped by container id.
+     */
+    private function printRepeaterScript(string $uid): void
+    {
+        $script = <<<JS
+(function(){
+    var root=document.getElementById({$this->jsString($uid)});
+    if(!root||root.dataset.polskiBound){return;}
+    root.dataset.polskiBound='1';
+    var rows=root.querySelector('[data-polski-repeater-rows]');
+    var store=root.querySelector('[data-polski-repeater-store]');
+    var form=root.closest('form');
+    function template(){
+        var first=rows.querySelector('[data-polski-repeater-row]');
+        var clone=first.cloneNode(true);
+        clone.querySelectorAll('[data-f]').forEach(function(el){
+            if(el.tagName==='SELECT'){el.selectedIndex=0;}else{el.value='';}
+        });
+        return clone;
+    }
+    root.addEventListener('click',function(e){
+        var add=e.target.closest('[data-polski-repeater-add]');
+        if(add){e.preventDefault();rows.appendChild(template());return;}
+        var rm=e.target.closest('[data-polski-repeater-remove]');
+        if(rm){e.preventDefault();var r=rm.closest('[data-polski-repeater-row]');
+            if(rows.querySelectorAll('[data-polski-repeater-row]').length>1){r.remove();}
+            else{r.querySelectorAll('[data-f]').forEach(function(el){if(el.tagName==='SELECT'){el.selectedIndex=0;}else{el.value='';}});}
+        }
+    });
+    function serialise(){
+        var out=[];
+        rows.querySelectorAll('[data-polski-repeater-row]').forEach(function(row){
+            var o={};
+            row.querySelectorAll('[data-f]').forEach(function(el){o[el.getAttribute('data-f')]=el.value;});
+            var empty=Object.keys(o).every(function(k){return String(o[k]).trim()==='';});
+            if(!empty){out.push(o);}
+        });
+        store.value=JSON.stringify(out);
+    }
+    if(form){form.addEventListener('submit',serialise);}
+})();
+JS;
+
+        wp_print_inline_script_tag($script);
+    }
+
+    /**
+     * JSON-encode a string for safe inlining inside a script (quotes included).
+     */
+    private function jsString(string $value): string
+    {
+        return (string) wp_json_encode($value);
     }
 
     /**
@@ -1896,6 +2208,9 @@ final class ModulesPage implements HasHooks
             'ajax_add_to_cart' => false,
             'datalayer' => false,
             'tracking_tags' => false,
+            'safe_fonts' => false,
+            'custom_integrations' => false,
+            'custom_triggers' => false,
             'stock_export' => false,
             'expert_reviews' => false,
             'social_login' => false,
@@ -2266,8 +2581,90 @@ final class ModulesPage implements HasHooks
             'number' => is_numeric($value) ? $value + 0 : 0,
             'textarea' => sanitize_textarea_field((string) $value),
             'email' => sanitize_email((string) $value),
+            'integration_repeater' => $this->sanitizeIntegrationRepeater((string) $value),
+            'trigger_repeater' => $this->sanitizeTriggerRepeater((string) $value),
             'select', 'delivery_time_select', 'text' => sanitize_text_field((string) $value),
             default => is_string($value) ? sanitize_text_field($value) : $value,
         };
+    }
+
+    /**
+     * Sanitise the Custom Integrations repeater JSON. Each row keeps a plain-text
+     * label, a constrained placement and consent category, and merchant code.
+     *
+     * The code is stored verbatim (it is the snippet the merchant chose to run on
+     * their own site, saved behind a capability + nonce check) but normalised
+     * with wp_check_invalid_utf8 to drop invalid byte sequences. It is never
+     * executed in PHP; on the front end it is emitted as a consent-gated
+     * text/plain placeholder.
+     */
+    private function sanitizeIntegrationRepeater(string $json): string
+    {
+        $rows = $this->decodeRepeater($json);
+        $clean = [];
+
+        $validCategories = ['necessary', 'analytics', 'marketing', 'preferences'];
+
+        foreach ($rows as $row) {
+            $code = isset($row['code']) ? wp_check_invalid_utf8((string) $row['code']) : '';
+
+            if (trim($code) === '') {
+                continue;
+            }
+
+            $placement = (isset($row['placement']) && $row['placement'] === 'footer') ? 'footer' : 'head';
+            $category = isset($row['category']) ? (string) $row['category'] : 'necessary';
+
+            if (! in_array($category, $validCategories, true)) {
+                $category = 'necessary';
+            }
+
+            $clean[] = [
+                'label' => isset($row['label']) ? sanitize_text_field((string) $row['label']) : '',
+                'placement' => $placement,
+                'category' => $category,
+                'code' => $code,
+            ];
+        }
+
+        return $clean === [] ? '' : (string) wp_json_encode($clean);
+    }
+
+    /**
+     * Sanitise the Custom Triggers repeater JSON. Event names, URL fragments and
+     * CSS selectors are stored as plain text; condition and category are
+     * constrained to known values.
+     */
+    private function sanitizeTriggerRepeater(string $json): string
+    {
+        $rows = $this->decodeRepeater($json);
+        $clean = [];
+
+        $validCategories = ['necessary', 'analytics', 'marketing', 'preferences'];
+
+        foreach ($rows as $row) {
+            $event = isset($row['event']) ? sanitize_text_field((string) $row['event']) : '';
+
+            if (trim($event) === '') {
+                continue;
+            }
+
+            $condition = (isset($row['condition']) && $row['condition'] === 'click') ? 'click' : 'page_url';
+            $category = isset($row['category']) ? (string) $row['category'] : 'necessary';
+
+            if (! in_array($category, $validCategories, true)) {
+                $category = 'necessary';
+            }
+
+            $clean[] = [
+                'event' => $event,
+                'condition' => $condition,
+                'value' => isset($row['value']) ? sanitize_text_field((string) $row['value']) : '',
+                'selector' => isset($row['selector']) ? sanitize_text_field((string) $row['selector']) : '',
+                'category' => $category,
+            ];
+        }
+
+        return $clean === [] ? '' : (string) wp_json_encode($clean);
     }
 }

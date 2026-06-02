@@ -223,10 +223,12 @@ final class ConsentManagerService implements HasHooks
      */
     public static function gateScript(string $category, string $inlineJs): string
     {
+        // Escape any literal closing tag so a snippet cannot break out of the
+        // gated (text/plain) wrapper and execute before consent.
         return sprintf(
             '<script type="text/plain" data-polski-consent="%s">%s</script>',
             esc_attr($category),
-            $inlineJs,
+            str_replace('</script>', '<\/script>', $inlineJs),
         );
     }
 
