@@ -321,6 +321,14 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\GPSRService::class, static fn () => new \Polski\Service\GPSRService(
         $c->get(TemplateLoader::class),
     ));
+
+    // AI Bridge: draft-only AI-assisted GPSR safety-text generator.
+    $c->singleton(\Polski\Service\AiGpsrDraftService::class, static fn () => new \Polski\Service\AiGpsrDraftService(
+        $c->get(\Polski\Service\GPSRService::class),
+    ));
+    $c->singleton(\Polski\Rest\AiGpsrDraftController::class, static fn () => new \Polski\Rest\AiGpsrDraftController(
+        $c->get(\Polski\Service\AiGpsrDraftService::class),
+    ));
     $c->singleton(\Polski\Service\VerifiedReviewService::class, static fn () => new \Polski\Service\VerifiedReviewService());
     $c->singleton(\Polski\Service\DSAService::class, static fn () => new \Polski\Service\DSAService(
         $c->get(TemplateLoader::class),
