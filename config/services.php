@@ -300,6 +300,14 @@ return static function (Container $c): void {
         $c->get(\Polski\PageCompliance\PageComplianceService::class),
     ));
 
+    // AI Bridge: read-only commerce abilities (WP 6.9+ Abilities API).
+    $c->singleton(\Polski\Service\CommerceAbilitiesService::class, static fn () => new \Polski\Service\CommerceAbilitiesService(
+        $c->get(OmnibusService::class),
+        $c->get(\Polski\Service\GPSRService::class),
+        $c->get(PageComplianceService::class),
+        $c->get(\Polski\Service\StoreHealthMonitorService::class),
+    ));
+
     // New modules: GPSR, Verified Review, DSA, KSeF-ready.
     $c->singleton(\Polski\Service\GPSRService::class, static fn () => new \Polski\Service\GPSRService(
         $c->get(TemplateLoader::class),

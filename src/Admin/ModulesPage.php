@@ -984,6 +984,16 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_store_health|cooldown_minutes', 'label' => __('Alert cooldown (minutes)', 'polski'), 'type' => 'number', 'default' => 60, 'hint' => __('Minimum time between repeat alerts for an ongoing problem.', 'polski')],
                 ],
             ],
+            [
+                'id' => 'ai_bridge',
+                'name' => __('AI Bridge', 'polski'),
+                'description' => __('Exposes read-only commerce data (price history, product safety data, store health, configured-page checks, product facts) to AI assistants and the Site Editor via the WordPress Abilities API. Off by default.', 'polski'),
+                'group' => __('Tools', 'polski'),
+                'enabled' => false,
+                'icon' => 'dashicons-rest-api',
+                'links' => [],
+                'settings' => [],
+            ],
 
             // === SEO and Optimization ===
             [
