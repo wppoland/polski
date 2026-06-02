@@ -171,6 +171,9 @@ return [
     \Polski\Service\MyAccountWithdrawalsService::class,
     \Polski\Service\AbilitiesService::class,
 
+    // AI Bridge: read-only commerce abilities (WP 6.9+ Abilities API).
+    \Polski\Service\CommerceAbilitiesService::class,
+
     // Shortcodes.
     ShortcodeManager::class,
 
