@@ -85,6 +85,7 @@ final class CommerceAbilitiesService implements HasHooks
 
         $this->registerOmnibusHistory();
         $this->registerGpsrData();
+        $this->registerProductsMissingGpsr();
         $this->registerComplianceStatus();
         $this->registerStoreHealth();
         $this->registerProductFacts();
@@ -189,6 +190,115 @@ final class CommerceAbilitiesService implements HasHooks
                 }
 
                 return $this->gpsr->getGPSRData($product);
+            },
+            'permission_callback' => [$this, 'canRead'],
+            'meta' => ['show_in_rest' => true, 'readonly' => true],
+        ]);
+    }
+
+    private function registerProductsMissingGpsr(): void
+    {
+        wp_register_ability('polski/list-products-missing-gpsr', [
+            'label' => __('List products missing product safety (GPSR) data', 'polski'),
+            'description' => __('Returns published products that are missing one or more of the captured product safety (GPSR) fields, so gaps can be found and filled. Read-only.', 'polski'),
+            'category' => self::CATEGORY,
+            'input_schema' => [
+                'type' => 'object',
+                'properties' => [
+                    'limit' => [
+                        'type' => 'integer',
+                        'minimum' => 1,
+                        'maximum' => 200,
+                        'default' => 50,
+                        'description' => 'Maximum number of products to scan and return (1-200).',
+                    ],
+                    'offset' => [
+                        'type' => 'integer',
+                        'minimum' => 0,
+                        'default' => 0,
+                        'description' => 'Number of products to skip, for paging.',
+                    ],
+                ],
+            ],
+            'output_schema' => [
+                'type' => 'object',
+                'properties' => [
+                    'total' => ['type' => 'integer'],
+                    'products' => [
+                        'type' => 'array',
+                        'items' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'id' => ['type' => 'integer'],
+                                'name' => ['type' => 'string'],
+                                'missing' => [
+                                    'type' => 'array',
+                                    'items' => ['type' => 'string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'execute_callback' => function (array $input): array {
+                $limit = (int) ($input['limit'] ?? 50);
+                $limit = max(1, min(200, $limit));
+
+                $offset = (int) ($input['offset'] ?? 0);
+                $offset = max(0, $offset);
+
+                if (! function_exists('wc_get_products')) {
+                    return ['total' => 0, 'products' => []];
+                }
+
+                // Bounded query: only the requested page of published products.
+                $products = wc_get_products([
+                    'status' => 'publish',
+                    'limit' => $limit,
+                    'offset' => $offset,
+                    'orderby' => 'ID',
+                    'order' => 'ASC',
+                    'return' => 'objects',
+                ]);
+
+                if (! is_array($products)) {
+                    return ['total' => 0, 'products' => []];
+                }
+
+                $results = [];
+
+                foreach ($products as $product) {
+                    if (! $product instanceof \WC_Product) {
+                        continue;
+                    }
+
+                    // Reuse GPSRService as the single source of truth for which
+                    // GPSR fields exist and what each currently holds; an empty
+                    // string means the field is absent.
+                    $data = $this->gpsr->getGPSRData($product);
+
+                    $missing = [];
+                    foreach ($data as $field => $value) {
+                        if ($value === '') {
+                            $missing[] = $field;
+                        }
+                    }
+
+                    if ($missing === []) {
+                        continue;
+                    }
+
+                    $results[] = [
+                        'id' => $product->get_id(),
+                        'name' => (string) $product->get_name(),
+                        'missing' => $missing,
+                    ];
+                }
+
+                return [
+                    'total' => count($results),
+                    'products' => $results,
+                ];
             },
             'permission_callback' => [$this, 'canRead'],
             'meta' => ['show_in_rest' => true, 'readonly' => true],
