@@ -14,6 +14,27 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: Polski Translation Script 1.0\n"
 
+msgid "Dashboard"
+msgstr "Nástenka"
+
+msgid "Plugin"
+msgstr "Zásuvný modul"
+
+msgid "Placeholder"
+msgstr "Zástupný text"
+
+msgid "Accent"
+msgstr "Akcent"
+
+msgid "Success"
+msgstr "Úspech"
+
+msgid "Warning"
+msgstr "Upozornenie"
+
+msgid "Neutral"
+msgstr "Neutrálna"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -1564,11 +1585,6 @@ msgstr "Nedostatočné oprávnenia."
 msgid "Polski"
 msgstr "Polski"
 
-#: src/Admin/AdminPage.php:230 src/Admin/AdminPage.php:231
-#: src/Admin/AdminPage.php:324
-msgid "Dashboard"
-msgstr "Dashboard"
-
 #: src/Admin/AdminPage.php:239 src/Admin/AdminPage.php:240
 #: src/Admin/AdminPage.php:325
 msgid "Modules"
@@ -2400,10 +2416,6 @@ msgstr "Protokol spätnej väzby pri deaktivácii"
 #: src/Admin/DeactivationHandler.php:145
 msgid "No feedback to display."
 msgstr "Žiadna spätná väzba na zobrazenie."
-
-#: src/Admin/DeactivationHandler.php:151
-msgid "Plugin"
-msgstr "Plugin"
 
 #: src/Admin/DeactivationHandler.php:152 src/Admin/WithdrawalsAdminPage.php:196
 #: src/Service/DSAService.php:174 src/Service/ReturnRequestService.php:144
@@ -3938,12 +3950,6 @@ msgstr "Výsledky vyhľadávania produktov"
 #: src/Admin/ModulesPage.php:698
 msgid "SKU label"
 msgstr "Popis SKU"
-
-#: src/Admin/ModulesPage.php:530
-#: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
-#: resources/js/blocks/ajax-search/index.js:18
-msgid "Placeholder"
-msgstr "Placeholder"
 
 #: src/Admin/ModulesPage.php:530
 msgid "Search products, SKU codes or categories"
@@ -6702,22 +6708,6 @@ msgstr "Štýl odznaku"
 #: src/Admin/ProductMetaBox.php:167
 msgid "Default"
 msgstr "Predvolený"
-
-#: src/Admin/ProductMetaBox.php:168
-msgid "Accent"
-msgstr "Accent"
-
-#: src/Admin/ProductMetaBox.php:169
-msgid "Success"
-msgstr "Success"
-
-#: src/Admin/ProductMetaBox.php:170
-msgid "Warning"
-msgstr "Warning"
-
-#: src/Admin/ProductMetaBox.php:171
-msgid "Neutral"
-msgstr "Neutral"
 
 #: src/Admin/ProductMetaBox.php:173
 msgid "Manual badge style."

@@ -15,6 +15,38 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: Polski Translation Script 1.0\n"
 
+msgid "Power supply"
+msgstr "Zasilanie"
+
+msgid ""
+"Change order button text to \"Order with obligation to pay\" according to "
+"Polish law."
+msgstr ""
+"Zmień tekst przycisku zamówienia na „Zamawiam z obowiązkiem zapłaty” zgodnie "
+"z polskim prawem."
+
+msgid "Upsell"
+msgstr "Sprzedaż dodatkowa"
+
+msgid "Show \"view all\" link"
+msgstr "Pokaż link „zobacz wszystkie”"
+
+msgid "\"view all\" link text"
+msgstr "Tekst linku „zobacz wszystkie”"
+
+msgid "How to open \"view all\" link"
+msgstr "Sposób otwierania linku „zobacz wszystkie”"
+
+msgid "Head"
+msgstr "Nagłówek"
+
+msgid ""
+"Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
+msgstr "Bazowa ilość odniesienia (np. 1 dla „za 1 kg”, 100 dla „za 100 ml”)."
+
+msgid "Email marketing"
+msgstr "Marketing e-mailowy"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -2238,10 +2270,6 @@ msgstr "ID czasu dostawy"
 msgid "Responsible person (GPSR)"
 msgstr "Osoba odpowiedzialna (GPSR)"
 
-#: src/Admin/CSVImportExport.php:77
-msgid "Power supply"
-msgstr "Power supply"
-
 #: src/Admin/CSVImportExport.php:78
 msgid "Defect description"
 msgstr "Opis wady"
@@ -2752,14 +2780,6 @@ msgstr "Tekst linku"
 #: src/Admin/ModulesPage.php:197
 msgid "Checkout button"
 msgstr "Przycisk zamówienia"
-
-#: src/Admin/ModulesPage.php:198
-msgid ""
-"Change order button text to \"Order with obligation to pay\" according to "
-"Polish law."
-msgstr ""
-"Change order button text to \"Order with obligation to pay\" according to "
-"Polish law."
 
 #: src/Admin/ModulesPage.php:199 src/Admin/ModulesPage.php:211
 #: src/Admin/ModulesPage.php:250 src/Admin/ModulesPage.php:265
@@ -4799,10 +4819,6 @@ msgstr "Źródło produktów"
 msgid "Related"
 msgstr "Powiązane"
 
-#: src/Admin/ModulesPage.php:820
-msgid "Upsell"
-msgstr "Upsell"
-
 #: src/Admin/ModulesPage.php:820 src/Service/BadgeService.php:101
 msgid "Sale"
 msgstr "Promocja"
@@ -4816,10 +4832,6 @@ msgstr "Wyróżnione"
 msgid "Number of products"
 msgstr "Liczba produktów"
 
-#: src/Admin/ModulesPage.php:830
-msgid "Show \"view all\" link"
-msgstr "Show \"view all\" link"
-
 #: src/Admin/ModulesPage.php:831
 msgid "Show empty state without products"
 msgstr "Pokazuj pusty stan bez produktów"
@@ -4827,14 +4839,6 @@ msgstr "Pokazuj pusty stan bez produktów"
 #: src/Admin/ModulesPage.php:832
 msgid "Empty state text"
 msgstr "Tekst pustego stanu"
-
-#: src/Admin/ModulesPage.php:833
-msgid "\"view all\" link text"
-msgstr "\"view all\" link text"
-
-#: src/Admin/ModulesPage.php:834
-msgid "How to open \"view all\" link"
-msgstr "How to open \"view all\" link"
 
 #: src/Admin/ModulesPage.php:839
 msgid "Waitlist"
@@ -6260,10 +6264,6 @@ msgstr "brak"
 msgid "Add snippet"
 msgstr "Dodaj fragment kodu"
 
-#: src/Admin/ModulesPage.php:1872
-msgid "Head"
-msgstr "Head"
-
 #: src/Admin/ModulesPage.php:1873
 msgid "Footer"
 msgstr "Stopka"
@@ -6660,12 +6660,6 @@ msgstr "Ilość produktu w opakowaniu (np. 500 dla 500g)."
 #: src/Admin/ProductMetaBox.php:80 src/Admin/ProductMetaBox.php:421
 msgid "Base quantity"
 msgstr "Ilość bazowa"
-
-#: src/Admin/ProductMetaBox.php:81
-msgid ""
-"Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
-msgstr ""
-"Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
 
 #: src/Admin/ProductMetaBox.php:93
 msgid "- Select unit -"
@@ -9970,10 +9964,6 @@ msgstr "Hosting"
 #: src/Service/DPATrackerService.php:126
 msgid "Payments"
 msgstr "Płatności"
-
-#: src/Service/DPATrackerService.php:170 src/Service/DPATrackerService.php:174
-msgid "Email marketing"
-msgstr "Email marketing"
 
 #: src/Service/DPATrackerService.php:182 src/Service/DPATrackerService.php:186
 msgid "Advertising"

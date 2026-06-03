@@ -14,6 +14,18 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: Polski Translation Script 1.0\n"
 
+msgid "Placeholder"
+msgstr "Zástupný text"
+
+msgid "FAQ"
+msgstr "Časté dotazy"
+
+msgid "Neutral"
+msgstr "Neutrální"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -3935,12 +3947,6 @@ msgid "SKU label"
 msgstr "Štítek SKU"
 
 #: src/Admin/ModulesPage.php:530
-#: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
-#: resources/js/blocks/ajax-search/index.js:18
-msgid "Placeholder"
-msgstr "Placeholder"
-
-#: src/Admin/ModulesPage.php:530
 msgid "Search products, SKU codes or categories"
 msgstr "Hledat produkty, kódy SKU nebo kategorie"
 
@@ -6170,11 +6176,6 @@ msgstr ""
 msgid "Export orders"
 msgstr "Exportovat objednávky"
 
-#: src/Admin/ModulesPage.php:1421 src/Service/FaqService.php:40
-#: src/Service/FaqService.php:41 src/Service/FaqService.php:46
-msgid "FAQ"
-msgstr "FAQ"
-
 #: src/Admin/ModulesPage.php:1422
 msgid ""
 "FAQ custom post type with categories and accordion shortcode [polski_faq]. "
@@ -6698,10 +6699,6 @@ msgstr "Erfolg"
 #: src/Admin/ProductMetaBox.php:170
 msgid "Warning"
 msgstr "Warnung"
-
-#: src/Admin/ProductMetaBox.php:171
-msgid "Neutral"
-msgstr "Neutral"
 
 #: src/Admin/ProductMetaBox.php:173
 msgid "Manual badge style."
@@ -11091,11 +11088,6 @@ msgstr "Beobachtung"
 #: src/Service/SecurityIncidentService.php:179
 msgid "Authority"
 msgstr "Behörde"
-
-#: src/Service/SecurityIncidentService.php:181
-#: src/Service/SiteAuditService.php:76
-msgid "Details"
-msgstr "Details"
 
 #: src/Service/SecurityIncidentService.php:181
 msgid "Mitigation:"

@@ -15,6 +15,15 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: Polski Translation Script 1.0\n"
 
+msgid "FAQ"
+msgstr "Часті запитання"
+
+msgid "E-mail"
+msgstr "Електронна пошта"
+
+msgid "e-mail:"
+msgstr "ел. пошта:"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -6206,11 +6215,6 @@ msgstr ""
 msgid "Export orders"
 msgstr "Експортувати замовлення"
 
-#: src/Admin/ModulesPage.php:1421 src/Service/FaqService.php:40
-#: src/Service/FaqService.php:41 src/Service/FaqService.php:46
-msgid "FAQ"
-msgstr "FAQ"
-
 #: src/Admin/ModulesPage.php:1422
 msgid ""
 "FAQ custom post type with categories and accordion shortcode [polski_faq]. "
@@ -7132,10 +7136,6 @@ msgstr "Номер або ідентифікатор замовлення"
 #: src/Service/CustomCheckoutFieldsService.php:501
 msgid "Phone"
 msgstr "Телефон"
-
-#: src/Admin/WithdrawalsAdminPage.php:419
-msgid "E-mail"
-msgstr "E-mail"
 
 #: src/Admin/WithdrawalsAdminPage.php:420
 msgid "Letter / post"
@@ -9095,11 +9095,6 @@ msgstr ""
 #: src/Service/AnnexGeneratorService.php:59
 msgid "tel."
 msgstr "тел."
-
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
-msgid "e-mail:"
-msgstr "e-mail:"
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114

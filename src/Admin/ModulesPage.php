@@ -158,7 +158,7 @@ final class ModulesPage implements HasHooks
                 'enabled' => false,
                 'icon' => 'dashicons-chart-area',
                 'links' => [
-                    ['label' => __('About OSS procedure', 'polski'), 'url' => 'https://vendidero.github.io/one-stop-shop-woocommerce'],
+                    ['label' => __('About OSS procedure', 'polski'), 'url' => 'https://polski.wppoland.com/prices/oss-observer/'],
                 ],
                 'settings' => [
                     ['key' => '_oss_integration_status', 'label' => '', 'type' => 'html', 'html' => $this->getOssStatusHtml()],
