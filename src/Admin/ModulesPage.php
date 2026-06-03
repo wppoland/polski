@@ -1722,7 +1722,7 @@ final class ModulesPage implements HasHooks
         if ($hasSettings) {
             $bucket = $bucketKey !== '' ? $bucketKey : $this->getBucketKeyForModule($module);
             $settingsUrl = admin_url(
-                'admin.php?page=polski-group-' . $bucket . '#polski-module-' . $id
+                'admin.php?page=polski-settings&bucket=' . $bucket . '#polski-module-' . $id
             );
             printf(
                 '<a href="%s" class="button-link polski-modules-edit" aria-label="%s" title="%s"><span class="dashicons dashicons-edit" aria-hidden="true"></span></a>',
