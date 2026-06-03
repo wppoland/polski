@@ -57,59 +57,26 @@ final class WithdrawalsAdminPage implements HasHooks
 
     public function registerMenu(): void
     {
-        $pending = $this->pendingCount();
-        $label = __('Withdrawals', 'polski');
-
-        if ($pending > 0) {
-            $label .= sprintf(
-                ' <span class="awaiting-mod"><span class="pending-count" aria-hidden="true">%d</span>'
-                . '<span class="screen-reader-text"> %s</span></span>',
-                $pending,
-                sprintf(
-                    /* translators: %d = pending withdrawals count */
-                    esc_html(_n('%d pending withdrawal', '%d pending withdrawals', $pending, 'polski')),
-                    $pending,
-                ),
-            );
-        }
-
+        // Hidden (parent = null): routable by URL but not shown in the menu.
+        // The Withdrawals list is reached from the Reports & Tools hub instead
+        // of a flat top-level item, so the menu pending-count bubble is dropped.
         add_submenu_page(
-            'polski',
+            '',
             __('Withdrawals', 'polski'),
-            $label,
+            __('Withdrawals', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG,
             [$this, 'renderListPage'],
         );
 
         add_submenu_page(
-            'polski',
+            '',
             __('Register withdrawal', 'polski'),
             __('Register withdrawal', 'polski'),
             self::CAPABILITY,
             self::PAGE_SLUG . '-new',
             [$this, 'renderManualPage'],
         );
-    }
-
-    /**
-     * Cache-aware count of pending withdrawal requests (status: requested or
-     * confirmed). Refreshed automatically whenever a withdrawal transitions
-     * state - see invalidatePendingCount() hooked to the lifecycle actions.
-     */
-    private function pendingCount(): int
-    {
-        $cached = get_transient('polski_withdrawal_pending_count');
-        if ($cached !== false) {
-            return (int) $cached;
-        }
-
-        $count = $this->repository->countByStatus(WithdrawalStatus::Requested)
-            + $this->repository->countByStatus(WithdrawalStatus::Confirmed);
-
-        set_transient('polski_withdrawal_pending_count', $count, 5 * MINUTE_IN_SECONDS);
-
-        return $count;
     }
 
     public function renderListPage(): void
@@ -128,6 +95,9 @@ final class WithdrawalsAdminPage implements HasHooks
             <h1 class="wp-heading-inline"><?php esc_html_e('Withdrawals', 'polski'); ?></h1>
             <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-new')); ?>" class="page-title-action">
                 <?php esc_html_e('Register manually', 'polski'); ?>
+            </a>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=polski-withdrawal-settings')); ?>" class="page-title-action">
+                <?php esc_html_e('Withdrawal settings', 'polski'); ?>
             </a>
             <hr class="wp-header-end" />
 

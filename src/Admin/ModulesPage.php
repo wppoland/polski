@@ -276,7 +276,7 @@ final class ModulesPage implements HasHooks
                 'enabled' => false,
                 'icon' => 'dashicons-privacy',
                 'links' => [
-                    ['label' => __('Consent records', 'polski'), 'url' => admin_url('admin.php?page=polski-consent-records')],
+                    ['label' => __('Consent records', 'polski'), 'url' => admin_url('admin.php?page=polski&tab=reports&view=consent')],
                 ],
                 'settings' => [
                     ['key' => '_consent_categories_header', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;">' . esc_html__('Enabled categories', 'polski') . '</strong><br><span class="description">' . esc_html__('Necessary cookies are always on and cannot be switched off.', 'polski') . '</span>'],

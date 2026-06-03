@@ -16,7 +16,6 @@ use Polski\Repository\ConsentLogRepository;
 final class ConsentRecordsPage implements HasHooks
 {
     private const CAPABILITY = 'manage_woocommerce';
-    private const PAGE_SLUG = 'polski-consent-records';
     private const EXPORT_NONCE = 'polski_consent_records_export';
     private const PER_PAGE = 100;
 
@@ -31,24 +30,9 @@ final class ConsentRecordsPage implements HasHooks
             return;
         }
 
-        add_action('admin_menu', [$this, 'registerMenu'], 66);
+        // No standalone submenu: the records view is rendered inside the
+        // Reports & Tools hub (admin.php?page=polski&tab=reports&view=consent).
         add_action('admin_post_polski_consent_records_export', [$this, 'handleExport']);
-    }
-
-    public function registerMenu(): void
-    {
-        if (! ModulesPage::isModuleEnabled('consent_manager')) {
-            return;
-        }
-
-        add_submenu_page(
-            'polski',
-            __('Consent records', 'polski'),
-            __('Consent records', 'polski'),
-            self::CAPABILITY,
-            self::PAGE_SLUG,
-            [$this, 'render'],
-        );
     }
 
     public function render(): void
