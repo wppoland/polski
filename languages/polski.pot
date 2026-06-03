@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-03T05:41:05+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
-#: src/Admin/SBOMPage.php:112
+#: src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
 msgstr ""
 
@@ -109,8 +109,8 @@ msgstr ""
 #: config/defaults.php:35
 #: config/defaults.php:162
 #: config/defaults.php:260
-#: src/Admin/AdminPage.php:912
-#: src/Admin/CRAIncidentsPage.php:123
+#: src/Admin/AdminPage.php:944
+#: src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448
 #: src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152
@@ -122,7 +122,7 @@ msgstr ""
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
 #: src/Service/ReturnRequestService.php:232
-#: src/Service/RodoTrainingDocsService.php:267
+#: src/Service/RodoTrainingDocsService.php:268
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74
 #: src/Service/StockExportService.php:349
@@ -560,7 +560,7 @@ msgid "Imię i nazwisko"
 msgstr ""
 
 #: config/defaults.php:221
-#: src/Admin/ModulesPage.php:1318
+#: src/Admin/ModulesPage.php:2447
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr ""
@@ -1405,11 +1405,11 @@ msgid "Polski requires WooCommerce %1$s or higher. You are running WooCommerce %
 msgstr ""
 
 #: src/Admin/AdminNotes.php:46
-#: src/Admin/CRAIncidentsPage.php:277
-#: src/Admin/CRAIncidentsPage.php:310
-#: src/Admin/SBOMPage.php:81
-#: src/Service/ComplaintTemplateService.php:78
-#: src/Service/RodoTrainingDocsService.php:76
+#: src/Admin/CRAIncidentsPage.php:278
+#: src/Admin/CRAIncidentsPage.php:311
+#: src/Admin/SBOMPage.php:82
+#: src/Service/ComplaintTemplateService.php:79
+#: src/Service/RodoTrainingDocsService.php:77
 msgid "Insufficient permissions."
 msgstr ""
 
@@ -1501,7 +1501,7 @@ msgid "Enabled"
 msgstr ""
 
 #: src/Admin/AdminPage.php:355
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:918
 msgid "Disabled"
 msgstr ""
 
@@ -1563,32 +1563,32 @@ msgid "Your email"
 msgstr ""
 
 #: src/Admin/AdminPage.php:600
-#: src/Admin/AdminPage.php:779
+#: src/Admin/AdminPage.php:811
 msgid "Topic"
 msgstr ""
 
 #: src/Admin/AdminPage.php:602
-#: src/Admin/AdminPage.php:800
+#: src/Admin/AdminPage.php:832
 msgid "General feedback"
 msgstr ""
 
 #: src/Admin/AdminPage.php:603
-#: src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:833
 msgid "Feature idea"
 msgstr ""
 
 #: src/Admin/AdminPage.php:604
-#: src/Admin/AdminPage.php:802
+#: src/Admin/AdminPage.php:834
 msgid "Workflow problem"
 msgstr ""
 
 #: src/Admin/AdminPage.php:605
-#: src/Admin/AdminPage.php:803
+#: src/Admin/AdminPage.php:835
 msgid "Support question"
 msgstr ""
 
 #: src/Admin/AdminPage.php:607
-#: src/Admin/AdminPage.php:781
+#: src/Admin/AdminPage.php:813
 msgid "Message"
 msgstr ""
 
@@ -1685,190 +1685,224 @@ msgid "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i us
 msgstr ""
 
 #: src/Admin/AdminPage.php:698
-msgid "Feedback Logs"
+msgid "Incydenty CRA"
 msgstr ""
 
 #: src/Admin/AdminPage.php:699
+msgid "Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze statusami i eksportem CSV."
+msgstr ""
+
+#: src/Admin/AdminPage.php:706
+#: src/Admin/SBOMPage.php:40
+#: src/Admin/SBOMPage.php:41
+msgid "SBOM"
+msgstr ""
+
+#: src/Admin/AdminPage.php:707
+msgid "Zestawienie komponentów oprogramowania (Software Bill of Materials) na potrzeby CRA."
+msgstr ""
+
+#: src/Admin/AdminPage.php:714
+msgid "Szablon reklamacji"
+msgstr ""
+
+#: src/Admin/AdminPage.php:715
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr ""
+
+#: src/Admin/AdminPage.php:722
+msgid "Szkolenia RODO"
+msgstr ""
+
+#: src/Admin/AdminPage.php:723
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr ""
+
+#: src/Admin/AdminPage.php:730
+msgid "Feedback Logs"
+msgstr ""
+
+#: src/Admin/AdminPage.php:731
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 
-#: src/Admin/AdminPage.php:705
+#: src/Admin/AdminPage.php:737
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 
-#: src/Admin/AdminPage.php:744
+#: src/Admin/AdminPage.php:776
 msgid "Open Report"
 msgstr ""
 
-#: src/Admin/AdminPage.php:746
+#: src/Admin/AdminPage.php:778
 msgid "This report needs its module enabled first (optional features are off by default)."
 msgstr ""
 
-#: src/Admin/AdminPage.php:748
+#: src/Admin/AdminPage.php:780
 msgid "Enable module"
 msgstr ""
 
-#: src/Admin/AdminPage.php:750
+#: src/Admin/AdminPage.php:782
 msgid "Module disabled"
 msgstr ""
 
-#: src/Admin/AdminPage.php:769
+#: src/Admin/AdminPage.php:801
 msgid "Admin Feedback Logs"
 msgstr ""
 
-#: src/Admin/AdminPage.php:772
+#: src/Admin/AdminPage.php:804
 msgid "No internal feedback to display."
 msgstr ""
 
-#: src/Admin/AdminPage.php:777
+#: src/Admin/AdminPage.php:809
 #: src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171
 #: src/Service/ReturnRequestService.php:231
-#: src/Service/RodoTrainingDocsService.php:164
+#: src/Service/RodoTrainingDocsService.php:165
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
 msgid "Date"
 msgstr ""
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:810
 msgid "Person"
 msgstr ""
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:812
 msgid "Screen"
 msgstr ""
 
-#: src/Admin/AdminPage.php:837
+#: src/Admin/AdminPage.php:869
 msgid "Hello!"
 msgstr ""
 
-#: src/Admin/AdminPage.php:838
+#: src/Admin/AdminPage.php:870
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr ""
 
-#: src/Admin/AdminPage.php:844
+#: src/Admin/AdminPage.php:876
 msgid "Finish configuration"
 msgstr ""
 
-#: src/Admin/AdminPage.php:845
+#: src/Admin/AdminPage.php:877
 msgid "Some key elements of your store still require attention."
 msgstr ""
 
-#: src/Admin/AdminPage.php:848
+#: src/Admin/AdminPage.php:880
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 
-#: src/Admin/AdminPage.php:851
+#: src/Admin/AdminPage.php:883
 msgid "Go through the checklist below"
 msgstr ""
 
-#: src/Admin/AdminPage.php:854
+#: src/Admin/AdminPage.php:886
 msgid "Complete product data"
 msgstr ""
 
-#: src/Admin/AdminPage.php:855
+#: src/Admin/AdminPage.php:887
 msgid "Manage modules"
 msgstr ""
 
-#: src/Admin/AdminPage.php:863
+#: src/Admin/AdminPage.php:895
 msgid "Relaunch setup wizard"
 msgstr ""
 
-#: src/Admin/AdminPage.php:873
+#: src/Admin/AdminPage.php:905
 msgid "Inactive"
 msgstr ""
 
-#: src/Admin/AdminPage.php:878
-#: src/Admin/AdminPage.php:907
+#: src/Admin/AdminPage.php:910
+#: src/Admin/AdminPage.php:939
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr ""
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:912
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr ""
 
-#: src/Admin/AdminPage.php:885
+#: src/Admin/AdminPage.php:917
 msgid "Omnibus Directive"
 msgstr ""
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:918
 msgid "Active"
 msgstr ""
 
-#: src/Admin/AdminPage.php:891
+#: src/Admin/AdminPage.php:923
 msgid "Store Analysis"
 msgstr ""
 
-#: src/Admin/AdminPage.php:892
+#: src/Admin/AdminPage.php:924
 msgid "Check reports"
 msgstr ""
 
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:944
 msgid "Page"
 msgstr ""
 
-#: src/Admin/AdminPage.php:929
+#: src/Admin/AdminPage.php:961
 msgid "Published"
 msgstr ""
 
-#: src/Admin/AdminPage.php:930
+#: src/Admin/AdminPage.php:962
 msgid "Draft"
 msgstr ""
 
-#: src/Admin/AdminPage.php:935
+#: src/Admin/AdminPage.php:967
 msgid "Edit"
 msgstr ""
 
-#: src/Admin/AdminPage.php:937
+#: src/Admin/AdminPage.php:969
 msgid "Not created"
 msgstr ""
 
-#: src/Admin/AdminPage.php:952
+#: src/Admin/AdminPage.php:984
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr ""
 
-#: src/Admin/AdminPage.php:960
+#: src/Admin/AdminPage.php:992
 msgid "Next steps"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1012
+#: src/Admin/AdminPage.php:1044
 msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
 msgstr ""
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1020
+#: src/Admin/AdminPage.php:1052
 #, php-format
 msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
 msgstr ""
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1032
+#: src/Admin/AdminPage.php:1064
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr ""
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1043
+#: src/Admin/AdminPage.php:1075
 #, php-format
 msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
 msgstr ""
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1054
+#: src/Admin/AdminPage.php:1086
 #, php-format
 msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
 msgstr ""
 
-#: src/Admin/AdminPage.php:1077
+#: src/Admin/AdminPage.php:1109
 msgid "Generate legal pages"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1124
+#: src/Admin/AdminPage.php:1156
 msgid "Open &rarr;"
 msgstr ""
 
@@ -1934,51 +1968,51 @@ msgstr ""
 msgid "Could not open output stream."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:50
 #: src/Admin/CRAIncidentsPage.php:51
-#: src/Admin/CRAIncidentsPage.php:64
+#: src/Admin/CRAIncidentsPage.php:52
+#: src/Admin/CRAIncidentsPage.php:65
 msgid "CRA incidents"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:68
-#: src/Admin/CRAIncidentsPage.php:268
+#: src/Admin/CRAIncidentsPage.php:69
+#: src/Admin/CRAIncidentsPage.php:269
 msgid "Record incident"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:93
+#: src/Admin/CRAIncidentsPage.php:94
 msgid "Incident recorded."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:94
+#: src/Admin/CRAIncidentsPage.php:95
 msgid "Incident notification dispatched."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:95
+#: src/Admin/CRAIncidentsPage.php:96
 msgid "Incident marked resolved."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:96
+#: src/Admin/CRAIncidentsPage.php:97
 msgid "Incident deleted."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:97
+#: src/Admin/CRAIncidentsPage.php:98
 msgid "Something went wrong."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:110
+#: src/Admin/CRAIncidentsPage.php:111
 msgid "Record actively-exploited vulnerabilities and security incidents. The checker tracks the CRA Article 14 24-hour early-warning deadline and exports a structured JSON submission."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:111
+#: src/Admin/CRAIncidentsPage.php:112
 msgid "Configure the webhook URL and notification email under Polski > Settings > CRA incidents."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:116
+#: src/Admin/CRAIncidentsPage.php:117
 msgid "No incidents recorded yet."
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:121
-#: src/Admin/CRAIncidentsPage.php:243
+#: src/Admin/CRAIncidentsPage.php:122
+#: src/Admin/CRAIncidentsPage.php:244
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 #: src/Service/SecurityIncidentService.php:116
@@ -1988,8 +2022,8 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:122
-#: src/Admin/CRAIncidentsPage.php:255
+#: src/Admin/CRAIncidentsPage.php:123
+#: src/Admin/CRAIncidentsPage.php:256
 #: src/Admin/PageCompliancePage.php:106
 #: src/Admin/PageCompliancePage.php:151
 #: src/Admin/PageCompliancePage.php:200
@@ -1998,76 +2032,76 @@ msgstr ""
 msgid "Severity"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/CRAIncidentsPage.php:125
 msgid "Deadline"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:125
+#: src/Admin/CRAIncidentsPage.php:126
 #: src/Admin/ModulesPage.php:1601
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr ""
 
 #. translators: %s: notification timestamp
-#: src/Admin/CRAIncidentsPage.php:155
+#: src/Admin/CRAIncidentsPage.php:156
 #, php-format
 msgid "Notified %s"
 msgstr ""
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:164
+#: src/Admin/CRAIncidentsPage.php:165
 #, php-format
 msgid "Overdue by %dh"
 msgstr ""
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:173
+#: src/Admin/CRAIncidentsPage.php:174
 #, php-format
 msgid "%dh remaining"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:218
+#: src/Admin/CRAIncidentsPage.php:219
 msgid "Export JSON"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:222
+#: src/Admin/CRAIncidentsPage.php:223
 msgid "Dispatch notification"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:225
+#: src/Admin/CRAIncidentsPage.php:226
 msgid "Mark resolved"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:228
+#: src/Admin/CRAIncidentsPage.php:229
 msgid "Delete incident?"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:230
+#: src/Admin/CRAIncidentsPage.php:231
 msgid "Delete"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:244
+#: src/Admin/CRAIncidentsPage.php:245
 msgid "Affected component"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:245
+#: src/Admin/CRAIncidentsPage.php:246
 msgid "Affected versions"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:246
+#: src/Admin/CRAIncidentsPage.php:247
 #: src/Service/DSAService.php:172
 msgid "Reporter"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:247
+#: src/Admin/CRAIncidentsPage.php:248
 msgid "External reference ID"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:249
+#: src/Admin/CRAIncidentsPage.php:250
 msgid "Kind"
 msgstr ""
 
-#: src/Admin/CRAIncidentsPage.php:262
+#: src/Admin/CRAIncidentsPage.php:263
 #: src/Hook/AiProductSummaryHooks.php:60
 msgid "Summary"
 msgstr ""
@@ -2583,23 +2617,6 @@ msgstr ""
 msgid "Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:176
-#: src/Admin/ModulesPage.php:638
-#: src/Admin/ModulesPage.php:655
-#: src/Admin/ModulesPage.php:706
-#: src/Admin/ModulesPage.php:736
-#: src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:820
-#: src/Admin/ModulesPage.php:852
-#: src/Admin/ModulesPage.php:875
-#: src/Admin/ModulesPage.php:893
-#: src/Admin/ModulesPage.php:910
-#: src/Admin/ModulesPage.php:937
-#: src/Admin/ModulesPage.php:967
-#: src/Admin/ModulesPage.php:988
-msgid "Merchandising"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:181
 msgid "Bulk discount: minimum quantity per product"
 msgstr ""
@@ -2632,15 +2649,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:191
 msgid "Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish consumer law."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:192
-#: src/Admin/ModulesPage.php:205
-#: src/Admin/ModulesPage.php:238
-#: src/Admin/ModulesPage.php:253
-#: src/Admin/ModulesPage.php:267
-#: src/Admin/ModulesPage.php:281
-msgid "Prices and Display"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:197
@@ -2890,14 +2898,6 @@ msgstr ""
 msgid "Change order button text to \"Order with obligation to pay\" according to Polish law."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:295
-#: src/Admin/ModulesPage.php:307
-#: src/Admin/ModulesPage.php:346
-#: src/Admin/ModulesPage.php:361
-#: src/Admin/ModulesPage.php:1302
-msgid "Checkout and Orders"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:300
 #: src/Admin/ModulesPage.php:627
 #: src/Admin/ModulesPage.php:698
@@ -3092,11 +3092,6 @@ msgstr ""
 msgid "A native cookie-consent banner with consent categories, Google Consent Mode v2 signalling, and blocking of scripts and iframes until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:371
-#: src/Admin/ModulesPage.php:2400
-msgid "Legal & Compliance"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:378
 msgid "Enabled categories"
 msgstr ""
@@ -3107,8 +3102,8 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:379
 #: src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1370
-#: src/Admin/ModulesPage.php:1895
+#: src/Admin/ModulesPage.php:1911
+#: src/Admin/ModulesPage.php:2468
 #: src/Enum/ConsentCategory.php:36
 #: src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166
@@ -3118,14 +3113,14 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:380
 #: src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1896
+#: src/Admin/ModulesPage.php:1912
 #: src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:381
 #: src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1897
+#: src/Admin/ModulesPage.php:1913
 #: src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr ""
@@ -3209,14 +3204,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:400
 msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:401
-#: src/Admin/ModulesPage.php:414
-#: src/Admin/ModulesPage.php:426
-#: src/Admin/ModulesPage.php:466
-#: src/Admin/ModulesPage.php:511
-msgid "Consumer Rights"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:406
@@ -3685,15 +3672,6 @@ msgstr ""
 msgid "Manufacturer information, responsible person (GPSR), safety documents, safety instructions."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:527
-#: src/Admin/ModulesPage.php:537
-#: src/Admin/ModulesPage.php:568
-#: src/Admin/ModulesPage.php:1019
-#: src/Admin/ModulesPage.php:1032
-#: src/Admin/ModulesPage.php:1044
-msgid "Product Information"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:535
 msgid "Food and Supplements"
 msgstr ""
@@ -3778,7 +3756,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:555
 #: src/Service/FoodService.php:161
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Value"
 msgstr ""
 
@@ -3830,10 +3808,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:579
 msgid "Email address verification during account registration. Activation link sent by email, login block for unactivated accounts."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:580
-msgid "Customer Account"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:585
@@ -3938,10 +3912,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:604
 msgid "Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:605
-msgid "Sales and B2B"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:610
@@ -4089,7 +4059,7 @@ msgid "Show on product page"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:645
-#: src/Admin/ModulesPage.php:1972
+#: src/Admin/ModulesPage.php:1988
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr ""
@@ -5075,7 +5045,7 @@ msgid "Shop and archives"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1009
-#: src/Admin/ModulesPage.php:1531
+#: src/Admin/ModulesPage.php:2445
 #: src/Service/LiveCartService.php:82
 #: src/Service/LiveCartService.php:245
 msgid "Checkout"
@@ -5157,14 +5127,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1053
 msgid "Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report]."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1054
-#: src/Admin/ModulesPage.php:1070
-#: src/Admin/ModulesPage.php:1082
-#: src/Admin/ModulesPage.php:1097
-#: src/AIFeed/LlmsTxtService.php:109
-msgid "Consumer rights"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1059
@@ -5282,28 +5244,12 @@ msgstr ""
 msgid "Exposes read-only commerce data (price history, product safety data, store health, configured-page checks, product facts) to AI assistants and the Site Editor via the WordPress Abilities API. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1116
-#: src/Admin/ModulesPage.php:1255
-#: src/Admin/ModulesPage.php:1267
-#: src/Admin/ModulesPage.php:1279
-#: src/Admin/ModulesPage.php:1292
-#: src/Admin/ModulesPage.php:1384
-#: src/Admin/ModulesPage.php:1507
-msgid "Tools"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:1126
 msgid "Structured Data (Schema.org)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1127
 msgid "Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1128
-#: src/Admin/ModulesPage.php:1146
-#: src/Admin/ModulesPage.php:1190
-msgid "SEO & Optimization"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1133
@@ -5542,7 +5488,7 @@ msgid "Consent category"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1198
-#: src/Admin/ModulesPage.php:1894
+#: src/Admin/ModulesPage.php:1910
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr ""
@@ -5557,12 +5503,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1209
 msgid "Add your own scripts or snippets to the page head or footer. Each snippet is assigned a consent category and runs only after the visitor grants it, via the Consent Manager."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1210
-#: src/Admin/ModulesPage.php:1224
-#: src/Admin/ModulesPage.php:2408
-msgid "Advanced & Tools"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1215
@@ -5595,10 +5535,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1238
 msgid "Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1239
-msgid "Integrations"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1253
@@ -5729,11 +5665,6 @@ msgstr ""
 msgid "Display \"from {price}\" instead of a price range for variable products. Cleaner presentation on archives and product pages."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1333
-#: src/Admin/ModulesPage.php:1493
-msgid "Prices and Omnibus"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:1338
 msgid "Enable \"from\" price display"
 msgstr ""
@@ -5752,11 +5683,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1347
 msgid "Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1348
-#: src/Admin/ModulesPage.php:1358
-msgid "Stock & Cart"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1356
@@ -5812,18 +5738,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1395
 msgid "Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1396
-#: src/Admin/ModulesPage.php:1414
-#: src/Admin/ModulesPage.php:1424
-#: src/Admin/ModulesPage.php:1436
-#: src/Admin/ModulesPage.php:1452
-#: src/Admin/ModulesPage.php:1462
-#: src/Admin/ModulesPage.php:1476
-#: src/Admin/ModulesPage.php:1519
-#: src/AIFeed/LlmsTxtService.php:209
-msgid "Storefront"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1401
@@ -6080,199 +5994,262 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1647
+#: src/Admin/ModulesPage.php:1663
 msgid "Help"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1690
+#: src/Admin/ModulesPage.php:1706
 msgid "Enable this module to use this."
 msgstr ""
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1713
+#: src/Admin/ModulesPage.php:1729
 #, php-format
 msgid "Edit %s settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1732
 msgid "Edit settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1726
-#: src/Admin/ModulesPage.php:1727
+#: src/Admin/ModulesPage.php:1742
+#: src/Admin/ModulesPage.php:1743
 msgid "Open documentation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1760
+#: src/Admin/ModulesPage.php:1776
 msgid "Save"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1854
+#: src/Admin/ModulesPage.php:1870
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1950
+#: src/Admin/ModulesPage.php:1966
 msgid "Add snippet"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1979
+#: src/Admin/ModulesPage.php:1995
 msgid "Head"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1996
 msgid "Footer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1993
+#: src/Admin/ModulesPage.php:2009
 msgid "<script>...</script> or inline JS"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1999
-#: src/Admin/ModulesPage.php:2084
+#: src/Admin/ModulesPage.php:2015
+#: src/Admin/ModulesPage.php:2100
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2029
+#: src/Admin/ModulesPage.php:2045
 msgid "Add trigger"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2052
+#: src/Admin/ModulesPage.php:2068
 msgid "Event name (e.g. cta_click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2059
+#: src/Admin/ModulesPage.php:2075
 msgid "URL contains"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2076
 msgid "Click on selector"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2073
+#: src/Admin/ModulesPage.php:2089
 msgid "URL fragment (for URL contains)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2094
 msgid "CSS selector (for click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2188
+#: src/Admin/ModulesPage.php:2204
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2195
 #: src/Admin/ModulesPage.php:2211
+#: src/Admin/ModulesPage.php:2227
 msgid "Invalid request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2402
+#: src/Admin/ModulesPage.php:2416
+#: src/Admin/ModulesPage.php:2464
+msgid "Legal & Compliance"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2418
 msgid "Tax & Pricing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2404
+#: src/Admin/ModulesPage.php:2420
 msgid "Checkout & Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2406
+#: src/Admin/ModulesPage.php:2422
 msgid "Content & Trust"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2410
+#: src/Admin/ModulesPage.php:2424
+#: src/Admin/ModulesPage.php:2474
+msgid "Advanced & Tools"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2426
 #: src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2481
+#: src/Admin/ModulesPage.php:2439
+msgid "Prices and Display"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2441
+msgid "Prices and Omnibus"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2443
+msgid "Checkout and Orders"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2449
+msgid "Stock & Cart"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2451
+msgid "Merchandising"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2453
+#: src/AIFeed/LlmsTxtService.php:209
+msgid "Storefront"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2455
+msgid "Product Information"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2457
+msgid "Customer Account"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2459
+msgid "Sales and B2B"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2462
+msgid "Consumer Rights"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2466
+msgid "Tools"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2470
+msgid "SEO & Optimization"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2472
+msgid "Integrations"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2547
 msgid "Could not save module state. Please try again."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2498
+#: src/Admin/ModulesPage.php:2564
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2499
+#: src/Admin/ModulesPage.php:2565
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2510
+#: src/Admin/ModulesPage.php:2576
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2511
+#: src/Admin/ModulesPage.php:2577
 msgid "not installed"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2526
+#: src/Admin/ModulesPage.php:2592
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2528
+#: src/Admin/ModulesPage.php:2594
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2548
+#: src/Admin/ModulesPage.php:2614
 msgid "OSS observer service is unavailable."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2555
+#: src/Admin/ModulesPage.php:2621
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2561
+#: src/Admin/ModulesPage.php:2627
 msgid "Install One Stop Shop"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2566
+#: src/Admin/ModulesPage.php:2632
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2575
+#: src/Admin/ModulesPage.php:2641
 msgid "One Stop Shop plugin detected."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2579
+#: src/Admin/ModulesPage.php:2645
 msgid "OSS procedure"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2581
+#: src/Admin/ModulesPage.php:2647
 msgid "enabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2582
+#: src/Admin/ModulesPage.php:2648
 msgid "disabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2586
+#: src/Admin/ModulesPage.php:2652
 msgid "Auto observer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2588
+#: src/Admin/ModulesPage.php:2654
 msgid "watching threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2589
+#: src/Admin/ModulesPage.php:2655
 msgid "off"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2660
 msgid "Open OSS settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2718
 msgid "detected, integration active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2721
 msgid "install"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2667
+#: src/Admin/ModulesPage.php:2733
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2669
+#: src/Admin/ModulesPage.php:2735
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr ""
 
@@ -6690,28 +6667,23 @@ msgstr ""
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr ""
 
-#: src/Admin/SBOMPage.php:39
-#: src/Admin/SBOMPage.php:40
-msgid "SBOM"
-msgstr ""
-
-#: src/Admin/SBOMPage.php:49
+#: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:50
+#: src/Admin/SBOMPage.php:51
 msgid "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners."
 msgstr ""
 
-#: src/Admin/SBOMPage.php:56
+#: src/Admin/SBOMPage.php:57
 msgid "Path"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:72
+#: src/Admin/SBOMPage.php:73
 msgid "Download SBOM (JSON)"
 msgstr ""
 
-#: src/Admin/SBOMPage.php:88
+#: src/Admin/SBOMPage.php:89
 msgid "Unknown plugin target."
 msgstr ""
 
@@ -7105,6 +7077,10 @@ msgstr ""
 
 #: src/AIFeed/LlmsTxtService.php:104
 msgid "Product categories"
+msgstr ""
+
+#: src/AIFeed/LlmsTxtService.php:109
+msgid "Consumer rights"
 msgstr ""
 
 #: src/AIFeed/LlmsTxtService.php:134
@@ -8526,8 +8502,8 @@ msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114
-#: src/Service/ComplaintTemplateService.php:134
-#: src/Service/RodoTrainingDocsService.php:148
+#: src/Service/ComplaintTemplateService.php:135
+#: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr ""
 
@@ -8925,124 +8901,124 @@ msgstr ""
 msgid "Short description"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:45
 #: src/Service/ComplaintTemplateService.php:46
-#: src/Service/ComplaintTemplateService.php:55
+#: src/Service/ComplaintTemplateService.php:47
+#: src/Service/ComplaintTemplateService.php:56
 msgid "Complaint template"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:56
+#: src/Service/ComplaintTemplateService.php:57
 msgid "Ready-to-print complaint form. The seller section is filled automatically from your setup wizard data; the buyer and defect sections stay blank for the customer."
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:57
+#: src/Service/ComplaintTemplateService.php:58
 msgid "Disclaimer: this is a generic template. Consult a lawyer for shop-specific legal text."
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:62
+#: src/Service/ComplaintTemplateService.php:63
 msgid "Download as HTML"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:66
+#: src/Service/ComplaintTemplateService.php:67
 msgid "Preview"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:102
-#: src/Service/ComplaintTemplateService.php:141
+#: src/Service/ComplaintTemplateService.php:103
+#: src/Service/ComplaintTemplateService.php:142
 msgid "Complaint form"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:137
-#: src/Service/ComplaintTemplateService.php:151
+#: src/Service/ComplaintTemplateService.php:138
+#: src/Service/ComplaintTemplateService.php:152
 msgid "Email:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:142
+#: src/Service/ComplaintTemplateService.php:143
 msgid "Submit this form within the statutory warranty period. The seller is required to respond within 14 days."
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:144
+#: src/Service/ComplaintTemplateService.php:145
 msgid "Seller"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:147
+#: src/Service/ComplaintTemplateService.php:148
 #: src/Service/ProductQAService.php:237
 msgid "Customer"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:148
+#: src/Service/ComplaintTemplateService.php:149
 msgid "Name and surname:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:149
+#: src/Service/ComplaintTemplateService.php:150
 msgid "Address:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:152
+#: src/Service/ComplaintTemplateService.php:153
 msgid "Phone:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:155
+#: src/Service/ComplaintTemplateService.php:156
 msgid "Order and product"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:157
+#: src/Service/ComplaintTemplateService.php:158
 msgid "Order number:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:158
+#: src/Service/ComplaintTemplateService.php:159
 msgid "Purchase date:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:160
+#: src/Service/ComplaintTemplateService.php:161
 msgid "Product name:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:162
+#: src/Service/ComplaintTemplateService.php:163
 msgid "Defect / non-conformity"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:163
+#: src/Service/ComplaintTemplateService.php:164
 msgid "Description:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:164
+#: src/Service/ComplaintTemplateService.php:165
 msgid "Date of defect detection:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:166
+#: src/Service/ComplaintTemplateService.php:167
 msgid "Requested remedy"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:168
+#: src/Service/ComplaintTemplateService.php:169
 msgid "Repair"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:169
+#: src/Service/ComplaintTemplateService.php:170
 msgid "Replacement"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:170
+#: src/Service/ComplaintTemplateService.php:171
 msgid "Price reduction (specify amount)"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:171
+#: src/Service/ComplaintTemplateService.php:172
 msgid "Withdrawal from the contract (refund of full price)"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:174
+#: src/Service/ComplaintTemplateService.php:175
 msgid "Bank account for refund"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:175
+#: src/Service/ComplaintTemplateService.php:176
 msgid "Account number (IBAN):"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:178
+#: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr ""
 
-#: src/Service/ComplaintTemplateService.php:179
+#: src/Service/ComplaintTemplateService.php:180
 msgid "Signature:"
 msgstr ""
 
@@ -9920,252 +9896,252 @@ msgstr ""
 msgid "Leave a review"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:42
 #: src/Service/RodoTrainingDocsService.php:43
+#: src/Service/RodoTrainingDocsService.php:44
 msgid "RODO training docs"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:52
+#: src/Service/RodoTrainingDocsService.php:53
 msgid "RODO / GDPR training documentation"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:53
+#: src/Service/RodoTrainingDocsService.php:54
 msgid "Ready-to-print templates for onboarding new shop employees. Pre-branded with your shop's business data."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:54
+#: src/Service/RodoTrainingDocsService.php:55
 msgid "Disclaimer: generic starter templates - adapt to your actual data-processing workflows."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:64
+#: src/Service/RodoTrainingDocsService.php:65
 msgid "Download HTML"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:83
+#: src/Service/RodoTrainingDocsService.php:84
 msgid "Unknown document."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:104
+#: src/Service/RodoTrainingDocsService.php:105
 msgid "Training logbook"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:105
+#: src/Service/RodoTrainingDocsService.php:106
 msgid "Table to record employee training sessions: who, role, topics, date and signature."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:109
+#: src/Service/RodoTrainingDocsService.php:110
 msgid "RODO principles summary"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:110
+#: src/Service/RodoTrainingDocsService.php:111
 msgid "One-page summary of the 7 RODO principles and the 8 data subject rights."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:114
+#: src/Service/RodoTrainingDocsService.php:115
 msgid "Data breach response playbook"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:115
+#: src/Service/RodoTrainingDocsService.php:116
 msgid "Step-by-step checklist with the 72-hour UODO notification deadline and internal escalation."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:160
+#: src/Service/RodoTrainingDocsService.php:161
 msgid "Use one row per training session. The trainee signs to confirm attendance and understanding."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:165
+#: src/Service/RodoTrainingDocsService.php:166
 msgid "Employee"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:166
+#: src/Service/RodoTrainingDocsService.php:167
 msgid "Role"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:167
+#: src/Service/RodoTrainingDocsService.php:168
 msgid "Topics covered"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:168
+#: src/Service/RodoTrainingDocsService.php:169
 msgid "Trainer"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:169
+#: src/Service/RodoTrainingDocsService.php:170
 msgid "Signature"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:187
+#: src/Service/RodoTrainingDocsService.php:188
 msgid "Lawfulness, fairness and transparency"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:188
+#: src/Service/RodoTrainingDocsService.php:189
 msgid "Purpose limitation"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:189
+#: src/Service/RodoTrainingDocsService.php:190
 msgid "Data minimisation"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:190
+#: src/Service/RodoTrainingDocsService.php:191
 msgid "Accuracy"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:191
+#: src/Service/RodoTrainingDocsService.php:192
 msgid "Storage limitation"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:192
+#: src/Service/RodoTrainingDocsService.php:193
 msgid "Integrity and confidentiality (security)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:193
+#: src/Service/RodoTrainingDocsService.php:194
 msgid "Accountability"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:197
+#: src/Service/RodoTrainingDocsService.php:198
 msgid "Right of access (Art. 15)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:198
+#: src/Service/RodoTrainingDocsService.php:199
 msgid "Right to rectification (Art. 16)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:199
+#: src/Service/RodoTrainingDocsService.php:200
 msgid "Right to erasure (Art. 17)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:200
+#: src/Service/RodoTrainingDocsService.php:201
 msgid "Right to restriction of processing (Art. 18)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:201
+#: src/Service/RodoTrainingDocsService.php:202
 msgid "Right to notification about rectification or erasure (Art. 19)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:202
+#: src/Service/RodoTrainingDocsService.php:203
 msgid "Right to data portability (Art. 20)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:203
+#: src/Service/RodoTrainingDocsService.php:204
 msgid "Right to object (Art. 21)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:204
+#: src/Service/RodoTrainingDocsService.php:205
 msgid "Right not to be subject to automated decision-making (Art. 22)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:207
+#: src/Service/RodoTrainingDocsService.php:208
 msgid "Seven principles of processing (Art. 5)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:214
+#: src/Service/RodoTrainingDocsService.php:215
 msgid "Eight data subject rights (Chapter III)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:221
+#: src/Service/RodoTrainingDocsService.php:222
 msgid "Operational reminders"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:223
+#: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:224
+#: src/Service/RodoTrainingDocsService.php:225
 msgid "Verify the requester before acting on access or erasure requests."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:225
+#: src/Service/RodoTrainingDocsService.php:226
 msgid "Log every disclosure to third parties (processors, authorities)."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:226
+#: src/Service/RodoTrainingDocsService.php:227
 msgid "Report every suspected data breach to the DPO/manager within 24 hours internally."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:235
+#: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:236
+#: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:237
+#: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:238
+#: src/Service/RodoTrainingDocsService.php:239
 msgid "Assessment - document data categories, subjects affected, likely impact."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:239
+#: src/Service/RodoTrainingDocsService.php:240
 msgid "UODO notification - required within 72 hours when risk to subjects is not unlikely."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:240
+#: src/Service/RodoTrainingDocsService.php:241
 msgid "Subject notification - required \"without undue delay\" when risk is high."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:241
+#: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:242
+#: src/Service/RodoTrainingDocsService.php:243
 msgid "Post-mortem - document lessons learned and update training."
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:245
+#: src/Service/RodoTrainingDocsService.php:246
 msgid "Step-by-step breach response"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:252
+#: src/Service/RodoTrainingDocsService.php:253
 msgid "Breach log template"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Field"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:257
+#: src/Service/RodoTrainingDocsService.php:258
 msgid "Incident ID"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:258
+#: src/Service/RodoTrainingDocsService.php:259
 msgid "Detected at (UTC)"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:259
+#: src/Service/RodoTrainingDocsService.php:260
 msgid "Detected by"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:260
+#: src/Service/RodoTrainingDocsService.php:261
 msgid "Affected systems"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:261
+#: src/Service/RodoTrainingDocsService.php:262
 msgid "Affected data categories"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:262
+#: src/Service/RodoTrainingDocsService.php:263
 msgid "Approximate number of subjects"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:263
+#: src/Service/RodoTrainingDocsService.php:264
 msgid "Likely impact"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:264
+#: src/Service/RodoTrainingDocsService.php:265
 msgid "Containment actions"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:265
+#: src/Service/RodoTrainingDocsService.php:266
 msgid "UODO notified at"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:266
+#: src/Service/RodoTrainingDocsService.php:267
 msgid "Subjects notified at"
 msgstr ""
 
-#: src/Service/RodoTrainingDocsService.php:274
+#: src/Service/RodoTrainingDocsService.php:275
 msgid "UODO notification channel:"
 msgstr ""
 
