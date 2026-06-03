@@ -173,7 +173,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'dynamic_pricing',
                 'name' => __('Promotions / dynamic pricing', 'polski'),
                 'description' => __('Automatic cart discounts: a percentage off when the cart subtotal reaches a threshold, and a percentage off a product line when its quantity reaches a threshold (bulk discount). Off by default.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-tag',
                 'links' => [],
@@ -189,7 +189,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'unit_price',
                 'name' => __('Unit price', 'polski'),
                 'description' => __('Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish consumer law.', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-tag',
                 'links' => [],
@@ -202,7 +202,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'omnibus',
                 'name' => __('Lowest price (Omnibus)', 'polski'),
                 'description' => __('Track price history and display the lowest price from the last 30 days for products on sale. Required by the Omnibus Directive (EU 2019/2161).', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
@@ -235,7 +235,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'tax_display',
                 'name' => __('VAT Display', 'polski'),
                 'description' => __('Configuration for gross/net prices display, VAT rate info, and small business exemption support (Art. 113 of the VAT Act).', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-money-alt',
                 'links' => [],
@@ -250,7 +250,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'oss_observer',
                 'name' => __('OSS observer', 'polski'),
                 'description' => __('Observe the OSS delivery threshold of the current year. Enabling this will install the One Stop Shop plugin, which monitors your intra-EU B2C sales and flags when you approach the €10,000 threshold.', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => false,
                 'icon' => 'dashicons-chart-area',
                 'links' => [
@@ -264,7 +264,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'delivery_time',
                 'name' => __('Delivery time', 'polski'),
                 'description' => __('Display estimated delivery time on the product page. Configuration per product or variation with default fallback.', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-clock',
                 'links' => [],
@@ -278,7 +278,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'shipping_notice',
                 'name' => __('Shipping costs info', 'polski'),
                 'description' => __('Link to a shipping costs page displayed next to the product price.', 'polski'),
-                'group' => __('Prices and Display', 'polski'),
+                'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-car',
                 'links' => [],
@@ -292,7 +292,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'checkout_button',
                 'name' => __('Checkout button', 'polski'),
                 'description' => __('Change order button text to "Order with obligation to pay" according to Polish law.', 'polski'),
-                'group' => __('Checkout and Orders', 'polski'),
+                'group' => 'Checkout and Orders',
                 'enabled' => true,
                 'icon' => 'dashicons-cart',
                 'links' => [],
@@ -304,7 +304,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'legal_checkboxes',
                 'name' => __('Legal checkboxes', 'polski'),
                 'description' => __('7 built-in checkboxes: terms and conditions, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing.', 'polski'),
-                'group' => __('Checkout and Orders', 'polski'),
+                'group' => 'Checkout and Orders',
                 'enabled' => true,
                 'icon' => 'dashicons-yes-alt',
                 'links' => [],
@@ -343,7 +343,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'nip_lookup',
                 'name' => __('NIP - Verification and Autocomplete', 'polski'),
                 'description' => __('NIP field on the checkout page with checksum validation. Automatic retrieval of company data from the GUS REGON database after entering NIP.', 'polski'),
-                'group' => __('Checkout and Orders', 'polski'),
+                'group' => 'Checkout and Orders',
                 'enabled' => false,
                 'pro' => false,
                 'icon' => 'dashicons-building',
@@ -358,7 +358,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'consent_logging',
                 'name' => __('Consent Logging (GDPR)', 'polski'),
                 'description' => __('Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant.', 'polski'),
-                'group' => __('Checkout and Orders', 'polski'),
+                'group' => 'Checkout and Orders',
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
                 'links' => [],
@@ -368,7 +368,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'consent_manager',
                 'name' => __('Consent Manager (cookie banner)', 'polski'),
                 'description' => __('A native cookie-consent banner with consent categories, Google Consent Mode v2 signalling, and blocking of scripts and iframes until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
-                'group' => __('Legal & Compliance', 'polski'),
+                'group' => 'Legal & Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-privacy',
                 'links' => [
@@ -398,7 +398,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'returns_rma',
                 'name' => __('Returns & complaints (RMA)', 'polski'),
                 'description' => __('Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice.', 'polski'),
-                'group' => __('Consumer Rights', 'polski'),
+                'group' => 'Consumer Rights',
                 'enabled' => false,
                 'icon' => 'dashicons-undo',
                 'links' => [],
@@ -411,7 +411,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'legal_pages',
                 'name' => __('Legal Pages', 'polski'),
                 'description' => __('Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints.', 'polski'),
-                'group' => __('Consumer Rights', 'polski'),
+                'group' => 'Consumer Rights',
                 'enabled' => true,
                 'icon' => 'dashicons-media-document',
                 'links' => [],
@@ -423,7 +423,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'withdrawal',
                 'name' => __('Right of withdrawal (14 days)', 'polski'),
                 'description' => __('Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions.', 'polski'),
-                'group' => __('Consumer Rights', 'polski'),
+                'group' => 'Consumer Rights',
                 'enabled' => true,
                 'icon' => 'dashicons-undo',
                 'links' => [],
@@ -463,7 +463,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'dispute_resolution',
                 'name' => __('Dispute Resolution (ODR)', 'polski'),
                 'description' => __('Displaying information about the European Commission\'s Online Dispute Resolution (ODR) platform.', 'polski'),
-                'group' => __('Consumer Rights', 'polski'),
+                'group' => 'Consumer Rights',
                 'enabled' => true,
                 'icon' => 'dashicons-admin-site-alt3',
                 'links' => [],
@@ -508,7 +508,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'email_attachments',
                 'name' => __('Legal Email Attachments', 'polski'),
                 'description' => __('Attaching legal pages content (terms, privacy policy, right of withdrawal) to order confirmation emails.', 'polski'),
-                'group' => __('Consumer Rights', 'polski'),
+                'group' => 'Consumer Rights',
                 'enabled' => true,
                 'icon' => 'dashicons-email',
                 'links' => [],
@@ -524,7 +524,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'manufacturer',
                 'name' => __('Manufacturer and GPSR', 'polski'),
                 'description' => __('Manufacturer information, responsible person (GPSR), safety documents, safety instructions.', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => true,
                 'icon' => 'dashicons-building',
                 'links' => [],
@@ -534,7 +534,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'food_module',
                 'name' => __('Food and Supplements', 'polski'),
                 'description' => __('Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor.', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-carrot',
                 'links' => [],
@@ -565,7 +565,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'power_supply',
                 'name' => __('Power Supply Info', 'polski'),
                 'description' => __('Energy consumption data for electrical devices (energy labels).', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-lightbulb',
                 'links' => [],
@@ -577,7 +577,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'double_opt_in',
                 'name' => __('Double Opt-In (DOI)', 'polski'),
                 'description' => __('Email address verification during account registration. Activation link sent by email, login block for unactivated accounts.', 'polski'),
-                'group' => __('Customer Account', 'polski'),
+                'group' => 'Customer Account',
                 'enabled' => false,
                 'icon' => 'dashicons-lock',
                 'links' => [],
@@ -602,7 +602,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ajax_search',
                 'name' => __('AJAX Search', 'polski'),
                 'description' => __('Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals.', 'polski'),
-                'group' => __('Sales and B2B', 'polski'),
+                'group' => 'Sales and B2B',
                 'enabled' => false,
                 'icon' => 'dashicons-search',
                 'links' => [],
@@ -635,7 +635,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'brands',
                 'name' => __('Brands', 'polski'),
                 'description' => __('Support for product brands independent of the manufacturer, with views on product pages and listings, and its own taxonomy.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-tag',
                 'links' => [],
@@ -652,7 +652,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ajax_filters',
                 'name' => __('AJAX Filters', 'polski'),
                 'description' => __('Filtering product listings without page reload, including categories, brands, price, stock status, sale, and attributes.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-filter',
                 'links' => [],
@@ -703,7 +703,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'wishlist',
                 'name' => __('Wishlist', 'polski'),
                 'description' => __('Saving favorite products for guests and logged-in users, with a list in the customer account and AJAX add/remove.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-heart',
                 'links' => [],
@@ -733,7 +733,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'compare',
                 'name' => __('Product Comparison', 'polski'),
                 'description' => __('Product comparison tool with features table, highlight differences, guest and customer support, and view in My Account.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-randomize',
                 'links' => [],
@@ -779,7 +779,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'quick_view',
                 'name' => __('Quick View', 'polski'),
                 'description' => __('Lightweight product modal on listings, with support for variations, prices, gallery, and basic purchase information.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-visibility',
                 'links' => [],
@@ -817,7 +817,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'badge_management',
                 'name' => __('Badge Management', 'polski'),
                 'description' => __('Merchandising badges on product pages and listings, with automatic conditions and manual per-product highlights.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-awards',
                 'links' => [],
@@ -849,7 +849,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'tab_manager',
                 'name' => __('Tab Manager', 'polski'),
                 'description' => __('Additional product tabs with content per product and global tabs for shipping, returns, and business information.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-index-card',
                 'links' => [],
@@ -872,7 +872,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'featured_video',
                 'name' => __('Featured Video', 'polski'),
                 'description' => __('Product video on the product page, embedded from YouTube, Vimeo, or as a local MP4 file in the media section.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-video-alt3',
                 'links' => [],
@@ -890,7 +890,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'gallery_zoom',
                 'name' => __('Gallery & Zoom', 'polski'),
                 'description' => __('Lightweight image zoom and simple gallery lightbox without external slider libraries.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-format-gallery',
                 'links' => [],
@@ -907,7 +907,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'product_slider_carousel',
                 'name' => __('Product Slider Carousel', 'polski'),
                 'description' => __('Lightweight product slider based on scroll-snap, with related, sale, or featured products.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-images-alt2',
                 'links' => [],
@@ -934,7 +934,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'waitlist',
                 'name' => __('Waitlist', 'polski'),
                 'description' => __('Waitlist for out-of-stock products, with email signup and automatic notifications upon restock.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-email-alt',
                 'links' => [],
@@ -964,7 +964,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'infinite_scroll',
                 'name' => __('Infinite Scrolling', 'polski'),
                 'description' => __('Lightweight loading of subsequent products on WooCommerce archives, with button mode or automatic loading.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-update-alt',
                 'links' => [],
@@ -985,7 +985,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'popup',
                 'name' => __('WooCommerce Popup', 'polski'),
                 'description' => __('Lightweight promotional or lead popup with frequency, delay, and display location control.', 'polski'),
-                'group' => __('Merchandising', 'polski'),
+                'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
                 'links' => [],
@@ -1016,7 +1016,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'gpsr',
                 'name' => __('GPSR - Product safety', 'polski'),
                 'description' => __('GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export.', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => true,
                 'icon' => 'dashicons-shield-alt',
                 'links' => [],
@@ -1029,7 +1029,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'verified_review',
                 'name' => __('Verified purchase badge', 'polski'),
                 'description' => __('Badge shown on reviews from customers who actually purchased the product.', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-star-filled',
                 'links' => [],
@@ -1041,7 +1041,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'green_claims',
                 'name' => __('Anti-greenwashing', 'polski'),
                 'description' => __('Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026).', 'polski'),
-                'group' => __('Product Information', 'polski'),
+                'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-palmtree',
                 'links' => [],
@@ -1051,7 +1051,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'dsa_toolkit',
                 'name' => __('DSA Toolkit', 'polski'),
                 'description' => __('Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report].', 'polski'),
-                'group' => __('Consumer rights', 'polski'),
+                'group' => 'Consumer rights',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
                 'links' => [],
@@ -1067,7 +1067,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ksef_ready',
                 'name' => __('KSeF readiness', 'polski'),
                 'description' => __('Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator.', 'polski'),
-                'group' => __('Consumer rights', 'polski'),
+                'group' => 'Consumer rights',
                 'enabled' => false,
                 'icon' => 'dashicons-media-spreadsheet',
                 'links' => [],
@@ -1079,7 +1079,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'security_incidents',
                 'name' => __('Security incidents', 'polski'),
                 'description' => __('CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export.', 'polski'),
-                'group' => __('Consumer rights', 'polski'),
+                'group' => 'Consumer rights',
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
                 'links' => [
@@ -1094,7 +1094,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'store_health',
                 'name' => __('Store health monitor', 'polski'),
                 'description' => __('Continuous, passive monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies ("traffic but no orders"). Sends email or webhook alerts. Checks run every 5 minutes and never place synthetic orders.', 'polski'),
-                'group' => __('Consumer rights', 'polski'),
+                'group' => 'Consumer rights',
                 'enabled' => false,
                 'icon' => 'dashicons-heart',
                 'links' => [
@@ -1113,7 +1113,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ai_bridge',
                 'name' => __('AI Bridge', 'polski'),
                 'description' => __('Exposes read-only commerce data (price history, product safety data, store health, configured-page checks, product facts) to AI assistants and the Site Editor via the WordPress Abilities API. Off by default.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-rest-api',
                 'links' => [],
@@ -1125,7 +1125,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'schema_org',
                 'name' => __('Structured Data (Schema.org)', 'polski'),
                 'description' => __('Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation.', 'polski'),
-                'group' => __('SEO & Optimization', 'polski'),
+                'group' => 'SEO & Optimization',
                 'enabled' => true,
                 'icon' => 'dashicons-search',
                 'links' => [],
@@ -1143,7 +1143,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'tracking_tags',
                 'name' => __('Tracking Tags', 'polski'),
                 'description' => __('Unified, consent-gated tag manager for marketing pixels and analytics tools. Enter your own tracking IDs; each tag fires only after the visitor grants the matching consent category. GA4 and GTM are handled by the GA4 DataLayer module.', 'polski'),
-                'group' => __('SEO & Optimization', 'polski'),
+                'group' => 'SEO & Optimization',
                 'enabled' => false,
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
@@ -1187,7 +1187,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'safe_fonts',
                 'name' => __('Safe Fonts', 'polski'),
                 'description' => __('Reduce and gate external Google Fonts requests. Adds font-display and preconnect hints, and can defer the Google Fonts stylesheet until the visitor grants consent. Self-hosting font files is out of scope; this lowers and gates the external calls.', 'polski'),
-                'group' => __('SEO & Optimization', 'polski'),
+                'group' => 'SEO & Optimization',
                 'enabled' => false,
                 'icon' => 'dashicons-editor-textcolor',
                 'links' => [],
@@ -1207,7 +1207,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'custom_integrations',
                 'name' => __('Custom Integrations', 'polski'),
                 'description' => __('Add your own scripts or snippets to the page head or footer. Each snippet is assigned a consent category and runs only after the visitor grants it, via the Consent Manager.', 'polski'),
-                'group' => __('Advanced & Tools', 'polski'),
+                'group' => 'Advanced & Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-editor-code',
                 'links' => [],
@@ -1221,7 +1221,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'custom_triggers',
                 'name' => __('Custom Triggers', 'polski'),
                 'description' => __('Push your own dataLayer events on simple page conditions, such as visiting a URL or clicking an element. Integrates with the GA4 DataLayer module.', 'polski'),
-                'group' => __('Advanced & Tools', 'polski'),
+                'group' => 'Advanced & Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-randomize',
                 'links' => [],
@@ -1236,7 +1236,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'checkout_toolkit_integration',
                 'name' => __('Checkout and consent integration', 'polski'),
                 'description' => __('Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages.', 'polski'),
-                'group' => __('Integrations', 'polski'),
+                'group' => 'Integrations',
                 'enabled' => true,
                 'icon' => 'dashicons-admin-plugins',
                 'settings' => [
@@ -1252,7 +1252,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'site_audit',
                 'name' => __('Store Audit', 'polski'),
                 'description' => __('Automatic verification of the most common issues: missing legal pages, pre-selected checkboxes, company data, GDPR, Omnibus.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => true,
                 'icon' => 'dashicons-search',
                 'links' => [],
@@ -1264,7 +1264,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'plugin_data',
                 'name' => __('Plugin data on uninstall', 'polski'),
                 'description' => __('Choose whether Polski deletes its database tables, settings, and stored logs when the plugin is removed from WordPress.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => true,
                 'icon' => 'dashicons-trash',
                 'links' => [],
@@ -1276,7 +1276,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'cra_readiness',
                 'name' => __('CRA - Cyber Resilience', 'polski'),
                 'description' => __('Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-lock',
                 'links' => [],
@@ -1289,7 +1289,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'dpa_tracker',
                 'name' => __('DPA Registry (GDPR)', 'polski'),
                 'description' => __('Detection of third-party services processing customers\' personal data. Tracking the status of data processing agreements.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-clipboard',
                 'links' => [],
@@ -1299,7 +1299,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'minimum_order',
                 'name' => __('Minimum Order Value / Quantity', 'polski'),
                 'description' => __('Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages.', 'polski'),
-                'group' => __('Checkout and Orders', 'polski'),
+                'group' => 'Checkout and Orders',
                 'enabled' => false,
                 'icon' => 'dashicons-lock',
                 'links' => [],
@@ -1315,7 +1315,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'review_requests',
                 'name' => __('Review Request Emails', 'polski'),
                 'description' => __('Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out.', 'polski'),
-                'group' => __('Email', 'polski'),
+                'group' => 'Email',
                 'enabled' => false,
                 'icon' => 'dashicons-star-filled',
                 'links' => [],
@@ -1330,7 +1330,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'from_price',
                 'name' => __('From Price for Variable Products', 'polski'),
                 'description' => __('Display "from {price}" instead of a price range for variable products. Cleaner presentation on archives and product pages.', 'polski'),
-                'group' => __('Prices and Omnibus', 'polski'),
+                'group' => 'Prices and Omnibus',
                 'enabled' => true,
                 'icon' => 'dashicons-tag',
                 'links' => [],
@@ -1345,7 +1345,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'auto_restore_stock',
                 'name' => __('Auto Restore Stock', 'polski'),
                 'description' => __('Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention.', 'polski'),
-                'group' => __('Stock & Cart', 'polski'),
+                'group' => 'Stock & Cart',
                 'enabled' => false,
                 'icon' => 'dashicons-update',
                 'links' => [],
@@ -1355,7 +1355,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ajax_add_to_cart',
                 'name' => __('AJAX Add to Cart', 'polski'),
                 'description' => __('Add products to cart without page reload, including variable products on single product pages. Shows a toast notification on success.', 'polski'),
-                'group' => __('Stock & Cart', 'polski'),
+                'group' => 'Stock & Cart',
                 'enabled' => false,
                 'icon' => 'dashicons-cart',
                 'links' => [],
@@ -1367,7 +1367,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'datalayer',
                 'name' => __('GA4 DataLayer / GTM', 'polski'),
                 'description' => __('Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, add_to_cart, begin_checkout, purchase events. Supports GTM container and gtag.js.', 'polski'),
-                'group' => __('Analytics', 'polski'),
+                'group' => 'Analytics',
                 'enabled' => false,
                 'icon' => 'dashicons-chart-bar',
                 'links' => [],
@@ -1381,7 +1381,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'stock_export',
                 'name' => __('Stock Export', 'polski'),
                 'description' => __('Export WooCommerce product stock data as CSV. Configurable fields, stock threshold filters, variation support. Available under Products > Stock Export.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-download',
                 'links' => [
@@ -1393,7 +1393,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'social_login',
                 'name' => __('Social Login', 'polski'),
                 'description' => __('Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-share',
                 'links' => [],
@@ -1411,7 +1411,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'product_authors',
                 'name' => __('Product Authors', 'polski'),
                 'description' => __('Custom taxonomy for product authors/creators. Adds author names on product pages and archives with Schema.org Person markup. Ideal for bookstores and publishers.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-admin-users',
                 'links' => [],
@@ -1421,7 +1421,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'expert_reviews',
                 'name' => __('Expert Reviews', 'polski'),
                 'description' => __('Custom post type for editorial product reviews. Link expert reviews to products with ratings (1-10), verdicts, and Schema.org markup for SEO.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-star-filled',
                 'links' => [
@@ -1433,7 +1433,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'social_proof',
                 'name' => __('Social Proof Notifications', 'polski'),
                 'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
                 'links' => [],
@@ -1449,7 +1449,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'product_qa',
                 'name' => __('Product Q&A', 'polski'),
                 'description' => __('Amazon-style questions and answers on product pages. Customers ask, anyone answers. Admin email notifications, answer voting, Schema.org QAPage markup for SEO.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-format-chat',
                 'links' => [],
@@ -1459,7 +1459,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'trust_badges',
                 'name' => __('Trust Badges', 'polski'),
                 'description' => __('Configurable trust signals on product, cart, and checkout pages: secure payment, fast delivery, returns, quality guarantee. Pure CSS + inline SVG for zero performance impact.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-shield',
                 'links' => [],
@@ -1473,7 +1473,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'live_cart',
                 'name' => __('Live Cart Sidebar', 'polski'),
                 'description' => __('Slide-in cart drawer that opens when a product is added to cart. Shows cart items, subtotal, free shipping progress bar, and quick checkout link. No page reload needed.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-cart',
                 'links' => [],
@@ -1490,7 +1490,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'price_history_chart',
                 'name' => __('Price History Chart', 'polski'),
                 'description' => __('Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency.', 'polski'),
-                'group' => __('Prices and Omnibus', 'polski'),
+                'group' => 'Prices and Omnibus',
                 'enabled' => false,
                 'icon' => 'dashicons-chart-area',
                 'links' => [],
@@ -1504,7 +1504,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'order_export',
                 'name' => __('Order Export', 'polski'),
                 'description' => __('Export WooCommerce orders to CSV with configurable fields, date range and status filters. 30+ exportable fields including products, customer data, and coupons.', 'polski'),
-                'group' => __('Tools', 'polski'),
+                'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-media-spreadsheet',
                 'links' => [
@@ -1516,7 +1516,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'faq',
                 'name' => __('FAQ', 'polski'),
                 'description' => __('FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets.', 'polski'),
-                'group' => __('Storefront', 'polski'),
+                'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-editor-help',
                 'links' => [
@@ -1528,7 +1528,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'custom_checkout_fields',
                 'name' => __('Custom Checkout Fields', 'polski'),
                 'description' => __('Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account.', 'polski'),
-                'group' => __('Checkout', 'polski'),
+                'group' => 'Checkout',
                 'enabled' => false,
                 'icon' => 'dashicons-forms',
                 'links' => [
@@ -1605,7 +1605,26 @@ final class ModulesPage implements HasHooks
         foreach ($this->getBucketedModules() as $bucketKey => $bucket) {
             echo '<tr class="polski-modules-group-header"><th colspan="4">' . esc_html($bucket['label']) . '</th></tr>';
 
-            foreach ($bucket['modules'] as $module) {
+            // Sub-group within a bucket by the module's own (finer) group label, so a
+            // broad bucket like "Advanced & Tools" reads as clear sections (AI,
+            // Tracking & Scripts, Data Export, Audit & Security, ...). Stable sort
+            // (PHP 8.0+) keeps same-group modules contiguous.
+            $modules = $bucket['modules'];
+            usort($modules, static fn (array $a, array $b): int => strcasecmp(
+                (string) ($a['group'] ?? ''),
+                (string) ($b['group'] ?? ''),
+            ));
+
+            $lastSub = null;
+            foreach ($modules as $module) {
+                $sub = (string) ($module['group'] ?? '');
+                $subLabel = $sub !== '' ? $this->getGroupDisplayLabel($sub) : '';
+                // Skip when the sub-group label is empty, duplicates the previous one
+                // (e.g. casing variants), or just repeats the bucket heading.
+                if ($subLabel !== '' && $subLabel !== $bucket['label'] && $subLabel !== $lastSub) {
+                    echo '<tr class="polski-modules-subgroup-header"><td colspan="4">' . esc_html($subLabel) . '</td></tr>';
+                }
+                $lastSub = $subLabel;
                 $this->renderModuleRow($module, $bucketKey);
             }
         }
@@ -2408,6 +2427,56 @@ JS;
                 return __('Advanced & Tools', 'polski');
             default:
                 return __('Other', 'polski');
+        }
+    }
+
+    /**
+     * Translate a module's (English, locale-stable) group label for display as a
+     * sub-group header. Kept as explicit __() calls so the strings stay in the POT
+     * even though the module definitions store the stable English key.
+     */
+    private function getGroupDisplayLabel(string $group): string
+    {
+        switch ($group) {
+            case 'Prices and Display':
+                return __('Prices and Display', 'polski');
+            case 'Prices and Omnibus':
+                return __('Prices and Omnibus', 'polski');
+            case 'Checkout and Orders':
+                return __('Checkout and Orders', 'polski');
+            case 'Checkout':
+                return __('Checkout', 'polski');
+            case 'Email':
+                return __('Email', 'polski');
+            case 'Stock & Cart':
+                return __('Stock & Cart', 'polski');
+            case 'Merchandising':
+                return __('Merchandising', 'polski');
+            case 'Storefront':
+                return __('Storefront', 'polski');
+            case 'Product Information':
+                return __('Product Information', 'polski');
+            case 'Customer Account':
+                return __('Customer Account', 'polski');
+            case 'Sales and B2B':
+                return __('Sales and B2B', 'polski');
+            case 'Consumer Rights':
+            case 'Consumer rights':
+                return __('Consumer Rights', 'polski');
+            case 'Legal & Compliance':
+                return __('Legal & Compliance', 'polski');
+            case 'Tools':
+                return __('Tools', 'polski');
+            case 'Analytics':
+                return __('Analytics', 'polski');
+            case 'SEO & Optimization':
+                return __('SEO & Optimization', 'polski');
+            case 'Integrations':
+                return __('Integrations', 'polski');
+            case 'Advanced & Tools':
+                return __('Advanced & Tools', 'polski');
+            default:
+                return $group;
         }
     }
 
