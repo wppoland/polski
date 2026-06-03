@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:32:41+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,35 +14,6 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
-
-msgid "Incydenty CRA"
-msgstr "CRA incidentai"
-
-msgid ""
-"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
-"statusami i eksportem CSV."
-msgstr ""
-"Pažeidžiamumų, pažeidimų ir gedimų registras Cyber Resilience Act reikmėms, "
-"su būsenomis ir eksportu į CSV."
-
-msgid ""
-"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
-"potrzeby CRA."
-msgstr ""
-"Programinės įrangos komponentų sąrašas (Software Bill of Materials) CRA "
-"reikmėms."
-
-msgid "Szablon reklamacji"
-msgstr "Reklamacijos šablonas"
-
-msgid "Generator i ustawienia szablonu reklamacji dla klientów."
-msgstr "Klientų reklamacijų šablono generatorius ir nustatymai."
-
-msgid "Szkolenia RODO"
-msgstr "BDAR mokymai"
-
-msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
-msgstr "BDAR mokymo medžiaga parduotuvės komandai."
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
@@ -146,7 +117,7 @@ msgid "Strona"
 msgstr "Puslapis"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/AdminPage.php:993 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -688,7 +659,7 @@ msgstr "Prisijunkite, kad išsiųstumėte šio produkto kainos užklausą."
 msgid "Imię i nazwisko"
 msgstr "Vardas ir pavardė"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2450
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "El. paštas"
@@ -1567,7 +1538,8 @@ msgstr ""
 msgid "Install now"
 msgstr "Įdiegti dabar"
 
-#: src/Admin/AdminPage.php:56
+#: src/Admin/AdminPage.php:56 src/Admin/AdminPage.php:274
+#: src/Admin/AdminPage.php:275 src/Admin/AdminPage.php:367
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
@@ -1587,7 +1559,7 @@ msgstr "Atsiprašome, bet neturite teisės pasiekti šio puslapio."
 msgid "Brak uprawnień."
 msgstr "Nepakanka teisių."
 
-#: src/Admin/AdminPage.php:218 src/Admin/AdminPage.php:219
+#: src/Admin/AdminPage.php:219 src/Admin/AdminPage.php:220
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:406
 #: src/Compatibility/ElementorCompat.php:35
 #: src/Service/WithdrawalSiteHealthService.php:177
@@ -1595,43 +1567,43 @@ msgstr "Nepakanka teisių."
 msgid "Polski"
 msgstr "Polski"
 
-#: src/Admin/AdminPage.php:230 src/Admin/AdminPage.php:231
-#: src/Admin/AdminPage.php:324
+#: src/Admin/AdminPage.php:231 src/Admin/AdminPage.php:232
+#: src/Admin/AdminPage.php:322
 msgid "Dashboard"
 msgstr "Skydelis"
 
-#: src/Admin/AdminPage.php:239 src/Admin/AdminPage.php:240
-#: src/Admin/AdminPage.php:325
+#: src/Admin/AdminPage.php:240 src/Admin/AdminPage.php:241
+#: src/Admin/AdminPage.php:323
 msgid "Modules"
 msgstr "Moduliai"
 
-#: src/Admin/AdminPage.php:248 src/Admin/AdminPage.php:249
-#: src/Admin/AdminPage.php:326
+#: src/Admin/AdminPage.php:249 src/Admin/AdminPage.php:250
+#: src/Admin/AdminPage.php:324
 msgid "Reports & Tools"
 msgstr "Ataskaitos ir įrankiai"
 
-#: src/Admin/AdminPage.php:347
+#: src/Admin/AdminPage.php:372
 msgid "Settings have been saved."
 msgstr "Nustatymai buvo išsaugoti."
 
-#: src/Admin/AdminPage.php:350
+#: src/Admin/AdminPage.php:389
 msgid "Back to modules"
 msgstr "Grįžti į modulius"
 
-#: src/Admin/AdminPage.php:355 src/Admin/ModulesPage.php:1599
+#: src/Admin/AdminPage.php:406 src/Admin/ModulesPage.php:1599
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr "Įjungta"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:406 src/Admin/AdminPage.php:967
 msgid "Disabled"
 msgstr "Išjungta"
 
-#: src/Admin/AdminPage.php:378
+#: src/Admin/AdminPage.php:429
 msgid "Save Settings"
 msgstr "Išsaugoti nustatymus"
 
-#: src/Admin/AdminPage.php:437
+#: src/Admin/AdminPage.php:486
 msgid ""
 "Ready! We have generated draft legal pages for you. Please review, adjust, "
 "and publish them."
@@ -1639,27 +1611,27 @@ msgstr ""
 "Paruošta! Sukūrėme jums teisinių puslapių juodraščius. Peržiūrėkite, "
 "pakoreguokite ir paskelbkite juos."
 
-#: src/Admin/AdminPage.php:443
+#: src/Admin/AdminPage.php:492
 msgid "Modules saved."
 msgstr "Moduliai išsaugoti."
 
-#: src/Admin/AdminPage.php:517
+#: src/Admin/AdminPage.php:566
 msgid "Reports, audits, and store setup tools for your shop."
 msgstr "Ataskaitos, auditai ir parduotuvės sąrankos įrankiai jūsų parduotuvei."
 
-#: src/Admin/AdminPage.php:529
+#: src/Admin/AdminPage.php:578
 msgid "Back to reports"
 msgstr "Grįžti į ataskaitas"
 
-#: src/Admin/AdminPage.php:576
+#: src/Admin/AdminPage.php:625
 msgid "Help and feedback"
 msgstr "Pagalba ir atsiliepimai"
 
-#: src/Admin/AdminPage.php:579
+#: src/Admin/AdminPage.php:628
 msgid "Need help?"
 msgstr "Reikia pagalbos?"
 
-#: src/Admin/AdminPage.php:580
+#: src/Admin/AdminPage.php:629
 msgid ""
 "Use the feedback form below for questions, ideas, or workflow problems. "
 "Messages stay in WordPress and are not sent to any external service."
@@ -1668,11 +1640,11 @@ msgstr ""
 "atsiliepimų formą. Žinutės lieka WordPress ir nesiunčiamos jokiai išorinei "
 "tarnybai."
 
-#: src/Admin/AdminPage.php:587
+#: src/Admin/AdminPage.php:636
 msgid "Share feedback"
 msgstr "Pasidalykite atsiliepimu"
 
-#: src/Admin/AdminPage.php:588
+#: src/Admin/AdminPage.php:637
 msgid ""
 "Not technical? Send a quick note straight from the plugin. Tell us what "
 "feels unclear, what should be easier, or what we should add next."
@@ -1681,47 +1653,47 @@ msgstr ""
 "mums, kas atrodo neaišku, kas turėtų būti paprasčiau ar ką turėtume pridėti "
 "toliau."
 
-#: src/Admin/AdminPage.php:590
+#: src/Admin/AdminPage.php:639
 msgid "Thanks, your feedback has been saved."
 msgstr "Ačiū, jūsų atsiliepimas išsaugotas."
 
-#: src/Admin/AdminPage.php:592
+#: src/Admin/AdminPage.php:641
 msgid "Please enter your message before sending feedback."
 msgstr "Prieš siųsdami atsiliepimą įveskite savo žinutę."
 
-#: src/Admin/AdminPage.php:596
+#: src/Admin/AdminPage.php:645
 msgid "Your name"
 msgstr "Jūsų vardas"
 
-#: src/Admin/AdminPage.php:598 src/Service/ProductQAService.php:182
+#: src/Admin/AdminPage.php:647 src/Service/ProductQAService.php:182
 msgid "Your email"
 msgstr "Jūsų el. paštas"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
+#: src/Admin/AdminPage.php:649 src/Admin/AdminPage.php:860
 msgid "Topic"
 msgstr "Tema"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
+#: src/Admin/AdminPage.php:651 src/Admin/AdminPage.php:881
 msgid "General feedback"
 msgstr "Bendras atsiliepimas"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
+#: src/Admin/AdminPage.php:652 src/Admin/AdminPage.php:882
 msgid "Feature idea"
 msgstr "Funkcijos idėja"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
+#: src/Admin/AdminPage.php:653 src/Admin/AdminPage.php:883
 msgid "Workflow problem"
 msgstr "Darbo eigos problema"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
+#: src/Admin/AdminPage.php:654 src/Admin/AdminPage.php:884
 msgid "Support question"
 msgstr "Pagalbos klausimas"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
+#: src/Admin/AdminPage.php:656 src/Admin/AdminPage.php:862
 msgid "Message"
 msgstr "Žinutė"
 
-#: src/Admin/AdminPage.php:616
+#: src/Admin/AdminPage.php:665
 msgid ""
 "This form stores your feedback locally in WordPress. It is not sent to any "
 "external service."
@@ -1729,23 +1701,23 @@ msgstr ""
 "Ši forma išsaugo jūsų atsiliepimą vietoje WordPress. Jis nesiunčiamas jokiai "
 "išorinei tarnybai."
 
-#: src/Admin/AdminPage.php:617
+#: src/Admin/AdminPage.php:666
 msgid "Do not include passwords, licence keys, or customer personal data."
 msgstr "Nenurodykite slaptažodžių, licencijų raktų ar klientų asmens duomenų."
 
-#: src/Admin/AdminPage.php:618
+#: src/Admin/AdminPage.php:667
 msgid "Send feedback"
 msgstr "Siųsti atsiliepimą"
 
-#: src/Admin/AdminPage.php:624
+#: src/Admin/AdminPage.php:673
 msgid "Deactivate vs uninstall"
 msgstr "Išjungimas ir pašalinimas"
 
-#: src/Admin/AdminPage.php:626
+#: src/Admin/AdminPage.php:675
 msgid "Deactivating the plugin keeps your settings and stored data."
 msgstr "Išjungus papildinį jūsų nustatymai ir išsaugoti duomenys lieka."
 
-#: src/Admin/AdminPage.php:627
+#: src/Admin/AdminPage.php:676
 msgid ""
 "Uninstalling removes plugin files. Data is deleted only when the remove-data "
 "setting is enabled."
@@ -1753,7 +1725,7 @@ msgstr ""
 "Pašalinant ištrinami papildinio failai. Duomenys ištrinami tik tada, kai "
 "įjungtas duomenų pašalinimo nustatymas."
 
-#: src/Admin/AdminPage.php:628
+#: src/Admin/AdminPage.php:677
 msgid ""
 "Your deactivation feedback stays in the local admin log unless data removal "
 "on uninstall is enabled."
@@ -1761,50 +1733,50 @@ msgstr ""
 "Jūsų išjungimo atsiliepimas lieka vietiniame administratoriaus žurnale, "
 "nebent įjungtas duomenų pašalinimas pašalinant."
 
-#: src/Admin/AdminPage.php:632
+#: src/Admin/AdminPage.php:681
 msgid "Current setting: plugin data will be removed on uninstall."
 msgstr "Dabartinis nustatymas: papildinio duomenys bus pašalinti pašalinant."
 
-#: src/Admin/AdminPage.php:633
+#: src/Admin/AdminPage.php:682
 msgid "Current setting: plugin data will be kept on uninstall."
 msgstr "Dabartinis nustatymas: papildinio duomenys bus išsaugoti pašalinant."
 
-#: src/Admin/AdminPage.php:648
+#: src/Admin/AdminPage.php:697
 msgid "Audyt zgodności"
 msgstr "Atitikties auditas"
 
-#: src/Admin/AdminPage.php:649
+#: src/Admin/AdminPage.php:698
 msgid ""
 "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim "
 "eCommerce."
 msgstr ""
 "Automatinis dažniausių teisinių problemų lenkų el. prekyboje patikrinimas."
 
-#: src/Admin/AdminPage.php:655
+#: src/Admin/AdminPage.php:704
 msgid "Raporty DSA"
 msgstr "DSA ataskaitos"
 
-#: src/Admin/AdminPage.php:656
+#: src/Admin/AdminPage.php:705
 msgid ""
 "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
 msgstr ""
 "Skaitmeninio turinio pažeidimų pranešimų (Digital Services Act) valdymas."
 
-#: src/Admin/AdminPage.php:662
+#: src/Admin/AdminPage.php:711
 msgid "Logi incydentów"
 msgstr "Incidentų žurnalai"
 
-#: src/Admin/AdminPage.php:663
+#: src/Admin/AdminPage.php:712
 msgid ""
 "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 msgstr ""
 "Saugumo problemų, duomenų nutekėjimų ir infrastruktūros gedimų registras."
 
-#: src/Admin/AdminPage.php:669
+#: src/Admin/AdminPage.php:718
 msgid "Kondycja sklepu"
 msgstr "Parduotuvės būklė"
 
-#: src/Admin/AdminPage.php:670
+#: src/Admin/AdminPage.php:719
 msgid ""
 "Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii "
 "sprzedaży, z alertami."
@@ -1812,31 +1784,31 @@ msgstr ""
 "Nuolatinis kritinių klaidų, nepavykusių mokėjimų ir pardavimų anomalijų "
 "stebėjimas su įspėjimais."
 
-#: src/Admin/AdminPage.php:676
+#: src/Admin/AdminPage.php:725
 msgid "Rejestr DPA (RODO)"
 msgstr "DPA registras (RODO)"
 
-#: src/Admin/AdminPage.php:677
+#: src/Admin/AdminPage.php:726
 msgid ""
 "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami "
 "trzecimi."
 msgstr ""
 "Asmens duomenų tvarkymo pavedimo sutarčių su trečiosiomis šalimis apskaita."
 
-#: src/Admin/AdminPage.php:683
+#: src/Admin/AdminPage.php:732
 msgid "Rejestr zgód"
 msgstr "Sutikimų registras"
 
-#: src/Admin/AdminPage.php:684
+#: src/Admin/AdminPage.php:733
 msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
 msgstr ""
 "Įrašyti lankytojų sprendimai iš sutikimų reklamjuostės, su CSV eksportu."
 
-#: src/Admin/AdminPage.php:690
+#: src/Admin/AdminPage.php:739
 msgid "Odstąpienia"
 msgstr "Atsisakymai"
 
-#: src/Admin/AdminPage.php:691
+#: src/Admin/AdminPage.php:740
 msgid ""
 "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
 "ustawienia."
@@ -1844,32 +1816,68 @@ msgstr ""
 "Prašymai atsisakyti sutarties ir grąžinimai: sąrašas, rankinė registracija "
 "ir nustatymai."
 
-#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/AdminPage.php:747
+msgid "Incydenty CRA"
+msgstr "CRA incidentai"
+
+#: src/Admin/AdminPage.php:748
+msgid ""
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
+msgstr ""
+"Pažeidžiamumų, pažeidimų ir gedimų registras Cyber Resilience Act reikmėms, "
+"su būsenomis ir eksportu į CSV."
+
+#: src/Admin/AdminPage.php:755 src/Admin/SBOMPage.php:40
 #: src/Admin/SBOMPage.php:41
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/AdminPage.php:730
+#: src/Admin/AdminPage.php:756
+msgid ""
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
+msgstr ""
+"Programinės įrangos komponentų sąrašas (Software Bill of Materials) CRA "
+"reikmėms."
+
+#: src/Admin/AdminPage.php:763
+msgid "Szablon reklamacji"
+msgstr "Reklamacijos šablonas"
+
+#: src/Admin/AdminPage.php:764
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr "Klientų reklamacijų šablono generatorius ir nustatymai."
+
+#: src/Admin/AdminPage.php:771
+msgid "Szkolenia RODO"
+msgstr "BDAR mokymai"
+
+#: src/Admin/AdminPage.php:772
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr "BDAR mokymo medžiaga parduotuvės komandai."
+
+#: src/Admin/AdminPage.php:779
 msgid "Feedback Logs"
 msgstr "Atsiliepimų žurnalai"
 
-#: src/Admin/AdminPage.php:731
+#: src/Admin/AdminPage.php:780
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 "Išjungimo atsiliepimai ir vietiniai administratoriaus atsiliepimai iš "
 "papildinio šoninės juostos."
 
-#: src/Admin/AdminPage.php:737
+#: src/Admin/AdminPage.php:786
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 "Pasirinkite ataskaitą ar įrankį, kad peržiūrėtumėte savo parduotuvės "
 "sąrankos būseną."
 
-#: src/Admin/AdminPage.php:776
+#: src/Admin/AdminPage.php:825
 msgid "Open Report"
 msgstr "Atidaryti ataskaitą"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:827
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
@@ -1877,23 +1885,23 @@ msgstr ""
 "Šiai ataskaitai pirmiausia reikia įjungti jos modulį (pasirinktinės "
 "funkcijos pagal numatymą išjungtos)."
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:829
 msgid "Enable module"
 msgstr "Įjungti modulį"
 
-#: src/Admin/AdminPage.php:782
+#: src/Admin/AdminPage.php:831
 msgid "Module disabled"
 msgstr "Modulis išjungtas"
 
-#: src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:850
 msgid "Admin Feedback Logs"
 msgstr "Administratoriaus atsiliepimų žurnalai"
 
-#: src/Admin/AdminPage.php:804
+#: src/Admin/AdminPage.php:853
 msgid "No internal feedback to display."
 msgstr "Nėra vidinių atsiliepimų rodyti."
 
-#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:858 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
@@ -1903,114 +1911,114 @@ msgstr "Nėra vidinių atsiliepimų rodyti."
 msgid "Date"
 msgstr "Data"
 
-#: src/Admin/AdminPage.php:810
+#: src/Admin/AdminPage.php:859
 msgid "Person"
 msgstr "Asmuo"
 
-#: src/Admin/AdminPage.php:812
+#: src/Admin/AdminPage.php:861
 msgid "Screen"
 msgstr "Ekranas"
 
-#: src/Admin/AdminPage.php:869
+#: src/Admin/AdminPage.php:918
 msgid "Hello!"
 msgstr "Sveiki!"
 
-#: src/Admin/AdminPage.php:870
+#: src/Admin/AdminPage.php:919
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "Įrankiai, padedantys pritaikyti parduotuvę lenkų reikalavimams."
 
-#: src/Admin/AdminPage.php:876
+#: src/Admin/AdminPage.php:925
 msgid "Finish configuration"
 msgstr "Užbaigti konfigūraciją"
 
-#: src/Admin/AdminPage.php:877
+#: src/Admin/AdminPage.php:926
 msgid "Some key elements of your store still require attention."
 msgstr ""
 "Kai kurie pagrindiniai jūsų parduotuvės elementai vis dar reikalauja dėmesio."
 
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:929
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 "Paskelbkite teisinius puslapius (Taisyklės, Privatumo politika, Teisė "
 "atsisakyti)"
 
-#: src/Admin/AdminPage.php:883
+#: src/Admin/AdminPage.php:932
 msgid "Go through the checklist below"
 msgstr "Peržiūrėkite žemiau esantį kontrolinį sąrašą"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:935
 msgid "Complete product data"
 msgstr "Užpildykite produktų duomenis"
 
-#: src/Admin/AdminPage.php:887
+#: src/Admin/AdminPage.php:936
 msgid "Manage modules"
 msgstr "Valdyti modulius"
 
-#: src/Admin/AdminPage.php:895
+#: src/Admin/AdminPage.php:944
 msgid "Relaunch setup wizard"
 msgstr "Paleisti sąrankos vediklį iš naujo"
 
-#: src/Admin/AdminPage.php:905
+#: src/Admin/AdminPage.php:954
 msgid "Inactive"
 msgstr "Neaktyvus"
 
-#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
+#: src/Admin/AdminPage.php:959 src/Admin/AdminPage.php:988
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "Teisiniai puslapiai"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:961
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d iš %2$d paruošta"
 
-#: src/Admin/AdminPage.php:917
+#: src/Admin/AdminPage.php:966
 msgid "Omnibus Directive"
 msgstr "Omnibus direktyva"
 
-#: src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:967
 msgid "Active"
 msgstr "Aktyvus"
 
-#: src/Admin/AdminPage.php:923
+#: src/Admin/AdminPage.php:972
 msgid "Store Analysis"
 msgstr "Parduotuvės analizė"
 
-#: src/Admin/AdminPage.php:924
+#: src/Admin/AdminPage.php:973
 msgid "Check reports"
 msgstr "Patikrinti ataskaitas"
 
-#: src/Admin/AdminPage.php:944
+#: src/Admin/AdminPage.php:993
 msgid "Page"
 msgstr "Puslapis"
 
-#: src/Admin/AdminPage.php:961
+#: src/Admin/AdminPage.php:1010
 msgid "Published"
 msgstr "Paskelbta"
 
-#: src/Admin/AdminPage.php:962
+#: src/Admin/AdminPage.php:1011
 msgid "Draft"
 msgstr "Juodraštis"
 
-#: src/Admin/AdminPage.php:967
+#: src/Admin/AdminPage.php:1016
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: src/Admin/AdminPage.php:969
+#: src/Admin/AdminPage.php:1018
 msgid "Not created"
 msgstr "Nesukurta"
 
-#: src/Admin/AdminPage.php:984
+#: src/Admin/AdminPage.php:1033
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr ""
 "Dar nesukurta jokių teisinių puslapių. Sugeneruokite juos, kad pradėtumėte."
 
-#: src/Admin/AdminPage.php:992
+#: src/Admin/AdminPage.php:1041
 msgid "Next steps"
 msgstr "Tolesni veiksmai"
 
-#: src/Admin/AdminPage.php:1044
+#: src/Admin/AdminPage.php:1093
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
@@ -2019,7 +2027,7 @@ msgstr ""
 "atsisakyti, Reklamacijos)."
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1052
+#: src/Admin/AdminPage.php:1101
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -2029,14 +2037,14 @@ msgstr ""
 "(23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1064
+#: src/Admin/AdminPage.php:1113
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr ""
 "Sukonfigūruokite <a href=\"%s\">pristatymo zonas</a> pristatymams Lenkijoje."
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1075
+#: src/Admin/AdminPage.php:1124
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -2046,7 +2054,7 @@ msgstr ""
 "<a href=\"%s\">Polski skirtuke</a> kiekvienam produktui."
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1086
+#: src/Admin/AdminPage.php:1135
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -2056,11 +2064,11 @@ msgstr ""
 "žymimuosius langelius bei mygtuko tekstą <a href=\"%s\">užsakymo puslapyje</"
 "a>."
 
-#: src/Admin/AdminPage.php:1109
+#: src/Admin/AdminPage.php:1158
 msgid "Generate legal pages"
 msgstr "Sugeneruoti teisinius puslapius"
 
-#: src/Admin/AdminPage.php:1156
+#: src/Admin/AdminPage.php:1205
 msgid "Open &rarr;"
 msgstr "Atidaryti &rarr;"
 
@@ -3822,19 +3830,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "Būtini slapukai visada įjungti ir jų negalima išjungti."
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
+#: src/Admin/ModulesPage.php:1914 src/Admin/ModulesPage.php:2471
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Analitika"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1915 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "Rinkodara"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1916 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "Nuostatos"
 
@@ -4807,7 +4815,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "Rodyti produkto puslapyje"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1991
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Etiketė"
@@ -5833,7 +5841,7 @@ msgstr "Kaip atidaryti CTA"
 msgid "Shop and archives"
 msgstr "Parduotuvė ir archyvai"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2448
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Apmokėjimas"
@@ -6355,7 +6363,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "Sutikimo kategorija"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1913
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "Būtini"
@@ -7011,187 +7019,187 @@ msgstr "Tvarkyti laukus"
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/Admin/ModulesPage.php:1663
+#: src/Admin/ModulesPage.php:1666
 msgid "Help"
 msgstr "Pagalba"
 
-#: src/Admin/ModulesPage.php:1706
+#: src/Admin/ModulesPage.php:1709
 msgid "Enable this module to use this."
 msgstr "Įjunkite šį modulį, kad galėtumėte jį naudoti."
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1729
+#: src/Admin/ModulesPage.php:1732
 #, php-format
 msgid "Edit %s settings"
 msgstr "Redaguoti %s nustatymus"
 
-#: src/Admin/ModulesPage.php:1732
+#: src/Admin/ModulesPage.php:1735
 msgid "Edit settings"
 msgstr "Redaguoti nustatymus"
 
-#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
+#: src/Admin/ModulesPage.php:1745 src/Admin/ModulesPage.php:1746
 msgid "Open documentation"
 msgstr "Atidaryti dokumentaciją"
 
-#: src/Admin/ModulesPage.php:1776
+#: src/Admin/ModulesPage.php:1779
 msgid "Save"
 msgstr "Įrašyti"
 
-#: src/Admin/ModulesPage.php:1870
+#: src/Admin/ModulesPage.php:1873
 msgid "none"
 msgstr "nėra"
 
-#: src/Admin/ModulesPage.php:1966
+#: src/Admin/ModulesPage.php:1969
 msgid "Add snippet"
 msgstr "Pridėti fragmentą"
 
-#: src/Admin/ModulesPage.php:1995
+#: src/Admin/ModulesPage.php:1998
 msgid "Head"
 msgstr "Antraštė"
 
-#: src/Admin/ModulesPage.php:1996
+#: src/Admin/ModulesPage.php:1999
 msgid "Footer"
 msgstr "Poraštė"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2012
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> arba įterptasis JS"
 
-#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
+#: src/Admin/ModulesPage.php:2018 src/Admin/ModulesPage.php:2103
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: src/Admin/ModulesPage.php:2045
+#: src/Admin/ModulesPage.php:2048
 msgid "Add trigger"
 msgstr "Pridėti aktyviklį"
 
-#: src/Admin/ModulesPage.php:2068
+#: src/Admin/ModulesPage.php:2071
 msgid "Event name (e.g. cta_click)"
 msgstr "Įvykio pavadinimas (pvz., cta_click)"
 
-#: src/Admin/ModulesPage.php:2075
+#: src/Admin/ModulesPage.php:2078
 msgid "URL contains"
 msgstr "URL turi"
 
-#: src/Admin/ModulesPage.php:2076
+#: src/Admin/ModulesPage.php:2079
 msgid "Click on selector"
 msgstr "Spustelėjimas ant selektoriaus"
 
-#: src/Admin/ModulesPage.php:2089
+#: src/Admin/ModulesPage.php:2092
 msgid "URL fragment (for URL contains)"
 msgstr "URL fragmentas (sąlygai „URL turi“)"
 
-#: src/Admin/ModulesPage.php:2094
+#: src/Admin/ModulesPage.php:2097
 msgid "CSS selector (for click)"
 msgstr "CSS selektorius (spustelėjimui)"
 
-#: src/Admin/ModulesPage.php:2204
+#: src/Admin/ModulesPage.php:2207
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Atsiprašome, jums neleidžiama pasiekti šio puslapio."
 
-#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
+#: src/Admin/ModulesPage.php:2214 src/Admin/ModulesPage.php:2230
 msgid "Invalid request."
 msgstr "Netinkama užklausa."
 
-#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+#: src/Admin/ModulesPage.php:2419 src/Admin/ModulesPage.php:2467
 msgid "Legal & Compliance"
 msgstr "Teisė ir atitiktis"
 
-#: src/Admin/ModulesPage.php:2418
+#: src/Admin/ModulesPage.php:2421
 msgid "Tax & Pricing"
 msgstr "Mokesčiai ir kainodara"
 
-#: src/Admin/ModulesPage.php:2420
+#: src/Admin/ModulesPage.php:2423
 msgid "Checkout & Orders"
 msgstr "Atsiskaitymas ir užsakymai"
 
-#: src/Admin/ModulesPage.php:2422
+#: src/Admin/ModulesPage.php:2425
 msgid "Content & Trust"
 msgstr "Turinys ir pasitikėjimas"
 
-#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+#: src/Admin/ModulesPage.php:2427 src/Admin/ModulesPage.php:2477
 msgid "Advanced & Tools"
 msgstr "Išplėstinės parinktys ir įrankiai"
 
-#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2429 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Kita"
 
-#: src/Admin/ModulesPage.php:2439
+#: src/Admin/ModulesPage.php:2442
 msgid "Prices and Display"
 msgstr "Kainos ir rodymas"
 
-#: src/Admin/ModulesPage.php:2441
+#: src/Admin/ModulesPage.php:2444
 msgid "Prices and Omnibus"
 msgstr "Kainos ir Omnibus"
 
-#: src/Admin/ModulesPage.php:2443
+#: src/Admin/ModulesPage.php:2446
 msgid "Checkout and Orders"
 msgstr "Užsakymai ir apmokėjimas"
 
-#: src/Admin/ModulesPage.php:2449
+#: src/Admin/ModulesPage.php:2452
 msgid "Stock & Cart"
 msgstr "Atsargos ir krepšelis"
 
-#: src/Admin/ModulesPage.php:2451
+#: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
 msgstr "Prekių išdėstymas"
 
-#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+#: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "Parduotuvės priekis"
 
-#: src/Admin/ModulesPage.php:2455
+#: src/Admin/ModulesPage.php:2458
 msgid "Product Information"
 msgstr "Produkto informacija"
 
-#: src/Admin/ModulesPage.php:2457
+#: src/Admin/ModulesPage.php:2460
 msgid "Customer Account"
 msgstr "Kliento paskyra"
 
-#: src/Admin/ModulesPage.php:2459
+#: src/Admin/ModulesPage.php:2462
 msgid "Sales and B2B"
 msgstr "Pardavimai ir B2B"
 
-#: src/Admin/ModulesPage.php:2462
+#: src/Admin/ModulesPage.php:2465
 msgid "Consumer Rights"
 msgstr "Vartotojų teisės"
 
-#: src/Admin/ModulesPage.php:2466
+#: src/Admin/ModulesPage.php:2469
 msgid "Tools"
 msgstr "Įrankiai"
 
-#: src/Admin/ModulesPage.php:2470
+#: src/Admin/ModulesPage.php:2473
 msgid "SEO & Optimization"
 msgstr "SEO ir optimizavimas"
 
-#: src/Admin/ModulesPage.php:2472
+#: src/Admin/ModulesPage.php:2475
 msgid "Integrations"
 msgstr "Integracijos"
 
-#: src/Admin/ModulesPage.php:2547
+#: src/Admin/ModulesPage.php:2550
 msgid "Could not save module state. Please try again."
 msgstr "Nepavyko įrašyti modulio būsenos. Bandykite dar kartą."
 
-#: src/Admin/ModulesPage.php:2564
+#: src/Admin/ModulesPage.php:2567
 msgid "Compatible Omnibus Extension A"
 msgstr "Suderinamas Omnibus plėtinys A"
 
-#: src/Admin/ModulesPage.php:2565
+#: src/Admin/ModulesPage.php:2568
 msgid "Compatible Omnibus Extension B"
 msgstr "Suderinamas Omnibus plėtinys B"
 
-#: src/Admin/ModulesPage.php:2576
+#: src/Admin/ModulesPage.php:2579
 msgid "detected, data synchronized"
 msgstr "aptikta, duomenys sinchronizuoti"
 
-#: src/Admin/ModulesPage.php:2577
+#: src/Admin/ModulesPage.php:2580
 msgid "not installed"
 msgstr "neįdiegta"
 
-#: src/Admin/ModulesPage.php:2592
+#: src/Admin/ModulesPage.php:2595
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
@@ -7199,7 +7207,7 @@ msgstr ""
 "Joks išorinis Omnibus įskiepis nėra įdiegtas. Polski naudoja įmontuotą kainų "
 "sekimo sistemą."
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2597
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
@@ -7207,11 +7215,11 @@ msgstr ""
 "Aptiktas išorinis įskiepis. Polski naudoja jo duomenis vietoj įmontuotos "
 "sistemos."
 
-#: src/Admin/ModulesPage.php:2614
+#: src/Admin/ModulesPage.php:2617
 msgid "OSS observer service is unavailable."
 msgstr "OSS stebėtojo paslauga nepasiekiama."
 
-#: src/Admin/ModulesPage.php:2621
+#: src/Admin/ModulesPage.php:2624
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -7219,55 +7227,55 @@ msgstr ""
 "One Stop Shop įskiepis nėra įdiegtas. Įdiekite jį, kad pradėtumėte "
 "automatiškai stebėti 10 000 € ES vidaus B2C ribą."
 
-#: src/Admin/ModulesPage.php:2627
+#: src/Admin/ModulesPage.php:2630
 msgid "Install One Stop Shop"
 msgstr "Įdiegti One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2632
+#: src/Admin/ModulesPage.php:2635
 msgid "You need the install_plugins capability to install it from here."
 msgstr "Norėdami įdiegti jį iš čia, jums reikia install_plugins teisės."
 
-#: src/Admin/ModulesPage.php:2641
+#: src/Admin/ModulesPage.php:2644
 msgid "One Stop Shop plugin detected."
 msgstr "Aptiktas One Stop Shop įskiepis."
 
-#: src/Admin/ModulesPage.php:2645
+#: src/Admin/ModulesPage.php:2648
 msgid "OSS procedure"
 msgstr "OSS procedūra"
 
-#: src/Admin/ModulesPage.php:2647
+#: src/Admin/ModulesPage.php:2650
 msgid "enabled"
 msgstr "įjungta"
 
-#: src/Admin/ModulesPage.php:2648
+#: src/Admin/ModulesPage.php:2651
 msgid "disabled"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2655
 msgid "Auto observer"
 msgstr "Automatinis stebėtojas"
 
-#: src/Admin/ModulesPage.php:2654
+#: src/Admin/ModulesPage.php:2657
 msgid "watching threshold"
 msgstr "stebėjimo riba"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2658
 msgid "off"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2660
+#: src/Admin/ModulesPage.php:2663
 msgid "Open OSS settings"
 msgstr "Atidaryti OSS nustatymus"
 
-#: src/Admin/ModulesPage.php:2718
+#: src/Admin/ModulesPage.php:2721
 msgid "detected, integration active"
 msgstr "aptikta, integracija aktyvi"
 
-#: src/Admin/ModulesPage.php:2721
+#: src/Admin/ModulesPage.php:2724
 msgid "install"
 msgstr "įdiegti"
 
-#: src/Admin/ModulesPage.php:2733
+#: src/Admin/ModulesPage.php:2736
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
@@ -7275,7 +7283,7 @@ msgstr ""
 "Nerasta palaikomų atsiskaitymo ir slapukų plėtinių. Polski toliau veikia "
 "savarankiškai."
 
-#: src/Admin/ModulesPage.php:2735
+#: src/Admin/ModulesPage.php:2738
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:32:41+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -13,33 +13,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
-
-msgid "Incydenty CRA"
-msgstr "CRA 事件"
-
-msgid ""
-"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
-"statusami i eksportem CSV."
-msgstr ""
-"用于《网络韧性法案》(Cyber Resilience Act)的漏洞、违规和故障登记册,带状态和 "
-"CSV 导出功能。"
-
-msgid ""
-"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
-"potrzeby CRA."
-msgstr "用于 CRA 的软件物料清单(Software Bill of Materials)。"
-
-msgid "Szablon reklamacji"
-msgstr "投诉模板"
-
-msgid "Generator i ustawienia szablonu reklamacji dla klientów."
-msgstr "面向客户的投诉模板生成器和设置。"
-
-msgid "Szkolenia RODO"
-msgstr "RODO 培训"
-
-msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
-msgstr "面向商店团队的 RODO 培训材料。"
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
@@ -141,7 +114,7 @@ msgid "Strona"
 msgstr "页面"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/AdminPage.php:993 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -640,7 +613,7 @@ msgstr "请登录以发送此产品的报价询问。"
 msgid "Imię i nazwisko"
 msgstr "姓名"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2450
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "电子邮箱"
@@ -1496,7 +1469,8 @@ msgstr ""
 msgid "Install now"
 msgstr "立即安装"
 
-#: src/Admin/AdminPage.php:56
+#: src/Admin/AdminPage.php:56 src/Admin/AdminPage.php:274
+#: src/Admin/AdminPage.php:275 src/Admin/AdminPage.php:367
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
@@ -1516,7 +1490,7 @@ msgstr "抱歉，您没有访问此页面的权限。"
 msgid "Brak uprawnień."
 msgstr "权限不足。"
 
-#: src/Admin/AdminPage.php:218 src/Admin/AdminPage.php:219
+#: src/Admin/AdminPage.php:219 src/Admin/AdminPage.php:220
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:406
 #: src/Compatibility/ElementorCompat.php:35
 #: src/Service/WithdrawalSiteHealthService.php:177
@@ -1524,69 +1498,69 @@ msgstr "权限不足。"
 msgid "Polski"
 msgstr "Polski"
 
-#: src/Admin/AdminPage.php:230 src/Admin/AdminPage.php:231
-#: src/Admin/AdminPage.php:324
+#: src/Admin/AdminPage.php:231 src/Admin/AdminPage.php:232
+#: src/Admin/AdminPage.php:322
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: src/Admin/AdminPage.php:239 src/Admin/AdminPage.php:240
-#: src/Admin/AdminPage.php:325
+#: src/Admin/AdminPage.php:240 src/Admin/AdminPage.php:241
+#: src/Admin/AdminPage.php:323
 msgid "Modules"
 msgstr "模块"
 
-#: src/Admin/AdminPage.php:248 src/Admin/AdminPage.php:249
-#: src/Admin/AdminPage.php:326
+#: src/Admin/AdminPage.php:249 src/Admin/AdminPage.php:250
+#: src/Admin/AdminPage.php:324
 msgid "Reports & Tools"
 msgstr "报告与工具"
 
-#: src/Admin/AdminPage.php:347
+#: src/Admin/AdminPage.php:372
 msgid "Settings have been saved."
 msgstr "设置已保存。"
 
-#: src/Admin/AdminPage.php:350
+#: src/Admin/AdminPage.php:389
 msgid "Back to modules"
 msgstr "返回模块"
 
-#: src/Admin/AdminPage.php:355 src/Admin/ModulesPage.php:1599
+#: src/Admin/AdminPage.php:406 src/Admin/ModulesPage.php:1599
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:406 src/Admin/AdminPage.php:967
 msgid "Disabled"
 msgstr "已禁用"
 
-#: src/Admin/AdminPage.php:378
+#: src/Admin/AdminPage.php:429
 msgid "Save Settings"
 msgstr "保存设置"
 
-#: src/Admin/AdminPage.php:437
+#: src/Admin/AdminPage.php:486
 msgid ""
 "Ready! We have generated draft legal pages for you. Please review, adjust, "
 "and publish them."
 msgstr "准备就绪！我们已为您生成了法律页面草稿。请审阅、调整并发布它们。"
 
-#: src/Admin/AdminPage.php:443
+#: src/Admin/AdminPage.php:492
 msgid "Modules saved."
 msgstr "模块已保存。"
 
-#: src/Admin/AdminPage.php:517
+#: src/Admin/AdminPage.php:566
 msgid "Reports, audits, and store setup tools for your shop."
 msgstr "为您的商店提供的报告、审核和商店设置工具。"
 
-#: src/Admin/AdminPage.php:529
+#: src/Admin/AdminPage.php:578
 msgid "Back to reports"
 msgstr "返回报告"
 
-#: src/Admin/AdminPage.php:576
+#: src/Admin/AdminPage.php:625
 msgid "Help and feedback"
 msgstr "帮助与反馈"
 
-#: src/Admin/AdminPage.php:579
+#: src/Admin/AdminPage.php:628
 msgid "Need help?"
 msgstr "需要帮助？"
 
-#: src/Admin/AdminPage.php:580
+#: src/Admin/AdminPage.php:629
 msgid ""
 "Use the feedback form below for questions, ideas, or workflow problems. "
 "Messages stay in WordPress and are not sent to any external service."
@@ -1594,11 +1568,11 @@ msgstr ""
 "如有疑问、想法或工作流程问题，请使用下方的反馈表单。消息保存在 WordPress 中，"
 "不会发送至任何外部服务。"
 
-#: src/Admin/AdminPage.php:587
+#: src/Admin/AdminPage.php:636
 msgid "Share feedback"
 msgstr "分享反馈"
 
-#: src/Admin/AdminPage.php:588
+#: src/Admin/AdminPage.php:637
 msgid ""
 "Not technical? Send a quick note straight from the plugin. Tell us what "
 "feels unclear, what should be easier, or what we should add next."
@@ -1606,198 +1580,232 @@ msgstr ""
 "不熟悉技术？直接从插件发送一条快速留言。告诉我们哪里不清楚、哪里应该更简单，"
 "或我们接下来应该添加什么。"
 
-#: src/Admin/AdminPage.php:590
+#: src/Admin/AdminPage.php:639
 msgid "Thanks, your feedback has been saved."
 msgstr "谢谢，您的反馈已保存。"
 
-#: src/Admin/AdminPage.php:592
+#: src/Admin/AdminPage.php:641
 msgid "Please enter your message before sending feedback."
 msgstr "请在发送反馈前输入您的消息。"
 
-#: src/Admin/AdminPage.php:596
+#: src/Admin/AdminPage.php:645
 msgid "Your name"
 msgstr "您的姓名"
 
-#: src/Admin/AdminPage.php:598 src/Service/ProductQAService.php:182
+#: src/Admin/AdminPage.php:647 src/Service/ProductQAService.php:182
 msgid "Your email"
 msgstr "您的电子邮件"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
+#: src/Admin/AdminPage.php:649 src/Admin/AdminPage.php:860
 msgid "Topic"
 msgstr "主题"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
+#: src/Admin/AdminPage.php:651 src/Admin/AdminPage.php:881
 msgid "General feedback"
 msgstr "一般反馈"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
+#: src/Admin/AdminPage.php:652 src/Admin/AdminPage.php:882
 msgid "Feature idea"
 msgstr "功能建议"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
+#: src/Admin/AdminPage.php:653 src/Admin/AdminPage.php:883
 msgid "Workflow problem"
 msgstr "工作流程问题"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
+#: src/Admin/AdminPage.php:654 src/Admin/AdminPage.php:884
 msgid "Support question"
 msgstr "支持问题"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
+#: src/Admin/AdminPage.php:656 src/Admin/AdminPage.php:862
 msgid "Message"
 msgstr "消息"
 
-#: src/Admin/AdminPage.php:616
+#: src/Admin/AdminPage.php:665
 msgid ""
 "This form stores your feedback locally in WordPress. It is not sent to any "
 "external service."
 msgstr "此表单将您的反馈保存在本地 WordPress 中。它不会发送至任何外部服务。"
 
-#: src/Admin/AdminPage.php:617
+#: src/Admin/AdminPage.php:666
 msgid "Do not include passwords, licence keys, or customer personal data."
 msgstr "请勿包含密码、许可证密钥或客户个人数据。"
 
-#: src/Admin/AdminPage.php:618
+#: src/Admin/AdminPage.php:667
 msgid "Send feedback"
 msgstr "发送反馈"
 
-#: src/Admin/AdminPage.php:624
+#: src/Admin/AdminPage.php:673
 msgid "Deactivate vs uninstall"
 msgstr "停用与卸载"
 
-#: src/Admin/AdminPage.php:626
+#: src/Admin/AdminPage.php:675
 msgid "Deactivating the plugin keeps your settings and stored data."
 msgstr "停用插件会保留您的设置和已存储的数据。"
 
-#: src/Admin/AdminPage.php:627
+#: src/Admin/AdminPage.php:676
 msgid ""
 "Uninstalling removes plugin files. Data is deleted only when the remove-data "
 "setting is enabled."
 msgstr "卸载会删除插件文件。仅当启用了删除数据设置时才会删除数据。"
 
-#: src/Admin/AdminPage.php:628
+#: src/Admin/AdminPage.php:677
 msgid ""
 "Your deactivation feedback stays in the local admin log unless data removal "
 "on uninstall is enabled."
 msgstr "除非启用了卸载时删除数据，否则您的停用反馈会保留在本地管理员日志中。"
 
-#: src/Admin/AdminPage.php:632
+#: src/Admin/AdminPage.php:681
 msgid "Current setting: plugin data will be removed on uninstall."
 msgstr "当前设置：卸载时将删除插件数据。"
 
-#: src/Admin/AdminPage.php:633
+#: src/Admin/AdminPage.php:682
 msgid "Current setting: plugin data will be kept on uninstall."
 msgstr "当前设置：卸载时将保留插件数据。"
 
-#: src/Admin/AdminPage.php:648
+#: src/Admin/AdminPage.php:697
 msgid "Audyt zgodności"
 msgstr "合规审核"
 
-#: src/Admin/AdminPage.php:649
+#: src/Admin/AdminPage.php:698
 msgid ""
 "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim "
 "eCommerce."
 msgstr "自动核查波兰电子商务中最常见的法律问题。"
 
-#: src/Admin/AdminPage.php:655
+#: src/Admin/AdminPage.php:704
 msgid "Raporty DSA"
 msgstr "DSA 报告"
 
-#: src/Admin/AdminPage.php:656
+#: src/Admin/AdminPage.php:705
 msgid ""
 "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
 msgstr "管理数字内容侵权举报（数字服务法）。"
 
-#: src/Admin/AdminPage.php:662
+#: src/Admin/AdminPage.php:711
 msgid "Logi incydentów"
 msgstr "事件日志"
 
-#: src/Admin/AdminPage.php:663
+#: src/Admin/AdminPage.php:712
 msgid ""
 "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 msgstr "安全问题、数据泄露和基础设施故障的记录。"
 
-#: src/Admin/AdminPage.php:669
+#: src/Admin/AdminPage.php:718
 msgid "Kondycja sklepu"
 msgstr "商店健康状况"
 
-#: src/Admin/AdminPage.php:670
+#: src/Admin/AdminPage.php:719
 msgid ""
 "Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii "
 "sprzedaży, z alertami."
 msgstr "持续监控严重错误、付款失败和销售异常，并提供警报。"
 
-#: src/Admin/AdminPage.php:676
+#: src/Admin/AdminPage.php:725
 msgid "Rejestr DPA (RODO)"
 msgstr "DPA 登记簿 (RODO)"
 
-#: src/Admin/AdminPage.php:677
+#: src/Admin/AdminPage.php:726
 msgid ""
 "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami "
 "trzecimi."
 msgstr "与第三方主体签订的个人数据处理委托协议登记簿。"
 
-#: src/Admin/AdminPage.php:683
+#: src/Admin/AdminPage.php:732
 msgid "Rejestr zgód"
 msgstr "同意记录"
 
-#: src/Admin/AdminPage.php:684
+#: src/Admin/AdminPage.php:733
 msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
 msgstr "已保存的访客同意横幅决定，支持 CSV 导出。"
 
-#: src/Admin/AdminPage.php:690
+#: src/Admin/AdminPage.php:739
 msgid "Odstąpienia"
 msgstr "撤回"
 
-#: src/Admin/AdminPage.php:691
+#: src/Admin/AdminPage.php:740
 msgid ""
 "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
 "ustawienia."
 msgstr "撤回合同与退货申请：列表、手动登记和设置。"
 
-#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/AdminPage.php:747
+msgid "Incydenty CRA"
+msgstr "CRA 事件"
+
+#: src/Admin/AdminPage.php:748
+msgid ""
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
+msgstr ""
+"用于《网络韧性法案》(Cyber Resilience Act)的漏洞、违规和故障登记册,带状态和 "
+"CSV 导出功能。"
+
+#: src/Admin/AdminPage.php:755 src/Admin/SBOMPage.php:40
 #: src/Admin/SBOMPage.php:41
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/AdminPage.php:730
+#: src/Admin/AdminPage.php:756
+msgid ""
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
+msgstr "用于 CRA 的软件物料清单(Software Bill of Materials)。"
+
+#: src/Admin/AdminPage.php:763
+msgid "Szablon reklamacji"
+msgstr "投诉模板"
+
+#: src/Admin/AdminPage.php:764
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr "面向客户的投诉模板生成器和设置。"
+
+#: src/Admin/AdminPage.php:771
+msgid "Szkolenia RODO"
+msgstr "RODO 培训"
+
+#: src/Admin/AdminPage.php:772
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr "面向商店团队的 RODO 培训材料。"
+
+#: src/Admin/AdminPage.php:779
 msgid "Feedback Logs"
 msgstr "反馈日志"
 
-#: src/Admin/AdminPage.php:731
+#: src/Admin/AdminPage.php:780
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr "来自插件侧边栏的停用反馈和本地管理员反馈。"
 
-#: src/Admin/AdminPage.php:737
+#: src/Admin/AdminPage.php:786
 msgid "Select a report or tool to review your store setup status."
 msgstr "选择一份报告或工具，以查看您的商店设置状态。"
 
-#: src/Admin/AdminPage.php:776
+#: src/Admin/AdminPage.php:825
 msgid "Open Report"
 msgstr "打开报告"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:827
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
 msgstr "此报告需要先启用其模块（可选功能默认关闭）。"
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:829
 msgid "Enable module"
 msgstr "启用模块"
 
-#: src/Admin/AdminPage.php:782
+#: src/Admin/AdminPage.php:831
 msgid "Module disabled"
 msgstr "模块已禁用"
 
-#: src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:850
 msgid "Admin Feedback Logs"
 msgstr "管理员反馈日志"
 
-#: src/Admin/AdminPage.php:804
+#: src/Admin/AdminPage.php:853
 msgid "No internal feedback to display."
 msgstr "没有可显示的内部反馈。"
 
-#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:858 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
@@ -1807,117 +1815,117 @@ msgstr "没有可显示的内部反馈。"
 msgid "Date"
 msgstr "日期"
 
-#: src/Admin/AdminPage.php:810
+#: src/Admin/AdminPage.php:859
 msgid "Person"
 msgstr "人员"
 
-#: src/Admin/AdminPage.php:812
+#: src/Admin/AdminPage.php:861
 msgid "Screen"
 msgstr "屏幕"
 
-#: src/Admin/AdminPage.php:869
+#: src/Admin/AdminPage.php:918
 msgid "Hello!"
 msgstr "您好！"
 
-#: src/Admin/AdminPage.php:870
+#: src/Admin/AdminPage.php:919
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "帮助您的商店适应波兰要求的工具。"
 
-#: src/Admin/AdminPage.php:876
+#: src/Admin/AdminPage.php:925
 msgid "Finish configuration"
 msgstr "完成配置"
 
-#: src/Admin/AdminPage.php:877
+#: src/Admin/AdminPage.php:926
 msgid "Some key elements of your store still require attention."
 msgstr "您商店的某些关键要素仍需关注。"
 
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:929
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr "发布法律页面（条款、隐私政策、撤回权）"
 
-#: src/Admin/AdminPage.php:883
+#: src/Admin/AdminPage.php:932
 msgid "Go through the checklist below"
 msgstr "完成下方的清单"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:935
 msgid "Complete product data"
 msgstr "补全产品数据"
 
-#: src/Admin/AdminPage.php:887
+#: src/Admin/AdminPage.php:936
 msgid "Manage modules"
 msgstr "管理模块"
 
-#: src/Admin/AdminPage.php:895
+#: src/Admin/AdminPage.php:944
 msgid "Relaunch setup wizard"
 msgstr "重新启动设置向导"
 
-#: src/Admin/AdminPage.php:905
+#: src/Admin/AdminPage.php:954
 msgid "Inactive"
 msgstr "未激活"
 
-#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
+#: src/Admin/AdminPage.php:959 src/Admin/AdminPage.php:988
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "法律页面"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:961
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d / %2$d 已就绪"
 
-#: src/Admin/AdminPage.php:917
+#: src/Admin/AdminPage.php:966
 msgid "Omnibus Directive"
 msgstr "Omnibus 指令"
 
-#: src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:967
 msgid "Active"
 msgstr "已激活"
 
-#: src/Admin/AdminPage.php:923
+#: src/Admin/AdminPage.php:972
 msgid "Store Analysis"
 msgstr "商店分析"
 
-#: src/Admin/AdminPage.php:924
+#: src/Admin/AdminPage.php:973
 msgid "Check reports"
 msgstr "查看报告"
 
-#: src/Admin/AdminPage.php:944
+#: src/Admin/AdminPage.php:993
 msgid "Page"
 msgstr "页面"
 
-#: src/Admin/AdminPage.php:961
+#: src/Admin/AdminPage.php:1010
 msgid "Published"
 msgstr "已发布"
 
-#: src/Admin/AdminPage.php:962
+#: src/Admin/AdminPage.php:1011
 msgid "Draft"
 msgstr "草稿"
 
-#: src/Admin/AdminPage.php:967
+#: src/Admin/AdminPage.php:1016
 msgid "Edit"
 msgstr "编辑"
 
-#: src/Admin/AdminPage.php:969
+#: src/Admin/AdminPage.php:1018
 msgid "Not created"
 msgstr "未创建"
 
-#: src/Admin/AdminPage.php:984
+#: src/Admin/AdminPage.php:1033
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr "尚未创建任何法律页面。生成它们以开始使用。"
 
-#: src/Admin/AdminPage.php:992
+#: src/Admin/AdminPage.php:1041
 msgid "Next steps"
 msgstr "后续步骤"
 
-#: src/Admin/AdminPage.php:1044
+#: src/Admin/AdminPage.php:1093
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
 msgstr "发布您的法律页面（条款、隐私政策、撤回权、投诉）。"
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1052
+#: src/Admin/AdminPage.php:1101
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -1927,13 +1935,13 @@ msgstr ""
 "0%%）。"
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1064
+#: src/Admin/AdminPage.php:1113
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr "为波兰境内的配送配置<a href=\"%s\">配送区域</a>。"
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1075
+#: src/Admin/AdminPage.php:1124
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -1943,7 +1951,7 @@ msgstr ""
 "时间。"
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1086
+#: src/Admin/AdminPage.php:1135
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -1952,11 +1960,11 @@ msgstr ""
 "测试订单流程 - 将产品加入购物车，并在<a href=\"%s\">结账页</a>检查复选框和按"
 "钮文字。"
 
-#: src/Admin/AdminPage.php:1109
+#: src/Admin/AdminPage.php:1158
 msgid "Generate legal pages"
 msgstr "生成法律页面"
 
-#: src/Admin/AdminPage.php:1156
+#: src/Admin/AdminPage.php:1205
 msgid "Open &rarr;"
 msgstr "打开 &rarr;"
 
@@ -3586,19 +3594,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "必要 cookie 始终开启，无法关闭。"
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
+#: src/Admin/ModulesPage.php:1914 src/Admin/ModulesPage.php:2471
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "分析"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1915 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "营销"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1916 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "偏好"
 
@@ -4535,7 +4543,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "在商品页面显示"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1991
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "标签"
@@ -5530,7 +5538,7 @@ msgstr "如何打开 CTA"
 msgid "Shop and archives"
 msgstr "商店和归档页"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2448
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "结账"
@@ -6026,7 +6034,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "同意类别"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1913
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "必要"
@@ -6643,203 +6651,203 @@ msgstr "管理字段"
 msgid "Name"
 msgstr "名称"
 
-#: src/Admin/ModulesPage.php:1663
+#: src/Admin/ModulesPage.php:1666
 msgid "Help"
 msgstr "帮助"
 
-#: src/Admin/ModulesPage.php:1706
+#: src/Admin/ModulesPage.php:1709
 msgid "Enable this module to use this."
 msgstr "启用此模块以使用此功能。"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1729
+#: src/Admin/ModulesPage.php:1732
 #, php-format
 msgid "Edit %s settings"
 msgstr "编辑 %s 设置"
 
-#: src/Admin/ModulesPage.php:1732
+#: src/Admin/ModulesPage.php:1735
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
+#: src/Admin/ModulesPage.php:1745 src/Admin/ModulesPage.php:1746
 msgid "Open documentation"
 msgstr "打开文档"
 
-#: src/Admin/ModulesPage.php:1776
+#: src/Admin/ModulesPage.php:1779
 msgid "Save"
 msgstr "保存"
 
-#: src/Admin/ModulesPage.php:1870
+#: src/Admin/ModulesPage.php:1873
 msgid "none"
 msgstr "无"
 
-#: src/Admin/ModulesPage.php:1966
+#: src/Admin/ModulesPage.php:1969
 msgid "Add snippet"
 msgstr "添加代码片段"
 
-#: src/Admin/ModulesPage.php:1995
+#: src/Admin/ModulesPage.php:1998
 msgid "Head"
 msgstr "头部"
 
-#: src/Admin/ModulesPage.php:1996
+#: src/Admin/ModulesPage.php:1999
 msgid "Footer"
 msgstr "页脚"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2012
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> 或内联 JS"
 
-#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
+#: src/Admin/ModulesPage.php:2018 src/Admin/ModulesPage.php:2103
 msgid "Remove"
 msgstr "移除"
 
-#: src/Admin/ModulesPage.php:2045
+#: src/Admin/ModulesPage.php:2048
 msgid "Add trigger"
 msgstr "添加触发器"
 
-#: src/Admin/ModulesPage.php:2068
+#: src/Admin/ModulesPage.php:2071
 msgid "Event name (e.g. cta_click)"
 msgstr "事件名称（例如 cta_click）"
 
-#: src/Admin/ModulesPage.php:2075
+#: src/Admin/ModulesPage.php:2078
 msgid "URL contains"
 msgstr "URL 包含"
 
-#: src/Admin/ModulesPage.php:2076
+#: src/Admin/ModulesPage.php:2079
 msgid "Click on selector"
 msgstr "点击选择器"
 
-#: src/Admin/ModulesPage.php:2089
+#: src/Admin/ModulesPage.php:2092
 msgid "URL fragment (for URL contains)"
 msgstr "URL 片段（用于 URL 包含）"
 
-#: src/Admin/ModulesPage.php:2094
+#: src/Admin/ModulesPage.php:2097
 msgid "CSS selector (for click)"
 msgstr "CSS 选择器（用于点击）"
 
-#: src/Admin/ModulesPage.php:2204
+#: src/Admin/ModulesPage.php:2207
 msgid "Sorry, you are not allowed to access this page."
 msgstr "抱歉，您无权访问此页面。"
 
-#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
+#: src/Admin/ModulesPage.php:2214 src/Admin/ModulesPage.php:2230
 msgid "Invalid request."
 msgstr "无效请求。"
 
-#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+#: src/Admin/ModulesPage.php:2419 src/Admin/ModulesPage.php:2467
 msgid "Legal & Compliance"
 msgstr "法律与合规"
 
-#: src/Admin/ModulesPage.php:2418
+#: src/Admin/ModulesPage.php:2421
 msgid "Tax & Pricing"
 msgstr "税费与定价"
 
-#: src/Admin/ModulesPage.php:2420
+#: src/Admin/ModulesPage.php:2423
 msgid "Checkout & Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:2422
+#: src/Admin/ModulesPage.php:2425
 msgid "Content & Trust"
 msgstr "内容与信任"
 
-#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+#: src/Admin/ModulesPage.php:2427 src/Admin/ModulesPage.php:2477
 msgid "Advanced & Tools"
 msgstr "高级与工具"
 
-#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2429 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "其他"
 
-#: src/Admin/ModulesPage.php:2439
+#: src/Admin/ModulesPage.php:2442
 msgid "Prices and Display"
 msgstr "价格与显示"
 
-#: src/Admin/ModulesPage.php:2441
+#: src/Admin/ModulesPage.php:2444
 msgid "Prices and Omnibus"
 msgstr "价格与 Omnibus"
 
-#: src/Admin/ModulesPage.php:2443
+#: src/Admin/ModulesPage.php:2446
 msgid "Checkout and Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:2449
+#: src/Admin/ModulesPage.php:2452
 msgid "Stock & Cart"
 msgstr "库存与购物车"
 
-#: src/Admin/ModulesPage.php:2451
+#: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
 msgstr "商品陈列"
 
-#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+#: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "店面"
 
-#: src/Admin/ModulesPage.php:2455
+#: src/Admin/ModulesPage.php:2458
 msgid "Product Information"
 msgstr "商品信息"
 
-#: src/Admin/ModulesPage.php:2457
+#: src/Admin/ModulesPage.php:2460
 msgid "Customer Account"
 msgstr "客户账户"
 
-#: src/Admin/ModulesPage.php:2459
+#: src/Admin/ModulesPage.php:2462
 msgid "Sales and B2B"
 msgstr "销售与 B2B"
 
-#: src/Admin/ModulesPage.php:2462
+#: src/Admin/ModulesPage.php:2465
 msgid "Consumer Rights"
 msgstr "消费者权利"
 
-#: src/Admin/ModulesPage.php:2466
+#: src/Admin/ModulesPage.php:2469
 msgid "Tools"
 msgstr "工具"
 
-#: src/Admin/ModulesPage.php:2470
+#: src/Admin/ModulesPage.php:2473
 msgid "SEO & Optimization"
 msgstr "SEO 与优化"
 
-#: src/Admin/ModulesPage.php:2472
+#: src/Admin/ModulesPage.php:2475
 msgid "Integrations"
 msgstr "集成"
 
-#: src/Admin/ModulesPage.php:2547
+#: src/Admin/ModulesPage.php:2550
 msgid "Could not save module state. Please try again."
 msgstr "无法保存模块状态。请重试。"
 
-#: src/Admin/ModulesPage.php:2564
+#: src/Admin/ModulesPage.php:2567
 msgid "Compatible Omnibus Extension A"
 msgstr "兼容的 Omnibus 扩展 A"
 
-#: src/Admin/ModulesPage.php:2565
+#: src/Admin/ModulesPage.php:2568
 msgid "Compatible Omnibus Extension B"
 msgstr "兼容的 Omnibus 扩展 B"
 
-#: src/Admin/ModulesPage.php:2576
+#: src/Admin/ModulesPage.php:2579
 msgid "detected, data synchronized"
 msgstr "已检测到，数据已同步"
 
-#: src/Admin/ModulesPage.php:2577
+#: src/Admin/ModulesPage.php:2580
 msgid "not installed"
 msgstr "未安装"
 
-#: src/Admin/ModulesPage.php:2592
+#: src/Admin/ModulesPage.php:2595
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
 msgstr "未安装外部 Omnibus 插件。Polski 使用内置的价格跟踪系统。"
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2597
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
 msgstr "检测到外部插件。Polski 使用其数据而非内置系统。"
 
-#: src/Admin/ModulesPage.php:2614
+#: src/Admin/ModulesPage.php:2617
 msgid "OSS observer service is unavailable."
 msgstr "OSS 观察器服务不可用。"
 
-#: src/Admin/ModulesPage.php:2621
+#: src/Admin/ModulesPage.php:2624
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -6847,61 +6855,61 @@ msgstr ""
 "未安装 One Stop Shop 插件。安装它即可自动开始观察 10,000 € 的欧盟内 B2C 阈"
 "值。"
 
-#: src/Admin/ModulesPage.php:2627
+#: src/Admin/ModulesPage.php:2630
 msgid "Install One Stop Shop"
 msgstr "安装 One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2632
+#: src/Admin/ModulesPage.php:2635
 msgid "You need the install_plugins capability to install it from here."
 msgstr "您需要 install_plugins 权限才能从此处安装它。"
 
-#: src/Admin/ModulesPage.php:2641
+#: src/Admin/ModulesPage.php:2644
 msgid "One Stop Shop plugin detected."
 msgstr "已检测到 One Stop Shop 插件。"
 
-#: src/Admin/ModulesPage.php:2645
+#: src/Admin/ModulesPage.php:2648
 msgid "OSS procedure"
 msgstr "OSS 程序"
 
-#: src/Admin/ModulesPage.php:2647
+#: src/Admin/ModulesPage.php:2650
 msgid "enabled"
 msgstr "已启用"
 
-#: src/Admin/ModulesPage.php:2648
+#: src/Admin/ModulesPage.php:2651
 msgid "disabled"
 msgstr "已禁用"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2655
 msgid "Auto observer"
 msgstr "自动观察器"
 
-#: src/Admin/ModulesPage.php:2654
+#: src/Admin/ModulesPage.php:2657
 msgid "watching threshold"
 msgstr "监控阈值"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2658
 msgid "off"
 msgstr "关闭"
 
-#: src/Admin/ModulesPage.php:2660
+#: src/Admin/ModulesPage.php:2663
 msgid "Open OSS settings"
 msgstr "打开 OSS 设置"
 
-#: src/Admin/ModulesPage.php:2718
+#: src/Admin/ModulesPage.php:2721
 msgid "detected, integration active"
 msgstr "已检测到，集成已激活"
 
-#: src/Admin/ModulesPage.php:2721
+#: src/Admin/ModulesPage.php:2724
 msgid "install"
 msgstr "安装"
 
-#: src/Admin/ModulesPage.php:2733
+#: src/Admin/ModulesPage.php:2736
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
 msgstr "未检测到受支持的结账和 Cookie 扩展。Polski 将继续独立运行。"
 
-#: src/Admin/ModulesPage.php:2735
+#: src/Admin/ModulesPage.php:2738
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."

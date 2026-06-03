@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:32:41+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Last-Translator: Mariusz Szatkowski\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
@@ -117,7 +117,7 @@ msgid "Strona"
 msgstr "Strona"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/AdminPage.php:993 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -663,7 +663,7 @@ msgstr "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
 msgid "Imię i nazwisko"
 msgstr "Imię i nazwisko"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2450
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "Email"
@@ -1542,7 +1542,8 @@ msgstr ""
 msgid "Install now"
 msgstr "Zainstaluj teraz"
 
-#: src/Admin/AdminPage.php:56
+#: src/Admin/AdminPage.php:56 src/Admin/AdminPage.php:274
+#: src/Admin/AdminPage.php:275 src/Admin/AdminPage.php:367
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:22
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:22
@@ -1562,7 +1563,7 @@ msgstr "Nie masz uprawnień do wyświetlenia tej strony."
 msgid "Brak uprawnień."
 msgstr "Brak uprawnień."
 
-#: src/Admin/AdminPage.php:218 src/Admin/AdminPage.php:219
+#: src/Admin/AdminPage.php:219 src/Admin/AdminPage.php:220
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:406
 #: src/Compatibility/ElementorCompat.php:35
 #: src/Service/WithdrawalSiteHealthService.php:177
@@ -1570,43 +1571,43 @@ msgstr "Brak uprawnień."
 msgid "Polski"
 msgstr "Polski"
 
-#: src/Admin/AdminPage.php:230 src/Admin/AdminPage.php:231
-#: src/Admin/AdminPage.php:324
+#: src/Admin/AdminPage.php:231 src/Admin/AdminPage.php:232
+#: src/Admin/AdminPage.php:322
 msgid "Dashboard"
 msgstr "Pulpit"
 
-#: src/Admin/AdminPage.php:239 src/Admin/AdminPage.php:240
-#: src/Admin/AdminPage.php:325
+#: src/Admin/AdminPage.php:240 src/Admin/AdminPage.php:241
+#: src/Admin/AdminPage.php:323
 msgid "Modules"
 msgstr "Moduły"
 
-#: src/Admin/AdminPage.php:248 src/Admin/AdminPage.php:249
-#: src/Admin/AdminPage.php:326
+#: src/Admin/AdminPage.php:249 src/Admin/AdminPage.php:250
+#: src/Admin/AdminPage.php:324
 msgid "Reports & Tools"
 msgstr "Raporty i narzędzia"
 
-#: src/Admin/AdminPage.php:347
+#: src/Admin/AdminPage.php:372
 msgid "Settings have been saved."
 msgstr "Ustawienia zostały zapisane."
 
-#: src/Admin/AdminPage.php:350
+#: src/Admin/AdminPage.php:389
 msgid "Back to modules"
 msgstr "Powrót do modułów"
 
-#: src/Admin/AdminPage.php:355 src/Admin/ModulesPage.php:1599
+#: src/Admin/AdminPage.php:406 src/Admin/ModulesPage.php:1599
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr "Włączone"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:406 src/Admin/AdminPage.php:967
 msgid "Disabled"
 msgstr "Wyłączony"
 
-#: src/Admin/AdminPage.php:378
+#: src/Admin/AdminPage.php:429
 msgid "Save Settings"
 msgstr "Zapisz ustawienia"
 
-#: src/Admin/AdminPage.php:437
+#: src/Admin/AdminPage.php:486
 msgid ""
 "Ready! We have generated draft legal pages for you. Please review, adjust, "
 "and publish them."
@@ -1614,27 +1615,27 @@ msgstr ""
 "Gotowe! Wygenerowaliśmy szkice stron prawnych. Przejrzyj je, dostosuj i "
 "opublikuj."
 
-#: src/Admin/AdminPage.php:443
+#: src/Admin/AdminPage.php:492
 msgid "Modules saved."
 msgstr "Moduły zapisane."
 
-#: src/Admin/AdminPage.php:517
+#: src/Admin/AdminPage.php:566
 msgid "Reports, audits, and store setup tools for your shop."
 msgstr "Raporty, audyty i narzędzia konfiguracji sklepu dla Twojego sklepu."
 
-#: src/Admin/AdminPage.php:529
+#: src/Admin/AdminPage.php:578
 msgid "Back to reports"
 msgstr "Powrót do raportów"
 
-#: src/Admin/AdminPage.php:576
+#: src/Admin/AdminPage.php:625
 msgid "Help and feedback"
 msgstr "Pomoc i opinie"
 
-#: src/Admin/AdminPage.php:579
+#: src/Admin/AdminPage.php:628
 msgid "Need help?"
 msgstr "Potrzebujesz pomocy?"
 
-#: src/Admin/AdminPage.php:580
+#: src/Admin/AdminPage.php:629
 msgid ""
 "Use the feedback form below for questions, ideas, or workflow problems. "
 "Messages stay in WordPress and are not sent to any external service."
@@ -1643,11 +1644,11 @@ msgstr ""
 "pracą. Wiadomości pozostają w WordPressie i nie są wysyłane do żadnej "
 "zewnętrznej usługi."
 
-#: src/Admin/AdminPage.php:587
+#: src/Admin/AdminPage.php:636
 msgid "Share feedback"
 msgstr "Podziel się opinią"
 
-#: src/Admin/AdminPage.php:588
+#: src/Admin/AdminPage.php:637
 msgid ""
 "Not technical? Send a quick note straight from the plugin. Tell us what "
 "feels unclear, what should be easier, or what we should add next."
@@ -1656,47 +1657,47 @@ msgstr ""
 "Powiedz nam, co jest niejasne, co powinno być łatwiejsze lub co powinniśmy "
 "dodać."
 
-#: src/Admin/AdminPage.php:590
+#: src/Admin/AdminPage.php:639
 msgid "Thanks, your feedback has been saved."
 msgstr "Dziękujemy, Twoja opinia została zapisana."
 
-#: src/Admin/AdminPage.php:592
+#: src/Admin/AdminPage.php:641
 msgid "Please enter your message before sending feedback."
 msgstr "Wpisz wiadomość przed wysłaniem opinii."
 
-#: src/Admin/AdminPage.php:596
+#: src/Admin/AdminPage.php:645
 msgid "Your name"
 msgstr "Twoje imię"
 
-#: src/Admin/AdminPage.php:598 src/Service/ProductQAService.php:182
+#: src/Admin/AdminPage.php:647 src/Service/ProductQAService.php:182
 msgid "Your email"
 msgstr "Twój email"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
+#: src/Admin/AdminPage.php:649 src/Admin/AdminPage.php:860
 msgid "Topic"
 msgstr "Temat"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
+#: src/Admin/AdminPage.php:651 src/Admin/AdminPage.php:881
 msgid "General feedback"
 msgstr "Ogólna opinia"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
+#: src/Admin/AdminPage.php:652 src/Admin/AdminPage.php:882
 msgid "Feature idea"
 msgstr "Pomysł na funkcję"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
+#: src/Admin/AdminPage.php:653 src/Admin/AdminPage.php:883
 msgid "Workflow problem"
 msgstr "Problem z przepływem pracy"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
+#: src/Admin/AdminPage.php:654 src/Admin/AdminPage.php:884
 msgid "Support question"
 msgstr "Pytanie wsparcia"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
+#: src/Admin/AdminPage.php:656 src/Admin/AdminPage.php:862
 msgid "Message"
 msgstr "Wiadomość"
 
-#: src/Admin/AdminPage.php:616
+#: src/Admin/AdminPage.php:665
 msgid ""
 "This form stores your feedback locally in WordPress. It is not sent to any "
 "external service."
@@ -1704,23 +1705,23 @@ msgstr ""
 "Ten formularz zapisuje opinię lokalnie w WordPressie. Nie jest wysyłany do "
 "żadnego zewnętrznego serwisu."
 
-#: src/Admin/AdminPage.php:617
+#: src/Admin/AdminPage.php:666
 msgid "Do not include passwords, licence keys, or customer personal data."
 msgstr "Nie podawaj haseł, kluczy licencyjnych ani danych osobowych klientów."
 
-#: src/Admin/AdminPage.php:618
+#: src/Admin/AdminPage.php:667
 msgid "Send feedback"
 msgstr "Wyślij opinię"
 
-#: src/Admin/AdminPage.php:624
+#: src/Admin/AdminPage.php:673
 msgid "Deactivate vs uninstall"
 msgstr "Dezaktywacja a odinstalowanie"
 
-#: src/Admin/AdminPage.php:626
+#: src/Admin/AdminPage.php:675
 msgid "Deactivating the plugin keeps your settings and stored data."
 msgstr "Dezaktywacja wtyczki zachowuje ustawienia i zapisane dane."
 
-#: src/Admin/AdminPage.php:627
+#: src/Admin/AdminPage.php:676
 msgid ""
 "Uninstalling removes plugin files. Data is deleted only when the remove-data "
 "setting is enabled."
@@ -1728,7 +1729,7 @@ msgstr ""
 "Odinstalowanie usuwa pliki wtyczki. Dane są usuwane tylko wtedy, gdy "
 "włączona jest opcja usuwania danych."
 
-#: src/Admin/AdminPage.php:628
+#: src/Admin/AdminPage.php:677
 msgid ""
 "Your deactivation feedback stays in the local admin log unless data removal "
 "on uninstall is enabled."
@@ -1736,21 +1737,21 @@ msgstr ""
 "Twoja opinia przy dezaktywacji pozostaje w lokalnym dzienniku "
 "administratora, chyba że włączono usuwanie danych przy odinstalowaniu."
 
-#: src/Admin/AdminPage.php:632
+#: src/Admin/AdminPage.php:681
 msgid "Current setting: plugin data will be removed on uninstall."
 msgstr ""
 "Aktualne ustawienie: dane wtyczki zostaną usunięte przy odinstalowaniu."
 
-#: src/Admin/AdminPage.php:633
+#: src/Admin/AdminPage.php:682
 msgid "Current setting: plugin data will be kept on uninstall."
 msgstr ""
 "Aktualne ustawienie: dane wtyczki zostaną zachowane przy odinstalowaniu."
 
-#: src/Admin/AdminPage.php:648
+#: src/Admin/AdminPage.php:697
 msgid "Audyt zgodności"
 msgstr "Audyt zgodności"
 
-#: src/Admin/AdminPage.php:649
+#: src/Admin/AdminPage.php:698
 msgid ""
 "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim "
 "eCommerce."
@@ -1758,31 +1759,31 @@ msgstr ""
 "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim "
 "eCommerce."
 
-#: src/Admin/AdminPage.php:655
+#: src/Admin/AdminPage.php:704
 msgid "Raporty DSA"
 msgstr "Raporty DSA"
 
-#: src/Admin/AdminPage.php:656
+#: src/Admin/AdminPage.php:705
 msgid ""
 "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
 msgstr ""
 "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
 
-#: src/Admin/AdminPage.php:662
+#: src/Admin/AdminPage.php:711
 msgid "Logi incydentów"
 msgstr "Logi incydentów"
 
-#: src/Admin/AdminPage.php:663
+#: src/Admin/AdminPage.php:712
 msgid ""
 "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 msgstr ""
 "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 
-#: src/Admin/AdminPage.php:669
+#: src/Admin/AdminPage.php:718
 msgid "Kondycja sklepu"
 msgstr "Kondycja sklepu"
 
-#: src/Admin/AdminPage.php:670
+#: src/Admin/AdminPage.php:719
 msgid ""
 "Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii "
 "sprzedaży, z alertami."
@@ -1790,11 +1791,11 @@ msgstr ""
 "Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii "
 "sprzedaży, z alertami."
 
-#: src/Admin/AdminPage.php:676
+#: src/Admin/AdminPage.php:725
 msgid "Rejestr DPA (RODO)"
 msgstr "Rejestr DPA (RODO)"
 
-#: src/Admin/AdminPage.php:677
+#: src/Admin/AdminPage.php:726
 msgid ""
 "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami "
 "trzecimi."
@@ -1802,81 +1803,81 @@ msgstr ""
 "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami "
 "trzecimi."
 
-#: src/Admin/AdminPage.php:683
+#: src/Admin/AdminPage.php:732
 msgid "Rejestr zgód"
 msgstr ""
 
-#: src/Admin/AdminPage.php:684
+#: src/Admin/AdminPage.php:733
 msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
 msgstr ""
 
-#: src/Admin/AdminPage.php:690
+#: src/Admin/AdminPage.php:739
 msgid "Odstąpienia"
 msgstr ""
 
-#: src/Admin/AdminPage.php:691
+#: src/Admin/AdminPage.php:740
 msgid ""
 "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
 "ustawienia."
 msgstr ""
 
-#: src/Admin/AdminPage.php:698
+#: src/Admin/AdminPage.php:747
 msgid "Incydenty CRA"
 msgstr ""
 
-#: src/Admin/AdminPage.php:699
+#: src/Admin/AdminPage.php:748
 msgid ""
 "Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
 "statusami i eksportem CSV."
 msgstr ""
 
-#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/AdminPage.php:755 src/Admin/SBOMPage.php:40
 #: src/Admin/SBOMPage.php:41
 msgid "SBOM"
 msgstr "SBOM"
 
-#: src/Admin/AdminPage.php:707
+#: src/Admin/AdminPage.php:756
 msgid ""
 "Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
 "potrzeby CRA."
 msgstr ""
 
-#: src/Admin/AdminPage.php:714
+#: src/Admin/AdminPage.php:763
 msgid "Szablon reklamacji"
 msgstr ""
 
-#: src/Admin/AdminPage.php:715
+#: src/Admin/AdminPage.php:764
 msgid "Generator i ustawienia szablonu reklamacji dla klientów."
 msgstr ""
 
-#: src/Admin/AdminPage.php:722
+#: src/Admin/AdminPage.php:771
 msgid "Szkolenia RODO"
 msgstr ""
 
-#: src/Admin/AdminPage.php:723
+#: src/Admin/AdminPage.php:772
 msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
 msgstr ""
 
-#: src/Admin/AdminPage.php:730
+#: src/Admin/AdminPage.php:779
 msgid "Feedback Logs"
 msgstr "Dziennik opinii"
 
-#: src/Admin/AdminPage.php:731
+#: src/Admin/AdminPage.php:780
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 "Opinie przy dezaktywacji oraz lokalne opinie administratora z panelu "
 "bocznego wtyczki."
 
-#: src/Admin/AdminPage.php:737
+#: src/Admin/AdminPage.php:786
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 "Wybierz raport lub narzędzie, aby sprawdzić status konfiguracji sklepu."
 
-#: src/Admin/AdminPage.php:776
+#: src/Admin/AdminPage.php:825
 msgid "Open Report"
 msgstr "Otwórz raport"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:827
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
@@ -1884,23 +1885,23 @@ msgstr ""
 "Ten raport wymaga najpierw włączenia modułu (opcjonalne funkcje są domyślnie "
 "wyłączone)."
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:829
 msgid "Enable module"
 msgstr "Włącz moduł"
 
-#: src/Admin/AdminPage.php:782
+#: src/Admin/AdminPage.php:831
 msgid "Module disabled"
 msgstr "Moduł wyłączony"
 
-#: src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:850
 msgid "Admin Feedback Logs"
 msgstr "Dziennik opinii administratora"
 
-#: src/Admin/AdminPage.php:804
+#: src/Admin/AdminPage.php:853
 msgid "No internal feedback to display."
 msgstr "Brak opinii wewnętrznych do wyświetlenia."
 
-#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:858 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
@@ -1910,112 +1911,112 @@ msgstr "Brak opinii wewnętrznych do wyświetlenia."
 msgid "Date"
 msgstr "Data"
 
-#: src/Admin/AdminPage.php:810
+#: src/Admin/AdminPage.php:859
 msgid "Person"
 msgstr "Osoba"
 
-#: src/Admin/AdminPage.php:812
+#: src/Admin/AdminPage.php:861
 msgid "Screen"
 msgstr "Ekran"
 
-#: src/Admin/AdminPage.php:869
+#: src/Admin/AdminPage.php:918
 msgid "Hello!"
 msgstr "Cześć!"
 
-#: src/Admin/AdminPage.php:870
+#: src/Admin/AdminPage.php:919
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 
-#: src/Admin/AdminPage.php:876
+#: src/Admin/AdminPage.php:925
 msgid "Finish configuration"
 msgstr "Dokończ konfigurację"
 
-#: src/Admin/AdminPage.php:877
+#: src/Admin/AdminPage.php:926
 msgid "Some key elements of your store still require attention."
 msgstr "Niektóre kluczowe elementy Twojego sklepu wciąż wymagają uwagi."
 
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:929
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 "Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo do "
 "odstąpienia)"
 
-#: src/Admin/AdminPage.php:883
+#: src/Admin/AdminPage.php:932
 msgid "Go through the checklist below"
 msgstr "Przejdź przez poniższą listę kontrolną"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:935
 msgid "Complete product data"
 msgstr "Uzupełnij dane produktów"
 
-#: src/Admin/AdminPage.php:887
+#: src/Admin/AdminPage.php:936
 msgid "Manage modules"
 msgstr "Zarządzaj modułami"
 
-#: src/Admin/AdminPage.php:895
+#: src/Admin/AdminPage.php:944
 msgid "Relaunch setup wizard"
 msgstr "Uruchom ponownie kreatora konfiguracji"
 
-#: src/Admin/AdminPage.php:905
+#: src/Admin/AdminPage.php:954
 msgid "Inactive"
 msgstr "Nieaktywny"
 
-#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
+#: src/Admin/AdminPage.php:959 src/Admin/AdminPage.php:988
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "Strony prawne"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:961
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d z %2$d gotowe"
 
-#: src/Admin/AdminPage.php:917
+#: src/Admin/AdminPage.php:966
 msgid "Omnibus Directive"
 msgstr "Dyrektywa Omnibus"
 
-#: src/Admin/AdminPage.php:918
+#: src/Admin/AdminPage.php:967
 msgid "Active"
 msgstr "Aktywny"
 
-#: src/Admin/AdminPage.php:923
+#: src/Admin/AdminPage.php:972
 msgid "Store Analysis"
 msgstr "Analiza sklepu"
 
-#: src/Admin/AdminPage.php:924
+#: src/Admin/AdminPage.php:973
 msgid "Check reports"
 msgstr "Sprawdź raporty"
 
-#: src/Admin/AdminPage.php:944
+#: src/Admin/AdminPage.php:993
 msgid "Page"
 msgstr "Strona"
 
-#: src/Admin/AdminPage.php:961
+#: src/Admin/AdminPage.php:1010
 msgid "Published"
 msgstr "Opublikowane"
 
-#: src/Admin/AdminPage.php:962
+#: src/Admin/AdminPage.php:1011
 msgid "Draft"
 msgstr "Szkic"
 
-#: src/Admin/AdminPage.php:967
+#: src/Admin/AdminPage.php:1016
 msgid "Edit"
 msgstr "Edytuj"
 
-#: src/Admin/AdminPage.php:969
+#: src/Admin/AdminPage.php:1018
 msgid "Not created"
 msgstr "Nie utworzono"
 
-#: src/Admin/AdminPage.php:984
+#: src/Admin/AdminPage.php:1033
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
 
-#: src/Admin/AdminPage.php:992
+#: src/Admin/AdminPage.php:1041
 msgid "Next steps"
 msgstr "Następne kroki"
 
-#: src/Admin/AdminPage.php:1044
+#: src/Admin/AdminPage.php:1093
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
@@ -2024,7 +2025,7 @@ msgstr ""
 "odstąpienia, Reklamacje)."
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1052
+#: src/Admin/AdminPage.php:1101
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -2034,13 +2035,13 @@ msgstr ""
 "VAT (23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1064
+#: src/Admin/AdminPage.php:1113
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1075
+#: src/Admin/AdminPage.php:1124
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -2050,7 +2051,7 @@ msgstr ""
 "href=\"%s\">zakładce Polski</a> dla każdego produktu."
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1086
+#: src/Admin/AdminPage.php:1135
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -2059,11 +2060,11 @@ msgstr ""
 "Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź checkboxy "
 "oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
 
-#: src/Admin/AdminPage.php:1109
+#: src/Admin/AdminPage.php:1158
 msgid "Generate legal pages"
 msgstr "Wygeneruj strony prawne"
 
-#: src/Admin/AdminPage.php:1156
+#: src/Admin/AdminPage.php:1205
 msgid "Open &rarr;"
 msgstr "Otwórz &rarr;"
 
@@ -3842,19 +3843,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "Niezbędne pliki cookie są zawsze włączone i nie można ich wyłączyć."
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
+#: src/Admin/ModulesPage.php:1914 src/Admin/ModulesPage.php:2471
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Analityka"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1915 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "Marketing"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1916 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "Preferencje"
 
@@ -4828,7 +4829,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "Pokazuj na stronie produktu"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1991
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Etykieta"
@@ -5848,7 +5849,7 @@ msgstr "Jak otworzyć CTA"
 msgid "Shop and archives"
 msgstr "Sklep i archiwa"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2448
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Kasa"
@@ -6369,7 +6370,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "Kategoria zgody"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1913
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "Niezbędne"
@@ -7014,187 +7015,187 @@ msgstr "Zarządzaj polami"
 msgid "Name"
 msgstr "Nazwa"
 
-#: src/Admin/ModulesPage.php:1663
+#: src/Admin/ModulesPage.php:1666
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/Admin/ModulesPage.php:1706
+#: src/Admin/ModulesPage.php:1709
 msgid "Enable this module to use this."
 msgstr "Włącz ten moduł, aby z niego skorzystać."
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1729
+#: src/Admin/ModulesPage.php:1732
 #, php-format
 msgid "Edit %s settings"
 msgstr "Edytuj ustawienia %s"
 
-#: src/Admin/ModulesPage.php:1732
+#: src/Admin/ModulesPage.php:1735
 msgid "Edit settings"
 msgstr "Edytuj ustawienia"
 
-#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
+#: src/Admin/ModulesPage.php:1745 src/Admin/ModulesPage.php:1746
 msgid "Open documentation"
 msgstr "Otwórz dokumentację"
 
-#: src/Admin/ModulesPage.php:1776
+#: src/Admin/ModulesPage.php:1779
 msgid "Save"
 msgstr "Zapisz"
 
-#: src/Admin/ModulesPage.php:1870
+#: src/Admin/ModulesPage.php:1873
 msgid "none"
 msgstr "brak"
 
-#: src/Admin/ModulesPage.php:1966
+#: src/Admin/ModulesPage.php:1969
 msgid "Add snippet"
 msgstr "Dodaj fragment kodu"
 
-#: src/Admin/ModulesPage.php:1995
+#: src/Admin/ModulesPage.php:1998
 msgid "Head"
 msgstr "Nagłówek"
 
-#: src/Admin/ModulesPage.php:1996
+#: src/Admin/ModulesPage.php:1999
 msgid "Footer"
 msgstr "Stopka"
 
-#: src/Admin/ModulesPage.php:2009
+#: src/Admin/ModulesPage.php:2012
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> lub kod JS w treści"
 
-#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
+#: src/Admin/ModulesPage.php:2018 src/Admin/ModulesPage.php:2103
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/Admin/ModulesPage.php:2045
+#: src/Admin/ModulesPage.php:2048
 msgid "Add trigger"
 msgstr "Dodaj wyzwalacz"
 
-#: src/Admin/ModulesPage.php:2068
+#: src/Admin/ModulesPage.php:2071
 msgid "Event name (e.g. cta_click)"
 msgstr "Nazwa zdarzenia (np. cta_click)"
 
-#: src/Admin/ModulesPage.php:2075
+#: src/Admin/ModulesPage.php:2078
 msgid "URL contains"
 msgstr "Adres URL zawiera"
 
-#: src/Admin/ModulesPage.php:2076
+#: src/Admin/ModulesPage.php:2079
 msgid "Click on selector"
 msgstr "Kliknięcie w selektor"
 
-#: src/Admin/ModulesPage.php:2089
+#: src/Admin/ModulesPage.php:2092
 msgid "URL fragment (for URL contains)"
 msgstr "Fragment adresu URL (dla „Adres URL zawiera”)"
 
-#: src/Admin/ModulesPage.php:2094
+#: src/Admin/ModulesPage.php:2097
 msgid "CSS selector (for click)"
 msgstr "Selektor CSS (dla kliknięcia)"
 
-#: src/Admin/ModulesPage.php:2204
+#: src/Admin/ModulesPage.php:2207
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Nie masz uprawnień do tej strony."
 
-#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
+#: src/Admin/ModulesPage.php:2214 src/Admin/ModulesPage.php:2230
 msgid "Invalid request."
 msgstr "Nieprawidłowe żądanie."
 
-#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+#: src/Admin/ModulesPage.php:2419 src/Admin/ModulesPage.php:2467
 msgid "Legal & Compliance"
 msgstr "Prawo i zgodność"
 
-#: src/Admin/ModulesPage.php:2418
+#: src/Admin/ModulesPage.php:2421
 msgid "Tax & Pricing"
 msgstr "Podatki i ceny"
 
-#: src/Admin/ModulesPage.php:2420
+#: src/Admin/ModulesPage.php:2423
 msgid "Checkout & Orders"
 msgstr "Kasa i zamówienia"
 
-#: src/Admin/ModulesPage.php:2422
+#: src/Admin/ModulesPage.php:2425
 msgid "Content & Trust"
 msgstr "Treść i zaufanie"
 
-#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+#: src/Admin/ModulesPage.php:2427 src/Admin/ModulesPage.php:2477
 msgid "Advanced & Tools"
 msgstr "Zaawansowane i narzędzia"
 
-#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2429 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Inne"
 
-#: src/Admin/ModulesPage.php:2439
+#: src/Admin/ModulesPage.php:2442
 msgid "Prices and Display"
 msgstr "Ceny i wyświetlanie"
 
-#: src/Admin/ModulesPage.php:2441
+#: src/Admin/ModulesPage.php:2444
 msgid "Prices and Omnibus"
 msgstr "Ceny i Omnibus"
 
-#: src/Admin/ModulesPage.php:2443
+#: src/Admin/ModulesPage.php:2446
 msgid "Checkout and Orders"
 msgstr "Zamówienia i kasa"
 
-#: src/Admin/ModulesPage.php:2449
+#: src/Admin/ModulesPage.php:2452
 msgid "Stock & Cart"
 msgstr "Magazyn i koszyk"
 
-#: src/Admin/ModulesPage.php:2451
+#: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
 msgstr "Merchandising"
 
-#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+#: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "Witryna sklepu"
 
-#: src/Admin/ModulesPage.php:2455
+#: src/Admin/ModulesPage.php:2458
 msgid "Product Information"
 msgstr "Informacje o produkcie"
 
-#: src/Admin/ModulesPage.php:2457
+#: src/Admin/ModulesPage.php:2460
 msgid "Customer Account"
 msgstr "Konto klienta"
 
-#: src/Admin/ModulesPage.php:2459
+#: src/Admin/ModulesPage.php:2462
 msgid "Sales and B2B"
 msgstr "Sprzedaż i B2B"
 
-#: src/Admin/ModulesPage.php:2462
+#: src/Admin/ModulesPage.php:2465
 msgid "Consumer Rights"
 msgstr "Prawa konsumenta"
 
-#: src/Admin/ModulesPage.php:2466
+#: src/Admin/ModulesPage.php:2469
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: src/Admin/ModulesPage.php:2470
+#: src/Admin/ModulesPage.php:2473
 msgid "SEO & Optimization"
 msgstr "SEO i optymalizacja"
 
-#: src/Admin/ModulesPage.php:2472
+#: src/Admin/ModulesPage.php:2475
 msgid "Integrations"
 msgstr "Integracje"
 
-#: src/Admin/ModulesPage.php:2547
+#: src/Admin/ModulesPage.php:2550
 msgid "Could not save module state. Please try again."
 msgstr "Nie udało się zapisać stanu modułu. Spróbuj ponownie."
 
-#: src/Admin/ModulesPage.php:2564
+#: src/Admin/ModulesPage.php:2567
 msgid "Compatible Omnibus Extension A"
 msgstr "Kompatybilne rozszerzenie Omnibus A"
 
-#: src/Admin/ModulesPage.php:2565
+#: src/Admin/ModulesPage.php:2568
 msgid "Compatible Omnibus Extension B"
 msgstr "Kompatybilne rozszerzenie Omnibus B"
 
-#: src/Admin/ModulesPage.php:2576
+#: src/Admin/ModulesPage.php:2579
 msgid "detected, data synchronized"
 msgstr "wykryta, dane zsynchronizowane"
 
-#: src/Admin/ModulesPage.php:2577
+#: src/Admin/ModulesPage.php:2580
 msgid "not installed"
 msgstr "niezainstalowana"
 
-#: src/Admin/ModulesPage.php:2592
+#: src/Admin/ModulesPage.php:2595
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
@@ -7202,7 +7203,7 @@ msgstr ""
 "Nie wykryto zewnętrznej wtyczki Omnibus. Polski korzysta z wbudowanego "
 "systemu śledzenia cen."
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2597
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
@@ -7210,11 +7211,11 @@ msgstr ""
 "Wykryto zewnętrzną wtyczkę. Polski korzysta z jej danych zamiast wbudowanego "
 "systemu."
 
-#: src/Admin/ModulesPage.php:2614
+#: src/Admin/ModulesPage.php:2617
 msgid "OSS observer service is unavailable."
 msgstr "Usługa obserwatora OSS jest niedostępna."
 
-#: src/Admin/ModulesPage.php:2621
+#: src/Admin/ModulesPage.php:2624
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -7222,56 +7223,56 @@ msgstr ""
 "Wtyczka One Stop Shop nie jest zainstalowana. Zainstaluj ją, aby "
 "automatycznie obserwować próg wewnątrzunijny B2C wynoszący 10 000 €."
 
-#: src/Admin/ModulesPage.php:2627
+#: src/Admin/ModulesPage.php:2630
 msgid "Install One Stop Shop"
 msgstr "Zainstaluj One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2632
+#: src/Admin/ModulesPage.php:2635
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 "Aby zainstalować ją z tego miejsca, potrzebujesz uprawnienia install_plugins."
 
-#: src/Admin/ModulesPage.php:2641
+#: src/Admin/ModulesPage.php:2644
 msgid "One Stop Shop plugin detected."
 msgstr "Wykryto wtyczkę One Stop Shop."
 
-#: src/Admin/ModulesPage.php:2645
+#: src/Admin/ModulesPage.php:2648
 msgid "OSS procedure"
 msgstr "Procedura OSS"
 
-#: src/Admin/ModulesPage.php:2647
+#: src/Admin/ModulesPage.php:2650
 msgid "enabled"
 msgstr "włączone"
 
-#: src/Admin/ModulesPage.php:2648
+#: src/Admin/ModulesPage.php:2651
 msgid "disabled"
 msgstr "wyłączone"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2655
 msgid "Auto observer"
 msgstr "Automatyczny obserwator"
 
-#: src/Admin/ModulesPage.php:2654
+#: src/Admin/ModulesPage.php:2657
 msgid "watching threshold"
 msgstr "obserwowanie progu"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2658
 msgid "off"
 msgstr "wyłączone"
 
-#: src/Admin/ModulesPage.php:2660
+#: src/Admin/ModulesPage.php:2663
 msgid "Open OSS settings"
 msgstr "Otwórz ustawienia OSS"
 
-#: src/Admin/ModulesPage.php:2718
+#: src/Admin/ModulesPage.php:2721
 msgid "detected, integration active"
 msgstr "wykryto, integracja aktywna"
 
-#: src/Admin/ModulesPage.php:2721
+#: src/Admin/ModulesPage.php:2724
 msgid "install"
 msgstr "zainstaluj"
 
-#: src/Admin/ModulesPage.php:2733
+#: src/Admin/ModulesPage.php:2736
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
@@ -7279,7 +7280,7 @@ msgstr ""
 "Nie wykryto obsługiwanych rozszerzeń kasy i ciasteczek. Polski kontynuuje "
 "samodzielną pracę."
 
-#: src/Admin/ModulesPage.php:2735
+#: src/Admin/ModulesPage.php:2738
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."
