@@ -15,6 +15,15 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
+msgid "Email"
+msgstr "Электронная пошта"
+
+msgid "E-mail"
+msgstr "Электронная пошта"
+
+msgid "e-mail:"
+msgstr "электронная пошта:"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -656,11 +665,6 @@ msgstr "Увайдзіце, каб даслаць запыт прапановы 
 #: config/defaults.php:220 templates/forms/dsa-report.php:48
 msgid "Imię i nazwisko"
 msgstr "Імя і прозвішча"
-
-#: config/defaults.php:221 src/Admin/ModulesPage.php:1222
-#: src/Service/CustomCheckoutFieldsService.php:499
-msgid "Email"
-msgstr "Email"
 
 #: config/defaults.php:222
 msgid "Telefon"
@@ -7122,10 +7126,6 @@ msgstr "Нумар або ідэнтыфікатар замовы"
 msgid "Phone"
 msgstr "Тэлефон"
 
-#: src/Admin/WithdrawalsAdminPage.php:419
-msgid "E-mail"
-msgstr "E-mail"
-
 #: src/Admin/WithdrawalsAdminPage.php:420
 msgid "Letter / post"
 msgstr "Ліст / пошта"
@@ -9074,11 +9074,6 @@ msgstr ""
 #: src/Service/AnnexGeneratorService.php:59
 msgid "tel."
 msgstr "тэл."
-
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
-msgid "e-mail:"
-msgstr "e-mail:"
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114

@@ -14,6 +14,15 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
+msgid "FAQ"
+msgstr "常见问题"
+
+msgid "Head"
+msgstr "头部"
+
+msgid "Footer"
+msgstr "页脚"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -5949,11 +5958,6 @@ msgstr ""
 msgid "Export orders"
 msgstr "导出订单"
 
-#: src/Admin/ModulesPage.php:1421 src/Service/FaqService.php:40
-#: src/Service/FaqService.php:41 src/Service/FaqService.php:46
-msgid "FAQ"
-msgstr "FAQ"
-
 #: src/Admin/ModulesPage.php:1422
 msgid ""
 "FAQ custom post type with categories and accordion shortcode [polski_faq]. "
@@ -6017,14 +6021,6 @@ msgstr "无"
 #: src/Admin/ModulesPage.php:1843
 msgid "Add snippet"
 msgstr "添加代码片段"
-
-#: src/Admin/ModulesPage.php:1872
-msgid "Head"
-msgstr "Head"
-
-#: src/Admin/ModulesPage.php:1873
-msgid "Footer"
-msgstr "Footer"
 
 #: src/Admin/ModulesPage.php:1886
 msgid "<script>...</script> or inline JS"

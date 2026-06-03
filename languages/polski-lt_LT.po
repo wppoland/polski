@@ -15,6 +15,12 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
+msgid "Potwierdź"
+msgstr "Patvirtinti"
+
+msgid "Odrzuć"
+msgstr "Atmesti"
+
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
 msgid "Polski for WooCommerce"
@@ -6942,10 +6948,6 @@ msgstr "Šiam užsakymui nėra pareiškimo apie sutarties atsisakymą."
 msgid "Zarejestruj ręcznie"
 msgstr "Registruoti rankiniu būdu"
 
-#: src/Admin/WithdrawalOrderMetaBox.php:107
-msgid "Potwierdź"
-msgstr "Potwierdź"
-
 #: src/Admin/WithdrawalOrderMetaBox.php:114
 msgid "Oznacz jako rozliczone"
 msgstr "Pažymėti kaip apdorotą"
@@ -6953,10 +6955,6 @@ msgstr "Pažymėti kaip apdorotą"
 #: src/Admin/WithdrawalOrderMetaBox.php:121
 msgid "Odrzucić to oświadczenie?"
 msgstr "Atmesti šį pareiškimą?"
-
-#: src/Admin/WithdrawalOrderMetaBox.php:122
-msgid "Odrzuć"
-msgstr "Odrzuć"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:128
 msgid "Otwórz listę"
