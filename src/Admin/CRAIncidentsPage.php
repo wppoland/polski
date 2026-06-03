@@ -45,8 +45,9 @@ final class CRAIncidentsPage implements HasHooks
 
     public function registerPage(): void
     {
+        // Hidden (empty parent): routable by URL, surfaced via the Reports & Tools hub.
         add_submenu_page(
-            'polski',
+            '',
             __('CRA incidents', 'polski'),
             __('CRA incidents', 'polski'),
             'manage_woocommerce',
