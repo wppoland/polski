@@ -54,11 +54,107 @@ final class ModulesPage implements HasHooks
      */
     private function getModuleHelpTooltip(array $module): string
     {
+        // Explicit per-module help text ("what it is + what happens when enabled")
+        // takes priority, then an inline tooltip override, then the description.
+        $id = isset($module['id']) && is_string($module['id']) ? $module['id'] : '';
+        if ($id !== '') {
+            static $tips = null;
+            if ($tips === null) {
+                $tips = $this->getModuleTooltips();
+            }
+            if (isset($tips[$id]) && $tips[$id] !== '') {
+                return $tips[$id];
+            }
+        }
+
         if (isset($module['tooltip']) && is_string($module['tooltip']) && $module['tooltip'] !== '') {
             return $module['tooltip'];
         }
 
         return (string) ($module['description'] ?? '');
+    }
+
+    /**
+     * Long-form help shown in the module help tooltip: what the module is
+     * and what happens once it is enabled. Keyed by module id.
+     *
+     * @return array<string, string>
+     */
+    private function getModuleTooltips(): array
+    {
+        return [
+            'dynamic_pricing' => __('Automatic cart discounts based on spending or quantity. When enabled, shoppers get a percentage off once the cart subtotal hits a threshold, and bulk discounts when a product\'s quantity hits a threshold; applied automatically in the cart. Off by default.', 'polski'),
+            'unit_price' => __('Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a per-unit price appears next to product prices on shop and product pages, helping customers compare value, in line with Polish consumer law.', 'polski'),
+            'omnibus' => __('Tracks price history and shows the lowest price from the last 30 days on discounted products. When enabled, sale products display their lowest 30-day price near the price, helping you meet the EU Omnibus Directive (2019/2161).', 'polski'),
+            'tax_display' => __('Controls how VAT is shown on prices. When enabled, you can set gross or net price display, show VAT rate info, and support the small business VAT exemption (Art. 113), affecting prices shown to shoppers across the store.', 'polski'),
+            'oss_observer' => __('Watches your cross-border EU B2C sales against the OSS threshold. When enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C sales and flags when you approach the 10,000 EUR threshold for the year.', 'polski'),
+            'delivery_time' => __('Shows an estimated delivery time on product pages. When enabled, each product page displays its delivery estimate; you can set it per product or variation, with a default used when none is specified. Off until enabled.', 'polski'),
+            'shipping_notice' => __('Adds a link to your shipping costs page near prices. When enabled, a shipping costs info link appears next to the product price, so customers can check delivery charges before buying. Off until enabled.', 'polski'),
+            'checkout_button' => __('Changes the order button wording at checkout. When enabled, the place-order button reads "Order with obligation to pay", as required by Polish law, so it\'s clear the order creates a payment obligation.', 'polski'),
+            'legal_checkboxes' => __('Adds built-in consent checkboxes to checkout. When enabled, you can show up to 7 checkboxes (terms, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing) for customers to accept during purchase.', 'polski'),
+            'nip_lookup' => __('Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a NIP that is checked for a valid checksum, and company data is fetched automatically from the GUS REGON database to fill in business details.', 'polski'),
+            'consent_logging' => __('Keeps a record of customer consents. When enabled, every consent a customer gives is logged with IP address, browser (user agent), and timestamp, giving you an audit trail to support GDPR record-keeping. Off until enabled.', 'polski'),
+            'consent_manager' => __('A native cookie-consent banner. When enabled, visitors see a consent banner with categories, scripts and iframes are blocked until the matching category is granted, Google Consent Mode v2 signals are sent, and each decision is recorded. Provides tools, not legal advice.', 'polski'),
+            'returns_rma' => __('Lets customers request returns or complaints (RMA). When enabled, shoppers can open a complaint or return request from My Account on eligible orders; they get a confirmation email and you manage requests in an admin queue with statuses. Provides tools, not legal advice.', 'polski'),
+            'legal_pages' => __('Generates standard legal pages for you. When enabled, it can create Terms and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, giving you a starting point for your store\'s required documents. Off until enabled.', 'polski'),
+            'withdrawal' => __('Handles 14-day right-of-withdrawal requests. When enabled, customers get a withdrawal form and a My Account action with a confirmation step and email; you can exclude specific products that are not eligible for withdrawal. Off until enabled.', 'polski'),
+            'dispute_resolution' => __('Shows EU Online Dispute Resolution (ODR) info. When enabled, your store displays information about the European Commission\'s ODR platform, typically in the footer or legal area, helping with consumer dispute transparency. Off until enabled.', 'polski'),
+            'email_attachments' => __('Attaches your legal documents to order confirmation emails. When enabled, the content of pages like Terms and Conditions, Privacy Policy, and Right of Withdrawal is included with the confirmation email each customer receives after placing an order.', 'polski'),
+            'manufacturer' => __('Adds manufacturer and GPSR product safety details to your products. When enabled, you can enter manufacturer info, an EU responsible person, safety documents, and instructions per product, which then appear for shoppers on the product page.', 'polski'),
+            'food_module' => __('Adds food and supplement product details to your products. When enabled, you can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol content, country of origin, and distributor per product, which then show to shoppers on the product page.', 'polski'),
+            'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
+            'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email and cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
+            'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, your store\'s search box shows live product matches (including by SKU and category) without reloading the page, kept lightweight for fast page performance. Off until enabled.', 'polski'),
+            'brands' => __('Adds product brands as a separate feature from the manufacturer. When enabled, you can assign brands to products using a dedicated brand taxonomy, and brand info appears for shoppers on product pages and listings. Off until enabled.', 'polski'),
+            'ajax_filters' => __('Lets shoppers filter product listings without reloading the page. When enabled, customers can narrow results by category, brand, price, stock status, sale, and attributes, with the listing updating instantly. Off until enabled.', 'polski'),
+            'wishlist' => __('Lets shoppers save favorite products for later. When enabled, both guests and logged-in customers can add or remove items instantly, and logged-in customers see their saved list in My Account. Off until enabled.', 'polski'),
+            'compare' => __('Lets shoppers compare products side by side. When enabled, guests and logged-in customers can add products to a comparison table that highlights differences, and customers can view it in My Account. Off until enabled.', 'polski'),
+            'quick_view' => __('Lets shoppers preview a product without leaving the listing. When enabled, a lightweight pop-up opens from product listings showing the price, gallery, variations, and basic purchase info. Off until enabled.', 'polski'),
+            'badge_management' => __('Adds merchandising badges to your products. When enabled, badges appear on product pages and listings for shoppers, set either automatically by conditions you choose or manually per product. Off until enabled.', 'polski'),
+            'tab_manager' => __('Lets you add extra tabs to product pages. When enabled, shoppers see additional tabs with content you set per product, plus global tabs for shipping, returns, and business information. Off until enabled.', 'polski'),
+            'featured_video' => __('Adds a video to your product pages. When enabled, shoppers see a product video on the product page, embedded from YouTube, Vimeo, or uploaded as a local MP4 file. Off until enabled.', 'polski'),
+            'gallery_zoom' => __('Adds lightweight image zoom and a simple gallery lightbox, with no heavy external slider libraries. When enabled, product image zoom and a click-to-enlarge lightbox become available to shoppers on product pages. Off until enabled.', 'polski'),
+            'product_slider_carousel' => __('Adds a lightweight product slider using scroll-snap to show related, sale or featured products. When enabled, you can place a swipeable product carousel that displays to shoppers on the storefront. Off until enabled.', 'polski'),
+            'waitlist' => __('Captures interest in out-of-stock products. When enabled, shoppers can enter their email on sold-out products to join a waitlist and get an automatic notification when the item is back in stock. Off until enabled.', 'polski'),
+            'infinite_scroll' => __('Loads more products as shoppers browse listings. When enabled, WooCommerce archive pages load further products automatically or via a load-more button instead of paging. Off until enabled.', 'polski'),
+            'popup' => __('Shows a promotional or lead-capture popup to visitors. When enabled, a lightweight popup appears based on the delay, frequency, and page locations you set. Off until enabled.', 'polski'),
+            'gpsr' => __('Provides tools for displaying EU product safety (GPSR) details. When enabled, you can add manufacturer and importer data, responsible person, product identifiers, safety warnings, and instructions to products, with CSV bulk import or export. Off until enabled.', 'polski'),
+            'verified_review' => __('Shows a trust badge on reviews left by real buyers. When enabled, reviews from customers who actually bought the product display a verified purchase badge on the product page, so shoppers can tell genuine buyer feedback from the rest.', 'polski'),
+            'green_claims' => __('Adds product fields for backing up environmental claims. When enabled, each product gains fields for the basis of an ecological claim, a certificate link, and an expiration date, helping you prepare for the anti-greenwashing directive (September 2026).', 'polski'),
+            'dsa_toolkit' => __('Provides Digital Services Act tools for your store. When enabled, you get contact point settings, a public report form for illegal content or products via the [polski_dsa_report] shortcode, and an admin screen where staff review submitted reports.', 'polski'),
+            'ksef_ready' => __('Helps you spot orders that may need KSeF invoicing. When enabled, orders are checked by NIP and flagged when KSeF invoicing may apply, with integration hooks and an admin status indicator shown to your team.', 'polski'),
+            'security_incidents' => __('A log for tracking security incidents, built with CRA in mind. When enabled, staff get an admin log to record vulnerabilities, breaches, and third-party failures, track their status and follow-up, and export everything to CSV.', 'polski'),
+            'store_health' => __('Quietly watches your store for problems. When enabled, it passively monitors front-end fatal errors, checkout failure rate, and sales anomalies, checking every 5 minutes and sending email or webhook alerts. It never places test orders.', 'polski'),
+            'ai_bridge' => __('Lets AI assistants safely read selected store data. When enabled, read-only data like price history, product safety info, store health, page checks, and product facts is exposed to AI assistants and the Site Editor via the WordPress Abilities API. Off by default.', 'polski'),
+            'schema_org' => __('Adds structured data so search engines understand your products. When enabled, advanced JSON-LD tags are injected automatically into your pages to support product indexing by Google, while preserving the plugin\'s own data.', 'polski'),
+            'tracking_tags' => __('A consent-gated tag manager for marketing tags. When enabled, it adds a unified place to manage tracking tags that fire only after visitor consent, so tools like GA4 and GTM load on your store in line with your consent settings.', 'polski'),
+            'safe_fonts' => __('Reduces and controls external Google Fonts requests on your store. When enabled, font-display and preconnect hints are added to your pages, and the Google Fonts stylesheet can be held back until a visitor grants the matching consent, helping with privacy and load speed.', 'polski'),
+            'custom_integrations' => __('Lets you add your own scripts or snippets to the page head or footer. When enabled, each snippet you add is tied to a consent category and runs only after the visitor grants that consent through the Consent Manager, so your custom code respects shoppers\' choices.', 'polski'),
+            'custom_triggers' => __('Lets you push your own dataLayer events based on simple page conditions. When enabled, events fire when a visitor lands on a chosen URL or clicks a chosen element, feeding into the GA4 DataLayer module for your analytics and tag setup.', 'polski'),
+            'checkout_toolkit_integration' => __('Keeps your settings and messages compatible with popular checkout field add-ons and product data. When enabled, the plugin detects supported checkout extensions, cookies, and product data, then adjusts its own behaviour so labels and consent prompts display correctly at checkout.', 'polski'),
+            'site_audit' => __('Automatically checks your store for the most common store-setup issues. When enabled, it scans for things like missing legal pages, pre-ticked checkboxes, company data, GDPR, and Omnibus items, and shows you a report in the admin so you can fix gaps yourself.', 'polski'),
+            'plugin_data' => __('Controls what happens to Polski\'s data if you remove the plugin. When enabled, you decide whether Polski deletes its database tables, settings, and stored logs on uninstall, so you can keep your data or wipe it cleanly when removing the plugin from WordPress.', 'polski'),
+            'cra_readiness' => __('Provides tools to help with Cyber Resilience Act (CRA) readiness. When enabled, it can publish a security.txt file (RFC 9116) with your security contact and vulnerability reporting policy, making it easier for researchers to report security issues responsibly.', 'polski'),
+            'dpa_tracker' => __('Helps you keep a GDPR data-processing registry for your store. When enabled, it detects third-party services that process your customers\' personal data and lets you track the status of each data processing agreement (DPA) from the admin.', 'polski'),
+            'minimum_order' => __('Sets a minimum order value or item count before customers can check out. When enabled, shoppers who haven\'t reached the minimum see a notice on the cart and checkout pages, and checkout stays blocked until they add enough.', 'polski'),
+            'review_requests' => __('Sends automatic emails asking customers to review what they bought. When enabled, after an order is completed buyers get an email with product images and review links, plus an opt-out option.', 'polski'),
+            'from_price' => __('Shows a single from-price instead of a price range on variable products. When enabled, shop archives and product pages display the lowest price as a clean from-amount rather than a low-to-high range.', 'polski'),
+            'auto_restore_stock' => __('Puts stock back automatically when orders don\'t go through. When enabled, products from orders that are cancelled, refunded or failed are returned to inventory without any manual work.', 'polski'),
+            'ajax_add_to_cart' => __('Lets customers add items to the cart without reloading the page, including variable products. When enabled, products are added in the background on single product pages and a toast notification confirms success.', 'polski'),
+            'datalayer' => __('Tracks ecommerce activity for Google Analytics 4 via dataLayer. When enabled, events like view_item, add_to_cart, begin_checkout and purchase are sent to your GA4 setup, working with a GTM container or gtag.js.', 'polski'),
+            'stock_export' => __('Exports your WooCommerce product stock to a CSV file. When enabled, a Stock Export tool appears under Products where you can choose fields, filter by stock threshold and include variations.', 'polski'),
+            'social_login' => __('Lets customers register and sign in using Google or Facebook. When enabled, branded login buttons appear on My Account, checkout and the WordPress login form, and customer accounts are created automatically.', 'polski'),
+            'product_authors' => __('Adds a custom taxonomy for product authors or creators. When enabled, you can assign authors to products and group them, useful for stores selling books or creator-made items.', 'polski'),
+            'expert_reviews' => __('Lets you publish editorial, in-house reviews of products. When enabled, you get a new section to write expert reviews with ratings and verdicts, linked to products and shown on product pages with Schema.org markup that helps with SEO.', 'polski'),
+            'social_proof' => __('Displays recent-purchase popups to build trust. When enabled, small floating notifications about recent orders appear to your shoppers in a position and timing you choose, loaded smoothly via AJAX and built to be privacy-aware.', 'polski'),
+            'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and anyone can answer, you get email alerts for new questions, answers can be voted on, and Schema.org QAPage markup helps with SEO.', 'polski'),
+            'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these configurable trust signals appear to shoppers on your product, cart, and checkout pages.', 'polski'),
+            'live_cart' => __('Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper whenever they add a product, showing cart items, the subtotal, a free-shipping progress bar, and a quick link to checkout.', 'polski'),
+            'price_history_chart' => __('Shows how a product\'s price has changed over time. When enabled, shoppers see a small SVG price-trend chart on product pages covering the last 30, 90, or 180 days, using your Omnibus price data.', 'polski'),
+            'order_export' => __('Exports your WooCommerce orders to a spreadsheet file. When enabled, you get an admin tool to download orders as CSV, choosing which fields to include and filtering by date range and order status.', 'polski'),
+            'faq' => __('Lets you create a frequently-asked-questions section. When enabled, you can add FAQs with categories and place them on any page as an accordion shortcode, with Schema.org FAQPage data that helps with SEO rich snippets.', 'polski'),
+            'custom_checkout_fields' => __('Lets you customise your checkout form. When enabled, you can add, edit, reorder, and choose types for checkout fields, and the collected values appear in the admin order, customer emails, and My Account.', 'polski'),
+        ];
     }
 
     /**
@@ -1579,11 +1675,22 @@ final class ModulesPage implements HasHooks
         if (! empty($module['links'])) {
             echo '<span class="polski-modules-links">';
             foreach ($module['links'] as $link) {
-                printf(
-                    ' &middot; <a href="%s" target="_blank" rel="noopener">%s &rarr;</a>',
-                    esc_url($link['url']),
-                    esc_html($link['label']),
-                );
+                if ($enabled) {
+                    printf(
+                        ' &middot; <a href="%s" target="_blank" rel="noopener">%s &rarr;</a>',
+                        esc_url($link['url']),
+                        esc_html($link['label']),
+                    );
+                } else {
+                    // Module is off: its pages (e.g. a custom post type screen) are not
+                    // registered yet, so show the action muted with a hint instead of a
+                    // link that would 404.
+                    printf(
+                        ' &middot; <span class="polski-modules-link-disabled" title="%s">%s</span>',
+                        esc_attr__('Enable this module to use this.', 'polski'),
+                        esc_html($link['label']),
+                    );
+                }
             }
             echo '</span>';
         }
