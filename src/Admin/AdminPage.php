@@ -203,8 +203,9 @@ final class AdminPage implements Bootable, HasHooks
             }
         }
 
-        $redirectPage = $groupSlug ? self::PAGE_SLUG . '-group-' . $groupSlug : self::PAGE_SLUG;
-        $redirectUrl = admin_url('admin.php?page=' . $redirectPage . '&saved=1&module=' . $moduleId);
+        $redirectUrl = $groupSlug !== ''
+            ? admin_url('admin.php?page=polski-settings&bucket=' . $groupSlug . '&saved=1&module=' . $moduleId)
+            : admin_url('admin.php?page=' . self::PAGE_SLUG . '&saved=1&module=' . $moduleId);
         if ($moduleId !== '') {
             $redirectUrl .= '#polski-module-' . $moduleId;
         }
@@ -252,32 +253,29 @@ final class AdminPage implements Bootable, HasHooks
             [$this, 'renderReportsHubPage'],
         );
 
-        // Dynamic settings subpages: one per MoSCoW bucket. Every module that has
-        // settings shows up on its bucket's page, regardless of enabled state, so
-        // pencil links from the modules table always resolve.
+        // Single "Settings" page with one tab per MoSCoW bucket, instead of a
+        // flat submenu item per bucket. Pencil links from the modules table point
+        // to ?page=polski-settings&bucket=<key> so they always resolve.
         $modulesPage = \Polski\Plugin::instance()->container()->get(\Polski\Admin\ModulesPage::class);
 
-        foreach ($modulesPage->getBucketedModules() as $bucketKey => $bucket) {
-            $modulesWithSettings = array_values(array_filter(
-                $bucket['modules'],
-                static fn (array $module): bool => ! empty($module['settings']),
-            ));
-
-            if ($modulesWithSettings === []) {
-                continue;
+        $hasAnySettings = false;
+        foreach ($modulesPage->getBucketedModules() as $bucket) {
+            foreach ($bucket['modules'] as $module) {
+                if (! empty($module['settings'])) {
+                    $hasAnySettings = true;
+                    break 2;
+                }
             }
+        }
 
-            $label = $bucket['label'];
-
+        if ($hasAnySettings) {
             add_submenu_page(
                 self::PAGE_SLUG,
-                $label,
-                $label,
+                __('Settings', 'polski'),
+                __('Settings', 'polski'),
                 self::CAPABILITY,
-                'polski-group-' . $bucketKey,
-                function () use ($modulesPage, $label, $modulesWithSettings, $bucketKey): void {
-                    $this->renderGroupSettingsPage($modulesPage, $label, $modulesWithSettings, $bucketKey);
-                },
+                'polski-settings',
+                [$this, 'renderSettingsHubPage'],
             );
         }
     }
@@ -336,10 +334,37 @@ final class AdminPage implements Bootable, HasHooks
      * @param array<int, mixed[]>  $modules
      * @param string               $groupSlug
      */
-    private function renderGroupSettingsPage(ModulesPage $modulesPage, string $groupName, array $modules, string $groupSlug): void
+    /**
+     * Unified Settings page: every bucket that has modules with settings becomes
+     * a tab, so the menu stays short instead of one flat item per bucket.
+     */
+    public function renderSettingsHubPage(): void
     {
+        $modulesPage = \Polski\Plugin::instance()->container()->get(\Polski\Admin\ModulesPage::class);
+
+        $tabs = [];
+        foreach ($modulesPage->getBucketedModules() as $bucketKey => $bucket) {
+            $withSettings = array_values(array_filter(
+                $bucket['modules'],
+                static fn (array $module): bool => ! empty($module['settings']),
+            ));
+            if ($withSettings !== []) {
+                $tabs[$bucketKey] = ['label' => $bucket['label'], 'modules' => $withSettings];
+            }
+        }
+
+        if ($tabs === []) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab routing.
+        $active = isset($_GET['bucket']) ? sanitize_key((string) wp_unslash($_GET['bucket'])) : '';
+        if (! isset($tabs[$active])) {
+            $active = (string) array_key_first($tabs);
+        }
+
         echo '<div class="wrap">';
-        echo '<h1>Polski &rsaquo; ' . esc_html($groupName) . '</h1>';
+        echo '<h1>Polski &rsaquo; ' . esc_html__('Settings', 'polski') . '</h1>';
 
         // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only success flag.
         if (isset($_GET['saved'])) {
@@ -347,8 +372,34 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings have been saved.', 'polski') . '</p></div>';
         }
 
+        echo '<nav class="nav-tab-wrapper" style="margin-top:12px;">';
+        foreach ($tabs as $bucketKey => $tab) {
+            printf(
+                '<a href="%s" class="nav-tab%s">%s</a>',
+                esc_url(add_query_arg(
+                    ['page' => 'polski-settings', 'bucket' => $bucketKey],
+                    admin_url('admin.php'),
+                )),
+                $bucketKey === $active ? ' nav-tab-active' : '',
+                esc_html($tab['label']),
+            );
+        }
+        echo '</nav>';
+
         echo '<p style="margin:12px 0;"><a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '">&larr; ' . esc_html__('Back to modules', 'polski') . '</a></p>';
 
+        $this->renderModuleSettingsFormsList($modulesPage, $tabs[$active]['modules'], $active);
+
+        echo '</div>';
+    }
+
+    /**
+     * Render the per-module settings forms for one bucket (no page wrapper).
+     *
+     * @param array<int, array<string, mixed>> $modules
+     */
+    private function renderModuleSettingsFormsList(ModulesPage $modulesPage, array $modules, string $groupSlug): void
+    {
         foreach ($modules as $module) {
             $moduleId = (string) $module['id'];
             $isEnabled = ModulesPage::isModuleEnabled($moduleId);
@@ -379,8 +430,6 @@ final class AdminPage implements Bootable, HasHooks
             echo '</form>';
             echo '</div>';
         }
-
-        echo '</div>';
     }
 
     /**
