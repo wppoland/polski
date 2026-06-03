@@ -30,8 +30,10 @@ final class WithdrawalSettingsPage implements HasHooks
 
     public function registerMenu(): void
     {
+        // Hidden (parent = null): routable by URL, reached from the Withdrawals
+        // page header and the Reports & Tools hub, not shown as a flat menu item.
         add_submenu_page(
-            'polski',
+            '',
             __('Withdrawal settings', 'polski'),
             __('Withdrawal settings', 'polski'),
             self::CAPABILITY,

@@ -549,6 +549,9 @@ final class AdminPage implements Bootable, HasHooks
                 $service = \Polski\Plugin::instance()->container()->get(\Polski\Service\StoreHealthMonitorService::class);
                 $service->renderPage();
                 break;
+            case 'consent':
+                \Polski\Plugin::instance()->container()->get(\Polski\Admin\ConsentRecordsPage::class)->render();
+                break;
             case 'feedback':
                 $handler = \Polski\Plugin::instance()->container()->get(\Polski\Admin\DeactivationHandler::class);
                 $handler->renderFeedbackLog();
@@ -676,6 +679,21 @@ final class AdminPage implements Bootable, HasHooks
                 'module' => 'dpa_tracker',
             ],
             [
+                'id' => 'consent',
+                'name' => __('Rejestr zgód', 'polski'),
+                'desc' => __('Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV.', 'polski'),
+                'icon' => 'dashicons-list-view',
+                'module' => 'consent_manager',
+            ],
+            [
+                'id' => 'withdrawals',
+                'name' => __('Odstąpienia', 'polski'),
+                'desc' => __('Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i ustawienia.', 'polski'),
+                'icon' => 'dashicons-undo',
+                'module' => null,
+                'url' => admin_url('admin.php?page=polski-withdrawals'),
+            ],
+            [
                 'id' => 'feedback',
                 'name' => __('Feedback Logs', 'polski'),
                 'desc' => __('Deactivation feedback and local admin feedback from the plugin sidebar.', 'polski'),
@@ -691,16 +709,18 @@ final class AdminPage implements Bootable, HasHooks
         foreach ($reports as $report) {
             $isEnabled = $report['module'] ? ModulesPage::isModuleEnabled($report['module']) : true;
             $opacity = $isEnabled ? '1' : '0.5';
-            $url = $isEnabled
-                ? add_query_arg(
-                    [
-                        'page' => self::PAGE_SLUG,
-                        'tab' => 'reports',
-                        'view' => $report['id'],
-                    ],
-                    admin_url('admin.php'),
-                )
-                : '#';
+            $url = ! $isEnabled
+                ? '#'
+                : (isset($report['url'])
+                    ? (string) $report['url']
+                    : add_query_arg(
+                        [
+                            'page' => self::PAGE_SLUG,
+                            'tab' => 'reports',
+                            'view' => $report['id'],
+                        ],
+                        admin_url('admin.php'),
+                    ));
 
             $moduleToggleUrl = '';
             if ($report['module'] !== null) {
