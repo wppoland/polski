@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T05:41:05+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,649 +14,35 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
-msgid "Rejestr zgód"
-msgstr "同意记录"
+msgid "Incydenty CRA"
+msgstr "CRA 事件"
 
-msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
-msgstr "已保存的访客同意横幅决定，支持 CSV 导出。"
-
-msgid "Odstąpienia"
-msgstr "撤回"
-
-msgid ""
-"Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
-"ustawienia."
-msgstr "撤回合同与退货申请：列表、手动登记和设置。"
-
-msgid ""
-"Automatic cart discounts based on spending or quantity. When enabled, "
-"shoppers get a percentage off once the cart subtotal hits a threshold, and "
-"bulk discounts when a product's quantity hits a threshold; applied "
-"automatically in the cart. Off by default."
-msgstr ""
-"基于消费金额或数量的自动购物车折扣。启用后，当购物车小计达到阈值时顾客可获得"
-"百分比折扣，当某商品数量达到阈值时可获得批量折扣；自动应用于购物车。默认关"
-"闭。"
-
-msgid ""
-"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
-"per-unit price appears next to product prices on shop and product pages, "
-"helping customers compare value, in line with Polish consumer law."
-msgstr ""
-"显示单位价格，例如每 1 千克或每 100 毫升。启用后，单位价格会显示在商店和产品"
-"页面的产品价格旁，帮助顾客比较价值，符合波兰消费者法律。"
-
-msgid ""
-"Tracks price history and shows the lowest price from the last 30 days on "
-"discounted products. When enabled, sale products display their lowest 30-day "
-"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
-msgstr ""
-"跟踪价格历史并在折扣产品上显示过去 30 天的最低价格。启用后，促销产品会在价格"
-"旁显示其 30 天最低价，帮助您符合欧盟综合指令 (2019/2161)。"
-
-msgid ""
-"Controls how VAT is shown on prices. When enabled, you can set gross or net "
-"price display, show VAT rate info, and support the small business VAT "
-"exemption (Art. 113), affecting prices shown to shoppers across the store."
-msgstr ""
-"控制价格中增值税的显示方式。启用后，您可以设置含税或不含税价格显示、显示增值"
-"税率信息，并支持小型企业增值税豁免（第 113 条），影响整个商店向顾客显示的价"
-"格。"
-
-msgid ""
-"Watches your cross-border EU B2C sales against the OSS threshold. When "
-"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
-"sales and flags when you approach the 10,000 EUR threshold for the year."
-msgstr ""
-"根据 OSS 阈值监控您的欧盟跨境 B2C 销售。启用后，将安装 One Stop Shop 插件，监"
-"控欧盟内部 B2C 销售，并在您当年接近 10,000 欧元阈值时发出提示。"
-
-msgid ""
-"Shows an estimated delivery time on product pages. When enabled, each "
-"product page displays its delivery estimate; you can set it per product or "
-"variation, with a default used when none is specified. Off until enabled."
-msgstr ""
-"在产品页面上显示预计交付时间。启用后，每个产品页面都会显示其交付预估；您可以"
-"为每个产品或变体单独设置，未指定时使用默认值。在启用前为关闭状态。"
-
-msgid ""
-"Adds a link to your shipping costs page near prices. When enabled, a "
-"shipping costs info link appears next to the product price, so customers can "
-"check delivery charges before buying. Off until enabled."
-msgstr ""
-"在价格旁添加指向您的运费页面的链接。启用后，运费信息链接会显示在产品价格旁，"
-"让顾客在购买前可以查看运费。在启用前为关闭状态。"
-
-msgid ""
-"Changes the order button wording at checkout. When enabled, the place-order "
-"button reads \"Order with obligation to pay\", as required by Polish law, so "
-"it's clear the order creates a payment obligation."
-msgstr ""
-"更改结账时下单按钮的文字。启用后，下单按钮会显示为“下单并承担付款义务”，符合"
-"波兰法律要求，以明确该订单产生付款义务。"
-
-msgid ""
-"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
-"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
-"content, delivery notifications, review reminder, marketing) for customers "
-"to accept during purchase."
-msgstr ""
-"在结账时添加内置的同意复选框。启用后，您可以显示最多 7 个复选框（条款、隐私政"
-"策、撤回权、数字内容、交付通知、评价提醒、营销）供顾客在购买时接受。"
-
-msgid ""
-"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
-"NIP that is checked for a valid checksum, and company data is fetched "
-"automatically from the GUS REGON database to fill in business details."
-msgstr ""
-"在结账时添加 NIP（税号）字段。启用后，顾客可以输入 NIP，系统会校验其校验和的"
-"有效性，并自动从 GUS REGON 数据库获取公司数据以填写商业信息。"
-
-msgid ""
-"Keeps a record of customer consents. When enabled, every consent a customer "
-"gives is logged with IP address, browser (user agent), and timestamp, giving "
-"you an audit trail to support GDPR record-keeping. Off until enabled."
-msgstr ""
-"保存顾客同意记录。启用后，顾客给出的每项同意都会连同 IP 地址、浏览器（user "
-"agent）和时间戳一起记录，为您提供审计记录以支持 GDPR 记录保存。在启用前为关闭"
-"状态。"
-
-msgid ""
-"A native cookie-consent banner. When enabled, visitors see a consent banner "
-"with categories, scripts and iframes are blocked until the matching category "
-"is granted, Google Consent Mode v2 signals are sent, and each decision is "
-"recorded. Provides tools, not legal advice."
-msgstr ""
-"原生 Cookie 同意横幅。启用后，访客会看到带分类的同意横幅，在授予相应分类前脚"
-"本和 iframe 会被阻止，会发送 Google Consent Mode v2 信号，并记录每个决定。提"
-"供工具，而非法律建议。"
-
-msgid ""
-"Lets customers request returns or complaints (RMA). When enabled, shoppers "
-"can open a complaint or return request from My Account on eligible orders; "
-"they get a confirmation email and you manage requests in an admin queue with "
-"statuses. Provides tools, not legal advice."
-msgstr ""
-"让顾客提出退货或投诉申请 (RMA)。启用后，顾客可以在“我的账户”中针对符合条件的"
-"订单发起投诉或退货申请；他们会收到确认邮件，您可以在带状态的管理队列中处理申"
-"请。提供工具，而非法律建议。"
-
-msgid ""
-"Generates standard legal pages for you. When enabled, it can create Terms "
-"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
-"giving you a starting point for your store's required documents. Off until "
-"enabled."
-msgstr ""
-"为您生成标准法律页面。启用后，它可以创建条款与条件、隐私政策、撤回权和投诉页"
-"面，为您的商店所需文档提供起点。在启用前为关闭状态。"
-
-msgid ""
-"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
-"withdrawal form and a My Account action with a confirmation step and email; "
-"you can exclude specific products that are not eligible for withdrawal. Off "
-"until enabled."
-msgstr ""
-"处理 14 天撤回权申请。启用后，顾客会获得一个撤回表单以及带确认步骤和邮件的“我"
-"的账户”操作；您可以排除不符合撤回条件的特定产品。在启用前为关闭状态。"
-
-msgid ""
-"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
-"displays information about the European Commission's ODR platform, typically "
-"in the footer or legal area, helping with consumer dispute transparency. Off "
-"until enabled."
-msgstr ""
-"显示欧盟在线争议解决 (ODR) 信息。启用后，您的商店会显示有关欧盟委员会 ODR 平"
-"台的信息，通常位于页脚或法律区域，有助于消费者争议透明度。在启用前为关闭状"
-"态。"
-
-msgid ""
-"Attaches your legal documents to order confirmation emails. When enabled, "
-"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
-"Withdrawal is included with the confirmation email each customer receives "
-"after placing an order."
-msgstr ""
-"将您的法律文档附加到订单确认邮件中。启用后，条款与条件、隐私政策和撤回权等页"
-"面的内容会包含在每位顾客下单后收到的确认邮件中。"
-
-msgid ""
-"Adds manufacturer and GPSR product safety details to your products. When "
-"enabled, you can enter manufacturer info, an EU responsible person, safety "
-"documents, and instructions per product, which then appear for shoppers on "
-"the product page."
-msgstr ""
-"为您的产品添加制造商和 GPSR 产品安全详情。启用后，您可以为每个产品输入制造商"
-"信息、欧盟责任人、安全文档和使用说明，然后这些信息会在产品页面向顾客显示。"
-
-msgid ""
-"Adds food and supplement product details to your products. When enabled, you "
-"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
-"content, country of origin, and distributor per product, which then show to "
-"shoppers on the product page."
-msgstr ""
-"为您的产品添加食品和补充剂产品详情。启用后，您可以为每个产品输入营养成分、过"
-"敏原、配料、Nutri-Score、酒精含量、原产国和分销商，然后这些信息会在产品页面向"
-"顾客显示。"
-
-msgid ""
-"Adds energy consumption details for electrical devices. When enabled, you "
-"can enter energy label data per product, which is then displayed to shoppers "
-"on the product page for electrical items."
-msgstr ""
-"为电气设备添加能耗详情。启用后，您可以为每个产品输入能源标签数据，然后这些数"
-"据会在电气产品的产品页面向顾客显示。"
-
-msgid ""
-"Verifies a customer's email address when they register an account. When "
-"enabled, new sign-ups receive an activation link by email and cannot log in "
-"until they confirm it, helping confirm real email addresses. Off until "
-"enabled."
-msgstr ""
-"在顾客注册账户时验证其电子邮件地址。启用后，新注册用户会通过邮件收到激活链"
-"接，并且在确认之前无法登录，有助于确认真实的电子邮件地址。在启用前为关闭状"
-"态。"
-
-msgid ""
-"Speeds up product search with instant suggestions as shoppers type. When "
-"enabled, your store's search box shows live product matches (including by "
-"SKU and category) without reloading the page, kept lightweight for fast page "
-"performance. Off until enabled."
-msgstr ""
-"通过顾客输入时的即时建议加快产品搜索。启用后，您商店的搜索框会实时显示匹配的"
-"产品（包括按 SKU 和分类），无需重新加载页面，保持轻量以确保快速的页面性能。在"
-"启用前为关闭状态。"
-
-msgid ""
-"Adds product brands as a separate feature from the manufacturer. When "
-"enabled, you can assign brands to products using a dedicated brand taxonomy, "
-"and brand info appears for shoppers on product pages and listings. Off until "
-"enabled."
-msgstr ""
-"将产品品牌作为独立于制造商的单独功能添加。启用后，您可以使用专门的品牌分类法"
-"为产品分配品牌，品牌信息会在产品页面和列表中向顾客显示。在启用前为关闭状态。"
-
-msgid ""
-"Lets shoppers filter product listings without reloading the page. When "
-"enabled, customers can narrow results by category, brand, price, stock "
-"status, sale, and attributes, with the listing updating instantly. Off until "
-"enabled."
-msgstr ""
-"让顾客无需重新加载页面即可筛选产品列表。启用后，顾客可以按分类、品牌、价格、"
-"库存状态、促销和属性缩小结果范围，列表会即时更新。在启用前为关闭状态。"
-
-msgid ""
-"Lets shoppers save favorite products for later. When enabled, both guests "
-"and logged-in customers can add or remove items instantly, and logged-in "
-"customers see their saved list in My Account. Off until enabled."
-msgstr ""
-"让顾客保存喜爱的产品以备后用。启用后，访客和已登录顾客都可以即时添加或移除商"
-"品，已登录顾客可以在“我的账户”中查看其保存列表。在启用前为关闭状态。"
-
-msgid ""
-"Lets shoppers compare products side by side. When enabled, guests and logged-"
-"in customers can add products to a comparison table that highlights "
-"differences, and customers can view it in My Account. Off until enabled."
-msgstr ""
-"让顾客并排比较产品。启用后，访客和已登录顾客可以将产品添加到突出显示差异的比"
-"较表中，顾客可以在“我的账户”中查看。在启用前为关闭状态。"
-
-msgid ""
-"Lets shoppers preview a product without leaving the listing. When enabled, a "
-"lightweight pop-up opens from product listings showing the price, gallery, "
-"variations, and basic purchase info. Off until enabled."
-msgstr ""
-"让顾客无需离开列表即可预览产品。启用后，会从产品列表打开一个轻量弹窗，显示价"
-"格、图库、变体和基本购买信息。在启用前为关闭状态。"
-
-msgid ""
-"Adds merchandising badges to your products. When enabled, badges appear on "
-"product pages and listings for shoppers, set either automatically by "
-"conditions you choose or manually per product. Off until enabled."
-msgstr ""
-"为您的产品添加营销标识。启用后，标识会在产品页面和列表中向顾客显示，可以按您"
-"选择的条件自动设置，也可以为每个产品手动设置。在启用前为关闭状态。"
-
-msgid ""
-"Lets you add extra tabs to product pages. When enabled, shoppers see "
-"additional tabs with content you set per product, plus global tabs for "
-"shipping, returns, and business information. Off until enabled."
-msgstr ""
-"让您为产品页面添加额外的标签页。启用后，顾客会看到带有您为每个产品设置内容的"
-"额外标签页，以及关于运输、退货和商业信息的全局标签页。在启用前为关闭状态。"
-
-msgid ""
-"Adds a video to your product pages. When enabled, shoppers see a product "
-"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
-"local MP4 file. Off until enabled."
-msgstr ""
-"为您的产品页面添加视频。启用后，顾客会在产品页面看到产品视频，可从 YouTube、"
-"Vimeo 嵌入，或作为本地 MP4 文件上传。在启用前为关闭状态。"
-
-msgid ""
-"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
-"external slider libraries. When enabled, product image zoom and a click-to-"
-"enlarge lightbox become available to shoppers on product pages. Off until "
-"enabled."
-msgstr ""
-"添加轻量级图片缩放和简单的图库灯箱，不依赖庞大的外部滑块库。启用后，顾客可在"
-"产品页面使用产品图片缩放和点击放大灯箱。在启用前为关闭状态。"
-
-msgid ""
-"Adds a lightweight product slider using scroll-snap to show related, sale or "
-"featured products. When enabled, you can place a swipeable product carousel "
-"that displays to shoppers on the storefront. Off until enabled."
-msgstr ""
-"添加使用 scroll-snap 的轻量级产品滑块，用于展示相关、促销或精选产品。启用后，"
-"您可以放置一个可滑动的产品轮播，向店面的顾客显示。在启用前为关闭状态。"
-
-msgid ""
-"Captures interest in out-of-stock products. When enabled, shoppers can enter "
-"their email on sold-out products to join a waitlist and get an automatic "
-"notification when the item is back in stock. Off until enabled."
-msgstr ""
-"捕捉对缺货产品的兴趣。启用后，顾客可以在售罄产品上输入电子邮件以加入候补名"
-"单，并在商品重新有货时收到自动通知。在启用前为关闭状态。"
-
-msgid ""
-"Loads more products as shoppers browse listings. When enabled, WooCommerce "
-"archive pages load further products automatically or via a load-more button "
-"instead of paging. Off until enabled."
-msgstr ""
-"在顾客浏览列表时加载更多产品。启用后，WooCommerce 存档页面会自动或通过“加载更"
-"多”按钮加载更多产品，而不是分页。在启用前为关闭状态。"
-
-msgid ""
-"Shows a promotional or lead-capture popup to visitors. When enabled, a "
-"lightweight popup appears based on the delay, frequency, and page locations "
-"you set. Off until enabled."
-msgstr ""
-"向访客显示促销或获客弹窗。启用后，会根据您设置的延迟、频率和页面位置显示一个"
-"轻量弹窗。在启用前为关闭状态。"
-
-msgid ""
-"Provides tools for displaying EU product safety (GPSR) details. When "
-"enabled, you can add manufacturer and importer data, responsible person, "
-"product identifiers, safety warnings, and instructions to products, with CSV "
-"bulk import or export. Off until enabled."
-msgstr ""
-"提供用于显示欧盟产品安全 (GPSR) 详情的工具。启用后，您可以为产品添加制造商和"
-"进口商数据、责任人、产品标识符、安全警告和使用说明，并支持 CSV 批量导入或导"
-"出。在启用前为关闭状态。"
-
-msgid ""
-"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
-"from customers who actually bought the product display a verified purchase "
-"badge on the product page, so shoppers can tell genuine buyer feedback from "
-"the rest."
-msgstr ""
-"在真实买家留下的评价上显示信任标识。启用后，确实购买过产品的顾客的评价会在产"
-"品页面显示已验证购买标识，让顾客能够区分真实买家反馈与其他评价。"
-
-msgid ""
-"Adds product fields for backing up environmental claims. When enabled, each "
-"product gains fields for the basis of an ecological claim, a certificate "
-"link, and an expiration date, helping you prepare for the anti-greenwashing "
-"directive (September 2026)."
-msgstr ""
-"添加用于支持环境声明的产品字段。启用后，每个产品都会获得用于生态声明依据、证"
-"书链接和到期日期的字段，帮助您为反洗绿指令（2026 年 9 月）做准备。"
-
-msgid ""
-"Provides Digital Services Act tools for your store. When enabled, you get "
-"contact point settings, a public report form for illegal content or products "
-"via the [polski_dsa_report] shortcode, and an admin screen where staff "
-"review submitted reports."
-msgstr ""
-"为您的商店提供数字服务法案工具。启用后，您将获得联系点设置、通过 "
-"[polski_dsa_report] 短代码提供的非法内容或产品公开举报表单，以及供工作人员审"
-"查已提交举报的管理界面。"
-
-msgid ""
-"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
-"checked by NIP and flagged when KSeF invoicing may apply, with integration "
-"hooks and an admin status indicator shown to your team."
-msgstr ""
-"帮助您发现可能需要 KSeF 开票的订单。启用后，系统会按 NIP 检查订单，并在可能适"
-"用 KSeF 开票时标记，同时提供集成钩子和向您团队显示的管理状态指示器。"
-
-msgid ""
-"A log for tracking security incidents, built with CRA in mind. When enabled, "
-"staff get an admin log to record vulnerabilities, breaches, and third-party "
-"failures, track their status and follow-up, and export everything to CSV."
-msgstr ""
-"用于跟踪安全事件的日志，考虑了 CRA 的需求。启用后，工作人员会获得一个管理日"
-"志，用于记录漏洞、数据泄露和第三方故障，跟踪其状态和后续处理，并将所有内容导"
-"出为 CSV。"
-
-msgid ""
-"Quietly watches your store for problems. When enabled, it passively monitors "
-"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
-"every 5 minutes and sending email or webhook alerts. It never places test "
-"orders."
-msgstr ""
-"静默监控您的商店是否存在问题。启用后，它会被动监控前端致命错误、结账失败率和"
-"销售异常，每 5 分钟检查一次，并发送电子邮件或 webhook 警报。它绝不会下测试订"
-"单。"
-
-msgid ""
-"Lets AI assistants safely read selected store data. When enabled, read-only "
-"data like price history, product safety info, store health, page checks, and "
-"product facts is exposed to AI assistants and the Site Editor via the "
-"WordPress Abilities API. Off by default."
-msgstr ""
-"让 AI 助手安全地读取选定的商店数据。启用后，价格历史、产品安全信息、商店健康"
-"状况、页面检查和产品事实等只读数据会通过 WordPress Abilities API 向 AI 助手和"
-"站点编辑器公开。默认关闭。"
-
-msgid ""
-"Adds structured data so search engines understand your products. When "
-"enabled, advanced JSON-LD tags are injected automatically into your pages to "
-"support product indexing by Google, while preserving the plugin's own data."
-msgstr ""
-"添加结构化数据，使搜索引擎能够理解您的产品。启用后，高级 JSON-LD 标签会自动注"
-"入到您的页面中，以支持 Google 的产品索引，同时保留插件自身的数据。"
-
-msgid ""
-"A consent-gated tag manager for marketing tags. When enabled, it adds a "
-"unified place to manage tracking tags that fire only after visitor consent, "
-"so tools like GA4 and GTM load on your store in line with your consent "
-"settings."
-msgstr ""
-"用于营销标签的、需同意才能触发的标签管理器。启用后，它会添加一个统一的位置来"
-"管理仅在访客同意后才触发的跟踪标签，使 GA4 和 GTM 等工具按照您的同意设置在商"
-"店中加载。"
-
-msgid ""
-"Reduces and controls external Google Fonts requests on your store. When "
-"enabled, font-display and preconnect hints are added to your pages, and the "
-"Google Fonts stylesheet can be held back until a visitor grants the matching "
-"consent, helping with privacy and load speed."
-msgstr ""
-"减少并控制您商店上的外部 Google Fonts 请求。启用后，会向您的页面添加 font-"
-"display 和 preconnect 提示，并且 Google Fonts 样式表可以保留到访客授予相应同"
-"意之后再加载，有助于隐私和加载速度。"
-
-msgid ""
-"Lets you add your own scripts or snippets to the page head or footer. When "
-"enabled, each snippet you add is tied to a consent category and runs only "
-"after the visitor grants that consent through the Consent Manager, so your "
-"custom code respects shoppers' choices."
-msgstr ""
-"让您将自己的脚本或代码片段添加到页面头部或页脚。启用后，您添加的每个片段都会"
-"绑定到一个同意分类，并且仅在访客通过同意管理器授予该同意后才运行，因此您的自"
-"定义代码会尊重顾客的选择。"
-
-msgid ""
-"Lets you push your own dataLayer events based on simple page conditions. "
-"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
-"chosen element, feeding into the GA4 DataLayer module for your analytics and "
-"tag setup."
-msgstr ""
-"让您根据简单的页面条件推送自己的 dataLayer 事件。启用后，当访客访问选定的 "
-"URL 或点击选定的元素时会触发事件，并输入到 GA4 DataLayer 模块以用于您的分析和"
-"标签设置。"
-
-msgid ""
-"Keeps your settings and messages compatible with popular checkout field add-"
-"ons and product data. When enabled, the plugin detects supported checkout "
-"extensions, cookies, and product data, then adjusts its own behaviour so "
-"labels and consent prompts display correctly at checkout."
-msgstr ""
-"使您的设置和消息与流行的结账字段附加组件及产品数据兼容。启用后，插件会检测支"
-"持的结账扩展、Cookie 和产品数据，然后调整自身行为，使标签和同意提示在结账时正"
-"确显示。"
-
-msgid ""
-"Automatically checks your store for the most common store-setup issues. When "
-"enabled, it scans for things like missing legal pages, pre-ticked "
-"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
-"the admin so you can fix gaps yourself."
-msgstr ""
-"自动检查您的商店是否存在最常见的商店设置问题。启用后，它会扫描诸如缺失的法律"
-"页面、预先勾选的复选框、公司数据、GDPR 和 Omnibus 项目等内容，并在后台向您显"
-"示报告，以便您自行修复缺漏。"
-
-msgid ""
-"Controls what happens to Polski's data if you remove the plugin. When "
-"enabled, you decide whether Polski deletes its database tables, settings, "
-"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
-"when removing the plugin from WordPress."
-msgstr ""
-"控制在您删除插件时 Polski 数据的处理方式。启用后，您可以决定 Polski 是否在卸"
-"载时删除其数据库表、设置和存储的日志，以便在从 WordPress 移除插件时保留数据或"
-"彻底清除。"
-
-msgid ""
-"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
-"enabled, it can publish a security.txt file (RFC 9116) with your security "
-"contact and vulnerability reporting policy, making it easier for researchers "
-"to report security issues responsibly."
-msgstr ""
-"提供帮助实现网络弹性法案 (CRA) 合规准备的工具。启用后，它可以发布一个包含您的"
-"安全联系人和漏洞报告政策的 security.txt 文件 (RFC 9116)，使研究人员更容易负责"
-"任地报告安全问题。"
-
-msgid ""
-"Helps you keep a GDPR data-processing registry for your store. When enabled, "
-"it detects third-party services that process your customers' personal data "
-"and lets you track the status of each data processing agreement (DPA) from "
-"the admin."
-msgstr ""
-"帮助您为商店维护 GDPR 数据处理登记册。启用后，它会检测处理您顾客个人数据的第"
-"三方服务，并让您在后台跟踪每份数据处理协议 (DPA) 的状态。"
-
-msgid ""
-"Sets a minimum order value or item count before customers can check out. "
-"When enabled, shoppers who haven't reached the minimum see a notice on the "
-"cart and checkout pages, and checkout stays blocked until they add enough."
-msgstr ""
-"在顾客结账前设置最低订单金额或商品数量。启用后，未达到最低要求的顾客会在购物"
-"车和结账页面看到提示，并且在添加足够商品之前结账会一直被阻止。"
-
-msgid ""
-"Sends automatic emails asking customers to review what they bought. When "
-"enabled, after an order is completed buyers get an email with product images "
-"and review links, plus an opt-out option."
-msgstr ""
-"发送自动电子邮件，请求顾客评价他们购买的商品。启用后，订单完成后买家会收到一"
-"封带有产品图片和评价链接的邮件，以及一个退出选项。"
-
-msgid ""
-"Shows a single from-price instead of a price range on variable products. "
-"When enabled, shop archives and product pages display the lowest price as a "
-"clean from-amount rather than a low-to-high range."
-msgstr ""
-"在可变产品上显示单一的“起价”而非价格区间。启用后，商店存档和产品页面会将最低"
-"价格显示为简洁的起始金额，而不是从低到高的区间。"
-
-msgid ""
-"Puts stock back automatically when orders don't go through. When enabled, "
-"products from orders that are cancelled, refunded or failed are returned to "
-"inventory without any manual work."
-msgstr ""
-"在订单未完成时自动恢复库存。启用后，已取消、已退款或失败订单中的产品会无需任"
-"何人工操作即返回库存。"
-
-msgid ""
-"Lets customers add items to the cart without reloading the page, including "
-"variable products. When enabled, products are added in the background on "
-"single product pages and a toast notification confirms success."
-msgstr ""
-"让顾客无需重新加载页面即可将商品添加到购物车，包括可变产品。启用后，产品会在"
-"单个产品页面后台添加，并通过提示通知确认成功。"
-
-msgid ""
-"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
-"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
-"sent to your GA4 setup, working with a GTM container or gtag.js."
-msgstr ""
-"通过 dataLayer 为 Google Analytics 4 跟踪电商活动。启用后，view_item、"
-"add_to_cart、begin_checkout 和 purchase 等事件会发送到您的 GA4 设置，可配合 "
-"GTM 容器或 gtag.js 使用。"
-
-msgid ""
-"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
-"Export tool appears under Products where you can choose fields, filter by "
-"stock threshold and include variations."
-msgstr ""
-"将您的 WooCommerce 产品库存导出为 CSV 文件。启用后，“产品”下会出现一个库存导"
-"出工具，您可以在其中选择字段、按库存阈值筛选并包含变体。"
-
-msgid ""
-"Lets customers register and sign in using Google or Facebook. When enabled, "
-"branded login buttons appear on My Account, checkout and the WordPress login "
-"form, and customer accounts are created automatically."
-msgstr ""
-"让顾客使用 Google 或 Facebook 注册和登录。启用后，带品牌标识的登录按钮会出现"
-"在“我的账户”、结账和 WordPress 登录表单上，并会自动创建顾客账户。"
-
-msgid ""
-"Adds a custom taxonomy for product authors or creators. When enabled, you "
-"can assign authors to products and group them, useful for stores selling "
-"books or creator-made items."
-msgstr ""
-"为产品作者或创作者添加自定义分类法。启用后，您可以为产品分配作者并对其分组，"
-"适用于销售书籍或创作者制作商品的商店。"
-
-msgid ""
-"Lets you publish editorial, in-house reviews of products. When enabled, you "
-"get a new section to write expert reviews with ratings and verdicts, linked "
-"to products and shown on product pages with Schema.org markup that helps "
-"with SEO."
-msgstr ""
-"让您发布编辑性的、内部的产品评测。启用后，您将获得一个新版块来撰写带评分和结"
-"论的专家评测，关联到产品并在产品页面上显示，配有有助于 SEO 的 Schema.org 标"
-"记。"
-
-msgid ""
-"Displays recent-purchase popups to build trust. When enabled, small floating "
-"notifications about recent orders appear to your shoppers in a position and "
-"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
-msgstr ""
-"显示近期购买弹窗以建立信任。启用后，有关近期订单的小型浮动通知会按您选择的位"
-"置和时机向顾客显示，通过 AJAX 流畅加载，并注重隐私保护。"
-
-msgid ""
-"Adds a questions-and-answers section to product pages. When enabled, "
-"customers can ask questions and anyone can answer, you get email alerts for "
-"new questions, answers can be voted on, and Schema.org QAPage markup helps "
-"with SEO."
-msgstr ""
-"为产品页面添加问答版块。启用后，顾客可以提问且任何人都可以回答，您会收到新问"
-"题的邮件提醒，回答可以被投票，Schema.org QAPage 标记有助于 SEO。"
-
-msgid ""
-"Shows reassurance icons like secure payment, fast delivery, returns, and "
-"quality guarantee. When enabled, these configurable trust signals appear to "
-"shoppers on your product, cart, and checkout pages."
-msgstr ""
-"显示诸如安全支付、快速配送、退货和质量保证等让人安心的图标。启用后，这些可配"
-"置的信任信号会在您的产品、购物车和结账页面向顾客显示。"
-
 msgid ""
-"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
-"whenever they add a product, showing cart items, the subtotal, a free-"
-"shipping progress bar, and a quick link to checkout."
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
 msgstr ""
-"添加滑入式购物车抽屉。启用后，每当顾客添加产品时都会打开一个侧边栏，显示购物"
-"车商品、小计、免运费进度条以及快速结账链接。"
+"用于《网络韧性法案》(Cyber Resilience Act)的漏洞、违规和故障登记册,带状态和 "
+"CSV 导出功能。"
 
 msgid ""
-"Shows how a product's price has changed over time. When enabled, shoppers "
-"see a small SVG price-trend chart on product pages covering the last 30, 90, "
-"or 180 days, using your Omnibus price data."
-msgstr ""
-"显示产品价格随时间的变化情况。启用后，顾客会在产品页面看到一个小型 SVG 价格趋"
-"势图，涵盖过去 30、90 或 180 天，使用您的 Omnibus 价格数据。"
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
+msgstr "用于 CRA 的软件物料清单(Software Bill of Materials)。"
 
-msgid ""
-"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
-"an admin tool to download orders as CSV, choosing which fields to include "
-"and filtering by date range and order status."
-msgstr ""
-"将您的 WooCommerce 订单导出为电子表格文件。启用后，您将获得一个管理工具，可将"
-"订单下载为 CSV，选择要包含的字段并按日期范围和订单状态筛选。"
+msgid "Szablon reklamacji"
+msgstr "投诉模板"
 
-msgid ""
-"Lets you create a frequently-asked-questions section. When enabled, you can "
-"add FAQs with categories and place them on any page as an accordion "
-"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
-msgstr ""
-"让您创建常见问题版块。启用后，您可以添加带分类的常见问题，并以折叠面板短代码"
-"的形式放置在任何页面上，配有有助于 SEO 富摘要的 Schema.org FAQPage 数据。"
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr "面向客户的投诉模板生成器和设置。"
 
-msgid ""
-"Lets you customise your checkout form. When enabled, you can add, edit, "
-"reorder, and choose types for checkout fields, and the collected values "
-"appear in the admin order, customer emails, and My Account."
-msgstr ""
-"让您自定义结账表单。启用后，您可以添加、编辑、重新排序结账字段并选择其类型，"
-"所收集的值会显示在后台订单、顾客邮件和“我的账户”中。"
+msgid "Szkolenia RODO"
+msgstr "RODO 培训"
 
-msgid "Enable this module to use this."
-msgstr "启用此模块以使用此功能。"
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr "面向商店团队的 RODO 培训材料。"
 
 #. Plugin Name of the plugin
-#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
+#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
 msgstr "Polski for WooCommerce"
 
@@ -755,7 +141,7 @@ msgid "Strona"
 msgstr "页面"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:912 src/Admin/CRAIncidentsPage.php:123
+#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -764,7 +150,7 @@ msgstr "页面"
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
 #: src/Service/ReturnRequestService.php:232
-#: src/Service/RodoTrainingDocsService.php:267
+#: src/Service/RodoTrainingDocsService.php:268
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74 src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
@@ -1254,7 +640,7 @@ msgstr "请登录以发送此产品的报价询问。"
 msgid "Imię i nazwisko"
 msgstr "姓名"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:1318
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "电子邮箱"
@@ -2070,10 +1456,10 @@ msgid ""
 msgstr ""
 "Polski 需要 WooCommerce %1$s 或更高版本。您当前运行的是 WooCommerce %2$s。"
 
-#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:277
-#: src/Admin/CRAIncidentsPage.php:310 src/Admin/SBOMPage.php:81
-#: src/Service/ComplaintTemplateService.php:78
-#: src/Service/RodoTrainingDocsService.php:76
+#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:278
+#: src/Admin/CRAIncidentsPage.php:311 src/Admin/SBOMPage.php:82
+#: src/Service/ComplaintTemplateService.php:79
+#: src/Service/RodoTrainingDocsService.php:77
 msgid "Insufficient permissions."
 msgstr "权限不足。"
 
@@ -2166,7 +1552,7 @@ msgstr "返回模块"
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
 msgid "Disabled"
 msgstr "已禁用"
 
@@ -2236,27 +1622,27 @@ msgstr "您的姓名"
 msgid "Your email"
 msgstr "您的电子邮件"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:779
+#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
 msgid "Topic"
 msgstr "主题"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:800
+#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
 msgid "General feedback"
 msgstr "一般反馈"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
 msgid "Feature idea"
 msgstr "功能建议"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:802
+#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
 msgid "Workflow problem"
 msgstr "工作流程问题"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:803
+#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
 msgid "Support question"
 msgstr "支持问题"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:781
+#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
 msgid "Message"
 msgstr "消息"
 
@@ -2350,165 +1736,188 @@ msgid ""
 "trzecimi."
 msgstr "与第三方主体签订的个人数据处理委托协议登记簿。"
 
-#: src/Admin/AdminPage.php:698
+#: src/Admin/AdminPage.php:683
+msgid "Rejestr zgód"
+msgstr "同意记录"
+
+#: src/Admin/AdminPage.php:684
+msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
+msgstr "已保存的访客同意横幅决定，支持 CSV 导出。"
+
+#: src/Admin/AdminPage.php:690
+msgid "Odstąpienia"
+msgstr "撤回"
+
+#: src/Admin/AdminPage.php:691
+msgid ""
+"Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
+"ustawienia."
+msgstr "撤回合同与退货申请：列表、手动登记和设置。"
+
+#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/SBOMPage.php:41
+msgid "SBOM"
+msgstr "SBOM"
+
+#: src/Admin/AdminPage.php:730
 msgid "Feedback Logs"
 msgstr "反馈日志"
 
-#: src/Admin/AdminPage.php:699
+#: src/Admin/AdminPage.php:731
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr "来自插件侧边栏的停用反馈和本地管理员反馈。"
 
-#: src/Admin/AdminPage.php:705
+#: src/Admin/AdminPage.php:737
 msgid "Select a report or tool to review your store setup status."
 msgstr "选择一份报告或工具，以查看您的商店设置状态。"
 
-#: src/Admin/AdminPage.php:744
+#: src/Admin/AdminPage.php:776
 msgid "Open Report"
 msgstr "打开报告"
 
-#: src/Admin/AdminPage.php:746
+#: src/Admin/AdminPage.php:778
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
 msgstr "此报告需要先启用其模块（可选功能默认关闭）。"
 
-#: src/Admin/AdminPage.php:748
+#: src/Admin/AdminPage.php:780
 msgid "Enable module"
 msgstr "启用模块"
 
-#: src/Admin/AdminPage.php:750
+#: src/Admin/AdminPage.php:782
 msgid "Module disabled"
 msgstr "模块已禁用"
 
-#: src/Admin/AdminPage.php:769
+#: src/Admin/AdminPage.php:801
 msgid "Admin Feedback Logs"
 msgstr "管理员反馈日志"
 
-#: src/Admin/AdminPage.php:772
+#: src/Admin/AdminPage.php:804
 msgid "No internal feedback to display."
 msgstr "没有可显示的内部反馈。"
 
-#: src/Admin/AdminPage.php:777 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
-#: src/Service/RodoTrainingDocsService.php:164
+#: src/Service/RodoTrainingDocsService.php:165
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
 msgid "Date"
 msgstr "日期"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:810
 msgid "Person"
 msgstr "人员"
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:812
 msgid "Screen"
 msgstr "屏幕"
 
-#: src/Admin/AdminPage.php:837
+#: src/Admin/AdminPage.php:869
 msgid "Hello!"
 msgstr "您好！"
 
-#: src/Admin/AdminPage.php:838
+#: src/Admin/AdminPage.php:870
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "帮助您的商店适应波兰要求的工具。"
 
-#: src/Admin/AdminPage.php:844
+#: src/Admin/AdminPage.php:876
 msgid "Finish configuration"
 msgstr "完成配置"
 
-#: src/Admin/AdminPage.php:845
+#: src/Admin/AdminPage.php:877
 msgid "Some key elements of your store still require attention."
 msgstr "您商店的某些关键要素仍需关注。"
 
-#: src/Admin/AdminPage.php:848
+#: src/Admin/AdminPage.php:880
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr "发布法律页面（条款、隐私政策、撤回权）"
 
-#: src/Admin/AdminPage.php:851
+#: src/Admin/AdminPage.php:883
 msgid "Go through the checklist below"
 msgstr "完成下方的清单"
 
-#: src/Admin/AdminPage.php:854
+#: src/Admin/AdminPage.php:886
 msgid "Complete product data"
 msgstr "补全产品数据"
 
-#: src/Admin/AdminPage.php:855
+#: src/Admin/AdminPage.php:887
 msgid "Manage modules"
 msgstr "管理模块"
 
-#: src/Admin/AdminPage.php:863
+#: src/Admin/AdminPage.php:895
 msgid "Relaunch setup wizard"
 msgstr "重新启动设置向导"
 
-#: src/Admin/AdminPage.php:873
+#: src/Admin/AdminPage.php:905
 msgid "Inactive"
 msgstr "未激活"
 
-#: src/Admin/AdminPage.php:878 src/Admin/AdminPage.php:907
+#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "法律页面"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:912
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d / %2$d 已就绪"
 
-#: src/Admin/AdminPage.php:885
+#: src/Admin/AdminPage.php:917
 msgid "Omnibus Directive"
 msgstr "Omnibus 指令"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:918
 msgid "Active"
 msgstr "已激活"
 
-#: src/Admin/AdminPage.php:891
+#: src/Admin/AdminPage.php:923
 msgid "Store Analysis"
 msgstr "商店分析"
 
-#: src/Admin/AdminPage.php:892
+#: src/Admin/AdminPage.php:924
 msgid "Check reports"
 msgstr "查看报告"
 
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:944
 msgid "Page"
 msgstr "页面"
 
-#: src/Admin/AdminPage.php:929
+#: src/Admin/AdminPage.php:961
 msgid "Published"
 msgstr "已发布"
 
-#: src/Admin/AdminPage.php:930
+#: src/Admin/AdminPage.php:962
 msgid "Draft"
 msgstr "草稿"
 
-#: src/Admin/AdminPage.php:935
+#: src/Admin/AdminPage.php:967
 msgid "Edit"
 msgstr "编辑"
 
-#: src/Admin/AdminPage.php:937
+#: src/Admin/AdminPage.php:969
 msgid "Not created"
 msgstr "未创建"
 
-#: src/Admin/AdminPage.php:952
+#: src/Admin/AdminPage.php:984
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr "尚未创建任何法律页面。生成它们以开始使用。"
 
-#: src/Admin/AdminPage.php:960
+#: src/Admin/AdminPage.php:992
 msgid "Next steps"
 msgstr "后续步骤"
 
-#: src/Admin/AdminPage.php:1012
+#: src/Admin/AdminPage.php:1044
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
 msgstr "发布您的法律页面（条款、隐私政策、撤回权、投诉）。"
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1020
+#: src/Admin/AdminPage.php:1052
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -2518,13 +1927,13 @@ msgstr ""
 "0%%）。"
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1032
+#: src/Admin/AdminPage.php:1064
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr "为波兰境内的配送配置<a href=\"%s\">配送区域</a>。"
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1043
+#: src/Admin/AdminPage.php:1075
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -2534,7 +1943,7 @@ msgstr ""
 "时间。"
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1054
+#: src/Admin/AdminPage.php:1086
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -2543,11 +1952,11 @@ msgstr ""
 "测试订单流程 - 将产品加入购物车，并在<a href=\"%s\">结账页</a>检查复选框和按"
 "钮文字。"
 
-#: src/Admin/AdminPage.php:1077
+#: src/Admin/AdminPage.php:1109
 msgid "Generate legal pages"
 msgstr "生成法律页面"
 
-#: src/Admin/AdminPage.php:1124
+#: src/Admin/AdminPage.php:1156
 msgid "Open &rarr;"
 msgstr "打开 &rarr;"
 
@@ -2614,36 +2023,36 @@ msgstr "抱歉，您似乎无权访问此页面。"
 msgid "Could not open output stream."
 msgstr "无法打开输出流。"
 
-#: src/Admin/CRAIncidentsPage.php:50 src/Admin/CRAIncidentsPage.php:51
-#: src/Admin/CRAIncidentsPage.php:64
+#: src/Admin/CRAIncidentsPage.php:51 src/Admin/CRAIncidentsPage.php:52
+#: src/Admin/CRAIncidentsPage.php:65
 msgid "CRA incidents"
 msgstr "CRA 事件"
 
-#: src/Admin/CRAIncidentsPage.php:68 src/Admin/CRAIncidentsPage.php:268
+#: src/Admin/CRAIncidentsPage.php:69 src/Admin/CRAIncidentsPage.php:269
 msgid "Record incident"
 msgstr "记录事件"
 
-#: src/Admin/CRAIncidentsPage.php:93
+#: src/Admin/CRAIncidentsPage.php:94
 msgid "Incident recorded."
 msgstr "事件已记录。"
 
-#: src/Admin/CRAIncidentsPage.php:94
+#: src/Admin/CRAIncidentsPage.php:95
 msgid "Incident notification dispatched."
 msgstr "事件通知已发送。"
 
-#: src/Admin/CRAIncidentsPage.php:95
+#: src/Admin/CRAIncidentsPage.php:96
 msgid "Incident marked resolved."
 msgstr "事件已标记为已解决。"
 
-#: src/Admin/CRAIncidentsPage.php:96
+#: src/Admin/CRAIncidentsPage.php:97
 msgid "Incident deleted."
 msgstr "事件已删除。"
 
-#: src/Admin/CRAIncidentsPage.php:97
+#: src/Admin/CRAIncidentsPage.php:98
 msgid "Something went wrong."
 msgstr "出现错误。"
 
-#: src/Admin/CRAIncidentsPage.php:110
+#: src/Admin/CRAIncidentsPage.php:111
 msgid ""
 "Record actively-exploited vulnerabilities and security incidents. The "
 "checker tracks the CRA Article 14 24-hour early-warning deadline and exports "
@@ -2652,17 +2061,17 @@ msgstr ""
 "记录正在被主动利用的漏洞和安全事件。检查器会跟踪 CRA 第 14 条规定的 24 小时早"
 "期预警截止时间，并导出结构化的 JSON 提交文件。"
 
-#: src/Admin/CRAIncidentsPage.php:111
+#: src/Admin/CRAIncidentsPage.php:112
 msgid ""
 "Configure the webhook URL and notification email under Polski > Settings > "
 "CRA incidents."
 msgstr "在 Polski > 设置 > CRA 事件下配置 webhook URL 和通知邮箱。"
 
-#: src/Admin/CRAIncidentsPage.php:116
+#: src/Admin/CRAIncidentsPage.php:117
 msgid "No incidents recorded yet."
 msgstr "尚未记录任何事件。"
 
-#: src/Admin/CRAIncidentsPage.php:121 src/Admin/CRAIncidentsPage.php:243
+#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:244
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 #: src/Service/SecurityIncidentService.php:116
@@ -2672,7 +2081,7 @@ msgstr "尚未记录任何事件。"
 msgid "Title"
 msgstr "标题"
 
-#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:255
+#: src/Admin/CRAIncidentsPage.php:123 src/Admin/CRAIncidentsPage.php:256
 #: src/Admin/PageCompliancePage.php:106 src/Admin/PageCompliancePage.php:151
 #: src/Admin/PageCompliancePage.php:200
 #: src/Service/SecurityIncidentService.php:110
@@ -2680,74 +2089,74 @@ msgstr "标题"
 msgid "Severity"
 msgstr "严重程度"
 
-#: src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/CRAIncidentsPage.php:125
 msgid "Deadline"
 msgstr "截止时间"
 
-#: src/Admin/CRAIncidentsPage.php:125 src/Admin/ModulesPage.php:1601
+#: src/Admin/CRAIncidentsPage.php:126 src/Admin/ModulesPage.php:1601
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr "操作"
 
 #. translators: %s: notification timestamp
-#: src/Admin/CRAIncidentsPage.php:155
+#: src/Admin/CRAIncidentsPage.php:156
 #, php-format
 msgid "Notified %s"
 msgstr "已通知 %s"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:164
+#: src/Admin/CRAIncidentsPage.php:165
 #, php-format
 msgid "Overdue by %dh"
 msgstr "已逾期 %dh"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:173
+#: src/Admin/CRAIncidentsPage.php:174
 #, php-format
 msgid "%dh remaining"
 msgstr "剩余 %dh"
 
-#: src/Admin/CRAIncidentsPage.php:218
+#: src/Admin/CRAIncidentsPage.php:219
 msgid "Export JSON"
 msgstr "导出 JSON"
 
-#: src/Admin/CRAIncidentsPage.php:222
+#: src/Admin/CRAIncidentsPage.php:223
 msgid "Dispatch notification"
 msgstr "发送通知"
 
-#: src/Admin/CRAIncidentsPage.php:225
+#: src/Admin/CRAIncidentsPage.php:226
 msgid "Mark resolved"
 msgstr "标记为已解决"
 
-#: src/Admin/CRAIncidentsPage.php:228
+#: src/Admin/CRAIncidentsPage.php:229
 msgid "Delete incident?"
 msgstr "删除事件？"
 
-#: src/Admin/CRAIncidentsPage.php:230
+#: src/Admin/CRAIncidentsPage.php:231
 msgid "Delete"
 msgstr "删除"
 
-#: src/Admin/CRAIncidentsPage.php:244
+#: src/Admin/CRAIncidentsPage.php:245
 msgid "Affected component"
 msgstr "受影响的组件"
 
-#: src/Admin/CRAIncidentsPage.php:245
+#: src/Admin/CRAIncidentsPage.php:246
 msgid "Affected versions"
 msgstr "受影响的版本"
 
-#: src/Admin/CRAIncidentsPage.php:246 src/Service/DSAService.php:172
+#: src/Admin/CRAIncidentsPage.php:247 src/Service/DSAService.php:172
 msgid "Reporter"
 msgstr "报告人"
 
-#: src/Admin/CRAIncidentsPage.php:247
+#: src/Admin/CRAIncidentsPage.php:248
 msgid "External reference ID"
 msgstr "外部参考 ID"
 
-#: src/Admin/CRAIncidentsPage.php:249
+#: src/Admin/CRAIncidentsPage.php:250
 msgid "Kind"
 msgstr "类型"
 
-#: src/Admin/CRAIncidentsPage.php:262 src/Hook/AiProductSummaryHooks.php:60
+#: src/Admin/CRAIncidentsPage.php:263 src/Hook/AiProductSummaryHooks.php:60
 msgid "Summary"
 msgstr "摘要"
 
@@ -2961,6 +2370,701 @@ msgstr "需要改进的地方"
 msgid "What to add"
 msgstr "需要添加的内容"
 
+#: src/Admin/ModulesPage.php:86
+msgid ""
+"Automatic cart discounts based on spending or quantity. When enabled, "
+"shoppers get a percentage off once the cart subtotal hits a threshold, and "
+"bulk discounts when a product's quantity hits a threshold; applied "
+"automatically in the cart. Off by default."
+msgstr ""
+"基于消费金额或数量的自动购物车折扣。启用后，当购物车小计达到阈值时顾客可获得"
+"百分比折扣，当某商品数量达到阈值时可获得批量折扣；自动应用于购物车。默认关"
+"闭。"
+
+#: src/Admin/ModulesPage.php:87
+msgid ""
+"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
+"per-unit price appears next to product prices on shop and product pages, "
+"helping customers compare value, in line with Polish consumer law."
+msgstr ""
+"显示单位价格，例如每 1 千克或每 100 毫升。启用后，单位价格会显示在商店和产品"
+"页面的产品价格旁，帮助顾客比较价值，符合波兰消费者法律。"
+
+#: src/Admin/ModulesPage.php:88
+msgid ""
+"Tracks price history and shows the lowest price from the last 30 days on "
+"discounted products. When enabled, sale products display their lowest 30-day "
+"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
+msgstr ""
+"跟踪价格历史并在折扣产品上显示过去 30 天的最低价格。启用后，促销产品会在价格"
+"旁显示其 30 天最低价，帮助您符合欧盟综合指令 (2019/2161)。"
+
+#: src/Admin/ModulesPage.php:89
+msgid ""
+"Controls how VAT is shown on prices. When enabled, you can set gross or net "
+"price display, show VAT rate info, and support the small business VAT "
+"exemption (Art. 113), affecting prices shown to shoppers across the store."
+msgstr ""
+"控制价格中增值税的显示方式。启用后，您可以设置含税或不含税价格显示、显示增值"
+"税率信息，并支持小型企业增值税豁免（第 113 条），影响整个商店向顾客显示的价"
+"格。"
+
+#: src/Admin/ModulesPage.php:90
+msgid ""
+"Watches your cross-border EU B2C sales against the OSS threshold. When "
+"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
+"sales and flags when you approach the 10,000 EUR threshold for the year."
+msgstr ""
+"根据 OSS 阈值监控您的欧盟跨境 B2C 销售。启用后，将安装 One Stop Shop 插件，监"
+"控欧盟内部 B2C 销售，并在您当年接近 10,000 欧元阈值时发出提示。"
+
+#: src/Admin/ModulesPage.php:91
+msgid ""
+"Shows an estimated delivery time on product pages. When enabled, each "
+"product page displays its delivery estimate; you can set it per product or "
+"variation, with a default used when none is specified. Off until enabled."
+msgstr ""
+"在产品页面上显示预计交付时间。启用后，每个产品页面都会显示其交付预估；您可以"
+"为每个产品或变体单独设置，未指定时使用默认值。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:92
+msgid ""
+"Adds a link to your shipping costs page near prices. When enabled, a "
+"shipping costs info link appears next to the product price, so customers can "
+"check delivery charges before buying. Off until enabled."
+msgstr ""
+"在价格旁添加指向您的运费页面的链接。启用后，运费信息链接会显示在产品价格旁，"
+"让顾客在购买前可以查看运费。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:93
+msgid ""
+"Changes the order button wording at checkout. When enabled, the place-order "
+"button reads \"Order with obligation to pay\", as required by Polish law, so "
+"it's clear the order creates a payment obligation."
+msgstr ""
+"更改结账时下单按钮的文字。启用后，下单按钮会显示为“下单并承担付款义务”，符合"
+"波兰法律要求，以明确该订单产生付款义务。"
+
+#: src/Admin/ModulesPage.php:94
+msgid ""
+"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
+"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
+"content, delivery notifications, review reminder, marketing) for customers "
+"to accept during purchase."
+msgstr ""
+"在结账时添加内置的同意复选框。启用后，您可以显示最多 7 个复选框（条款、隐私政"
+"策、撤回权、数字内容、交付通知、评价提醒、营销）供顾客在购买时接受。"
+
+#: src/Admin/ModulesPage.php:95
+msgid ""
+"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
+"NIP that is checked for a valid checksum, and company data is fetched "
+"automatically from the GUS REGON database to fill in business details."
+msgstr ""
+"在结账时添加 NIP（税号）字段。启用后，顾客可以输入 NIP，系统会校验其校验和的"
+"有效性，并自动从 GUS REGON 数据库获取公司数据以填写商业信息。"
+
+#: src/Admin/ModulesPage.php:96
+msgid ""
+"Keeps a record of customer consents. When enabled, every consent a customer "
+"gives is logged with IP address, browser (user agent), and timestamp, giving "
+"you an audit trail to support GDPR record-keeping. Off until enabled."
+msgstr ""
+"保存顾客同意记录。启用后，顾客给出的每项同意都会连同 IP 地址、浏览器（user "
+"agent）和时间戳一起记录，为您提供审计记录以支持 GDPR 记录保存。在启用前为关闭"
+"状态。"
+
+#: src/Admin/ModulesPage.php:97
+msgid ""
+"A native cookie-consent banner. When enabled, visitors see a consent banner "
+"with categories, scripts and iframes are blocked until the matching category "
+"is granted, Google Consent Mode v2 signals are sent, and each decision is "
+"recorded. Provides tools, not legal advice."
+msgstr ""
+"原生 Cookie 同意横幅。启用后，访客会看到带分类的同意横幅，在授予相应分类前脚"
+"本和 iframe 会被阻止，会发送 Google Consent Mode v2 信号，并记录每个决定。提"
+"供工具，而非法律建议。"
+
+#: src/Admin/ModulesPage.php:98
+msgid ""
+"Lets customers request returns or complaints (RMA). When enabled, shoppers "
+"can open a complaint or return request from My Account on eligible orders; "
+"they get a confirmation email and you manage requests in an admin queue with "
+"statuses. Provides tools, not legal advice."
+msgstr ""
+"让顾客提出退货或投诉申请 (RMA)。启用后，顾客可以在“我的账户”中针对符合条件的"
+"订单发起投诉或退货申请；他们会收到确认邮件，您可以在带状态的管理队列中处理申"
+"请。提供工具，而非法律建议。"
+
+#: src/Admin/ModulesPage.php:99
+msgid ""
+"Generates standard legal pages for you. When enabled, it can create Terms "
+"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
+"giving you a starting point for your store's required documents. Off until "
+"enabled."
+msgstr ""
+"为您生成标准法律页面。启用后，它可以创建条款与条件、隐私政策、撤回权和投诉页"
+"面，为您的商店所需文档提供起点。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:100
+msgid ""
+"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
+"withdrawal form and a My Account action with a confirmation step and email; "
+"you can exclude specific products that are not eligible for withdrawal. Off "
+"until enabled."
+msgstr ""
+"处理 14 天撤回权申请。启用后，顾客会获得一个撤回表单以及带确认步骤和邮件的“我"
+"的账户”操作；您可以排除不符合撤回条件的特定产品。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:101
+msgid ""
+"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
+"displays information about the European Commission's ODR platform, typically "
+"in the footer or legal area, helping with consumer dispute transparency. Off "
+"until enabled."
+msgstr ""
+"显示欧盟在线争议解决 (ODR) 信息。启用后，您的商店会显示有关欧盟委员会 ODR 平"
+"台的信息，通常位于页脚或法律区域，有助于消费者争议透明度。在启用前为关闭状"
+"态。"
+
+#: src/Admin/ModulesPage.php:102
+msgid ""
+"Attaches your legal documents to order confirmation emails. When enabled, "
+"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
+"Withdrawal is included with the confirmation email each customer receives "
+"after placing an order."
+msgstr ""
+"将您的法律文档附加到订单确认邮件中。启用后，条款与条件、隐私政策和撤回权等页"
+"面的内容会包含在每位顾客下单后收到的确认邮件中。"
+
+#: src/Admin/ModulesPage.php:103
+msgid ""
+"Adds manufacturer and GPSR product safety details to your products. When "
+"enabled, you can enter manufacturer info, an EU responsible person, safety "
+"documents, and instructions per product, which then appear for shoppers on "
+"the product page."
+msgstr ""
+"为您的产品添加制造商和 GPSR 产品安全详情。启用后，您可以为每个产品输入制造商"
+"信息、欧盟责任人、安全文档和使用说明，然后这些信息会在产品页面向顾客显示。"
+
+#: src/Admin/ModulesPage.php:104
+msgid ""
+"Adds food and supplement product details to your products. When enabled, you "
+"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
+"content, country of origin, and distributor per product, which then show to "
+"shoppers on the product page."
+msgstr ""
+"为您的产品添加食品和补充剂产品详情。启用后，您可以为每个产品输入营养成分、过"
+"敏原、配料、Nutri-Score、酒精含量、原产国和分销商，然后这些信息会在产品页面向"
+"顾客显示。"
+
+#: src/Admin/ModulesPage.php:105
+msgid ""
+"Adds energy consumption details for electrical devices. When enabled, you "
+"can enter energy label data per product, which is then displayed to shoppers "
+"on the product page for electrical items."
+msgstr ""
+"为电气设备添加能耗详情。启用后，您可以为每个产品输入能源标签数据，然后这些数"
+"据会在电气产品的产品页面向顾客显示。"
+
+#: src/Admin/ModulesPage.php:106
+msgid ""
+"Verifies a customer's email address when they register an account. When "
+"enabled, new sign-ups receive an activation link by email and cannot log in "
+"until they confirm it, helping confirm real email addresses. Off until "
+"enabled."
+msgstr ""
+"在顾客注册账户时验证其电子邮件地址。启用后，新注册用户会通过邮件收到激活链"
+"接，并且在确认之前无法登录，有助于确认真实的电子邮件地址。在启用前为关闭状"
+"态。"
+
+#: src/Admin/ModulesPage.php:107
+msgid ""
+"Speeds up product search with instant suggestions as shoppers type. When "
+"enabled, your store's search box shows live product matches (including by "
+"SKU and category) without reloading the page, kept lightweight for fast page "
+"performance. Off until enabled."
+msgstr ""
+"通过顾客输入时的即时建议加快产品搜索。启用后，您商店的搜索框会实时显示匹配的"
+"产品（包括按 SKU 和分类），无需重新加载页面，保持轻量以确保快速的页面性能。在"
+"启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:108
+msgid ""
+"Adds product brands as a separate feature from the manufacturer. When "
+"enabled, you can assign brands to products using a dedicated brand taxonomy, "
+"and brand info appears for shoppers on product pages and listings. Off until "
+"enabled."
+msgstr ""
+"将产品品牌作为独立于制造商的单独功能添加。启用后，您可以使用专门的品牌分类法"
+"为产品分配品牌，品牌信息会在产品页面和列表中向顾客显示。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:109
+msgid ""
+"Lets shoppers filter product listings without reloading the page. When "
+"enabled, customers can narrow results by category, brand, price, stock "
+"status, sale, and attributes, with the listing updating instantly. Off until "
+"enabled."
+msgstr ""
+"让顾客无需重新加载页面即可筛选产品列表。启用后，顾客可以按分类、品牌、价格、"
+"库存状态、促销和属性缩小结果范围，列表会即时更新。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:110
+msgid ""
+"Lets shoppers save favorite products for later. When enabled, both guests "
+"and logged-in customers can add or remove items instantly, and logged-in "
+"customers see their saved list in My Account. Off until enabled."
+msgstr ""
+"让顾客保存喜爱的产品以备后用。启用后，访客和已登录顾客都可以即时添加或移除商"
+"品，已登录顾客可以在“我的账户”中查看其保存列表。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:111
+msgid ""
+"Lets shoppers compare products side by side. When enabled, guests and logged-"
+"in customers can add products to a comparison table that highlights "
+"differences, and customers can view it in My Account. Off until enabled."
+msgstr ""
+"让顾客并排比较产品。启用后，访客和已登录顾客可以将产品添加到突出显示差异的比"
+"较表中，顾客可以在“我的账户”中查看。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:112
+msgid ""
+"Lets shoppers preview a product without leaving the listing. When enabled, a "
+"lightweight pop-up opens from product listings showing the price, gallery, "
+"variations, and basic purchase info. Off until enabled."
+msgstr ""
+"让顾客无需离开列表即可预览产品。启用后，会从产品列表打开一个轻量弹窗，显示价"
+"格、图库、变体和基本购买信息。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:113
+msgid ""
+"Adds merchandising badges to your products. When enabled, badges appear on "
+"product pages and listings for shoppers, set either automatically by "
+"conditions you choose or manually per product. Off until enabled."
+msgstr ""
+"为您的产品添加营销标识。启用后，标识会在产品页面和列表中向顾客显示，可以按您"
+"选择的条件自动设置，也可以为每个产品手动设置。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:114
+msgid ""
+"Lets you add extra tabs to product pages. When enabled, shoppers see "
+"additional tabs with content you set per product, plus global tabs for "
+"shipping, returns, and business information. Off until enabled."
+msgstr ""
+"让您为产品页面添加额外的标签页。启用后，顾客会看到带有您为每个产品设置内容的"
+"额外标签页，以及关于运输、退货和商业信息的全局标签页。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:115
+msgid ""
+"Adds a video to your product pages. When enabled, shoppers see a product "
+"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
+"local MP4 file. Off until enabled."
+msgstr ""
+"为您的产品页面添加视频。启用后，顾客会在产品页面看到产品视频，可从 YouTube、"
+"Vimeo 嵌入，或作为本地 MP4 文件上传。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:116
+msgid ""
+"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
+"external slider libraries. When enabled, product image zoom and a click-to-"
+"enlarge lightbox become available to shoppers on product pages. Off until "
+"enabled."
+msgstr ""
+"添加轻量级图片缩放和简单的图库灯箱，不依赖庞大的外部滑块库。启用后，顾客可在"
+"产品页面使用产品图片缩放和点击放大灯箱。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:117
+msgid ""
+"Adds a lightweight product slider using scroll-snap to show related, sale or "
+"featured products. When enabled, you can place a swipeable product carousel "
+"that displays to shoppers on the storefront. Off until enabled."
+msgstr ""
+"添加使用 scroll-snap 的轻量级产品滑块，用于展示相关、促销或精选产品。启用后，"
+"您可以放置一个可滑动的产品轮播，向店面的顾客显示。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:118
+msgid ""
+"Captures interest in out-of-stock products. When enabled, shoppers can enter "
+"their email on sold-out products to join a waitlist and get an automatic "
+"notification when the item is back in stock. Off until enabled."
+msgstr ""
+"捕捉对缺货产品的兴趣。启用后，顾客可以在售罄产品上输入电子邮件以加入候补名"
+"单，并在商品重新有货时收到自动通知。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:119
+msgid ""
+"Loads more products as shoppers browse listings. When enabled, WooCommerce "
+"archive pages load further products automatically or via a load-more button "
+"instead of paging. Off until enabled."
+msgstr ""
+"在顾客浏览列表时加载更多产品。启用后，WooCommerce 存档页面会自动或通过“加载更"
+"多”按钮加载更多产品，而不是分页。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:120
+msgid ""
+"Shows a promotional or lead-capture popup to visitors. When enabled, a "
+"lightweight popup appears based on the delay, frequency, and page locations "
+"you set. Off until enabled."
+msgstr ""
+"向访客显示促销或获客弹窗。启用后，会根据您设置的延迟、频率和页面位置显示一个"
+"轻量弹窗。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:121
+msgid ""
+"Provides tools for displaying EU product safety (GPSR) details. When "
+"enabled, you can add manufacturer and importer data, responsible person, "
+"product identifiers, safety warnings, and instructions to products, with CSV "
+"bulk import or export. Off until enabled."
+msgstr ""
+"提供用于显示欧盟产品安全 (GPSR) 详情的工具。启用后，您可以为产品添加制造商和"
+"进口商数据、责任人、产品标识符、安全警告和使用说明，并支持 CSV 批量导入或导"
+"出。在启用前为关闭状态。"
+
+#: src/Admin/ModulesPage.php:122
+msgid ""
+"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
+"from customers who actually bought the product display a verified purchase "
+"badge on the product page, so shoppers can tell genuine buyer feedback from "
+"the rest."
+msgstr ""
+"在真实买家留下的评价上显示信任标识。启用后，确实购买过产品的顾客的评价会在产"
+"品页面显示已验证购买标识，让顾客能够区分真实买家反馈与其他评价。"
+
+#: src/Admin/ModulesPage.php:123
+msgid ""
+"Adds product fields for backing up environmental claims. When enabled, each "
+"product gains fields for the basis of an ecological claim, a certificate "
+"link, and an expiration date, helping you prepare for the anti-greenwashing "
+"directive (September 2026)."
+msgstr ""
+"添加用于支持环境声明的产品字段。启用后，每个产品都会获得用于生态声明依据、证"
+"书链接和到期日期的字段，帮助您为反洗绿指令（2026 年 9 月）做准备。"
+
+#: src/Admin/ModulesPage.php:124
+msgid ""
+"Provides Digital Services Act tools for your store. When enabled, you get "
+"contact point settings, a public report form for illegal content or products "
+"via the [polski_dsa_report] shortcode, and an admin screen where staff "
+"review submitted reports."
+msgstr ""
+"为您的商店提供数字服务法案工具。启用后，您将获得联系点设置、通过 "
+"[polski_dsa_report] 短代码提供的非法内容或产品公开举报表单，以及供工作人员审"
+"查已提交举报的管理界面。"
+
+#: src/Admin/ModulesPage.php:125
+msgid ""
+"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
+"checked by NIP and flagged when KSeF invoicing may apply, with integration "
+"hooks and an admin status indicator shown to your team."
+msgstr ""
+"帮助您发现可能需要 KSeF 开票的订单。启用后，系统会按 NIP 检查订单，并在可能适"
+"用 KSeF 开票时标记，同时提供集成钩子和向您团队显示的管理状态指示器。"
+
+#: src/Admin/ModulesPage.php:126
+msgid ""
+"A log for tracking security incidents, built with CRA in mind. When enabled, "
+"staff get an admin log to record vulnerabilities, breaches, and third-party "
+"failures, track their status and follow-up, and export everything to CSV."
+msgstr ""
+"用于跟踪安全事件的日志，考虑了 CRA 的需求。启用后，工作人员会获得一个管理日"
+"志，用于记录漏洞、数据泄露和第三方故障，跟踪其状态和后续处理，并将所有内容导"
+"出为 CSV。"
+
+#: src/Admin/ModulesPage.php:127
+msgid ""
+"Quietly watches your store for problems. When enabled, it passively monitors "
+"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
+"every 5 minutes and sending email or webhook alerts. It never places test "
+"orders."
+msgstr ""
+"静默监控您的商店是否存在问题。启用后，它会被动监控前端致命错误、结账失败率和"
+"销售异常，每 5 分钟检查一次，并发送电子邮件或 webhook 警报。它绝不会下测试订"
+"单。"
+
+#: src/Admin/ModulesPage.php:128
+msgid ""
+"Lets AI assistants safely read selected store data. When enabled, read-only "
+"data like price history, product safety info, store health, page checks, and "
+"product facts is exposed to AI assistants and the Site Editor via the "
+"WordPress Abilities API. Off by default."
+msgstr ""
+"让 AI 助手安全地读取选定的商店数据。启用后，价格历史、产品安全信息、商店健康"
+"状况、页面检查和产品事实等只读数据会通过 WordPress Abilities API 向 AI 助手和"
+"站点编辑器公开。默认关闭。"
+
+#: src/Admin/ModulesPage.php:129
+msgid ""
+"Adds structured data so search engines understand your products. When "
+"enabled, advanced JSON-LD tags are injected automatically into your pages to "
+"support product indexing by Google, while preserving the plugin's own data."
+msgstr ""
+"添加结构化数据，使搜索引擎能够理解您的产品。启用后，高级 JSON-LD 标签会自动注"
+"入到您的页面中，以支持 Google 的产品索引，同时保留插件自身的数据。"
+
+#: src/Admin/ModulesPage.php:130
+msgid ""
+"A consent-gated tag manager for marketing tags. When enabled, it adds a "
+"unified place to manage tracking tags that fire only after visitor consent, "
+"so tools like GA4 and GTM load on your store in line with your consent "
+"settings."
+msgstr ""
+"用于营销标签的、需同意才能触发的标签管理器。启用后，它会添加一个统一的位置来"
+"管理仅在访客同意后才触发的跟踪标签，使 GA4 和 GTM 等工具按照您的同意设置在商"
+"店中加载。"
+
+#: src/Admin/ModulesPage.php:131
+msgid ""
+"Reduces and controls external Google Fonts requests on your store. When "
+"enabled, font-display and preconnect hints are added to your pages, and the "
+"Google Fonts stylesheet can be held back until a visitor grants the matching "
+"consent, helping with privacy and load speed."
+msgstr ""
+"减少并控制您商店上的外部 Google Fonts 请求。启用后，会向您的页面添加 font-"
+"display 和 preconnect 提示，并且 Google Fonts 样式表可以保留到访客授予相应同"
+"意之后再加载，有助于隐私和加载速度。"
+
+#: src/Admin/ModulesPage.php:132
+msgid ""
+"Lets you add your own scripts or snippets to the page head or footer. When "
+"enabled, each snippet you add is tied to a consent category and runs only "
+"after the visitor grants that consent through the Consent Manager, so your "
+"custom code respects shoppers' choices."
+msgstr ""
+"让您将自己的脚本或代码片段添加到页面头部或页脚。启用后，您添加的每个片段都会"
+"绑定到一个同意分类，并且仅在访客通过同意管理器授予该同意后才运行，因此您的自"
+"定义代码会尊重顾客的选择。"
+
+#: src/Admin/ModulesPage.php:133
+msgid ""
+"Lets you push your own dataLayer events based on simple page conditions. "
+"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
+"chosen element, feeding into the GA4 DataLayer module for your analytics and "
+"tag setup."
+msgstr ""
+"让您根据简单的页面条件推送自己的 dataLayer 事件。启用后，当访客访问选定的 "
+"URL 或点击选定的元素时会触发事件，并输入到 GA4 DataLayer 模块以用于您的分析和"
+"标签设置。"
+
+#: src/Admin/ModulesPage.php:134
+msgid ""
+"Keeps your settings and messages compatible with popular checkout field add-"
+"ons and product data. When enabled, the plugin detects supported checkout "
+"extensions, cookies, and product data, then adjusts its own behaviour so "
+"labels and consent prompts display correctly at checkout."
+msgstr ""
+"使您的设置和消息与流行的结账字段附加组件及产品数据兼容。启用后，插件会检测支"
+"持的结账扩展、Cookie 和产品数据，然后调整自身行为，使标签和同意提示在结账时正"
+"确显示。"
+
+#: src/Admin/ModulesPage.php:135
+msgid ""
+"Automatically checks your store for the most common store-setup issues. When "
+"enabled, it scans for things like missing legal pages, pre-ticked "
+"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
+"the admin so you can fix gaps yourself."
+msgstr ""
+"自动检查您的商店是否存在最常见的商店设置问题。启用后，它会扫描诸如缺失的法律"
+"页面、预先勾选的复选框、公司数据、GDPR 和 Omnibus 项目等内容，并在后台向您显"
+"示报告，以便您自行修复缺漏。"
+
+#: src/Admin/ModulesPage.php:136
+msgid ""
+"Controls what happens to Polski's data if you remove the plugin. When "
+"enabled, you decide whether Polski deletes its database tables, settings, "
+"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
+"when removing the plugin from WordPress."
+msgstr ""
+"控制在您删除插件时 Polski 数据的处理方式。启用后，您可以决定 Polski 是否在卸"
+"载时删除其数据库表、设置和存储的日志，以便在从 WordPress 移除插件时保留数据或"
+"彻底清除。"
+
+#: src/Admin/ModulesPage.php:137
+msgid ""
+"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
+"enabled, it can publish a security.txt file (RFC 9116) with your security "
+"contact and vulnerability reporting policy, making it easier for researchers "
+"to report security issues responsibly."
+msgstr ""
+"提供帮助实现网络弹性法案 (CRA) 合规准备的工具。启用后，它可以发布一个包含您的"
+"安全联系人和漏洞报告政策的 security.txt 文件 (RFC 9116)，使研究人员更容易负责"
+"任地报告安全问题。"
+
+#: src/Admin/ModulesPage.php:138
+msgid ""
+"Helps you keep a GDPR data-processing registry for your store. When enabled, "
+"it detects third-party services that process your customers' personal data "
+"and lets you track the status of each data processing agreement (DPA) from "
+"the admin."
+msgstr ""
+"帮助您为商店维护 GDPR 数据处理登记册。启用后，它会检测处理您顾客个人数据的第"
+"三方服务，并让您在后台跟踪每份数据处理协议 (DPA) 的状态。"
+
+#: src/Admin/ModulesPage.php:139
+msgid ""
+"Sets a minimum order value or item count before customers can check out. "
+"When enabled, shoppers who haven't reached the minimum see a notice on the "
+"cart and checkout pages, and checkout stays blocked until they add enough."
+msgstr ""
+"在顾客结账前设置最低订单金额或商品数量。启用后，未达到最低要求的顾客会在购物"
+"车和结账页面看到提示，并且在添加足够商品之前结账会一直被阻止。"
+
+#: src/Admin/ModulesPage.php:140
+msgid ""
+"Sends automatic emails asking customers to review what they bought. When "
+"enabled, after an order is completed buyers get an email with product images "
+"and review links, plus an opt-out option."
+msgstr ""
+"发送自动电子邮件，请求顾客评价他们购买的商品。启用后，订单完成后买家会收到一"
+"封带有产品图片和评价链接的邮件，以及一个退出选项。"
+
+#: src/Admin/ModulesPage.php:141
+msgid ""
+"Shows a single from-price instead of a price range on variable products. "
+"When enabled, shop archives and product pages display the lowest price as a "
+"clean from-amount rather than a low-to-high range."
+msgstr ""
+"在可变产品上显示单一的“起价”而非价格区间。启用后，商店存档和产品页面会将最低"
+"价格显示为简洁的起始金额，而不是从低到高的区间。"
+
+#: src/Admin/ModulesPage.php:142
+msgid ""
+"Puts stock back automatically when orders don't go through. When enabled, "
+"products from orders that are cancelled, refunded or failed are returned to "
+"inventory without any manual work."
+msgstr ""
+"在订单未完成时自动恢复库存。启用后，已取消、已退款或失败订单中的产品会无需任"
+"何人工操作即返回库存。"
+
+#: src/Admin/ModulesPage.php:143
+msgid ""
+"Lets customers add items to the cart without reloading the page, including "
+"variable products. When enabled, products are added in the background on "
+"single product pages and a toast notification confirms success."
+msgstr ""
+"让顾客无需重新加载页面即可将商品添加到购物车，包括可变产品。启用后，产品会在"
+"单个产品页面后台添加，并通过提示通知确认成功。"
+
+#: src/Admin/ModulesPage.php:144
+msgid ""
+"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
+"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
+"sent to your GA4 setup, working with a GTM container or gtag.js."
+msgstr ""
+"通过 dataLayer 为 Google Analytics 4 跟踪电商活动。启用后，view_item、"
+"add_to_cart、begin_checkout 和 purchase 等事件会发送到您的 GA4 设置，可配合 "
+"GTM 容器或 gtag.js 使用。"
+
+#: src/Admin/ModulesPage.php:145
+msgid ""
+"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
+"Export tool appears under Products where you can choose fields, filter by "
+"stock threshold and include variations."
+msgstr ""
+"将您的 WooCommerce 产品库存导出为 CSV 文件。启用后，“产品”下会出现一个库存导"
+"出工具，您可以在其中选择字段、按库存阈值筛选并包含变体。"
+
+#: src/Admin/ModulesPage.php:146
+msgid ""
+"Lets customers register and sign in using Google or Facebook. When enabled, "
+"branded login buttons appear on My Account, checkout and the WordPress login "
+"form, and customer accounts are created automatically."
+msgstr ""
+"让顾客使用 Google 或 Facebook 注册和登录。启用后，带品牌标识的登录按钮会出现"
+"在“我的账户”、结账和 WordPress 登录表单上，并会自动创建顾客账户。"
+
+#: src/Admin/ModulesPage.php:147
+msgid ""
+"Adds a custom taxonomy for product authors or creators. When enabled, you "
+"can assign authors to products and group them, useful for stores selling "
+"books or creator-made items."
+msgstr ""
+"为产品作者或创作者添加自定义分类法。启用后，您可以为产品分配作者并对其分组，"
+"适用于销售书籍或创作者制作商品的商店。"
+
+#: src/Admin/ModulesPage.php:148
+msgid ""
+"Lets you publish editorial, in-house reviews of products. When enabled, you "
+"get a new section to write expert reviews with ratings and verdicts, linked "
+"to products and shown on product pages with Schema.org markup that helps "
+"with SEO."
+msgstr ""
+"让您发布编辑性的、内部的产品评测。启用后，您将获得一个新版块来撰写带评分和结"
+"论的专家评测，关联到产品并在产品页面上显示，配有有助于 SEO 的 Schema.org 标"
+"记。"
+
+#: src/Admin/ModulesPage.php:149
+msgid ""
+"Displays recent-purchase popups to build trust. When enabled, small floating "
+"notifications about recent orders appear to your shoppers in a position and "
+"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
+msgstr ""
+"显示近期购买弹窗以建立信任。启用后，有关近期订单的小型浮动通知会按您选择的位"
+"置和时机向顾客显示，通过 AJAX 流畅加载，并注重隐私保护。"
+
+#: src/Admin/ModulesPage.php:150
+msgid ""
+"Adds a questions-and-answers section to product pages. When enabled, "
+"customers can ask questions and anyone can answer, you get email alerts for "
+"new questions, answers can be voted on, and Schema.org QAPage markup helps "
+"with SEO."
+msgstr ""
+"为产品页面添加问答版块。启用后，顾客可以提问且任何人都可以回答，您会收到新问"
+"题的邮件提醒，回答可以被投票，Schema.org QAPage 标记有助于 SEO。"
+
+#: src/Admin/ModulesPage.php:151
+msgid ""
+"Shows reassurance icons like secure payment, fast delivery, returns, and "
+"quality guarantee. When enabled, these configurable trust signals appear to "
+"shoppers on your product, cart, and checkout pages."
+msgstr ""
+"显示诸如安全支付、快速配送、退货和质量保证等让人安心的图标。启用后，这些可配"
+"置的信任信号会在您的产品、购物车和结账页面向顾客显示。"
+
+#: src/Admin/ModulesPage.php:152
+msgid ""
+"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
+"whenever they add a product, showing cart items, the subtotal, a free-"
+"shipping progress bar, and a quick link to checkout."
+msgstr ""
+"添加滑入式购物车抽屉。启用后，每当顾客添加产品时都会打开一个侧边栏，显示购物"
+"车商品、小计、免运费进度条以及快速结账链接。"
+
+#: src/Admin/ModulesPage.php:153
+msgid ""
+"Shows how a product's price has changed over time. When enabled, shoppers "
+"see a small SVG price-trend chart on product pages covering the last 30, 90, "
+"or 180 days, using your Omnibus price data."
+msgstr ""
+"显示产品价格随时间的变化情况。启用后，顾客会在产品页面看到一个小型 SVG 价格趋"
+"势图，涵盖过去 30、90 或 180 天，使用您的 Omnibus 价格数据。"
+
+#: src/Admin/ModulesPage.php:154
+msgid ""
+"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
+"an admin tool to download orders as CSV, choosing which fields to include "
+"and filtering by date range and order status."
+msgstr ""
+"将您的 WooCommerce 订单导出为电子表格文件。启用后，您将获得一个管理工具，可将"
+"订单下载为 CSV，选择要包含的字段并按日期范围和订单状态筛选。"
+
+#: src/Admin/ModulesPage.php:155
+msgid ""
+"Lets you create a frequently-asked-questions section. When enabled, you can "
+"add FAQs with categories and place them on any page as an accordion "
+"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
+msgstr ""
+"让您创建常见问题版块。启用后，您可以添加带分类的常见问题，并以折叠面板短代码"
+"的形式放置在任何页面上，配有有助于 SEO 富摘要的 Schema.org FAQPage 数据。"
+
+#: src/Admin/ModulesPage.php:156
+msgid ""
+"Lets you customise your checkout form. When enabled, you can add, edit, "
+"reorder, and choose types for checkout fields, and the collected values "
+"appear in the admin order, customer emails, and My Account."
+msgstr ""
+"让您自定义结账表单。启用后，您可以添加、编辑、重新排序结账字段并选择其类型，"
+"所收集的值会显示在后台订单、顾客邮件和“我的账户”中。"
+
 #: src/Admin/ModulesPage.php:174
 msgid "Promotions / dynamic pricing"
 msgstr "促销 / 动态定价"
@@ -2973,16 +3077,6 @@ msgid ""
 msgstr ""
 "自动购物车折扣：当购物车小计达到阈值时按百分比减免，当某产品行的数量达到阈值"
 "时对该产品行按百分比减免（批量折扣）。默认关闭。"
-
-#: src/Admin/ModulesPage.php:176 src/Admin/ModulesPage.php:638
-#: src/Admin/ModulesPage.php:655 src/Admin/ModulesPage.php:706
-#: src/Admin/ModulesPage.php:736 src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:820 src/Admin/ModulesPage.php:852
-#: src/Admin/ModulesPage.php:875 src/Admin/ModulesPage.php:893
-#: src/Admin/ModulesPage.php:910 src/Admin/ModulesPage.php:937
-#: src/Admin/ModulesPage.php:967 src/Admin/ModulesPage.php:988
-msgid "Merchandising"
-msgstr "商品陈列"
 
 #: src/Admin/ModulesPage.php:181
 msgid "Bulk discount: minimum quantity per product"
@@ -3018,12 +3112,6 @@ msgid ""
 "Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish "
 "consumer law."
 msgstr "根据波兰消费者法律显示每单位价格（例如每 1 千克、每 100 毫升）。"
-
-#: src/Admin/ModulesPage.php:192 src/Admin/ModulesPage.php:205
-#: src/Admin/ModulesPage.php:238 src/Admin/ModulesPage.php:253
-#: src/Admin/ModulesPage.php:267 src/Admin/ModulesPage.php:281
-msgid "Prices and Display"
-msgstr "价格与显示"
 
 #: src/Admin/ModulesPage.php:197 src/Admin/ModulesPage.php:272
 msgid "Display format"
@@ -3282,12 +3370,6 @@ msgid ""
 "Polish law."
 msgstr "根据波兰法律，将下单按钮文本更改为“下单并承担付款义务”。"
 
-#: src/Admin/ModulesPage.php:295 src/Admin/ModulesPage.php:307
-#: src/Admin/ModulesPage.php:346 src/Admin/ModulesPage.php:361
-#: src/Admin/ModulesPage.php:1302
-msgid "Checkout and Orders"
-msgstr "结账与订单"
-
 #: src/Admin/ModulesPage.php:300 src/Admin/ModulesPage.php:627
 #: src/Admin/ModulesPage.php:698 src/Admin/ModulesPage.php:788
 #: src/Admin/ModulesPage.php:950 src/Admin/ModulesPage.php:973
@@ -3495,10 +3577,6 @@ msgstr ""
 "类别获得授予之前阻止脚本和 iframe。为您的审计记录保存每一条决定。提供工具，而"
 "非法律建议。"
 
-#: src/Admin/ModulesPage.php:371 src/Admin/ModulesPage.php:2400
-msgid "Legal & Compliance"
-msgstr "法律与合规"
-
 #: src/Admin/ModulesPage.php:378
 msgid "Enabled categories"
 msgstr "已启用类别"
@@ -3508,19 +3586,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "必要 cookie 始终开启，无法关闭。"
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1370 src/Admin/ModulesPage.php:1895
+#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "分析"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1896 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "营销"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1897 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "偏好"
 
@@ -3609,12 +3687,6 @@ msgid ""
 msgstr ""
 "允许客户从“我的账户”中为符合条件的订单发起投诉（reklamacja）或退货（zwrot）请"
 "求，并提供确认邮件以及带状态的管理员队列。提供工具，而非法律建议。"
-
-#: src/Admin/ModulesPage.php:401 src/Admin/ModulesPage.php:414
-#: src/Admin/ModulesPage.php:426 src/Admin/ModulesPage.php:466
-#: src/Admin/ModulesPage.php:511
-msgid "Consumer Rights"
-msgstr "消费者权利"
 
 #: src/Admin/ModulesPage.php:406
 msgid "Eligibility window (days from order date)"
@@ -4082,12 +4154,6 @@ msgid ""
 "safety instructions."
 msgstr "制造商信息、责任人（GPSR）、安全文件、安全说明。"
 
-#: src/Admin/ModulesPage.php:527 src/Admin/ModulesPage.php:537
-#: src/Admin/ModulesPage.php:568 src/Admin/ModulesPage.php:1019
-#: src/Admin/ModulesPage.php:1032 src/Admin/ModulesPage.php:1044
-msgid "Product Information"
-msgstr "商品信息"
-
 #: src/Admin/ModulesPage.php:535
 msgid "Food and Supplements"
 msgstr "食品与补充剂"
@@ -4170,7 +4236,7 @@ msgid "Value column name"
 msgstr "数值列名称"
 
 #: src/Admin/ModulesPage.php:555 src/Service/FoodService.php:161
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Value"
 msgstr "数值"
 
@@ -4224,10 +4290,6 @@ msgid ""
 "by email, login block for unactivated accounts."
 msgstr ""
 "账户注册时的电子邮件地址验证。通过邮件发送激活链接，对未激活账户阻止登录。"
-
-#: src/Admin/ModulesPage.php:580
-msgid "Customer Account"
-msgstr "客户账户"
 
 #: src/Admin/ModulesPage.php:585
 msgid "Delete inactive accounts after (days)"
@@ -4336,10 +4398,6 @@ msgid ""
 "Fast product suggestions while typing, with SKU support, categories, and a "
 "lightweight front-end friendly for web vitals."
 msgstr "输入时即时给出商品建议，支持 SKU、分类，前端轻量且对 web vitals 友好。"
-
-#: src/Admin/ModulesPage.php:605
-msgid "Sales and B2B"
-msgstr "销售与 B2B"
 
 #: src/Admin/ModulesPage.php:610 resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
@@ -4477,7 +4535,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "在商品页面显示"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1972
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "标签"
@@ -5472,7 +5530,7 @@ msgstr "如何打开 CTA"
 msgid "Shop and archives"
 msgstr "商店和归档页"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:1531
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "结账"
@@ -5569,12 +5627,6 @@ msgid ""
 msgstr ""
 "数字服务法（Digital Services Act）工具：联系点设置、非法内容或产品的举报表"
 "单，以及管理员举报界面。短代码：[polski_dsa_report]。"
-
-#: src/Admin/ModulesPage.php:1054 src/Admin/ModulesPage.php:1070
-#: src/Admin/ModulesPage.php:1082 src/Admin/ModulesPage.php:1097
-#: src/AIFeed/LlmsTxtService.php:109
-msgid "Consumer rights"
-msgstr "消费者权利"
 
 #: src/Admin/ModulesPage.php:1059
 msgid "DSA contact name"
@@ -5709,13 +5761,6 @@ msgstr ""
 "通过 WordPress Abilities API 向 AI 助手和站点编辑器公开只读的商务数据（价格历"
 "史、产品安全数据、商店健康状况、已配置页面检查、产品信息）。默认关闭。"
 
-#: src/Admin/ModulesPage.php:1116 src/Admin/ModulesPage.php:1255
-#: src/Admin/ModulesPage.php:1267 src/Admin/ModulesPage.php:1279
-#: src/Admin/ModulesPage.php:1292 src/Admin/ModulesPage.php:1384
-#: src/Admin/ModulesPage.php:1507
-msgid "Tools"
-msgstr "工具"
-
 #: src/Admin/ModulesPage.php:1126
 msgid "Structured Data (Schema.org)"
 msgstr "结构化数据（Schema.org）"
@@ -5726,11 +5771,6 @@ msgid ""
 "Google with plugin-specific data preservation."
 msgstr ""
 "自动注入高级 JSON-LD 标签，支持 Google 对产品的索引，同时保留插件特有的数据。"
-
-#: src/Admin/ModulesPage.php:1128 src/Admin/ModulesPage.php:1146
-#: src/Admin/ModulesPage.php:1190
-msgid "SEO & Optimization"
-msgstr "SEO 与优化"
 
 #: src/Admin/ModulesPage.php:1133
 msgid "Enable structured data integration"
@@ -5986,7 +6026,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "同意类别"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1894
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "必要"
@@ -6009,11 +6049,6 @@ msgid ""
 msgstr ""
 "将您自己的脚本或代码片段添加到页面的 head 或 footer 中。每个代码片段都会被分"
 "配一个同意类别，并通过同意管理器仅在访客授予后才运行。"
-
-#: src/Admin/ModulesPage.php:1210 src/Admin/ModulesPage.php:1224
-#: src/Admin/ModulesPage.php:2408
-msgid "Advanced & Tools"
-msgstr "高级与工具"
 
 #: src/Admin/ModulesPage.php:1215
 msgid ""
@@ -6062,10 +6097,6 @@ msgid ""
 "Detection of popular checkout field extensions, cookies, and product data to "
 "maintain compatibility of settings and messages."
 msgstr "检测常见的结账字段扩展、cookie 和产品数据，以保持设置和消息的兼容性。"
-
-#: src/Admin/ModulesPage.php:1239
-msgid "Integrations"
-msgstr "集成"
 
 #: src/Admin/ModulesPage.php:1253
 msgid "Store Audit"
@@ -6221,10 +6252,6 @@ msgid ""
 "Cleaner presentation on archives and product pages."
 msgstr "为可变产品显示“{price} 起”而非价格区间。在归档页和产品页上呈现更简洁。"
 
-#: src/Admin/ModulesPage.php:1333 src/Admin/ModulesPage.php:1493
-msgid "Prices and Omnibus"
-msgstr "价格与 Omnibus"
-
 #: src/Admin/ModulesPage.php:1338
 msgid "Enable \"from\" price display"
 msgstr "启用“起价”显示"
@@ -6247,10 +6274,6 @@ msgid ""
 "failed. Keeps inventory accurate without manual intervention."
 msgstr ""
 "在订单取消、退款或失败时自动恢复产品库存。无需手动干预即可保持库存准确。"
-
-#: src/Admin/ModulesPage.php:1348 src/Admin/ModulesPage.php:1358
-msgid "Stock & Cart"
-msgstr "库存与购物车"
 
 #: src/Admin/ModulesPage.php:1356
 msgid "AJAX Add to Cart"
@@ -6323,14 +6346,6 @@ msgid ""
 msgstr ""
 "让客户通过 Google 或 Facebook 注册和登录。在“我的账户”、结账和 WordPress 登录"
 "表单上显示品牌按钮。自动创建 WooCommerce 客户账户。"
-
-#: src/Admin/ModulesPage.php:1396 src/Admin/ModulesPage.php:1414
-#: src/Admin/ModulesPage.php:1424 src/Admin/ModulesPage.php:1436
-#: src/Admin/ModulesPage.php:1452 src/Admin/ModulesPage.php:1462
-#: src/Admin/ModulesPage.php:1476 src/Admin/ModulesPage.php:1519
-#: src/AIFeed/LlmsTxtService.php:209
-msgid "Storefront"
-msgstr "店面"
 
 #: src/Admin/ModulesPage.php:1401
 msgid "Enable Google login"
@@ -6628,139 +6643,203 @@ msgstr "管理字段"
 msgid "Name"
 msgstr "名称"
 
-#: src/Admin/ModulesPage.php:1647
+#: src/Admin/ModulesPage.php:1663
 msgid "Help"
 msgstr "帮助"
 
+#: src/Admin/ModulesPage.php:1706
+msgid "Enable this module to use this."
+msgstr "启用此模块以使用此功能。"
+
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1713
+#: src/Admin/ModulesPage.php:1729
 #, php-format
 msgid "Edit %s settings"
 msgstr "编辑 %s 设置"
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1732
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: src/Admin/ModulesPage.php:1726 src/Admin/ModulesPage.php:1727
+#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
 msgid "Open documentation"
 msgstr "打开文档"
 
-#: src/Admin/ModulesPage.php:1760
+#: src/Admin/ModulesPage.php:1776
 msgid "Save"
 msgstr "保存"
 
-#: src/Admin/ModulesPage.php:1854
+#: src/Admin/ModulesPage.php:1870
 msgid "none"
 msgstr "无"
 
-#: src/Admin/ModulesPage.php:1950
+#: src/Admin/ModulesPage.php:1966
 msgid "Add snippet"
 msgstr "添加代码片段"
 
-#: src/Admin/ModulesPage.php:1979
+#: src/Admin/ModulesPage.php:1995
 msgid "Head"
 msgstr "头部"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1996
 msgid "Footer"
 msgstr "页脚"
 
-#: src/Admin/ModulesPage.php:1993
+#: src/Admin/ModulesPage.php:2009
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> 或内联 JS"
 
-#: src/Admin/ModulesPage.php:1999 src/Admin/ModulesPage.php:2084
+#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
 msgid "Remove"
 msgstr "移除"
 
-#: src/Admin/ModulesPage.php:2029
+#: src/Admin/ModulesPage.php:2045
 msgid "Add trigger"
 msgstr "添加触发器"
 
-#: src/Admin/ModulesPage.php:2052
+#: src/Admin/ModulesPage.php:2068
 msgid "Event name (e.g. cta_click)"
 msgstr "事件名称（例如 cta_click）"
 
-#: src/Admin/ModulesPage.php:2059
+#: src/Admin/ModulesPage.php:2075
 msgid "URL contains"
 msgstr "URL 包含"
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2076
 msgid "Click on selector"
 msgstr "点击选择器"
 
-#: src/Admin/ModulesPage.php:2073
+#: src/Admin/ModulesPage.php:2089
 msgid "URL fragment (for URL contains)"
 msgstr "URL 片段（用于 URL 包含）"
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2094
 msgid "CSS selector (for click)"
 msgstr "CSS 选择器（用于点击）"
 
-#: src/Admin/ModulesPage.php:2188
+#: src/Admin/ModulesPage.php:2204
 msgid "Sorry, you are not allowed to access this page."
 msgstr "抱歉，您无权访问此页面。"
 
-#: src/Admin/ModulesPage.php:2195 src/Admin/ModulesPage.php:2211
+#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
 msgid "Invalid request."
 msgstr "无效请求。"
 
-#: src/Admin/ModulesPage.php:2402
+#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+msgid "Legal & Compliance"
+msgstr "法律与合规"
+
+#: src/Admin/ModulesPage.php:2418
 msgid "Tax & Pricing"
 msgstr "税费与定价"
 
-#: src/Admin/ModulesPage.php:2404
+#: src/Admin/ModulesPage.php:2420
 msgid "Checkout & Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:2406
+#: src/Admin/ModulesPage.php:2422
 msgid "Content & Trust"
 msgstr "内容与信任"
 
-#: src/Admin/ModulesPage.php:2410 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+msgid "Advanced & Tools"
+msgstr "高级与工具"
+
+#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "其他"
 
-#: src/Admin/ModulesPage.php:2481
+#: src/Admin/ModulesPage.php:2439
+msgid "Prices and Display"
+msgstr "价格与显示"
+
+#: src/Admin/ModulesPage.php:2441
+msgid "Prices and Omnibus"
+msgstr "价格与 Omnibus"
+
+#: src/Admin/ModulesPage.php:2443
+msgid "Checkout and Orders"
+msgstr "结账与订单"
+
+#: src/Admin/ModulesPage.php:2449
+msgid "Stock & Cart"
+msgstr "库存与购物车"
+
+#: src/Admin/ModulesPage.php:2451
+msgid "Merchandising"
+msgstr "商品陈列"
+
+#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+msgid "Storefront"
+msgstr "店面"
+
+#: src/Admin/ModulesPage.php:2455
+msgid "Product Information"
+msgstr "商品信息"
+
+#: src/Admin/ModulesPage.php:2457
+msgid "Customer Account"
+msgstr "客户账户"
+
+#: src/Admin/ModulesPage.php:2459
+msgid "Sales and B2B"
+msgstr "销售与 B2B"
+
+#: src/Admin/ModulesPage.php:2462
+msgid "Consumer Rights"
+msgstr "消费者权利"
+
+#: src/Admin/ModulesPage.php:2466
+msgid "Tools"
+msgstr "工具"
+
+#: src/Admin/ModulesPage.php:2470
+msgid "SEO & Optimization"
+msgstr "SEO 与优化"
+
+#: src/Admin/ModulesPage.php:2472
+msgid "Integrations"
+msgstr "集成"
+
+#: src/Admin/ModulesPage.php:2547
 msgid "Could not save module state. Please try again."
 msgstr "无法保存模块状态。请重试。"
 
-#: src/Admin/ModulesPage.php:2498
+#: src/Admin/ModulesPage.php:2564
 msgid "Compatible Omnibus Extension A"
 msgstr "兼容的 Omnibus 扩展 A"
 
-#: src/Admin/ModulesPage.php:2499
+#: src/Admin/ModulesPage.php:2565
 msgid "Compatible Omnibus Extension B"
 msgstr "兼容的 Omnibus 扩展 B"
 
-#: src/Admin/ModulesPage.php:2510
+#: src/Admin/ModulesPage.php:2576
 msgid "detected, data synchronized"
 msgstr "已检测到，数据已同步"
 
-#: src/Admin/ModulesPage.php:2511
+#: src/Admin/ModulesPage.php:2577
 msgid "not installed"
 msgstr "未安装"
 
-#: src/Admin/ModulesPage.php:2526
+#: src/Admin/ModulesPage.php:2592
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
 msgstr "未安装外部 Omnibus 插件。Polski 使用内置的价格跟踪系统。"
 
-#: src/Admin/ModulesPage.php:2528
+#: src/Admin/ModulesPage.php:2594
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
 msgstr "检测到外部插件。Polski 使用其数据而非内置系统。"
 
-#: src/Admin/ModulesPage.php:2548
+#: src/Admin/ModulesPage.php:2614
 msgid "OSS observer service is unavailable."
 msgstr "OSS 观察器服务不可用。"
 
-#: src/Admin/ModulesPage.php:2555
+#: src/Admin/ModulesPage.php:2621
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -6768,61 +6847,61 @@ msgstr ""
 "未安装 One Stop Shop 插件。安装它即可自动开始观察 10,000 € 的欧盟内 B2C 阈"
 "值。"
 
-#: src/Admin/ModulesPage.php:2561
+#: src/Admin/ModulesPage.php:2627
 msgid "Install One Stop Shop"
 msgstr "安装 One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2566
+#: src/Admin/ModulesPage.php:2632
 msgid "You need the install_plugins capability to install it from here."
 msgstr "您需要 install_plugins 权限才能从此处安装它。"
 
-#: src/Admin/ModulesPage.php:2575
+#: src/Admin/ModulesPage.php:2641
 msgid "One Stop Shop plugin detected."
 msgstr "已检测到 One Stop Shop 插件。"
 
-#: src/Admin/ModulesPage.php:2579
+#: src/Admin/ModulesPage.php:2645
 msgid "OSS procedure"
 msgstr "OSS 程序"
 
-#: src/Admin/ModulesPage.php:2581
+#: src/Admin/ModulesPage.php:2647
 msgid "enabled"
 msgstr "已启用"
 
-#: src/Admin/ModulesPage.php:2582
+#: src/Admin/ModulesPage.php:2648
 msgid "disabled"
 msgstr "已禁用"
 
-#: src/Admin/ModulesPage.php:2586
+#: src/Admin/ModulesPage.php:2652
 msgid "Auto observer"
 msgstr "自动观察器"
 
-#: src/Admin/ModulesPage.php:2588
+#: src/Admin/ModulesPage.php:2654
 msgid "watching threshold"
 msgstr "监控阈值"
 
-#: src/Admin/ModulesPage.php:2589
+#: src/Admin/ModulesPage.php:2655
 msgid "off"
 msgstr "关闭"
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2660
 msgid "Open OSS settings"
 msgstr "打开 OSS 设置"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2718
 msgid "detected, integration active"
 msgstr "已检测到，集成已激活"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2721
 msgid "install"
 msgstr "安装"
 
-#: src/Admin/ModulesPage.php:2667
+#: src/Admin/ModulesPage.php:2733
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
 msgstr "未检测到受支持的结账和 Cookie 扩展。Polski 将继续独立运行。"
 
-#: src/Admin/ModulesPage.php:2669
+#: src/Admin/ModulesPage.php:2735
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."
@@ -7258,15 +7337,11 @@ msgstr "证书到期日期 (YYYY-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "环境证书到期日期，格式为 YYYY-MM-DD。"
 
-#: src/Admin/SBOMPage.php:39 src/Admin/SBOMPage.php:40
-msgid "SBOM"
-msgstr "SBOM"
-
-#: src/Admin/SBOMPage.php:49
+#: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
 msgstr "软件物料清单 (SBOM)"
 
-#: src/Admin/SBOMPage.php:50
+#: src/Admin/SBOMPage.php:51
 msgid ""
 "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) "
 "dependencies. Useful for security audits, CRA compliance packages and "
@@ -7275,15 +7350,15 @@ msgstr ""
 "生成一份 CycloneDX 1.4 JSON 文档，列出 PHP (composer) 和 JS (npm) 依赖项。可"
 "用于安全审计、CRA 合规包和漏洞扫描工具。"
 
-#: src/Admin/SBOMPage.php:56
+#: src/Admin/SBOMPage.php:57
 msgid "Path"
 msgstr "路径"
 
-#: src/Admin/SBOMPage.php:72
+#: src/Admin/SBOMPage.php:73
 msgid "Download SBOM (JSON)"
 msgstr "下载 SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:88
+#: src/Admin/SBOMPage.php:89
 msgid "Unknown plugin target."
 msgstr "未知的插件目标。"
 
@@ -7717,6 +7792,10 @@ msgstr "法律页面"
 #: src/AIFeed/LlmsTxtService.php:104
 msgid "Product categories"
 msgstr "产品类别"
+
+#: src/AIFeed/LlmsTxtService.php:109
+msgid "Consumer rights"
+msgstr "消费者权利"
 
 #: src/AIFeed/LlmsTxtService.php:134
 msgid "Withdrawal lookup (file an Art. 11a declaration)"
@@ -9289,8 +9368,8 @@ msgstr "电子邮件："
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114
-#: src/Service/ComplaintTemplateService.php:134
-#: src/Service/RodoTrainingDocsService.php:148
+#: src/Service/ComplaintTemplateService.php:135
+#: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP："
 
@@ -9788,13 +9867,13 @@ msgstr "您一次最多可以对比 {limit} 件商品。最早的条目已被自
 msgid "Short description"
 msgstr "简短描述"
 
-#: src/Service/ComplaintTemplateService.php:45
 #: src/Service/ComplaintTemplateService.php:46
-#: src/Service/ComplaintTemplateService.php:55
+#: src/Service/ComplaintTemplateService.php:47
+#: src/Service/ComplaintTemplateService.php:56
 msgid "Complaint template"
 msgstr "投诉模板"
 
-#: src/Service/ComplaintTemplateService.php:56
+#: src/Service/ComplaintTemplateService.php:57
 msgid ""
 "Ready-to-print complaint form. The seller section is filled automatically "
 "from your setup wizard data; the buyer and defect sections stay blank for "
@@ -9803,118 +9882,118 @@ msgstr ""
 "可直接打印的投诉表单。卖家部分会根据您的设置向导数据自动填写；买家和缺陷部分"
 "留空供客户填写。"
 
-#: src/Service/ComplaintTemplateService.php:57
+#: src/Service/ComplaintTemplateService.php:58
 msgid ""
 "Disclaimer: this is a generic template. Consult a lawyer for shop-specific "
 "legal text."
 msgstr "免责声明：这是一个通用模板。请就店铺专属的法律文本咨询律师。"
 
-#: src/Service/ComplaintTemplateService.php:62
+#: src/Service/ComplaintTemplateService.php:63
 msgid "Download as HTML"
 msgstr "下载为 HTML"
 
-#: src/Service/ComplaintTemplateService.php:66
+#: src/Service/ComplaintTemplateService.php:67
 msgid "Preview"
 msgstr "预览"
 
-#: src/Service/ComplaintTemplateService.php:102
-#: src/Service/ComplaintTemplateService.php:141
+#: src/Service/ComplaintTemplateService.php:103
+#: src/Service/ComplaintTemplateService.php:142
 msgid "Complaint form"
 msgstr "投诉表单"
 
-#: src/Service/ComplaintTemplateService.php:137
-#: src/Service/ComplaintTemplateService.php:151
+#: src/Service/ComplaintTemplateService.php:138
+#: src/Service/ComplaintTemplateService.php:152
 msgid "Email:"
 msgstr "电子邮箱："
 
-#: src/Service/ComplaintTemplateService.php:142
+#: src/Service/ComplaintTemplateService.php:143
 msgid ""
 "Submit this form within the statutory warranty period. The seller is "
 "required to respond within 14 days."
 msgstr "请在法定保修期内提交此表单。卖家须在 14 天内回复。"
 
-#: src/Service/ComplaintTemplateService.php:144
+#: src/Service/ComplaintTemplateService.php:145
 msgid "Seller"
 msgstr "卖家"
 
-#: src/Service/ComplaintTemplateService.php:147
+#: src/Service/ComplaintTemplateService.php:148
 #: src/Service/ProductQAService.php:237
 msgid "Customer"
 msgstr "客户"
 
-#: src/Service/ComplaintTemplateService.php:148
+#: src/Service/ComplaintTemplateService.php:149
 msgid "Name and surname:"
 msgstr "姓名："
 
-#: src/Service/ComplaintTemplateService.php:149
+#: src/Service/ComplaintTemplateService.php:150
 msgid "Address:"
 msgstr "地址："
 
-#: src/Service/ComplaintTemplateService.php:152
+#: src/Service/ComplaintTemplateService.php:153
 msgid "Phone:"
 msgstr "电话："
 
-#: src/Service/ComplaintTemplateService.php:155
+#: src/Service/ComplaintTemplateService.php:156
 msgid "Order and product"
 msgstr "订单与商品"
 
-#: src/Service/ComplaintTemplateService.php:157
+#: src/Service/ComplaintTemplateService.php:158
 msgid "Order number:"
 msgstr "订单编号："
 
-#: src/Service/ComplaintTemplateService.php:158
+#: src/Service/ComplaintTemplateService.php:159
 msgid "Purchase date:"
 msgstr "购买日期："
 
-#: src/Service/ComplaintTemplateService.php:160
+#: src/Service/ComplaintTemplateService.php:161
 msgid "Product name:"
 msgstr "商品名称："
 
-#: src/Service/ComplaintTemplateService.php:162
+#: src/Service/ComplaintTemplateService.php:163
 msgid "Defect / non-conformity"
 msgstr "缺陷 / 不符合"
 
-#: src/Service/ComplaintTemplateService.php:163
+#: src/Service/ComplaintTemplateService.php:164
 msgid "Description:"
 msgstr "描述："
 
-#: src/Service/ComplaintTemplateService.php:164
+#: src/Service/ComplaintTemplateService.php:165
 msgid "Date of defect detection:"
 msgstr "发现缺陷日期："
 
-#: src/Service/ComplaintTemplateService.php:166
+#: src/Service/ComplaintTemplateService.php:167
 msgid "Requested remedy"
 msgstr "请求的补救措施"
 
-#: src/Service/ComplaintTemplateService.php:168
+#: src/Service/ComplaintTemplateService.php:169
 msgid "Repair"
 msgstr "维修"
 
-#: src/Service/ComplaintTemplateService.php:169
+#: src/Service/ComplaintTemplateService.php:170
 msgid "Replacement"
 msgstr "更换"
 
-#: src/Service/ComplaintTemplateService.php:170
+#: src/Service/ComplaintTemplateService.php:171
 msgid "Price reduction (specify amount)"
 msgstr "降价（请注明金额）"
 
-#: src/Service/ComplaintTemplateService.php:171
+#: src/Service/ComplaintTemplateService.php:172
 msgid "Withdrawal from the contract (refund of full price)"
 msgstr "解除合同（全额退款）"
 
-#: src/Service/ComplaintTemplateService.php:174
+#: src/Service/ComplaintTemplateService.php:175
 msgid "Bank account for refund"
 msgstr "退款银行账户"
 
-#: src/Service/ComplaintTemplateService.php:175
+#: src/Service/ComplaintTemplateService.php:176
 msgid "Account number (IBAN):"
 msgstr "账号（IBAN）："
 
-#: src/Service/ComplaintTemplateService.php:178
+#: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "日期："
 
-#: src/Service/ComplaintTemplateService.php:179
+#: src/Service/ComplaintTemplateService.php:180
 msgid "Signature:"
 msgstr "签名："
 
@@ -10841,269 +10920,269 @@ msgstr "取消订阅评价请求"
 msgid "Leave a review"
 msgstr "留下评价"
 
-#: src/Service/RodoTrainingDocsService.php:42
 #: src/Service/RodoTrainingDocsService.php:43
+#: src/Service/RodoTrainingDocsService.php:44
 msgid "RODO training docs"
 msgstr "RODO 培训文档"
 
-#: src/Service/RodoTrainingDocsService.php:52
+#: src/Service/RodoTrainingDocsService.php:53
 msgid "RODO / GDPR training documentation"
 msgstr "RODO / GDPR 培训文档"
 
-#: src/Service/RodoTrainingDocsService.php:53
+#: src/Service/RodoTrainingDocsService.php:54
 msgid ""
 "Ready-to-print templates for onboarding new shop employees. Pre-branded with "
 "your shop's business data."
 msgstr "用于新店员入职的可打印模板。已预先标注您店铺的企业数据。"
 
-#: src/Service/RodoTrainingDocsService.php:54
+#: src/Service/RodoTrainingDocsService.php:55
 msgid ""
 "Disclaimer: generic starter templates - adapt to your actual data-processing "
 "workflows."
 msgstr "免责声明：通用入门模板 - 请根据您实际的数据处理流程进行调整。"
 
-#: src/Service/RodoTrainingDocsService.php:64
+#: src/Service/RodoTrainingDocsService.php:65
 msgid "Download HTML"
 msgstr "下载 HTML"
 
-#: src/Service/RodoTrainingDocsService.php:83
+#: src/Service/RodoTrainingDocsService.php:84
 msgid "Unknown document."
 msgstr "未知文档。"
 
-#: src/Service/RodoTrainingDocsService.php:104
+#: src/Service/RodoTrainingDocsService.php:105
 msgid "Training logbook"
 msgstr "培训记录簿"
 
-#: src/Service/RodoTrainingDocsService.php:105
+#: src/Service/RodoTrainingDocsService.php:106
 msgid ""
 "Table to record employee training sessions: who, role, topics, date and "
 "signature."
 msgstr "用于记录员工培训的表格：人员、角色、主题、日期和签名。"
 
-#: src/Service/RodoTrainingDocsService.php:109
+#: src/Service/RodoTrainingDocsService.php:110
 msgid "RODO principles summary"
 msgstr "RODO 原则摘要"
 
-#: src/Service/RodoTrainingDocsService.php:110
+#: src/Service/RodoTrainingDocsService.php:111
 msgid ""
 "One-page summary of the 7 RODO principles and the 8 data subject rights."
 msgstr "7 项 RODO 原则和 8 项数据主体权利的单页摘要。"
 
-#: src/Service/RodoTrainingDocsService.php:114
+#: src/Service/RodoTrainingDocsService.php:115
 msgid "Data breach response playbook"
 msgstr "数据泄露响应手册"
 
-#: src/Service/RodoTrainingDocsService.php:115
+#: src/Service/RodoTrainingDocsService.php:116
 msgid ""
 "Step-by-step checklist with the 72-hour UODO notification deadline and "
 "internal escalation."
 msgstr "包含 72 小时 UODO 通报期限和内部升级流程的分步检查清单。"
 
-#: src/Service/RodoTrainingDocsService.php:160
+#: src/Service/RodoTrainingDocsService.php:161
 msgid ""
 "Use one row per training session. The trainee signs to confirm attendance "
 "and understanding."
 msgstr "每次培训使用一行。受训人签名以确认出席和理解。"
 
-#: src/Service/RodoTrainingDocsService.php:165
+#: src/Service/RodoTrainingDocsService.php:166
 msgid "Employee"
 msgstr "员工"
 
-#: src/Service/RodoTrainingDocsService.php:166
+#: src/Service/RodoTrainingDocsService.php:167
 msgid "Role"
 msgstr "角色"
 
-#: src/Service/RodoTrainingDocsService.php:167
+#: src/Service/RodoTrainingDocsService.php:168
 msgid "Topics covered"
 msgstr "涵盖的主题"
 
-#: src/Service/RodoTrainingDocsService.php:168
+#: src/Service/RodoTrainingDocsService.php:169
 msgid "Trainer"
 msgstr "培训师"
 
-#: src/Service/RodoTrainingDocsService.php:169
+#: src/Service/RodoTrainingDocsService.php:170
 msgid "Signature"
 msgstr "签名"
 
-#: src/Service/RodoTrainingDocsService.php:187
+#: src/Service/RodoTrainingDocsService.php:188
 msgid "Lawfulness, fairness and transparency"
 msgstr "合法、公平和透明"
 
-#: src/Service/RodoTrainingDocsService.php:188
+#: src/Service/RodoTrainingDocsService.php:189
 msgid "Purpose limitation"
 msgstr "目的限制"
 
-#: src/Service/RodoTrainingDocsService.php:189
+#: src/Service/RodoTrainingDocsService.php:190
 msgid "Data minimisation"
 msgstr "数据最小化"
 
-#: src/Service/RodoTrainingDocsService.php:190
+#: src/Service/RodoTrainingDocsService.php:191
 msgid "Accuracy"
 msgstr "准确性"
 
-#: src/Service/RodoTrainingDocsService.php:191
+#: src/Service/RodoTrainingDocsService.php:192
 msgid "Storage limitation"
 msgstr "存储限制"
 
-#: src/Service/RodoTrainingDocsService.php:192
+#: src/Service/RodoTrainingDocsService.php:193
 msgid "Integrity and confidentiality (security)"
 msgstr "完整性和保密性（安全）"
 
-#: src/Service/RodoTrainingDocsService.php:193
+#: src/Service/RodoTrainingDocsService.php:194
 msgid "Accountability"
 msgstr "问责制"
 
-#: src/Service/RodoTrainingDocsService.php:197
+#: src/Service/RodoTrainingDocsService.php:198
 msgid "Right of access (Art. 15)"
 msgstr "访问权（第 15 条）"
 
-#: src/Service/RodoTrainingDocsService.php:198
+#: src/Service/RodoTrainingDocsService.php:199
 msgid "Right to rectification (Art. 16)"
 msgstr "更正权（第 16 条）"
 
-#: src/Service/RodoTrainingDocsService.php:199
+#: src/Service/RodoTrainingDocsService.php:200
 msgid "Right to erasure (Art. 17)"
 msgstr "删除权（第 17 条）"
 
-#: src/Service/RodoTrainingDocsService.php:200
+#: src/Service/RodoTrainingDocsService.php:201
 msgid "Right to restriction of processing (Art. 18)"
 msgstr "限制处理权（第 18 条）"
 
-#: src/Service/RodoTrainingDocsService.php:201
+#: src/Service/RodoTrainingDocsService.php:202
 msgid "Right to notification about rectification or erasure (Art. 19)"
 msgstr "更正或删除通知权（第 19 条）"
 
-#: src/Service/RodoTrainingDocsService.php:202
+#: src/Service/RodoTrainingDocsService.php:203
 msgid "Right to data portability (Art. 20)"
 msgstr "数据可携权（第 20 条）"
 
-#: src/Service/RodoTrainingDocsService.php:203
+#: src/Service/RodoTrainingDocsService.php:204
 msgid "Right to object (Art. 21)"
 msgstr "反对权（第 21 条）"
 
-#: src/Service/RodoTrainingDocsService.php:204
+#: src/Service/RodoTrainingDocsService.php:205
 msgid "Right not to be subject to automated decision-making (Art. 22)"
 msgstr "不受自动化决策约束的权利（第 22 条）"
 
-#: src/Service/RodoTrainingDocsService.php:207
+#: src/Service/RodoTrainingDocsService.php:208
 msgid "Seven principles of processing (Art. 5)"
 msgstr "处理的七项原则（第 5 条）"
 
-#: src/Service/RodoTrainingDocsService.php:214
+#: src/Service/RodoTrainingDocsService.php:215
 msgid "Eight data subject rights (Chapter III)"
 msgstr "数据主体的八项权利（第三章）"
 
-#: src/Service/RodoTrainingDocsService.php:221
+#: src/Service/RodoTrainingDocsService.php:222
 msgid "Operational reminders"
 msgstr "操作提醒"
 
-#: src/Service/RodoTrainingDocsService.php:223
+#: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
 msgstr "切勿通过电子邮件发送包含个人数据的电子表格 - 请使用加密渠道。"
 
-#: src/Service/RodoTrainingDocsService.php:224
+#: src/Service/RodoTrainingDocsService.php:225
 msgid "Verify the requester before acting on access or erasure requests."
 msgstr "在处理访问或删除请求之前，先核实请求者身份。"
 
-#: src/Service/RodoTrainingDocsService.php:225
+#: src/Service/RodoTrainingDocsService.php:226
 msgid "Log every disclosure to third parties (processors, authorities)."
 msgstr "记录每一次向第三方（处理者、机关）的数据披露。"
 
-#: src/Service/RodoTrainingDocsService.php:226
+#: src/Service/RodoTrainingDocsService.php:227
 msgid ""
 "Report every suspected data breach to the DPO/manager within 24 hours "
 "internally."
 msgstr "在内部 24 小时内将每一起疑似数据泄露报告给 DPO/经理。"
 
-#: src/Service/RodoTrainingDocsService.php:235
+#: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
 msgstr "发现 - 记录时间戳、发现者、受影响的系统。"
 
-#: src/Service/RodoTrainingDocsService.php:236
+#: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
 msgstr "遏制 - 在 1 小时内隔离受影响的账户/系统。"
 
-#: src/Service/RodoTrainingDocsService.php:237
+#: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
 msgstr "内部通知 - 在 24 小时内通知 DPO 和管理层。"
 
-#: src/Service/RodoTrainingDocsService.php:238
+#: src/Service/RodoTrainingDocsService.php:239
 msgid ""
 "Assessment - document data categories, subjects affected, likely impact."
 msgstr "评估 - 记录数据类别、受影响的主体、可能的影响。"
 
-#: src/Service/RodoTrainingDocsService.php:239
+#: src/Service/RodoTrainingDocsService.php:240
 msgid ""
 "UODO notification - required within 72 hours when risk to subjects is not "
 "unlikely."
 msgstr "UODO 通报 - 当对主体的风险并非不太可能时，需在 72 小时内完成。"
 
-#: src/Service/RodoTrainingDocsService.php:240
+#: src/Service/RodoTrainingDocsService.php:241
 msgid ""
 "Subject notification - required \"without undue delay\" when risk is high."
 msgstr "主体通知 - 当风险较高时，需\"不得无故拖延\"地完成。"
 
-#: src/Service/RodoTrainingDocsService.php:241
+#: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
 msgstr "补救 - 修补、轮换凭据、审查日志。"
 
-#: src/Service/RodoTrainingDocsService.php:242
+#: src/Service/RodoTrainingDocsService.php:243
 msgid "Post-mortem - document lessons learned and update training."
 msgstr "事后分析 - 记录经验教训并更新培训。"
 
-#: src/Service/RodoTrainingDocsService.php:245
+#: src/Service/RodoTrainingDocsService.php:246
 msgid "Step-by-step breach response"
 msgstr "分步泄露响应"
 
-#: src/Service/RodoTrainingDocsService.php:252
+#: src/Service/RodoTrainingDocsService.php:253
 msgid "Breach log template"
 msgstr "泄露日志模板"
 
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Field"
 msgstr "字段"
 
-#: src/Service/RodoTrainingDocsService.php:257
+#: src/Service/RodoTrainingDocsService.php:258
 msgid "Incident ID"
 msgstr "事件 ID"
 
-#: src/Service/RodoTrainingDocsService.php:258
+#: src/Service/RodoTrainingDocsService.php:259
 msgid "Detected at (UTC)"
 msgstr "检测时间（UTC）"
 
-#: src/Service/RodoTrainingDocsService.php:259
+#: src/Service/RodoTrainingDocsService.php:260
 msgid "Detected by"
 msgstr "检测者"
 
-#: src/Service/RodoTrainingDocsService.php:260
+#: src/Service/RodoTrainingDocsService.php:261
 msgid "Affected systems"
 msgstr "受影响的系统"
 
-#: src/Service/RodoTrainingDocsService.php:261
+#: src/Service/RodoTrainingDocsService.php:262
 msgid "Affected data categories"
 msgstr "受影响的数据类别"
 
-#: src/Service/RodoTrainingDocsService.php:262
+#: src/Service/RodoTrainingDocsService.php:263
 msgid "Approximate number of subjects"
 msgstr "主体的大致数量"
 
-#: src/Service/RodoTrainingDocsService.php:263
+#: src/Service/RodoTrainingDocsService.php:264
 msgid "Likely impact"
 msgstr "可能的影响"
 
-#: src/Service/RodoTrainingDocsService.php:264
+#: src/Service/RodoTrainingDocsService.php:265
 msgid "Containment actions"
 msgstr "遏制措施"
 
-#: src/Service/RodoTrainingDocsService.php:265
+#: src/Service/RodoTrainingDocsService.php:266
 msgid "UODO notified at"
 msgstr "UODO 通报时间"
 
-#: src/Service/RodoTrainingDocsService.php:266
+#: src/Service/RodoTrainingDocsService.php:267
 msgid "Subjects notified at"
 msgstr "主体通知时间"
 
-#: src/Service/RodoTrainingDocsService.php:274
+#: src/Service/RodoTrainingDocsService.php:275
 msgid "UODO notification channel:"
 msgstr "UODO 通报渠道："
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T05:41:05+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
 "PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
 "Last-Translator: Mariusz Szatkowski\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
@@ -15,759 +15,8 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: Polski Translation Script 1.0\n"
 
-msgid ""
-"Automatic cart discounts based on spending or quantity. When enabled, "
-"shoppers get a percentage off once the cart subtotal hits a threshold, and "
-"bulk discounts when a product's quantity hits a threshold; applied "
-"automatically in the cart. Off by default."
-msgstr ""
-"Automatyczne rabaty koszykowe oparte na kwocie zakupów lub ilości. Po "
-"włączeniu klienci otrzymują procentową zniżkę, gdy suma częściowa koszyka "
-"osiągnie próg, oraz rabaty ilościowe, gdy ilość produktu osiągnie próg; "
-"stosowane automatycznie w koszyku. Domyślnie wyłączone."
-
-msgid ""
-"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
-"per-unit price appears next to product prices on shop and product pages, "
-"helping customers compare value, in line with Polish consumer law."
-msgstr ""
-"Pokazuje cenę za jednostkę, na przykład za 1 kg lub za 100 ml. Po włączeniu "
-"cena jednostkowa pojawia się obok cen produktów na stronach sklepu i "
-"produktów, pomagając klientom porównywać wartość, zgodnie z polskim prawem "
-"konsumenckim."
-
-msgid ""
-"Tracks price history and shows the lowest price from the last 30 days on "
-"discounted products. When enabled, sale products display their lowest 30-day "
-"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
-msgstr ""
-"Śledzi historię cen i pokazuje najniższą cenę z ostatnich 30 dni na "
-"przecenionych produktach. Po włączeniu produkty w promocji wyświetlają swoją "
-"najniższą cenę z 30 dni obok ceny, pomagając spełnić unijną dyrektywę "
-"Omnibus (2019/2161)."
-
-msgid ""
-"Controls how VAT is shown on prices. When enabled, you can set gross or net "
-"price display, show VAT rate info, and support the small business VAT "
-"exemption (Art. 113), affecting prices shown to shoppers across the store."
-msgstr ""
-"Kontroluje sposób wyświetlania VAT w cenach. Po włączeniu można ustawić "
-"wyświetlanie cen brutto lub netto, pokazać informację o stawce VAT oraz "
-"obsłużyć zwolnienie z VAT dla małych firm (art. 113), co wpływa na ceny "
-"pokazywane klientom w całym sklepie."
-
-msgid ""
-"Watches your cross-border EU B2C sales against the OSS threshold. When "
-"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
-"sales and flags when you approach the 10,000 EUR threshold for the year."
-msgstr ""
-"Monitoruje Twoją transgraniczną sprzedaż B2C w UE względem progu OSS. Po "
-"włączeniu instaluje wtyczkę One Stop Shop, która monitoruje wewnątrzunijną "
-"sprzedaż B2C i sygnalizuje, gdy zbliżasz się do progu 10 000 EUR w danym "
-"roku."
-
-msgid ""
-"Shows an estimated delivery time on product pages. When enabled, each "
-"product page displays its delivery estimate; you can set it per product or "
-"variation, with a default used when none is specified. Off until enabled."
-msgstr ""
-"Pokazuje szacowany czas dostawy na stronach produktów. Po włączeniu każda "
-"strona produktu wyświetla swój szacowany czas dostawy; można go ustawić dla "
-"produktu lub wariantu, a gdy nie został określony, używana jest wartość "
-"domyślna. Wyłączone do czasu włączenia."
-
-msgid ""
-"Adds a link to your shipping costs page near prices. When enabled, a "
-"shipping costs info link appears next to the product price, so customers can "
-"check delivery charges before buying. Off until enabled."
-msgstr ""
-"Dodaje link do strony z kosztami wysyłki w pobliżu cen. Po włączeniu obok "
-"ceny produktu pojawia się link z informacją o kosztach wysyłki, dzięki czemu "
-"klienci mogą sprawdzić opłaty za dostawę przed zakupem. Wyłączone do czasu "
-"włączenia."
-
-msgid ""
-"Changes the order button wording at checkout. When enabled, the place-order "
-"button reads \"Order with obligation to pay\", as required by Polish law, so "
-"it's clear the order creates a payment obligation."
-msgstr ""
-"Zmienia treść przycisku zamówienia podczas składania zamówienia. Po "
-"włączeniu przycisk złożenia zamówienia wyświetla napis \"Zamówienie z "
-"obowiązkiem zapłaty\", zgodnie z wymogami polskiego prawa, dzięki czemu "
-"jasne jest, że zamówienie tworzy obowiązek zapłaty."
-
-msgid ""
-"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
-"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
-"content, delivery notifications, review reminder, marketing) for customers "
-"to accept during purchase."
-msgstr ""
-"Dodaje wbudowane pola wyboru zgód do składania zamówienia. Po włączeniu "
-"można wyświetlić do 7 pól wyboru (regulamin, polityka prywatności, prawo "
-"odstąpienia, treści cyfrowe, powiadomienia o dostawie, przypomnienie o "
-"opinii, marketing), które klienci akceptują podczas zakupu."
-
-msgid ""
-"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
-"NIP that is checked for a valid checksum, and company data is fetched "
-"automatically from the GUS REGON database to fill in business details."
-msgstr ""
-"Dodaje pole NIP podczas składania zamówienia. Po włączeniu klienci mogą "
-"wpisać NIP, którego suma kontrolna jest weryfikowana, a dane firmy są "
-"automatycznie pobierane z bazy GUS REGON w celu uzupełnienia danych "
-"firmowych."
-
-msgid ""
-"Keeps a record of customer consents. When enabled, every consent a customer "
-"gives is logged with IP address, browser (user agent), and timestamp, giving "
-"you an audit trail to support GDPR record-keeping. Off until enabled."
-msgstr ""
-"Prowadzi rejestr zgód klientów. Po włączeniu każda zgoda udzielona przez "
-"klienta jest zapisywana wraz z adresem IP, przeglądarką (user agent) i "
-"znacznikiem czasu, dając Ci ścieżkę audytu wspierającą prowadzenie "
-"dokumentacji RODO. Wyłączone do czasu włączenia."
-
-msgid ""
-"A native cookie-consent banner. When enabled, visitors see a consent banner "
-"with categories, scripts and iframes are blocked until the matching category "
-"is granted, Google Consent Mode v2 signals are sent, and each decision is "
-"recorded. Provides tools, not legal advice."
-msgstr ""
-"Natywny baner zgody na pliki cookie. Po włączeniu odwiedzający widzą baner "
-"zgody z kategoriami, skrypty i elementy iframe są blokowane do czasu "
-"udzielenia zgody dla odpowiedniej kategorii, wysyłane są sygnały Google "
-"Consent Mode v2, a każda decyzja jest rejestrowana. Dostarcza narzędzia, nie "
-"porady prawne."
-
-msgid ""
-"Lets customers request returns or complaints (RMA). When enabled, shoppers "
-"can open a complaint or return request from My Account on eligible orders; "
-"they get a confirmation email and you manage requests in an admin queue with "
-"statuses. Provides tools, not legal advice."
-msgstr ""
-"Pozwala klientom zgłaszać zwroty lub reklamacje (RMA). Po włączeniu klienci "
-"mogą otworzyć zgłoszenie reklamacji lub zwrotu z poziomu Moje konto dla "
-"kwalifikujących się zamówień; otrzymują e-mail z potwierdzeniem, a Ty "
-"zarządzasz zgłoszeniami w kolejce administracyjnej ze statusami. Dostarcza "
-"narzędzia, nie porady prawne."
-
-msgid ""
-"Generates standard legal pages for you. When enabled, it can create Terms "
-"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
-"giving you a starting point for your store's required documents. Off until "
-"enabled."
-msgstr ""
-"Generuje za Ciebie standardowe strony prawne. Po włączeniu może utworzyć "
-"strony Regulamin, Polityka prywatności, Prawo odstąpienia oraz Reklamacje, "
-"dając Ci punkt wyjścia dla wymaganych dokumentów Twojego sklepu. Wyłączone "
-"do czasu włączenia."
-
-msgid ""
-"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
-"withdrawal form and a My Account action with a confirmation step and email; "
-"you can exclude specific products that are not eligible for withdrawal. Off "
-"until enabled."
-msgstr ""
-"Obsługuje wnioski o 14-dniowe prawo odstąpienia. Po włączeniu klienci "
-"otrzymują formularz odstąpienia oraz akcję w sekcji Moje konto z krokiem "
-"potwierdzenia i e-mailem; możesz wykluczyć konkretne produkty, które nie "
-"podlegają prawu odstąpienia. Wyłączone do czasu włączenia."
-
-msgid ""
-"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
-"displays information about the European Commission's ODR platform, typically "
-"in the footer or legal area, helping with consumer dispute transparency. Off "
-"until enabled."
-msgstr ""
-"Pokazuje informacje o unijnym internetowym rozstrzyganiu sporów (ODR). Po "
-"włączeniu Twój sklep wyświetla informacje o platformie ODR Komisji "
-"Europejskiej, zwykle w stopce lub sekcji prawnej, wspierając przejrzystość w "
-"sporach konsumenckich. Wyłączone do czasu włączenia."
-
-msgid ""
-"Attaches your legal documents to order confirmation emails. When enabled, "
-"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
-"Withdrawal is included with the confirmation email each customer receives "
-"after placing an order."
-msgstr ""
-"Dołącza Twoje dokumenty prawne do e-maili z potwierdzeniem zamówienia. Po "
-"włączeniu treść stron takich jak Regulamin, Polityka prywatności i Prawo "
-"odstąpienia jest dołączana do e-maila z potwierdzeniem, który każdy klient "
-"otrzymuje po złożeniu zamówienia."
-
-msgid ""
-"Adds manufacturer and GPSR product safety details to your products. When "
-"enabled, you can enter manufacturer info, an EU responsible person, safety "
-"documents, and instructions per product, which then appear for shoppers on "
-"the product page."
-msgstr ""
-"Dodaje do Twoich produktów dane producenta oraz informacje o bezpieczeństwie "
-"produktów GPSR. Po włączeniu można wprowadzić dane producenta, osobę "
-"odpowiedzialną w UE, dokumenty bezpieczeństwa oraz instrukcje dla każdego "
-"produktu, które następnie pojawiają się dla klientów na stronie produktu."
-
-msgid ""
-"Adds food and supplement product details to your products. When enabled, you "
-"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
-"content, country of origin, and distributor per product, which then show to "
-"shoppers on the product page."
-msgstr ""
-"Dodaje do Twoich produktów dane produktów spożywczych i suplementów. Po "
-"włączeniu można wprowadzić wartości odżywcze, alergeny, składniki, Nutri-"
-"Score, zawartość alkoholu, kraj pochodzenia oraz dystrybutora dla każdego "
-"produktu, które następnie wyświetlają się klientom na stronie produktu."
-
-msgid ""
-"Adds energy consumption details for electrical devices. When enabled, you "
-"can enter energy label data per product, which is then displayed to shoppers "
-"on the product page for electrical items."
-msgstr ""
-"Dodaje informacje o zużyciu energii dla urządzeń elektrycznych. Po włączeniu "
-"można wprowadzić dane etykiety energetycznej dla każdego produktu, które są "
-"następnie wyświetlane klientom na stronie produktu dla artykułów "
-"elektrycznych."
-
-msgid ""
-"Verifies a customer's email address when they register an account. When "
-"enabled, new sign-ups receive an activation link by email and cannot log in "
-"until they confirm it, helping confirm real email addresses. Off until "
-"enabled."
-msgstr ""
-"Weryfikuje adres e-mail klienta podczas zakładania konta. Po włączeniu nowo "
-"rejestrujący się otrzymują link aktywacyjny e-mailem i nie mogą się "
-"zalogować, dopóki go nie potwierdzą, co pomaga potwierdzić prawdziwe adresy "
-"e-mail. Wyłączone do czasu włączenia."
-
-msgid ""
-"Speeds up product search with instant suggestions as shoppers type. When "
-"enabled, your store's search box shows live product matches (including by "
-"SKU and category) without reloading the page, kept lightweight for fast page "
-"performance. Off until enabled."
-msgstr ""
-"Przyspiesza wyszukiwanie produktów dzięki natychmiastowym podpowiedziom "
-"podczas pisania. Po włączeniu pole wyszukiwania Twojego sklepu pokazuje na "
-"żywo pasujące produkty (również po SKU i kategorii) bez przeładowywania "
-"strony, pozostając lekkie dla szybkiego działania strony. Wyłączone do czasu "
-"włączenia."
-
-msgid ""
-"Adds product brands as a separate feature from the manufacturer. When "
-"enabled, you can assign brands to products using a dedicated brand taxonomy, "
-"and brand info appears for shoppers on product pages and listings. Off until "
-"enabled."
-msgstr ""
-"Dodaje marki produktów jako funkcję odrębną od producenta. Po włączeniu "
-"można przypisywać marki do produktów za pomocą dedykowanej taksonomii marek, "
-"a informacje o marce pojawiają się dla klientów na stronach i listach "
-"produktów. Wyłączone do czasu włączenia."
-
-msgid ""
-"Lets shoppers filter product listings without reloading the page. When "
-"enabled, customers can narrow results by category, brand, price, stock "
-"status, sale, and attributes, with the listing updating instantly. Off until "
-"enabled."
-msgstr ""
-"Pozwala klientom filtrować listy produktów bez przeładowywania strony. Po "
-"włączeniu klienci mogą zawężać wyniki według kategorii, marki, ceny, stanu "
-"magazynowego, promocji i atrybutów, a lista aktualizuje się natychmiast. "
-"Wyłączone do czasu włączenia."
-
-msgid ""
-"Lets shoppers save favorite products for later. When enabled, both guests "
-"and logged-in customers can add or remove items instantly, and logged-in "
-"customers see their saved list in My Account. Off until enabled."
-msgstr ""
-"Pozwala klientom zapisywać ulubione produkty na później. Po włączeniu "
-"zarówno goście, jak i zalogowani klienci mogą natychmiast dodawać lub usuwać "
-"produkty, a zalogowani klienci widzą swoją zapisaną listę w sekcji Moje "
-"konto. Wyłączone do czasu włączenia."
-
-msgid ""
-"Lets shoppers compare products side by side. When enabled, guests and logged-"
-"in customers can add products to a comparison table that highlights "
-"differences, and customers can view it in My Account. Off until enabled."
-msgstr ""
-"Pozwala klientom porównywać produkty obok siebie. Po włączeniu goście i "
-"zalogowani klienci mogą dodawać produkty do tabeli porównawczej, która "
-"podkreśla różnice, a klienci mogą ją zobaczyć w sekcji Moje konto. Wyłączone "
-"do czasu włączenia."
-
-msgid ""
-"Lets shoppers preview a product without leaving the listing. When enabled, a "
-"lightweight pop-up opens from product listings showing the price, gallery, "
-"variations, and basic purchase info. Off until enabled."
-msgstr ""
-"Pozwala klientom podejrzeć produkt bez opuszczania listy. Po włączeniu z "
-"listy produktów otwiera się lekkie okno wyświetlające cenę, galerię, "
-"warianty i podstawowe informacje o zakupie. Wyłączone do czasu włączenia."
-
-msgid ""
-"Adds merchandising badges to your products. When enabled, badges appear on "
-"product pages and listings for shoppers, set either automatically by "
-"conditions you choose or manually per product. Off until enabled."
-msgstr ""
-"Dodaje plakietki merchandisingowe do Twoich produktów. Po włączeniu "
-"plakietki pojawiają się dla klientów na stronach i listach produktów, "
-"ustawiane automatycznie według wybranych przez Ciebie warunków lub ręcznie "
-"dla każdego produktu. Wyłączone do czasu włączenia."
-
-msgid ""
-"Lets you add extra tabs to product pages. When enabled, shoppers see "
-"additional tabs with content you set per product, plus global tabs for "
-"shipping, returns, and business information. Off until enabled."
-msgstr ""
-"Pozwala dodawać dodatkowe zakładki do stron produktów. Po włączeniu klienci "
-"widzą dodatkowe zakładki z treścią ustawioną przez Ciebie dla każdego "
-"produktu oraz globalne zakładki dotyczące wysyłki, zwrotów i informacji "
-"firmowych. Wyłączone do czasu włączenia."
-
-msgid ""
-"Adds a video to your product pages. When enabled, shoppers see a product "
-"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
-"local MP4 file. Off until enabled."
-msgstr ""
-"Dodaje wideo do stron Twoich produktów. Po włączeniu klienci widzą wideo "
-"produktu na stronie produktu, osadzone z YouTube, Vimeo lub przesłane jako "
-"lokalny plik MP4. Wyłączone do czasu włączenia."
-
-msgid ""
-"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
-"external slider libraries. When enabled, product image zoom and a click-to-"
-"enlarge lightbox become available to shoppers on product pages. Off until "
-"enabled."
-msgstr ""
-"Dodaje lekkie powiększanie obrazów i prosty lightbox galerii, bez ciężkich "
-"zewnętrznych bibliotek slajderów. Po włączeniu powiększanie obrazów produktu "
-"oraz lightbox z powiększaniem po kliknięciu stają się dostępne dla klientów "
-"na stronach produktów. Wyłączone do czasu włączenia."
-
-msgid ""
-"Adds a lightweight product slider using scroll-snap to show related, sale or "
-"featured products. When enabled, you can place a swipeable product carousel "
-"that displays to shoppers on the storefront. Off until enabled."
-msgstr ""
-"Dodaje lekki slajder produktów wykorzystujący scroll-snap do pokazywania "
-"powiązanych, przecenionych lub wyróżnionych produktów. Po włączeniu można "
-"umieścić przewijalną karuzelę produktów, która wyświetla się klientom w "
-"sklepie. Wyłączone do czasu włączenia."
-
-msgid ""
-"Captures interest in out-of-stock products. When enabled, shoppers can enter "
-"their email on sold-out products to join a waitlist and get an automatic "
-"notification when the item is back in stock. Off until enabled."
-msgstr ""
-"Zbiera zainteresowanie produktami niedostępnymi w magazynie. Po włączeniu "
-"klienci mogą wpisać swój e-mail przy wyprzedanych produktach, aby dołączyć "
-"do listy oczekujących i otrzymać automatyczne powiadomienie, gdy produkt "
-"wróci do sprzedaży. Wyłączone do czasu włączenia."
-
-msgid ""
-"Loads more products as shoppers browse listings. When enabled, WooCommerce "
-"archive pages load further products automatically or via a load-more button "
-"instead of paging. Off until enabled."
-msgstr ""
-"Wczytuje kolejne produkty, gdy klienci przeglądają listy. Po włączeniu "
-"strony archiwów WooCommerce wczytują kolejne produkty automatycznie lub za "
-"pomocą przycisku wczytaj więcej zamiast stronicowania. Wyłączone do czasu "
-"włączenia."
-
-msgid ""
-"Shows a promotional or lead-capture popup to visitors. When enabled, a "
-"lightweight popup appears based on the delay, frequency, and page locations "
-"you set. Off until enabled."
-msgstr ""
-"Pokazuje odwiedzającym wyskakujące okno promocyjne lub pozyskujące kontakty. "
-"Po włączeniu lekkie wyskakujące okno pojawia się w oparciu o ustawione przez "
-"Ciebie opóźnienie, częstotliwość i lokalizacje na stronie. Wyłączone do "
-"czasu włączenia."
-
-msgid ""
-"Provides tools for displaying EU product safety (GPSR) details. When "
-"enabled, you can add manufacturer and importer data, responsible person, "
-"product identifiers, safety warnings, and instructions to products, with CSV "
-"bulk import or export. Off until enabled."
-msgstr ""
-"Udostępnia narzędzia do wyświetlania informacji o bezpieczeństwie produktów "
-"w UE (GPSR). Po włączeniu można dodawać do produktów dane producenta i "
-"importera, osobę odpowiedzialną, identyfikatory produktów, ostrzeżenia "
-"bezpieczeństwa oraz instrukcje, z masowym importem lub eksportem CSV. "
-"Wyłączone do czasu włączenia."
-
-msgid ""
-"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
-"from customers who actually bought the product display a verified purchase "
-"badge on the product page, so shoppers can tell genuine buyer feedback from "
-"the rest."
-msgstr ""
-"Pokazuje plakietkę zaufania przy opiniach pozostawionych przez prawdziwych "
-"kupujących. Po włączeniu opinie od klientów, którzy faktycznie kupili "
-"produkt, wyświetlają plakietkę zweryfikowanego zakupu na stronie produktu, "
-"dzięki czemu klienci mogą odróżnić autentyczne opinie kupujących od "
-"pozostałych."
-
-msgid ""
-"Adds product fields for backing up environmental claims. When enabled, each "
-"product gains fields for the basis of an ecological claim, a certificate "
-"link, and an expiration date, helping you prepare for the anti-greenwashing "
-"directive (September 2026)."
-msgstr ""
-"Dodaje pola produktów służące do udokumentowania twierdzeń środowiskowych. "
-"Po włączeniu każdy produkt zyskuje pola dotyczące podstawy twierdzenia "
-"ekologicznego, linku do certyfikatu oraz daty ważności, pomagając "
-"przygotować się na dyrektywę przeciw greenwashingowi (wrzesień 2026)."
-
-msgid ""
-"Provides Digital Services Act tools for your store. When enabled, you get "
-"contact point settings, a public report form for illegal content or products "
-"via the [polski_dsa_report] shortcode, and an admin screen where staff "
-"review submitted reports."
-msgstr ""
-"Udostępnia dla Twojego sklepu narzędzia związane z aktem o usługach "
-"cyfrowych (Digital Services Act). Po włączeniu otrzymujesz ustawienia punktu "
-"kontaktowego, publiczny formularz zgłaszania nielegalnych treści lub "
-"produktów za pomocą shortkodu [polski_dsa_report] oraz ekran "
-"administracyjny, na którym personel przegląda przesłane zgłoszenia."
-
-msgid ""
-"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
-"checked by NIP and flagged when KSeF invoicing may apply, with integration "
-"hooks and an admin status indicator shown to your team."
-msgstr ""
-"Pomaga wykrywać zamówienia, które mogą wymagać fakturowania w KSeF. Po "
-"włączeniu zamówienia są sprawdzane według NIP i oznaczane, gdy fakturowanie "
-"w KSeF może mieć zastosowanie, z punktami integracji oraz wskaźnikiem "
-"statusu w panelu pokazywanym Twojemu zespołowi."
-
-msgid ""
-"A log for tracking security incidents, built with CRA in mind. When enabled, "
-"staff get an admin log to record vulnerabilities, breaches, and third-party "
-"failures, track their status and follow-up, and export everything to CSV."
-msgstr ""
-"Dziennik do śledzenia incydentów bezpieczeństwa, stworzony z myślą o CRA. Po "
-"włączeniu personel otrzymuje dziennik administracyjny do rejestrowania "
-"podatności, naruszeń i awarii podmiotów zewnętrznych, śledzenia ich statusu "
-"i działań następczych oraz eksportowania wszystkiego do CSV."
-
-msgid ""
-"Quietly watches your store for problems. When enabled, it passively monitors "
-"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
-"every 5 minutes and sending email or webhook alerts. It never places test "
-"orders."
-msgstr ""
-"Po cichu obserwuje Twój sklep pod kątem problemów. Po włączeniu pasywnie "
-"monitoruje błędy krytyczne na froncie, wskaźnik niepowodzeń przy składaniu "
-"zamówień oraz anomalie sprzedaży, sprawdzając co 5 minut i wysyłając alerty "
-"e-mailem lub przez webhook. Nigdy nie składa zamówień testowych."
-
-msgid ""
-"Lets AI assistants safely read selected store data. When enabled, read-only "
-"data like price history, product safety info, store health, page checks, and "
-"product facts is exposed to AI assistants and the Site Editor via the "
-"WordPress Abilities API. Off by default."
-msgstr ""
-"Pozwala asystentom AI bezpiecznie odczytywać wybrane dane sklepu. Po "
-"włączeniu dane tylko do odczytu, takie jak historia cen, informacje o "
-"bezpieczeństwie produktów, kondycja sklepu, kontrole stron oraz dane "
-"produktów, są udostępniane asystentom AI i Edytorowi witryny za "
-"pośrednictwem WordPress Abilities API. Domyślnie wyłączone."
-
-msgid ""
-"Adds structured data so search engines understand your products. When "
-"enabled, advanced JSON-LD tags are injected automatically into your pages to "
-"support product indexing by Google, while preserving the plugin's own data."
-msgstr ""
-"Dodaje dane strukturalne, dzięki którym wyszukiwarki rozumieją Twoje "
-"produkty. Po włączeniu zaawansowane znaczniki JSON-LD są automatycznie "
-"wstrzykiwane do Twoich stron, aby wspierać indeksowanie produktów przez "
-"Google, zachowując jednocześnie własne dane wtyczki."
-
-msgid ""
-"A consent-gated tag manager for marketing tags. When enabled, it adds a "
-"unified place to manage tracking tags that fire only after visitor consent, "
-"so tools like GA4 and GTM load on your store in line with your consent "
-"settings."
-msgstr ""
-"Menedżer tagów marketingowych uzależniony od zgody. Po włączeniu dodaje "
-"jedno miejsce do zarządzania tagami śledzącymi, które uruchamiają się "
-"dopiero po zgodzie odwiedzającego, dzięki czemu narzędzia takie jak GA4 i "
-"GTM ładują się w Twoim sklepie zgodnie z Twoimi ustawieniami zgód."
-
-msgid ""
-"Reduces and controls external Google Fonts requests on your store. When "
-"enabled, font-display and preconnect hints are added to your pages, and the "
-"Google Fonts stylesheet can be held back until a visitor grants the matching "
-"consent, helping with privacy and load speed."
-msgstr ""
-"Ogranicza i kontroluje zewnętrzne żądania Google Fonts w Twoim sklepie. Po "
-"włączeniu do Twoich stron dodawane są wskazówki font-display i preconnect, a "
-"arkusz stylów Google Fonts może być wstrzymany do czasu udzielenia przez "
-"odwiedzającego odpowiedniej zgody, co pomaga w zakresie prywatności i "
-"szybkości ładowania."
-
-msgid ""
-"Lets you add your own scripts or snippets to the page head or footer. When "
-"enabled, each snippet you add is tied to a consent category and runs only "
-"after the visitor grants that consent through the Consent Manager, so your "
-"custom code respects shoppers' choices."
-msgstr ""
-"Pozwala dodawać własne skrypty lub fragmenty kodu do nagłówka lub stopki "
-"strony. Po włączeniu każdy dodany fragment jest powiązany z kategorią zgody "
-"i uruchamia się dopiero po udzieleniu tej zgody przez odwiedzającego za "
-"pomocą Menedżera zgód, dzięki czemu Twój własny kod respektuje wybory "
-"klientów."
-
-msgid ""
-"Lets you push your own dataLayer events based on simple page conditions. "
-"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
-"chosen element, feeding into the GA4 DataLayer module for your analytics and "
-"tag setup."
-msgstr ""
-"Pozwala wysyłać własne zdarzenia dataLayer w oparciu o proste warunki "
-"strony. Po włączeniu zdarzenia uruchamiają się, gdy odwiedzający trafi na "
-"wybrany adres URL lub kliknie wybrany element, zasilając moduł GA4 DataLayer "
-"dla Twojej analityki i konfiguracji tagów."
-
-msgid ""
-"Keeps your settings and messages compatible with popular checkout field add-"
-"ons and product data. When enabled, the plugin detects supported checkout "
-"extensions, cookies, and product data, then adjusts its own behaviour so "
-"labels and consent prompts display correctly at checkout."
-msgstr ""
-"Utrzymuje Twoje ustawienia i komunikaty zgodne z popularnymi dodatkami do "
-"pól zamówienia oraz danymi produktów. Po włączeniu wtyczka wykrywa "
-"obsługiwane rozszerzenia zamówienia, pliki cookie i dane produktów, a "
-"następnie dostosowuje swoje zachowanie tak, aby etykiety i monity o zgodę "
-"wyświetlały się poprawnie podczas składania zamówienia."
-
-msgid ""
-"Automatically checks your store for the most common store-setup issues. When "
-"enabled, it scans for things like missing legal pages, pre-ticked "
-"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
-"the admin so you can fix gaps yourself."
-msgstr ""
-"Automatycznie sprawdza Twój sklep pod kątem najczęstszych problemów z "
-"konfiguracją sklepu. Po włączeniu skanuje takie elementy jak brakujące "
-"strony prawne, wstępnie zaznaczone pola wyboru, dane firmowe, RODO oraz "
-"elementy Omnibus i pokazuje raport w panelu, dzięki czemu możesz "
-"samodzielnie usunąć braki."
-
-msgid ""
-"Controls what happens to Polski's data if you remove the plugin. When "
-"enabled, you decide whether Polski deletes its database tables, settings, "
-"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
-"when removing the plugin from WordPress."
-msgstr ""
-"Kontroluje, co dzieje się z danymi Polski po usunięciu wtyczki. Po włączeniu "
-"decydujesz, czy Polski usuwa swoje tabele bazy danych, ustawienia i zapisane "
-"dzienniki podczas odinstalowania, dzięki czemu możesz zachować swoje dane "
-"lub usunąć je w całości przy usuwaniu wtyczki z WordPressa."
-
-msgid ""
-"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
-"enabled, it can publish a security.txt file (RFC 9116) with your security "
-"contact and vulnerability reporting policy, making it easier for researchers "
-"to report security issues responsibly."
-msgstr ""
-"Udostępnia narzędzia wspierające przygotowanie do aktu o cyberodporności "
-"(Cyber Resilience Act, CRA). Po włączeniu może opublikować plik security.txt "
-"(RFC 9116) z Twoim kontaktem do spraw bezpieczeństwa i polityką zgłaszania "
-"podatności, ułatwiając badaczom odpowiedzialne zgłaszanie problemów z "
-"bezpieczeństwem."
-
-msgid ""
-"Helps you keep a GDPR data-processing registry for your store. When enabled, "
-"it detects third-party services that process your customers' personal data "
-"and lets you track the status of each data processing agreement (DPA) from "
-"the admin."
-msgstr ""
-"Pomaga prowadzić rejestr czynności przetwarzania danych RODO dla Twojego "
-"sklepu. Po włączeniu wykrywa usługi podmiotów zewnętrznych przetwarzające "
-"dane osobowe Twoich klientów i pozwala śledzić status każdej umowy "
-"powierzenia przetwarzania danych (DPA) z poziomu panelu."
-
-msgid ""
-"Sets a minimum order value or item count before customers can check out. "
-"When enabled, shoppers who haven't reached the minimum see a notice on the "
-"cart and checkout pages, and checkout stays blocked until they add enough."
-msgstr ""
-"Ustawia minimalną wartość zamówienia lub liczbę produktów, zanim klienci "
-"będą mogli złożyć zamówienie. Po włączeniu klienci, którzy nie osiągnęli "
-"minimum, widzą komunikat na stronach koszyka i zamówienia, a składanie "
-"zamówienia pozostaje zablokowane, dopóki nie dodadzą wystarczająco dużo."
-
-msgid ""
-"Sends automatic emails asking customers to review what they bought. When "
-"enabled, after an order is completed buyers get an email with product images "
-"and review links, plus an opt-out option."
-msgstr ""
-"Wysyła automatyczne e-maile z prośbą do klientów o opinię na temat "
-"zakupionych produktów. Po włączeniu po zrealizowaniu zamówienia kupujący "
-"otrzymują e-mail ze zdjęciami produktów i linkami do wystawienia opinii oraz "
-"opcją rezygnacji."
-
-msgid ""
-"Shows a single from-price instead of a price range on variable products. "
-"When enabled, shop archives and product pages display the lowest price as a "
-"clean from-amount rather than a low-to-high range."
-msgstr ""
-"Pokazuje pojedynczą cenę od zamiast zakresu cen na produktach z wariantami. "
-"Po włączeniu archiwa sklepu i strony produktów wyświetlają najniższą cenę "
-"jako przejrzystą kwotę od zamiast zakresu od najniższej do najwyższej."
-
-msgid ""
-"Puts stock back automatically when orders don't go through. When enabled, "
-"products from orders that are cancelled, refunded or failed are returned to "
-"inventory without any manual work."
-msgstr ""
-"Automatycznie przywraca stan magazynowy, gdy zamówienia nie dochodzą do "
-"skutku. Po włączeniu produkty z zamówień anulowanych, zwróconych lub "
-"nieudanych są zwracane do magazynu bez żadnej pracy ręcznej."
-
-msgid ""
-"Lets customers add items to the cart without reloading the page, including "
-"variable products. When enabled, products are added in the background on "
-"single product pages and a toast notification confirms success."
-msgstr ""
-"Pozwala klientom dodawać produkty do koszyka bez przeładowywania strony, w "
-"tym produkty z wariantami. Po włączeniu produkty są dodawane w tle na "
-"stronach pojedynczych produktów, a powiadomienie typu toast potwierdza "
-"powodzenie."
-
-msgid ""
-"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
-"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
-"sent to your GA4 setup, working with a GTM container or gtag.js."
-msgstr ""
-"Śledzi aktywność e-commerce dla Google Analytics 4 za pomocą dataLayer. Po "
-"włączeniu zdarzenia takie jak view_item, add_to_cart, begin_checkout i "
-"purchase są wysyłane do Twojej konfiguracji GA4, współpracując z kontenerem "
-"GTM lub gtag.js."
-
-msgid ""
-"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
-"Export tool appears under Products where you can choose fields, filter by "
-"stock threshold and include variations."
-msgstr ""
-"Eksportuje stan magazynowy produktów WooCommerce do pliku CSV. Po włączeniu "
-"w sekcji Produkty pojawia się narzędzie Eksport stanu magazynowego, w którym "
-"możesz wybrać pola, filtrować według progu stanu magazynowego i uwzględnić "
-"warianty."
-
-msgid ""
-"Lets customers register and sign in using Google or Facebook. When enabled, "
-"branded login buttons appear on My Account, checkout and the WordPress login "
-"form, and customer accounts are created automatically."
-msgstr ""
-"Pozwala klientom rejestrować się i logować za pomocą Google lub Facebooka. "
-"Po włączeniu przyciski logowania z logo pojawiają się w sekcji Moje konto, "
-"podczas składania zamówienia i na formularzu logowania WordPress, a konta "
-"klientów są tworzone automatycznie."
-
-msgid ""
-"Adds a custom taxonomy for product authors or creators. When enabled, you "
-"can assign authors to products and group them, useful for stores selling "
-"books or creator-made items."
-msgstr ""
-"Dodaje niestandardową taksonomię dla autorów lub twórców produktów. Po "
-"włączeniu można przypisywać autorów do produktów i grupować je, co jest "
-"przydatne dla sklepów sprzedających książki lub produkty tworzone przez "
-"twórców."
-
-msgid ""
-"Lets you publish editorial, in-house reviews of products. When enabled, you "
-"get a new section to write expert reviews with ratings and verdicts, linked "
-"to products and shown on product pages with Schema.org markup that helps "
-"with SEO."
-msgstr ""
-"Pozwala publikować redakcyjne, własne recenzje produktów. Po włączeniu "
-"otrzymujesz nową sekcję do pisania eksperckich recenzji z ocenami i "
-"werdyktami, powiązanych z produktami i pokazywanych na stronach produktów ze "
-"znacznikami Schema.org, które wspierają SEO."
-
-msgid ""
-"Displays recent-purchase popups to build trust. When enabled, small floating "
-"notifications about recent orders appear to your shoppers in a position and "
-"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
-msgstr ""
-"Wyświetla wyskakujące okna o niedawnych zakupach, aby budować zaufanie. Po "
-"włączeniu małe pływające powiadomienia o niedawnych zamówieniach pojawiają "
-"się Twoim klientom w wybranym przez Ciebie miejscu i czasie, ładowane "
-"płynnie przez AJAX i zaprojektowane z dbałością o prywatność."
-
-msgid ""
-"Adds a questions-and-answers section to product pages. When enabled, "
-"customers can ask questions and anyone can answer, you get email alerts for "
-"new questions, answers can be voted on, and Schema.org QAPage markup helps "
-"with SEO."
-msgstr ""
-"Dodaje sekcję pytań i odpowiedzi do stron produktów. Po włączeniu klienci "
-"mogą zadawać pytania, a każdy może odpowiadać, otrzymujesz alerty e-mailowe "
-"o nowych pytaniach, na odpowiedzi można głosować, a znaczniki Schema.org "
-"QAPage wspierają SEO."
-
-msgid ""
-"Shows reassurance icons like secure payment, fast delivery, returns, and "
-"quality guarantee. When enabled, these configurable trust signals appear to "
-"shoppers on your product, cart, and checkout pages."
-msgstr ""
-"Pokazuje ikony budujące zaufanie, takie jak bezpieczna płatność, szybka "
-"dostawa, zwroty i gwarancja jakości. Po włączeniu te konfigurowalne sygnały "
-"zaufania pojawiają się klientom na stronach produktów, koszyka i zamówienia."
-
-msgid ""
-"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
-"whenever they add a product, showing cart items, the subtotal, a free-"
-"shipping progress bar, and a quick link to checkout."
-msgstr ""
-"Dodaje wysuwany panel koszyka. Po włączeniu panel boczny otwiera się "
-"klientowi za każdym razem, gdy doda produkt, pokazując produkty w koszyku, "
-"sumę częściową, pasek postępu do darmowej wysyłki oraz szybki link do "
-"złożenia zamówienia."
-
-msgid ""
-"Shows how a product's price has changed over time. When enabled, shoppers "
-"see a small SVG price-trend chart on product pages covering the last 30, 90, "
-"or 180 days, using your Omnibus price data."
-msgstr ""
-"Pokazuje, jak cena produktu zmieniała się w czasie. Po włączeniu klienci "
-"widzą mały wykres trendu cen SVG na stronach produktów obejmujący ostatnie "
-"30, 90 lub 180 dni, korzystając z Twoich danych cenowych Omnibus."
-
-msgid ""
-"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
-"an admin tool to download orders as CSV, choosing which fields to include "
-"and filtering by date range and order status."
-msgstr ""
-"Eksportuje Twoje zamówienia WooCommerce do pliku arkusza kalkulacyjnego. Po "
-"włączeniu otrzymujesz narzędzie administracyjne do pobierania zamówień jako "
-"CSV, wybierając, które pola uwzględnić, oraz filtrując według zakresu dat i "
-"statusu zamówienia."
-
-msgid ""
-"Lets you create a frequently-asked-questions section. When enabled, you can "
-"add FAQs with categories and place them on any page as an accordion "
-"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
-msgstr ""
-"Pozwala utworzyć sekcję najczęściej zadawanych pytań. Po włączeniu można "
-"dodawać pytania z kategoriami i umieszczać je na dowolnej stronie jako "
-"shortkod akordeonu, z danymi Schema.org FAQPage, które wspierają rozszerzone "
-"wyniki w SEO."
-
-msgid ""
-"Lets you customise your checkout form. When enabled, you can add, edit, "
-"reorder, and choose types for checkout fields, and the collected values "
-"appear in the admin order, customer emails, and My Account."
-msgstr ""
-"Pozwala dostosować Twój formularz zamówienia. Po włączeniu można dodawać, "
-"edytować, zmieniać kolejność i wybierać typy pól zamówienia, a zebrane "
-"wartości pojawiają się w zamówieniu w panelu, e-mailach do klientów oraz w "
-"sekcji Moje konto."
-
-msgid "Enable this module to use this."
-msgstr "Włącz ten moduł, aby z niego skorzystać."
-
 #. Plugin Name of the plugin
-#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
+#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
 msgstr "Polski dla WooCommerce"
 
@@ -868,7 +117,7 @@ msgid "Strona"
 msgstr "Strona"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:912 src/Admin/CRAIncidentsPage.php:123
+#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -877,7 +126,7 @@ msgstr "Strona"
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
 #: src/Service/ReturnRequestService.php:232
-#: src/Service/RodoTrainingDocsService.php:267
+#: src/Service/RodoTrainingDocsService.php:268
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74 src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
@@ -1414,7 +663,7 @@ msgstr "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
 msgid "Imię i nazwisko"
 msgstr "Imię i nazwisko"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:1318
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "Email"
@@ -2252,10 +1501,10 @@ msgstr ""
 "Polski wymaga WooCommerce %1$s lub wyższej. Masz zainstalowane WooCommerce "
 "%2$s."
 
-#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:277
-#: src/Admin/CRAIncidentsPage.php:310 src/Admin/SBOMPage.php:81
-#: src/Service/ComplaintTemplateService.php:78
-#: src/Service/RodoTrainingDocsService.php:76
+#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:278
+#: src/Admin/CRAIncidentsPage.php:311 src/Admin/SBOMPage.php:82
+#: src/Service/ComplaintTemplateService.php:79
+#: src/Service/RodoTrainingDocsService.php:77
 msgid "Insufficient permissions."
 msgstr "Brak uprawnień."
 
@@ -2349,7 +1598,7 @@ msgstr "Powrót do modułów"
 msgid "Enabled"
 msgstr "Włączone"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
 msgid "Disabled"
 msgstr "Wyłączony"
 
@@ -2423,27 +1672,27 @@ msgstr "Twoje imię"
 msgid "Your email"
 msgstr "Twój email"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:779
+#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
 msgid "Topic"
 msgstr "Temat"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:800
+#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
 msgid "General feedback"
 msgstr "Ogólna opinia"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
 msgid "Feature idea"
 msgstr "Pomysł na funkcję"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:802
+#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
 msgid "Workflow problem"
 msgstr "Problem z przepływem pracy"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:803
+#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
 msgid "Support question"
 msgstr "Pytanie wsparcia"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:781
+#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
 msgid "Message"
 msgstr "Wiadomość"
 
@@ -2572,25 +1821,62 @@ msgid ""
 msgstr ""
 
 #: src/Admin/AdminPage.php:698
+msgid "Incydenty CRA"
+msgstr ""
+
+#: src/Admin/AdminPage.php:699
+msgid ""
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
+msgstr ""
+
+#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/SBOMPage.php:41
+msgid "SBOM"
+msgstr "SBOM"
+
+#: src/Admin/AdminPage.php:707
+msgid ""
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
+msgstr ""
+
+#: src/Admin/AdminPage.php:714
+msgid "Szablon reklamacji"
+msgstr ""
+
+#: src/Admin/AdminPage.php:715
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr ""
+
+#: src/Admin/AdminPage.php:722
+msgid "Szkolenia RODO"
+msgstr ""
+
+#: src/Admin/AdminPage.php:723
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr ""
+
+#: src/Admin/AdminPage.php:730
 msgid "Feedback Logs"
 msgstr "Dziennik opinii"
 
-#: src/Admin/AdminPage.php:699
+#: src/Admin/AdminPage.php:731
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 "Opinie przy dezaktywacji oraz lokalne opinie administratora z panelu "
 "bocznego wtyczki."
 
-#: src/Admin/AdminPage.php:705
+#: src/Admin/AdminPage.php:737
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 "Wybierz raport lub narzędzie, aby sprawdzić status konfiguracji sklepu."
 
-#: src/Admin/AdminPage.php:744
+#: src/Admin/AdminPage.php:776
 msgid "Open Report"
 msgstr "Otwórz raport"
 
-#: src/Admin/AdminPage.php:746
+#: src/Admin/AdminPage.php:778
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
@@ -2598,138 +1884,138 @@ msgstr ""
 "Ten raport wymaga najpierw włączenia modułu (opcjonalne funkcje są domyślnie "
 "wyłączone)."
 
-#: src/Admin/AdminPage.php:748
+#: src/Admin/AdminPage.php:780
 msgid "Enable module"
 msgstr "Włącz moduł"
 
-#: src/Admin/AdminPage.php:750
+#: src/Admin/AdminPage.php:782
 msgid "Module disabled"
 msgstr "Moduł wyłączony"
 
-#: src/Admin/AdminPage.php:769
+#: src/Admin/AdminPage.php:801
 msgid "Admin Feedback Logs"
 msgstr "Dziennik opinii administratora"
 
-#: src/Admin/AdminPage.php:772
+#: src/Admin/AdminPage.php:804
 msgid "No internal feedback to display."
 msgstr "Brak opinii wewnętrznych do wyświetlenia."
 
-#: src/Admin/AdminPage.php:777 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
-#: src/Service/RodoTrainingDocsService.php:164
+#: src/Service/RodoTrainingDocsService.php:165
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
 msgid "Date"
 msgstr "Data"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:810
 msgid "Person"
 msgstr "Osoba"
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:812
 msgid "Screen"
 msgstr "Ekran"
 
-#: src/Admin/AdminPage.php:837
+#: src/Admin/AdminPage.php:869
 msgid "Hello!"
 msgstr "Cześć!"
 
-#: src/Admin/AdminPage.php:838
+#: src/Admin/AdminPage.php:870
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 
-#: src/Admin/AdminPage.php:844
+#: src/Admin/AdminPage.php:876
 msgid "Finish configuration"
 msgstr "Dokończ konfigurację"
 
-#: src/Admin/AdminPage.php:845
+#: src/Admin/AdminPage.php:877
 msgid "Some key elements of your store still require attention."
 msgstr "Niektóre kluczowe elementy Twojego sklepu wciąż wymagają uwagi."
 
-#: src/Admin/AdminPage.php:848
+#: src/Admin/AdminPage.php:880
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 "Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo do "
 "odstąpienia)"
 
-#: src/Admin/AdminPage.php:851
+#: src/Admin/AdminPage.php:883
 msgid "Go through the checklist below"
 msgstr "Przejdź przez poniższą listę kontrolną"
 
-#: src/Admin/AdminPage.php:854
+#: src/Admin/AdminPage.php:886
 msgid "Complete product data"
 msgstr "Uzupełnij dane produktów"
 
-#: src/Admin/AdminPage.php:855
+#: src/Admin/AdminPage.php:887
 msgid "Manage modules"
 msgstr "Zarządzaj modułami"
 
-#: src/Admin/AdminPage.php:863
+#: src/Admin/AdminPage.php:895
 msgid "Relaunch setup wizard"
 msgstr "Uruchom ponownie kreatora konfiguracji"
 
-#: src/Admin/AdminPage.php:873
+#: src/Admin/AdminPage.php:905
 msgid "Inactive"
 msgstr "Nieaktywny"
 
-#: src/Admin/AdminPage.php:878 src/Admin/AdminPage.php:907
+#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "Strony prawne"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:912
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d z %2$d gotowe"
 
-#: src/Admin/AdminPage.php:885
+#: src/Admin/AdminPage.php:917
 msgid "Omnibus Directive"
 msgstr "Dyrektywa Omnibus"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:918
 msgid "Active"
 msgstr "Aktywny"
 
-#: src/Admin/AdminPage.php:891
+#: src/Admin/AdminPage.php:923
 msgid "Store Analysis"
 msgstr "Analiza sklepu"
 
-#: src/Admin/AdminPage.php:892
+#: src/Admin/AdminPage.php:924
 msgid "Check reports"
 msgstr "Sprawdź raporty"
 
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:944
 msgid "Page"
 msgstr "Strona"
 
-#: src/Admin/AdminPage.php:929
+#: src/Admin/AdminPage.php:961
 msgid "Published"
 msgstr "Opublikowane"
 
-#: src/Admin/AdminPage.php:930
+#: src/Admin/AdminPage.php:962
 msgid "Draft"
 msgstr "Szkic"
 
-#: src/Admin/AdminPage.php:935
+#: src/Admin/AdminPage.php:967
 msgid "Edit"
 msgstr "Edytuj"
 
-#: src/Admin/AdminPage.php:937
+#: src/Admin/AdminPage.php:969
 msgid "Not created"
 msgstr "Nie utworzono"
 
-#: src/Admin/AdminPage.php:952
+#: src/Admin/AdminPage.php:984
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
 
-#: src/Admin/AdminPage.php:960
+#: src/Admin/AdminPage.php:992
 msgid "Next steps"
 msgstr "Następne kroki"
 
-#: src/Admin/AdminPage.php:1012
+#: src/Admin/AdminPage.php:1044
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
@@ -2738,7 +2024,7 @@ msgstr ""
 "odstąpienia, Reklamacje)."
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1020
+#: src/Admin/AdminPage.php:1052
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -2748,13 +2034,13 @@ msgstr ""
 "VAT (23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1032
+#: src/Admin/AdminPage.php:1064
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1043
+#: src/Admin/AdminPage.php:1075
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -2764,7 +2050,7 @@ msgstr ""
 "href=\"%s\">zakładce Polski</a> dla każdego produktu."
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1054
+#: src/Admin/AdminPage.php:1086
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -2773,11 +2059,11 @@ msgstr ""
 "Przetestuj proces zamówienia - dodaj produkt do koszyka i sprawdź checkboxy "
 "oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
 
-#: src/Admin/AdminPage.php:1077
+#: src/Admin/AdminPage.php:1109
 msgid "Generate legal pages"
 msgstr "Wygeneruj strony prawne"
 
-#: src/Admin/AdminPage.php:1124
+#: src/Admin/AdminPage.php:1156
 msgid "Open &rarr;"
 msgstr "Otwórz &rarr;"
 
@@ -2845,36 +2131,36 @@ msgstr "Nie masz dostępu do tej strony."
 msgid "Could not open output stream."
 msgstr "Nie można otworzyć strumienia wyjściowego."
 
-#: src/Admin/CRAIncidentsPage.php:50 src/Admin/CRAIncidentsPage.php:51
-#: src/Admin/CRAIncidentsPage.php:64
+#: src/Admin/CRAIncidentsPage.php:51 src/Admin/CRAIncidentsPage.php:52
+#: src/Admin/CRAIncidentsPage.php:65
 msgid "CRA incidents"
 msgstr "Incydenty CRA"
 
-#: src/Admin/CRAIncidentsPage.php:68 src/Admin/CRAIncidentsPage.php:268
+#: src/Admin/CRAIncidentsPage.php:69 src/Admin/CRAIncidentsPage.php:269
 msgid "Record incident"
 msgstr "Zarejestruj incydent"
 
-#: src/Admin/CRAIncidentsPage.php:93
+#: src/Admin/CRAIncidentsPage.php:94
 msgid "Incident recorded."
 msgstr "Incydent zarejestrowany."
 
-#: src/Admin/CRAIncidentsPage.php:94
+#: src/Admin/CRAIncidentsPage.php:95
 msgid "Incident notification dispatched."
 msgstr "Powiadomienie o incydencie wysłane."
 
-#: src/Admin/CRAIncidentsPage.php:95
+#: src/Admin/CRAIncidentsPage.php:96
 msgid "Incident marked resolved."
 msgstr "Incydent oznaczony jako rozwiązany."
 
-#: src/Admin/CRAIncidentsPage.php:96
+#: src/Admin/CRAIncidentsPage.php:97
 msgid "Incident deleted."
 msgstr "Incydent usunięty."
 
-#: src/Admin/CRAIncidentsPage.php:97
+#: src/Admin/CRAIncidentsPage.php:98
 msgid "Something went wrong."
 msgstr "Coś poszło nie tak."
 
-#: src/Admin/CRAIncidentsPage.php:110
+#: src/Admin/CRAIncidentsPage.php:111
 msgid ""
 "Record actively-exploited vulnerabilities and security incidents. The "
 "checker tracks the CRA Article 14 24-hour early-warning deadline and exports "
@@ -2884,7 +2170,7 @@ msgstr ""
 "Narzędzie śledzi 24-godzinny termin wczesnego ostrzegania z art. 14 CRA i "
 "eksportuje ustrukturyzowany plik JSON do zgłoszenia."
 
-#: src/Admin/CRAIncidentsPage.php:111
+#: src/Admin/CRAIncidentsPage.php:112
 msgid ""
 "Configure the webhook URL and notification email under Polski > Settings > "
 "CRA incidents."
@@ -2892,11 +2178,11 @@ msgstr ""
 "Skonfiguruj URL webhooka i adres e-mail do powiadomień w Polski > Ustawienia "
 "> Incydenty CRA."
 
-#: src/Admin/CRAIncidentsPage.php:116
+#: src/Admin/CRAIncidentsPage.php:117
 msgid "No incidents recorded yet."
 msgstr "Nie zarejestrowano jeszcze żadnych incydentów."
 
-#: src/Admin/CRAIncidentsPage.php:121 src/Admin/CRAIncidentsPage.php:243
+#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:244
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 #: src/Service/SecurityIncidentService.php:116
@@ -2906,7 +2192,7 @@ msgstr "Nie zarejestrowano jeszcze żadnych incydentów."
 msgid "Title"
 msgstr "Tytuł"
 
-#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:255
+#: src/Admin/CRAIncidentsPage.php:123 src/Admin/CRAIncidentsPage.php:256
 #: src/Admin/PageCompliancePage.php:106 src/Admin/PageCompliancePage.php:151
 #: src/Admin/PageCompliancePage.php:200
 #: src/Service/SecurityIncidentService.php:110
@@ -2914,74 +2200,74 @@ msgstr "Tytuł"
 msgid "Severity"
 msgstr "Ważność"
 
-#: src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/CRAIncidentsPage.php:125
 msgid "Deadline"
 msgstr "Termin"
 
-#: src/Admin/CRAIncidentsPage.php:125 src/Admin/ModulesPage.php:1601
+#: src/Admin/CRAIncidentsPage.php:126 src/Admin/ModulesPage.php:1601
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr "Akcje"
 
 #. translators: %s: notification timestamp
-#: src/Admin/CRAIncidentsPage.php:155
+#: src/Admin/CRAIncidentsPage.php:156
 #, php-format
 msgid "Notified %s"
 msgstr "Powiadomiono %s"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:164
+#: src/Admin/CRAIncidentsPage.php:165
 #, php-format
 msgid "Overdue by %dh"
 msgstr "Opóźnienie o %dh"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:173
+#: src/Admin/CRAIncidentsPage.php:174
 #, php-format
 msgid "%dh remaining"
 msgstr "Pozostało %dh"
 
-#: src/Admin/CRAIncidentsPage.php:218
+#: src/Admin/CRAIncidentsPage.php:219
 msgid "Export JSON"
 msgstr "Eksportuj JSON"
 
-#: src/Admin/CRAIncidentsPage.php:222
+#: src/Admin/CRAIncidentsPage.php:223
 msgid "Dispatch notification"
 msgstr "Wyślij powiadomienie"
 
-#: src/Admin/CRAIncidentsPage.php:225
+#: src/Admin/CRAIncidentsPage.php:226
 msgid "Mark resolved"
 msgstr "Oznacz jako rozwiązane"
 
-#: src/Admin/CRAIncidentsPage.php:228
+#: src/Admin/CRAIncidentsPage.php:229
 msgid "Delete incident?"
 msgstr "Usunąć incydent?"
 
-#: src/Admin/CRAIncidentsPage.php:230
+#: src/Admin/CRAIncidentsPage.php:231
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/Admin/CRAIncidentsPage.php:244
+#: src/Admin/CRAIncidentsPage.php:245
 msgid "Affected component"
 msgstr "Komponent, którego dotyczy"
 
-#: src/Admin/CRAIncidentsPage.php:245
+#: src/Admin/CRAIncidentsPage.php:246
 msgid "Affected versions"
 msgstr "Wersje, których dotyczy"
 
-#: src/Admin/CRAIncidentsPage.php:246 src/Service/DSAService.php:172
+#: src/Admin/CRAIncidentsPage.php:247 src/Service/DSAService.php:172
 msgid "Reporter"
 msgstr "Zgłaszający"
 
-#: src/Admin/CRAIncidentsPage.php:247
+#: src/Admin/CRAIncidentsPage.php:248
 msgid "External reference ID"
 msgstr "Zewnętrzny identyfikator referencyjny"
 
-#: src/Admin/CRAIncidentsPage.php:249
+#: src/Admin/CRAIncidentsPage.php:250
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: src/Admin/CRAIncidentsPage.php:262 src/Hook/AiProductSummaryHooks.php:60
+#: src/Admin/CRAIncidentsPage.php:263 src/Hook/AiProductSummaryHooks.php:60
 msgid "Summary"
 msgstr "Podsumowanie"
 
@@ -3198,6 +2484,825 @@ msgstr "Co poprawić"
 msgid "What to add"
 msgstr "Co dodać"
 
+#: src/Admin/ModulesPage.php:86
+msgid ""
+"Automatic cart discounts based on spending or quantity. When enabled, "
+"shoppers get a percentage off once the cart subtotal hits a threshold, and "
+"bulk discounts when a product's quantity hits a threshold; applied "
+"automatically in the cart. Off by default."
+msgstr ""
+"Automatyczne rabaty koszykowe oparte na kwocie zakupów lub ilości. Po "
+"włączeniu klienci otrzymują procentową zniżkę, gdy suma częściowa koszyka "
+"osiągnie próg, oraz rabaty ilościowe, gdy ilość produktu osiągnie próg; "
+"stosowane automatycznie w koszyku. Domyślnie wyłączone."
+
+#: src/Admin/ModulesPage.php:87
+msgid ""
+"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
+"per-unit price appears next to product prices on shop and product pages, "
+"helping customers compare value, in line with Polish consumer law."
+msgstr ""
+"Pokazuje cenę za jednostkę, na przykład za 1 kg lub za 100 ml. Po włączeniu "
+"cena jednostkowa pojawia się obok cen produktów na stronach sklepu i "
+"produktów, pomagając klientom porównywać wartość, zgodnie z polskim prawem "
+"konsumenckim."
+
+#: src/Admin/ModulesPage.php:88
+msgid ""
+"Tracks price history and shows the lowest price from the last 30 days on "
+"discounted products. When enabled, sale products display their lowest 30-day "
+"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
+msgstr ""
+"Śledzi historię cen i pokazuje najniższą cenę z ostatnich 30 dni na "
+"przecenionych produktach. Po włączeniu produkty w promocji wyświetlają swoją "
+"najniższą cenę z 30 dni obok ceny, pomagając spełnić unijną dyrektywę "
+"Omnibus (2019/2161)."
+
+#: src/Admin/ModulesPage.php:89
+msgid ""
+"Controls how VAT is shown on prices. When enabled, you can set gross or net "
+"price display, show VAT rate info, and support the small business VAT "
+"exemption (Art. 113), affecting prices shown to shoppers across the store."
+msgstr ""
+"Kontroluje sposób wyświetlania VAT w cenach. Po włączeniu można ustawić "
+"wyświetlanie cen brutto lub netto, pokazać informację o stawce VAT oraz "
+"obsłużyć zwolnienie z VAT dla małych firm (art. 113), co wpływa na ceny "
+"pokazywane klientom w całym sklepie."
+
+#: src/Admin/ModulesPage.php:90
+msgid ""
+"Watches your cross-border EU B2C sales against the OSS threshold. When "
+"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
+"sales and flags when you approach the 10,000 EUR threshold for the year."
+msgstr ""
+"Monitoruje Twoją transgraniczną sprzedaż B2C w UE względem progu OSS. Po "
+"włączeniu instaluje wtyczkę One Stop Shop, która monitoruje wewnątrzunijną "
+"sprzedaż B2C i sygnalizuje, gdy zbliżasz się do progu 10 000 EUR w danym "
+"roku."
+
+#: src/Admin/ModulesPage.php:91
+msgid ""
+"Shows an estimated delivery time on product pages. When enabled, each "
+"product page displays its delivery estimate; you can set it per product or "
+"variation, with a default used when none is specified. Off until enabled."
+msgstr ""
+"Pokazuje szacowany czas dostawy na stronach produktów. Po włączeniu każda "
+"strona produktu wyświetla swój szacowany czas dostawy; można go ustawić dla "
+"produktu lub wariantu, a gdy nie został określony, używana jest wartość "
+"domyślna. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:92
+msgid ""
+"Adds a link to your shipping costs page near prices. When enabled, a "
+"shipping costs info link appears next to the product price, so customers can "
+"check delivery charges before buying. Off until enabled."
+msgstr ""
+"Dodaje link do strony z kosztami wysyłki w pobliżu cen. Po włączeniu obok "
+"ceny produktu pojawia się link z informacją o kosztach wysyłki, dzięki czemu "
+"klienci mogą sprawdzić opłaty za dostawę przed zakupem. Wyłączone do czasu "
+"włączenia."
+
+#: src/Admin/ModulesPage.php:93
+msgid ""
+"Changes the order button wording at checkout. When enabled, the place-order "
+"button reads \"Order with obligation to pay\", as required by Polish law, so "
+"it's clear the order creates a payment obligation."
+msgstr ""
+"Zmienia treść przycisku zamówienia podczas składania zamówienia. Po "
+"włączeniu przycisk złożenia zamówienia wyświetla napis \"Zamówienie z "
+"obowiązkiem zapłaty\", zgodnie z wymogami polskiego prawa, dzięki czemu "
+"jasne jest, że zamówienie tworzy obowiązek zapłaty."
+
+#: src/Admin/ModulesPage.php:94
+msgid ""
+"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
+"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
+"content, delivery notifications, review reminder, marketing) for customers "
+"to accept during purchase."
+msgstr ""
+"Dodaje wbudowane pola wyboru zgód do składania zamówienia. Po włączeniu "
+"można wyświetlić do 7 pól wyboru (regulamin, polityka prywatności, prawo "
+"odstąpienia, treści cyfrowe, powiadomienia o dostawie, przypomnienie o "
+"opinii, marketing), które klienci akceptują podczas zakupu."
+
+#: src/Admin/ModulesPage.php:95
+msgid ""
+"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
+"NIP that is checked for a valid checksum, and company data is fetched "
+"automatically from the GUS REGON database to fill in business details."
+msgstr ""
+"Dodaje pole NIP podczas składania zamówienia. Po włączeniu klienci mogą "
+"wpisać NIP, którego suma kontrolna jest weryfikowana, a dane firmy są "
+"automatycznie pobierane z bazy GUS REGON w celu uzupełnienia danych "
+"firmowych."
+
+#: src/Admin/ModulesPage.php:96
+msgid ""
+"Keeps a record of customer consents. When enabled, every consent a customer "
+"gives is logged with IP address, browser (user agent), and timestamp, giving "
+"you an audit trail to support GDPR record-keeping. Off until enabled."
+msgstr ""
+"Prowadzi rejestr zgód klientów. Po włączeniu każda zgoda udzielona przez "
+"klienta jest zapisywana wraz z adresem IP, przeglądarką (user agent) i "
+"znacznikiem czasu, dając Ci ścieżkę audytu wspierającą prowadzenie "
+"dokumentacji RODO. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:97
+msgid ""
+"A native cookie-consent banner. When enabled, visitors see a consent banner "
+"with categories, scripts and iframes are blocked until the matching category "
+"is granted, Google Consent Mode v2 signals are sent, and each decision is "
+"recorded. Provides tools, not legal advice."
+msgstr ""
+"Natywny baner zgody na pliki cookie. Po włączeniu odwiedzający widzą baner "
+"zgody z kategoriami, skrypty i elementy iframe są blokowane do czasu "
+"udzielenia zgody dla odpowiedniej kategorii, wysyłane są sygnały Google "
+"Consent Mode v2, a każda decyzja jest rejestrowana. Dostarcza narzędzia, nie "
+"porady prawne."
+
+#: src/Admin/ModulesPage.php:98
+msgid ""
+"Lets customers request returns or complaints (RMA). When enabled, shoppers "
+"can open a complaint or return request from My Account on eligible orders; "
+"they get a confirmation email and you manage requests in an admin queue with "
+"statuses. Provides tools, not legal advice."
+msgstr ""
+"Pozwala klientom zgłaszać zwroty lub reklamacje (RMA). Po włączeniu klienci "
+"mogą otworzyć zgłoszenie reklamacji lub zwrotu z poziomu Moje konto dla "
+"kwalifikujących się zamówień; otrzymują e-mail z potwierdzeniem, a Ty "
+"zarządzasz zgłoszeniami w kolejce administracyjnej ze statusami. Dostarcza "
+"narzędzia, nie porady prawne."
+
+#: src/Admin/ModulesPage.php:99
+msgid ""
+"Generates standard legal pages for you. When enabled, it can create Terms "
+"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
+"giving you a starting point for your store's required documents. Off until "
+"enabled."
+msgstr ""
+"Generuje za Ciebie standardowe strony prawne. Po włączeniu może utworzyć "
+"strony Regulamin, Polityka prywatności, Prawo odstąpienia oraz Reklamacje, "
+"dając Ci punkt wyjścia dla wymaganych dokumentów Twojego sklepu. Wyłączone "
+"do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:100
+msgid ""
+"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
+"withdrawal form and a My Account action with a confirmation step and email; "
+"you can exclude specific products that are not eligible for withdrawal. Off "
+"until enabled."
+msgstr ""
+"Obsługuje wnioski o 14-dniowe prawo odstąpienia. Po włączeniu klienci "
+"otrzymują formularz odstąpienia oraz akcję w sekcji Moje konto z krokiem "
+"potwierdzenia i e-mailem; możesz wykluczyć konkretne produkty, które nie "
+"podlegają prawu odstąpienia. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:101
+msgid ""
+"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
+"displays information about the European Commission's ODR platform, typically "
+"in the footer or legal area, helping with consumer dispute transparency. Off "
+"until enabled."
+msgstr ""
+"Pokazuje informacje o unijnym internetowym rozstrzyganiu sporów (ODR). Po "
+"włączeniu Twój sklep wyświetla informacje o platformie ODR Komisji "
+"Europejskiej, zwykle w stopce lub sekcji prawnej, wspierając przejrzystość w "
+"sporach konsumenckich. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:102
+msgid ""
+"Attaches your legal documents to order confirmation emails. When enabled, "
+"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
+"Withdrawal is included with the confirmation email each customer receives "
+"after placing an order."
+msgstr ""
+"Dołącza Twoje dokumenty prawne do e-maili z potwierdzeniem zamówienia. Po "
+"włączeniu treść stron takich jak Regulamin, Polityka prywatności i Prawo "
+"odstąpienia jest dołączana do e-maila z potwierdzeniem, który każdy klient "
+"otrzymuje po złożeniu zamówienia."
+
+#: src/Admin/ModulesPage.php:103
+msgid ""
+"Adds manufacturer and GPSR product safety details to your products. When "
+"enabled, you can enter manufacturer info, an EU responsible person, safety "
+"documents, and instructions per product, which then appear for shoppers on "
+"the product page."
+msgstr ""
+"Dodaje do Twoich produktów dane producenta oraz informacje o bezpieczeństwie "
+"produktów GPSR. Po włączeniu można wprowadzić dane producenta, osobę "
+"odpowiedzialną w UE, dokumenty bezpieczeństwa oraz instrukcje dla każdego "
+"produktu, które następnie pojawiają się dla klientów na stronie produktu."
+
+#: src/Admin/ModulesPage.php:104
+msgid ""
+"Adds food and supplement product details to your products. When enabled, you "
+"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
+"content, country of origin, and distributor per product, which then show to "
+"shoppers on the product page."
+msgstr ""
+"Dodaje do Twoich produktów dane produktów spożywczych i suplementów. Po "
+"włączeniu można wprowadzić wartości odżywcze, alergeny, składniki, Nutri-"
+"Score, zawartość alkoholu, kraj pochodzenia oraz dystrybutora dla każdego "
+"produktu, które następnie wyświetlają się klientom na stronie produktu."
+
+#: src/Admin/ModulesPage.php:105
+msgid ""
+"Adds energy consumption details for electrical devices. When enabled, you "
+"can enter energy label data per product, which is then displayed to shoppers "
+"on the product page for electrical items."
+msgstr ""
+"Dodaje informacje o zużyciu energii dla urządzeń elektrycznych. Po włączeniu "
+"można wprowadzić dane etykiety energetycznej dla każdego produktu, które są "
+"następnie wyświetlane klientom na stronie produktu dla artykułów "
+"elektrycznych."
+
+#: src/Admin/ModulesPage.php:106
+msgid ""
+"Verifies a customer's email address when they register an account. When "
+"enabled, new sign-ups receive an activation link by email and cannot log in "
+"until they confirm it, helping confirm real email addresses. Off until "
+"enabled."
+msgstr ""
+"Weryfikuje adres e-mail klienta podczas zakładania konta. Po włączeniu nowo "
+"rejestrujący się otrzymują link aktywacyjny e-mailem i nie mogą się "
+"zalogować, dopóki go nie potwierdzą, co pomaga potwierdzić prawdziwe adresy "
+"e-mail. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:107
+msgid ""
+"Speeds up product search with instant suggestions as shoppers type. When "
+"enabled, your store's search box shows live product matches (including by "
+"SKU and category) without reloading the page, kept lightweight for fast page "
+"performance. Off until enabled."
+msgstr ""
+"Przyspiesza wyszukiwanie produktów dzięki natychmiastowym podpowiedziom "
+"podczas pisania. Po włączeniu pole wyszukiwania Twojego sklepu pokazuje na "
+"żywo pasujące produkty (również po SKU i kategorii) bez przeładowywania "
+"strony, pozostając lekkie dla szybkiego działania strony. Wyłączone do czasu "
+"włączenia."
+
+#: src/Admin/ModulesPage.php:108
+msgid ""
+"Adds product brands as a separate feature from the manufacturer. When "
+"enabled, you can assign brands to products using a dedicated brand taxonomy, "
+"and brand info appears for shoppers on product pages and listings. Off until "
+"enabled."
+msgstr ""
+"Dodaje marki produktów jako funkcję odrębną od producenta. Po włączeniu "
+"można przypisywać marki do produktów za pomocą dedykowanej taksonomii marek, "
+"a informacje o marce pojawiają się dla klientów na stronach i listach "
+"produktów. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:109
+msgid ""
+"Lets shoppers filter product listings without reloading the page. When "
+"enabled, customers can narrow results by category, brand, price, stock "
+"status, sale, and attributes, with the listing updating instantly. Off until "
+"enabled."
+msgstr ""
+"Pozwala klientom filtrować listy produktów bez przeładowywania strony. Po "
+"włączeniu klienci mogą zawężać wyniki według kategorii, marki, ceny, stanu "
+"magazynowego, promocji i atrybutów, a lista aktualizuje się natychmiast. "
+"Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:110
+msgid ""
+"Lets shoppers save favorite products for later. When enabled, both guests "
+"and logged-in customers can add or remove items instantly, and logged-in "
+"customers see their saved list in My Account. Off until enabled."
+msgstr ""
+"Pozwala klientom zapisywać ulubione produkty na później. Po włączeniu "
+"zarówno goście, jak i zalogowani klienci mogą natychmiast dodawać lub usuwać "
+"produkty, a zalogowani klienci widzą swoją zapisaną listę w sekcji Moje "
+"konto. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:111
+msgid ""
+"Lets shoppers compare products side by side. When enabled, guests and logged-"
+"in customers can add products to a comparison table that highlights "
+"differences, and customers can view it in My Account. Off until enabled."
+msgstr ""
+"Pozwala klientom porównywać produkty obok siebie. Po włączeniu goście i "
+"zalogowani klienci mogą dodawać produkty do tabeli porównawczej, która "
+"podkreśla różnice, a klienci mogą ją zobaczyć w sekcji Moje konto. Wyłączone "
+"do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:112
+msgid ""
+"Lets shoppers preview a product without leaving the listing. When enabled, a "
+"lightweight pop-up opens from product listings showing the price, gallery, "
+"variations, and basic purchase info. Off until enabled."
+msgstr ""
+"Pozwala klientom podejrzeć produkt bez opuszczania listy. Po włączeniu z "
+"listy produktów otwiera się lekkie okno wyświetlające cenę, galerię, "
+"warianty i podstawowe informacje o zakupie. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:113
+msgid ""
+"Adds merchandising badges to your products. When enabled, badges appear on "
+"product pages and listings for shoppers, set either automatically by "
+"conditions you choose or manually per product. Off until enabled."
+msgstr ""
+"Dodaje plakietki merchandisingowe do Twoich produktów. Po włączeniu "
+"plakietki pojawiają się dla klientów na stronach i listach produktów, "
+"ustawiane automatycznie według wybranych przez Ciebie warunków lub ręcznie "
+"dla każdego produktu. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:114
+msgid ""
+"Lets you add extra tabs to product pages. When enabled, shoppers see "
+"additional tabs with content you set per product, plus global tabs for "
+"shipping, returns, and business information. Off until enabled."
+msgstr ""
+"Pozwala dodawać dodatkowe zakładki do stron produktów. Po włączeniu klienci "
+"widzą dodatkowe zakładki z treścią ustawioną przez Ciebie dla każdego "
+"produktu oraz globalne zakładki dotyczące wysyłki, zwrotów i informacji "
+"firmowych. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:115
+msgid ""
+"Adds a video to your product pages. When enabled, shoppers see a product "
+"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
+"local MP4 file. Off until enabled."
+msgstr ""
+"Dodaje wideo do stron Twoich produktów. Po włączeniu klienci widzą wideo "
+"produktu na stronie produktu, osadzone z YouTube, Vimeo lub przesłane jako "
+"lokalny plik MP4. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:116
+msgid ""
+"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
+"external slider libraries. When enabled, product image zoom and a click-to-"
+"enlarge lightbox become available to shoppers on product pages. Off until "
+"enabled."
+msgstr ""
+"Dodaje lekkie powiększanie obrazów i prosty lightbox galerii, bez ciężkich "
+"zewnętrznych bibliotek slajderów. Po włączeniu powiększanie obrazów produktu "
+"oraz lightbox z powiększaniem po kliknięciu stają się dostępne dla klientów "
+"na stronach produktów. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:117
+msgid ""
+"Adds a lightweight product slider using scroll-snap to show related, sale or "
+"featured products. When enabled, you can place a swipeable product carousel "
+"that displays to shoppers on the storefront. Off until enabled."
+msgstr ""
+"Dodaje lekki slajder produktów wykorzystujący scroll-snap do pokazywania "
+"powiązanych, przecenionych lub wyróżnionych produktów. Po włączeniu można "
+"umieścić przewijalną karuzelę produktów, która wyświetla się klientom w "
+"sklepie. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:118
+msgid ""
+"Captures interest in out-of-stock products. When enabled, shoppers can enter "
+"their email on sold-out products to join a waitlist and get an automatic "
+"notification when the item is back in stock. Off until enabled."
+msgstr ""
+"Zbiera zainteresowanie produktami niedostępnymi w magazynie. Po włączeniu "
+"klienci mogą wpisać swój e-mail przy wyprzedanych produktach, aby dołączyć "
+"do listy oczekujących i otrzymać automatyczne powiadomienie, gdy produkt "
+"wróci do sprzedaży. Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:119
+msgid ""
+"Loads more products as shoppers browse listings. When enabled, WooCommerce "
+"archive pages load further products automatically or via a load-more button "
+"instead of paging. Off until enabled."
+msgstr ""
+"Wczytuje kolejne produkty, gdy klienci przeglądają listy. Po włączeniu "
+"strony archiwów WooCommerce wczytują kolejne produkty automatycznie lub za "
+"pomocą przycisku wczytaj więcej zamiast stronicowania. Wyłączone do czasu "
+"włączenia."
+
+#: src/Admin/ModulesPage.php:120
+msgid ""
+"Shows a promotional or lead-capture popup to visitors. When enabled, a "
+"lightweight popup appears based on the delay, frequency, and page locations "
+"you set. Off until enabled."
+msgstr ""
+"Pokazuje odwiedzającym wyskakujące okno promocyjne lub pozyskujące kontakty. "
+"Po włączeniu lekkie wyskakujące okno pojawia się w oparciu o ustawione przez "
+"Ciebie opóźnienie, częstotliwość i lokalizacje na stronie. Wyłączone do "
+"czasu włączenia."
+
+#: src/Admin/ModulesPage.php:121
+msgid ""
+"Provides tools for displaying EU product safety (GPSR) details. When "
+"enabled, you can add manufacturer and importer data, responsible person, "
+"product identifiers, safety warnings, and instructions to products, with CSV "
+"bulk import or export. Off until enabled."
+msgstr ""
+"Udostępnia narzędzia do wyświetlania informacji o bezpieczeństwie produktów "
+"w UE (GPSR). Po włączeniu można dodawać do produktów dane producenta i "
+"importera, osobę odpowiedzialną, identyfikatory produktów, ostrzeżenia "
+"bezpieczeństwa oraz instrukcje, z masowym importem lub eksportem CSV. "
+"Wyłączone do czasu włączenia."
+
+#: src/Admin/ModulesPage.php:122
+msgid ""
+"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
+"from customers who actually bought the product display a verified purchase "
+"badge on the product page, so shoppers can tell genuine buyer feedback from "
+"the rest."
+msgstr ""
+"Pokazuje plakietkę zaufania przy opiniach pozostawionych przez prawdziwych "
+"kupujących. Po włączeniu opinie od klientów, którzy faktycznie kupili "
+"produkt, wyświetlają plakietkę zweryfikowanego zakupu na stronie produktu, "
+"dzięki czemu klienci mogą odróżnić autentyczne opinie kupujących od "
+"pozostałych."
+
+#: src/Admin/ModulesPage.php:123
+msgid ""
+"Adds product fields for backing up environmental claims. When enabled, each "
+"product gains fields for the basis of an ecological claim, a certificate "
+"link, and an expiration date, helping you prepare for the anti-greenwashing "
+"directive (September 2026)."
+msgstr ""
+"Dodaje pola produktów służące do udokumentowania twierdzeń środowiskowych. "
+"Po włączeniu każdy produkt zyskuje pola dotyczące podstawy twierdzenia "
+"ekologicznego, linku do certyfikatu oraz daty ważności, pomagając "
+"przygotować się na dyrektywę przeciw greenwashingowi (wrzesień 2026)."
+
+#: src/Admin/ModulesPage.php:124
+msgid ""
+"Provides Digital Services Act tools for your store. When enabled, you get "
+"contact point settings, a public report form for illegal content or products "
+"via the [polski_dsa_report] shortcode, and an admin screen where staff "
+"review submitted reports."
+msgstr ""
+"Udostępnia dla Twojego sklepu narzędzia związane z aktem o usługach "
+"cyfrowych (Digital Services Act). Po włączeniu otrzymujesz ustawienia punktu "
+"kontaktowego, publiczny formularz zgłaszania nielegalnych treści lub "
+"produktów za pomocą shortkodu [polski_dsa_report] oraz ekran "
+"administracyjny, na którym personel przegląda przesłane zgłoszenia."
+
+#: src/Admin/ModulesPage.php:125
+msgid ""
+"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
+"checked by NIP and flagged when KSeF invoicing may apply, with integration "
+"hooks and an admin status indicator shown to your team."
+msgstr ""
+"Pomaga wykrywać zamówienia, które mogą wymagać fakturowania w KSeF. Po "
+"włączeniu zamówienia są sprawdzane według NIP i oznaczane, gdy fakturowanie "
+"w KSeF może mieć zastosowanie, z punktami integracji oraz wskaźnikiem "
+"statusu w panelu pokazywanym Twojemu zespołowi."
+
+#: src/Admin/ModulesPage.php:126
+msgid ""
+"A log for tracking security incidents, built with CRA in mind. When enabled, "
+"staff get an admin log to record vulnerabilities, breaches, and third-party "
+"failures, track their status and follow-up, and export everything to CSV."
+msgstr ""
+"Dziennik do śledzenia incydentów bezpieczeństwa, stworzony z myślą o CRA. Po "
+"włączeniu personel otrzymuje dziennik administracyjny do rejestrowania "
+"podatności, naruszeń i awarii podmiotów zewnętrznych, śledzenia ich statusu "
+"i działań następczych oraz eksportowania wszystkiego do CSV."
+
+#: src/Admin/ModulesPage.php:127
+msgid ""
+"Quietly watches your store for problems. When enabled, it passively monitors "
+"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
+"every 5 minutes and sending email or webhook alerts. It never places test "
+"orders."
+msgstr ""
+"Po cichu obserwuje Twój sklep pod kątem problemów. Po włączeniu pasywnie "
+"monitoruje błędy krytyczne na froncie, wskaźnik niepowodzeń przy składaniu "
+"zamówień oraz anomalie sprzedaży, sprawdzając co 5 minut i wysyłając alerty "
+"e-mailem lub przez webhook. Nigdy nie składa zamówień testowych."
+
+#: src/Admin/ModulesPage.php:128
+msgid ""
+"Lets AI assistants safely read selected store data. When enabled, read-only "
+"data like price history, product safety info, store health, page checks, and "
+"product facts is exposed to AI assistants and the Site Editor via the "
+"WordPress Abilities API. Off by default."
+msgstr ""
+"Pozwala asystentom AI bezpiecznie odczytywać wybrane dane sklepu. Po "
+"włączeniu dane tylko do odczytu, takie jak historia cen, informacje o "
+"bezpieczeństwie produktów, kondycja sklepu, kontrole stron oraz dane "
+"produktów, są udostępniane asystentom AI i Edytorowi witryny za "
+"pośrednictwem WordPress Abilities API. Domyślnie wyłączone."
+
+#: src/Admin/ModulesPage.php:129
+msgid ""
+"Adds structured data so search engines understand your products. When "
+"enabled, advanced JSON-LD tags are injected automatically into your pages to "
+"support product indexing by Google, while preserving the plugin's own data."
+msgstr ""
+"Dodaje dane strukturalne, dzięki którym wyszukiwarki rozumieją Twoje "
+"produkty. Po włączeniu zaawansowane znaczniki JSON-LD są automatycznie "
+"wstrzykiwane do Twoich stron, aby wspierać indeksowanie produktów przez "
+"Google, zachowując jednocześnie własne dane wtyczki."
+
+#: src/Admin/ModulesPage.php:130
+msgid ""
+"A consent-gated tag manager for marketing tags. When enabled, it adds a "
+"unified place to manage tracking tags that fire only after visitor consent, "
+"so tools like GA4 and GTM load on your store in line with your consent "
+"settings."
+msgstr ""
+"Menedżer tagów marketingowych uzależniony od zgody. Po włączeniu dodaje "
+"jedno miejsce do zarządzania tagami śledzącymi, które uruchamiają się "
+"dopiero po zgodzie odwiedzającego, dzięki czemu narzędzia takie jak GA4 i "
+"GTM ładują się w Twoim sklepie zgodnie z Twoimi ustawieniami zgód."
+
+#: src/Admin/ModulesPage.php:131
+msgid ""
+"Reduces and controls external Google Fonts requests on your store. When "
+"enabled, font-display and preconnect hints are added to your pages, and the "
+"Google Fonts stylesheet can be held back until a visitor grants the matching "
+"consent, helping with privacy and load speed."
+msgstr ""
+"Ogranicza i kontroluje zewnętrzne żądania Google Fonts w Twoim sklepie. Po "
+"włączeniu do Twoich stron dodawane są wskazówki font-display i preconnect, a "
+"arkusz stylów Google Fonts może być wstrzymany do czasu udzielenia przez "
+"odwiedzającego odpowiedniej zgody, co pomaga w zakresie prywatności i "
+"szybkości ładowania."
+
+#: src/Admin/ModulesPage.php:132
+msgid ""
+"Lets you add your own scripts or snippets to the page head or footer. When "
+"enabled, each snippet you add is tied to a consent category and runs only "
+"after the visitor grants that consent through the Consent Manager, so your "
+"custom code respects shoppers' choices."
+msgstr ""
+"Pozwala dodawać własne skrypty lub fragmenty kodu do nagłówka lub stopki "
+"strony. Po włączeniu każdy dodany fragment jest powiązany z kategorią zgody "
+"i uruchamia się dopiero po udzieleniu tej zgody przez odwiedzającego za "
+"pomocą Menedżera zgód, dzięki czemu Twój własny kod respektuje wybory "
+"klientów."
+
+#: src/Admin/ModulesPage.php:133
+msgid ""
+"Lets you push your own dataLayer events based on simple page conditions. "
+"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
+"chosen element, feeding into the GA4 DataLayer module for your analytics and "
+"tag setup."
+msgstr ""
+"Pozwala wysyłać własne zdarzenia dataLayer w oparciu o proste warunki "
+"strony. Po włączeniu zdarzenia uruchamiają się, gdy odwiedzający trafi na "
+"wybrany adres URL lub kliknie wybrany element, zasilając moduł GA4 DataLayer "
+"dla Twojej analityki i konfiguracji tagów."
+
+#: src/Admin/ModulesPage.php:134
+msgid ""
+"Keeps your settings and messages compatible with popular checkout field add-"
+"ons and product data. When enabled, the plugin detects supported checkout "
+"extensions, cookies, and product data, then adjusts its own behaviour so "
+"labels and consent prompts display correctly at checkout."
+msgstr ""
+"Utrzymuje Twoje ustawienia i komunikaty zgodne z popularnymi dodatkami do "
+"pól zamówienia oraz danymi produktów. Po włączeniu wtyczka wykrywa "
+"obsługiwane rozszerzenia zamówienia, pliki cookie i dane produktów, a "
+"następnie dostosowuje swoje zachowanie tak, aby etykiety i monity o zgodę "
+"wyświetlały się poprawnie podczas składania zamówienia."
+
+#: src/Admin/ModulesPage.php:135
+msgid ""
+"Automatically checks your store for the most common store-setup issues. When "
+"enabled, it scans for things like missing legal pages, pre-ticked "
+"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
+"the admin so you can fix gaps yourself."
+msgstr ""
+"Automatycznie sprawdza Twój sklep pod kątem najczęstszych problemów z "
+"konfiguracją sklepu. Po włączeniu skanuje takie elementy jak brakujące "
+"strony prawne, wstępnie zaznaczone pola wyboru, dane firmowe, RODO oraz "
+"elementy Omnibus i pokazuje raport w panelu, dzięki czemu możesz "
+"samodzielnie usunąć braki."
+
+#: src/Admin/ModulesPage.php:136
+msgid ""
+"Controls what happens to Polski's data if you remove the plugin. When "
+"enabled, you decide whether Polski deletes its database tables, settings, "
+"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
+"when removing the plugin from WordPress."
+msgstr ""
+"Kontroluje, co dzieje się z danymi Polski po usunięciu wtyczki. Po włączeniu "
+"decydujesz, czy Polski usuwa swoje tabele bazy danych, ustawienia i zapisane "
+"dzienniki podczas odinstalowania, dzięki czemu możesz zachować swoje dane "
+"lub usunąć je w całości przy usuwaniu wtyczki z WordPressa."
+
+#: src/Admin/ModulesPage.php:137
+msgid ""
+"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
+"enabled, it can publish a security.txt file (RFC 9116) with your security "
+"contact and vulnerability reporting policy, making it easier for researchers "
+"to report security issues responsibly."
+msgstr ""
+"Udostępnia narzędzia wspierające przygotowanie do aktu o cyberodporności "
+"(Cyber Resilience Act, CRA). Po włączeniu może opublikować plik security.txt "
+"(RFC 9116) z Twoim kontaktem do spraw bezpieczeństwa i polityką zgłaszania "
+"podatności, ułatwiając badaczom odpowiedzialne zgłaszanie problemów z "
+"bezpieczeństwem."
+
+#: src/Admin/ModulesPage.php:138
+msgid ""
+"Helps you keep a GDPR data-processing registry for your store. When enabled, "
+"it detects third-party services that process your customers' personal data "
+"and lets you track the status of each data processing agreement (DPA) from "
+"the admin."
+msgstr ""
+"Pomaga prowadzić rejestr czynności przetwarzania danych RODO dla Twojego "
+"sklepu. Po włączeniu wykrywa usługi podmiotów zewnętrznych przetwarzające "
+"dane osobowe Twoich klientów i pozwala śledzić status każdej umowy "
+"powierzenia przetwarzania danych (DPA) z poziomu panelu."
+
+#: src/Admin/ModulesPage.php:139
+msgid ""
+"Sets a minimum order value or item count before customers can check out. "
+"When enabled, shoppers who haven't reached the minimum see a notice on the "
+"cart and checkout pages, and checkout stays blocked until they add enough."
+msgstr ""
+"Ustawia minimalną wartość zamówienia lub liczbę produktów, zanim klienci "
+"będą mogli złożyć zamówienie. Po włączeniu klienci, którzy nie osiągnęli "
+"minimum, widzą komunikat na stronach koszyka i zamówienia, a składanie "
+"zamówienia pozostaje zablokowane, dopóki nie dodadzą wystarczająco dużo."
+
+#: src/Admin/ModulesPage.php:140
+msgid ""
+"Sends automatic emails asking customers to review what they bought. When "
+"enabled, after an order is completed buyers get an email with product images "
+"and review links, plus an opt-out option."
+msgstr ""
+"Wysyła automatyczne e-maile z prośbą do klientów o opinię na temat "
+"zakupionych produktów. Po włączeniu po zrealizowaniu zamówienia kupujący "
+"otrzymują e-mail ze zdjęciami produktów i linkami do wystawienia opinii oraz "
+"opcją rezygnacji."
+
+#: src/Admin/ModulesPage.php:141
+msgid ""
+"Shows a single from-price instead of a price range on variable products. "
+"When enabled, shop archives and product pages display the lowest price as a "
+"clean from-amount rather than a low-to-high range."
+msgstr ""
+"Pokazuje pojedynczą cenę od zamiast zakresu cen na produktach z wariantami. "
+"Po włączeniu archiwa sklepu i strony produktów wyświetlają najniższą cenę "
+"jako przejrzystą kwotę od zamiast zakresu od najniższej do najwyższej."
+
+#: src/Admin/ModulesPage.php:142
+msgid ""
+"Puts stock back automatically when orders don't go through. When enabled, "
+"products from orders that are cancelled, refunded or failed are returned to "
+"inventory without any manual work."
+msgstr ""
+"Automatycznie przywraca stan magazynowy, gdy zamówienia nie dochodzą do "
+"skutku. Po włączeniu produkty z zamówień anulowanych, zwróconych lub "
+"nieudanych są zwracane do magazynu bez żadnej pracy ręcznej."
+
+#: src/Admin/ModulesPage.php:143
+msgid ""
+"Lets customers add items to the cart without reloading the page, including "
+"variable products. When enabled, products are added in the background on "
+"single product pages and a toast notification confirms success."
+msgstr ""
+"Pozwala klientom dodawać produkty do koszyka bez przeładowywania strony, w "
+"tym produkty z wariantami. Po włączeniu produkty są dodawane w tle na "
+"stronach pojedynczych produktów, a powiadomienie typu toast potwierdza "
+"powodzenie."
+
+#: src/Admin/ModulesPage.php:144
+msgid ""
+"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
+"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
+"sent to your GA4 setup, working with a GTM container or gtag.js."
+msgstr ""
+"Śledzi aktywność e-commerce dla Google Analytics 4 za pomocą dataLayer. Po "
+"włączeniu zdarzenia takie jak view_item, add_to_cart, begin_checkout i "
+"purchase są wysyłane do Twojej konfiguracji GA4, współpracując z kontenerem "
+"GTM lub gtag.js."
+
+#: src/Admin/ModulesPage.php:145
+msgid ""
+"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
+"Export tool appears under Products where you can choose fields, filter by "
+"stock threshold and include variations."
+msgstr ""
+"Eksportuje stan magazynowy produktów WooCommerce do pliku CSV. Po włączeniu "
+"w sekcji Produkty pojawia się narzędzie Eksport stanu magazynowego, w którym "
+"możesz wybrać pola, filtrować według progu stanu magazynowego i uwzględnić "
+"warianty."
+
+#: src/Admin/ModulesPage.php:146
+msgid ""
+"Lets customers register and sign in using Google or Facebook. When enabled, "
+"branded login buttons appear on My Account, checkout and the WordPress login "
+"form, and customer accounts are created automatically."
+msgstr ""
+"Pozwala klientom rejestrować się i logować za pomocą Google lub Facebooka. "
+"Po włączeniu przyciski logowania z logo pojawiają się w sekcji Moje konto, "
+"podczas składania zamówienia i na formularzu logowania WordPress, a konta "
+"klientów są tworzone automatycznie."
+
+#: src/Admin/ModulesPage.php:147
+msgid ""
+"Adds a custom taxonomy for product authors or creators. When enabled, you "
+"can assign authors to products and group them, useful for stores selling "
+"books or creator-made items."
+msgstr ""
+"Dodaje niestandardową taksonomię dla autorów lub twórców produktów. Po "
+"włączeniu można przypisywać autorów do produktów i grupować je, co jest "
+"przydatne dla sklepów sprzedających książki lub produkty tworzone przez "
+"twórców."
+
+#: src/Admin/ModulesPage.php:148
+msgid ""
+"Lets you publish editorial, in-house reviews of products. When enabled, you "
+"get a new section to write expert reviews with ratings and verdicts, linked "
+"to products and shown on product pages with Schema.org markup that helps "
+"with SEO."
+msgstr ""
+"Pozwala publikować redakcyjne, własne recenzje produktów. Po włączeniu "
+"otrzymujesz nową sekcję do pisania eksperckich recenzji z ocenami i "
+"werdyktami, powiązanych z produktami i pokazywanych na stronach produktów ze "
+"znacznikami Schema.org, które wspierają SEO."
+
+#: src/Admin/ModulesPage.php:149
+msgid ""
+"Displays recent-purchase popups to build trust. When enabled, small floating "
+"notifications about recent orders appear to your shoppers in a position and "
+"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
+msgstr ""
+"Wyświetla wyskakujące okna o niedawnych zakupach, aby budować zaufanie. Po "
+"włączeniu małe pływające powiadomienia o niedawnych zamówieniach pojawiają "
+"się Twoim klientom w wybranym przez Ciebie miejscu i czasie, ładowane "
+"płynnie przez AJAX i zaprojektowane z dbałością o prywatność."
+
+#: src/Admin/ModulesPage.php:150
+msgid ""
+"Adds a questions-and-answers section to product pages. When enabled, "
+"customers can ask questions and anyone can answer, you get email alerts for "
+"new questions, answers can be voted on, and Schema.org QAPage markup helps "
+"with SEO."
+msgstr ""
+"Dodaje sekcję pytań i odpowiedzi do stron produktów. Po włączeniu klienci "
+"mogą zadawać pytania, a każdy może odpowiadać, otrzymujesz alerty e-mailowe "
+"o nowych pytaniach, na odpowiedzi można głosować, a znaczniki Schema.org "
+"QAPage wspierają SEO."
+
+#: src/Admin/ModulesPage.php:151
+msgid ""
+"Shows reassurance icons like secure payment, fast delivery, returns, and "
+"quality guarantee. When enabled, these configurable trust signals appear to "
+"shoppers on your product, cart, and checkout pages."
+msgstr ""
+"Pokazuje ikony budujące zaufanie, takie jak bezpieczna płatność, szybka "
+"dostawa, zwroty i gwarancja jakości. Po włączeniu te konfigurowalne sygnały "
+"zaufania pojawiają się klientom na stronach produktów, koszyka i zamówienia."
+
+#: src/Admin/ModulesPage.php:152
+msgid ""
+"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
+"whenever they add a product, showing cart items, the subtotal, a free-"
+"shipping progress bar, and a quick link to checkout."
+msgstr ""
+"Dodaje wysuwany panel koszyka. Po włączeniu panel boczny otwiera się "
+"klientowi za każdym razem, gdy doda produkt, pokazując produkty w koszyku, "
+"sumę częściową, pasek postępu do darmowej wysyłki oraz szybki link do "
+"złożenia zamówienia."
+
+#: src/Admin/ModulesPage.php:153
+msgid ""
+"Shows how a product's price has changed over time. When enabled, shoppers "
+"see a small SVG price-trend chart on product pages covering the last 30, 90, "
+"or 180 days, using your Omnibus price data."
+msgstr ""
+"Pokazuje, jak cena produktu zmieniała się w czasie. Po włączeniu klienci "
+"widzą mały wykres trendu cen SVG na stronach produktów obejmujący ostatnie "
+"30, 90 lub 180 dni, korzystając z Twoich danych cenowych Omnibus."
+
+#: src/Admin/ModulesPage.php:154
+msgid ""
+"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
+"an admin tool to download orders as CSV, choosing which fields to include "
+"and filtering by date range and order status."
+msgstr ""
+"Eksportuje Twoje zamówienia WooCommerce do pliku arkusza kalkulacyjnego. Po "
+"włączeniu otrzymujesz narzędzie administracyjne do pobierania zamówień jako "
+"CSV, wybierając, które pola uwzględnić, oraz filtrując według zakresu dat i "
+"statusu zamówienia."
+
+#: src/Admin/ModulesPage.php:155
+msgid ""
+"Lets you create a frequently-asked-questions section. When enabled, you can "
+"add FAQs with categories and place them on any page as an accordion "
+"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
+msgstr ""
+"Pozwala utworzyć sekcję najczęściej zadawanych pytań. Po włączeniu można "
+"dodawać pytania z kategoriami i umieszczać je na dowolnej stronie jako "
+"shortkod akordeonu, z danymi Schema.org FAQPage, które wspierają rozszerzone "
+"wyniki w SEO."
+
+#: src/Admin/ModulesPage.php:156
+msgid ""
+"Lets you customise your checkout form. When enabled, you can add, edit, "
+"reorder, and choose types for checkout fields, and the collected values "
+"appear in the admin order, customer emails, and My Account."
+msgstr ""
+"Pozwala dostosować Twój formularz zamówienia. Po włączeniu można dodawać, "
+"edytować, zmieniać kolejność i wybierać typy pól zamówienia, a zebrane "
+"wartości pojawiają się w zamówieniu w panelu, e-mailach do klientów oraz w "
+"sekcji Moje konto."
+
 #: src/Admin/ModulesPage.php:174
 msgid "Promotions / dynamic pricing"
 msgstr "Promocje / dynamiczne ceny"
@@ -3211,16 +3316,6 @@ msgstr ""
 "Automatyczne rabaty koszykowe: procent rabatu, gdy wartość koszyka osiągnie "
 "próg, oraz procent rabatu na pozycję produktu, gdy jej ilość osiągnie próg "
 "(rabat ilościowy). Domyślnie wyłączone."
-
-#: src/Admin/ModulesPage.php:176 src/Admin/ModulesPage.php:638
-#: src/Admin/ModulesPage.php:655 src/Admin/ModulesPage.php:706
-#: src/Admin/ModulesPage.php:736 src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:820 src/Admin/ModulesPage.php:852
-#: src/Admin/ModulesPage.php:875 src/Admin/ModulesPage.php:893
-#: src/Admin/ModulesPage.php:910 src/Admin/ModulesPage.php:937
-#: src/Admin/ModulesPage.php:967 src/Admin/ModulesPage.php:988
-msgid "Merchandising"
-msgstr "Merchandising"
 
 #: src/Admin/ModulesPage.php:181
 msgid "Bulk discount: minimum quantity per product"
@@ -3258,12 +3353,6 @@ msgid ""
 msgstr ""
 "Wyświetlaj cenę za jednostkę (np. za 1 kg, za 100 ml) zgodnie z polskim "
 "prawem konsumenckim."
-
-#: src/Admin/ModulesPage.php:192 src/Admin/ModulesPage.php:205
-#: src/Admin/ModulesPage.php:238 src/Admin/ModulesPage.php:253
-#: src/Admin/ModulesPage.php:267 src/Admin/ModulesPage.php:281
-msgid "Prices and Display"
-msgstr "Ceny i wyświetlanie"
 
 #: src/Admin/ModulesPage.php:197 src/Admin/ModulesPage.php:272
 msgid "Display format"
@@ -3529,12 +3618,6 @@ msgstr ""
 "Zmień tekst przycisku zamówienia na „Zamawiam z obowiązkiem zapłaty” zgodnie "
 "z polskim prawem."
 
-#: src/Admin/ModulesPage.php:295 src/Admin/ModulesPage.php:307
-#: src/Admin/ModulesPage.php:346 src/Admin/ModulesPage.php:361
-#: src/Admin/ModulesPage.php:1302
-msgid "Checkout and Orders"
-msgstr "Zamówienia i kasa"
-
 #: src/Admin/ModulesPage.php:300 src/Admin/ModulesPage.php:627
 #: src/Admin/ModulesPage.php:698 src/Admin/ModulesPage.php:788
 #: src/Admin/ModulesPage.php:950 src/Admin/ModulesPage.php:973
@@ -3750,10 +3833,6 @@ msgstr ""
 "udzielenia zgody w odpowiedniej kategorii. Zapisuje każdą decyzję na "
 "potrzeby Twojego rejestru. Udostępnia narzędzia, nie poradę prawną."
 
-#: src/Admin/ModulesPage.php:371 src/Admin/ModulesPage.php:2400
-msgid "Legal & Compliance"
-msgstr "Prawo i zgodność"
-
 #: src/Admin/ModulesPage.php:378
 msgid "Enabled categories"
 msgstr "Włączone kategorie"
@@ -3763,19 +3842,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "Niezbędne pliki cookie są zawsze włączone i nie można ich wyłączyć."
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1370 src/Admin/ModulesPage.php:1895
+#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Analityka"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1896 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "Marketing"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1897 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "Preferencje"
 
@@ -3867,12 +3946,6 @@ msgstr ""
 "Pozwól klientom złożyć reklamację lub wniosek o zwrot z poziomu Mojego konta "
 "dla kwalifikujących się zamówień, z e-mailem potwierdzającym oraz kolejką "
 "administratora ze statusami. Udostępnia narzędzia, nie porady prawne."
-
-#: src/Admin/ModulesPage.php:401 src/Admin/ModulesPage.php:414
-#: src/Admin/ModulesPage.php:426 src/Admin/ModulesPage.php:466
-#: src/Admin/ModulesPage.php:511
-msgid "Consumer Rights"
-msgstr "Prawa konsumenta"
 
 #: src/Admin/ModulesPage.php:406
 msgid "Eligibility window (days from order date)"
@@ -4359,12 +4432,6 @@ msgstr ""
 "Informacje o producencie, osobie odpowiedzialnej (GPSR), dokumentach i "
 "instrukcjach bezpieczeństwa."
 
-#: src/Admin/ModulesPage.php:527 src/Admin/ModulesPage.php:537
-#: src/Admin/ModulesPage.php:568 src/Admin/ModulesPage.php:1019
-#: src/Admin/ModulesPage.php:1032 src/Admin/ModulesPage.php:1044
-msgid "Product Information"
-msgstr "Informacje o produkcie"
-
 #: src/Admin/ModulesPage.php:535
 msgid "Food and Supplements"
 msgstr "Żywność i suplementy"
@@ -4449,7 +4516,7 @@ msgid "Value column name"
 msgstr "Nazwa kolumny wartości"
 
 #: src/Admin/ModulesPage.php:555 src/Service/FoodService.php:161
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Value"
 msgstr "Wartość"
 
@@ -4505,10 +4572,6 @@ msgid ""
 msgstr ""
 "Weryfikacja adresu e-mail podczas rejestracji konta. Link aktywacyjny "
 "wysyłany e-mailem, blokada logowania dla nieaktywowanych kont."
-
-#: src/Admin/ModulesPage.php:580
-msgid "Customer Account"
-msgstr "Konto klienta"
 
 #: src/Admin/ModulesPage.php:585
 msgid "Delete inactive accounts after (days)"
@@ -4625,10 +4688,6 @@ msgid ""
 msgstr ""
 "Szybkie podpowiedzi produktów podczas pisania, z obsługą SKU, kategoriami i "
 "lekkim frontendem przyjaznym dla web vitals."
-
-#: src/Admin/ModulesPage.php:605
-msgid "Sales and B2B"
-msgstr "Sprzedaż i B2B"
 
 #: src/Admin/ModulesPage.php:610 resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
@@ -4769,7 +4828,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "Pokazuj na stronie produktu"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1972
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Etykieta"
@@ -5789,7 +5848,7 @@ msgstr "Jak otworzyć CTA"
 msgid "Shop and archives"
 msgstr "Sklep i archiwa"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:1531
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Kasa"
@@ -5890,12 +5949,6 @@ msgstr ""
 "Narzędzia Digital Services Act: ustawienia punktu kontaktowego, formularz "
 "zgłoszenia nielegalnych treści lub produktów oraz ekran raportów "
 "administratora. Shortcode: [polski_dsa_report]."
-
-#: src/Admin/ModulesPage.php:1054 src/Admin/ModulesPage.php:1070
-#: src/Admin/ModulesPage.php:1082 src/Admin/ModulesPage.php:1097
-#: src/AIFeed/LlmsTxtService.php:109
-msgid "Consumer rights"
-msgstr "Prawa konsumenta"
 
 #: src/Admin/ModulesPage.php:1059
 msgid "DSA contact name"
@@ -6044,13 +6097,6 @@ msgstr ""
 "produkcie) asystentom AI oraz edytorowi witryny za pośrednictwem WordPress "
 "Abilities API. Domyślnie wyłączone."
 
-#: src/Admin/ModulesPage.php:1116 src/Admin/ModulesPage.php:1255
-#: src/Admin/ModulesPage.php:1267 src/Admin/ModulesPage.php:1279
-#: src/Admin/ModulesPage.php:1292 src/Admin/ModulesPage.php:1384
-#: src/Admin/ModulesPage.php:1507
-msgid "Tools"
-msgstr "Narzędzia"
-
 #: src/Admin/ModulesPage.php:1126
 msgid "Structured Data (Schema.org)"
 msgstr "Dane strukturalne (Schema.org)"
@@ -6063,11 +6109,6 @@ msgstr ""
 "Automatyczne wstrzykiwanie zaawansowanych tagów JSON-LD, wspierające "
 "indeksowanie produktów przez Google z zachowaniem danych specyficznych dla "
 "wtyczki."
-
-#: src/Admin/ModulesPage.php:1128 src/Admin/ModulesPage.php:1146
-#: src/Admin/ModulesPage.php:1190
-msgid "SEO & Optimization"
-msgstr "SEO i optymalizacja"
 
 #: src/Admin/ModulesPage.php:1133
 msgid "Enable structured data integration"
@@ -6328,7 +6369,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "Kategoria zgody"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1894
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "Niezbędne"
@@ -6354,11 +6395,6 @@ msgstr ""
 "Dodaj własne skrypty lub fragmenty kodu do sekcji head lub stopki strony. "
 "Każdy fragment ma przypisaną kategorię zgody i uruchamia się dopiero po jej "
 "udzieleniu przez odwiedzającego, za pośrednictwem Menedżera zgód."
-
-#: src/Admin/ModulesPage.php:1210 src/Admin/ModulesPage.php:1224
-#: src/Admin/ModulesPage.php:2408
-msgid "Advanced & Tools"
-msgstr "Zaawansowane i narzędzia"
 
 #: src/Admin/ModulesPage.php:1215
 msgid ""
@@ -6413,10 +6449,6 @@ msgid ""
 msgstr ""
 "Wykrywanie popularnych rozszerzeń pól zamówienia, ciasteczek i danych "
 "produktowych w celu zachowania kompatybilności ustawień i komunikatów."
-
-#: src/Admin/ModulesPage.php:1239
-msgid "Integrations"
-msgstr "Integracje"
 
 #: src/Admin/ModulesPage.php:1253
 msgid "Store Audit"
@@ -6579,10 +6611,6 @@ msgstr ""
 "Wyświetlaj „od {price}” zamiast przedziału cen dla produktów wariantowych. "
 "Czytelniejsza prezentacja na listach i stronach produktowych."
 
-#: src/Admin/ModulesPage.php:1333 src/Admin/ModulesPage.php:1493
-msgid "Prices and Omnibus"
-msgstr "Ceny i Omnibus"
-
 #: src/Admin/ModulesPage.php:1338
 msgid "Enable \"from\" price display"
 msgstr "Włącz wyświetlanie ceny „od”"
@@ -6606,10 +6634,6 @@ msgid ""
 msgstr ""
 "Automatycznie przywraca stany magazynowe przy anulowaniu, zwrocie lub "
 "nieudanym zamówieniu. Utrzymuje prawidłowe stany bez ręcznej interwencji."
-
-#: src/Admin/ModulesPage.php:1348 src/Admin/ModulesPage.php:1358
-msgid "Stock & Cart"
-msgstr "Magazyn i koszyk"
 
 #: src/Admin/ModulesPage.php:1356
 msgid "AJAX Add to Cart"
@@ -6684,14 +6708,6 @@ msgstr ""
 "Pozwól klientom rejestrować się i logować przez Google lub Facebook. "
 "Przyciski na stronie konta, kasie i formularzu logowania WP. Automatycznie "
 "tworzy konta klientów WooCommerce."
-
-#: src/Admin/ModulesPage.php:1396 src/Admin/ModulesPage.php:1414
-#: src/Admin/ModulesPage.php:1424 src/Admin/ModulesPage.php:1436
-#: src/Admin/ModulesPage.php:1452 src/Admin/ModulesPage.php:1462
-#: src/Admin/ModulesPage.php:1476 src/Admin/ModulesPage.php:1519
-#: src/AIFeed/LlmsTxtService.php:209
-msgid "Storefront"
-msgstr "Witryna sklepu"
 
 #: src/Admin/ModulesPage.php:1401
 msgid "Enable Google login"
@@ -6998,123 +7014,187 @@ msgstr "Zarządzaj polami"
 msgid "Name"
 msgstr "Nazwa"
 
-#: src/Admin/ModulesPage.php:1647
+#: src/Admin/ModulesPage.php:1663
 msgid "Help"
 msgstr "Pomoc"
 
+#: src/Admin/ModulesPage.php:1706
+msgid "Enable this module to use this."
+msgstr "Włącz ten moduł, aby z niego skorzystać."
+
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1713
+#: src/Admin/ModulesPage.php:1729
 #, php-format
 msgid "Edit %s settings"
 msgstr "Edytuj ustawienia %s"
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1732
 msgid "Edit settings"
 msgstr "Edytuj ustawienia"
 
-#: src/Admin/ModulesPage.php:1726 src/Admin/ModulesPage.php:1727
+#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
 msgid "Open documentation"
 msgstr "Otwórz dokumentację"
 
-#: src/Admin/ModulesPage.php:1760
+#: src/Admin/ModulesPage.php:1776
 msgid "Save"
 msgstr "Zapisz"
 
-#: src/Admin/ModulesPage.php:1854
+#: src/Admin/ModulesPage.php:1870
 msgid "none"
 msgstr "brak"
 
-#: src/Admin/ModulesPage.php:1950
+#: src/Admin/ModulesPage.php:1966
 msgid "Add snippet"
 msgstr "Dodaj fragment kodu"
 
-#: src/Admin/ModulesPage.php:1979
+#: src/Admin/ModulesPage.php:1995
 msgid "Head"
 msgstr "Nagłówek"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1996
 msgid "Footer"
 msgstr "Stopka"
 
-#: src/Admin/ModulesPage.php:1993
+#: src/Admin/ModulesPage.php:2009
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> lub kod JS w treści"
 
-#: src/Admin/ModulesPage.php:1999 src/Admin/ModulesPage.php:2084
+#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/Admin/ModulesPage.php:2029
+#: src/Admin/ModulesPage.php:2045
 msgid "Add trigger"
 msgstr "Dodaj wyzwalacz"
 
-#: src/Admin/ModulesPage.php:2052
+#: src/Admin/ModulesPage.php:2068
 msgid "Event name (e.g. cta_click)"
 msgstr "Nazwa zdarzenia (np. cta_click)"
 
-#: src/Admin/ModulesPage.php:2059
+#: src/Admin/ModulesPage.php:2075
 msgid "URL contains"
 msgstr "Adres URL zawiera"
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2076
 msgid "Click on selector"
 msgstr "Kliknięcie w selektor"
 
-#: src/Admin/ModulesPage.php:2073
+#: src/Admin/ModulesPage.php:2089
 msgid "URL fragment (for URL contains)"
 msgstr "Fragment adresu URL (dla „Adres URL zawiera”)"
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2094
 msgid "CSS selector (for click)"
 msgstr "Selektor CSS (dla kliknięcia)"
 
-#: src/Admin/ModulesPage.php:2188
+#: src/Admin/ModulesPage.php:2204
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Nie masz uprawnień do tej strony."
 
-#: src/Admin/ModulesPage.php:2195 src/Admin/ModulesPage.php:2211
+#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
 msgid "Invalid request."
 msgstr "Nieprawidłowe żądanie."
 
-#: src/Admin/ModulesPage.php:2402
+#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+msgid "Legal & Compliance"
+msgstr "Prawo i zgodność"
+
+#: src/Admin/ModulesPage.php:2418
 msgid "Tax & Pricing"
 msgstr "Podatki i ceny"
 
-#: src/Admin/ModulesPage.php:2404
+#: src/Admin/ModulesPage.php:2420
 msgid "Checkout & Orders"
 msgstr "Kasa i zamówienia"
 
-#: src/Admin/ModulesPage.php:2406
+#: src/Admin/ModulesPage.php:2422
 msgid "Content & Trust"
 msgstr "Treść i zaufanie"
 
-#: src/Admin/ModulesPage.php:2410 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+msgid "Advanced & Tools"
+msgstr "Zaawansowane i narzędzia"
+
+#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Inne"
 
-#: src/Admin/ModulesPage.php:2481
+#: src/Admin/ModulesPage.php:2439
+msgid "Prices and Display"
+msgstr "Ceny i wyświetlanie"
+
+#: src/Admin/ModulesPage.php:2441
+msgid "Prices and Omnibus"
+msgstr "Ceny i Omnibus"
+
+#: src/Admin/ModulesPage.php:2443
+msgid "Checkout and Orders"
+msgstr "Zamówienia i kasa"
+
+#: src/Admin/ModulesPage.php:2449
+msgid "Stock & Cart"
+msgstr "Magazyn i koszyk"
+
+#: src/Admin/ModulesPage.php:2451
+msgid "Merchandising"
+msgstr "Merchandising"
+
+#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+msgid "Storefront"
+msgstr "Witryna sklepu"
+
+#: src/Admin/ModulesPage.php:2455
+msgid "Product Information"
+msgstr "Informacje o produkcie"
+
+#: src/Admin/ModulesPage.php:2457
+msgid "Customer Account"
+msgstr "Konto klienta"
+
+#: src/Admin/ModulesPage.php:2459
+msgid "Sales and B2B"
+msgstr "Sprzedaż i B2B"
+
+#: src/Admin/ModulesPage.php:2462
+msgid "Consumer Rights"
+msgstr "Prawa konsumenta"
+
+#: src/Admin/ModulesPage.php:2466
+msgid "Tools"
+msgstr "Narzędzia"
+
+#: src/Admin/ModulesPage.php:2470
+msgid "SEO & Optimization"
+msgstr "SEO i optymalizacja"
+
+#: src/Admin/ModulesPage.php:2472
+msgid "Integrations"
+msgstr "Integracje"
+
+#: src/Admin/ModulesPage.php:2547
 msgid "Could not save module state. Please try again."
 msgstr "Nie udało się zapisać stanu modułu. Spróbuj ponownie."
 
-#: src/Admin/ModulesPage.php:2498
+#: src/Admin/ModulesPage.php:2564
 msgid "Compatible Omnibus Extension A"
 msgstr "Kompatybilne rozszerzenie Omnibus A"
 
-#: src/Admin/ModulesPage.php:2499
+#: src/Admin/ModulesPage.php:2565
 msgid "Compatible Omnibus Extension B"
 msgstr "Kompatybilne rozszerzenie Omnibus B"
 
-#: src/Admin/ModulesPage.php:2510
+#: src/Admin/ModulesPage.php:2576
 msgid "detected, data synchronized"
 msgstr "wykryta, dane zsynchronizowane"
 
-#: src/Admin/ModulesPage.php:2511
+#: src/Admin/ModulesPage.php:2577
 msgid "not installed"
 msgstr "niezainstalowana"
 
-#: src/Admin/ModulesPage.php:2526
+#: src/Admin/ModulesPage.php:2592
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
@@ -7122,7 +7202,7 @@ msgstr ""
 "Nie wykryto zewnętrznej wtyczki Omnibus. Polski korzysta z wbudowanego "
 "systemu śledzenia cen."
 
-#: src/Admin/ModulesPage.php:2528
+#: src/Admin/ModulesPage.php:2594
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
@@ -7130,11 +7210,11 @@ msgstr ""
 "Wykryto zewnętrzną wtyczkę. Polski korzysta z jej danych zamiast wbudowanego "
 "systemu."
 
-#: src/Admin/ModulesPage.php:2548
+#: src/Admin/ModulesPage.php:2614
 msgid "OSS observer service is unavailable."
 msgstr "Usługa obserwatora OSS jest niedostępna."
 
-#: src/Admin/ModulesPage.php:2555
+#: src/Admin/ModulesPage.php:2621
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -7142,56 +7222,56 @@ msgstr ""
 "Wtyczka One Stop Shop nie jest zainstalowana. Zainstaluj ją, aby "
 "automatycznie obserwować próg wewnątrzunijny B2C wynoszący 10 000 €."
 
-#: src/Admin/ModulesPage.php:2561
+#: src/Admin/ModulesPage.php:2627
 msgid "Install One Stop Shop"
 msgstr "Zainstaluj One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2566
+#: src/Admin/ModulesPage.php:2632
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 "Aby zainstalować ją z tego miejsca, potrzebujesz uprawnienia install_plugins."
 
-#: src/Admin/ModulesPage.php:2575
+#: src/Admin/ModulesPage.php:2641
 msgid "One Stop Shop plugin detected."
 msgstr "Wykryto wtyczkę One Stop Shop."
 
-#: src/Admin/ModulesPage.php:2579
+#: src/Admin/ModulesPage.php:2645
 msgid "OSS procedure"
 msgstr "Procedura OSS"
 
-#: src/Admin/ModulesPage.php:2581
+#: src/Admin/ModulesPage.php:2647
 msgid "enabled"
 msgstr "włączone"
 
-#: src/Admin/ModulesPage.php:2582
+#: src/Admin/ModulesPage.php:2648
 msgid "disabled"
 msgstr "wyłączone"
 
-#: src/Admin/ModulesPage.php:2586
+#: src/Admin/ModulesPage.php:2652
 msgid "Auto observer"
 msgstr "Automatyczny obserwator"
 
-#: src/Admin/ModulesPage.php:2588
+#: src/Admin/ModulesPage.php:2654
 msgid "watching threshold"
 msgstr "obserwowanie progu"
 
-#: src/Admin/ModulesPage.php:2589
+#: src/Admin/ModulesPage.php:2655
 msgid "off"
 msgstr "wyłączone"
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2660
 msgid "Open OSS settings"
 msgstr "Otwórz ustawienia OSS"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2718
 msgid "detected, integration active"
 msgstr "wykryto, integracja aktywna"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2721
 msgid "install"
 msgstr "zainstaluj"
 
-#: src/Admin/ModulesPage.php:2667
+#: src/Admin/ModulesPage.php:2733
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
@@ -7199,7 +7279,7 @@ msgstr ""
 "Nie wykryto obsługiwanych rozszerzeń kasy i ciasteczek. Polski kontynuuje "
 "samodzielną pracę."
 
-#: src/Admin/ModulesPage.php:2669
+#: src/Admin/ModulesPage.php:2735
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."
@@ -7647,15 +7727,11 @@ msgstr "Data ważności certyfikatu (RRRR-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Data ważności certyfikatu środowiskowego w formacie RRRR-MM-DD."
 
-#: src/Admin/SBOMPage.php:39 src/Admin/SBOMPage.php:40
-msgid "SBOM"
-msgstr "SBOM"
-
-#: src/Admin/SBOMPage.php:49
+#: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
 msgstr "Wykaz składników oprogramowania (SBOM)"
 
-#: src/Admin/SBOMPage.php:50
+#: src/Admin/SBOMPage.php:51
 msgid ""
 "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) "
 "dependencies. Useful for security audits, CRA compliance packages and "
@@ -7665,15 +7741,15 @@ msgstr ""
 "(npm). Przydatny do audytów bezpieczeństwa, pakietów zgodności CRA i "
 "skanerów podatności."
 
-#: src/Admin/SBOMPage.php:56
+#: src/Admin/SBOMPage.php:57
 msgid "Path"
 msgstr "Ścieżka"
 
-#: src/Admin/SBOMPage.php:72
+#: src/Admin/SBOMPage.php:73
 msgid "Download SBOM (JSON)"
 msgstr "Pobierz SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:88
+#: src/Admin/SBOMPage.php:89
 msgid "Unknown plugin target."
 msgstr "Nieznany cel wtyczki."
 
@@ -8143,6 +8219,10 @@ msgstr "Strony prawne"
 #: src/AIFeed/LlmsTxtService.php:104
 msgid "Product categories"
 msgstr "Kategorie produktów"
+
+#: src/AIFeed/LlmsTxtService.php:109
+msgid "Consumer rights"
+msgstr "Prawa konsumenta"
 
 #: src/AIFeed/LlmsTxtService.php:134
 msgid "Withdrawal lookup (file an Art. 11a declaration)"
@@ -9840,8 +9920,8 @@ msgstr "e-mail:"
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114
-#: src/Service/ComplaintTemplateService.php:134
-#: src/Service/RodoTrainingDocsService.php:148
+#: src/Service/ComplaintTemplateService.php:135
+#: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP:"
 
@@ -10399,13 +10479,13 @@ msgstr ""
 msgid "Short description"
 msgstr "Krótki opis"
 
-#: src/Service/ComplaintTemplateService.php:45
 #: src/Service/ComplaintTemplateService.php:46
-#: src/Service/ComplaintTemplateService.php:55
+#: src/Service/ComplaintTemplateService.php:47
+#: src/Service/ComplaintTemplateService.php:56
 msgid "Complaint template"
 msgstr "Szablon reklamacji"
 
-#: src/Service/ComplaintTemplateService.php:56
+#: src/Service/ComplaintTemplateService.php:57
 msgid ""
 "Ready-to-print complaint form. The seller section is filled automatically "
 "from your setup wizard data; the buyer and defect sections stay blank for "
@@ -10415,7 +10495,7 @@ msgstr ""
 "automatycznie z danych kreatora konfiguracji; sekcje kupującego i wady "
 "pozostają puste dla klienta."
 
-#: src/Service/ComplaintTemplateService.php:57
+#: src/Service/ComplaintTemplateService.php:58
 msgid ""
 "Disclaimer: this is a generic template. Consult a lawyer for shop-specific "
 "legal text."
@@ -10423,25 +10503,25 @@ msgstr ""
 "Zastrzeżenie: to jest ogólny szablon. Skonsultuj się z prawnikiem w sprawie "
 "tekstu prawnego dostosowanego do sklepu."
 
-#: src/Service/ComplaintTemplateService.php:62
+#: src/Service/ComplaintTemplateService.php:63
 msgid "Download as HTML"
 msgstr "Pobierz jako HTML"
 
-#: src/Service/ComplaintTemplateService.php:66
+#: src/Service/ComplaintTemplateService.php:67
 msgid "Preview"
 msgstr "Podgląd"
 
-#: src/Service/ComplaintTemplateService.php:102
-#: src/Service/ComplaintTemplateService.php:141
+#: src/Service/ComplaintTemplateService.php:103
+#: src/Service/ComplaintTemplateService.php:142
 msgid "Complaint form"
 msgstr "Formularz reklamacji"
 
-#: src/Service/ComplaintTemplateService.php:137
-#: src/Service/ComplaintTemplateService.php:151
+#: src/Service/ComplaintTemplateService.php:138
+#: src/Service/ComplaintTemplateService.php:152
 msgid "Email:"
 msgstr "E-mail:"
 
-#: src/Service/ComplaintTemplateService.php:142
+#: src/Service/ComplaintTemplateService.php:143
 msgid ""
 "Submit this form within the statutory warranty period. The seller is "
 "required to respond within 14 days."
@@ -10449,88 +10529,88 @@ msgstr ""
 "Złóż ten formularz w ustawowym okresie rękojmi. Sprzedawca ma obowiązek "
 "odpowiedzieć w terminie 14 dni."
 
-#: src/Service/ComplaintTemplateService.php:144
+#: src/Service/ComplaintTemplateService.php:145
 msgid "Seller"
 msgstr "Sprzedawca"
 
-#: src/Service/ComplaintTemplateService.php:147
+#: src/Service/ComplaintTemplateService.php:148
 #: src/Service/ProductQAService.php:237
 msgid "Customer"
 msgstr "Klient"
 
-#: src/Service/ComplaintTemplateService.php:148
+#: src/Service/ComplaintTemplateService.php:149
 msgid "Name and surname:"
 msgstr "Imię i nazwisko:"
 
-#: src/Service/ComplaintTemplateService.php:149
+#: src/Service/ComplaintTemplateService.php:150
 msgid "Address:"
 msgstr "Adres:"
 
-#: src/Service/ComplaintTemplateService.php:152
+#: src/Service/ComplaintTemplateService.php:153
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/Service/ComplaintTemplateService.php:155
+#: src/Service/ComplaintTemplateService.php:156
 msgid "Order and product"
 msgstr "Zamówienie i produkt"
 
-#: src/Service/ComplaintTemplateService.php:157
+#: src/Service/ComplaintTemplateService.php:158
 msgid "Order number:"
 msgstr "Numer zamówienia:"
 
-#: src/Service/ComplaintTemplateService.php:158
+#: src/Service/ComplaintTemplateService.php:159
 msgid "Purchase date:"
 msgstr "Data zakupu:"
 
-#: src/Service/ComplaintTemplateService.php:160
+#: src/Service/ComplaintTemplateService.php:161
 msgid "Product name:"
 msgstr "Nazwa produktu:"
 
-#: src/Service/ComplaintTemplateService.php:162
+#: src/Service/ComplaintTemplateService.php:163
 msgid "Defect / non-conformity"
 msgstr "Wada / niezgodność"
 
-#: src/Service/ComplaintTemplateService.php:163
+#: src/Service/ComplaintTemplateService.php:164
 msgid "Description:"
 msgstr "Opis:"
 
-#: src/Service/ComplaintTemplateService.php:164
+#: src/Service/ComplaintTemplateService.php:165
 msgid "Date of defect detection:"
 msgstr "Data wykrycia wady:"
 
-#: src/Service/ComplaintTemplateService.php:166
+#: src/Service/ComplaintTemplateService.php:167
 msgid "Requested remedy"
 msgstr "Żądane działanie"
 
-#: src/Service/ComplaintTemplateService.php:168
+#: src/Service/ComplaintTemplateService.php:169
 msgid "Repair"
 msgstr "Naprawa"
 
-#: src/Service/ComplaintTemplateService.php:169
+#: src/Service/ComplaintTemplateService.php:170
 msgid "Replacement"
 msgstr "Wymiana"
 
-#: src/Service/ComplaintTemplateService.php:170
+#: src/Service/ComplaintTemplateService.php:171
 msgid "Price reduction (specify amount)"
 msgstr "Obniżenie ceny (wskaż kwotę)"
 
-#: src/Service/ComplaintTemplateService.php:171
+#: src/Service/ComplaintTemplateService.php:172
 msgid "Withdrawal from the contract (refund of full price)"
 msgstr "Odstąpienie od umowy (zwrot pełnej ceny)"
 
-#: src/Service/ComplaintTemplateService.php:174
+#: src/Service/ComplaintTemplateService.php:175
 msgid "Bank account for refund"
 msgstr "Rachunek bankowy do zwrotu"
 
-#: src/Service/ComplaintTemplateService.php:175
+#: src/Service/ComplaintTemplateService.php:176
 msgid "Account number (IBAN):"
 msgstr "Numer rachunku (IBAN):"
 
-#: src/Service/ComplaintTemplateService.php:178
+#: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "Data:"
 
-#: src/Service/ComplaintTemplateService.php:179
+#: src/Service/ComplaintTemplateService.php:180
 msgid "Signature:"
 msgstr "Podpis:"
 
@@ -11489,16 +11569,16 @@ msgstr "Zrezygnuj z próśb o opinię"
 msgid "Leave a review"
 msgstr "Zostaw opinię"
 
-#: src/Service/RodoTrainingDocsService.php:42
 #: src/Service/RodoTrainingDocsService.php:43
+#: src/Service/RodoTrainingDocsService.php:44
 msgid "RODO training docs"
 msgstr "Dokumenty szkoleniowe RODO"
 
-#: src/Service/RodoTrainingDocsService.php:52
+#: src/Service/RodoTrainingDocsService.php:53
 msgid "RODO / GDPR training documentation"
 msgstr "Dokumentacja szkoleniowa RODO / GDPR"
 
-#: src/Service/RodoTrainingDocsService.php:53
+#: src/Service/RodoTrainingDocsService.php:54
 msgid ""
 "Ready-to-print templates for onboarding new shop employees. Pre-branded with "
 "your shop's business data."
@@ -11506,7 +11586,7 @@ msgstr ""
 "Gotowe do druku szablony do wdrażania nowych pracowników sklepu. Wstępnie "
 "oznaczone danymi firmowymi Twojego sklepu."
 
-#: src/Service/RodoTrainingDocsService.php:54
+#: src/Service/RodoTrainingDocsService.php:55
 msgid ""
 "Disclaimer: generic starter templates - adapt to your actual data-processing "
 "workflows."
@@ -11514,19 +11594,19 @@ msgstr ""
 "Zastrzeżenie: ogólne szablony startowe - dostosuj je do faktycznych procesów "
 "przetwarzania danych."
 
-#: src/Service/RodoTrainingDocsService.php:64
+#: src/Service/RodoTrainingDocsService.php:65
 msgid "Download HTML"
 msgstr "Pobierz HTML"
 
-#: src/Service/RodoTrainingDocsService.php:83
+#: src/Service/RodoTrainingDocsService.php:84
 msgid "Unknown document."
 msgstr "Nieznany dokument."
 
-#: src/Service/RodoTrainingDocsService.php:104
+#: src/Service/RodoTrainingDocsService.php:105
 msgid "Training logbook"
 msgstr "Dziennik szkoleń"
 
-#: src/Service/RodoTrainingDocsService.php:105
+#: src/Service/RodoTrainingDocsService.php:106
 msgid ""
 "Table to record employee training sessions: who, role, topics, date and "
 "signature."
@@ -11534,22 +11614,22 @@ msgstr ""
 "Tabela do rejestrowania szkoleń pracowników: kto, rola, tematy, data i "
 "podpis."
 
-#: src/Service/RodoTrainingDocsService.php:109
+#: src/Service/RodoTrainingDocsService.php:110
 msgid "RODO principles summary"
 msgstr "Podsumowanie zasad RODO"
 
-#: src/Service/RodoTrainingDocsService.php:110
+#: src/Service/RodoTrainingDocsService.php:111
 msgid ""
 "One-page summary of the 7 RODO principles and the 8 data subject rights."
 msgstr ""
 "Jednostronicowe podsumowanie 7 zasad RODO i 8 praw osób, których dane "
 "dotyczą."
 
-#: src/Service/RodoTrainingDocsService.php:114
+#: src/Service/RodoTrainingDocsService.php:115
 msgid "Data breach response playbook"
 msgstr "Plan reagowania na naruszenie danych"
 
-#: src/Service/RodoTrainingDocsService.php:115
+#: src/Service/RodoTrainingDocsService.php:116
 msgid ""
 "Step-by-step checklist with the 72-hour UODO notification deadline and "
 "internal escalation."
@@ -11557,7 +11637,7 @@ msgstr ""
 "Lista kontrolna krok po kroku z 72-godzinnym terminem zgłoszenia do UODO i "
 "eskalacją wewnętrzną."
 
-#: src/Service/RodoTrainingDocsService.php:160
+#: src/Service/RodoTrainingDocsService.php:161
 msgid ""
 "Use one row per training session. The trainee signs to confirm attendance "
 "and understanding."
@@ -11565,117 +11645,117 @@ msgstr ""
 "Użyj jednego wiersza na szkolenie. Uczestnik podpisuje, aby potwierdzić "
 "obecność i zrozumienie."
 
-#: src/Service/RodoTrainingDocsService.php:165
+#: src/Service/RodoTrainingDocsService.php:166
 msgid "Employee"
 msgstr "Pracownik"
 
-#: src/Service/RodoTrainingDocsService.php:166
+#: src/Service/RodoTrainingDocsService.php:167
 msgid "Role"
 msgstr "Rola"
 
-#: src/Service/RodoTrainingDocsService.php:167
+#: src/Service/RodoTrainingDocsService.php:168
 msgid "Topics covered"
 msgstr "Omówione tematy"
 
-#: src/Service/RodoTrainingDocsService.php:168
+#: src/Service/RodoTrainingDocsService.php:169
 msgid "Trainer"
 msgstr "Trener"
 
-#: src/Service/RodoTrainingDocsService.php:169
+#: src/Service/RodoTrainingDocsService.php:170
 msgid "Signature"
 msgstr "Podpis"
 
-#: src/Service/RodoTrainingDocsService.php:187
+#: src/Service/RodoTrainingDocsService.php:188
 msgid "Lawfulness, fairness and transparency"
 msgstr "Zgodność z prawem, rzetelność i przejrzystość"
 
-#: src/Service/RodoTrainingDocsService.php:188
+#: src/Service/RodoTrainingDocsService.php:189
 msgid "Purpose limitation"
 msgstr "Ograniczenie celu"
 
-#: src/Service/RodoTrainingDocsService.php:189
+#: src/Service/RodoTrainingDocsService.php:190
 msgid "Data minimisation"
 msgstr "Minimalizacja danych"
 
-#: src/Service/RodoTrainingDocsService.php:190
+#: src/Service/RodoTrainingDocsService.php:191
 msgid "Accuracy"
 msgstr "Prawidłowość"
 
-#: src/Service/RodoTrainingDocsService.php:191
+#: src/Service/RodoTrainingDocsService.php:192
 msgid "Storage limitation"
 msgstr "Ograniczenie przechowywania"
 
-#: src/Service/RodoTrainingDocsService.php:192
+#: src/Service/RodoTrainingDocsService.php:193
 msgid "Integrity and confidentiality (security)"
 msgstr "Integralność i poufność (bezpieczeństwo)"
 
-#: src/Service/RodoTrainingDocsService.php:193
+#: src/Service/RodoTrainingDocsService.php:194
 msgid "Accountability"
 msgstr "Rozliczalność"
 
-#: src/Service/RodoTrainingDocsService.php:197
+#: src/Service/RodoTrainingDocsService.php:198
 msgid "Right of access (Art. 15)"
 msgstr "Prawo dostępu (art. 15)"
 
-#: src/Service/RodoTrainingDocsService.php:198
+#: src/Service/RodoTrainingDocsService.php:199
 msgid "Right to rectification (Art. 16)"
 msgstr "Prawo do sprostowania (art. 16)"
 
-#: src/Service/RodoTrainingDocsService.php:199
+#: src/Service/RodoTrainingDocsService.php:200
 msgid "Right to erasure (Art. 17)"
 msgstr "Prawo do usunięcia (art. 17)"
 
-#: src/Service/RodoTrainingDocsService.php:200
+#: src/Service/RodoTrainingDocsService.php:201
 msgid "Right to restriction of processing (Art. 18)"
 msgstr "Prawo do ograniczenia przetwarzania (art. 18)"
 
-#: src/Service/RodoTrainingDocsService.php:201
+#: src/Service/RodoTrainingDocsService.php:202
 msgid "Right to notification about rectification or erasure (Art. 19)"
 msgstr "Prawo do powiadomienia o sprostowaniu lub usunięciu (art. 19)"
 
-#: src/Service/RodoTrainingDocsService.php:202
+#: src/Service/RodoTrainingDocsService.php:203
 msgid "Right to data portability (Art. 20)"
 msgstr "Prawo do przenoszenia danych (art. 20)"
 
-#: src/Service/RodoTrainingDocsService.php:203
+#: src/Service/RodoTrainingDocsService.php:204
 msgid "Right to object (Art. 21)"
 msgstr "Prawo sprzeciwu (art. 21)"
 
-#: src/Service/RodoTrainingDocsService.php:204
+#: src/Service/RodoTrainingDocsService.php:205
 msgid "Right not to be subject to automated decision-making (Art. 22)"
 msgstr ""
 "Prawo do niepodlegania zautomatyzowanemu podejmowaniu decyzji (art. 22)"
 
-#: src/Service/RodoTrainingDocsService.php:207
+#: src/Service/RodoTrainingDocsService.php:208
 msgid "Seven principles of processing (Art. 5)"
 msgstr "Siedem zasad przetwarzania (art. 5)"
 
-#: src/Service/RodoTrainingDocsService.php:214
+#: src/Service/RodoTrainingDocsService.php:215
 msgid "Eight data subject rights (Chapter III)"
 msgstr "Osiem praw osób, których dane dotyczą (rozdział III)"
 
-#: src/Service/RodoTrainingDocsService.php:221
+#: src/Service/RodoTrainingDocsService.php:222
 msgid "Operational reminders"
 msgstr "Przypomnienia operacyjne"
 
-#: src/Service/RodoTrainingDocsService.php:223
+#: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
 msgstr ""
 "Nigdy nie wysyłaj arkuszy z danymi osobowymi e-mailem - korzystaj z "
 "szyfrowanych kanałów."
 
-#: src/Service/RodoTrainingDocsService.php:224
+#: src/Service/RodoTrainingDocsService.php:225
 msgid "Verify the requester before acting on access or erasure requests."
 msgstr ""
 "Zweryfikuj wnioskodawcę przed rozpatrzeniem żądania dostępu lub usunięcia."
 
-#: src/Service/RodoTrainingDocsService.php:225
+#: src/Service/RodoTrainingDocsService.php:226
 msgid "Log every disclosure to third parties (processors, authorities)."
 msgstr ""
 "Rejestruj każde ujawnienie danych osobom trzecim (podmioty przetwarzające, "
 "organy)."
 
-#: src/Service/RodoTrainingDocsService.php:226
+#: src/Service/RodoTrainingDocsService.php:227
 msgid ""
 "Report every suspected data breach to the DPO/manager within 24 hours "
 "internally."
@@ -11683,29 +11763,29 @@ msgstr ""
 "Każde podejrzenie naruszenia danych zgłoś IOD/kierownikowi w ciągu 24 godzin "
 "wewnętrznie."
 
-#: src/Service/RodoTrainingDocsService.php:235
+#: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
 msgstr ""
 "Wykrycie - zapisz znacznik czasu, osobę wykrywającą, systemy, których "
 "dotyczy."
 
-#: src/Service/RodoTrainingDocsService.php:236
+#: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
 msgstr ""
 "Ograniczenie - izoluj konta/systemy, których dotyczy, w ciągu 1 godziny."
 
-#: src/Service/RodoTrainingDocsService.php:237
+#: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
 msgstr "Powiadomienie wewnętrzne - IOD i zarząd w ciągu 24 godzin."
 
-#: src/Service/RodoTrainingDocsService.php:238
+#: src/Service/RodoTrainingDocsService.php:239
 msgid ""
 "Assessment - document data categories, subjects affected, likely impact."
 msgstr ""
 "Ocena - udokumentuj kategorie danych, osoby, których dotyczy, prawdopodobny "
 "wpływ."
 
-#: src/Service/RodoTrainingDocsService.php:239
+#: src/Service/RodoTrainingDocsService.php:240
 msgid ""
 "UODO notification - required within 72 hours when risk to subjects is not "
 "unlikely."
@@ -11713,74 +11793,74 @@ msgstr ""
 "Zgłoszenie do UODO - wymagane w ciągu 72 godzin, gdy ryzyko dla osób nie "
 "jest mało prawdopodobne."
 
-#: src/Service/RodoTrainingDocsService.php:240
+#: src/Service/RodoTrainingDocsService.php:241
 msgid ""
 "Subject notification - required \"without undue delay\" when risk is high."
 msgstr ""
 "Powiadomienie osoby, której dane dotyczą - wymagane \"bez zbędnej zwłoki\", "
 "gdy ryzyko jest wysokie."
 
-#: src/Service/RodoTrainingDocsService.php:241
+#: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
 msgstr "Naprawa - instaluj poprawki, zmień poświadczenia, przejrzyj logi."
 
-#: src/Service/RodoTrainingDocsService.php:242
+#: src/Service/RodoTrainingDocsService.php:243
 msgid "Post-mortem - document lessons learned and update training."
 msgstr "Analiza powłamaniowa - udokumentuj wnioski i zaktualizuj szkolenia."
 
-#: src/Service/RodoTrainingDocsService.php:245
+#: src/Service/RodoTrainingDocsService.php:246
 msgid "Step-by-step breach response"
 msgstr "Reagowanie na naruszenie krok po kroku"
 
-#: src/Service/RodoTrainingDocsService.php:252
+#: src/Service/RodoTrainingDocsService.php:253
 msgid "Breach log template"
 msgstr "Szablon dziennika naruszeń"
 
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Field"
 msgstr "Pole"
 
-#: src/Service/RodoTrainingDocsService.php:257
+#: src/Service/RodoTrainingDocsService.php:258
 msgid "Incident ID"
 msgstr "ID incydentu"
 
-#: src/Service/RodoTrainingDocsService.php:258
+#: src/Service/RodoTrainingDocsService.php:259
 msgid "Detected at (UTC)"
 msgstr "Wykryto o (UTC)"
 
-#: src/Service/RodoTrainingDocsService.php:259
+#: src/Service/RodoTrainingDocsService.php:260
 msgid "Detected by"
 msgstr "Wykryte przez"
 
-#: src/Service/RodoTrainingDocsService.php:260
+#: src/Service/RodoTrainingDocsService.php:261
 msgid "Affected systems"
 msgstr "Systemy, których dotyczy"
 
-#: src/Service/RodoTrainingDocsService.php:261
+#: src/Service/RodoTrainingDocsService.php:262
 msgid "Affected data categories"
 msgstr "Kategorie danych, których dotyczy"
 
-#: src/Service/RodoTrainingDocsService.php:262
+#: src/Service/RodoTrainingDocsService.php:263
 msgid "Approximate number of subjects"
 msgstr "Przybliżona liczba osób"
 
-#: src/Service/RodoTrainingDocsService.php:263
+#: src/Service/RodoTrainingDocsService.php:264
 msgid "Likely impact"
 msgstr "Prawdopodobny wpływ"
 
-#: src/Service/RodoTrainingDocsService.php:264
+#: src/Service/RodoTrainingDocsService.php:265
 msgid "Containment actions"
 msgstr "Działania ograniczające"
 
-#: src/Service/RodoTrainingDocsService.php:265
+#: src/Service/RodoTrainingDocsService.php:266
 msgid "UODO notified at"
 msgstr "Powiadomienie UODO o"
 
-#: src/Service/RodoTrainingDocsService.php:266
+#: src/Service/RodoTrainingDocsService.php:267
 msgid "Subjects notified at"
 msgstr "Powiadomienie osób o"
 
-#: src/Service/RodoTrainingDocsService.php:274
+#: src/Service/RodoTrainingDocsService.php:275
 msgid "UODO notification channel:"
 msgstr "Kanał zgłoszenia do UODO:"
 

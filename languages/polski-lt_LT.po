@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-03T05:41:05+00:00\n"
+"POT-Creation-Date: 2026-06-03T06:09:32+00:00\n"
 "PO-Revision-Date: 2026-05-29T04:22:57+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,756 +15,37 @@ msgstr ""
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
-msgid "Rejestr zgód"
-msgstr "Sutikimų registras"
+msgid "Incydenty CRA"
+msgstr "CRA incidentai"
 
-msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
-msgstr ""
-"Įrašyti lankytojų sprendimai iš sutikimų reklamjuostės, su CSV eksportu."
-
-msgid "Odstąpienia"
-msgstr "Atsisakymai"
-
-msgid ""
-"Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
-"ustawienia."
-msgstr ""
-"Prašymai atsisakyti sutarties ir grąžinimai: sąrašas, rankinė registracija "
-"ir nustatymai."
-
-msgid ""
-"Automatic cart discounts based on spending or quantity. When enabled, "
-"shoppers get a percentage off once the cart subtotal hits a threshold, and "
-"bulk discounts when a product's quantity hits a threshold; applied "
-"automatically in the cart. Off by default."
-msgstr ""
-"Automatinės krepšelio nuolaidos pagal išleistą sumą arba kiekį. Įjungus, "
-"pirkėjai gauna procentinę nuolaidą, kai krepšelio tarpinė suma pasiekia "
-"ribą, ir didmenines nuolaidas, kai prekės kiekis pasiekia ribą; taikoma "
-"automatiškai krepšelyje. Pagal numatymą išjungta."
-
-msgid ""
-"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
-"per-unit price appears next to product prices on shop and product pages, "
-"helping customers compare value, in line with Polish consumer law."
-msgstr ""
-"Rodo kainą už vienetą, pavyzdžiui, už 1 kg arba už 100 ml. Įjungus, kaina už "
-"vienetą rodoma šalia prekių kainų parduotuvės ir prekių puslapiuose, "
-"padedant klientams palyginti vertę pagal Lenkijos vartotojų teisę."
-
-msgid ""
-"Tracks price history and shows the lowest price from the last 30 days on "
-"discounted products. When enabled, sale products display their lowest 30-day "
-"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
-msgstr ""
-"Stebi kainų istoriją ir rodo žemiausią kainą per pastarąsias 30 dienų "
-"nuolaidos prekėms. Įjungus, akcijinės prekės rodo savo žemiausią 30 dienų "
-"kainą šalia kainos, padedant jums laikytis ES Omnibus direktyvos (2019/2161)."
-
-msgid ""
-"Controls how VAT is shown on prices. When enabled, you can set gross or net "
-"price display, show VAT rate info, and support the small business VAT "
-"exemption (Art. 113), affecting prices shown to shoppers across the store."
-msgstr ""
-"Valdo, kaip kainose rodomas PVM. Įjungus galite nustatyti kainų rodymą su "
-"PVM arba be jo, rodyti PVM tarifo informaciją ir palaikyti smulkaus verslo "
-"PVM lengvatą (113 str.), o tai paveikia pirkėjams rodomas kainas visoje "
-"parduotuvėje."
-
-msgid ""
-"Watches your cross-border EU B2C sales against the OSS threshold. When "
-"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
-"sales and flags when you approach the 10,000 EUR threshold for the year."
-msgstr ""
-"Stebi jūsų tarpvalstybinius ES B2C pardavimus pagal OSS ribą. Įjungus, jis "
-"įdiegia One Stop Shop įskiepį, kuris stebi ES vidaus B2C pardavimus ir "
-"įspėja, kai artėjate prie 10 000 EUR metinės ribos."
-
-msgid ""
-"Shows an estimated delivery time on product pages. When enabled, each "
-"product page displays its delivery estimate; you can set it per product or "
-"variation, with a default used when none is specified. Off until enabled."
-msgstr ""
-"Rodo numatomą pristatymo laiką prekių puslapiuose. Įjungus, kiekvienas "
-"prekės puslapis rodo savo pristatymo įvertinimą; galite jį nustatyti "
-"kiekvienai prekei ar variantui, o nenurodžius naudojama numatytoji reikšmė. "
-"Išjungta, kol neįjungta."
-
-msgid ""
-"Adds a link to your shipping costs page near prices. When enabled, a "
-"shipping costs info link appears next to the product price, so customers can "
-"check delivery charges before buying. Off until enabled."
-msgstr ""
-"Prideda nuorodą į jūsų pristatymo kainų puslapį šalia kainų. Įjungus, šalia "
-"prekės kainos rodoma pristatymo kainų informacijos nuoroda, kad klientai "
-"galėtų patikrinti pristatymo mokesčius prieš pirkdami. Išjungta, kol "
-"neįjungta."
-
-msgid ""
-"Changes the order button wording at checkout. When enabled, the place-order "
-"button reads \"Order with obligation to pay\", as required by Polish law, so "
-"it's clear the order creates a payment obligation."
-msgstr ""
-"Pakeičia užsakymo mygtuko tekstą atsiskaitymo metu. Įjungus, užsakymo "
-"pateikimo mygtuke rašoma „Užsakymas su pareiga sumokėti“, kaip reikalauja "
-"Lenkijos įstatymai, kad būtų aišku, jog užsakymas sukuria mokėjimo prievolę."
-
-msgid ""
-"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
-"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
-"content, delivery notifications, review reminder, marketing) for customers "
-"to accept during purchase."
-msgstr ""
-"Prideda integruotus sutikimo žymimuosius langelius prie atsiskaitymo. "
-"Įjungus galite rodyti iki 7 žymimųjų langelių (taisyklės, privatumo "
-"politika, teisė atsisakyti, skaitmeninis turinys, pristatymo pranešimai, "
-"atsiliepimo priminimas, rinkodara), kuriuos klientai patvirtina pirkimo metu."
-
-msgid ""
-"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
-"NIP that is checked for a valid checksum, and company data is fetched "
-"automatically from the GUS REGON database to fill in business details."
-msgstr ""
-"Prideda NIP (mokesčių mokėtojo kodo) lauką atsiskaitymo metu. Įjungus "
-"klientai gali įvesti NIP, kuris tikrinamas pagal galiojančią kontrolinę "
-"sumą, o įmonės duomenys automatiškai gaunami iš GUS REGON duomenų bazės "
-"verslo informacijai užpildyti."
-
-msgid ""
-"Keeps a record of customer consents. When enabled, every consent a customer "
-"gives is logged with IP address, browser (user agent), and timestamp, giving "
-"you an audit trail to support GDPR record-keeping. Off until enabled."
-msgstr ""
-"Saugo klientų sutikimų įrašus. Įjungus, kiekvienas kliento duotas sutikimas "
-"registruojamas su IP adresu, naršykle (vartotojo agentu) ir laiko žyma, "
-"suteikiant jums audito seką GDPR įrašų tvarkymui. Išjungta, kol neįjungta."
-
-msgid ""
-"A native cookie-consent banner. When enabled, visitors see a consent banner "
-"with categories, scripts and iframes are blocked until the matching category "
-"is granted, Google Consent Mode v2 signals are sent, and each decision is "
-"recorded. Provides tools, not legal advice."
-msgstr ""
-"Natyvi slapukų sutikimo reklamjuostė. Įjungus lankytojai mato sutikimo "
-"reklamjuostę su kategorijomis, scenarijai ir iframe blokuojami, kol "
-"nesuteikta atitinkama kategorija, siunčiami Google Consent Mode v2 signalai, "
-"o kiekvienas sprendimas registruojamas. Suteikia įrankius, ne teisinę "
-"konsultaciją."
-
-msgid ""
-"Lets customers request returns or complaints (RMA). When enabled, shoppers "
-"can open a complaint or return request from My Account on eligible orders; "
-"they get a confirmation email and you manage requests in an admin queue with "
-"statuses. Provides tools, not legal advice."
-msgstr ""
-"Leidžia klientams pateikti grąžinimo arba pretenzijos prašymus (RMA). "
-"Įjungus pirkėjai gali pateikti pretenziją arba grąžinimo prašymą iš skilties "
-"„Mano paskyra“ tinkamiems užsakymams; jie gauna patvirtinimo el. laišką, o "
-"jūs valdote prašymus administratoriaus eilėje su būsenomis. Suteikia "
-"įrankius, ne teisinę konsultaciją."
-
-msgid ""
-"Generates standard legal pages for you. When enabled, it can create Terms "
-"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
-"giving you a starting point for your store's required documents. Off until "
-"enabled."
-msgstr ""
-"Sukuria jums standartinius teisinius puslapius. Įjungus jis gali sukurti "
-"Taisyklių ir sąlygų, Privatumo politikos, Teisės atsisakyti ir Pretenzijų "
-"puslapius, suteikdamas atspirties tašką jūsų parduotuvei reikalingiems "
-"dokumentams. Išjungta, kol neįjungta."
-
-msgid ""
-"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
-"withdrawal form and a My Account action with a confirmation step and email; "
-"you can exclude specific products that are not eligible for withdrawal. Off "
-"until enabled."
-msgstr ""
-"Tvarko 14 dienų teisės atsisakyti prašymus. Įjungus klientai gauna "
-"atsisakymo formą ir veiksmą skiltyje „Mano paskyra“ su patvirtinimo žingsniu "
-"ir el. laišku; galite išskirti konkrečias prekes, kurioms atsisakymas "
-"netaikomas. Išjungta, kol neįjungta."
-
-msgid ""
-"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
-"displays information about the European Commission's ODR platform, typically "
-"in the footer or legal area, helping with consumer dispute transparency. Off "
-"until enabled."
-msgstr ""
-"Rodo ES ginčų sprendimo internetu (ODR) informaciją. Įjungus jūsų parduotuvė "
-"rodo informaciją apie Europos Komisijos ODR platformą, paprastai poraštėje "
-"arba teisinėje srityje, padedant užtikrinti vartotojų ginčų skaidrumą. "
-"Išjungta, kol neįjungta."
-
-msgid ""
-"Attaches your legal documents to order confirmation emails. When enabled, "
-"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
-"Withdrawal is included with the confirmation email each customer receives "
-"after placing an order."
-msgstr ""
-"Prideda jūsų teisinius dokumentus prie užsakymo patvirtinimo el. laiškų. "
-"Įjungus tokių puslapių kaip Taisyklės ir sąlygos, Privatumo politika ir "
-"Teisė atsisakyti turinys įtraukiamas į patvirtinimo el. laišką, kurį "
-"kiekvienas klientas gauna pateikęs užsakymą."
-
-msgid ""
-"Adds manufacturer and GPSR product safety details to your products. When "
-"enabled, you can enter manufacturer info, an EU responsible person, safety "
-"documents, and instructions per product, which then appear for shoppers on "
-"the product page."
-msgstr ""
-"Prideda gamintojo ir GPSR prekių saugos informaciją prie jūsų prekių. "
-"Įjungus galite įvesti gamintojo informaciją, ES atsakingą asmenį, saugos "
-"dokumentus ir instrukcijas kiekvienai prekei, kurie tada rodomi pirkėjams "
-"prekės puslapyje."
-
-msgid ""
-"Adds food and supplement product details to your products. When enabled, you "
-"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
-"content, country of origin, and distributor per product, which then show to "
-"shoppers on the product page."
-msgstr ""
-"Prideda maisto produktų ir papildų informaciją prie jūsų prekių. Įjungus "
-"galite įvesti maistinę vertę, alergenus, sudedamąsias dalis, Nutri-Score, "
-"alkoholio kiekį, kilmės šalį ir platintoją kiekvienai prekei, kurie tada "
-"rodomi pirkėjams prekės puslapyje."
-
-msgid ""
-"Adds energy consumption details for electrical devices. When enabled, you "
-"can enter energy label data per product, which is then displayed to shoppers "
-"on the product page for electrical items."
-msgstr ""
-"Prideda energijos suvartojimo informaciją elektros prietaisams. Įjungus "
-"galite įvesti energijos etiketės duomenis kiekvienai prekei, kurie tada "
-"rodomi pirkėjams prekės puslapyje elektros prekėms."
-
-msgid ""
-"Verifies a customer's email address when they register an account. When "
-"enabled, new sign-ups receive an activation link by email and cannot log in "
-"until they confirm it, helping confirm real email addresses. Off until "
-"enabled."
-msgstr ""
-"Patikrina kliento el. pašto adresą, kai jis registruoja paskyrą. Įjungus "
-"nauji registruojantieji gauna aktyvavimo nuorodą el. paštu ir negali "
-"prisijungti, kol jos nepatvirtina, padedant patvirtinti tikrus el. pašto "
-"adresus. Išjungta, kol neįjungta."
-
-msgid ""
-"Speeds up product search with instant suggestions as shoppers type. When "
-"enabled, your store's search box shows live product matches (including by "
-"SKU and category) without reloading the page, kept lightweight for fast page "
-"performance. Off until enabled."
-msgstr ""
-"Pagreitina prekių paiešką su momentiniais pasiūlymais pirkėjams rašant. "
-"Įjungus jūsų parduotuvės paieškos laukelis rodo tiesiogines prekių atitiktis "
-"(įskaitant pagal SKU ir kategoriją) neperkraunant puslapio, išlaikant "
-"lengvumą greitam puslapio veikimui. Išjungta, kol neįjungta."
-
-msgid ""
-"Adds product brands as a separate feature from the manufacturer. When "
-"enabled, you can assign brands to products using a dedicated brand taxonomy, "
-"and brand info appears for shoppers on product pages and listings. Off until "
-"enabled."
-msgstr ""
-"Prideda prekių ženklus kaip atskirą funkciją nuo gamintojo. Įjungus galite "
-"priskirti prekių ženklus prekėms naudodami skirtą prekių ženklų taksonomiją, "
-"o prekių ženklų informacija rodoma pirkėjams prekių puslapiuose ir "
-"sąrašuose. Išjungta, kol neįjungta."
-
-msgid ""
-"Lets shoppers filter product listings without reloading the page. When "
-"enabled, customers can narrow results by category, brand, price, stock "
-"status, sale, and attributes, with the listing updating instantly. Off until "
-"enabled."
-msgstr ""
-"Leidžia pirkėjams filtruoti prekių sąrašus neperkraunant puslapio. Įjungus "
-"klientai gali susiaurinti rezultatus pagal kategoriją, prekės ženklą, kainą, "
-"atsargų būseną, akciją ir atributus, o sąrašas atnaujinamas akimirksniu. "
-"Išjungta, kol neįjungta."
-
-msgid ""
-"Lets shoppers save favorite products for later. When enabled, both guests "
-"and logged-in customers can add or remove items instantly, and logged-in "
-"customers see their saved list in My Account. Off until enabled."
-msgstr ""
-"Leidžia pirkėjams išsaugoti mėgstamas prekes vėlesniam laikui. Įjungus tiek "
-"svečiai, tiek prisijungę klientai gali akimirksniu pridėti arba pašalinti "
-"prekes, o prisijungę klientai mato savo išsaugotą sąrašą skiltyje „Mano "
-"paskyra“. Išjungta, kol neįjungta."
-
-msgid ""
-"Lets shoppers compare products side by side. When enabled, guests and logged-"
-"in customers can add products to a comparison table that highlights "
-"differences, and customers can view it in My Account. Off until enabled."
-msgstr ""
-"Leidžia pirkėjams palyginti prekes greta vieną kitos. Įjungus svečiai ir "
-"prisijungę klientai gali pridėti prekes į palyginimo lentelę, kuri išryškina "
-"skirtumus, o klientai gali ją peržiūrėti skiltyje „Mano paskyra“. Išjungta, "
-"kol neįjungta."
-
-msgid ""
-"Lets shoppers preview a product without leaving the listing. When enabled, a "
-"lightweight pop-up opens from product listings showing the price, gallery, "
-"variations, and basic purchase info. Off until enabled."
-msgstr ""
-"Leidžia pirkėjams peržiūrėti prekę neišeinant iš sąrašo. Įjungus iš prekių "
-"sąrašo atsidaro lengvas iškylantysis langas, rodantis kainą, galeriją, "
-"variantus ir pagrindinę pirkimo informaciją. Išjungta, kol neįjungta."
-
-msgid ""
-"Adds merchandising badges to your products. When enabled, badges appear on "
-"product pages and listings for shoppers, set either automatically by "
-"conditions you choose or manually per product. Off until enabled."
-msgstr ""
-"Prideda prekybinius ženkliukus prie jūsų prekių. Įjungus ženkliukai rodomi "
-"pirkėjams prekių puslapiuose ir sąrašuose, nustatomi automatiškai pagal jūsų "
-"pasirinktas sąlygas arba rankiniu būdu kiekvienai prekei. Išjungta, kol "
-"neįjungta."
-
-msgid ""
-"Lets you add extra tabs to product pages. When enabled, shoppers see "
-"additional tabs with content you set per product, plus global tabs for "
-"shipping, returns, and business information. Off until enabled."
-msgstr ""
-"Leidžia pridėti papildomas korteles prie prekių puslapių. Įjungus pirkėjai "
-"mato papildomas korteles su jūsų nustatytu turiniu kiekvienai prekei, taip "
-"pat bendras korteles pristatymui, grąžinimams ir verslo informacijai. "
-"Išjungta, kol neįjungta."
-
-msgid ""
-"Adds a video to your product pages. When enabled, shoppers see a product "
-"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
-"local MP4 file. Off until enabled."
-msgstr ""
-"Prideda vaizdo įrašą prie jūsų prekių puslapių. Įjungus pirkėjai mato prekės "
-"vaizdo įrašą prekės puslapyje, įterptą iš YouTube, Vimeo arba įkeltą kaip "
-"vietinį MP4 failą. Išjungta, kol neįjungta."
-
-msgid ""
-"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
-"external slider libraries. When enabled, product image zoom and a click-to-"
-"enlarge lightbox become available to shoppers on product pages. Off until "
-"enabled."
-msgstr ""
-"Prideda lengvą paveikslėlių mastelio keitimą ir paprastą galerijos peržiūros "
-"langą, be sudėtingų išorinių slankiklio bibliotekų. Įjungus prekės "
-"paveikslėlio mastelio keitimas ir paspaudus padidinamas peržiūros langas "
-"tampa prieinami pirkėjams prekių puslapiuose. Išjungta, kol neįjungta."
-
-msgid ""
-"Adds a lightweight product slider using scroll-snap to show related, sale or "
-"featured products. When enabled, you can place a swipeable product carousel "
-"that displays to shoppers on the storefront. Off until enabled."
-msgstr ""
-"Prideda lengvą prekių slankiklį, naudojantį scroll-snap, kad parodytų "
-"susijusias, akcijines arba rekomenduojamas prekes. Įjungus galite įdėti "
-"braukiamą prekių karuselę, kuri rodoma pirkėjams parduotuvėje. Išjungta, kol "
-"neįjungta."
-
-msgid ""
-"Captures interest in out-of-stock products. When enabled, shoppers can enter "
-"their email on sold-out products to join a waitlist and get an automatic "
-"notification when the item is back in stock. Off until enabled."
-msgstr ""
-"Fiksuoja susidomėjimą prekėmis, kurių nėra sandėlyje. Įjungus pirkėjai gali "
-"įvesti savo el. paštą prie išparduotų prekių, kad prisijungtų prie "
-"laukiančiųjų sąrašo ir gautų automatinį pranešimą, kai prekė vėl atsiras "
-"sandėlyje. Išjungta, kol neįjungta."
-
 msgid ""
-"Loads more products as shoppers browse listings. When enabled, WooCommerce "
-"archive pages load further products automatically or via a load-more button "
-"instead of paging. Off until enabled."
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
 msgstr ""
-"Įkelia daugiau prekių pirkėjams naršant sąrašus. Įjungus WooCommerce archyvo "
-"puslapiai įkelia daugiau prekių automatiškai arba per „įkelti daugiau“ "
-"mygtuką vietoj puslapiavimo. Išjungta, kol neįjungta."
+"Pažeidžiamumų, pažeidimų ir gedimų registras Cyber Resilience Act reikmėms, "
+"su būsenomis ir eksportu į CSV."
 
 msgid ""
-"Shows a promotional or lead-capture popup to visitors. When enabled, a "
-"lightweight popup appears based on the delay, frequency, and page locations "
-"you set. Off until enabled."
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
 msgstr ""
-"Rodo lankytojams reklaminį arba kontaktų rinkimo iškylantįjį langą. Įjungus "
-"lengvas iškylantysis langas atsiranda pagal jūsų nustatytą uždelsimą, dažnį "
-"ir puslapių vietas. Išjungta, kol neįjungta."
+"Programinės įrangos komponentų sąrašas (Software Bill of Materials) CRA "
+"reikmėms."
 
-msgid ""
-"Provides tools for displaying EU product safety (GPSR) details. When "
-"enabled, you can add manufacturer and importer data, responsible person, "
-"product identifiers, safety warnings, and instructions to products, with CSV "
-"bulk import or export. Off until enabled."
-msgstr ""
-"Suteikia įrankius ES prekių saugos (GPSR) informacijai rodyti. Įjungus "
-"galite pridėti gamintojo ir importuotojo duomenis, atsakingą asmenį, prekės "
-"identifikatorius, saugos įspėjimus ir instrukcijas prie prekių, su CSV "
-"masiniu importu ar eksportu. Išjungta, kol neįjungta."
-
-msgid ""
-"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
-"from customers who actually bought the product display a verified purchase "
-"badge on the product page, so shoppers can tell genuine buyer feedback from "
-"the rest."
-msgstr ""
-"Rodo patikimumo ženkliuką ant atsiliepimų, paliktų tikrų pirkėjų. Įjungus "
-"klientų, kurie iš tikrųjų pirko prekę, atsiliepimai rodo patvirtinto pirkimo "
-"ženkliuką prekės puslapyje, kad pirkėjai galėtų atskirti tikrą pirkėjo "
-"atsiliepimą nuo kitų."
-
-msgid ""
-"Adds product fields for backing up environmental claims. When enabled, each "
-"product gains fields for the basis of an ecological claim, a certificate "
-"link, and an expiration date, helping you prepare for the anti-greenwashing "
-"directive (September 2026)."
-msgstr ""
-"Prideda prekių laukus aplinkosauginiams teiginiams pagrįsti. Įjungus "
-"kiekviena prekė gauna laukus ekologinio teiginio pagrindui, sertifikato "
-"nuorodai ir galiojimo pabaigos datai, padedant jums pasiruošti antižaliojo "
-"praplovimo direktyvai (2026 m. rugsėjis)."
-
-msgid ""
-"Provides Digital Services Act tools for your store. When enabled, you get "
-"contact point settings, a public report form for illegal content or products "
-"via the [polski_dsa_report] shortcode, and an admin screen where staff "
-"review submitted reports."
-msgstr ""
-"Suteikia Skaitmeninių paslaugų akto įrankius jūsų parduotuvei. Įjungus "
-"gaunate kontaktinio punkto nustatymus, viešą pranešimo formą apie neteisėtą "
-"turinį ar prekes per [polski_dsa_report] trumpinį ir administratoriaus "
-"ekraną, kuriame darbuotojai peržiūri pateiktus pranešimus."
-
-msgid ""
-"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
-"checked by NIP and flagged when KSeF invoicing may apply, with integration "
-"hooks and an admin status indicator shown to your team."
-msgstr ""
-"Padeda pastebėti užsakymus, kuriems gali reikėti KSeF sąskaitų faktūrų. "
-"Įjungus užsakymai tikrinami pagal NIP ir pažymimi, kai gali būti taikoma "
-"KSeF sąskaitų faktūrų išrašymas, su integracijos kabliais ir "
-"administratoriaus būsenos indikatoriumi, rodomu jūsų komandai."
-
-msgid ""
-"A log for tracking security incidents, built with CRA in mind. When enabled, "
-"staff get an admin log to record vulnerabilities, breaches, and third-party "
-"failures, track their status and follow-up, and export everything to CSV."
-msgstr ""
-"Žurnalas saugumo incidentams stebėti, sukurtas atsižvelgiant į CRA. Įjungus "
-"darbuotojai gauna administratoriaus žurnalą pažeidžiamumams, pažeidimams ir "
-"trečiųjų šalių gedimams registruoti, jų būsenai ir tolesniems veiksmams "
-"stebėti ir viskam eksportuoti į CSV."
-
-msgid ""
-"Quietly watches your store for problems. When enabled, it passively monitors "
-"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
-"every 5 minutes and sending email or webhook alerts. It never places test "
-"orders."
-msgstr ""
-"Tyliai stebi jūsų parduotuvę dėl problemų. Įjungus jis pasyviai stebi "
-"priekinės dalies kritines klaidas, atsiskaitymo nesėkmių dažnį ir pardavimų "
-"anomalijas, tikrindamas kas 5 minutes ir siųsdamas el. pašto arba webhook "
-"įspėjimus. Jis niekada nepateikia bandomųjų užsakymų."
-
-msgid ""
-"Lets AI assistants safely read selected store data. When enabled, read-only "
-"data like price history, product safety info, store health, page checks, and "
-"product facts is exposed to AI assistants and the Site Editor via the "
-"WordPress Abilities API. Off by default."
-msgstr ""
-"Leidžia DI asistentams saugiai skaityti pasirinktus parduotuvės duomenis. "
-"Įjungus tik skaitymo duomenys, tokie kaip kainų istorija, prekių saugos "
-"informacija, parduotuvės būklė, puslapių patikros ir prekių faktai, "
-"atskleidžiami DI asistentams ir svetainės redaktoriui per WordPress "
-"Abilities API. Pagal numatymą išjungta."
-
-msgid ""
-"Adds structured data so search engines understand your products. When "
-"enabled, advanced JSON-LD tags are injected automatically into your pages to "
-"support product indexing by Google, while preserving the plugin's own data."
-msgstr ""
-"Prideda struktūrizuotus duomenis, kad paieškos sistemos suprastų jūsų "
-"prekes. Įjungus išplėstinės JSON-LD žymos automatiškai įterpiamos į jūsų "
-"puslapius, kad būtų palaikomas prekių indeksavimas Google paieškoje, "
-"išsaugant paties įskiepio duomenis."
-
-msgid ""
-"A consent-gated tag manager for marketing tags. When enabled, it adds a "
-"unified place to manage tracking tags that fire only after visitor consent, "
-"so tools like GA4 and GTM load on your store in line with your consent "
-"settings."
-msgstr ""
-"Sutikimu valdomas žymų tvarkytuvas rinkodaros žymoms. Įjungus jis prideda "
-"vieningą vietą stebėjimo žymoms tvarkyti, kurios suveikia tik po lankytojo "
-"sutikimo, kad tokie įrankiai kaip GA4 ir GTM įkeliami jūsų parduotuvėje "
-"pagal jūsų sutikimo nustatymus."
-
-msgid ""
-"Reduces and controls external Google Fonts requests on your store. When "
-"enabled, font-display and preconnect hints are added to your pages, and the "
-"Google Fonts stylesheet can be held back until a visitor grants the matching "
-"consent, helping with privacy and load speed."
-msgstr ""
-"Sumažina ir valdo išorines Google Fonts užklausas jūsų parduotuvėje. Įjungus "
-"font-display ir preconnect užuominos pridedamos prie jūsų puslapių, o Google "
-"Fonts stiliaus lentelė gali būti sulaikoma, kol lankytojas suteikia "
-"atitinkamą sutikimą, padedant užtikrinti privatumą ir įkėlimo greitį."
-
-msgid ""
-"Lets you add your own scripts or snippets to the page head or footer. When "
-"enabled, each snippet you add is tied to a consent category and runs only "
-"after the visitor grants that consent through the Consent Manager, so your "
-"custom code respects shoppers' choices."
-msgstr ""
-"Leidžia pridėti savo scenarijus arba kodo fragmentus į puslapio antraštę ar "
-"poraštę. Įjungus kiekvienas jūsų pridėtas fragmentas susiejamas su sutikimo "
-"kategorija ir vykdomas tik po to, kai lankytojas suteikia tą sutikimą per "
-"sutikimų tvarkytuvą, kad jūsų pasirinktinis kodas gerbtų pirkėjų "
-"pasirinkimus."
-
-msgid ""
-"Lets you push your own dataLayer events based on simple page conditions. "
-"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
-"chosen element, feeding into the GA4 DataLayer module for your analytics and "
-"tag setup."
-msgstr ""
-"Leidžia siųsti savo dataLayer įvykius pagal paprastas puslapio sąlygas. "
-"Įjungus įvykiai suveikia, kai lankytojas patenka į pasirinktą URL arba "
-"spusteli pasirinktą elementą, perduodami į GA4 DataLayer modulį jūsų "
-"analitikai ir žymų sąrankai."
-
-msgid ""
-"Keeps your settings and messages compatible with popular checkout field add-"
-"ons and product data. When enabled, the plugin detects supported checkout "
-"extensions, cookies, and product data, then adjusts its own behaviour so "
-"labels and consent prompts display correctly at checkout."
-msgstr ""
-"Išlaiko jūsų nustatymus ir pranešimus suderinamus su populiariais "
-"atsiskaitymo laukų priedais ir prekių duomenimis. Įjungus įskiepis aptinka "
-"palaikomus atsiskaitymo plėtinius, slapukus ir prekių duomenis, tada "
-"koreguoja savo elgesį, kad etiketės ir sutikimo raginimai būtų teisingai "
-"rodomi atsiskaitymo metu."
-
-msgid ""
-"Automatically checks your store for the most common store-setup issues. When "
-"enabled, it scans for things like missing legal pages, pre-ticked "
-"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
-"the admin so you can fix gaps yourself."
-msgstr ""
-"Automatiškai tikrina jūsų parduotuvę dėl dažniausių parduotuvės sąrankos "
-"problemų. Įjungus jis tikrina tokius dalykus kaip trūkstami teisiniai "
-"puslapiai, iš anksto pažymėti žymimieji langeliai, įmonės duomenys, GDPR ir "
-"Omnibus elementai, ir parodo jums ataskaitą administratoriaus srityje, kad "
-"galėtumėte patys ištaisyti spragas."
-
-msgid ""
-"Controls what happens to Polski's data if you remove the plugin. When "
-"enabled, you decide whether Polski deletes its database tables, settings, "
-"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
-"when removing the plugin from WordPress."
-msgstr ""
-"Valdo, kas nutinka Polski duomenims, jei pašalinate įskiepį. Įjungus jūs "
-"nusprendžiate, ar Polski pašalina savo duomenų bazės lenteles, nustatymus ir "
-"saugomus žurnalus pašalinimo metu, kad galėtumėte išsaugoti savo duomenis "
-"arba juos švariai ištrinti pašalindami įskiepį iš WordPress."
-
-msgid ""
-"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
-"enabled, it can publish a security.txt file (RFC 9116) with your security "
-"contact and vulnerability reporting policy, making it easier for researchers "
-"to report security issues responsibly."
-msgstr ""
-"Suteikia įrankius, padedančius pasiruošti Kibernetinio atsparumo aktui "
-"(CRA). Įjungus jis gali paskelbti security.txt failą (RFC 9116) su jūsų "
-"saugumo kontaktu ir pažeidžiamumų pranešimo politika, palengvindamas "
-"tyrėjams atsakingai pranešti apie saugumo problemas."
-
-msgid ""
-"Helps you keep a GDPR data-processing registry for your store. When enabled, "
-"it detects third-party services that process your customers' personal data "
-"and lets you track the status of each data processing agreement (DPA) from "
-"the admin."
-msgstr ""
-"Padeda jums tvarkyti GDPR duomenų tvarkymo registrą jūsų parduotuvei. "
-"Įjungus jis aptinka trečiųjų šalių paslaugas, kurios tvarko jūsų klientų "
-"asmens duomenis, ir leidžia stebėti kiekvienos duomenų tvarkymo sutarties "
-"(DPA) būseną iš administratoriaus srities."
-
-msgid ""
-"Sets a minimum order value or item count before customers can check out. "
-"When enabled, shoppers who haven't reached the minimum see a notice on the "
-"cart and checkout pages, and checkout stays blocked until they add enough."
-msgstr ""
-"Nustato minimalią užsakymo vertę arba prekių skaičių, kurį klientai turi "
-"pasiekti prieš atsiskaitydami. Įjungus pirkėjai, kurie nepasiekė minimumo, "
-"mato pranešimą krepšelio ir atsiskaitymo puslapiuose, o atsiskaitymas lieka "
-"užblokuotas, kol jie nepridės pakankamai."
-
-msgid ""
-"Sends automatic emails asking customers to review what they bought. When "
-"enabled, after an order is completed buyers get an email with product images "
-"and review links, plus an opt-out option."
-msgstr ""
-"Siunčia automatinius el. laiškus, prašydamas klientų įvertinti, ką jie "
-"pirko. Įjungus, įvykdžius užsakymą pirkėjai gauna el. laišką su prekių "
-"paveikslėliais ir atsiliepimų nuorodomis, taip pat atsisakymo galimybę."
-
-msgid ""
-"Shows a single from-price instead of a price range on variable products. "
-"When enabled, shop archives and product pages display the lowest price as a "
-"clean from-amount rather than a low-to-high range."
-msgstr ""
-"Rodo vieną kainą „nuo“ vietoj kainų intervalo kintamoms prekėms. Įjungus "
-"parduotuvės archyvai ir prekių puslapiai rodo žemiausią kainą kaip aiškią "
-"sumą „nuo“, o ne intervalą nuo žemiausios iki aukščiausios."
-
-msgid ""
-"Puts stock back automatically when orders don't go through. When enabled, "
-"products from orders that are cancelled, refunded or failed are returned to "
-"inventory without any manual work."
-msgstr ""
-"Automatiškai grąžina atsargas, kai užsakymai neįvyksta. Įjungus prekės iš "
-"atšauktų, grąžintų arba nepavykusių užsakymų grąžinamos į atsargas be jokio "
-"rankinio darbo."
-
-msgid ""
-"Lets customers add items to the cart without reloading the page, including "
-"variable products. When enabled, products are added in the background on "
-"single product pages and a toast notification confirms success."
-msgstr ""
-"Leidžia klientams pridėti prekes į krepšelį neperkraunant puslapio, "
-"įskaitant kintamas prekes. Įjungus prekės pridedamos fone atskirų prekių "
-"puslapiuose, o sėkmę patvirtina iškylantis pranešimas."
-
-msgid ""
-"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
-"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
-"sent to your GA4 setup, working with a GTM container or gtag.js."
-msgstr ""
-"Stebi elektroninės prekybos veiklą Google Analytics 4 per dataLayer. Įjungus "
-"tokie įvykiai kaip view_item, add_to_cart, begin_checkout ir purchase "
-"siunčiami į jūsų GA4 sąranką, veikiant su GTM konteineriu arba gtag.js."
-
-msgid ""
-"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
-"Export tool appears under Products where you can choose fields, filter by "
-"stock threshold and include variations."
-msgstr ""
-"Eksportuoja jūsų WooCommerce prekių atsargas į CSV failą. Įjungus atsargų "
-"eksporto įrankis atsiranda skiltyje Prekės, kur galite pasirinkti laukus, "
-"filtruoti pagal atsargų ribą ir įtraukti variantus."
-
-msgid ""
-"Lets customers register and sign in using Google or Facebook. When enabled, "
-"branded login buttons appear on My Account, checkout and the WordPress login "
-"form, and customer accounts are created automatically."
-msgstr ""
-"Leidžia klientams registruotis ir prisijungti naudojant Google arba "
-"Facebook. Įjungus prekės ženklo prisijungimo mygtukai rodomi skiltyje „Mano "
-"paskyra“, atsiskaitymo lange ir WordPress prisijungimo formoje, o klientų "
-"paskyros sukuriamos automatiškai."
-
-msgid ""
-"Adds a custom taxonomy for product authors or creators. When enabled, you "
-"can assign authors to products and group them, useful for stores selling "
-"books or creator-made items."
-msgstr ""
-"Prideda pasirinktinę taksonomiją prekių autoriams ar kūrėjams. Įjungus "
-"galite priskirti autorius prekėms ir juos grupuoti, naudinga parduotuvėms, "
-"parduodančioms knygas ar kūrėjų pagamintas prekes."
-
-msgid ""
-"Lets you publish editorial, in-house reviews of products. When enabled, you "
-"get a new section to write expert reviews with ratings and verdicts, linked "
-"to products and shown on product pages with Schema.org markup that helps "
-"with SEO."
-msgstr ""
-"Leidžia skelbti redakcines, vidines prekių apžvalgas. Įjungus gaunate naują "
-"skiltį ekspertų apžvalgoms su įvertinimais ir išvadomis rašyti, susietoms su "
-"prekėmis ir rodomoms prekių puslapiuose su Schema.org žymėjimu, kuris padeda "
-"SEO."
-
-msgid ""
-"Displays recent-purchase popups to build trust. When enabled, small floating "
-"notifications about recent orders appear to your shoppers in a position and "
-"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
-msgstr ""
-"Rodo pastarųjų pirkimų iškylančius pranešimus, kad sukurtų pasitikėjimą. "
-"Įjungus maži plaukiojantys pranešimai apie pastaruosius užsakymus rodomi "
-"jūsų pirkėjams jūsų pasirinktoje vietoje ir laiku, sklandžiai įkeliami per "
-"AJAX ir sukurti atsižvelgiant į privatumą."
-
-msgid ""
-"Adds a questions-and-answers section to product pages. When enabled, "
-"customers can ask questions and anyone can answer, you get email alerts for "
-"new questions, answers can be voted on, and Schema.org QAPage markup helps "
-"with SEO."
-msgstr ""
-"Prideda klausimų ir atsakymų skiltį prie prekių puslapių. Įjungus klientai "
-"gali užduoti klausimus, o bet kas gali atsakyti, jūs gaunate el. pašto "
-"įspėjimus apie naujus klausimus, už atsakymus galima balsuoti, o Schema.org "
-"QAPage žymėjimas padeda SEO."
-
-msgid ""
-"Shows reassurance icons like secure payment, fast delivery, returns, and "
-"quality guarantee. When enabled, these configurable trust signals appear to "
-"shoppers on your product, cart, and checkout pages."
-msgstr ""
-"Rodo patikinimo piktogramas, tokias kaip saugus mokėjimas, greitas "
-"pristatymas, grąžinimai ir kokybės garantija. Įjungus šie konfigūruojami "
-"pasitikėjimo signalai rodomi pirkėjams jūsų prekių, krepšelio ir "
-"atsiskaitymo puslapiuose."
-
-msgid ""
-"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
-"whenever they add a product, showing cart items, the subtotal, a free-"
-"shipping progress bar, and a quick link to checkout."
-msgstr ""
-"Prideda išslystantį krepšelio stalčių. Įjungus šoninė juosta atsidaro "
-"pirkėjui, kai tik jis prideda prekę, rodydama krepšelio prekes, tarpinę "
-"sumą, nemokamo pristatymo eigos juostą ir greitą nuorodą į atsiskaitymą."
-
-msgid ""
-"Shows how a product's price has changed over time. When enabled, shoppers "
-"see a small SVG price-trend chart on product pages covering the last 30, 90, "
-"or 180 days, using your Omnibus price data."
-msgstr ""
-"Rodo, kaip prekės kaina keitėsi laikui bėgant. Įjungus pirkėjai mato mažą "
-"SVG kainų tendencijos diagramą prekių puslapiuose, apimančią pastarąsias 30, "
-"90 arba 180 dienų, naudojant jūsų Omnibus kainų duomenis."
+msgid "Szablon reklamacji"
+msgstr "Reklamacijos šablonas"
 
-msgid ""
-"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
-"an admin tool to download orders as CSV, choosing which fields to include "
-"and filtering by date range and order status."
-msgstr ""
-"Eksportuoja jūsų WooCommerce užsakymus į skaičiuoklės failą. Įjungus gaunate "
-"administratoriaus įrankį užsakymams atsisiųsti kaip CSV, pasirenkant, "
-"kuriuos laukus įtraukti, ir filtruojant pagal datų intervalą bei užsakymo "
-"būseną."
-
-msgid ""
-"Lets you create a frequently-asked-questions section. When enabled, you can "
-"add FAQs with categories and place them on any page as an accordion "
-"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
-msgstr ""
-"Leidžia sukurti dažnai užduodamų klausimų skiltį. Įjungus galite pridėti DUK "
-"su kategorijomis ir įdėti juos į bet kurį puslapį kaip akordeono trumpinį su "
-"Schema.org FAQPage duomenimis, kurie padeda SEO turtingiems fragmentams."
+msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgstr "Klientų reklamacijų šablono generatorius ir nustatymai."
 
-msgid ""
-"Lets you customise your checkout form. When enabled, you can add, edit, "
-"reorder, and choose types for checkout fields, and the collected values "
-"appear in the admin order, customer emails, and My Account."
-msgstr ""
-"Leidžia tinkinti jūsų atsiskaitymo formą. Įjungus galite pridėti, redaguoti, "
-"pertvarkyti ir pasirinkti atsiskaitymo laukų tipus, o surinktos reikšmės "
-"rodomos administratoriaus užsakyme, klientų el. laiškuose ir skiltyje „Mano "
-"paskyra“."
+msgid "Szkolenia RODO"
+msgstr "BDAR mokymai"
 
-msgid "Enable this module to use this."
-msgstr "Įjunkite šį modulį, kad galėtumėte jį naudoti."
+msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgstr "BDAR mokymo medžiaga parduotuvės komandai."
 
 #. Plugin Name of the plugin
-#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:112
+#: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
 msgstr "Polski for WooCommerce"
 
@@ -865,7 +146,7 @@ msgid "Strona"
 msgstr "Puslapis"
 
 #: config/defaults.php:35 config/defaults.php:162 config/defaults.php:260
-#: src/Admin/AdminPage.php:912 src/Admin/CRAIncidentsPage.php:123
+#: src/Admin/AdminPage.php:944 src/Admin/CRAIncidentsPage.php:124
 #: src/Admin/ModulesPage.php:448 src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152 src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
@@ -874,7 +155,7 @@ msgstr "Puslapis"
 #: src/Service/MyAccountWithdrawalsService.php:100
 #: src/Service/OrderExportService.php:51
 #: src/Service/ReturnRequestService.php:232
-#: src/Service/RodoTrainingDocsService.php:267
+#: src/Service/RodoTrainingDocsService.php:268
 #: src/Service/SecurityIncidentService.php:150
 #: src/Service/SiteAuditService.php:74 src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
@@ -1407,7 +688,7 @@ msgstr "Prisijunkite, kad išsiųstumėte šio produkto kainos užklausą."
 msgid "Imię i nazwisko"
 msgstr "Vardas ir pavardė"
 
-#: config/defaults.php:221 src/Admin/ModulesPage.php:1318
+#: config/defaults.php:221 src/Admin/ModulesPage.php:2447
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr "El. paštas"
@@ -2245,10 +1526,10 @@ msgstr ""
 "Polski reikia WooCommerce %1$s arba naujesnės versijos. Jūs naudojate "
 "WooCommerce %2$s."
 
-#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:277
-#: src/Admin/CRAIncidentsPage.php:310 src/Admin/SBOMPage.php:81
-#: src/Service/ComplaintTemplateService.php:78
-#: src/Service/RodoTrainingDocsService.php:76
+#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:278
+#: src/Admin/CRAIncidentsPage.php:311 src/Admin/SBOMPage.php:82
+#: src/Service/ComplaintTemplateService.php:79
+#: src/Service/RodoTrainingDocsService.php:77
 msgid "Insufficient permissions."
 msgstr "Nepakanka teisių."
 
@@ -2342,7 +1623,7 @@ msgstr "Grįžti į modulius"
 msgid "Enabled"
 msgstr "Įjungta"
 
-#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:355 src/Admin/AdminPage.php:918
 msgid "Disabled"
 msgstr "Išjungta"
 
@@ -2416,27 +1697,27 @@ msgstr "Jūsų vardas"
 msgid "Your email"
 msgstr "Jūsų el. paštas"
 
-#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:779
+#: src/Admin/AdminPage.php:600 src/Admin/AdminPage.php:811
 msgid "Topic"
 msgstr "Tema"
 
-#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:800
+#: src/Admin/AdminPage.php:602 src/Admin/AdminPage.php:832
 msgid "General feedback"
 msgstr "Bendras atsiliepimas"
 
-#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:801
+#: src/Admin/AdminPage.php:603 src/Admin/AdminPage.php:833
 msgid "Feature idea"
 msgstr "Funkcijos idėja"
 
-#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:802
+#: src/Admin/AdminPage.php:604 src/Admin/AdminPage.php:834
 msgid "Workflow problem"
 msgstr "Darbo eigos problema"
 
-#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:803
+#: src/Admin/AdminPage.php:605 src/Admin/AdminPage.php:835
 msgid "Support question"
 msgstr "Pagalbos klausimas"
 
-#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:781
+#: src/Admin/AdminPage.php:607 src/Admin/AdminPage.php:813
 msgid "Message"
 msgstr "Žinutė"
 
@@ -2542,27 +1823,53 @@ msgid ""
 msgstr ""
 "Asmens duomenų tvarkymo pavedimo sutarčių su trečiosiomis šalimis apskaita."
 
-#: src/Admin/AdminPage.php:698
+#: src/Admin/AdminPage.php:683
+msgid "Rejestr zgód"
+msgstr "Sutikimų registras"
+
+#: src/Admin/AdminPage.php:684
+msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
+msgstr ""
+"Įrašyti lankytojų sprendimai iš sutikimų reklamjuostės, su CSV eksportu."
+
+#: src/Admin/AdminPage.php:690
+msgid "Odstąpienia"
+msgstr "Atsisakymai"
+
+#: src/Admin/AdminPage.php:691
+msgid ""
+"Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
+"ustawienia."
+msgstr ""
+"Prašymai atsisakyti sutarties ir grąžinimai: sąrašas, rankinė registracija "
+"ir nustatymai."
+
+#: src/Admin/AdminPage.php:706 src/Admin/SBOMPage.php:40
+#: src/Admin/SBOMPage.php:41
+msgid "SBOM"
+msgstr "SBOM"
+
+#: src/Admin/AdminPage.php:730
 msgid "Feedback Logs"
 msgstr "Atsiliepimų žurnalai"
 
-#: src/Admin/AdminPage.php:699
+#: src/Admin/AdminPage.php:731
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 "Išjungimo atsiliepimai ir vietiniai administratoriaus atsiliepimai iš "
 "papildinio šoninės juostos."
 
-#: src/Admin/AdminPage.php:705
+#: src/Admin/AdminPage.php:737
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 "Pasirinkite ataskaitą ar įrankį, kad peržiūrėtumėte savo parduotuvės "
 "sąrankos būseną."
 
-#: src/Admin/AdminPage.php:744
+#: src/Admin/AdminPage.php:776
 msgid "Open Report"
 msgstr "Atidaryti ataskaitą"
 
-#: src/Admin/AdminPage.php:746
+#: src/Admin/AdminPage.php:778
 msgid ""
 "This report needs its module enabled first (optional features are off by "
 "default)."
@@ -2570,140 +1877,140 @@ msgstr ""
 "Šiai ataskaitai pirmiausia reikia įjungti jos modulį (pasirinktinės "
 "funkcijos pagal numatymą išjungtos)."
 
-#: src/Admin/AdminPage.php:748
+#: src/Admin/AdminPage.php:780
 msgid "Enable module"
 msgstr "Įjungti modulį"
 
-#: src/Admin/AdminPage.php:750
+#: src/Admin/AdminPage.php:782
 msgid "Module disabled"
 msgstr "Modulis išjungtas"
 
-#: src/Admin/AdminPage.php:769
+#: src/Admin/AdminPage.php:801
 msgid "Admin Feedback Logs"
 msgstr "Administratoriaus atsiliepimų žurnalai"
 
-#: src/Admin/AdminPage.php:772
+#: src/Admin/AdminPage.php:804
 msgid "No internal feedback to display."
 msgstr "Nėra vidinių atsiliepimų rodyti."
 
-#: src/Admin/AdminPage.php:777 src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/AdminPage.php:809 src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:500
 #: src/Service/DSAService.php:171 src/Service/ReturnRequestService.php:231
-#: src/Service/RodoTrainingDocsService.php:164
+#: src/Service/RodoTrainingDocsService.php:165
 #: templates/account/withdrawal-confirm.php:37
 #: templates/account/withdrawal-confirm.php:46
 msgid "Date"
 msgstr "Data"
 
-#: src/Admin/AdminPage.php:778
+#: src/Admin/AdminPage.php:810
 msgid "Person"
 msgstr "Asmuo"
 
-#: src/Admin/AdminPage.php:780
+#: src/Admin/AdminPage.php:812
 msgid "Screen"
 msgstr "Ekranas"
 
-#: src/Admin/AdminPage.php:837
+#: src/Admin/AdminPage.php:869
 msgid "Hello!"
 msgstr "Sveiki!"
 
-#: src/Admin/AdminPage.php:838
+#: src/Admin/AdminPage.php:870
 msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
 msgstr "Įrankiai, padedantys pritaikyti parduotuvę lenkų reikalavimams."
 
-#: src/Admin/AdminPage.php:844
+#: src/Admin/AdminPage.php:876
 msgid "Finish configuration"
 msgstr "Užbaigti konfigūraciją"
 
-#: src/Admin/AdminPage.php:845
+#: src/Admin/AdminPage.php:877
 msgid "Some key elements of your store still require attention."
 msgstr ""
 "Kai kurie pagrindiniai jūsų parduotuvės elementai vis dar reikalauja dėmesio."
 
-#: src/Admin/AdminPage.php:848
+#: src/Admin/AdminPage.php:880
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 "Paskelbkite teisinius puslapius (Taisyklės, Privatumo politika, Teisė "
 "atsisakyti)"
 
-#: src/Admin/AdminPage.php:851
+#: src/Admin/AdminPage.php:883
 msgid "Go through the checklist below"
 msgstr "Peržiūrėkite žemiau esantį kontrolinį sąrašą"
 
-#: src/Admin/AdminPage.php:854
+#: src/Admin/AdminPage.php:886
 msgid "Complete product data"
 msgstr "Užpildykite produktų duomenis"
 
-#: src/Admin/AdminPage.php:855
+#: src/Admin/AdminPage.php:887
 msgid "Manage modules"
 msgstr "Valdyti modulius"
 
-#: src/Admin/AdminPage.php:863
+#: src/Admin/AdminPage.php:895
 msgid "Relaunch setup wizard"
 msgstr "Paleisti sąrankos vediklį iš naujo"
 
-#: src/Admin/AdminPage.php:873
+#: src/Admin/AdminPage.php:905
 msgid "Inactive"
 msgstr "Neaktyvus"
 
-#: src/Admin/AdminPage.php:878 src/Admin/AdminPage.php:907
+#: src/Admin/AdminPage.php:910 src/Admin/AdminPage.php:939
 #: src/Admin/ModulesPage.php:412
 msgid "Legal Pages"
 msgstr "Teisiniai puslapiai"
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:912
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr "%1$d iš %2$d paruošta"
 
-#: src/Admin/AdminPage.php:885
+#: src/Admin/AdminPage.php:917
 msgid "Omnibus Directive"
 msgstr "Omnibus direktyva"
 
-#: src/Admin/AdminPage.php:886
+#: src/Admin/AdminPage.php:918
 msgid "Active"
 msgstr "Aktyvus"
 
-#: src/Admin/AdminPage.php:891
+#: src/Admin/AdminPage.php:923
 msgid "Store Analysis"
 msgstr "Parduotuvės analizė"
 
-#: src/Admin/AdminPage.php:892
+#: src/Admin/AdminPage.php:924
 msgid "Check reports"
 msgstr "Patikrinti ataskaitas"
 
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:944
 msgid "Page"
 msgstr "Puslapis"
 
-#: src/Admin/AdminPage.php:929
+#: src/Admin/AdminPage.php:961
 msgid "Published"
 msgstr "Paskelbta"
 
-#: src/Admin/AdminPage.php:930
+#: src/Admin/AdminPage.php:962
 msgid "Draft"
 msgstr "Juodraštis"
 
-#: src/Admin/AdminPage.php:935
+#: src/Admin/AdminPage.php:967
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: src/Admin/AdminPage.php:937
+#: src/Admin/AdminPage.php:969
 msgid "Not created"
 msgstr "Nesukurta"
 
-#: src/Admin/AdminPage.php:952
+#: src/Admin/AdminPage.php:984
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr ""
 "Dar nesukurta jokių teisinių puslapių. Sugeneruokite juos, kad pradėtumėte."
 
-#: src/Admin/AdminPage.php:960
+#: src/Admin/AdminPage.php:992
 msgid "Next steps"
 msgstr "Tolesni veiksmai"
 
-#: src/Admin/AdminPage.php:1012
+#: src/Admin/AdminPage.php:1044
 msgid ""
 "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, "
 "Complaints)."
@@ -2712,7 +2019,7 @@ msgstr ""
 "atsisakyti, Reklamacijos)."
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1020
+#: src/Admin/AdminPage.php:1052
 #, php-format
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
@@ -2722,14 +2029,14 @@ msgstr ""
 "(23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1032
+#: src/Admin/AdminPage.php:1064
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr ""
 "Sukonfigūruokite <a href=\"%s\">pristatymo zonas</a> pristatymams Lenkijoje."
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1043
+#: src/Admin/AdminPage.php:1075
 #, php-format
 msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
@@ -2739,7 +2046,7 @@ msgstr ""
 "<a href=\"%s\">Polski skirtuke</a> kiekvienam produktui."
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1054
+#: src/Admin/AdminPage.php:1086
 #, php-format
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
@@ -2749,11 +2056,11 @@ msgstr ""
 "žymimuosius langelius bei mygtuko tekstą <a href=\"%s\">užsakymo puslapyje</"
 "a>."
 
-#: src/Admin/AdminPage.php:1077
+#: src/Admin/AdminPage.php:1109
 msgid "Generate legal pages"
 msgstr "Sugeneruoti teisinius puslapius"
 
-#: src/Admin/AdminPage.php:1124
+#: src/Admin/AdminPage.php:1156
 msgid "Open &rarr;"
 msgstr "Atidaryti &rarr;"
 
@@ -2821,36 +2128,36 @@ msgstr "Atsiprašome, atrodo, kad neturite prieigos prie šio puslapio."
 msgid "Could not open output stream."
 msgstr "Nepavyko atidaryti išvesties srauto."
 
-#: src/Admin/CRAIncidentsPage.php:50 src/Admin/CRAIncidentsPage.php:51
-#: src/Admin/CRAIncidentsPage.php:64
+#: src/Admin/CRAIncidentsPage.php:51 src/Admin/CRAIncidentsPage.php:52
+#: src/Admin/CRAIncidentsPage.php:65
 msgid "CRA incidents"
 msgstr "CRA incidentai"
 
-#: src/Admin/CRAIncidentsPage.php:68 src/Admin/CRAIncidentsPage.php:268
+#: src/Admin/CRAIncidentsPage.php:69 src/Admin/CRAIncidentsPage.php:269
 msgid "Record incident"
 msgstr "Registruoti incidentą"
 
-#: src/Admin/CRAIncidentsPage.php:93
+#: src/Admin/CRAIncidentsPage.php:94
 msgid "Incident recorded."
 msgstr "Incidentas užregistruotas."
 
-#: src/Admin/CRAIncidentsPage.php:94
+#: src/Admin/CRAIncidentsPage.php:95
 msgid "Incident notification dispatched."
 msgstr "Pranešimas apie incidentą išsiųstas."
 
-#: src/Admin/CRAIncidentsPage.php:95
+#: src/Admin/CRAIncidentsPage.php:96
 msgid "Incident marked resolved."
 msgstr "Incidentas pažymėtas kaip išspręstas."
 
-#: src/Admin/CRAIncidentsPage.php:96
+#: src/Admin/CRAIncidentsPage.php:97
 msgid "Incident deleted."
 msgstr "Incidentas ištrintas."
 
-#: src/Admin/CRAIncidentsPage.php:97
+#: src/Admin/CRAIncidentsPage.php:98
 msgid "Something went wrong."
 msgstr "Kažkas nepavyko."
 
-#: src/Admin/CRAIncidentsPage.php:110
+#: src/Admin/CRAIncidentsPage.php:111
 msgid ""
 "Record actively-exploited vulnerabilities and security incidents. The "
 "checker tracks the CRA Article 14 24-hour early-warning deadline and exports "
@@ -2860,7 +2167,7 @@ msgstr ""
 "Tikrintuvas stebi CRA 14 straipsnio 24 valandų ankstyvojo įspėjimo terminą "
 "ir eksportuoja struktūruotą JSON pateiktį."
 
-#: src/Admin/CRAIncidentsPage.php:111
+#: src/Admin/CRAIncidentsPage.php:112
 msgid ""
 "Configure the webhook URL and notification email under Polski > Settings > "
 "CRA incidents."
@@ -2868,11 +2175,11 @@ msgstr ""
 "Sukonfigūruokite žiniatinklio kabliuko (webhook) URL ir pranešimų el. paštą "
 "skiltyje Polski > Nustatymai > CRA incidentai."
 
-#: src/Admin/CRAIncidentsPage.php:116
+#: src/Admin/CRAIncidentsPage.php:117
 msgid "No incidents recorded yet."
 msgstr "Dar neužregistruota jokių incidentų."
 
-#: src/Admin/CRAIncidentsPage.php:121 src/Admin/CRAIncidentsPage.php:243
+#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:244
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:26
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:26
 #: src/Service/SecurityIncidentService.php:116
@@ -2882,7 +2189,7 @@ msgstr "Dar neužregistruota jokių incidentų."
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: src/Admin/CRAIncidentsPage.php:122 src/Admin/CRAIncidentsPage.php:255
+#: src/Admin/CRAIncidentsPage.php:123 src/Admin/CRAIncidentsPage.php:256
 #: src/Admin/PageCompliancePage.php:106 src/Admin/PageCompliancePage.php:151
 #: src/Admin/PageCompliancePage.php:200
 #: src/Service/SecurityIncidentService.php:110
@@ -2890,74 +2197,74 @@ msgstr "Pavadinimas"
 msgid "Severity"
 msgstr "Svarbumas"
 
-#: src/Admin/CRAIncidentsPage.php:124
+#: src/Admin/CRAIncidentsPage.php:125
 msgid "Deadline"
 msgstr "Terminas"
 
-#: src/Admin/CRAIncidentsPage.php:125 src/Admin/ModulesPage.php:1601
+#: src/Admin/CRAIncidentsPage.php:126 src/Admin/ModulesPage.php:1601
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr "Veiksmai"
 
 #. translators: %s: notification timestamp
-#: src/Admin/CRAIncidentsPage.php:155
+#: src/Admin/CRAIncidentsPage.php:156
 #, php-format
 msgid "Notified %s"
 msgstr "Pranešta %s"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:164
+#: src/Admin/CRAIncidentsPage.php:165
 #, php-format
 msgid "Overdue by %dh"
 msgstr "Vėluojama %dh"
 
 #. translators: %d: hours
-#: src/Admin/CRAIncidentsPage.php:173
+#: src/Admin/CRAIncidentsPage.php:174
 #, php-format
 msgid "%dh remaining"
 msgstr "Liko %dh"
 
-#: src/Admin/CRAIncidentsPage.php:218
+#: src/Admin/CRAIncidentsPage.php:219
 msgid "Export JSON"
 msgstr "Eksportuoti JSON"
 
-#: src/Admin/CRAIncidentsPage.php:222
+#: src/Admin/CRAIncidentsPage.php:223
 msgid "Dispatch notification"
 msgstr "Siųsti pranešimą"
 
-#: src/Admin/CRAIncidentsPage.php:225
+#: src/Admin/CRAIncidentsPage.php:226
 msgid "Mark resolved"
 msgstr "Pažymėti kaip išspręstą"
 
-#: src/Admin/CRAIncidentsPage.php:228
+#: src/Admin/CRAIncidentsPage.php:229
 msgid "Delete incident?"
 msgstr "Ištrinti incidentą?"
 
-#: src/Admin/CRAIncidentsPage.php:230
+#: src/Admin/CRAIncidentsPage.php:231
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: src/Admin/CRAIncidentsPage.php:244
+#: src/Admin/CRAIncidentsPage.php:245
 msgid "Affected component"
 msgstr "Paveiktas komponentas"
 
-#: src/Admin/CRAIncidentsPage.php:245
+#: src/Admin/CRAIncidentsPage.php:246
 msgid "Affected versions"
 msgstr "Paveiktos versijos"
 
-#: src/Admin/CRAIncidentsPage.php:246 src/Service/DSAService.php:172
+#: src/Admin/CRAIncidentsPage.php:247 src/Service/DSAService.php:172
 msgid "Reporter"
 msgstr "Pranešėjas"
 
-#: src/Admin/CRAIncidentsPage.php:247
+#: src/Admin/CRAIncidentsPage.php:248
 msgid "External reference ID"
 msgstr "Išorinis nuorodos ID"
 
-#: src/Admin/CRAIncidentsPage.php:249
+#: src/Admin/CRAIncidentsPage.php:250
 msgid "Kind"
 msgstr "Tipas"
 
-#: src/Admin/CRAIncidentsPage.php:262 src/Hook/AiProductSummaryHooks.php:60
+#: src/Admin/CRAIncidentsPage.php:263 src/Hook/AiProductSummaryHooks.php:60
 msgid "Summary"
 msgstr "Santrauka"
 
@@ -3174,6 +2481,805 @@ msgstr "Ką tobulinti"
 msgid "What to add"
 msgstr "Ką pridėti"
 
+#: src/Admin/ModulesPage.php:86
+msgid ""
+"Automatic cart discounts based on spending or quantity. When enabled, "
+"shoppers get a percentage off once the cart subtotal hits a threshold, and "
+"bulk discounts when a product's quantity hits a threshold; applied "
+"automatically in the cart. Off by default."
+msgstr ""
+"Automatinės krepšelio nuolaidos pagal išleistą sumą arba kiekį. Įjungus, "
+"pirkėjai gauna procentinę nuolaidą, kai krepšelio tarpinė suma pasiekia "
+"ribą, ir didmenines nuolaidas, kai prekės kiekis pasiekia ribą; taikoma "
+"automatiškai krepšelyje. Pagal numatymą išjungta."
+
+#: src/Admin/ModulesPage.php:87
+msgid ""
+"Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a "
+"per-unit price appears next to product prices on shop and product pages, "
+"helping customers compare value, in line with Polish consumer law."
+msgstr ""
+"Rodo kainą už vienetą, pavyzdžiui, už 1 kg arba už 100 ml. Įjungus, kaina už "
+"vienetą rodoma šalia prekių kainų parduotuvės ir prekių puslapiuose, "
+"padedant klientams palyginti vertę pagal Lenkijos vartotojų teisę."
+
+#: src/Admin/ModulesPage.php:88
+msgid ""
+"Tracks price history and shows the lowest price from the last 30 days on "
+"discounted products. When enabled, sale products display their lowest 30-day "
+"price near the price, helping you meet the EU Omnibus Directive (2019/2161)."
+msgstr ""
+"Stebi kainų istoriją ir rodo žemiausią kainą per pastarąsias 30 dienų "
+"nuolaidos prekėms. Įjungus, akcijinės prekės rodo savo žemiausią 30 dienų "
+"kainą šalia kainos, padedant jums laikytis ES Omnibus direktyvos (2019/2161)."
+
+#: src/Admin/ModulesPage.php:89
+msgid ""
+"Controls how VAT is shown on prices. When enabled, you can set gross or net "
+"price display, show VAT rate info, and support the small business VAT "
+"exemption (Art. 113), affecting prices shown to shoppers across the store."
+msgstr ""
+"Valdo, kaip kainose rodomas PVM. Įjungus galite nustatyti kainų rodymą su "
+"PVM arba be jo, rodyti PVM tarifo informaciją ir palaikyti smulkaus verslo "
+"PVM lengvatą (113 str.), o tai paveikia pirkėjams rodomas kainas visoje "
+"parduotuvėje."
+
+#: src/Admin/ModulesPage.php:90
+msgid ""
+"Watches your cross-border EU B2C sales against the OSS threshold. When "
+"enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C "
+"sales and flags when you approach the 10,000 EUR threshold for the year."
+msgstr ""
+"Stebi jūsų tarpvalstybinius ES B2C pardavimus pagal OSS ribą. Įjungus, jis "
+"įdiegia One Stop Shop įskiepį, kuris stebi ES vidaus B2C pardavimus ir "
+"įspėja, kai artėjate prie 10 000 EUR metinės ribos."
+
+#: src/Admin/ModulesPage.php:91
+msgid ""
+"Shows an estimated delivery time on product pages. When enabled, each "
+"product page displays its delivery estimate; you can set it per product or "
+"variation, with a default used when none is specified. Off until enabled."
+msgstr ""
+"Rodo numatomą pristatymo laiką prekių puslapiuose. Įjungus, kiekvienas "
+"prekės puslapis rodo savo pristatymo įvertinimą; galite jį nustatyti "
+"kiekvienai prekei ar variantui, o nenurodžius naudojama numatytoji reikšmė. "
+"Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:92
+msgid ""
+"Adds a link to your shipping costs page near prices. When enabled, a "
+"shipping costs info link appears next to the product price, so customers can "
+"check delivery charges before buying. Off until enabled."
+msgstr ""
+"Prideda nuorodą į jūsų pristatymo kainų puslapį šalia kainų. Įjungus, šalia "
+"prekės kainos rodoma pristatymo kainų informacijos nuoroda, kad klientai "
+"galėtų patikrinti pristatymo mokesčius prieš pirkdami. Išjungta, kol "
+"neįjungta."
+
+#: src/Admin/ModulesPage.php:93
+msgid ""
+"Changes the order button wording at checkout. When enabled, the place-order "
+"button reads \"Order with obligation to pay\", as required by Polish law, so "
+"it's clear the order creates a payment obligation."
+msgstr ""
+"Pakeičia užsakymo mygtuko tekstą atsiskaitymo metu. Įjungus, užsakymo "
+"pateikimo mygtuke rašoma „Užsakymas su pareiga sumokėti“, kaip reikalauja "
+"Lenkijos įstatymai, kad būtų aišku, jog užsakymas sukuria mokėjimo prievolę."
+
+#: src/Admin/ModulesPage.php:94
+msgid ""
+"Adds built-in consent checkboxes to checkout. When enabled, you can show up "
+"to 7 checkboxes (terms, privacy policy, right of withdrawal, digital "
+"content, delivery notifications, review reminder, marketing) for customers "
+"to accept during purchase."
+msgstr ""
+"Prideda integruotus sutikimo žymimuosius langelius prie atsiskaitymo. "
+"Įjungus galite rodyti iki 7 žymimųjų langelių (taisyklės, privatumo "
+"politika, teisė atsisakyti, skaitmeninis turinys, pristatymo pranešimai, "
+"atsiliepimo priminimas, rinkodara), kuriuos klientai patvirtina pirkimo metu."
+
+#: src/Admin/ModulesPage.php:95
+msgid ""
+"Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a "
+"NIP that is checked for a valid checksum, and company data is fetched "
+"automatically from the GUS REGON database to fill in business details."
+msgstr ""
+"Prideda NIP (mokesčių mokėtojo kodo) lauką atsiskaitymo metu. Įjungus "
+"klientai gali įvesti NIP, kuris tikrinamas pagal galiojančią kontrolinę "
+"sumą, o įmonės duomenys automatiškai gaunami iš GUS REGON duomenų bazės "
+"verslo informacijai užpildyti."
+
+#: src/Admin/ModulesPage.php:96
+msgid ""
+"Keeps a record of customer consents. When enabled, every consent a customer "
+"gives is logged with IP address, browser (user agent), and timestamp, giving "
+"you an audit trail to support GDPR record-keeping. Off until enabled."
+msgstr ""
+"Saugo klientų sutikimų įrašus. Įjungus, kiekvienas kliento duotas sutikimas "
+"registruojamas su IP adresu, naršykle (vartotojo agentu) ir laiko žyma, "
+"suteikiant jums audito seką GDPR įrašų tvarkymui. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:97
+msgid ""
+"A native cookie-consent banner. When enabled, visitors see a consent banner "
+"with categories, scripts and iframes are blocked until the matching category "
+"is granted, Google Consent Mode v2 signals are sent, and each decision is "
+"recorded. Provides tools, not legal advice."
+msgstr ""
+"Natyvi slapukų sutikimo reklamjuostė. Įjungus lankytojai mato sutikimo "
+"reklamjuostę su kategorijomis, scenarijai ir iframe blokuojami, kol "
+"nesuteikta atitinkama kategorija, siunčiami Google Consent Mode v2 signalai, "
+"o kiekvienas sprendimas registruojamas. Suteikia įrankius, ne teisinę "
+"konsultaciją."
+
+#: src/Admin/ModulesPage.php:98
+msgid ""
+"Lets customers request returns or complaints (RMA). When enabled, shoppers "
+"can open a complaint or return request from My Account on eligible orders; "
+"they get a confirmation email and you manage requests in an admin queue with "
+"statuses. Provides tools, not legal advice."
+msgstr ""
+"Leidžia klientams pateikti grąžinimo arba pretenzijos prašymus (RMA). "
+"Įjungus pirkėjai gali pateikti pretenziją arba grąžinimo prašymą iš skilties "
+"„Mano paskyra“ tinkamiems užsakymams; jie gauna patvirtinimo el. laišką, o "
+"jūs valdote prašymus administratoriaus eilėje su būsenomis. Suteikia "
+"įrankius, ne teisinę konsultaciją."
+
+#: src/Admin/ModulesPage.php:99
+msgid ""
+"Generates standard legal pages for you. When enabled, it can create Terms "
+"and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, "
+"giving you a starting point for your store's required documents. Off until "
+"enabled."
+msgstr ""
+"Sukuria jums standartinius teisinius puslapius. Įjungus jis gali sukurti "
+"Taisyklių ir sąlygų, Privatumo politikos, Teisės atsisakyti ir Pretenzijų "
+"puslapius, suteikdamas atspirties tašką jūsų parduotuvei reikalingiems "
+"dokumentams. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:100
+msgid ""
+"Handles 14-day right-of-withdrawal requests. When enabled, customers get a "
+"withdrawal form and a My Account action with a confirmation step and email; "
+"you can exclude specific products that are not eligible for withdrawal. Off "
+"until enabled."
+msgstr ""
+"Tvarko 14 dienų teisės atsisakyti prašymus. Įjungus klientai gauna "
+"atsisakymo formą ir veiksmą skiltyje „Mano paskyra“ su patvirtinimo žingsniu "
+"ir el. laišku; galite išskirti konkrečias prekes, kurioms atsisakymas "
+"netaikomas. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:101
+msgid ""
+"Shows EU Online Dispute Resolution (ODR) info. When enabled, your store "
+"displays information about the European Commission's ODR platform, typically "
+"in the footer or legal area, helping with consumer dispute transparency. Off "
+"until enabled."
+msgstr ""
+"Rodo ES ginčų sprendimo internetu (ODR) informaciją. Įjungus jūsų parduotuvė "
+"rodo informaciją apie Europos Komisijos ODR platformą, paprastai poraštėje "
+"arba teisinėje srityje, padedant užtikrinti vartotojų ginčų skaidrumą. "
+"Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:102
+msgid ""
+"Attaches your legal documents to order confirmation emails. When enabled, "
+"the content of pages like Terms and Conditions, Privacy Policy, and Right of "
+"Withdrawal is included with the confirmation email each customer receives "
+"after placing an order."
+msgstr ""
+"Prideda jūsų teisinius dokumentus prie užsakymo patvirtinimo el. laiškų. "
+"Įjungus tokių puslapių kaip Taisyklės ir sąlygos, Privatumo politika ir "
+"Teisė atsisakyti turinys įtraukiamas į patvirtinimo el. laišką, kurį "
+"kiekvienas klientas gauna pateikęs užsakymą."
+
+#: src/Admin/ModulesPage.php:103
+msgid ""
+"Adds manufacturer and GPSR product safety details to your products. When "
+"enabled, you can enter manufacturer info, an EU responsible person, safety "
+"documents, and instructions per product, which then appear for shoppers on "
+"the product page."
+msgstr ""
+"Prideda gamintojo ir GPSR prekių saugos informaciją prie jūsų prekių. "
+"Įjungus galite įvesti gamintojo informaciją, ES atsakingą asmenį, saugos "
+"dokumentus ir instrukcijas kiekvienai prekei, kurie tada rodomi pirkėjams "
+"prekės puslapyje."
+
+#: src/Admin/ModulesPage.php:104
+msgid ""
+"Adds food and supplement product details to your products. When enabled, you "
+"can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol "
+"content, country of origin, and distributor per product, which then show to "
+"shoppers on the product page."
+msgstr ""
+"Prideda maisto produktų ir papildų informaciją prie jūsų prekių. Įjungus "
+"galite įvesti maistinę vertę, alergenus, sudedamąsias dalis, Nutri-Score, "
+"alkoholio kiekį, kilmės šalį ir platintoją kiekvienai prekei, kurie tada "
+"rodomi pirkėjams prekės puslapyje."
+
+#: src/Admin/ModulesPage.php:105
+msgid ""
+"Adds energy consumption details for electrical devices. When enabled, you "
+"can enter energy label data per product, which is then displayed to shoppers "
+"on the product page for electrical items."
+msgstr ""
+"Prideda energijos suvartojimo informaciją elektros prietaisams. Įjungus "
+"galite įvesti energijos etiketės duomenis kiekvienai prekei, kurie tada "
+"rodomi pirkėjams prekės puslapyje elektros prekėms."
+
+#: src/Admin/ModulesPage.php:106
+msgid ""
+"Verifies a customer's email address when they register an account. When "
+"enabled, new sign-ups receive an activation link by email and cannot log in "
+"until they confirm it, helping confirm real email addresses. Off until "
+"enabled."
+msgstr ""
+"Patikrina kliento el. pašto adresą, kai jis registruoja paskyrą. Įjungus "
+"nauji registruojantieji gauna aktyvavimo nuorodą el. paštu ir negali "
+"prisijungti, kol jos nepatvirtina, padedant patvirtinti tikrus el. pašto "
+"adresus. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:107
+msgid ""
+"Speeds up product search with instant suggestions as shoppers type. When "
+"enabled, your store's search box shows live product matches (including by "
+"SKU and category) without reloading the page, kept lightweight for fast page "
+"performance. Off until enabled."
+msgstr ""
+"Pagreitina prekių paiešką su momentiniais pasiūlymais pirkėjams rašant. "
+"Įjungus jūsų parduotuvės paieškos laukelis rodo tiesiogines prekių atitiktis "
+"(įskaitant pagal SKU ir kategoriją) neperkraunant puslapio, išlaikant "
+"lengvumą greitam puslapio veikimui. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:108
+msgid ""
+"Adds product brands as a separate feature from the manufacturer. When "
+"enabled, you can assign brands to products using a dedicated brand taxonomy, "
+"and brand info appears for shoppers on product pages and listings. Off until "
+"enabled."
+msgstr ""
+"Prideda prekių ženklus kaip atskirą funkciją nuo gamintojo. Įjungus galite "
+"priskirti prekių ženklus prekėms naudodami skirtą prekių ženklų taksonomiją, "
+"o prekių ženklų informacija rodoma pirkėjams prekių puslapiuose ir "
+"sąrašuose. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:109
+msgid ""
+"Lets shoppers filter product listings without reloading the page. When "
+"enabled, customers can narrow results by category, brand, price, stock "
+"status, sale, and attributes, with the listing updating instantly. Off until "
+"enabled."
+msgstr ""
+"Leidžia pirkėjams filtruoti prekių sąrašus neperkraunant puslapio. Įjungus "
+"klientai gali susiaurinti rezultatus pagal kategoriją, prekės ženklą, kainą, "
+"atsargų būseną, akciją ir atributus, o sąrašas atnaujinamas akimirksniu. "
+"Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:110
+msgid ""
+"Lets shoppers save favorite products for later. When enabled, both guests "
+"and logged-in customers can add or remove items instantly, and logged-in "
+"customers see their saved list in My Account. Off until enabled."
+msgstr ""
+"Leidžia pirkėjams išsaugoti mėgstamas prekes vėlesniam laikui. Įjungus tiek "
+"svečiai, tiek prisijungę klientai gali akimirksniu pridėti arba pašalinti "
+"prekes, o prisijungę klientai mato savo išsaugotą sąrašą skiltyje „Mano "
+"paskyra“. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:111
+msgid ""
+"Lets shoppers compare products side by side. When enabled, guests and logged-"
+"in customers can add products to a comparison table that highlights "
+"differences, and customers can view it in My Account. Off until enabled."
+msgstr ""
+"Leidžia pirkėjams palyginti prekes greta vieną kitos. Įjungus svečiai ir "
+"prisijungę klientai gali pridėti prekes į palyginimo lentelę, kuri išryškina "
+"skirtumus, o klientai gali ją peržiūrėti skiltyje „Mano paskyra“. Išjungta, "
+"kol neįjungta."
+
+#: src/Admin/ModulesPage.php:112
+msgid ""
+"Lets shoppers preview a product without leaving the listing. When enabled, a "
+"lightweight pop-up opens from product listings showing the price, gallery, "
+"variations, and basic purchase info. Off until enabled."
+msgstr ""
+"Leidžia pirkėjams peržiūrėti prekę neišeinant iš sąrašo. Įjungus iš prekių "
+"sąrašo atsidaro lengvas iškylantysis langas, rodantis kainą, galeriją, "
+"variantus ir pagrindinę pirkimo informaciją. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:113
+msgid ""
+"Adds merchandising badges to your products. When enabled, badges appear on "
+"product pages and listings for shoppers, set either automatically by "
+"conditions you choose or manually per product. Off until enabled."
+msgstr ""
+"Prideda prekybinius ženkliukus prie jūsų prekių. Įjungus ženkliukai rodomi "
+"pirkėjams prekių puslapiuose ir sąrašuose, nustatomi automatiškai pagal jūsų "
+"pasirinktas sąlygas arba rankiniu būdu kiekvienai prekei. Išjungta, kol "
+"neįjungta."
+
+#: src/Admin/ModulesPage.php:114
+msgid ""
+"Lets you add extra tabs to product pages. When enabled, shoppers see "
+"additional tabs with content you set per product, plus global tabs for "
+"shipping, returns, and business information. Off until enabled."
+msgstr ""
+"Leidžia pridėti papildomas korteles prie prekių puslapių. Įjungus pirkėjai "
+"mato papildomas korteles su jūsų nustatytu turiniu kiekvienai prekei, taip "
+"pat bendras korteles pristatymui, grąžinimams ir verslo informacijai. "
+"Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:115
+msgid ""
+"Adds a video to your product pages. When enabled, shoppers see a product "
+"video on the product page, embedded from YouTube, Vimeo, or uploaded as a "
+"local MP4 file. Off until enabled."
+msgstr ""
+"Prideda vaizdo įrašą prie jūsų prekių puslapių. Įjungus pirkėjai mato prekės "
+"vaizdo įrašą prekės puslapyje, įterptą iš YouTube, Vimeo arba įkeltą kaip "
+"vietinį MP4 failą. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:116
+msgid ""
+"Adds lightweight image zoom and a simple gallery lightbox, with no heavy "
+"external slider libraries. When enabled, product image zoom and a click-to-"
+"enlarge lightbox become available to shoppers on product pages. Off until "
+"enabled."
+msgstr ""
+"Prideda lengvą paveikslėlių mastelio keitimą ir paprastą galerijos peržiūros "
+"langą, be sudėtingų išorinių slankiklio bibliotekų. Įjungus prekės "
+"paveikslėlio mastelio keitimas ir paspaudus padidinamas peržiūros langas "
+"tampa prieinami pirkėjams prekių puslapiuose. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:117
+msgid ""
+"Adds a lightweight product slider using scroll-snap to show related, sale or "
+"featured products. When enabled, you can place a swipeable product carousel "
+"that displays to shoppers on the storefront. Off until enabled."
+msgstr ""
+"Prideda lengvą prekių slankiklį, naudojantį scroll-snap, kad parodytų "
+"susijusias, akcijines arba rekomenduojamas prekes. Įjungus galite įdėti "
+"braukiamą prekių karuselę, kuri rodoma pirkėjams parduotuvėje. Išjungta, kol "
+"neįjungta."
+
+#: src/Admin/ModulesPage.php:118
+msgid ""
+"Captures interest in out-of-stock products. When enabled, shoppers can enter "
+"their email on sold-out products to join a waitlist and get an automatic "
+"notification when the item is back in stock. Off until enabled."
+msgstr ""
+"Fiksuoja susidomėjimą prekėmis, kurių nėra sandėlyje. Įjungus pirkėjai gali "
+"įvesti savo el. paštą prie išparduotų prekių, kad prisijungtų prie "
+"laukiančiųjų sąrašo ir gautų automatinį pranešimą, kai prekė vėl atsiras "
+"sandėlyje. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:119
+msgid ""
+"Loads more products as shoppers browse listings. When enabled, WooCommerce "
+"archive pages load further products automatically or via a load-more button "
+"instead of paging. Off until enabled."
+msgstr ""
+"Įkelia daugiau prekių pirkėjams naršant sąrašus. Įjungus WooCommerce archyvo "
+"puslapiai įkelia daugiau prekių automatiškai arba per „įkelti daugiau“ "
+"mygtuką vietoj puslapiavimo. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:120
+msgid ""
+"Shows a promotional or lead-capture popup to visitors. When enabled, a "
+"lightweight popup appears based on the delay, frequency, and page locations "
+"you set. Off until enabled."
+msgstr ""
+"Rodo lankytojams reklaminį arba kontaktų rinkimo iškylantįjį langą. Įjungus "
+"lengvas iškylantysis langas atsiranda pagal jūsų nustatytą uždelsimą, dažnį "
+"ir puslapių vietas. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:121
+msgid ""
+"Provides tools for displaying EU product safety (GPSR) details. When "
+"enabled, you can add manufacturer and importer data, responsible person, "
+"product identifiers, safety warnings, and instructions to products, with CSV "
+"bulk import or export. Off until enabled."
+msgstr ""
+"Suteikia įrankius ES prekių saugos (GPSR) informacijai rodyti. Įjungus "
+"galite pridėti gamintojo ir importuotojo duomenis, atsakingą asmenį, prekės "
+"identifikatorius, saugos įspėjimus ir instrukcijas prie prekių, su CSV "
+"masiniu importu ar eksportu. Išjungta, kol neįjungta."
+
+#: src/Admin/ModulesPage.php:122
+msgid ""
+"Shows a trust badge on reviews left by real buyers. When enabled, reviews "
+"from customers who actually bought the product display a verified purchase "
+"badge on the product page, so shoppers can tell genuine buyer feedback from "
+"the rest."
+msgstr ""
+"Rodo patikimumo ženkliuką ant atsiliepimų, paliktų tikrų pirkėjų. Įjungus "
+"klientų, kurie iš tikrųjų pirko prekę, atsiliepimai rodo patvirtinto pirkimo "
+"ženkliuką prekės puslapyje, kad pirkėjai galėtų atskirti tikrą pirkėjo "
+"atsiliepimą nuo kitų."
+
+#: src/Admin/ModulesPage.php:123
+msgid ""
+"Adds product fields for backing up environmental claims. When enabled, each "
+"product gains fields for the basis of an ecological claim, a certificate "
+"link, and an expiration date, helping you prepare for the anti-greenwashing "
+"directive (September 2026)."
+msgstr ""
+"Prideda prekių laukus aplinkosauginiams teiginiams pagrįsti. Įjungus "
+"kiekviena prekė gauna laukus ekologinio teiginio pagrindui, sertifikato "
+"nuorodai ir galiojimo pabaigos datai, padedant jums pasiruošti antižaliojo "
+"praplovimo direktyvai (2026 m. rugsėjis)."
+
+#: src/Admin/ModulesPage.php:124
+msgid ""
+"Provides Digital Services Act tools for your store. When enabled, you get "
+"contact point settings, a public report form for illegal content or products "
+"via the [polski_dsa_report] shortcode, and an admin screen where staff "
+"review submitted reports."
+msgstr ""
+"Suteikia Skaitmeninių paslaugų akto įrankius jūsų parduotuvei. Įjungus "
+"gaunate kontaktinio punkto nustatymus, viešą pranešimo formą apie neteisėtą "
+"turinį ar prekes per [polski_dsa_report] trumpinį ir administratoriaus "
+"ekraną, kuriame darbuotojai peržiūri pateiktus pranešimus."
+
+#: src/Admin/ModulesPage.php:125
+msgid ""
+"Helps you spot orders that may need KSeF invoicing. When enabled, orders are "
+"checked by NIP and flagged when KSeF invoicing may apply, with integration "
+"hooks and an admin status indicator shown to your team."
+msgstr ""
+"Padeda pastebėti užsakymus, kuriems gali reikėti KSeF sąskaitų faktūrų. "
+"Įjungus užsakymai tikrinami pagal NIP ir pažymimi, kai gali būti taikoma "
+"KSeF sąskaitų faktūrų išrašymas, su integracijos kabliais ir "
+"administratoriaus būsenos indikatoriumi, rodomu jūsų komandai."
+
+#: src/Admin/ModulesPage.php:126
+msgid ""
+"A log for tracking security incidents, built with CRA in mind. When enabled, "
+"staff get an admin log to record vulnerabilities, breaches, and third-party "
+"failures, track their status and follow-up, and export everything to CSV."
+msgstr ""
+"Žurnalas saugumo incidentams stebėti, sukurtas atsižvelgiant į CRA. Įjungus "
+"darbuotojai gauna administratoriaus žurnalą pažeidžiamumams, pažeidimams ir "
+"trečiųjų šalių gedimams registruoti, jų būsenai ir tolesniems veiksmams "
+"stebėti ir viskam eksportuoti į CSV."
+
+#: src/Admin/ModulesPage.php:127
+msgid ""
+"Quietly watches your store for problems. When enabled, it passively monitors "
+"front-end fatal errors, checkout failure rate, and sales anomalies, checking "
+"every 5 minutes and sending email or webhook alerts. It never places test "
+"orders."
+msgstr ""
+"Tyliai stebi jūsų parduotuvę dėl problemų. Įjungus jis pasyviai stebi "
+"priekinės dalies kritines klaidas, atsiskaitymo nesėkmių dažnį ir pardavimų "
+"anomalijas, tikrindamas kas 5 minutes ir siųsdamas el. pašto arba webhook "
+"įspėjimus. Jis niekada nepateikia bandomųjų užsakymų."
+
+#: src/Admin/ModulesPage.php:128
+msgid ""
+"Lets AI assistants safely read selected store data. When enabled, read-only "
+"data like price history, product safety info, store health, page checks, and "
+"product facts is exposed to AI assistants and the Site Editor via the "
+"WordPress Abilities API. Off by default."
+msgstr ""
+"Leidžia DI asistentams saugiai skaityti pasirinktus parduotuvės duomenis. "
+"Įjungus tik skaitymo duomenys, tokie kaip kainų istorija, prekių saugos "
+"informacija, parduotuvės būklė, puslapių patikros ir prekių faktai, "
+"atskleidžiami DI asistentams ir svetainės redaktoriui per WordPress "
+"Abilities API. Pagal numatymą išjungta."
+
+#: src/Admin/ModulesPage.php:129
+msgid ""
+"Adds structured data so search engines understand your products. When "
+"enabled, advanced JSON-LD tags are injected automatically into your pages to "
+"support product indexing by Google, while preserving the plugin's own data."
+msgstr ""
+"Prideda struktūrizuotus duomenis, kad paieškos sistemos suprastų jūsų "
+"prekes. Įjungus išplėstinės JSON-LD žymos automatiškai įterpiamos į jūsų "
+"puslapius, kad būtų palaikomas prekių indeksavimas Google paieškoje, "
+"išsaugant paties įskiepio duomenis."
+
+#: src/Admin/ModulesPage.php:130
+msgid ""
+"A consent-gated tag manager for marketing tags. When enabled, it adds a "
+"unified place to manage tracking tags that fire only after visitor consent, "
+"so tools like GA4 and GTM load on your store in line with your consent "
+"settings."
+msgstr ""
+"Sutikimu valdomas žymų tvarkytuvas rinkodaros žymoms. Įjungus jis prideda "
+"vieningą vietą stebėjimo žymoms tvarkyti, kurios suveikia tik po lankytojo "
+"sutikimo, kad tokie įrankiai kaip GA4 ir GTM įkeliami jūsų parduotuvėje "
+"pagal jūsų sutikimo nustatymus."
+
+#: src/Admin/ModulesPage.php:131
+msgid ""
+"Reduces and controls external Google Fonts requests on your store. When "
+"enabled, font-display and preconnect hints are added to your pages, and the "
+"Google Fonts stylesheet can be held back until a visitor grants the matching "
+"consent, helping with privacy and load speed."
+msgstr ""
+"Sumažina ir valdo išorines Google Fonts užklausas jūsų parduotuvėje. Įjungus "
+"font-display ir preconnect užuominos pridedamos prie jūsų puslapių, o Google "
+"Fonts stiliaus lentelė gali būti sulaikoma, kol lankytojas suteikia "
+"atitinkamą sutikimą, padedant užtikrinti privatumą ir įkėlimo greitį."
+
+#: src/Admin/ModulesPage.php:132
+msgid ""
+"Lets you add your own scripts or snippets to the page head or footer. When "
+"enabled, each snippet you add is tied to a consent category and runs only "
+"after the visitor grants that consent through the Consent Manager, so your "
+"custom code respects shoppers' choices."
+msgstr ""
+"Leidžia pridėti savo scenarijus arba kodo fragmentus į puslapio antraštę ar "
+"poraštę. Įjungus kiekvienas jūsų pridėtas fragmentas susiejamas su sutikimo "
+"kategorija ir vykdomas tik po to, kai lankytojas suteikia tą sutikimą per "
+"sutikimų tvarkytuvą, kad jūsų pasirinktinis kodas gerbtų pirkėjų "
+"pasirinkimus."
+
+#: src/Admin/ModulesPage.php:133
+msgid ""
+"Lets you push your own dataLayer events based on simple page conditions. "
+"When enabled, events fire when a visitor lands on a chosen URL or clicks a "
+"chosen element, feeding into the GA4 DataLayer module for your analytics and "
+"tag setup."
+msgstr ""
+"Leidžia siųsti savo dataLayer įvykius pagal paprastas puslapio sąlygas. "
+"Įjungus įvykiai suveikia, kai lankytojas patenka į pasirinktą URL arba "
+"spusteli pasirinktą elementą, perduodami į GA4 DataLayer modulį jūsų "
+"analitikai ir žymų sąrankai."
+
+#: src/Admin/ModulesPage.php:134
+msgid ""
+"Keeps your settings and messages compatible with popular checkout field add-"
+"ons and product data. When enabled, the plugin detects supported checkout "
+"extensions, cookies, and product data, then adjusts its own behaviour so "
+"labels and consent prompts display correctly at checkout."
+msgstr ""
+"Išlaiko jūsų nustatymus ir pranešimus suderinamus su populiariais "
+"atsiskaitymo laukų priedais ir prekių duomenimis. Įjungus įskiepis aptinka "
+"palaikomus atsiskaitymo plėtinius, slapukus ir prekių duomenis, tada "
+"koreguoja savo elgesį, kad etiketės ir sutikimo raginimai būtų teisingai "
+"rodomi atsiskaitymo metu."
+
+#: src/Admin/ModulesPage.php:135
+msgid ""
+"Automatically checks your store for the most common store-setup issues. When "
+"enabled, it scans for things like missing legal pages, pre-ticked "
+"checkboxes, company data, GDPR, and Omnibus items, and shows you a report in "
+"the admin so you can fix gaps yourself."
+msgstr ""
+"Automatiškai tikrina jūsų parduotuvę dėl dažniausių parduotuvės sąrankos "
+"problemų. Įjungus jis tikrina tokius dalykus kaip trūkstami teisiniai "
+"puslapiai, iš anksto pažymėti žymimieji langeliai, įmonės duomenys, GDPR ir "
+"Omnibus elementai, ir parodo jums ataskaitą administratoriaus srityje, kad "
+"galėtumėte patys ištaisyti spragas."
+
+#: src/Admin/ModulesPage.php:136
+msgid ""
+"Controls what happens to Polski's data if you remove the plugin. When "
+"enabled, you decide whether Polski deletes its database tables, settings, "
+"and stored logs on uninstall, so you can keep your data or wipe it cleanly "
+"when removing the plugin from WordPress."
+msgstr ""
+"Valdo, kas nutinka Polski duomenims, jei pašalinate įskiepį. Įjungus jūs "
+"nusprendžiate, ar Polski pašalina savo duomenų bazės lenteles, nustatymus ir "
+"saugomus žurnalus pašalinimo metu, kad galėtumėte išsaugoti savo duomenis "
+"arba juos švariai ištrinti pašalindami įskiepį iš WordPress."
+
+#: src/Admin/ModulesPage.php:137
+msgid ""
+"Provides tools to help with Cyber Resilience Act (CRA) readiness. When "
+"enabled, it can publish a security.txt file (RFC 9116) with your security "
+"contact and vulnerability reporting policy, making it easier for researchers "
+"to report security issues responsibly."
+msgstr ""
+"Suteikia įrankius, padedančius pasiruošti Kibernetinio atsparumo aktui "
+"(CRA). Įjungus jis gali paskelbti security.txt failą (RFC 9116) su jūsų "
+"saugumo kontaktu ir pažeidžiamumų pranešimo politika, palengvindamas "
+"tyrėjams atsakingai pranešti apie saugumo problemas."
+
+#: src/Admin/ModulesPage.php:138
+msgid ""
+"Helps you keep a GDPR data-processing registry for your store. When enabled, "
+"it detects third-party services that process your customers' personal data "
+"and lets you track the status of each data processing agreement (DPA) from "
+"the admin."
+msgstr ""
+"Padeda jums tvarkyti GDPR duomenų tvarkymo registrą jūsų parduotuvei. "
+"Įjungus jis aptinka trečiųjų šalių paslaugas, kurios tvarko jūsų klientų "
+"asmens duomenis, ir leidžia stebėti kiekvienos duomenų tvarkymo sutarties "
+"(DPA) būseną iš administratoriaus srities."
+
+#: src/Admin/ModulesPage.php:139
+msgid ""
+"Sets a minimum order value or item count before customers can check out. "
+"When enabled, shoppers who haven't reached the minimum see a notice on the "
+"cart and checkout pages, and checkout stays blocked until they add enough."
+msgstr ""
+"Nustato minimalią užsakymo vertę arba prekių skaičių, kurį klientai turi "
+"pasiekti prieš atsiskaitydami. Įjungus pirkėjai, kurie nepasiekė minimumo, "
+"mato pranešimą krepšelio ir atsiskaitymo puslapiuose, o atsiskaitymas lieka "
+"užblokuotas, kol jie nepridės pakankamai."
+
+#: src/Admin/ModulesPage.php:140
+msgid ""
+"Sends automatic emails asking customers to review what they bought. When "
+"enabled, after an order is completed buyers get an email with product images "
+"and review links, plus an opt-out option."
+msgstr ""
+"Siunčia automatinius el. laiškus, prašydamas klientų įvertinti, ką jie "
+"pirko. Įjungus, įvykdžius užsakymą pirkėjai gauna el. laišką su prekių "
+"paveikslėliais ir atsiliepimų nuorodomis, taip pat atsisakymo galimybę."
+
+#: src/Admin/ModulesPage.php:141
+msgid ""
+"Shows a single from-price instead of a price range on variable products. "
+"When enabled, shop archives and product pages display the lowest price as a "
+"clean from-amount rather than a low-to-high range."
+msgstr ""
+"Rodo vieną kainą „nuo“ vietoj kainų intervalo kintamoms prekėms. Įjungus "
+"parduotuvės archyvai ir prekių puslapiai rodo žemiausią kainą kaip aiškią "
+"sumą „nuo“, o ne intervalą nuo žemiausios iki aukščiausios."
+
+#: src/Admin/ModulesPage.php:142
+msgid ""
+"Puts stock back automatically when orders don't go through. When enabled, "
+"products from orders that are cancelled, refunded or failed are returned to "
+"inventory without any manual work."
+msgstr ""
+"Automatiškai grąžina atsargas, kai užsakymai neįvyksta. Įjungus prekės iš "
+"atšauktų, grąžintų arba nepavykusių užsakymų grąžinamos į atsargas be jokio "
+"rankinio darbo."
+
+#: src/Admin/ModulesPage.php:143
+msgid ""
+"Lets customers add items to the cart without reloading the page, including "
+"variable products. When enabled, products are added in the background on "
+"single product pages and a toast notification confirms success."
+msgstr ""
+"Leidžia klientams pridėti prekes į krepšelį neperkraunant puslapio, "
+"įskaitant kintamas prekes. Įjungus prekės pridedamos fone atskirų prekių "
+"puslapiuose, o sėkmę patvirtina iškylantis pranešimas."
+
+#: src/Admin/ModulesPage.php:144
+msgid ""
+"Tracks ecommerce activity for Google Analytics 4 via dataLayer. When "
+"enabled, events like view_item, add_to_cart, begin_checkout and purchase are "
+"sent to your GA4 setup, working with a GTM container or gtag.js."
+msgstr ""
+"Stebi elektroninės prekybos veiklą Google Analytics 4 per dataLayer. Įjungus "
+"tokie įvykiai kaip view_item, add_to_cart, begin_checkout ir purchase "
+"siunčiami į jūsų GA4 sąranką, veikiant su GTM konteineriu arba gtag.js."
+
+#: src/Admin/ModulesPage.php:145
+msgid ""
+"Exports your WooCommerce product stock to a CSV file. When enabled, a Stock "
+"Export tool appears under Products where you can choose fields, filter by "
+"stock threshold and include variations."
+msgstr ""
+"Eksportuoja jūsų WooCommerce prekių atsargas į CSV failą. Įjungus atsargų "
+"eksporto įrankis atsiranda skiltyje Prekės, kur galite pasirinkti laukus, "
+"filtruoti pagal atsargų ribą ir įtraukti variantus."
+
+#: src/Admin/ModulesPage.php:146
+msgid ""
+"Lets customers register and sign in using Google or Facebook. When enabled, "
+"branded login buttons appear on My Account, checkout and the WordPress login "
+"form, and customer accounts are created automatically."
+msgstr ""
+"Leidžia klientams registruotis ir prisijungti naudojant Google arba "
+"Facebook. Įjungus prekės ženklo prisijungimo mygtukai rodomi skiltyje „Mano "
+"paskyra“, atsiskaitymo lange ir WordPress prisijungimo formoje, o klientų "
+"paskyros sukuriamos automatiškai."
+
+#: src/Admin/ModulesPage.php:147
+msgid ""
+"Adds a custom taxonomy for product authors or creators. When enabled, you "
+"can assign authors to products and group them, useful for stores selling "
+"books or creator-made items."
+msgstr ""
+"Prideda pasirinktinę taksonomiją prekių autoriams ar kūrėjams. Įjungus "
+"galite priskirti autorius prekėms ir juos grupuoti, naudinga parduotuvėms, "
+"parduodančioms knygas ar kūrėjų pagamintas prekes."
+
+#: src/Admin/ModulesPage.php:148
+msgid ""
+"Lets you publish editorial, in-house reviews of products. When enabled, you "
+"get a new section to write expert reviews with ratings and verdicts, linked "
+"to products and shown on product pages with Schema.org markup that helps "
+"with SEO."
+msgstr ""
+"Leidžia skelbti redakcines, vidines prekių apžvalgas. Įjungus gaunate naują "
+"skiltį ekspertų apžvalgoms su įvertinimais ir išvadomis rašyti, susietoms su "
+"prekėmis ir rodomoms prekių puslapiuose su Schema.org žymėjimu, kuris padeda "
+"SEO."
+
+#: src/Admin/ModulesPage.php:149
+msgid ""
+"Displays recent-purchase popups to build trust. When enabled, small floating "
+"notifications about recent orders appear to your shoppers in a position and "
+"timing you choose, loaded smoothly via AJAX and built to be privacy-aware."
+msgstr ""
+"Rodo pastarųjų pirkimų iškylančius pranešimus, kad sukurtų pasitikėjimą. "
+"Įjungus maži plaukiojantys pranešimai apie pastaruosius užsakymus rodomi "
+"jūsų pirkėjams jūsų pasirinktoje vietoje ir laiku, sklandžiai įkeliami per "
+"AJAX ir sukurti atsižvelgiant į privatumą."
+
+#: src/Admin/ModulesPage.php:150
+msgid ""
+"Adds a questions-and-answers section to product pages. When enabled, "
+"customers can ask questions and anyone can answer, you get email alerts for "
+"new questions, answers can be voted on, and Schema.org QAPage markup helps "
+"with SEO."
+msgstr ""
+"Prideda klausimų ir atsakymų skiltį prie prekių puslapių. Įjungus klientai "
+"gali užduoti klausimus, o bet kas gali atsakyti, jūs gaunate el. pašto "
+"įspėjimus apie naujus klausimus, už atsakymus galima balsuoti, o Schema.org "
+"QAPage žymėjimas padeda SEO."
+
+#: src/Admin/ModulesPage.php:151
+msgid ""
+"Shows reassurance icons like secure payment, fast delivery, returns, and "
+"quality guarantee. When enabled, these configurable trust signals appear to "
+"shoppers on your product, cart, and checkout pages."
+msgstr ""
+"Rodo patikinimo piktogramas, tokias kaip saugus mokėjimas, greitas "
+"pristatymas, grąžinimai ir kokybės garantija. Įjungus šie konfigūruojami "
+"pasitikėjimo signalai rodomi pirkėjams jūsų prekių, krepšelio ir "
+"atsiskaitymo puslapiuose."
+
+#: src/Admin/ModulesPage.php:152
+msgid ""
+"Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper "
+"whenever they add a product, showing cart items, the subtotal, a free-"
+"shipping progress bar, and a quick link to checkout."
+msgstr ""
+"Prideda išslystantį krepšelio stalčių. Įjungus šoninė juosta atsidaro "
+"pirkėjui, kai tik jis prideda prekę, rodydama krepšelio prekes, tarpinę "
+"sumą, nemokamo pristatymo eigos juostą ir greitą nuorodą į atsiskaitymą."
+
+#: src/Admin/ModulesPage.php:153
+msgid ""
+"Shows how a product's price has changed over time. When enabled, shoppers "
+"see a small SVG price-trend chart on product pages covering the last 30, 90, "
+"or 180 days, using your Omnibus price data."
+msgstr ""
+"Rodo, kaip prekės kaina keitėsi laikui bėgant. Įjungus pirkėjai mato mažą "
+"SVG kainų tendencijos diagramą prekių puslapiuose, apimančią pastarąsias 30, "
+"90 arba 180 dienų, naudojant jūsų Omnibus kainų duomenis."
+
+#: src/Admin/ModulesPage.php:154
+msgid ""
+"Exports your WooCommerce orders to a spreadsheet file. When enabled, you get "
+"an admin tool to download orders as CSV, choosing which fields to include "
+"and filtering by date range and order status."
+msgstr ""
+"Eksportuoja jūsų WooCommerce užsakymus į skaičiuoklės failą. Įjungus gaunate "
+"administratoriaus įrankį užsakymams atsisiųsti kaip CSV, pasirenkant, "
+"kuriuos laukus įtraukti, ir filtruojant pagal datų intervalą bei užsakymo "
+"būseną."
+
+#: src/Admin/ModulesPage.php:155
+msgid ""
+"Lets you create a frequently-asked-questions section. When enabled, you can "
+"add FAQs with categories and place them on any page as an accordion "
+"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
+msgstr ""
+"Leidžia sukurti dažnai užduodamų klausimų skiltį. Įjungus galite pridėti DUK "
+"su kategorijomis ir įdėti juos į bet kurį puslapį kaip akordeono trumpinį su "
+"Schema.org FAQPage duomenimis, kurie padeda SEO turtingiems fragmentams."
+
+#: src/Admin/ModulesPage.php:156
+msgid ""
+"Lets you customise your checkout form. When enabled, you can add, edit, "
+"reorder, and choose types for checkout fields, and the collected values "
+"appear in the admin order, customer emails, and My Account."
+msgstr ""
+"Leidžia tinkinti jūsų atsiskaitymo formą. Įjungus galite pridėti, redaguoti, "
+"pertvarkyti ir pasirinkti atsiskaitymo laukų tipus, o surinktos reikšmės "
+"rodomos administratoriaus užsakyme, klientų el. laiškuose ir skiltyje „Mano "
+"paskyra“."
+
 #: src/Admin/ModulesPage.php:174
 msgid "Promotions / dynamic pricing"
 msgstr "Akcijos / dinaminės kainos"
@@ -3187,16 +3293,6 @@ msgstr ""
 "Automatinės krepšelio nuolaidos: procentinė nuolaida, kai krepšelio tarpinė "
 "suma pasiekia ribą, ir procentinė nuolaida produkto eilutei, kai jos kiekis "
 "pasiekia ribą (didmeninė nuolaida). Pagal numatymą išjungta."
-
-#: src/Admin/ModulesPage.php:176 src/Admin/ModulesPage.php:638
-#: src/Admin/ModulesPage.php:655 src/Admin/ModulesPage.php:706
-#: src/Admin/ModulesPage.php:736 src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:820 src/Admin/ModulesPage.php:852
-#: src/Admin/ModulesPage.php:875 src/Admin/ModulesPage.php:893
-#: src/Admin/ModulesPage.php:910 src/Admin/ModulesPage.php:937
-#: src/Admin/ModulesPage.php:967 src/Admin/ModulesPage.php:988
-msgid "Merchandising"
-msgstr "Prekių išdėstymas"
 
 #: src/Admin/ModulesPage.php:181
 msgid "Bulk discount: minimum quantity per product"
@@ -3234,12 +3330,6 @@ msgid ""
 msgstr ""
 "Rodyti kainą už vienetą (pvz., už 1 kg, už 100 ml) pagal Lenkijos vartotojų "
 "teisės aktus."
-
-#: src/Admin/ModulesPage.php:192 src/Admin/ModulesPage.php:205
-#: src/Admin/ModulesPage.php:238 src/Admin/ModulesPage.php:253
-#: src/Admin/ModulesPage.php:267 src/Admin/ModulesPage.php:281
-msgid "Prices and Display"
-msgstr "Kainos ir rodymas"
 
 #: src/Admin/ModulesPage.php:197 src/Admin/ModulesPage.php:272
 msgid "Display format"
@@ -3506,12 +3596,6 @@ msgstr ""
 "Pakeisti užsakymo mygtuko tekstą į „Užsakyti su įsipareigojimu apmokėti“ "
 "pagal Lenkijos teisės aktus."
 
-#: src/Admin/ModulesPage.php:295 src/Admin/ModulesPage.php:307
-#: src/Admin/ModulesPage.php:346 src/Admin/ModulesPage.php:361
-#: src/Admin/ModulesPage.php:1302
-msgid "Checkout and Orders"
-msgstr "Užsakymai ir apmokėjimas"
-
 #: src/Admin/ModulesPage.php:300 src/Admin/ModulesPage.php:627
 #: src/Admin/ModulesPage.php:698 src/Admin/ModulesPage.php:788
 #: src/Admin/ModulesPage.php:950 src/Admin/ModulesPage.php:973
@@ -3729,10 +3813,6 @@ msgstr ""
 "atitinkama kategorija. Įrašo kiekvieną sprendimą jūsų audito žurnalui. "
 "Suteikia įrankius, o ne teisinę konsultaciją."
 
-#: src/Admin/ModulesPage.php:371 src/Admin/ModulesPage.php:2400
-msgid "Legal & Compliance"
-msgstr "Teisė ir atitiktis"
-
 #: src/Admin/ModulesPage.php:378
 msgid "Enabled categories"
 msgstr "Įjungtos kategorijos"
@@ -3742,19 +3822,19 @@ msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "Būtini slapukai visada įjungti ir jų negalima išjungti."
 
 #: src/Admin/ModulesPage.php:379 src/Admin/ModulesPage.php:1200
-#: src/Admin/ModulesPage.php:1370 src/Admin/ModulesPage.php:1895
+#: src/Admin/ModulesPage.php:1911 src/Admin/ModulesPage.php:2468
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 msgid "Analytics"
 msgstr "Analitika"
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:1201
-#: src/Admin/ModulesPage.php:1896 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:1912 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "Rinkodara"
 
 #: src/Admin/ModulesPage.php:381 src/Admin/ModulesPage.php:1199
-#: src/Admin/ModulesPage.php:1897 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:1913 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "Nuostatos"
 
@@ -3847,12 +3927,6 @@ msgstr ""
 "prašymą iš Mano paskyros tinkamiems užsakymams, su patvirtinimo el. laišku "
 "ir administratoriaus eile su būsenomis. Suteikia įrankius, ne teisines "
 "konsultacijas."
-
-#: src/Admin/ModulesPage.php:401 src/Admin/ModulesPage.php:414
-#: src/Admin/ModulesPage.php:426 src/Admin/ModulesPage.php:466
-#: src/Admin/ModulesPage.php:511
-msgid "Consumer Rights"
-msgstr "Vartotojų teisės"
 
 #: src/Admin/ModulesPage.php:406
 msgid "Eligibility window (days from order date)"
@@ -4335,12 +4409,6 @@ msgstr ""
 "Informacija apie gamintoją, atsakingą asmenį (GPSR), saugos dokumentus, "
 "saugos instrukcijas."
 
-#: src/Admin/ModulesPage.php:527 src/Admin/ModulesPage.php:537
-#: src/Admin/ModulesPage.php:568 src/Admin/ModulesPage.php:1019
-#: src/Admin/ModulesPage.php:1032 src/Admin/ModulesPage.php:1044
-msgid "Product Information"
-msgstr "Produkto informacija"
-
 #: src/Admin/ModulesPage.php:535
 msgid "Food and Supplements"
 msgstr "Maistas ir papildai"
@@ -4425,7 +4493,7 @@ msgid "Value column name"
 msgstr "Vertės stulpelio pavadinimas"
 
 #: src/Admin/ModulesPage.php:555 src/Service/FoodService.php:161
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Value"
 msgstr "Vertė"
 
@@ -4481,10 +4549,6 @@ msgid ""
 msgstr ""
 "El. pašto adreso patvirtinimas registruojant paskyrą. Aktyvavimo nuoroda "
 "siunčiama el. paštu, prisijungimo blokavimas neaktyvuotoms paskyroms."
-
-#: src/Admin/ModulesPage.php:580
-msgid "Customer Account"
-msgstr "Kliento paskyra"
 
 #: src/Admin/ModulesPage.php:585
 msgid "Delete inactive accounts after (days)"
@@ -4601,10 +4665,6 @@ msgid ""
 msgstr ""
 "Greiti produktų pasiūlymai rašant, su SKU palaikymu, kategorijomis ir "
 "lengvu, web vitals draugišku priekiniu sąsajos sluoksniu."
-
-#: src/Admin/ModulesPage.php:605
-msgid "Sales and B2B"
-msgstr "Pardavimai ir B2B"
 
 #: src/Admin/ModulesPage.php:610 resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
@@ -4747,7 +4807,7 @@ msgstr ""
 msgid "Show on product page"
 msgstr "Rodyti produkto puslapyje"
 
-#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1972
+#: src/Admin/ModulesPage.php:645 src/Admin/ModulesPage.php:1988
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr "Etiketė"
@@ -5773,7 +5833,7 @@ msgstr "Kaip atidaryti CTA"
 msgid "Shop and archives"
 msgstr "Parduotuvė ir archyvai"
 
-#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:1531
+#: src/Admin/ModulesPage.php:1009 src/Admin/ModulesPage.php:2445
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
 msgid "Checkout"
 msgstr "Apmokėjimas"
@@ -5877,12 +5937,6 @@ msgstr ""
 "Skaitmeninių paslaugų akto įrankiai: kontaktinio punkto nustatymai, "
 "neteisėto turinio ar produktų pranešimo forma ir administratoriaus pranešimų "
 "ekranas. Trumpasis kodas: [polski_dsa_report]."
-
-#: src/Admin/ModulesPage.php:1054 src/Admin/ModulesPage.php:1070
-#: src/Admin/ModulesPage.php:1082 src/Admin/ModulesPage.php:1097
-#: src/AIFeed/LlmsTxtService.php:109
-msgid "Consumer rights"
-msgstr "Vartotojų teisės"
 
 #: src/Admin/ModulesPage.php:1059
 msgid "DSA contact name"
@@ -6031,13 +6085,6 @@ msgstr ""
 "produktų faktus) AI asistentams ir svetainės redaktoriui per WordPress "
 "Abilities API. Pagal numatymą išjungta."
 
-#: src/Admin/ModulesPage.php:1116 src/Admin/ModulesPage.php:1255
-#: src/Admin/ModulesPage.php:1267 src/Admin/ModulesPage.php:1279
-#: src/Admin/ModulesPage.php:1292 src/Admin/ModulesPage.php:1384
-#: src/Admin/ModulesPage.php:1507
-msgid "Tools"
-msgstr "Įrankiai"
-
 #: src/Admin/ModulesPage.php:1126
 msgid "Structured Data (Schema.org)"
 msgstr "Struktūrizuoti duomenys (Schema.org)"
@@ -6049,11 +6096,6 @@ msgid ""
 msgstr ""
 "Automatinis pažangių JSON-LD žymų įterpimas, palaikantis produktų "
 "indeksavimą Google paieškoje su įskiepiui būdingų duomenų išsaugojimu."
-
-#: src/Admin/ModulesPage.php:1128 src/Admin/ModulesPage.php:1146
-#: src/Admin/ModulesPage.php:1190
-msgid "SEO & Optimization"
-msgstr "SEO ir optimizavimas"
 
 #: src/Admin/ModulesPage.php:1133
 msgid "Enable structured data integration"
@@ -6313,7 +6355,7 @@ msgstr ""
 msgid "Consent category"
 msgstr "Sutikimo kategorija"
 
-#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1894
+#: src/Admin/ModulesPage.php:1198 src/Admin/ModulesPage.php:1910
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "Būtini"
@@ -6339,11 +6381,6 @@ msgstr ""
 "Pridėkite savo scenarijus ar kodo fragmentus į puslapio antraštę arba "
 "poraštę. Kiekvienam fragmentui priskiriama sutikimo kategorija ir jis "
 "vykdomas tik po to, kai lankytojas ją suteikia per sutikimų tvarkyklę."
-
-#: src/Admin/ModulesPage.php:1210 src/Admin/ModulesPage.php:1224
-#: src/Admin/ModulesPage.php:2408
-msgid "Advanced & Tools"
-msgstr "Išplėstinės parinktys ir įrankiai"
 
 #: src/Admin/ModulesPage.php:1215
 msgid ""
@@ -6398,10 +6435,6 @@ msgid ""
 msgstr ""
 "Populiarių atsiskaitymo laukų plėtinių, slapukų ir produktų duomenų "
 "aptikimas, siekiant išlaikyti nustatymų ir pranešimų suderinamumą."
-
-#: src/Admin/ModulesPage.php:1239
-msgid "Integrations"
-msgstr "Integracijos"
 
 #: src/Admin/ModulesPage.php:1253
 msgid "Store Audit"
@@ -6570,10 +6603,6 @@ msgstr ""
 "Rodyti „nuo {price}“ vietoj kainų intervalo variantiniams produktams. "
 "Tvarkingesnis pateikimas archyvuose ir produktų puslapiuose."
 
-#: src/Admin/ModulesPage.php:1333 src/Admin/ModulesPage.php:1493
-msgid "Prices and Omnibus"
-msgstr "Kainos ir Omnibus"
-
 #: src/Admin/ModulesPage.php:1338
 msgid "Enable \"from\" price display"
 msgstr "Įjungti kainos „nuo“ rodymą"
@@ -6597,10 +6626,6 @@ msgid ""
 msgstr ""
 "Automatiškai atkurti produkto atsargas, kai užsakymai atšaukiami, grąžinami "
 "ar nepavyksta. Išlaiko tikslias atsargas be rankinio įsikišimo."
-
-#: src/Admin/ModulesPage.php:1348 src/Admin/ModulesPage.php:1358
-msgid "Stock & Cart"
-msgstr "Atsargos ir krepšelis"
 
 #: src/Admin/ModulesPage.php:1356
 msgid "AJAX Add to Cart"
@@ -6676,14 +6701,6 @@ msgstr ""
 "Leiskite klientams registruotis ir prisijungti per Google ar Facebook. Rodo "
 "firminius mygtukus Mano paskyros, atsiskaitymo ir WordPress prisijungimo "
 "formose. Automatiškai sukuria WooCommerce klientų paskyras."
-
-#: src/Admin/ModulesPage.php:1396 src/Admin/ModulesPage.php:1414
-#: src/Admin/ModulesPage.php:1424 src/Admin/ModulesPage.php:1436
-#: src/Admin/ModulesPage.php:1452 src/Admin/ModulesPage.php:1462
-#: src/Admin/ModulesPage.php:1476 src/Admin/ModulesPage.php:1519
-#: src/AIFeed/LlmsTxtService.php:209
-msgid "Storefront"
-msgstr "Parduotuvės priekis"
 
 #: src/Admin/ModulesPage.php:1401
 msgid "Enable Google login"
@@ -6994,123 +7011,187 @@ msgstr "Tvarkyti laukus"
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/Admin/ModulesPage.php:1647
+#: src/Admin/ModulesPage.php:1663
 msgid "Help"
 msgstr "Pagalba"
 
+#: src/Admin/ModulesPage.php:1706
+msgid "Enable this module to use this."
+msgstr "Įjunkite šį modulį, kad galėtumėte jį naudoti."
+
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1713
+#: src/Admin/ModulesPage.php:1729
 #, php-format
 msgid "Edit %s settings"
 msgstr "Redaguoti %s nustatymus"
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1732
 msgid "Edit settings"
 msgstr "Redaguoti nustatymus"
 
-#: src/Admin/ModulesPage.php:1726 src/Admin/ModulesPage.php:1727
+#: src/Admin/ModulesPage.php:1742 src/Admin/ModulesPage.php:1743
 msgid "Open documentation"
 msgstr "Atidaryti dokumentaciją"
 
-#: src/Admin/ModulesPage.php:1760
+#: src/Admin/ModulesPage.php:1776
 msgid "Save"
 msgstr "Įrašyti"
 
-#: src/Admin/ModulesPage.php:1854
+#: src/Admin/ModulesPage.php:1870
 msgid "none"
 msgstr "nėra"
 
-#: src/Admin/ModulesPage.php:1950
+#: src/Admin/ModulesPage.php:1966
 msgid "Add snippet"
 msgstr "Pridėti fragmentą"
 
-#: src/Admin/ModulesPage.php:1979
+#: src/Admin/ModulesPage.php:1995
 msgid "Head"
 msgstr "Antraštė"
 
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/ModulesPage.php:1996
 msgid "Footer"
 msgstr "Poraštė"
 
-#: src/Admin/ModulesPage.php:1993
+#: src/Admin/ModulesPage.php:2009
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> arba įterptasis JS"
 
-#: src/Admin/ModulesPage.php:1999 src/Admin/ModulesPage.php:2084
+#: src/Admin/ModulesPage.php:2015 src/Admin/ModulesPage.php:2100
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: src/Admin/ModulesPage.php:2029
+#: src/Admin/ModulesPage.php:2045
 msgid "Add trigger"
 msgstr "Pridėti aktyviklį"
 
-#: src/Admin/ModulesPage.php:2052
+#: src/Admin/ModulesPage.php:2068
 msgid "Event name (e.g. cta_click)"
 msgstr "Įvykio pavadinimas (pvz., cta_click)"
 
-#: src/Admin/ModulesPage.php:2059
+#: src/Admin/ModulesPage.php:2075
 msgid "URL contains"
 msgstr "URL turi"
 
-#: src/Admin/ModulesPage.php:2060
+#: src/Admin/ModulesPage.php:2076
 msgid "Click on selector"
 msgstr "Spustelėjimas ant selektoriaus"
 
-#: src/Admin/ModulesPage.php:2073
+#: src/Admin/ModulesPage.php:2089
 msgid "URL fragment (for URL contains)"
 msgstr "URL fragmentas (sąlygai „URL turi“)"
 
-#: src/Admin/ModulesPage.php:2078
+#: src/Admin/ModulesPage.php:2094
 msgid "CSS selector (for click)"
 msgstr "CSS selektorius (spustelėjimui)"
 
-#: src/Admin/ModulesPage.php:2188
+#: src/Admin/ModulesPage.php:2204
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Atsiprašome, jums neleidžiama pasiekti šio puslapio."
 
-#: src/Admin/ModulesPage.php:2195 src/Admin/ModulesPage.php:2211
+#: src/Admin/ModulesPage.php:2211 src/Admin/ModulesPage.php:2227
 msgid "Invalid request."
 msgstr "Netinkama užklausa."
 
-#: src/Admin/ModulesPage.php:2402
+#: src/Admin/ModulesPage.php:2416 src/Admin/ModulesPage.php:2464
+msgid "Legal & Compliance"
+msgstr "Teisė ir atitiktis"
+
+#: src/Admin/ModulesPage.php:2418
 msgid "Tax & Pricing"
 msgstr "Mokesčiai ir kainodara"
 
-#: src/Admin/ModulesPage.php:2404
+#: src/Admin/ModulesPage.php:2420
 msgid "Checkout & Orders"
 msgstr "Atsiskaitymas ir užsakymai"
 
-#: src/Admin/ModulesPage.php:2406
+#: src/Admin/ModulesPage.php:2422
 msgid "Content & Trust"
 msgstr "Turinys ir pasitikėjimas"
 
-#: src/Admin/ModulesPage.php:2410 src/Admin/WithdrawalsAdminPage.php:392
+#: src/Admin/ModulesPage.php:2424 src/Admin/ModulesPage.php:2474
+msgid "Advanced & Tools"
+msgstr "Išplėstinės parinktys ir įrankiai"
+
+#: src/Admin/ModulesPage.php:2426 src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr "Kita"
 
-#: src/Admin/ModulesPage.php:2481
+#: src/Admin/ModulesPage.php:2439
+msgid "Prices and Display"
+msgstr "Kainos ir rodymas"
+
+#: src/Admin/ModulesPage.php:2441
+msgid "Prices and Omnibus"
+msgstr "Kainos ir Omnibus"
+
+#: src/Admin/ModulesPage.php:2443
+msgid "Checkout and Orders"
+msgstr "Užsakymai ir apmokėjimas"
+
+#: src/Admin/ModulesPage.php:2449
+msgid "Stock & Cart"
+msgstr "Atsargos ir krepšelis"
+
+#: src/Admin/ModulesPage.php:2451
+msgid "Merchandising"
+msgstr "Prekių išdėstymas"
+
+#: src/Admin/ModulesPage.php:2453 src/AIFeed/LlmsTxtService.php:209
+msgid "Storefront"
+msgstr "Parduotuvės priekis"
+
+#: src/Admin/ModulesPage.php:2455
+msgid "Product Information"
+msgstr "Produkto informacija"
+
+#: src/Admin/ModulesPage.php:2457
+msgid "Customer Account"
+msgstr "Kliento paskyra"
+
+#: src/Admin/ModulesPage.php:2459
+msgid "Sales and B2B"
+msgstr "Pardavimai ir B2B"
+
+#: src/Admin/ModulesPage.php:2462
+msgid "Consumer Rights"
+msgstr "Vartotojų teisės"
+
+#: src/Admin/ModulesPage.php:2466
+msgid "Tools"
+msgstr "Įrankiai"
+
+#: src/Admin/ModulesPage.php:2470
+msgid "SEO & Optimization"
+msgstr "SEO ir optimizavimas"
+
+#: src/Admin/ModulesPage.php:2472
+msgid "Integrations"
+msgstr "Integracijos"
+
+#: src/Admin/ModulesPage.php:2547
 msgid "Could not save module state. Please try again."
 msgstr "Nepavyko įrašyti modulio būsenos. Bandykite dar kartą."
 
-#: src/Admin/ModulesPage.php:2498
+#: src/Admin/ModulesPage.php:2564
 msgid "Compatible Omnibus Extension A"
 msgstr "Suderinamas Omnibus plėtinys A"
 
-#: src/Admin/ModulesPage.php:2499
+#: src/Admin/ModulesPage.php:2565
 msgid "Compatible Omnibus Extension B"
 msgstr "Suderinamas Omnibus plėtinys B"
 
-#: src/Admin/ModulesPage.php:2510
+#: src/Admin/ModulesPage.php:2576
 msgid "detected, data synchronized"
 msgstr "aptikta, duomenys sinchronizuoti"
 
-#: src/Admin/ModulesPage.php:2511
+#: src/Admin/ModulesPage.php:2577
 msgid "not installed"
 msgstr "neįdiegta"
 
-#: src/Admin/ModulesPage.php:2526
+#: src/Admin/ModulesPage.php:2592
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
@@ -7118,7 +7199,7 @@ msgstr ""
 "Joks išorinis Omnibus įskiepis nėra įdiegtas. Polski naudoja įmontuotą kainų "
 "sekimo sistemą."
 
-#: src/Admin/ModulesPage.php:2528
+#: src/Admin/ModulesPage.php:2594
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
@@ -7126,11 +7207,11 @@ msgstr ""
 "Aptiktas išorinis įskiepis. Polski naudoja jo duomenis vietoj įmontuotos "
 "sistemos."
 
-#: src/Admin/ModulesPage.php:2548
+#: src/Admin/ModulesPage.php:2614
 msgid "OSS observer service is unavailable."
 msgstr "OSS stebėtojo paslauga nepasiekiama."
 
-#: src/Admin/ModulesPage.php:2555
+#: src/Admin/ModulesPage.php:2621
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -7138,55 +7219,55 @@ msgstr ""
 "One Stop Shop įskiepis nėra įdiegtas. Įdiekite jį, kad pradėtumėte "
 "automatiškai stebėti 10 000 € ES vidaus B2C ribą."
 
-#: src/Admin/ModulesPage.php:2561
+#: src/Admin/ModulesPage.php:2627
 msgid "Install One Stop Shop"
 msgstr "Įdiegti One Stop Shop"
 
-#: src/Admin/ModulesPage.php:2566
+#: src/Admin/ModulesPage.php:2632
 msgid "You need the install_plugins capability to install it from here."
 msgstr "Norėdami įdiegti jį iš čia, jums reikia install_plugins teisės."
 
-#: src/Admin/ModulesPage.php:2575
+#: src/Admin/ModulesPage.php:2641
 msgid "One Stop Shop plugin detected."
 msgstr "Aptiktas One Stop Shop įskiepis."
 
-#: src/Admin/ModulesPage.php:2579
+#: src/Admin/ModulesPage.php:2645
 msgid "OSS procedure"
 msgstr "OSS procedūra"
 
-#: src/Admin/ModulesPage.php:2581
+#: src/Admin/ModulesPage.php:2647
 msgid "enabled"
 msgstr "įjungta"
 
-#: src/Admin/ModulesPage.php:2582
+#: src/Admin/ModulesPage.php:2648
 msgid "disabled"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2586
+#: src/Admin/ModulesPage.php:2652
 msgid "Auto observer"
 msgstr "Automatinis stebėtojas"
 
-#: src/Admin/ModulesPage.php:2588
+#: src/Admin/ModulesPage.php:2654
 msgid "watching threshold"
 msgstr "stebėjimo riba"
 
-#: src/Admin/ModulesPage.php:2589
+#: src/Admin/ModulesPage.php:2655
 msgid "off"
 msgstr "išjungta"
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2660
 msgid "Open OSS settings"
 msgstr "Atidaryti OSS nustatymus"
 
-#: src/Admin/ModulesPage.php:2652
+#: src/Admin/ModulesPage.php:2718
 msgid "detected, integration active"
 msgstr "aptikta, integracija aktyvi"
 
-#: src/Admin/ModulesPage.php:2655
+#: src/Admin/ModulesPage.php:2721
 msgid "install"
 msgstr "įdiegti"
 
-#: src/Admin/ModulesPage.php:2667
+#: src/Admin/ModulesPage.php:2733
 msgid ""
 "No supported checkout and cookies extensions detected. Polski continues to "
 "work independently."
@@ -7194,7 +7275,7 @@ msgstr ""
 "Nerasta palaikomų atsiskaitymo ir slapukų plėtinių. Polski toliau veikia "
 "savarankiškai."
 
-#: src/Admin/ModulesPage.php:2669
+#: src/Admin/ModulesPage.php:2735
 msgid ""
 "Supported checkout, cookies, or product data extensions detected. Polski can "
 "adjust integration to the active set."
@@ -7647,15 +7728,11 @@ msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr ""
 "Aplinkosauginio sertifikato galiojimo pabaigos data MMMM-MM-DD formatu."
 
-#: src/Admin/SBOMPage.php:39 src/Admin/SBOMPage.php:40
-msgid "SBOM"
-msgstr "SBOM"
-
-#: src/Admin/SBOMPage.php:49
+#: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
 msgstr "Programinės įrangos sudedamųjų dalių sąrašas (SBOM)"
 
-#: src/Admin/SBOMPage.php:50
+#: src/Admin/SBOMPage.php:51
 msgid ""
 "Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) "
 "dependencies. Useful for security audits, CRA compliance packages and "
@@ -7665,15 +7742,15 @@ msgstr ""
 "(composer) ir JS (npm) priklausomybės. Naudinga saugos auditams, CRA "
 "atitikties paketams ir pažeidžiamumų skaitytuvams."
 
-#: src/Admin/SBOMPage.php:56
+#: src/Admin/SBOMPage.php:57
 msgid "Path"
 msgstr "Kelias"
 
-#: src/Admin/SBOMPage.php:72
+#: src/Admin/SBOMPage.php:73
 msgid "Download SBOM (JSON)"
 msgstr "Atsisiųsti SBOM (JSON)"
 
-#: src/Admin/SBOMPage.php:88
+#: src/Admin/SBOMPage.php:89
 msgid "Unknown plugin target."
 msgstr "Nežinomas papildinio tikslas."
 
@@ -8140,6 +8217,10 @@ msgstr "Teisinė informacija"
 #: src/AIFeed/LlmsTxtService.php:104
 msgid "Product categories"
 msgstr "Produktų kategorijos"
+
+#: src/AIFeed/LlmsTxtService.php:109
+msgid "Consumer rights"
+msgstr "Vartotojų teisės"
 
 #: src/AIFeed/LlmsTxtService.php:134
 msgid "Withdrawal lookup (file an Art. 11a declaration)"
@@ -9848,8 +9929,8 @@ msgstr "el. paštas:"
 
 #: src/Service/AnnexGeneratorService.php:65
 #: src/Service/BusinessInfoService.php:114
-#: src/Service/ComplaintTemplateService.php:134
-#: src/Service/RodoTrainingDocsService.php:148
+#: src/Service/ComplaintTemplateService.php:135
+#: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP:"
 
@@ -10405,13 +10486,13 @@ msgstr ""
 msgid "Short description"
 msgstr "Trumpas aprašymas"
 
-#: src/Service/ComplaintTemplateService.php:45
 #: src/Service/ComplaintTemplateService.php:46
-#: src/Service/ComplaintTemplateService.php:55
+#: src/Service/ComplaintTemplateService.php:47
+#: src/Service/ComplaintTemplateService.php:56
 msgid "Complaint template"
 msgstr "Skundo šablonas"
 
-#: src/Service/ComplaintTemplateService.php:56
+#: src/Service/ComplaintTemplateService.php:57
 msgid ""
 "Ready-to-print complaint form. The seller section is filled automatically "
 "from your setup wizard data; the buyer and defect sections stay blank for "
@@ -10421,7 +10502,7 @@ msgstr ""
 "pagal jūsų sąrankos vediklio duomenis; pirkėjo ir defekto skiltys lieka "
 "tuščios klientui."
 
-#: src/Service/ComplaintTemplateService.php:57
+#: src/Service/ComplaintTemplateService.php:58
 msgid ""
 "Disclaimer: this is a generic template. Consult a lawyer for shop-specific "
 "legal text."
@@ -10429,25 +10510,25 @@ msgstr ""
 "Atsakomybės atsisakymas: tai yra bendras šablonas. Dėl konkrečiai "
 "parduotuvei pritaikyto teisinio teksto pasitarkite su teisininku."
 
-#: src/Service/ComplaintTemplateService.php:62
+#: src/Service/ComplaintTemplateService.php:63
 msgid "Download as HTML"
 msgstr "Atsisiųsti kaip HTML"
 
-#: src/Service/ComplaintTemplateService.php:66
+#: src/Service/ComplaintTemplateService.php:67
 msgid "Preview"
 msgstr "Peržiūra"
 
-#: src/Service/ComplaintTemplateService.php:102
-#: src/Service/ComplaintTemplateService.php:141
+#: src/Service/ComplaintTemplateService.php:103
+#: src/Service/ComplaintTemplateService.php:142
 msgid "Complaint form"
 msgstr "Skundo forma"
 
-#: src/Service/ComplaintTemplateService.php:137
-#: src/Service/ComplaintTemplateService.php:151
+#: src/Service/ComplaintTemplateService.php:138
+#: src/Service/ComplaintTemplateService.php:152
 msgid "Email:"
 msgstr "El. paštas:"
 
-#: src/Service/ComplaintTemplateService.php:142
+#: src/Service/ComplaintTemplateService.php:143
 msgid ""
 "Submit this form within the statutory warranty period. The seller is "
 "required to respond within 14 days."
@@ -10455,88 +10536,88 @@ msgstr ""
 "Pateikite šią formą per įstatymų nustatytą garantijos laikotarpį. Pardavėjas "
 "privalo atsakyti per 14 dienų."
 
-#: src/Service/ComplaintTemplateService.php:144
+#: src/Service/ComplaintTemplateService.php:145
 msgid "Seller"
 msgstr "Pardavėjas"
 
-#: src/Service/ComplaintTemplateService.php:147
+#: src/Service/ComplaintTemplateService.php:148
 #: src/Service/ProductQAService.php:237
 msgid "Customer"
 msgstr "Klientas"
 
-#: src/Service/ComplaintTemplateService.php:148
+#: src/Service/ComplaintTemplateService.php:149
 msgid "Name and surname:"
 msgstr "Vardas ir pavardė:"
 
-#: src/Service/ComplaintTemplateService.php:149
+#: src/Service/ComplaintTemplateService.php:150
 msgid "Address:"
 msgstr "Adresas:"
 
-#: src/Service/ComplaintTemplateService.php:152
+#: src/Service/ComplaintTemplateService.php:153
 msgid "Phone:"
 msgstr "Telefonas:"
 
-#: src/Service/ComplaintTemplateService.php:155
+#: src/Service/ComplaintTemplateService.php:156
 msgid "Order and product"
 msgstr "Užsakymas ir prekė"
 
-#: src/Service/ComplaintTemplateService.php:157
+#: src/Service/ComplaintTemplateService.php:158
 msgid "Order number:"
 msgstr "Užsakymo numeris:"
 
-#: src/Service/ComplaintTemplateService.php:158
+#: src/Service/ComplaintTemplateService.php:159
 msgid "Purchase date:"
 msgstr "Pirkimo data:"
 
-#: src/Service/ComplaintTemplateService.php:160
+#: src/Service/ComplaintTemplateService.php:161
 msgid "Product name:"
 msgstr "Prekės pavadinimas:"
 
-#: src/Service/ComplaintTemplateService.php:162
+#: src/Service/ComplaintTemplateService.php:163
 msgid "Defect / non-conformity"
 msgstr "Defektas / neatitiktis"
 
-#: src/Service/ComplaintTemplateService.php:163
+#: src/Service/ComplaintTemplateService.php:164
 msgid "Description:"
 msgstr "Aprašymas:"
 
-#: src/Service/ComplaintTemplateService.php:164
+#: src/Service/ComplaintTemplateService.php:165
 msgid "Date of defect detection:"
 msgstr "Defekto aptikimo data:"
 
-#: src/Service/ComplaintTemplateService.php:166
+#: src/Service/ComplaintTemplateService.php:167
 msgid "Requested remedy"
 msgstr "Pageidaujamas sprendimas"
 
-#: src/Service/ComplaintTemplateService.php:168
+#: src/Service/ComplaintTemplateService.php:169
 msgid "Repair"
 msgstr "Remontas"
 
-#: src/Service/ComplaintTemplateService.php:169
+#: src/Service/ComplaintTemplateService.php:170
 msgid "Replacement"
 msgstr "Keitimas"
 
-#: src/Service/ComplaintTemplateService.php:170
+#: src/Service/ComplaintTemplateService.php:171
 msgid "Price reduction (specify amount)"
 msgstr "Kainos sumažinimas (nurodykite sumą)"
 
-#: src/Service/ComplaintTemplateService.php:171
+#: src/Service/ComplaintTemplateService.php:172
 msgid "Withdrawal from the contract (refund of full price)"
 msgstr "Sutarties atsisakymas (visos kainos grąžinimas)"
 
-#: src/Service/ComplaintTemplateService.php:174
+#: src/Service/ComplaintTemplateService.php:175
 msgid "Bank account for refund"
 msgstr "Banko sąskaita grąžinimui"
 
-#: src/Service/ComplaintTemplateService.php:175
+#: src/Service/ComplaintTemplateService.php:176
 msgid "Account number (IBAN):"
 msgstr "Sąskaitos numeris (IBAN):"
 
-#: src/Service/ComplaintTemplateService.php:178
+#: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "Data:"
 
-#: src/Service/ComplaintTemplateService.php:179
+#: src/Service/ComplaintTemplateService.php:180
 msgid "Signature:"
 msgstr "Parašas:"
 
@@ -11492,16 +11573,16 @@ msgstr "Atsisakyti prašymų palikti atsiliepimą"
 msgid "Leave a review"
 msgstr "Palikti atsiliepimą"
 
-#: src/Service/RodoTrainingDocsService.php:42
 #: src/Service/RodoTrainingDocsService.php:43
+#: src/Service/RodoTrainingDocsService.php:44
 msgid "RODO training docs"
 msgstr "RODO mokymo dokumentai"
 
-#: src/Service/RodoTrainingDocsService.php:52
+#: src/Service/RodoTrainingDocsService.php:53
 msgid "RODO / GDPR training documentation"
 msgstr "RODO / GDPR mokymo dokumentacija"
 
-#: src/Service/RodoTrainingDocsService.php:53
+#: src/Service/RodoTrainingDocsService.php:54
 msgid ""
 "Ready-to-print templates for onboarding new shop employees. Pre-branded with "
 "your shop's business data."
@@ -11509,7 +11590,7 @@ msgstr ""
 "Paruošti spausdinti šablonai naujų parduotuvės darbuotojų įvedimui. Iš "
 "anksto pažymėti jūsų parduotuvės įmonės duomenimis."
 
-#: src/Service/RodoTrainingDocsService.php:54
+#: src/Service/RodoTrainingDocsService.php:55
 msgid ""
 "Disclaimer: generic starter templates - adapt to your actual data-processing "
 "workflows."
@@ -11517,19 +11598,19 @@ msgstr ""
 "Atsakomybės atsisakymas: bendri pradiniai šablonai - pritaikykite juos prie "
 "savo faktinių duomenų tvarkymo procesų."
 
-#: src/Service/RodoTrainingDocsService.php:64
+#: src/Service/RodoTrainingDocsService.php:65
 msgid "Download HTML"
 msgstr "Atsisiųsti HTML"
 
-#: src/Service/RodoTrainingDocsService.php:83
+#: src/Service/RodoTrainingDocsService.php:84
 msgid "Unknown document."
 msgstr "Nežinomas dokumentas."
 
-#: src/Service/RodoTrainingDocsService.php:104
+#: src/Service/RodoTrainingDocsService.php:105
 msgid "Training logbook"
 msgstr "Mokymų žurnalas"
 
-#: src/Service/RodoTrainingDocsService.php:105
+#: src/Service/RodoTrainingDocsService.php:106
 msgid ""
 "Table to record employee training sessions: who, role, topics, date and "
 "signature."
@@ -11537,20 +11618,20 @@ msgstr ""
 "Lentelė darbuotojų mokymams registruoti: kas, pareigos, temos, data ir "
 "parašas."
 
-#: src/Service/RodoTrainingDocsService.php:109
+#: src/Service/RodoTrainingDocsService.php:110
 msgid "RODO principles summary"
 msgstr "RODO principų santrauka"
 
-#: src/Service/RodoTrainingDocsService.php:110
+#: src/Service/RodoTrainingDocsService.php:111
 msgid ""
 "One-page summary of the 7 RODO principles and the 8 data subject rights."
 msgstr "Vieno puslapio 7 RODO principų ir 8 duomenų subjekto teisių santrauka."
 
-#: src/Service/RodoTrainingDocsService.php:114
+#: src/Service/RodoTrainingDocsService.php:115
 msgid "Data breach response playbook"
 msgstr "Duomenų pažeidimo reagavimo planas"
 
-#: src/Service/RodoTrainingDocsService.php:115
+#: src/Service/RodoTrainingDocsService.php:116
 msgid ""
 "Step-by-step checklist with the 72-hour UODO notification deadline and "
 "internal escalation."
@@ -11558,7 +11639,7 @@ msgstr ""
 "Žingsnis po žingsnio kontrolinis sąrašas su 72 valandų UODO pranešimo "
 "terminu ir vidiniu eskalavimu."
 
-#: src/Service/RodoTrainingDocsService.php:160
+#: src/Service/RodoTrainingDocsService.php:161
 msgid ""
 "Use one row per training session. The trainee signs to confirm attendance "
 "and understanding."
@@ -11566,115 +11647,115 @@ msgstr ""
 "Naudokite po vieną eilutę kiekvienam mokymui. Dalyvis pasirašo "
 "patvirtindamas dalyvavimą ir supratimą."
 
-#: src/Service/RodoTrainingDocsService.php:165
+#: src/Service/RodoTrainingDocsService.php:166
 msgid "Employee"
 msgstr "Darbuotojas"
 
-#: src/Service/RodoTrainingDocsService.php:166
+#: src/Service/RodoTrainingDocsService.php:167
 msgid "Role"
 msgstr "Pareigos"
 
-#: src/Service/RodoTrainingDocsService.php:167
+#: src/Service/RodoTrainingDocsService.php:168
 msgid "Topics covered"
 msgstr "Aptartos temos"
 
-#: src/Service/RodoTrainingDocsService.php:168
+#: src/Service/RodoTrainingDocsService.php:169
 msgid "Trainer"
 msgstr "Lektorius"
 
-#: src/Service/RodoTrainingDocsService.php:169
+#: src/Service/RodoTrainingDocsService.php:170
 msgid "Signature"
 msgstr "Parašas"
 
-#: src/Service/RodoTrainingDocsService.php:187
+#: src/Service/RodoTrainingDocsService.php:188
 msgid "Lawfulness, fairness and transparency"
 msgstr "Teisėtumas, sąžiningumas ir skaidrumas"
 
-#: src/Service/RodoTrainingDocsService.php:188
+#: src/Service/RodoTrainingDocsService.php:189
 msgid "Purpose limitation"
 msgstr "Tikslo ribojimas"
 
-#: src/Service/RodoTrainingDocsService.php:189
+#: src/Service/RodoTrainingDocsService.php:190
 msgid "Data minimisation"
 msgstr "Duomenų kiekio mažinimas"
 
-#: src/Service/RodoTrainingDocsService.php:190
+#: src/Service/RodoTrainingDocsService.php:191
 msgid "Accuracy"
 msgstr "Tikslumas"
 
-#: src/Service/RodoTrainingDocsService.php:191
+#: src/Service/RodoTrainingDocsService.php:192
 msgid "Storage limitation"
 msgstr "Saugojimo trukmės ribojimas"
 
-#: src/Service/RodoTrainingDocsService.php:192
+#: src/Service/RodoTrainingDocsService.php:193
 msgid "Integrity and confidentiality (security)"
 msgstr "Vientisumas ir konfidencialumas (saugumas)"
 
-#: src/Service/RodoTrainingDocsService.php:193
+#: src/Service/RodoTrainingDocsService.php:194
 msgid "Accountability"
 msgstr "Atskaitomybė"
 
-#: src/Service/RodoTrainingDocsService.php:197
+#: src/Service/RodoTrainingDocsService.php:198
 msgid "Right of access (Art. 15)"
 msgstr "Teisė susipažinti (15 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:198
+#: src/Service/RodoTrainingDocsService.php:199
 msgid "Right to rectification (Art. 16)"
 msgstr "Teisė reikalauti ištaisyti (16 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:199
+#: src/Service/RodoTrainingDocsService.php:200
 msgid "Right to erasure (Art. 17)"
 msgstr "Teisė reikalauti ištrinti (17 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:200
+#: src/Service/RodoTrainingDocsService.php:201
 msgid "Right to restriction of processing (Art. 18)"
 msgstr "Teisė apriboti duomenų tvarkymą (18 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:201
+#: src/Service/RodoTrainingDocsService.php:202
 msgid "Right to notification about rectification or erasure (Art. 19)"
 msgstr "Teisė būti informuotam apie ištaisymą ar ištrynimą (19 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:202
+#: src/Service/RodoTrainingDocsService.php:203
 msgid "Right to data portability (Art. 20)"
 msgstr "Teisė į duomenų perkeliamumą (20 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:203
+#: src/Service/RodoTrainingDocsService.php:204
 msgid "Right to object (Art. 21)"
 msgstr "Teisė nesutikti (21 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:204
+#: src/Service/RodoTrainingDocsService.php:205
 msgid "Right not to be subject to automated decision-making (Art. 22)"
 msgstr "Teisė nebūti automatizuoto sprendimo subjektu (22 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:207
+#: src/Service/RodoTrainingDocsService.php:208
 msgid "Seven principles of processing (Art. 5)"
 msgstr "Septyni duomenų tvarkymo principai (5 str.)"
 
-#: src/Service/RodoTrainingDocsService.php:214
+#: src/Service/RodoTrainingDocsService.php:215
 msgid "Eight data subject rights (Chapter III)"
 msgstr "Aštuonios duomenų subjekto teisės (III skyrius)"
 
-#: src/Service/RodoTrainingDocsService.php:221
+#: src/Service/RodoTrainingDocsService.php:222
 msgid "Operational reminders"
 msgstr "Veiklos priminimai"
 
-#: src/Service/RodoTrainingDocsService.php:223
+#: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
 msgstr ""
 "Niekada nesiųskite asmens duomenų skaičiuoklių el. paštu - naudokite "
 "šifruotus kanalus."
 
-#: src/Service/RodoTrainingDocsService.php:224
+#: src/Service/RodoTrainingDocsService.php:225
 msgid "Verify the requester before acting on access or erasure requests."
 msgstr "Patikrinkite prašytoją prieš vykdydami prieigos ar ištrynimo prašymus."
 
-#: src/Service/RodoTrainingDocsService.php:225
+#: src/Service/RodoTrainingDocsService.php:226
 msgid "Log every disclosure to third parties (processors, authorities)."
 msgstr ""
 "Registruokite kiekvieną atskleidimą tretiesiems asmenims (duomenų "
 "tvarkytojams, institucijoms)."
 
-#: src/Service/RodoTrainingDocsService.php:226
+#: src/Service/RodoTrainingDocsService.php:227
 msgid ""
 "Report every suspected data breach to the DPO/manager within 24 hours "
 "internally."
@@ -11682,27 +11763,27 @@ msgstr ""
 "Apie kiekvieną įtariamą duomenų pažeidimą per 24 valandas vidiniu būdu "
 "praneškite DAP/vadovui."
 
-#: src/Service/RodoTrainingDocsService.php:235
+#: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
 msgstr ""
 "Aptikimas - užfiksuokite laiko žymą, aptikusį asmenį, paveiktas sistemas."
 
-#: src/Service/RodoTrainingDocsService.php:236
+#: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
 msgstr "Ribojimas - izoliuokite paveiktas paskyras/sistemas per 1 valandą."
 
-#: src/Service/RodoTrainingDocsService.php:237
+#: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
 msgstr "Vidinis pranešimas - DAP ir vadovybei per 24 valandas."
 
-#: src/Service/RodoTrainingDocsService.php:238
+#: src/Service/RodoTrainingDocsService.php:239
 msgid ""
 "Assessment - document data categories, subjects affected, likely impact."
 msgstr ""
 "Vertinimas - užfiksuokite duomenų kategorijas, paveiktus subjektus, tikėtiną "
 "poveikį."
 
-#: src/Service/RodoTrainingDocsService.php:239
+#: src/Service/RodoTrainingDocsService.php:240
 msgid ""
 "UODO notification - required within 72 hours when risk to subjects is not "
 "unlikely."
@@ -11710,76 +11791,76 @@ msgstr ""
 "UODO pranešimas - privalomas per 72 valandas, kai rizika subjektams nėra "
 "maža."
 
-#: src/Service/RodoTrainingDocsService.php:240
+#: src/Service/RodoTrainingDocsService.php:241
 msgid ""
 "Subject notification - required \"without undue delay\" when risk is high."
 msgstr ""
 "Subjekto informavimas - privalomas \"nedelsiant\", kai rizika yra didelė."
 
-#: src/Service/RodoTrainingDocsService.php:241
+#: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
 msgstr ""
 "Ištaisymas - įdiekite pataisas, pakeiskite prisijungimo duomenis, "
 "peržiūrėkite žurnalus."
 
-#: src/Service/RodoTrainingDocsService.php:242
+#: src/Service/RodoTrainingDocsService.php:243
 msgid "Post-mortem - document lessons learned and update training."
 msgstr ""
 "Analizė po incidento - užfiksuokite išmoktas pamokas ir atnaujinkite mokymus."
 
-#: src/Service/RodoTrainingDocsService.php:245
+#: src/Service/RodoTrainingDocsService.php:246
 msgid "Step-by-step breach response"
 msgstr "Reagavimas į pažeidimą žingsnis po žingsnio"
 
-#: src/Service/RodoTrainingDocsService.php:252
+#: src/Service/RodoTrainingDocsService.php:253
 msgid "Breach log template"
 msgstr "Pažeidimų žurnalo šablonas"
 
-#: src/Service/RodoTrainingDocsService.php:254
+#: src/Service/RodoTrainingDocsService.php:255
 msgid "Field"
 msgstr "Laukas"
 
-#: src/Service/RodoTrainingDocsService.php:257
+#: src/Service/RodoTrainingDocsService.php:258
 msgid "Incident ID"
 msgstr "Incidento ID"
 
-#: src/Service/RodoTrainingDocsService.php:258
+#: src/Service/RodoTrainingDocsService.php:259
 msgid "Detected at (UTC)"
 msgstr "Aptikta (UTC)"
 
-#: src/Service/RodoTrainingDocsService.php:259
+#: src/Service/RodoTrainingDocsService.php:260
 msgid "Detected by"
 msgstr "Aptiko"
 
-#: src/Service/RodoTrainingDocsService.php:260
+#: src/Service/RodoTrainingDocsService.php:261
 msgid "Affected systems"
 msgstr "Paveiktos sistemos"
 
-#: src/Service/RodoTrainingDocsService.php:261
+#: src/Service/RodoTrainingDocsService.php:262
 msgid "Affected data categories"
 msgstr "Paveiktos duomenų kategorijos"
 
-#: src/Service/RodoTrainingDocsService.php:262
+#: src/Service/RodoTrainingDocsService.php:263
 msgid "Approximate number of subjects"
 msgstr "Apytikslis subjektų skaičius"
 
-#: src/Service/RodoTrainingDocsService.php:263
+#: src/Service/RodoTrainingDocsService.php:264
 msgid "Likely impact"
 msgstr "Tikėtinas poveikis"
 
-#: src/Service/RodoTrainingDocsService.php:264
+#: src/Service/RodoTrainingDocsService.php:265
 msgid "Containment actions"
 msgstr "Ribojimo veiksmai"
 
-#: src/Service/RodoTrainingDocsService.php:265
+#: src/Service/RodoTrainingDocsService.php:266
 msgid "UODO notified at"
 msgstr "UODO informuota"
 
-#: src/Service/RodoTrainingDocsService.php:266
+#: src/Service/RodoTrainingDocsService.php:267
 msgid "Subjects notified at"
 msgstr "Subjektai informuoti"
 
-#: src/Service/RodoTrainingDocsService.php:274
+#: src/Service/RodoTrainingDocsService.php:275
 msgid "UODO notification channel:"
 msgstr "UODO pranešimo kanalas:"
 
