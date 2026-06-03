@@ -34,8 +34,9 @@ final class SBOMPage implements HasHooks
 
     public function registerPage(): void
     {
+        // Hidden (empty parent): routable by URL, surfaced via the Reports & Tools hub.
         add_submenu_page(
-            'polski',
+            '',
             __('SBOM', 'polski'),
             __('SBOM', 'polski'),
             'manage_woocommerce',

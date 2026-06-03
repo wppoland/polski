@@ -37,8 +37,9 @@ final class RodoTrainingDocsService implements HasHooks
 
     public function registerPage(): void
     {
+        // Hidden (empty parent): routable by URL, surfaced via the Reports & Tools hub.
         add_submenu_page(
-            'polski',
+            '',
             __('RODO training docs', 'polski'),
             __('RODO training docs', 'polski'),
             'manage_woocommerce',

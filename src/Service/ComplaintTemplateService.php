@@ -40,8 +40,9 @@ final class ComplaintTemplateService implements HasHooks
 
     public function registerPage(): void
     {
+        // Hidden (empty parent): routable by URL, surfaced via the Reports & Tools hub.
         add_submenu_page(
-            'polski',
+            '',
             __('Complaint template', 'polski'),
             __('Complaint template', 'polski'),
             'manage_woocommerce',
