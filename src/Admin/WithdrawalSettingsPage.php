@@ -253,9 +253,9 @@ final class WithdrawalSettingsPage implements HasHooks
                 <h2><?php esc_html_e('Refund handling (Pro)', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
-                        <th><?php esc_html_e('Product Bundles refund mode', 'polski'); ?></th>
+                        <th><label for="polski_bundle_refund_mode"><?php esc_html_e('Product Bundles refund mode', 'polski'); ?></label></th>
                         <td>
-                            <select name="<?php echo esc_attr(self::OPTION); ?>[bundle_refund_mode]">
+                            <select id="polski_bundle_refund_mode" name="<?php echo esc_attr(self::OPTION); ?>[bundle_refund_mode]">
                                 <option value="whole_bundle" <?php selected($settings['bundle_refund_mode'] ?? 'whole_bundle', 'whole_bundle'); ?>><?php esc_html_e('Whole bundle (refund parent + siblings)', 'polski'); ?></option>
                                 <option value="proportional" <?php selected($settings['bundle_refund_mode'] ?? '', 'proportional'); ?>><?php esc_html_e('Proportional (refund only the withdrawn child\'s share)', 'polski'); ?></option>
                                 <option value="remove_discount" <?php selected($settings['bundle_refund_mode'] ?? '', 'remove_discount'); ?>><?php esc_html_e('Remove bundle discount (refund at standalone price)', 'polski'); ?></option>
@@ -272,10 +272,10 @@ final class WithdrawalSettingsPage implements HasHooks
                             <?php $polski_ai_available = \Polski\AI\AiClient::isAvailableForText(); ?>
                             <p class="description">
                                 <?php if ($polski_ai_available) : ?>
-                                    <strong style="color:#008a20;"><?php esc_html_e('Available.', 'polski'); ?></strong>
+                                    <strong style="color:#00731a;"><?php esc_html_e('Available.', 'polski'); ?></strong>
                                     <?php esc_html_e('WordPress AI Client is loaded and at least one provider is configured for text generation.', 'polski'); ?>
                                 <?php else : ?>
-                                    <strong style="color:#996800;"><?php esc_html_e('Not available.', 'polski'); ?></strong>
+                                    <strong style="color:#8a5e00;"><?php esc_html_e('Not available.', 'polski'); ?></strong>
                                     <?php esc_html_e('Install WordPress 7.0 or higher and at least one AI Client provider plugin (for example Vercel AI Gateway, AI Provider for Anthropic, AI Provider for Google, or AI Provider for OpenAI) to enable AI augmentation.', 'polski'); ?>
                                 <?php endif; ?>
                             </p>
