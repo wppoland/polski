@@ -19,7 +19,7 @@ declare(strict_types=1);
  * Requires Plugins:  woocommerce
  *
  * WC requires at least: 8.0
- * WC tested up to:      9.6
+ * WC tested up to:      10.8
  *
  * DISCLAIMER: This plugin is provided "as is" without any warranty. WPPoland
  * (wppoland.com) is not liable for any damages or consequences arising from its
@@ -80,7 +80,7 @@ if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
 require_once PLUGIN_DIR . '/autoload.php';
 
 /**
- * On Polski admin screens, use the site language (Settings → General), not only the user profile language.
+ * On Polski admin screens, use the site language (Settings -> General), not only the user profile language.
  *
  * determine_locale() uses get_user_locale() in admin; a Polish store with an English profile would otherwise
  * load polski-en_US (missing) and show English for both PHP gettext and JS script translations.
