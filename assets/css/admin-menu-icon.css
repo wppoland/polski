@@ -6,11 +6,14 @@
 #adminmenu .toplevel_page_polski .wp-menu-image::before {
     content: "" !important;
     display: block !important;
-    width: 20px;
-    height: 20px;
-    margin: 6px auto 0;
+    width: 100%;
+    /* Fill the full menu-image row height and center the 20px monogram inside it,
+       so it lines up with the menu label exactly like WP's native dashicons
+       (instead of a fragile fixed top margin). */
+    height: 34px;
+    margin: 0 !important;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: 20px 20px;
     /* monogram tile */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='4.6' fill='%23D4213D'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' transform='translate(3.8 3.8) scale(0.124)' d='M32 24H58C71 24 79 32.5 79 44C79 55.5 71 64 58 64H46V82H32ZM46 37H56.5C61 37 63 39.6 63 44C63 48.4 61 51 56.5 51H46Z'/%3E%3C/svg%3E") !important;
