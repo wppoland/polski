@@ -153,7 +153,7 @@ function generatePo(array $entries, string $locale, array $meta, array $map, str
     $header = "# Translation of Polski for WooCommerce in {$meta['name']}\n";
     $header .= "# This file is distributed under the GPL-2.0-or-later.\n";
     $header .= "msgid \"\"\nmsgstr \"\"\n";
-    $header .= "\"Project-Id-Version: Polski for WooCommerce 1.10.0\\n\"\n";
+    $header .= "\"Project-Id-Version: Polski for WooCommerce 1.22.4\\n\"\n";
     $header .= "\"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\\n\"\n";
     $header .= "\"Last-Translator: Mariusz Szatkowski\\n\"\n";
     $header .= "\"Language-Team: {$meta['team']}\\n\"\n";

@@ -119,6 +119,7 @@ final class ModulesPage implements HasHooks
             'infinite_scroll' => __('Loads more products as shoppers browse listings. When enabled, WooCommerce archive pages load further products automatically or via a load-more button instead of paging. Off until enabled.', 'polski'),
             'popup' => __('Shows a promotional or lead-capture popup to visitors. When enabled, a lightweight popup appears based on the delay, frequency, and page locations you set. Off until enabled.', 'polski'),
             'gpsr' => __('Provides tools for displaying EU product safety (GPSR) details. When enabled, you can add manufacturer and importer data, responsible person, product identifiers, safety warnings, and instructions to products, with CSV bulk import or export. Off until enabled.', 'polski'),
+            'bdo' => __('Displays your BDO registration number (Baza Danych o Odpadach). When enabled, enter your BDO number in the module settings and show it anywhere with the [polski_bdo] shortcode or the BDO number block, for example in the footer. It only displays the number you provide. Off until enabled.', 'polski'),
             'verified_review' => __('Shows a trust badge on reviews left by real buyers. When enabled, reviews from customers who actually bought the product display a verified purchase badge on the product page, so shoppers can tell genuine buyer feedback from the rest.', 'polski'),
             'green_claims' => __('Adds product fields for backing up environmental claims. When enabled, each product gains fields for the basis of an ecological claim, a certificate link, and an expiration date, helping you prepare for the anti-greenwashing directive (September 2026).', 'polski'),
             'dsa_toolkit' => __('Provides Digital Services Act tools for your store. When enabled, you get contact point settings, a public report form for illegal content or products via the [polski_dsa_report] shortcode, and an admin screen where staff review submitted reports.', 'polski'),
@@ -1023,6 +1024,18 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_gpsr|display_mode', 'label' => __('Display mode', 'polski'), 'type' => 'select', 'default' => 'accordion', 'options' => ['accordion' => __('Accordion', 'polski'), 'section' => __('Section', 'polski')]],
                     ['key' => 'polski_gpsr|section_title', 'label' => __('Section title', 'polski'), 'type' => 'text', 'default' => __('Product safety', 'polski')],
+                ],
+            ],
+            [
+                'id' => 'bdo',
+                'name' => __('BDO number', 'polski'),
+                'description' => __('Show your BDO registration number (Baza Danych o Odpadach) with the [polski_bdo] shortcode or block. Enter the number below; it is read from the store settings.', 'polski'),
+                'group' => 'Legal & Compliance',
+                'enabled' => false,
+                'icon' => 'dashicons-id',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_general|bdo_number', 'label' => __('BDO number', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Shown by the [polski_bdo] shortcode and the BDO number block.', 'polski')],
                 ],
             ],
             [
@@ -2112,7 +2125,7 @@ final class ModulesPage implements HasHooks
      */
     private function printRepeaterScript(string $uid): void
     {
-        $script = <<<JS
+        $script = "
 (function(){
     var root=document.getElementById({$this->jsString($uid)});
     if(!root||root.dataset.polskiBound){return;}
@@ -2149,7 +2162,7 @@ final class ModulesPage implements HasHooks
     }
     if(form){form.addEventListener('submit',serialise);}
 })();
-JS;
+";
 
         wp_print_inline_script_tag($script);
     }
@@ -2368,6 +2381,7 @@ JS;
             'page_compliance' => true,
             'sbom' => false,
             'business_info' => false,
+            'bdo' => false,
             'complaint_template' => false,
             'copyright_notice' => false,
             'rodo_training_docs' => false,

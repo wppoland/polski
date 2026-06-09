@@ -75,6 +75,7 @@ use Polski\Service\TrustBadgeService;
 use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
 use Polski\Service\BusinessInfoService;
+use Polski\Service\BdoService;
 use Polski\Service\ComplaintTemplateService;
 use Polski\Service\CopyrightNoticeService;
 use Polski\Service\RodoTrainingDocsService;
@@ -434,6 +435,9 @@ return static function (Container $c): void {
 
     // Business identification footer/block/shortcode.
     $c->singleton(BusinessInfoService::class, static fn () => new BusinessInfoService());
+
+    // BDO registration number block/shortcode.
+    $c->singleton(BdoService::class, static fn () => new BdoService());
 
     // Complaint template generator.
     $c->singleton(ComplaintTemplateService::class, static fn () => new ComplaintTemplateService());

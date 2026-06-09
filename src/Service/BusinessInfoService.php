@@ -43,6 +43,7 @@ final class BusinessInfoService implements HasHooks
             'separator' => ' | ',
             'show_label' => '1',
             'show_regon' => '0',
+            'show_bdo' => '0',
         ], is_array($atts) ? $atts : [], $shortcodeTag);
 
         return $this->render($atts);
@@ -68,6 +69,7 @@ final class BusinessInfoService implements HasHooks
                 'separator' => ['type' => 'string', 'default' => ' | '],
                 'show_label' => ['type' => 'boolean', 'default' => true],
                 'show_regon' => ['type' => 'boolean', 'default' => false],
+                'show_bdo' => ['type' => 'boolean', 'default' => false],
             ],
             'render_callback' => [$this, 'renderBlock'],
         ]);
@@ -83,6 +85,7 @@ final class BusinessInfoService implements HasHooks
             'separator' => (string) ($attributes['separator'] ?? ' | '),
             'show_label' => ! empty($attributes['show_label']) ? '1' : '0',
             'show_regon' => ! empty($attributes['show_regon']) ? '1' : '0',
+            'show_bdo' => ! empty($attributes['show_bdo']) ? '1' : '0',
         ]);
     }
 
@@ -101,6 +104,7 @@ final class BusinessInfoService implements HasHooks
         $separator = (string) ($atts['separator'] ?? ' | ');
         $showLabel = ! empty($atts['show_label']) && $atts['show_label'] !== '0';
         $showRegon = ! empty($atts['show_regon']) && $atts['show_regon'] !== '0';
+        $showBdo = ! empty($atts['show_bdo']);
 
         $lines = [];
 
@@ -115,6 +119,9 @@ final class BusinessInfoService implements HasHooks
         }
         if ($showRegon && ! empty($info['regon'])) {
             $lines['regon'] = ($showLabel ? __('REGON:', 'polski') . ' ' : '') . $info['regon'];
+        }
+        if ($showBdo && ! empty($info['bdo'])) {
+            $lines['bdo'] = ($showLabel ? __('BDO:', 'polski') . ' ' : '') . $info['bdo'];
         }
         if (! empty($info['email'])) {
             $lines['email'] = $this->mailtoLink($info['email']);
@@ -183,6 +190,7 @@ final class BusinessInfoService implements HasHooks
             'regon' => trim((string) ($general['company_regon'] ?? '')),
             'email' => trim((string) ($general['company_email'] ?? '')),
             'phone' => trim((string) ($general['company_phone'] ?? '')),
+            'bdo' => trim((string) ($general['bdo_number'] ?? '')),
         ];
     }
 }
