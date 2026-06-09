@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.22.2
+Stable tag: 1.22.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,13 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.3 =
+* Admin: consolidated the five separate settings pages into a single tabbed Settings screen, and moved Withdrawals, Consent records, CRA incidents, SBOM, Complaint template and RODO training documents into a new Reports & Tools hub for a cleaner, shorter menu.
+* Admin: sub-grouped the module list by area and added rich help tooltips to every module (what it does and what happens when you enable it); action links are muted while a module is off.
+* Fixed: the Polski admin menu icon is now vertically centered with its label.
+* Translations: resynced and recompiled all bundled locale catalogs after the settings and menu reorganization.
+* Docs: updated the documentation and plugin page links to plogins.com.
 
 = 1.22.2 =
 * Translations: translated all interface strings added in 1.21.0 and 1.22.0 (Consent Manager, Tag Manager, AI Bridge, Custom Integrations, Safe Fonts, and Custom Triggers) into every bundled locale (Polish, German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian, Simplified Chinese). Recompiled the binary and JavaScript translation files.
