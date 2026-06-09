@@ -14,6 +14,7 @@ return [
     'polski_general' => [
         'small_business' => false,
         'remove_data_on_uninstall' => false,
+        'bdo_number' => '',
         'dispute_resolution_enabled' => true,
         'dispute_resolution_text' => __('Platforma ODR: https://ec.europa.eu/consumers/odr', 'polski'),
         'admin_pages_generated_notice' => __('Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj.', 'polski'),

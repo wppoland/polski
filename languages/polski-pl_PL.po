@@ -14008,3 +14008,21 @@ msgstr ""
 
 #~ msgid "Pełna dokumentacja"
 #~ msgstr "Pełna dokumentacja"
+
+msgid "BDO number"
+msgstr "Numer BDO"
+
+msgid "Displays the shop's BDO registration number from the Polski settings."
+msgstr "Wyświetla numer rejestrowy BDO sklepu z ustawień Polski."
+
+msgid "BDO:"
+msgstr "BDO:"
+
+msgid "Show your BDO registration number (Baza Danych o Odpadach) with the [polski_bdo] shortcode or block. Enter the number below; it is read from the store settings."
+msgstr "Pokaż numer rejestrowy BDO (Baza Danych o Odpadach) za pomocą shortcode'u [polski_bdo] lub bloku. Wpisz numer poniżej; jest odczytywany z ustawień sklepu."
+
+msgid "Shown by the [polski_bdo] shortcode and the BDO number block."
+msgstr "Wyświetlany przez shortcode [polski_bdo] i blok numeru BDO."
+
+msgid "Displays your BDO registration number (Baza Danych o Odpadach). When enabled, enter your BDO number in the module settings and show it anywhere with the [polski_bdo] shortcode or the BDO number block, for example in the footer. It only displays the number you provide. Off until enabled."
+msgstr "Wyświetla Twój numer rejestrowy BDO (Baza Danych o Odpadach). Po włączeniu wpisz numer BDO w ustawieniach modułu i pokaż go w dowolnym miejscu za pomocą shortcode'u [polski_bdo] lub bloku numeru BDO, na przykład w stopce. Wyświetla wyłącznie podany przez Ciebie numer. Domyślnie wyłączony."

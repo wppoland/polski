@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.22.3
+Stable tag: 1.22.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.4 =
+* New: BDO number module. Enter your BDO registration number (Baza Danych o Odpadach) and display it anywhere with the [polski_bdo] shortcode or the BDO number block, for example in the footer. The business identification block can also include the BDO number.
 
 = 1.22.3 =
 * Admin: consolidated the five separate settings pages into a single tabbed Settings screen, and moved Withdrawals, Consent records, CRA incidents, SBOM, Complaint template and RODO training documents into a new Reports & Tools hub for a cleaner, shorter menu.

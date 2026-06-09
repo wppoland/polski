@@ -57,7 +57,7 @@ final class B2BCheckoutHooks implements HasHooks
             return;
         }
 
-        $script = <<<'JS'
+        $script = "
         (function() {
             function sync() {
                 var toggle = document.getElementById('polski_buying_as_company');
@@ -82,7 +82,7 @@ final class B2BCheckoutHooks implements HasHooks
                 window.jQuery(document.body).on('updated_checkout', sync);
             }
         })();
-        JS;
+        ";
 
         wp_register_script('polski-b2b-checkout', '', [], '1.0', ['in_footer' => true]);
         wp_enqueue_script('polski-b2b-checkout');

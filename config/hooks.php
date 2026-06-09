@@ -74,6 +74,7 @@ use Polski\Service\LiveCartService;
 use Polski\Service\WishlistService;
 use Polski\Service\DisputeResolutionService;
 use Polski\Service\BusinessInfoService;
+use Polski\Service\BdoService;
 use Polski\Service\ComplaintTemplateService;
 use Polski\Service\CopyrightNoticeService;
 use Polski\Service\RodoTrainingDocsService;
@@ -220,6 +221,9 @@ return [
 
     // Business identification footer / block / shortcode.
     BusinessInfoService::class,
+
+    // BDO registration number block / shortcode.
+    BdoService::class,
 
     // Complaint template generator.
     ComplaintTemplateService::class,

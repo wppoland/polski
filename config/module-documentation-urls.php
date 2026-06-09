@@ -58,4 +58,5 @@ return [
     'price_history_chart' => 'https://polski.wppoland.com/compliance/omnibus/',
     'order_export' => 'https://polski.wppoland.com/developer/csv-import/',
     'custom_checkout_fields' => 'https://polski.wppoland.com/checkout/legal-checkboxes/',
+    'bdo' => 'https://polski.wppoland.com/compliance/bdo-number/',
 ];
