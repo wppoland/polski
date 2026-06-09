@@ -20,9 +20,9 @@ This plugin helps you configure store workflows related to Polish and EU market 
 
 = Documentation and useful links =
 
-* **Documentation** - https://plogins.com/polski/docs/
-* **Plugin page (Polish)** - https://plogins.com/polski/
-* **Plugin page (English)** - https://plogins.com/en/polski/docs/
+* **Documentation** - https://plogins.com/pl/polski/docs/
+* **Plugin page (Polish)** - https://plogins.com/pl/polski/
+* **Plugin page (English)** - https://plogins.com/polski/
 * **Source code (GitHub)** - https://github.com/wppoland/polski
 * **Report issues or request features** - https://github.com/wppoland/polski/issues
 * **Discuss ideas and questions** - https://github.com/wppoland/polski/discussions
