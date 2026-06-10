@@ -51,13 +51,25 @@ final class WithdrawalQueryHelper implements HasHooks
     }
 
     /**
-     * @param list<\WC_Order|int> $results
-     * @param array<string, mixed> $args
+     * Filters the `wc_get_orders()` results when one of our custom query args is
+     * present. The `woocommerce_order_query` filter passes EITHER a plain list of
+     * orders/ids OR - when the query is run with `paginate => true` - a stdClass
+     * of the shape `{ orders, total, max_num_pages }`. We must accept both (and
+     * leave anything else untouched), so the parameter is intentionally untyped:
+     * a strict `array` hint here fatals on every paginated order query, e.g. the
+     * WooCommerce admin Orders screen.
      *
-     * @return list<\WC_Order|int>
+     * @param list<\WC_Order|int>|object|mixed $results
+     * @param array<string, mixed>|mixed       $args
+     *
+     * @return mixed The same shape that was passed in.
      */
-    public function filterByWithdrawal(array $results, array $args): array
+    public function filterByWithdrawal($results, $args)
     {
+        if (! is_array($args)) {
+            return $results;
+        }
+
         $hasFlag = $args['polski_has_withdrawal'] ?? null;
         $statusArg = isset($args['polski_withdrawal_status'])
             ? (string) $args['polski_withdrawal_status']
@@ -68,21 +80,33 @@ final class WithdrawalQueryHelper implements HasHooks
         }
 
         $status = $statusArg !== null ? WithdrawalStatus::tryFrom($statusArg) : null;
-
         $matchingOrderIds = $this->matchingOrderIds($status);
 
-        if ($hasFlag === false) {
-            // Negative filter: drop orders that match.
-            return array_values(array_filter(
-                $results,
-                static fn ($order) => ! in_array(self::orderId($order), $matchingOrderIds, true),
-            ));
+        // Negative filter drops matching orders; positive keeps only matches.
+        $keep = static fn ($order): bool => in_array(self::orderId($order), $matchingOrderIds, true);
+        $predicate = $hasFlag === false
+            ? static fn ($order): bool => ! $keep($order)
+            : $keep;
+
+        // Paginated result: filter the inner list, keep the object shape, and
+        // best-effort adjust the total by the number removed from this page.
+        if (is_object($results) && isset($results->orders) && is_array($results->orders)) {
+            $filtered = array_values(array_filter($results->orders, $predicate));
+            $removed = count($results->orders) - count($filtered);
+            $results->orders = $filtered;
+            if (isset($results->total) && is_numeric($results->total)) {
+                $results->total = max(0, (int) $results->total - $removed);
+            }
+
+            return $results;
         }
 
-        return array_values(array_filter(
-            $results,
-            static fn ($order) => in_array(self::orderId($order), $matchingOrderIds, true),
-        ));
+        if (is_array($results)) {
+            return array_values(array_filter($results, $predicate));
+        }
+
+        // Unknown shape (should not happen) - never fatal, return untouched.
+        return $results;
     }
 
     /**
