@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.23.0
+Stable tag: 1.23.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.23.1 =
+* Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese - all eight locales are now fully translated, including the new Setup wizard and module search/sort strings.
 
 = 1.23.0 =
 * New: Setup wizard. A new Setup tab proposes ready-made scenarios (Polish legal baseline, Food & grocery, Digital goods, B2B & wholesale, Fashion, Conversion boost) and enables the matching modules in one click. Non-destructive: it only switches modules on, never off.

@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.23.1 =
+* Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese - all eight locales are now fully translated, including the new Setup wizard and module search/sort strings.
+
 = 1.23.0 =
 * New: Setup wizard. A new Setup tab proposes ready-made scenarios (Polish legal baseline, Food & grocery, Digital goods, B2B & wholesale, Fashion, Conversion boost) and enables the matching modules in one click. Non-destructive: it only switches modules on, never off.
 
