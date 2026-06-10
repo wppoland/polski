@@ -129,3 +129,23 @@ jobs:
           diff -u \
             <(grep -v 'POT-Creation-Date' languages/polski.pot) \
             <(grep -v 'POT-Creation-Date' /tmp/polski-check.pot)
+
+  smoke:
+    name: Runtime fatal smoke (wp-env)
+    # Boots the plugin in a real WordPress + WooCommerce and exercises the code
+    # paths that have produced *runtime* fatals which static analysis misses
+    # (e.g. the woocommerce_order_query / paginated-orders TypeError). This is the
+    # gate that would have stopped the 1.22.4 regression reaching wp.org.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - name: Start wp-env (WordPress + WooCommerce + plugin)
+        run: npx wp-env start
+      - name: Deactivate PRO (skip the Freemius license gate)
+        run: npx wp-env run cli wp plugin deactivate polski-pro || true
+      - name: Runtime fatal smoke
+        run: npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
