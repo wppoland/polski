@@ -131,7 +131,7 @@ msgstr "Seite"
 #: src/Service/StoreHealthMonitorService.php:285
 #: src/Service/WithdrawalService.php:931
 msgid "Status"
-msgstr "Status"
+msgstr "Zustand"
 
 #: config/defaults.php:36
 msgid "Opublikowana"
@@ -680,11 +680,11 @@ msgstr "E-Mail"
 
 #: config/defaults.php:222
 msgid "Telefon"
-msgstr "Telefon"
+msgstr "Telefonnummer"
 
 #: config/defaults.php:223
 msgid "Firma"
-msgstr "Firma"
+msgstr "Unternehmen"
 
 #: config/defaults.php:224 src/Service/B2BCheckoutService.php:257
 #: src/Service/NipLookupService.php:66 src/Service/NipLookupService.php:149
@@ -1591,7 +1591,7 @@ msgstr "Polski"
 #: src/Admin/AdminPage.php:231 src/Admin/AdminPage.php:232
 #: src/Admin/AdminPage.php:322
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Übersicht"
 
 #: src/Admin/AdminPage.php:240 src/Admin/AdminPage.php:241
 #: src/Admin/AdminPage.php:323
@@ -2503,7 +2503,7 @@ msgstr "Keine Rückmeldungen vorhanden."
 
 #: src/Admin/DeactivationHandler.php:151
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Erweiterung"
 
 #: src/Admin/DeactivationHandler.php:152 src/Admin/WithdrawalsAdminPage.php:166
 #: src/Service/DSAService.php:174 src/Service/ReturnRequestService.php:144
@@ -5689,7 +5689,7 @@ msgstr "Verwandte"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Zusatzangebot"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -6157,7 +6157,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1114
 msgid "AI Bridge"
-msgstr "AI Bridge"
+msgstr "KI-Brücke"
 
 #: src/Admin/ModulesPage.php:1115
 msgid ""
@@ -6240,7 +6240,7 @@ msgstr "Meta Pixel"
 
 #: src/Admin/ModulesPage.php:1153
 msgid "Meta Pixel ID"
-msgstr "Meta Pixel ID"
+msgstr "Meta-Pixel-ID"
 
 #: src/Admin/ModulesPage.php:1153 src/Admin/ModulesPage.php:1155
 #: src/Admin/ModulesPage.php:1163
@@ -6253,7 +6253,7 @@ msgstr "TikTok Pixel"
 
 #: src/Admin/ModulesPage.php:1155
 msgid "TikTok Pixel ID"
-msgstr "TikTok Pixel ID"
+msgstr "TikTok-Pixel-ID"
 
 #: src/Admin/ModulesPage.php:1156
 msgid "Microsoft Advertising (Bing UET)"
@@ -6261,7 +6261,7 @@ msgstr "Microsoft Advertising (Bing UET)"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "UET-Tag-ID"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -6269,7 +6269,7 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "LinkedIn-Partner-ID"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
@@ -6281,7 +6281,7 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "Pinterest-Tag-ID"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
@@ -6293,7 +6293,7 @@ msgstr "X / Twitter Ads"
 
 #: src/Admin/ModulesPage.php:1163
 msgid "X / Twitter Pixel ID"
-msgstr "X / Twitter Pixel ID"
+msgstr "X-/Twitter-Pixel-ID"
 
 #: src/Admin/ModulesPage.php:1164
 msgid "Google Ads"
@@ -6301,7 +6301,7 @@ msgstr "Google Ads"
 
 #: src/Admin/ModulesPage.php:1165
 msgid "Google Ads Conversion ID"
-msgstr "Google Ads Conversion ID"
+msgstr "Google-Ads-Conversion-ID"
 
 #: src/Admin/ModulesPage.php:1166
 msgid "Analytics and heatmaps"
@@ -6317,7 +6317,7 @@ msgstr "Microsoft Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Clarity Project ID"
-msgstr "Clarity Project ID"
+msgstr "Clarity-Projekt-ID"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Project ID"
@@ -6333,7 +6333,7 @@ msgstr "Matomo-URL"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Matomo Site ID"
-msgstr "Matomo Site ID"
+msgstr "Matomo-Website-ID"
 
 #: src/Admin/ModulesPage.php:1171 src/Admin/ModulesPage.php:1177
 msgid "Site ID"
@@ -6365,7 +6365,7 @@ msgstr "Hotjar"
 
 #: src/Admin/ModulesPage.php:1177
 msgid "Hotjar Site ID"
-msgstr "Hotjar Site ID"
+msgstr "Hotjar-Website-ID"
 
 #: src/Admin/ModulesPage.php:1178
 msgid "Inspectlet"
@@ -6385,7 +6385,7 @@ msgstr "Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Crazy Egg Account ID"
-msgstr "Crazy Egg Account ID"
+msgstr "Crazy-Egg-Konto-ID"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Account ID"
@@ -6482,7 +6482,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1216
 msgid "Snippets"
-msgstr "Snippets"
+msgstr "Code-Snippets"
 
 #: src/Admin/ModulesPage.php:1222
 msgid "Custom Triggers"
@@ -7230,7 +7230,7 @@ msgstr "Bestand & Warenkorb"
 
 #: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
-msgstr "Merchandising"
+msgstr "Verkaufsförderung"
 
 #: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
@@ -7567,7 +7567,7 @@ msgstr "Marken suchen"
 
 #: src/Admin/PostTypes.php:143
 msgid "Allergen"
-msgstr "Allergen"
+msgstr "Allergenhinweis"
 
 #: src/Admin/PostTypes.php:144
 msgid "Add Allergen"
@@ -7827,7 +7827,7 @@ msgstr "Ablaufdatum des Umweltzertifikats im Format JJJJ-MM-TT."
 
 #: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
-msgstr "Software Bill of Materials (SBOM)"
+msgstr "Software-Stückliste (SBOM)"
 
 #: src/Admin/SBOMPage.php:51
 msgid ""
@@ -12133,7 +12133,7 @@ msgstr "Behörde"
 #: src/Service/SecurityIncidentService.php:181
 #: src/Service/SiteAuditService.php:76
 msgid "Details"
-msgstr "Details"
+msgstr "Einzelheiten"
 
 #: src/Service/SecurityIncidentService.php:181
 msgid "Mitigation:"
@@ -12505,7 +12505,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "KSeF-bereit"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""
@@ -12840,7 +12840,7 @@ msgstr "Sensor"
 
 #: src/Service/StoreHealthMonitorService.php:285
 msgid "Detail"
-msgstr "Detail"
+msgstr "Einzelheit"
 
 #: src/Service/StoreHealthMonitorService.php:311
 msgid "No recent front-end fatal errors."
