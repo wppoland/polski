@@ -51,6 +51,12 @@ if (! function_exists('get_option')) {
 if (! function_exists('update_option')) {
     function update_option(string $option, mixed $value, string|bool $autoload = 'yes'): bool
     {
+        unset($autoload);
+        if (! isset($GLOBALS['polski_test_options']) || ! is_array($GLOBALS['polski_test_options'])) {
+            $GLOBALS['polski_test_options'] = [];
+        }
+        $GLOBALS['polski_test_options'][$option] = $value;
+
         return true;
     }
 }
@@ -191,6 +197,77 @@ if (! class_exists('WP_Query')) {
         public function __construct(array $posts = [])
         {
             $this->posts = $posts;
+        }
+    }
+}
+
+if (! class_exists('WP_REST_Request')) {
+    class WP_REST_Request
+    {
+        /** @var array<string, mixed> */
+        private array $jsonParams = [];
+
+        public function __construct(private string $method = 'GET', private string $route = '')
+        {
+        }
+
+        public function set_header(string $key, string $value): void
+        {
+            unset($key, $value);
+        }
+
+        public function set_body(string $body): void
+        {
+            $decoded = json_decode($body, true);
+            $this->jsonParams = is_array($decoded) ? $decoded : [];
+        }
+
+        /**
+         * @param array<string, mixed> $params
+         */
+        public function set_json_params(array $params): void
+        {
+            $this->jsonParams = $params;
+        }
+
+        /**
+         * @return array<string, mixed>
+         */
+        public function get_json_params(): array
+        {
+            return $this->jsonParams;
+        }
+
+        public function get_param(string $key): mixed
+        {
+            return $this->jsonParams[$key] ?? null;
+        }
+    }
+}
+
+if (! class_exists('WP_REST_Controller')) {
+    class WP_REST_Controller
+    {
+        protected $namespace = '';
+        protected $rest_base = '';
+    }
+}
+
+if (! class_exists('WP_REST_Response')) {
+    class WP_REST_Response
+    {
+        public function __construct(private mixed $data = null, private int $status = 200)
+        {
+        }
+
+        public function get_status(): int
+        {
+            return $this->status;
+        }
+
+        public function get_data(): mixed
+        {
+            return $this->data;
         }
     }
 }

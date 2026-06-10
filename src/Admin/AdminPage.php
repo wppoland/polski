@@ -440,6 +440,9 @@ final class AdminPage implements Bootable, HasHooks
         $tabs = $this->getShellTabs();
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $tab = isset($_GET['tab']) ? sanitize_key((string) $_GET['tab']) : 'dashboard';
+        if ($tab === 'wizard') {
+            $tab = 'setup';
+        }
         if (! array_key_exists($tab, $tabs)) {
             $tab = 'dashboard';
         }
@@ -505,6 +508,9 @@ final class AdminPage implements Bootable, HasHooks
                 ],
                 admin_url('admin.php'),
             );
+            if ($tabId === 'setup') {
+                $url .= '#/setup-wizard';
+            }
             printf('<a href="%s" class="%s">%s</a>', esc_url($url), esc_attr($class), esc_html($tabLabel));
         }
         echo '</nav>';
@@ -932,14 +938,14 @@ final class AdminPage implements Bootable, HasHooks
                 echo '<li>' . esc_html__('Go through the checklist below', 'polski') . '</li>';
             }
             echo '</ul>';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '-group-content_trust')) . '" class="button button-primary">' . esc_html__('Complete product data', 'polski') . '</a> ';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=setup#/setup-wizard')) . '" class="button button-primary">' . esc_html__('Launch setup wizard', 'polski') . '</a> ';
             echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '" class="button">' . esc_html__('Manage modules', 'polski') . '</a>';
             echo '</div>';
         } else {
             // Wizard already finished: offer a safety-net relaunch link for merchants
             // who want to rerun the guided setup without digging through the modules page.
             echo '<div class="polski-dashboard-relaunch" style="margin-bottom:24px;font-size:13px;color:#646970;">';
-            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=wizard#/setup-wizard')) . '" class="button button-small">';
+            echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=setup#/setup-wizard')) . '" class="button button-small">';
             echo '<span class="dashicons dashicons-update" style="vertical-align:text-bottom;"></span> ';
             echo esc_html__('Relaunch setup wizard', 'polski');
             echo '</a>';
