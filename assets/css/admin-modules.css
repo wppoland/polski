@@ -182,3 +182,30 @@
     border-left: 3px solid var(--pl-crimson, #D4213D);
 }
 .polski-modules-settings-panel form { max-width: 760px; }
+
+/* Modules toolbar: client-side search (name + description) + sort (0.22.x). */
+.polski-modules-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 12px 0;
+}
+.polski-modules-search {
+	flex: 1 1 280px;
+	max-width: 420px;
+	min-width: 200px;
+}
+.polski-modules-sort-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	color: #50575e;
+	white-space: nowrap;
+}
+.polski-modules-empty {
+	margin: 16px 0;
+	color: #646970;
+	font-style: italic;
+}
