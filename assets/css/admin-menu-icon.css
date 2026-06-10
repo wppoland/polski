@@ -24,4 +24,5 @@
 #adminmenu .toplevel_page_polski.current .wp-menu-image::before,
 #adminmenu .toplevel_page_polski.wp-has-current-submenu .wp-menu-image::before {
     opacity: 1;
+    padding: 0;
 }
