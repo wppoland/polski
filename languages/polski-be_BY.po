@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
-msgstr "Polski for WooCommerce"
+msgstr "Polski для WooCommerce"
 
 #. Plugin URI of the plugin
 #: polski.php
@@ -5624,7 +5624,7 @@ msgstr "Звязаныя"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Дадатковы продаж"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -6083,7 +6083,7 @@ msgstr "Мінімальны час паміж паўторнымі апавяш
 
 #: src/Admin/ModulesPage.php:1114
 msgid "AI Bridge"
-msgstr "AI Bridge"
+msgstr "AI-мост"
 
 #: src/Admin/ModulesPage.php:1115
 msgid ""
@@ -6166,7 +6166,7 @@ msgstr "Meta Pixel"
 
 #: src/Admin/ModulesPage.php:1153
 msgid "Meta Pixel ID"
-msgstr "Meta Pixel ID"
+msgstr "ID пікселя Meta"
 
 #: src/Admin/ModulesPage.php:1153 src/Admin/ModulesPage.php:1155
 #: src/Admin/ModulesPage.php:1163
@@ -6179,7 +6179,7 @@ msgstr "TikTok Pixel"
 
 #: src/Admin/ModulesPage.php:1155
 msgid "TikTok Pixel ID"
-msgstr "TikTok Pixel ID"
+msgstr "ID пікселя TikTok"
 
 #: src/Admin/ModulesPage.php:1156
 msgid "Microsoft Advertising (Bing UET)"
@@ -6187,7 +6187,7 @@ msgstr "Microsoft Advertising (Bing UET)"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "ID тэга UET"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -6195,7 +6195,7 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "ID партнёра LinkedIn"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
@@ -6207,7 +6207,7 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "ID тэга Pinterest"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
@@ -6219,7 +6219,7 @@ msgstr "X / Twitter Ads"
 
 #: src/Admin/ModulesPage.php:1163
 msgid "X / Twitter Pixel ID"
-msgstr "X / Twitter Pixel ID"
+msgstr "ID пікселя X / Twitter"
 
 #: src/Admin/ModulesPage.php:1164
 msgid "Google Ads"
@@ -6227,7 +6227,7 @@ msgstr "Google Ads"
 
 #: src/Admin/ModulesPage.php:1165
 msgid "Google Ads Conversion ID"
-msgstr "Google Ads Conversion ID"
+msgstr "ID канверсіі Google Ads"
 
 #: src/Admin/ModulesPage.php:1166
 msgid "Analytics and heatmaps"
@@ -6243,7 +6243,7 @@ msgstr "Microsoft Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Clarity Project ID"
-msgstr "Clarity Project ID"
+msgstr "ID праекта Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Project ID"
@@ -6259,7 +6259,7 @@ msgstr "Matomo URL"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Matomo Site ID"
-msgstr "Matomo Site ID"
+msgstr "ID сайта Matomo"
 
 #: src/Admin/ModulesPage.php:1171 src/Admin/ModulesPage.php:1177
 msgid "Site ID"
@@ -6291,7 +6291,7 @@ msgstr "Hotjar"
 
 #: src/Admin/ModulesPage.php:1177
 msgid "Hotjar Site ID"
-msgstr "Hotjar Site ID"
+msgstr "ID сайта Hotjar"
 
 #: src/Admin/ModulesPage.php:1178
 msgid "Inspectlet"
@@ -6311,7 +6311,7 @@ msgstr "Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Crazy Egg Account ID"
-msgstr "Crazy Egg Account ID"
+msgstr "ID уліковага запісу Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Account ID"
@@ -6981,7 +6981,7 @@ msgstr "Экспартаваць заказы"
 #: src/Admin/ModulesPage.php:1517 src/Service/FaqService.php:40
 #: src/Service/FaqService.php:41 src/Service/FaqService.php:46
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Частыя пытанні"
 
 #: src/Admin/ModulesPage.php:1518
 msgid ""
@@ -12156,7 +12156,7 @@ msgstr "Назва кампаніі"
 
 #: src/Service/SiteAuditService.php:463
 msgid "VAT ID (NIP)"
-msgstr "VAT ID (NIP)"
+msgstr "Нумар VAT (NIP)"
 
 #: src/Service/SiteAuditService.php:464
 msgid "Address"
@@ -12322,7 +12322,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "Гатова да KSeF"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""
