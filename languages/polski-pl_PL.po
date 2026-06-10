@@ -1805,31 +1805,35 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:732
 msgid "Rejestr zgód"
-msgstr ""
+msgstr "Rejestr zgód"
 
 #: src/Admin/AdminPage.php:733
 msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
-msgstr ""
+msgstr "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
 
 #: src/Admin/AdminPage.php:739
 msgid "Odstąpienia"
-msgstr ""
+msgstr "Odstąpienia"
 
 #: src/Admin/AdminPage.php:740
 msgid ""
 "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
 "ustawienia."
 msgstr ""
+"Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i "
+"ustawienia."
 
 #: src/Admin/AdminPage.php:747
 msgid "Incydenty CRA"
-msgstr ""
+msgstr "Incydenty CRA"
 
 #: src/Admin/AdminPage.php:748
 msgid ""
 "Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
 "statusami i eksportem CSV."
 msgstr ""
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze "
+"statusami i eksportem CSV."
 
 #: src/Admin/AdminPage.php:755 src/Admin/SBOMPage.php:40
 #: src/Admin/SBOMPage.php:41
@@ -1841,22 +1845,24 @@ msgid ""
 "Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
 "potrzeby CRA."
 msgstr ""
+"Zestawienie komponentów oprogramowania (Software Bill of Materials) na "
+"potrzeby CRA."
 
 #: src/Admin/AdminPage.php:763
 msgid "Szablon reklamacji"
-msgstr ""
+msgstr "Szablon reklamacji"
 
 #: src/Admin/AdminPage.php:764
 msgid "Generator i ustawienia szablonu reklamacji dla klientów."
-msgstr ""
+msgstr "Generator i ustawienia szablonu reklamacji dla klientów."
 
 #: src/Admin/AdminPage.php:771
 msgid "Szkolenia RODO"
-msgstr ""
+msgstr "Szkolenia RODO"
 
 #: src/Admin/AdminPage.php:772
 msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
-msgstr ""
+msgstr "Materiały szkoleniowe RODO dla zespołu sklepu."
 
 #: src/Admin/AdminPage.php:779
 msgid "Feedback Logs"
@@ -11194,19 +11200,19 @@ msgstr "np. 1234563218"
 
 #: src/Service/NipLookupService.php:94
 msgid "Podany NIP jest nieprawidlowy. Sprawdz numer i sprobuj ponownie."
-msgstr "Podany NIP jest nieprawidlowy. Sprawdz numer i sprobuj ponownie."
+msgstr "Podany NIP jest nieprawidłowy. Sprawdź numer i spróbuj ponownie."
 
 #: src/Service/NipLookupService.php:165
 msgid "Nieprawidlowy NIP."
-msgstr "Nieprawidlowy NIP."
+msgstr "Nieprawidłowy NIP."
 
 #: src/Service/NipLookupService.php:172
 msgid ""
 "Nie znaleziono danych dla podanego NIP. Sprawdz numer lub uzupelnij dane "
 "recznie."
 msgstr ""
-"Nie znaleziono danych dla podanego NIP. Sprawdz numer lub uzupelnij dane "
-"recznie."
+"Nie znaleziono danych dla podanego NIP. Sprawdź numer lub uzupełnij dane "
+"ręcznie."
 
 #: src/Service/OmnibusService.php:42
 msgid "Lowest price from the last {days} days: {price}"

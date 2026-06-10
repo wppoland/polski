@@ -5608,7 +5608,7 @@ msgstr "Súvisiace"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Doplnkový predaj"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -6064,7 +6064,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1114
 msgid "AI Bridge"
-msgstr "AI Bridge"
+msgstr "AI most"
 
 #: src/Admin/ModulesPage.php:1115
 msgid ""
@@ -6147,7 +6147,7 @@ msgstr "Meta Pixel"
 
 #: src/Admin/ModulesPage.php:1153
 msgid "Meta Pixel ID"
-msgstr "Meta Pixel ID"
+msgstr "ID Meta Pixelu"
 
 #: src/Admin/ModulesPage.php:1153 src/Admin/ModulesPage.php:1155
 #: src/Admin/ModulesPage.php:1163
@@ -6160,7 +6160,7 @@ msgstr "TikTok Pixel"
 
 #: src/Admin/ModulesPage.php:1155
 msgid "TikTok Pixel ID"
-msgstr "TikTok Pixel ID"
+msgstr "ID TikTok Pixelu"
 
 #: src/Admin/ModulesPage.php:1156
 msgid "Microsoft Advertising (Bing UET)"
@@ -6168,7 +6168,7 @@ msgstr "Microsoft Advertising (Bing UET)"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "ID značky UET"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -6176,7 +6176,7 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "ID partnera LinkedIn"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
@@ -6188,7 +6188,7 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "ID značky Pinterest"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
@@ -6200,7 +6200,7 @@ msgstr "X / Twitter Ads"
 
 #: src/Admin/ModulesPage.php:1163
 msgid "X / Twitter Pixel ID"
-msgstr "X / Twitter Pixel ID"
+msgstr "ID pixelu X / Twitter"
 
 #: src/Admin/ModulesPage.php:1164
 msgid "Google Ads"
@@ -6208,7 +6208,7 @@ msgstr "Google Ads"
 
 #: src/Admin/ModulesPage.php:1165
 msgid "Google Ads Conversion ID"
-msgstr "Google Ads Conversion ID"
+msgstr "ID konverzie Google Ads"
 
 #: src/Admin/ModulesPage.php:1166
 msgid "Analytics and heatmaps"
@@ -6224,7 +6224,7 @@ msgstr "Microsoft Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Clarity Project ID"
-msgstr "Clarity Project ID"
+msgstr "ID projektu Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Project ID"
@@ -6240,7 +6240,7 @@ msgstr "Matomo URL"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Matomo Site ID"
-msgstr "Matomo Site ID"
+msgstr "ID webu Matomo"
 
 #: src/Admin/ModulesPage.php:1171 src/Admin/ModulesPage.php:1177
 msgid "Site ID"
@@ -6272,7 +6272,7 @@ msgstr "Hotjar"
 
 #: src/Admin/ModulesPage.php:1177
 msgid "Hotjar Site ID"
-msgstr "Hotjar Site ID"
+msgstr "ID webu Hotjar"
 
 #: src/Admin/ModulesPage.php:1178
 msgid "Inspectlet"
@@ -6292,7 +6292,7 @@ msgstr "Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Crazy Egg Account ID"
-msgstr "Crazy Egg Account ID"
+msgstr "ID účtu Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Account ID"
@@ -6963,7 +6963,7 @@ msgstr "Exportovať objednávky"
 #: src/Admin/ModulesPage.php:1517 src/Service/FaqService.php:40
 #: src/Service/FaqService.php:41 src/Service/FaqService.php:46
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Časté otázky"
 
 #: src/Admin/ModulesPage.php:1518
 msgid ""
@@ -7126,7 +7126,7 @@ msgstr "Sklad a košík"
 
 #: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
-msgstr "Merchandising"
+msgstr "Podpora predaja"
 
 #: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
@@ -12303,7 +12303,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "Pripravené na KSeF"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""

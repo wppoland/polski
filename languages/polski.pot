@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.22.4\n"
+"Project-Id-Version: Polski for WooCommerce 1.23.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-09T13:23:02+00:00\n"
+"POT-Creation-Date: 2026-06-10T14:24:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -560,7 +560,7 @@ msgid "Imię i nazwisko"
 msgstr ""
 
 #: config/defaults.php:222
-#: src/Admin/ModulesPage.php:2464
+#: src/Admin/ModulesPage.php:2528
 #: src/Service/CustomCheckoutFieldsService.php:499
 msgid "Email"
 msgstr ""
@@ -1498,7 +1498,7 @@ msgid "Back to modules"
 msgstr ""
 
 #: src/Admin/AdminPage.php:406
-#: src/Admin/ModulesPage.php:1612
+#: src/Admin/ModulesPage.php:1630
 #: src/Service/CustomCheckoutFieldsService.php:524
 msgid "Enabled"
 msgstr ""
@@ -2040,7 +2040,7 @@ msgid "Deadline"
 msgstr ""
 
 #: src/Admin/CRAIncidentsPage.php:126
-#: src/Admin/ModulesPage.php:1614
+#: src/Admin/ModulesPage.php:1632
 #: src/Service/CustomCheckoutFieldsService.php:531
 msgid "Actions"
 msgstr ""
@@ -3109,8 +3109,8 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:380
 #: src/Admin/ModulesPage.php:1213
-#: src/Admin/ModulesPage.php:1927
-#: src/Admin/ModulesPage.php:2485
+#: src/Admin/ModulesPage.php:1958
+#: src/Admin/ModulesPage.php:2549
 #: src/Enum/ConsentCategory.php:36
 #: src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166
@@ -3120,14 +3120,14 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:381
 #: src/Admin/ModulesPage.php:1214
-#: src/Admin/ModulesPage.php:1928
+#: src/Admin/ModulesPage.php:1959
 #: src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:382
 #: src/Admin/ModulesPage.php:1212
-#: src/Admin/ModulesPage.php:1929
+#: src/Admin/ModulesPage.php:1960
 #: src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr ""
@@ -4066,7 +4066,7 @@ msgid "Show on product page"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:646
-#: src/Admin/ModulesPage.php:2004
+#: src/Admin/ModulesPage.php:2035
 #: src/Service/CustomCheckoutFieldsService.php:526
 msgid "Label"
 msgstr ""
@@ -4894,7 +4894,7 @@ msgid "Show header"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:947
-#: src/Admin/ModulesPage.php:1613
+#: src/Admin/ModulesPage.php:1631
 #: src/AIFeed/ProductMarkdownBuilder.php:127
 msgid "Description"
 msgstr ""
@@ -5052,7 +5052,7 @@ msgid "Shop and archives"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1010
-#: src/Admin/ModulesPage.php:2462
+#: src/Admin/ModulesPage.php:2526
 #: src/Service/LiveCartService.php:82
 #: src/Service/LiveCartService.php:245
 msgid "Checkout"
@@ -5509,7 +5509,7 @@ msgid "Consent category"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1211
-#: src/Admin/ModulesPage.php:1926
+#: src/Admin/ModulesPage.php:1957
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr ""
@@ -6010,267 +6010,295 @@ msgstr ""
 msgid "Manage fields"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1611
+#: src/Admin/ModulesPage.php:1614
+msgid "Search modules by name or description…"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1615
+msgid "Search modules by name or description"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1618
+msgid "Sort"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1620
+msgid "Grouped (default)"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1621
+msgid "Name (A–Z)"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1622
+msgid "Enabled first"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1629
 #: src/Service/StockExportService.php:346
 msgid "Name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1679
+#: src/Admin/ModulesPage.php:1666
+msgid "No modules match your search."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1710
 msgid "Help"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1722
+#: src/Admin/ModulesPage.php:1753
 msgid "Enable this module to use this."
 msgstr ""
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:1745
+#: src/Admin/ModulesPage.php:1776
 #, php-format
 msgid "Edit %s settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1748
+#: src/Admin/ModulesPage.php:1779
 msgid "Edit settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1758
-#: src/Admin/ModulesPage.php:1759
+#: src/Admin/ModulesPage.php:1789
+#: src/Admin/ModulesPage.php:1790
 msgid "Open documentation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1792
+#: src/Admin/ModulesPage.php:1823
 msgid "Save"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1886
+#: src/Admin/ModulesPage.php:1917
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1982
+#: src/Admin/ModulesPage.php:2013
 msgid "Add snippet"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2011
+#: src/Admin/ModulesPage.php:2042
 msgid "Head"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2012
+#: src/Admin/ModulesPage.php:2043
 msgid "Footer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2025
+#: src/Admin/ModulesPage.php:2056
 msgid "<script>...</script> or inline JS"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2031
-#: src/Admin/ModulesPage.php:2116
+#: src/Admin/ModulesPage.php:2062
+#: src/Admin/ModulesPage.php:2147
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2061
+#: src/Admin/ModulesPage.php:2092
 msgid "Add trigger"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2084
+#: src/Admin/ModulesPage.php:2115
 msgid "Event name (e.g. cta_click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2091
+#: src/Admin/ModulesPage.php:2122
 msgid "URL contains"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2092
+#: src/Admin/ModulesPage.php:2123
 msgid "Click on selector"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2105
+#: src/Admin/ModulesPage.php:2136
 msgid "URL fragment (for URL contains)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2110
+#: src/Admin/ModulesPage.php:2141
 msgid "CSS selector (for click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2220
+#: src/Admin/ModulesPage.php:2284
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2227
-#: src/Admin/ModulesPage.php:2243
+#: src/Admin/ModulesPage.php:2291
+#: src/Admin/ModulesPage.php:2307
 msgid "Invalid request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2433
-#: src/Admin/ModulesPage.php:2481
+#: src/Admin/ModulesPage.php:2497
+#: src/Admin/ModulesPage.php:2545
 msgid "Legal & Compliance"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2435
+#: src/Admin/ModulesPage.php:2499
 msgid "Tax & Pricing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2437
+#: src/Admin/ModulesPage.php:2501
 msgid "Checkout & Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2439
+#: src/Admin/ModulesPage.php:2503
 msgid "Content & Trust"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2441
-#: src/Admin/ModulesPage.php:2491
+#: src/Admin/ModulesPage.php:2505
+#: src/Admin/ModulesPage.php:2555
 msgid "Advanced & Tools"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2443
+#: src/Admin/ModulesPage.php:2507
 #: src/Admin/WithdrawalsAdminPage.php:392
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
 msgid "Other"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2456
+#: src/Admin/ModulesPage.php:2520
 msgid "Prices and Display"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2458
+#: src/Admin/ModulesPage.php:2522
 msgid "Prices and Omnibus"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2460
+#: src/Admin/ModulesPage.php:2524
 msgid "Checkout and Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2466
+#: src/Admin/ModulesPage.php:2530
 msgid "Stock & Cart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2468
+#: src/Admin/ModulesPage.php:2532
 msgid "Merchandising"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2470
+#: src/Admin/ModulesPage.php:2534
 #: src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2472
+#: src/Admin/ModulesPage.php:2536
 msgid "Product Information"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2474
+#: src/Admin/ModulesPage.php:2538
 msgid "Customer Account"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2476
+#: src/Admin/ModulesPage.php:2540
 msgid "Sales and B2B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2479
+#: src/Admin/ModulesPage.php:2543
 msgid "Consumer Rights"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2483
+#: src/Admin/ModulesPage.php:2547
 msgid "Tools"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2487
+#: src/Admin/ModulesPage.php:2551
 msgid "SEO & Optimization"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2489
+#: src/Admin/ModulesPage.php:2553
 msgid "Integrations"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2564
+#: src/Admin/ModulesPage.php:2628
 msgid "Could not save module state. Please try again."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2581
+#: src/Admin/ModulesPage.php:2645
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2582
+#: src/Admin/ModulesPage.php:2646
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2593
+#: src/Admin/ModulesPage.php:2657
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2594
+#: src/Admin/ModulesPage.php:2658
 msgid "not installed"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2609
+#: src/Admin/ModulesPage.php:2673
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2611
+#: src/Admin/ModulesPage.php:2675
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2631
+#: src/Admin/ModulesPage.php:2695
 msgid "OSS observer service is unavailable."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2638
+#: src/Admin/ModulesPage.php:2702
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2644
+#: src/Admin/ModulesPage.php:2708
 msgid "Install One Stop Shop"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2649
+#: src/Admin/ModulesPage.php:2713
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2658
+#: src/Admin/ModulesPage.php:2722
 msgid "One Stop Shop plugin detected."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2662
+#: src/Admin/ModulesPage.php:2726
 msgid "OSS procedure"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2664
+#: src/Admin/ModulesPage.php:2728
 msgid "enabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2665
+#: src/Admin/ModulesPage.php:2729
 msgid "disabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2669
+#: src/Admin/ModulesPage.php:2733
 msgid "Auto observer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2671
+#: src/Admin/ModulesPage.php:2735
 msgid "watching threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2672
+#: src/Admin/ModulesPage.php:2736
 msgid "off"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2677
+#: src/Admin/ModulesPage.php:2741
 msgid "Open OSS settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2735
+#: src/Admin/ModulesPage.php:2799
 msgid "detected, integration active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2738
+#: src/Admin/ModulesPage.php:2802
 msgid "install"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2750
+#: src/Admin/ModulesPage.php:2814
 msgid "No supported checkout and cookies extensions detected. Polski continues to work independently."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2752
+#: src/Admin/ModulesPage.php:2816
 msgid "Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set."
 msgstr ""
 
@@ -6708,6 +6736,96 @@ msgstr ""
 msgid "Unknown plugin target."
 msgstr ""
 
+#: src/Admin/SetupWizard.php:49
+#: src/Admin/SetupWizard.php:53
+msgid "Setup"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:68
+msgid "Polish legal baseline"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:69
+msgid "What almost every Polish store needs: GPSR producer data, the Omnibus lowest price, GDPR cookie consent and logging, the right of withdrawal, the \"obligation to pay\" button wording, and checkout legal checkboxes. Provides tools, not legal advice."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:74
+msgid "Food & grocery"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:75
+msgid "Selling food or drink: allergen and nutrition information, price per unit (per kg / per litre), delivery-time estimates, GPSR data and green-claims support."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:80
+msgid "Digital goods & downloads"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:81
+msgid "Selling downloads, licences or services: the digital-content withdrawal waiver and legal checkboxes, cookie consent and logging, plus double opt-in for accounts."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:86
+msgid "B2B & wholesale"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:87
+msgid "Selling to businesses: NIP (tax ID) lookup with GUS company data at checkout, minimum-order rules, VAT display options and OSS threshold monitoring."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:92
+msgid "Fashion & apparel"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:93
+msgid "Browse-heavy catalogues: brands and manufacturers, wishlist and compare, quick view, gallery zoom and a product carousel."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:98
+msgid "Conversion boost"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:99
+msgid "Help shoppers find and buy faster: predictive search, AJAX product filters, wishlist and compare, quick view, product badges, back-in-stock waitlist and review reminders."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:113
+msgid "You do not have permission to do this."
+msgstr ""
+
+#. translators: 1: number of modules, 2: scenario name
+#: src/Admin/SetupWizard.php:158
+#, php-format
+msgid "Enabled %1$d module for \"%2$s\"."
+msgid_plural "Enabled %1$d modules for \"%2$s\"."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: scenario name
+#: src/Admin/SetupWizard.php:160
+#, php-format
+msgid "Everything for \"%s\" was already enabled."
+msgstr ""
+
+#: src/Admin/SetupWizard.php:168
+msgid "Tell us what kind of store you run and we will switch on the modules that fit. Applying a scenario only ever turns modules on - it never disables anything - so it is safe to combine scenarios and to re-run."
+msgstr ""
+
+#. translators: 1: enabled count, 2: total count
+#: src/Admin/SetupWizard.php:209
+#, php-format
+msgid "%1$d of %2$d enabled"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:223
+msgid "All enabled"
+msgstr ""
+
+#: src/Admin/SetupWizard.php:223
+#: src/Admin/WithdrawalsAdminPage.php:148
+msgid "Apply"
+msgstr ""
+
 #: src/Admin/WithdrawalOrderMetaBox.php:43
 msgid "Polski - odstąpienie"
 msgstr ""
@@ -6802,10 +6920,6 @@ msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:146
 msgid "Export selection to CSV"
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:148
-msgid "Apply"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:157
