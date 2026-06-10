@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Polski - Setup wizard (scenario cards). Brand crimson accents, WP-native
+   greys, responsive auto-fill grid.
+   ========================================================================== */
+
+.polski-setup__intro {
+	max-width: 720px;
+	margin: 8px 0 20px;
+	color: #50575e;
+}
+
+.polski-setup__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 16px;
+}
+
+.polski-setup__card {
+	display: flex;
+	flex-direction: column;
+	padding: 18px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+}
+
+.polski-setup__head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.polski-setup__head .dashicons {
+	width: 22px;
+	height: 22px;
+	font-size: 22px;
+	color: #d4213d;
+}
+
+.polski-setup__head h3 {
+	margin: 0;
+	font-size: 15px;
+}
+
+.polski-setup__desc {
+	margin: 10px 0 12px;
+	color: #50575e;
+	font-size: 13px;
+}
+
+.polski-setup__modules {
+	flex: 1 1 auto;
+	margin: 0 0 14px;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.polski-setup__modules li {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12.5px;
+}
+
+.polski-setup__modules li .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.polski-setup__modules li.is-on {
+	color: #1a1a1a;
+}
+
+.polski-setup__modules li.is-on .dashicons {
+	color: #00a32a;
+}
+
+.polski-setup__modules li.is-off {
+	color: #787c82;
+}
+
+.polski-setup__modules li.is-off .dashicons {
+	color: #c3c4c7;
+}
+
+.polski-setup__foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: auto;
+	padding-top: 12px;
+	border-top: 1px solid #f0f0f1;
+}
+
+.polski-setup__count {
+	font-size: 12px;
+	color: #787c82;
+}
+
+.polski-setup__foot form {
+	margin: 0;
+}
