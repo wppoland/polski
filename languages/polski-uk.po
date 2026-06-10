@@ -4782,7 +4782,7 @@ msgstr "Мітка SKU"
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:26
 #: resources/js/blocks/ajax-search/index.js:18
 msgid "Placeholder"
-msgstr "Placeholder"
+msgstr "Заповнювач"
 
 #: src/Admin/ModulesPage.php:626
 msgid "Search products, SKU codes or categories"
@@ -5630,7 +5630,7 @@ msgstr "Пов'язані"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Допродаж"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -6092,7 +6092,7 @@ msgstr "Мінімальний інтервал між повторними сп
 
 #: src/Admin/ModulesPage.php:1114
 msgid "AI Bridge"
-msgstr "AI Bridge"
+msgstr "AI-міст"
 
 #: src/Admin/ModulesPage.php:1115
 msgid ""
@@ -6175,12 +6175,12 @@ msgstr "Meta Pixel"
 
 #: src/Admin/ModulesPage.php:1153
 msgid "Meta Pixel ID"
-msgstr "Meta Pixel ID"
+msgstr "ID пікселя Meta"
 
 #: src/Admin/ModulesPage.php:1153 src/Admin/ModulesPage.php:1155
 #: src/Admin/ModulesPage.php:1163
 msgid "Pixel ID"
-msgstr "Pixel ID"
+msgstr "ID пікселя"
 
 #: src/Admin/ModulesPage.php:1154
 msgid "TikTok Pixel"
@@ -6188,7 +6188,7 @@ msgstr "TikTok Pixel"
 
 #: src/Admin/ModulesPage.php:1155
 msgid "TikTok Pixel ID"
-msgstr "TikTok Pixel ID"
+msgstr "ID пікселя TikTok"
 
 #: src/Admin/ModulesPage.php:1156
 msgid "Microsoft Advertising (Bing UET)"
@@ -6196,7 +6196,7 @@ msgstr "Microsoft Advertising (Bing UET)"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "ID тегу UET"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -6204,11 +6204,11 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "ID партнера LinkedIn"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
-msgstr "Partner ID"
+msgstr "ID партнера"
 
 #: src/Admin/ModulesPage.php:1160
 msgid "Pinterest Tag"
@@ -6216,11 +6216,11 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "ID тегу Pinterest"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
-msgstr "Tag ID"
+msgstr "ID тегу"
 
 #: src/Admin/ModulesPage.php:1162
 msgid "X / Twitter Ads"
@@ -6228,7 +6228,7 @@ msgstr "X / Twitter Ads"
 
 #: src/Admin/ModulesPage.php:1163
 msgid "X / Twitter Pixel ID"
-msgstr "X / Twitter Pixel ID"
+msgstr "ID пікселя X / Twitter"
 
 #: src/Admin/ModulesPage.php:1164
 msgid "Google Ads"
@@ -6236,7 +6236,7 @@ msgstr "Google Ads"
 
 #: src/Admin/ModulesPage.php:1165
 msgid "Google Ads Conversion ID"
-msgstr "Google Ads Conversion ID"
+msgstr "ID конверсії Google Ads"
 
 #: src/Admin/ModulesPage.php:1166
 msgid "Analytics and heatmaps"
@@ -6252,11 +6252,11 @@ msgstr "Microsoft Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Clarity Project ID"
-msgstr "Clarity Project ID"
+msgstr "ID проєкту Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Project ID"
-msgstr "Project ID"
+msgstr "ID проєкту"
 
 #: src/Admin/ModulesPage.php:1169
 msgid "Matomo"
@@ -6268,11 +6268,11 @@ msgstr "Matomo URL"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Matomo Site ID"
-msgstr "Matomo Site ID"
+msgstr "ID сайту Matomo"
 
 #: src/Admin/ModulesPage.php:1171 src/Admin/ModulesPage.php:1177
 msgid "Site ID"
-msgstr "Site ID"
+msgstr "ID сайту"
 
 #: src/Admin/ModulesPage.php:1172
 msgid "Plausible"
@@ -6300,7 +6300,7 @@ msgstr "Hotjar"
 
 #: src/Admin/ModulesPage.php:1177
 msgid "Hotjar Site ID"
-msgstr "Hotjar Site ID"
+msgstr "ID сайту Hotjar"
 
 #: src/Admin/ModulesPage.php:1178
 msgid "Inspectlet"
@@ -6320,11 +6320,11 @@ msgstr "Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Crazy Egg Account ID"
-msgstr "Crazy Egg Account ID"
+msgstr "ID облікового запису Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Account ID"
-msgstr "Account ID"
+msgstr "ID облікового запису"
 
 #: src/Admin/ModulesPage.php:1182
 msgid "Simple Analytics"
@@ -12355,7 +12355,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "Готово до KSeF"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""

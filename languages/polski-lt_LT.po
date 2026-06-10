@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
-msgstr "Polski for WooCommerce"
+msgstr "Polski, skirtas WooCommerce"
 
 #. Plugin URI of the plugin
 #: polski.php
@@ -5621,7 +5621,7 @@ msgstr "Susiję"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Papildomas pardavimas"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -5811,7 +5811,7 @@ msgstr "Dialogo lango etiketė"
 
 #: src/Admin/ModulesPage.php:1000
 msgid "CTA URL"
-msgstr "CTA URL"
+msgstr "CTA adresas"
 
 #: src/Admin/ModulesPage.php:1001
 msgid "CTA Fallback URL"
@@ -12347,7 +12347,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "Paruošta KSeF"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""

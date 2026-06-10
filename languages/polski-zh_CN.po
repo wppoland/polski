@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
-msgstr "Polski for WooCommerce"
+msgstr "Polski WooCommerce 插件"
 
 #. Plugin URI of the plugin
 #: polski.php
@@ -5508,7 +5508,7 @@ msgstr "对话框标签"
 
 #: src/Admin/ModulesPage.php:1000
 msgid "CTA URL"
-msgstr "CTA URL"
+msgstr "CTA 网址"
 
 #: src/Admin/ModulesPage.php:1001
 msgid "CTA Fallback URL"
@@ -5858,7 +5858,7 @@ msgstr "Microsoft Advertising（Bing UET）"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "UET 标签 ID"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -5866,7 +5866,7 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "LinkedIn 合作伙伴 ID"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
@@ -5878,11 +5878,11 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "Pinterest 标签 ID"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
-msgstr "Tag ID"
+msgstr "标签 ID"
 
 #: src/Admin/ModulesPage.php:1162
 msgid "X / Twitter Ads"
@@ -11635,7 +11635,7 @@ msgstr "DSA 模块已禁用。包含赞助内容的市场平台或店铺应具�
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "KSeF 就绪"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""

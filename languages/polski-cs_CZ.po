@@ -1567,7 +1567,7 @@ msgstr "Polski"
 #: src/Admin/AdminPage.php:231 src/Admin/AdminPage.php:232
 #: src/Admin/AdminPage.php:322
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Nástěnka"
 
 #: src/Admin/AdminPage.php:240 src/Admin/AdminPage.php:241
 #: src/Admin/AdminPage.php:323
@@ -2459,7 +2459,7 @@ msgstr "Žádná zpětná vazba k zobrazení."
 
 #: src/Admin/DeactivationHandler.php:151
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Zásuvný modul"
 
 #: src/Admin/DeactivationHandler.php:152 src/Admin/WithdrawalsAdminPage.php:166
 #: src/Service/DSAService.php:174 src/Service/ReturnRequestService.php:144
@@ -5602,7 +5602,7 @@ msgstr "Související"
 
 #: src/Admin/ModulesPage.php:916
 msgid "Upsell"
-msgstr "Upsell"
+msgstr "Doplňkový prodej"
 
 #: src/Admin/ModulesPage.php:916 src/Service/BadgeService.php:101
 msgid "Sale"
@@ -6054,7 +6054,7 @@ msgstr "Minimální doba mezi opakovanými upozorněními na probíhající prob
 
 #: src/Admin/ModulesPage.php:1114
 msgid "AI Bridge"
-msgstr "AI Bridge"
+msgstr "AI můstek"
 
 #: src/Admin/ModulesPage.php:1115
 msgid ""
@@ -6137,12 +6137,12 @@ msgstr "Meta Pixel"
 
 #: src/Admin/ModulesPage.php:1153
 msgid "Meta Pixel ID"
-msgstr "Meta Pixel ID"
+msgstr "ID Meta Pixelu"
 
 #: src/Admin/ModulesPage.php:1153 src/Admin/ModulesPage.php:1155
 #: src/Admin/ModulesPage.php:1163
 msgid "Pixel ID"
-msgstr "Pixel ID"
+msgstr "ID pixelu"
 
 #: src/Admin/ModulesPage.php:1154
 msgid "TikTok Pixel"
@@ -6150,7 +6150,7 @@ msgstr "TikTok Pixel"
 
 #: src/Admin/ModulesPage.php:1155
 msgid "TikTok Pixel ID"
-msgstr "TikTok Pixel ID"
+msgstr "ID TikTok Pixelu"
 
 #: src/Admin/ModulesPage.php:1156
 msgid "Microsoft Advertising (Bing UET)"
@@ -6158,7 +6158,7 @@ msgstr "Microsoft Advertising (Bing UET)"
 
 #: src/Admin/ModulesPage.php:1157
 msgid "UET Tag ID"
-msgstr "UET Tag ID"
+msgstr "ID značky UET"
 
 #: src/Admin/ModulesPage.php:1158
 msgid "LinkedIn Insight"
@@ -6166,11 +6166,11 @@ msgstr "LinkedIn Insight"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "LinkedIn Partner ID"
-msgstr "LinkedIn Partner ID"
+msgstr "ID partnera LinkedIn"
 
 #: src/Admin/ModulesPage.php:1159
 msgid "Partner ID"
-msgstr "Partner ID"
+msgstr "ID partnera"
 
 #: src/Admin/ModulesPage.php:1160
 msgid "Pinterest Tag"
@@ -6178,11 +6178,11 @@ msgstr "Pinterest Tag"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Pinterest Tag ID"
-msgstr "Pinterest Tag ID"
+msgstr "ID značky Pinterest"
 
 #: src/Admin/ModulesPage.php:1161
 msgid "Tag ID"
-msgstr "Tag ID"
+msgstr "ID značky"
 
 #: src/Admin/ModulesPage.php:1162
 msgid "X / Twitter Ads"
@@ -6190,7 +6190,7 @@ msgstr "X / Twitter Ads"
 
 #: src/Admin/ModulesPage.php:1163
 msgid "X / Twitter Pixel ID"
-msgstr "X / Twitter Pixel ID"
+msgstr "ID pixelu X / Twitter"
 
 #: src/Admin/ModulesPage.php:1164
 msgid "Google Ads"
@@ -6198,7 +6198,7 @@ msgstr "Google Ads"
 
 #: src/Admin/ModulesPage.php:1165
 msgid "Google Ads Conversion ID"
-msgstr "Google Ads Conversion ID"
+msgstr "ID konverze Google Ads"
 
 #: src/Admin/ModulesPage.php:1166
 msgid "Analytics and heatmaps"
@@ -6214,7 +6214,7 @@ msgstr "Microsoft Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Clarity Project ID"
-msgstr "Clarity Project ID"
+msgstr "ID projektu Clarity"
 
 #: src/Admin/ModulesPage.php:1168
 msgid "Project ID"
@@ -6230,7 +6230,7 @@ msgstr "Matomo URL"
 
 #: src/Admin/ModulesPage.php:1171
 msgid "Matomo Site ID"
-msgstr "Matomo Site ID"
+msgstr "ID webu Matomo"
 
 #: src/Admin/ModulesPage.php:1171 src/Admin/ModulesPage.php:1177
 msgid "Site ID"
@@ -6262,7 +6262,7 @@ msgstr "Hotjar"
 
 #: src/Admin/ModulesPage.php:1177
 msgid "Hotjar Site ID"
-msgstr "Hotjar Site ID"
+msgstr "ID webu Hotjar"
 
 #: src/Admin/ModulesPage.php:1178
 msgid "Inspectlet"
@@ -6282,7 +6282,7 @@ msgstr "Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Crazy Egg Account ID"
-msgstr "Crazy Egg Account ID"
+msgstr "ID účtu Crazy Egg"
 
 #: src/Admin/ModulesPage.php:1181
 msgid "Account ID"
@@ -7112,7 +7112,7 @@ msgstr "Sklad a košík"
 
 #: src/Admin/ModulesPage.php:2454
 msgid "Merchandising"
-msgstr "Merchandising"
+msgstr "Podpora prodeje"
 
 #: src/Admin/ModulesPage.php:2456 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
@@ -12286,7 +12286,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:755
 msgid "KSeF-ready"
-msgstr "KSeF-ready"
+msgstr "Připraveno pro KSeF"
 
 #: src/Service/SiteAuditService.php:761
 msgid ""
