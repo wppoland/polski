@@ -88,7 +88,7 @@ final class AdminNotes implements HasHooks
         $note->add_action(
             'polski-setup-wizard',
             (string) ($settings['admin_setup_note_button'] ?? __('Launch setup wizard', 'polski')),
-            admin_url('admin.php?page=polski&tab=wizard#/setup-wizard'),
+            admin_url('admin.php?page=polski&tab=setup#/setup-wizard'),
         );
         $note->save();
 

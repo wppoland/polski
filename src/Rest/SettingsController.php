@@ -159,9 +159,38 @@ final class SettingsController extends RestController implements HasHooks
         $omnibus['enabled'] = (bool) ($params['omnibus_enabled'] ?? true);
         update_option('polski_omnibus', $omnibus);
 
-        $modules = ModulesPage::getDefaultModuleStates();
+        $currentModules = get_option('polski_modules', []);
+        if (! is_array($currentModules)) {
+            $currentModules = [];
+        }
+
+        $modules = array_merge(ModulesPage::getDefaultModuleStates(), $currentModules);
         $modules['omnibus'] = $omnibus['enabled'];
         $modules['oss_observer'] = (bool) ($params['oss_observer_enabled'] ?? false);
+
+        if (
+            ! empty($params['terms_enabled'])
+            || ! empty($params['privacy_enabled'])
+            || ! empty($params['withdrawal_enabled'])
+            || ! empty($params['marketing_enabled'])
+            || ! empty($params['digital_waiver_enabled'])
+        ) {
+            $modules['legal_checkboxes'] = true;
+        }
+
+        if (! empty($params['withdrawal_enabled'])) {
+            $modules['withdrawal'] = true;
+        }
+
+        if (! empty($params['generate_legal_pages'])) {
+            $modules['legal_pages'] = true;
+        }
+
+        if (! empty($params['order_button_text'])) {
+            $modules['checkout_button'] = true;
+        }
+
+        $modules['tax_display'] = true;
         update_option('polski_modules', $modules);
 
         // Save withdrawal-flow specific settings (introduced in 1.16.0). When the
