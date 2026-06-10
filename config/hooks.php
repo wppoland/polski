@@ -92,6 +92,7 @@ return [
     AdminHooks::class,
     \Polski\Admin\BrandAssets::class,
     ModulesPage::class,
+    \Polski\Admin\SetupWizard::class,
     PostTypes::class,
     ProductMetaBox::class,
     AdminNotes::class,

@@ -397,6 +397,9 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Admin\AdminNotes::class, static fn () => new \Polski\Admin\AdminNotes());
     $c->singleton(\Polski\Admin\CSVImportExport::class, static fn () => new \Polski\Admin\CSVImportExport());
     $c->singleton(\Polski\Admin\ModulesPage::class, static fn () => new \Polski\Admin\ModulesPage());
+    $c->singleton(\Polski\Admin\SetupWizard::class, static fn () => new \Polski\Admin\SetupWizard(
+        $c->get(\Polski\Admin\ModulesPage::class),
+    ));
     $c->singleton(\Polski\Admin\DeactivationHandler::class, static fn () => new \Polski\Admin\DeactivationHandler());
 
     // REST API.
