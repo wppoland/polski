@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Polski for WooCommerce
  * Plugin URI:        https://wppoland.com/pl/polski/
  * Description:       Adds product information, checkout, consent, and storefront tools for WooCommerce stores serving customers in Poland.
- * Version:           1.23.1
+ * Version:           1.23.2
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Tested up to:      7.0
@@ -32,7 +32,7 @@ namespace Polski;
 
 defined('ABSPATH') || exit;
 
-const VERSION = '1.23.1';
+const VERSION = '1.23.2';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR = __DIR__;
 const MIN_PHP_VERSION = '8.1.0';

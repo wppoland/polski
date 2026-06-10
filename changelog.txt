@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.23.2 =
+* Improved: the Setup wizard is now a guided, multi-step flow (Company, Legal, Tax & OSS, Checkout, Finish) that collects your company details, switches on the legal modules you need, and configures tax and checkout in one pass. Optional steps can be skipped, and finishing only enables modules - it never turns off modules you already use.
+
 = 1.23.1 =
 * Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese - all eight locales are now fully translated, including the new Setup wizard and module search/sort strings.
 
