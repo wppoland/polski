@@ -115,7 +115,11 @@
                     anyVisible = true;
                 }
             });
-            updateHeaders((sort ? sort.value : 'default') === 'default');
+            // Headers are grouped only in the default sort AND with no active query;
+            // while searching we show a flat list of matches (cleaner than partial
+            // group/sub-group headers, and avoids nested-header edge cases).
+            var grouped = (!sort || sort.value === 'default') && q === '';
+            updateHeaders(grouped);
             if (empty) {
                 empty.hidden = anyVisible;
             }
