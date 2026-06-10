@@ -2243,6 +2243,39 @@ final class ModulesPage implements HasHooks
     }
 
     /**
+     * Enable a set of modules at once (non-destructive: never disables anything).
+     * Unknown ids and already-enabled modules are skipped. Used by the setup
+     * wizard to apply a scenario. Returns how many modules were newly enabled.
+     *
+     * @param list<string> $ids
+     */
+    public function enableModules(array $ids): int
+    {
+        $valid = array_column($this->getModules(), 'id');
+        $saved = get_option(self::OPTION, []);
+        $saved = is_array($saved) ? $saved : [];
+
+        $count = 0;
+        foreach ($ids as $id) {
+            // Skip unknown ids and anything already effectively enabled (saved
+            // true OR enabled-by-default), so the count matches what the wizard
+            // shows via isModuleEnabled() and stays idempotent.
+            if (! in_array($id, $valid, true) || self::isModuleEnabled($id)) {
+                continue;
+            }
+            $saved[$id] = true;
+            $count++;
+        }
+
+        if ($count > 0) {
+            update_option(self::OPTION, $saved);
+            CacheHelper::flush();
+        }
+
+        return $count;
+    }
+
+    /**
      * Handle per-module settings form submission (Save button on that module card only).
      */
     public function handleSaveModuleSettings(): void
