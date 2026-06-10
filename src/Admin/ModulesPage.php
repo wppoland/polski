@@ -1606,6 +1606,24 @@ final class ModulesPage implements HasHooks
     {
         $this->renderToggleStyles();
 
+        // Toolbar: filter modules by name or description, and re-sort the list.
+        // Purely client-side (no reload) - see assets/js/admin-modules.js.
+        echo '<div class="polski-modules-toolbar">';
+        printf(
+            '<input type="search" class="polski-modules-search" placeholder="%s" aria-label="%s" data-polski-modules-search>',
+            esc_attr__('Search modules by name or description…', 'polski'),
+            esc_attr__('Search modules by name or description', 'polski'),
+        );
+        echo '<label class="polski-modules-sort-label">';
+        echo '<span>' . esc_html__('Sort', 'polski') . '</span> ';
+        echo '<select class="polski-modules-sort" data-polski-modules-sort>';
+        echo '<option value="default">' . esc_html__('Grouped (default)', 'polski') . '</option>';
+        echo '<option value="name">' . esc_html__('Name (A–Z)', 'polski') . '</option>';
+        echo '<option value="enabled">' . esc_html__('Enabled first', 'polski') . '</option>';
+        echo '</select>';
+        echo '</label>';
+        echo '</div>';
+
         echo '<table class="wp-list-table widefat polski-modules-table">';
         echo '<thead><tr>';
         echo '<th class="polski-modules-col-name">' . esc_html__('Name', 'polski') . '</th>';
@@ -1643,6 +1661,9 @@ final class ModulesPage implements HasHooks
         }
 
         echo '</tbody></table>';
+
+        echo '<p class="polski-modules-empty" data-polski-modules-empty hidden>'
+            . esc_html__('No modules match your search.', 'polski') . '</p>';
     }
 
     /**
@@ -1657,7 +1678,17 @@ final class ModulesPage implements HasHooks
         $hasSettings = ! empty($module['settings']);
         $rowClasses = 'polski-modules-row' . ($enabled ? ' polski-modules-row--active' : '');
 
-        echo '<tr id="polski-module-' . esc_attr($id) . '" class="' . esc_attr($rowClasses) . '">';
+        // Lowercased name + description power the client-side search ("search by
+        // description"); data-name/data-enabled drive the client-side sort.
+        $searchHaystack = mb_strtolower(trim($module['name'] . ' ' . (string) ($module['description'] ?? '')));
+        printf(
+            '<tr id="polski-module-%1$s" class="%2$s" data-polski-module-row data-name="%3$s" data-search="%4$s" data-enabled="%5$s">',
+            esc_attr($id),
+            esc_attr($rowClasses),
+            esc_attr(mb_strtolower((string) $module['name'])),
+            esc_attr($searchHaystack),
+            $enabled ? '1' : '0',
+        );
 
         // --- Name column.
         echo '<td class="polski-modules-col-name">';
