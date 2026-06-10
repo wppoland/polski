@@ -53,9 +53,18 @@ $check('wc_get_orders(polski_withdrawal_status)', static function (): void {
     wc_get_orders(['limit' => 5, 'polski_withdrawal_status' => 'requested']);
 });
 
-// 3. Render the Modules admin page - catches render-time fatals (output buffered).
+// 3. Render the admin pages - catches render-time fatals (output buffered).
 $check('ModulesPage::render()', static function (): void {
     $page = \Polski\Plugin::instance()->container()->get(\Polski\Admin\ModulesPage::class);
+    ob_start();
+    try {
+        $page->render();
+    } finally {
+        ob_end_clean();
+    }
+});
+$check('SetupWizard::render()', static function (): void {
+    $page = \Polski\Plugin::instance()->container()->get(\Polski\Admin\SetupWizard::class);
     ob_start();
     try {
         $page->render();
