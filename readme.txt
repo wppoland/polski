@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.22.6
+Stable tag: 1.22.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -234,6 +234,9 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.22.7 =
+* Fix: the Polski admin menu icon no longer shifts on hover / when active (removed stray padding).
 
 = 1.22.6 =
 * New: the Modules admin screen now has an instant search (matching both module name and description) and sorting (grouped, name A–Z, or enabled first). No page reload.
