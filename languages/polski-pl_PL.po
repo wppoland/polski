@@ -131,6 +131,7 @@ msgstr "Strona"
 #: src/Service/SiteAuditService.php:74 src/Service/StockExportService.php:349
 #: src/Service/StoreHealthMonitorService.php:285
 #: src/Service/WithdrawalService.php:931
+#: build/admin.js:20
 msgid "Status"
 msgstr "Status"
 
@@ -328,6 +329,7 @@ msgstr ""
 "{current_quantity}."
 
 #: config/defaults.php:106
+#: build/admin.js:20
 msgid "Zamawiam z obowiązkiem zapłaty"
 msgstr "Zamawiam z obowiązkiem zapłaty"
 
@@ -669,6 +671,7 @@ msgstr "Imię i nazwisko"
 
 #: config/defaults.php:222 src/Admin/ModulesPage.php:2528
 #: src/Service/CustomCheckoutFieldsService.php:499
+#: build/admin.js:20
 msgid "Email"
 msgstr "Email"
 
@@ -682,6 +685,7 @@ msgstr "Firma"
 
 #: config/defaults.php:225 src/Service/B2BCheckoutService.php:257
 #: src/Service/NipLookupService.php:66 src/Service/NipLookupService.php:149
+#: build/admin.js:20
 msgid "NIP"
 msgstr "NIP"
 
@@ -1574,6 +1578,7 @@ msgstr "Brak uprawnień."
 #: src/Compatibility/ElementorCompat.php:35
 #: src/Service/WithdrawalSiteHealthService.php:177
 #: src/Service/WithdrawalSiteHealthService.php:191
+#: build/admin.js:20
 msgid "Polski"
 msgstr "Polski"
 
@@ -1602,12 +1607,14 @@ msgstr "Powrót do modułów"
 
 #: src/Admin/AdminPage.php:406 src/Admin/ModulesPage.php:1630
 #: src/Service/CustomCheckoutFieldsService.php:524
+#: build/admin.js:20
 msgid "Enabled"
 msgstr "Włączone"
 
 #: src/Admin/AdminPage.php:406 src/Admin/AdminPage.php:967
+#: build/admin.js:20
 msgid "Disabled"
-msgstr "Wyłączony"
+msgstr "Wyłączone"
 
 #: src/Admin/AdminPage.php:429
 msgid "Save Settings"
@@ -2077,6 +2084,7 @@ msgstr ""
 "oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
 
 #: src/Admin/AdminPage.php:1158
+#: build/admin.js:20
 msgid "Generate legal pages"
 msgstr "Wygeneruj strony prawne"
 
@@ -3577,6 +3585,7 @@ msgid "Exemption text"
 msgstr "Tekst zwolnienia"
 
 #: src/Admin/ModulesPage.php:252
+#: build/admin.js:20
 msgid "OSS observer"
 msgstr "Obserwator OSS"
 
@@ -3673,6 +3682,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:313 src/Enum/LegalPageType.php:17
 #: src/Service/LegalPageService.php:173
+#: build/admin.js:20
 msgid "Terms and Conditions"
 msgstr "Regulamin"
 
@@ -3697,6 +3707,7 @@ msgstr "Opis - Regulamin"
 
 #: src/Admin/ModulesPage.php:318 src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174 src/Service/SiteAuditService.php:371
+#: build/admin.js:20
 msgid "Privacy Policy"
 msgstr "Polityka prywatności"
 
@@ -3786,6 +3797,7 @@ msgid "Description - Review reminder"
 msgstr "Opis - Przypomnienie o opinii"
 
 #: src/Admin/ModulesPage.php:338
+#: build/admin.js:20
 msgid "Marketing consent"
 msgstr "Zgoda marketingowa"
 
@@ -5881,6 +5893,7 @@ msgstr "Sklep i archiwa"
 
 #: src/Admin/ModulesPage.php:1010 src/Admin/ModulesPage.php:2526
 #: src/Service/LiveCartService.php:82 src/Service/LiveCartService.php:245
+#: build/admin.js:20
 msgid "Checkout"
 msgstr "Kasa"
 
@@ -8067,6 +8080,7 @@ msgstr "Zaznacz wszystkie"
 
 #: src/Admin/WithdrawalsAdminPage.php:162
 #: src/Service/StockExportService.php:344
+#: build/admin.js:20
 msgid "ID"
 msgstr "ID"
 
@@ -8161,6 +8175,7 @@ msgstr "Numer lub identyfikator zamówienia"
 
 #: src/Admin/WithdrawalsAdminPage.php:388
 #: src/Service/CustomCheckoutFieldsService.php:501
+#: build/admin.js:20
 msgid "Phone"
 msgstr "Telefon"
 
@@ -8221,6 +8236,7 @@ msgid "General"
 msgstr "Ogólne"
 
 #: src/Admin/WithdrawalSettingsPage.php:148
+#: build/admin.js:20
 msgid "Withdrawal period (days)"
 msgstr "Okres odstąpienia (dni)"
 
@@ -8424,8 +8440,9 @@ msgstr ""
 "wychwytywane i nigdy nie blokują procesu odstąpienia."
 
 #: src/AIFeed/LlmsTxtService.php:94
+#: build/admin.js:20
 msgid "Legal"
-msgstr "Strony prawne"
+msgstr "Prawo"
 
 #: src/AIFeed/LlmsTxtService.php:104
 msgid "Product categories"
@@ -9070,6 +9087,7 @@ msgstr "m³"
 
 #: src/PageCompliance/Enum/Severity.php:18
 #: src/Service/CustomCheckoutFieldsService.php:529
+#: build/admin.js:20
 msgid "Required"
 msgstr "Wymagane"
 
@@ -9078,6 +9096,7 @@ msgid "Recommended"
 msgstr "Zalecane"
 
 #: src/PageCompliance/Enum/Severity.php:20
+#: build/admin.js:20
 msgid "Optional"
 msgstr "Opcjonalne"
 
@@ -10940,6 +10959,7 @@ msgstr "Nazwa (klucz meta)"
 #: src/Service/SecurityIncidentService.php:102
 #: src/Service/SecurityIncidentService.php:148
 #: src/Service/StockExportService.php:347
+#: build/admin.js:20
 msgid "Type"
 msgstr "Typ"
 
@@ -11448,8 +11468,9 @@ msgid "Order date"
 msgstr "Data zamówienia"
 
 #: src/Service/OrderExportService.php:52
+#: build/admin.js:20
 msgid "Total"
-msgstr "Suma"
+msgstr "Razem"
 
 #: src/Service/OrderExportService.php:54
 msgid "Tax"
@@ -12393,6 +12414,7 @@ msgid "Business identification data"
 msgstr "Dane identyfikacyjne firmy"
 
 #: src/Service/SiteAuditService.php:462
+#: build/admin.js:20
 msgid "Company name"
 msgstr "Nazwa firmy"
 
@@ -12401,6 +12423,7 @@ msgid "VAT ID (NIP)"
 msgstr "NIP"
 
 #: src/Service/SiteAuditService.php:464
+#: build/admin.js:20
 msgid "Address"
 msgstr "Adres"
 
@@ -12437,6 +12460,7 @@ msgstr ""
 "ciemny wzorzec."
 
 #: src/Service/SiteAuditService.php:559
+#: build/admin.js:20
 msgid "Order button text"
 msgstr "Tekst przycisku zamówienia"
 
@@ -14088,6 +14112,7 @@ msgid "Slider settings"
 msgstr "Ustawienia slidera"
 
 #: resources/js/blocks/product-slider/index.js:23
+#: build/admin.js:20
 msgid "Source"
 msgstr "Źródło"
 
@@ -14222,10 +14247,6 @@ msgstr ""
 #~ msgid "Email address"
 #~ msgstr "Adres (rozliczenie)"
 
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "Treść"
-
 #~ msgid "Configure &darr;"
 #~ msgstr "Konfiguruj &darr;"
 
@@ -14244,3 +14265,299 @@ msgstr ""
 
 #~ msgid "Pełna dokumentacja"
 #~ msgstr "Pełna dokumentacja"
+
+#: build/admin.js:20
+msgid "GDPR Compliance"
+msgstr "Zgodność z GDPR"
+
+#: build/admin.js:20
+msgid "All good! No store checklist issues found."
+msgstr "Wszystko wygląda dobrze. Lista kontrolna sklepu nie wykryła problemów."
+
+#: build/admin.js:20
+msgid "No consent data yet. Statistics will appear after first orders."
+msgstr "Nie ma jeszcze danych o zgodach. Statystyki pojawią się po pierwszych zamówieniach."
+
+#: build/admin.js:20
+msgid "Accepted"
+msgstr "Zaakceptowane"
+
+#: build/admin.js:20
+msgid "Contexts"
+msgstr "Konteksty"
+
+#: build/admin.js:20
+msgid "Built-in"
+msgstr "Wbudowane"
+
+#: build/admin.js:20
+msgid "Custom"
+msgstr "Własne"
+
+#: build/admin.js:20
+msgid "accepted"
+msgstr "zaakceptowane"
+
+#: build/admin.js:20
+msgid "total"
+msgstr "łącznie"
+
+#: build/admin.js:20
+msgid "Failed to load dashboard data."
+msgstr "Nie udało się załadować danych panelu."
+
+#: build/admin.js:20
+msgid "Checkboxes Enabled"
+msgstr "Włączone checkboxy"
+
+#: build/admin.js:20
+msgid "active required checkboxes"
+msgstr "aktywne wymagane checkboxy"
+
+#: build/admin.js:20
+msgid "active optional consents"
+msgstr "aktywne opcjonalne zgody"
+
+#: build/admin.js:20
+msgid "Consent Rate"
+msgstr "Współczynnik zgód"
+
+#: build/admin.js:20
+msgid "records (30d)"
+msgstr "rekordów (30 dni)"
+
+#: build/admin.js:20
+msgid "Store Setup Suggestions"
+msgstr "Sugestie konfiguracji sklepu"
+
+#: build/admin.js:20
+msgid "Consent Trend (30 days)"
+msgstr "Trend zgód (30 dni)"
+
+#: build/admin.js:20
+msgid "Acceptance Rate by Checkbox"
+msgstr "Współczynnik akceptacji według checkboxa"
+
+#: build/admin.js:20
+msgid "Registered Checkboxes"
+msgstr "Zarejestrowane checkboxy"
+
+#: build/admin.js:20
+msgid "Company"
+msgstr "Firma"
+
+#: build/admin.js:20
+msgid "Tax & OSS"
+msgstr "Podatki i OSS"
+
+#: build/admin.js:20
+msgid "Finish"
+msgstr "Zakończenie"
+
+#: build/admin.js:20
+msgid "Company information"
+msgstr "Dane firmy"
+
+#: build/admin.js:20
+msgid "Used on legal pages, invoices, and emails. You can change all of this later in Polski > Dashboard."
+msgstr "Używane na stronach prawnych, fakturach i w wiadomościach email. Wszystko możesz później zmienić w Polski > Pulpit."
+
+#: build/admin.js:20
+msgid "Tax ID (10 digits). Used on invoices and the KSeF integration."
+msgstr "Numer podatkowy (10 cyfr). Używany na fakturach i w integracji KSeF."
+
+#: build/admin.js:20
+msgid "Legal compliance"
+msgstr "Zgodność prawna"
+
+#: build/admin.js:20
+msgid "Pick which consumer-law checkboxes appear at checkout and whether to auto-generate the legal pages referenced by them."
+msgstr "Wybierz, które checkboxy konsumenckie mają pojawić się w kasie oraz czy automatycznie utworzyć powiązane z nimi strony prawne."
+
+#: build/admin.js:20
+msgid "Required by Polish consumer law. Adds a mandatory checkbox at checkout referencing your Terms page."
+msgstr "Wymagane przez polskie prawo konsumenckie. Dodaje w kasie obowiązkowy checkbox z odwołaniem do regulaminu."
+
+#: build/admin.js:20
+msgid "Show Terms checkbox"
+msgstr "Pokaż checkbox regulaminu"
+
+#: build/admin.js:20
+msgid "Required by GDPR Art. 6.1.a. Adds a mandatory checkbox at checkout referencing your Privacy Policy."
+msgstr "Wymagane przez art. 6 ust. 1 lit. a GDPR. Dodaje w kasie obowiązkowy checkbox z odwołaniem do polityki prywatności."
+
+#: build/admin.js:20
+msgid "Show Privacy checkbox"
+msgstr "Pokaż checkbox polityki prywatności"
+
+#: build/admin.js:20
+msgid "14-day withdrawal"
+msgstr "14-dniowe odstąpienie"
+
+#: build/admin.js:20
+msgid "Customer confirms they have been informed about the 14-day right of withdrawal. Required under EU Directive 2011/83."
+msgstr "Klient potwierdza, że został poinformowany o 14-dniowym prawie odstąpienia. Wymagane zgodnie z dyrektywą 2011/83/UE."
+
+#: build/admin.js:20
+msgid "Show withdrawal checkbox"
+msgstr "Pokaż checkbox odstąpienia"
+
+#: build/admin.js:20
+msgid "Standard EU period is 14 days. Increase only if your store voluntarily offers a longer return window. The clock starts when an order enters a completed/shipped status."
+msgstr "Standardowy okres w UE wynosi 14 dni. Zwiększ go tylko wtedy, gdy sklep dobrowolnie oferuje dłuższy termin zwrotu. Termin zaczyna biec, gdy zamówienie otrzyma status zrealizowane lub wysłane."
+
+#: build/admin.js:20
+msgid "Create a public withdrawal form page"
+msgstr "Utwórz publiczną stronę odstąpienia"
+
+#: build/admin.js:20
+msgid "Required by Art. 11a of Directive 2023/2673 (in force 19 June 2026) for guest customers without a shop account. We will publish a page at /odstapienie/ containing the [polski_withdrawal_lookup] shortcode. You can rename or move it later."
+msgstr "Wymagane przez art. 11a dyrektywy 2023/2673, obowiązujący od 19 czerwca 2026 r., dla klientów bez konta w sklepie. Opublikujemy stronę /odstapienie/ z shortcode [polski_withdrawal_lookup]. Możesz ją później zmienić lub przenieść."
+
+#: build/admin.js:20
+msgid "Publish /odstapienie/ on Finish"
+msgstr "Opublikuj /odstapienie/ po zakończeniu"
+
+#: build/admin.js:20
+msgid "Digital products consent (Art. 16(m))"
+msgstr "Zgoda dla produktów cyfrowych (art. 16 lit. m)"
+
+#: build/admin.js:20
+msgid "For downloadable / virtual products, the consumer must actively consent to losing the right of withdrawal before delivery starts. Pick the prompt mode best fitting your catalog. \"Hidden\" preserves the right of withdrawal regardless of digital nature."
+msgstr "Dla produktów do pobrania i produktów wirtualnych konsument musi aktywnie zgodzić się na utratę prawa odstąpienia przed rozpoczęciem dostarczania. Wybierz tryb najlepiej pasujący do katalogu. Tryb „ukryty” zachowuje prawo odstąpienia niezależnie od cyfrowego charakteru produktu."
+
+#: build/admin.js:20
+msgid "Required - checkout blocked until ticked"
+msgstr "Wymagane - kasa zablokowana do czasu zaznaczenia"
+
+#: build/admin.js:20
+msgid "Optional - show unchecked, only ticked orders are exempt"
+msgstr "Opcjonalne - pokaż niezaznaczone, tylko zaznaczone zamówienia tracą prawo odstąpienia"
+
+#: build/admin.js:20
+msgid "Hidden - don't collect consent"
+msgstr "Ukryte - nie zbieraj zgody"
+
+#: build/admin.js:20
+msgid "Optional opt-in for newsletters and marketing messages. Keep this off unless you operate a newsletter."
+msgstr "Opcjonalna zgoda na newsletter i komunikację marketingową. Zostaw wyłączone, jeśli nie prowadzisz newslettera."
+
+#: build/admin.js:20
+msgid "Show marketing checkbox"
+msgstr "Pokaż checkbox marketingowy"
+
+#: build/admin.js:20
+msgid "Create draft pages for Terms, Privacy Policy, Right of Withdrawal, and Complaints so your checkboxes have something to link to. You can edit them afterwards."
+msgstr "Utwórz szkice stron regulaminu, polityki prywatności, odstąpienia od umowy i reklamacji, aby checkboxy miały właściwe odnośniki. Możesz je później edytować."
+
+#: build/admin.js:20
+msgid "Auto-generate pages on finish"
+msgstr "Automatycznie wygeneruj strony po zakończeniu"
+
+#: build/admin.js:20
+msgid "Price display, Omnibus directive, small-business exemption, and the EU OSS delivery-threshold observer."
+msgstr "Wyświetlanie cen, dyrektywa Omnibus, zwolnienie podmiotowe i obserwator progu dostaw OSS w UE."
+
+#: build/admin.js:20
+msgid "Omnibus directive"
+msgstr "Dyrektywa Omnibus"
+
+#: build/admin.js:20
+msgid "Track product price history and display the lowest price from the last 30 days on sale products. Required by EU Directive 2019/2161."
+msgstr "Śledź historię cen produktów i wyświetlaj najniższą cenę z ostatnich 30 dni przy produktach w promocji. Wymagane przez dyrektywę 2019/2161/UE."
+
+#: build/admin.js:20
+msgid "Enable Omnibus tracking"
+msgstr "Włącz śledzenie Omnibus"
+
+#: build/admin.js:20
+msgid "Small-business exemption (Art. 113)"
+msgstr "Zwolnienie podmiotowe (art. 113)"
+
+#: build/admin.js:20
+msgid "Enable this if you use the Polish VAT exemption under Art. 113 of the VAT Act (annual revenue below the threshold). Adjusts the tax display notice accordingly."
+msgstr "Włącz, jeśli korzystasz ze zwolnienia z VAT na podstawie art. 113 ustawy o VAT (roczny obrót poniżej limitu). Dostosuje to komunikat przy cenach."
+
+#: build/admin.js:20
+msgid "VAT-exempt under Art. 113"
+msgstr "Zwolnienie z VAT na podstawie art. 113"
+
+#: build/admin.js:20
+msgid "Observe the EU One Stop Shop delivery threshold (€10,000 annual intra-EU B2C sales). Finishing this wizard with the toggle on will install the standalone One Stop Shop plugin automatically."
+msgstr "Monitoruj próg dostaw One Stop Shop w UE (10 000 EUR rocznej sprzedaży B2C wewnątrz UE). Zakończenie wizardu z włączoną opcją automatycznie zainstaluje osobny plugin One Stop Shop."
+
+#: build/admin.js:20
+msgid "Enable OSS observer"
+msgstr "Włącz obserwator OSS"
+
+#: build/admin.js:20
+msgid "Order button wording and optional digital-content waiver. All of this is configurable per-module afterwards."
+msgstr "Treść przycisku zamówienia i opcjonalna zgoda dla treści cyfrowych. Wszystko można później zmienić w ustawieniach modułów."
+
+#: build/admin.js:20
+msgid "Polish law requires the final order button to make the payment obligation explicit. The default text complies."
+msgstr "Polskie prawo wymaga, aby końcowy przycisk zamówienia jasno wskazywał obowiązek zapłaty. Domyślny tekst spełnia ten wymóg."
+
+#: build/admin.js:20
+msgid "Button label"
+msgstr "Etykieta przycisku"
+
+#: build/admin.js:20
+msgid "Digital content waiver"
+msgstr "Zgoda dla treści cyfrowych"
+
+#: build/admin.js:20
+msgid "Enable if you sell downloads or digital subscriptions. The customer explicitly agrees to immediate delivery and loses the 14-day withdrawal right."
+msgstr "Włącz, jeśli sprzedajesz pliki do pobrania lub subskrypcje cyfrowe. Klient wyraźnie zgadza się na natychmiastową dostawę i traci 14-dniowe prawo odstąpienia."
+
+#: build/admin.js:20
+msgid "Show digital waiver checkbox"
+msgstr "Pokaż checkbox zgody dla treści cyfrowych"
+
+#: build/admin.js:20
+msgid "Setup complete"
+msgstr "Konfiguracja zakończona"
+
+#: build/admin.js:20
+msgid "Ready to finish"
+msgstr "Gotowe do zakończenia"
+
+#: build/admin.js:20
+msgid "Your store is configured. Review the generated legal pages, adjust module settings as needed, and you are good to go."
+msgstr "Sklep został skonfigurowany. Sprawdź wygenerowane strony prawne i w razie potrzeby dostosuj ustawienia modułów."
+
+#: build/admin.js:20
+msgid "You enabled the OSS observer. If the One Stop Shop plugin is missing, an admin notice will prompt you to install it."
+msgstr "Włączono obserwator OSS. Jeśli brakuje pluginu One Stop Shop, w panelu pojawi się komunikat z prośbą o instalację."
+
+#: build/admin.js:20
+msgid "Go to dashboard"
+msgstr "Przejdź do pulpitu"
+
+#: build/admin.js:20
+msgid "Saving your settings..."
+msgstr "Zapisywanie ustawień..."
+
+#: build/admin.js:20
+msgid "Clicking Finish saves your company data, legal checkboxes, tax setup, and checkout options. You can change everything afterwards in Polski > Modules."
+msgstr "Kliknięcie „Zakończ” zapisze dane firmy, checkboxy prawne, ustawienia podatkowe i opcje kasy. Wszystko możesz później zmienić w Polski > Moduły."
+
+#: build/admin.js:20
+msgid "Finish setup"
+msgstr "Zakończ konfigurację"
+
+#: build/admin.js:20
+msgid "Back"
+msgstr "Wstecz"
+
+#: build/admin.js:20
+msgid "Skip step"
+msgstr "Pomiń krok"
+
+#: build/admin.js:20
+msgid "Continue"
+msgstr "Dalej"
+
+#: build/admin.js:20
+msgid "Return to WP Admin"
+msgstr "Wróć do panelu WordPressa"
