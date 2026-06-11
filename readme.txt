@@ -160,6 +160,10 @@ Yes. Polski includes configurable consent checkboxes, consent logging, double op
 
 Yes. Polski tracks and displays the lowest price from the last 30 days on sale products. Review the output and pricing workflow for your own store before relying on it in production.
 
+= Is Polski ready for the EU Cyber Resilience Act (CRA)? =
+
+Polski follows security practices relevant to CRA readiness: security updates are delivered through the official WordPress.org channel, vulnerabilities can be reported under a coordinated disclosure policy (see the security policy and security@wppoland.com), the code follows WordPress security standards (input sanitisation, output escaping, capability and nonce checks), and any external services the plugin can contact are documented in this readme. Polski does not collect hidden or undisclosed data, and its source is publicly available for review. Whether and how the CRA applies to your store, and confirming your own obligations, remains your responsibility and that of your advisers. This is not a statement of legal compliance.
+
 = Does Polski work with WooCommerce Blocks checkout? =
 
 Yes. Polski fully supports both the classic and block-based checkout and cart.
