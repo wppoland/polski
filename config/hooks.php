@@ -195,6 +195,13 @@ return [
     // AI Bridge: draft-only AI-assisted GPSR safety-text generator (REST routes).
     \Polski\Rest\AiGpsrDraftController::class,
 
+    // Block checkout / Store API: read-only product + cart data (Omnibus lowest
+    // price, unit price, delivery time) for the WC block cart/checkout. Dropped
+    // from this list as collateral in 3548d52; re-added here. Read-only, so no
+    // checkout-blocking risk (unlike CheckoutValidation, which is added last
+    // only once the block UI is confirmed rendering).
+    \Polski\Block\StoreApi\ProductDataExtension::class,
+
     // Shortcodes.
     ShortcodeManager::class,
 
