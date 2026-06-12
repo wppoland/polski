@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/complaints",
+    "title": "Dispute resolution notice",
+    "description": "Displays your dispute resolution / online dispute resolution (ODR) information.",
+    "category": "polski",
+    "icon": "editor-help",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

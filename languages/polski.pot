@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.24.2\n"
+"Project-Id-Version: Polski for WooCommerce 1.24.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-12T13:57:20+00:00\n"
+"POT-Creation-Date: 2026-06-12T14:19:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #. Description of the plugin
 #: polski.php
-msgid "Adds GPSR, Omnibus, RODO/GDPR, withdrawal, NIP, KSeF-ready, product information, and storefront tools for Polish WooCommerce stores."
+msgid "Dodaje GPSR, Omnibus, RODO, zwroty, NIP, hooki KSeF, dane produktowe i moduły sklepu dla polskich sklepów WooCommerce."
 msgstr ""
 
 #. Author of the plugin
@@ -7237,6 +7237,38 @@ msgstr ""
 msgid "Dimensions"
 msgstr ""
 
+#: src/Block/LegalPageBlocks.php:36
+msgid "DSA report form"
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:37
+msgid "A form for reporting illegal content under the Digital Services Act."
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:42
+msgid "Dispute resolution notice"
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:43
+msgid "Displays your dispute resolution / online dispute resolution (ODR) information."
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:48
+msgid "Small business VAT notice"
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:49
+msgid "Displays the VAT-exempt small business notice when your store is configured as a small business."
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:54
+msgid "Accepted payment methods"
+msgstr ""
+
+#: src/Block/LegalPageBlocks.php:55
+msgid "Lists the payment methods available in your store."
+msgstr ""
+
 #: src/Block/StoreApi/ProductDataExtension.php:113
 #: src/Block/StoreApi/ProductDataExtension.php:220
 msgid "Unit price HTML"
@@ -11865,6 +11897,16 @@ msgctxt "block description"
 msgid "Displays the shop's business data (name, NIP, address, contact) from the setup wizard."
 msgstr ""
 
+#: blocks/complaints/block.json
+msgctxt "block title"
+msgid "Dispute resolution notice"
+msgstr ""
+
+#: blocks/complaints/block.json
+msgctxt "block description"
+msgid "Displays your dispute resolution / online dispute resolution (ODR) information."
+msgstr ""
+
 #: blocks/copyright/block.json
 msgctxt "block title"
 msgid "Copyright notice"
@@ -11873,6 +11915,36 @@ msgstr ""
 #: blocks/copyright/block.json
 msgctxt "block description"
 msgid "A standard copyright line (© YYYY Owner)."
+msgstr ""
+
+#: blocks/dsa-report/block.json
+msgctxt "block title"
+msgid "DSA report form"
+msgstr ""
+
+#: blocks/dsa-report/block.json
+msgctxt "block description"
+msgid "A form for reporting illegal content under the Digital Services Act."
+msgstr ""
+
+#: blocks/payment-methods/block.json
+msgctxt "block title"
+msgid "Accepted payment methods"
+msgstr ""
+
+#: blocks/payment-methods/block.json
+msgctxt "block description"
+msgid "Lists the payment methods available in your store."
+msgstr ""
+
+#: blocks/small-business-notice/block.json
+msgctxt "block title"
+msgid "Small business VAT notice"
+msgstr ""
+
+#: blocks/small-business-notice/block.json
+msgctxt "block description"
+msgid "Displays the VAT-exempt small business notice when your store is configured as a small business."
 msgstr ""
 
 #: blocks/withdrawal-form/block.json

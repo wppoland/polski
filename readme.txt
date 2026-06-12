@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.2
+Stable tag: 1.24.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -284,6 +284,9 @@ Opinie z panelu administracyjnego i informacje z formularza dezaktywacji są zap
 8. Lista życzeń, porównywarka i szybki podgląd na liście produktów.
 
 == Changelog ==
+
+= 1.24.3 =
+* Nowe bloki: Formularz zgłoszenia DSA, Informacja o rozstrzyganiu sporów (ODR), Informacja o zwolnieniu z VAT dla małego podatnika oraz Dostępne metody płatności są teraz dostępne jako bloki (w kategorii "Polski"), więc można je umieścić na dowolnej stronie bez pamiętania shortcode'u. Każdy z nich nic nie wyświetla, dopóki odpowiednia funkcja nie zostanie skonfigurowana.
 
 = 1.24.2 =
 * Nowość: wszystkie bloki Polski są teraz zgrupowane w edytorze bloków w osobnej kategorii "Polski", a metadane bloków są rejestrowane z plików block.json, dzięki czemu bloki są poprawnie widoczne i łatwiejsze do znalezienia.

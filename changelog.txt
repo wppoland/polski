@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.24.3 =
+* New blocks: DSA report form, Dispute resolution notice, Small business VAT notice, and Accepted payment methods are now available as blocks (in the Polski category), so you can place them on any page without remembering the shortcode. Each one shows nothing until the matching feature is configured.
+
 = 1.24.2 =
 * New: all Polski blocks are now grouped under a dedicated "Polski" category in the block inserter, and the block metadata (Business identification, BDO number, Copyright notice, the three withdrawal blocks) is registered from block.json so the blocks are properly listed and discoverable.
 * Fixed: the storefront blocks (AJAX search, AJAX filters, product slider) were not being registered on installed sites; they now register correctly and appear in the editor.
