@@ -132,14 +132,23 @@ final class GuestWithdrawalServiceTest extends TestCase
         self::assertSame('0.0.0.0', $ipMethod->invoke($service));
     }
 
-    public function testClientIpUsesFirstAddressFromXForwardedForChain(): void
+    public function testClientIpIgnoresSpoofableForwardedHeadersByDefault(): void
     {
-        $_SERVER['HTTP_X_FORWARDED_FOR'] = '198.51.100.7, 203.0.113.1, 10.0.0.1';
+        // A forged X-Forwarded-For / CF-Connecting-IP must NOT override the real
+        // REMOTE_ADDR unless the site explicitly opts into a trusted reverse
+        // proxy via the `polski/trusted_proxy` filter. This prevents an attacker
+        // from defeating the IP-keyed rate limit with a per-request header.
+        $_SERVER['REMOTE_ADDR'] = '203.0.113.42';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '198.51.100.7, 10.0.0.1';
+        $_SERVER['HTTP_CF_CONNECTING_IP'] = '198.51.100.9';
+
         $service = $this->makeService();
         $ipMethod = (new \ReflectionClass(GuestWithdrawalService::class))->getMethod('clientIp');
         $ipMethod->setAccessible(true);
 
-        self::assertSame('198.51.100.7', $ipMethod->invoke($service));
+        self::assertSame('203.0.113.42', $ipMethod->invoke($service));
+
+        unset($_SERVER['HTTP_X_FORWARDED_FOR'], $_SERVER['HTTP_CF_CONNECTING_IP']);
     }
 
     private function makeService(): GuestWithdrawalService
