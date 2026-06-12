@@ -362,17 +362,9 @@ final class GuestWithdrawalService implements HasHooks
 
     private function clientIp(): string
     {
-        $candidates = ['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'];
-        foreach ($candidates as $key) {
-            if (! empty($_SERVER[$key])) {
-                $value = sanitize_text_field((string) wp_unslash($_SERVER[$key]));
-                $value = trim(explode(',', $value)[0] ?? '');
-                if ($value !== '') {
-                    return $value;
-                }
-            }
-        }
-        return '0.0.0.0';
+        // Trust only REMOTE_ADDR unless an explicit reverse proxy is configured;
+        // forwarding headers are spoofable and would defeat the rate limiter.
+        return \Polski\Util\ClientIp::resolve();
     }
 
     private function sendMagicLink(\WC_Order $order, string $email, string $token): void

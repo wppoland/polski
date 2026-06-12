@@ -349,13 +349,10 @@ final class ConsentLogRepository
             return null;
         }
 
-        // Anonymize: zero last octet for IPv4, last 80 bits for IPv6.
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            return preg_replace('/\.\d+$/', '.0', $ip);
-        }
-
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return preg_replace('/:[^:]+:[^:]+:[^:]+:[^:]+:[^:]+$/', ':0:0:0:0:0', $ip);
+        // Anonymize via core helper: zeros the IPv4 last octet / IPv6 last 80
+        // bits, correctly handling compressed IPv6 (e.g. 2001:db8::1, ::1).
+        if (filter_var($ip, FILTER_VALIDATE_IP)) {
+            return wp_privacy_anonymize_ip($ip);
         }
 
         return null;

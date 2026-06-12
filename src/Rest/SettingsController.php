@@ -281,6 +281,11 @@ final class SettingsController extends RestController implements HasHooks
         }
 
         $input = $request->get_json_params();
+        if (! is_array($input)) {
+            // get_json_params() is null for an empty or non-JSON body; the
+            // sanitizer is strictly typed, so normalize to avoid a TypeError.
+            $input = [];
+        }
         $sanitized = Sanitizer::settingsArray($input, $this->defaults[$optionKey]);
 
         update_option($optionKey, $sanitized);

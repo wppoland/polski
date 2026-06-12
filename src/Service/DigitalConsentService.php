@@ -213,16 +213,8 @@ final class DigitalConsentService implements HasHooks
 
     private function clientIp(): string
     {
-        foreach (['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'] as $key) {
-            if (empty($_SERVER[$key])) {
-                continue;
-            }
-            $value = sanitize_text_field((string) wp_unslash($_SERVER[$key]));
-            $value = trim(explode(',', $value)[0] ?? '');
-            if ($value !== '') {
-                return $value;
-            }
-        }
-        return '0.0.0.0';
+        // Trust only REMOTE_ADDR unless an explicit reverse proxy is configured;
+        // spoofable forwarding headers would forge the consent-log audit IP.
+        return \Polski\Util\ClientIp::resolve();
     }
 }
