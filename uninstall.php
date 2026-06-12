@@ -33,6 +33,9 @@ $polski_tables = [
     $wpdb->prefix . 'polski_compare_items',
     $wpdb->prefix . 'polski_waitlist',
     $wpdb->prefix . 'polski_dsa_reports',
+    $wpdb->prefix . 'polski_returns',
+    $wpdb->prefix . 'polski_withdrawal_items',
+    $wpdb->prefix . 'polski_cra_incidents',
     $wpdb->prefix . 'polski_migrations',
 ];
 
