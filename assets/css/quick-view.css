@@ -10,6 +10,12 @@
     z-index: 9999;
 }
 
+/* Guarantee a closed modal stays hidden even if a theme forces a `display`
+   value on the overlay (which would otherwise win over the UA `[hidden]` rule). */
+.polski-quick-view-modal[hidden] {
+    display: none !important;
+}
+
 .polski-quick-view-backdrop {
     position: absolute;
     inset: 0;
