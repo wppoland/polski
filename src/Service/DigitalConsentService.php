@@ -53,6 +53,10 @@ final class DigitalConsentService implements HasHooks
         $this->runAfter('woocommerce_blocks_loaded', [$this, 'registerCartFlag']);
         $this->runAfter('woocommerce_init', [$this, 'registerBlockField']);
 
+        // Write the Art. 16(m) proof record on block orders (WC stores the field
+        // value, not the wording/timestamp/IP snapshot the classic path records).
+        add_action('woocommerce_store_api_checkout_order_processed', [$this, 'persistBlockConsent']);
+
         // Legacy classic-checkout field. These self-skip when the Additional
         // Checkout Fields API is available (it also renders in classic checkout,
         // so running both would double the field). On older WC without the API
@@ -242,15 +246,44 @@ final class DigitalConsentService implements HasHooks
             return;
         }
 
-        $record = [
+        $order->update_meta_data(self::ORDER_META, $this->buildRecord());
+    }
+
+    /**
+     * Block checkout: WC stores the Additional Checkout Field value, but not the
+     * Art. 16(m) proof record (wording snapshot + timestamp + IP). Write it when
+     * the consent was accepted so the store can still prove the consent.
+     */
+    public function persistBlockConsent(\WC_Order $order): void
+    {
+        if ($order->get_meta(self::ORDER_META, true) !== '') {
+            return; // already recorded.
+        }
+
+        $value = $order->get_meta(self::BLOCK_FIELD_META, true);
+
+        if (! in_array($value, ['1', 1, true, 'true', 'yes'], true)) {
+            return;
+        }
+
+        $order->update_meta_data(self::ORDER_META, $this->buildRecord());
+        $order->save();
+    }
+
+    /**
+     * Art. 16(m) consent proof record, shared by classic and block checkout.
+     *
+     * @return array<string, mixed>
+     */
+    private function buildRecord(): array
+    {
+        return [
             'accepted' => true,
             'mode' => $this->mode(),
             'wording' => $this->consentLabel(),
             'recorded_at' => current_time('mysql', true),
             'ip' => $this->clientIp(),
         ];
-
-        $order->update_meta_data(self::ORDER_META, $record);
     }
 
     /**
