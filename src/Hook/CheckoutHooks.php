@@ -36,14 +36,26 @@ final class CheckoutHooks implements Bootable, HasHooks
         // Override order button text.
         add_filter('woocommerce_order_button_text', [$this, 'filterOrderButtonText']);
 
-        // Render legal checkboxes before order submit.
-        add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
-
-        // Validate checkboxes on checkout.
-        add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
-
-        // Log consents after order is created.
-        add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
+        if (function_exists('woocommerce_register_additional_checkout_field')) {
+            // Modern WooCommerce: render + enforce the checkout legal checkboxes
+            // via the Additional Checkout Fields API, which works on BOTH classic
+            // and the block checkout (WC 8.3+ default) with no merchant placement.
+            // Register at init priority 21 — after CheckboxService::initCheckboxes
+            // (init, 20) has populated the checkbox definitions, and still before
+            // any checkout request reads the additional-fields registry. Consent
+            // is logged from order meta for both classic and block flows.
+            add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
+            add_action('woocommerce_checkout_order_created', [$this, 'logBlockCheckoutConsents']);
+            add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
+        } else {
+            // Legacy classic-only checkout (WC without the Additional Checkout
+            // Fields API).
+            add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
+            add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
+            add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
+            add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
+            add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
+        }
 
         // Registration form checkboxes.
         add_action('woocommerce_register_form', [$this, 'renderRegistrationCheckboxes']);
@@ -55,14 +67,74 @@ final class CheckoutHooks implements Bootable, HasHooks
         // Remove default WC terms checkbox (we replace it).
         add_filter('woocommerce_checkout_show_terms', '__return_false');
 
-        // Store checkbox states in order meta.
-        add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
-
-        // AJAX fragment refresh for conditional checkboxes.
-        add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
-
         // Enqueue frontend checkout JS.
         add_action('wp_enqueue_scripts', [$this, 'enqueueCheckoutAssets']);
+    }
+
+    /**
+     * Register each enabled checkout legal checkbox as an Additional Checkout
+     * Field, so it renders and enforces on BOTH classic and block checkout with
+     * no merchant placement. Labels are plain text (the API cannot render rich
+     * HTML); hidden/info-only checkboxes have no input field.
+     */
+    public function registerBlockCheckoutFields(): void
+    {
+        if (! function_exists('woocommerce_register_additional_checkout_field')) {
+            return;
+        }
+
+        foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
+            if ($checkbox->hideInput) {
+                continue;
+            }
+
+            $field = [
+                'id' => 'polski/' . $checkbox->id,
+                'label' => wp_strip_all_tags($checkbox->label),
+                'location' => 'order',
+                'type' => 'checkbox',
+                'required' => $checkbox->isRequired(),
+            ];
+
+            if ($checkbox->errorMessage !== '') {
+                $field['error_message'] = $checkbox->errorMessage;
+            }
+
+            woocommerce_register_additional_checkout_field($field);
+        }
+    }
+
+    /**
+     * Log checkbox consents from order meta. WC stores each Additional Checkout
+     * Field at `_wc_other/polski/<id>`, so this covers both classic and block
+     * checkout. Guarded against double-logging across the classic/block hooks.
+     */
+    public function logBlockCheckoutConsents(\WC_Order $order): void
+    {
+        if ($order->get_meta('_polski_consents_logged', true) === 'yes') {
+            return;
+        }
+
+        $states = [];
+
+        foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
+            if ($checkbox->hideInput || ! $checkbox->logConsent) {
+                continue;
+            }
+
+            $value = $order->get_meta('_wc_other/polski/' . $checkbox->id, true);
+            $states[$checkbox->id] = in_array($value, ['1', 1, true, 'true', 'yes'], true);
+        }
+
+        if ($states === []) {
+            return;
+        }
+
+        $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
+        $this->consentLog->logBatch($states, CheckboxContext::Checkout, $userId, 'order_' . $order->get_id());
+
+        $order->update_meta_data('_polski_consents_logged', 'yes');
+        $order->save();
     }
 
     /**
