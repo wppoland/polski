@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.23.2
+Stable tag: 1.24.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -238,6 +238,12 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.24.0 =
+* New: full support for the WooCommerce block-based checkout (the default since WooCommerce 8.3). Legal consent checkboxes, the digital-content withdrawal consent, and custom checkout fields now render, validate and save on the block checkout as well as the classic checkout.
+* New: product information (lowest price from the last 30 days, unit price and delivery time) now appears in the block-based cart and checkout.
+* Security: hardened request-rate handling on the guest withdrawal flow against forged client-IP headers, and improved IPv6 address anonymisation in the consent log.
+* Fixed: uninstall now removes all plugin tables; database migrations run in the correct order; the Omnibus lowest-price window no longer collapses to the current price when the period is left blank.
 
 = 1.23.2 =
 * Improved: the Setup wizard is now a guided, multi-step flow (Company, Legal, Tax & OSS, Checkout, Finish) that collects your company details, switches on the legal modules you need, and configures tax and checkout in one pass. Optional steps can be skipped, and finishing only enables modules - it never turns off modules you already use.
