@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.24.0 =
+* New: full support for the WooCommerce block-based checkout (the default since WooCommerce 8.3). Legal consent checkboxes, the digital-content withdrawal consent, and custom checkout fields now render, validate and save on the block checkout as well as the classic checkout.
+* New: product information (lowest price from the last 30 days, unit price and delivery time) now appears in the block-based cart and checkout.
+* Security: hardened request-rate handling on the guest withdrawal flow against forged client-IP headers, and improved IPv6 address anonymisation in the consent log.
+* Fixed: uninstall now removes all plugin tables; database migrations run in the correct order; the Omnibus lowest-price window no longer collapses to the current price when the period is left blank.
+
 = 1.23.2 =
 * Improved: the Setup wizard is now a guided, multi-step flow (Company, Legal, Tax & OSS, Checkout, Finish) that collects your company details, switches on the legal modules you need, and configures tax and checkout in one pass. Optional steps can be skipped, and finishing only enables modules - it never turns off modules you already use.
 

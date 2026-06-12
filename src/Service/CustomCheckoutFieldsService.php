@@ -49,14 +49,24 @@ final class CustomCheckoutFieldsService implements HasHooks
             return;
         }
 
-        // Modify checkout fields.
-        add_filter('woocommerce_checkout_fields', [$this, 'modifyCheckoutFields'], 20);
-
-        // Validate custom fields.
-        add_action('woocommerce_checkout_process', [$this, 'validateFields']);
-
-        // Save custom fields to order meta.
-        add_action('woocommerce_checkout_update_order_meta', [$this, 'saveFieldsToOrder']);
+        if (self::hasAdditionalFieldsApi()) {
+            // Modern WooCommerce: register the custom fields via the Additional
+            // Checkout Fields API so they render + validate + save on BOTH classic
+            // and block checkout. Registered at init priority 22 (after
+            // CheckboxService::initCheckboxes at 20 and the legal-checkbox fields
+            // at 21). Block-saved values are mirrored to the legacy `_<name>` meta
+            // so the existing admin/email/account display keeps working.
+            // NOTE: conditional visibility (shipping/payment/category/field/
+            // cart-min) is honoured on classic checkout only; on block checkout
+            // these fields always show. Documented on the settings page.
+            add_action('init', [$this, 'registerBlockCheckoutFields'], 22);
+            add_action('woocommerce_set_additional_field_value', [$this, 'mirrorCustomFieldToLegacyMeta'], 10, 4);
+        } else {
+            // Legacy classic-only checkout.
+            add_filter('woocommerce_checkout_fields', [$this, 'modifyCheckoutFields'], 20);
+            add_action('woocommerce_checkout_process', [$this, 'validateFields']);
+            add_action('woocommerce_checkout_update_order_meta', [$this, 'saveFieldsToOrder']);
+        }
 
         // Display in admin order.
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'displayInAdmin']);
@@ -189,6 +199,183 @@ final class CustomCheckoutFieldsService implements HasHooks
         }
 
         return $fields;
+    }
+
+    public static function hasAdditionalFieldsApi(): bool
+    {
+        return function_exists('woocommerce_register_additional_checkout_field');
+    }
+
+    /**
+     * Register enabled custom fields as Additional Checkout Fields so they render,
+     * validate and save on BOTH classic and block checkout.
+     */
+    public function registerBlockCheckoutFields(): void
+    {
+        if (! self::hasAdditionalFieldsApi()) {
+            return;
+        }
+
+        foreach ($this->getFields() as $field) {
+            if (empty($field['enabled']) || $field['name'] === '') {
+                continue;
+            }
+
+            $blockType = $this->mapBlockType($field['type']);
+
+            $config = [
+                'id' => 'polski/' . $field['name'],
+                'label' => $field['label'] !== '' ? $field['label'] : $field['name'],
+                'location' => $field['section'] === 'order' ? 'order' : 'address',
+                'type' => $blockType,
+                'required' => (bool) $field['required'],
+            ];
+
+            if ($blockType === 'select') {
+                $options = $this->parseOptions($field['options']);
+
+                if ($options === []) {
+                    continue; // a select with no options is invalid.
+                }
+
+                $config['options'] = $options;
+            }
+
+            $validation = $this->validationCallback($field);
+
+            if ($validation !== null) {
+                $config['validate_callback'] = $validation;
+            }
+
+            woocommerce_register_additional_checkout_field($config);
+        }
+    }
+
+    /**
+     * Mirror a block-saved custom field value to the legacy `_<name>` order meta,
+     * so the existing admin / email / My Account display keeps working.
+     *
+     * @param mixed $value
+     * @param mixed $document
+     */
+    public function mirrorCustomFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
+    {
+        if (! str_starts_with($key, 'polski/')) {
+            return;
+        }
+
+        $name = substr($key, strlen('polski/'));
+        $field = null;
+
+        foreach ($this->getFields() as $candidate) {
+            if ($candidate['name'] === $name && ! empty($candidate['enabled'])) {
+                $field = $candidate;
+                break;
+            }
+        }
+
+        if ($field === null) {
+            return;
+        }
+
+        // Address-location fields fire for both billing and shipping groups; only
+        // mirror the value from the group that matches the field's section.
+        if ($field['section'] === 'billing' && $group !== 'billing') {
+            return;
+        }
+
+        if ($field['section'] === 'shipping' && $group !== 'shipping') {
+            return;
+        }
+
+        if (! is_object($document) || ! method_exists($document, 'update_meta_data')) {
+            return;
+        }
+
+        $document->update_meta_data('_' . $name, is_scalar($value) ? (string) $value : '');
+    }
+
+    /**
+     * Map a configured field type to a supported Additional Checkout Field type.
+     * The API supports only text/select/checkbox; richer semantics (email/number/
+     * date/tel/textarea) render as text with validation; radio becomes a select.
+     */
+    private function mapBlockType(string $type): string
+    {
+        return match ($type) {
+            'select', 'radio' => 'select',
+            'checkbox' => 'checkbox',
+            default => 'text',
+        };
+    }
+
+    /**
+     * @return list<array{value: string, label: string}>
+     */
+    private function parseOptions(string $options): array
+    {
+        $out = [];
+
+        foreach (explode("\n", $options) as $line) {
+            $line = trim($line);
+
+            if ($line === '') {
+                continue;
+            }
+
+            if (str_contains($line, '|')) {
+                [$value, $label] = explode('|', $line, 2);
+                $out[] = ['value' => trim($value), 'label' => trim($label)];
+            } else {
+                $out[] = ['value' => $line, 'label' => $line];
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * A validate_callback for semantic types (email/number/date) the API renders
+     * as plain text. Returns null when valid, a WP_Error otherwise.
+     *
+     * @param CheckoutField $field
+     */
+    private function validationCallback(array $field): ?callable
+    {
+        $type = $field['type'];
+
+        if (! in_array($type, ['email', 'number', 'date'], true)) {
+            return null;
+        }
+
+        $label = $field['label'] !== '' ? $field['label'] : $field['name'];
+
+        return static function (mixed $value) use ($type, $label): ?\WP_Error {
+            $string = is_scalar($value) ? (string) $value : '';
+
+            if ($string === '') {
+                return null; // emptiness is handled by `required`.
+            }
+
+            $valid = match ($type) {
+                'email' => is_email($string) !== false,
+                'number' => is_numeric($string),
+                'date' => strtotime($string) !== false,
+            };
+
+            if (! $valid) {
+                return new \WP_Error(
+                    'polski_invalid_field',
+                    sprintf(
+                        /* translators: %s: field label */
+                        __('%s is not valid.', 'polski'),
+                        $label,
+                    ),
+                );
+            }
+
+            return null;
+        };
     }
 
     /**
