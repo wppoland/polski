@@ -6,6 +6,12 @@
     z-index: 9999;
 }
 
+/* Guarantee a closed popup stays hidden even if a theme forces a `display`
+   value on the overlay (which would otherwise win over the UA `[hidden]` rule). */
+.polski-popup[hidden] {
+    display: none !important;
+}
+
 .polski-popup__backdrop {
     position: absolute;
     inset: 0;

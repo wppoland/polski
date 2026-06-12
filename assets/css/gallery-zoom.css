@@ -27,6 +27,14 @@
     z-index: 9999;
 }
 
+/* The `display: grid` above otherwise wins over the UA `[hidden] { display: none }`
+   (author origin beats UA), leaving the lightbox permanently visible - a black
+   overlay the close button cannot dismiss, because close() only sets `hidden`.
+   Force-hide the closed state so it shows only while open and a theme cannot trap it. */
+.polski-gallery-lightbox[hidden] {
+    display: none !important;
+}
+
 .polski-gallery-lightbox img {
     max-width: min(92vw, 1200px);
     max-height: 88vh;

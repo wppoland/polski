@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gdpr, omnibus, gpsr, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.0
+Stable tag: 1.24.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -238,6 +238,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.24.1 =
+* Fix: the Gallery & Zoom lightbox could remain on screen as a full-screen dark overlay whose close button did not dismiss it, on themes where the overlay inherited a forced display value. The closed state is now always hidden.
+* Hardening: the popup and Quick View overlays now also force their hidden state, so a theme cannot trap a closed overlay on screen.
 
 = 1.24.0 =
 * New: full support for the WooCommerce block-based checkout (the default since WooCommerce 8.3). Legal consent checkboxes, the digital-content withdrawal consent, and custom checkout fields now render, validate and save on the block checkout as well as the classic checkout.
