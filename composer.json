@@ -26,7 +26,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Polski\\": "src/"
+            "Polski\\": "src/",
+            "WPPoland\\StorefrontKit\\": "packages/storefront-kit/src/"
         }
     },
     "autoload-dev": {
