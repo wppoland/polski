@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/payment-methods",
+    "title": "Accepted payment methods",
+    "description": "Lists the payment methods available in your store.",
+    "category": "polski",
+    "icon": "money",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

@@ -379,6 +379,7 @@ return static function (Container $c): void {
         $c->get(FilterService::class),
         $c->get(ProductSliderService::class),
     ));
+    $c->singleton(\Polski\Block\LegalPageBlocks::class, static fn () => new \Polski\Block\LegalPageBlocks());
 
     // Compatibility.
     $c->singleton(\Polski\Compatibility\ElementorCompat::class, static fn () => new \Polski\Compatibility\ElementorCompat());

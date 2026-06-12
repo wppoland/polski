@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/dsa-report",
+    "title": "DSA report form",
+    "description": "A form for reporting illegal content under the Digital Services Act.",
+    "category": "polski",
+    "icon": "flag",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

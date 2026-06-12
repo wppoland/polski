@@ -119,6 +119,7 @@ return [
     GalleryZoomService::class,
     ProductSliderService::class,
     \Polski\Block\ModuleBlocks::class,
+    \Polski\Block\LegalPageBlocks::class,
     WaitlistService::class,
     MinimumOrderService::class,
     ReviewRequestService::class,

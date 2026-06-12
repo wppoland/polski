@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/small-business-notice",
+    "title": "Small business VAT notice",
+    "description": "Displays the VAT-exempt small business notice when your store is configured as a small business.",
+    "category": "polski",
+    "icon": "money-alt",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

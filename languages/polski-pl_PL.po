@@ -14561,3 +14561,27 @@ msgstr "Dalej"
 #: build/admin.js:20
 msgid "Return to WP Admin"
 msgstr "Wróć do panelu WordPressa"
+
+msgid "DSA report form"
+msgstr "Formularz zgłoszenia DSA"
+
+msgid "A form for reporting illegal content under the Digital Services Act."
+msgstr "Formularz do zgłaszania nielegalnych treści zgodnie z aktem o usługach cyfrowych (DSA)."
+
+msgid "Dispute resolution notice"
+msgstr "Informacja o rozstrzyganiu sporów"
+
+msgid "Displays your dispute resolution / online dispute resolution (ODR) information."
+msgstr "Wyświetla informacje o rozstrzyganiu sporów / internetowym rozstrzyganiu sporów (ODR)."
+
+msgid "Small business VAT notice"
+msgstr "Informacja o zwolnieniu z VAT (mały podatnik)"
+
+msgid "Displays the VAT-exempt small business notice when your store is configured as a small business."
+msgstr "Wyświetla informację o zwolnieniu z VAT dla małego podatnika, gdy sklep jest skonfigurowany jako mały podatnik."
+
+msgid "Accepted payment methods"
+msgstr "Dostępne metody płatności"
+
+msgid "Lists the payment methods available in your store."
+msgstr "Wyświetla listę metod płatności dostępnych w sklepie."
