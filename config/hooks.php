@@ -120,6 +120,7 @@ return [
     ProductSliderService::class,
     \Polski\Block\ModuleBlocks::class,
     \Polski\Block\LegalPageBlocks::class,
+    \Polski\Block\ProductDataBlocks::class,
     WaitlistService::class,
     MinimumOrderService::class,
     ReviewRequestService::class,

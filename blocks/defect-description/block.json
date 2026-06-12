@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/defect-description",
+    "title": "Defect Description",
+    "description": "Displays the description of defects for the current product.",
+    "category": "polski",
+    "icon": "warning",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

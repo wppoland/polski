@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.24.4 =
+* New blocks: product-data blocks for block themes and the editor - Unit Price, Delivery Time, Lowest Price (Omnibus), Tax Information, Shipping costs, Manufacturer, Safety Instructions, Safety Documents, Power Supply, Defect Description, Nutritional Information, Allergens, Ingredients, Nutri-Score, Food Information and GPSR safety information (all in the Polski category). Each renders the matching product information and shows nothing outside a product context. This brings the block editor to parity with the Polski Elementor widgets.
+
 = 1.24.3 =
 * New blocks: DSA report form, Dispute resolution notice, Small business VAT notice, and Accepted payment methods are now available as blocks (in the Polski category), so you can place them on any page without remembering the shortcode. Each one shows nothing until the matching feature is configured.
 

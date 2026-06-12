@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/safety-docs",
+    "title": "Safety Documents",
+    "description": "Displays the safety documents and declarations for the current product.",
+    "category": "polski",
+    "icon": "media-document",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

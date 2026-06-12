@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/gpsr",
+    "title": "GPSR safety information",
+    "description": "Displays the GPSR product safety information for the current product.",
+    "category": "polski",
+    "icon": "shield",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

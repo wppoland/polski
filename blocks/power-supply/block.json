@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/power-supply",
+    "title": "Power Supply",
+    "description": "Displays the power supply information for the current product.",
+    "category": "polski",
+    "icon": "admin-generic",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}
