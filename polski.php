@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Polski for WooCommerce
- * Plugin URI:        https://wppoland.com/pl/polski/
- * Description:       Adds product information, checkout, consent, and storefront tools for WooCommerce stores serving customers in Poland.
+ * Plugin URI:        https://plogins.com/pl/polski/
+ * Description:       Adds GPSR, Omnibus, RODO/GDPR, withdrawal, NIP, KSeF-ready, product information, and storefront tools for Polish WooCommerce stores.
  * Version:           1.24.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
