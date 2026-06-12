@@ -1,6 +1,6 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
-Tags: woocommerce, gdpr, omnibus, gpsr, ksef
+Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
 Stable tag: 1.24.1
@@ -8,11 +8,11 @@ Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce for Polish stores: GPSR, Omnibus 30-day price, GDPR consent, withdrawal forms, KSeF hooks, unit prices and storefront modules.
+WooCommerce dla polskich sklepów: GPSR, Omnibus, RODO, zwroty, NIP, KSeF, ceny jednostkowe i moduły sklepu.
 
 == Description ==
 
-**Polski for WooCommerce** is a free WooCommerce plugin for Polish stores. It helps with GPSR product safety information, Omnibus 30-day lowest price history, GDPR consent, withdrawal forms, unit prices, KSeF-ready invoicing hooks, DSA reporting, and storefront modules.
+**Polski for WooCommerce** is a free WooCommerce plugin for Polish stores. It helps with GPSR product safety information, Omnibus 30-day lowest price history, RODO/GDPR consent workflows, withdrawal forms, NIP handling, unit prices, KSeF-ready invoicing hooks, DSA reporting, and storefront modules.
 
 Built for Polish online stores, dropshippers, and agencies, it keeps the most common Polish and EU requirements in one place and lets you turn each module on or off as you need it.
 
@@ -42,7 +42,7 @@ This plugin helps you configure store workflows related to Polish and EU market 
 * **GPSR-related product fields** - Manufacturer, importer, EU responsible person, product identifiers, safety warnings, and instructions with bulk CSV import or export
 * **Withdrawal request flow** - My Account withdrawal action with confirmation page, request logging, email confirmation, and audit trail
 * **DSA report tools** - Contact point settings, illegal content report form via shortcode [polski_dsa_report], admin report management page, and email notifications
-* **KSeF integration hooks** - NIP-based order flagging, action hooks for invoice plugin integration, and order list status column
+* **KSeF and NIP workflow hooks** - NIP-based order flagging, action hooks for invoice plugin integration, and order list status column
 * **Security incidents** - Incident log for vulnerabilities, breaches, payment failures, third-party outages, and internal follow-up with CSV export
 * **Product sustainability fields** - Eco claim basis, certificate link, and expiry date fields
 * **Verified purchase badge** - Green badge on product reviews from customers who actually purchased the product
@@ -140,37 +140,165 @@ Each active module with configuration options will appear as a sub-menu under **
 
 Yes. Polski for WooCommerce is free and open source under GPLv2 or later.
 
+= Czy Polski for WooCommerce jest darmowy? =
+
+Tak. Polski for WooCommerce jest darmową wtyczką WooCommerce dla polskich sklepów internetowych i jest udostępniany jako open source na licencji GPLv2 lub nowszej.
+
+= What kind of WooCommerce store is Polski built for? =
+
+Polski is built for WooCommerce stores selling in Poland or to Polish customers. It is especially useful for shops that need Polish-market checkout, product information, consent, withdrawal, GPSR, Omnibus, NIP, and KSeF-related workflows in one plugin.
+
+= Czy Polski nadaje się do polskiego sklepu WooCommerce? =
+
+Tak. Wtyczka została przygotowana z myślą o polskich sklepach WooCommerce, agencjach wdrażających sklepy dla klientów oraz właścicielach sklepów, którzy chcą mieć moduły dla GPSR, Omnibus, RODO, zwrotów, NIP i KSeF w jednym miejscu.
+
 = Does Polski support GPSR for WooCommerce products? =
 
-Yes. Polski includes 8 dedicated product fields for GPSR-related data, bulk CSV import or export, a status column in the product list, and product page display tools. You should review which fields and presentation are appropriate for your own products and obligations.
+Yes. Polski includes dedicated product fields for GPSR-related data, bulk CSV import or export, a status column in the product list, and product page display tools. You should review which fields and presentation are appropriate for your own products and obligations.
 
-= Does it support withdrawal forms for WooCommerce orders? =
+= Czy Polski obsługuje GPSR w WooCommerce? =
+
+Tak. Polski dodaje pola produktowe związane z GPSR, między innymi dane producenta, importera, osoby odpowiedzialnej w UE, identyfikatory produktu, ostrzeżenia i instrukcje bezpieczeństwa. Dane można uzupełniać w edycji produktu oraz masowo przez import lub eksport CSV.
+
+= Can I show manufacturer, importer, and responsible person data on products? =
+
+Yes. The GPSR module can store and display manufacturer, importer, and EU responsible person information on WooCommerce product pages, depending on your module settings and product data.
+
+= Does Polski support Omnibus price history for WooCommerce sale products? =
+
+Yes. Polski tracks and displays the lowest price from the last 30 days on sale products. Review the output and pricing workflow for your own store before relying on it in production.
+
+= Czy Polski obsługuje dyrektywę Omnibus i najniższą cenę z 30 dni? =
+
+Tak. Moduł Omnibus zapisuje historię cen i może wyświetlać najniższą cenę z ostatnich 30 dni przy produktach objętych promocją. Ustawienia wyświetlania możesz dopasować w panelu modułu.
+
+= Does Polski support RODO/GDPR consent workflows for Polish WooCommerce shops? =
+
+Yes. Polski includes configurable consent checkboxes, consent logging, double opt-in registration, and related data-handling tools that can support RODO/GDPR workflows. Review the configuration for your own store and obligations.
+
+= Czy Polski dodaje zgody RODO w WooCommerce? =
+
+Tak. Wtyczka pozwala dodać konfigurowalne checkboxy zgód w zamówieniu, rejestracji i recenzjach, a także prowadzić rejestr zgód z datą, kontekstem i technicznymi informacjami audytowymi.
+
+= Does Polski add checkout consent checkboxes? =
+
+Yes. Polski can add checkout checkboxes for terms, privacy policy, withdrawal information, digital content consent, marketing consent, delivery notifications, and review reminders. You decide which checkboxes are active.
+
+= Does Polski support withdrawal forms for WooCommerce orders? =
 
 Yes. Polski adds a withdrawal action directly in My Account > Orders for eligible orders. The customer opens a confirmation page, submits the request, then receives confirmation and the request is logged in the audit trail.
+
+= Czy Polski dodaje formularz odstąpienia od umowy albo zwrotu? =
+
+Tak. Polski może dodać obsługę odstąpienia od umowy z poziomu konta klienta, potwierdzeniem zgłoszenia, logiem zgłoszeń i wiadomościami e-mail. To pomaga uporządkować proces zwrotów w WooCommerce.
+
+= Does Polski add a NIP field or support NIP workflows? =
+
+Polski includes NIP-aware workflows used by selected modules, including KSeF-ready order flagging and business-oriented checkout features. Depending on enabled modules, NIP data can help identify orders that may require invoice handling.
+
+= Czy Polski obsługuje NIP w WooCommerce? =
+
+Tak. Polski zawiera funkcje i hooki związane z NIP, w tym wykrywanie zamówień mogących wymagać obsługi faktury lub procesu KSeF. Dostępność pola i zachowanie zależą od włączonych modułów.
 
 = Is Polski ready for KSeF workflows in WooCommerce? =
 
 Polski can flag orders that may require KSeF invoicing based on NIP in billing data and provides action hooks (`polski/ksef/invoice_ready`, `polski/ksef/is_required`) for invoice plugin integration. A KSeF status column appears in the orders list.
 
-= Does Polski support GDPR consent workflows for Polish WooCommerce shops? =
+= Czy Polski obsługuje KSeF w WooCommerce? =
 
-Yes. Polski includes configurable consent checkboxes, consent logging, double opt-in registration, and related data-handling tools that can support GDPR workflows. Review the configuration for your own store and obligations.
+Polski nie jest pełnym systemem do wysyłki faktur do KSeF, ale dodaje mechanizmy gotowe pod integracje: flagowanie zamówień po NIP, kolumnę statusu KSeF oraz hooki dla wtyczek fakturowych i własnych integracji.
 
-= Does it support Omnibus price history for WooCommerce sale products? =
+= Can Polski help with WooCommerce invoices? =
 
-Yes. Polski tracks and displays the lowest price from the last 30 days on sale products. Review the output and pricing workflow for your own store before relying on it in production.
+Polski focuses on WooCommerce store data, NIP-aware workflows, KSeF-ready hooks, and integration points. It can support invoice-related workflows, but it does not replace a dedicated invoicing or accounting plugin.
 
-= Is Polski ready for the EU Cyber Resilience Act (CRA)? =
+= Czy Polski wystawia faktury w WooCommerce? =
 
-Polski follows security practices relevant to CRA readiness: security updates are delivered through the official WordPress.org channel, vulnerabilities can be reported under a coordinated disclosure policy (see the security policy and security@wppoland.com), the code follows WordPress security standards (input sanitisation, output escaping, capability and nonce checks), and any external services the plugin can contact are documented in this readme. Polski does not collect hidden or undisclosed data, and its source is publicly available for review. Whether and how the CRA applies to your store, and confirming your own obligations, remains your responsibility and that of your advisers. This is not a statement of legal compliance.
+Polski udostępnia dane, flagi i hooki przydatne dla faktur oraz KSeF, ale nie zastępuje pełnej wtyczki fakturowej ani systemu księgowego. Do automatycznego wystawiania faktur użyj dedykowanej integracji fakturowej.
 
-= Does Polski work with WooCommerce Blocks checkout? =
+= Does Polski support WooCommerce Blocks checkout? =
 
 Yes. Polski fully supports both the classic and block-based checkout and cart.
+
+= Czy Polski działa z blokowym checkoutem WooCommerce? =
+
+Tak. Polski obsługuje klasyczny checkout oraz koszyk i checkout oparte na blokach WooCommerce.
 
 = Does Polski work with HPOS (High-Performance Order Storage)? =
 
 Yes. Polski declares full compatibility with WooCommerce HPOS (Custom Order Tables).
+
+= Czy Polski działa z HPOS w WooCommerce? =
+
+Tak. Polski deklaruje zgodność z WooCommerce HPOS, czyli High-Performance Order Storage / Custom Order Tables.
+
+= Does Polski support unit prices in WooCommerce? =
+
+Yes. Polski can display unit prices such as price per kilogram, litre, metre, piece, or a custom unit. This is useful for grocery, cosmetics, household, and other products sold by measure.
+
+= Czy Polski dodaje ceny jednostkowe w WooCommerce? =
+
+Tak. Wtyczka pozwala pokazywać ceny jednostkowe, na przykład za kg, litr, metr, sztukę albo własną jednostkę.
+
+= Does Polski support food and grocery product information? =
+
+Yes. Polski includes optional fields for food and grocery stores, including ingredients, nutrition facts, allergens, origin, distributor, alcohol, and related labelling information where needed.
+
+= Czy Polski nadaje się do sklepu spożywczego WooCommerce? =
+
+Tak. Polski zawiera moduły przydatne dla sklepów spożywczych, między innymi skład, wartości odżywcze, alergeny, pochodzenie, dystrybutora i dodatkowe pola etykietowania produktów.
+
+= Does Polski add DSA reporting tools? =
+
+Yes. Polski includes DSA-related tools such as contact point settings, an illegal content report form shortcode, admin report management, and email notifications.
+
+= Czy Polski dodaje formularz zgłoszeń DSA? =
+
+Tak. Wtyczka zawiera narzędzia DSA, w tym ustawienia punktu kontaktowego, shortcode formularza zgłoszenia nielegalnych treści, panel obsługi zgłoszeń i powiadomienia e-mail.
+
+= Does Polski include storefront conversion tools? =
+
+Yes. Polski includes optional storefront modules such as wishlist, product compare, waitlist, quick view, gallery zoom, product slider, infinite scroll, AJAX filters, AJAX search, product badges, and promotional popups.
+
+= Czy Polski dodaje wishlistę, porównywarkę i szybki podgląd produktów? =
+
+Tak. Moduły storefront obejmują między innymi listę życzeń, porównywarkę produktów, szybki podgląd, powiadomienia o dostępności, filtry AJAX, wyszukiwarkę AJAX i oznaczenia produktów.
+
+= Can I enable only selected modules? =
+
+Yes. Polski is modular. You can enable only the features you need and leave unrelated modules disabled.
+
+= Czy mogę włączyć tylko wybrane moduły? =
+
+Tak. Polski działa modułowo, więc możesz włączyć tylko potrzebne funkcje, na przykład GPSR, Omnibus, RODO, zwroty, NIP, DSA albo moduły storefront.
+
+= Does Polski import and export product data with CSV? =
+
+Yes. Polski extends WooCommerce CSV import and export for selected product data, including GPSR and related product information fields.
+
+= Czy Polski obsługuje import i eksport CSV? =
+
+Tak. Polski rozszerza import i eksport CSV WooCommerce o wybrane dane produktowe, między innymi pola GPSR i inne informacje o produkcie.
+
+= Does Polski provide shortcodes? =
+
+Yes. Polski includes shortcodes for selected notices, withdrawal forms, GPSR information, DSA reporting, complaint templates, and other modules. The available shortcodes depend on the modules enabled in your store.
+
+= Czy Polski ma shortcode? =
+
+Tak. Wtyczka udostępnia shortcode dla wybranych modułów, między innymi informacji GPSR, formularzy odstąpienia, zgłoszeń DSA, szablonów reklamacji i komunikatów sklepu.
+
+= Is Polski a legal advice plugin? =
+
+No. Polski provides technical tools for WooCommerce stores, but it does not provide legal advice and does not guarantee compliance. Always review your store setup, products, policies, and obligations with qualified advisers.
+
+= Czy Polski gwarantuje zgodność z prawem? =
+
+Nie. Polski dostarcza techniczne moduły dla WooCommerce, ale nie jest poradą prawną i nie gwarantuje zgodności sklepu z przepisami. Konfigurację sklepu, regulaminy i obowiązki zawsze trzeba zweryfikować dla konkretnego biznesu.
+
+= Is Polski ready for the EU Cyber Resilience Act (CRA)? =
+
+Polski follows security practices relevant to CRA readiness: security updates are delivered through the official WordPress.org channel, vulnerabilities can be reported under a coordinated disclosure policy (see the security policy and security@wppoland.com), the code follows WordPress security standards (input sanitisation, output escaping, capability and nonce checks), and any external services the plugin can contact are documented in this readme. Polski does not collect hidden or undisclosed data, and its source is publicly available for review. Whether and how the CRA applies to your store, and confirming your own obligations, remains your responsibility and that of your advisers. This is not a statement of legal compliance.
 
 = Where can I report bugs or suggest features? =
 
