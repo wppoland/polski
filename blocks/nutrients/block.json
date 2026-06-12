@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/nutrients",
+    "title": "Nutritional Information",
+    "description": "Displays the nutritional information for the current product.",
+    "category": "polski",
+    "icon": "list-view",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

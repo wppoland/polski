@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/delivery-time",
+    "title": "Delivery Time",
+    "description": "Displays the estimated delivery time for the current product.",
+    "category": "polski",
+    "icon": "clock",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

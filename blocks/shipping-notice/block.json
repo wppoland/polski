@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/shipping-notice",
+    "title": "Shipping costs",
+    "description": "Displays the shipping cost notice for the current product.",
+    "category": "polski",
+    "icon": "cart",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.3
+Stable tag: 1.24.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -284,6 +284,9 @@ Opinie z panelu administracyjnego i informacje z formularza dezaktywacji są zap
 8. Lista życzeń, porównywarka i szybki podgląd na liście produktów.
 
 == Changelog ==
+
+= 1.24.4 =
+* Nowe bloki: bloki danych produktu dla motywów blokowych i edytora - Cena jednostkowa, Czas dostawy, Najniższa cena (Omnibus), Informacja podatkowa, Koszty wysyłki, Producent, Instrukcje bezpieczeństwa, Dokumenty bezpieczeństwa, Zasilanie, Opis wad, Wartości odżywcze, Alergeny, Składniki, Nutri-Score, Informacje o żywności oraz Informacja o bezpieczeństwie produktu (GPSR) - wszystkie w kategorii "Polski". Każdy z nich wyświetla odpowiednie dane produktu i nic nie pokazuje poza kontekstem produktu. Dzięki temu edytor bloków osiąga parytet z widżetami Polski dla Elementora.
 
 = 1.24.3 =
 * Nowe bloki: Formularz zgłoszenia DSA, Informacja o rozstrzyganiu sporów (ODR), Informacja o zwolnieniu z VAT dla małego podatnika oraz Dostępne metody płatności są teraz dostępne jako bloki (w kategorii "Polski"), więc można je umieścić na dowolnej stronie bez pamiętania shortcode'u. Każdy z nich nic nie wyświetla, dopóki odpowiednia funkcja nie zostanie skonfigurowana.

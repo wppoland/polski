@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/food-info",
+    "title": "Food Information",
+    "description": "Displays food and grocery information for the current product.",
+    "category": "polski",
+    "icon": "store",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

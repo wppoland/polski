@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/omnibus-price",
+    "title": "Lowest Price (Omnibus)",
+    "description": "Displays the lowest price from the last 30 days (Omnibus) for the current product.",
+    "category": "polski",
+    "icon": "chart-line",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

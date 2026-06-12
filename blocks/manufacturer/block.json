@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/manufacturer",
+    "title": "Manufacturer",
+    "description": "Displays the manufacturer and EU responsible person details for the current product.",
+    "category": "polski",
+    "icon": "building",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

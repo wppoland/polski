@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/tax-notice",
+    "title": "Tax Information",
+    "description": "Displays the gross/net price and VAT tax information for the current product.",
+    "category": "polski",
+    "icon": "money-alt",
+    "textdomain": "polski",
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ]
+    }
+}

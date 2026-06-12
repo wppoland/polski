@@ -14585,3 +14585,57 @@ msgstr "Dostępne metody płatności"
 
 msgid "Lists the payment methods available in your store."
 msgstr "Wyświetla listę metod płatności dostępnych w sklepie."
+
+msgid "Shipping costs"
+msgstr "Koszty wysyłki"
+
+msgid "GPSR safety information"
+msgstr "Informacja o bezpieczeństwie produktu (GPSR)"
+
+msgid "Displays the price per unit (per kg, litre, piece, etc.) for the current product."
+msgstr "Wyświetla cenę jednostkową (za kg, litr, sztukę itp.) dla bieżącego produktu."
+
+msgid "Displays the estimated delivery time for the current product."
+msgstr "Wyświetla szacowany czas dostawy dla bieżącego produktu."
+
+msgid "Displays the lowest price from the last 30 days (Omnibus) for the current product."
+msgstr "Wyświetla najniższą cenę z ostatnich 30 dni (Omnibus) dla bieżącego produktu."
+
+msgid "Displays the gross/net price and VAT tax information for the current product."
+msgstr "Wyświetla cenę brutto/netto oraz informację o podatku VAT dla bieżącego produktu."
+
+msgid "Displays the shipping cost notice for the current product."
+msgstr "Wyświetla informację o kosztach wysyłki dla bieżącego produktu."
+
+msgid "Displays the manufacturer and EU responsible person details for the current product."
+msgstr "Wyświetla dane producenta i osoby odpowiedzialnej w UE dla bieżącego produktu."
+
+msgid "Displays the product safety instructions for the current product."
+msgstr "Wyświetla instrukcje bezpieczeństwa dla bieżącego produktu."
+
+msgid "Displays the safety documents and declarations for the current product."
+msgstr "Wyświetla dokumenty i deklaracje bezpieczeństwa dla bieżącego produktu."
+
+msgid "Displays the power supply information for the current product."
+msgstr "Wyświetla informacje o zasilaniu dla bieżącego produktu."
+
+msgid "Displays the description of defects for the current product."
+msgstr "Wyświetla opis wad dla bieżącego produktu."
+
+msgid "Displays the nutritional information for the current product."
+msgstr "Wyświetla wartości odżywcze dla bieżącego produktu."
+
+msgid "Displays the allergen declaration for the current product."
+msgstr "Wyświetla informację o alergenach dla bieżącego produktu."
+
+msgid "Displays the ingredients list for the current product."
+msgstr "Wyświetla listę składników dla bieżącego produktu."
+
+msgid "Displays the Nutri-Score label for the current product."
+msgstr "Wyświetla etykietę Nutri-Score dla bieżącego produktu."
+
+msgid "Displays food and grocery information for the current product."
+msgstr "Wyświetla informacje o żywności dla bieżącego produktu."
+
+msgid "Displays the GPSR product safety information for the current product."
+msgstr "Wyświetla informację o bezpieczeństwie produktu (GPSR) dla bieżącego produktu."
