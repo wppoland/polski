@@ -164,6 +164,11 @@ final class CheckboxController extends RestController implements HasHooks
     {
         $id = $request->get_param('id');
         $params = $request->get_json_params();
+        if (! is_array($params)) {
+            // null for an empty or non-JSON body; downstream calls are strictly
+            // typed (extractOverrides/fromArray) and $params['id'] is set below.
+            $params = [];
+        }
         $service = $this->getService();
 
         $existing = $service->get($id);

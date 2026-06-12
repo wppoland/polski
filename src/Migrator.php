@@ -126,7 +126,18 @@ final class Migrator
             return;
         }
 
-        sort($files);
+        // Order by semantic version, not string sort: a plain sort() places
+        // Migration_1_10_0 before Migration_1_2_0, running migrations out of
+        // order once any version component reaches two digits.
+        usort($files, static function (string $a, string $b): int {
+            $version = static fn (string $file): string => str_replace(
+                '_',
+                '.',
+                (string) preg_replace('/^Migration_/', '', basename($file, '.php')),
+            );
+
+            return version_compare($version($a), $version($b));
+        });
 
         foreach ($files as $file) {
             $className = 'Polski\\Migration\\' . basename($file, '.php');

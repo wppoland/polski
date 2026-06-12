@@ -34,6 +34,16 @@ final class ProductDataExtension implements HasHooks
 
     public function registerHooks(): void
     {
+        // This plugin boots on `init`, after `woocommerce_blocks_loaded` has
+        // already fired, so hooking it here would silently never run. Register
+        // immediately when it has fired; the Store API reads the registry per
+        // request, so registering on `init` is in time.
+        if (did_action('woocommerce_blocks_loaded') > 0) {
+            $this->registerExtensions();
+
+            return;
+        }
+
         add_action('woocommerce_blocks_loaded', [$this, 'registerExtensions']);
     }
 
