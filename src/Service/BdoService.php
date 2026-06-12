@@ -23,7 +23,6 @@ use Polski\Contract\HasHooks;
 final class BdoService implements HasHooks
 {
     private const SHORTCODE = 'polski_bdo';
-    private const BLOCK = 'polski/bdo';
 
     public function registerHooks(): void
     {
@@ -54,19 +53,9 @@ final class BdoService implements HasHooks
             return;
         }
 
-        register_block_type(self::BLOCK, [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/bdo', [
             'title' => __('BDO number', 'polski'),
             'description' => __('Displays the shop\'s BDO registration number from the Polski settings.', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'id',
-            'supports' => [
-                'html' => false,
-                'align' => ['wide', 'full'],
-            ],
-            'attributes' => [
-                'show_label' => ['type' => 'boolean', 'default' => true],
-                'label' => ['type' => 'string', 'default' => ''],
-            ],
             'render_callback' => [$this, 'renderBlock'],
         ]);
     }

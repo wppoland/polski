@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/business-info",
+    "title": "Business identification",
+    "description": "Displays the shop's business data (name, NIP, address, contact) from the setup wizard.",
+    "category": "polski",
+    "icon": "id-alt",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] },
+    "attributes": {
+        "format": { "type": "string", "default": "block" },
+        "separator": { "type": "string", "default": " | " },
+        "show_label": { "type": "boolean", "default": true },
+        "show_regon": { "type": "boolean", "default": false },
+        "show_bdo": { "type": "boolean", "default": false }
+    }
+}

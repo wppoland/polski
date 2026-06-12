@@ -41,17 +41,9 @@ final class CopyrightNoticeService implements HasHooks
             return;
         }
 
-        register_block_type('polski/copyright', [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/copyright', [
             'title' => __('Copyright notice', 'polski'),
             'description' => __('A standard copyright line (© YYYY Owner).', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'shield',
-            'supports' => ['html' => false, 'align' => ['wide', 'full']],
-            'attributes' => [
-                'owner' => ['type' => 'string', 'default' => ''],
-                'year' => ['type' => 'string', 'default' => ''],
-                'license' => ['type' => 'string', 'default' => ''],
-            ],
             'render_callback' => [$this, 'renderBlock'],
         ]);
     }

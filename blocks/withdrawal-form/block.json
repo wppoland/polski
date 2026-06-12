@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/withdrawal-form",
+    "title": "Polski - Annex I(B) form template",
+    "description": "The model withdrawal form template (Annex I(B)) pre-filled with merchant data.",
+    "category": "polski",
+    "icon": "media-document",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

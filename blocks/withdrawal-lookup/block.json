@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/withdrawal-lookup",
+    "title": "Polski - withdrawal lookup",
+    "description": "Email + order number lookup form for guests to file a withdrawal.",
+    "category": "polski",
+    "icon": "undo",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

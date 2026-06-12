@@ -21,7 +21,6 @@ use Polski\Contract\HasHooks;
 final class BusinessInfoService implements HasHooks
 {
     private const SHORTCODE = 'polski_business_info';
-    private const BLOCK = 'polski/business-info';
 
     public function registerHooks(): void
     {
@@ -55,22 +54,9 @@ final class BusinessInfoService implements HasHooks
             return;
         }
 
-        register_block_type(self::BLOCK, [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/business-info', [
             'title' => __('Business identification', 'polski'),
             'description' => __('Displays the shop\'s business data (name, NIP, address, contact) from the setup wizard.', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'id-alt',
-            'supports' => [
-                'html' => false,
-                'align' => ['wide', 'full'],
-            ],
-            'attributes' => [
-                'format' => ['type' => 'string', 'default' => 'block'],
-                'separator' => ['type' => 'string', 'default' => ' | '],
-                'show_label' => ['type' => 'boolean', 'default' => true],
-                'show_regon' => ['type' => 'boolean', 'default' => false],
-                'show_bdo' => ['type' => 'boolean', 'default' => false],
-            ],
             'render_callback' => [$this, 'renderBlock'],
         ]);
     }
