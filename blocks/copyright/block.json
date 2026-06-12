@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/copyright",
+    "title": "Copyright notice",
+    "description": "A standard copyright line (© YYYY Owner).",
+    "category": "polski",
+    "icon": "shield",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] },
+    "attributes": {
+        "owner": { "type": "string", "default": "" },
+        "year": { "type": "string", "default": "" },
+        "license": { "type": "string", "default": "" }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "polski/withdrawal-info",
+    "title": "Polski - Annex I(A) information",
+    "description": "Generated information about the consumer right of withdrawal (Annex I(A)).",
+    "category": "polski",
+    "icon": "info",
+    "textdomain": "polski",
+    "supports": { "html": false, "align": ["wide", "full"] }
+}

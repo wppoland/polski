@@ -29,30 +29,21 @@ final class WithdrawalBlocksService implements HasHooks
             return;
         }
 
-        register_block_type('polski/withdrawal-lookup', [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/withdrawal-lookup', [
             'title' => __('Polski - withdrawal lookup', 'polski'),
             'description' => __('Email + order number lookup form for guests to file a withdrawal.', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'undo',
-            'supports' => ['html' => false, 'align' => ['wide', 'full']],
             'render_callback' => static fn (): string => do_shortcode('[polski_withdrawal_lookup]'),
         ]);
 
-        register_block_type('polski/withdrawal-info', [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/withdrawal-info', [
             'title' => __('Polski - Annex I(A) information', 'polski'),
             'description' => __('Generated information about the consumer right of withdrawal (Annex I(A)).', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'info',
-            'supports' => ['html' => false, 'align' => ['wide', 'full']],
             'render_callback' => static fn (): string => do_shortcode('[polski_withdrawal_info]'),
         ]);
 
-        register_block_type('polski/withdrawal-form', [
+        register_block_type(\Polski\PLUGIN_DIR . '/blocks/withdrawal-form', [
             'title' => __('Polski - Annex I(B) form template', 'polski'),
             'description' => __('The model withdrawal form template (Annex I(B)) pre-filled with merchant data.', 'polski'),
-            'category' => 'widgets',
-            'icon' => 'media-document',
-            'supports' => ['html' => false, 'align' => ['wide', 'full']],
             'render_callback' => static fn (): string => do_shortcode('[polski_withdrawal_form_template]'),
         ]);
     }

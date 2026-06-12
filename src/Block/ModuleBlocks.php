@@ -22,6 +22,30 @@ final class ModuleBlocks implements HasHooks
     public function registerHooks(): void
     {
         add_action('init', [$this, 'registerBlocks']);
+        add_filter('block_categories_all', [$this, 'registerCategory']);
+    }
+
+    /**
+     * Group every Polski block under a single "Polski" category in the inserter.
+     *
+     * @param array<int, array<string, mixed>> $categories
+     * @return array<int, array<string, mixed>>
+     */
+    public function registerCategory(array $categories): array
+    {
+        foreach ($categories as $category) {
+            if (($category['slug'] ?? '') === 'polski') {
+                return $categories;
+            }
+        }
+
+        array_unshift($categories, [
+            'slug' => 'polski',
+            'title' => __('Polski', 'polski'),
+            'icon' => null,
+        ]);
+
+        return $categories;
     }
 
     public function registerBlocks(): void
@@ -45,8 +69,11 @@ final class ModuleBlocks implements HasHooks
      */
     private function registerBlock(string $slug, callable $renderCallback): void
     {
-        $metadataPath = \Polski\PLUGIN_DIR . '/resources/js/blocks/' . $slug;
-        $assetPath = \Polski\PLUGIN_DIR . '/build/blocks/' . $slug . '/index.asset.php';
+        // Register from build/blocks (shipped) rather than resources/ (excluded
+        // from the distributed package via .distignore), so the blocks actually
+        // register at runtime on installed sites and not only in the dev tree.
+        $metadataPath = \Polski\PLUGIN_DIR . '/build/blocks/' . $slug;
+        $assetPath = $metadataPath . '/index.asset.php';
 
         if (! file_exists($metadataPath . '/block.json') || ! file_exists($assetPath)) {
             return;

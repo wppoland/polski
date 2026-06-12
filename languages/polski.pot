@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.24.0\n"
+"Project-Id-Version: Polski for WooCommerce 1.24.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-12T11:31:00+00:00\n"
+"POT-Creation-Date: 2026-06-12T13:57:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -23,12 +23,12 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: polski.php
-msgid "https://wppoland.com/pl/polski/"
+msgid "https://plogins.com/pl/polski/"
 msgstr ""
 
 #. Description of the plugin
 #: polski.php
-msgid "Adds product information, checkout, consent, and storefront tools for WooCommerce stores serving customers in Poland."
+msgid "Adds GPSR, Omnibus, RODO/GDPR, withdrawal, NIP, KSeF-ready, product information, and storefront tools for Polish WooCommerce stores."
 msgstr ""
 
 #. Author of the plugin
@@ -1466,6 +1466,7 @@ msgstr ""
 #: src/Admin/AdminPage.php:220
 #: src/Admin/ProductMetaBox.php:45
 #: src/Admin/ProductMetaBox.php:406
+#: src/Block/ModuleBlocks.php:44
 #: src/Compatibility/ElementorCompat.php:35
 #: src/Service/WithdrawalSiteHealthService.php:177
 #: src/Service/WithdrawalSiteHealthService.php:191
@@ -5102,7 +5103,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1031
 #: src/Admin/ModulesPage.php:1038
-#: src/Service/BdoService.php:58
+#: src/Service/BdoService.php:57
 msgid "BDO number"
 msgstr ""
 
@@ -8546,7 +8547,7 @@ msgid "e-mail:"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:65
-#: src/Service/BusinessInfoService.php:118
+#: src/Service/BusinessInfoService.php:104
 #: src/Service/ComplaintTemplateService.php:135
 #: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
@@ -8713,24 +8714,24 @@ msgstr ""
 msgid "Free shipping"
 msgstr ""
 
-#: src/Service/BdoService.php:59
+#: src/Service/BdoService.php:58
 msgid "Displays the shop's BDO registration number from the Polski settings."
 msgstr ""
 
-#: src/Service/BdoService.php:100
-#: src/Service/BusinessInfoService.php:124
+#: src/Service/BdoService.php:89
+#: src/Service/BusinessInfoService.php:110
 msgid "BDO:"
 msgstr ""
 
-#: src/Service/BusinessInfoService.php:59
+#: src/Service/BusinessInfoService.php:58
 msgid "Business identification"
 msgstr ""
 
-#: src/Service/BusinessInfoService.php:60
+#: src/Service/BusinessInfoService.php:59
 msgid "Displays the shop's business data (name, NIP, address, contact) from the setup wizard."
 msgstr ""
 
-#: src/Service/BusinessInfoService.php:121
+#: src/Service/BusinessInfoService.php:107
 msgid "REGON:"
 msgstr ""
 
@@ -9089,17 +9090,17 @@ msgid "A standard copyright line (© YYYY Owner)."
 msgstr ""
 
 #. translators: %s: license identifier
-#: src/Service/CopyrightNoticeService.php:92
-#: src/Service/CopyrightNoticeService.php:155
+#: src/Service/CopyrightNoticeService.php:84
+#: src/Service/CopyrightNoticeService.php:147
 #, php-format
 msgid "License: %s"
 msgstr ""
 
-#: src/Service/CopyrightNoticeService.php:148
+#: src/Service/CopyrightNoticeService.php:140
 msgid "source"
 msgstr ""
 
-#: src/Service/CopyrightNoticeService.php:162
+#: src/Service/CopyrightNoticeService.php:154
 msgid " - "
 msgstr ""
 
@@ -11027,19 +11028,19 @@ msgstr ""
 msgid "Email + order number lookup form for guests to file a withdrawal."
 msgstr ""
 
-#: src/Service/WithdrawalBlocksService.php:42
+#: src/Service/WithdrawalBlocksService.php:39
 msgid "Polski - Annex I(A) information"
 msgstr ""
 
-#: src/Service/WithdrawalBlocksService.php:43
+#: src/Service/WithdrawalBlocksService.php:40
 msgid "Generated information about the consumer right of withdrawal (Annex I(A))."
 msgstr ""
 
-#: src/Service/WithdrawalBlocksService.php:51
+#: src/Service/WithdrawalBlocksService.php:45
 msgid "Polski - Annex I(B) form template"
 msgstr ""
 
-#: src/Service/WithdrawalBlocksService.php:52
+#: src/Service/WithdrawalBlocksService.php:46
 msgid "The model withdrawal form template (Annex I(B)) pre-filled with merchant data."
 msgstr ""
 
@@ -11842,6 +11843,66 @@ msgstr ""
 
 #: resources/js/blocks/product-slider/index.js:66
 msgid "Dynamic merchandising slider rendered on the frontend."
+msgstr ""
+
+#: blocks/bdo/block.json
+msgctxt "block title"
+msgid "BDO number"
+msgstr ""
+
+#: blocks/bdo/block.json
+msgctxt "block description"
+msgid "Displays the shop's BDO registration number from the Polski settings."
+msgstr ""
+
+#: blocks/business-info/block.json
+msgctxt "block title"
+msgid "Business identification"
+msgstr ""
+
+#: blocks/business-info/block.json
+msgctxt "block description"
+msgid "Displays the shop's business data (name, NIP, address, contact) from the setup wizard."
+msgstr ""
+
+#: blocks/copyright/block.json
+msgctxt "block title"
+msgid "Copyright notice"
+msgstr ""
+
+#: blocks/copyright/block.json
+msgctxt "block description"
+msgid "A standard copyright line (© YYYY Owner)."
+msgstr ""
+
+#: blocks/withdrawal-form/block.json
+msgctxt "block title"
+msgid "Polski - Annex I(B) form template"
+msgstr ""
+
+#: blocks/withdrawal-form/block.json
+msgctxt "block description"
+msgid "The model withdrawal form template (Annex I(B)) pre-filled with merchant data."
+msgstr ""
+
+#: blocks/withdrawal-info/block.json
+msgctxt "block title"
+msgid "Polski - Annex I(A) information"
+msgstr ""
+
+#: blocks/withdrawal-info/block.json
+msgctxt "block description"
+msgid "Generated information about the consumer right of withdrawal (Annex I(A))."
+msgstr ""
+
+#: blocks/withdrawal-lookup/block.json
+msgctxt "block title"
+msgid "Polski - withdrawal lookup"
+msgstr ""
+
+#: blocks/withdrawal-lookup/block.json
+msgctxt "block description"
+msgid "Email + order number lookup form for guests to file a withdrawal."
 msgstr ""
 
 #: resources/js/blocks/ajax-filters/block.json

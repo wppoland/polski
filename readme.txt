@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.1
+Stable tag: 1.24.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -366,6 +366,10 @@ Admin feedback and deactivation feedback are stored locally in WordPress and are
 8. Wishlist, compare, and quick view on product listings
 
 == Changelog ==
+
+= 1.24.2 =
+* New: all Polski blocks are now grouped under a dedicated "Polski" category in the block inserter, and the block metadata (Business identification, BDO number, Copyright notice, the three withdrawal blocks) is registered from block.json so the blocks are properly listed and discoverable.
+* Fixed: the storefront blocks (AJAX search, AJAX filters, product slider) were not being registered on installed sites; they now register correctly and appear in the editor.
 
 = 1.24.1 =
 * Fix: the Gallery & Zoom lightbox could remain on screen as a full-screen dark overlay whose close button did not dismiss it, on themes where the overlay inherited a forced display value. The closed state is now always hidden.

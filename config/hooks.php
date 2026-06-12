@@ -118,6 +118,7 @@ return [
     FeaturedVideoService::class,
     GalleryZoomService::class,
     ProductSliderService::class,
+    \Polski\Block\ModuleBlocks::class,
     WaitlistService::class,
     MinimumOrderService::class,
     ReviewRequestService::class,
