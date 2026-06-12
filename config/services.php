@@ -374,10 +374,6 @@ return static function (Container $c): void {
         $c->get(DeliveryTimeService::class),
         $c->get(ProductInfoService::class),
     ));
-    $c->singleton(\Polski\Block\StoreApi\CheckoutValidation::class, static fn () => new \Polski\Block\StoreApi\CheckoutValidation(
-        $c->get(CheckboxService::class),
-        $c->get(ConsentLogRepository::class),
-    ));
     $c->singleton(\Polski\Block\ModuleBlocks::class, static fn () => new \Polski\Block\ModuleBlocks(
         $c->get(SearchService::class),
         $c->get(FilterService::class),
