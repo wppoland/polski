@@ -279,8 +279,8 @@ msgid "{price} / {unit}"
 msgstr "{price} / {unit}"
 
 #: config/defaults.php:71
-msgid "zzgl. kosztów wysyłki"
-msgstr "be pristatymo išlaidų"
+msgid "plus koszty wysyłki"
+msgstr "plius pristatymo išlaidos"
 
 #: config/defaults.php:73
 msgid "od {price}"

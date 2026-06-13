@@ -250,7 +250,7 @@ msgid "{price} / {unit}"
 msgstr "{price} / {unit}"
 
 #: config/defaults.php:71
-msgid "zzgl. kosztów wysyłki"
+msgid "plus koszty wysyłki"
 msgstr "另加配送费用"
 
 #: config/defaults.php:73
