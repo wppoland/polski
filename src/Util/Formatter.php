@@ -18,12 +18,13 @@ final class Formatter
     }
 
     /**
-     * Format a VAT rate for display (e.g., "23%").
+     * Format a VAT rate for the {rate} placeholder (e.g., "23"). The surrounding
+     * template (e.g. "w tym {rate}% VAT") supplies the "%" sign, so this MUST NOT
+     * append one — otherwise the notice renders a doubled "23%%".
      */
     public static function vatRate(float $rate): string
     {
-        $formatted = rtrim(rtrim(number_format($rate, 2, ',', ''), '0'), ',');
-        return $formatted . '%';
+        return rtrim(rtrim(number_format($rate, 2, ',', ''), '0'), ',');
     }
 
     /**

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.4
+Stable tag: 1.24.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -284,6 +284,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 8. Wishlist, comparison and quick view on the product list.
 
 == Changelog ==
+
+= 1.24.5 =
+* Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" → "23%").
+* Fix: the shipping-costs notice no longer runs into the VAT notice ("VATzzgl." → proper spacing), including in page builders that don't load the plugin stylesheet.
+* Fix: the default Polish shipping-costs label is now "plus koszty wysyłki" (previously an untranslated German "zzgl. kosztów wysyłki").
 
 = 1.24.4 =
 * New blocks: product-data blocks for block themes and the editor - Unit Price, Delivery Time, Lowest Price (Omnibus), Tax Information, Shipping Costs, Manufacturer, Safety Instructions, Safety Documents, Power Supply, Defect Description, Nutrition Values, Allergens, Ingredients, Nutri-Score, Food Information and Product Safety Information (GPSR) - all in the "Polski" category. Each one displays the matching product data and shows nothing outside a product context. This brings the block editor to parity with the Polski widgets for Elementor.
