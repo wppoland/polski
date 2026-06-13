@@ -278,7 +278,7 @@ msgstr "{price} / {unit}"
 
 #: config/defaults.php:71
 msgid "zzgl. kosztów wysyłki"
-msgstr "zzgl. kosztów wysyłki"
+msgstr "plus koszty wysyłki"
 
 #: config/defaults.php:73
 msgid "od {price}"

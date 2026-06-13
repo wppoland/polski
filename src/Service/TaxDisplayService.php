@@ -91,7 +91,7 @@ final class TaxDisplayService
         $shippingUrl = get_permalink($shippingPageId);
 
         $html = sprintf(
-            '<span class="polski-shipping-notice"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+            '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
             esc_url($shippingUrl ?: '#'),
             esc_html($text),
         );
