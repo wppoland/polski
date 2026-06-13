@@ -160,23 +160,24 @@ final class PriceDisplayServiceTest extends TestCase
 
     public function testVatRateFormatsStandardRate(): void
     {
-        $this->assertSame('23%', Formatter::vatRate(23.0));
+        // Returns the bare number; the notice template supplies the "%".
+        $this->assertSame('23', Formatter::vatRate(23.0));
     }
 
     public function testVatRateFormatsReducedRate(): void
     {
-        $this->assertSame('8%', Formatter::vatRate(8.0));
-        $this->assertSame('5%', Formatter::vatRate(5.0));
+        $this->assertSame('8', Formatter::vatRate(8.0));
+        $this->assertSame('5', Formatter::vatRate(5.0));
     }
 
     public function testVatRateFormatsZeroRate(): void
     {
-        $this->assertSame('0%', Formatter::vatRate(0.0));
+        $this->assertSame('0', Formatter::vatRate(0.0));
     }
 
     public function testVatRateFormatsDecimalRate(): void
     {
-        $this->assertSame('7,5%', Formatter::vatRate(7.5));
+        $this->assertSame('7,5', Formatter::vatRate(7.5));
     }
 
     // ── wc_price stub produces expected format ──────────────────────────
