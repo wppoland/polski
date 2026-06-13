@@ -30,7 +30,6 @@ resources
 scripts
 tests
 tsconfig.json
-vendor
 vite.config.ts
 playwright.config.ts
 playwright-report
