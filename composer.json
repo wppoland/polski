@@ -9,9 +9,16 @@
             "homepage": "https://wppoland.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/wppoland/storefront-kit"
+        }
+    ],
     "require": {
         "php": ">=8.1",
-        "league/html-to-markdown": "^5.1"
+        "league/html-to-markdown": "^5.1",
+        "wppoland/storefront-kit": "^1.0"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",
@@ -26,8 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Polski\\": "src/",
-            "WPPoland\\StorefrontKit\\": "packages/storefront-kit/src/"
+            "Polski\\": "src/"
         }
     },
     "autoload-dev": {
