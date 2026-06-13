@@ -232,7 +232,7 @@ msgid "{price} / {unit}"
 msgstr ""
 
 #: config/defaults.php:71
-msgid "zzgl. kosztów wysyłki"
+msgid "plus koszty wysyłki"
 msgstr ""
 
 #: config/defaults.php:73

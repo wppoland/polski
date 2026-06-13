@@ -68,7 +68,7 @@ return [
         'unit_price_enabled' => true,
         'unit_price_text' => __('{price} / {unit}', 'polski'),
         'shipping_costs_notice_enabled' => true,
-        'shipping_costs_text' => __('zzgl. kosztów wysyłki', 'polski'),
+        'shipping_costs_text' => __('plus koszty wysyłki', 'polski'),
         'from_price_enabled' => true,
         'from_price_text' => __('od {price}', 'polski'),
     ],
