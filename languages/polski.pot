@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-12T15:43:05+00:00\n"
+"POT-Creation-Date: 2026-06-13T10:36:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -8352,7 +8352,7 @@ msgstr ""
 #: src/Service/AjaxAddToCartService.php:111
 #: src/Service/CompareService.php:426
 #: src/Service/QuickViewService.php:123
-#: src/Service/WaitlistService.php:102
+#: src/Service/WaitlistService.php:43
 #: src/Service/WishlistService.php:285
 msgid "Product not found."
 msgstr ""
@@ -11090,39 +11090,39 @@ msgstr ""
 msgid "Quality guarantee"
 msgstr ""
 
-#: src/Service/WaitlistService.php:73
+#: src/Service/WaitlistService.php:42
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: src/Service/WaitlistService.php:106
+#: src/Service/WaitlistService.php:44
 msgid "Waitlist is unavailable for this product."
 msgstr ""
 
-#: src/Service/WaitlistService.php:110
+#: src/Service/WaitlistService.php:45
 msgid "Provide a valid email address."
 msgstr ""
 
-#: src/Service/WaitlistService.php:114
+#: src/Service/WaitlistService.php:46
 msgid "You must accept the consent for email contact."
 msgstr ""
 
-#: src/Service/WaitlistService.php:118
+#: src/Service/WaitlistService.php:47
 msgid "Login to join the waitlist."
 msgstr ""
 
-#: src/Service/WaitlistService.php:124
+#: src/Service/WaitlistService.php:48
 msgid "Thank you. You have been added to the waitlist."
 msgstr ""
 
-#: src/Service/WaitlistService.php:152
+#: src/Service/WaitlistService.php:49
 msgid "Product back in stock - {product_name}"
 msgstr ""
 
-#: src/Service/WaitlistService.php:158
+#: src/Service/WaitlistService.php:50
 msgid "Product {product_name} is back in stock."
 msgstr ""
 
-#: src/Service/WaitlistService.php:160
+#: src/Service/WaitlistService.php:51
 msgid "If you no longer wish to receive these messages, simply ignore this email."
 msgstr ""
 
