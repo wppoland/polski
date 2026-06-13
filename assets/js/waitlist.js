@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       const body = new URLSearchParams(new FormData(form));
-      body.set('action', 'polski_waitlist_subscribe');
+      body.set('action', config.action || 'polski_waitlist_subscribe');
       body.set('nonce', config.nonce);
 
       form.setAttribute('aria-busy', 'true');
