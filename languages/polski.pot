@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.24.4\n"
+"Project-Id-Version: Polski for WooCommerce 1.24.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-13T10:36:16+00:00\n"
+"POT-Creation-Date: 2026-06-14T10:57:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -116,7 +116,7 @@ msgstr ""
 #: src/Admin/PageCompliancePage.php:152
 #: src/Admin/PageCompliancePage.php:201
 #: src/Admin/WithdrawalsAdminPage.php:165
-#: src/Admin/WithdrawalSettingsPage.php:272
+#: src/Admin/WithdrawalSettingsPage.php:303
 #: src/Privacy/WithdrawalPrivacyService.php:210
 #: src/Service/DSAService.php:175
 #: src/Service/MyAccountWithdrawalsService.php:100
@@ -4913,7 +4913,7 @@ msgid "Email field placeholder"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:953
-#: src/Admin/WithdrawalSettingsPage.php:220
+#: src/Admin/WithdrawalSettingsPage.php:245
 msgid "Consent text"
 msgstr ""
 
@@ -6797,9 +6797,9 @@ msgid "Register manually"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:100
-#: src/Admin/WithdrawalSettingsPage.php:37
-#: src/Admin/WithdrawalSettingsPage.php:38
-#: src/Admin/WithdrawalSettingsPage.php:139
+#: src/Admin/WithdrawalSettingsPage.php:57
+#: src/Admin/WithdrawalSettingsPage.php:58
+#: src/Admin/WithdrawalSettingsPage.php:159
 msgid "Withdrawal settings"
 msgstr ""
 
@@ -6980,151 +6980,151 @@ msgstr ""
 msgid "Withdrawal request registered."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:140
+#: src/Admin/WithdrawalSettingsPage.php:160
 msgid "Central place for the consumer right of withdrawal flow (Directive 2011/83/EU as amended by 2023/2673)."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:145
+#: src/Admin/WithdrawalSettingsPage.php:166
 msgid "General"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:148
+#: src/Admin/WithdrawalSettingsPage.php:169
 msgid "Withdrawal period (days)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:151
+#: src/Admin/WithdrawalSettingsPage.php:172
 msgid "Standard EU period is 14 days. Increase if your store offers a longer voluntary period."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:155
+#: src/Admin/WithdrawalSettingsPage.php:176
 msgid "Trigger statuses"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:165
+#: src/Admin/WithdrawalSettingsPage.php:186
 msgid "The withdrawal 14-day clock starts when an order enters any of the selected statuses."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:170
+#: src/Admin/WithdrawalSettingsPage.php:193
 msgid "Guest flow"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:173
+#: src/Admin/WithdrawalSettingsPage.php:196
 msgid "Guest lookup page"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:180
+#: src/Admin/WithdrawalSettingsPage.php:203
 msgid "- none -"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:186
+#: src/Admin/WithdrawalSettingsPage.php:209
 msgid "Page containing the [polski_withdrawal_lookup] shortcode. Required for guests to file withdrawals."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:190
+#: src/Admin/WithdrawalSettingsPage.php:213
 msgid "My Account endpoint slug"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:193
+#: src/Admin/WithdrawalSettingsPage.php:216
 msgid "Leave blank for the default \"polski-withdrawals\". Flush permalinks after changing."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:198
+#: src/Admin/WithdrawalSettingsPage.php:223
 msgid "Digital products (Art. 16(m))"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:201
+#: src/Admin/WithdrawalSettingsPage.php:226
 msgid "Consent mode"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:205
+#: src/Admin/WithdrawalSettingsPage.php:230
 msgid "Required - block checkout unless the consumer ticks the consent box."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:206
+#: src/Admin/WithdrawalSettingsPage.php:231
 msgid "Optional - show an unchecked consent box. Only ticked orders become exempt."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:207
+#: src/Admin/WithdrawalSettingsPage.php:232
 msgid "Hidden - do not collect consent. Digital orders retain the right of withdrawal."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:223
+#: src/Admin/WithdrawalSettingsPage.php:248
 msgid "Leave blank to use the default Polish wording aligned with Art. 38 pkt 13."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:227
+#: src/Admin/WithdrawalSettingsPage.php:252
 msgid "Pro: download verification"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:231
+#: src/Admin/WithdrawalSettingsPage.php:256
 msgid "Allow withdrawal of digital products that the consumer never downloaded (Pro)."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:237
+#: src/Admin/WithdrawalSettingsPage.php:264
 msgid "Annex generator"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:240
+#: src/Admin/WithdrawalSettingsPage.php:267
 msgid "Annex locale"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:243
+#: src/Admin/WithdrawalSettingsPage.php:270
 msgid "Auto (use site locale)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:250
+#: src/Admin/WithdrawalSettingsPage.php:277
 msgid "Pro extension provides non-Polish languages for Annex I(B)."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:255
+#: src/Admin/WithdrawalSettingsPage.php:284
 msgid "Refund handling (Pro)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:258
+#: src/Admin/WithdrawalSettingsPage.php:287
 msgid "Product Bundles refund mode"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:261
+#: src/Admin/WithdrawalSettingsPage.php:290
 msgid "Whole bundle (refund parent + siblings)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:262
+#: src/Admin/WithdrawalSettingsPage.php:291
 msgid "Proportional (refund only the withdrawn child's share)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:263
+#: src/Admin/WithdrawalSettingsPage.php:292
 msgid "Remove bundle discount (refund at standalone price)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:269
+#: src/Admin/WithdrawalSettingsPage.php:300
 msgid "AI features (WordPress AI Client)"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:277
+#: src/Admin/WithdrawalSettingsPage.php:308
 msgid "Available."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:278
+#: src/Admin/WithdrawalSettingsPage.php:309
 msgid "WordPress AI Client is loaded and at least one provider is configured for text generation."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:280
+#: src/Admin/WithdrawalSettingsPage.php:311
 msgid "Not available."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:281
+#: src/Admin/WithdrawalSettingsPage.php:312
 msgid "Install WordPress 7.0 or higher and at least one AI Client provider plugin (for example Vercel AI Gateway, AI Provider for Anthropic, AI Provider for Google, or AI Provider for OpenAI) to enable AI augmentation."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:287
+#: src/Admin/WithdrawalSettingsPage.php:318
 msgid "Classify withdrawal reasons"
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:297
+#: src/Admin/WithdrawalSettingsPage.php:328
 msgid "Ask the AI Client to classify the free-text reason on every new withdrawal into one of a fixed set of categories (defective, wrong item, size mismatch, changed mind, late delivery, damaged in transit, not as described, other)."
 msgstr ""
 
-#: src/Admin/WithdrawalSettingsPage.php:300
+#: src/Admin/WithdrawalSettingsPage.php:331
 msgid "Disabled by default. No outbound HTTP request is ever made by this plugin; the AI Client provider plugin you install handles the network call. Classification runs silently in the background after a customer or operator files a declaration; failures (no provider, prevented prompt, network error) are absorbed and never block the withdrawal flow."
 msgstr ""
 
