@@ -1,24 +1,82 @@
 @import url('polski-ui-tokens.css');
 
+/*
+ * Polski waitlist form.
+ * Presentation only - markup and strings are produced server-side / by the
+ * shared WaitlistEngine. Tokens come from polski-ui-tokens.css so the surface
+ * tracks the rest of the storefront UI and supports dark mode.
+ */
+
 .polski-waitlist {
-    margin-top: 20px;
-    padding: 18px;
-    border: 1px solid rgba(0, 0, 0, .08);
-    border-radius: 14px;
-    background: #fafafa;
+    margin-block-start: 20px;
+    padding: clamp(14px, 12px + 0.6vw, 18px);
+    border: 1px solid var(--polski-surface-border, rgba(0, 0, 0, .08));
+    border-radius: var(--polski-surface-radius-lg, 14px);
+    background: var(--polski-surface-muted, #fafafa);
+    color: inherit;
+}
+
+.polski-waitlist > :first-child {
+    margin-block-start: 0;
 }
 
 .polski-waitlist-form {
     display: grid;
     gap: 12px;
+    margin-block-start: 12px;
+}
+
+.polski-waitlist-form input[type="email"] {
+    inline-size: 100%;
+    box-sizing: border-box;
 }
 
 .polski-waitlist__privacy {
     display: flex;
     gap: 8px;
     align-items: flex-start;
+    line-height: 1.45;
 }
 
+.polski-waitlist__privacy input[type="checkbox"] {
+    margin-block-start: 0.2em;
+    flex-shrink: 0;
+}
+
+.polski-waitlist-form button {
+    transition: transform .12s ease, filter .12s ease;
+}
+
+.polski-waitlist-form button:hover {
+    filter: brightness(1.04);
+}
+
+.polski-waitlist-form button:active {
+    transform: translateY(1px);
+}
+
+.polski-waitlist-form input:focus-visible,
+.polski-waitlist-form button:focus-visible {
+    outline: 2px solid var(--polski-crimson, #D4213D);
+    outline-offset: 2px;
+}
+
+/* Message area keeps a fixed min-height so showing it does not shift layout (CLS). */
 .polski-waitlist__message {
     margin: 0;
+    min-block-size: 1.2em;
+}
+
+.polski-waitlist__message[hidden] {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polski-waitlist-form button {
+        transition: none;
+    }
+
+    .polski-waitlist-form button:active {
+        transform: none;
+    }
 }

@@ -1841,7 +1841,7 @@ final class ModulesPage implements HasHooks
 
         // HTML type - raw output.
         if ($type === 'html') {
-            echo '<div style="margin-bottom:8px;">' . wp_kses_post($field['html'] ?? '') . '</div>';
+            echo '<div class="polski-field__html">' . wp_kses_post($field['html'] ?? '') . '</div>';
             return;
         }
 
@@ -1859,11 +1859,11 @@ final class ModulesPage implements HasHooks
             echo '<th scope="row">' . esc_html($label) . '</th>';
             echo '<td>';
         } else {
-            echo '<div style="margin-bottom:10px;">';
+            echo '<div class="polski-field">';
         }
 
         if ($type === 'checkbox') {
-            echo '<label style="display:flex;align-items:center;gap:6px;font-size:13px;">';
+            echo '<label class="polski-field__label--checkbox">';
             printf(
                 '<input type="checkbox" name="%s" value="1" %s>',
                 esc_attr($inputName),
@@ -1873,35 +1873,35 @@ final class ModulesPage implements HasHooks
             echo '</label>';
         } else {
             if ($label !== '') {
-                echo '<label style="display:block;font-size:12px;font-weight:600;margin-bottom:3px;">' . esc_html($label) . '</label>';
+                echo '<label class="polski-field__label">' . esc_html($label) . '</label>';
             }
 
             if ($type === 'text') {
                 printf(
-                    '<input type="text" name="%s" value="%s" class="regular-text" style="width:100%%;font-size:12px;">',
+                    '<input type="text" name="%s" value="%s" class="regular-text polski-field__control polski-field__control--text">',
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
             } elseif ($type === 'email') {
                 printf(
-                    '<input type="email" name="%s" value="%s" class="regular-text" style="width:100%%;font-size:12px;">',
+                    '<input type="email" name="%s" value="%s" class="regular-text polski-field__control polski-field__control--text">',
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
             } elseif ($type === 'number') {
                 printf(
-                    '<input type="number" name="%s" value="%s" class="small-text" style="width:80px;">',
+                    '<input type="number" name="%s" value="%s" class="small-text">',
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
             } elseif ($type === 'textarea') {
                 printf(
-                    '<textarea name="%s" rows="3" style="width:100%%;font-size:12px;">%s</textarea>',
+                    '<textarea name="%s" rows="3" class="polski-field__control polski-field__control--textarea">%s</textarea>',
                     esc_attr($inputName),
                     esc_textarea((string) $currentValue),
                 );
             } elseif ($type === 'select') {
-                echo '<select name="' . esc_attr($inputName) . '" style="font-size:12px;">';
+                echo '<select name="' . esc_attr($inputName) . '" class="polski-field__control">';
                 foreach (($field['options'] ?? []) as $val => $optLabel) {
                     printf(
                         '<option value="%s" %s>%s</option>',
@@ -1913,7 +1913,7 @@ final class ModulesPage implements HasHooks
                 echo '</select>';
             } elseif ($type === 'delivery_time_select') {
                 $terms = get_terms(['taxonomy' => 'polski_delivery_time', 'hide_empty' => false]);
-                echo '<select name="' . esc_attr($inputName) . '" style="font-size:12px;">';
+                echo '<select name="' . esc_attr($inputName) . '" class="polski-field__control">';
                 echo '<option value="">-- ' . esc_html__('none', 'polski') . ' --</option>';
                 if (is_array($terms)) {
                     foreach ($terms as $term) {

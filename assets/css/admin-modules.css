@@ -209,3 +209,93 @@
 	color: #646970;
 	font-style: italic;
 }
+
+/* ==========================================================================
+   Settings field controls (replaces per-element inline styles in
+   ModulesPage::renderSettingsField). Presentation only.
+   ========================================================================== */
+.polski-field {
+	margin-block-end: 10px;
+}
+
+.polski-field__label {
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	margin-block-end: 3px;
+}
+
+.polski-field__label--checkbox {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.polski-field__control {
+	font-size: 12px;
+}
+
+.polski-field__control--text,
+.polski-field__control--textarea {
+	width: 100%;
+}
+
+.polski-field__html {
+	margin-block-end: 8px;
+}
+
+/* ==========================================================================
+   Reduced motion: disable the card / toggle transitions.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+	.sp-card,
+	.sp-toggle__track,
+	.sp-toggle__knob {
+		transition: none;
+	}
+}
+
+/* ==========================================================================
+   Dark mode. wp-admin colour schemes vary; this follows the OS preference and
+   only restyles Polski-namespaced surfaces so it never leaks into core admin.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+	.polski-modules-table.polski-modules-table {
+		--pl-white: #1e1f24;
+		--pl-line: #3a3d45;
+		--pl-line-soft: #2f323a;
+		--pl-surface: #26282e;
+		--pl-ink: #eceae7;
+		--pl-ink-soft: #c4c8d0;
+		--pl-slate: #9aa0aa;
+	}
+
+	.polski-modules-group-header th {
+		background: #26282e;
+		color: #eceae7;
+		border-color: #3a3d45;
+	}
+
+	.polski-modules-subgroup-header td {
+		color: #b8bbc4;
+	}
+
+	.sp-card {
+		background: #1e1f24;
+		border-color: #3a3d45;
+	}
+
+	.polski-modules-desc-text {
+		color: #c4c8d0;
+	}
+
+	.polski-modules-settings-cell {
+		background: #26282e;
+	}
+
+	.sp-card__help-tooltip {
+		background: #000;
+	}
+}
