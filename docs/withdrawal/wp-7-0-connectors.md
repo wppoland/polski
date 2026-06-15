@@ -1,6 +1,6 @@
 # WordPress 7.0 Connectors API - Polski integration sketch
 
-This document plans how the Polski plugin family adopts the new
+This document plans how the Polski plugin adopts the new
 [Connectors API](https://make.wordpress.org/core/2026/03/18/introducing-the-connectors-api-in-wordpress-7-0/)
 landing in WordPress 7.0 (stable expected mid-2026).
 

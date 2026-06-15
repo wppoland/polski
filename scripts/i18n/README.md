@@ -1,4 +1,4 @@
-# i18n maintenance fan-out
+# i18n maintenance
 
 Reusable helpers for the translation pass described in `docs/NEXT-STEPS.md`.
 They translate the entries that show up in the wrong language because the stored
@@ -20,11 +20,11 @@ translation is empty or just a copy of the English (or Polish) source.
    php scripts/i18n/po-analyze.php languages dump        # empty + English/Polish copies
    ```
 
-3. Fan out one subagent per locale. Give each agent `/tmp/untr-<loc>.json` and
-   ask it to translate ONLY the genuine natural-language strings into that
-   language, skipping brand names, URLs, codes/placeholders (`%s`, `{done}`,
-   `[shortcode]`), and strings already in the target language. Each agent
-   returns `{ pairs: [{ src, tr }] }`. Write that to `/tmp/map-<loc>.json`.
+3. For each locale, work through `/tmp/untr-<loc>.json` and translate ONLY the
+   genuine natural-language strings into that language, skipping brand names,
+   URLs, codes/placeholders (`%s`, `{done}`, `[shortcode]`), and strings already
+   in the target language. Collect the results as
+   `{ pairs: [{ src, tr }] }` and write them to `/tmp/map-<loc>.json`.
 
 4. Build a compendium and merge it over the catalog (agent translations win):
    ```
