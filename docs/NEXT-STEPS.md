@@ -1,4 +1,4 @@
-# Next steps / orchestration handoff
+# Next steps
 
 Last updated: 2026-06-03. This file is the continuation plan so work can resume
 on another machine. It is in `.distignore`, so it never ships.
@@ -76,10 +76,10 @@ on another machine. It is in `.distignore`, so it never ships.
    correctly via the msgid fallback; leave them.
 6. **Optional / skipped:** WP-Full-Picture "Reactions" and "Analytics
    Dashboards" were intentionally not ported (low value / heavy).
-7. **Recurring scout** (`trig_01HvFvB6bjN2ZbU67kWotU6Z`): weekly WP/WC/API
-   update check that opens draft PRs; nothing to do unless a PR lands.
+7. **Recurring update check**: weekly WP/WC/API update check that opens draft
+   PRs; nothing to do unless a PR lands.
 
-## Orchestration notes (how to reproduce)
+## Reproduction notes
 
 - **wp-env**: `npm run env:start`; admin at `http://localhost:8888/wp-admin`
   (`admin` / `password`); currently WP 7.0.
@@ -87,11 +87,11 @@ on another machine. It is in `.distignore`, so it never ships.
   and WordPress Plugin Check on the **clean package** (dev files like
   `.DS_Store`, `node_modules`, `tests` are excluded by `.distignore`; check the
   package, not the working tree).
-- **i18n fan-out pattern** (used for tooltips + copy fixes): regenerate POT
+- **i18n pass** (used for tooltips + copy fixes): regenerate POT
   (`wp i18n make-pot`), detect untranslated entries (empty `msgstr` or
-  `msgstr == msgid`) per locale with `scripts/i18n/po-analyze.php`, run one
-  subagent per locale to translate only the genuine natural-language gaps
-  (skip brand names, URLs, codes, and strings already in the target language),
+  `msgstr == msgid`) per locale with `scripts/i18n/po-analyze.php`, translate
+  only the genuine natural-language gaps per locale (skip brand names, URLs,
+  codes, and strings already in the target language),
   rebuild a compendium with `scripts/i18n/build-po.php`, merge with
   `msgcat --use-first <trans> <locale> -o <merged>`, then `wp i18n make-mo` +
   `wp i18n make-json`.
