@@ -39,17 +39,32 @@
             ? '<img src="' + n.image + '" alt="" loading="lazy">'
             : '';
 
-        var toast = document.createElement('a');
-        toast.href = n.url;
+        var toast = document.createElement('div');
         toast.className = 'polski-sp-toast';
         toast.setAttribute('role', 'status');
-        toast.innerHTML = imgHtml +
+
+        var link = document.createElement('a');
+        link.href = n.url;
+        link.innerHTML = imgHtml +
             '<div>' +
                 '<div><strong>' + escHtml(n.name) + '</strong> ' + escHtml(n.city) + '</div>' +
                 '<div>' + escHtml(n.product) + '</div>' +
                 '<div class="sp-time">' + escHtml(n.time) + '</div>' +
-            '</div>' +
-            '<span class="sp-close" onclick="event.preventDefault();event.stopPropagation();this.parentElement.remove()">&times;</span>';
+            '</div>';
+
+        var close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'sp-close';
+        close.setAttribute('aria-label', config.dismissLabel || 'Dismiss');
+        close.innerHTML = '&times;';
+        close.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toast.remove();
+        });
+
+        toast.appendChild(link);
+        toast.appendChild(close);
 
         container.appendChild(toast);
 
