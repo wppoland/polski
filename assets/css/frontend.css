@@ -3,62 +3,103 @@
  *
  * Minimal footprint - only structural styles.
  * Colors inherit from the theme. No render-blocking impact.
+ *
+ * Presentation tokens live on :root so themes can override them without
+ * editing this file. Logical properties (margin-block, etc.) keep spacing
+ * correct in RTL contexts. No computed values or strings live here -
+ * markup and amounts are produced server-side; this file is look-and-feel only.
  */
+
+:root {
+    --polski-fs-meta: clamp(0.78em, 0.74em + 0.2vw, 0.85em);
+    --polski-color-meta: #666;
+    --polski-color-meta-soft: #888;
+    --polski-color-meta-strong: #555;
+    --polski-color-exempt: #b36b00;
+    --polski-color-link: #666;
+    --polski-color-link-hover: #333;
+    --polski-surface-soft: #f8f8f8;
+    --polski-surface-card: #fafafa;
+    --polski-line-soft: #eee;
+    --polski-radius-xs: 3px;
+    --polski-radius-sm: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --polski-color-meta: #b8bbc4;
+        --polski-color-meta-soft: #9aa0aa;
+        --polski-color-meta-strong: #c4c8d0;
+        --polski-color-exempt: #e0a040;
+        --polski-color-link: #b8bbc4;
+        --polski-color-link-hover: #eceae7;
+        --polski-surface-soft: #26282e;
+        --polski-surface-card: #1e1f24;
+        --polski-line-soft: #3a3d45;
+    }
+}
 
 /* === Product display elements === */
 
 .polski-unit-price {
-    font-size: 0.85em;
-    color: #666;
-    margin: 4px 0;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta);
+    margin-block: 4px;
 }
 
 .polski-omnibus-price {
-    font-size: 0.8em;
-    color: #888;
-    margin: 4px 0;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-soft);
+    margin-block: 4px;
     padding: 4px 8px;
-    background: #f8f8f8;
-    border-radius: 3px;
+    background: var(--polski-surface-soft);
+    border-radius: var(--polski-radius-xs);
 }
 
 .polski-delivery-time {
-    font-size: 0.85em;
-    color: #555;
-    margin: 6px 0;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-strong);
+    margin-block: 6px;
 }
 
 .polski-delivery-time__text::before {
     content: "\1F4E6"; /* package emoji */
-    margin-right: 4px;
+    margin-inline-end: 4px;
 }
 
 .polski-tax-info {
-    font-size: 0.8em;
-    color: #888;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-soft);
     display: block;
-    margin: 2px 0;
+    margin-block: 2px;
 }
 
 .polski-tax-info--exempt {
-    color: #b36b00;
+    color: var(--polski-color-exempt);
     font-style: italic;
 }
 
 .polski-shipping-notice {
-    font-size: 0.8em;
+    font-size: var(--polski-fs-meta);
     display: block;
-    margin: 2px 0;
+    margin-block: 2px;
 }
 
 .polski-shipping-notice a {
-    color: #666;
+    color: var(--polski-color-link);
     text-decoration: underline;
     text-decoration-style: dotted;
+    transition: color 0.15s ease;
 }
 
 .polski-shipping-notice a:hover {
-    color: #333;
+    color: var(--polski-color-link-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polski-shipping-notice a {
+        transition: none;
+    }
 }
 
 /* === Manufacturer / GPSR === */
@@ -69,9 +110,9 @@
 .polski-safety-instructions,
 .polski-power-supply,
 .polski-defect-description {
-    font-size: 0.85em;
-    color: #555;
-    margin: 4px 0;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-strong);
+    margin-block: 4px;
 }
 
 .polski-manufacturer__label,
@@ -95,25 +136,25 @@
 
 .polski-safety-docs ul li a::before {
     content: "\1F4CE"; /* paperclip */
-    margin-right: 4px;
+    margin-inline-end: 4px;
 }
 
 .polski-safety {
-    margin: 12px 0;
+    margin-block: 12px;
     padding: 10px;
-    background: #fafafa;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    background: var(--polski-surface-card);
+    border: 1px solid var(--polski-line-soft);
+    border-radius: var(--polski-radius-sm);
 }
 
 /* === Food module === */
 
 .polski-food-info {
-    margin: 12px 0;
+    margin-block: 12px;
     padding: 10px;
-    background: #fafafa;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    background: var(--polski-surface-card);
+    border: 1px solid var(--polski-line-soft);
+    border-radius: var(--polski-radius-sm);
 }
 
 .polski-ingredients,

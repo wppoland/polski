@@ -26,6 +26,26 @@ final class WithdrawalSettingsPage implements HasHooks
     {
         add_action('admin_menu', [$this, 'registerMenu'], 66);
         add_action('admin_init', [$this, 'registerSettings']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
+    }
+
+    /**
+     * Enqueue the presentation stylesheet only on this settings screen.
+     */
+    public function enqueueAssets(string $hookSuffix): void
+    {
+        if (! str_contains($hookSuffix, self::PAGE_SLUG)) {
+            return;
+        }
+
+        // `polski-brand` (the --pl-* token layer) is registered admin-wide by
+        // BrandAssets at priority 8; we only depend on it here.
+        wp_enqueue_style(
+            'polski-admin-withdrawal',
+            plugins_url('assets/css/admin-withdrawal.css', \Polski\PLUGIN_FILE),
+            ['polski-brand'],
+            \Polski\VERSION,
+        );
     }
 
     public function registerMenu(): void
@@ -135,13 +155,14 @@ final class WithdrawalSettingsPage implements HasHooks
         $statuses = function_exists('wc_get_order_statuses') ? wc_get_order_statuses() : [];
         $selectedTriggers = (array) ($settings['trigger_statuses'] ?? ['completed']);
         ?>
-        <div class="wrap">
+        <div class="wrap polski-withdrawal-settings">
             <h1><?php esc_html_e('Withdrawal settings', 'polski'); ?></h1>
-            <p class="description"><?php esc_html_e('Central place for the consumer right of withdrawal flow (Directive 2011/83/EU as amended by 2023/2673).', 'polski'); ?></p>
+            <p class="description polski-withdrawal-intro"><?php esc_html_e('Central place for the consumer right of withdrawal flow (Directive 2011/83/EU as amended by 2023/2673).', 'polski'); ?></p>
 
             <form method="post" action="options.php">
                 <?php settings_fields(self::SETTINGS_GROUP); ?>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('General', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -157,7 +178,7 @@ final class WithdrawalSettingsPage implements HasHooks
                             <?php foreach ($statuses as $slug => $label) :
                                 $bare = str_starts_with((string) $slug, 'wc-') ? substr((string) $slug, 3) : (string) $slug;
                             ?>
-                                <label style="display:block;">
+                                <label class="polski-withdrawal-option">
                                     <input type="checkbox" name="<?php echo esc_attr(self::OPTION); ?>[trigger_statuses][]" value="<?php echo esc_attr($bare); ?>" <?php checked(in_array($bare, $selectedTriggers, true)); ?>>
                                     <?php echo esc_html($label); ?>
                                 </label>
@@ -166,7 +187,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('Guest flow', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -194,7 +217,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('Digital products (Art. 16(m))', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -209,7 +234,7 @@ final class WithdrawalSettingsPage implements HasHooks
                             $currentMode = (string) ($settings['digital_consent_mode'] ?? DigitalConsentService::MODE_OPTIONAL);
                             foreach ($modes as $value => $label) :
                             ?>
-                                <label style="display:block;">
+                                <label class="polski-withdrawal-option">
                                     <input type="radio" name="<?php echo esc_attr(self::OPTION); ?>[digital_consent_mode]" value="<?php echo esc_attr($value); ?>" <?php checked($currentMode, $value); ?>>
                                     <?php echo esc_html($label); ?>
                                 </label>
@@ -233,7 +258,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('Annex generator', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -251,7 +278,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('Refund handling (Pro)', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -265,7 +294,9 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
+                <section class="polski-withdrawal-card">
                 <h2><?php esc_html_e('AI features (WordPress AI Client)', 'polski'); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
@@ -274,10 +305,10 @@ final class WithdrawalSettingsPage implements HasHooks
                             <?php $polski_ai_available = \Polski\AI\AiClient::isAvailableForText(); ?>
                             <p class="description">
                                 <?php if ($polski_ai_available) : ?>
-                                    <strong style="color:#00731a;"><?php esc_html_e('Available.', 'polski'); ?></strong>
+                                    <strong class="polski-status--ok"><?php esc_html_e('Available.', 'polski'); ?></strong>
                                     <?php esc_html_e('WordPress AI Client is loaded and at least one provider is configured for text generation.', 'polski'); ?>
                                 <?php else : ?>
-                                    <strong style="color:#8a5e00;"><?php esc_html_e('Not available.', 'polski'); ?></strong>
+                                    <strong class="polski-status--warn"><?php esc_html_e('Not available.', 'polski'); ?></strong>
                                     <?php esc_html_e('Install WordPress 7.0 or higher and at least one AI Client provider plugin (for example Vercel AI Gateway, AI Provider for Anthropic, AI Provider for Google, or AI Provider for OpenAI) to enable AI augmentation.', 'polski'); ?>
                                 <?php endif; ?>
                             </p>
@@ -302,6 +333,7 @@ final class WithdrawalSettingsPage implements HasHooks
                         </td>
                     </tr>
                 </table>
+                </section>
 
                 <?php submit_button(); ?>
             </form>
