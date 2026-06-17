@@ -40,6 +40,32 @@ final class AdminPage implements Bootable, HasHooks
 
         // "Settings" link on plugins page.
         add_filter('plugin_action_links_' . plugin_basename(PLUGIN_FILE), [$this, 'addPluginActionLinks']);
+
+        // Display-only flourish: show a Polish flag on the Polski row in the
+        // wp-admin plugins list. This intentionally leaves the canonical
+        // "Plugin Name:" header in polski.php untouched, so the wordpress.org
+        // listing stays clean. The filter only fires in wp-admin.
+        add_filter('all_plugins', [$this, 'decoratePluginsListName']);
+    }
+
+    /**
+     * Prepend a Polish flag emoji to the Polski entry's displayed name in the
+     * wp-admin plugins list. Strictly scoped to this plugin's own basename so
+     * no other plugin is affected, and display-only (the wordpress.org
+     * "Plugin Name:" header is never modified).
+     *
+     * @param array<string, array<string, mixed>> $plugins
+     * @return array<string, array<string, mixed>>
+     */
+    public function decoratePluginsListName(array $plugins): array
+    {
+        $basename = plugin_basename(PLUGIN_FILE);
+
+        if (isset($plugins[$basename]['Name']) && is_string($plugins[$basename]['Name'])) {
+            $plugins[$basename]['Name'] = '🇵🇱 ' . $plugins[$basename]['Name'];
+        }
+
+        return $plugins;
     }
 
     /**
