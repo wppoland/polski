@@ -51,4 +51,5 @@ languages/polski-pro.pot
 index.html
 TODO.md
 *.map
+wp-cli.phar
 .npmrc
