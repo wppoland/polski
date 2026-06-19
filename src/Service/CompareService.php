@@ -38,6 +38,10 @@ final class CompareService implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         add_action('init', [$this, 'registerEndpoint']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_archive_description', [$this, 'renderArchiveCompare'], 5);

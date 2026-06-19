@@ -54,6 +54,10 @@ final class ProductInfoService
      */
     public function getManufacturerHtml(\WC_Product $product): string
     {
+        if (! ModulesPage::isModuleEnabled('manufacturer')) {
+            return '';
+        }
+
         $name = $this->getManufacturer($product);
 
         if ($name === '') {
