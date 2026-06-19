@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.5
+Stable tag: 1.24.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -284,6 +284,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 8. Wishlist, comparison and quick view on the product list.
 
 == Changelog ==
+
+= 1.24.6 =
+* Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).
 
 = 1.24.5 =
 * Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" → "23%").

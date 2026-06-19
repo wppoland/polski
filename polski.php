@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Polski for WooCommerce
- * Plugin URI:        https://plogins.com/pl/polski/
+ * Plugin URI:        https://plogins.com/polski/
  * Description:       Dodaje GPSR, Omnibus, RODO, zwroty, NIP, hooki KSeF, dane produktowe i moduły sklepu dla polskich sklepów WooCommerce.
- * Version:           1.24.5
+ * Version:           1.24.6
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Tested up to:      7.0
- * Author:            WPPoland
+ * Author:            WPPoland.com
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ namespace Polski;
 
 defined('ABSPATH') || exit;
 
-const VERSION = '1.24.4';
+const VERSION = '1.24.6';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR = __DIR__;
 const MIN_PHP_VERSION = '8.1.0';
