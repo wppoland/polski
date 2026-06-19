@@ -143,6 +143,11 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Composer deps (storefront-kit is needed at runtime)
+        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
       - name: Start wp-env (WordPress + WooCommerce + plugin)
         run: npx wp-env start
       - name: Deactivate PRO (skip the Freemius license gate)

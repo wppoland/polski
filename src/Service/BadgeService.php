@@ -31,6 +31,10 @@ final class BadgeService implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_before_single_product_summary', [$this, 'renderSingleBadges'], 6);
         add_action('woocommerce_before_shop_loop_item_title', [$this, 'renderLoopBadges'], 9);

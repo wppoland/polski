@@ -35,6 +35,10 @@ final class WishlistService implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         add_action('init', [$this, 'registerEndpoint']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleButton'], 33);

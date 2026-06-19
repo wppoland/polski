@@ -27,6 +27,10 @@ final class MyAccountWithdrawalsService implements HasHooks
 
     public function registerHooks(): void
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('init', [$this, 'registerEndpoint']);
         add_filter('woocommerce_account_menu_items', [$this, 'addMenuItem'], 25);
         add_filter('woocommerce_get_query_vars', [$this, 'addQueryVar']);

@@ -84,6 +84,10 @@ final class WithdrawalService implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         // Add withdrawal button to customer order actions.
         add_filter('woocommerce_my_account_my_orders_actions', [$this, 'addWithdrawalAction'], 10, 2);
 

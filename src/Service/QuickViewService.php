@@ -82,6 +82,10 @@ final class QuickViewService implements Bootable, HasHooks
     {
         global $product;
 
+        if (! $this->isEnabled() || ! $this->shouldRenderOnCurrentPage()) {
+            return;
+        }
+
         if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_loop'] ?? true)) {
             return;
         }

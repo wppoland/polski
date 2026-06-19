@@ -52,6 +52,10 @@ final class DeliveryTimeService
      */
     public function getDeliveryTimeHtml(\WC_Product $product): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('delivery_time')) {
+            return '';
+        }
+
         $timeText = $this->getDeliveryTimeText($product);
 
         if ($timeText === '') {

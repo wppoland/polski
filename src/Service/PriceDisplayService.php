@@ -52,6 +52,10 @@ final class PriceDisplayService
      */
     public function getUnitPriceHtml(\WC_Product $product): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('unit_price')) {
+            return '';
+        }
+
         $settings = get_option('polski_prices', []);
 
         if (! is_array($settings) || ! ($settings['unit_price_enabled'] ?? true)) {
@@ -97,6 +101,10 @@ final class PriceDisplayService
      */
     public function getFromPriceHtml(string $priceHtml, \WC_Product $product): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('from_price')) {
+            return $priceHtml;
+        }
+
         if (! $product instanceof \WC_Product_Variable) {
             return $priceHtml;
         }
@@ -147,6 +155,10 @@ final class PriceDisplayService
      */
     public function getVatNoticeHtml(\WC_Product $product): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('tax_display')) {
+            return '';
+        }
+
         return $this->taxDisplay->getVatNoticeHtml($product);
     }
 
@@ -155,6 +167,10 @@ final class PriceDisplayService
      */
     public function getShippingNoticeHtml(): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('shipping_notice')) {
+            return '';
+        }
+
         return $this->taxDisplay->getShippingNoticeHtml();
     }
 
@@ -163,6 +179,10 @@ final class PriceDisplayService
      */
     public function getOmnibusPriceHtml(\WC_Product $product): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('omnibus')) {
+            return '';
+        }
+
         if (! $this->omnibus->isEnabled()) {
             return '';
         }
