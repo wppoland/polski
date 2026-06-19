@@ -11,6 +11,10 @@ final class DisputeResolutionService implements HasHooks
 {
     public function registerHooks(): void
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('dispute_resolution')) {
+            return;
+        }
+
         $settings = get_option('polski_general', []);
 
         if (! ($settings['dispute_resolution_enabled'] ?? true)) {

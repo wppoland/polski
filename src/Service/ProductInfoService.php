@@ -54,6 +54,10 @@ final class ProductInfoService
      */
     public function getManufacturerHtml(\WC_Product $product): string
     {
+        if (! ModulesPage::isModuleEnabled('manufacturer')) {
+            return '';
+        }
+
         $name = $this->getManufacturer($product);
 
         if ($name === '') {
@@ -222,6 +226,10 @@ final class ProductInfoService
      */
     public function getSafetyDocumentsHtml(\WC_Product $product): string
     {
+        if (! ModulesPage::isModuleEnabled('gpsr')) {
+            return '';
+        }
+
         $docIds = $this->getSafetyDocuments($product);
 
         if (empty($docIds)) {
@@ -274,6 +282,10 @@ final class ProductInfoService
      */
     public function getPowerSupplyHtml(\WC_Product $product): string
     {
+        if (! ModulesPage::isModuleEnabled('power_supply')) {
+            return '';
+        }
+
         $info = $this->getPowerSupply($product);
 
         if ($info === '') {
@@ -300,6 +312,10 @@ final class ProductInfoService
      */
     public function getDefectDescriptionHtml(\WC_Product $product): string
     {
+        if (! ModulesPage::isModuleEnabled('gpsr')) {
+            return '';
+        }
+
         $desc = $this->getDefectDescription($product);
 
         if ($desc === '') {
