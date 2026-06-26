@@ -41,7 +41,7 @@ on another machine. It is in `.distignore`, so it never ships.
    instead of 404ing. (This was the reported FAQ issue: the module was simply
    off.)
 6. **i18n.** Translated genuine English-copy strings (where `msgstr == msgid`).
-   **OSS** help link now points to `polski.wppoland.com/prices/oss-observer`
+   **OSS** help link now points to `plogins.com/pl/polski/docs/prices/oss-observer`
    (not the third-party page).
 
 ## Next actions (in order)

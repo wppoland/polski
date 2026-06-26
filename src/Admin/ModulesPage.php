@@ -19,9 +19,9 @@ final class ModulesPage implements HasHooks
     private const OPTION = 'polski_modules';
 
     /**
-     * Default documentation URL when a module has no dedicated article on polski.wppoland.com yet.
+     * Default documentation URL when a module has no dedicated article on plogins.com/pl/polski/docs yet.
      */
-    private const MODULE_DOCS_FALLBACK_URL = 'https://polski.wppoland.com/getting-started/configuration/';
+    private const MODULE_DOCS_FALLBACK_URL = 'https://plogins.com/pl/polski/docs/getting-started/configuration/';
 
     /** @var array<string, string>|null */
     private static ?array $moduleDocumentationUrls = null;
@@ -33,7 +33,7 @@ final class ModulesPage implements HasHooks
     }
 
     /**
-     * Public documentation URL for a module on polski.wppoland.com.
+     * Public documentation URL for a module on plogins.com/pl/polski/docs.
      */
     private function getModuleDocumentationUrl(string $moduleId): string
     {
@@ -255,7 +255,7 @@ final class ModulesPage implements HasHooks
                 'enabled' => false,
                 'icon' => 'dashicons-chart-area',
                 'links' => [
-                    ['label' => __('About OSS procedure', 'polski'), 'url' => 'https://polski.wppoland.com/prices/oss-observer/'],
+                    ['label' => __('About OSS procedure', 'polski'), 'url' => 'https://plogins.com/pl/polski/docs/prices/oss-observer/'],
                 ],
                 'settings' => [
                     ['key' => '_oss_integration_status', 'label' => '', 'type' => 'html', 'html' => $this->getOssStatusHtml()],
