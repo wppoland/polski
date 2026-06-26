@@ -13,7 +13,7 @@ Wtyczka pomaga konfigurować procesy w sklepie związane z polskimi i unijnymi p
 
 = Dokumentacja i przydatne linki =
 
-* **Dokumentacja** - https://polski.wppoland.com/
+* **Dokumentacja** - https://plogins.com/pl/polski/docs/
 * **Strona wtyczki (polski)** - https://wppoland.com/pl/polski/
 * **Strona wtyczki (angielski)** - https://wppoland.com/en/polski/
 
