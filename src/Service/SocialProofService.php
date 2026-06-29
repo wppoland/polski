@@ -79,6 +79,7 @@ final class SocialProofService implements HasHooks
             'interval' => max(5, (int) $settings['display_interval']) * 1000,
             'duration' => max(3, (int) $settings['display_duration']) * 1000,
             'position' => $settings['position'],
+            'dismissLabel' => __('Dismiss', 'polski'),
         ]);
 
         wp_add_inline_style('polski-frontend', $this->getInlineCss($settings));
@@ -267,14 +268,16 @@ final class SocialProofService implements HasHooks
 
         return "
             #polski-social-proof-container{position:fixed;{$positionCss}z-index:99998;max-width:340px;pointer-events:none}
-            .polski-sp-toast{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#fff;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.12);margin-top:8px;animation:polskiSpSlideIn .4s ease-out;pointer-events:auto;cursor:pointer;text-decoration:none;color:#1e293b;font-size:13px;line-height:1.4;border:1px solid #f1f5f9;transition:opacity .3s}
+            .polski-sp-toast{position:relative;display:flex;align-items:center;gap:10px;padding:12px 16px;background:#fff;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.12);margin-top:8px;animation:polskiSpSlideIn .4s ease-out;pointer-events:auto;cursor:pointer;text-decoration:none;color:#1e293b;font-size:13px;line-height:1.4;border:1px solid #f1f5f9;transition:opacity .3s}
+            .polski-sp-toast a{display:flex;align-items:center;gap:10px;flex:1;text-decoration:none;color:inherit}
             .polski-sp-toast.hiding{opacity:0;transform:translateY(10px)}
             .polski-sp-toast img{width:48px;height:48px;border-radius:6px;object-fit:cover;flex-shrink:0}
             .polski-sp-toast strong{color:#0369a1}
-            .polski-sp-toast .sp-time{font-size:11px;color:#94a3b8;margin-top:2px}
-            .polski-sp-toast .sp-close{position:absolute;top:4px;right:8px;font-size:16px;color:#cbd5e1;cursor:pointer;line-height:1}
+            .polski-sp-toast .sp-time{font-size:11px;color:#5b6573;margin-top:2px}
+            .polski-sp-toast .sp-close{position:absolute;top:4px;right:8px;font-size:16px;color:#64748b;cursor:pointer;line-height:1;padding:0;margin:0;background:none;border:0}
             @keyframes polskiSpSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
             @media(max-width:480px){#polski-social-proof-container{left:10px;right:10px;max-width:none}}
+            @media (prefers-reduced-motion: reduce){.polski-sp-toast{animation:none;transition:none}.polski-sp-toast.hiding{transform:none}}
         ";
     }
 }
