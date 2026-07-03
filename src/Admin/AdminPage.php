@@ -23,13 +23,21 @@ final class AdminPage implements Bootable, HasHooks
     private const ADMIN_FEEDBACK_ACTION = 'polski_submit_admin_feedback';
     private const MAX_ADMIN_FEEDBACK_ENTRIES = 100;
 
+    private ?ProUpsell $proUpsell = null;
+
     public function boot(): void
     {
+    }
+
+    private function proUpsell(): ProUpsell
+    {
+        return $this->proUpsell ??= new ProUpsell();
     }
 
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
+        $this->proUpsell()->registerHooks();
         add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueMenuIconStyle']);
@@ -542,12 +550,20 @@ final class AdminPage implements Bootable, HasHooks
         echo '</nav>';
 
         if ($tab === 'dashboard') {
-            echo '<div class="polski-admin-shell__layout" style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
+            // PRO upsell lives on the main Dashboard only (never on Modules,
+            // Reports, or the Settings hub). Banner on top, promo in the sidebar,
+            // locked feature cards after the two-column body.
+            $this->proUpsell()->banner();
+            echo '<div class="polski-cols polski-admin-shell__layout">';
             echo '<div class="polski-admin-shell__main">';
             $this->renderDashboard();
             echo '</div>';
+            echo '<div class="polski-cols__side">';
             $this->renderHelpSidebar('dashboard');
+            $this->proUpsell()->aside();
             echo '</div>';
+            echo '</div>';
+            $this->proUpsell()->cards();
         } elseif ($tab === 'modules') {
             $this->renderModulesTab();
         } elseif ($tab === 'reports') {
