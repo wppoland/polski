@@ -153,3 +153,160 @@
 }
 .polski-admin a { color: var(--pl-crimson-600); }
 .polski-admin a:hover { color: var(--pl-crimson-700); }
+
+/* ------------------------------------------------------------------ *
+ * PRO upsell - dismissible banner, sidebar promo, "what PRO adds"
+ * locked cards. Pure advertising (no disabled inputs), scoped to the
+ * Dashboard shell, using the Polski crimson accent. White CTA text on
+ * --pl-crimson (#D4213D) computes to 5.14:1 (WCAG AA >= 4.5:1).
+ * The --pl-* tokens resolve here via the .toplevel_page_polski
+ * #wpbody-content selector above.
+ * ------------------------------------------------------------------ */
+
+/* Dashboard two-column grid (main body + help/PRO sidebar). */
+.polski-admin-shell .polski-cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 24px;
+    align-items: start;
+}
+.polski-admin-shell .polski-cols__side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+@media (max-width: 960px) {
+    .polski-admin-shell .polski-cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Top banner */
+.polski-admin-shell .polski-pro-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 20px;
+    padding: 12px 16px;
+    border: 1px solid color-mix(in srgb, var(--pl-crimson) 30%, var(--pl-line, #dcdcde));
+    border-inline-start: 4px solid var(--pl-crimson);
+    border-radius: var(--pl-r-md, 10px);
+    background: color-mix(in srgb, var(--pl-crimson) 7%, #fff);
+    font-family: var(--pl-font-text);
+}
+.polski-admin-shell .polski-pro-banner__tag,
+.polski-admin-shell .polski-pro-card__badge,
+.polski-admin-shell .polski-pro-aside__eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.polski-admin-shell .polski-pro-banner__tag {
+    flex: 0 0 auto;
+    padding: 2px 8px;
+    border-radius: var(--pl-r-pill, 999px);
+    color: #fff;
+    background: var(--pl-crimson);
+}
+.polski-admin-shell .polski-pro-banner__text { flex: 1 1 auto; margin: 0; color: var(--pl-ink, #1d2327); }
+.polski-admin-shell .polski-pro-banner__sub { margin-inline-start: 6px; color: var(--pl-slate, #50575e); }
+.polski-admin-shell .polski-pro-banner__price {
+    margin-inline-start: 6px;
+    color: var(--pl-slate, #50575e);
+    font-weight: 600;
+    white-space: nowrap;
+}
+.polski-admin-shell .polski-pro-banner__dismiss {
+    flex: 0 0 auto;
+    font-size: 18px;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--pl-slate, #50575e);
+    padding: 4px;
+    border-radius: 4px;
+}
+.polski-admin-shell .polski-pro-banner__dismiss:hover { color: var(--pl-ink, #1d2327); background: rgba(0, 0, 0, .05); }
+
+/* Accent CTA buttons (override WP blue with the Polski crimson). White text on
+   crimson = 5.14:1, comfortably above the AA 4.5:1 floor. */
+.polski-admin-shell .polski-pro-banner__cta.button-primary,
+.polski-admin-shell .polski-pro-aside__cta.button-primary {
+    background: var(--pl-crimson);
+    border-color: var(--pl-crimson-700, #951528);
+    color: #fff;
+    text-shadow: none;
+    box-shadow: none;
+}
+.polski-admin-shell .polski-pro-banner__cta.button-primary:hover,
+.polski-admin-shell .polski-pro-aside__cta.button-primary:hover {
+    background: var(--pl-crimson-600, #B81A33);
+    border-color: var(--pl-crimson-700, #951528);
+    color: #fff;
+}
+
+/* Sidebar promo card */
+.polski-admin-shell .polski-pro-aside {
+    background: #fff;
+    border: 1px solid var(--pl-line, #ccd0d4);
+    border-top: 3px solid var(--pl-crimson);
+    border-radius: var(--pl-r-md, 10px);
+    padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    font-family: var(--pl-font-text);
+}
+.polski-admin-shell .polski-pro-aside__eyebrow { margin: 0 0 4px; color: var(--pl-crimson); }
+.polski-admin-shell .polski-pro-aside__heading { margin: 0 0 12px; font-size: 16px; line-height: 1.3; color: var(--pl-ink, #1d2327); }
+.polski-admin-shell .polski-pro-aside__list { margin: 0 0 12px; padding: 0; list-style: none; }
+.polski-admin-shell .polski-pro-aside__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    color: var(--pl-ink, #1d2327);
+    font-size: 13px;
+}
+.polski-admin-shell .polski-pro-aside__lock::before,
+.polski-admin-shell .polski-pro-card__lock::before {
+    content: "\f160"; /* dashicons-lock */
+    font-family: dashicons;
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--pl-crimson);
+}
+.polski-admin-shell .polski-pro-aside__more { margin: 0 0 16px; font-size: 12px; color: var(--pl-slate, #646970); }
+.polski-admin-shell .polski-pro-aside__cta { width: 100%; text-align: center; justify-content: center; }
+.polski-admin-shell .polski-pro-aside__price { margin: 10px 0 0; font-size: 12px; color: var(--pl-slate, #646970); text-align: center; }
+
+/* "What PRO adds" locked cards */
+.polski-admin-shell .polski-pro-cards { max-width: 60rem; margin: 24px 0 0; }
+.polski-admin-shell .polski-pro-cards__title { font-size: 15px; margin: 0 0 12px; color: var(--pl-ink, #1d2327); }
+.polski-admin-shell .polski-pro-cards__grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.polski-admin-shell .polski-pro-card {
+    position: relative;
+    padding: 16px 16px 16px 18px;
+    border: 1px solid var(--pl-line, #ccd0d4);
+    border-radius: var(--pl-r-sm, 6px);
+    background: color-mix(in srgb, var(--pl-crimson) 3%, #fff);
+}
+.polski-admin-shell .polski-pro-card__badge {
+    position: absolute;
+    top: 12px;
+    inset-inline-end: 12px;
+    padding: 1px 7px;
+    border-radius: var(--pl-r-pill, 999px);
+    color: var(--pl-crimson);
+    border: 1px solid color-mix(in srgb, var(--pl-crimson) 40%, #fff);
+}
+.polski-admin-shell .polski-pro-card__lock { display: inline-block; margin-bottom: 6px; }
+.polski-admin-shell .polski-pro-card__title { margin: 0 0 6px; font-size: 14px; line-height: 1.3; color: var(--pl-ink, #1d2327); }
+.polski-admin-shell .polski-pro-card__desc { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--pl-slate, #646970); }
+
+@media (prefers-reduced-motion: no-preference) {
+    .polski-admin-shell .polski-pro-banner__cta,
+    .polski-admin-shell .polski-pro-aside__cta { transition: background-color .15s ease, border-color .15s ease; }
+}
