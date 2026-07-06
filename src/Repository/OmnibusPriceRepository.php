@@ -138,8 +138,11 @@ class OmnibusPriceRepository
         // the outer join recovers full row data for currency / sale_price / recorded_at.
         // Table names use %i identifier placeholders; the product-id IN list uses %d
         // placeholders bound from the intval-filtered $cleanIds.
+        // $idPlaceholders is a list of %d tokens only (built from intval-filtered ids); the
+        // placeholder count is dynamic and args are spread via array_merge, so the static
+        // sniffs miscount and misread the interpolation, but the query is fully prepared.
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
         $sql = $wpdb->prepare(
-            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $idPlaceholders is a list of %d tokens only.
             "SELECT t1.*
              FROM %i t1
              INNER JOIN (
@@ -154,6 +157,7 @@ class OmnibusPriceRepository
              ORDER BY t1.recorded_at DESC",
             ...array_merge([$table, $table], $cleanIds, [$cutoff, $cutoff]),
         );
+        // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom plugin table, prepared above.
         $rows = $wpdb->get_results($sql);

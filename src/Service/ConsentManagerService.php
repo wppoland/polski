@@ -240,6 +240,7 @@ final class ConsentManagerService implements HasHooks
     public static function gateSrc(string $category, string $src): string
     {
         return sprintf(
+            // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- inert type="text/plain" consent placeholder, activated by the consent-manager JS only after opt-in; cannot be enqueued.
             '<script type="text/plain" data-polski-consent="%s" data-src="%s"></script>',
             esc_attr($category),
             esc_url($src),
