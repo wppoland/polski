@@ -154,7 +154,7 @@ final class ConsentRecordsPage implements HasHooks
             $offset += self::PER_PAGE;
         } while (count($records) === self::PER_PAGE);
 
-        fclose($handle);
+        fclose($handle); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- streaming CSV to php://output, WP_Filesystem does not apply
         exit;
     }
 

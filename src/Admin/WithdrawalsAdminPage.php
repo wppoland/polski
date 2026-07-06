@@ -348,7 +348,7 @@ final class WithdrawalsAdminPage implements HasHooks
             ]);
         }
 
-        fclose($handle);
+        fclose($handle); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- streaming CSV to php://output, WP_Filesystem does not apply
         exit;
     }
 
