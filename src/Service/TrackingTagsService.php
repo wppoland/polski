@@ -381,6 +381,7 @@ final class TrackingTagsService implements HasHooks
     {
         $src = 'https://plausible.io/js/script.js';
         $tag = sprintf(
+            // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- inert type="text/plain" consent placeholder, activated by the consent-manager JS only after opt-in; cannot be enqueued.
             '<script type="text/plain" data-polski-consent="%s" data-src="%s" data-domain="%s" defer></script>',
             esc_attr($category),
             esc_url($src),
@@ -468,6 +469,7 @@ final class TrackingTagsService implements HasHooks
         $src = 'https://scripts.simpleanalyticscdn.com/latest.js';
 
         return sprintf(
+            // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- inert type="text/plain" consent placeholder, activated by the consent-manager JS only after opt-in; cannot be enqueued.
             '<script type="text/plain" data-polski-consent="%s" data-src="%s" async defer></script>',
             esc_attr($category),
             esc_url($src),

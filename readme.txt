@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.7
+Stable tag: 1.24.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -92,6 +92,16 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Database migrations** - versioned and safe updates of data structures.
 * **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
 * **Audit scope** - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents.
+
+= You may also like these plugins =
+
+More free WooCommerce plugins from WPPoland:
+
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+
+Browse the full catalogue at https://plogins.com/ .
 
 == Installation ==
 
@@ -284,6 +294,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 8. Wishlist, comparison and quick view on the product list.
 
 == Changelog ==
+
+= 1.24.8 =
+* Plugin Check: escaping/sanitisation/i18n/hygiene fixes. No functional changes.
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.

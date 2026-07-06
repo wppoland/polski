@@ -38,7 +38,7 @@ final class Migration_2_5_0 implements Migration
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- One-off schema migration on a custom plugin table; table name is interpolated via %i.
         $wpdb->query(
             $wpdb->prepare(
-                'ALTER TABLE %i ADD COLUMN consent_version VARCHAR(64) DEFAULT NULL AFTER user_agent',
+                'ALTER TABLE %i ADD COLUMN consent_version VARCHAR(64) DEFAULT NULL AFTER user_agent', // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange -- One-off schema migration on a custom plugin table.
                 $table,
             ),
         );
