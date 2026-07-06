@@ -53,3 +53,13 @@ TODO.md
 *.map
 wp-cli.phar
 .npmrc
+.wordpress-org
+languages/*.json
+languages/*.l10n.php
+languages/polski-be_BY.*
+languages/polski-cs_CZ.*
+languages/polski-de_DE.*
+languages/polski-lt_LT.*
+languages/polski-sk_SK.*
+languages/polski-uk*
+languages/polski-zh_CN.*

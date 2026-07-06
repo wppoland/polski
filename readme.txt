@@ -286,7 +286,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 == Changelog ==
 
 = 1.24.8 =
-* Housekeeping: Plugin Check code annotations (phpcs) only. No functional changes.
+* Accessibility: the social-proof toast is now keyboard-dismissable, respects reduced motion, and meets AA contrast.
+* Admin: a Polish flag is shown on the Polski row in the plugins list.
+* Added a WordPress Playground blueprint so the plugin can be tried via the wp.org Live Preview.
+* Translations: only the Polish translation is bundled; other locales come from the WordPress.org language packs.
+* Housekeeping: Plugin Check code annotations; release package no longer bundles dev tools.
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
