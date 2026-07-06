@@ -37,7 +37,7 @@ final class Migration_2_3_1 implements Migration
             return;
         }
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- ALTER TABLE; identifiers from whitelisted constants.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- ALTER TABLE on custom table; identifiers from whitelisted constants and $wpdb->prefix.
         $wpdb->query("ALTER TABLE `{$table}` ADD INDEX `idx_status_ai_category` (`status`, `ai_category`)");
     }
 }
