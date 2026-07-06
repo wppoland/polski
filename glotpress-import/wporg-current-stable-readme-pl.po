@@ -1,0 +1,846 @@
+# Translation of Plugins - Polski for WooCommerce - Stable Readme (latest release) in Polish
+# This file is distributed under the same license as the Plugins - Polski for WooCommerce - Stable Readme (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-06-22 17:03:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: pl\n"
+"Project-Id-Version: Plugins - Polski for WooCommerce - Stable Readme (latest release)\n"
+
+#. Short description.
+#, gp-priority: high
+msgid "WooCommerce for Polish shops: GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF, unit prices and storefront modules."
+msgstr "WooCommerce dla polskich sklepów: GPSR, Omnibus, RODO, zwroty, NIP, KSeF, ceny jednostkowe i moduły sklepu."
+
+#. Plugin name.
+#, gp-priority: high
+msgid "Polski for WooCommerce"
+msgstr "Polski for WooCommerce"
+
+#. Found in faq paragraph.
+msgid "Deactivating the plugin keeps your settings and stored data. Uninstalling removes the plugin files. Plugin data is removed only when you enable the \"remove data on uninstall\" setting."
+msgstr "Wyłączenie wtyczki zostawia ustawienia i zapisane dane. Odinstalowanie usuwa pliki wtyczki. Dane wtyczki są usuwane tylko wtedy, gdy włączysz ustawienie usuwania danych przy odinstalowaniu."
+
+#. Found in faq paragraph.
+msgid "For day-to-day support use the WordPress.org forum. Technical bugs and feature requests can also be reported in the GitHub repository."
+msgstr "Do bieżącego wsparcia użyj forum WordPress.org. Błędy techniczne i propozycje funkcji możesz też zgłaszać w repozytorium GitHub."
+
+#. Found in faq paragraph.
+msgid "Polski follows security practices relevant to CRA readiness: updates are delivered through the official WordPress.org channel, vulnerabilities can be reported under a coordinated disclosure policy, the code uses standard WordPress security mechanisms, and external services are described in this readme. This is not a declaration of legal compliance."
+msgstr "Polski stosuje praktyki bezpieczeństwa istotne dla gotowości pod CRA: aktualizacje są dostarczane przez oficjalny kanał WordPress.org, podatności można zgłaszać zgodnie z polityką skoordynowanego ujawniania, kod używa standardowych mechanizmów bezpieczeństwa WordPress, a usługi zewnętrzne są opisane w readme. To nie jest deklaracja zgodności prawnej."
+
+#. Found in faq paragraph.
+msgid "No. Polski provides technical modules for WooCommerce, but it is not legal advice and does not guarantee that your shop is compliant. Your shop configuration, terms and obligations always have to be verified for your specific business."
+msgstr "Nie. Polski dostarcza techniczne moduły dla WooCommerce, ale nie jest poradą prawną i nie gwarantuje zgodności sklepu z przepisami. Konfigurację sklepu, regulaminy i obowiązki zawsze trzeba zweryfikować dla konkretnego biznesu."
+
+#. Found in faq paragraph.
+msgid "Yes. The plugin provides shortcodes for selected modules, including GPSR information, withdrawal forms, DSA reports, complaint templates and shop messages."
+msgstr "Tak. Wtyczka udostępnia shortcode dla wybranych modułów, między innymi informacji GPSR, formularzy odstąpienia, zgłoszeń DSA, szablonów reklamacji i komunikatów sklepu."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski is modular, so you can enable only the features you need, for example GPSR, Omnibus, GDPR, returns, VAT ID, DSA or storefront modules."
+msgstr "Tak. Polski działa modułowo, więc możesz włączyć tylko potrzebne funkcje, na przykład GPSR, Omnibus, RODO, zwroty, NIP, DSA albo moduły frontu sklepu."
+
+#. Found in faq paragraph.
+msgid "Yes. The storefront modules include a wishlist, product comparison, quick view, back-in-stock notifications, AJAX filters, AJAX search and product badges."
+msgstr "Tak. Moduły frontu sklepu obejmują między innymi listę życzeń, porównywarkę produktów, szybki podgląd, powiadomienia o dostępności, filtry AJAX, wyszukiwarkę AJAX i oznaczenia produktów."
+
+#. Found in faq paragraph.
+msgid "Yes. The plugin includes DSA tools, including point-of-contact settings, an illegal-content report form shortcode, a report-handling panel and e-mail notifications."
+msgstr "Tak. Wtyczka zawiera narzędzia DSA, w tym ustawienia punktu kontaktowego, shortcode formularza zgłoszenia nielegalnych treści, panel obsługi zgłoszeń i powiadomienia e-mail."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski includes modules useful for grocery shops, including composition, nutrition values, allergens, origin, distributor and additional product labelling fields."
+msgstr "Tak. Polski zawiera moduły przydatne dla sklepów spożywczych, między innymi skład, wartości odżywcze, alergeny, pochodzenie, dystrybutora i dodatkowe pola etykietowania produktów."
+
+#. Found in faq paragraph.
+msgid "Yes. The plugin lets you show unit prices, for example per kg, litre, metre, piece or a custom unit."
+msgstr "Tak. Wtyczka pozwala pokazywać ceny jednostkowe, na przykład za kg, litr, metr, sztukę albo własną jednostkę."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski declares compatibility with WooCommerce HPOS, that is High-Performance Order Storage / Custom Order Tables."
+msgstr "Tak. Polski deklaruje zgodność z WooCommerce HPOS, czyli High-Performance Order Storage / Custom Order Tables."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski supports the classic checkout as well as the block-based WooCommerce cart and checkout."
+msgstr "Tak. Polski obsługuje klasyczną kasę oraz koszyk i kasę oparte na blokach WooCommerce."
+
+#. Found in faq paragraph.
+msgid "Polski provides data, flags and hooks useful for invoicing and KSeF, but it does not replace a full invoicing plugin or accounting system. For automatic invoicing, use a dedicated invoicing integration."
+msgstr "Polski udostępnia dane, flagi i hooki przydatne dla faktur oraz KSeF, ale nie zastępuje pełnej wtyczki fakturowej ani systemu księgowego. Do automatycznego wystawiania faktur użyj dedykowanej integracji fakturowej."
+
+#. Found in faq paragraph.
+msgid "Polski is not a complete system for sending invoices to KSeF, but it adds mechanisms ready for integrations: flagging orders by VAT ID, a KSeF status column and hooks for invoicing plugins and custom integrations."
+msgstr "Polski nie jest pełnym systemem do wysyłki faktur do KSeF, ale dodaje mechanizmy gotowe pod integracje: flagowanie zamówień po NIP, kolumnę statusu KSeF oraz hooki dla wtyczek fakturowych i własnych integracji."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski includes features and hooks related to the Polish VAT ID (NIP), including detection of orders that may require invoice or KSeF handling. Field availability and behaviour depend on the enabled modules."
+msgstr "Tak. Polski zawiera funkcje i hooki związane z NIP, w tym wykrywanie zamówień mogących wymagać obsługi faktury lub procesu KSeF. Dostępność pola i zachowanie zależą od włączonych modułów."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski can add right-of-withdrawal handling from the customer account, with request confirmation, a request log and e-mail messages. This helps organise the returns process in WooCommerce."
+msgstr "Tak. Polski może dodać obsługę odstąpienia od umowy z poziomu konta klienta, potwierdzeniem zgłoszenia, logiem zgłoszeń i wiadomościami e-mail. To pomaga uporządkować proces zwrotów w WooCommerce."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski can add checkboxes for the terms, privacy policy, withdrawal information, consent for digital content, marketing consent, delivery notifications and a review reminder."
+msgstr "Tak. Polski może dodać checkboxy dla regulaminu, polityki prywatności, informacji o odstąpieniu od umowy, zgody na treści cyfrowe, zgody marketingowej, powiadomień o dostawie i przypomnienia o recenzji."
+
+#. Found in faq paragraph.
+msgid "Yes. The plugin lets you add configurable consent checkboxes at order, registration and reviews, and keep a consent log with date, context and technical audit information."
+msgstr "Tak. Wtyczka pozwala dodać konfigurowalne checkboxy zgód w zamówieniu, rejestracji i recenzjach, a także prowadzić rejestr zgód z datą, kontekstem i technicznymi informacjami audytowymi."
+
+#. Found in faq paragraph.
+msgid "Yes. The Omnibus module records price history and can display the lowest price from the last 30 days on discounted products. You can adjust the display settings in the module panel."
+msgstr "Tak. Moduł Omnibus zapisuje historię cen i może wyświetlać najniższą cenę z ostatnich 30 dni przy produktach objętych promocją. Ustawienia wyświetlania możesz dopasować w panelu modułu."
+
+#. Found in faq paragraph.
+msgid "Yes. The GPSR module can store and display the manufacturer, importer and EU responsible person data on the WooCommerce product page. Visibility depends on the module settings and the data filled in for the product."
+msgstr "Tak. Moduł GPSR może przechowywać i wyświetlać dane producenta, importera oraz osoby odpowiedzialnej w UE na stronie produktu WooCommerce. Widoczność zależy od ustawień modułu i danych uzupełnionych przy produkcie."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski adds GPSR-related product fields, including manufacturer, importer and EU responsible person data, product identifiers, safety warnings and instructions. The data can be filled in the product editor and in bulk via CSV import or export."
+msgstr "Tak. Polski dodaje pola produktowe związane z GPSR, między innymi dane producenta, importera, osoby odpowiedzialnej w UE, identyfikatory produktu, ostrzeżenia i instrukcje bezpieczeństwa. Dane można uzupełniać w edycji produktu oraz masowo przez import lub eksport CSV."
+
+#. Found in faq paragraph.
+msgid "Polski is intended for WooCommerce stores selling in Poland or to Polish customers. It is especially useful when a shop needs modules for GPSR, Omnibus, GDPR, VAT ID (NIP), the right of withdrawal, KSeF and product data."
+msgstr "Polski jest przeznaczony dla sklepów WooCommerce sprzedających w Polsce lub do polskich klientów. Szczególnie przydaje się tam, gdzie sklep potrzebuje modułów dla GPSR, Omnibus, RODO, NIP, odstąpień od umowy, KSeF i danych produktowych."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski for WooCommerce is a free WooCommerce plugin for Polish online shops and is distributed as open source under GPLv2 or later."
+msgstr "Tak. Polski for WooCommerce jest darmową wtyczką WooCommerce dla polskich sklepów internetowych i jest udostępniany z otwartym kodem na licencji GPLv2 lub nowszej."
+
+#. Found in faq header.
+msgid "What happens when the plugin is deactivated and uninstalled?"
+msgstr "Co dzieje się przy wyłączeniu i odinstalowaniu wtyczki?"
+
+#. Found in faq header.
+msgid "Does the plugin have a simple feedback form?"
+msgstr "Czy wtyczka ma prosty formularz opinii?"
+
+#. Found in faq header.
+msgid "Where do I report bugs or feature requests?"
+msgstr "Gdzie zgłaszać błędy lub propozycje funkcji?"
+
+#. Found in faq header.
+msgid "Does Polski guarantee legal compliance?"
+msgstr "Czy Polski gwarantuje zgodność z prawem?"
+
+#. Found in faq header.
+msgid "Does Polski support CSV import and export?"
+msgstr "Czy Polski obsługuje import i eksport CSV?"
+
+#. Found in faq header.
+msgid "Does Polski add a wishlist, comparison and quick view?"
+msgstr "Czy Polski dodaje wishlistę, porównywarkę i szybki podgląd produktów?"
+
+#. Found in faq header.
+msgid "Does Polski add a DSA report form?"
+msgstr "Czy Polski dodaje formularz zgłoszeń DSA?"
+
+#. Found in faq header.
+msgid "Is Polski suitable for a WooCommerce grocery shop?"
+msgstr "Czy Polski nadaje się do sklepu spożywczego WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski work with HPOS in WooCommerce?"
+msgstr "Czy Polski działa z HPOS w WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski work with the WooCommerce block checkout?"
+msgstr "Czy Polski działa z blokową kasą WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski issue invoices in WooCommerce?"
+msgstr "Czy Polski wystawia faktury w WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski support KSeF in WooCommerce?"
+msgstr "Czy Polski obsługuje KSeF w WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski support VAT ID (NIP) in WooCommerce?"
+msgstr "Czy Polski obsługuje NIP w WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski add a withdrawal or return form?"
+msgstr "Czy Polski dodaje formularz odstąpienia od umowy albo zwrotu?"
+
+#. Found in faq header.
+msgid "Does Polski add checkboxes at checkout?"
+msgstr "Czy Polski dodaje checkboxy w kasie?"
+
+#. Found in faq header.
+msgid "Does Polski add GDPR consents in WooCommerce?"
+msgstr "Czy Polski dodaje zgody RODO w WooCommerce?"
+
+#. Found in faq header.
+msgid "Does Polski support the Omnibus Directive and the lowest price from 30 days?"
+msgstr "Czy Polski obsługuje dyrektywę Omnibus i najniższą cenę z 30 dni?"
+
+#. Found in faq header.
+msgid "Can I show the manufacturer, importer and responsible person on the product page?"
+msgstr "Czy mogę pokazać dane producenta, importera i osoby odpowiedzialnej na stronie produktu?"
+
+#. Found in faq header.
+msgid "Does Polski support GPSR in WooCommerce?"
+msgstr "Czy Polski obsługuje GPSR w WooCommerce?"
+
+#. Found in faq header.
+msgid "Which WooCommerce shop is Polski for?"
+msgstr "Do jakiego sklepu WooCommerce jest przeznaczony Polski?"
+
+#. Found in installation list item.
+msgid "Download the plugin ZIP from WordPress.org."
+msgstr "Pobierz plik ZIP wtyczki z WordPress.org."
+
+#. Found in installation list item.
+msgid "Open the new <strong>Polski</strong> menu in the admin panel."
+msgstr "Przejdź do nowego menu <strong>Polski</strong> w panelu administracyjnym."
+
+#. Found in installation list item.
+msgid "In the WordPress dashboard go to <strong>Plugins &gt; Add New</strong>."
+msgstr "Przejdź w panelu WordPress do <strong>Wtyczki &gt; Dodaj nową</strong>."
+
+#. Found in description paragraph.
+msgid "When the VAT ID (NIP) lookup module is enabled, the plugin can connect to the public GUS REGON registry to fetch company data based on the VAT ID entered by the user. The connection is made only after the lookup is deliberately triggered."
+msgstr "Gdy moduł wyszukiwania NIP jest włączony, wtyczka może połączyć się z publicznym rejestrem GUS REGON, aby pobrać dane firmy na podstawie numeru NIP wpisanego przez użytkownika. Połączenie jest wykonywane tylko po świadomym uruchomieniu wyszukiwania."
+
+#. Found in description paragraph.
+msgid "Active modules with settings appear in the <strong>Polski</strong> menu or have a settings link on the modules page."
+msgstr "Aktywne moduły z ustawieniami pojawiają się w menu <strong>Polski</strong> albo mają link do ustawień na stronie modułów."
+
+#. Found in description paragraph.
+msgid "Polski works in a modular way. You can enable only the features you need:"
+msgstr "Polski działa modułowo. Możesz włączyć tylko te funkcje, których potrzebujesz:"
+
+#. Found in description paragraph.
+msgid "Polski helps you configure the technical shop processes related to the Polish and EU market. It is not legal advice and does not guarantee regulatory compliance. Your shop configuration, terms, products and obligations always have to be verified for your specific business."
+msgstr "Polski pomaga skonfigurować techniczne procesy sklepu związane z polskim i unijnym rynkiem. Nie jest poradą prawną i nie gwarantuje zgodności z przepisami. Konfigurację sklepu, regulaminy, produkty i obowiązki zawsze trzeba zweryfikować dla konkretnego biznesu."
+
+#. Found in description paragraph.
+msgid "The plugin is modular. You can enable only the features a given shop needs, for example GPSR, Omnibus, cart consents, withdrawals, unit prices, food data, a wishlist, a product comparison or AJAX search."
+msgstr "Wtyczka jest modułowa. Możesz włączyć tylko te funkcje, których potrzebuje dany sklep, na przykład GPSR, Omnibus, zgody w koszyku, zwroty, ceny jednostkowe, dane żywności, wishlistę, porównywarkę produktów albo wyszukiwarkę AJAX."
+
+#. Found in description paragraph.
+msgid "<strong>Polski for WooCommerce</strong> is a free WooCommerce plugin for Polish online shops. It helps you organise GPSR product data, the Omnibus lowest-price history, GDPR consents, the right of withdrawal, VAT ID (NIP) handling, unit prices, hooks for KSeF processes, DSA reports and storefront modules."
+msgstr "<strong>Polski for WooCommerce</strong> to darmowa wtyczka WooCommerce dla polskich sklepów internetowych. Pomaga uporządkować dane produktowe GPSR, historię najniższej ceny Omnibus, zgody RODO, odstąpienia od umowy, obsługę NIP, ceny jednostkowe, hooki pod procesy KSeF, zgłoszenia DSA oraz moduły sklepu."
+
+#. Found in description list item.
+msgid "Data received: the Facebook account ID, e-mail address and name."
+msgstr "Otrzymywane dane: identyfikator konta Facebook, adres e-mail, imię i nazwisko."
+
+#. Found in description list item.
+msgid "Data sent: the redirect address, application ID, authorization code and access token used to fetch the profile."
+msgstr "Wysyłane dane: adres przekierowania, identyfikator aplikacji, kod autoryzacyjny i token dostępu do pobrania profilu."
+
+#. Found in description list item.
+msgid "Data received: the Google account ID, e-mail address and name."
+msgstr "Otrzymywane dane: identyfikator konta Google, adres e-mail, imię i nazwisko."
+
+#. Found in description list item.
+msgid "Data sent: the redirect address, client ID, authorization code and access token used to fetch the profile."
+msgstr "Wysyłane dane: adres przekierowania, identyfikator klienta, kod autoryzacyjny i token dostępu do pobrania profilu."
+
+#. Found in description list item.
+msgid "Data sent: the VAT ID (NIP)."
+msgstr "Wysyłane dane: numer NIP."
+
+#. Found in description list item.
+msgid "<strong>Checkout and consents</strong>: checkboxes, right of withdrawal, legal pages."
+msgstr "<strong>Kasa i zgody</strong>: checkboxy, odstąpienia od umowy, strony prawne."
+
+#. Found in description list item.
+msgid "<strong>Product data</strong>: GPSR, unit prices, delivery time, food data."
+msgstr "<strong>Dane produktowe</strong>: GPSR, ceny jednostkowe, czas dostawy, dane żywności."
+
+#. Found in description list item.
+msgid "<strong>Fill in GPSR</strong>: for physical products add the manufacturer, importer and responsible person data and safety information."
+msgstr "<strong>Uzupełnij GPSR</strong>: dla produktów fizycznych dodaj dane producenta, importera, osoby odpowiedzialnej i informacje bezpieczeństwa."
+
+#. Found in description list item.
+msgid "<strong>Enable Omnibus</strong>: the module records price history and can display the lowest price from 30 days."
+msgstr "<strong>Włącz Omnibus</strong>: moduł zapisuje historię cen i może wyświetlać najniższą cenę z 30 dni."
+
+#. Found in description list item.
+msgid "<strong>Fill in unit prices</strong>: for products sold by weight or volume, fill in the data in the <strong>Polski</strong> tab of the product editor."
+msgstr "<strong>Uzupełnij ceny jednostkowe</strong>: dla produktów sprzedawanych wagowo lub objętościowo uzupełnij dane w zakładce <strong>Polski</strong> w edycji produktu."
+
+#. Found in description list item.
+msgid "<strong>Check VAT rates</strong>: make sure WooCommerce has the correct tax rates for your shop."
+msgstr "<strong>Sprawdź stawki VAT</strong>: upewnij się, że WooCommerce ma poprawne stawki podatku dla Twojego sklepu."
+
+#. Found in description list item.
+msgid "<strong>Configure the checkboxes</strong>: open the legal checkboxes module and enable the consents your shop requires."
+msgstr "<strong>Skonfiguruj checkboxy</strong>: przejdź do modułu checkboxów prawnych i włącz zgody wymagane w Twoim sklepie."
+
+#. Found in description list item.
+msgid "<strong>Check the legal pages</strong>: go to <strong>Polski &gt; Modules</strong> and make sure the legal pages module is active. In its settings choose your terms, privacy policy and withdrawal page."
+msgstr "<strong>Sprawdź strony prawne</strong>: przejdź do <strong>Polski &gt; Moduły</strong> i upewnij się, że moduł stron prawnych jest aktywny. W ustawieniach wybierz regulamin, politykę prywatności i stronę odstąpienia od umowy."
+
+#. Found in description list item.
+msgid "<strong>Audit scope</strong> - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents."
+msgstr "<strong>Zakres audytowy</strong> - DPA, DSA, gotowość pod KSeF, kontrola twierdzeń środowiskowych, zweryfikowane recenzje i incydenty bezpieczeństwa."
+
+#. Found in description list item.
+msgid "<strong>Integration hooks</strong> - filters and actions for KSeF, invoicing and integrations with other plugins."
+msgstr "<strong>Hooki integracyjne</strong> - filtry i akcje dla KSeF, faktur oraz integracji z innymi wtyczkami."
+
+#. Found in description list item.
+msgid "<strong>Database migrations</strong> - versioned and safe updates of data structures."
+msgstr "<strong>Migracje bazy danych</strong> - wersjonowane i bezpieczne aktualizacje struktur danych."
+
+#. Found in description list item.
+msgid "<strong>Shortcodes</strong> - embed GPSR information, withdrawal forms, DSA reports and other elements."
+msgstr "<strong>Shortcode</strong> - osadzanie informacji GPSR, formularzy odstąpienia, zgłoszeń DSA i innych elementów."
+
+#. Found in description list item.
+msgid "<strong>CSV import and export</strong> - bulk management of product data, including GPSR."
+msgstr "<strong>Import i eksport CSV</strong> - masowe zarządzanie danymi produktowymi, w tym GPSR."
+
+#. Found in description list item.
+msgid "<strong>WP-CLI</strong> - commands to manage selected features from the terminal."
+msgstr "<strong>WP-CLI</strong> - komendy do zarządzania wybranymi funkcjami z terminala."
+
+#. Found in description list item.
+msgid "<strong>React panel</strong> - manage modules and settings."
+msgstr "<strong>Panel React</strong> - zarządzanie modułami i ustawieniami."
+
+#. Found in description list item.
+msgid "<strong>Promotional popups</strong> - popup campaigns in the shop."
+msgstr "<strong>Okna popup promocyjne</strong> - kampanie popup w sklepie."
+
+#. Found in description list item.
+msgid "<strong>AJAX filters</strong> - filter products without reloading the page."
+msgstr "<strong>Filtry AJAX</strong> - filtrowanie produktów bez przeładowania strony."
+
+#. Found in description list item.
+msgid "<strong>Product tab manager</strong> - configure the tabs on the product page."
+msgstr "<strong>Menedżer zakładek produktu</strong> - konfiguracja zakładek na stronie produktu."
+
+#. Found in description list item.
+msgid "<strong>Infinite scroll</strong> - automatic loading of more products."
+msgstr "<strong>Nieskończone przewijanie</strong> - automatyczne ładowanie kolejnych produktów."
+
+#. Found in description list item.
+msgid "<strong>Product slider</strong> - a carousel of products and collections."
+msgstr "<strong>Slider produktów</strong> - karuzela produktów i kolekcji."
+
+#. Found in description list item.
+msgid "<strong>Product video</strong> - add a video on the product page."
+msgstr "<strong>Wideo produktu</strong> - dodanie filmu na stronie produktu."
+
+#. Found in description list item.
+msgid "<strong>Quick view</strong> - preview a product without opening the product page."
+msgstr "<strong>Szybki podgląd</strong> - podgląd produktu bez przechodzenia na stronę produktu."
+
+#. Found in description list item.
+msgid "<strong>Waitlist</strong> - back-in-stock notifications for products."
+msgstr "<strong>Lista oczekujących</strong> - powiadomienia o ponownej dostępności produktu."
+
+#. Found in description list item.
+msgid "<strong>Product comparison</strong> - compare products side by side."
+msgstr "<strong>Porównywarka produktów</strong> - porównywanie produktów obok siebie."
+
+#. Found in description list item.
+msgid "<strong>Food data</strong> - composition, nutrition values, allergens, origin, distributor and other fields for grocery shops."
+msgstr "<strong>Dane żywności</strong> - skład, wartości odżywcze, alergeny, pochodzenie, dystrybutor i inne pola dla sklepów spożywczych."
+
+#. Found in description list item.
+msgid "<strong>Price display</strong> - configuration of how prices are presented in the shop."
+msgstr "<strong>Wyświetlanie cen</strong> - konfiguracja sposobu prezentowania cen w sklepie."
+
+#. Found in description list item.
+msgid "<strong>Tax information</strong> - gross/net messages and the VAT rate."
+msgstr "<strong>Informacje podatkowe</strong> - komunikaty brutto/netto i stawka VAT."
+
+#. Found in description list item.
+msgid "<strong>Consent log</strong> - logging of consents with date, context, IP address and content version."
+msgstr "<strong>Rejestr zgód</strong> - logowanie zgód z datą, kontekstem, adresem IP i wersją treści."
+
+#. Found in description list item.
+msgid "<strong>Dispute resolution</strong> - an ODR information module for the shop's information pages."
+msgstr "<strong>Rozwiązywanie sporów</strong> - moduł informacji ODR dla stron informacyjnych sklepu."
+
+#. Found in description list item.
+msgid "<strong>Shop pages</strong> - link the terms, privacy policy and withdrawal content into WooCommerce notices."
+msgstr "<strong>Strony sklepu</strong> - podpinanie regulaminu, polityki prywatności i treści o odstąpieniu do wiadomości WooCommerce."
+
+#. Found in description list item.
+msgid "<strong>Double e-mail confirmation</strong> - e-mail address confirmation during customer registration."
+msgstr "<strong>Podwójne potwierdzenie e-mail</strong> - potwierdzanie adresu e-mail przy rejestracji klienta."
+
+#. Found in description list item.
+msgid "<strong>Right of withdrawal</strong> - withdrawal/return forms and requests from the customer account."
+msgstr "<strong>Prawo odstąpienia od umowy</strong> - formularze i zgłoszenia zwrotów z konta klienta."
+
+#. Found in description list item.
+msgid "<strong>Omnibus price history</strong> - automatic recording and display of the lowest price from 30 days."
+msgstr "<strong>Historia cen Omnibus</strong> - automatyczne zapisywanie i wyświetlanie najniższej ceny z 30 dni."
+
+#. Found in description list item.
+msgid "<strong>Consent checkboxes</strong> - consents at order, registration and reviews, with the option to enable only selected fields."
+msgstr "<strong>Checkboxy zgód</strong> - zgody przy zamówieniu, rejestracji i recenzjach, z możliwością włączenia tylko wybranych pól."
+
+#. Found in description list item.
+msgid "<strong>Verified purchase badge</strong> - a badge on reviews from customers who bought the product."
+msgstr "<strong>Oznaczenie zweryfikowanego zakupu</strong> - odznaka przy recenzjach od klientów, którzy kupili produkt."
+
+#. Found in description list item.
+msgid "<strong>Product environmental fields</strong> - a basis for green claims, certificates and expiry dates."
+msgstr "<strong>Pola środowiskowe produktu</strong> - podstawa twierdzeń ekologicznych, certyfikaty i daty ważności."
+
+#. Found in description list item.
+msgid "<strong>Security incident log</strong> - an internal log of incidents, outages, vulnerabilities and follow-up actions."
+msgstr "<strong>Rejestr incydentów bezpieczeństwa</strong> - wewnętrzny rejestr incydentów, awarii, podatności i działań następczych."
+
+#. Found in description list item.
+msgid "<strong>Shop health monitor</strong> - passive monitoring of frontend errors, checkout issues and sales anomalies."
+msgstr "<strong>Monitor zdrowia sklepu</strong> - pasywne monitorowanie błędów frontendu, problemów z kasą i anomalii sprzedaży."
+
+#. Found in description list item.
+msgid "<strong>DSA reports</strong> - a point of contact, an illegal-content report form and an admin panel."
+msgstr "<strong>Zgłoszenia DSA</strong> - punkt kontaktowy, formularz zgłoszenia nielegalnych treści i panel administracyjny."
+
+#. Found in description list item.
+msgid "<strong>VAT ID (NIP) and KSeF hooks</strong> - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations."
+msgstr "<strong>NIP i hooki KSeF</strong> - wykrywanie zamówień z NIP, flaga KSeF oraz hooki dla integracji fakturowych."
+
+#. Found in description list item.
+msgid "<strong>Right of withdrawal and returns</strong> - requests from the customer account, e-mail confirmations and a request log."
+msgstr "<strong>Odstąpienia od umowy i zwroty</strong> - zgłoszenia z konta klienta, potwierdzenia e-mail i rejestr zgłoszeń."
+
+#. Found in description list item.
+msgid "<strong>GDPR consents and checkboxes</strong> - configurable consents at checkout, registration and reviews, with a consent log."
+msgstr "<strong>Zgody RODO i checkboxy</strong> - konfigurowalne zgody w kasie, rejestracji i recenzjach z rejestrem zgód."
+
+#. Found in description list item.
+msgid "<strong>Omnibus price history</strong> - records and displays the lowest price from the last 30 days on discounted products."
+msgstr "<strong>Historia cen Omnibus</strong> - zapisywanie i wyświetlanie najniższej ceny z ostatnich 30 dni przy produktach promocyjnych."
+
+#. Found in description list item.
+msgid "<strong>WooCommerce blocks support</strong> - compatible with both the classic and block-based cart and checkout."
+msgstr "<strong>Obsługa bloków WooCommerce</strong> - zgodność z klasycznym oraz blokowym koszykiem i kasą."
+
+#. Found in description list item.
+msgid "<strong>Free and open source</strong> - the core product, checkout and storefront tools are available at no cost."
+msgstr "<strong>Darmowa i z otwartym kodem</strong> - podstawowe narzędzia produktowe, związane z kasą i sklepowe są dostępne bez opłat."
+
+#. Found in description list item.
+msgid "<strong>Built for Polish shops</strong> - features designed for WooCommerce stores selling in Poland or to Polish customers."
+msgstr "<strong>Dla polskich sklepów</strong> - funkcje projektowane pod sklepy WooCommerce sprzedające w Polsce lub do polskich klientów."
+
+#. Found in description list item.
+msgid "<strong>One plugin, many modules</strong> - GPSR, Omnibus, GDPR, right of withdrawal, product data and storefront modules in one place."
+msgstr "<strong>Jedna wtyczka, wiele modułów</strong> - GPSR, Omnibus, RODO, odstąpienia od umowy, dane produktowe i moduły sklepu w jednym miejscu."
+
+#. Found in description list item.
+msgid "<strong>Bug reports and feature requests</strong> - https://github.com/wppoland/polski/issues"
+msgstr "<strong>Zgłoszenia błędów i propozycje funkcji</strong> - https://github.com/wppoland/polski/issues"
+
+#. Found in description header.
+msgid "GUS REGON API"
+msgstr "API GUS REGON"
+
+#. Found in description header.
+msgid "Storefront modules"
+msgstr "Moduły frontu sklepu"
+
+#. Found in description header.
+msgid "Product data and labelling"
+msgstr "Dane produktowe i oznaczenia"
+
+#. Found in description header.
+msgid "Checkout, consents and returns"
+msgstr "Kasa, zgody i zwroty"
+
+#. Found in description header.
+msgid "Key modules"
+msgstr "Najważniejsze moduły"
+
+#. Found in description header.
+msgid "Documentation and links"
+msgstr "Dokumentacja i linki"
+
+#. Screenshot description.
+msgid "Wishlist, comparison and quick view on the product list."
+msgstr "Lista życzeń, porównywarka i szybki podgląd na liście produktów."
+
+#. Screenshot description.
+msgid "AJAX search and product filters in the shop."
+msgstr "Wyszukiwarka AJAX i filtry produktów w sklepie."
+
+#. Screenshot description.
+msgid "The DSA illegal-content report form."
+msgstr "Formularz zgłoszenia nielegalnych treści DSA."
+
+#. Screenshot description.
+msgid "The right-of-withdrawal action in the customer account."
+msgstr "Akcja odstąpienia od umowy w koncie klienta."
+
+#. Screenshot description.
+msgid "Omnibus Directive - the lowest price from 30 days on a discounted product."
+msgstr "Dyrektywa Omnibus - najniższa cena z 30 dni przy produkcie promocyjnym."
+
+#. Screenshot description.
+msgid "GDPR consent checkboxes at checkout with the consent log."
+msgstr "Checkboxy zgód RODO w kasie z rejestrem zgód."
+
+#. Screenshot description.
+msgid "The module management panel with module toggles and settings."
+msgstr "Panel zarządzania modułami z przełącznikami i ustawieniami modułów."
+
+#. Found in faq paragraph.
+msgid "Yes. Polski extends the WooCommerce CSV import and export with selected product data, including GPSR fields and other product information."
+msgstr "Tak. Polski rozszerza import i eksport CSV WooCommerce o wybrane dane produktowe, między innymi pola GPSR i inne informacje o produkcie."
+
+#. Found in faq header.
+msgid "Does Polski have shortcodes?"
+msgstr "Czy Polski ma shortcode?"
+
+#. Found in faq header.
+msgid "Can I enable only selected modules?"
+msgstr "Czy mogę włączyć tylko wybrane moduły?"
+
+#. Found in faq header.
+msgid "Does Polski add unit prices in WooCommerce?"
+msgstr "Czy Polski dodaje ceny jednostkowe w WooCommerce?"
+
+#. Found in faq header.
+msgid "Is Polski ready for the Cyber Resilience Act?"
+msgstr "Czy Polski jest gotowy na Cyber Resilience Act?"
+
+#. Found in description list item.
+msgid "<strong>Documentation</strong> - https://plogins.com/polski/docs/"
+msgstr "<strong>Dokumentacja</strong> - https://plogins.com/pl/polski/docs/"
+
+#. Found in description list item.
+msgid "<strong>Discussions and questions</strong> - https://github.com/wppoland/polski/discussions"
+msgstr "<strong>Dyskusje i pytania</strong> - https://github.com/wppoland/polski/discussions"
+
+#. Found in description list item.
+msgid "<strong>Source code</strong> - https://github.com/wppoland/polski"
+msgstr "<strong>Kod źródłowy</strong> - https://github.com/wppoland/polski"
+
+#. Found in faq paragraph.
+msgid "Yes. The admin panel includes a simple feedback form that stores messages locally in WordPress. Do not enter passwords, license keys or customer personal data there."
+msgstr "Tak. Panel administracyjny zawiera prosty formularz opinii, który zapisuje wiadomości lokalnie w WordPressie. Nie wpisuj tam haseł, kluczy licencyjnych ani danych osobowych klientów."
+
+#. Found in faq header.
+msgid "Is Polski for WooCommerce free?"
+msgstr "Czy Polski for WooCommerce jest darmowy?"
+
+#. Found in installation list item.
+msgid "Click <strong>Activate Plugin</strong>."
+msgstr "Kliknij <strong>Włącz wtyczkę</strong>."
+
+#. Found in installation list item.
+msgid "Choose the ZIP file and click <strong>Install Now</strong>."
+msgstr "Wybierz plik ZIP i kliknij <strong>Zainstaluj teraz</strong>."
+
+#. Found in installation list item.
+msgid "In the WordPress dashboard go to <strong>Plugins &gt; Add New &gt; Upload Plugin</strong>."
+msgstr "W panelu WordPress przejdź do <strong>Wtyczki &gt; Dodaj nową &gt; Wyślij wtyczkę na serwer</strong>."
+
+#. Found in installation list item.
+msgid "Click <strong>Install</strong>, then <strong>Activate</strong>."
+msgstr "Kliknij <strong>Zainstaluj</strong>, a następnie <strong>Włącz</strong>."
+
+#. Found in installation list item.
+msgid "Search for <strong>Polski for WooCommerce</strong>."
+msgstr "Wyszukaj <strong>Polski for WooCommerce</strong>."
+
+#. Found in installation header.
+msgid "Manual installation"
+msgstr "Instalacja ręczna"
+
+#. Found in installation header.
+msgid "Automatic installation"
+msgstr "Instalacja automatyczna"
+
+#. Found in description paragraph.
+msgid "Admin-panel feedback and deactivation-form information are stored locally in WordPress and are not sent to an external service."
+msgstr "Opinie z panelu administracyjnego i informacje z formularza dezaktywacji są zapisywane lokalnie w WordPressie i nie są wysyłane do zewnętrznej usługi."
+
+#. Found in description paragraph.
+msgid "When the DataLayer module is enabled and a GTM container ID or a GA4 measurement ID is configured, the plugin can load the Google Tag Manager or Google Analytics scripts in the shop and send ecommerce events according to the configuration."
+msgstr "Gdy moduł DataLayer jest włączony i skonfigurowano identyfikator kontenera GTM albo identyfikator pomiaru GA4, wtyczka może załadować skrypty Google Tag Manager albo Google Analytics w sklepie oraz wysyłać zdarzenia ecommerce zgodnie z konfiguracją."
+
+#. Found in description paragraph.
+msgid "When the social login module is enabled and Facebook login is configured, a customer clicking the continue-with-Facebook button is redirected to Facebook for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account."
+msgstr "Gdy moduł logowania społecznościowego jest włączony i skonfigurowano logowanie Facebook, klient klikający przycisk kontynuacji z Facebook jest przekierowywany do Facebook w celu uwierzytelnienia. Wtyczka wymienia kod autoryzacyjny na token dostępu i pobiera dane profilu potrzebne do logowania albo utworzenia konta."
+
+#. Found in description paragraph.
+msgid "When the social login module is enabled and Google login is configured, a customer clicking the continue-with-Google button is redirected to Google for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account."
+msgstr "Gdy moduł logowania społecznościowego jest włączony i skonfigurowano logowanie Google, klient klikający przycisk kontynuacji z Google jest przekierowywany do Google w celu uwierzytelnienia. Wtyczka wymienia kod autoryzacyjny na token dostępu i pobiera dane profilu potrzebne do logowania albo utworzenia konta."
+
+#. Found in description list item.
+msgid "Service address: <a href=\"https://www.googletagmanager.com/\">https://www.googletagmanager.com/</a>"
+msgstr "Adres usługi: <a href=\"https://www.googletagmanager.com/\">https://www.googletagmanager.com/</a>"
+
+#. Found in description list item.
+msgid "Data sent: page views and ecommerce event data, for example product IDs, product names, prices, cart actions, checkout events and order values, depending on the configuration."
+msgstr "Wysyłane dane: odsłony stron i dane zdarzeń ecommerce, na przykład identyfikatory produktów, nazwy produktów, ceny, akcje koszyka, zdarzenia kasy i wartości zamówień, zależnie od konfiguracji."
+
+#. Found in description list item.
+msgid "Privacy policy: <a href=\"https://www.facebook.com/privacy/policy/\">https://www.facebook.com/privacy/policy/</a>"
+msgstr "Polityka prywatności: <a href=\"https://www.facebook.com/privacy/policy/\">https://www.facebook.com/privacy/policy/</a>"
+
+#. Found in description list item.
+msgid "Terms of service: <a href=\"https://www.facebook.com/legal/terms\">https://www.facebook.com/legal/terms</a>"
+msgstr "Warunki usługi: <a href=\"https://www.facebook.com/legal/terms\">https://www.facebook.com/legal/terms</a>"
+
+#. Found in description list item.
+msgid "Service address: <a href=\"https://www.facebook.com/\">https://www.facebook.com/</a>"
+msgstr "Adres usługi: <a href=\"https://www.facebook.com/\">https://www.facebook.com/</a>"
+
+#. Found in description list item.
+msgid "Privacy policy: <a href=\"https://policies.google.com/privacy\">https://policies.google.com/privacy</a>"
+msgstr "Polityka prywatności: <a href=\"https://policies.google.com/privacy\">https://policies.google.com/privacy</a>"
+
+#. Found in description list item.
+msgid "Terms of service: <a href=\"https://policies.google.com/terms\">https://policies.google.com/terms</a>"
+msgstr "Warunki usługi: <a href=\"https://policies.google.com/terms\">https://policies.google.com/terms</a>"
+
+#. Found in description list item.
+msgid "Service address: <a href=\"https://accounts.google.com/\">https://accounts.google.com/</a>"
+msgstr "Adres usługi: <a href=\"https://accounts.google.com/\">https://accounts.google.com/</a>"
+
+#. Found in description list item.
+msgid "Privacy policy: <a href=\"https://bip.stat.gov.pl/\">https://bip.stat.gov.pl/</a>"
+msgstr "Polityka prywatności: <a href=\"https://bip.stat.gov.pl/\">https://bip.stat.gov.pl/</a>"
+
+#. Found in description list item.
+msgid "Terms of service: <a href=\"https://api.stat.gov.pl/Home/RegulaminBIR\">https://api.stat.gov.pl/Home/RegulaminBIR</a>"
+msgstr "Regulamin usługi: <a href=\"https://api.stat.gov.pl/Home/RegulaminBIR\">https://api.stat.gov.pl/Home/RegulaminBIR</a>"
+
+#. Found in description list item.
+msgid "Service address: <a href=\"https://wyszukiwarkaregon.stat.gov.pl/\">https://wyszukiwarkaregon.stat.gov.pl/</a>"
+msgstr "Adres usługi: <a href=\"https://wyszukiwarkaregon.stat.gov.pl/\">https://wyszukiwarkaregon.stat.gov.pl/</a>"
+
+#. Found in description list item.
+msgid "<strong>Storefront</strong>: wishlist, comparison, search, filters and badges."
+msgstr "<strong>Front sklepu</strong>: lista życzeń, porównywarka, wyszukiwarka, filtry i odznaki."
+
+#. Found in description list item.
+msgid "<strong>REST API</strong> - an API for settings, checkboxes, legal pages, withdrawals and search."
+msgstr "<strong>REST API</strong> - API dla ustawień, checkboxów, stron prawnych, odstąpień i wyszukiwania."
+
+#. Found in description list item.
+msgid "<strong>Product badges</strong> - sale, new, featured and custom labels."
+msgstr "<strong>Odznaki produktów</strong> - oznaczenia promocji, nowości, wyróżnień i własnych etykiet."
+
+#. Found in description list item.
+msgid "<strong>AJAX search</strong> - live product search."
+msgstr "<strong>Wyszukiwarka AJAX</strong> - wyszukiwanie produktów na żywo."
+
+#. Found in description list item.
+msgid "<strong>Gallery zoom</strong> - enhanced product image zoom."
+msgstr "<strong>Powiększenie galerii</strong> - rozszerzone powiększanie zdjęć produktu."
+
+#. Found in description list item.
+msgid "<strong>Wishlist</strong> - save products for later."
+msgstr "<strong>Lista życzeń</strong> - zapisywanie produktów na później."
+
+#. Found in description list item.
+msgid "<strong>Delivery time</strong> - estimated delivery time on product pages and product lists."
+msgstr "<strong>Czas dostawy</strong> - informacja o przewidywanym czasie dostawy na stronach produktów i listach produktów."
+
+#. Found in description list item.
+msgid "<strong>Unit prices</strong> - price per kg, litre, metre, piece or a custom unit."
+msgstr "<strong>Ceny jednostkowe</strong> - cena za kg, litr, metr, sztukę albo własną jednostkę."
+
+#. Found in description list item.
+msgid "<strong>GPSR product fields</strong> - manufacturer, importer, EU responsible person, product identifiers, safety warnings and instructions, including CSV import and export."
+msgstr "<strong>Pola GPSR produktu</strong> - producent, importer, osoba odpowiedzialna w UE, identyfikatory produktu, ostrzeżenia i instrukcje bezpieczeństwa, także z importem i eksportem CSV."
+
+#. Found in description list item.
+msgid "<strong>HPOS compatible</strong> - supports WooCommerce High-Performance Order Storage."
+msgstr "<strong>Zgodność z HPOS</strong> - wsparcie WooCommerce High-Performance Order Storage."
+
+#. Found in description list item.
+msgid "<strong>Modern code</strong> - PHP 8.1+, a React admin panel, REST API and WP-CLI support."
+msgstr "<strong>Nowoczesny kod</strong> - PHP 8.1+, panel administracyjny React, REST API i wsparcie WP-CLI."
+
+#. Found in description list item.
+msgid "<strong>Plugin page</strong> - https://plogins.com/polski/"
+msgstr "<strong>Strona wtyczki</strong> - https://plogins.com/pl/polski/"
+
+#. Found in description header.
+msgid "Google Tag Manager / Google Analytics"
+msgstr "Google Tag Manager / Google Analytics"
+
+#. Found in description header.
+msgid "Facebook OAuth"
+msgstr "Facebook OAuth"
+
+#. Found in description header.
+msgid "Google OAuth"
+msgstr "Google OAuth"
+
+#. Found in description header.
+msgid "External Services"
+msgstr "Usługi zewnętrzne"
+
+#. Found in description header.
+msgid "Configuration"
+msgstr "Konfiguracja"
+
+#. Found in description header.
+msgid "Getting Started"
+msgstr "Pierwsze kroki"
+
+#. Found in description header.
+msgid "Admin and developer tools"
+msgstr "Narzędzia administracyjne i deweloperskie"
+
+#. Found in description header.
+msgid "Why Polski for WooCommerce?"
+msgstr "Dlaczego Polski for WooCommerce?"
+
+#. Screenshot description.
+msgid "GPSR product safety fields in the product editor."
+msgstr "Pola bezpieczeństwa produktu GPSR w edycji produktu."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes."
+msgstr "Porządki: koniec z dołączaniem tłumaczeń generowanych maszynowo (polskie zostają); pozostałe języki pochodzą teraz z pakietów językowych WordPress.org. Pliki budowania nie trafiają już do wydawanej paczki. Bez zmian funkcjonalnych."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the default Polish shipping-costs label is now \"plus koszty wysyłki\" (previously an untranslated German \"zzgl. kosztów wysyłki\")."
+msgstr "Poprawka: domyślna polska etykieta kosztów wysyłki to teraz „plus koszty wysyłki” (wcześniej nieprzetłumaczone niemieckie „zzgl. kosztów wysyłki”)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the shipping-costs notice no longer runs into the VAT notice (\"VATzzgl.\" → proper spacing), including in page builders that don't load the plugin stylesheet."
+msgstr "Poprawka: komunikat o kosztach wysyłki nie zlewa się już z komunikatem o VAT („VATzzgl.” → poprawne odstępy), także w kreatorach stron, które nie ładują arkusza stylów wtyczki."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the VAT notice under the price no longer shows a doubled percent sign (\"23%%\" → \"23%\")."
+msgstr "Poprawka: komunikat o VAT pod ceną nie pokazuje już podwojonego znaku procentu („23%%” → „23%”)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: a module switched off in Polski &gt; Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, \"from\" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details)."
+msgstr "Poprawka: moduł wyłączony w Polski &gt; Moduły nie renderuje już niczego na froncie sklepu. Wcześniej niektóre funkcje po wyłączeniu zostawiały niedziałający przycisk lub zbędny kod (szybki podgląd, porównywarka, lista życzeń, cena jednostkowa, cena „od”, informacja o najniższej cenie Omnibus, komunikaty o VAT i wysyłce, czas dostawy, producent, oznaczenia, linki do odstąpienia, informacja o rozwiązywaniu sporów oraz dane bezpieczeństwa GPSR)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the Polski menu icon is now centred relative to its label."
+msgstr "Poprawka: ikona menu Polski jest teraz wyśrodkowana względem etykiety."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Admin: split the module list into groups and added tooltips to each module. Action links are dimmed when a module is disabled."
+msgstr "Administracja: podzielono listę modułów na grupy i dodano podpowiedzi do każdego modułu. Linki akcji są wygaszone, gdy moduł jest wyłączony."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Admin: merged five separate settings screens into one tabbed screen, and moved withdrawals, the consent log, CRA incidents, SBOM, the complaint template and GDPR training documents into a reports and tools centre."
+msgstr "Administracja: połączono pięć osobnych ekranów ustawień w jeden ekran z kartami, a odstąpienia, rejestr zgód, incydenty CRA, SBOM, szablon reklamacji i dokumenty szkoleniowe RODO przeniesiono do centrum raportów i narzędzi."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: the BDO number module. Enter a BDO number and display it with the [polski_bdo] shortcode or the BDO number block, for example in the footer. The company identification block can also include the BDO number."
+msgstr "Nowość: moduł numeru BDO. Wpisz numer BDO i wyświetl go shortcode [polski_bdo] albo blokiem numeru BDO, na przykład w stopce. Blok identyfikacji firmy może także zawierać numer BDO."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: removed a TypeError fatal error that could occur on order queries, including on the WooCommerce orders screen, when the withdrawal query helper received a pagination object instead of an array."
+msgstr "Poprawka: usunięto błąd krytyczny TypeError, który mógł wystąpić przy zapytaniach o zamówienia, także na ekranie zamówień WooCommerce, gdy pomocnik zapytań odstąpień otrzymał obiekt paginacji zamiast tablicy."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: the modules screen now has instant search by name and description and sorting: grouped, alphabetical or enabled first. Without reloading the page."
+msgstr "Nowość: ekran modułów ma teraz natychmiastowe wyszukiwanie po nazwie i opisie oraz sortowanie: grupowane, alfabetyczne albo włączone jako pierwsze. Bez przeładowania strony."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the Polski admin menu icon no longer shifts on hover and in the active state."
+msgstr "Poprawka: ikona menu Polski w panelu administracyjnym nie przesuwa się już po najechaniu i w stanie aktywnym."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: the setup wizard. A new card suggests ready-made scenarios such as a Polish legal baseline, food and grocery, digital products, B2B and wholesale, fashion and conversion growth. The wizard only enables modules, it does not disable existing settings."
+msgstr "Nowość: kreator konfiguracji. Nowa karta proponuje gotowe scenariusze, takie jak polska baza prawna, żywność i grocery, produkty cyfrowe, B2B i hurt, fashion oraz wzrost konwersji. Kreator tylko włącza moduły, nie wyłącza istniejących ustawień."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese, including the text of the new setup wizard and module search and sorting."
+msgstr "Tłumaczenia: uzupełniono wbudowane tłumaczenia dla języka niemieckiego, czeskiego, słowackiego, ukraińskiego, litewskiego, białoruskiego i chińskiego uproszczonego, w tym teksty nowego kreatora konfiguracji oraz wyszukiwania i sortowania modułów."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Improvement: the setup wizard is now a guided multi-step process: company, legal, taxes and OSS, checkout, finish. It collects company data, enables the needed legal modules and helps configure taxes and checkout. Optional steps can be skipped, and finishing does not disable modules you already use."
+msgstr "Ulepszenie: kreator konfiguracji jest teraz prowadzonym procesem wieloetapowym: firma, kwestie prawne, podatki i OSS, kasa, zakończenie. Zbiera dane firmy, włącza potrzebne moduły prawne oraz pomaga skonfigurować podatki i kasa. Kroki opcjonalne można pominąć, a zakończenie nie wyłącza modułów, których już używasz."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Security: hardened rate-limit handling on the guest withdrawal path and improved IPv6 address anonymisation in the consent log."
+msgstr "Bezpieczeństwo: utwardzono obsługę limitowania żądań w ścieżce odstąpienia dla gości oraz poprawiono anonimizację adresów IPv6 w rejestrze zgód."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: product information, including the lowest price from 30 days, the unit price and the delivery time, appears in the block cart and checkout."
+msgstr "Nowość: informacje produktowe, w tym najniższa cena z 30 dni, cena jednostkowa i czas dostawy, pojawiają się w blokowym koszyku i kasie."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: full support for the WooCommerce block checkout. Consent checkboxes, the digital-content consent and custom checkout fields render, validate and save in both the block and classic checkout."
+msgstr "Nowość: pełne wsparcie blokowego kasy WooCommerce. Checkboxy zgód, zgoda dla treści cyfrowych i własne pola kasy renderują się, walidują i zapisują zarówno w kasie blokowym, jak i klasycznym."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: the gallery and zoom lightbox could stay on screen as a dark overlay if the theme forced its own display value. The closed state is now always hidden."
+msgstr "Poprawka: lightbox galerii i powiększenia mógł zostać na ekranie jako ciemna nakładka, jeśli motyw wymuszał własną wartość display. Stan zamknięty jest teraz zawsze ukryty."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: storefront blocks - AJAX search, AJAX filters and the product slider - did not register on installed pages. They now register correctly and appear in the editor."
+msgstr "Poprawka: bloki frontu sklepu, czyli wyszukiwarka AJAX, filtry AJAX i slider produktów, nie rejestrowały się na zainstalowanych stronach. Teraz rejestrują się poprawnie i pojawiają się w edytorze."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New: all Polski blocks are now grouped in the block editor under a separate \"Polski\" category, and block metadata is registered from block.json files, so the blocks are correctly visible and easier to find."
+msgstr "Nowość: wszystkie bloki Polski są teraz zgrupowane w edytorze bloków w osobnej kategorii \"Polski\", a metadane bloków są rejestrowane z plików block.json, dzięki czemu bloki są poprawnie widoczne i łatwiejsze do znalezienia."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New blocks: DSA Report Form, Dispute Resolution (ODR) Information, Small-Taxpayer VAT Exemption Information and Available Payment Methods are now available as blocks (in the \"Polski\" category), so they can be placed on any page without remembering a shortcode. Each one displays nothing until the matching feature is configured."
+msgstr "Nowe bloki: Formularz zgłoszenia DSA, Informacja o rozstrzyganiu sporów (ODR), Informacja o zwolnieniu z VAT dla małego podatnika oraz Dostępne metody płatności są teraz dostępne jako bloki (w kategorii \"Polski\"), więc można je umieścić na dowolnej stronie bez pamiętania shortcode'u. Każdy z nich nic nie wyświetla, dopóki odpowiednia funkcja nie zostanie skonfigurowana."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "New blocks: product-data blocks for block themes and the editor - Unit Price, Delivery Time, Lowest Price (Omnibus), Tax Information, Shipping Costs, Manufacturer, Safety Instructions, Safety Documents, Power Supply, Defect Description, Nutrition Values, Allergens, Ingredients, Nutri-Score, Food Information and Product Safety Information (GPSR) - all in the \"Polski\" category. Each one displays the matching product data and shows nothing outside a product context. This brings the block editor to parity with the Polski widgets for Elementor."
+msgstr "Nowe bloki: bloki danych produktu dla motywów blokowych i edytora - Cena jednostkowa, Czas dostawy, Najniższa cena (Omnibus), Informacja podatkowa, Koszty wysyłki, Producent, Instrukcje bezpieczeństwa, Dokumenty bezpieczeństwa, Zasilanie, Opis wad, Wartości odżywcze, Alergeny, Składniki, Nutri-Score, Informacje o żywności oraz Informacja o bezpieczeństwie produktu (GPSR) - wszystkie w kategorii \"Polski\". Każdy z nich wyświetla odpowiednie dane produktu i nic nie pokazuje poza kontekstem produktu. Dzięki temu edytor bloków osiąga parytet z widżetami Polski dla Elementora."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Hardening: the popup and quick-view overlays also force the hidden state, so a theme should not keep a closed overlay on screen."
+msgstr "Utwardzenie: nakładki popup i szybkiego podglądu także wymuszają ukryty stan, więc motyw nie powinien blokować zamkniętej nakładki na ekranie."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Fix: uninstall removes all plugin tables, database migrations run in the correct order, and the Omnibus lowest-price window no longer collapses to the current price for an empty period."
+msgstr "Poprawka: odinstalowanie usuwa wszystkie tabele wtyczki, migracje bazy danych wykonują się we właściwej kolejności, a okno najniższej ceny Omnibus nie sprowadza się już do bieżącej ceny przy pustym okresie."
+
+#. Found in changelog paragraph.
+#, gp-priority: low
+msgid "Older versions are available in <a href=\"https://plugins.svn.wordpress.org/polski/trunk/changelog.txt\">changelog.txt</a>."
+msgstr "Starsze wersje są dostępne w <a href=\"https://plugins.svn.wordpress.org/polski/trunk/changelog.txt\">changelog.txt</a>."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Documentation: updated the documentation and plugin-page links on plogins.com."
+msgstr "Dokumentacja: zaktualizowano linki do dokumentacji i strony wtyczki na plogins.com."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Translations: refreshed and recompiled all bundled language catalogs after the settings and menu changes."
+msgstr "Tłumaczenia: odświeżono i ponownie skompilowano wszystkie wbudowane katalogi językowe po zmianach ustawień i menu."

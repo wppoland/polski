@@ -130,31 +130,29 @@ class OmnibusPriceRepository
             return [];
         }
 
-        $idList = implode(',', $cleanIds);
         $table = $this->tableName();
         $cutoff = $this->gmDateDaysAgo($days);
+        $idPlaceholders = implode(',', array_fill(0, count($cleanIds), '%d'));
 
         // The subquery picks the lowest effective price per product within the window;
         // the outer join recovers full row data for currency / sale_price / recorded_at.
-        // %i can't placeholder-substitute table names inside subqueries reliably across
-        // wpdb versions, and $idList is built exclusively from intval() above, so
-        // direct interpolation is safe here.
+        // Table names use %i identifier placeholders; the product-id IN list uses %d
+        // placeholders bound from the intval-filtered $cleanIds.
         $sql = $wpdb->prepare(
-            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $idList = ints from intval() above.
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $idPlaceholders is a list of %d tokens only.
             "SELECT t1.*
-             FROM `{$table}` t1
+             FROM %i t1
              INNER JOIN (
                  SELECT product_id, MIN(COALESCE(sale_price, price)) AS lowest
-                 FROM `{$table}`
-                 WHERE product_id IN ({$idList}) AND recorded_at >= %s
+                 FROM %i
+                 WHERE product_id IN ({$idPlaceholders}) AND recorded_at >= %s
                  GROUP BY product_id
              ) t2
                  ON t1.product_id = t2.product_id
                  AND COALESCE(t1.sale_price, t1.price) = t2.lowest
              WHERE t1.recorded_at >= %s
              ORDER BY t1.recorded_at DESC",
-            $cutoff,
-            $cutoff,
+            ...array_merge([$table, $table], $cleanIds, [$cutoff, $cutoff]),
         );
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom plugin table, prepared above.
