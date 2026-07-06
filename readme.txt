@@ -93,6 +93,16 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
 * **Audit scope** - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents.
 
+= You may also like these plugins =
+
+More free WooCommerce plugins from WPPoland:
+
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+
+Browse the full catalogue at https://plogins.com/ .
+
 == Installation ==
 
 = Automatic installation =
