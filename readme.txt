@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.8
+Stable tag: 1.24.9
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -294,6 +294,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 8. Wishlist, comparison and quick view on the product list.
 
 == Changelog ==
+
+= 1.24.9 =
+* Added a dashboard overview of PRO features (polski PRO).
 
 = 1.24.8 =
 * Accessibility: the social-proof toast is now keyboard-dismissable, respects reduced motion, and meets AA contrast.
