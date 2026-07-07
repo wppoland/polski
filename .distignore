@@ -63,3 +63,7 @@ languages/polski-lt_LT.*
 languages/polski-sk_SK.*
 languages/polski-uk*
 languages/polski-zh_CN.*
+
+# editor backups (never ship / never a badly_named_files reject)
+*~
+*.bak
