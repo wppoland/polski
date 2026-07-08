@@ -1,0 +1,127 @@
+# wp.org Stable Readme translation (pl_PL)
+msgid ""
+msgstr ""
+"Project-Id-Version: polski Stable Readme\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: plogins-i18n\n"
+
+msgid "* <strong>Documentation</strong> - https://plogins.com/polski/docs/\n* <strong>Plugin page</strong> - https://plogins.com/polski/\n* <strong>Source code</strong> - https://github.com/wppoland/polski\n* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/polski/issues\n* <strong>Discussions and questions</strong> - https://github.com/wppoland/polski/discussions"
+msgstr "* <strong>Documentation</strong> - https://plogins.com/pl/polski/docs/\n* <strong>Plugin page</strong> - https://plogins.com/pl/polski/\n* <strong>Source code</strong> - https://github.com/wppoland/polski\n* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/polski/issues\n* <strong>Discussions and questions</strong> - https://github.com/wppoland/polski/discussions"
+
+msgid "Browse the full catalogue at https://plogins.com/ ."
+msgstr "Browse the full catalogue at https://plogins.com/pl/ ."
+
+msgid "Yes. Polski for WooCommerce is a free WooCommerce plugin for Polish online shops and is distributed as open source under GPLv2 or later."
+msgstr "Tak. Polski dla WooCommerce to darmowa wtyczka WooCommerce dla polskich sklepów internetowych, rozpowszechniana jako open source na licencji GPLv2 lub nowszej."
+
+msgid "Polski is intended for WooCommerce stores selling in Poland or to Polish customers. It is especially useful when a shop needs modules for GPSR, Omnibus, GDPR, VAT ID (NIP), the right of withdrawal, KSeF and product data."
+msgstr "Język Polski jest przeznaczony dla sklepów WooCommerce prowadzących sprzedaż w Polsce lub dla polskich klientów. Jest to szczególnie przydatne, gdy sklep potrzebuje modułów GPSR, Omnibus, RODO, NIP, prawa odstąpienia od umowy, KSeF i danych produktów."
+
+msgid "Yes. Polski adds GPSR-related product fields, including manufacturer, importer and EU responsible person data, product identifiers, safety warnings and instructions. The data can be filled in the product editor and in bulk via CSV import or export."
+msgstr "Tak. Polski dodaje pola produktów związane z GPSR, w tym dane producenta, importera i osoby odpowiedzialnej w UE, identyfikatory produktów, ostrzeżenia i instrukcje dotyczące bezpieczeństwa. Dane można wypełnić w edytorze produktów oraz zbiorczo poprzez import lub eksport CSV."
+
+msgid "Yes. The GPSR module can store and display the manufacturer, importer and EU responsible person data on the WooCommerce product page. Visibility depends on the module settings and the data filled in for the product."
+msgstr "Tak. Moduł GPSR może przechowywać i wyświetlać dane producenta, importera i osoby odpowiedzialnej w UE na stronie produktu WooCommerce. Widoczność uzależniona jest od ustawień modułu i wprowadzonych danych dla produktu."
+
+msgid "Yes. The Omnibus module records price history and can display the lowest price from the last 30 days on discounted products. You can adjust the display settings in the module panel."
+msgstr "Tak. Moduł Omnibus rejestruje historię cen i może wyświetlić najniższą cenę z ostatnich 30 dni na produkty przecenione. Ustawienia wyświetlania możesz dostosować w panelu modułu."
+
+msgid "Yes. The plugin lets you add configurable consent checkboxes at order, registration and reviews, and keep a consent log with date, context and technical audit information."
+msgstr "Tak. Wtyczka umożliwia dodanie konfigurowalnych pól wyboru zgody przy składaniu zamówienia, rejestracji i przeglądach oraz prowadzenie dziennika zgód zawierającego datę, kontekst i informacje z audytu technicznego."
+
+msgid "Yes. Polski can add checkboxes for the terms, privacy policy, withdrawal information, consent for digital content, marketing consent, delivery notifications and a review reminder."
+msgstr "Tak. Polski może dodać pola wyboru warunków, polityki prywatności, informacji o odstąpieniu od umowy, zgody na treści cyfrowe, zgody marketingowej, powiadomień o dostawie i przypomnienia o przeglądzie."
+
+msgid "Yes. Polski can add right-of-withdrawal handling from the customer account, with request confirmation, a request log and e-mail messages. This helps organise the returns process in WooCommerce."
+msgstr "Tak. Polski może dodać obsługę prawa do wypłaty z konta klienta, z potwierdzeniem żądania, dziennikiem żądań i wiadomościami e-mail. Pomaga to zorganizować proces zwrotów w WooCommerce."
+
+msgid "Yes. Polski includes features and hooks related to the Polish VAT ID (NIP), including detection of orders that may require invoice or KSeF handling. Field availability and behaviour depend on the enabled modules."
+msgstr "Tak. Polski zawiera funkcje i haczyki związane z polskim numerem VAT (NIP), w tym wykrywanie zamówień, które mogą wymagać obsługi faktury lub KSeF. Dostępność i zachowanie pola zależą od włączonych modułów."
+
+msgid "Polski is not a complete system for sending invoices to KSeF, but it adds mechanisms ready for integrations: flagging orders by VAT ID, a KSeF status column and hooks for invoicing plugins and custom integrations."
+msgstr "Polski nie jest kompletnym systemem do wysyłania faktur do KSeF, ale dodaje mechanizmy gotowe do integracji: flagowanie zamówień po NIP, kolumnę statusu KSeF oraz hooki do wtyczek do fakturowania i niestandardowych integracji."
+
+msgid "Polski provides data, flags and hooks useful for invoicing and KSeF, but it does not replace a full invoicing plugin or accounting system. For automatic invoicing, use a dedicated invoicing integration."
+msgstr "Polski udostępnia dane, flagi i hooki przydatne przy fakturowaniu i KSeF, jednak nie zastępuje pełnej wtyczki do fakturowania czy systemu księgowego. Do automatycznego fakturowania użyj dedykowanej integracji fakturowania."
+
+msgid "Yes. Polski supports the classic checkout as well as the block-based WooCommerce cart and checkout."
+msgstr "Tak. Polski obsługuje klasyczną kasę, a także koszyk i kasę blokową WooCommerce."
+
+msgid "Yes. Polski declares compatibility with WooCommerce HPOS, that is High-Performance Order Storage / Custom Order Tables."
+msgstr "Tak. Polski deklaruje kompatybilność z WooCommerce HPOS, czyli High-Performance Order Storage / Custom Order Tables."
+
+msgid "Yes. The plugin lets you show unit prices, for example per kg, litre, metre, piece or a custom unit."
+msgstr "Tak. Wtyczka umożliwia wyświetlanie cen jednostkowych, na przykład za kg, litr, metr, sztukę lub jednostkę niestandardową."
+
+msgid "Yes. Polski includes modules useful for grocery shops, including composition, nutrition values, allergens, origin, distributor and additional product labelling fields."
+msgstr "Tak. W języku angielskim znajdują się moduły przydatne w sklepach spożywczych m.in. skład, wartości odżywcze, alergeny, pochodzenie, dystrybutor oraz dodatkowe pola dotyczące oznakowania produktu."
+
+msgid "Yes. The plugin includes DSA tools, including point-of-contact settings, an illegal-content report form shortcode, a report-handling panel and e-mail notifications."
+msgstr "Tak. Wtyczka zawiera narzędzia DSA, w tym ustawienia punktów kontaktowych, krótki kod formularza zgłoszenia nielegalnych treści, panel obsługi zgłoszeń i powiadomienia e-mail."
+
+msgid "Yes. The storefront modules include a wishlist, product comparison, quick view, back-in-stock notifications, AJAX filters, AJAX search and product badges."
+msgstr "Tak. Moduły sklepu obejmują listę życzeń, porównanie produktów, szybki podgląd, powiadomienia o ponownej dostępności, filtry AJAX, wyszukiwanie AJAX i plakietki produktów."
+
+msgid "Yes. Polski is modular, so you can enable only the features you need, for example GPSR, Omnibus, GDPR, returns, VAT ID, DSA or storefront modules."
+msgstr "Tak. Polski jest modułowy, więc możesz włączyć tylko te funkcje, których potrzebujesz, np. GPSR, Omnibus, RODO, zwroty, NIP, DSA czy moduły storefront."
+
+msgid "Yes. Polski extends the WooCommerce CSV import and export with selected product data, including GPSR fields and other product information."
+msgstr "Tak. Polski rozszerza import i eksport CSV WooCommerce o wybrane dane produktów, w tym pola GPSR i inne informacje o produkcie."
+
+msgid "Yes. The plugin provides shortcodes for selected modules, including GPSR information, withdrawal forms, DSA reports, complaint templates and shop messages."
+msgstr "Tak. Wtyczka udostępnia skróty do wybranych modułów, w tym informacje GPSR, formularze odstąpienia od umowy, raporty DSA, szablony reklamacji i komunikaty sklepowe."
+
+msgid "* New blocks: product-data blocks for block themes and the editor - Unit Price, Delivery Time, Lowest Price (Omnibus), Tax Information, Shipping Costs, Manufacturer, Safety Instructions, Safety Documents, Power Supply, Defect Description, Nutrition Values, Allergens, Ingredients, Nutri-Score, Food Information and Product Safety Information (GPSR) - all in the \"Polski\" category. Each one displays the matching product data and shows nothing outside a product context. This brings the block editor to parity with the Polski widgets for Elementor."
+msgstr "* Nowe bloki: bloki danych produktów dla motywów bloków i edytora - Cena jednostkowa, Czas dostawy, Najniższa cena (omnibus), Informacje podatkowe, Koszty wysyłki, Producent, Instrukcje bezpieczeństwa, Dokumenty bezpieczeństwa, Zasilanie, Opis wady, Wartości odżywcze, Alergeny, Składniki, Nutri-Score, Informacje o żywności i Informacje o bezpieczeństwie produktu (GPSR) - wszystko w kategorii „Polski”. Każdy z nich wyświetla pasujące dane produktu i nie pokazuje niczego poza kontekstem produktu. Dzięki temu edytor bloków jest zrównany z polskimi widżetami Elementora."
+
+msgid "* New blocks: DSA Report Form, Dispute Resolution (ODR) Information, Small-Taxpayer VAT Exemption Information and Available Payment Methods are now available as blocks (in the \"Polski\" category), so they can be placed on any page without remembering a shortcode. Each one displays nothing until the matching feature is configured."
+msgstr "* Nowe bloki: Formularz raportu DSA, Informacje o rozstrzyganiu sporów (ODR), Informacje o zwolnieniu małych podatników z VAT oraz Dostępne metody płatności są teraz dostępne w postaci bloków (w kategorii „Polski”), dzięki czemu można je umieścić na dowolnej stronie bez zapamiętywania krótkiego kodu. Każdy z nich nie wyświetla niczego, dopóki odpowiednia funkcja nie zostanie skonfigurowana."
+
+msgid "* New: all Polski blocks are now grouped in the block editor under a separate \"Polski\" category, and block metadata is registered from block.json files, so the blocks are correctly visible and easier to find.\n* Fix: storefront blocks - AJAX search, AJAX filters and the product slider - did not register on installed pages. They now register correctly and appear in the editor."
+msgstr "* Nowość: wszystkie bloki języka Polski są teraz zgrupowane w edytorze bloków w osobnej kategorii „Polski”, a metadane bloków są rejestrowane z plików block.json, dzięki czemu bloki są poprawnie widoczne i łatwiejsze do znalezienia.\n* Poprawka: bloki witryn sklepowych - wyszukiwanie AJAX, filtry AJAX i suwak produktu - nie rejestrowały się na zainstalowanych stronach. Teraz rejestrują się poprawnie i pojawiają się w edytorze."
+
+msgid "* Fix: the gallery and zoom lightbox could stay on screen as a dark overlay if the theme forced its own display value. The closed state is now always hidden.\n* Hardening: the popup and quick-view overlays also force the hidden state, so a theme should not keep a closed overlay on screen."
+msgstr "* Poprawka: galeria i lightbox powiększenia mogły pozostać na ekranie jako ciemna nakładka, jeśli motyw wymusił własną wartość wyświetlania. Stan zamknięty jest teraz zawsze ukryty.\n* Utwardzanie: wyskakujące okienka i nakładki szybkiego podglądu również wymuszają stan ukryty, więc motyw nie powinien utrzymywać zamkniętej nakładki na ekranie."
+
+msgid "* New: full support for the WooCommerce block checkout. Consent checkboxes, the digital-content consent and custom checkout fields render, validate and save in both the block and classic checkout.\n* New: product information, including the lowest price from 30 days, the unit price and the delivery time, appears in the block cart and checkout.\n* Security: hardened rate-limit handling on the guest withdrawal path and improved IPv6 address anonymisation in the consent log.\n* Fix: uninstall removes all plugin tables, database migrations run in the correct order, and the Omnibus lowest-price window no longer collapses to the current price for an empty period."
+msgstr "* Nowość: pełna obsługa kasy blokowej WooCommerce. Pola wyboru zgody, zgody na treści cyfrowe i niestandardowe pola realizacji transakcji renderują, sprawdzają i zapisują zarówno w kasie blokowej, jak i klasycznej.\n* Nowość: informacje o produkcie, w tym najniższa cena od 30 dni, cena jednostkowa i czas dostawy, pojawiają się w koszyku blokowym i kasie.\n* Bezpieczeństwo: ulepszona obsługa limitów szybkości na ścieżce wypłat gościa i ulepszona anonimizacja adresów IPv6 w dzienniku zgód.\n* Poprawka: dezinstalacja usuwa wszystkie tabele wtyczek, migracje baz danych przebiegają we właściwej kolejności, a okno najniższej ceny Omnibusa nie zwija się już do aktualnej ceny przez pusty okres."
+
+msgid "* Improvement: the setup wizard is now a guided multi-step process: company, legal, taxes and OSS, checkout, finish. It collects company data, enables the needed legal modules and helps configure taxes and checkout. Optional steps can be skipped, and finishing does not disable modules you already use."
+msgstr "* Ulepszenie: kreator konfiguracji jest teraz wieloetapowym procesem: firma, kwestie prawne, podatki i OSS, realizacja transakcji, zakończenie. Gromadzi dane firmy, uruchamia potrzebne moduły prawne oraz pomaga w konfiguracji podatków i płatności. Opcjonalne kroki można pominąć, a zakończenie nie wyłącza modułów, których już używasz."
+
+msgid "* Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese, including the text of the new setup wizard and module search and sorting."
+msgstr "* Tłumaczenia: uzupełniono dołączone tłumaczenia na język niemiecki, czeski, słowacki, ukraiński, litewski, białoruski i chiński uproszczony, w tym tekst nowego kreatora konfiguracji oraz wyszukiwanie i sortowanie modułów."
+
+msgid "* New: the setup wizard. A new card suggests ready-made scenarios such as a Polish legal baseline, food and grocery, digital products, B2B and wholesale, fashion and conversion growth. The wizard only enables modules, it does not disable existing settings."
+msgstr "* Nowość: kreator konfiguracji. Nowa karta sugeruje gotowe scenariusze, takie jak polska podstawa prawna, żywność i artykuły spożywcze, produkty cyfrowe, B2B i hurt, moda i wzrost konwersji. Kreator włącza tylko moduły, nie wyłącza istniejących ustawień."
+
+msgid "* Fix: the Polski admin menu icon no longer shifts on hover and in the active state."
+msgstr "* Poprawka: ikona menu administratora Polski nie przesuwa się już po najechaniu myszką i w stanie aktywnym."
+
+msgid "* New: the modules screen now has instant search by name and description and sorting: grouped, alphabetical or enabled first. Without reloading the page."
+msgstr "* Nowość: na ekranie modułów dostępne jest teraz natychmiastowe wyszukiwanie według nazwy i opisu oraz sortowanie: pogrupowane, alfabetyczne lub włączone jako pierwsze. Bez ponownego ładowania strony."
+
+msgid "* Fix: removed a TypeError fatal error that could occur on order queries, including on the WooCommerce orders screen, when the withdrawal query helper received a pagination object instead of an array."
+msgstr "* Poprawka: usunięto błąd krytyczny TypeError, który mógł wystąpić podczas zapytań o zamówienia, w tym na ekranie zamówień WooCommerce, gdy pomocnik zapytania o wypłatę otrzymał obiekt paginacji zamiast tablicy."
+
+msgid "* New: the BDO number module. Enter a BDO number and display it with the [polski_bdo] shortcode or the BDO number block, for example in the footer. The company identification block can also include the BDO number."
+msgstr "* Nowość: moduł numeru BDO. Wprowadź numer BDO i wyświetl go za pomocą krótkiego kodu [polski_bdo] lub bloku numeru BDO, np. w stopce. Blok identyfikacyjny firmy może zawierać także numer BDO."
+
+msgid "* Admin: merged five separate settings screens into one tabbed screen, and moved withdrawals, the consent log, CRA incidents, SBOM, the complaint template and GDPR training documents into a reports and tools centre.\n* Admin: split the module list into groups and added tooltips to each module. Action links are dimmed when a module is disabled.\n* Fix: the Polski menu icon is now centred relative to its label.\n* Translations: refreshed and recompiled all bundled language catalogs after the settings and menu changes.\n* Documentation: updated the documentation and plugin-page links on plogins.com."
+msgstr "* Administrator: połączył pięć oddzielnych ekranów ustawień w jeden ekran z zakładkami i przeniósł wypłaty, dziennik zgód, incydenty CRA, SBOM, szablon skargi i dokumenty szkoleniowe dotyczące RODO do centrum raportów i narzędzi.\n* Administrator: podziel listę modułów na grupy i dodano podpowiedzi do każdego modułu. Linki akcji są przyciemnione, gdy moduł jest wyłączony.\n* Poprawka: ikona menu Polski jest teraz wyśrodkowana względem etykiety.\n* Tłumaczenia: odświeżono i przekompilowano wszystkie dołączone katalogi językowe po zmianach ustawień i menu.\n* Dokumentacja: zaktualizowano dokumentację i linki do stron wtyczek na plogins.com."
+
+msgid "Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt)."
+msgstr "Starsze wersje są dostępne w [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt)."
+
+msgid "Fixes admin-screen script loading in some configurations and refreshes the bundled translations."
+msgstr "Naprawia ładowanie skryptu na ekranie administratora w niektórych konfiguracjach i odświeża dołączone tłumaczenia."
+
+msgid "Plugin Check tidy-up: added justifications for queries against custom tables. No functional changes."
+msgstr "Porządkowanie wtyczki Check: dodano uzasadnienia zapytań względem tabel niestandardowych. Żadnych zmian funkcjonalnych."
+
+msgid "Hardening after the WordPress.org review: safer input handling, a broader description of external services and improved wording in the readme."
+msgstr "Utwardzenie po recenzji WordPress.org: bezpieczniejsza obsługa danych wejściowych, szerszy opis usług zewnętrznych i ulepszone sformułowanie w pliku Readme."
+
