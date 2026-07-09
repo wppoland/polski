@@ -393,3 +393,16 @@
 @media (max-width: 600px) {
     .polski-wizard__row { grid-template-columns: 1fr; }
 }
+
+/* Accessibility: honour the OS "reduce motion" preference for this plugin UI. */
+@media (prefers-reduced-motion: reduce) {
+  [class*="polski-"],
+  [class*="polski-"] *,
+  [class*="polski-"] *::before,
+  [class*="polski-"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
