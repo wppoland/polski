@@ -3,130 +3,140 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.9
+Stable tag: 1.24.10
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce for Polish shops: GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF, unit prices and storefront modules.
+WooCommerce für polnische Shops: GPSR, Omnibus, DSGVO, Widerrufe, NIP, KSeF, Grundpreise und Storefront-Module.
 
 == Description ==
 
-<strong>Polski for WooCommerce</strong> is a free WooCommerce plugin for Polish online shops. It helps you organise GPSR product data, the Omnibus lowest-price history, GDPR consents, the right of withdrawal, VAT ID (NIP) handling, unit prices, hooks for KSeF processes, DSA reports and storefront modules.
+<strong>Polski for WooCommerce</strong> ist ein kostenloses WooCommerce-Plugin für polnische Online-Shops. Es hilft dir, GPSR-Produktdaten, den Omnibus-Verlauf des niedrigsten Preises, DSGVO-Einwilligungen, das Widerrufsrecht, die NIP-Verarbeitung (USt-IdNr.), Grundpreise, Hooks für KSeF-Prozesse, DSA-Meldungen und Storefront-Module zu organisieren.
 
-The plugin is modular. You can enable only the features a given shop needs, for example GPSR, Omnibus, cart consents, withdrawals, unit prices, food data, a wishlist, a product comparison or AJAX search.
+Das Plugin ist modular. Du kannst nur die Funktionen aktivieren, die ein bestimmter Shop benötigt, zum Beispiel GPSR, Omnibus, Warenkorb-Einwilligungen, Widerrufe, Grundpreise, Lebensmitteldaten, eine Wunschliste, einen Produktvergleich oder die AJAX-Suche.
 
-Polski helps you configure the technical shop processes related to the Polish and EU market. It is not legal advice and does not guarantee regulatory compliance. Your shop configuration, terms, products and obligations always have to be verified for your specific business.
+Polski hilft dir, die technischen Shop-Prozesse rund um den polnischen und den EU-Markt zu konfigurieren. Es ist keine Rechtsberatung und garantiert keine Rechtskonformität. Deine Shop-Konfiguration, AGB, Produkte und Pflichten müssen immer für dein konkretes Geschäft geprüft werden.
 
 = Documentation and links =
 
-* <strong>Documentation</strong> - https://plogins.com/de/polski/docs/
-* <strong>Plugin page</strong> - https://plogins.com/de/polski/
-* <strong>Source code</strong> - https://github.com/wppoland/polski
-* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/polski/issues
-* <strong>Discussions and questions</strong> - https://github.com/wppoland/polski/discussions
+* <strong>Dokumentation</strong> - https://plogins.com/de/polski/docs/
+* <strong>Plugin-Seite</strong> - https://plogins.com/de/polski/
+* <strong>Quellcode</strong> - https://github.com/wppoland/polski
+* <strong>Fehlerberichte und Funktionswünsche</strong> - https://github.com/wppoland/polski/issues
+* <strong>Diskussionen und Fragen</strong> - https://github.com/wppoland/polski/discussions
 
 = Why Polski for WooCommerce? =
 
-* <strong>One plugin, many modules</strong> - GPSR, Omnibus, GDPR, right of withdrawal, product data and storefront modules in one place.
-* <strong>Built for Polish shops</strong> - features designed for WooCommerce stores selling in Poland or to Polish customers.
-* <strong>Free and open source</strong> - the core product, checkout and storefront tools are available at no cost.
-* <strong>Modern code</strong> - PHP 8.1+, a React admin panel, REST API and WP-CLI support.
-* <strong>WooCommerce blocks support</strong> - compatible with both the classic and block-based cart and checkout.
-* <strong>HPOS compatible</strong> - supports WooCommerce High-Performance Order Storage.
+* <strong>Ein Plugin, viele Module</strong> - GPSR, Omnibus, DSGVO, Widerrufsrecht, Produktdaten und Storefront-Module an einem Ort.
+* <strong>Für polnische Shops gebaut</strong> - Funktionen, die für WooCommerce-Shops entwickelt wurden, die in Polen oder an polnische Kunden verkaufen.
+* <strong>Kostenlos und quelloffen</strong> - das Kernprodukt sowie die Kassen- und Storefront-Tools sind kostenlos verfügbar.
+* <strong>Moderner Code</strong> - PHP 8.1+, ein React-Adminbereich, REST API und WP-CLI-Unterstützung.
+* <strong>Unterstützung für WooCommerce-Blöcke</strong> - kompatibel mit dem klassischen sowie dem blockbasierten Warenkorb und der Kasse.
+* <strong>HPOS-kompatibel</strong> - unterstützt WooCommerce High-Performance Order Storage.
 
 = Key modules =
 
-* <strong>GPSR product fields</strong> - manufacturer, importer, EU responsible person, product identifiers, safety warnings and instructions, including CSV import and export.
-* <strong>Omnibus price history</strong> - records and displays the lowest price from the last 30 days on discounted products.
-* <strong>GDPR consents and checkboxes</strong> - configurable consents at checkout, registration and reviews, with a consent log.
-* <strong>Right of withdrawal and returns</strong> - requests from the customer account, e-mail confirmations and a request log.
-* <strong>VAT ID (NIP) and KSeF hooks</strong> - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
-* <strong>DSA reports</strong> - a point of contact, an illegal-content report form and an admin panel.
-* <strong>Shop health monitor</strong> - passive monitoring of frontend errors, checkout issues and sales anomalies.
-* <strong>Security incident log</strong> - an internal log of incidents, outages, vulnerabilities and follow-up actions.
-* <strong>Product environmental fields</strong> - a basis for green claims, certificates and expiry dates.
-* <strong>Verified purchase badge</strong> - a badge on reviews from customers who bought the product.
+* <strong>GPSR-Produktfelder</strong> - Hersteller, Importeur, EU-Verantwortlicher, Produktkennungen, Sicherheitswarnungen und -hinweise, einschließlich CSV-Import und -Export.
+* <strong>Omnibus-Preisverlauf</strong> - erfasst und zeigt den niedrigsten Preis der letzten 30 Tage bei rabattierten Produkten an.
+* <strong>DSGVO-Einwilligungen und Checkboxen</strong> - konfigurierbare Einwilligungen an Kasse, Registrierung und bei Bewertungen, mit einem Einwilligungsprotokoll.
+* <strong>Widerrufsrecht und Retouren</strong> - Anträge aus dem Kundenkonto, E-Mail-Bestätigungen und ein Antragsprotokoll.
+* <strong>NIP (USt-IdNr.) und KSeF-Hooks</strong> - Erkennung von Bestellungen mit einer USt-IdNr., ein KSeF-Flag und Hooks für Rechnungsintegrationen.
+* <strong>DSA-Meldungen</strong> - eine Anlaufstelle, ein Meldeformular für illegale Inhalte und ein Adminbereich.
+* <strong>Shop-Zustandsmonitor</strong> - passive Überwachung von Frontend-Fehlern, Kassenproblemen und Verkaufsanomalien.
+* <strong>Protokoll für Sicherheitsvorfälle</strong> - ein internes Protokoll von Vorfällen, Ausfällen, Schwachstellen und Folgemaßnahmen.
+* <strong>Umweltbezogene Produktfelder</strong> - eine Grundlage für Umweltaussagen, Zertifikate und Ablaufdaten.
+* <strong>Abzeichen für verifizierten Kauf</strong> - ein Abzeichen bei Bewertungen von Kunden, die das Produkt gekauft haben.
 
 = Checkout, consents and returns =
 
-* <strong>Consent checkboxes</strong> - consents at order, registration and reviews, with the option to enable only selected fields.
-* <strong>Omnibus price history</strong> - automatic recording and display of the lowest price from 30 days.
-* <strong>Right of withdrawal</strong> - withdrawal/return forms and requests from the customer account.
-* <strong>Double e-mail confirmation</strong> - e-mail address confirmation during customer registration.
-* <strong>Shop pages</strong> - link the terms, privacy policy and withdrawal content into WooCommerce notices.
-* <strong>Dispute resolution</strong> - an ODR information module for the shop's information pages.
-* <strong>Consent log</strong> - logging of consents with date, context, IP address and content version.
+* <strong>Einwilligungs-Checkboxen</strong> - Einwilligungen bei Bestellung, Registrierung und Bewertungen, mit der Option, nur ausgewählte Felder zu aktivieren.
+* <strong>Omnibus-Preisverlauf</strong> - automatisches Erfassen und Anzeigen des niedrigsten Preises der letzten 30 Tage.
+* <strong>Widerrufsrecht</strong> - Widerrufs-/Retourenformulare und Anträge aus dem Kundenkonto.
+* <strong>Doppelte E-Mail-Bestätigung</strong> - Bestätigung der E-Mail-Adresse bei der Kundenregistrierung.
+* <strong>Shop-Seiten</strong> - Verknüpfung von AGB, Datenschutzerklärung und Widerrufsinhalten mit WooCommerce-Hinweisen.
+* <strong>Streitbeilegung</strong> - ein ODR-Informationsmodul für die Informationsseiten des Shops.
+* <strong>Einwilligungsprotokoll</strong> - Protokollierung von Einwilligungen mit Datum, Kontext, IP-Adresse und Inhaltsversion.
 
 = Product data and labelling =
 
-* <strong>Unit prices</strong> - price per kg, litre, metre, piece or a custom unit.
-* <strong>Delivery time</strong> - estimated delivery time on product pages and product lists.
-* <strong>Tax information</strong> - gross/net messages and the VAT rate.
-* <strong>Price display</strong> - configuration of how prices are presented in the shop.
-* <strong>Food data</strong> - composition, nutrition values, allergens, origin, distributor and other fields for grocery shops.
+* <strong>Grundpreise</strong> - Preis pro kg, Liter, Meter, Stück oder einer benutzerdefinierten Einheit.
+* <strong>Lieferzeit</strong> - geschätzte Lieferzeit auf Produktseiten und in Produktlisten.
+* <strong>Steuerinformationen</strong> - Brutto-/Netto-Hinweise und der Mehrwertsteuersatz.
+* <strong>Preisanzeige</strong> - Konfiguration, wie Preise im Shop dargestellt werden.
+* <strong>Lebensmitteldaten</strong> - Zusammensetzung, Nährwerte, Allergene, Herkunft, Vertrieb und weitere Felder für Lebensmittelgeschäfte.
 
 = Storefront modules =
 
-* <strong>Wishlist</strong> - save products for later.
-* <strong>Product comparison</strong> - compare products side by side.
-* <strong>Waitlist</strong> - back-in-stock notifications for products.
-* <strong>Quick view</strong> - preview a product without opening the product page.
-* <strong>Gallery zoom</strong> - enhanced product image zoom.
-* <strong>Product video</strong> - add a video on the product page.
-* <strong>Product slider</strong> - a carousel of products and collections.
-* <strong>Infinite scroll</strong> - automatic loading of more products.
-* <strong>Product tab manager</strong> - configure the tabs on the product page.
-* <strong>AJAX filters</strong> - filter products without reloading the page.
-* <strong>AJAX search</strong> - live product search.
-* <strong>Product badges</strong> - sale, new, featured and custom labels.
-* <strong>Promotional popups</strong> - popup campaigns in the shop.
+* <strong>Wunschliste</strong> - Produkte für später speichern.
+* <strong>Produktvergleich</strong> - Produkte nebeneinander vergleichen.
+* <strong>Warteliste</strong> - Benachrichtigungen über wieder verfügbare Produkte.
+* <strong>Schnellansicht</strong> - ein Produkt ansehen, ohne die Produktseite zu öffnen.
+* <strong>Galerie-Zoom</strong> - verbesserter Zoom für Produktbilder.
+* <strong>Produktvideo</strong> - ein Video auf der Produktseite hinzufügen.
+* <strong>Produkt-Slider</strong> - ein Karussell aus Produkten und Kollektionen.
+* <strong>Endloses Scrollen</strong> - automatisches Laden weiterer Produkte.
+* <strong>Produkt-Tab-Manager</strong> - die Tabs auf der Produktseite konfigurieren.
+* <strong>AJAX-Filter</strong> - Produkte filtern, ohne die Seite neu zu laden.
+* <strong>AJAX-Suche</strong> - Live-Produktsuche.
+* <strong>Produkt-Abzeichen</strong> - Angebots-, Neu-, Empfohlen- und benutzerdefinierte Labels.
+* <strong>Werbe-Popups</strong> - Popup-Kampagnen im Shop.
 
 = Admin and developer tools =
 
-* <strong>React panel</strong> - manage modules and settings.
-* <strong>REST API</strong> - an API for settings, checkboxes, legal pages, withdrawals and search.
-* <strong>WP-CLI</strong> - commands to manage selected features from the terminal.
-* <strong>CSV import and export</strong> - bulk management of product data, including GPSR.
-* <strong>Shortcodes</strong> - embed GPSR information, withdrawal forms, DSA reports and other elements.
-* <strong>Database migrations</strong> - versioned and safe updates of data structures.
-* <strong>Integration hooks</strong> - filters and actions for KSeF, invoicing and integrations with other plugins.
-* <strong>Audit scope</strong> - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents.
+* <strong>React-Panel</strong> - Module und Einstellungen verwalten.
+* <strong>REST API</strong> - eine API für Einstellungen, Checkboxen, Rechtsseiten, Widerrufe und die Suche.
+* <strong>WP-CLI</strong> - Befehle zum Verwalten ausgewählter Funktionen über das Terminal.
+* <strong>CSV-Import und -Export</strong> - Massenverwaltung von Produktdaten, einschließlich GPSR.
+* <strong>Shortcodes</strong> - GPSR-Informationen, Widerrufsformulare, DSA-Meldungen und weitere Elemente einbetten.
+* <strong>Datenbankmigrationen</strong> - versionierte und sichere Aktualisierungen der Datenstrukturen.
+* <strong>Integrations-Hooks</strong> - Filter und Aktionen für KSeF, Rechnungsstellung und Integrationen mit anderen Plugins.
+* <strong>Prüfumfang</strong> - DPA, DSA, KSeF-Bereitschaft, Kontrolle von Umweltaussagen, verifizierte Bewertungen und Sicherheitsvorfälle.
 
 = You may also like these plugins =
 
-More free WooCommerce plugins from WPPoland:
+Weitere kostenlose WooCommerce-Plugins von WPPoland:
 
-* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
-* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
-* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - Mengen- und Staffelpreis-Stufen mit einer serverseitig gerenderten Preistabelle.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - Warteliste für wieder verfügbare Artikel, die Käufer per E-Mail informiert, sobald ein Produkt zurück ist.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - schnelle AJAX-Produktsuche und -Filterung für WooCommerce, ohne jQuery.
 
-Browse the full catalogue at https://plogins.com/de/ .
+Durchstöbere den vollständigen Katalog unter https://plogins.com/de/ .
 
 == Installation ==
 
 = Automatic installation =
 
-1. In the WordPress dashboard go to <strong>Plugins > Add New<strong>. 2. Search for </strong>Polski for WooCommerce<strong>. 3. Click </strong>Install</strong>, then <strong>Activate<strong>. 4. Open the new </strong>Polski</strong> menu in the admin panel.
+1. Gehe im WordPress-Dashboard zu <strong>Plugins > Installieren</strong>.
+2. Suche nach <strong>Polski for WooCommerce</strong>.
+3. Klicke auf <strong>Installieren</strong> und dann auf <strong>Aktivieren</strong>.
+4. Öffne das neue Menü <strong>Polski</strong> im Adminbereich.
 
 = Manual installation =
 
-1. Download the plugin ZIP from WordPress.org.
-2. In the WordPress dashboard go to <strong>Plugins > Add New > Upload Plugin<strong>. 3. Choose the ZIP file and click </strong>Install Now<strong>. 4. Click </strong>Activate Plugin</strong>.
+1. Lade die Plugin-ZIP von WordPress.org herunter.
+2. Gehe im WordPress-Dashboard zu <strong>Plugins > Installieren > Plugin hochladen</strong>.
+3. Wähle die ZIP-Datei und klicke auf <strong>Jetzt installieren</strong>.
+4. Klicke auf <strong>Plugin aktivieren</strong>.
 
 == Getting Started ==
 
-1. <strong>Check the legal pages</strong>: go to <strong>Polski > Modules<strong> and make sure the legal pages module is active. In its settings choose your terms, privacy policy and withdrawal page. 2. </strong>Configure the checkboxes<strong>: open the legal checkboxes module and enable the consents your shop requires. 3. </strong>Check VAT rates<strong>: make sure WooCommerce has the correct tax rates for your shop. 4. </strong>Fill in unit prices</strong>: for products sold by weight or volume, fill in the data in the <strong>Polski<strong> tab of the product editor. 5. </strong>Enable Omnibus<strong>: the module records price history and can display the lowest price from 30 days. 6. </strong>Fill in GPSR</strong>: for physical products add the manufacturer, importer and responsible person data and safety information.
+1. <strong>Prüfe die Rechtsseiten</strong>: Gehe zu <strong>Polski > Module</strong> und stelle sicher, dass das Modul für Rechtsseiten aktiv ist. Wähle in seinen Einstellungen deine AGB, Datenschutzerklärung und Widerrufsseite.
+2. <strong>Konfiguriere die Checkboxen</strong>: Öffne das Modul für rechtliche Checkboxen und aktiviere die Einwilligungen, die dein Shop benötigt.
+3. <strong>Prüfe die Mehrwertsteuersätze</strong>: Stelle sicher, dass WooCommerce die korrekten Steuersätze für deinen Shop hat.
+4. <strong>Trage die Grundpreise ein</strong>: Trage bei Produkten, die nach Gewicht oder Volumen verkauft werden, die Daten im Tab <strong>Polski</strong> des Produkteditors ein.
+5. <strong>Aktiviere Omnibus</strong>: Das Modul erfasst den Preisverlauf und kann den niedrigsten Preis der letzten 30 Tage anzeigen.
+6. <strong>Trage GPSR ein</strong>: Füge bei physischen Produkten die Daten zu Hersteller, Importeur und Verantwortlichem sowie Sicherheitsinformationen hinzu.
 
 == Configuration ==
 
-Polski works in a modular way. You can enable only the features you need:
+Polski arbeitet modular. Du kannst nur die Funktionen aktivieren, die du benötigst:
 
-* <strong>Product data</strong>: GPSR, unit prices, delivery time, food data.
-* <strong>Checkout and consents</strong>: checkboxes, right of withdrawal, legal pages.
-* <strong>Storefront</strong>: wishlist, comparison, search, filters and badges.
+* <strong>Produktdaten</strong>: GPSR, Grundpreise, Lieferzeit, Lebensmitteldaten.
+* <strong>Kasse und Einwilligungen</strong>: Checkboxen, Widerrufsrecht, Rechtsseiten.
+* <strong>Storefront</strong>: Wunschliste, Vergleich, Suche, Filter und Abzeichen.
 
-Active modules with settings appear in the <strong>Polski</strong> menu or have a settings link on the modules page.
+Aktive Module mit Einstellungen erscheinen im Menü <strong>Polski</strong> oder haben einen Einstellungslink auf der Modulseite.
 
 == Frequently Asked Questions ==
 
@@ -136,39 +146,39 @@ Ja. Polski for WooCommerce ist ein kostenloses WooCommerce-Plugin für polnische
 
 = Which WooCommerce shop is Polski for? =
 
-Polski ist für WooCommerce-Shops gedacht, die in Polen oder an polnische Kunden verkaufen. Dies ist besonders nützlich, wenn ein Shop Module für GPSR, Omnibus, DSGVO, Umsatzsteuer-Identifikationsnummer (NIP), Widerrufsrecht, KSEF und Produktdaten benötigt.
+Polski ist für WooCommerce-Shops gedacht, die in Polen oder an polnische Kunden verkaufen. Es ist besonders nützlich, wenn ein Shop Module für GPSR, Omnibus, DSGVO, USt-IdNr. (NIP), Widerrufsrecht, KSeF und Produktdaten benötigt.
 
 = Does Polski support GPSR in WooCommerce? =
 
-Ja. Polski fügt GPSR-bezogene Produktfelder hinzu, darunter Hersteller-, Importeur- und EU-Verantwortliche Personendaten, Produktkennzeichnungen, Sicherheitswarnungen und Anweisungen. Die Daten können im Produkteditor und in großen Mengen per CSV-Import oder -Export eingegeben werden.
+Ja. Polski fügt GPSR-bezogene Produktfelder hinzu, darunter Daten zu Hersteller, Importeur und EU-Verantwortlichem, Produktkennungen, Sicherheitswarnungen und -hinweise. Die Daten lassen sich im Produkteditor und in großen Mengen per CSV-Import oder -Export eingeben.
 
 = Can I show the manufacturer, importer and responsible person on the product page? =
 
-Ja. Das GPSR-Modul kann die Hersteller-, Importeur- und EU-Verantwortlichendaten speichern und auf der WooCommerce-Produktseite anzeigen. Die Sichtbarkeit hängt von den Moduleinstellungen und den für das Produkt eingegebenen Daten ab.
+Ja. Das GPSR-Modul kann die Daten zu Hersteller, Importeur und EU-Verantwortlichem speichern und auf der WooCommerce-Produktseite anzeigen. Die Sichtbarkeit hängt von den Moduleinstellungen und den für das Produkt eingegebenen Daten ab.
 
 = Does Polski support the Omnibus Directive and the lowest price from 30 days? =
 
-Ja. Das Omnibus-Modul zeichnet den Preisverlauf auf und kann den niedrigsten Preis der letzten 30 Tage für rabattierte Produkte anzeigen. Du kannst die Anzeigeeinstellungen im Modulbereich anpassen.
+Ja. Das Omnibus-Modul erfasst den Preisverlauf und kann den niedrigsten Preis der letzten 30 Tage bei rabattierten Produkten anzeigen. Du kannst die Anzeigeeinstellungen im Modulbereich anpassen.
 
 = Does Polski add GDPR consents in WooCommerce? =
 
-Ja. Mit dem Plugin kannst du bei Bestellung, Registrierung und Bewertungen konfigurierbare Einwilligungs-Kontrollkästchen hinzufügen und ein Einwilligungsprotokoll mit Datum, Kontext und technischen Audit-Informationen führen.
+Ja. Mit dem Plugin kannst du bei Bestellung, Registrierung und Bewertungen konfigurierbare Einwilligungs-Checkboxen hinzufügen und ein Einwilligungsprotokoll mit Datum, Kontext und technischen Audit-Informationen führen.
 
 = Does Polski add checkboxes at checkout? =
 
-Ja. Polski kann Kontrollkästchen für die Bedingungen, Datenschutzrichtlinien, Widerrufsinformationen, Einwilligung für digitale Inhalte, Marketing-Einwilligung, Lieferbenachrichtigungen und eine Bewertungserinnerung hinzufügen.
+Ja. Polski kann Checkboxen für AGB, Datenschutzerklärung, Widerrufsinformationen, Einwilligung für digitale Inhalte, Marketing-Einwilligung, Lieferbenachrichtigungen und eine Bewertungserinnerung hinzufügen.
 
 = Does Polski add a withdrawal or return form? =
 
-Ja. Polski kann über das Kundenkonto eine Widerrufsrechtsabwicklung mit Anfragebestätigung, einem Anfrageprotokoll und E-Mail-Nachrichten hinzufügen. Dies hilft bei der Organisation des Retourenprozesses in WooCommerce.
+Ja. Polski kann über das Kundenkonto eine Widerrufsabwicklung mit Antragsbestätigung, einem Antragsprotokoll und E-Mail-Nachrichten hinzufügen. Das hilft, den Retourenprozess in WooCommerce zu organisieren.
 
 = Does Polski support VAT ID (NIP) in WooCommerce? =
 
-Ja. Polski umfasst Funktionen und Hooks im Zusammenhang mit der polnischen Umsatzsteuer-Identifikationsnummer (NIP), einschließlich der Erkennung von Bestellungen, die möglicherweise eine Rechnungs- oder KSEF-Bearbeitung erfordern. Feldverfügbarkeit und -verhalten hängen von den aktivierten Modulen ab.
+Ja. Polski umfasst Funktionen und Hooks rund um die polnische USt-IdNr. (NIP), einschließlich der Erkennung von Bestellungen, die eventuell eine Rechnungs- oder KSeF-Bearbeitung erfordern. Feldverfügbarkeit und -verhalten hängen von den aktivierten Modulen ab.
 
 = Does Polski support KSeF in WooCommerce? =
 
-Polski ist kein vollständiges System zum Versenden von Rechnungen an KSeF, aber es fügt Mechanismen hinzu, die für Integrationen bereit sind: Kennzeichnung von Bestellungen nach Umsatzsteuer-ID, eine KSeF-Statusspalte und Hooks für Rechnungs-Plugins und benutzerdefinierte Integrationen.
+Polski ist kein vollständiges System zum Versenden von Rechnungen an KSeF, aber es fügt Mechanismen hinzu, die für Integrationen bereit sind: Kennzeichnung von Bestellungen nach USt-IdNr., eine KSeF-Statusspalte und Hooks für Rechnungs-Plugins und benutzerdefinierte Integrationen.
 
 = Does Polski issue invoices in WooCommerce? =
 
@@ -176,7 +186,7 @@ Polski stellt Daten, Flags und Hooks bereit, die für die Rechnungsstellung und 
 
 = Does Polski work with the WooCommerce block checkout? =
 
-Ja. Polski unterstützt den klassischen Checkout sowie den blockbasierten WooCommerce-Warenkorb und -Checkout.
+Ja. Polski unterstützt die klassische Kasse sowie den blockbasierten WooCommerce-Warenkorb und die -Kasse.
 
 = Does Polski work with HPOS in WooCommerce? =
 
@@ -184,174 +194,181 @@ Ja. Polski erklärt die Kompatibilität mit WooCommerce HPOS, also High-Performa
 
 = Does Polski add unit prices in WooCommerce? =
 
-Ja. Mit dem Plugin kannst du Einheitspreise anzeigen, beispielsweise pro kg, Liter, Meter, Stück oder einer benutzerdefinierten Einheit.
+Ja. Mit dem Plugin kannst du Grundpreise anzeigen, beispielsweise pro kg, Liter, Meter, Stück oder einer benutzerdefinierten Einheit.
 
 = Is Polski suitable for a WooCommerce grocery shop? =
 
-Ja. Polski enthält für Lebensmittelgeschäfte nützliche Module, darunter Zusammensetzung, Nährwerte, Allergene, Herkunft, Händler und zusätzliche Felder zur Produktkennzeichnung.
+Ja. Polski enthält für Lebensmittelgeschäfte nützliche Module, darunter Zusammensetzung, Nährwerte, Allergene, Herkunft, Vertrieb und zusätzliche Felder zur Produktkennzeichnung.
 
 = Does Polski add a DSA report form? =
 
-Ja. Das Plugin umfasst DSA-Tools, einschließlich Point-of-Contact-Einstellungen, einen Shortcode für das Meldeformular für illegale Inhalte, ein Meldebearbeitungsfeld und E-Mail-Benachrichtigungen.
+Ja. Das Plugin umfasst DSA-Tools, darunter Einstellungen für die Anlaufstelle, einen Shortcode für das Meldeformular für illegale Inhalte, ein Bearbeitungspanel für Meldungen und E-Mail-Benachrichtigungen.
 
 = Does Polski add a wishlist, comparison and quick view? =
 
-Ja. Zu den Storefront-Modulen gehören eine Wunschliste, ein Produktvergleich, eine Schnellansicht, Benachrichtigungen über wieder verfügbare Lagerbestände, AJAX-Filter, eine AJAX-Suche und Produktabzeichen.
+Ja. Zu den Storefront-Modulen gehören eine Wunschliste, ein Produktvergleich, eine Schnellansicht, Benachrichtigungen über wieder verfügbare Produkte, AJAX-Filter, eine AJAX-Suche und Produkt-Abzeichen.
 
 = Can I enable only selected modules? =
 
-Ja. Polski ist modular aufgebaut, sodass du nur die Funktionen aktivieren können, die du benötigen, zum Beispiel GPSR, Omnibus, DSGVO, Retouren, Umsatzsteuer-ID, DSA oder Storefront-Module.
+Ja. Polski ist modular aufgebaut, sodass du nur die Funktionen aktivieren kannst, die du benötigst, zum Beispiel GPSR, Omnibus, DSGVO, Retouren, USt-IdNr., DSA oder Storefront-Module.
 
 = Does Polski support CSV import and export? =
 
-Ja. Polski erweitert den WooCommerce CSV-Import und -Export um ausgewählte Produktdaten, einschließlich GPSR-Felder und andere Produktinformationen.
+Ja. Polski erweitert den WooCommerce-CSV-Import und -Export um ausgewählte Produktdaten, einschließlich GPSR-Felder und anderer Produktinformationen.
 
 = Does Polski have shortcodes? =
 
-Ja. Das Plugin stellt Shortcodes für ausgewählte Module bereit, darunter GPSR-Informationen, Widerrufsformulare, DSA-Berichte, Beschwerdevorlagen und Shop-Nachrichten.
+Ja. Das Plugin stellt Shortcodes für ausgewählte Module bereit, darunter GPSR-Informationen, Widerrufsformulare, DSA-Meldungen, Beschwerdevorlagen und Shop-Nachrichten.
 
 = Does Polski guarantee legal compliance? =
 
-No. Polski provides technical modules for WooCommerce, but it is not legal advice and does not guarantee that your shop is compliant. Your shop configuration, terms and obligations always have to be verified for your specific business.
+Nein. Polski stellt technische Module für WooCommerce bereit, ist aber keine Rechtsberatung und garantiert nicht, dass dein Shop rechtskonform ist. Deine Shop-Konfiguration, AGB und Pflichten müssen immer für dein konkretes Geschäft geprüft werden.
 
 = Is Polski ready for the Cyber Resilience Act? =
 
-Polski follows security practices relevant to CRA readiness: updates are delivered through the official WordPress.org channel, vulnerabilities can be reported under a coordinated disclosure policy, the code uses standard WordPress security mechanisms, and external services are described in this readme. This is not a declaration of legal compliance.
+Polski folgt Sicherheitspraktiken, die für die CRA-Bereitschaft relevant sind: Updates werden über den offiziellen WordPress.org-Kanal ausgeliefert, Schwachstellen können im Rahmen einer koordinierten Offenlegungsrichtlinie gemeldet werden, der Code nutzt die üblichen WordPress-Sicherheitsmechanismen, und externe Dienste sind in dieser Readme beschrieben. Dies ist keine Erklärung der Rechtskonformität.
 
 = Where do I report bugs or feature requests? =
 
-For day-to-day support use the WordPress.org forum. Technical bugs and feature requests can also be reported in the GitHub repository.
+Nutze für den täglichen Support das WordPress.org-Forum. Technische Fehler und Funktionswünsche können auch im GitHub-Repository gemeldet werden.
 
 = Does the plugin have a simple feedback form? =
 
-Yes. The admin panel includes a simple feedback form that stores messages locally in WordPress. Do not enter passwords, license keys or customer personal data there.
+Ja. Der Adminbereich enthält ein einfaches Feedback-Formular, das Nachrichten lokal in WordPress speichert. Gib dort keine Passwörter, Lizenzschlüssel oder personenbezogenen Kundendaten ein.
 
 = What happens when the plugin is deactivated and uninstalled? =
 
-Deactivating the plugin keeps your settings and stored data. Uninstalling removes the plugin files. Plugin data is removed only when you enable the "remove data on uninstall" setting.
+Beim Deaktivieren des Plugins bleiben deine Einstellungen und gespeicherten Daten erhalten. Beim Deinstallieren werden die Plugin-Dateien entfernt. Die Plugin-Daten werden nur entfernt, wenn du die Einstellung „Daten bei Deinstallation entfernen“ aktivierst.
 
 == External Services ==
 
 = GUS REGON API =
 
-When the VAT ID (NIP) lookup module is enabled, the plugin can connect to the public GUS REGON registry to fetch company data based on the VAT ID entered by the user. The connection is made only after the lookup is deliberately triggered.
+Wenn das Modul zur NIP-Abfrage (USt-IdNr.) aktiviert ist, kann sich das Plugin mit dem öffentlichen GUS-REGON-Register verbinden, um Firmendaten anhand der vom Nutzer eingegebenen USt-IdNr. abzurufen. Die Verbindung wird erst hergestellt, nachdem die Abfrage bewusst ausgelöst wurde.
 
-* Data sent: the VAT ID (NIP).
-* Service address: [https://wyszukiwarkaregon.stat.gov.pl/](https://wyszukiwarkaregon.stat.gov.pl/)
-* Terms of service: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
-* Privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
+* Gesendete Daten: die USt-IdNr. (NIP).
+* Serviceadresse: [https://wyszukiwarkaregon.stat.gov.pl/](https://wyszukiwarkaregon.stat.gov.pl/)
+* Nutzungsbedingungen: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
+* Datenschutzerklärung: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
 
 = Google OAuth =
 
-When the social login module is enabled and Google login is configured, a customer clicking the continue-with-Google button is redirected to Google for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
+Wenn das Modul für Social Login aktiviert und der Google-Login konfiguriert ist, wird ein Kunde, der auf den „Weiter mit Google“-Button klickt, zur Authentifizierung an Google weitergeleitet. Das Plugin tauscht den Autorisierungscode gegen ein Zugriffstoken und ruft die Profildaten ab, die zum Anmelden oder Erstellen eines Kontos nötig sind.
 
-* Data sent: the redirect address, client ID, authorization code and access token used to fetch the profile.
-* Data received: the Google account ID, e-mail address and name.
-* Service address: [https://accounts.google.com/](https://accounts.google.com/)
-* Terms of service: [https://policies.google.com/terms](https://policies.google.com/terms)
-* Privacy policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+* Gesendete Daten: die Weiterleitungsadresse, die Client-ID, der Autorisierungscode und das Zugriffstoken, das zum Abrufen des Profils verwendet wird.
+* Empfangene Daten: die Google-Konto-ID, die E-Mail-Adresse und der Name.
+* Serviceadresse: [https://accounts.google.com/](https://accounts.google.com/)
+* Nutzungsbedingungen: [https://policies.google.com/terms](https://policies.google.com/terms)
+* Datenschutzerklärung: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
 = Facebook OAuth =
 
-When the social login module is enabled and Facebook login is configured, a customer clicking the continue-with-Facebook button is redirected to Facebook for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
+Wenn das Modul für Social Login aktiviert und der Facebook-Login konfiguriert ist, wird ein Kunde, der auf den „Weiter mit Facebook“-Button klickt, zur Authentifizierung an Facebook weitergeleitet. Das Plugin tauscht den Autorisierungscode gegen ein Zugriffstoken und ruft die Profildaten ab, die zum Anmelden oder Erstellen eines Kontos nötig sind.
 
-* Data sent: the redirect address, application ID, authorization code and access token used to fetch the profile.
-* Data received: the Facebook account ID, e-mail address and name.
-* Service address: [https://www.facebook.com/](https://www.facebook.com/)
-* Terms of service: [https://www.facebook.com/legal/terms](https://www.facebook.com/legal/terms)
-* Privacy policy: [https://www.facebook.com/privacy/policy/](https://www.facebook.com/privacy/policy/)
+* Gesendete Daten: die Weiterleitungsadresse, die App-ID, der Autorisierungscode und das Zugriffstoken, das zum Abrufen des Profils verwendet wird.
+* Empfangene Daten: die Facebook-Konto-ID, die E-Mail-Adresse und der Name.
+* Serviceadresse: [https://www.facebook.com/](https://www.facebook.com/)
+* Nutzungsbedingungen: [https://www.facebook.com/legal/terms](https://www.facebook.com/legal/terms)
+* Datenschutzerklärung: [https://www.facebook.com/privacy/policy/](https://www.facebook.com/privacy/policy/)
 
 = Google Tag Manager / Google Analytics =
 
-When the DataLayer module is enabled and a GTM container ID or a GA4 measurement ID is configured, the plugin can load the Google Tag Manager or Google Analytics scripts in the shop and send ecommerce events according to the configuration.
+Wenn das DataLayer-Modul aktiviert und eine GTM-Container-ID oder eine GA4-Mess-ID konfiguriert ist, kann das Plugin die Skripte von Google Tag Manager oder Google Analytics im Shop laden und E-Commerce-Ereignisse gemäß der Konfiguration senden.
 
-* Data sent: page views and ecommerce event data, for example product IDs, product names, prices, cart actions, checkout events and order values, depending on the configuration.
-* Service address: [https://www.googletagmanager.com/](https://www.googletagmanager.com/)
-* Terms of service: [https://policies.google.com/terms](https://policies.google.com/terms)
-* Privacy policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+* Gesendete Daten: Seitenaufrufe und E-Commerce-Ereignisdaten, zum Beispiel Produkt-IDs, Produktnamen, Preise, Warenkorbaktionen, Kassenereignisse und Bestellwerte, je nach Konfiguration.
+* Serviceadresse: [https://www.googletagmanager.com/](https://www.googletagmanager.com/)
+* Nutzungsbedingungen: [https://policies.google.com/terms](https://policies.google.com/terms)
+* Datenschutzerklärung: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
-Admin-panel feedback and deactivation-form information are stored locally in WordPress and are not sent to an external service.
+Feedback aus dem Adminbereich und Informationen aus dem Deaktivierungsformular werden lokal in WordPress gespeichert und nicht an einen externen Dienst gesendet.
 
 == Screenshots ==
 
-1. The module management panel with module toggles and settings.
-2. GPSR product safety fields in the product editor.
-3. GDPR consent checkboxes at checkout with the consent log.
-4. Omnibus Directive - the lowest price from 30 days on a discounted product.
-5. The right-of-withdrawal action in the customer account.
-6. The DSA illegal-content report form.
-7. AJAX search and product filters in the shop.
-8. Wishlist, comparison and quick view on the product list.
+1. Das Panel zur Modulverwaltung mit Modulschaltern und Einstellungen.
+2. GPSR-Produktsicherheitsfelder im Produkteditor.
+3. DSGVO-Einwilligungs-Checkboxen an der Kasse mit dem Einwilligungsprotokoll.
+4. Omnibus-Richtlinie - der niedrigste Preis der letzten 30 Tage bei einem rabattierten Produkt.
+5. Die Widerrufsrecht-Aktion im Kundenkonto.
+6. Das DSA-Meldeformular für illegale Inhalte.
+7. AJAX-Suche und Produktfilter im Shop.
+8. Wunschliste, Vergleich und Schnellansicht in der Produktliste.
+
+== Translations ==
+
+Polski for WooCommerce enthält polnische, deutsche und spanische Übersetzungen der Plugin-Oberfläche. Die Textdomain ist `polski`, sodass Sprachpakete von WordPress.org diese gebündelten Übersetzungen ebenfalls überschreiben oder erweitern können.
 
 == Changelog ==
 
+= 1.24.10 =
+* Gebündelte polnische, deutsche und spanische Übersetzungen der Plugin-Oberfläche hinzugefügt.
+
 = 1.24.9 =
-* Added a dashboard overview of PRO features (polski PRO).
+* Eine Dashboard-Übersicht der PRO-Funktionen hinzugefügt (polski PRO).
 
 = 1.24.8 =
-* Accessibility: the social-proof toast is now keyboard-dismissable, respects reduced motion, and meets AA contrast.
-* Admin: a Polish flag is shown on the Polski row in the plugins list.
-* Added a WordPress Playground blueprint so the plugin can be tried via the wp.org Live Preview.
-* Translations: only the Polish translation is bundled; other locales come from the WordPress.org language packs.
-* Housekeeping: Plugin Check code annotations; release package no longer bundles dev tools.
+* Barrierefreiheit: Der Social-Proof-Toast lässt sich jetzt per Tastatur schließen, respektiert reduzierte Bewegung und erfüllt den AA-Kontrast.
+* Admin: In der Polski-Zeile der Plugin-Liste wird eine polnische Flagge angezeigt.
+* Einen WordPress-Playground-Blueprint hinzugefügt, sodass das Plugin über die Live-Vorschau auf wp.org ausprobiert werden kann.
+* Übersetzungen: Nur die polnische Übersetzung wird gebündelt; andere Sprachen kommen aus den WordPress.org-Sprachpaketen.
+* Aufräumarbeiten: Plugin-Check-Code-Annotationen; das Release-Paket bündelt keine Entwickler-Tools mehr.
 
 = 1.24.7 =
-* Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
+* Aufräumarbeiten: keine maschinell erzeugten Übersetzungen mehr bündeln (Polnisch bleibt erhalten); andere Sprachen kommen jetzt aus den WordPress.org-Sprachpaketen. Außerdem bleiben Build-Artefakte aus dem veröffentlichten Paket heraus. Keine funktionalen Änderungen.
 
 = 1.24.6 =
-* Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).
+* Fix: Ein in Polski > Module deaktiviertes Modul rendert im Storefront nichts mehr. Zuvor hinterließen einige Funktionen im deaktivierten Zustand einen nicht funktionierenden Button oder verwaistes Markup (Schnellansicht, Vergleich, Wunschliste, Grundpreis, „ab“-Preis, den Omnibus-Hinweis zum niedrigsten Preis, die MwSt.- und Versandhinweise, Lieferzeit, Hersteller, Abzeichen, die Widerrufslinks, den Hinweis zur Streitbeilegung und die GPSR-Sicherheitsdetails).
 
 = 1.24.5 =
-* Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" → "23%").
-* Fix: the shipping-costs notice no longer runs into the VAT notice ("VATzzgl." → proper spacing), including in page builders that don't load the plugin stylesheet.
-* Fix: the default Polish shipping-costs label is now "plus koszty wysyłki" (previously an untranslated German "zzgl. kosztów wysyłki").
+* Fix: Der MwSt.-Hinweis unter dem Preis zeigt kein doppeltes Prozentzeichen mehr („23%%“ → „23%“).
+* Fix: Der Versandkostenhinweis läuft nicht mehr in den MwSt.-Hinweis hinein („VATzzgl.“ → korrekte Abstände), auch in Page-Buildern, die das Plugin-Stylesheet nicht laden.
+* Fix: Die standardmäßige polnische Versandkosten-Beschriftung lautet jetzt „plus koszty wysyłki“ (zuvor ein unübersetztes deutsches „zzgl. kosztów wysyłki“).
 
 = 1.24.4 =
-* Neue Blöcke: Produktdatenblöcke für Blockthemen und den Editor – Stückpreis, Lieferzeit, niedrigster Preis (Omnibus), Steuerinformationen, Versandkosten, Hersteller, Sicherheitshinweise, Sicherheitsdokumente, Stromversorgung, Fehlerbeschreibung, Nährwerte, Allergene, Zutaten, Nutri-Score, Lebensmittelinformationen und Produktsicherheitsinformationen (GPSR) – alles in der Kategorie „Polski“. Jedes zeigt die passenden Produktdaten an und zeigt nichts außerhalb eines Produktkontexts. Dadurch wird der Blockeditor mit den polnischen Widgets für Elementor gleichgesetzt.
+* Neue Blöcke: Produktdatenblöcke für Block-Themes und den Editor – Grundpreis, Lieferzeit, niedrigster Preis (Omnibus), Steuerinformationen, Versandkosten, Hersteller, Sicherheitshinweise, Sicherheitsdokumente, Stromversorgung, Fehlerbeschreibung, Nährwerte, Allergene, Zutaten, Nutri-Score, Lebensmittelinformationen und Produktsicherheitsinformationen (GPSR) – alle in der Kategorie „Polski“. Jeder zeigt die passenden Produktdaten an und zeigt nichts außerhalb eines Produktkontexts. Dadurch zieht der Blockeditor mit den Polski-Widgets für Elementor gleich.
 
 = 1.24.3 =
-* Neue Blöcke: DSA-Berichtsformular, Informationen zur Streitbeilegung (ODR), Informationen zur Mehrwertsteuerbefreiung für Kleinsteuerzahler und verfügbare Zahlungsmethoden sind jetzt als Blöcke (in der Kategorie „Polski“) verfügbar, sodass sie auf jeder Seite platziert werden können, ohne sich einen Shortcode merken zu müssen. Bei jedem wird nichts angezeigt, bis die entsprechende Funktion konfiguriert ist.
+* Neue Blöcke: DSA-Meldeformular, Informationen zur Streitbeilegung (ODR), Informationen zur Mehrwertsteuerbefreiung für Kleinunternehmer und verfügbare Zahlungsmethoden sind jetzt als Blöcke (in der Kategorie „Polski“) verfügbar, sodass sie auf jeder Seite platziert werden können, ohne sich einen Shortcode merken zu müssen. Jeder zeigt nichts an, bis die entsprechende Funktion konfiguriert ist.
 
 = 1.24.2 =
-* Neu: Alle Polski-Blöcke werden jetzt im Blockeditor unter einer separaten „Polski“-Kategorie gruppiert und Blockmetadaten werden aus block.json-Dateien registriert, sodass die Blöcke korrekt sichtbar und leichter zu finden sind.
-* Fix: Storefront-Blöcke – AJAX-Suche, AJAX-Filter und der Produkt-Slider – wurden nicht auf installierten Seiten registriert. Du wirst jetzt korrekt registriert und im Editor angezeigt.
+* Neu: Alle Polski-Blöcke werden jetzt im Blockeditor unter einer separaten Kategorie „Polski“ gruppiert, und die Blockmetadaten werden aus block.json-Dateien registriert, sodass die Blöcke korrekt sichtbar und leichter zu finden sind.
+* Fix: Storefront-Blöcke – AJAX-Suche, AJAX-Filter und der Produkt-Slider – wurden auf installierten Seiten nicht registriert. Sie registrieren sich jetzt korrekt und werden im Editor angezeigt.
 
 = 1.24.1 =
-* Fix: Die Galerie und die Zoom-Lightbox konnten als dunkle Überlagerung auf dem Bildschirm bleiben, wenn das Thema einen eigenen Anzeigewert erzwang. Der geschlossene Zustand ist jetzt immer ausgeblendet.
-* Härtung: Die Popup- und Schnellansicht-Overlays erzwingen auch den verborgenen Zustand, sodass ein Design kein geschlossenes Overlay auf dem Bildschirm behalten sollte.
+* Fix: Die Galerie und die Zoom-Lightbox konnten als dunkle Überlagerung auf dem Bildschirm bleiben, wenn das Theme einen eigenen Anzeigewert erzwang. Der geschlossene Zustand ist jetzt immer ausgeblendet.
+* Härtung: Die Popup- und Schnellansicht-Overlays erzwingen ebenfalls den verborgenen Zustand, sodass ein Theme kein geschlossenes Overlay auf dem Bildschirm behalten sollte.
 
 = 1.24.0 =
-* Neu: volle Unterstützung für den WooCommerce-Block-Checkout. Einwilligungs-Kontrollkästchen, die Einwilligung zu digitalen Inhalten und benutzerdefinierte Checkout-Felder werden sowohl im Block- als auch im klassischen Checkout gerendert, validiert und gespeichert.
-* Neu: Produktinformationen, einschließlich des niedrigsten Preises ab 30 Tagen, des Einzelpreises und der Lieferzeit, werden im Block Warenkorb und an der Kasse angezeigt.
-* Sicherheit: Verschärfte Ratenbegrenzungsbehandlung auf dem Gast-Auszahlungspfad und verbesserte Anonymisierung der IPv6-Adresse im Einwilligungsprotokoll.
-* Fix: Durch die Deinstallation werden alle Plugin-Tabellen entfernt, Datenbankmigrationen werden in der richtigen Reihenfolge ausgeführt und das Fenster mit dem niedrigsten Preis von Omnibus wird für einen leeren Zeitraum nicht mehr auf den aktuellen Preis reduziert.
+* Neu: volle Unterstützung für die WooCommerce-Block-Kasse. Einwilligungs-Checkboxen, die Einwilligung zu digitalen Inhalten und benutzerdefinierte Kassenfelder werden sowohl in der Block- als auch in der klassischen Kasse gerendert, validiert und gespeichert.
+* Neu: Produktinformationen, einschließlich des niedrigsten Preises der letzten 30 Tage, des Grundpreises und der Lieferzeit, erscheinen im Block-Warenkorb und an der Kasse.
+* Sicherheit: verschärfte Ratenbegrenzung auf dem Gast-Widerrufspfad und verbesserte Anonymisierung der IPv6-Adresse im Einwilligungsprotokoll.
+* Fix: Bei der Deinstallation werden alle Plugin-Tabellen entfernt, Datenbankmigrationen laufen in der richtigen Reihenfolge, und das Omnibus-Fenster für den niedrigsten Preis fällt für einen leeren Zeitraum nicht mehr auf den aktuellen Preis zurück.
 
 = 1.23.2 =
-* Verbesserung: Der Einrichtungsassistent ist jetzt ein geführter mehrstufiger Prozess: Unternehmen, Recht, Steuern und OSS, Kasse, Abschluss. Es sammelt Unternehmensdaten, aktiviert die erforderlichen Rechtsmodule und hilft bei der Konfiguration von Steuern und Checkout. Optionale Schritte können übersprungen werden und durch den Abschluss werden bereits verwendete Module nicht deaktiviert.
+* Verbesserung: Der Einrichtungsassistent ist jetzt ein geführter, mehrstufiger Prozess: Unternehmen, Recht, Steuern und OSS, Kasse, Abschluss. Er sammelt Unternehmensdaten, aktiviert die erforderlichen Rechtsmodule und hilft bei der Konfiguration von Steuern und Kasse. Optionale Schritte können übersprungen werden, und durch den Abschluss werden bereits verwendete Module nicht deaktiviert.
 
 = 1.23.1 =
-* Übersetzungen: Die gebündelten Übersetzungen für Deutsch, Tschechisch, Slowakisch, Ukrainisch, Litauisch, Weißrussisch und vereinfachtes Chinesisch wurden abgeschlossen, einschließlich des Textes des neuen Einrichtungsassistenten sowie der Modulsuche und -sortierung.
+* Übersetzungen: Die gebündelten Übersetzungen für Deutsch, Tschechisch, Slowakisch, Ukrainisch, Litauisch, Belarussisch und vereinfachtes Chinesisch wurden vervollständigt, einschließlich des Textes des neuen Einrichtungsassistenten sowie der Modulsuche und -sortierung.
 
 = 1.23.0 =
-* Neu: der Setup-Assistent. Eine neue Karte schlägt vorgefertigte Szenarien vor, etwa eine polnische Rechtsgrundlage, Lebensmittel und Lebensmittel, digitale Produkte, B2B und Großhandel, Mode und Conversion-Wachstum. Der Assistent aktiviert nur Module, er deaktiviert keine vorhandenen Einstellungen.
+* Neu: der Einrichtungsassistent. Eine neue Karte schlägt fertige Szenarien vor, etwa eine polnische Rechtsgrundlage, Lebensmittel und Lebensmittelhandel, digitale Produkte, B2B und Großhandel, Mode und Conversion-Wachstum. Der Assistent aktiviert nur Module und deaktiviert keine vorhandenen Einstellungen.
 
 = 1.22.7 =
-* Fix: Das Polski-Administratormenüsymbol verschiebt sich nicht mehr beim Schweben und im aktiven Zustand.
+* Fix: Das Symbol des Polski-Adminmenüs verschiebt sich nicht mehr beim Überfahren und im aktiven Zustand.
 
 = 1.22.6 =
-* Neu: Der Modulbildschirm bietet jetzt eine sofortige Suche nach Name und Beschreibung sowie Sortierung: gruppiert, alphabetisch oder zuerst aktiviert. Ohne die Seite neu zu laden.
+* Neu: Der Modulbildschirm bietet jetzt eine sofortige Suche nach Name und Beschreibung sowie eine Sortierung: gruppiert, alphabetisch oder aktivierte zuerst. Ohne die Seite neu zu laden.
 
 = 1.22.5 =
-* Fix: Ein schwerwiegender TypeError-Fehler wurde entfernt, der bei Bestellabfragen, einschließlich auf dem WooCommerce-Bestellbildschirm, auftreten konnte, wenn der Auszahlungsabfragehelfer ein Paginierungsobjekt anstelle eines Arrays empfing.
+* Fix: Ein schwerwiegender TypeError-Fehler wurde entfernt, der bei Bestellabfragen, einschließlich auf dem WooCommerce-Bestellbildschirm, auftreten konnte, wenn der Widerrufsabfrage-Helfer ein Paginierungsobjekt anstelle eines Arrays erhielt.
 
 = 1.22.4 =
-* Neu: das BDO-Nummernmodul. Gib eine BDO-Nummer ein und zeige diese mit dem Shortcode [polski_bdo] oder dem BDO-Nummernblock beispielsweise in der Fußzeile an. Der Firmenidentifikationsblock kann auch die BDO-Nummer enthalten.
+* Neu: das BDO-Nummernmodul. Gib eine BDO-Nummer ein und zeige sie mit dem Shortcode [polski_bdo] oder dem BDO-Nummernblock an, zum Beispiel in der Fußzeile. Der Firmenidentifikationsblock kann ebenfalls die BDO-Nummer enthalten.
 
 = 1.22.3 =
-* Admin: Fünf separate Einstellungsbildschirme wurden zu einem Bildschirm mit Registerkarten zusammengeführt und Abhebungen, das Einwilligungsprotokoll, CRA-Vorfälle, SBOM, die Beschwerdevorlage und DSGVO-Schulungsdokumente in ein Berichts- und Toolcenter verschoben.
-* Admin: Teile die Modulliste in Gruppen auf und füge Tooltips zu jedem Modul hinzu. Aktionslinks sind abgeblendet, wenn ein Modul deaktiviert ist.
-* Fix: Das Polski-Menüsymbol ist jetzt relativ zu seiner Beschriftung zentriert.
-* Übersetzungen: Alle gebündelten Sprachkataloge wurden nach den Einstellungen und Menüänderungen aktualisiert und neu kompiliert.
+* Admin: Fünf separate Einstellungsbildschirme wurden zu einem Bildschirm mit Registerkarten zusammengeführt und Widerrufe, das Einwilligungsprotokoll, CRA-Vorfälle, SBOM, die Beschwerdevorlage und DSGVO-Schulungsdokumente in ein Berichts- und Tool-Center verschoben.
+* Admin: Die Modulliste wurde in Gruppen aufgeteilt und jedem Modul Tooltips hinzugefügt. Aktionslinks sind abgeblendet, wenn ein Modul deaktiviert ist.
+* Fix: Das Symbol des Polski-Menüs ist jetzt relativ zu seiner Beschriftung zentriert.
+* Übersetzungen: Alle gebündelten Sprachkataloge wurden nach den Einstellungs- und Menüänderungen aktualisiert und neu kompiliert.
 * Dokumentation: Die Dokumentation und die Plugin-Seiten-Links auf plogins.com wurden aktualisiert.
 
 Ältere Versionen sind unter [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt) verfügbar.
@@ -362,7 +379,7 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Behebt das Laden von Admin-Bildschirmskripten in einigen Konfigurationen und aktualisiert die gebündelten Übersetzungen.
 
 = 1.6.3 =
-Plugin-Check-Aufräumarbeiten: Begründungen für Abfragen in benutzerdefinierten Tabellen hinzugefügt. Keine funktionalen Änderungen.
+Plugin-Check-Aufräumarbeiten: Begründungen für Abfragen an benutzerdefinierten Tabellen hinzugefügt. Keine funktionalen Änderungen.
 
 = 1.6.2 =
-Verhärtung nach der WordPress.org-Überprüfung: sicherere Eingabeverarbeitung, eine breitere Beschreibung externer Dienste und verbesserte Formulierungen in der Readme-Datei.
+Härtung nach der WordPress.org-Überprüfung: sicherere Eingabeverarbeitung, eine breitere Beschreibung externer Dienste und verbesserte Formulierungen in der Readme.
