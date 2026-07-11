@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.10
+Stable tag: 1.24.11
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -102,6 +102,24 @@ More free WooCommerce plugins from WPPoland:
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
 
 Browse the full catalogue at https://plogins.com/ .
+
+== Polski PRO ==
+
+Polski for WooCommerce covers the essential Polish-market compliance for free. **Polski PRO** is the full store suite:
+
+* **Invoices and KSeF** - VAT invoices, corrections and receipts with PDF, plus e-invoicing to KSeF
+* **Shipping integrations** - InPost, DPD, DHL and Poczta Polska: labels, tracking and pickup points
+* **Order fulfilment** - Packed, Shipped and Delivered statuses, a tracking field and customer emails
+* **Subscriptions** - recurring payments with renewals and one-click cancellation
+* **Gift cards** - sell cards, generate codes and redeem balances in the cart
+* **Affiliate program** - referral links, commission tracking and an affiliate dashboard
+* **Multi-step checkout** - split checkout into address, delivery, payment and summary
+* **Pre-orders, bundles and add-ons** - sell before availability and bundle products
+* **Catalog mode and RFQ** - hide prices and collect quote requests
+
+Everything in the free edition stays free and open. Polski PRO starts at 69 EUR per year (PLN shown at checkout).
+
+Compare editions and pricing: https://plogins.com/polski-pro/pricing/
 
 == Installation ==
 
@@ -298,6 +316,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.24.11 =
+* Added a Free vs PRO overview to the readme.
 
 = 1.24.10 =
 * Added bundled Polish, German and Spanish translations for the plugin interface.
