@@ -47,6 +47,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
+* **AI transparency (AI Act art. 50)** - an option (on by default) to disclose AI-generated content on the storefront, and a clear "classified by AI" marker on return reasons processed by the optional AI classifier.
 
 = Checkout, consents and returns =
 
