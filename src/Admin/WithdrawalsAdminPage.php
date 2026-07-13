@@ -207,10 +207,11 @@ final class WithdrawalsAdminPage implements HasHooks
                                 <td><?php echo esc_html(wp_trim_words((string) ($row->reason ?? ''), 12)); ?></td>
                                 <td>
                                     <?php if ($row->aiCategory !== null) : ?>
-                                        <code class="polski-ai-badge"><?php echo esc_html(ucwords(str_replace('_', ' ', $row->aiCategory))); ?></code>
+                                        <code class="polski-ai-badge" title="<?php esc_attr_e('Classified automatically by AI', 'polski'); ?>"><?php echo esc_html(ucwords(str_replace('_', ' ', $row->aiCategory))); ?></code>
                                         <?php if ($row->aiConfidence !== null) : ?>
                                             <small class="polski-ai-confidence" style="color:#666;"><?php echo esc_html(sprintf('%d%%', (int) round($row->aiConfidence * 100))); ?></small>
                                         <?php endif; ?>
+                                        <span class="screen-reader-text"><?php esc_html_e('(classified automatically by AI)', 'polski'); ?></span>
                                     <?php else : ?>
                                         <span style="color:#999;">&mdash;</span>
                                     <?php endif; ?>
