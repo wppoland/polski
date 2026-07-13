@@ -15,6 +15,14 @@ defined('ABSPATH') || exit;
  * (`polski_ai_features_enabled` option) and strictly degrading - if the AI
  * Client is unavailable, the call returns null and the caller falls back to
  * the source Polish text.
+ *
+ * AI ACT (art. 50) — READ BEFORE WIRING: this produces machine-translated legal
+ * text. It is currently registered but NOT consumed by any render path, so there
+ * is no synthetic content on the storefront yet. The moment a caller renders the
+ * output of translate() to a customer, that caller MUST add the art. 50
+ * disclosure (a short "machine-translated" note + machine-readable marker),
+ * gated by the `polski_ai_label_content` option, exactly as
+ * {@see \Polski\Pro\Service\AiContentLabel} does for AI product copy.
  */
 final class AnnexTranslator
 {
