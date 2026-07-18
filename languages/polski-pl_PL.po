@@ -7078,7 +7078,7 @@ msgstr "Pogrupowane (domyślnie)"
 
 #: src/Admin/ModulesPage.php:1621
 msgid "Name (A–Z)"
-msgstr "Nazwa (A–Z)"
+msgstr "Nazwa (A-Z)"
 
 #: src/Admin/ModulesPage.php:1622
 msgid "Enabled first"
@@ -14407,7 +14407,7 @@ msgstr ""
 #: blocks/withdrawal-form/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(B) form template"
-msgstr "Polski - Wzór formularza Załącznik I(B)."
+msgstr "Polski - szablon formularza z Załącznika I(B)"
 
 #: blocks/withdrawal-form/block.json
 msgctxt "block description"
@@ -14421,7 +14421,7 @@ msgstr ""
 #: blocks/withdrawal-info/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(A) information"
-msgstr "English - Informacje w Załączniku I(A)."
+msgstr "Polski - informacje z Załącznika I(A)"
 
 #: blocks/withdrawal-info/block.json
 msgctxt "block description"
@@ -14434,14 +14434,14 @@ msgstr ""
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block title"
 msgid "Polski - withdrawal lookup"
-msgstr "English - wyszukiwanie wypłat"
+msgstr "Polski - wyszukiwanie odstąpienia"
 
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block description"
 msgid "Email + order number lookup form for guests to file a withdrawal."
 msgstr ""
-"E-mail + formularz wyszukiwania numeru zamówienia, umożliwiający gościom "
-"dokonanie wypłaty."
+"Formularz wyszukiwania po adresie e-mail i numerze zamówienia, umożliwiający"
+" gościom złożenie oświadczenia o odstąpieniu."
 
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
@@ -14590,7 +14590,7 @@ msgstr ""
 #~ "anything - so it is safe to combine scenarios and to re-run."
 #~ msgstr ""
 #~ "Powiedz nam, jaki sklep prowadzisz, a włączymy pasujące moduły. Zastosowanie"
-#~ " scenariusza zawsze tylko włącza moduły – nigdy niczego nie wyłącza – więc "
+#~ " scenariusza zawsze tylko włącza moduły, nigdy niczego nie wyłącza, więc "
 #~ "można bezpiecznie łączyć scenariusze i uruchamiać je ponownie."
 
 #, php-format

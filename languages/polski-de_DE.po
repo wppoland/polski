@@ -76,7 +76,7 @@ msgstr ""
 
 #: config/defaults.php:24
 msgid "Otwórz konfigurację Polski"
-msgstr "Öffne die Polen-Konfiguration"
+msgstr "Öffne die Polski-Konfiguration"
 
 #: config/defaults.php:25
 msgid "Aktywna"
@@ -199,7 +199,7 @@ msgid ""
 "href=\"%s\">zakładce Polski</a> dla każdego produktu."
 msgstr ""
 "Vervollständige die Produktdaten, füge Einzelpreise und Lieferzeiten für "
-"jedes Produkt auf der Registerkarte <a href=\"%s\">Polen</a> hinzu."
+"jedes Produkt auf der Registerkarte <a href=\"%s\">Polski</a> hinzu."
 
 #. translators: %s is the WooCommerce checkout page URL.
 #: config/defaults.php:52
@@ -496,7 +496,7 @@ msgstr "Grund für den Widerruf (optional)"
 
 #: config/defaults.php:156
 msgid "Wyślij wniosek o odstąpienie"
-msgstr "Sende eine Auszahlungsanfrage"
+msgstr "Sende einen Widerrufsantrag"
 
 #: config/defaults.php:157
 msgid "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
@@ -515,7 +515,7 @@ msgid ""
 "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z "
 "potwierdzeniem."
 msgstr ""
-"deine Auszahlungsanfrage wurde angenommen. Wir senden dir in Kürze eine "
+"dein Widerrufsantrag wurde angenommen. Wir senden dir in Kürze eine "
 "Bestätigungs-E-Mail."
 
 #: config/defaults.php:161 src/Shortcode/ShortcodeManager.php:254
@@ -536,7 +536,7 @@ msgstr "Der Kunde hat einen Antrag auf Rücktritt vom Vertrag gestellt."
 
 #: config/defaults.php:166
 msgid "Wniosek o odstąpienie został potwierdzony."
-msgstr "Die Auszahlungsanfrage wurde bestätigt."
+msgstr "Der Widerrufsantrag wurde bestätigt."
 
 #: config/defaults.php:168
 msgid "Potwierdzenie wniosku o odstąpienie od zamówienia nr #{order_number}"
@@ -782,11 +782,11 @@ msgstr ""
 
 #: config/defaults.php:250
 msgid "Nowe zapytanie ofertowe - {product_name}"
-msgstr "Neue Angebotsanfrage – {product_name}"
+msgstr "Neue Angebotsanfrage - {product_name}"
 
 #: config/defaults.php:251
 msgid "Potwierdzenie zapytania ofertowego - {product_name}"
-msgstr "Bestätigung der Angebotsanfrage – {product_name}"
+msgstr "Bestätigung der Angebotsanfrage - {product_name}"
 
 #: config/defaults.php:253
 msgid "Zapytania ofertowe"
@@ -1856,7 +1856,7 @@ msgstr "Du kannst den Inhalt deiner CSV-Datei herunterladen."
 
 #: src/Admin/AdminPage.php:771
 msgid "Odstąpienia"
-msgstr "Auszahlungen"
+msgstr "Widerrufe"
 
 #: src/Admin/AdminPage.php:772
 msgid ""
@@ -2096,7 +2096,7 @@ msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
 "href=\"%s\">Polski tab</a> for each product."
 msgstr ""
-"Vollständige Produktdaten – Füge auf der Registerkarte <a "
+"Vollständige Produktdaten - Füge auf der Registerkarte <a "
 "href=\"%s\">Polski</a> für jedes Produkt die Einzelpreise und die Lieferzeit"
 " hinzu."
 
@@ -2107,7 +2107,7 @@ msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
 "and button text in <a href=\"%s\">checkout</a>."
 msgstr ""
-"Teste den Bestellvorgang – lege ein Produkt in den Warenkorb und überprüfe "
+"Teste den Bestellvorgang - lege ein Produkt in den Warenkorb und überprüfe "
 "die Kontrollkästchen und Schaltflächentexte im <a href=\"%s\">Zur Kasse</a>."
 
 #: src/Admin/AdminPage.php:1190
@@ -2378,35 +2378,35 @@ msgstr "Nettomenge"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR - Manufacturer name"
-msgstr "GPSR – Herstellername"
+msgstr "GPSR - Herstellername"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR - Manufacturer address"
-msgstr "GPSR – Herstelleradresse"
+msgstr "GPSR - Herstelleradresse"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR - Importer name"
-msgstr "GPSR – Name des Importeurs"
+msgstr "GPSR - Name des Importeurs"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR - Importer address"
-msgstr "GPSR – Adresse des Importeurs"
+msgstr "GPSR - Adresse des Importeurs"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR - Responsible person"
-msgstr "GPSR – Verantwortliche Person"
+msgstr "GPSR - Verantwortliche Person"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR - Product identifier"
-msgstr "GPSR – Produktkennung"
+msgstr "GPSR - Produktkennung"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR - Safety warnings"
-msgstr "GPSR – Sicherheitswarnungen"
+msgstr "GPSR - Sicherheitswarnungen"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR - Safety instructions"
-msgstr "GPSR – Sicherheitshinweise"
+msgstr "GPSR - Sicherheitshinweise"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -2715,10 +2715,9 @@ msgid ""
 "until enabled."
 msgstr ""
 "Bearbeitet 14-Tage-Widerrufsanfragen. Wenn diese Option aktiviert ist, "
-"erhalten Kunden ein Auszahlungsformular und eine Aktion „Mein Konto“ mit "
-"einem Bestätigungsschritt und einer E-Mail. Du kannst bestimmte Produkte "
-"ausschließen, die nicht vom Widerruf ausgeschlossen sind. Aus bis zur "
-"Aktivierung."
+"erhalten Kunden ein Widerrufsformular und eine Aktion „Mein Konto“ mit einem"
+" Bestätigungsschritt und einer E-Mail. Du kannst bestimmte Produkte "
+"ausschließen, die nicht widerrufsberechtigt sind. Aus bis zur Aktivierung."
 
 #: src/Admin/ModulesPage.php:101
 msgid ""
@@ -3756,7 +3755,7 @@ msgstr "Allgemeine Geschäftsbedingungen"
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:315
 msgid "Label - Terms"
-msgstr "Etikett – Begriffe"
+msgstr "Etikett - Begriffe"
 
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:315
@@ -3766,11 +3765,11 @@ msgstr "Verwende %s als Platzhalter für den Link zur Begriffsseite"
 
 #: src/Admin/ModulesPage.php:316
 msgid "Error - Terms"
-msgstr "Fehler – Bedingungen"
+msgstr "Fehler - Bedingungen"
 
 #: src/Admin/ModulesPage.php:317
 msgid "Description - Terms"
-msgstr "Beschreibung – Bedingungen"
+msgstr "Beschreibung - Bedingungen"
 
 #: src/Admin/ModulesPage.php:318 src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:174 src/Service/SiteAuditService.php:371
@@ -3780,7 +3779,7 @@ msgstr "Datenschutzrichtlinie"
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:320
 msgid "Label - Privacy Policy"
-msgstr "Etikett – Datenschutzrichtlinie"
+msgstr "Etikett - Datenschutzrichtlinie"
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:320
@@ -3790,11 +3789,11 @@ msgstr "Verwende %s als Platzhalter für den Link zur Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:321
 msgid "Error - Privacy Policy"
-msgstr "Fehler – Datenschutzrichtlinie"
+msgstr "Fehler - Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:322
 msgid "Description - Privacy Policy"
-msgstr "Beschreibung – Datenschutzrichtlinie"
+msgstr "Beschreibung - Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:323 src/Email/WithdrawalEmailCta.php:65
 #: src/Service/SiteAuditService.php:659
@@ -3804,22 +3803,22 @@ msgstr "Widerrufsrecht"
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:325
 msgid "Label - Right of withdrawal"
-msgstr "Etikett – Widerrufsrecht"
+msgstr "Etikett - Widerrufsrecht"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:325
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr ""
-"Verwende %s als Platzhalter für den Link zur Rückgabe- oder Auszahlungsseite"
+"Verwende %s als Platzhalter für den Link zur Rückgabe- oder Widerrufsseite"
 
 #: src/Admin/ModulesPage.php:326
 msgid "Error - Right of withdrawal"
-msgstr "Fehler – Widerrufsrecht"
+msgstr "Fehler - Widerrufsrecht"
 
 #: src/Admin/ModulesPage.php:327
 msgid "Description - Right of withdrawal"
-msgstr "Beschreibung – Widerrufsrecht"
+msgstr "Beschreibung - Widerrufsrecht"
 
 #: src/Admin/ModulesPage.php:328
 msgid "Digital content (waiver)"
@@ -3827,15 +3826,15 @@ msgstr "Digitale Inhalte (Verzicht)"
 
 #: src/Admin/ModulesPage.php:329
 msgid "Label - Digital content"
-msgstr "Etikett – Digitaler Inhalt"
+msgstr "Etikett - Digitaler Inhalt"
 
 #: src/Admin/ModulesPage.php:330
 msgid "Error - Digital content"
-msgstr "Fehler – Digitaler Inhalt"
+msgstr "Fehler - Digitaler Inhalt"
 
 #: src/Admin/ModulesPage.php:331
 msgid "Description - Digital content"
-msgstr "Beschreibung – Digitale Inhalte"
+msgstr "Beschreibung - Digitale Inhalte"
 
 #: src/Admin/ModulesPage.php:332
 msgid "Delivery notifications"
@@ -3843,11 +3842,11 @@ msgstr "Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:333
 msgid "Label - Delivery notifications"
-msgstr "Etikett – Lieferbenachrichtigungen"
+msgstr "Etikett - Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:334
 msgid "Description - Delivery notifications"
-msgstr "Beschreibung – Lieferbenachrichtigungen"
+msgstr "Beschreibung - Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:335
 msgid "Review reminder"
@@ -3855,11 +3854,11 @@ msgstr "Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:336
 msgid "Label - Review reminder"
-msgstr "Etikett – Bewertungserinnerung"
+msgstr "Etikett - Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:337
 msgid "Description - Review reminder"
-msgstr "Beschreibung – Bewertungserinnerung"
+msgstr "Beschreibung - Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:338
 msgid "Marketing consent"
@@ -3871,11 +3870,11 @@ msgstr "Etikett - Marketing"
 
 #: src/Admin/ModulesPage.php:340
 msgid "Description - Marketing"
-msgstr "Beschreibung – Marketing"
+msgstr "Beschreibung - Marketing"
 
 #: src/Admin/ModulesPage.php:345
 msgid "NIP - Verification and Autocomplete"
-msgstr "NIP – Verifizierung und automatische Vervollständigung"
+msgstr "NIP - Verifizierung und automatische Vervollständigung"
 
 #: src/Admin/ModulesPage.php:346
 msgid ""
@@ -4089,7 +4088,7 @@ msgid ""
 "Withdrawal request form, My Account action with confirmation step, "
 "confirmation email, and per-product exclusions."
 msgstr ""
-"Auszahlungsantragsformular, Aktion „Mein Konto“ mit Bestätigungsschritt, "
+"Widerrufsantragsformular, Aktion „Mein Konto“ mit Bestätigungsschritt, "
 "Bestätigungs-E-Mail und Produktausschlüssen."
 
 #: src/Admin/ModulesPage.php:432
@@ -4108,7 +4107,7 @@ msgstr "Formulartitel"
 #: src/Admin/ModulesPage.php:433 src/Admin/ModulesPage.php:448
 #: src/Service/WithdrawalService.php:934
 msgid "Withdrawal request"
-msgstr "Auszahlungsantrag"
+msgstr "Widerrufsantrag"
 
 #: src/Admin/ModulesPage.php:434
 msgid "Form introduction"
@@ -4119,8 +4118,8 @@ msgid ""
 "You are submitting a withdrawal request for order #{order_number} placed on "
 "{order_date}."
 msgstr ""
-"Du senden eine Auszahlungsanfrage für die Bestellung Nr. {order_number}, die"
-" am {order_date} aufgegeben wurde."
+"Du reichst einen Widerrufsantrag für die Bestellung Nr. {order_number} ein, "
+"die am {order_date} aufgegeben wurde."
 
 #: src/Admin/ModulesPage.php:434
 msgid "Variables: {order_number}, {order_date}"
@@ -4197,7 +4196,7 @@ msgstr "Schaltflächentext senden"
 
 #: src/Admin/ModulesPage.php:442
 msgid "Submit withdrawal request"
-msgstr "Sende eine Auszahlungsanfrage"
+msgstr "Sende einen Widerrufsantrag"
 
 #: src/Admin/ModulesPage.php:443
 msgid "Invalid nonce message"
@@ -4235,7 +4234,7 @@ msgid ""
 "Your withdrawal request has been received. We will send a confirmation email"
 " shortly."
 msgstr ""
-"deine Auszahlungsanfrage ist eingegangen. Wir senden dir in Kürze eine "
+"dein Widerrufsantrag ist eingegangen. Wir senden dir in Kürze eine "
 "Bestätigungs-E-Mail."
 
 #: src/Admin/ModulesPage.php:447
@@ -4270,7 +4269,7 @@ msgstr "Bestellhinweis auf Anfrage"
 
 #: src/Admin/ModulesPage.php:451
 msgid "The customer submitted a withdrawal request."
-msgstr "Der Kunde hat einen Auszahlungsantrag eingereicht."
+msgstr "Der Kunde hat einen Widerrufsantrag eingereicht."
 
 #: src/Admin/ModulesPage.php:452
 msgid "Order note after confirmation"
@@ -4278,7 +4277,7 @@ msgstr "Bestellnotiz nach Bestätigung"
 
 #: src/Admin/ModulesPage.php:452
 msgid "The withdrawal request has been confirmed."
-msgstr "Die Auszahlungsanfrage wurde bestätigt."
+msgstr "Der Widerrufsantrag wurde bestätigt."
 
 #: src/Admin/ModulesPage.php:453
 msgid "Status date format"
@@ -4295,8 +4294,7 @@ msgstr "Betreff der Bestätigungs-E-Mail"
 #: src/Admin/ModulesPage.php:454 src/Admin/ModulesPage.php:457
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
 msgstr ""
-"dein Auszahlungsantrag für die Bestellung Nr. {order_number} wurde "
-"bestätigt."
+"dein Widerrufsantrag für die Bestellung Nr. {order_number} wurde bestätigt."
 
 #: src/Admin/ModulesPage.php:454
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
@@ -4478,7 +4476,7 @@ msgstr "Titel der nächsten Schritte"
 
 #: src/Admin/ModulesPage.php:497
 msgid "Step - publish pages"
-msgstr "Schritt – Seiten veröffentlichen"
+msgstr "Schritt - Seiten veröffentlichen"
 
 #: src/Admin/ModulesPage.php:498
 msgid "Step - VAT rates"
@@ -4494,7 +4492,7 @@ msgstr "Schritt - Produktdaten"
 
 #: src/Admin/ModulesPage.php:501
 msgid "Step - checkout test"
-msgstr "Schritt – Checkout-Test"
+msgstr "Schritt - Checkout-Test"
 
 #: src/Admin/ModulesPage.php:502
 msgid "Omnibus plugin detected status"
@@ -5031,11 +5029,11 @@ msgstr "Mehrfachauswahlbeziehung"
 
 #: src/Admin/ModulesPage.php:673
 msgid "OR - match any selected term"
-msgstr "ODER – Übereinstimmung mit einem beliebigen ausgewählten Begriff"
+msgstr "ODER - Übereinstimmung mit einem beliebigen ausgewählten Begriff"
 
 #: src/Admin/ModulesPage.php:673
 msgid "AND - match all selected terms"
-msgstr "UND – stimmt mit allen ausgewählten Begriffen überein"
+msgstr "UND - stimmt mit allen ausgewählten Begriffen überein"
 
 #: src/Admin/ModulesPage.php:674
 msgid "Enable mobile filter panel"
@@ -6002,7 +6000,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1018
 msgid "GPSR - Product safety"
-msgstr "GPSR – Produktsicherheit"
+msgstr "GPSR - Produktsicherheit"
 
 #: src/Admin/ModulesPage.php:1019
 msgid ""
@@ -6646,7 +6644,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1290
 msgid "CRA - Cyber Resilience"
-msgstr "CRA – Cyber-Resilienz"
+msgstr "CRA - Cyber-Resilienz"
 
 #: src/Admin/ModulesPage.php:1291
 msgid ""
@@ -6948,7 +6946,7 @@ msgid ""
 "products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr ""
 "Benutzerdefinierter Beitragstyp für redaktionelle Produktbewertungen. "
-"Verknüpfe Expertenbewertungen mit Produkten mit Bewertungen (1–10), Urteilen"
+"Verknüpfe Expertenbewertungen mit Produkten mit Bewertungen (1-10), Urteilen"
 " und Schema.org-Markup für SEO."
 
 #: src/Admin/ModulesPage.php:1441
@@ -6966,7 +6964,7 @@ msgid ""
 "AJAX-loaded, configurable position and timing."
 msgstr ""
 "Floating-Kaufbenachrichtigungen mit den letzten Bestellungen („Jan aus "
-"Warszawa hat gerade gekauft…“). Erhöht nachweislich die Conversions um 10–15"
+"Warszawa hat gerade gekauft…“). Erhöht nachweislich die Conversions um 10-15"
 " %. Datenschutzbewusst, AJAX-geladen, konfigurierbare Position und Timing."
 
 #: src/Admin/ModulesPage.php:1454
@@ -7570,7 +7568,7 @@ msgid ""
 "here - use this as a starting point, not a verdict."
 msgstr ""
 "Heuristischer Scan des Homepage-HTML. Mit JS gerenderte Banner sind hier "
-"möglicherweise nicht sichtbar – verwende dies als Ausgangspunkt, nicht als "
+"möglicherweise nicht sichtbar - verwende dies als Ausgangspunkt, nicht als "
 "Urteil."
 
 #: src/Admin/PageCompliancePage.php:181
@@ -7845,7 +7843,7 @@ msgstr "Optionale Überschrift nur für dieses Produkt."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR - Product Safety"
-msgstr "GPSR – Produktsicherheit"
+msgstr "GPSR - Produktsicherheit"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -8010,12 +8008,12 @@ msgstr "Vom Bestellbildschirm abgelehnt."
 #: src/Admin/WithdrawalsAdminPage.php:65 src/Admin/WithdrawalsAdminPage.php:66
 #: src/Admin/WithdrawalsAdminPage.php:95
 msgid "Withdrawals"
-msgstr "Auszahlungen"
+msgstr "Widerrufe"
 
 #: src/Admin/WithdrawalsAdminPage.php:74 src/Admin/WithdrawalsAdminPage.php:75
 #: src/Admin/WithdrawalsAdminPage.php:402
 msgid "Register withdrawal"
-msgstr "Auszahlung registrieren"
+msgstr "Widerruf registrieren"
 
 #: src/Admin/WithdrawalsAdminPage.php:97
 msgid "Register manually"
@@ -8026,7 +8024,7 @@ msgstr "Registriere sich manuell"
 #: src/Admin/WithdrawalSettingsPage.php:58
 #: src/Admin/WithdrawalSettingsPage.php:159
 msgid "Withdrawal settings"
-msgstr "Auszahlungseinstellungen"
+msgstr "Widerrufseinstellungen"
 
 #: src/Admin/WithdrawalsAdminPage.php:112
 msgid "Status:"
@@ -8106,13 +8104,13 @@ msgstr "Abgelegt bei"
 
 #: src/Admin/WithdrawalsAdminPage.php:173
 msgid "No withdrawal requests yet."
-msgstr "Noch keine Auszahlungsanfragen."
+msgstr "Noch keine Widerrufsanträge."
 
 #. translators: %d: declaration id
 #: src/Admin/WithdrawalsAdminPage.php:182
 #, php-format
 msgid "Select withdrawal #%d"
-msgstr "Wähle Auszahlung #%d"
+msgstr "Wähle Widerruf #%d"
 
 #: src/Admin/WithdrawalsAdminPage.php:232
 #: src/Admin/WithdrawalsAdminPage.php:411
@@ -8149,7 +8147,7 @@ msgstr[1] "%1$d von %2$d ausgewählten Ansprüchen wurden abgelehnt."
 
 #: src/Admin/WithdrawalsAdminPage.php:364
 msgid "Register withdrawal manually"
-msgstr "Registriere die Auszahlung manuell"
+msgstr "Registriere den Widerruf manuell"
 
 #: src/Admin/WithdrawalsAdminPage.php:366
 msgid ""
@@ -8193,7 +8191,7 @@ msgstr "Bestellung nicht gefunden."
 
 #: src/Admin/WithdrawalsAdminPage.php:449
 msgid "Could not save the withdrawal request."
-msgstr "Die Auszahlungsanforderung konnte nicht gespeichert werden."
+msgstr "Der Widerrufsantrag konnte nicht gespeichert werden."
 
 #: src/Admin/WithdrawalsAdminPage.php:456
 #: src/Service/WithdrawalService.php:378 src/Service/WithdrawalService.php:461
@@ -8207,12 +8205,11 @@ msgid ""
 "[Polski] Withdrawal request #%1$d registered manually (channel: %2$s) by "
 "%3$s."
 msgstr ""
-"[Polski] Auszahlungsanfrage #%1$d manuell registriert (Kanal: %2$s) von "
-"%3$s."
+"[Polski] Widerrufsantrag #%1$d manuell registriert (Kanal: %2$s) von %3$s."
 
 #: src/Admin/WithdrawalsAdminPage.php:477
 msgid "Withdrawal request registered."
-msgstr "Auszahlungsantrag registriert."
+msgstr "Widerrufsantrag registriert."
 
 #: src/Admin/WithdrawalSettingsPage.php:160
 msgid ""
@@ -8247,7 +8244,7 @@ msgid ""
 "The withdrawal 14-day clock starts when an order enters any of the selected "
 "statuses."
 msgstr ""
-"Die 14-tägige Auszahlungsfrist beginnt, wenn eine Bestellung in einen der "
+"Die 14-tägige Widerrufsfrist beginnt, wenn eine Bestellung in einen der "
 "ausgewählten Status eintritt."
 
 #: src/Admin/WithdrawalSettingsPage.php:193
@@ -8293,14 +8290,14 @@ msgstr "Zustimmungsmodus"
 #: src/Admin/WithdrawalSettingsPage.php:230
 msgid "Required - block checkout unless the consumer ticks the consent box."
 msgstr ""
-"Erforderlich – Checkout blockieren, es sei denn, der Verbraucher aktiviert "
+"Erforderlich - Checkout blockieren, es sei denn, der Verbraucher aktiviert "
 "das Kästchen für die Einwilligung."
 
 #: src/Admin/WithdrawalSettingsPage.php:231
 msgid ""
 "Optional - show an unchecked consent box. Only ticked orders become exempt."
 msgstr ""
-"Optional – ein deaktiviertes Einwilligungskästchen anzeigen. Ausgenommen "
+"Optional - ein deaktiviertes Einwilligungskästchen anzeigen. Ausgenommen "
 "sind nur angekreuzte Bestellungen."
 
 #: src/Admin/WithdrawalSettingsPage.php:232
@@ -8308,7 +8305,7 @@ msgid ""
 "Hidden - do not collect consent. Digital orders retain the right of "
 "withdrawal."
 msgstr ""
-"Versteckt – keine Einwilligung einholen. Bei digitalen Bestellungen bleibt "
+"Versteckt - keine Einwilligung einholen. Bei digitalen Bestellungen bleibt "
 "das Widerrufsrecht bestehen."
 
 #: src/Admin/WithdrawalSettingsPage.php:248
@@ -8421,10 +8418,10 @@ msgid ""
 msgstr ""
 "Standardmäßig deaktiviert. Von diesem Plugin wird niemals eine ausgehende "
 "HTTP-Anfrage gestellt. Das von dir installierte AI Client-Anbieter-Plugin "
-"übernimmt den Netzwerkanruf. Die Klassifizierung läuft unbemerkt im "
+"übernimmt den Netzwerkaufruf. Die Klassifizierung läuft unbemerkt im "
 "Hintergrund, nachdem ein Kunde oder Betreiber eine Erklärung abgegeben hat; "
 "Ausfälle (kein Anbieter, verhinderte Eingabeaufforderung, Netzwerkfehler) "
-"werden absorbiert und blockieren niemals den Auszahlungsfluss."
+"werden absorbiert und blockieren niemals den Widerrufsprozess."
 
 #: src/AIFeed/LlmsTxtService.php:94
 msgid "Legal"
@@ -8462,12 +8459,12 @@ msgid ""
 " to discover withdrawal, refund, audit, reporting and compliance operations."
 msgstr ""
 "JSON-Liste aller Aktionen, die diese Website über die WP Abilities API "
-"bereitstellt. Nutze es, um Auszahlungs-, Rückerstattungs-, Prüfungs-, "
+"bereitstellt. Nutze es, um Widerrufs-, Rückerstattungs-, Prüfungs-, "
 "Berichts- und Compliance-Vorgänge zu ermitteln."
 
 #: src/AIFeed/LlmsTxtService.php:150
 msgid "Withdrawal documentation"
-msgstr "Auszahlungsdokumentation"
+msgstr "Widerrufsdokumentation"
 
 #: src/AIFeed/LlmsTxtService.php:152
 msgid ""
@@ -8475,7 +8472,7 @@ msgid ""
 " the withdrawal module."
 msgstr ""
 "Architektur, Einstellungen, Shortcodes, Blöcke, Fähigkeiten und REST-"
-"Endpunkte für das Auszahlungsmodul."
+"Endpunkte für das Widerrufsmodul."
 
 #: src/AIFeed/LlmsTxtService.php:266
 msgid "Terms and conditions"
@@ -9849,7 +9846,7 @@ msgid ""
 "Polski withdrawal declarations were anonymised. The records themselves were "
 "retained to comply with statutory accounting retention requirements."
 msgstr ""
-"Die Austrittserklärungen Polens wurden anonymisiert. Die Aufzeichnungen "
+"Die Polski-Widerrufserklärungen wurden anonymisiert. Die Aufzeichnungen "
 "selbst wurden aufbewahrt, um den gesetzlichen Aufbewahrungspflichten für die"
 " Buchhaltung nachzukommen."
 
@@ -9993,8 +9990,7 @@ msgstr "Assistent abgeschlossen."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
-msgstr ""
-"Wir konnten für diese Bestellung keinen Auszahlungsantrag vorbereiten."
+msgstr "Wir konnten für diese Bestellung keinen Widerrufsantrag vorbereiten."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Invalid status."
@@ -10014,7 +10010,7 @@ msgstr "Widerrufsrecht für Verbraucher (14-tägige Rückgabe)."
 
 #: src/Service/AbilitiesService.php:63
 msgid "Polski - legal documents"
-msgstr "Polski – juristische Dokumente"
+msgstr "Polski - juristische Dokumente"
 
 #: src/Service/AbilitiesService.php:64
 msgid "Generated consumer-law documents (Annex I(A), I(B), etc.)."
@@ -10022,7 +10018,7 @@ msgstr "Erstellte verbraucherrechtliche Dokumente (Anhang I(A), I(B) usw.)."
 
 #: src/Service/AbilitiesService.php:68
 msgid "Polski - compliance checks"
-msgstr "Polski – Compliance-Prüfungen"
+msgstr "Polski - Compliance-Prüfungen"
 
 #: src/Service/AbilitiesService.php:69
 msgid ""
@@ -10046,7 +10042,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:109
 msgid "Check withdrawal eligibility"
-msgstr "Überprüfe die Auszahlungsberechtigung"
+msgstr "Überprüfe die Widerrufsberechtigung"
 
 #: src/Service/AbilitiesService.php:110
 msgid ""
@@ -10069,7 +10065,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:193
 msgid "Get withdrawal deadline"
-msgstr "Hole sich die Auszahlungsfrist"
+msgstr "Rufe die Widerrufsfrist ab"
 
 #: src/Service/AbilitiesService.php:194
 msgid ""
@@ -10081,57 +10077,57 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:234
 msgid "Create a withdrawal request"
-msgstr "Erstelle eine Auszahlungsanfrage"
+msgstr "Erstelle einen Widerrufsantrag"
 
 #: src/Service/AbilitiesService.php:235
 msgid ""
 "Files a withdrawal request on behalf of the current user for the given order"
 " (and optional item selection)."
 msgstr ""
-"Reicht im Namen des aktuellen Benutzers einen Auszahlungsantrag für die "
+"Reicht im Namen des aktuellen Benutzers einen Widerrufsantrag für die "
 "angegebene Bestellung (und optionale Artikelauswahl) ein."
 
 #: src/Service/AbilitiesService.php:292
 msgid "Confirm a withdrawal request"
-msgstr "Bestätige eine Auszahlungsanfrage"
+msgstr "Bestätige einen Widerrufsantrag"
 
 #: src/Service/AbilitiesService.php:293
 msgid "Moves a requested withdrawal to the confirmed state (admin action)."
 msgstr ""
-"Verschiebt eine angeforderte Auszahlung in den bestätigten Status "
+"Verschiebt einen beantragten Widerruf in den bestätigten Status "
 "(Administratoraktion)."
 
 #: src/Service/AbilitiesService.php:314
 msgid "Complete a withdrawal request"
-msgstr "Fülle eine Auszahlungsanforderung aus"
+msgstr "Schließe einen Widerrufsantrag ab"
 
 #: src/Service/AbilitiesService.php:315
 msgid ""
 "Marks a confirmed withdrawal as completed (after the refund has been "
 "processed)."
 msgstr ""
-"Markiert eine bestätigte Auszahlung als abgeschlossen (nachdem die "
+"Markiert einen bestätigten Widerruf als abgeschlossen (nachdem die "
 "Rückerstattung bearbeitet wurde)."
 
 #: src/Service/AbilitiesService.php:336
 msgid "Reject a withdrawal request"
-msgstr "Eine Auszahlungsanfrage ablehnen"
+msgstr "Einen Widerrufsantrag ablehnen"
 
 #: src/Service/AbilitiesService.php:337
 msgid "Rejects a withdrawal request with an audit-trailed reason."
-msgstr "Lehnt eine Auszahlungsanforderung mit einem protokollierten Grund ab."
+msgstr "Lehnt einen Widerrufsantrag mit einem protokollierten Grund ab."
 
 #: src/Service/AbilitiesService.php:362
 msgid "List withdrawal requests"
-msgstr "Auszahlungsanfragen auflisten"
+msgstr "Widerrufsanträge auflisten"
 
 #: src/Service/AbilitiesService.php:363
 msgid "Returns withdrawal requests, optionally filtered by status."
-msgstr "Gibt Auszahlungsanfragen zurück, optional gefiltert nach Status."
+msgstr "Gibt Widerrufsanträge zurück, optional gefiltert nach Status."
 
 #: src/Service/AbilitiesService.php:401
 msgid "Generate Annex I(A) - withdrawal information"
-msgstr "Erstelle Anhang I(A) – Auszahlungsinformationen"
+msgstr "Erstelle Anhang I(A) - Widerrufsinformationen"
 
 #: src/Service/AbilitiesService.php:402
 msgid ""
@@ -10143,7 +10139,7 @@ msgstr ""
 
 #: src/Service/AbilitiesService.php:415
 msgid "Generate Annex I(B) - withdrawal form template"
-msgstr "Erstelle Anhang I(B) – Muster-Widerrufsformular"
+msgstr "Erstelle Anhang I(B) - Muster-Widerrufsformular"
 
 #: src/Service/AbilitiesService.php:416
 msgid ""
@@ -10590,14 +10586,14 @@ msgstr "Bitte akzeptieren: %s"
 msgid ""
 "Enable the Terms and Conditions checkbox - required by Polish consumer law."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Allgemeine Geschäftsbedingungen“ – gemäß "
+"Aktiviere das Kontrollkästchen „Allgemeine Geschäftsbedingungen“ - gemäß "
 "polnischem Verbraucherrecht erforderlich."
 
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Datenschutzrichtlinie“ – erforderlich gemäß "
+"Aktiviere das Kontrollkästchen „Datenschutzrichtlinie“ - erforderlich gemäß "
 "DSGVO Art. 6.1.a und Art. 7."
 
 #: src/Service/CheckboxService.php:349
@@ -10605,7 +10601,7 @@ msgid ""
 "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights "
 "Act (Art. 12)."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Widerrufsrecht“ – gemäß polnischem "
+"Aktiviere das Kontrollkästchen „Widerrufsrecht“ - gemäß polnischem "
 "Verbraucherrechtsgesetz (Art. 12) erforderlich."
 
 #: src/Service/CheckboxService.php:361
@@ -10619,7 +10615,7 @@ msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
 msgstr ""
-"Die Marketingeinwilligung muss gemäß der DSGVO optional sein – ändere sie "
+"Die Marketingeinwilligung muss gemäß der DSGVO optional sein - ändere sie "
 "von „erforderlich“ in „optional“."
 
 #: src/Service/CheckboxService.php:379
@@ -10634,7 +10630,7 @@ msgid ""
 "Review reminder consent should be optional - change it from required to "
 "optional."
 msgstr ""
-"Die Zustimmung zur Bewertungserinnerung sollte optional sein – ändere sie "
+"Die Zustimmung zur Bewertungserinnerung sollte optional sein - ändere sie "
 "von „erforderlich“ in „optional“."
 
 #. translators: %s: link to terms page
@@ -10748,7 +10744,7 @@ msgstr "Optionale Marketingeinwilligung (DSGVO Art. 6.1.a)."
 
 #: src/Service/CommerceAbilitiesService.php:75
 msgid "Polski - commerce data"
-msgstr "Polski – Handelsdaten"
+msgstr "Polski - Handelsdaten"
 
 #: src/Service/CommerceAbilitiesService.php:76
 msgid ""
@@ -10835,7 +10831,7 @@ msgid ""
 "time, and more."
 msgstr ""
 "Gibt die strukturierte Produktfaktenliste (Label/Wert-Paare) zurück, die der"
-" AI-Feed für dieses Produkt anzeigt – SKU, GTIN, Preis, Kategorien, "
+" AI-Feed für dieses Produkt anzeigt - SKU, GTIN, Preis, Kategorien, "
 "Lieferzeit und mehr."
 
 #: src/Service/CompareService.php:230
@@ -11420,7 +11416,7 @@ msgid ""
 "ty@example.com - ten sam, który podałeś przy zakupie."
 msgstr ""
 "Die E-Mail-Adresse wurde nicht angegeben. Wpisz pełny adres w formacie "
-"ty@example.com – ten sam, który podałeś przy zakupie."
+"ty@example.com - ten sam, który podałeś przy zakupie."
 
 #: src/Service/GuestWithdrawalService.php:83
 msgid ""
@@ -11439,7 +11435,7 @@ msgid ""
 msgstr ""
 "Wenn diese Bestellung vorliegt, haben wir einen Link zum Formular an die "
 "beim Kauf angegebene E-Mail-Adresse gesendet. Überprüfe deinen Posteingang "
-"(und Spam-Ordner) – die Nachricht sollte innerhalb weniger Minuten "
+"(und Spam-Ordner) - die Nachricht sollte innerhalb weniger Minuten "
 "eintreffen."
 
 #: src/Service/GuestWithdrawalService.php:149
@@ -11475,7 +11471,7 @@ msgid ""
 " folder Spam."
 msgstr ""
 "deine Erklärung wurde unter der Nummer %s registriert. Wir haben eine "
-"Bestätigung an die beim Kauf angegebene Adresse gesendet – überprüfe deinen "
+"Bestätigung an die beim Kauf angegebene Adresse gesendet - überprüfe deinen "
 "Posteingang und Spam-Ordner."
 
 #: src/Service/GuestWithdrawalService.php:198
@@ -11487,7 +11483,7 @@ msgstr ""
 #: src/Service/GuestWithdrawalService.php:377
 #, php-format
 msgid "Link do odstąpienia od umowy - zamówienie #%s"
-msgstr "Link zum Vertragsrücktritt – Bestellnummer%s"
+msgstr "Link zum Vertragsrücktritt - Bestellnummer%s"
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:383
@@ -11590,7 +11586,7 @@ msgstr "Meine Abhebungen"
 
 #: src/Service/MyAccountWithdrawalsService.php:87
 msgid "Aby zobaczyć swoje odstąpienia musisz być zalogowany."
-msgstr "Um deine Auszahlungen sehen zu können, musst du angemeldet sein."
+msgstr "Um deine Widerrufe sehen zu können, musst du angemeldet sein."
 
 #: src/Service/MyAccountWithdrawalsService.php:96
 msgid "Nie złożyłeś jeszcze żadnego wniosku o odstąpienie od umowy."
@@ -12013,7 +12009,7 @@ msgid ""
 "Disclaimer: generic starter templates - adapt to your actual data-processing"
 " workflows."
 msgstr ""
-"Haftungsausschluss: Generische Starter-Vorlagen – passe sie an deine "
+"Haftungsausschluss: Generische Starter-Vorlagen - passe sie an deine "
 "tatsächlichen Datenverarbeitungsabläufe an."
 
 #: src/Service/RodoTrainingDocsService.php:65
@@ -12164,7 +12160,7 @@ msgstr "Betriebserinnerungen"
 #: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
 msgstr ""
-"Sende niemals Tabellenkalkulationen mit persönlichen Daten per E-Mail – "
+"Sende niemals Tabellenkalkulationen mit persönlichen Daten per E-Mail - "
 "verwende verschlüsselte Kanäle."
 
 #: src/Service/RodoTrainingDocsService.php:225
@@ -12189,24 +12185,24 @@ msgstr ""
 #: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
 msgstr ""
-"Entdeckung – Zeitstempel, Entdecker und betroffene Systeme aufzeichnen."
+"Entdeckung - Zeitstempel, Entdecker und betroffene Systeme aufzeichnen."
 
 #: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
 msgstr ""
-"Eindämmung – Betroffene Konten/Systeme innerhalb einer Stunde isolieren."
+"Eindämmung - Betroffene Konten/Systeme innerhalb einer Stunde isolieren."
 
 #: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
 msgstr ""
-"Interne Benachrichtigung – Datenschutzbeauftragter und Management innerhalb "
+"Interne Benachrichtigung - Datenschutzbeauftragter und Management innerhalb "
 "von 24 Stunden."
 
 #: src/Service/RodoTrainingDocsService.php:239
 msgid ""
 "Assessment - document data categories, subjects affected, likely impact."
 msgstr ""
-"Bewertung – Dokumentdatenkategorien, betroffene Themen, wahrscheinliche "
+"Bewertung - Dokumentdatenkategorien, betroffene Themen, wahrscheinliche "
 "Auswirkungen."
 
 #: src/Service/RodoTrainingDocsService.php:240
@@ -12214,24 +12210,24 @@ msgid ""
 "UODO notification - required within 72 hours when risk to subjects is not "
 "unlikely."
 msgstr ""
-"UODO-Benachrichtigung – innerhalb von 72 Stunden erforderlich, wenn ein "
+"UODO-Benachrichtigung - innerhalb von 72 Stunden erforderlich, wenn ein "
 "Risiko für die Probanden nicht unwahrscheinlich ist."
 
 #: src/Service/RodoTrainingDocsService.php:241
 msgid "Subject notification - required \"without undue delay\" when risk is high."
 msgstr ""
-"Benachrichtigung des Betroffenen – „unverzüglich“ erforderlich, wenn das "
+"Benachrichtigung des Betroffenen - „unverzüglich“ erforderlich, wenn das "
 "Risiko hoch ist."
 
 #: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
 msgstr ""
-"Behebung – Patchen, Anmeldeinformationen rotieren, Protokolle überprüfen."
+"Behebung - Patchen, Anmeldeinformationen rotieren, Protokolle überprüfen."
 
 #: src/Service/RodoTrainingDocsService.php:243
 msgid "Post-mortem - document lessons learned and update training."
 msgstr ""
-"Post-Mortem – dokumentiere die gewonnenen Erkenntnisse und aktualisiere die "
+"Post-Mortem - dokumentiere die gewonnenen Erkenntnisse und aktualisiere die "
 "Schulung."
 
 #: src/Service/RodoTrainingDocsService.php:246
@@ -12454,7 +12450,7 @@ msgid ""
 "unless justified (e.g. B2B). Enable guest checkout under WooCommerce > "
 "Settings > Accounts."
 msgstr ""
-"Der Gast-Checkout ist deaktiviert UND eine Anmeldung ist erforderlich – "
+"Der Gast-Checkout ist deaktiviert UND eine Anmeldung ist erforderlich - "
 "Kunden sind gezwungen, ein Konto zu erstellen. Die EU-Richtlinie 2023/2673 "
 "betrachtet dies als dunkles Muster, es sei denn, dies ist gerechtfertigt (z."
 " B. B2B). Aktiviere den Gast-Checkout unter WooCommerce > Einstellungen > "
@@ -12591,7 +12587,7 @@ msgid ""
 "Privacy Policy has only %d characters - it may be too short to comply with "
 "GDPR Art. 13."
 msgstr ""
-"Die Datenschutzerklärung besteht nur aus %d Zeichen – sie ist möglicherweise"
+"Die Datenschutzerklärung besteht nur aus %d Zeichen - sie ist möglicherweise"
 " zu kurz, um DSGVO Art. zu entsprechen. 13."
 
 #. translators: %d: character count
@@ -12656,7 +12652,7 @@ msgstr "Text der Schaltfläche „Bestellen“."
 #: src/Service/SiteAuditService.php:578
 #, php-format
 msgid "Button: \"%s\" - contains info about payment obligation."
-msgstr "Schaltfläche: „%s“ – enthält Informationen zur Zahlungsverpflichtung."
+msgstr "Schaltfläche: „%s“ - enthält Informationen zur Zahlungsverpflichtung."
 
 #: src/Service/SiteAuditService.php:589
 msgid ""
@@ -12673,7 +12669,7 @@ msgid ""
 "Button: \"%s\" - may not contain required payment info (e.g. \"Order with "
 "obligation to pay\")."
 msgstr ""
-"Button: „%s“ – darf keine erforderlichen Zahlungsinformationen enthalten (z."
+"Button: „%s“ - darf keine erforderlichen Zahlungsinformationen enthalten (z."
 " B. „Zahlungspflichtig bestellen“)."
 
 #: src/Service/SiteAuditService.php:611
@@ -12685,7 +12681,7 @@ msgid ""
 "Omnibus module is enabled - lowest price from 30 days will be shown on "
 "sales."
 msgstr ""
-"Das Omnibus-Modul ist aktiviert – der niedrigste Preis aus 30 Tagen wird im "
+"Das Omnibus-Modul ist aktiviert - der niedrigste Preis aus 30 Tagen wird im "
 "Angebot angezeigt."
 
 #: src/Service/SiteAuditService.php:624
@@ -12714,13 +12710,13 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:665
 msgid "Withdrawal module is enabled."
-msgstr "Auszahlungsmodul ist aktiviert."
+msgstr "Widerrufsmodul ist aktiviert."
 
 #: src/Service/SiteAuditService.php:672
 msgid ""
 "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
 msgstr ""
-"Das Auszahlungsmodul ist deaktiviert. Verbraucher haben ein 14-tägiges "
+"Das Widerrufsmodul ist deaktiviert. Verbraucher haben ein 14-tägiges "
 "Widerrufsrecht."
 
 #: src/Service/SiteAuditService.php:683
@@ -12731,7 +12727,7 @@ msgstr "GPSR-Modul (Produktsicherheit)"
 msgid ""
 "GPSR module is enabled - manufacturer and importer data can be displayed."
 msgstr ""
-"GPSR-Modul ist aktiviert – Hersteller- und Importeurdaten können angezeigt "
+"GPSR-Modul ist aktiviert - Hersteller- und Importeurdaten können angezeigt "
 "werden."
 
 #: src/Service/SiteAuditService.php:696
@@ -12751,7 +12747,7 @@ msgid ""
 "Verified reviews module is enabled - the shop can mark reviews from actual "
 "buyers."
 msgstr ""
-"Das Modul „Verifizierte Bewertungen“ ist aktiviert – der Shop kann "
+"Das Modul „Verifizierte Bewertungen“ ist aktiviert - der Shop kann "
 "Bewertungen von tatsächlichen Käufern markieren."
 
 #: src/Service/SiteAuditService.php:720
@@ -12764,12 +12760,12 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:731
 msgid "DSA - reporting illegal content"
-msgstr "DSA – Meldung illegaler Inhalte"
+msgstr "DSA - Meldung illegaler Inhalte"
 
 #: src/Service/SiteAuditService.php:737
 msgid "DSA module is enabled - report form and dashboard are available."
 msgstr ""
-"DSA-Modul ist aktiviert – Berichtsformular und Dashboard sind verfügbar."
+"DSA-Modul ist aktiviert - Berichtsformular und Dashboard sind verfügbar."
 
 #: src/Service/SiteAuditService.php:744
 msgid ""
@@ -12788,7 +12784,7 @@ msgid ""
 "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice "
 "integration."
 msgstr ""
-"Das KSEF-ready-Modul ist aktiviert – Bestellungen mit Umsatzsteuer-"
+"Das KSEF-ready-Modul ist aktiviert - Bestellungen mit Umsatzsteuer-"
 "Identifikationsnummer können für die Rechnungsintegration markiert werden."
 
 #: src/Service/SiteAuditService.php:768
@@ -12809,7 +12805,7 @@ msgid ""
 "Anti-greenwashing module is enabled - products can store claims basis and "
 "certificate links."
 msgstr ""
-"Das Anti-Greenwashing-Modul ist aktiviert – Produkte können "
+"Das Anti-Greenwashing-Modul ist aktiviert - Produkte können "
 "Anspruchsgrundlagen und Zertifikatslinks speichern."
 
 #: src/Service/SiteAuditService.php:792
@@ -12918,7 +12914,7 @@ msgid ""
 "SSL is the minimum."
 msgstr ""
 "Die Website verwendet kein HTTPS. Die DSGVO erfordert entsprechende "
-"technische Maßnahmen – SSL ist das Minimum."
+"technische Maßnahmen - SSL ist das Minimum."
 
 #: src/Service/SocialLoginService.php:78
 msgid "Continue with Google"
@@ -13258,7 +13254,7 @@ msgstr "Danke schön. Du wurdest zur Warteliste hinzugefügt."
 
 #: src/Service/WaitlistService.php:49
 msgid "Product back in stock - {product_name}"
-msgstr "Produkt wieder auf Lager – {product_name}"
+msgstr "Produkt wieder auf Lager - {product_name}"
 
 #: src/Service/WaitlistService.php:50
 msgid "Product {product_name} is back in stock."
@@ -13285,7 +13281,7 @@ msgstr "Bitte melde sich an, um die Wunschliste zu nutzen."
 
 #: src/Service/WithdrawalBlocksService.php:33
 msgid "Polski - withdrawal lookup"
-msgstr "Polski – Auszahlungssuche"
+msgstr "Polski - Auszahlungssuche"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
@@ -13295,7 +13291,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:39
 msgid "Polski - Annex I(A) information"
-msgstr "Polski – Informationen zu Anhang I(A)."
+msgstr "Polski - Informationen zu Anhang I(A)."
 
 #: src/Service/WithdrawalBlocksService.php:40
 msgid ""
@@ -13306,7 +13302,7 @@ msgstr ""
 
 #: src/Service/WithdrawalBlocksService.php:45
 msgid "Polski - Annex I(B) form template"
-msgstr "Polski – Formularvorlage Anhang I(B)."
+msgstr "Polski - Formularvorlage Anhang I(B)."
 
 #: src/Service/WithdrawalBlocksService.php:46
 msgid ""
@@ -13358,7 +13354,7 @@ msgstr "Wird nur verwendet, wenn „Sonstige“ ausgewählt ist."
 
 #: src/Service/WithdrawalOrderStatusService.php:117
 msgid "Mark as withdrawal requested"
-msgstr "Als Auszahlung angefordert markieren"
+msgstr "Als Widerruf beantragt markieren"
 
 #: src/Service/WithdrawalOrderStatusService.php:118
 msgid "Mark as partial withdrawal"
@@ -13366,11 +13362,11 @@ msgstr "Als Teilrücknahme markieren"
 
 #: src/Service/WithdrawalOrderStatusService.php:119
 msgid "Mark as withdrawal completed"
-msgstr "Markiere die Auszahlung als abgeschlossen"
+msgstr "Als Widerruf abgeschlossen markieren"
 
 #: src/Service/WithdrawalOrderStatusService.php:166
 msgid "Withdrawal requested"
-msgstr "Auszahlung beantragt"
+msgstr "Widerruf beantragt"
 
 #: src/Service/WithdrawalOrderStatusService.php:171
 msgid "Withdrawal - partial"
@@ -13378,31 +13374,31 @@ msgstr "Rückzug - teilweise"
 
 #: src/Service/WithdrawalOrderStatusService.php:176
 msgid "Withdrawal completed"
-msgstr "Auszahlung abgeschlossen"
+msgstr "Widerruf abgeschlossen"
 
 #. translators: %d = withdrawal request id
 #: src/Service/WithdrawalService.php:344
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed."
-msgstr "[Polski] Auszahlungsantrag #%d eingereicht."
+msgstr "[Polski] Widerrufsantrag #%d eingereicht."
 
 #. translators: 1: declaration id, 2: actor label
 #: src/Service/WithdrawalService.php:383
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d confirmed by %2$s."
-msgstr "[Polski] Auszahlungsanfrage #%1$d bestätigt von %2$s."
+msgstr "[Polski] Widerrufsantrag #%1$d bestätigt von %2$s."
 
 #. translators: %d = withdrawal request id
 #: src/Service/WithdrawalService.php:433
 #, php-format
 msgid "[Polski] Withdrawal request #%d completed."
-msgstr "[Polski] Auszahlungsanfrage #%d abgeschlossen."
+msgstr "[Polski] Widerrufsantrag #%d abgeschlossen."
 
 #. translators: 1: declaration id, 2: actor label
 #: src/Service/WithdrawalService.php:465
 #, php-format
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
-msgstr "[Polski] Auszahlungsantrag #%1$d abgelehnt von %2$s."
+msgstr "[Polski] Widerrufsantrag #%1$d abgelehnt von %2$s."
 
 #. translators: %s: free-text reason (customer-supplied for filing, operator-
 #. supplied for rejection)
@@ -13415,7 +13411,7 @@ msgstr "Grund: %s"
 #: src/Service/WithdrawalService.php:508
 #, php-format
 msgid "[Polski] Withdrawal request #%d filed by customer."
-msgstr "[Polski] Auszahlungsantrag Nr. %d vom Kunden eingereicht."
+msgstr "[Polski] Widerrufsantrag Nr. %d vom Kunden eingereicht."
 
 #: src/Service/WithdrawalService.php:522
 msgid "Items:"
@@ -13445,11 +13441,11 @@ msgstr "Ungültiges Sicherheitstoken. Bitte versuche es erneut."
 
 #: src/Service/WithdrawalService.php:891
 msgid "Your withdrawal request has been accepted."
-msgstr "deine Auszahlungsanfrage wurde angenommen."
+msgstr "dein Widerrufsantrag wurde angenommen."
 
 #: src/Service/WithdrawalService.php:895
 msgid "Failed to submit the withdrawal request."
-msgstr "Die Auszahlungsanfrage konnte nicht gesendet werden."
+msgstr "Der Widerrufsantrag konnte nicht gesendet werden."
 
 #: src/Service/WithdrawalSiteHealthService.php:41
 msgid "Withdrawal: guest lookup page"
@@ -13457,7 +13453,7 @@ msgstr "Rückzug: Gastsuchseite"
 
 #: src/Service/WithdrawalSiteHealthService.php:45
 msgid "Withdrawal: trigger statuses"
-msgstr "Auszahlung: Triggerstatus"
+msgstr "Widerruf: Triggerstatus"
 
 #: src/Service/WithdrawalSiteHealthService.php:49
 msgid "Withdrawal: Annex locale"
@@ -13477,7 +13473,7 @@ msgstr ""
 
 #: src/Service/WithdrawalSiteHealthService.php:77
 msgid "No public withdrawal lookup page configured."
-msgstr "Keine Suchseite für öffentliche Auszahlungen konfiguriert."
+msgstr "Keine Suchseite für öffentliche Widerrufe konfiguriert."
 
 #. translators: %s = settings page URL
 #: src/Service/WithdrawalSiteHealthService.php:80
@@ -13490,10 +13486,10 @@ msgid ""
 "shortcode (or run the setup wizard's \"Publish /odstapienie/ on Finish\" "
 "step)."
 msgstr ""
-"Kunst. Gemäß Art. 11a der Richtlinie 2023/2673 (in Kraft ab 19. Juni 2026) "
-"muss jedes Fernabsatzgeschäft im Ladeninneren über eine funktionierende "
-"Auszahlungsmöglichkeit verfügen, auch für Gäste. Öffne <a href=\"%s\">Polski"
-" › Auszahlungseinstellungen</a> und wähle eine Seite aus, die den Shortcode "
+"Gemäß Art. 11a der Richtlinie 2023/2673 (in Kraft ab 19. Juni 2026) muss "
+"jedes Fernabsatzgeschäft im Shop über eine funktionierende Widerrufsfunktion"
+" verfügen, auch für Gäste. Öffne <a href=\"%s\">Polski › "
+"Widerrufseinstellungen</a> und wähle eine Seite aus, die den Shortcode "
 "[polski_withdrawal_lookup] enthält (oder führe den Schritt „Veröffentlichen "
 "/odstapienie/ bei Fertigstellen“ des Einrichtungsassistenten aus)."
 
@@ -13506,11 +13502,11 @@ msgstr "Triggerstatus konfiguriert."
 #, php-format
 msgid "The 14-day withdrawal clock starts when an order enters: %s."
 msgstr ""
-"Die 14-tägige Auszahlungsfrist beginnt, wenn eine Bestellung eingeht: %s."
+"Die 14-tägige Widerrufsfrist beginnt, wenn eine Bestellung eingeht: %s."
 
 #: src/Service/WithdrawalSiteHealthService.php:111
 msgid "No trigger statuses configured for the withdrawal clock."
-msgstr "Für die Auszahlungsuhr sind keine Triggerstatus konfiguriert."
+msgstr "Für die Widerrufsfrist sind keine Triggerstatus konfiguriert."
 
 #. translators: %s = settings page URL
 #: src/Service/WithdrawalSiteHealthService.php:114
@@ -13520,9 +13516,9 @@ msgid ""
 "no order is eligible. Open <a href=\"%s\">Polski › Withdrawal settings</a> "
 "and tick at least one status (commonly \"Completed\" or \"Delivered\")."
 msgstr ""
-"Ohne einen Auslösestatus startet der 14-tägige Auszahlungs-Countdown nie und"
-" keine Bestellung ist berechtigt. Öffne <a href=\"%s\">Polski › "
-"Auszahlungseinstellungen</a> und kreuze mindestens einen Status an "
+"Ohne einen Auslösestatus startet der 14-tägige Widerrufs-Countdown nie und "
+"keine Bestellung ist berechtigt. Öffne <a href=\"%s\">Polski › "
+"Widerrufseinstellungen</a> und kreuze mindestens einen Status an "
 "(normalerweise „Abgeschlossen“ oder „Geliefert“)."
 
 #: src/Service/WithdrawalSiteHealthService.php:132
@@ -13562,8 +13558,8 @@ msgid ""
 msgstr ""
 "Das Site-Gebietsschema ist „%s“, aber im Lieferumfang des Pro-Plugins ist "
 "keine passende Anhang-I(B)-Übersetzung enthalten. Wähle entweder ein "
-"explizites Gebietsschema in den polnischen Auszahlungseinstellungen (PL, DE,"
-" AT, FR, NL, IT, ES) oder akzeptiere den generischen EN-Fallback."
+"explizites Gebietsschema in den Polski-Widerrufseinstellungen (PL, DE, AT, "
+"FR, NL, IT, ES) oder akzeptiere den generischen EN-Fallback."
 
 #: src/Shortcode/ShortcodeManager.php:143
 #: templates/single-product/gpsr-info.php:22
@@ -13586,7 +13582,7 @@ msgstr "Verfügbare Zahlungsmethoden"
 #: templates/account/withdrawal-confirm.php:26
 #, php-format
 msgid "Withdrawal request for order #%s"
-msgstr "Auszahlungsantrag für Bestellung Nr. %s"
+msgstr "Widerrufsantrag für Bestellung Nr. %s"
 
 #: templates/account/withdrawal-confirm.php:38
 #: templates/account/withdrawal-confirm.php:49
@@ -13602,12 +13598,12 @@ msgstr "Produkte in dieser Reihenfolge"
 #, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
 msgstr ""
-"Bist du sicher, dass du eine Auszahlungsanfrage für die Bestellung Nr. %s "
-"einreichen möchten?"
+"Bist du sicher, dass du einen Widerrufsantrag für die Bestellung Nr. %s "
+"einreichen möchtest?"
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
-msgstr "Bestätige die Auszahlungsanfrage"
+msgstr "Bestätige den Widerrufsantrag"
 
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
@@ -13667,7 +13663,7 @@ msgid ""
 "Twój wniosek o odstąpienie dla zamówienia #{order_number} został "
 "zarejestrowany."
 msgstr ""
-"dein Auszahlungsantrag für die Bestellung Nr. {order_number} wurde "
+"dein Widerrufsantrag für die Bestellung Nr. {order_number} wurde "
 "registriert."
 
 #: templates/emails/plain/withdrawal-confirmation.php:45
@@ -13839,8 +13835,8 @@ msgid ""
 "Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia "
 "{order_date}."
 msgstr ""
-"Du senden eine Auszahlungsanfrage für die Bestellung Nr. {order_number} vom "
-"{order_date}."
+"Du reichst einen Widerrufsantrag für die Bestellung Nr. {order_number} vom "
+"{order_date} ein."
 
 #: templates/forms/withdrawal-form.php:49
 msgid ""
@@ -13873,7 +13869,7 @@ msgstr "Klare Auswahl"
 
 #: templates/forms/withdrawal-form.php:73
 msgid "Pozycje zamówienia dostępne do odstąpienia."
-msgstr "Bestelle Artikel, die zur Auszahlung verfügbar sind."
+msgstr "Bestellpositionen, die für einen Widerruf verfügbar sind."
 
 #: templates/forms/withdrawal-form.php:77
 #: templates/forms/withdrawal-form.php:90
@@ -13926,7 +13922,7 @@ msgstr "Schritt 2. Grund und Bestätigung"
 #: templates/forms/withdrawal-guest.php:130
 msgid "Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia."
 msgstr ""
-"Begründung nicht erforderlich – für den Widerruf ist keine Begründung "
+"Begründung nicht erforderlich - für den Widerruf ist keine Begründung "
 "erforderlich."
 
 #: templates/forms/withdrawal-form.php:178
@@ -13942,7 +13938,7 @@ msgstr "Abbrechen und zur Bestellliste zurückkehren"
 #: templates/forms/withdrawal-guest.php:34
 #, php-format
 msgid "Odstąpienie od umowy - zamówienie #%s"
-msgstr "Rücktritt vom Vertrag – Bestellung #%s"
+msgstr "Rücktritt vom Vertrag - Bestellung #%s"
 
 #. translators: %s = email address
 #: templates/forms/withdrawal-guest.php:44
@@ -13991,7 +13987,7 @@ msgstr "Gehe zum Widerrufsformular"
 
 #: templates/forms/withdrawal-lookup.php:53
 msgid "Odstąpienie od umowy - formularz online"
-msgstr "Rücktritt vom Vertrag – Online-Formular"
+msgstr "Rücktritt vom Vertrag - Online-Formular"
 
 #. translators: 1: merchant name, 2: number of days
 #: templates/forms/withdrawal-lookup.php:60
@@ -14006,7 +14002,7 @@ msgstr ""
 "Bist du Verbraucher und haben beim Verkäufer %1$s gekauft? Du hast das "
 "Recht, innerhalb von %2$d Tagen ab dem Datum, an dem du die Bestellung "
 "erhalten haben, ohne Angabe von Gründen von einem Fernabsatzvertrag "
-"zurückzutreten. Um eine Erklärung abzugeben, musst du sich nicht anmelden – "
+"zurückzutreten. Um eine Erklärung abzugeben, musst du sich nicht anmelden - "
 "gib unten einfach die E-Mail-Adresse ein, die du beim Kauf verwendet haben, "
 "und deine Bestellnummer."
 
@@ -14021,7 +14017,7 @@ msgid ""
 "tylko raz."
 msgstr ""
 "Nach der Überprüfung senden wir einen einmaligen Link an die angegebene "
-"Adresse, der das Auszahlungsformular öffnet. Der Link ist 30 Minuten lang "
+"Adresse, der das Widerrufsformular öffnet. Der Link ist 30 Minuten lang "
 "gültig und kann nur einmal verwendet werden."
 
 #: templates/forms/withdrawal-lookup.php:79
@@ -14116,7 +14112,7 @@ msgid ""
 " zamówieniu."
 msgstr ""
 "Ja. Nach dem Öffnen des Formulars wähle aus, welche Artikel du abheben "
-"möchten. Ab der gewählten Stückzahl kannst du zurücktreten – die restlichen "
+"möchten. Ab der gewählten Stückzahl kannst du zurücktreten - die restlichen "
 "bleiben in der Bestellung."
 
 #: templates/forms/withdrawal-lookup.php:175
@@ -14163,7 +14159,7 @@ msgid ""
 "Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie "
 "ręcznie."
 msgstr ""
-"Habe ein Problem mit dem Formular? Schreibe an %s – wir helfen dir bei der "
+"Habe ein Problem mit dem Formular? Schreibe an %s - wir helfen dir bei der "
 "manuellen Abgabe der Erklärung."
 
 #. translators: %s: merchant / shop name
@@ -14620,7 +14616,7 @@ msgstr ""
 #: blocks/withdrawal-form/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(B) form template"
-msgstr "Polski – Formularvorlage für Anhang I(B)."
+msgstr "Polski - Formularvorlage für Anhang I(B)."
 
 #: blocks/withdrawal-form/block.json
 msgctxt "block description"
@@ -14634,7 +14630,7 @@ msgstr ""
 #: blocks/withdrawal-info/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(A) information"
-msgstr "Polski – Informationen zu Anhang I(A)."
+msgstr "Polski - Informationen zu Anhang I(A)."
 
 #: blocks/withdrawal-info/block.json
 msgctxt "block description"
@@ -14647,7 +14643,7 @@ msgstr ""
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block title"
 msgid "Polski - withdrawal lookup"
-msgstr "Polski – Auszahlungssuche"
+msgstr "Polski - Widerrufssuche"
 
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block description"
