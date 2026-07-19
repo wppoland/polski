@@ -48,6 +48,7 @@ languages/*.po
 languages/translate_po.py
 languages/*.po~
 languages/polski-pro.pot
+languages/polski-pro-*
 index.html
 TODO.md
 *.map
