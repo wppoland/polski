@@ -225,7 +225,8 @@ final class ProductQAService implements HasHooks
             'comment_post_ID' => $productId,
             'comment_content' => $text,
             'comment_type' => self::COMMENT_TYPE_Q,
-            'comment_approved' => 1,
+            // Guests' questions go to the moderation queue; only logged-in users auto-publish.
+            'comment_approved' => is_user_logged_in() ? 1 : 0,
         ];
 
         if (is_user_logged_in()) {
@@ -290,6 +291,12 @@ final class ProductQAService implements HasHooks
         $commentId = absint($_POST['comment_id'] ?? 0);
 
         if ($commentId <= 0) {
+            wp_send_json_error();
+        }
+
+        // Only allow voting on actual Q&A answers, not arbitrary comment IDs.
+        $comment = get_comment($commentId);
+        if (! $comment || $comment->comment_type !== self::COMMENT_TYPE_A) {
             wp_send_json_error();
         }
 
