@@ -15,7 +15,7 @@ import { build } from 'vite';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const ROOT = resolve(import.meta.dirname, '..');
+const ROOT = resolve(import.meta.dirname || new URL('.', import.meta.url).pathname, '..');
 
 const ENTRIES = {
     admin: 'resources/js/admin/index.tsx',

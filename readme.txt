@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.25.3
+Stable tag: 1.25.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -317,6 +317,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.25.4 =
+* Declared compatibility with WooCommerce 10.9.
 
 = 1.25.3 =
 * Security: guest product questions now await moderation instead of auto-publishing, and Q&A voting is restricted to valid answers.
