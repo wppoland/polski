@@ -22,7 +22,7 @@
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",
-        "php-stubs/woocommerce-stubs": "^10.6",
+        "php-stubs/woocommerce-stubs": "^10.9",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.0",
         "squizlabs/php_codesniffer": "^3.10",
