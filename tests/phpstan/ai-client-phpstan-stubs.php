@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * PHPStan-only stubs for the WordPress 7.0+ AI Client API
  * (not Composer-installed; provided by WordPress core / a provider plugin).
- * Loaded via .phpstan.neon bootstrapFiles — never autoloaded in WordPress.
+ * Loaded via .phpstan.neon bootstrapFiles, never autoloaded in WordPress.
  *
  * Minimal API surface used by src/AI/AiClient.php. AiClient wraps every call in
  * try/catch (\Throwable), so any provider that deviates from this surface

@@ -6028,7 +6028,7 @@ msgid "Grouped (default)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1621
-msgid "Name (A–Z)"
+msgid "Name (A, Z)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1622

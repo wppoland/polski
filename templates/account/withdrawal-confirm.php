@@ -44,7 +44,7 @@ $polski_orderId     = $polski_order->get_id();
                         #<?php echo esc_html($polski_orderNumber); ?>
                     </td>
                     <td data-title="<?php esc_attr_e('Date', 'polski'); ?>">
-                        <?php echo $polski_orderDate !== null ? esc_html(wc_format_datetime($polski_orderDate)) : '&mdash;'; ?>
+                        <?php echo $polski_orderDate !== null ? esc_html(wc_format_datetime($polski_orderDate)) : '-'; ?>
                     </td>
                     <td data-title="<?php esc_attr_e('Amount', 'polski'); ?>">
                         <?php echo wp_kses_post($polski_order->get_formatted_order_total()); ?>

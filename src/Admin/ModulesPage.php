@@ -1618,7 +1618,7 @@ final class ModulesPage implements HasHooks
         echo '<span>' . esc_html__('Sort', 'polski') . '</span> ';
         echo '<select class="polski-modules-sort" data-polski-modules-sort>';
         echo '<option value="default">' . esc_html__('Grouped (default)', 'polski') . '</option>';
-        echo '<option value="name">' . esc_html__('Name (A–Z)', 'polski') . '</option>';
+        echo '<option value="name">' . esc_html__('Name (A, Z)', 'polski') . '</option>';
         echo '<option value="enabled">' . esc_html__('Enabled first', 'polski') . '</option>';
         echo '</select>';
         echo '</label>';
@@ -2652,7 +2652,7 @@ final class ModulesPage implements HasHooks
 
         foreach ($plugins as $plugin) {
             $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
             $status = $active
                 ? (string) ($generalSettings['admin_omnibus_plugin_detected_text'] ?? __('detected, data synchronized', 'polski'))
                 : (string) ($generalSettings['admin_omnibus_plugin_missing_text'] ?? __('not installed', 'polski'));
@@ -2792,7 +2792,7 @@ final class ModulesPage implements HasHooks
 
         foreach ($plugins as $plugin) {
             $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
 
             if ($active) {
                 $anyActive = true;

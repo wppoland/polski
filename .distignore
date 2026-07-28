@@ -48,8 +48,26 @@ languages/*.po
 languages/translate_po.py
 languages/*.po~
 languages/polski-pro.pot
+languages/polski-pro-*
 index.html
 TODO.md
 *.map
 wp-cli.phar
 .npmrc
+.wordpress-org
+languages/*.json
+languages/*.l10n.php
+languages/polski-be_BY.*
+languages/polski-cs_CZ.*
+languages/polski-de_DE.*
+languages/polski-lt_LT.*
+languages/polski-sk_SK.*
+languages/polski-uk*
+languages/polski-zh_CN.*
+
+# editor backups (never ship / never a badly_named_files reject)
+*~
+*.bak
+
+# Translation import tooling (GlotPress PO/MO staging) - never ship in the zip
+glotpress-import/

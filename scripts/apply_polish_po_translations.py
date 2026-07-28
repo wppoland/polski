@@ -215,10 +215,10 @@ SINGULAR: dict[str, str] = {
     "Najwyższa": "Najwyższa",
     "Często zadawane pytania": "Często zadawane pytania",
     "Minimum number of characters before search starts. Recommended: 2-3": (
-        "Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2–3"
+        "Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
     ),
     "Maximum number of products shown in dropdown. Recommended: 4-8": (
-        "Maksymalna liczba produktów na liście rozwijanej. Zalecane: 4–8"
+        "Maksymalna liczba produktów na liście rozwijanej. Zalecane: 4-8"
     ),
     "Delay in milliseconds before sending search request. Lower = faster but more server load": (
         "Opóźnienie w milisekundach przed wysłaniem zapytania. Niżej = szybciej, ale większe obciążenie serwera"
@@ -227,10 +227,10 @@ SINGULAR: dict[str, str] = {
         "Ile atrybutów produktów pokazać jako listy rozwijane filtrów"
     ),
     "Number of product columns in grid layout. Recommended: 3-4": (
-        "Liczba kolumn produktów w siatce. Zalecane: 3–4"
+        "Liczba kolumn produktów w siatce. Zalecane: 3-4"
     ),
     "Maximum products that can be compared side-by-side. Recommended: 3-5": (
-        "Maksymalna liczba produktów do porównania obok siebie. Zalecane: 3–5"
+        "Maksymalna liczba produktów do porównania obok siebie. Zalecane: 3-5"
     ),
     'Products published within this many days will show the "New" badge': (
         'Produkty opublikowane w ciągu tylu dni otrzymają odznakę „Nowość”'
@@ -275,15 +275,15 @@ SINGULAR: dict[str, str] = {
     "Social Proof Notifications": "Powiadomienia social proof",
     "Floating purchase notifications showing recent orders (\"Jan from Warszawa just bought...\"). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing.": (
         "Pływające powiadomienia o zakupach z ostatnich zamówień („Jan z Warszawa właśnie kupił…”). "
-        "Zwiększają konwersje o ok. 10–15%. Prywatność, AJAX, konfigurowalna pozycja i czas."
+        "Zwiększają konwersje o ok. 10-15%. Prywatność, AJAX, konfigurowalna pozycja i czas."
     ),
     "Interval between popups (seconds)": "Interwał między oknami (sekundy)",
     "Time between showing consecutive notifications. Recommended: 6-12": (
-        "Czas między kolejnymi powiadomieniami. Zalecane: 6–12"
+        "Czas między kolejnymi powiadomieniami. Zalecane: 6-12"
     ),
     "Display duration (seconds)": "Czas wyświetlania (sekundy)",
     "How long each notification stays visible. Recommended: 4-6": (
-        "Jak długo widoczne jest każde powiadomienie. Zalecane: 4–6"
+        "Jak długo widoczne jest każde powiadomienie. Zalecane: 4-6"
     ),
     "Anonymize customer names": "Anonimizuj imiona klientów",
     "Shows \"J. from Warszawa\" instead of full names. Recommended for GDPR": (
