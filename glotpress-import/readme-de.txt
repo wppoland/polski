@@ -324,14 +324,14 @@ Polski for WooCommerce enthält polnische, deutsche und spanische Übersetzungen
 * Fix: Die standardmäßige polnische Versandkosten-Beschriftung lautet jetzt „plus koszty wysyłki“ (zuvor ein unübersetztes deutsches „zzgl. kosztów wysyłki“).
 
 = 1.24.4 =
-* Neue Blöcke: Produktdatenblöcke für Block-Themes und den Editor – Grundpreis, Lieferzeit, niedrigster Preis (Omnibus), Steuerinformationen, Versandkosten, Hersteller, Sicherheitshinweise, Sicherheitsdokumente, Stromversorgung, Fehlerbeschreibung, Nährwerte, Allergene, Zutaten, Nutri-Score, Lebensmittelinformationen und Produktsicherheitsinformationen (GPSR) – alle in der Kategorie „Polski“. Jeder zeigt die passenden Produktdaten an und zeigt nichts außerhalb eines Produktkontexts. Dadurch zieht der Blockeditor mit den Polski-Widgets für Elementor gleich.
+* Neue Blöcke: Produktdatenblöcke für Block-Themes und den Editor, Grundpreis, Lieferzeit, niedrigster Preis (Omnibus), Steuerinformationen, Versandkosten, Hersteller, Sicherheitshinweise, Sicherheitsdokumente, Stromversorgung, Fehlerbeschreibung, Nährwerte, Allergene, Zutaten, Nutri-Score, Lebensmittelinformationen und Produktsicherheitsinformationen (GPSR), alle in der Kategorie „Polski“. Jeder zeigt die passenden Produktdaten an und zeigt nichts außerhalb eines Produktkontexts. Dadurch zieht der Blockeditor mit den Polski-Widgets für Elementor gleich.
 
 = 1.24.3 =
 * Neue Blöcke: DSA-Meldeformular, Informationen zur Streitbeilegung (ODR), Informationen zur Mehrwertsteuerbefreiung für Kleinunternehmer und verfügbare Zahlungsmethoden sind jetzt als Blöcke (in der Kategorie „Polski“) verfügbar, sodass sie auf jeder Seite platziert werden können, ohne sich einen Shortcode merken zu müssen. Jeder zeigt nichts an, bis die entsprechende Funktion konfiguriert ist.
 
 = 1.24.2 =
 * Neu: Alle Polski-Blöcke werden jetzt im Blockeditor unter einer separaten Kategorie „Polski“ gruppiert, und die Blockmetadaten werden aus block.json-Dateien registriert, sodass die Blöcke korrekt sichtbar und leichter zu finden sind.
-* Fix: Storefront-Blöcke – AJAX-Suche, AJAX-Filter und der Produkt-Slider – wurden auf installierten Seiten nicht registriert. Sie registrieren sich jetzt korrekt und werden im Editor angezeigt.
+* Fix: Storefront-Blöcke, AJAX-Suche, AJAX-Filter und der Produkt-Slider, wurden auf installierten Seiten nicht registriert. Sie registrieren sich jetzt korrekt und werden im Editor angezeigt.
 
 = 1.24.1 =
 * Fix: Die Galerie und die Zoom-Lightbox konnten als dunkle Überlagerung auf dem Bildschirm bleiben, wenn das Theme einen eigenen Anzeigewert erzwang. Der geschlossene Zustand ist jetzt immer ausgeblendet.

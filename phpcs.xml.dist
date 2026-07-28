@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Polski for WooCommerce">
-    <description>WordPress Coding Standards — output escaping, nonces, redirects, and SQL placeholder safety</description>
+    <description>WordPress Coding Standards, output escaping, nonces, redirects, and SQL placeholder safety</description>
 
     <file>polski.php</file>
     <file>src</file>

@@ -21,7 +21,7 @@ parameters:
         # guards each declaration with class_exists so it only defines them when missing
         # (CI/stubs-only) and stays inert when a local vendor has full WooCommerce.
         - tests/phpstan/woocommerce-store-api-stubs.php
-    # Don't fail if a global ignoreErrors pattern no longer matches anything —
+    # Don't fail if a global ignoreErrors pattern no longer matches anything, 
     # the per-file baseline below already captures every legacy error precisely.
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
