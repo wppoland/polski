@@ -224,7 +224,7 @@ final class PageCompliancePage implements HasHooks
         );
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from literal markup + esc_html__.
         printf('<td>%s</td>', $statusLabel);
-        printf('<td>%s</td>', $result->passed ? '&mdash;' : esc_html($result->hint));
+        printf('<td>%s</td>', $result->passed ? '-' : esc_html($result->hint));
         echo '</tr>';
     }
 

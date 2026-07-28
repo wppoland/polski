@@ -49,7 +49,7 @@ final class Migration_2_3_0 implements Migration
                 continue;
             }
 
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- ALTER TABLE; identifiers from whitelisted map above.
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- ALTER TABLE on custom table; identifiers from whitelisted map and $wpdb->prefix.
             $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `{$column}` {$definition}");
         }
     }

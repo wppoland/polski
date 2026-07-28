@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.24.7
+Stable tag: 1.25.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,11 +20,11 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/polski/docs/
-* **Plugin page** - https://plogins.com/polski/
-* **Source code** - https://github.com/wppoland/polski
-* **Bug reports and feature requests** - https://github.com/wppoland/polski/issues
-* **Discussions and questions** - https://github.com/wppoland/polski/discussions
+* **Documentation** - [plogins.com/polski/docs/](https://plogins.com/polski/docs/)
+* **Plugin page** - [plogins.com/polski/](https://plogins.com/polski/)
+* **Source code** - [github.com/wppoland/polski](https://github.com/wppoland/polski)
+* **Bug reports and feature requests** - [github.com/wppoland/polski/issues](https://github.com/wppoland/polski/issues)
+* **Discussions and questions** - [github.com/wppoland/polski/discussions](https://github.com/wppoland/polski/discussions)
 
 = Why Polski for WooCommerce? =
 
@@ -47,6 +47,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
+* **AI transparency (AI Act art. 50)** - an option (on by default) to disclose AI-generated content on the storefront, and a clear "classified by AI" marker on return reasons processed by the optional AI classifier.
 
 = Checkout, consents and returns =
 
@@ -92,6 +93,34 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Database migrations** - versioned and safe updates of data structures.
 * **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
 * **Audit scope** - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents.
+
+= You may also like these plugins =
+
+More free WooCommerce plugins from WPPoland:
+
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+
+Browse the full catalogue at https://plogins.com/ .
+
+== Polski PRO ==
+
+Polski for WooCommerce covers the essential Polish-market compliance for free. **Polski PRO** is the full store suite:
+
+* **Invoices and KSeF** - VAT invoices, corrections and receipts with PDF, plus e-invoicing to KSeF
+* **Shipping integrations** - InPost, DPD, DHL and Poczta Polska: labels, tracking and pickup points
+* **Order fulfilment** - Packed, Shipped and Delivered statuses, a tracking field and customer emails
+* **Subscriptions** - recurring payments with renewals and one-click cancellation
+* **Gift cards** - sell cards, generate codes and redeem balances in the cart
+* **Affiliate program** - referral links, commission tracking and an affiliate dashboard
+* **Multi-step checkout** - split checkout into address, delivery, payment and summary
+* **Pre-orders, bundles and add-ons** - sell before availability and bundle products
+* **Catalog mode and RFQ** - hide prices and collect quote requests
+
+Everything in the free edition stays free and open. Polski PRO starts at 69 EUR per year (PLN shown at checkout).
+
+Compare editions and pricing: [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
 
 == Installation ==
 
@@ -283,7 +312,45 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 7. AJAX search and product filters in the shop.
 8. Wishlist, comparison and quick view on the product list.
 
+== Translations ==
+
+Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
+
 == Changelog ==
+
+= 1.25.4 =
+* Declared compatibility with WooCommerce 10.9.
+
+= 1.25.3 =
+* Security: guest product questions now await moderation instead of auto-publishing, and Q&A voting is restricted to valid answers.
+
+= 1.25.2 =
+* Translation quality pass: corrected Polish, German and Spanish (product names kept in English, legal withdrawal terminology, WooCommerce glossary and grammar fixes).
+
+= 1.25.1 =
+* Documentation: readme links are now labelled links.
+
+= 1.25.0 =
+* Added AI transparency support for the AI Act (art. 50): AI-classified withdrawal reasons are now labelled as such, and a new "Label AI-generated content" option (on by default) discloses product copy generated by the Pro AI description generator on the storefront.
+
+= 1.24.12 =
+* Fixed low-contrast headings on the admin settings screen under an OS dark-mode preference.
+
+= 1.24.11 =
+* Added a Free vs PRO overview to the readme.
+
+= 1.24.10 =
+* Added bundled Polish, German and Spanish translations for the plugin interface.
+
+= 1.24.9 =
+* Added a dashboard overview of PRO features (polski PRO).
+
+= 1.24.8 =
+* Accessibility: the social-proof toast is now keyboard-dismissable, respects reduced motion, and meets AA contrast.
+* Admin: a Polish flag is shown on the Polski row in the plugins list.
+* Added a WordPress Playground blueprint so the plugin can be tried via the wp.org Live Preview.
+* Translations: only the Polish translation is bundled; other locales come from the WordPress.org language packs.
+* Housekeeping: Plugin Check code annotations; release package no longer bundles dev tools.
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.

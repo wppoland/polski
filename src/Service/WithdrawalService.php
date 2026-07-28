@@ -820,7 +820,8 @@ final class WithdrawalService implements Bootable, HasHooks
 
         $selection = [];
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by caller.
-        foreach ((array) wp_unslash($_POST['polski_items']) as $itemId => $qty) {
+        $rawItems = array_map('sanitize_text_field', (array) wp_unslash($_POST['polski_items']));
+        foreach ($rawItems as $itemId => $qty) {
             $itemId = (int) $itemId;
             $qty = is_numeric($qty) ? (float) $qty : 0.0;
 

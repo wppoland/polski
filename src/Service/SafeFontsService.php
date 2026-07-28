@@ -173,6 +173,7 @@ final class SafeFontsService implements HasHooks
 
         // A disabled stylesheet link does not fetch; the controller flips it on.
         $replacement = sprintf(
+            // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet -- rewrites an already-enqueued style_loader_tag into an inert disabled link, re-enabled by JS after consent; cannot be re-enqueued.
             '<link rel="stylesheet" href="about:blank" data-polski-safefont="%1$s" data-polski-consent="%2$s" media="print" disabled>',
             esc_url($href),
             esc_attr($this->consentCategory()),

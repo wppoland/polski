@@ -318,7 +318,7 @@ class WithdrawalCommand
             ]);
         }
 
-        fclose($out);
+        fclose($out); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- streaming CSV to a CLI output stream, WP_Filesystem does not apply
     }
 
     /**
