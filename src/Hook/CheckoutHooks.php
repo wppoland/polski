@@ -40,7 +40,7 @@ final class CheckoutHooks implements Bootable, HasHooks
             // Modern WooCommerce: render + enforce the checkout legal checkboxes
             // via the Additional Checkout Fields API, which works on BOTH classic
             // and the block checkout (WC 8.3+ default) with no merchant placement.
-            // Register at init priority 21 — after CheckboxService::initCheckboxes
+            // Register at init priority 21, after CheckboxService::initCheckboxes
             // (init, 20) has populated the checkbox definitions, and still before
             // any checkout request reads the additional-fields registry. Consent
             // is logged from order meta for both classic and block flows.

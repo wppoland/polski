@@ -34,4 +34,4 @@ echo "==> 4/4  WordPress Plugin Check"
 bash scripts/plugin-check.sh
 
 echo ""
-echo "✅ PREFLIGHT PASSED — safe to release to wp.org."
+echo "✅ PREFLIGHT PASSED, safe to release to wp.org."

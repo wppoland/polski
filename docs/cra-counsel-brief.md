@@ -1,9 +1,9 @@
-# CRA Readiness — Counsel Hand-off Brief
+# CRA Readiness, Counsel Hand-off Brief
 
 **Product:** Polski for WooCommerce (free) and Polski PRO (commercial add-on)
 **Maker:** WPPoland
 **Prepared for:** external legal review
-**Status:** internal working document — not published, not distributed in the plugin
+**Status:** internal working document, not published, not distributed in the plugin
 
 ---
 
@@ -14,8 +14,8 @@ plugin's position under **Regulation (EU) 2024/2847 (Cyber Resilience Act, "CRA"
 
 It describes what the software does and how it is built and distributed. **It is not
 a statement of legal compliance**, and it does not assert that the CRA applies, or
-does not apply, to this product. Those determinations — applicability, manufacturer
-status, conformity-assessment route, reporting obligations — are for counsel to make.
+does not apply, to this product. Those determinations, applicability, manufacturer
+status, conformity-assessment route, reporting obligations, are for counsel to make.
 Section 6 lists the open questions we are asking counsel to decide.
 
 Where this brief cites a practice, the supporting code or document is named so it can
@@ -39,7 +39,7 @@ WordPress.org repository. The PRO edition is a paid, commercially-distributed ad
 This free/commercial split is material to the CRA's free-and-open-source-software
 treatment (see 6.2).
 
-The product is a **WordPress/WooCommerce plugin** — a software component that runs
+The product is a **WordPress/WooCommerce plugin**, a software component that runs
 inside a host CMS on the user's own server. It is not a standalone device and ships
 no hardware.
 
@@ -63,7 +63,7 @@ The following are **already in place**. They are presented as evidence of curren
 engineering practice, mapped to the structure of CRA Annex I, not as a conformity
 claim.
 
-### 3.1 Annex I, Part I — security properties of the product
+### 3.1 Annex I, Part I, security properties of the product
 
 | Practice | Evidence |
 |---|---|
@@ -74,7 +74,7 @@ claim.
 | Clean removal of data on uninstall (no orphaned data) | `uninstall.php` (drops plugin tables, options, post/order meta, taxonomy terms) |
 | Versioned, reversible schema changes | `src/Migrator.php` |
 
-### 3.2 Annex I, Part II — vulnerability handling
+### 3.2 Annex I, Part II, vulnerability handling
 
 | Requirement (paraphrased) | Practice | Evidence |
 |---|---|---|
@@ -100,9 +100,9 @@ cadence, so that an in-scope manufacturer would have the tooling to track and me
 deadlines. It does **not** auto-report to any authority; it is an internal record.
 
 - Admin screen: Reports & Tools > CRA incidents (`src/Admin/CRAIncidentsPage.php`).
-- Domain model: `src/CRA/` — `IncidentService`, `Incident`, repository, and enums.
+- Domain model: `src/CRA/`, `IncidentService`, `Incident`, repository, and enums.
 - Incident kinds (`IncidentKind`): **actively-exploited vulnerability**, **security
-  incident**, **near miss** — mapping to the Article 14(1)/(2) categories.
+  incident**, **near miss**, mapping to the Article 14(1)/(2) categories.
 - Severity (`Severity`): critical / high / medium / low.
 - Status lifecycle (`IncidentStatus`): open -> notified -> under investigation ->
   resolved / false-positive.
@@ -141,7 +141,7 @@ any of them in this document.
    within the CRA, given it runs inside a host CMS on the user's own server?
 2. **Free / open-source treatment.** Does the CRA's treatment of free and open-source
    software exempt the **free** GPL edition (published at no charge), and does the
-   **PRO** paid edition change that analysis — and if so, only for PRO?
+   **PRO** paid edition change that analysis, and if so, only for PRO?
 3. **Manufacturer determination.** For each edition, is WPPoland a CRA "manufacturer",
    and what is the effect of Freemius acting as merchant of record for PRO?
 4. **Classification.** If in scope, is the product default-class or does any function

@@ -7077,7 +7077,7 @@ msgid "Grouped (default)"
 msgstr "Pogrupowane (domyślnie)"
 
 #: src/Admin/ModulesPage.php:1621
-msgid "Name (A–Z)"
+msgid "Name (A, Z)"
 msgstr "Nazwa (A-Z)"
 
 #: src/Admin/ModulesPage.php:1622

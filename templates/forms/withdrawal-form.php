@@ -111,7 +111,7 @@ $polski_intro_text = str_replace(
                             </td>
                             <td data-label="<?php esc_attr_e('Liczba sztuk do zwrotu', 'polski'); ?>">
                                 <?php if ($polski_is_exempt) : ?>
-                                    <span aria-hidden="true" style="color:#94a3b8;">&mdash;</span>
+                                    <span aria-hidden="true" style="color:#94a3b8;">, </span>
                                     <span class="screen-reader-text" style="position:absolute;left:-9999px;">
                                         <?php esc_html_e('Ta pozycja jest wyłączona ze zwrotu i nie może być wybrana.', 'polski'); ?>
                                     </span>

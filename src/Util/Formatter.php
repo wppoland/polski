@@ -20,7 +20,7 @@ final class Formatter
     /**
      * Format a VAT rate for the {rate} placeholder (e.g., "23"). The surrounding
      * template (e.g. "w tym {rate}% VAT") supplies the "%" sign, so this MUST NOT
-     * append one — otherwise the notice renders a doubled "23%%".
+     * append one, otherwise the notice renders a doubled "23%%".
      */
     public static function vatRate(float $rate): string
     {

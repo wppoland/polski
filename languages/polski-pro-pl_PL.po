@@ -5224,7 +5224,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1238
 msgid "PRO - Marketing"
-msgstr "PRO – Marketing"
+msgstr "PRO, Marketing"
 
 #: src/Admin/ModulesPage.php:1247
 msgid "Pre-Orders"

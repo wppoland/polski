@@ -1,5 +1,5 @@
 /**
- * Polski storefront UI tokens — modal, drawer, dropdown surfaces.
+ * Polski storefront UI tokens, modal, drawer, dropdown surfaces.
  * Imported by module stylesheets; scoped to :root so themes can override.
  */
 :root {
@@ -92,7 +92,7 @@
     }
 }
 
-/* Shared :focus-visible rings — Polski interactive storefront UI */
+/* Shared :focus-visible rings, Polski interactive storefront UI */
 .polski-ajax-search__input:focus-visible,
 .polski-ajax-search__submit:focus-visible,
 .polski-ajax-search__item:focus-visible,
