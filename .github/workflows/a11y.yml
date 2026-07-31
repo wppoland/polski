@@ -49,6 +49,14 @@ jobs:
             - name: Install axe + Lighthouse CI (devDeps)
               run: npm install --no-save @axe-core/playwright @lhci/cli
 
+            - name: Install PHP dependencies
+              # polski boots against wppoland/storefront-kit, which lives in
+              # vendor/. The autoloader's fallback covers the Polski namespace
+              # only, so without this step WordPress fatals on the first kit
+              # interface and every request returns 500, which is what these two
+              # jobs had been timing out on.
+              run: composer install --no-interaction --prefer-dist --no-progress
+
             - name: Prepare wp-env (WooCommerce + Polski only)
               run: |
                   rm -f .wp-env.override.json
@@ -134,6 +142,14 @@ jobs:
 
             - name: Install Playwright browsers
               run: npx playwright install --with-deps chromium
+
+            - name: Install PHP dependencies
+              # polski boots against wppoland/storefront-kit, which lives in
+              # vendor/. The autoloader's fallback covers the Polski namespace
+              # only, so without this step WordPress fatals on the first kit
+              # interface and every request returns 500, which is what these two
+              # jobs had been timing out on.
+              run: composer install --no-interaction --prefer-dist --no-progress
 
             - name: Prepare wp-env (WooCommerce + Polski only)
               run: |
