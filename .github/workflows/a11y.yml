@@ -65,8 +65,26 @@ jobs:
             - name: Start wp-env
               run: |
                   npm run env:start
-                  # wp-env exposes the test site on :8888 by default; wait until ready.
-                  timeout 90 bash -c 'until curl -sf http://localhost:8888/wp-login.php > /dev/null; do sleep 2; done'
+                  # wp-env prints "Done" before WordPress has finished installing, so
+                  # wait for the login screen to actually answer. Any HTTP response
+                  # counts: a redirect to the installer means the container is up and
+                  # about to be ready, while curl -sf treated 5xx during boot as a
+                  # hard failure. The old 90s budget was set when wp-env start took
+                  # about 40s on a runner; it now takes ~87s on its own, so the wait
+                  # had no room left and this job had been failing on main since
+                  # 29 July with no code change behind it.
+                  ready=0
+                  for _ in $(seq 1 90); do
+                    code="$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8888/wp-login.php || true)"
+                    case "$code" in 200|301|302) ready=1; break;; esac
+                    sleep 2
+                  done
+                  if [ "$ready" != "1" ]; then
+                    echo "wp-login.php never answered; last status: ${code:-none}"
+                    docker ps
+                    docker logs --tail 50 "$(docker ps --filter name=wordpress --format '{{.Names}}' | head -1)" || true
+                    exit 1
+                  fi
 
             - name: Seed minimum fixtures
               run: |
@@ -133,7 +151,26 @@ jobs:
             - name: Start wp-env
               run: |
                   npm run env:start
-                  timeout 90 bash -c 'until curl -sf http://localhost:8888/wp-login.php > /dev/null; do sleep 2; done'
+                  # wp-env prints "Done" before WordPress has finished installing, so
+                  # wait for the login screen to actually answer. Any HTTP response
+                  # counts: a redirect to the installer means the container is up and
+                  # about to be ready, while curl -sf treated 5xx during boot as a
+                  # hard failure. The old 90s budget was set when wp-env start took
+                  # about 40s on a runner; it now takes ~87s on its own, so the wait
+                  # had no room left and this job had been failing on main since
+                  # 29 July with no code change behind it.
+                  ready=0
+                  for _ in $(seq 1 90); do
+                    code="$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8888/wp-login.php || true)"
+                    case "$code" in 200|301|302) ready=1; break;; esac
+                    sleep 2
+                  done
+                  if [ "$ready" != "1" ]; then
+                    echo "wp-login.php never answered; last status: ${code:-none}"
+                    docker ps
+                    docker logs --tail 50 "$(docker ps --filter name=wordpress --format '{{.Names}}' | head -1)" || true
+                    exit 1
+                  fi
 
             - name: Run keyboard navigation tests
               run: npx playwright test withdrawal-guest-flow --project=chromium --reporter=line
