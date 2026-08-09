@@ -18,6 +18,16 @@ final class LegalPageService
      */
     public function createDefaultPages(): void
     {
+        // The single write choke point, so guarding here covers the setup
+        // wizard and every other caller. Deliberately NOT guarding the read
+        // methods: getPageId, getPageUrl, getPageContent and
+        // getConfigurationStatus feed llms.txt, the page compliance report, the
+        // abilities API and the email attachments, all of which must keep
+        // working for pages a merchant already has.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('legal_pages')) {
+            return;
+        }
+
         foreach (LegalPageType::cases() as $type) {
             $this->ensurePageExists($type);
         }

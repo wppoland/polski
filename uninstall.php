@@ -10,6 +10,19 @@ declare(strict_types=1);
 
 defined('WP_UNINSTALL_PLUGIN') || exit;
 
+// The plugin_data module governs whether uninstall may delete anything. There
+// is no autoloader in this context, so read the option directly.
+// array_key_exists, not isset or empty: a stored false is a real answer and
+// must not be read as "not configured", or the guard inverts and the delete
+// setting silently stops being honoured on every store.
+$polski_modules = get_option('polski_modules', []);
+
+if (is_array($polski_modules)
+    && array_key_exists('plugin_data', $polski_modules)
+    && ! $polski_modules['plugin_data']) {
+    return;
+}
+
 global $wpdb;
 
 $polski_general_settings = get_option('polski_general', []);

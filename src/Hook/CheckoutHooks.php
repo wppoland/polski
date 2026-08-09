@@ -33,8 +33,12 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
-        // Override order button text.
-        add_filter('woocommerce_order_button_text', [$this, 'filterOrderButtonText']);
+        // Override order button text. Guarded on its own module rather than by
+        // an early return, because this method also wires legal_checkboxes and
+        // consent logging, which are separate modules with their own toggles.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('checkout_button')) {
+            add_filter('woocommerce_order_button_text', [$this, 'filterOrderButtonText']);
+        }
 
         if (function_exists('woocommerce_register_additional_checkout_field')) {
             // Modern WooCommerce: render + enforce the checkout legal checkboxes
