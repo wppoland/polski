@@ -47,6 +47,15 @@ final class EmailService implements HasHooks
             return;
         }
 
+        // Guarded here rather than in registerHooks, which also registers four
+        // WC_Email classes belonging to the withdrawal and double opt-in
+        // modules. Note that switching this module off removes legally required
+        // documents from customer emails; that is the merchant's call to make,
+        // but it should be their call and not something the toggle ignores.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('email_attachments')) {
+            return;
+        }
+
         // Only attach to specific email types.
         $attachTo = [
             'customer_processing_order',
