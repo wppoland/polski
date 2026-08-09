@@ -299,6 +299,37 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
+        // --- Consumer information Section (Directive 2024/825) ---
+        echo '<div class="options_group">';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
+
+        woocommerce_wp_text_input([
+            'id' => '_polski_durability_guarantee_months',
+            'label' => __('Guarantee of durability (months)', 'polski'),
+            'description' => __('Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings.', 'polski'),
+            'desc_tip' => true,
+            'type' => 'number',
+            'custom_attributes' => ['min' => '0', 'step' => '1'],
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_polski_update_period_months',
+            'label' => __('Free software updates (months)', 'polski'),
+            'description' => __('For goods with digital elements: how long free updates are supplied.', 'polski'),
+            'desc_tip' => true,
+            'type' => 'number',
+            'custom_attributes' => ['min' => '0', 'step' => '1'],
+        ]);
+
+        woocommerce_wp_textarea_input([
+            'id' => '_polski_repair_info',
+            'label' => __('Repair information', 'polski'),
+            'description' => __('Repairability score where one is established, otherwise spare part availability and repair contact.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        echo '</div>';
+
         // --- Anti-greenwashing Section ---
         echo '<div class="options_group">';
         echo '<h4 style="padding-left:12px;">' . esc_html__('Environmental claims (Anti-greenwashing)', 'polski') . '</h4>';
@@ -364,6 +395,9 @@ final class ProductMetaBox implements HasHooks
             '_polski_gpsr_product_identifier' => 'string',
             '_polski_gpsr_safety_warnings' => 'textarea',
             '_polski_gpsr_instructions' => 'textarea',
+            '_polski_durability_guarantee_months' => 'int',
+            '_polski_update_period_months' => 'int',
+            '_polski_repair_info' => 'textarea',
             '_polski_green_claim_basis' => 'textarea',
             '_polski_green_claim_cert_url' => 'url',
             '_polski_green_claim_expiry' => 'string',
@@ -378,6 +412,9 @@ final class ProductMetaBox implements HasHooks
                 $rawValue = sanitize_text_field((string) wp_unslash($_POST[$key]));
                 $sanitized = match ($type) {
                     'float' => (string) (float) $rawValue,
+                    // Months are never negative; a pasted "-6" would otherwise
+                    // render as a negative guarantee period on the storefront.
+                    'int' => (string) max(0, (int) $rawValue),
                     'textarea' => sanitize_textarea_field($rawValue),
                     'url' => esc_url_raw($rawValue),
                     'string' => $rawValue,
