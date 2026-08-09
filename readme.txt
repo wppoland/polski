@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.28.0
+Stable tag: 1.29.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -317,6 +317,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.29.0 =
+* **The Food module now works.** It never did. The service checked a setting that the plugin seeds as off and never writes, so the food block on the product page was invisible on every shop no matter what the Food module toggle said. It now follows the toggle, which is the switch you can actually reach. Enter ingredients, allergens, nutrition, Nutri-Score or alcohol content, switch the module on, and they appear.
+* The other half of the same bug: the food shortcodes and the Elementor food widgets ignored both switches and rendered regardless. They now follow the module too. So that nothing disappears from a shop relying on them, this update switches the Food module on automatically wherever food data already exists: any product with ingredients, nutrition, Nutri-Score, alcohol content, origin or net quantity filled in, or any product tagged with an allergen.
+* Double opt-in now follows its module toggle as well as its own setting; previously the toggle did nothing. Shops that already had double opt-in switched on keep it, because the module is enabled for them automatically, so no account waiting for verification suddenly becomes able to log in.
+* Environmental claim fields in the product editor now follow the Anti-greenwashing module. When the module is off the plugin now leaves stored claims alone instead of clearing them the next time you save the product. Shops with claims already entered get the module switched on automatically.
 
 = 1.28.0 =
 * Six module toggles now do what they say. An audit of all 91 modules found ten with no enabled-check anywhere in the code, meaning the switch was decorative and the feature ran regardless. Fixed in this release: Checkout button, Consent logging, Legal pages, Email attachments, Plugin data and the store audit's environmental-claims check.
