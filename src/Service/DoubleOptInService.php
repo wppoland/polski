@@ -27,7 +27,15 @@ final class DoubleOptInService implements Bootable, HasHooks
     {
         $settings = get_option('polski_doi', []);
         $this->settings = is_array($settings) ? $settings : [];
-        $this->enabled = (bool) ($this->settings['enabled'] ?? false);
+        // Both switches have to agree. Guarding on the feature setting alone
+        // left the Modules toggle decorative, which is the family-wide bug this
+        // release clears up. Unlike the food module, this setting really is
+        // written by the admin screen, so it stays in the condition rather than
+        // being replaced. Migration_2_7_0 switches the module on wherever the
+        // setting is already true, so no store suddenly starts letting
+        // unverified accounts log in.
+        $this->enabled = \Polski\Admin\ModulesPage::isModuleEnabled('double_opt_in')
+            && (bool) ($this->settings['enabled'] ?? false);
         $this->cleanupDays = (int) ($this->settings['cleanup_days'] ?? 7);
     }
 

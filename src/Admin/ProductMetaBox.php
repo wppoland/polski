@@ -331,35 +331,56 @@ final class ProductMetaBox implements HasHooks
         echo '</div>';
 
         // --- Anti-greenwashing Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Environmental claims (Anti-greenwashing)', 'polski') . '</h4>';
+        // Guarded together with the matching skip in saveProductMeta. Hiding
+        // the fields without that skip would blank the stored claims on the
+        // next product save, because the save loop treats an absent POST key as
+        // an empty value.
+        if (ModulesPage::isModuleEnabled('green_claims')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Environmental claims (Anti-greenwashing)', 'polski') . '</h4>';
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_green_claim_basis',
-            'label' => __('Environmental claim basis', 'polski'),
-            'description' => __('Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive).', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_green_claim_basis',
+                'label' => __('Environmental claim basis', 'polski'),
+                'description' => __('Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive).', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_green_claim_cert_url',
-            'label' => __('Certificate link', 'polski'),
-            'description' => __('URL to the official certificate supporting the environmental claim.', 'polski'),
-            'desc_tip' => true,
-            'type' => 'url',
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_green_claim_cert_url',
+                'label' => __('Certificate link', 'polski'),
+                'description' => __('URL to the official certificate supporting the environmental claim.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'url',
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_green_claim_expiry',
-            'label' => __('Certificate expiry date (YYYY-MM-DD)', 'polski'),
-            'description' => __('Environmental certificate expiry date in YYYY-MM-DD format.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_green_claim_expiry',
+                'label' => __('Certificate expiry date (YYYY-MM-DD)', 'polski'),
+                'description' => __('Environmental certificate expiry date in YYYY-MM-DD format.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         echo '</div>';
     }
+
+    /**
+     * Meta keys whose input only renders when their module is on.
+     *
+     * The save loop below reads an absent POST key as an empty value, which is
+     * right for a checkbox the user unticked and wrong for a field that was
+     * never on the page. These keys are skipped instead of blanked.
+     *
+     * @var array<string, string>
+     */
+    private const MODULE_GATED_FIELDS = [
+        '_polski_green_claim_basis' => 'green_claims',
+        '_polski_green_claim_cert_url' => 'green_claims',
+        '_polski_green_claim_expiry' => 'green_claims',
+    ];
 
     /**
      * Save Polski product meta fields.
@@ -404,6 +425,14 @@ final class ProductMetaBox implements HasHooks
         ];
 
         foreach ($fields as $key => $type) {
+            // A field whose module is off was never rendered, so there is no
+            // POST value and no user intent. Leave the stored value alone
+            // rather than reading the absence as "cleared".
+            if (isset(self::MODULE_GATED_FIELDS[$key])
+                && ! ModulesPage::isModuleEnabled(self::MODULE_GATED_FIELDS[$key])) {
+                continue;
+            }
+
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce/capability before this hook fires.
             if (! isset($_POST[$key])) {
                 $sanitized = $type === 'checkbox' ? 'no' : '';

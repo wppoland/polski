@@ -7,7 +7,9 @@ defined('ABSPATH') || exit;
 /**
  * Food product module: nutrients, allergens, ingredients, Nutri-Score, etc.
  *
- * This module can be enabled/disabled via polski_food settings.
+ * On/off is the food_module toggle on the Modules screen. The polski_food
+ * option still holds the per-field show_* switches and the labels, but its
+ * 'enabled' key is dead: nothing writes it and isEnabled() no longer reads it.
  */
 final class FoodService
 {
@@ -21,9 +23,19 @@ final class FoodService
         return is_array($settings) ? $settings : [];
     }
 
+    /**
+     * Reads the module, not polski_food['enabled'].
+     *
+     * That key is seeded false by config/defaults.php and no code in the plugin
+     * ever writes it, so the product page food block was invisible on every
+     * shop regardless of the Food module toggle, while the shortcodes and the
+     * Elementor widgets called the render methods directly and ignored both.
+     * The module is the switch a merchant can actually reach, so it decides.
+     * Migration_2_7_0 turns it on wherever food data already exists.
+     */
     public function isEnabled(): bool
     {
-        return (bool) ($this->getSettings()['enabled'] ?? false);
+        return \Polski\Admin\ModulesPage::isModuleEnabled('food_module');
     }
 
     /**
@@ -39,6 +51,12 @@ final class FoodService
      */
     public function getIngredientsHtml(\WC_Product $product): string
     {
+        // Shortcodes and Elementor widgets call this directly, so the module
+        // check belongs here as well as in getFoodInfoHtml.
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         if (! (bool) ($this->getSettings()['show_ingredients'] ?? true)) {
             return '';
         }
@@ -77,6 +95,12 @@ final class FoodService
      */
     public function getAllergensHtml(\WC_Product $product): string
     {
+        // Shortcodes and Elementor widgets call this directly, so the module
+        // check belongs here as well as in getFoodInfoHtml.
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         if (! (bool) ($this->getSettings()['show_allergens'] ?? true)) {
             return '';
         }
@@ -255,6 +279,12 @@ final class FoodService
      */
     public function getNutrientsHtml(\WC_Product $product): string
     {
+        // Shortcodes and Elementor widgets call this directly, so the module
+        // check belongs here as well as in getFoodInfoHtml.
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         if (! (bool) ($this->getSettings()['show_nutrients'] ?? true)) {
             return '';
         }
@@ -317,6 +347,12 @@ final class FoodService
      */
     public function getNutriScoreHtml(\WC_Product $product): string
     {
+        // Shortcodes and Elementor widgets call this directly, so the module
+        // check belongs here as well as in getFoodInfoHtml.
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         if (! (bool) ($this->getSettings()['show_nutri_score'] ?? true)) {
             return '';
         }
@@ -359,6 +395,12 @@ final class FoodService
      */
     public function getAlcoholContentHtml(\WC_Product $product): string
     {
+        // Shortcodes and Elementor widgets call this directly, so the module
+        // check belongs here as well as in getFoodInfoHtml.
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         if (! (bool) ($this->getSettings()['show_alcohol'] ?? true)) {
             return '';
         }
