@@ -6,6 +6,7 @@ namespace Polski\Admin;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
+use Polski\Service\FoodService;
 
 /**
  * Extends WooCommerce product CSV import/export with Polski fields.
@@ -23,6 +24,8 @@ final class CSVImportExport implements HasHooks
         'polski_defect_description' => '_polski_defect_description',
         'polski_withdrawal_exempt' => '_polski_withdrawal_exempt',
         'polski_ingredients' => '_polski_ingredients',
+        'polski_nutrients' => '_polski_nutrients',
+        'polski_nutrient_reference_unit' => '_polski_nutrient_reference_unit',
         'polski_nutri_score' => '_polski_nutri_score',
         'polski_alcohol_content' => '_polski_alcohol_content',
         'polski_place_of_origin' => '_polski_place_of_origin',
@@ -35,6 +38,9 @@ final class CSVImportExport implements HasHooks
         'polski_gpsr_product_identifier' => '_polski_gpsr_product_identifier',
         'polski_gpsr_safety_warnings' => '_polski_gpsr_safety_warnings',
         'polski_gpsr_instructions' => '_polski_gpsr_instructions',
+        'polski_durability_guarantee_months' => '_polski_durability_guarantee_months',
+        'polski_update_period_months' => '_polski_update_period_months',
+        'polski_repair_info' => '_polski_repair_info',
         'polski_green_claim_basis' => '_polski_green_claim_basis',
         'polski_green_claim_cert_url' => '_polski_green_claim_cert_url',
         'polski_green_claim_expiry' => '_polski_green_claim_expiry',
@@ -50,7 +56,14 @@ final class CSVImportExport implements HasHooks
             add_filter(
                 'woocommerce_product_export_product_column_' . $csvKey,
                 function ($value, $product) use ($metaKey) {
-                    return $product->get_meta($metaKey, true);
+                    $meta = $product->get_meta($metaKey, true);
+
+                    // Nutrients are stored as JSON but exported in the same
+                    // spreadsheet-friendly form the importer accepts, so an
+                    // export can be edited and re-imported unchanged.
+                    return $metaKey === '_polski_nutrients'
+                        ? FoodService::formatNutrientsCsv($meta)
+                        : $meta;
                 },
                 10,
                 2,
@@ -78,6 +91,8 @@ final class CSVImportExport implements HasHooks
         $columns['polski_defect_description'] = __('Defect description', 'polski');
         $columns['polski_withdrawal_exempt'] = __('Right of withdrawal exemption', 'polski');
         $columns['polski_ingredients'] = __('Ingredients', 'polski');
+        $columns['polski_nutrients'] = __('Nutrition values', 'polski');
+        $columns['polski_nutrient_reference_unit'] = __('Nutrition reference quantity', 'polski');
         $columns['polski_nutri_score'] = __('Nutri-Score', 'polski');
         $columns['polski_alcohol_content'] = __('Alcohol content', 'polski');
         $columns['polski_place_of_origin'] = __('Country of origin', 'polski');
@@ -90,6 +105,9 @@ final class CSVImportExport implements HasHooks
         $columns['polski_gpsr_product_identifier'] = __('GPSR - Product identifier', 'polski');
         $columns['polski_gpsr_safety_warnings'] = __('GPSR - Safety warnings', 'polski');
         $columns['polski_gpsr_instructions'] = __('GPSR - Safety instructions', 'polski');
+        $columns['polski_durability_guarantee_months'] = __('Guarantee of durability (months)', 'polski');
+        $columns['polski_update_period_months'] = __('Free software updates (months)', 'polski');
+        $columns['polski_repair_info'] = __('Repair information', 'polski');
         $columns['polski_green_claim_basis'] = __('Environmental claim basis', 'polski');
         $columns['polski_green_claim_cert_url'] = __('Environmental certificate link', 'polski');
         $columns['polski_green_claim_expiry'] = __('Environmental certificate expiry', 'polski');
@@ -129,9 +147,16 @@ final class CSVImportExport implements HasHooks
     public function processImport(\WC_Product $product, array $data): \WC_Product
     {
         foreach (self::COLUMN_MAP as $csvKey => $metaKey) {
-            if (isset($data[$csvKey]) && $data[$csvKey] !== '') {
-                $product->update_meta_data($metaKey, sanitize_text_field((string) $data[$csvKey]));
+            if (! isset($data[$csvKey]) || $data[$csvKey] === '') {
+                continue;
             }
+
+            $raw = sanitize_text_field((string) $data[$csvKey]);
+
+            $product->update_meta_data(
+                $metaKey,
+                $metaKey === '_polski_nutrients' ? FoodService::parseNutrientsCsv($raw) : $raw,
+            );
         }
 
         return $product;

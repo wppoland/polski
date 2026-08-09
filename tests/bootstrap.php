@@ -75,6 +75,15 @@ if (! function_exists('_e')) {
     }
 }
 
+if (! function_exists('_n')) {
+    function _n(string $single, string $plural, int $number, string $domain = 'default'): string
+    {
+        // English plural rule is enough for unit tests; real pluralisation is
+        // the .mo file's job at runtime.
+        return $number === 1 ? $single : $plural;
+    }
+}
+
 if (! function_exists('esc_html')) {
     function esc_html(string $text): string
     {

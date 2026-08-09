@@ -90,6 +90,7 @@ use Polski\Service\CheckboxService;
 use Polski\Service\WithdrawalService;
 use Polski\Service\LegalPageService;
 use Polski\Service\DoubleOptInService;
+use Polski\Service\ConsumerInformationService;
 use Polski\Service\ProductInfoService;
 use Polski\Service\FoodService;
 use Polski\Service\DisputeResolutionService;
@@ -180,6 +181,7 @@ return static function (Container $c): void {
     ));
     $c->singleton(DisputeResolutionService::class, static fn () => new DisputeResolutionService());
     $c->singleton(ProductInfoService::class, static fn () => new ProductInfoService());
+    $c->singleton(ConsumerInformationService::class, static fn () => new ConsumerInformationService());
     $c->singleton(FoodService::class, static fn () => new FoodService());
     $c->singleton(DoubleOptInService::class, static fn () => new DoubleOptInService());
     $c->singleton(\Polski\Service\OssObserverService::class, static fn () => new \Polski\Service\OssObserverService());
@@ -469,6 +471,7 @@ return static function (Container $c): void {
         $c->get(DeliveryTimeService::class),
         $c->get(ProductInfoService::class),
         $c->get(FoodService::class),
+        $c->get(ConsumerInformationService::class),
         $c->get(ShopmarkManager::class),
         $c->get(TemplateLoader::class),
     ));
