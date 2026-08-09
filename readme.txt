@@ -1,9 +1,9 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
-Requires at least: 6.4
+Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.27.1
+Stable tag: 1.28.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -317,6 +317,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.28.0 =
+* Raised the minimum WordPress version from 6.4 to 6.9. This matches what already had to be true: WooCommerce 10.8 raised its own WordPress minimum to 6.9, and this plugin requires WooCommerce, so a store on WordPress 6.4 could not be running a supported WooCommerce anyway. The old header promised a compatibility that did not exist.
+* Development dependency: WooCommerce stubs aligned to 10.9.
 
 = 1.27.1 =
 * The nutrition table listed energy twice with both rows labelled "Energy", because the regulation asks for it in kilojoules and in kilocalories. The rows now read "Energy (kJ)" and "Energy (kcal)".
