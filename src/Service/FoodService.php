@@ -122,8 +122,10 @@ final class FoodService
     public static function nutrientLabels(): array
     {
         return [
-            'energy_kj' => __('Energy', 'polski'),
-            'energy_kcal' => __('Energy', 'polski'),
+            // Annex XV wants energy in both units. Two rows with the same label
+            // read as a duplicate, so name the unit in the label as well.
+            'energy_kj' => __('Energy (kJ)', 'polski'),
+            'energy_kcal' => __('Energy (kcal)', 'polski'),
             'fat' => __('Fat', 'polski'),
             'saturated_fat' => __('of which saturates', 'polski'),
             'carbohydrates' => __('Carbohydrate', 'polski'),
