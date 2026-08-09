@@ -778,7 +778,10 @@ final class SiteAuditService implements HasHooks
     {
         $label = __('Environmental claims (anti-greenwashing)', 'polski');
 
-        if (ModulesPage::isModuleEnabled('anti_greenwashing')) {
+        // The module id is green_claims. 'anti_greenwashing' matches no entry in
+        // ModulesPage, so this check was always false and the audit reported a
+        // warning even on stores that had the module switched on.
+        if (ModulesPage::isModuleEnabled('green_claims')) {
             return [
                 'status' => self::STATUS_PASS,
                 'label'  => $label,

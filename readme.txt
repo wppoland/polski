@@ -319,6 +319,13 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 == Changelog ==
 
 = 1.28.0 =
+* Six module toggles now do what they say. An audit of all 91 modules found ten with no enabled-check anywhere in the code, meaning the switch was decorative and the feature ran regardless. Fixed in this release: Checkout button, Consent logging, Legal pages, Email attachments, Plugin data and the store audit's environmental-claims check.
+* The most consequential of those: **Consent logging kept recording after you switched it off.** Every order still wrote a row with the shopper's IP address, browser user agent and timestamp. If you had that module off, personal data was being collected against your setting. It now stops when the module is off. Rows already stored are left alone; delete them from the consent records screen if you want them gone.
+* Checkout button: switching the module off now really restores WooCommerce's own "Place order" wording, on the classic, block and multi-step checkouts alike.
+* Email attachments: switching the module off now really stops the legal documents being attached to customer emails. Worth knowing before you switch it off.
+* Legal pages: switching the module off stops new pages being generated. Pages you already have stay published and keep being used everywhere else in the plugin. The module description said "Off until enabled", which was not what happened; it now describes the real behaviour.
+* Plugin data: uninstall now honours the module. With it off, uninstalling leaves your data in place regardless of the delete setting.
+* Fixed the store audit reporting a warning for environmental claims even on stores that had the module switched on. It was checking a module id that does not exist.
 * Raised the minimum WordPress version from 6.4 to 6.9. This matches what already had to be true: WooCommerce 10.8 raised its own WordPress minimum to 6.9, and this plugin requires WooCommerce, so a store on WordPress 6.4 could not be running a supported WooCommerce anyway. The old header promised a compatibility that did not exist.
 * Development dependency: WooCommerce stubs aligned to 10.9.
 

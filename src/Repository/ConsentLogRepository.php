@@ -25,6 +25,20 @@ final class ConsentLogRepository
     }
 
     /**
+     * Whether the checkout consent audit trail is switched on.
+     *
+     * This gates the two checkbox-consent writers, not logCookieConsent, which
+     * belongs to the separate consent_manager module and is already gated at
+     * its call sites. Until this existed, a merchant who switched the module
+     * off kept collecting an IP address and a user agent on every order, which
+     * is personal data gathered after they explicitly declined to gather it.
+     */
+    private function loggingEnabled(): bool
+    {
+        return \Polski\Admin\ModulesPage::isModuleEnabled('consent_logging');
+    }
+
+    /**
      * Log a consent action (checkbox accepted/declined).
      */
     public function log(
@@ -34,6 +48,10 @@ final class ConsentLogRepository
         ?int $userId = null,
         ?string $sessionId = null,
     ): int {
+        if (! $this->loggingEnabled()) {
+            return 0;
+        }
+
         $this->wpdb->insert(
             $this->tableName(),
             [
@@ -63,6 +81,10 @@ final class ConsentLogRepository
         ?int $userId = null,
         ?string $sessionId = null,
     ): void {
+        if (! $this->loggingEnabled()) {
+            return;
+        }
+
         $ip = $this->getClientIp();
         $ua = $this->getUserAgent();
         $now = current_time('mysql', true);
