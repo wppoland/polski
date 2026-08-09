@@ -7225,8 +7225,8 @@ msgid "Grouped (default)"
 msgstr "Agrupado (predeterminado)"
 
 #: src/Admin/ModulesPage.php:1621
-msgid "Name (A–Z)"
-msgstr "Nombre (A–Z)"
+msgid "Name (A, Z)"
+msgstr "Nombre (A, Z)"
 
 #: src/Admin/ModulesPage.php:1622
 msgid "Enabled first"

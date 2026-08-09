@@ -213,7 +213,7 @@ final class WithdrawalsAdminPage implements HasHooks
                                         <?php endif; ?>
                                         <span class="screen-reader-text"><?php esc_html_e('(classified automatically by AI)', 'polski'); ?></span>
                                     <?php else : ?>
-                                        <span style="color:#999;">&mdash;</span>
+                                        <span style="color:#999;">, </span>
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo esc_html($row->requestedAt->date_i18n(get_option('date_format') . ' H:i')); ?></td>

@@ -772,11 +772,11 @@ msgstr ""
 
 #: config/defaults.php:248
 msgid "Nowe zapytanie ofertowe - {product_name}"
-msgstr "Neue Angebotsanfrage – {product_name}"
+msgstr "Neue Angebotsanfrage, {product_name}"
 
 #: config/defaults.php:249
 msgid "Potwierdzenie zapytania ofertowego - {product_name}"
-msgstr "Bestätigung der Angebotsanfrage – {product_name}"
+msgstr "Bestätigung der Angebotsanfrage, {product_name}"
 
 #: config/defaults.php:251
 msgid "Zapytania ofertowe"
@@ -1910,7 +1910,7 @@ msgid ""
 "Complete product data - add unit prices and delivery time in the <a "
 "href=\"%s\">Polski tab</a> for each product."
 msgstr ""
-"Vollständige Produktdaten – Füge auf der Registerkarte <a "
+"Vollständige Produktdaten, Füge auf der Registerkarte <a "
 "href=\"%s\">Polski</a> für jedes Produkt die Einzelpreise und die Lieferzeit"
 " hinzu."
 
@@ -1921,7 +1921,7 @@ msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
 "and button text in <a href=\"%s\">checkout</a>."
 msgstr ""
-"Teste den Bestellvorgang – lege ein Produkt in den Warenkorb und überprüfe "
+"Teste den Bestellvorgang, lege ein Produkt in den Warenkorb und überprüfe "
 "die Kontrollkästchen und Schaltflächentexte im <a href=\"%s\">Zur Kasse</a>."
 
 #: src/Admin/AdminPage.php:932
@@ -1987,35 +1987,35 @@ msgstr "Nettomenge"
 
 #: src/Admin/CSVImportExport.php:85
 msgid "GPSR - Manufacturer name"
-msgstr "GPSR – Herstellername"
+msgstr "GPSR, Herstellername"
 
 #: src/Admin/CSVImportExport.php:86
 msgid "GPSR - Manufacturer address"
-msgstr "GPSR – Herstelleradresse"
+msgstr "GPSR, Herstelleradresse"
 
 #: src/Admin/CSVImportExport.php:87
 msgid "GPSR - Importer name"
-msgstr "GPSR – Name des Importeurs"
+msgstr "GPSR, Name des Importeurs"
 
 #: src/Admin/CSVImportExport.php:88
 msgid "GPSR - Importer address"
-msgstr "GPSR – Adresse des Importeurs"
+msgstr "GPSR, Adresse des Importeurs"
 
 #: src/Admin/CSVImportExport.php:89
 msgid "GPSR - Responsible person"
-msgstr "GPSR – Verantwortliche Person"
+msgstr "GPSR, Verantwortliche Person"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "GPSR - Product identifier"
-msgstr "GPSR – Produktkennung"
+msgstr "GPSR, Produktkennung"
 
 #: src/Admin/CSVImportExport.php:91
 msgid "GPSR - Safety warnings"
-msgstr "GPSR – Sicherheitswarnungen"
+msgstr "GPSR, Sicherheitswarnungen"
 
 #: src/Admin/CSVImportExport.php:92
 msgid "GPSR - Safety instructions"
-msgstr "GPSR – Sicherheitshinweise"
+msgstr "GPSR, Sicherheitshinweise"
 
 #: src/Admin/CSVImportExport.php:93 src/Admin/ProductMetaBox.php:308
 msgid "Environmental claim basis"
@@ -2442,7 +2442,7 @@ msgstr "Allgemeine Geschäftsbedingungen"
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:147
 msgid "Label - Terms"
-msgstr "Etikett – Begriffe"
+msgstr "Etikett, Begriffe"
 
 #. translators: %s: terms page URL placeholder
 #: src/Admin/ModulesPage.php:147
@@ -2452,11 +2452,11 @@ msgstr "Verwende %s als Platzhalter für den Link zur Begriffsseite"
 
 #: src/Admin/ModulesPage.php:148
 msgid "Error - Terms"
-msgstr "Fehler – Bedingungen"
+msgstr "Fehler, Bedingungen"
 
 #: src/Admin/ModulesPage.php:149
 msgid "Description - Terms"
-msgstr "Beschreibung – Bedingungen"
+msgstr "Beschreibung, Bedingungen"
 
 #: src/Admin/ModulesPage.php:150 src/Enum/LegalPageType.php:18
 #: src/Service/LegalPageService.php:162 src/Service/SiteAuditService.php:143
@@ -2466,7 +2466,7 @@ msgstr "Datenschutzrichtlinie"
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:152
 msgid "Label - Privacy Policy"
-msgstr "Etikett – Datenschutzrichtlinie"
+msgstr "Etikett, Datenschutzrichtlinie"
 
 #. translators: %s: privacy policy URL placeholder
 #: src/Admin/ModulesPage.php:152
@@ -2476,11 +2476,11 @@ msgstr "Verwende %s als Platzhalter für den Link zur Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:153
 msgid "Error - Privacy Policy"
-msgstr "Fehler – Datenschutzrichtlinie"
+msgstr "Fehler, Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:154
 msgid "Description - Privacy Policy"
-msgstr "Beschreibung – Datenschutzrichtlinie"
+msgstr "Beschreibung, Datenschutzrichtlinie"
 
 #: src/Admin/ModulesPage.php:155 src/Service/SiteAuditService.php:431
 msgid "Right of withdrawal"
@@ -2489,7 +2489,7 @@ msgstr "Widerrufsrecht"
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:157
 msgid "Label - Right of withdrawal"
-msgstr "Etikett – Widerrufsrecht"
+msgstr "Etikett, Widerrufsrecht"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:157
@@ -2500,11 +2500,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:158
 msgid "Error - Right of withdrawal"
-msgstr "Fehler – Widerrufsrecht"
+msgstr "Fehler, Widerrufsrecht"
 
 #: src/Admin/ModulesPage.php:159
 msgid "Description - Right of withdrawal"
-msgstr "Beschreibung – Widerrufsrecht"
+msgstr "Beschreibung, Widerrufsrecht"
 
 #: src/Admin/ModulesPage.php:160
 msgid "Digital content (waiver)"
@@ -2512,15 +2512,15 @@ msgstr "Digitale Inhalte (Verzicht)"
 
 #: src/Admin/ModulesPage.php:161
 msgid "Label - Digital content"
-msgstr "Etikett – Digitaler Inhalt"
+msgstr "Etikett, Digitaler Inhalt"
 
 #: src/Admin/ModulesPage.php:162
 msgid "Error - Digital content"
-msgstr "Fehler – Digitaler Inhalt"
+msgstr "Fehler, Digitaler Inhalt"
 
 #: src/Admin/ModulesPage.php:163
 msgid "Description - Digital content"
-msgstr "Beschreibung – Digitale Inhalte"
+msgstr "Beschreibung, Digitale Inhalte"
 
 #: src/Admin/ModulesPage.php:164
 msgid "Delivery notifications"
@@ -2528,11 +2528,11 @@ msgstr "Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:165
 msgid "Label - Delivery notifications"
-msgstr "Etikett – Lieferbenachrichtigungen"
+msgstr "Etikett, Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:166
 msgid "Description - Delivery notifications"
-msgstr "Beschreibung – Lieferbenachrichtigungen"
+msgstr "Beschreibung, Lieferbenachrichtigungen"
 
 #: src/Admin/ModulesPage.php:167
 msgid "Review reminder"
@@ -2540,11 +2540,11 @@ msgstr "Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:168
 msgid "Label - Review reminder"
-msgstr "Etikett – Bewertungserinnerung"
+msgstr "Etikett, Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:169
 msgid "Description - Review reminder"
-msgstr "Beschreibung – Bewertungserinnerung"
+msgstr "Beschreibung, Bewertungserinnerung"
 
 #: src/Admin/ModulesPage.php:170
 msgid "Marketing consent"
@@ -2556,11 +2556,11 @@ msgstr "Etikett - Marketing"
 
 #: src/Admin/ModulesPage.php:172
 msgid "Description - Marketing"
-msgstr "Beschreibung – Marketing"
+msgstr "Beschreibung, Marketing"
 
 #: src/Admin/ModulesPage.php:177
 msgid "NIP - Verification and Autocomplete"
-msgstr "NIP – Verifizierung und automatische Vervollständigung"
+msgstr "NIP, Verifizierung und automatische Vervollständigung"
 
 #: src/Admin/ModulesPage.php:178
 msgid ""
@@ -3026,7 +3026,7 @@ msgstr "Titel der nächsten Schritte"
 
 #: src/Admin/ModulesPage.php:287
 msgid "Step - publish pages"
-msgstr "Schritt – Seiten veröffentlichen"
+msgstr "Schritt, Seiten veröffentlichen"
 
 #: src/Admin/ModulesPage.php:288
 msgid "Step - VAT rates"
@@ -3042,7 +3042,7 @@ msgstr "Schritt - Produktdaten"
 
 #: src/Admin/ModulesPage.php:291
 msgid "Step - checkout test"
-msgstr "Schritt – Checkout-Test"
+msgstr "Schritt, Checkout-Test"
 
 #: src/Admin/ModulesPage.php:292
 msgid "Omnibus plugin detected status"
@@ -4656,7 +4656,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:915
 msgid "CRA - Cyber Resilience"
-msgstr "CRA – Cyber-Resilienz"
+msgstr "CRA, Cyber-Resilienz"
 
 #: src/Admin/ModulesPage.php:916
 msgid ""
@@ -4978,7 +4978,7 @@ msgid ""
 "products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr ""
 "Benutzerdefinierter Beitragstyp für redaktionelle Produktbewertungen. "
-"Verknüpfe Expertenbewertungen mit Produkten mit Bewertungen (1–10), Urteilen"
+"Verknüpfe Expertenbewertungen mit Produkten mit Bewertungen (1-10), Urteilen"
 " und Schema.org-Markup für SEO."
 
 #: src/Admin/ModulesPage.php:1066
@@ -4996,7 +4996,7 @@ msgid ""
 "AJAX-loaded, configurable position and timing."
 msgstr ""
 "Floating-Kaufbenachrichtigungen mit den letzten Bestellungen („Jan aus "
-"Warszawa hat gerade gekauft…“). Erhöht nachweislich die Conversions um 10–15"
+"Warszawa hat gerade gekauft…“). Erhöht nachweislich die Conversions um 10-15"
 " %. Datenschutzbewusst, AJAX-geladen, konfigurierbare Position und Timing."
 
 #: src/Admin/ModulesPage.php:1079
@@ -5231,7 +5231,7 @@ msgstr ""
 #: src/Admin/ModulesPage.php:1183 src/Admin/ModulesPage.php:1194
 #: src/Admin/ModulesPage.php:1205
 msgid "PRO - Orders"
-msgstr "PRO – Bestellungen"
+msgstr "PRO, Bestellungen"
 
 #: src/Admin/ModulesPage.php:1192
 msgid "Delivery Date Picker"
@@ -5302,7 +5302,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1238
 msgid "PRO - Marketing"
-msgstr "PRO – Marketing"
+msgstr "PRO, Marketing"
 
 #: src/Admin/ModulesPage.php:1247
 msgid "Pre-Orders"
@@ -5379,7 +5379,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1304
 msgid "PRO - Tools"
-msgstr "PRO – Werkzeuge"
+msgstr "PRO, Werkzeuge"
 
 #: src/Admin/ModulesPage.php:1361
 msgid "Save modules"
@@ -5701,7 +5701,7 @@ msgstr "Optionale Überschrift nur für dieses Produkt."
 
 #: src/Admin/ProductMetaBox.php:242
 msgid "GPSR - Product Safety"
-msgstr "GPSR – Produktsicherheit"
+msgstr "GPSR, Produktsicherheit"
 
 #: src/Admin/ProductMetaBox.php:246
 msgid "Manufacturer name"
@@ -6242,14 +6242,14 @@ msgstr "Bitte akzeptieren: %s"
 msgid ""
 "Enable the Terms and Conditions checkbox - required by Polish consumer law."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Allgemeine Geschäftsbedingungen“ – gemäß "
+"Aktiviere das Kontrollkästchen „Allgemeine Geschäftsbedingungen“, gemäß "
 "polnischem Verbraucherrecht erforderlich."
 
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Datenschutzrichtlinie“ – erforderlich gemäß "
+"Aktiviere das Kontrollkästchen „Datenschutzrichtlinie“, erforderlich gemäß "
 "DSGVO Art. 6.1.a und Art. 7."
 
 #: src/Service/CheckboxService.php:349
@@ -6257,7 +6257,7 @@ msgid ""
 "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights "
 "Act (Art. 12)."
 msgstr ""
-"Aktiviere das Kontrollkästchen „Widerrufsrecht“ – gemäß polnischem "
+"Aktiviere das Kontrollkästchen „Widerrufsrecht“, gemäß polnischem "
 "Verbraucherrechtsgesetz (Art. 12) erforderlich."
 
 #: src/Service/CheckboxService.php:361
@@ -6271,7 +6271,7 @@ msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
 msgstr ""
-"Die Marketingeinwilligung muss gemäß der DSGVO optional sein – ändere sie "
+"Die Marketingeinwilligung muss gemäß der DSGVO optional sein, ändere sie "
 "von „erforderlich“ in „optional“."
 
 #: src/Service/CheckboxService.php:379
@@ -6286,7 +6286,7 @@ msgid ""
 "Review reminder consent should be optional - change it from required to "
 "optional."
 msgstr ""
-"Die Zustimmung zur Bewertungserinnerung sollte optional sein – ändere sie "
+"Die Zustimmung zur Bewertungserinnerung sollte optional sein, ändere sie "
 "von „erforderlich“ in „optional“."
 
 #. translators: %s: link to terms page
@@ -7372,7 +7372,7 @@ msgid ""
 "Privacy Policy has only %d characters - it may be too short to comply with "
 "GDPR Art. 13."
 msgstr ""
-"Die Datenschutzerklärung besteht nur aus %d Zeichen – sie ist möglicherweise"
+"Die Datenschutzerklärung besteht nur aus %d Zeichen, sie ist möglicherweise"
 " zu kurz, um DSGVO Art. zu entsprechen. 13."
 
 #. translators: %d: character count
@@ -7437,7 +7437,7 @@ msgstr "Text der Schaltfläche „Bestellen“."
 #: src/Service/SiteAuditService.php:350
 #, php-format
 msgid "Button: \"%s\" - contains info about payment obligation."
-msgstr "Schaltfläche: „%s“ – enthält Informationen zur Zahlungsverpflichtung."
+msgstr "Schaltfläche: „%s“, enthält Informationen zur Zahlungsverpflichtung."
 
 #: src/Service/SiteAuditService.php:361
 msgid ""
@@ -7454,7 +7454,7 @@ msgid ""
 "Button: \"%s\" - may not contain required payment info (e.g. \"Order with "
 "obligation to pay\")."
 msgstr ""
-"Button: „%s“ – darf keine erforderlichen Zahlungsinformationen enthalten (z."
+"Button: „%s“, darf keine erforderlichen Zahlungsinformationen enthalten (z."
 " B. „Zahlungspflichtig bestellen“)."
 
 #: src/Service/SiteAuditService.php:383
@@ -7466,7 +7466,7 @@ msgid ""
 "Omnibus module is enabled - lowest price from 30 days will be shown on "
 "sales."
 msgstr ""
-"Das Omnibus-Modul ist aktiviert – der niedrigste Preis aus 30 Tagen wird im "
+"Das Omnibus-Modul ist aktiviert, der niedrigste Preis aus 30 Tagen wird im "
 "Angebot angezeigt."
 
 #: src/Service/SiteAuditService.php:396
@@ -7512,7 +7512,7 @@ msgstr "GPSR-Modul (Produktsicherheit)"
 msgid ""
 "GPSR module is enabled - manufacturer and importer data can be displayed."
 msgstr ""
-"GPSR-Modul ist aktiviert – Hersteller- und Importeurdaten können angezeigt "
+"GPSR-Modul ist aktiviert, Hersteller- und Importeurdaten können angezeigt "
 "werden."
 
 #: src/Service/SiteAuditService.php:468
@@ -7532,7 +7532,7 @@ msgid ""
 "Verified reviews module is enabled - the shop can mark reviews from actual "
 "buyers."
 msgstr ""
-"Das Modul „Verifizierte Bewertungen“ ist aktiviert – der Shop kann "
+"Das Modul „Verifizierte Bewertungen“ ist aktiviert, der Shop kann "
 "Bewertungen von tatsächlichen Käufern markieren."
 
 #: src/Service/SiteAuditService.php:492
@@ -7545,12 +7545,12 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:503
 msgid "DSA - reporting illegal content"
-msgstr "DSA – Meldung illegaler Inhalte"
+msgstr "DSA, Meldung illegaler Inhalte"
 
 #: src/Service/SiteAuditService.php:509
 msgid "DSA module is enabled - report form and dashboard are available."
 msgstr ""
-"DSA-Modul ist aktiviert – Berichtsformular und Dashboard sind verfügbar."
+"DSA-Modul ist aktiviert, Berichtsformular und Dashboard sind verfügbar."
 
 #: src/Service/SiteAuditService.php:516
 msgid ""
@@ -7569,7 +7569,7 @@ msgid ""
 "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice "
 "integration."
 msgstr ""
-"Das KSEF-ready-Modul ist aktiviert – Bestellungen mit Umsatzsteuer-"
+"Das KSEF-ready-Modul ist aktiviert, Bestellungen mit Umsatzsteuer-"
 "Identifikationsnummer können für die Rechnungsintegration markiert werden."
 
 #: src/Service/SiteAuditService.php:540
@@ -7590,7 +7590,7 @@ msgid ""
 "Anti-greenwashing module is enabled - products can store claims basis and "
 "certificate links."
 msgstr ""
-"Das Anti-Greenwashing-Modul ist aktiviert – Produkte können "
+"Das Anti-Greenwashing-Modul ist aktiviert, Produkte können "
 "Anspruchsgrundlagen und Zertifikatslinks speichern."
 
 #: src/Service/SiteAuditService.php:564
@@ -7699,7 +7699,7 @@ msgid ""
 "SSL is the minimum."
 msgstr ""
 "Die Website verwendet kein HTTPS. Die DSGVO erfordert entsprechende "
-"technische Maßnahmen – SSL ist das Minimum."
+"technische Maßnahmen, SSL ist das Minimum."
 
 #: src/Service/SocialLoginService.php:77
 msgid "Continue with Google"
@@ -7920,7 +7920,7 @@ msgstr "Danke schön. Du wurdest zur Warteliste hinzugefügt."
 
 #: src/Service/WaitlistService.php:135
 msgid "Product back in stock - {product_name}"
-msgstr "Produkt wieder auf Lager – {product_name}"
+msgstr "Produkt wieder auf Lager, {product_name}"
 
 #: src/Service/WaitlistService.php:141
 msgid "Product {product_name} is back in stock."

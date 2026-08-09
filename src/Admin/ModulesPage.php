@@ -102,6 +102,7 @@ final class ModulesPage implements HasHooks
             'email_attachments' => __('Attaches your legal documents to order confirmation emails. When enabled, the content of pages like Terms and Conditions, Privacy Policy, and Right of Withdrawal is included with the confirmation email each customer receives after placing an order.', 'polski'),
             'manufacturer' => __('Adds manufacturer and GPSR product safety details to your products. When enabled, you can enter manufacturer info, an EU responsible person, safety documents, and instructions per product, which then appear for shoppers on the product page.', 'polski'),
             'food_module' => __('Adds food and supplement product details to your products. When enabled, you can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol content, country of origin, and distributor per product, which then show to shoppers on the product page.', 'polski'),
+            'consumer_information' => __('Adds the pre-contractual information that Directive (EU) 2024/825 requires from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so this module renders plain labelled rows.', 'polski'),
             'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
             'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email and cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
             'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, your store\'s search box shows live product matches (including by SKU and category) without reloading the page, kept lightweight for fast page performance. Off until enabled.', 'polski'),
@@ -560,6 +561,19 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_food|origin_label', 'label' => __('Country of origin label', 'polski'), 'type' => 'text', 'default' => __('Country of origin', 'polski')],
                     ['key' => 'polski_food|distributor_label', 'label' => __('Distributor label', 'polski'), 'type' => 'text', 'default' => __('Distributor', 'polski')],
                     ['key' => 'polski_food|net_filling_label', 'label' => __('Net content label', 'polski'), 'type' => 'text', 'default' => __('Net content', 'polski')],
+                ],
+            ],
+            [
+                'id' => 'consumer_information',
+                'name' => __('Consumer information (2024/825)', 'polski'),
+                'description' => __('Legal guarantee reminder, guarantee of durability, free software update period and repair information on the product page. Required from 27 September 2026.', 'polski'),
+                'group' => 'Product Information',
+                'enabled' => false,
+                'icon' => 'dashicons-shield-alt',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_consumer_info|show_legal_guarantee', 'label' => __('Show the legal guarantee reminder', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_consumer_info|legal_guarantee_text', 'label' => __('Legal guarantee reminder', 'polski'), 'type' => 'textarea', 'default' => \Polski\Service\ConsumerInformationService::defaultLegalGuaranteeText()],
                 ],
             ],
             [
@@ -1618,7 +1632,7 @@ final class ModulesPage implements HasHooks
         echo '<span>' . esc_html__('Sort', 'polski') . '</span> ';
         echo '<select class="polski-modules-sort" data-polski-modules-sort>';
         echo '<option value="default">' . esc_html__('Grouped (default)', 'polski') . '</option>';
-        echo '<option value="name">' . esc_html__('Name (A–Z)', 'polski') . '</option>';
+        echo '<option value="name">' . esc_html__('Name (A, Z)', 'polski') . '</option>';
         echo '<option value="enabled">' . esc_html__('Enabled first', 'polski') . '</option>';
         echo '</select>';
         echo '</label>';
@@ -2374,6 +2388,7 @@ final class ModulesPage implements HasHooks
             'email_attachments' => true,
             'manufacturer' => true,
             'food_module' => false,
+            'consumer_information' => false,
             'power_supply' => false,
             'double_opt_in' => false,
             'ajax_search' => false,
@@ -2652,7 +2667,7 @@ final class ModulesPage implements HasHooks
 
         foreach ($plugins as $plugin) {
             $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
             $status = $active
                 ? (string) ($generalSettings['admin_omnibus_plugin_detected_text'] ?? __('detected, data synchronized', 'polski'))
                 : (string) ($generalSettings['admin_omnibus_plugin_missing_text'] ?? __('not installed', 'polski'));
@@ -2792,7 +2807,7 @@ final class ModulesPage implements HasHooks
 
         foreach ($plugins as $plugin) {
             $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">&#8212;</span>';
+            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
 
             if ($active) {
                 $anyActive = true;

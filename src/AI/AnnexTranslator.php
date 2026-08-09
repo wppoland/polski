@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
  * Client is unavailable, the call returns null and the caller falls back to
  * the source Polish text.
  *
- * AI ACT (art. 50) — READ BEFORE WIRING: this produces machine-translated legal
+ * AI ACT (art. 50), READ BEFORE WIRING: this produces machine-translated legal
  * text. It is currently registered but NOT consumed by any render path, so there
  * is no synthetic content on the storefront yet. The moment a caller renders the
  * output of translate() to a customer, that caller MUST add the art. 50

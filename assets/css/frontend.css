@@ -331,6 +331,34 @@
     font-style: italic;
 }
 
+/* === Consumer information (Directive 2024/825) === */
+
+.polski-consumer-info {
+    margin-block: 10px;
+    font-size: 0.85em;
+}
+
+.polski-consumer-info__legal {
+    margin-block: 0 6px;
+    color: #555;
+}
+
+.polski-consumer-info__list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 12px;
+    margin: 0;
+}
+
+.polski-consumer-info__label {
+    font-weight: 600;
+    margin: 0;
+}
+
+.polski-consumer-info__value {
+    margin: 0;
+}
+
 /* === Loop/archive page === */
 
 .products .polski-unit-price,

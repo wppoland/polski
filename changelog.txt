@@ -35,7 +35,7 @@ Complete release history for Polski for WooCommerce. The plugin page on WordPres
 * Fix: the Polski admin menu icon no longer shifts on hover / when active (removed stray padding).
 
 = 1.22.6 =
-* New: the Modules admin screen now has an instant search (matching both module name and description) and sorting (grouped, name A–Z, or enabled first). No page reload.
+* New: the Modules admin screen now has an instant search (matching both module name and description) and sorting (grouped, name A, Z, or enabled first). No page reload.
 
 = 1.22.5 =
 * Fix: resolved a fatal error (TypeError) that could occur on order queries, including the WooCommerce admin Orders screen, when the withdrawal query helper received a paginated result object instead of an array. The helper now handles both shapes safely.

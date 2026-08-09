@@ -26,12 +26,12 @@ return [
             'pl' => ['title' => 'Faktury', 'desc' => 'Faktura VAT, korygująca, paragon i dokument WZ z generowaniem PDF.'],
         ],
         [
-            'en' => ['title' => 'KSeF integration', 'desc' => 'Electronic submission of invoices to the National e-Invoicing System.'],
-            'pl' => ['title' => 'Integracja KSeF', 'desc' => 'Wysyłka faktur elektronicznych do Krajowego Systemu e-Faktur.'],
+            'en' => ['title' => 'Invoice XML export', 'desc' => 'Download any invoice as UBL/PEPPOL XML from the invoice screen.'],
+            'pl' => ['title' => 'Eksport XML faktury', 'desc' => 'Pobranie dowolnej faktury jako XML UBL/PEPPOL z ekranu faktury.'],
         ],
         [
-            'en' => ['title' => 'Accounting integrations', 'desc' => 'Export documents to wFirma, Fakturownia and iFirma.'],
-            'pl' => ['title' => 'Integracje księgowe', 'desc' => 'Eksport dokumentów do wFirma, Fakturownia i iFirma.'],
+            'en' => ['title' => 'JPK_FA report', 'desc' => 'Generate a JPK_FA file for a chosen date range.'],
+            'pl' => ['title' => 'Raport JPK_FA', 'desc' => 'Wygenerowanie pliku JPK_FA dla wybranego zakresu dat.'],
         ],
         [
             'en' => ['title' => 'Multi-step checkout', 'desc' => 'Split the checkout into steps: address, delivery, payment, summary.'],

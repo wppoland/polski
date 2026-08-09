@@ -95,21 +95,159 @@ final class FoodService
     }
 
     /**
-     * Get nutrients data.
+     * Canonical nutrient slugs in Annex XV declaration order, with their units.
      *
-     * @return array<string, array{value: float, unit: string}>
+     * The slug is what gets stored. Labels are resolved at render time from
+     * nutrientLabels(), so translating a label can never orphan saved data.
+     *
+     * @var array<string, string>
+     */
+    public const NUTRIENT_UNITS = [
+        'energy_kj' => 'kJ',
+        'energy_kcal' => 'kcal',
+        'fat' => 'g',
+        'saturated_fat' => 'g',
+        'carbohydrates' => 'g',
+        'sugars' => 'g',
+        'fibre' => 'g',
+        'protein' => 'g',
+        'salt' => 'g',
+    ];
+
+    /**
+     * Translated labels for the canonical slugs.
+     *
+     * @return array<string, string>
+     */
+    public static function nutrientLabels(): array
+    {
+        return [
+            // Annex XV wants energy in both units. Two rows with the same label
+            // read as a duplicate, so name the unit in the label as well.
+            'energy_kj' => __('Energy (kJ)', 'polski'),
+            'energy_kcal' => __('Energy (kcal)', 'polski'),
+            'fat' => __('Fat', 'polski'),
+            'saturated_fat' => __('of which saturates', 'polski'),
+            'carbohydrates' => __('Carbohydrate', 'polski'),
+            'sugars' => __('of which sugars', 'polski'),
+            'fibre' => __('Fibre', 'polski'),
+            'protein' => __('Protein', 'polski'),
+            'salt' => __('Salt', 'polski'),
+        ];
+    }
+
+    /**
+     * Parse the spreadsheet form "energy_kcal:250|fat:12.3|salt:0.9" into the
+     * canonical JSON stored in _polski_nutrients.
+     *
+     * Unknown slugs and non-numeric values are dropped rather than stored, so a
+     * typo in one CSV cell cannot put junk rows on a product page. Returns an
+     * empty string when nothing survives, which reads as "no nutrition data".
+     */
+    public static function parseNutrientsCsv(string $raw): string
+    {
+        $out = [];
+
+        foreach (explode('|', $raw) as $pair) {
+            if (! str_contains($pair, ':')) {
+                continue;
+            }
+
+            [$slug, $value] = explode(':', $pair, 2);
+            $slug = trim($slug);
+            $value = trim($value);
+
+            if (! isset(self::NUTRIENT_UNITS[$slug]) || ! is_numeric($value)) {
+                continue;
+            }
+
+            $out[$slug] = ['value' => (float) $value, 'unit' => self::NUTRIENT_UNITS[$slug]];
+        }
+
+        return $out === [] ? '' : (string) wp_json_encode($out);
+    }
+
+    /**
+     * Inverse of parseNutrientsCsv, so an export can be edited in a spreadsheet
+     * and re-imported unchanged.
+     *
+     * @param mixed $meta Raw _polski_nutrients meta, JSON string or array.
+     */
+    public static function formatNutrientsCsv($meta): string
+    {
+        if (is_string($meta) && $meta !== '') {
+            $meta = json_decode($meta, true);
+        }
+
+        if (! is_array($meta)) {
+            return '';
+        }
+
+        $parts = [];
+
+        foreach (self::NUTRIENT_UNITS as $slug => $unit) {
+            if (! isset($meta[$slug])) {
+                continue;
+            }
+
+            $value = is_array($meta[$slug]) ? ($meta[$slug]['value'] ?? '') : $meta[$slug];
+
+            if (is_numeric($value)) {
+                $parts[] = $slug . ':' . $value;
+            }
+        }
+
+        return implode('|', $parts);
+    }
+
+    /**
+     * Get nutrients data, normalised to the canonical shape.
+     *
+     * Accepts the JSON string the product panel and the CSV importer write, and
+     * a plain array, in either the `slug => value` or the `slug => [value, unit]`
+     * form. Unknown slugs are dropped rather than rendered, so a bad import
+     * cannot inject arbitrary rows into the storefront table.
+     *
+     * @return array<string, array{value: float, unit: string, label: string}>
      */
     public function getNutrients(\WC_Product $product): array
     {
         $raw = $product->get_meta('_polski_nutrients', true);
 
         if (is_string($raw) && $raw !== '') {
-            $decoded = json_decode($raw, true);
-
-            return is_array($decoded) ? $decoded : [];
+            $raw = json_decode($raw, true);
         }
 
-        return is_array($raw) ? $raw : [];
+        if (! is_array($raw)) {
+            return [];
+        }
+
+        $labels = self::nutrientLabels();
+        $out = [];
+
+        foreach (self::NUTRIENT_UNITS as $slug => $unit) {
+            if (! isset($raw[$slug])) {
+                continue;
+            }
+
+            $entry = $raw[$slug];
+            $value = is_array($entry) ? ($entry['value'] ?? '') : $entry;
+
+            // is_numeric already rejects '' and null, so this is the whole guard.
+            if (! is_numeric($value)) {
+                continue;
+            }
+
+            $out[$slug] = [
+                'value' => (float) $value,
+                'unit' => is_array($entry) && isset($entry['unit']) && $entry['unit'] !== ''
+                    ? (string) $entry['unit']
+                    : $unit,
+                'label' => $labels[$slug],
+            ];
+        }
+
+        return $out;
     }
 
     /**
@@ -135,15 +273,12 @@ final class FoodService
 
         $rows = '';
 
-        foreach ($nutrients as $name => $data) {
-            $value = $data['value'] ?? '';
-            $unit = $data['unit'] ?? '';
-
+        foreach ($nutrients as $data) {
             $rows .= sprintf(
                 '<tr><td>%s</td><td>%s %s</td></tr>',
-                esc_html($name),
-                esc_html((string) $value),
-                esc_html($unit),
+                esc_html($data['label']),
+                esc_html((string) $data['value']),
+                esc_html($data['unit']),
             );
         }
 
