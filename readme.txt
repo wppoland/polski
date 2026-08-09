@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.26.0
+Stable tag: 1.27.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -317,6 +317,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.27.0 =
+* New module, Consumer information: the product page can carry the reminder that the statutory guarantee of conformity applies, plus per-product fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. This is the pre-contractual information Directive (EU) 2024/825 requires from 27 September 2026. Off by default. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so the module renders plain labelled rows for now.
+* Fixed: the nutrition table could never be filled in. The stored nutrition meta had two readers expecting incompatible shapes and nothing that wrote it, so the table never appeared and the nutrition data was always missing from structured data. Nutrition values now import and export through the WooCommerce product CSV, like ingredients and the other food fields, using the form energy_kcal:250|fat:12.3|salt:0.9.
 
 = 1.26.0 =
 * The fourteen allergens of Annex II to Regulation (EU) 1169/2011 are now seeded on update, so the allergen field is usable straight away instead of starting empty. Terms you already created keep their own names; matching is by slug.

@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Service\ConsumerInformationService;
 use Polski\Service\DeliveryTimeService;
 use Polski\Service\FoodService;
 use Polski\Service\PriceDisplayService;
@@ -26,6 +27,7 @@ final class ProductHooks implements Bootable, HasHooks
         private readonly DeliveryTimeService $deliveryTime,
         private readonly ProductInfoService $productInfo,
         private readonly FoodService $foodService,
+        private readonly ConsumerInformationService $consumerInfo,
         private readonly ShopmarkManager $shopmarks,
         private readonly TemplateLoader $templateLoader,
     ) {
@@ -135,6 +137,15 @@ final class ProductHooks implements Bootable, HasHooks
             hookName: 'woocommerce_single_product_summary',
             priority: 36,
             callback: fn () => $this->renderSafetyInfo(),
+        ));
+
+        // Consumer information (Directive 2024/825, applies 27 September 2026).
+        $this->shopmarks->register(new Shopmark(
+            id: 'consumer_information',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 37,
+            callback: fn () => $this->renderConsumerInformation(),
         ));
 
         // Food info (nutrients, allergens, ingredients).
@@ -315,6 +326,24 @@ final class ProductHooks implements Bootable, HasHooks
         }
     }
 
+    private function renderConsumerInformation(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $html = $this->consumerInfo->getHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/consumer-info', [
+                'consumer_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
     private function renderFoodInfo(): void
     {
         global $product;
@@ -467,8 +496,11 @@ final class ProductHooks implements Bootable, HasHooks
         }
 
         // Add Food/Nutrition data if available.
-        $nutrients = get_post_meta($productId, '_polski_nutrients', true);
-        if (is_array($nutrients) && ! empty($nutrients)) {
+        // Read through FoodService so schema and the storefront table agree on the
+        // stored shape; reading the meta raw here used to silently skip the JSON
+        // string that the product panel writes.
+        $nutrients = $this->foodService->getNutrients($product);
+        if ($nutrients !== []) {
             $nutritionData = ['@type' => 'NutritionInformation'];
             $nutrientMap = [
                 'energy_kcal' => 'calories',
@@ -478,13 +510,13 @@ final class ProductHooks implements Bootable, HasHooks
                 'sugars' => 'sugarContent',
                 'protein' => 'proteinContent',
                 'salt' => 'sodiumContent',
-                'fiber' => 'fiberContent',
+                'fibre' => 'fiberContent',
             ];
-            foreach ($nutrientMap as $metaKey => $schemaKey) {
-                if (isset($nutrients[$metaKey]) && $nutrients[$metaKey] !== '') {
-                    $unit = $metaKey === 'energy_kcal' ? ' kcal' : ' g';
-                    $nutritionData[$schemaKey] = $nutrients[$metaKey] . $unit;
+            foreach ($nutrientMap as $slug => $schemaKey) {
+                if (! isset($nutrients[$slug])) {
+                    continue;
                 }
+                $nutritionData[$schemaKey] = $nutrients[$slug]['value'] . ' ' . $nutrients[$slug]['unit'];
             }
             if (count($nutritionData) > 1) {
                 $extraData['nutrition'] = $nutritionData;
