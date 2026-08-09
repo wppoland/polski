@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.4
 Tested up to: 7.0
-Stable tag: 1.25.5
+Stable tag: 1.26.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -317,6 +317,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.26.0 =
+* The fourteen allergens of Annex II to Regulation (EU) 1169/2011 are now seeded on update, so the allergen field is usable straight away instead of starting empty. Terms you already created keep their own names; matching is by slug.
 
 = 1.25.4 =
 * Declared compatibility with WooCommerce 10.9.
