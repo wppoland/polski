@@ -19,7 +19,7 @@ declare(strict_types=1);
  * Requires Plugins:  woocommerce
  *
  * WC requires at least: 8.0
- * WC tested up to:      10.9
+ * WC tested up to:      11.0
  *
  * DISCLAIMER: This plugin is provided "as is" without any warranty. WPPoland
  * (wppoland.com) is not liable for any damages or consequences arising from its
