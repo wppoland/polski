@@ -406,3 +406,14 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Setup wizard, step 0. These five TextControls sit bare in a CardBody. They used
+   to be spaced by BaseControl's own bottom margin, which @wordpress/components
+   dropped by default in 32.0.0 (shipped in WordPress 7.0), so they collapsed
+   flush and the NIP help text ran into the Email label. The gap is declared here
+   rather than relying on any component default, which is what broke. */
+.polski-wizard__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
