@@ -189,6 +189,7 @@ export default function SetupWizard() {
                                 'polski',
                             )}
                         </p>
+                        <div className="polski-wizard__fields">
                         <TextControl
                             label={__('Company name', 'polski')}
                             value={data.company_name}
@@ -218,6 +219,7 @@ export default function SetupWizard() {
                             value={data.company_phone}
                             onChange={(v) => update('company_phone', v)}
                         />
+                        </div>
                     </CardBody>
                 </Card>
             )}
