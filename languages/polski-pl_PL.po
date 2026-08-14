@@ -1,19 +1,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.3.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-06-19T14:40:07+00:00\n"
-"PO-Revision-Date: 2026-04-04T08:58:00+02:00\n"
-"Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
-"Language-Team: Polish <pl@li.org>\n"
-"Language: pl_PL\n"
+"PO-Revision-Date: 2026-08-14 09:02:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Domain: polski\n"
-"X-Generator: Polski Translation Script 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: pl\n"
+"Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest release)\n"
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
@@ -429,8 +424,7 @@ msgstr "Opcjonalna zgoda na przypomnienia o opinii."
 
 #: config/defaults.php:133
 msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
-msgstr ""
-"Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
+msgstr "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
 
 #: config/defaults.php:134
 msgid "Opcjonalna zgoda marketingowa."
@@ -1746,13 +1740,11 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:713
 msgid "Current setting: plugin data will be removed on uninstall."
-msgstr ""
-"Aktualne ustawienie: dane wtyczki zostaną usunięte przy odinstalowaniu."
+msgstr "Aktualne ustawienie: dane wtyczki zostaną usunięte przy odinstalowaniu."
 
 #: src/Admin/AdminPage.php:714
 msgid "Current setting: plugin data will be kept on uninstall."
-msgstr ""
-"Aktualne ustawienie: dane wtyczki zostaną zachowane przy odinstalowaniu."
+msgstr "Aktualne ustawienie: dane wtyczki zostaną zachowane przy odinstalowaniu."
 
 #: src/Admin/AdminPage.php:729
 msgid "Audyt zgodności"
@@ -1886,8 +1878,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:818
 msgid "Select a report or tool to review your store setup status."
-msgstr ""
-"Wybierz raport lub narzędzie, aby sprawdzić status konfiguracji sklepu."
+msgstr "Wybierz raport lub narzędzie, aby sprawdzić status konfiguracji sklepu."
 
 #: src/Admin/AdminPage.php:857
 msgid "Open Report"
@@ -1953,9 +1944,7 @@ msgstr "Niektóre kluczowe elementy Twojego sklepu wciąż wymagają uwagi."
 
 #: src/Admin/AdminPage.php:961
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
-msgstr ""
-"Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo do "
-"odstąpienia)"
+msgstr "Opublikuj strony prawne (Regulamin, Polityka prywatności, Prawo do odstąpienia)"
 
 #: src/Admin/AdminPage.php:964
 msgid "Go through the checklist below"
@@ -2089,7 +2078,7 @@ msgstr "Rejestr zgód"
 #: src/Service/SecurityIncidentService.php:138
 #: src/Service/StockExportService.php:102
 msgid "Export CSV"
-msgstr "Eksportuj CSV"
+msgstr "Eksport do pliku CSV"
 
 #: src/Admin/ConsentRecordsPage.php:62
 msgid ""
@@ -2425,8 +2414,7 @@ msgstr "Co moglibyśmy zrobić lepiej?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr ""
-"Powiedz nam, co było frustrujące, niejasne lub nie działało poprawnie."
+msgstr "Powiedz nam, co było frustrujące, niejasne lub nie działało poprawnie."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
@@ -3621,8 +3609,7 @@ msgstr "Pokazuj na listach produktów"
 
 #: src/Admin/ModulesPage.php:275
 msgid "Also display the delivery time on shop and archive product cards."
-msgstr ""
-"Wyświetlaj również czas dostawy na kartach produktów w sklepie i archiwach."
+msgstr "Wyświetlaj również czas dostawy na kartach produktów w sklepie i archiwach."
 
 #: src/Admin/ModulesPage.php:280
 msgid "Shipping costs info"
@@ -3731,9 +3718,7 @@ msgstr "Etykieta - Prawo odstąpienia"
 #: src/Admin/ModulesPage.php:325
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
-msgstr ""
-"Użyj %s jako symbolu zastępczego dla linku do strony zwrotów lub odstąpienia"
-" od umowy"
+msgstr "Użyj %s jako symbolu zastępczego dla linku do strony zwrotów lub odstąpienia od umowy"
 
 #: src/Admin/ModulesPage.php:326
 msgid "Error - Right of withdrawal"
@@ -3960,8 +3945,7 @@ msgstr "Google Consent Mode v2"
 
 #: src/Admin/ModulesPage.php:394
 msgid "Sends consent signals to Google tags (gtag / GTM) before they run."
-msgstr ""
-"Wysyła sygnały zgody do tagów Google (gtag / GTM) przed ich uruchomieniem."
+msgstr "Wysyła sygnały zgody do tagów Google (gtag / GTM) przed ich uruchomieniem."
 
 #: src/Admin/ModulesPage.php:400
 msgid "Returns & complaints (RMA)"
@@ -4210,9 +4194,7 @@ msgstr "Temat e-maila z potwierdzeniem"
 
 #: src/Admin/ModulesPage.php:454 src/Admin/ModulesPage.php:457
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
-msgstr ""
-"Twój wniosek o odstąpienie od umowy dla zamówienia #{order_number} został "
-"potwierdzony."
+msgstr "Twój wniosek o odstąpienie od umowy dla zamówienia #{order_number} został potwierdzony."
 
 #: src/Admin/ModulesPage.php:454
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
@@ -4589,8 +4571,7 @@ msgstr "Informacje o zasilaniu"
 
 #: src/Admin/ModulesPage.php:568
 msgid "Energy consumption data for electrical devices (energy labels)."
-msgstr ""
-"Dane o zużyciu energii dla urządzeń elektrycznych (etykiety energetyczne)."
+msgstr "Dane o zużyciu energii dla urządzeń elektrycznych (etykiety energetyczne)."
 
 #: src/Admin/ModulesPage.php:579
 msgid "Double Opt-In (DOI)"
@@ -4634,8 +4615,7 @@ msgstr "Komunikat o udanej aktywacji"
 
 #: src/Admin/ModulesPage.php:589
 msgid "Excellent! Your account has been activated. You can now log in."
-msgstr ""
-"Wspaniale! Twoje konto zostało aktywowane. Możesz się teraz zalogować."
+msgstr "Wspaniale! Twoje konto zostało aktywowane. Możesz się teraz zalogować."
 
 #: src/Admin/ModulesPage.php:590 src/Admin/ModulesPage.php:959
 #: src/Admin/ModulesPage.php:1337
@@ -4727,8 +4707,7 @@ msgstr "Minimalna liczba znaków"
 
 #: src/Admin/ModulesPage.php:611
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
-msgstr ""
-"Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
+msgstr "Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
 
 #: src/Admin/ModulesPage.php:612 resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
@@ -5475,8 +5454,7 @@ msgstr "Próg niskiego stanu magazynowego"
 
 #: src/Admin/ModulesPage.php:843
 msgid "Badge appears when stock quantity is at or below this number"
-msgstr ""
-"Odznaka pojawia się, gdy stan magazynowy jest na tym poziomie lub niższy"
+msgstr "Odznaka pojawia się, gdy stan magazynowy jest na tym poziomie lub niższy"
 
 #: src/Admin/ModulesPage.php:844
 msgid "Bestseller badge"
@@ -5492,8 +5470,7 @@ msgstr "Próg bestsellera (sprzedaż)"
 
 #: src/Admin/ModulesPage.php:846
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
-msgstr ""
-"Minimalna łączna liczba sprzedaży, aby pojawiła się odznaka „Bestseller”"
+msgstr "Minimalna łączna liczba sprzedaży, aby pojawiła się odznaka „Bestseller”"
 
 #: src/Admin/ModulesPage.php:851 src/Admin/ProductMetaBox.php:188
 msgid "Tab Manager"
@@ -5889,8 +5866,7 @@ msgstr "Opóźnienie w sekundach"
 
 #: src/Admin/ModulesPage.php:1011
 msgid "How long to wait after page load before showing the popup"
-msgstr ""
-"Jak długo czekać po załadowaniu strony przed pokazaniem wyskakującego okna"
+msgstr "Jak długo czekać po załadowaniu strony przed pokazaniem wyskakującego okna"
 
 #: src/Admin/ModulesPage.php:1012
 msgid "Frequency of re-showing (days)"
@@ -6080,8 +6056,7 @@ msgstr "Adres e-mail alertów"
 
 #: src/Admin/ModulesPage.php:1117
 msgid "Where to send health alerts. Defaults to the site admin email."
-msgstr ""
-"Dokąd wysyłać alerty kondycji. Domyślnie e-mail administratora witryny."
+msgstr "Dokąd wysyłać alerty kondycji. Domyślnie e-mail administratora witryny."
 
 #: src/Admin/ModulesPage.php:1118
 msgid "Alert webhook URL"
@@ -6089,8 +6064,7 @@ msgstr "URL webhooka alertów"
 
 #: src/Admin/ModulesPage.php:1118
 msgid "Optional. Sends a JSON {\"text\": ...} payload (Slack/Discord-compatible)."
-msgstr ""
-"Opcjonalne. Wysyła ładunek JSON {\"text\": ...} (zgodny ze Slack/Discord)."
+msgstr "Opcjonalne. Wysyła ładunek JSON {\"text\": ...} (zgodny ze Slack/Discord)."
 
 #: src/Admin/ModulesPage.php:1119
 msgid "Checkout failure threshold (%)"
@@ -6098,8 +6072,7 @@ msgstr "Próg nieudanych płatności (%)"
 
 #: src/Admin/ModulesPage.php:1119
 msgid "Alert when this share of checkouts fails within the last 2 hours."
-msgstr ""
-"Alert, gdy taki odsetek finalizacji zawiedzie w ciągu ostatnich 2 godzin."
+msgstr "Alert, gdy taki odsetek finalizacji zawiedzie w ciągu ostatnich 2 godzin."
 
 #: src/Admin/ModulesPage.php:1120
 msgid "Minimum checkout sample"
@@ -6129,8 +6102,7 @@ msgstr "Wyciszenie alertów (minuty)"
 
 #: src/Admin/ModulesPage.php:1122
 msgid "Minimum time between repeat alerts for an ongoing problem."
-msgstr ""
-"Minimalny odstęp między powtórzonymi alertami dla trwającego problemu."
+msgstr "Minimalny odstęp między powtórzonymi alertami dla trwającego problemu."
 
 #: src/Admin/ModulesPage.php:1127
 msgid "AI Bridge"
@@ -6805,9 +6777,7 @@ msgstr "Automatyczna rejestracja nowych użytkowników"
 
 #: src/Admin/ModulesPage.php:1420
 msgid "Create WooCommerce accounts automatically on first social login"
-msgstr ""
-"Twórz konta WooCommerce automatycznie przy pierwszym logowaniu "
-"społecznościowym"
+msgstr "Twórz konta WooCommerce automatycznie przy pierwszym logowaniu społecznościowym"
 
 #: src/Admin/ModulesPage.php:1425
 msgid "Product Authors"
@@ -7078,7 +7048,7 @@ msgstr "Pogrupowane (domyślnie)"
 
 #: src/Admin/ModulesPage.php:1621
 msgid "Name (A, Z)"
-msgstr "Nazwa (A-Z)"
+msgstr "Nazwa (A, Z)"
 
 #: src/Admin/ModulesPage.php:1622
 msgid "Enabled first"
@@ -7306,9 +7276,7 @@ msgstr "Zainstaluj One Stop Shop"
 
 #: src/Admin/ModulesPage.php:2713
 msgid "You need the install_plugins capability to install it from here."
-msgstr ""
-"Aby zainstalować ją z tego miejsca, potrzebujesz uprawnienia "
-"install_plugins."
+msgstr "Aby zainstalować ją z tego miejsca, potrzebujesz uprawnienia install_plugins."
 
 #: src/Admin/ModulesPage.php:2722
 msgid "One Stop Shop plugin detected."
@@ -7797,8 +7765,7 @@ msgstr "Link do certyfikatu"
 
 #: src/Admin/ProductMetaBox.php:316
 msgid "URL to the official certificate supporting the environmental claim."
-msgstr ""
-"URL do oficjalnego certyfikatu potwierdzającego deklarację środowiskową."
+msgstr "URL do oficjalnego certyfikatu potwierdzającego deklarację środowiskową."
 
 #: src/Admin/ProductMetaBox.php:323
 msgid "Certificate expiry date (YYYY-MM-DD)"
@@ -7943,7 +7910,7 @@ msgstr "Zaznacz wszystkie"
 #: src/Admin/WithdrawalsAdminPage.php:162
 #: src/Service/StockExportService.php:344
 msgid "ID"
-msgstr "ID"
+msgstr "Identyfikator"
 
 #: src/Admin/WithdrawalsAdminPage.php:163
 #: src/Service/ReturnRequestService.php:228
@@ -8161,9 +8128,7 @@ msgstr "Tryb zgody"
 
 #: src/Admin/WithdrawalSettingsPage.php:230
 msgid "Required - block checkout unless the consumer ticks the consent box."
-msgstr ""
-"Wymagana - zablokuj finalizację zamówienia, dopóki konsument nie zaznaczy "
-"pola zgody."
+msgstr "Wymagana - zablokuj finalizację zamówienia, dopóki konsument nie zaznaczy pola zgody."
 
 #: src/Admin/WithdrawalSettingsPage.php:231
 msgid ""
@@ -8213,8 +8178,7 @@ msgstr "Automatycznie (użyj języka witryny)"
 
 #: src/Admin/WithdrawalSettingsPage.php:277
 msgid "Pro extension provides non-Polish languages for Annex I(B)."
-msgstr ""
-"Rozszerzenie Pro udostępnia języki inne niż polski dla załącznika I(B)."
+msgstr "Rozszerzenie Pro udostępnia języki inne niż polski dla załącznika I(B)."
 
 #: src/Admin/WithdrawalSettingsPage.php:284
 msgid "Refund handling (Pro)"
@@ -8230,9 +8194,7 @@ msgstr "Cały pakiet (zwrot za produkt nadrzędny + powiązane)"
 
 #: src/Admin/WithdrawalSettingsPage.php:291
 msgid "Proportional (refund only the withdrawn child's share)"
-msgstr ""
-"Proporcjonalny (zwrot tylko udziału produktu podrzędnego objętego "
-"odstąpieniem)"
+msgstr "Proporcjonalny (zwrot tylko udziału produktu podrzędnego objętego odstąpieniem)"
 
 #: src/Admin/WithdrawalSettingsPage.php:292
 msgid "Remove bundle discount (refund at standalone price)"
@@ -9307,8 +9269,7 @@ msgstr ""
 
 #: src/PageCompliance/Rules/CookieBannerRules.php:158
 msgid "No auto-prompt for push notifications on first load"
-msgstr ""
-"Brak automatycznego żądania powiadomień push przy pierwszym załadowaniu"
+msgstr "Brak automatycznego żądania powiadomień push przy pierwszym załadowaniu"
 
 #: src/PageCompliance/Rules/CookieBannerRules.php:170
 msgid ""
@@ -9437,9 +9398,7 @@ msgstr "Prawo sprzeciwu"
 
 #: src/PageCompliance/Rules/PrivacyPolicyRules.php:175
 msgid "State the right to object to processing (especially for marketing)."
-msgstr ""
-"Wskaż prawo sprzeciwu wobec przetwarzania (zwłaszcza w celach "
-"marketingowych)."
+msgstr "Wskaż prawo sprzeciwu wobec przetwarzania (zwłaszcza w celach marketingowych)."
 
 #: src/PageCompliance/Rules/PrivacyPolicyRules.php:179
 msgid "Right to withdraw consent"
@@ -9603,9 +9562,7 @@ msgstr "Odwołanie do polityki prywatności / RODO"
 
 #: src/PageCompliance/Rules/RegulaminRules.php:176
 msgid "Link to the privacy policy and note that RODO/GDPR obligations apply."
-msgstr ""
-"Dodaj link do polityki prywatności i zaznacz, że obowiązują przepisy "
-"RODO/GDPR."
+msgstr "Dodaj link do polityki prywatności i zaznacz, że obowiązują przepisy RODO/GDPR."
 
 #: src/PageCompliance/Rules/RegulaminRules.php:180
 msgid "Amendment procedure for the regulations"
@@ -9621,9 +9578,7 @@ msgstr "Prawo właściwe"
 
 #: src/PageCompliance/Rules/RegulaminRules.php:200
 msgid "State the governing law (typically Polish law for PL-based stores)."
-msgstr ""
-"Wskaż prawo właściwe (zazwyczaj prawo polskie dla sklepów z siedzibą w "
-"Polsce)."
+msgstr "Wskaż prawo właściwe (zazwyczaj prawo polskie dla sklepów z siedzibą w Polsce)."
 
 #: src/PageCompliance/Rules/RegulaminRules.php:204
 msgid "ODR platform (out-of-court dispute)"
@@ -9707,9 +9662,7 @@ msgstr "Język"
 
 #: src/Rest/AiGpsrDraftController.php:47
 msgid "WooCommerce product ID to draft GPSR safety text for."
-msgstr ""
-"Identyfikator produktu WooCommerce, dla którego ma powstać projekt tekstu "
-"bezpieczeństwa GPSR."
+msgstr "Identyfikator produktu WooCommerce, dla którego ma powstać projekt tekstu bezpieczeństwa GPSR."
 
 #: src/Rest/AiGpsrDraftController.php:85
 #: src/Rest/AiProductSummaryController.php:71
@@ -9780,8 +9733,7 @@ msgstr "Wbudowane checkboxy nie mogą być usunięte. Możesz je tylko wyłączy
 
 #: src/Rest/ConsentController.php:96
 msgid "Could not verify the request. Please reload the page and try again."
-msgstr ""
-"Nie udało się zweryfikować żądania. Odśwież stronę i spróbuj ponownie."
+msgstr "Nie udało się zweryfikować żądania. Odśwież stronę i spróbuj ponownie."
 
 #: src/Rest/GuestWithdrawalController.php:84
 msgid "Brakuje numeru zamówienia lub adres e-mail jest nieprawidłowy."
@@ -9830,9 +9782,7 @@ msgstr "Kreator zakończony."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
-msgstr ""
-"Nie udało się przygotować wniosku o odstąpienie od umowy dla tego "
-"zamówienia."
+msgstr "Nie udało się przygotować wniosku o odstąpienie od umowy dla tego zamówienia."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Invalid status."
@@ -9848,9 +9798,7 @@ msgstr "Polski - odstąpienie od umowy"
 
 #: src/Service/AbilitiesService.php:59
 msgid "Consumer right of withdrawal (14-day return) operations."
-msgstr ""
-"Operacje związane z prawem konsumenta do odstąpienia od umowy (zwrot w ciągu"
-" 14 dni)."
+msgstr "Operacje związane z prawem konsumenta do odstąpienia od umowy (zwrot w ciągu 14 dni)."
 
 #: src/Service/AbilitiesService.php:63
 msgid "Polski - legal documents"
@@ -9858,9 +9806,7 @@ msgstr "Polski - dokumenty prawne"
 
 #: src/Service/AbilitiesService.php:64
 msgid "Generated consumer-law documents (Annex I(A), I(B), etc.)."
-msgstr ""
-"Wygenerowane dokumenty z zakresu prawa konsumenckiego (Załącznik I(A), I(B) "
-"itp.)."
+msgstr "Wygenerowane dokumenty z zakresu prawa konsumenckiego (Załącznik I(A), I(B) itp.)."
 
 #: src/Service/AbilitiesService.php:68
 msgid "Polski - compliance checks"
@@ -9939,9 +9885,7 @@ msgstr "Potwierdź wniosek o odstąpienie"
 
 #: src/Service/AbilitiesService.php:293
 msgid "Moves a requested withdrawal to the confirmed state (admin action)."
-msgstr ""
-"Zmienia stan zgłoszonego wniosku o odstąpienie na potwierdzony (działanie "
-"administratora)."
+msgstr "Zmienia stan zgłoszonego wniosku o odstąpienie na potwierdzony (działanie administratora)."
 
 #: src/Service/AbilitiesService.php:314
 msgid "Complete a withdrawal request"
@@ -9961,9 +9905,7 @@ msgstr "Odrzuć wniosek o odstąpienie"
 
 #: src/Service/AbilitiesService.php:337
 msgid "Rejects a withdrawal request with an audit-trailed reason."
-msgstr ""
-"Odrzuca wniosek o odstąpienie z podaniem powodu zapisanego w dzienniku "
-"zdarzeń."
+msgstr "Odrzuca wniosek o odstąpienie z podaniem powodu zapisanego w dzienniku zdarzeń."
 
 #: src/Service/AbilitiesService.php:362
 msgid "List withdrawal requests"
@@ -10369,8 +10311,7 @@ msgstr "REGON musi zawierać dokładnie 9 lub 14 cyfr."
 #: src/Service/B2BCheckoutService.php:186
 #: src/Service/B2BCheckoutService.php:365
 msgid "The IBAN is invalid. Check the country code, length, and check digits."
-msgstr ""
-"Numer IBAN jest nieprawidłowy. Sprawdź kod kraju, długość i cyfry kontrolne."
+msgstr "Numer IBAN jest nieprawidłowy. Sprawdź kod kraju, długość i cyfry kontrolne."
 
 #: src/Service/B2BCheckoutService.php:261
 msgid "REGON"
@@ -10445,9 +10386,7 @@ msgstr ""
 
 #: src/Service/CheckboxService.php:361
 msgid "Consider enabling Digital Content waiver if you sell digital products."
-msgstr ""
-"Rozważ włączenie zrzeczenia się prawa odstąpienia dla treści cyfrowych, "
-"jeśli sprzedajesz produkty cyfrowe."
+msgstr "Rozważ włączenie zrzeczenia się prawa odstąpienia dla treści cyfrowych, jeśli sprzedajesz produkty cyfrowe."
 
 #: src/Service/CheckboxService.php:373
 msgid ""
@@ -11009,8 +10948,7 @@ msgstr ""
 
 #: src/Service/DoubleOptInService.php:138
 msgid "Great! Your account is now activated. You can now log in."
-msgstr ""
-"Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz zalogować."
+msgstr "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz zalogować."
 
 #: src/Service/DPATrackerService.php:36
 msgid "You do not have permission to manage DPA registry."
@@ -11220,9 +11158,7 @@ msgstr "%d/8 pól wypełnionych"
 
 #: src/Service/GuestWithdrawalService.php:58
 msgid "Security check failed. Please refresh the page and try again."
-msgstr ""
-"Weryfikacja bezpieczeństwa nie powiodła się. Odśwież stronę i spróbuj "
-"ponownie."
+msgstr "Weryfikacja bezpieczeństwa nie powiodła się. Odśwież stronę i spróbuj ponownie."
 
 #: src/Service/GuestWithdrawalService.php:70
 msgid ""
@@ -11968,8 +11904,7 @@ msgstr "Prawo sprzeciwu (art. 21)"
 
 #: src/Service/RodoTrainingDocsService.php:205
 msgid "Right not to be subject to automated decision-making (Art. 22)"
-msgstr ""
-"Prawo do niepodlegania zautomatyzowanemu podejmowaniu decyzji (art. 22)"
+msgstr "Prawo do niepodlegania zautomatyzowanemu podejmowaniu decyzji (art. 22)"
 
 #: src/Service/RodoTrainingDocsService.php:208
 msgid "Seven principles of processing (Art. 5)"
@@ -11985,20 +11920,15 @@ msgstr "Przypomnienia operacyjne"
 
 #: src/Service/RodoTrainingDocsService.php:224
 msgid "Never email spreadsheets of personal data - use encrypted channels."
-msgstr ""
-"Nigdy nie wysyłaj arkuszy z danymi osobowymi e-mailem - korzystaj z "
-"szyfrowanych kanałów."
+msgstr "Nigdy nie wysyłaj arkuszy z danymi osobowymi e-mailem - korzystaj z szyfrowanych kanałów."
 
 #: src/Service/RodoTrainingDocsService.php:225
 msgid "Verify the requester before acting on access or erasure requests."
-msgstr ""
-"Zweryfikuj wnioskodawcę przed rozpatrzeniem żądania dostępu lub usunięcia."
+msgstr "Zweryfikuj wnioskodawcę przed rozpatrzeniem żądania dostępu lub usunięcia."
 
 #: src/Service/RodoTrainingDocsService.php:226
 msgid "Log every disclosure to third parties (processors, authorities)."
-msgstr ""
-"Rejestruj każde ujawnienie danych osobom trzecim (podmioty przetwarzające, "
-"organy)."
+msgstr "Rejestruj każde ujawnienie danych osobom trzecim (podmioty przetwarzające, organy)."
 
 #: src/Service/RodoTrainingDocsService.php:227
 msgid ""
@@ -12010,14 +11940,11 @@ msgstr ""
 
 #: src/Service/RodoTrainingDocsService.php:236
 msgid "Discovery - record timestamp, discoverer, affected systems."
-msgstr ""
-"Wykrycie - zapisz znacznik czasu, osobę wykrywającą, systemy, których "
-"dotyczy."
+msgstr "Wykrycie - zapisz znacznik czasu, osobę wykrywającą, systemy, których dotyczy."
 
 #: src/Service/RodoTrainingDocsService.php:237
 msgid "Containment - isolate affected accounts/systems within 1 hour."
-msgstr ""
-"Ograniczenie - izoluj konta/systemy, których dotyczy, w ciągu 1 godziny."
+msgstr "Ograniczenie - izoluj konta/systemy, których dotyczy, w ciągu 1 godziny."
 
 #: src/Service/RodoTrainingDocsService.php:238
 msgid "Internal notification - DPO and management within 24 hours."
@@ -12040,9 +11967,7 @@ msgstr ""
 
 #: src/Service/RodoTrainingDocsService.php:241
 msgid "Subject notification - required \"without undue delay\" when risk is high."
-msgstr ""
-"Powiadomienie osoby, której dane dotyczą - wymagane \"bez zbędnej zwłoki\", "
-"gdy ryzyko jest wysokie."
+msgstr "Powiadomienie osoby, której dane dotyczą - wymagane \"bez zbędnej zwłoki\", gdy ryzyko jest wysokie."
 
 #: src/Service/RodoTrainingDocsService.php:242
 msgid "Remediation - patch, rotate credentials, review logs."
@@ -12235,8 +12160,7 @@ msgstr "Audyt zgodności sklepu"
 
 #: src/Service/SiteAuditService.php:53
 msgid "Automatic verification of common issues for Polish WooCommerce shops."
-msgstr ""
-"Automatyczna weryfikacja typowych problemów polskich sklepów WooCommerce."
+msgstr "Automatyczna weryfikacja typowych problemów polskich sklepów WooCommerce."
 
 #: src/Service/SiteAuditService.php:59
 msgid "Passed"
@@ -12375,8 +12299,7 @@ msgstr "Strony regulaminu i polityki prywatności są ustawione i opublikowane."
 #: src/Service/SiteAuditService.php:387
 #, php-format
 msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
-msgstr ""
-"Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane."
+msgstr "Brakujące strony: %s. Ustaw je w WooCommerce > Ustawienia > Zaawansowane."
 
 #: src/Service/SiteAuditService.php:400
 msgid "Privacy Policy content"
@@ -12645,9 +12568,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:843
 msgid "DPA registry has no active data processing agreements marked."
-msgstr ""
-"Rejestr DPA nie ma zaznaczonych aktywnych umów powierzenia przetwarzania "
-"danych."
+msgstr "Rejestr DPA nie ma zaznaczonych aktywnych umów powierzenia przetwarzania danych."
 
 #. translators: 1: number of services with DPA, 2: number of tracked services
 #: src/Service/SiteAuditService.php:853
@@ -12680,9 +12601,7 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:898
 msgid "Incident module is enabled, but no security contact email is set."
-msgstr ""
-"Moduł incydentów jest włączony, ale nie ustawiono adresu e-mail kontaktu "
-"bezpieczeństwa."
+msgstr "Moduł incydentów jest włączony, ale nie ustawiono adresu e-mail kontaktu bezpieczeństwa."
 
 #: src/Service/SiteAuditService.php:906
 msgid ""
@@ -12736,13 +12655,11 @@ msgstr "Lub zaloguj się przez"
 
 #: src/Service/SocialLoginService.php:196
 msgid "Social login verification failed. Please try again."
-msgstr ""
-"Weryfikacja logowania społecznościowego nie powiodła się. Spróbuj ponownie."
+msgstr "Weryfikacja logowania społecznościowego nie powiodła się. Spróbuj ponownie."
 
 #: src/Service/SocialLoginService.php:205
 msgid "Could not authenticate with the social provider. Please try again."
-msgstr ""
-"Nie udało się uwierzytelnić u dostawcy społecznościowego. Spróbuj ponownie."
+msgstr "Nie udało się uwierzytelnić u dostawcy społecznościowego. Spróbuj ponownie."
 
 #: src/Service/SocialLoginService.php:214
 msgid ""
@@ -12848,8 +12765,7 @@ msgstr "Znalezione produkty"
 
 #: src/Service/StockExportService.php:288
 msgid "Preview limited to 500 rows. Use CSV export for full data."
-msgstr ""
-"Podgląd ograniczony do 500 wierszy. Pełne dane pobierz przez eksport CSV."
+msgstr "Podgląd ograniczony do 500 wierszy. Pełne dane pobierz przez eksport CSV."
 
 #: src/Service/StockExportService.php:291
 msgid "Back to export"
@@ -12913,9 +12829,7 @@ msgstr "Uruchom sprawdzenie teraz"
 
 #: src/Service/StoreHealthMonitorService.php:282
 msgid "No check has run yet. Use \"Run check now\" to evaluate immediately."
-msgstr ""
-"Żadne sprawdzenie nie zostało jeszcze uruchomione. Użyj „Uruchom sprawdzenie"
-" teraz”, aby ocenić natychmiast."
+msgstr "Żadne sprawdzenie nie zostało jeszcze uruchomione. Użyj „Uruchom sprawdzenie teraz”, aby ocenić natychmiast."
 
 #: src/Service/StoreHealthMonitorService.php:285
 msgid "Sensor"
@@ -12943,24 +12857,19 @@ msgstr "Błąd krytyczny: %1$s (%2$s:%3$d)"
 #: src/Service/StoreHealthMonitorService.php:346
 #, php-format
 msgid "Insufficient data (%1$d/%2$d checkouts in the last 2h)."
-msgstr ""
-"Niewystarczające dane (%1$d/%2$d finalizacji w ciągu ostatnich 2 godz.)."
+msgstr "Niewystarczające dane (%1$d/%2$d finalizacji w ciągu ostatnich 2 godz.)."
 
 #. translators: 1: failed count, 2: total count, 3: failure percentage
 #: src/Service/StoreHealthMonitorService.php:361
 #, php-format
 msgid "%1$d of %2$d checkouts failed (%3$d%%) in the last 2h."
-msgstr ""
-"%1$d z %2$d finalizacji zakończyło się niepowodzeniem (%3$d%%) w ciągu "
-"ostatnich 2 godz."
+msgstr "%1$d z %2$d finalizacji zakończyło się niepowodzeniem (%3$d%%) w ciągu ostatnich 2 godz."
 
 #. translators: 1: failed count, 2: total count
 #: src/Service/StoreHealthMonitorService.php:373
 #, php-format
 msgid "%1$d of %2$d checkouts failed in the last 2h."
-msgstr ""
-"%1$d z %2$d finalizacji zakończyło się niepowodzeniem w ciągu ostatnich 2 "
-"godz."
+msgstr "%1$d z %2$d finalizacji zakończyło się niepowodzeniem w ciągu ostatnich 2 godz."
 
 #. translators: 1: expected order count
 #: src/Service/StoreHealthMonitorService.php:425
@@ -13093,9 +13002,7 @@ msgstr "Polski - wyszukiwanie odstąpienia"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
-msgstr ""
-"Formularz wyszukiwania po adresie e-mail i numerze zamówienia, umożliwiający"
-" gościom złożenie oświadczenia o odstąpieniu."
+msgstr "Formularz wyszukiwania po adresie e-mail i numerze zamówienia, umożliwiający gościom złożenie oświadczenia o odstąpieniu."
 
 #: src/Service/WithdrawalBlocksService.php:39
 msgid "Polski - Annex I(A) information"
@@ -13307,9 +13214,7 @@ msgstr "Skonfigurowano statusy wyzwalające."
 #: src/Service/WithdrawalSiteHealthService.php:101
 #, php-format
 msgid "The 14-day withdrawal clock starts when an order enters: %s."
-msgstr ""
-"14-dniowy termin na odstąpienie rozpoczyna się, gdy zamówienie uzyskuje "
-"status: %s."
+msgstr "14-dniowy termin na odstąpienie rozpoczyna się, gdy zamówienie uzyskuje status: %s."
 
 #: src/Service/WithdrawalSiteHealthService.php:111
 msgid "No trigger statuses configured for the withdrawal clock."
@@ -13344,9 +13249,7 @@ msgstr "Automatyczny język Załącznika I(B) odpowiada językowi witryny."
 
 #: src/Service/WithdrawalSiteHealthService.php:154
 msgid "Annex I(B) generator auto-detects the site locale. No action needed."
-msgstr ""
-"Generator Załącznika I(B) automatycznie wykrywa język witryny. Nie jest "
-"wymagane żadne działanie."
+msgstr "Generator Załącznika I(B) automatycznie wykrywa język witryny. Nie jest wymagane żadne działanie."
 
 #: src/Service/WithdrawalSiteHealthService.php:160
 msgid "Annex I(B) auto-locale may fall back to EN."
@@ -13401,9 +13304,7 @@ msgstr "Produkty w tym zamówieniu"
 #: templates/account/withdrawal-confirm.php:87
 #, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
-msgstr ""
-"Czy na pewno chcesz złożyć wniosek o odstąpienie od umowy dla zamówienia "
-"#%s?"
+msgstr "Czy na pewno chcesz złożyć wniosek o odstąpienie od umowy dla zamówienia #%s?"
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
@@ -14094,8 +13995,7 @@ msgstr "Polski AJAX Wyszukiwarka"
 
 #: resources/js/blocks/ajax-search/index.js:62
 msgid "Dynamic product search form rendered on the frontend."
-msgstr ""
-"Dynamiczny formularz wyszukiwania produktów wyświetlany na stronie sklepu."
+msgstr "Dynamiczny formularz wyszukiwania produktów wyświetlany na stronie sklepu."
 
 #: resources/js/blocks/product-slider/index.js:16
 msgid "Slider settings"
@@ -14119,9 +14019,7 @@ msgstr "Produkty wyróżnione"
 
 #: resources/js/blocks/product-slider/index.js:37
 msgid "Optional for related and upsell sliders outside product templates."
-msgstr ""
-"Opcjonalne dla sliderów produktów powiązanych i upsell poza szablonami "
-"produktu."
+msgstr "Opcjonalne dla sliderów produktów powiązanych i upsell poza szablonami produktu."
 
 #: resources/js/blocks/product-slider/index.js:41
 msgid "Product limit"
@@ -14147,22 +14045,22 @@ msgstr "Alergeny"
 #: blocks/allergens/block.json
 msgctxt "block description"
 msgid "Displays the allergen declaration for the current product."
-msgstr "Wyświetla deklarację alergenów dla bieżącego produktu."
+msgstr "Wyświetla informację o alergenach dla bieżącego produktu."
 
 #: blocks/bdo/block.json
 msgctxt "block title"
 msgid "BDO number"
-msgstr "numer BDO"
+msgstr "Numer BDO"
 
 #: blocks/bdo/block.json
 msgctxt "block description"
 msgid "Displays the shop's BDO registration number from the Polski settings."
-msgstr "Wyświetla numer rejestracyjny BDO sklepu z ustawień Polski."
+msgstr "Wyświetla numer rejestrowy BDO sklepu z ustawień Polski."
 
 #: blocks/business-info/block.json
 msgctxt "block title"
 msgid "Business identification"
-msgstr "Identyfikacja biznesowa"
+msgstr "Identyfikacja firmy"
 
 #: blocks/business-info/block.json
 msgctxt "block description"
@@ -14176,7 +14074,7 @@ msgstr ""
 #: blocks/complaints/block.json
 msgctxt "block title"
 msgid "Dispute resolution notice"
-msgstr "Powiadomienie o rozstrzygnięciu sporu"
+msgstr "Informacja o rozstrzyganiu sporów"
 
 #: blocks/complaints/block.json
 msgctxt "block description"
@@ -14190,12 +14088,12 @@ msgstr ""
 #: blocks/copyright/block.json
 msgctxt "block title"
 msgid "Copyright notice"
-msgstr "Informacja o prawach autorskich"
+msgstr "Nota o prawach autorskich"
 
 #: blocks/copyright/block.json
 msgctxt "block description"
 msgid "A standard copyright line (© YYYY Owner)."
-msgstr "Standardowa linia dotycząca praw autorskich (© YYYY Owner)."
+msgstr "Standardowa linia praw autorskich (© RRRR Właściciel)."
 
 #: blocks/defect-description/block.json
 msgctxt "block title"
@@ -14205,7 +14103,7 @@ msgstr "Opis wady"
 #: blocks/defect-description/block.json
 msgctxt "block description"
 msgid "Displays the description of defects for the current product."
-msgstr "Wyświetla opis wad bieżącego produktu."
+msgstr "Wyświetla opis wad dla bieżącego produktu."
 
 #: blocks/delivery-time/block.json
 msgctxt "block title"
@@ -14215,43 +14113,37 @@ msgstr "Czas dostawy"
 #: blocks/delivery-time/block.json
 msgctxt "block description"
 msgid "Displays the estimated delivery time for the current product."
-msgstr "Wyświetla szacowany czas dostawy aktualnego produktu."
+msgstr "Wyświetla szacowany czas dostawy dla bieżącego produktu."
 
 #: blocks/dsa-report/block.json
 msgctxt "block title"
 msgid "DSA report form"
-msgstr "Formularz raportu DSA"
+msgstr "Formularz zgłoszenia DSA"
 
 #: blocks/dsa-report/block.json
 msgctxt "block description"
 msgid "A form for reporting illegal content under the Digital Services Act."
-msgstr ""
-"Formularz służący do zgłaszania treści o charakterze bezprawnym w rozumieniu"
-" ustawy o usługach cyfrowych."
+msgstr "Formularz do zgłaszania nielegalnych treści zgodnie z aktem o usługach cyfrowych (DSA)."
 
 #: blocks/food-info/block.json
 msgctxt "block title"
 msgid "Food Information"
-msgstr "Informacje o jedzeniu"
+msgstr "Informacje o żywności"
 
 #: blocks/food-info/block.json
 msgctxt "block description"
 msgid "Displays food and grocery information for the current product."
-msgstr ""
-"Wyświetla informacje o żywności i artykułach spożywczych dla bieżącego "
-"produktu."
+msgstr "Wyświetla informacje o żywności dla bieżącego produktu."
 
 #: blocks/gpsr/block.json
 msgctxt "block title"
 msgid "GPSR safety information"
-msgstr "Informacje dotyczące bezpieczeństwa GPSR"
+msgstr "Informacja o bezpieczeństwie produktu (GPSR)"
 
 #: blocks/gpsr/block.json
 msgctxt "block description"
 msgid "Displays the GPSR product safety information for the current product."
-msgstr ""
-"Wyświetla informacje dotyczące bezpieczeństwa produktu GPSR dla bieżącego "
-"produktu."
+msgstr "Wyświetla informację o bezpieczeństwie produktu (GPSR) dla bieżącego produktu."
 
 #: blocks/ingredients/block.json
 msgctxt "block title"
@@ -14261,7 +14153,7 @@ msgstr "Składniki"
 #: blocks/ingredients/block.json
 msgctxt "block description"
 msgid "Displays the ingredients list for the current product."
-msgstr "Wyświetla listę składników bieżącego produktu."
+msgstr "Wyświetla listę składników dla bieżącego produktu."
 
 #: blocks/manufacturer/block.json
 msgctxt "block title"
@@ -14279,7 +14171,7 @@ msgstr ""
 #: blocks/nutri-score/block.json
 msgctxt "block title"
 msgid "Nutri-Score"
-msgstr "Wynik Nutri"
+msgstr "Nutri-Score"
 
 #: blocks/nutri-score/block.json
 msgctxt "block description"
@@ -14289,17 +14181,17 @@ msgstr "Wyświetla etykietę Nutri-Score dla bieżącego produktu."
 #: blocks/nutrients/block.json
 msgctxt "block title"
 msgid "Nutritional Information"
-msgstr "Informacje o wartościach odżywczych"
+msgstr "Informacje o wartości odżywczej"
 
 #: blocks/nutrients/block.json
 msgctxt "block description"
 msgid "Displays the nutritional information for the current product."
-msgstr "Wyświetla informacje o wartości odżywczej bieżącego produktu."
+msgstr "Wyświetla wartości odżywcze dla bieżącego produktu."
 
 #: blocks/omnibus-price/block.json
 msgctxt "block title"
 msgid "Lowest Price (Omnibus)"
-msgstr "Najniższa cena (omnibus)"
+msgstr "Najniższa cena (Omnibus)"
 
 #: blocks/omnibus-price/block.json
 msgctxt "block description"
@@ -14313,12 +14205,12 @@ msgstr ""
 #: blocks/payment-methods/block.json
 msgctxt "block title"
 msgid "Accepted payment methods"
-msgstr "Akceptowane metody płatności"
+msgstr "Dostępne metody płatności"
 
 #: blocks/payment-methods/block.json
 msgctxt "block description"
 msgid "Lists the payment methods available in your store."
-msgstr "Wyświetla listę metod płatności dostępnych w Twoim sklepie."
+msgstr "Wyświetla listę metod płatności dostępnych w sklepie."
 
 #: blocks/power-supply/block.json
 msgctxt "block title"
@@ -14328,7 +14220,7 @@ msgstr "Zasilanie"
 #: blocks/power-supply/block.json
 msgctxt "block description"
 msgid "Displays the power supply information for the current product."
-msgstr "Wyświetla informacje o zasilaniu bieżącego produktu."
+msgstr "Wyświetla informacje o zasilaniu dla bieżącego produktu."
 
 #: blocks/safety-docs/block.json
 msgctxt "block title"
@@ -14351,7 +14243,7 @@ msgstr "Instrukcje bezpieczeństwa"
 #: blocks/safety-info/block.json
 msgctxt "block description"
 msgid "Displays the product safety instructions for the current product."
-msgstr "Wyświetla instrukcje dotyczące bezpieczeństwa bieżącego produktu."
+msgstr "Wyświetla instrukcje bezpieczeństwa dla bieżącego produktu."
 
 #: blocks/shipping-notice/block.json
 msgctxt "block title"
@@ -14361,12 +14253,12 @@ msgstr "Koszty wysyłki"
 #: blocks/shipping-notice/block.json
 msgctxt "block description"
 msgid "Displays the shipping cost notice for the current product."
-msgstr "Wyświetla informację o kosztach wysyłki bieżącego produktu."
+msgstr "Wyświetla informację o kosztach wysyłki dla bieżącego produktu."
 
 #: blocks/small-business-notice/block.json
 msgctxt "block title"
 msgid "Small business VAT notice"
-msgstr "Informacja o podatku VAT dla małych firm"
+msgstr "Informacja o zwolnieniu z VAT (mały podatnik)"
 
 #: blocks/small-business-notice/block.json
 msgctxt "block description"
@@ -14446,30 +14338,27 @@ msgstr ""
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
 msgid "Polski AJAX Filters"
-msgstr "Filtry AJAX Polski"
+msgstr "Polski AJAX Filtry"
 
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block description"
 msgid "Dynamic WooCommerce product filters with archive-safe GET fallback."
-msgstr ""
-"Dynamiczne filtry produktów WooCommerce z bezpiecznym dla archiwów "
-"mechanizmem awaryjnym GET."
+msgstr "Dynamiczne filtry produktów WooCommerce z bezpiecznym dla archiwów mechanizmem awaryjnym GET."
 
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block title"
 msgid "Polski AJAX Search"
-msgstr "Wyszukiwarka AJAX Polski"
+msgstr "Polski AJAX Wyszukiwarka"
 
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block description"
 msgid "Dynamic AJAX product search form for WooCommerce storefronts."
-msgstr ""
-"Dynamiczny formularz wyszukiwania produktów AJAX dla sklepów WooCommerce."
+msgstr "Dynamiczny formularz wyszukiwania produktów AJAX dla sklepów WooCommerce."
 
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block title"
 msgid "Polski Product Slider"
-msgstr "Slider produktów Polski"
+msgstr "Polski Slider produktów"
 
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block description"
