@@ -90,11 +90,10 @@ msgstr ""
 #. Found in description paragraph.
 msgid ""
 "Everything in the free edition stays free and open. Polski PRO starts at 69 "
-"EUR per year (PLN shown at checkout)."
+"EUR per year, billed in EUR."
 msgstr ""
 "Wszystko w wersji darmowej pozostaje darmowe i otwarte. Cena pakietu Polski "
-"PRO zaczyna się od 69 EUR rocznie (kwota w PLN wyświetlana jest przy "
-"finalizacji zamówienia)."
+"PRO zaczyna się od 69 EUR rocznie, płatność rozliczana jest w EUR."
 
 #. Found in description paragraph.
 msgid ""

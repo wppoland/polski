@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.0
+Stable tag: 1.29.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -120,7 +120,7 @@ Polski for WooCommerce covers the essential Polish-market compliance for free. *
 * **Pre-orders, bundles and add-ons** - sell before availability and bundle products
 * **Catalog mode and RFQ** - hide prices and collect quote requests
 
-Everything in the free edition stays free and open. Polski PRO starts at 69 EUR per year (PLN shown at checkout).
+Everything in the free edition stays free and open. Polski PRO starts at 69 EUR per year, billed in EUR.
 
 Compare editions and pricing: [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
 
@@ -319,6 +319,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.29.1 =
+* Corrected the PRO pricing note. It said the amount is shown in PLN at checkout, which is not true: Polski PRO is priced and charged in EUR. The note now says so, in English, Polish, German and Spanish.
 
 = 1.29.0 =
 * **The Food module now works.** It never did. The service checked a setting that the plugin seeds as off and never writes, so the food block on the product page was invisible on every shop no matter what the Food module toggle said. It now follows the toggle, which is the switch you can actually reach. Enter ingredients, allergens, nutrition, Nutri-Score or alcohol content, switch the module on, and they appear.
