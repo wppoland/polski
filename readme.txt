@@ -102,7 +102,7 @@ More free WooCommerce plugins from WPPoland:
 * [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
 
-Browse the full catalogue at https://plogins.com/ .
+Browse the full catalogue at [plogins.com/](https://plogins.com/) .
 
 Reporting a security issue: email hello@wppoland.com, and under our [coordinated disclosure policy](https://wppoland.com/en/security-policy/) we confirm within two business days, assess within five, and patch a critical issue within seven days of confirming it.
 
