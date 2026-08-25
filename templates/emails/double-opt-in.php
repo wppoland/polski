@@ -14,34 +14,41 @@
 declare(strict_types=1);
 
 defined('ABSPATH') || exit;
-// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invoking WooCommerce core email header hook for template integration.
-do_action('woocommerce_email_header', $polski_email_heading, $polski_email);
 
-$polski_user = get_user_by('id', $polski_user_id);
-$polski_name = $polski_user ? $polski_user->display_name : '';
-$polski_settings = get_option('polski_doi', []);
-$polski_settings = is_array($polski_settings) ? $polski_settings : [];
-$polski_greeting = str_replace('{name}', $polski_name, (string) ($polski_settings['email_greeting'] ?? __('Cześć {name},', 'polski')));
+$activation_url = $activation_url ?? $polski_activation_url ?? '';
+$user_id = (int) ($user_id ?? $polski_user_id ?? 0);
+$email_heading = $email_heading ?? $polski_email_heading ?? '';
+$additional_content = $additional_content ?? $polski_additional_content ?? '';
+$email = $email ?? $polski_email ?? null;
+
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invoking WooCommerce core email header hook for template integration.
+do_action('woocommerce_email_header', $email_heading, $email);
+
+$user = get_user_by('id', $user_id);
+$name = $user instanceof \WP_User ? $user->display_name : '';
+$settings = get_option('polski_doi', []);
+$settings = is_array($settings) ? $settings : [];
+$greeting = str_replace('{name}', $name, (string) ($settings['email_greeting'] ?? __('Cześć {name},', 'polski')));
 ?>
 
-<p><?php echo esc_html($polski_greeting); ?></p>
+<p><?php echo esc_html($greeting); ?></p>
 
-<p><?php echo esc_html((string) ($polski_settings['email_intro_html'] ?? __('Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:', 'polski'))); ?></p>
+<p><?php echo esc_html((string) ($settings['email_intro_html'] ?? __('Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:', 'polski'))); ?></p>
 
 <p style="text-align:center;margin:30px 0;">
-    <a href="<?php echo esc_url($polski_activation_url); ?>" style="background-color:#7f54b3;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:4px;display:inline-block;font-weight:bold;">
-        <?php echo esc_html((string) ($polski_settings['email_button_text'] ?? __('Aktywuj konto', 'polski'))); ?>
+    <a href="<?php echo esc_url($activation_url); ?>" style="background-color:#7f54b3;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:4px;display:inline-block;font-weight:bold;">
+        <?php echo esc_html((string) ($settings['email_button_text'] ?? __('Aktywuj konto', 'polski'))); ?>
     </a>
 </p>
 
-<p><?php echo esc_html((string) ($polski_settings['email_link_intro'] ?? __('Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:', 'polski'))); ?></p>
-<p><a href="<?php echo esc_url($polski_activation_url); ?>"><?php echo esc_html($polski_activation_url); ?></a></p>
+<p><?php echo esc_html((string) ($settings['email_link_intro'] ?? __('Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:', 'polski'))); ?></p>
+<p><a href="<?php echo esc_url($activation_url); ?>"><?php echo esc_html($activation_url); ?></a></p>
 
-<?php if ($polski_additional_content) : ?>
-    <p><?php echo wp_kses_post($polski_additional_content); ?></p>
+<?php if ($additional_content) : ?>
+    <p><?php echo wp_kses_post($additional_content); ?></p>
 <?php endif; ?>
 
 <?php
 // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invoking WooCommerce core email footer hook for template integration.
-do_action('woocommerce_email_footer', $polski_email);
+do_action('woocommerce_email_footer', $email);
 ?>

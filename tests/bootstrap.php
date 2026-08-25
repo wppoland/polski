@@ -112,10 +112,24 @@ if (! function_exists('esc_html__')) {
     }
 }
 
+if (! function_exists('esc_html_e')) {
+    function esc_html_e(string $text, string $domain = 'default'): void
+    {
+        echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    }
+}
+
 if (! function_exists('esc_attr__')) {
     function esc_attr__(string $text, string $domain = 'default'): string
     {
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    }
+}
+
+if (! function_exists('esc_attr_e')) {
+    function esc_attr_e(string $text, string $domain = 'default'): void
+    {
+        echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
 }
 
@@ -983,3 +997,105 @@ if (! class_exists('WC_Order')) {
         }
     }
 }
+
+if (! class_exists('WC_DateTime')) {
+    class WC_DateTime extends \DateTime
+    {
+        public function date_i18n(string $format = 'Y-m-d'): string
+        {
+            return $this->format($format);
+        }
+    }
+}
+
+if (! class_exists('WC_Email')) {
+    class WC_Email
+    {
+        public string $id = '';
+        public bool $customer_email = false;
+        public string $title = '';
+        public string $description = '';
+        public string $template_base = '';
+        public string $template_html = '';
+        public string $template_plain = '';
+        public array $placeholders = [];
+        public mixed $object = null;
+        public string $recipient = '';
+
+        public function __construct()
+        {
+        }
+
+        public function is_enabled(): bool
+        {
+            return true;
+        }
+
+        public function get_recipient(): string
+        {
+            return $this->recipient;
+        }
+
+        public function get_heading(): string
+        {
+            return method_exists($this, 'get_default_heading') ? $this->get_default_heading() : '';
+        }
+
+        public function get_subject(): string
+        {
+            return method_exists($this, 'get_default_subject') ? $this->get_default_subject() : '';
+        }
+
+        public function get_content(): string
+        {
+            return method_exists($this, 'get_content_html') ? $this->get_content_html() : '';
+        }
+
+        public function get_additional_content(): string
+        {
+            return method_exists($this, 'get_default_additional_content') ? $this->get_default_additional_content() : '';
+        }
+
+        public function get_headers(): string
+        {
+            return '';
+        }
+
+        public function get_attachments(): array
+        {
+            return [];
+        }
+
+        public function send(string $to, string $subject, string $message, string $headers, array $attachments): bool
+        {
+            return true;
+        }
+    }
+}
+
+if (! function_exists('wc_get_template_html')) {
+    function wc_get_template_html(string $template_name, array $args = [], string $template_path = '', string $default_path = ''): string
+    {
+        $path = ($default_path !== '' ? rtrim($default_path, '/') . '/' : \Polski\PLUGIN_DIR . '/templates/') . $template_name;
+        if (! file_exists($path)) {
+            return '';
+        }
+        extract($args);
+        ob_start();
+        include $path;
+        return ob_get_clean() ?: '';
+    }
+}
+
+if (! function_exists('wp_date')) {
+    function wp_date(string $format, int $timestamp = 0, ?\DateTimeZone $timezone = null): string
+    {
+        $dt = new \DateTimeImmutable('@' . $timestamp);
+        if ($timezone !== null) {
+            $dt = $dt->setTimezone($timezone);
+        }
+        return $dt->format($format);
+    }
+}
+
+
