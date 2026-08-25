@@ -30,20 +30,20 @@ final class Migration_2_6_0 implements Migration
     {
         // Slug => name. The order follows Annex II itself.
         $defaults = [
-            'zboza-zawierajace-gluten' => __('Zboża zawierające gluten', 'polski'),
-            'skorupiaki'               => __('Skorupiaki', 'polski'),
-            'jaja'                     => __('Jaja', 'polski'),
-            'ryby'                     => __('Ryby', 'polski'),
-            'orzeszki-ziemne'          => __('Orzeszki ziemne', 'polski'),
-            'soja'                     => __('Soja', 'polski'),
-            'mleko'                    => __('Mleko', 'polski'),
-            'orzechy'                  => __('Orzechy', 'polski'),
-            'seler'                    => __('Seler', 'polski'),
-            'gorczyca'                 => __('Gorczyca', 'polski'),
-            'nasiona-sezamu'           => __('Nasiona sezamu', 'polski'),
-            'dwutlenek-siarki-i-siarczyny' => __('Dwutlenek siarki i siarczyny', 'polski'),
-            'lubin'                    => __('Łubin', 'polski'),
-            'mieczaki'                 => __('Mięczaki', 'polski'),
+            'zboza-zawierajace-gluten' => __('Cereals containing gluten', 'polski'),
+            'skorupiaki'               => __('Crustaceans', 'polski'),
+            'jaja'                     => __('Eggs', 'polski'),
+            'ryby'                     => __('Fish', 'polski'),
+            'orzeszki-ziemne'          => __('Peanuts', 'polski'),
+            'soja'                     => __('Soybeans', 'polski'),
+            'mleko'                    => __('Milk', 'polski'),
+            'orzechy'                  => __('Nuts', 'polski'),
+            'seler'                    => __('Celery', 'polski'),
+            'gorczyca'                 => __('Mustard', 'polski'),
+            'nasiona-sezamu'           => __('Sesame seeds', 'polski'),
+            'dwutlenek-siarki-i-siarczyny' => __('Sulphur dioxide and sulphites', 'polski'),
+            'lubin'                    => __('Lupin', 'polski'),
+            'mieczaki'                 => __('Molluscs', 'polski'),
         ];
 
         foreach ($defaults as $slug => $name) {
