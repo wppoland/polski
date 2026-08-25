@@ -14896,3 +14896,60 @@ msgstr ""
 
 #~ msgid "Return to WP Admin"
 #~ msgstr "Wróć do panelu WordPressa"
+
+#: src/Migration/Migration_2_6_0.php:33
+msgid "Cereals containing gluten"
+msgstr "Zboża zawierające gluten"
+
+#: src/Migration/Migration_2_6_0.php:34
+msgid "Crustaceans"
+msgstr "Skorupiaki"
+
+#: src/Migration/Migration_2_6_0.php:35
+msgid "Eggs"
+msgstr "Jaja"
+
+#: src/Migration/Migration_2_6_0.php:36
+msgid "Fish"
+msgstr "Ryby"
+
+#: src/Migration/Migration_2_6_0.php:37
+msgid "Peanuts"
+msgstr "Orzeszki ziemne"
+
+#: src/Migration/Migration_2_6_0.php:38
+msgid "Soybeans"
+msgstr "Soja"
+
+#: src/Migration/Migration_2_6_0.php:39
+msgid "Milk"
+msgstr "Mleko"
+
+#: src/Migration/Migration_2_6_0.php:40
+msgid "Nuts"
+msgstr "Orzechy"
+
+#: src/Migration/Migration_2_6_0.php:41
+msgid "Celery"
+msgstr "Seler"
+
+#: src/Migration/Migration_2_6_0.php:42
+msgid "Mustard"
+msgstr "Gorczyca"
+
+#: src/Migration/Migration_2_6_0.php:43
+msgid "Sesame seeds"
+msgstr "Nasiona sezamu"
+
+#: src/Migration/Migration_2_6_0.php:44
+msgid "Sulphur dioxide and sulphites"
+msgstr "Dwutlenek siarki i siarczyny"
+
+#: src/Migration/Migration_2_6_0.php:45
+msgid "Lupin"
+msgstr "Łubin"
+
+#: src/Migration/Migration_2_6_0.php:46
+msgid "Molluscs"
+msgstr "Mięczaki"
+
