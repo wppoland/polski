@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.1
+Stable tag: 1.29.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -386,6 +386,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
+
+= 1.29.2 =
+* Fix: restored automatic NIP verification and company auto-fill from GUS REGON on checkout; fixed script initialization for custom themes (e.g. Divi) and replaced PHP SoapClient with robust SOAP 1.2 HTTP transport to resolve GUS XOP/MTOM multipart parsing.
 
 = 1.24.6 =
 * Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).

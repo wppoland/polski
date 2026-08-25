@@ -164,6 +164,11 @@ final class CheckoutHooks implements Bootable, HasHooks
             VERSION,
             true,
         );
+
+        wp_localize_script('polski-checkout', 'polskiCheckoutParams', [
+            'ajaxUrl'  => admin_url('admin-ajax.php'),
+            'nipNonce' => wp_create_nonce('polski_nip_lookup'),
+        ]);
     }
 
     /**
