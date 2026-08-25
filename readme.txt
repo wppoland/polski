@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.2
+Stable tag: 1.29.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -386,6 +386,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
+
+= 1.29.3 =
+* Fix: resolved a fatal error occurring when filing a withdrawal declaration or viewing the withdrawals list in WP Admin due to mismatched template variables and date formatting on DateTimeImmutable instances; email confirmation is now delivered reliably.
 
 = 1.29.2 =
 * Fix: restored automatic NIP verification and company auto-fill from GUS REGON on checkout; fixed script initialization for custom themes (e.g. Divi) and replaced PHP SoapClient with robust SOAP 1.2 HTTP transport to resolve GUS XOP/MTOM multipart parsing.

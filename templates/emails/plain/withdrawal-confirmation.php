@@ -5,10 +5,13 @@
  * Mirror of the HTML template - captures the same frozen declaration snapshot so
  * the message can serve as a record on a durable medium.
  *
- * @var WC_Order                          $polski_order
- * @var \Polski\Model\WithdrawalRequest   $polski_request
- * @var string                            $polski_email_heading
- * @var string                            $polski_additional_content
+ * @var \WC_Order|null                     $order
+ * @var \Polski\Model\WithdrawalRequest|null $request
+ * @var string                            $email_heading
+ * @var string                            $additional_content
+ * @var bool                              $sent_to_admin
+ * @var bool                              $plain_text
+ * @var \WC_Email|null                    $email
  *
  * @package Polski/Templates/Emails
  */
@@ -17,65 +20,75 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+$order = $order ?? $polski_order ?? null;
+$request = $request ?? $polski_request ?? null;
+$email_heading = $email_heading ?? $polski_email_heading ?? '';
+$additional_content = $additional_content ?? $polski_additional_content ?? '';
+$email = $email ?? $polski_email ?? null;
+
+if (! $order instanceof \WC_Order || ! $request instanceof \Polski\Model\WithdrawalRequest) {
+    return;
+}
+
 $polski_settings = get_option('polski_withdrawal', []);
 $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 
-$polski_greeting = str_replace(
+$greeting = str_replace(
     '{name}',
-    (string) $polski_order->get_billing_first_name(),
+    (string) $order->get_billing_first_name(),
     (string) ($polski_settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')),
 );
-$polski_intro = str_replace(
+$intro = str_replace(
     '{order_number}',
-    (string) $polski_order->get_order_number(),
+    (string) $order->get_order_number(),
     (string) ($polski_settings['email_intro_text'] ?? __('Twój wniosek o odstąpienie dla zamówienia #{order_number} został zarejestrowany.', 'polski')),
 );
 
-$polski_declaration_id = sprintf('POL-WD-%06d', $polski_request->id);
-$polski_filed_at = $polski_request->requestedAt->date_i18n(get_option('date_format') . ' H:i');
-$polski_currency = $polski_order->get_currency();
-$polski_order_date = $polski_order->get_date_created();
-$polski_order_date_str = $polski_order_date !== null ? $polski_order_date->date_i18n(get_option('date_format')) : '';
+$declaration_id = sprintf('POL-WD-%06d', $request->id);
+$filed_at = wp_date((string) get_option('date_format') . ' H:i', $request->requestedAt->getTimestamp());
+$currency = $order->get_currency();
+$order_date = $order->get_date_created();
+$order_date_str = $order_date instanceof \WC_DateTime ? wp_date((string) get_option('date_format'), $order_date->getTimestamp()) : '';
 
-echo "= " . esc_html(wp_strip_all_tags($polski_email_heading)) . " =\n\n";
-echo esc_html($polski_greeting) . "\n\n";
-echo esc_html($polski_intro) . "\n\n";
+echo "= " . esc_html(wp_strip_all_tags($email_heading)) . " =\n\n";
+echo esc_html($greeting) . "\n\n";
+echo esc_html($intro) . "\n\n";
 
 echo esc_html(str_repeat('-', 60)) . "\n";
-echo esc_html__('Declaration ID', 'polski') . ': ' . esc_html($polski_declaration_id) . "\n";
-echo esc_html__('Filed at', 'polski') . ': ' . esc_html($polski_filed_at) . "\n";
-echo esc_html__('Order', 'polski') . ': #' . esc_html((string) $polski_order->get_order_number()) . "\n";
-echo esc_html__('Order date', 'polski') . ': ' . esc_html($polski_order_date_str) . "\n";
-echo esc_html__('Buyer', 'polski') . ': ' . esc_html(trim($polski_order->get_billing_first_name() . ' ' . $polski_order->get_billing_last_name())) . "\n";
-echo '         ' . esc_html((string) $polski_order->get_billing_email()) . "\n";
+echo esc_html__('Declaration ID', 'polski') . ': ' . esc_html($declaration_id) . "\n";
+echo esc_html__('Filed at', 'polski') . ': ' . esc_html($filed_at) . "\n";
+echo esc_html__('Order', 'polski') . ': #' . esc_html((string) $order->get_order_number()) . "\n";
+echo esc_html__('Order date', 'polski') . ': ' . esc_html($order_date_str) . "\n";
+echo esc_html__('Buyer', 'polski') . ': ' . esc_html(trim($order->get_billing_first_name() . ' ' . $order->get_billing_last_name())) . "\n";
+echo '         ' . esc_html((string) $order->get_billing_email()) . "\n";
 echo esc_html(str_repeat('-', 60)) . "\n\n";
 
-if ($polski_request->reason) {
+if ($request->reason) {
     echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Twój powód', 'polski'))) . ":\n";
-    echo esc_html($polski_request->reason) . "\n\n";
+    echo esc_html($request->reason) . "\n\n";
 }
 
 echo esc_html__('Items covered by this declaration', 'polski') . ":\n";
-foreach ($polski_order->get_items() as $polski_item) {
-    if (! $polski_item instanceof \WC_Order_Item_Product) {
+foreach ($order->get_items() as $item) {
+    if (! $item instanceof \WC_Order_Item_Product) {
         continue;
     }
-    $polski_product = $polski_item->get_product();
-    $polski_attrs = '';
-    if ($polski_product instanceof \WC_Product && $polski_product->is_type('variation')) {
-        $polski_attrs = wc_get_formatted_variation($polski_product, true, true, false);
+    $product = $item->get_product();
+    $attrs = '';
+    if ($product instanceof \WC_Product && $product->is_type('variation')) {
+        $attrs = wc_get_formatted_variation($product, true, true, false);
     }
-    echo '- ' . esc_html((string) $polski_item->get_name());
-    if ($polski_attrs !== '') {
-        echo ' (' . esc_html($polski_attrs) . ')';
+    echo '- ' . esc_html((string) $item->get_name());
+    if ($attrs !== '') {
+        echo ' (' . esc_html($attrs) . ')';
     }
-    echo ' x ' . esc_html((string) $polski_item->get_quantity());
-    echo ' = ' . esc_html(wp_strip_all_tags(wc_price((float) $polski_item->get_total(), ['currency' => $polski_currency])));
+    echo ' x ' . esc_html((string) $item->get_quantity());
+    echo ' = ' . esc_html(wp_strip_all_tags(wc_price((float) $item->get_total(), ['currency' => $currency])));
     echo "\n";
 }
 
 echo "\n";
-echo esc_html__('Order total', 'polski') . ': ' . esc_html(wp_strip_all_tags(wc_price((float) $polski_order->get_total(), ['currency' => $polski_currency]))) . "\n\n";
+echo esc_html__('Order total', 'polski') . ': ' . esc_html(wp_strip_all_tags(wc_price((float) $order->get_total(), ['currency' => $currency]))) . "\n\n";
 
 echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Odeślij produkty na poniższy adres w ciągu 14 dni od dnia złożenia oświadczenia:', 'polski'))) . "\n";
 echo esc_html(wp_strip_all_tags((string) get_option('woocommerce_store_address', ''))) . "\n";
@@ -87,6 +100,6 @@ echo esc_html((string) ($polski_settings['email_durable_medium_notice'] ?? __(
     'polski',
 ))) . "\n\n";
 
-if ($polski_additional_content) {
-    echo esc_html(wp_strip_all_tags($polski_additional_content)) . "\n";
+if ($additional_content) {
+    echo esc_html(wp_strip_all_tags($additional_content)) . "\n";
 }

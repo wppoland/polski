@@ -6,13 +6,13 @@
  * durable medium: it captures a frozen snapshot of the order at the time the
  * request was filed (line items, totals, declaration ID, timestamp).
  *
- * @var WC_Order                          $polski_order
- * @var \Polski\Model\WithdrawalRequest   $polski_request
- * @var string                            $polski_email_heading
- * @var string                            $polski_additional_content
- * @var bool                              $polski_sent_to_admin
- * @var bool                              $polski_plain_text
- * @var WC_Email                          $polski_email
+ * @var \WC_Order|null                     $order
+ * @var \Polski\Model\WithdrawalRequest|null $request
+ * @var string                            $email_heading
+ * @var string                            $additional_content
+ * @var bool                              $sent_to_admin
+ * @var bool                              $plain_text
+ * @var \WC_Email|null                    $email
  *
  * @package Polski/Templates/Emails
  */
@@ -21,67 +21,77 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+$order = $order ?? $polski_order ?? null;
+$request = $request ?? $polski_request ?? null;
+$email_heading = $email_heading ?? $polski_email_heading ?? '';
+$additional_content = $additional_content ?? $polski_additional_content ?? '';
+$email = $email ?? $polski_email ?? null;
+
+if (! $order instanceof \WC_Order || ! $request instanceof \Polski\Model\WithdrawalRequest) {
+    return;
+}
+
 $polski_settings = get_option('polski_withdrawal', []);
 $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 
-$polski_greeting = str_replace(
+$greeting = str_replace(
     '{name}',
-    (string) $polski_order->get_billing_first_name(),
+    (string) $order->get_billing_first_name(),
     (string) ($polski_settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')),
 );
-$polski_intro = str_replace(
+$intro = str_replace(
     '{order_number}',
-    (string) $polski_order->get_order_number(),
+    (string) $order->get_order_number(),
     (string) ($polski_settings['email_intro_text'] ?? __('Twój wniosek o odstąpienie dla zamówienia #{order_number} został zarejestrowany.', 'polski')),
 );
 
-$polski_declaration_id = sprintf('POL-WD-%06d', $polski_request->id);
-$polski_filed_at = $polski_request->requestedAt->date_i18n(get_option('date_format') . ' H:i');
-$polski_currency = $polski_order->get_currency();
+$declaration_id = sprintf('POL-WD-%06d', $request->id);
+$filed_at = wp_date((string) get_option('date_format') . ' H:i', $request->requestedAt->getTimestamp());
+$currency = $order->get_currency();
 
 // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invoking WooCommerce core email header hook for template integration.
-do_action('woocommerce_email_header', $polski_email_heading, $polski_email);
+do_action('woocommerce_email_header', $email_heading, $email);
 ?>
 
-<p><?php echo esc_html($polski_greeting); ?></p>
+<p><?php echo esc_html($greeting); ?></p>
 
-<p><?php echo esc_html($polski_intro); ?></p>
+<p><?php echo esc_html($intro); ?></p>
 
 <table cellspacing="0" cellpadding="6" border="1" style="border-collapse: collapse; width: 100%; margin: 16px 0;">
     <tbody>
         <tr>
             <th align="left" width="40%"><?php esc_html_e('Declaration ID', 'polski'); ?></th>
-            <td><strong><?php echo esc_html($polski_declaration_id); ?></strong></td>
+            <td><strong><?php echo esc_html($declaration_id); ?></strong></td>
         </tr>
         <tr>
             <th align="left"><?php esc_html_e('Filed at', 'polski'); ?></th>
-            <td><?php echo esc_html($polski_filed_at); ?></td>
+            <td><?php echo esc_html($filed_at); ?></td>
         </tr>
         <tr>
             <th align="left"><?php esc_html_e('Order', 'polski'); ?></th>
-            <td>#<?php echo esc_html((string) $polski_order->get_order_number()); ?></td>
+            <td>#<?php echo esc_html((string) $order->get_order_number()); ?></td>
         </tr>
         <tr>
             <th align="left"><?php esc_html_e('Order date', 'polski'); ?></th>
             <td><?php
-                $polski_order_date = $polski_order->get_date_created();
-                echo esc_html($polski_order_date !== null ? $polski_order_date->date_i18n(get_option('date_format')) : '');
+                $order_date = $order->get_date_created();
+                echo esc_html($order_date instanceof \WC_DateTime ? wp_date((string) get_option('date_format'), $order_date->getTimestamp()) : '');
             ?></td>
         </tr>
         <tr>
             <th align="left"><?php esc_html_e('Buyer', 'polski'); ?></th>
             <td>
-                <?php echo esc_html(trim($polski_order->get_billing_first_name() . ' ' . $polski_order->get_billing_last_name())); ?><br />
-                <?php echo esc_html((string) $polski_order->get_billing_email()); ?>
+                <?php echo esc_html(trim($order->get_billing_first_name() . ' ' . $order->get_billing_last_name())); ?><br />
+                <?php echo esc_html((string) $order->get_billing_email()); ?>
             </td>
         </tr>
     </tbody>
 </table>
 
-<?php if ($polski_request->reason) : ?>
+<?php if ($request->reason) : ?>
     <p>
         <strong><?php echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Twój powód', 'polski'))); ?>:</strong><br />
-        <?php echo esc_html($polski_request->reason); ?>
+        <?php echo esc_html($request->reason); ?>
     </p>
 <?php endif; ?>
 
@@ -96,32 +106,32 @@ do_action('woocommerce_email_header', $polski_email_heading, $polski_email);
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($polski_order->get_items() as $polski_item) :
-        if (! $polski_item instanceof \WC_Order_Item_Product) {
+    <?php foreach ($order->get_items() as $item) :
+        if (! $item instanceof \WC_Order_Item_Product) {
             continue;
         }
-        $polski_product = $polski_item->get_product();
-        $polski_attrs = '';
-        if ($polski_product instanceof \WC_Product && $polski_product->is_type('variation')) {
-            $polski_attrs = wc_get_formatted_variation($polski_product, true, true, false);
+        $product = $item->get_product();
+        $attrs = '';
+        if ($product instanceof \WC_Product && $product->is_type('variation')) {
+            $attrs = wc_get_formatted_variation($product, true, true, false);
         }
         ?>
         <tr>
             <td>
-                <?php echo esc_html((string) $polski_item->get_name()); ?>
-                <?php if ($polski_attrs !== '') : ?>
-                    <br /><small><?php echo esc_html($polski_attrs); ?></small>
+                <?php echo esc_html((string) $item->get_name()); ?>
+                <?php if ($attrs !== '') : ?>
+                    <br /><small><?php echo esc_html($attrs); ?></small>
                 <?php endif; ?>
             </td>
-            <td align="right"><?php echo esc_html((string) $polski_item->get_quantity()); ?></td>
-            <td align="right"><?php echo wp_kses_post(wc_price((float) $polski_item->get_total(), ['currency' => $polski_currency])); ?></td>
+            <td align="right"><?php echo esc_html((string) $item->get_quantity()); ?></td>
+            <td align="right"><?php echo wp_kses_post(wc_price((float) $item->get_total(), ['currency' => $currency])); ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>
     <tfoot>
         <tr>
             <th align="right" colspan="2"><?php esc_html_e('Order total', 'polski'); ?></th>
-            <th align="right"><?php echo wp_kses_post(wc_price((float) $polski_order->get_total(), ['currency' => $polski_currency])); ?></th>
+            <th align="right"><?php echo wp_kses_post(wc_price((float) $order->get_total(), ['currency' => $currency])); ?></th>
         </tr>
     </tfoot>
 </table>
@@ -145,10 +155,10 @@ do_action('woocommerce_email_header', $polski_email_heading, $polski_email);
     ?>
 </p>
 
-<?php if ($polski_additional_content) : ?>
-    <p><?php echo wp_kses_post($polski_additional_content); ?></p>
+<?php if ($additional_content) : ?>
+    <p><?php echo wp_kses_post($additional_content); ?></p>
 <?php endif; ?>
 
 <?php
 // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Invoking WooCommerce core email footer hook for template integration.
-do_action('woocommerce_email_footer', $polski_email);
+do_action('woocommerce_email_footer', $email);

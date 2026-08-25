@@ -27,7 +27,7 @@ $polski_intro_text = str_replace(
     ['{order_number}', '{order_date}'],
     [
         (string) $polski_order->get_order_number(),
-        $polski_order_date !== null ? $polski_order_date->date_i18n(get_option('date_format')) : '',
+        $polski_order_date !== null ? wp_date((string) get_option('date_format'), $polski_order_date->getTimestamp()) : '',
     ],
     $polski_intro_text,
 );

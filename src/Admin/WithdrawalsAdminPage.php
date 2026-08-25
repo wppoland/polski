@@ -216,7 +216,7 @@ final class WithdrawalsAdminPage implements HasHooks
                                         <span style="color:#999;">, </span>
                                     <?php endif; ?>
                                 </td>
-                                <td><?php echo esc_html($row->requestedAt->date_i18n(get_option('date_format') . ' H:i')); ?></td>
+                                <td><?php echo esc_html((string) (wp_date((string) get_option('date_format') . ' H:i', $row->requestedAt->getTimestamp()) ?: '')); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

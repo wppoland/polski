@@ -104,7 +104,7 @@ $polski_order_date = $polski_order->get_date_created();
                     <th colspan="2" scope="row" style="text-align: right;">
                         <?php esc_html_e('Data zamówienia:', 'polski'); ?>
                     </th>
-                    <td><?php echo esc_html($polski_order_date->date_i18n(get_option('date_format'))); ?></td>
+                    <td><?php echo esc_html(wp_date((string) get_option('date_format'), $polski_order_date->getTimestamp())); ?></td>
                 </tr>
             <?php endif; ?>
         </tfoot>
