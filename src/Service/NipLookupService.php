@@ -178,20 +178,20 @@ final class NipLookupService implements HasHooks
     /**
      * Look up company data from GUS REGON API (public BIR1 service).
      *
-     * Uses the SOAP-based BIR1 service. Falls back to null on any error.
+     * Uses direct SOAP 1.2 HTTP POST requests compatible with GUS MTOM/XOP responses.
      *
      * @return array{name: string, address: string, postcode: string, city: string, regon: string}|null
      */
     private function lookupNip(string $nip): ?array
     {
-        $settings = $this->getSettings();
+        $settings    = $this->getSettings();
         $environment = $settings['gus_environment'] ?? 'test';
 
         if ($environment === 'production') {
-            $wsdl   = 'https://wyszukiwarkaregon.stat.gov.pl/wsBIR/UslugaBIRzworking.svc?singleWsdl';
-            $apiKey = $settings['gus_api_key'] ?? '';
+            $url    = 'https://wyszukiwarkaregon.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc';
+            $apiKey = (string) ($settings['gus_api_key'] ?? '');
         } else {
-            $wsdl   = 'https://wyszukiwarkaregontest.stat.gov.pl/wsBIR/UslugaBIRzworking.svc?singleWsdl';
+            $url    = 'https://wyszukiwarkaregontest.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc';
             $apiKey = 'abcde12345abcde12345';
         }
 
@@ -199,131 +199,131 @@ final class NipLookupService implements HasHooks
             return null;
         }
 
-        try {
-            $client = new \SoapClient($wsdl, [
-                'soap_version'   => SOAP_1_2,
-                'trace'          => false,
-                'exceptions'     => true,
-                'stream_context' => stream_context_create(['ssl' => ['verify_peer' => true]]),
-            ]);
+        // 1. Zaloguj (obtain session id).
+        $loginXml = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://CIS/BIR/PUBL/2014/07">'
+            . '<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">'
+            . '<wsa:To>' . esc_url($url) . '</wsa:To>'
+            . '<wsa:Action>http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/Zaloguj</wsa:Action>'
+            . '</soap:Header>'
+            . '<soap:Body>'
+            . '<ns:Zaloguj><ns:pKluczUzytkownika>' . esc_xml($apiKey) . '</ns:pKluczUzytkownika></ns:Zaloguj>'
+            . '</soap:Body>'
+            . '</soap:Envelope>';
 
-            // Login to get session ID.
-            $loginResult = $client->Zaloguj(['pKluczUzytkownika' => $apiKey]);
-            $sessionId   = $loginResult->ZalogujResult ?? '';
+        $loginResponse = wp_remote_post($url, [
+            'timeout'   => 10,
+            'sslverify' => true,
+            'headers'   => [
+                'Content-Type' => 'application/soap+xml;charset=UTF-8;action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/Zaloguj"',
+            ],
+            'body'      => $loginXml,
+        ]);
 
-            if ($sessionId === '') {
-                return null;
-            }
-
-            // Set session header for the search request.
-            $header = new \SoapHeader(
-                'http://www.w3.org/2005/08/addressing',
-                'Action',
-                'http://CIS/BIR/PUBL/2014/07/IUslugaBIRzworking/DaneSzukajPodmioty',
-                true,
-            );
-            $client->__setSoapHeaders([$header]);
-
-            // Search by NIP.
-            $searchResult = $client->DaneSzukajPodmioty([
-                'pParametryWyszukiwania' => ['Nip' => $nip],
-            ]);
-
-            $xml = $searchResult->DaneSzukajPodmiotyResult ?? '';
-
-            if ($xml === '') {
-                $client->Wyloguj(['pIdentyfikatorSesji' => $sessionId]);
-
-                return null;
-            }
-
-            // Parse XML response.
-            $doc = simplexml_load_string($xml);
-
-            if ($doc === false || ! isset($doc->dane)) {
-                $client->Wyloguj(['pIdentyfikatorSesji' => $sessionId]);
-
-                return null;
-            }
-
-            $dane = $doc->dane;
-
-            $lokalu  = trim((string) ($dane->NrLokalu ?? ''));
-            $address = trim(
-                (string) ($dane->Ulica ?? '') . ' '
-                . (string) ($dane->NrNieruchomosci ?? '')
-                . ($lokalu !== '' ? '/' . $lokalu : ''),
-            );
-
-            $result = [
-                'name'     => trim((string) ($dane->Nazwa ?? '')),
-                'address'  => $address,
-                'postcode' => trim((string) ($dane->KodPocztowy ?? '')),
-                'city'     => trim((string) ($dane->Miejscowosc ?? '')),
-                'regon'    => trim((string) ($dane->Regon ?? '')),
-            ];
-
-            // Logout.
-            $client->Wyloguj(['pIdentyfikatorSesji' => $sessionId]);
-
-            return $result;
-        } catch (\Throwable $e) {
-            // Silently fail - GUS API is often unreliable.
+        if (is_wp_error($loginResponse)) {
             return null;
         }
+
+        $loginBody = wp_remote_retrieve_body($loginResponse);
+        if (! preg_match('/<ZalogujResult>(.*?)<\/ZalogujResult>/', $loginBody, $matches) || empty($matches[1])) {
+            return null;
+        }
+
+        $sessionId = trim($matches[1]);
+
+        // 2. DaneSzukajPodmioty (search by NIP).
+        $searchXml = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://CIS/BIR/PUBL/2014/07" xmlns:dat="http://CIS/BIR/PUBL/2014/07/DataContract">'
+            . '<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">'
+            . '<wsa:To>' . esc_url($url) . '</wsa:To>'
+            . '<wsa:Action>http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DaneSzukajPodmioty</wsa:Action>'
+            . '</soap:Header>'
+            . '<soap:Body>'
+            . '<ns:DaneSzukajPodmioty>'
+            . '<ns:pParametryWyszukiwania><dat:Nip>' . esc_xml($nip) . '</dat:Nip></ns:pParametryWyszukiwania>'
+            . '</ns:DaneSzukajPodmioty>'
+            . '</soap:Body>'
+            . '</soap:Envelope>';
+
+        $searchResponse = wp_remote_post($url, [
+            'timeout'   => 10,
+            'sslverify' => true,
+            'headers'   => [
+                'Content-Type' => 'application/soap+xml;charset=UTF-8;action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DaneSzukajPodmioty"',
+                'sid'          => $sessionId,
+            ],
+            'body'      => $searchXml,
+        ]);
+
+        // 3. Wyloguj (cleanup session).
+        $logoutXml = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://CIS/BIR/PUBL/2014/07">'
+            . '<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">'
+            . '<wsa:To>' . esc_url($url) . '</wsa:To>'
+            . '<wsa:Action>http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/Wyloguj</wsa:Action>'
+            . '</soap:Header>'
+            . '<soap:Body>'
+            . '<ns:Wyloguj><ns:pIdentyfikatorSesji>' . esc_xml($sessionId) . '</ns:pIdentyfikatorSesji></ns:Wyloguj>'
+            . '</soap:Body>'
+            . '</soap:Envelope>';
+
+        wp_remote_post($url, [
+            'timeout'   => 5,
+            'sslverify' => true,
+            'headers'   => [
+                'Content-Type' => 'application/soap+xml;charset=UTF-8;action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/Wyloguj"',
+                'sid'          => $sessionId,
+            ],
+            'body'      => $logoutXml,
+        ]);
+
+        if (is_wp_error($searchResponse)) {
+            return null;
+        }
+
+        $searchBody = wp_remote_retrieve_body($searchResponse);
+        if (! preg_match('/<DaneSzukajPodmiotyResult>(.*?)<\/DaneSzukajPodmiotyResult>/s', $searchBody, $searchMatches)) {
+            return null;
+        }
+
+        $innerXml = html_entity_decode($searchMatches[1], ENT_QUOTES | ENT_XML1, 'UTF-8');
+        if ($innerXml === '') {
+            return null;
+        }
+
+        $doc = simplexml_load_string($innerXml);
+        if ($doc === false || ! isset($doc->dane) || isset($doc->dane->ErrorCode)) {
+            return null;
+        }
+
+        $dane            = $doc->dane;
+        $lokalu          = trim((string) ($dane->NrLokalu ?? ''));
+        $ulica           = trim((string) ($dane->Ulica ?? ''));
+        $nrNieruchomosci = trim((string) ($dane->NrNieruchomosci ?? ''));
+        $address         = trim(($ulica !== '' ? $ulica . ' ' : '') . $nrNieruchomosci . ($lokalu !== '' ? '/' . $lokalu : ''));
+
+        return [
+            'name'     => trim((string) ($dane->Nazwa ?? '')),
+            'address'  => $address,
+            'postcode' => trim((string) ($dane->KodPocztowy ?? '')),
+            'city'     => trim((string) ($dane->Miejscowosc ?? '')),
+            'regon'    => trim((string) ($dane->Regon ?? '')),
+        ];
     }
 
     /**
-     * Enqueue checkout script for NIP auto-fill via AJAX.
+     * Enqueue checkout script params and inline script for NIP auto-fill via AJAX.
      */
     public function enqueueCheckoutScript(): void
     {
-        if (! is_checkout()) {
+        if (! function_exists('is_checkout') || (! is_checkout() && ! is_account_page())) {
             return;
         }
 
-        $script = "
-        (function() {
-            var debounce;
-            document.addEventListener('change', function(e) {
-                if (!e.target || !e.target.hasAttribute('data-polski-nip-field')) return;
-                var nip = e.target.value.replace(/[\\s\\-]/g, '');
-                if (nip.length !== 10) return;
+        $params = [
+            'ajaxUrl'  => admin_url('admin-ajax.php'),
+            'nipNonce' => wp_create_nonce('polski_nip_lookup'),
+        ];
 
-                clearTimeout(debounce);
-                debounce = setTimeout(function() {
-                    var fd = new FormData();
-                    fd.append('action', 'polski_nip_lookup');
-                    fd.append('_nonce', '" . esc_js(wp_create_nonce('polski_nip_lookup')) . "');
-                    fd.append('nip', nip);
-
-                    fetch('" . esc_js(admin_url('admin-ajax.php')) . "', {
-                        method: 'POST',
-                        body: fd,
-                        credentials: 'same-origin'
-                    })
-                    .then(function(r) { return r.json(); })
-                    .then(function(data) {
-                        if (!data.success || !data.data) return;
-                        var d = data.data;
-                        var company = document.getElementById('billing_company');
-                        var addr1 = document.getElementById('billing_address_1');
-                        var postcode = document.getElementById('billing_postcode');
-                        var city = document.getElementById('billing_city');
-                        if (company && d.name && !company.value) company.value = d.name;
-                        if (addr1 && d.address && !addr1.value) addr1.value = d.address;
-                        if (postcode && d.postcode && !postcode.value) postcode.value = d.postcode;
-                        if (city && d.city && !city.value) city.value = d.city;
-                        // Trigger WooCommerce update.
-                        if (company) company.dispatchEvent(new Event('change', {bubbles: true}));
-                    })
-                    .catch(function() {});
-                }, 500);
-            });
-        })();
-        ";
-
-        wp_add_inline_script('wc-checkout', $script);
+        wp_localize_script('polski-checkout', 'polskiCheckoutParams', $params);
+        wp_localize_script('wc-checkout', 'polskiCheckoutParams', $params);
     }
 
     /**
