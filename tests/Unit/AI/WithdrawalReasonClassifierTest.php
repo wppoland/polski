@@ -49,6 +49,29 @@ final class WithdrawalReasonClassifierTest extends TestCase
         self::assertTrue(true);
     }
 
+    public function testNoopWithWithdrawalRequestInstance(): void
+    {
+        $GLOBALS['polski_test_options']['polski_ai_features_enabled'] = 'no';
+
+        $repository = $this->bareRepository();
+        $request = new \Polski\Model\WithdrawalRequest(
+            id: 123,
+            orderId: 456,
+            customerId: 789,
+            status: \Polski\Enum\WithdrawalStatus::Requested,
+            reason: 'Wrong size selected',
+            items: [],
+            requestedAt: new \DateTimeImmutable('2026-08-26 12:00:00'),
+            confirmedAt: null,
+            completedAt: null,
+        );
+
+        $service = new WithdrawalReasonClassifier($repository);
+        $service->classify($request);
+
+        self::assertTrue(true);
+    }
+
     public function testCategoriesAreStable(): void
     {
         $categories = WithdrawalReasonClassifier::categories();

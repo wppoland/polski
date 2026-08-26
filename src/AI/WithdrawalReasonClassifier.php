@@ -6,6 +6,7 @@ namespace Polski\AI;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
+use Polski\Model\WithdrawalRequest;
 use Polski\Repository\WithdrawalRepository;
 
 /**
@@ -58,7 +59,7 @@ final class WithdrawalReasonClassifier implements HasHooks
         add_action('polski/withdrawal/manual_registered', [$this, 'classify'], 50, 1);
     }
 
-    public function classify(int $withdrawalId): void
+    public function classify(int|WithdrawalRequest $withdrawal): void
     {
         if (! $this->enabled()) {
             return;
@@ -68,12 +69,17 @@ final class WithdrawalReasonClassifier implements HasHooks
             return;
         }
 
-        $withdrawal = $this->repository->findById($withdrawalId);
-        if ($withdrawal === null) {
+        $withdrawalModel = $withdrawal instanceof WithdrawalRequest
+            ? $withdrawal
+            : $this->repository->findById((int) $withdrawal);
+
+        if ($withdrawalModel === null) {
             return;
         }
 
-        $reason = trim((string) $withdrawal->reason);
+        $withdrawalId = $withdrawalModel->id;
+
+        $reason = trim((string) $withdrawalModel->reason);
         if (strlen($reason) < self::MIN_REASON_LENGTH) {
             return;
         }
