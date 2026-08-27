@@ -77,3 +77,6 @@ languages/polski-pro.pot
 
 # Translation import tooling (GlotPress PO/MO staging) - never ship in the zip
 glotpress-import/
+
+# Release gate marker, never part of the plugin
+RELEASE-BLOCKED
