@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.7
+Stable tag: 1.29.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -320,6 +320,10 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.29.8 =
+* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish had no language pack and no translation on translate.wordpress.org, so Spanish now falls back to English until that translation is imported there.
+* Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
+
 = 1.29.7 =
 * Declared compatibility with WordPress 7.1.
 * Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
@@ -468,6 +472,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.29.8 =
+Smaller download and no functional change for Polish. The plugin no longer bundles translation files that WordPress.org already ships as language packs. Spanish falls back to English until the Spanish translation is imported on translate.wordpress.org.
 
 = 1.29.7 =
 Recommended if you use the right of withdrawal. The confirmation email was saved but never sent; it is now delivered on the storefront form, the guest form and the REST endpoint. Also declares compatibility with WordPress 7.1.
