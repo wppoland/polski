@@ -13,13 +13,50 @@ use Polski\Enum\LegalPageType;
  */
 final class EmailService implements HasHooks
 {
+    /**
+     * Actions whose listeners live inside WC_Email constructors, so the mailer
+     * has to exist before they fire.
+     *
+     * @var list<string>
+     */
+    private const MAILER_BOOT_ACTIONS = [
+        'polski/withdrawal/requested',
+        'polski/withdrawal/guest_requested',
+        'polski/withdrawal/manual_registered',
+        'polski/withdrawal/completed',
+        'polski/withdrawal/rejected',
+        'polski/doi/email_sent',
+    ];
+
     public function registerHooks(): void
     {
         // Register custom email classes.
         add_filter('woocommerce_email_classes', [$this, 'registerEmails']);
 
+        // WooCommerce builds its WC_Email objects lazily, only when something
+        // calls WC()->mailer(). Our withdrawal emails register their own
+        // listeners from their constructors, so on a storefront request (the
+        // withdrawal form posts on template_redirect, the guest flow posts to
+        // REST) those constructors never run and the withdrawal actions fire
+        // with no email listener attached at all. Loading the mailer at
+        // priority 1 puts the classes in place before their own priority-10
+        // handlers run on the same action.
+        foreach (self::MAILER_BOOT_ACTIONS as $action) {
+            add_action($action, [$this, 'loadMailer'], 1);
+        }
+
         // Append legal page content to order emails.
         add_action('woocommerce_email_after_order_table', [$this, 'appendLegalAttachments'], 10, 4);
+    }
+
+    /**
+     * Instantiate the WooCommerce mailer so the registerEmails() filter runs.
+     */
+    public function loadMailer(): void
+    {
+        if (function_exists('WC')) {
+            WC()->mailer();
+        }
     }
 
     /**

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.6
+Stable tag: 1.29.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -386,6 +386,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
+
+= 1.29.7 =
+* Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
 
 = 1.29.6 =
 * Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.

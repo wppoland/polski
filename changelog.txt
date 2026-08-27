@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.29.7 =
+* Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
+
 = 1.29.6 =
 * Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
 * Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
