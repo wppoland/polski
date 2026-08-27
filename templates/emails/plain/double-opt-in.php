@@ -24,11 +24,11 @@ $user = get_user_by('id', $user_id);
 $name = $user instanceof \WP_User ? $user->display_name : '';
 $settings = get_option('polski_doi', []);
 $settings = is_array($settings) ? $settings : [];
-$greeting = str_replace('{name}', $name, (string) ($settings['email_greeting'] ?? __('Cześć {name},', 'polski')));
+$greeting = str_replace('{name}', $name, (string) ($settings['email_greeting'] ?? __('Hi {name},', 'polski')));
 
 echo "= " . esc_html(wp_strip_all_tags($email_heading)) . " =\n\n";
 echo esc_html($greeting) . "\n\n";
-echo esc_html((string) ($settings['email_intro_plain'] ?? __('Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:', 'polski'))) . "\n\n";
+echo esc_html((string) ($settings['email_intro_plain'] ?? __('Thank you for creating an account. Open the link below to activate it:', 'polski'))) . "\n\n";
 echo esc_url($activation_url) . "\n\n";
 
 if ($additional_content) {

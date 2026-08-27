@@ -73,7 +73,7 @@ final class ProductSliderService implements Bootable, HasHooks
 
         $atts = shortcode_atts([
             'source' => $this->getSettings()['source'] ?? 'related',
-            'title' => $this->getSettings()['title'] ?? __('Polecane produkty', 'polski'),
+            'title' => $this->getSettings()['title'] ?? __('Recommended products', 'polski'),
             'limit' => $this->getSettings()['limit'] ?? 8,
         ], is_array($atts) ? $atts : []);
 
@@ -117,7 +117,7 @@ final class ProductSliderService implements Bootable, HasHooks
         return $this->templateLoader->render('shared/product-slider', [
             'products' => $products,
             'settings' => $settings,
-            'title' => (string) ($settings['title'] ?? __('Polecane produkty', 'polski')),
+            'title' => (string) ($settings['title'] ?? __('Recommended products', 'polski')),
             'show_title' => (bool) ($settings['show_title'] ?? true),
             'show_intro_text' => (bool) ($settings['show_intro_text'] ?? false),
             'intro_text' => (string) ($settings['intro_text'] ?? ''),

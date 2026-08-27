@@ -163,7 +163,7 @@ final class AdminPage implements Bootable, HasHooks
     public function handleWizardCompletion(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('Brak uprawnień.', 'polski'));
+            wp_die(esc_html__('You do not have permission.', 'polski'));
         }
 
         check_admin_referer('polski_complete_wizard', '_polski_wizard_nonce');
@@ -207,7 +207,7 @@ final class AdminPage implements Bootable, HasHooks
     public function handleModuleSettingsSave(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('Brak uprawnień.', 'polski'));
+            wp_die(esc_html__('You do not have permission.', 'polski'));
         }
 
         check_admin_referer('polski_save_module_settings', '_polski_module_nonce');
@@ -742,58 +742,58 @@ final class AdminPage implements Bootable, HasHooks
         $reports = [
             [
                 'id' => 'audit',
-                'name' => __('Audyt zgodności', 'polski'),
-                'desc' => __('Automatyczna weryfikacja najczęstszych problemów prawnych w polskim eCommerce.', 'polski'),
+                'name' => __('Compliance audit', 'polski'),
+                'desc' => __('An automatic check of the most common legal problems in Polish ecommerce.', 'polski'),
                 'icon' => 'dashicons-search',
                 'module' => 'site_audit',
             ],
             [
                 'id' => 'dsa',
-                'name' => __('Raporty DSA', 'polski'),
-                'desc' => __('Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act).', 'polski'),
+                'name' => __('DSA reports', 'polski'),
+                'desc' => __('Handling of content notices under the Digital Services Act.', 'polski'),
                 'icon' => 'dashicons-megaphone',
                 'module' => 'dsa_toolkit',
             ],
             [
                 'id' => 'incidents',
-                'name' => __('Logi incydentów', 'polski'),
-                'desc' => __('Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury.', 'polski'),
+                'name' => __('Incident log', 'polski'),
+                'desc' => __('A record of security problems, data breaches and infrastructure failures.', 'polski'),
                 'icon' => 'dashicons-shield',
                 'module' => 'security_incidents',
             ],
             [
                 'id' => 'health',
-                'name' => __('Kondycja sklepu', 'polski'),
-                'desc' => __('Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii sprzedaży, z alertami.', 'polski'),
+                'name' => __('Shop health', 'polski'),
+                'desc' => __('Continuous monitoring of fatal errors, failed payments and sales anomalies, with alerts.', 'polski'),
                 'icon' => 'dashicons-heart',
                 'module' => 'store_health',
             ],
             [
                 'id' => 'dpa',
-                'name' => __('Rejestr DPA (RODO)', 'polski'),
-                'desc' => __('Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami trzecimi.', 'polski'),
+                'name' => __('DPA registry (GDPR)', 'polski'),
+                'desc' => __('A register of data processing agreements with third parties.', 'polski'),
                 'icon' => 'dashicons-clipboard',
                 'module' => 'dpa_tracker',
             ],
             [
                 'id' => 'consent',
-                'name' => __('Rejestr zgód', 'polski'),
-                'desc' => __('Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV.', 'polski'),
+                'name' => __('Consent records', 'polski'),
+                'desc' => __('Stored visitor decisions from the consent banner, with CSV export.', 'polski'),
                 'icon' => 'dashicons-list-view',
                 'module' => 'consent_manager',
             ],
             [
                 'id' => 'withdrawals',
-                'name' => __('Odstąpienia', 'polski'),
-                'desc' => __('Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i ustawienia.', 'polski'),
+                'name' => __('Withdrawals', 'polski'),
+                'desc' => __('Withdrawal declarations and returns: the list, manual registration and the settings.', 'polski'),
                 'icon' => 'dashicons-undo',
                 'module' => null,
                 'url' => admin_url('admin.php?page=polski-withdrawals'),
             ],
             [
                 'id' => 'cra_incidents',
-                'name' => __('Incydenty CRA', 'polski'),
-                'desc' => __('Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze statusami i eksportem CSV.', 'polski'),
+                'name' => __('CRA incidents', 'polski'),
+                'desc' => __('A register of vulnerabilities, breaches and failures for the Cyber Resilience Act, with statuses and CSV export.', 'polski'),
                 'icon' => 'dashicons-shield-alt',
                 'module' => 'cra_readiness',
                 'url' => admin_url('admin.php?page=polski-cra-incidents'),
@@ -801,23 +801,23 @@ final class AdminPage implements Bootable, HasHooks
             [
                 'id' => 'sbom',
                 'name' => __('SBOM', 'polski'),
-                'desc' => __('Zestawienie komponentów oprogramowania (Software Bill of Materials) na potrzeby CRA.', 'polski'),
+                'desc' => __('A software bill of materials for the Cyber Resilience Act.', 'polski'),
                 'icon' => 'dashicons-media-code',
                 'module' => 'sbom',
                 'url' => admin_url('admin.php?page=polski-sbom'),
             ],
             [
                 'id' => 'complaint_template',
-                'name' => __('Szablon reklamacji', 'polski'),
-                'desc' => __('Generator i ustawienia szablonu reklamacji dla klientów.', 'polski'),
+                'name' => __('Complaint template', 'polski'),
+                'desc' => __('The complaint form template for customers, with its generator and settings.', 'polski'),
                 'icon' => 'dashicons-media-document',
                 'module' => 'complaint_template',
                 'url' => admin_url('admin.php?page=polski-complaint-template'),
             ],
             [
                 'id' => 'rodo_training',
-                'name' => __('Szkolenia RODO', 'polski'),
-                'desc' => __('Materiały szkoleniowe RODO dla zespołu sklepu.', 'polski'),
+                'name' => __('GDPR training', 'polski'),
+                'desc' => __('GDPR training material for the shop team.', 'polski'),
                 'icon' => 'dashicons-welcome-learn-more',
                 'module' => 'rodo_training_docs',
                 'url' => admin_url('admin.php?page=polski-rodo-training'),
@@ -964,7 +964,7 @@ final class AdminPage implements Bootable, HasHooks
         // Dashboard header
         echo '<div style="background: linear-gradient(135deg, #0073aa 0%, #00a0d2 100%); padding: 40px; border-radius: 12px; color: #fff; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
         echo '<h2 style="color:#fff; margin:0 0 10px; font-size:28px; font-weight:700;">' . esc_html__('Hello!', 'polski') . '</h2>';
-        echo '<p style="font-size:16px; margin:0; opacity:0.9;">' . esc_html__('Narzędzia wspomagające dostosowanie sklepu do polskich wymagań.', 'polski') . '</p>';
+        echo '<p style="font-size:16px; margin:0; opacity:0.9;">' . esc_html__('Tools that help bring the shop in line with Polish requirements.', 'polski') . '</p>';
         echo '</div>';
 
         // Quick Setup Alert

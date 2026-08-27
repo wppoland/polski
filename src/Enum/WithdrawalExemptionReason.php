@@ -25,14 +25,14 @@ enum WithdrawalExemptionReason: string
     public function label(): string
     {
         return match ($this) {
-            self::Custom => __('Inne (własne uzasadnienie)', 'polski'),
-            self::CustomMade => __('Produkt na zamówienie indywidualne / personalizowany (Art. 38 pkt 3)', 'polski'),
-            self::Perishable => __('Produkt szybko psujący się / krótki termin przydatności (Art. 38 pkt 4)', 'polski'),
-            self::Sealed => __('Produkt zapieczętowany ze względu na ochronę zdrowia lub higieniczny (Art. 38 pkt 5)', 'polski'),
-            self::Inseparable => __('Produkt nieoddzielnie połączony z innymi (Art. 38 pkt 6)', 'polski'),
-            self::Alcohol => __('Napoje alkoholowe (Art. 38 pkt 7)', 'polski'),
-            self::SealedMedia => __('Nagrania audio/wideo lub oprogramowanie w zapieczętowanym opakowaniu (Art. 38 pkt 9)', 'polski'),
-            self::DigitalContent => __('Treści cyfrowe spełniane przed upływem terminu (Art. 38 pkt 13)', 'polski'),
+            self::Custom => __('Other (custom reason)', 'polski'),
+            self::CustomMade => __('Made to the consumer\'s specification or clearly personalised (Article 38(3))', 'polski'),
+            self::Perishable => __('Liable to deteriorate or expire rapidly (Article 38(4))', 'polski'),
+            self::Sealed => __('Sealed for health protection or hygiene reasons (Article 38(5))', 'polski'),
+            self::Inseparable => __('Inseparably mixed with other items after delivery (Article 38(6))', 'polski'),
+            self::Alcohol => __('Alcoholic beverages (Article 38(7))', 'polski'),
+            self::SealedMedia => __('Sealed audio or video recordings or computer software (Article 38(9))', 'polski'),
+            self::DigitalContent => __('Digital content supplied before the withdrawal period ends (Article 38(13))', 'polski'),
         };
     }
 
@@ -42,14 +42,14 @@ enum WithdrawalExemptionReason: string
     public function shortLabel(): string
     {
         return match ($this) {
-            self::Custom => __('Inne', 'polski'),
-            self::CustomMade => __('Na zamówienie', 'polski'),
-            self::Perishable => __('Krótki termin', 'polski'),
-            self::Sealed => __('Zapieczętowany', 'polski'),
-            self::Inseparable => __('Nieoddzielnie połączony', 'polski'),
-            self::Alcohol => __('Alkohol', 'polski'),
-            self::SealedMedia => __('Nagranie/Software', 'polski'),
-            self::DigitalContent => __('Treści cyfrowe', 'polski'),
+            self::Custom => __('Other', 'polski'),
+            self::CustomMade => __('Made to order', 'polski'),
+            self::Perishable => __('Perishable', 'polski'),
+            self::Sealed => __('Sealed', 'polski'),
+            self::Inseparable => __('Inseparably mixed', 'polski'),
+            self::Alcohol => __('Alcohol', 'polski'),
+            self::SealedMedia => __('Recording or software', 'polski'),
+            self::DigitalContent => __('Digital content', 'polski'),
         };
     }
 

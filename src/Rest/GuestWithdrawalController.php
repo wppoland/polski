@@ -81,7 +81,7 @@ final class GuestWithdrawalController implements HasHooks
 
         if ($orderNumber === '' || $email === '' || ! is_email($email)) {
             return new \WP_REST_Response(
-                ['accepted' => false, 'message' => __('Brakuje numeru zamówienia lub adres e-mail jest nieprawidłowy.', 'polski')],
+                ['accepted' => false, 'message' => __('The order number is missing or the email address is not valid.', 'polski')],
                 400,
             );
         }
@@ -93,7 +93,7 @@ final class GuestWithdrawalController implements HasHooks
             [
                 'accepted' => true,
                 'message' => __(
-                    'Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą oraz folder Spam.',
+                    'If that order exists, we have sent a link to the form to the email address used for the purchase. Check your inbox and your spam folder.',
                     'polski',
                 ),
             ],

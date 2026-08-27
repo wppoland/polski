@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.29.3\n"
+"Project-Id-Version: Polski for WooCommerce 1.30.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-25T17:33:55+00:00\n"
+"POT-Creation-Date: 2026-08-27T16:43:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #. Description of the plugin
 #: polski.php
-msgid "Dodaje GPSR, Omnibus, RODO, zwroty, NIP, hooki KSeF, dane produktowe i moduły sklepu dla polskich sklepów WooCommerce."
+msgid "Adds GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF hooks, product data and storefront modules for Polish WooCommerce shops."
 msgstr ""
 
 #. Author of the plugin
@@ -42,68 +42,70 @@ msgid "https://wppoland.com"
 msgstr ""
 
 #: config/defaults.php:19
-msgid "Platforma ODR: https://ec.europa.eu/consumers/odr"
+msgid "ODR platform: https://ec.europa.eu/consumers/odr"
 msgstr ""
 
 #: config/defaults.php:20
-msgid "Gotowe! Wygenerowaliśmy dla Ciebie wstępne szkice stron prawnych. Przejrzyj je, dostosuj do swoich potrzeb i śmiało opublikuj."
+msgid "Done. We have generated draft legal pages for you. Review them, adjust them to your shop and publish them."
 msgstr ""
 
 #: config/defaults.php:21
-msgid "Moduły zapisane."
+#: src/Admin/AdminPage.php:529
+msgid "Modules saved."
 msgstr ""
 
 #: config/defaults.php:22
-msgid "Skonfiguruj Polski dla Twojego sklepu"
+msgid "Set up Polski for your shop"
 msgstr ""
 
 #: config/defaults.php:23
-msgid "Jeszcze chwila i sklep będzie gotowy. Przejrzyj moduły, ustaw strony prawne i domknij konfigurację w panelu Polski."
+msgid "Your shop is nearly ready. Review the modules, set up the legal pages and finish the configuration in the Polski panel."
 msgstr ""
 
 #: config/defaults.php:24
-msgid "Otwórz konfigurację Polski"
+msgid "Open the Polski configuration"
 msgstr ""
 
 #: config/defaults.php:25
-msgid "Aktywna"
+msgid "Switched on"
 msgstr ""
 
 #: config/defaults.php:26
-msgid "Wyłączona"
+msgid "Switched off"
 msgstr ""
 
 #: config/defaults.php:27
-msgid "Nieskonfigurowany"
+msgid "Not configured"
 msgstr ""
 
 #: config/defaults.php:28
 #: config/defaults.php:34
-msgid "Strony prawne"
+msgid "Legal pages"
 msgstr ""
 
 #: config/defaults.php:29
-msgid "Masz już za sobą {done} z {total} kroków. Znakomicie!"
+msgid "You have completed {done} of {total} steps. Well done."
 msgstr ""
 
 #: config/defaults.php:30
-msgid "Wyświetlanie podatku"
+msgid "Tax display"
 msgstr ""
 
 #: config/defaults.php:31
-msgid "Zwolnienie podmiotowe (art. 113)"
+msgid "Small business exemption (Article 113)"
 msgstr ""
 
 #: config/defaults.php:32
-msgid "Standardowy VAT"
+msgid "Standard VAT"
 msgstr ""
 
 #: config/defaults.php:33
-msgid "Podwójna weryfikacja (DOI)"
+msgid "Double opt-in"
 msgstr ""
 
 #: config/defaults.php:35
-msgid "Strona"
+#: src/Admin/AdminPage.php:1041
+msgid "Page"
 msgstr ""
 
 #: config/defaults.php:36
@@ -132,99 +134,106 @@ msgid "Status"
 msgstr ""
 
 #: config/defaults.php:37
-msgid "Opublikowana"
+msgid "Page published"
 msgstr ""
 
 #: config/defaults.php:38
-msgid "Szkic"
+#: src/Admin/AdminPage.php:1059
+msgid "Draft"
 msgstr ""
 
 #: config/defaults.php:39
-msgid "Nieutworzona"
+#: src/Admin/AdminPage.php:1066
+msgid "Not created"
 msgstr ""
 
 #: config/defaults.php:40
-msgid "Edytuj"
+#: src/Admin/AdminPage.php:1064
+msgid "Edit"
 msgstr ""
 
 #: config/defaults.php:41
-msgid "Nie utworzono jeszcze stron prawnych. Wygeneruj je, aby rozpocząć."
+#: src/Admin/AdminPage.php:1081
+msgid "No legal pages have been created yet. Generate them to get started."
 msgstr ""
 
 #: config/defaults.php:42
-msgid "Wygeneruj strony prawne"
+msgid "Generate the legal pages"
 msgstr ""
 
 #: config/defaults.php:43
-msgid "Kolejne kroki"
+#: src/Admin/AdminPage.php:1089
+msgid "Next steps"
 msgstr ""
 
 #: config/defaults.php:44
-msgid "Opublikuj swoje strony prawne, Regulamin, Politykę prywatności, Prawo odstąpienia i Reklamacje."
+msgid "Publish your legal pages: Terms and conditions, Privacy policy, Right of withdrawal and Complaints."
 msgstr ""
 
 #. translators: %s is the WooCommerce tax settings URL.
 #: config/defaults.php:46
 #, php-format
-msgid "Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku, 23%%, 8%%, 5%% i 0%%."
+msgid "Set up the <a href=\"%s\">VAT rates</a> in WooCommerce for the Polish market: 23%%, 8%%, 5%% and 0%%."
 msgstr ""
 
 #. translators: %s is the WooCommerce shipping zones URL.
 #: config/defaults.php:48
 #, php-format
-msgid "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
+msgid "Set up <a href=\"%s\">shipping zones</a> for deliveries in Poland."
 msgstr ""
 
 #. translators: %s is the WooCommerce product edit URL for Polski product data.
 #: config/defaults.php:50
 #, php-format
-msgid "Uzupełnij dane produktów, dodaj ceny jednostkowe i czasy dostawy w <a href=\"%s\">zakładce Polski</a> dla każdego produktu."
+msgid "Fill in the product data, adding unit prices and delivery times in the <a href=\"%s\">Polski tab</a> of every product."
 msgstr ""
 
 #. translators: %s is the WooCommerce checkout page URL.
 #: config/defaults.php:52
 #, php-format
-msgid "Przetestuj checkout, dodaj produkt do koszyka i sprawdź checkboxy prawne oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
+msgid "Test the checkout: add a product to the cart and check the legal checkboxes and the button wording on the <a href=\"%s\">checkout page</a>."
 msgstr ""
 
 #: config/defaults.php:53
-msgid "wykryta, dane synchronizowane"
+msgid "detected, data is being synchronised"
 msgstr ""
 
 #: config/defaults.php:54
-msgid "niezainstalowana"
+#: src/Admin/ModulesPage.php:2673
+msgid "not installed"
 msgstr ""
 
 #: config/defaults.php:55
-msgid "Żadna zewnętrzna wtyczka Omnibus nie jest zainstalowana. Polski używa wbudowanego systemu śledzenia cen."
+msgid "No external Omnibus plugin is installed. Polski uses its own price history."
 msgstr ""
 
 #: config/defaults.php:56
-msgid "Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego systemu."
+msgid "An external plugin was detected. Polski uses its data instead of its own price history."
 msgstr ""
 
 #: config/defaults.php:57
-msgid "wykryta, integracja aktywna"
+#: src/Admin/ModulesPage.php:2814
+msgid "detected, integration active"
 msgstr ""
 
 #: config/defaults.php:58
-msgid "niewykryta"
+msgid "not detected"
 msgstr ""
 
 #: config/defaults.php:59
-msgid "Nie wykryto wspieranych rozszerzeń checkoutu i cookies. Polski działa nadal samodzielnie."
+msgid "No supported checkout or cookie extension was detected. Polski works on its own."
 msgstr ""
 
 #: config/defaults.php:60
-msgid "Wykryto wspierane rozszerzenia checkoutu, cookies lub danych produktowych. Polski może dopasować integrację do aktywnego zestawu."
+msgid "A supported checkout, cookie or product data extension was detected. Polski can adapt to what is active."
 msgstr ""
 
 #: config/defaults.php:61
-msgid "Nie wykryto wspieranych polskich bramek płatności. Polski używa własnych ustawień checkoutu bez dodatkowych integracji."
+msgid "No supported Polish payment gateway was detected. Polski uses its own checkout settings with no further integration."
 msgstr ""
 
 #: config/defaults.php:62
-msgid "Wykryto polskie bramki płatności. Polski może dopasować checkout i komunikaty prawne do aktywnych metod."
+msgid "Polish payment gateways were detected. Polski can adapt the checkout and the legal notices to the active methods."
 msgstr ""
 
 #: config/defaults.php:69
@@ -232,511 +241,572 @@ msgid "{price} / {unit}"
 msgstr ""
 
 #: config/defaults.php:71
-msgid "plus koszty wysyłki"
+msgid "plus shipping"
 msgstr ""
 
 #: config/defaults.php:73
-msgid "od {price}"
+#: src/Service/PriceDisplayService.php:132
+msgid "from {price}"
 msgstr ""
 
 #: config/defaults.php:80
-msgid "Najniższa cena z ostatnich {days} dni: {price}"
+msgid "Lowest price in the last {days} days: {price}"
 msgstr ""
 
 #: config/defaults.php:88
-msgid "Jak oceniasz swoje zakupy? Zostaw opinię"
+msgid "How was your order? Leave a review"
 msgstr ""
 
 #: config/defaults.php:89
-msgid "Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za Twoją opinię."
+msgid "Hello {first_name}, thank you for your recent order. We would be grateful for your review."
 msgstr ""
 
 #: config/defaults.php:90
-msgid "Zostaw opinię"
+#: src/Service/ReviewRequestService.php:269
+msgid "Leave a review"
 msgstr ""
 
 #: config/defaults.php:91
-msgid "Zrezygnuj z próśb o opinię"
+#: src/Service/ReviewRequestService.php:228
+msgid "Unsubscribe from review requests"
 msgstr ""
 
 #: config/defaults.php:92
-msgid "Nie będziemy już wysyłać próśb o opinię."
+msgid "We will not send you review requests any more."
 msgstr ""
 
 #: config/defaults.php:100
-msgid "Minimalna wartość zamówienia to {min_value}. Aktualna wartość koszyka: {current_value}."
+msgid "The minimum order value is {min_value}. Your cart is currently {current_value}."
 msgstr ""
 
 #: config/defaults.php:101
-msgid "Minimalna liczba produktów w zamówieniu to {min_quantity}. Aktualna liczba: {current_quantity}."
+msgid "The minimum number of items per order is {min_quantity}. You currently have {current_quantity}."
 msgstr ""
 
 #: config/defaults.php:106
-msgid "Zamawiam z obowiązkiem zapłaty"
+#: src/Hook/CheckoutHooks.php:219
+msgid "Order with an obligation to pay"
 msgstr ""
 
 #. translators: %s is the terms and conditions page URL.
 #: config/defaults.php:109
 #, php-format
-msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin sklepu</a>."
+msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">terms and conditions</a>."
 msgstr ""
 
 #: config/defaults.php:110
-msgid "Musisz zaakceptować Regulamin, aby złożyć zamówienie."
+msgid "You have to accept the terms and conditions to place an order."
 msgstr ""
 
 #: config/defaults.php:111
-msgid "Akceptacja Regulaminu sklepu."
+msgid "Terms and conditions accepted."
 msgstr ""
 
 #. translators: %s is the privacy policy page URL.
 #: config/defaults.php:114
 #, php-format
-msgid "Zapoznałem się i akceptuję <a href=\"%s\" target=\"_blank\">Politykę prywatności</a>."
+msgid "I have read and accept the <a href=\"%s\" target=\"_blank\">privacy policy</a>."
 msgstr ""
 
 #: config/defaults.php:115
-msgid "Musisz zaakceptować Politykę prywatności."
+msgid "You have to accept the privacy policy."
 msgstr ""
 
 #: config/defaults.php:116
-msgid "Akceptacja Polityki prywatności."
+msgid "Privacy policy accepted."
 msgstr ""
 
 #. translators: %s is the withdrawal information page URL.
 #: config/defaults.php:119
 #, php-format
-msgid "Potwierdzam, że zostałem poinformowany o <a href=\"%s\" target=\"_blank\">prawie odstąpienia od umowy</a> w ciągu 14 dni."
+msgid "I confirm that I have been informed of the <a href=\"%s\" target=\"_blank\">right of withdrawal</a> within 14 days."
 msgstr ""
 
 #: config/defaults.php:120
-msgid "Musisz potwierdzić zapoznanie się z informacją o prawie odstąpienia."
+msgid "You have to confirm that you have read the information on the right of withdrawal."
 msgstr ""
 
 #: config/defaults.php:121
-msgid "Potwierdzenie informacji o 14-dniowym prawie odstąpienia."
+msgid "Information on the 14 day right of withdrawal acknowledged."
 msgstr ""
 
 #: config/defaults.php:123
-msgid "Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia."
+msgid "I consent to the supply of digital content beginning before the withdrawal period ends and I acknowledge that I thereby lose my right of withdrawal."
 msgstr ""
 
 #: config/defaults.php:124
-msgid "Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych."
+msgid "You have to consent to the immediate supply of digital content."
 msgstr ""
 
 #: config/defaults.php:125
-msgid "Zrzeczenie się prawa odstąpienia dla treści cyfrowych."
+msgid "Right of withdrawal waived for digital content."
 msgstr ""
 
 #: config/defaults.php:127
-msgid "Wyrażam zgodę na otrzymywanie powiadomień SMS/email o statusie dostawy przesyłki."
+msgid "I consent to receiving SMS and email notifications about the delivery status of my parcel."
 msgstr ""
 
 #: config/defaults.php:128
-msgid "Opcjonalna zgoda na powiadomienia o dostawie."
+msgid "Optional consent to delivery notifications."
 msgstr ""
 
 #: config/defaults.php:130
-msgid "Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową po zakupie."
+msgid "I consent to receiving an email reminder to leave a review after my purchase."
 msgstr ""
 
 #: config/defaults.php:131
-msgid "Opcjonalna zgoda na przypomnienia o opinii."
+msgid "Optional consent to review reminders."
 msgstr ""
 
 #: config/defaults.php:133
-msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
+msgid "I consent to receiving marketing communication and the newsletter."
 msgstr ""
 
 #: config/defaults.php:134
-msgid "Opcjonalna zgoda marketingowa."
+msgid "Optional marketing consent."
 msgstr ""
 
 #: config/defaults.php:146
-msgid "Odstąp od umowy"
+msgid "Withdraw from the contract"
 msgstr ""
 
 #: config/defaults.php:147
 #: templates/forms/withdrawal-form.php:42
-msgid "Wniosek o odstąpienie od umowy"
+msgid "Withdrawal declaration"
 msgstr ""
 
 #: config/defaults.php:148
-msgid "Nawiążesz do zamówienia nr #{order_number} z dnia {order_date}."
+msgid "This refers to order #{order_number} placed on {order_date}."
 msgstr ""
 
 #: config/defaults.php:149
-msgid "Zgodnie z polskim prawem konsumenckim masz prawo odstąpić od umowy w ciągu 14 dni bez podania przyczyny."
+msgid "Under Polish consumer law you have the right to withdraw from the contract within 14 days without giving a reason."
 msgstr ""
 
 #: config/defaults.php:150
-msgid "Produkty w zamówieniu"
+msgid "Items in the order"
 msgstr ""
 
 #: config/defaults.php:151
 #: config/defaults.php:257
+#: src/Admin/ModulesPage.php:438
+#: src/Service/ExpertReviewService.php:92
+#: templates/account/withdrawal-confirm.php:62
+#: templates/account/withdrawal-confirm.php:70
+#: templates/emails/withdrawal-confirmation.php:103
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
-msgid "Produkt"
+msgid "Product"
 msgstr ""
 
 #: config/defaults.php:152
 #: config/defaults.php:227
 #: config/defaults.php:260
+#: src/Admin/ModulesPage.php:439
+#: templates/account/withdrawal-confirm.php:63
+#: templates/account/withdrawal-confirm.php:73
 #: templates/forms/withdrawal-guest.php:62
 #: templates/forms/withdrawal-guest.php:84
-msgid "Ilość"
+msgid "Quantity"
 msgstr ""
 
 #: config/defaults.php:153
 #: config/defaults.php:423
-msgid "Cena"
+#: src/Admin/ModulesPage.php:440
+#: src/AIFeed/ProductMarkdownBuilder.php:155
+#: src/Service/CompareService.php:479
+msgid "Price"
 msgstr ""
 
 #: config/defaults.php:154
-msgid "(Ten produkt jest wyłączony z prawa odstąpienia)"
+#: src/Admin/ModulesPage.php:441
+msgid "(This product is excluded from the right of withdrawal)"
 msgstr ""
 
 #: config/defaults.php:155
+#: src/Admin/ModulesPage.php:442
+#: src/Service/WithdrawalService.php:953
 #: templates/forms/withdrawal-form.php:156
 #: templates/forms/withdrawal-guest.php:120
-msgid "Powód odstąpienia (opcjonalnie)"
+msgid "Reason for withdrawal (optional)"
 msgstr ""
 
 #: config/defaults.php:156
-msgid "Wyślij wniosek o odstąpienie"
+msgid "Send the withdrawal declaration"
 msgstr ""
 
 #: config/defaults.php:157
-msgid "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
+#: src/Admin/ModulesPage.php:444
+msgid "Something went wrong on our side. Please try again."
 msgstr ""
 
 #: config/defaults.php:158
-msgid "Nie znaleźliśmy tego zamówienia."
+#: src/Admin/ModulesPage.php:445
+#: src/Rest/WithdrawalController.php:133
+#: src/Shortcode/ShortcodeManager.php:248
+msgid "We could not find that order."
 msgstr ""
 
 #: config/defaults.php:159
-msgid "Nie masz uprawnień, aby odstąpić od tego zamówienia."
+msgid "You are not allowed to withdraw from this order."
 msgstr ""
 
 #: config/defaults.php:160
-msgid "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z potwierdzeniem."
+msgid "Your withdrawal declaration has been accepted. We will send a confirmation email shortly."
 msgstr ""
 
 #: config/defaults.php:161
 #: src/Shortcode/ShortcodeManager.php:254
-msgid "To zamówienie nie kwalifikuje się do odstąpienia."
+msgid "This order does not qualify for withdrawal."
 msgstr ""
 
 #: config/defaults.php:162
-msgid "Wniosek o odstąpienie"
+#: src/Admin/ModulesPage.php:434
+#: src/Admin/ModulesPage.php:449
+#: src/Service/WithdrawalService.php:935
+msgid "Withdrawal request"
 msgstr ""
 
 #: config/defaults.php:164
-msgid "Złożony"
+#: src/Admin/ModulesPage.php:451
+#: src/Enum/ReturnRequestStatus.php:19
+#: src/Enum/WithdrawalStatus.php:17
+#: src/Service/WithdrawalService.php:938
+msgid "Submitted"
 msgstr ""
 
 #: config/defaults.php:165
-msgid "Klient złożył wniosek o odstąpienie od umowy."
+msgid "The customer has filed a withdrawal declaration."
 msgstr ""
 
 #: config/defaults.php:166
-msgid "Wniosek o odstąpienie został potwierdzony."
+msgid "The withdrawal declaration has been confirmed."
 msgstr ""
 
 #: config/defaults.php:168
-msgid "Potwierdzenie wniosku o odstąpienie od zamówienia nr #{order_number}"
+msgid "Confirmation of the withdrawal declaration for order #{order_number}"
 msgstr ""
 
 #: config/defaults.php:169
-msgid "Odstąpienie potwierdzone"
+#: src/Admin/ModulesPage.php:456
+msgid "Withdrawal confirmed"
 msgstr ""
 
 #: config/defaults.php:170
 #: config/defaults.php:199
 #: templates/emails/double-opt-in.php:31
 #: templates/emails/plain/double-opt-in.php:27
-msgid "Cześć {name},"
+msgid "Hi {name},"
 msgstr ""
 
 #: config/defaults.php:171
-msgid "Twoje odstąpienie od umowy dla zamówienia nr #{order_number} zostało potwierdzone."
+msgid "Your withdrawal from the contract for order #{order_number} has been confirmed."
 msgstr ""
 
 #: config/defaults.php:172
+#: src/Admin/ModulesPage.php:459
 #: templates/emails/plain/withdrawal-confirmation.php:67
 #: templates/emails/withdrawal-confirmation.php:93
-msgid "Twój powód"
+msgid "Your reason"
 msgstr ""
 
 #: config/defaults.php:173
-msgid "Prosimy o zwrot produktów na powyższy adres w ciągu 14 dni:"
+msgid "Please return the goods to the address above within 14 days:"
 msgstr ""
 
 #: config/defaults.php:174
-msgid "Zwrot środków nastąpi w ciągu 14 dni od momentu otrzymania przez nas wracanych produktów."
+msgid "You will be refunded within 14 days of us receiving the returned goods."
 msgstr ""
 
 #: config/defaults.php:179
-msgid "w tym {rate}% VAT"
+msgid "incl. {rate}% VAT"
 msgstr ""
 
 #: config/defaults.php:180
-msgid "Zwolniony z VAT na podstawie art. 113 ust. 1 ustawy o VAT"
+msgid "VAT exempt under Article 113(1) of the Polish VAT Act"
 msgstr ""
 
 #: config/defaults.php:186
-msgid "Czas dostawy: {time}"
+msgid "Delivery time: {time}"
 msgstr ""
 
 #: config/defaults.php:194
-msgid "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij w przesłany przez nas link."
+msgid "Your account is waiting to be activated. Check your inbox and click the link we sent you."
 msgstr ""
 
 #: config/defaults.php:195
-msgid "Nieprawidłowy link aktywacyjny."
+#: src/Admin/ModulesPage.php:602
+#: src/Service/DoubleOptInService.php:131
+msgid "Invalid activation link."
 msgstr ""
 
 #: config/defaults.php:196
-msgid "Wspaniale! Twoje konto jest już aktywowane. Możesz się teraz śmiało zalogować."
+msgid "Your account is now active. You can log in."
 msgstr ""
 
 #: config/defaults.php:197
-msgid "Aktywuj swoje konto w {site_title}"
+#: src/Admin/ModulesPage.php:604
+#: src/Email/DoubleOptInEmail.php:65
+#: src/Email/DoubleOptInEmail.php:66
+msgid "Activate your account at {site_title}"
 msgstr ""
 
 #: config/defaults.php:198
-msgid "Potwierdź swój adres email"
+#: src/Admin/ModulesPage.php:605
+#: src/Email/DoubleOptInEmail.php:74
+#: src/Email/DoubleOptInEmail.php:75
+msgid "Confirm your email address"
 msgstr ""
 
 #: config/defaults.php:200
 #: templates/emails/double-opt-in.php:36
-msgid "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
+msgid "Thank you for creating an account. Click the button below to activate it:"
 msgstr ""
 
 #: config/defaults.php:201
 #: templates/emails/double-opt-in.php:40
-msgid "Aktywuj konto"
+msgid "Activate the account"
 msgstr ""
 
 #: config/defaults.php:202
 #: templates/emails/double-opt-in.php:44
-msgid "Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:"
+msgid "If you prefer, copy this link into your browser:"
 msgstr ""
 
 #: config/defaults.php:203
 #: templates/emails/plain/double-opt-in.php:31
-msgid "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
+msgid "Thank you for creating an account. Open the link below to activate it:"
 msgstr ""
 
 #: config/defaults.php:204
-msgid "Jeśli to nie Ty zakładałeś/-aś u nas konto, nie przejmuj się i po prostu wykasuj tę wiadomość."
+msgid "If you did not create an account with us, simply delete this message."
 msgstr ""
 
 #: config/defaults.php:216
-msgid "Zapytaj o wycenę"
+msgid "Request a quote"
 msgstr ""
 
 #: config/defaults.php:217
-msgid "Zapytaj o indywidualną wycenę"
+msgid "Request a custom quote"
 msgstr ""
 
 #: config/defaults.php:218
-msgid "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego zamówienia."
+msgid "Fill in the short form and we will come back with a quote for your order."
 msgstr ""
 
 #: config/defaults.php:219
-msgid "Zamknij formularz wyceny"
+msgid "Close the quote form"
 msgstr ""
 
 #: config/defaults.php:220
-msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
+msgid "Log in to request a quote for this product."
 msgstr ""
 
 #: config/defaults.php:221
 #: templates/forms/dsa-report.php:48
-msgid "Imię i nazwisko"
+msgid "Full name"
 msgstr ""
 
 #: config/defaults.php:222
 #: src/Admin/ModulesPage.php:2543
+#: src/Admin/WithdrawalsAdminPage.php:390
 #: src/Service/CustomCheckoutFieldsService.php:686
 msgid "Email"
 msgstr ""
 
 #: config/defaults.php:223
-msgid "Telefon"
+#: src/Admin/WithdrawalsAdminPage.php:389
+#: src/Service/CustomCheckoutFieldsService.php:688
+msgid "Phone"
 msgstr ""
 
 #: config/defaults.php:224
-msgid "Firma"
+msgid "Company"
 msgstr ""
 
 #: config/defaults.php:225
 #: src/Service/B2BCheckoutService.php:257
-#: src/Service/NipLookupService.php:66
-#: src/Service/NipLookupService.php:149
+#: src/Service/NipLookupService.php:74
+#: src/Service/NipLookupService.php:151
+#: src/Service/NipLookupService.php:246
 msgid "NIP"
 msgstr ""
 
 #: config/defaults.php:226
-msgid "Kod pocztowy"
+msgid "Postcode"
 msgstr ""
 
 #: config/defaults.php:228
-msgid "Szczegóły zapytania"
+msgid "Request details"
 msgstr ""
 
 #: config/defaults.php:229
-msgid "Napisz czego potrzebujesz, jaki masz termin i jakie są założenia zamówienia."
+msgid "Tell us what you need, when you need it and what the order involves."
 msgstr ""
 
 #: config/defaults.php:230
-msgid "Wyślij zapytanie"
+msgid "Send the request"
 msgstr ""
 
 #: config/defaults.php:231
-msgid "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak szybko, jak to możliwe."
+msgid "Thank you. Your request has been sent and we will reply as soon as we can."
 msgstr ""
 
 #: config/defaults.php:232
-msgid "Cena dostępna po wycenie"
+msgid "Price available on request"
 msgstr ""
 
 #: config/defaults.php:233
-msgid "Uzupełnij poprawnie imię i adres email."
+msgid "Enter a valid name and email address."
 msgstr ""
 
 #: config/defaults.php:234
-msgid "Podaj numer telefonu do kontaktu."
+msgid "Enter a contact phone number."
 msgstr ""
 
 #: config/defaults.php:235
-msgid "Podaj nazwę firmy."
+msgid "Enter the company name."
 msgstr ""
 
 #: config/defaults.php:236
-msgid "Podaj numer NIP."
+msgid "Enter the VAT ID (NIP)."
 msgstr ""
 
 #: config/defaults.php:237
-msgid "Podaj poprawny numer NIP."
+msgid "Enter a valid VAT ID (NIP)."
 msgstr ""
 
 #: config/defaults.php:238
-msgid "Podaj kod pocztowy."
+msgid "Enter the postcode."
 msgstr ""
 
 #: config/defaults.php:239
-msgid "Musisz zaakceptować zgodę prywatności."
+msgid "You have to accept the privacy consent."
 msgstr ""
 
 #: config/defaults.php:240
-msgid "Minimalna ilość dla tego zapytania to {quantity}."
+msgid "The minimum quantity for this request is {quantity}."
 msgstr ""
 
 #: config/defaults.php:241
-msgid "Nie udało się zapisać zapytania. Spróbuj ponownie."
+msgid "The request could not be saved. Please try again."
 msgstr ""
 
 #: config/defaults.php:242
-msgid "Nie udało się przygotować zapytania dla tego produktu."
+msgid "The request could not be prepared for this product."
 msgstr ""
 
 #: config/defaults.php:249
-msgid "Akceptuję politykę prywatności i zgadzam się na kontakt w sprawie wyceny."
+msgid "I accept the privacy policy and agree to be contacted about the quote."
 msgstr ""
 
 #: config/defaults.php:250
-msgid "Nowe zapytanie ofertowe - {product_name}"
+msgid "New quote request: {product_name}"
 msgstr ""
 
 #: config/defaults.php:251
-msgid "Potwierdzenie zapytania ofertowego - {product_name}"
+msgid "Quote request confirmation: {product_name}"
 msgstr ""
 
 #: config/defaults.php:253
-msgid "Zapytania ofertowe"
+msgid "Quote requests"
 msgstr ""
 
 #: config/defaults.php:254
-msgid "Status zapytania został zaktualizowany."
+msgid "The request status has been updated."
 msgstr ""
 
 #: config/defaults.php:255
 #: config/defaults.php:353
 #: config/defaults.php:355
+#: src/Admin/WithdrawalsAdminPage.php:114
+#: src/Admin/WithdrawalsAdminPage.php:123
 #: templates/forms/ajax-filters.php:153
 #: templates/forms/ajax-filters.php:177
-msgid "Wszystkie"
+msgid "All"
 msgstr ""
 
 #: config/defaults.php:256
+#: src/Admin/AdminPage.php:906
+#: src/Admin/ConsentRecordsPage.php:68
+#: src/Admin/DeactivationHandler.php:150
+#: src/Service/CustomCheckoutFieldsService.php:687
+#: src/Service/DSAService.php:171
 #: src/Service/MyAccountWithdrawalsService.php:103
-msgid "Data"
+#: src/Service/ReturnRequestService.php:231
+#: src/Service/RodoTrainingDocsService.php:165
+#: templates/account/withdrawal-confirm.php:37
+#: templates/account/withdrawal-confirm.php:46
+msgid "Date"
 msgstr ""
 
 #: config/defaults.php:258
-msgid "Klient"
+#: src/Service/ComplaintTemplateService.php:148
+#: src/Service/ProductQAService.php:238
+msgid "Customer"
 msgstr ""
 
 #: config/defaults.php:259
-msgid "Firma / NIP"
+msgid "Company / VAT ID"
 msgstr ""
 
 #: config/defaults.php:262
-msgid "Akcje"
+#: src/Admin/CRAIncidentsPage.php:126
+#: src/Admin/ModulesPage.php:1646
+#: src/Service/CustomCheckoutFieldsService.php:718
+msgid "Actions"
 msgstr ""
 
 #: config/defaults.php:263
-msgid "Brak zapytań ofertowych."
+msgid "No quote requests."
 msgstr ""
 
 #: config/defaults.php:264
-msgid "Kod"
+msgid "Code"
 msgstr ""
 
 #: config/defaults.php:277
-msgid "Zapytaj o warunki handlowe"
+msgid "Ask about trade terms"
 msgstr ""
 
 #: config/defaults.php:278
-msgid "Zaloguj się, aby zobaczyć ofertę"
+msgid "Log in to see the price"
 msgstr ""
 
 #: config/defaults.php:281
-msgid "Cena dostępna po zalogowaniu lub po kontakcie z obsługą."
+msgid "The price is available once you log in or contact us."
 msgstr ""
 
 #: config/defaults.php:282
-msgid "Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać warunki handlowe lub ofertę B2B."
+msgid "This product is shown in catalogue mode. Contact us for trade terms or a B2B quote."
 msgstr ""
 
 #: config/defaults.php:283
-msgid "Zobacz warunki handlowe"
+msgid "See trade terms"
 msgstr ""
 
 #: config/defaults.php:284
-msgid "Ceny i zakup online są ukryte dla tego produktu."
+msgid "Prices and online purchase are hidden for this product."
 msgstr ""
 
 #: config/defaults.php:285
-msgid "Cena jest ukryta dla tego produktu."
+msgid "The price is hidden for this product."
 msgstr ""
 
 #: config/defaults.php:286
-msgid "Zakup online jest wyłączony dla tego produktu."
+msgid "Online purchase is disabled for this product."
 msgstr ""
 
 #: config/defaults.php:309
+#: src/Admin/ModulesPage.php:638
 #: templates/forms/ajax-search.php:17
-msgid "Szukaj produktów"
+msgid "Search products"
 msgstr ""
 
 #: config/defaults.php:310
+#: src/Admin/ModulesPage.php:639
 #: templates/forms/ajax-search.php:40
-msgid "Wyniki wyszukiwania produktów"
+msgid "Product search results"
 msgstr ""
 
 #: config/defaults.php:311
@@ -752,203 +822,243 @@ msgid "SKU"
 msgstr ""
 
 #: config/defaults.php:312
-msgid "Szukaj produktów, kodów SKU lub kategorii"
+msgid "Search products, SKUs or categories"
 msgstr ""
 
 #: config/defaults.php:313
-msgid "Szukaj"
+#: src/Admin/ModulesPage.php:642
+msgid "Search"
 msgstr ""
 
 #: config/defaults.php:314
-msgid "Brak wyników dla podanego zapytania."
+msgid "No results for that search."
 msgstr ""
 
 #: config/defaults.php:315
-msgid "Zobacz wszystkie wyniki"
+msgid "See all results"
 msgstr ""
 
 #: config/defaults.php:323
 #: config/defaults.php:354
 #: config/defaults.php:428
+#: src/Admin/PostTypes.php:118
+#: src/AIFeed/ProductMarkdownBuilder.php:212
+#: src/Service/CompareService.php:484
 #: src/Service/FilterService.php:573
+#: src/Service/ProductInfoService.php:134
 #: templates/forms/ajax-filters.php:171
-msgid "Marka"
+msgid "Brand"
 msgstr ""
 
 #: config/defaults.php:352
+#: src/Admin/ConsentRecordsPage.php:69
 #: src/Service/FilterService.php:566
 #: templates/forms/ajax-filters.php:147
-msgid "Kategoria"
+msgid "Category"
 msgstr ""
 
 #: config/defaults.php:356
 #: src/Service/FilterService.php:585
 #: templates/forms/ajax-filters.php:195
-msgid "Cena od"
+msgid "Price from"
 msgstr ""
 
 #: config/defaults.php:357
 #: src/Service/FilterService.php:597
 #: templates/forms/ajax-filters.php:199
-msgid "Cena do"
+msgid "Price to"
 msgstr ""
 
 #: config/defaults.php:358
 #: config/defaults.php:426
+#: src/AIFeed/ProductMarkdownBuilder.php:188
+#: src/Service/CompareService.php:482
 #: src/Service/FilterService.php:606
 #: templates/forms/ajax-filters.php:206
-msgid "Dostępność"
+msgid "Availability"
 msgstr ""
 
 #: config/defaults.php:359
 #: templates/forms/ajax-filters.php:208
-msgid "Dowolna"
+msgid "Any"
 msgstr ""
 
 #: config/defaults.php:360
+#: src/AIFeed/ProductMarkdownBuilder.php:189
 #: src/Service/FilterService.php:607
 #: templates/forms/ajax-filters.php:210
-msgid "Dostępne od ręki"
+msgid "In stock"
 msgstr ""
 
 #: config/defaults.php:361
 #: src/Service/FilterService.php:615
 #: templates/forms/ajax-filters.php:218
-msgid "Promocje"
+msgid "Promotions"
 msgstr ""
 
 #: config/defaults.php:362
 #: src/Service/FilterService.php:616
-msgid "Tylko promocje"
+msgid "On sale only"
 msgstr ""
 
 #: config/defaults.php:363
 #: templates/forms/ajax-filters.php:237
-msgid "Dowolny"
+msgid "Any option"
 msgstr ""
 
 #: config/defaults.php:365
-msgid "Filtruj"
+#: src/Admin/WithdrawalsAdminPage.php:130
+msgid "Filter"
 msgstr ""
 
 #: config/defaults.php:366
-msgid "Wyczyść filtry"
+msgid "Clear filters"
 msgstr ""
 
 #: config/defaults.php:367
 #: config/defaults.php:371
 #: templates/forms/ajax-filters.php:133
-msgid "Filtry produktów"
+msgid "Product filters"
 msgstr ""
 
 #: config/defaults.php:368
 #: templates/forms/ajax-filters.php:110
-msgid "Aktywne filtry"
+msgid "Active filters"
 msgstr ""
 
 #: config/defaults.php:369
 #: templates/forms/ajax-filters.php:99
-msgid "Pokaż filtry"
+msgid "Show filters"
 msgstr ""
 
 #: config/defaults.php:370
 #: config/defaults.php:445
+#: src/Service/LiveCartService.php:80
+#: src/Service/LiveCartService.php:140
 #: templates/forms/ajax-filters.php:139
 #: templates/shared/quick-view-modal.php:22
-msgid "Zamknij"
+msgid "Close"
 msgstr ""
 
 #: config/defaults.php:388
-msgid "Ulubione"
+#: src/Admin/ModulesPage.php:719
+#: src/Service/WishlistService.php:178
+msgid "Wishlist"
 msgstr ""
 
 #: config/defaults.php:389
-msgid "Dodaj do ulubionych"
+msgid "Add to wishlist"
 msgstr ""
 
 #: config/defaults.php:390
-msgid "Usuń z ulubionych"
+msgid "Remove from wishlist"
 msgstr ""
 
 #: config/defaults.php:392
-msgid "Zaloguj się, aby korzystać z listy życzeń."
+msgid "Log in to use the wishlist."
 msgstr ""
 
 #: config/defaults.php:393
 #: config/defaults.php:413
 #: config/defaults.php:448
 #: config/defaults.php:610
-msgid "Nie znaleziono produktu."
+#: src/Rest/AiGpsrDraftController.php:159
+#: src/Rest/AiProductSummaryController.php:100
+#: src/Service/AjaxAddToCartService.php:111
+#: src/Service/CompareService.php:430
+#: src/Service/QuickViewService.php:127
+#: src/Service/WaitlistService.php:43
+#: src/Service/WishlistService.php:289
+msgid "Product not found."
 msgstr ""
 
 #: config/defaults.php:394
-msgid "Lista ulubionych jest pusta."
+msgid "The wishlist is empty."
 msgstr ""
 
 #: config/defaults.php:395
-msgid "Twoje ulubione produkty"
+msgid "Your wishlist"
 msgstr ""
 
 #: config/defaults.php:409
-msgid "Porównanie"
+#: src/Service/CompareService.php:230
+msgid "Comparison"
 msgstr ""
 
 #: config/defaults.php:410
-msgid "Dodaj do porównania"
+msgid "Add to comparison"
 msgstr ""
 
 #: config/defaults.php:411
-msgid "Usuń z porównania"
+msgid "Remove from comparison"
 msgstr ""
 
 #: config/defaults.php:412
-msgid "Zaloguj się, aby korzystać z porównania produktów."
+#: src/Service/CompareService.php:425
+msgid "Log in to use product comparison."
 msgstr ""
 
 #: config/defaults.php:414
-msgid "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis został zastąpiony automatycznie."
+msgid "You can compare up to {limit} products at a time. The oldest one was replaced automatically."
 msgstr ""
 
 #: config/defaults.php:415
-msgid "Nie możesz wyczyścić porównania."
+#: src/Service/CompareService.php:435
+msgid "You cannot clear the comparison."
 msgstr ""
 
 #: config/defaults.php:417
-msgid "Lista porównawcza jest pusta."
+msgid "The comparison list is empty."
 msgstr ""
 
 #: config/defaults.php:418
-msgid "Porównanie produktów"
+msgid "Product comparison"
 msgstr ""
 
 #: config/defaults.php:419
-msgid "Porównaj produkty"
+#: src/Service/CompareService.php:420
+msgid "Compare products"
 msgstr ""
 
 #: config/defaults.php:420
 #: src/Service/CompareService.php:301
-msgid "Wyczyść porównanie"
+msgid "Clear the comparison"
 msgstr ""
 
 #: config/defaults.php:421
-msgid "Cecha"
+msgid "Attribute"
 msgstr ""
 
 #: config/defaults.php:422
-msgid "Pokazuj tylko różnice"
+msgid "Show differences only"
 msgstr ""
 
 #: config/defaults.php:424
-msgid "Cena jednostkowa"
+#: src/Admin/ModulesPage.php:192
+#: src/Admin/ProductMetaBox.php:67
+#: src/Service/CompareService.php:480
+msgid "Unit price"
 msgstr ""
 
 #: config/defaults.php:427
-msgid "Czas dostawy"
+#: src/Admin/ModulesPage.php:267
+#: src/Admin/ProductMetaBox.php:133
+#: src/AIFeed/ProductMarkdownBuilder.php:180
+#: src/Block/StoreApi/ProductDataExtension.php:226
+#: src/Service/CompareService.php:483
+msgid "Delivery time"
 msgstr ""
 
 #: config/defaults.php:429
+#: src/Admin/PostTypes.php:68
+#: src/AIFeed/ProductMarkdownBuilder.php:217
+#: src/Block/ProductDataBlocks.php:65
+#: src/Block/StoreApi/ProductDataExtension.php:167
+#: src/Compatibility/Elementor/Widgets/ManufacturerWidget.php:16
+#: src/Service/CompareService.php:485
+#: src/Service/ProductInfoService.php:69
 #: templates/single-product/gpsr-info.php:15
-msgid "Producent"
+msgid "Manufacturer"
 msgstr ""
 
 #: config/defaults.php:430
@@ -957,67 +1067,70 @@ msgid "GTIN / EAN"
 msgstr ""
 
 #: config/defaults.php:431
-msgid "Krótki opis"
+#: src/Service/CompareService.php:490
+msgid "Short description"
 msgstr ""
 
 #: config/defaults.php:443
-msgid "Szybki podgląd"
+msgid "Quick view"
 msgstr ""
 
 #: config/defaults.php:444
 #: templates/shared/quick-view-modal.php:20
 #: templates/shared/quick-view-modal.php:28
-msgid "Szybki podgląd produktu"
+msgid "Product quick view"
 msgstr ""
 
 #: config/defaults.php:446
-msgid "Ładowanie produktu..."
+msgid "Loading the product..."
 msgstr ""
 
 #: config/defaults.php:447
-msgid "Nie udało się wczytać podglądu produktu."
+msgid "The product preview could not be loaded."
 msgstr ""
 
 #: config/defaults.php:466
 #: templates/quick-view/content.php:106
-msgid "Zobacz pełną kartę produktu"
+msgid "See the full product page"
 msgstr ""
 
 #: config/defaults.php:475
-msgid "Często kupowane razem"
+msgid "Frequently bought together"
 msgstr ""
 
 #: config/defaults.php:476
-msgid "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość do koszyka jednym kliknięciem."
+msgid "Offer a ready made bundle of complementary products and add the whole set to the cart in one click."
 msgstr ""
 
 #: config/defaults.php:477
 #: config/defaults.php:644
-msgid "Dodaj zestaw do koszyka"
+msgid "Add the bundle to the cart"
 msgstr ""
 
 #: config/defaults.php:478
-msgid "Brak skonfigurowanych produktów do zestawu."
+msgid "No products have been set up for the bundle."
 msgstr ""
 
 #: config/defaults.php:482
-msgid "Łącznie:"
+msgid "Total:"
 msgstr ""
 
 #: config/defaults.php:483
-msgid "Dodano {count} produktów z zestawu do koszyka."
+msgid "{count} products from the bundle were added to the cart."
 msgstr ""
 
 #: config/defaults.php:512
-msgid "Promocja"
+#: src/Admin/ModulesPage.php:931
+#: src/Service/BadgeService.php:105
+msgid "Sale"
 msgstr ""
 
 #: config/defaults.php:513
-msgid "Nowość"
+msgid "New arrival"
 msgstr ""
 
 #: config/defaults.php:514
-msgid "Ostatnie sztuki"
+msgid "Low stock"
 msgstr ""
 
 #: config/defaults.php:515
@@ -1026,175 +1139,179 @@ msgid "Bestseller"
 msgstr ""
 
 #: config/defaults.php:522
-msgid "Dostawa i płatność"
+msgid "Delivery and payment"
 msgstr ""
 
 #: config/defaults.php:526
-msgid "Zwroty i reklamacje"
+msgid "Returns and complaints"
 msgstr ""
 
 #: config/defaults.php:540
-msgid "Zobacz produkt w użyciu"
+msgid "See the product in use"
 msgstr ""
 
 #: config/defaults.php:553
 #: templates/shared/gallery-lightbox.php:21
-msgid "Podgląd galerii produktu"
+msgid "Product gallery preview"
 msgstr ""
 
 #: config/defaults.php:554
 #: templates/shared/gallery-lightbox.php:24
-msgid "Zamknij podgląd galerii"
+msgid "Close the gallery preview"
 msgstr ""
 
 #: config/defaults.php:555
 #: src/Service/GalleryZoomService.php:64
-msgid "Powiększ zdjęcie produktu"
+msgid "Zoom in on the product photo"
 msgstr ""
 
 #: config/defaults.php:564
 #: src/Service/ProductSliderService.php:76
 #: src/Service/ProductSliderService.php:120
-msgid "Polecane produkty"
+msgid "Recommended products"
 msgstr ""
 
 #: config/defaults.php:575
-msgid "Brak produktów do wyświetlenia w tej sekcji."
+msgid "There are no products to show in this section."
 msgstr ""
 
 #: config/defaults.php:576
 #: templates/shared/product-slider.php:77
-msgid "Zobacz wszystkie produkty"
+msgid "See all products"
 msgstr ""
 
 #: config/defaults.php:586
-msgid "Zamów w przedsprzedaży"
+msgid "Pre-order now"
 msgstr ""
 
 #: config/defaults.php:587
-msgid "Przedsprzedaż, wysyłka od {date}"
+msgid "Pre-order, shipping from {date}"
 msgstr ""
 
 #: config/defaults.php:588
-msgid "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę zrealizujemy od {date}."
+msgid "This product is available for pre-order. Order now and we will ship from {date}."
 msgstr ""
 
 #: config/defaults.php:589
-msgid "Przedsprzedaż"
+msgid "Pre-order"
 msgstr ""
 
 #: config/defaults.php:593
-msgid "Produkty z przedsprzedaży nie mogą być łączone z innymi produktami w tym samym koszyku."
+msgid "Pre-order products cannot be combined with other products in the same cart."
 msgstr ""
 
 #: config/defaults.php:601
-msgid "Powiadom mnie o dostępności"
+msgid "Notify me when it is back"
 msgstr ""
 
 #: config/defaults.php:603
-msgid "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
+msgid "Leave your email address and we will let you know when the product is back in stock."
 msgstr ""
 
 #: config/defaults.php:605
+#: templates/forms/dsa-report.php:53
 #: templates/single-product/waitlist-form.php:27
-msgid "Adres email"
+msgid "Email address"
 msgstr ""
 
 #: config/defaults.php:606
 #: templates/single-product/waitlist-form.php:28
-msgid "Twój adres email"
+msgid "Your email address"
 msgstr ""
 
 #: config/defaults.php:607
-msgid "Powiadom mnie"
+msgid "Notify me"
 msgstr ""
 
 #: config/defaults.php:608
-msgid "Dziękujemy. Zapisaliśmy Cię na listę oczekujących."
+msgid "Thank you. You are on the waitlist."
 msgstr ""
 
 #: config/defaults.php:609
-msgid "Akceptuję kontakt email w sprawie dostępności tego produktu."
+msgid "I agree to be contacted by email about the availability of this product."
 msgstr ""
 
 #: config/defaults.php:611
-msgid "Lista oczekujących jest niedostępna dla tego produktu."
+msgid "The waitlist is not available for this product."
 msgstr ""
 
 #: config/defaults.php:612
-msgid "Podaj poprawny adres email."
+msgid "Enter a valid email address."
 msgstr ""
 
 #: config/defaults.php:613
-msgid "Musisz zaakceptować zgodę na kontakt email."
+msgid "You have to accept the email contact consent."
 msgstr ""
 
 #: config/defaults.php:614
-msgid "Zaloguj się, aby zapisać się na listę oczekujących."
+msgid "Log in to join the waitlist."
 msgstr ""
 
 #: config/defaults.php:615
-msgid "Produkt ponownie dostępny - {product_name}"
+msgid "Back in stock: {product_name}"
 msgstr ""
 
 #: config/defaults.php:616
-msgid "Produkt {product_name} jest ponownie dostępny."
+msgid "{product_name} is back in stock."
 msgstr ""
 
 #: config/defaults.php:617
-msgid "Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten email."
+msgid "If you no longer want messages like this, simply ignore this email."
 msgstr ""
 
 #: config/defaults.php:624
-msgid "Dodatki do produktu"
+msgid "Product add-ons"
 msgstr ""
 
 #: config/defaults.php:625
-msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
+msgid "Set up the add-ons and services that go with this product."
 msgstr ""
 
 #: config/defaults.php:629
-msgid "Wymagane"
+#: src/PageCompliance/Enum/Severity.php:18
+#: src/Service/CustomCheckoutFieldsService.php:716
+msgid "Required"
 msgstr ""
 
 #: config/defaults.php:630
-msgid "Opcjonalne"
+#: src/PageCompliance/Enum/Severity.php:20
+msgid "Optional"
 msgstr ""
 
 #: config/defaults.php:631
-msgid "Wybierz opcję"
+msgid "Choose an option"
 msgstr ""
 
 #: config/defaults.php:632
-msgid "Wpisz wartość"
+msgid "Enter a value"
 msgstr ""
 
 #: config/defaults.php:633
-msgid "Wpisz szczegóły"
+msgid "Enter the details"
 msgstr ""
 
 #: config/defaults.php:642
-msgid "Kup w zestawie"
+msgid "Buy as a bundle"
 msgstr ""
 
 #: config/defaults.php:643
-msgid "Połącz produkt główny z akcesoriami i kup całość w jednym pakiecie."
+msgid "Combine the main product with accessories and buy the whole set as one package."
 msgstr ""
 
 #: config/defaults.php:645
-msgid "Wybierz przynajmniej jeden dodatkowy produkt do zestawu."
+msgid "Choose at least one add-on product for the bundle."
 msgstr ""
 
 #: config/defaults.php:646
-msgid "Dodano zestaw do koszyka."
+msgid "The bundle was added to the cart."
 msgstr ""
 
 #: config/defaults.php:649
-msgid "Cena zestawu"
+msgid "Bundle price"
 msgstr ""
 
 #: config/defaults.php:650
-msgid "w zestawie"
+msgid "in the bundle"
 msgstr ""
 
 #: config/defaults.php:651
@@ -1202,72 +1319,88 @@ msgid "x {quantity}"
 msgstr ""
 
 #: config/defaults.php:652
-msgid "Oszczędzasz"
+msgid "You save"
 msgstr ""
 
 #: config/defaults.php:659
 #: templates/archive/infinite-scroll.php:11
-msgid "Załaduj więcej produktów"
+msgid "Load more products"
 msgstr ""
 
 #: config/defaults.php:660
-msgid "Ładowanie produktów..."
+msgid "Loading products..."
 msgstr ""
 
 #: config/defaults.php:661
-msgid "Nie udało się załadować kolejnych produktów."
+msgid "More products could not be loaded."
 msgstr ""
 
 #: config/defaults.php:662
-msgid "To już wszystkie produkty."
+msgid "That is all the products."
 msgstr ""
 
 #: config/defaults.php:663
-msgid "Załadowano kolejne produkty."
+msgid "More products have been loaded."
 msgstr ""
 
 #: config/defaults.php:674
-msgid "Masz pytanie o produkt lub warunki handlowe?"
+msgid "A question about the product or about trade terms?"
 msgstr ""
 
 #: config/defaults.php:675
-msgid "Skontaktuj się z nami, jeśli chcesz dostać ofertę B2B, rabat dla hurtu albo pomoc z doborem produktu."
+msgid "Contact us for a B2B quote, a wholesale discount or help choosing a product."
 msgstr ""
 
 #: config/defaults.php:676
-msgid "Przejdź do kontaktu"
+msgid "Go to contact"
 msgstr ""
 
 #: config/defaults.php:679
 #: src/Service/PopupService.php:80
-msgid "Zamknij popup"
+msgid "Close the popup"
 msgstr ""
 
 #: config/defaults.php:680
 #: src/Service/PopupService.php:81
-msgid "Popup promocyjny"
+msgid "Promotional popup"
 msgstr ""
 
 #: config/defaults.php:706
-msgid "Składniki"
+#: src/Admin/CSVImportExport.php:93
+#: src/Admin/ModulesPage.php:552
+#: src/Block/ProductDataBlocks.php:107
+#: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
+#: src/Service/FoodService.php:72
+msgid "Ingredients"
 msgstr ""
 
 #: config/defaults.php:707
-msgid "Alergeny"
+#: src/Admin/ModulesPage.php:553
+#: src/Admin/PostTypes.php:142
+#: src/Block/ProductDataBlocks.php:101
+#: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
+#: src/Service/FoodService.php:116
+msgid "Allergens"
 msgstr ""
 
 #: config/defaults.php:708
-msgid "Wartości odżywcze na"
+msgid "Nutrition per"
 msgstr ""
 
 #: config/defaults.php:709
-msgid "Składnik odżywczy"
+#: src/Admin/ModulesPage.php:556
+#: src/Admin/PostTypes.php:168
+#: src/Service/FoodService.php:325
+msgid "Nutrient"
 msgstr ""
 
 #: config/defaults.php:710
+#: src/Admin/ModulesPage.php:557
+#: src/Service/FoodService.php:326
+#: src/Service/RodoTrainingDocsService.php:255
 #: templates/forms/withdrawal-guest.php:63
 #: templates/forms/withdrawal-guest.php:87
-msgid "Wartość"
+msgid "Value"
 msgstr ""
 
 #: config/defaults.php:711
@@ -1284,7 +1417,7 @@ msgid "Nutri-Score"
 msgstr ""
 
 #: config/defaults.php:713
-msgid "Zawartość alkoholu"
+msgid "Alcoholic strength"
 msgstr ""
 
 #: config/defaults.php:714
@@ -1293,100 +1426,115 @@ msgid "% vol."
 msgstr ""
 
 #: config/defaults.php:715
-msgid "Kraj pochodzenia"
+#: src/Admin/CSVImportExport.php:98
+#: src/Admin/ModulesPage.php:561
+#: src/Service/FoodService.php:462
+msgid "Country of origin"
 msgstr ""
 
 #: config/defaults.php:716
-msgid "Dystrybutor"
+#: src/Admin/ModulesPage.php:562
+#: src/Service/FoodService.php:470
+msgid "Distributor"
 msgstr ""
 
 #: config/defaults.php:717
-msgid "Zawartość netto"
+#: src/Admin/CSVImportExport.php:99
+msgid "Net quantity"
 msgstr ""
 
 #. translators: 1: customer first name (possibly anonymized), 2: product name
 #: config/defaults.php:745
 #, php-format
-msgid "%1$s kupił(a) %2$s"
+msgid "%1$s bought %2$s"
 msgstr ""
 
 #. translators: %d: number of minutes since the order
 #: config/defaults.php:747
 #, php-format
-msgid "%d min temu"
+msgid "%d min ago"
 msgstr ""
 
 #. translators: %d: number of hours since the order
 #: config/defaults.php:749
 #, php-format
-msgid "%d godz. temu"
+msgid "%d h ago"
 msgstr ""
 
 #: config/defaults.php:754
-msgid "Pytania i odpowiedzi"
+msgid "Questions and answers"
 msgstr ""
 
 #: config/defaults.php:755
-msgid "Zadaj pytanie o ten produkt..."
+msgid "Ask a question about this product..."
 msgstr ""
 
 #: config/defaults.php:756
-msgid "Zadaj pytanie"
+#: src/Service/ProductQAService.php:174
+msgid "Ask a question"
 msgstr ""
 
 #: config/defaults.php:757
-msgid "Odpowiedz"
+msgid "Reply"
 msgstr ""
 
 #: config/defaults.php:758
-msgid "Brak pytań. Zadaj pierwsze pytanie!"
+msgid "No questions yet. Ask the first one."
 msgstr ""
 
 #: config/defaults.php:766
-msgid "Historia cen"
+msgid "Price history"
 msgstr ""
 
 #: config/defaults.php:767
-msgid "Najniższa"
+#: src/Service/PriceHistoryChartService.php:111
+msgid "Lowest"
 msgstr ""
 
 #: config/defaults.php:768
-msgid "Najwyższa"
+#: src/Service/PriceHistoryChartService.php:113
+msgid "Highest"
 msgstr ""
 
 #: config/defaults.php:773
-msgid "Często zadawane pytania"
+msgid "Frequently asked questions"
 msgstr ""
 
 #: config/defaults.php:799
-msgid "Używamy plików cookie i podobnych technologii, aby zapewnić działanie serwisu, mierzyć ruch i personalizować treści. Możesz zaakceptować wszystkie, odrzucić nieobowiązkowe lub samodzielnie zarządzać wyborami."
+msgid "We use cookies and similar technologies to run the site, measure traffic and personalise content. You can accept all of them, reject the optional ones, or manage your choices yourself."
 msgstr ""
 
 #: config/defaults.php:800
-msgid "Akceptuję wszystkie"
+#: src/Admin/ModulesPage.php:386
+#: src/Service/ConsentManagerService.php:79
+msgid "Accept all"
 msgstr ""
 
 #: config/defaults.php:801
-msgid "Odrzuć nieobowiązkowe"
+msgid "Reject optional"
 msgstr ""
 
 #: config/defaults.php:802
-msgid "Zarządzaj"
+#: src/Admin/ModulesPage.php:388
+#: src/Service/ConsentManagerService.php:81
+msgid "Manage"
 msgstr ""
 
 #: config/defaults.php:803
-msgid "Zapisz wybory"
+#: src/Admin/ModulesPage.php:389
+#: src/Service/ConsentManagerService.php:82
+msgid "Save choices"
 msgstr ""
 
 #: config/defaults.php:874
 #: src/Service/DSAProductReportService.php:100
 #: templates/forms/dsa-report.php:37
-msgid "Zgłoś nielegalne treści (DSA)"
+msgid "Report illegal content (DSA)"
 msgstr ""
 
 #: config/defaults.php:875
 #: templates/forms/dsa-report.php:40
-msgid "Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne zgodnie z Aktem o usługach cyfrowych (DSA)."
+msgid "Use the form below to report content you consider illegal under the Digital Services Act."
 msgstr ""
 
 #. translators: 1: Required PHP version, 2: Current PHP version
@@ -1460,7 +1608,8 @@ msgstr ""
 #: src/Admin/AdminPage.php:166
 #: src/Admin/AdminPage.php:210
 #: src/Admin/WithdrawalOrderMetaBox.php:137
-msgid "Brak uprawnień."
+#: src/Service/ReturnRequestService.php:267
+msgid "You do not have permission."
 msgstr ""
 
 #: src/Admin/AdminPage.php:253
@@ -1517,10 +1666,6 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:523
 msgid "Ready! We have generated draft legal pages for you. Please review, adjust, and publish them."
-msgstr ""
-
-#: src/Admin/AdminPage.php:529
-msgid "Modules saved."
 msgstr ""
 
 #: src/Admin/AdminPage.php:614
@@ -1635,67 +1780,77 @@ msgid "Current setting: plugin data will be kept on uninstall."
 msgstr ""
 
 #: src/Admin/AdminPage.php:745
-msgid "Audyt zgodności"
+msgid "Compliance audit"
 msgstr ""
 
 #: src/Admin/AdminPage.php:746
-msgid "Automatyczna weryfikacja najczęstszych problemów prawnych w polskim eCommerce."
+msgid "An automatic check of the most common legal problems in Polish ecommerce."
 msgstr ""
 
 #: src/Admin/AdminPage.php:752
-msgid "Raporty DSA"
+msgid "DSA reports"
 msgstr ""
 
 #: src/Admin/AdminPage.php:753
-msgid "Zarządzanie zgłoszeniami naruszenia treści cyfrowych (Digital Services Act)."
+msgid "Handling of content notices under the Digital Services Act."
 msgstr ""
 
 #: src/Admin/AdminPage.php:759
-msgid "Logi incydentów"
+#: src/Admin/ModulesPage.php:1113
+#: src/Service/SecurityIncidentService.php:131
+msgid "Incident log"
 msgstr ""
 
 #: src/Admin/AdminPage.php:760
-msgid "Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
+msgid "A record of security problems, data breaches and infrastructure failures."
 msgstr ""
 
 #: src/Admin/AdminPage.php:766
-msgid "Kondycja sklepu"
+msgid "Shop health"
 msgstr ""
 
 #: src/Admin/AdminPage.php:767
-msgid "Ciągły monitoring błędów krytycznych, nieudanych płatności i anomalii sprzedaży, z alertami."
+msgid "Continuous monitoring of fatal errors, failed payments and sales anomalies, with alerts."
 msgstr ""
 
 #: src/Admin/AdminPage.php:773
-msgid "Rejestr DPA (RODO)"
+msgid "DPA registry (GDPR)"
 msgstr ""
 
 #: src/Admin/AdminPage.php:774
-msgid "Ewidencja umów powierzenia przetwarzania danych osobowych z podmiotami trzecimi."
+msgid "A register of data processing agreements with third parties."
 msgstr ""
 
 #: src/Admin/AdminPage.php:780
-msgid "Rejestr zgód"
+#: src/Admin/ConsentRecordsPage.php:53
+#: src/Admin/ModulesPage.php:377
+msgid "Consent records"
 msgstr ""
 
 #: src/Admin/AdminPage.php:781
-msgid "Zapisane decyzje odwiedzających z baneru zgód, z eksportem CSV."
+msgid "Stored visitor decisions from the consent banner, with CSV export."
 msgstr ""
 
 #: src/Admin/AdminPage.php:787
-msgid "Odstąpienia"
+#: src/Admin/WithdrawalsAdminPage.php:65
+#: src/Admin/WithdrawalsAdminPage.php:66
+#: src/Admin/WithdrawalsAdminPage.php:95
+msgid "Withdrawals"
 msgstr ""
 
 #: src/Admin/AdminPage.php:788
-msgid "Wnioski o odstąpienie od umowy i zwroty: lista, rejestracja ręczna i ustawienia."
+msgid "Withdrawal declarations and returns: the list, manual registration and the settings."
 msgstr ""
 
 #: src/Admin/AdminPage.php:795
-msgid "Incydenty CRA"
+#: src/Admin/CRAIncidentsPage.php:51
+#: src/Admin/CRAIncidentsPage.php:52
+#: src/Admin/CRAIncidentsPage.php:65
+msgid "CRA incidents"
 msgstr ""
 
 #: src/Admin/AdminPage.php:796
-msgid "Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze statusami i eksportem CSV."
+msgid "A register of vulnerabilities, breaches and failures for the Cyber Resilience Act, with statuses and CSV export."
 msgstr ""
 
 #: src/Admin/AdminPage.php:803
@@ -1705,23 +1860,26 @@ msgid "SBOM"
 msgstr ""
 
 #: src/Admin/AdminPage.php:804
-msgid "Zestawienie komponentów oprogramowania (Software Bill of Materials) na potrzeby CRA."
+msgid "A software bill of materials for the Cyber Resilience Act."
 msgstr ""
 
 #: src/Admin/AdminPage.php:811
-msgid "Szablon reklamacji"
+#: src/Service/ComplaintTemplateService.php:46
+#: src/Service/ComplaintTemplateService.php:47
+#: src/Service/ComplaintTemplateService.php:56
+msgid "Complaint template"
 msgstr ""
 
 #: src/Admin/AdminPage.php:812
-msgid "Generator i ustawienia szablonu reklamacji dla klientów."
+msgid "The complaint form template for customers, with its generator and settings."
 msgstr ""
 
 #: src/Admin/AdminPage.php:819
-msgid "Szkolenia RODO"
+msgid "GDPR training"
 msgstr ""
 
 #: src/Admin/AdminPage.php:820
-msgid "Materiały szkoleniowe RODO dla zespołu sklepu."
+msgid "GDPR training material for the shop team."
 msgstr ""
 
 #: src/Admin/AdminPage.php:827
@@ -1760,18 +1918,6 @@ msgstr ""
 msgid "No internal feedback to display."
 msgstr ""
 
-#: src/Admin/AdminPage.php:906
-#: src/Admin/ConsentRecordsPage.php:68
-#: src/Admin/DeactivationHandler.php:150
-#: src/Service/CustomCheckoutFieldsService.php:687
-#: src/Service/DSAService.php:171
-#: src/Service/ReturnRequestService.php:231
-#: src/Service/RodoTrainingDocsService.php:165
-#: templates/account/withdrawal-confirm.php:37
-#: templates/account/withdrawal-confirm.php:46
-msgid "Date"
-msgstr ""
-
 #: src/Admin/AdminPage.php:907
 msgid "Person"
 msgstr ""
@@ -1785,7 +1931,7 @@ msgid "Hello!"
 msgstr ""
 
 #: src/Admin/AdminPage.php:967
-msgid "Narzędzia wspomagające dostosowanie sklepu do polskich wymagań."
+msgid "Tools that help bring the shop in line with Polish requirements."
 msgstr ""
 
 #: src/Admin/AdminPage.php:973
@@ -1844,32 +1990,8 @@ msgstr ""
 msgid "Check reports"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1041
-msgid "Page"
-msgstr ""
-
 #: src/Admin/AdminPage.php:1058
 msgid "Published"
-msgstr ""
-
-#: src/Admin/AdminPage.php:1059
-msgid "Draft"
-msgstr ""
-
-#: src/Admin/AdminPage.php:1064
-msgid "Edit"
-msgstr ""
-
-#: src/Admin/AdminPage.php:1066
-msgid "Not created"
-msgstr ""
-
-#: src/Admin/AdminPage.php:1081
-msgid "No legal pages have been created yet. Generate them to get started."
-msgstr ""
-
-#: src/Admin/AdminPage.php:1089
-msgid "Next steps"
 msgstr ""
 
 #: src/Admin/AdminPage.php:1141
@@ -1908,11 +2030,6 @@ msgstr ""
 msgid "Open &rarr;"
 msgstr ""
 
-#: src/Admin/ConsentRecordsPage.php:53
-#: src/Admin/ModulesPage.php:377
-msgid "Consent records"
-msgstr ""
-
 #: src/Admin/ConsentRecordsPage.php:57
 #: src/Service/OrderExportService.php:131
 #: src/Service/SecurityIncidentService.php:138
@@ -1922,10 +2039,6 @@ msgstr ""
 
 #: src/Admin/ConsentRecordsPage.php:62
 msgid "Each row is one stored consent decision from the banner. These records help you document the choices visitors made; they are not a substitute for legal advice."
-msgstr ""
-
-#: src/Admin/ConsentRecordsPage.php:69
-msgid "Category"
 msgstr ""
 
 #: src/Admin/ConsentRecordsPage.php:70
@@ -1968,12 +2081,6 @@ msgstr ""
 #: src/Admin/ConsentRecordsPage.php:132
 #: src/Admin/WithdrawalsAdminPage.php:317
 msgid "Could not open output stream."
-msgstr ""
-
-#: src/Admin/CRAIncidentsPage.php:51
-#: src/Admin/CRAIncidentsPage.php:52
-#: src/Admin/CRAIncidentsPage.php:65
-msgid "CRA incidents"
 msgstr ""
 
 #: src/Admin/CRAIncidentsPage.php:69
@@ -2036,12 +2143,6 @@ msgstr ""
 
 #: src/Admin/CRAIncidentsPage.php:125
 msgid "Deadline"
-msgstr ""
-
-#: src/Admin/CRAIncidentsPage.php:126
-#: src/Admin/ModulesPage.php:1646
-#: src/Service/CustomCheckoutFieldsService.php:718
-msgid "Actions"
 msgstr ""
 
 #. translators: %s: notification timestamp
@@ -2128,6 +2229,7 @@ msgstr ""
 
 #: src/Admin/CSVImportExport.php:89
 #: src/AIFeed/ProductMarkdownBuilder.php:222
+#: src/Service/ProductInfoService.php:195
 msgid "Responsible person (GPSR)"
 msgstr ""
 
@@ -2144,14 +2246,6 @@ msgstr ""
 msgid "Right of withdrawal exemption"
 msgstr ""
 
-#: src/Admin/CSVImportExport.php:93
-#: src/Admin/ModulesPage.php:552
-#: src/Block/ProductDataBlocks.php:107
-#: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
-#: src/Service/FoodService.php:72
-msgid "Ingredients"
-msgstr ""
-
 #: src/Admin/CSVImportExport.php:94
 msgid "Nutrition values"
 msgstr ""
@@ -2164,16 +2258,6 @@ msgstr ""
 #: src/Admin/ModulesPage.php:559
 #: src/Service/FoodService.php:416
 msgid "Alcohol content"
-msgstr ""
-
-#: src/Admin/CSVImportExport.php:98
-#: src/Admin/ModulesPage.php:561
-#: src/Service/FoodService.php:462
-msgid "Country of origin"
-msgstr ""
-
-#: src/Admin/CSVImportExport.php:99
-msgid "Net quantity"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:100
@@ -2676,12 +2760,6 @@ msgstr ""
 msgid "Cart discount: percent off (%)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:192
-#: src/Admin/ProductMetaBox.php:67
-#: src/Service/CompareService.php:480
-msgid "Unit price"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:193
 msgid "Display price per unit (e.g. per 1 kg, per 100 ml) according to Polish consumer law."
 msgstr ""
@@ -2884,14 +2962,6 @@ msgstr ""
 msgid "About OSS procedure"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:267
-#: src/Admin/ProductMetaBox.php:133
-#: src/AIFeed/ProductMarkdownBuilder.php:180
-#: src/Block/StoreApi/ProductDataExtension.php:226
-#: src/Service/CompareService.php:483
-msgid "Delivery time"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:268
 msgid "Display estimated delivery time on the product page. Configuration per product or variation with default fallback."
 msgstr ""
@@ -3004,7 +3074,10 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:324
 #: src/Email/WithdrawalEmailCta.php:65
+#: src/Service/AnnexGeneratorService.php:36
+#: src/Service/AnnexGeneratorService.php:38
 #: src/Service/SiteAuditService.php:659
+#: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
 msgstr ""
 
@@ -3177,11 +3250,6 @@ msgstr ""
 msgid "Accept all label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:386
-#: src/Service/ConsentManagerService.php:79
-msgid "Accept all"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:387
 msgid "Reject all label"
 msgstr ""
@@ -3195,18 +3263,8 @@ msgstr ""
 msgid "Manage label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:388
-#: src/Service/ConsentManagerService.php:81
-msgid "Manage"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:389
 msgid "Save choices label"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:389
-#: src/Service/ConsentManagerService.php:82
-msgid "Save choices"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:390
@@ -3280,12 +3338,6 @@ msgstr ""
 msgid "Form title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:434
-#: src/Admin/ModulesPage.php:449
-#: src/Service/WithdrawalService.php:935
-msgid "Withdrawal request"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:435
 msgid "Form introduction"
 msgstr ""
@@ -3318,49 +3370,20 @@ msgstr ""
 msgid "Product column"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:438
-#: src/Service/ExpertReviewService.php:92
-#: templates/account/withdrawal-confirm.php:62
-#: templates/account/withdrawal-confirm.php:70
-#: templates/emails/withdrawal-confirmation.php:103
-msgid "Product"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:439
 msgid "Quantity column"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:439
-#: templates/account/withdrawal-confirm.php:63
-#: templates/account/withdrawal-confirm.php:73
-msgid "Quantity"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:440
 msgid "Price column"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:440
-#: src/AIFeed/ProductMarkdownBuilder.php:155
-#: src/Service/CompareService.php:479
-msgid "Price"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:441
 msgid "Exemption notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:441
-msgid "(This product is excluded from the right of withdrawal)"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:442
 msgid "Reason field label"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:442
-#: src/Service/WithdrawalService.php:953
-msgid "Reason for withdrawal (optional)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:443
@@ -3376,17 +3399,8 @@ msgstr ""
 msgid "Invalid nonce message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:444
-msgid "Something went wrong on our side. Please try again."
-msgstr ""
-
 #: src/Admin/ModulesPage.php:445
 msgid "Order not found message"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:445
-#: src/Rest/WithdrawalController.php:133
-msgid "We could not find that order."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:446
@@ -3432,13 +3446,6 @@ msgstr ""
 msgid "Submitted label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:451
-#: src/Enum/ReturnRequestStatus.php:19
-#: src/Enum/WithdrawalStatus.php:17
-#: src/Service/WithdrawalService.php:938
-msgid "Submitted"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:452
 msgid "Order note after request"
 msgstr ""
@@ -3480,10 +3487,6 @@ msgstr ""
 msgid "Confirmation email heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:456
-msgid "Withdrawal confirmed"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:457
 #: src/Admin/ModulesPage.php:606
 msgid "Email greeting"
@@ -3491,6 +3494,8 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:457
 #: src/Admin/ModulesPage.php:606
+#: templates/emails/plain/withdrawal-confirmation.php:39
+#: templates/emails/withdrawal-confirmation.php:40
 msgid "Hello {name},"
 msgstr ""
 
@@ -3508,10 +3513,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:459
 msgid "Reason label in email"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:459
-msgid "Your reason"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:460
@@ -3755,14 +3756,6 @@ msgstr ""
 msgid "Allergens label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:553
-#: src/Admin/PostTypes.php:142
-#: src/Block/ProductDataBlocks.php:101
-#: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
-#: src/Service/FoodService.php:116
-msgid "Allergens"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:554
 msgid "Nutrition facts table header prefix"
 msgstr ""
@@ -3780,20 +3773,8 @@ msgstr ""
 msgid "Nutrient column name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:556
-#: src/Admin/PostTypes.php:168
-#: src/Service/FoodService.php:325
-msgid "Nutrient"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:557
 msgid "Value column name"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:557
-#: src/Service/FoodService.php:326
-#: src/Service/RodoTrainingDocsService.php:255
-msgid "Value"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:558
@@ -3814,11 +3795,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:562
 msgid "Distributor label"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:562
-#: src/Service/FoodService.php:470
-msgid "Distributor"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:563
@@ -3879,11 +3855,6 @@ msgstr ""
 msgid "Invalid link message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:602
-#: src/Service/DoubleOptInService.php:131
-msgid "Invalid activation link."
-msgstr ""
-
 #: src/Admin/ModulesPage.php:603
 msgid "Activation success message"
 msgstr ""
@@ -3899,23 +3870,11 @@ msgid "Email subject"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:604
-#: src/Email/DoubleOptInEmail.php:65
-#: src/Email/DoubleOptInEmail.php:66
-msgid "Activate your account at {site_title}"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:604
 msgid "Variables: {site_title}"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:605
 msgid "Email heading"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:605
-#: src/Email/DoubleOptInEmail.php:74
-#: src/Email/DoubleOptInEmail.php:75
-msgid "Confirm your email address"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:606
@@ -4042,17 +4001,9 @@ msgstr ""
 msgid "Search field label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:638
-msgid "Search products"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:639
 #: resources/js/blocks/ajax-search/index.js:28
 msgid "Results label"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:639
-msgid "Product search results"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:640
@@ -4069,10 +4020,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:641
 msgid "Search products, SKU codes or categories"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:642
-msgid "Search"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:643
@@ -4324,11 +4271,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:714
 msgid "Reset text"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:719
-#: src/Service/WishlistService.php:178
-msgid "Wishlist"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:720
@@ -4889,11 +4831,6 @@ msgid "Upsell"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:931
-#: src/Service/BadgeService.php:105
-msgid "Sale"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:931
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:39
 msgid "Featured"
 msgstr ""
@@ -4942,6 +4879,7 @@ msgstr ""
 #: src/Admin/ModulesPage.php:961
 #: src/Admin/ModulesPage.php:1645
 #: src/AIFeed/ProductMarkdownBuilder.php:127
+#: templates/forms/dsa-report.php:95
 msgid "Description"
 msgstr ""
 
@@ -5227,11 +5165,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1108
 msgid "CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1113
-#: src/Service/SecurityIncidentService.php:131
-msgid "Incident log"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1116
@@ -6198,8 +6131,10 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:2522
 #: src/Admin/WithdrawalsAdminPage.php:393
+#: src/Enum/WithdrawalExemptionReason.php:45
 #: src/Service/SecurityIncidentService.php:108
 #: src/Service/SecurityIncidentService.php:399
+#: templates/forms/dsa-report.php:21
 msgid "Other"
 msgstr ""
 
@@ -6272,10 +6207,6 @@ msgstr ""
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2673
-msgid "not installed"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:2688
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
@@ -6330,10 +6261,6 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:2756
 msgid "Open OSS settings"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:2814
-msgid "detected, integration active"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:2817
@@ -6453,16 +6380,6 @@ msgstr ""
 msgid "Manufacturers"
 msgstr ""
 
-#: src/Admin/PostTypes.php:68
-#: src/AIFeed/ProductMarkdownBuilder.php:217
-#: src/Block/ProductDataBlocks.php:65
-#: src/Block/StoreApi/ProductDataExtension.php:167
-#: src/Compatibility/Elementor/Widgets/ManufacturerWidget.php:16
-#: src/Service/CompareService.php:485
-#: src/Service/ProductInfoService.php:69
-msgid "Manufacturer"
-msgstr ""
-
 #: src/Admin/PostTypes.php:69
 msgid "Add Manufacturer"
 msgstr ""
@@ -6494,13 +6411,6 @@ msgstr ""
 
 #: src/Admin/PostTypes.php:96
 msgid "Search Units"
-msgstr ""
-
-#: src/Admin/PostTypes.php:118
-#: src/AIFeed/ProductMarkdownBuilder.php:212
-#: src/Service/CompareService.php:484
-#: src/Service/ProductInfoService.php:134
-msgid "Brand"
 msgstr ""
 
 #: src/Admin/PostTypes.php:119
@@ -6685,6 +6595,7 @@ msgid "Full manufacturer name required by GPSR."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:253
+#: templates/single-product/gpsr-info.php:16
 msgid "Manufacturer address"
 msgstr ""
 
@@ -6701,6 +6612,7 @@ msgid "Full importer name (if applicable)."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:267
+#: templates/single-product/gpsr-info.php:18
 msgid "Importer address"
 msgstr ""
 
@@ -6709,6 +6621,7 @@ msgid "Full postal address of the importer."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:274
+#: templates/single-product/gpsr-info.php:19
 msgid "Responsible person"
 msgstr ""
 
@@ -6717,6 +6630,7 @@ msgid "Person responsible in the EU for product compliance with GPSR."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:281
+#: templates/single-product/gpsr-info.php:20
 msgid "Product identifier"
 msgstr ""
 
@@ -6725,6 +6639,7 @@ msgid "Batch number, serial number, or other product identifier."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:288
+#: templates/single-product/gpsr-info.php:21
 msgid "Safety warnings"
 msgstr ""
 
@@ -6733,6 +6648,8 @@ msgid "Safety warnings regarding the product."
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:295
+#: src/Shortcode/ShortcodeManager.php:143
+#: templates/single-product/gpsr-info.php:22
 msgid "Safety instructions"
 msgstr ""
 
@@ -6779,7 +6696,7 @@ msgstr ""
 #. translators: %d: yearly price in PLN
 #: src/Admin/ProUpsell.php:77
 #, php-format
-msgid "od %d zł/rok"
+msgid "from %d PLN/year"
 msgstr ""
 
 #. translators: 1: currency symbol, 2: yearly price
@@ -6853,55 +6770,46 @@ msgid "Setup"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:43
-msgid "Polski - odstąpienie"
+msgid "Polski withdrawal"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:69
-msgid "Brak oświadczenia o odstąpieniu dla tego zamówienia."
+msgid "There is no withdrawal declaration for this order."
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:73
-msgid "Zarejestruj ręcznie"
+#: src/Admin/WithdrawalsAdminPage.php:97
+msgid "Register manually"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:107
-msgid "Potwierdź"
+msgid "Confirm"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:114
-msgid "Oznacz jako rozliczone"
+msgid "Mark as settled"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:121
-msgid "Odrzucić to oświadczenie?"
+msgid "Reject this declaration?"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:122
-msgid "Odrzuć"
+msgid "Reject"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:128
-msgid "Otwórz listę"
+msgid "Open the list"
 msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:148
-msgid "Odrzucone z ekranu zamówienia."
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:65
-#: src/Admin/WithdrawalsAdminPage.php:66
-#: src/Admin/WithdrawalsAdminPage.php:95
-msgid "Withdrawals"
+msgid "Rejected from the order screen."
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:74
 #: src/Admin/WithdrawalsAdminPage.php:75
 #: src/Admin/WithdrawalsAdminPage.php:403
 msgid "Register withdrawal"
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:97
-msgid "Register manually"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:100
@@ -6915,17 +6823,8 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
-#: src/Admin/WithdrawalsAdminPage.php:114
-#: src/Admin/WithdrawalsAdminPage.php:123
-msgid "All"
-msgstr ""
-
 #: src/Admin/WithdrawalsAdminPage.php:121
 msgid "AI category:"
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:130
-msgid "Filter"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:140
@@ -6962,11 +6861,16 @@ msgid "ID"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:163
+#: src/Service/MyAccountWithdrawalsService.php:102
 #: src/Service/ReturnRequestService.php:228
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
+#: templates/emails/plain/withdrawal-completed.php:40
 #: templates/emails/plain/withdrawal-confirmation.php:60
+#: templates/emails/plain/withdrawal-rejected.php:42
+#: templates/emails/withdrawal-completed.php:69
 #: templates/emails/withdrawal-confirmation.php:71
+#: templates/emails/withdrawal-rejected.php:67
 msgid "Order"
 msgstr ""
 
@@ -7011,30 +6915,30 @@ msgid "You are not allowed to perform this action."
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:244
-msgid "Wybierz akcję i co najmniej jedną pozycję."
+msgid "Choose an action and at least one row."
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:253
-msgid "Nieznana akcja zbiorcza."
+msgid "Unknown bulk action."
 msgstr ""
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:277
 #, php-format
-msgid "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
-msgid_plural "Potwierdzono %1$d z %2$d zaznaczonych oświadczeń."
+msgid "Confirmed %1$d of %2$d selected declarations."
+msgid_plural "Confirmed %1$d of %2$d selected declarations."
 msgstr[0] ""
 msgstr[1] ""
 
 #: src/Admin/WithdrawalsAdminPage.php:291
-msgid "Odrzucone akcją zbiorczą."
+msgid "Rejected by a bulk action."
 msgstr ""
 
 #. translators: 1: succeeded, 2: total selected
 #: src/Admin/WithdrawalsAdminPage.php:299
 #, php-format
-msgid "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
-msgid_plural "Odrzucono %1$d z %2$d zaznaczonych oświadczeń."
+msgid "Rejected %1$d of %2$d selected declarations."
+msgid_plural "Rejected %1$d of %2$d selected declarations."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -7048,15 +6952,6 @@ msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:382
 msgid "Order number or ID"
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:389
-#: src/Service/CustomCheckoutFieldsService.php:688
-msgid "Phone"
-msgstr ""
-
-#: src/Admin/WithdrawalsAdminPage.php:390
-msgid "E-mail"
 msgstr ""
 
 #: src/Admin/WithdrawalsAdminPage.php:391
@@ -7352,15 +7247,6 @@ msgstr ""
 msgid "Stock quantity"
 msgstr ""
 
-#: src/AIFeed/ProductMarkdownBuilder.php:188
-#: src/Service/CompareService.php:482
-msgid "Availability"
-msgstr ""
-
-#: src/AIFeed/ProductMarkdownBuilder.php:189
-msgid "In stock"
-msgstr ""
-
 #: src/AIFeed/ProductMarkdownBuilder.php:189
 #: src/Service/BadgeService.php:139
 msgid "Out of stock"
@@ -7440,6 +7326,7 @@ msgid "Displays the gross/net price and VAT tax information for the current prod
 msgstr ""
 
 #: src/Block/ProductDataBlocks.php:59
+#: src/Compatibility/Elementor/Widgets/ShippingNoticeWidget.php:16
 msgid "Shipping costs"
 msgstr ""
 
@@ -7659,10 +7546,6 @@ msgstr ""
 msgid "Result limit"
 msgstr ""
 
-#: src/Compatibility/Elementor/Widgets/ShippingNoticeWidget.php:16
-msgid "Koszty wysyłki"
-msgstr ""
-
 #: src/CRA/Enum/IncidentKind.php:18
 msgid "Actively exploited vulnerability"
 msgstr ""
@@ -7845,68 +7728,63 @@ msgid "Prices exclude VAT (net)"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:28
-msgid "Inne (własne uzasadnienie)"
+msgid "Other (custom reason)"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:29
-msgid "Produkt na zamówienie indywidualne / personalizowany (Art. 38 pkt 3)"
+msgid "Made to the consumer's specification or clearly personalised (Article 38(3))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:30
-msgid "Produkt szybko psujący się / krótki termin przydatności (Art. 38 pkt 4)"
+msgid "Liable to deteriorate or expire rapidly (Article 38(4))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:31
-msgid "Produkt zapieczętowany ze względu na ochronę zdrowia lub higieniczny (Art. 38 pkt 5)"
+msgid "Sealed for health protection or hygiene reasons (Article 38(5))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:32
-msgid "Produkt nieoddzielnie połączony z innymi (Art. 38 pkt 6)"
+msgid "Inseparably mixed with other items after delivery (Article 38(6))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:33
-msgid "Napoje alkoholowe (Art. 38 pkt 7)"
+msgid "Alcoholic beverages (Article 38(7))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:34
-msgid "Nagrania audio/wideo lub oprogramowanie w zapieczętowanym opakowaniu (Art. 38 pkt 9)"
+msgid "Sealed audio or video recordings or computer software (Article 38(9))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:35
-msgid "Treści cyfrowe spełniane przed upływem terminu (Art. 38 pkt 13)"
-msgstr ""
-
-#: src/Enum/WithdrawalExemptionReason.php:45
-#: templates/forms/dsa-report.php:21
-msgid "Inne"
+msgid "Digital content supplied before the withdrawal period ends (Article 38(13))"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:46
-msgid "Na zamówienie"
+msgid "Made to order"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:47
-msgid "Krótki termin"
+msgid "Perishable"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:48
-msgid "Zapieczętowany"
+msgid "Sealed"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:49
-msgid "Nieoddzielnie połączony"
+msgid "Inseparably mixed"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:50
-msgid "Alkohol"
+msgid "Alcohol"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:51
-msgid "Nagranie/Software"
+msgid "Recording or software"
 msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:52
-msgid "Treści cyfrowe"
+msgid "Digital content"
 msgstr ""
 
 #: src/Enum/WithdrawalStatus.php:18
@@ -7922,35 +7800,35 @@ msgid "View AI Version"
 msgstr ""
 
 #: src/Hook/StructuredDataHooks.php:61
-msgid "Najniższa cena z 30 dni"
+msgid "Lowest price in the last 30 days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:25
-msgid "1-2 dni robocze"
+msgid "1-2 working days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:26
-msgid "2-4 dni robocze"
+msgid "2-4 working days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:27
-msgid "3-5 dni roboczych"
+msgid "3-5 working days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:28
-msgid "5-7 dni roboczych"
+msgid "5-7 working days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:29
-msgid "7-14 dni roboczych"
+msgid "7-14 working days"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:30
-msgid "Do 24 godzin"
+msgid "Within 24 hours"
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:43
-msgid "szt."
+msgid "pcs."
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:44
@@ -8041,17 +7919,8 @@ msgstr ""
 msgid "Molluscs"
 msgstr ""
 
-#: src/PageCompliance/Enum/Severity.php:18
-#: src/Service/CustomCheckoutFieldsService.php:716
-msgid "Required"
-msgstr ""
-
 #: src/PageCompliance/Enum/Severity.php:19
 msgid "Recommended"
-msgstr ""
-
-#: src/PageCompliance/Enum/Severity.php:20
-msgid "Optional"
 msgstr ""
 
 #: src/PageCompliance/Rules/AccessibilityRules.php:30
@@ -8411,7 +8280,7 @@ msgid "Withdrawal form availability"
 msgstr ""
 
 #: src/PageCompliance/Rules/RegulaminRules.php:150
-msgid "Reference the statutory withdrawal form (załącznik do ustawy o prawach konsumenta)."
+msgid "Reference the statutory withdrawal form (the annex to the Polish Consumer Rights Act)."
 msgstr ""
 
 #: src/PageCompliance/Rules/RegulaminRules.php:154
@@ -8537,16 +8406,6 @@ msgstr ""
 msgid "A valid product_id is required."
 msgstr ""
 
-#: src/Rest/AiGpsrDraftController.php:159
-#: src/Rest/AiProductSummaryController.php:100
-#: src/Service/AjaxAddToCartService.php:111
-#: src/Service/CompareService.php:430
-#: src/Service/QuickViewService.php:127
-#: src/Service/WaitlistService.php:43
-#: src/Service/WishlistService.php:289
-msgid "Product not found."
-msgstr ""
-
 #: src/Rest/AiProductSummaryController.php:46
 msgid "WooCommerce product ID to summarise."
 msgstr ""
@@ -8581,11 +8440,11 @@ msgid "Could not verify the request. Please reload the page and try again."
 msgstr ""
 
 #: src/Rest/GuestWithdrawalController.php:84
-msgid "Brakuje numeru zamówienia lub adres e-mail jest nieprawidłowy."
+msgid "The order number is missing or the email address is not valid."
 msgstr ""
 
 #: src/Rest/GuestWithdrawalController.php:95
-msgid "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą oraz folder Spam."
+msgid "If that order exists, we have sent a link to the form to the email address used for the purchase. Check your inbox and your spam folder."
 msgstr ""
 
 #: src/Rest/PageComplianceController.php:42
@@ -8615,7 +8474,7 @@ msgid "I order with an obligation to pay"
 msgstr ""
 
 #: src/Rest/SettingsController.php:231
-msgid "Odstąpienie od umowy"
+msgid "Withdrawal from the contract"
 msgstr ""
 
 #: src/Rest/SettingsController.php:267
@@ -8767,7 +8626,7 @@ msgid "Audit Terms (Regulamin) page"
 msgstr ""
 
 #: src/Service/AbilitiesService.php:482
-msgid "Runs UŚUDE + Ustawa o prawach konsumenta rules against the configured Terms page."
+msgid "Runs the UŚUDE and Consumer Rights Act rules against the configured terms page."
 msgstr ""
 
 #: src/Service/AbilitiesService.php:495
@@ -8824,25 +8683,20 @@ msgstr ""
 msgid "Could not add to cart."
 msgstr ""
 
-#: src/Service/AnnexGeneratorService.php:36
-#: src/Service/AnnexGeneratorService.php:38
-msgid "Prawo odstąpienia od umowy"
-msgstr ""
-
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:41
 #, php-format
-msgid "Mają Państwo prawo odstąpić od niniejszej umowy w terminie %d dni bez podania jakiejkolwiek przyczyny."
+msgid "You have the right to withdraw from this contract within %d days without giving any reason."
 msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:46
 #, php-format
-msgid "Termin do odstąpienia od umowy wygasa po upływie %d dni od dnia, w którym weszli Państwo w posiadanie rzeczy lub w którym osoba trzecia inna niż przewoźnik i wskazana przez Państwa weszła w posiadanie rzeczy."
+msgid "The withdrawal period will expire after %d days from the day on which you acquire, or a third party other than the carrier and indicated by you acquires, physical possession of the goods."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:49
-msgid "Aby skorzystać z prawa odstąpienia od umowy, muszą Państwo poinformować nas o swojej decyzji o odstąpieniu od niniejszej umowy w drodze jednoznacznego oświadczenia (na przykład pismo wysłane pocztą, faksem lub pocztą elektroniczną)."
+msgid "To exercise the right of withdrawal, you must inform us of your decision to withdraw from this contract by an unequivocal statement (for example a letter sent by post, fax or email)."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:59
@@ -8851,7 +8705,7 @@ msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:62
 #: src/Service/AnnexGeneratorService.php:113
-msgid "e-mail:"
+msgid "email:"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:65
@@ -8862,87 +8716,88 @@ msgid "NIP:"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:69
-msgid "Mogą Państwo skorzystać z wzoru formularza odstąpienia od umowy, jednak nie jest to obowiązkowe."
+msgid "You may use the model withdrawal form, but it is not obligatory."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:70
-msgid "Aby zachować termin do odstąpienia od umowy, wystarczy, aby wysłali Państwo informację dotyczącą wykonania przysługującego Państwu prawa odstąpienia od umowy przed upływem terminu do odstąpienia od umowy."
+msgid "To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:72
-msgid "Skutki odstąpienia od umowy"
+msgid "Effects of withdrawal"
 msgstr ""
 
 #. translators: %d: number of days
 #: src/Service/AnnexGeneratorService.php:75
 #, php-format
-msgid "W przypadku odstąpienia od niniejszej umowy zwracamy Państwu wszystkie otrzymane od Państwa płatności, w tym koszty dostarczenia rzeczy (z wyjątkiem dodatkowych kosztów wynikających z wybranego przez Państwa sposobu dostarczenia innego niż najtańszy zwykły sposób dostarczenia oferowany przez nas), niezwłocznie, a w każdym przypadku nie później niż %d dni od dnia, w którym zostaliśmy poinformowani o Państwa decyzji o wykonaniu prawa odstąpienia od niniejszej umowy."
+msgid "If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and in any event not later than %d days from the day on which we are informed about your decision to withdraw from this contract."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:78
-msgid "Zwrotu płatności dokonamy przy użyciu takich samych sposobów płatności, jakie zostały przez Państwa użyte w pierwotnej transakcji, chyba że wyraźnie zgodziliście się Państwo na inne rozwiązanie; w każdym przypadku nie poniosą Państwo żadnych opłat w związku z tym zwrotem."
+msgid "We will carry out such reimbursement using the same means of payment as you used for the initial transaction, unless you have expressly agreed otherwise; in any event, you will not incur any fees as a result of such reimbursement."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:79
-msgid "Możemy wstrzymać się ze zwrotem płatności do czasu otrzymania rzeczy lub do czasu dostarczenia nam dowodu jej odesłania, w zależności od tego, które zdarzenie nastąpi wcześniej."
+msgid "We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:80
-msgid "Proszę odesłać lub przekazać nam rzecz na adres podany powyżej, niezwłocznie, a w każdym razie nie później niż 14 dni od dnia, w którym poinformowali nas Państwo o odstąpieniu od niniejszej umowy. Termin jest zachowany, jeżeli odeślą Państwo rzecz przed upływem terminu 14 dni."
+msgid "You shall send back the goods or hand them over to us at the address above, without undue delay and in any event not later than 14 days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of 14 days has expired."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:81
-msgid "Będą Państwo musieli ponieść bezpośrednie koszty zwrotu rzeczy."
+msgid "You will have to bear the direct cost of returning the goods."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:82
-msgid "Odpowiadają Państwo tylko za zmniejszenie wartości rzeczy wynikające z korzystania z niej w sposób inny niż było to konieczne do stwierdzenia charakteru, cech i funkcjonowania rzeczy."
+msgid "You are only liable for any diminished value of the goods resulting from the handling other than what is necessary to establish the nature, characteristics and functioning of the goods."
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:102
-msgid "Wzór formularza odstąpienia od umowy"
+msgid "Model withdrawal form"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:103
-msgid "(formularz ten należy wypełnić i odesłać tylko w przypadku chęci odstąpienia od umowy)"
+msgid "(complete and return this form only if you wish to withdraw from the contract)"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:105
-msgid "Adresat:"
+msgid "Addressee:"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:117
-msgid "Ja/My(*) niniejszym informuję/informujemy(*) o moim/naszym odstąpieniu od umowy sprzedaży następujących rzeczy(*) umowy dostawy następujących rzeczy(*) umowy o dzieło polegającej na wykonaniu następujących rzeczy(*)/o świadczenie następującej usługi(*):"
+msgid "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods (*)/for the provision of the following service (*):"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:119
-msgid "Data zawarcia umowy(*)/odbioru(*):"
+msgid "Ordered on (*)/received on (*):"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:121
-msgid "Imię i nazwisko konsumenta(-ów):"
+msgid "Name of consumer(s):"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:123
-msgid "Adres konsumenta(-ów):"
+msgid "Address of consumer(s):"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:125
-msgid "Podpis konsumenta(-ów) (tylko jeżeli formularz jest przesyłany w wersji papierowej):"
+msgid "Signature of consumer(s) (only if this form is notified on paper):"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:127
-msgid "Data:"
+#: src/Service/ComplaintTemplateService.php:179
+msgid "Date:"
 msgstr ""
 
 #: src/Service/AnnexGeneratorService.php:129
-msgid "(*) Niepotrzebne skreślić."
+msgid "(*) Delete as appropriate."
 msgstr ""
 
 #. translators: %s: lookup page URL where the consumer can file an online withdrawal declaration
 #: src/Service/AnnexGeneratorService.php:133
 #, php-format
-msgid "Możesz także złożyć oświadczenie online: <a href=\"%s\">formularz odstąpienia</a>."
+msgid "You can also file the declaration online: <a href=\"%s\">withdrawal form</a>."
 msgstr ""
 
 #. translators: 1: product name, 2: old stock, 3: new stock
@@ -8957,7 +8812,7 @@ msgstr ""
 
 #: src/Service/B2BCheckoutService.php:107
 #: src/Service/B2BCheckoutService.php:297
-msgid "Potrzebuję faktury VAT"
+msgid "I need a VAT invoice"
 msgstr ""
 
 #: src/Service/B2BCheckoutService.php:117
@@ -9211,16 +9066,12 @@ msgstr ""
 msgid "Returns the structured product fact list (label/value pairs) that the AI Feed surfaces for this product - SKU, GTIN, price, categories, delivery time, and more."
 msgstr ""
 
-#: src/Service/CompareService.php:230
-msgid "Comparison"
-msgstr ""
-
 #. translators: %d: number of products in the compare list
 #: src/Service/CompareService.php:296
 #: src/Shortcode/ShortcodeManager.php:306
 #, php-format
-msgid "Porównaj (%d)"
-msgid_plural "Porównaj (%d)"
+msgid "Compare (%d)"
+msgid_plural "Compare (%d)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -9236,18 +9087,6 @@ msgstr ""
 msgid "Clear comparison"
 msgstr ""
 
-#: src/Service/CompareService.php:420
-msgid "Compare products"
-msgstr ""
-
-#: src/Service/CompareService.php:425
-msgid "Log in to use product comparison."
-msgstr ""
-
-#: src/Service/CompareService.php:435
-msgid "You cannot clear the comparison."
-msgstr ""
-
 #: src/Service/CompareService.php:440
 msgid "Feature"
 msgstr ""
@@ -9258,16 +9097,6 @@ msgstr ""
 
 #: src/Service/CompareService.php:450
 msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
-msgstr ""
-
-#: src/Service/CompareService.php:490
-msgid "Short description"
-msgstr ""
-
-#: src/Service/ComplaintTemplateService.php:46
-#: src/Service/ComplaintTemplateService.php:47
-#: src/Service/ComplaintTemplateService.php:56
-msgid "Complaint template"
 msgstr ""
 
 #: src/Service/ComplaintTemplateService.php:57
@@ -9302,11 +9131,6 @@ msgstr ""
 
 #: src/Service/ComplaintTemplateService.php:145
 msgid "Seller"
-msgstr ""
-
-#: src/Service/ComplaintTemplateService.php:148
-#: src/Service/ProductQAService.php:238
-msgid "Customer"
 msgstr ""
 
 #: src/Service/ComplaintTemplateService.php:149
@@ -9375,10 +9199,6 @@ msgstr ""
 
 #: src/Service/ComplaintTemplateService.php:176
 msgid "Account number (IBAN):"
-msgstr ""
-
-#: src/Service/ComplaintTemplateService.php:179
-msgid "Date:"
 msgstr ""
 
 #: src/Service/ComplaintTemplateService.php:180
@@ -9526,16 +9346,21 @@ msgstr ""
 
 #: src/Service/DigitalConsentService.php:140
 #: src/Service/DigitalConsentService.php:228
-msgid "Aby zakupić produkty cyfrowe musisz wyrazić zgodę na rozpoczęcie świadczenia przed upływem terminu odstąpienia."
+msgid "To buy digital products you have to consent to performance beginning before the withdrawal period ends."
 msgstr ""
 
 #: src/Service/DigitalConsentService.php:204
 #: templates/checkout/legal-checkboxes.php:51
+#: templates/forms/dsa-report.php:48
+#: templates/forms/dsa-report.php:53
+#: templates/forms/dsa-report.php:79
+#: templates/forms/dsa-report.php:85
+#: templates/forms/dsa-report.php:95
 msgid "required"
 msgstr ""
 
 #: src/Service/DigitalConsentService.php:336
-msgid "Wyrażam zgodę na rozpoczęcie spełniania świadczenia (np. dostarczenie treści cyfrowych) przed upływem terminu odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia w odniesieniu do dostarczonych w ten sposób treści cyfrowych."
+msgid "I consent to performance beginning (for example the supply of digital content) before the withdrawal period ends and I acknowledge that I thereby lose my right of withdrawal for the digital content supplied in this way."
 msgstr ""
 
 #: src/Service/DoubleOptInService.php:107
@@ -9603,7 +9428,7 @@ msgid "Invalid security token."
 msgstr ""
 
 #: src/Service/DSAService.php:62
-msgid "Zbyt wiele zgłoszeń z tego adresu IP. Spróbuj ponownie za godzinę."
+msgid "Too many reports from this IP address. Please try again in an hour."
 msgstr ""
 
 #: src/Service/DSAService.php:63
@@ -9734,11 +9559,11 @@ msgstr ""
 #. translators: %d: number of products shown after filtering.
 #: src/Service/FilterService.php:73
 #, php-format
-msgid "Zaktualizowano wyniki: %d produktów."
+msgid "Results updated: %d products."
 msgstr ""
 
 #: src/Service/FilterService.php:74
-msgid "Zaktualizowano wyniki."
+msgid "Results updated."
 msgstr ""
 
 #: src/Service/FoodService.php:151
@@ -9785,7 +9610,7 @@ msgstr ""
 #: src/Service/GPSRService.php:121
 #: src/Service/GPSRService.php:124
 #, php-format
-msgid "%d/8 pól wypełnionych"
+msgid "%d of 8 fields filled in"
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:58
@@ -9793,23 +9618,23 @@ msgid "Security check failed. Please refresh the page and try again."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:70
-msgid "Wpisz numer zamówienia (znajdziesz go w e-mailu potwierdzającym) i adres e-mail użyty przy zakupie."
+msgid "Enter the order number (it is in your confirmation email) and the email address used for the purchase."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:74
-msgid "Brakuje numeru zamówienia. Sprawdź e-mail potwierdzający zakup i wpisz numer z linii „Twoje zamówienie #…\"."
+msgid "The order number is missing. Check your purchase confirmation email and enter the number from the \"Your order #...\" line."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:78
-msgid "Adres e-mail wygląda na nieprawidłowy. Wpisz pełny adres w formacie ty@example.com - ten sam, który podałeś przy zakupie."
+msgid "That email address does not look valid. Enter the full address in the form you@example.com, the same one you used for the purchase."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:83
-msgid "Zbyt wiele prób w krótkim czasie. Spróbuj ponownie za 15 minut. Jeśli nie otrzymałeś wcześniej wysłanego linku, sprawdź folder Spam."
+msgid "Too many attempts in a short time. Please try again in 15 minutes. If an earlier link never arrived, check your spam folder."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:88
-msgid "Jeśli to zamówienie istnieje, wysłaliśmy link do formularza na adres e-mail podany przy zakupie. Sprawdź skrzynkę odbiorczą (oraz folder Spam) - wiadomość powinna dotrzeć w ciągu kilku minut."
+msgid "If that order exists, we have sent a link to the form to the email address used for the purchase. Check your inbox and your spam folder; the message should arrive within a few minutes."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:149
@@ -9817,44 +9642,44 @@ msgid "This link is no longer valid."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:162
-msgid "Weryfikacja bezpieczeństwa nie powiodła się. Załaduj stronę ponownie i spróbuj jeszcze raz."
+msgid "The security check failed. Reload the page and try again."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:183
-msgid "Nie udało się zapisać oświadczenia. Spróbuj ponownie za chwilę albo skontaktuj się ze sklepem."
+msgid "The declaration could not be saved. Try again in a moment or contact the shop."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:192
-msgid "Oświadczenie złożone"
+msgid "Declaration filed"
 msgstr ""
 
 #. translators: %s = declaration id (POL-WD-XXXXXX)
 #: src/Service/GuestWithdrawalService.php:195
 #, php-format
-msgid "Twoje oświadczenie zostało zarejestrowane pod numerem %s. Wysłaliśmy potwierdzenie na adres podany przy zakupie - sprawdź skrzynkę odbiorczą oraz folder Spam."
+msgid "Your declaration has been registered under number %s. We have sent a confirmation to the address used for the purchase; check your inbox and your spam folder."
 msgstr ""
 
 #: src/Service/GuestWithdrawalService.php:198
-msgid "Zachowaj numer oświadczenia na wypadek kontaktu ze sklepem."
+msgid "Keep the declaration number in case you contact the shop."
 msgstr ""
 
 #. translators: %s = order number
 #: src/Service/GuestWithdrawalService.php:377
 #, php-format
-msgid "Link do odstąpienia od umowy - zamówienie #%s"
+msgid "Withdrawal link for order #%s"
 msgstr ""
 
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
 #: src/Service/GuestWithdrawalService.php:383
 #, php-format
 msgid ""
-"Otrzymaliśmy prośbę o złożenie oświadczenia o odstąpieniu od umowy dla zamówienia #%1$s.\n"
+"We received a request to file a withdrawal declaration for order #%1$s.\n"
 "\n"
-"Aby kontynuować, kliknij poniższy link w ciągu %2$d minut:\n"
+"To continue, click the link below within %2$d minutes:\n"
 "\n"
 "%3$s\n"
 "\n"
-"Link jest jednorazowy. Jeśli to nie Ty wysłałeś prośbę, możesz zignorować tę wiadomość."
+"The link can be used once. If you did not make this request, you can ignore this message."
 msgstr ""
 
 #: src/Service/KSeFReadyService.php:76
@@ -9884,11 +9709,6 @@ msgstr ""
 
 #: src/Service/LegalPageService.php:196
 msgid "Please complete the complaints procedure."
-msgstr ""
-
-#: src/Service/LiveCartService.php:80
-#: src/Service/LiveCartService.php:140
-msgid "Close"
 msgstr ""
 
 #: src/Service/LiveCartService.php:83
@@ -9927,43 +9747,39 @@ msgstr ""
 
 #: src/Service/MyAccountWithdrawalsService.php:53
 #: src/Service/MyAccountWithdrawalsService.php:93
-msgid "Moje odstąpienia"
+msgid "My withdrawals"
 msgstr ""
 
 #: src/Service/MyAccountWithdrawalsService.php:87
-msgid "Aby zobaczyć swoje odstąpienia musisz być zalogowany."
+msgid "You have to be logged in to see your withdrawals."
 msgstr ""
 
 #: src/Service/MyAccountWithdrawalsService.php:96
-msgid "Nie złożyłeś jeszcze żadnego wniosku o odstąpienie od umowy."
+msgid "You have not filed any withdrawal declarations yet."
 msgstr ""
 
 #: src/Service/MyAccountWithdrawalsService.php:101
-msgid "Numer"
+msgid "Reference"
 msgstr ""
 
-#: src/Service/MyAccountWithdrawalsService.php:102
-#: templates/emails/plain/withdrawal-completed.php:40
-#: templates/emails/plain/withdrawal-rejected.php:42
-#: templates/emails/withdrawal-completed.php:69
-#: templates/emails/withdrawal-rejected.php:67
-msgid "Zamówienie"
+#: src/Service/NipLookupService.php:75
+msgid "e.g. 1234563218"
 msgstr ""
 
-#: src/Service/NipLookupService.php:67
-msgid "np. 1234563218"
+#: src/Service/NipLookupService.php:102
+msgid "That VAT ID (NIP) is not valid. Check the number and try again."
 msgstr ""
 
-#: src/Service/NipLookupService.php:94
-msgid "Podany NIP jest nieprawidlowy. Sprawdz numer i sprobuj ponownie."
+#: src/Service/NipLookupService.php:164
+msgid "That VAT ID (NIP) is not valid."
 msgstr ""
 
-#: src/Service/NipLookupService.php:165
-msgid "Nieprawidlowy NIP."
+#: src/Service/NipLookupService.php:262
+msgid "Invalid VAT ID (NIP)."
 msgstr ""
 
-#: src/Service/NipLookupService.php:172
-msgid "Nie znaleziono danych dla podanego NIP. Sprawdz numer lub uzupelnij dane recznie."
+#: src/Service/NipLookupService.php:269
+msgid "No data found for that VAT ID (NIP). Check the number or fill the details in by hand."
 msgstr ""
 
 #: src/Service/OmnibusService.php:47
@@ -9971,6 +9787,7 @@ msgid "Lowest price from the last {days} days: {price}"
 msgstr ""
 
 #: src/Service/OrderExportService.php:49
+#: templates/forms/withdrawal-lookup.php:107
 msgid "Order number"
 msgstr ""
 
@@ -10101,22 +9918,10 @@ msgstr ""
 msgid "Unknown installation error."
 msgstr ""
 
-#: src/Service/PriceDisplayService.php:132
-msgid "from {price}"
-msgstr ""
-
 #. translators: %d: number of days
 #: src/Service/PriceHistoryChartService.php:101
 #, php-format
 msgid "Price history (%d days)"
-msgstr ""
-
-#: src/Service/PriceHistoryChartService.php:111
-msgid "Lowest"
-msgstr ""
-
-#: src/Service/PriceHistoryChartService.php:113
-msgid "Highest"
 msgstr ""
 
 #: src/Service/ProductAuthorService.php:56
@@ -10153,10 +9958,6 @@ msgstr ""
 msgid "New author name"
 msgstr ""
 
-#: src/Service/ProductInfoService.php:195
-msgid "Osoba odpowiedzialna (GPSR)"
-msgstr ""
-
 #: src/Service/ProductInfoService.php:248
 msgid "Safety Document"
 msgstr ""
@@ -10181,10 +9982,6 @@ msgstr ""
 
 #: src/Service/ProductQAService.php:162
 msgid "Answer"
-msgstr ""
-
-#: src/Service/ProductQAService.php:174
-msgid "Ask a question"
 msgstr ""
 
 #: src/Service/ProductQAService.php:179
@@ -10290,10 +10087,6 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: src/Service/ReturnRequestService.php:267
-msgid "You do not have permission."
-msgstr ""
-
 #: src/Service/ReviewRequestService.php:186
 msgid "You have been unsubscribed from review request emails."
 msgstr ""
@@ -10312,14 +10105,6 @@ msgstr ""
 
 #: src/Service/ReviewRequestService.php:216
 msgid "Hi {first_name}, thank you for your recent purchase. We would love to hear your feedback."
-msgstr ""
-
-#: src/Service/ReviewRequestService.php:228
-msgid "Unsubscribe from review requests"
-msgstr ""
-
-#: src/Service/ReviewRequestService.php:269
-msgid "Leave a review"
 msgstr ""
 
 #: src/Service/RodoTrainingDocsService.php:43
@@ -11415,61 +11200,57 @@ msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:185
 #: src/Service/WithdrawalExemptionService.php:219
-msgid "Wyklucz produkty z tej kategorii z prawa odstąpienia"
+msgid "Exclude products in this category from the right of withdrawal"
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:187
 #: src/Service/WithdrawalExemptionService.php:221
-msgid "Zastosuj, gdy wszystkie produkty w kategorii spełniają wyjątek z Art. 38 Ustawy o prawach konsumenta."
+msgid "Use this when every product in the category meets an exception under Article 38 of the Consumer Rights Act."
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:190
 #: src/Service/WithdrawalExemptionService.php:225
-msgid "Podstawa wyłączenia"
+msgid "Grounds for the exclusion"
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:192
 #: src/Service/WithdrawalExemptionService.php:228
-msgid "- wybierz -"
+msgid "- choose -"
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:199
-msgid "Własne uzasadnienie (jeśli wybrano „Inne\")"
-msgstr ""
-
-#: src/Service/WithdrawalExemptionService.php:215
-msgid "Prawo odstąpienia"
+msgid "Custom reason (if \"Other\" is selected)"
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:238
-msgid "Własne uzasadnienie"
+msgid "Custom reason"
 msgstr ""
 
 #: src/Service/WithdrawalExemptionService.php:241
-msgid "Używane tylko, jeśli wybrano „Inne\"."
+msgid "Used only if \"Other\" is selected."
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:117
+#: src/Service/WithdrawalOrderStatusService.php:129
 msgid "Mark as withdrawal requested"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:118
+#: src/Service/WithdrawalOrderStatusService.php:130
 msgid "Mark as partial withdrawal"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:119
+#: src/Service/WithdrawalOrderStatusService.php:131
 msgid "Mark as withdrawal completed"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:166
+#: src/Service/WithdrawalOrderStatusService.php:178
 msgid "Withdrawal requested"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:171
+#: src/Service/WithdrawalOrderStatusService.php:183
 msgid "Withdrawal - partial"
 msgstr ""
 
-#: src/Service/WithdrawalOrderStatusService.php:176
+#: src/Service/WithdrawalOrderStatusService.php:188
 msgid "Withdrawal completed"
 msgstr ""
 
@@ -11617,21 +11398,12 @@ msgstr ""
 msgid "Site locale is \"%s\" but no matching Annex I(B) translation ships with the Pro plugin. Either pick an explicit locale in Polski › Withdrawal settings (PL, DE, AT, FR, NL, IT, ES) or accept the generic EN fallback."
 msgstr ""
 
-#: src/Shortcode/ShortcodeManager.php:143
-#: templates/single-product/gpsr-info.php:22
-msgid "Instrukcje bezpieczeństwa"
-msgstr ""
-
 #: src/Shortcode/ShortcodeManager.php:243
-msgid "Proszę podać numer zamówienia."
-msgstr ""
-
-#: src/Shortcode/ShortcodeManager.php:248
-msgid "Niestety, nie udało nam się znaleźć takiego zamówienia."
+msgid "Please enter the order number."
 msgstr ""
 
 #: src/Shortcode/ShortcodeManager.php:346
-msgid "Dostępne metody płatności"
+msgid "Available payment methods"
 msgstr ""
 
 #. translators: %s: order number
@@ -11669,44 +11441,39 @@ msgstr ""
 #: templates/emails/withdrawal-completed.php:31
 #: templates/emails/withdrawal-rejected.php:32
 #, php-format
-msgid "Dzień dobry %s,"
+msgid "Hello %s,"
 msgstr ""
 
 #. translators: 1: order number, 2: declaration id
 #: templates/emails/plain/withdrawal-completed.php:28
 #, php-format
-msgid "Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
+msgid "Your withdrawal declaration (%2$s) for order #%1$s has been settled."
 msgstr ""
 
 #: templates/emails/plain/withdrawal-completed.php:34
 #: templates/emails/plain/withdrawal-rejected.php:40
 #: templates/emails/withdrawal-completed.php:51
 #: templates/emails/withdrawal-rejected.php:59
-msgid "Numer oświadczenia"
+msgid "Declaration number"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-completed.php:35
 #: templates/emails/withdrawal-completed.php:55
-msgid "Data rozliczenia"
+msgid "Settlement date"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-completed.php:37
 #: templates/emails/withdrawal-completed.php:60
-msgid "Kwota zwrotu"
+msgid "Refund amount"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-completed.php:43
-msgid "Zwrot zostanie wykonany na pierwotną metodę płatności użytą przy zakupie. Środki mogą pojawić się na koncie w ciągu kilku dni roboczych."
-msgstr ""
-
-#: templates/emails/plain/withdrawal-confirmation.php:39
-#: templates/emails/withdrawal-confirmation.php:40
-msgid "Dzień dobry {name},"
+msgid "The refund will go back to the payment method used for the purchase. It may take a few working days to appear."
 msgstr ""
 
 #: templates/emails/plain/withdrawal-confirmation.php:44
 #: templates/emails/withdrawal-confirmation.php:45
-msgid "Twój wniosek o odstąpienie dla zamówienia #{order_number} został zarejestrowany."
+msgid "Your withdrawal declaration for order #{order_number} has been registered."
 msgstr ""
 
 #: templates/emails/plain/withdrawal-confirmation.php:58
@@ -11731,43 +11498,43 @@ msgstr ""
 
 #: templates/emails/plain/withdrawal-confirmation.php:93
 #: templates/emails/withdrawal-confirmation.php:140
-msgid "Odeślij produkty na poniższy adres w ciągu 14 dni od dnia złożenia oświadczenia:"
+msgid "Send the goods back to the address below within 14 days of filing the declaration:"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-confirmation.php:98
 #: templates/emails/withdrawal-confirmation.php:151
-msgid "Zachowaj tę wiadomość jako potwierdzenie złożenia oświadczenia. Zawiera ona niezbędne dane oświadczenia (numer, datę i czas złożenia, podsumowanie zamówienia)."
+msgid "Keep this message as proof that the declaration was filed. It holds everything the declaration needs: the number, the date and time it was filed, and a summary of the order."
 msgstr ""
 
 #. translators: 1: declaration id, 2: order number
 #: templates/emails/plain/withdrawal-rejected.php:29
 #: templates/emails/withdrawal-rejected.php:42
 #, php-format
-msgid "Niestety nie możemy zaakceptować Twojego oświadczenia o odstąpieniu (%1$s) dla zamówienia #%2$s."
+msgid "We cannot accept your withdrawal declaration (%1$s) for order #%2$s."
 msgstr ""
 
 #: templates/emails/plain/withdrawal-rejected.php:35
 #: templates/emails/withdrawal-rejected.php:51
-msgid "Powód odmowy:"
+msgid "Reason for the refusal:"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-rejected.php:41
 #: templates/emails/withdrawal-rejected.php:63
-msgid "Data decyzji"
+msgid "Decision date"
 msgstr ""
 
 #: templates/emails/plain/withdrawal-rejected.php:45
-msgid "Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem."
+msgid "If you think this decision is wrong, reply to this email or contact the shop."
 msgstr ""
 
 #. translators: 1: order number, 2: declaration id
 #: templates/emails/withdrawal-completed.php:41
 #, php-format
-msgid "Z przyjemnością informujemy, że Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone."
+msgid "We are glad to tell you that your withdrawal declaration (%2$s) for order #%1$s has been settled."
 msgstr ""
 
 #: templates/emails/withdrawal-completed.php:76
-msgid "Zwrot zostanie wykonany na pierwotną metodę płatności użytą przy zakupie. W zależności od banku środki mogą pojawić się na koncie w ciągu kilku dni roboczych."
+msgid "The refund will go back to the payment method used for the purchase. Depending on your bank it may take a few working days to appear."
 msgstr ""
 
 #: templates/emails/withdrawal-confirmation.php:104
@@ -11779,110 +11546,94 @@ msgid "Line total"
 msgstr ""
 
 #: templates/emails/withdrawal-rejected.php:74
-msgid "Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem. Chętnie wyjaśnimy szczegóły."
+msgid "If you think this decision is wrong, reply to this email or contact the shop. We are happy to explain."
 msgstr ""
 
 #: templates/forms/dsa-report.php:18
-msgid "Nielegalne treści"
+msgid "Illegal content"
 msgstr ""
 
 #: templates/forms/dsa-report.php:19
-msgid "Nielegalny produkt"
+msgid "Illegal product"
 msgstr ""
 
 #: templates/forms/dsa-report.php:20
-msgid "Wprowadzająca w błąd reklama"
+msgid "Misleading advertising"
 msgstr ""
 
 #: templates/forms/dsa-report.php:32
-msgid "Dziękujemy! Twoje zgłoszenie zostało wysłane i zostanie rozpatrzone."
-msgstr ""
-
-#: templates/forms/dsa-report.php:48
-#: templates/forms/dsa-report.php:53
-#: templates/forms/dsa-report.php:79
-#: templates/forms/dsa-report.php:85
-#: templates/forms/dsa-report.php:95
-msgid "wymagane"
-msgstr ""
-
-#: templates/forms/dsa-report.php:53
-msgid "Adres e-mail"
+msgid "Thank you. Your report has been sent and will be reviewed."
 msgstr ""
 
 #. translators: 1: human label, 2: URL
 #: templates/forms/dsa-report.php:63
 #, php-format
-msgid "Zgłaszasz: %1$s (%2$s)"
+msgid "You are reporting: %1$s (%2$s)"
 msgstr ""
 
 #. translators: %s: URL
 #: templates/forms/dsa-report.php:70
 #, php-format
-msgid "Zgłaszasz: %s"
+msgid "You are reporting: %s"
 msgstr ""
 
 #: templates/forms/dsa-report.php:79
-msgid "URL zgłaszanej treści"
+msgid "URL of the reported content"
 msgstr ""
 
 #: templates/forms/dsa-report.php:85
-msgid "Powód zgłoszenia"
+msgid "Reason for the report"
 msgstr ""
 
 #: templates/forms/dsa-report.php:87
-msgid "- Wybierz powód -"
-msgstr ""
-
-#: templates/forms/dsa-report.php:95
-msgid "Opis"
+msgid "- Choose a reason -"
 msgstr ""
 
 #: templates/forms/dsa-report.php:100
-msgid "Wyślij zgłoszenie"
+msgid "Send the report"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:24
-msgid "Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia {order_date}."
+msgid "You are filing a withdrawal declaration for order #{order_number} placed on {order_date}."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:49
-msgid "Wszystkie pozycje z tego zamówienia zostały już objęte odstąpieniem lub nie kwalifikują się do zwrotu."
+msgid "Every item in this order is already covered by a withdrawal or does not qualify for return."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:55
-msgid "Krok 1. Wybierz pozycje do odstąpienia"
+msgid "Step 1. Choose the items to withdraw from"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:59
-msgid "Wpisz liczbę sztuk, które chcesz objąć odstąpieniem. Pole „Pozostało\" pokazuje maksymalną liczbę, którą można jeszcze odstąpić w tej pozycji."
+msgid "Enter how many units you want to withdraw. The \"Remaining\" field shows the most you can still withdraw for that item."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:64
-msgid "Wybierz wszystkie pozycje"
+msgid "Select all items"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:67
-msgid "Wyczyść wybór"
+msgid "Clear the selection"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:73
-msgid "Pozycje zamówienia dostępne do odstąpienia."
+msgid "Order items available for withdrawal."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:77
 #: templates/forms/withdrawal-form.php:90
-msgid "Pozycja"
+msgid "Item"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:78
 #: templates/forms/withdrawal-form.php:107
-msgid "Pozostało"
+msgid "Remaining"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:79
 #: templates/forms/withdrawal-form.php:112
-msgid "Liczba sztuk do zwrotu"
+msgid "Units to return"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:98
@@ -11890,248 +11641,224 @@ msgid "SKU:"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:103
-msgid "Wyłączone ze zwrotu"
+msgid "Excluded from return"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:108
-msgid "Pozostało do zwrotu"
+msgid "Remaining to return"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:116
-msgid "Ta pozycja jest wyłączona ze zwrotu i nie może być wybrana."
+msgid "This item is excluded from return and cannot be selected."
 msgstr ""
 
 #. translators: 1: product name, 2: max qty
 #: templates/forms/withdrawal-form.php:135
 #, php-format
-msgid "Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s\" wynosi %2$s."
+msgid "You can return at most %2$s units of \"%1$s\"."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:151
-msgid "Krok 2. Powód i potwierdzenie"
+msgid "Step 2. Reason and confirmation"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:166
 #: templates/forms/withdrawal-guest.php:130
-msgid "Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia."
+msgid "A reason is not required; withdrawal needs no justification."
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:178
 #: templates/forms/withdrawal-guest.php:142
-msgid "Złóż oświadczenie i wyślij potwierdzenie na e-mail"
+msgid "File the declaration and email me the confirmation"
 msgstr ""
 
 #: templates/forms/withdrawal-form.php:181
-msgid "Anuluj i wróć do listy zamówień"
+msgid "Cancel and go back to the order list"
 msgstr ""
 
 #. translators: %s = order number
 #: templates/forms/withdrawal-guest.php:34
 #, php-format
-msgid "Odstąpienie od umowy - zamówienie #%s"
+msgid "Withdrawal from the contract, order #%s"
 msgstr ""
 
 #. translators: %s = email address
 #: templates/forms/withdrawal-guest.php:44
 #, php-format
-msgid "Składasz oświadczenie na rzecz adresu: %s"
+msgid "You are filing this declaration for the address: %s"
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:50
-msgid "Pozycje objęte odstąpieniem"
+msgid "Items covered by the withdrawal"
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:52
-msgid "Złożenie tego oświadczenia obejmuje całe poniższe zamówienie. Jeżeli chcesz odstąpić tylko od części pozycji, skontaktuj się ze sklepem lub złóż osobne oświadczenie po zalogowaniu się na konto."
+msgid "Filing this declaration covers the whole order below. If you want to withdraw from only some of the items, contact the shop or log in to your account and file a separate declaration."
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:57
-msgid "Pozycje zamówienia objęte oświadczeniem."
+msgid "Order items covered by the declaration."
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:96
-msgid "Wartość zamówienia:"
+msgid "Order value:"
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:105
-msgid "Data zamówienia:"
+msgid "Order date:"
 msgstr ""
 
 #: templates/forms/withdrawal-guest.php:114
-msgid "Po wysłaniu formularza otrzymasz e-mail potwierdzający z numerem deklaracji oraz podsumowaniem zamówienia."
+msgid "Once you send the form you will get a confirmation email with the declaration number and a summary of the order."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:43
-msgid "Przejdź do formularza odstąpienia"
+msgid "Go to the withdrawal form"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:53
-msgid "Odstąpienie od umowy - formularz online"
+msgid "Withdrawal from the contract, online form"
 msgstr ""
 
 #. translators: 1: merchant name, 2: number of days
 #: templates/forms/withdrawal-lookup.php:60
 #, php-format
-msgid "Jesteś konsumentem i kupiłeś u sprzedawcy %1$s? Masz prawo odstąpić od umowy zawartej na odległość bez podawania przyczyny w terminie %2$d dni od dnia, w którym otrzymałeś zamówienie. Aby złożyć oświadczenie, nie musisz logować się - wystarczy, że poniżej podasz adres e-mail użyty przy zakupie oraz numer zamówienia."
+msgid "Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:72
-msgid "Jak to działa? (rozwiń)"
+msgid "How does it work? (expand)"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:76
-msgid "Po weryfikacji wyślemy na podany adres jednorazowy link, który otworzy formularz odstąpienia. Link będzie ważny przez 30 minut i można go użyć tylko raz."
+msgid "Once we have checked the details we will email a single-use link that opens the withdrawal form. The link is valid for 30 minutes and works only once."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:79
-msgid "W kolejnym kroku wybierzesz, czy chcesz zwrócić całe zamówienie, czy tylko wybrane pozycje (możliwe są też częściowe odstąpienia od pojedynczych sztuk)."
+msgid "In the next step you choose whether to return the whole order or only some items; you can also withdraw from individual units."
 msgstr ""
 
 #. translators: %s = directive reference
 #: templates/forms/withdrawal-lookup.php:85
 #, php-format
-msgid "Po przesłaniu oświadczenia otrzymasz e-mail z numerem deklaracji, datą złożenia i podsumowaniem zamówienia. Uprawnienie wynika z art. 27 ustawy o prawach konsumenta wdrażającej dyrektywę %s."
-msgstr ""
-
-#: templates/forms/withdrawal-lookup.php:107
-msgid "Numer zamówienia"
+msgid "After you submit the declaration you will get an email with the declaration number, the date it was filed and a summary of the order. The right comes from Article 27 of the Polish Consumer Rights Act, which implements Directive %s."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:123
-msgid "Numer znajdziesz w e-mailu potwierdzającym zakup, w pozycji „Twoje zamówienie #…”."
+msgid "The number is in your purchase confirmation email, on the \"Your order #...\" line."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:129
-msgid "Adres e-mail użyty przy zakupie"
+msgid "Email address used for the purchase"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:145
-msgid "Wyślemy na ten adres bezpieczny link otwierający formularz odstąpienia."
+msgid "We will email a secure link to this address that opens the withdrawal form."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:150
-msgid "Wszystkie pola są wymagane."
+msgid "All fields are required."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:161
-msgid "Wyślij link do formularza"
+msgid "Email me the link to the form"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:166
-msgid "Link będzie ważny przez 30 minut i można go użyć tylko raz. Jeśli nie otrzymasz wiadomości, sprawdź folder Spam i wpisz adres ponownie."
+msgid "The link is valid for 30 minutes and works only once. If the message does not arrive, check your spam folder and enter the address again."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:173
 #: templates/forms/withdrawal-lookup.php:228
-msgid "W jakim terminie mogę odstąpić od umowy?"
+msgid "How long do I have to withdraw from the contract?"
 msgstr ""
 
 #. translators: %d = days
 #: templates/forms/withdrawal-lookup.php:173
 #, php-format
-msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu osoby trzeciej innej niż przewoźnik."
+msgid "By default you have %d days from the day you received the order. The period runs from the day the goods came into your possession, or into the possession of a third party other than the carrier."
 msgstr ""
 
 #. translators: %d = days
 #: templates/forms/withdrawal-lookup.php:174
-msgid "Czy mogę zwrócić tylko niektóre produkty?"
+msgid "Can I return only some of the products?"
 msgstr ""
 
 #. translators: %d = days
 #: templates/forms/withdrawal-lookup.php:174
-msgid "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie. Można odstąpić od wybranej liczby sztuk - pozostałe pozostaną w zamówieniu."
+msgid "Yes. Once the form is open you choose which items the withdrawal covers. You can withdraw from any number of units and the rest stay in the order."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:175
 #: templates/forms/withdrawal-lookup.php:236
-msgid "Co się stanie po wysłaniu formularza?"
+msgid "What happens after I send the form?"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:175
-msgid "Otrzymasz e-mail potwierdzający z unikalnym numerem deklaracji i pełnym podsumowaniem zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia."
+msgid "You will get a confirmation email with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:176
 #: templates/forms/withdrawal-lookup.php:240
-msgid "Czy są produkty, których nie można zwrócić?"
+msgid "Are there products that cannot be returned?"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:176
-msgid "Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, oraz zapieczętowane ze względów higienicznych po otwarciu opakowania."
+msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, and goods sealed for hygiene reasons once the seal is broken."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:180
-msgid "Najczęstsze pytania"
+msgid "Common questions"
 msgstr ""
 
 #. translators: %s = support email link
 #: templates/forms/withdrawal-lookup.php:202
 #, php-format
-msgid "Masz problem z formularzem? Napisz na %s - pomożemy złożyć oświadczenie ręcznie."
+msgid "Having trouble with the form? Write to %s and we will help you file the declaration by hand."
 msgstr ""
 
 #. translators: %s: merchant / shop name
 #: templates/forms/withdrawal-lookup.php:218
 #, php-format
-msgid "Kto może odstąpić od umowy w sklepie %s?"
+msgid "Who can withdraw from a contract at %s?"
 msgstr ""
 
 #. translators: %d: withdrawal period in days (typically 14)
 #: templates/forms/withdrawal-lookup.php:220
 #, php-format
-msgid "Domyślnie masz %d dni od dnia otrzymania zamówienia, aby złożyć oświadczenie. Termin biegnie od dnia, w którym towar znalazł się w Twoim posiadaniu lub w posiadaniu wskazanej przez Ciebie osoby trzeciej innej niż przewoźnik."
+msgid "By default you have %d days from the day you received the order to file the declaration. The period runs from the day the goods came into your possession, or into the possession of a third party indicated by you other than the carrier."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:225
-msgid "Każdy konsument, czyli osoba fizyczna kupująca w celach niezwiązanych z działalnością gospodarczą. W przypadku zakupu jako firma uprawnienie do odstąpienia bez podania przyczyny przysługuje tylko w ograniczonym zakresie."
+msgid "Any consumer, meaning a natural person buying for purposes outside their trade or business. When you buy as a company, the right to withdraw without giving a reason applies only in a limited form."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:232
-msgid "Czy mogę zwrócić tylko niektóre produkty z zamówienia?"
+msgid "Can I return only some of the products in the order?"
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:233
-msgid "Tak. Po otwarciu formularza wybierzesz, których pozycji ma dotyczyć odstąpienie - możesz zwrócić wszystkie produkty, jeden produkt lub tylko wybraną liczbę sztuk. Pozostałe pozycje pozostaną w zamówieniu."
+msgid "Yes. Once the form is open you choose which items the withdrawal covers: every product, a single product, or just some of the units. The rest stay in the order."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:237
-msgid "Otrzymasz e-mail potwierdzający przyjęcie oświadczenia, zawierający unikalny numer deklaracji oraz pełne podsumowanie zamówienia. Następnie odeślij produkty na adres sklepu w terminie 14 dni od złożenia oświadczenia."
+msgid "You will get an email confirming that the declaration was accepted, with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
 #: templates/forms/withdrawal-lookup.php:241
-msgid "Tak. Zgodnie z art. 38 ustawy o prawach konsumenta z prawa odstąpienia wyłączone są m.in. produkty wykonane na zamówienie indywidualne, szybko psujące się, zapieczętowane ze względów higienicznych po otwarciu opakowania, oraz treści cyfrowe spełnione za wyraźną zgodą konsumenta przed upływem terminu."
+msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, goods sealed for hygiene reasons once the seal is broken, and digital content supplied with the consumer's express consent before the withdrawal period ended."
 msgstr ""
 
 #: templates/shared/popup.php:33
-msgid "Przejdź dalej"
-msgstr ""
-
-#: templates/single-product/gpsr-info.php:16
-msgid "Adres producenta"
+msgid "Continue"
 msgstr ""
 
 #: templates/single-product/gpsr-info.php:17
 msgid "Importer"
 msgstr ""
 
-#: templates/single-product/gpsr-info.php:18
-msgid "Adres importera"
-msgstr ""
-
-#: templates/single-product/gpsr-info.php:19
-msgid "Osoba odpowiedzialna"
-msgstr ""
-
-#: templates/single-product/gpsr-info.php:20
-msgid "Identyfikator produktu"
-msgstr ""
-
-#: templates/single-product/gpsr-info.php:21
-msgid "Ostrzeżenia dotyczące bezpieczeństwa"
-msgstr ""
-
 #: templates/single-product/gpsr-info.php:28
-msgid "Bezpieczeństwo produktu (GPSR)"
+msgid "Product safety (GPSR)"
 msgstr ""
 
 #: resources/js/blocks/ajax-filters/index.js:16

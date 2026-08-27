@@ -72,7 +72,7 @@ final class NipLookupService implements HasHooks
         $fields['billing_nip'] = [
             'type'        => 'text',
             'label'       => __('NIP', 'polski'),
-            'placeholder' => __('np. 1234563218', 'polski'),
+            'placeholder' => __('e.g. 1234563218', 'polski'),
             'required'    => $required,
             'class'       => ['form-row-wide'],
             'priority'    => 31, // After company name (priority 30).
@@ -99,7 +99,7 @@ final class NipLookupService implements HasHooks
 
         if (! self::isValidNip($nip)) {
             wc_add_notice(
-                __('Podany NIP jest nieprawidlowy. Sprawdz numer i sprobuj ponownie.', 'polski'),
+                __('That VAT ID (NIP) is not valid. Check the number and try again.', 'polski'),
                 'error',
             );
         }
@@ -161,7 +161,7 @@ final class NipLookupService implements HasHooks
                 if (! self::isValidNip($clean)) {
                     return new \WP_Error(
                         'polski_invalid_nip',
-                        __('Podany numer NIP jest nieprawidłowy.', 'polski'),
+                        __('That VAT ID (NIP) is not valid.', 'polski'),
                     );
                 }
                 return null;
@@ -259,14 +259,14 @@ final class NipLookupService implements HasHooks
         $nip = sanitize_text_field(wp_unslash($_POST['nip'] ?? ''));
 
         if (! self::isValidNip($nip)) {
-            wp_send_json_error(['message' => __('Nieprawidlowy NIP.', 'polski')]);
+            wp_send_json_error(['message' => __('Invalid VAT ID (NIP).', 'polski')]);
         }
 
         $nip = preg_replace('/[\s\-]/', '', $nip) ?? '';
         $result = $this->lookupNip($nip);
 
         if ($result === null) {
-            wp_send_json_error(['message' => __('Nie znaleziono danych dla podanego NIP. Sprawdz numer lub uzupelnij dane recznie.', 'polski')]);
+            wp_send_json_error(['message' => __('No data found for that VAT ID (NIP). Check the number or fill the details in by hand.', 'polski')]);
         }
 
         wp_send_json_success($result);

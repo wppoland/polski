@@ -74,7 +74,7 @@ defined('ABSPATH') || exit;
                 href="<?php echo esc_url($polski_view_all_url); ?>"
                 <?php echo (($polski_settings['view_all_target'] ?? 'same_tab') === 'new_tab') ? 'target="_blank" rel="noopener noreferrer"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             >
-                <?php echo esc_html((string) ($polski_settings['view_all_text'] ?? __('Zobacz wszystkie produkty', 'polski'))); ?>
+                <?php echo esc_html((string) ($polski_settings['view_all_text'] ?? __('See all products', 'polski'))); ?>
             </a>
         </p>
     <?php endif; ?>

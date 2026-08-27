@@ -70,8 +70,8 @@ final class FilterService implements Bootable, HasHooks
     {
         wp_localize_script('polski-ajax-filters', 'polskiAjaxFilters', [
             /* translators: %d: number of products shown after filtering. */
-            'resultsUpdatedText' => __('Zaktualizowano wyniki: %d produktów.', 'polski'),
-            'resultsUpdatedGenericText' => __('Zaktualizowano wyniki.', 'polski'),
+            'resultsUpdatedText' => __('Results updated: %d products.', 'polski'),
+            'resultsUpdatedGenericText' => __('Results updated.', 'polski'),
         ]);
     }
 
@@ -563,14 +563,14 @@ final class FilterService implements Bootable, HasHooks
             $this->buildTaxonomyActiveItems(
                 'polski_filter_category',
                 'product_cat',
-                (string) ($settings['category_label'] ?? __('Kategoria', 'polski')),
+                (string) ($settings['category_label'] ?? __('Category', 'polski')),
                 $query,
                 $labelResolver,
             ),
             $this->buildTaxonomyActiveItems(
                 'polski_filter_brand',
                 'polski_brand',
-                (string) ($settings['brand_label'] ?? __('Marka', 'polski')),
+                (string) ($settings['brand_label'] ?? __('Brand', 'polski')),
                 $query,
                 $labelResolver,
             ),
@@ -582,7 +582,7 @@ final class FilterService implements Bootable, HasHooks
         if ($minPrice !== '') {
             $items[] = [
                 'param' => 'polski_filter_min_price',
-                'label' => (string) ($settings['min_price_label'] ?? __('Cena od', 'polski')),
+                'label' => (string) ($settings['min_price_label'] ?? __('Price from', 'polski')),
                 'value' => $minPrice,
                 'raw_value' => $minPrice,
             ];
@@ -594,7 +594,7 @@ final class FilterService implements Bootable, HasHooks
         if ($maxPrice !== '') {
             $items[] = [
                 'param' => 'polski_filter_max_price',
-                'label' => (string) ($settings['max_price_label'] ?? __('Cena do', 'polski')),
+                'label' => (string) ($settings['max_price_label'] ?? __('Price to', 'polski')),
                 'value' => $maxPrice,
                 'raw_value' => $maxPrice,
             ];
@@ -603,8 +603,8 @@ final class FilterService implements Bootable, HasHooks
         if (($query['polski_filter_stock'] ?? '') === 'instock') {
             $items[] = [
                 'param' => 'polski_filter_stock',
-                'label' => (string) ($settings['stock_label'] ?? __('Dostępność', 'polski')),
-                'value' => (string) ($settings['stock_instock_text'] ?? __('Dostępne od ręki', 'polski')),
+                'label' => (string) ($settings['stock_label'] ?? __('Availability', 'polski')),
+                'value' => (string) ($settings['stock_instock_text'] ?? __('In stock', 'polski')),
                 'raw_value' => 'instock',
             ];
         }
@@ -612,8 +612,8 @@ final class FilterService implements Bootable, HasHooks
         if (($query['polski_filter_sale'] ?? '') === '1') {
             $items[] = [
                 'param' => 'polski_filter_sale',
-                'label' => (string) ($settings['sale_label'] ?? __('Promocje', 'polski')),
-                'value' => (string) ($settings['sale_active_text'] ?? __('Tylko promocje', 'polski')),
+                'label' => (string) ($settings['sale_label'] ?? __('Promotions', 'polski')),
+                'value' => (string) ($settings['sale_active_text'] ?? __('On sale only', 'polski')),
                 'raw_value' => '1',
             ];
         }

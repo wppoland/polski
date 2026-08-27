@@ -59,7 +59,7 @@ final class DSAService implements HasHooks
 
         if ($this->isRateLimited()) {
             wp_die(
-                esc_html__('Zbyt wiele zgłoszeń z tego adresu IP. Spróbuj ponownie za godzinę.', 'polski'),
+                esc_html__('Too many reports from this IP address. Please try again in an hour.', 'polski'),
                 esc_html__('Rate limited', 'polski'),
                 ['response' => 429],
             );

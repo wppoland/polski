@@ -28,20 +28,20 @@ $user = get_user_by('id', $user_id);
 $name = $user instanceof \WP_User ? $user->display_name : '';
 $settings = get_option('polski_doi', []);
 $settings = is_array($settings) ? $settings : [];
-$greeting = str_replace('{name}', $name, (string) ($settings['email_greeting'] ?? __('Cześć {name},', 'polski')));
+$greeting = str_replace('{name}', $name, (string) ($settings['email_greeting'] ?? __('Hi {name},', 'polski')));
 ?>
 
 <p><?php echo esc_html($greeting); ?></p>
 
-<p><?php echo esc_html((string) ($settings['email_intro_html'] ?? __('Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:', 'polski'))); ?></p>
+<p><?php echo esc_html((string) ($settings['email_intro_html'] ?? __('Thank you for creating an account. Click the button below to activate it:', 'polski'))); ?></p>
 
 <p style="text-align:center;margin:30px 0;">
     <a href="<?php echo esc_url($activation_url); ?>" style="background-color:#7f54b3;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:4px;display:inline-block;font-weight:bold;">
-        <?php echo esc_html((string) ($settings['email_button_text'] ?? __('Aktywuj konto', 'polski'))); ?>
+        <?php echo esc_html((string) ($settings['email_button_text'] ?? __('Activate the account', 'polski'))); ?>
     </a>
 </p>
 
-<p><?php echo esc_html((string) ($settings['email_link_intro'] ?? __('Jeśli wolisz, skopiuj i wklej ten link do przeglądarki:', 'polski'))); ?></p>
+<p><?php echo esc_html((string) ($settings['email_link_intro'] ?? __('If you prefer, copy this link into your browser:', 'polski'))); ?></p>
 <p><a href="<?php echo esc_url($activation_url); ?>"><?php echo esc_html($activation_url); ?></a></p>
 
 <?php if ($additional_content) : ?>

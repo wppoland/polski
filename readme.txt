@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.8
+Stable tag: 1.30.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -320,6 +320,10 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.30.0 =
+* The plugin's source strings are now English. About 520 of them were written in Polish, which is how the plugin started, but WordPress.org expects an English source: every other language on translate.wordpress.org was being translated out of Polish rather than out of the original. Nothing changes on a Polish shop, because each of those strings now carries its old Polish wording as the Polish translation. Shops running another language get translations made from English for the first time.
+* Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.
+
 = 1.29.8 =
 * The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish is the exception: there is no Spanish translation on translate.wordpress.org and therefore no Spanish language pack, so the Spanish interface falls back to English.
 * Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
@@ -472,6 +476,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.30.0 =
+Nothing changes on a Polish shop. The plugin's source strings moved from Polish to English so that translations on translate.wordpress.org are made from the original rather than from Polish; the Polish wording is unchanged and now ships as the Polish translation.
 
 = 1.29.8 =
 Smaller download and no functional change for Polish. The plugin no longer bundles translation files that WordPress.org already ships as language packs. Spanish falls back to English, because there is no Spanish translation on translate.wordpress.org and so no Spanish language pack.

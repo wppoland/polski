@@ -50,7 +50,7 @@ final class MyAccountWithdrawalsService implements HasHooks
     {
         $injected = [];
         $slug = $this->endpointSlug();
-        $label = __('Moje odstąpienia', 'polski');
+        $label = __('My withdrawals', 'polski');
 
         foreach ($items as $key => $value) {
             $injected[$key] = $value;
@@ -84,23 +84,23 @@ final class MyAccountWithdrawalsService implements HasHooks
         $customerId = get_current_user_id();
 
         if ($customerId <= 0) {
-            esc_html_e('Aby zobaczyć swoje odstąpienia musisz być zalogowany.', 'polski');
+            esc_html_e('You have to be logged in to see your withdrawals.', 'polski');
             return;
         }
 
         $requests = $this->repository->findByCustomer($customerId);
         ?>
-        <h2><?php esc_html_e('Moje odstąpienia', 'polski'); ?></h2>
+        <h2><?php esc_html_e('My withdrawals', 'polski'); ?></h2>
 
         <?php if ($requests === []) : ?>
-            <p><?php esc_html_e('Nie złożyłeś jeszcze żadnego wniosku o odstąpienie od umowy.', 'polski'); ?></p>
+            <p><?php esc_html_e('You have not filed any withdrawal declarations yet.', 'polski'); ?></p>
         <?php else : ?>
             <table class="shop_table polski-my-account-withdrawals">
                 <thead>
                     <tr>
-                        <th><?php esc_html_e('Numer', 'polski'); ?></th>
-                        <th><?php esc_html_e('Zamówienie', 'polski'); ?></th>
-                        <th><?php esc_html_e('Data', 'polski'); ?></th>
+                        <th><?php esc_html_e('Reference', 'polski'); ?></th>
+                        <th><?php esc_html_e('Order', 'polski'); ?></th>
+                        <th><?php esc_html_e('Date', 'polski'); ?></th>
                         <th><?php esc_html_e('Status', 'polski'); ?></th>
                     </tr>
                 </thead>

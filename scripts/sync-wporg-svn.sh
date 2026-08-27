@@ -12,6 +12,16 @@ if [[ ! -f "${PLUGIN_FILE}" ]]; then
     exit 1
 fi
 
+# A release can be blocked on something no script can do, such as a GlotPress
+# import that needs PTE. When it is, the reason is written to RELEASE-BLOCKED
+# and this refuses to publish until whoever cleared it deletes the file.
+if [[ -f "${ROOT_DIR}/RELEASE-BLOCKED" ]]; then
+    echo "RELEASE BLOCKED. ${ROOT_DIR}/RELEASE-BLOCKED says:" >&2
+    echo "" >&2
+    cat "${ROOT_DIR}/RELEASE-BLOCKED" >&2
+    exit 1
+fi
+
 if [[ ! -d "${PACKAGE_DIR}" ]]; then
     echo "Prepared package directory not found: ${PACKAGE_DIR}" >&2
     exit 1
