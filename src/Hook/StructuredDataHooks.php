@@ -58,7 +58,7 @@ final class StructuredDataHooks implements HasHooks
                 $markup['offers'][0]['priceSpecification'] = [
                     '@type' => 'UnitPriceSpecification',
                     'priceType' => 'https://schema.org/MinimumPrice',
-                    'name' => __('Najniższa cena z 30 dni', 'polski'),
+                    'name' => __('Lowest price in the last 30 days', 'polski'),
                     'price' => wc_format_decimal($lowest->effectivePrice(), wc_get_price_decimals()),
                     'priceCurrency' => get_woocommerce_currency(),
                 ];

@@ -40,7 +40,7 @@ final class WithdrawalOrderMetaBox implements HasHooks
         foreach ($screens as $screen) {
             add_meta_box(
                 'polski-withdrawal-status',
-                __('Polski - odstąpienie', 'polski'),
+                __('Polski withdrawal', 'polski'),
                 [$this, 'render'],
                 $screen,
                 'side',
@@ -66,11 +66,11 @@ final class WithdrawalOrderMetaBox implements HasHooks
         if ($request === null) {
             ?>
             <p style="color:#475569;">
-                <?php esc_html_e('Brak oświadczenia o odstąpieniu dla tego zamówienia.', 'polski'); ?>
+                <?php esc_html_e('There is no withdrawal declaration for this order.', 'polski'); ?>
             </p>
             <p>
                 <a class="button" href="<?php echo esc_url(admin_url('admin.php?page=polski-withdrawals-new')); ?>">
-                    <?php esc_html_e('Zarejestruj ręcznie', 'polski'); ?>
+                    <?php esc_html_e('Register manually', 'polski'); ?>
                 </a>
             </p>
             <?php
@@ -104,28 +104,28 @@ final class WithdrawalOrderMetaBox implements HasHooks
             <?php if ($canConfirm) : ?>
                 <a class="button button-primary"
                    href="<?php echo esc_url($this->actionUrl($request->id, 'confirm')); ?>">
-                    <?php esc_html_e('Potwierdź', 'polski'); ?>
+                    <?php esc_html_e('Confirm', 'polski'); ?>
                 </a>
             <?php endif; ?>
 
             <?php if ($canComplete) : ?>
                 <a class="button button-primary"
                    href="<?php echo esc_url($this->actionUrl($request->id, 'complete')); ?>">
-                    <?php esc_html_e('Oznacz jako rozliczone', 'polski'); ?>
+                    <?php esc_html_e('Mark as settled', 'polski'); ?>
                 </a>
             <?php endif; ?>
 
             <?php if ($canReject) : ?>
                 <a class="button"
                    href="<?php echo esc_url($this->actionUrl($request->id, 'reject')); ?>"
-                   onclick="return confirm('<?php echo esc_js(__('Odrzucić to oświadczenie?', 'polski')); ?>');">
-                    <?php esc_html_e('Odrzuć', 'polski'); ?>
+                   onclick="return confirm('<?php echo esc_js(__('Reject this declaration?', 'polski')); ?>');">
+                    <?php esc_html_e('Reject', 'polski'); ?>
                 </a>
             <?php endif; ?>
 
             <a class="button button-link"
                href="<?php echo esc_url(admin_url('admin.php?page=polski-withdrawals')); ?>">
-                <?php esc_html_e('Otwórz listę', 'polski'); ?>
+                <?php esc_html_e('Open the list', 'polski'); ?>
             </a>
         </p>
         <?php
@@ -134,7 +134,7 @@ final class WithdrawalOrderMetaBox implements HasHooks
     public function handleAction(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('Brak uprawnień.', 'polski'));
+            wp_die(esc_html__('You do not have permission.', 'polski'));
         }
 
         $withdrawalId = isset($_GET['withdrawal_id']) ? (int) $_GET['withdrawal_id'] : 0;
@@ -145,7 +145,7 @@ final class WithdrawalOrderMetaBox implements HasHooks
         match ($action) {
             'confirm' => $this->withdrawal->confirm($withdrawalId),
             'complete' => $this->withdrawal->complete($withdrawalId),
-            'reject' => $this->withdrawal->reject($withdrawalId, __('Odrzucone z ekranu zamówienia.', 'polski')),
+            'reject' => $this->withdrawal->reject($withdrawalId, __('Rejected from the order screen.', 'polski')),
             default => null,
         };
 

@@ -216,7 +216,7 @@ final class CheckoutHooks implements Bootable, HasHooks
         $settings = get_option('polski_checkout', []);
         $customText = is_array($settings) ? ($settings['order_button_text'] ?? '') : '';
 
-        return $customText !== '' ? $customText : __('Zamawiam z obowiązkiem zapłaty', 'polski');
+        return $customText !== '' ? $customText : __('Order with an obligation to pay', 'polski');
     }
 
     /**

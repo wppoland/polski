@@ -479,7 +479,7 @@ final class AbilitiesService implements HasHooks
     {
         wp_register_ability('polski/compliance-check-terms', [
             'label' => __('Audit Terms (Regulamin) page', 'polski'),
-            'description' => __('Runs UŚUDE + Ustawa o prawach konsumenta rules against the configured Terms page.', 'polski'),
+            'description' => __('Runs the UŚUDE and Consumer Rights Act rules against the configured terms page.', 'polski'),
             'category' => 'polski-compliance',
             'input_schema' => ['type' => 'object', 'properties' => []],
             'output_schema' => ['type' => 'object'],

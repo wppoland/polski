@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
 ?>
 <form role="search" method="get" class="woocommerce-product-search polski-ajax-search" action="<?php echo esc_url(home_url('/')); ?>" data-polski-ajax-search>
     <label class="screen-reader-text" for="polski-ajax-search-input">
-        <?php echo esc_html((string) ($polski_settings['search_label'] ?? __('Szukaj produktów', 'polski'))); ?>
+        <?php echo esc_html((string) ($polski_settings['search_label'] ?? __('Search products', 'polski'))); ?>
     </label>
     <div class="polski-ajax-search__inner">
         <input
@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
     <div
         class="polski-ajax-search__results"
         hidden
-        aria-label="<?php echo esc_attr((string) ($polski_settings['results_label'] ?? __('Wyniki wyszukiwania produktów', 'polski'))); ?>"
+        aria-label="<?php echo esc_attr((string) ($polski_settings['results_label'] ?? __('Product search results', 'polski'))); ?>"
         data-polski-ajax-search-results
     ></div>
 </form>

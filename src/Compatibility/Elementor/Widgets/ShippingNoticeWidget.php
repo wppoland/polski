@@ -13,7 +13,7 @@ final class ShippingNoticeWidget extends BaseProductWidget
 
     public function get_title(): string
     {
-        return __('Koszty wysyłki', 'polski');
+        return __('Shipping costs', 'polski');
     }
 
     protected function register_controls(): void

@@ -245,12 +245,12 @@ wp_set_current_user($adminId);
 
 polski_wporg_ensure_wc_page('shop', 'sklep', 'Sklep', '');
 polski_wporg_ensure_wc_page('cart', 'koszyk', 'Koszyk', '[woocommerce_cart]');
-polski_wporg_ensure_wc_page('checkout', 'zamowienie', 'Zamówienie', '[woocommerce_checkout]');
+polski_wporg_ensure_wc_page('checkout', 'zamowienie', 'Order', '[woocommerce_checkout]');
 polski_wporg_ensure_wc_page('myaccount', 'moje-konto', 'Moje konto', '[woocommerce_my_account]');
 
 $termsPageId = polski_wporg_ensure_page('regulamin', 'Regulamin sklepu', '<p>Przykładowy regulamin sklepu.</p>');
 $privacyPageId = polski_wporg_ensure_page('polityka-prywatnosci', 'Polityka prywatności', '<p>Przykładowa polityka prywatności.</p>');
-$returnsPageId = polski_wporg_ensure_page('odstapienie', 'Prawo odstąpienia', '<p>Przykładowe informacje o odstąpieniu od umowy.</p>');
+$returnsPageId = polski_wporg_ensure_page('odstapienie', 'Right of withdrawal', '<p>Przykładowe informacje o odstąpieniu od umowy.</p>');
 $complaintsPageId = polski_wporg_ensure_page('reklamacje', 'Reklamacje', '<p>Przykładowa procedura reklamacyjna.</p>');
 $searchPageId = polski_wporg_ensure_page('polski-search', 'Wyszukiwanie produktów', '[polski_ajax_search]');
 $dsaPageId = polski_wporg_ensure_page('polski-dsa-report', 'Zgłoś nielegalną treść', '[polski_dsa_report]');
@@ -302,7 +302,7 @@ update_option('polski_general', array_merge(
 update_option('polski_checkout', array_merge(
     (array) get_option('polski_checkout', []),
     [
-        'order_button_text' => 'Zamawiam z obowiązkiem zapłaty',
+        'order_button_text' => 'Order with an obligation to pay',
         'terms_checkbox_enabled' => true,
         'privacy_checkbox_enabled' => true,
         'withdrawal_checkbox_enabled' => true,
@@ -313,7 +313,7 @@ update_option('polski_checkout', array_merge(
 update_option('polski_withdrawal', array_merge(
     (array) get_option('polski_withdrawal', []),
     [
-        'button_text' => 'Odstąp od umowy',
+        'button_text' => 'Withdraw from the contract',
         'oneclick_enabled' => true,
         'oneclick_button_text' => 'Odstąpienie jednym kliknięciem',
         'oneclick_confirm_text' => 'Potwierdź odstąpienie',
@@ -331,16 +331,16 @@ update_option('polski_dsa', array_merge(
 update_option('polski_search', array_merge(
     (array) get_option('polski_search', []),
     [
-        'search_label' => 'Szukaj produktów',
+        'search_label' => 'Search products',
         'placeholder' => 'Wpisz nazwę produktu',
         'results_label' => 'Wyniki wyszukiwania',
-        'submit_button_text' => 'Szukaj',
+        'submit_button_text' => 'Search',
         'show_submit_button' => true,
         'show_image' => false,
         'show_price' => true,
         'show_sku' => true,
         'show_view_all_link' => true,
-        'view_all_text' => 'Zobacz wszystkie wyniki',
+        'view_all_text' => 'See all results',
         'no_results_text' => 'Brak wyników',
         'min_chars' => 2,
         'debounce_ms' => 50,
@@ -362,7 +362,7 @@ update_option('polski_filters', array_merge(
         'show_sale' => true,
         'show_attributes' => false,
         'show_reset_link' => true,
-        'submit_text' => 'Filtruj',
+        'submit_text' => 'Filter',
         'reset_text' => 'Resetuj',
     ],
 ));

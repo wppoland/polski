@@ -192,7 +192,7 @@ final class ProductInfoService
         if ($gpsr !== '') {
             array_unshift($parts, sprintf(
                 '<div class="polski-gpsr"><span class="polski-gpsr__label">%s:</span> %s</div>',
-                esc_html__('Osoba odpowiedzialna (GPSR)', 'polski'),
+                esc_html__('Responsible person (GPSR)', 'polski'),
                 esc_html($gpsr),
             ));
         }

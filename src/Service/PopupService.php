@@ -77,8 +77,8 @@ final class PopupService implements Bootable, HasHooks
         $this->templateLoader->include('shared/popup', [
             'settings' => $this->getSettings(),
             'cta_url' => $this->getCtaUrl(),
-            'close_label' => (string) ($this->getSettings()['close_label'] ?? __('Zamknij popup', 'polski')),
-            'dialog_label' => (string) ($this->getSettings()['dialog_label'] ?? __('Popup promocyjny', 'polski')),
+            'close_label' => (string) ($this->getSettings()['close_label'] ?? __('Close the popup', 'polski')),
+            'dialog_label' => (string) ($this->getSettings()['dialog_label'] ?? __('Promotional popup', 'polski')),
             'show_cta' => (bool) ($this->getSettings()['show_cta'] ?? true),
             'show_title' => (bool) ($this->getSettings()['show_title'] ?? true),
             'show_close_button' => (bool) ($this->getSettings()['show_close_button'] ?? true),

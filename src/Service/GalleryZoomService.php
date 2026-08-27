@@ -61,7 +61,7 @@ final class GalleryZoomService implements Bootable, HasHooks
             'enableZoom' => (bool) ($this->getSettings()['enable_zoom'] ?? true),
             'enableLightbox' => (bool) ($this->getSettings()['enable_lightbox'] ?? true),
             'showBackdropClose' => (bool) ($this->getSettings()['show_backdrop_close'] ?? true),
-            'triggerLabel' => (string) ($this->getSettings()['trigger_label'] ?? __('Powiększ zdjęcie produktu', 'polski')),
+            'triggerLabel' => (string) ($this->getSettings()['trigger_label'] ?? __('Zoom in on the product photo', 'polski')),
         ]);
     }
 

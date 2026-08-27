@@ -137,7 +137,7 @@ final class DigitalConsentService implements HasHooks
         if ($mode === self::MODE_REQUIRED) {
             // Require acceptance only when the cart has digital content.
             $field['required'] = $this->cartDigitalRule(true);
-            $field['error_message'] = __('Aby zakupić produkty cyfrowe musisz wyrazić zgodę na rozpoczęcie świadczenia przed upływem terminu odstąpienia.', 'polski');
+            $field['error_message'] = __('To buy digital products you have to consent to performance beginning before the withdrawal period ends.', 'polski');
         }
 
         woocommerce_register_additional_checkout_field($field);
@@ -225,7 +225,7 @@ final class DigitalConsentService implements HasHooks
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC checkout already verifies its own nonce.
         if (empty($_POST[self::FIELD_KEY])) {
             wc_add_notice(
-                __('Aby zakupić produkty cyfrowe musisz wyrazić zgodę na rozpoczęcie świadczenia przed upływem terminu odstąpienia.', 'polski'),
+                __('To buy digital products you have to consent to performance beginning before the withdrawal period ends.', 'polski'),
                 'error',
             );
         }
@@ -333,7 +333,7 @@ final class DigitalConsentService implements HasHooks
         $label = (string) ($settings['digital_consent_label'] ?? '');
 
         if ($label === '') {
-            $label = __('Wyrażam zgodę na rozpoczęcie spełniania świadczenia (np. dostarczenie treści cyfrowych) przed upływem terminu odstąpienia od umowy i przyjmuję do wiadomości utratę prawa odstąpienia w odniesieniu do dostarczonych w ten sposób treści cyfrowych.', 'polski');
+            $label = __('I consent to performance beginning (for example the supply of digital content) before the withdrawal period ends and I acknowledge that I thereby lose my right of withdrawal for the digital content supplied in this way.', 'polski');
         }
 
         /**

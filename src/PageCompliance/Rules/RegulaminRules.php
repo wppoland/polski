@@ -147,7 +147,7 @@ final class RegulaminRules
                     'oswiadczenie o odstapieniu',
                     'withdrawal form',
                 ],
-                hint: __('Reference the statutory withdrawal form (załącznik do ustawy o prawach konsumenta).', 'polski'),
+                hint: __('Reference the statutory withdrawal form (the annex to the Polish Consumer Rights Act).', 'polski'),
             ),
             new CheckRule(
                 id: 'complaints_procedure',

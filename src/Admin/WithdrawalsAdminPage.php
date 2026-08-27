@@ -241,7 +241,7 @@ final class WithdrawalsAdminPage implements HasHooks
             : [];
 
         if ($rawAction === '' || $rawAction === '-1' || $ids === []) {
-            $this->setNotice('warning', __('Wybierz akcję i co najmniej jedną pozycję.', 'polski'));
+            $this->setNotice('warning', __('Choose an action and at least one row.', 'polski'));
             wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));
             exit;
         }
@@ -250,7 +250,7 @@ final class WithdrawalsAdminPage implements HasHooks
             'confirm' => $this->bulkConfirm($ids),
             'reject' => $this->bulkReject($ids),
             'export_csv' => $this->bulkExportCsv($ids),
-            default => $this->setNotice('error', __('Nieznana akcja zbiorcza.', 'polski')),
+            default => $this->setNotice('error', __('Unknown bulk action.', 'polski')),
         };
 
         if ($rawAction !== 'export_csv') {
@@ -274,7 +274,7 @@ final class WithdrawalsAdminPage implements HasHooks
             $done > 0 ? 'success' : 'warning',
             sprintf(
                 /* translators: 1: succeeded, 2: total selected */
-                _n('Potwierdzono %1$d z %2$d zaznaczonych oświadczeń.', 'Potwierdzono %1$d z %2$d zaznaczonych oświadczeń.', count($ids), 'polski'),
+                _n('Confirmed %1$d of %2$d selected declarations.', 'Confirmed %1$d of %2$d selected declarations.', count($ids), 'polski'),
                 $done,
                 count($ids),
             ),
@@ -288,7 +288,7 @@ final class WithdrawalsAdminPage implements HasHooks
     {
         $done = 0;
         foreach ($ids as $id) {
-            if ($this->withdrawal->reject($id, __('Odrzucone akcją zbiorczą.', 'polski'))) {
+            if ($this->withdrawal->reject($id, __('Rejected by a bulk action.', 'polski'))) {
                 $done++;
             }
         }
@@ -296,7 +296,7 @@ final class WithdrawalsAdminPage implements HasHooks
             $done > 0 ? 'success' : 'warning',
             sprintf(
                 /* translators: 1: succeeded, 2: total selected */
-                _n('Odrzucono %1$d z %2$d zaznaczonych oświadczeń.', 'Odrzucono %1$d z %2$d zaznaczonych oświadczeń.', count($ids), 'polski'),
+                _n('Rejected %1$d of %2$d selected declarations.', 'Rejected %1$d of %2$d selected declarations.', count($ids), 'polski'),
                 $done,
                 count($ids),
             ),
@@ -387,7 +387,7 @@ final class WithdrawalsAdminPage implements HasHooks
                         <td>
                             <select name="polski_channel" id="polski_channel">
                                 <option value="phone"><?php esc_html_e('Phone', 'polski'); ?></option>
-                                <option value="email"><?php esc_html_e('E-mail', 'polski'); ?></option>
+                                <option value="email"><?php esc_html_e('Email', 'polski'); ?></option>
                                 <option value="letter"><?php esc_html_e('Letter / post', 'polski'); ?></option>
                                 <option value="in_store"><?php esc_html_e('In-store / in-person', 'polski'); ?></option>
                                 <option value="other"><?php esc_html_e('Other', 'polski'); ?></option>

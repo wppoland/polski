@@ -37,12 +37,12 @@ $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 $greeting = str_replace(
     '{name}',
     (string) $order->get_billing_first_name(),
-    (string) ($polski_settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')),
+    (string) ($polski_settings['email_greeting'] ?? __('Hello {name},', 'polski')),
 );
 $intro = str_replace(
     '{order_number}',
     (string) $order->get_order_number(),
-    (string) ($polski_settings['email_intro_text'] ?? __('Twój wniosek o odstąpienie dla zamówienia #{order_number} został zarejestrowany.', 'polski')),
+    (string) ($polski_settings['email_intro_text'] ?? __('Your withdrawal declaration for order #{order_number} has been registered.', 'polski')),
 );
 
 $declaration_id = sprintf('POL-WD-%06d', $request->id);
@@ -90,7 +90,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
 
 <?php if ($request->reason) : ?>
     <p>
-        <strong><?php echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Twój powód', 'polski'))); ?>:</strong><br />
+        <strong><?php echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Your reason', 'polski'))); ?>:</strong><br />
         <?php echo esc_html($request->reason); ?>
     </p>
 <?php endif; ?>
@@ -137,7 +137,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
 </table>
 
 <p>
-    <?php echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Odeślij produkty na poniższy adres w ciągu 14 dni od dnia złożenia oświadczenia:', 'polski'))); ?>
+    <?php echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Send the goods back to the address below within 14 days of filing the declaration:', 'polski'))); ?>
 </p>
 
 <p>
@@ -149,7 +149,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
 <p style="font-size: smaller; color: #555;">
     <?php
     echo esc_html((string) ($polski_settings['email_durable_medium_notice'] ?? __(
-        'Zachowaj tę wiadomość jako potwierdzenie złożenia oświadczenia. Zawiera ona niezbędne dane oświadczenia (numer, datę i czas złożenia, podsumowanie zamówienia).',
+        'Keep this message as proof that the declaration was filed. It holds everything the declaration needs: the number, the date and time it was filed, and a summary of the order.',
         'polski',
     )));
     ?>

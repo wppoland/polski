@@ -22,12 +22,12 @@ final class Migration_1_0_0 implements Migration
     private function seedDeliveryTimes(): void
     {
         $defaults = [
-            '1-2-dni-robocze' => __('1-2 dni robocze', 'polski'),
-            '2-4-dni-robocze' => __('2-4 dni robocze', 'polski'),
-            '3-5-dni-roboczych' => __('3-5 dni roboczych', 'polski'),
-            '5-7-dni-roboczych' => __('5-7 dni roboczych', 'polski'),
-            '7-14-dni-roboczych' => __('7-14 dni roboczych', 'polski'),
-            'do-24h' => __('Do 24 godzin', 'polski'),
+            '1-2-dni-robocze' => __('1-2 working days', 'polski'),
+            '2-4-dni-robocze' => __('2-4 working days', 'polski'),
+            '3-5-dni-roboczych' => __('3-5 working days', 'polski'),
+            '5-7-dni-roboczych' => __('5-7 working days', 'polski'),
+            '7-14-dni-roboczych' => __('7-14 working days', 'polski'),
+            'do-24h' => __('Within 24 hours', 'polski'),
         ];
 
         foreach ($defaults as $slug => $name) {
@@ -40,7 +40,7 @@ final class Migration_1_0_0 implements Migration
     private function seedUnits(): void
     {
         $defaults = [
-            'szt' => __('szt.', 'polski'),
+            'szt' => __('pcs.', 'polski'),
             'kg' => __('kg', 'polski'),
             'g' => __('g', 'polski'),
             'l' => __('l', 'polski'),

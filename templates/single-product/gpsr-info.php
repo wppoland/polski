@@ -12,20 +12,20 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 $polski_labels = [
-    'manufacturer_name'    => __('Producent', 'polski'),
-    'manufacturer_address' => __('Adres producenta', 'polski'),
+    'manufacturer_name'    => __('Manufacturer', 'polski'),
+    'manufacturer_address' => __('Manufacturer address', 'polski'),
     'importer_name'        => __('Importer', 'polski'),
-    'importer_address'     => __('Adres importera', 'polski'),
-    'responsible_person'   => __('Osoba odpowiedzialna', 'polski'),
-    'product_identifier'   => __('Identyfikator produktu', 'polski'),
-    'safety_warnings'      => __('Ostrzeżenia dotyczące bezpieczeństwa', 'polski'),
-    'instructions'         => __('Instrukcje bezpieczeństwa', 'polski'),
+    'importer_address'     => __('Importer address', 'polski'),
+    'responsible_person'   => __('Responsible person', 'polski'),
+    'product_identifier'   => __('Product identifier', 'polski'),
+    'safety_warnings'      => __('Safety warnings', 'polski'),
+    'instructions'         => __('Safety instructions', 'polski'),
 ];
 ?>
 <div class="polski-gpsr-info">
     <details class="polski-gpsr-info__details">
         <summary class="polski-gpsr-info__summary">
-            <?php esc_html_e('Bezpieczeństwo produktu (GPSR)', 'polski'); ?>
+            <?php esc_html_e('Product safety (GPSR)', 'polski'); ?>
         </summary>
         <dl class="polski-gpsr-info__list">
             <?php foreach ($polski_data as $polski_key => $polski_value) : ?>

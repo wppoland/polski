@@ -28,7 +28,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
     <?php
     printf(
         /* translators: %s = customer first name */
-        esc_html__('Dzień dobry %s,', 'polski'),
+        esc_html__('Hello %s,', 'polski'),
         esc_html((string) $order->get_billing_first_name()),
     );
     ?>
@@ -38,7 +38,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
     <?php
     printf(
         /* translators: 1: order number, 2: declaration id */
-        esc_html__('Z przyjemnością informujemy, że Twoje oświadczenie o odstąpieniu (%2$s) dla zamówienia #%1$s zostało rozliczone.', 'polski'),
+        esc_html__('We are glad to tell you that your withdrawal declaration (%2$s) for order #%1$s has been settled.', 'polski'),
         esc_html((string) $order->get_order_number()),
         esc_html($declaration_id),
     );
@@ -48,16 +48,16 @@ do_action('woocommerce_email_header', $email_heading, $email);
 <table cellspacing="0" cellpadding="6" border="1" style="border-collapse: collapse; width: 100%; margin: 16px 0;">
     <tbody>
         <tr>
-            <th align="left" width="40%"><?php esc_html_e('Numer oświadczenia', 'polski'); ?></th>
+            <th align="left" width="40%"><?php esc_html_e('Declaration number', 'polski'); ?></th>
             <td><strong><?php echo esc_html($declaration_id); ?></strong></td>
         </tr>
         <tr>
-            <th align="left"><?php esc_html_e('Data rozliczenia', 'polski'); ?></th>
+            <th align="left"><?php esc_html_e('Settlement date', 'polski'); ?></th>
             <td><?php echo esc_html($completed_at); ?></td>
         </tr>
         <?php if ($request->refundAmount !== null) : ?>
             <tr>
-                <th align="left"><?php esc_html_e('Kwota zwrotu', 'polski'); ?></th>
+                <th align="left"><?php esc_html_e('Refund amount', 'polski'); ?></th>
                 <td>
                     <strong>
                         <?php echo wp_kses_post(wc_price((float) $request->refundAmount, ['currency' => $order->get_currency()])); ?>
@@ -66,14 +66,14 @@ do_action('woocommerce_email_header', $email_heading, $email);
             </tr>
         <?php endif; ?>
         <tr>
-            <th align="left"><?php esc_html_e('Zamówienie', 'polski'); ?></th>
+            <th align="left"><?php esc_html_e('Order', 'polski'); ?></th>
             <td>#<?php echo esc_html((string) $order->get_order_number()); ?></td>
         </tr>
     </tbody>
 </table>
 
 <p>
-    <?php esc_html_e('Zwrot zostanie wykonany na pierwotną metodę płatności użytą przy zakupie. W zależności od banku środki mogą pojawić się na koncie w ciągu kilku dni roboczych.', 'polski'); ?>
+    <?php esc_html_e('The refund will go back to the payment method used for the purchase. Depending on your bank it may take a few working days to appear.', 'polski'); ?>
 </p>
 
 <?php if ($additional_content) : ?>

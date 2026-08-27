@@ -36,12 +36,12 @@ $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 $greeting = str_replace(
     '{name}',
     (string) $order->get_billing_first_name(),
-    (string) ($polski_settings['email_greeting'] ?? __('Dzień dobry {name},', 'polski')),
+    (string) ($polski_settings['email_greeting'] ?? __('Hello {name},', 'polski')),
 );
 $intro = str_replace(
     '{order_number}',
     (string) $order->get_order_number(),
-    (string) ($polski_settings['email_intro_text'] ?? __('Twój wniosek o odstąpienie dla zamówienia #{order_number} został zarejestrowany.', 'polski')),
+    (string) ($polski_settings['email_intro_text'] ?? __('Your withdrawal declaration for order #{order_number} has been registered.', 'polski')),
 );
 
 $declaration_id = sprintf('POL-WD-%06d', $request->id);
@@ -64,7 +64,7 @@ echo '         ' . esc_html((string) $order->get_billing_email()) . "\n";
 echo esc_html(str_repeat('-', 60)) . "\n\n";
 
 if ($request->reason) {
-    echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Twój powód', 'polski'))) . ":\n";
+    echo esc_html((string) ($polski_settings['email_reason_label'] ?? __('Your reason', 'polski'))) . ":\n";
     echo esc_html($request->reason) . "\n\n";
 }
 
@@ -90,13 +90,13 @@ foreach ($order->get_items() as $item) {
 echo "\n";
 echo esc_html__('Order total', 'polski') . ': ' . esc_html(wp_strip_all_tags(wc_price((float) $order->get_total(), ['currency' => $currency]))) . "\n\n";
 
-echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Odeślij produkty na poniższy adres w ciągu 14 dni od dnia złożenia oświadczenia:', 'polski'))) . "\n";
+echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Send the goods back to the address below within 14 days of filing the declaration:', 'polski'))) . "\n";
 echo esc_html(wp_strip_all_tags((string) get_option('woocommerce_store_address', ''))) . "\n";
 echo esc_html(wp_strip_all_tags((string) get_option('woocommerce_store_address_2', ''))) . "\n";
 echo esc_html(wp_strip_all_tags((string) get_option('woocommerce_store_postcode', '') . ' ' . (string) get_option('woocommerce_store_city', ''))) . "\n\n";
 
 echo esc_html((string) ($polski_settings['email_durable_medium_notice'] ?? __(
-    'Zachowaj tę wiadomość jako potwierdzenie złożenia oświadczenia. Zawiera ona niezbędne dane oświadczenia (numer, datę i czas złożenia, podsumowanie zamówienia).',
+    'Keep this message as proof that the declaration was filed. It holds everything the declaration needs: the number, the date and time it was filed, and a summary of the order.',
     'polski',
 ))) . "\n\n";
 
