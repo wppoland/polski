@@ -33,20 +33,20 @@ final class AnnexGeneratorService implements HasHooks
         $days = $this->periodDays();
 
         $html = '<div class="polski-annex polski-annex--info">';
-        $html .= '<h2>' . esc_html__('Prawo odstąpienia od umowy', 'polski') . '</h2>';
+        $html .= '<h2>' . esc_html__('Right of withdrawal', 'polski') . '</h2>';
 
-        $html .= '<h3>' . esc_html__('Prawo odstąpienia od umowy', 'polski') . '</h3>';
+        $html .= '<h3>' . esc_html__('Right of withdrawal', 'polski') . '</h3>';
         $html .= '<p>' . sprintf(
             /* translators: %d: number of days */
-            esc_html__('Mają Państwo prawo odstąpić od niniejszej umowy w terminie %d dni bez podania jakiejkolwiek przyczyny.', 'polski'),
+            esc_html__('You have the right to withdraw from this contract within %d days without giving any reason.', 'polski'),
             (int) $days,
         ) . '</p>';
         $html .= '<p>' . sprintf(
             /* translators: %d: number of days */
-            esc_html__('Termin do odstąpienia od umowy wygasa po upływie %d dni od dnia, w którym weszli Państwo w posiadanie rzeczy lub w którym osoba trzecia inna niż przewoźnik i wskazana przez Państwa weszła w posiadanie rzeczy.', 'polski'),
+            esc_html__('The withdrawal period will expire after %d days from the day on which you acquire, or a third party other than the carrier and indicated by you acquires, physical possession of the goods.', 'polski'),
             (int) $days,
         ) . '</p>';
-        $html .= '<p>' . esc_html__('Aby skorzystać z prawa odstąpienia od umowy, muszą Państwo poinformować nas o swojej decyzji o odstąpieniu od niniejszej umowy w drodze jednoznacznego oświadczenia (na przykład pismo wysłane pocztą, faksem lub pocztą elektroniczną).', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('To exercise the right of withdrawal, you must inform us of your decision to withdraw from this contract by an unequivocal statement (for example a letter sent by post, fax or email).', 'polski') . '</p>';
 
         $html .= '<address style="font-style: normal;">';
         if ($data['name'] !== '') {
@@ -59,27 +59,27 @@ final class AnnexGeneratorService implements HasHooks
             $html .= esc_html__('tel.', 'polski') . ' ' . esc_html($data['phone']) . '<br />';
         }
         if ($data['email'] !== '') {
-            $html .= esc_html__('e-mail:', 'polski') . ' ' . esc_html($data['email']) . '<br />';
+            $html .= esc_html__('email:', 'polski') . ' ' . esc_html($data['email']) . '<br />';
         }
         if ($data['nip'] !== '') {
             $html .= esc_html__('NIP:', 'polski') . ' ' . esc_html($data['nip']);
         }
         $html .= '</address>';
 
-        $html .= '<p>' . esc_html__('Mogą Państwo skorzystać z wzoru formularza odstąpienia od umowy, jednak nie jest to obowiązkowe.', 'polski') . '</p>';
-        $html .= '<p>' . esc_html__('Aby zachować termin do odstąpienia od umowy, wystarczy, aby wysłali Państwo informację dotyczącą wykonania przysługującego Państwu prawa odstąpienia od umowy przed upływem terminu do odstąpienia od umowy.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('You may use the model withdrawal form, but it is not obligatory.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired.', 'polski') . '</p>';
 
-        $html .= '<h3>' . esc_html__('Skutki odstąpienia od umowy', 'polski') . '</h3>';
+        $html .= '<h3>' . esc_html__('Effects of withdrawal', 'polski') . '</h3>';
         $html .= '<p>' . sprintf(
             /* translators: %d: number of days */
-            esc_html__('W przypadku odstąpienia od niniejszej umowy zwracamy Państwu wszystkie otrzymane od Państwa płatności, w tym koszty dostarczenia rzeczy (z wyjątkiem dodatkowych kosztów wynikających z wybranego przez Państwa sposobu dostarczenia innego niż najtańszy zwykły sposób dostarczenia oferowany przez nas), niezwłocznie, a w każdym przypadku nie później niż %d dni od dnia, w którym zostaliśmy poinformowani o Państwa decyzji o wykonaniu prawa odstąpienia od niniejszej umowy.', 'polski'),
+            esc_html__('If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and in any event not later than %d days from the day on which we are informed about your decision to withdraw from this contract.', 'polski'),
             (int) $days,
         ) . '</p>';
-        $html .= '<p>' . esc_html__('Zwrotu płatności dokonamy przy użyciu takich samych sposobów płatności, jakie zostały przez Państwa użyte w pierwotnej transakcji, chyba że wyraźnie zgodziliście się Państwo na inne rozwiązanie; w każdym przypadku nie poniosą Państwo żadnych opłat w związku z tym zwrotem.', 'polski') . '</p>';
-        $html .= '<p>' . esc_html__('Możemy wstrzymać się ze zwrotem płatności do czasu otrzymania rzeczy lub do czasu dostarczenia nam dowodu jej odesłania, w zależności od tego, które zdarzenie nastąpi wcześniej.', 'polski') . '</p>';
-        $html .= '<p>' . esc_html__('Proszę odesłać lub przekazać nam rzecz na adres podany powyżej, niezwłocznie, a w każdym razie nie później niż 14 dni od dnia, w którym poinformowali nas Państwo o odstąpieniu od niniejszej umowy. Termin jest zachowany, jeżeli odeślą Państwo rzecz przed upływem terminu 14 dni.', 'polski') . '</p>';
-        $html .= '<p>' . esc_html__('Będą Państwo musieli ponieść bezpośrednie koszty zwrotu rzeczy.', 'polski') . '</p>';
-        $html .= '<p>' . esc_html__('Odpowiadają Państwo tylko za zmniejszenie wartości rzeczy wynikające z korzystania z niej w sposób inny niż było to konieczne do stwierdzenia charakteru, cech i funkcjonowania rzeczy.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('We will carry out such reimbursement using the same means of payment as you used for the initial transaction, unless you have expressly agreed otherwise; in any event, you will not incur any fees as a result of such reimbursement.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('You shall send back the goods or hand them over to us at the address above, without undue delay and in any event not later than 14 days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of 14 days has expired.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('You will have to bear the direct cost of returning the goods.', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('You are only liable for any diminished value of the goods resulting from the handling other than what is necessary to establish the nature, characteristics and functioning of the goods.', 'polski') . '</p>';
 
         $html .= '</div>';
 
@@ -99,10 +99,10 @@ final class AnnexGeneratorService implements HasHooks
         $lookupUrl = $this->lookupPageUrl();
 
         $html = '<div class="polski-annex polski-annex--form">';
-        $html .= '<h2>' . esc_html__('Wzór formularza odstąpienia od umowy', 'polski') . '</h2>';
-        $html .= '<p><em>' . esc_html__('(formularz ten należy wypełnić i odesłać tylko w przypadku chęci odstąpienia od umowy)', 'polski') . '</em></p>';
+        $html .= '<h2>' . esc_html__('Model withdrawal form', 'polski') . '</h2>';
+        $html .= '<p><em>' . esc_html__('(complete and return this form only if you wish to withdraw from the contract)', 'polski') . '</em></p>';
 
-        $html .= '<p>' . esc_html__('Adresat:', 'polski') . '<br />';
+        $html .= '<p>' . esc_html__('Addressee:', 'polski') . '<br />';
         if ($data['name'] !== '') {
             $html .= '<strong>' . esc_html($data['name']) . '</strong><br />';
         }
@@ -110,27 +110,27 @@ final class AnnexGeneratorService implements HasHooks
             $html .= nl2br(esc_html($data['address'])) . '<br />';
         }
         if ($data['email'] !== '') {
-            $html .= esc_html__('e-mail:', 'polski') . ' ' . esc_html($data['email']);
+            $html .= esc_html__('email:', 'polski') . ' ' . esc_html($data['email']);
         }
         $html .= '</p>';
 
-        $html .= '<p>' . esc_html__('Ja/My(*) niniejszym informuję/informujemy(*) o moim/naszym odstąpieniu od umowy sprzedaży następujących rzeczy(*) umowy dostawy następujących rzeczy(*) umowy o dzieło polegającej na wykonaniu następujących rzeczy(*)/o świadczenie następującej usługi(*):', 'polski') . '</p>';
+        $html .= '<p>' . esc_html__('I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods (*)/for the provision of the following service (*):', 'polski') . '</p>';
         $html .= '<p><span style="display:inline-block;border-bottom:1px dotted #555;min-width:60%;">&nbsp;</span></p>';
-        $html .= '<p>' . esc_html__('Data zawarcia umowy(*)/odbioru(*):', 'polski')
+        $html .= '<p>' . esc_html__('Ordered on (*)/received on (*):', 'polski')
             . ' <span style="display:inline-block;border-bottom:1px dotted #555;min-width:40%;">&nbsp;</span></p>';
-        $html .= '<p>' . esc_html__('Imię i nazwisko konsumenta(-ów):', 'polski')
+        $html .= '<p>' . esc_html__('Name of consumer(s):', 'polski')
             . ' <span style="display:inline-block;border-bottom:1px dotted #555;min-width:40%;">&nbsp;</span></p>';
-        $html .= '<p>' . esc_html__('Adres konsumenta(-ów):', 'polski')
+        $html .= '<p>' . esc_html__('Address of consumer(s):', 'polski')
             . ' <span style="display:inline-block;border-bottom:1px dotted #555;min-width:40%;">&nbsp;</span></p>';
-        $html .= '<p>' . esc_html__('Podpis konsumenta(-ów) (tylko jeżeli formularz jest przesyłany w wersji papierowej):', 'polski')
+        $html .= '<p>' . esc_html__('Signature of consumer(s) (only if this form is notified on paper):', 'polski')
             . ' <span style="display:inline-block;border-bottom:1px dotted #555;min-width:40%;">&nbsp;</span></p>';
-        $html .= '<p>' . esc_html__('Data:', 'polski')
+        $html .= '<p>' . esc_html__('Date:', 'polski')
             . ' <span style="display:inline-block;border-bottom:1px dotted #555;min-width:40%;">&nbsp;</span></p>';
-        $html .= '<p><em>' . esc_html__('(*) Niepotrzebne skreślić.', 'polski') . '</em></p>';
+        $html .= '<p><em>' . esc_html__('(*) Delete as appropriate.', 'polski') . '</em></p>';
 
         if ($lookupUrl !== '') {
             /* translators: %s: lookup page URL where the consumer can file an online withdrawal declaration */
-            $onlineLinkTemplate = __('Możesz także złożyć oświadczenie online: <a href="%s">formularz odstąpienia</a>.', 'polski');
+            $onlineLinkTemplate = __('You can also file the declaration online: <a href="%s">withdrawal form</a>.', 'polski');
             $html .= '<p>' . sprintf(
                 wp_kses($onlineLinkTemplate, ['a' => ['href' => true]]),
                 esc_url($lookupUrl),

@@ -103,7 +103,7 @@ $polski_description = (bool) ($polski_settings['show_short_description'] ?? true
                     href="<?php echo esc_url(get_permalink($polski_product->get_id()) ?: ''); ?>"
                     <?php echo (($polski_settings['view_product_target'] ?? 'same_tab') === 'new_tab') ? 'target="_blank" rel="noopener noreferrer"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 >
-                    <?php echo esc_html((string) ($polski_settings['view_product_text'] ?? __('Zobacz pełną kartę produktu', 'polski'))); ?>
+                    <?php echo esc_html((string) ($polski_settings['view_product_text'] ?? __('See the full product page', 'polski'))); ?>
                 </a>
             <?php endif; ?>
         </div>

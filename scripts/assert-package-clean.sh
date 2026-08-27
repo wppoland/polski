@@ -68,7 +68,15 @@ while IFS= read -r f; do
     fail "editor backup in the package: ${f#"${PKG}/"}"
 done < <(find "${PKG}" -type f \( -name '*~' -o -name '*.bak' \))
 
-# 5. The plugin header and the readme must agree with each other.
+# 5. The compiled front-end must be present. build/ is gitignored, so a fresh
+#    clone has none, and a package built there would ship a plugin whose admin
+#    screens load nothing. It also means "npm run build" has to run before a
+#    release, or the bundle is whatever was last built locally.
+if [[ ! -s "${PKG}/build/admin.js" ]]; then
+    fail "build/admin.js missing or empty; run 'npm run build' before packaging"
+fi
+
+# 6. The plugin header and the readme must agree with each other.
 header_version="$(grep -m1 -E '^ \* Version:' "${PKG}/polski.php" | sed -E 's/.*Version:[[:space:]]*//')"
 header_tested="$(grep -m1 -E '^ \* Tested up to:' "${PKG}/polski.php" | sed -E 's/.*Tested up to:[[:space:]]*//')"
 readme_stable="$(grep -m1 -E '^Stable tag:' "${PKG}/readme.txt" | sed -E 's/^Stable tag:[[:space:]]*//')"
@@ -79,7 +87,7 @@ readme_tested="$(grep -m1 -E '^Tested up to:' "${PKG}/readme.txt" | sed -E 's/^T
 [[ "${header_tested}" == "${readme_tested}" ]] || \
     fail "header Tested up to (${header_tested}) does not match readme (${readme_tested})"
 
-# 6. "Tested up to" must be the current WordPress release, or wordpress.org
+# 7. "Tested up to" must be the current WordPress release, or wordpress.org
 #    hides the plugin from search. This is the value that silently rots.
 if command -v curl >/dev/null 2>&1; then
     current_wp="$(curl -fsS --max-time 10 https://api.wordpress.org/core/version-check/1.7/ 2>/dev/null \
@@ -94,7 +102,7 @@ if command -v curl >/dev/null 2>&1; then
     fi
 fi
 
-# 7. The changelog must lead with the version being shipped, in order.
+# 8. The changelog must lead with the version being shipped, in order.
 first_entry="$(grep -m1 -E '^= [0-9]' "${PKG}/readme.txt" | sed -E 's/^= (.+) =$/\1/')"
 [[ "${first_entry}" == "${header_version}" ]] || \
     fail "the newest changelog entry is ${first_entry}, but this package is ${header_version}"

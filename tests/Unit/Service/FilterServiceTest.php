@@ -52,32 +52,32 @@ final class FilterServiceTest extends TestCase
             [
                 [
                     'param' => 'polski_filter_category',
-                    'label' => 'Kategoria',
+                    'label' => 'Category',
                     'value' => 'Bluzy',
                     'raw_value' => 'hoodies',
                 ],
                 [
                     'param' => 'polski_filter_brand',
-                    'label' => 'Marka',
+                    'label' => 'Brand',
                     'value' => 'Nike',
                     'raw_value' => 'nike',
                 ],
                 [
                     'param' => 'polski_filter_min_price',
-                    'label' => 'Cena od',
+                    'label' => 'Price from',
                     'value' => '49.99',
                     'raw_value' => '49.99',
                 ],
                 [
                     'param' => 'polski_filter_stock',
-                    'label' => 'Dostępność',
-                    'value' => 'Dostępne od ręki',
+                    'label' => 'Availability',
+                    'value' => 'In stock',
                     'raw_value' => 'instock',
                 ],
                 [
                     'param' => 'polski_filter_sale',
-                    'label' => 'Promocje',
-                    'value' => 'Tylko promocje',
+                    'label' => 'Promotions',
+                    'value' => 'On sale only',
                     'raw_value' => '1',
                 ],
                 [
@@ -134,13 +134,13 @@ final class FilterServiceTest extends TestCase
             [
                 [
                     'param' => 'polski_filter_category',
-                    'label' => 'Kategoria',
+                    'label' => 'Category',
                     'value' => 'Bluzy',
                     'raw_value' => 'hoodies',
                 ],
                 [
                     'param' => 'polski_filter_category',
-                    'label' => 'Kategoria',
+                    'label' => 'Category',
                     'value' => 'Koszulki',
                     'raw_value' => 'tshirts',
                 ],

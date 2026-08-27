@@ -21,28 +21,28 @@ $reason = (string) ($request->rejectedReason ?? '');
 echo '= ' . esc_html(wp_strip_all_tags($email_heading)) . " =\n\n";
 echo esc_html(sprintf(
     /* translators: %s = customer first name */
-    __('Dzień dobry %s,', 'polski'),
+    __('Hello %s,', 'polski'),
     (string) $order->get_billing_first_name(),
 )) . "\n\n";
 echo esc_html(sprintf(
     /* translators: 1: declaration id, 2: order number */
-    __('Niestety nie możemy zaakceptować Twojego oświadczenia o odstąpieniu (%1$s) dla zamówienia #%2$s.', 'polski'),
+    __('We cannot accept your withdrawal declaration (%1$s) for order #%2$s.', 'polski'),
     $declaration_id,
     (string) $order->get_order_number(),
 )) . "\n\n";
 
 if ($reason !== '') {
-    echo esc_html__('Powód odmowy:', 'polski') . "\n";
+    echo esc_html__('Reason for the refusal:', 'polski') . "\n";
     echo esc_html($reason) . "\n\n";
 }
 
 echo esc_html(str_repeat('-', 60)) . "\n";
-echo esc_html__('Numer oświadczenia', 'polski') . ': ' . esc_html($declaration_id) . "\n";
-echo esc_html__('Data decyzji', 'polski') . ': ' . esc_html($rejected_at) . "\n";
-echo esc_html__('Zamówienie', 'polski') . ': #' . esc_html((string) $order->get_order_number()) . "\n";
+echo esc_html__('Declaration number', 'polski') . ': ' . esc_html($declaration_id) . "\n";
+echo esc_html__('Decision date', 'polski') . ': ' . esc_html($rejected_at) . "\n";
+echo esc_html__('Order', 'polski') . ': #' . esc_html((string) $order->get_order_number()) . "\n";
 echo esc_html(str_repeat('-', 60)) . "\n\n";
 
-echo esc_html__('Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem.', 'polski') . "\n\n";
+echo esc_html__('If you think this decision is wrong, reply to this email or contact the shop.', 'polski') . "\n\n";
 
 if ($additional_content) {
     echo esc_html(wp_strip_all_tags($additional_content)) . "\n";

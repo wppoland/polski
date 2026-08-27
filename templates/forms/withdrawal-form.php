@@ -21,7 +21,7 @@ defined('ABSPATH') || exit;
 
 $polski_settings = get_option('polski_withdrawal', []);
 $polski_settings = is_array($polski_settings) ? $polski_settings : [];
-$polski_intro_text = (string) ($polski_settings['form_intro_text'] ?? __('Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia {order_date}.', 'polski'));
+$polski_intro_text = (string) ($polski_settings['form_intro_text'] ?? __('You are filing a withdrawal declaration for order #{order_number} placed on {order_date}.', 'polski'));
 $polski_order_date = $polski_order->get_date_created();
 $polski_intro_text = str_replace(
     ['{order_number}', '{order_date}'],
@@ -39,44 +39,44 @@ $polski_intro_text = str_replace(
     style="max-width: 80ch;"
 >
     <h2 id="polski-withdrawal-form-title">
-        <?php echo esc_html((string) ($polski_settings['form_title'] ?? __('Wniosek o odstąpienie od umowy', 'polski'))); ?>
+        <?php echo esc_html((string) ($polski_settings['form_title'] ?? __('Withdrawal declaration', 'polski'))); ?>
     </h2>
 
     <p class="polski-withdrawal-form__info"><?php echo esc_html($polski_intro_text); ?></p>
 
     <?php if ($polski_remaining_items === []) : ?>
         <p role="status">
-            <?php esc_html_e('Wszystkie pozycje z tego zamówienia zostały już objęte odstąpieniem lub nie kwalifikują się do zwrotu.', 'polski'); ?>
+            <?php esc_html_e('Every item in this order is already covered by a withdrawal or does not qualify for return.', 'polski'); ?>
         </p>
     <?php else : ?>
         <form method="post" action="<?php echo esc_url($polski_form_action); ?>" novalidate>
             <fieldset>
                 <legend>
-                    <h3 style="display:inline; margin:0;"><?php esc_html_e('Krok 1. Wybierz pozycje do odstąpienia', 'polski'); ?></h3>
+                    <h3 style="display:inline; margin:0;"><?php esc_html_e('Step 1. Choose the items to withdraw from', 'polski'); ?></h3>
                 </legend>
 
                 <p style="color:#475569;">
-                    <?php esc_html_e('Wpisz liczbę sztuk, które chcesz objąć odstąpieniem. Pole „Pozostało" pokazuje maksymalną liczbę, którą można jeszcze odstąpić w tej pozycji.', 'polski'); ?>
+                    <?php esc_html_e('Enter how many units you want to withdraw. The "Remaining" field shows the most you can still withdraw for that item.', 'polski'); ?>
                 </p>
 
                 <p class="polski-withdrawal-form__quick-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
                     <button type="button" data-polski-select="all" class="button">
-                        <?php esc_html_e('Wybierz wszystkie pozycje', 'polski'); ?>
+                        <?php esc_html_e('Select all items', 'polski'); ?>
                     </button>
                     <button type="button" data-polski-select="none" class="button">
-                        <?php esc_html_e('Wyczyść wybór', 'polski'); ?>
+                        <?php esc_html_e('Clear the selection', 'polski'); ?>
                     </button>
                 </p>
 
                 <table class="shop_table polski-withdrawal-items" style="width: 100%;">
                     <caption class="screen-reader-text" style="position:absolute;left:-9999px;">
-                        <?php esc_html_e('Pozycje zamówienia dostępne do odstąpienia.', 'polski'); ?>
+                        <?php esc_html_e('Order items available for withdrawal.', 'polski'); ?>
                     </caption>
                     <thead>
                         <tr>
-                            <th scope="col"><?php esc_html_e('Pozycja', 'polski'); ?></th>
-                            <th scope="col"><?php esc_html_e('Pozostało', 'polski'); ?></th>
-                            <th scope="col"><?php esc_html_e('Liczba sztuk do zwrotu', 'polski'); ?></th>
+                            <th scope="col"><?php esc_html_e('Item', 'polski'); ?></th>
+                            <th scope="col"><?php esc_html_e('Remaining', 'polski'); ?></th>
+                            <th scope="col"><?php esc_html_e('Units to return', 'polski'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +87,7 @@ $polski_intro_text = str_replace(
                         $polski_exempt_reason = $polski_is_exempt ? (string) ($polski_item['exempt_reason'] ?? '') : '';
                     ?>
                         <tr<?php echo $polski_is_exempt ? ' class="polski-withdrawal-item--exempt" aria-disabled="true"' : ''; ?>>
-                            <th scope="row" style="text-align: left;<?php echo $polski_is_exempt ? ' opacity:0.65;' : ''; ?>" data-label="<?php esc_attr_e('Pozycja', 'polski'); ?>">
+                            <th scope="row" style="text-align: left;<?php echo $polski_is_exempt ? ' opacity:0.65;' : ''; ?>" data-label="<?php esc_attr_e('Item', 'polski'); ?>">
                                 <label for="<?php echo esc_attr($polski_field_id); ?>">
                                     <strong><?php echo esc_html((string) $polski_item['name']); ?></strong>
                                 </label>
@@ -100,20 +100,20 @@ $polski_intro_text = str_replace(
                                 <?php if ($polski_is_exempt) : ?>
                                     <br>
                                     <span class="polski-withdrawal-item__exempt-badge" style="display:inline-block;margin-top:0.25rem;padding:0.15rem 0.45rem;border-radius:0.25rem;background:#fef3c7;color:#92400e;font-size:0.85em;">
-                                        <?php esc_html_e('Wyłączone ze zwrotu', 'polski'); ?><?php if ($polski_exempt_reason !== '') : ?>: <?php echo esc_html($polski_exempt_reason); ?><?php endif; ?>
+                                        <?php esc_html_e('Excluded from return', 'polski'); ?><?php if ($polski_exempt_reason !== '') : ?>: <?php echo esc_html($polski_exempt_reason); ?><?php endif; ?>
                                     </span>
                                 <?php endif; ?>
                             </th>
-                            <td data-label="<?php esc_attr_e('Pozostało', 'polski'); ?>"<?php echo $polski_is_exempt ? ' style="opacity:0.65;"' : ''; ?>>
-                                <span aria-label="<?php esc_attr_e('Pozostało do zwrotu', 'polski'); ?>">
+                            <td data-label="<?php esc_attr_e('Remaining', 'polski'); ?>"<?php echo $polski_is_exempt ? ' style="opacity:0.65;"' : ''; ?>>
+                                <span aria-label="<?php esc_attr_e('Remaining to return', 'polski'); ?>">
                                     <?php echo esc_html((string) $polski_item['quantity_remaining']); ?> / <?php echo esc_html((string) $polski_item['quantity_total']); ?>
                                 </span>
                             </td>
-                            <td data-label="<?php esc_attr_e('Liczba sztuk do zwrotu', 'polski'); ?>">
+                            <td data-label="<?php esc_attr_e('Units to return', 'polski'); ?>">
                                 <?php if ($polski_is_exempt) : ?>
                                     <span aria-hidden="true" style="color:#94a3b8;">, </span>
                                     <span class="screen-reader-text" style="position:absolute;left:-9999px;">
-                                        <?php esc_html_e('Ta pozycja jest wyłączona ze zwrotu i nie może być wybrana.', 'polski'); ?>
+                                        <?php esc_html_e('This item is excluded from return and cannot be selected.', 'polski'); ?>
                                     </span>
                                 <?php else : ?>
                                     <input
@@ -132,7 +132,7 @@ $polski_intro_text = str_replace(
                                         <?php
                                         printf(
                                             /* translators: 1: product name, 2: max qty */
-                                            esc_html__('Maksymalna liczba sztuk dostępnych do zwrotu dla pozycji „%1$s" wynosi %2$s.', 'polski'),
+                                            esc_html__('You can return at most %2$s units of "%1$s".', 'polski'),
                                             esc_html((string) $polski_item['name']),
                                             esc_html((string) $polski_item['quantity_remaining']),
                                         );
@@ -148,12 +148,12 @@ $polski_intro_text = str_replace(
 
             <fieldset style="margin-top: 1.5rem;">
                 <legend>
-                    <h3 style="display:inline; margin:0;"><?php esc_html_e('Krok 2. Powód i potwierdzenie', 'polski'); ?></h3>
+                    <h3 style="display:inline; margin:0;"><?php esc_html_e('Step 2. Reason and confirmation', 'polski'); ?></h3>
                 </legend>
 
                 <p>
                     <label for="polski_withdrawal_reason">
-                        <?php esc_html_e('Powód odstąpienia (opcjonalnie)', 'polski'); ?>
+                        <?php esc_html_e('Reason for withdrawal (optional)', 'polski'); ?>
                     </label>
                     <textarea
                         id="polski_withdrawal_reason"
@@ -163,7 +163,7 @@ $polski_intro_text = str_replace(
                         aria-describedby="polski_withdrawal_reason_help"
                     ></textarea>
                     <small id="polski_withdrawal_reason_help" style="display:block; color:#475569;">
-                        <?php esc_html_e('Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
+                        <?php esc_html_e('A reason is not required; withdrawal needs no justification.', 'polski'); ?>
                     </small>
                 </p>
 
@@ -175,10 +175,10 @@ $polski_intro_text = str_replace(
                         name="polski_submit_withdrawal"
                         value="1"
                     >
-                        <?php esc_html_e('Złóż oświadczenie i wyślij potwierdzenie na e-mail', 'polski'); ?>
+                        <?php esc_html_e('File the declaration and email me the confirmation', 'polski'); ?>
                     </button>
                     <a href="<?php echo esc_url(wc_get_account_endpoint_url('orders')); ?>" class="polski-withdrawal-cancel" style="color: #475569;">
-                        <?php esc_html_e('Anuluj i wróć do listy zamówień', 'polski'); ?>
+                        <?php esc_html_e('Cancel and go back to the order list', 'polski'); ?>
                     </a>
                 </p>
             </fieldset>

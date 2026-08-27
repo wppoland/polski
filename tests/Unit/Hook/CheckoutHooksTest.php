@@ -27,7 +27,7 @@ final class CheckoutHooksTest extends TestCase
         \delete_option('polski_checkout');
 
         $result = $this->hooks->filterOrderButtonText('Kupuję i płacę');
-        self::assertSame('Zamawiam z obowiązkiem zapłaty', $result);
+        self::assertSame('Order with an obligation to pay', $result);
     }
 
     public function testFilterOrderButtonTextUsesCustomSettingWhenConfigured(): void
@@ -45,10 +45,10 @@ final class CheckoutHooksTest extends TestCase
         \delete_option('polski_checkout');
 
         $result = $this->hooks->filterBlockOrderButtonText('Place order', 'Place order', 'woocommerce');
-        self::assertSame('Zamawiam z obowiązkiem zapłaty', $result);
+        self::assertSame('Order with an obligation to pay', $result);
 
         $resultPL = $this->hooks->filterBlockOrderButtonText('Kupuję i płacę', 'Place order', 'woocommerce');
-        self::assertSame('Zamawiam z obowiązkiem zapłaty', $resultPL);
+        self::assertSame('Order with an obligation to pay', $resultPL);
     }
 
     public function testFilterBlockOrderButtonTextIgnoresOtherDomains(): void

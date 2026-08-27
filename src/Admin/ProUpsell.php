@@ -74,7 +74,7 @@ final class ProUpsell
         $d = $this->data();
         if ($this->isPolish() && ! empty($d['price_pln'])) {
             /* translators: %d: yearly price in PLN */
-            return sprintf(__('od %d zł/rok', 'polski'), (int) $d['price_pln']);
+            return sprintf(__('from %d PLN/year', 'polski'), (int) $d['price_pln']);
         }
         if (! empty($d['price_from'])) {
             $cur = ($d['currency'] ?? 'EUR') === 'EUR' ? '€' : (string) $d['currency'] . ' ';

@@ -56,7 +56,7 @@ const INITIAL_DATA: WizardData = {
     small_business: false,
     oss_observer_enabled: false,
 
-    order_button_text: __('Zamawiam z obowiązkiem zapłaty', 'polski'),
+    order_button_text: __('Order with an obligation to pay', 'polski'),
     digital_waiver_enabled: false,
 
     withdrawal_period_days: 14,

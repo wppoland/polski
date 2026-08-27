@@ -29,7 +29,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
     <?php
     printf(
         /* translators: %s = customer first name */
-        esc_html__('Dzień dobry %s,', 'polski'),
+        esc_html__('Hello %s,', 'polski'),
         esc_html((string) $order->get_billing_first_name()),
     );
     ?>
@@ -39,7 +39,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
     <?php
     printf(
         /* translators: 1: declaration id, 2: order number */
-        esc_html__('Niestety nie możemy zaakceptować Twojego oświadczenia o odstąpieniu (%1$s) dla zamówienia #%2$s.', 'polski'),
+        esc_html__('We cannot accept your withdrawal declaration (%1$s) for order #%2$s.', 'polski'),
         esc_html($declaration_id),
         esc_html((string) $order->get_order_number()),
     );
@@ -48,7 +48,7 @@ do_action('woocommerce_email_header', $email_heading, $email);
 
 <?php if ($reason !== '') : ?>
     <p>
-        <strong><?php esc_html_e('Powód odmowy:', 'polski'); ?></strong><br>
+        <strong><?php esc_html_e('Reason for the refusal:', 'polski'); ?></strong><br>
         <?php echo esc_html($reason); ?>
     </p>
 <?php endif; ?>
@@ -56,22 +56,22 @@ do_action('woocommerce_email_header', $email_heading, $email);
 <table cellspacing="0" cellpadding="6" border="1" style="border-collapse: collapse; width: 100%; margin: 16px 0;">
     <tbody>
         <tr>
-            <th align="left" width="40%"><?php esc_html_e('Numer oświadczenia', 'polski'); ?></th>
+            <th align="left" width="40%"><?php esc_html_e('Declaration number', 'polski'); ?></th>
             <td><?php echo esc_html($declaration_id); ?></td>
         </tr>
         <tr>
-            <th align="left"><?php esc_html_e('Data decyzji', 'polski'); ?></th>
+            <th align="left"><?php esc_html_e('Decision date', 'polski'); ?></th>
             <td><?php echo esc_html($rejected_at); ?></td>
         </tr>
         <tr>
-            <th align="left"><?php esc_html_e('Zamówienie', 'polski'); ?></th>
+            <th align="left"><?php esc_html_e('Order', 'polski'); ?></th>
             <td>#<?php echo esc_html((string) $order->get_order_number()); ?></td>
         </tr>
     </tbody>
 </table>
 
 <p>
-    <?php esc_html_e('Jeśli uważasz, że ta decyzja jest błędna, odpowiedz na ten e-mail lub skontaktuj się ze sklepem. Chętnie wyjaśnimy szczegóły.', 'polski'); ?>
+    <?php esc_html_e('If you think this decision is wrong, reply to this email or contact the shop. We are happy to explain.', 'polski'); ?>
 </p>
 
 <?php if ($additional_content) : ?>

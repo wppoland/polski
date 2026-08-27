@@ -30,7 +30,7 @@ defined('ABSPATH') || exit;
                 href="<?php echo esc_url($polski_cta_url); ?>"
                 <?php echo $polski_cta_target === 'new_tab' ? 'target="_blank" rel="noopener noreferrer"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             >
-                <?php echo esc_html((string) ($polski_settings['cta_text'] ?? __('Przejdź dalej', 'polski'))); ?>
+                <?php echo esc_html((string) ($polski_settings['cta_text'] ?? __('Continue', 'polski'))); ?>
             </a>
         <?php endif; ?>
     </div>

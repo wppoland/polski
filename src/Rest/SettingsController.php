@@ -228,7 +228,7 @@ final class SettingsController extends RestController implements HasHooks
         // already configured to point somewhere else).
         if (! empty($params['withdrawal_create_lookup_page']) && empty($withdrawal['lookup_page_id'])) {
             $lookupPageId = wp_insert_post([
-                'post_title' => __('Odstąpienie od umowy', 'polski'),
+                'post_title' => __('Withdrawal from the contract', 'polski'),
                 'post_content' => '[polski_withdrawal_lookup]',
                 'post_status' => 'publish',
                 'post_type' => 'page',
