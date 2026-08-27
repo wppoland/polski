@@ -7,7 +7,7 @@ Complete release history for Polski for WooCommerce. The plugin page on WordPres
 * Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.
 
 = 1.29.8 =
-* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish had no language pack and no translation on translate.wordpress.org, so Spanish now falls back to English until that translation is imported there.
+* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish is the exception: there is no Spanish translation on translate.wordpress.org and therefore no Spanish language pack, so the Spanish interface falls back to English.
 * Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
 
 = 1.29.7 =
