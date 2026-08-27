@@ -43,27 +43,33 @@ CONTRIBUTING.md
 CODE_OF_CONDUCT.md
 build/.vite
 .claude
-messages.mo
-languages/*.po
-languages/translate_po.py
-languages/*.po~
-languages/polski-pro.pot
-languages/polski-pro-*
 index.html
 TODO.md
 *.map
 wp-cli.phar
 .npmrc
 .wordpress-org
+
+# Translations: ship the .pot and NOTHING else.
+#
+# Every locale comes from the wordpress.org language packs built off
+# translate.wordpress.org, so a bundled catalogue is at best a duplicate and at
+# worst an unreviewed translation in a package the polyglots team never saw.
+# These rules are deliberately by FILE TYPE, not by locale. The previous list
+# named locales one by one and `polski-bel.mo` walked straight through it,
+# because the rule said `polski-be_BY.*`. A per-locale list rots every time a
+# new catalogue appears; a per-extension list cannot.
+#
+# scripts/assert-package-clean.sh fails the build if anything but a .pot ends
+# up in languages/, so this cannot silently regress again.
+messages.mo
+languages/*.po
+languages/*.mo
 languages/*.json
 languages/*.l10n.php
-languages/polski-be_BY.*
-languages/polski-cs_CZ.*
-languages/polski-de_DE.*
-languages/polski-lt_LT.*
-languages/polski-sk_SK.*
-languages/polski-uk*
-languages/polski-zh_CN.*
+languages/*.po~
+languages/translate_po.py
+languages/polski-pro.pot
 
 # editor backups (never ship / never a badly_named_files reject)
 *~

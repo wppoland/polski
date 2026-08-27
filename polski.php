@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Polski for WooCommerce
  * Plugin URI:        https://plogins.com/polski/
  * Description:       Dodaje GPSR, Omnibus, RODO, zwroty, NIP, hooki KSeF, dane produktowe i moduły sklepu dla polskich sklepów WooCommerce.
- * Version:           1.29.7
+ * Version:           1.29.8
  * Requires at least: 6.9
  * Requires PHP:      8.1
  * Tested up to:      7.1

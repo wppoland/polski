@@ -46,3 +46,7 @@ done < "${ROOT_DIR}/.distignore"
 find "${DIST_DIR}" -type d -empty -delete
 
 echo "Prepared WordPress.org release package in: ${DIST_DIR}"
+
+# Gate the build here rather than at the upload. A package that fails this
+# has no legitimate use, so refuse to hand one back.
+bash "${ROOT_DIR}/scripts/assert-package-clean.sh" "${DIST_DIR}"
