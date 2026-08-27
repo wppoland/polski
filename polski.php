@@ -9,7 +9,7 @@ declare(strict_types=1);
  * Version:           1.29.7
  * Requires at least: 6.9
  * Requires PHP:      8.1
- * Tested up to:      7.0
+ * Tested up to:      7.1
  * Author:            WPPoland.com
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
