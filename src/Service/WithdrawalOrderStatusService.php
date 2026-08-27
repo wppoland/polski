@@ -48,11 +48,15 @@ final class WithdrawalOrderStatusService implements HasHooks
     }
 
     /**
-     * @param array<string, string> $statuses
-     * @return array<string, string>
+     * @param array<string, string>|mixed $statuses
+     * @return array<string, string>|mixed
      */
-    public function addToStatusList(array $statuses): array
+    public function addToStatusList(mixed $statuses): mixed
     {
+        if (! is_array($statuses)) {
+            return $statuses;
+        }
+
         $injected = [];
 
         foreach ($statuses as $key => $value) {
@@ -80,11 +84,15 @@ final class WithdrawalOrderStatusService implements HasHooks
      * Treat partial/completed withdrawals as "paid" for reporting and refund permissions -
      * the original payment was successful; refund accounting is separate.
      *
-     * @param list<string> $statuses
-     * @return list<string>
+     * @param list<string>|mixed $statuses
+     * @return list<string>|mixed
      */
-    public function treatAsPaid(array $statuses): array
+    public function treatAsPaid(mixed $statuses): mixed
     {
+        if (! is_array($statuses)) {
+            return $statuses;
+        }
+
         if (! in_array(self::statusKey(self::STATUS_PARTIAL), $statuses, true)) {
             $statuses[] = self::statusKey(self::STATUS_PARTIAL);
         }
@@ -93,11 +101,15 @@ final class WithdrawalOrderStatusService implements HasHooks
     }
 
     /**
-     * @param list<string> $statuses
-     * @return list<string>
+     * @param list<string>|mixed $statuses
+     * @return list<string>|mixed
      */
-    public function includeInReports(array $statuses): array
+    public function includeInReports(mixed $statuses): mixed
     {
+        if (! is_array($statuses)) {
+            return $statuses;
+        }
+
         foreach ($this->definitions() as $slug => $_config) {
             $key = self::statusKey($slug);
             if (! in_array($key, $statuses, true)) {
