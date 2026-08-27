@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.29.8 =
+* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish had no language pack and no translation on translate.wordpress.org, so Spanish now falls back to English until that translation is imported there.
+* Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
+
 = 1.29.7 =
 * Declared compatibility with WordPress 7.1.
 * Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
