@@ -8,7 +8,7 @@ defined('ABSPATH') || exit;
  * @var string                                      $polski_next_page_url
  * @var array<string, mixed>                        $polski_settings
  */
-$polski_buttonText = (string) ($polski_settings['button_text'] ?? __('Załaduj więcej produktów', 'polski'));
+$polski_buttonText = (string) ($polski_settings['button_text'] ?? __('Load more products', 'polski'));
 $polski_showStatus = (bool) ($polski_settings['show_status'] ?? true);
 $polski_showButtonInAutoMode = (bool) ($polski_settings['show_button_in_auto_mode'] ?? false);
 $polski_mode = (string) ($polski_settings['mode'] ?? 'button');

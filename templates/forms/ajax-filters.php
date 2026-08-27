@@ -96,7 +96,7 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
                 data-polski-ajax-filters-open
                 aria-expanded="false"
             >
-                <span><?php echo esc_html((string) ($polski_settings['mobile_toggle_text'] ?? __('Pokaż filtry', 'polski'))); ?></span>
+                <span><?php echo esc_html((string) ($polski_settings['mobile_toggle_text'] ?? __('Show filters', 'polski'))); ?></span>
                 <?php if ($polski_active_filters_count > 0) : ?>
                     <span class="polski-ajax-filters__mobile-count"><?php echo esc_html((string) $polski_active_filters_count); ?></span>
                 <?php endif; ?>
@@ -107,7 +107,7 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
     <?php if ((bool) ($polski_settings['show_active_filters'] ?? true) && $polski_active_filters !== []) : ?>
         <div class="polski-ajax-filters__active">
             <span class="polski-ajax-filters__active-label">
-                <?php echo esc_html((string) ($polski_settings['active_filters_label'] ?? __('Aktywne filtry', 'polski'))); ?>
+                <?php echo esc_html((string) ($polski_settings['active_filters_label'] ?? __('Active filters', 'polski'))); ?>
             </span>
             <div class="polski-ajax-filters__chips">
                 <?php foreach ($polski_active_filters as $polski_filter_item) : ?>
@@ -130,13 +130,13 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
     <div class="polski-ajax-filters__panel" data-polski-ajax-filters-panel>
         <?php if ($polski_mobile_panel_enabled) : ?>
             <div class="polski-ajax-filters__panel-header">
-                <strong><?php echo esc_html((string) ($polski_settings['mobile_panel_title'] ?? ($polski_settings['title'] ?? __('Filtry produktów', 'polski')))); ?></strong>
+                <strong><?php echo esc_html((string) ($polski_settings['mobile_panel_title'] ?? ($polski_settings['title'] ?? __('Product filters', 'polski')))); ?></strong>
                 <button
                     type="button"
                     class="button button-link"
                     data-polski-ajax-filters-close
                 >
-                    <?php echo esc_html((string) ($polski_settings['mobile_close_text'] ?? __('Zamknij', 'polski'))); ?>
+                    <?php echo esc_html((string) ($polski_settings['mobile_close_text'] ?? __('Close', 'polski'))); ?>
                 </button>
             </div>
         <?php endif; ?>
@@ -144,13 +144,13 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
         <div class="polski-ajax-filters__grid">
             <?php if (! empty($polski_settings['show_categories']) && $polski_categories !== []) : ?>
                 <label class="polski-ajax-filters__field">
-                    <span><?php echo esc_html((string) ($polski_settings['category_label'] ?? __('Kategoria', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['category_label'] ?? __('Category', 'polski'))); ?></span>
                     <select
                         name="<?php echo esc_attr($polski_taxonomy_multiselect ? 'polski_filter_category[]' : 'polski_filter_category'); ?>"
                         <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
                     >
                         <?php if (! $polski_taxonomy_multiselect) : ?>
-                            <option value=""><?php echo esc_html((string) ($polski_settings['category_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
+                            <option value=""><?php echo esc_html((string) ($polski_settings['category_all_text'] ?? __('All', 'polski'))); ?></option>
                         <?php endif; ?>
                         <?php foreach ($polski_categories as $polski_option) : ?>
                             <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_category, true)); ?>>
@@ -168,13 +168,13 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
 
             <?php if (! empty($polski_settings['show_brands']) && $polski_brands !== []) : ?>
                 <label class="polski-ajax-filters__field">
-                    <span><?php echo esc_html((string) ($polski_settings['brand_label'] ?? __('Marka', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['brand_label'] ?? __('Brand', 'polski'))); ?></span>
                     <select
                         name="<?php echo esc_attr($polski_taxonomy_multiselect ? 'polski_filter_brand[]' : 'polski_filter_brand'); ?>"
                         <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
                     >
                         <?php if (! $polski_taxonomy_multiselect) : ?>
-                            <option value=""><?php echo esc_html((string) ($polski_settings['brand_all_text'] ?? __('Wszystkie', 'polski'))); ?></option>
+                            <option value=""><?php echo esc_html((string) ($polski_settings['brand_all_text'] ?? __('All', 'polski'))); ?></option>
                         <?php endif; ?>
                         <?php foreach ($polski_brands as $polski_option) : ?>
                             <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_brand, true)); ?>>
@@ -192,22 +192,22 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
 
             <?php if (! empty($polski_settings['show_price'])) : ?>
                 <label class="polski-ajax-filters__field">
-                    <span><?php echo esc_html((string) ($polski_settings['min_price_label'] ?? __('Cena od', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['min_price_label'] ?? __('Price from', 'polski'))); ?></span>
                     <input type="number" step="0.01" min="0" name="polski_filter_min_price" value="<?php echo esc_attr($polski_filter_min_price); ?>">
                 </label>
                 <label class="polski-ajax-filters__field">
-                    <span><?php echo esc_html((string) ($polski_settings['max_price_label'] ?? __('Cena do', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['max_price_label'] ?? __('Price to', 'polski'))); ?></span>
                     <input type="number" step="0.01" min="0" name="polski_filter_max_price" value="<?php echo esc_attr($polski_filter_max_price); ?>">
                 </label>
             <?php endif; ?>
 
             <?php if (! empty($polski_settings['show_stock'])) : ?>
                 <label class="polski-ajax-filters__field">
-                    <span><?php echo esc_html((string) ($polski_settings['stock_label'] ?? __('Dostępność', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['stock_label'] ?? __('Availability', 'polski'))); ?></span>
                     <select name="polski_filter_stock">
-                        <option value=""><?php echo esc_html((string) ($polski_settings['stock_any_text'] ?? __('Dowolna', 'polski'))); ?></option>
+                        <option value=""><?php echo esc_html((string) ($polski_settings['stock_any_text'] ?? __('Any', 'polski'))); ?></option>
                         <option value="instock" <?php selected($polski_filter_stock, 'instock'); ?>>
-                            <?php echo esc_html((string) ($polski_settings['stock_instock_text'] ?? __('Dostępne od ręki', 'polski'))); ?>
+                            <?php echo esc_html((string) ($polski_settings['stock_instock_text'] ?? __('In stock', 'polski'))); ?>
                         </option>
                     </select>
                 </label>
@@ -215,7 +215,7 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
 
             <?php if (! empty($polski_settings['show_sale'])) : ?>
                 <label class="polski-ajax-filters__field polski-ajax-filters__field--checkbox">
-                    <span><?php echo esc_html((string) ($polski_settings['sale_label'] ?? __('Promocje', 'polski'))); ?></span>
+                    <span><?php echo esc_html((string) ($polski_settings['sale_label'] ?? __('Promotions', 'polski'))); ?></span>
                     <input type="checkbox" name="polski_filter_sale" value="1" <?php checked($polski_filter_sale, '1'); ?>>
                 </label>
             <?php endif; ?>
@@ -234,7 +234,7 @@ if ($polski_filter_max_price !== '' && is_numeric($polski_filter_max_price)) {
                         <?php echo $polski_taxonomy_multiselect ? 'multiple size="6"' : ''; ?>
                     >
                         <?php if (! $polski_taxonomy_multiselect) : ?>
-                            <option value=""><?php echo esc_html((string) ($polski_settings['attribute_any_text'] ?? __('Dowolny', 'polski'))); ?></option>
+                            <option value=""><?php echo esc_html((string) ($polski_settings['attribute_any_text'] ?? __('Any option', 'polski'))); ?></option>
                         <?php endif; ?>
                         <?php foreach ($polski_terms as $polski_option) : ?>
                             <option value="<?php echo esc_attr($polski_option['term']->slug); ?>" <?php selected(in_array($polski_option['term']->slug, $polski_filter_attr_values, true)); ?>>

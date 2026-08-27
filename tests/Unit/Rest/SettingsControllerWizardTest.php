@@ -41,7 +41,7 @@ final class SettingsControllerWizardTest extends TestCase
             'generate_legal_pages' => false,
             'omnibus_enabled' => false,
             'oss_observer_enabled' => false,
-            'order_button_text' => 'Zamawiam z obowiązkiem zapłaty',
+            'order_button_text' => 'Order with an obligation to pay',
             'withdrawal_create_lookup_page' => false,
         ]);
 

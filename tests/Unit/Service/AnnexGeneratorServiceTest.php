@@ -50,8 +50,8 @@ final class AnnexGeneratorServiceTest extends TestCase
 
         // The custom period appears in the declaration window text. The 14-day
         // return-shipping window (Art. 14 sec. 1) stays hard-coded per directive.
-        self::assertStringContainsString('30 dni', $html);
-        self::assertStringContainsString('odstąpić od niniejszej umowy w terminie 30 dni', $html);
+        self::assertStringContainsString('30 days', $html);
+        self::assertStringContainsString('withdraw from this contract within 30 days', $html);
     }
 
     public function testInfoFallsBackToFourteenDaysWhenPeriodIsZeroOrMissing(): void
@@ -60,7 +60,7 @@ final class AnnexGeneratorServiceTest extends TestCase
         $svc = new AnnexGeneratorService();
         $html = $svc->getInfoHtml();
 
-        self::assertStringContainsString('14 dni', $html);
+        self::assertStringContainsString('14 days', $html);
     }
 
     public function testFormContainsAnnexIBSectionHeading(): void
@@ -68,9 +68,9 @@ final class AnnexGeneratorServiceTest extends TestCase
         $svc = new AnnexGeneratorService();
         $html = $svc->getFormHtml();
 
-        self::assertStringContainsString('Wzór formularza odstąpienia od umowy', $html);
-        self::assertStringContainsString('Adresat:', $html);
-        self::assertStringContainsString('Imię i nazwisko konsumenta', $html);
+        self::assertStringContainsString('Model withdrawal form', $html);
+        self::assertStringContainsString('Addressee:', $html);
+        self::assertStringContainsString('Name of consumer(s)', $html);
     }
 
     public function testGeneratedHtmlIsEscapedForUserData(): void

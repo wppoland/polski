@@ -236,7 +236,7 @@ update_option('polski_brand', array_merge(
     [
         'show_on_single' => true,
         'show_on_loop' => true,
-        'label' => 'Marka',
+        'label' => 'Brand',
         'show_label' => true,
         'separator' => ', ',
         'link_terms' => true,

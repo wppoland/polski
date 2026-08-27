@@ -97,7 +97,7 @@ final class DSAProductReportService
         echo '<div class="polski-dsa-product-report">';
         echo '<details class="polski-dsa-product-report__details">';
         echo '<summary class="polski-dsa-product-report__trigger">';
-        echo esc_html__('Zgłoś nielegalne treści (DSA)', 'polski');
+        echo esc_html__('Report illegal content (DSA)', 'polski');
         echo '</summary>';
         echo '<div class="polski-dsa-product-report__form">';
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Rendered template, escaping internal.

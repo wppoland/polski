@@ -140,7 +140,7 @@ final class ShortcodeManager implements HasHooks
 
         return sprintf(
             '<div class="polski-safety-instructions"><span class="polski-safety-instructions__label">%s:</span> %s</div>',
-            esc_html__('Instrukcje bezpieczeństwa', 'polski'),
+            esc_html__('Safety instructions', 'polski'),
             esc_html($instructions),
         );
     }
@@ -240,18 +240,18 @@ final class ShortcodeManager implements HasHooks
         $orderId = (int) $atts['order_id'];
 
         if ($orderId <= 0) {
-            return '<p>' . esc_html__('Proszę podać numer zamówienia.', 'polski') . '</p>';
+            return '<p>' . esc_html__('Please enter the order number.', 'polski') . '</p>';
         }
 
         $order = wc_get_order($orderId);
         if (! $order instanceof \WC_Order) {
-            return '<p>' . esc_html__('Niestety, nie udało nam się znaleźć takiego zamówienia.', 'polski') . '</p>';
+            return '<p>' . esc_html__('We could not find that order.', 'polski') . '</p>';
         }
 
         $service = $this->container()->get(WithdrawalService::class);
 
         if (! $service->isEligible($order)) {
-            return '<p>' . esc_html__('To zamówienie nie kwalifikuje się do odstąpienia.', 'polski') . '</p>';
+            return '<p>' . esc_html__('This order does not qualify for withdrawal.', 'polski') . '</p>';
         }
 
         $templateLoader = $this->container()->get(TemplateLoader::class);
@@ -303,7 +303,7 @@ final class ShortcodeManager implements HasHooks
         $defaults = [
             'class' => 'polski-compare-count',
             /* translators: %d: number of products in the compare list */
-            'template' => __('Porównaj (%d)', 'polski'),
+            'template' => __('Compare (%d)', 'polski'),
             'hide_when_empty' => 'no',
         ];
         $atts = array_merge($defaults, $atts);
@@ -343,7 +343,7 @@ final class ShortcodeManager implements HasHooks
 
         return sprintf(
             '<div class="polski-payment-methods"><h4>%s</h4><ul>%s</ul></div>',
-            esc_html__('Dostępne metody płatności', 'polski'),
+            esc_html__('Available payment methods', 'polski'),
             $items,
         );
     }

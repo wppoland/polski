@@ -18,10 +18,10 @@ defined('ABSPATH') || exit;
     role="dialog"
     aria-modal="true"
     tabindex="-1"
-    aria-label="<?php echo esc_attr((string) ($polski_settings['dialog_label'] ?? __('Podgląd galerii produktu', 'polski'))); ?>"
+    aria-label="<?php echo esc_attr((string) ($polski_settings['dialog_label'] ?? __('Product gallery preview', 'polski'))); ?>"
     hidden
 >
-    <button type="button" class="polski-gallery-lightbox__close" data-polski-gallery-lightbox-close aria-label="<?php echo esc_attr((string) ($polski_settings['close_label'] ?? __('Zamknij podgląd galerii', 'polski'))); ?>">
+    <button type="button" class="polski-gallery-lightbox__close" data-polski-gallery-lightbox-close aria-label="<?php echo esc_attr((string) ($polski_settings['close_label'] ?? __('Close the gallery preview', 'polski'))); ?>">
         ×
     </button>
     <img src="" alt="" data-polski-gallery-lightbox-image />

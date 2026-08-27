@@ -293,12 +293,12 @@ final class CompareService implements Bootable, HasHooks
         echo '<a class="polski-compare-sticky__cta button" href="' . esc_url($compareUrl) . '">';
         echo esc_html(sprintf(
             /* translators: %d: number of products in the compare list */
-            _n('Porównaj (%d)', 'Porównaj (%d)', count($products), 'polski'),
+            _n('Compare (%d)', 'Compare (%d)', count($products), 'polski'),
             count($products),
         ));
         echo '</a>';
 
-        echo '<button type="button" class="polski-compare-sticky__clear" data-polski-compare-clear-all aria-label="' . esc_attr__('Wyczyść porównanie', 'polski') . '">×</button>';
+        echo '<button type="button" class="polski-compare-sticky__clear" data-polski-compare-clear-all aria-label="' . esc_attr__('Clear the comparison', 'polski') . '">×</button>';
 
         echo '</div>';
     }

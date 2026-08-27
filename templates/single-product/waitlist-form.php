@@ -24,8 +24,8 @@ defined('ABSPATH') || exit;
     <form class="polski-waitlist-form">
         <input type="hidden" name="product_id" value="<?php echo esc_attr((string) $polski_product->get_id()); ?>" />
         <label>
-            <span class="screen-reader-text"><?php echo esc_html((string) ($polski_settings['email_label'] ?? __('Adres email', 'polski'))); ?></span>
-            <input type="email" name="email" value="<?php echo esc_attr($polski_email); ?>" placeholder="<?php echo esc_attr((string) ($polski_settings['email_placeholder'] ?? __('Twój adres email', 'polski'))); ?>" required />
+            <span class="screen-reader-text"><?php echo esc_html((string) ($polski_settings['email_label'] ?? __('Email address', 'polski'))); ?></span>
+            <input type="email" name="email" value="<?php echo esc_attr($polski_email); ?>" placeholder="<?php echo esc_attr((string) ($polski_settings['email_placeholder'] ?? __('Your email address', 'polski'))); ?>" required />
         </label>
         <label class="polski-waitlist__privacy">
             <input type="checkbox" name="privacy" value="1" required />

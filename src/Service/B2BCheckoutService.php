@@ -104,7 +104,7 @@ final class B2BCheckoutService
 
         if ($settings['show_needs_invoice_toggle']) {
             $fields['polski_needs_invoice'] = [
-                'label' => __('Potrzebuję faktury VAT', 'polski'),
+                'label' => __('I need a VAT invoice', 'polski'),
                 'required' => false,
                 'class' => ['form-row-wide'],
                 'priority' => 26,
@@ -294,7 +294,7 @@ final class B2BCheckoutService
         if ($settings['show_needs_invoice_toggle']) {
             woocommerce_register_additional_checkout_field([
                 'id' => 'polski/needs_invoice',
-                'label' => __('Potrzebuję faktury VAT', 'polski'),
+                'label' => __('I need a VAT invoice', 'polski'),
                 'location' => 'order',
                 'type' => 'checkbox',
                 'required' => false,

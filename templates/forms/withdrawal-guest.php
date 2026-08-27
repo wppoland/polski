@@ -31,7 +31,7 @@ $polski_order_date = $polski_order->get_date_created();
         <?php
         printf(
             /* translators: %s = order number */
-            esc_html__('Odstąpienie od umowy - zamówienie #%s', 'polski'),
+            esc_html__('Withdrawal from the contract, order #%s', 'polski'),
             esc_html($polski_order->get_order_number()),
         );
         ?>
@@ -41,26 +41,26 @@ $polski_order_date = $polski_order->get_date_created();
         <?php
         printf(
             /* translators: %s = email address */
-            esc_html__('Składasz oświadczenie na rzecz adresu: %s', 'polski'),
+            esc_html__('You are filing this declaration for the address: %s', 'polski'),
             '<strong>' . esc_html($polski_email) . '</strong>',
         );
         ?>
     </p>
 
-    <h3><?php esc_html_e('Pozycje objęte odstąpieniem', 'polski'); ?></h3>
+    <h3><?php esc_html_e('Items covered by the withdrawal', 'polski'); ?></h3>
     <p style="color:#475569;">
-        <?php esc_html_e('Złożenie tego oświadczenia obejmuje całe poniższe zamówienie. Jeżeli chcesz odstąpić tylko od części pozycji, skontaktuj się ze sklepem lub złóż osobne oświadczenie po zalogowaniu się na konto.', 'polski'); ?>
+        <?php esc_html_e('Filing this declaration covers the whole order below. If you want to withdraw from only some of the items, contact the shop or log in to your account and file a separate declaration.', 'polski'); ?>
     </p>
 
     <table class="shop_table" style="width: 100%;">
         <caption class="screen-reader-text" style="position:absolute;left:-9999px;">
-            <?php esc_html_e('Pozycje zamówienia objęte oświadczeniem.', 'polski'); ?>
+            <?php esc_html_e('Order items covered by the declaration.', 'polski'); ?>
         </caption>
         <thead>
             <tr>
-                <th scope="col"><?php esc_html_e('Produkt', 'polski'); ?></th>
-                <th scope="col"><?php esc_html_e('Ilość', 'polski'); ?></th>
-                <th scope="col"><?php esc_html_e('Wartość', 'polski'); ?></th>
+                <th scope="col"><?php esc_html_e('Product', 'polski'); ?></th>
+                <th scope="col"><?php esc_html_e('Quantity', 'polski'); ?></th>
+                <th scope="col"><?php esc_html_e('Value', 'polski'); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -75,16 +75,16 @@ $polski_order_date = $polski_order->get_date_created();
                 }
                 ?>
                 <tr>
-                    <td data-label="<?php esc_attr_e('Produkt', 'polski'); ?>">
+                    <td data-label="<?php esc_attr_e('Product', 'polski'); ?>">
                         <?php echo esc_html((string) $polski_item->get_name()); ?>
                         <?php if ($polski_attrs !== '') : ?>
                             <br><span style="color:#475569;"><?php echo esc_html($polski_attrs); ?></span>
                         <?php endif; ?>
                     </td>
-                    <td data-label="<?php esc_attr_e('Ilość', 'polski'); ?>">
+                    <td data-label="<?php esc_attr_e('Quantity', 'polski'); ?>">
                         <?php echo esc_html((string) $polski_item->get_quantity()); ?>
                     </td>
-                    <td data-label="<?php esc_attr_e('Wartość', 'polski'); ?>">
+                    <td data-label="<?php esc_attr_e('Value', 'polski'); ?>">
                         <?php echo wp_kses_post(wc_price((float) $polski_item->get_total(), ['currency' => $polski_currency])); ?>
                     </td>
                 </tr>
@@ -93,7 +93,7 @@ $polski_order_date = $polski_order->get_date_created();
         <tfoot>
             <tr>
                 <th colspan="2" scope="row" style="text-align: right;">
-                    <?php esc_html_e('Wartość zamówienia:', 'polski'); ?>
+                    <?php esc_html_e('Order value:', 'polski'); ?>
                 </th>
                 <td>
                     <strong><?php echo wp_kses_post(wc_price((float) $polski_order->get_total(), ['currency' => $polski_currency])); ?></strong>
@@ -102,7 +102,7 @@ $polski_order_date = $polski_order->get_date_created();
             <?php if ($polski_order_date !== null) : ?>
                 <tr>
                     <th colspan="2" scope="row" style="text-align: right;">
-                        <?php esc_html_e('Data zamówienia:', 'polski'); ?>
+                        <?php esc_html_e('Order date:', 'polski'); ?>
                     </th>
                     <td><?php echo esc_html(wp_date((string) get_option('date_format'), $polski_order_date->getTimestamp())); ?></td>
                 </tr>
@@ -111,13 +111,13 @@ $polski_order_date = $polski_order->get_date_created();
     </table>
 
     <p style="color:#475569;">
-        <?php esc_html_e('Po wysłaniu formularza otrzymasz e-mail potwierdzający z numerem deklaracji oraz podsumowaniem zamówienia.', 'polski'); ?>
+        <?php esc_html_e('Once you send the form you will get a confirmation email with the declaration number and a summary of the order.', 'polski'); ?>
     </p>
 
     <form method="post" action="" novalidate>
         <p>
             <label for="polski_withdrawal_reason">
-                <?php esc_html_e('Powód odstąpienia (opcjonalnie)', 'polski'); ?>
+                <?php esc_html_e('Reason for withdrawal (optional)', 'polski'); ?>
             </label>
             <textarea
                 id="polski_withdrawal_reason"
@@ -127,7 +127,7 @@ $polski_order_date = $polski_order->get_date_created();
                 aria-describedby="polski_withdrawal_reason_help"
             ></textarea>
             <small id="polski_withdrawal_reason_help" style="display:block; color:#475569;">
-                <?php esc_html_e('Powód nie jest wymagany - odstąpienie nie wymaga uzasadnienia.', 'polski'); ?>
+                <?php esc_html_e('A reason is not required; withdrawal needs no justification.', 'polski'); ?>
             </small>
         </p>
 
@@ -139,7 +139,7 @@ $polski_order_date = $polski_order->get_date_created();
                 value="1"
                 class="button button-primary"
             >
-                <?php esc_html_e('Złóż oświadczenie i wyślij potwierdzenie na e-mail', 'polski'); ?>
+                <?php esc_html_e('File the declaration and email me the confirmation', 'polski'); ?>
             </button>
         </p>
     </form>

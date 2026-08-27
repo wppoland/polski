@@ -182,21 +182,21 @@ final class WithdrawalExemptionService implements HasHooks
         <div class="form-field">
             <label for="polski_withdrawal_exempt">
                 <input type="checkbox" id="polski_withdrawal_exempt" name="polski_withdrawal_exempt" value="yes">
-                <?php esc_html_e('Wyklucz produkty z tej kategorii z prawa odstąpienia', 'polski'); ?>
+                <?php esc_html_e('Exclude products in this category from the right of withdrawal', 'polski'); ?>
             </label>
-            <p class="description"><?php esc_html_e('Zastosuj, gdy wszystkie produkty w kategorii spełniają wyjątek z Art. 38 Ustawy o prawach konsumenta.', 'polski'); ?></p>
+            <p class="description"><?php esc_html_e('Use this when every product in the category meets an exception under Article 38 of the Consumer Rights Act.', 'polski'); ?></p>
         </div>
         <div class="form-field">
-            <label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Podstawa wyłączenia', 'polski'); ?></label>
+            <label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Grounds for the exclusion', 'polski'); ?></label>
             <select id="polski_withdrawal_exempt_reason" name="polski_withdrawal_exempt_reason">
-                <option value=""><?php esc_html_e('- wybierz -', 'polski'); ?></option>
+                <option value=""><?php esc_html_e('- choose -', 'polski'); ?></option>
                 <?php foreach (WithdrawalExemptionReason::choices() as $choice) : ?>
                     <option value="<?php echo esc_attr($choice['value']); ?>"><?php echo esc_html($choice['label']); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         <div class="form-field">
-            <label for="polski_withdrawal_exempt_reason_custom"><?php esc_html_e('Własne uzasadnienie (jeśli wybrano „Inne")', 'polski'); ?></label>
+            <label for="polski_withdrawal_exempt_reason_custom"><?php esc_html_e('Custom reason (if "Other" is selected)', 'polski'); ?></label>
             <input type="text" id="polski_withdrawal_exempt_reason_custom" name="polski_withdrawal_exempt_reason_custom" value="">
         </div>
         <?php
@@ -212,20 +212,20 @@ final class WithdrawalExemptionService implements HasHooks
         $custom = (string) get_term_meta($term->term_id, self::TERM_REASON_CUSTOM_META, true);
         ?>
         <tr class="form-field">
-            <th scope="row"><label for="polski_withdrawal_exempt"><?php esc_html_e('Prawo odstąpienia', 'polski'); ?></label></th>
+            <th scope="row"><label for="polski_withdrawal_exempt"><?php esc_html_e('Right of withdrawal', 'polski'); ?></label></th>
             <td>
                 <label>
                     <input type="checkbox" id="polski_withdrawal_exempt" name="polski_withdrawal_exempt" value="yes" <?php checked($exempt); ?>>
-                    <?php esc_html_e('Wyklucz produkty z tej kategorii z prawa odstąpienia', 'polski'); ?>
+                    <?php esc_html_e('Exclude products in this category from the right of withdrawal', 'polski'); ?>
                 </label>
-                <p class="description"><?php esc_html_e('Zastosuj, gdy wszystkie produkty w kategorii spełniają wyjątek z Art. 38 Ustawy o prawach konsumenta.', 'polski'); ?></p>
+                <p class="description"><?php esc_html_e('Use this when every product in the category meets an exception under Article 38 of the Consumer Rights Act.', 'polski'); ?></p>
             </td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Podstawa wyłączenia', 'polski'); ?></label></th>
+            <th scope="row"><label for="polski_withdrawal_exempt_reason"><?php esc_html_e('Grounds for the exclusion', 'polski'); ?></label></th>
             <td>
                 <select id="polski_withdrawal_exempt_reason" name="polski_withdrawal_exempt_reason">
-                    <option value=""><?php esc_html_e('- wybierz -', 'polski'); ?></option>
+                    <option value=""><?php esc_html_e('- choose -', 'polski'); ?></option>
                     <?php foreach (WithdrawalExemptionReason::choices() as $choice) : ?>
                         <option value="<?php echo esc_attr($choice['value']); ?>" <?php selected($reason, $choice['value']); ?>>
                             <?php echo esc_html($choice['label']); ?>
@@ -235,10 +235,10 @@ final class WithdrawalExemptionService implements HasHooks
             </td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="polski_withdrawal_exempt_reason_custom"><?php esc_html_e('Własne uzasadnienie', 'polski'); ?></label></th>
+            <th scope="row"><label for="polski_withdrawal_exempt_reason_custom"><?php esc_html_e('Custom reason', 'polski'); ?></label></th>
             <td>
                 <input type="text" id="polski_withdrawal_exempt_reason_custom" name="polski_withdrawal_exempt_reason_custom" value="<?php echo esc_attr($custom); ?>" class="regular-text">
-                <p class="description"><?php esc_html_e('Używane tylko, jeśli wybrano „Inne".', 'polski'); ?></p>
+                <p class="description"><?php esc_html_e('Used only if "Other" is selected.', 'polski'); ?></p>
             </td>
         </tr>
         <?php
