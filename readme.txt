@@ -325,7 +325,7 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 * Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.
 
 = 1.29.8 =
-* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish had no language pack and no translation on translate.wordpress.org, so Spanish now falls back to English until that translation is imported there.
+* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish is the exception: there is no Spanish translation on translate.wordpress.org and therefore no Spanish language pack, so the Spanish interface falls back to English.
 * Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
 
 = 1.29.7 =
@@ -481,7 +481,7 @@ Older versions are available in [changelog.txt](https://plugins.svn.wordpress.or
 Nothing changes on a Polish shop. The plugin's source strings moved from Polish to English so that translations on translate.wordpress.org are made from the original rather than from Polish; the Polish wording is unchanged and now ships as the Polish translation.
 
 = 1.29.8 =
-Smaller download and no functional change for Polish. The plugin no longer bundles translation files that WordPress.org already ships as language packs. Spanish falls back to English until the Spanish translation is imported on translate.wordpress.org.
+Smaller download and no functional change for Polish. The plugin no longer bundles translation files that WordPress.org already ships as language packs. Spanish falls back to English, because there is no Spanish translation on translate.wordpress.org and so no Spanish language pack.
 
 = 1.29.7 =
 Recommended if you use the right of withdrawal. The confirmation email was saved but never sent; it is now delivered on the storefront form, the guest form and the REST endpoint. Also declares compatibility with WordPress 7.1.
