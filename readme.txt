@@ -320,6 +320,28 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.29.7 =
+* Declared compatibility with WordPress 7.1.
+* Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
+
+= 1.29.6 =
+* Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
+* Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
+* Fix: added WooCommerce 8.6+ Additional Checkout Fields API integration for the NIP lookup module, enabling the NIP field and validation on modern block checkout pages.
+* Fix: the checkout order button text now defaults to statutory "Zamawiam z obowiązkiem zapłaty" when the module is enabled without a custom override, and translates place order button text across both classic and block checkout.
+
+= 1.29.5 =
+* Fix: resolved a TypeError fatal error occurring when filing a withdrawal declaration on the storefront due to hook argument type mismatch in the AI withdrawal reason classifier; confirmation email is now delivered reliably.
+
+= 1.29.4 =
+* Fix: changed allergen seeding names in gettext calls to standard English source strings with bundled Polish translations, ensuring GlotPress translation catalogs on translate.wordpress.org remain 100% complete and valid across all locales.
+
+= 1.29.3 =
+* Fix: resolved a fatal error occurring when filing a withdrawal declaration or viewing the withdrawals list in WP Admin due to mismatched template variables and date formatting on DateTimeImmutable instances; email confirmation is now delivered reliably.
+
+= 1.29.2 =
+* Fix: restored automatic NIP verification and company auto-fill from GUS REGON on checkout; fixed script initialization for custom themes (e.g. Divi) and replaced PHP SoapClient with robust SOAP 1.2 HTTP transport to resolve GUS XOP/MTOM multipart parsing.
+
 = 1.29.1 =
 * Corrected the PRO pricing note. It said the amount is shown in PLN at checkout, which is not true: Polski PRO is priced and charged in EUR. The note now says so, in English, Polish, German and Spanish.
 
@@ -387,27 +409,6 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
 
-= 1.29.7 =
-* Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
-
-= 1.29.6 =
-* Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
-* Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
-* Fix: added WooCommerce 8.6+ Additional Checkout Fields API integration for the NIP lookup module, enabling the NIP field and validation on modern block checkout pages.
-* Fix: the checkout order button text now defaults to statutory "Zamawiam z obowiązkiem zapłaty" when the module is enabled without a custom override, and translates place order button text across both classic and block checkout.
-
-= 1.29.5 =
-* Fix: resolved a TypeError fatal error occurring when filing a withdrawal declaration on the storefront due to hook argument type mismatch in the AI withdrawal reason classifier; confirmation email is now delivered reliably.
-
-= 1.29.4 =
-* Fix: changed allergen seeding names in gettext calls to standard English source strings with bundled Polish translations, ensuring GlotPress translation catalogs on translate.wordpress.org remain 100% complete and valid across all locales.
-
-= 1.29.3 =
-* Fix: resolved a fatal error occurring when filing a withdrawal declaration or viewing the withdrawals list in WP Admin due to mismatched template variables and date formatting on DateTimeImmutable instances; email confirmation is now delivered reliably.
-
-= 1.29.2 =
-* Fix: restored automatic NIP verification and company auto-fill from GUS REGON on checkout; fixed script initialization for custom themes (e.g. Divi) and replaced PHP SoapClient with robust SOAP 1.2 HTTP transport to resolve GUS XOP/MTOM multipart parsing.
-
 = 1.24.6 =
 * Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).
 
@@ -467,6 +468,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.29.7 =
+Recommended if you use the right of withdrawal. The confirmation email was saved but never sent; it is now delivered on the storefront form, the guest form and the REST endpoint. Also declares compatibility with WordPress 7.1.
 
 = 1.20.1 =
 Fixes admin-screen script loading in some configurations and refreshes the bundled translations.
