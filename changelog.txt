@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.29.6 =
+* Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
+* Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
+* Fix: added WooCommerce 8.6+ Additional Checkout Fields API integration for the NIP lookup module, enabling the NIP field and validation on modern block checkout pages.
+* Fix: the checkout order button text now defaults to statutory "Zamawiam z obowiązkiem zapłaty" when the module is enabled without a custom override, and translates place order button text across both classic and block checkout.
+
 = 1.29.5 =
 * Fix: resolved a TypeError fatal error occurring when filing a withdrawal declaration on the storefront due to hook argument type mismatch in the AI withdrawal reason classifier; confirmation email is now delivered reliably.
 

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.29.5
+Stable tag: 1.29.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -386,6 +386,12 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 = 1.24.7 =
 * Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
+
+= 1.29.6 =
+* Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
+* Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
+* Fix: added WooCommerce 8.6+ Additional Checkout Fields API integration for the NIP lookup module, enabling the NIP field and validation on modern block checkout pages.
+* Fix: the checkout order button text now defaults to statutory "Zamawiam z obowiązkiem zapłaty" when the module is enabled without a custom override, and translates place order button text across both classic and block checkout.
 
 = 1.29.5 =
 * Fix: resolved a TypeError fatal error occurring when filing a withdrawal declaration on the storefront due to hook argument type mismatch in the AI withdrawal reason classifier; confirmation email is now delivered reliably.

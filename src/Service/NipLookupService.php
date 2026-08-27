@@ -25,8 +25,16 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        // Add NIP field to checkout billing form.
+        // Add NIP field to checkout billing form (classic checkout).
         add_filter('woocommerce_billing_fields', [$this, 'addNipField']);
+
+        // Modern WC 8.6+ unified additional checkout fields API (Block + classic in one go).
+        if (function_exists('woocommerce_register_additional_checkout_field')) {
+            add_action('woocommerce_init', [$this, 'registerAdditionalCheckoutFields']);
+            add_action('woocommerce_set_additional_field_value', [$this, 'mirrorAdditionalFieldToLegacyMeta'], 10, 4);
+            add_action('woocommerce_checkout_order_created', [$this, 'saveBlockNipToOrder']);
+            add_action('woocommerce_store_api_checkout_order_processed', [$this, 'saveBlockNipToOrder']);
+        }
 
         // Validate NIP on checkout.
         add_action('woocommerce_checkout_process', [$this, 'validateNipOnCheckout']);
@@ -122,6 +130,85 @@ final class NipLookupService implements HasHooks
     }
 
     /**
+     * Register NIP as an additional checkout field on WooCommerce 8.6+ (Block + classic).
+     */
+    public function registerAdditionalCheckoutFields(): void
+    {
+        if (! $this->isEnabled() || ! function_exists('woocommerce_register_additional_checkout_field')) {
+            return;
+        }
+
+        // If B2B module is active, it handles its own NIP field to avoid duplication.
+        if (ModulesPage::isModuleEnabled('b2b_checkout')) {
+            return;
+        }
+
+        $settings = $this->getSettings();
+        $required = ! empty($settings['nip_required']);
+
+        woocommerce_register_additional_checkout_field([
+            'id' => 'polski/nip',
+            'label' => __('NIP', 'polski'),
+            'location' => 'address',
+            'type' => 'text',
+            'required' => $required,
+            'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/[^0-9]/', '', sanitize_text_field($value)),
+            'validate_callback' => static function (string $value) {
+                $clean = (string) preg_replace('/[^0-9]/', '', $value);
+                if ($clean === '') {
+                    return null;
+                }
+                if (! self::isValidNip($clean)) {
+                    return new \WP_Error(
+                        'polski_invalid_nip',
+                        __('Podany numer NIP jest nieprawidłowy.', 'polski'),
+                    );
+                }
+                return null;
+            },
+        ]);
+    }
+
+    /**
+     * Mirror additional field value to standard order/customer meta on save.
+     */
+    public function mirrorAdditionalFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
+    {
+        if (! $this->isEnabled() || $group !== 'billing' || $key !== 'polski/nip') {
+            return;
+        }
+
+        $clean = is_scalar($value) ? (string) preg_replace('/[^0-9]/', '', (string) $value) : '';
+        if ($clean === '') {
+            return;
+        }
+
+        if (is_object($document) && method_exists($document, 'update_meta_data')) {
+            $document->update_meta_data('_billing_nip', $clean);
+            $document->update_meta_data('_polski_billing_nip', $clean);
+        }
+    }
+
+    /**
+     * Save block checkout NIP to standard order meta.
+     */
+    public function saveBlockNipToOrder(\WC_Order $order): void
+    {
+        $nip = $order->get_meta('_wc_billing/polski/nip', true);
+        if ($nip === '' || $nip === false) {
+            $nip = $order->get_meta('_wc_other/polski/nip', true);
+        }
+        if ($nip !== '' && $nip !== false && is_scalar($nip)) {
+            $clean = (string) preg_replace('/[^0-9]/', '', (string) $nip);
+            if ($clean !== '') {
+                $order->update_meta_data('_billing_nip', $clean);
+                $order->update_meta_data('_polski_billing_nip', $clean);
+                $order->save_meta_data();
+            }
+        }
+    }
+
+    /**
      * Save NIP to order meta on checkout.
      *
      * @param array<string, mixed> $data
@@ -131,8 +218,9 @@ final class NipLookupService implements HasHooks
         $nip = sanitize_text_field(wp_unslash($_POST['billing_nip'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
         if ($nip !== '') {
-            $nip = preg_replace('/[\s\-]/', '', $nip) ?? '';
-            $order->update_meta_data('_polski_billing_nip', $nip);
+            $clean = (string) preg_replace('/[^0-9]/', '', $nip);
+            $order->update_meta_data('_billing_nip', $clean);
+            $order->update_meta_data('_polski_billing_nip', $clean);
         }
     }
 
@@ -141,7 +229,16 @@ final class NipLookupService implements HasHooks
      */
     public function displayNipInAdmin(\WC_Order $order): void
     {
-        $nip = $order->get_meta('_polski_billing_nip', true);
+        $nip = $order->get_meta('_billing_nip', true);
+        if ($nip === '' || $nip === false) {
+            $nip = $order->get_meta('_polski_billing_nip', true);
+        }
+        if ($nip === '' || $nip === false) {
+            $nip = $order->get_meta('_wc_billing/polski/nip', true);
+        }
+        if ($nip === '' || $nip === false) {
+            $nip = $order->get_meta('_wc_other/polski/nip', true);
+        }
 
         if ($nip !== '' && $nip !== false) {
             printf(

@@ -33,43 +33,45 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
-        // Override order button text. Guarded on its own module rather than by
-        // an early return, because this method also wires legal_checkboxes and
-        // consent logging, which are separate modules with their own toggles.
+        // Override order button text on both classic and block checkout.
         if (\Polski\Admin\ModulesPage::isModuleEnabled('checkout_button')) {
             add_filter('woocommerce_order_button_text', [$this, 'filterOrderButtonText']);
+            add_filter('gettext', [$this, 'filterBlockOrderButtonText'], 20, 3);
         }
 
-        if (function_exists('woocommerce_register_additional_checkout_field')) {
-            // Modern WooCommerce: render + enforce the checkout legal checkboxes
-            // via the Additional Checkout Fields API, which works on BOTH classic
-            // and the block checkout (WC 8.3+ default) with no merchant placement.
-            // Register at init priority 21, after CheckboxService::initCheckboxes
-            // (init, 20) has populated the checkbox definitions, and still before
-            // any checkout request reads the additional-fields registry. Consent
-            // is logged from order meta for both classic and block flows.
-            add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
-            add_action('woocommerce_checkout_order_created', [$this, 'logBlockCheckoutConsents']);
-            add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
-        } else {
-            // Legacy classic-only checkout (WC without the Additional Checkout
-            // Fields API).
-            add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
-            add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
-            add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
-            add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
-            add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
+        // Legal checkboxes and consent logging.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
+            if (function_exists('woocommerce_register_additional_checkout_field')) {
+                // Modern WooCommerce: render + enforce the checkout legal checkboxes
+                // via the Additional Checkout Fields API, which works on BOTH classic
+                // and the block checkout (WC 8.3+ default) with no merchant placement.
+                // Register at init priority 21, after CheckboxService::initCheckboxes
+                // (init, 20) has populated the checkbox definitions, and still before
+                // any checkout request reads the additional-fields registry. Consent
+                // is logged from order meta for both classic and block flows.
+                add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
+                add_action('woocommerce_checkout_order_created', [$this, 'logBlockCheckoutConsents']);
+                add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
+            } else {
+                // Legacy classic-only checkout (WC without the Additional Checkout
+                // Fields API).
+                add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
+                add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
+                add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
+                add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
+                add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
+            }
+
+            // Registration form checkboxes.
+            add_action('woocommerce_register_form', [$this, 'renderRegistrationCheckboxes']);
+            add_filter('woocommerce_process_registration_errors', [$this, 'validateRegistrationCheckboxes'], 10, 4);
+
+            // Pay-for-order page.
+            add_action('woocommerce_pay_order_before_submit', [$this, 'renderPayForOrderCheckboxes']);
+
+            // Remove default WC terms checkbox (we replace it).
+            add_filter('woocommerce_checkout_show_terms', '__return_false');
         }
-
-        // Registration form checkboxes.
-        add_action('woocommerce_register_form', [$this, 'renderRegistrationCheckboxes']);
-        add_filter('woocommerce_process_registration_errors', [$this, 'validateRegistrationCheckboxes'], 10, 4);
-
-        // Pay-for-order page.
-        add_action('woocommerce_pay_order_before_submit', [$this, 'renderPayForOrderCheckboxes']);
-
-        // Remove default WC terms checkbox (we replace it).
-        add_filter('woocommerce_checkout_show_terms', '__return_false');
 
         // Enqueue frontend checkout JS.
         add_action('wp_enqueue_scripts', [$this, 'enqueueCheckoutAssets']);
@@ -83,6 +85,10 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function registerBlockCheckoutFields(): void
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
+            return;
+        }
+
         if (! function_exists('woocommerce_register_additional_checkout_field')) {
             return;
         }
@@ -176,19 +182,41 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function filterOrderButtonText(string $text): string
     {
-        $settings = get_option('polski_checkout', []);
-        $customText = is_array($settings) ? ($settings['order_button_text'] ?? '') : '';
-
-        if ($customText !== '') {
-            $text = $customText;
-        }
+        $resolved = $this->resolveOrderButtonText();
 
         /**
          * Filter the order button text.
          *
          * @param string $text The button text.
          */
-        return (string) apply_filters('polski/checkout/order_button_text', $text);
+        return (string) apply_filters('polski/checkout/order_button_text', $resolved !== '' ? $resolved : $text);
+    }
+
+    /**
+     * Translate order button text for block checkout (where woocommerce_order_button_text
+     * filter does not fire because the button is rendered via block component).
+     */
+    public function filterBlockOrderButtonText(string $translation, string $text, string $domain): string
+    {
+        if ($domain === 'woocommerce' && ($text === 'Place order' || $translation === 'Kupuję i płacę' || $translation === 'Złóż zamówienie')) {
+            $resolved = $this->resolveOrderButtonText();
+            if ($resolved !== '') {
+                return (string) apply_filters('polski/checkout/order_button_text', $resolved);
+            }
+        }
+
+        return $translation;
+    }
+
+    /**
+     * Resolve the configured or statutory default button text.
+     */
+    private function resolveOrderButtonText(): string
+    {
+        $settings = get_option('polski_checkout', []);
+        $customText = is_array($settings) ? ($settings['order_button_text'] ?? '') : '';
+
+        return $customText !== '' ? $customText : __('Zamawiam z obowiązkiem zapłaty', 'polski');
     }
 
     /**

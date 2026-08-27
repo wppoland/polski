@@ -61,6 +61,17 @@ if (! function_exists('update_option')) {
     }
 }
 
+if (! function_exists('delete_option')) {
+    function delete_option(string $option): bool
+    {
+        if (isset($GLOBALS['polski_test_options']) && is_array($GLOBALS['polski_test_options'])) {
+            unset($GLOBALS['polski_test_options'][$option]);
+        }
+
+        return true;
+    }
+}
+
 if (! function_exists('__')) {
     function __(string $text, string $domain = 'default'): string
     {
