@@ -3682,8 +3682,7 @@ msgid "Description - Privacy Policy"
 msgstr "Апісанне - Палітыка прыватнасці"
 
 #: src/Admin/ModulesPage.php:324 src/Email/WithdrawalEmailCta.php:65
-#: src/Service/AnnexGeneratorService.php:36
-#: src/Service/AnnexGeneratorService.php:38
+#: src/Service/AnnexGeneratorService.php:41
 #: src/Service/SiteAuditService.php:659
 #: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
@@ -7686,48 +7685,43 @@ msgstr ""
 "Дата заканчэння тэрміну дзеяння экалагічнага сертыфіката ў фармаце ГГГГ-ММ-"
 "ДД."
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:77
-msgid "from %d PLN/year"
-msgstr ""
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:82
+#: src/Admin/ProUpsell.php:78
 msgid "from %1$s%2$d/yr"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:114
+#: src/Admin/ProUpsell.php:110
 msgid "Permission denied."
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:144
+#: src/Admin/ProUpsell.php:140
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:149 src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:145 src/Admin/ProUpsell.php:184
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:151
+#: src/Admin/ProUpsell.php:147
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:173
+#: src/Admin/ProUpsell.php:169
 msgid "Unlock every PRO feature"
 msgstr ""
 
 #. translators: %d: number of additional PRO features not listed above
-#: src/Admin/ProUpsell.php:185
+#: src/Admin/ProUpsell.php:181
 msgid "+%d more in PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:191
+#: src/Admin/ProUpsell.php:187
 msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:210
+#: src/Admin/ProUpsell.php:206
 msgid "What %s adds"
 msgstr ""
 
@@ -10016,7 +10010,7 @@ msgid "Could not add to cart."
 msgstr "Не ўдалося дадаць у кошык."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:41
+#: src/Service/AnnexGeneratorService.php:44
 msgid ""
 "You have the right to withdraw from this contract within %d days without "
 "giving any reason."
@@ -10025,7 +10019,7 @@ msgstr ""
 "якой-небудзь прычыны."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:46
+#: src/Service/AnnexGeneratorService.php:49
 msgid ""
 "The withdrawal period will expire after %d days from the day on which you "
 "acquire, or a third party other than the carrier and indicated by you "
@@ -10035,7 +10029,7 @@ msgstr ""
 "атрымалі рэч ва ўладанне або ў які трэцяя асоба, акрамя перавозчыка і "
 "ўказаная вамі, атрымала рэч ва ўладанне."
 
-#: src/Service/AnnexGeneratorService.php:49
+#: src/Service/AnnexGeneratorService.php:52
 msgid ""
 "To exercise the right of withdrawal, you must inform us of your decision to "
 "withdraw from this contract by an unequivocal statement (for example a "
@@ -10045,29 +10039,29 @@ msgstr ""
 "рашэнне адмовіцца ад гэтай дамовы шляхам адназначнай заявы (напрыклад, ліст,"
 " дасланы поштай, факсам або электроннай поштай)."
 
-#: src/Service/AnnexGeneratorService.php:59
+#: src/Service/AnnexGeneratorService.php:62
 msgid "tel."
 msgstr "тэл."
 
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
+#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:116
 msgid "email:"
 msgstr "электронная пошта:"
 
-#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:68
 #: src/Service/BusinessInfoService.php:104
 #: src/Service/ComplaintTemplateService.php:135
 #: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP:"
 
-#: src/Service/AnnexGeneratorService.php:69
+#: src/Service/AnnexGeneratorService.php:72
 msgid "You may use the model withdrawal form, but it is not obligatory."
 msgstr ""
 "Вы можаце скарыстацца ўзорам формы адмовы ад дамовы, аднак гэта не "
 "з'яўляецца абавязковым."
 
-#: src/Service/AnnexGeneratorService.php:70
+#: src/Service/AnnexGeneratorService.php:73
 msgid ""
 "To meet the withdrawal deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of withdrawal before the"
@@ -10077,12 +10071,12 @@ msgstr ""
 "інфармацыю аб ажыццяўленні належнага вам права адмовы ад дамовы да "
 "заканчэння тэрміну на адмову ад дамовы."
 
-#: src/Service/AnnexGeneratorService.php:72
+#: src/Service/AnnexGeneratorService.php:75
 msgid "Effects of withdrawal"
 msgstr "Наступствы адмовы ад дамовы"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:75
+#: src/Service/AnnexGeneratorService.php:78
 msgid ""
 "If you withdraw from this contract, we shall reimburse to you all payments "
 "received from you, including the costs of delivery (with the exception of "
@@ -10099,7 +10093,7 @@ msgstr ""
 "праінфармаваныя пра ваша рашэнне аб ажыццяўленні права адмовы ад гэтай "
 "дамовы."
 
-#: src/Service/AnnexGeneratorService.php:78
+#: src/Service/AnnexGeneratorService.php:81
 msgid ""
 "We will carry out such reimbursement using the same means of payment as you "
 "used for the initial transaction, unless you have expressly agreed "
@@ -10111,7 +10105,7 @@ msgstr ""
 "не пагадзіліся на іншае рашэнне; у любым выпадку вы не панесяце ніякіх "
 "выдаткаў у сувязі з гэтым зваротам."
 
-#: src/Service/AnnexGeneratorService.php:79
+#: src/Service/AnnexGeneratorService.php:82
 msgid ""
 "We may withhold reimbursement until we have received the goods back or you "
 "have supplied evidence of having sent back the goods, whichever is the "
@@ -10121,7 +10115,7 @@ msgstr ""
 "моманту дастаўкі нам доказу яе адпраўкі, у залежнасці ад таго, якая падзея "
 "адбудзецца раней."
 
-#: src/Service/AnnexGeneratorService.php:80
+#: src/Service/AnnexGeneratorService.php:83
 msgid ""
 "You shall send back the goods or hand them over to us at the address above, "
 "without undue delay and in any event not later than 14 days from the day on "
@@ -10133,11 +10127,11 @@ msgstr ""
 "паведамілі нам пра адмову ад гэтай дамовы. Тэрмін захаваны, калі вы адашляце"
 " рэч да заканчэння тэрміну ў 14 дзён."
 
-#: src/Service/AnnexGeneratorService.php:81
+#: src/Service/AnnexGeneratorService.php:84
 msgid "You will have to bear the direct cost of returning the goods."
 msgstr "Вы будзеце вымушаныя панесці прамыя выдаткі на зварот рэчы."
 
-#: src/Service/AnnexGeneratorService.php:82
+#: src/Service/AnnexGeneratorService.php:85
 msgid ""
 "You are only liable for any diminished value of the goods resulting from the"
 " handling other than what is necessary to establish the nature, "
@@ -10147,11 +10141,11 @@ msgstr ""
 "ёю спосабам, іншым, чым было неабходна для вызначэння характару, "
 "уласцівасцей і функцыянавання рэчы."
 
-#: src/Service/AnnexGeneratorService.php:102
+#: src/Service/AnnexGeneratorService.php:105
 msgid "Model withdrawal form"
 msgstr "Узор формы адмовы ад дамовы"
 
-#: src/Service/AnnexGeneratorService.php:103
+#: src/Service/AnnexGeneratorService.php:106
 msgid ""
 "(complete and return this form only if you wish to withdraw from the "
 "contract)"
@@ -10159,11 +10153,11 @@ msgstr ""
 "(гэту форму трэба запоўніць і адаслаць толькі ў выпадку жадання адмовіцца ад"
 " дамовы)"
 
-#: src/Service/AnnexGeneratorService.php:105
+#: src/Service/AnnexGeneratorService.php:108
 msgid "Addressee:"
 msgstr "Адрасат:"
 
-#: src/Service/AnnexGeneratorService.php:117
+#: src/Service/AnnexGeneratorService.php:120
 msgid ""
 "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
 "of sale of the following goods (*)/for the provision of the following "
@@ -10173,35 +10167,35 @@ msgstr ""
 "продажу наступных рэчаў(*) дамовы дастаўкі наступных рэчаў(*) дамовы падраду"
 " на выкананне наступных рэчаў(*)/на аказанне наступнай паслугі(*):"
 
-#: src/Service/AnnexGeneratorService.php:119
+#: src/Service/AnnexGeneratorService.php:122
 msgid "Ordered on (*)/received on (*):"
 msgstr "Дата заключэння дамовы(*)/атрымання(*):"
 
-#: src/Service/AnnexGeneratorService.php:121
+#: src/Service/AnnexGeneratorService.php:124
 msgid "Name of consumer(s):"
 msgstr "Імя і прозвішча спажыўца(-аў):"
 
-#: src/Service/AnnexGeneratorService.php:123
+#: src/Service/AnnexGeneratorService.php:126
 msgid "Address of consumer(s):"
 msgstr "Адрас спажыўца(-аў):"
 
-#: src/Service/AnnexGeneratorService.php:125
+#: src/Service/AnnexGeneratorService.php:128
 msgid "Signature of consumer(s) (only if this form is notified on paper):"
 msgstr ""
 "Подпіс спажыўца(-аў) (толькі калі форма перадаецца ў папяровай версіі):"
 
-#: src/Service/AnnexGeneratorService.php:127
+#: src/Service/AnnexGeneratorService.php:130
 #: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "Дата:"
 
-#: src/Service/AnnexGeneratorService.php:129
+#: src/Service/AnnexGeneratorService.php:132
 msgid "(*) Delete as appropriate."
 msgstr "(*) Непатрэбнае закрэсліць."
 
 #. translators: %s: lookup page URL where the consumer can file an online
 #. withdrawal declaration
-#: src/Service/AnnexGeneratorService.php:133
+#: src/Service/AnnexGeneratorService.php:136
 msgid ""
 "You can also file the declaration online: <a href=\"%s\">withdrawal "
 "form</a>."

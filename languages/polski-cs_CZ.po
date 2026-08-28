@@ -3685,8 +3685,7 @@ msgid "Description - Privacy Policy"
 msgstr "Popis - zásady ochrany osobních údajů"
 
 #: src/Admin/ModulesPage.php:324 src/Email/WithdrawalEmailCta.php:65
-#: src/Service/AnnexGeneratorService.php:36
-#: src/Service/AnnexGeneratorService.php:38
+#: src/Service/AnnexGeneratorService.php:41
 #: src/Service/SiteAuditService.php:659
 #: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
@@ -7675,48 +7674,43 @@ msgstr "Datum platnosti certifikátu (RRRR-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Datum platnosti ekologického certifikátu ve formátu RRRR-MM-DD."
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:77
-msgid "from %d PLN/year"
-msgstr "od %d PLN/rok"
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:82
+#: src/Admin/ProUpsell.php:78
 msgid "from %1$s%2$d/yr"
 msgstr "od %1$s%2$d ročně"
 
-#: src/Admin/ProUpsell.php:114
+#: src/Admin/ProUpsell.php:110
 msgid "Permission denied."
 msgstr "Oprávnění zamítnuto."
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:144
+#: src/Admin/ProUpsell.php:140
 msgid "Do more with %s"
 msgstr "Využijte %s na maximum"
 
-#: src/Admin/ProUpsell.php:149 src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:145 src/Admin/ProUpsell.php:184
 msgid "Upgrade to PRO"
 msgstr "Upgrade to PRO"
 
-#: src/Admin/ProUpsell.php:151
+#: src/Admin/ProUpsell.php:147
 msgid "Dismiss this notice"
 msgstr "Zavřít toto upozornění"
 
-#: src/Admin/ProUpsell.php:173
+#: src/Admin/ProUpsell.php:169
 msgid "Unlock every PRO feature"
 msgstr "Odemkněte všechny funkce PRO"
 
 #. translators: %d: number of additional PRO features not listed above
-#: src/Admin/ProUpsell.php:185
+#: src/Admin/ProUpsell.php:181
 msgid "+%d more in PRO"
 msgstr "+%d dalších v PRO"
 
-#: src/Admin/ProUpsell.php:191
+#: src/Admin/ProUpsell.php:187
 msgid "one licence, every PRO feature"
 msgstr "jedna licence, všechny funkce PRO"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:210
+#: src/Admin/ProUpsell.php:206
 msgid "What %s adds"
 msgstr "Co %s přidává"
 
@@ -10015,7 +10009,7 @@ msgid "Could not add to cart."
 msgstr "Nepodařilo se přidat do košíku."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:41
+#: src/Service/AnnexGeneratorService.php:44
 msgid ""
 "You have the right to withdraw from this contract within %d days without "
 "giving any reason."
@@ -10024,7 +10018,7 @@ msgstr ""
 "důvodu."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:46
+#: src/Service/AnnexGeneratorService.php:49
 msgid ""
 "The withdrawal period will expire after %d days from the day on which you "
 "acquire, or a third party other than the carrier and indicated by you "
@@ -10034,7 +10028,7 @@ msgstr ""
 "převzali věc do držení, nebo kdy třetí osoba odlišná od dopravce a vámi "
 "určená převzala věc do držení."
 
-#: src/Service/AnnexGeneratorService.php:49
+#: src/Service/AnnexGeneratorService.php:52
 msgid ""
 "To exercise the right of withdrawal, you must inform us of your decision to "
 "withdraw from this contract by an unequivocal statement (for example a "
@@ -10044,29 +10038,29 @@ msgstr ""
 "odstoupit od této smlouvy informovat formou jednoznačného prohlášení "
 "(například dopisem zaslaným poštou, faxem nebo elektronickou poštou)."
 
-#: src/Service/AnnexGeneratorService.php:59
+#: src/Service/AnnexGeneratorService.php:62
 msgid "tel."
 msgstr "tel."
 
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
+#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:116
 msgid "email:"
 msgstr "e-mail:"
 
-#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:68
 #: src/Service/BusinessInfoService.php:104
 #: src/Service/ComplaintTemplateService.php:135
 #: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP:"
 
-#: src/Service/AnnexGeneratorService.php:69
+#: src/Service/AnnexGeneratorService.php:72
 msgid "You may use the model withdrawal form, but it is not obligatory."
 msgstr ""
 "Můžete použít vzorový formulář pro odstoupení od smlouvy, není to však "
 "povinné."
 
-#: src/Service/AnnexGeneratorService.php:70
+#: src/Service/AnnexGeneratorService.php:73
 msgid ""
 "To meet the withdrawal deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of withdrawal before the"
@@ -10076,12 +10070,12 @@ msgstr ""
 "informaci týkající se uplatnění práva na odstoupení od smlouvy před "
 "uplynutím lhůty pro odstoupení od smlouvy."
 
-#: src/Service/AnnexGeneratorService.php:72
+#: src/Service/AnnexGeneratorService.php:75
 msgid "Effects of withdrawal"
 msgstr "Důsledky odstoupení od smlouvy"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:75
+#: src/Service/AnnexGeneratorService.php:78
 msgid ""
 "If you withdraw from this contract, we shall reimburse to you all payments "
 "received from you, including the costs of delivery (with the exception of "
@@ -10097,7 +10091,7 @@ msgstr ""
 "odkladu a v každém případě nejpozději do %d dnů ode dne, kdy jsme byli "
 "informováni o vašem rozhodnutí uplatnit právo na odstoupení od této smlouvy."
 
-#: src/Service/AnnexGeneratorService.php:78
+#: src/Service/AnnexGeneratorService.php:81
 msgid ""
 "We will carry out such reimbursement using the same means of payment as you "
 "used for the initial transaction, unless you have expressly agreed "
@@ -10108,7 +10102,7 @@ msgstr ""
 "při původní transakci, ledaže jste výslovně souhlasili s jiným řešením; v "
 "žádném případě vám tímto vrácením nevzniknou žádné poplatky."
 
-#: src/Service/AnnexGeneratorService.php:79
+#: src/Service/AnnexGeneratorService.php:82
 msgid ""
 "We may withhold reimbursement until we have received the goods back or you "
 "have supplied evidence of having sent back the goods, whichever is the "
@@ -10117,7 +10111,7 @@ msgstr ""
 "Vrácení platby můžeme pozdržet do okamžiku obdržení věci nebo do okamžiku "
 "doručení dokladu o jejím odeslání, podle toho, která událost nastane dříve."
 
-#: src/Service/AnnexGeneratorService.php:80
+#: src/Service/AnnexGeneratorService.php:83
 msgid ""
 "You shall send back the goods or hand them over to us at the address above, "
 "without undue delay and in any event not later than 14 days from the day on "
@@ -10129,11 +10123,11 @@ msgstr ""
 " nás informovali o odstoupení od této smlouvy. Lhůta je dodržena, pokud věc "
 "odešlete před uplynutím lhůty 14 dnů."
 
-#: src/Service/AnnexGeneratorService.php:81
+#: src/Service/AnnexGeneratorService.php:84
 msgid "You will have to bear the direct cost of returning the goods."
 msgstr "Ponesete přímé náklady na vrácení věci."
 
-#: src/Service/AnnexGeneratorService.php:82
+#: src/Service/AnnexGeneratorService.php:85
 msgid ""
 "You are only liable for any diminished value of the goods resulting from the"
 " handling other than what is necessary to establish the nature, "
@@ -10143,11 +10137,11 @@ msgstr ""
 "způsobem, než jaký byl nutný k seznámení se s povahou, vlastnostmi a "
 "funkčností věci."
 
-#: src/Service/AnnexGeneratorService.php:102
+#: src/Service/AnnexGeneratorService.php:105
 msgid "Model withdrawal form"
 msgstr "Vzorový formulář pro odstoupení od smlouvy"
 
-#: src/Service/AnnexGeneratorService.php:103
+#: src/Service/AnnexGeneratorService.php:106
 msgid ""
 "(complete and return this form only if you wish to withdraw from the "
 "contract)"
@@ -10155,11 +10149,11 @@ msgstr ""
 "(tento formulář vyplňte a zašlete zpět pouze v případě, že chcete odstoupit "
 "od smlouvy)"
 
-#: src/Service/AnnexGeneratorService.php:105
+#: src/Service/AnnexGeneratorService.php:108
 msgid "Addressee:"
 msgstr "Adresát:"
 
-#: src/Service/AnnexGeneratorService.php:117
+#: src/Service/AnnexGeneratorService.php:120
 msgid ""
 "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
 "of sale of the following goods (*)/for the provision of the following "
@@ -10170,35 +10164,35 @@ msgstr ""
 "smlouvy o dílo spočívajícím ve zhotovení následujících věcí(*)/o poskytnutí "
 "následující služby(*):"
 
-#: src/Service/AnnexGeneratorService.php:119
+#: src/Service/AnnexGeneratorService.php:122
 msgid "Ordered on (*)/received on (*):"
 msgstr "Datum uzavření smlouvy(*)/převzetí(*):"
 
-#: src/Service/AnnexGeneratorService.php:121
+#: src/Service/AnnexGeneratorService.php:124
 msgid "Name of consumer(s):"
 msgstr "Jméno a příjmení spotřebitele(-ů):"
 
-#: src/Service/AnnexGeneratorService.php:123
+#: src/Service/AnnexGeneratorService.php:126
 msgid "Address of consumer(s):"
 msgstr "Adresa spotřebitele(-ů):"
 
-#: src/Service/AnnexGeneratorService.php:125
+#: src/Service/AnnexGeneratorService.php:128
 msgid "Signature of consumer(s) (only if this form is notified on paper):"
 msgstr ""
 "Podpis spotřebitele(-ů) (pouze pokud je formulář zasílán v papírové podobě):"
 
-#: src/Service/AnnexGeneratorService.php:127
+#: src/Service/AnnexGeneratorService.php:130
 #: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "Datum:"
 
-#: src/Service/AnnexGeneratorService.php:129
+#: src/Service/AnnexGeneratorService.php:132
 msgid "(*) Delete as appropriate."
 msgstr "(*) Nehodící se škrtněte."
 
 #. translators: %s: lookup page URL where the consumer can file an online
 #. withdrawal declaration
-#: src/Service/AnnexGeneratorService.php:133
+#: src/Service/AnnexGeneratorService.php:136
 msgid ""
 "You can also file the declaration online: <a href=\"%s\">withdrawal "
 "form</a>."

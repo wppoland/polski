@@ -3327,8 +3327,7 @@ msgid "Description - Privacy Policy"
 msgstr "描述 - 隐私政策"
 
 #: src/Admin/ModulesPage.php:324 src/Email/WithdrawalEmailCta.php:65
-#: src/Service/AnnexGeneratorService.php:36
-#: src/Service/AnnexGeneratorService.php:38
+#: src/Service/AnnexGeneratorService.php:41
 #: src/Service/SiteAuditService.php:659
 #: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
@@ -7096,48 +7095,43 @@ msgstr "证书到期日期 (YYYY-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "环境证书到期日期，格式为 YYYY-MM-DD。"
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:77
-msgid "from %d PLN/year"
-msgstr ""
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:82
+#: src/Admin/ProUpsell.php:78
 msgid "from %1$s%2$d/yr"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:114
+#: src/Admin/ProUpsell.php:110
 msgid "Permission denied."
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:144
+#: src/Admin/ProUpsell.php:140
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:149 src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:145 src/Admin/ProUpsell.php:184
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:151
+#: src/Admin/ProUpsell.php:147
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:173
+#: src/Admin/ProUpsell.php:169
 msgid "Unlock every PRO feature"
 msgstr ""
 
 #. translators: %d: number of additional PRO features not listed above
-#: src/Admin/ProUpsell.php:185
+#: src/Admin/ProUpsell.php:181
 msgid "+%d more in PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:191
+#: src/Admin/ProUpsell.php:187
 msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:210
+#: src/Admin/ProUpsell.php:206
 msgid "What %s adds"
 msgstr ""
 
@@ -9255,60 +9249,60 @@ msgid "Could not add to cart."
 msgstr "无法加入购物车。"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:41
+#: src/Service/AnnexGeneratorService.php:44
 msgid ""
 "You have the right to withdraw from this contract within %d days without "
 "giving any reason."
 msgstr "您有权在 %d 天内撤回本合同，无需说明任何理由。"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:46
+#: src/Service/AnnexGeneratorService.php:49
 msgid ""
 "The withdrawal period will expire after %d days from the day on which you "
 "acquire, or a third party other than the carrier and indicated by you "
 "acquires, physical possession of the goods."
 msgstr "撤回合同的期限自您或您指定的、非承运人的第三方取得物品占有之日起 %d 天后届满。"
 
-#: src/Service/AnnexGeneratorService.php:49
+#: src/Service/AnnexGeneratorService.php:52
 msgid ""
 "To exercise the right of withdrawal, you must inform us of your decision to "
 "withdraw from this contract by an unequivocal statement (for example a "
 "letter sent by post, fax or email)."
 msgstr "如需行使撤回合同的权利，您必须通过明确的声明（例如邮寄信函、传真或电子邮件）告知我们您撤回本合同的决定。"
 
-#: src/Service/AnnexGeneratorService.php:59
+#: src/Service/AnnexGeneratorService.php:62
 msgid "tel."
 msgstr "电话"
 
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
+#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:116
 msgid "email:"
 msgstr "电子邮件："
 
-#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:68
 #: src/Service/BusinessInfoService.php:104
 #: src/Service/ComplaintTemplateService.php:135
 #: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "NIP："
 
-#: src/Service/AnnexGeneratorService.php:69
+#: src/Service/AnnexGeneratorService.php:72
 msgid "You may use the model withdrawal form, but it is not obligatory."
 msgstr "您可以使用撤回合同表格的范本，但这并非强制性的。"
 
-#: src/Service/AnnexGeneratorService.php:70
+#: src/Service/AnnexGeneratorService.php:73
 msgid ""
 "To meet the withdrawal deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of withdrawal before the"
 " withdrawal period has expired."
 msgstr "为遵守撤回合同的期限，您只需在撤回期限届满前发出有关行使撤回合同权利的通知即可。"
 
-#: src/Service/AnnexGeneratorService.php:72
+#: src/Service/AnnexGeneratorService.php:75
 msgid "Effects of withdrawal"
 msgstr "撤回合同的后果"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:75
+#: src/Service/AnnexGeneratorService.php:78
 msgid ""
 "If you withdraw from this contract, we shall reimburse to you all payments "
 "received from you, including the costs of delivery (with the exception of "
@@ -9320,7 +9314,7 @@ msgstr ""
 "如撤回本合同，我们将立即向您退还收到的所有款项，包括交付费用（您选择的非我方提供的最便宜普通交付方式所产生的额外费用除外），并且在任何情况下不迟于我们获知您行使撤回本合同权利的决定之日起"
 " %d 天内退还。"
 
-#: src/Service/AnnexGeneratorService.php:78
+#: src/Service/AnnexGeneratorService.php:81
 msgid ""
 "We will carry out such reimbursement using the same means of payment as you "
 "used for the initial transaction, unless you have expressly agreed "
@@ -9328,14 +9322,14 @@ msgid ""
 "reimbursement."
 msgstr "我们将使用您在原始交易中所用的相同付款方式进行退款，除非您明确同意其他方式；在任何情况下，您都不会因此次退款而承担任何费用。"
 
-#: src/Service/AnnexGeneratorService.php:79
+#: src/Service/AnnexGeneratorService.php:82
 msgid ""
 "We may withhold reimbursement until we have received the goods back or you "
 "have supplied evidence of having sent back the goods, whichever is the "
 "earliest."
 msgstr "我们可以暂缓退款，直至收到退回的物品，或直至您提供已寄回物品的凭证为止，以两者中较早发生者为准。"
 
-#: src/Service/AnnexGeneratorService.php:80
+#: src/Service/AnnexGeneratorService.php:83
 msgid ""
 "You shall send back the goods or hand them over to us at the address above, "
 "without undue delay and in any event not later than 14 days from the day on "
@@ -9344,32 +9338,32 @@ msgid ""
 msgstr ""
 "请在通知我们撤回本合同之日起立即，且无论如何不迟于 14 天内，将物品寄回或交付至上述地址。只要您在 14 天期限届满前寄回物品，即视为遵守期限。"
 
-#: src/Service/AnnexGeneratorService.php:81
+#: src/Service/AnnexGeneratorService.php:84
 msgid "You will have to bear the direct cost of returning the goods."
 msgstr "您将需要承担退回物品的直接费用。"
 
-#: src/Service/AnnexGeneratorService.php:82
+#: src/Service/AnnexGeneratorService.php:85
 msgid ""
 "You are only liable for any diminished value of the goods resulting from the"
 " handling other than what is necessary to establish the nature, "
 "characteristics and functioning of the goods."
 msgstr "您仅对因以超出确认物品性质、特征和功能所必需方式之外的使用而导致的物品价值减损负责。"
 
-#: src/Service/AnnexGeneratorService.php:102
+#: src/Service/AnnexGeneratorService.php:105
 msgid "Model withdrawal form"
 msgstr "撤回合同表格范本"
 
-#: src/Service/AnnexGeneratorService.php:103
+#: src/Service/AnnexGeneratorService.php:106
 msgid ""
 "(complete and return this form only if you wish to withdraw from the "
 "contract)"
 msgstr "（仅在希望撤回合同时才需填写并寄回此表格）"
 
-#: src/Service/AnnexGeneratorService.php:105
+#: src/Service/AnnexGeneratorService.php:108
 msgid "Addressee:"
 msgstr "收件人："
 
-#: src/Service/AnnexGeneratorService.php:117
+#: src/Service/AnnexGeneratorService.php:120
 msgid ""
 "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
 "of sale of the following goods (*)/for the provision of the following "
@@ -9377,34 +9371,34 @@ msgid ""
 msgstr ""
 "本人/我们(*)在此通知本人/我们(*)撤回以下物品的销售合同(*)以下物品的供货合同(*)以制作以下物品为内容的承揽合同(*)/提供以下服务的合同(*)："
 
-#: src/Service/AnnexGeneratorService.php:119
+#: src/Service/AnnexGeneratorService.php:122
 msgid "Ordered on (*)/received on (*):"
 msgstr "合同订立日期(*)/收货日期(*)："
 
-#: src/Service/AnnexGeneratorService.php:121
+#: src/Service/AnnexGeneratorService.php:124
 msgid "Name of consumer(s):"
 msgstr "消费者姓名："
 
-#: src/Service/AnnexGeneratorService.php:123
+#: src/Service/AnnexGeneratorService.php:126
 msgid "Address of consumer(s):"
 msgstr "消费者地址："
 
-#: src/Service/AnnexGeneratorService.php:125
+#: src/Service/AnnexGeneratorService.php:128
 msgid "Signature of consumer(s) (only if this form is notified on paper):"
 msgstr "消费者签名（仅在以纸质形式提交表格时）："
 
-#: src/Service/AnnexGeneratorService.php:127
+#: src/Service/AnnexGeneratorService.php:130
 #: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "日期："
 
-#: src/Service/AnnexGeneratorService.php:129
+#: src/Service/AnnexGeneratorService.php:132
 msgid "(*) Delete as appropriate."
 msgstr "(*) 删除不适用项。"
 
 #. translators: %s: lookup page URL where the consumer can file an online
 #. withdrawal declaration
-#: src/Service/AnnexGeneratorService.php:133
+#: src/Service/AnnexGeneratorService.php:136
 msgid ""
 "You can also file the declaration online: <a href=\"%s\">withdrawal "
 "form</a>."
