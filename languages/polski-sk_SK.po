@@ -137,7 +137,7 @@ msgstr "Koncept"
 
 #: config/defaults.php:39 src/Admin/AdminPage.php:1066
 msgid "Not created"
-msgstr "Nevytvorená"
+msgstr "Nevytvorené"
 
 #: config/defaults.php:40 src/Admin/AdminPage.php:1064
 msgid "Edit"
@@ -600,7 +600,7 @@ msgstr "Výborne. Váš účet je už aktivovaný. Teraz sa môžete prihlásiť
 #: config/defaults.php:197 src/Admin/ModulesPage.php:604
 #: src/Email/DoubleOptInEmail.php:65 src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
-msgstr "Aktivujte svoj účet na {site_title}"
+msgstr "Aktivujte si účet na {site_title}"
 
 #: config/defaults.php:198 src/Admin/ModulesPage.php:605
 #: src/Email/DoubleOptInEmail.php:74 src/Email/DoubleOptInEmail.php:75
@@ -964,7 +964,7 @@ msgstr "Zavrieť"
 #: config/defaults.php:388 src/Admin/ModulesPage.php:719
 #: src/Service/WishlistService.php:178
 msgid "Wishlist"
-msgstr "Obľúbené"
+msgstr "Zoznam želaní"
 
 #: config/defaults.php:389
 msgid "Add to wishlist"

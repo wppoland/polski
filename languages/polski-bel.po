@@ -137,7 +137,7 @@ msgstr "Чарнавік"
 
 #: config/defaults.php:39 src/Admin/AdminPage.php:1066
 msgid "Not created"
-msgstr "Не створаная"
+msgstr "Не створана"
 
 #: config/defaults.php:40 src/Admin/AdminPage.php:1064
 msgid "Edit"
@@ -595,7 +595,7 @@ msgstr "Цудоўна! Ваш акаўнт ужо актываваны. Цяп�
 #: config/defaults.php:197 src/Admin/ModulesPage.php:604
 #: src/Email/DoubleOptInEmail.php:65 src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
-msgstr "Актывуйце свой акаўнт у {site_title}"
+msgstr "Актывуйце свой уліковы запіс на {site_title}"
 
 #: config/defaults.php:198 src/Admin/ModulesPage.php:605
 #: src/Email/DoubleOptInEmail.php:74 src/Email/DoubleOptInEmail.php:75
@@ -956,7 +956,7 @@ msgstr "Закрыць"
 #: config/defaults.php:388 src/Admin/ModulesPage.php:719
 #: src/Service/WishlistService.php:178
 msgid "Wishlist"
-msgstr "Упадабаныя"
+msgstr "Спіс жаданняў"
 
 #: config/defaults.php:389
 msgid "Add to wishlist"
@@ -1049,7 +1049,7 @@ msgstr "Цана за адзінку"
 #: src/Block/StoreApi/ProductDataExtension.php:226
 #: src/Service/CompareService.php:483
 msgid "Delivery time"
-msgstr "Тэрмін дастаўкі"
+msgstr "Час дастаўкі"
 
 #: config/defaults.php:429 src/Admin/PostTypes.php:68
 #: src/AIFeed/ProductMarkdownBuilder.php:217

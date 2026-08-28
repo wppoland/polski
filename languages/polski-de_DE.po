@@ -8050,8 +8050,8 @@ msgstr "Unbekannte Sammelaktion."
 #: src/Admin/WithdrawalsAdminPage.php:277
 msgid "Confirmed %1$d of %2$d selected declarations."
 msgid_plural "Confirmed %1$d of %2$d selected declarations."
-msgstr[0] "Bestätigte %1$d mit %2$d ausgewählten Ansprüchen."
-msgstr[1] "Bestätigte %1$d mit %2$d ausgewählten Ansprüchen."
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #: src/Admin/WithdrawalsAdminPage.php:291
@@ -8062,8 +8062,8 @@ msgstr "Durch Sammelklage abgelehnt."
 #: src/Admin/WithdrawalsAdminPage.php:299
 msgid "Rejected %1$d of %2$d selected declarations."
 msgid_plural "Rejected %1$d of %2$d selected declarations."
-msgstr[0] "%1$d von %2$d ausgewählten Ansprüchen wurden abgelehnt."
-msgstr[1] "%1$d von %2$d ausgewählten Ansprüchen wurden abgelehnt."
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #: src/Admin/WithdrawalsAdminPage.php:365
@@ -8928,24 +8928,24 @@ msgstr ""
 #: src/Enum/DeliveryTimeUnit.php:16
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] "%d Tag"
-msgstr[1] "%d Tage"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #. translators: %d: delivery time count in business days
 #: src/Enum/DeliveryTimeUnit.php:18
 msgid "%d business day"
 msgid_plural "%d business days"
-msgstr[0] "%d Werktag"
-msgstr[1] "%d Werktage"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #. translators: %d: delivery time count in weeks
 #: src/Enum/DeliveryTimeUnit.php:20
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] "%d Woche"
-msgstr[1] "%d Wochen"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #: src/Enum/LegalPageType.php:19
@@ -10765,8 +10765,8 @@ msgstr ""
 #: src/Service/CompareService.php:296 src/Shortcode/ShortcodeManager.php:306
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
-msgstr[0] "Vergleichen (%d)"
-msgstr[1] "Vergleichen (%d)"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #: src/Service/CompareService.php:405
@@ -12845,16 +12845,16 @@ msgstr "soeben"
 #: src/Service/SocialProofService.php:219
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] "Vor %d Minute"
-msgstr[1] "Vor %d Minuten"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #. translators: %d: number of hours since purchase
 #: src/Service/SocialProofService.php:228
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] "Vor %d Stunde"
-msgstr[1] "Vor %d Stunden"
+msgstr[0] ""
+msgstr[1] ""
 msgstr[2] ""
 
 #: src/Service/StockExportService.php:47
