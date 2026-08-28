@@ -3796,8 +3796,7 @@ msgid "Description - Privacy Policy"
 msgstr "Descripción - Política de Privacidad"
 
 #: src/Admin/ModulesPage.php:324 src/Email/WithdrawalEmailCta.php:65
-#: src/Service/AnnexGeneratorService.php:36
-#: src/Service/AnnexGeneratorService.php:38
+#: src/Service/AnnexGeneratorService.php:41
 #: src/Service/SiteAuditService.php:659
 #: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
@@ -7844,48 +7843,43 @@ msgstr "Fecha de vencimiento del certificado (AAAA-MM-DD)"
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Fecha de caducidad del certificado ambiental en formato AAAA-MM-DD."
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:77
-msgid "from %d PLN/year"
-msgstr ""
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:82
+#: src/Admin/ProUpsell.php:78
 msgid "from %1$s%2$d/yr"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:114
+#: src/Admin/ProUpsell.php:110
 msgid "Permission denied."
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:144
+#: src/Admin/ProUpsell.php:140
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:149 src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:145 src/Admin/ProUpsell.php:184
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:151
+#: src/Admin/ProUpsell.php:147
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:173
+#: src/Admin/ProUpsell.php:169
 msgid "Unlock every PRO feature"
 msgstr ""
 
 #. translators: %d: number of additional PRO features not listed above
-#: src/Admin/ProUpsell.php:185
+#: src/Admin/ProUpsell.php:181
 msgid "+%d more in PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:191
+#: src/Admin/ProUpsell.php:187
 msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:210
+#: src/Admin/ProUpsell.php:206
 msgid "What %s adds"
 msgstr ""
 
@@ -10226,7 +10220,7 @@ msgid "Could not add to cart."
 msgstr "No se pudo añadir al carrito."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:41
+#: src/Service/AnnexGeneratorService.php:44
 msgid ""
 "You have the right to withdraw from this contract within %d days without "
 "giving any reason."
@@ -10235,7 +10229,7 @@ msgstr ""
 "motivo."
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:46
+#: src/Service/AnnexGeneratorService.php:49
 msgid ""
 "The withdrawal period will expire after %d days from the day on which you "
 "acquire, or a third party other than the carrier and indicated by you "
@@ -10245,7 +10239,7 @@ msgstr ""
 "fecha en que tomaste posesión de la mercancía o en la que un tercero "
 "distinto del transportista e indicado por ti tomó posesión de la mercancía."
 
-#: src/Service/AnnexGeneratorService.php:49
+#: src/Service/AnnexGeneratorService.php:52
 msgid ""
 "To exercise the right of withdrawal, you must inform us of your decision to "
 "withdraw from this contract by an unequivocal statement (for example a "
@@ -10255,29 +10249,29 @@ msgstr ""
 "de desistir de este contrato mediante una declaración clara (por ejemplo, "
 "una carta enviada por correo postal, fax o correo electrónico)."
 
-#: src/Service/AnnexGeneratorService.php:59
+#: src/Service/AnnexGeneratorService.php:62
 msgid "tel."
 msgstr "tél."
 
-#: src/Service/AnnexGeneratorService.php:62
-#: src/Service/AnnexGeneratorService.php:113
+#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:116
 msgid "email:"
 msgstr "correo electrónico:"
 
-#: src/Service/AnnexGeneratorService.php:65
+#: src/Service/AnnexGeneratorService.php:68
 #: src/Service/BusinessInfoService.php:104
 #: src/Service/ComplaintTemplateService.php:135
 #: src/Service/RodoTrainingDocsService.php:149
 msgid "NIP:"
 msgstr "PNI:"
 
-#: src/Service/AnnexGeneratorService.php:69
+#: src/Service/AnnexGeneratorService.php:72
 msgid "You may use the model withdrawal form, but it is not obligatory."
 msgstr ""
 "Puede utilizar el modelo de formulario de desistimiento, pero no es "
 "obligatorio."
 
-#: src/Service/AnnexGeneratorService.php:70
+#: src/Service/AnnexGeneratorService.php:73
 msgid ""
 "To meet the withdrawal deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of withdrawal before the"
@@ -10287,12 +10281,12 @@ msgstr ""
 "información sobre el ejercicio de su derecho de desistimiento del contrato "
 "antes de que expire el plazo de desistimiento del contrato."
 
-#: src/Service/AnnexGeneratorService.php:72
+#: src/Service/AnnexGeneratorService.php:75
 msgid "Effects of withdrawal"
 msgstr "Consecuencias de la rescisión del contrato"
 
 #. translators: %d: number of days
-#: src/Service/AnnexGeneratorService.php:75
+#: src/Service/AnnexGeneratorService.php:78
 msgid ""
 "If you withdraw from this contract, we shall reimburse to you all payments "
 "received from you, including the costs of delivery (with the exception of "
@@ -10308,7 +10302,7 @@ msgstr ""
 " caso a más tardar %d días a partir del día en que se nos informe sobre su "
 "decisión de ejercer el derecho de rescindir este contrato."
 
-#: src/Service/AnnexGeneratorService.php:78
+#: src/Service/AnnexGeneratorService.php:81
 msgid ""
 "We will carry out such reimbursement using the same means of payment as you "
 "used for the initial transaction, unless you have expressly agreed "
@@ -10320,7 +10314,7 @@ msgstr ""
 "solución diferente; en cualquier caso, no incurrirá en ningún cargo "
 "relacionado con este reembolso."
 
-#: src/Service/AnnexGeneratorService.php:79
+#: src/Service/AnnexGeneratorService.php:82
 msgid ""
 "We may withhold reimbursement until we have received the goods back or you "
 "have supplied evidence of having sent back the goods, whichever is the "
@@ -10330,7 +10324,7 @@ msgstr ""
 " proporciones un comprobante de devolución, dependiendo de qué evento ocurra"
 " primero."
 
-#: src/Service/AnnexGeneratorService.php:80
+#: src/Service/AnnexGeneratorService.php:83
 msgid ""
 "You shall send back the goods or hand them over to us at the address above, "
 "without undue delay and in any event not later than 14 days from the day on "
@@ -10342,12 +10336,12 @@ msgstr ""
 "poinformowali nas Państwo o odstąpieniu od niniejszej umowy. Termin jest "
 "zachowany, jeżeli odeślą Państwo rzecz przed upływem terminu 14 dni."
 
-#: src/Service/AnnexGeneratorService.php:81
+#: src/Service/AnnexGeneratorService.php:84
 msgid "You will have to bear the direct cost of returning the goods."
 msgstr ""
 "Tendrás que correr con los costes directos de devolución de los artículos."
 
-#: src/Service/AnnexGeneratorService.php:82
+#: src/Service/AnnexGeneratorService.php:85
 msgid ""
 "You are only liable for any diminished value of the goods resulting from the"
 " handling other than what is necessary to establish the nature, "
@@ -10357,11 +10351,11 @@ msgstr ""
 "resulte de su uso de una manera distinta a la necesaria para establecer la "
 "naturaleza, características y funcionamiento del artículo."
 
-#: src/Service/AnnexGeneratorService.php:102
+#: src/Service/AnnexGeneratorService.php:105
 msgid "Model withdrawal form"
 msgstr "Formulario de desistimiento de muestra"
 
-#: src/Service/AnnexGeneratorService.php:103
+#: src/Service/AnnexGeneratorService.php:106
 msgid ""
 "(complete and return this form only if you wish to withdraw from the "
 "contract)"
@@ -10369,11 +10363,11 @@ msgstr ""
 "(este formulario debe cumplimentarse y devolverse sólo si desea desistir del"
 " contrato)"
 
-#: src/Service/AnnexGeneratorService.php:105
+#: src/Service/AnnexGeneratorService.php:108
 msgid "Addressee:"
 msgstr "Dirección:"
 
-#: src/Service/AnnexGeneratorService.php:117
+#: src/Service/AnnexGeneratorService.php:120
 msgid ""
 "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
 "of sale of the following goods (*)/for the provision of the following "
@@ -10385,35 +10379,35 @@ msgstr ""
 " en la realización de los siguientes artículos(*)/para la prestación del "
 "siguiente servicio(*):"
 
-#: src/Service/AnnexGeneratorService.php:119
+#: src/Service/AnnexGeneratorService.php:122
 msgid "Ordered on (*)/received on (*):"
 msgstr "Datos zawarcia umowy(*)/odbioru(*):"
 
-#: src/Service/AnnexGeneratorService.php:121
+#: src/Service/AnnexGeneratorService.php:124
 msgid "Name of consumer(s):"
 msgstr "Nombre y apellidos del(los) consumidor(es):"
 
-#: src/Service/AnnexGeneratorService.php:123
+#: src/Service/AnnexGeneratorService.php:126
 msgid "Address of consumer(s):"
 msgstr "Dirección de consumo(-ów):"
 
-#: src/Service/AnnexGeneratorService.php:125
+#: src/Service/AnnexGeneratorService.php:128
 msgid "Signature of consumer(s) (only if this form is notified on paper):"
 msgstr ""
 "Firma del(los) consumidor(es) (sólo si el formulario se envía en papel):"
 
-#: src/Service/AnnexGeneratorService.php:127
+#: src/Service/AnnexGeneratorService.php:130
 #: src/Service/ComplaintTemplateService.php:179
 msgid "Date:"
 msgstr "Datos:"
 
-#: src/Service/AnnexGeneratorService.php:129
+#: src/Service/AnnexGeneratorService.php:132
 msgid "(*) Delete as appropriate."
 msgstr "(*) Táchese lo que no corresponda."
 
 #. translators: %s: lookup page URL where the consumer can file an online
 #. withdrawal declaration
-#: src/Service/AnnexGeneratorService.php:133
+#: src/Service/AnnexGeneratorService.php:136
 msgid ""
 "You can also file the declaration online: <a href=\"%s\">withdrawal "
 "form</a>."
