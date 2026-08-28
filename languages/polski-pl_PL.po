@@ -139,7 +139,7 @@ msgstr "Szkic"
 
 #: config/defaults.php:39 src/Admin/AdminPage.php:1066
 msgid "Not created"
-msgstr "Nieutworzona"
+msgstr "Nie utworzono"
 
 #: config/defaults.php:40 src/Admin/AdminPage.php:1064
 msgid "Edit"
@@ -155,7 +155,7 @@ msgstr "Wygeneruj strony prawne"
 
 #: config/defaults.php:43 src/Admin/AdminPage.php:1089
 msgid "Next steps"
-msgstr "Kolejne kroki"
+msgstr "Następne kroki"
 
 #: config/defaults.php:44
 msgid ""
@@ -223,7 +223,7 @@ msgstr ""
 
 #: config/defaults.php:57 src/Admin/ModulesPage.php:2814
 msgid "detected, integration active"
-msgstr "wykryta, integracja aktywna"
+msgstr "wykryto, integracja aktywna"
 
 #: config/defaults.php:58
 msgid "not detected"
@@ -474,7 +474,7 @@ msgstr "Cena"
 
 #: config/defaults.php:154 src/Admin/ModulesPage.php:441
 msgid "(This product is excluded from the right of withdrawal)"
-msgstr "(Ten produkt jest wyłączony z prawa odstąpienia)"
+msgstr "(Ten produkt jest wyłączony z prawa odstąpienia od umowy)"
 
 #: config/defaults.php:155 src/Admin/ModulesPage.php:442
 #: src/Service/WithdrawalService.php:953
@@ -495,7 +495,7 @@ msgstr "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
 #: src/Rest/WithdrawalController.php:133
 #: src/Shortcode/ShortcodeManager.php:248
 msgid "We could not find that order."
-msgstr "Nie znaleźliśmy tego zamówienia."
+msgstr "Niestety, nie udało nam się znaleźć takiego zamówienia."
 
 #: config/defaults.php:159
 msgid "You are not allowed to withdraw from this order."
@@ -610,7 +610,7 @@ msgstr "Aktywuj swoje konto w {site_title}"
 #: config/defaults.php:198 src/Admin/ModulesPage.php:605
 #: src/Email/DoubleOptInEmail.php:74 src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
-msgstr "Potwierdź swój adres email"
+msgstr "Potwierdź swój adres e-mail"
 
 #: config/defaults.php:200 templates/emails/double-opt-in.php:36
 msgid ""
@@ -669,7 +669,7 @@ msgstr "Imię i nazwisko"
 #: src/Admin/WithdrawalsAdminPage.php:390
 #: src/Service/CustomCheckoutFieldsService.php:686
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: config/defaults.php:223 src/Admin/WithdrawalsAdminPage.php:389
 #: src/Service/CustomCheckoutFieldsService.php:688
@@ -923,7 +923,7 @@ msgstr "Dowolna"
 #: config/defaults.php:360 src/AIFeed/ProductMarkdownBuilder.php:189
 #: src/Service/FilterService.php:607 templates/forms/ajax-filters.php:210
 msgid "In stock"
-msgstr "Dostępne od ręki"
+msgstr "Na stanie"
 
 #: config/defaults.php:361 src/Service/FilterService.php:615
 #: templates/forms/ajax-filters.php:218
@@ -969,7 +969,7 @@ msgstr "Zamknij"
 #: config/defaults.php:388 src/Admin/ModulesPage.php:719
 #: src/Service/WishlistService.php:178
 msgid "Wishlist"
-msgstr "Ulubione"
+msgstr "Lista życzeń"
 
 #: config/defaults.php:389
 msgid "Add to wishlist"
@@ -1014,7 +1014,7 @@ msgstr "Usuń z porównania"
 
 #: config/defaults.php:412 src/Service/CompareService.php:425
 msgid "Log in to use product comparison."
-msgstr "Zaloguj się, aby korzystać z porównania produktów."
+msgstr "Zaloguj się, aby korzystać z porównywania produktów."
 
 #: config/defaults.php:414
 msgid ""
@@ -1026,7 +1026,7 @@ msgstr ""
 
 #: config/defaults.php:415 src/Service/CompareService.php:435
 msgid "You cannot clear the comparison."
-msgstr "Nie możesz wyczyścić porównania."
+msgstr "Nie można wyczyścić porównania."
 
 #: config/defaults.php:417
 msgid "The comparison list is empty."
@@ -1225,7 +1225,7 @@ msgstr "Zostaw adres email, a damy znać, gdy produkt wróci na stan."
 #: config/defaults.php:605 templates/forms/dsa-report.php:53
 #: templates/single-product/waitlist-form.php:27
 msgid "Email address"
-msgstr "Adres email"
+msgstr "Adres e-mail"
 
 #: config/defaults.php:606 templates/single-product/waitlist-form.php:28
 msgid "Your email address"
@@ -1289,7 +1289,7 @@ msgstr "Wymagane"
 
 #: config/defaults.php:630 src/PageCompliance/Enum/Severity.php:20
 msgid "Optional"
-msgstr "Opcjonalne"
+msgstr "Opcjonalnie"
 
 #: config/defaults.php:631
 msgid "Choose an option"
@@ -1441,7 +1441,7 @@ msgstr "Dystrybutor"
 
 #: config/defaults.php:717 src/Admin/CSVImportExport.php:99
 msgid "Net quantity"
-msgstr "Zawartość netto"
+msgstr "Ilość netto"
 
 #. translators: 1: customer first name (possibly anonymized), 2: product name
 #: config/defaults.php:745
@@ -1615,7 +1615,7 @@ msgstr "Nie masz uprawnień do wyświetlenia tej strony."
 #: src/Admin/WithdrawalOrderMetaBox.php:137
 #: src/Service/ReturnRequestService.php:267
 msgid "You do not have permission."
-msgstr "Brak uprawnień."
+msgstr "Nie masz uprawnień."
 
 #: src/Admin/AdminPage.php:253 src/Admin/AdminPage.php:254
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:472
@@ -1820,7 +1820,7 @@ msgstr ""
 #: src/Admin/AdminPage.php:759 src/Admin/ModulesPage.php:1113
 #: src/Service/SecurityIncidentService.php:131
 msgid "Incident log"
-msgstr "Logi incydentów"
+msgstr "Rejestr incydentów"
 
 #: src/Admin/AdminPage.php:760
 msgid ""
@@ -2304,11 +2304,11 @@ msgstr "Wyłączenie prawa odstąpienia"
 
 #: src/Admin/CSVImportExport.php:94
 msgid "Nutrition values"
-msgstr ""
+msgstr "Wartości odżywcze"
 
 #: src/Admin/CSVImportExport.php:95
 msgid "Nutrition reference quantity"
-msgstr ""
+msgstr "Referencyjna wartość odżywcza"
 
 #: src/Admin/CSVImportExport.php:97 src/Admin/ModulesPage.php:559
 #: src/Service/FoodService.php:416
@@ -2349,16 +2349,16 @@ msgstr "GPSR - Instrukcje bezpieczeństwa"
 
 #: src/Admin/CSVImportExport.php:108 src/Admin/ProductMetaBox.php:308
 msgid "Guarantee of durability (months)"
-msgstr ""
+msgstr "Gwarancja trwałości (miesięcy)"
 
 #: src/Admin/CSVImportExport.php:109 src/Admin/ProductMetaBox.php:317
 msgid "Free software updates (months)"
-msgstr ""
+msgstr "Bezpłatne aktualizacje oprogramowania (miesiące)"
 
 #: src/Admin/CSVImportExport.php:110 src/Admin/ProductMetaBox.php:326
 #: src/Service/ConsumerInformationService.php:120
 msgid "Repair information"
-msgstr ""
+msgstr "Informacje dotyczące naprawy"
 
 #: src/Admin/CSVImportExport.php:111 src/Admin/ProductMetaBox.php:344
 msgid "Environmental claim basis"
@@ -2648,6 +2648,13 @@ msgid ""
 "it off stops new pages being generated; pages you already have stay "
 "published and keep being used."
 msgstr ""
+"Generuje dla ciebie standardowe strony z informacjami prawnymi. Gdy ta "
+"funkcja jest włączona, może tworzyć strony z Regulaminem, Polityką "
+"prywatności, Informacją o prawie do odstąpienia od umowy oraz Procedurą "
+"składania reklamacji, dając ci punkt wyjścia do przygotowania dokumentów "
+"wymaganych w twoim sklepie. Wyłączenie tej funkcji zatrzymuje generowanie "
+"nowych stron; te, które już masz, pozostają opublikowane i nadal będą "
+"używane."
 
 #: src/Admin/ModulesPage.php:100
 msgid ""
@@ -2719,6 +2726,14 @@ msgid ""
 "harmonised label artwork for the durability guarantee comes from a separate "
 "implementing act, so this module renders plain labelled rows."
 msgstr ""
+"Dodaje informacje przedumowne wymagane przez dyrektywę (UE) 2024/825 od 27 "
+"września 2026 r. Po włączeniu tej funkcji na stronie produktu pojawia się "
+"przypomnienie o obowiązywaniu ustawowej gwarancji zgodności, a każdy produkt"
+" zyskuje pola dotyczące gwarancji handlowej na trwałość, okresu bezpłatnych "
+"aktualizacji oprogramowania dla towarów zawierających elementy cyfrowe oraz "
+"informacji o naprawach. Zharmonizowany szablon etykiety gwarancji trwałości "
+"pochodzi z osobnego aktu wykonawczego, więc ten moduł wyświetla po prostu "
+"wiersze z etykietami."
 
 #: src/Admin/ModulesPage.php:106
 msgid ""
@@ -3706,7 +3721,7 @@ msgstr "Opis - Polityka prywatności"
 #: src/Service/SiteAuditService.php:659
 #: src/Service/WithdrawalExemptionService.php:215
 msgid "Right of withdrawal"
-msgstr "Prawo odstąpienia od umowy"
+msgstr "Prawo odstąpienia"
 
 #. translators: %s: withdrawal information URL placeholder
 #: src/Admin/ModulesPage.php:326
@@ -4488,7 +4503,7 @@ msgstr "Zawartość netto"
 
 #: src/Admin/ModulesPage.php:568 src/Admin/ProductMetaBox.php:304
 msgid "Consumer information (2024/825)"
-msgstr ""
+msgstr "Informacje dla konsumentów (2024/825)"
 
 #: src/Admin/ModulesPage.php:569
 msgid ""
@@ -4496,14 +4511,17 @@ msgid ""
 "period and repair information on the product page. Required from 27 "
 "September 2026."
 msgstr ""
+"Przypomnienie o gwarancji prawnej, gwarancji trwałości, okresie bezpłatnych "
+"aktualizacji oprogramowania oraz informacje o naprawach na stronie produktu."
+" Obowiązuje od 27 września 2026 r."
 
 #: src/Admin/ModulesPage.php:575
 msgid "Show the legal guarantee reminder"
-msgstr ""
+msgstr "Pokaż przypomnienie o gwarancji prawnej"
 
 #: src/Admin/ModulesPage.php:576
 msgid "Legal guarantee reminder"
-msgstr ""
+msgstr "Przypomnienie o gwarancji prawnej"
 
 #: src/Admin/ModulesPage.php:581
 msgid "Power Supply Info"
@@ -7051,7 +7069,7 @@ msgstr "Selektor CSS (dla kliknięcia)"
 
 #: src/Admin/ModulesPage.php:2298
 msgid "Sorry, you are not allowed to access this page."
-msgstr "Nie masz uprawnień do tej strony."
+msgstr "Brak uprawnień dostępu do wybranej strony."
 
 #: src/Admin/ModulesPage.php:2305 src/Admin/ModulesPage.php:2321
 msgid "Invalid request."
@@ -7649,16 +7667,23 @@ msgid ""
 "empty when there is none; the statutory guarantee is announced separately in"
 " the module settings."
 msgstr ""
+"Tylko wtedy, gdy producent oferuje komercyjną gwarancję trwałości. Jeśli jej"
+" nie ma, zostaw to pole puste; gwarancja ustawowa jest podana osobno w "
+"ustawieniach modułu."
 
 #: src/Admin/ProductMetaBox.php:318
 msgid "For goods with digital elements: how long free updates are supplied."
 msgstr ""
+"W przypadku produktów zawierających elementy cyfrowe: jak długo zapewniane "
+"są bezpłatne aktualizacje."
 
 #: src/Admin/ProductMetaBox.php:327
 msgid ""
 "Repairability score where one is established, otherwise spare part "
 "availability and repair contact."
 msgstr ""
+"Ocena możliwości naprawy, jeśli została ustalona; w przeciwnym razie – "
+"dostępność części zamiennych i dane kontaktowe serwisu."
 
 #: src/Admin/ProductMetaBox.php:340
 msgid "Environmental claims (Anti-greenwashing)"
@@ -7697,42 +7722,42 @@ msgstr "od %d zł/rok"
 #. translators: 1: currency symbol, 2: yearly price
 #: src/Admin/ProUpsell.php:82
 msgid "from %1$s%2$d/yr"
-msgstr ""
+msgstr "od %1$s%2$d/rok"
 
 #: src/Admin/ProUpsell.php:114
 msgid "Permission denied."
-msgstr ""
+msgstr "Odmowa dostępu."
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:144
 msgid "Do more with %s"
-msgstr ""
+msgstr "Zrób więcej z %s"
 
 #: src/Admin/ProUpsell.php:149 src/Admin/ProUpsell.php:188
 msgid "Upgrade to PRO"
-msgstr ""
+msgstr "Ulepsz do PRO"
 
 #: src/Admin/ProUpsell.php:151
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Odrzuć powiadomienie"
 
 #: src/Admin/ProUpsell.php:173
 msgid "Unlock every PRO feature"
-msgstr ""
+msgstr "Odblokuj wszystkie funkcje PRO"
 
 #. translators: %d: number of additional PRO features not listed above
 #: src/Admin/ProUpsell.php:185
 msgid "+%d more in PRO"
-msgstr ""
+msgstr "+%d więcej w wersji PRO"
 
 #: src/Admin/ProUpsell.php:191
 msgid "one licence, every PRO feature"
-msgstr ""
+msgstr "jedna licencja, wszystkie funkcje PRO"
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:210
 msgid "What %s adds"
-msgstr ""
+msgstr "Co dodaje %s"
 
 #: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
@@ -7896,11 +7921,11 @@ msgstr "Zaznacz odstąpienie #%d"
 
 #: src/Admin/WithdrawalsAdminPage.php:210
 msgid "Classified automatically by AI"
-msgstr ""
+msgstr "Klasyfikowane automatycznie przez sztuczną inteligencję"
 
 #: src/Admin/WithdrawalsAdminPage.php:214
 msgid "(classified automatically by AI)"
-msgstr ""
+msgstr "(sklasyfikowane automatycznie przez sztuczną inteligencję)"
 
 #: src/Admin/WithdrawalsAdminPage.php:233
 #: src/Admin/WithdrawalsAdminPage.php:412
@@ -8209,7 +8234,7 @@ msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:346
 msgid "Label AI-generated content"
-msgstr ""
+msgstr "Oznacz treści wygenerowane przez sztuczną inteligencję"
 
 #: src/Admin/WithdrawalSettingsPage.php:355
 msgid ""
@@ -8217,6 +8242,10 @@ msgid ""
 "(for example descriptions written by the Pro AI generator), and add a "
 "machine-readable marker to that content."
 msgstr ""
+"Umieść na stronie sklepu krótką informację o treściach dotyczących produktów"
+" wygenerowanych przez sztuczną inteligencję (na przykład opisach stworzonych"
+" przez generator Pro AI) i dodaj do tych treści znacznik rozpoznawalny przez"
+" maszynę."
 
 #. translators: %s: link to the AI Act article 50 text.
 #: src/Admin/WithdrawalSettingsPage.php:361
@@ -8225,10 +8254,14 @@ msgid ""
 "content (%s). This is compliance support, not legal advice; the exact "
 "obligation for your store is yours to confirm."
 msgstr ""
+"Włączone domyślnie. Pomaga spełnić oczekiwania dotyczące przejrzystości w "
+"odniesieniu do treści syntetycznych (%s). To tylko wskazówka dotycząca "
+"zgodności z przepisami, a nie porada prawna; to ty musisz sprawdzić, jakie "
+"dokładnie obowiązki dotyczą twojego sklepu."
 
 #: src/Admin/WithdrawalSettingsPage.php:362
 msgid "AI Act, art. 50"
-msgstr ""
+msgstr "Ustawa o sztucznej inteligencji, art. 50"
 
 #: src/AIFeed/LlmsTxtService.php:94
 msgid "Legal"
@@ -8993,11 +9026,11 @@ msgstr "Skorupiaki"
 
 #: src/Migration/Migration_2_6_0.php:35
 msgid "Eggs"
-msgstr "Jaja"
+msgstr "Jajka"
 
 #: src/Migration/Migration_2_6_0.php:36
 msgid "Fish"
-msgstr "Ryby"
+msgstr "Ryba"
 
 #: src/Migration/Migration_2_6_0.php:37
 msgid "Peanuts"
@@ -9021,7 +9054,7 @@ msgstr "Seler"
 
 #: src/Migration/Migration_2_6_0.php:42
 msgid "Mustard"
-msgstr "Gorczyca"
+msgstr "Musztarda"
 
 #: src/Migration/Migration_2_6_0.php:43
 msgid "Sesame seeds"
@@ -9033,7 +9066,7 @@ msgstr "Dwutlenek siarki i siarczyny"
 
 #: src/Migration/Migration_2_6_0.php:45
 msgid "Lupin"
-msgstr "Łubin"
+msgstr "Lupin"
 
 #: src/Migration/Migration_2_6_0.php:46
 msgid "Molluscs"
@@ -10752,23 +10785,26 @@ msgid ""
 "conformity. If the goods do not conform to the contract, you have the "
 "remedies provided by law, free of charge."
 msgstr ""
+"Towary sprzedawane w tym sklepie objęte są ustawową gwarancją zgodności. "
+"Jeśli towary nie są zgodne z umową, przysługują ci przewidziane prawem "
+"środki zaradcze, z których możesz skorzystać bezpłatnie."
 
 #: src/Service/ConsumerInformationService.php:97
 msgid "Guarantee of durability"
-msgstr ""
+msgstr "Gwarancja trwałości"
 
 #. translators: %d: number of months.
 #: src/Service/ConsumerInformationService.php:100
 #: src/Service/ConsumerInformationService.php:112
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d miesiąc"
+msgstr[1] "%d miesiące"
+msgstr[2] "%d miesięcy"
 
 #: src/Service/ConsumerInformationService.php:109
 msgid "Free software updates"
-msgstr ""
+msgstr "Bezpłatne aktualizacje oprogramowania"
 
 #: src/Service/CopyrightNoticeService.php:45
 msgid "Copyright notice"
@@ -11116,39 +11152,39 @@ msgstr "Zaktualizowano wyniki."
 
 #: src/Service/FoodService.php:151
 msgid "Energy (kJ)"
-msgstr ""
+msgstr "Wartość energetyczna (kJ)"
 
 #: src/Service/FoodService.php:152
 msgid "Energy (kcal)"
-msgstr ""
+msgstr "Wartość energetyczna (kcal)"
 
 #: src/Service/FoodService.php:153
 msgid "Fat"
-msgstr ""
+msgstr "Tłuszcz"
 
 #: src/Service/FoodService.php:154
 msgid "of which saturates"
-msgstr ""
+msgstr "z czego tłuszczów nasyconych"
 
 #: src/Service/FoodService.php:155
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Węglowodany"
 
 #: src/Service/FoodService.php:156
 msgid "of which sugars"
-msgstr ""
+msgstr "w tym cukry"
 
 #: src/Service/FoodService.php:157
 msgid "Fibre"
-msgstr ""
+msgstr "Włókna"
 
 #: src/Service/FoodService.php:158
 msgid "Protein"
-msgstr ""
+msgstr "Białko"
 
 #: src/Service/FoodService.php:159
 msgid "Salt"
-msgstr ""
+msgstr "Sól"
 
 #: src/Service/GPSRService.php:94
 msgid "GPSR"
@@ -12633,7 +12669,7 @@ msgstr "Nie udało się utworzyć konta. Spróbuj ponownie."
 
 #: src/Service/SocialProofService.php:82
 msgid "Dismiss"
-msgstr ""
+msgstr "Odrzuć"
 
 #: src/Service/SocialProofService.php:211
 msgid "just now"
@@ -13821,7 +13857,7 @@ msgstr ""
 
 #: templates/shared/popup.php:33
 msgid "Continue"
-msgstr "Przejdź dalej"
+msgstr "Dalej"
 
 #: templates/single-product/gpsr-info.php:17
 msgid "Importer"
@@ -13922,22 +13958,22 @@ msgstr "Alergeny"
 #: blocks/allergens/block.json
 msgctxt "block description"
 msgid "Displays the allergen declaration for the current product."
-msgstr "Wyświetla informację o alergenach dla bieżącego produktu."
+msgstr "Wyświetla deklarację alergenów dla bieżącego produktu."
 
 #: blocks/bdo/block.json
 msgctxt "block title"
 msgid "BDO number"
-msgstr "Numer BDO"
+msgstr "numer BDO"
 
 #: blocks/bdo/block.json
 msgctxt "block description"
 msgid "Displays the shop's BDO registration number from the Polski settings."
-msgstr "Wyświetla numer rejestrowy BDO sklepu z ustawień Polski."
+msgstr "Wyświetla numer rejestracyjny BDO sklepu z ustawień Polski."
 
 #: blocks/business-info/block.json
 msgctxt "block title"
 msgid "Business identification"
-msgstr "Identyfikacja firmy"
+msgstr "Identyfikacja biznesowa"
 
 #: blocks/business-info/block.json
 msgctxt "block description"
@@ -13951,7 +13987,7 @@ msgstr ""
 #: blocks/complaints/block.json
 msgctxt "block title"
 msgid "Dispute resolution notice"
-msgstr "Informacja o rozstrzyganiu sporów"
+msgstr "Powiadomienie o rozstrzygnięciu sporu"
 
 #: blocks/complaints/block.json
 msgctxt "block description"
@@ -13965,12 +14001,12 @@ msgstr ""
 #: blocks/copyright/block.json
 msgctxt "block title"
 msgid "Copyright notice"
-msgstr "Nota o prawach autorskich"
+msgstr "Informacja o prawach autorskich"
 
 #: blocks/copyright/block.json
 msgctxt "block description"
 msgid "A standard copyright line (© YYYY Owner)."
-msgstr "Standardowa linia praw autorskich (© RRRR Właściciel)."
+msgstr "Standardowa linia dotycząca praw autorskich (© YYYY Owner)."
 
 #: blocks/defect-description/block.json
 msgctxt "block title"
@@ -13980,7 +14016,7 @@ msgstr "Opis wady"
 #: blocks/defect-description/block.json
 msgctxt "block description"
 msgid "Displays the description of defects for the current product."
-msgstr "Wyświetla opis wad dla bieżącego produktu."
+msgstr "Wyświetla opis wad bieżącego produktu."
 
 #: blocks/delivery-time/block.json
 msgctxt "block title"
@@ -13990,40 +14026,42 @@ msgstr "Czas dostawy"
 #: blocks/delivery-time/block.json
 msgctxt "block description"
 msgid "Displays the estimated delivery time for the current product."
-msgstr "Wyświetla szacowany czas dostawy dla bieżącego produktu."
+msgstr "Wyświetla szacowany czas dostawy aktualnego produktu."
 
 #: blocks/dsa-report/block.json
 msgctxt "block title"
 msgid "DSA report form"
-msgstr "Formularz zgłoszenia DSA"
+msgstr "Formularz raportu DSA"
 
 #: blocks/dsa-report/block.json
 msgctxt "block description"
 msgid "A form for reporting illegal content under the Digital Services Act."
 msgstr ""
-"Formularz do zgłaszania nielegalnych treści zgodnie z aktem o usługach "
-"cyfrowych (DSA)."
+"Formularz służący do zgłaszania treści o charakterze bezprawnym w rozumieniu"
+" ustawy o usługach cyfrowych."
 
 #: blocks/food-info/block.json
 msgctxt "block title"
 msgid "Food Information"
-msgstr "Informacje o żywności"
+msgstr "Informacje o jedzeniu"
 
 #: blocks/food-info/block.json
 msgctxt "block description"
 msgid "Displays food and grocery information for the current product."
-msgstr "Wyświetla informacje o żywności dla bieżącego produktu."
+msgstr ""
+"Wyświetla informacje o żywności i artykułach spożywczych dla bieżącego "
+"produktu."
 
 #: blocks/gpsr/block.json
 msgctxt "block title"
 msgid "GPSR safety information"
-msgstr "Informacja o bezpieczeństwie produktu (GPSR)"
+msgstr "Informacje dotyczące bezpieczeństwa GPSR"
 
 #: blocks/gpsr/block.json
 msgctxt "block description"
 msgid "Displays the GPSR product safety information for the current product."
 msgstr ""
-"Wyświetla informację o bezpieczeństwie produktu (GPSR) dla bieżącego "
+"Wyświetla informacje dotyczące bezpieczeństwa produktu GPSR dla bieżącego "
 "produktu."
 
 #: blocks/ingredients/block.json
@@ -14034,7 +14072,7 @@ msgstr "Składniki"
 #: blocks/ingredients/block.json
 msgctxt "block description"
 msgid "Displays the ingredients list for the current product."
-msgstr "Wyświetla listę składników dla bieżącego produktu."
+msgstr "Wyświetla listę składników bieżącego produktu."
 
 #: blocks/manufacturer/block.json
 msgctxt "block title"
@@ -14052,7 +14090,7 @@ msgstr ""
 #: blocks/nutri-score/block.json
 msgctxt "block title"
 msgid "Nutri-Score"
-msgstr "Nutri-Score"
+msgstr "Wynik Nutri"
 
 #: blocks/nutri-score/block.json
 msgctxt "block description"
@@ -14062,17 +14100,17 @@ msgstr "Wyświetla etykietę Nutri-Score dla bieżącego produktu."
 #: blocks/nutrients/block.json
 msgctxt "block title"
 msgid "Nutritional Information"
-msgstr "Informacje o wartości odżywczej"
+msgstr "Informacje o wartościach odżywczych"
 
 #: blocks/nutrients/block.json
 msgctxt "block description"
 msgid "Displays the nutritional information for the current product."
-msgstr "Wyświetla wartości odżywcze dla bieżącego produktu."
+msgstr "Wyświetla informacje o wartości odżywczej bieżącego produktu."
 
 #: blocks/omnibus-price/block.json
 msgctxt "block title"
 msgid "Lowest Price (Omnibus)"
-msgstr "Najniższa cena (Omnibus)"
+msgstr "Najniższa cena (omnibus)"
 
 #: blocks/omnibus-price/block.json
 msgctxt "block description"
@@ -14086,12 +14124,12 @@ msgstr ""
 #: blocks/payment-methods/block.json
 msgctxt "block title"
 msgid "Accepted payment methods"
-msgstr "Dostępne metody płatności"
+msgstr "Akceptowane metody płatności"
 
 #: blocks/payment-methods/block.json
 msgctxt "block description"
 msgid "Lists the payment methods available in your store."
-msgstr "Wyświetla listę metod płatności dostępnych w sklepie."
+msgstr "Wyświetla listę metod płatności dostępnych w Twoim sklepie."
 
 #: blocks/power-supply/block.json
 msgctxt "block title"
@@ -14101,7 +14139,7 @@ msgstr "Zasilanie"
 #: blocks/power-supply/block.json
 msgctxt "block description"
 msgid "Displays the power supply information for the current product."
-msgstr "Wyświetla informacje o zasilaniu dla bieżącego produktu."
+msgstr "Wyświetla informacje o zasilaniu bieżącego produktu."
 
 #: blocks/safety-docs/block.json
 msgctxt "block title"
@@ -14124,7 +14162,7 @@ msgstr "Instrukcje bezpieczeństwa"
 #: blocks/safety-info/block.json
 msgctxt "block description"
 msgid "Displays the product safety instructions for the current product."
-msgstr "Wyświetla instrukcje bezpieczeństwa dla bieżącego produktu."
+msgstr "Wyświetla instrukcje dotyczące bezpieczeństwa bieżącego produktu."
 
 #: blocks/shipping-notice/block.json
 msgctxt "block title"
@@ -14134,12 +14172,12 @@ msgstr "Koszty wysyłki"
 #: blocks/shipping-notice/block.json
 msgctxt "block description"
 msgid "Displays the shipping cost notice for the current product."
-msgstr "Wyświetla informację o kosztach wysyłki dla bieżącego produktu."
+msgstr "Wyświetla informację o kosztach wysyłki bieżącego produktu."
 
 #: blocks/small-business-notice/block.json
 msgctxt "block title"
 msgid "Small business VAT notice"
-msgstr "Informacja o zwolnieniu z VAT (mały podatnik)"
+msgstr "Informacja o podatku VAT dla małych firm"
 
 #: blocks/small-business-notice/block.json
 msgctxt "block description"
@@ -14219,7 +14257,7 @@ msgstr ""
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block title"
 msgid "Polski AJAX Filters"
-msgstr "Polski AJAX Filtry"
+msgstr "Filtry AJAX Polski"
 
 #: resources/js/blocks/ajax-filters/block.json
 msgctxt "block description"
@@ -14231,7 +14269,7 @@ msgstr ""
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block title"
 msgid "Polski AJAX Search"
-msgstr "Polski AJAX Wyszukiwarka"
+msgstr "Wyszukiwarka AJAX Polski"
 
 #: resources/js/blocks/ajax-search/block.json
 msgctxt "block description"
@@ -14242,7 +14280,7 @@ msgstr ""
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block title"
 msgid "Polski Product Slider"
-msgstr "Polski Slider produktów"
+msgstr "Slider produktów Polski"
 
 #: resources/js/blocks/product-slider/block.json
 msgctxt "block description"

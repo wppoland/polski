@@ -673,7 +673,7 @@ msgstr "Telefon"
 
 #: config/defaults.php:224
 msgid "Company"
-msgstr "Firma"
+msgstr "Společnost"
 
 #: config/defaults.php:225 src/Service/B2BCheckoutService.php:257
 #: src/Service/NipLookupService.php:74 src/Service/NipLookupService.php:151
@@ -774,7 +774,7 @@ msgstr "Stav poptávky byl aktualizován."
 #: src/Admin/WithdrawalsAdminPage.php:123 templates/forms/ajax-filters.php:153
 #: templates/forms/ajax-filters.php:177
 msgid "All"
-msgstr "Všechny"
+msgstr "Vše"
 
 #: config/defaults.php:256 src/Admin/AdminPage.php:906
 #: src/Admin/ConsentRecordsPage.php:68 src/Admin/DeactivationHandler.php:150
@@ -963,7 +963,7 @@ msgstr "Zavřít"
 #: config/defaults.php:388 src/Admin/ModulesPage.php:719
 #: src/Service/WishlistService.php:178
 msgid "Wishlist"
-msgstr "Oblíbené"
+msgstr "Seznam přání"
 
 #: config/defaults.php:389
 msgid "Add to wishlist"
@@ -2287,11 +2287,11 @@ msgstr "Vyloučení z práva na odstoupení"
 
 #: src/Admin/CSVImportExport.php:94
 msgid "Nutrition values"
-msgstr ""
+msgstr "Výživové hodnoty"
 
 #: src/Admin/CSVImportExport.php:95
 msgid "Nutrition reference quantity"
-msgstr ""
+msgstr "Referenční hodnota pro výživu"
 
 #: src/Admin/CSVImportExport.php:97 src/Admin/ModulesPage.php:559
 #: src/Service/FoodService.php:416
@@ -2332,16 +2332,16 @@ msgstr "GPSR - Bezpečnostní pokyny"
 
 #: src/Admin/CSVImportExport.php:108 src/Admin/ProductMetaBox.php:308
 msgid "Guarantee of durability (months)"
-msgstr ""
+msgstr "Záruka na životnost (měsíce)"
 
 #: src/Admin/CSVImportExport.php:109 src/Admin/ProductMetaBox.php:317
 msgid "Free software updates (months)"
-msgstr ""
+msgstr "Bezplatné aktualizace softwaru (měsíce)"
 
 #: src/Admin/CSVImportExport.php:110 src/Admin/ProductMetaBox.php:326
 #: src/Service/ConsumerInformationService.php:120
 msgid "Repair information"
-msgstr ""
+msgstr "Informace o opravách"
 
 #: src/Admin/CSVImportExport.php:111 src/Admin/ProductMetaBox.php:344
 msgid "Environmental claim basis"
@@ -2630,6 +2630,12 @@ msgid ""
 "it off stops new pages being generated; pages you already have stay "
 "published and keep being used."
 msgstr ""
+"Vytváří za vás standardní stránky s právními informacemi. Je-li tato funkce "
+"zapnutá, může vytvářet stránky s obchodními podmínkami, zásadami ochrany "
+"osobních údajů, právem na odstoupení od smlouvy a stížnostmi, čímž vám "
+"poskytne výchozí základ pro povinné dokumenty vašeho obchodu. Vypnutím této "
+"funkce se zastaví generování nových stránek; stránky, které již máte, "
+"zůstanou zveřejněné a budou se i nadále používat."
 
 #: src/Admin/ModulesPage.php:100
 msgid ""
@@ -2701,6 +2707,14 @@ msgid ""
 "harmonised label artwork for the durability guarantee comes from a separate "
 "implementing act, so this module renders plain labelled rows."
 msgstr ""
+"Přidává předsmluvní informace, které směrnice (EU) 2024/825 vyžaduje od 27. "
+"září 2026. Je-li tato funkce aktivována, na stránce produktu se zobrazí "
+"upozornění, že se na produkt vztahuje zákonná záruka shody, a u každého "
+"produktu se zobrazí pole pro obchodní záruku trvanlivosti, dobu bezplatných "
+"aktualizací softwaru u zboží s digitálními prvky a informace o opravách. "
+"Harmonizovaný grafický vzhled štítku pro záruku trvanlivosti vychází ze "
+"samostatného prováděcího aktu, proto tento modul zobrazuje řádky s prostým "
+"textem."
 
 #: src/Admin/ModulesPage.php:106
 msgid ""
@@ -4455,7 +4469,7 @@ msgstr "Netto obsah"
 
 #: src/Admin/ModulesPage.php:568 src/Admin/ProductMetaBox.php:304
 msgid "Consumer information (2024/825)"
-msgstr ""
+msgstr "Informace pro spotřebitele (2024/825)"
 
 #: src/Admin/ModulesPage.php:569
 msgid ""
@@ -4463,14 +4477,17 @@ msgid ""
 "period and repair information on the product page. Required from 27 "
 "September 2026."
 msgstr ""
+"Upozornění na zákonnou záruku, záruku na trvanlivost, dobu bezplatných "
+"aktualizací softwaru a informace o opravách na stránce produktu. Povinné od "
+"27. září 2026."
 
 #: src/Admin/ModulesPage.php:575
 msgid "Show the legal guarantee reminder"
-msgstr ""
+msgstr "Zobrazit upozornění na zákonnou záruku"
 
 #: src/Admin/ModulesPage.php:576
 msgid "Legal guarantee reminder"
-msgstr ""
+msgstr "Upozornění ohledně zákonné záruky"
 
 #: src/Admin/ModulesPage.php:581
 msgid "Power Supply Info"
@@ -7049,7 +7066,7 @@ msgstr "Pokročilé a nástroje"
 #: src/Service/SecurityIncidentService.php:399
 #: templates/forms/dsa-report.php:21
 msgid "Other"
-msgstr "Andere"
+msgstr "Ostatní"
 
 #: src/Admin/ModulesPage.php:2535
 msgid "Prices and Display"
@@ -7575,7 +7592,7 @@ msgstr "Plná poštovní adresa dovozce."
 
 #: src/Admin/ProductMetaBox.php:274 templates/single-product/gpsr-info.php:19
 msgid "Responsible person"
-msgstr "Odpovědná osoba"
+msgstr "Verantwortliche Person"
 
 #: src/Admin/ProductMetaBox.php:275
 msgid "Person responsible in the EU for product compliance with GPSR."
@@ -7612,16 +7629,23 @@ msgid ""
 "empty when there is none; the statutory guarantee is announced separately in"
 " the module settings."
 msgstr ""
+"Pouze v případě, že výrobce poskytuje obchodní záruku na trvanlivost. Pokud "
+"taková záruka neexistuje, pole nechte prázdné; zákonná záruka je uvedena "
+"samostatně v nastavení modulu."
 
 #: src/Admin/ProductMetaBox.php:318
 msgid "For goods with digital elements: how long free updates are supplied."
 msgstr ""
+"U zboží obsahujícího digitální prvky: po jakou dobu jsou poskytovány "
+"bezplatné aktualizace."
 
 #: src/Admin/ProductMetaBox.php:327
 msgid ""
 "Repairability score where one is established, otherwise spare part "
 "availability and repair contact."
 msgstr ""
+"Hodnocení opravitelnosti, pokud je stanoveno; v opačném případě dostupnost "
+"náhradních dílů a kontaktní údaje pro opravy."
 
 #: src/Admin/ProductMetaBox.php:340
 msgid "Environmental claims (Anti-greenwashing)"
@@ -8945,59 +8969,59 @@ msgstr "m³"
 
 #: src/Migration/Migration_2_6_0.php:33
 msgid "Cereals containing gluten"
-msgstr ""
+msgstr "Obiloviny obsahující lepek"
 
 #: src/Migration/Migration_2_6_0.php:34
 msgid "Crustaceans"
-msgstr ""
+msgstr "Korýši"
 
 #: src/Migration/Migration_2_6_0.php:35
 msgid "Eggs"
-msgstr ""
+msgstr "Vejce"
 
 #: src/Migration/Migration_2_6_0.php:36
 msgid "Fish"
-msgstr ""
+msgstr "Ryby"
 
 #: src/Migration/Migration_2_6_0.php:37
 msgid "Peanuts"
-msgstr ""
+msgstr "Arašídy"
 
 #: src/Migration/Migration_2_6_0.php:38
 msgid "Soybeans"
-msgstr ""
+msgstr "Sójové boby"
 
 #: src/Migration/Migration_2_6_0.php:39
 msgid "Milk"
-msgstr ""
+msgstr "Mléko"
 
 #: src/Migration/Migration_2_6_0.php:40
 msgid "Nuts"
-msgstr ""
+msgstr "Ořechy"
 
 #: src/Migration/Migration_2_6_0.php:41
 msgid "Celery"
-msgstr ""
+msgstr "Celer"
 
 #: src/Migration/Migration_2_6_0.php:42
 msgid "Mustard"
-msgstr ""
+msgstr "Hořčice"
 
 #: src/Migration/Migration_2_6_0.php:43
 msgid "Sesame seeds"
-msgstr ""
+msgstr "Sezamová semínka"
 
 #: src/Migration/Migration_2_6_0.php:44
 msgid "Sulphur dioxide and sulphites"
-msgstr ""
+msgstr "Oxid siřičitý a siřičitany"
 
 #: src/Migration/Migration_2_6_0.php:45
 msgid "Lupin"
-msgstr ""
+msgstr "Lupin"
 
 #: src/Migration/Migration_2_6_0.php:46
 msgid "Molluscs"
-msgstr ""
+msgstr "Měkkýši"
 
 #: src/PageCompliance/Enum/Severity.php:19
 msgid "Recommended"
@@ -10693,23 +10717,26 @@ msgid ""
 "conformity. If the goods do not conform to the contract, you have the "
 "remedies provided by law, free of charge."
 msgstr ""
+"Na zboží prodávané v tomto obchodě se vztahuje zákonná záruka shody. Pokud "
+"zboží není v souladu se smlouvou, máte nárok na nápravu stanovenou zákonem, "
+"a to bezplatně."
 
 #: src/Service/ConsumerInformationService.php:97
 msgid "Guarantee of durability"
-msgstr ""
+msgstr "Záruka trvanlivosti"
 
 #. translators: %d: number of months.
 #: src/Service/ConsumerInformationService.php:100
 #: src/Service/ConsumerInformationService.php:112
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d měsíc"
+msgstr[1] "%d měsíce"
+msgstr[2] "%d měsíců"
 
 #: src/Service/ConsumerInformationService.php:109
 msgid "Free software updates"
-msgstr ""
+msgstr "Bezplatné aktualizace softwaru"
 
 #: src/Service/CopyrightNoticeService.php:45
 msgid "Copyright notice"
@@ -11055,39 +11082,39 @@ msgstr "Výsledky aktualizovány."
 
 #: src/Service/FoodService.php:151
 msgid "Energy (kJ)"
-msgstr ""
+msgstr "Energie (kJ)"
 
 #: src/Service/FoodService.php:152
 msgid "Energy (kcal)"
-msgstr ""
+msgstr "Energie (kcal)"
 
 #: src/Service/FoodService.php:153
 msgid "Fat"
-msgstr ""
+msgstr "Tuk"
 
 #: src/Service/FoodService.php:154
 msgid "of which saturates"
-msgstr ""
+msgstr "z toho nasycené"
 
 #: src/Service/FoodService.php:155
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Sacharidy"
 
 #: src/Service/FoodService.php:156
 msgid "of which sugars"
-msgstr ""
+msgstr "z toho cukry"
 
 #: src/Service/FoodService.php:157
 msgid "Fibre"
-msgstr ""
+msgstr "Vlákna"
 
 #: src/Service/FoodService.php:158
 msgid "Protein"
-msgstr ""
+msgstr "Bílkoviny"
 
 #: src/Service/FoodService.php:159
 msgid "Salt"
-msgstr ""
+msgstr "Sůl"
 
 #: src/Service/GPSRService.php:94
 msgid "GPSR"
@@ -11302,7 +11329,7 @@ msgstr ""
 
 #: src/Service/NipLookupService.php:164
 msgid "That VAT ID (NIP) is not valid."
-msgstr ""
+msgstr "Zadané číslo NIP je nesprávné."
 
 #: src/Service/NipLookupService.php:262
 msgid "Invalid VAT ID (NIP)."
