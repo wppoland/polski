@@ -63,6 +63,18 @@ final class AnnexGeneratorServiceTest extends TestCase
         self::assertStringContainsString('14 days', $html);
     }
 
+    public function testInfoRendersEachStatutoryHeadingExactlyOnce(): void
+    {
+        $svc = new AnnexGeneratorService();
+        $html = $svc->getInfoHtml();
+
+        // The block used to print a title of its own directly above the first
+        // statutory heading, so "Right of withdrawal" appeared twice in a row.
+        self::assertSame(1, substr_count($html, '<h2>Right of withdrawal</h2>'));
+        self::assertStringNotContainsString('<h3>Right of withdrawal</h3>', $html);
+        self::assertSame(1, substr_count($html, '<h2>Effects of withdrawal</h2>'));
+    }
+
     public function testFormContainsAnnexIBSectionHeading(): void
     {
         $svc = new AnnexGeneratorService();
