@@ -43,6 +43,25 @@ while IFS= read -r pattern; do
     rm -rf "${DIST_DIR}/${pattern}"
 done < "${ROOT_DIR}/.distignore"
 
+# One catalogue is put back on purpose: the plugin's own locale.
+#
+# WordPress.org builds language packs from the ORIGINALS in the released
+# package, so a release that changes source strings always lands before
+# translate.wordpress.org has ever seen the new msgids. No ordering avoids
+# that: you cannot import a translation for an original that does not exist
+# yet. 1.30.0 changed about 520 of them, so without this a Polish shop would
+# read an English interface between the release and the GlotPress import,
+# statutory withdrawal wording included.
+#
+# WordPress prefers the language pack where it has a string and falls back to
+# the bundled catalogue only where it does not, so this fills the gap without
+# ever overriding a translator. .distignore cannot express it: rsync
+# --exclude-from has no negation.
+if [[ -f "${ROOT_DIR}/languages/polski-pl_PL.mo" ]]; then
+    mkdir -p "${DIST_DIR}/languages"
+    cp "${ROOT_DIR}/languages/polski-pl_PL.mo" "${DIST_DIR}/languages/"
+fi
+
 find "${DIST_DIR}" -type d -empty -delete
 
 echo "Prepared WordPress.org release package in: ${DIST_DIR}"
