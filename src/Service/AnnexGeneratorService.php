@@ -33,9 +33,12 @@ final class AnnexGeneratorService implements HasHooks
         $days = $this->periodDays();
 
         $html = '<div class="polski-annex polski-annex--info">';
+        // Annex I(A) of Directive 2011/83/EU is two sections, "Right of
+        // withdrawal" and "Effects of withdrawal". They are the headings; the
+        // block does not need a title of its own on top, which is what used to
+        // print the first one twice in a row. Both sit at h2 so they match the
+        // form block and do not skip a level.
         $html .= '<h2>' . esc_html__('Right of withdrawal', 'polski') . '</h2>';
-
-        $html .= '<h3>' . esc_html__('Right of withdrawal', 'polski') . '</h3>';
         $html .= '<p>' . sprintf(
             /* translators: %d: number of days */
             esc_html__('You have the right to withdraw from this contract within %d days without giving any reason.', 'polski'),
@@ -69,7 +72,7 @@ final class AnnexGeneratorService implements HasHooks
         $html .= '<p>' . esc_html__('You may use the model withdrawal form, but it is not obligatory.', 'polski') . '</p>';
         $html .= '<p>' . esc_html__('To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired.', 'polski') . '</p>';
 
-        $html .= '<h3>' . esc_html__('Effects of withdrawal', 'polski') . '</h3>';
+        $html .= '<h2>' . esc_html__('Effects of withdrawal', 'polski') . '</h2>';
         $html .= '<p>' . sprintf(
             /* translators: %d: number of days */
             esc_html__('If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and in any event not later than %d days from the day on which we are informed about your decision to withdraw from this contract.', 'polski'),
