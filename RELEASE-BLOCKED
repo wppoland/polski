@@ -1,36 +1,50 @@
-Do not release until languages/polski-pl_PL.po is imported into GlotPress.
+Do not release until the locale catalogues are imported into GlotPress.
 
 Reason
 ------
-1.29.8 stopped bundling .mo files, so every locale, Polish included, now comes
-from the WordPress.org language pack. That pack is built from
+1.29.8 stopped bundling .mo files, so every locale now comes from the
+WordPress.org language pack, and those packs are built from
 translate.wordpress.org.
 
-1.30.0 replaced about 520 Polish source strings with English ones, so every
-msgid on translate.wordpress.org for those strings is stale. Until the new
-pl_PL catalogue is imported there, the pack cannot match them.
+1.30.0 replaced about 520 Polish source strings with English ones. Every msgid
+on translate.wordpress.org for those strings is stale, for EVERY locale, not
+only Polish. Until the new catalogues are imported there, the packs cannot
+match them and each affected locale drops by roughly 520 strings, which is
+below the threshold that gets a pack built at all.
 
 Releasing before the import leaves Polish shops with an English interface,
-including the statutory withdrawal instructions and the model withdrawal form.
+including the statutory withdrawal instructions and the model withdrawal form,
+and does the same to Czech, Slovak, Chinese and Belarusian.
+
+What to import
+--------------
+These files are already rebuilt against the new msgids. They take
+translate.wordpress.org as the source and only fill what it does not have, so
+importing them does not overwrite community wording.
+
+  languages/polski-pl_PL.po    100%   REQUIRED, has a pack today
+  languages/polski-cs_CZ.po    100%   has a pack today
+  languages/polski-sk_SK.po     94%   has a pack today
+  languages/polski-zh_CN.po     94%   has a pack today
+  languages/polski-bel.po       94%   has a pack today
+  languages/polski-es_ES.po     97%   no pack today, Spanish falls back to English
+  languages/polski-de_DE.po     97%   no pack today
+
+Import into the dev/<locale>/default/ and stable/<locale>/default/ sub-projects
+of https://translate.wordpress.org/projects/wp-plugins/polski/
+
+es_ES and de_DE are AI-assisted, so a GTE may refuse them. See
+plogins-plugins/GLOTPRESS-IMPORT.md before pushing those two.
 
 How to clear this
 -----------------
-1. Import polski/polski/languages/polski-pl_PL.po into the wp-plugins/polski
-   dev/pl/default/ and stable/pl/default/ sub-projects on
-   translate.wordpress.org. This needs PTE, so it cannot be done from a script.
-
-2. Confirm the pl_PL pack rebuilt:
+1. Import at least polski-pl_PL.po. Importing needs PTE, so no script can do it.
+2. Confirm the packs rebuilt:
 
      curl -s "https://api.wordpress.org/translations/plugins/1.0/?slug=polski" \
        | python3 -c "import sys,json;[print(t['language'],t['version'],t['updated']) for t in json.load(sys.stdin)['translations']]"
 
-   pl_PL should report the version being released, or one close to it, with a
-   fresh timestamp.
-
 3. Delete this file, commit the deletion, then run the release.
 
-Worth importing at the same time: languages/polski-es_ES.po. Spanish has no
-pack at all today, so the Spanish interface falls back to English. It is
-AI-assisted, so a GTE may refuse it; see plogins-plugins/GLOTPRESS-IMPORT.md.
-
 Raised 2026-08-27 with the 1.30.0 source-string change.
+Locale files rebuilt from translate.wordpress.org 2026-08-28.

@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.30.1 =
+* Rebuilt the bundled language catalogues from translate.wordpress.org rather than from the copies in the repository. Those copies had fallen behind: Polish was missing 43 strings that translators had already done, and disagreed with them on another 52. Polish and Czech are now complete.
+
 = 1.30.0 =
 * The plugin's source strings are now English. About 520 of them were written in Polish, which is how the plugin started, but WordPress.org expects an English source: every other language on translate.wordpress.org was being translated out of Polish rather than out of the original. Nothing changes on a Polish shop, because each of those strings now carries its old Polish wording as the Polish translation. Shops running another language get translations made from English for the first time.
 * Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.
