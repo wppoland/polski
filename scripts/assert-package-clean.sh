@@ -39,13 +39,20 @@ if [[ -d "${PKG}/languages" ]]; then
     while IFS= read -r f; do
         case "${f}" in
             *.pot) ;;
-            *) fail "languages/ may only contain .pot files, found: ${f#"${PKG}/"}" ;;
+            # The plugin's own locale is bundled on purpose as a fallback for
+            # the window between a source-string release and the GlotPress
+            # import. See prepare-wporg-release.sh for why it cannot be avoided.
+            */languages/polski-pl_PL.mo) ;;
+            *) fail "languages/ may only hold the .pot and polski-pl_PL.mo, found: ${f#"${PKG}/"}" ;;
         esac
     done < <(find "${PKG}/languages" -type f)
 fi
 
 # 2. No translation catalogue anywhere else in the tree either.
 while IFS= read -r f; do
+    case "${f}" in
+        */languages/polski-pl_PL.mo) continue ;;
+    esac
     fail "translation catalogue in the package: ${f#"${PKG}/"}"
 done < <(find "${PKG}" -type f \( -name '*.po' -o -name '*.mo' -o -name '*.l10n.php' \))
 
