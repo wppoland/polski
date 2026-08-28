@@ -205,7 +205,7 @@ msgstr "已检测到外部插件。Polski 使用其数据，而非内置系统�
 
 #: config/defaults.php:57 src/Admin/ModulesPage.php:2814
 msgid "detected, integration active"
-msgstr "已检测到，集成已启用"
+msgstr "已检测到，集成已激活"
 
 #: config/defaults.php:58
 msgid "not detected"
@@ -604,7 +604,7 @@ msgstr "姓名"
 #: src/Admin/WithdrawalsAdminPage.php:390
 #: src/Service/CustomCheckoutFieldsService.php:686
 msgid "Email"
-msgstr "电子邮箱"
+msgstr "电子邮件"
 
 #: config/defaults.php:223 src/Admin/WithdrawalsAdminPage.php:389
 #: src/Service/CustomCheckoutFieldsService.php:688
@@ -898,7 +898,7 @@ msgstr "关闭"
 #: config/defaults.php:388 src/Admin/ModulesPage.php:719
 #: src/Service/WishlistService.php:178
 msgid "Wishlist"
-msgstr "收藏"
+msgstr "心愿单"
 
 #: config/defaults.php:389
 msgid "Add to wishlist"
@@ -989,7 +989,7 @@ msgstr "单价"
 #: src/Block/StoreApi/ProductDataExtension.php:226
 #: src/Service/CompareService.php:483
 msgid "Delivery time"
-msgstr "送货时间"
+msgstr "交付时间"
 
 #: config/defaults.php:429 src/Admin/PostTypes.php:68
 #: src/AIFeed/ProductMarkdownBuilder.php:217
@@ -1204,7 +1204,7 @@ msgstr "配置与此产品相关的附加项和服务。"
 #: config/defaults.php:629 src/PageCompliance/Enum/Severity.php:18
 #: src/Service/CustomCheckoutFieldsService.php:716
 msgid "Required"
-msgstr "必填"
+msgstr "必需"
 
 #: config/defaults.php:630 src/PageCompliance/Enum/Severity.php:20
 msgid "Optional"
@@ -1354,7 +1354,7 @@ msgstr "原产国"
 #: config/defaults.php:716 src/Admin/ModulesPage.php:562
 #: src/Service/FoodService.php:470
 msgid "Distributor"
-msgstr "经销商"
+msgstr "分销商"
 
 #: config/defaults.php:717 src/Admin/CSVImportExport.php:99
 msgid "Net quantity"
@@ -2141,7 +2141,7 @@ msgstr "交付时间 ID"
 #: src/Admin/CSVImportExport.php:89 src/AIFeed/ProductMarkdownBuilder.php:222
 #: src/Service/ProductInfoService.php:195
 msgid "Responsible person (GPSR)"
-msgstr "负责人 (GPSR)"
+msgstr "责任人（GPSR）"
 
 #: src/Admin/CSVImportExport.php:90
 msgid "Power supply"
@@ -7022,7 +7022,7 @@ msgstr "进口商的完整邮政地址。"
 
 #: src/Admin/ProductMetaBox.php:274 templates/single-product/gpsr-info.php:19
 msgid "Responsible person"
-msgstr "负责人"
+msgstr "责任人"
 
 #: src/Admin/ProductMetaBox.php:275
 msgid "Person responsible in the EU for product compliance with GPSR."
