@@ -15,7 +15,6 @@ return [
     'sellable'   => true,
     'price_from' => 69,
     'currency'   => 'EUR',
-    'price_pln'  => 299,
     'lead'       => [
         'en' => 'Each module is toggled independently in the settings. The list matches the modules described in the documentation.',
         'pl' => 'Każdy moduł włączasz i wyłączasz niezależnie w ustawieniach. Lista odpowiada modułom opisanym w dokumentacji.',
