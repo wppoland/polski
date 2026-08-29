@@ -13060,3 +13060,7 @@ msgid ""
 "Dynamic merchandising slider for related, upsell, sale, and featured "
 "products."
 msgstr "适用于相关、追加销售、促销和精选产品的动态营销滑块。"
+
+#: templates/forms/withdrawal-lookup.php
+msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr ""

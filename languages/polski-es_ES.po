@@ -14479,3 +14479,7 @@ msgid ""
 msgstr ""
 "Control deslizante de comercialización dinámica para productos relacionados,"
 " de ventas adicionales, en oferta y destacados."
+
+#: templates/forms/withdrawal-lookup.php
+msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr ""
