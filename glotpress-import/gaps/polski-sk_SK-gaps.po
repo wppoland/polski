@@ -1,0 +1,1787 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest release)\n"
+"PO-Revision-Date: 2026-06-10 16:16:29+0000\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n >= 2 && n <= 4) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.1.0\n"
+
+msgid "Product safety (GPSR)"
+msgstr "Bezpečnosť produktu (GPSR)"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, goods sealed for hygiene "
+"reasons once the seal is broken, and digital content supplied with the "
+"consumer's express consent before the withdrawal period ended."
+msgstr ""
+"Áno. V súlade s čl. 38 zákona o právach spotrebiteľa sú z práva odstúpenia "
+"vylúčené okrem iného produkty vyrobené na individuálnu objednávku, rýchlo sa"
+" kaziace, zapečatené z hygienických dôvodov po otvorení obalu, a digitálny "
+"obsah dodaný s výslovným súhlasom spotrebiteľa pred uplynutím lehoty."
+
+msgid ""
+"You will get an email confirming that the declaration was accepted, with a "
+"unique declaration number and a full summary of the order. Then send the "
+"goods back to the shop's address within 14 days of filing the declaration."
+msgstr ""
+"Dostanete e-mail potvrdzujúci prijatie vyhlásenia, obsahujúci jedinečné "
+"číslo vyhlásenia a úplný súhrn objednávky. Následne odošlite produkty na "
+"adresu obchodu v lehote 14 dní od podania vyhlásenia."
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers: "
+"every product, a single product, or just some of the units. The rest stay in"
+" the order."
+msgstr ""
+"Áno. Po otvorení formulára vyberiete, ktorých položiek sa má odstúpenie "
+"týkať - môžete vrátiť všetky produkty, jeden produkt alebo iba vybraný počet"
+" kusov. Ostatné položky zostanú v objednávke."
+
+msgid "Can I return only some of the products in the order?"
+msgstr "Môžem vrátiť iba niektoré produkty z objednávky?"
+
+msgid ""
+"Any consumer, meaning a natural person buying for purposes outside their "
+"trade or business. When you buy as a company, the right to withdraw without "
+"giving a reason applies only in a limited form."
+msgstr ""
+"Každý spotrebiteľ, teda fyzická osoba nakupujúca na účely nesúvisiace s "
+"podnikateľskou činnosťou. V prípade nákupu ako firma prislúcha právo na "
+"odstúpenie bez uvedenia dôvodu iba v obmedzenom rozsahu."
+
+msgid ""
+"By default you have %d days from the day you received the order to file the "
+"declaration. The period runs from the day the goods came into your "
+"possession, or into the possession of a third party indicated by you other "
+"than the carrier."
+msgstr ""
+"Štandardne máte %d dní odo dňa prevzatia objednávky na podanie vyhlásenia. "
+"Lehota plynie odo dňa, keď ste tovar prevzali vy alebo vami určená tretia "
+"osoba iná ako prepravca."
+
+msgid "Who can withdraw from a contract at %s?"
+msgstr "Kto môže odstúpiť od zmluvy v obchode %s?"
+
+msgid ""
+"Having trouble with the form? Write to %s and we will help you file the "
+"declaration by hand."
+msgstr ""
+"Máte problém s formulárom? Napíšte na %s - pomôžeme vám podať vyhlásenie "
+"ručne."
+
+msgid "Common questions"
+msgstr "Najčastejšie otázky"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, and goods sealed for hygiene "
+"reasons once the seal is broken."
+msgstr ""
+"Áno. V súlade s čl. 38 zákona o právach spotrebiteľa sú z práva odstúpenia "
+"vylúčené okrem iného produkty vyrobené na individuálnu objednávku, rýchlo sa"
+" kaziace, a zapečatené z hygienických dôvodov po otvorení obalu."
+
+msgid "Are there products that cannot be returned?"
+msgstr "Existujú produkty, ktoré nemožno vrátiť?"
+
+msgid ""
+"You will get a confirmation email with a unique declaration number and a "
+"full summary of the order. Then send the goods back to the shop's address "
+"within 14 days of filing the declaration."
+msgstr ""
+"Dostanete potvrdzovací e-mail s jedinečným číslom vyhlásenia a úplným "
+"súhrnom objednávky. Následne odošlite produkty na adresu obchodu v lehote 14"
+" dní od podania vyhlásenia."
+
+msgid "What happens after I send the form?"
+msgstr "Čo sa stane po odoslaní formulára?"
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers. You"
+" can withdraw from any number of units and the rest stay in the order."
+msgstr ""
+"Áno. Po otvorení formulára vyberiete, ktorých položiek sa má odstúpenie "
+"týkať. Možno odstúpiť od vybraného počtu kusov - ostatné zostanú v "
+"objednávke."
+
+msgid "Can I return only some of the products?"
+msgstr "Môžem vrátiť iba niektoré produkty?"
+
+msgid ""
+"By default you have %d days from the day you received the order. The period "
+"runs from the day the goods came into your possession, or into the "
+"possession of a third party other than the carrier."
+msgstr ""
+"Štandardne máte %d dní odo dňa prevzatia objednávky. Lehota plynie odo dňa, "
+"keď ste tovar prevzali vy alebo tretia osoba iná ako prepravca."
+
+msgid "How long do I have to withdraw from the contract?"
+msgstr "V akej lehote môžem odstúpiť od zmluvy?"
+
+msgid ""
+"The link is valid for 30 minutes and works only once. If the message does "
+"not arrive, check your spam folder and enter the address again."
+msgstr ""
+"Odkaz bude platný 30 minút a možno ho použiť iba raz. Ak nedostanete správu,"
+" skontrolujte priečinok Spam a zadajte adresu znova."
+
+msgid "Email me the link to the form"
+msgstr "Odoslať odkaz na formulár"
+
+msgid "All fields are required."
+msgstr "Všetky polia sú povinné."
+
+msgid ""
+"We will email a secure link to this address that opens the withdrawal form."
+msgstr ""
+"Na túto adresu odošleme bezpečný odkaz otvárajúci formulár odstúpenia."
+
+msgid "Email address used for the purchase"
+msgstr "E-mailová adresa použitá pri nákupe"
+
+msgid ""
+"The number is in your purchase confirmation email, on the \"Your order "
+"#...\" line."
+msgstr ""
+"Číslo nájdete v e-maile potvrdzujúcom nákup, v položke „Vaša objednávka #…”."
+
+msgid ""
+"After you submit the declaration you will get an email with the declaration "
+"number, the date it was filed and a summary of the order. The right comes "
+"from Article 27 of the Polish Consumer Rights Act, which implements "
+"Directive %s."
+msgstr ""
+"Po odoslaní vyhlásenia dostanete e-mail s číslom vyhlásenia, dátumom podania"
+" a súhrnom objednávky. Oprávnenie vyplýva z čl. 27 zákona o právach "
+"spotrebiteľa implementujúceho smernicu %s."
+
+msgid ""
+"In the next step you choose whether to return the whole order or only some "
+"items; you can also withdraw from individual units."
+msgstr ""
+"V ďalšom kroku vyberiete, či chcete vrátiť celú objednávku, alebo iba "
+"vybrané položky (možné sú aj čiastočné odstúpenia od jednotlivých kusov)."
+
+msgid ""
+"Once we have checked the details we will email a single-use link that opens "
+"the withdrawal form. The link is valid for 30 minutes and works only once."
+msgstr ""
+"Po overení odošleme na zadanú adresu jednorazový odkaz, ktorý otvorí "
+"formulár odstúpenia. Odkaz bude platný 30 minút a možno ho použiť iba raz."
+
+msgid "How does it work? (expand)"
+msgstr "Ako to funguje? (rozbaliť)"
+
+msgid ""
+"Bought from %1$s as a consumer? You have the right to withdraw from a "
+"distance contract without giving a reason within %2$d days of receiving your"
+" order. You do not need to log in to file the declaration: just enter below "
+"the email address used for the purchase and the order number."
+msgstr ""
+"Ste spotrebiteľ a nakúpili ste u predajcu %1$s? Máte právo odstúpiť od "
+"zmluvy uzavretej na diaľku bez uvedenia dôvodu v lehote %2$d dní odo dňa, "
+"keď ste prevzali objednávku. Na podanie vyhlásenia sa nemusíte prihlasovať -"
+" stačí, ak nižšie uvediete e-mailovú adresu použitú pri nákupe a číslo "
+"objednávky."
+
+msgid "Withdrawal from the contract, online form"
+msgstr "Odstúpenie od zmluvy - online formulár"
+
+msgid "Go to the withdrawal form"
+msgstr "Prejsť na formulár odstúpenia"
+
+msgid ""
+"Once you send the form you will get a confirmation email with the "
+"declaration number and a summary of the order."
+msgstr ""
+"Po odoslaní formulára dostanete potvrdzovací e-mail s číslom vyhlásenia a "
+"súhrnom objednávky."
+
+msgid "Order date:"
+msgstr "Dátum objednávky:"
+
+msgid "Order value:"
+msgstr "Hodnota objednávky:"
+
+msgid "Order items covered by the declaration."
+msgstr "Položky objednávky zahrnuté do vyhlásenia."
+
+msgid ""
+"Filing this declaration covers the whole order below. If you want to "
+"withdraw from only some of the items, contact the shop or log in to your "
+"account and file a separate declaration."
+msgstr ""
+"Podanie tohto vyhlásenia zahŕňa celú nasledujúcu objednávku. Ak chcete "
+"odstúpiť len od časti položiek, kontaktujte obchod alebo podajte samostatné "
+"vyhlásenie po prihlásení do účtu."
+
+msgid "Items covered by the withdrawal"
+msgstr "Položky zahrnuté do odstúpenia"
+
+msgid "You are filing this declaration for the address: %s"
+msgstr "Podávate vyhlásenie v prospech adresy: %s"
+
+msgid "Withdrawal from the contract, order #%s"
+msgstr "Odstúpenie od zmluvy - objednávka #%s"
+
+msgid "Cancel and go back to the order list"
+msgstr "Zrušiť a vrátiť sa na zoznam objednávok"
+
+msgid "File the declaration and email me the confirmation"
+msgstr "Podajte vyhlásenie a odošlite potvrdenie na e-mail"
+
+msgid "A reason is not required; withdrawal needs no justification."
+msgstr "Dôvod nie je povinný - odstúpenie nevyžaduje odôvodnenie."
+
+msgid "Step 2. Reason and confirmation"
+msgstr "Krok 2. Dôvod a potvrdenie"
+
+msgid "You can return at most %2$s units of \"%1$s\"."
+msgstr ""
+"Maximálny počet kusov dostupných na vrátenie pre položku „%1$s\" je %2$s."
+
+msgid "This item is excluded from return and cannot be selected."
+msgstr "Táto položka je vylúčená z vrátenia a nie je možné ju vybrať."
+
+msgid "Remaining to return"
+msgstr "Zostáva na vrátenie"
+
+msgid "Excluded from return"
+msgstr "Vylúčené z vrátenia"
+
+msgid "Units to return"
+msgstr "Počet kusov na vrátenie"
+
+msgid "Remaining"
+msgstr "Zostáva"
+
+msgid "Item"
+msgstr "Položka"
+
+msgid "Order items available for withdrawal."
+msgstr "Položky objednávky dostupné na odstúpenie."
+
+msgid "Clear the selection"
+msgstr "Vyčistiť výber"
+
+msgid "Select all items"
+msgstr "Vybrať všetky položky"
+
+msgid ""
+"Enter how many units you want to withdraw. The \"Remaining\" field shows the"
+" most you can still withdraw for that item."
+msgstr ""
+"Zadajte počet kusov, ktoré chcete zahrnúť do odstúpenia. Pole „Zostáva\" "
+"zobrazuje maximálny počet, ktorý možno ešte odstúpiť pri tejto položke."
+
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "Krok 1. Vyberte položky na odstúpenie"
+
+msgid ""
+"Every item in this order is already covered by a withdrawal or does not "
+"qualify for return."
+msgstr ""
+"Všetky položky z tejto objednávky už boli zahrnuté do odstúpenia alebo sa "
+"nekvalifikujú na vrátenie."
+
+msgid ""
+"You are filing a withdrawal declaration for order #{order_number} placed on "
+"{order_date}."
+msgstr ""
+"Odosielate žiadosť o odstúpenie od objednávky č. #{order_number} z dňa "
+"{order_date}."
+
+msgid "Send the report"
+msgstr "Odoslať hlásenie"
+
+msgid "- Choose a reason -"
+msgstr "- Vyberte dôvod -"
+
+msgid "Reason for the report"
+msgstr "Dôvod hlásenia"
+
+msgid "URL of the reported content"
+msgstr "URL nahlasovaného obsahu"
+
+msgid "You are reporting: %s"
+msgstr "Nahlasujete: %s"
+
+msgid "You are reporting: %1$s (%2$s)"
+msgstr "Nahlasujete: %1$s (%2$s)"
+
+msgid "Thank you. Your report has been sent and will be reviewed."
+msgstr "Ďakujeme. Vaše hlásenie bolo odoslané a bude posúdené."
+
+msgid "Misleading advertising"
+msgstr "Zavádzajúca reklama"
+
+msgid "Illegal product"
+msgstr "Nelegálny produkt"
+
+msgid "Illegal content"
+msgstr "Nelegálny obsah"
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop. We are happy to explain."
+msgstr ""
+"Ak sa domnievate, že toto rozhodnutie je nesprávne, odpovedzte na tento "
+"e-mail alebo sa obráťte na obchod. Radi vám vysvetlíme podrobnosti."
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. "
+"Depending on your bank it may take a few working days to appear."
+msgstr ""
+"Vrátenie sa vykoná pôvodnou platobnou metódou použitou pri nákupe. V "
+"závislosti od banky sa prostriedky môžu na účte objaviť do niekoľkých "
+"pracovných dní."
+
+msgid ""
+"We are glad to tell you that your withdrawal declaration (%2$s) for order "
+"#%1$s has been settled."
+msgstr ""
+"S potešením vám oznamujeme, že vaše vyhlásenie o odstúpení (%2$s) pre "
+"objednávku #%1$s bolo vysporiadané."
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop."
+msgstr ""
+"Ak sa domnievate, že toto rozhodnutie je nesprávne, odpovedzte na tento "
+"e-mail alebo sa obráťte na obchod."
+
+msgid "Decision date"
+msgstr "Dátum rozhodnutia"
+
+msgid "Reason for the refusal:"
+msgstr "Dôvod zamietnutia:"
+
+msgid "We cannot accept your withdrawal declaration (%1$s) for order #%2$s."
+msgstr ""
+"Bohužiaľ nemôžeme akceptovať vaše vyhlásenie o odstúpení (%1$s) pre "
+"objednávku #%2$s."
+
+msgid ""
+"Keep this message as proof that the declaration was filed. It holds "
+"everything the declaration needs: the number, the date and time it was "
+"filed, and a summary of the order."
+msgstr ""
+"Túto správu si uschovajte ako potvrdenie podania vyhlásenia. Obsahuje "
+"nevyhnutné údaje vyhlásenia (číslo, dátum a čas podania, súhrn objednávky)."
+
+msgid ""
+"Send the goods back to the address below within 14 days of filing the "
+"declaration:"
+msgstr ""
+"Produkty odošlite na nasledujúcu adresu do 14 dní odo dňa podania "
+"vyhlásenia:"
+
+msgid ""
+"Your withdrawal declaration for order #{order_number} has been registered."
+msgstr ""
+"Vaša žiadosť o odstúpenie pre objednávku #{order_number} bola "
+"zaregistrovaná."
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. It may "
+"take a few working days to appear."
+msgstr ""
+"Vrátenie sa vykoná pôvodnou platobnou metódou použitou pri nákupe. "
+"Prostriedky sa môžu na účte objaviť do niekoľkých pracovných dní."
+
+msgid "Refund amount"
+msgstr "Suma vrátenia"
+
+msgid "Settlement date"
+msgstr "Dátum vysporiadania"
+
+msgid "Declaration number"
+msgstr "Číslo vyhlásenia"
+
+msgid "Your withdrawal declaration (%2$s) for order #%1$s has been settled."
+msgstr ""
+"Vaše vyhlásenie o odstúpení (%2$s) pre objednávku #%1$s bolo vysporiadané."
+
+msgid "Hello %s,"
+msgstr "Dobrý deň %s,"
+
+msgid "Available payment methods"
+msgstr "Dostupné platobné metódy"
+
+msgid "Please enter the order number."
+msgstr "Zadajte číslo objednávky."
+
+msgid "Used only if \"Other\" is selected."
+msgstr "Použité len, ak ste zvolili „Iné\"."
+
+msgid "Custom reason"
+msgstr "Vlastné odôvodnenie"
+
+msgid "Custom reason (if \"Other\" is selected)"
+msgstr "Vlastné odôvodnenie (ak ste zvolili „Iné\")"
+
+msgid "- choose -"
+msgstr "- vyberte -"
+
+msgid "Grounds for the exclusion"
+msgstr "Základ vylúčenia"
+
+msgid ""
+"Use this when every product in the category meets an exception under Article"
+" 38 of the Consumer Rights Act."
+msgstr ""
+"Použite, keď všetky produkty v kategórii spĺňajú výnimku podľa čl. 38 zákona"
+" o právach spotrebiteľa."
+
+msgid "Exclude products in this category from the right of withdrawal"
+msgstr "Vylúčiť produkty z tejto kategórie z práva na odstúpenie"
+
+msgid ""
+"No data found for that VAT ID (NIP). Check the number or fill the details in"
+" by hand."
+msgstr ""
+"Pre zadané NIP sa nenašli údaje. Skontrolujte číslo alebo doplňte údaje "
+"ručne."
+
+msgid "Invalid VAT ID (NIP)."
+msgstr "Neplatné NIP."
+
+msgid "That VAT ID (NIP) is not valid. Check the number and try again."
+msgstr "Zadané NIP je neplatné. Skontrolujte číslo a skúste to znovu."
+
+msgid "Reference"
+msgstr "Číslo"
+
+msgid "You have not filed any withdrawal declarations yet."
+msgstr "Zatiaľ ste nepodali žiadnu žiadosť o odstúpenie od zmluvy."
+
+msgid "You have to be logged in to see your withdrawals."
+msgstr "Na zobrazenie svojich odstúpení musíte byť prihlásený."
+
+msgid "My withdrawals"
+msgstr "Moje odstúpenia"
+
+msgid ""
+"We received a request to file a withdrawal declaration for order #%1$s.\n"
+"\n"
+"To continue, click the link below within %2$d minutes:\n"
+"\n"
+"%3$s\n"
+"\n"
+"The link can be used once. If you did not make this request, you can ignore this message."
+msgstr ""
+"Dostali sme žiadosť o podanie vyhlásenia o odstúpení od zmluvy pre objednávku #%1$s.\n"
+"\n"
+"Ak chcete pokračovať, kliknite na nasledujúci odkaz do %2$d minút:\n"
+"\n"
+"%3$s\n"
+"\n"
+"Odkaz je jednorazový. Ak ste žiadosť neposlali vy, môžete túto správu ignorovať."
+
+msgid "Withdrawal link for order #%s"
+msgstr "Odkaz na odstúpenie od zmluvy - objednávka #%s"
+
+msgid "Keep the declaration number in case you contact the shop."
+msgstr "Číslo vyhlásenia si uschovajte pre prípad kontaktu s obchodom."
+
+msgid ""
+"Your declaration has been registered under number %s. We have sent a "
+"confirmation to the address used for the purchase; check your inbox and your"
+" spam folder."
+msgstr ""
+"Vaše vyhlásenie bolo zaregistrované pod číslom %s. Potvrdenie sme odoslali "
+"na adresu uvedenú pri nákupe - skontrolujte doručenú poštu aj priečinok "
+"Spam."
+
+msgid "Declaration filed"
+msgstr "Vyhlásenie podané"
+
+msgid ""
+"The declaration could not be saved. Try again in a moment or contact the "
+"shop."
+msgstr ""
+"Vyhlásenie sa nepodarilo uložiť. Skúste to znova o chvíľu alebo sa obráťte "
+"na obchod."
+
+msgid "The security check failed. Reload the page and try again."
+msgstr ""
+"Bezpečnostná kontrola zlyhala. Načítajte stránku znova a skúste to ešte raz."
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder; the message "
+"should arrive within a few minutes."
+msgstr ""
+"Ak táto objednávka existuje, odoslali sme odkaz na formulár na e-mailovú "
+"adresu uvedenú pri nákupe. Skontrolujte doručenú poštu (aj priečinok Spam) -"
+" správa by mala doraziť do niekoľkých minút."
+
+msgid ""
+"Too many attempts in a short time. Please try again in 15 minutes. If an "
+"earlier link never arrived, check your spam folder."
+msgstr ""
+"Príliš veľa pokusov v krátkom čase. Skúste to znova o 15 minút. Ak ste "
+"predtým odoslaný odkaz nedostali, skontrolujte priečinok Spam."
+
+msgid ""
+"That email address does not look valid. Enter the full address in the form "
+"you@example.com, the same one you used for the purchase."
+msgstr ""
+"E-mailová adresa vyzerá neplatne. Zadajte úplnú adresu vo formáte "
+"ty@example.com - tú istú, ktorú ste uviedli pri nákupe."
+
+msgid ""
+"The order number is missing. Check your purchase confirmation email and "
+"enter the number from the \"Your order #...\" line."
+msgstr ""
+"Chýba číslo objednávky. Skontrolujte e-mail potvrdzujúci nákup a zadajte "
+"číslo z riadku „Vaša objednávka #…\"."
+
+msgid ""
+"Enter the order number (it is in your confirmation email) and the email "
+"address used for the purchase."
+msgstr ""
+"Zadajte číslo objednávky (nájdete ho v potvrdzovacom e-maile) a e-mailovú "
+"adresu použitú pri nákupe."
+
+msgid "%d of 8 fields filled in"
+msgstr "%d/8 polí vyplnených"
+
+msgid "Results updated."
+msgstr "Výsledky aktualizované."
+
+msgid "Results updated: %d products."
+msgstr "Výsledky aktualizované: %d produktov."
+
+msgid "Too many reports from this IP address. Please try again in an hour."
+msgstr "Príliš veľa žiadostí z tejto IP adresy. Skúste to znova o hodinu."
+
+msgid ""
+"I consent to performance beginning (for example the supply of digital "
+"content) before the withdrawal period ends and I acknowledge that I thereby "
+"lose my right of withdrawal for the digital content supplied in this way."
+msgstr ""
+"Vyjadrujem súhlas so začatím poskytovania plnenia (napr. dodanie digitálneho"
+" obsahu) pred uplynutím lehoty na odstúpenie od zmluvy a beriem na vedomie "
+"stratu práva na odstúpenie vo vzťahu k takto dodanému digitálnemu obsahu."
+
+msgid ""
+"To buy digital products you have to consent to performance beginning before "
+"the withdrawal period ends."
+msgstr ""
+"Na nákup digitálnych produktov musíte vyjadriť súhlas so začatím "
+"poskytovania pred uplynutím lehoty na odstúpenie."
+
+msgid "Compare (%d)"
+msgid_plural "Compare (%d)"
+msgstr[0] "Porovnať (%d)"
+msgstr[1] "Porovnať (%d)"
+msgstr[2] "Porovnať (%d)"
+
+msgid "I need a VAT invoice"
+msgstr "Potrebujem faktúru s DPH"
+
+msgid ""
+"You can also file the declaration online: <a href=\"%s\">withdrawal "
+"form</a>."
+msgstr ""
+"Vyhlásenie môžete podať aj online: <a href=\"%s\">formulár na "
+"odstúpenie</a>."
+
+msgid "(*) Delete as appropriate."
+msgstr "(*) Nehodiace sa prečiarknite."
+
+msgid "Signature of consumer(s) (only if this form is notified on paper):"
+msgstr ""
+"Podpis spotrebiteľa(-ov) (iba ak sa formulár podáva v papierovej podobe):"
+
+msgid "Address of consumer(s):"
+msgstr "Adresa spotrebiteľa(-ov):"
+
+msgid "Name of consumer(s):"
+msgstr "Meno a priezvisko spotrebiteľa(-ov):"
+
+msgid "Ordered on (*)/received on (*):"
+msgstr "Dátum uzavretia zmluvy(*)/prevzatia(*):"
+
+msgid ""
+"I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
+"of sale of the following goods (*)/for the provision of the following "
+"service (*):"
+msgstr ""
+"Ja/My(*) týmto oznamujem/oznamujeme(*), že odstupujem/odstupujeme(*) od "
+"kúpnej zmluvy na tento tovar(*) od zmluvy o dodaní tohto tovaru(*) od zmluvy"
+" o dielo spočívajúcom vo vyhotovení tohto tovaru(*)/o poskytnutí tejto "
+"služby(*):"
+
+msgid "Addressee:"
+msgstr "Adresát:"
+
+msgid ""
+"(complete and return this form only if you wish to withdraw from the "
+"contract)"
+msgstr ""
+"(tento formulár vyplňte a odošlite len v prípade, že chcete odstúpiť od "
+"zmluvy)"
+
+msgid "Model withdrawal form"
+msgstr "Vzorový formulár na odstúpenie od zmluvy"
+
+msgid ""
+"You are only liable for any diminished value of the goods resulting from the"
+" handling other than what is necessary to establish the nature, "
+"characteristics and functioning of the goods."
+msgstr ""
+"Zodpovedáte len za zníženie hodnoty veci v dôsledku zaobchádzania s ňou iným"
+" spôsobom, než aký bol potrebný na zistenie povahy, vlastností a funkčnosti "
+"veci."
+
+msgid "You will have to bear the direct cost of returning the goods."
+msgstr "Priame náklady na vrátenie veci budete znášať vy."
+
+msgid ""
+"You shall send back the goods or hand them over to us at the address above, "
+"without undue delay and in any event not later than 14 days from the day on "
+"which you communicate your withdrawal from this contract to us. The deadline"
+" is met if you send back the goods before the period of 14 days has expired."
+msgstr ""
+"Vec nám odošlite alebo odovzdajte na adresu uvedenú vyššie, a to "
+"bezodkladne, v každom prípade najneskôr do 14 dní odo dňa, keď ste nás "
+"informovali o odstúpení od tejto zmluvy. Lehota je dodržaná, ak vec odošlete"
+" pred uplynutím lehoty 14 dní."
+
+msgid ""
+"We may withhold reimbursement until we have received the goods back or you "
+"have supplied evidence of having sent back the goods, whichever is the "
+"earliest."
+msgstr ""
+"S vrátením platby môžeme počkať do okamihu prevzatia veci alebo do okamihu, "
+"keď nám predložíte doklad o jej odoslaní, podľa toho, ktorá udalosť nastane "
+"skôr."
+
+msgid ""
+"We will carry out such reimbursement using the same means of payment as you "
+"used for the initial transaction, unless you have expressly agreed "
+"otherwise; in any event, you will not incur any fees as a result of such "
+"reimbursement."
+msgstr ""
+"Vrátenie platby vykonáme rovnakými platobnými prostriedkami, aké ste použili"
+" pri pôvodnej transakcii, pokiaľ ste sa výslovne nedohodli na inom riešení; "
+"v žiadnom prípade vám v súvislosti s týmto vrátením nebudú účtované žiadne "
+"poplatky."
+
+msgid ""
+"If you withdraw from this contract, we shall reimburse to you all payments "
+"received from you, including the costs of delivery (with the exception of "
+"the supplementary costs resulting from your choice of a type of delivery "
+"other than the least expensive type of standard delivery offered by us), "
+"without undue delay and in any event not later than %d days from the day on "
+"which we are informed about your decision to withdraw from this contract."
+msgstr ""
+"V prípade odstúpenia od tejto zmluvy vám vrátime všetky platby, ktoré sme od"
+" vás prijali, vrátane nákladov na dodanie tovaru (s výnimkou dodatočných "
+"nákladov vyplývajúcich z vami zvoleného spôsobu dodania iného ako "
+"najlacnejší bežný spôsob dodania, ktorý ponúkame), a to bezodkladne, "
+"najneskôr však do %d dní odo dňa, keď sme boli informovaní o vašom "
+"rozhodnutí uplatniť právo na odstúpenie od tejto zmluvy."
+
+msgid "Effects of withdrawal"
+msgstr "Dôsledky odstúpenia od zmluvy"
+
+msgid ""
+"To meet the withdrawal deadline, it is sufficient for you to send your "
+"communication concerning your exercise of the right of withdrawal before the"
+" withdrawal period has expired."
+msgstr ""
+"Na dodržanie lehoty na odstúpenie od zmluvy stačí, aby ste informáciu o "
+"uplatnení svojho práva na odstúpenie od zmluvy odoslali pred uplynutím "
+"lehoty na odstúpenie od zmluvy."
+
+msgid "You may use the model withdrawal form, but it is not obligatory."
+msgstr ""
+"Môžete použiť vzorový formulár na odstúpenie od zmluvy, nie je to však "
+"povinné."
+
+msgid ""
+"To exercise the right of withdrawal, you must inform us of your decision to "
+"withdraw from this contract by an unequivocal statement (for example a "
+"letter sent by post, fax or email)."
+msgstr ""
+"Pri uplatnení práva na odstúpenie od zmluvy nás musíte o svojom rozhodnutí "
+"odstúpiť od tejto zmluvy informovať jednoznačným vyhlásením (napríklad "
+"listom zaslaným poštou, faxom alebo elektronickou poštou)."
+
+msgid ""
+"The withdrawal period will expire after %d days from the day on which you "
+"acquire, or a third party other than the carrier and indicated by you "
+"acquires, physical possession of the goods."
+msgstr ""
+"Lehota na odstúpenie od zmluvy uplynie po %d dňoch odo dňa, keď ste "
+"nadobudli vec do držby vy alebo vami určená tretia osoba iná ako prepravca."
+
+msgid ""
+"You have the right to withdraw from this contract within %d days without "
+"giving any reason."
+msgstr ""
+"Máte právo odstúpiť od tejto zmluvy v lehote %d dní bez uvedenia akéhokoľvek"
+" dôvodu."
+
+msgid ""
+"Runs the UŚUDE and Consumer Rights Act rules against the configured terms "
+"page."
+msgstr ""
+"Spúšťa pravidlá UŚUDE + zákona o právach spotrebiteľa voči nakonfigurovanej "
+"stránke Obchodných podmienok."
+
+msgid "Withdrawal from the contract"
+msgstr "Odstúpenie od zmluvy"
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder."
+msgstr ""
+"Ak táto objednávka existuje, odoslali sme odkaz na formulár na e-mailovú "
+"adresu zadanú pri nákupe. Skontrolujte si doručenú poštu a priečinok Spam."
+
+msgid "The order number is missing or the email address is not valid."
+msgstr "Chýba číslo objednávky alebo je e-mailová adresa neplatná."
+
+msgid ""
+"Reference the statutory withdrawal form (the annex to the Polish Consumer "
+"Rights Act)."
+msgstr "Uveďte zákonný formulár na odstúpenie od zmluvy."
+
+msgid "pcs."
+msgstr "ks"
+
+msgid "Within 24 hours"
+msgstr "Do 24 hodín"
+
+msgid "7-14 working days"
+msgstr "7-14 pracovných dní"
+
+msgid "5-7 working days"
+msgstr "5-7 pracovných dní"
+
+msgid "3-5 working days"
+msgstr "3-5 pracovných dní"
+
+msgid "2-4 working days"
+msgstr "2-4 pracovné dni"
+
+msgid "1-2 working days"
+msgstr "1-2 pracovné dni"
+
+msgid "Lowest price in the last 30 days"
+msgstr "Najnižšia cena za 30 dní"
+
+msgid "Digital content"
+msgstr "Digitálny obsah"
+
+msgid "Recording or software"
+msgstr "Nahrávka/Softvér"
+
+msgid "Inseparably mixed"
+msgstr "Neoddeliteľne spojený"
+
+msgid "Sealed"
+msgstr "Zapečatený"
+
+msgid "Perishable"
+msgstr "Krátka trvanlivosť"
+
+msgid "Made to order"
+msgstr "Na objednávku"
+
+msgid ""
+"Digital content supplied before the withdrawal period ends (Article 38(13))"
+msgstr "Digitálny obsah dodaný pred uplynutím lehoty (čl. 38 bod 13)"
+
+msgid "Sealed audio or video recordings or computer software (Article 38(9))"
+msgstr ""
+"Zvukové/obrazové nahrávky alebo softvér v zapečatenom obale (čl. 38 bod 9)"
+
+msgid "Alcoholic beverages (Article 38(7))"
+msgstr "Alkoholické nápoje (čl. 38 bod 7)"
+
+msgid "Inseparably mixed with other items after delivery (Article 38(6))"
+msgstr "Produkt neoddeliteľne spojený s inými (čl. 38 bod 6)"
+
+msgid "Sealed for health protection or hygiene reasons (Article 38(5))"
+msgstr ""
+"Zapečatený produkt z dôvodu ochrany zdravia alebo hygienický (čl. 38 bod 5)"
+
+msgid "Liable to deteriorate or expire rapidly (Article 38(4))"
+msgstr "Rýchlo sa kaziaci produkt / krátka doba trvanlivosti (čl. 38 bod 4)"
+
+msgid ""
+"Made to the consumer's specification or clearly personalised (Article 38(3))"
+msgstr "Produkt na individuálnu objednávku / personalizovaný (čl. 38 bod 3)"
+
+msgid "Other (custom reason)"
+msgstr "Iné (vlastné odôvodnenie)"
+
+msgid "Rejected %1$d of %2$d selected declarations."
+msgid_plural "Rejected %1$d of %2$d selected declarations."
+msgstr[0] "Zamietnutých %1$d z %2$d vybraných vyhlásení."
+msgstr[1] "Zamietnutých %1$d z %2$d vybraných vyhlásení."
+msgstr[2] "Zamietnutých %1$d z %2$d vybraných vyhlásení."
+
+msgid "Rejected by a bulk action."
+msgstr "Zamietnuté hromadnou akciou."
+
+msgid "Confirmed %1$d of %2$d selected declarations."
+msgid_plural "Confirmed %1$d of %2$d selected declarations."
+msgstr[0] "Potvrdených %1$d z %2$d vybraných vyhlásení."
+msgstr[1] "Potvrdených %1$d z %2$d vybraných vyhlásení."
+msgstr[2] "Potvrdených %1$d z %2$d vybraných vyhlásení."
+
+msgid "Unknown bulk action."
+msgstr "Neznáma hromadná akcia."
+
+msgid "Choose an action and at least one row."
+msgstr "Vyberte akciu a aspoň jednu položku."
+
+msgid "Rejected from the order screen."
+msgstr "Zamietnuté z obrazovky objednávky."
+
+msgid "Open the list"
+msgstr "Otvoriť zoznam"
+
+msgid "Reject"
+msgstr "Zamietnuť"
+
+msgid "Reject this declaration?"
+msgstr "Zamietnuť toto vyhlásenie?"
+
+msgid "Mark as settled"
+msgstr "Označiť ako vyrovnané"
+
+msgid "Confirm"
+msgstr "Potvrdiť"
+
+msgid "There is no withdrawal declaration for this order."
+msgstr "Pre túto objednávku chýba vyhlásenie o odstúpení."
+
+msgid "Polski withdrawal"
+msgstr "Polski - odstúpenie"
+
+msgid "Tools that help bring the shop in line with Polish requirements."
+msgstr "Nástroje pomáhajúce prispôsobiť obchod poľským požiadavkám."
+
+msgid "GDPR training material for the shop team."
+msgstr "Školiace materiály GDPR pre tím obchodu."
+
+msgid "GDPR training"
+msgstr "Školenia GDPR"
+
+msgid ""
+"The complaint form template for customers, with its generator and settings."
+msgstr "Generátor a nastavenia šablóny reklamácie pre zákazníkov."
+
+msgid "A software bill of materials for the Cyber Resilience Act."
+msgstr ""
+"Zoznam softvérových komponentov (Software Bill of Materials) pre potreby "
+"CRA."
+
+msgid ""
+"A register of vulnerabilities, breaches and failures for the Cyber "
+"Resilience Act, with statuses and CSV export."
+msgstr ""
+"Register zraniteľností, narušení a porúch pre potreby Cyber Resilience Act, "
+"so stavmi a exportom do CSV."
+
+msgid ""
+"Withdrawal declarations and returns: the list, manual registration and the "
+"settings."
+msgstr ""
+"Žiadosti o odstúpenie od zmluvy a vrátenia: zoznam, ručná evidencia a "
+"nastavenia."
+
+msgid "Stored visitor decisions from the consent banner, with CSV export."
+msgstr "Uložené rozhodnutia návštevníkov z baneru súhlasu, s exportom do CSV."
+
+msgid "A register of data processing agreements with third parties."
+msgstr "Evidencia zmlúv o spracovaní osobných údajov s tretími stranami."
+
+msgid "DPA registry (GDPR)"
+msgstr "Register DPA (GDPR)"
+
+msgid ""
+"Continuous monitoring of fatal errors, failed payments and sales anomalies, "
+"with alerts."
+msgstr ""
+"Priebežné monitorovanie kritických chýb, neúspešných platieb a anomálií "
+"predaja s upozorneniami."
+
+msgid "Shop health"
+msgstr "Stav obchodu"
+
+msgid ""
+"A record of security problems, data breaches and infrastructure failures."
+msgstr ""
+"Evidencia bezpečnostných problémov, únikov dát a výpadkov infraštruktúry."
+
+msgid "Handling of content notices under the Digital Services Act."
+msgstr ""
+"Správa hlásení porušenia pri digitálnom obsahu (Digital Services Act)."
+
+msgid "DSA reports"
+msgstr "DSA reporty"
+
+msgid ""
+"An automatic check of the most common legal problems in Polish ecommerce."
+msgstr ""
+"Automatické overenie najčastejších právnych problémov v poľskom e-commerce."
+
+msgid "Compliance audit"
+msgstr "Audit súladu"
+
+msgid ""
+"Use the form below to report content you consider illegal under the Digital "
+"Services Act."
+msgstr ""
+"Vyplňte formulár nižšie, aby ste nahlásili obsah, ktorý považujete za "
+"nelegálny podľa Aktu o digitálnych službách (DSA)."
+
+msgid "Report illegal content (DSA)"
+msgstr "Nahlásiť nelegálny obsah (DSA)"
+
+msgid "Reject optional"
+msgstr "Odmietnuť nepovinné"
+
+msgid ""
+"We use cookies and similar technologies to run the site, measure traffic and"
+" personalise content. You can accept all of them, reject the optional ones, "
+"or manage your choices yourself."
+msgstr ""
+"Používame súbory cookie a podobné technológie na zabezpečenie fungovania "
+"stránky, meranie návštevnosti a personalizáciu obsahu. Môžete prijať všetky,"
+" odmietnuť nepovinné alebo si sami spravovať svoje voľby."
+
+msgid "Frequently asked questions"
+msgstr "Často kladené otázky"
+
+msgid "Price history"
+msgstr "História cien"
+
+msgid "No questions yet. Ask the first one."
+msgstr "Žiadne otázky. Položte prvú otázku!"
+
+msgid "Reply"
+msgstr "Odpovedať"
+
+msgid "Ask a question about this product..."
+msgstr "Opýtajte sa na tento produkt..."
+
+msgid "Questions and answers"
+msgstr "Otázky a odpovede"
+
+msgid "%d h ago"
+msgstr "pred %d hod"
+
+msgid "%d min ago"
+msgstr "pred %d min"
+
+msgid "%1$s bought %2$s"
+msgstr "%1$s kúpil(a) %2$s"
+
+msgid "Alcoholic strength"
+msgstr "Obsah alkoholu"
+
+msgid "Nutrition per"
+msgstr "Nutričné hodnoty na"
+
+msgid "Promotional popup"
+msgstr "Promo popup"
+
+msgid "Close the popup"
+msgstr "Zavrieť popup"
+
+msgid "Go to contact"
+msgstr "Prejsť na kontakt"
+
+msgid ""
+"Contact us for a B2B quote, a wholesale discount or help choosing a product."
+msgstr ""
+"Kontaktujte nás, ak chcete získať B2B ponuku, veľkoobchodnú zľavu alebo "
+"pomoc s výberom produktu."
+
+msgid "A question about the product or about trade terms?"
+msgstr "Máte otázku k produktu alebo obchodným podmienkam?"
+
+msgid "More products have been loaded."
+msgstr "Načítali sa ďalšie produkty."
+
+msgid "That is all the products."
+msgstr "To sú už všetky produkty."
+
+msgid "More products could not be loaded."
+msgstr "Nepodarilo sa načítať ďalšie produkty."
+
+msgid "Loading products..."
+msgstr "Načítavajú sa produkty..."
+
+msgid "Load more products"
+msgstr "Načítať viac produktov"
+
+msgid "You save"
+msgstr "Ušetríte"
+
+msgid "in the bundle"
+msgstr "v sete"
+
+msgid "Bundle price"
+msgstr "Cena setu"
+
+msgid "The bundle was added to the cart."
+msgstr "Set bol pridaný do košíka."
+
+msgid "Choose at least one add-on product for the bundle."
+msgstr "Vyberte aspoň jeden ďalší produkt do setu."
+
+msgid ""
+"Combine the main product with accessories and buy the whole set as one "
+"package."
+msgstr ""
+"Spojte hlavný produkt s príslušenstvom a kúpte všetko v jednom balíku."
+
+msgid "Buy as a bundle"
+msgstr "Kúpiť v sete"
+
+msgid "Enter the details"
+msgstr "Zadajte podrobnosti"
+
+msgid "Enter a value"
+msgstr "Zadajte hodnotu"
+
+msgid "Choose an option"
+msgstr "Vyberte možnosť"
+
+msgid "Set up the add-ons and services that go with this product."
+msgstr "Nastavte doplnky a služby spojené s týmto produktom."
+
+msgid "Product add-ons"
+msgstr "Doplnky k produktu"
+
+msgid "If you no longer want messages like this, simply ignore this email."
+msgstr ""
+"Ak už nechcete dostávať takéto správy, jednoducho tento e-mail ignorujte."
+
+msgid "{product_name} is back in stock."
+msgstr "Produkt {product_name} je opäť skladom."
+
+msgid "Back in stock: {product_name}"
+msgstr "Produkt je opäť skladom - {product_name}"
+
+msgid "Log in to join the waitlist."
+msgstr "Prihláste sa, aby ste sa zapísali na čakaciu listinu."
+
+msgid "You have to accept the email contact consent."
+msgstr "Musíte súhlasiť s kontaktom e-mailom."
+
+msgid "Enter a valid email address."
+msgstr "Zadajte platnú e-mailovú adresu."
+
+msgid "The waitlist is not available for this product."
+msgstr "Čakacia listina nie je pre tento produkt dostupná."
+
+msgid ""
+"I agree to be contacted by email about the availability of this product."
+msgstr "Súhlasím s kontaktom e-mailom ohľadom dostupnosti tohto produktu."
+
+msgid "Thank you. You are on the waitlist."
+msgstr "Ďakujeme. Zapísali sme vás na čakaciu listinu."
+
+msgid "Notify me"
+msgstr "Upozorniť ma"
+
+msgid "Your email address"
+msgstr "Vaša e-mailová adresa"
+
+msgid "Email address"
+msgstr "E-mailová adresa"
+
+msgid ""
+"Leave your email address and we will let you know when the product is back "
+"in stock."
+msgstr ""
+"Nechajte e-mailovú adresu a dáme vám vedieť, keď bude produkt opäť skladom."
+
+msgid "Notify me when it is back"
+msgstr "Upozorniť ma na dostupnosť"
+
+msgid ""
+"Pre-order products cannot be combined with other products in the same cart."
+msgstr ""
+"Produkty z predpredaja nemožno kombinovať s inými produktmi v tom istom "
+"košíku."
+
+msgid "Pre-order"
+msgstr "Predpredaj"
+
+msgid ""
+"This product is available for pre-order. Order now and we will ship from "
+"{date}."
+msgstr ""
+"Tento produkt je dostupný v predpredaji. Objednajte teraz a odoslanie "
+"zrealizujeme od {date}."
+
+msgid "Pre-order, shipping from {date}"
+msgstr "Predpredaj, odoslanie od {date}"
+
+msgid "Pre-order now"
+msgstr "Objednať v predpredaji"
+
+msgid "See all products"
+msgstr "Zobraziť všetky produkty"
+
+msgid "There are no products to show in this section."
+msgstr "V tejto sekcii nie sú žiadne produkty na zobrazenie."
+
+msgid "Recommended products"
+msgstr "Odporúčané produkty"
+
+msgid "Zoom in on the product photo"
+msgstr "Zväčšiť fotografiu produktu"
+
+msgid "Close the gallery preview"
+msgstr "Zavrieť náhľad galérie"
+
+msgid "Product gallery preview"
+msgstr "Náhľad galérie produktu"
+
+msgid "See the product in use"
+msgstr "Pozrite si produkt v používaní"
+
+msgid "Returns and complaints"
+msgstr "Vrátenia a reklamácie"
+
+msgid "Delivery and payment"
+msgstr "Doprava a platba"
+
+msgid "Low stock"
+msgstr "Posledné kusy"
+
+msgid "New arrival"
+msgstr "Novinka"
+
+msgid "{count} products from the bundle were added to the cart."
+msgstr "Do košíka bolo pridaných {count} produktov zo setu."
+
+msgid "Total:"
+msgstr "Celkom:"
+
+msgid "No products have been set up for the bundle."
+msgstr "Pre tento set nie sú nakonfigurované žiadne produkty."
+
+msgid "Add the bundle to the cart"
+msgstr "Pridať set do košíka"
+
+msgid ""
+"Offer a ready made bundle of complementary products and add the whole set to"
+" the cart in one click."
+msgstr ""
+"Ponúknite zákazníkovi hotový set doplnkových produktov a pridajte všetko do "
+"košíka jedným kliknutím."
+
+msgid "Frequently bought together"
+msgstr "Často kupované spolu"
+
+msgid "See the full product page"
+msgstr "Zobraziť celú kartu produktu"
+
+msgid "The product preview could not be loaded."
+msgstr "Nepodarilo sa načítať náhľad produktu."
+
+msgid "Loading the product..."
+msgstr "Načítava sa produkt..."
+
+msgid "Product quick view"
+msgstr "Rýchly náhľad produktu"
+
+msgid "Quick view"
+msgstr "Rýchly náhľad"
+
+msgid "Show differences only"
+msgstr "Zobrazovať len rozdiely"
+
+msgid "Attribute"
+msgstr "Vlastnosť"
+
+msgid "Clear the comparison"
+msgstr "Vymazať porovnanie"
+
+msgid "Product comparison"
+msgstr "Porovnanie produktov"
+
+msgid "The comparison list is empty."
+msgstr "Porovnávací zoznam je prázdny."
+
+msgid ""
+"You can compare up to {limit} products at a time. The oldest one was "
+"replaced automatically."
+msgstr ""
+"Naraz môžete porovnať maximálne {limit} produktov. Najstaršia položka bola "
+"automaticky nahradená."
+
+msgid "Remove from comparison"
+msgstr "Odstrániť z porovnania"
+
+msgid "Add to comparison"
+msgstr "Pridať k porovnaniu"
+
+msgid "Your wishlist"
+msgstr "Vaše obľúbené produkty"
+
+msgid "The wishlist is empty."
+msgstr "Zoznam obľúbených je prázdny."
+
+msgid "Log in to use the wishlist."
+msgstr "Prihláste sa, aby ste mohli používať zoznam želaní."
+
+msgid "Remove from wishlist"
+msgstr "Odstrániť z obľúbených"
+
+msgid "Add to wishlist"
+msgstr "Pridať do obľúbených"
+
+msgid "Show filters"
+msgstr "Zobraziť filtre"
+
+msgid "Active filters"
+msgstr "Aktívne filtre"
+
+msgid "Product filters"
+msgstr "Filtre produktov"
+
+msgid "Clear filters"
+msgstr "Vymazať filtre"
+
+msgid "Any option"
+msgstr "Ľubovoľný"
+
+msgid "On sale only"
+msgstr "Iba akcie"
+
+msgid "Promotions"
+msgstr "Akcie"
+
+msgid "Any"
+msgstr "Ľubovoľná"
+
+msgid "Price to"
+msgstr "Cena do"
+
+msgid "Price from"
+msgstr "Cena od"
+
+msgid "See all results"
+msgstr "Zobraziť všetky výsledky"
+
+msgid "No results for that search."
+msgstr "Pre zadaný dotaz neboli nájdené žiadne výsledky."
+
+msgid "Search products, SKUs or categories"
+msgstr "Hľadať produkty, SKU kódy alebo kategórie"
+
+msgid "Online purchase is disabled for this product."
+msgstr "Online nákup je pre tento produkt vypnutý."
+
+msgid "The price is hidden for this product."
+msgstr "Cena je pre tento produkt skrytá."
+
+msgid "Prices and online purchase are hidden for this product."
+msgstr "Ceny a online nákup sú pre tento produkt skryté."
+
+msgid "See trade terms"
+msgstr "Zobraziť obchodné podmienky"
+
+msgid ""
+"This product is shown in catalogue mode. Contact us for trade terms or a B2B"
+" quote."
+msgstr ""
+"Produkt je dostupný v katalógovom režime. Kontaktujte nás pre obchodné "
+"podmienky alebo B2B ponuku."
+
+msgid "The price is available once you log in or contact us."
+msgstr "Cena dostupná po prihlásení alebo po kontakte s podporou."
+
+msgid "Log in to see the price"
+msgstr "Prihláste sa, aby ste videli ponuku"
+
+msgid "Ask about trade terms"
+msgstr "Opýtať sa na obchodné podmienky"
+
+msgid "Code"
+msgstr "Kód"
+
+msgid "No quote requests."
+msgstr "Žiadne dopyty."
+
+msgid "Company / VAT ID"
+msgstr "Firma / NIP"
+
+msgid "The request status has been updated."
+msgstr "Stav dopytu bol aktualizovaný."
+
+msgid "Quote requests"
+msgstr "Dopyty"
+
+msgid "Quote request confirmation: {product_name}"
+msgstr "Potvrdenie dopytu - {product_name}"
+
+msgid "New quote request: {product_name}"
+msgstr "Nový dopyt - {product_name}"
+
+msgid "I accept the privacy policy and agree to be contacted about the quote."
+msgstr ""
+"Súhlasím so zásadami ochrany osobných údajov a so kontaktom ohľadom cenovej "
+"ponuky."
+
+msgid "The request could not be prepared for this product."
+msgstr "Nepodarilo sa pripraviť dopyt pre tento produkt."
+
+msgid "The request could not be saved. Please try again."
+msgstr "Nepodarilo sa uložiť dopyt. Skúste to prosím znovu."
+
+msgid "The minimum quantity for this request is {quantity}."
+msgstr "Minimálne množstvo pre tento dopyt je {quantity}."
+
+msgid "You have to accept the privacy consent."
+msgstr "Musíte súhlasiť so zásadami ochrany osobných údajov."
+
+msgid "Enter the postcode."
+msgstr "Zadajte PSČ."
+
+msgid "Enter a valid VAT ID (NIP)."
+msgstr "Zadajte platné číslo NIP."
+
+msgid "Enter the VAT ID (NIP)."
+msgstr "Zadajte IČ DPH."
+
+msgid "Enter the company name."
+msgstr "Zadajte názov firmy."
+
+msgid "Enter a contact phone number."
+msgstr "Zadajte telefónne číslo na kontakt."
+
+msgid "Enter a valid name and email address."
+msgstr "Vyplňte správne meno a e-mailovú adresu."
+
+msgid "Price available on request"
+msgstr "Cena dostupná po nacenení"
+
+msgid ""
+"Thank you. Your request has been sent and we will reply as soon as we can."
+msgstr "Ďakujeme. Váš dopyt bol odoslaný, ozveme sa čo najskôr."
+
+msgid "Send the request"
+msgstr "Odoslať dopyt"
+
+msgid "Tell us what you need, when you need it and what the order involves."
+msgstr ""
+"Napíšte, čo potrebujete, aký máte termín a aké sú požiadavky objednávky."
+
+msgid "Request details"
+msgstr "Podrobnosti dopytu"
+
+msgid "Postcode"
+msgstr "PSČ"
+
+msgid "Full name"
+msgstr "Meno a priezvisko"
+
+msgid "Log in to request a quote for this product."
+msgstr "Prihláste sa, aby ste mohli odoslať dopyt k tomuto produktu."
+
+msgid "Close the quote form"
+msgstr "Zavrieť formulár ponuky"
+
+msgid ""
+"Fill in the short form and we will come back with a quote for your order."
+msgstr ""
+"Vyplňte krátky formulár a ozveme sa s ponukou prispôsobenou vašej "
+"objednávke."
+
+msgid "Request a custom quote"
+msgstr "Požiadať o individuálnu cenovú ponuku"
+
+msgid "Request a quote"
+msgstr "Požiadať o cenovú ponuku"
+
+msgid "If you did not create an account with us, simply delete this message."
+msgstr ""
+"Ak ste si u nás účet nezakladali vy, nič sa nedeje a túto správu jednoducho "
+"zmažte."
+
+msgid "Thank you for creating an account. Open the link below to activate it:"
+msgstr ""
+"Ďakujeme za vytvorenie účtu. Otvorte nasledujúci odkaz a aktivujte svoj "
+"účet:"
+
+msgid "If you prefer, copy this link into your browser:"
+msgstr "Ak chcete, skopírujte tento odkaz a vložte ho do prehliadača:"
+
+msgid "Activate the account"
+msgstr "Aktivovať účet"
+
+msgid ""
+"Thank you for creating an account. Click the button below to activate it:"
+msgstr ""
+"Ďakujeme za vytvorenie účtu. Kliknite na tlačidlo nižšie a aktivujte svoj "
+"účet:"
+
+msgid "Your account is now active. You can log in."
+msgstr "Výborne. Váš účet je už aktivovaný. Teraz sa môžete prihlásiť."
+
+msgid ""
+"Your account is waiting to be activated. Check your inbox and click the link"
+" we sent you."
+msgstr ""
+"Váš účet čaká na aktiváciu. Pozrite sa do e-mailovej schránky a kliknite na "
+"odkaz, ktorý sme vám poslali."
+
+msgid "Delivery time: {time}"
+msgstr "Dodacia lehota: {time}"
+
+msgid "VAT exempt under Article 113(1) of the Polish VAT Act"
+msgstr "Oslobodené od DPH na základe čl. 113 ods. 1 poľského zákona o DPH"
+
+msgid "incl. {rate}% VAT"
+msgstr "vrátane {rate}% DPH"
+
+msgid ""
+"You will be refunded within 14 days of us receiving the returned goods."
+msgstr ""
+"Vrátenie peňazí prebehne do 14 dní od okamihu, keď od vás dostaneme vracané "
+"produkty."
+
+msgid "Please return the goods to the address above within 14 days:"
+msgstr "Prosíme o vrátenie produktov na vyššie uvedenú adresu do 14 dní:"
+
+msgid ""
+"Your withdrawal from the contract for order #{order_number} has been "
+"confirmed."
+msgstr ""
+"Vaše odstúpenie od zmluvy pre objednávku č. #{order_number} bolo potvrdené."
+
+msgid "Hi {name},"
+msgstr "Ahoj {name},"
+
+msgid "Confirmation of the withdrawal declaration for order #{order_number}"
+msgstr "Potvrdenie žiadosti o odstúpenie od objednávky č. #{order_number}"
+
+msgid "The withdrawal declaration has been confirmed."
+msgstr "Žiadosť o odstúpenie bola potvrdená."
+
+msgid "The customer has filed a withdrawal declaration."
+msgstr "Zákazník podal žiadosť o odstúpenie od zmluvy."
+
+msgid "This order does not qualify for withdrawal."
+msgstr "Táto objednávka nespĺňa podmienky na odstúpenie."
+
+msgid ""
+"Your withdrawal declaration has been accepted. We will send a confirmation "
+"email shortly."
+msgstr ""
+"Vaša žiadosť o odstúpenie bola prijatá. Čoskoro vám pošleme potvrdzovací "
+"e-mail."
+
+msgid "You are not allowed to withdraw from this order."
+msgstr "Nemáte oprávnenie odstúpiť od tejto objednávky."
+
+msgid "Send the withdrawal declaration"
+msgstr "Odoslať žiadosť o odstúpenie"
+
+msgid "Items in the order"
+msgstr "Produkty v objednávke"
+
+msgid ""
+"Under Polish consumer law you have the right to withdraw from the contract "
+"within 14 days without giving a reason."
+msgstr ""
+"Podľa poľského spotrebiteľského práva máte právo odstúpiť od zmluvy do 14 "
+"dní bez uvedenia dôvodu."
+
+msgid "This refers to order #{order_number} placed on {order_date}."
+msgstr ""
+"Budete sa odvolávať na objednávku č. #{order_number} z dňa {order_date}."
+
+msgid "Withdrawal declaration"
+msgstr "Žiadosť o odstúpenie od zmluvy"
+
+msgid "Withdraw from the contract"
+msgstr "Odstúpiť od zmluvy"
+
+msgid "Optional marketing consent."
+msgstr "Voliteľný marketingový súhlas."
+
+msgid "I consent to receiving marketing communication and the newsletter."
+msgstr "Súhlasím s prijímaním marketingovej komunikácie a newslettera."
+
+msgid "Optional consent to review reminders."
+msgstr "Voliteľný súhlas s pripomienkami recenzie."
+
+msgid ""
+"I consent to receiving an email reminder to leave a review after my "
+"purchase."
+msgstr ""
+"Súhlasím s tým, aby som po nákupe dostal(a) e-mailové pripomenutie na "
+"napísanie recenzie."
+
+msgid "Optional consent to delivery notifications."
+msgstr "Voliteľný súhlas s oznámeniami o doručení."
+
+msgid ""
+"I consent to receiving SMS and email notifications about the delivery status"
+" of my parcel."
+msgstr ""
+"Súhlasím s prijímaním SMS/e-mailových oznámení o stave doručenia zásielky."
+
+msgid "Right of withdrawal waived for digital content."
+msgstr "Vzdanie sa práva na odstúpenie pri digitálnom obsahu."
+
+msgid "You have to consent to the immediate supply of digital content."
+msgstr "Musíte súhlasiť s okamžitým dodaním digitálneho obsahu."
+
+msgid ""
+"I consent to the supply of digital content beginning before the withdrawal "
+"period ends and I acknowledge that I thereby lose my right of withdrawal."
+msgstr ""
+"Súhlasím so začatím dodávania digitálneho obsahu pred uplynutím lehoty na "
+"odstúpenie od zmluvy a beriem na vedomie stratu práva na odstúpenie."
+
+msgid "Information on the 14 day right of withdrawal acknowledged."
+msgstr "Potvrdenie informácie o 14-dňovom práve na odstúpenie."
+
+msgid ""
+"You have to confirm that you have read the information on the right of "
+"withdrawal."
+msgstr ""
+"Musíte potvrdiť, že ste sa oboznámili s informáciou o práve na odstúpenie."
+
+msgid ""
+"I confirm that I have been informed of the <a href=\"%s\" "
+"target=\"_blank\">right of withdrawal</a> within 14 days."
+msgstr ""
+"Potvrdzujem, že som bol(a) informovaný(á) o <a href=\"%s\" "
+"target=\"_blank\">práve odstúpiť od zmluvy</a> do 14 dní."
+
+msgid "Privacy policy accepted."
+msgstr "Súhlas so zásadami ochrany osobných údajov."
+
+msgid "You have to accept the privacy policy."
+msgstr "Musíte prijať zásady ochrany osobných údajov."
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">privacy "
+"policy</a>."
+msgstr ""
+"Oboznámil(a) som sa so <a href=\"%s\" target=\"_blank\">zásadami ochrany "
+"osobných údajov</a> a súhlasím s nimi."
+
+msgid "Terms and conditions accepted."
+msgstr "Súhlas s obchodnými podmienkami obchodu."
+
+msgid "You have to accept the terms and conditions to place an order."
+msgstr "Na odoslanie objednávky musíte prijať obchodné podmienky."
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">terms and "
+"conditions</a>."
+msgstr ""
+"Oboznámil(a) som sa s <a href=\"%s\" target=\"_blank\">obchodnými "
+"podmienkami obchodu</a> a súhlasím s nimi."
+
+msgid "Order with an obligation to pay"
+msgstr "Objednávam s povinnosťou platby"
+
+msgid ""
+"The minimum number of items per order is {min_quantity}. You currently have "
+"{current_quantity}."
+msgstr ""
+"Minimálny počet produktov v objednávke je {min_quantity}. Aktuálny počet: "
+"{current_quantity}."
+
+msgid ""
+"The minimum order value is {min_value}. Your cart is currently "
+"{current_value}."
+msgstr ""
+"Minimálna hodnota objednávky je {min_value}. Aktuálna hodnota košíka: "
+"{current_value}."
+
+msgid "We will not send you review requests any more."
+msgstr "Už nebudeme posielať žiadosti o recenziu."
+
+msgid ""
+"Hello {first_name}, thank you for your recent order. We would be grateful "
+"for your review."
+msgstr ""
+"Ahoj {first_name}, ďakujeme za váš nedávny nákup. Budeme radi za vašu spätnú"
+" väzbu."
+
+msgid "How was your order? Leave a review"
+msgstr "Ako hodnotíte svoj nákup? Zanechajte recenziu"
+
+msgid "Lowest price in the last {days} days: {price}"
+msgstr "Najnižšia cena za posledných {days} dní: {price}"
+
+msgid ""
+"Polish payment gateways were detected. Polski can adapt the checkout and the"
+" legal notices to the active methods."
+msgstr ""
+"Boli zistené poľské platobné brány. Polski môže prispôsobiť checkout a "
+"právne hlášky aktívnym metódam."
+
+msgid ""
+"No supported Polish payment gateway was detected. Polski uses its own "
+"checkout settings with no further integration."
+msgstr ""
+"Neboli zistené podporované poľské platobné brány. Polski používa vlastné "
+"nastavenia checkoutu bez ďalších integrácií."
+
+msgid ""
+"A supported checkout, cookie or product data extension was detected. Polski "
+"can adapt to what is active."
+msgstr ""
+"Boli rozpoznané podporované rozšírenia checkoutu, cookies alebo produktových"
+" dát. Polski môže prispôsobiť integráciu aktívnej zostave."
+
+msgid ""
+"No supported checkout or cookie extension was detected. Polski works on its "
+"own."
+msgstr ""
+"Neboli rozpoznané podporované rozšírenia checkoutu ani cookies. Polski "
+"funguje aj naďalej samostatne."
+
+msgid "not detected"
+msgstr "nezistené"
+
+msgid ""
+"An external plugin was detected. Polski uses its data instead of its own "
+"price history."
+msgstr ""
+"Bol rozpoznaný externý plugin. Polski používa jeho dáta namiesto vstavaného "
+"systému."
+
+msgid ""
+"No external Omnibus plugin is installed. Polski uses its own price history."
+msgstr ""
+"Nie je nainštalovaný žiadny externý plugin Omnibus. Polski používa vstavaný "
+"systém sledovania cien."
+
+msgid "detected, data is being synchronised"
+msgstr "zistené, údaje sa synchronizujú"
+
+msgid ""
+"Test the checkout: add a product to the cart and check the legal checkboxes "
+"and the button wording on the <a href=\"%s\">checkout page</a>."
+msgstr ""
+"Otestujte checkout, pridajte produkt do košíka a skontrolujte právne "
+"checkboxy aj text tlačidla na <a href=\"%s\">objednávkovej stránke</a>."
+
+msgid ""
+"Fill in the product data, adding unit prices and delivery times in the <a "
+"href=\"%s\">Polski tab</a> of every product."
+msgstr ""
+"Doplňte údaje produktov, pridajte jednotkové ceny a dodacie lehoty v <a "
+"href=\"%s\">karte Polski</a> pri každom produkte."
+
+msgid "Set up <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Nastavte <a href=\"%s\">dopravné zóny</a> pre doručenie v Poľsku."
+
+msgid ""
+"Set up the <a href=\"%s\">VAT rates</a> in WooCommerce for the Polish "
+"market: 23%%, 8%%, 5%% and 0%%."
+msgstr ""
+"Nastavte vo WooCommerce <a href=\"%s\">sadzby DPH</a> pre poľský trh, 23%%, "
+"8%%, 5%% a 0%%."
+
+msgid ""
+"Publish your legal pages: Terms and conditions, Privacy policy, Right of "
+"withdrawal and Complaints."
+msgstr ""
+"Publikujte svoje právne stránky, obchodné podmienky, zásady ochrany osobných"
+" údajov, právo na odstúpenie a reklamácie."
+
+msgid "Generate the legal pages"
+msgstr "Vygenerovať právne stránky"
+
+msgid "Page published"
+msgstr "Publikovaná"
+
+msgid "Double opt-in"
+msgstr "Dvojité overenie (DOI)"
+
+msgid "Standard VAT"
+msgstr "Štandardná DPH"
+
+msgid "Small business exemption (Article 113)"
+msgstr "Oslobodenie malého podnikateľa (čl. 113)"
+
+msgid "Tax display"
+msgstr "Zobrazenie dane"
+
+msgid "You have completed {done} of {total} steps. Well done."
+msgstr "Máte hotovo {done} z {total} krokov. Výborne."
+
+msgid "Legal pages"
+msgstr "Právne stránky"
+
+msgid "Not configured"
+msgstr "Nenastavené"
+
+msgid "Switched off"
+msgstr "Vypnuté"
+
+msgid "Switched on"
+msgstr "Aktívna"
+
+msgid "Open the Polski configuration"
+msgstr "Otvoriť nastavenie Polski"
+
+msgid ""
+"Your shop is nearly ready. Review the modules, set up the legal pages and "
+"finish the configuration in the Polski panel."
+msgstr ""
+"Ešte chvíľku a obchod bude pripravený. Skontrolujte moduly, nastavte právne "
+"stránky a dokončite konfiguráciu v paneli Polski."
+
+msgid "Set up Polski for your shop"
+msgstr "Nastavte Polski pre svoj obchod"
+
+msgid ""
+"Done. We have generated draft legal pages for you. Review them, adjust them "
+"to your shop and publish them."
+msgstr ""
+"Hotovo. Vygenerovali sme pre vás prvé návrhy právnych stránok. Skontrolujte "
+"ich, upravte podľa potreby a publikujte."
+
+msgid "Shipping costs"
+msgstr "Náklady na dopravu"
+
+msgid "Continue"
+msgstr "Pokračovať"
+
+msgid "Company"
+msgstr "Firma"
+
+msgid "e.g. 1234563218"
+msgstr "napr. 1234563218"
+
+msgid "email:"
+msgstr "e-mail:"
+
+msgid "Alcohol"
+msgstr "Alkohol"
+
+msgid "ODR platform: https://ec.europa.eu/consumers/odr"
+msgstr "Platforma RSO: https://ec.europa.eu/consumers/odr"
