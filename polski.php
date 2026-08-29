@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Polski for WooCommerce
  * Plugin URI:        https://plogins.com/polski/
  * Description:       Adds GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF hooks, product data and storefront modules for Polish WooCommerce shops.
- * Version:           1.30.1
+ * Version:           1.30.2
  * Requires at least: 6.9
  * Requires PHP:      8.1
  * Tested up to:      7.1
@@ -19,7 +19,7 @@ declare(strict_types=1);
  * Requires Plugins:  woocommerce
  *
  * WC requires at least: 8.0
- * WC tested up to:      10.9
+ * WC tested up to:      11.0
  *
  * DISCLAIMER: This plugin is provided "as is" without any warranty. WPPoland
  * (wppoland.com) is not liable for any damages or consequences arising from its
