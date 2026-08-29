@@ -1,0 +1,1533 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest release)\n"
+"PO-Revision-Date: 2026-06-10 16:16:31+0000\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.1.0\n"
+
+msgid "Product safety (GPSR)"
+msgstr "产品安全 (GPSR)"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, goods sealed for hygiene "
+"reasons once the seal is broken, and digital content supplied with the "
+"consumer's express consent before the withdrawal period ended."
+msgstr ""
+"有。根据消费者权益法第 38 "
+"条，下列商品不适用退货权，包括按个人定制制作的商品、易腐商品、出于卫生原因密封且包装已开封的商品，以及经消费者明确同意在期限届满前已履行的数字内容。"
+
+msgid ""
+"You will get an email confirming that the declaration was accepted, with a "
+"unique declaration number and a full summary of the order. Then send the "
+"goods back to the shop's address within 14 days of filing the declaration."
+msgstr "您将收到一封确认已受理声明的电子邮件，其中包含唯一的声明编号以及完整的订单摘要。随后请在提交声明后 14 天内将商品寄回店铺地址。"
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers: "
+"every product, a single product, or just some of the units. The rest stay in"
+" the order."
+msgstr "可以。打开表单后，您可以选择哪些项目适用退货，您可以退回全部商品、单件商品或仅选定的数量。其余项目将保留在订单中。"
+
+msgid "Can I return only some of the products in the order?"
+msgstr "我可以只退回订单中的部分商品吗？"
+
+msgid ""
+"Any consumer, meaning a natural person buying for purposes outside their "
+"trade or business. When you buy as a company, the right to withdraw without "
+"giving a reason applies only in a limited form."
+msgstr "任何消费者，即出于与经营活动无关的目的进行购买的自然人。如以企业身份购买，无需说明理由即可撤销的权利仅在有限范围内适用。"
+
+msgid ""
+"By default you have %d days from the day you received the order to file the "
+"declaration. The period runs from the day the goods came into your "
+"possession, or into the possession of a third party indicated by you other "
+"than the carrier."
+msgstr "默认情况下，您自收到订单之日起有 %d 天时间提交声明。期限自商品由您本人或由承运人以外的您指定的第三方实际占有之日起计算。"
+
+msgid "Who can withdraw from a contract at %s?"
+msgstr "谁可以在 %s 店铺中撤销合同？"
+
+msgid ""
+"Having trouble with the form? Write to %s and we will help you file the "
+"declaration by hand."
+msgstr "表单遇到问题？请发送邮件至 %s，我们将协助您手动提交声明。"
+
+msgid "Common questions"
+msgstr "常见问题"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, and goods sealed for hygiene "
+"reasons once the seal is broken."
+msgstr "有。根据消费者权益法第 38 条，下列商品不适用退货权，包括按个人定制制作的商品、易腐商品，以及出于卫生原因密封且包装已开封的商品。"
+
+msgid "Are there products that cannot be returned?"
+msgstr "有哪些商品无法退回吗？"
+
+msgid ""
+"You will get a confirmation email with a unique declaration number and a "
+"full summary of the order. Then send the goods back to the shop's address "
+"within 14 days of filing the declaration."
+msgstr "您将收到一封确认电子邮件，其中包含唯一的声明编号和完整的订单摘要。随后请在提交声明后 14 天内将商品寄回店铺地址。"
+
+msgid "What happens after I send the form?"
+msgstr "提交表单后会发生什么？"
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers. You"
+" can withdraw from any number of units and the rest stay in the order."
+msgstr "可以。打开表单后，您可以选择哪些项目适用退货。可以对选定的数量办理退货，其余商品将保留在订单中。"
+
+msgid "Can I return only some of the products?"
+msgstr "我可以只退回部分商品吗？"
+
+msgid ""
+"By default you have %d days from the day you received the order. The period "
+"runs from the day the goods came into your possession, or into the "
+"possession of a third party other than the carrier."
+msgstr "默认情况下，您自收到订单之日起有 %d 天时间。期限自商品由您本人或由承运人以外的您指定的第三方实际占有之日起计算。"
+
+msgid "How long do I have to withdraw from the contract?"
+msgstr "我可以在什么期限内退出合同？"
+
+msgid ""
+"The link is valid for 30 minutes and works only once. If the message does "
+"not arrive, check your spam folder and enter the address again."
+msgstr "该链接有效期为 30 分钟，且只能使用一次。如果您没有收到消息，请检查垃圾邮件文件夹并重新输入地址。"
+
+msgid "Email me the link to the form"
+msgstr "发送表单链接"
+
+msgid "All fields are required."
+msgstr "所有字段均为必填项。"
+
+msgid ""
+"We will email a secure link to this address that opens the withdrawal form."
+msgstr "我们将向此地址发送一个打开退订表单的安全链接。"
+
+msgid "Email address used for the purchase"
+msgstr "购买时使用的电子邮件地址"
+
+msgid ""
+"The number is in your purchase confirmation email, on the \"Your order "
+"#...\" line."
+msgstr "您可在购买确认邮件中的“您的订单 #…”项找到该编号。"
+
+msgid ""
+"After you submit the declaration you will get an email with the declaration "
+"number, the date it was filed and a summary of the order. The right comes "
+"from Article 27 of the Polish Consumer Rights Act, which implements "
+"Directive %s."
+msgstr "提交声明后，您将收到一封电子邮件，其中包含声明编号、提交日期和订单摘要。该权利源于《消费者权益法》第 27 条，该法实施了指令 %s。"
+
+msgid ""
+"In the next step you choose whether to return the whole order or only some "
+"items; you can also withdraw from individual units."
+msgstr "在下一步中，您将选择是退回整个订单还是仅退回选定的项目（也可对单件商品部分退订）。"
+
+msgid ""
+"Once we have checked the details we will email a single-use link that opens "
+"the withdrawal form. The link is valid for 30 minutes and works only once."
+msgstr "验证后，我们将向所提供的地址发送一个一次性链接，用于打开退订表单。该链接有效期为 30 分钟，且只能使用一次。"
+
+msgid "How does it work? (expand)"
+msgstr "如何运作？（展开）"
+
+msgid ""
+"Bought from %1$s as a consumer? You have the right to withdraw from a "
+"distance contract without giving a reason within %2$d days of receiving your"
+" order. You do not need to log in to file the declaration: just enter below "
+"the email address used for the purchase and the order number."
+msgstr ""
+"您是消费者并向卖家 %1$s 购买了商品吗？您有权在收到订单之日起 %2$d 天内无需说明理由即可退出远程订立的合同。提交声明无需登录 - "
+"只需在下方输入购买时使用的电子邮件地址和订单号即可。"
+
+msgid "Withdrawal from the contract, online form"
+msgstr "退订 - 在线表单"
+
+msgid "Go to the withdrawal form"
+msgstr "前往退订表单"
+
+msgid ""
+"Once you send the form you will get a confirmation email with the "
+"declaration number and a summary of the order."
+msgstr "提交表单后，您将收到一封确认邮件，其中包含声明编号和订单摘要。"
+
+msgid "Order date:"
+msgstr "订单日期："
+
+msgid "Order value:"
+msgstr "订单总额："
+
+msgid "Order items covered by the declaration."
+msgstr "声明涵盖的订单项目。"
+
+msgid ""
+"Filing this declaration covers the whole order below. If you want to "
+"withdraw from only some of the items, contact the shop or log in to your "
+"account and file a separate declaration."
+msgstr "提交此声明将涵盖以下整个订单。如果您只想退订部分项目，请联系店铺或在登录账户后提交单独的声明。"
+
+msgid "Items covered by the withdrawal"
+msgstr "退订涵盖的项目"
+
+msgid "You are filing this declaration for the address: %s"
+msgstr "您正在为以下地址提交声明：%s"
+
+msgid "Withdrawal from the contract, order #%s"
+msgstr "退订 - 订单 #%s"
+
+msgid "Cancel and go back to the order list"
+msgstr "取消并返回订单列表"
+
+msgid "File the declaration and email me the confirmation"
+msgstr "提交声明并将确认发送至电子邮件"
+
+msgid "A reason is not required; withdrawal needs no justification."
+msgstr "原因不是必填项 - 退订无需提供理由。"
+
+msgid "Step 2. Reason and confirmation"
+msgstr "第 2 步。原因与确认"
+
+msgid "You can return at most %2$s units of \"%1$s\"."
+msgstr "项目“%1$s”可退货的最大件数为 %2$s。"
+
+msgid "This item is excluded from return and cannot be selected."
+msgstr "此项目已被排除退货，无法选择。"
+
+msgid "Remaining to return"
+msgstr "剩余可退货"
+
+msgid "Excluded from return"
+msgstr "已排除退货"
+
+msgid "Units to return"
+msgstr "退货件数"
+
+msgid "Remaining"
+msgstr "剩余"
+
+msgid "Item"
+msgstr "项目"
+
+msgid "Order items available for withdrawal."
+msgstr "可退订的订单项目。"
+
+msgid "Clear the selection"
+msgstr "清除选择"
+
+msgid "Select all items"
+msgstr "选择所有项目"
+
+msgid ""
+"Enter how many units you want to withdraw. The \"Remaining\" field shows the"
+" most you can still withdraw for that item."
+msgstr "请输入您想退订的件数。“剩余”字段显示该项目还可退订的最大数量。"
+
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "第 1 步。选择要退订的项目"
+
+msgid ""
+"Every item in this order is already covered by a withdrawal or does not "
+"qualify for return."
+msgstr "此订单中的所有项目均已涵盖退订或不符合退货条件。"
+
+msgid ""
+"You are filing a withdrawal declaration for order #{order_number} placed on "
+"{order_date}."
+msgstr "您正在为 {order_date} 的订单 #{order_number} 提交退订申请。"
+
+msgid "Send the report"
+msgstr "发送举报"
+
+msgid "- Choose a reason -"
+msgstr "- 选择原因 -"
+
+msgid "Reason for the report"
+msgstr "举报原因"
+
+msgid "URL of the reported content"
+msgstr "被举报内容的 URL"
+
+msgid "You are reporting: %s"
+msgstr "您正在举报：%s"
+
+msgid "You are reporting: %1$s (%2$s)"
+msgstr "您正在举报：%1$s (%2$s)"
+
+msgid "Thank you. Your report has been sent and will be reviewed."
+msgstr "谢谢！您的举报已发送，将会得到处理。"
+
+msgid "Misleading advertising"
+msgstr "误导性广告"
+
+msgid "Illegal product"
+msgstr "非法产品"
+
+msgid "Illegal content"
+msgstr "非法内容"
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop. We are happy to explain."
+msgstr "如果您认为此决定有误，请回复此邮件或联系店铺。我们很乐意为您说明详情。"
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. "
+"Depending on your bank it may take a few working days to appear."
+msgstr "退款将退回购买时使用的原始支付方式。视银行而定，资金可能在几个工作日内到账。"
+
+msgid ""
+"We are glad to tell you that your withdrawal declaration (%2$s) for order "
+"#%1$s has been settled."
+msgstr "我们很高兴地通知您，您针对订单 #%1$s 的退订声明（%2$s）已结算。"
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop."
+msgstr "如果您认为此决定有误，请回复此邮件或联系店铺。"
+
+msgid "Decision date"
+msgstr "决定日期"
+
+msgid "Reason for the refusal:"
+msgstr "拒绝原因："
+
+msgid "We cannot accept your withdrawal declaration (%1$s) for order #%2$s."
+msgstr "很遗憾，我们无法接受您针对订单 #%2$s 的退订声明（%1$s）。"
+
+msgid ""
+"Keep this message as proof that the declaration was filed. It holds "
+"everything the declaration needs: the number, the date and time it was "
+"filed, and a summary of the order."
+msgstr "请保留此消息作为声明提交的确认。它包含必要的声明数据（编号、提交日期和时间、订单摘要）。"
+
+msgid ""
+"Send the goods back to the address below within 14 days of filing the "
+"declaration:"
+msgstr "请在提交声明之日起 14 天内将产品退回至以下地址："
+
+msgid ""
+"Your withdrawal declaration for order #{order_number} has been registered."
+msgstr "您针对订单 #{order_number} 的退订申请已登记。"
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. It may "
+"take a few working days to appear."
+msgstr "退款将退回购买时使用的原始支付方式。资金可能在几个工作日内到账。"
+
+msgid "Refund amount"
+msgstr "退款金额"
+
+msgid "Settlement date"
+msgstr "结算日期"
+
+msgid "Declaration number"
+msgstr "声明编号"
+
+msgid "Your withdrawal declaration (%2$s) for order #%1$s has been settled."
+msgstr "您针对订单 #%1$s 的退订声明（%2$s）已结算。"
+
+msgid "Hello %s,"
+msgstr "您好 %s，"
+
+msgid "Available payment methods"
+msgstr "可用的支付方式"
+
+msgid "Please enter the order number."
+msgstr "请提供订单号。"
+
+msgid "Used only if \"Other\" is selected."
+msgstr "仅在选择“其他”时使用。"
+
+msgid "Custom reason"
+msgstr "自定义理由"
+
+msgid "Custom reason (if \"Other\" is selected)"
+msgstr "自定义理由（如选择“其他”）"
+
+msgid "- choose -"
+msgstr "- 选择 -"
+
+msgid "Grounds for the exclusion"
+msgstr "排除依据"
+
+msgid ""
+"Use this when every product in the category meets an exception under Article"
+" 38 of the Consumer Rights Act."
+msgstr "当该类别中所有产品均符合《消费者权益法》第 38 条的例外情形时适用。"
+
+msgid "Exclude products in this category from the right of withdrawal"
+msgstr "将此类别的产品排除在退订权之外"
+
+msgid ""
+"No data found for that VAT ID (NIP). Check the number or fill the details in"
+" by hand."
+msgstr "未找到所提供 NIP 的数据。请核对号码或手动填写数据。"
+
+msgid "Invalid VAT ID (NIP)."
+msgstr "无效的 NIP。"
+
+msgid "That VAT ID (NIP) is not valid. Check the number and try again."
+msgstr "提供的 NIP 无效。请核对号码后重试。"
+
+msgid "Reference"
+msgstr "编号"
+
+msgid "You have not filed any withdrawal declarations yet."
+msgstr "您尚未提交任何合同撤回申请。"
+
+msgid "You have to be logged in to see your withdrawals."
+msgstr "您必须登录才能查看您的撤回。"
+
+msgid "My withdrawals"
+msgstr "我的撤回"
+
+msgid ""
+"We received a request to file a withdrawal declaration for order #%1$s.\n"
+"\n"
+"To continue, click the link below within %2$d minutes:\n"
+"\n"
+"%3$s\n"
+"\n"
+"The link can be used once. If you did not make this request, you can ignore this message."
+msgstr ""
+"我们收到了针对订单 #%1$s 提交合同撤回声明的请求。\n"
+"\n"
+"如需继续，请在 %2$d 分钟内点击以下链接：\n"
+"\n"
+"%3$s\n"
+"\n"
+"该链接仅可使用一次。如果该请求并非由您发出，您可以忽略此邮件。"
+
+msgid "Withdrawal link for order #%s"
+msgstr "合同撤回链接--订单 #%s"
+
+msgid "Keep the declaration number in case you contact the shop."
+msgstr "请保留声明编号，以备与店铺联系时使用。"
+
+msgid ""
+"Your declaration has been registered under number %s. We have sent a "
+"confirmation to the address used for the purchase; check your inbox and your"
+" spam folder."
+msgstr "您的声明已登记，编号为 %s。我们已将确认信息发送至购买时填写的地址--请查看您的收件箱以及垃圾邮件文件夹。"
+
+msgid "Declaration filed"
+msgstr "声明已提交"
+
+msgid ""
+"The declaration could not be saved. Try again in a moment or contact the "
+"shop."
+msgstr "无法保存声明。请稍后重试，或与店铺联系。"
+
+msgid "The security check failed. Reload the page and try again."
+msgstr "安全检查失败。请重新加载页面后再试一次。"
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder; the message "
+"should arrive within a few minutes."
+msgstr "如果该订单存在，我们已将表单链接发送至购买时填写的电子邮件地址。请查看您的收件箱（以及垃圾邮件文件夹）--邮件应会在几分钟内送达。"
+
+msgid ""
+"Too many attempts in a short time. Please try again in 15 minutes. If an "
+"earlier link never arrived, check your spam folder."
+msgstr "短时间内尝试次数过多。请在 15 分钟后重试。如果您未收到之前发送的链接，请查看垃圾邮件文件夹。"
+
+msgid ""
+"That email address does not look valid. Enter the full address in the form "
+"you@example.com, the same one you used for the purchase."
+msgstr "电子邮件地址似乎无效。请输入格式为 you@example.com 的完整地址，须与购买时填写的一致。"
+
+msgid ""
+"The order number is missing. Check your purchase confirmation email and "
+"enter the number from the \"Your order #...\" line."
+msgstr "缺少订单编号。请查看购买确认邮件，并输入“您的订单 #…”一行中的编号。"
+
+msgid ""
+"Enter the order number (it is in your confirmation email) and the email "
+"address used for the purchase."
+msgstr "请输入订单编号（可在确认邮件中找到）和购买时使用的电子邮件地址。"
+
+msgid "%d of 8 fields filled in"
+msgstr "已填写 %d/8 个字段"
+
+msgid "Results updated."
+msgstr "已更新结果。"
+
+msgid "Results updated: %d products."
+msgstr "已更新结果：%d 件产品。"
+
+msgid "Too many reports from this IP address. Please try again in an hour."
+msgstr "来自该 IP 地址的提交过多。请在一小时后重试。"
+
+msgid ""
+"I consent to performance beginning (for example the supply of digital "
+"content) before the withdrawal period ends and I acknowledge that I thereby "
+"lose my right of withdrawal for the digital content supplied in this way."
+msgstr "我同意在合同撤回期限届满前开始履行服务（例如提供数字内容），并知悉就以此方式提供的数字内容将丧失撤回权。"
+
+msgid ""
+"To buy digital products you have to consent to performance beginning before "
+"the withdrawal period ends."
+msgstr "若要购买数字商品，您必须同意在撤回期限届满前开始提供服务。"
+
+msgid "I need a VAT invoice"
+msgstr "我需要增值税发票"
+
+msgid ""
+"You can also file the declaration online: <a href=\"%s\">withdrawal "
+"form</a>."
+msgstr "您也可以在线提交声明：<a href=\"%s\">撤回表格</a>。"
+
+msgid "(*) Delete as appropriate."
+msgstr "(*) 删除不适用项。"
+
+msgid "Signature of consumer(s) (only if this form is notified on paper):"
+msgstr "消费者签名（仅在以纸质形式提交表格时）："
+
+msgid "Address of consumer(s):"
+msgstr "消费者地址："
+
+msgid "Name of consumer(s):"
+msgstr "消费者姓名："
+
+msgid "Ordered on (*)/received on (*):"
+msgstr "合同订立日期(*)/收货日期(*)："
+
+msgid ""
+"I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
+"of sale of the following goods (*)/for the provision of the following "
+"service (*):"
+msgstr ""
+"本人/我们(*)在此通知本人/我们(*)撤回以下物品的销售合同(*)以下物品的供货合同(*)以制作以下物品为内容的承揽合同(*)/提供以下服务的合同(*)："
+
+msgid "Addressee:"
+msgstr "收件人："
+
+msgid ""
+"(complete and return this form only if you wish to withdraw from the "
+"contract)"
+msgstr "（仅在希望撤回合同时才需填写并寄回此表格）"
+
+msgid "Model withdrawal form"
+msgstr "撤回合同表格范本"
+
+msgid ""
+"You are only liable for any diminished value of the goods resulting from the"
+" handling other than what is necessary to establish the nature, "
+"characteristics and functioning of the goods."
+msgstr "您仅对因以超出确认物品性质、特征和功能所必需方式之外的使用而导致的物品价值减损负责。"
+
+msgid "You will have to bear the direct cost of returning the goods."
+msgstr "您将需要承担退回物品的直接费用。"
+
+msgid ""
+"You shall send back the goods or hand them over to us at the address above, "
+"without undue delay and in any event not later than 14 days from the day on "
+"which you communicate your withdrawal from this contract to us. The deadline"
+" is met if you send back the goods before the period of 14 days has expired."
+msgstr ""
+"请在通知我们撤回本合同之日起立即，且无论如何不迟于 14 天内，将物品寄回或交付至上述地址。只要您在 14 天期限届满前寄回物品，即视为遵守期限。"
+
+msgid ""
+"We may withhold reimbursement until we have received the goods back or you "
+"have supplied evidence of having sent back the goods, whichever is the "
+"earliest."
+msgstr "我们可以暂缓退款，直至收到退回的物品，或直至您提供已寄回物品的凭证为止，以两者中较早发生者为准。"
+
+msgid ""
+"We will carry out such reimbursement using the same means of payment as you "
+"used for the initial transaction, unless you have expressly agreed "
+"otherwise; in any event, you will not incur any fees as a result of such "
+"reimbursement."
+msgstr "我们将使用您在原始交易中所用的相同付款方式进行退款，除非您明确同意其他方式；在任何情况下，您都不会因此次退款而承担任何费用。"
+
+msgid ""
+"If you withdraw from this contract, we shall reimburse to you all payments "
+"received from you, including the costs of delivery (with the exception of "
+"the supplementary costs resulting from your choice of a type of delivery "
+"other than the least expensive type of standard delivery offered by us), "
+"without undue delay and in any event not later than %d days from the day on "
+"which we are informed about your decision to withdraw from this contract."
+msgstr ""
+"如撤回本合同，我们将立即向您退还收到的所有款项，包括交付费用（您选择的非我方提供的最便宜普通交付方式所产生的额外费用除外），并且在任何情况下不迟于我们获知您行使撤回本合同权利的决定之日起"
+" %d 天内退还。"
+
+msgid "Effects of withdrawal"
+msgstr "撤回合同的后果"
+
+msgid ""
+"To meet the withdrawal deadline, it is sufficient for you to send your "
+"communication concerning your exercise of the right of withdrawal before the"
+" withdrawal period has expired."
+msgstr "为遵守撤回合同的期限，您只需在撤回期限届满前发出有关行使撤回合同权利的通知即可。"
+
+msgid "You may use the model withdrawal form, but it is not obligatory."
+msgstr "您可以使用撤回合同表格的范本，但这并非强制性的。"
+
+msgid ""
+"To exercise the right of withdrawal, you must inform us of your decision to "
+"withdraw from this contract by an unequivocal statement (for example a "
+"letter sent by post, fax or email)."
+msgstr "如需行使撤回合同的权利，您必须通过明确的声明（例如邮寄信函、传真或电子邮件）告知我们您撤回本合同的决定。"
+
+msgid ""
+"The withdrawal period will expire after %d days from the day on which you "
+"acquire, or a third party other than the carrier and indicated by you "
+"acquires, physical possession of the goods."
+msgstr "撤回合同的期限自您或您指定的、非承运人的第三方取得物品占有之日起 %d 天后届满。"
+
+msgid ""
+"You have the right to withdraw from this contract within %d days without "
+"giving any reason."
+msgstr "您有权在 %d 天内撤回本合同，无需说明任何理由。"
+
+msgid ""
+"Runs the UŚUDE and Consumer Rights Act rules against the configured terms "
+"page."
+msgstr "针对已配置的条款页面运行 UŚUDE + 消费者权利法规则。"
+
+msgid "Withdrawal from the contract"
+msgstr "撤回合同"
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder."
+msgstr "如果该订单存在，我们已将表格链接发送至您购买时提供的电子邮件地址。请检查您的收件箱以及垃圾邮件文件夹。"
+
+msgid "The order number is missing or the email address is not valid."
+msgstr "缺少订单编号或电子邮件地址无效。"
+
+msgid ""
+"Reference the statutory withdrawal form (the annex to the Polish Consumer "
+"Rights Act)."
+msgstr "引用法定撤回表格（消费者权利法附件）。"
+
+msgid "pcs."
+msgstr "件"
+
+msgid "Within 24 hours"
+msgstr "24 小时内"
+
+msgid "7-14 working days"
+msgstr "7-14 个工作日"
+
+msgid "5-7 working days"
+msgstr "5-7 个工作日"
+
+msgid "3-5 working days"
+msgstr "3-5 个工作日"
+
+msgid "2-4 working days"
+msgstr "2-4 个工作日"
+
+msgid "1-2 working days"
+msgstr "1-2 个工作日"
+
+msgid "Lowest price in the last 30 days"
+msgstr "30 天内最低价"
+
+msgid "Digital content"
+msgstr "数字内容"
+
+msgid "Recording or software"
+msgstr "录制/软件"
+
+msgid "Inseparably mixed"
+msgstr "不可分割地结合"
+
+msgid "Sealed"
+msgstr "密封"
+
+msgid "Perishable"
+msgstr "短保质期"
+
+msgid "Made to order"
+msgstr "定制"
+
+msgid ""
+"Digital content supplied before the withdrawal period ends (Article 38(13))"
+msgstr "在期限届满前已履行的数字内容（第 38 条第 13 款）"
+
+msgid "Sealed audio or video recordings or computer software (Article 38(9))"
+msgstr "密封包装中的音频/视频录制或软件（第 38 条第 9 款）"
+
+msgid "Alcoholic beverages (Article 38(7))"
+msgstr "酒精饮料（第 38 条第 7 款）"
+
+msgid "Inseparably mixed with other items after delivery (Article 38(6))"
+msgstr "与其他产品不可分割地结合的产品（第 38 条第 6 款）"
+
+msgid "Sealed for health protection or hygiene reasons (Article 38(5))"
+msgstr "出于健康保护或卫生原因密封的产品（第 38 条第 5 款）"
+
+msgid "Liable to deteriorate or expire rapidly (Article 38(4))"
+msgstr "易腐 / 保质期短的产品（第 38 条第 4 款）"
+
+msgid ""
+"Made to the consumer's specification or clearly personalised (Article 38(3))"
+msgstr "按个人订单定制 / 个性化产品（第 38 条第 3 款）"
+
+msgid "Other (custom reason)"
+msgstr "其他（自定义理由）"
+
+msgid "Rejected by a bulk action."
+msgstr "已通过批量操作拒绝。"
+
+msgid "Unknown bulk action."
+msgstr "未知的批量操作。"
+
+msgid "Choose an action and at least one row."
+msgstr "请选择一个操作和至少一个项目。"
+
+msgid "Rejected from the order screen."
+msgstr "已从订单屏幕拒绝。"
+
+msgid "Open the list"
+msgstr "打开列表"
+
+msgid "Reject"
+msgstr "拒绝"
+
+msgid "Reject this declaration?"
+msgstr "拒绝此声明？"
+
+msgid "Mark as settled"
+msgstr "标记为已结算"
+
+msgid "Confirm"
+msgstr "确认"
+
+msgid "There is no withdrawal declaration for this order."
+msgstr "此订单没有撤销声明。"
+
+msgid "Polski withdrawal"
+msgstr "Polski - 撤销"
+
+msgid "Tools that help bring the shop in line with Polish requirements."
+msgstr "帮助您的商店适应波兰要求的工具。"
+
+msgid "GDPR training material for the shop team."
+msgstr "面向商店团队的 RODO 培训材料。"
+
+msgid "GDPR training"
+msgstr "RODO 培训"
+
+msgid ""
+"The complaint form template for customers, with its generator and settings."
+msgstr "面向客户的投诉模板生成器和设置。"
+
+msgid "A software bill of materials for the Cyber Resilience Act."
+msgstr "用于 CRA 的软件物料清单(Software Bill of Materials)。"
+
+msgid ""
+"A register of vulnerabilities, breaches and failures for the Cyber "
+"Resilience Act, with statuses and CSV export."
+msgstr "用于《网络韧性法案》(Cyber Resilience Act)的漏洞、违规和故障登记册,带状态和 CSV 导出功能。"
+
+msgid ""
+"Withdrawal declarations and returns: the list, manual registration and the "
+"settings."
+msgstr "撤回合同与退货申请：列表、手动登记和设置。"
+
+msgid "Stored visitor decisions from the consent banner, with CSV export."
+msgstr "已保存的访客同意横幅决定，支持 CSV 导出。"
+
+msgid "A register of data processing agreements with third parties."
+msgstr "与第三方主体签订的个人数据处理委托协议登记簿。"
+
+msgid "DPA registry (GDPR)"
+msgstr "DPA 登记簿 (RODO)"
+
+msgid ""
+"Continuous monitoring of fatal errors, failed payments and sales anomalies, "
+"with alerts."
+msgstr "持续监控严重错误、付款失败和销售异常，并提供警报。"
+
+msgid "Shop health"
+msgstr "商店健康状况"
+
+msgid ""
+"A record of security problems, data breaches and infrastructure failures."
+msgstr "安全问题、数据泄露和基础设施故障的记录。"
+
+msgid "Handling of content notices under the Digital Services Act."
+msgstr "管理数字内容侵权举报（数字服务法）。"
+
+msgid "DSA reports"
+msgstr "DSA 报告"
+
+msgid ""
+"An automatic check of the most common legal problems in Polish ecommerce."
+msgstr "自动核查波兰电子商务中最常见的法律问题。"
+
+msgid "Compliance audit"
+msgstr "合规审核"
+
+msgid ""
+"Use the form below to report content you consider illegal under the Digital "
+"Services Act."
+msgstr "请填写以下表单，举报您认为依据《数字服务法》(DSA) 属于非法的内容。"
+
+msgid "Report illegal content (DSA)"
+msgstr "举报非法内容 (DSA)"
+
+msgid "Reject optional"
+msgstr "拒绝非必要项"
+
+msgid ""
+"We use cookies and similar technologies to run the site, measure traffic and"
+" personalise content. You can accept all of them, reject the optional ones, "
+"or manage your choices yourself."
+msgstr "我们使用 cookie 和类似技术来保障网站运行、衡量流量并个性化内容。您可以接受全部、拒绝非必要项，或自行管理您的选择。"
+
+msgid "Frequently asked questions"
+msgstr "常见问题"
+
+msgid "Price history"
+msgstr "价格历史"
+
+msgid "No questions yet. Ask the first one."
+msgstr "暂无问题。来提第一个问题吧！"
+
+msgid "Reply"
+msgstr "回答"
+
+msgid "Ask a question about this product..."
+msgstr "对此产品提问..."
+
+msgid "Questions and answers"
+msgstr "问答"
+
+msgid "%d h ago"
+msgstr "%d 小时前"
+
+msgid "%d min ago"
+msgstr "%d 分钟前"
+
+msgid "%1$s bought %2$s"
+msgstr "%1$s 购买了 %2$s"
+
+msgid "Alcoholic strength"
+msgstr "酒精含量"
+
+msgid "Nutrition per"
+msgstr "营养成分（每"
+
+msgid "Promotional popup"
+msgstr "促销弹窗"
+
+msgid "Close the popup"
+msgstr "关闭弹窗"
+
+msgid "Go to contact"
+msgstr "前往联系"
+
+msgid ""
+"Contact us for a B2B quote, a wholesale discount or help choosing a product."
+msgstr "如果您想获取 B2B 报价、批发折扣或产品选型帮助，请联系我们。"
+
+msgid "A question about the product or about trade terms?"
+msgstr "对产品或交易条件有疑问？"
+
+msgid "More products have been loaded."
+msgstr "已加载更多产品。"
+
+msgid "That is all the products."
+msgstr "已经是全部产品了。"
+
+msgid "More products could not be loaded."
+msgstr "无法加载更多产品。"
+
+msgid "Loading products..."
+msgstr "正在加载产品..."
+
+msgid "Load more products"
+msgstr "加载更多产品"
+
+msgid "You save"
+msgstr "您节省了"
+
+msgid "in the bundle"
+msgstr "套装内"
+
+msgid "Bundle price"
+msgstr "套装价格"
+
+msgid "The bundle was added to the cart."
+msgstr "已将套装加入购物车。"
+
+msgid "Choose at least one add-on product for the bundle."
+msgstr "请至少选择一件附加产品加入套装。"
+
+msgid ""
+"Combine the main product with accessories and buy the whole set as one "
+"package."
+msgstr "将主产品与配件组合，整套打包一次购买。"
+
+msgid "Buy as a bundle"
+msgstr "套装购买"
+
+msgid "Enter the details"
+msgstr "输入详情"
+
+msgid "Enter a value"
+msgstr "输入数值"
+
+msgid "Choose an option"
+msgstr "选择一个选项"
+
+msgid "Set up the add-ons and services that go with this product."
+msgstr "配置与此产品相关的附加项和服务。"
+
+msgid "Product add-ons"
+msgstr "产品附加项"
+
+msgid "If you no longer want messages like this, simply ignore this email."
+msgstr "如果您不想再收到此类消息，只需忽略此电子邮件即可。"
+
+msgid "{product_name} is back in stock."
+msgstr "产品 {product_name} 已再次到货。"
+
+msgid "Back in stock: {product_name}"
+msgstr "产品再次到货 - {product_name}"
+
+msgid "Log in to join the waitlist."
+msgstr "请登录以加入等候名单。"
+
+msgid "You have to accept the email contact consent."
+msgstr "您必须同意电子邮件联系授权。"
+
+msgid "Enter a valid email address."
+msgstr "请输入有效的电子邮件地址。"
+
+msgid "The waitlist is not available for this product."
+msgstr "此产品暂不提供等候名单。"
+
+msgid ""
+"I agree to be contacted by email about the availability of this product."
+msgstr "我同意接收有关本产品到货情况的电子邮件联系。"
+
+msgid "Thank you. You are on the waitlist."
+msgstr "谢谢。我们已将您加入等候名单。"
+
+msgid "Notify me"
+msgstr "通知我"
+
+msgid "Your email address"
+msgstr "您的电子邮件地址"
+
+msgid "Email address"
+msgstr "电子邮件地址"
+
+msgid ""
+"Leave your email address and we will let you know when the product is back "
+"in stock."
+msgstr "留下您的电子邮件地址，产品到货时我们会通知您。"
+
+msgid "Notify me when it is back"
+msgstr "到货时通知我"
+
+msgid ""
+"Pre-order products cannot be combined with other products in the same cart."
+msgstr "预售产品不能与同一购物车中的其他产品合并。"
+
+msgid "Pre-order"
+msgstr "预售"
+
+msgid ""
+"This product is available for pre-order. Order now and we will ship from "
+"{date}."
+msgstr "本产品现提供预售。立即下单，我们将自 {date} 起为您发货。"
+
+msgid "Pre-order, shipping from {date}"
+msgstr "预售，自 {date} 起发货"
+
+msgid "Pre-order now"
+msgstr "预售下单"
+
+msgid "See all products"
+msgstr "查看所有产品"
+
+msgid "There are no products to show in this section."
+msgstr "此版块没有可显示的产品。"
+
+msgid "Recommended products"
+msgstr "推荐产品"
+
+msgid "Zoom in on the product photo"
+msgstr "放大产品图片"
+
+msgid "Close the gallery preview"
+msgstr "关闭图库预览"
+
+msgid "Product gallery preview"
+msgstr "产品图库预览"
+
+msgid "See the product in use"
+msgstr "查看产品使用效果"
+
+msgid "Returns and complaints"
+msgstr "退货与投诉"
+
+msgid "Delivery and payment"
+msgstr "配送与付款"
+
+msgid "Low stock"
+msgstr "最后库存"
+
+msgid "New arrival"
+msgstr "新品"
+
+msgid "{count} products from the bundle were added to the cart."
+msgstr "已将套装中的 {count} 件产品加入购物车。"
+
+msgid "Total:"
+msgstr "合计："
+
+msgid "No products have been set up for the bundle."
+msgstr "尚未为套装配置产品。"
+
+msgid "Add the bundle to the cart"
+msgstr "将套装加入购物车"
+
+msgid ""
+"Offer a ready made bundle of complementary products and add the whole set to"
+" the cart in one click."
+msgstr "向客户推荐一套现成的互补产品组合，一键即可将整套加入购物车。"
+
+msgid "Frequently bought together"
+msgstr "经常一起购买"
+
+msgid "See the full product page"
+msgstr "查看完整产品页"
+
+msgid "The product preview could not be loaded."
+msgstr "无法加载产品预览。"
+
+msgid "Loading the product..."
+msgstr "正在加载产品..."
+
+msgid "Product quick view"
+msgstr "产品快速预览"
+
+msgid "Quick view"
+msgstr "快速预览"
+
+msgid "Show differences only"
+msgstr "仅显示差异"
+
+msgid "Attribute"
+msgstr "特性"
+
+msgid "Clear the comparison"
+msgstr "清除比较"
+
+msgid "Product comparison"
+msgstr "产品比较"
+
+msgid "The comparison list is empty."
+msgstr "比较列表为空。"
+
+msgid ""
+"You can compare up to {limit} products at a time. The oldest one was "
+"replaced automatically."
+msgstr "您最多可同时比较 {limit} 件产品。最早的条目已被自动替换。"
+
+msgid "Remove from comparison"
+msgstr "从比较中移除"
+
+msgid "Add to comparison"
+msgstr "加入比较"
+
+msgid "Your wishlist"
+msgstr "您收藏的产品"
+
+msgid "The wishlist is empty."
+msgstr "收藏列表为空。"
+
+msgid "Log in to use the wishlist."
+msgstr "请登录以使用心愿单。"
+
+msgid "Remove from wishlist"
+msgstr "从收藏中移除"
+
+msgid "Add to wishlist"
+msgstr "加入收藏"
+
+msgid "Show filters"
+msgstr "显示筛选器"
+
+msgid "Active filters"
+msgstr "已启用的筛选"
+
+msgid "Product filters"
+msgstr "产品筛选"
+
+msgid "Clear filters"
+msgstr "清除筛选"
+
+msgid "Any option"
+msgstr "任意"
+
+msgid "On sale only"
+msgstr "仅促销"
+
+msgid "Promotions"
+msgstr "促销"
+
+msgid "Any"
+msgstr "任意"
+
+msgid "Price to"
+msgstr "价格至"
+
+msgid "Price from"
+msgstr "价格从"
+
+msgid "See all results"
+msgstr "查看所有结果"
+
+msgid "No results for that search."
+msgstr "没有符合所给查询的结果。"
+
+msgid "Search products, SKUs or categories"
+msgstr "搜索产品、SKU 代码或类别"
+
+msgid "Online purchase is disabled for this product."
+msgstr "此产品的在线购买已禁用。"
+
+msgid "The price is hidden for this product."
+msgstr "此产品的价格已隐藏。"
+
+msgid "Prices and online purchase are hidden for this product."
+msgstr "此产品的价格和在线购买已隐藏。"
+
+msgid "See trade terms"
+msgstr "查看商业条款"
+
+msgid ""
+"This product is shown in catalogue mode. Contact us for trade terms or a B2B"
+" quote."
+msgstr "产品以目录模式提供。请联系我们以获取商业条款或 B2B 报价。"
+
+msgid "The price is available once you log in or contact us."
+msgstr "价格在登录后或联系客服后提供。"
+
+msgid "Log in to see the price"
+msgstr "登录以查看报价"
+
+msgid "Ask about trade terms"
+msgstr "询问商业条款"
+
+msgid "Code"
+msgstr "代码"
+
+msgid "No quote requests."
+msgstr "没有报价询问。"
+
+msgid "Company / VAT ID"
+msgstr "公司 / NIP"
+
+msgid "The request status has been updated."
+msgstr "询问状态已更新。"
+
+msgid "Quote requests"
+msgstr "报价询问"
+
+msgid "Quote request confirmation: {product_name}"
+msgstr "报价询问确认 - {product_name}"
+
+msgid "New quote request: {product_name}"
+msgstr "新的报价询问 - {product_name}"
+
+msgid "I accept the privacy policy and agree to be contacted about the quote."
+msgstr "我接受隐私政策并同意就报价事宜接受联系。"
+
+msgid "The request could not be prepared for this product."
+msgstr "无法为此产品准备询问。"
+
+msgid "The request could not be saved. Please try again."
+msgstr "无法保存询问。请重试。"
+
+msgid "The minimum quantity for this request is {quantity}."
+msgstr "此询问的最低数量为 {quantity}。"
+
+msgid "You have to accept the privacy consent."
+msgstr "您必须接受隐私同意。"
+
+msgid "Enter the postcode."
+msgstr "请提供邮政编码。"
+
+msgid "Enter a valid VAT ID (NIP)."
+msgstr "请提供正确的 NIP 号码。"
+
+msgid "Enter the VAT ID (NIP)."
+msgstr "请提供 NIP 号码。"
+
+msgid "Enter the company name."
+msgstr "请提供公司名称。"
+
+msgid "Enter a contact phone number."
+msgstr "请提供联系电话号码。"
+
+msgid "Enter a valid name and email address."
+msgstr "请正确填写姓名和电子邮箱地址。"
+
+msgid "Price available on request"
+msgstr "价格需报价后提供"
+
+msgid ""
+"Thank you. Your request has been sent and we will reply as soon as we can."
+msgstr "谢谢。您的询问已发送，我们会尽快回复。"
+
+msgid "Send the request"
+msgstr "发送询问"
+
+msgid "Tell us what you need, when you need it and what the order involves."
+msgstr "请写明您的需求、期限以及订单的具体要求。"
+
+msgid "Request details"
+msgstr "询问详情"
+
+msgid "Postcode"
+msgstr "邮政编码"
+
+msgid "Full name"
+msgstr "姓名"
+
+msgid "Log in to request a quote for this product."
+msgstr "请登录以发送此产品的报价询问。"
+
+msgid "Close the quote form"
+msgstr "关闭报价表单"
+
+msgid ""
+"Fill in the short form and we will come back with a quote for your order."
+msgstr "填写简短的表单，我们会为您提供符合您订单的报价。"
+
+msgid "Request a custom quote"
+msgstr "询问个性化报价"
+
+msgid "Request a quote"
+msgstr "询问报价"
+
+msgid "If you did not create an account with us, simply delete this message."
+msgstr "如果不是您在我们这里注册的账户，请不必担心，直接删除此邮件即可。"
+
+msgid "Thank you for creating an account. Open the link below to activate it:"
+msgstr "感谢您注册账户。请访问以下链接以激活账户："
+
+msgid "If you prefer, copy this link into your browser:"
+msgstr "如果您愿意，可以复制并粘贴此链接到浏览器中："
+
+msgid "Activate the account"
+msgstr "激活账户"
+
+msgid ""
+"Thank you for creating an account. Click the button below to activate it:"
+msgstr "感谢您注册账户。请点击下方按钮以激活账户："
+
+msgid "Your account is now active. You can log in."
+msgstr "太好了！您的账户已激活。您现在可以放心登录了。"
+
+msgid ""
+"Your account is waiting to be activated. Check your inbox and click the link"
+" we sent you."
+msgstr "您的账户正在等待激活！请查看您的电子邮箱并点击我们发送的链接。"
+
+msgid "Delivery time: {time}"
+msgstr "配送时间：{time}"
+
+msgid "VAT exempt under Article 113(1) of the Polish VAT Act"
+msgstr "根据 VAT 法第 113 条第 1 款免征 VAT"
+
+msgid "incl. {rate}% VAT"
+msgstr "含 {rate}% VAT"
+
+msgid ""
+"You will be refunded within 14 days of us receiving the returned goods."
+msgstr "我们将在收到退回产品之日起 14 天内退款。"
+
+msgid "Please return the goods to the address above within 14 days:"
+msgstr "请在 14 天内将产品退回至上述地址："
+
+msgid ""
+"Your withdrawal from the contract for order #{order_number} has been "
+"confirmed."
+msgstr "您对订单编号 #{order_number} 的撤回合同已得到确认。"
+
+msgid "Hi {name},"
+msgstr "您好 {name}，"
+
+msgid "Confirmation of the withdrawal declaration for order #{order_number}"
+msgstr "订单编号 #{order_number} 撤回申请的确认"
+
+msgid "The withdrawal declaration has been confirmed."
+msgstr "撤回申请已确认。"
+
+msgid "The customer has filed a withdrawal declaration."
+msgstr "客户已提交撤回合同申请。"
+
+msgid "This order does not qualify for withdrawal."
+msgstr "此订单不符合撤回条件。"
+
+msgid ""
+"Your withdrawal declaration has been accepted. We will send a confirmation "
+"email shortly."
+msgstr "您的撤回申请已受理。我们将很快发送确认电子邮件。"
+
+msgid "You are not allowed to withdraw from this order."
+msgstr "您无权撤回此订单。"
+
+msgid "Send the withdrawal declaration"
+msgstr "提交撤回申请"
+
+msgid "Items in the order"
+msgstr "订单中的产品"
+
+msgid ""
+"Under Polish consumer law you have the right to withdraw from the contract "
+"within 14 days without giving a reason."
+msgstr "根据波兰消费者法律，您有权在 14 天内无需说明理由撤回合同。"
+
+msgid "This refers to order #{order_number} placed on {order_date}."
+msgstr "您将关联到 {order_date} 的订单编号 #{order_number}。"
+
+msgid "Withdrawal declaration"
+msgstr "撤回合同申请"
+
+msgid "Withdraw from the contract"
+msgstr "撤回合同"
+
+msgid "Optional marketing consent."
+msgstr "可选的营销同意。"
+
+msgid "I consent to receiving marketing communication and the newsletter."
+msgstr "我同意接收营销通讯和新闻邮件。"
+
+msgid "Optional consent to review reminders."
+msgstr "关于评价提醒的可选同意。"
+
+msgid ""
+"I consent to receiving an email reminder to leave a review after my "
+"purchase."
+msgstr "我同意在购物后通过电子邮件接收撰写评价的提醒。"
+
+msgid "Optional consent to delivery notifications."
+msgstr "关于配送通知的可选同意。"
+
+msgid ""
+"I consent to receiving SMS and email notifications about the delivery status"
+" of my parcel."
+msgstr "我同意接收关于包裹配送状态的短信/电子邮件通知。"
+
+msgid "Right of withdrawal waived for digital content."
+msgstr "放弃数字内容的撤回权。"
+
+msgid "You have to consent to the immediate supply of digital content."
+msgstr "您必须同意立即提供数字内容。"
+
+msgid ""
+"I consent to the supply of digital content beginning before the withdrawal "
+"period ends and I acknowledge that I thereby lose my right of withdrawal."
+msgstr "我同意在撤回合同期限届满前开始提供数字内容，并知悉由此将丧失撤回权。"
+
+msgid "Information on the 14 day right of withdrawal acknowledged."
+msgstr "确认关于 14 天撤回权的信息。"
+
+msgid ""
+"You have to confirm that you have read the information on the right of "
+"withdrawal."
+msgstr "您必须确认已阅读关于撤回权的信息。"
+
+msgid ""
+"I confirm that I have been informed of the <a href=\"%s\" "
+"target=\"_blank\">right of withdrawal</a> within 14 days."
+msgstr "我确认已被告知在 14 天内<a href=\"%s\" target=\"_blank\">撤回合同的权利</a>。"
+
+msgid "Privacy policy accepted."
+msgstr "接受隐私政策。"
+
+msgid "You have to accept the privacy policy."
+msgstr "您必须接受隐私政策。"
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">privacy "
+"policy</a>."
+msgstr "我已阅读并接受<a href=\"%s\" target=\"_blank\">隐私政策</a>。"
+
+msgid "Terms and conditions accepted."
+msgstr "接受商店规章。"
+
+msgid "You have to accept the terms and conditions to place an order."
+msgstr "您必须接受规章才能下单。"
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">terms and "
+"conditions</a>."
+msgstr "我已阅读并接受<a href=\"%s\" target=\"_blank\">商店规章</a>。"
+
+msgid "Order with an obligation to pay"
+msgstr "我下单并承担付款义务"
+
+msgid ""
+"The minimum number of items per order is {min_quantity}. You currently have "
+"{current_quantity}."
+msgstr "订单中的最低产品数量为 {min_quantity}。当前数量：{current_quantity}。"
+
+msgid ""
+"The minimum order value is {min_value}. Your cart is currently "
+"{current_value}."
+msgstr "最低订单金额为 {min_value}。当前购物车金额：{current_value}。"
+
+msgid "We will not send you review requests any more."
+msgstr "我们将不再向您发送评价请求。"
+
+msgid ""
+"Hello {first_name}, thank you for your recent order. We would be grateful "
+"for your review."
+msgstr "您好 {first_name}，感谢您最近的购物。我们将非常感谢您的评价。"
+
+msgid "How was your order? Leave a review"
+msgstr "您对本次购物的评价如何？请留下评论"
+
+msgid "Lowest price in the last {days} days: {price}"
+msgstr "最近 {days} 天的最低价格：{price}"
+
+msgid ""
+"Polish payment gateways were detected. Polski can adapt the checkout and the"
+" legal notices to the active methods."
+msgstr "已检测到波兰支付网关。Polski 可将结账和法律提示匹配到当前启用的方式。"
+
+msgid ""
+"No supported Polish payment gateway was detected. Polski uses its own "
+"checkout settings with no further integration."
+msgstr "未检测到受支持的波兰支付网关。Polski 使用自身的结账设置，无需额外集成。"
+
+msgid ""
+"A supported checkout, cookie or product data extension was detected. Polski "
+"can adapt to what is active."
+msgstr "已检测到受支持的结账、Cookie 或产品数据扩展。Polski 可将集成匹配到当前启用的组合。"
+
+msgid ""
+"No supported checkout or cookie extension was detected. Polski works on its "
+"own."
+msgstr "未检测到受支持的结账和 Cookie 扩展。Polski 仍可独立运行。"
+
+msgid "not detected"
+msgstr "未检测到"
+
+msgid ""
+"An external plugin was detected. Polski uses its data instead of its own "
+"price history."
+msgstr "已检测到外部插件。Polski 使用其数据，而非内置系统。"
+
+msgid ""
+"No external Omnibus plugin is installed. Polski uses its own price history."
+msgstr "未安装任何外部 Omnibus 插件。Polski 使用内置的价格跟踪系统。"
+
+msgid "detected, data is being synchronised"
+msgstr "已检测到，数据同步中"
+
+msgid ""
+"Test the checkout: add a product to the cart and check the legal checkboxes "
+"and the button wording on the <a href=\"%s\">checkout page</a>."
+msgstr "测试结账流程，将产品加入购物车，并在<a href=\"%s\">订单页面</a>检查法律复选框和按钮文本。"
+
+msgid ""
+"Fill in the product data, adding unit prices and delivery times in the <a "
+"href=\"%s\">Polski tab</a> of every product."
+msgstr "在每个产品的 <a href=\"%s\">Polski 选项卡</a>中补充产品数据、添加单位价格和配送时间。"
+
+msgid "Set up <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "为波兰境内配送配置 <a href=\"%s\">配送区域</a>。"
+
+msgid ""
+"Set up the <a href=\"%s\">VAT rates</a> in WooCommerce for the Polish "
+"market: 23%%, 8%%, 5%% and 0%%."
+msgstr "在 WooCommerce 中为波兰市场配置 <a href=\"%s\">VAT 税率</a>：23%%、8%%、5%% 和 0%%。"
+
+msgid ""
+"Publish your legal pages: Terms and conditions, Privacy policy, Right of "
+"withdrawal and Complaints."
+msgstr "发布您的法律页面：规章、隐私政策、撤回权和投诉。"
+
+msgid "Generate the legal pages"
+msgstr "生成法律页面"
+
+msgid "Page published"
+msgstr "已发布"
+
+msgid "Double opt-in"
+msgstr "双重确认（DOI）"
+
+msgid "Standard VAT"
+msgstr "标准 VAT"
+
+msgid "Small business exemption (Article 113)"
+msgstr "主体免税（第 113 条）"
+
+msgid "Tax display"
+msgstr "税费显示"
+
+msgid "You have completed {done} of {total} steps. Well done."
+msgstr "您已完成 {total} 个步骤中的 {done} 个。太棒了！"
+
+msgid "Legal pages"
+msgstr "法律页面"
+
+msgid "Not configured"
+msgstr "未配置"
+
+msgid "Switched off"
+msgstr "已禁用"
+
+msgid "Switched on"
+msgstr "已启用"
+
+msgid "Open the Polski configuration"
+msgstr "打开 Polski 配置"
+
+msgid ""
+"Your shop is nearly ready. Review the modules, set up the legal pages and "
+"finish the configuration in the Polski panel."
+msgstr "再过片刻商店即可就绪。请查看模块、设置法律页面，并在 Polski 面板中完成配置。"
+
+msgid "Set up Polski for your shop"
+msgstr "为您的商店配置 Polski"
+
+msgid ""
+"Done. We have generated draft legal pages for you. Review them, adjust them "
+"to your shop and publish them."
+msgstr "完成！我们已为您生成了法律页面的初始草稿。请查看、根据需要调整，然后放心发布。"
+
+msgid "Shipping costs"
+msgstr "运输费用"
+
+msgid "Continue"
+msgstr "继续"
+
+msgid "Company"
+msgstr "公司"
+
+msgid "e.g. 1234563218"
+msgstr "例如：1234563218"
+
+msgid "email:"
+msgstr "电子邮件："
+
+msgid "Alcohol"
+msgstr "酒精"
+
+msgid "ODR platform: https://ec.europa.eu/consumers/odr"
+msgstr "ODR 平台：https://ec.europa.eu/consumers/odr"

@@ -95,13 +95,14 @@ jobs:
                   fi
 
             - name: Seed minimum fixtures
+              # The two commands this replaces wrapped a command substitution in
+              # single quotes, so the option was written with a literal `$(npx ...)`
+              # inside it and `|| true` hid the failure. Nothing seeded the module
+              # flag, the customer or an eligible order either, which is why both
+              # My Account specs could not pass whatever their locators said.
               run: |
-                  npx wp-env run cli wp post create --post_type=page \
-                    --post_title="Odstąpienie" --post_status=publish --post_name=odstapienie \
-                    --post_content='[polski_withdrawal_lookup]'
-                  npx wp-env run cli wp option update polski_withdrawal \
-                    '{"lookup_page_id":$(npx wp-env run cli wp post list --post_type=page --name=odstapienie --field=ID),"period_days":14}' \
-                    --format=json || true
+                  npx wp-env run cli --env-cwd=wp-content/plugins/polski \
+                    wp eval-file tests/E2E/fixtures/withdrawal-bootstrap.php
 
             - name: Run axe-core via Playwright
               run: npm run test:a11y -- --reporter=line
@@ -187,6 +188,13 @@ jobs:
                     docker logs --tail 50 "$(docker ps --filter name=wordpress --format '{{.Names}}' | head -1)" || true
                     exit 1
                   fi
+
+            - name: Seed fixtures
+              # This job had no seed step at all, so /odstapienie/ was a 404 and
+              # there was no customer and no order for the My Account specs.
+              run: |
+                  npx wp-env run cli --env-cwd=wp-content/plugins/polski \
+                    wp eval-file tests/E2E/fixtures/withdrawal-bootstrap.php
 
             - name: Run keyboard navigation tests
               run: npx playwright test withdrawal-guest-flow --project=chromium --reporter=line

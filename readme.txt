@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.1
+Stable tag: 1.30.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.2 =
+* Declared compatibility with WooCommerce 11.0.
 
 = 1.30.1 =
 * The Polish catalogue is bundled again, on purpose. WordPress.org builds its language packs from the strings in the released package, so a release that changes source strings always lands before translate.wordpress.org has seen the new ones, and this release changes about 520 of them. Without the bundled copy a Polish shop would read an English interface until the translations were re-imported. WordPress still prefers the language pack wherever it has a string, so nothing overrides a translator.

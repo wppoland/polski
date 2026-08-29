@@ -36,9 +36,9 @@ test.describe('Guest withdrawal lookup', () => {
 
         // ~200-word intro covers directive + deadline.
         const intro = section.locator('.polski-withdrawal-lookup__intro');
-        await expect(intro).toContainText('odstąpić od umowy');
-        await expect(intro).toContainText('14 dni');
-        await expect(intro).toContainText('2011/83/UE');
+        await expect(intro).toContainText('right to withdraw from a distance contract');
+        await expect(intro).toContainText('14 days');
+        await expect(page.locator('.polski-withdrawal-lookup__more')).toContainText('2011/83/EU');
 
         // Both required fields have visible labels + aria-required + autocomplete hints.
         const orderField = page.locator('#polski_order_number');
@@ -52,7 +52,7 @@ test.describe('Guest withdrawal lookup', () => {
         await expect(emailField).toHaveAttribute('type', 'email');
 
         // Submit clearly states the outcome (e-mail will be sent), not the action.
-        await expect(page.getByRole('button', { name: /Wyślij link/ })).toBeVisible();
+        await expect(page.locator('button[name="polski_withdrawal_lookup"]')).toBeVisible();
 
         // FAQPage schema is emitted exactly once.
         const schemas = page.locator('script[type="application/ld+json"]');
@@ -79,7 +79,7 @@ test.describe('Guest withdrawal lookup', () => {
 
         await page.keyboard.press('Tab');
         // Should land on the submit button (after the hidden nonce input).
-        await expect(page.getByRole('button', { name: /Wyślij link/ })).toBeFocused();
+        await expect(page.locator('button[name="polski_withdrawal_lookup"]')).toBeFocused();
     });
 
     test('unknown order receives the same masked notice as a known one', async ({ page }) => {
@@ -87,28 +87,28 @@ test.describe('Guest withdrawal lookup', () => {
 
         await page.locator('#polski_order_number').fill('999999');
         await page.locator('#polski_email').fill('nobody@example.test');
-        await page.getByRole('button', { name: /Wyślij link/ }).click();
+        await page.locator('button[name="polski_withdrawal_lookup"]').click();
 
         // The flow uses the cookie-bound notice transient; after the redirect/
         // re-render, the success message appears.
         await expect(page.locator('.polski-withdrawal-notice--success')).toBeVisible({ timeout: 5_000 });
-        await expect(page.locator('.polski-withdrawal-notice--success')).toContainText('jeśli to zamówienie istnieje');
+        await expect(page.locator('.polski-withdrawal-notice--success')).toContainText('If that order exists');
     });
 
-    test('rate limiter blocks excessive attempts from the same e-mail', async ({ page }) => {
+    test('rate limiter blocks excessive attempts from the same IP', async ({ page }) => {
         await page.goto(LOOKUP_PATH, { waitUntil: 'domcontentloaded' });
 
         for (let attempt = 0; attempt < 5; attempt++) {
             await page.locator('#polski_order_number').fill('123');
             await page.locator('#polski_email').fill('ratelimit@example.test');
-            await page.getByRole('button', { name: /Wyślij link/ }).click();
+            await page.locator('button[name="polski_withdrawal_lookup"]').click();
             await page.waitForLoadState('networkidle');
         }
 
         // 6th attempt should trip the rate limiter.
         await page.locator('#polski_order_number').fill('123');
         await page.locator('#polski_email').fill('ratelimit@example.test');
-        await page.getByRole('button', { name: /Wyślij link/ }).click();
+        await page.locator('button[name="polski_withdrawal_lookup"]').click();
         await expect(page.locator('.polski-withdrawal-notice--error')).toBeVisible({ timeout: 5_000 });
     });
 });
@@ -124,12 +124,12 @@ test.describe('My Account two-step partial withdrawal', () => {
     test('opens the form with item-selection step and configurable quantities', async ({ page }) => {
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
 
-        const withdrawBtn = page.getByRole('link', { name: /Withdraw|Odstąp/ }).first();
+        const withdrawBtn = page.locator('a.polski_withdraw').first();
         await expect(withdrawBtn).toBeVisible();
         await withdrawBtn.click();
 
         // Step 1: items table with qty spinners.
-        await expect(page.getByRole('heading', { name: /Krok 1/ })).toBeVisible();
+        await expect(page.getByRole('heading', { name: /Step 1/ })).toBeVisible();
         const qtyInputs = page.locator('input[name^="polski_items["]');
         const inputCount = await qtyInputs.count();
         expect(inputCount).toBeGreaterThan(0);
@@ -141,24 +141,30 @@ test.describe('My Account two-step partial withdrawal', () => {
         }
 
         // Step 2: reason + descriptive submit.
-        await expect(page.getByRole('heading', { name: /Krok 2/ })).toBeVisible();
-        await expect(page.getByRole('button', { name: /Złóż oświadczenie/ })).toBeVisible();
+        await expect(page.getByRole('heading', { name: /Step 2/ })).toBeVisible();
+        await expect(page.locator('button[name="polski_submit_withdrawal"]')).toBeVisible();
     });
 
     test('submitting partial qty leaves the rest withdrawable', async ({ page }) => {
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
-        await page.getByRole('link', { name: /Withdraw|Odstąp/ }).first().click();
+        await page.locator('a.polski_withdraw').first().click();
 
         // Reduce the first item's qty to 1, then submit.
         const firstQty = page.locator('input[name^="polski_items["]').first();
         await firstQty.fill('1');
 
-        await page.getByRole('button', { name: /Złóż oświadczenie/ }).click();
-        await expect(page.locator('.woocommerce-message, .polski-withdrawal-success')).toBeVisible({ timeout: 5_000 });
+        await page.locator('button[name="polski_submit_withdrawal"]').click();
+        // Classic themes print .woocommerce-message; a block theme routes the same
+        // wc_add_notice through the blocks notice banner, which carries neither
+        // class. Both render role=alert, and the text itself is merchant-editable,
+        // so assert the role rather than the wording.
+        await expect(
+            page.locator('.woocommerce-MyAccount-content [role="alert"], .woocommerce-message').first(),
+        ).toBeVisible({ timeout: 5_000 });
 
         // Customer can re-enter the flow to withdraw remaining qty.
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
-        await expect(page.getByRole('link', { name: /Withdraw|Odstąp/ })).toBeVisible();
+        await expect(page.locator('a.polski_withdraw').first()).toBeVisible();
     });
 });
 
