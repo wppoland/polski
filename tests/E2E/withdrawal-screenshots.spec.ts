@@ -37,7 +37,7 @@ test.describe('Withdrawal - wp.org screenshots', () => {
     test('10 - two-step form (My Account)', async ({ page }) => {
         await loginAsCustomer(page);
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
-        await page.getByRole('link', { name: /Withdraw|Odstąp/ }).first().click();
+        await page.locator('a.polski_withdraw').first().click();
         await page.locator('section.polski-withdrawal-form').waitFor();
         await captureSection(page, 'section.polski-withdrawal-form', 'screenshot-10-withdrawal-two-step-form.png');
     });

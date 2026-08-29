@@ -44,7 +44,7 @@
 }
 
 .polski-status--warn {
-	color: var(--pl-warn, #b5701a);
+	color: var(--pl-warn, #985E15);
 }
 
 @media (prefers-color-scheme: dark) {

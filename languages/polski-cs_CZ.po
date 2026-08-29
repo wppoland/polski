@@ -14174,3 +14174,7 @@ msgid ""
 msgstr ""
 "Dynamický merchandisingový posuvník pro související, upsell, slevové a "
 "doporučené produkty."
+
+#: templates/forms/withdrawal-lookup.php
+msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr ""
