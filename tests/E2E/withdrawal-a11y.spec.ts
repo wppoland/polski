@@ -40,7 +40,10 @@ test.describe('Withdrawal flow - axe-core WCAG 2.2 AA', () => {
     test('two-step My Account form', async ({ page }) => {
         await loginAsCustomer(page);
         await page.goto('/my-account/orders/', { waitUntil: 'domcontentloaded' });
-        await page.getByRole('link', { name: /Withdraw|Odstąp/ }).first().click();
+        // The header menu also links to the withdrawal page, and its label matches
+        // the same words, so target the order action by the class WooCommerce
+        // builds from the action key instead of by accessible name.
+        await page.locator('a.polski_withdraw').first().click();
         await page.locator('section.polski-withdrawal-form').waitFor();
 
         const results = await new AxeBuilder({ page })
@@ -90,7 +93,7 @@ test.describe('Withdrawal flow - axe-core WCAG 2.2 AA', () => {
         await expect(page.locator('#polski_email')).toBeFocused();
 
         await page.keyboard.press('Tab');
-        await expect(page.getByRole('button', { name: /Wyślij link/ })).toBeFocused();
+        await expect(page.locator('button[name="polski_withdrawal_lookup"]')).toBeFocused();
 
         // Visible focus ring asserted via CSS - at minimum, focus-visible should
         // apply outline. We can't easily measure outline width in Playwright but
@@ -107,7 +110,7 @@ test.describe('Withdrawal flow - axe-core WCAG 2.2 AA', () => {
         await page.goto('/odstapienie/', { waitUntil: 'domcontentloaded' });
 
         // Submit with empty fields to trigger the error notice.
-        await page.getByRole('button', { name: /Wyślij link/ }).click();
+        await page.locator('button[name="polski_withdrawal_lookup"]').click();
         await page.waitForLoadState('networkidle');
 
         const notice = page.locator('.polski-withdrawal-notice--error');

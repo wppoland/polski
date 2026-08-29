@@ -83,7 +83,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
                 printf(
                     /* translators: %s = directive reference */
                     esc_html__('After you submit the declaration you will get an email with the declaration number, the date it was filed and a summary of the order. The right comes from Article 27 of the Polish Consumer Rights Act, which implements Directive %s.', 'polski'),
-                    '2011/83/UE (zmienionej przez 2023/2673)',
+                    esc_html__('2011/83/EU (as amended by 2023/2673)', 'polski'),
                 );
                 ?>
             </p>

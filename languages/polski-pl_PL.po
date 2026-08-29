@@ -14284,3 +14284,7 @@ msgid ""
 msgstr ""
 "Dynamiczny suwak merchandisingowy dla produktów powiązanych, sprzedaży "
 "dodatkowej, promocyjnych i wyróżnionych."
+
+#: templates/forms/withdrawal-lookup.php
+msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr "2011/83/UE (zmienionej przez 2023/2673)"

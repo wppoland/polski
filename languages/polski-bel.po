@@ -14154,3 +14154,7 @@ msgid ""
 msgstr ""
 "Дынамічны мерчандайзінгавы паўзунок для звязаных, upsell, акцыйных і "
 "вылучаных тавараў."
+
+#: templates/forms/withdrawal-lookup.php
+msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr ""
