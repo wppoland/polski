@@ -1,0 +1,1781 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest release)\n"
+"PO-Revision-Date: 2026-06-27 12:04:17+0000\n"
+"Language: be_BY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.1.0\n"
+
+msgid "Product safety (GPSR)"
+msgstr "Бяспека тавару (GPSR)"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, goods sealed for hygiene "
+"reasons once the seal is broken, and digital content supplied with the "
+"consumer's express consent before the withdrawal period ended."
+msgstr ""
+"Так. Згодна з арт. 38 закона аб правах спажыўца з права адмовы выключаны, у "
+"прыватнасці, тавары, выкананыя на індывідуальную замову, хутка псуючыяся, "
+"запячатаныя з гігіенічных меркаванняў пасля адкрыцця ўпакоўкі, а таксама "
+"лічбавы кантэнт, прадастаўлены з відавочнай згоды спажыўца да заканчэння "
+"тэрміну."
+
+msgid ""
+"You will get an email confirming that the declaration was accepted, with a "
+"unique declaration number and a full summary of the order. Then send the "
+"goods back to the shop's address within 14 days of filing the declaration."
+msgstr ""
+"Вы атрымаеце электронны ліст з пацвярджэннем прыняцця заявы, які змяшчае "
+"ўнікальны нумар дэкларацыі і поўнае рэзюмэ замовы. Затым адпраўце тавары на "
+"адрас крамы на працягу 14 дзён з моманту падачы заявы."
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers: "
+"every product, a single product, or just some of the units. The rest stay in"
+" the order."
+msgstr ""
+"Так. Пасля адкрыцця формы вы выберыце, да якіх пазіцый адносіцца адмова, вы "
+"можаце вярнуць усе тавары, адзін тавар або толькі выбраную колькасць "
+"адзінак. Астатнія пазіцыі застануцца ў замове."
+
+msgid "Can I return only some of the products in the order?"
+msgstr "Ці магу я вярнуць толькі некаторыя тавары з замовы?"
+
+msgid ""
+"Any consumer, meaning a natural person buying for purposes outside their "
+"trade or business. When you buy as a company, the right to withdraw without "
+"giving a reason applies only in a limited form."
+msgstr ""
+"Кожны спажывец, гэта значыць фізічная асоба, якая купляе ў мэтах, не "
+"звязаных з прадпрымальніцкай дзейнасцю. У выпадку пакупкі як кампанія права "
+"на адмову без указання прычыны прадастаўляецца толькі ў абмежаваным аб'ёме."
+
+msgid ""
+"By default you have %d days from the day you received the order to file the "
+"declaration. The period runs from the day the goods came into your "
+"possession, or into the possession of a third party indicated by you other "
+"than the carrier."
+msgstr ""
+"Па змаўчанні ў вас ёсць %d дзён з дня атрымання замовы, каб падаць заяву. "
+"Тэрмін пачынаецца з дня, калі тавар трапіў у ваша валоданне або ў валоданне "
+"ўказанай вамі трэцяй асобы, іншай чым перавозчык."
+
+msgid "Who can withdraw from a contract at %s?"
+msgstr "Хто можа адмовіцца ад дамовы ў краме %s?"
+
+msgid ""
+"Having trouble with the form? Write to %s and we will help you file the "
+"declaration by hand."
+msgstr ""
+"Маеце праблему з формай? Напішыце на %s, мы дапаможам падаць заяву ўручную."
+
+msgid "Common questions"
+msgstr "Часта задаваныя пытанні"
+
+msgid ""
+"Yes. Under Article 38 of the Polish Consumer Rights Act the right of "
+"withdrawal does not cover, among others, goods made to the consumer's "
+"specification, goods that deteriorate rapidly, and goods sealed for hygiene "
+"reasons once the seal is broken."
+msgstr ""
+"Так. Згодна з арт. 38 закона аб правах спажыўца з права адмовы выключаны, у "
+"прыватнасці, тавары, выкананыя на індывідуальную замову, хутка псуючыяся, а "
+"таксама запячатаныя з гігіенічных меркаванняў пасля адкрыцця ўпакоўкі."
+
+msgid "Are there products that cannot be returned?"
+msgstr "Ці ёсць тавары, якія нельга вярнуць?"
+
+msgid ""
+"You will get a confirmation email with a unique declaration number and a "
+"full summary of the order. Then send the goods back to the shop's address "
+"within 14 days of filing the declaration."
+msgstr ""
+"Вы атрымаеце электронны ліст з пацвярджэннем, які змяшчае ўнікальны нумар "
+"дэкларацыі і поўнае рэзюмэ замовы. Затым адпраўце тавары на адрас крамы на "
+"працягу 14 дзён з моманту падачы заявы."
+
+msgid "What happens after I send the form?"
+msgstr "Што адбудзецца пасля адпраўкі формы?"
+
+msgid ""
+"Yes. Once the form is open you choose which items the withdrawal covers. You"
+" can withdraw from any number of units and the rest stay in the order."
+msgstr ""
+"Так. Пасля адкрыцця формы вы выберыце, да якіх пазіцый адносіцца адмова. "
+"Можна адмовіцца ад выбранай колькасці адзінак, астатнія застануцца ў замове."
+
+msgid "Can I return only some of the products?"
+msgstr "Ці магу я вярнуць толькі некаторыя тавары?"
+
+msgid ""
+"By default you have %d days from the day you received the order. The period "
+"runs from the day the goods came into your possession, or into the "
+"possession of a third party other than the carrier."
+msgstr ""
+"Па змаўчанні ў вас ёсць %d дзён з дня атрымання замовы. Тэрмін пачынаецца з "
+"дня, калі тавар трапіў у ваша валоданне або ў валоданне трэцяй асобы, іншай "
+"чым перавозчык."
+
+msgid "How long do I have to withdraw from the contract?"
+msgstr "У які тэрмін я магу адмовіцца ад дамовы?"
+
+msgid ""
+"The link is valid for 30 minutes and works only once. If the message does "
+"not arrive, check your spam folder and enter the address again."
+msgstr ""
+"Спасылка будзе дзейнічаць 30 хвілін і яе можна выкарыстаць толькі адзін раз."
+" Калі вы не атрымаеце паведамлення, праверце папку «Спам» і ўвядзіце адрас "
+"яшчэ раз."
+
+msgid "Email me the link to the form"
+msgstr "Даслаць спасылку на форму"
+
+msgid "All fields are required."
+msgstr "Усе палі абавязковыя."
+
+msgid ""
+"We will email a secure link to this address that opens the withdrawal form."
+msgstr ""
+"Мы дашлём на гэты адрас бяспечную спасылку, якая адкрывае форму адмовы."
+
+msgid "Email address used for the purchase"
+msgstr "Адрас электроннай пошты, выкарыстаны пры пакупцы"
+
+msgid ""
+"The number is in your purchase confirmation email, on the \"Your order "
+"#...\" line."
+msgstr ""
+"Нумар вы знойдзеце ў лісце з пацвярджэннем пакупкі, у пазіцыі «Ваша замова "
+"#…»."
+
+msgid ""
+"After you submit the declaration you will get an email with the declaration "
+"number, the date it was filed and a summary of the order. The right comes "
+"from Article 27 of the Polish Consumer Rights Act, which implements "
+"Directive %s."
+msgstr ""
+"Пасля адпраўкі заявы вы атрымаеце ліст з нумарам дэкларацыі, датай падачы і "
+"зводкай замовы. Права вынікае з арт. 27 Закона аб правах спажыўца, які "
+"ўкараняе дырэктыву %s."
+
+msgid ""
+"In the next step you choose whether to return the whole order or only some "
+"items; you can also withdraw from individual units."
+msgstr ""
+"На наступным кроку вы выберыце, ці хочаце вярнуць усю замову, ці толькі "
+"выбраныя пазіцыі (магчымы таксама частковыя адмовы ад асобных адзінак)."
+
+msgid ""
+"Once we have checked the details we will email a single-use link that opens "
+"the withdrawal form. The link is valid for 30 minutes and works only once."
+msgstr ""
+"Пасля праверкі мы дашлём на ўказаны адрас аднаразовую спасылку, якая адкрые "
+"форму адмовы. Спасылка будзе дзейнічаць 30 хвілін і яе можна выкарыстаць "
+"толькі адзін раз."
+
+msgid "How does it work? (expand)"
+msgstr "Як гэта працуе? (разгарнуць)"
+
+msgid ""
+"Bought from %1$s as a consumer? You have the right to withdraw from a "
+"distance contract without giving a reason within %2$d days of receiving your"
+" order. You do not need to log in to file the declaration: just enter below "
+"the email address used for the purchase and the order number."
+msgstr ""
+"Вы спажывец і набылі ў прадаўца %1$s? Вы маеце права адмовіцца ад дамовы, "
+"заключанай на адлегласці, без указання прычыны цягам %2$d дзён з дня, калі "
+"вы атрымалі замову. Каб падаць заяву, вам не трэба ўваходзіць у сістэму - "
+"дастаткова ўвесці ніжэй адрас электроннай пошты, выкарыстаны пры пакупцы, і "
+"нумар замовы."
+
+msgid "Withdrawal from the contract, online form"
+msgstr "Адмова ад дамовы - форма анлайн"
+
+msgid "Go to the withdrawal form"
+msgstr "Перайсці да формы адмовы"
+
+msgid ""
+"Once you send the form you will get a confirmation email with the "
+"declaration number and a summary of the order."
+msgstr ""
+"Пасля адпраўкі формы вы атрымаеце ліст з пацвярджэннем з нумарам дэкларацыі "
+"і зводкай замовы."
+
+msgid "Order date:"
+msgstr "Дата замовы:"
+
+msgid "Order value:"
+msgstr "Усяго па замове:"
+
+msgid "Order items covered by the declaration."
+msgstr "Пазіцыі замовы, ахопленыя заявай."
+
+msgid ""
+"Filing this declaration covers the whole order below. If you want to "
+"withdraw from only some of the items, contact the shop or log in to your "
+"account and file a separate declaration."
+msgstr ""
+"Падача гэтай заявы ахоплівае ўсю ніжэйзгаданую замову. Калі вы хочаце "
+"адмовіцца толькі ад часткі пазіцый, звяжыцеся з крамай або падайце асобную "
+"заяву пасля ўваходу ў акаўнт."
+
+msgid "Items covered by the withdrawal"
+msgstr "Пазіцыі, ахопленыя адмовай"
+
+msgid "You are filing this declaration for the address: %s"
+msgstr "Вы падаеце заяву на карысць адраса: %s"
+
+msgid "Withdrawal from the contract, order #%s"
+msgstr "Адмова ад дамовы - замова #%s"
+
+msgid "Cancel and go back to the order list"
+msgstr "Скасаваць і вярнуцца да спіса замоваў"
+
+msgid "File the declaration and email me the confirmation"
+msgstr "Падаць заяву і даслаць пацвярджэнне на электронную пошту"
+
+msgid "A reason is not required; withdrawal needs no justification."
+msgstr "Прычына не абавязковая - адмова не патрабуе абгрунтавання."
+
+msgid "Step 2. Reason and confirmation"
+msgstr "Крок 2. Прычына і пацвярджэнне"
+
+msgid "You can return at most %2$s units of \"%1$s\"."
+msgstr ""
+"Максімальная колькасць адзінак, даступных для звароту па пазіцыі «%1$s», "
+"складае %2$s."
+
+msgid "This item is excluded from return and cannot be selected."
+msgstr "Гэта пазіцыя выключана са звароту і не можа быць выбрана."
+
+msgid "Remaining to return"
+msgstr "Засталося да звароту"
+
+msgid "Excluded from return"
+msgstr "Выключана са звароту"
+
+msgid "Units to return"
+msgstr "Колькасць адзінак для звароту"
+
+msgid "Remaining"
+msgstr "Засталося"
+
+msgid "Item"
+msgstr "Пазіцыя"
+
+msgid "Order items available for withdrawal."
+msgstr "Пазіцыі замовы, даступныя для адмовы."
+
+msgid "Clear the selection"
+msgstr "Ачысціць выбар"
+
+msgid "Select all items"
+msgstr "Выбраць усе пазіцыі"
+
+msgid ""
+"Enter how many units you want to withdraw. The \"Remaining\" field shows the"
+" most you can still withdraw for that item."
+msgstr ""
+"Увядзіце колькасць адзінак, якія вы хочаце ахапіць адмовай. Поле «Засталося»"
+" паказвае максімальную колькасць, якую яшчэ можна вярнуць па гэтай пазіцыі."
+
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "Крок 1. Выберыце пазіцыі для адмовы"
+
+msgid ""
+"Every item in this order is already covered by a withdrawal or does not "
+"qualify for return."
+msgstr ""
+"Усе пазіцыі гэтай замовы ўжо ахоплены адмовай або не падыходзяць для "
+"звароту."
+
+msgid ""
+"You are filing a withdrawal declaration for order #{order_number} placed on "
+"{order_date}."
+msgstr ""
+"Вы падаеце запыт на адмову для замовы #{order_number} ад {order_date}."
+
+msgid "Send the report"
+msgstr "Адправіць паведамленне"
+
+msgid "- Choose a reason -"
+msgstr "- Выберыце прычыну -"
+
+msgid "Reason for the report"
+msgstr "Прычына паведамлення"
+
+msgid "URL of the reported content"
+msgstr "URL кантэнту, пра які паведамляецца"
+
+msgid "You are reporting: %s"
+msgstr "Вы паведамляеце: %s"
+
+msgid "You are reporting: %1$s (%2$s)"
+msgstr "Вы паведамляеце: %1$s (%2$s)"
+
+msgid "Thank you. Your report has been sent and will be reviewed."
+msgstr "Дзякуй! Ваша паведамленне адпраўлена і будзе разгледжана."
+
+msgid "Misleading advertising"
+msgstr "Уводзячая ў зман рэклама"
+
+msgid "Illegal product"
+msgstr "Нелегальны тавар"
+
+msgid "Illegal content"
+msgstr "Нелегальны кантэнт"
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop. We are happy to explain."
+msgstr ""
+"Калі вы лічыце, што гэта рашэнне памылковае, адкажыце на гэты ліст або "
+"звяжыцеся з крамай. Мы ахвотна растлумачым падрабязнасці."
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. "
+"Depending on your bank it may take a few working days to appear."
+msgstr ""
+"Зварот будзе выкананы на першапачатковы спосаб аплаты, выкарыстаны пры "
+"пакупцы. У залежнасці ад банка сродкі могуць з'явіцца на рахунку цягам "
+"некалькіх працоўных дзён."
+
+msgid ""
+"We are glad to tell you that your withdrawal declaration (%2$s) for order "
+"#%1$s has been settled."
+msgstr ""
+"З задавальненнем паведамляем, што ваша заява аб адмове (%2$s) для замовы "
+"#%1$s апрацавана."
+
+msgid ""
+"If you think this decision is wrong, reply to this email or contact the "
+"shop."
+msgstr ""
+"Калі вы лічыце, што гэта рашэнне памылковае, адкажыце на гэты ліст або "
+"звяжыцеся з крамай."
+
+msgid "Decision date"
+msgstr "Дата рашэння"
+
+msgid "Reason for the refusal:"
+msgstr "Прычына адмовы:"
+
+msgid "We cannot accept your withdrawal declaration (%1$s) for order #%2$s."
+msgstr ""
+"На жаль, мы не можам прыняць вашу заяву аб адмове (%1$s) для замовы #%2$s."
+
+msgid ""
+"Keep this message as proof that the declaration was filed. It holds "
+"everything the declaration needs: the number, the date and time it was "
+"filed, and a summary of the order."
+msgstr ""
+"Захавайце гэта паведамленне як пацвярджэнне падачы заявы. Яно змяшчае "
+"неабходныя даныя заявы (нумар, дату і час падачы, зводку замовы)."
+
+msgid ""
+"Send the goods back to the address below within 14 days of filing the "
+"declaration:"
+msgstr ""
+"Адашліце тавары на ніжэйзгаданы адрас цягам 14 дзён з дня падачы заявы:"
+
+msgid ""
+"Your withdrawal declaration for order #{order_number} has been registered."
+msgstr "Ваш запыт на адмову для замовы #{order_number} зарэгістраваны."
+
+msgid ""
+"The refund will go back to the payment method used for the purchase. It may "
+"take a few working days to appear."
+msgstr ""
+"Зварот будзе выкананы на першапачатковы спосаб аплаты, выкарыстаны пры "
+"пакупцы. Сродкі могуць з'явіцца на рахунку цягам некалькіх працоўных дзён."
+
+msgid "Refund amount"
+msgstr "Сума звароту"
+
+msgid "Settlement date"
+msgstr "Дата апрацоўкі"
+
+msgid "Declaration number"
+msgstr "Нумар заявы"
+
+msgid "Your withdrawal declaration (%2$s) for order #%1$s has been settled."
+msgstr "Ваша заява аб адмове (%2$s) для замовы #%1$s апрацавана."
+
+msgid "Hello %s,"
+msgstr "Добры дзень, %s,"
+
+msgid "Available payment methods"
+msgstr "Даступныя спосабы аплаты"
+
+msgid "Please enter the order number."
+msgstr "Калі ласка, увядзіце нумар замовы."
+
+msgid "Used only if \"Other\" is selected."
+msgstr "Выкарыстоўваецца толькі, калі выбрана «Іншае»."
+
+msgid "Custom reason"
+msgstr "Уласнае абгрунтаванне"
+
+msgid "Custom reason (if \"Other\" is selected)"
+msgstr "Уласнае абгрунтаванне (калі выбрана «Іншае»)"
+
+msgid "- choose -"
+msgstr "- выберыце -"
+
+msgid "Grounds for the exclusion"
+msgstr "Падстава выключэння"
+
+msgid ""
+"Use this when every product in the category meets an exception under Article"
+" 38 of the Consumer Rights Act."
+msgstr ""
+"Прымяніце, калі ўсе тавары ў катэгорыі адпавядаюць выключэнню з арт. 38 "
+"Закона аб правах спажыўца."
+
+msgid "Exclude products in this category from the right of withdrawal"
+msgstr "Выключыць тавары з гэтай катэгорыі з права на адмову"
+
+msgid ""
+"No data found for that VAT ID (NIP). Check the number or fill the details in"
+" by hand."
+msgstr ""
+"Не знойдзена даных для ўказанага NIP. Праверце нумар або запоўніце даныя "
+"ўручную."
+
+msgid "Invalid VAT ID (NIP)."
+msgstr "Несапраўдны NIP."
+
+msgid "That VAT ID (NIP) is not valid. Check the number and try again."
+msgstr "Указаны NIP несапраўдны. Праверце нумар і паспрабуйце зноў."
+
+msgid "Reference"
+msgstr "Нумар"
+
+msgid "You have not filed any withdrawal declarations yet."
+msgstr "Вы яшчэ не падавалі ніводнай заявы аб адмове ад дагавора."
+
+msgid "You have to be logged in to see your withdrawals."
+msgstr "Каб убачыць свае адмовы, вы павінны быць аўтарызаваны."
+
+msgid "My withdrawals"
+msgstr "Мае адмовы"
+
+msgid ""
+"We received a request to file a withdrawal declaration for order #%1$s.\n"
+"\n"
+"To continue, click the link below within %2$d minutes:\n"
+"\n"
+"%3$s\n"
+"\n"
+"The link can be used once. If you did not make this request, you can ignore this message."
+msgstr ""
+"Мы атрымалі запыт на падачу заявы аб адмове ад дагавора для заказу #%1$s.\n"
+"\n"
+"Каб працягнуць, націсніце на спасылку ніжэй на працягу %2$d хвілін:\n"
+"\n"
+"%3$s\n"
+"\n"
+"Спасылка аднаразовая. Калі гэта не вы даслалі запыт, вы можаце праігнараваць гэтае паведамленне."
+
+msgid "Withdrawal link for order #%s"
+msgstr "Спасылка на адмову ад дагавора - заказ #%s"
+
+msgid "Keep the declaration number in case you contact the shop."
+msgstr "Захавайце нумар заявы на выпадак звароту ў краму."
+
+msgid ""
+"Your declaration has been registered under number %s. We have sent a "
+"confirmation to the address used for the purchase; check your inbox and your"
+" spam folder."
+msgstr ""
+"Ваша заява зарэгістравана пад нумарам %s. Мы даслалі пацвярджэнне на адрас, "
+"указаны пры пакупцы - праверце паштовую скрыню і папку Спам."
+
+msgid "Declaration filed"
+msgstr "Заява пададзена"
+
+msgid ""
+"The declaration could not be saved. Try again in a moment or contact the "
+"shop."
+msgstr ""
+"Не ўдалося захаваць заяву. Паспрабуйце зноў праз імгненне або звяжыцеся з "
+"крамай."
+
+msgid "The security check failed. Reload the page and try again."
+msgstr ""
+"Праверка бяспекі не ўдалася. Загрузіце старонку зноў і паспрабуйце яшчэ раз."
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder; the message "
+"should arrive within a few minutes."
+msgstr ""
+"Калі гэты заказ існуе, мы даслалі спасылку на бланк на адрас электроннай "
+"пошты, указаны пры пакупцы. Праверце паштовую скрыню (а таксама папку Спам) "
+"- паведамленне павінна прыйсці на працягу некалькіх хвілін."
+
+msgid ""
+"Too many attempts in a short time. Please try again in 15 minutes. If an "
+"earlier link never arrived, check your spam folder."
+msgstr ""
+"Занадта шмат спроб за кароткі час. Паспрабуйце зноў праз 15 хвілін. Калі вы "
+"не атрымалі дасланую раней спасылку, праверце папку Спам."
+
+msgid ""
+"That email address does not look valid. Enter the full address in the form "
+"you@example.com, the same one you used for the purchase."
+msgstr ""
+"Адрас электроннай пошты выглядае несапраўдным. Увядзіце поўны адрас у "
+"фармаце ty@example.com - той самы, які вы ўказалі пры пакупцы."
+
+msgid ""
+"The order number is missing. Check your purchase confirmation email and "
+"enter the number from the \"Your order #...\" line."
+msgstr ""
+"Адсутнічае нумар заказу. Праверце ліст з пацвярджэннем пакупкі і ўвядзіце "
+"нумар з радка „Ваш заказ #…\"."
+
+msgid ""
+"Enter the order number (it is in your confirmation email) and the email "
+"address used for the purchase."
+msgstr ""
+"Увядзіце нумар заказу (вы знойдзеце яго ў пацвярджальным лісце) і адрас "
+"электроннай пошты, выкарыстаны пры пакупцы."
+
+msgid "%d of 8 fields filled in"
+msgstr "%d/8 палёў запоўнена"
+
+msgid "Results updated."
+msgstr "Вынікі абноўлены."
+
+msgid "Results updated: %d products."
+msgstr "Абноўлены вынікі: %d тавар."
+
+msgid "Too many reports from this IP address. Please try again in an hour."
+msgstr ""
+"Занадта шмат зваротаў з гэтага IP-адраса. Паспрабуйце зноў праз гадзіну."
+
+msgid ""
+"I consent to performance beginning (for example the supply of digital "
+"content) before the withdrawal period ends and I acknowledge that I thereby "
+"lose my right of withdrawal for the digital content supplied in this way."
+msgstr ""
+"Я даю згоду на пачатак выканання паслугі (напрыклад, дастаўку лічбавага "
+"кантэнту) да заканчэння тэрміну адмовы ад дагавора і прымаю да ведама страту"
+" права на адмову ў дачыненні да пастаўленага такім чынам лічбавага кантэнту."
+
+msgid ""
+"To buy digital products you have to consent to performance beginning before "
+"the withdrawal period ends."
+msgstr ""
+"Каб набыць лічбавыя тавары, вы павінны даць згоду на пачатак прадастаўлення "
+"да заканчэння тэрміну адмовы."
+
+msgid "Compare (%d)"
+msgid_plural "Compare (%d)"
+msgstr[0] "Параўнаць (%d)"
+msgstr[1] "Параўнаць (%d)"
+msgstr[2] "Параўнаць (%d)"
+
+msgid "I need a VAT invoice"
+msgstr "Мне патрэбна фактура VAT"
+
+msgid ""
+"You can also file the declaration online: <a href=\"%s\">withdrawal "
+"form</a>."
+msgstr "Вы таксама можаце падаць заяву анлайн: <a href=\"%s\">форма адмовы</a>."
+
+msgid "(*) Delete as appropriate."
+msgstr "(*) Непатрэбнае закрэсліць."
+
+msgid "Signature of consumer(s) (only if this form is notified on paper):"
+msgstr ""
+"Подпіс спажыўца(-аў) (толькі калі форма перадаецца ў папяровай версіі):"
+
+msgid "Address of consumer(s):"
+msgstr "Адрас спажыўца(-аў):"
+
+msgid "Name of consumer(s):"
+msgstr "Імя і прозвішча спажыўца(-аў):"
+
+msgid "Ordered on (*)/received on (*):"
+msgstr "Дата заключэння дамовы(*)/атрымання(*):"
+
+msgid ""
+"I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
+"of sale of the following goods (*)/for the provision of the following "
+"service (*):"
+msgstr ""
+"Я/Мы(*) гэтым паведамляю/паведамляем(*) пра маю/нашу адмову ад дамовы "
+"продажу наступных рэчаў(*) дамовы дастаўкі наступных рэчаў(*) дамовы падраду"
+" на выкананне наступных рэчаў(*)/на аказанне наступнай паслугі(*):"
+
+msgid "Addressee:"
+msgstr "Адрасат:"
+
+msgid ""
+"(complete and return this form only if you wish to withdraw from the "
+"contract)"
+msgstr ""
+"(гэту форму трэба запоўніць і адаслаць толькі ў выпадку жадання адмовіцца ад"
+" дамовы)"
+
+msgid "Model withdrawal form"
+msgstr "Узор формы адмовы ад дамовы"
+
+msgid ""
+"You are only liable for any diminished value of the goods resulting from the"
+" handling other than what is necessary to establish the nature, "
+"characteristics and functioning of the goods."
+msgstr ""
+"Вы адказваеце толькі за памяншэнне вартасці рэчы, якое ўзнікла з карыстання "
+"ёю спосабам, іншым, чым было неабходна для вызначэння характару, "
+"уласцівасцей і функцыянавання рэчы."
+
+msgid "You will have to bear the direct cost of returning the goods."
+msgstr "Вы будзеце вымушаныя панесці прамыя выдаткі на зварот рэчы."
+
+msgid ""
+"You shall send back the goods or hand them over to us at the address above, "
+"without undue delay and in any event not later than 14 days from the day on "
+"which you communicate your withdrawal from this contract to us. The deadline"
+" is met if you send back the goods before the period of 14 days has expired."
+msgstr ""
+"Калі ласка, адашліце або перадайце нам рэч на адрас, указаны вышэй, без "
+"затрымак, а ў любым выпадку не пазней чым праз 14 дзён з дня, у які вы "
+"паведамілі нам пра адмову ад гэтай дамовы. Тэрмін захаваны, калі вы адашляце"
+" рэч да заканчэння тэрміну ў 14 дзён."
+
+msgid ""
+"We may withhold reimbursement until we have received the goods back or you "
+"have supplied evidence of having sent back the goods, whichever is the "
+"earliest."
+msgstr ""
+"Мы можам устрымацца ад звароту плацяжу да моманту атрымання рэчы або да "
+"моманту дастаўкі нам доказу яе адпраўкі, у залежнасці ад таго, якая падзея "
+"адбудзецца раней."
+
+msgid ""
+"We will carry out such reimbursement using the same means of payment as you "
+"used for the initial transaction, unless you have expressly agreed "
+"otherwise; in any event, you will not incur any fees as a result of such "
+"reimbursement."
+msgstr ""
+"Зварот плацяжу мы ажыццявім з выкарыстаннем тых самых спосабаў аплаты, якія "
+"былі вамі выкарыстаныя ў першапачатковай транзакцыі, калі толькі вы выразна "
+"не пагадзіліся на іншае рашэнне; у любым выпадку вы не панесяце ніякіх "
+"выдаткаў у сувязі з гэтым зваротам."
+
+msgid ""
+"If you withdraw from this contract, we shall reimburse to you all payments "
+"received from you, including the costs of delivery (with the exception of "
+"the supplementary costs resulting from your choice of a type of delivery "
+"other than the least expensive type of standard delivery offered by us), "
+"without undue delay and in any event not later than %d days from the day on "
+"which we are informed about your decision to withdraw from this contract."
+msgstr ""
+"У выпадку адмовы ад гэтай дамовы мы вяртаем вам усе атрыманыя ад вас "
+"плацяжы, у тым ліку выдаткі на дастаўку рэчы (за выключэннем дадатковых "
+"выдаткаў, якія ўзніклі з выбранага вамі спосабу дастаўкі, іншага, чым "
+"найтаннейшы звычайны спосаб дастаўкі, прапанаваны намі), без затрымак, а ў "
+"любым выпадку не пазней чым праз %d дзён з дня, у які мы былі "
+"праінфармаваныя пра ваша рашэнне аб ажыццяўленні права адмовы ад гэтай "
+"дамовы."
+
+msgid "Effects of withdrawal"
+msgstr "Наступствы адмовы ад дамовы"
+
+msgid ""
+"To meet the withdrawal deadline, it is sufficient for you to send your "
+"communication concerning your exercise of the right of withdrawal before the"
+" withdrawal period has expired."
+msgstr ""
+"Каб захаваць тэрмін на адмову ад дамовы, дастаткова, каб вы выслалі "
+"інфармацыю аб ажыццяўленні належнага вам права адмовы ад дамовы да "
+"заканчэння тэрміну на адмову ад дамовы."
+
+msgid "You may use the model withdrawal form, but it is not obligatory."
+msgstr ""
+"Вы можаце скарыстацца ўзорам формы адмовы ад дамовы, аднак гэта не "
+"з'яўляецца абавязковым."
+
+msgid ""
+"To exercise the right of withdrawal, you must inform us of your decision to "
+"withdraw from this contract by an unequivocal statement (for example a "
+"letter sent by post, fax or email)."
+msgstr ""
+"Каб скарыстацца правам адмовы ад дамовы, вы павінны паведаміць нам пра сваё "
+"рашэнне адмовіцца ад гэтай дамовы шляхам адназначнай заявы (напрыклад, ліст,"
+" дасланы поштай, факсам або электроннай поштай)."
+
+msgid ""
+"The withdrawal period will expire after %d days from the day on which you "
+"acquire, or a third party other than the carrier and indicated by you "
+"acquires, physical possession of the goods."
+msgstr ""
+"Тэрмін на адмову ад дамовы заканчваецца праз %d дзён з дня, у які вы "
+"атрымалі рэч ва ўладанне або ў які трэцяя асоба, акрамя перавозчыка і "
+"ўказаная вамі, атрымала рэч ва ўладанне."
+
+msgid ""
+"You have the right to withdraw from this contract within %d days without "
+"giving any reason."
+msgstr ""
+"Вы маеце права адмовіцца ад гэтай дамовы на працягу %d дзён без указання "
+"якой-небудзь прычыны."
+
+msgid ""
+"Runs the UŚUDE and Consumer Rights Act rules against the configured terms "
+"page."
+msgstr ""
+"Запускае правілы UŚUDE + Ustawa o prawach konsumenta для сканфігураванай "
+"старонкі Рэгламенту."
+
+msgid "Withdrawal from the contract"
+msgstr "Адмова ад дамовы"
+
+msgid ""
+"If that order exists, we have sent a link to the form to the email address "
+"used for the purchase. Check your inbox and your spam folder."
+msgstr ""
+"Калі гэты заказ існуе, мы выслалі спасылку на форму на адрас e-mail, указаны"
+" пры пакупцы. Праверце скрыню ўваходных і папку Спам."
+
+msgid "The order number is missing or the email address is not valid."
+msgstr "Адсутнічае нумар заказу або адрас e-mail няправільны."
+
+msgid ""
+"Reference the statutory withdrawal form (the annex to the Polish Consumer "
+"Rights Act)."
+msgstr ""
+"Пазначце статутную форму адмовы (załącznik do ustawy o prawach konsumenta)."
+
+msgid "pcs."
+msgstr "шт."
+
+msgid "Within 24 hours"
+msgstr "Да 24 гадзін"
+
+msgid "7-14 working days"
+msgstr "7-14 працоўных дзён"
+
+msgid "5-7 working days"
+msgstr "5-7 працоўных дзён"
+
+msgid "3-5 working days"
+msgstr "3-5 працоўных дзён"
+
+msgid "2-4 working days"
+msgstr "2-4 працоўныя дні"
+
+msgid "1-2 working days"
+msgstr "1-2 працоўныя дні"
+
+msgid "Lowest price in the last 30 days"
+msgstr "Найніжэйшая цана за 30 дзён"
+
+msgid "Digital content"
+msgstr "Лічбавы змест"
+
+msgid "Recording or software"
+msgstr "Запіс/Праграма"
+
+msgid "Inseparably mixed"
+msgstr "Неаддзельна злучаны"
+
+msgid "Sealed"
+msgstr "Запячатаны"
+
+msgid "Perishable"
+msgstr "Кароткі тэрмін"
+
+msgid "Made to order"
+msgstr "Па замове"
+
+msgid ""
+"Digital content supplied before the withdrawal period ends (Article 38(13))"
+msgstr "Лічбавы змест, прадастаўлены да заканчэння тэрміну (Арт. 38 п. 13)"
+
+msgid "Sealed audio or video recordings or computer software (Article 38(9))"
+msgstr ""
+"Аўдыя/відэазапісы або праграмнае забеспячэнне ў запячатанай упакоўцы (Арт. "
+"38 п. 9)"
+
+msgid "Alcoholic beverages (Article 38(7))"
+msgstr "Алкагольныя напоі (Арт. 38 п. 7)"
+
+msgid "Inseparably mixed with other items after delivery (Article 38(6))"
+msgstr "Тавар неаддзельна злучаны з іншымі (Арт. 38 п. 6)"
+
+msgid "Sealed for health protection or hygiene reasons (Article 38(5))"
+msgstr "Запячатаны тавар з прычыны аховы здароўя або гігіены (Арт. 38 п. 5)"
+
+msgid "Liable to deteriorate or expire rapidly (Article 38(4))"
+msgstr "Хутка псуючыся тавар / кароткі тэрмін прыдатнасці (Арт. 38 п. 4)"
+
+msgid ""
+"Made to the consumer's specification or clearly personalised (Article 38(3))"
+msgstr "Тавар па індывідуальнай замове / персаналізаваны (Арт. 38 п. 3)"
+
+msgid "Other (custom reason)"
+msgstr "Іншае (уласнае абгрунтаванне)"
+
+msgid "Rejected %1$d of %2$d selected declarations."
+msgid_plural "Rejected %1$d of %2$d selected declarations."
+msgstr[0] "Адхілена %1$d з %2$d вылучаных заяў."
+msgstr[1] "Адхілена %1$d з %2$d вылучаных заяў."
+msgstr[2] "Адхілена %1$d з %2$d вылучаных заяў."
+
+msgid "Rejected by a bulk action."
+msgstr "Адхілена масавым дзеяннем."
+
+msgid "Confirmed %1$d of %2$d selected declarations."
+msgid_plural "Confirmed %1$d of %2$d selected declarations."
+msgstr[0] "Пацверджана %1$d з %2$d вылучаных заяў."
+msgstr[1] "Пацверджана %1$d з %2$d вылучаных заяў."
+msgstr[2] "Пацверджана %1$d з %2$d вылучаных заяў."
+
+msgid "Unknown bulk action."
+msgstr "Невядомае масавае дзеянне."
+
+msgid "Choose an action and at least one row."
+msgstr "Выберыце дзеянне і хаця б адну пазіцыю."
+
+msgid "Rejected from the order screen."
+msgstr "Адхілена з экрана замовы."
+
+msgid "Open the list"
+msgstr "Адкрыць спіс"
+
+msgid "Reject"
+msgstr "Адхіліць"
+
+msgid "Reject this declaration?"
+msgstr "Адхіліць гэту заяву?"
+
+msgid "Mark as settled"
+msgstr "Пазначыць як разлічанае"
+
+msgid "Confirm"
+msgstr "Пацвердзіць"
+
+msgid "There is no withdrawal declaration for this order."
+msgstr "Няма заявы аб адмове для гэтага замовы."
+
+msgid "Polski withdrawal"
+msgstr "Polski - адмова"
+
+msgid "Tools that help bring the shop in line with Polish requirements."
+msgstr ""
+"Інструменты, якія дапамагаюць прыстасаваць краму да польскіх патрабаванняў."
+
+msgid "GDPR training material for the shop team."
+msgstr "Навучальныя матэрыялы RODO для каманды крамы."
+
+msgid "GDPR training"
+msgstr "Навучанне RODO"
+
+msgid ""
+"The complaint form template for customers, with its generator and settings."
+msgstr "Генератар і налады шаблона рэкламацыі для кліентаў."
+
+msgid "A software bill of materials for the Cyber Resilience Act."
+msgstr ""
+"Спіс кампанентаў праграмнага забеспячэння (Software Bill of Materials) для "
+"патрэб CRA."
+
+msgid ""
+"A register of vulnerabilities, breaches and failures for the Cyber "
+"Resilience Act, with statuses and CSV export."
+msgstr ""
+"Рэестр уразлівасцяў, парушэнняў і збояў для патрэб Cyber Resilience Act, са "
+"статусамі і экспартам CSV."
+
+msgid ""
+"Withdrawal declarations and returns: the list, manual registration and the "
+"settings."
+msgstr ""
+"Заявы аб адмове ад дамовы і вяртанні: спіс, ручная рэгістрацыя і налады."
+
+msgid "Stored visitor decisions from the consent banner, with CSV export."
+msgstr "Захаваныя рашэнні наведвальнікаў з банера згод, з экспартам у CSV."
+
+msgid "A register of data processing agreements with third parties."
+msgstr ""
+"Улік дагавораў даручэння апрацоўкі персанальных дадзеных з трэцімі бакамі."
+
+msgid "DPA registry (GDPR)"
+msgstr "Рэестр DPA (RODO)"
+
+msgid ""
+"Continuous monitoring of fatal errors, failed payments and sales anomalies, "
+"with alerts."
+msgstr ""
+"Бесперапынны маніторынг крытычных памылак, няўдалых аплат і анамалій "
+"продажаў з апавяшчэннямі."
+
+msgid "Shop health"
+msgstr "Стан крамы"
+
+msgid ""
+"A record of security problems, data breaches and infrastructure failures."
+msgstr "Рэестр праблем з бяспекай, уцечак дадзеных і аварый інфраструктуры."
+
+msgid "Handling of content notices under the Digital Services Act."
+msgstr ""
+"Кіраванне паведамленнямі аб парушэнні лічбавага кантэнту (Digital Services "
+"Act)."
+
+msgid "DSA reports"
+msgstr "Справаздачы DSA"
+
+msgid ""
+"An automatic check of the most common legal problems in Polish ecommerce."
+msgstr ""
+"Аўтаматычная праверка найбольш частых прававых праблем у польскім eCommerce."
+
+msgid "Compliance audit"
+msgstr "Аўдыт адпаведнасці"
+
+msgid ""
+"Use the form below to report content you consider illegal under the Digital "
+"Services Act."
+msgstr ""
+"Запоўніце форму ніжэй, каб паведаміць пра кантэнт, які вы лічыце нелегальным"
+" згодна з Актам аб лічбавых паслугах (DSA)."
+
+msgid "Report illegal content (DSA)"
+msgstr "Паведаміць пра нелегальны кантэнт (DSA)"
+
+msgid "Reject optional"
+msgstr "Адхіліць неабавязковыя"
+
+msgid ""
+"We use cookies and similar technologies to run the site, measure traffic and"
+" personalise content. You can accept all of them, reject the optional ones, "
+"or manage your choices yourself."
+msgstr ""
+"Мы выкарыстоўваем файлы cookie і падобныя тэхналогіі, каб забяспечыць працу "
+"сайта, вымяраць трафік і персаналізаваць змесціва. Вы можаце прыняць усе, "
+"адхіліць неабавязковыя або самастойна кіраваць выбарам."
+
+msgid "Frequently asked questions"
+msgstr "Часта задаваныя пытанні"
+
+msgid "Price history"
+msgstr "Гісторыя цэн"
+
+msgid "No questions yet. Ask the first one."
+msgstr "Няма пытанняў. Задайце першае пытанне!"
+
+msgid "Reply"
+msgstr "Адказаць"
+
+msgid "Ask a question about this product..."
+msgstr "Задайце пытанне аб гэтым тавары..."
+
+msgid "Questions and answers"
+msgstr "Пытанні і адказы"
+
+msgid "%d h ago"
+msgstr "%d гадз таму"
+
+msgid "%d min ago"
+msgstr "%d хв таму"
+
+msgid "%1$s bought %2$s"
+msgstr "%1$s купіў(ла) %2$s"
+
+msgid "Alcoholic strength"
+msgstr "Утрыманне алкаголю"
+
+msgid "Nutrition per"
+msgstr "Харчовая каштоўнасць на"
+
+msgid "Promotional popup"
+msgstr "Рэкламны папап"
+
+msgid "Close the popup"
+msgstr "Закрыць папап"
+
+msgid "Go to contact"
+msgstr "Перайсці да кантактаў"
+
+msgid ""
+"Contact us for a B2B quote, a wholesale discount or help choosing a product."
+msgstr ""
+"Звяжыцеся з намі, калі жадаеце атрымаць прапанову B2B, зніжку для оптавікоў "
+"ці дапамогу з выбарам тавару."
+
+msgid "A question about the product or about trade terms?"
+msgstr "Маеце пытанне аб тавары ці гандлёвых умовах?"
+
+msgid "More products have been loaded."
+msgstr "Загружаны наступныя тавары."
+
+msgid "That is all the products."
+msgstr "Гэта ўжо ўсе тавары."
+
+msgid "More products could not be loaded."
+msgstr "Не ўдалося загрузіць наступныя тавары."
+
+msgid "Loading products..."
+msgstr "Загрузка тавараў..."
+
+msgid "Load more products"
+msgstr "Загрузіць больш тавараў"
+
+msgid "You save"
+msgstr "Вы эканоміце"
+
+msgid "in the bundle"
+msgstr "у наборы"
+
+msgid "Bundle price"
+msgstr "Цана набору"
+
+msgid "The bundle was added to the cart."
+msgstr "Набор дададзены ў кошык."
+
+msgid "Choose at least one add-on product for the bundle."
+msgstr "Выберыце прынамсі адзін дадатковы тавар для набору."
+
+msgid ""
+"Combine the main product with accessories and buy the whole set as one "
+"package."
+msgstr "Спалучыце асноўны тавар з аксесуарамі і купіце ўсё адным пакетам."
+
+msgid "Buy as a bundle"
+msgstr "Купіць у наборы"
+
+msgid "Enter the details"
+msgstr "Увядзіце дэталі"
+
+msgid "Enter a value"
+msgstr "Увядзіце значэнне"
+
+msgid "Choose an option"
+msgstr "Выберыце варыянт"
+
+msgid "Set up the add-ons and services that go with this product."
+msgstr "Наладзьце дадаткі і паслугі, звязаныя з гэтым таварам."
+
+msgid "Product add-ons"
+msgstr "Дадаткі да тавару"
+
+msgid "If you no longer want messages like this, simply ignore this email."
+msgstr ""
+"Калі вы больш не жадаеце атрымліваць такія паведамленні, проста праігнаруйце"
+" гэты ліст."
+
+msgid "{product_name} is back in stock."
+msgstr "Тавар {product_name} зноў даступны."
+
+msgid "Back in stock: {product_name}"
+msgstr "Тавар зноў даступны - {product_name}"
+
+msgid "Log in to join the waitlist."
+msgstr "Увайдзіце, каб запісацца ў спіс чакання."
+
+msgid "You have to accept the email contact consent."
+msgstr "Вы павінны пагадзіцца на кантакт па электроннай пошце."
+
+msgid "Enter a valid email address."
+msgstr "Увядзіце правільны адрас электроннай пошты."
+
+msgid "The waitlist is not available for this product."
+msgstr "Спіс чакання недаступны для гэтага тавару."
+
+msgid ""
+"I agree to be contacted by email about the availability of this product."
+msgstr ""
+"Я згаджаюся на кантакт па электроннай пошце адносна даступнасці гэтага "
+"тавару."
+
+msgid "Thank you. You are on the waitlist."
+msgstr "Дзякуй. Мы запісалі вас у спіс чакання."
+
+msgid "Notify me"
+msgstr "Паведаміць мне"
+
+msgid "Your email address"
+msgstr "Ваш адрас электроннай пошты"
+
+msgid "Email address"
+msgstr "Адрас электроннай пошты"
+
+msgid ""
+"Leave your email address and we will let you know when the product is back "
+"in stock."
+msgstr ""
+"Пакіньце адрас электроннай пошты, і мы паведамім, калі тавар вернецца ў "
+"наяўнасць."
+
+msgid "Notify me when it is back"
+msgstr "Паведаміць мне аб даступнасці"
+
+msgid ""
+"Pre-order products cannot be combined with other products in the same cart."
+msgstr ""
+"Тавары з перадпродажу нельга спалучаць з іншымі таварамі ў адным кошыку."
+
+msgid "Pre-order"
+msgstr "Перадпродаж"
+
+msgid ""
+"This product is available for pre-order. Order now and we will ship from "
+"{date}."
+msgstr ""
+"Гэты тавар даступны ў перадпродажы. Замовіце зараз, і мы зробім адпраўку ад "
+"{date}."
+
+msgid "Pre-order, shipping from {date}"
+msgstr "Перадпродаж, адпраўка ад {date}"
+
+msgid "Pre-order now"
+msgstr "Замовіць у перадпродажы"
+
+msgid "See all products"
+msgstr "Глядзець усе тавары"
+
+msgid "There are no products to show in this section."
+msgstr "Няма тавараў для адлюстравання ў гэтым раздзеле."
+
+msgid "Recommended products"
+msgstr "Рэкамендаваныя тавары"
+
+msgid "Zoom in on the product photo"
+msgstr "Павялічыць фота тавару"
+
+msgid "Close the gallery preview"
+msgstr "Закрыць прагляд галерэі"
+
+msgid "Product gallery preview"
+msgstr "Прагляд галерэі тавару"
+
+msgid "See the product in use"
+msgstr "Глядзець тавар у выкарыстанні"
+
+msgid "Returns and complaints"
+msgstr "Звароты і рэкламацыі"
+
+msgid "Delivery and payment"
+msgstr "Дастаўка і аплата"
+
+msgid "Low stock"
+msgstr "Апошнія штукі"
+
+msgid "New arrival"
+msgstr "Навінка"
+
+msgid "{count} products from the bundle were added to the cart."
+msgstr "Дададзена {count} тавараў з набору ў кошык."
+
+msgid "Total:"
+msgstr "Разам:"
+
+msgid "No products have been set up for the bundle."
+msgstr "Няма наладжаных тавараў для набору."
+
+msgid "Add the bundle to the cart"
+msgstr "Дадаць набор у кошык"
+
+msgid ""
+"Offer a ready made bundle of complementary products and add the whole set to"
+" the cart in one click."
+msgstr ""
+"Прапануйце кліенту гатовы набор дадатковых тавараў і дадайце ўсё ў кошык "
+"адным націскам."
+
+msgid "Frequently bought together"
+msgstr "Часта купляюць разам"
+
+msgid "See the full product page"
+msgstr "Глядзець поўную картку тавару"
+
+msgid "The product preview could not be loaded."
+msgstr "Не ўдалося загрузіць прагляд тавару."
+
+msgid "Loading the product..."
+msgstr "Загрузка тавару..."
+
+msgid "Product quick view"
+msgstr "Хуткі прагляд тавару"
+
+msgid "Quick view"
+msgstr "Хуткі прагляд"
+
+msgid "Show differences only"
+msgstr "Паказваць толькі адрозненні"
+
+msgid "Attribute"
+msgstr "Характарыстыка"
+
+msgid "Clear the comparison"
+msgstr "Ачысціць параўнанне"
+
+msgid "Product comparison"
+msgstr "Параўнанне тавараў"
+
+msgid "The comparison list is empty."
+msgstr "Спіс параўнання пусты."
+
+msgid ""
+"You can compare up to {limit} products at a time. The oldest one was "
+"replaced automatically."
+msgstr ""
+"Вы можаце параўнаць максімум {limit} тавары адначасова. Найстарэйшы запіс "
+"быў заменены аўтаматычна."
+
+msgid "Remove from comparison"
+msgstr "Выдаліць з параўнання"
+
+msgid "Add to comparison"
+msgstr "Дадаць у параўнанне"
+
+msgid "Your wishlist"
+msgstr "Вашы ўпадабаныя тавары"
+
+msgid "The wishlist is empty."
+msgstr "Спіс упадабаных пусты."
+
+msgid "Log in to use the wishlist."
+msgstr "Увайдзіце, каб карыстацца спісам жаданняў."
+
+msgid "Remove from wishlist"
+msgstr "Выдаліць з упадабаных"
+
+msgid "Add to wishlist"
+msgstr "Дадаць ва ўпадабаныя"
+
+msgid "Show filters"
+msgstr "Паказаць фільтры"
+
+msgid "Active filters"
+msgstr "Актыўныя фільтры"
+
+msgid "Product filters"
+msgstr "Фільтры тавараў"
+
+msgid "Clear filters"
+msgstr "Ачысціць фільтры"
+
+msgid "Any option"
+msgstr "Любы"
+
+msgid "On sale only"
+msgstr "Толькі акцыі"
+
+msgid "Promotions"
+msgstr "Акцыі"
+
+msgid "Any"
+msgstr "Любая"
+
+msgid "Price to"
+msgstr "Цана да"
+
+msgid "Price from"
+msgstr "Цана ад"
+
+msgid "See all results"
+msgstr "Глядзець усе вынікі"
+
+msgid "No results for that search."
+msgstr "Няма вынікаў для пададзенага запыту."
+
+msgid "Search products, SKUs or categories"
+msgstr "Шукаць тавары, коды SKU або катэгорыі"
+
+msgid "Online purchase is disabled for this product."
+msgstr "Пакупка онлайн выключана для гэтага тавару."
+
+msgid "The price is hidden for this product."
+msgstr "Цана схаваная для гэтага тавару."
+
+msgid "Prices and online purchase are hidden for this product."
+msgstr "Цэны і пакупка онлайн схаваныя для гэтага тавару."
+
+msgid "See trade terms"
+msgstr "Глядзець гандлёвыя ўмовы"
+
+msgid ""
+"This product is shown in catalogue mode. Contact us for trade terms or a B2B"
+" quote."
+msgstr ""
+"Тавар даступны ў каталожным рэжыме. Звяжыцеся з намі, каб атрымаць гандлёвыя"
+" ўмовы або прапанову B2B."
+
+msgid "The price is available once you log in or contact us."
+msgstr "Цана даступная пасля ўваходу або пасля кантакту з абслугоўваннем."
+
+msgid "Log in to see the price"
+msgstr "Увайдзіце, каб убачыць прапанову"
+
+msgid "Ask about trade terms"
+msgstr "Запытаць гандлёвыя ўмовы"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "No quote requests."
+msgstr "Няма запытаў прапаноў."
+
+msgid "Company / VAT ID"
+msgstr "Фірма / NIP"
+
+msgid "The request status has been updated."
+msgstr "Статус запыту абноўлены."
+
+msgid "Quote requests"
+msgstr "Запыты прапаноў"
+
+msgid "Quote request confirmation: {product_name}"
+msgstr "Пацвярджэнне запыту прапановы - {product_name}"
+
+msgid "New quote request: {product_name}"
+msgstr "Новы запыт прапановы - {product_name}"
+
+msgid "I accept the privacy policy and agree to be contacted about the quote."
+msgstr ""
+"Я прымаю палітыку прыватнасці і згаджаюся на кантакт у справе разліку."
+
+msgid "The request could not be prepared for this product."
+msgstr "Не ўдалося падрыхтаваць запыт для гэтага тавару."
+
+msgid "The request could not be saved. Please try again."
+msgstr "Не ўдалося захаваць запыт. Паспрабуйце зноў."
+
+msgid "The minimum quantity for this request is {quantity}."
+msgstr "Мінімальная колькасць для гэтага запыту складае {quantity}."
+
+msgid "You have to accept the privacy consent."
+msgstr "Вы павінны прыняць згоду на прыватнасць."
+
+msgid "Enter the postcode."
+msgstr "Падайце паштовы індэкс."
+
+msgid "Enter a valid VAT ID (NIP)."
+msgstr "Падайце правільны нумар NIP."
+
+msgid "Enter the VAT ID (NIP)."
+msgstr "Падайце нумар NIP."
+
+msgid "Enter the company name."
+msgstr "Падайце назву фірмы."
+
+msgid "Enter a contact phone number."
+msgstr "Падайце нумар тэлефона для кантакту."
+
+msgid "Enter a valid name and email address."
+msgstr "Правільна запоўніце імя і адрас email."
+
+msgid "Price available on request"
+msgstr "Цана даступная пасля разліку"
+
+msgid ""
+"Thank you. Your request has been sent and we will reply as soon as we can."
+msgstr "Дзякуй. Ваш запыт адпраўлены, мы вернемся з адказам як мага хутчэй."
+
+msgid "Send the request"
+msgstr "Адправіць запыт"
+
+msgid "Tell us what you need, when you need it and what the order involves."
+msgstr "Напішыце, чаго вы патрабуеце, які ў вас тэрмін і якія ўмовы замовы."
+
+msgid "Request details"
+msgstr "Дэталі запыту"
+
+msgid "Postcode"
+msgstr "Паштовы індэкс"
+
+msgid "Full name"
+msgstr "Імя і прозвішча"
+
+msgid "Log in to request a quote for this product."
+msgstr "Увайдзіце, каб даслаць запыт прапановы для гэтага тавару."
+
+msgid "Close the quote form"
+msgstr "Закрыць форму разліку"
+
+msgid ""
+"Fill in the short form and we will come back with a quote for your order."
+msgstr ""
+"Запоўніце кароткую форму, і мы вернемся з разлікам, прыстасаваным да вашай "
+"замовы."
+
+msgid "Request a custom quote"
+msgstr "Запытаць індывідуальны разлік"
+
+msgid "Request a quote"
+msgstr "Запытаць разлік"
+
+msgid "If you did not create an account with us, simply delete this message."
+msgstr ""
+"Калі гэта не вы стваралі ў нас акаўнт, не хвалюйцеся і проста выдаліце гэта "
+"паведамленне."
+
+msgid "Thank you for creating an account. Open the link below to activate it:"
+msgstr ""
+"Дзякуй за стварэнне акаўнта. Наведайце спасылку ніжэй, каб актываваць "
+"акаўнт:"
+
+msgid "If you prefer, copy this link into your browser:"
+msgstr "Калі хочаце, скапіруйце і ўстаўце гэтую спасылку ў браўзер:"
+
+msgid "Activate the account"
+msgstr "Актываваць акаўнт"
+
+msgid ""
+"Thank you for creating an account. Click the button below to activate it:"
+msgstr ""
+"Дзякуй за стварэнне акаўнта. Націсніце кнопку ніжэй, каб актываваць акаўнт:"
+
+msgid "Your account is now active. You can log in."
+msgstr "Цудоўна! Ваш акаўнт ужо актываваны. Цяпер вы можаце смела ўвайсці."
+
+msgid ""
+"Your account is waiting to be activated. Check your inbox and click the link"
+" we sent you."
+msgstr ""
+"Ваш акаўнт чакае актывацыі! Зазірніце ў сваю паштовую скрыню і націсніце на "
+"дасланую намі спасылку."
+
+msgid "Delivery time: {time}"
+msgstr "Час дастаўкі: {time}"
+
+msgid "VAT exempt under Article 113(1) of the Polish VAT Act"
+msgstr "Вызвалены ад VAT на падставе арт. 113 ч. 1 закона аб VAT"
+
+msgid "incl. {rate}% VAT"
+msgstr "у тым ліку {rate}% VAT"
+
+msgid ""
+"You will be refunded within 14 days of us receiving the returned goods."
+msgstr ""
+"Вяртанне сродкаў адбудзецца на працягу 14 дзён з моманту атрымання намі "
+"вернутых тавараў."
+
+msgid "Please return the goods to the address above within 14 days:"
+msgstr "Просім вярнуць тавары на вышэйпазначаны адрас на працягу 14 дзён:"
+
+msgid ""
+"Your withdrawal from the contract for order #{order_number} has been "
+"confirmed."
+msgstr "Ваша адмова ад дамовы для замовы № #{order_number} пацверджана."
+
+msgid "Hi {name},"
+msgstr "Прывітанне {name},"
+
+msgid "Confirmation of the withdrawal declaration for order #{order_number}"
+msgstr "Пацвярджэнне заявы пра адмову ад замовы № #{order_number}"
+
+msgid "The withdrawal declaration has been confirmed."
+msgstr "Заява пра адмову пацверджана."
+
+msgid "The customer has filed a withdrawal declaration."
+msgstr "Кліент падаў заяву пра адмову ад дамовы."
+
+msgid "This order does not qualify for withdrawal."
+msgstr "Гэтая замова не падыходзіць для адмовы."
+
+msgid ""
+"Your withdrawal declaration has been accepted. We will send a confirmation "
+"email shortly."
+msgstr ""
+"Ваша заява пра адмову прынятая. Неўзабаве мы дашлем email з пацвярджэннем."
+
+msgid "You are not allowed to withdraw from this order."
+msgstr "У вас няма паўнамоцтваў адмовіцца ад гэтай замовы."
+
+msgid "Send the withdrawal declaration"
+msgstr "Адправіць заяву пра адмову"
+
+msgid "Items in the order"
+msgstr "Тавары ў замове"
+
+msgid ""
+"Under Polish consumer law you have the right to withdraw from the contract "
+"within 14 days without giving a reason."
+msgstr ""
+"Згодна з польскім спажывецкім правам вы маеце права адмовіцца ад дамовы на "
+"працягу 14 дзён без указання прычыны."
+
+msgid "This refers to order #{order_number} placed on {order_date}."
+msgstr "Вы спашлецеся на замову № #{order_number} ад {order_date}."
+
+msgid "Withdrawal declaration"
+msgstr "Заява пра адмову ад дамовы"
+
+msgid "Withdraw from the contract"
+msgstr "Адмовіцца ад дамовы"
+
+msgid "Optional marketing consent."
+msgstr "Неабавязковая маркетынгавая згода."
+
+msgid "I consent to receiving marketing communication and the newsletter."
+msgstr "Я выказваю згоду на атрыманне маркетынгавай камунікацыі і навін."
+
+msgid "Optional consent to review reminders."
+msgstr "Неабавязковая згода на нагадванні пра водгук."
+
+msgid ""
+"I consent to receiving an email reminder to leave a review after my "
+"purchase."
+msgstr ""
+"Я выказваю згоду на атрыманне нагадвання пра напісанне водгуку па "
+"электроннай пошце пасля пакупкі."
+
+msgid "Optional consent to delivery notifications."
+msgstr "Неабавязковая згода на паведамленні пра дастаўку."
+
+msgid ""
+"I consent to receiving SMS and email notifications about the delivery status"
+" of my parcel."
+msgstr ""
+"Я выказваю згоду на атрыманне паведамленняў SMS/email пра статус дастаўкі "
+"пасылкі."
+
+msgid "Right of withdrawal waived for digital content."
+msgstr "Адмова ад права адмовы для лічбавага кантэнту."
+
+msgid "You have to consent to the immediate supply of digital content."
+msgstr ""
+"Вы павінны выказаць згоду на неадкладнае прадастаўленне лічбавага кантэнту."
+
+msgid ""
+"I consent to the supply of digital content beginning before the withdrawal "
+"period ends and I acknowledge that I thereby lose my right of withdrawal."
+msgstr ""
+"Я выказваю згоду на пачатак прадастаўлення лічбавага кантэнту да заканчэння "
+"тэрміну адмовы ад дамовы і прымаю да ведама страту права адмовы."
+
+msgid "Information on the 14 day right of withdrawal acknowledged."
+msgstr "Пацвярджэнне інфармацыі пра 14-дзённае права адмовы."
+
+msgid ""
+"You have to confirm that you have read the information on the right of "
+"withdrawal."
+msgstr "Вы павінны пацвердзіць азнаямленне з інфармацыяй пра права адмовы."
+
+msgid ""
+"I confirm that I have been informed of the <a href=\"%s\" "
+"target=\"_blank\">right of withdrawal</a> within 14 days."
+msgstr ""
+"Я пацвярджаю, што быў праінфармаваны пра <a href=\"%s\" "
+"target=\"_blank\">права адмовы ад дамовы</a> на працягу 14 дзён."
+
+msgid "Privacy policy accepted."
+msgstr "Прыняцце Палітыкі прыватнасці."
+
+msgid "You have to accept the privacy policy."
+msgstr "Вы павінны прыняць Палітыку прыватнасці."
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">privacy "
+"policy</a>."
+msgstr ""
+"Я азнаёміўся і прымаю <a href=\"%s\" target=\"_blank\">Палітыку "
+"прыватнасці</a>."
+
+msgid "Terms and conditions accepted."
+msgstr "Прыняцце Рэгламента крамы."
+
+msgid "You have to accept the terms and conditions to place an order."
+msgstr "Вы павінны прыняць Рэгламент, каб аформіць замову."
+
+msgid ""
+"I have read and accept the <a href=\"%s\" target=\"_blank\">terms and "
+"conditions</a>."
+msgstr "Я азнаёміўся і прымаю <a href=\"%s\" target=\"_blank\">Рэгламент крамы</a>."
+
+msgid "Order with an obligation to pay"
+msgstr "Замаўляю з абавязкам аплаты"
+
+msgid ""
+"The minimum number of items per order is {min_quantity}. You currently have "
+"{current_quantity}."
+msgstr ""
+"Мінімальная колькасць тавараў у замове складае {min_quantity}. Бягучая "
+"колькасць: {current_quantity}."
+
+msgid ""
+"The minimum order value is {min_value}. Your cart is currently "
+"{current_value}."
+msgstr ""
+"Мінімальная сума замовы складае {min_value}. Бягучая сума кошыка: "
+"{current_value}."
+
+msgid "We will not send you review requests any more."
+msgstr "Мы больш не будзем дасылаць просьбы пра водгук."
+
+msgid ""
+"Hello {first_name}, thank you for your recent order. We would be grateful "
+"for your review."
+msgstr ""
+"Прывітанне {first_name}, дзякуй за апошнія пакупкі. Будзем удзячныя за ваш "
+"водгук."
+
+msgid "How was your order? Leave a review"
+msgstr "Як вы ацэньваеце свае пакупкі? Пакіньце водгук"
+
+msgid "Lowest price in the last {days} days: {price}"
+msgstr "Найніжэйшая цана за апошнія {days} дзён: {price}"
+
+msgid ""
+"Polish payment gateways were detected. Polski can adapt the checkout and the"
+" legal notices to the active methods."
+msgstr ""
+"Выяўлены польскія плацёжныя шлюзы. Polski можа прыстасаваць афармленне "
+"замовы і прававыя паведамленні да актыўных метадаў."
+
+msgid ""
+"No supported Polish payment gateway was detected. Polski uses its own "
+"checkout settings with no further integration."
+msgstr ""
+"Не выяўлена падтрымліваных польскіх плацёжных шлюзаў. Polski выкарыстоўвае "
+"ўласныя налады афармлення замовы без дадатковых інтэграцый."
+
+msgid ""
+"A supported checkout, cookie or product data extension was detected. Polski "
+"can adapt to what is active."
+msgstr ""
+"Выяўлены падтрымліваныя пашырэнні афармлення замовы, cookies або дадзеных "
+"тавараў. Polski можа прыстасаваць інтэграцыю да актыўнага набору."
+
+msgid ""
+"No supported checkout or cookie extension was detected. Polski works on its "
+"own."
+msgstr ""
+"Не выяўлена падтрымліваных пашырэнняў афармлення замовы і cookies. Polski "
+"працягвае працаваць самастойна."
+
+msgid "not detected"
+msgstr "не выяўлена"
+
+msgid ""
+"An external plugin was detected. Polski uses its data instead of its own "
+"price history."
+msgstr ""
+"Знешні плагін выяўлены. Polski выкарыстоўвае яго дадзеныя замест убудаванай "
+"сістэмы."
+
+msgid ""
+"No external Omnibus plugin is installed. Polski uses its own price history."
+msgstr ""
+"Ніводны знешні плагін Omnibus не ўсталяваны. Polski выкарыстоўвае ўбудаваную"
+" сістэму адсочвання цэн."
+
+msgid "detected, data is being synchronised"
+msgstr "выяўлена, дадзеныя сінхранізуюцца"
+
+msgid ""
+"Test the checkout: add a product to the cart and check the legal checkboxes "
+"and the button wording on the <a href=\"%s\">checkout page</a>."
+msgstr ""
+"Праверце афармленне замовы, дадайце тавар у кошык і праверце прававыя сцяжкі"
+" і тэкст кнопкі на <a href=\"%s\">старонцы замовы</a>."
+
+msgid ""
+"Fill in the product data, adding unit prices and delivery times in the <a "
+"href=\"%s\">Polski tab</a> of every product."
+msgstr ""
+"Запоўніце дадзеныя тавараў, дадайце адзінкавыя цэны і тэрміны дастаўкі ва <a"
+" href=\"%s\">укладцы Polski</a> для кожнага тавару."
+
+msgid "Set up <a href=\"%s\">shipping zones</a> for deliveries in Poland."
+msgstr "Наладзьце <a href=\"%s\">зоны дастаўкі</a> для пастаўкі ў Польшчы."
+
+msgid ""
+"Set up the <a href=\"%s\">VAT rates</a> in WooCommerce for the Polish "
+"market: 23%%, 8%%, 5%% and 0%%."
+msgstr ""
+"Наладзьце <a href=\"%s\">стаўкі VAT</a> у WooCommerce для польскага рынку: "
+"23%%, 8%%, 5%% і 0%%."
+
+msgid ""
+"Publish your legal pages: Terms and conditions, Privacy policy, Right of "
+"withdrawal and Complaints."
+msgstr ""
+"Апублікуйце свае прававыя старонкі: Рэгламент, Палітыку прыватнасці, Права "
+"адмовы і Рэкламацыі."
+
+msgid "Generate the legal pages"
+msgstr "Стварыць прававыя старонкі"
+
+msgid "Page published"
+msgstr "Апублікаваная"
+
+msgid "Double opt-in"
+msgstr "Падвойная праверка (DOI)"
+
+msgid "Standard VAT"
+msgstr "Стандартны VAT"
+
+msgid "Small business exemption (Article 113)"
+msgstr "Прадметнае вызваленне (арт. 113)"
+
+msgid "Tax display"
+msgstr "Адлюстраванне падатку"
+
+msgid "You have completed {done} of {total} steps. Well done."
+msgstr "Вы ўжо прайшлі {done} з {total} крокаў. Выдатна!"
+
+msgid "Legal pages"
+msgstr "Прававыя старонкі"
+
+msgid "Not configured"
+msgstr "Не наладжаны"
+
+msgid "Switched off"
+msgstr "Выключаны"
+
+msgid "Switched on"
+msgstr "Актыўны"
+
+msgid "Open the Polski configuration"
+msgstr "Адкрыць канфігурацыю Polski"
+
+msgid ""
+"Your shop is nearly ready. Review the modules, set up the legal pages and "
+"finish the configuration in the Polski panel."
+msgstr ""
+"Яшчэ хвіля і крама будзе гатовая. Прагледзьце модулі, наладзьце прававыя "
+"старонкі і завяршыце канфігурацыю ў панэлі Polski."
+
+msgid "Set up Polski for your shop"
+msgstr "Наладзьце Polski для вашай крамы"
+
+msgid ""
+"Done. We have generated draft legal pages for you. Review them, adjust them "
+"to your shop and publish them."
+msgstr ""
+"Гатова! Мы стварылі для вас папярэднія чарнавікі прававых старонак. "
+"Прагледзьце іх, прыстасуйце пад свае патрэбы і смела публікуйце."
+
+msgid "Shipping costs"
+msgstr "Кошты дастаўкі"
+
+msgid "Continue"
+msgstr "Перайсці далей"
+
+msgid "Company"
+msgstr "Фірма"
+
+msgid "e.g. 1234563218"
+msgstr "напр. 1234563218"
+
+msgid "email:"
+msgstr "электронная пошта:"
+
+msgid "Alcohol"
+msgstr "Алкаголь"
+
+msgid "ODR platform: https://ec.europa.eu/consumers/odr"
+msgstr "Платформа ODR: https://ec.europa.eu/consumers/odr"
