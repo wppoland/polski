@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.6
+Stable tag: 1.30.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.7 =
+* Fixed: the Polski icon in the admin menu still sat low on a narrow screen and when the menu is collapsed to icons. WordPress shrinks that row from 34 to 30 pixels in both cases and the plugin was still centring the icon in the taller one. 1.30.3 fixed the ordinary sidebar; this fixes the other two.
 
 = 1.30.6 =
 * Fixed: a shop manager could open the withdrawal settings screen but not save it. The menu was available to anyone who manages WooCommerce, while saving was still restricted to a full administrator, so pressing Save ended in a permissions error. Both now use the same permission.
