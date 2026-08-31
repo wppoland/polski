@@ -2362,7 +2362,17 @@ final class ModulesPage implements HasHooks
 
         CacheHelper::flush();
 
-        wp_safe_redirect(admin_url('admin.php?page=polski&tab=modules&modules_saved=1'));
+        // The same form is rendered on the modules table and on the per-bucket
+        // Settings tab; `group_slug` tells us which one, so the merchant lands
+        // back on the screen they saved from instead of the modules list.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $groupSlug = isset($_POST['group_slug']) ? sanitize_key((string) wp_unslash($_POST['group_slug'])) : '';
+
+        $redirect = $groupSlug !== ''
+            ? admin_url('admin.php?page=polski-settings&bucket=' . $groupSlug . '&saved=1&module=' . $moduleId) . '#polski-module-' . $moduleId
+            : admin_url('admin.php?page=polski&tab=modules&modules_saved=1');
+
+        wp_safe_redirect($redirect);
         exit;
     }
 

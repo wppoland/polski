@@ -71,6 +71,13 @@ final class B2BCheckoutService
             return false;
         }
 
+        // The NIP lookup module registers the same `polski/nip` field, with GUS
+        // autofill on top, and WooCommerce rejects the second registration of an
+        // id with a _doing_it_wrong notice. Only one of the two may own it.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('nip_lookup')) {
+            return false;
+        }
+
         return true;
     }
 

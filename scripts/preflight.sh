@@ -17,23 +17,26 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-echo "==> 1/5  phpcs"
+echo "==> 1/6  boot timing and duplicated admin_post handlers"
+php tests/boot-timing-check.php
+
+echo "==> 2/6  phpcs"
 vendor/bin/phpcs
 
-echo "==> 2/5  phpstan (memory 2G)"
+echo "==> 3/6  phpstan (memory 2G)"
 php -d memory_limit=2G vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
 
-echo "==> 3/5  runtime fatal smoke (wp-env)"
+echo "==> 4/6  runtime fatal smoke (wp-env)"
 npx wp-env start >/dev/null 2>&1 || true
 # PRO would gate the admin behind a Freemius license screen; the smoke exercises
 # the FREE plugin's code directly, so deactivate PRO for a deterministic run.
 npx wp-env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
 npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
 
-echo "==> 4/5  WordPress Plugin Check"
+echo "==> 5/6  WordPress Plugin Check"
 bash scripts/plugin-check.sh
 
-echo "==> 5/5  package contents and header/readme agreement"
+echo "==> 6/6  package contents and header/readme agreement"
 bash scripts/prepare-wporg-release.sh /tmp/polski-preflight-package >/dev/null
 bash scripts/assert-package-clean.sh /tmp/polski-preflight-package
 rm -rf /tmp/polski-preflight-package
