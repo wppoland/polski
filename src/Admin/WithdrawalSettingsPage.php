@@ -258,10 +258,10 @@ final class WithdrawalSettingsPage implements HasHooks
                             <p class="description">
                                 <?php
                                 printf(
-                                    /* translators: 1: the %1$s placeholder, 2: the %2$d placeholder */
-                                    esc_html__('You may use %1$s for your company name and %2$s for the withdrawal period in days. Leave them out and the text is printed as written.', 'polski'),
-                                    '<code>%1$s</code>',
-                                    '<code>%2$d</code>',
+                                    /* translators: 1: the {company} placeholder, 2: the {days} placeholder */
+                                    esc_html__('You may use %1$s for your company name and %2$s for the withdrawal period in days. Leave them out and the text is printed exactly as you type it, percent signs included.', 'polski'),
+                                    '<code>{company}</code>',
+                                    '<code>{days}</code>',
                                 );
                                 ?>
                             </p>

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.30.3\n"
+"Project-Id-Version: Polski for WooCommerce 1.30.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-31T07:49:52+00:00\n"
+"POT-Creation-Date: 2026-08-31T11:31:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -7054,10 +7054,10 @@ msgstr ""
 msgid "Intro paragraph"
 msgstr ""
 
-#. translators: 1: the %1$s placeholder, 2: the %2$d placeholder
+#. translators: 1: the {company} placeholder, 2: the {days} placeholder
 #: src/Admin/WithdrawalSettingsPage.php:262
 #, php-format
-msgid "You may use %1$s for your company name and %2$s for the withdrawal period in days. Leave them out and the text is printed as written."
+msgid "You may use %1$s for your company name and %2$s for the withdrawal period in days. Leave them out and the text is printed exactly as you type it, percent signs included."
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:271
@@ -7066,12 +7066,12 @@ msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:273
 #: src/Service/OrderExportService.php:49
-#: templates/forms/withdrawal-lookup.php:126
+#: templates/forms/withdrawal-lookup.php:137
 msgid "Order number"
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:279
-#: templates/forms/withdrawal-lookup.php:148
+#: templates/forms/withdrawal-lookup.php:159
 msgid "Email address used for the purchase"
 msgstr ""
 
@@ -7080,7 +7080,7 @@ msgid "Submit button"
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:285
-#: templates/forms/withdrawal-lookup.php:180
+#: templates/forms/withdrawal-lookup.php:191
 msgid "Email me the link to the form"
 msgstr ""
 
@@ -11757,127 +11757,127 @@ msgid "Go to the withdrawal form"
 msgstr ""
 
 #. translators: 1: merchant name, 2: number of days
-#: templates/forms/withdrawal-lookup.php:71
+#: templates/forms/withdrawal-lookup.php:87
 #, php-format
 msgid "Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:91
+#: templates/forms/withdrawal-lookup.php:102
 msgid "How does it work? (expand)"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:95
+#: templates/forms/withdrawal-lookup.php:106
 msgid "Once we have checked the details we will email a single-use link that opens the withdrawal form. The link is valid for 30 minutes and works only once."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:98
+#: templates/forms/withdrawal-lookup.php:109
 msgid "In the next step you choose whether to return the whole order or only some items; you can also withdraw from individual units."
 msgstr ""
 
 #. translators: %s = directive reference
-#: templates/forms/withdrawal-lookup.php:104
+#: templates/forms/withdrawal-lookup.php:115
 #, php-format
 msgid "After you submit the declaration you will get an email with the declaration number, the date it was filed and a summary of the order. The right comes from Article 27 of the Polish Consumer Rights Act, which implements Directive %s."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:105
+#: templates/forms/withdrawal-lookup.php:116
 msgid "2011/83/EU (as amended by 2023/2673)"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:142
+#: templates/forms/withdrawal-lookup.php:153
 msgid "The number is in your purchase confirmation email, on the \"Your order #...\" line."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:164
+#: templates/forms/withdrawal-lookup.php:175
 msgid "We will email a secure link to this address that opens the withdrawal form."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:169
+#: templates/forms/withdrawal-lookup.php:180
 msgid "All fields are required."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:185
+#: templates/forms/withdrawal-lookup.php:196
 msgid "The link is valid for 30 minutes and works only once. If the message does not arrive, check your spam folder and enter the address again."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:192
-#: templates/forms/withdrawal-lookup.php:247
+#: templates/forms/withdrawal-lookup.php:203
+#: templates/forms/withdrawal-lookup.php:258
 msgid "How long do I have to withdraw from the contract?"
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:192
+#: templates/forms/withdrawal-lookup.php:203
 #, php-format
 msgid "By default you have %d days from the day you received the order. The period runs from the day the goods came into your possession, or into the possession of a third party other than the carrier."
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:193
+#: templates/forms/withdrawal-lookup.php:204
 msgid "Can I return only some of the products?"
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:193
+#: templates/forms/withdrawal-lookup.php:204
 msgid "Yes. Once the form is open you choose which items the withdrawal covers. You can withdraw from any number of units and the rest stay in the order."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:194
-#: templates/forms/withdrawal-lookup.php:255
+#: templates/forms/withdrawal-lookup.php:205
+#: templates/forms/withdrawal-lookup.php:266
 msgid "What happens after I send the form?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:194
+#: templates/forms/withdrawal-lookup.php:205
 msgid "You will get a confirmation email with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:195
-#: templates/forms/withdrawal-lookup.php:259
+#: templates/forms/withdrawal-lookup.php:206
+#: templates/forms/withdrawal-lookup.php:270
 msgid "Are there products that cannot be returned?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:195
+#: templates/forms/withdrawal-lookup.php:206
 msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, and goods sealed for hygiene reasons once the seal is broken."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:199
+#: templates/forms/withdrawal-lookup.php:210
 msgid "Common questions"
 msgstr ""
 
 #. translators: %s = support email link
-#: templates/forms/withdrawal-lookup.php:221
+#: templates/forms/withdrawal-lookup.php:232
 #, php-format
 msgid "Having trouble with the form? Write to %s and we will help you file the declaration by hand."
 msgstr ""
 
 #. translators: %s: merchant / shop name
-#: templates/forms/withdrawal-lookup.php:237
+#: templates/forms/withdrawal-lookup.php:248
 #, php-format
 msgid "Who can withdraw from a contract at %s?"
 msgstr ""
 
 #. translators: %d: withdrawal period in days (typically 14)
-#: templates/forms/withdrawal-lookup.php:239
+#: templates/forms/withdrawal-lookup.php:250
 #, php-format
 msgid "By default you have %d days from the day you received the order to file the declaration. The period runs from the day the goods came into your possession, or into the possession of a third party indicated by you other than the carrier."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:244
+#: templates/forms/withdrawal-lookup.php:255
 msgid "Any consumer, meaning a natural person buying for purposes outside their trade or business. When you buy as a company, the right to withdraw without giving a reason applies only in a limited form."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:251
+#: templates/forms/withdrawal-lookup.php:262
 msgid "Can I return only some of the products in the order?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:252
+#: templates/forms/withdrawal-lookup.php:263
 msgid "Yes. Once the form is open you choose which items the withdrawal covers: every product, a single product, or just some of the units. The rest stay in the order."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:256
+#: templates/forms/withdrawal-lookup.php:267
 msgid "You will get an email confirming that the declaration was accepted, with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:260
+#: templates/forms/withdrawal-lookup.php:271
 msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, goods sealed for hygiene reasons once the seal is broken, and digital content supplied with the consumer's express consent before the withdrawal period ended."
 msgstr ""
 

@@ -89,8 +89,16 @@ header_tested="$(grep -m1 -E '^ \* Tested up to:' "${PKG}/polski.php" | sed -E '
 readme_stable="$(grep -m1 -E '^Stable tag:' "${PKG}/readme.txt" | sed -E 's/^Stable tag:[[:space:]]*//')"
 readme_tested="$(grep -m1 -E '^Tested up to:' "${PKG}/readme.txt" | sed -E 's/^Tested up to:[[:space:]]*//')"
 
+# The constant, not the header, is what runs: it is the cache-buster on every
+# enqueued asset and the gate on the schema migration. It drifted seven releases
+# behind the header without anything noticing, because the number a user sees
+# was right the whole time.
+const_version="$(grep -m1 -E '^const VERSION' "${PKG}/polski.php" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
+
 [[ "${header_version}" == "${readme_stable}" ]] || \
     fail "Version (${header_version}) does not match Stable tag (${readme_stable})"
+[[ "${header_version}" == "${const_version}" ]] || \
+    fail "Version (${header_version}) does not match the VERSION constant (${const_version:-none})"
 [[ "${header_tested}" == "${readme_tested}" ]] || \
     fail "header Tested up to (${header_tested}) does not match readme (${readme_tested})"
 
