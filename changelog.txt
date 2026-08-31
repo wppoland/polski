@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.30.7 =
+* Fixed: the Polski icon in the admin menu still sat low on a narrow screen and when the menu is collapsed to icons. WordPress shrinks that row from 34 to 30 pixels in both cases and the plugin was still centring the icon in the taller one. 1.30.3 fixed the ordinary sidebar; this fixes the other two.
+
 = 1.30.6 =
 * Fixed: a shop manager could open the withdrawal settings screen but not save it. The menu was available to anyone who manages WooCommerce, while saving was still restricted to a full administrator, so pressing Save ended in a permissions error. Both now use the same permission.
 * Fixed: changelog.txt, the file that keeps the full release history inside the plugin, was missing the last four releases.

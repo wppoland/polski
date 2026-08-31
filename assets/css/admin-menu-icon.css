@@ -32,3 +32,19 @@
 #adminmenu .toplevel_page_polski.wp-has-current-submenu .wp-menu-image::before {
     opacity: 1;
 }
+
+/* Below 960px WordPress folds the menu and shrinks the image row to 30px
+   (admin-menu.css, `.auto-fold #adminmenu div.wp-menu-image`). The 34px above
+   is taller than the row it is centring in, so the monogram sat low again at
+   that width. Same idea, the row's own height. */
+@media only screen and (max-width: 960px) {
+    .auto-fold #adminmenu .toplevel_page_polski .wp-menu-image::before {
+        height: 30px;
+    }
+}
+
+/* The always-folded menu uses the same 30px row. */
+.folded #adminmenu .toplevel_page_polski .wp-menu-image::before {
+    height: 30px;
+}
+
