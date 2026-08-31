@@ -6,39 +6,29 @@ Temat: teksty shortcode'u [polski_withdrawal_lookup]
 
 ---
 
-Cieszę się, że reszta działa.
+Cieszę się, że reszta działa. Miałeś rację, że tego brakowało, więc dorobiłem to zamiast tłumaczyć, jak to obejść.
 
-Krótka odpowiedź: nie, w ustawieniach nie ma dziś pól na teksty formularza `[polski_withdrawal_lookup]`. Konfigurowalne teksty są, ale dotyczą ścieżki dla zalogowanego klienta w Moim koncie (etykieta przycisku, komunikat po złożeniu, etykieta powodu, komunikaty błędów). Formularz dla gościa pobiera z ustawień tylko liczbę dni i nazwę firmy, cała reszta to napisy w kodzie.
+**Wersja 1.30.4 jest już na wordpress.org.** Po aktualizacji w ustawieniach odstąpienia jest sekcja **Teksty formularza dla gościa**, a w niej nagłówek, akapit wstępny, etykiety obu pól i przycisk wysyłki.
 
-Są trzy sposoby, żeby je zmienić już teraz. Wszystkie działają, wybór zależy od tego, ile chcesz zmienić.
+Puste pole zostawia domyślne brzmienie, więc aktualizacja niczego Ci nie zmienia, dopóki sam czegoś nie wpiszesz. Domyślne teksty dalej idą przez tłumaczenia wtyczki, a nie są zamrażane w bazie.
 
-**1. Tłumaczenie, bez kodu.** Wszystkie 17 napisów tego formularza to zwykłe ciągi tłumaczone w domenie `polski`. Wtyczką w rodzaju Loco Translate otwierasz polskie tłumaczenie wtyczki i podmieniasz dowolny z nich na własny. To jest najprostsza droga, jeśli chodzi o poprawienie brzmienia kilku zdań, i przeżywa aktualizacje wtyczki.
+W akapicie wstępnym możesz użyć dwóch znaczników:
 
-**2. Filtr `gettext`, jeśli chodzi o jeden czy dwa napisy.** Do `functions.php` motywu potomnego albo do wtyczki na snippety:
+- `%1$s` wstawi nazwę Twojej firmy,
+- `%2$d` wstawi liczbę dni na odstąpienie.
 
-```php
-add_filter( 'gettext', function ( $translated, $original, $domain ) {
-    if ( 'polski' !== $domain ) {
-        return $translated;
-    }
+Nie musisz ich używać. Jeśli wpiszesz zwykły tekst bez znaczników, zostanie wypisany dosłownie.
 
-    $custom = [
-        'Email me the link to the form' => 'Wyślij mi link do formularza',
-        'All fields are required.'      => 'Wszystkie pola są wymagane.',
-    ];
+Jeśli chcesz zmienić coś, czego nie ma na tej liście, na przykład sekcję najczęstszych pytań albo zdanie o ważności linku, są jeszcze dwie drogi:
 
-    return $custom[ $original ] ?? $translated;
-}, 10, 3 );
-```
+**Tłumaczenie.** Wszystkie 17 napisów tego formularza to zwykłe ciągi w domenie `polski`, więc wtyczką w rodzaju Loco Translate podmienisz dowolny z nich bez kodu.
 
-Kluczem jest **oryginalny angielski** napis, nie polskie tłumaczenie, bo filtr dostaje oryginał.
-
-**3. Podmiana całego szablonu, jeśli chcesz pełną kontrolę.** Wtyczka szuka szablonu najpierw w motywie. Skopiuj plik `templates/forms/withdrawal-lookup.php` z katalogu wtyczki do swojego motywu, zachowując strukturę:
+**Własny szablon**, jeśli chcesz pełną kontrolę nad układem. Wtyczka szuka szablonu najpierw w motywie, więc skopiuj `templates/forms/withdrawal-lookup.php` z katalogu wtyczki do:
 
 ```
 wp-content/themes/twoj-motyw/polski/forms/withdrawal-lookup.php
 ```
 
-Od tej chwili wtyczka użyje Twojej kopii i możesz w niej zmienić dowolny tekst, kolejność pól czy sekcję FAQ. Uwaga na jedno: kopia nie dostaje poprawek, które wprowadzam w oryginale, więc przy większych zmianach w tym formularzu warto ją co jakiś czas porównać z wersją z wtyczki.
+Od tej chwili używana jest Twoja kopia. Jedna uwaga: kopia nie dostaje poprawek, które wprowadzam w oryginale, więc przy większych zmianach w tym formularzu warto ją co jakiś czas porównać.
 
-Osobno: uważam, że masz rację, że tego brakuje. To, że teksty w Moim koncie da się ustawić z panelu, a te w formularzu dla gościa nie, jest niekonsekwencją, nie decyzją projektową. Dopiszę pola na najważniejsze z nich, czyli nagłówek, opis wstępny, etykiety pól i przycisk. Jeśli masz listę konkretnych napisów, które chcesz zmienić, wypisz je, a dopilnuję, żeby wszystkie znalazły się w tej pierwszej wersji.
+Napisz, jeśli któregoś konkretnego napisu dalej brakuje w ustawieniach, dołożę go.
