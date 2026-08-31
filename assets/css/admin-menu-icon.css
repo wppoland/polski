@@ -12,6 +12,13 @@
        (instead of a fragile fixed top margin). */
     height: 34px;
     margin: 0 !important;
+    /* WordPress core styles this very pseudo-element with `padding: 7px 0`
+       (wp-admin/css/admin-menu.css, `div.wp-menu-image:before`). Without
+       zeroing it the padding sits on top of the 34px box and pushes the
+       monogram down the row. The hover rule below used to be the only place
+       that cleared it, which is why the icon looked wrong until you pointed at
+       it and then snapped into place. */
+    padding: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px 20px;
@@ -24,5 +31,4 @@
 #adminmenu .toplevel_page_polski.current .wp-menu-image::before,
 #adminmenu .toplevel_page_polski.wp-has-current-submenu .wp-menu-image::before {
     opacity: 1;
-    padding: 0;
 }
