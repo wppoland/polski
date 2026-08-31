@@ -452,6 +452,20 @@ return static function (Container $c): void {
         $c->get(SearchService::class),
     ));
 
+    // VAT invoices.
+    $c->singleton(\Polski\Invoice\InvoiceRepository::class, static fn (): \Polski\Invoice\InvoiceRepository => new \Polski\Invoice\InvoiceRepository());
+
+    $c->singleton(\Polski\Invoice\InvoiceDataBuilder::class, static fn (): \Polski\Invoice\InvoiceDataBuilder => new \Polski\Invoice\InvoiceDataBuilder());
+
+    $c->singleton(\Polski\Invoice\InvoiceService::class, static fn (): \Polski\Invoice\InvoiceService => new \Polski\Invoice\InvoiceService(
+        $c->get(\Polski\Invoice\InvoiceRepository::class),
+        $c->get(\Polski\Invoice\InvoiceDataBuilder::class),
+    ));
+
+    $c->singleton(\Polski\Invoice\InvoiceHooks::class, static fn (): \Polski\Invoice\InvoiceHooks => new \Polski\Invoice\InvoiceHooks(
+        $c->get(\Polski\Invoice\InvoiceService::class),
+    ));
+
     // Shortcodes.
     $c->singleton(ShortcodeManager::class, static fn () => new ShortcodeManager());
 
