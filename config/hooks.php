@@ -95,6 +95,7 @@ return [
     \Polski\Admin\SetupWizard::class,
     PostTypes::class,
     ProductMetaBox::class,
+    \Polski\Invoice\InvoiceHooks::class,
     AdminNotes::class,
     CSVImportExport::class,
     \Polski\Admin\DeactivationHandler::class,

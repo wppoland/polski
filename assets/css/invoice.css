@@ -1,0 +1,236 @@
+/*
+ * Invoice document. Laid out for A4 first, because the thing people do with an
+ * invoice is print it or save it as a PDF from the browser's print dialog.
+ */
+
+.polski-invoice {
+	margin: 0;
+	padding: 24px 16px 48px;
+	background: #f1f1f1;
+	color: #1d2327;
+	font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.polski-invoice__sheet {
+	box-sizing: border-box;
+	max-width: 210mm;
+	margin: 0 auto;
+	padding: 18mm 16mm;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .16);
+}
+
+.polski-invoice__head {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	justify-content: space-between;
+	align-items: flex-start;
+	border-bottom: 2px solid #1d2327;
+	padding-bottom: 12px;
+}
+
+.polski-invoice__title {
+	margin: 0;
+	font-size: 22px;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+}
+
+.polski-invoice__number {
+	margin: 2px 0 0;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.polski-invoice__dates {
+	display: grid;
+	gap: 2px 12px;
+	grid-template-columns: auto auto;
+	margin: 0;
+	font-size: 13px;
+}
+
+.polski-invoice__dates > div {
+	display: contents;
+}
+
+.polski-invoice__dates dt {
+	color: #50575e;
+}
+
+.polski-invoice__dates dd {
+	margin: 0;
+	text-align: right;
+	font-weight: 600;
+}
+
+.polski-invoice__parties {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: 1fr 1fr;
+	margin: 20px 0 24px;
+}
+
+.polski-invoice__parties h2 {
+	margin: 0 0 6px;
+	font-size: 11px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: #50575e;
+}
+
+.polski-invoice__parties p {
+	margin: 0 0 2px;
+}
+
+.polski-invoice__name {
+	font-weight: 700;
+}
+
+.polski-invoice__lines,
+.polski-invoice__vat {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+
+.polski-invoice__lines th,
+.polski-invoice__lines td,
+.polski-invoice__vat th,
+.polski-invoice__vat td {
+	padding: 7px 8px;
+	border-bottom: 1px solid #dcdcde;
+	text-align: left;
+}
+
+.polski-invoice__lines thead th,
+.polski-invoice__vat thead th {
+	border-bottom: 2px solid #1d2327;
+	font-size: 11px;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #50575e;
+}
+
+.is-num {
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.polski-invoice__foot {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-top: 20px;
+}
+
+.polski-invoice__vat {
+	flex: 1 1 320px;
+}
+
+.polski-invoice__vat caption {
+	margin-bottom: 6px;
+	font-size: 11px;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #50575e;
+	text-align: left;
+}
+
+.polski-invoice__total {
+	flex: 0 0 auto;
+	min-width: 200px;
+	padding: 12px 16px;
+	border: 2px solid #1d2327;
+	text-align: right;
+}
+
+.polski-invoice__total span {
+	display: block;
+	font-size: 11px;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #50575e;
+}
+
+.polski-invoice__total strong {
+	font-size: 20px;
+	font-variant-numeric: tabular-nums;
+}
+
+.polski-invoice__meta {
+	margin-top: 24px;
+	padding-top: 12px;
+	border-top: 1px solid #dcdcde;
+	font-size: 12px;
+	color: #50575e;
+}
+
+.polski-invoice__meta p {
+	margin: 0 0 2px;
+}
+
+.polski-invoice__actions {
+	max-width: 210mm;
+	margin: 16px auto 0;
+	text-align: right;
+}
+
+.polski-invoice__actions button {
+	padding: 9px 18px;
+	border: 0;
+	border-radius: 4px;
+	background: #1d2327;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.polski-invoice__actions button:hover,
+.polski-invoice__actions button:focus-visible {
+	background: #2c3338;
+}
+
+.polski-invoice__actions button:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+	.polski-invoice__parties {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media print {
+	.polski-invoice {
+		padding: 0;
+		background: #fff;
+	}
+
+	.polski-invoice__sheet {
+		max-width: none;
+		padding: 0;
+		box-shadow: none;
+	}
+
+	/* The button is the one thing on the page that means nothing on paper. */
+	.polski-invoice__actions {
+		display: none;
+	}
+
+	/* Never split a table row or the totals box across two sheets. */
+	.polski-invoice__lines tr,
+	.polski-invoice__vat tr,
+	.polski-invoice__total {
+		break-inside: avoid;
+	}
+
+	thead {
+		display: table-header-group;
+	}
+}
