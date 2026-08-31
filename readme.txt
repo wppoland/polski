@@ -25,6 +25,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Source code** - [github.com/wppoland/polski](https://github.com/wppoland/polski)
 * **Bug reports and feature requests** - [github.com/wppoland/polski/issues](https://github.com/wppoland/polski/issues)
 * **Discussions and questions** - [github.com/wppoland/polski/discussions](https://github.com/wppoland/polski/discussions)
+* **Polski PRO** - [plogins.com/polski-pro/](https://plogins.com/polski-pro/)
 
 = Why Polski for WooCommerce? =
 
@@ -120,9 +121,32 @@ Polski for WooCommerce covers the essential Polish-market compliance for free. *
 * **Pre-orders, bundles and add-ons** - sell before availability and bundle products
 * **Catalog mode and RFQ** - hide prices and collect quote requests
 
-Everything in the free edition stays free and open. Polski PRO starts at 69 EUR per year, billed in EUR.
+= What stays free, and what PRO adds =
 
-Compare editions and pricing: [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
+The free edition is not a trial. Every module listed above works in full, with
+nothing time-limited, no feature switched off after a while and no account to
+create. PRO is a separate plugin that adds the parts a shop needs once it is
+actually trading:
+
+    Free                              PRO
+    -----------------------------------------------------------------
+    GPSR product data                 VAT invoices, corrections, PDF
+    Omnibus price history             KSeF e-invoicing and JPK export
+    GDPR consents and consent log     InPost, DPD, DHL, Poczta Polska
+    Right of withdrawal, RMA          labels, tracking, pickup points
+    VAT ID (NIP) validation           Fulfilment statuses and emails
+    Unit prices, food data            Subscriptions and renewals
+    Wishlist, compare, AJAX search    Gift cards and affiliate program
+    70 modules, all switchable        Multi-step checkout, pre-orders,
+                                      bundles, catalog mode and RFQ
+
+Everything in the free edition stays free and open, and keeps working whether
+or not you ever buy PRO. Polski PRO starts at 69 EUR per year, priced and
+charged in EUR.
+
+* **Polski PRO** - [plogins.com/polski-pro/](https://plogins.com/polski-pro/)
+* **Compare editions and pricing** - [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
+* **PRO documentation** - [plogins.com/polski-pro/docs/](https://plogins.com/polski-pro/docs/)
 
 == Installation ==
 
