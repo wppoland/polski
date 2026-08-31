@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.4
+Stable tag: 1.30.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.5 =
+* Fixed: a percent sign in the guest form's intro text, added in 1.30.4, corrupted the sentence on the public page. Writing something as ordinary as "Zwracamy 100% ceny" produced "Zwracamy 100" followed by an invisible byte and the rest of the line, because the text was passed through a formatter that reads a percent as a formatting instruction. The intro now uses {company} and {days} and prints everything else exactly as typed, percent signs included. If you already saved an intro containing a percent, it will render correctly after this update with no change on your side.
+* Fixed: the plugin reported its own version as 1.29.7 while being 1.30.x. That number is shown on the plugin's admin page and is used to version stylesheets and scripts, so an admin who had already loaded the old files kept them after updating, which is why the menu-icon fix in 1.30.3 may not have appeared for you. It is also the value the plugin compares against when deciding whether to run an upgrade routine. The release script had been silently failing to update it since 1.29.7.
 
 = 1.30.4 =
 * Added: the guest withdrawal form's wording is now editable under Withdrawal settings, in a Guest form wording section: the heading, the intro paragraph, the two field labels and the submit button. Asked for on the support forum. The texts on the My Account side were already editable and these were not, which was an inconsistency rather than a decision. Leave a field empty and the built-in wording is used exactly as before, so nothing changes for a shop that does not open the screen. The intro accepts %1$s for your company name and %2$d for the withdrawal period, and prints your text as written if you leave them out.

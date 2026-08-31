@@ -22,14 +22,29 @@ fi
 echo "Bumping ${OLD_HEADER} -> ${NEW}"
 
 perl -pi -e "s/^([[:space:]]*\\*[[:space:]]*Version:[[:space:]]*)${OLD_HEADER}([[:space:]]*)\$/\${1}${NEW}\${2}/" polski.php
-perl -pi -e "s/^const VERSION = '[^']+'/const VERSION = '${NEW}'/" polski.php
+perl -pi -e "s/^(const VERSION\\s*=\\s*)'[^']+'/\${1}'${NEW}'/" polski.php
 
 while IFS= read -r -d '' f; do
   perl -pi -e 's/"version": "[^"]+"/"version": "'"${NEW}"'"/' "${f}"
 done < <(find resources/js/blocks -name block.json -print0 2>/dev/null)
 
 perl -pi -e "s/Project-Id-Version: Polski for WooCommerce [0-9.]+/Project-Id-Version: Polski for WooCommerce ${NEW}/" scripts/generate-translations.php
-perl -pi -e "s/^const VERSION = '[^']+'/const VERSION = '${NEW}'/" tests/phpstan/polski-plugin-constants.php
+perl -pi -e "s/^(const VERSION\\s*=\\s*)'[^']+'/\${1}'${NEW}'/" tests/phpstan/polski-plugin-constants.php
+
+
+# The two substitutions above used to assume `const VERSION = '...'` with a
+# single space, while the declaration is column-aligned, so perl matched
+# nothing, exited 0, and this script printed success while the constant stayed
+# behind. It sat seven releases back before anyone noticed, and that constant is
+# the asset cache-buster and the schema-migration gate. Never take perl's word
+# for it again.
+for f in polski.php tests/phpstan/polski-plugin-constants.php; do
+  got=$(grep -m1 -E "^const VERSION" "${f}" | grep -oE "[0-9]+\.[0-9]+\.[0-9]+")
+  if [ "${got}" != "${NEW}" ]; then
+    echo "bump-version: ${f} still reads ${got:-nothing}, expected ${NEW}" >&2
+    exit 1
+  fi
+done
 
 if command -v npm >/dev/null 2>&1; then
   npm version "${NEW}" --no-git-tag-version --allow-same-version

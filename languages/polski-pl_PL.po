@@ -14325,3 +14325,12 @@ msgstr "Etykieta numeru zamówienia"
 #: src/Admin/WithdrawalSettingsPage.php:283
 msgid "Submit button"
 msgstr "Przycisk wysyłki"
+
+msgid ""
+"You may use %1$s for your company name and %2$s for the withdrawal period in"
+" days. Leave them out and the text is printed exactly as you type it, "
+"percent signs included."
+msgstr ""
+"Możesz użyć %1$s dla nazwy firmy i %2$s dla liczby dni na odstąpienie. Jeśli"
+" ich nie użyjesz, tekst zostanie wypisany dokładnie tak, jak go wpiszesz, ze"
+" znakami procenta włącznie."

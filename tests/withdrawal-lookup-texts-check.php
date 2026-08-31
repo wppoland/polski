@@ -33,35 +33,48 @@ $assert('an empty setting keeps the default', $resolve(['lookup_heading' => ''],
 $assert('whitespace only keeps the default', $resolve(['lookup_heading' => "  \n "], 'lookup_heading', 'Default heading'), 'Default heading');
 $assert('a real setting wins', $resolve(['lookup_heading' => 'Zwrot towaru'], 'lookup_heading', 'Default heading'), 'Zwrot towaru');
 
-// The intro is the only one carrying placeholders, so it is the only one that
-// can blow up. Whatever the merchant types, the page must still render.
+// The intro is merchant-editable, so it is substituted with {tokens} and never
+// through sprintf. sprintf reads "100% c" as a conversion and emits a NUL byte
+// into a public page WITHOUT throwing, so a try/catch around it is no guard at
+// all. That shipped in 1.30.4; these cases are why it will not ship again.
 $intro = static function (string $text, string $merchant, int $days): string {
-    try {
-        return sprintf($text, $merchant, $days);
-    } catch (\Throwable) {
-        return $text;
-    }
+    return strtr($text, ['{company}' => $merchant, '{days}' => (string) $days]);
 };
 
 $assert(
-    'both placeholders are filled',
-    $intro('Bought from %1$s? You have %2$d days.', 'Sklep', 14),
-    'Bought from Sklep? You have 14 days.',
+    'both tokens are filled',
+    $intro('Kupiles w {company}? Masz {days} dni.', 'Sklep', 14),
+    'Kupiles w Sklep? Masz 14 dni.',
 );
 $assert(
-    'text without placeholders is printed as written',
+    'text without tokens is printed as written',
     $intro('Masz 14 dni na odstapienie.', 'Sklep', 14),
     'Masz 14 dni na odstapienie.',
 );
 $assert(
-    'only one placeholder used is fine',
-    $intro('Kupiles w %1$s.', 'Sklep', 14),
+    'only one token used is fine',
+    $intro('Kupiles w {company}.', 'Sklep', 14),
     'Kupiles w Sklep.',
 );
 $assert(
-    'a stray percent falls back to the literal text instead of fatalling',
-    $intro('Zwroty do 100% wartosci, %q', 'Sklep', 14),
-    'Zwroty do 100% wartosci, %q',
+    'a literal percent survives untouched, which sprintf could not manage',
+    $intro('Zwracamy 100% ceny zamowienia.', 'Sklep', 14),
+    'Zwracamy 100% ceny zamowienia.',
+);
+$assert(
+    'a percent next to a token still survives',
+    $intro('{company} zwraca 100% ceny w {days} dni.', 'Sklep', 14),
+    'Sklep zwraca 100% ceny w 14 dni.',
+);
+$assert(
+    'nothing sprintf-shaped is interpreted any more',
+    $intro('Rabat %1$s i %2$d, dokladnie tak', 'Sklep', 14),
+    'Rabat %1$s i %2$d, dokladnie tak',
+);
+$assert(
+    'no NUL byte can reach the page',
+    str_contains($intro('Zwracamy 100% ceny', 'Sklep', 14), "\0"),
+    false,
 );
 
 echo $fail ? "FAILED\n" : "all guest form wording checks passed\n";

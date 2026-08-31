@@ -68,18 +68,29 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
 
     <p class="polski-withdrawal-lookup__intro">
         <?php
-        $polski_intro = $polski_text('lookup_intro') ?? __(
-            /* translators: 1: merchant name, 2: number of days */
-            'Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number.',
-            'polski',
-        );
+        $polski_custom_intro = $polski_text('lookup_intro');
 
-        // The merchant may drop the placeholders, or mistype one. Neither should
-        // take the page down, so fall back to their text exactly as written.
-        try {
-            $polski_intro = sprintf($polski_intro, $polski_merchant, (int) $polski_days);
-        } catch (\Throwable) {
-            // Leave $polski_intro as the merchant typed it.
+        if (null !== $polski_custom_intro) {
+            // {token} rather than sprintf, which is what the rest of this plugin
+            // already uses for merchant-editable text ({order_number},
+            // {first_name}). sprintf is the wrong tool here: a returns paragraph
+            // saying "Zwracamy 100% ceny" reads "% c" as a conversion and emits a
+            // NUL byte into a public statutory page, and it does it without
+            // throwing, so no amount of try/catch around it helps.
+            $polski_intro = strtr($polski_custom_intro, [
+                '{company}' => $polski_merchant,
+                '{days}'    => (string) (int) $polski_days,
+            ]);
+        } else {
+            $polski_intro = sprintf(
+                /* translators: 1: merchant name, 2: number of days */
+                __(
+                    'Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number.',
+                    'polski',
+                ),
+                $polski_merchant,
+                (int) $polski_days,
+            );
         }
 
         echo esc_html($polski_intro);
