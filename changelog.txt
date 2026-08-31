@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.0 =
+* Added: VAT invoices in the free plugin. The Invoices module adds an Issue invoice button to the order screen, numbers invoices per year (FV/1/2026, restarting each January), shows both parties with their VAT IDs, lists each line with its own rate, and groups VAT by rate. Shipping and fees are invoiced too.
+* Added: an Invoice link on the customer's order in My Account. The document opens through a link carrying a token derived from the invoice, so it works from an email without a login and cannot be reached by guessing an id.
+* Added: the document is laid out for A4 and prints cleanly. No PDF engine is bundled: a usable one is tens of megabytes, and every browser already prints to PDF.
+* Note: an issued invoice is frozen at the moment it is issued, so a later edit to the order does not rewrite it, and issuing twice returns the existing invoice rather than allocating a second number. The number carries a UNIQUE key, which is what actually holds when two admins press the button at the same moment.
+
 = 1.30.8 =
 * Fixed: the NIP field never appeared on the block checkout. Polski boots on `init` priority 0, by which point WooCommerce has already fired `woocommerce_init`, so the three services that registered their block checkout fields on that action registered them into an event that had already passed. Affected the NIP lookup module, the B2B checkout fields and, in PRO, the invoice request field.
 * Fixed: legal checkboxes could be switched on but never off. Two handlers were attached to the same admin-post action; the one that won only wrote back the fields present in the request, and an unticked checkbox is absent from a form submission, so every saved state was a merge that could only ever add. The losing handler was the correct one. There is now a single save path, and it also stops stripping the link markup out of the Terms and Privacy labels.

@@ -1,18 +1,18 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
-Tags: woocommerce, gpsr, omnibus, rodo, ksef
+Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.8
+Stable tag: 1.31.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce for Polish shops: GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF, unit prices and storefront modules.
+WooCommerce for Polish shops: VAT invoices, GPSR, Omnibus, GDPR, withdrawals, NIP, KSeF, unit prices and storefront modules.
 
 == Description ==
 
-**Polski for WooCommerce** is a free WooCommerce plugin for Polish online shops. It helps you organise GPSR product data, the Omnibus lowest-price history, GDPR consents, the right of withdrawal, VAT ID (NIP) handling, unit prices, hooks for KSeF processes, DSA reports and storefront modules.
+**Polski for WooCommerce** is a free WooCommerce plugin for Polish online shops. It issues numbered VAT invoices, and helps you organise GPSR product data, the Omnibus lowest-price history, GDPR consents, the right of withdrawal, VAT ID (NIP) handling, unit prices, hooks for KSeF processes, DSA reports and storefront modules.
 
 The plugin is modular. You can enable only the features a given shop needs, for example GPSR, Omnibus, cart consents, withdrawals, unit prices, food data, a wishlist, a product comparison or AJAX search.
 
@@ -344,6 +344,12 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.31.0 =
+* Added: **VAT invoices, in the free plugin.** Switch the Invoices module on and an order screen gains an Issue invoice button. The invoice is numbered per year (FV/1/2026, restarting each January), shows both parties with their VAT IDs, lists every line with its own rate, and groups VAT by rate the way an accountant reads it. Shipping and fees are invoiced too.
+* Added: customers get an Invoice link on their order in My Account. The document opens through a link carrying a token derived from the invoice itself, so it works from an email without a login and cannot be reached by guessing an id.
+* Added: the invoice is laid out for A4 and prints cleanly. The free plugin deliberately does not bundle a PDF engine, because a usable one is tens of megabytes; every browser prints to PDF, and that is one click on the document.
+* Note: an issued invoice is frozen. Editing the order afterwards does not rewrite it, which is the point of a document with a number on it. Issuing twice for one order returns the invoice already issued rather than burning a second number.
+
 = 1.30.8 =
 * Fixed: the NIP field never appeared on the block checkout. Polski boots on `init` priority 0, by which point WooCommerce has already fired `woocommerce_init`, so the services that registered their block checkout fields on that action registered them into an event that had already passed. Affected the NIP lookup module and the B2B checkout fields.
 * Fixed: legal checkboxes could be switched on but never off. Two handlers were attached to the same admin-post action; the one that won only wrote back the fields present in the request, and an unticked checkbox is absent from a form submission. There is now a single save path, and it also stops stripping the link markup out of the Terms and Privacy labels.
@@ -532,6 +538,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.31.0 =
+VAT invoices are now part of the free plugin: numbered per year, VAT grouped by rate, opened by the customer from My Account and printable to PDF from the browser. Switch on the Invoices module to use it.
 
 = 1.30.8 =
 Fixes three modules that did nothing on the block checkout, which is the WooCommerce default: the NIP field now appears, the order button label is applied, and legal checkboxes can finally be switched off again.
