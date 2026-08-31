@@ -99,6 +99,14 @@ const_version="$(grep -m1 -E '^const VERSION' "${PKG}/polski.php" | grep -oE '[0
     fail "Version (${header_version}) does not match Stable tag (${readme_stable})"
 [[ "${header_version}" == "${const_version}" ]] || \
     fail "Version (${header_version}) does not match the VERSION constant (${const_version:-none})"
+
+# changelog.txt calls itself the full record and ships inside the package, and it
+# had fallen four releases behind readme.txt without anything noticing. A
+# merchant debugging a regression reads exactly the window that was missing.
+if [[ -f "${PKG}/changelog.txt" ]]; then
+    grep -qF "= ${header_version} =" "${PKG}/changelog.txt" || \
+        fail "changelog.txt has no entry for ${header_version}"
+fi
 [[ "${header_tested}" == "${readme_tested}" ]] || \
     fail "header Tested up to (${header_tested}) does not match readme (${readme_tested})"
 

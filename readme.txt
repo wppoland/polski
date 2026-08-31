@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.5
+Stable tag: 1.30.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.6 =
+* Fixed: a shop manager could open the withdrawal settings screen but not save it. The menu was available to anyone who manages WooCommerce, while saving was still restricted to a full administrator, so pressing Save ended in a permissions error. Both now use the same permission.
+* Fixed: changelog.txt, the file that keeps the full release history inside the plugin, was missing the last four releases.
 
 = 1.30.5 =
 * Fixed: a percent sign in the guest form's intro text, added in 1.30.4, corrupted the sentence on the public page. Writing something as ordinary as "Zwracamy 100% ceny" produced "Zwracamy 100" followed by an invisible byte and the rest of the line, because the text was passed through a formatter that reads a percent as a formatting instruction. The intro now uses {company} and {days} and prints everything else exactly as typed, percent signs included. If you already saved an intro containing a percent, it will render correctly after this update with no change on your side.
