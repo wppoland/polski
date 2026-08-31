@@ -7,7 +7,7 @@ declare(strict_types=1);
  */
 namespace Polski;
 
-const VERSION = '1.30.5';
+const VERSION = '1.30.6';
 const PLUGIN_FILE = __DIR__ . '/../../polski.php';
 const PLUGIN_DIR = __DIR__ . '/../..';
 const MIN_PHP_VERSION = '8.1.0';

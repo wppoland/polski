@@ -64,6 +64,15 @@ final class WithdrawalSettingsPage implements HasHooks
 
     public function registerSettings(): void
     {
+        // The menu is opened with manage_woocommerce but the form posts to
+        // options.php, which core gates on manage_options by default. A shop
+        // manager could reach this screen and be stopped by wp_die() on save.
+        // Teach core the capability this settings group is actually for.
+        add_filter(
+            'option_page_capability_' . self::SETTINGS_GROUP,
+            static fn (): string => self::CAPABILITY,
+        );
+
         register_setting(
             self::SETTINGS_GROUP,
             self::OPTION,

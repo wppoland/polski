@@ -2,6 +2,23 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.30.6 =
+* Fixed: a shop manager could open the withdrawal settings screen but not save it. The menu was available to anyone who manages WooCommerce, while saving was still restricted to a full administrator, so pressing Save ended in a permissions error. Both now use the same permission.
+* Fixed: changelog.txt, the file that keeps the full release history inside the plugin, was missing the last four releases.
+
+= 1.30.5 =
+* Fixed: a percent sign in the guest form's intro text, added in 1.30.4, corrupted the sentence on the public page. Writing something as ordinary as "Zwracamy 100% ceny" produced "Zwracamy 100" followed by an invisible byte and the rest of the line, because the text was passed through a formatter that reads a percent as a formatting instruction. The intro now uses {company} and {days} and prints everything else exactly as typed, percent signs included. If you already saved an intro containing a percent, it will render correctly after this update with no change on your side.
+* Fixed: the plugin reported its own version as 1.29.7 while being 1.30.x. That number is shown on the plugin's admin page and is used to version stylesheets and scripts, so an admin who had already loaded the old files kept them after updating, which is why the menu-icon fix in 1.30.3 may not have appeared for you. It is also the value the plugin compares against when deciding whether to run an upgrade routine. The release script had been silently failing to update it since 1.29.7.
+
+= 1.30.4 =
+* Added: the guest withdrawal form's wording is now editable under Withdrawal settings, in a Guest form wording section: the heading, the intro paragraph, the two field labels and the submit button. Asked for on the support forum. The texts on the My Account side were already editable and these were not, which was an inconsistency rather than a decision. Leave a field empty and the built-in wording is used exactly as before, so nothing changes for a shop that does not open the screen. The intro accepts %1$s for your company name and %2$d for the withdrawal period, and prints your text as written if you leave them out.
+
+= 1.30.3 =
+* Fixed: the Polski icon in the admin menu sat lower than every other icon in the sidebar, and jumped into place only while the pointer was over it. WordPress puts vertical padding on that element and the plugin's own styling cleared it only in the hover state, so the icon was misaligned for as long as you were not pointing at it.
+
+= 1.30.2 =
+* Declared compatibility with WooCommerce 11.0.
+
 = 1.30.1 =
 * The Polish catalogue is bundled again, on purpose. WordPress.org builds its language packs from the strings in the released package, so a release that changes source strings always lands before translate.wordpress.org has seen the new ones, and this release changes about 520 of them. Without the bundled copy a Polish shop would read an English interface until the translations were re-imported. WordPress still prefers the language pack wherever it has a string, so nothing overrides a translator.
 * Fixed the PRO promo on the settings screen quoting a price in PLN. PRO is priced and charged in EUR, so an admin on a Polish site was shown a zloty amount and then billed in euro, and the zloty figure was a fixed conversion that drifted from the real charge as the rate moved. The promo now shows the euro price that is actually taken.
