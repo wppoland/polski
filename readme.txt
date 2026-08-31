@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.7
+Stable tag: 1.30.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -320,6 +320,12 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.30.8 =
+* Fixed: the NIP field never appeared on the block checkout. Polski boots on `init` priority 0, by which point WooCommerce has already fired `woocommerce_init`, so the services that registered their block checkout fields on that action registered them into an event that had already passed. Affected the NIP lookup module and the B2B checkout fields.
+* Fixed: legal checkboxes could be switched on but never off. Two handlers were attached to the same admin-post action; the one that won only wrote back the fields present in the request, and an unticked checkbox is absent from a form submission. There is now a single save path, and it also stops stripping the link markup out of the Terms and Privacy labels.
+* Fixed: the order button label had no effect on the block checkout. That button is rendered by React and its label resolved through WooCommerce's own checkout filter, so the PHP filter Polski used could never reach it. It now registers the supported `placeOrderButtonLabel` filter instead. The classic checkout is unchanged.
+* Fixed: the NIP field was registered twice when both the NIP lookup module and the B2B checkout fields were on, which WooCommerce rejects. The lookup module now owns the field.
+
 = 1.30.7 =
 * Fixed: the Polski icon in the admin menu still sat low on a narrow screen and when the menu is collapsed to icons. WordPress shrinks that row from 34 to 30 pixels in both cases and the plugin was still centring the icon in the taller one. 1.30.3 fixed the ordinary sidebar; this fixes the other two.
 
@@ -502,6 +508,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.30.8 =
+Fixes three modules that did nothing on the block checkout, which is the WooCommerce default: the NIP field now appears, the order button label is applied, and legal checkboxes can finally be switched off again.
 
 = 1.30.0 =
 Nothing changes on a Polish shop. The plugin's source strings moved from Polish to English so that translations on translate.wordpress.org are made from the original rather than from Polish; the Polish wording is unchanged and now ships as the Polish translation.
