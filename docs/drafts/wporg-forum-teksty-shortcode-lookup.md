@@ -12,7 +12,7 @@ Krótka odpowiedź: nie, w ustawieniach nie ma dziś pól na teksty formularza `
 
 Są trzy sposoby, żeby je zmienić już teraz. Wszystkie działają, wybór zależy od tego, ile chcesz zmienić.
 
-**1. Tłumaczenie, bez kodu.** Wszystkie 30 napisów tego formularza jest zwykłymi ciągami tłumaczonymi w domenie `polski`. Wtyczką w rodzaju Loco Translate otwierasz polskie tłumaczenie wtyczki i podmieniasz dowolny z nich na własny. To jest najprostsza droga, jeśli chodzi o poprawienie brzmienia kilku zdań, i przeżywa aktualizacje wtyczki.
+**1. Tłumaczenie, bez kodu.** Wszystkie 17 napisów tego formularza to zwykłe ciągi tłumaczone w domenie `polski`. Wtyczką w rodzaju Loco Translate otwierasz polskie tłumaczenie wtyczki i podmieniasz dowolny z nich na własny. To jest najprostsza droga, jeśli chodzi o poprawienie brzmienia kilku zdań, i przeżywa aktualizacje wtyczki.
 
 **2. Filtr `gettext`, jeśli chodzi o jeden czy dwa napisy.** Do `functions.php` motywu potomnego albo do wtyczki na snippety:
 
