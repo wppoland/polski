@@ -24,7 +24,13 @@ final class B2BCheckoutHooks implements HasHooks
     public function registerHooks(): void
     {
         // Modern WC 8.6+ unified field API (Block + classic in one go).
-        add_action('woocommerce_init', [$this->service, 'registerAdditionalCheckoutFields']);
+        // `woocommerce_init` has already fired by the time Polski boots on
+        // `init` priority 0, so hooking it is dead code. See NipLookupService.
+        if (did_action('woocommerce_init')) {
+            $this->service->registerAdditionalCheckoutFields();
+        } else {
+            add_action('woocommerce_init', [$this->service, 'registerAdditionalCheckoutFields']);
+        }
         add_action(
             'woocommerce_set_additional_field_value',
             [$this->service, 'mirrorAdditionalFieldToLegacyMeta'],

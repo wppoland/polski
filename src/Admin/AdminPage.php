@@ -43,7 +43,6 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_enqueue_scripts', [$this, 'enqueueMenuIconStyle']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
         add_action('admin_post_polski_complete_wizard', [$this, 'handleWizardCompletion']);
-        add_action('admin_post_polski_save_module_settings', [$this, 'handleModuleSettingsSave']);
         add_action('admin_post_' . self::ADMIN_FEEDBACK_ACTION, [$this, 'handleAdminFeedbackSubmit']);
 
         // "Settings" link on plugins page.
@@ -198,52 +197,6 @@ final class AdminPage implements Bootable, HasHooks
         }
 
         wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG));
-        exit;
-    }
-
-    /**
-     * Save settings submitted from a single module's dedicated settings page.
-     */
-    public function handleModuleSettingsSave(): void
-    {
-        if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission.', 'polski'));
-        }
-
-        check_admin_referer('polski_save_module_settings', '_polski_module_nonce');
-
-        $moduleId = isset($_POST['module_id']) ? sanitize_text_field((string) wp_unslash($_POST['module_id'])) : '';
-        $groupSlug = isset($_POST['group_slug']) ? sanitize_text_field((string) wp_unslash($_POST['group_slug'])) : '';
-        $postSettings = isset($_POST['polski_setting']) ? wp_unslash($_POST['polski_setting']) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- individual values sanitized below
-
-        if (is_array($postSettings)) {
-            foreach ($postSettings as $optionName => $fields) {
-                if (! is_array($fields)) {
-                    continue;
-                }
-
-                $optionName = sanitize_text_field($optionName);
-                $current = get_option($optionName, []);
-
-                if (! is_array($current)) {
-                    $current = [];
-                }
-
-                foreach ($fields as $key => $value) {
-                    $current[sanitize_text_field($key)] = sanitize_text_field($value);
-                }
-
-                update_option($optionName, $current);
-            }
-        }
-
-        $redirectUrl = $groupSlug !== ''
-            ? admin_url('admin.php?page=polski-settings&bucket=' . $groupSlug . '&saved=1&module=' . $moduleId)
-            : admin_url('admin.php?page=' . self::PAGE_SLUG . '&saved=1&module=' . $moduleId);
-        if ($moduleId !== '') {
-            $redirectUrl .= '#polski-module-' . $moduleId;
-        }
-        wp_safe_redirect($redirectUrl);
         exit;
     }
 
@@ -448,7 +401,7 @@ final class AdminPage implements Bootable, HasHooks
             echo '<p>' . esc_html($module['description']) . '</p>';
 
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
-            wp_nonce_field('polski_save_module_settings', '_polski_module_nonce');
+            wp_nonce_field('polski_save_module_' . $moduleId, '_polski_module_nonce_' . $moduleId);
             echo '<input type="hidden" name="action" value="polski_save_module_settings" />';
             echo '<input type="hidden" name="module_id" value="' . esc_attr($moduleId) . '" />';
             echo '<input type="hidden" name="group_slug" value="' . esc_attr($groupSlug) . '" />';

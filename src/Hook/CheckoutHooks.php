@@ -36,7 +36,7 @@ final class CheckoutHooks implements Bootable, HasHooks
         // Override order button text on both classic and block checkout.
         if (\Polski\Admin\ModulesPage::isModuleEnabled('checkout_button')) {
             add_filter('woocommerce_order_button_text', [$this, 'filterOrderButtonText']);
-            add_filter('gettext', [$this, 'filterBlockOrderButtonText'], 20, 3);
+            add_action('wp_enqueue_scripts', [$this, 'enqueueBlockOrderButtonScript']);
         }
 
         // Legal checkboxes and consent logging.
@@ -193,19 +193,51 @@ final class CheckoutHooks implements Bootable, HasHooks
     }
 
     /**
-     * Translate order button text for block checkout (where woocommerce_order_button_text
-     * filter does not fire because the button is rendered via block component).
+     * Put the button label on the block checkout.
+     *
+     * The block checkout renders the button in React and resolves its label
+     * through WooCommerce's own `placeOrderButtonLabel` checkout filter, so the
+     * PHP `woocommerce_order_button_text` filter never reaches it. This used to
+     * be attempted with a global `gettext` filter matching the Polish string,
+     * which cannot work at all: the block label is translated in JavaScript, so
+     * PHP gettext is never called for it. A merchant on the block checkout (the
+     * WooCommerce default since 8.3) therefore kept seeing WooCommerce's own
+     * wording no matter what was configured here.
      */
-    public function filterBlockOrderButtonText(string $translation, string $text, string $domain): string
+    public function enqueueBlockOrderButtonScript(): void
     {
-        if ($domain === 'woocommerce' && ($text === 'Place order' || $translation === 'Kupuję i płacę' || $translation === 'Złóż zamówienie')) {
-            $resolved = $this->resolveOrderButtonText();
-            if ($resolved !== '') {
-                return (string) apply_filters('polski/checkout/order_button_text', $resolved);
-            }
+        if (! function_exists('is_checkout') || ! is_checkout()) {
+            return;
         }
 
-        return $translation;
+        // Only the block checkout registers this package. On classic checkout the
+        // handle is absent, WordPress prints nothing, and the PHP filter above
+        // stays in charge.
+        if (! wp_script_is('wc-blocks-checkout', 'registered')) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'polski-block-checkout-button',
+            plugins_url('assets/js/block-checkout-button.js', PLUGIN_FILE),
+            ['wc-blocks-checkout'],
+            VERSION,
+            true,
+        );
+
+        wp_localize_script('polski-block-checkout-button', 'polskiCheckoutButton', [
+            'label' => $this->orderButtonLabel(),
+        ]);
+    }
+
+    /**
+     * The configured or statutory button label, after the public filter.
+     */
+    public function orderButtonLabel(): string
+    {
+        $resolved = $this->resolveOrderButtonText();
+
+        return (string) apply_filters('polski/checkout/order_button_text', $resolved);
     }
 
     /**

@@ -30,7 +30,17 @@ final class NipLookupService implements HasHooks
 
         // Modern WC 8.6+ unified additional checkout fields API (Block + classic in one go).
         if (function_exists('woocommerce_register_additional_checkout_field')) {
-            add_action('woocommerce_init', [$this, 'registerAdditionalCheckoutFields']);
+            // Polski boots on `init` priority 0, and WooCommerce fires
+            // `woocommerce_init` from its own `init` callback registered while the
+            // plugin file was still being included, so it has ALWAYS fired by the
+            // time we get here. Hooking it registers a callback that can never run,
+            // which is why the NIP field never appeared on block checkout. Call it
+            // directly when the action is already spent.
+            if (did_action('woocommerce_init')) {
+                $this->registerAdditionalCheckoutFields();
+            } else {
+                add_action('woocommerce_init', [$this, 'registerAdditionalCheckoutFields']);
+            }
             add_action('woocommerce_set_additional_field_value', [$this, 'mirrorAdditionalFieldToLegacyMeta'], 10, 4);
             add_action('woocommerce_checkout_order_created', [$this, 'saveBlockNipToOrder']);
             add_action('woocommerce_store_api_checkout_order_processed', [$this, 'saveBlockNipToOrder']);

@@ -40,20 +40,22 @@ final class CheckoutHooksTest extends TestCase
         \delete_option('polski_checkout');
     }
 
-    public function testFilterBlockOrderButtonTextTranslatesPlaceOrderOnBlockCheckout(): void
+    /**
+     * The block checkout gets its label through WooCommerce's own
+     * `placeOrderButtonLabel` checkout filter, fed from PHP by
+     * orderButtonLabel(). This used to be attempted with a `gettext` filter,
+     * which the tests happily proved worked while the button on a real block
+     * checkout kept WooCommerce's own wording: PHP gettext is never called for
+     * a string the React bundle translates.
+     */
+    public function testOrderButtonLabelFeedsTheBlockCheckoutFilter(): void
     {
         \delete_option('polski_checkout');
+        self::assertSame('Order with an obligation to pay', $this->hooks->orderButtonLabel());
 
-        $result = $this->hooks->filterBlockOrderButtonText('Place order', 'Place order', 'woocommerce');
-        self::assertSame('Order with an obligation to pay', $result);
+        \update_option('polski_checkout', ['order_button_text' => 'Kup teraz i zapłać']);
+        self::assertSame('Kup teraz i zapłać', $this->hooks->orderButtonLabel());
 
-        $resultPL = $this->hooks->filterBlockOrderButtonText('Kupuję i płacę', 'Place order', 'woocommerce');
-        self::assertSame('Order with an obligation to pay', $resultPL);
-    }
-
-    public function testFilterBlockOrderButtonTextIgnoresOtherDomains(): void
-    {
-        $result = $this->hooks->filterBlockOrderButtonText('Place order', 'Place order', 'other-plugin');
-        self::assertSame('Place order', $result);
+        \delete_option('polski_checkout');
     }
 }
