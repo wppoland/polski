@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.2
+Stable tag: 1.30.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.3 =
+* Fixed: the Polski icon in the admin menu sat lower than every other icon in the sidebar, and jumped into place only while the pointer was over it. WordPress puts vertical padding on that element and the plugin's own styling cleared it only in the hover state, so the icon was misaligned for as long as you were not pointing at it.
 
 = 1.30.2 =
 * Declared compatibility with WooCommerce 11.0.
