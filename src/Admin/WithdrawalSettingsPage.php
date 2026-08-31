@@ -144,6 +144,18 @@ final class WithdrawalSettingsPage implements HasHooks
             ? sanitize_title((string) $input['my_account_endpoint_slug'])
             : '';
 
+        // Guest form texts. Empty means "use the translated default", so a shop
+        // that never touches these is unaffected by their existence.
+        foreach (['lookup_heading', 'lookup_order_label', 'lookup_email_label', 'lookup_submit_text'] as $textKey) {
+            $clean[$textKey] = isset($input[$textKey])
+                ? sanitize_text_field((string) $input[$textKey])
+                : ($clean[$textKey] ?? '');
+        }
+
+        $clean['lookup_intro'] = isset($input['lookup_intro'])
+            ? sanitize_textarea_field((string) $input['lookup_intro'])
+            : ($clean['lookup_intro'] ?? '');
+
         $clean['annex_locale'] = isset($input['annex_locale']) ? sanitize_key((string) $input['annex_locale']) : '';
 
         $bundleMode = isset($input['bundle_refund_mode']) ? sanitize_key((string) $input['bundle_refund_mode']) : 'whole_bundle';
@@ -224,6 +236,53 @@ final class WithdrawalSettingsPage implements HasHooks
                         <td>
                             <input type="text" id="polski_my_account_endpoint" name="<?php echo esc_attr(self::OPTION); ?>[my_account_endpoint_slug]" value="<?php echo esc_attr((string) ($settings['my_account_endpoint_slug'] ?? '')); ?>" class="regular-text" placeholder="polski-withdrawals">
                             <p class="description"><?php esc_html_e('Leave blank for the default "polski-withdrawals". Flush permalinks after changing.', 'polski'); ?></p>
+                        </td>
+                    </tr>
+                </table>
+                </section>
+
+                <section class="polski-withdrawal-card">
+                <h2><?php esc_html_e('Guest form wording', 'polski'); ?></h2>
+                <p class="description"><?php esc_html_e('Texts on the page holding the [polski_withdrawal_lookup] shortcode. Leave a field empty to keep the built-in wording, which is translated with the rest of the plugin.', 'polski'); ?></p>
+                <table class="form-table" role="presentation">
+                    <tr>
+                        <th><label for="polski_lookup_heading"><?php esc_html_e('Heading', 'polski'); ?></label></th>
+                        <td>
+                            <input type="text" id="polski_lookup_heading" name="<?php echo esc_attr(self::OPTION); ?>[lookup_heading]" value="<?php echo esc_attr((string) ($settings['lookup_heading'] ?? '')); ?>" class="large-text" placeholder="<?php esc_attr_e('Withdrawal from the contract, online form', 'polski'); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="polski_lookup_intro"><?php esc_html_e('Intro paragraph', 'polski'); ?></label></th>
+                        <td>
+                            <textarea id="polski_lookup_intro" name="<?php echo esc_attr(self::OPTION); ?>[lookup_intro]" rows="4" class="large-text"><?php echo esc_textarea((string) ($settings['lookup_intro'] ?? '')); ?></textarea>
+                            <p class="description">
+                                <?php
+                                printf(
+                                    /* translators: 1: the %1$s placeholder, 2: the %2$d placeholder */
+                                    esc_html__('You may use %1$s for your company name and %2$s for the withdrawal period in days. Leave them out and the text is printed as written.', 'polski'),
+                                    '<code>%1$s</code>',
+                                    '<code>%2$d</code>',
+                                );
+                                ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="polski_lookup_order_label"><?php esc_html_e('Order number label', 'polski'); ?></label></th>
+                        <td>
+                            <input type="text" id="polski_lookup_order_label" name="<?php echo esc_attr(self::OPTION); ?>[lookup_order_label]" value="<?php echo esc_attr((string) ($settings['lookup_order_label'] ?? '')); ?>" class="regular-text" placeholder="<?php esc_attr_e('Order number', 'polski'); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="polski_lookup_email_label"><?php esc_html_e('Email field label', 'polski'); ?></label></th>
+                        <td>
+                            <input type="text" id="polski_lookup_email_label" name="<?php echo esc_attr(self::OPTION); ?>[lookup_email_label]" value="<?php echo esc_attr((string) ($settings['lookup_email_label'] ?? '')); ?>" class="regular-text" placeholder="<?php esc_attr_e('Email address used for the purchase', 'polski'); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="polski_lookup_submit_text"><?php esc_html_e('Submit button', 'polski'); ?></label></th>
+                        <td>
+                            <input type="text" id="polski_lookup_submit_text" name="<?php echo esc_attr(self::OPTION); ?>[lookup_submit_text]" value="<?php echo esc_attr((string) ($settings['lookup_submit_text'] ?? '')); ?>" class="regular-text" placeholder="<?php esc_attr_e('Email me the link to the form', 'polski'); ?>">
                         </td>
                     </tr>
                 </table>
