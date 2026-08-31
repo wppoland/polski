@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: woocommerce, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.30.3
+Stable tag: 1.30.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,6 +319,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce includes Polish, German and Spanish translations for the plugin interface. The text domain is `polski`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.30.4 =
+* Added: the guest withdrawal form's wording is now editable under Withdrawal settings, in a Guest form wording section: the heading, the intro paragraph, the two field labels and the submit button. Asked for on the support forum. The texts on the My Account side were already editable and these were not, which was an inconsistency rather than a decision. Leave a field empty and the built-in wording is used exactly as before, so nothing changes for a shop that does not open the screen. The intro accepts %1$s for your company name and %2$d for the withdrawal period, and prints your text as written if you leave them out.
 
 = 1.30.3 =
 * Fixed: the Polski icon in the admin menu sat lower than every other icon in the sidebar, and jumped into place only while the pointer was over it. WordPress puts vertical padding on that element and the plugin's own styling cleared it only in the hover state, so the icon was misaligned for as long as you were not pointing at it.

@@ -29,6 +29,19 @@ $polski_settings = get_option('polski_withdrawal', []);
 $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 $polski_days = isset($polski_settings['period_days']) ? max(1, (int) $polski_settings['period_days']) : 14;
 
+/**
+ * A merchant-supplied override for one of this form's texts, or null.
+ *
+ * Everything below stays translatable as before; a setting only wins when the
+ * merchant has actually typed something into it, so an untouched shop sees no
+ * change at all.
+ */
+$polski_text = static function (string $key) use ($polski_settings): ?string {
+    $value = trim((string) ($polski_settings[$key] ?? ''));
+
+    return '' === $value ? null : $value;
+};
+
 // Sticky form values: preserve user input across error redirects. The nonce
 // associated with these POST values is verified by GuestWithdrawalService
 // before any side-effect; here we only echo the raw input back (sanitised).
@@ -50,20 +63,26 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
     style="max-width: 65ch;"
 >
     <h2 id="polski-withdrawal-lookup-title">
-        <?php esc_html_e('Withdrawal from the contract, online form', 'polski'); ?>
+        <?php echo esc_html($polski_text('lookup_heading') ?? __('Withdrawal from the contract, online form', 'polski')); ?>
     </h2>
 
     <p class="polski-withdrawal-lookup__intro">
         <?php
-        printf(
+        $polski_intro = $polski_text('lookup_intro') ?? __(
             /* translators: 1: merchant name, 2: number of days */
-            esc_html__(
-                'Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number.',
-                'polski',
-            ),
-            esc_html($polski_merchant),
-            (int) $polski_days,
+            'Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number.',
+            'polski',
         );
+
+        // The merchant may drop the placeholders, or mistype one. Neither should
+        // take the page down, so fall back to their text exactly as written.
+        try {
+            $polski_intro = sprintf($polski_intro, $polski_merchant, (int) $polski_days);
+        } catch (\Throwable) {
+            // Leave $polski_intro as the merchant typed it.
+        }
+
+        echo esc_html($polski_intro);
         ?>
     </p>
 
@@ -104,7 +123,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
     <form id="polski-withdrawal-lookup-form" method="post" action="" novalidate aria-describedby="polski-withdrawal-lookup-help">
         <p>
             <label for="polski_order_number">
-                <?php esc_html_e('Order number', 'polski'); ?>
+                <?php echo esc_html($polski_text('lookup_order_label') ?? __('Order number', 'polski')); ?>
                 <span aria-hidden="true" style="color:#b91c1c;">*</span>
             </label>
             <input
@@ -126,7 +145,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
 
         <p>
             <label for="polski_email">
-                <?php esc_html_e('Email address used for the purchase', 'polski'); ?>
+                <?php echo esc_html($polski_text('lookup_email_label') ?? __('Email address used for the purchase', 'polski')); ?>
                 <span aria-hidden="true" style="color:#b91c1c;">*</span>
             </label>
             <input
@@ -158,7 +177,7 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
                 value="1"
                 class="button button-primary"
             >
-                <?php esc_html_e('Email me the link to the form', 'polski'); ?>
+                <?php echo esc_html($polski_text('lookup_submit_text') ?? __('Email me the link to the form', 'polski')); ?>
             </button>
         </p>
 

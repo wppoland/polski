@@ -14288,3 +14288,40 @@ msgstr ""
 #: templates/forms/withdrawal-lookup.php
 msgid "2011/83/EU (as amended by 2023/2673)"
 msgstr "2011/83/UE (zmienionej przez 2023/2673)"
+
+#: src/Admin/WithdrawalSettingsPage.php:245
+msgid "Guest form wording"
+msgstr "Teksty formularza dla gościa"
+
+#: src/Admin/WithdrawalSettingsPage.php:246
+msgid ""
+"Texts on the page holding the [polski_withdrawal_lookup] shortcode. Leave a "
+"field empty to keep the built-in wording, which is translated with the rest "
+"of the plugin."
+msgstr ""
+"Teksty na stronie z shortcodem [polski_withdrawal_lookup]. Puste pole "
+"zostawia domyślne brzmienie, tłumaczone razem z resztą wtyczki."
+
+#: src/Admin/WithdrawalSettingsPage.php:249
+msgid "Heading"
+msgstr "Nagłówek"
+
+#: src/Admin/WithdrawalSettingsPage.php:255
+msgid "Intro paragraph"
+msgstr "Akapit wstępny"
+
+#: src/Admin/WithdrawalSettingsPage.php:262
+msgid ""
+"You may use %1$s for your company name and %2$s for the withdrawal period in"
+" days. Leave them out and the text is printed as written."
+msgstr ""
+"Możesz użyć %1$s dla nazwy firmy i %2$s dla liczby dni na odstąpienie. Jeśli"
+" ich nie użyjesz, tekst zostanie wypisany dosłownie."
+
+#: src/Admin/WithdrawalSettingsPage.php:271
+msgid "Order number label"
+msgstr "Etykieta numeru zamówienia"
+
+#: src/Admin/WithdrawalSettingsPage.php:283
+msgid "Submit button"
+msgstr "Przycisk wysyłki"
