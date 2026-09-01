@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.0
+Stable tag: 1.31.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -344,6 +344,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 
 == Changelog ==
 
+= 1.31.1 =
+* Fixed: switching the NIP module off left the NIP field on checkout. Two services could add it, and the second one defaulted to on from a setting no screen writes, so the switch a merchant can actually see only ever worked in one direction. The field now has a single owner, the NIP module, on both the block and the classic checkout. Reported by czester on the support forum.
+
 = 1.31.0 =
 * Added: **VAT invoices, in the free plugin.** Switch the Invoices module on and an order screen gains an Issue invoice button. The invoice is numbered per year (FV/1/2026, restarting each January), shows both parties with their VAT IDs, lists every line with its own rate, and groups VAT by rate the way an accountant reads it. Shipping and fees are invoiced too.
 * Added: customers get an Invoice link on their order in My Account. The document opens through a link carrying a token derived from the invoice itself, so it works from an email without a login and cannot be reached by guessing an id.
@@ -538,6 +541,9 @@ Polski for WooCommerce includes Polish, German and Spanish translations for the 
 Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 1.31.1 =
+Switching the NIP module off now actually removes the NIP field from checkout. It only ever worked in one direction before.
 
 = 1.31.0 =
 VAT invoices are now part of the free plugin: numbered per year, VAT grouped by rate, opened by the customer from My Account and printable to PDF from the browser. Switch on the Invoices module to use it.

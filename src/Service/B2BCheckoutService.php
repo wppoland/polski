@@ -17,9 +17,11 @@ use WC_Order;
  * to standard order meta keys so KSeF and invoice integrations can consume
  * them without additional integration.
  *
- * Coexistence with custom NIP validators: when an integration registers its own
- * billing_nip field this service skips its own NIP registration to avoid
- * a duplicate field. REGON and IBAN are always added by free.
+ * The NIP field is not this service's. It belongs to the NIP module, which is
+ * the switch a merchant can see and which also brings validation and GUS
+ * autofill. This service used to add its own from an option no screen writes,
+ * so switching the NIP module off left the field on checkout with nothing to
+ * remove it. REGON, IBAN and the VAT invoice toggle are still added here.
  */
 final class B2BCheckoutService
 {
@@ -55,30 +57,6 @@ final class B2BCheckoutService
     public function isEnabled(): bool
     {
         return (bool) ($this->fieldSettings()['enabled'] ?? true);
-    }
-
-    /**
-     * Should we register our own NIP field? Skipped when an integration's
-     * NipValidator is active to avoid double registration.
-     */
-    public function shouldRegisterNipField(): bool
-    {
-        if (! ($this->fieldSettings()['nip'] ?? true)) {
-            return false;
-        }
-
-        if (class_exists('\Polski\Pro\Validation\NipValidator')) {
-            return false;
-        }
-
-        // The NIP lookup module registers the same `polski/nip` field, with GUS
-        // autofill on top, and WooCommerce rejects the second registration of an
-        // id with a _doing_it_wrong notice. Only one of the two may own it.
-        if (\Polski\Admin\ModulesPage::isModuleEnabled('nip_lookup')) {
-            return false;
-        }
-
-        return true;
     }
 
     /**
@@ -119,17 +97,6 @@ final class B2BCheckoutService
             ];
         }
 
-        if ($this->shouldRegisterNipField()) {
-            $fields['billing_nip'] = [
-                'label' => __('NIP (Tax ID)', 'polski'),
-                'placeholder' => __('e.g. 123-456-78-90', 'polski'),
-                'required' => false,
-                'class' => ['form-row-wide', 'polski-b2b-field'],
-                'priority' => 35,
-                'type' => 'text',
-            ];
-        }
-
         if ($settings['regon']) {
             $fields['billing_regon'] = [
                 'label' => __('REGON (statistical number)', 'polski'),
@@ -163,16 +130,6 @@ final class B2BCheckoutService
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC handles checkout nonce.
         $post = wp_unslash($_POST);
-
-        if ($this->shouldRegisterNipField()) {
-            $nip = sanitize_text_field((string) ($post['billing_nip'] ?? ''));
-            if ($nip !== '' && ! NipValidator::isValid($nip)) {
-                wc_add_notice(
-                    __('The provided NIP number is invalid. Please check and try again.', 'polski'),
-                    'error',
-                );
-            }
-        }
 
         $settings = $this->fieldSettings();
 
@@ -224,13 +181,6 @@ final class B2BCheckoutService
             $order->update_meta_data(self::META_NEEDS_INVOICE, $needsInvoice ? 'yes' : 'no');
         }
 
-        if ($this->shouldRegisterNipField()) {
-            $nip = NipValidator::normalize(sanitize_text_field((string) ($post['billing_nip'] ?? '')));
-            if ($nip !== '') {
-                $order->update_meta_data('_billing_nip', $nip);
-            }
-        }
-
         if ($settings['regon']) {
             $regon = preg_replace('/\s+/', '', sanitize_text_field((string) ($post['billing_regon'] ?? '')));
             if (is_string($regon) && $regon !== '') {
@@ -259,10 +209,6 @@ final class B2BCheckoutService
         }
 
         $settings = $this->fieldSettings();
-
-        if ($this->shouldRegisterNipField()) {
-            $fields['nip'] = ['label' => __('NIP', 'polski'), 'show' => true];
-        }
 
         if ($settings['regon']) {
             $fields['regon'] = ['label' => __('REGON', 'polski'), 'show' => true];
@@ -305,29 +251,6 @@ final class B2BCheckoutService
                 'location' => 'order',
                 'type' => 'checkbox',
                 'required' => false,
-            ]);
-        }
-
-        if ($this->shouldRegisterNipField()) {
-            woocommerce_register_additional_checkout_field([
-                'id' => 'polski/nip',
-                'label' => __('NIP (Tax ID)', 'polski'),
-                'location' => 'address',
-                'type' => 'text',
-                'required' => false,
-                'sanitize_callback' => static fn (string $value): string => NipValidator::normalize(sanitize_text_field($value)),
-                'validate_callback' => static function (string $value) {
-                    if ($value === '') {
-                        return null;
-                    }
-                    if (! NipValidator::isValid($value)) {
-                        return new \WP_Error(
-                            'polski_invalid_nip',
-                            __('The provided NIP number is invalid. Please check and try again.', 'polski'),
-                        );
-                    }
-                    return null;
-                },
             ]);
         }
 
