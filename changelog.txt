@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.1 =
+* Fixed: switching the NIP module off left the NIP field on checkout. Two services could add it, and the second one defaulted to on from a setting no screen writes, so the switch a merchant can actually see only ever worked in one direction. The field now has a single owner, the NIP module, on both the block and the classic checkout. Reported by czester on the support forum.
+
 = 1.31.0 =
 * Added: VAT invoices in the free plugin. The Invoices module adds an Issue invoice button to the order screen, numbers invoices per year (FV/1/2026, restarting each January), shows both parties with their VAT IDs, lists each line with its own rate, and groups VAT by rate. Shipping and fees are invoiced too.
 * Added: an Invoice link on the customer's order in My Account. The document opens through a link carrying a token derived from the invoice, so it works from an email without a login and cannot be reached by guessing an id.

@@ -1,6 +1,6 @@
 {
   "name": "@wppoland/polski",
-  "version": "1.31.0",
+  "version": "1.31.1",
   "description": "Product information, checkout, consent, and storefront tools for WooCommerce stores in Poland",
   "private": true,
   "scripts": {
