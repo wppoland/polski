@@ -48,7 +48,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
-* **AI transparency (AI Act art. 50)** - an option (on by default) to disclose AI-generated content on the storefront, and a clear "classified by AI" marker on return reasons processed by the optional AI classifier.
+* **AI transparency (AI Act art. 50)** - a clear "classified by AI" marker on return reasons processed by the optional AI classifier, filterable in the admin withdrawals list. The storefront disclosure of AI-generated product copy is a Polski PRO feature, since it labels copy from the Pro AI description generator.
 
 = Checkout, consents and returns =
 
