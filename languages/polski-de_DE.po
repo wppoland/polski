@@ -2343,11 +2343,11 @@ msgstr "Befreiung vom Widerrufsrecht"
 
 #: src/Admin/CSVImportExport.php:94
 msgid "Nutrition values"
-msgstr ""
+msgstr "Nährwerte"
 
 #: src/Admin/CSVImportExport.php:95
 msgid "Nutrition reference quantity"
-msgstr ""
+msgstr "Nährwert-Bezugsmenge"
 
 #: src/Admin/CSVImportExport.php:97 src/Admin/ModulesPage.php:559
 #: src/Service/FoodService.php:416
@@ -2388,16 +2388,16 @@ msgstr "GPSR - Sicherheitshinweise"
 
 #: src/Admin/CSVImportExport.php:108 src/Admin/ProductMetaBox.php:308
 msgid "Guarantee of durability (months)"
-msgstr ""
+msgstr "Haltbarkeitsgarantie (Monate)"
 
 #: src/Admin/CSVImportExport.php:109 src/Admin/ProductMetaBox.php:317
 msgid "Free software updates (months)"
-msgstr ""
+msgstr "Kostenlose Software-Updates (Monate)"
 
 #: src/Admin/CSVImportExport.php:110 src/Admin/ProductMetaBox.php:326
 #: src/Service/ConsumerInformationService.php:120
 msgid "Repair information"
-msgstr ""
+msgstr "Reparaturinformationen"
 
 #: src/Admin/CSVImportExport.php:111 src/Admin/ProductMetaBox.php:344
 msgid "Environmental claim basis"
@@ -2693,6 +2693,11 @@ msgid ""
 "it off stops new pages being generated; pages you already have stay "
 "published and keep being used."
 msgstr ""
+"Erstellt für dich die üblichen Rechtstexte als Seiten. Aktiviert kann das "
+"Modul Seiten für AGB, Datenschutzerklärung, Widerrufsrecht und Beschwerden "
+"anlegen und gibt dir damit einen Ausgangspunkt für die Pflichtdokumente "
+"deines Shops. Ausgeschaltet werden keine neuen Seiten mehr erzeugt; bereits "
+"vorhandene Seiten bleiben veröffentlicht und werden weiter genutzt."
 
 #: src/Admin/ModulesPage.php:100
 msgid ""
@@ -2766,6 +2771,14 @@ msgid ""
 "harmonised label artwork for the durability guarantee comes from a separate "
 "implementing act, so this module renders plain labelled rows."
 msgstr ""
+"Ergänzt die vorvertraglichen Informationen, die die Richtlinie (EU) 2024/825"
+" ab dem 27. September 2026 verlangt. Aktiviert weist die Produktseite darauf"
+" hin, dass die gesetzliche Gewährleistung für die Vertragsmäßigkeit gilt, "
+"und jedes Produkt erhält Felder für eine gewerbliche Haltbarkeitsgarantie, "
+"den Zeitraum kostenloser Software-Updates bei Waren mit digitalen Elementen "
+"sowie Reparaturinformationen. Das harmonisierte Label für die "
+"Haltbarkeitsgarantie stammt aus einem gesonderten Durchführungsrechtsakt, "
+"deshalb zeigt dieses Modul schlicht beschriftete Zeilen an."
 
 #: src/Admin/ModulesPage.php:106
 msgid ""
@@ -4571,7 +4584,7 @@ msgstr "Nettoinhalt"
 
 #: src/Admin/ModulesPage.php:568 src/Admin/ProductMetaBox.php:304
 msgid "Consumer information (2024/825)"
-msgstr ""
+msgstr "Verbraucherinformationen (2024/825)"
 
 #: src/Admin/ModulesPage.php:569
 msgid ""
@@ -4579,14 +4592,17 @@ msgid ""
 "period and repair information on the product page. Required from 27 "
 "September 2026."
 msgstr ""
+"Hinweis auf die gesetzliche Gewährleistung, Haltbarkeitsgarantie, Zeitraum "
+"kostenloser Software-Updates und Reparaturinformationen auf der "
+"Produktseite. Ab dem 27. September 2026 verpflichtend."
 
 #: src/Admin/ModulesPage.php:575
 msgid "Show the legal guarantee reminder"
-msgstr ""
+msgstr "Hinweis auf die gesetzliche Gewährleistung anzeigen"
 
 #: src/Admin/ModulesPage.php:576
 msgid "Legal guarantee reminder"
-msgstr ""
+msgstr "Hinweis auf die gesetzliche Gewährleistung"
 
 #: src/Admin/ModulesPage.php:581
 msgid "Power Supply Info"
@@ -7780,16 +7796,23 @@ msgid ""
 "empty when there is none; the statutory guarantee is announced separately in"
 " the module settings."
 msgstr ""
+"Nur wenn der Hersteller eine gewerbliche Haltbarkeitsgarantie anbietet. Lass"
+" das Feld leer, wenn es keine gibt; auf die gesetzliche Gewährleistung wird "
+"separat in den Moduleinstellungen hingewiesen."
 
 #: src/Admin/ProductMetaBox.php:318
 msgid "For goods with digital elements: how long free updates are supplied."
 msgstr ""
+"Bei Waren mit digitalen Elementen: wie lange kostenlose Updates "
+"bereitgestellt werden."
 
 #: src/Admin/ProductMetaBox.php:327
 msgid ""
 "Repairability score where one is established, otherwise spare part "
 "availability and repair contact."
 msgstr ""
+"Reparaturindex, sofern einer festgelegt ist, ansonsten Verfügbarkeit von "
+"Ersatzteilen und Reparaturkontakt."
 
 #: src/Admin/ProductMetaBox.php:340
 msgid "Environmental claims (Anti-greenwashing)"
@@ -7822,42 +7845,42 @@ msgstr "Ablaufdatum des Umweltzertifikats im Format JJJJ-MM-TT."
 #. translators: 1: currency symbol, 2: yearly price
 #: src/Admin/ProUpsell.php:78
 msgid "from %1$s%2$d/yr"
-msgstr ""
+msgstr "ab %1$s%2$d/Jahr"
 
 #: src/Admin/ProUpsell.php:110
 msgid "Permission denied."
-msgstr ""
+msgstr "Zugriff verweigert."
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:140
 msgid "Do more with %s"
-msgstr ""
+msgstr "Mehr erreichen mit %s"
 
 #: src/Admin/ProUpsell.php:145 src/Admin/ProUpsell.php:184
 msgid "Upgrade to PRO"
-msgstr ""
+msgstr "Auf PRO upgraden"
 
 #: src/Admin/ProUpsell.php:147
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Diesen Hinweis ausblenden"
 
 #: src/Admin/ProUpsell.php:169
 msgid "Unlock every PRO feature"
-msgstr ""
+msgstr "Alle PRO-Funktionen freischalten"
 
 #. translators: %d: number of additional PRO features not listed above
 #: src/Admin/ProUpsell.php:181
 msgid "+%d more in PRO"
-msgstr ""
+msgstr "+%d weitere in PRO"
 
 #: src/Admin/ProUpsell.php:187
 msgid "one licence, every PRO feature"
-msgstr ""
+msgstr "eine Lizenz, alle PRO-Funktionen"
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:206
 msgid "What %s adds"
-msgstr ""
+msgstr "Was %s ergänzt"
 
 #: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"
@@ -8021,11 +8044,11 @@ msgstr "Wähle Widerruf #%d"
 
 #: src/Admin/WithdrawalsAdminPage.php:210
 msgid "Classified automatically by AI"
-msgstr ""
+msgstr "Automatisch per KI klassifiziert"
 
 #: src/Admin/WithdrawalsAdminPage.php:214
 msgid "(classified automatically by AI)"
-msgstr ""
+msgstr "(automatisch per KI klassifiziert)"
 
 #: src/Admin/WithdrawalsAdminPage.php:233
 #: src/Admin/WithdrawalsAdminPage.php:412
@@ -8044,9 +8067,8 @@ msgstr "Unbekannte Sammelaktion."
 #: src/Admin/WithdrawalsAdminPage.php:277
 msgid "Confirmed %1$d of %2$d selected declarations."
 msgid_plural "Confirmed %1$d of %2$d selected declarations."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$d von %2$d ausgewählten Widerrufserklärungen bestätigt."
+msgstr[1] "%1$d von %2$d ausgewählten Widerrufserklärungen bestätigt."
 
 #: src/Admin/WithdrawalsAdminPage.php:291
 msgid "Rejected by a bulk action."
@@ -8056,9 +8078,8 @@ msgstr "Durch Sammelklage abgelehnt."
 #: src/Admin/WithdrawalsAdminPage.php:299
 msgid "Rejected %1$d of %2$d selected declarations."
 msgid_plural "Rejected %1$d of %2$d selected declarations."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$d von %2$d ausgewählten Widerrufserklärungen abgelehnt."
+msgstr[1] "%1$d von %2$d ausgewählten Widerrufserklärungen abgelehnt."
 
 #: src/Admin/WithdrawalsAdminPage.php:365
 msgid "Register withdrawal manually"
@@ -8330,7 +8351,7 @@ msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:346
 msgid "Label AI-generated content"
-msgstr ""
+msgstr "KI-generierte Inhalte kennzeichnen"
 
 #: src/Admin/WithdrawalSettingsPage.php:355
 msgid ""
@@ -8338,6 +8359,9 @@ msgid ""
 "(for example descriptions written by the Pro AI generator), and add a "
 "machine-readable marker to that content."
 msgstr ""
+"Zeigt im Shop einen kurzen Hinweis für Produkttexte, die von KI erzeugt "
+"wurden (zum Beispiel Beschreibungen aus dem KI-Generator in PRO), und "
+"ergänzt diese Inhalte um eine maschinenlesbare Kennzeichnung."
 
 #. translators: %s: link to the AI Act article 50 text.
 #: src/Admin/WithdrawalSettingsPage.php:361
@@ -8346,10 +8370,14 @@ msgid ""
 "content (%s). This is compliance support, not legal advice; the exact "
 "obligation for your store is yours to confirm."
 msgstr ""
+"Standardmäßig aktiviert. Hilft dir, die Transparenzanforderung für "
+"synthetische Inhalte zu erfüllen (%s). Das ist Unterstützung bei der "
+"Compliance, keine Rechtsberatung; welche Pflicht für deinen Shop genau gilt,"
+" musst du selbst prüfen."
 
 #: src/Admin/WithdrawalSettingsPage.php:362
 msgid "AI Act, art. 50"
-msgstr ""
+msgstr "KI-Verordnung, Art. 50"
 
 #: src/AIFeed/LlmsTxtService.php:94
 msgid "Legal"
@@ -8922,25 +8950,22 @@ msgstr ""
 #: src/Enum/DeliveryTimeUnit.php:16
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d Tag"
+msgstr[1] "%d Tage"
 
 #. translators: %d: delivery time count in business days
 #: src/Enum/DeliveryTimeUnit.php:18
 msgid "%d business day"
 msgid_plural "%d business days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d Werktag"
+msgstr[1] "%d Werktage"
 
 #. translators: %d: delivery time count in weeks
 #: src/Enum/DeliveryTimeUnit.php:20
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d Woche"
+msgstr[1] "%d Wochen"
 
 #: src/Enum/LegalPageType.php:19
 msgid "Return Policy"
@@ -9113,59 +9138,59 @@ msgstr "m³"
 
 #: src/Migration/Migration_2_6_0.php:33
 msgid "Cereals containing gluten"
-msgstr ""
+msgstr "Glutenhaltiges Getreide"
 
 #: src/Migration/Migration_2_6_0.php:34
 msgid "Crustaceans"
-msgstr ""
+msgstr "Krebstiere"
 
 #: src/Migration/Migration_2_6_0.php:35
 msgid "Eggs"
-msgstr ""
+msgstr "Eier"
 
 #: src/Migration/Migration_2_6_0.php:36
 msgid "Fish"
-msgstr ""
+msgstr "Fische"
 
 #: src/Migration/Migration_2_6_0.php:37
 msgid "Peanuts"
-msgstr ""
+msgstr "Erdnüsse"
 
 #: src/Migration/Migration_2_6_0.php:38
 msgid "Soybeans"
-msgstr ""
+msgstr "Sojabohnen"
 
 #: src/Migration/Migration_2_6_0.php:39
 msgid "Milk"
-msgstr ""
+msgstr "Milch"
 
 #: src/Migration/Migration_2_6_0.php:40
 msgid "Nuts"
-msgstr ""
+msgstr "Schalenfrüchte"
 
 #: src/Migration/Migration_2_6_0.php:41
 msgid "Celery"
-msgstr ""
+msgstr "Sellerie"
 
 #: src/Migration/Migration_2_6_0.php:42
 msgid "Mustard"
-msgstr ""
+msgstr "Senf"
 
 #: src/Migration/Migration_2_6_0.php:43
 msgid "Sesame seeds"
-msgstr ""
+msgstr "Sesamsamen"
 
 #: src/Migration/Migration_2_6_0.php:44
 msgid "Sulphur dioxide and sulphites"
-msgstr ""
+msgstr "Schwefeldioxid und Sulphite"
 
 #: src/Migration/Migration_2_6_0.php:45
 msgid "Lupin"
-msgstr ""
+msgstr "Lupinen"
 
 #: src/Migration/Migration_2_6_0.php:46
 msgid "Molluscs"
-msgstr ""
+msgstr "Weichtiere"
 
 #: src/PageCompliance/Enum/Severity.php:19
 msgid "Recommended"
@@ -10759,9 +10784,8 @@ msgstr ""
 #: src/Service/CompareService.php:296 src/Shortcode/ShortcodeManager.php:306
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Vergleich (%d)"
+msgstr[1] "Vergleich (%d)"
 
 #: src/Service/CompareService.php:405
 msgid "Add to compare"
@@ -10921,23 +10945,25 @@ msgid ""
 "conformity. If the goods do not conform to the contract, you have the "
 "remedies provided by law, free of charge."
 msgstr ""
+"Für die in diesem Shop verkauften Waren gilt die gesetzliche Gewährleistung "
+"für die Vertragsmäßigkeit. Sind die Waren nicht vertragsgemäß, stehen dir "
+"die gesetzlich vorgesehenen Rechte unentgeltlich zu."
 
 #: src/Service/ConsumerInformationService.php:97
 msgid "Guarantee of durability"
-msgstr ""
+msgstr "Haltbarkeitsgarantie"
 
 #. translators: %d: number of months.
 #: src/Service/ConsumerInformationService.php:100
 #: src/Service/ConsumerInformationService.php:112
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d Monat"
+msgstr[1] "%d Monate"
 
 #: src/Service/ConsumerInformationService.php:109
 msgid "Free software updates"
-msgstr ""
+msgstr "Kostenlose Software-Updates"
 
 #: src/Service/CopyrightNoticeService.php:45
 msgid "Copyright notice"
@@ -11285,39 +11311,39 @@ msgstr "Ergebnisse aktualisiert."
 
 #: src/Service/FoodService.php:151
 msgid "Energy (kJ)"
-msgstr ""
+msgstr "Energie (kJ)"
 
 #: src/Service/FoodService.php:152
 msgid "Energy (kcal)"
-msgstr ""
+msgstr "Energie (kcal)"
 
 #: src/Service/FoodService.php:153
 msgid "Fat"
-msgstr ""
+msgstr "Fett"
 
 #: src/Service/FoodService.php:154
 msgid "of which saturates"
-msgstr ""
+msgstr "davon gesättigte Fettsäuren"
 
 #: src/Service/FoodService.php:155
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Kohlenhydrate"
 
 #: src/Service/FoodService.php:156
 msgid "of which sugars"
-msgstr ""
+msgstr "davon Zucker"
 
 #: src/Service/FoodService.php:157
 msgid "Fibre"
-msgstr ""
+msgstr "Ballaststoffe"
 
 #: src/Service/FoodService.php:158
 msgid "Protein"
-msgstr ""
+msgstr "Eiweiß"
 
 #: src/Service/FoodService.php:159
 msgid "Salt"
-msgstr ""
+msgstr "Salz"
 
 #: src/Service/GPSRService.php:94
 msgid "GPSR"
@@ -11537,7 +11563,7 @@ msgstr "Podany NIP ist nie prawidlowy. Sprawdz numer i sprobuj ponownie."
 
 #: src/Service/NipLookupService.php:164
 msgid "That VAT ID (NIP) is not valid."
-msgstr ""
+msgstr "Diese Umsatzsteuer-ID (NIP) ist ungültig."
 
 #: src/Service/NipLookupService.php:262
 msgid "Invalid VAT ID (NIP)."
@@ -12829,7 +12855,7 @@ msgstr "dein Konto konnte nicht erstellt werden. Bitte versuche es erneut."
 
 #: src/Service/SocialProofService.php:82
 msgid "Dismiss"
-msgstr ""
+msgstr "Ausblenden"
 
 #: src/Service/SocialProofService.php:211
 msgid "just now"
@@ -12839,17 +12865,15 @@ msgstr "soeben"
 #: src/Service/SocialProofService.php:219
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "vor %d Minute"
+msgstr[1] "vor %d Minuten"
 
 #. translators: %d: number of hours since purchase
 #: src/Service/SocialProofService.php:228
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "vor %d Stunde"
+msgstr[1] "vor %d Stunden"
 
 #: src/Service/StockExportService.php:47
 msgid "Product name"
@@ -14465,4 +14489,46 @@ msgstr ""
 
 #: templates/forms/withdrawal-lookup.php
 msgid "2011/83/EU (as amended by 2023/2673)"
+msgstr "2011/83/EU (geändert durch 2023/2673)"
+
+#: src/Admin/WithdrawalSettingsPage.php:245
+msgid "Guest form wording"
+msgstr "Formulierungen im Gastformular"
+
+#: src/Admin/WithdrawalSettingsPage.php:246
+msgid ""
+"Texts on the page holding the [polski_withdrawal_lookup] shortcode. Leave a "
+"field empty to keep the built-in wording, which is translated with the rest "
+"of the plugin."
 msgstr ""
+"Texte auf der Seite mit dem Shortcode [polski_withdrawal_lookup]. Lass ein "
+"Feld leer, um die eingebaute Formulierung zu behalten, die mit dem übrigen "
+"Plugin übersetzt wird."
+
+#: src/Admin/WithdrawalSettingsPage.php:249
+msgid "Heading"
+msgstr "Überschrift"
+
+#: src/Admin/WithdrawalSettingsPage.php:255
+msgid "Intro paragraph"
+msgstr "Einleitungsabsatz"
+
+#. translators: 1: the {company} placeholder, 2: the {days} placeholder
+#: src/Admin/WithdrawalSettingsPage.php:262
+#, php-format
+msgid ""
+"You may use %1$s for your company name and %2$s for the withdrawal period in"
+" days. Leave them out and the text is printed exactly as you type it, "
+"percent signs included."
+msgstr ""
+"Du kannst %1$s für deinen Firmennamen und %2$s für die Widerrufsfrist in "
+"Tagen verwenden. Lässt du sie weg, wird der Text genau so ausgegeben, wie du"
+" ihn eingibst, samt Prozentzeichen."
+
+#: src/Admin/WithdrawalSettingsPage.php:271
+msgid "Order number label"
+msgstr "Beschriftung „Bestellnummer“"
+
+#: src/Admin/WithdrawalSettingsPage.php:283
+msgid "Submit button"
+msgstr "Schaltfläche zum Absenden"
