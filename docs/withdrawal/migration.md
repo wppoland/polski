@@ -15,7 +15,7 @@ page and order flow keep working.
 
 1. New database tables (`polski_withdrawals`, `polski_withdrawal_items`)
    are created on plugin activation via the migration runner.
-2. Three new order statuses (`wc-withdrawal-requested`, `-partial`,
+2. Three new order statuses (`wc-withdrawal-req`, `-part`,
    `-completed`) are registered.
 3. Three new Gutenberg blocks and three shortcodes become available.
 4. A `Polski › Withdrawals` admin menu plus a `Polski › Withdrawal
