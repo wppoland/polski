@@ -10,7 +10,7 @@ reporting, multi-language Annex, integrations).
 | Concern | Class |
 |---|---|
 | Eligibility, request creation, lifecycle | `Polski\Service\WithdrawalService` |
-| Custom order statuses (`wc-withdrawal-requested`, `-partial`, `-completed`) | `Polski\Service\WithdrawalOrderStatusService` |
+| Custom order statuses (`wc-withdrawal-req`, `-part`, `-done`) | `Polski\Service\WithdrawalOrderStatusService` |
 | Guest flow (email + order number → magic-link) | `Polski\Service\GuestWithdrawalService` |
 | Annex I(A) + I(B) generator (PL) | `Polski\Service\AnnexGeneratorService` |
 | Per-product + per-category exemptions (Art. 38 pkt 3-13) | `Polski\Service\WithdrawalExemptionService` + `Polski\Enum\WithdrawalExemptionReason` |
