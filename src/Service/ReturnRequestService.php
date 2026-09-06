@@ -93,6 +93,13 @@ final class ReturnRequestService implements Bootable, HasHooks
      */
     public function addOrderAction(array $actions, \WC_Order $order): array
     {
+        // Same reason as the withdrawal button: since WooCommerce 10.9 this
+        // filter also feeds the order-received screen, where a complaint link
+        // makes no sense yet.
+        if (function_exists('is_order_received_page') && is_order_received_page()) {
+            return $actions;
+        }
+
         if (! $this->isEligible($order)) {
             return $actions;
         }

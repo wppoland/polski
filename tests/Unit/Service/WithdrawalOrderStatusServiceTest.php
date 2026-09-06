@@ -33,9 +33,9 @@ final class WithdrawalOrderStatusServiceTest extends TestCase
         self::assertIsArray($result);
         self::assertContains('completed', $result);
         self::assertContains('processing', $result);
-        self::assertContains('withdrawal-requested', $result);
-        self::assertContains('withdrawal-partial', $result);
-        self::assertContains('withdrawal-completed', $result);
+        self::assertContains(WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_REQUESTED), $result);
+        self::assertContains(WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_PARTIAL), $result);
+        self::assertContains(WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_COMPLETED), $result);
     }
 
     public function testTreatAsPaidReturnsNonArrayUntouched(): void
@@ -50,7 +50,7 @@ final class WithdrawalOrderStatusServiceTest extends TestCase
 
         self::assertIsArray($result);
         self::assertContains('completed', $result);
-        self::assertContains('withdrawal-partial', $result);
+        self::assertContains(WithdrawalOrderStatusService::statusKey(WithdrawalOrderStatusService::STATUS_PARTIAL), $result);
     }
 
     public function testAddToStatusListReturnsNonArrayUntouched(): void
@@ -72,5 +72,29 @@ final class WithdrawalOrderStatusServiceTest extends TestCase
         self::assertArrayHasKey(WithdrawalOrderStatusService::STATUS_REQUESTED, $result);
         self::assertArrayHasKey(WithdrawalOrderStatusService::STATUS_PARTIAL, $result);
         self::assertArrayHasKey(WithdrawalOrderStatusService::STATUS_COMPLETED, $result);
+    }
+
+    /**
+     * An order status lives in a varchar(20) column on both supported schemas
+     * (`wp_posts.post_status`, `wp_wc_orders.status`). A longer slug is
+     * truncated on write, and the order then carries a status nobody
+     * registered: it disappears from WooCommerce - Orders while still opening
+     * from its own URL. Reported on wordpress.org against 1.31.1.
+     */
+    public function testEveryStatusFitsTheStorageColumn(): void
+    {
+        $slugs = [
+            WithdrawalOrderStatusService::STATUS_REQUESTED,
+            WithdrawalOrderStatusService::STATUS_PARTIAL,
+            WithdrawalOrderStatusService::STATUS_COMPLETED,
+        ];
+
+        foreach ($slugs as $slug) {
+            self::assertLessThanOrEqual(
+                WithdrawalOrderStatusService::MAX_STATUS_LENGTH,
+                strlen($slug),
+                sprintf('Order status "%s" is %d characters and cannot be stored.', $slug, strlen($slug)),
+            );
+        }
     }
 }
