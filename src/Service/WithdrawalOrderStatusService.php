@@ -10,15 +10,29 @@ use Polski\Contract\HasHooks;
 /**
  * Registers the dedicated order statuses that track withdrawal lifecycle.
  *
- * - `wc-withdrawal-requested`: customer (or admin) filed a withdrawal request.
- * - `wc-withdrawal-partial`:   at least one item refunded, items still remain.
- * - `wc-withdrawal-completed`: all withdrawn items refunded, processing finished.
+ * - `wc-withdrawal-req`:  customer (or admin) filed a withdrawal request.
+ * - `wc-withdrawal-part`: at least one item refunded, items still remain.
+ * - `wc-withdrawal-done`: all withdrawn items refunded, processing finished.
+ *
+ * The slugs are abbreviated because an order status is stored in a
+ * `varchar(20)` column, `wp_posts.post_status` on legacy storage and
+ * `wp_wc_orders.status` under HPOS. A longer key is silently truncated on
+ * write, so the order ends up carrying a status nobody registered: it drops
+ * out of the WooCommerce order list, which builds its "All" view from
+ * `array_intersect(array_keys(wc_get_order_statuses()), get_post_stati(...))`,
+ * while still opening fine by direct URL. Keep every slug at 20 characters or
+ * fewer, including the `wc-` prefix. {@see self::MAX_STATUS_LENGTH}
  */
 final class WithdrawalOrderStatusService implements HasHooks
 {
-    public const STATUS_REQUESTED = 'wc-withdrawal-requested';
-    public const STATUS_PARTIAL = 'wc-withdrawal-partial';
-    public const STATUS_COMPLETED = 'wc-withdrawal-completed';
+    public const STATUS_REQUESTED = 'wc-withdrawal-req';
+    public const STATUS_PARTIAL = 'wc-withdrawal-part';
+    public const STATUS_COMPLETED = 'wc-withdrawal-done';
+
+    /**
+     * Storage limit of the order status column on both supported schemas.
+     */
+    public const MAX_STATUS_LENGTH = 20;
 
     public function registerHooks(): void
     {

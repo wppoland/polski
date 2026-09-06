@@ -55,6 +55,11 @@ jobs:
               # only, so without this step WordPress fatals on the first kit
               # interface and every request returns 500, which is what these two
               # jobs had been timing out on.
+              # composer.lock is gitignored, so this resolves from scratch and talks
+              # to the GitHub API. Unauthenticated it is rate limited and the whole
+              # job dies on "Could not authenticate against github.com".
+              env:
+                  COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ github.token }}"}}'
               run: composer install --no-interaction --prefer-dist --no-progress
 
             - name: Prepare wp-env (WooCommerce + Polski only)
@@ -150,6 +155,11 @@ jobs:
               # only, so without this step WordPress fatals on the first kit
               # interface and every request returns 500, which is what these two
               # jobs had been timing out on.
+              # composer.lock is gitignored, so this resolves from scratch and talks
+              # to the GitHub API. Unauthenticated it is rate limited and the whole
+              # job dies on "Could not authenticate against github.com".
+              env:
+                  COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ github.token }}"}}'
               run: composer install --no-interaction --prefer-dist --no-progress
 
             - name: Prepare wp-env (WooCommerce + Polski only)

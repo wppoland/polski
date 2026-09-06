@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.1
+Stable tag: 1.31.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -343,6 +343,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.2 =
+* Fixed: an order given one of the withdrawal statuses vanished from WooCommerce - Orders. The three statuses were 21 to 23 characters long and an order status is stored in a 20-character column, so each one was cut short on the way into the database and the order ended up carrying a status that is registered nowhere. It was never lost: it stayed in the database, opened normally from its own URL, and came back on the list as soon as a standard status was set. The statuses are now short enough to store, and updating rewrites the ones already saved. Reported by strid3rr on the support forum.
+* Fixed: the withdrawal button and the complaint / return link appeared on the order confirmation screen, straight after checkout. WooCommerce 10.9 began rendering My Account order actions there as well; both links belong on My Account - Orders, which is where the documentation puts them. Reported by strid3rr on the support forum.
 
 = 1.31.1 =
 * Fixed: switching the NIP module off left the NIP field on checkout. Two services could add it, and the second one defaulted to on from a setting no screen writes, so the switch a merchant can actually see only ever worked in one direction. The field now has a single owner, the NIP module, on both the block and the classic checkout. Reported by czester on the support forum.

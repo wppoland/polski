@@ -672,6 +672,14 @@ final class WithdrawalService implements Bootable, HasHooks
      */
     public function addWithdrawalAction(array $actions, \WC_Order $order): array
     {
+        // WooCommerce 10.9 started rendering these actions in order-details.php,
+        // which is also the order-received (thank you) screen. Offering "withdraw
+        // from contract" the second a customer finishes paying is not what the
+        // documentation describes, and the button belongs on My Account - Orders.
+        if (function_exists('is_order_received_page') && is_order_received_page()) {
+            return $actions;
+        }
+
         if ($this->isEligible($order)) {
             $actions['polski_withdraw'] = [
                 'url' => wp_nonce_url(
