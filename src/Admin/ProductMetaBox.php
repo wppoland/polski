@@ -364,6 +364,30 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
+        if (ModulesPage::isModuleEnabled('deposit')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Deposit scheme (system kaucyjny)', 'polski') . '</h4>';
+
+            woocommerce_wp_select([
+                'id' => \Polski\Service\DepositService::META_TYPE,
+                'label' => __('Packaging', 'polski'),
+                'description' => __('Packaging covered by the deposit return scheme. The deposit is added on top of the price at checkout and is refunded when the packaging is returned.', 'polski'),
+                'desc_tip' => true,
+                'options' => \Polski\Service\DepositService::types(),
+            ]);
+
+            woocommerce_wp_text_input([
+                'id' => \Polski\Service\DepositService::META_UNITS,
+                'label' => __('Units of packaging', 'polski'),
+                'description' => __('How many covered containers one item contains. A six-pack is 6. Leave at 1 for a single bottle or can.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'number',
+                'custom_attributes' => ['min' => '1', 'step' => '1'],
+            ]);
+
+            echo '</div>';
+        }
+
         echo '</div>';
     }
 
@@ -380,6 +404,8 @@ final class ProductMetaBox implements HasHooks
         '_polski_green_claim_basis' => 'green_claims',
         '_polski_green_claim_cert_url' => 'green_claims',
         '_polski_green_claim_expiry' => 'green_claims',
+        \Polski\Service\DepositService::META_TYPE => 'deposit',
+        \Polski\Service\DepositService::META_UNITS => 'deposit',
     ];
 
     /**
@@ -422,6 +448,8 @@ final class ProductMetaBox implements HasHooks
             '_polski_green_claim_basis' => 'textarea',
             '_polski_green_claim_cert_url' => 'url',
             '_polski_green_claim_expiry' => 'string',
+            \Polski\Service\DepositService::META_TYPE => 'string',
+            \Polski\Service\DepositService::META_UNITS => 'int',
         ];
 
         foreach ($fields as $key => $type) {
