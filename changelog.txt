@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.33.2 =
+* Listing only, no functional change. The short description now names JPK_FA and the NIP lookup, which the plugin has done for a long time without saying so where anyone searching would see it. Tags: "rodo" is dropped, because that search is dominated by cookie and newsletter plugins and this plugin does not appear in it at all, and "jpk" and "zwroty" take its place.
+
 = 1.33.1 =
 * Fixed: the "withdraw from this order" link in the order email did not work for a logged-in customer. It led to "Oops, something went wrong on our side" instead of the form, so the withdrawal could not be started from the email at all. The link never carried a one-time token and the page demanded one. Opening the form changes nothing and the order's owner is checked separately, so the token is no longer required there; the form submission that actually files the declaration keeps its own, unchanged.
 
