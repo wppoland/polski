@@ -273,6 +273,7 @@ return static function (Container $c): void {
         $c->get(\Polski\Repository\WithdrawalItemsRepository::class),
     ));
     $c->singleton(\Polski\Service\WithdrawalOrderStatusService::class, static fn () => new \Polski\Service\WithdrawalOrderStatusService());
+    $c->singleton(\Polski\Service\DepositService::class, static fn () => new \Polski\Service\DepositService());
     $c->singleton(\Polski\Service\GuestWithdrawalService::class, static fn () => new \Polski\Service\GuestWithdrawalService(
         $c->get(WithdrawalService::class),
         $c->get(WithdrawalRepository::class),
