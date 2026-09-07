@@ -1847,7 +1847,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:752
 msgid "DSA reports"
-msgstr "Rapporty DSA"
+msgstr ""
 
 #: src/Admin/AdminPage.php:753
 msgid "Handling of content notices under the Digital Services Act."
@@ -7918,7 +7918,7 @@ msgstr "Polski - Rückzug"
 
 #: src/Admin/WithdrawalOrderMetaBox.php:69
 msgid "There is no withdrawal declaration for this order."
-msgstr "Brak oświadczenia oder odstąpieniu dla tego zamówienia."
+msgstr ""
 
 #: src/Admin/WithdrawalOrderMetaBox.php:73
 #: src/Admin/WithdrawalsAdminPage.php:97
@@ -9015,7 +9015,7 @@ msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:32
 msgid "Inseparably mixed with other items after delivery (Article 38(6))"
-msgstr "Produkt nieoddzielnie połączony z innymi (Art. 38 Pkt. 6)"
+msgstr ""
 
 #: src/Enum/WithdrawalExemptionReason.php:33
 msgid "Alcoholic beverages (Article 38(7))"
@@ -11175,7 +11175,7 @@ msgstr "Ungültiges Sicherheitstoken."
 
 #: src/Service/DSAService.php:62
 msgid "Too many reports from this IP address. Please try again in an hour."
-msgstr "Dies ist die IP-Adresse dieser Person. Spóbuj ponownie za godzinę."
+msgstr ""
 
 #: src/Service/DSAService.php:63
 msgid "Rate limited"
