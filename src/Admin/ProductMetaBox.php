@@ -237,9 +237,13 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
-        // --- GPSR Section ---
+        // --- Product responsibility -------------------------------------
+        // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
+        // economic operator, so every party here carries a contact field.
+        // Kept apart from the safety texts below: one block is about who is
+        // answerable for the product, the other about how to use it safely.
         echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('GPSR - Product Safety', 'polski') . '</h4>';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Product responsibility', 'polski') . '</h4>';
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_manufacturer_name',
@@ -252,6 +256,34 @@ final class ProductMetaBox implements HasHooks
             'id' => '_polski_gpsr_manufacturer_address',
             'label' => __('Manufacturer address', 'polski'),
             'description' => __('Full postal address of the manufacturer.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_polski_gpsr_manufacturer_contact',
+            'label' => __('Manufacturer contact', 'polski'),
+            'description' => __('Electronic address, an email or a web page, that GPSR requires alongside the postal one.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_polski_gpsr_responsible_person',
+            'label' => __('Responsible person', 'polski'),
+            'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_textarea_input([
+            'id' => '_polski_gpsr_responsible_address',
+            'label' => __('Responsible person address', 'polski'),
+            'description' => __('Full postal address of the EU responsible person.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_text_input([
+            'id' => '_polski_gpsr_responsible_contact',
+            'label' => __('Responsible person contact', 'polski'),
+            'description' => __('Electronic address, an email or a web page, for the EU responsible person.', 'polski'),
             'desc_tip' => true,
         ]);
 
@@ -270,11 +302,17 @@ final class ProductMetaBox implements HasHooks
         ]);
 
         woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_responsible_person',
-            'label' => __('Responsible person', 'polski'),
-            'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
+            'id' => '_polski_gpsr_importer_contact',
+            'label' => __('Importer contact', 'polski'),
+            'description' => __('Electronic address, an email or a web page, for the importer.', 'polski'),
             'desc_tip' => true,
         ]);
+
+        echo '</div>';
+
+        // --- Product safety (GPSR) --------------------------------------
+        echo '<div class="options_group">';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Product safety (GPSR)', 'polski') . '</h4>';
 
         woocommerce_wp_text_input([
             'id' => '_polski_gpsr_product_identifier',
@@ -449,9 +487,13 @@ final class ProductMetaBox implements HasHooks
             '_polski_featured_video_title' => 'string',
             '_polski_gpsr_manufacturer_name' => 'string',
             '_polski_gpsr_manufacturer_address' => 'textarea',
+            '_polski_gpsr_manufacturer_contact' => 'string',
             '_polski_gpsr_importer_name' => 'string',
             '_polski_gpsr_importer_address' => 'textarea',
+            '_polski_gpsr_importer_contact' => 'string',
             '_polski_gpsr_responsible_person' => 'string',
+            '_polski_gpsr_responsible_address' => 'textarea',
+            '_polski_gpsr_responsible_contact' => 'string',
             '_polski_gpsr_product_identifier' => 'string',
             '_polski_gpsr_safety_warnings' => 'textarea',
             '_polski_gpsr_instructions' => 'textarea',

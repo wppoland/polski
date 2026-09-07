@@ -138,8 +138,7 @@ final class SearchService implements Bootable, HasHooks
             $queryArgs['stock_status'] = 'instock';
         }
 
-        $products = wc_get_products($queryArgs);
-        $products = is_array($products) ? $products : [];
+        $products = $this->collectAjaxProducts($term, $queryArgs);
         $results = [];
 
         foreach ($products as $product) {
@@ -180,42 +179,136 @@ final class SearchService implements Bootable, HasHooks
             return $search;
         }
 
-        global $wpdb;
+        $searchTerm = (string) ($query->query_vars['s'] ?? '');
 
-        $searchTerm = $query->query_vars['s'] ?? '';
-
-        if ($searchTerm === '') {
+        if ($searchTerm === '' || $search === '') {
             return $search;
         }
 
-        $like = '%' . $wpdb->esc_like($searchTerm) . '%';
+        $ids = $this->extraMatchIds($searchTerm);
 
-        $metaSearch = $wpdb->prepare(
-            " OR ({$wpdb->posts}.ID IN (
-                SELECT post_id FROM {$wpdb->postmeta}
-                WHERE meta_key IN ('_polski_gtin', '_polski_ingredients', '_polski_gpsr_responsible')
-                AND meta_value LIKE %s
-            ))",
-            $like,
-        );
-
-        // Also search manufacturer taxonomy.
-        $taxSearch = $wpdb->prepare(
-            " OR ({$wpdb->posts}.ID IN (
-                SELECT tr.object_id FROM {$wpdb->term_relationships} tr
-                JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-                JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
-                WHERE tt.taxonomy = 'polski_manufacturer'
-                AND t.name LIKE %s
-            ))",
-            $like,
-        );
-
-        // Insert before the closing parenthesis of the search clause.
-        if ($search !== '') {
-            $search = preg_replace('/\)\s*$/', $metaSearch . $taxSearch . ')', $search) ?? $search;
+        if ($ids === []) {
+            return $search;
         }
 
-        return $search;
+        global $wpdb;
+
+        $clause = " OR ({$wpdb->posts}.ID IN (" . implode(',', array_map('intval', $ids)) . '))';
+
+        // Insert before the closing parenthesis of the search clause.
+        return preg_replace('/\)\s*$/', $clause . ')', $search) ?? $search;
+    }
+
+    /**
+     * Run the dropdown's two passes: WooCommerce's own title/content search
+     * first, so the most obvious matches stay on top, then top up from the
+     * fields WooCommerce does not look at.
+     *
+     * @param array<string, mixed> $queryArgs
+     * @return list<\WC_Product>
+     */
+    private function collectAjaxProducts(string $term, array $queryArgs): array
+    {
+        $limit = (int) $queryArgs['limit'];
+        $products = wc_get_products($queryArgs);
+        $found = [];
+
+        foreach (is_array($products) ? $products : [] as $product) {
+            if ($product instanceof \WC_Product) {
+                $found[$product->get_id()] = $product;
+            }
+        }
+
+        if (count($found) >= $limit) {
+            return array_values($found);
+        }
+
+        $extra = array_values(array_diff($this->extraMatchIds($term), array_keys($found)));
+
+        if ($extra === []) {
+            return array_values($found);
+        }
+
+        $topUpArgs = $queryArgs;
+        unset($topUpArgs['s']);
+        $topUpArgs['include'] = $extra;
+        $topUpArgs['limit'] = $limit - count($found);
+
+        foreach ((array) wc_get_products($topUpArgs) as $product) {
+            if ($product instanceof \WC_Product) {
+                $found[$product->get_id()] = $product;
+            }
+        }
+
+        return array_values($found);
+    }
+
+    /**
+     * Product IDs matched by data WooCommerce's own product search ignores:
+     * Polski meta, the SKU, category names and the values of the global
+     * attributes the shop chose to index.
+     *
+     * The AJAX dropdown and the storefront results page both go through here,
+     * so the two cannot disagree about what counts as a match. Before this
+     * existed the dropdown ran wc_get_products(), which is not the main query,
+     * so none of the extra matching applied to it at all.
+     *
+     * @return list<int>
+     */
+    private function extraMatchIds(string $term): array
+    {
+        global $wpdb;
+
+        $settings = $this->getAjaxSettings();
+        $like = '%' . $wpdb->esc_like($term) . '%';
+
+        $metaKeys = ['_polski_gtin', '_polski_ingredients', '_polski_gpsr_responsible'];
+
+        if ((bool) ($settings['search_sku'] ?? true)) {
+            $metaKeys[] = '_sku';
+        }
+
+        $taxonomies = ['polski_manufacturer'];
+
+        if ((bool) ($settings['search_categories'] ?? true)) {
+            $taxonomies[] = 'product_cat';
+        }
+
+        foreach ((array) ($settings['search_attributes'] ?? []) as $slug) {
+            $slug = sanitize_key((string) $slug);
+            if ($slug !== '' && taxonomy_exists($slug)) {
+                $taxonomies[] = $slug;
+            }
+        }
+
+        // ponytail: capped id list, plenty for a dropdown and for widening a
+        // search clause. Move to a FULLTEXT index if a catalogue ever outgrows it.
+        $cap = 500;
+
+        $metaPlaceholders = implode(',', array_fill(0, count($metaKeys), '%s'));
+        $metaIds = $wpdb->get_col(
+            $wpdb->prepare(
+                "SELECT DISTINCT post_id FROM {$wpdb->postmeta}
+                 WHERE meta_key IN ({$metaPlaceholders}) AND meta_value LIKE %s
+                 LIMIT %d",
+                [...$metaKeys, $like, $cap],
+            )
+        );
+
+        $taxPlaceholders = implode(',', array_fill(0, count($taxonomies), '%s'));
+        $taxIds = $wpdb->get_col(
+            $wpdb->prepare(
+                "SELECT DISTINCT tr.object_id FROM {$wpdb->term_relationships} tr
+                 INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                 INNER JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
+                 WHERE tt.taxonomy IN ({$taxPlaceholders}) AND t.name LIKE %s
+                 LIMIT %d",
+                [...$taxonomies, $like, $cap],
+            )
+        );
+
+        $ids = array_map('intval', array_merge((array) $metaIds, (array) $taxIds));
+
+        return array_values(array_unique(array_filter($ids)));
     }
 }
