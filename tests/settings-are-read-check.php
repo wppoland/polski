@@ -158,7 +158,6 @@ $known = [
     'polski_withdrawal|items_heading',
     'polski_withdrawal|legal_notice_text',
     'polski_withdrawal|requested_order_note',
-    'polski_omnibus|price_count_from',
 ];
 
 $new = array_values(array_diff($dead, $known));

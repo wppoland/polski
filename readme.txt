@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.9
+Stable tag: 1.31.10
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -355,6 +355,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.10 =
+* Fixed: the Omnibus "calculated from" setting did nothing, and the window it was meant to control was the wrong one. The lowest price was always measured up to now, so a running sale price competed to be its own lowest price and the notice could just repeat the current price. Measured from the sale's start date, as the setting says and as the Directive intends, the notice shows the lowest price in the 30 days before the reduction instead.
+* Note on upgrading: on a product whose sale has a start date, the figure in the notice can change, and it changes to the legally correct one. In the test case, a product reduced to 79 after selling at 250 and 300 showed "79" before and shows "250" after. Products with a sale price and no scheduled start are unaffected, because there is no date to anchor the window to; that is the common case.
 
 = 1.31.9 =
 * Fixed: eleven settings on the Modules screen did nothing. Wired up: unit price on product lists, Omnibus with tax, Omnibus regular price, the Omnibus "no price history" choice and its custom text, Omnibus visibility on the product page and on product lists, the GPSR display mode and section title, KSeF auto-detection by VAT ID, and the DSA contact name and phone, which art. 12 expects to be published and which were only ever used internally.
