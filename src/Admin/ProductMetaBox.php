@@ -364,6 +364,18 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
+        if (ModulesPage::isModuleEnabled('vat_margin')) {
+            echo '<div class="options_group">';
+            woocommerce_wp_select([
+                'id' => \Polski\Service\VatMarginService::META_SCHEME,
+                'label' => __('VAT margin scheme', 'polski'),
+                'description' => __('Taxed on the margin under art. 120 ustawy o VAT. The invoice will name the scheme and show no VAT for these goods.', 'polski'),
+                'desc_tip' => true,
+                'options' => \Polski\Service\VatMarginService::schemes(),
+            ]);
+            echo '</div>';
+        }
+
         if (ModulesPage::isModuleEnabled('deposit')) {
             echo '<div class="options_group">';
             echo '<h4 style="padding-left:12px;">' . esc_html__('Deposit scheme (system kaucyjny)', 'polski') . '</h4>';
@@ -406,6 +418,7 @@ final class ProductMetaBox implements HasHooks
         '_polski_green_claim_expiry' => 'green_claims',
         \Polski\Service\DepositService::META_TYPE => 'deposit',
         \Polski\Service\DepositService::META_UNITS => 'deposit',
+        \Polski\Service\VatMarginService::META_SCHEME => 'vat_margin',
     ];
 
     /**
@@ -450,6 +463,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_green_claim_expiry' => 'string',
             \Polski\Service\DepositService::META_TYPE => 'string',
             \Polski\Service\DepositService::META_UNITS => 'int',
+            \Polski\Service\VatMarginService::META_SCHEME => 'string',
         ];
 
         foreach ($fields as $key => $type) {

@@ -202,6 +202,16 @@ final class ModulesPage implements HasHooks
                 ],
             ],
             [
+                'id' => 'vat_margin',
+                'name' => __('VAT margin scheme (procedura marzy)', 'polski'),
+                'description' => __('For second-hand goods, works of art, collectors\' items and antiques taxed on the margin under art. 120 ustawy o VAT. Mark the scheme on each product; the invoice then carries the annotation art. 106e ust. 3 requires and, where every line is under the scheme, shows no VAT. It does not compute the margin, decide whether goods qualify, or change a product\'s price or tax class: those stay your configuration. Off by default.', 'polski'),
+                'group' => 'Compliance',
+                'enabled' => false,
+                'icon' => 'dashicons-money-alt',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
                 'id' => 'vies',
                 'name' => __('EU VAT ID check (VIES)', 'polski'),
                 'description' => __('Validates a customer\'s EU VAT number against the European Commission\'s VIES service, which is what an intra-EU B2B sale at 0% VAT turns on. The NIP module only covers Polish numbers, through the GUS register. Adds a check button to the order screen and records the answer on the order. Enter your own VAT number below to make it a qualified check: only then does VIES return a consultation number, which is the evidence that you checked. Off by default.', 'polski'),
