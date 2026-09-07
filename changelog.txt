@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.8 =
+* Fixed: the digital-content waiver field was registered on block checkout even with the Legal checkboxes module switched off, so every order carried it and the confirmation page listed it under Additional information with the value "No". The service had no module check at all. It is now silent whenever the module is off. Reported by strid3rr on the support forum.
+* Fixed: two switches governed that one field and they contradicted each other. "Digital content (waiver)" on the modules screen was read by nothing, while the field was actually driven by a setting on the withdrawal page that defaults to on, so turning the visible switch off changed nothing. Where no explicit choice was ever saved, the visible switch now decides, and its default of off means off. A shop that deliberately set the mode on the withdrawal page keeps what it configured: this is a declaration under art. 16(m), and dropping it from a working checkout would be worse than the noise.
+
 = 1.31.7 =
 * Fixed: the Omnibus "show in cart" setting did nothing. It had been on the settings screen since the module shipped, while the class meant to render it was an empty stub, so the lowest-price notice never appeared in any cart, classic or block. The notice now shows under the item in both, and under cross-sells and any other product listing built with blocks, which do not fire the classic loop hooks the module was relying on. Reported by strid3rr on the support forum.
 * Added a release check that fails the build when the modules screen offers a setting no code reads. That is exactly how this bug survived, and the check found eleven more dead switches, which will be fixed or removed in turn.

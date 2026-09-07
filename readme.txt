@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.7
+Stable tag: 1.31.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -355,6 +355,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.8 =
+* Fixed: the digital-content waiver field was registered on block checkout even with the Legal checkboxes module switched off, so every order carried it and the confirmation page listed it under Additional information with the value "No". The service had no module check at all. It is now silent whenever the module is off. Reported by strid3rr on the support forum.
+* Fixed: two switches governed that one field and they contradicted each other. "Digital content (waiver)" on the modules screen was read by nothing, while the field was actually driven by a setting on the withdrawal page that defaults to on, so turning the visible switch off changed nothing. Where no explicit choice was ever saved, the visible switch now decides, and its default of off means off. A shop that deliberately set the mode on the withdrawal page keeps what it configured: this is a declaration under art. 16(m), and dropping it from a working checkout would be worse than the noise.
 
 = 1.31.7 =
 * Fixed: the Omnibus "show in cart" setting did nothing. It had been on the settings screen since the module shipped, while the class meant to render it was an empty stub, so the lowest-price notice never appeared in any cart, classic or block. The notice now shows under the item in both, and under cross-sells and any other product listing built with blocks, which do not fire the classic loop hooks the module was relying on. Reported by strid3rr on the support forum.
