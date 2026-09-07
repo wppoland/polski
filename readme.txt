@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.5
+Stable tag: 1.31.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -140,7 +140,7 @@ actually trading:
     VAT ID (NIP) validation           Fulfilment statuses and emails
     Unit prices, food data            Subscriptions and renewals
     Wishlist, compare, AJAX search    Gift cards and affiliate program
-    70 modules, all switchable        Multi-step checkout, pre-orders,
+    77 modules, all switchable        Multi-step checkout, pre-orders,
                                       bundles, catalog mode and RFQ
 
 Everything in the free edition stays free and open, and keeps working whether
@@ -355,6 +355,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.6 =
+* Corrected the module count on this page. It said 70 while the plugin ships 77, counted from the modules screen itself.
+* Documentation for the three modules added in 1.31.3 to 1.31.5, the deposit scheme, the VIES check and the VAT margin scheme, is now on plogins.com in English, Polish, German and Spanish.
 
 = 1.31.5 =
 * Added: the VAT margin scheme (procedura marży), off by default. For second-hand goods, works of art, collectors' items and antiques taxed on the margin under art. 120 ustawy o VAT, an invoice must not show a VAT amount and must name the scheme, as art. 106e ust. 3 requires. Mark the scheme on a product and the invoice carries the wording; where every line on the order is under the scheme the VAT summary is omitted. An order that mixes margin goods with ordinary taxed goods is annotated with a warning instead, because the two cannot share one invoice and silently hiding the VAT would hide that from you. The module changes what the invoice says; it does not compute the margin or touch prices and tax classes.
