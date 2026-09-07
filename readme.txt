@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.4
+Stable tag: 1.31.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
 * **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
+* **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
 * **Shop health monitor** - passive monitoring of frontend errors, checkout issues and sales anomalies.
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
@@ -354,6 +355,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.5 =
+* Added: the VAT margin scheme (procedura marży), off by default. For second-hand goods, works of art, collectors' items and antiques taxed on the margin under art. 120 ustawy o VAT, an invoice must not show a VAT amount and must name the scheme, as art. 106e ust. 3 requires. Mark the scheme on a product and the invoice carries the wording; where every line on the order is under the scheme the VAT summary is omitted. An order that mixes margin goods with ordinary taxed goods is annotated with a warning instead, because the two cannot share one invoice and silently hiding the VAT would hide that from you. The module changes what the invoice says; it does not compute the margin or touch prices and tax classes.
+* Added: the `polski/invoice/data` filter, so an add-on can adjust the invoice payload while the document is still being built.
+* Fixed: the invoice total was summed from the VAT breakdown rather than from the lines. Every invoice issued so far was correct, because the breakdown always covered every line, but it would have printed a total due of zero on the first invoice with no VAT rows.
 
 = 1.31.4 =
 * Added: EU VAT ID check against VIES, off by default. The NIP module only ever covered Polish numbers, through the GUS register, so nothing in the plugin could say whether a VAT number issued by another member state was real, which is what an intra-EU sale at 0% VAT turns on. The order screen now has a check button, and the answer is stored on the order. Enter your own VAT number in the module settings to make it a qualified check: only then does VIES return a consultation number, which is the evidence that the check happened. A check recorded on an order always calls VIES fresh, never from cache, because a cached consultation number would document a consultation that never took place for that order.

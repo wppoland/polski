@@ -120,6 +120,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 		</table>
 
 		<div class="polski-invoice__foot">
+			<?php if ($polski_vat !== []) : ?>
 			<table class="polski-invoice__vat">
 				<caption><?php esc_html_e('VAT summary', 'polski'); ?></caption>
 				<thead>
@@ -141,12 +142,21 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			<?php endif; ?>
+
+			<?php foreach ((array) ($polski_doc['annotations'] ?? []) as $polski_annotation) : ?>
+				<p class="polski-invoice__annotation"><?php echo esc_html((string) $polski_annotation); ?></p>
+			<?php endforeach; ?>
 
 			<div class="polski-invoice__total">
 				<span><?php esc_html_e('Total due', 'polski'); ?></span>
-				<strong><?php echo esc_html($polski_money(array_sum(array_map(
-                    static fn (array $r): float => (float) $r['gross'],
-                    $polski_vat,
+				<strong><?php
+                // Sum the lines, not the VAT breakdown. Under the margin scheme
+                // the breakdown is empty by law, and summing it would print a
+                // total due of zero on a real invoice.
+                echo esc_html($polski_money(array_sum(array_map(
+                    static fn (array $r): float => (float) ($r['gross'] ?? 0),
+                    $polski_lines,
                 )))); ?></strong>
 			</div>
 		</div>

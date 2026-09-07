@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.5 =
+* Added: the VAT margin scheme (procedura marży), off by default. For second-hand goods, works of art, collectors' items and antiques taxed on the margin under art. 120 ustawy o VAT, an invoice must not show a VAT amount and must name the scheme, as art. 106e ust. 3 requires. Mark the scheme on a product and the invoice carries the wording; where every line on the order is under the scheme the VAT summary is omitted. An order that mixes margin goods with ordinary taxed goods is annotated with a warning instead, because the two cannot share one invoice and silently hiding the VAT would hide that from you. The module changes what the invoice says; it does not compute the margin or touch prices and tax classes.
+* Added: the `polski/invoice/data` filter, so an add-on can adjust the invoice payload while the document is still being built.
+* Fixed: the invoice total was summed from the VAT breakdown rather than from the lines. Every invoice issued so far was correct, because the breakdown always covered every line, but it would have printed a total due of zero on the first invoice with no VAT rows.
+
 = 1.31.4 =
 * Added: EU VAT ID check against VIES, off by default. The NIP module only ever covered Polish numbers, through the GUS register, so nothing in the plugin could say whether a VAT number issued by another member state was real, which is what an intra-EU sale at 0% VAT turns on. The order screen now has a check button, and the answer is stored on the order. Enter your own VAT number in the module settings to make it a qualified check: only then does VIES return a consultation number, which is the evidence that the check happened. A check recorded on an order always calls VIES fresh, never from cache, because a cached consultation number would document a consultation that never took place for that order.
 
