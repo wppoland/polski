@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.33.1 =
+* Fixed: the "withdraw from this order" link in the order email did not work for a logged-in customer. It led to "Oops, something went wrong on our side" instead of the form, so the withdrawal could not be started from the email at all. The link never carried a one-time token and the page demanded one. Opening the form changes nothing and the order's owner is checked separately, so the token is no longer required there; the form submission that actually files the declaration keeps its own, unchanged.
+
 = 1.33.0 =
 * New: a GTU marking on the product, under Product data > Polski > Invoicing. Pick one of the thirteen groups from the JPK_V7 regulation, or leave it at no marking. The code is stored with the product and printed against that line on the invoice, so an order mixing marked and unmarked goods says which line the marking belongs to. Shipping and fees never carry one, and a product left unmarked prints nothing.
 
