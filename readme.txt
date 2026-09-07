@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.6
+Stable tag: 1.31.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -355,6 +355,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.7 =
+* Fixed: the Omnibus "show in cart" setting did nothing. It had been on the settings screen since the module shipped, while the class meant to render it was an empty stub, so the lowest-price notice never appeared in any cart, classic or block. The notice now shows under the item in both, and under cross-sells and any other product listing built with blocks, which do not fire the classic loop hooks the module was relying on. Reported by strid3rr on the support forum.
+* Added a release check that fails the build when the modules screen offers a setting no code reads. That is exactly how this bug survived, and the check found eleven more dead switches, which will be fixed or removed in turn.
 
 = 1.31.6 =
 * Corrected the module count on this page. It said 70 while the plugin ships 77, counted from the modules screen itself.

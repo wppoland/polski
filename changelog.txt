@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.7 =
+* Fixed: the Omnibus "show in cart" setting did nothing. It had been on the settings screen since the module shipped, while the class meant to render it was an empty stub, so the lowest-price notice never appeared in any cart, classic or block. The notice now shows under the item in both, and under cross-sells and any other product listing built with blocks, which do not fire the classic loop hooks the module was relying on. Reported by strid3rr on the support forum.
+* Added a release check that fails the build when the modules screen offers a setting no code reads. That is exactly how this bug survived, and the check found eleven more dead switches, which will be fixed or removed in turn.
+
 = 1.31.6 =
 * Corrected the module count on this page. It said 70 while the plugin ships 77, counted from the modules screen itself.
 * Documentation for the three modules added in 1.31.3 to 1.31.5, the deposit scheme, the VIES check and the VAT margin scheme, is now on plogins.com in English, Polish, German and Spanish.
