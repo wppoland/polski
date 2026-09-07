@@ -720,13 +720,17 @@ final class WithdrawalService implements Bootable, HasHooks
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $orderId = (int) $_GET['polski_withdrawal'];
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? ''));
 
-        if (! wp_verify_nonce($nonce, 'polski_withdrawal_' . $orderId)) {
-            wc_add_notice((string) ($this->getSettings()['invalid_nonce_text'] ?? __('Oops, something went wrong on our side. Please try again!', 'polski')), 'error');
-            return;
-        }
+        // No nonce is required to REACH the form. This request only renders it;
+        // the ownership check below is the authorisation, and the POST that
+        // actually creates the declaration carries its own nonce
+        // (polski_submit_withdrawal_<id>), verified further down.
+        //
+        // Requiring one here broke the link in the order email: the email CTA
+        // never appended a nonce, so a logged-in customer clicking it was told
+        // "something went wrong on our side" and could not start a withdrawal at
+        // all. A nonce would have been the wrong fix anyway, because it expires
+        // within a day and an order email is opened later than that.
 
         $order = wc_get_order($orderId);
 
