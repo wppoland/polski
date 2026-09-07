@@ -1857,7 +1857,7 @@ msgstr ""
 #: src/Admin/AdminPage.php:759 src/Admin/ModulesPage.php:1113
 #: src/Service/SecurityIncidentService.php:131
 msgid "Incident log"
-msgstr "Logi incidente"
+msgstr ""
 
 #: src/Admin/AdminPage.php:760
 msgid ""
@@ -10453,7 +10453,7 @@ msgstr "Comprar como empresa"
 #: src/Service/B2BCheckoutService.php:107
 #: src/Service/B2BCheckoutService.php:297
 msgid "I need a VAT invoice"
-msgstr "Potrzebuję faktury IVA"
+msgstr ""
 
 #: src/Service/B2BCheckoutService.php:117
 #: src/Service/B2BCheckoutService.php:307
