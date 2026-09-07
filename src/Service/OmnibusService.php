@@ -32,6 +32,7 @@ final class OmnibusService implements Bootable, HasHooks
     private bool $showRegularPrice = false;
     private string $noHistoryMode = 'hide';
     private string $noHistoryText = '';
+    private string $countFrom = 'sale_start';
 
     public function __construct(
         private readonly OmnibusPriceRepository $repository,
@@ -60,6 +61,9 @@ final class OmnibusService implements Bootable, HasHooks
         // so a shop that never touched the field sees no change.
         $this->noHistoryMode = in_array($mode, ['hide', 'current', 'custom'], true) ? $mode : 'hide';
         $this->noHistoryText = (string) ($settings['no_history_custom_text'] ?? '');
+
+        $countFrom = (string) ($settings['price_count_from'] ?? 'sale_start');
+        $this->countFrom = in_array($countFrom, ['sale_start', 'today'], true) ? $countFrom : 'sale_start';
     }
 
     public function registerHooks(): void
@@ -154,6 +158,29 @@ final class OmnibusService implements Bootable, HasHooks
     }
 
     /**
+     * End of the comparison window for a product, or null for "up to now".
+     *
+     * The Omnibus Directive asks for the lowest price in the 30 days *before the
+     * reduction*, so the window should stop where the sale starts: otherwise the
+     * running sale price competes to be its own lowest price and the notice just
+     * repeats the current price.
+     *
+     * Returns null whenever the sale has no start date, which is the common case
+     * of a merchant typing a sale price without scheduling it. There is nothing
+     * to anchor to then, so the window ends now, exactly as before.
+     */
+    private function referenceCutoff(\WC_Product $product): ?string
+    {
+        if ($this->countFrom !== 'sale_start') {
+            return null;
+        }
+
+        $from = $product->get_date_on_sale_from();
+
+        return $from instanceof \WC_DateTime ? gmdate('Y-m-d H:i:s', $from->getTimestamp()) : null;
+    }
+
+    /**
      * Get the lowest price in the tracking period for a product.
      *
      * Cached per-product in the WP object cache for one hour. On stores with
@@ -162,9 +189,9 @@ final class OmnibusService implements Bootable, HasHooks
      * cache hits. The cache is invalidated whenever a new price is recorded
      * for the product (see onProductSave -> invalidateLowestPriceCache).
      */
-    public function getLowestPrice(int $productId): ?OmnibusPrice
+    public function getLowestPrice(int $productId, ?string $before = null): ?OmnibusPrice
     {
-        $cacheKey = (string) $productId . ':' . (string) $this->days;
+        $cacheKey = (string) $productId . ':' . (string) $this->days . ':' . ($before ?? 'now');
 
         $found = false;
         $cached = wp_cache_get($cacheKey, self::CACHE_GROUP, false, $found);
@@ -176,7 +203,7 @@ final class OmnibusService implements Bootable, HasHooks
             }
         }
 
-        $result = $this->repository->findLowestEffective($productId, $this->days);
+        $result = $this->repository->findLowestEffective($productId, $this->days, $before);
 
         wp_cache_set($cacheKey, $result, self::CACHE_GROUP, self::CACHE_TTL);
 
@@ -189,7 +216,20 @@ final class OmnibusService implements Bootable, HasHooks
      */
     private function invalidateLowestPriceCache(int $productId): void
     {
-        wp_cache_delete((string) $productId . ':' . (string) $this->days, self::CACHE_GROUP);
+        // Two key shapes exist: ':now' for the open window and ':<date>' when the
+        // window ends at a sale start. The sale-start key cannot be recomputed
+        // here without loading the product, so drop the group's cache generation
+        // as well; wp_cache_delete alone would leave a stale windowed entry.
+        wp_cache_delete((string) $productId . ':' . (string) $this->days . ':now', self::CACHE_GROUP);
+
+        $product = wc_get_product($productId);
+
+        if ($product instanceof \WC_Product) {
+            $before = $this->referenceCutoff($product);
+            if ($before !== null) {
+                wp_cache_delete((string) $productId . ':' . (string) $this->days . ':' . $before, self::CACHE_GROUP);
+            }
+        }
     }
 
     /**
@@ -204,6 +244,12 @@ final class OmnibusService implements Bootable, HasHooks
     public function warmCacheForArchive(): void
     {
         global $wp_query;
+
+        // Each product has its own sale start, so one shared window cannot serve
+        // them. Warming would only fill ':now' keys nothing then reads.
+        if ($this->countFrom === 'sale_start') {
+            return;
+        }
 
         if (! $wp_query instanceof \WP_Query || empty($wp_query->posts)) {
             return;
@@ -225,7 +271,7 @@ final class OmnibusService implements Bootable, HasHooks
 
         foreach (array_unique($productIds) as $id) {
             $found = false;
-            wp_cache_get((string) $id . ':' . $days, self::CACHE_GROUP, false, $found);
+            wp_cache_get((string) $id . ':' . $days . ':now', self::CACHE_GROUP, false, $found);
             if (! $found) {
                 $uncached[] = $id;
             }
@@ -263,7 +309,7 @@ final class OmnibusService implements Bootable, HasHooks
             return '';
         }
 
-        $lowest = $this->getLowestPrice($productId);
+        $lowest = $this->getLowestPrice($productId, $this->referenceCutoff($product));
 
         if ($lowest === null) {
             // No recorded history. Saying "the price has not changed" would be a
