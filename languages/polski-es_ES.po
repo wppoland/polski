@@ -6647,7 +6647,7 @@ msgstr "Fichas: {min_quantity}, {current_quantity}"
 
 #: src/Admin/ModulesPage.php:1343
 msgid "Review Request Emails"
-msgstr "Revisar correos electrónicos de solicitud"
+msgstr ""
 
 #: src/Admin/ModulesPage.php:1344
 msgid ""

@@ -1662,7 +1662,7 @@ msgstr "Polski"
 #: src/Admin/AdminPage.php:265 src/Admin/AdminPage.php:266
 #: src/Admin/AdminPage.php:356
 msgid "Dashboard"
-msgstr "Armaturenbrett"
+msgstr ""
 
 #: src/Admin/AdminPage.php:274 src/Admin/AdminPage.php:275
 #: src/Admin/AdminPage.php:357
@@ -5957,7 +5957,7 @@ msgstr "Angezeigt durch den Shortcode [polski_bdo] und den BDO-Nummernblock."
 
 #: src/Admin/ModulesPage.php:1057
 msgid "Verified purchase badge"
-msgstr "Verifizierter Kaufabzeichen"
+msgstr ""
 
 #: src/Admin/ModulesPage.php:1058
 msgid ""
@@ -6622,7 +6622,7 @@ msgstr "Token: {min_quantity}, {current_quantity}"
 
 #: src/Admin/ModulesPage.php:1343
 msgid "Review Request Emails"
-msgstr "Überprüfe die E-Mail-Anfragen"
+msgstr ""
 
 #: src/Admin/ModulesPage.php:1344
 msgid ""
