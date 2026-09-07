@@ -139,6 +139,10 @@ final class InvoiceDataBuilder
      * a tax class, because a single order can carry several rates and the class
      * is not what was actually charged.
      *
+     * A GTU marking belongs to a product, so only product lines can carry one.
+     * Shipping and fees never do, and a product with no marking gets an empty
+     * string that the document prints as nothing.
+     *
      * @return list<array<string, mixed>>
      */
     private function lines(WC_Order $order): array
@@ -154,6 +158,7 @@ final class InvoiceDataBuilder
             $tax = (float) $item->get_total_tax();
             $lines[] = [
                 'name'     => $item->get_name(),
+                'gtu'      => Gtu::forProduct((int) $item->get_product_id()),
                 'quantity' => (float) $item->get_quantity(),
                 'net'      => $net,
                 'tax'      => $tax,

@@ -109,7 +109,12 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 				<?php foreach ($polski_lines as $polski_i => $polski_line) : ?>
 					<tr>
 						<td class="is-num"><?php echo esc_html((string) ((int) $polski_i + 1)); ?></td>
-						<td><?php echo esc_html((string) $polski_line['name']); ?></td>
+						<td>
+							<?php echo esc_html((string) $polski_line['name']); ?>
+							<?php if ('' !== (string) ($polski_line['gtu'] ?? '')) : ?>
+								<span class="polski-invoice__gtu"><?php echo esc_html((string) $polski_line['gtu']); ?></span>
+							<?php endif; ?>
+						</td>
 						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['quantity'], 0)); ?></td>
 						<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['net'])); ?></td>
 						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>
