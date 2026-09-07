@@ -45,8 +45,15 @@ final class ProUpsell
     /** Whether to render the promo at all (filterable for white-label builds). */
     public function enabled(): bool
     {
+        // Never sell PRO to somebody who already bought it. PRO declares a
+        // namespaced VERSION constant when it loads, which is the only signal
+        // the free plugin has and does not require PRO to have finished booting.
+        if (defined('Polski\\Pro\\VERSION')) {
+            return false;
+        }
+
         /**
-         * Filters whether the Polski PRO promo is shown on the dashboard screen.
+         * Filters whether the Polski PRO promo is shown.
          *
          * @param bool $show Default true.
          */

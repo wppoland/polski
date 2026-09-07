@@ -21,6 +21,10 @@ return [
     ],
     'features'   => [
         [
+            'en' => ['title' => 'GPSR profiles', 'desc' => 'Save a manufacturer, responsible person and importer once, then pick them from a dropdown on the product. The product stores only the profile id, so correcting an address in one place corrects every product pointing at it. Anything typed on the product itself always wins.'],
+            'pl' => ['title' => 'Profile GPSR', 'desc' => 'Zapisz producenta, osobę odpowiedzialną i importera raz, a potem wybieraj ich z listy na produkcie. Produkt trzyma samo id profilu, więc poprawa adresu w jednym miejscu poprawia go na wszystkich produktach, które na niego wskazują. Dane wpisane na produkcie zawsze mają pierwszeństwo.'],
+        ],
+        [
             'en' => ['title' => 'Invoices', 'desc' => 'VAT invoice, correction, receipt and release note with PDF generation.'],
             'pl' => ['title' => 'Faktury', 'desc' => 'Faktura VAT, korygująca, paragon i dokument WZ z generowaniem PDF.'],
         ],
