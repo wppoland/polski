@@ -26,6 +26,14 @@ final class ModulesPage implements HasHooks
     /** @var array<string, string>|null */
     private static ?array $moduleDocumentationUrls = null;
 
+    /**
+     * Unfiltered default states, memoised. The literal never varies within a
+     * request, and isModuleEnabled() rebuilt it on every call.
+     *
+     * @var array<string, bool>|null
+     */
+    private static ?array $baseModuleDefaults = null;
+
     public function registerHooks(): void
     {
         add_action('admin_post_polski_save_module_settings', [$this, 'handleSaveModuleSettings']);
@@ -1615,7 +1623,106 @@ final class ModulesPage implements HasHooks
                 ],
                 'settings' => [],
             ],
+            // === Modules whose service shipped without a card ===
+            // Each of these was gated on its id with no switch anywhere, the
+            // same defect the PRO cards fix. Found by
+            // tests/module-ids-are-reachable-check.php.
+            [
+                'id' => 'page_compliance',
+                'name' => __('Compliance checklist', 'polski'),
+                'description' => __('Adds a Compliance checklist screen under Polski that reads your Privacy Policy and Terms pages and reports which legally expected elements it can find, plus a look at the cookie banner and accessibility. It is a keyword heuristic, not legal advice, and it changes nothing on the storefront.', 'polski'),
+                'group' => 'Legal & Compliance',
+                'enabled' => true,
+                'icon' => 'dashicons-yes',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
+                'id' => 'business_info',
+                'name' => __('Business identification block', 'polski'),
+                'description' => __('Publishes the seller details from the setup wizard (name, address, NIP, REGON, e-mail, phone) as the [polski_business_info] shortcode and a Gutenberg block, for the footer identification Polish consumer law expects. Off by default: it prints your company data wherever you place it.', 'polski'),
+                'group' => 'Legal & Compliance',
+                'enabled' => false,
+                'icon' => 'dashicons-building',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
+                'id' => 'complaint_template',
+                'name' => __('Complaint form template', 'polski'),
+                'description' => __('A printable complaint form (formularz reklamacyjny) following the usual UOKiK layout, with the seller section filled from the setup wizard. Available as the [polski_complaint_template] shortcode, as an admin preview with an HTML download, and over REST. A generic template, not legal advice. Off by default.', 'polski'),
+                'group' => 'Consumer Rights',
+                'enabled' => false,
+                'icon' => 'dashicons-media-document',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
+                'id' => 'copyright_notice',
+                'name' => __('Copyright and image credits', 'polski'),
+                'description' => __('Adds the [polski_copyright] and [polski_image_credit] shortcodes and a Copyright notice block. The year defaults to the current one and the owner to your company name from the setup wizard. Off by default.', 'polski'),
+                'group' => 'Storefront',
+                'enabled' => false,
+                'icon' => 'dashicons-editor-paste-text',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
+                'id' => 'sbom',
+                'name' => __('SBOM (software bill of materials)', 'polski'),
+                'description' => __('Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (composer) and JS (npm) dependencies for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default.', 'polski'),
+                'group' => 'Tools',
+                'enabled' => false,
+                'icon' => 'dashicons-media-code',
+                'links' => [],
+                'settings' => [],
+            ],
+            [
+                'id' => 'rodo_training_docs',
+                'name' => __('RODO training documents', 'polski'),
+                'description' => __('Adds a GDPR training screen, reachable from Reports and tools, with three printable documents pre-filled with your shop data: a training logbook, a summary of the RODO principles, and a data breach playbook with the 24 hour internal and 72 hour UODO deadlines. Starter templates, not legal advice. Off by default.', 'polski'),
+                'group' => 'Tools',
+                'enabled' => false,
+                'icon' => 'dashicons-welcome-learn-more',
+                'links' => [],
+                'settings' => [],
+            ],
         ];
+
+        /**
+         * Filters the module registry rendered on the Modules screen.
+         *
+         * An add-on (Polski PRO, or any third party) returns the array with its
+         * own cards appended. Without this there is no way to reach a feature an
+         * add-on gates on ModulesPage::isModuleEnabled(): the id would be off
+         * with no switch anywhere.
+         *
+         * A card is an array with:
+         *   'id'          string, the same id the add-on passes to isModuleEnabled().
+         *   'name'        string, shown in the Name column.
+         *   'description' string, shown in the Description column.
+         *   'group'       string, one of the labels remapGroup() understands
+         *                 (unknown labels fall into "Advanced & Tools").
+         *   'enabled'     bool, the state used when nothing is saved yet.
+         *   'icon'        string, a dashicons class.
+         *   'links'       list of ['label' => string, 'url' => string].
+         *   'settings'    list of fields, each with a 'key' in the
+         *                 "option_name|field_key" form; an empty list when the
+         *                 module has no settings of its own.
+         *
+         * Entries that are not an array with a non-empty string id are dropped,
+         * and an id that already exists keeps the definition declared here. The
+         * saved on/off state is applied after the filter, so a card added by an
+         * add-on toggles exactly like a built-in one.
+         *
+         * The registry is built per call and the filter runs with it, a handful
+         * of times per admin request. It is deliberately not in isModuleEnabled(),
+         * which runs on every request and hundreds of times per page.
+         *
+         * @param list<array<string, mixed>> $modules Module cards.
+         */
+        $extended = apply_filters('polski/modules', $modules);
+        $modules = is_array($extended) ? $this->normaliseModules($extended, $modules) : $modules;
 
         // Apply saved states.
         foreach ($modules as &$module) {
@@ -1625,6 +1732,49 @@ final class ModulesPage implements HasHooks
         }
 
         return $modules;
+    }
+
+    /**
+     * Drop anything the `polski/modules` filter returned that the screen cannot
+     * render, and fill the keys every renderer reads so a sparse card from an
+     * add-on cannot produce a notice.
+     *
+     * @param array<mixed> $modules  Whatever the filter returned.
+     * @param list<array<string, mixed>> $builtIn Registry as declared here, used as the fallback.
+     * @return list<array<string, mixed>>
+     */
+    private function normaliseModules(array $modules, array $builtIn): array
+    {
+        $out = [];
+        $seen = [];
+
+        foreach ($modules as $module) {
+            if (! is_array($module) || ! isset($module['id']) || ! is_string($module['id']) || $module['id'] === '') {
+                continue;
+            }
+
+            // First definition wins, so an add-on cannot silently replace a
+            // built-in card by reusing its id.
+            if (isset($seen[$module['id']])) {
+                continue;
+            }
+
+            $seen[$module['id']] = true;
+
+            $out[] = [
+                'id' => $module['id'],
+                'name' => isset($module['name']) && is_string($module['name']) ? $module['name'] : $module['id'],
+                'description' => isset($module['description']) && is_string($module['description']) ? $module['description'] : '',
+                'group' => isset($module['group']) && is_string($module['group']) ? $module['group'] : '',
+                'enabled' => ! empty($module['enabled']),
+                'icon' => isset($module['icon']) && is_string($module['icon']) ? $module['icon'] : 'dashicons-admin-generic',
+                'links' => isset($module['links']) && is_array($module['links']) ? array_values($module['links']) : [],
+                'settings' => isset($module['settings']) && is_array($module['settings']) ? array_values($module['settings']) : [],
+            ];
+        }
+
+        // A filter that returned junk must not empty the screen.
+        return $out === [] ? $builtIn : $out;
     }
 
     /**
@@ -2454,9 +2604,54 @@ final class ModulesPage implements HasHooks
     }
 
     /**
+     * Default on/off state per module id, used whenever nothing is saved yet.
+     *
      * @return array<string, bool>
      */
     public static function getDefaultModuleStates(): array
+    {
+        if (self::$baseModuleDefaults === null) {
+            self::$baseModuleDefaults = self::baseModuleDefaults();
+        }
+
+        // isModuleEnabled() lands here on every unsaved id, hundreds of times a
+        // page. has_filter() is an isset() on the global hook map, so the whole
+        // filter path costs nothing on a store with no add-on hooked in.
+        if (! has_filter('polski/module_defaults')) {
+            return self::$baseModuleDefaults;
+        }
+
+        /**
+         * Filters the default on/off state of every module.
+         *
+         * An add-on returns the map with its own ids added, as
+         * `'<module_id>' => bool`. Return false for anything that changes what
+         * a shopper sees: a module that alters the storefront must be switched
+         * on by the merchant, never by an update. Ids missing from the map are
+         * treated as off.
+         *
+         * @param array<string, bool> $defaults Default state per module id.
+         */
+        $filtered = apply_filters('polski/module_defaults', self::$baseModuleDefaults);
+
+        if (! is_array($filtered)) {
+            return self::$baseModuleDefaults;
+        }
+
+        $out = [];
+        foreach ($filtered as $id => $state) {
+            if (is_string($id) && $id !== '') {
+                $out[$id] = (bool) $state;
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    private static function baseModuleDefaults(): array
     {
         return [
             'unit_price' => true,
