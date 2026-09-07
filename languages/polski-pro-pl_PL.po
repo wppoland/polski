@@ -7846,11 +7846,11 @@ msgstr "Zaloguj się, aby korzystać z listy życzeń."
 
 #: src/Service/WithdrawalService.php:150
 msgid "Customer has submitted a withdrawal request."
-msgstr "Klient złożył wniosek o wypłatę."
+msgstr "Klient złożył oświadczenie o odstąpieniu od umowy."
 
 #: src/Service/WithdrawalService.php:181
 msgid "Withdrawal request confirmed."
-msgstr "Potwierdzono żądanie wypłaty."
+msgstr "Odstąpienie od umowy potwierdzone."
 
 #: src/Service/WithdrawalService.php:268
 msgid "Oops, something went wrong on our side. Please try again!"
