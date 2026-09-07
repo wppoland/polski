@@ -1,14 +1,14 @@
 === Polski for WooCommerce ===
 Contributors: motylanogha
-Tags: faktury, gpsr, omnibus, rodo, ksef
+Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.33.1
+Stable tag: 1.33.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce for Polish shops: VAT invoices, GPSR, Omnibus, GDPR, withdrawals, NIP, KSeF, unit prices and storefront modules.
+WooCommerce for Polish shops: VAT invoices, JPK_FA, KSeF, NIP lookup, GPSR, Omnibus, withdrawals, returns and unit prices.
 
 == Description ==
 
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.33.2 =
+* Listing only, no functional change. The short description now names JPK_FA and the NIP lookup, which the plugin has done for a long time without saying so where anyone searching would see it. Tags: "rodo" is dropped, because that search is dominated by cookie and newsletter plugins and this plugin does not appear in it at all, and "jpk" and "zwroty" take its place.
 
 = 1.33.1 =
 * Fixed: the "withdraw from this order" link in the order email did not work for a logged-in customer. It led to "Oops, something went wrong on our side" instead of the form, so the withdrawal could not be started from the email at all. The link never carried a one-time token and the page demanded one. Opening the form changes nothing and the order's owner is checked separately, so the token is no longer required there; the form submission that actually files the declaration keeps its own, unchanged.
