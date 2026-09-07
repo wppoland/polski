@@ -67,6 +67,9 @@ return [
         'tax_display_mode' => 'brutto',
         'unit_price_enabled' => true,
         'unit_price_text' => __('{price} / {unit}', 'polski'),
+        // Seeded so a REST write does not drop it: Sanitizer::settingsArray()
+        // iterates the defaults, so a key missing here is silently discarded.
+        'unit_price_show_loop' => true,
         'shipping_costs_notice_enabled' => true,
         'shipping_costs_text' => __('plus shipping', 'polski'),
         'from_price_enabled' => true,
@@ -871,6 +874,8 @@ return [
     // DSA module: report form, contact email, per-product widget.
     'polski_dsa' => [
         'contact_email' => '',
+        'contact_name' => '',
+        'contact_phone' => '',
         'form_title' => __('Report illegal content (DSA)', 'polski'),
         'form_intro' => __('Use the form below to report content you consider illegal under the Digital Services Act.', 'polski'),
         'product_widget_enabled' => false,
