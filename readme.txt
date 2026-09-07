@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.34.0
+Stable tag: 1.34.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -145,7 +145,7 @@ actually trading:
                                       bundles, catalog mode and RFQ
 
 Everything in the free edition stays free and open, and keeps working whether
-or not you ever buy PRO. Polski PRO starts at 69 EUR per year, priced and
+or not you ever buy PRO. Polski PRO starts at 99 EUR per year, priced and
 charged in EUR.
 
 * **Polski PRO** - [plogins.com/polski-pro/](https://plogins.com/polski-pro/)
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.34.1 =
+* Corrected the PRO price shown in two places: this readme and the upgrade panel inside the plugin both said 69 EUR per year, and the charge is 99 EUR. Freemius is what actually bills and it was changed first, so for a short window both quoted a price the checkout did not honour. Nothing about the free plugin itself changes.
 
 = 1.34.0 =
 * Fixed: six modules had a service in the plugin and no card on the Modules screen, so there was no way to switch them on: the compliance checklist, the business identification block, the complaint form template, the copyright and image credit shortcodes, the SBOM generator and the RODO training documents. Each now has a card, keeping the state it already defaulted to, so nothing changes on a shop until the merchant turns it on.
