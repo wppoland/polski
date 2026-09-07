@@ -96,6 +96,10 @@ final class DigitalConsentService implements HasHooks
             return;
         }
 
+        if ($this->mode() === self::MODE_HIDDEN) {
+            return;
+        }
+
         woocommerce_store_api_register_endpoint_data([
             'endpoint' => 'cart', // CartSchema::IDENTIFIER; literal mirrors ProductDataExtension's 'cart-item'.
             // Dedicated namespace (ProductDataExtension already registers 'polski'
@@ -317,8 +321,36 @@ final class DigitalConsentService implements HasHooks
 
     public function mode(): string
     {
+        // The consent belongs to the legal checkboxes module. With the module
+        // off nothing may register, save or display, which is what a merchant
+        // switching it off is asking for.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
+            return self::MODE_HIDDEN;
+        }
+
         $settings = get_option(self::SETTING_OPTION, []);
         $settings = is_array($settings) ? $settings : [];
+
+        // Two switches ended up governing one field: this mode, on the
+        // withdrawal settings page, and "Digital content (waiver)" on the
+        // modules screen, which nothing read. A merchant who turned the visible
+        // one off saw the field carry on, because this one defaults to optional.
+        //
+        // The explicit choice wins where one was made. Where the mode has never
+        // been saved, the modules screen decides, so its default of off finally
+        // means off. A shop that deliberately configured the mode keeps the
+        // consent it configured: this is a legal declaration under art. 16(m),
+        // and silently dropping it from a working checkout would be worse than
+        // the noise being reported.
+        if (! array_key_exists('digital_consent_mode', $settings)) {
+            $checkout = get_option('polski_checkout', []);
+            $checkout = is_array($checkout) ? $checkout : [];
+
+            return empty($checkout['digital_waiver_checkbox_enabled'])
+                ? self::MODE_HIDDEN
+                : self::MODE_OPTIONAL;
+        }
+
         $mode = (string) ($settings['digital_consent_mode'] ?? self::MODE_OPTIONAL);
 
         return in_array($mode, [self::MODE_REQUIRED, self::MODE_OPTIONAL, self::MODE_HIDDEN], true)
