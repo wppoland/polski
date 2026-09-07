@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.3
+Stable tag: 1.31.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
+* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
 * **Shop health monitor** - passive monitoring of frontend errors, checkout issues and sales anomalies.
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
@@ -297,6 +298,15 @@ When the VAT ID (NIP) lookup module is enabled, the plugin can connect to the pu
 * Terms of service: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
 * Privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
 
+= VIES (European Commission) =
+
+When the EU VAT ID check module is enabled, the plugin can connect to the European Commission's VIES service to confirm that a customer's EU VAT number is registered. The connection is made only when the check is deliberately triggered from the order screen.
+
+* Data sent: the customer's EU VAT number and, if you configure one, your own VAT number, which is what makes it a qualified check and returns a consultation number.
+* Service address: [https://ec.europa.eu/taxation_customs/vies/](https://ec.europa.eu/taxation_customs/vies/)
+* Terms of use: [https://ec.europa.eu/taxation_customs/vies/#/help](https://ec.europa.eu/taxation_customs/vies/#/help)
+* Privacy policy: [https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en](https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en)
+
 = Google OAuth =
 
 When the social login module is enabled and Google login is configured, a customer clicking the continue-with-Google button is redirected to Google for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
@@ -344,6 +354,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.4 =
+* Added: EU VAT ID check against VIES, off by default. The NIP module only ever covered Polish numbers, through the GUS register, so nothing in the plugin could say whether a VAT number issued by another member state was real, which is what an intra-EU sale at 0% VAT turns on. The order screen now has a check button, and the answer is stored on the order. Enter your own VAT number in the module settings to make it a qualified check: only then does VIES return a consultation number, which is the evidence that the check happened. A check recorded on an order always calls VIES fresh, never from cache, because a cached consultation number would document a consultation that never took place for that order.
 
 = 1.31.3 =
 * Added: the deposit scheme (system kaucyjny), off by default. Poland has charged a deposit on beverages in covered packaging since 1 October 2025, and the plugin had nothing for it. Mark a product's packaging (PET up to 3 l, a can up to 1 l, or reusable glass up to 1.5 l) and how many containers one item holds; the deposit is then added on top of the price as its own line at checkout and shown on the product page. The statutory amounts, 0.50 and 1.00, are the defaults and can be changed if the scheme's operator revises them. The line is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale.

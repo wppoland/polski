@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.4 =
+* Added: EU VAT ID check against VIES, off by default. The NIP module only ever covered Polish numbers, through the GUS register, so nothing in the plugin could say whether a VAT number issued by another member state was real, which is what an intra-EU sale at 0% VAT turns on. The order screen now has a check button, and the answer is stored on the order. Enter your own VAT number in the module settings to make it a qualified check: only then does VIES return a consultation number, which is the evidence that the check happened. A check recorded on an order always calls VIES fresh, never from cache, because a cached consultation number would document a consultation that never took place for that order.
+
 = 1.31.3 =
 * Added: the deposit scheme (system kaucyjny), off by default. Poland has charged a deposit on beverages in covered packaging since 1 October 2025, and the plugin had nothing for it. Mark a product's packaging (PET up to 3 l, a can up to 1 l, or reusable glass up to 1.5 l) and how many containers one item holds; the deposit is then added on top of the price as its own line at checkout and shown on the product page. The statutory amounts, 0.50 and 1.00, are the defaults and can be changed if the scheme's operator revises them. The line is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale.
 
