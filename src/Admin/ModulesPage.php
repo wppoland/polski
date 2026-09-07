@@ -202,6 +202,22 @@ final class ModulesPage implements HasHooks
                 ],
             ],
             [
+                'id' => 'deposit',
+                'name' => __('Deposit scheme (system kaucyjny)', 'polski'),
+                'description' => __('Charges the statutory deposit on beverages in covered packaging, in force in Poland since 1 October 2025. Mark the packaging on each product; the deposit is then added on top of the price as its own checkout line and shown on the product page. It is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale. Off by default.', 'polski'),
+                'group' => 'Prices and Display',
+                'enabled' => false,
+                'icon' => 'dashicons-portfolio',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_deposit|amount_pet', 'label' => __('PET bottle, up to 3 l', 'polski'), 'type' => 'number', 'default' => 0.5, 'hint' => __('Statutory amount at launch: 0.50', 'polski')],
+                    ['key' => 'polski_deposit|amount_can', 'label' => __('Metal can, up to 1 l', 'polski'), 'type' => 'number', 'default' => 0.5, 'hint' => __('Statutory amount at launch: 0.50', 'polski')],
+                    ['key' => 'polski_deposit|amount_glass', 'label' => __('Reusable glass bottle, up to 1.5 l', 'polski'), 'type' => 'number', 'default' => 1.0, 'hint' => __('Statutory amount at launch: 1.00', 'polski')],
+                    ['key' => 'polski_deposit|fee_label', 'label' => __('Checkout line label', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Leave empty for "Deposit"', 'polski')],
+                    ['key' => 'polski_deposit|product_notice', 'label' => __('Product page notice', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Use {amount} where the sum should appear. Leave empty for the default sentence.', 'polski')],
+                ],
+            ],
+            [
                 'id' => 'omnibus',
                 'name' => __('Lowest price (Omnibus)', 'polski'),
                 'description' => __('Track price history and display the lowest price from the last 30 days for products on sale. Required by the Omnibus Directive (EU 2019/2161).', 'polski'),
