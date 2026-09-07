@@ -13,7 +13,7 @@ return [
     'name'       => 'Polski PRO',
     'url'        => 'https://plogins.com/polski-pro/pricing/',
     'sellable'   => true,
-    'price_from' => 69,
+    'price_from' => 99,
     'currency'   => 'EUR',
     'lead'       => [
         'en' => 'Each module is toggled independently in the settings. The list matches the modules described in the documentation.',
