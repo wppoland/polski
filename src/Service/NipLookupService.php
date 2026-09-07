@@ -41,6 +41,7 @@ final class NipLookupService implements HasHooks
             } else {
                 add_action('woocommerce_init', [$this, 'registerAdditionalCheckoutFields']);
             }
+            add_action('woocommerce_validate_additional_field', [$this, 'validateBlockNipField'], 10, 3);
             add_action('woocommerce_set_additional_field_value', [$this, 'mirrorAdditionalFieldToLegacyMeta'], 10, 4);
             add_action('woocommerce_checkout_order_created', [$this, 'saveBlockNipToOrder']);
             add_action('woocommerce_store_api_checkout_order_processed', [$this, 'saveBlockNipToOrder']);
@@ -69,6 +70,28 @@ final class NipLookupService implements HasHooks
     }
 
     /**
+     * Whether the NIP field is mandatory for this checkout.
+     *
+     * The shop-wide setting is the default. The filter lets an add-on answer
+     * per cart, which is what a per-product "receipt requires NIP" marking
+     * needs: at registration time there is no cart yet, so the answer there is
+     * the setting, and validation is where a cart-dependent answer lands.
+     *
+     * @param bool $atRegistration True while registering the block field, when
+     *                             no cart exists to inspect.
+     */
+    public function nipRequired(bool $atRegistration = false): bool
+    {
+        $settings = $this->getSettings();
+
+        return (bool) apply_filters(
+            'polski/nip_required',
+            ! empty($settings['nip_required']),
+            $atRegistration,
+        );
+    }
+
+    /**
      * Add NIP field to WooCommerce billing fields.
      *
      * @param array<string, array<string, mixed>> $fields Billing fields.
@@ -76,8 +99,7 @@ final class NipLookupService implements HasHooks
      */
     public function addNipField(array $fields): array
     {
-        $settings = $this->getSettings();
-        $required = ! empty($settings['nip_required']);
+        $required = $this->nipRequired();
 
         $fields['billing_nip'] = [
             'type'        => 'text',
@@ -104,7 +126,17 @@ final class NipLookupService implements HasHooks
         $nip = sanitize_text_field(wp_unslash($_POST['billing_nip'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
         if ($nip === '') {
-            return; // Empty is OK if not required (WooCommerce handles required validation).
+            // WooCommerce enforces the field's own "required" flag. This covers
+            // the case it cannot see: a requirement that depends on what is in
+            // the cart, which is only known now.
+            if ($this->nipRequired()) {
+                wc_add_notice(
+                    __('One of the products in your order needs a VAT ID (NIP) on the receipt. Enter it to continue.', 'polski'),
+                    'error',
+                );
+            }
+
+            return;
         }
 
         if (! self::isValidNip($nip)) {
@@ -153,8 +185,7 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        $settings = $this->getSettings();
-        $required = ! empty($settings['nip_required']);
+        $required = $this->nipRequired(true);
 
         woocommerce_register_additional_checkout_field([
             'id' => 'polski/nip',
@@ -182,6 +213,29 @@ final class NipLookupService implements HasHooks
     /**
      * Mirror additional field value to standard order/customer meta on save.
      */
+    /**
+     * Block checkout counterpart of validateNipOnCheckout().
+     *
+     * The field is registered before a cart exists, so a requirement that
+     * depends on the cart cannot be expressed by its "required" flag. This runs
+     * when the Store API validates the submitted checkout, where it can.
+     */
+    public function validateBlockNipField(\WP_Error $errors, string $fieldId, mixed $value): void
+    {
+        if ($fieldId !== 'polski/nip') {
+            return;
+        }
+
+        $clean = (string) preg_replace('/[^0-9]/', '', (string) $value);
+
+        if ($clean === '' && $this->nipRequired()) {
+            $errors->add(
+                'polski_nip_required',
+                __('One of the products in your order needs a VAT ID (NIP) on the receipt. Enter it to continue.', 'polski'),
+            );
+        }
+    }
+
     public function mirrorAdditionalFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
     {
         if (! $this->isEnabled() || $group !== 'billing' || $key !== 'polski/nip') {

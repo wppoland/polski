@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.35.0
+Stable tag: 1.36.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.36.0 =
+* Added: the NIP field can now be required by what is in the cart, not only by the shop-wide switch. One place decides and it is filterable (`polski/nip_required`), so a paid rule that marks a product as needing the buyer's VAT ID on the receipt can make the field mandatory for that order. Enforced on both the classic and the block checkout, since the block field is registered before a cart exists and its own required flag cannot see one.
 
 = 1.35.0 =
 * Fixed: the DSA report form's handler was registered for logged-out visitors whether or not the module was on. With the module off the table it writes to may not exist, so an anonymous submission was lost while the sender was still redirected to a thank-you page, and the shop notification was still sent. Nothing is registered now unless the module is on, and a check covers every public handler in the plugin so this cannot come back unnoticed.
