@@ -330,6 +330,67 @@ final class ProductInfoService
     }
 
     /**
+     * Environmental claim substantiation (anti-greenwashing directive).
+     *
+     * The module collected three fields and rendered none of them, so the
+     * substantiation a shop had entered was never shown to the shopper it is
+     * meant for. An expired certificate is labelled rather than hidden: a dead
+     * certificate presented as current proof is the exact failure the directive
+     * is about.
+     */
+    public function getGreenClaimHtml(\WC_Product $product): string
+    {
+        if (! ModulesPage::isModuleEnabled('green_claims')) {
+            return '';
+        }
+
+        $basis = (string) $product->get_meta('_polski_green_claim_basis', true);
+        $certUrl = (string) $product->get_meta('_polski_green_claim_cert_url', true);
+        $expiry = (string) $product->get_meta('_polski_green_claim_expiry', true);
+
+        $parts = [];
+
+        if (trim($basis) !== '') {
+            $parts[] = sprintf(
+                '<div class="polski-green-claim__basis"><span class="polski-green-claim__label">%s:</span> <span>%s</span></div>',
+                esc_html__('Basis for the environmental claim', 'polski'),
+                nl2br(esc_html($basis)),
+            );
+        }
+
+        $expired = $expiry !== '' && $expiry < current_time('Y-m-d');
+
+        if ($certUrl !== '' && filter_var($certUrl, FILTER_VALIDATE_URL) !== false) {
+            $parts[] = sprintf(
+                '<div class="polski-green-claim__cert"><a href="%s" rel="nofollow noopener" target="_blank">%s</a>%s</div>',
+                esc_url($certUrl),
+                esc_html__('Certificate', 'polski'),
+                $expired
+                    ? ' <span class="polski-green-claim__expired">' . sprintf(
+                        /* translators: %s: certificate expiry date */
+                        esc_html__('(expired %s)', 'polski'),
+                        esc_html($expiry),
+                    ) . '</span>'
+                    : '',
+            );
+        }
+
+        if (! $expired && $expiry !== '') {
+            $parts[] = sprintf(
+                '<div class="polski-green-claim__expiry"><span class="polski-green-claim__label">%s:</span> <span>%s</span></div>',
+                esc_html__('Certificate valid until', 'polski'),
+                esc_html($expiry),
+            );
+        }
+
+        if ($parts === []) {
+            return '';
+        }
+
+        return '<div class="polski-green-claim">' . implode('', $parts) . '</div>';
+    }
+
+    /**
      * Get GTIN/EAN code.
      */
     public function getGTIN(\WC_Product $product): string

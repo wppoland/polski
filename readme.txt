@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.34.1
+Stable tag: 1.35.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -359,6 +359,14 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
 
+= 1.35.0 =
+* Fixed: the DSA report form's handler was registered for logged-out visitors whether or not the module was on. With the module off the table it writes to may not exist, so an anonymous submission was lost while the sender was still redirected to a thank-you page, and the shop notification was still sent. Nothing is registered now unless the module is on, and a check covers every public handler in the plugin so this cannot come back unnoticed.
+* Fixed: Quick View answered its AJAX call and rendered product markup even when the module was switched off. Its other three callbacks already checked; this one did not.
+* Fixed: searching by barcode missed WooCommerce's own GTIN field. The search matched only the plugin's fallback meta key, so a shop that filled in the GTIN field WooCommerce added in 8.4 could not find the product by its barcode at all.
+* Fixed: the environmental claim fields collected a claim's basis, its certificate link and an expiry date, and then showed none of it to anybody. The substantiation now appears on the product page. An expired certificate is labelled as expired rather than quietly presented as current proof, which is the failure the directive is about.
+* Added: `polski_gtin` as a CSV import and export column. The meta key behind it was read in six places and written by nothing, and the documentation already promised a column for it.
+* Docs: rewrote the CSV import and export page in all four languages. It listed about forty columns that do not exist, three filters the plugin never registered, and a validation pass that does not run. The column table is now generated from the plugin's own map, so it cannot drift again.
+
 = 1.34.1 =
 * Corrected the PRO price shown in two places: this readme and the upgrade panel inside the plugin both said 69 EUR per year, and the charge is 99 EUR. Freemius is what actually bills and it was changed first, so for a short window both quoted a price the checkout did not honour. Nothing about the free plugin itself changes.
 
@@ -471,6 +479,3 @@ Full release history is in changelog.txt in the plugin folder and on the plugin 
 * Rebuilt the bundled language catalogues from translate.wordpress.org rather than from the copies in the repository. Those copies had fallen behind: Polish was missing 43 strings that translators had already done, and disagreed with them on another 52. Polish and Czech are now complete.
 * Fixed the withdrawal information block printing its heading twice. It rendered a title of its own directly above the first statutory heading from Annex I to Directive 2011/83/EU, so "Right of withdrawal" appeared on two lines in a row. The two statutory headings are now the only headings, both at the same level as the model form's.
 
-= 1.30.0 =
-* The plugin's source strings are now English. About 520 of them were written in Polish, which is how the plugin started, but WordPress.org expects an English source: every other language on translate.wordpress.org was being translated out of Polish rather than out of the original. Nothing changes on a Polish shop, because each of those strings now carries its old Polish wording as the Polish translation. Shops running another language get translations made from English for the first time.
-* Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.

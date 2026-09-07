@@ -114,6 +114,13 @@ final class QuickViewService implements Bootable, HasHooks
     {
         check_ajax_referer('polski_quick_view', 'nonce');
 
+        // Every other callback in this class checks the module; this one did
+        // not, so a disabled Quick View still answered the AJAX call and
+        // rendered product markup.
+        if (! $this->isEnabled()) {
+            wp_send_json_error(['message' => __('Quick View is disabled.', 'polski')], 404);
+        }
+
         if (isset($_GET['product_id'])) {
             $productId = absint(wp_unslash($_GET['product_id']));
         } elseif (isset($_POST['product_id'])) {

@@ -17,6 +17,14 @@ final class DSAService implements HasHooks
 
     public function registerHooks(): void
     {
+        // The handler writes to a custom table and sends mail, and the nopriv
+        // variant is reachable by anyone. With the module off the table may not
+        // even exist, so the insert failed silently while the reporter was still
+        // redirected to a thank-you. Nothing is registered unless the module is on.
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         add_action('admin_post_nopriv_polski_dsa_report', [$this, 'handleReportSubmission']);
         add_action('admin_post_polski_dsa_report', [$this, 'handleReportSubmission']);
     }

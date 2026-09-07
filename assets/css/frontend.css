@@ -147,6 +147,34 @@
     border-radius: var(--polski-radius-sm);
 }
 
+/* === Environmental claims (anti-greenwashing) === */
+
+.polski-green-claim {
+    margin-block: 12px;
+    padding: 10px;
+    background: var(--polski-surface-card);
+    border: 1px solid var(--polski-line-soft);
+    border-radius: var(--polski-radius-sm);
+}
+
+.polski-green-claim__basis,
+.polski-green-claim__cert,
+.polski-green-claim__expiry {
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-strong);
+    margin-block: 4px;
+}
+
+.polski-green-claim__label {
+    font-weight: 600;
+}
+
+/* An expired certificate stays visible and is named as expired, rather than
+   quietly reading like current proof. */
+.polski-green-claim__expired {
+    font-weight: 600;
+}
+
 /* === Food module === */
 
 .polski-food-info {
