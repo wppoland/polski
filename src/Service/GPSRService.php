@@ -134,16 +134,31 @@ final class GPSRService implements HasHooks
      */
     public function getGPSRData(\WC_Product $product): array
     {
-        return [
+        $data = [
             'manufacturer_name'    => (string) $product->get_meta('_polski_gpsr_manufacturer_name', true),
             'manufacturer_address' => (string) $product->get_meta('_polski_gpsr_manufacturer_address', true),
+            'manufacturer_contact' => (string) $product->get_meta('_polski_gpsr_manufacturer_contact', true),
+            'responsible_person'   => (string) $product->get_meta('_polski_gpsr_responsible_person', true),
+            'responsible_address'  => (string) $product->get_meta('_polski_gpsr_responsible_address', true),
+            'responsible_contact'  => (string) $product->get_meta('_polski_gpsr_responsible_contact', true),
             'importer_name'        => (string) $product->get_meta('_polski_gpsr_importer_name', true),
             'importer_address'     => (string) $product->get_meta('_polski_gpsr_importer_address', true),
-            'responsible_person'   => (string) $product->get_meta('_polski_gpsr_responsible_person', true),
+            'importer_contact'     => (string) $product->get_meta('_polski_gpsr_importer_contact', true),
             'product_identifier'   => (string) $product->get_meta('_polski_gpsr_product_identifier', true),
             'safety_warnings'      => (string) $product->get_meta('_polski_gpsr_safety_warnings', true),
             'instructions'         => (string) $product->get_meta('_polski_gpsr_instructions', true),
         ];
+
+        /**
+         * Filter the GPSR values shown for a product.
+         *
+         * The seam a shared responsibility profile hooks into: it fills the
+         * blanks and leaves anything typed on the product alone.
+         *
+         * @param array<string, string> $data
+         * @param \WC_Product           $product
+         */
+        return (array) apply_filters('polski/gpsr/data', $data, $product);
     }
 
     /**
