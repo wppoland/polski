@@ -149,6 +149,23 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
+        // --- Invoicing Section ---
+        // The key is spelled out rather than taken from Gtu::META so the release
+        // check that pairs every rendered input with its entry in the save map
+        // can see it. Both spellings have to stay in step.
+        echo '<div class="options_group">';
+        echo '<h4 style="padding-left:12px;">' . esc_html__('Invoicing', 'polski') . '</h4>';
+
+        woocommerce_wp_select([
+            'id' => '_polski_gtu_code',
+            'label' => __('GTU marking', 'polski'),
+            'options' => \Polski\Invoice\Gtu::options(),
+            'description' => __('Goods and services group under JPK_V7. Set it only where the product really belongs to one of the thirteen groups; the marking is then printed against this line on the invoice.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        echo '</div>';
+
         // --- Badge Section ---
         echo '<div class="options_group">';
         echo '<h4 style="padding-left:12px;">' . esc_html__('Badge Management', 'polski') . '</h4>';
@@ -476,6 +493,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_unit_price_unit' => 'string',
             '_polski_delivery_time_id' => 'string',
             '_polski_withdrawal_exempt' => 'checkbox',
+            '_polski_gtu_code' => 'string',
             '_polski_badge_text' => 'string',
             '_polski_badge_style' => 'string',
             '_polski_badge_secondary_text' => 'string',

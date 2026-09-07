@@ -119,6 +119,19 @@
 	font-variant-numeric: tabular-nums;
 }
 
+/* GTU marking, printed against the line it belongs to. */
+.polski-invoice__gtu {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 1px 6px;
+	border: 1px solid #c3c4c7;
+	border-radius: 9px;
+	font-size: 10px;
+	letter-spacing: .04em;
+	white-space: nowrap;
+	color: #50575e;
+}
+
 .polski-invoice__foot {
 	display: flex;
 	flex-wrap: wrap;
