@@ -377,6 +377,9 @@ final class AdminPage implements Bootable, HasHooks
 
         $this->renderModuleSettingsFormsList($modulesPage, $tabs[$active]['modules'], $active);
 
+        // The Settings hub has no sidebar, so the promo goes under the forms.
+        $this->proUpsell()->aside();
+
         echo '</div>';
     }
 
@@ -503,9 +506,12 @@ final class AdminPage implements Bootable, HasHooks
         echo '</nav>';
 
         if ($tab === 'dashboard') {
-            // PRO upsell lives on the main Dashboard only (never on Modules,
-            // Reports, or the Settings hub). Banner on top, promo in the sidebar,
-            // locked feature cards after the two-column body.
+            // The PRO promo runs on every Polski screen, never on a screen this
+            // plugin does not own: inside our own admin it is product
+            // information, on somebody else's it is a nag and Guideline 11
+            // treats it as one. Dashboard carries the full set; the other tabs
+            // get the compact aside only. All of it is behind
+            // ProUpsell::enabled(), so a licensed install sees none of it.
             $this->proUpsell()->banner();
             echo '<div class="polski-cols polski-admin-shell__layout">';
             echo '<div class="polski-admin-shell__main">';
@@ -519,6 +525,7 @@ final class AdminPage implements Bootable, HasHooks
             $this->proUpsell()->cards();
         } elseif ($tab === 'modules') {
             $this->renderModulesTab();
+            $this->proUpsell()->cards();
         } elseif ($tab === 'reports') {
             $this->renderReportsHubInner();
         } else {
@@ -570,6 +577,7 @@ final class AdminPage implements Bootable, HasHooks
             $this->renderReportsOverview();
             echo '</div>';
             $this->renderHelpSidebar('reports');
+            $this->proUpsell()->aside();
             echo '</div>';
 
             return;

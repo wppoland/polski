@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.32.0
+Stable tag: 1.32.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -357,6 +357,11 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.32.1 =
+* Fixed: the PRO promo was shown to people who had already bought PRO. It never checked whether the paid plugin was installed, so a paying customer kept being sold the thing they were running. It now disappears as soon as PRO is active.
+* Changed: the "Legal Email Attachments" module is now called "Legal texts in emails", because it attached nothing. It prints the text of your legal pages under the order table in four customer emails. The documentation described PDF files and a per-email-type document matrix that no released version ever had; that page has been rewritten to match the code, and the PDF version is a PRO feature. Reported on GitHub (discussion #49).
+* Changed: the PRO promo now also appears on the Modules, Settings and Reports screens, not only the Dashboard. It stays dismissible and never leaves this plugin's own screens.
 
 = 1.32.0 =
 * New: AJAX search can look inside the values of the global product attributes you choose. Pick them under the AJAX search module; leave them all unticked and attributes are skipped entirely. Requested on GitHub (#72).
