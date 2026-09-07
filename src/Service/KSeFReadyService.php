@@ -48,7 +48,7 @@ final class KSeFReadyService implements HasHooks
             $nip = $order->get_meta('_polski_billing_nip', true);
         }
 
-        $required = ! empty($nip);
+        $required = $this->autoDetectNip() && ! empty($nip);
 
         /** @var bool $required Filterable KSeF requirement. */
         $required = (bool) apply_filters('polski/ksef/is_required', $required, $order);
@@ -60,6 +60,28 @@ final class KSeFReadyService implements HasHooks
             /** Fires when an order is ready for KSeF invoicing. */
             do_action('polski/ksef/invoice_ready', $order);
         }
+    }
+
+    /**
+     * Whether a VAT ID on the order should mark it as needing KSeF.
+     *
+     * Switching this off does not disable the module: the admin column and the
+     * status panel stay, and an integration can still flag an order through the
+     * `polski/ksef/is_required` filter. That is what keeps this from being a
+     * duplicate of the module toggle.
+     *
+     * A missing key means true, which is what the code did before this was
+     * wired up and matches the default the modules screen declares.
+     */
+    private function autoDetectNip(): bool
+    {
+        $settings = get_option('polski_ksef', []);
+
+        if (! is_array($settings) || ! array_key_exists('auto_detect_nip', $settings)) {
+            return true;
+        }
+
+        return (bool) $settings['auto_detect_nip'];
     }
 
     /**

@@ -28,6 +28,10 @@ final class OmnibusService implements Bootable, HasHooks
     private int $days = 30;
     private string $displayText = '';
     private bool $saleOnly = true;
+    private bool $includeTax = true;
+    private bool $showRegularPrice = false;
+    private string $noHistoryMode = 'hide';
+    private string $noHistoryText = '';
 
     public function __construct(
         private readonly OmnibusPriceRepository $repository,
@@ -46,6 +50,16 @@ final class OmnibusService implements Bootable, HasHooks
         }
         $this->displayText = (string) ($settings['display_text'] ?? __('Lowest price from the last {days} days: {price}', 'polski'));
         $this->saleOnly = (bool) ($settings['display_on_sale_only'] ?? true);
+        $this->includeTax = (bool) ($settings['include_tax'] ?? true);
+        // Declared default on the modules screen is false; a truthy fallback
+        // would switch a new line on for every shop that never opened the form.
+        $this->showRegularPrice = (bool) ($settings['show_regular_price'] ?? false);
+
+        $mode = (string) ($settings['no_history_text'] ?? 'hide');
+        // 'hide' is what the code did unconditionally before this was wired up,
+        // so a shop that never touched the field sees no change.
+        $this->noHistoryMode = in_array($mode, ['hide', 'current', 'custom'], true) ? $mode : 'hide';
+        $this->noHistoryText = (string) ($settings['no_history_custom_text'] ?? '');
     }
 
     public function registerHooks(): void
@@ -252,15 +266,40 @@ final class OmnibusService implements Bootable, HasHooks
         $lowest = $this->getLowestPrice($productId);
 
         if ($lowest === null) {
-            return '';
+            // No recorded history. Saying "the price has not changed" would be a
+            // claim we cannot support: a fresh install has no history either.
+            if ($this->noHistoryMode === 'hide') {
+                return '';
+            }
+
+            // Same conversion as the lowest-price path, or a shop entering
+            // prices net would see a net figure here and a gross one there.
+            $amount = $this->priceForDisplay($product, (float) $product->get_price());
+            $template = $this->noHistoryMode === 'custom' && trim($this->noHistoryText) !== ''
+                ? $this->noHistoryText
+                : $this->displayText;
+            $currency = get_woocommerce_currency();
+        } else {
+            $amount = $this->priceForDisplay($product, $lowest->effectivePrice());
+            $template = $this->displayText;
+            $currency = $lowest->currency;
         }
 
-        $priceHtml = wc_price($lowest->effectivePrice(), ['currency' => $lowest->currency]);
+        $priceHtml = wc_price($amount, ['currency' => $currency]);
 
-        $text = Formatter::interpolate($this->displayText, [
+        $text = Formatter::interpolate($template, [
             'price' => wp_strip_all_tags($priceHtml),
             'days' => (string) $this->days,
         ]);
+
+        // Only worth saying when there is actually a higher price to compare to.
+        if ($this->showRegularPrice && $lowest !== null && $lowest->price > $lowest->effectivePrice()) {
+            $text .= ' ' . sprintf(
+                /* translators: %s: the product's regular price before the reduction */
+                __('Regular price: %s', 'polski'),
+                wp_strip_all_tags(wc_price($this->priceForDisplay($product, $lowest->price), ['currency' => $lowest->currency])),
+            );
+        }
 
         $html = sprintf(
             '<div class="polski-omnibus-price"><span class="polski-omnibus-price__text">%s</span></div>',
@@ -275,6 +314,23 @@ final class OmnibusService implements Bootable, HasHooks
          * @param \WC_Product   $product The product.
          */
         return (string) apply_filters('polski/price/omnibus_html', $html, $lowest, $product);
+    }
+
+    /**
+     * Convert a stored price for display.
+     *
+     * History is recorded exactly as the merchant entered it, so a shop that
+     * enters prices excluding tax was showing a net figure in the notice next to
+     * a gross selling price. These two helpers normalise against
+     * `woocommerce_prices_include_tax`, so they are right whichever way prices
+     * are entered, and they are no-ops when tax is off or the product is not
+     * taxable.
+     */
+    private function priceForDisplay(\WC_Product $product, float $amount): float
+    {
+        return $this->includeTax
+            ? (float) wc_get_price_including_tax($product, ['price' => $amount])
+            : (float) wc_get_price_excluding_tax($product, ['price' => $amount]);
     }
 
     /**

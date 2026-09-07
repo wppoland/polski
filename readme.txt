@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.8
+Stable tag: 1.31.9
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -355,6 +355,14 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.9 =
+* Fixed: eleven settings on the Modules screen did nothing. Wired up: unit price on product lists, Omnibus with tax, Omnibus regular price, the Omnibus "no price history" choice and its custom text, Omnibus visibility on the product page and on product lists, the GPSR display mode and section title, KSeF auto-detection by VAT ID, and the DSA contact name and phone, which art. 12 expects to be published and which were only ever used internally.
+* Fixed: the Omnibus notice was printed on product lists whatever the screen said, and the screen said off. It is now honestly declared as on by default and can really be switched off. Nothing changes for an existing shop.
+* Fixed: the Omnibus lowest price ignored tax entirely, so a shop entering prices without tax showed a net figure beside a gross selling price.
+* Removed two settings that could not be delivered as written: "Related and featured products", which the renderer cannot distinguish from any other list, and "Track variations separately", which is what the code already does unconditionally.
+* Changed: the default text for "no price history" no longer claims the price has not changed. No recorded history is not the same as no change; a fresh install has none either.
+* The release check for settings nothing reads is now accurate. It used to let a key read by one module vouch for every module sharing the name, and treated the defaults file as a reader. Corrected, it found twenty-eight more, all interface text made configurable and never read back, now recorded as a list to shrink.
 
 = 1.31.8 =
 * Fixed: the digital-content waiver field was registered on block checkout even with the Legal checkboxes module switched off, so every order carried it and the confirmation page listed it under Additional information with the value "No". The service had no module check at all. It is now silent whenever the module is off. Reported by strid3rr on the support forum.

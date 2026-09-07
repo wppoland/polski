@@ -40,6 +40,25 @@ $polski_prefill_label = isset($polski_prefill_label) ? (string) $polski_prefill_
         <?php echo esc_html($polski_settings['form_intro'] ?? __('Use the form below to report content you consider illegal under the Digital Services Act.', 'polski')); ?>
     </p>
 
+    <?php
+    // DSA art. 12 expects the designated contact point to be published, not just
+    // used internally. contact_email stays out of this on purpose: it is the
+    // wp_mail recipient a shop chose for itself, and printing it would expose an
+    // inbox nobody agreed to publish.
+    $polski_contact_name = (string) ($polski_settings['contact_name'] ?? '');
+    $polski_contact_phone = (string) ($polski_settings['contact_phone'] ?? '');
+    ?>
+    <?php if ($polski_contact_name !== '' || $polski_contact_phone !== '') : ?>
+        <p class="polski-dsa-report-form__contact">
+            <?php if ($polski_contact_name !== '') : ?>
+                <?php echo esc_html($polski_contact_name); ?>
+            <?php endif; ?>
+            <?php if ($polski_contact_phone !== '') : ?>
+                <a href="tel:<?php echo esc_attr((string) preg_replace('/[^0-9+]/', '', $polski_contact_phone)); ?>"><?php echo esc_html($polski_contact_phone); ?></a>
+            <?php endif; ?>
+        </p>
+    <?php endif; ?>
+
     <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
         <input type="hidden" name="action" value="polski_dsa_report">
         <?php wp_nonce_field('polski_dsa_report', '_polski_dsa_nonce'); ?>
