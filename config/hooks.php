@@ -173,6 +173,9 @@ return [
 
     // System kaucyjny (Polish deposit return scheme).
     \Polski\Service\DepositService::class,
+
+    // EU VAT ID validation against VIES.
+    \Polski\Service\ViesService::class,
     \Polski\Service\GuestWithdrawalService::class,
     \Polski\Service\AnnexGeneratorService::class,
     \Polski\Service\WithdrawalExemptionService::class,
