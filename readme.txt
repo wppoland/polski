@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.32.1
+Stable tag: 1.33.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
 * **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
+* **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
 * **Shop health monitor** - passive monitoring of frontend errors, checkout issues and sales anomalies.
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
@@ -357,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.33.0 =
+* New: a GTU marking on the product, under Product data > Polski > Invoicing. Pick one of the thirteen groups from the JPK_V7 regulation, or leave it at no marking. The code is stored with the product and printed against that line on the invoice, so an order mixing marked and unmarked goods says which line the marking belongs to. Shipping and fees never carry one, and a product left unmarked prints nothing.
 
 = 1.32.1 =
 * Fixed: the PRO promo was shown to people who had already bought PRO. It never checked whether the paid plugin was installed, so a paying customer kept being sold the thing they were running. It now disappears as soon as PRO is active.

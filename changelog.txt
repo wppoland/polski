@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.33.0 =
+* New: a GTU marking on the product, under Product data > Polski > Invoicing. Pick one of the thirteen groups from the JPK_V7 regulation, or leave it at no marking. The code is stored with the product and printed against that line on the invoice, so an order mixing marked and unmarked goods says which line the marking belongs to. Shipping and fees never carry one, and a product left unmarked prints nothing.
+
 = 1.32.1 =
 * Fixed: the PRO promo was shown to people who had already bought PRO. It never checked whether the paid plugin was installed, so a paying customer kept being sold the thing they were running. It now disappears as soon as PRO is active.
 * Changed: the "Legal Email Attachments" module is now called "Legal texts in emails", because it attached nothing. It prints the text of your legal pages under the order table in four customer emails. The documentation described PDF files and a per-email-type document matrix that no released version ever had; that page has been rewritten to match the code, and the PDF version is a PRO feature. Reported on GitHub (discussion #49).
