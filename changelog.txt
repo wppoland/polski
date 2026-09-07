@@ -2,6 +2,16 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.32.0 =
+* New: AJAX search can look inside the values of the global product attributes you choose. Pick them under the AJAX search module; leave them all unticked and attributes are skipped entirely. Requested on GitHub (#72).
+* Fixed: "Search by SKU" and "Search by categories" were on the screen but no code read either one, so both did nothing whichever way you set them. They work now, and switching them off really excludes that data.
+* Fixed: the search dropdown never used any of the extra matching at all. It ran its own product query, while the manufacturer, GTIN and ingredient matching only applied to the main search page, so the dropdown and the results page could disagree about the same term. Both now go through one place.
+* New: electronic contact fields for the manufacturer, the EU responsible person and the importer, plus a postal address for the responsible person. GPSR art. 19(1)(a) asks for a postal and an electronic address, and there was nowhere to put the electronic one. Included in CSV import and export.
+* Changed: the product data panel splits GPSR into "Product responsibility" (who is answerable) and "Product safety" (warnings, instructions, identifier), and the storefront output does the same. A group with nothing filled in is no longer printed as an empty heading. Requested on GitHub (#63).
+* New: the `polski/gpsr/data` filter, so the values shown for a product can be supplied from elsewhere. Plogins Polski PRO uses it for reusable responsibility profiles.
+* Fixed: the changelog on the WordPress.org plugin page was cut off. WordPress.org truncates a readme changelog over 5,000 words and only tells the plugin author by email after the import, so the page had quietly been dropping its oldest entries. readme.txt now carries the last twenty releases and the full history stays in changelog.txt inside the plugin folder.
+* Release checks added for all three failure modes above: a changelog over the wp.org limit, and a product field that renders an input but is missing from the save map, so it accepts typing and discards it.
+
 = 1.31.10 =
 * Fixed: the Omnibus "calculated from" setting did nothing, and the window it was meant to control was the wrong one. The lowest price was always measured up to now, so a running sale price competed to be its own lowest price and the notice could just repeat the current price. Measured from the sale's start date, as the setting says and as the Directive intends, the notice shows the lowest price in the 30 days before the reduction instead.
 * Note on upgrading: on a product whose sale has a start date, the figure in the notice can change, and it changes to the legally correct one. In the test case, a product reduced to 79 after selling at 250 and 300 showed "79" before and shows "250" after. Products with a sale price and no scheduled start are unaffected, because there is no date to anchor the window to; that is the common case.

@@ -138,8 +138,6 @@ $known = [
     'polski_general|admin_vat_card_title',
     'polski_general|admin_vat_small_business_text',
     'polski_general|admin_vat_standard_text',
-    'polski_search|search_categories',
-    'polski_search|search_sku',
     'polski_waitlist|allow_guests',
     'polski_waitlist|disabled_text',
     'polski_waitlist|invalid_email_text',
