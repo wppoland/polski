@@ -45,17 +45,32 @@ foreach ($matches as $m) {
     $declared[$m[1] . '|' . $m[2]] = $m[2];
 }
 
-$haystack = '';
+/**
+ * Sources indexed per file, not concatenated.
+ *
+ * A single blob was not enough: a sub-key read for one module vouched for every
+ * other module declaring the same name. `show_on_loop` is read from
+ * `polski_brand`, and that alone was covering `polski_omnibus|show_on_loop`,
+ * which nothing reads. A key counts as read only when one file mentions both
+ * its option group and its sub-key.
+ *
+ * @var array<string, string> $sources
+ */
+$sources = [];
 foreach (['src', 'templates', 'config'] as $dir) {
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root . '/' . $dir));
     foreach ($iterator as $file) {
         if (! $file instanceof SplFileInfo || $file->getExtension() !== 'php') {
             continue;
         }
-        if ($file->getFilename() === 'ModulesPage.php') {
+        // Both of these declare defaults rather than act on them. Counting
+        // defaults.php as a reader is how polski_omnibus|show_on_loop and
+        // |show_on_single stayed hidden: it names the group and the sub-key
+        // while nothing ever branches on either.
+        if (in_array($file->getFilename(), ['ModulesPage.php', 'defaults.php'], true)) {
             continue;
         }
-        $haystack .= (string) file_get_contents($file->getPathname());
+        $sources[$file->getPathname()] = (string) file_get_contents($file->getPathname());
     }
 }
 
@@ -64,26 +79,86 @@ foreach ($declared as $full => $subKey) {
     if (isset($dynamic[$subKey])) {
         continue;
     }
-    if (str_contains($haystack, "'" . $subKey . "'") || str_contains($haystack, '"' . $subKey . '"')) {
-        continue;
+
+    [$group] = explode('|', $full, 2);
+    $read = false;
+
+    foreach ($sources as $code) {
+        $mentionsKey = str_contains($code, "'" . $subKey . "'") || str_contains($code, '"' . $subKey . '"');
+
+        if (! $mentionsKey) {
+            continue;
+        }
+
+        // The group can be named directly, or reached through a helper such as
+        // getSettings() on the service that owns it. A file that reads the
+        // sub-key and never names another group is taken as the owner.
+        $otherGroups = 0;
+        foreach ($declared as $otherFull => $_sub) {
+            [$otherGroup] = explode('|', $otherFull, 2);
+            if ($otherGroup !== $group && str_contains($code, "'" . $otherGroup . "'")) {
+                $otherGroups++;
+            }
+        }
+
+        if (str_contains($code, "'" . $group . "'") || $otherGroups === 0) {
+            $read = true;
+            break;
+        }
     }
-    $dead[] = $full;
+
+    if (! $read) {
+        $dead[] = $full;
+    }
 }
 
 // Settings known to be dead and not yet fixed. Shrink this list, never grow it.
 $known = [
-    'polski_prices|unit_price_show_loop',
-    'polski_omnibus|include_tax',
-    'polski_omnibus|show_on_related',
-    'polski_omnibus|show_regular_price',
-    'polski_omnibus|no_history_text',
-    'polski_omnibus|no_history_custom_text',
+    // Accepted debt. This list grew from 12 to 37 on 2026-09-07 because the
+    // check got stricter, not because the code got worse: it now indexes each
+    // source file separately and ignores the two files that only declare
+    // defaults. Before that, a sub-key read for one module vouched for every
+    // module sharing the name, and defaults.php counted as a reader.
+    //
+    // Most of what remains is interface text that was made configurable and
+    // never read back. Shrink this list, never grow it.
+    'polski_checkout|parcel_delivery_checkbox_enabled',
+    'polski_checkout|review_reminder_checkbox_enabled',
+    'polski_dsa|success_text',
+    'polski_general|admin_doi_card_title',
+    'polski_general|admin_legal_pages_card_progress',
+    'polski_general|admin_legal_pages_card_title',
+    'polski_general|admin_omnibus_external_active_text',
+    'polski_general|admin_omnibus_no_external_text',
+    'polski_general|admin_omnibus_plugin_detected_text',
+    'polski_general|admin_omnibus_plugin_missing_text',
+    'polski_general|admin_status_active',
+    'polski_general|admin_status_inactive',
+    'polski_general|admin_status_unconfigured',
+    'polski_general|admin_vat_card_title',
+    'polski_general|admin_vat_small_business_text',
+    'polski_general|admin_vat_standard_text',
+    'polski_search|search_categories',
+    'polski_search|search_sku',
+    'polski_waitlist|allow_guests',
+    'polski_waitlist|disabled_text',
+    'polski_waitlist|invalid_email_text',
+    'polski_waitlist|login_required_text',
+    'polski_waitlist|notify_intro_text',
+    'polski_waitlist|notify_outro_text',
+    'polski_waitlist|privacy_error_text',
+    'polski_waitlist|product_not_found_text',
+    'polski_waitlist|show_on_single',
+    'polski_waitlist|success_text',
+    'polski_withdrawal|column_price',
+    'polski_withdrawal|column_product',
+    'polski_withdrawal|column_quantity',
+    'polski_withdrawal|confirmed_order_note',
+    'polski_withdrawal|exempt_notice_text',
+    'polski_withdrawal|items_heading',
+    'polski_withdrawal|legal_notice_text',
+    'polski_withdrawal|requested_order_note',
     'polski_omnibus|price_count_from',
-    'polski_omnibus|variable_tracking',
-    'polski_gpsr|display_mode',
-    'polski_dsa|contact_name',
-    'polski_dsa|contact_phone',
-    'polski_ksef|auto_detect_nip',
 ];
 
 $new = array_values(array_diff($dead, $known));

@@ -238,6 +238,12 @@ final class ProductHooks implements Bootable, HasHooks
             return;
         }
 
+        $settings = \Polski\Util\OptionCache::get('polski_omnibus', []);
+
+        if (is_array($settings) && ! ($settings['show_on_single'] ?? true)) {
+            return;
+        }
+
         $html = $this->priceDisplay->getOmnibusPriceHtml($product);
 
         if ($html !== '') {
