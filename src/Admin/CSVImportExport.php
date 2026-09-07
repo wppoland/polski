@@ -45,6 +45,7 @@ final class CSVImportExport implements HasHooks
         'polski_durability_guarantee_months' => '_polski_durability_guarantee_months',
         'polski_update_period_months' => '_polski_update_period_months',
         'polski_repair_info' => '_polski_repair_info',
+        'polski_gtin' => '_polski_gtin',
         'polski_green_claim_basis' => '_polski_green_claim_basis',
         'polski_green_claim_cert_url' => '_polski_green_claim_cert_url',
         'polski_green_claim_expiry' => '_polski_green_claim_expiry',
@@ -116,6 +117,7 @@ final class CSVImportExport implements HasHooks
         $columns['polski_durability_guarantee_months'] = __('Guarantee of durability (months)', 'polski');
         $columns['polski_update_period_months'] = __('Free software updates (months)', 'polski');
         $columns['polski_repair_info'] = __('Repair information', 'polski');
+        $columns['polski_gtin'] = __('GTIN / EAN (fallback)', 'polski');
         $columns['polski_green_claim_basis'] = __('Environmental claim basis', 'polski');
         $columns['polski_green_claim_cert_url'] = __('Environmental certificate link', 'polski');
         $columns['polski_green_claim_expiry'] = __('Environmental certificate expiry', 'polski');

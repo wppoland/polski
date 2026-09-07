@@ -262,7 +262,10 @@ final class SearchService implements Bootable, HasHooks
         $settings = $this->getAjaxSettings();
         $like = '%' . $wpdb->esc_like($term) . '%';
 
-        $metaKeys = ['_polski_gtin', '_polski_ingredients', '_polski_gpsr_responsible'];
+        // _global_unique_id is where WooCommerce's own GTIN field stores its
+        // value (WC 8.4+). Searching only _polski_gtin meant a shop that filled
+        // in the native field could not find the product by its barcode.
+        $metaKeys = ['_polski_gtin', '_global_unique_id', '_polski_ingredients', '_polski_gpsr_responsible'];
 
         if ((bool) ($settings['search_sku'] ?? true)) {
             $metaKeys[] = '_sku';

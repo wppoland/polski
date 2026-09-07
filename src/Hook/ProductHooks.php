@@ -148,6 +148,15 @@ final class ProductHooks implements Bootable, HasHooks
             callback: fn () => $this->renderConsumerInformation(),
         ));
 
+        // Environmental claim substantiation (anti-greenwashing directive).
+        $this->shopmarks->register(new Shopmark(
+            id: 'green_claim',
+            location: Location::SingleProduct,
+            hookName: 'woocommerce_single_product_summary',
+            priority: 38,
+            callback: fn () => $this->renderGreenClaim(),
+        ));
+
         // Food info (nutrients, allergens, ingredients).
         $this->shopmarks->register(new Shopmark(
             id: 'food_info',
@@ -345,6 +354,24 @@ final class ProductHooks implements Bootable, HasHooks
         if ($html !== '') {
             $this->templateLoader->include('single-product/consumer-info', [
                 'consumer_html' => $html,
+                'product' => $product,
+            ]);
+        }
+    }
+
+    private function renderGreenClaim(): void
+    {
+        global $product;
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $html = $this->productInfo->getGreenClaimHtml($product);
+
+        if ($html !== '') {
+            $this->templateLoader->include('single-product/green-claim', [
+                'green_claim_html' => $html,
                 'product' => $product,
             ]);
         }

@@ -2,6 +2,14 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.35.0 =
+* Fixed: the DSA report form's handler was registered for logged-out visitors whether or not the module was on. With the module off the table it writes to may not exist, so an anonymous submission was lost while the sender was still redirected to a thank-you page, and the shop notification was still sent. Nothing is registered now unless the module is on, and a check covers every public handler in the plugin so this cannot come back unnoticed.
+* Fixed: Quick View answered its AJAX call and rendered product markup even when the module was switched off. Its other three callbacks already checked; this one did not.
+* Fixed: searching by barcode missed WooCommerce's own GTIN field. The search matched only the plugin's fallback meta key, so a shop that filled in the GTIN field WooCommerce added in 8.4 could not find the product by its barcode at all.
+* Fixed: the environmental claim fields collected a claim's basis, its certificate link and an expiry date, and then showed none of it to anybody. The substantiation now appears on the product page. An expired certificate is labelled as expired rather than quietly presented as current proof, which is the failure the directive is about.
+* Added: `polski_gtin` as a CSV import and export column. The meta key behind it was read in six places and written by nothing, and the documentation already promised a column for it.
+* Docs: rewrote the CSV import and export page in all four languages. It listed about forty columns that do not exist, three filters the plugin never registered, and a validation pass that does not run. The column table is now generated from the plugin's own map, so it cannot drift again.
+
 = 1.34.1 =
 * Corrected the PRO price shown in two places: this readme and the upgrade panel inside the plugin both said 69 EUR per year, and the charge is 99 EUR. Freemius is what actually bills and it was changed first, so for a short window both quoted a price the checkout did not honour. Nothing about the free plugin itself changes.
 
