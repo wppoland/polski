@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.31.3 =
+* Added: the deposit scheme (system kaucyjny), off by default. Poland has charged a deposit on beverages in covered packaging since 1 October 2025, and the plugin had nothing for it. Mark a product's packaging (PET up to 3 l, a can up to 1 l, or reusable glass up to 1.5 l) and how many containers one item holds; the deposit is then added on top of the price as its own line at checkout and shown on the product page. The statutory amounts, 0.50 and 1.00, are the defaults and can be changed if the scheme's operator revises them. The line is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale.
+
 = 1.31.2 =
 * Fixed: an order given one of the withdrawal statuses vanished from WooCommerce - Orders. The three statuses were 21 to 23 characters long and an order status is stored in a 20-character column, so each one was cut short on the way into the database and the order ended up carrying a status that is registered nowhere. It was never lost: it stayed in the database, opened normally from its own URL, and came back on the list as soon as a standard status was set. The statuses are now short enough to store, and updating rewrites the ones already saved. Reported by strid3rr on the support forum.
 * Fixed: the withdrawal button and the complaint / return link appeared on the order confirmation screen, straight after checkout. WooCommerce 10.9 began rendering My Account order actions there as well; both links belong on My Account - Orders, which is where the documentation puts them. Reported by strid3rr on the support forum.

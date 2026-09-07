@@ -170,6 +170,9 @@ return [
     WithdrawalService::class,
     \Polski\Service\ReturnRequestService::class,
     \Polski\Service\WithdrawalOrderStatusService::class,
+
+    // System kaucyjny (Polish deposit return scheme).
+    \Polski\Service\DepositService::class,
     \Polski\Service\GuestWithdrawalService::class,
     \Polski\Service\AnnexGeneratorService::class,
     \Polski\Service\WithdrawalExemptionService::class,

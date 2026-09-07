@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.2
+Stable tag: 1.31.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **GPSR product fields** - manufacturer, importer, EU responsible person, product identifiers, safety warnings and instructions, including CSV import and export.
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
+* **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
@@ -343,6 +344,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.31.3 =
+* Added: the deposit scheme (system kaucyjny), off by default. Poland has charged a deposit on beverages in covered packaging since 1 October 2025, and the plugin had nothing for it. Mark a product's packaging (PET up to 3 l, a can up to 1 l, or reusable glass up to 1.5 l) and how many containers one item holds; the deposit is then added on top of the price as its own line at checkout and shown on the product page. The statutory amounts, 0.50 and 1.00, are the defaults and can be changed if the scheme's operator revises them. The line is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale.
 
 = 1.31.2 =
 * Fixed: an order given one of the withdrawal statuses vanished from WooCommerce - Orders. The three statuses were 21 to 23 characters long and an order status is stored in a 20-character column, so each one was cut short on the way into the database and the order ended up carrying a status that is registered nowhere. It was never lost: it stayed in the database, opened normally from its own URL, and came back on the list as soon as a standard status was set. The statuses are now short enough to store, and updating rewrites the ones already saved. Reported by strid3rr on the support forum.
