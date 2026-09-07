@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, gpsr, omnibus, rodo, ksef
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.31.10
+Stable tag: 1.32.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,7 +38,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 = Key modules =
 
-* **GPSR product fields** - manufacturer, importer, EU responsible person, product identifiers, safety warnings and instructions, including CSV import and export.
+* **GPSR product fields** - manufacturer, importer and EU responsible person, each with a postal address and the electronic contact art. 19 asks for, plus product identifiers, safety warnings and instructions, split into a responsibility group and a safety group, including CSV import and export.
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
 * **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
@@ -83,7 +83,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Infinite scroll** - automatic loading of more products.
 * **Product tab manager** - configure the tabs on the product page.
 * **AJAX filters** - filter products without reloading the page.
-* **AJAX search** - live product search.
+* **AJAX search** - live product search, matching the title, the SKU, category names and the values of the global attributes you choose to index.
 * **Product badges** - sale, new, featured and custom labels.
 * **Promotional popups** - popup campaigns in the shop.
 
@@ -356,6 +356,18 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+Full release history is in changelog.txt in the plugin folder and on the plugin page at plogins.com. WordPress.org shows only the most recent releases.
+
+= 1.32.0 =
+* New: AJAX search can look inside the values of the global product attributes you choose. Pick them under the AJAX search module; leave them all unticked and attributes are skipped entirely. Requested on GitHub (#72).
+* Fixed: "Search by SKU" and "Search by categories" were on the screen but no code read either one, so both did nothing whichever way you set them. They work now, and switching them off really excludes that data.
+* Fixed: the search dropdown never used any of the extra matching at all. It ran its own product query, while the manufacturer, GTIN and ingredient matching only applied to the main search page, so the dropdown and the results page could disagree about the same term. Both now go through one place.
+* New: electronic contact fields for the manufacturer, the EU responsible person and the importer, plus a postal address for the responsible person. GPSR art. 19(1)(a) asks for a postal and an electronic address, and there was nowhere to put the electronic one. Included in CSV import and export.
+* Changed: the product data panel splits GPSR into "Product responsibility" (who is answerable) and "Product safety" (warnings, instructions, identifier), and the storefront output does the same. A group with nothing filled in is no longer printed as an empty heading. Requested on GitHub (#63).
+* New: the `polski/gpsr/data` filter, so the values shown for a product can be supplied from elsewhere. Plogins Polski PRO uses it for reusable responsibility profiles.
+* Fixed: the changelog on the WordPress.org plugin page was cut off. WordPress.org truncates a readme changelog over 5,000 words and only tells the plugin author by email after the import, so the page had quietly been dropping its oldest entries. readme.txt now carries the last twenty releases and the full history stays in changelog.txt inside the plugin folder.
+* Release checks added for all three failure modes above: a changelog over the wp.org limit, and a product field that renders an input but is missing from the save map, so it accepts typing and discards it.
+
 = 1.31.10 =
 * Fixed: the Omnibus "calculated from" setting did nothing, and the window it was meant to control was the wrong one. The lowest price was always measured up to now, so a running sale price competed to be its own lowest price and the notice could just repeat the current price. Measured from the sale's start date, as the setting says and as the Directive intends, the notice shows the lowest price in the 30 days before the reduction instead.
 * Note on upgrading: on a product whose sale has a start date, the figure in the notice can change, and it changes to the legally correct one. In the test case, a product reduced to 79 after selling at 250 and 300 showed "79" before and shows "250" after. Products with a sale price and no scheduled start are unaffected, because there is no date to anchor the window to; that is the common case.
@@ -439,183 +451,3 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 = 1.30.0 =
 * The plugin's source strings are now English. About 520 of them were written in Polish, which is how the plugin started, but WordPress.org expects an English source: every other language on translate.wordpress.org was being translated out of Polish rather than out of the original. Nothing changes on a Polish shop, because each of those strings now carries its old Polish wording as the Polish translation. Shops running another language get translations made from English for the first time.
 * Along the way, a handful of strings that said the same thing in two different ways were consolidated, so the same label no longer appears as two entries to translate.
-
-= 1.29.8 =
-* The package no longer bundles translation catalogues. Polish, Belarusian, Czech, Slovak and Chinese all have WordPress.org language packs built from translate.wordpress.org, so the bundled copies were duplicates of files WordPress already installs on its own, and they added about a megabyte to every download. Nothing changes for those languages. Spanish is the exception: there is no Spanish translation on translate.wordpress.org and therefore no Spanish language pack, so the Spanish interface falls back to English.
-* Housekeeping: the release build refuses to produce a package that carries translation catalogues, development files or editor backups, or whose plugin header and readme disagree about the version or the WordPress version tested. The 1.29.7 build was one manual check away from being uploaded with a mismatched header.
-
-= 1.29.7 =
-* Declared compatibility with WordPress 7.1.
-* Fix: the withdrawal confirmation email now actually reaches the customer. WooCommerce builds its email objects only when something asks for them, and nothing did on a storefront request, so the confirmation had no listener attached and was never sent even though the declaration itself was saved. That is why 1.29.5 did not settle it. The same wiring now also covers the guest declaration form, the REST endpoint, the double opt-in email and the completed and rejected notices.
-
-= 1.29.6 =
-* Fix: resolved a TypeError fatal error on WooCommerce -> Reports when opening sales and refund reports due to non-array statuses passed through the woocommerce_reports_order_statuses filter.
-* Fix: legal checkboxes module toggle is now properly honored on modern WooCommerce block checkout; disabling the module cleanly removes all additional consent checkboxes and restores standard WooCommerce terms behavior.
-* Fix: added WooCommerce 8.6+ Additional Checkout Fields API integration for the NIP lookup module, enabling the NIP field and validation on modern block checkout pages.
-* Fix: the checkout order button text now defaults to statutory "Zamawiam z obowiązkiem zapłaty" when the module is enabled without a custom override, and translates place order button text across both classic and block checkout.
-
-= 1.29.5 =
-* Fix: resolved a TypeError fatal error occurring when filing a withdrawal declaration on the storefront due to hook argument type mismatch in the AI withdrawal reason classifier; confirmation email is now delivered reliably.
-
-= 1.29.4 =
-* Fix: changed allergen seeding names in gettext calls to standard English source strings with bundled Polish translations, ensuring GlotPress translation catalogs on translate.wordpress.org remain 100% complete and valid across all locales.
-
-= 1.29.3 =
-* Fix: resolved a fatal error occurring when filing a withdrawal declaration or viewing the withdrawals list in WP Admin due to mismatched template variables and date formatting on DateTimeImmutable instances; email confirmation is now delivered reliably.
-
-= 1.29.2 =
-* Fix: restored automatic NIP verification and company auto-fill from GUS REGON on checkout; fixed script initialization for custom themes (e.g. Divi) and replaced PHP SoapClient with robust SOAP 1.2 HTTP transport to resolve GUS XOP/MTOM multipart parsing.
-
-= 1.29.1 =
-* Corrected the PRO pricing note. It said the amount is shown in PLN at checkout, which is not true: Polski PRO is priced and charged in EUR. The note now says so, in English, Polish, German and Spanish.
-
-= 1.29.0 =
-* **The Food module now works.** It never did. The service checked a setting that the plugin seeds as off and never writes, so the food block on the product page was invisible on every shop no matter what the Food module toggle said. It now follows the toggle, which is the switch you can actually reach. Enter ingredients, allergens, nutrition, Nutri-Score or alcohol content, switch the module on, and they appear.
-* The other half of the same bug: the food shortcodes and the Elementor food widgets ignored both switches and rendered regardless. They now follow the module too. So that nothing disappears from a shop relying on them, this update switches the Food module on automatically wherever food data already exists: any product with ingredients, nutrition, Nutri-Score, alcohol content, origin or net quantity filled in, or any product tagged with an allergen.
-* Double opt-in now follows its module toggle as well as its own setting; previously the toggle did nothing. Shops that already had double opt-in switched on keep it, because the module is enabled for them automatically, so no account waiting for verification suddenly becomes able to log in.
-* Environmental claim fields in the product editor now follow the Anti-greenwashing module. When the module is off the plugin now leaves stored claims alone instead of clearing them the next time you save the product. Shops with claims already entered get the module switched on automatically.
-
-= 1.28.0 =
-* Six module toggles now do what they say. An audit of all 91 modules found ten with no enabled-check anywhere in the code, meaning the switch was decorative and the feature ran regardless. Fixed in this release: Checkout button, Consent logging, Legal pages, Email attachments, Plugin data and the store audit's environmental-claims check.
-* The most consequential of those: **Consent logging kept recording after you switched it off.** Every order still wrote a row with the shopper's IP address, browser user agent and timestamp. If you had that module off, personal data was being collected against your setting. It now stops when the module is off. Rows already stored are left alone; delete them from the consent records screen if you want them gone.
-* Checkout button: switching the module off now really restores WooCommerce's own "Place order" wording, on the classic, block and multi-step checkouts alike.
-* Email attachments: switching the module off now really stops the legal documents being attached to customer emails. Worth knowing before you switch it off.
-* Legal pages: switching the module off stops new pages being generated. Pages you already have stay published and keep being used everywhere else in the plugin. The module description said "Off until enabled", which was not what happened; it now describes the real behaviour.
-* Plugin data: uninstall now honours the module. With it off, uninstalling leaves your data in place regardless of the delete setting.
-* Fixed the store audit reporting a warning for environmental claims even on stores that had the module switched on. It was checking a module id that does not exist.
-* Raised the minimum WordPress version from 6.4 to 6.9. This matches what already had to be true: WooCommerce 10.8 raised its own WordPress minimum to 6.9, and this plugin requires WooCommerce, so a store on WordPress 6.4 could not be running a supported WooCommerce anyway. The old header promised a compatibility that did not exist.
-* Development dependency: WooCommerce stubs aligned to 10.9.
-
-= 1.27.1 =
-* The nutrition table listed energy twice with both rows labelled "Energy", because the regulation asks for it in kilojoules and in kilocalories. The rows now read "Energy (kJ)" and "Energy (kcal)".
-
-= 1.27.0 =
-* New module, Consumer information: the product page can carry the reminder that the statutory guarantee of conformity applies, plus per-product fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. This is the pre-contractual information Directive (EU) 2024/825 requires from 27 September 2026. Off by default. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so the module renders plain labelled rows for now.
-* Fixed: the nutrition table could never be filled in. The stored nutrition meta had two readers expecting incompatible shapes and nothing that wrote it, so the table never appeared and the nutrition data was always missing from structured data. Nutrition values now import and export through the WooCommerce product CSV, like ingredients and the other food fields, using the form energy_kcal:250|fat:12.3|salt:0.9.
-
-= 1.26.0 =
-* The fourteen allergens of Annex II to Regulation (EU) 1169/2011 are now seeded on update, so the allergen field is usable straight away instead of starting empty. Terms you already created keep their own names; matching is by slug.
-
-= 1.25.4 =
-* Declared compatibility with WooCommerce 10.9.
-
-= 1.25.3 =
-* Security: guest product questions now await moderation instead of auto-publishing, and Q&A voting is restricted to valid answers.
-
-= 1.25.2 =
-* Translation quality pass: corrected Polish, German and Spanish (product names kept in English, legal withdrawal terminology, WooCommerce glossary and grammar fixes).
-
-= 1.25.1 =
-* Documentation: readme links are now labelled links.
-
-= 1.25.0 =
-* Added AI transparency support for the AI Act (art. 50): AI-classified withdrawal reasons are now labelled as such, and a new "Label AI-generated content" option (on by default) discloses product copy generated by the Pro AI description generator on the storefront.
-
-= 1.24.12 =
-* Fixed low-contrast headings on the admin settings screen under an OS dark-mode preference.
-
-= 1.24.11 =
-* Added a Free vs PRO overview to the readme.
-
-= 1.24.10 =
-* Added bundled Polish, German and Spanish translations for the plugin interface.
-
-= 1.24.9 =
-* Added a dashboard overview of PRO features (polski PRO).
-
-= 1.24.8 =
-* Accessibility: the social-proof toast is now keyboard-dismissable, respects reduced motion, and meets AA contrast.
-* Admin: a Polish flag is shown on the Polski row in the plugins list.
-* Added a WordPress Playground blueprint so the plugin can be tried via the wp.org Live Preview.
-* Translations: only the Polish translation is bundled; other locales come from the WordPress.org language packs.
-* Housekeeping: Plugin Check code annotations; release package no longer bundles dev tools.
-
-= 1.24.7 =
-* Housekeeping: stop bundling machine-generated translations (Polish is kept); other languages now come from the WordPress.org language packs. Also keep build artifacts out of the released package. No functional changes.
-
-= 1.24.6 =
-* Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).
-
-= 1.24.5 =
-* Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" → "23%").
-* Fix: the shipping-costs notice no longer runs into the VAT notice ("VATzzgl." → proper spacing), including in page builders that don't load the plugin stylesheet.
-* Fix: the default Polish shipping-costs label is now "plus koszty wysyłki" (previously an untranslated German "zzgl. kosztów wysyłki").
-
-= 1.24.4 =
-* New blocks: product-data blocks for block themes and the editor - Unit Price, Delivery Time, Lowest Price (Omnibus), Tax Information, Shipping Costs, Manufacturer, Safety Instructions, Safety Documents, Power Supply, Defect Description, Nutrition Values, Allergens, Ingredients, Nutri-Score, Food Information and Product Safety Information (GPSR) - all in the "Polski" category. Each one displays the matching product data and shows nothing outside a product context. This brings the block editor to parity with the Polski widgets for Elementor.
-
-= 1.24.3 =
-* New blocks: DSA Report Form, Dispute Resolution (ODR) Information, Small-Taxpayer VAT Exemption Information and Available Payment Methods are now available as blocks (in the "Polski" category), so they can be placed on any page without remembering a shortcode. Each one displays nothing until the matching feature is configured.
-
-= 1.24.2 =
-* New: all Polski blocks are now grouped in the block editor under a separate "Polski" category, and block metadata is registered from block.json files, so the blocks are correctly visible and easier to find.
-* Fix: storefront blocks - AJAX search, AJAX filters and the product slider - did not register on installed pages. They now register correctly and appear in the editor.
-
-= 1.24.1 =
-* Fix: the gallery and zoom lightbox could stay on screen as a dark overlay if the theme forced its own display value. The closed state is now always hidden.
-* Hardening: the popup and quick-view overlays also force the hidden state, so a theme should not keep a closed overlay on screen.
-
-= 1.24.0 =
-* New: full support for the WooCommerce block checkout. Consent checkboxes, the digital-content consent and custom checkout fields render, validate and save in both the block and classic checkout.
-* New: product information, including the lowest price from 30 days, the unit price and the delivery time, appears in the block cart and checkout.
-* Security: hardened rate-limit handling on the guest withdrawal path and improved IPv6 address anonymisation in the consent log.
-* Fix: uninstall removes all plugin tables, database migrations run in the correct order, and the Omnibus lowest-price window no longer collapses to the current price for an empty period.
-
-= 1.23.2 =
-* Improvement: the setup wizard is now a guided multi-step process: company, legal, taxes and OSS, checkout, finish. It collects company data, enables the needed legal modules and helps configure taxes and checkout. Optional steps can be skipped, and finishing does not disable modules you already use.
-
-= 1.23.1 =
-* Translations: completed the bundled translations for German, Czech, Slovak, Ukrainian, Lithuanian, Belarusian and Simplified Chinese, including the text of the new setup wizard and module search and sorting.
-
-= 1.23.0 =
-* New: the setup wizard. A new card suggests ready-made scenarios such as a Polish legal baseline, food and grocery, digital products, B2B and wholesale, fashion and conversion growth. The wizard only enables modules, it does not disable existing settings.
-
-= 1.22.7 =
-* Fix: the Polski admin menu icon no longer shifts on hover and in the active state.
-
-= 1.22.6 =
-* New: the modules screen now has instant search by name and description and sorting: grouped, alphabetical or enabled first. Without reloading the page.
-
-= 1.22.5 =
-* Fix: removed a TypeError fatal error that could occur on order queries, including on the WooCommerce orders screen, when the withdrawal query helper received a pagination object instead of an array.
-
-= 1.22.4 =
-* New: the BDO number module. Enter a BDO number and display it with the [polski_bdo] shortcode or the BDO number block, for example in the footer. The company identification block can also include the BDO number.
-
-= 1.22.3 =
-* Admin: merged five separate settings screens into one tabbed screen, and moved withdrawals, the consent log, CRA incidents, SBOM, the complaint template and GDPR training documents into a reports and tools centre.
-* Admin: split the module list into groups and added tooltips to each module. Action links are dimmed when a module is disabled.
-* Fix: the Polski menu icon is now centred relative to its label.
-* Translations: refreshed and recompiled all bundled language catalogs after the settings and menu changes.
-* Documentation: updated the documentation and plugin-page links on plogins.com.
-
-Older versions are available in [changelog.txt](https://plugins.svn.wordpress.org/polski/trunk/changelog.txt).
-
-== Upgrade Notice ==
-
-= 1.31.1 =
-Switching the NIP module off now actually removes the NIP field from checkout. It only ever worked in one direction before.
-
-= 1.31.0 =
-VAT invoices are now part of the free plugin: numbered per year, VAT grouped by rate, opened by the customer from My Account and printable to PDF from the browser. Switch on the Invoices module to use it.
-
-= 1.30.8 =
-Fixes three modules that did nothing on the block checkout, which is the WooCommerce default: the NIP field now appears, the order button label is applied, and legal checkboxes can finally be switched off again.
-
-= 1.30.0 =
-Nothing changes on a Polish shop. The plugin's source strings moved from Polish to English so that translations on translate.wordpress.org are made from the original rather than from Polish; the Polish wording is unchanged and now ships as the Polish translation.
-
-= 1.29.8 =
-Smaller download and no functional change for Polish. The plugin no longer bundles translation files that WordPress.org already ships as language packs. Spanish falls back to English, because there is no Spanish translation on translate.wordpress.org and so no Spanish language pack.
-
-= 1.29.7 =
-Recommended if you use the right of withdrawal. The confirmation email was saved but never sent; it is now delivered on the storefront form, the guest form and the REST endpoint. Also declares compatibility with WordPress 7.1.
-
-= 1.20.1 =
-Fixes admin-screen script loading in some configurations and refreshes the bundled translations.
-
-= 1.6.3 =
-Plugin Check tidy-up: added justifications for queries against custom tables. No functional changes.
-
-= 1.6.2 =
-Hardening after the WordPress.org review: safer input handling, a broader description of external services and improved wording in the readme.

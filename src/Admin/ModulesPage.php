@@ -685,6 +685,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_search|show_view_all_link', 'label' => __('Show view all results link', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_search|search_sku', 'label' => __('Search by SKU', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_search|search_categories', 'label' => __('Search by categories', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_search|search_attributes', 'label' => __('Search by attribute values', 'polski'), 'type' => 'attribute_multicheck', 'default' => [], 'hint' => __('Tick the global attributes whose values should be searchable, for example a colour or a material. Leave all unticked to skip attributes entirely.', 'polski')],
                     ['key' => 'polski_search|include_out_of_stock', 'label' => __('Include out of stock products', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_search|search_label', 'label' => __('Search field label', 'polski'), 'type' => 'text', 'default' => __('Search products', 'polski')],
                     ['key' => 'polski_search|results_label', 'label' => __('Results label', 'polski'), 'type' => 'text', 'default' => __('Product search results', 'polski')],
@@ -1976,6 +1977,28 @@ final class ModulesPage implements HasHooks
                     );
                 }
                 echo '</select>';
+            } elseif ($type === 'attribute_multicheck') {
+                $selected = is_array($currentValue) ? array_map('strval', $currentValue) : [];
+                $taxonomies = wc_get_attribute_taxonomies();
+
+                if ($taxonomies === []) {
+                    echo '<p class="polski-field__hint">'
+                        . esc_html__('No global product attributes exist yet. Create them under Products > Attributes.', 'polski')
+                        . '</p>';
+                } else {
+                    echo '<fieldset class="polski-field__checklist">';
+                    foreach ($taxonomies as $taxonomy) {
+                        $slug = wc_attribute_taxonomy_name($taxonomy->attribute_name);
+                        printf(
+                            '<label class="polski-field__checkitem"><input type="checkbox" name="%s[]" value="%s" %s> %s</label>',
+                            esc_attr($inputName),
+                            esc_attr($slug),
+                            checked(in_array($slug, $selected, true), true, false),
+                            esc_html($taxonomy->attribute_label !== '' ? $taxonomy->attribute_label : $taxonomy->attribute_name),
+                        );
+                    }
+                    echo '</fieldset>';
+                }
             } elseif ($type === 'delivery_time_select') {
                 $terms = get_terms(['taxonomy' => 'polski_delivery_time', 'hide_empty' => false]);
                 echo '<select name="' . esc_attr($inputName) . '" class="polski-field__control">';
@@ -2405,6 +2428,9 @@ final class ModulesPage implements HasHooks
                     $existing[$fKey] = $this->sanitizeFieldValue($settingsData[$optionName][$fKey], $field);
                 } elseif (($field['type'] ?? '') === 'checkbox') {
                     $existing[$fKey] = false;
+                } elseif (($field['type'] ?? '') === 'attribute_multicheck') {
+                    // Every box unticked submits nothing at all, same as a checkbox.
+                    $existing[$fKey] = [];
                 }
             }
 
@@ -2914,9 +2940,38 @@ final class ModulesPage implements HasHooks
             'email' => sanitize_email((string) $value),
             'integration_repeater' => $this->sanitizeIntegrationRepeater((string) $value),
             'trigger_repeater' => $this->sanitizeTriggerRepeater((string) $value),
+            'attribute_multicheck' => $this->sanitizeAttributeTaxonomies($value),
             'select', 'delivery_time_select', 'text' => sanitize_text_field((string) $value),
             default => is_string($value) ? sanitize_text_field($value) : $value,
         };
+    }
+
+    /**
+     * Keep only slugs that are real global attribute taxonomies, so a tampered
+     * or stale POST cannot push an arbitrary taxonomy into a search query.
+     *
+     * @return list<string>
+     */
+    private function sanitizeAttributeTaxonomies(mixed $value): array
+    {
+        if (! is_array($value)) {
+            return [];
+        }
+
+        $allowed = [];
+        foreach (wc_get_attribute_taxonomies() as $taxonomy) {
+            $allowed[] = wc_attribute_taxonomy_name($taxonomy->attribute_name);
+        }
+
+        $clean = [];
+        foreach ($value as $slug) {
+            $slug = sanitize_key((string) $slug);
+            if (in_array($slug, $allowed, true) && ! in_array($slug, $clean, true)) {
+                $clean[] = $slug;
+            }
+        }
+
+        return $clean;
     }
 
     /**

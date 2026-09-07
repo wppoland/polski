@@ -32,9 +32,13 @@ final class CSVImportExport implements HasHooks
         'polski_net_filling' => '_polski_net_filling_quantity',
         'polski_gpsr_manufacturer_name' => '_polski_gpsr_manufacturer_name',
         'polski_gpsr_manufacturer_address' => '_polski_gpsr_manufacturer_address',
+        'polski_gpsr_manufacturer_contact' => '_polski_gpsr_manufacturer_contact',
         'polski_gpsr_importer_name' => '_polski_gpsr_importer_name',
         'polski_gpsr_importer_address' => '_polski_gpsr_importer_address',
+        'polski_gpsr_importer_contact' => '_polski_gpsr_importer_contact',
         'polski_gpsr_responsible_person' => '_polski_gpsr_responsible_person',
+        'polski_gpsr_responsible_address' => '_polski_gpsr_responsible_address',
+        'polski_gpsr_responsible_contact' => '_polski_gpsr_responsible_contact',
         'polski_gpsr_product_identifier' => '_polski_gpsr_product_identifier',
         'polski_gpsr_safety_warnings' => '_polski_gpsr_safety_warnings',
         'polski_gpsr_instructions' => '_polski_gpsr_instructions',
@@ -99,9 +103,13 @@ final class CSVImportExport implements HasHooks
         $columns['polski_net_filling'] = __('Net quantity', 'polski');
         $columns['polski_gpsr_manufacturer_name'] = __('GPSR - Manufacturer name', 'polski');
         $columns['polski_gpsr_manufacturer_address'] = __('GPSR - Manufacturer address', 'polski');
+        $columns['polski_gpsr_manufacturer_contact'] = __('GPSR - Manufacturer contact', 'polski');
         $columns['polski_gpsr_importer_name'] = __('GPSR - Importer name', 'polski');
         $columns['polski_gpsr_importer_address'] = __('GPSR - Importer address', 'polski');
+        $columns['polski_gpsr_importer_contact'] = __('GPSR - Importer contact', 'polski');
         $columns['polski_gpsr_responsible_person'] = __('GPSR - Responsible person', 'polski');
+        $columns['polski_gpsr_responsible_address'] = __('GPSR - Responsible person address', 'polski');
+        $columns['polski_gpsr_responsible_contact'] = __('GPSR - Responsible person contact', 'polski');
         $columns['polski_gpsr_product_identifier'] = __('GPSR - Product identifier', 'polski');
         $columns['polski_gpsr_safety_warnings'] = __('GPSR - Safety warnings', 'polski');
         $columns['polski_gpsr_instructions'] = __('GPSR - Safety instructions', 'polski');
