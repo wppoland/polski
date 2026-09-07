@@ -18,11 +18,20 @@ defined('ABSPATH') || exit;
 final class InvoiceDataBuilder
 {
     /**
-     * @return array{seller: array<string, string>, buyer: array<string, string>, lines: list<array<string, mixed>>, vat: list<array<string, mixed>>, payment: array<string, string>}
+     * Build the invoice payload.
+     *
+     * The concrete shape is seller, buyer, lines, vat, payment and annotations,
+     * but `polski/invoice/data` runs last and a listener may add its own keys or
+     * empty an existing one: the VAT margin module clears `vat`, because an
+     * invoice under that scheme may not show a rate. The declared type is
+     * therefore the loose one the filter can actually produce, not the shape
+     * this method happens to assemble.
+     *
+     * @return array<string, mixed>
      */
     public function build(WC_Order $order): array
     {
-        return [
+        $data = [
             'seller'  => $this->seller(),
             'buyer'   => $this->buyer($order),
             'lines'   => $this->lines($order),
@@ -32,7 +41,22 @@ final class InvoiceDataBuilder
                 'order'    => $order->get_order_number(),
                 'currency' => $order->get_currency(),
             ],
+            // Statutory annotations required on the face of the invoice, e.g. the
+            // margin scheme wording from art. 106e ust. 3 ustawy o VAT. Filled by
+            // listeners; the template prints whatever it is given.
+            'annotations' => [],
         ];
+
+        /**
+         * Filters the invoice payload before it is snapshotted.
+         *
+         * An invoice is frozen once issued, so this runs while the document is
+         * still being built and never afterwards.
+         *
+         * @param array<string, mixed> $data  The invoice payload.
+         * @param WC_Order             $order The order being invoiced.
+         */
+        return (array) apply_filters('polski/invoice/data', $data, $order);
     }
 
     /**

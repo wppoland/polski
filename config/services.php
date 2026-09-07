@@ -275,6 +275,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\WithdrawalOrderStatusService::class, static fn () => new \Polski\Service\WithdrawalOrderStatusService());
     $c->singleton(\Polski\Service\DepositService::class, static fn () => new \Polski\Service\DepositService());
     $c->singleton(\Polski\Service\ViesService::class, static fn () => new \Polski\Service\ViesService());
+    $c->singleton(\Polski\Service\VatMarginService::class, static fn () => new \Polski\Service\VatMarginService());
     $c->singleton(\Polski\Service\GuestWithdrawalService::class, static fn () => new \Polski\Service\GuestWithdrawalService(
         $c->get(WithdrawalService::class),
         $c->get(WithdrawalRepository::class),
