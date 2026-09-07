@@ -80,9 +80,35 @@ class OmnibusPriceRepository
     /**
      * Find the lowest effective price (considering sale prices) for a product.
      */
-    public function findLowestEffective(int $productId, int $days = 30): ?OmnibusPrice
+    /**
+     * @param ?string $beforeGmt End of the window, UTC 'Y-m-d H:i:s'. The
+     *                           Omnibus Directive asks for the lowest price in
+     *                           the days *before the reduction*, so passing the
+     *                           sale's start date excludes the running sale
+     *                           price from its own comparison. Null keeps the
+     *                           window ending now.
+     */
+    public function findLowestEffective(int $productId, int $days = 30, ?string $beforeGmt = null): ?OmnibusPrice
     {
         global $wpdb;
+
+        if ($beforeGmt !== null) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+            $row = $wpdb->get_row(
+                $wpdb->prepare(
+                    'SELECT * FROM %i
+                     WHERE product_id = %d AND recorded_at >= %s AND recorded_at < %s
+                     ORDER BY COALESCE(sale_price, price) ASC
+                     LIMIT 1',
+                    $this->tableName(),
+                    $productId,
+                    $this->gmDateDaysBefore($beforeGmt, $days),
+                    $beforeGmt,
+                ),
+            );
+
+            return $row === null ? null : OmnibusPrice::fromRow($row);
+        }
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
         $row = $wpdb->get_row(
@@ -274,6 +300,17 @@ class OmnibusPriceRepository
     private function gmDateDaysAgo(int $days): string
     {
         $ts = strtotime("-{$days} days");
+
+        return gmdate('Y-m-d H:i:s', $ts !== false ? $ts : time());
+    }
+
+    /**
+     * The same window, but counted back from a given moment instead of now.
+     */
+    private function gmDateDaysBefore(string $baseGmt, int $days): string
+    {
+        $base = strtotime($baseGmt . ' UTC');
+        $ts = strtotime("-{$days} days", $base !== false ? $base : time());
 
         return gmdate('Y-m-d H:i:s', $ts !== false ? $ts : time());
     }
