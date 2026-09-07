@@ -278,6 +278,29 @@ final class OmnibusService implements Bootable, HasHooks
     }
 
     /**
+     * The same notice as {@see self::getLowestPriceHtml()} but as plain text.
+     *
+     * The cart needs this. Both carts render the line through
+     * `woocommerce_get_item_data`, and the block cart takes that array over the
+     * Store API and renders it as React nodes, so any markup would be shown as
+     * literal characters rather than parsed.
+     */
+    public function getLowestPriceText(int $productId): string
+    {
+        $html = $this->getLowestPriceHtml($productId);
+
+        if ($html === '') {
+            return '';
+        }
+
+        // wc_price() encodes the currency symbol, so stripping tags leaves
+        // "&#036;79.00". The classic cart would render that as a symbol, but the
+        // block cart passes item_data through React, which escapes it and shows
+        // the entity literally. Decode before either sees it.
+        return trim(html_entity_decode(wp_strip_all_tags($html), ENT_QUOTES, 'UTF-8'));
+    }
+
+    /**
      * Get the price history for a product.
      *
      * @return list<OmnibusPrice>

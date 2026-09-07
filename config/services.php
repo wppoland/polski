@@ -507,7 +507,7 @@ return static function (Container $c): void {
         $c->get(TemplateLoader::class),
     ));
 
-    $c->singleton(CartHooks::class, static fn () => new CartHooks());
+    $c->singleton(CartHooks::class, static fn () => new CartHooks($c->get(OmnibusService::class)));
 
     $c->singleton(OrderHooks::class, static fn () => new OrderHooks());
 

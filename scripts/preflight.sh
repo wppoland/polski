@@ -17,26 +17,29 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-echo "==> 1/6  boot timing and duplicated admin_post handlers"
+echo "==> 1/7  boot timing and duplicated admin_post handlers"
 php tests/boot-timing-check.php
 
-echo "==> 2/6  phpcs"
+echo "==> 2/7  every settings key has a reader"
+php tests/settings-are-read-check.php
+
+echo "==> 3/7  phpcs"
 vendor/bin/phpcs
 
-echo "==> 3/6  phpstan (memory 2G)"
+echo "==> 4/7  phpstan (memory 2G)"
 php -d memory_limit=2G vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
 
-echo "==> 4/6  runtime fatal smoke (wp-env)"
+echo "==> 5/7  runtime fatal smoke (wp-env)"
 npx wp-env start >/dev/null 2>&1 || true
 # PRO would gate the admin behind a Freemius license screen; the smoke exercises
 # the FREE plugin's code directly, so deactivate PRO for a deterministic run.
 npx wp-env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
 npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
 
-echo "==> 5/6  WordPress Plugin Check"
+echo "==> 6/7  WordPress Plugin Check"
 bash scripts/plugin-check.sh
 
-echo "==> 6/6  package contents and header/readme agreement"
+echo "==> 7/7  package contents and header/readme agreement"
 bash scripts/prepare-wporg-release.sh /tmp/polski-preflight-package >/dev/null
 bash scripts/assert-package-clean.sh /tmp/polski-preflight-package
 rm -rf /tmp/polski-preflight-package
