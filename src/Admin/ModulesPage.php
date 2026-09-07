@@ -202,6 +202,19 @@ final class ModulesPage implements HasHooks
                 ],
             ],
             [
+                'id' => 'vies',
+                'name' => __('EU VAT ID check (VIES)', 'polski'),
+                'description' => __('Validates a customer\'s EU VAT number against the European Commission\'s VIES service, which is what an intra-EU B2B sale at 0% VAT turns on. The NIP module only covers Polish numbers, through the GUS register. Adds a check button to the order screen and records the answer on the order. Enter your own VAT number below to make it a qualified check: only then does VIES return a consultation number, which is the evidence that you checked. Off by default.', 'polski'),
+                'group' => 'Compliance',
+                'enabled' => false,
+                'icon' => 'dashicons-yes-alt',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_vies|requester_vat', 'label' => __('Your own VAT number', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('For example PL5260250274. Leave empty to check without a consultation number.', 'polski')],
+                    ['key' => 'polski_vies|cache_hours', 'label' => __('Cache answers for (hours)', 'polski'), 'type' => 'number', 'default' => 24, 'hint' => __('A check recorded on an order always calls VIES fresh, cache or not.', 'polski')],
+                ],
+            ],
+            [
                 'id' => 'deposit',
                 'name' => __('Deposit scheme (system kaucyjny)', 'polski'),
                 'description' => __('Charges the statutory deposit on beverages in covered packaging, in force in Poland since 1 October 2025. Mark the packaging on each product; the deposit is then added on top of the price as its own checkout line and shown on the product page. It is added untaxed on purpose: the deposit sits outside the VAT base at the point of sale. Off by default.', 'polski'),
