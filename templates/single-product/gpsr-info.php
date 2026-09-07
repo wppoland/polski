@@ -21,12 +21,22 @@ $polski_labels = [
     'safety_warnings'      => __('Safety warnings', 'polski'),
     'instructions'         => __('Safety instructions', 'polski'),
 ];
+
+// There is no polski_gpsr entry in config/defaults.php, so this fallback is what
+// supplies the default the modules screen advertises.
+$polski_mode = ($polski_settings['display_mode'] ?? 'accordion') === 'section' ? 'section' : 'accordion';
+$polski_heading = trim((string) ($polski_settings['section_title'] ?? ''));
+$polski_heading = $polski_heading !== '' ? $polski_heading : __('Product safety (GPSR)', 'polski');
 ?>
 <div class="polski-gpsr-info">
+    <?php if ($polski_mode === 'accordion') : ?>
     <details class="polski-gpsr-info__details">
         <summary class="polski-gpsr-info__summary">
-            <?php esc_html_e('Product safety (GPSR)', 'polski'); ?>
+            <?php echo esc_html($polski_heading); ?>
         </summary>
+    <?php else : ?>
+        <h2 class="polski-gpsr-info__title"><?php echo esc_html($polski_heading); ?></h2>
+    <?php endif; ?>
         <dl class="polski-gpsr-info__list">
             <?php foreach ($polski_data as $polski_key => $polski_value) : ?>
                 <?php if ($polski_value !== '') : ?>
@@ -35,5 +45,7 @@ $polski_labels = [
                 <?php endif; ?>
             <?php endforeach; ?>
         </dl>
+    <?php if ($polski_mode === 'accordion') : ?>
     </details>
+    <?php endif; ?>
 </div>

@@ -258,19 +258,16 @@ final class ModulesPage implements HasHooks
                     ['key' => '_omnibus_header_2', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Display', 'polski') . '</strong>'],
                     ['key' => 'polski_omnibus|display_on_sale_only', 'label' => __('Only products on sale', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Show info only when the product has a sale price', 'polski')],
                     ['key' => 'polski_omnibus|show_on_single', 'label' => __('Product page', 'polski'), 'type' => 'checkbox', 'default' => true],
-                    ['key' => 'polski_omnibus|show_on_loop', 'label' => __('Product lists (shop, categories)', 'polski'), 'type' => 'checkbox', 'default' => false],
-                    ['key' => 'polski_omnibus|show_on_related', 'label' => __('Related and featured products', 'polski'), 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'polski_omnibus|show_on_loop', 'label' => __('Product lists (shop, categories)', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_omnibus|show_on_cart', 'label' => __('Cart', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_omnibus|show_regular_price', 'label' => __('Show regular price (before sale)', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Display additional information about the price before the sale started', 'polski')],
 
                     ['key' => '_omnibus_header_3', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Message template', 'polski') . '</strong>'],
                     ['key' => 'polski_omnibus|display_text', 'label' => __('Message content', 'polski'), 'type' => 'text', 'default' => 'Lowest price in the last {days} days: {price}', 'hint' => __('Variables: {price}, {days}, {date}, {regular_price}', 'polski')],
                     ['key' => 'polski_omnibus|no_history_text', 'label' => __('No price history', 'polski'), 'type' => 'select', 'default' => 'hide', 'options' => ['hide' => __('Hide message', 'polski'), 'current' => __('Show current price', 'polski'), 'custom' => __('Custom text', 'polski')]],
-                    ['key' => 'polski_omnibus|no_history_custom_text', 'label' => __('Custom text (no history)', 'polski'), 'type' => 'text', 'default' => 'Price has not changed in {days} days'],
+                    ['key' => 'polski_omnibus|no_history_custom_text', 'label' => __('Custom text (no history)', 'polski'), 'type' => 'text', 'default' => 'No recorded price reduction in the last {days} days'],
                     ['key' => 'polski_omnibus|price_count_from', 'label' => __('Calculated from', 'polski'), 'type' => 'select', 'default' => 'sale_start', 'options' => ['sale_start' => __('Sale start date', 'polski'), 'today' => __('Today', 'polski')], 'hint' => __('Reference point for calculating the lowest price', 'polski')],
 
-                    ['key' => '_omnibus_header_4', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Variable products', 'polski') . '</strong>'],
-                    ['key' => 'polski_omnibus|variable_tracking', 'label' => __('Track variations separately', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Each variation has its own price history', 'polski')],
                 ],
             ],
             [

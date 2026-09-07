@@ -91,6 +91,12 @@ final class LoopHooks implements Bootable, HasHooks
             return;
         }
 
+        $settings = \Polski\Util\OptionCache::get('polski_prices', []);
+
+        if (is_array($settings) && ! ($settings['unit_price_show_loop'] ?? true)) {
+            return;
+        }
+
         $html = $this->priceDisplay->getUnitPriceHtml($product);
 
         if ($html !== '') {
@@ -106,6 +112,15 @@ final class LoopHooks implements Bootable, HasHooks
         global $product;
 
         if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $settings = \Polski\Util\OptionCache::get('polski_omnibus', []);
+
+        // Default true, not the false the screen used to declare: the notice has
+        // always appeared here, and this is an Omnibus Directive surface, so a
+        // silent removal on upgrade would be the worse bug.
+        if (is_array($settings) && ! ($settings['show_on_loop'] ?? true)) {
             return;
         }
 
