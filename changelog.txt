@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.36.1 =
+* Changelog: this readme now carries the last ten releases and links to the full history, instead of every release ever. WordPress.org silently truncates a changelog over 5000 words and only warns the plugin authors by email, so the page had been one release away from quietly dropping its oldest entries. Nothing about the plugin changes.
+
 = 1.36.0 =
 * Added: the NIP field can now be required by what is in the cart, not only by the shop-wide switch. One place decides and it is filterable (`polski/nip_required`), so a paid rule that marks a product as needing the buyer's VAT ID on the receipt can make the field mandatory for that order. Enforced on both the classic and the block checkout, since the block field is registered before a cart exists and its own required flag cannot see one.
 
