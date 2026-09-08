@@ -51,15 +51,24 @@ final class Sanitizer
      *
      * @param array<string, mixed> $input   Raw input values.
      * @param array<string, mixed> $defaults Default/allowed keys with their default values.
+     * @param array<string, mixed> $current  Currently stored values, used for keys the input omits.
      * @return array<string, mixed>
      */
-    public static function settingsArray(array $input, array $defaults): array
+    public static function settingsArray(array $input, array $defaults, array $current = []): array
     {
         $sanitized = [];
 
         foreach ($defaults as $key => $default) {
             if (! array_key_exists($key, $input)) {
-                $sanitized[$key] = $default;
+                // What is already stored wins over the packaged default for a
+                // key the request did not mention. Substituting the default
+                // here rewrote settings nobody had touched, and for the text
+                // keys the default is a resolved __() string, so one partial
+                // write stamped the request's locale into the option and made
+                // the wording untranslatable again. Types still come from
+                // $defaults, so a wrong-typed stored value cannot change how
+                // the present keys below are cast.
+                $sanitized[$key] = array_key_exists($key, $current) ? $current[$key] : $default;
                 continue;
             }
 
