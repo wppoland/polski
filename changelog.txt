@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.36.2 =
+* Fixed: a partial write to the settings REST endpoint overwrote every key the request left out with the packaged default, instead of leaving it as stored. For the storefront text keys that default is a translated string resolved at the moment of the request, so one such write stamped whatever language the request ran in into the database and the wording stopped following the shop's locale. An omitted key now keeps its stored value, and an empty request body no longer resets the whole group.
+
 = 1.36.1 =
 * Changelog: this readme now carries the last ten releases and links to the full history, instead of every release ever. WordPress.org silently truncates a changelog over 5000 words and only warns the plugin authors by email, so the page had been one release away from quietly dropping its oldest entries. Nothing about the plugin changes.
 
