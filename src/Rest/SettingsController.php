@@ -286,7 +286,12 @@ final class SettingsController extends RestController implements HasHooks
             // sanitizer is strictly typed, so normalize to avoid a TypeError.
             $input = [];
         }
-        $sanitized = Sanitizer::settingsArray($input, $this->defaults[$optionKey]);
+        $stored = get_option($optionKey, []);
+        $sanitized = Sanitizer::settingsArray(
+            $input,
+            $this->defaults[$optionKey],
+            is_array($stored) ? $stored : [],
+        );
 
         update_option($optionKey, $sanitized);
 
