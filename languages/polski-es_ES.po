@@ -13191,13 +13191,13 @@ msgstr "Inicie sesión para utilizar la lista de deseos."
 
 #: src/Service/WithdrawalBlocksService.php:33
 msgid "Polski - withdrawal lookup"
-msgstr "Polski - búsqueda de retiros"
+msgstr "Polski - búsqueda de desistimientos"
 
 #: src/Service/WithdrawalBlocksService.php:34
 msgid "Email + order number lookup form for guests to file a withdrawal."
 msgstr ""
 "Formulario de búsqueda de número de pedido y correo electrónico para que los"
-" invitados presenten un retiro."
+" invitados presenten un desistimiento."
 
 #: src/Service/WithdrawalBlocksService.php:39
 msgid "Polski - Annex I(A) information"
@@ -13219,7 +13219,7 @@ msgid ""
 "The model withdrawal form template (Annex I(B)) pre-filled with merchant "
 "data."
 msgstr ""
-"El modelo de plantilla de formulario de retiro (Anexo I(B)) precargado con "
+"El modelo de plantilla de formulario de desistimiento (Anexo I(B)) precargado con "
 "datos del comerciante."
 
 #: src/Service/WithdrawalExemptionService.php:185

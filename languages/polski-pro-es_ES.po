@@ -33,7 +33,7 @@ msgid ""
 "Omnibus, GDPR, unit prices, withdrawal forms, and storefront tools."
 msgstr ""
 "Adapta WooCommerce y WordPress a los requisitos del mercado polaco: GPSR, "
-"Omnibus, GDPR, precios unitarios, formularios de retiro y herramientas de "
+"Omnibus, GDPR, precios unitarios, formularios de desistimiento y herramientas de "
 "escaparate."
 
 #. Author of the plugin
@@ -481,11 +481,11 @@ msgstr "(Este producto está excluido del derecho de desistimiento)"
 
 #: config/defaults.php:154
 msgid "Powód odstąpienia (opcjonalnie)"
-msgstr "Motivo del retiro (opcional)"
+msgstr "Motivo del desistimiento (opcional)"
 
 #: config/defaults.php:155 templates/forms/withdrawal-form.php:98
 msgid "Wyślij wniosek o odstąpienie"
-msgstr "Enviar una solicitud de retiro"
+msgstr "Enviar una solicitud de desistimiento"
 
 #: config/defaults.php:156
 msgid "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
@@ -504,7 +504,7 @@ msgid ""
 "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z "
 "potwierdzeniem."
 msgstr ""
-"Su solicitud de retiro ha sido aceptada. Le enviaremos un correo electrónico"
+"Su solicitud de desistimiento ha sido aceptada. Le enviaremos un correo electrónico"
 " de confirmación en breve."
 
 #: config/defaults.php:160 src/Shortcode/ShortcodeManager.php:236
@@ -513,7 +513,7 @@ msgstr "Este pedido no es elegible para cancelación."
 
 #: config/defaults.php:161
 msgid "Wniosek o odstąpienie"
-msgstr "Solicitud de retiro"
+msgstr "Solicitud de desistimiento"
 
 #: config/defaults.php:163
 msgid "Złożony"
@@ -525,7 +525,7 @@ msgstr "El cliente presentó una solicitud para rescindir el contrato."
 
 #: config/defaults.php:165
 msgid "Wniosek o odstąpienie został potwierdzony."
-msgstr "La solicitud de retiro ha sido confirmada."
+msgstr "La solicitud de desistimiento ha sido confirmada."
 
 #: config/defaults.php:167
 msgid "Potwierdzenie wniosku o odstąpienie od zamówienia nr #{order_number}"
@@ -2495,7 +2495,7 @@ msgstr "Etiqueta - Derecho de desistimiento"
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr ""
 "Utilice %s como marcador de posición para el enlace de la página de "
-"devoluciones o retiros"
+"devoluciones o desistimientos"
 
 #: src/Admin/ModulesPage.php:158
 msgid "Error - Right of withdrawal"
@@ -2636,7 +2636,7 @@ msgid ""
 "Withdrawal request form, My Account action with confirmation step, "
 "confirmation email, and per-product exclusions."
 msgstr ""
-"Formulario de solicitud de retiro, acción Mi cuenta con paso de "
+"Formulario de solicitud de desistimiento, acción Mi cuenta con paso de "
 "confirmación, correo electrónico de confirmación y exclusiones por producto."
 
 #: src/Admin/ModulesPage.php:222
@@ -2655,7 +2655,7 @@ msgstr "Título del formulario"
 #: src/Admin/ModulesPage.php:223 src/Admin/ModulesPage.php:238
 #: src/Service/WithdrawalService.php:401
 msgid "Withdrawal request"
-msgstr "Solicitud de retiro"
+msgstr "Solicitud de desistimiento"
 
 #: src/Admin/ModulesPage.php:224
 msgid "Form introduction"
@@ -2666,7 +2666,7 @@ msgid ""
 "You are submitting a withdrawal request for order #{order_number} placed on "
 "{order_date}."
 msgstr ""
-"Está enviando una solicitud de retiro para el pedido n.° {order_number} "
+"Está enviando una solicitud de desistimiento para el pedido n.° {order_number} "
 "realizado el {order_date}."
 
 #: src/Admin/ModulesPage.php:224
@@ -2734,7 +2734,7 @@ msgstr "Etiqueta de campo de motivo"
 
 #: src/Admin/ModulesPage.php:231 src/Service/WithdrawalService.php:419
 msgid "Reason for withdrawal (optional)"
-msgstr "Motivo del retiro (opcional)"
+msgstr "Motivo del desistimiento (opcional)"
 
 #: src/Admin/ModulesPage.php:232 build/blocks/ajax-search/index.js:212
 #: resources/js/blocks/ajax-search/index.js:39
@@ -2744,7 +2744,7 @@ msgstr "Enviar texto del botón"
 
 #: src/Admin/ModulesPage.php:232
 msgid "Submit withdrawal request"
-msgstr "Enviar solicitud de retiro"
+msgstr "Enviar solicitud de desistimiento"
 
 #: src/Admin/ModulesPage.php:233
 msgid "Invalid nonce message"
@@ -2781,7 +2781,7 @@ msgid ""
 "Your withdrawal request has been received. We will send a confirmation email"
 " shortly."
 msgstr ""
-"Se ha recibido su solicitud de retiro. Le enviaremos un correo electrónico "
+"Se ha recibido su solicitud de desistimiento. Le enviaremos un correo electrónico "
 "de confirmación en breve."
 
 #: src/Admin/ModulesPage.php:237
@@ -2791,7 +2791,7 @@ msgstr "Mensaje no elegible"
 #: src/Admin/ModulesPage.php:237 src/Rest/WithdrawalController.php:145
 #: src/Service/WithdrawalService.php:298 src/Service/WithdrawalService.php:340
 msgid "This order is not eligible for withdrawal."
-msgstr "Este pedido no es elegible para retiro."
+msgstr "Este pedido no es elegible para desistimiento."
 
 #: src/Admin/ModulesPage.php:238
 msgid "Status section heading"
@@ -2816,7 +2816,7 @@ msgstr "Nota de pedido después de la solicitud"
 
 #: src/Admin/ModulesPage.php:241
 msgid "The customer submitted a withdrawal request."
-msgstr "El cliente envió una solicitud de retiro."
+msgstr "El cliente envió una solicitud de desistimiento."
 
 #: src/Admin/ModulesPage.php:242
 msgid "Order note after confirmation"
@@ -2824,7 +2824,7 @@ msgstr "Nota de pedido después de la confirmación"
 
 #: src/Admin/ModulesPage.php:242
 msgid "The withdrawal request has been confirmed."
-msgstr "La solicitud de retiro ha sido confirmada."
+msgstr "La solicitud de desistimiento ha sido confirmada."
 
 #: src/Admin/ModulesPage.php:243
 msgid "Status date format"
@@ -2841,7 +2841,7 @@ msgstr "Asunto del correo electrónico de confirmación"
 #: src/Admin/ModulesPage.php:244 src/Admin/ModulesPage.php:247
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
 msgstr ""
-"Su solicitud de retiro para el pedido #{order_number} ha sido confirmada."
+"Su solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
 
 #: src/Admin/ModulesPage.php:244
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
@@ -6172,7 +6172,7 @@ msgstr "Asistente completado."
 
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
-msgstr "No pudimos preparar una solicitud de retiro para este pedido."
+msgstr "No pudimos preparar una solicitud de desistimiento para este pedido."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Invalid status."
@@ -6348,7 +6348,7 @@ msgstr ""
 
 #: src/Service/CheckboxService.php:494
 msgid "14-day withdrawal right acknowledgment."
-msgstr "Reconocimiento de derecho de retiro de 14 días."
+msgstr "Reconocimiento de derecho de desistimiento de 14 días."
 
 #: src/Service/CheckboxService.php:500
 msgid ""
@@ -6780,7 +6780,7 @@ msgid ""
 "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to "
 "withdraw."
 msgstr ""
-"Complete su Política de devolución y retiro. Los consumidores tienen 14 días"
+"Complete su Política de devolución y desistimiento. Los consumidores tienen 14 días"
 " para retirar."
 
 #: src/Service/LegalPageService.php:174
@@ -7498,13 +7498,13 @@ msgstr ""
 
 #: src/Service/SiteAuditService.php:437
 msgid "Withdrawal module is enabled."
-msgstr "El módulo de retiro está habilitado."
+msgstr "El módulo de desistimiento está habilitado."
 
 #: src/Service/SiteAuditService.php:444
 msgid ""
 "Withdrawal module is disabled. Consumers have a 14-day right of withdrawal."
 msgstr ""
-"El módulo de retiro está deshabilitado. Los consumidores tienen un derecho "
+"El módulo de desistimiento está deshabilitado. Los consumidores tienen un derecho "
 "de desistimiento de 14 días."
 
 #: src/Service/SiteAuditService.php:455
@@ -7952,11 +7952,11 @@ msgstr "Inicie sesión para utilizar la lista de deseos."
 
 #: src/Service/WithdrawalService.php:150
 msgid "Customer has submitted a withdrawal request."
-msgstr "El cliente ha enviado una solicitud de retiro."
+msgstr "El cliente ha enviado una solicitud de desistimiento."
 
 #: src/Service/WithdrawalService.php:181
 msgid "Withdrawal request confirmed."
-msgstr "Solicitud de retiro confirmada."
+msgstr "Solicitud de desistimiento confirmada."
 
 #: src/Service/WithdrawalService.php:268
 msgid "Oops, something went wrong on our side. Please try again!"
@@ -7984,11 +7984,11 @@ msgstr "Orden no encontrada."
 
 #: src/Service/WithdrawalService.php:358
 msgid "Your withdrawal request has been accepted."
-msgstr "Su solicitud de retiro ha sido aceptada."
+msgstr "Su solicitud de desistimiento ha sido aceptada."
 
 #: src/Service/WithdrawalService.php:362
 msgid "Failed to submit the withdrawal request."
-msgstr "No se pudo enviar la solicitud de retiro."
+msgstr "No se pudo enviar la solicitud de desistimiento."
 
 #: src/Shortcode/ShortcodeManager.php:134
 #: templates/single-product/gpsr-info.php:22
@@ -8011,7 +8011,7 @@ msgstr "Métodos de pago disponibles"
 #: templates/account/withdrawal-confirm.php:26
 #, php-format
 msgid "Withdrawal request for order #%s"
-msgstr "Solicitud de retiro para el pedido #%s"
+msgstr "Solicitud de desistimiento para el pedido #%s"
 
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
@@ -8032,12 +8032,12 @@ msgstr "Productos en este orden"
 #, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
 msgstr ""
-"¿Está seguro de que desea enviar una solicitud de retiro para el pedido n.° "
+"¿Está seguro de que desea enviar una solicitud de desistimiento para el pedido n.° "
 "%s?"
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
-msgstr "Confirmar solicitud de retiro"
+msgstr "Confirmar solicitud de desistimiento"
 
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
@@ -8061,7 +8061,7 @@ msgid ""
 "Twój wniosek o odstąpienie dla zamówienia #{order_number} został "
 "potwierdzony."
 msgstr ""
-"Su solicitud de retiro para el pedido #{order_number} ha sido confirmada."
+"Su solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
 
 #: templates/emails/plain/withdrawal-confirmation.php:30
 #: templates/emails/withdrawal-confirmation.php:43
@@ -8136,7 +8136,7 @@ msgid ""
 "Składasz wniosek o odstąpienie dla zamówienia #{order_number} z dnia "
 "{order_date}."
 msgstr ""
-"Está enviando una solicitud de retiro para el pedido n.° {order_number} con "
+"Está enviando una solicitud de desistimiento para el pedido n.° {order_number} con "
 "fecha {order_date}."
 
 #: templates/forms/withdrawal-form.php:34
