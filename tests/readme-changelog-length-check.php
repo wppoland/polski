@@ -27,6 +27,15 @@ if (preg_match('/\n== (?!Changelog ==)/', $section, $m, PREG_OFFSET_CAPTURE)) {
     $section = substr($section, 0, $m[0][1]);
 }
 
+// WordPress.org does not linkify a bare URL in readme.txt, only markdown, so
+// the pointer at the full history has to be a link or it is not one.
+if (! str_contains($section, '](https://plogins.com/')) {
+    fwrite(STDERR, "FAIL: the Changelog section no longer links to the full history on plogins.com.\n");
+    fwrite(STDERR, "      Only the most recent releases are shipped here; without the link the rest is unreachable.\n");
+    fwrite(STDERR, "      Use markdown: [plogins.com/<slug>/changelog/](https://plogins.com/<slug>/changelog/)\n");
+    exit(1);
+}
+
 $words = count(preg_split('/\s+/', trim($section), -1, PREG_SPLIT_NO_EMPTY) ?: []);
 $budget = WPORG_CHANGELOG_WORD_LIMIT - HEADROOM;
 
