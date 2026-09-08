@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.1
+Stable tag: 1.36.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.2 =
+* Fixed: a partial write to the settings REST endpoint overwrote every key the request left out with the packaged default, instead of leaving it as stored. For the storefront text keys that default is a translated string resolved at the moment of the request, so one such write stamped whatever language the request ran in into the database and the wording stopped following the shop's locale. An omitted key now keeps its stored value, and an empty request body no longer resets the whole group.
 
 The last ten releases are below. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
