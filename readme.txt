@@ -358,6 +358,7 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 = 1.36.3 =
+* Fixed: the plugin's WooCommerce emails could be silently absent for a whole request. Loading the mailer is not enough on its own: if anything built it before this plugin registered its filter, and third-party plugins do build it on plugins_loaded, the cached mailer was assembled without our classes and the filter could never run again. Measured in a test install: zero of the classes present instead of all of them. The mailer is now topped up when that happens.
 * Removed: an integration-detection class that could never have run. It was built by the service container but never listed as a hook subscriber, so nothing ever called it, and its one registration was on `plugins_loaded`, which has already fired by the time the plugin boots. Its signals had no listeners in either the free or the paid plugin. Nothing used it and nothing changes; the code is gone rather than left to read as a working feature. A build-time check now covers this shape across the whole plugin family, so a hook that can never fire cannot ship again unnoticed.
 
 = 1.36.2 =
