@@ -16,8 +16,8 @@ use Polski\Util\Formatter;
  * Omnibus Directive compliance - tracks product prices and displays the lowest
  * price from the last 30 days when a product is on sale.
  *
- * Acts as a built-in fallback. When a compatible Omnibus extension is
- * detected, the IntegrationManager delegates to that integration instead.
+ * This is the built-in implementation. A dedicated Omnibus extension can
+ * replace the rendered output through the polski/price/omnibus_html filter.
  */
 final class OmnibusService implements Bootable, HasHooks
 {

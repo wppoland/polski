@@ -19,7 +19,6 @@ use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
 use Polski\Hook\OrderHooks;
 use Polski\Hook\LoopHooks;
-use Polski\Integration\IntegrationManager;
 use Polski\Rest\CheckboxController;
 use Polski\Rest\LegalPageController;
 use Polski\Rest\PageComplianceController;
