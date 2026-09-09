@@ -45,6 +45,10 @@ final class B2BCheckoutHooks implements HasHooks
         add_action('woocommerce_checkout_create_order', [$this->service, 'saveToOrder'], 10, 2);
 
         add_filter('woocommerce_admin_billing_fields', [$this->service, 'addAdminBillingFields']);
+        add_action(
+            'woocommerce_admin_order_data_after_billing_address',
+            [$this->service, 'renderCompanyFlagInAdmin'],
+        );
         add_action('wp_enqueue_scripts', [$this, 'enqueueToggleScript']);
     }
 

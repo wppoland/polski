@@ -58,7 +58,6 @@ final class CheckoutHooks implements Bootable, HasHooks
                 add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
                 add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
                 add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
-                add_action('woocommerce_checkout_create_order', [$this, 'saveCheckboxStatesToOrder'], 10, 2);
                 add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
             }
 
@@ -354,21 +353,6 @@ final class CheckoutHooks implements Bootable, HasHooks
          * @param \WC_Order           $order   The order.
          */
         do_action('polski/checkout/consents_logged', $states, $order);
-    }
-
-    /**
-     * Save checkbox states to order meta for reference.
-     *
-     * @param array<string, mixed> $data
-     */
-    public function saveCheckboxStatesToOrder(\WC_Order $order, array $data): void
-    {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        $states = $this->checkboxes->extractStates(CheckboxContext::Checkout, $_POST);
-
-        if (! empty($states)) {
-            $order->update_meta_data('_polski_checkboxes_accepted', $states);
-        }
     }
 
     /**

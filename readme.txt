@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.3
+Stable tag: 1.36.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.4 =
+* Fixed: the GPSR manufacturer never reached the product's structured data, the data layer or the product feed. All three read a meta key the plugin does not write, while the field on the product screen saves under the GPSR key, so the manufacturer was simply absent from everything downstream.
+* Added: the "Buying as a company" answer is now shown on the order screen. It was stored on every order and displayed nowhere, so a merchant could turn the toggle on and never see a reply.
+* Added: product safety instructions, safety documents, food distributor and the product-level right-of-withdrawal exemption reason can now be set through the product CSV import and export. Their shortcodes and Elementor widgets read them and nothing could fill them in, so those blocks were always empty.
+* Removed: two order and user meta keys that were written and never read back, a copy of the checkout consent states (the consent log already records them, with its own screen and CSV export) and a social login provider name (the provider is already part of the stored provider ID).
 
 = 1.36.3 =
 * Fixed: the plugin's WooCommerce emails could be silently absent for a whole request. Loading the mailer is not enough on its own: if anything built it before this plugin registered its filter, and third-party plugins do build it on plugins_loaded, the cached mailer was assembled without our classes and the filter could never run again. Measured in a test install: zero of the classes present instead of all of them. The mailer is now topped up when that happens.

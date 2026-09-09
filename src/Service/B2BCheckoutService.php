@@ -222,6 +222,29 @@ final class B2BCheckoutService
     }
 
     /**
+     * Show the company toggle's answer on the admin order screen.
+     *
+     * The flag is stored on the order at checkout but WooCommerce has no place
+     * for it: addAdminBillingFields() only reaches _billing_* keys, so without
+     * this the merchant could never see whether the customer declared a company
+     * purchase. Rendered only when the value exists, so old orders stay clean.
+     */
+    public function renderCompanyFlagInAdmin(WC_Order $order): void
+    {
+        $flag = (string) $order->get_meta(self::META_COMPANY_FLAG, true);
+
+        if ($flag === '') {
+            return;
+        }
+
+        printf(
+            '<p><strong>%s:</strong> %s</p>',
+            esc_html__('Buying as a company', 'polski'),
+            esc_html($flag === 'yes' ? __('Yes', 'polski') : __('No', 'polski')),
+        );
+    }
+
+    /**
      * Whether WooCommerce 8.6+ unified additional checkout fields API is available.
      */
     public static function hasAdditionalFieldsApi(): bool

@@ -20,7 +20,6 @@ use Polski\Contract\HasHooks;
 final class SocialLoginService implements HasHooks
 {
     private const OPTION = 'polski_social_login';
-    private const META_PROVIDER = '_polski_social_provider';
     private const META_PROVIDER_ID = '_polski_social_id';
 
     public function registerHooks(): void
@@ -402,7 +401,6 @@ final class SocialLoginService implements HasHooks
 
         if ($existing) {
             // Link social account to existing user.
-            update_user_meta($existing->ID, self::META_PROVIDER, $provider);
             update_user_meta($existing->ID, self::META_PROVIDER_ID, $provider . ':' . $profile['provider_id']);
 
             return $existing;
@@ -435,7 +433,6 @@ final class SocialLoginService implements HasHooks
             'role' => 'customer',
         ]);
 
-        update_user_meta($userId, self::META_PROVIDER, $provider);
         update_user_meta($userId, self::META_PROVIDER_ID, $provider . ':' . $profile['provider_id']);
 
         // WooCommerce billing fields.
