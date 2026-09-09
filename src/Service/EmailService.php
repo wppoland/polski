@@ -13,6 +13,9 @@ use Polski\Enum\LegalPageType;
  */
 final class EmailService implements HasHooks
 {
+    /** One of our own email ids, used to tell an already-populated mailer from a fresh one. */
+    private const CANARY = 'polski_withdrawal_confirmation';
+
     /**
      * Actions whose listeners live inside WC_Email constructors, so the mailer
      * has to exist before they fire.
@@ -54,8 +57,25 @@ final class EmailService implements HasHooks
      */
     public function loadMailer(): void
     {
-        if (function_exists('WC')) {
-            WC()->mailer();
+        if (! function_exists('WC')) {
+            return;
+        }
+
+        $mailer = WC()->mailer();
+        if (! $mailer instanceof \WC_Emails) {
+            return;
+        }
+
+        // Calling WC()->mailer() is not enough on its own. If anything built the
+        // mailer BEFORE this service registered its filter, and third-party
+        // plugins do build it on plugins_loaded, the cached instance was
+        // assembled without our classes and the filter can never run again. The
+        // emails would then be silently absent for the whole request. Measured
+        // in wp-env: 0 classes present against 4 in the normal order. Top the
+        // array up instead, using one of our own keys as the canary so this
+        // cannot double-register.
+        if (! isset($mailer->emails[self::CANARY])) {
+            $mailer->emails = $this->registerEmails($mailer->emails);
         }
     }
 
