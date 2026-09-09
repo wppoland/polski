@@ -22,7 +22,6 @@ use Polski\Hook\CartHooks;
 use Polski\Hook\CheckoutHooks;
 use Polski\Hook\OrderHooks;
 use Polski\Hook\LoopHooks;
-use Polski\Integration\IntegrationManager;
 use Polski\Email\WithdrawalConfirmationEmail;
 use Polski\Rest\SearchController;
 use Polski\Rest\CheckboxController;
@@ -368,9 +367,6 @@ return static function (Container $c): void {
 
     // Shopmarks.
     $c->singleton(ShopmarkManager::class, static fn () => new ShopmarkManager());
-
-    // Integration manager.
-    $c->singleton(IntegrationManager::class, static fn () => new IntegrationManager());
 
     // Store API / Block checkout.
     $c->singleton(\Polski\Block\StoreApi\ProductDataExtension::class, static fn () => new \Polski\Block\StoreApi\ProductDataExtension(
