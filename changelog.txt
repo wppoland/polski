@@ -2,6 +2,15 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.36.5 =
+* Fixed: Units, Allergens, Nutrients, Manufacturers, Delivery Times and a second "Brands" appeared under Products even when their modules were off. The six taxonomies registered on every request regardless of the Modules screen, so a shop that never turned on the food module or brands still got four admin screens it could not use, and the brands one sat next to WooCommerce core Brands under the same name. Each taxonomy now registers only when its module is enabled. Terms already saved are untouched and come back with the module.
+
+= 1.36.4 =
+* Fixed: the GPSR manufacturer never reached the product's structured data, the data layer or the product feed. All three read a meta key the plugin does not write, while the field on the product screen saves under the GPSR key, so the manufacturer was simply absent from everything downstream.
+* Added: the "Buying as a company" answer is now shown on the order screen. It was stored on every order and displayed nowhere, so a merchant could turn the toggle on and never see a reply.
+* Added: product safety instructions, safety documents, food distributor and the product-level right-of-withdrawal exemption reason can now be set through the product CSV import and export. Their shortcodes and Elementor widgets read them and nothing could fill them in, so those blocks were always empty.
+* Removed: two order and user meta keys that were written and never read back, a copy of the checkout consent states (the consent log already records them, with its own screen and CSV export) and a social login provider name (the provider is already part of the stored provider ID).
+
 = 1.36.3 =
 * Fixed: the plugin's WooCommerce emails could be silently absent for a whole request. Loading the mailer is not enough on its own: if anything built it before this plugin registered its filter, and third-party plugins do build it on plugins_loaded, the cached mailer was assembled without our classes and the filter could never run again. Measured in a test install: zero of the classes present instead of all of them. The mailer is now topped up when that happens.
 * Removed: an integration-detection class that could never have run. It was built by the service container but never listed as a hook subscriber, so nothing ever called it, and its one registration was on `plugins_loaded`, which has already fired by the time the plugin boots. Its signals had no listeners in either the free or the paid plugin. Nothing used it and nothing changes; the code is gone rather than left to read as a working feature. A build-time check now covers this shape across the whole plugin family, so a hook that can never fire cannot ship again unnoticed.

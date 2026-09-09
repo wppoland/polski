@@ -25,14 +25,33 @@ final class PostTypes implements Bootable, HasHooks
         add_action('init', [$this, 'registerTaxonomies']);
     }
 
+    /**
+     * Taxonomy registration methods keyed by the module that owns them.
+     *
+     * A taxonomy whose module is off must not register, otherwise its admin
+     * screen shows up under Products even though the feature is disabled.
+     *
+     * @var array<string, list<string>>
+     */
+    private const TAXONOMY_MODULES = [
+        'delivery_time' => ['registerDeliveryTimeTaxonomy'],
+        'manufacturer' => ['registerManufacturerTaxonomy'],
+        'brands' => ['registerBrandTaxonomy'],
+        'unit_price' => ['registerUnitTaxonomy'],
+        'food_module' => ['registerAllergenTaxonomy', 'registerNutrientTaxonomy'],
+    ];
+
     public function registerTaxonomies(): void
     {
-        $this->registerDeliveryTimeTaxonomy();
-        $this->registerManufacturerTaxonomy();
-        $this->registerBrandTaxonomy();
-        $this->registerUnitTaxonomy();
-        $this->registerAllergenTaxonomy();
-        $this->registerNutrientTaxonomy();
+        foreach (self::TAXONOMY_MODULES as $moduleId => $methods) {
+            if (! ModulesPage::isModuleEnabled($moduleId)) {
+                continue;
+            }
+
+            foreach ($methods as $method) {
+                $this->{$method}();
+            }
+        }
     }
 
     private function registerDeliveryTimeTaxonomy(): void
