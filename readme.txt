@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.4
+Stable tag: 1.36.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.5 =
+* Fixed: Units, Allergens, Nutrients, Manufacturers, Delivery Times and a second "Brands" appeared under Products even when their modules were off. The six taxonomies registered on every request regardless of the Modules screen, so a shop that never turned on the food module or brands still got four admin screens it could not use, and the brands one sat next to WooCommerce core Brands under the same name. Each taxonomy now registers only when its module is enabled. Terms already saved are untouched and come back with the module.
 
 = 1.36.4 =
 * Fixed: the GPSR manufacturer never reached the product's structured data, the data layer or the product feed. All three read a meta key the plugin does not write, while the field on the product screen saves under the GPSR key, so the manufacturer was simply absent from everything downstream.
