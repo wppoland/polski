@@ -511,8 +511,8 @@ final class ProductHooks implements Bootable, HasHooks
         }
 
         // Add GPSR (Product Safety) data if available.
-        $gpsrManufacturer = get_post_meta($productId, '_polski_manufacturer_name', true);
-        $gpsrContact = get_post_meta($productId, '_polski_manufacturer_contact', true);
+        $gpsrManufacturer = get_post_meta($productId, '_polski_gpsr_manufacturer_name', true);
+        $gpsrContact = get_post_meta($productId, '_polski_gpsr_manufacturer_contact', true);
         if (! empty($gpsrManufacturer)) {
             $manufacturerSchema = [
                 '@type' => 'Organization',

@@ -358,7 +358,7 @@ final class DataLayerService implements HasHooks
         }
 
         // Brand from GPSR manufacturer.
-        $brand = $product->get_meta('_polski_manufacturer_name');
+        $brand = $product->get_meta('_polski_gpsr_manufacturer_name');
 
         if ($brand) {
             $item['item_brand'] = $brand;

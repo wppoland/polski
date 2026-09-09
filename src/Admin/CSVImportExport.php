@@ -49,6 +49,14 @@ final class CSVImportExport implements HasHooks
         'polski_green_claim_basis' => '_polski_green_claim_basis',
         'polski_green_claim_cert_url' => '_polski_green_claim_cert_url',
         'polski_green_claim_expiry' => '_polski_green_claim_expiry',
+        // Read by ProductInfoService, FoodService and WithdrawalExemptionService
+        // and rendered through the shortcodes and Elementor widgets. They had
+        // no write path at all, so those blocks were always empty.
+        'polski_safety_instructions' => '_polski_safety_instructions',
+        'polski_safety_docs' => '_polski_safety_docs',
+        'polski_food_distributor' => '_polski_food_distributor',
+        'polski_withdrawal_exempt_reason' => '_polski_withdrawal_exempt_reason',
+        'polski_withdrawal_exempt_reason_custom' => '_polski_withdrawal_exempt_reason_custom',
     ];
 
     public function registerHooks(): void
