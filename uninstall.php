@@ -5,10 +5,19 @@ declare(strict_types=1);
 /**
  * Polski uninstall handler.
  *
- * Removes all plugin data: custom tables, options, post meta, taxonomies, scheduled events.
+ * Removes all plugin data: custom tables, options, post meta, user meta,
+ * taxonomies, scheduled events.
  */
 
 defined('WP_UNINSTALL_PLUGIN') || exit;
+
+// The dismissed state of the PRO banner is per-user admin chrome, not shop
+// data, so it is removed before either guard below. Those guards exist to
+// protect a merchant's own content when they want to reinstall; a notice one
+// admin clicked away is not that, and leaving it behind means an uninstall
+// never really removes the plugin. User meta is global, hence delete_metadata
+// with $delete_all rather than delete_user_meta for the current user.
+delete_metadata('user', 0, 'polski_pro_banner_dismissed', '', true);
 
 // The plugin_data module governs whether uninstall may delete anything. There
 // is no autoloader in this context, so read the option directly.
