@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.6
+Stable tag: 1.36.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.7 =
+* Fixed: food products published two and a half times as much sodium as their own label. Annex XV declares salt, Schema.org only has `sodiumContent`, and salt is sodium multiplied by 2.5, but the two were mapped straight across, so a product labelled 2.5 g of salt told Google it contained 2.5 g of sodium. The figure is now converted before it is published.
+* Fixed: the unit price in structured data carried a hardcoded Polish label, printed as-is on every non-Polish shop, and a private `polski_unit_price` key nothing reads. The label is translated and the private key is gone.
 
 = 1.36.6 =
 * Added: the Food and supplements module now has fields. The Modules screen has always said you can enter ingredients, nutrition, Nutri-Score, alcohol content, country of origin and the food business operator per product, and until now the only way to write any of them was a CSV import, so a shop without a spreadsheet could not use the module at all. The Polski tab on the product screen carries all of them, with one input per nutrient instead of the importer's `slug:value|slug:value` syntax. Values typed here and values imported from CSV end up identical, so an export still round-trips.
