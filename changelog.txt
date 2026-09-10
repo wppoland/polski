@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.36.8 =
+* Fixed: deleting the plugin left the per-user "dismiss" flag from the PRO notice in the database. Uninstall now removes it for every user, not just the one who dismissed it.
+
 = 1.36.7 =
 * Fixed: food products published two and a half times as much sodium as their own label. Annex XV declares salt, Schema.org only has `sodiumContent`, and salt is sodium multiplied by 2.5, but the two were mapped straight across, so a product labelled 2.5 g of salt told Google it contained 2.5 g of sodium. The figure is now converted before it is published.
 * Fixed: the unit price in structured data carried a hardcoded Polish label, printed as-is on every non-Polish shop, and a private `polski_unit_price` key nothing reads. The label is translated and the private key is gone.
