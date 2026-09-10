@@ -467,16 +467,13 @@ final class ProductHooks implements Bootable, HasHooks
         if ($settings['schema_unit_price'] ?? true) {
             $unitPrice = $this->priceDisplay->getUnitPrice($product);
             if ($unitPrice !== null) {
+                // Schema.org has no unit-price property, so the figure rides in
+                // additionalProperty. The label used to be a hardcoded Polish
+                // string, printed as-is to every non-Polish shop.
                 $extraData['additionalProperty'][] = [
                     '@type' => 'PropertyValue',
-                    'name' => 'Cena jednostkowa',
+                    'name' => __('Unit price', 'polski'),
                     'value' => sprintf('%s / %s %s', $unitPrice->pricePerUnit, $unitPrice->baseAmount, $unitPrice->unit),
-                ];
-                
-                $extraData['polski_unit_price'] = [
-                    'price' => $unitPrice->pricePerUnit,
-                    'unit' => $unitPrice->unit,
-                    'base_amount' => $unitPrice->baseAmount,
                 ];
             }
         }
@@ -542,7 +539,6 @@ final class ProductHooks implements Bootable, HasHooks
                 'carbohydrates' => 'carbohydrateContent',
                 'sugars' => 'sugarContent',
                 'protein' => 'proteinContent',
-                'salt' => 'sodiumContent',
                 'fibre' => 'fiberContent',
             ];
             foreach ($nutrientMap as $slug => $schemaKey) {
@@ -550,6 +546,14 @@ final class ProductHooks implements Bootable, HasHooks
                     continue;
                 }
                 $nutritionData[$schemaKey] = $nutrients[$slug]['value'] . ' ' . $nutrients[$slug]['unit'];
+            }
+
+            // Annex XV declares salt, Schema.org only offers sodiumContent, and
+            // the two are not the same number: salt = sodium x 2.5. Mapping the
+            // slugs straight across published every product as 2.5 times as
+            // salty as its own label says.
+            if (isset($nutrients['salt']['value']) && is_numeric($nutrients['salt']['value'])) {
+                $nutritionData['sodiumContent'] = round((float) $nutrients['salt']['value'] / 2.5, 3) . ' g';
             }
             if (count($nutritionData) > 1) {
                 $extraData['nutrition'] = $nutritionData;
