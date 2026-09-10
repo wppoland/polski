@@ -455,6 +455,89 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
+        if (ModulesPage::isModuleEnabled('food_module')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Food and supplements', 'polski') . '</h4>';
+
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_ingredients',
+                'label' => __('Ingredients', 'polski'),
+                'description' => __('Ingredient list in descending order by weight, with allergens emphasised, as Regulation (EU) 1169/2011 Annex VII requires. Allergens themselves are the separate Allergens taxonomy.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            woocommerce_wp_select([
+                'id' => '_polski_nutri_score',
+                'label' => __('Nutri-Score', 'polski'),
+                'description' => __('Voluntary front-of-pack grade. Leave unset unless you have calculated it.', 'polski'),
+                'desc_tip' => true,
+                'options' => [
+                    '' => __('Not set', 'polski'),
+                    'A' => 'A',
+                    'B' => 'B',
+                    'C' => 'C',
+                    'D' => 'D',
+                    'E' => 'E',
+                ],
+            ]);
+
+            woocommerce_wp_text_input([
+                'id' => '_polski_nutrient_reference_unit',
+                'label' => __('Nutrition reference', 'polski'),
+                'description' => __('What the values below are per. Empty uses the store default, normally 100 g.', 'polski'),
+                'desc_tip' => true,
+                'placeholder' => __('100 g', 'polski'),
+            ]);
+
+            // One input per canonical nutrient rather than the pipe-separated
+            // string the CSV importer takes. Same nine slugs, so an export
+            // still round-trips; the merchant just does not have to learn the
+            // syntax to fill in a label they are legally required to print.
+            foreach (\Polski\Service\FoodService::nutrientLabels() as $slug => $label) {
+                $unit = \Polski\Service\FoodService::NUTRIENT_UNITS[$slug] ?? '';
+                woocommerce_wp_text_input([
+                    'id' => 'polski_nutrient_' . $slug,
+                    'name' => 'polski_nutrient[' . $slug . ']',
+                    'label' => $label,
+                    'type' => 'number',
+                    'value' => self::nutrientValue($productId, $slug),
+                    'custom_attributes' => ['min' => '0', 'step' => 'any'],
+                    'data_type' => '',
+                    'description' => $unit,
+                ]);
+            }
+
+            woocommerce_wp_text_input([
+                'id' => '_polski_net_filling_quantity',
+                'label' => __('Net quantity', 'polski'),
+                'description' => __('Net quantity as it appears on the pack, for example 500 g or 0.75 l.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            woocommerce_wp_text_input([
+                'id' => '_polski_alcohol_content',
+                'label' => __('Alcohol by volume', 'polski'),
+                'description' => __('Required above 1.2% vol. Enter the number only, for example 12.5.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            woocommerce_wp_text_input([
+                'id' => '_polski_place_of_origin',
+                'label' => __('Country of origin', 'polski'),
+                'description' => __('Country of origin or place of provenance, where it is required or where its absence could mislead.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            woocommerce_wp_text_input([
+                'id' => '_polski_food_distributor',
+                'label' => __('Food business operator', 'polski'),
+                'description' => __('Name and address of the operator under whose name the food is marketed.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            echo '</div>';
+        }
+
         echo '</div>';
     }
 
@@ -474,6 +557,13 @@ final class ProductMetaBox implements HasHooks
         \Polski\Service\DepositService::META_TYPE => 'deposit',
         \Polski\Service\DepositService::META_UNITS => 'deposit',
         \Polski\Service\VatMarginService::META_SCHEME => 'vat_margin',
+        '_polski_ingredients' => 'food_module',
+        '_polski_nutri_score' => 'food_module',
+        '_polski_nutrient_reference_unit' => 'food_module',
+        '_polski_net_filling_quantity' => 'food_module',
+        '_polski_alcohol_content' => 'food_module',
+        '_polski_place_of_origin' => 'food_module',
+        '_polski_food_distributor' => 'food_module',
     ];
 
     /**
@@ -524,6 +614,13 @@ final class ProductMetaBox implements HasHooks
             \Polski\Service\DepositService::META_TYPE => 'string',
             \Polski\Service\DepositService::META_UNITS => 'int',
             \Polski\Service\VatMarginService::META_SCHEME => 'string',
+            '_polski_ingredients' => 'textarea',
+            '_polski_nutri_score' => 'string',
+            '_polski_nutrient_reference_unit' => 'string',
+            '_polski_net_filling_quantity' => 'string',
+            '_polski_alcohol_content' => 'string',
+            '_polski_place_of_origin' => 'string',
+            '_polski_food_distributor' => 'string',
         ];
 
         foreach ($fields as $key => $type) {
@@ -540,23 +637,86 @@ final class ProductMetaBox implements HasHooks
                 $sanitized = $type === 'checkbox' ? 'no' : '';
             } else {
                 // phpcs:ignore WordPress.Security.NonceVerification.Missing
-                $rawValue = sanitize_text_field((string) wp_unslash($_POST[$key]));
+                $raw = (string) wp_unslash($_POST[$key]);
+
+                // Do NOT pre-sanitise with sanitize_text_field: it folds every
+                // newline into a space, so a multi-line GPSR address or a list
+                // of safety warnings arrived at sanitize_textarea_field already
+                // flattened and was stored as one line. Each type gets the
+                // sanitiser that suits it, and nothing else.
                 $sanitized = match ($type) {
-                    'float' => (string) (float) $rawValue,
+                    'float' => (string) (float) sanitize_text_field($raw),
                     // Months are never negative; a pasted "-6" would otherwise
                     // render as a negative guarantee period on the storefront.
-                    'int' => (string) max(0, (int) $rawValue),
-                    'textarea' => sanitize_textarea_field($rawValue),
-                    'url' => esc_url_raw($rawValue),
-                    'string' => $rawValue,
-                    'checkbox' => $rawValue === 'yes' ? 'yes' : 'no',
+                    'int' => (string) max(0, (int) sanitize_text_field($raw)),
+                    'textarea' => sanitize_textarea_field($raw),
+                    'url' => esc_url_raw(sanitize_text_field($raw)),
+                    'string' => sanitize_text_field($raw),
+                    'checkbox' => sanitize_text_field($raw) === 'yes' ? 'yes' : 'no',
                 };
             }
 
             $product->update_meta_data($key, $sanitized);
         }
 
+        $this->saveNutrients($product);
+
         $product->save_meta_data();
+    }
+
+    /**
+     * Fold the per-nutrient inputs back into the canonical JSON.
+     *
+     * The nine inputs are assembled into the pipe form the CSV importer takes
+     * and handed to the same parser, so a value typed here and a value
+     * imported from a spreadsheet cannot end up shaped differently.
+     */
+    private function saveNutrients(\WC_Product $product): void
+    {
+        if (! ModulesPage::isModuleEnabled('food_module')) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce/capability before this hook fires.
+        $posted = isset($_POST['polski_nutrient']) && is_array($_POST['polski_nutrient'])
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            ? wp_unslash($_POST['polski_nutrient'])
+            : [];
+
+        $pairs = [];
+
+        foreach (\Polski\Service\FoodService::NUTRIENT_UNITS as $slug => $unit) {
+            $value = isset($posted[$slug]) ? trim(sanitize_text_field((string) $posted[$slug])) : '';
+
+            if ($value === '' || ! is_numeric($value)) {
+                continue;
+            }
+
+            $pairs[] = $slug . ':' . $value;
+        }
+
+        $product->update_meta_data(
+            '_polski_nutrients',
+            \Polski\Service\FoodService::parseNutrientsCsv(implode('|', $pairs)),
+        );
+    }
+
+    /**
+     * Current value of one nutrient, for the input above.
+     */
+    private static function nutrientValue(int $productId, string $slug): string
+    {
+        $stored = get_post_meta($productId, '_polski_nutrients', true);
+
+        if (is_string($stored) && $stored !== '') {
+            $stored = json_decode($stored, true);
+        }
+
+        if (! is_array($stored) || ! isset($stored[$slug]['value'])) {
+            return '';
+        }
+
+        return (string) $stored[$slug]['value'];
     }
 
     /**

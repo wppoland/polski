@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.5
+Stable tag: 1.36.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.6 =
+* Added: the Food and supplements module now has fields. The Modules screen has always said you can enter ingredients, nutrition, Nutri-Score, alcohol content, country of origin and the food business operator per product, and until now the only way to write any of them was a CSV import, so a shop without a spreadsheet could not use the module at all. The Polski tab on the product screen carries all of them, with one input per nutrient instead of the importer's `slug:value|slug:value` syntax. Values typed here and values imported from CSV end up identical, so an export still round-trips.
+* Fixed: every multi-line field on that tab lost its line breaks when saved. The save pass ran `sanitize_text_field` over each value before choosing a sanitiser, and that function folds newlines into spaces, so a GPSR manufacturer address, a list of safety warnings, repair information and the substantiation of an environmental claim were all stored as one long line.
 
 = 1.36.5 =
 * Fixed: Units, Allergens, Nutrients, Manufacturers, Delivery Times and a second "Brands" appeared under Products even when their modules were off. The six taxonomies registered on every request regardless of the Modules screen, so a shop that never turned on the food module or brands still got four admin screens it could not use, and the brands one sat next to WooCommerce core Brands under the same name. Each taxonomy now registers only when its module is enabled. Terms already saved are untouched and come back with the module.
