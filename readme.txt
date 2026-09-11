@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.0
+Stable tag: 1.37.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -357,6 +357,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.37.1 =
+* Security (high): the value social login used to tie a sign-in to the browser that started it was the same for every logged-out visitor for twelve hours, and the public address that begins the flow handed it out to anyone who asked. Someone could start a sign-in of their own, keep it unused, and send a customer a link that signed that customer in to the attacker's account instead of their own, where the address and order details they went on to enter would be the attacker's to read. Each sign-in now gets its own single-use value, held in a cookie, so a callback is only accepted from the browser that began it.
+
 = 1.37.0 =
 * Security (high): social login signed a visitor in to an existing WordPress account whenever Google or Facebook reported a matching email address, without checking that the provider had actually verified that address. Anyone who could register with a provider claiming somebody else's address was handed that person's account, an administrator's included. The address must now be verified by the provider before any account is matched, and an account that can edit the site is never linked automatically: its owner signs in with a password as before. Social login is off unless you switched it on and entered provider credentials, so a default installation was never exposed.
 
@@ -447,6 +450,9 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 * Note on upgrading: on a product whose sale has a start date, the figure in the notice can change, and it changes to the legally correct one. In the test case, a product reduced to 79 after selling at 250 and 300 showed "79" before and shows "250" after. Products with a sale price and no scheduled start are unaffected, because there is no date to anchor the window to; that is the common case.
 
 == Upgrade Notice ==
+
+= 1.37.1 =
+Security release, the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
 
 = 1.37.0 =
 Security release. Default installations are not exposed: social login is off unless you enabled the module and entered Google or Facebook credentials. If you use it, update now; nothing else to do.
