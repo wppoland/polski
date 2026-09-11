@@ -319,8 +319,8 @@ Polski for WooCommerce incluye traducciones al polaco, alemán y español de la 
 * Corrección: un módulo desactivado en Polski > Módulos ya no renderiza nada en la tienda. Antes, algunas funciones dejaban un botón que no funcionaba o marcado residual al desactivarse (vista rápida, comparación, lista de deseos, precio unitario, precio «desde», la nota de precio más bajo de Omnibus, los avisos de IVA y de envío, el tiempo de entrega, el fabricante, los distintivos, los enlaces de desistimiento, el aviso de resolución de disputas y los detalles de seguridad GPSR).
 
 = 1.24.5 =
-* Corrección: el aviso de IVA bajo el precio ya no muestra un signo de porcentaje duplicado («23%%» → «23%»).
-* Corrección: el aviso de gastos de envío ya no se junta con el aviso de IVA («VATzzgl.» → espaciado correcto), incluso en los maquetadores de páginas que no cargan la hoja de estilos del plugin.
+* Corrección: el aviso de IVA bajo el precio ya no muestra un signo de porcentaje duplicado («23%%» > «23%»).
+* Corrección: el aviso de gastos de envío ya no se junta con el aviso de IVA («VATzzgl.» > espaciado correcto), incluso en los maquetadores de páginas que no cargan la hoja de estilos del plugin.
 * Corrección: la etiqueta polaca predeterminada de gastos de envío ahora es «plus koszty wysyłki» (antes un «zzgl. kosztów wysyłki» alemán sin traducir).
 
 = 1.24.4 =

@@ -270,8 +270,8 @@ Complete release history for Polski for WooCommerce. The plugin page on WordPres
 * Fix: a module switched off in Polski > Modules no longer renders anything on the storefront. Previously some features left a non-working button or stray markup behind when disabled (quick view, compare, wishlist, unit price, "from" price, the Omnibus lowest-price note, the VAT and shipping notices, delivery time, manufacturer, badges, the withdrawal links, the dispute-resolution notice, and GPSR safety details).
 
 = 1.24.5 =
-* Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" → "23%").
-* Fix: the shipping-costs notice no longer runs into the VAT notice ("VATzzgl." → proper spacing), including in page builders that don't load the plugin stylesheet.
+* Fix: the VAT notice under the price no longer shows a doubled percent sign ("23%%" > "23%").
+* Fix: the shipping-costs notice no longer runs into the VAT notice ("VATzzgl." > proper spacing), including in page builders that don't load the plugin stylesheet.
 * Fix: the default Polish shipping-costs label is now "plus koszty wysyłki" (previously an untranslated German "zzgl. kosztów wysyłki").
 
 = 1.24.4 =

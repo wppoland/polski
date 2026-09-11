@@ -717,13 +717,13 @@ msgstr "Poprawka: domyślna polska etykieta kosztów wysyłki to teraz „plus k
 
 #. Found in changelog list item.
 #, gp-priority: low
-msgid "Fix: the shipping-costs notice no longer runs into the VAT notice (\"VATzzgl.\" → proper spacing), including in page builders that don't load the plugin stylesheet."
-msgstr "Poprawka: komunikat o kosztach wysyłki nie zlewa się już z komunikatem o VAT („VATzzgl.” → poprawne odstępy), także w kreatorach stron, które nie ładują arkusza stylów wtyczki."
+msgid "Fix: the shipping-costs notice no longer runs into the VAT notice (\"VATzzgl.\" > proper spacing), including in page builders that don't load the plugin stylesheet."
+msgstr "Poprawka: komunikat o kosztach wysyłki nie zlewa się już z komunikatem o VAT („VATzzgl.” > poprawne odstępy), także w kreatorach stron, które nie ładują arkusza stylów wtyczki."
 
 #. Found in changelog list item.
 #, gp-priority: low
-msgid "Fix: the VAT notice under the price no longer shows a doubled percent sign (\"23%%\" → \"23%\")."
-msgstr "Poprawka: komunikat o VAT pod ceną nie pokazuje już podwojonego znaku procentu („23%%” → „23%”)."
+msgid "Fix: the VAT notice under the price no longer shows a doubled percent sign (\"23%%\" > \"23%\")."
+msgstr "Poprawka: komunikat o VAT pod ceną nie pokazuje już podwojonego znaku procentu („23%%” > „23%”)."
 
 #. Found in changelog list item.
 #, gp-priority: low

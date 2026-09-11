@@ -1541,21 +1541,21 @@ msgstr ""
 #, gp-priority: low
 msgid ""
 "Fix: the shipping-costs notice no longer runs into the VAT notice "
-"(\"VATzzgl.\" → proper spacing), including in page builders that don't load "
+"(\"VATzzgl.\" > proper spacing), including in page builders that don't load "
 "the plugin stylesheet."
 msgstr ""
 "Fehlerbehebung: der Versandkosten-Hinweis läuft nicht mehr in den USt-"
-"Hinweis hinein (\"VATzzgl.\" → korrekte Abstände), auch in Page-Buildern, "
+"Hinweis hinein (\"VATzzgl.\" > korrekte Abstände), auch in Page-Buildern, "
 "die das Plugin-Stylesheet nicht laden."
 
 #. Found in changelog list item.
 #, gp-priority: low
 msgid ""
 "Fix: the VAT notice under the price no longer shows a doubled percent sign "
-"(\"23%%\" → \"23%\")."
+"(\"23%%\" > \"23%\")."
 msgstr ""
 "Fehlerbehebung: der USt-Hinweis unter dem Preis zeigt kein doppeltes "
-"Prozentzeichen mehr (\"23%%\" → \"23%\")."
+"Prozentzeichen mehr (\"23%%\" > \"23%\")."
 
 #. Found in changelog list item.
 #, gp-priority: low

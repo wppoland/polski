@@ -12,9 +12,9 @@ use Polski\Contract\HasHooks;
  * shortcodes so editors can insert them from the block inserter instead of
  * remembering the shortcode names. Server-render only (no JS bundle needed).
  *
- *   polski/withdrawal-lookup       → [polski_withdrawal_lookup]
- *   polski/withdrawal-info         → [polski_withdrawal_info]
- *   polski/withdrawal-form         → [polski_withdrawal_form_template]
+ *   polski/withdrawal-lookup       > [polski_withdrawal_lookup]
+ *   polski/withdrawal-info         > [polski_withdrawal_info]
+ *   polski/withdrawal-form         > [polski_withdrawal_form_template]
  */
 final class WithdrawalBlocksService implements HasHooks
 {
