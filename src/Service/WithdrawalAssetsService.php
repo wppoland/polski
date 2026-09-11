@@ -47,6 +47,19 @@ final class WithdrawalAssetsService implements HasHooks
             $version,
             ['in_footer' => true, 'strategy' => 'defer'],
         );
+
+        // The script had three Polish sentences compiled into it, shown to
+        // every shop whatever its language, while the form around them was
+        // translated. A .pot cannot reach a string literal in a .js file, so
+        // they are passed in from here.
+        wp_localize_script(self::HANDLE, 'polskiWithdrawalForm', [
+            'i18n' => [
+                'sending' => __('Sending...', 'polski'),
+                'noneSelected' => __('No items selected.', 'polski'),
+                /* translators: %d: number of items the customer selected */
+                'selected' => __('%d item(s) selected for withdrawal.', 'polski'),
+            ],
+        ]);
     }
 
     private function shouldEnqueue(): bool

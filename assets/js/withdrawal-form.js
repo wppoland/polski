@@ -16,7 +16,12 @@
     'use strict';
 
     var FORM_SELECTOR = '.polski-withdrawal-lookup form, .polski-withdrawal-guest-form form, .polski-withdrawal-form form';
-    var PENDING_LABEL = 'Wysyłanie…';
+
+    // Strings come from the server, which is the only side that knows the
+    // shop's language. They used to be Polish literals baked in here, printed
+    // to every shop in the world while the PHP around them was translated.
+    var i18n = (window.polskiWithdrawalForm && window.polskiWithdrawalForm.i18n) || {};
+    var PENDING_LABEL = i18n.sending || 'Sending...';
 
     // 1. Submit loading state.
     document.addEventListener('submit', function (evt) {
@@ -78,8 +83,8 @@
                 }
             });
             counter.textContent = total === 0
-                ? 'Nie wybrano żadnej pozycji.'
-                : 'Wybrano łącznie ' + total + ' sztuk do odstąpienia.';
+                ? (i18n.noneSelected || 'No items selected.')
+                : (i18n.selected || '%d item(s) selected for withdrawal.').replace('%d', total);
         };
         inputs.forEach(function (input) {
             input.addEventListener('input', update);

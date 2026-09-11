@@ -308,7 +308,44 @@ final class WishlistService implements Bootable, HasHooks
             return false;
         }
 
-        return is_shop() || is_product() || is_product_taxonomy() || is_account_page();
+        return is_shop() || is_product() || is_product_taxonomy() || is_account_page()
+            || $this->currentPostHasShortcode(['polski_wishlist']);
+    }
+
+    /**
+     * Does the post being viewed print this markup itself?
+     *
+     * The conditionals above cover the pages the PLUGIN puts the feature on.
+     * They do not cover the ones a MERCHANT does: the shortcodes render the
+     * full markup on any page, and there it arrived with no stylesheet and no
+     * script, so it was unstyled and its buttons did nothing.
+     *
+     * Content is inspected rather than the render being trusted to enqueue,
+     * because a shortcode runs during the_content, after wp_enqueue_scripts
+     * has closed; a style enqueued there prints in the footer, below the
+     * markup it is meant to style.
+     *
+     * @param list<string> $tags
+     */
+    private function currentPostHasShortcode(array $tags): bool
+    {
+        if (! is_singular()) {
+            return false;
+        }
+
+        $post = get_post();
+
+        if (! $post instanceof \WP_Post) {
+            return false;
+        }
+
+        foreach ($tags as $tag) {
+            if (has_shortcode($post->post_content, $tag)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function getGridColumns(): int

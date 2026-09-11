@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.36.8
+Stable tag: 1.36.9
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.36.9 =
+* Fixed: `[polski_wishlist]` and `[polski_compare]` rendered unstyled with dead buttons on an ordinary page. The assets loaded only on shop, product, product category and My Account pages, so a merchant who put either shortcode on a page of their own got markup with no stylesheet and no script behind it.
+* Fixed: three sentences on the withdrawal form were hardcoded Polish inside a JavaScript file, so every shop saw them in Polish whatever its language, while the form around them was translated. They now come from the server and are translated with the rest of the plugin.
 
 = 1.36.8 =
 * Fixed: deleting the plugin left the per-user "dismiss" flag from the PRO notice in the database. Uninstall now removes it for every user, not just the one who dismissed it.
