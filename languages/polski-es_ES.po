@@ -1922,7 +1922,7 @@ msgid ""
 "A register of vulnerabilities, breaches and failures for the Cyber "
 "Resilience Act, with statuses and CSV export."
 msgstr ""
-"Rejestr podatności, naruszeń i awarii na potrzeby Cyber ​​Resilience Act, ze"
+"Rejestr podatności, naruszeń i awarii na potrzeby Cyber Resilience Act, ze"
 " statusami i eksportem CSV."
 
 #: src/Admin/AdminPage.php:803 src/Admin/SBOMPage.php:40
@@ -3265,7 +3265,7 @@ msgid ""
 "inventory without any manual work."
 msgstr ""
 "Devuelve el stock automáticamente cuando los pedidos no se procesan. Cuando "
-"está habilitado, los productos de pedidos cancelados, reembolsados ​​o "
+"está habilitado, los productos de pedidos cancelados, reembolsados o "
 "fallidos se devuelven al inventario sin ningún trabajo manual."
 
 #: src/Admin/ModulesPage.php:145
@@ -9599,7 +9599,7 @@ msgid ""
 "Reference the Polish supervisory authority (Prezes UODO) as the complaint "
 "recipient."
 msgstr ""
-"Mencione a la autoridad supervisora ​​polaca (Prezes UODO) como destinatario"
+"Mencione a la autoridad supervisora polaca (Prezes UODO) como destinatario"
 " de la queja."
 
 #: src/PageCompliance/Rules/PrivacyPolicyRules.php:204

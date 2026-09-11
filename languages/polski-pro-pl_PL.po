@@ -4810,7 +4810,7 @@ msgid ""
 "Export."
 msgstr ""
 "Eksportuj stany magazynowe WooCommerce do CSV. Konfigurowalne pola, filtry "
-"progów, obsługa wariantów. Dostępne w Produktach → Eksport stanów."
+"progów, obsługa wariantów. Dostępne w Produktach > Eksport stanów."
 
 #: src/Admin/ModulesPage.php:1026
 msgid "Export stock"

@@ -749,13 +749,13 @@ final class WithdrawalService implements Bootable, HasHooks
             ? strtoupper(sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD'])))
             : 'GET';
 
-        // Step 1: GET → render the form (items + reason).
+        // Step 1: GET > render the form (items + reason).
         if ($requestMethod !== 'POST') {
             $this->renderItemSelectionForm($order);
             exit;
         }
 
-        // Step 2: POST → verify submission nonce and create the request.
+        // Step 2: POST > verify submission nonce and create the request.
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified immediately below.
         $submitNonce = isset($_POST['polski_submit_nonce'])
             ? sanitize_text_field(wp_unslash((string) $_POST['polski_submit_nonce']))

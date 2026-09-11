@@ -227,7 +227,7 @@ function generatePo(array $entries, string $locale, array $meta, array $map, str
 
 function plTranslations(): array {
     return [
-        // English strings → Polish
+        // English strings > Polish
         'Polski for WooCommerce' => 'Polski dla WooCommerce',
         'Polish legal compliance for WooCommerce: GDPR, Omnibus, withdrawal forms, unit prices, and storefront features. Free and open source.' => 'Zgodność prawna WooCommerce z polskim prawem: RODO, Omnibus, formularze odstąpienia, ceny jednostkowe i funkcje sklepu. Darmowy i open source.',
         'WPPoland' => 'WPPoland',

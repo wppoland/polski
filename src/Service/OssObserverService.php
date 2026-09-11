@@ -113,7 +113,7 @@ final class OssObserverService implements HasHooks
     }
 
     /**
-     * URL to the OSS settings page once the plugin is active (WooCommerce → Settings → Tax → OSS).
+     * URL to the OSS settings page once the plugin is active (WooCommerce > Settings > Tax > OSS).
      */
     public function getSettingsUrl(): string
     {

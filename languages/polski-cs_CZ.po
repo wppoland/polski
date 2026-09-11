@@ -14103,7 +14103,7 @@ msgstr ""
 #: blocks/withdrawal-form/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(B) form template"
-msgstr "Polština – Šablona formuláře přílohy I(B)"
+msgstr "Polština - Šablona formuláře přílohy I(B)"
 
 #: blocks/withdrawal-form/block.json
 msgctxt "block description"
@@ -14117,7 +14117,7 @@ msgstr ""
 #: blocks/withdrawal-info/block.json
 msgctxt "block title"
 msgid "Polski - Annex I(A) information"
-msgstr "Polština – Údaje v příloze I(A)"
+msgstr "Polština - Údaje v příloze I(A)"
 
 #: blocks/withdrawal-info/block.json
 msgctxt "block description"
@@ -14130,7 +14130,7 @@ msgstr ""
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block title"
 msgid "Polski - withdrawal lookup"
-msgstr "Polština – vyhledávání výběrů"
+msgstr "Polština - vyhledávání výběrů"
 
 #: blocks/withdrawal-lookup/block.json
 msgctxt "block description"

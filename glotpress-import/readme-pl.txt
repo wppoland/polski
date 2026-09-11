@@ -319,8 +319,8 @@ Polski for WooCommerce zawiera polskie, niemieckie i hiszpańskie tłumaczenia i
 * Poprawka: moduł wyłączony w Polski > Moduły nie renderuje już niczego w sklepie. Wcześniej niektóre funkcje pozostawiały po wyłączeniu niedziałający przycisk lub zbędny znacznik (szybki podgląd, porównywarka, lista życzeń, cena jednostkowa, cena „od”, notka o najniższej cenie Omnibus, notki o VAT i wysyłce, czas dostawy, producent, plakietki, linki odstąpienia, notka o rozstrzyganiu sporów oraz szczegóły bezpieczeństwa GPSR).
 
 = 1.24.5 =
-* Poprawka: notka o VAT pod ceną nie pokazuje już podwojonego znaku procentu („23%%” → „23%”).
-* Poprawka: notka o kosztach wysyłki nie zlewa się już z notką o VAT („VATzzgl.” → prawidłowe odstępy), również w kreatorach stron, które nie ładują arkusza stylów wtyczki.
+* Poprawka: notka o VAT pod ceną nie pokazuje już podwojonego znaku procentu („23%%” > „23%”).
+* Poprawka: notka o kosztach wysyłki nie zlewa się już z notką o VAT („VATzzgl.” > prawidłowe odstępy), również w kreatorach stron, które nie ładują arkusza stylów wtyczki.
 * Poprawka: domyślna polska etykieta kosztów wysyłki to teraz „plus koszty wysyłki” (wcześniej nieprzetłumaczone niemieckie „zzgl. kosztów wysyłki”).
 
 = 1.24.4 =

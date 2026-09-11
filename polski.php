@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Polski for WooCommerce
  * Plugin URI:        https://plogins.com/polski/
  * Description:       Adds GPSR, Omnibus, GDPR, withdrawals, VAT ID, KSeF hooks, product data and storefront modules for Polish WooCommerce shops.
- * Version:           1.37.2
+ * Version:           1.37.3
  * Requires at least: 6.9
  * Requires PHP:      8.1
  * Tested up to:      7.1
@@ -32,7 +32,7 @@ namespace Polski;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '1.37.2';
+const VERSION     = '1.37.3';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR = __DIR__;
 const MIN_PHP_VERSION = '8.1.0';
@@ -80,7 +80,7 @@ if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
 require_once PLUGIN_DIR . '/autoload.php';
 
 /**
- * On Polski admin screens, use the site language (Settings → General), not only the user profile language.
+ * On Polski admin screens, use the site language (Settings > General), not only the user profile language.
  *
  * determine_locale() uses get_user_locale() in admin; a Polish store with an English profile would otherwise
  * load polski-en_US (missing) and show English for both PHP gettext and JS script translations.

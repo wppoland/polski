@@ -3,8 +3,8 @@
    Enqueue this FIRST (before polski-brand.css). Replaces the dev-only
    @import in polski-brand.css so shipped CSS has no render-blocking import.
 
-   - font-display: swap  → text paints immediately in the fallback, no FOIT.
-   - unicode-range split  → the latin-ext file (Polish ą ć ę ł ń ó ś ż ź) loads
+   - font-display: swap  > text paints immediately in the fallback, no FOIT.
+   - unicode-range split  > the latin-ext file (Polish ą ć ę ł ń ó ś ż ź) loads
      only when those glyphs are actually used.
    - Only the weights the UI uses are shipped (Schibsted 700/800/900,
      Hanken 400/600/700/800). Preload just Schibsted 900 (the wordmark,

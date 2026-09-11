@@ -319,8 +319,8 @@ Polski for WooCommerce enthält polnische, deutsche und spanische Übersetzungen
 * Fix: Ein in Polski > Module deaktiviertes Modul rendert im Storefront nichts mehr. Zuvor hinterließen einige Funktionen im deaktivierten Zustand einen nicht funktionierenden Button oder verwaistes Markup (Schnellansicht, Vergleich, Wunschliste, Grundpreis, „ab“-Preis, den Omnibus-Hinweis zum niedrigsten Preis, die MwSt.- und Versandhinweise, Lieferzeit, Hersteller, Abzeichen, die Widerrufslinks, den Hinweis zur Streitbeilegung und die GPSR-Sicherheitsdetails).
 
 = 1.24.5 =
-* Fix: Der MwSt.-Hinweis unter dem Preis zeigt kein doppeltes Prozentzeichen mehr („23%%“ → „23%“).
-* Fix: Der Versandkostenhinweis läuft nicht mehr in den MwSt.-Hinweis hinein („VATzzgl.“ → korrekte Abstände), auch in Page-Buildern, die das Plugin-Stylesheet nicht laden.
+* Fix: Der MwSt.-Hinweis unter dem Preis zeigt kein doppeltes Prozentzeichen mehr („23%%“ > „23%“).
+* Fix: Der Versandkostenhinweis läuft nicht mehr in den MwSt.-Hinweis hinein („VATzzgl.“ > korrekte Abstände), auch in Page-Buildern, die das Plugin-Stylesheet nicht laden.
 * Fix: Die standardmäßige polnische Versandkosten-Beschriftung lautet jetzt „plus koszty wysyłki“ (zuvor ein unübersetztes deutsches „zzgl. kosztów wysyłki“).
 
 = 1.24.4 =

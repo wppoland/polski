@@ -4663,7 +4663,7 @@ msgid ""
 "Cyber Resilience Act: security.txt file (RFC 9116), security contact, "
 "vulnerability reporting policy."
 msgstr ""
-"Cyber ​​Resilience Act: security.txt-Datei (RFC 9116), Sicherheitskontakt, "
+"Cyber Resilience Act: security.txt-Datei (RFC 9116), Sicherheitskontakt, "
 "Richtlinie zur Meldung von Schwachstellen."
 
 #: src/Admin/ModulesPage.php:923

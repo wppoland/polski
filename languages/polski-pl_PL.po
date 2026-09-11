@@ -6640,7 +6640,7 @@ msgid ""
 "Export."
 msgstr ""
 "Eksportuj stany magazynowe WooCommerce do CSV. Konfigurowalne pola, filtry "
-"progów, obsługa wariantów. Dostępne w Produktach → Eksport stanów."
+"progów, obsługa wariantów. Dostępne w Produktach > Eksport stanów."
 
 #: src/Admin/ModulesPage.php:1415
 msgid "Export stock"
@@ -7681,7 +7681,7 @@ msgid ""
 "Repairability score where one is established, otherwise spare part "
 "availability and repair contact."
 msgstr ""
-"Ocena możliwości naprawy, jeśli została ustalona; w przeciwnym razie – "
+"Ocena możliwości naprawy, jeśli została ustalona; w przeciwnym razie - "
 "dostępność części zamiennych i dane kontaktowe serwisu."
 
 #: src/Admin/ProductMetaBox.php:340
