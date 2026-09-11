@@ -118,8 +118,13 @@ foreach ($polski_taxonomies as $taxonomy) {
     }
 }
 
-// Clear scheduled events.
-wp_clear_scheduled_hook('polski_daily_maintenance');
+// Clear scheduled events. The list lives on Deactivator so the two paths cannot
+// disagree; uninstall.php runs without the plugin booted, so the file is required
+// directly rather than relying on the autoloader.
+require_once __DIR__ . '/src/Deactivator.php';
+foreach (\Polski\Deactivator::CRON_HOOKS as $polski_cron_hook) {
+    wp_clear_scheduled_hook($polski_cron_hook);
+}
 
 // Flush rewrite rules.
 flush_rewrite_rules();

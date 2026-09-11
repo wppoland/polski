@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.1
+Stable tag: 1.37.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.37.2 =
+* Fixed: the hourly CRA incident check was scheduled but cleared nowhere, so the event outlived the plugin. A WP-Cron event stays in the options table once created, waking on every request to fire a hook nothing listens to. The store health check was also cleared on deactivation but not on uninstall. The list of events now lives in one place that both paths read, because keeping two copies by hand is how they drifted.
 
 = 1.37.1 =
 * Security (high): the value social login used to tie a sign-in to the browser that started it was the same for every logged-out visitor for twelve hours, and the public address that begins the flow handed it out to anyone who asked. Someone could start a sign-in of their own, keep it unused, and send a customer a link that signed that customer in to the attacker's account instead of their own, where the address and order details they went on to enter would be the attacker's to read. Each sign-in now gets its own single-use value, held in a cookie, so a callback is only accepted from the browser that began it.
