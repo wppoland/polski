@@ -198,7 +198,7 @@ final class SocialLoginService implements HasHooks
         $state = sanitize_text_field((string) wp_unslash($_GET['state'] ?? ''));
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        if (! wp_verify_nonce($state, 'polski_social_' . $provider)) {
+        if (! $this->consumeState($state, $provider)) {
             wc_add_notice(__('Social login verification failed. Please try again.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
@@ -248,6 +248,86 @@ final class SocialLoginService implements HasHooks
         exit;
     }
 
+    // ── The OAuth state ────────────────────────────────
+
+    private const STATE_COOKIE = 'polski_social_state';
+    private const STATE_TTL = 900; // 15 minutes is longer than any real sign-in.
+
+    /**
+     * Mint a single-use state and tie it to THIS browser.
+     *
+     * This used to be wp_create_nonce('polski_social_' . $provider). For a
+     * logged-out visitor WordPress derives a nonce from user id 0 and an empty
+     * session token, so every anonymous visitor received the same value for
+     * twelve hours, and the public REST route that starts the flow handed it to
+     * anyone who asked. An attacker could therefore begin a sign-in, keep the
+     * unused authorisation code, and send a victim a callback URL carrying that
+     * code and the shared state: the victim's browser would accept it and log
+     * the victim in to the ATTACKER's account, where every address and order
+     * they went on to enter belonged to the attacker. A state is only worth
+     * anything if it proves the callback belongs to the browser that started
+     * the flow, which is what the cookie below does.
+     */
+    private function issueState(string $provider): string
+    {
+        $state = wp_generate_password(32, false);
+        set_transient('polski_social_state_' . $state, $provider, self::STATE_TTL);
+
+        // Lax is deliberate and is the strictest value that still works: the
+        // provider returns the visitor by a top-level GET navigation, which Lax
+        // allows and Strict would drop, leaving every sign-in broken.
+        setcookie(
+            self::STATE_COOKIE,
+            $state,
+            [
+                'expires' => time() + self::STATE_TTL,
+                'path' => defined('COOKIEPATH') ? COOKIEPATH : '/',
+                'domain' => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '',
+                'secure' => is_ssl(),
+                'httponly' => true,
+                'samesite' => 'Lax',
+            ]
+        );
+
+        return $state;
+    }
+
+    /**
+     * Accept the state once, from the browser that was issued it.
+     */
+    private function consumeState(string $state, string $provider): bool
+    {
+        if ('' === $state) {
+            return false;
+        }
+
+        $cookie = isset($_COOKIE[self::STATE_COOKIE])
+            ? sanitize_text_field((string) wp_unslash($_COOKIE[self::STATE_COOKIE]))
+            : '';
+
+        // Clear the cookie whatever happens: a state is good for one attempt.
+        setcookie(
+            self::STATE_COOKIE,
+            '',
+            [
+                'expires' => time() - 3600,
+                'path' => defined('COOKIEPATH') ? COOKIEPATH : '/',
+                'domain' => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '',
+                'secure' => is_ssl(),
+                'httponly' => true,
+                'samesite' => 'Lax',
+            ]
+        );
+
+        $stored = get_transient('polski_social_state_' . $state);
+        delete_transient('polski_social_state_' . $state);
+
+        return '' !== $cookie
+            && hash_equals($cookie, $state)
+            && is_string($stored)
+            && $stored === $provider;
+    }
+
     // ── OAuth URL builders ─────────────────────────────
 
     private function getOAuthUrl(string $provider): string
@@ -258,7 +338,7 @@ final class SocialLoginService implements HasHooks
     private function buildProviderAuthUrl(string $provider): ?string
     {
         $settings = $this->getSettings();
-        $state = wp_create_nonce('polski_social_' . $provider);
+        $state = $this->issueState($provider);
         $callbackUrl = add_query_arg([
             'polski_social_callback' => '1',
             'provider' => $provider,
