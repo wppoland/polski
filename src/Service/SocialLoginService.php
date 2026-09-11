@@ -22,6 +22,13 @@ final class SocialLoginService implements HasHooks
     private const OPTION = 'polski_social_login';
     private const META_PROVIDER_ID = '_polski_social_id';
 
+    /**
+     * Why the last sign-in attempt was refused, for the notice shown to the
+     * visitor. "Could not create your account" is wrong and unactionable when
+     * the real answer is "use your password".
+     */
+    private string $refusal = '';
+
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('social_login')) {
@@ -219,7 +226,7 @@ final class SocialLoginService implements HasHooks
         $user = $this->findOrCreateUser($provider, $profile);
 
         if (! $user) {
-            wc_add_notice(__('Could not create your account. Please try again.', 'polski'), 'error');
+            wc_add_notice($this->refusal !== '' ? $this->refusal : __('Could not create your account. Please try again.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('dashboard'));
             exit;
         }
@@ -241,7 +248,7 @@ final class SocialLoginService implements HasHooks
         exit;
     }
 
-    // ── OAuth URL builders ─���────────────────────────────
+    // ── OAuth URL builders ─────────────────────────────
 
     private function getOAuthUrl(string $provider): string
     {
@@ -367,7 +374,13 @@ final class SocialLoginService implements HasHooks
             return null;
         }
 
+        // Google reports whether it has actually verified the address; Facebook
+        // only ever returns one it has confirmed, so absence of the field there
+        // is not absence of verification.
+        $verified = $provider === 'facebook' || ! empty($data['verified_email']) || ! empty($data['email_verified']);
+
         return [
+            'email_verified' => $verified ? '1' : '',
             'email' => sanitize_email($data['email']),
             'name' => sanitize_text_field($data['name'] ?? ''),
             'first_name' => sanitize_text_field($data['first_name'] ?? $data['given_name'] ?? ''),
@@ -376,7 +389,7 @@ final class SocialLoginService implements HasHooks
         ];
     }
 
-    // ── User management ──��──────────────────────────────
+    // ── User management ────────────────────────────────
 
     /**
      * @param array<string, string> $profile
@@ -396,10 +409,30 @@ final class SocialLoginService implements HasHooks
             return $users[0];
         }
 
+        // An address the provider has not verified proves nothing. Matching on it
+        // handed the matching WordPress account, already logged in, to whoever
+        // could register with the provider claiming somebody else's address.
+        if (empty($profile['email_verified'])) {
+            $this->refusal = __('Your social account does not have a confirmed email address, so it cannot be used to sign in here.', 'polski');
+
+            return null;
+        }
+
         // Check if user exists by email.
         $existing = get_user_by('email', $profile['email']);
 
         if ($existing) {
+            // A verified address still does not justify silently inheriting an
+            // account that can change the site. Anyone who ever gains control of
+            // that mailbox would otherwise arrive as the shop owner. Customers
+            // link freely; anyone with editing rights signs in the ordinary way
+            // and can link afterwards from their profile.
+            if (user_can($existing, 'edit_posts')) {
+                $this->refusal = __('This email belongs to a site account. Please sign in with your username and password.', 'polski');
+
+                return null;
+            }
+
             // Link social account to existing user.
             update_user_meta($existing->ID, self::META_PROVIDER_ID, $provider . ':' . $profile['provider_id']);
 
