@@ -452,7 +452,7 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 == Upgrade Notice ==
 
 = 1.37.1 =
-Security release, the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
+Security release. This is the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
 
 = 1.37.0 =
 Security release. Default installations are not exposed: social login is off unless you enabled the module and entered Google or Facebook credentials. If you use it, update now; nothing else to do.
