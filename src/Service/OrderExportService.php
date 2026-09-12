@@ -179,32 +179,79 @@ final class OrderExportService implements HasHooks
 
         update_option('polski_order_export_fields', $fields);
 
+        // The whole file is built into a temporary file before a single byte of
+        // it goes out. While the export streamed straight to php://output, a
+        // fatal, an exhausted memory limit or a hit time limit arrived as HTTP
+        // 200 with a short CSV attached, which looks like a complete export.
+        // Nothing below the headers can produce a visible error page, so the
+        // work happens above them.
+        $output = tmpfile();
+
+        if ($output === false) {
+            wp_die(esc_html__('The export could not create a temporary file.', 'polski'));
+        }
+
+        $this->writeCsv($output, $fields, $this->collectOrderIds($statuses, $dateFrom, $dateTo));
+
+        $size = (int) ftell($output);
         $filename = 'orders_' . $dateFrom . '_' . $dateTo . '.csv';
 
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Length: ' . (string) ($size + 3));
         header('Pragma: no-cache');
 
-        $output = fopen('php://output', 'w');
-        if ($output === false) {
-            exit;
-        }
+        echo "\xEF\xBB\xBF"; // BOM, three bytes, counted above.
 
-        echo "\xEF\xBB\xBF"; // BOM.
-
-        $this->writeCsv($output, $fields, $statuses, $dateFrom, $dateTo);
+        rewind($output);
+        fpassthru($output);
+        fclose($output);
 
         exit;
     }
 
     /**
-     * Write the export to an open stream, one page of orders at a time.
+     * The IDs of every order in the range, read in one query as a snapshot.
+     *
+     * Only IDs are held here, not hydrated orders, and the list is what the CSV
+     * is written from. That is what makes the export immune to writes that land
+     * while it runs: an order placed, trashed or moved out of the range after
+     * this query cannot shift a page boundary, because there are no page
+     * boundaries left to shift.
+     *
+     * @param  array<string> $statuses
+     * @return list<int>
+     */
+    public function collectOrderIds(array $statuses, string $dateFrom, string $dateTo): array
+    {
+        $ids = wc_get_orders([
+            'limit' => -1,
+            'return' => 'ids',
+            'status' => $statuses,
+            'date_created' => $dateFrom . '...' . $dateTo . ' 23:59:59',
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ]);
+
+        $snapshot = [];
+
+        foreach (is_array($ids) ? $ids : [] as $id) {
+            // 'return' => 'ids' gives integers, but a filter on the query can
+            // hand back the orders themselves.
+            $snapshot[] = $id instanceof \WC_Order ? $id->get_id() : (int) $id;
+        }
+
+        return $snapshot;
+    }
+
+    /**
+     * Write the export to an open stream, hydrating the snapshot in batches.
      *
      * @param resource      $output
      * @param array<string> $fields
-     * @param array<string> $statuses
+     * @param list<int>     $orderIds
      */
-    public function writeCsv($output, array $fields, array $statuses, string $dateFrom, string $dateTo): void
+    public function writeCsv($output, array $fields, array $orderIds): void
     {
         // Header row.
         $headers = array_map(fn ($f) => $this->getFieldLabel($f), $fields);
@@ -221,33 +268,30 @@ final class OrderExportService implements HasHooks
             $batchSize = self::EXPORT_BATCH_SIZE;
         }
 
-        // The secondary ID sort only breaks ties inside the same second, which
-        // MySQL would otherwise order at random. Rows keep their date DESC
-        // sequence, and paging can no longer repeat or skip one of a tied pair.
-        $page = 1;
-
-        // ponytail: the whole matching range is still exported in one request,
-        // only the hydrated orders are capped. If an export ever outgrows the
-        // request time limit, write the file in the background (Action Scheduler)
-        // and mail or link the result instead.
-        do {
+        foreach (array_chunk($orderIds, $batchSize) as $chunk) {
             $orders = wc_get_orders([
-                'limit' => $batchSize,
-                'page' => $page,
-                'status' => $statuses,
-                'date_created' => $dateFrom . '...' . $dateTo . ' 23:59:59',
-                'orderby' => 'date ID',
-                'order' => 'DESC',
+                'limit' => count($chunk),
+                'post__in' => $chunk,
             ]);
-            $orders = is_array($orders) ? $orders : [];
 
-            foreach ($orders as $order) {
-                $row = array_map(fn ($f) => $this->getFieldValue($order, $f), $fields);
-                fputcsv($output, $row, ';');
+            $byId = [];
+
+            foreach (is_array($orders) ? $orders : [] as $order) {
+                $byId[(int) $order->get_id()] = $order;
             }
 
-            ++$page;
-        } while (count($orders) === $batchSize);
+            foreach ($chunk as $orderId) {
+                if (! isset($byId[$orderId])) {
+                    // Deleted or trashed between the snapshot and this batch.
+                    // There is nothing left to read, so the row is dropped; no
+                    // other row moves, because the snapshot fixed their places.
+                    continue;
+                }
+
+                $row = array_map(fn ($f) => $this->getFieldValue($byId[$orderId], $f), $fields);
+                fputcsv($output, $row, ';');
+            }
+        }
     }
 
     private function getFieldLabel(string $field): string

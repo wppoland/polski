@@ -2,8 +2,14 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
-= 1.37.4 =
-* Fixed: the daily double opt-in cleanup and the order CSV export each loaded their whole result set into memory before doing any work. A store with a long backlog of unverified accounts, or an export covering a busy month, could exhaust the memory limit and die halfway. Both now walk the same rows in batches of 200, which is filterable, and the export sorts by order ID within the same second so paging cannot repeat or skip an order.
+= 1.37.5 =
+* Fixed: the order CSV export held every matching order in memory before writing a row, the stock CSV export held every product, and the daily double opt-in cleanup asked for every unverified account in one query. A store with a real backlog could exhaust the memory limit halfway through. Each now reads IDs in one query and hydrates 200 rows at a time; the order export batch size is filterable via `polski/order_export/batch_size`, the cleanup batch via `polski/doi/cleanup_batch_size`.
+* Fixed: an export could repeat or lose a row. Because the list of IDs is fixed before the first row is written, an order placed or trashed while the export runs can no longer push a row into the file twice or out of it. An order deleted in between simply has no row, and one whose status changes in between keeps the row it already had.
+* Fixed: both CSV exports sent their download headers before doing any work, so a fatal, an exhausted memory limit or a hit time limit reached the browser as HTTP 200 with a short file attached, which looks like a complete export. Each file is now built to a temporary file first and sent with a Content-Length, so a failure produces a visible error page again.
+* Fixed: the double opt-in cleanup advanced its position only past accounts it kept. If WordPress refused to delete an account, the loop re-read and re-attempted the same batch instead of finishing. Accounts it does not remove are now excluded from the next query, so every pass makes progress.
+* Changed: the expert review editor picks a product with WooCommerce's own search field instead of a dropdown that held every published product.
+* Changed: the stock export preview reports how many rows it is showing instead of the size of the whole catalogue, which is what made it load the catalogue.
+* Note: 1.37.4 was never released. It claimed the export sorted by order ID within the same second so paging could not repeat or skip an order; that was not true, paging over a table the store is still writing to repeats and skips rows whatever the sort is. This release drops the paging instead, and covers the work 1.37.4 started.
 
 = 1.37.3 =
 * Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.

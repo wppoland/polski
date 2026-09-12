@@ -17,6 +17,11 @@ use Polski\Contract\HasHooks;
  */
 final class StockExportService implements HasHooks
 {
+    /**
+     * How many products the stock export hydrates per query.
+     */
+    private const BATCH_SIZE = 200;
+
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('stock_export')) {
@@ -141,7 +146,7 @@ final class StockExportService implements HasHooks
         // Save field selection.
         update_option('polski_stock_export_fields', $fields);
 
-        $products = $this->getProducts($managedOnly, $includeVariations, $stockCompare, $stockValue);
+        $products = $this->eachProduct($managedOnly, $includeVariations, $stockCompare, $stockValue);
 
         if ($isPreview) {
             $this->renderPreview($products, $fields);
@@ -152,13 +157,21 @@ final class StockExportService implements HasHooks
     }
 
     /**
-     * @return list<\WC_Product>
+     * Yield the products the export covers, hydrating them a batch at a time.
+     *
+     * The first query reads IDs only, which fixes what the run covers and keeps
+     * the catalogue out of memory; each batch is then hydrated by ID, so a
+     * product saved or trashed while the export runs cannot move a row. A
+     * product that disappears between the two is skipped, nothing else shifts.
+     *
+     * @return \Generator<int, \WC_Product>
      */
-    private function getProducts(bool $managedOnly, bool $includeVariations, string $stockCompare, int $stockValue): array
+    private function eachProduct(bool $managedOnly, bool $includeVariations, string $stockCompare, int $stockValue): \Generator
     {
         $args = [
             'status' => 'publish',
             'limit' => -1,
+            'return' => 'ids',
             'type' => ['simple', 'variable', 'external', 'grouped'],
             'orderby' => 'title',
             'order' => 'ASC',
@@ -168,81 +181,111 @@ final class StockExportService implements HasHooks
             $args['manage_stock'] = true;
         }
 
-        $products = wc_get_products($args);
-        $products = is_array($products) ? $products : [];
-        $result = [];
+        $found = wc_get_products($args);
+        $ids = [];
 
-        foreach ($products as $product) {
-            // Stock filter.
-            if ($stockCompare !== '' && $product->managing_stock()) {
-                $stock = (int) $product->get_stock_quantity();
-                $matches = match ($stockCompare) {
-                    'lte' => $stock <= $stockValue,
-                    'gte' => $stock >= $stockValue,
-                    'eq' => $stock === $stockValue,
-                    default => true,
-                };
+        foreach (is_array($found) ? $found : [] as $id) {
+            // 'return' => 'ids' gives integers, but a filter on the query can
+            // hand back the products themselves.
+            $ids[] = $id instanceof \WC_Product ? $id->get_id() : (int) $id;
+        }
 
-                if (! $matches) {
-                    continue;
+        foreach (array_chunk($ids, self::BATCH_SIZE) as $chunk) {
+            foreach ($this->hydrate($chunk) as $product) {
+                // Stock filter.
+                if ($stockCompare !== '' && $product->managing_stock()) {
+                    $stock = (int) $product->get_stock_quantity();
+                    $matches = match ($stockCompare) {
+                        'lte' => $stock <= $stockValue,
+                        'gte' => $stock >= $stockValue,
+                        'eq' => $stock === $stockValue,
+                        default => true,
+                    };
+
+                    if (! $matches) {
+                        continue;
+                    }
                 }
-            }
 
-            $result[] = $product;
+                yield $product;
 
-            // Include variations.
-            if ($includeVariations && $product->is_type('variable')) {
-                foreach ($product->get_children() as $childId) {
-                    $variation = wc_get_product($childId);
+                // Include variations.
+                if ($includeVariations && $product->is_type('variable')) {
+                    foreach ($product->get_children() as $childId) {
+                        $variation = wc_get_product($childId);
 
-                    if ($variation instanceof \WC_Product) {
-                        if ($managedOnly && ! $variation->managing_stock()) {
-                            continue;
-                        }
-
-                        if ($stockCompare !== '' && $variation->managing_stock()) {
-                            $vStock = (int) $variation->get_stock_quantity();
-                            $vMatches = match ($stockCompare) {
-                                'lte' => $vStock <= $stockValue,
-                                'gte' => $vStock >= $stockValue,
-                                'eq' => $vStock === $stockValue,
-                                default => true,
-                            };
-
-                            if (! $vMatches) {
+                        if ($variation instanceof \WC_Product) {
+                            if ($managedOnly && ! $variation->managing_stock()) {
                                 continue;
                             }
-                        }
 
-                        $result[] = $variation;
+                            if ($stockCompare !== '' && $variation->managing_stock()) {
+                                $vStock = (int) $variation->get_stock_quantity();
+                                $vMatches = match ($stockCompare) {
+                                    'lte' => $vStock <= $stockValue,
+                                    'gte' => $vStock >= $stockValue,
+                                    'eq' => $vStock === $stockValue,
+                                    default => true,
+                                };
+
+                                if (! $vMatches) {
+                                    continue;
+                                }
+                            }
+
+                            yield $variation;
+                        }
                     }
                 }
             }
         }
-
-        return $result;
     }
 
     /**
-     * @param list<\WC_Product> $products
-     * @param list<string>      $fields
+     * Hydrate one batch of product IDs, in the order the batch lists them.
+     *
+     * @param  list<int> $ids
+     * @return list<\WC_Product>
      */
-    private function outputCsv(array $products, array $fields): void
+    private function hydrate(array $ids): array
     {
-        $filename = 'stock_export_' . wp_date('Y-m-d') . '.csv';
+        $products = wc_get_products([
+            'limit' => count($ids),
+            'post__in' => $ids,
+            'status' => 'publish',
+        ]);
 
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Pragma: no-cache');
-        header('Expires: 0');
+        $byId = [];
 
-        $output = fopen('php://output', 'w');
-        if ($output === false) {
-            exit;
+        foreach (is_array($products) ? $products : [] as $product) {
+            $byId[(int) $product->get_id()] = $product;
         }
 
-        // BOM for Excel.
-        echo "\xEF\xBB\xBF";
+        $batch = [];
+
+        foreach ($ids as $id) {
+            if (isset($byId[$id])) {
+                $batch[] = $byId[$id];
+            }
+        }
+
+        return $batch;
+    }
+
+    /**
+     * @param iterable<\WC_Product> $products
+     * @param list<string>          $fields
+     */
+    private function outputCsv(iterable $products, array $fields): void
+    {
+        // Built in full before a single byte goes out: once the headers are
+        // sent, a fatal or a hit time limit is saved by the browser as a short
+        // CSV that looks like a complete export.
+        $output = tmpfile();
+
+        if ($output === false) {
+            wp_die(esc_html__('The export could not create a temporary file.', 'polski'));
+        }
 
         // Header row.
         $headers = $this->getFieldLabels($fields);
@@ -253,17 +296,48 @@ final class StockExportService implements HasHooks
             fputcsv($output, $row, ';');
         }
 
+        $size = (int) ftell($output);
+        $filename = 'stock_export_' . wp_date('Y-m-d') . '.csv';
+
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Length: ' . (string) ($size + 3));
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF"; // BOM for Excel, three bytes, counted above.
+
+        rewind($output);
+        fpassthru($output);
+        fclose($output);
+
         exit;
     }
 
     /**
-     * @param list<\WC_Product> $products
-     * @param list<string>      $fields
+     * @param iterable<\WC_Product> $products
+     * @param list<string>          $fields
      */
-    private function renderPreview(array $products, array $fields): void
+    private function renderPreview(iterable $products, array $fields): void
     {
+        // Only the rows the preview shows are built, plus one that tells us
+        // there are more. The old count came from holding the whole catalogue,
+        // which is the cost this screen is not worth.
+        $rows = [];
+
+        foreach ($products as $product) {
+            $rows[] = $this->buildRow($product, $fields);
+
+            if (count($rows) > 500) {
+                break;
+            }
+        }
+
+        $truncated = count($rows) > 500;
+        $rows = array_slice($rows, 0, 500);
+
         echo '<div class="wrap"><h1>' . esc_html__('Stock Export Preview', 'polski') . '</h1>';
-        printf('<p>%s: <strong>%d</strong></p>', esc_html__('Products found', 'polski'), count($products));
+        printf('<p>%s: <strong>%d</strong></p>', esc_html__('Rows shown', 'polski'), count($rows));
         echo '<table class="widefat fixed striped"><thead><tr>';
 
         foreach ($this->getFieldLabels($fields) as $label) {
@@ -272,10 +346,10 @@ final class StockExportService implements HasHooks
 
         echo '</tr></thead><tbody>';
 
-        foreach (array_slice($products, 0, 500) as $product) {
+        foreach ($rows as $row) {
             echo '<tr>';
 
-            foreach ($this->buildRow($product, $fields) as $value) {
+            foreach ($row as $value) {
                 printf('<td>%s</td>', esc_html($value));
             }
 
@@ -284,7 +358,7 @@ final class StockExportService implements HasHooks
 
         echo '</tbody></table>';
 
-        if (count($products) > 500) {
+        if ($truncated) {
             printf('<p><em>%s</em></p>', esc_html__('Preview limited to 500 rows. Use CSV export for full data.', 'polski'));
         }
 

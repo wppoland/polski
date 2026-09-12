@@ -90,6 +90,11 @@ final class FaqService implements HasHooks
             'schema' => 'yes',
         ], is_array($atts) ? $atts : [], 'polski_faq');
 
+        // limit="-1" stays the default. Unlike the exports, this set is hand
+        // written: it is the FAQ entries an editor typed, every one of which is
+        // printed on the page anyway, and the shortcode is what the editor put
+        // there to show all of them. Capping it would silently drop content
+        // somebody wrote. A store that needs fewer passes limit="10".
         $args = [
             'post_type' => self::CPT,
             'posts_per_page' => (int) $atts['limit'],

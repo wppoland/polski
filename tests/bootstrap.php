@@ -380,20 +380,54 @@ if (! function_exists('wp_mail')) {
 }
 
 if (! function_exists('wc_get_orders')) {
+    /**
+     * Models wc_get_orders() closely enough to expose a paging bug.
+     *
+     * $GLOBALS['polski_test_orders'] is a LIVE set, held in the order the query
+     * returns it (newest first). A test can hand
+     * $GLOBALS['polski_test_order_mutation'] a callable, which runs after every
+     * query with that query's args and its result, and stands in for the
+     * checkout or the trashed order that lands while an export is running.
+     * Offset or page paging over that set repeats or skips a row; a caller that
+     * fixes its rows up front does not.
+     *
+     * Supported args: limit, page, offset, post__in, return.
+     */
     function wc_get_orders(array $args = []): array
     {
         $GLOBALS['polski_test_order_queries'][] = $args;
 
-        $orders = $GLOBALS['polski_test_orders'] ?? [];
-        $limit = (int) ($args['limit'] ?? -1);
+        $orders = array_values($GLOBALS['polski_test_orders'] ?? []);
 
-        if ($limit < 1) {
-            return $orders;
+        if (isset($args['post__in'])) {
+            $wanted = array_map('intval', (array) $args['post__in']);
+            $orders = array_values(array_filter(
+                $orders,
+                static fn ($order): bool => in_array((int) $order->get_id(), $wanted, true),
+            ));
+        } else {
+            $limit = (int) ($args['limit'] ?? -1);
+
+            if ($limit >= 1) {
+                $page = max(1, (int) ($args['page'] ?? 1));
+                $offset = isset($args['offset']) && $args['offset'] !== ''
+                    ? (int) $args['offset']
+                    : ($page - 1) * $limit;
+                $orders = array_slice($orders, $offset, $limit);
+            }
         }
 
-        $page = max(1, (int) ($args['page'] ?? 1));
+        if (($args['return'] ?? 'objects') === 'ids') {
+            $orders = array_map(static fn ($order): int => (int) $order->get_id(), $orders);
+        }
 
-        return array_slice($orders, ($page - 1) * $limit, $limit);
+        $mutation = $GLOBALS['polski_test_order_mutation'] ?? null;
+
+        if (is_callable($mutation)) {
+            $mutation($args, $orders);
+        }
+
+        return $orders;
     }
 }
 
@@ -407,7 +441,24 @@ if (! function_exists('get_users')) {
     {
         $GLOBALS['polski_test_user_queries'][] = $args;
 
+        // A caller that never removes or excludes the accounts it just looked at
+        // asks the same question forever. Fail loudly instead of hanging.
+        if (count($GLOBALS['polski_test_user_queries']) > 50) {
+            throw new RuntimeException(
+                'get_users() ran 50 times: the caller is not making progress through the result set.',
+            );
+        }
+
         $users = array_values($GLOBALS['polski_test_users'] ?? []);
+        $exclude = array_map('intval', (array) ($args['exclude'] ?? []));
+
+        if ($exclude !== []) {
+            $users = array_values(array_filter(
+                $users,
+                static fn ($id): bool => ! in_array((int) $id, $exclude, true),
+            ));
+        }
+
         $number = (int) ($args['number'] ?? -1);
 
         if ($number < 1) {
@@ -428,6 +479,12 @@ if (! function_exists('wc_get_customer_order_count')) {
 if (! function_exists('wp_delete_user')) {
     function wp_delete_user(int $userId, ?int $reassign = null): bool
     {
+        // wp_delete_user() returns false when a filter or a failed query stops
+        // the delete. The account then stays in the result set.
+        if (in_array($userId, array_map('intval', $GLOBALS['polski_test_undeletable_users'] ?? []), true)) {
+            return false;
+        }
+
         $GLOBALS['polski_test_deleted_users'][] = $userId;
         $GLOBALS['polski_test_users'] = array_values(array_filter(
             $GLOBALS['polski_test_users'] ?? [],

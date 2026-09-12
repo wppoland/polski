@@ -171,10 +171,13 @@ final class DoubleOptInService implements Bootable, HasHooks
             $batchSize = self::CLEANUP_BATCH_SIZE;
         }
 
-        // Accounts we keep stay in the result set, so the offset only advances
-        // past those. Deleted accounts drop out of the meta query together with
-        // their meta, which is why a plain page counter would skip rows here.
-        $offset = 0;
+        // No offset and no page counter: both count positions in a result set
+        // that this loop is itself shrinking. Instead every account the batch
+        // does not remove is excluded from the next query, so each pass either
+        // deletes rows or excludes them, and the candidate set strictly shrinks.
+        // That also bounds the loop when wp_delete_user() refuses, which an
+        // offset that only advanced on the keep branch did not.
+        $keep = [];
 
         // ponytail: one cron run still walks the whole backlog, just in slices.
         // If a store ever has more stale accounts than a single cron run can
@@ -198,7 +201,7 @@ final class DoubleOptInService implements Bootable, HasHooks
                 ],
                 'fields' => 'ids',
                 'number' => $batchSize,
-                'offset' => $offset,
+                'exclude' => $keep,
             ]);
 
             $users = is_array($users) ? $users : [];
@@ -212,12 +215,14 @@ final class DoubleOptInService implements Bootable, HasHooks
                         require_once ABSPATH . 'wp-admin/includes/user.php';
                     }
 
-                    wp_delete_user((int) $userId);
-
-                    continue;
+                    if (wp_delete_user((int) $userId)) {
+                        continue;
+                    }
                 }
 
-                ++$offset;
+                // Has orders, or the delete was refused. Either way this account
+                // is still in the result set, so the next query must skip it.
+                $keep[] = (int) $userId;
             }
         } while (count($users) === $batchSize);
     }

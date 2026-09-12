@@ -39,6 +39,7 @@ final class ExpertReviewService implements HasHooks
 
         add_action('init', [$this, 'registerPostType']);
         add_action('add_meta_boxes', [$this, 'addMetaBoxes']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueProductSearch']);
         add_action('save_post_' . self::CPT, [$this, 'saveMetaBoxes']);
 
         // Display on product page.
@@ -80,6 +81,24 @@ final class ExpertReviewService implements HasHooks
         );
     }
 
+    /**
+     * Load WooCommerce's own product search on this CPT's edit screen.
+     *
+     * The picker below is an AJAX search, so the screen no longer reads the
+     * catalogue to draw itself.
+     */
+    public function enqueueProductSearch(): void
+    {
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if ($screen === null || $screen->post_type !== self::CPT) {
+            return;
+        }
+
+        wp_enqueue_script('wc-enhanced-select');
+        wp_enqueue_style('woocommerce_admin_styles');
+    }
+
     public function renderMetaBox(\WP_Post $post): void
     {
         wp_nonce_field('polski_expert_review', '_polski_er_nonce');
@@ -88,19 +107,23 @@ final class ExpertReviewService implements HasHooks
         $rating = (float) get_post_meta($post->ID, self::META_RATING, true);
         $verdict = get_post_meta($post->ID, self::META_VERDICT, true);
 
-        // Product selector.
+        // Product selector. WooCommerce's own AJAX search, so a store with
+        // 20000 products does not load all of them to draw one dropdown. The
+        // only option in the markup is the one already chosen.
+        $selected = $productId > 0 ? wc_get_product($productId) : null;
+
         echo '<p><label><strong>' . esc_html__('Product', 'polski') . '</strong></label><br>';
-        echo '<select name="expert_review_product_id" style="width:100%">';
-        echo '<option value="">' . esc_html__('Select product...', 'polski') . '</option>';
+        printf(
+            '<select class="wc-product-search" name="expert_review_product_id" style="width:100%%" data-placeholder="%s" data-action="woocommerce_json_search_products_and_variations" data-allow_clear="true">',
+            esc_attr__('Search for a product...', 'polski'),
+        );
 
-        $products = wc_get_products(['limit' => -1, 'status' => 'publish', 'orderby' => 'title', 'order' => 'ASC']);
-        $products = is_array($products) ? $products : [];
-
-        foreach ($products as $product) {
-            echo '<option value="' . esc_attr((string) $product->get_id()) . '"'
-                . selected($productId, $product->get_id(), false) . '>'
-                . esc_html($product->get_name())
-                . '</option>';
+        if ($selected instanceof \WC_Product) {
+            printf(
+                '<option value="%s" selected="selected">%s</option>',
+                esc_attr((string) $selected->get_id()),
+                esc_html(wp_strip_all_tags($selected->get_formatted_name())),
+            );
         }
 
         echo '</select></p>';
