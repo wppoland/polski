@@ -382,7 +382,59 @@ if (! function_exists('wp_mail')) {
 if (! function_exists('wc_get_orders')) {
     function wc_get_orders(array $args = []): array
     {
-        return $GLOBALS['polski_test_orders'] ?? [];
+        $GLOBALS['polski_test_order_queries'][] = $args;
+
+        $orders = $GLOBALS['polski_test_orders'] ?? [];
+        $limit = (int) ($args['limit'] ?? -1);
+
+        if ($limit < 1) {
+            return $orders;
+        }
+
+        $page = max(1, (int) ($args['page'] ?? 1));
+
+        return array_slice($orders, ($page - 1) * $limit, $limit);
+    }
+}
+
+if (! function_exists('get_users')) {
+    /**
+     * Slices $GLOBALS['polski_test_users'] the way WP_User_Query would, so a
+     * caller that forgets to page gets everything in one go and a caller that
+     * pages gets exactly its slice.
+     */
+    function get_users(array $args = []): array
+    {
+        $GLOBALS['polski_test_user_queries'][] = $args;
+
+        $users = array_values($GLOBALS['polski_test_users'] ?? []);
+        $number = (int) ($args['number'] ?? -1);
+
+        if ($number < 1) {
+            return $users;
+        }
+
+        return array_slice($users, (int) ($args['offset'] ?? 0), $number);
+    }
+}
+
+if (! function_exists('wc_get_customer_order_count')) {
+    function wc_get_customer_order_count(int $userId): int
+    {
+        return (int) ($GLOBALS['polski_test_customer_order_counts'][$userId] ?? 0);
+    }
+}
+
+if (! function_exists('wp_delete_user')) {
+    function wp_delete_user(int $userId, ?int $reassign = null): bool
+    {
+        $GLOBALS['polski_test_deleted_users'][] = $userId;
+        $GLOBALS['polski_test_users'] = array_values(array_filter(
+            $GLOBALS['polski_test_users'] ?? [],
+            static fn ($id): bool => (int) $id !== $userId,
+        ));
+
+        return true;
     }
 }
 

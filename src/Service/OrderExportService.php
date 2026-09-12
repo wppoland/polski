@@ -16,6 +16,11 @@ use Polski\Contract\HasHooks;
  */
 final class OrderExportService implements HasHooks
 {
+    /**
+     * How many orders the CSV export hydrates per query.
+     */
+    private const EXPORT_BATCH_SIZE = 200;
+
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('order_export')) {
@@ -147,10 +152,10 @@ final class OrderExportService implements HasHooks
         // phpcs:disable WordPress.Security.NonceVerification.Missing -- Admin referer verified above.
         $dateFrom = isset($_POST['date_from'])
             ? sanitize_text_field((string) wp_unslash($_POST['date_from']))
-            : wp_date('Y-m-01');
+            : (string) wp_date('Y-m-01');
         $dateTo = isset($_POST['date_to'])
             ? sanitize_text_field((string) wp_unslash($_POST['date_to']))
-            : wp_date('Y-m-d');
+            : (string) wp_date('Y-m-d');
 
         $statuses = ['wc-processing', 'wc-completed'];
         if (isset($_POST['statuses']) && is_array($_POST['statuses'])) {
@@ -174,15 +179,6 @@ final class OrderExportService implements HasHooks
 
         update_option('polski_order_export_fields', $fields);
 
-        $orders = wc_get_orders([
-            'limit' => -1,
-            'status' => $statuses,
-            'date_created' => $dateFrom . '...' . $dateTo . ' 23:59:59',
-            'orderby' => 'date',
-            'order' => 'DESC',
-        ]);
-        $orders = is_array($orders) ? $orders : [];
-
         $filename = 'orders_' . $dateFrom . '_' . $dateTo . '.csv';
 
         header('Content-Type: text/csv; charset=utf-8');
@@ -196,16 +192,62 @@ final class OrderExportService implements HasHooks
 
         echo "\xEF\xBB\xBF"; // BOM.
 
+        $this->writeCsv($output, $fields, $statuses, $dateFrom, $dateTo);
+
+        exit;
+    }
+
+    /**
+     * Write the export to an open stream, one page of orders at a time.
+     *
+     * @param resource      $output
+     * @param array<string> $fields
+     * @param array<string> $statuses
+     */
+    public function writeCsv($output, array $fields, array $statuses, string $dateFrom, string $dateTo): void
+    {
         // Header row.
         $headers = array_map(fn ($f) => $this->getFieldLabel($f), $fields);
         fputcsv($output, $headers, ';');
 
-        foreach ($orders as $order) {
-            $row = array_map(fn ($f) => $this->getFieldValue($order, $f), $fields);
-            fputcsv($output, $row, ';');
+        /**
+         * Number of orders hydrated per query while building the CSV.
+         *
+         * @param int $batchSize
+         */
+        $batchSize = (int) apply_filters('polski/order_export/batch_size', self::EXPORT_BATCH_SIZE);
+
+        if ($batchSize < 1) {
+            $batchSize = self::EXPORT_BATCH_SIZE;
         }
 
-        exit;
+        // The secondary ID sort only breaks ties inside the same second, which
+        // MySQL would otherwise order at random. Rows keep their date DESC
+        // sequence, and paging can no longer repeat or skip one of a tied pair.
+        $page = 1;
+
+        // ponytail: the whole matching range is still exported in one request,
+        // only the hydrated orders are capped. If an export ever outgrows the
+        // request time limit, write the file in the background (Action Scheduler)
+        // and mail or link the result instead.
+        do {
+            $orders = wc_get_orders([
+                'limit' => $batchSize,
+                'page' => $page,
+                'status' => $statuses,
+                'date_created' => $dateFrom . '...' . $dateTo . ' 23:59:59',
+                'orderby' => 'date ID',
+                'order' => 'DESC',
+            ]);
+            $orders = is_array($orders) ? $orders : [];
+
+            foreach ($orders as $order) {
+                $row = array_map(fn ($f) => $this->getFieldValue($order, $f), $fields);
+                fputcsv($output, $row, ';');
+            }
+
+            ++$page;
+        } while (count($orders) === $batchSize);
     }
 
     private function getFieldLabel(string $field): string

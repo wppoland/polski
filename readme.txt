@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.3
+Stable tag: 1.37.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.37.4 =
+* Fixed: the daily double opt-in cleanup and the order CSV export each loaded their whole result set into memory before doing any work. A store with a long backlog of unverified accounts, or an export covering a busy month, could exhaust the memory limit and die halfway. Both now walk the same rows in batches of 200, which is filterable, and the export sorts by order ID within the same second so paging cannot repeat or skip an order.
 
 = 1.37.3 =
 * Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.

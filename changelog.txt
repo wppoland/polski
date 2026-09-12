@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.37.4 =
+* Fixed: the daily double opt-in cleanup and the order CSV export each loaded their whole result set into memory before doing any work. A store with a long backlog of unverified accounts, or an export covering a busy month, could exhaust the memory limit and die halfway. Both now walk the same rows in batches of 200, which is filterable, and the export sorts by order ID within the same second so paging cannot repeat or skip an order.
+
 = 1.37.3 =
 * Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.
 

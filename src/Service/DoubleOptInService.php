@@ -16,6 +16,11 @@ use Polski\Contract\HasHooks;
  */
 final class DoubleOptInService implements Bootable, HasHooks
 {
+    /**
+     * How many unactivated accounts the cleanup cron loads per query.
+     */
+    private const CLEANUP_BATCH_SIZE = 200;
+
     private bool $enabled = false;
     private int $cleanupDays = 7;
     /**
@@ -155,32 +160,65 @@ final class DoubleOptInService implements Bootable, HasHooks
     {
         $cutoff = time() - ($this->cleanupDays * DAY_IN_SECONDS);
 
-        $users = get_users([
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for cleanup cron: find unactivated accounts older than cutoff.
-            'meta_query' => [
-                'relation' => 'AND',
-                [
-                    'key' => '_polski_doi_activated',
-                    'value' => 'no',
-                ],
-                [
-                    'key' => '_polski_doi_created',
-                    'value' => $cutoff,
-                    'compare' => '<',
-                    'type' => 'NUMERIC',
-                ],
-            ],
-            'fields' => 'ids',
-        ]);
+        /**
+         * Number of unactivated accounts examined per query.
+         *
+         * @param int $batchSize
+         */
+        $batchSize = (int) apply_filters('polski/doi/cleanup_batch_size', self::CLEANUP_BATCH_SIZE);
 
-        foreach ($users as $userId) {
-            // Only delete if user has no orders.
-            $orderCount = wc_get_customer_order_count((int) $userId);
-
-            if ($orderCount === 0) {
-                require_once ABSPATH . 'wp-admin/includes/user.php';
-                wp_delete_user((int) $userId);
-            }
+        if ($batchSize < 1) {
+            $batchSize = self::CLEANUP_BATCH_SIZE;
         }
+
+        // Accounts we keep stay in the result set, so the offset only advances
+        // past those. Deleted accounts drop out of the meta query together with
+        // their meta, which is why a plain page counter would skip rows here.
+        $offset = 0;
+
+        // ponytail: one cron run still walks the whole backlog, just in slices.
+        // If a store ever has more stale accounts than a single cron run can
+        // chew through, move this loop to Action Scheduler and handle one batch
+        // per scheduled action.
+        do {
+            $users = get_users([
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for cleanup cron: find unactivated accounts older than cutoff.
+                'meta_query' => [
+                    'relation' => 'AND',
+                    [
+                        'key' => '_polski_doi_activated',
+                        'value' => 'no',
+                    ],
+                    [
+                        'key' => '_polski_doi_created',
+                        'value' => $cutoff,
+                        'compare' => '<',
+                        'type' => 'NUMERIC',
+                    ],
+                ],
+                'fields' => 'ids',
+                'number' => $batchSize,
+                'offset' => $offset,
+            ]);
+
+            $users = is_array($users) ? $users : [];
+
+            foreach ($users as $userId) {
+                // Only delete if user has no orders.
+                $orderCount = wc_get_customer_order_count((int) $userId);
+
+                if ($orderCount === 0) {
+                    if (! function_exists('wp_delete_user')) {
+                        require_once ABSPATH . 'wp-admin/includes/user.php';
+                    }
+
+                    wp_delete_user((int) $userId);
+
+                    continue;
+                }
+
+                ++$offset;
+            }
+        } while (count($users) === $batchSize);
     }
 }
