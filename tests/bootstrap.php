@@ -644,6 +644,17 @@ if (! function_exists('apply_filters')) {
     }
 }
 
+if (! function_exists('has_filter')) {
+    /**
+     * Nothing hooks anything in a unit test, and add_filter() above is a no-op,
+     * so the honest answer is always no.
+     */
+    function has_filter(string $hookName = '', mixed $callback = false): bool
+    {
+        return false;
+    }
+}
+
 if (! function_exists('get_queried_object')) {
     function get_queried_object(): mixed
     {
