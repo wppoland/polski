@@ -306,16 +306,15 @@ final class StockExportService implements HasHooks
             fputcsv($output, $row, ';');
         }
 
-        $size = (int) ftell($output);
         $filename = 'stock_export_' . wp_date('Y-m-d') . '.csv';
 
+        // No Content-Length: see the note in OrderExportService::handleExport().
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Length: ' . (string) ($size + 3));
         header('Pragma: no-cache');
         header('Expires: 0');
 
-        echo "\xEF\xBB\xBF"; // BOM for Excel, three bytes, counted above.
+        echo "\xEF\xBB\xBF"; // BOM for Excel.
 
         rewind($output);
         fpassthru($output);

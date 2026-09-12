@@ -193,15 +193,22 @@ final class OrderExportService implements HasHooks
 
         $this->writeCsv($output, $fields, $this->collectOrderIds($statuses, $dateFrom, $dateTo));
 
-        $size = (int) ftell($output);
         $filename = 'orders_' . $dateFrom . '_' . $dateTo . '.csv';
 
+        // No Content-Length. The size of the file is not the size of the
+        // response. If anything already wrote into an output buffer that is
+        // still open - a notice, another plugin - those bytes go out in front
+        // of the CSV, and the browser stops reading at the length this header
+        // promised, which cuts the same number of bytes off the end of the
+        // file. Measured on PHP 8.4: a 383-byte CSV behind a 67-byte notice
+        // arrives as 383 bytes ending mid-row. Without the header the whole
+        // response arrives. WooCommerce's own CSV exporter sends no length
+        // either, and neither did 1.37.3. It bought a progress bar.
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Length: ' . (string) ($size + 3));
         header('Pragma: no-cache');
 
-        echo "\xEF\xBB\xBF"; // BOM, three bytes, counted above.
+        echo "\xEF\xBB\xBF"; // BOM.
 
         rewind($output);
         fpassthru($output);
