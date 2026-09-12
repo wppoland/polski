@@ -162,7 +162,10 @@ final class StockExportService implements HasHooks
      * The first query reads IDs only, which fixes what the run covers and keeps
      * the catalogue out of memory; each batch is then hydrated by ID, so a
      * product saved or trashed while the export runs cannot move a row. A
-     * product that disappears between the two is skipped, nothing else shifts.
+     * product that is deleted, trashed or unpublished before its batch is
+     * hydrated has no row, and nothing else shifts. Its place is what is fixed,
+     * not its contents: a row is written from the values the product has when
+     * its own batch is read, so an edit that lands before that is in the file.
      *
      * @return \Generator<int, \WC_Product>
      */
@@ -249,9 +252,16 @@ final class StockExportService implements HasHooks
      */
     private function hydrate(array $ids): array
     {
+        // 'include' is the product query's own name for post__in, and the only
+        // one that reaches the database. WC_Product_Data_Store_CPT::get_wp_query_args()
+        // copies 'include' over 'post__in' before WP_Query sees either, and
+        // 'include' defaults to an empty array, so a 'post__in' passed here is
+        // overwritten with nothing and then dropped. The query would honour only
+        // the limit and hand back that many of the newest products instead of
+        // this batch.
         $products = wc_get_products([
             'limit' => count($ids),
-            'post__in' => $ids,
+            'include' => $ids,
             'status' => 'publish',
         ]);
 

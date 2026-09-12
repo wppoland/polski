@@ -7,6 +7,7 @@ namespace Polski\Tests\Unit\Service;
 use PHPUnit\Framework\TestCase;
 use Polski\Service\DoubleOptInService;
 use Polski\Service\OrderExportService;
+use Polski\Service\StockExportService;
 
 /**
  * Pin the two queries that used to load their whole result set, and the paging
@@ -31,6 +32,47 @@ final class UnboundedQueryBatchingTest extends TestCase
         $GLOBALS['polski_test_customer_order_counts'] = [];
         $GLOBALS['polski_test_deleted_users'] = [];
         $GLOBALS['polski_test_undeletable_users'] = [];
+        $GLOBALS['polski_test_products'] = [];
+        $GLOBALS['polski_test_product_queries'] = [];
+    }
+
+    /**
+     * Seed more products than one batch holds, newest first, with names that
+     * sort the other way round. A hydration that does not really ask by ID gets
+     * the newest products back, which these names make impossible to miss.
+     */
+    private function seedProducts(int $count): void
+    {
+        $products = [];
+
+        for ($id = $count; $id >= 1; --$id) {
+            $products[] = new FakeStockProduct($id, sprintf('P%04d', $id), $id);
+        }
+
+        $GLOBALS['polski_test_products'] = $products;
+    }
+
+    /**
+     * @return list<int>
+     */
+    private function stockExportIds(bool $managedOnly = false, string $stockCompare = '', int $stockValue = 0): array
+    {
+        // eachProduct() is the whole export minus the headers and the file, and
+        // it is private on purpose: the test reaches it rather than the service
+        // growing a public method for the test's benefit.
+        $method = new \ReflectionMethod(StockExportService::class, 'eachProduct');
+        $method->setAccessible(true);
+
+        $ids = [];
+
+        /** @var iterable<\WC_Product> $products */
+        $products = $method->invoke(new StockExportService(), $managedOnly, false, $stockCompare, $stockValue);
+
+        foreach ($products as $product) {
+            $ids[] = (int) $product->get_id();
+        }
+
+        return $ids;
     }
 
     /**
@@ -191,6 +233,77 @@ final class UnboundedQueryBatchingTest extends TestCase
 
         self::assertSame(range(201, 400), $GLOBALS['polski_test_deleted_users']);
         self::assertLessThanOrEqual(5, count($GLOBALS['polski_test_user_queries']));
+    }
+
+    public function testStockExportHydratesTheBatchItAskedForNotTheNewestProducts(): void
+    {
+        // 450 products, so the run needs three batches of 200. One batch cannot
+        // show the difference: a hydration that asks by an argument the product
+        // query drops still returns the right rows while everything fits in one.
+        $this->seedProducts(450);
+
+        $written = $this->stockExportIds();
+
+        self::assertSame(range(1, 450), $written, 'Every batch must be hydrated from its own IDs, in title order.');
+        self::assertSame(count($written), count(array_unique($written)), 'No product may appear twice.');
+
+        $queries = $GLOBALS['polski_test_product_queries'];
+        $idQuery = array_shift($queries);
+
+        self::assertSame('ids', $idQuery['return'] ?? '', 'The first query must ask for IDs, not hydrated products.');
+        self::assertCount(3, $queries, 'A catalogue of 450 is three batches of 200.');
+
+        foreach ($queries as $args) {
+            self::assertArrayHasKey('include', $args, "A batch must be hydrated with 'include'.");
+            self::assertArrayNotHasKey(
+                'post__in',
+                $args,
+                "'post__in' is not a product query var: WooCommerce overwrites it with the empty 'include' default and drops it.",
+            );
+            self::assertLessThanOrEqual(200, count($args['include']), 'A batch must stay bounded.');
+        }
+    }
+
+    public function testStockExportFiltersOnTheStockOfTheProductsItAskedFor(): void
+    {
+        // Stock equals the ID, so the rows that pass "10 or fewer" all sit in
+        // the first batch. Hydrating the newest 200 instead would hand the
+        // filter products 450 down to 251 three times over and write no row.
+        $this->seedProducts(450);
+
+        self::assertSame(range(1, 10), $this->stockExportIds(false, 'lte', 10));
+    }
+}
+
+final class FakeStockProduct extends \WC_Product
+{
+    public function __construct(private int $id, private string $name, private int $stock)
+    {
+    }
+
+    public function get_id(): int
+    {
+        return $this->id;
+    }
+
+    public function get_name(): string
+    {
+        return $this->name;
+    }
+
+    public function managing_stock(): bool
+    {
+        return true;
+    }
+
+    public function get_stock_quantity(): int
+    {
+        return $this->stock;
+    }
+
+    public function is_type(string|array $type): bool
+    {
+        return false;
     }
 }
 

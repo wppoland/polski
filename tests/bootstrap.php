@@ -431,6 +431,60 @@ if (! function_exists('wc_get_orders')) {
     }
 }
 
+if (! function_exists('wc_get_products')) {
+    /**
+     * Models the part of wc_get_products() that decides WHICH products come
+     * back, including the trap that hid a defect through a whole release:
+     * WC_Product_Data_Store_CPT::get_wp_query_args() copies the 'include' query
+     * var over 'post__in' before WP_Query sees either, and 'include' defaults to
+     * an empty array. A caller that asks by 'post__in' therefore has its list
+     * replaced with nothing, and is handed the first `limit` products of the
+     * whole set instead. This stub does the same, so a hydration that goes back
+     * to 'post__in' hands the test the wrong products rather than passing.
+     *
+     * $GLOBALS['polski_test_products'] holds the set in the order the query
+     * returns it with no orderby (newest first).
+     * Supported args: include, limit, return, orderby ('title'), order.
+     */
+    function wc_get_products(array $args = []): array
+    {
+        $GLOBALS['polski_test_product_queries'][] = $args;
+
+        $products = array_values($GLOBALS['polski_test_products'] ?? []);
+
+        // 'include' is honoured; 'post__in' is not a product query var and never
+        // reaches the database.
+        $include = array_map('intval', (array) ($args['include'] ?? []));
+
+        if ($include !== []) {
+            $products = array_values(array_filter(
+                $products,
+                static fn ($product): bool => in_array((int) $product->get_id(), $include, true),
+            ));
+        }
+
+        if (($args['orderby'] ?? '') === 'title') {
+            usort($products, static fn ($a, $b): int => strcmp((string) $a->get_name(), (string) $b->get_name()));
+
+            if (strtoupper((string) ($args['order'] ?? 'ASC')) === 'DESC') {
+                $products = array_reverse($products);
+            }
+        }
+
+        $limit = (int) ($args['limit'] ?? -1);
+
+        if ($limit >= 1) {
+            $products = array_slice($products, 0, $limit);
+        }
+
+        if (($args['return'] ?? 'objects') === 'ids') {
+            $products = array_map(static fn ($product): int => (int) $product->get_id(), $products);
+        }
+
+        return $products;
+    }
+}
+
 if (! function_exists('get_users')) {
     /**
      * Slices $GLOBALS['polski_test_users'] the way WP_User_Query would, so a
