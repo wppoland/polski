@@ -24,12 +24,17 @@
  * exactly the shape the defect had. So the unit is the enclosing function: if a
  * function queries products, no 'post__in' string may appear in it. Both
  * wc_get_products() and a WC_Product_Query built by hand count as querying
- * products.
+ * products, written plain or with a leading backslash.
  *
  * The source is tokenised rather than grepped, so a 'post__in' inside a comment
  * is not a finding and the word wc_get_products inside a comment or a string is
  * not a call. hydrate() in StockExportService explains 'post__in' in a comment
  * directly above its query, and that function has to stay clean.
+ *
+ * What it does not see: a query reached through a variable function name, a
+ * callable string, call_user_func(), or a wrapper of our own that the calling
+ * function does not name. The args also have to be in the same function as the
+ * call; one built two frames up and passed down is invisible.
  *
  * The cost is a false positive on a function that queries products and, for a
  * different query, legitimately passes 'post__in' to WP_Query or to
@@ -146,13 +151,28 @@ foreach ($files as $file) {
     }
 
     foreach ($tokens as $i => $token) {
-        if (! is_array($token) || $token[0] !== T_STRING) {
+        if (! is_array($token)) {
             continue;
         }
 
+        // PHP 8 hands back a name with its namespace already attached, as a
+        // single token: wc_get_products is T_STRING, \wc_get_products is
+        // T_NAME_FULLY_QUALIFIED and Woo\wc_get_products is T_NAME_QUALIFIED.
+        // Matching T_STRING alone misses every call written with a leading
+        // backslash, which is the ordinary way to reach a global function or
+        // class from a namespaced file, and every file in src/ is namespaced.
+        // Only the last segment names the function or the class, so compare on
+        // that. A name under somebody else's namespace that happens to end in
+        // wc_get_products would be a false positive; none exists in src/ today,
+        // and the answer to one is to compare the whole name here instead.
+        if (! in_array($token[0], [T_STRING, T_NAME_FULLY_QUALIFIED, T_NAME_QUALIFIED], true)) {
+            continue;
+        }
+
+        $name = substr((string) strrchr('\\' . $token[1], '\\'), 1);
         $isQuery = false;
 
-        if ($token[1] === 'wc_get_products') {
+        if ($name === 'wc_get_products') {
             $before = $previous($i);
             $after = $next($i);
             $beforeId = $before !== null && is_array($tokens[$before]) ? $tokens[$before][0] : null;
@@ -161,12 +181,8 @@ foreach ($files as $file) {
             $isQuery = $after !== null
                 && $text($after) === '('
                 && ! in_array($beforeId, [T_OBJECT_OPERATOR, T_NULLSAFE_OBJECT_OPERATOR, T_DOUBLE_COLON, T_FUNCTION], true);
-        } elseif ($token[1] === 'WC_Product_Query') {
+        } elseif ($name === 'WC_Product_Query') {
             $before = $previous($i);
-
-            if ($before !== null && is_array($tokens[$before]) && $tokens[$before][0] === T_NS_SEPARATOR) {
-                $before = $previous($before);
-            }
 
             $isQuery = $before !== null && is_array($tokens[$before]) && $tokens[$before][0] === T_NEW;
         }

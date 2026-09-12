@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.7
+Stable tag: 1.37.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -357,14 +357,14 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
-= 1.37.7 =
+= 1.37.8 =
 * Fixed: the order CSV export held every matching order in memory before writing a row, the stock CSV export held every product, and the daily double opt-in cleanup asked for every unverified account in one query. A store with a real backlog could exhaust the memory limit halfway through. Both exports now read their IDs in one query and hydrate 200 rows at a time, and the cleanup walks 200 accounts per query; the order export batch size is filterable via `polski/order_export/batch_size`, the cleanup batch via `polski/doi/cleanup_batch_size`.
 * Fixed: an export could repeat or lose a row. The list of IDs is fixed before the first row is written, so an order or product placed, saved or trashed while the export runs can no longer push a row into the file twice or out of it. A row whose order or product is gone by the time its batch is read is simply missing, and no other row moves. The values are read with the batch, not held from the snapshot, so an edit that lands before a row is read is in the file. An order keeps its row through a status change. A product does not: the stock export asks for published products, so one moved to draft after the snapshot has no row, the same as one that was trashed.
 * Fixed: both CSV exports sent their download headers before doing any work, so a fatal, an exhausted memory limit or a hit time limit reached the browser as HTTP 200 with a short file attached, which looks like a complete export. Each file is now built to a temporary file first, so a failure produces a visible error page again.
 * Fixed: the double opt-in cleanup advanced its position only past accounts it kept. If WordPress refused to delete an account, the loop re-read and re-attempted the same batch instead of finishing. Accounts it does not remove are now excluded from the next query, so every pass makes progress.
 * Changed: the expert review editor picks a product with WooCommerce's own search field instead of a dropdown that held every published product.
 * Changed: the stock export preview reports how many rows it is showing instead of the size of the whole catalogue, which is what made it load the catalogue.
-* Note: 1.37.4, 1.37.5 and 1.37.6 were never released, so this is the first release after 1.37.3. 1.37.4 claimed a secondary sort made paging safe; it does not, paging over a table the store is still writing to repeats and skips rows whatever the sort is. 1.37.5 replaced the paging with hydration by ID, but asked the product query for `post__in`, which it does not accept: it overwrites that argument with its own empty `include` default and drops it, leaving the limit to hand back the newest products instead. On a catalogue of 450 products that export wrote 200 rows and lost 250. Products are now hydrated by `include`, two unit tests walk the export over a catalogue larger than one batch, and both of them run in the release preflight, next to a check that fails when a function anywhere in the source queries products and mentions `post__in`.
+* Note: 1.37.4 through 1.37.7 were never released, so this is the first release after 1.37.3. 1.37.4 claimed a secondary sort made paging safe; it does not, paging over a table the store is still writing to repeats and skips rows whatever the sort is. 1.37.5 replaced the paging with hydration by ID, but asked the product query for `post__in`, which it does not accept: it overwrites that argument with its own empty `include` default and drops it, leaving the limit to hand back the newest products instead. On a catalogue of 450 products that export wrote 200 rows and lost 250. Products are now hydrated by `include`, two unit tests walk the export over a catalogue larger than one batch, and both of them run in the release preflight, next to a check that fails when a function in the source both queries products and mentions `post__in`. That check reads the source as PHP tokens, so it sees a call to `wc_get_products()` and a `new WC_Product_Query`, each written plain or with a leading backslash; it does not see a query reached through a variable function name, a callable string or a wrapper of our own, and it does not see arguments assembled in a different function than the call.
 
 = 1.37.3 =
 * Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.
