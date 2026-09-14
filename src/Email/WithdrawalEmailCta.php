@@ -36,6 +36,15 @@ final class WithdrawalEmailCta implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a service that belongs
+        // to one module has to refuse to register its own hooks. Without this
+        // the withdrawal CTA kept appearing in customer order emails, the
+        // order-edit meta box kept rendering and the custom order statuses
+        // stayed registered, all with the module switched off.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         // Fires inside every WC email after the order item table; we filter
         // to customer-facing IDs in the callback so admin-new-order is not
         // polluted with a customer-facing CTA.

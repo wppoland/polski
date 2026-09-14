@@ -37,6 +37,12 @@ final class DigitalConsentService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_filter('polski/withdrawal/eligible', [$this, 'filterEligibility'], 20, 2);
 
         // Modern WooCommerce: a single Additional Checkout Field renders and

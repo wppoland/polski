@@ -39,6 +39,12 @@ final class GuestWithdrawalService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('init', [$this, 'maybeHandleLookupRequest']);
         add_shortcode('polski_withdrawal_lookup', [$this, 'renderLookupShortcode']);
     }

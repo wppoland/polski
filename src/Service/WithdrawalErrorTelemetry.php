@@ -45,6 +45,12 @@ final class WithdrawalErrorTelemetry implements HasHooks
 {
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('polski/withdrawal/mail_failed', [$this, 'reportMailFailure'], 10, 3);
         add_action('polski/withdrawal/persist_failed', [$this, 'reportPersistFailure'], 10, 2);
     }

@@ -37,6 +37,12 @@ final class WithdrawalAnalyticsService implements HasHooks
 {
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('polski/withdrawal/requested', [$this, 'onRequested'], 30, 1);
         add_action('polski/withdrawal/guest_requested', [$this, 'onGuestRequested'], 30, 3);
         add_action('polski/withdrawal/manual_registered', [$this, 'onManualRegistered'], 30, 3);

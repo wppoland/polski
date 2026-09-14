@@ -36,6 +36,12 @@ final class WithdrawalOrderStatusService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('init', [$this, 'registerStatuses']);
         add_filter('wc_order_statuses', [$this, 'addToStatusList']);
         add_filter('woocommerce_order_is_paid_statuses', [$this, 'treatAsPaid']);

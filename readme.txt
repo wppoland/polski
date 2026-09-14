@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.8
+Stable tag: 1.37.9
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.37.9 =
+* Fixed: turning the "Right of withdrawal (14 days)" module off left most of it running. The withdrawal call to action kept appearing in customer order emails, the "Polski withdrawal" box kept rendering on the order edit screen, the plugin's own withdrawal order statuses stayed registered, and the per-product withdrawal exemption field stayed on the product editor. Eighteen services belonging to the module now refuse to register their hooks while it is off. This matters to any shop using the WooCommerce 11.1 native Order Withdrawal feature, which until now ran alongside ours. Reported by strid3rr on the support forum.
+* Note: the privacy exporter and eraser for withdrawal data deliberately keep running with the module off, so a GDPR request still reaches data the shop already collected.
 
 = 1.37.8 =
 * Fixed: the order CSV export held every matching order in memory before writing a row, the stock CSV export held every product, and the daily double opt-in cleanup asked for every unverified account in one query. A store with a real backlog could exhaust the memory limit halfway through. Both exports now read their IDs in one query and hydrate 200 rows at a time, and the cleanup walks 200 accounts per query; the order export batch size is filterable via `polski/order_export/batch_size`, the cleanup batch via `polski/doi/cleanup_batch_size`.

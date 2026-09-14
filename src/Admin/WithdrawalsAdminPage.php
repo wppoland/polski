@@ -32,6 +32,12 @@ final class WithdrawalsAdminPage implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('admin_menu', [$this, 'registerMenu'], 65);
         add_action('admin_post_polski_register_manual_withdrawal', [$this, 'handleManualSubmission']);
         add_action('admin_post_polski_withdrawal_bulk', [$this, 'handleBulkAction']);

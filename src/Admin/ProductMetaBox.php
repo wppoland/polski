@@ -139,15 +139,19 @@ final class ProductMetaBox implements HasHooks
         echo '</div>';
 
         // --- Withdrawal Section ---
-        echo '<div class="options_group">';
+        // Only when the module owning it is on. A per-product exemption from a
+        // rule the shop is not applying is a field nothing reads.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            echo '<div class="options_group">';
 
-        woocommerce_wp_checkbox([
-            'id' => '_polski_withdrawal_exempt',
-            'label' => __('Right of withdrawal exemption', 'polski'),
-            'description' => __('This product is exempt from the 14-day right of withdrawal (e.g. digital content, perishable goods).', 'polski'),
-        ]);
+            woocommerce_wp_checkbox([
+                'id' => '_polski_withdrawal_exempt',
+                'label' => __('Right of withdrawal exemption', 'polski'),
+                'description' => __('This product is exempt from the 14-day right of withdrawal (e.g. digital content, perishable goods).', 'polski'),
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Invoicing Section ---
         // The key is spelled out rather than taken from Gtu::META so the release

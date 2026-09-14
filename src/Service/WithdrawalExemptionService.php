@@ -32,6 +32,12 @@ final class WithdrawalExemptionService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         // Category screens.
         add_action('product_cat_add_form_fields', [$this, 'renderAddTermFields']);
         add_action('product_cat_edit_form_fields', [$this, 'renderEditTermFields']);

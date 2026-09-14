@@ -23,6 +23,12 @@ final class AnnexGeneratorService implements HasHooks
 {
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_shortcode('polski_withdrawal_info', [$this, 'renderInfoShortcode']);
         add_shortcode('polski_withdrawal_form_template', [$this, 'renderFormShortcode']);
     }

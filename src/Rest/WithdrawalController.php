@@ -23,6 +23,12 @@ final class WithdrawalController extends RestController implements HasHooks
 {
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('rest_api_init', [$this, 'register_routes']);
     }
 

@@ -30,6 +30,12 @@ final class WithdrawalOrderMetaBox implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('add_meta_boxes', [$this, 'register']);
         add_action('admin_post_polski_withdrawal_order_action', [$this, 'handleAction']);
     }

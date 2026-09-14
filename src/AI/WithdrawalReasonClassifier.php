@@ -54,6 +54,12 @@ final class WithdrawalReasonClassifier implements HasHooks
 
     public function registerHooks(): void
     {
+        // Polski boots every service unconditionally, so a module's service has
+        // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return;
+        }
+
         add_action('polski/withdrawal/requested', [$this, 'classify'], 50, 1);
         add_action('polski/withdrawal/guest_requested', [$this, 'classify'], 50, 1);
         add_action('polski/withdrawal/manual_registered', [$this, 'classify'], 50, 1);
