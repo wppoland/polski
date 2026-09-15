@@ -71,11 +71,15 @@ npx wp-env start >/dev/null 2>&1 || true
 npx wp-env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
 npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
 
-# 1.37.9 shipped two NIP inputs on My Account > Addresses: the classic billing
-# field and the additional-fields copy WooCommerce renders there itself. Nothing
-# static could see it, the duplicate only exists once both are applied.
-echo "==> 15/17  no field renders twice on the edit-address form"
-npx wp-env run cli wp option patch insert polski_modules nip_lookup 1 >/dev/null
+# Two halves of one misunderstanding, both invisible to static analysis.
+# 1.37.9 shipped two NIP inputs on My Account > Addresses (the classic billing
+# field plus the additional-fields copy WooCommerce renders there itself), and
+# three services dropped their CLASSIC registration whenever the additional-
+# fields API existed, which emptied the shortcode checkout from WC 8.6 on.
+echo "==> 15/17  address form has no duplicates, classic checkout keeps its fields"
+for module in nip_lookup b2b_checkout custom_checkout_fields withdrawal; do
+  npx wp-env run cli wp option patch insert polski_modules "${module}" 1 >/dev/null
+done
 npx wp-env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/address-fields-no-duplicates-check.php
 
 echo "==> 16/17  WordPress Plugin Check"

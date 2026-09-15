@@ -47,9 +47,6 @@ final class NipLookupService implements HasHooks
             add_action('woocommerce_store_api_checkout_order_processed', [$this, 'saveBlockNipToOrder']);
         }
 
-        // My Account > Addresses is the one screen both registrations reach.
-        add_filter('woocommerce_address_to_edit', [$this, 'removeDuplicateNipFieldFromAddressForm'], 20, 2);
-
         // Validate NIP on checkout.
         add_action('woocommerce_checkout_process', [$this, 'validateNipOnCheckout']);
 
@@ -121,37 +118,6 @@ final class NipLookupService implements HasHooks
         return $fields;
     }
 
-    /**
-     * Drop the additional-fields copy of NIP from the edit-address form.
-     *
-     * Both registrations are needed: `woocommerce_billing_fields` is the only
-     * one the classic checkout renders, the additional-fields API is the only
-     * one the block checkout renders. WooCommerce has no "block checkout only"
-     * option for an `address` field, and it renders those on My Account >
-     * Addresses too (CheckoutFieldsFrontend, filter `woocommerce_address_to_edit`),
-     * so that form, and only that form, showed the field twice. The classic one
-     * stays: it is the field the GUS lookup binds to and the one the rest of the
-     * plugin reads.
-     *
-     * @param array<string, array<string, mixed>>|mixed $address
-     * @return array<string, array<string, mixed>>|mixed
-     */
-    public function removeDuplicateNipFieldFromAddressForm(mixed $address, mixed $addressType = 'billing'): mixed
-    {
-        if (! is_array($address) || $addressType !== 'billing' || ! isset($address['billing_nip'])) {
-            return $address;
-        }
-
-        foreach (array_keys($address) as $key) {
-            // The group prefix is WooCommerce's to choose (`_wc_billing/` today),
-            // so match on the field id we registered, not on the whole key.
-            if (is_string($key) && str_ends_with($key, '/polski/nip')) {
-                unset($address[$key]);
-            }
-        }
-
-        return $address;
-    }
 
     /**
      * Validate NIP checksum during checkout.

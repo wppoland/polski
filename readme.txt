@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.10
+Stable tag: 1.37.11
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.37.11 =
+* Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
+* Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
 
 = 1.37.10 =
 * Fixed: with the "NIP - Verification and Autocomplete" module on, My Account > Addresses > Billing address showed two NIP fields: the plugin's own one above "Country / region" and a second, inert one below the email field. The second came from the WooCommerce additional-checkout-fields copy of the field, which WooCommerce also renders on that form. Both registrations are still needed (the classic checkout renders only the first, the block checkout only the second), so the duplicate is now dropped from the edit-address form only. Reported by strid3rr on the support forum.

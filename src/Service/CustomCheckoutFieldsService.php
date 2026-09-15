@@ -49,24 +49,28 @@ final class CustomCheckoutFieldsService implements HasHooks
             return;
         }
 
+        // Both paths, always. The additional-fields API covers the block
+        // checkout; WooCommerce never renders those fields on the shortcode
+        // checkout, so registering only the API path (which is what this did
+        // from WC 8.6 on) left classic shops with no custom fields at all, and
+        // nothing to validate or save. The classic hooks below read $_POST, so
+        // they are inert during a Store API checkout.
+        //
+        // Block-saved values are mirrored to the legacy `_<name>` meta so the
+        // existing admin/email/account display keeps working.
+        // NOTE: conditional visibility (shipping/payment/category/field/
+        // cart-min) is honoured on classic checkout only; on block checkout
+        // these fields always show. Documented on the settings page.
         if (self::hasAdditionalFieldsApi()) {
-            // Modern WooCommerce: register the custom fields via the Additional
-            // Checkout Fields API so they render + validate + save on BOTH classic
-            // and block checkout. Registered at init priority 22 (after
-            // CheckboxService::initCheckboxes at 20 and the legal-checkbox fields
-            // at 21). Block-saved values are mirrored to the legacy `_<name>` meta
-            // so the existing admin/email/account display keeps working.
-            // NOTE: conditional visibility (shipping/payment/category/field/
-            // cart-min) is honoured on classic checkout only; on block checkout
-            // these fields always show. Documented on the settings page.
+            // init priority 22, after CheckboxService::initCheckboxes at 20 and
+            // the legal-checkbox fields at 21.
             add_action('init', [$this, 'registerBlockCheckoutFields'], 22);
             add_action('woocommerce_set_additional_field_value', [$this, 'mirrorCustomFieldToLegacyMeta'], 10, 4);
-        } else {
-            // Legacy classic-only checkout.
-            add_filter('woocommerce_checkout_fields', [$this, 'modifyCheckoutFields'], 20);
-            add_action('woocommerce_checkout_process', [$this, 'validateFields']);
-            add_action('woocommerce_checkout_update_order_meta', [$this, 'saveFieldsToOrder']);
         }
+
+        add_filter('woocommerce_checkout_fields', [$this, 'modifyCheckoutFields'], 20);
+        add_action('woocommerce_checkout_process', [$this, 'validateFields']);
+        add_action('woocommerce_checkout_update_order_meta', [$this, 'saveFieldsToOrder']);
 
         // Display in admin order.
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'displayInAdmin']);
