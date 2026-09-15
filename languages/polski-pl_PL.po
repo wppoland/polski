@@ -11,6 +11,10 @@ msgstr ""
 "X-Generator: GlotPress/4.0.3\n"
 
 #. Plugin Name of the plugin
+#: src/Service/OmnibusService.php
+msgid "Lowest price"
+msgstr "Najniższa cena"
+
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
 msgid "Polski for WooCommerce"
 msgstr "Polski dla WooCommerce"
