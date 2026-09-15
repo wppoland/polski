@@ -18,34 +18,34 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-echo "==> 1/16  boot timing and duplicated admin_post handlers"
+echo "==> 1/17  boot timing and duplicated admin_post handlers"
 php tests/boot-timing-check.php
 
-echo "==> 2/16  every settings key has a reader"
+echo "==> 2/17  every settings key has a reader"
 php tests/settings-are-read-check.php
 
-echo "==> 3/16  every module id has a card that can switch it on"
+echo "==> 3/17  every module id has a card that can switch it on"
 php tests/module-ids-are-reachable-check.php
 
-echo "==> 4/16  readme.txt Changelog under the wp.org truncation limit"
+echo "==> 4/17  readme.txt Changelog under the wp.org truncation limit"
 php tests/readme-changelog-length-check.php
 
-echo "==> 5/16  product meta fields are rendered and saved"
+echo "==> 5/17  product meta fields are rendered and saved"
 php tests/product-meta-render-save-check.php
 
-echo "==> 6/16  public (nopriv) handlers are guarded by their module"
+echo "==> 6/17  public (nopriv) handlers are guarded by their module"
 php tests/nopriv-handlers-are-guarded-check.php
 
-echo "==> 7/16  taxonomies follow their module toggles"
+echo "==> 7/17  taxonomies follow their module toggles"
 php tests/taxonomies-follow-module-toggles-check.php
 
-echo "==> 8/16  withdrawal lookup texts are translatable"
+echo "==> 8/17  withdrawal lookup texts are translatable"
 php tests/withdrawal-lookup-texts-check.php
 
-echo "==> 9/16  structured data: salt is converted, no private keys leak"
+echo "==> 9/17  structured data: salt is converted, no private keys leak"
 php tests/schema-structured-data-check.php
 
-echo "==> 10/16  products are queried by 'include', never by 'post__in'"
+echo "==> 10/17  products are queried by 'include', never by 'post__in'"
 php tests/product-query-args-check.php
 
 # The two stock-export tests in this class are what actually caught the 1.37.5
@@ -54,26 +54,34 @@ php tests/product-query-args-check.php
 # file runs, not the suite: three OmnibusBatchLoaderTest failures predate this
 # gate (they are red at 6af29ca, before any of it was written), and a step that
 # is known red is a step nobody reads.
-echo "==> 11/16  unit tests for the batched exports and the opt-in cleanup"
+echo "==> 11/17  unit tests for the batched exports and the cart label split"
 vendor/bin/phpunit tests/Unit/Service/UnboundedQueryBatchingTest.php
+vendor/bin/phpunit tests/Unit/Service/OmnibusServiceTest.php
 
-echo "==> 12/16  phpcs"
+echo "==> 12/17  phpcs"
 vendor/bin/phpcs
 
-echo "==> 13/16  phpstan (memory 2G)"
+echo "==> 13/17  phpstan (memory 2G)"
 php -d memory_limit=2G vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
 
-echo "==> 14/16  runtime fatal smoke (wp-env)"
+echo "==> 14/17  runtime fatal smoke (wp-env)"
 npx wp-env start >/dev/null 2>&1 || true
 # PRO would gate the admin behind a Freemius license screen; the smoke exercises
 # the FREE plugin's code directly, so deactivate PRO for a deterministic run.
 npx wp-env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
 npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
 
-echo "==> 15/16  WordPress Plugin Check"
+# 1.37.9 shipped two NIP inputs on My Account > Addresses: the classic billing
+# field and the additional-fields copy WooCommerce renders there itself. Nothing
+# static could see it, the duplicate only exists once both are applied.
+echo "==> 15/17  no field renders twice on the edit-address form"
+npx wp-env run cli wp option patch insert polski_modules nip_lookup 1 >/dev/null
+npx wp-env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/address-fields-no-duplicates-check.php
+
+echo "==> 16/17  WordPress Plugin Check"
 bash scripts/plugin-check.sh
 
-echo "==> 16/16  package contents and header/readme agreement"
+echo "==> 17/17  package contents and header/readme agreement"
 bash scripts/prepare-wporg-release.sh /tmp/polski-preflight-package >/dev/null
 bash scripts/assert-package-clean.sh /tmp/polski-preflight-package
 rm -rf /tmp/polski-preflight-package

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.9
+Stable tag: 1.37.10
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.37.10 =
+* Fixed: with the "NIP - Verification and Autocomplete" module on, My Account > Addresses > Billing address showed two NIP fields: the plugin's own one above "Country / region" and a second, inert one below the email field. The second came from the WooCommerce additional-checkout-fields copy of the field, which WooCommerce also renders on that form. Both registrations are still needed (the classic checkout renders only the first, the block checkout only the second), so the duplicate is now dropped from the edit-address form only. Reported by strid3rr on the support forum.
+* Fixed: the lowest-price notice in the cart, mini-cart and order review was prefixed with the technical label "Omnibus:", e.g. "Omnibus: Lowest price in the last 30 days: 20.00". WooCommerce renders cart item data as "label: value" and the whole sentence was being passed as the value. The notice is now split, so the customer sees only "Lowest price in the last 30 days: 20.00". Reported by strid3rr on the support forum.
+* Fixed (PRO): the PRO NIP validator registered a second `billing_nip` billing field on the same filter and priority as the FREE module, overwriting it. The field lost the attribute the GUS autocomplete binds to, and it appeared even with the NIP module switched off. PRO now leaves the checkout field to the FREE module and only adds the editable NIP row on the admin order screen, gated on that module.
 
 = 1.37.9 =
 * Fixed: turning the "Right of withdrawal (14 days)" module off left most of it running. The withdrawal call to action kept appearing in customer order emails, the "Polski withdrawal" box kept rendering on the order edit screen, the plugin's own withdrawal order statuses stayed registered, and the per-product withdrawal exemption field stayed on the product editor. Eighteen services belonging to the module now refuse to register their hooks while it is off. This matters to any shop using the WooCommerce 11.1 native Order Withdrawal feature, which until now ran alongside ours. Reported by strid3rr on the support forum.

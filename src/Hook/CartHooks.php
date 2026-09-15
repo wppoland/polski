@@ -68,16 +68,21 @@ final class CartHooks implements HasHooks
             return $itemData;
         }
 
-        $text = $this->omnibus->getLowestPriceText($productId);
+        // WooCommerce renders item data as "key: display" and adds the colon
+        // itself, in the classic templates and in the block cart alike. Handing
+        // it the finished sentence put a second, technical label in front of it
+        // ("Omnibus: Lowest price in the last 30 days: ..."), so take the two
+        // halves the notice is already made of.
+        $parts = $this->omnibus->getLowestPriceParts($productId);
 
-        if ($text === '') {
+        if ($parts === null) {
             return $itemData;
         }
 
         $itemData[] = [
-            'key' => __('Omnibus', 'polski'),
-            'value' => $text,
-            'display' => $text,
+            'key' => $parts['label'],
+            'value' => $parts['value'],
+            'display' => $parts['value'],
         ];
 
         return $itemData;

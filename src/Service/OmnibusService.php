@@ -298,15 +298,46 @@ final class OmnibusService implements Bootable, HasHooks
      */
     public function getLowestPriceHtml(int $productId): string
     {
+        $notice = $this->buildNotice($productId);
+
+        if ($notice === null) {
+            return '';
+        }
+
+        $html = sprintf(
+            '<div class="polski-omnibus-price"><span class="polski-omnibus-price__text">%s</span></div>',
+            esc_html($notice['text']),
+        );
+
+        /**
+         * Filter the Omnibus price HTML.
+         *
+         * @param string        $html    The HTML output.
+         * @param ?OmnibusPrice $lowest  The lowest price record.
+         * @param \WC_Product   $product The product.
+         */
+        return (string) apply_filters('polski/price/omnibus_html', $html, $notice['lowest'], $notice['product']);
+    }
+
+    /**
+     * Build the notice once, as its parts.
+     *
+     * The cart needs the sentence split in two, everything else needs it whole,
+     * so both come from here rather than from two copies of the same rules.
+     *
+     * @return array{text: string, label: string, value: string, lowest: ?OmnibusPrice, product: \WC_Product}|null
+     */
+    private function buildNotice(int $productId): ?array
+    {
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {
-            return '';
+            return null;
         }
 
         // Only show on sale products if configured.
         if ($this->saleOnly && ! $product->is_on_sale()) {
-            return '';
+            return null;
         }
 
         $lowest = $this->getLowestPrice($productId, $this->referenceCutoff($product));
@@ -315,7 +346,7 @@ final class OmnibusService implements Bootable, HasHooks
             // No recorded history. Saying "the price has not changed" would be a
             // claim we cannot support: a fresh install has no history either.
             if ($this->noHistoryMode === 'hide') {
-                return '';
+                return null;
             }
 
             // Same conversion as the lowest-price path, or a shop entering
@@ -331,35 +362,74 @@ final class OmnibusService implements Bootable, HasHooks
             $currency = $lowest->currency;
         }
 
-        $priceHtml = wc_price($amount, ['currency' => $currency]);
+        $price = wp_strip_all_tags(wc_price($amount, ['currency' => $currency]));
+        $days = (string) $this->days;
 
         $text = Formatter::interpolate($template, [
-            'price' => wp_strip_all_tags($priceHtml),
-            'days' => (string) $this->days,
+            'price' => $price,
+            'days' => $days,
         ]);
 
         // Only worth saying when there is actually a higher price to compare to.
+        $suffix = '';
+
         if ($this->showRegularPrice && $lowest !== null && $lowest->price > $lowest->effectivePrice()) {
-            $text .= ' ' . sprintf(
+            $suffix = ' ' . sprintf(
                 /* translators: %s: the product's regular price before the reduction */
                 __('Regular price: %s', 'polski'),
                 wp_strip_all_tags(wc_price($this->priceForDisplay($product, $lowest->price), ['currency' => $lowest->currency])),
             );
         }
 
-        $html = sprintf(
-            '<div class="polski-omnibus-price"><span class="polski-omnibus-price__text">%s</span></div>',
-            esc_html($text),
-        );
+        $text .= $suffix;
 
-        /**
-         * Filter the Omnibus price HTML.
-         *
-         * @param string        $html    The HTML output.
-         * @param ?OmnibusPrice $lowest  The lowest price record.
-         * @param \WC_Product   $product The product.
-         */
-        return (string) apply_filters('polski/price/omnibus_html', $html, $lowest, $product);
+        $parts = self::splitNotice($template, $price, $days, $suffix, $text);
+
+        return [
+            'text' => $text,
+            'label' => $parts['label'],
+            'value' => $parts['value'],
+            'lowest' => $lowest,
+            'product' => $product,
+        ];
+    }
+
+    /**
+     * Split the notice into the label the cart shows before the colon and the
+     * value after it.
+     *
+     * The template decides where the cut is: whatever stands before {price} is
+     * the label. WooCommerce supplies the colon, so it is trimmed off here.
+     *
+     * @return array{label: string, value: string}
+     */
+    private static function splitNotice(
+        string $template,
+        string $price,
+        string $days,
+        string $suffix,
+        string $text
+    ): array {
+        $label = '';
+        $value = '';
+        $pricePos = strpos($template, '{price}');
+
+        if ($pricePos !== false) {
+            $label = rtrim(trim(Formatter::interpolate(substr($template, 0, $pricePos), ['days' => $days])), ':');
+            $value = trim(Formatter::interpolate(substr($template, $pricePos), [
+                'price' => $price,
+                'days' => $days,
+            ])) . $suffix;
+        }
+
+        if (trim($label) === '' || trim($value) === '') {
+            // ponytail: a custom template without {price}, or one that opens with
+            // it, leaves no label to take. Say the plain thing and keep the
+            // sentence whole; make it smarter only if a shop writes one.
+            return ['label' => __('Lowest price', 'polski'), 'value' => $text];
+        }
+
+        return ['label' => $label, 'value' => $value];
     }
 
     /**
@@ -400,6 +470,39 @@ final class OmnibusService implements Bootable, HasHooks
         // block cart passes item_data through React, which escapes it and shows
         // the entity literally. Decode before either sees it.
         return trim(html_entity_decode(wp_strip_all_tags($html), ENT_QUOTES, 'UTF-8'));
+    }
+
+    /**
+     * The same notice split the way the cart renders item data: a label and a
+     * value, with WooCommerce putting the colon between them.
+     *
+     * Passing the finished sentence as the value is what produced the reported
+     * "Omnibus: Lowest price in the last 30 days: 20.00" double label.
+     *
+     * @return array{label: string, value: string}|null
+     */
+    public function getLowestPriceParts(int $productId): ?array
+    {
+        $notice = $this->buildNotice($productId);
+
+        if ($notice === null) {
+            return null;
+        }
+
+        // Same entity decoding as getLowestPriceText(): wc_price() encodes the
+        // currency symbol and the block cart would show the entity literally.
+        $decode = static fn (string $part): string => trim(
+            html_entity_decode(wp_strip_all_tags($part), ENT_QUOTES, 'UTF-8'),
+        );
+
+        $label = $decode($notice['label']);
+        $value = $decode($notice['value']);
+
+        if ($label === '' || $value === '') {
+            return null;
+        }
+
+        return ['label' => $label, 'value' => $value];
     }
 
     /**

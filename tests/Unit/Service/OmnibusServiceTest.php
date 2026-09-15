@@ -209,4 +209,60 @@ final class OmnibusServiceTest extends TestCase
         // Record 1 second before cutoff is outside the window.
         $this->assertFalse($outsideWindow->recordedAt >= $cutoff);
     }
+
+    // ── cart label split (the "Omnibus:" double label) ──────────────────
+
+    /**
+     * @return array{label: string, value: string}
+     */
+    private function split(string $template, string $suffix = ''): array
+    {
+        $price = '20,00 zl';
+        $text = str_replace(['{days}', '{price}'], ['30', $price], $template) . $suffix;
+
+        $method = (new \ReflectionClass(OmnibusService::class))->getMethod('splitNotice');
+        $method->setAccessible(true);
+
+        /** @var array{label: string, value: string} $parts */
+        $parts = $method->invoke(null, $template, $price, '30', $suffix, $text);
+
+        return $parts;
+    }
+
+    public function testDefaultTemplateSplitsIntoLabelAndPrice(): void
+    {
+        $parts = $this->split('Lowest price in the last {days} days: {price}');
+
+        // The cart adds the colon, so the label must not carry one.
+        $this->assertSame('Lowest price in the last 30 days', $parts['label']);
+        $this->assertSame('20,00 zl', $parts['value']);
+    }
+
+    public function testSplitRebuildsTheWholeSentence(): void
+    {
+        $template = 'Lowest price in the last {days} days: {price}';
+        $suffix = ' Regular price: 40,00 zl';
+        $parts = $this->split($template, $suffix);
+
+        $this->assertSame(
+            'Lowest price in the last 30 days: 20,00 zl Regular price: 40,00 zl',
+            $parts['label'] . ': ' . $parts['value'],
+        );
+    }
+
+    public function testTemplateWithoutPricePlaceholderFallsBackToAPlainLabel(): void
+    {
+        $parts = $this->split('Prices have not changed in {days} days');
+
+        $this->assertSame('Lowest price', $parts['label']);
+        $this->assertSame('Prices have not changed in 30 days', $parts['value']);
+    }
+
+    public function testTemplateOpeningWithThePriceFallsBackToAPlainLabel(): void
+    {
+        $parts = $this->split('{price} was the lowest price in {days} days');
+
+        $this->assertSame('Lowest price', $parts['label']);
+        $this->assertSame('20,00 zl was the lowest price in 30 days', $parts['value']);
+    }
 }
