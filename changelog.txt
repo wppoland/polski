@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.37.11 =
+* Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
+* Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
+
 = 1.37.10 =
 * Fixed: with the "NIP - Verification and Autocomplete" module on, My Account > Addresses > Billing address showed two NIP fields: the plugin's own one above "Country / region" and a second, inert one below the email field. The second came from the WooCommerce additional-checkout-fields copy of the field, which WooCommerce also renders on that form. Both registrations are still needed (the classic checkout renders only the first, the block checkout only the second), so the duplicate is now dropped from the edit-address form only. Reported by strid3rr on the support forum.
 * Fixed: the lowest-price notice in the cart, mini-cart and order review was prefixed with the technical label "Omnibus:", e.g. "Omnibus: Lowest price in the last 30 days: 20.00". WooCommerce renders cart item data as "label: value" and the whole sentence was being passed as the value. The notice is now split, so the customer sees only "Lowest price in the last 30 days: 20.00". Reported by strid3rr on the support forum.

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.37.10\n"
+"Project-Id-Version: Polski for WooCommerce 1.37.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-15T05:53:08+00:00\n"
+"POT-Creation-Date: 2026-09-15T06:35:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -610,13 +610,13 @@ msgstr ""
 #: config/defaults.php:225
 #: src/Admin/ModulesPage.php:2826
 #: src/Admin/WithdrawalsAdminPage.php:396
-#: src/Service/CustomCheckoutFieldsService.php:686
+#: src/Service/CustomCheckoutFieldsService.php:690
 msgid "Email"
 msgstr ""
 
 #: config/defaults.php:226
 #: src/Admin/WithdrawalsAdminPage.php:395
-#: src/Service/CustomCheckoutFieldsService.php:688
+#: src/Service/CustomCheckoutFieldsService.php:692
 msgid "Phone"
 msgstr ""
 
@@ -625,9 +625,9 @@ msgid "Company"
 msgstr ""
 
 #: config/defaults.php:228
-#: src/Service/NipLookupService.php:109
-#: src/Service/NipLookupService.php:227
-#: src/Service/NipLookupService.php:345
+#: src/Service/NipLookupService.php:106
+#: src/Service/NipLookupService.php:193
+#: src/Service/NipLookupService.php:311
 msgid "NIP"
 msgstr ""
 
@@ -729,7 +729,7 @@ msgstr ""
 #: src/Admin/AdminPage.php:867
 #: src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
-#: src/Service/CustomCheckoutFieldsService.php:687
+#: src/Service/CustomCheckoutFieldsService.php:691
 #: src/Service/DSAService.php:179
 #: src/Service/MyAccountWithdrawalsService.php:103
 #: src/Service/ReturnRequestService.php:238
@@ -752,7 +752,7 @@ msgstr ""
 #: config/defaults.php:265
 #: src/Admin/CRAIncidentsPage.php:126
 #: src/Admin/ModulesPage.php:1848
-#: src/Service/CustomCheckoutFieldsService.php:718
+#: src/Service/CustomCheckoutFieldsService.php:722
 msgid "Actions"
 msgstr ""
 
@@ -1269,7 +1269,7 @@ msgstr ""
 
 #: config/defaults.php:632
 #: src/PageCompliance/Enum/Severity.php:18
-#: src/Service/CustomCheckoutFieldsService.php:716
+#: src/Service/CustomCheckoutFieldsService.php:720
 msgid "Required"
 msgstr ""
 
@@ -1655,7 +1655,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:396
 #: src/Admin/ModulesPage.php:1846
-#: src/Service/CustomCheckoutFieldsService.php:711
+#: src/Service/CustomCheckoutFieldsService.php:715
 msgid "Enabled"
 msgstr ""
 
@@ -2429,7 +2429,7 @@ msgid "Thank you for using Polski. If you want to tell us what was missing or fr
 msgstr ""
 
 #: src/Admin/DeactivationHandler.php:96
-#: src/Service/CustomCheckoutFieldsService.php:883
+#: src/Service/CustomCheckoutFieldsService.php:887
 #: src/Service/ViesService.php:305
 msgid "Unauthorized"
 msgstr ""
@@ -4186,7 +4186,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:720
 #: src/Admin/ModulesPage.php:2273
-#: src/Service/CustomCheckoutFieldsService.php:713
+#: src/Service/CustomCheckoutFieldsService.php:717
 msgid "Label"
 msgstr ""
 
@@ -5203,7 +5203,7 @@ msgid "Accordion"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1099
-#: src/Service/CustomCheckoutFieldsService.php:715
+#: src/Service/CustomCheckoutFieldsService.php:719
 msgid "Section"
 msgstr ""
 
@@ -6105,7 +6105,7 @@ msgid "Manage FAQ"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1616
-#: src/Service/CustomCheckoutFieldsService.php:697
+#: src/Service/CustomCheckoutFieldsService.php:701
 msgid "Custom Checkout Fields"
 msgstr ""
 
@@ -8779,7 +8779,7 @@ msgid "Polski Consent Records"
 msgstr ""
 
 #: src/Privacy/WithdrawalPrivacyService.php:139
-#: src/Service/CustomCheckoutFieldsService.php:683
+#: src/Service/CustomCheckoutFieldsService.php:687
 msgid "Checkbox"
 msgstr ""
 
@@ -8792,12 +8792,12 @@ msgid "Consented"
 msgstr ""
 
 #: src/Privacy/WithdrawalPrivacyService.php:141
-#: src/Service/B2BCheckoutService.php:243
+#: src/Service/B2BCheckoutService.php:247
 msgid "Yes"
 msgstr ""
 
 #: src/Privacy/WithdrawalPrivacyService.php:141
-#: src/Service/B2BCheckoutService.php:243
+#: src/Service/B2BCheckoutService.php:247
 msgid "No"
 msgstr ""
 
@@ -9240,49 +9240,49 @@ msgstr ""
 msgid "Stock restored: %1$s (%2$d -> %3$d)"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:82
-#: src/Service/B2BCheckoutService.php:242
+#: src/Service/B2BCheckoutService.php:86
+#: src/Service/B2BCheckoutService.php:246
 msgid "Buying as a company"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:92
-#: src/Service/B2BCheckoutService.php:273
+#: src/Service/B2BCheckoutService.php:96
+#: src/Service/B2BCheckoutService.php:277
 msgid "I need a VAT invoice"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:102
-#: src/Service/B2BCheckoutService.php:283
+#: src/Service/B2BCheckoutService.php:106
+#: src/Service/B2BCheckoutService.php:287
 msgid "REGON (statistical number)"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:103
+#: src/Service/B2BCheckoutService.php:107
 msgid "9 or 14 digits"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:113
-#: src/Service/B2BCheckoutService.php:306
+#: src/Service/B2BCheckoutService.php:117
+#: src/Service/B2BCheckoutService.php:310
 msgid "Bank account (IBAN)"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:114
+#: src/Service/B2BCheckoutService.php:118
 msgid "PL00 0000 0000 0000 0000 0000 0000"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:140
-#: src/Service/B2BCheckoutService.php:295
+#: src/Service/B2BCheckoutService.php:144
+#: src/Service/B2BCheckoutService.php:299
 msgid "REGON must contain exactly 9 or 14 digits."
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:150
-#: src/Service/B2BCheckoutService.php:318
+#: src/Service/B2BCheckoutService.php:154
+#: src/Service/B2BCheckoutService.php:322
 msgid "The IBAN is invalid. Check the country code, length, and check digits."
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:214
+#: src/Service/B2BCheckoutService.php:218
 msgid "REGON"
 msgstr ""
 
-#: src/Service/B2BCheckoutService.php:218
+#: src/Service/B2BCheckoutService.php:222
 msgid "IBAN"
 msgstr ""
 
@@ -9676,75 +9676,75 @@ msgid " - "
 msgstr ""
 
 #. translators: %s: field label
-#: src/Service/CustomCheckoutFieldsService.php:371
+#: src/Service/CustomCheckoutFieldsService.php:375
 #, php-format
 msgid "%s is not valid."
 msgstr ""
 
 #. translators: %s: field label
-#: src/Service/CustomCheckoutFieldsService.php:405
+#: src/Service/CustomCheckoutFieldsService.php:409
 #, php-format
 msgid "%s is a required field."
 msgstr ""
 
 #. translators: %s: field label
-#: src/Service/CustomCheckoutFieldsService.php:417
+#: src/Service/CustomCheckoutFieldsService.php:421
 #, php-format
 msgid "%s is not a valid email address."
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:572
+#: src/Service/CustomCheckoutFieldsService.php:576
 msgid "Additional information"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:668
-#: src/Service/CustomCheckoutFieldsService.php:669
+#: src/Service/CustomCheckoutFieldsService.php:672
+#: src/Service/CustomCheckoutFieldsService.php:673
 msgid "Checkout Fields"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:680
+#: src/Service/CustomCheckoutFieldsService.php:684
 msgid "Text"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:681
+#: src/Service/CustomCheckoutFieldsService.php:685
 msgid "Textarea"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:682
+#: src/Service/CustomCheckoutFieldsService.php:686
 msgid "Select"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:684
+#: src/Service/CustomCheckoutFieldsService.php:688
 msgid "Radio"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:685
+#: src/Service/CustomCheckoutFieldsService.php:689
 msgid "Number"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:692
+#: src/Service/CustomCheckoutFieldsService.php:696
 msgid "Billing"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:693
+#: src/Service/CustomCheckoutFieldsService.php:697
 #: src/Service/DPATrackerService.php:150
 #: src/Service/OrderExportService.php:60
 msgid "Shipping"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:694
+#: src/Service/CustomCheckoutFieldsService.php:698
 msgid "Order notes"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:702
+#: src/Service/CustomCheckoutFieldsService.php:706
 msgid "Fields saved."
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:712
+#: src/Service/CustomCheckoutFieldsService.php:716
 msgid "Name (meta key)"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:714
+#: src/Service/CustomCheckoutFieldsService.php:718
 #: src/Service/DPATrackerService.php:79
 #: src/Service/ReturnRequestService.php:147
 #: src/Service/ReturnRequestService.php:236
@@ -9754,15 +9754,15 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:717
+#: src/Service/CustomCheckoutFieldsService.php:721
 msgid "Priority"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:730
+#: src/Service/CustomCheckoutFieldsService.php:734
 msgid "Add field"
 msgstr ""
 
-#: src/Service/CustomCheckoutFieldsService.php:732
+#: src/Service/CustomCheckoutFieldsService.php:736
 msgid "Save fields"
 msgstr ""
 
@@ -9780,12 +9780,12 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
-#: src/Service/DigitalConsentService.php:150
-#: src/Service/DigitalConsentService.php:238
+#: src/Service/DigitalConsentService.php:151
+#: src/Service/DigitalConsentService.php:241
 msgid "To buy digital products you have to consent to performance beginning before the withdrawal period ends."
 msgstr ""
 
-#: src/Service/DigitalConsentService.php:214
+#: src/Service/DigitalConsentService.php:217
 #: templates/checkout/legal-checkboxes.php:51
 #: templates/forms/dsa-report.php:67
 #: templates/forms/dsa-report.php:72
@@ -9795,7 +9795,7 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-#: src/Service/DigitalConsentService.php:374
+#: src/Service/DigitalConsentService.php:377
 msgid "I consent to performance beginning (for example the supply of digital content) before the withdrawal period ends and I acknowledge that I thereby lose my right of withdrawal for the digital content supplied in this way."
 msgstr ""
 
@@ -10198,28 +10198,28 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: src/Service/NipLookupService.php:110
+#: src/Service/NipLookupService.php:107
 msgid "e.g. 1234563218"
 msgstr ""
 
-#: src/Service/NipLookupService.php:169
-#: src/Service/NipLookupService.php:269
+#: src/Service/NipLookupService.php:135
+#: src/Service/NipLookupService.php:235
 msgid "One of the products in your order needs a VAT ID (NIP) on the receipt. Enter it to continue."
 msgstr ""
 
-#: src/Service/NipLookupService.php:179
+#: src/Service/NipLookupService.php:145
 msgid "That VAT ID (NIP) is not valid. Check the number and try again."
 msgstr ""
 
-#: src/Service/NipLookupService.php:240
+#: src/Service/NipLookupService.php:206
 msgid "That VAT ID (NIP) is not valid."
 msgstr ""
 
-#: src/Service/NipLookupService.php:361
+#: src/Service/NipLookupService.php:327
 msgid "Invalid VAT ID (NIP)."
 msgstr ""
 
-#: src/Service/NipLookupService.php:368
+#: src/Service/NipLookupService.php:334
 msgid "No data found for that VAT ID (NIP). Check the number or fill the details in by hand."
 msgstr ""
 

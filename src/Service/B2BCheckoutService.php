@@ -67,11 +67,15 @@ final class B2BCheckoutService
      */
     public function addBillingFields(array $fields): array
     {
-        if (! $this->isEnabled() || self::hasAdditionalFieldsApi()) {
-            // When the unified WC 8.6+ API is available, fields are
-            // registered through registerAdditionalCheckoutFields() and
-            // appear in classic checkout automatically. Skipping here
-            // prevents duplicate billing rows.
+        // This used to bail whenever the WC 8.6+ additional-fields API existed,
+        // on the belief that WooCommerce renders those on the classic checkout
+        // too. It does not: core feeds `address` fields to the block checkout,
+        // the order confirmation and My Account only. Every shop on the
+        // shortcode checkout therefore lost the company toggle, REGON and IBAN
+        // the moment it reached WC 8.6. The duplicate this guard was aimed at
+        // exists on one screen, the edit-address form, and AddressFormFieldDedupe
+        // removes it there.
+        if (! $this->isEnabled()) {
             return $fields;
         }
 

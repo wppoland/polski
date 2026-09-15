@@ -162,6 +162,7 @@ return [
     \Polski\Hook\StructuredDataHooks::class,
     LoopHooks::class,
     CartHooks::class,
+    \Polski\Hook\AddressFormFieldDedupe::class,
     CheckoutHooks::class,
     OrderHooks::class,
 

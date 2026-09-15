@@ -63,10 +63,11 @@ final class DigitalConsentService implements HasHooks
         // value, not the wording/timestamp/IP snapshot the classic path records).
         add_action('woocommerce_store_api_checkout_order_processed', [$this, 'persistBlockConsent']);
 
-        // Legacy classic-checkout field. These self-skip when the Additional
-        // Checkout Fields API is available (it also renders in classic checkout,
-        // so running both would double the field). On older WC without the API
-        // they are the only path.
+        // Classic-checkout field. The additional field registered above covers
+        // the block checkout only, so these are the only path on a shortcode
+        // checkout, at every WooCommerce version. They used to self-skip once
+        // the additional-fields API existed, on the belief that it renders in
+        // classic checkout too; it does not.
         add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutField']);
         add_action('woocommerce_checkout_process', [$this, 'validateCheckout']);
         add_action('woocommerce_checkout_create_order', [$this, 'persistConsent'], 10, 2);
@@ -182,9 +183,11 @@ final class DigitalConsentService implements HasHooks
 
     public function renderCheckoutField(): void
     {
-        if (self::hasAdditionalFieldsApi()) {
-            return; // handled by the Additional Checkout Field in both checkouts.
-        }
+        // The Additional Checkout Field covers the block checkout only:
+        // WooCommerce does not render additional fields on the shortcode
+        // checkout, so returning here left classic shops with no consent
+        // checkbox at all. This action fires on the classic checkout only, so
+        // the two never collide.
 
         if (! $this->hasDigitalContentInCart()) {
             return;
@@ -220,9 +223,9 @@ final class DigitalConsentService implements HasHooks
 
     public function validateCheckout(): void
     {
-        if (self::hasAdditionalFieldsApi()) {
-            return; // the Additional Checkout Field enforces required on its own.
-        }
+        // Classic checkout only (block checkout submits through the Store API,
+        // where the field's own required flag applies), so this has to run
+        // whether or not the additional-fields API exists.
 
         if ($this->mode() !== self::MODE_REQUIRED) {
             return;
@@ -245,9 +248,9 @@ final class DigitalConsentService implements HasHooks
     {
         unset($data);
 
-        if (self::hasAdditionalFieldsApi()) {
-            return; // WC stores the Additional Checkout Field value itself.
-        }
+        // Classic checkout only: on the block checkout there is no $_POST and
+        // WooCommerce has already stored the additional field itself, so the
+        // early return below does the same job without hiding the classic path.
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC checkout already verifies its own nonce.
         $accepted = ! empty($_POST[self::FIELD_KEY]);
