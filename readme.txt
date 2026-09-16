@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.38.0
+Stable tag: 1.38.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -357,6 +357,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.38.1 =
+* Fixed: a product found by the AJAX search dropdown could be missing from the full results page. The dropdown and the results page share the same extra matching (SKU, GTIN, manufacturer, category, ingredients), but on the results page the extra product IDs were being attached to the wrong part of the SQL WHERE clause, the one WordPress adds for logged-out visitors to exclude password-protected posts. For a logged-out shopper, which is nearly every shopper, the results page therefore searched titles and descriptions only, and a password-protected product matching the term would have been listed. Reported by strid3rr on the support forum.
+* Fixed: "View all results" carried the phrase from the response that was on screen, not the phrase in the search box. Typing on and clicking it immediately led to the results for the previous keystroke. The link, and Enter on it, now always use the current contents of the box.
+* Fixed: a keystroke landing while a request was in flight could leave the dropdown a phrase behind the box; the search now re-runs for the current value.
+* Fixed: the AJAX dropdown listed products protected with a password, with their name, price and link. The storefront results page has always hidden them; the dropdown queried products without any notion of a password. Found while reproducing the report above.
 
 = 1.38.0 =
 * Added: Product markings module. Two per-product flags that print the statutory notice on the product page: medical device (Regulation 2017/745 and the Medical Devices Act) and goods sold to adults only, such as alcohol or tobacco. Both notices are editable in the module settings.

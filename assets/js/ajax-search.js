@@ -150,6 +150,23 @@ document.addEventListener('DOMContentLoaded', function () {
             return link;
         }
 
+        function withTerm(url, term) {
+            try {
+                var parsed = new URL(url, window.location.href);
+                parsed.searchParams.set('s', term);
+                return parsed.toString();
+            } catch (error) {
+                return url;
+            }
+        }
+
+        function syncViewAll(event) {
+            var term = input.value.trim();
+            if (term !== '') {
+                event.currentTarget.href = withTerm(event.currentTarget.href, term);
+            }
+        }
+
         function renderResults(payload) {
             var items = Array.isArray(payload.results) ? payload.results : [];
 
@@ -178,6 +195,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 all.setAttribute('aria-selected', 'false');
                 all.setAttribute('href', payload.search_url);
                 all.textContent = config.viewAllText;
+                // The dropdown can be one response behind the input. Rewrite the
+                // phrase at the moment of the click so the full results page
+                // always gets what is in the box, never the previous keystroke.
+                all.addEventListener('mousedown', syncViewAll);
+                all.addEventListener('click', syncViewAll);
                 results.appendChild(all);
             }
 
@@ -221,6 +243,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 results.removeAttribute('aria-busy');
                 renderResults(payload);
+
+                // A keystroke that landed while this request was in flight and
+                // whose own timer was cleared would otherwise leave the list
+                // showing an older phrase than the box.
+                if (input.value.trim() !== term) {
+                    window.clearTimeout(timer);
+                    timer = window.setTimeout(function () {
+                        performSearch(input.value.trim());
+                    }, config.debounceMs);
+                }
             }).catch(function (error) {
                 if (error && error.name === 'AbortError') {
                     return;
@@ -268,7 +300,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         var items = options();
                         if (items[activeIndex] && items[activeIndex].href) {
                             event.preventDefault();
-                            window.location.href = items[activeIndex].href;
+                            var target = items[activeIndex];
+                            window.location.href = target.classList.contains('polski-ajax-search__all')
+                                ? withTerm(target.href, input.value.trim())
+                                : target.href;
                         }
                     }
                     break;
