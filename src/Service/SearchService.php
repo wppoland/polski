@@ -146,6 +146,14 @@ final class SearchService implements Bootable, HasHooks
                 continue;
             }
 
+            // wc_get_products() has no notion of post_password, so a protected
+            // product (name, price and permalink) was being handed to anyone
+            // who typed part of its title. The storefront results page hides
+            // it; the dropdown must agree.
+            if (post_password_required($product->get_id())) {
+                continue;
+            }
+
             $results[] = [
                 'id' => $product->get_id(),
                 'name' => $product->get_name(),
