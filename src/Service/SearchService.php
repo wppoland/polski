@@ -193,10 +193,36 @@ final class SearchService implements Bootable, HasHooks
 
         global $wpdb;
 
-        $clause = " OR ({$wpdb->posts}.ID IN (" . implode(',', array_map('intval', $ids)) . '))';
+        return $this->widenSearchClause($search, $ids, (string) $wpdb->posts);
+    }
 
-        // Insert before the closing parenthesis of the search clause.
-        return preg_replace('/\)\s*$/', $clause . ')', $search) ?? $search;
+    /**
+     * Add the extra IDs to the search clause itself.
+     *
+     * WP_Query::parse_search returns " AND (<search>) " and, for logged-out
+     * visitors only, appends " AND (wp_posts.post_password = '') ". Anchoring
+     * on the last ")" of the whole string therefore hit the password clause,
+     * not the search: every shopper who was not logged in got a results page
+     * that ignored the extra matching the dropdown had already shown them, and
+     * a matching password-protected product would have been listed as a bonus.
+     *
+     * @param list<int> $ids
+     */
+    private function widenSearchClause(string $search, array $ids, string $postsTable): string
+    {
+        $clause = " OR ({$postsTable}.ID IN (" . implode(',', array_map('intval', $ids)) . '))';
+
+        $passwordClause = '';
+        $position = strpos($search, " AND ({$postsTable}.post_password");
+
+        if ($position !== false) {
+            $passwordClause = substr($search, $position);
+            $search = substr($search, 0, $position);
+        }
+
+        $widened = preg_replace('/\)\s*$/', $clause . ')', $search);
+
+        return ($widened ?? $search) . $passwordClause;
     }
 
     /**
