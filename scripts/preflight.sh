@@ -66,11 +66,11 @@ echo "==> 13/17  phpstan (memory 2G)"
 php -d memory_limit=2G vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
 
 echo "==> 14/17  runtime fatal smoke (wp-env)"
-npx wp-env start >/dev/null 2>&1 || true
+npx @wordpress/env start >/dev/null 2>&1 || true
 # PRO would gate the admin behind a Freemius license screen; the smoke exercises
 # the FREE plugin's code directly, so deactivate PRO for a deterministic run.
-npx wp-env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
-npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
+npx @wordpress/env run cli wp plugin deactivate polski-pro >/dev/null 2>&1 || true
+npx @wordpress/env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-check.php
 
 # Two halves of one misunderstanding, both invisible to static analysis.
 # 1.37.9 shipped two NIP inputs on My Account > Addresses (the classic billing
@@ -79,9 +79,9 @@ npx wp-env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-fatal-ch
 # fields API existed, which emptied the shortcode checkout from WC 8.6 on.
 echo "==> 15/17  address form has no duplicates, classic checkout keeps its fields"
 for module in nip_lookup b2b_checkout custom_checkout_fields withdrawal; do
-  npx wp-env run cli wp option patch insert polski_modules "${module}" 1 >/dev/null
+  npx @wordpress/env run cli wp option patch insert polski_modules "${module}" 1 >/dev/null
 done
-npx wp-env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/address-fields-no-duplicates-check.php
+npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/address-fields-no-duplicates-check.php
 
 echo "==> 16/17  WordPress Plugin Check"
 bash scripts/plugin-check.sh

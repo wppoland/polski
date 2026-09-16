@@ -20,18 +20,22 @@ TARGET="${1:-both}"
 SEVERITY="${SEVERITY:-7}"
 
 run_cli() {
-    ( cd "${ROOT_DIR}" && npx wp-env run cli wp "$@" )
+    ( cd "${ROOT_DIR}" && npx @wordpress/env run cli wp "$@" )
 }
 
 find_container() {
-    # Resolve the WordPress container that backs `npx wp-env run cli` from THIS
+    # Resolve the WordPress container that backs `npx @wordpress/env run cli` from THIS
     # project. wp-env names containers <hash>-wordpress-1 where <hash> is the
     # basename of the install path, so deriving from install-path is the only
     # way to pick the correct instance when multiple wp-env projects are
     # running concurrently. A naive `docker ps | grep wordpress-1 | head -1`
     # picks an arbitrary instance and silently deploys to the wrong one.
+    # wp-env dropped `install-path`; `status` prints the same path on its
+    # "install path:" line. Reading it from there keeps this pinned to THIS
+    # project's instance instead of guessing from `docker ps`.
     local install_path
-    install_path="$( cd "${ROOT_DIR}" && npx wp-env install-path 2>/dev/null | tail -1 )"
+    install_path="$( cd "${ROOT_DIR}" && npx @wordpress/env status 2>/dev/null \
+        | sed -n 's/.*install path: *//p' | tail -1 | tr -d '[:space:]' )"
 
     if [[ -z "${install_path}" ]]; then
         return 1
@@ -96,7 +100,7 @@ install_release() {
     docker cp "${release_dir}" "${container}:/var/www/html/wp-content/plugins/${slug}"
 
     # Sanity check: confirm the file we ship landed in the container that
-    # `npx wp-env run cli` will actually scan. A mismatch here means
+    # `npx @wordpress/env run cli` will actually scan. A mismatch here means
     # find_container picked the wrong instance and PCP is about to report
     # against stale code.
     local plugin_file="${release_dir}/${plugin}.php"
