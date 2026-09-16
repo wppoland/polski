@@ -235,6 +235,81 @@ final class PrivacyPolicyRules
                 ],
                 hint: __('If you have appointed a Data Protection Officer, publish their contact details.', 'polski'),
             ),
+
+            // Things that must NOT be in the document any more. A privacy policy
+            // still citing a repealed act or an invalidated transfer mechanism
+            // was copied from an old template and is very likely wrong
+            // throughout, which is worth saying out loud.
+            new CheckRule(
+                id: 'no_repealed_1997_act',
+                label: __('No reference to the repealed 1997 data protection act', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    'ustawy z dnia 29 sierpnia 1997',
+                    'ustawa z dnia 29 sierpnia 1997',
+                    'ustawy o ochronie danych osobowych z 1997',
+                    'dz.u. 1997',
+                    'dz. u. 1997',
+                ],
+                hint: __('The 1997 Data Protection Act was replaced by RODO and the 2018 act. A policy citing it predates 2018 and needs rewriting, not patching.', 'polski'),
+                forbidden: true,
+            ),
+            new CheckRule(
+                id: 'no_privacy_shield',
+                label: __('No reference to the invalidated Privacy Shield', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    'privacy shield',
+                    'tarcza prywatnosci',
+                    'tarczy prywatnosci',
+                ],
+                hint: __('The EU-US Privacy Shield was invalidated in 2020 (Schrems II). Transfers to the US now rely on the Data Privacy Framework or standard contractual clauses; name the one you actually use.', 'polski'),
+                forbidden: true,
+            ),
+            new CheckRule(
+                id: 'no_giodo',
+                label: __('Supervisory authority named as PUODO, not GIODO', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    'giodo',
+                    'generalnego inspektora ochrony danych',
+                    'generalny inspektor ochrony danych',
+                ],
+                hint: __('GIODO ceased to exist in 2018. The supervisory authority is the President of the Personal Data Protection Office (PUODO), ul. Stawki 2, 00-193 Warszawa.', 'polski'),
+                forbidden: true,
+            ),
+            new CheckRule(
+                id: 'no_template_placeholders',
+                label: __('No unfilled template placeholders', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    '(...)',
+                    '(…)',
+                    '[...]',
+                    'xxx',
+                    'lorem ipsum',
+                    'nazwa firmy]',
+                    'wpisz nazwe',
+                    'twoja firma sp',
+                ],
+                hint: __('A placeholder left in the text means the template was never completed. Fill in the company data or delete the passage.', 'polski'),
+                forbidden: true,
+            ),
+            new CheckRule(
+                id: 'no_ai_tells',
+                label: __('No leftovers from a chat with an AI assistant', 'polski'),
+                severity: Severity::Recommended,
+                patterns: [
+                    'oczywiscie, oto',
+                    'oto przykladowy',
+                    'jako model jezykowy',
+                    'jako sztuczna inteligencja',
+                    'pamietaj, ze nie jestem prawnikiem',
+                    'niniejszy dokument ma charakter przykladowy',
+                ],
+                hint: __('Sentences like these come from a generated draft that was pasted in unedited. Remove them and have the document reviewed.', 'polski'),
+                forbidden: true,
+            ),
         ];
     }
 }

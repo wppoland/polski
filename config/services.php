@@ -505,6 +505,7 @@ return static function (Container $c): void {
 
     $c->singleton(CartHooks::class, static fn () => new CartHooks($c->get(OmnibusService::class)));
     $c->singleton(\Polski\Hook\AddressFormFieldDedupe::class, static fn () => new \Polski\Hook\AddressFormFieldDedupe());
+    $c->singleton(\Polski\Service\ProductMarkingsService::class, static fn () => new \Polski\Service\ProductMarkingsService());
 
     $c->singleton(OrderHooks::class, static fn () => new OrderHooks());
 

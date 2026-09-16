@@ -202,4 +202,80 @@ final class PageComplianceServiceTest extends TestCase
         $this->assertArrayHasKey('has_missing_required', $arr);
         $this->assertCount(2, $arr['results']);
     }
+
+    // ── forbidden patterns (the "ctrl+f for what should not be there" rules) ──
+
+    private function forbiddenRule(string $id = 'no_giodo'): CheckRule
+    {
+        return new CheckRule(
+            id: $id,
+            label: 'Forbidden',
+            severity: Severity::Required,
+            patterns: ['giodo', 'privacy shield'],
+            hint: 'Remove it.',
+            minLength: 0,
+            forbidden: true,
+        );
+    }
+
+    public function testForbiddenRuleFailsWhenThePatternIsPresent(): void
+    {
+        $content = $this->service->normalize('Organem nadzorczym jest GIODO.');
+
+        $this->assertFalse($this->service->evaluate($this->forbiddenRule(), $content)->passed);
+    }
+
+    public function testForbiddenRulePassesWhenTheDocumentIsClean(): void
+    {
+        $content = $this->service->normalize('Organem nadzorczym jest Prezes UODO.');
+
+        $this->assertTrue($this->service->evaluate($this->forbiddenRule(), $content)->passed);
+    }
+
+    public function testForbiddenRuleDoesNotPassOnAnEmptyDocument(): void
+    {
+        // Otherwise an empty page collects points for everything it fails to say.
+        $this->assertFalse($this->service->evaluate($this->forbiddenRule(), '')->passed);
+    }
+
+    public function testPrivacyRulesCatchARepealedActAndAnInvalidatedTransferMechanism(): void
+    {
+        $content = $this->service->normalize(
+            'Dane przetwarzamy zgodnie z ustawą z dnia 29 sierpnia 1997 r. o ochronie danych osobowych '
+            . 'oraz przekazujemy je do USA w oparciu o Privacy Shield. Organ nadzorczy: GIODO.',
+        );
+
+        $failed = [];
+
+        foreach ($this->service->rulesFor(LegalPageType::Privacy) as $rule) {
+            $result = $this->service->evaluate($rule, $content);
+
+            if (! $result->passed) {
+                $failed[] = $result->ruleId;
+            }
+        }
+
+        $this->assertContains('no_repealed_1997_act', $failed);
+        $this->assertContains('no_privacy_shield', $failed);
+        $this->assertContains('no_giodo', $failed);
+    }
+
+    public function testTermsRulesCatchAnUnfilledTemplate(): void
+    {
+        $content = $this->service->normalize('Sprzedawcą jest (...) z siedzibą w XXX.');
+
+        $failed = [];
+
+        foreach ($this->service->rulesFor(LegalPageType::Terms) as $rule) {
+            $result = $this->service->evaluate($rule, $content);
+
+            if (! $result->passed) {
+                $failed[] = $result->ruleId;
+            }
+        }
+
+        $this->assertContains('no_template_placeholders', $failed);
+        $this->assertContains('phone_number', $failed);
+        $this->assertContains('nonprofessional_buyer', $failed);
+    }
 }

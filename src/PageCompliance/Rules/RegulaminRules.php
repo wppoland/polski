@@ -222,6 +222,64 @@ final class RegulaminRules
                 ],
                 hint: __('Publish the effective date so customers know which version they agreed to.', 'polski'),
             ),
+            new CheckRule(
+                id: 'phone_number',
+                label: __('Telephone number', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    'tel.',
+                    'telefon',
+                    '+48',
+                ],
+                hint: __('Since the Omnibus implementation the seller has to give a telephone number, not only an email address. Regulations without one usually predate 2023 and need a wider review.', 'polski'),
+            ),
+            new CheckRule(
+                id: 'nonprofessional_buyer',
+                label: __('Sole trader buying outside their profession', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    'niezawodowy',
+                    'niezawodowym',
+                    'charakteru zawodowego',
+                    'przedsiebiorca na prawach konsumenta',
+                ],
+                hint: __('Since 2021 a sole trader buying outside their line of business has consumer rights (withdrawal, warranty, unfair terms). Say how your shop handles it.', 'polski'),
+            ),
+
+            // Things that must NOT be in the document. Same reasoning as in the
+            // privacy policy: these are the traces a copied or generated
+            // template leaves behind.
+            new CheckRule(
+                id: 'no_template_placeholders',
+                label: __('No unfilled template placeholders', 'polski'),
+                severity: Severity::Required,
+                patterns: [
+                    '(...)',
+                    '(…)',
+                    '[...]',
+                    'xxx',
+                    'lorem ipsum',
+                    'nazwa firmy]',
+                    'wpisz nazwe',
+                    'twoja firma sp',
+                ],
+                hint: __('A placeholder left in the text means the template was never completed. Fill in the shop data or delete the passage.', 'polski'),
+                forbidden: true,
+            ),
+            new CheckRule(
+                id: 'no_ai_tells',
+                label: __('No leftovers from a chat with an AI assistant', 'polski'),
+                severity: Severity::Recommended,
+                patterns: [
+                    'oczywiscie, oto',
+                    'oto przykladowy',
+                    'jako model jezykowy',
+                    'jako sztuczna inteligencja',
+                    'niniejszy dokument ma charakter przykladowy',
+                ],
+                hint: __('Sentences like these come from a generated draft that was pasted in unedited. Remove them and have the document reviewed.', 'polski'),
+                forbidden: true,
+            ),
         ];
     }
 }

@@ -14338,3 +14338,27 @@ msgstr ""
 "Możesz użyć %1$s dla nazwy firmy i %2$s dla liczby dni na odstąpienie. Jeśli"
 " ich nie użyjesz, tekst zostanie wypisany dokładnie tak, jak go wpiszesz, ze"
 " znakami procenta włącznie."
+
+msgid "This is a medical device. Read the instructions for use and the label, or consult a doctor or pharmacist, as every medical device carries a risk when used other than as intended."
+msgstr "To wyrób medyczny. Przeczytaj instrukcję używania i etykietę albo skonsultuj się z lekarzem lub farmaceutą, bo każdy wyrób medyczny wiąże się z ryzykiem przy użyciu niezgodnym z przeznaczeniem."
+
+msgid "Sold to adults only. Age is verified on delivery, and the order is not handed over without it."
+msgstr "Produkt sprzedawany wyłącznie osobom pełnoletnim. Wiek jest weryfikowany przy odbiorze, bez tego przesyłka nie zostanie wydana."
+
+msgid "Product markings (medical device, adults only)"
+msgstr "Oznaczenia produktu (wyrób medyczny, 18+)"
+
+msgid "Medical device"
+msgstr "Wyrób medyczny"
+
+msgid "Adults only (18+)"
+msgstr "Tylko dla pełnoletnich (18+)"
+
+msgid "Product markings"
+msgstr "Oznaczenia produktu"
+
+msgid "Accessibility statement (EAA)"
+msgstr "Deklaracja dostępności (EAA)"
+
+msgid "Avatars shared with a third party (Gravatar)"
+msgstr "Awatary udostępniane podmiotowi zewnętrznemu (Gravatar)"

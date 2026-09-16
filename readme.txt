@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.37.11
+Stable tag: 1.38.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **GPSR product fields** - manufacturer, importer and EU responsible person, each with a postal address and the electronic contact art. 19 asks for, plus product identifiers, safety warnings and instructions, split into a responsibility group and a safety group, including CSV import and export.
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
+* **Product markings** - per-product flags that print the statutory notice on the product page: medical device, and goods sold to adults only such as alcohol or tobacco.
 * **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
@@ -357,6 +358,14 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.38.0 =
+* Added: Product markings module. Two per-product flags that print the statutory notice on the product page: medical device (Regulation 2017/745 and the Medical Devices Act) and goods sold to adults only, such as alcohol or tobacco. Both notices are editable in the module settings.
+* Added: five new privacy policy checks. The page is now also read for things that must NOT be there: the repealed 1997 data protection act, the invalidated Privacy Shield, GIODO instead of PUODO, unfilled template placeholders, and sentences left over from a chat with an AI assistant.
+* Added: four new terms and conditions checks: telephone number (required since the Omnibus implementation), the rights of a sole trader buying outside their profession, unfilled placeholders, and AI leftovers.
+* Added: both legal pages are now checked for links to somebody else's terms or privacy policy, which is what a copied template looks like.
+* Added: two site audit checks. Gravatar (avatars send a hash of the commenter email to a US service, and it is on by default even when comments are closed), and a published accessibility statement, which the European Accessibility Act has required of online shops since 28 June 2025.
+* Fixed: an empty legal page scored 23% instead of zero, because it trivially passed every "must not contain" check. Nothing to check now counts as not checked.
+
 = 1.37.11 =
 * Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
 * Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
@@ -463,19 +472,6 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 * Changed: the "Legal Email Attachments" module is now called "Legal texts in emails", because it attached nothing. It prints the text of your legal pages under the order table in four customer emails. The documentation described PDF files and a per-email-type document matrix that no released version ever had; that page has been rewritten to match the code, and the PDF version is a PRO feature. Reported on GitHub (discussion #49).
 * Changed: the PRO promo now also appears on the Modules, Settings and Reports screens, not only the Dashboard. It stays dismissible and never leaves this plugin's own screens.
 
-= 1.32.0 =
-* New: AJAX search can look inside the values of the global product attributes you choose. Pick them under the AJAX search module; leave them all unticked and attributes are skipped entirely. Requested on GitHub (#72).
-* Fixed: "Search by SKU" and "Search by categories" were on the screen but no code read either one, so both did nothing whichever way you set them. They work now, and switching them off really excludes that data.
-* Fixed: the search dropdown never used any of the extra matching at all. It ran its own product query, while the manufacturer, GTIN and ingredient matching only applied to the main search page, so the dropdown and the results page could disagree about the same term. Both now go through one place.
-* New: electronic contact fields for the manufacturer, the EU responsible person and the importer, plus a postal address for the responsible person. GPSR art. 19(1)(a) asks for a postal and an electronic address, and there was nowhere to put the electronic one. Included in CSV import and export.
-* Changed: the product data panel splits GPSR into "Product responsibility" (who is answerable) and "Product safety" (warnings, instructions, identifier), and the storefront output does the same. A group with nothing filled in is no longer printed as an empty heading. Requested on GitHub (#63).
-* New: the `polski/gpsr/data` filter, so the values shown for a product can be supplied from elsewhere. Plogins Polski PRO uses it for reusable responsibility profiles.
-* Fixed: the changelog on the WordPress.org plugin page was cut off. WordPress.org truncates a readme changelog over 5,000 words and only tells the plugin author by email after the import, so the page had quietly been dropping its oldest entries. readme.txt now carries the last twenty releases and the full history stays in changelog.txt inside the plugin folder.
-* Release checks added for all three failure modes above: a changelog over the wp.org limit, and a product field that renders an input but is missing from the save map, so it accepts typing and discards it.
-
-= 1.31.10 =
-* Fixed: the Omnibus "calculated from" setting did nothing, and the window it was meant to control was the wrong one. The lowest price was always measured up to now, so a running sale price competed to be its own lowest price and the notice could just repeat the current price. Measured from the sale's start date, as the setting says and as the Directive intends, the notice shows the lowest price in the 30 days before the reduction instead.
-* Note on upgrading: on a product whose sale has a start date, the figure in the notice can change, and it changes to the legally correct one. In the test case, a product reduced to 79 after selling at 250 and 300 showed "79" before and shows "250" after. Products with a sale price and no scheduled start are unaffected, because there is no date to anchor the window to; that is the common case.
 
 == Upgrade Notice ==
 

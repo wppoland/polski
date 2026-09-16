@@ -163,6 +163,7 @@ return [
     LoopHooks::class,
     CartHooks::class,
     \Polski\Hook\AddressFormFieldDedupe::class,
+    \Polski\Service\ProductMarkingsService::class,
     CheckoutHooks::class,
     OrderHooks::class,
 

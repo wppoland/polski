@@ -1125,6 +1125,19 @@ final class ModulesPage implements HasHooks
                 ],
             ],
             [
+                'id' => 'product_markings',
+                'name' => __('Product markings (medical device, adults only)', 'polski'),
+                'description' => __('Per-product flags that print the statutory notice on the product page: medical device (Regulation 2017/745 and the Medical Devices Act) and goods sold to adults only, such as alcohol or tobacco.', 'polski'),
+                'group' => 'Product Information',
+                'enabled' => false,
+                'icon' => 'dashicons-warning',
+                'links' => [],
+                'settings' => [
+                    ['key' => 'polski_product_markings|medical_device_notice', 'label' => __('Medical device notice', 'polski'), 'type' => 'textarea', 'default' => '', 'hint' => __('Leave empty to use the statutory wording shipped with the plugin.', 'polski')],
+                    ['key' => 'polski_product_markings|adults_only_notice', 'label' => __('Adults only notice', 'polski'), 'type' => 'textarea', 'default' => '', 'hint' => __('Leave empty to use the default wording.', 'polski')],
+                ],
+            ],
+            [
                 'id' => 'green_claims',
                 'name' => __('Anti-greenwashing', 'polski'),
                 'description' => __('Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026).', 'polski'),
