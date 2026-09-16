@@ -387,6 +387,59 @@
     margin: 0;
 }
 
+/* === Product markings (medical device, adults only) === */
+
+.polski-product-markings {
+    display: grid;
+    gap: 8px;
+    margin-block: 12px;
+}
+
+.polski-product-markings__notice {
+    margin: 0;
+    padding: 10px 12px 10px 38px;
+    position: relative;
+    font-size: 0.85em;
+    line-height: 1.45;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+}
+
+.polski-product-markings__notice::before {
+    position: absolute;
+    inset-inline-start: 12px;
+    inset-block-start: 9px;
+    font-size: 1.1em;
+    line-height: 1.2;
+}
+
+.polski-product-markings__notice--medical {
+    color: #0b5a7a;
+    background: #eff8fc;
+}
+
+.polski-product-markings__notice--medical::before {
+    content: "\271A"; /* heavy greek cross, the medical marker */
+}
+
+.polski-product-markings__notice--adults {
+    color: #7a3b00;
+    background: #fff6ec;
+}
+
+.polski-product-markings__notice--adults::before {
+    content: "18+";
+    font-size: 0.8em;
+    font-weight: 700;
+    inset-block-start: 11px;
+}
+
+@media (prefers-contrast: more) {
+    .polski-product-markings__notice {
+        border-width: 2px;
+    }
+}
+
 /* === Loop/archive page === */
 
 .products .polski-unit-price,

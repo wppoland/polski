@@ -124,6 +124,97 @@ final class SiteAuditService implements HasHooks
             $this->checkStaleSaleDates(),
             $this->checkMisleadingFromPrice(),
             $this->checkFakeLowStockThreshold(),
+            // Third parties and accessibility, from the legal WWW checklist.
+            $this->checkAvatarDataSharing(),
+            $this->checkAccessibilityStatement(),
+        ];
+    }
+
+    /**
+     * Gravatar turns every commenter's email address into a request to a
+     * third-country service, on every page view that shows an avatar. It is on
+     * by default in WordPress, so shops that never enabled it are sharing data
+     * they do not know about, and a shop with comments closed everywhere is
+     * sharing it for no feature at all.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkAvatarDataSharing(): array
+    {
+        $label = __('Avatars shared with a third party (Gravatar)', 'polski');
+
+        if (! (bool) get_option('show_avatars')) {
+            return [
+                'status' => self::STATUS_PASS,
+                'label' => $label,
+                'detail' => __('Avatars are off, so no commenter email hashes are sent to Gravatar.', 'polski'),
+            ];
+        }
+
+        $commentsOpen = get_default_comment_status('post') === 'open';
+
+        if (! $commentsOpen) {
+            return [
+                'status' => self::STATUS_FAIL,
+                'label' => $label,
+                'detail' => __('Avatars are on while new comments are closed by default, so the shop sends email hashes to Gravatar (Automattic, US) for a feature it does not use. Turn avatars off under Settings > Discussion, or name Gravatar in the privacy policy as a recipient.', 'polski'),
+            ];
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => __('Avatars are on. Every avatar sends a hash of the commenter email to Gravatar (Automattic, US). Keep it only if you need it, and name it in the privacy policy as a recipient.', 'polski'),
+        ];
+    }
+
+    /**
+     * The European Accessibility Act applies to e-commerce from 28 June 2025
+     * and requires the trader to publish, in an accessible way, how the service
+     * meets the accessibility requirements. A published statement is the
+     * cheapest evidence that anyone looked at it at all.
+     *
+     * @return array{status: string, label: string, detail: string}
+     */
+    private function checkAccessibilityStatement(): array
+    {
+        $label = __('Accessibility statement (EAA)', 'polski');
+
+        $needles = ['dostepnosc', 'dostępnoś', 'accessibility'];
+
+        $pages = get_posts([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'numberposts' => 200,
+            'fields' => 'ids',
+            'no_found_rows' => true,
+        ]);
+
+        foreach ($pages as $pageId) {
+            $slug = get_post_field('post_name', $pageId);
+            $haystack = mb_strtolower(
+                get_the_title($pageId) . ' ' . (is_string($slug) ? $slug : ''),
+            );
+
+            foreach ($needles as $needle) {
+                if (str_contains($haystack, $needle)) {
+                    return [
+                        'status' => self::STATUS_PASS,
+                        'label' => $label,
+                        'detail' => sprintf(
+                            /* translators: %s: page title */
+                            __('Found a published accessibility page: "%s".', 'polski'),
+                            (string) get_the_title($pageId),
+                        ),
+                    ];
+                }
+            }
+        }
+
+        return [
+            'status' => self::STATUS_WARNING,
+            'label' => $label,
+            'detail' => __('No published accessibility statement found. Since 28 June 2025 the European Accessibility Act covers online shops: publish how the shop meets the accessibility requirements, what is not yet accessible and how to report a problem.', 'polski'),
         ];
     }
 

@@ -6,6 +6,7 @@ namespace Polski\PageCompliance;
 
 use Polski\Contract\HasHooks;
 use Polski\Enum\LegalPageType;
+use Polski\PageCompliance\Enum\Severity;
 use Polski\PageCompliance\Model\CheckReport;
 use Polski\PageCompliance\Model\CheckResult;
 use Polski\PageCompliance\Model\CheckRule;
@@ -205,6 +206,10 @@ final class PageComplianceService implements HasHooks
             $rules,
         );
 
+        if ($type === LegalPageType::Privacy || $type === LegalPageType::Terms) {
+            $results[] = $this->checkForeignDocumentLinks($content);
+        }
+
         return new CheckReport(
             pageType: $type->value,
             pageId: $pageId > 0 ? $pageId : null,
@@ -227,7 +232,10 @@ final class PageComplianceService implements HasHooks
 
     public function evaluate(CheckRule $rule, string $normalizedContent): CheckResult
     {
-        if ($rule->minLength > 0 && mb_strlen($normalizedContent) < $rule->minLength) {
+        // An empty page trivially contains no repealed act and no placeholder,
+        // and scoring that as a pass would have an empty privacy policy come
+        // out at 23% instead of zero. Nothing to check means not checked.
+        if ($rule->forbidden && trim($normalizedContent) === '') {
             return new CheckResult(
                 ruleId: $rule->id,
                 label: $rule->label,
@@ -237,14 +245,29 @@ final class PageComplianceService implements HasHooks
             );
         }
 
-        $passed = false;
+        // Past that, a forbidden rule says nothing about length: a short page is
+        // not evidence of a repealed act, so the minimum-length gate below is
+        // for the "must contain" rules only.
+        if (! $rule->forbidden && $rule->minLength > 0 && mb_strlen($normalizedContent) < $rule->minLength) {
+            return new CheckResult(
+                ruleId: $rule->id,
+                label: $rule->label,
+                severity: $rule->severity,
+                passed: false,
+                hint: $rule->hint,
+            );
+        }
+
+        $found = false;
 
         foreach ($rule->patterns as $pattern) {
             if ($pattern !== '' && str_contains($normalizedContent, $pattern)) {
-                $passed = true;
+                $found = true;
                 break;
             }
         }
+
+        $passed = $rule->forbidden ? ! $found : $found;
 
         return new CheckResult(
             ruleId: $rule->id,
@@ -253,6 +276,63 @@ final class PageComplianceService implements HasHooks
             passed: $passed,
             hint: $rule->hint,
         );
+    }
+
+    /**
+     * A link to somebody else's terms or privacy policy.
+     *
+     * Deliberately narrow: only links whose own URL points at a document of the
+     * same kind on a different host. That is the fingerprint of a copied
+     * template, and it does not fire on the many outside links a legitimate
+     * policy carries (processors, the supervisory authority, the ODR platform).
+     */
+    private function checkForeignDocumentLinks(string $content): CheckResult
+    {
+        $label = __('No links to another site\'s terms or privacy policy', 'polski');
+        $hint = __('The document links to a legal document on somebody else\'s domain, which is what a copied template looks like. Remove the link and check whether the text around it is yours.', 'polski');
+
+        $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
+        $found = [];
+
+        if (preg_match_all('#https?://[^\s"\'<>]+#i', $content, $matches) > 0) {
+            foreach ($matches[0] as $url) {
+                $linkHost = (string) wp_parse_url($url, PHP_URL_HOST);
+
+                if ($linkHost === '' || $this->sameHost($linkHost, $host)) {
+                    continue;
+                }
+
+                $path = strtolower((string) wp_parse_url($url, PHP_URL_PATH));
+
+                foreach (['regulamin', 'polityka-prywatnosci', 'polityka-prywatnoci', 'privacy-policy', 'terms'] as $needle) {
+                    if (str_contains($path, $needle)) {
+                        $found[] = $url;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return new CheckResult(
+            ruleId: 'no_foreign_document_links',
+            label: $label,
+            severity: Severity::Required,
+            passed: $found === [],
+            hint: $found === []
+                ? $hint
+                : $hint . ' ' . sprintf(
+                    /* translators: %s: the offending URL found in the document */
+                    __('Found: %s', 'polski'),
+                    esc_url_raw($found[0]),
+                ),
+        );
+    }
+
+    private function sameHost(string $a, string $b): bool
+    {
+        $strip = static fn (string $host): string => preg_replace('/^www\./', '', strtolower($host)) ?? $host;
+
+        return $strip($a) === $strip($b);
     }
 
     /**

@@ -54,9 +54,10 @@ php tests/product-query-args-check.php
 # file runs, not the suite: three OmnibusBatchLoaderTest failures predate this
 # gate (they are red at 6af29ca, before any of it was written), and a step that
 # is known red is a step nobody reads.
-echo "==> 11/17  unit tests for the batched exports and the cart label split"
+echo "==> 11/17  unit tests: batched exports, cart label split, legal page rules"
 vendor/bin/phpunit tests/Unit/Service/UnboundedQueryBatchingTest.php
 vendor/bin/phpunit tests/Unit/Service/OmnibusServiceTest.php
+vendor/bin/phpunit tests/Unit/PageCompliance
 
 echo "==> 12/17  phpcs"
 vendor/bin/phpcs

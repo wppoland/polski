@@ -358,6 +358,26 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
+        // --- Product markings Section ---
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('product_markings')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Product markings', 'polski') . '</h4>';
+
+            woocommerce_wp_checkbox([
+                'id' => '_polski_is_medical_device',
+                'label' => __('Medical device', 'polski'),
+                'description' => __('Prints the statutory medical device notice on the product page.', 'polski'),
+            ]);
+
+            woocommerce_wp_checkbox([
+                'id' => '_polski_is_adults_only',
+                'label' => __('Adults only (18+)', 'polski'),
+                'description' => __('For alcohol, tobacco and similar goods. Prints a notice that the product is sold to adults only.', 'polski'),
+            ]);
+
+            echo '</div>';
+        }
+
         // --- Consumer information Section (Directive 2024/825) ---
         echo '<div class="options_group">';
         echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
@@ -609,6 +629,8 @@ final class ProductMetaBox implements HasHooks
             '_polski_gpsr_product_identifier' => 'string',
             '_polski_gpsr_safety_warnings' => 'textarea',
             '_polski_gpsr_instructions' => 'textarea',
+            '_polski_is_medical_device' => 'checkbox',
+            '_polski_is_adults_only' => 'checkbox',
             '_polski_durability_guarantee_months' => 'int',
             '_polski_update_period_months' => 'int',
             '_polski_repair_info' => 'textarea',
