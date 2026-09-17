@@ -604,6 +604,42 @@ final class NipLookupService implements HasHooks
 
         wp_localize_script('polski-checkout', 'polskiCheckoutParams', $params);
         wp_localize_script('wc-checkout', 'polskiCheckoutParams', $params);
+
+        if (! $this->checkoutUsesBlocks()) {
+            return;
+        }
+
+        // Block checkout renders its inputs from a data store, so the classic
+        // script's DOM writes are discarded on the next render. This one talks
+        // to the store instead.
+        wp_enqueue_script(
+            'polski-nip-block-lookup',
+            \Polski\Plugin::instance()->url('assets/js/nip-block-lookup.js'),
+            ['wp-data'],
+            \Polski\VERSION,
+            ['in_footer' => true, 'strategy' => 'defer'],
+        );
+
+        wp_localize_script('polski-nip-block-lookup', 'polskiNipBlockParams', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => $params['nipNonce'],
+        ]);
+    }
+
+    /**
+     * True when the checkout page is the block checkout.
+     */
+    private function checkoutUsesBlocks(): bool
+    {
+        // Named as a string: the class ships with WooCommerce Blocks, so a
+        // ::class reference makes static analysis assume it is always there.
+        $utils = 'Automattic\\WooCommerce\\Blocks\\Utils\\CartCheckoutUtils';
+
+        if (! is_callable([$utils, 'is_checkout_block_default'])) {
+            return false;
+        }
+
+        return (bool) call_user_func([$utils, 'is_checkout_block_default']);
     }
 
     /**
