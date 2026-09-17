@@ -363,6 +363,7 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 * Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.
 * Fixed: with both the NIP and the B2B checkout modules on, the NIP field was registered by nobody. The NIP module stepped aside "because B2B handles it" and B2B never had a NIP field, so it vanished from block checkout and from My Account.
 * Fixed: a NIP saved in My Account had to be typed again at checkout, and the address summary could show a different number than the edit form. The two screens wrote to two different customer meta keys and nothing bridged them. Every screen now reads and writes the same number.
+* Fixed: entering a NIP on the block checkout did not fill in the company details. The lookup wrote to the DOM ids the shortcode checkout uses, and block checkout renders its inputs from a data store, so anything written that way was discarded on the next render. It now goes through the store, which is what the block fields read.
 * Fixed: My Account > Addresses saved an invalid NIP without a word. WooCommerce checks a custom field's required flag and its type there and nothing else, so the checksum is now checked on that form too.
 
 = 1.38.1 =
