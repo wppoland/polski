@@ -2,6 +2,13 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.38.2 =
+* Fixed: the NIP field accepted anything that was not a number. Sanitising ran before validation and stripped every non-digit, so "abcdef" reached the check as an empty string, and an empty string means "left blank". The customer saw their text accepted, the shop received no NIP. Letters, a too-short number and a wrong checksum are now all rejected, on the checkout and in My Account. Reported by strid3rr on the support forum.
+* Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.
+* Fixed: with both the NIP and the B2B checkout modules on, the NIP field was registered by nobody. The NIP module stepped aside "because B2B handles it" and B2B never had a NIP field, so it vanished from block checkout and from My Account.
+* Fixed: a NIP saved in My Account had to be typed again at checkout, and the address summary could show a different number than the edit form. The two screens wrote to two different customer meta keys and nothing bridged them. Every screen now reads and writes the same number.
+* Fixed: My Account > Addresses saved an invalid NIP without a word. WooCommerce checks a custom field's required flag and its type there and nothing else, so the checksum is now checked on that form too.
+
 = 1.38.1 =
 * Fixed: a product found by the AJAX search dropdown could be missing from the full results page. The dropdown and the results page share the same extra matching (SKU, GTIN, manufacturer, category, ingredients), but on the results page the extra product IDs were being attached to the wrong part of the SQL WHERE clause, the one WordPress adds for logged-out visitors to exclude password-protected posts. For a logged-out shopper, which is nearly every shopper, the results page therefore searched titles and descriptions only, and a password-protected product matching the term would have been listed. Reported by strid3rr on the support forum.
 * Fixed: "View all results" carried the phrase from the response that was on screen, not the phrase in the search box. Typing on and clicking it immediately led to the results for the previous keystroke. The link, and Enter on it, now always use the current contents of the box.

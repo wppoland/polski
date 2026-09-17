@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.38.1
+Stable tag: 1.38.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,13 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.38.2 =
+* Fixed: the NIP field accepted anything that was not a number. Sanitising ran before validation and stripped every non-digit, so "abcdef" reached the check as an empty string, and an empty string means "left blank". The customer saw their text accepted, the shop received no NIP. Letters, a too-short number and a wrong checksum are now all rejected, on the checkout and in My Account. Reported by strid3rr on the support forum.
+* Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.
+* Fixed: with both the NIP and the B2B checkout modules on, the NIP field was registered by nobody. The NIP module stepped aside "because B2B handles it" and B2B never had a NIP field, so it vanished from block checkout and from My Account.
+* Fixed: a NIP saved in My Account had to be typed again at checkout, and the address summary could show a different number than the edit form. The two screens wrote to two different customer meta keys and nothing bridged them. Every screen now reads and writes the same number.
+* Fixed: My Account > Addresses saved an invalid NIP without a word. WooCommerce checks a custom field's required flag and its type there and nothing else, so the checksum is now checked on that form too.
+
 = 1.38.1 =
 * Fixed: a product found by the AJAX search dropdown could be missing from the full results page. The dropdown and the results page share the same extra matching (SKU, GTIN, manufacturer, category, ingredients), but on the results page the extra product IDs were being attached to the wrong part of the SQL WHERE clause, the one WordPress adds for logged-out visitors to exclude password-protected posts. For a logged-out shopper, which is nearly every shopper, the results page therefore searched titles and descriptions only, and a password-protected product matching the term would have been listed. Reported by strid3rr on the support forum.
 * Fixed: "View all results" carried the phrase from the response that was on screen, not the phrase in the search box. Typing on and clicking it immediately led to the results for the previous keystroke. The link, and Enter on it, now always use the current contents of the box.
@@ -466,18 +473,6 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 
 = 1.33.2 =
 * Listing only, no functional change. The short description now names JPK_FA and the NIP lookup, which the plugin has done for a long time without saying so where anyone searching would see it. Tags: "rodo" is dropped, because that search is dominated by cookie and newsletter plugins and this plugin does not appear in it at all, and "jpk" and "zwroty" take its place.
-
-= 1.33.1 =
-* Fixed: the "withdraw from this order" link in the order email did not work for a logged-in customer. It led to "Oops, something went wrong on our side" instead of the form, so the withdrawal could not be started from the email at all. The link never carried a one-time token and the page demanded one. Opening the form changes nothing and the order's owner is checked separately, so the token is no longer required there; the form submission that actually files the declaration keeps its own, unchanged.
-
-= 1.33.0 =
-* New: a GTU marking on the product, under Product data > Polski > Invoicing. Pick one of the thirteen groups from the JPK_V7 regulation, or leave it at no marking. The code is stored with the product and printed against that line on the invoice, so an order mixing marked and unmarked goods says which line the marking belongs to. Shipping and fees never carry one, and a product left unmarked prints nothing.
-
-= 1.32.1 =
-* Fixed: the PRO promo was shown to people who had already bought PRO. It never checked whether the paid plugin was installed, so a paying customer kept being sold the thing they were running. It now disappears as soon as PRO is active.
-* Changed: the "Legal Email Attachments" module is now called "Legal texts in emails", because it attached nothing. It prints the text of your legal pages under the order table in four customer emails. The documentation described PDF files and a per-email-type document matrix that no released version ever had; that page has been rewritten to match the code, and the PDF version is a PRO feature. Reported on GitHub (discussion #49).
-* Changed: the PRO promo now also appears on the Modules, Settings and Reports screens, not only the Dashboard. It stays dismissible and never leaves this plugin's own screens.
-
 
 == Upgrade Notice ==
 
