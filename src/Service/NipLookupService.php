@@ -53,6 +53,15 @@ final class NipLookupService implements HasHooks
         // Save NIP to order meta.
         add_action('woocommerce_checkout_create_order', [$this, 'saveNipToOrder'], 10, 2);
 
+        // And onto the customer, in every key the other forms read.
+        add_action('woocommerce_checkout_update_customer', [$this, 'syncCustomerFromClassicCheckout'], 10, 2);
+
+        // My Account > Addresses > Billing. WooCommerce validates a custom
+        // field's "required" flag and its type there, nothing else, so an
+        // invalid NIP saved without a word until now.
+        add_action('woocommerce_after_save_address_validation', [$this, 'validateSavedAddress'], 10, 4);
+        add_action('woocommerce_customer_save_address', [$this, 'syncCustomerAfterAddressSave'], 20, 2);
+
         // Display NIP in admin order billing section.
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'displayNipInAdmin']);
 
@@ -181,29 +190,37 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        // If B2B module is active, it handles its own NIP field to avoid duplication.
-        if (ModulesPage::isModuleEnabled('b2b_checkout')) {
-            return;
-        }
+        // This used to bail when the B2B module was on, "because B2B handles
+        // its own NIP field". B2B registers needs_invoice, REGON and IBAN and
+        // has never registered a NIP, so with both modules on the field was
+        // registered by nobody and disappeared from block checkout and from
+        // My Account entirely.
 
         $required = $this->nipRequired(true);
 
         woocommerce_register_additional_checkout_field([
             'id' => 'polski/nip',
+            // Contact, not address. A VAT ID belongs to the buyer, not to a
+            // place: at 'address' WooCommerce renders one copy in the billing
+            // form and another in the shipping form, so a customer could enter
+            // two different numbers and nothing compared them.
+            'location' => 'contact',
             'label' => __('NIP', 'polski'),
-            'location' => 'address',
             'type' => 'text',
             'required' => $required,
-            'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/[^0-9]/', '', sanitize_text_field($value)),
+            // Strip formatting only. Stripping every non-digit here turned
+            // "not a number at all" into an empty string, and an empty string
+            // reads as "left blank", so typing letters passed validation
+            // silently and the shop got no NIP.
+            'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/[\s\-]/', '', sanitize_text_field($value)),
             'validate_callback' => static function (string $value) {
-                $clean = (string) preg_replace('/[^0-9]/', '', $value);
-                if ($clean === '') {
+                if (trim($value) === '') {
                     return null;
                 }
-                if (! self::isValidNip($clean)) {
+                if (! self::isValidNip($value)) {
                     return new \WP_Error(
                         'polski_invalid_nip',
-                        __('That VAT ID (NIP) is not valid.', 'polski'),
+                        __('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski'),
                     );
                 }
                 return null;
@@ -239,7 +256,9 @@ final class NipLookupService implements HasHooks
 
     public function mirrorAdditionalFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
     {
-        if (! $this->isEnabled() || $group !== 'billing' || $key !== 'polski/nip') {
+        // 'other' is the group a contact-location field lands in; 'billing' is
+        // kept for values written before the field moved out of the address.
+        if (! $this->isEnabled() || $key !== 'polski/nip' || ! in_array($group, ['billing', 'other'], true)) {
             return;
         }
 
@@ -248,9 +267,19 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        if (is_object($document) && method_exists($document, 'update_meta_data')) {
-            $document->update_meta_data('_billing_nip', $clean);
-            $document->update_meta_data('_polski_billing_nip', $clean);
+        if (! is_object($document) || ! method_exists($document, 'update_meta_data')) {
+            return;
+        }
+
+        $document->update_meta_data('_billing_nip', $clean);
+        $document->update_meta_data('_polski_billing_nip', $clean);
+
+        // The shortcode checkout renders our own billing_nip field, and
+        // WooCommerce fills that from customer meta of the same name. Without
+        // this line a NIP saved in My Account was invisible at checkout and had
+        // to be typed again, because the two forms wrote to different keys.
+        if ($document instanceof \WC_Customer) {
+            $document->update_meta_data('billing_nip', $clean);
         }
     }
 
@@ -286,6 +315,95 @@ final class NipLookupService implements HasHooks
             $clean = (string) preg_replace('/[^0-9]/', '', $nip);
             $order->update_meta_data('_billing_nip', $clean);
             $order->update_meta_data('_polski_billing_nip', $clean);
+        }
+    }
+
+    /**
+     * Reject an invalid NIP on the edit-address form.
+     *
+     * @param int $userId
+     * @param string $loadAddress Which address is being saved: billing or shipping.
+     * @param array<string, mixed> $address
+     * @param \WC_Customer|null $customer
+     */
+    public function validateSavedAddress(int $userId, string $loadAddress, array $address, mixed $customer = null): void
+    {
+        unset($userId, $customer);
+
+        if ($loadAddress !== 'billing') {
+            return;
+        }
+
+        $nip = sanitize_text_field((string) ($address['billing_nip'] ?? ''));
+
+        if (trim($nip) === '') {
+            return;
+        }
+
+        if (! self::isValidNip($nip)) {
+            wc_add_notice(
+                __('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski'),
+                'error',
+            );
+        }
+    }
+
+    /**
+     * Keep the edit-address form and the block checkout on the same value.
+     *
+     * The form writes customer meta billing_nip; WooCommerce's own field, which
+     * renders the address summary and the block checkout, reads its own key.
+     * Writing one and not the other is why the number shown in the summary and
+     * the number in the edit form could differ.
+     */
+    public function syncCustomerAfterAddressSave(int $userId, string $loadAddress): void
+    {
+        if ($loadAddress !== 'billing' || $userId <= 0) {
+            return;
+        }
+
+        $customer = new \WC_Customer($userId);
+        $clean = (string) preg_replace('/[^0-9]/', '', (string) $customer->get_meta('billing_nip', true));
+
+        if ($clean === '' || ! self::isValidNip($clean)) {
+            return;
+        }
+
+        foreach (['_billing_nip', '_polski_billing_nip', '_wc_other/polski/nip'] as $key) {
+            $customer->update_meta_data($key, $clean);
+        }
+
+        // The field lived in the address group before it moved to contact.
+        // Clearing the old copy stops the summary rendering a stale number.
+        $customer->delete_meta_data('_wc_billing/polski/nip');
+        $customer->save();
+    }
+
+    /**
+     * Carry a NIP typed on the shortcode checkout back to the customer.
+     *
+     * WooCommerce stores the shortcode field under customer meta billing_nip,
+     * while the block checkout and My Account read WooCommerce's own
+     * additional-field key. Writing only one of them is what made the number
+     * appear in one screen and stay blank in the other.
+     *
+     * @param \WC_Customer $customer
+     * @param array<string, mixed> $data
+     */
+    public function syncCustomerFromClassicCheckout(\WC_Customer $customer, array $data): void
+    {
+        $nip = isset($data['billing_nip'])
+            ? sanitize_text_field((string) $data['billing_nip'])
+            : sanitize_text_field(wp_unslash($_POST['billing_nip'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC verifies the checkout nonce.
+
+        $clean = (string) preg_replace('/[^0-9]/', '', $nip);
+
+        if ($clean === '' || ! self::isValidNip($clean)) {
+            return;
+        }
+
+        foreach (['billing_nip', '_billing_nip', '_polski_billing_nip', '_wc_other/polski/nip'] as $key) {
+            $customer->update_meta_data($key, $clean);
         }
     }
 
