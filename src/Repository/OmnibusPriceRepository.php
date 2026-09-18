@@ -62,11 +62,13 @@ class OmnibusPriceRepository
             $wpdb->prepare(
                 'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
+                   AND currency = %s
                  ORDER BY price ASC
                  LIMIT 1',
                 $this->tableName(),
                 $productId,
                 $this->gmDateDaysAgo($days),
+                $this->currentCurrency(),
             ),
         );
 
@@ -98,12 +100,14 @@ class OmnibusPriceRepository
                 $wpdb->prepare(
                     'SELECT * FROM %i
                      WHERE product_id = %d AND recorded_at >= %s AND recorded_at < %s
+                       AND currency = %s
                      ORDER BY COALESCE(sale_price, price) ASC
                      LIMIT 1',
                     $this->tableName(),
                     $productId,
                     $this->gmDateDaysBefore($beforeGmt, $days),
                     $beforeGmt,
+                    $this->currentCurrency(),
                 ),
             );
 
@@ -115,11 +119,13 @@ class OmnibusPriceRepository
             $wpdb->prepare(
                 'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
+                   AND currency = %s
                  ORDER BY COALESCE(sale_price, price) ASC
                  LIMIT 1',
                 $this->tableName(),
                 $productId,
                 $this->gmDateDaysAgo($days),
+                $this->currentCurrency(),
             ),
         );
 
@@ -175,13 +181,18 @@ class OmnibusPriceRepository
                  SELECT product_id, MIN(COALESCE(sale_price, price)) AS lowest
                  FROM %i
                  WHERE product_id IN ({$idPlaceholders}) AND recorded_at >= %s
+                   AND currency = %s
                  GROUP BY product_id
              ) t2
                  ON t1.product_id = t2.product_id
                  AND COALESCE(t1.sale_price, t1.price) = t2.lowest
-             WHERE t1.recorded_at >= %s
+             WHERE t1.recorded_at >= %s AND t1.currency = %s
              ORDER BY t1.recorded_at DESC",
-            ...array_merge([$table, $table], $cleanIds, [$cutoff, $cutoff]),
+            ...array_merge(
+                [$table, $table],
+                $cleanIds,
+                [$cutoff, $this->currentCurrency(), $cutoff, $this->currentCurrency()],
+            ),
         );
         // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
 
@@ -218,10 +229,12 @@ class OmnibusPriceRepository
             $wpdb->prepare(
                 'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
+                   AND currency = %s
                  ORDER BY recorded_at DESC',
                 $this->tableName(),
                 $productId,
                 $this->gmDateDaysAgo($days),
+                $this->currentCurrency(),
             ),
         );
 
@@ -313,5 +326,18 @@ class OmnibusPriceRepository
         $ts = strtotime("-{$days} days", $base !== false ? $base : time());
 
         return gmdate('Y-m-d H:i:s', $ts !== false ? $ts : time());
+    }
+
+    /**
+     * The shop's currency right now.
+     *
+     * The notice and the chart are comparisons, and amounts in different
+     * currencies do not compare. A shop that switches currency, or a
+     * multi-currency plugin that switches it per request, starts a fresh
+     * 30-day window instead of quoting a number in the wrong money.
+     */
+    private function currentCurrency(): string
+    {
+        return function_exists('get_woocommerce_currency') ? (string) get_woocommerce_currency() : 'PLN';
     }
 }
