@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Polski\PageCompliance;
 
+use Polski\Util\SafeHttp;
 use Polski\Contract\HasHooks;
 use Polski\Enum\LegalPageType;
 use Polski\PageCompliance\Enum\Severity;
@@ -170,7 +171,8 @@ final class PageComplianceService implements HasHooks
             return $cached;
         }
 
-        $response = wp_remote_get($url, [
+        // Retried once on a timeout or a 5xx. Reading a page of the shop's own site to analyse it.
+        $response = SafeHttp::get($url, [
             'timeout' => 10,
             'redirection' => 3,
             'user-agent' => 'polski-page-compliance/1.0',

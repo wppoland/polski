@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.38.3 =
+* Fixed: a single timed-out call to an external register was reported to the customer as a definite answer. A GUS lookup that never got through said "no data found for that VAT ID", and a VIES check that timed out read as a failed check. Calls that are safe to repeat, the GUS lookup, the VIES check, the legal-page fetch and the social-login profile read, are now retried once after a timeout or a 5xx. Writes are not retried, so nothing is posted, charged or consumed twice.
+
 = 1.38.2 =
 * Fixed: the NIP field accepted anything that was not a number. Sanitising ran before validation and stripped every non-digit, so "abcdef" reached the check as an empty string, and an empty string means "left blank". The customer saw their text accepted, the shop received no NIP. Letters, a too-short number and a wrong checksum are now all rejected, on the checkout and in My Account. Reported by strid3rr on the support forum.
 * Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.

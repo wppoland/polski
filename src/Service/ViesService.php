@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Polski\Service;
 
+use Polski\Util\SafeHttp;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 
@@ -150,7 +151,8 @@ final class ViesService implements HasHooks
             ], $url);
         }
 
-        $response = wp_remote_get($url, [
+        // Retried once on a timeout or a 5xx. A VAT number check is a read.
+        $response = SafeHttp::get($url, [
             'timeout' => 10,
             'headers' => ['Accept' => 'application/json'],
         ]);

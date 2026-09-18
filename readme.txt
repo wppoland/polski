@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.38.2
+Stable tag: 1.38.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.38.3 =
+* Fixed: a single timed-out call to an external register was reported to the customer as a definite answer. A GUS lookup that never got through said "no data found for that VAT ID", and a VIES check that timed out read as a failed check. Calls that are safe to repeat, the GUS lookup, the VIES check, the legal-page fetch and the social-login profile read, are now retried once after a timeout or a 5xx. Writes are not retried, so nothing is posted, charged or consumed twice.
+
 = 1.38.2 =
 * Fixed: the NIP field accepted anything that was not a number. Sanitising ran before validation and stripped every non-digit, so "abcdef" reached the check as an empty string, and an empty string means "left blank". The customer saw their text accepted, the shop received no NIP. Letters, a too-short number and a wrong checksum are now all rejected, on the checkout and in My Account. Reported by strid3rr on the support forum.
 * Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.
@@ -466,14 +469,6 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 
 = 1.34.1 =
 * Corrected the PRO price shown in two places: this readme and the upgrade panel inside the plugin both said 69 EUR per year, and the charge is 99 EUR. Freemius is what actually bills and it was changed first, so for a short window both quoted a price the checkout did not honour. Nothing about the free plugin itself changes.
-
-= 1.34.0 =
-* Fixed: six modules had a service in the plugin and no card on the Modules screen, so there was no way to switch them on: the compliance checklist, the business identification block, the complaint form template, the copyright and image credit shortcodes, the SBOM generator and the RODO training documents. Each now has a card, keeping the state it already defaulted to, so nothing changes on a shop until the merchant turns it on.
-* New: the modules registry and the module default states run through the `polski/modules` and `polski/module_defaults` filters, so an add-on can put its own cards on the Modules screen instead of gating a feature on a switch that exists nowhere.
-* A release check (tests/module-ids-are-reachable-check.php) now fails when a module id has a default state but no card in either plugin, which is what let this happen.
-
-= 1.33.2 =
-* Listing only, no functional change. The short description now names JPK_FA and the NIP lookup, which the plugin has done for a long time without saying so where anyone searching would see it. Tags: "rodo" is dropped, because that search is dominated by cookie and newsletter plugins and this plugin does not appear in it at all, and "jpk" and "zwroty" take its place.
 
 == Upgrade Notice ==
 

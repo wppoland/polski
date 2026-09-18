@@ -1284,3 +1284,39 @@ if (! function_exists('wp_date')) {
 }
 
 
+
+if (! function_exists('wp_remote_get')) {
+    /**
+     * Test doubles for the HTTP layer. Each call shifts the next canned answer
+     * off $GLOBALS['polski_http_queue'] and records that it happened, which is
+     * how SafeHttpTest can tell one attempt from two.
+     *
+     * @param array<string, mixed> $args
+     * @return array<string, mixed>|WP_Error
+     */
+    function wp_remote_get(string $url, array $args = []): array|WP_Error
+    {
+        $GLOBALS['polski_http_calls'][] = ['GET', $url, $args];
+
+        return array_shift($GLOBALS['polski_http_queue']) ?? ['response' => ['code' => 200], 'body' => ''];
+    }
+
+    /**
+     * @param array<string, mixed> $args
+     * @return array<string, mixed>|WP_Error
+     */
+    function wp_remote_post(string $url, array $args = []): array|WP_Error
+    {
+        $GLOBALS['polski_http_calls'][] = ['POST', $url, $args];
+
+        return array_shift($GLOBALS['polski_http_queue']) ?? ['response' => ['code' => 200], 'body' => ''];
+    }
+
+    /**
+     * @param array<string, mixed>|WP_Error $response
+     */
+    function wp_remote_retrieve_response_code(array|WP_Error $response): int
+    {
+        return is_array($response) ? (int) ($response['response']['code'] ?? 0) : 0;
+    }
+}

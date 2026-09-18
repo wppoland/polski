@@ -5,6 +5,7 @@ namespace Polski\Service;
 
 defined('ABSPATH') || exit;
 
+use Polski\Util\SafeHttp;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 
@@ -432,11 +433,13 @@ final class SocialLoginService implements HasHooks
     private function getUserProfile(string $provider, string $accessToken): ?array
     {
         if ($provider === 'google') {
-            $response = wp_remote_get('https://www.googleapis.com/oauth2/v2/userinfo', [
+            // Retried once on a timeout or a 5xx. Reading the profile of an already-authenticated user.
+            $response = SafeHttp::get('https://www.googleapis.com/oauth2/v2/userinfo', [
                 'headers' => ['Authorization' => 'Bearer ' . $accessToken],
             ]);
         } elseif ($provider === 'facebook') {
-            $response = wp_remote_get('https://graph.facebook.com/v18.0/me?' . http_build_query([
+            // Retried once on a timeout or a 5xx. Reading the profile of an already-authenticated user.
+            $response = SafeHttp::get('https://graph.facebook.com/v18.0/me?' . http_build_query([
                 'fields' => 'id,name,email,first_name,last_name',
                 'access_token' => $accessToken,
             ]));
