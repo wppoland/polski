@@ -5,6 +5,7 @@ namespace Polski\Service;
 
 defined('ABSPATH') || exit;
 
+use Polski\Util\SafeHttp;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 
@@ -490,7 +491,8 @@ final class NipLookupService implements HasHooks
             . '</soap:Body>'
             . '</soap:Envelope>';
 
-        $loginResponse = wp_remote_post($url, [
+        // Retried once on a timeout or a 5xx. GUS opens a session; a lost one is simply reopened.
+        $loginResponse = SafeHttp::post($url, [
             'timeout'   => 10,
             'sslverify' => true,
             'headers'   => [
@@ -523,7 +525,8 @@ final class NipLookupService implements HasHooks
             . '</soap:Body>'
             . '</soap:Envelope>';
 
-        $searchResponse = wp_remote_post($url, [
+        // Retried once on a timeout or a 5xx. A GUS lookup is a read, POST is only how SOAP carries it.
+        $searchResponse = SafeHttp::post($url, [
             'timeout'   => 10,
             'sslverify' => true,
             'headers'   => [
