@@ -18,34 +18,34 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-echo "==> 1/18  boot timing and duplicated admin_post handlers"
+echo "==> 1/19  boot timing and duplicated admin_post handlers"
 php tests/boot-timing-check.php
 
-echo "==> 2/18  every settings key has a reader"
+echo "==> 2/19  every settings key has a reader"
 php tests/settings-are-read-check.php
 
-echo "==> 3/18  every module id has a card that can switch it on"
+echo "==> 3/19  every module id has a card that can switch it on"
 php tests/module-ids-are-reachable-check.php
 
-echo "==> 4/18  readme.txt Changelog under the wp.org truncation limit"
+echo "==> 4/19  readme.txt Changelog under the wp.org truncation limit"
 php tests/readme-changelog-length-check.php
 
-echo "==> 5/18  product meta fields are rendered and saved"
+echo "==> 5/19  product meta fields are rendered and saved"
 php tests/product-meta-render-save-check.php
 
-echo "==> 6/18  public (nopriv) handlers are guarded by their module"
+echo "==> 6/19  public (nopriv) handlers are guarded by their module"
 php tests/nopriv-handlers-are-guarded-check.php
 
-echo "==> 7/18  taxonomies follow their module toggles"
+echo "==> 7/19  taxonomies follow their module toggles"
 php tests/taxonomies-follow-module-toggles-check.php
 
-echo "==> 8/18  withdrawal lookup texts are translatable"
+echo "==> 8/19  withdrawal lookup texts are translatable"
 php tests/withdrawal-lookup-texts-check.php
 
-echo "==> 9/18  structured data: salt is converted, no private keys leak"
+echo "==> 9/19  structured data: salt is converted, no private keys leak"
 php tests/schema-structured-data-check.php
 
-echo "==> 10/18  products are queried by 'include', never by 'post__in'"
+echo "==> 10/19  products are queried by 'include', never by 'post__in'"
 php tests/product-query-args-check.php
 
 # The two stock-export tests in this class are what actually caught the 1.37.5
@@ -54,18 +54,18 @@ php tests/product-query-args-check.php
 # file runs, not the suite: three OmnibusBatchLoaderTest failures predate this
 # gate (they are red at 6af29ca, before any of it was written), and a step that
 # is known red is a step nobody reads.
-echo "==> 11/18  unit tests: batched exports, cart label split, legal page rules"
+echo "==> 11/19  unit tests: batched exports, cart label split, legal page rules"
 vendor/bin/phpunit tests/Unit/Service/UnboundedQueryBatchingTest.php
 vendor/bin/phpunit tests/Unit/Service/OmnibusServiceTest.php
 vendor/bin/phpunit tests/Unit/PageCompliance
 
-echo "==> 12/18  phpcs"
+echo "==> 12/19  phpcs"
 vendor/bin/phpcs
 
-echo "==> 13/18  phpstan (memory 2G)"
+echo "==> 13/19  phpstan (memory 2G)"
 php -d memory_limit=2G vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress
 
-echo "==> 14/18  runtime fatal smoke (wp-env)"
+echo "==> 14/19  runtime fatal smoke (wp-env)"
 npx @wordpress/env start >/dev/null 2>&1 || true
 # PRO would gate the admin behind a Freemius license screen; the smoke exercises
 # the FREE plugin's code directly, so deactivate PRO for a deterministic run.
@@ -77,19 +77,22 @@ npx @wordpress/env run cli wp eval-file wp-content/plugins/polski/scripts/smoke-
 # field plus the additional-fields copy WooCommerce renders there itself), and
 # three services dropped their CLASSIC registration whenever the additional-
 # fields API existed, which emptied the shortcode checkout from WC 8.6 on.
-echo "==> 15/18  address form has no duplicates, classic checkout keeps its fields"
+echo "==> 15/19  address form has no duplicates, classic checkout keeps its fields"
 for module in nip_lookup b2b_checkout custom_checkout_fields withdrawal; do
   npx @wordpress/env run cli wp option patch insert polski_modules "${module}" 1 >/dev/null
 done
 npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/address-fields-no-duplicates-check.php
 
-echo "==> 16/18  the NIP field registers once and means one number"
+echo "==> 16/19  the NIP field registers once and means one number"
 npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/nip-field-consistency-check.php
 
-echo "==> 17/18  WordPress Plugin Check"
+echo "==> 17/19  the lowest price only ever compares one currency"
+npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/omnibus-currency-window-check.php
+
+echo "==> 18/19  WordPress Plugin Check"
 bash scripts/plugin-check.sh
 
-echo "==> 18/18  package contents and header/readme agreement"
+echo "==> 19/19  package contents and header/readme agreement"
 bash scripts/prepare-wporg-release.sh /tmp/polski-preflight-package >/dev/null
 bash scripts/assert-package-clean.sh /tmp/polski-preflight-package
 rm -rf /tmp/polski-preflight-package
