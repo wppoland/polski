@@ -562,20 +562,32 @@ final class CheckboxService implements Bootable, HasHooks
     {
         $allOverrides = $this->loadOverrides();
 
-        // Also merge legacy checkout settings for enabled/disabled state.
-        $checkoutSettings = get_option('polski_checkout', []);
-        if (is_array($checkoutSettings)) {
-            foreach ($this->getCoreIds() as $coreId) {
-                $key = $coreId . '_checkbox_enabled';
-                if (isset($checkoutSettings[$key])) {
-                    if (! isset($allOverrides[$coreId])) {
-                        $allOverrides[$coreId] = [];
-                    }
-                    // Legacy setting only applies if no explicit override exists.
-                    if (! isset($allOverrides[$coreId]['enabled'])) {
-                        $allOverrides[$coreId]['enabled'] = (bool) $checkoutSettings[$key];
-                    }
-                }
+        // Which checkboxes the checkout screen has switched on. Written out key
+        // by key rather than composed from the id at runtime: a key that only
+        // exists while the request runs is invisible to a reader, and to the
+        // check that hunts for settings nothing reads. Two of these sat on that
+        // check's accepted-debt list for exactly that reason.
+        $checkout = get_option('polski_checkout', []);
+        $checkout = is_array($checkout) ? $checkout : [];
+
+        $enabledStates = [
+            'terms' => $checkout['terms_checkbox_enabled'] ?? null,
+            'privacy' => $checkout['privacy_checkbox_enabled'] ?? null,
+            'withdrawal' => $checkout['withdrawal_checkbox_enabled'] ?? null,
+            'digital_waiver' => $checkout['digital_waiver_checkbox_enabled'] ?? null,
+            'parcel_delivery' => $checkout['parcel_delivery_checkbox_enabled'] ?? null,
+            'review_reminder' => $checkout['review_reminder_checkbox_enabled'] ?? null,
+            'marketing' => $checkout['marketing_checkbox_enabled'] ?? null,
+        ];
+
+        foreach ($enabledStates as $coreId => $enabled) {
+            if ($enabled === null) {
+                continue;
+            }
+
+            // An explicit override, set per checkbox, wins over the screen.
+            if (! isset($allOverrides[$coreId]['enabled'])) {
+                $allOverrides[$coreId]['enabled'] = (bool) $enabled;
             }
         }
 

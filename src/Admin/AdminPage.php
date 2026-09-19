@@ -958,23 +958,52 @@ final class AdminPage implements Bootable, HasHooks
         // Status cards.
         echo '<div class="polski-dashboard" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:20px;">';
 
+        // The wording of these cards is editable on the modules screen. It was
+        // editable and ignored: the screen offered thirteen of these keys and
+        // the cards drew their own literals, so a merchant who rewrote one saw
+        // no change. Two of the cards, VAT and double opt-in, were missing
+        // altogether while the page still computed their state.
+        $statusActive = (string) ($generalSettings['admin_status_active'] ?? __('Active', 'polski'));
+        $statusInactive = (string) ($generalSettings['admin_status_inactive'] ?? __('Inactive', 'polski'));
+
         $this->renderStatusCard(
             'WooCommerce',
-            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : __('Inactive', 'polski'),
+            defined('WC_VERSION') ? sprintf('v%s - OK', WC_VERSION) : $statusInactive,
             defined('WC_VERSION'),
         );
 
         $this->renderStatusCard(
-            __('Legal Pages', 'polski'),
-            /* translators: 1: number of configured legal pages, 2: total number of required legal pages. */
-            sprintf(__('%1$d of %2$d ready', 'polski'), $configuredCount, count($pageStatus)),
+            (string) ($generalSettings['admin_legal_pages_card_title'] ?? __('Legal Pages', 'polski')),
+            $configuredCount === 0
+                ? (string) ($generalSettings['admin_status_unconfigured'] ?? __('Not configured', 'polski'))
+                : str_replace(
+                    ['{done}', '{total}'],
+                    [(string) $configuredCount, (string) count($pageStatus)],
+                    (string) ($generalSettings['admin_legal_pages_card_progress'] ?? '')
+                        /* translators: 1: number of configured legal pages, 2: total number of required legal pages. */
+                        ?: sprintf(__('%1$d of %2$d ready', 'polski'), $configuredCount, count($pageStatus)),
+                ),
             $allPagesConfigured,
         );
 
         $this->renderStatusCard(
             __('Omnibus Directive', 'polski'),
-            $omnibusEnabled ? __('Active', 'polski') : __('Disabled', 'polski'),
+            $omnibusEnabled ? $statusActive : $statusInactive,
             $omnibusEnabled,
+        );
+
+        $this->renderStatusCard(
+            (string) ($generalSettings['admin_vat_card_title'] ?? __('VAT', 'polski')),
+            $isSmallBusiness
+                ? (string) ($generalSettings['admin_vat_small_business_text'] ?? __('Small business scheme, no VAT charged', 'polski'))
+                : (string) ($generalSettings['admin_vat_standard_text'] ?? __('Standard VAT', 'polski')),
+            null,
+        );
+
+        $this->renderStatusCard(
+            (string) ($generalSettings['admin_doi_card_title'] ?? __('Double opt-in', 'polski')),
+            $doiEnabled ? $statusActive : $statusInactive,
+            $doiEnabled,
         );
 
         $this->renderStatusCard(

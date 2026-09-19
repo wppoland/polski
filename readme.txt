@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.38.4
+Stable tag: 1.39.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,13 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.39.0 =
+* Fixed: nine settings on the modules screen changed nothing when edited. The withdrawal form drew its own headings and ignored the order items heading, the product and quantity column labels and the exemption notice; it never printed the legal notice at all. The two order notes the module writes ignored their wording settings. Editing any of them looked like it worked, saved, and did nothing.
+* Fixed: the dashboard status cards ignored all thirteen wording settings offered for them, and the VAT and double opt-in cards were missing entirely while the page still worked out what they would have said. Both cards are back, and every card now uses the wording from the screen.
+* Fixed: the DSA report form ignored its success message setting.
+* Removed: the withdrawal "Price column" setting named a column the form does not have.
+* Note for anyone who edited those fields before this release: your wording was stored the whole time and takes effect now, so check it says what you want.
+
 = 1.38.4 =
 * Fixed: the lowest-price notice could quote a figure in a currency the shop no longer uses. The price history records the currency of every snapshot, but the lookups ignored that column, so a shop that switched currency, or a multi-currency plugin that switches it per request, would show "lowest price in the last 30 days" in one currency beside a selling price in another. Two amounts in different currencies do not compare, and that notice is a comparison, so the window, the archive lookup and the price history chart now all read one currency: the shop's current one. A shop that switches starts a fresh 30-day window.
 
@@ -461,17 +468,6 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 
 = 1.36.0 =
 * Added: the NIP field can now be required by what is in the cart, not only by the shop-wide switch. One place decides and it is filterable (`polski/nip_required`), so a paid rule that marks a product as needing the buyer's VAT ID on the receipt can make the field mandatory for that order. Enforced on both the classic and the block checkout, since the block field is registered before a cart exists and its own required flag cannot see one.
-
-= 1.35.0 =
-* Fixed: the DSA report form's handler was registered for logged-out visitors whether or not the module was on. With the module off the table it writes to may not exist, so an anonymous submission was lost while the sender was still redirected to a thank-you page, and the shop notification was still sent. Nothing is registered now unless the module is on, and a check covers every public handler in the plugin so this cannot come back unnoticed.
-* Fixed: Quick View answered its AJAX call and rendered product markup even when the module was switched off. Its other three callbacks already checked; this one did not.
-* Fixed: searching by barcode missed WooCommerce's own GTIN field. The search matched only the plugin's fallback meta key, so a shop that filled in the GTIN field WooCommerce added in 8.4 could not find the product by its barcode at all.
-* Fixed: the environmental claim fields collected a claim's basis, its certificate link and an expiry date, and then showed none of it to anybody. The substantiation now appears on the product page. An expired certificate is labelled as expired rather than quietly presented as current proof, which is the failure the directive is about.
-* Added: `polski_gtin` as a CSV import and export column. The meta key behind it was read in six places and written by nothing, and the documentation already promised a column for it.
-* Docs: rewrote the CSV import and export page in all four languages. It listed about forty columns that do not exist, three filters the plugin never registered, and a validation pass that does not run. The column table is now generated from the plugin's own map, so it cannot drift again.
-
-= 1.34.1 =
-* Corrected the PRO price shown in two places: this readme and the upgrade panel inside the plugin both said 69 EUR per year, and the charge is 99 EUR. Freemius is what actually bills and it was changed first, so for a short window both quoted a price the checkout did not honour. Nothing about the free plugin itself changes.
 
 == Upgrade Notice ==
 

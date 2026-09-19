@@ -29,7 +29,7 @@ $polski_prefill_label = isset($polski_prefill_label) ? (string) $polski_prefill_
     <?php // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only success flag. ?>
     <?php if (isset($_GET['polski_dsa_sent'])) : ?>
         <div class="polski-dsa-report-form__success">
-            <p><?php echo esc_html__('Thank you. Your report has been sent and will be reviewed.', 'polski'); ?></p>
+            <p><?php echo esc_html((string) ($polski_settings['success_text'] ?? __('Thank you. Your report has been sent and will be reviewed.', 'polski'))); ?></p>
         </div>
     <?php endif; ?>
     <?php // phpcs:enable WordPress.Security.NonceVerification.Recommended ?>

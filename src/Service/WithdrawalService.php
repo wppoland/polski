@@ -377,13 +377,17 @@ final class WithdrawalService implements Bootable, HasHooks
                     ? sprintf('%s (#%d)', $actor->user_login, $actor->ID)
                     : __('system', 'polski');
 
+                $confirmedOpening = trim((string) ($this->getSettings()['confirmed_order_note'] ?? ''));
+
                 $order->add_order_note(
-                    sprintf(
-                        /* translators: 1: declaration id, 2: actor label */
-                        __('[Polski] Withdrawal request #%1$d confirmed by %2$s.', 'polski'),
-                        $request->id,
-                        $actorLabel,
-                    ),
+                    $confirmedOpening !== ''
+                        ? sprintf('[Polski] #%1$d %2$s (%3$s)', $request->id, $confirmedOpening, $actorLabel)
+                        : sprintf(
+                            /* translators: 1: declaration id, 2: actor label */
+                            __('[Polski] Withdrawal request #%1$d confirmed by %2$s.', 'polski'),
+                            $request->id,
+                            $actorLabel,
+                        ),
                     1,
                     true,
                 );
@@ -503,11 +507,17 @@ final class WithdrawalService implements Bootable, HasHooks
      */
     private function formatRequestedNote(WithdrawalRequest $request, ?string $reason, array $resolved): string
     {
-        $note = sprintf(
-            /* translators: %d: declaration id */
-            __('[Polski] Withdrawal request #%d filed by customer.', 'polski'),
-            $request->id,
-        );
+        // The opening line is a setting. It was declared from the start and
+        // read by nothing, so a shop that rewrote it kept seeing ours.
+        $opening = trim((string) ($this->getSettings()['requested_order_note'] ?? ''));
+
+        $note = $opening !== ''
+            ? sprintf('[Polski] #%d %s', $request->id, $opening)
+            : sprintf(
+                /* translators: %d: declaration id */
+                __('[Polski] Withdrawal request #%d filed by customer.', 'polski'),
+                $request->id,
+            );
 
         if ($resolved !== []) {
             $lines = [];

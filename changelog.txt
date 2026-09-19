@@ -2,6 +2,13 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.39.0 =
+* Fixed: nine settings on the modules screen changed nothing when edited. The withdrawal form drew its own headings and ignored the order items heading, the product and quantity column labels and the exemption notice; it never printed the legal notice at all. The two order notes the module writes ignored their wording settings. Editing any of them looked like it worked, saved, and did nothing.
+* Fixed: the dashboard status cards ignored all thirteen wording settings offered for them, and the VAT and double opt-in cards were missing entirely while the page still worked out what they would have said. Both cards are back, and every card now uses the wording from the screen.
+* Fixed: the DSA report form ignored its success message setting.
+* Removed: the withdrawal "Price column" setting named a column the form does not have.
+* Note for anyone who edited those fields before this release: your wording was stored the whole time and takes effect now, so check it says what you want.
+
 = 1.38.4 =
 * Fixed: the lowest-price notice could quote a figure in a currency the shop no longer uses. The price history records the currency of every snapshot, but the lookups ignored that column, so a shop that switched currency, or a multi-currency plugin that switches it per request, would show "lowest price in the last 30 days" in one currency beside a selling price in another. Two amounts in different currencies do not compare, and that notice is a comparison, so the window, the archive lookup and the price history chart now all read one currency: the shop's current one. A shop that switches starts a fresh 30-day window.
 

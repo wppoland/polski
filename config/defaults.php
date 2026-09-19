@@ -153,7 +153,6 @@ return [
         'items_heading' => __('Items in the order', 'polski'),
         'column_product' => __('Product', 'polski'),
         'column_quantity' => __('Quantity', 'polski'),
-        'column_price' => __('Price', 'polski'),
         'exempt_notice_text' => __('(This product is excluded from the right of withdrawal)', 'polski'),
         'reason_label' => __('Reason for withdrawal (optional)', 'polski'),
         'submit_button_text' => __('Send the withdrawal declaration', 'polski'),

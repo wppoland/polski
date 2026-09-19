@@ -22,6 +22,9 @@ defined('ABSPATH') || exit;
 $polski_settings = get_option('polski_withdrawal', []);
 $polski_settings = is_array($polski_settings) ? $polski_settings : [];
 $polski_intro_text = (string) ($polski_settings['form_intro_text'] ?? __('You are filing a withdrawal declaration for order #{order_number} placed on {order_date}.', 'polski'));
+$polski_column_product = (string) ($polski_settings['column_product'] ?? __('Item', 'polski'));
+$polski_column_quantity = (string) ($polski_settings['column_quantity'] ?? __('Units to return', 'polski'));
+$polski_exempt_notice = (string) ($polski_settings['exempt_notice_text'] ?? __('Excluded from return', 'polski'));
 $polski_order_date = $polski_order->get_date_created();
 $polski_intro_text = str_replace(
     ['{order_number}', '{order_date}'],
@@ -44,6 +47,13 @@ $polski_intro_text = str_replace(
 
     <p class="polski-withdrawal-form__info"><?php echo esc_html($polski_intro_text); ?></p>
 
+    <?php
+    $polski_legal_notice = trim((string) ($polski_settings['legal_notice_text'] ?? ''));
+    if ($polski_legal_notice !== '') :
+        ?>
+        <p class="polski-withdrawal-form__legal"><?php echo esc_html($polski_legal_notice); ?></p>
+    <?php endif; ?>
+
     <?php if ($polski_remaining_items === []) : ?>
         <p role="status">
             <?php esc_html_e('Every item in this order is already covered by a withdrawal or does not qualify for return.', 'polski'); ?>
@@ -52,7 +62,7 @@ $polski_intro_text = str_replace(
         <form method="post" action="<?php echo esc_url($polski_form_action); ?>" novalidate>
             <fieldset>
                 <legend>
-                    <h3 style="display:inline; margin:0;"><?php esc_html_e('Step 1. Choose the items to withdraw from', 'polski'); ?></h3>
+                    <h3 style="display:inline; margin:0;"><?php echo esc_html((string) ($polski_settings['items_heading'] ?? __('Step 1. Choose the items to withdraw from', 'polski'))); ?></h3>
                 </legend>
 
                 <p style="color:#475569;">
@@ -74,9 +84,9 @@ $polski_intro_text = str_replace(
                     </caption>
                     <thead>
                         <tr>
-                            <th scope="col"><?php esc_html_e('Item', 'polski'); ?></th>
+                            <th scope="col"><?php echo esc_html($polski_column_product); ?></th>
                             <th scope="col"><?php esc_html_e('Remaining', 'polski'); ?></th>
-                            <th scope="col"><?php esc_html_e('Units to return', 'polski'); ?></th>
+                            <th scope="col"><?php echo esc_html($polski_column_quantity); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +97,7 @@ $polski_intro_text = str_replace(
                         $polski_exempt_reason = $polski_is_exempt ? (string) ($polski_item['exempt_reason'] ?? '') : '';
                     ?>
                         <tr<?php echo $polski_is_exempt ? ' class="polski-withdrawal-item--exempt" aria-disabled="true"' : ''; ?>>
-                            <th scope="row" style="text-align: left;<?php echo $polski_is_exempt ? ' opacity:0.65;' : ''; ?>" data-label="<?php esc_attr_e('Item', 'polski'); ?>">
+                            <th scope="row" style="text-align: left;<?php echo $polski_is_exempt ? ' opacity:0.65;' : ''; ?>" data-label="<?php echo esc_attr($polski_column_product); ?>">
                                 <label for="<?php echo esc_attr($polski_field_id); ?>">
                                     <strong><?php echo esc_html((string) $polski_item['name']); ?></strong>
                                 </label>
@@ -100,7 +110,7 @@ $polski_intro_text = str_replace(
                                 <?php if ($polski_is_exempt) : ?>
                                     <br>
                                     <span class="polski-withdrawal-item__exempt-badge" style="display:inline-block;margin-top:0.25rem;padding:0.15rem 0.45rem;border-radius:0.25rem;background:#fef3c7;color:#92400e;font-size:0.85em;">
-                                        <?php esc_html_e('Excluded from return', 'polski'); ?><?php if ($polski_exempt_reason !== '') : ?>: <?php echo esc_html($polski_exempt_reason); ?><?php endif; ?>
+                                        <?php echo esc_html($polski_exempt_notice); ?><?php if ($polski_exempt_reason !== '') : ?>: <?php echo esc_html($polski_exempt_reason); ?><?php endif; ?>
                                     </span>
                                 <?php endif; ?>
                             </th>
@@ -109,7 +119,7 @@ $polski_intro_text = str_replace(
                                     <?php echo esc_html((string) $polski_item['quantity_remaining']); ?> / <?php echo esc_html((string) $polski_item['quantity_total']); ?>
                                 </span>
                             </td>
-                            <td data-label="<?php esc_attr_e('Units to return', 'polski'); ?>">
+                            <td data-label="<?php echo esc_attr($polski_column_quantity); ?>">
                                 <?php if ($polski_is_exempt) : ?>
                                     <span aria-hidden="true" style="color:#94a3b8;">, </span>
                                     <span class="screen-reader-text" style="position:absolute;left:-9999px;">

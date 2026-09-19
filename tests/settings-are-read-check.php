@@ -57,20 +57,66 @@ foreach ($matches as $m) {
  * @var array<string, string> $sources
  */
 $sources = [];
+// The vendored storefront kit runs on every request this plugin serves, so a
+// setting it reads is read. Leaving it out parked ten live waitlist settings on
+// the accepted-debt list below as if nothing consumed them.
+//
+// It is indexed separately, because a kit file names no option group: taken as
+// an ordinary source it would vouch for every group declaring the same sub-key,
+// and its 'success_text' immediately cleared polski_dsa|success_text, which
+// nothing reads. A kit read counts only for the groups whose own service hands
+// its settings to the kit.
+$kitDir = $root . '/vendor/wppoland/storefront-kit/src';
+$kitSources = [];
+
+if (is_dir($kitDir)) {
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($kitDir));
+    foreach ($iterator as $file) {
+        if ($file instanceof SplFileInfo && $file->getExtension() === 'php') {
+            $kitSources[] = (string) file_get_contents($file->getPathname());
+        }
+    }
+}
+
 foreach (['src', 'templates', 'config'] as $dir) {
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root . '/' . $dir));
     foreach ($iterator as $file) {
         if (! $file instanceof SplFileInfo || $file->getExtension() !== 'php') {
             continue;
         }
-        // Both of these declare defaults rather than act on them. Counting
-        // defaults.php as a reader is how polski_omnibus|show_on_loop and
-        // |show_on_single stayed hidden: it names the group and the sub-key
-        // while nothing ever branches on either.
-        if (in_array($file->getFilename(), ['ModulesPage.php', 'defaults.php'], true)) {
+        // defaults.php declares rather than acts. Counting it as a reader is
+        // how polski_omnibus|show_on_loop and |show_on_single stayed hidden: it
+        // names the group and the sub-key while nothing ever branches on either.
+        if ($file->getFilename() === 'defaults.php') {
             continue;
         }
-        $sources[$file->getPathname()] = (string) file_get_contents($file->getPathname());
+
+        $code = (string) file_get_contents($file->getPathname());
+
+        // ModulesPage declares every setting AND renders the omnibus status
+        // panel. Skipping the whole file parked four live settings as dead, so
+        // only its declaration entries are cut, not the file.
+        if ($file->getFilename() === 'ModulesPage.php') {
+            $code = (string) preg_replace("/'key'\s*=>\s*'polski_[a-z0-9_]+\|[a-z0-9_]+'/", ' ', $code);
+            $code = (string) preg_replace("/'default'\s*=>\s*[^,]+,/", ' ', $code);
+        }
+
+        $sources[$file->getPathname()] = $code;
+    }
+}
+
+// Groups whose service delegates to the kit: it mentions StorefrontKit and its
+// own OPTION constant in the same file.
+$kitGroups = [];
+foreach ($sources as $code) {
+    if (! str_contains($code, 'StorefrontKit')) {
+        continue;
+    }
+    foreach ($declared as $full => $_sub) {
+        [$group] = explode('|', $full, 2);
+        if (str_contains($code, "'" . $group . "'")) {
+            $kitGroups[$group] = true;
+        }
     }
 }
 
@@ -107,6 +153,15 @@ foreach ($declared as $full => $subKey) {
         }
     }
 
+    if (! $read && isset($kitGroups[$group])) {
+        foreach ($kitSources as $code) {
+            if (str_contains($code, "'" . $subKey . "'") || str_contains($code, '"' . $subKey . '"')) {
+                $read = true;
+                break;
+            }
+        }
+    }
+
     if (! $read) {
         $dead[] = $full;
     }
@@ -114,48 +169,12 @@ foreach ($declared as $full => $subKey) {
 
 // Settings known to be dead and not yet fixed. Shrink this list, never grow it.
 $known = [
-    // Accepted debt. This list grew from 12 to 37 on 2026-09-07 because the
-    // check got stricter, not because the code got worse: it now indexes each
-    // source file separately and ignores the two files that only declare
-    // defaults. Before that, a sub-key read for one module vouched for every
-    // module sharing the name, and defaults.php counted as a reader.
-    //
-    // Most of what remains is interface text that was made configurable and
-    // never read back. Shrink this list, never grow it.
-    'polski_checkout|parcel_delivery_checkbox_enabled',
-    'polski_checkout|review_reminder_checkbox_enabled',
-    'polski_dsa|success_text',
-    'polski_general|admin_doi_card_title',
-    'polski_general|admin_legal_pages_card_progress',
-    'polski_general|admin_legal_pages_card_title',
-    'polski_general|admin_omnibus_external_active_text',
-    'polski_general|admin_omnibus_no_external_text',
-    'polski_general|admin_omnibus_plugin_detected_text',
-    'polski_general|admin_omnibus_plugin_missing_text',
-    'polski_general|admin_status_active',
-    'polski_general|admin_status_inactive',
-    'polski_general|admin_status_unconfigured',
-    'polski_general|admin_vat_card_title',
-    'polski_general|admin_vat_small_business_text',
-    'polski_general|admin_vat_standard_text',
-    'polski_waitlist|allow_guests',
-    'polski_waitlist|disabled_text',
-    'polski_waitlist|invalid_email_text',
-    'polski_waitlist|login_required_text',
-    'polski_waitlist|notify_intro_text',
-    'polski_waitlist|notify_outro_text',
-    'polski_waitlist|privacy_error_text',
-    'polski_waitlist|product_not_found_text',
-    'polski_waitlist|show_on_single',
-    'polski_waitlist|success_text',
-    'polski_withdrawal|column_price',
-    'polski_withdrawal|column_product',
-    'polski_withdrawal|column_quantity',
-    'polski_withdrawal|confirmed_order_note',
-    'polski_withdrawal|exempt_notice_text',
-    'polski_withdrawal|items_heading',
-    'polski_withdrawal|legal_notice_text',
-    'polski_withdrawal|requested_order_note',
+    // Empty since 2026-09-19, down from 34. Most of that list was
+    // never dead: ten waitlist settings are read in the vendored storefront
+    // kit and four omnibus ones in the render half of ModulesPage, neither of
+    // which this check indexed. The rest were real and are wired now, except
+    // polski_withdrawal|column_price, which named a column the form does not
+    // have and was withdrawn from the screen. Shrink this list, never grow it.
 ];
 
 $new = array_values(array_diff($dead, $known));

@@ -496,7 +496,6 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_withdrawal|items_heading', 'label' => __('Order items heading', 'polski'), 'type' => 'text', 'default' => __('Order items', 'polski')],
                     ['key' => 'polski_withdrawal|column_product', 'label' => __('Product column', 'polski'), 'type' => 'text', 'default' => __('Product', 'polski')],
                     ['key' => 'polski_withdrawal|column_quantity', 'label' => __('Quantity column', 'polski'), 'type' => 'text', 'default' => __('Quantity', 'polski')],
-                    ['key' => 'polski_withdrawal|column_price', 'label' => __('Price column', 'polski'), 'type' => 'text', 'default' => __('Price', 'polski')],
                     ['key' => 'polski_withdrawal|exempt_notice_text', 'label' => __('Exemption notice', 'polski'), 'type' => 'text', 'default' => __('(This product is excluded from the right of withdrawal)', 'polski')],
                     ['key' => 'polski_withdrawal|reason_label', 'label' => __('Reason field label', 'polski'), 'type' => 'text', 'default' => __('Reason for withdrawal (optional)', 'polski')],
                     ['key' => 'polski_withdrawal|submit_button_text', 'label' => __('Submit button text', 'polski'), 'type' => 'text', 'default' => __('Submit withdrawal request', 'polski')],
