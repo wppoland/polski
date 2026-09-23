@@ -6635,7 +6635,7 @@ msgstr "Mensaje para valor mínimo"
 
 #: src/Admin/ModulesPage.php:1337
 msgid "Tokens: {min_value}, {current_value}"
-msgstr "Fichas: {min_value}, {current_value}"
+msgstr "Comodines: {min_value}, {current_value}"
 
 #: src/Admin/ModulesPage.php:1338
 msgid "Message for minimum quantity"
@@ -6643,7 +6643,7 @@ msgstr "Mensaje para cantidad mínima"
 
 #: src/Admin/ModulesPage.php:1338
 msgid "Tokens: {min_quantity}, {current_quantity}"
-msgstr "Fichas: {min_quantity}, {current_quantity}"
+msgstr "Comodines: {min_quantity}, {current_quantity}"
 
 #: src/Admin/ModulesPage.php:1343
 msgid "Review Request Emails"
@@ -6671,11 +6671,11 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1351
 msgid "Tokens: {first_name}, {order_number}"
-msgstr "Fichas: {first_name}, {order_number}"
+msgstr "Comodines: {first_name}, {order_number}"
 
 #: src/Admin/ModulesPage.php:1352
 msgid "Tokens: {first_name}"
-msgstr "Fichas: {first_name}"
+msgstr "Comodines: {first_name}"
 
 #: src/Admin/ModulesPage.php:1353
 msgid "Review button text"
