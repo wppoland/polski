@@ -70,9 +70,7 @@ msgstr "Configura Polski para tu tienda"
 msgid ""
 "Jeszcze chwila i sklep będzie gotowy. Przejrzyj moduły, ustaw strony prawne "
 "i domknij konfigurację w panelu Polski."
-msgstr ""
-"Un momento y la tienda estará lista. Navegue por los módulos, configure "
-"páginas legales y complete la configuración en el panel polaco."
+msgstr "Un momento y la tienda estará lista. Navega por los módulos, configura las páginas legales y completa la configuración en el panel polaco."
 
 #: config/defaults.php:23
 msgid "Otwórz konfigurację Polski"
@@ -177,7 +175,7 @@ msgstr ""
 #: config/defaults.php:47
 #, php-format
 msgid "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
-msgstr "Configure <a href=\"%s\">zonas de envío</a> para entregas en Polonia."
+msgstr "Configura <a href=\"%s\">zonas de envío</a> para entregas en Polonia."
 
 #. translators: %s is the WooCommerce product edit URL for Polski product
 #. data.
@@ -196,10 +194,7 @@ msgstr ""
 msgid ""
 "Przetestuj checkout, dodaj produkt do koszyka i sprawdź checkboxy prawne "
 "oraz tekst przycisku na <a href=\"%s\">stronie zamówienia</a>."
-msgstr ""
-"Pruebe el proceso de pago, añade el producto al carrito y marque las "
-"casillas legales y el texto del botón en la <a href=\"%s\">página de "
-"pedidos</a>."
+msgstr "Prueba el proceso de pago, añade el producto al carrito y marca las casillas legales y el texto del botón en la <a href=\"%s\">página de pedidos</a>."
 
 #: config/defaults.php:52
 msgid "wykryta, dane synchronizowane"
@@ -289,9 +284,7 @@ msgstr "¿Cómo valoras tus compras? Deja una reseña"
 msgid ""
 "Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za "
 "Twoją opinię."
-msgstr ""
-"Hola {first_name}, gracias por tus compras recientes. Agradeceríamos su "
-"opinión."
+msgstr "Hola {first_name}, gracias por tus compras recientes. Agradeceríamos tu opinión."
 
 #: config/defaults.php:89
 msgid "Zostaw opinię"
@@ -337,7 +330,7 @@ msgstr ""
 
 #: config/defaults.php:109
 msgid "Musisz zaakceptować Regulamin, aby złożyć zamówienie."
-msgstr "Debe aceptar el Reglamento para realizar un pedido."
+msgstr "Debes aceptar el Reglamento para realizar un pedido."
 
 #: config/defaults.php:110
 msgid "Akceptacja Regulaminu sklepu."
@@ -395,7 +388,7 @@ msgstr ""
 
 #: config/defaults.php:123
 msgid "Musisz wyrazić zgodę na natychmiastowe dostarczenie treści cyfrowych."
-msgstr "Debe aceptar la entrega inmediata de contenido digital."
+msgstr "Debes aceptar la entrega inmediata de contenido digital."
 
 #: config/defaults.php:124
 msgid "Zrzeczenie się prawa odstąpienia dla treści cyfrowych."
@@ -497,15 +490,13 @@ msgstr "No pudimos encontrar este pedido."
 
 #: config/defaults.php:158
 msgid "Nie masz uprawnień, aby odstąpić od tego zamówienia."
-msgstr "No tiene autoridad para retirarse de esta orden."
+msgstr "No tienes permiso para desistir de este pedido."
 
 #: config/defaults.php:159
 msgid ""
 "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z "
 "potwierdzeniem."
-msgstr ""
-"Su solicitud de desistimiento ha sido aceptada. Le enviaremos un correo electrónico"
-" de confirmación en breve."
+msgstr "Tu solicitud de desistimiento ha sido aceptada. Te enviaremos un correo electrónico de confirmación en breve."
 
 #: config/defaults.php:160 src/Shortcode/ShortcodeManager.php:236
 msgid "To zamówienie nie kwalifikuje się do odstąpienia."
@@ -547,9 +538,7 @@ msgstr "Hola {name},"
 msgid ""
 "Twoje odstąpienie od umowy dla zamówienia nr #{order_number} zostało "
 "potwierdzone."
-msgstr ""
-"Se ha confirmado su desistimiento del contrato para el pedido "
-"#{order_number}."
+msgstr "Se ha confirmado tu desistimiento del contrato para el pedido #{order_number}."
 
 #: config/defaults.php:171
 #: templates/emails/plain/withdrawal-confirmation.php:26
@@ -559,7 +548,7 @@ msgstr "tu razon"
 
 #: config/defaults.php:172
 msgid "Prosimy o zwrot produktów na powyższy adres w ciągu 14 dni:"
-msgstr "Devuelva los productos a la dirección anterior dentro de los 14 días:"
+msgstr "Devuelve los productos a la dirección anterior dentro de los 14 días:"
 
 #: config/defaults.php:173
 msgid ""
@@ -585,9 +574,7 @@ msgstr "Hora de entrega: {time}"
 msgid ""
 "Twoje konto czeka na aktywację! Zerknij do swojej skrzynki e-mail i kliknij "
 "w przesłany przez nas link."
-msgstr ""
-"¡Su cuenta está esperando activación! Echa un vistazo a tu casilla de correo"
-" electrónico y haz clic en el enlace que te enviamos."
+msgstr "¡Tu cuenta está esperando activación! Echa un vistazo a tu casilla de correo electrónico y haz clic en el enlace que te enviamos."
 
 #: config/defaults.php:193
 msgid "Nieprawidłowy link aktywacyjny."
@@ -613,9 +600,7 @@ msgstr "Confirma tu dirección de correo electrónico"
 msgid ""
 "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować "
 "konto:"
-msgstr ""
-"Gracias por crear una cuenta. Haga clic en el botón a continuación para "
-"activar su cuenta:"
+msgstr "Gracias por crear una cuenta. Haz clic en el botón a continuación para activar tu cuenta:"
 
 #: config/defaults.php:199 templates/emails/double-opt-in.php:32
 msgid "Aktywuj konto"
@@ -628,9 +613,7 @@ msgstr "Si lo prefieres, copia y pega este enlace en tu navegador:"
 #: config/defaults.php:201 templates/emails/plain/double-opt-in.php:24
 msgid ""
 "Dziękujemy za założenie konta. Odwiedź poniższy link, aby aktywować konto:"
-msgstr ""
-"Gracias por crear una cuenta. Visite el siguiente enlace para activar su "
-"cuenta:"
+msgstr "Gracias por crear una cuenta. Visita el siguiente enlace para activar tu cuenta:"
 
 #: config/defaults.php:202
 msgid ""
@@ -642,19 +625,17 @@ msgstr ""
 
 #: config/defaults.php:214
 msgid "Zapytaj o wycenę"
-msgstr "Solicite una cotización"
+msgstr "Solicita una cotización"
 
 #: config/defaults.php:215
 msgid "Zapytaj o indywidualną wycenę"
-msgstr "Solicite un presupuesto individual"
+msgstr "Solicita un presupuesto individual"
 
 #: config/defaults.php:216
 msgid ""
 "Wypełnij krótki formularz, a wrócimy z wyceną dopasowaną do Twojego "
 "zamówienia."
-msgstr ""
-"Complete el breve formulario y le ofreceremos un presupuesto adaptado a su "
-"pedido."
+msgstr "Completa el breve formulario y te ofreceremos un presupuesto adaptado a tu pedido."
 
 #: config/defaults.php:217
 msgid "Zamknij formularz wyceny"
@@ -662,8 +643,7 @@ msgstr "Cerrar el formulario de cotización"
 
 #: config/defaults.php:218
 msgid "Zaloguj się, aby wysłać zapytanie ofertowe dla tego produktu."
-msgstr ""
-"Inicie sesión para enviar una solicitud de cotización para este producto."
+msgstr "Inicia sesión para enviar una solicitud de cotización para este producto."
 
 #: config/defaults.php:219 templates/forms/dsa-report.php:41
 msgid "Imię i nazwisko"
@@ -710,9 +690,7 @@ msgstr "Enviar consulta"
 msgid ""
 "Dziękujemy. Twoje zapytanie zostało wysłane, wrócimy z odpowiedzią tak "
 "szybko, jak to możliwe."
-msgstr ""
-"Gracias. Su consulta ha sido enviada, nos comunicaremos contigo con una "
-"respuesta lo antes posible."
+msgstr "Gracias. Tu consulta ha sido enviada, nos comunicaremos contigo con una respuesta lo antes posible."
 
 #: config/defaults.php:230
 msgid "Cena dostępna po wycenie"
@@ -720,7 +698,7 @@ msgstr "Precio disponible después de la cotización"
 
 #: config/defaults.php:231
 msgid "Uzupełnij poprawnie imię i adres email."
-msgstr "Complete su nombre y dirección de correo electrónico correctamente."
+msgstr "Completa tu nombre y dirección de correo electrónico correctamente."
 
 #: config/defaults.php:232
 msgid "Podaj numer telefonu do kontaktu."
@@ -728,19 +706,19 @@ msgstr "Proporcionar un teléfono de contacto."
 
 #: config/defaults.php:233
 msgid "Podaj nazwę firmy."
-msgstr "Introduzca el nombre de su empresa."
+msgstr "Introduce el nombre de tu empresa."
 
 #: config/defaults.php:234
 msgid "Podaj numer NIP."
-msgstr "Ingrese su Número de Identificación Fiscal."
+msgstr "Ingresa tu Número de Identificación Fiscal."
 
 #: config/defaults.php:235
 msgid "Podaj poprawny numer NIP."
-msgstr "Por favor ingrese el Número de Identificación Fiscal correcto."
+msgstr "Por favor ingresa el Número de Identificación Fiscal correcto."
 
 #: config/defaults.php:236
 msgid "Podaj kod pocztowy."
-msgstr "Por favor ingrese su código postal."
+msgstr "Por favor ingresa tu código postal."
 
 #: config/defaults.php:237
 msgid "Musisz zaakceptować zgodę prywatności."
@@ -828,9 +806,7 @@ msgstr ""
 msgid ""
 "Produkt dostępny w trybie katalogowym. Skontaktuj się z nami, aby uzyskać "
 "warunki handlowe lub ofertę B2B."
-msgstr ""
-"El producto está disponible en modo catálogo. Contáctenos para términos "
-"comerciales o una oferta B2B."
+msgstr "El producto está disponible en modo catálogo. Contáctanos para términos comerciales o una oferta B2B."
 
 #: config/defaults.php:281
 msgid "Zobacz warunki handlowe"
@@ -865,7 +841,7 @@ msgstr "SKU"
 
 #: config/defaults.php:308
 msgid "Szukaj produktów, kodów SKU lub kategorii"
-msgstr "Busque productos, SKU o categorías"
+msgstr "Busca productos, SKU o categorías"
 
 #: config/defaults.php:309
 msgid "Szukaj"
@@ -873,7 +849,7 @@ msgstr "Buscar"
 
 #: config/defaults.php:310
 msgid "Brak wyników dla podanego zapytania."
-msgstr "No se encontraron resultados para su consulta."
+msgstr "No se encontraron resultados para tu consulta."
 
 #: config/defaults.php:311
 msgid "Zobacz wszystkie wyniki"
@@ -943,7 +919,7 @@ msgstr "Quitar de favoritos"
 
 #: config/defaults.php:372
 msgid "Zaloguj się, aby korzystać z listy życzeń."
-msgstr "Inicie sesión para utilizar la lista de deseos."
+msgstr "Inicia sesión para utilizar la lista de deseos."
 
 #: config/defaults.php:373 config/defaults.php:392 config/defaults.php:427
 #: config/defaults.php:586
@@ -972,15 +948,13 @@ msgstr "Eliminar de la comparación"
 
 #: config/defaults.php:391
 msgid "Zaloguj się, aby korzystać z porównania produktów."
-msgstr "Inicie sesión para utilizar la comparación de productos."
+msgstr "Inicia sesión para utilizar la comparación de productos."
 
 #: config/defaults.php:393
 msgid ""
 "Możesz porównać maksymalnie {limit} produkty jednocześnie. Najstarszy wpis "
 "został zastąpiony automatycznie."
-msgstr ""
-"Puede comparar hasta {limit} productos a la vez. La entrada más antigua ha "
-"sido reemplazada automáticamente."
+msgstr "Puedes comparar hasta {limit} productos a la vez. La entrada más antigua ha sido reemplazada automáticamente."
 
 #: config/defaults.php:394
 msgid "Nie możesz wyczyścić porównania."
@@ -1063,9 +1037,7 @@ msgstr "A menudo se compran juntos"
 msgid ""
 "Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość"
 " do koszyka jednym kliknięciem."
-msgstr ""
-"Ofrezca al cliente un conjunto de productos complementarios ya preparados y "
-"agréguelo todo al carrito con un solo clic."
+msgstr "Ofrece al cliente un conjunto de productos complementarios ya preparados y agrégalo todo al carrito con un solo clic."
 
 #: config/defaults.php:454 config/defaults.php:620
 msgid "Dodaj zestaw do koszyka"
@@ -1144,9 +1116,7 @@ msgstr "Reserva, envío desde {date}"
 msgid ""
 "Ten produkt jest dostępny w przedsprzedaży. Zamów teraz, a wysyłkę "
 "zrealizujemy od {date}."
-msgstr ""
-"Este producto está disponible para pedidos anticipados. Haga su pedido ahora"
-" y enviaremos desde {date}."
+msgstr "Este producto está disponible para pedidos anticipados. Haz tu pedido ahora y enviaremos desde {date}."
 
 #: config/defaults.php:565
 msgid "Przedsprzedaż"
@@ -1202,8 +1172,7 @@ msgstr "Por favor, introduce una dirección de correo electrónico válida."
 
 #: config/defaults.php:589
 msgid "Musisz zaakceptować zgodę na kontakt email."
-msgstr ""
-"Debe aceptar el consentimiento para ser contactado por correo electrónico."
+msgstr "Debes aceptar el consentimiento para ser contactado por correo electrónico."
 
 #: config/defaults.php:590
 msgid "Zaloguj się, aby zapisać się na listę oczekujących."
@@ -1221,9 +1190,7 @@ msgstr "El producto {product_name} está disponible nuevamente."
 msgid ""
 "Jeśli nie chcesz już otrzymywać takich wiadomości, po prostu zignoruj ten "
 "email."
-msgstr ""
-"Si ya no desea recibir dichos mensajes, simplemente ignore este correo "
-"electrónico."
+msgstr "Si ya no quieres recibir estos mensajes, simplemente ignora este correo electrónico."
 
 #: config/defaults.php:600
 msgid "Dodatki do produktu"
@@ -1231,7 +1198,7 @@ msgstr "Aditivos del producto"
 
 #: config/defaults.php:601
 msgid "Skonfiguruj dodatki i usługi powiązane z tym produktem."
-msgstr "Configure complementos y servicios relacionados con este producto."
+msgstr "Configura complementos y servicios relacionados con este producto."
 
 #: config/defaults.php:605
 msgid "Wymagane"
@@ -1243,7 +1210,7 @@ msgstr "Opcional"
 
 #: config/defaults.php:607
 msgid "Wybierz opcję"
-msgstr "Seleccione una opción"
+msgstr "Selecciona una opción"
 
 #: config/defaults.php:608
 msgid "Wpisz wartość"
@@ -1265,7 +1232,7 @@ msgstr ""
 
 #: config/defaults.php:621
 msgid "Wybierz przynajmniej jeden dodatkowy produkt do zestawu."
-msgstr "Elija al menos un producto adicional para su conjunto."
+msgstr "Elige al menos un producto adicional para tu conjunto."
 
 #: config/defaults.php:622
 msgid "Dodano zestaw do koszyka."
@@ -1305,7 +1272,7 @@ msgstr "Estos son todos los productos."
 
 #: config/defaults.php:649
 msgid "Masz pytanie o produkt lub warunki handlowe?"
-msgstr "¿Tiene alguna pregunta sobre el producto o los términos comerciales?"
+msgstr "¿Tienes alguna pregunta sobre el producto o los términos comerciales?"
 
 #: config/defaults.php:650
 msgid ""
@@ -1398,7 +1365,7 @@ msgstr "Preguntas y respuestas"
 
 #: config/defaults.php:727
 msgid "Zadaj pytanie o ten produkt..."
-msgstr "Haga una pregunta sobre este producto..."
+msgstr "Haz una pregunta sobre este producto..."
 
 #: config/defaults.php:728
 msgid "Zadaj pytanie"
@@ -1544,9 +1511,7 @@ msgstr "¿Necesitas ayuda o quieres reportar algo?"
 msgid ""
 "Use the path that fits the type of feedback. This keeps support easier for "
 "everyone."
-msgstr ""
-"Utilice la ruta que se ajuste al tipo de retroalimentación. Esto hace que el"
-" soporte sea más fácil para todos."
+msgstr "Utiliza la ruta que se ajuste al tipo de retroalimentación. Esto hace que el soporte sea más fácil para todos."
 
 #: src/Admin/AdminPage.php:482
 msgid "Open Issues"
@@ -1573,10 +1538,7 @@ msgstr "Compartir comentarios"
 msgid ""
 "Not technical? Send a quick note straight from the plugin. Tell us what "
 "feels unclear, what should be easier, or what we should add next."
-msgstr ""
-"¿No es técnico? Envíe una nota rápida directamente desde el complemento. "
-"Díganos qué no está claro, qué debería ser más fácil o qué deberíamos añadir"
-" a continuación."
+msgstr "¿No eres técnico? Envía una nota rápida directamente desde el complemento. Dinos qué no está claro, qué debería ser más fácil o qué deberíamos añadir a continuación."
 
 #: src/Admin/AdminPage.php:495
 msgid "Thanks, your feedback has been saved."
@@ -1584,7 +1546,7 @@ msgstr "Gracias, tus comentarios han sido guardados."
 
 #: src/Admin/AdminPage.php:497
 msgid "Please enter your message before sending feedback."
-msgstr "Por favor ingrese su mensaje antes de enviar comentarios."
+msgstr "Por favor ingresa tu mensaje antes de enviar comentarios."
 
 #: src/Admin/AdminPage.php:501
 msgid "Your name"
@@ -1622,9 +1584,7 @@ msgstr "Mensaje"
 msgid ""
 "This form stores your feedback locally in WordPress. It is not sent to any "
 "external service."
-msgstr ""
-"Este formulario almacena sus comentarios localmente en WordPress. No se "
-"envía a ningún servicio externo."
+msgstr "Este formulario almacena tus comentarios localmente en WordPress. No se envía a ningún servicio externo."
 
 #: src/Admin/AdminPage.php:522
 msgid "Do not include passwords, licence keys, or customer personal data."
@@ -1658,10 +1618,7 @@ msgstr ""
 msgid ""
 "Your deactivation feedback stays in the local admin log unless data removal "
 "on uninstall is enabled."
-msgstr ""
-"Sus comentarios sobre la desactivación permanecen en el registro del "
-"administrador local a menos que esté habilitada la eliminación de datos "
-"durante la desinstalación."
+msgstr "Tus comentarios sobre la desactivación permanecen en el registro del administrador local a menos que esté habilitada la eliminación de datos durante la desinstalación."
 
 #: src/Admin/AdminPage.php:537
 msgid "Current setting: plugin data will be removed on uninstall."
@@ -1735,9 +1692,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:588
 msgid "Select a report or tool to check your store compliance status."
-msgstr ""
-"Seleccione un informe o herramienta para verificar el estado de cumplimiento"
-" de su tienda."
+msgstr "Selecciona un informe o herramienta para verificar el estado de cumplimiento de tu tienda."
 
 #: src/Admin/AdminPage.php:603
 msgid "Open Report"
@@ -1800,7 +1755,7 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:721
 msgid "Go through the checklist below"
-msgstr "Revise la lista de verificación a continuación"
+msgstr "Revisa la lista de verificación a continuación"
 
 #: src/Admin/AdminPage.php:724
 msgid "Complete product data"
@@ -1888,15 +1843,13 @@ msgstr ""
 msgid ""
 "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, "
 "8%%, 5%%, 0%%)."
-msgstr ""
-"Configure <a href=\"%s\">tasas impositivas</a> en WooCommerce para el IVA "
-"polaco (23%%, 8%%, 5%%, 0%%)."
+msgstr "Configura <a href=\"%s\">tasas impositivas</a> en WooCommerce para el IVA polaco (23%%, 8%%, 5%%, 0%%)."
 
 #. translators: %s: shipping settings URL
 #: src/Admin/AdminPage.php:887
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for deliveries in Poland."
-msgstr "Configure <a href=\"%s\">zonas de envío</a> para entregas en Polonia."
+msgstr "Configura <a href=\"%s\">zonas de envío</a> para entregas en Polonia."
 
 #. translators: %s: product list URL
 #: src/Admin/AdminPage.php:898
@@ -1914,9 +1867,7 @@ msgstr ""
 msgid ""
 "Test the order process - add a product to the cart and check the checkboxes "
 "and button text in <a href=\"%s\">checkout</a>."
-msgstr ""
-"Pruebe el proceso de pedido: añade un producto al carrito y marque las "
-"casillas de verificación y el texto del botón en <a href=\"%s\">pagar</a>."
+msgstr "Prueba el proceso de pedido: añade un producto al carrito y marca las casillas de verificación y el texto del botón en <a href=\"%s\">pagar</a>."
 
 #: src/Admin/AdminPage.php:932
 msgid "Generate legal pages"
@@ -2066,7 +2017,7 @@ msgstr "¿Qué podríamos hacer mejor?"
 
 #: src/Admin/DeactivationHandler.php:75
 msgid "Tell us what was frustrating, unclear, or not working well."
-msgstr "Cuéntenos qué fue frustrante, poco claro o no funcionó bien."
+msgstr "Cuéntanos qué fue frustrante, poco claro o no funcionó bien."
 
 #: src/Admin/DeactivationHandler.php:76
 msgid "What should we add next?"
@@ -2098,15 +2049,13 @@ msgstr "Enviando..."
 
 #: src/Admin/DeactivationHandler.php:82
 msgid "Please choose the main reason before sending feedback."
-msgstr "Elija el motivo principal antes de enviar comentarios."
+msgstr "Elige el motivo principal antes de enviar comentarios."
 
 #: src/Admin/DeactivationHandler.php:83
 msgid ""
 "Thank you for using Polski! We are sorry to see you go. If you have any "
 "ideas on how to make it better, we would love to hear from you."
-msgstr ""
-"¡Gracias por usar Polski! Lamentamos que te vayas. Si tiene alguna idea "
-"sobre cómo mejorarlo, nos encantaría saber de ti."
+msgstr "¡Gracias por usar Polski! Lamentamos que te vayas. Si tienes alguna idea sobre cómo mejorarlo, nos encantaría saber de ti."
 
 #: src/Admin/DeactivationHandler.php:84
 msgid "Post new ideas on GitHub"
@@ -2180,10 +2129,7 @@ msgstr "Precio más bajo (ómnibus)"
 msgid ""
 "Track price history and display the lowest price from the last 30 days for "
 "products on sale. Required by the Omnibus Directive (EU 2019/2161)."
-msgstr ""
-"Realice un seguimiento del historial de precios y muestre el precio más bajo"
-" de los últimos 30 días para productos en oferta. Requerido por la Directiva"
-" Ómnibus (UE 2019/2161)."
+msgstr "Realiza un seguimiento del historial de precios y muestra el precio más bajo de los últimos 30 días para productos en oferta. Requerido por la Directiva Ómnibus (UE 2019/2161)."
 
 #: src/Admin/ModulesPage.php:59
 msgid "Price tracking"
@@ -2398,9 +2344,7 @@ msgstr "Botón de pago"
 msgid ""
 "Change order button text to \"Order with obligation to pay\" according to "
 "Polish law."
-msgstr ""
-"Cambie el texto del botón de pedido a \"Pedido con obligación de pago\" "
-"según la ley polaca."
+msgstr "Cambia el texto del botón de pedido a \"Pedido con obligación de pago\" según la ley polaca."
 
 #: src/Admin/ModulesPage.php:128 src/Admin/ModulesPage.php:140
 #: src/Admin/ModulesPage.php:179 src/Admin/ModulesPage.php:194
@@ -2443,8 +2387,7 @@ msgstr "Etiqueta - Términos"
 #: src/Admin/ModulesPage.php:147
 #, php-format
 msgid "Use %s as a placeholder for the terms page link"
-msgstr ""
-"Utilice %s como marcador de posición para el enlace de la página de términos"
+msgstr "Utiliza %s como marcador de posición para el enlace de la página de términos"
 
 #: src/Admin/ModulesPage.php:148
 msgid "Error - Terms"
@@ -2468,9 +2411,7 @@ msgstr "Etiqueta - Política de Privacidad"
 #: src/Admin/ModulesPage.php:152
 #, php-format
 msgid "Use %s as a placeholder for the privacy policy link"
-msgstr ""
-"Utilice %s como marcador de posición para el enlace de la política de "
-"privacidad"
+msgstr "Utiliza %s como marcador de posición para el enlace de la política de privacidad"
 
 #: src/Admin/ModulesPage.php:153
 msgid "Error - Privacy Policy"
@@ -2493,9 +2434,7 @@ msgstr "Etiqueta - Derecho de desistimiento"
 #: src/Admin/ModulesPage.php:157
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
-msgstr ""
-"Utilice %s como marcador de posición para el enlace de la página de "
-"devoluciones o desistimientos"
+msgstr "Utiliza %s como marcador de posición para el enlace de la página de devoluciones o desistimientos"
 
 #: src/Admin/ModulesPage.php:158
 msgid "Error - Right of withdrawal"
@@ -2594,9 +2533,7 @@ msgstr "Clave API GUS (producción)"
 msgid ""
 "Request a key on the stat.gov.pl website. In test mode, a test key will be "
 "used."
-msgstr ""
-"Solicite una clave en el sitio web stat.gov.pl. En modo de prueba, se "
-"utilizará una clave de prueba."
+msgstr "Solicita una clave en el sitio web stat.gov.pl. En modo de prueba, se utilizará una clave de prueba."
 
 #: src/Admin/ModulesPage.php:192
 msgid "Consent Logging (GDPR)"
@@ -2769,7 +2706,7 @@ msgstr "Mensaje de fallo de permisos"
 #: src/Admin/ModulesPage.php:235 src/Service/WithdrawalService.php:281
 #: src/Service/WithdrawalService.php:334
 msgid "You do not have permission to withdraw from this order."
-msgstr "No tiene permiso para retirarse de este pedido."
+msgstr "No tienes permiso para desistir de este pedido."
 
 #: src/Admin/ModulesPage.php:236 src/Admin/ModulesPage.php:722
 #: src/Admin/ModulesPage.php:834
@@ -2780,9 +2717,7 @@ msgstr "Mensaje de éxito"
 msgid ""
 "Your withdrawal request has been received. We will send a confirmation email"
 " shortly."
-msgstr ""
-"Se ha recibido su solicitud de desistimiento. Le enviaremos un correo electrónico "
-"de confirmación en breve."
+msgstr "Se ha recibido tu solicitud de desistimiento. Te enviaremos un correo electrónico de confirmación en breve."
 
 #: src/Admin/ModulesPage.php:237
 msgid "Not eligible message"
@@ -2840,8 +2775,7 @@ msgstr "Asunto del correo electrónico de confirmación"
 
 #: src/Admin/ModulesPage.php:244 src/Admin/ModulesPage.php:247
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
-msgstr ""
-"Su solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
+msgstr "Tu solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
 
 #: src/Admin/ModulesPage.php:244
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
@@ -2889,8 +2823,7 @@ msgstr "Instrucciones de devolución por correo electrónico"
 
 #: src/Admin/ModulesPage.php:249
 msgid "Please return the products to the address below within 14 days:"
-msgstr ""
-"Devuelva los productos a la dirección siguiente en un plazo de 14 días:"
+msgstr "Devuelve los productos a la dirección siguiente en un plazo de 14 días:"
 
 #: src/Admin/ModulesPage.php:250 src/Admin/ModulesPage.php:387
 msgid "Additional email content"
@@ -2900,9 +2833,7 @@ msgstr "Contenido de correo electrónico adicional"
 msgid ""
 "Your refund will be processed within 14 days after the returned products are"
 " received."
-msgstr ""
-"Su reembolso se procesará dentro de los 14 días posteriores a la recepción "
-"de los productos devueltos."
+msgstr "Tu reembolso se procesará dentro de los 14 días posteriores a la recepción de los productos devueltos."
 
 #: src/Admin/ModulesPage.php:255
 msgid "Dispute Resolution (ODR)"
@@ -3256,9 +3187,7 @@ msgstr "Mensaje de bloqueo de inicio de sesión"
 msgid ""
 "Your account is pending activation! Please check your email and click the "
 "activation link."
-msgstr ""
-"¡Tu cuenta está pendiente de activación! Por favor revise su correo "
-"electrónico y haga clic en el enlace de activación."
+msgstr "¡Tu cuenta está pendiente de activación! Por favor revisa tu correo electrónico y haz clic en el enlace de activación."
 
 #: src/Admin/ModulesPage.php:378
 msgid "Invalid link message"
@@ -3274,7 +3203,7 @@ msgstr "Mensaje de activación exitosa"
 
 #: src/Admin/ModulesPage.php:379
 msgid "Excellent! Your account has been activated. You can now log in."
-msgstr "¡Excelente! Su cuenta ha sido activada. Ahora puedes iniciar sesión."
+msgstr "¡Excelente! Tu cuenta ha sido activada. Ahora puedes iniciar sesión."
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:729
 #: src/Admin/ModulesPage.php:962
@@ -3311,9 +3240,7 @@ msgstr "Contenido de correo electrónico HTML"
 msgid ""
 "Thank you for creating an account. Click the button below to activate your "
 "account:"
-msgstr ""
-"Gracias por crear una cuenta. Haga clic en el botón a continuación para "
-"activar su cuenta:"
+msgstr "Gracias por crear una cuenta. Haz clic en el botón a continuación para activar tu cuenta:"
 
 #: src/Admin/ModulesPage.php:384
 msgid "Email button text"
@@ -3339,9 +3266,7 @@ msgstr "Texto sin formato del contenido del correo electrónico"
 msgid ""
 "Thank you for creating an account. Visit the link below to activate your "
 "account:"
-msgstr ""
-"Gracias por crear una cuenta. Visite el siguiente enlace para activar su "
-"cuenta:"
+msgstr "Gracias por crear una cuenta. Visita el siguiente enlace para activar tu cuenta:"
 
 #: src/Admin/ModulesPage.php:387
 msgid "If you did not create an account with us, please ignore this email."
@@ -3478,7 +3403,7 @@ msgstr "No hay texto de resultados"
 
 #: src/Admin/ModulesPage.php:417
 msgid "No results found for your query."
-msgstr "No se encontraron resultados para su consulta."
+msgstr "No se encontraron resultados para tu consulta."
 
 #: src/Admin/ModulesPage.php:418
 msgid "View all results text"
@@ -4694,10 +4619,7 @@ msgstr "Valor/cantidad mínimos del pedido"
 msgid ""
 "Block checkout when cart does not meet minimum order value or minimum number"
 " of items. Displays a notice on cart and checkout pages."
-msgstr ""
-"Bloquee el pago cuando el carrito no cumpla con el valor mínimo de pedido o "
-"la cantidad mínima de artículos. Muestra un aviso en el carrito y en las "
-"páginas de pago."
+msgstr "Bloquea el pago cuando el carrito no cumpla con el valor mínimo de pedido o la cantidad mínima de artículos. Muestra un aviso en el carrito y en las páginas de pago."
 
 #: src/Admin/ModulesPage.php:945
 msgid "Minimum order value (0 = disabled)"
@@ -4745,10 +4667,7 @@ msgstr "Revisar correos electrónicos de solicitud"
 msgid ""
 "Automatically send review request emails to customers after order "
 "completion. Includes product images, review links, and opt-out."
-msgstr ""
-"Envíe automáticamente correos electrónicos de solicitud de revisión a los "
-"clientes después de completar el pedido. Incluye imágenes de productos, "
-"enlaces de reseñas y exclusión voluntaria."
+msgstr "Envía automáticamente correos electrónicos de solicitud de revisión a los clientes después de completar el pedido. Incluye imágenes de productos, enlaces de reseñas y exclusión voluntaria."
 
 #: src/Admin/ModulesPage.php:961
 msgid "Send after (days)"
@@ -4860,13 +4779,11 @@ msgstr "ID de medición GA4"
 
 #: src/Admin/ModulesPage.php:1015
 msgid "Use SKU as product ID"
-msgstr "Utilice SKU como ID de producto"
+msgstr "Utiliza SKU como ID de producto"
 
 #: src/Admin/ModulesPage.php:1015
 msgid "Send SKU instead of WooCommerce product ID in ecommerce events"
-msgstr ""
-"Envíe SKU en lugar de ID de producto WooCommerce en eventos de comercio "
-"electrónico"
+msgstr "Envía SKU en lugar de ID de producto WooCommerce en eventos de comercio electrónico"
 
 #: src/Admin/ModulesPage.php:1020 src/Service/StockExportService.php:33
 #: src/Service/StockExportService.php:34 src/Service/StockExportService.php:58
@@ -4878,10 +4795,7 @@ msgid ""
 "Export WooCommerce product stock data as CSV. Configurable fields, stock "
 "threshold filters, variation support. Available under Products > Stock "
 "Export."
-msgstr ""
-"Exporte datos de stock de productos WooCommerce como CSV. Campos "
-"configurables, filtros de umbral de stock, soporte de variaciones. "
-"Disponible en Productos > Exportación de stock."
+msgstr "Exporta datos de stock de productos WooCommerce como CSV. Campos configurables, filtros de umbral de stock, soporte de variaciones. Disponible en Productos > Exportación de stock."
 
 #: src/Admin/ModulesPage.php:1026
 msgid "Export stock"
@@ -4896,11 +4810,7 @@ msgid ""
 "Let customers register and login via Google or Facebook. Displays branded "
 "buttons on My Account, checkout, and WordPress login forms. Auto-creates "
 "WooCommerce customer accounts."
-msgstr ""
-"Permita que los clientes se registren e inicien sesión a través de Google o "
-"Facebook. Muestra botones de marca en Mi cuenta, pago y formularios de "
-"inicio de sesión de WordPress. Crea automáticamente cuentas de clientes de "
-"WooCommerce."
+msgstr "Permite que los clientes se registren e inicien sesión a través de Google o Facebook. Muestra botones de marca en Mi cuenta, pago y formularios de inicio de sesión de WordPress. Crea automáticamente cuentas de clientes de WooCommerce."
 
 #: src/Admin/ModulesPage.php:1034 src/Admin/ModulesPage.php:1052
 #: src/Admin/ModulesPage.php:1062 src/Admin/ModulesPage.php:1074
@@ -4957,9 +4867,7 @@ msgstr "Registrar automáticamente nuevos usuarios"
 
 #: src/Admin/ModulesPage.php:1045
 msgid "Create WooCommerce accounts automatically on first social login"
-msgstr ""
-"Cree cuentas de WooCommerce automáticamente en el primer inicio de sesión "
-"social"
+msgstr "Crea cuentas de WooCommerce automáticamente en el primer inicio de sesión social"
 
 #: src/Admin/ModulesPage.php:1050
 msgid "Product Authors"
@@ -4984,10 +4892,7 @@ msgstr "Reseñas de expertos"
 msgid ""
 "Custom post type for editorial product reviews. Link expert reviews to "
 "products with ratings (1-10), verdicts, and Schema.org markup for SEO."
-msgstr ""
-"Tipo de publicación personalizada para reseñas de productos editoriales. "
-"Vincule reseñas de expertos a productos con calificaciones (1-10), "
-"veredictos y marcado de Schema.org para SEO."
+msgstr "Tipo de publicación personalizada para reseñas de productos editoriales. Vincula reseñas de expertos a productos con calificaciones (1-10), veredictos y marcado de Schema.org para SEO."
 
 #: src/Admin/ModulesPage.php:1066
 msgid "Manage reviews"
@@ -5040,7 +4945,7 @@ msgstr "Ocultar en dispositivos móviles"
 
 #: src/Admin/ModulesPage.php:1083
 msgid "Disable on small screens to avoid obstructing content"
-msgstr "Desactívelo en pantallas pequeñas para evitar obstruir el contenido."
+msgstr "Desactívalo en pantallas pequeñas para evitar obstruir el contenido."
 
 #: src/Admin/ModulesPage.php:1088
 msgid "Product Q&A"
@@ -5176,10 +5081,7 @@ msgid ""
 "Export WooCommerce orders to CSV with configurable fields, date range and "
 "status filters. 30+ exportable fields including products, customer data, and"
 " coupons."
-msgstr ""
-"Exporte pedidos de WooCommerce a CSV con campos configurables, rango de "
-"fechas y filtros de estado. Más de 30 campos exportables que incluyen "
-"productos, datos de clientes y cupones."
+msgstr "Exporta pedidos de WooCommerce a CSV con campos configurables, rango de fechas y filtros de estado. Más de 30 campos exportables que incluyen productos, datos de clientes y cupones."
 
 #: src/Admin/ModulesPage.php:1149
 msgid "Export orders"
@@ -5249,9 +5151,7 @@ msgstr "Selector de fecha de entrega"
 msgid ""
 "Let customers choose preferred delivery date at checkout. Block weekends and"
 " holidays."
-msgstr ""
-"Permita que los clientes elijan la fecha de entrega preferida al finalizar "
-"la compra. Bloquear fines de semana y festivos."
+msgstr "Permite que los clientes elijan la fecha de entrega preferida al finalizar la compra. Bloquea fines de semana y festivos."
 
 #: src/Admin/ModulesPage.php:1203
 msgid "Abandoned Cart Recovery"
@@ -5261,9 +5161,7 @@ msgstr "Recuperación de carrito abandonado"
 msgid ""
 "Track abandoned carts and send automated recovery emails with coupon "
 "incentives."
-msgstr ""
-"Realice un seguimiento de los carritos abandonados y envíe correos "
-"electrónicos de recuperación automatizados con cupones de incentivo."
+msgstr "Realiza un seguimiento de los carritos abandonados y envía correos electrónicos de recuperación automatizados con cupones de incentivo."
 
 #: src/Admin/ModulesPage.php:1214
 msgid "Gift Cards"
@@ -5320,9 +5218,7 @@ msgstr "Pedidos anticipados"
 msgid ""
 "Accept pre-orders for upcoming products. Charge immediately or when product "
 "ships."
-msgstr ""
-"Acepte pedidos anticipados de próximos productos. Cargue inmediatamente o "
-"cuando se envíe el producto."
+msgstr "Acepta pedidos anticipados de próximos productos. Carga inmediatamente o cuando se envíe el producto."
 
 #: src/Admin/ModulesPage.php:1258
 msgid "Product Bundles"
@@ -5332,9 +5228,7 @@ msgstr "Paquetes de productos"
 msgid ""
 "Create product bundles and kits with combined pricing and inventory "
 "tracking."
-msgstr ""
-"Cree paquetes y kits de productos con precios combinados y seguimiento de "
-"inventario."
+msgstr "Crea paquetes y kits de productos con precios combinados y seguimiento de inventario."
 
 #: src/Admin/ModulesPage.php:1269
 msgid "Product Add-Ons"
@@ -5368,9 +5262,7 @@ msgstr "Modo catálogo"
 msgid ""
 "Hide prices and add-to-cart buttons. Show \"Request a quote\" instead. Per-"
 "product or global."
-msgstr ""
-"Ocultar precios y botones de añadir al carrito. En su lugar, muestre "
-"\"Solicitar presupuesto\". Por producto o global."
+msgstr "Ocultar precios y botones de añadir al carrito. En su lugar, muestra \"Solicitar presupuesto\". Por producto o global."
 
 #: src/Admin/ModulesPage.php:1302
 msgid "AI Product Descriptions"
@@ -5380,10 +5272,7 @@ msgstr "Descripciones de productos de IA"
 msgid ""
 "Generate SEO-optimized product descriptions using OpenAI-compatible APIs. "
 "Supports tone selection, bulk generation, and Yoast/RankMath integration."
-msgstr ""
-"Genere descripciones de productos optimizadas para SEO utilizando API "
-"compatibles con OpenAI. Admite selección de tonos, generación masiva e "
-"integración de Yoast/RankMath."
+msgstr "Genera descripciones de productos optimizadas para SEO utilizando API compatibles con OpenAI. Admite selección de tonos, generación masiva e integración de Yoast/RankMath."
 
 #: src/Admin/ModulesPage.php:1304
 msgid "PRO - Tools"
@@ -6007,9 +5896,7 @@ msgstr "Activación de cuenta (doble suscripción)"
 #: src/Email/DoubleOptInEmail.php:20
 msgid ""
 "A warm welcome sent to your new customers to verify their email address."
-msgstr ""
-"Una cálida bienvenida enviada a sus nuevos clientes para verificar su "
-"dirección de correo electrónico."
+msgstr "Una cálida bienvenida enviada a tus nuevos clientes para verificar su dirección de correo electrónico."
 
 #: src/Email/DoubleOptInEmail.php:119 src/Email/DoubleOptInEmail.php:120
 msgid ""
@@ -6251,46 +6138,34 @@ msgstr ""
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
-msgstr ""
-"Active la casilla de verificación Política de privacidad, requerida por el "
-"art. 6.1.a y art. 7."
+msgstr "Activa la casilla de verificación Política de privacidad, requerida por el art. 6.1.a y art. 7."
 
 #: src/Service/CheckboxService.php:349
 msgid ""
 "Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights "
 "Act (Art. 12)."
-msgstr ""
-"Active la casilla de verificación Derechos de desistimiento, requerido por "
-"la Ley polaca de derechos del consumidor (Art. 12)."
+msgstr "Activa la casilla de verificación Derechos de desistimiento, requerido por la Ley polaca de derechos del consumidor (Art. 12)."
 
 #: src/Service/CheckboxService.php:361
 msgid "Consider enabling Digital Content waiver if you sell digital products."
-msgstr ""
-"Considere habilitar la exención de contenido digital si vende productos "
-"digitales."
+msgstr "Considera habilitar la exención de contenido digital si vendes productos digitales."
 
 #: src/Service/CheckboxService.php:373
 msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
-msgstr ""
-"El consentimiento de marketing debe ser opcional según el RGPD; cámbielo de "
-"obligatorio a opcional."
+msgstr "El consentimiento de marketing debe ser opcional según el RGPD; cámbialo de obligatorio a opcional."
 
 #: src/Service/CheckboxService.php:379
 msgid ""
 "Consider adding an optional marketing consent checkbox for newsletters."
-msgstr ""
-"Considere añadir una casilla de verificación de consentimiento de marketing "
-"opcional para los boletines."
+msgstr "Considera añadir una casilla de verificación de consentimiento de marketing opcional para los boletines."
 
 #: src/Service/CheckboxService.php:391
 msgid ""
 "Review reminder consent should be optional - change it from required to "
 "optional."
-msgstr ""
-"El consentimiento del recordatorio de revisión debe ser opcional; cámbielo "
-"de obligatorio a opcional."
+msgstr "El consentimiento del recordatorio de revisión debe ser opcional; cámbialo de obligatorio a opcional."
 
 #. translators: %s: link to terms page
 #: src/Service/CheckboxService.php:451
@@ -6304,7 +6179,7 @@ msgstr ""
 
 #: src/Service/CheckboxService.php:457
 msgid "You must accept the Terms and Conditions to place an order."
-msgstr "Debe aceptar los Términos y condiciones para realizar un pedido."
+msgstr "Debes aceptar los Términos y condiciones para realizar un pedido."
 
 #: src/Service/CheckboxService.php:458
 msgid "Shop Terms and Conditions acceptance."
@@ -6360,7 +6235,7 @@ msgstr ""
 
 #: src/Service/CheckboxService.php:505
 msgid "You must agree to the immediate delivery of digital content."
-msgstr "Debe aceptar la entrega inmediata de contenido digital."
+msgstr "Debes aceptar la entrega inmediata de contenido digital."
 
 #: src/Service/CheckboxService.php:506
 msgid "Waiver of the right of withdrawal for digital goods."
@@ -6419,7 +6294,7 @@ msgstr "Comparar productos"
 
 #: src/Service/CompareService.php:352
 msgid "Log in to use product comparison."
-msgstr "Inicie sesión para utilizar la comparación de productos."
+msgstr "Inicia sesión para utilizar la comparación de productos."
 
 #: src/Service/CompareService.php:362
 msgid "You cannot clear the comparison."
@@ -6437,9 +6312,7 @@ msgstr "Mostrar solo diferencias"
 msgid ""
 "You can compare up to {limit} products at once. The oldest entry was "
 "automatically replaced."
-msgstr ""
-"Puede comparar hasta {limit} productos a la vez. La entrada más antigua fue "
-"reemplazada automáticamente."
+msgstr "Puedes comparar hasta {limit} productos a la vez. La entrada más antigua fue reemplazada automáticamente."
 
 #: src/Service/CompareService.php:409
 msgid "Availability"
@@ -6559,18 +6432,15 @@ msgstr "Guardar campos"
 msgid ""
 "Your account is awaiting activation! Please check your email and click the "
 "activation link."
-msgstr ""
-"¡Su cuenta está esperando activación! Por favor revise su correo electrónico"
-" y haga clic en el enlace de activación."
+msgstr "¡Tu cuenta está esperando activación! Por favor revisa tu correo electrónico y haz clic en el enlace de activación."
 
 #: src/Service/DoubleOptInService.php:133
 msgid "Great! Your account is now activated. You can now log in."
-msgstr ""
-"¡Excelente! Su cuenta ahora está activada. Ahora puedes iniciar sesión."
+msgstr "¡Excelente! Tu cuenta ahora está activada. Ahora puedes iniciar sesión."
 
 #: src/Service/DPATrackerService.php:36
 msgid "You do not have permission to manage DPA registry."
-msgstr "No tiene permiso para administrar el registro de DPA."
+msgstr "No tienes permiso para administrar el registro de DPA."
 
 #: src/Service/DPATrackerService.php:66
 msgid "Data Processing Agreement (DPA) Registry"
@@ -6580,9 +6450,7 @@ msgstr "Registro de Acuerdo de Procesamiento de Datos (DPA)"
 msgid ""
 "Detected external services processing your customers' personal data. Mark "
 "those for which you have a signed DPA."
-msgstr ""
-"Servicios externos detectados que procesan los datos personales de sus "
-"clientes. Marque aquellos para los que tenga un DPA firmado."
+msgstr "Servicios externos detectados que procesan los datos personales de tus clientes. Marca aquellos para los que tengas un DPA firmado."
 
 #: src/Service/DPATrackerService.php:73
 msgid "Service"
@@ -6634,7 +6502,7 @@ msgstr "[Polski DSA] Nuevo informe #%d"
 
 #: src/Service/DSAService.php:114
 msgid "You do not have permission to manage DSA reports."
-msgstr "No tiene permiso para administrar informes DSA."
+msgstr "No tienes permiso para administrar informes DSA."
 
 #: src/Service/DSAService.php:129
 msgid "Invalid DSA report status."
@@ -6769,19 +6637,17 @@ msgstr "Derecho de Retiro"
 
 #: src/Service/LegalPageService.php:171
 msgid "Please complete the Shop Terms and Conditions."
-msgstr "Complete los Términos y condiciones de la tienda."
+msgstr "Completa los Términos y condiciones de la tienda."
 
 #: src/Service/LegalPageService.php:172
 msgid "Please fill in your Privacy Policy."
-msgstr "Por favor complete su Política de Privacidad."
+msgstr "Por favor completa tu Política de Privacidad."
 
 #: src/Service/LegalPageService.php:173
 msgid ""
 "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to "
 "withdraw."
-msgstr ""
-"Complete su Política de devolución y desistimiento. Los consumidores tienen 14 días"
-" para retirar."
+msgstr "Completa tu Política de devolución y desistimiento. Los consumidores tienen 14 días para retirar."
 
 #: src/Service/LegalPageService.php:174
 msgid "Please complete the complaints procedure."
@@ -7111,8 +6977,7 @@ msgstr "Vista rápida del producto"
 
 #: src/Service/ReviewRequestService.php:183
 msgid "You have been unsubscribed from review request emails."
-msgstr ""
-"Se le ha dado de baja de los correos electrónicos de solicitud de revisión."
+msgstr "Te hemos dado de baja de los correos electrónicos de solicitud de revisión."
 
 #: src/Service/ReviewRequestService.php:200
 msgid "We still want to hear from you, {first_name}!"
@@ -7134,9 +6999,7 @@ msgstr "¿Cómo fue tu compra? Deja una reseña"
 msgid ""
 "Hi {first_name}, thank you for your recent purchase. We would love to hear "
 "your feedback."
-msgstr ""
-"Hola {first_name}, gracias por tu reciente compra. Nos encantaría escuchar "
-"sus comentarios."
+msgstr "Hola {first_name}, gracias por tu reciente compra. Nos encantaría escuchar tus comentarios."
 
 #: src/Service/ReviewRequestService.php:225
 msgid "Unsubscribe from review requests"
@@ -7158,11 +7021,7 @@ msgid ""
 "Track security incidents, product vulnerabilities, data breaches, and "
 "hosting or payment issues in one place. This helps with internal audit "
 "trails and CRA readiness work."
-msgstr ""
-"Realice un seguimiento de los incidentes de seguridad, las vulnerabilidades "
-"de los productos, las filtraciones de datos y los problemas de alojamiento o"
-" pago en un solo lugar. Esto ayuda con los seguimientos de auditoría interna"
-" y el trabajo de preparación de la CRA."
+msgstr "Realiza un seguimiento de los incidentes de seguridad, las vulnerabilidades de los productos, las filtraciones de datos y los problemas de alojamiento o pago en un solo lugar. Esto ayuda con los seguimientos de auditoría interna y el trabajo de preparación de la CRA."
 
 #: src/Service/SecurityIncidentService.php:96
 msgid "Add incident"
@@ -7352,9 +7211,7 @@ msgstr ""
 #: src/Service/SiteAuditService.php:159
 #, php-format
 msgid "Missing pages: %s. Set them in WooCommerce > Settings > Advanced."
-msgstr ""
-"Páginas faltantes: %s. Configúrelos en WooCommerce > Configuración > "
-"Avanzado."
+msgstr "Páginas faltantes: %s. Configúralas en WooCommerce > Configuración > Avanzado."
 
 #: src/Service/SiteAuditService.php:172
 msgid "Privacy Policy content"
@@ -7412,7 +7269,7 @@ msgstr "Todos los datos básicos de la empresa están completos."
 #: src/Service/SiteAuditService.php:265
 #, php-format
 msgid "Missing data: %s. Fill in Polski > Settings."
-msgstr "Datos faltantes: %s. Complete Polski > Configuración."
+msgstr "Datos faltantes: %s. Completa Polski > Configuración."
 
 #: src/Service/SiteAuditService.php:278
 msgid "Pre-checked checkboxes (dark pattern)"
@@ -7621,9 +7478,7 @@ msgstr ""
 msgid ""
 "DPA module is enabled, but the registry is empty. Mark at least hosting, "
 "payments, and other data processing services."
-msgstr ""
-"El módulo DPA está habilitado, pero el registro está vacío. Marque al menos "
-"hosting, pagos y otros servicios de procesamiento de datos."
+msgstr "El módulo DPA está habilitado, pero el registro está vacío. Marca al menos hosting, pagos y otros servicios de procesamiento de datos."
 
 #: src/Service/SiteAuditService.php:615
 msgid "DPA registry has no active data processing agreements marked."
@@ -7732,9 +7587,7 @@ msgstr ""
 #: src/Service/SocialLoginService.php:208
 msgid ""
 "Could not retrieve your profile. Please ensure email access is granted."
-msgstr ""
-"No se pudo recuperar su perfil. Asegúrese de que se le conceda acceso al "
-"correo electrónico."
+msgstr "No se pudo recuperar tu perfil. Asegúrate de que se te conceda acceso al correo electrónico."
 
 #: src/Service/SocialLoginService.php:217
 msgid "Could not create your account. Please try again."
@@ -7842,9 +7695,7 @@ msgstr "Productos encontrados"
 
 #: src/Service/StockExportService.php:270
 msgid "Preview limited to 500 rows. Use CSV export for full data."
-msgstr ""
-"Vista previa limitada a 500 filas. Utilice la exportación CSV para obtener "
-"datos completos."
+msgstr "Vista previa limitada a 500 filas. Utiliza la exportación CSV para obtener datos completos."
 
 #: src/Service/StockExportService.php:273
 msgid "Back to export"
@@ -7908,16 +7759,15 @@ msgstr "La lista de espera no está disponible para este producto."
 
 #: src/Service/WaitlistService.php:109
 msgid "Provide a valid email address."
-msgstr "Proporcione una dirección de correo electrónico válida."
+msgstr "Proporciona una dirección de correo electrónico válida."
 
 #: src/Service/WaitlistService.php:113
 msgid "You must accept the consent for email contact."
-msgstr ""
-"Debe aceptar el consentimiento para el contacto por correo electrónico."
+msgstr "Debes aceptar el consentimiento para el contacto por correo electrónico."
 
 #: src/Service/WaitlistService.php:117
 msgid "Login to join the waitlist."
-msgstr "Inicie sesión para unirse a la lista de espera."
+msgstr "Inicia sesión para unirte a la lista de espera."
 
 #: src/Service/WaitlistService.php:123
 msgid "Thank you. You have been added to the waitlist."
@@ -7934,9 +7784,7 @@ msgstr "El producto {product_name} vuelve a estar disponible."
 #: src/Service/WaitlistService.php:143
 msgid ""
 "If you no longer wish to receive these messages, simply ignore this email."
-msgstr ""
-"Si ya no desea recibir estos mensajes, simplemente ignore este correo "
-"electrónico."
+msgstr "Si ya no quieres recibir estos mensajes, simplemente ignora este correo electrónico."
 
 #: src/Service/WishlistService.php:267
 msgid "Add to Wishlist"
@@ -7948,7 +7796,7 @@ msgstr "Eliminar de la lista de deseos"
 
 #: src/Service/WishlistService.php:277
 msgid "Please login to use the wishlist."
-msgstr "Inicie sesión para utilizar la lista de deseos."
+msgstr "Inicia sesión para utilizar la lista de deseos."
 
 #: src/Service/WithdrawalService.php:150
 msgid "Customer has submitted a withdrawal request."
@@ -7970,9 +7818,7 @@ msgstr "Desafortunadamente, no pudimos encontrar dicho pedido."
 msgid ""
 "Your return request has been accepted. We will send you a confirmation email"
 " shortly!"
-msgstr ""
-"Su solicitud de devolución ha sido aceptada. ¡Le enviaremos un correo "
-"electrónico de confirmación en breve!"
+msgstr "Tu solicitud de devolución ha sido aceptada. ¡Te enviaremos un correo electrónico de confirmación en breve!"
 
 #: src/Service/WithdrawalService.php:320
 msgid "Invalid security token. Please try again."
@@ -7984,7 +7830,7 @@ msgstr "Orden no encontrada."
 
 #: src/Service/WithdrawalService.php:358
 msgid "Your withdrawal request has been accepted."
-msgstr "Su solicitud de desistimiento ha sido aceptada."
+msgstr "Tu solicitud de desistimiento ha sido aceptada."
 
 #: src/Service/WithdrawalService.php:362
 msgid "Failed to submit the withdrawal request."
@@ -7997,7 +7843,7 @@ msgstr "Instrucciones de seguridad"
 
 #: src/Shortcode/ShortcodeManager.php:225
 msgid "Proszę podać numer zamówienia."
-msgstr "Por favor proporcione su número de pedido."
+msgstr "Por favor proporciona tu número de pedido."
 
 #: src/Shortcode/ShortcodeManager.php:230
 msgid "Niestety, nie udało nam się znaleźć takiego zamówienia."
@@ -8031,9 +7877,7 @@ msgstr "Productos en este orden"
 #: templates/account/withdrawal-confirm.php:87
 #, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
-msgstr ""
-"¿Está seguro de que desea enviar una solicitud de desistimiento para el pedido n.° "
-"%s?"
+msgstr "¿Seguro que quieres enviar una solicitud de desistimiento para el pedido n.° %s?"
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
@@ -8060,14 +7904,12 @@ msgstr "Buenos días {name},"
 msgid ""
 "Twój wniosek o odstąpienie dla zamówienia #{order_number} został "
 "potwierdzony."
-msgstr ""
-"Su solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
+msgstr "Tu solicitud de desistimiento para el pedido #{order_number} ha sido confirmada."
 
 #: templates/emails/plain/withdrawal-confirmation.php:30
 #: templates/emails/withdrawal-confirmation.php:43
 msgid "Odeślij produkty na poniższy adres w ciągu 14 dni:"
-msgstr ""
-"Devuelva los productos a la dirección siguiente en un plazo de 14 días:"
+msgstr "Devuelve los productos a la dirección siguiente en un plazo de 14 días:"
 
 #: templates/forms/dsa-report.php:16
 msgid "Nielegalne treści"
@@ -8087,7 +7929,7 @@ msgstr "Otro"
 
 #: templates/forms/dsa-report.php:26
 msgid "Dziękujemy! Twoje zgłoszenie zostało wysłane i zostanie rozpatrzone."
-msgstr "¡Gracias! Su solicitud ha sido enviada y será considerada."
+msgstr "¡Gracias! Tu solicitud ha sido enviada y será considerada."
 
 #: templates/forms/dsa-report.php:30
 msgid "Zgłoś nielegalne treści (DSA)"
@@ -8097,9 +7939,7 @@ msgstr "Informar contenido ilegal (DSA)"
 msgid ""
 "Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne"
 " zgodnie z Aktem o usługach cyfrowych (DSA)."
-msgstr ""
-"Complete el siguiente formulario para denunciar contenido que considere "
-"ilegal según la Ley de Servicios Digitales (DSA)."
+msgstr "Completa el siguiente formulario para denunciar contenido que consideres ilegal según la Ley de Servicios Digitales (DSA)."
 
 #: templates/forms/dsa-report.php:41 templates/forms/dsa-report.php:46
 #: templates/forms/dsa-report.php:51 templates/forms/dsa-report.php:56
