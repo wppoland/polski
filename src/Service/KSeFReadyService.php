@@ -160,7 +160,9 @@ final class KSeFReadyService implements HasHooks
         }
 
         $status = $order->get_meta('_polski_ksef_status', true) ?: 'pending';
-        $color = $status === 'sent' ? '#46b450' : '#f0ad4e';
+        // 'accepted' is what PRO mirrors once KSeF numbers the invoice; 'sent'
+        // stays green for orders written by older versions.
+        $color = in_array($status, ['accepted', 'sent'], true) ? '#46b450' : '#f0ad4e';
 
         echo '<span style="color:' . esc_attr($color) . ';" title="' . esc_attr($status) . '">&#9679; KSeF</span>';
     }
