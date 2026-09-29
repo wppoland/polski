@@ -542,7 +542,7 @@ final class FilterService implements Bootable, HasHooks
             'attribute_options' => $this->getAttributeOptions($attributeTaxonomies),
             'attribute_taxonomies' => $attributeTaxonomies,
             'action_url' => $this->getActionUrl(),
-            'reset_url' => $this->getResetUrl($attributeTaxonomies),
+            'reset_url' => $this->getResetUrl(),
             'active_filters' => $this->getActiveFilters($settings, $attributeTaxonomies),
         ]);
     }
@@ -743,11 +743,12 @@ final class FilterService implements Bootable, HasHooks
     }
 
     /**
-     * @param list<string> $attributeTaxonomies
+     * Every query arg this form owns is a filter, so clearing them all leaves
+     * the bare listing URL.
      */
-    private function getResetUrl(array $attributeTaxonomies): string
+    private function getResetUrl(): string
     {
-        return add_query_arg($this->getPersistedQueryArgs([], $attributeTaxonomies), $this->getActionUrl());
+        return $this->getActionUrl();
     }
 
     /**
