@@ -58,7 +58,10 @@ final class AjaxAddToCartService implements HasHooks
             ],
         ]);
 
-        wp_add_inline_style('polski-frontend', '
+        // polski-frontend is only enqueued on checkout and account pages, so the toast needs its own handle.
+        wp_register_style('polski-ajax-cart', false, [], \Polski\VERSION);
+        wp_enqueue_style('polski-ajax-cart');
+        wp_add_inline_style('polski-ajax-cart', '
             .polski-ajax-cart-notice {
                 position: fixed;
                 top: 32px;

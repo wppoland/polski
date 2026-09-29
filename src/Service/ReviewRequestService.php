@@ -25,6 +25,7 @@ final class ReviewRequestService implements HasHooks
     private const OPTION = 'polski_review_requests';
     private const META_KEY = '_polski_review_request_sent';
     private const OPTOUT_META = '_polski_review_optout';
+    private const OPTOUT_OPTION = 'polski_review_optout_emails';
 
     public function registerHooks(): void
     {
@@ -109,8 +110,16 @@ final class ReviewRequestService implements HasHooks
 
             // Check opt-out.
             $userId = $order->get_customer_id();
-            if ($userId > 0 && get_user_meta($userId, self::OPTOUT_META, true) === 'yes') {
+            if (($userId > 0 && get_user_meta($userId, self::OPTOUT_META, true) === 'yes') || $this->isEmailOptedOut($email)) {
                 $order->update_meta_data(self::META_KEY, 'skipped:optout');
+                $order->save();
+                continue;
+            }
+
+            // The review reminder checkbox was shown and left unticked: '0'.
+            // No meta means the box was not on the checkout, so nothing was refused.
+            if ($order->get_meta('_wc_other/polski/review_reminder', true) === '0') {
+                $order->update_meta_data(self::META_KEY, 'skipped:no_consent');
                 $order->save();
                 continue;
             }
@@ -160,27 +169,40 @@ final class ReviewRequestService implements HasHooks
     }
 
     /**
-     * Handle opt-out link: ?polski_review_optout={nonce}
+     * Handle opt-out link: ?polski_review_optout={order id}&key={token}
+     *
+     * The link comes from an email built in cron, so it cannot carry a nonce
+     * tied to a session. It carries an HMAC over the order and its billing email
+     * instead, and works for guests and logged-out customers alike.
      */
     public function handleOptOut(): void
     {
-        if (! isset($_GET['polski_review_optout'])) {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified by the HMAC token below.
+        if (! isset($_GET['polski_review_optout'], $_GET['key'])) {
             return;
         }
 
-        $userId = get_current_user_id();
+        $order = wc_get_order(absint(wp_unslash($_GET['polski_review_optout'])));
+        $key = sanitize_text_field(wp_unslash((string) $_GET['key']));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        if ($userId <= 0) {
+        if (! $order instanceof \WC_Order || ! hash_equals($this->optOutToken($order), $key)) {
             return;
         }
 
-        $nonce = sanitize_text_field(wp_unslash((string) $_GET['polski_review_optout']));
+        $emails = get_option(self::OPTOUT_OPTION, []);
+        $emails = is_array($emails) ? $emails : [];
+        $emails[$this->emailHash($order->get_billing_email())] = 1;
+        update_option(self::OPTOUT_OPTION, $emails, false);
 
-        if (! wp_verify_nonce($nonce, 'polski_review_optout_' . $userId)) {
-            return;
+        if ($order->get_customer_id() > 0) {
+            update_user_meta($order->get_customer_id(), self::OPTOUT_META, 'yes');
         }
 
-        update_user_meta($userId, self::OPTOUT_META, 'yes');
+        // A guest opening the link from email has no session yet to carry the notice.
+        if (WC()->session instanceof \WC_Session_Handler && ! WC()->session->has_session()) {
+            WC()->session->set_customer_session_cookie(true);
+        }
 
         wc_add_notice(
             (string) ($this->getSettings()['optout_success_text'] ?? __('You have been unsubscribed from review request emails.', 'polski')),
@@ -189,6 +211,23 @@ final class ReviewRequestService implements HasHooks
 
         wp_safe_redirect(wc_get_page_permalink('myaccount'));
         exit;
+    }
+
+    private function isEmailOptedOut(string $email): bool
+    {
+        $emails = get_option(self::OPTOUT_OPTION, []);
+
+        return is_array($emails) && isset($emails[$this->emailHash($email)]);
+    }
+
+    private function emailHash(string $email): string
+    {
+        return hash('sha256', strtolower(trim($email)));
+    }
+
+    private function optOutToken(\WC_Order $order): string
+    {
+        return substr(hash_hmac('sha256', $order->get_id() . '|' . strtolower($order->get_billing_email()), wp_salt('auth')), 0, 32);
     }
 
     private function sendReviewRequestEmail(\WC_Order $order, bool $isReminder = false): bool
@@ -284,16 +323,9 @@ final class ReviewRequestService implements HasHooks
 
     private function buildOptOutUrl(\WC_Order $order): string
     {
-        $userId = $order->get_customer_id();
-
-        if ($userId <= 0) {
-            return '';
-        }
-
-        return wp_nonce_url(
-            add_query_arg('polski_review_optout', '1', wc_get_page_permalink('myaccount')),
-            'polski_review_optout_' . $userId,
-            'polski_review_optout',
-        );
+        return esc_url(add_query_arg([
+            'polski_review_optout' => $order->get_id(),
+            'key' => $this->optOutToken($order),
+        ], wc_get_page_permalink('myaccount')));
     }
 }

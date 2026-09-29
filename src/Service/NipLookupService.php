@@ -329,13 +329,15 @@ final class NipLookupService implements HasHooks
      */
     public function validateSavedAddress(int $userId, string $loadAddress, array $address, mixed $customer = null): void
     {
-        unset($userId, $customer);
+        unset($userId, $address, $customer);
 
         if ($loadAddress !== 'billing') {
             return;
         }
 
-        $nip = sanitize_text_field((string) ($address['billing_nip'] ?? ''));
+        // $address holds the field definitions, not the submitted values.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the edit-address nonce before this action.
+        $nip = sanitize_text_field(wp_unslash((string) ($_POST['billing_nip'] ?? '')));
 
         if (trim($nip) === '') {
             return;

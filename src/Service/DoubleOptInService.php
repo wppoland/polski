@@ -32,15 +32,11 @@ final class DoubleOptInService implements Bootable, HasHooks
     {
         $settings = get_option('polski_doi', []);
         $this->settings = is_array($settings) ? $settings : [];
-        // Both switches have to agree. Guarding on the feature setting alone
-        // left the Modules toggle decorative, which is the family-wide bug this
-        // release clears up. Unlike the food module, this setting really is
-        // written by the admin screen, so it stays in the condition rather than
-        // being replaced. Migration_2_7_0 switches the module on wherever the
-        // setting is already true, so no store suddenly starts letting
-        // unverified accounts log in.
-        $this->enabled = \Polski\Admin\ModulesPage::isModuleEnabled('double_opt_in')
-            && (bool) ($this->settings['enabled'] ?? false);
+        // The Modules toggle is the only switch: nothing in the admin writes
+        // polski_doi['enabled'], so requiring it left the toggle dead on every
+        // store that never had the old setting. Migration_2_7_0 already turned
+        // the module on wherever that setting was true.
+        $this->enabled = \Polski\Admin\ModulesPage::isModuleEnabled('double_opt_in');
         $this->cleanupDays = (int) ($this->settings['cleanup_days'] ?? 7);
     }
 
@@ -52,6 +48,9 @@ final class DoubleOptInService implements Bootable, HasHooks
 
         // On registration, set user as unactivated and send email.
         add_action('woocommerce_created_customer', [$this, 'onCustomerCreated'], 10, 3);
+
+        // My Account registration logs the new customer straight in unless told not to.
+        add_filter('woocommerce_registration_auth_new_customer', [$this, 'deferLoginUntilActivated'], 10, 2);
 
         // Block login for unactivated accounts.
         add_filter('wp_authenticate_user', [$this, 'blockUnactivatedLogin'], 10, 2);
@@ -93,6 +92,23 @@ final class DoubleOptInService implements Bootable, HasHooks
          * @param string $activationUrl
          */
         do_action('polski/doi/email_sent', $customerId, $email, $activationUrl);
+    }
+
+    /**
+     * Keep a fresh My Account registrant logged out until the activation link is used.
+     *
+     * @param mixed $auth
+     * @param mixed $customerId
+     */
+    public function deferLoginUntilActivated($auth, $customerId): bool
+    {
+        if (get_user_meta((int) $customerId, '_polski_doi_activated', true) !== 'no') {
+            return (bool) $auth;
+        }
+
+        wc_add_notice((string) ($this->settings['login_blocked_text'] ?? __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')), 'notice');
+
+        return false;
     }
 
     /**

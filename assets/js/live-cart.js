@@ -150,6 +150,10 @@
             $(document.body).on('polski_added_to_cart', function () {
                 open();
             });
+
+            if (config.openOnLoad) {
+                open();
+            }
         }
     }
 

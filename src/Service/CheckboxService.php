@@ -127,12 +127,13 @@ final class CheckboxService implements Bootable, HasHooks
      *
      * @param CheckboxContext      $context The context being validated.
      * @param array<string, mixed> $posted  The posted form data.
+     * @param array<string, mixed> $cartContext Cart context, so a box hidden for this cart is not required.
      * @return bool|\WP_Error True if valid, WP_Error with messages if not.
      */
-    public function validate(CheckboxContext $context, array $posted): bool|\WP_Error
+    public function validate(CheckboxContext $context, array $posted, array $cartContext = []): bool|\WP_Error
     {
         $errors = new \WP_Error();
-        $checkboxes = $this->getForContext($context);
+        $checkboxes = $this->getForContext($context, $cartContext);
 
         foreach ($checkboxes as $checkbox) {
             if (! $checkbox->isRequired()) {
@@ -196,12 +197,13 @@ final class CheckboxService implements Bootable, HasHooks
      *
      * @param CheckboxContext      $context
      * @param array<string, mixed> $posted
+     * @param array<string, mixed> $cartContext Cart context, so a box hidden for this cart is not logged as refused.
      * @return array<string, bool> Map of checkbox_id => consented.
      */
-    public function extractStates(CheckboxContext $context, array $posted): array
+    public function extractStates(CheckboxContext $context, array $posted, array $cartContext = []): array
     {
         $states = [];
-        $checkboxes = $this->getForContext($context);
+        $checkboxes = $this->getForContext($context, $cartContext);
 
         foreach ($checkboxes as $checkbox) {
             if (! $checkbox->logConsent) {
