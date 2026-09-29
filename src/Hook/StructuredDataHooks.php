@@ -49,19 +49,24 @@ final class StructuredDataHooks implements HasHooks
                 : gmdate('Y-m-d', strtotime('+1 year'));
         }
 
-        // Omnibus: surface the truthful lowest price of the last 30 days, only
-        // when the product is actually on sale and the module is enabled.
+        // Omnibus: the lowest price of the last 30 days is the reference a
+        // reduction is measured against, so it goes in as the strikethrough
+        // price. It is added next to WooCommerce's own sale and list price
+        // entries, never in their place: replacing them dropped the real price.
         if ($this->omnibus->isEnabled() && $product->is_on_sale()) {
             $lowest = $this->omnibus->getLowestPrice($product->get_id());
 
-            if ($lowest !== null) {
-                $markup['offers'][0]['priceSpecification'] = [
+            if ($lowest !== null && $lowest->effectivePrice() > (float) $product->get_price()) {
+                $specs = $markup['offers'][0]['priceSpecification'] ?? [];
+                $specs = isset($specs['@type']) ? [$specs] : (array) $specs;
+                $specs[] = [
                     '@type' => 'UnitPriceSpecification',
-                    'priceType' => 'https://schema.org/MinimumPrice',
+                    'priceType' => 'https://schema.org/StrikethroughPrice',
                     'name' => __('Lowest price in the last 30 days', 'polski'),
                     'price' => wc_format_decimal($lowest->effectivePrice(), wc_get_price_decimals()),
                     'priceCurrency' => get_woocommerce_currency(),
                 ];
+                $markup['offers'][0]['priceSpecification'] = $specs;
             }
         }
 
