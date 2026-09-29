@@ -21,6 +21,8 @@ $polski_lines    = is_array($polski_doc['lines'] ?? null) ? $polski_doc['lines']
 $polski_vat      = is_array($polski_doc['vat'] ?? null) ? $polski_doc['vat'] : [];
 $polski_payment  = is_array($polski_doc['payment'] ?? null) ? $polski_doc['payment'] : [];
 $polski_currency = (string) ($polski_payment['currency'] ?? 'PLN');
+// An empty VAT summary means the margin scheme: no net or VAT figures anywhere.
+$polski_show_vat = $polski_vat !== [];
 
 $polski_money = static function (float $amount) use ($polski_currency): string {
     return number_format_i18n($amount, 2) . ' ' . $polski_currency;
@@ -100,9 +102,13 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 					<th scope="col" class="is-num">#</th>
 					<th scope="col"><?php esc_html_e('Description', 'polski'); ?></th>
 					<th scope="col" class="is-num"><?php esc_html_e('Qty', 'polski'); ?></th>
-					<th scope="col" class="is-num"><?php esc_html_e('Net', 'polski'); ?></th>
-					<th scope="col" class="is-num"><?php esc_html_e('VAT', 'polski'); ?></th>
-					<th scope="col" class="is-num"><?php esc_html_e('Gross', 'polski'); ?></th>
+					<?php if ($polski_show_vat) : ?>
+						<th scope="col" class="is-num"><?php esc_html_e('Net', 'polski'); ?></th>
+						<th scope="col" class="is-num"><?php esc_html_e('VAT', 'polski'); ?></th>
+						<th scope="col" class="is-num"><?php esc_html_e('Gross', 'polski'); ?></th>
+					<?php else : ?>
+						<th scope="col" class="is-num"><?php esc_html_e('Amount', 'polski'); ?></th>
+					<?php endif; ?>
 				</tr>
 			</thead>
 			<tbody>
@@ -116,8 +122,10 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 							<?php endif; ?>
 						</td>
 						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['quantity'], 0)); ?></td>
-						<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['net'])); ?></td>
-						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>
+						<?php if ($polski_show_vat) : ?>
+							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['net'])); ?></td>
+							<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>
+						<?php endif; ?>
 						<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['gross'])); ?></td>
 					</tr>
 				<?php endforeach; ?>
@@ -125,7 +133,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 		</table>
 
 		<div class="polski-invoice__foot">
-			<?php if ($polski_vat !== []) : ?>
+			<?php if ($polski_show_vat) : ?>
 			<table class="polski-invoice__vat">
 				<caption><?php esc_html_e('VAT summary', 'polski'); ?></caption>
 				<thead>
