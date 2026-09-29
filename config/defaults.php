@@ -168,7 +168,7 @@ return [
         'email_greeting' => __('Hi {name},', 'polski'),
         'email_intro_text' => __('Your withdrawal from the contract for order #{order_number} has been confirmed.', 'polski'),
         'email_reason_label' => __('Your reason', 'polski'),
-        'email_return_instruction' => __('Please return the goods to the address above within 14 days:', 'polski'),
+        'email_return_instruction' => __('Please return the products to the address below within 14 days:', 'polski'),
         'email_additional_content' => __('You will be refunded within 14 days of us receiving the returned goods.', 'polski'),
     ],
 
