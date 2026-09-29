@@ -24,6 +24,12 @@ final class ProductQAService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Questions and answers are comments on the product, so the reviews
+        // list would show them as reviews. Keep them out of every comment
+        // query that does not ask for a type, also with the module off, or
+        // the stored Q&A would turn into star-less reviews.
+        add_action('pre_get_comments', [$this, 'excludeFromReviews']);
+
         if (! ModulesPage::isModuleEnabled('product_qa')) {
             return;
         }
@@ -40,11 +46,6 @@ final class ProductQAService implements HasHooks
         // Handle vote.
         add_action('wp_ajax_polski_qa_vote', [$this, 'handleVote']);
         add_action('wp_ajax_nopriv_polski_qa_vote', [$this, 'handleVote']);
-
-        // Questions and answers are comments on the product, so the reviews
-        // list would show them as reviews. Keep them out of every comment
-        // query that does not ask for a type.
-        add_action('pre_get_comments', [$this, 'excludeFromReviews']);
 
         // Schema.org markup.
         add_action('wp_footer', [$this, 'outputSchema']);

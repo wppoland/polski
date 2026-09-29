@@ -168,7 +168,7 @@ final class ModulesPage implements HasHooks
             'product_authors' => __('Adds a custom taxonomy for product authors or creators. When enabled, you can assign authors to products and group them, useful for stores selling books or creator-made items.', 'polski'),
             'expert_reviews' => __('Lets you publish editorial, in-house reviews of products. When enabled, you get a new section to write expert reviews with ratings and verdicts, linked to products and shown on product pages with Schema.org markup that helps with SEO.', 'polski'),
             'social_proof' => __('Displays recent-purchase popups to build trust. When enabled, small floating notifications about recent orders appear to your shoppers in a position and timing you choose, loaded smoothly via AJAX and built to be privacy-aware.', 'polski'),
-            'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and anyone can answer, you get email alerts for new questions, answers can be voted on, and a product with exactly one answered question gets Schema.org QAPage markup.', 'polski'),
+            'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and any logged-in user can answer, you get email alerts for new questions, answers can be voted on, and a product with exactly one answered question gets Schema.org QAPage markup.', 'polski'),
             'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these trust signals appear to shoppers on your product, cart, and checkout pages, and you choose which of those pages show them.', 'polski'),
             'live_cart' => __('Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper whenever they add a product, showing cart items, the subtotal, a free-shipping progress bar, and a quick link to checkout.', 'polski'),
             'price_history_chart' => __('Shows how a product\'s price has changed over time. When enabled, shoppers see a small SVG price-trend chart on product pages covering the last 30, 90, or 180 days, using your Omnibus price data.', 'polski'),
@@ -1550,7 +1550,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'product_qa',
                 'name' => __('Product Q&A', 'polski'),
-                'description' => __('Amazon-style questions and answers on product pages. Customers ask, anyone answers. Admin email notifications, answer voting, and Schema.org QAPage markup when a product has exactly one answered question.', 'polski'),
+                'description' => __('Amazon-style questions and answers on product pages. Customers ask, logged-in users answer. Admin email notifications, answer voting, and Schema.org QAPage markup when a product has exactly one answered question.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-format-chat',

@@ -627,6 +627,8 @@ final class ProductMetaBox implements HasHooks
         '_polski_tab_2_content' => 'tab_manager',
         '_polski_featured_video_url' => 'featured_video',
         '_polski_featured_video_title' => 'featured_video',
+        '_polski_is_medical_device' => 'product_markings',
+        '_polski_is_adults_only' => 'product_markings',
     ];
 
     /**

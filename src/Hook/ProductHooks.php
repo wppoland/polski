@@ -469,14 +469,34 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
-        // Add Manufacturer if available AND enabled
+        // Manufacturer: the name the page shows (manufacturer module) wins,
+        // the GPSR manufacturer is the fallback. Both obey the setting and
+        // their own module, so a switched-off source never reaches JSON-LD.
         if ($settings['schema_manufacturer'] ?? true) {
-            $manufacturer = $this->productInfo->getManufacturer($product);
+            $manufacturer = \Polski\Admin\ModulesPage::isModuleEnabled('manufacturer')
+                ? $this->productInfo->getManufacturer($product)
+                : '';
             if ($manufacturer !== '') {
                 $extraData['manufacturer'] = [
                     '@type' => 'Organization',
                     'name' => $manufacturer,
                 ];
+            } elseif (\Polski\Admin\ModulesPage::isModuleEnabled('gpsr')) {
+                $gpsrManufacturer = (string) get_post_meta($productId, '_polski_gpsr_manufacturer_name', true);
+                $gpsrContact = (string) get_post_meta($productId, '_polski_gpsr_manufacturer_contact', true);
+                if ($gpsrManufacturer !== '') {
+                    $extraData['manufacturer'] = [
+                        '@type' => 'Organization',
+                        'name' => $gpsrManufacturer,
+                    ];
+                    if ($gpsrContact !== '') {
+                        $extraData['manufacturer']['contactPoint'] = [
+                            '@type' => 'ContactPoint',
+                            'contactType' => 'product safety',
+                            'description' => $gpsrContact,
+                        ];
+                    }
+                }
             }
         }
 
@@ -546,24 +566,6 @@ final class ProductHooks implements Bootable, HasHooks
                     ],
                 ];
             }
-        }
-
-        // Add GPSR (Product Safety) data if available.
-        $gpsrManufacturer = get_post_meta($productId, '_polski_gpsr_manufacturer_name', true);
-        $gpsrContact = get_post_meta($productId, '_polski_gpsr_manufacturer_contact', true);
-        if (! empty($gpsrManufacturer)) {
-            $manufacturerSchema = [
-                '@type' => 'Organization',
-                'name' => $gpsrManufacturer,
-            ];
-            if (! empty($gpsrContact)) {
-                $manufacturerSchema['contactPoint'] = [
-                    '@type' => 'ContactPoint',
-                    'contactType' => 'product safety',
-                    'description' => $gpsrContact,
-                ];
-            }
-            $extraData['manufacturer'] = $manufacturerSchema;
         }
 
         // No 'nutrition' here: NutritionInformation is not a Product property

@@ -177,6 +177,12 @@ final class CSVImportExport implements HasHooks
             $columns[$label] = $csvKey;
         }
 
+        // The export writes the translated labels as headers, so they must
+        // map back too or a re-imported export leaves every column unmapped.
+        foreach ($this->addExportColumns([]) as $csvKey => $label) {
+            $columns[$label] = $csvKey;
+        }
+
         return $columns;
     }
 
