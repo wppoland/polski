@@ -48,6 +48,12 @@ final class TaxDisplayService implements HasHooks
             return (string) apply_filters('polski/price/vat_notice', $html, $product);
         }
 
+        // The notice says the price includes VAT. A shop showing net prices
+        // (WooCommerce > Settings > Tax) would print that next to a net figure.
+        if (get_option('woocommerce_tax_display_shop') === 'excl') {
+            return '';
+        }
+
         $taxRates = \WC_Tax::get_rates($product->get_tax_class());
 
         if (empty($taxRates)) {

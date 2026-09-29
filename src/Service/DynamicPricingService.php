@@ -113,19 +113,24 @@ final class DynamicPricingService implements Bootable, HasHooks
         // Compare with the amounts the shopper sees: gross when the cart shows
         // prices including tax, where line_total alone is net.
         $withTax = $cart->display_prices_including_tax();
-        $subtotal = 0.0;
+        $net = 0.0;
+        $shown = 0.0;
 
         foreach ($cart->get_cart() as $item) {
-            $subtotal += (float) ($item['line_total'] ?? 0) + ($withTax ? (float) ($item['line_tax'] ?? 0) : 0.0);
+            $net += (float) ($item['line_total'] ?? 0);
+            $shown += (float) ($item['line_total'] ?? 0) + ($withTax ? (float) ($item['line_tax'] ?? 0) : 0.0);
         }
 
-        if ($subtotal < $threshold) {
+        if ($shown < $threshold) {
             return;
         }
 
+        // The fee is taken off the net amount: WooCommerce always taxes a
+        // negative fee and adds that tax on top, so a gross base would take
+        // the percentage plus VAT.
         $cart->add_fee(
             __('Discount', 'polski'),
-            -1 * round($subtotal * $percent / 100, wc_get_price_decimals()),
+            -1 * round($net * $percent / 100, wc_get_price_decimals()),
             false,
         );
     }

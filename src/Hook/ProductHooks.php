@@ -95,7 +95,9 @@ final class ProductHooks implements Bootable, HasHooks
         wp_add_inline_script(
             'wc-add-to-cart-variation',
             'jQuery(function($){var m=".polski-unit-price,.polski-omnibus-price,.polski-delivery-time";'
-            . 'function own(f){return f.closest(".product").find(m).not(f.find(m));}'
+            // Only this product's marks: related and upsell items sit in their own
+            // .product inside it and keep theirs.
+            . 'function own(f){var p=f.closest(".product");return p.find(m).not(f.find(m)).filter(function(){return $(this).closest(".product").is(p);});}'
             . '$(document.body).on("found_variation","form.variations_form",function(){own($(this)).hide();})'
             . '.on("reset_data","form.variations_form",function(){own($(this)).show();});});',
         );
