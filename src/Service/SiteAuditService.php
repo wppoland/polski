@@ -619,8 +619,15 @@ final class SiteAuditService implements HasHooks
             $preCheckedBoxes[] = 'terms';
         }
 
+        // Same conditions as WooCommerce's checkout/form-billing.php: the box only
+        // renders when checkout registration is on and guest checkout is allowed.
+        $checkout = $classicCheckout && function_exists('WC') ? WC()->checkout() : null;
+        $createAccountRendered = $checkout !== null
+            && $checkout->is_registration_enabled()
+            && ! $checkout->is_registration_required();
+
         // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
-        if ($classicCheckout && apply_filters('woocommerce_create_account_default_checked', false) === true) {
+        if ($createAccountRendered && apply_filters('woocommerce_create_account_default_checked', false) === true) {
             $preCheckedBoxes[] = 'createaccount';
         }
 
