@@ -393,25 +393,15 @@ final class CustomCheckoutFieldsService implements HasHooks
 
         // phpcs:disable WordPress.Security.NonceVerification.Missing -- WooCommerce checkout nonce verified above.
         foreach ($this->getFields() as $field) {
-            if (empty($field['enabled']) || empty($field['required'])) {
+            // Required is enforced by WooCommerce itself: modifyCheckoutFields
+            // passes the flag on, and only for fields whose conditions let them show.
+            if (empty($field['enabled'])) {
                 continue;
             }
 
             $name = $field['name'];
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Dynamic checkout field names are validated by configuration and only used for presence/value checks here.
             $value = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : '';
-
-            if (empty($value) && $value !== '0') {
-                $label = $field['label'];
-                wc_add_notice(
-                    sprintf(
-                        /* translators: %s: field label */
-                        __('%s is a required field.', 'polski'),
-                        '<strong>' . esc_html($label) . '</strong>',
-                    ),
-                    'error',
-                );
-            }
 
             // Email validation.
             if ($field['type'] === 'email' && ! empty($value) && ! is_email($value)) {
@@ -498,8 +488,7 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $name = $field['name'];
-            $value = $this->displayValue($order, $name);
+            $value = $this->displayValue($order, $field);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -529,8 +518,7 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $name = $field['name'];
-            $value = $this->displayValue($order, $name);
+            $value = $this->displayValue($order, $field);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -566,8 +554,7 @@ final class CustomCheckoutFieldsService implements HasHooks
                 continue;
             }
 
-            $name = $field['name'];
-            $value = $this->displayValue($order, $name);
+            $value = $this->displayValue($order, $field);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -587,19 +574,35 @@ final class CustomCheckoutFieldsService implements HasHooks
     }
 
     /**
-     * The classic-checkout value to show, or '' when the order came from the
-     * block checkout: WooCommerce already prints additional fields itself on the
-     * order screen, emails and order details, so printing ours too doubled them.
+     * The value to show, or '' when WooCommerce prints it itself: it does so for
+     * the fields registered now, all at location 'order' (`_wc_other/`). Older
+     * block orders stored billing and shipping fields under `_wc_billing/` and
+     * `_wc_shipping/`, which nothing prints any more, so those are read here,
+     * from the mirrored `_<name>` copy or the original key. A select or radio shows its option label.
+     *
+     * @param CheckoutField $field
      */
-    private function displayValue(\WC_Order $order, string $name): string
+    private function displayValue(\WC_Order $order, array $field): string
     {
-        foreach (['_wc_other/', '_wc_billing/', '_wc_shipping/'] as $prefix) {
-            if ($order->meta_exists($prefix . 'polski/' . $name)) {
-                return '';
+        if ($order->meta_exists('_wc_other/polski/' . $field['name'])) {
+            return '';
+        }
+
+        $value = (string) $order->get_meta('_' . $field['name']);
+
+        if ($value === '') {
+            $value = (string) $order->get_meta('_wc_' . $field['section'] . '/polski/' . $field['name']);
+        }
+
+        if (in_array($field['type'], ['select', 'radio'], true)) {
+            foreach ($this->parseOptions($field['options']) as $option) {
+                if ($option['value'] === $value) {
+                    return $option['label'];
+                }
             }
         }
 
-        return (string) $order->get_meta('_' . $name);
+        return $value;
     }
 
     // ── Conditional Logic ────────────────────────────────

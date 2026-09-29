@@ -15,8 +15,10 @@
         var $form = $(this);
         var $button = $form.find('[type="submit"]');
 
-        // Skip external/grouped products or if AJAX is not appropriate.
-        if ($form.find('.single_add_to_cart_button').hasClass('disabled')) {
+        // Skip external/grouped products or if AJAX is not appropriate. The
+        // handler adds one product id, so a grouped form (several products) and
+        // an external one (a GET link away) keep their normal submit.
+        if ($form.find('.single_add_to_cart_button').hasClass('disabled') || $form.hasClass('grouped_form') || $form.attr('method') === 'get') {
             return;
         }
 
@@ -31,9 +33,15 @@
         formData.append('action', 'polski_ajax_add_to_cart');
         formData.append('security', config.nonce);
 
+        // A variable form carries a hidden add-to-cart field. Sent to
+        // admin-ajax.php, WooCommerce's form handler adds the item on wp_loaded
+        // before our handler adds it again, so drop it and send product_id only.
+        var addToCart = formData.get('add-to-cart');
+        formData.delete('add-to-cart');
+
         // Extract product_id from hidden input or button.
         if (!formData.get('product_id')) {
-            var productId = $button.val() || $form.find('input[name="product_id"]').val();
+            var productId = addToCart || $button.val() || $form.find('input[name="product_id"]').val();
             if (productId) {
                 formData.append('product_id', productId);
             }
@@ -50,7 +58,8 @@
             processData: false,
             contentType: false,
             success: function (response) {
-                if (response.error) {
+                // WooCommerce fragments carry `error`, our handler's failures `success: false`.
+                if (response.error || response.success === false) {
                     showNotice(response.data ? response.data.message : config.i18n.error, 'error');
                     return;
                 }

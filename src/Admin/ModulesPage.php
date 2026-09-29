@@ -164,7 +164,7 @@ final class ModulesPage implements HasHooks
             'ajax_add_to_cart' => __('Lets customers add items to the cart without reloading the page, including variable products. When enabled, products are added in the background on single product pages and a toast notification confirms success.', 'polski'),
             'datalayer' => __('Tracks ecommerce activity for Google Analytics 4 via dataLayer. When enabled, events like view_item, add_to_cart, begin_checkout and purchase are sent to your GA4 setup, working with a GTM container or gtag.js.', 'polski'),
             'stock_export' => __('Exports your WooCommerce product stock to a CSV file. When enabled, a Stock Export tool appears under Products where you can choose fields, filter by stock threshold and include variations.', 'polski'),
-            'social_login' => __('Lets customers register and sign in using Google or Facebook. When enabled, branded login buttons appear on My Account, checkout and the WordPress login form, and customer accounts are created automatically.', 'polski'),
+            'social_login' => __('Lets customers register and sign in using Google or Facebook. When enabled, branded login buttons appear on My Account, the classic (shortcode) checkout and the WordPress login form, and customer accounts are created automatically. The block checkout shows no buttons.', 'polski'),
             'product_authors' => __('Adds a custom taxonomy for product authors or creators. When enabled, you can assign authors to products and group them, useful for stores selling books or creator-made items.', 'polski'),
             'expert_reviews' => __('Lets you publish editorial, in-house reviews of products. When enabled, you get a new section to write expert reviews with ratings and verdicts, linked to products and shown on product pages with Schema.org markup that helps with SEO.', 'polski'),
             'social_proof' => __('Displays recent-purchase popups to build trust. When enabled, small floating notifications about recent orders appear to your shoppers in a position and timing you choose, loaded smoothly via AJAX and built to be privacy-aware.', 'polski'),
@@ -1494,7 +1494,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'social_login',
                 'name' => __('Social Login', 'polski'),
-                'description' => __('Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts.', 'polski'),
+                'description' => __('Let customers register and login via Google or Facebook. Displays branded buttons on My Account, the classic (shortcode) checkout and the WordPress login form, not on the block checkout. Auto-creates WooCommerce customer accounts.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-share',
