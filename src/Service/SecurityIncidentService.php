@@ -14,7 +14,6 @@ use Polski\Contract\HasHooks;
  */
 final class SecurityIncidentService implements HasHooks
 {
-    private const PAGE_SLUG = 'polski-security-incidents';
     private const SETTINGS_OPTION = 'polski_security';
     private const INCIDENTS_OPTION = 'polski_security_incidents';
     private const CAPABILITY = 'manage_woocommerce';
@@ -29,6 +28,18 @@ final class SecurityIncidentService implements HasHooks
     public function isEnabled(): bool
     {
         return ModulesPage::isModuleEnabled('security_incidents');
+    }
+
+    public static function pageUrl(): string
+    {
+        return admin_url('admin.php?page=polski&tab=reports&view=incidents');
+    }
+
+    private function guardRequest(): void
+    {
+        if (! current_user_can(self::CAPABILITY) || ! $this->isEnabled()) {
+            wp_die(esc_html__('You do not have permission to access this page.', 'polski'));
+        }
     }
 
     /**
@@ -78,9 +89,7 @@ final class SecurityIncidentService implements HasHooks
 
     public function renderPage(): void
     {
-        if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission to access this page.', 'polski'));
-        }
+        $this->guardRequest();
 
         $settings = get_option(self::SETTINGS_OPTION, []);
         $settings = is_array($settings) ? $settings : [];
@@ -98,7 +107,7 @@ final class SecurityIncidentService implements HasHooks
         wp_nonce_field('polski_save_security_incident', '_polski_security_nonce');
         echo '<input type="hidden" name="action" value="polski_save_security_incident" />';
 
-        $this->renderField(__('Reported at', 'polski'), '<input type="datetime-local" name="reported_at" value="' . esc_attr(gmdate('Y-m-d\TH:i')) . '" class="regular-text" />');
+        $this->renderField(__('Reported at', 'polski'), '<input type="datetime-local" name="reported_at" value="' . esc_attr(current_time('Y-m-d\TH:i')) . '" class="regular-text" />');
         $this->renderField(__('Type', 'polski'), $this->renderSelect('type', [
             'vulnerability' => __('Vulnerability', 'polski'),
             'data_breach' => __('Data breach', 'polski'),
@@ -192,23 +201,19 @@ final class SecurityIncidentService implements HasHooks
 
     public function handleSaveIncident(): void
     {
-        if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission to access this page.', 'polski'));
-        }
+        $this->guardRequest();
 
         check_admin_referer('polski_save_security_incident', '_polski_security_nonce');
 
         $this->createIncident($_POST);
 
-        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&saved=1'));
+        wp_safe_redirect(add_query_arg('saved', '1', self::pageUrl()));
         exit;
     }
 
     public function handleUpdateIncident(): void
     {
-        if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission to access this page.', 'polski'));
-        }
+        $this->guardRequest();
 
         check_admin_referer('polski_update_security_incident', '_polski_security_update_nonce');
 
@@ -217,7 +222,7 @@ final class SecurityIncidentService implements HasHooks
         $allowedStatuses = ['open', 'investigating', 'monitoring', 'resolved'];
 
         if ($incidentId === '' || ! in_array($status, $allowedStatuses, true)) {
-            wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&updated=0'));
+            wp_safe_redirect(add_query_arg('updated', '0', self::pageUrl()));
             exit;
         }
 
@@ -234,15 +239,13 @@ final class SecurityIncidentService implements HasHooks
 
         update_option(self::INCIDENTS_OPTION, $incidents);
 
-        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&updated=1'));
+        wp_safe_redirect(add_query_arg('updated', '1', self::pageUrl()));
         exit;
     }
 
     public function handleExportCsv(): void
     {
-        if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission to access this page.', 'polski'));
-        }
+        $this->guardRequest();
 
         check_admin_referer('polski_export_security_incidents', '_polski_security_export_nonce');
 
@@ -334,7 +337,14 @@ final class SecurityIncidentService implements HasHooks
         $allowedSeverities = ['low', 'medium', 'high', 'critical'];
         $allowedStatuses = ['open', 'investigating', 'monitoring', 'resolved'];
         $reportedAtRaw = sanitize_text_field((string) ($input['reported_at'] ?? ''));
-        $reportedAt = $reportedAtRaw !== '' ? str_replace('T', ' ', $reportedAtRaw) . ':00' : current_time('mysql', true);
+        // Site-local time, as typed into the datetime-local field.
+        $reportedAt = $reportedAtRaw !== '' ? str_replace('T', ' ', $reportedAtRaw) . ':00' : current_time('mysql');
+        $settings = get_option(self::SETTINGS_OPTION, []);
+        $settings = is_array($settings) ? $settings : [];
+        $reporterName = sanitize_text_field((string) ($input['reporter_name'] ?? ''));
+        $reporterEmail = sanitize_email((string) ($input['reporter_email'] ?? ''));
+        $reporterName = $reporterName !== '' ? $reporterName : sanitize_text_field((string) ($settings['default_reporter_name'] ?? ''));
+        $reporterEmail = $reporterEmail !== '' ? $reporterEmail : sanitize_email((string) ($settings['incident_contact_email'] ?? ''));
 
         $type = sanitize_key((string) ($input['type'] ?? 'other'));
         $severity = sanitize_key((string) ($input['severity'] ?? 'medium'));
@@ -362,8 +372,8 @@ final class SecurityIncidentService implements HasHooks
             'affected_area' => sanitize_text_field((string) ($input['affected_area'] ?? '')),
             'mitigation' => sanitize_textarea_field((string) ($input['mitigation'] ?? '')),
             'notes' => sanitize_textarea_field((string) ($input['notes'] ?? '')),
-            'reporter_name' => sanitize_text_field((string) ($input['reporter_name'] ?? '')),
-            'reporter_email' => sanitize_email((string) ($input['reporter_email'] ?? '')),
+            'reporter_name' => $reporterName,
+            'reporter_email' => $reporterEmail,
             'notified_hosting' => ! empty($input['notified_hosting']),
             'notified_authority' => ! empty($input['notified_authority']),
             'created_at' => current_time('mysql', true),
@@ -377,15 +387,10 @@ final class SecurityIncidentService implements HasHooks
             return '';
         }
 
-        $timestamp = strtotime($value);
+        // Stored as site-local time: format without a timezone shift.
+        $formatted = mysql2date('Y-m-d H:i', $value);
 
-        if ($timestamp === false) {
-            return $value;
-        }
-
-        $formatted = wp_date('Y-m-d H:i', $timestamp);
-
-        return is_string($formatted) ? $formatted : $value;
+        return is_string($formatted) && $formatted !== '' ? $formatted : $value;
     }
 
     private function labelForType(string $value): string
