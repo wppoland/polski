@@ -331,6 +331,7 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_prices|shipping_costs_text', 'label' => __('Link text', 'polski'), 'type' => 'text', 'default' => 'plus shipping costs'],
+                    ['key' => 'polski_prices|shipping_costs_page_id', 'label' => __('Shipping costs page', 'polski'), 'type' => 'page_select', 'default' => 0, 'hint' => __('Without a page the text shows without a link.', 'polski')],
                 ],
             ],
 
@@ -2178,6 +2179,14 @@ final class ModulesPage implements HasHooks
                     }
                 }
                 echo '</select>';
+            } elseif ($type === 'page_select') {
+                wp_dropdown_pages([
+                    'name' => $inputName,
+                    'selected' => (int) $currentValue,
+                    'show_option_none' => '-- ' . __('none', 'polski') . ' --',
+                    'option_none_value' => '0',
+                    'class' => 'polski-field__control',
+                ]);
             } elseif ($type === 'integration_repeater') {
                 $this->renderIntegrationRepeater($inputName, (string) $currentValue);
             } elseif ($type === 'trigger_repeater') {
@@ -3143,6 +3152,7 @@ final class ModulesPage implements HasHooks
         return match ($type) {
             'checkbox' => (bool) $value,
             'number' => is_numeric($value) ? $value + 0 : 0,
+            'page_select' => absint($value),
             'textarea' => sanitize_textarea_field((string) $value),
             'email' => sanitize_email((string) $value),
             'integration_repeater' => $this->sanitizeIntegrationRepeater((string) $value),

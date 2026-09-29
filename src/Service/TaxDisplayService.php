@@ -5,14 +5,24 @@ namespace Polski\Service;
 
 defined('ABSPATH') || exit;
 
+use Polski\Contract\HasHooks;
 use Polski\Enum\TaxDisplayMode;
 use Polski\Util\Formatter;
 
 /**
  * Handles tax display logic: brutto/netto toggle, VAT notices, small business exemption.
  */
-final class TaxDisplayService
+final class TaxDisplayService implements HasHooks
 {
+    public function registerHooks(): void
+    {
+        // A seller exempt under Art. 113 charges no VAT. Saying so on the product
+        // page while the cart adds VAT is the contradiction this stops.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('tax_display') && $this->isSmallBusiness()) {
+            add_filter('wc_tax_enabled', '__return_false');
+        }
+    }
+
     public function getMode(): TaxDisplayMode
     {
         $settings = $this->getSettings();
@@ -87,14 +97,16 @@ final class TaxDisplayService
             return '';
         }
 
-        $shippingPageId = wc_get_page_id('shop');
-        $shippingUrl = get_permalink($shippingPageId);
+        $shippingPageId = (int) ($priceSettings['shipping_costs_page_id'] ?? 0);
+        $shippingUrl = $shippingPageId > 0 && get_post_status($shippingPageId) === 'publish' ? get_permalink($shippingPageId) : false;
 
-        $html = sprintf(
-            '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
-            esc_url($shippingUrl ?: '#'),
-            esc_html($text),
-        );
+        $html = $shippingUrl
+            ? sprintf(
+                '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+                esc_url($shippingUrl),
+                esc_html($text),
+            )
+            : sprintf('<span class="polski-shipping-notice" style="margin-left:0.35em">%s</span>', esc_html($text));
 
         return (string) apply_filters('polski/price/shipping_notice', $html);
     }

@@ -180,6 +180,7 @@ return [
 
     // VAT margin scheme (procedura marzy, art. 120).
     \Polski\Service\VatMarginService::class,
+    \Polski\Service\TaxDisplayService::class,
     \Polski\Service\GuestWithdrawalService::class,
     \Polski\Service\AnnexGeneratorService::class,
     \Polski\Service\WithdrawalExemptionService::class,
