@@ -110,8 +110,10 @@ final class OmnibusService implements Bootable, HasHooks
             return;
         }
 
+        // A scheduled sale that has not started (or has ended) is not a price the
+        // product sells at; recording it would let it become its own lowest price.
         $salePrice = $product->get_sale_price();
-        $saleFloat = $salePrice !== '' ? (float) $salePrice : null;
+        $saleFloat = $salePrice !== '' && $product->is_on_sale('edit') ? (float) $salePrice : null;
 
         $priceType = $saleFloat !== null ? PriceType::Sale : PriceType::Regular;
 
