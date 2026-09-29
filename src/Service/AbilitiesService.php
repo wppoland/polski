@@ -135,7 +135,7 @@ final class AbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => [$this, 'canReadOrders'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -186,7 +186,7 @@ final class AbilitiesService implements HasHooks
                 return ['items' => $this->withdrawal->getRemainingItems($order)];
             },
             'permission_callback' => [$this, 'canReadOrders'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -227,7 +227,7 @@ final class AbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => [$this, 'canReadOrders'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -394,7 +394,7 @@ final class AbilitiesService implements HasHooks
                 return ['items' => array_map(static fn ($r) => $r->toArray(), $rows)];
             },
             'permission_callback' => [$this, 'canManageOrders'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -408,7 +408,7 @@ final class AbilitiesService implements HasHooks
             'output_schema' => ['type' => 'object', 'properties' => ['html' => ['type' => 'string']]],
             'execute_callback' => fn (): array => ['html' => $this->annex->getInfoHtml()],
             'permission_callback' => '__return_true',
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -422,7 +422,7 @@ final class AbilitiesService implements HasHooks
             'output_schema' => ['type' => 'object', 'properties' => ['html' => ['type' => 'string']]],
             'execute_callback' => fn (): array => ['html' => $this->annex->getFormHtml()],
             'permission_callback' => '__return_true',
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -457,7 +457,7 @@ final class AbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => '__return_true',
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -471,7 +471,7 @@ final class AbilitiesService implements HasHooks
             'output_schema' => ['type' => 'object'],
             'execute_callback' => fn (): array => $this->pageCompliance->check(LegalPageType::Privacy)->toArray(),
             'permission_callback' => [$this, 'canManageOptions'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -485,7 +485,7 @@ final class AbilitiesService implements HasHooks
             'output_schema' => ['type' => 'object'],
             'execute_callback' => fn (): array => $this->pageCompliance->check(LegalPageType::Terms)->toArray(),
             'permission_callback' => [$this, 'canManageOptions'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -507,7 +507,7 @@ final class AbilitiesService implements HasHooks
                 return $this->pageCompliance->checkCookieBanner($url !== '' ? $url : null)->toArray();
             },
             'permission_callback' => [$this, 'canManageOptions'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -545,7 +545,7 @@ final class AbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => '__return_true',
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
@@ -569,7 +569,7 @@ final class AbilitiesService implements HasHooks
                 'pages' => $this->legalPages->getConfigurationStatus(),
             ],
             'permission_callback' => [$this, 'canManageOptions'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => ['show_in_rest' => true, 'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true]],
         ]);
     }
 
