@@ -153,7 +153,6 @@ final class ModulesPage implements HasHooks
             'safe_fonts' => __('Reduces and controls external Google Fonts requests on your store. When enabled, font-display and preconnect hints are added to your pages, and the Google Fonts stylesheet can be held back until a visitor grants the matching consent, helping with privacy and load speed.', 'polski'),
             'custom_integrations' => __('Lets you add your own scripts or snippets to the page head or footer. When enabled, each snippet you add is tied to a consent category and runs only after the visitor grants that consent through the Consent Manager, so your custom code respects shoppers\' choices.', 'polski'),
             'custom_triggers' => __('Lets you push your own dataLayer events based on simple page conditions. When enabled, events fire when a visitor lands on a chosen URL or clicks a chosen element, feeding into the GA4 DataLayer module for your analytics and tag setup.', 'polski'),
-            'checkout_toolkit_integration' => __('Keeps your settings and messages compatible with popular checkout field add-ons and product data. When enabled, the plugin detects supported checkout extensions, cookies, and product data, then adjusts its own behaviour so labels and consent prompts display correctly at checkout.', 'polski'),
             'site_audit' => __('Automatically checks your store for the most common store-setup issues. When enabled, it scans for things like missing legal pages, pre-ticked checkboxes, company data, GDPR, and Omnibus items, and shows you a report in the admin so you can fix gaps yourself.', 'polski'),
             'plugin_data' => __('Controls what happens to Polski\'s data if you remove the plugin. When enabled, you decide whether Polski deletes its database tables, settings, and stored logs on uninstall, so you can keep your data or wipe it cleanly when removing the plugin from WordPress.', 'polski'),
             'cra_readiness' => __('Provides tools to help with Cyber Resilience Act (CRA) readiness. When enabled, it can publish a security.txt file (RFC 9116) with your security contact and vulnerability reporting policy, making it easier for researchers to report security issues responsibly.', 'polski'),
@@ -1339,22 +1338,6 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => '_ct_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each trigger pushes an event into window.dataLayer. Assign a consent category to hold a trigger until that category is granted (necessary always fires).', 'polski') . '</span>'],
                     ['key' => 'polski_custom_triggers|triggers', 'label' => __('Triggers', 'polski'), 'type' => 'trigger_repeater', 'default' => ''],
-                ],
-            ],
-
-            // === Integrations ===
-            [
-                'id' => 'checkout_toolkit_integration',
-                'name' => __('Checkout and consent integration', 'polski'),
-                'description' => __('Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages.', 'polski'),
-                'group' => 'Integrations',
-                'enabled' => true,
-                'icon' => 'dashicons-admin-plugins',
-                'settings' => [
-                    ['key' => '_checkout_toolkit_status', 'type' => 'html', 'html' => $this->getCheckoutToolkitStatus()],
-                ],
-                'links' => [
-                    ['label' => 'Flexible Checkout Fields', 'url' => 'https://wordpress.org/plugins/flexible-checkout-fields/'],
                 ],
             ],
 
@@ -2749,7 +2732,6 @@ final class ModulesPage implements HasHooks
             'infinite_scroll' => false,
             'popup' => false,
             'schema_org' => true,
-            'checkout_toolkit_integration' => true,
             'gpsr' => true,
             'verified_review' => false,
             'green_claims' => false,
@@ -3129,55 +3111,6 @@ final class ModulesPage implements HasHooks
         }
 
         return null;
-    }
-
-    private function getCheckoutToolkitStatus(): string
-    {
-        $generalSettings = get_option('polski_general', []);
-        $generalSettings = is_array($generalSettings) ? $generalSettings : [];
-
-        if (! function_exists('is_plugin_active')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        $plugins = [
-            ['file' => 'flexible-checkout-fields/flexible-checkout-fields.php', 'name' => 'Flexible Checkout Fields'],
-            ['file' => 'flexible-cookies/flexible-cookies.php', 'name' => 'Flexible Cookies'],
-            ['file' => 'gpsr-for-woocommerce/gpsr-for-woocommerce.php', 'name' => 'GPSR for WooCommerce'],
-        ];
-
-        $html = '<div style="font-size:12px;">';
-        $anyActive = false;
-
-        foreach ($plugins as $plugin) {
-            $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
-
-            if ($active) {
-                $anyActive = true;
-                $statusHtml = '<em>' . esc_html((string) ($generalSettings['admin_integration_detected_text'] ?? __('detected, integration active', 'polski'))) . '</em>';
-            } else {
-                $installUrl = admin_url('plugin-install.php?s=' . urlencode($plugin['name']) . '&tab=search&type=term');
-                $statusHtml = '<a href="' . esc_url($installUrl) . '">' . esc_html__('install', 'polski') . '</a>';
-            }
-
-            $html .= sprintf(
-                '<div style="margin-bottom:4px;">%s %s - %s</div>',
-                $icon,
-                esc_html($plugin['name']),
-                $statusHtml,
-            );
-        }
-
-        if (! $anyActive) {
-            $html .= '<div style="margin-top:6px;color:#666;">' . esc_html((string) ($generalSettings['admin_checkout_toolkit_no_external_text'] ?? __('No supported checkout and cookies extensions detected. Polski continues to work independently.', 'polski'))) . '</div>';
-        } else {
-            $html .= '<div style="margin-top:6px;color:#46b450;">' . esc_html((string) ($generalSettings['admin_checkout_toolkit_external_active_text'] ?? __('Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set.', 'polski'))) . '</div>';
-        }
-
-        $html .= '</div>';
-
-        return $html;
     }
 
     /**
