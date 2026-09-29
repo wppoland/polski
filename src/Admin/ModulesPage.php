@@ -125,7 +125,7 @@ final class ModulesPage implements HasHooks
             'consumer_information' => __('Adds the pre-contractual information that Directive (EU) 2024/825 requires from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so this module renders plain labelled rows.', 'polski'),
             'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
             'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email, and accounts registered in My Account cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
-            'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, your store\'s search box shows live product matches (including by SKU and category) without reloading the page, kept lightweight for fast page performance. Off until enabled.', 'polski'),
+            'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, a search box you place with the [polski_ajax_search] shortcode or the Polski AJAX Search block shows live product matches (including by SKU and category) without reloading the page. The theme\'s own search box is not replaced, but its results page gains the same SKU and category matching. Off until enabled.', 'polski'),
             'brands' => __('Adds product brands as a separate feature from the manufacturer. When enabled, you can assign brands to products using a dedicated brand taxonomy, and brand info appears for shoppers on product pages and listings. Off until enabled.', 'polski'),
             'ajax_filters' => __('Lets shoppers filter product listings without reloading the page. When enabled, customers can narrow results by category, brand, price, stock status, sale, and attributes, with the listing updating instantly. Off until enabled.', 'polski'),
             'wishlist' => __('Lets shoppers save favorite products for later. When enabled, both guests and logged-in customers can add or remove items instantly, and logged-in customers see their saved list in My Account. Off until enabled.', 'polski'),
@@ -688,7 +688,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'ajax_search',
                 'name' => __('AJAX Search', 'polski'),
-                'description' => __('Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals.', 'polski'),
+                'description' => __('Fast product suggestions while typing in the [polski_ajax_search] shortcode or the Polski AJAX Search block, with SKU support and categories.', 'polski'),
                 'group' => 'Sales and B2B',
                 'enabled' => false,
                 'icon' => 'dashicons-search',
@@ -985,7 +985,7 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_gallery_zoom|enable_zoom', 'label' => __('Enable zoom on hover', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_gallery_zoom|zoom_scale', 'label' => __('Zoom scale', 'polski'), 'type' => 'number', 'default' => 1.45, 'hint' => __('Magnification factor on hover. 1.0 = no zoom, 2.0 = double size', 'polski')],
-                    ['key' => 'polski_gallery_zoom|enable_lightbox', 'label' => __('Enable lightbox on click', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_gallery_zoom|enable_lightbox', 'label' => __('Enable lightbox on click', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Used only when the theme has no WooCommerce lightbox of its own; where it has one, that lightbox is kept.', 'polski')],
                     ['key' => 'polski_gallery_zoom|dialog_label', 'label' => __('Lightbox window label', 'polski'), 'type' => 'text', 'default' => 'Product gallery preview'],
                     ['key' => 'polski_gallery_zoom|close_label', 'label' => __('Close label', 'polski'), 'type' => 'text', 'default' => 'Close gallery preview'],
                     ['key' => 'polski_gallery_zoom|show_backdrop_close', 'label' => __('Close by clicking background', 'polski'), 'type' => 'checkbox', 'default' => true],

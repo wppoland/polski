@@ -85,7 +85,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Infinite scroll** - automatic loading of more products.
 * **Product tab manager** - configure the tabs on the product page.
 * **AJAX filters** - filter products without reloading the page.
-* **AJAX search** - live product search, matching the title, the SKU, category names and the values of the global attributes you choose to index.
+* **AJAX search** - live product search in a search box placed with a shortcode or block, matching the title, the SKU, category names and the values of the global attributes you choose to index.
 * **Product badges** - sale, new, featured and custom labels.
 * **Promotional popups** - popup campaigns in the shop.
 
