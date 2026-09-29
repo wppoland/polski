@@ -59,28 +59,30 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        const nextResultCount = doc.querySelector('.woocommerce-result-count');
-        const nextPagination = doc.querySelector('.woocommerce-pagination');
-        const currentResultCount = document.querySelector('.woocommerce-result-count');
-        const currentPagination = document.querySelector('.woocommerce-pagination');
-
         currentProducts.replaceWith(nextProducts);
 
-        if (currentResultCount && nextResultCount) {
-            currentResultCount.replaceWith(nextResultCount);
-        } else if (currentResultCount && !nextResultCount) {
-            currentResultCount.remove();
-        } else if (!currentResultCount && nextResultCount) {
-            nextProducts.before(nextResultCount);
-        }
+        // Themes such as Storefront print the result count and the pagination
+        // both above and below the list, so every copy is swapped.
+        ['.woocommerce-result-count', '.woocommerce-pagination'].forEach((part) => {
+            const current = Array.from(document.querySelectorAll(part));
+            const next = Array.from(doc.querySelectorAll(part));
 
-        if (currentPagination && nextPagination) {
-            currentPagination.replaceWith(nextPagination);
-        } else if (currentPagination && !nextPagination) {
-            currentPagination.remove();
-        } else if (!currentPagination && nextPagination) {
-            nextProducts.after(nextPagination);
-        }
+            current.forEach((element, index) => {
+                if (next[index]) {
+                    element.replaceWith(next[index]);
+                } else {
+                    element.remove();
+                }
+            });
+
+            next.slice(current.length).forEach((element) => {
+                if (part === '.woocommerce-result-count') {
+                    nextProducts.before(element);
+                } else {
+                    nextProducts.after(element);
+                }
+            });
+        });
 
         return true;
     };
@@ -168,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             replaceFilterForms(doc);
             announceResults(doc);
+            document.dispatchEvent(new CustomEvent('polski:products-replaced'));
             if (pushHistory) {
                 window.history.pushState({}, '', url.toString());
             }
