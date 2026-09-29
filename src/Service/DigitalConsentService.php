@@ -68,6 +68,9 @@ final class DigitalConsentService implements HasHooks
         // registered for every cart, so a physical-only order carried a
         // digital-content "No" on the thank-you page and in the emails.
         add_filter('woocommerce_filter_fields_for_order_confirmation', [$this, 'hideOnNonDigitalOrders'], 10, 4);
+        // The same "No" on the admin order screen, plus a hidden input that
+        // wrote it back to the order on every save.
+        add_filter('woocommerce_admin_shipping_fields', [$this, 'hideAdminFieldOnNonDigitalOrders'], 20, 2);
 
         // Classic-checkout field. The additional field registered above covers
         // the block checkout only, so these are the only path on a shortcode
@@ -315,6 +318,19 @@ final class DigitalConsentService implements HasHooks
     }
 
     /**
+     * @param array<string, mixed> $fields
+     * @return array<string, mixed>
+     */
+    public function hideAdminFieldOnNonDigitalOrders(array $fields, mixed $order = null): array
+    {
+        if ($order instanceof \WC_Order && ! $this->orderHasDigitalContent($order)) {
+            unset($fields[self::BLOCK_FIELD_ID]);
+        }
+
+        return $fields;
+    }
+
+    /**
      * Art. 16(m) consent proof record, shared by classic and block checkout.
      *
      * @return array<string, mixed>
@@ -394,8 +410,10 @@ final class DigitalConsentService implements HasHooks
 
     /**
      * On the classic checkout the "Digital content (waiver)" legal checkbox
-     * already asks for this consent on a cart with downloadable products; a
-     * second box of our own would ask the same thing twice.
+     * already asks for this consent when it shows; a second box of our own
+     * would ask the same thing twice. Ask the checkbox service whether it
+     * shows for this cart, so a per-checkbox override or condition that hides
+     * it brings our box back.
      */
     private function waiverBoxCoversCart(): bool
     {
@@ -403,14 +421,12 @@ final class DigitalConsentService implements HasHooks
             return false;
         }
 
-        $checkout = get_option('polski_checkout', []);
-        if (! is_array($checkout) || empty($checkout['digital_waiver_checkbox_enabled'])) {
-            return false;
-        }
+        $checkboxes = \Polski\Plugin::instance()->container()->get(CheckboxService::class);
+        $shown = $checkboxes->getForContext(\Polski\Enum\CheckboxContext::Checkout, \Polski\Hook\CheckoutHooks::buildCartContext());
 
-        foreach (WC()->cart->get_cart() as $item) {
-            if (isset($item['data']) && $item['data'] instanceof \WC_Product && $item['data']->is_downloadable()) {
-                return true;
+        foreach ($shown as $checkbox) {
+            if ($checkbox->id === 'digital_waiver') {
+                return ! $checkbox->hideInput;
             }
         }
 

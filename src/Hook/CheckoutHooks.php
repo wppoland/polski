@@ -435,7 +435,7 @@ final class CheckoutHooks implements Bootable, HasHooks
      *
      * @return array<string, mixed>
      */
-    private function buildCartContext(): array
+    public static function buildCartContext(): array
     {
         $context = [
             'category_ids' => [],
