@@ -52,10 +52,6 @@ final class ProductHooks implements Bootable, HasHooks
 
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
-
-        // Clear structured data cache on product save
-        add_action('woocommerce_update_product', [$this, 'clearSchemaCache'], 10, 1);
-        add_action('woocommerce_new_product', [$this, 'clearSchemaCache'], 10, 1);
     }
 
     /**
@@ -456,14 +452,10 @@ final class ProductHooks implements Bootable, HasHooks
             return $data;
         }
 
+        // Not cached: a 12-hour transient keyed on the product kept serving
+        // data after a settings or module change (a GTIN switched off stayed
+        // on the page). Every read below is already in the object cache.
         $productId = $product->get_id();
-        $cacheKey = 'polski_schema_' . $productId;
-        $cachedExtra = get_transient($cacheKey);
-
-        if ($cachedExtra !== false && is_array($cachedExtra)) {
-            return array_merge($data, $cachedExtra);
-        }
-
         $extraData = [];
 
         // Add Brand if available AND enabled
@@ -524,8 +516,14 @@ final class ProductHooks implements Bootable, HasHooks
         // Add Delivery Time (OfferShippingDetails) if available.
         if ($settings['schema_delivery_time'] ?? true) {
             $deliveryTime = $this->deliveryTime->getDeliveryTimeText($product);
-            if ($deliveryTime !== '') {
-                $extraData['shippingDetails'] = [
+            // "2-3 dni robocze" is a range, not 23: take the first and last
+            // number. A single number keeps the old 1..n reading.
+            preg_match_all('/\d+/', $deliveryTime, $days);
+            $days = array_map('intval', $days[0]);
+
+            // shippingDetails belongs to the Offer, not the Product.
+            if ($days !== [] && isset($data['offers'][0]) && is_array($data['offers'][0])) {
+                $data['offers'][0]['shippingDetails'] = [
                     '@type' => 'OfferShippingDetails',
                     'deliveryTime' => [
                         '@type' => 'ShippingDeliveryTime',
@@ -537,8 +535,8 @@ final class ProductHooks implements Bootable, HasHooks
                         ],
                         'transitTime' => [
                             '@type' => 'QuantitativeValue',
-                            'minValue' => 1,
-                            'maxValue' => (int) preg_replace('/\D/', '', $deliveryTime) ?: 5,
+                            'minValue' => count($days) > 1 ? min($days[0], end($days)) : min(1, $days[0]),
+                            'maxValue' => max($days[0], end($days)),
                             'unitCode' => 'DAY',
                         ],
                     ],
@@ -603,17 +601,6 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
-        // Cache the additional generated schema array for 12 hours (cache gets invalidated on product save)
-        set_transient($cacheKey, $extraData, 12 * HOUR_IN_SECONDS);
-
         return array_merge($data, $extraData);
-    }
-
-    /**
-     * Clear the Schema.org object cache on product save.
-     */
-    public function clearSchemaCache(int $productId): void
-    {
-        delete_transient('polski_schema_' . $productId);
     }
 }

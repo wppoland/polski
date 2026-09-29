@@ -120,7 +120,8 @@ $polski_show_group_titles = count($polski_filled) > 1;
                                     esc_html($polski_value)
                                 );
                             } else {
-                                echo esc_html($polski_value);
+                                // Addresses and warnings are entered on several lines.
+                                echo nl2br(esc_html($polski_value));
                             }
                             ?>
                         </dd>

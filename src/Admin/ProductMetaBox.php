@@ -243,105 +243,109 @@ final class ProductMetaBox implements HasHooks
 
         echo '</div>';
 
-        // --- Product responsibility -------------------------------------
-        // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
-        // economic operator, so every party here carries a contact field.
-        // Kept apart from the safety texts below: one block is about who is
-        // answerable for the product, the other about how to use it safely.
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Product responsibility', 'polski') . '</h4>';
+        // Both GPSR groups follow the gpsr module, with the matching skip in
+        // saveProductMeta so hidden fields keep their stored values.
+        if (ModulesPage::isModuleEnabled('gpsr')) {
+            // --- Product responsibility -------------------------------------
+            // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
+            // economic operator, so every party here carries a contact field.
+            // Kept apart from the safety texts below: one block is about who is
+            // answerable for the product, the other about how to use it safely.
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Product responsibility', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_manufacturer_name',
-            'label' => __('Manufacturer name', 'polski'),
-            'description' => __('Full manufacturer name required by GPSR.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_manufacturer_name',
+                'label' => __('Manufacturer name', 'polski'),
+                'description' => __('Full manufacturer name required by GPSR.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_manufacturer_address',
-            'label' => __('Manufacturer address', 'polski'),
-            'description' => __('Full postal address of the manufacturer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_manufacturer_address',
+                'label' => __('Manufacturer address', 'polski'),
+                'description' => __('Full postal address of the manufacturer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_manufacturer_contact',
-            'label' => __('Manufacturer contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, that GPSR requires alongside the postal one.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_manufacturer_contact',
+                'label' => __('Manufacturer contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, that GPSR requires alongside the postal one.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_responsible_person',
-            'label' => __('Responsible person', 'polski'),
-            'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_responsible_person',
+                'label' => __('Responsible person', 'polski'),
+                'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_responsible_address',
-            'label' => __('Responsible person address', 'polski'),
-            'description' => __('Full postal address of the EU responsible person.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_responsible_address',
+                'label' => __('Responsible person address', 'polski'),
+                'description' => __('Full postal address of the EU responsible person.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_responsible_contact',
-            'label' => __('Responsible person contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, for the EU responsible person.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_responsible_contact',
+                'label' => __('Responsible person contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, for the EU responsible person.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_importer_name',
-            'label' => __('Importer name', 'polski'),
-            'description' => __('Full importer name (if applicable).', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_importer_name',
+                'label' => __('Importer name', 'polski'),
+                'description' => __('Full importer name (if applicable).', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_importer_address',
-            'label' => __('Importer address', 'polski'),
-            'description' => __('Full postal address of the importer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_importer_address',
+                'label' => __('Importer address', 'polski'),
+                'description' => __('Full postal address of the importer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_importer_contact',
-            'label' => __('Importer contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, for the importer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_importer_contact',
+                'label' => __('Importer contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, for the importer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
 
-        // --- Product safety (GPSR) --------------------------------------
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Product safety (GPSR)', 'polski') . '</h4>';
+            // --- Product safety (GPSR) --------------------------------------
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Product safety (GPSR)', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_product_identifier',
-            'label' => __('Product identifier', 'polski'),
-            'description' => __('Batch number, serial number, or other product identifier.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_product_identifier',
+                'label' => __('Product identifier', 'polski'),
+                'description' => __('Batch number, serial number, or other product identifier.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_safety_warnings',
-            'label' => __('Safety warnings', 'polski'),
-            'description' => __('Safety warnings regarding the product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_safety_warnings',
+                'label' => __('Safety warnings', 'polski'),
+                'description' => __('Safety warnings regarding the product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_instructions',
-            'label' => __('Safety instructions', 'polski'),
-            'description' => __('Instructions for safe use of the product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_instructions',
+                'label' => __('Safety instructions', 'polski'),
+                'description' => __('Instructions for safe use of the product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Product markings Section ---
         if (\Polski\Admin\ModulesPage::isModuleEnabled('product_markings')) {
@@ -363,36 +367,52 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
-        // --- Consumer information Section (Directive 2024/825) ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
+        if (ModulesPage::isModuleEnabled('consumer_information')) {
+            // --- Consumer information Section (Directive 2024/825) ---
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_durability_guarantee_months',
-            'label' => __('Guarantee of durability (months)', 'polski'),
-            'description' => __('Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings.', 'polski'),
-            'desc_tip' => true,
-            'type' => 'number',
-            'custom_attributes' => ['min' => '0', 'step' => '1'],
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_durability_guarantee_months',
+                'label' => __('Guarantee of durability (months)', 'polski'),
+                'description' => __('Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'number',
+                'custom_attributes' => ['min' => '0', 'step' => '1'],
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_update_period_months',
-            'label' => __('Free software updates (months)', 'polski'),
-            'description' => __('For goods with digital elements: how long free updates are supplied.', 'polski'),
-            'desc_tip' => true,
-            'type' => 'number',
-            'custom_attributes' => ['min' => '0', 'step' => '1'],
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_update_period_months',
+                'label' => __('Free software updates (months)', 'polski'),
+                'description' => __('For goods with digital elements: how long free updates are supplied.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'number',
+                'custom_attributes' => ['min' => '0', 'step' => '1'],
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_repair_info',
-            'label' => __('Repair information', 'polski'),
-            'description' => __('Repairability score where one is established, otherwise spare part availability and repair contact.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_repair_info',
+                'label' => __('Repair information', 'polski'),
+                'description' => __('Repairability score where one is established, otherwise spare part availability and repair contact.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
+
+        if (ModulesPage::isModuleEnabled('power_supply')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Power supply', 'polski') . '</h4>';
+
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_power_supply',
+                'label' => __('Power supply', 'polski'),
+                'description' => __('Power supply and energy data shown on the product page, e.g. 230 V, 2200 W, energy class A.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            echo '</div>';
+        }
 
         // --- Anti-greenwashing Section ---
         // Guarded together with the matching skip in saveProductMeta. Hiding
@@ -573,6 +593,22 @@ final class ProductMetaBox implements HasHooks
         '_polski_alcohol_content' => 'food_module',
         '_polski_place_of_origin' => 'food_module',
         '_polski_food_distributor' => 'food_module',
+        '_polski_gpsr_manufacturer_name' => 'gpsr',
+        '_polski_gpsr_manufacturer_address' => 'gpsr',
+        '_polski_gpsr_manufacturer_contact' => 'gpsr',
+        '_polski_gpsr_importer_name' => 'gpsr',
+        '_polski_gpsr_importer_address' => 'gpsr',
+        '_polski_gpsr_importer_contact' => 'gpsr',
+        '_polski_gpsr_responsible_person' => 'gpsr',
+        '_polski_gpsr_responsible_address' => 'gpsr',
+        '_polski_gpsr_responsible_contact' => 'gpsr',
+        '_polski_gpsr_product_identifier' => 'gpsr',
+        '_polski_gpsr_safety_warnings' => 'gpsr',
+        '_polski_gpsr_instructions' => 'gpsr',
+        '_polski_durability_guarantee_months' => 'consumer_information',
+        '_polski_update_period_months' => 'consumer_information',
+        '_polski_repair_info' => 'consumer_information',
+        '_polski_power_supply' => 'power_supply',
     ];
 
     /**
@@ -619,6 +655,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_durability_guarantee_months' => 'int',
             '_polski_update_period_months' => 'int',
             '_polski_repair_info' => 'textarea',
+            '_polski_power_supply' => 'textarea',
             '_polski_green_claim_basis' => 'textarea',
             '_polski_green_claim_cert_url' => 'url',
             '_polski_green_claim_expiry' => 'string',
