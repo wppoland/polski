@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.39.0
+Stable tag: 1.40.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,28 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.40.0 =
+Every one of the 84 modules was switched on, configured and used in a live shop, then switched off again. This release fixes what that found, and marks as beta what does not fully work yet.
+* Fixed: the unit price dropped the base quantity, so a price per 1000 ml or per 100 g was labelled per ml or per g. It now shows the base ("15,00 zl / 100 g").
+* Fixed: the lowest-price (Omnibus) notice quoted the sale price itself for an ordinary unscheduled sale, missed same-day price changes, ignored the price still in force when the 30-day window opens, and never showed on variable products. A scheduled sale is no longer recorded before it starts. The notice now follows the WooCommerce tax display.
+* Fixed: the cart threshold discount added VAT on top of the discount, so 5% came out as 6.15% in shops that show prices including tax.
+* Fixed: the VAT notice said "incl. 23% VAT" next to net prices. It now shows only when prices are displayed including tax.
+* Fixed: the VAT margin scheme invoice still printed per-line VAT, and a merchant warning about mixed orders appeared on the customer's invoice.
+* Fixed: saving the billing address in My Account always failed with "NIP not valid" while the NIP module was on. The GUS autofill on the block checkout filled a hidden billing form.
+* Fixed: switching the withdrawal module off hid orders that already had a withdrawal status from Orders and from My Account.
+* Fixed: saving the withdrawal settings page switched the digital-content consent on at checkout although it was off, and physical-only orders showed a consent line.
+* Fixed: variable products were added to the cart twice by AJAX add to cart, and a failed add showed "Added to cart".
+* Fixed: custom checkout field values from block orders disappeared from the order screen and emails; select fields showed the option key instead of its label.
+* Fixed: switching a module off could silently delete its product data on the next product save (medical device and 18+ flags among others).
+* Fixed: product JSON-LD replaced WooCommerce's sale and list price with the Omnibus figure; it is now added next to them. No invalid nutrition on Product, no QAPage for several questions, no second Product node for expert reviews, and the manufacturer follows its setting.
+* Fixed: CSV import did not map Polski columns back from an export.
+* Fixed: AJAX filters, compare, infinite scroll, gallery zoom, product slider, social proof, featured video, badges and tabs misbehaved on Storefront (duplicated tables and pagination, lost lightbox, duplicate products).
+* Fixed: security incidents, store health, site audit, CRA, DPA, SBOM, data layer and exports: wrong dates, false audit results, reports reachable with the module off.
+* Changed: the dispute resolution texts no longer send consumers to the EU ODR platform, which closed on 20 July 2025.
+* Removed: two switches nothing read, the gross/net display mode (WooCommerce owns it) and the Checkout Toolkit integration.
+* Beta: VIES (non-Polish VAT numbers cannot be entered at checkout), cookie consent (only Polski's own tags wait for consent), double opt-in (accounts created at checkout stay logged in), custom checkout fields and legal checkboxes on the block checkout, waitlist on variable products, the price history chart on variable products, and the AI bridge. Each module card now says exactly what does not work yet.
+* Corrected: module descriptions that promised more than the code does (legal page drafts are empty, the complaint template has no REST route, the business block has no REGON, live search needs its shortcode or block).
+
 = 1.39.0 =
 * Fixed: nine settings on the modules screen changed nothing when edited. The withdrawal form drew its own headings and ignored the order items heading, the product and quantity column labels and the exemption notice; it never printed the legal notice at all. The two order notes the module writes ignored their wording settings. Editing any of them looked like it worked, saved, and did nothing.
 * Fixed: the dashboard status cards ignored all thirteen wording settings offered for them, and the VAT and double opt-in cards were missing entirely while the page still worked out what they would have said. Both cards are back, and every card now uses the wording from the screen.
@@ -451,23 +473,10 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 * Added: product safety instructions, safety documents, food distributor and the product-level right-of-withdrawal exemption reason can now be set through the product CSV import and export. Their shortcodes and Elementor widgets read them and nothing could fill them in, so those blocks were always empty.
 * Removed: two order and user meta keys that were written and never read back, a copy of the checkout consent states (the consent log already records them, with its own screen and CSV export) and a social login provider name (the provider is already part of the stored provider ID).
 
-= 1.36.3 =
-* Fixed: the plugin's WooCommerce emails could be silently absent for a whole request. Loading the mailer is not enough on its own: if anything built it before this plugin registered its filter, and third-party plugins do build it on plugins_loaded, the cached mailer was assembled without our classes and the filter could never run again. Measured in a test install: zero of the classes present instead of all of them. The mailer is now topped up when that happens.
-* Removed: an integration-detection class that could never have run. It was built by the service container but never listed as a hook subscriber, so nothing ever called it, and its one registration was on `plugins_loaded`, which has already fired by the time the plugin boots. Its signals had no listeners in either the free or the paid plugin. Nothing used it and nothing changes; the code is gone rather than left to read as a working feature. A build-time check now covers this shape across the whole plugin family, so a hook that can never fire cannot ship again unnoticed.
-
-= 1.36.2 =
-* Fixed: a partial write to the settings REST endpoint overwrote every key the request left out with the packaged default, instead of leaving it as stored. For the storefront text keys that default is a translated string resolved at the moment of the request, so one such write stamped whatever language the request ran in into the database and the wording stopped following the shop's locale. An omitted key now keeps its stored value, and an empty request body no longer resets the whole group.
-
-The last ten releases are below. The full history is on the plugin's changelog
+Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
-
-= 1.36.1 =
-* Changelog: this readme now carries the last ten releases and links to the full history, instead of every release ever. WordPress.org silently truncates a changelog over 5000 words and only warns the plugin authors by email, so the page had been one release away from quietly dropping its oldest entries. Nothing about the plugin changes.
-
-= 1.36.0 =
-* Added: the NIP field can now be required by what is in the cart, not only by the shop-wide switch. One place decides and it is filterable (`polski/nip_required`), so a paid rule that marks a product as needing the buyer's VAT ID on the receipt can make the field mandatory for that order. Enforced on both the classic and the block checkout, since the block field is registered before a cart exists and its own required flag cannot see one.
 
 == Upgrade Notice ==
 
