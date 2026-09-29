@@ -14,7 +14,7 @@ use Polski\Contract\HasHooks;
  * Uses WordPress comments with type 'product_question' and 'product_answer'.
  * Questions displayed as an accordion on product pages below reviews.
  * Store owner gets email notification for new questions.
- * Schema.org QAPage markup for SEO.
+ * Schema.org QAPage markup when exactly one question has an answer.
  * Voting on answers (helpful/not helpful).
  */
 final class ProductQAService implements HasHooks
@@ -443,14 +443,16 @@ final class ProductQAService implements HasHooks
             ];
         }
 
-        if (empty($schemaQuestions)) {
+        // QAPage describes a page about a single question. A product with
+        // several answered questions is not one, so it gets no QAPage at all.
+        if (count($schemaQuestions) !== 1) {
             return;
         }
 
         $schema = [
             '@context' => 'https://schema.org',
             '@type' => 'QAPage',
-            'mainEntity' => count($schemaQuestions) === 1 ? $schemaQuestions[0] : $schemaQuestions,
+            'mainEntity' => $schemaQuestions[0],
         ];
 
         wp_print_inline_script_tag(

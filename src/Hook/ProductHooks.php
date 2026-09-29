@@ -566,40 +566,9 @@ final class ProductHooks implements Bootable, HasHooks
             $extraData['manufacturer'] = $manufacturerSchema;
         }
 
-        // Add Food/Nutrition data if available.
-        // Read through FoodService so schema and the storefront table agree on the
-        // stored shape; reading the meta raw here used to silently skip the JSON
-        // string that the product panel writes.
-        $nutrients = $this->foodService->getNutrients($product);
-        if ($nutrients !== []) {
-            $nutritionData = ['@type' => 'NutritionInformation'];
-            $nutrientMap = [
-                'energy_kcal' => 'calories',
-                'fat' => 'fatContent',
-                'saturated_fat' => 'saturatedFatContent',
-                'carbohydrates' => 'carbohydrateContent',
-                'sugars' => 'sugarContent',
-                'protein' => 'proteinContent',
-                'fibre' => 'fiberContent',
-            ];
-            foreach ($nutrientMap as $slug => $schemaKey) {
-                if (! isset($nutrients[$slug])) {
-                    continue;
-                }
-                $nutritionData[$schemaKey] = $nutrients[$slug]['value'] . ' ' . $nutrients[$slug]['unit'];
-            }
-
-            // Annex XV declares salt, Schema.org only offers sodiumContent, and
-            // the two are not the same number: salt = sodium x 2.5. Mapping the
-            // slugs straight across published every product as 2.5 times as
-            // salty as its own label says.
-            if (isset($nutrients['salt']['value']) && is_numeric($nutrients['salt']['value'])) {
-                $nutritionData['sodiumContent'] = round((float) $nutrients['salt']['value'] / 2.5, 3) . ' g';
-            }
-            if (count($nutritionData) > 1) {
-                $extraData['nutrition'] = $nutritionData;
-            }
-        }
+        // No 'nutrition' here: NutritionInformation is not a Product property
+        // in Schema.org (it belongs to Recipe and MenuItem), so validators flag
+        // it. The nutrition table still renders on the product page.
 
         return array_merge($data, $extraData);
     }

@@ -7,9 +7,8 @@
  * Two things this guards, both of which shipped wrong and neither of which any
  * other gate can see, because both are correct-looking array keys:
  *
- *  1. Annex XV declares SALT, Schema.org only has sodiumContent, and salt is
- *     sodium x 2.5. Mapping the slugs straight across published every food
- *     product as 2.5 times as salty as its own label.
+ *  1. Schema.org has no 'nutrition' property on Product (NutritionInformation
+ *     belongs to Recipe and MenuItem), so food data must not be published there.
  *  2. The graph is public output, so it must not carry private keys or an
  *     untranslated Polish label.
  *
@@ -82,22 +81,13 @@ $check = static function (string $label, bool $ok) use (&$failures): void {
     }
 };
 
-// 1. Salt is converted, not relabelled.
+// 1. Nutrition stays off the Product graph, where Schema.org has no such property.
 $food->nutrients = [
     'salt' => ['value' => '2.5', 'unit' => 'g'],
     'fat' => ['value' => '12.3', 'unit' => 'g'],
 ];
 $out = $hooks->enrichStructuredData([], $product);
-$nutrition = $out['nutrition'] ?? [];
-
-$check('salt 2.5 g is published as 1 g of sodium', ($nutrition['sodiumContent'] ?? null) === '1 g');
-$check('an unconverted nutrient still passes through verbatim', ($nutrition['fatContent'] ?? null) === '12.3 g');
-$check('no saltContent key is invented', ! isset($nutrition['saltContent']));
-
-// A non-numeric salt cell must be dropped, not divided into a PHP warning.
-$food->nutrients = ['salt' => ['value' => 'trace', 'unit' => 'g']];
-$out = $hooks->enrichStructuredData([], $product);
-$check('a non-numeric salt value is dropped', ! isset($out['nutrition']['sodiumContent']));
+$check('no nutrition property on Product', ! isset($out['nutrition']));
 
 // 2. The public graph carries no private keys and no hardcoded Polish.
 $food->nutrients = [];
