@@ -65,6 +65,7 @@ final class CheckoutHooks implements Bootable, HasHooks
 
             // Pay-for-order page.
             add_action('woocommerce_pay_order_before_submit', [$this, 'renderPayForOrderCheckboxes']);
+            add_action('woocommerce_before_pay_action', [$this, 'validatePayForOrderCheckboxes']);
 
             // Remove default WC terms checkbox (we replace it).
             add_filter('woocommerce_checkout_show_terms', '__return_false');
@@ -287,6 +288,31 @@ final class CheckoutHooks implements Bootable, HasHooks
             'checkboxes' => $checkboxes,
             'context' => CheckboxContext::PayForOrder,
         ]);
+    }
+
+    /**
+     * Enforce and log the pay-for-order boxes. An error notice here stops
+     * WooCommerce before it takes the payment.
+     */
+    public function validatePayForOrderCheckboxes(\WC_Order $order): void
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the pay-for-order nonce before this action.
+        $result = $this->checkboxes->validate(CheckboxContext::PayForOrder, $_POST);
+
+        if ($result instanceof \WP_Error) {
+            foreach ($result->get_error_messages() as $message) {
+                wc_add_notice($message, 'error');
+            }
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $states = $this->checkboxes->extractStates(CheckboxContext::PayForOrder, $_POST);
+
+        if ($states !== []) {
+            $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
+            $this->consentLog->logBatch($states, CheckboxContext::PayForOrder, $userId, 'order_' . $order->get_id());
+        }
     }
 
     /**
