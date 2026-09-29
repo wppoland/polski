@@ -2488,6 +2488,10 @@ final class ModulesPage implements HasHooks
         update_option(self::OPTION, $saved);
 
         CacheHelper::flush();
+        // Modules add and remove taxonomies and endpoints. This request booted
+        // with the old state, so drop the rules and let the next request
+        // rebuild them instead of flushing a stale set.
+        delete_option('rewrite_rules');
 
         wp_send_json_success(['enabled' => $enabled]);
     }
@@ -2520,6 +2524,7 @@ final class ModulesPage implements HasHooks
         if ($count > 0) {
             update_option(self::OPTION, $saved);
             CacheHelper::flush();
+            delete_option('rewrite_rules');
         }
 
         return $count;
