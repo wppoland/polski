@@ -44,6 +44,7 @@ final class DigitalConsentService implements HasHooks
         }
 
         add_filter('polski/withdrawal/eligible', [$this, 'filterEligibility'], 20, 2);
+        add_filter('polski/withdrawal/items', [$this, 'markConsentedDigitalItems'], 20, 2);
 
         // Modern WooCommerce: a single Additional Checkout Field renders and
         // validates on BOTH classic and block checkout, shown/required only when
@@ -313,19 +314,49 @@ final class DigitalConsentService implements HasHooks
             return $eligible;
         }
 
+        return ! $this->hasConsent($order);
+    }
+
+    /**
+     * In a mixed order the consent still covers its digital lines: show them as
+     * excluded in the withdrawal form, like a per-product exemption.
+     *
+     * @param array<int, array<string, mixed>> $rows
+     * @return array<int, array<string, mixed>>
+     */
+    public function markConsentedDigitalItems(array $rows, \WC_Order $order): array
+    {
+        if (! $this->hasConsent($order)) {
+            return $rows;
+        }
+
+        foreach ($rows as &$row) {
+            if (! empty($row['is_exempt'])) {
+                continue;
+            }
+            $product = wc_get_product((int) ($row['variation_id'] ?? 0) ?: (int) ($row['product_id'] ?? 0));
+            if ($product instanceof \WC_Product && $this->isDigitalProduct($product)) {
+                $row['is_exempt'] = true;
+                $row['exempt_reason'] = \Polski\Enum\WithdrawalExemptionReason::DigitalContent->label();
+            }
+        }
+        unset($row);
+
+        return $rows;
+    }
+
+    private function hasConsent(\WC_Order $order): bool
+    {
         $record = $order->get_meta(self::ORDER_META, true);
         if (is_array($record) && ! empty($record['accepted'])) {
-            return false;
+            return true;
         }
 
         // Block / Additional Checkout Fields path: WC stores the checkbox value
         // under the field meta key. A truthy value is an explicit consent.
         $blockValue = $order->get_meta(self::BLOCK_FIELD_META, true);
-        if (in_array($blockValue, ['1', 1, true, 'true', 'yes'], true)) {
-            return false;
-        }
 
-        return $eligible;
+        return in_array($blockValue, ['1', 1, true, 'true', 'yes'], true);
     }
 
     public function mode(): string

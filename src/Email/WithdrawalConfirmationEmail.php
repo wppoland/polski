@@ -172,6 +172,42 @@ class WithdrawalConfirmationEmail extends \WC_Email
         );
     }
 
+    /**
+     * The order lines this declaration covers, with the declared quantity and
+     * its share of the line total. A partial withdrawal must not read like the
+     * whole order in the customer's proof of filing.
+     *
+     * @return list<array{item: \WC_Order_Item_Product, quantity: float, total: float}>
+     */
+    public static function declaredLines(\WC_Order $order, WithdrawalRequest $request): array
+    {
+        $declared = [];
+        $rows = \Polski\Plugin::instance()->container()
+            ->get(\Polski\Repository\WithdrawalItemsRepository::class)
+            ->findByWithdrawal($request->id);
+        foreach ($rows as $row) {
+            $itemId = (int) $row->order_item_id;
+            $declared[$itemId] = ($declared[$itemId] ?? 0) + (float) $row->quantity;
+        }
+
+        $lines = [];
+        foreach ($order->get_items() as $itemId => $item) {
+            if (! $item instanceof \WC_Order_Item_Product) {
+                continue;
+            }
+            // Requests filed before per-item rows existed cover the whole order.
+            if ($declared !== [] && ! isset($declared[(int) $itemId])) {
+                continue;
+            }
+            $orderedQty = (float) $item->get_quantity();
+            $qty = $declared[(int) $itemId] ?? $orderedQty;
+            $total = $orderedQty > 0 ? (float) $item->get_total() / $orderedQty * $qty : (float) $item->get_total();
+            $lines[] = ['item' => $item, 'quantity' => $qty, 'total' => round($total, wc_get_price_decimals())];
+        }
+
+        return $lines;
+    }
+
     public function get_default_additional_content(): string
     {
         return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? 'Your refund will be processed within 14 days after the returned products are received.');

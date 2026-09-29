@@ -27,6 +27,9 @@ final class BdoService implements HasHooks
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('bdo')) {
+            // A page that still carries the shortcode must not print it raw.
+            add_shortcode(self::SHORTCODE, '__return_empty_string');
+
             return;
         }
 

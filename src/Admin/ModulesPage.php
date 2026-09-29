@@ -525,7 +525,7 @@ final class ModulesPage implements HasHooks
                 'name' => __('Dispute Resolution (ODR)', 'polski'),
                 'description' => __('Displaying information about the European Commission\'s Online Dispute Resolution (ODR) platform.', 'polski'),
                 'group' => 'Consumer Rights',
-                'enabled' => true,
+                'enabled' => false,
                 'icon' => 'dashicons-admin-site-alt3',
                 'links' => [],
                 'settings' => [
@@ -2687,7 +2687,7 @@ final class ModulesPage implements HasHooks
             'consent_manager' => false,
             'legal_pages' => true,
             'withdrawal' => true,
-            'dispute_resolution' => true,
+            'dispute_resolution' => false,
             'email_attachments' => true,
             'manufacturer' => true,
             'food_module' => false,

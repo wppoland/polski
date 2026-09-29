@@ -166,6 +166,6 @@ final class GuestWithdrawalServiceTest extends TestCase
         $loader = (new \ReflectionClass(TemplateLoader::class))->newInstanceWithoutConstructor();
         $core = new WithdrawalService($repo, $loader, $itemsRepo);
 
-        return new GuestWithdrawalService($core, $repo, $loader);
+        return new GuestWithdrawalService($core, $loader);
     }
 }

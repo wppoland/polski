@@ -6,7 +6,6 @@ namespace Polski\Service;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
-use Polski\Repository\WithdrawalRepository;
 use Polski\Util\TemplateLoader;
 
 /**
@@ -32,7 +31,6 @@ final class GuestWithdrawalService implements HasHooks
 
     public function __construct(
         private readonly WithdrawalService $withdrawal,
-        private readonly WithdrawalRepository $repository,
         private readonly TemplateLoader $templateLoader,
     ) {
     }
@@ -42,6 +40,9 @@ final class GuestWithdrawalService implements HasHooks
         // Polski boots every service unconditionally, so a module's service has
         // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
         if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            // A page that still carries the shortcode must not print it raw.
+            add_shortcode('polski_withdrawal_lookup', '__return_empty_string');
+
             return;
         }
 
@@ -156,7 +157,7 @@ final class GuestWithdrawalService implements HasHooks
         }
 
         $requestMethod = isset($_SERVER['REQUEST_METHOD'])
-            ? sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD']))
+            ? strtoupper(sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD'])))
             : '';
 
         if ($requestMethod === 'POST' && isset($_POST['polski_guest_submit'])) {
@@ -172,20 +173,9 @@ final class GuestWithdrawalService implements HasHooks
                 ? sanitize_textarea_field(wp_unslash((string) $_POST['polski_withdrawal_reason']))
                 : null;
 
-            $created = $this->repository->createForGuest(
-                $order->get_id(),
-                $payload['email'],
-                $reason,
-                null,
-            );
+            $created = $this->fileForGuest($order, $payload['email'], $reason);
 
             if ($created <= 0) {
-                do_action(
-                    'polski/withdrawal/persist_failed',
-                    $order->get_id(),
-                    ['flow' => 'guest', 'email' => $payload['email']],
-                );
-
                 return $this->renderError(__('The declaration could not be saved. Try again in a moment or contact the shop.', 'polski'));
             }
 
@@ -216,6 +206,18 @@ final class GuestWithdrawalService implements HasHooks
         // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
         return (string) ob_get_clean();
+    }
+
+    /**
+     * File a guest declaration through the same path as a logged-in one:
+     * eligibility, excluded items, per-item rows, order note and status.
+     * Returns the declaration id, or 0 when nothing could be filed.
+     */
+    public function fileForGuest(\WC_Order $order, string $email, ?string $reason): int
+    {
+        $request = $this->withdrawal->createRequest($order->get_id(), $reason, null, $email);
+
+        return $request !== null ? $request->id : 0;
     }
 
     /**

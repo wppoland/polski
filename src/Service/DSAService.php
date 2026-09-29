@@ -86,6 +86,23 @@ final class DSAService implements HasHooks
             'created_at'     => current_time('mysql'),
         ];
 
+        // The form marks every field required, but only the browser enforced it:
+        // an empty POST was stored and mailed as a blank report.
+        $reasons = ['illegal_content', 'illegal_product', 'misleading_ad', 'other'];
+        if (
+            $data['reporter_name'] === ''
+            || ! is_email($data['reporter_email'])
+            || $data['content_url'] === ''
+            || ! in_array($data['reason'], $reasons, true)
+            || trim($data['description']) === ''
+        ) {
+            wp_die(
+                esc_html__('Please fill in all required fields: name, a valid email address, the URL, the reason and the description.', 'polski'),
+                esc_html__('Report not sent', 'polski'),
+                ['response' => 400, 'back_link' => true],
+            );
+        }
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Writing custom DSA reports table.
         $wpdb->insert($table, $data);
         $reportId = (int) $wpdb->insert_id;
@@ -180,9 +197,22 @@ final class DSAService implements HasHooks
             echo '<th>' . esc_html__('Reporter', 'polski') . '</th>';
             echo '<th>' . esc_html__('URL', 'polski') . '</th>';
             echo '<th>' . esc_html__('Reason', 'polski') . '</th>';
+            echo '<th>' . esc_html__('Description', 'polski') . '</th>';
             echo '<th>' . esc_html__('Status', 'polski') . '</th>';
             echo '<th>' . esc_html__('Action', 'polski') . '</th>';
             echo '</tr></thead><tbody>';
+
+            // Same labels the public form shows, instead of raw slugs.
+            $reasonLabels = [
+                'illegal_content' => __('Illegal content', 'polski'),
+                'illegal_product' => __('Illegal product', 'polski'),
+                'misleading_ad' => __('Misleading advertising', 'polski'),
+                'other' => __('Other', 'polski'),
+            ];
+            $statusLabels = [
+                'new' => __('New', 'polski'),
+                'resolved' => __('Resolved', 'polski'),
+            ];
 
             foreach ($reports as $report) {
                 echo '<tr>';
@@ -191,9 +221,10 @@ final class DSAService implements HasHooks
                 echo '<td>' . esc_html($report->reporter_name) . '<br><small>' . esc_html($report->reporter_email) . '</small></td>';
                 echo '<td><a href="' . esc_url($report->content_url) . '" target="_blank" rel="noopener noreferrer">'
                     . esc_html(mb_substr($report->content_url, 0, 50)) . '</a></td>';
-                echo '<td>' . esc_html($report->reason) . '</td>';
+                echo '<td>' . esc_html($reasonLabels[$report->reason] ?? $report->reason) . '</td>';
+                echo '<td>' . nl2br(esc_html((string) $report->description)) . '</td>';
                 echo '<td><span class="polski-dsa-status-' . esc_attr($report->status) . '">'
-                    . esc_html($report->status) . '</span></td>';
+                    . esc_html($statusLabels[$report->status] ?? $report->status) . '</span></td>';
                 echo '<td>';
 
                 if ($report->status === 'new') {

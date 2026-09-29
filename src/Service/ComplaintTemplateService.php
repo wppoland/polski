@@ -30,6 +30,9 @@ final class ComplaintTemplateService implements HasHooks
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('complaint_template')) {
+            // A page that still carries the shortcode must not print it raw.
+            add_shortcode(self::SHORTCODE, '__return_empty_string');
+
             return;
         }
 

@@ -6,7 +6,6 @@ namespace Polski\Rest;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
-use Polski\Repository\WithdrawalRepository;
 use Polski\Service\GuestWithdrawalService;
 
 /**
@@ -29,7 +28,6 @@ final class GuestWithdrawalController implements HasHooks
 
     public function __construct(
         private readonly GuestWithdrawalService $guest,
-        private readonly WithdrawalRepository $repository,
     ) {
     }
 
@@ -136,19 +134,9 @@ final class GuestWithdrawalController implements HasHooks
             return new \WP_REST_Response(['error' => 'order_not_found'], 404);
         }
 
-        $created = $this->repository->createForGuest(
-            $order->get_id(),
-            $payload['email'],
-            $reason,
-            null,
-        );
+        $created = $this->guest->fileForGuest($order, $payload['email'], $reason);
 
         if ($created <= 0) {
-            do_action(
-                'polski/withdrawal/persist_failed',
-                $order->get_id(),
-                ['flow' => 'guest_rest', 'email' => $payload['email']],
-            );
             return new \WP_REST_Response(['error' => 'persist_failed'], 500);
         }
 
