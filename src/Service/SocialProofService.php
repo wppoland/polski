@@ -12,7 +12,7 @@ use Polski\Contract\HasHooks;
  * Social proof notifications - real-time purchase popups.
  *
  * Shows floating toast notifications like "Jan from Warszawa just bought Product X"
- * using actual recent order data. Proven to increase conversion rates by 10-15%.
+ * using actual recent order data.
  *
  * Privacy-aware: uses first name only, city only, configurable anonymization.
  * Web Vitals: lazy-loaded via AJAX, no render-blocking, minimal DOM footprint.
@@ -50,7 +50,8 @@ final class SocialProofService implements HasHooks
                 'lookback_hours' => 48,
                 'position' => 'bottom-left',
                 'show_product_image' => true,
-                'anonymize_name' => false,
+                // Real customers' names on a public page: off only by choice.
+                'anonymize_name' => true,
                 'hide_on_mobile' => false,
                 'excluded_pages' => 'checkout,cart',
             ],
@@ -80,9 +81,16 @@ final class SocialProofService implements HasHooks
             'duration' => max(3, (int) $settings['display_duration']) * 1000,
             'position' => $settings['position'],
             'dismissLabel' => __('Dismiss', 'polski'),
+            /* translators: 1: customer first name (possibly anonymized), 2: customer city */
+            'boughtText' => __('%1$s from %2$s just bought', 'polski'),
         ]);
 
-        wp_add_inline_style('polski-frontend', $this->getInlineCss($settings));
+        // Own handle: polski-frontend is only enqueued on checkout and account
+        // pages, so CSS attached to it never reached the storefront and the
+        // toast rendered unstyled below the footer.
+        wp_register_style('polski-social-proof', false, [], \Polski\VERSION);
+        wp_enqueue_style('polski-social-proof');
+        wp_add_inline_style('polski-social-proof', $this->getInlineCss($settings));
     }
 
     public function renderContainer(): void
@@ -117,7 +125,8 @@ final class SocialProofService implements HasHooks
      */
     private function getRecentPurchases(int $limit, int $lookbackHours, bool $showImage, bool $anonymize): array
     {
-        $cacheKey = 'polski_social_proof_data';
+        // Keyed by the settings, so turning anonymization on applies at once.
+        $cacheKey = 'polski_social_proof_' . md5(serialize([$limit, $lookbackHours, $showImage, $anonymize]));
         $cached = get_transient($cacheKey);
 
         if (is_array($cached)) {

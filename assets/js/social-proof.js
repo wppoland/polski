@@ -47,7 +47,7 @@
         link.href = n.url;
         link.innerHTML = imgHtml +
             '<div>' +
-                '<div><strong>' + escHtml(n.name) + '</strong> ' + escHtml(n.city) + '</div>' +
+                '<div>' + boughtLine(n) + '</div>' +
                 '<div>' + escHtml(n.product) + '</div>' +
                 '<div class="sp-time">' + escHtml(n.time) + '</div>' +
             '</div>';
@@ -78,6 +78,14 @@
 
         // Schedule next.
         setTimeout(showNext, config.interval);
+    }
+
+    function boughtLine(n) {
+        var template = escHtml(config.boughtText || '%1$s from %2$s just bought');
+
+        return template
+            .replace('%1$s', '<strong>' + escHtml(n.name) + '</strong>')
+            .replace('%2$s', escHtml(n.city));
     }
 
     function escHtml(str) {

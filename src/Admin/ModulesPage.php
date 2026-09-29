@@ -1542,7 +1542,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'social_proof',
                 'name' => __('Social Proof Notifications', 'polski'),
-                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
+                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
@@ -1551,7 +1551,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_social_proof|display_interval', 'label' => __('Interval between popups (seconds)', 'polski'), 'type' => 'number', 'default' => 8, 'hint' => __('Time between showing consecutive notifications. Recommended: 6-12', 'polski')],
                     ['key' => 'polski_social_proof|display_duration', 'label' => __('Display duration (seconds)', 'polski'), 'type' => 'number', 'default' => 5, 'hint' => __('How long each notification stays visible. Recommended: 4-6', 'polski')],
                     ['key' => 'polski_social_proof|position', 'label' => __('Position', 'polski'), 'type' => 'text', 'default' => 'bottom-left', 'hint' => 'bottom-left, bottom-right, top-left, top-right'],
-                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
+                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
                     ['key' => 'polski_social_proof|hide_on_mobile', 'label' => __('Hide on mobile devices', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Disable on small screens to avoid obstructing content', 'polski')],
                 ],
             ],
