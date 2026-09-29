@@ -28,6 +28,14 @@ final class PriceDisplayService
         $productAmount = (float) $product->get_meta('_polski_unit_price_product_amount', true);
         $unitSlug = (string) $product->get_meta('_polski_unit_price_unit', true);
 
+        // Variations set their own quantity; unit and base come from the product
+        // when the variation leaves them empty.
+        $parent = $product->get_parent_id() > 0 ? wc_get_product($product->get_parent_id()) : null;
+        if ($parent instanceof \WC_Product) {
+            $unitSlug = $unitSlug !== '' ? $unitSlug : (string) $parent->get_meta('_polski_unit_price_unit', true);
+            $baseAmount = $baseAmount > 0 ? $baseAmount : (float) $parent->get_meta('_polski_unit_price_base', true);
+        }
+
         if ($baseAmount <= 0 || $productAmount <= 0 || $unitSlug === '') {
             return null;
         }
@@ -70,6 +78,11 @@ final class PriceDisplayService
 
         $priceFormatted = wc_price($unitPrice->pricePerUnit, ['currency' => $unitPrice->currency]);
         $unitLabel = $this->getUnitLabel($unitPrice->unit);
+
+        // A price per 1000 ml is not a price per ml: carry the base into the label.
+        if ((float) $unitPrice->baseAmount !== 1.0) {
+            $unitLabel = wc_format_localized_decimal((string) $unitPrice->baseAmount) . ' ' . $unitLabel;
+        }
 
         $template = $settings['unit_price_text'] ?? '{price} / {unit}';
 
@@ -187,7 +200,33 @@ final class PriceDisplayService
             return '';
         }
 
-        return $this->omnibus->getLowestPriceHtml($product->get_id());
+        return $this->omnibus->getLowestPriceHtml($this->omnibusSubject($product)->get_id());
+    }
+
+    /**
+     * The product whose history backs the notice.
+     *
+     * A variable product records no history of its own, its variations do. On a
+     * listing the "from" price is the cheapest variation, so the notice speaks
+     * for the cheapest variation that is on sale.
+     */
+    private function omnibusSubject(\WC_Product $product): \WC_Product
+    {
+        if (! $product instanceof \WC_Product_Variable) {
+            return $product;
+        }
+
+        $prices = $product->get_variation_prices(true);
+
+        foreach ($prices['price'] as $variationId => $price) {
+            if ((float) $prices['sale_price'][$variationId] < (float) $prices['regular_price'][$variationId]) {
+                $variation = wc_get_product($variationId);
+
+                return $variation instanceof \WC_Product ? $variation : $product;
+            }
+        }
+
+        return $product;
     }
 
     /**

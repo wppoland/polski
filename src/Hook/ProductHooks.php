@@ -46,6 +46,10 @@ final class ProductHooks implements Bootable, HasHooks
         // "From {price}" for variable products (replaces price range with "od XX PLN").
         add_filter('woocommerce_get_price_html', [$this, 'filterVariablePriceHtml'], 10, 2);
 
+        // A selected variation brings its own unit price, Omnibus notice and delivery time.
+        add_filter('woocommerce_available_variation', [$this, 'addVariationMarks'], 10, 3);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueVariationMarksScript'], 20);
+
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
 
@@ -60,6 +64,45 @@ final class ProductHooks implements Bootable, HasHooks
     public function filterVariablePriceHtml(string $priceHtml, \WC_Product $product): string
     {
         return $this->priceDisplay->getFromPriceHtml($priceHtml, $product);
+    }
+
+    /**
+     * Append the variation's own price marks to the price WooCommerce shows once
+     * the shopper picks a variation. The summary marks describe the parent, so
+     * the script below hides them while a variation is selected.
+     *
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    public function addVariationMarks(array $data, \WC_Product $product, \WC_Product $variation): array
+    {
+        $omnibus = \Polski\Util\OptionCache::get('polski_omnibus', []);
+        $showOmnibus = ! is_array($omnibus) || ($omnibus['show_on_single'] ?? true);
+
+        $marks = $this->priceDisplay->getUnitPriceHtml($variation)
+            . ($showOmnibus ? $this->priceDisplay->getOmnibusPriceHtml($variation) : '')
+            . $this->deliveryTime->getDeliveryTimeHtml($variation);
+
+        if ($marks !== '') {
+            $data['price_html'] = (string) ($data['price_html'] ?? '') . $marks;
+        }
+
+        return $data;
+    }
+
+    public function enqueueVariationMarksScript(): void
+    {
+        if (! is_product()) {
+            return;
+        }
+
+        wp_add_inline_script(
+            'wc-add-to-cart-variation',
+            'jQuery(function($){var m=".polski-unit-price,.polski-omnibus-price,.polski-delivery-time";'
+            . 'function own(f){return f.closest(".product").find(m).not(f.find(m));}'
+            . '$(document.body).on("found_variation","form.variations_form",function(){own($(this)).hide();})'
+            . '.on("reset_data","form.variations_form",function(){own($(this)).show();});});',
+        );
     }
 
     /**

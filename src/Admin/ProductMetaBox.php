@@ -113,25 +113,10 @@ final class ProductMetaBox implements HasHooks
         // --- Delivery Time Section ---
         echo '<div class="options_group">';
 
-        $deliveryTimes = get_terms([
-            'taxonomy' => 'polski_delivery_time',
-            'hide_empty' => false,
-        ]);
-
-        $dtOptions = ['' => __('- Use default -', 'polski')];
-
-        if (is_array($deliveryTimes)) {
-            foreach ($deliveryTimes as $term) {
-                if ($term instanceof \WP_Term) {
-                    $dtOptions[(string) $term->term_id] = $term->name;
-                }
-            }
-        }
-
         woocommerce_wp_select([
             'id' => '_polski_delivery_time_id',
             'label' => __('Delivery time', 'polski'),
-            'options' => $dtOptions,
+            'options' => $this->deliveryTimeOptions(__('- Use default -', 'polski')),
             'description' => __('Estimated delivery time displayed on the product page.', 'polski'),
             'desc_tip' => true,
         ]);
@@ -779,7 +764,43 @@ final class ProductMetaBox implements HasHooks
             'wrapper_class' => 'form-row form-row-last',
         ]);
 
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('delivery_time')) {
+            woocommerce_wp_select([
+                'id' => "_polski_delivery_time_id_{$loop}",
+                'name' => "_polski_variation_delivery_time_id[{$loop}]",
+                'label' => __('Delivery time', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_delivery_time_id', true),
+                'options' => $this->deliveryTimeOptions(__('- Same as product -', 'polski')),
+                'wrapper_class' => 'form-row form-row-full',
+            ]);
+        }
+
         echo '</div>';
+    }
+
+    /**
+     * Delivery time terms as select options, term id => name. PHP turns the
+     * numeric keys into ints, the empty option stays a string.
+     *
+     * @return array<int|string, string>
+     */
+    private function deliveryTimeOptions(string $emptyLabel): array
+    {
+        $options = ['' => $emptyLabel];
+        $terms = get_terms([
+            'taxonomy' => 'polski_delivery_time',
+            'hide_empty' => false,
+        ]);
+
+        if (is_array($terms)) {
+            foreach ($terms as $term) {
+                if ($term instanceof \WP_Term) {
+                    $options[(string) $term->term_id] = $term->name;
+                }
+            }
+        }
+
+        return $options;
     }
 
     /**
@@ -800,5 +821,12 @@ final class ProductMetaBox implements HasHooks
 
         update_post_meta($variationId, '_polski_unit_price_product_amount', (string) (float) $productAmount);
         update_post_meta($variationId, '_polski_unit_price_base', (string) (float) $baseAmount);
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_delivery_time_id'][$loop])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $deliveryTimeId = absint(wp_unslash($_POST['_polski_variation_delivery_time_id'][$loop]));
+            update_post_meta($variationId, '_polski_delivery_time_id', $deliveryTimeId > 0 ? (string) $deliveryTimeId : '');
+        }
     }
 }
