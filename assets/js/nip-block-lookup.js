@@ -60,6 +60,24 @@
 			return;
 		}
 
+		// With "Use same address for billing" ticked (the default) the billing
+		// form is hidden and mirrors shipping, so a fill would land in an address
+		// the customer never sees. Show the billing form first; if that is not
+		// possible, leave both addresses alone rather than rewrite the delivery one.
+		var checkout = window.wp.data.select('wc/store/checkout');
+		var cart = window.wp.data.select('wc/store/cart');
+		var needsShipping = !cart || typeof cart.getNeedsShipping !== 'function' || cart.getNeedsShipping();
+
+		if (needsShipping && checkout && typeof checkout.getUseShippingAsBilling === 'function' && checkout.getUseShippingAsBilling()) {
+			var checkoutStore = window.wp.data.dispatch('wc/store/checkout');
+
+			if (!checkoutStore || typeof checkoutStore.__internalSetUseShippingAsBilling !== 'function') {
+				return;
+			}
+
+			checkoutStore.__internalSetUseShippingAsBilling(false);
+		}
+
 		next.country = next.country || 'PL';
 		store.setBillingAddress(next);
 	}
