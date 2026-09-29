@@ -45,7 +45,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
-* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
+* **EU VAT ID check (VIES)** (beta) - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. Checkout accepts Polish NIPs only, so another EU country's number is checked only when another plugin saves it on the order.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
@@ -57,10 +57,10 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 = Checkout, consents and returns =
 
-* **Consent checkboxes** - consents at order, registration and reviews, with the option to enable only selected fields.
+* **Consent checkboxes** (beta on the block checkout) - consents at order, registration and reviews, with the option to enable only selected fields. On the block checkout the labels show without links and the conditional boxes are not shown.
 * **Omnibus price history** - automatic recording and display of the lowest price from 30 days.
 * **Right of withdrawal** - withdrawal/return forms and requests from the customer account.
-* **Double e-mail confirmation** - e-mail address confirmation during customer registration.
+* **Double e-mail confirmation** (beta) - e-mail address confirmation during customer registration. An account created at checkout stays logged in for that session.
 * **Shop pages** - link the terms, privacy policy and withdrawal content into WooCommerce notices.
 * **Dispute resolution** - a notice about out-of-court complaint and redress options (consumer ombudsman, Trade Inspection) on the cart and checkout pages and as a shortcode.
 * **Consent log** - logging of consents with date, context, IP address and content version.
@@ -69,7 +69,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **Unit prices** - price per kg, litre, metre, piece or a custom unit.
 * **Delivery time** - estimated delivery time on product pages and product lists.
-* **Tax information** - gross/net messages and the VAT rate.
+* **Tax information** - the VAT rate notice and the small business exemption (Art. 113).
 * **Price display** - configuration of how prices are presented in the shop.
 * **Food data** - composition, nutrition values, allergens, origin, distributor and other fields for grocery shops.
 
@@ -77,7 +77,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **Wishlist** - save products for later.
 * **Product comparison** - compare products side by side.
-* **Waitlist** - back-in-stock notifications for products.
+* **Waitlist** (beta) - back-in-stock notifications for simple products; variable products do not show the form yet.
 * **Quick view** - preview a product without opening the product page.
 * **Gallery zoom** - enhanced product image zoom.
 * **Product video** - add a video on the product page.
