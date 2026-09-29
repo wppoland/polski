@@ -1182,7 +1182,7 @@ final class ModulesPage implements HasHooks
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
                 'links' => [
-                    ['label' => __('Incident log', 'polski'), 'url' => admin_url('admin.php?page=polski-security-incidents')],
+                    ['label' => __('Incident log', 'polski'), 'url' => admin_url('admin.php?page=polski&tab=reports&view=incidents')],
                 ],
                 'settings' => [
                     ['key' => 'polski_security|incident_contact_email', 'label' => __('Security contact email', 'polski'), 'type' => 'email', 'default' => 'security@example.com'],
@@ -1247,6 +1247,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
                 'settings' => [
+                    ['key' => '_tt_requires_consent', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Requires the Consent Manager module. Without it no tag is ever loaded, because every tag waits for a consent decision.', 'polski') . '</span>'],
                     ['key' => '_tt_header_marketing', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;display:block;">' . esc_html__('Marketing pixels', 'polski') . '</strong><span style="font-size:12px;color:#646970;">' . esc_html__('Gated under the Marketing consent category.', 'polski') . '</span>'],
                     ['key' => 'polski_tracking_tags|meta_pixel_enabled', 'label' => __('Meta Pixel', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_tracking_tags|meta_pixel_id', 'label' => __('Meta Pixel ID', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Pixel ID', 'polski')],
@@ -1311,7 +1312,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-editor-code',
                 'links' => [],
                 'settings' => [
-                    ['key' => '_ci_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each snippet is emitted as a consent-gated placeholder and only executes once the matching category is granted. Necessary snippets always run. Requires the Consent Manager module to actually gate execution.', 'polski') . '</span>'],
+                    ['key' => '_ci_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Necessary snippets print as they are and run on every page load, so they may hold any markup, such as a meta tag. Snippets in other categories must be scripts: they wait as consent-gated placeholders and run only once the matching category is granted, which requires the Consent Manager module.', 'polski') . '</span>'],
                     ['key' => 'polski_custom_integrations|snippets', 'label' => __('Snippets', 'polski'), 'type' => 'integration_repeater', 'default' => ''],
                 ],
             ],
@@ -1382,6 +1383,8 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_cra|security_contact', 'label' => __('Security contact email', 'polski'), 'type' => 'email', 'default' => ''],
                     ['key' => 'polski_cra|security_policy_url', 'label' => __('Security policy URL', 'polski'), 'type' => 'text', 'default' => ''],
+                    ['key' => 'polski_cra|incident_webhook', 'label' => __('CRA incident webhook URL', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Dispatch notification sends the incident as JSON to this URL.', 'polski')],
+                    ['key' => 'polski_cra|incident_email', 'label' => __('CRA incident notification email', 'polski'), 'type' => 'email', 'default' => ''],
                 ],
             ],
             [
@@ -1682,7 +1685,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'sbom',
                 'name' => __('SBOM (software bill of materials)', 'polski'),
-                'description' => __('Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (composer) and JS (npm) dependencies for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default.', 'polski'),
+                'description' => __('Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (Composer) packages shipped with the plugin (bundled JavaScript libraries are not listed yet) for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default.', 'polski'),
                 'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-media-code',
