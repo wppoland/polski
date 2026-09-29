@@ -21,6 +21,15 @@ use Polski\Contract\HasHooks;
 final class DataLayerService implements HasHooks
 {
     private const OPTION = 'polski_datalayer';
+    private const SESSION_PENDING = 'polski_datalayer_pending';
+
+    /**
+     * GA4 items of the products listed on this page, keyed by product ID, so
+     * the AJAX add_to_cart push uses the same ID and active price as PHP.
+     *
+     * @var array<int, array<string, mixed>>
+     */
+    private array $pageItems = [];
 
     public function registerHooks(): void
     {
@@ -41,17 +50,20 @@ final class DataLayerService implements HasHooks
         // Single product view.
         add_action('woocommerce_after_single_product', [$this, 'trackViewItem']);
 
-        // Add to cart (AJAX + non-AJAX).
-        add_action('wp_footer', [$this, 'trackAddToCart']);
+        // Add to cart: AJAX in the browser, a form post through the session.
+        // After footer scripts (priority 20), so jQuery and wp.data exist.
+        add_action('wp_footer', [$this, 'trackAddToCart'], 100);
+        add_action('woocommerce_add_to_cart', [$this, 'queueAddToCart'], 10, 4);
+        add_action('wp_footer', [$this, 'printPendingEvents']);
 
-        // Checkout.
-        add_action('woocommerce_before_checkout_form', [$this, 'trackBeginCheckout']);
+        // Checkout (classic and block checkout both render the footer).
+        add_action('wp_footer', [$this, 'trackBeginCheckout']);
 
         // Purchase (thank you page).
         add_action('woocommerce_thankyou', [$this, 'trackPurchase'], 10, 1);
 
         // Remove from cart.
-        add_action('wp_footer', [$this, 'trackRemoveFromCart']);
+        add_action('wp_footer', [$this, 'trackRemoveFromCart'], 100);
     }
 
     /**
@@ -137,6 +149,7 @@ final class DataLayerService implements HasHooks
         }
 
         $item = $this->buildItemData($product);
+        $this->pageItems[$product->get_id()] = $item;
         $item['index'] = (int) ($woocommerce_loop['loop'] ?? 0);
         $item['item_list_name'] = is_search() ? 'Search Results' : 'Product List';
 
@@ -174,34 +187,27 @@ final class DataLayerService implements HasHooks
     }
 
     /**
-     * Track add to cart event via JS.
+     * Track the AJAX add_to_cart from product lists. The item comes from the
+     * PHP map of listed products, so it carries the configured ID (SKU or
+     * product ID) and the active price. A form post is queued server-side.
      */
     public function trackAddToCart(): void
     {
-        if (! is_shop() && ! is_product_category() && ! is_product_tag() && ! is_product()) {
+        if ($this->pageItems === []) {
             return;
         }
 
-        $useSku = $this->getSettings()['use_sku_as_id'] ?? false;
-        $currency = get_woocommerce_currency();
-
         $script = "(function(){"
-            . "var useSku=" . ($useSku ? 'true' : 'false') . ";"
-            . "var currency=" . wp_json_encode($currency) . ";"
+            . "if(!window.jQuery){return;}"
+            . "var items=" . wp_json_encode((object) $this->pageItems) . ";"
+            . "var currency=" . wp_json_encode(get_woocommerce_currency()) . ";"
             . "jQuery(document.body).on('added_to_cart',function(e,fragments,hash,\$btn){"
-            . "var \$item=\$btn.closest('.product,.type-product');"
-            . "var id=\$btn.data('product_id')||\$item.find('.add_to_cart_button').data('product_id')||'';"
-            . "var name=\$item.find('.woocommerce-loop-product__title, .product_title').first().text().trim();"
-            . "var price=\$item.find('.woocommerce-Price-amount').first().text().replace(/[^\\d.,]/g,'').replace(',','.');"
-            . "window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:currency,value:parseFloat(price)||0,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:1}]}});"
-            . "});"
-            . "jQuery(document).on('submit','form.cart',function(){"
-            . "var \$f=jQuery(this);"
-            . "var id=\$f.find('input[name=\"product_id\"]').val()||\$f.find('button[name=\"add-to-cart\"]').val()||'';"
-            . "var name=jQuery('.product_title').first().text().trim();"
-            . "var price=jQuery('.woocommerce-Price-amount').first().text().replace(/[^\\d.,]/g,'').replace(',','.');"
-            . "var qty=parseInt(\$f.find('input[name=\"quantity\"]').val())||1;"
-            . "window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:currency,value:(parseFloat(price)||0)*qty,items:[{item_id:String(id),item_name:name,price:parseFloat(price)||0,quantity:qty}]}});"
+            . "var id=\$btn?\$btn.data('product_id'):'';"
+            . "var item=items[id];"
+            . "if(!item){return;}"
+            . "var qty=parseInt(\$btn.data('quantity'),10)||1;"
+            . "item=Object.assign({},item,{quantity:qty});"
+            . "window.dataLayer.push({event:'add_to_cart',ecommerce:{currency:currency,value:item.price*qty,items:[item]}});"
             . "});"
             . "})();";
 
@@ -209,11 +215,66 @@ final class DataLayerService implements HasHooks
     }
 
     /**
+     * A non-AJAX add to cart (the single product form) reloads the page, so a
+     * push made on submit is lost. Queue it in the session instead and print
+     * it on the page the shopper lands on.
+     */
+    public function queueAddToCart(string $cartItemKey, int $productId, int $quantity, int $variationId): void
+    {
+        unset($cartItemKey);
+
+        if (wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST) || ! WC()->session) {
+            return;
+        }
+
+        $product = wc_get_product($variationId > 0 ? $variationId : $productId);
+
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $item = $this->buildItemData($product);
+        $item['quantity'] = $quantity;
+
+        $pending = WC()->session->get(self::SESSION_PENDING, []);
+        $pending = is_array($pending) ? $pending : [];
+        $pending[] = [
+            'event' => 'add_to_cart',
+            'ecommerce' => [
+                'currency' => get_woocommerce_currency(),
+                'value' => (float) wc_format_decimal((float) $item['price'] * $quantity, 2),
+                'items' => [$item],
+            ],
+        ];
+
+        WC()->session->set(self::SESSION_PENDING, $pending);
+    }
+
+    public function printPendingEvents(): void
+    {
+        if (! function_exists('WC') || ! WC()->session) {
+            return;
+        }
+
+        $pending = WC()->session->get(self::SESSION_PENDING, []);
+
+        if (! is_array($pending) || $pending === []) {
+            return;
+        }
+
+        WC()->session->set(self::SESSION_PENDING, []);
+
+        foreach ($pending as $payload) {
+            wp_print_inline_script_tag('window.dataLayer.push(' . wp_json_encode($payload) . ');');
+        }
+    }
+
+    /**
      * Track begin_checkout event.
      */
     public function trackBeginCheckout(): void
     {
-        if (! WC()->cart || WC()->cart->is_empty()) {
+        if (! is_checkout() || is_order_received_page() || is_checkout_pay_page() || ! WC()->cart || WC()->cart->is_empty()) {
             return;
         }
 
@@ -302,20 +363,51 @@ final class DataLayerService implements HasHooks
     }
 
     /**
-     * Track remove from cart event.
+     * Track remove_from_cart. The classic cart and mini cart remove links carry
+     * the cart item key in their href; the block cart is watched through the
+     * wc/store/cart data store. Items come from the cart, built in PHP.
      */
     public function trackRemoveFromCart(): void
     {
-        if (! is_cart()) {
+        if (! WC()->cart || WC()->cart->is_empty()) {
             return;
         }
 
-        wp_print_inline_script_tag(
-            "jQuery(document.body).on('removed_from_cart',function(e,fragments,hash,\$btn){"
-            . "var name=\$btn.closest('tr').find('.product-name a').first().text().trim();"
-            . "window.dataLayer.push({event:'remove_from_cart',ecommerce:{items:[{item_name:name}]}});"
+        $items = [];
+
+        foreach (WC()->cart->get_cart() as $key => $cartItem) {
+            $product = $cartItem['data'] ?? null;
+
+            if ($product instanceof \WC_Product) {
+                $item = $this->buildItemData($product);
+                $item['quantity'] = (int) $cartItem['quantity'];
+                $items[$key] = $item;
+            }
+        }
+
+        $script = "(function(){"
+            . "var items=" . wp_json_encode((object) $items) . ";"
+            . "var currency=" . wp_json_encode(get_woocommerce_currency()) . ";"
+            . "function push(item,qty){window.dataLayer.push({event:'remove_from_cart',ecommerce:{currency:currency,value:item.price*qty,items:[Object.assign({},item,{quantity:qty})]}});}"
+            . "document.addEventListener('click',function(e){"
+            . "var a=e.target.closest&&e.target.closest('a.remove[href*=\"remove_item=\"]');"
+            . "var m=a&&/[?&]remove_item=([^&]+)/.exec(a.getAttribute('href'));"
+            . "var item=m&&items[decodeURIComponent(m[1])];"
+            . "if(item){push(item,item.quantity);}"
+            . "},true);"
+            . "if(window.wp&&wp.data&&wp.data.select('wc/store/cart')){"
+            . "var prev=null;"
+            . "wp.data.subscribe(function(){"
+            . "var cart=wp.data.select('wc/store/cart').getCartData();"
+            . "if(!cart||!cart.items){return;}"
+            . "var now={};cart.items.forEach(function(i){now[i.key]=i.quantity;});"
+            . "if(prev){Object.keys(prev).forEach(function(k){var gone=prev[k]-(now[k]||0);if(gone>0&&items[k]){push(items[k],gone);}});}"
+            . "prev=now;"
             . "});"
-        );
+            . "}"
+            . "})();";
+
+        wp_print_inline_script_tag($script);
     }
 
     // ── Helpers ──────────────────────────────────────────
