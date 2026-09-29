@@ -171,92 +171,101 @@ final class ProductMetaBox implements HasHooks
         echo '</div>';
 
         // --- Badge Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Badge Management', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('badge_management')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Badge Management', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_badge_text',
-            'label' => __('Main badge', 'polski'),
-            'description' => __('Manual badge displayed independently of automatic conditions.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_badge_text',
+                'label' => __('Main badge', 'polski'),
+                'description' => __('Manual badge displayed independently of automatic conditions.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_select([
-            'id' => '_polski_badge_style',
-            'label' => __('Badge style', 'polski'),
-            'options' => [
-                '' => __('Default', 'polski'),
-                'accent' => __('Accent', 'polski'),
-                'success' => __('Success', 'polski'),
-                'warning' => __('Warning', 'polski'),
-                'neutral' => __('Neutral', 'polski'),
-            ],
-            'description' => __('Manual badge style.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_select([
+                'id' => '_polski_badge_style',
+                'label' => __('Badge style', 'polski'),
+                'options' => [
+                    '' => __('Default', 'polski'),
+                    'accent' => __('Accent', 'polski'),
+                    'success' => __('Success', 'polski'),
+                    'warning' => __('Warning', 'polski'),
+                    'neutral' => __('Neutral', 'polski'),
+                ],
+                'description' => __('Manual badge style.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_badge_secondary_text',
-            'label' => __('Secondary badge', 'polski'),
-            'description' => __('Optional second badge, e.g. Polish brand, Eco, Sale hit.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_badge_secondary_text',
+                'label' => __('Secondary badge', 'polski'),
+                'description' => __('Optional second badge, e.g. Polish brand, Eco, Sale hit.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Tab Manager Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Tab Manager', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('tab_manager')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Tab Manager', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_tab_1_title',
-            'label' => __('Tab 1 title', 'polski'),
-            'description' => __('Optional additional tab for this product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_tab_1_title',
+                'label' => __('Tab 1 title', 'polski'),
+                'description' => __('Optional additional tab for this product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_tab_1_content',
-            'label' => __('Tab 1 content', 'polski'),
-            'description' => __('HTML/text content for the first additional tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_tab_1_content',
+                'label' => __('Tab 1 content', 'polski'),
+                'description' => __('HTML/text content for the first additional tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_tab_2_title',
-            'label' => __('Tab 2 title', 'polski'),
-            'description' => __('Second optional product tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_tab_2_title',
+                'label' => __('Tab 2 title', 'polski'),
+                'description' => __('Second optional product tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_tab_2_content',
-            'label' => __('Tab 2 content', 'polski'),
-            'description' => __('HTML/text content for the second additional tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_tab_2_content',
+                'label' => __('Tab 2 content', 'polski'),
+                'description' => __('HTML/text content for the second additional tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Featured Video Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Featured Video', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('featured_video')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Featured Video', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_featured_video_url',
-            'label' => __('Video URL', 'polski'),
-            'description' => __('Supports YouTube, Vimeo, and direct MP4 file links.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_featured_video_url',
+                'label' => __('Video URL', 'polski'),
+                'description' => __('Supports YouTube, Vimeo, and direct MP4 file links.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_featured_video_title',
-            'label' => __('Video section heading', 'polski'),
-            'description' => __('Optional heading only for this product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_featured_video_title',
+                'label' => __('Video section heading', 'polski'),
+                'description' => __('Optional heading only for this product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Product responsibility -------------------------------------
         // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
@@ -588,6 +597,15 @@ final class ProductMetaBox implements HasHooks
         '_polski_alcohol_content' => 'food_module',
         '_polski_place_of_origin' => 'food_module',
         '_polski_food_distributor' => 'food_module',
+        '_polski_badge_text' => 'badge_management',
+        '_polski_badge_style' => 'badge_management',
+        '_polski_badge_secondary_text' => 'badge_management',
+        '_polski_tab_1_title' => 'tab_manager',
+        '_polski_tab_1_content' => 'tab_manager',
+        '_polski_tab_2_title' => 'tab_manager',
+        '_polski_tab_2_content' => 'tab_manager',
+        '_polski_featured_video_url' => 'featured_video',
+        '_polski_featured_video_title' => 'featured_video',
     ];
 
     /**
