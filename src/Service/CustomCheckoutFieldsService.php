@@ -60,7 +60,7 @@ final class CustomCheckoutFieldsService implements HasHooks
         // existing admin/email/account display keeps working.
         // NOTE: conditional visibility (shipping/payment/category/field/
         // cart-min) is honoured on classic checkout only; on block checkout
-        // these fields always show. Documented on the settings page.
+        // these fields always show.
         if (self::hasAdditionalFieldsApi()) {
             // init priority 22, after CheckboxService::initCheckboxes at 20 and
             // the legal-checkbox fields at 21.
@@ -230,7 +230,9 @@ final class CustomCheckoutFieldsService implements HasHooks
             $config = [
                 'id' => 'polski/' . $field['name'],
                 'label' => $field['label'] !== '' ? $field['label'] : $field['name'],
-                'location' => $field['section'] === 'order' ? 'order' : 'address',
+                // Not 'address': WooCommerce renders an address field in BOTH the
+                // shipping and the billing form, so a billing field was asked twice.
+                'location' => 'order',
                 'type' => $blockType,
                 'required' => (bool) $field['required'],
             ];
@@ -282,15 +284,7 @@ final class CustomCheckoutFieldsService implements HasHooks
             return;
         }
 
-        // Address-location fields fire for both billing and shipping groups; only
-        // mirror the value from the group that matches the field's section.
-        if ($field['section'] === 'billing' && $group !== 'billing') {
-            return;
-        }
-
-        if ($field['section'] === 'shipping' && $group !== 'shipping') {
-            return;
-        }
+        unset($group);
 
         if (! is_object($document) || ! method_exists($document, 'update_meta_data')) {
             return;
@@ -364,17 +358,23 @@ final class CustomCheckoutFieldsService implements HasHooks
             $valid = match ($type) {
                 'email' => is_email($string) !== false,
                 'number' => is_numeric($string),
-                'date' => strtotime($string) !== false,
+                'date' => preg_match('/^\d{4}-\d{2}-\d{2}$/', $string) === 1 && strtotime($string) !== false,
             };
 
             if (! $valid) {
                 return new \WP_Error(
                     'polski_invalid_field',
-                    sprintf(
-                        /* translators: %s: field label */
-                        __('%s is not valid.', 'polski'),
-                        $label,
-                    ),
+                    $type === 'date'
+                        ? sprintf(
+                            /* translators: %s: field label */
+                            __('%s is not valid. Enter the date as YYYY-MM-DD.', 'polski'),
+                            $label,
+                        )
+                        : sprintf(
+                            /* translators: %s: field label */
+                            __('%s is not valid.', 'polski'),
+                            $label,
+                        ),
                 );
             }
 
@@ -476,6 +476,7 @@ final class CustomCheckoutFieldsService implements HasHooks
     public function displayInAdmin($order): void
     {
         $this->renderAdminFields($order, 'billing');
+        $this->renderAdminFields($order, 'order');
     }
 
     /**
@@ -498,7 +499,7 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             $name = $field['name'];
-            $value = $order->get_meta('_' . $name);
+            $value = $this->displayValue($order, $name);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -529,7 +530,7 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             $name = $field['name'];
-            $value = $order->get_meta('_' . $name);
+            $value = $this->displayValue($order, $name);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -566,7 +567,7 @@ final class CustomCheckoutFieldsService implements HasHooks
             }
 
             $name = $field['name'];
-            $value = $order->get_meta('_' . $name);
+            $value = $this->displayValue($order, $name);
 
             if (empty($value) && $value !== '0') {
                 continue;
@@ -583,6 +584,22 @@ final class CustomCheckoutFieldsService implements HasHooks
                 esc_html($value),
             );
         }
+    }
+
+    /**
+     * The classic-checkout value to show, or '' when the order came from the
+     * block checkout: WooCommerce already prints additional fields itself on the
+     * order screen, emails and order details, so printing ours too doubled them.
+     */
+    private function displayValue(\WC_Order $order, string $name): string
+    {
+        foreach (['_wc_other/', '_wc_billing/', '_wc_shipping/'] as $prefix) {
+            if ($order->meta_exists($prefix . 'polski/' . $name)) {
+                return '';
+            }
+        }
+
+        return (string) $order->get_meta('_' . $name);
     }
 
     // ── Conditional Logic ────────────────────────────────
@@ -719,7 +736,7 @@ final class CustomCheckoutFieldsService implements HasHooks
         echo '<th>' . esc_html__('Section', 'polski') . '</th>';
         echo '<th>' . esc_html__('Required', 'polski') . '</th>';
         echo '<th>' . esc_html__('Priority', 'polski') . '</th>';
-        echo '<th>' . esc_html__('Actions', 'polski') . '</th>';
+        echo '<th>' . esc_html__('Display', 'polski') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($fields as $i => $field) {
@@ -732,6 +749,8 @@ final class CustomCheckoutFieldsService implements HasHooks
         echo '</tbody></table>';
 
         echo '<p><button type="button" class="button" data-polski-cf-add-row>' . esc_html__('Add field', 'polski') . '</button></p>';
+
+        echo '<p class="description">' . esc_html__('On the block checkout: every field appears under Additional order information; Number, Email, Date and Phone render as plain text boxes (a date is entered as YYYY-MM-DD); a Select or Radio field without options is left out; conditional rules do not apply.', 'polski') . '</p>';
 
         submit_button(__('Save fields', 'polski'));
 
@@ -816,21 +835,23 @@ final class CustomCheckoutFieldsService implements HasHooks
             (int) ($field['priority'] ?? 100),
         );
 
-        // Actions (hidden fields for advanced settings).
+        // Display options. A new row defaults to showing the value everywhere:
+        // a collected value that is shown nowhere is lost to the merchant.
+        $isNew = $field === [];
         echo '<td>';
 
-        // Placeholder.
         printf(
-            '<input type="hidden" name="%s[placeholder]" value="%s">',
+            '<input type="text" name="%s[placeholder]" value="%s" placeholder="%s" style="width:100%%"><br>',
             esc_attr($prefix),
             esc_attr($field['placeholder'] ?? ''),
+            esc_attr__('Placeholder', 'polski'),
         );
 
-        // Options for select/radio.
         printf(
-            '<input type="hidden" name="%s[options]" value="%s">',
+            '<textarea name="%s[options]" rows="2" style="width:100%%" placeholder="%s">%s</textarea><br>',
             esc_attr($prefix),
-            esc_attr($field['options'] ?? ''),
+            esc_attr__('Select/radio options, one per line: value|Label', 'polski'),
+            esc_textarea($field['options'] ?? ''),
         );
 
         // CSS class.
@@ -840,22 +861,19 @@ final class CustomCheckoutFieldsService implements HasHooks
             esc_attr($field['css_class'] ?? 'form-row-wide'),
         );
 
-        // Show in email/admin/account.
-        printf(
-            '<input type="hidden" name="%s[show_in_email]" value="%s">',
-            esc_attr($prefix),
-            esc_attr(! empty($field['show_in_email']) ? '1' : '0'),
-        );
-        printf(
-            '<input type="hidden" name="%s[show_in_admin]" value="%s">',
-            esc_attr($prefix),
-            esc_attr(! empty($field['show_in_admin']) ? '1' : '0'),
-        );
-        printf(
-            '<input type="hidden" name="%s[show_in_account]" value="%s">',
-            esc_attr($prefix),
-            esc_attr(! empty($field['show_in_account']) ? '1' : '0'),
-        );
+        foreach ([
+            'show_in_admin' => __('Admin order', 'polski'),
+            'show_in_email' => __('Emails', 'polski'),
+            'show_in_account' => __('My Account', 'polski'),
+        ] as $flag => $flagLabel) {
+            printf(
+                '<label style="margin-right:8px"><input type="checkbox" name="%s[%s]" value="1" data-polski-cf-default-on %s> %s</label>',
+                esc_attr($prefix),
+                esc_attr($flag),
+                checked($isNew || ! empty($field[$flag]), true, false),
+                esc_html($flagLabel),
+            );
+        }
 
         // Conditional shipping.
         printf(
