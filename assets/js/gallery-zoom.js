@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    lightboxImage.src = img.currentSrc || img.src;
+    // WooCommerce puts the full-size file on the image and its link.
+    const link = img.closest('a');
+    lightboxImage.src = img.dataset.large_image || (link && link.href) || img.currentSrc || img.src;
     lightboxImage.alt = img.alt || '';
     lightbox.hidden = false;
     document.body.classList.add('polski-gallery-lightbox-open');

@@ -164,11 +164,16 @@ final class ProductSliderService implements Bootable, HasHooks
 
         $products = [];
 
-        foreach (array_slice(array_values(array_unique(array_map('intval', $ids))), 0, $limit) as $id) {
+        foreach (array_unique(array_map('intval', $ids)) as $id) {
             $item = wc_get_product($id);
 
-            if ($item instanceof \WC_Product && $item->is_visible()) {
+            // The on-sale list also holds variation IDs; their parent is listed already.
+            if ($item instanceof \WC_Product && ! $item->is_type('variation') && $item->is_visible()) {
                 $products[] = $item;
+            }
+
+            if (count($products) >= $limit) {
+                break;
             }
         }
 
