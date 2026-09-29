@@ -71,14 +71,21 @@ final class PriceHistoryChartService implements HasHooks
             return;
         }
 
+        // History comes newest first; the line reads left to right, oldest to now.
         $prices = array_map(
             static fn (OmnibusPrice $row) => $row->effectivePrice(),
-            $history,
+            array_reverse($history),
         );
+
+        // The dot marks the price on sale right now, so the line must end there
+        // even when no row was recorded for it (a scheduled sale that started).
+        $currentPrice = (float) $product->get_price();
+        if ($currentPrice > 0 && abs(end($prices) - $currentPrice) > 0.00001) {
+            $prices[] = $currentPrice;
+        }
 
         $minPrice = min(...$prices);
         $maxPrice = max(...$prices);
-        $currentPrice = (float) $product->get_price();
 
         // Don't show if price never changed.
         if ($minPrice === $maxPrice) {
