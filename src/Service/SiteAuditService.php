@@ -597,16 +597,30 @@ final class SiteAuditService implements HasHooks
         $label = __('Pre-checked checkboxes (dark pattern)', 'polski');
 
         // Polski's own legal checkboxes always render unticked. The checkout
-        // boxes that can be pre-ticked are WooCommerce's, through these filters.
+        // boxes that can be pre-ticked are WooCommerce's, through these filters,
+        // which only the classic checkout templates read. The block checkout
+        // ignores them and never pre-ticks a box.
         $preCheckedBoxes = [];
+        $classicCheckout = ! (
+            class_exists(\Automattic\WooCommerce\Blocks\Utils\CartCheckoutUtils::class)
+            && \Automattic\WooCommerce\Blocks\Utils\CartCheckoutUtils::is_checkout_block_default()
+        );
+
+        // Same conditions as WooCommerce's checkout/terms.php: the terms box only
+        // renders when shown (Legal checkboxes removes it) and a terms page is set.
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filters.
+        $termsRendered = $classicCheckout
+            && apply_filters('woocommerce_checkout_show_terms', true)
+            && function_exists('wc_terms_and_conditions_checkbox_enabled')
+            && wc_terms_and_conditions_checkbox_enabled();
 
         // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
-        if (apply_filters('woocommerce_terms_is_checked_default', false) === true) {
+        if ($termsRendered && apply_filters('woocommerce_terms_is_checked_default', false) === true) {
             $preCheckedBoxes[] = 'terms';
         }
 
         // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
-        if (apply_filters('woocommerce_create_account_default_checked', false) === true) {
+        if ($classicCheckout && apply_filters('woocommerce_create_account_default_checked', false) === true) {
             $preCheckedBoxes[] = 'createaccount';
         }
 

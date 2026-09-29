@@ -1308,7 +1308,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-editor-textcolor',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_safe_fonts|optimize', 'label' => __('Optimise Google Fonts', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts.', 'polski')],
+                    ['key' => 'polski_safe_fonts|optimize', 'label' => __('Optimise Google Fonts', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts. Preconnect is skipped while fonts wait for consent.', 'polski')],
                     ['key' => 'polski_safe_fonts|gate_until_consent', 'label' => __('Defer Google Fonts until consent', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Hold the Google Fonts stylesheet until the visitor grants the chosen consent category. A no-script fallback keeps fonts working when JavaScript is off.', 'polski')],
                     ['key' => 'polski_safe_fonts|consent_category', 'label' => __('Consent category', 'polski'), 'type' => 'select', 'default' => 'preferences', 'options' => [
                         'necessary' => __('Necessary', 'polski'),
