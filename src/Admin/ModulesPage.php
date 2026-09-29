@@ -38,6 +38,17 @@ final class ModulesPage implements HasHooks
     {
         add_action('admin_post_polski_save_module_settings', [$this, 'handleSaveModuleSettings']);
         add_action('wp_ajax_polski_toggle_module', [$this, 'ajaxToggleModule']);
+
+        // Wishlist and Compare add My Account endpoints only while enabled, so
+        // a toggle changes the rewrite rules. Dropping the stored rules makes
+        // WordPress rebuild them on the next request, with the new endpoints.
+        add_action('add_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+        add_action('update_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+    }
+
+    public static function dropRewriteRules(): void
+    {
+        delete_option('rewrite_rules');
     }
 
     /**
@@ -794,7 +805,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_wishlist|show_add_to_cart', 'label' => __('Show cart button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|show_remove_button', 'label' => __('Show remove button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|grid_columns', 'label' => __('Number of columns in list', 'polski'), 'type' => 'number', 'default' => 4, 'hint' => __('Number of product columns in grid layout. Recommended: 3-4', 'polski')],
-                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => 'Favorites'],
+                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => __('Wishlist', 'polski')],
                     ['key' => 'polski_wishlist|title', 'label' => __('List title', 'polski'), 'type' => 'text', 'default' => 'Your favorite products'],
                     ['key' => 'polski_wishlist|account_intro_text', 'label' => __('Section description', 'polski'), 'type' => 'textarea', 'default' => ''],
                     ['key' => 'polski_wishlist|button_add_text', 'label' => __('Add text', 'polski'), 'type' => 'text', 'default' => 'Add to favorites'],
@@ -1532,7 +1543,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'social_proof',
                 'name' => __('Social Proof Notifications', 'polski'),
-                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
+                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
@@ -1541,7 +1552,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_social_proof|display_interval', 'label' => __('Interval between popups (seconds)', 'polski'), 'type' => 'number', 'default' => 8, 'hint' => __('Time between showing consecutive notifications. Recommended: 6-12', 'polski')],
                     ['key' => 'polski_social_proof|display_duration', 'label' => __('Display duration (seconds)', 'polski'), 'type' => 'number', 'default' => 5, 'hint' => __('How long each notification stays visible. Recommended: 4-6', 'polski')],
                     ['key' => 'polski_social_proof|position', 'label' => __('Position', 'polski'), 'type' => 'text', 'default' => 'bottom-left', 'hint' => 'bottom-left, bottom-right, top-left, top-right'],
-                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
+                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
                     ['key' => 'polski_social_proof|hide_on_mobile', 'label' => __('Hide on mobile devices', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Disable on small screens to avoid obstructing content', 'polski')],
                 ],
             ],

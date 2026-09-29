@@ -8,15 +8,14 @@
     const list = document.querySelector('ul.products');
     const button = root.querySelector('.polski-infinite-scroll__button');
     const status = root.querySelector('.polski-infinite-scroll__status');
-    const pagination = document.querySelector('.woocommerce-pagination');
-
     if (!list || !button) {
         return;
     }
 
-    if (pagination) {
+    // Themes such as Storefront print the pagination above and below the list.
+    document.querySelectorAll('.woocommerce-pagination').forEach((pagination) => {
         pagination.hidden = true;
-    }
+    });
 
     if ((window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) === 'auto'
         && !((window.polskiInfiniteScroll && window.polskiInfiniteScroll.showButtonInAutoMode))) {

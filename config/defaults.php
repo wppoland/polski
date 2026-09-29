@@ -741,7 +741,7 @@ return [
         'display_interval' => 8,
         'display_duration' => 5,
         'position' => 'bottom-left',
-        'anonymize_name' => false,
+        'anonymize_name' => true,
         'hide_on_mobile' => false,
         /* translators: 1: customer first name (possibly anonymized), 2: product name */
         'message_template' => __('%1$s bought %2$s', 'polski'),

@@ -37,6 +37,7 @@ final class SearchService implements Bootable, HasHooks
     {
         // Extend product search to include Polski meta.
         add_filter('posts_search', [$this, 'extendProductSearch'], 10, 2);
+        add_action('pre_get_posts', [$this, 'applyStockRuleToResultsPage']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_shortcode('polski_ajax_search', [$this, 'renderShortcode']);
     }
@@ -179,7 +180,7 @@ final class SearchService implements Bootable, HasHooks
      */
     public function extendProductSearch(string $search, \WP_Query $query): string
     {
-        if (! $query->is_search() || ! $query->is_main_query()) {
+        if (! $this->isEnabled() || ! $query->is_search() || ! $query->is_main_query()) {
             return $search;
         }
 
@@ -202,6 +203,36 @@ final class SearchService implements Bootable, HasHooks
         global $wpdb;
 
         return $this->widenSearchClause($search, $ids, (string) $wpdb->posts);
+    }
+
+    /**
+     * The dropdown hides out-of-stock products unless the shop opted in, and
+     * its "See all results" link leads here, so the results page follows the
+     * same rule. Otherwise the shopper finds on the second page what the
+     * first one told them was not there.
+     */
+    public function applyStockRuleToResultsPage(\WP_Query $query): void
+    {
+        if (is_admin() || ! $query->is_main_query() || ! $query->is_search() || ! $this->isEnabled()) {
+            return;
+        }
+
+        if (($query->get('post_type') ?: '') !== 'product') {
+            return;
+        }
+
+        if ((bool) ($this->getAjaxSettings()['include_out_of_stock'] ?? false)) {
+            return;
+        }
+
+        $taxQuery = (array) $query->get('tax_query');
+        $taxQuery[] = [
+            'taxonomy' => 'product_visibility',
+            'field' => 'name',
+            'terms' => ['outofstock'],
+            'operator' => 'NOT IN',
+        ];
+        $query->set('tax_query', $taxQuery);
     }
 
     /**
@@ -323,10 +354,14 @@ final class SearchService implements Bootable, HasHooks
         $cap = 500;
 
         $metaPlaceholders = implode(',', array_fill(0, count($metaKeys), '%s'));
+        // A variation's SKU lives on the variation post; the shopper needs the
+        // product that sells it, so a variation hit counts as its parent.
         $metaIds = $wpdb->get_col(
             $wpdb->prepare(
-                "SELECT DISTINCT post_id FROM {$wpdb->postmeta}
-                 WHERE meta_key IN ({$metaPlaceholders}) AND meta_value LIKE %s
+                "SELECT DISTINCT IF(p.post_type = 'product_variation', p.post_parent, p.ID)
+                 FROM {$wpdb->postmeta} pm
+                 INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+                 WHERE pm.meta_key IN ({$metaPlaceholders}) AND pm.meta_value LIKE %s
                  LIMIT %d",
                 [...$metaKeys, $like, $cap],
             )

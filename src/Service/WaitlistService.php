@@ -42,6 +42,7 @@ final class WaitlistService implements Bootable, HasHooks
                 'generic_error' => __('Something went wrong. Please try again.', 'polski'),
                 'product_not_found' => __('Product not found.', 'polski'),
                 'disabled' => __('Waitlist is unavailable for this product.', 'polski'),
+                'variation_required' => __('Waitlist is unavailable for this product.', 'polski'),
                 'invalid_email' => __('Provide a valid email address.', 'polski'),
                 'privacy_error' => __('You must accept the consent for email contact.', 'polski'),
                 'login_required' => __('Login to join the waitlist.', 'polski'),
@@ -53,6 +54,14 @@ final class WaitlistService implements Bootable, HasHooks
             isEnabled: fn (): bool => $this->isEnabled(),
             settings: fn (): array => $this->getSettings(),
             renderTemplate: function (string $template, array $data): void {
+                // The engine renders on every variable product, in stock or
+                // not, then rejects the parent on submit. Signing up for one
+                // variation is not built, so the form stays off those pages.
+                $product = $data['product'] ?? null;
+                if ($product instanceof \WC_Product && $product->is_type('variable')) {
+                    return;
+                }
+
                 $this->templateLoader->include($template, $data);
             },
         );

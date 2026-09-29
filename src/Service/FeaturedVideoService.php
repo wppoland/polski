@@ -32,7 +32,10 @@ final class FeaturedVideoService implements Bootable, HasHooks
     public function registerHooks(): void
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
-        add_action('woocommerce_product_thumbnails', [$this, 'renderAfterGallery'], 25);
+        // Not woocommerce_product_thumbnails: that runs inside the gallery
+        // wrapper, where the slider viewport (overflow hidden) clipped the
+        // video out of sight. Below the gallery and summary, before the tabs.
+        add_action('woocommerce_after_single_product_summary', [$this, 'renderAfterGallery'], 5);
         add_action('woocommerce_before_single_product_summary', [$this, 'renderBeforeSummary'], 19);
     }
 

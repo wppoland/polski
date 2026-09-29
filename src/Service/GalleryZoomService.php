@@ -33,6 +33,27 @@ final class GalleryZoomService implements Bootable, HasHooks
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('wp_footer', [$this, 'renderLightboxShell']);
+        add_action('wp', [$this, 'replaceThemeGalleryFeatures']);
+    }
+
+    /**
+     * WooCommerce's own hover zoom stacked with ours and its zoom layer sat on
+     * top of the image, so a mouse click never reached our lightbox. Where our
+     * version of a feature is on, the theme's copy is switched off.
+     */
+    public function replaceThemeGalleryFeatures(): void
+    {
+        if (! ModulesPage::isModuleEnabled('gallery_zoom') || ! is_product()) {
+            return;
+        }
+
+        if ($this->getSettings()['enable_zoom'] ?? true) {
+            remove_theme_support('wc-product-gallery-zoom');
+        }
+
+        if ($this->getSettings()['enable_lightbox'] ?? true) {
+            remove_theme_support('wc-product-gallery-lightbox');
+        }
     }
 
     public function enqueueAssets(): void

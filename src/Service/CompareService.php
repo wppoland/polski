@@ -330,6 +330,10 @@ final class CompareService implements Bootable, HasHooks
 
     public function renderCompareTable(): string
     {
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         $products = $this->getProducts();
         $rows = $this->buildRows($products);
         $differences = $this->calculateDifferences($rows);
