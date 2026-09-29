@@ -38,6 +38,17 @@ final class ModulesPage implements HasHooks
     {
         add_action('admin_post_polski_save_module_settings', [$this, 'handleSaveModuleSettings']);
         add_action('wp_ajax_polski_toggle_module', [$this, 'ajaxToggleModule']);
+
+        // Wishlist and Compare add My Account endpoints only while enabled, so
+        // a toggle changes the rewrite rules. Dropping the stored rules makes
+        // WordPress rebuild them on the next request, with the new endpoints.
+        add_action('add_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+        add_action('update_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+    }
+
+    public static function dropRewriteRules(): void
+    {
+        delete_option('rewrite_rules');
     }
 
     /**
@@ -793,7 +804,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_wishlist|show_add_to_cart', 'label' => __('Show cart button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|show_remove_button', 'label' => __('Show remove button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|grid_columns', 'label' => __('Number of columns in list', 'polski'), 'type' => 'number', 'default' => 4, 'hint' => __('Number of product columns in grid layout. Recommended: 3-4', 'polski')],
-                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => 'Favorites'],
+                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => __('Wishlist', 'polski')],
                     ['key' => 'polski_wishlist|title', 'label' => __('List title', 'polski'), 'type' => 'text', 'default' => 'Your favorite products'],
                     ['key' => 'polski_wishlist|account_intro_text', 'label' => __('Section description', 'polski'), 'type' => 'textarea', 'default' => ''],
                     ['key' => 'polski_wishlist|button_add_text', 'label' => __('Add text', 'polski'), 'type' => 'text', 'default' => 'Add to favorites'],
