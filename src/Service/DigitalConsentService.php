@@ -383,18 +383,28 @@ final class DigitalConsentService implements HasHooks
         // and silently dropping it from a working checkout would be worse than
         // the noise being reported.
         if (! array_key_exists('digital_consent_mode', $settings)) {
-            $checkout = get_option('polski_checkout', []);
-            $checkout = is_array($checkout) ? $checkout : [];
-
-            return empty($checkout['digital_waiver_checkbox_enabled'])
-                ? self::MODE_HIDDEN
-                : self::MODE_OPTIONAL;
+            return self::unsavedMode();
         }
 
         $mode = (string) ($settings['digital_consent_mode'] ?? self::MODE_OPTIONAL);
 
         return in_array($mode, [self::MODE_REQUIRED, self::MODE_OPTIONAL, self::MODE_HIDDEN], true)
             ? $mode
+            : self::MODE_OPTIONAL;
+    }
+
+    /**
+     * The mode while none has been saved: the modules screen toggle decides.
+     * The withdrawal settings page shows and keeps this value, so saving that
+     * page for another reason does not turn it into an explicit choice.
+     */
+    public static function unsavedMode(): string
+    {
+        $checkout = get_option('polski_checkout', []);
+        $checkout = is_array($checkout) ? $checkout : [];
+
+        return empty($checkout['digital_waiver_checkbox_enabled'])
+            ? self::MODE_HIDDEN
             : self::MODE_OPTIONAL;
     }
 
