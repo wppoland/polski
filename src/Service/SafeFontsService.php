@@ -57,7 +57,12 @@ final class SafeFontsService implements HasHooks
 
         if (! empty($settings['optimize'])) {
             add_filter('style_loader_src', [$this, 'addFontDisplay'], 20, 2);
-            add_action('wp_head', [$this, 'printPreconnect'], 1);
+
+            // A preconnect opens a connection to Google before consent, which
+            // is exactly what the gate exists to prevent.
+            if (empty($settings['gate_until_consent'])) {
+                add_action('wp_head', [$this, 'printPreconnect'], 1);
+            }
         }
 
         if (! empty($settings['gate_until_consent'])) {
