@@ -59,11 +59,27 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
+        const parts = ['.woocommerce-result-count', '.woocommerce-pagination'];
+        // Where each new copy sits, read before any node leaves the fetched page.
+        const previous = new Map();
+
+        parts.forEach((part) => {
+            doc.querySelectorAll(part).forEach((element) => {
+                const siblings = [];
+
+                for (let node = element.previousElementSibling; node; node = node.previousElementSibling) {
+                    siblings.push(node);
+                }
+
+                previous.set(element, siblings);
+            });
+        });
+
         currentProducts.replaceWith(nextProducts);
 
         // Themes such as Storefront print the result count and the pagination
         // both above and below the list, so every copy is swapped.
-        ['.woocommerce-result-count', '.woocommerce-pagination'].forEach((part) => {
+        parts.forEach((part) => {
             const current = Array.from(document.querySelectorAll(part));
             const next = Array.from(doc.querySelectorAll(part));
 
@@ -75,8 +91,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
+            // A copy the page lacked (a single-page result has no pagination)
+            // goes after the nearest node it followed that is now on the page.
             next.slice(current.length).forEach((element) => {
-                if (part === '.woocommerce-result-count') {
+                const anchor = previous.get(element).find((node) => document.contains(node));
+
+                if (anchor) {
+                    anchor.after(element);
+                } else if (part === '.woocommerce-result-count') {
                     nextProducts.before(element);
                 } else {
                     nextProducts.after(element);
