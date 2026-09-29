@@ -6,11 +6,10 @@ namespace Polski\Service;
 defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
-use Polski\Enum\TaxDisplayMode;
 use Polski\Util\Formatter;
 
 /**
- * Handles tax display logic: brutto/netto toggle, VAT notices, small business exemption.
+ * Handles tax display logic: VAT notices, small business exemption.
  */
 final class TaxDisplayService implements HasHooks
 {
@@ -21,14 +20,6 @@ final class TaxDisplayService implements HasHooks
         if (\Polski\Admin\ModulesPage::isModuleEnabled('tax_display') && $this->isSmallBusiness()) {
             add_filter('wc_tax_enabled', '__return_false');
         }
-    }
-
-    public function getMode(): TaxDisplayMode
-    {
-        $settings = $this->getSettings();
-        $mode = $settings['tax_display_mode'] ?? 'brutto';
-
-        return TaxDisplayMode::tryFrom($mode) ?? TaxDisplayMode::Brutto;
     }
 
     public function isSmallBusiness(): bool

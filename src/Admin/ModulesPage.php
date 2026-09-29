@@ -105,7 +105,7 @@ final class ModulesPage implements HasHooks
             'dynamic_pricing' => __('Automatic cart discounts based on spending or quantity. When enabled, shoppers get a percentage off once the cart subtotal hits a threshold, and bulk discounts when a product\'s quantity hits a threshold; applied automatically in the cart. Off by default.', 'polski'),
             'unit_price' => __('Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a per-unit price appears next to product prices on shop and product pages, helping customers compare value, in line with Polish consumer law.', 'polski'),
             'omnibus' => __('Tracks price history and shows the lowest price from the last 30 days on discounted products. When enabled, sale products display their lowest 30-day price near the price, helping you meet the EU Omnibus Directive (2019/2161).', 'polski'),
-            'tax_display' => __('Controls how VAT is shown on prices. When enabled, you can set gross or net price display, show VAT rate info, and support the small business VAT exemption (Art. 113), affecting prices shown to shoppers across the store.', 'polski'),
+            'tax_display' => __('Adds a VAT rate notice next to prices. When enabled, shoppers see a line such as "including 23% VAT", and the small business VAT exemption (Art. 113) switches VAT off and shows the exemption text instead. Gross or net display stays a WooCommerce setting (Settings > Tax).', 'polski'),
             'oss_observer' => __('Watches your cross-border EU B2C sales against the OSS threshold. When enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C sales and flags when you approach the 10,000 EUR threshold for the year.', 'polski'),
             'delivery_time' => __('Shows an estimated delivery time on product pages. When enabled, each product page displays its delivery estimate; you can set it per product or variation, with a default used when none is specified. Off until enabled.', 'polski'),
             'shipping_notice' => __('Adds a link to your shipping costs page near prices. When enabled, a shipping costs info link appears next to the product price, so customers can check delivery charges before buying. Off until enabled.', 'polski'),
@@ -292,13 +292,12 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'tax_display',
                 'name' => __('VAT Display', 'polski'),
-                'description' => __('Configuration for gross/net prices display, VAT rate info, and small business exemption support (Art. 113 of the VAT Act).', 'polski'),
+                'description' => __('VAT rate notice next to prices and small business exemption support (Art. 113 of the VAT Act). Whether prices show gross or net is set in WooCommerce > Settings > Tax.', 'polski'),
                 'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-money-alt',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_taxes|tax_display_mode', 'label' => __('Price display mode', 'polski'), 'type' => 'select', 'default' => 'brutto', 'options' => ['brutto' => __('Gross (including VAT)', 'polski'), 'netto' => __('Net (excluding VAT)', 'polski')]],
                     ['key' => 'polski_taxes|vat_notice_text', 'label' => __('VAT notice text', 'polski'), 'type' => 'text', 'default' => 'including {rate}% VAT', 'hint' => __('Variables: {rate}', 'polski')],
                     ['key' => 'polski_general|small_business', 'label' => __('Small business exemption (Art. 113)', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_taxes|vat_exempt_notice', 'label' => __('Exemption text', 'polski'), 'type' => 'text', 'default' => 'Exempt from VAT based on Art. 113 par. 1 of the VAT Act'],

@@ -64,7 +64,6 @@ return [
 
     // Price display.
     'polski_prices' => [
-        'tax_display_mode' => 'brutto',
         'unit_price_enabled' => true,
         'unit_price_text' => __('{price} / {unit}', 'polski'),
         // Seeded so a REST write does not drop it: Sanitizer::settingsArray()
