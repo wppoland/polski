@@ -595,30 +595,19 @@ final class SiteAuditService implements HasHooks
     private function checkPreCheckedBoxes(): array
     {
         $label = __('Pre-checked checkboxes (dark pattern)', 'polski');
-        $checkoutSettings = get_option('polski_checkout', []);
 
-        if (! is_array($checkoutSettings)) {
-            $checkoutSettings = [];
-        }
-
-        $checkboxKeys = [
-            'terms_checkbox',
-            'privacy_checkbox',
-            'withdrawal_checkbox',
-            'digital_waiver_checkbox',
-            'parcel_delivery_checkbox',
-            'review_reminder_checkbox',
-            'marketing_checkbox',
-        ];
-
+        // Polski's own legal checkboxes always render unticked. The checkout
+        // boxes that can be pre-ticked are WooCommerce's, through these filters.
         $preCheckedBoxes = [];
 
-        foreach ($checkboxKeys as $checkboxKey) {
-            $checkedKey = $checkboxKey . '_checked';
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
+        if (apply_filters('woocommerce_terms_is_checked_default', false) === true) {
+            $preCheckedBoxes[] = 'terms';
+        }
 
-            if (! empty($checkoutSettings[$checkedKey])) {
-                $preCheckedBoxes[] = $checkboxKey;
-            }
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
+        if (apply_filters('woocommerce_create_account_default_checked', false) === true) {
+            $preCheckedBoxes[] = 'createaccount';
         }
 
         if (count($preCheckedBoxes) === 0) {
