@@ -180,10 +180,6 @@ final class StockExportService implements HasHooks
             'order' => 'ASC',
         ];
 
-        if ($managedOnly) {
-            $args['manage_stock'] = true;
-        }
-
         $found = wc_get_products($args);
         $ids = [];
 
@@ -193,49 +189,39 @@ final class StockExportService implements HasHooks
             $ids[] = $id instanceof \WC_Product ? $id->get_id() : (int) $id;
         }
 
+        // Filters apply per row, not in the query: an unmanaged variable parent
+        // must still list its managed variations. A stock comparison only
+        // matches rows that track stock.
+        $passes = static function (\WC_Product $product) use ($managedOnly, $stockCompare, $stockValue): bool {
+            if (($managedOnly || $stockCompare !== '') && ! $product->managing_stock()) {
+                return false;
+            }
+
+            if ($stockCompare === '') {
+                return true;
+            }
+
+            $stock = (int) $product->get_stock_quantity();
+
+            return match ($stockCompare) {
+                'lte' => $stock <= $stockValue,
+                'gte' => $stock >= $stockValue,
+                'eq' => $stock === $stockValue,
+                default => true,
+            };
+        };
+
         foreach (array_chunk($ids, self::BATCH_SIZE) as $chunk) {
             foreach ($this->hydrate($chunk) as $product) {
-                // Stock filter.
-                if ($stockCompare !== '' && $product->managing_stock()) {
-                    $stock = (int) $product->get_stock_quantity();
-                    $matches = match ($stockCompare) {
-                        'lte' => $stock <= $stockValue,
-                        'gte' => $stock >= $stockValue,
-                        'eq' => $stock === $stockValue,
-                        default => true,
-                    };
-
-                    if (! $matches) {
-                        continue;
-                    }
+                if ($passes($product)) {
+                    yield $product;
                 }
 
-                yield $product;
-
-                // Include variations.
                 if ($includeVariations && $product->is_type('variable')) {
                     foreach ($product->get_children() as $childId) {
                         $variation = wc_get_product($childId);
 
-                        if ($variation instanceof \WC_Product) {
-                            if ($managedOnly && ! $variation->managing_stock()) {
-                                continue;
-                            }
-
-                            if ($stockCompare !== '' && $variation->managing_stock()) {
-                                $vStock = (int) $variation->get_stock_quantity();
-                                $vMatches = match ($stockCompare) {
-                                    'lte' => $vStock <= $stockValue,
-                                    'gte' => $vStock >= $stockValue,
-                                    'eq' => $vStock === $stockValue,
-                                    default => true,
-                                };
-
-                                if (! $vMatches) {
-                                    continue;
-                                }
-                            }
-
+                        if ($variation instanceof \WC_Product && $passes($variation)) {
                             yield $variation;
                         }
                     }
