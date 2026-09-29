@@ -25,6 +25,9 @@ final class BusinessInfoService implements HasHooks
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('business_info')) {
+            // A page that still carries the shortcode must not print it raw.
+            add_shortcode(self::SHORTCODE, '__return_empty_string');
+
             return;
         }
 
