@@ -276,7 +276,7 @@ final class WithdrawalService implements Bootable, HasHooks
      * @param array<int, float|int>|null $selection Map of order_item_id => quantity to
      *   withdraw. When null the whole remaining order is taken; when empty the call fails.
      */
-    public function createRequest(int $orderId, ?string $reason = null, ?array $selection = null): ?WithdrawalRequest
+    public function createRequest(int $orderId, ?string $reason = null, ?array $selection = null, ?string $guestEmail = null): ?WithdrawalRequest
     {
         $order = wc_get_order($orderId);
 
@@ -293,7 +293,7 @@ final class WithdrawalService implements Bootable, HasHooks
             return null;
         }
 
-        $customerId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
+        $customerId = $guestEmail === null && $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
 
         // Keep the legacy JSON column populated for backwards-compat readers.
         $legacyItems = [];
@@ -304,13 +304,17 @@ final class WithdrawalService implements Bootable, HasHooks
             ];
         }
 
-        $id = $this->repository->create($orderId, $customerId, $reason, $legacyItems);
+        $id = $guestEmail !== null
+            ? $this->repository->createForGuest($orderId, $guestEmail, $reason, $legacyItems)
+            : $this->repository->create($orderId, $customerId, $reason, $legacyItems);
 
         if ($id <= 0) {
             do_action(
                 'polski/withdrawal/persist_failed',
                 $orderId,
-                ['flow' => 'logged_in', 'customer_id' => $customerId],
+                $guestEmail !== null
+                    ? ['flow' => 'guest', 'email' => $guestEmail]
+                    : ['flow' => 'logged_in', 'customer_id' => $customerId],
             );
             return null;
         }
@@ -347,7 +351,10 @@ final class WithdrawalService implements Bootable, HasHooks
                 );
             }
 
-            do_action('polski/withdrawal/requested', $request);
+            // Guest callers announce their own request with the guest_requested action.
+            if ($guestEmail === null) {
+                do_action('polski/withdrawal/requested', $request);
+            }
         }
 
         return $request;
@@ -897,7 +904,7 @@ final class WithdrawalService implements Bootable, HasHooks
 
         // POST: process the confirmed withdrawal.
         $requestMethod = isset($_SERVER['REQUEST_METHOD'])
-            ? sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD']))
+            ? strtoupper(sanitize_key((string) wp_unslash($_SERVER['REQUEST_METHOD'])))
             : '';
         if (
             $requestMethod === 'POST'

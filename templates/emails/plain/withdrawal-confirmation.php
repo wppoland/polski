@@ -69,10 +69,9 @@ if ($request->reason) {
 }
 
 echo esc_html__('Items covered by this declaration', 'polski') . ":\n";
-foreach ($order->get_items() as $item) {
-    if (! $item instanceof \WC_Order_Item_Product) {
-        continue;
-    }
+$polski_lines = \Polski\Email\WithdrawalConfirmationEmail::declaredLines($order, $request);
+foreach ($polski_lines as $polski_line) {
+    $item = $polski_line['item'];
     $product = $item->get_product();
     $attrs = '';
     if ($product instanceof \WC_Product && $product->is_type('variation')) {
@@ -82,13 +81,13 @@ foreach ($order->get_items() as $item) {
     if ($attrs !== '') {
         echo ' (' . esc_html($attrs) . ')';
     }
-    echo ' x ' . esc_html((string) $item->get_quantity());
-    echo ' = ' . esc_html(wp_strip_all_tags(wc_price((float) $item->get_total(), ['currency' => $currency])));
+    echo ' x ' . esc_html((string) wc_stock_amount($polski_line['quantity']));
+    echo ' = ' . esc_html(wp_strip_all_tags(wc_price($polski_line['total'], ['currency' => $currency])));
     echo "\n";
 }
 
 echo "\n";
-echo esc_html__('Order total', 'polski') . ': ' . esc_html(wp_strip_all_tags(wc_price((float) $order->get_total(), ['currency' => $currency]))) . "\n\n";
+echo esc_html__('Total', 'polski') . ': ' . esc_html(wp_strip_all_tags(wc_price(array_sum(array_column($polski_lines, 'total')), ['currency' => $currency]))) . "\n\n";
 
 echo esc_html((string) ($polski_settings['email_return_instruction'] ?? __('Send the goods back to the address below within 14 days of filing the declaration:', 'polski'))) . "\n";
 echo esc_html(wp_strip_all_tags((string) get_option('woocommerce_store_address', ''))) . "\n";

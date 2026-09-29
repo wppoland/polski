@@ -277,7 +277,6 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\VatMarginService::class, static fn () => new \Polski\Service\VatMarginService());
     $c->singleton(\Polski\Service\GuestWithdrawalService::class, static fn () => new \Polski\Service\GuestWithdrawalService(
         $c->get(WithdrawalService::class),
-        $c->get(WithdrawalRepository::class),
         $c->get(TemplateLoader::class),
     ));
     $c->singleton(\Polski\Service\AnnexGeneratorService::class, static fn () => new \Polski\Service\AnnexGeneratorService());
@@ -293,7 +292,6 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\WithdrawalErrorTelemetry::class, static fn () => new \Polski\Service\WithdrawalErrorTelemetry());
     $c->singleton(\Polski\Rest\GuestWithdrawalController::class, static fn () => new \Polski\Rest\GuestWithdrawalController(
         $c->get(\Polski\Service\GuestWithdrawalService::class),
-        $c->get(WithdrawalRepository::class),
     ));
     $c->singleton(\Polski\Service\WithdrawalSiteHealthService::class, static fn () => new \Polski\Service\WithdrawalSiteHealthService());
     $c->singleton(\Polski\Admin\WithdrawalOrderMetaBox::class, static fn () => new \Polski\Admin\WithdrawalOrderMetaBox(

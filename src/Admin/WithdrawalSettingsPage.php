@@ -126,6 +126,15 @@ final class WithdrawalSettingsPage implements HasHooks
         $clean = get_option(self::OPTION, []);
         $clean = is_array($clean) ? $clean : [];
 
+        // The module card saves the customer-facing texts (button, form, email)
+        // into this same option. Keep them; the keys handled below overwrite
+        // their own entries with stricter rules.
+        foreach ($input as $key => $value) {
+            if (is_string($key) && is_string($value)) {
+                $clean[sanitize_key($key)] = sanitize_textarea_field($value);
+            }
+        }
+
         $clean['period_days'] = isset($input['period_days']) ? max(1, (int) $input['period_days']) : 14;
 
         $clean['trigger_statuses'] = [];
