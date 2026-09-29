@@ -70,7 +70,7 @@ final class AutoRestoreStockService implements HasHooks
             }
 
             // WooCommerce records the reduced quantity per item and clears it when it restocks.
-            $qty = (float) $item->get_meta('_reduced_stock', true);
+            $qty = wc_stock_amount($item->get_meta('_reduced_stock', true));
 
             if ($qty <= 0) {
                 continue;
@@ -110,8 +110,8 @@ final class AutoRestoreStockService implements HasHooks
 
         if ($restored) {
             $order->update_meta_data('_polski_stock_restored', '1');
+            $order->set_order_stock_reduced(false);
             $order->save();
-            $order->get_data_store()->set_stock_reduced($orderId, false);
         }
     }
 }

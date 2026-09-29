@@ -200,7 +200,7 @@ final class ReviewRequestService implements HasHooks
         }
 
         // A guest opening the link from email has no session yet to carry the notice.
-        if (WC()->session !== null && ! WC()->session->has_session()) {
+        if (WC()->session instanceof \WC_Session_Handler && ! WC()->session->has_session()) {
             WC()->session->set_customer_session_cookie(true);
         }
 
