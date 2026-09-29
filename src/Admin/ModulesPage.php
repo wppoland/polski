@@ -1736,6 +1736,8 @@ final class ModulesPage implements HasHooks
          *   'settings'    list of fields, each with a 'key' in the
          *                 "option_name|field_key" form; an empty list when the
          *                 module has no settings of its own.
+         *   'beta'        optional string, one sentence saying what does not
+         *                 work yet. Shows a Beta badge and the sentence.
          *
          * Entries that are not an array with a non-empty string id are dropped,
          * and an id that already exists keeps the definition declared here. The
@@ -1797,6 +1799,7 @@ final class ModulesPage implements HasHooks
                 'icon' => isset($module['icon']) && is_string($module['icon']) ? $module['icon'] : 'dashicons-admin-generic',
                 'links' => isset($module['links']) && is_array($module['links']) ? array_values($module['links']) : [],
                 'settings' => isset($module['settings']) && is_array($module['settings']) ? array_values($module['settings']) : [],
+                'beta' => isset($module['beta']) && is_string($module['beta']) ? $module['beta'] : '',
             ];
         }
 
@@ -1910,6 +1913,20 @@ final class ModulesPage implements HasHooks
     }
 
     /**
+     * "Beta" badge for a module that declares what does not work yet, or ''.
+     *
+     * @param array<string, mixed> $module
+     */
+    public static function betaBadge(array $module): string
+    {
+        if (empty($module['beta']) || ! is_string($module['beta'])) {
+            return '';
+        }
+
+        return '<span class="polski-beta-badge" title="' . esc_attr($module['beta']) . '">' . esc_html__('Beta', 'polski') . '</span>';
+    }
+
+    /**
      * Render a single module row in the list-table, plus an optional settings details row.
      *
      * @param array<string, mixed> $module
@@ -1943,6 +1960,7 @@ final class ModulesPage implements HasHooks
 
         echo '<span class="polski-modules-name-text">';
         echo '<strong>' . esc_html($module['name']) . '</strong>';
+        echo self::betaBadge($module); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in betaBadge().
 
         $helpTooltip = $this->getModuleHelpTooltip($module);
         if ($helpTooltip !== '') {
@@ -1977,6 +1995,10 @@ final class ModulesPage implements HasHooks
         // --- Description column.
         echo '<td class="polski-modules-col-desc">';
         echo '<span class="polski-modules-desc-text">' . esc_html($module['description']) . '</span>';
+
+        if (! empty($module['beta'])) {
+            echo '<span class="polski-beta-note">' . esc_html((string) $module['beta']) . '</span>';
+        }
 
         if (! empty($module['links'])) {
             echo '<span class="polski-modules-links">';

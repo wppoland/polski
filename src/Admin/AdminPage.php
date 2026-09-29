@@ -425,10 +425,13 @@ final class AdminPage implements Bootable, HasHooks
 
             echo '<div id="polski-module-' . esc_attr($moduleId) . '" class="polski-module-settings-section" style="background:#fff; border:1px solid #ccd0d4; padding:20px; margin-top:20px;">';
             echo '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px;">';
-            echo '<h2 style="margin:0;">' . esc_html($module['name']) . '</h2>';
+            echo '<h2 style="margin:0;">' . esc_html($module['name']) . ' ' . ModulesPage::betaBadge($module) . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in betaBadge().
             echo '<span style="font-size:12px;color:' . esc_attr($statusColor) . ';font-weight:600;">' . esc_html($statusLabel) . '</span>';
             echo '</div>';
             echo '<p>' . esc_html($module['description']) . '</p>';
+            if (! empty($module['beta'])) {
+                echo '<p class="polski-beta-note">' . esc_html((string) $module['beta']) . '</p>';
+            }
 
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('polski_save_module_' . $moduleId, '_polski_module_nonce_' . $moduleId);

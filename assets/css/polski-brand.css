@@ -310,3 +310,26 @@
     .polski-admin-shell .polski-pro-banner__cta,
     .polski-admin-shell .polski-pro-aside__cta { transition: background-color .15s ease, border-color .15s ease; }
 }
+
+/* Beta modules: badge next to the name, the limitation sentence under the description. */
+.polski-beta-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: #6b4e00;
+    background: #fcf0c3;
+    border: 1px solid #e6c95c;
+    border-radius: 3px;
+}
+.polski-beta-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #6b4e00;
+}
