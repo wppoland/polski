@@ -16,7 +16,7 @@ return [
         'remove_data_on_uninstall' => false,
         'bdo_number' => '',
         'dispute_resolution_enabled' => true,
-        'dispute_resolution_text' => __('ODR platform: https://ec.europa.eu/consumers/odr', 'polski'),
+        'dispute_resolution_text' => __('If you are a consumer, you can use out-of-court complaint and redress procedures, for example help from your municipal or district consumer ombudsman (Rzecznik Konsumentów) or the Provincial Inspectorate of Trade Inspection (WIIH).', 'polski'),
         'admin_pages_generated_notice' => __('Done. We have generated draft legal pages for you. Review them, adjust them to your shop and publish them.', 'polski'),
         'admin_modules_saved_notice' => __('Modules saved.', 'polski'),
         'admin_setup_note_title' => __('Set up Polski for your shop', 'polski'),

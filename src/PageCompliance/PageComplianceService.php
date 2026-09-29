@@ -286,7 +286,7 @@ final class PageComplianceService implements HasHooks
      * Deliberately narrow: only links whose own URL points at a document of the
      * same kind on a different host. That is the fingerprint of a copied
      * template, and it does not fire on the many outside links a legitimate
-     * policy carries (processors, the supervisory authority, the ODR platform).
+     * policy carries (processors, the supervisory authority, out-of-court dispute options).
      */
     private function checkForeignDocumentLinks(string $content): CheckResult
     {

@@ -267,7 +267,8 @@ final class ShortcodeManager implements HasHooks
     public function complaints(array|string $atts = []): string
     {
         $settings = get_option('polski_general', []);
-        $text = is_array($settings) ? ($settings['dispute_resolution_text'] ?? '') : '';
+        $text = is_array($settings) ? (string) ($settings['dispute_resolution_text'] ?? '') : '';
+        $text = \Polski\Service\DisputeResolutionService::usableText($text);
 
         if ($text === '') {
             return '';

@@ -71,7 +71,7 @@ Polski for WooCommerce helps adapt a WooCommerce shop to Polish market requireme
 ### Legal Pages
 - **Auto-generate legal pages** - Regulamin, Polityka prywatnosci, Polityka zwrotow, Reklamacje
 - **Legal page attachments** - attach legal pages to order emails (plain text or PDF)
-- **Dispute resolution notice** - EU ODR platform information in footer
+- **Dispute resolution notice** - out-of-court complaint and redress options on the cart and checkout pages
 
 ### Product Information
 - **Delivery times** - per-product and per-variation delivery time display with default fallback

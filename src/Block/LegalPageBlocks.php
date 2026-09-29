@@ -40,7 +40,7 @@ final class LegalPageBlocks implements HasHooks
 
         register_block_type(\Polski\PLUGIN_DIR . '/blocks/complaints', [
             'title' => __('Dispute resolution notice', 'polski'),
-            'description' => __('Displays your dispute resolution / online dispute resolution (ODR) information.', 'polski'),
+            'description' => __('Displays your out-of-court dispute resolution notice.', 'polski'),
             'render_callback' => static fn (): string => do_shortcode('[polski_complaints]'),
         ]);
 

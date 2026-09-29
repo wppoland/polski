@@ -62,7 +62,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Right of withdrawal** - withdrawal/return forms and requests from the customer account.
 * **Double e-mail confirmation** - e-mail address confirmation during customer registration.
 * **Shop pages** - link the terms, privacy policy and withdrawal content into WooCommerce notices.
-* **Dispute resolution** - an ODR information module for the shop's information pages.
+* **Dispute resolution** - a notice about out-of-court complaint and redress options (consumer ombudsman, Trade Inspection) on the cart and checkout pages and as a shortcode.
 * **Consent log** - logging of consents with date, context, IP address and content version.
 
 = Product data and labelling =

@@ -201,15 +201,16 @@ final class RegulaminRules
             ),
             new CheckRule(
                 id: 'odr_platform',
-                label: __('ODR platform (out-of-court dispute)', 'polski'),
+                label: __('Out-of-court dispute resolution', 'polski'),
                 severity: Severity::Recommended,
                 patterns: [
-                    'ec.europa.eu/consumers/odr',
-                    'platforma odr',
                     'pozasadowego rozwiazywania',
-                    'odr platform',
+                    'pozasadowych sposobow',
+                    'rzecznik konsument',
+                    'inspekcji handlowej',
+                    'out-of-court',
                 ],
-                hint: __('Link to the EU ODR platform and mention other out-of-court dispute options.', 'polski'),
+                hint: __('Mention the out-of-court complaint and redress options, such as the consumer ombudsman or the Trade Inspection (WIIH). Do not link the EU ODR platform: it closed on 20 July 2025.', 'polski'),
             ),
             new CheckRule(
                 id: 'effective_date',
