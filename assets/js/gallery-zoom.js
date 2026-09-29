@@ -62,7 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
         img.setAttribute('aria-label', config.triggerLabel);
       }
 
-      img.addEventListener('click', () => openLightbox(img));
+      img.addEventListener('click', (event) => {
+        // The image sits inside a link to the full-size file.
+        event.preventDefault();
+        openLightbox(img);
+      });
       img.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
           event.preventDefault();
