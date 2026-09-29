@@ -19,15 +19,27 @@ final class FaqService implements HasHooks
     private const CPT = 'polski_faq';
     private const TAXONOMY = 'faq_category';
 
+    /**
+     * FAQPage items from every [polski_faq] on the page, keyed by post ID so
+     * an entry shown by two shortcodes is listed once.
+     *
+     * @var array<int, array<string, mixed>>
+     */
+    private array $schemaItems = [];
+
     public function registerHooks(): void
     {
+        // Registered even with the module off, so a page that still carries
+        // the shortcode prints nothing instead of the raw [polski_faq] text.
+        add_shortcode('polski_faq', [$this, 'shortcodeCallback']);
+
         if (! ModulesPage::isModuleEnabled('faq')) {
             return;
         }
 
         add_action('init', [$this, 'registerPostType']);
         add_action('init', [$this, 'registerTaxonomy']);
-        add_shortcode('polski_faq', [$this, 'shortcodeCallback']);
+        add_action('wp_footer', [$this, 'printSchema']);
 
         // Enqueue accordion styles/JS.
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
@@ -84,6 +96,10 @@ final class FaqService implements HasHooks
      */
     public function shortcodeCallback($atts): string
     {
+        if (! ModulesPage::isModuleEnabled('faq')) {
+            return '';
+        }
+
         $atts = shortcode_atts([
             'category' => '',
             'limit' => -1,
@@ -120,7 +136,6 @@ final class FaqService implements HasHooks
         }
 
         $output = '<div class="polski-faq-accordion">';
-        $schemaItems = [];
 
         while ($query->have_posts()) {
             $query->the_post();
@@ -132,7 +147,7 @@ final class FaqService implements HasHooks
 
             $output .= '<div class="polski-faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;overflow:hidden">';
             $output .= sprintf(
-                '<button class="polski-faq-question" onclick="this.classList.toggle(\'open\');this.nextElementSibling.style.display=this.classList.contains(\'open\')?\'block\':\'none\'" style="display:flex;align-items:center;justify-content:space-between;width:100%%;padding:14px 16px;background:#f8fafc;border:none;cursor:pointer;font-size:15px;font-weight:600;text-align:left" aria-expanded="false" aria-controls="%s"><span>%s</span><span class="polski-faq-icon" style="transition:transform .2s;font-size:18px">+</span></button>',
+                '<button class="polski-faq-question" onclick="this.setAttribute(\'aria-expanded\',this.classList.toggle(\'open\'));this.nextElementSibling.style.display=this.classList.contains(\'open\')?\'block\':\'none\'" style="display:flex;align-items:center;justify-content:space-between;width:100%%;padding:14px 16px;background:#f8fafc;border:none;cursor:pointer;font-size:15px;font-weight:600;text-align:left" aria-expanded="false" aria-controls="%s"><span>%s</span><span class="polski-faq-icon" style="transition:transform .2s;font-size:18px">+</span></button>',
                 esc_attr($id),
                 esc_html($question),
             );
@@ -145,7 +160,7 @@ final class FaqService implements HasHooks
 
             // Collect for Schema.org.
             if ($atts['schema'] === 'yes') {
-                $schemaItems[] = [
+                $this->schemaItems[(int) get_the_ID()] = [
                     '@type' => 'Question',
                     'name' => $question,
                     'acceptedAnswer' => [
@@ -159,23 +174,26 @@ final class FaqService implements HasHooks
         wp_reset_postdata();
         $output .= '</div>';
 
-        // Schema.org FAQPage.
-        if (! empty($schemaItems)) {
-            $schema = [
-                '@context' => 'https://schema.org',
-                '@type' => 'FAQPage',
-                'mainEntity' => $schemaItems,
-            ];
+        return $output;
+    }
 
-            ob_start();
-            wp_print_inline_script_tag(
-                (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-                ['type' => 'application/ld+json'],
-            );
-            $output .= (string) ob_get_clean();
+    /**
+     * One FAQPage per page, however many shortcodes it carries.
+     */
+    public function printSchema(): void
+    {
+        if ($this->schemaItems === []) {
+            return;
         }
 
-        return $output;
+        wp_print_inline_script_tag(
+            (string) wp_json_encode([
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => array_values($this->schemaItems),
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            ['type' => 'application/ld+json'],
+        );
     }
 
     public function enqueueAssets(): void
