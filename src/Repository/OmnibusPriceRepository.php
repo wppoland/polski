@@ -230,7 +230,7 @@ class OmnibusPriceRepository
                 'SELECT * FROM %i
                  WHERE product_id = %d AND recorded_at >= %s
                    AND currency = %s
-                 ORDER BY recorded_at DESC',
+                 ORDER BY recorded_at DESC, id DESC',
                 $this->tableName(),
                 $productId,
                 $this->gmDateDaysAgo($days),
@@ -247,24 +247,39 @@ class OmnibusPriceRepository
     }
 
     /**
-     * Check if a price has already been recorded today for this product.
+     * When the running sale price was first recorded, UTC 'Y-m-d H:i:s'.
+     *
+     * That is the first row carrying this sale price after the last row that
+     * did not. Null when the history has no row for it.
      */
-    public function hasRecordedToday(int $productId): bool
+    public function findSaleRunStart(int $productId, float $salePrice): ?string
     {
         global $wpdb;
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
-        $count = (int) $wpdb->get_var(
+        $start = $wpdb->get_var(
             $wpdb->prepare(
-                'SELECT COUNT(*) FROM %i
-                 WHERE product_id = %d AND recorded_at >= %s',
+                'SELECT MIN(recorded_at) FROM %i
+                 WHERE product_id = %d AND currency = %s
+                   AND sale_price IS NOT NULL AND ABS(sale_price - %f) < 0.00005
+                   AND recorded_at > COALESCE((
+                       SELECT MAX(recorded_at) FROM %i
+                       WHERE product_id = %d AND currency = %s
+                         AND (sale_price IS NULL OR ABS(sale_price - %f) >= 0.00005)
+                   ), %s)',
                 $this->tableName(),
                 $productId,
-                gmdate('Y-m-d 00:00:00'),
+                $this->currentCurrency(),
+                $salePrice,
+                $this->tableName(),
+                $productId,
+                $this->currentCurrency(),
+                $salePrice,
+                '1970-01-01 00:00:00',
             ),
         );
 
-        return $count > 0;
+        return is_string($start) && $start !== '' ? $start : null;
     }
 
     /**
@@ -296,7 +311,7 @@ class OmnibusPriceRepository
             $wpdb->prepare(
                 'SELECT * FROM %i
                  WHERE product_id = %d
-                 ORDER BY recorded_at DESC
+                 ORDER BY recorded_at DESC, id DESC
                  LIMIT 1',
                 $this->tableName(),
                 $productId,

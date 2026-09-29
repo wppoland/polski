@@ -76,8 +76,9 @@ final class OmnibusService implements Bootable, HasHooks
         add_action('woocommerce_update_product', [$this, 'onProductSave'], 10, 2);
         add_action('woocommerce_new_product', [$this, 'onProductSave'], 10, 2);
 
-        // Record price on variation save.
-        add_action('woocommerce_save_product_variation', [$this, 'onVariationSave'], 10, 2);
+        // Variations fire their own CRUD actions, from the editor, REST and imports alike.
+        add_action('woocommerce_update_product_variation', [$this, 'onProductSave'], 10, 2);
+        add_action('woocommerce_new_product_variation', [$this, 'onProductSave'], 10, 2);
 
         // Daily cleanup.
         add_action('polski_daily_maintenance', [$this, 'pruneOldRecords']);
@@ -101,20 +102,6 @@ final class OmnibusService implements Bootable, HasHooks
     }
 
     /**
-     * Record price when a variation is saved.
-     */
-    public function onVariationSave(int $variationId, int $loop): void
-    {
-        $variation = wc_get_product($variationId);
-
-        if (! $variation instanceof \WC_Product) {
-            return;
-        }
-
-        $this->recordProductPrice($variation);
-    }
-
-    /**
      * Record the current price of a product.
      */
     public function recordProductPrice(\WC_Product $product): void
@@ -130,12 +117,21 @@ final class OmnibusService implements Bootable, HasHooks
 
         $priceType = $saleFloat !== null ? PriceType::Sale : PriceType::Regular;
 
-        // Avoid duplicate recordings on the same day.
-        if ($this->repository->hasRecordedToday($product->get_id())) {
+        $currency = get_woocommerce_currency();
+
+        // Record every change, not one row a day: a sale set and lifted on the
+        // same day is still a price the product sold at. Saves that change
+        // nothing (stock, title) add no row.
+        $latest = $this->repository->findLatest($product->get_id());
+        if (
+            $latest !== null
+            && $latest->currency === $currency
+            && abs($latest->price - $regularPrice) < 0.00005
+            && ($latest->salePrice === null) === ($saleFloat === null)
+            && ($saleFloat === null || abs((float) $latest->salePrice - $saleFloat) < 0.00005)
+        ) {
             return;
         }
-
-        $currency = get_woocommerce_currency();
 
         $this->repository->recordPrice(
             $product->get_id(),
@@ -177,7 +173,18 @@ final class OmnibusService implements Bootable, HasHooks
 
         $from = $product->get_date_on_sale_from();
 
-        return $from instanceof \WC_DateTime ? gmdate('Y-m-d H:i:s', $from->getTimestamp()) : null;
+        if ($from instanceof \WC_DateTime) {
+            return gmdate('Y-m-d H:i:s', $from->getTimestamp());
+        }
+
+        // An unscheduled sale starts where the history first shows the current
+        // sale price. Without this the window ends now and the sale price is
+        // reported as its own lowest price.
+        $sale = $product->get_sale_price();
+
+        return $product->is_on_sale() && $sale !== ''
+            ? $this->repository->findSaleRunStart($product->get_id(), (float) $sale)
+            : null;
     }
 
     /**
