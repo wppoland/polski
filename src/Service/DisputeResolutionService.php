@@ -31,9 +31,11 @@ final class DisputeResolutionService implements HasHooks
         }
 
         $settings = get_option('polski_general', []);
-        $text = $settings['dispute_resolution_text'] ?? '';
+        $text = (string) ($settings['dispute_resolution_text'] ?? '');
 
-        if ($text === '') {
+        // The EU ODR platform closed on 20 July 2025 (Regulation (EU) 2024/3228),
+        // so the stock text would send customers to a dead service.
+        if ($text === '' || str_contains($text, 'ec.europa.eu/consumers/odr')) {
             return;
         }
 
