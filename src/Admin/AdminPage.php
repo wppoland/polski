@@ -506,7 +506,7 @@ final class AdminPage implements Bootable, HasHooks
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['polski_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Ready! We have generated draft legal pages for you. Please review, adjust, and publish them.', 'polski')));
+            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Ready! We have created empty draft legal pages for you. Fill in your own text, then publish them.', 'polski')));
             echo '</p></div>';
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended

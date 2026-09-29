@@ -17,7 +17,7 @@ return [
         'bdo_number' => '',
         'dispute_resolution_enabled' => true,
         'dispute_resolution_text' => __('If you are a consumer, you can use out-of-court complaint and redress procedures, for example help from your municipal or district consumer ombudsman (Rzecznik Konsumentów) or the Provincial Inspectorate of Trade Inspection (WIIH).', 'polski'),
-        'admin_pages_generated_notice' => __('Done. We have generated draft legal pages for you. Review them, adjust them to your shop and publish them.', 'polski'),
+        'admin_pages_generated_notice' => __('Done. We have created empty draft legal pages for you. Fill in your own text, then publish them.', 'polski'),
         'admin_modules_saved_notice' => __('Modules saved.', 'polski'),
         'admin_setup_note_title' => __('Set up Polski for your shop', 'polski'),
         'admin_setup_note_content' => __('Your shop is nearly ready. Review the modules, set up the legal pages and finish the configuration in the Polski panel.', 'polski'),
