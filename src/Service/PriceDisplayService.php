@@ -40,7 +40,8 @@ final class PriceDisplayService
             return null;
         }
 
-        $price = (float) $product->get_price();
+        // Gross or net, as WooCommerce shows the price this sits next to.
+        $price = (float) wc_get_price_to_display($product);
 
         if ($price <= 0) {
             return null;
@@ -200,33 +201,7 @@ final class PriceDisplayService
             return '';
         }
 
-        return $this->omnibus->getLowestPriceHtml($this->omnibusSubject($product)->get_id());
-    }
-
-    /**
-     * The product whose history backs the notice.
-     *
-     * A variable product records no history of its own, its variations do. On a
-     * listing the "from" price is the cheapest variation, so the notice speaks
-     * for the cheapest variation that is on sale.
-     */
-    private function omnibusSubject(\WC_Product $product): \WC_Product
-    {
-        if (! $product instanceof \WC_Product_Variable) {
-            return $product;
-        }
-
-        $prices = $product->get_variation_prices(true);
-
-        foreach ($prices['price'] as $variationId => $price) {
-            if ((float) $prices['sale_price'][$variationId] < (float) $prices['regular_price'][$variationId]) {
-                $variation = wc_get_product($variationId);
-
-                return $variation instanceof \WC_Product ? $variation : $product;
-            }
-        }
-
-        return $product;
+        return $this->omnibus->getLowestPriceHtml($product->get_id());
     }
 
     /**

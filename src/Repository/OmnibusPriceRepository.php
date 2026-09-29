@@ -105,7 +105,7 @@ class OmnibusPriceRepository
                      LIMIT 1',
                     $this->tableName(),
                     $productId,
-                    $this->gmDateDaysBefore($beforeGmt, $days),
+                    $this->windowStart($productId, $this->gmDateDaysBefore($beforeGmt, $days)),
                     $beforeGmt,
                     $this->currentCurrency(),
                 ),
@@ -124,7 +124,7 @@ class OmnibusPriceRepository
                  LIMIT 1',
                 $this->tableName(),
                 $productId,
-                $this->gmDateDaysAgo($days),
+                $this->windowStart($productId, $this->gmDateDaysAgo($days)),
                 $this->currentCurrency(),
             ),
         );
@@ -233,7 +233,7 @@ class OmnibusPriceRepository
                  ORDER BY recorded_at DESC, id DESC',
                 $this->tableName(),
                 $productId,
-                $this->gmDateDaysAgo($days),
+                $this->windowStart($productId, $this->gmDateDaysAgo($days)),
                 $this->currentCurrency(),
             ),
         );
@@ -283,18 +283,30 @@ class OmnibusPriceRepository
     }
 
     /**
-     * Delete records older than N days.
+     * Delete records older than N days, except the newest of them per product
+     * and currency: that price is still in force (or was when the window
+     * opened), and deleting it would leave a product whose price never
+     * changed with no history at all.
      */
     public function deleteOlderThan(int $days): int
     {
         global $wpdb;
 
+        $cutoff = $this->gmDateDaysAgo($days);
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
         return (int) $wpdb->query(
             $wpdb->prepare(
-                'DELETE FROM %i WHERE recorded_at < %s',
+                'DELETE h FROM %i h
+                 INNER JOIN (
+                     SELECT product_id, currency, MAX(recorded_at) AS keep_at
+                     FROM %i WHERE recorded_at < %s
+                     GROUP BY product_id, currency
+                 ) k ON h.product_id = k.product_id AND h.currency = k.currency
+                 WHERE h.recorded_at < k.keep_at',
                 $this->tableName(),
-                $this->gmDateDaysAgo($days),
+                $this->tableName(),
+                $cutoff,
             ),
         );
     }
@@ -323,6 +335,31 @@ class OmnibusPriceRepository
         }
 
         return OmnibusPrice::fromRow($row);
+    }
+
+    /**
+     * Where a product's window really starts: at the last row recorded before
+     * the cutoff when there is one, because that price was still in force when
+     * the window opened. Rows are written only when the price changes, so a
+     * price that held for months has its only row before the window.
+     */
+    private function windowStart(int $productId, string $cutoffGmt): string
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $inForce = $wpdb->get_var(
+            $wpdb->prepare(
+                'SELECT MAX(recorded_at) FROM %i
+                 WHERE product_id = %d AND currency = %s AND recorded_at < %s',
+                $this->tableName(),
+                $productId,
+                $this->currentCurrency(),
+                $cutoffGmt,
+            ),
+        );
+
+        return is_string($inForce) && $inForce !== '' ? $inForce : $cutoffGmt;
     }
 
     private function gmDateDaysAgo(int $days): string

@@ -72,14 +72,15 @@ final class PriceHistoryChartService implements HasHooks
         }
 
         // History comes newest first; the line reads left to right, oldest to now.
+        // Amounts are converted gross or net as WooCommerce displays the price.
         $prices = array_map(
-            static fn (OmnibusPrice $row) => $row->effectivePrice(),
+            static fn (OmnibusPrice $row) => (float) wc_get_price_to_display($product, ['price' => $row->effectivePrice()]),
             array_reverse($history),
         );
 
         // The dot marks the price on sale right now, so the line must end there
         // even when no row was recorded for it (a scheduled sale that started).
-        $currentPrice = (float) $product->get_price();
+        $currentPrice = (float) wc_get_price_to_display($product);
         if ($currentPrice > 0 && abs(end($prices) - $currentPrice) > 0.00001) {
             $prices[] = $currentPrice;
         }
