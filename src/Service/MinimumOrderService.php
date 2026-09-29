@@ -77,7 +77,7 @@ final class MinimumOrderService implements HasHooks
         if ($minValue > 0) {
             $cartTotal = $excludeSale
                 ? $this->getCartTotalExcludingSaleItems($cart)
-                : (float) $cart->get_subtotal();
+                : (float) $cart->get_displayed_subtotal();
 
             if ($cartTotal < $minValue) {
                 $message = str_replace(
@@ -129,7 +129,10 @@ final class MinimumOrderService implements HasHooks
                 continue;
             }
 
-            $total += (float) $product->get_price() * (int) ($item['quantity'] ?? 1);
+            // Same basis as get_displayed_subtotal(): gross or net as the cart shows prices.
+            $total += (float) ($cart->display_prices_including_tax()
+                ? wc_get_price_including_tax($product, ['qty' => (int) ($item['quantity'] ?? 1)])
+                : wc_get_price_excluding_tax($product, ['qty' => (int) ($item['quantity'] ?? 1)]));
         }
 
         return $total;

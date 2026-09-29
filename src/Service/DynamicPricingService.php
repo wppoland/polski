@@ -86,7 +86,13 @@ final class DynamicPricingService implements Bootable, HasHooks
                 $regular = (float) $product->get_price();
             }
 
-            $product->set_price((string) round($regular * (1 - $percent / 100), wc_get_price_decimals()));
+            $bulk = round($regular * (1 - $percent / 100), wc_get_price_decimals());
+
+            // A bulk discount off the regular price can be dearer than a running
+            // sale; never raise the price the shopper already has.
+            if ($bulk < (float) $product->get_price()) {
+                $product->set_price((string) $bulk);
+            }
         }
     }
 
@@ -104,10 +110,13 @@ final class DynamicPricingService implements Bootable, HasHooks
             return;
         }
 
+        // Compare with the amounts the shopper sees: gross when the cart shows
+        // prices including tax, where line_total alone is net.
+        $withTax = $cart->display_prices_including_tax();
         $subtotal = 0.0;
 
         foreach ($cart->get_cart() as $item) {
-            $subtotal += (float) ($item['line_total'] ?? 0);
+            $subtotal += (float) ($item['line_total'] ?? 0) + ($withTax ? (float) ($item['line_tax'] ?? 0) : 0.0);
         }
 
         if ($subtotal < $threshold) {
