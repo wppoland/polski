@@ -51,7 +51,9 @@ final class LegalPageService
     {
         $existingId = (int) get_option($type->optionKey(), 0);
 
-        if ($existingId > 0 && get_post_status($existingId) === 'publish') {
+        // Reuse the page the shop already has, draft included: creating another
+        // one on every click orphaned the merchant's edits on the earlier draft.
+        if ($existingId > 0 && in_array(get_post_status($existingId), ['publish', 'draft', 'pending', 'private', 'future'], true)) {
             return $existingId;
         }
 
@@ -109,7 +111,9 @@ final class LegalPageService
 
         $post = get_post($pageId);
 
-        if (! $post instanceof \WP_Post) {
+        // Only what the shop has published: a draft or protected page is not
+        // the merchant's terms yet and must not reach customers by email.
+        if (! $post instanceof \WP_Post || $post->post_status !== 'publish' || $post->post_password !== '') {
             return '';
         }
 

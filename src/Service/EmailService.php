@@ -138,7 +138,9 @@ final class EmailService implements HasHooks
 
             foreach ($attachments as $type => $content) {
                 $pageType = LegalPageType::tryFrom($type);
-                $label = $pageType?->label() ?? $type;
+                // The merchant's own page title, e.g. the withdrawal page is not a "Return Policy".
+                $title = $pageType !== null ? trim((string) get_post_field('post_title', $legalService->getPageId($pageType))) : '';
+                $label = $title !== '' ? $title : ($pageType?->label() ?? $type);
 
                 echo "\n" . esc_html(strtoupper($label)) . "\n";
                 echo "----------------------------------------\n";
@@ -149,7 +151,9 @@ final class EmailService implements HasHooks
 
             foreach ($attachments as $type => $content) {
                 $pageType = LegalPageType::tryFrom($type);
-                $label = $pageType?->label() ?? $type;
+                // The merchant's own page title, e.g. the withdrawal page is not a "Return Policy".
+                $title = $pageType !== null ? trim((string) get_post_field('post_title', $legalService->getPageId($pageType))) : '';
+                $label = $title !== '' ? $title : ($pageType?->label() ?? $type);
 
                 printf(
                     '<div class="polski-email-legal-attachment" style="margin-bottom:20px;"><h3 style="font-size:14px;margin-bottom:10px;">%s</h3><div style="font-size:12px;line-height:1.5;color:#666;">%s</div></div>',
