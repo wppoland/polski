@@ -20,7 +20,7 @@ use Polski\PageCompliance\PageComplianceService;
  * Every ability:
  *   - has a stable, namespaced id under `polski/`;
  *   - belongs to the `polski/commerce` category;
- *   - is marked `meta.readonly = true` and `meta.show_in_rest = true`;
+ *   - is marked `meta.annotations.readonly = true` and `meta.show_in_rest = true`;
  *   - is gated by a `manage_woocommerce` capability check.
  *
  * Each ability is wired to a real plugin service - it never re-implements the
@@ -36,6 +36,11 @@ use Polski\PageCompliance\PageComplianceService;
  */
 final class CommerceAbilitiesService implements HasHooks
 {
+    private const READ_ONLY_META = [
+        'show_in_rest' => true,
+        'annotations' => ['readonly' => true, 'destructive' => false, 'idempotent' => true],
+    ];
+
     public const MODULE = 'ai_bridge';
 
     private const CATEGORY = 'polski-commerce';
@@ -140,11 +145,19 @@ final class CommerceAbilitiesService implements HasHooks
                     'on_sale' => $this->omnibus->isOnSale($productId),
                     'lowest_price' => $lowest !== null ? $lowest->effectivePrice() : null,
                     'lowest_recorded_at' => $lowest !== null ? $lowest->recordedAt->format('c') : null,
-                    'history' => $this->omnibus->getPriceHistory($productId),
+                    'history' => array_map(
+                        static fn (\Polski\Model\OmnibusPrice $row): array => [
+                            'price' => $row->price,
+                            'sale_price' => $row->salePrice,
+                            'currency' => $row->currency,
+                            'recorded_at' => $row->recordedAt->format('c'),
+                        ],
+                        $this->omnibus->getPriceHistory($productId),
+                    ),
                 ];
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 
@@ -192,7 +205,7 @@ final class CommerceAbilitiesService implements HasHooks
                 return $this->gpsr->getGPSRData($product);
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 
@@ -204,6 +217,7 @@ final class CommerceAbilitiesService implements HasHooks
             'category' => self::CATEGORY,
             'input_schema' => [
                 'type' => 'object',
+                'default' => [],
                 'properties' => [
                     'limit' => [
                         'type' => 'integer',
@@ -301,7 +315,7 @@ final class CommerceAbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 
@@ -313,6 +327,7 @@ final class CommerceAbilitiesService implements HasHooks
             'category' => self::CATEGORY,
             'input_schema' => [
                 'type' => 'object',
+                'default' => [],
                 'properties' => [
                     'page_type' => [
                         'type' => ['string', 'null'],
@@ -345,7 +360,7 @@ final class CommerceAbilitiesService implements HasHooks
                 return ['reports' => $reports];
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 
@@ -355,7 +370,7 @@ final class CommerceAbilitiesService implements HasHooks
             'label' => __('Get store health status', 'polski'),
             'description' => __('Returns the latest store health snapshot (overall status plus the fatal-error, payments, and sales sensors).', 'polski'),
             'category' => self::CATEGORY,
-            'input_schema' => ['type' => 'object', 'properties' => []],
+            'input_schema' => ['type' => 'object', 'properties' => [], 'default' => []],
             'output_schema' => [
                 'type' => 'object',
                 'properties' => [
@@ -374,7 +389,7 @@ final class CommerceAbilitiesService implements HasHooks
                 ];
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 
@@ -435,7 +450,7 @@ final class CommerceAbilitiesService implements HasHooks
                 return ['product_id' => $productId, 'facts' => $facts];
             },
             'permission_callback' => [$this, 'canRead'],
-            'meta' => ['show_in_rest' => true, 'readonly' => true],
+            'meta' => self::READ_ONLY_META,
         ]);
     }
 

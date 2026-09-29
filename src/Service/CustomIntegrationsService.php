@@ -14,10 +14,10 @@ use Polski\Service\ConsentManagerService;
  * Custom Integrations: let the merchant add their own inline snippets to the
  * page head or footer, each assigned a consent category.
  *
- * Every snippet is emitted through ConsentManagerService::gateScript, so the
- * browser never runs it on load. The Consent Manager front-end controller
- * swaps the placeholder to an executable script only after the visitor has
- * granted the matching category (necessary snippets always activate).
+ * Necessary snippets print as-is. Every other snippet is emitted through
+ * ConsentManagerService::gateScript/gateSrc, so the browser never runs it on
+ * load: the Consent Manager front-end controller swaps the placeholder to an
+ * executable script only after the visitor has granted the matching category.
  *
  * The merchant supplies their own code; the plugin makes no outbound HTTP
  * request from PHP and hardcodes no third-party endpoints. These are tools that
@@ -123,16 +123,18 @@ final class CustomIntegrationsService implements HasHooks
             $tag = $this->buildTag($snippet['category'], $snippet['code']);
 
             if ($tag !== '') {
-                // Already gated/escaped by ConsentManagerService::gateScript.
+                // Merchant's own snippet (Necessary) or a consent-gated placeholder.
                 echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             }
         }
     }
 
     /**
-     * Wrap a merchant snippet in a consent-gated placeholder. If the snippet is
-     * wrapped in its own <script>...</script> tags, the inner body is used as
-     * the gated script content; otherwise the snippet is treated as inline JS.
+     * Necessary snippets print as-is, so they run on load and may hold any
+     * markup (a meta tag, an external script). Other categories are split into
+     * their <script> tags, each wrapped in a consent-gated placeholder; bare
+     * code without a script tag is treated as inline JS. Markup that is not a
+     * script cannot wait for consent and is dropped outside Necessary.
      */
     public function buildTag(string $category, string $code): string
     {
@@ -142,28 +144,24 @@ final class CustomIntegrationsService implements HasHooks
             return '';
         }
 
-        $inner = $this->scriptBody($code);
-
-        if ($inner === '') {
-            return '';
+        if ($category === ConsentCategory::Necessary->value) {
+            return $code . "\n";
         }
 
-        return ConsentManagerService::gateScript($category, $inner);
-    }
-
-    /**
-     * Extract the executable body from a snippet. A single <script>...</script>
-     * wrapper is unwrapped; bare JS is returned as-is. Any leading/trailing
-     * markup outside a script tag is dropped so only script content is emitted
-     * through the gate (the gate output is always text/plain until granted).
-     */
-    private function scriptBody(string $code): string
-    {
-        if (preg_match('#<script\b[^>]*>(.*?)</script>#is', $code, $m) === 1) {
-            return trim($m[1]);
+        if (preg_match_all('#<script\b([^>]*)>(.*?)</script>#is', $code, $matches, PREG_SET_ORDER) === 0) {
+            return str_starts_with($code, '<') ? '' : ConsentManagerService::gateScript($category, $code);
         }
 
-        // No <script> wrapper: treat the whole snippet as inline JS body.
-        return $code;
+        $out = '';
+
+        foreach ($matches as $m) {
+            if (preg_match('#\bsrc\s*=\s*["\']?([^"\'\s>]+)#i', $m[1], $src) === 1) {
+                $out .= ConsentManagerService::gateSrc($category, $src[1]);
+            } elseif (trim($m[2]) !== '') {
+                $out .= ConsentManagerService::gateScript($category, trim($m[2]));
+            }
+        }
+
+        return $out;
     }
 }

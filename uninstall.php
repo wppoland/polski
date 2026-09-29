@@ -58,6 +58,7 @@ $polski_tables = [
     $wpdb->prefix . 'polski_returns',
     $wpdb->prefix . 'polski_withdrawal_items',
     $wpdb->prefix . 'polski_cra_incidents',
+    $wpdb->prefix . 'polski_invoices',
     $wpdb->prefix . 'polski_migrations',
 ];
 

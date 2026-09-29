@@ -39,6 +39,7 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
         $this->proUpsell()->registerHooks();
         add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
+        add_action('admin_init', [$this, 'fillHiddenPageTitle']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueMenuIconStyle']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
@@ -585,6 +586,29 @@ final class AdminPage implements Bootable, HasHooks
 
         wp_safe_redirect(add_query_arg($args, admin_url('admin.php')));
         exit;
+    }
+
+    /**
+     * WordPress looks up a page title through the parent menu, so a hidden
+     * page (empty parent) gets none: an empty <title> and a strip_tags(null)
+     * deprecation in admin-header.php. Fill it from the page's own title.
+     */
+    public function fillHiddenPageTitle(): void
+    {
+        global $title, $submenu, $plugin_page;
+
+        if (! empty($title) || ! is_string($plugin_page) || ! str_starts_with($plugin_page, 'polski')) {
+            return;
+        }
+
+        foreach ((array) ($submenu[''] ?? []) as $item) {
+            if (($item[2] ?? '') === $plugin_page) {
+                // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- the admin page title WordPress could not resolve.
+                $title = (string) ($item[3] ?? $item[0]);
+
+                return;
+            }
+        }
     }
 
     /**

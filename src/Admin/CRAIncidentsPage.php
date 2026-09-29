@@ -93,12 +93,13 @@ final class CRAIncidentsPage implements HasHooks
         $messages = [
             'saved' => __('Incident recorded.', 'polski'),
             'notified' => __('Incident notification dispatched.', 'polski'),
+            'notify_failed' => __('Nothing was sent. Set a webhook URL or notification email in the CRA module settings, and check that the webhook accepts the request.', 'polski'),
             'resolved' => __('Incident marked resolved.', 'polski'),
             'deleted' => __('Incident deleted.', 'polski'),
             'error' => __('Something went wrong.', 'polski'),
         ];
 
-        $class = $notice === 'error' ? 'notice-error' : 'notice-success';
+        $class = in_array($notice, ['error', 'notify_failed'], true) ? 'notice-error' : 'notice-success';
         $text = $messages[$notice] ?? '';
 
         if ($text !== '') {
@@ -109,7 +110,7 @@ final class CRAIncidentsPage implements HasHooks
     private function renderList(): void
     {
         echo '<p>' . esc_html__('Record actively-exploited vulnerabilities and security incidents. The checker tracks the CRA Article 14 24-hour early-warning deadline and exports a structured JSON submission.', 'polski') . '</p>';
-        echo '<p class="description">' . esc_html__('Configure the webhook URL and notification email under Polski > Settings > CRA incidents.', 'polski') . '</p>';
+        echo '<p class="description">' . esc_html__('Configure the webhook URL and notification email in the CRA module settings on the Modules screen.', 'polski') . '</p>';
 
         $incidents = $this->repository->all(200);
 
@@ -323,8 +324,8 @@ final class CRAIncidentsPage implements HasHooks
                 $this->export($id);
                 return;
             case 'notify':
-                $this->service->dispatchNotification($id);
-                $this->redirectTo('list', 'notified');
+                $result = $this->service->dispatchNotification($id);
+                $this->redirectTo('list', $result['webhook_ok'] || $result['email_ok'] ? 'notified' : 'notify_failed');
                 return;
             case 'resolve':
                 $this->service->markResolved($id);
