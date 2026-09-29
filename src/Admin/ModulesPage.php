@@ -109,7 +109,7 @@ final class ModulesPage implements HasHooks
             'withdrawal' => __('Handles 14-day right-of-withdrawal requests. When enabled, customers get a withdrawal form and a My Account action with a confirmation step and email; you can exclude specific products that are not eligible for withdrawal. Off until enabled.', 'polski'),
             'dispute_resolution' => __('Shows EU Online Dispute Resolution (ODR) info. When enabled, your store displays information about the European Commission\'s ODR platform, typically in the footer or legal area, helping with consumer dispute transparency. Off until enabled.', 'polski'),
             'email_attachments' => __('Adds the text of your legal pages to WooCommerce customer emails, printed under the order table rather than attached as a file. Applies to the processing, completed, on-hold and invoice emails, never to admin emails. PDF files and a per-email-type document matrix are a PRO feature.', 'polski'),
-            'manufacturer' => __('Adds manufacturer and GPSR product safety details to your products. When enabled, you can enter manufacturer info, an EU responsible person, safety documents, and instructions per product, which then appear for shoppers on the product page.', 'polski'),
+            'manufacturer' => __('Adds a manufacturer taxonomy to your products. When enabled, you can assign a manufacturer to each product from the product edit screen, and its name appears for shoppers on the product page. GPSR details (responsible person, safety warnings and instructions) are entered with the GPSR module.', 'polski'),
             'food_module' => __('Adds food and supplement product details to your products. When enabled, you can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol content, country of origin, and distributor per product, which then show to shoppers on the product page.', 'polski'),
             'consumer_information' => __('Adds the pre-contractual information that Directive (EU) 2024/825 requires from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so this module renders plain labelled rows.', 'polski'),
             'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
@@ -582,8 +582,8 @@ final class ModulesPage implements HasHooks
             // === Product Information ===
             [
                 'id' => 'manufacturer',
-                'name' => __('Manufacturer and GPSR', 'polski'),
-                'description' => __('Manufacturer information, responsible person (GPSR), safety documents, safety instructions.', 'polski'),
+                'name' => __('Manufacturer', 'polski'),
+                'description' => __('Manufacturer taxonomy: assign a manufacturer to each product and show its name on the product page. GPSR details live in the GPSR module.', 'polski'),
                 'group' => 'Product Information',
                 'enabled' => true,
                 'icon' => 'dashicons-building',

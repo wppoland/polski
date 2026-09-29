@@ -171,6 +171,12 @@ final class ProductInfoService
      */
     public function getGPSRResponsible(\WC_Product $product): string
     {
+        // Every caller (product page, quick view, Store API, AI feed) routes
+        // through here, so the module switch is honoured in one place.
+        if (! ModulesPage::isModuleEnabled('gpsr')) {
+            return '';
+        }
+
         return (string) $product->get_meta('_polski_gpsr_responsible', true);
     }
 
@@ -295,7 +301,7 @@ final class ProductInfoService
         return sprintf(
             '<div class="polski-power-supply"><span class="polski-power-supply__label">%s:</span> <span>%s</span></div>',
             esc_html__('Power Supply', 'polski'),
-            esc_html($info),
+            nl2br(esc_html($info)),
         );
     }
 

@@ -117,11 +117,11 @@ final class GPSRService implements HasHooks
         $filledCount = count($filled);
 
         if ($filledCount >= 3) {
-            /* translators: %d: number of filled GPSR fields out of 8 */
-            echo '<span style="color:#46b450;" title="' . esc_attr(sprintf(__('%d of 8 fields filled in', 'polski'), $filledCount)) . '">&#10003;</span>';
+            /* translators: 1: number of filled GPSR fields, 2: number of GPSR fields */
+            echo '<span style="color:#46b450;" title="' . esc_attr(sprintf(__('%1$d of %2$d fields filled in', 'polski'), $filledCount, count($data))) . '">&#10003;</span>';
         } elseif ($filledCount > 0) {
-            /* translators: %d: number of filled GPSR fields out of 8 */
-            echo '<span style="color:#f0ad4e;" title="' . esc_attr(sprintf(__('%d of 8 fields filled in', 'polski'), $filledCount)) . '">&#9888;</span>';
+            /* translators: 1: number of filled GPSR fields, 2: number of GPSR fields */
+            echo '<span style="color:#f0ad4e;" title="' . esc_attr(sprintf(__('%1$d of %2$d fields filled in', 'polski'), $filledCount, count($data))) . '">&#9888;</span>';
         } else {
             echo '<span style="color:#ccc;">-</span>';
         }
