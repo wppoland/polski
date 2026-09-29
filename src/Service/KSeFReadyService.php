@@ -17,6 +17,8 @@ final class KSeFReadyService implements HasHooks
         }
 
         add_action('woocommerce_checkout_order_processed', [$this, 'detectKSeFRequired'], 10, 1);
+        // Block checkout (the WooCommerce default) never fires the classic hook.
+        add_action('woocommerce_store_api_checkout_order_processed', [$this, 'detectKSeFRequired'], 20, 1);
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'renderKSeFStatus']);
         add_filter('manage_edit-shop_order_columns', [$this, 'addOrderColumn'], 20);
         add_action('manage_shop_order_posts_custom_column', [$this, 'renderOrderColumn'], 10, 2);
@@ -33,9 +35,9 @@ final class KSeFReadyService implements HasHooks
     /**
      * Detect whether the order requires a KSeF invoice based on NIP presence.
      */
-    public function detectKSeFRequired(int $orderId): void
+    public function detectKSeFRequired(int|\WC_Order $orderId): void
     {
-        $order = wc_get_order($orderId);
+        $order = $orderId instanceof \WC_Order ? $orderId : wc_get_order($orderId);
 
         if (! $order instanceof \WC_Order) {
             return;
