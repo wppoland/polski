@@ -917,8 +917,7 @@ final class AdminPage implements Bootable, HasHooks
         $generalSettings = $this->getGeneralSettings();
         $isSmallBusiness = (bool) ($generalSettings['small_business'] ?? false);
 
-        $doiSettings = get_option('polski_doi', []);
-        $doiEnabled = is_array($doiSettings) && ($doiSettings['enabled'] ?? false);
+        $doiEnabled = \Polski\Admin\ModulesPage::isModuleEnabled('double_opt_in');
 
         $isWizardComplete = (bool) get_option('polski_wizard_complete', false);
 
