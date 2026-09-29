@@ -325,6 +325,33 @@ final class ConsentManagerService implements HasHooks
         );
 
         wp_localize_script('polski-consent-banner', 'polskiConsent', $this->bannerConfig());
+
+        // Withdrawing consent has to be as easy as giving it (GDPR Art. 7(3)).
+        // Once a choice is stored, the "Cookie settings" button (or any element
+        // with data-polski-consent-open) reopens the banner with the choice ticked.
+        wp_add_inline_script('polski-consent-banner', <<<'JS'
+(function () {
+    var cfg = window.polskiConsent || {};
+    window.addEventListener(cfg.event, function () {
+        var reopen = document.querySelector('[data-polski-consent-open]');
+        if (reopen) { reopen.hidden = false; }
+    });
+    document.addEventListener('click', function (e) {
+        var t = e.target && e.target.closest ? e.target.closest('[data-polski-consent-open]') : null;
+        var banner = document.getElementById('polski-consent-banner');
+        if (!t || !banner) { return; }
+        e.preventDefault();
+        var granted = [];
+        var m = document.cookie.match(new RegExp('(?:^|; )' + cfg.cookie + '=([^;]*)'));
+        try { granted = JSON.parse(decodeURIComponent(m ? m[1] : '')).categories || []; } catch (x) {}
+        banner.querySelectorAll('[data-polski-consent-category]').forEach(function (i) { i.checked = granted.indexOf(i.value) !== -1; });
+        banner.querySelector('.polski-consent-banner__categories').hidden = false;
+        banner.querySelector('[data-polski-consent-action="save"]').hidden = false;
+        banner.hidden = false;
+        (banner.querySelector('input:not([disabled])') || banner).focus();
+    });
+})();
+JS);
     }
 
     public function renderBanner(): void
@@ -389,6 +416,9 @@ final class ConsentManagerService implements HasHooks
                 </button>
             </div>
         </div>
+        <button type="button" class="polski-consent-reopen" data-polski-consent-open hidden>
+            <?php esc_html_e('Cookie settings', 'polski'); ?>
+        </button>
         <?php
     }
 }
