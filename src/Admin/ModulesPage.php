@@ -159,7 +159,7 @@ final class ModulesPage implements HasHooks
             'expert_reviews' => __('Lets you publish editorial, in-house reviews of products. When enabled, you get a new section to write expert reviews with ratings and verdicts, linked to products and shown on product pages with Schema.org markup that helps with SEO.', 'polski'),
             'social_proof' => __('Displays recent-purchase popups to build trust. When enabled, small floating notifications about recent orders appear to your shoppers in a position and timing you choose, loaded smoothly via AJAX and built to be privacy-aware.', 'polski'),
             'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and anyone can answer, you get email alerts for new questions, answers can be voted on, and Schema.org QAPage markup helps with SEO.', 'polski'),
-            'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these configurable trust signals appear to shoppers on your product, cart, and checkout pages.', 'polski'),
+            'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these trust signals appear to shoppers on your product, cart, and checkout pages, and you choose which of those pages show them.', 'polski'),
             'live_cart' => __('Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper whenever they add a product, showing cart items, the subtotal, a free-shipping progress bar, and a quick link to checkout.', 'polski'),
             'price_history_chart' => __('Shows how a product\'s price has changed over time. When enabled, shoppers see a small SVG price-trend chart on product pages covering the last 30, 90, or 180 days, using your Omnibus price data.', 'polski'),
             'order_export' => __('Exports your WooCommerce orders to a spreadsheet file. When enabled, you get an admin tool to download orders as CSV, choosing which fields to include and filtering by date range and order status.', 'polski'),
@@ -1557,7 +1557,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'trust_badges',
                 'name' => __('Trust Badges', 'polski'),
-                'description' => __('Configurable trust signals on product, cart, and checkout pages: secure payment, fast delivery, returns, quality guarantee. Pure CSS + inline SVG for zero performance impact.', 'polski'),
+                'description' => __('Trust signals on product, cart, and checkout pages (classic and block): secure payment, fast delivery, returns, quality guarantee. You choose the pages they appear on. Pure CSS + inline SVG for zero performance impact.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-shield',

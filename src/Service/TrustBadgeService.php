@@ -28,6 +28,28 @@ final class TrustBadgeService implements HasHooks
         add_action('woocommerce_single_product_summary', [$this, 'renderOnProduct'], 35);
         add_action('woocommerce_before_cart', [$this, 'renderOnCart']);
         add_action('woocommerce_before_checkout_form', [$this, 'renderOnCheckout'], 5);
+
+        // The block Cart and Checkout, WooCommerce's default pages, fire none
+        // of the classic hooks above.
+        add_filter('render_block_woocommerce/cart', [$this, 'prependToBlock'], 10, 2);
+        add_filter('render_block_woocommerce/checkout', [$this, 'prependToBlock'], 10, 2);
+    }
+
+    /**
+     * @param string $content
+     * @param array<string, mixed> $block
+     */
+    public function prependToBlock($content, $block = []): string
+    {
+        ob_start();
+
+        if (($block['blockName'] ?? '') === 'woocommerce/checkout') {
+            $this->renderOnCheckout();
+        } else {
+            $this->renderOnCart();
+        }
+
+        return (string) ob_get_clean() . $content;
     }
 
     /**
