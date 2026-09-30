@@ -59,4 +59,15 @@ final class ViesServiceTest extends TestCase
         // as an Austrian number rather than silently rejected.
         self::assertSame(['AT', 'TN12345'], ViesService::parse('ATTN12345'));
     }
+
+    public function testWellFormedFollowsEachMemberStatesShape(): void
+    {
+        foreach (['DE811569869', 'de 811 569 869', 'CZ12345678', 'FR40303265045', 'ATU12345678', 'NL123456789B01', 'ESX1234567X', 'PL5260250274'] as $ok) {
+            self::assertTrue(ViesService::isWellFormed($ok), $ok);
+        }
+
+        foreach (['DE81156986', 'CZ1234567', 'AT12345678', 'US123456789', '811569869', 'DE', ''] as $bad) {
+            self::assertFalse(ViesService::isWellFormed($bad), $bad);
+        }
+    }
 }

@@ -133,6 +133,46 @@ $polski_check(
     (string) $polski_fresh->get_meta('_wc_billing/polski/nip', true) === '',
 );
 
+// VIES module on: an EU VAT ID is accepted and stored with its prefix, a
+// PL-prefixed NIP still has to pass the checksum and is stored as digits.
+update_option('polski_modules', array_merge((array) get_option('polski_modules', []), ['vies' => 1]));
+
+$polski_eu_cases = [
+    'DE811569869' => true,
+    'de 811-569-869' => true,
+    'CZ12345678' => true,
+    'PL1234563218' => true,
+    'PL1234563219' => false,
+    'DE81156986' => false,
+    'US123456789' => false,
+    '1234563218' => true,
+    '1234563219' => false,
+];
+
+foreach ($polski_eu_cases as $polski_raw => $polski_ok) {
+    $polski_check(
+        sprintf('with VIES on, "%s" is %s', $polski_raw, $polski_ok ? 'accepted' : 'rejected'),
+        $polski_service->isAcceptedTaxId((string) $polski_raw) === $polski_ok,
+    );
+}
+
+$polski_check('an EU VAT ID is stored with its prefix', $polski_service->normalizeTaxId('de 811-569-869') === 'DE811569869');
+$polski_check('a PL-prefixed NIP is stored as digits', $polski_service->normalizeTaxId('PL 123-456-32-18') === '1234563218');
+
+$polski_customer = new WC_Customer((int) $polski_user_id);
+$polski_customer->update_meta_data('billing_nip', 'DE811569869');
+$polski_customer->save();
+$polski_service->syncCustomerAfterAddressSave((int) $polski_user_id, 'billing');
+$polski_check(
+    'an EU VAT ID saved in My Account reaches the key the order screen reads',
+    (string) (new WC_Customer((int) $polski_user_id))->get_meta('_polski_billing_nip', true) === 'DE811569869',
+);
+
+// And off again: Polish only, exactly as before.
+update_option('polski_modules', array_merge((array) get_option('polski_modules', []), ['vies' => 0]));
+$polski_check('with VIES off, an EU VAT ID is rejected', ! $polski_service->isAcceptedTaxId('DE811569869'));
+$polski_check('with VIES off, a PL prefix is rejected as before', ! $polski_service->isAcceptedTaxId('PL1234563218'));
+
 wp_delete_user((int) $polski_user_id);
 
 if ($polski_failures !== []) {
