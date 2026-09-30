@@ -1589,7 +1589,6 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'price_history_chart',
                 'name' => __('Price History Chart', 'polski'),
-                'beta' => __('Variable products show no chart, because their price history is kept per variation.', 'polski'),
                 'description' => __('Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency.', 'polski'),
                 'group' => 'Prices and Omnibus',
                 'enabled' => false,

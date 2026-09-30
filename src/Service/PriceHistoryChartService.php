@@ -33,6 +33,10 @@ final class PriceHistoryChartService implements HasHooks
         }
 
         add_action('woocommerce_single_product_summary', [$this, 'renderChart'], 15);
+
+        // History is kept per variation, so a variable product shows the chart of
+        // the variation the shopper picks, inside the price WooCommerce swaps in.
+        add_filter('woocommerce_available_variation', [$this, 'addVariationChart'], 20, 3);
     }
 
     /**
@@ -59,16 +63,40 @@ final class PriceHistoryChartService implements HasHooks
     {
         global $product;
 
-        if (! $product instanceof \WC_Product) {
+        // A variable product has no history of its own; its variations do.
+        if (! $product instanceof \WC_Product || $product->is_type('variable')) {
             return;
         }
 
+        echo $this->getChartHtml($product); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in getChartHtml().
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    public function addVariationChart(array $data, \WC_Product $product, \WC_Product $variation): array
+    {
+        $chart = $this->getChartHtml($variation);
+
+        if ($chart !== '') {
+            $data['price_html'] = (string) ($data['price_html'] ?? '') . $chart;
+        }
+
+        return $data;
+    }
+
+    /**
+     * The chart for one product or variation, empty when there is nothing to show.
+     */
+    private function getChartHtml(\WC_Product $product): string
+    {
         $settings = $this->getSettings();
         $days = max(7, min(365, (int) $settings['days']));
         $history = $this->priceRepository->findHistory($product->get_id(), $days);
 
         if (count($history) < 2) {
-            return;
+            return '';
         }
 
         // History comes newest first; the line reads left to right, oldest to now.
@@ -90,7 +118,7 @@ final class PriceHistoryChartService implements HasHooks
 
         // Don't show if price never changed.
         if ($minPrice === $maxPrice) {
-            return;
+            return '';
         }
 
         $height = max(40, min(120, (int) $settings['height']));
@@ -99,6 +127,8 @@ final class PriceHistoryChartService implements HasHooks
         $fillColor = sanitize_hex_color($settings['fill_color'] ?? '#e0f2fe') ?: '#e0f2fe';
 
         $svg = $this->buildSparklineSvg($prices, $width, $height, $color, $fillColor);
+
+        ob_start();
 
         echo '<div class="polski-price-history" style="margin:12px 0;padding:12px 16px;background:#f8fafc;border-radius:8px;max-width:320px">';
 
@@ -124,6 +154,8 @@ final class PriceHistoryChartService implements HasHooks
         }
 
         echo '</div>';
+
+        return (string) ob_get_clean();
     }
 
     /**
