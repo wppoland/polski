@@ -39,6 +39,13 @@ final class WithdrawalOrderStatusService implements HasHooks
         // Polski boots every service unconditionally, so a module's service has
         // to refuse its own hooks. See WithdrawalEmailCta for what this cost.
         if (! \Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            // Orders already in a withdrawal status must stay listed and keep
+            // their status in the edit screen, or they vanish from Orders > All
+            // and My Account and a save silently resets them. Only statuses
+            // still in use are kept, so a store that never used them sees none.
+            add_action('init', [$this, 'registerStatuses']);
+            add_filter('wc_order_statuses', [$this, 'addToStatusList']);
+
             return;
         }
 
@@ -192,6 +199,59 @@ final class WithdrawalOrderStatusService implements HasHooks
      * @return array<string, array{label: string, background: string, color: string}>
      */
     private function definitions(): array
+    {
+        $all = $this->allDefinitions();
+
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('withdrawal')) {
+            return $all;
+        }
+
+        return array_intersect_key($all, array_flip($this->statusesInUse()));
+    }
+
+    /**
+     * Withdrawal statuses that at least one order still carries.
+     *
+     * @return list<string>
+     */
+    private function statusesInUse(): array
+    {
+        static $inUse = null;
+
+        if ($inUse !== null) {
+            return $inUse;
+        }
+
+        global $wpdb;
+        $hpos = class_exists(\Automattic\WooCommerce\Utilities\OrderUtil::class)
+            && \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- once per request, only while the module is off.
+        $found = $hpos
+            ? $wpdb->get_col($wpdb->prepare(
+                'SELECT DISTINCT status FROM %i WHERE status IN (%s, %s, %s)',
+                $wpdb->prefix . 'wc_orders',
+                self::STATUS_REQUESTED,
+                self::STATUS_PARTIAL,
+                self::STATUS_COMPLETED,
+            ))
+            : $wpdb->get_col($wpdb->prepare(
+                "SELECT DISTINCT post_status FROM {$wpdb->posts} WHERE post_type = 'shop_order' AND post_status IN (%s, %s, %s)",
+                self::STATUS_REQUESTED,
+                self::STATUS_PARTIAL,
+                self::STATUS_COMPLETED,
+            ));
+        // phpcs:enable
+
+        $inUse = array_values(array_map('strval', (array) $found));
+
+        return $inUse;
+    }
+
+    /**
+     * @return array<string, array{label: string, background: string, color: string}>
+     */
+    private function allDefinitions(): array
     {
         return [
             self::STATUS_REQUESTED => [

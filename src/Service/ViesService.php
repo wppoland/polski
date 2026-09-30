@@ -152,9 +152,12 @@ final class ViesService implements HasHooks
         }
 
         // Retried once on a timeout or a 5xx. A VAT number check is a read.
+        // Uncompressed on purpose: the VIES endpoint drops gzip responses
+        // mid-stream under OpenSSL 3 (cURL error 56), which read as unreachable.
         $response = SafeHttp::get($url, [
             'timeout' => 10,
-            'headers' => ['Accept' => 'application/json'],
+            'decompress' => false,
+            'headers' => ['Accept' => 'application/json', 'Accept-Encoding' => 'identity'],
         ]);
 
         if (is_wp_error($response)) {
@@ -276,10 +279,18 @@ final class ViesService implements HasHooks
                 echo '<br>' . esc_html__('Consultation number:', 'polski') . ' <code>'
                     . esc_html((string) $stored['consultation']) . '</code>';
             }
-        } else {
+        } elseif (in_array((string) ($stored['error'] ?? ''), ['INVALID', 'INVALID_INPUT', 'invalid_input'], true)) {
             printf(
                 /* translators: %s: reason reported by VIES */
                 esc_html__('Not valid in VIES (%s)', 'polski'),
+                esc_html((string) ($stored['error'] ?? '')),
+            );
+        } else {
+            // No answer (network, a member state's registry down) says nothing
+            // about the number, so it must not read as "not valid".
+            printf(
+                /* translators: %s: technical reason, e.g. unreachable or MS_UNAVAILABLE */
+                esc_html__('Could not check: VIES did not answer (%s). Try again later.', 'polski'),
                 esc_html((string) ($stored['error'] ?? '')),
             );
         }

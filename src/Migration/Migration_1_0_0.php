@@ -30,11 +30,7 @@ final class Migration_1_0_0 implements Migration
             'do-24h' => __('Within 24 hours', 'polski'),
         ];
 
-        foreach ($defaults as $slug => $name) {
-            if (! term_exists($slug, 'polski_delivery_time')) {
-                wp_insert_term($name, 'polski_delivery_time', ['slug' => $slug]);
-            }
-        }
+        $this->seed('polski_delivery_time', ['product', 'product_variation'], $defaults);
     }
 
     private function seedUnits(): void
@@ -51,10 +47,36 @@ final class Migration_1_0_0 implements Migration
             'm3' => __('m³', 'polski'),
         ];
 
+        $this->seed('polski_unit', ['product'], $defaults);
+    }
+
+    /**
+     * Insert the missing default terms.
+     *
+     * Migrations run on activation and on plugins_loaded, both before init, so
+     * the taxonomy is not registered yet and wp_insert_term() would refuse every
+     * term. Register it for the duration of the seed, then hand it back to
+     * PostTypes, which registers it on init only when its module is on.
+     *
+     * @param list<string>          $objectTypes
+     * @param array<string, string> $defaults slug => name
+     */
+    private function seed(string $taxonomy, array $objectTypes, array $defaults): void
+    {
+        $registeredHere = ! taxonomy_exists($taxonomy);
+
+        if ($registeredHere) {
+            register_taxonomy($taxonomy, $objectTypes, ['public' => false, 'rewrite' => false]);
+        }
+
         foreach ($defaults as $slug => $name) {
-            if (! term_exists($slug, 'polski_unit')) {
-                wp_insert_term($name, 'polski_unit', ['slug' => $slug]);
+            if (! term_exists($slug, $taxonomy)) {
+                wp_insert_term($name, $taxonomy, ['slug' => $slug]);
             }
+        }
+
+        if ($registeredHere) {
+            unregister_taxonomy($taxonomy);
         }
     }
 }

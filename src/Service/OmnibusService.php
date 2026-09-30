@@ -28,7 +28,6 @@ final class OmnibusService implements Bootable, HasHooks
     private int $days = 30;
     private string $displayText = '';
     private bool $saleOnly = true;
-    private bool $includeTax = true;
     private bool $showRegularPrice = false;
     private string $noHistoryMode = 'hide';
     private string $noHistoryText = '';
@@ -51,7 +50,6 @@ final class OmnibusService implements Bootable, HasHooks
         }
         $this->displayText = (string) ($settings['display_text'] ?? __('Lowest price from the last {days} days: {price}', 'polski'));
         $this->saleOnly = (bool) ($settings['display_on_sale_only'] ?? true);
-        $this->includeTax = (bool) ($settings['include_tax'] ?? true);
         // Declared default on the modules screen is false; a truthy fallback
         // would switch a new line on for every shop that never opened the form.
         $this->showRegularPrice = (bool) ($settings['show_regular_price'] ?? false);
@@ -76,8 +74,9 @@ final class OmnibusService implements Bootable, HasHooks
         add_action('woocommerce_update_product', [$this, 'onProductSave'], 10, 2);
         add_action('woocommerce_new_product', [$this, 'onProductSave'], 10, 2);
 
-        // Record price on variation save.
-        add_action('woocommerce_save_product_variation', [$this, 'onVariationSave'], 10, 2);
+        // Variations fire their own CRUD actions, from the editor, REST and imports alike.
+        add_action('woocommerce_update_product_variation', [$this, 'onProductSave'], 10, 2);
+        add_action('woocommerce_new_product_variation', [$this, 'onProductSave'], 10, 2);
 
         // Daily cleanup.
         add_action('polski_daily_maintenance', [$this, 'pruneOldRecords']);
@@ -101,20 +100,6 @@ final class OmnibusService implements Bootable, HasHooks
     }
 
     /**
-     * Record price when a variation is saved.
-     */
-    public function onVariationSave(int $variationId, int $loop): void
-    {
-        $variation = wc_get_product($variationId);
-
-        if (! $variation instanceof \WC_Product) {
-            return;
-        }
-
-        $this->recordProductPrice($variation);
-    }
-
-    /**
      * Record the current price of a product.
      */
     public function recordProductPrice(\WC_Product $product): void
@@ -125,17 +110,28 @@ final class OmnibusService implements Bootable, HasHooks
             return;
         }
 
+        // A scheduled sale that has not started (or has ended) is not a price the
+        // product sells at; recording it would let it become its own lowest price.
         $salePrice = $product->get_sale_price();
-        $saleFloat = $salePrice !== '' ? (float) $salePrice : null;
+        $saleFloat = $salePrice !== '' && $product->is_on_sale('edit') ? (float) $salePrice : null;
 
         $priceType = $saleFloat !== null ? PriceType::Sale : PriceType::Regular;
 
-        // Avoid duplicate recordings on the same day.
-        if ($this->repository->hasRecordedToday($product->get_id())) {
+        $currency = get_woocommerce_currency();
+
+        // Record every change, not one row a day: a sale set and lifted on the
+        // same day is still a price the product sold at. Saves that change
+        // nothing (stock, title) add no row.
+        $latest = $this->repository->findLatest($product->get_id());
+        if (
+            $latest !== null
+            && $latest->currency === $currency
+            && abs($latest->price - $regularPrice) < 0.00005
+            && ($latest->salePrice === null) === ($saleFloat === null)
+            && ($saleFloat === null || abs((float) $latest->salePrice - $saleFloat) < 0.00005)
+        ) {
             return;
         }
-
-        $currency = get_woocommerce_currency();
 
         $this->repository->recordPrice(
             $product->get_id(),
@@ -177,7 +173,18 @@ final class OmnibusService implements Bootable, HasHooks
 
         $from = $product->get_date_on_sale_from();
 
-        return $from instanceof \WC_DateTime ? gmdate('Y-m-d H:i:s', $from->getTimestamp()) : null;
+        if ($from instanceof \WC_DateTime) {
+            return gmdate('Y-m-d H:i:s', $from->getTimestamp());
+        }
+
+        // An unscheduled sale starts where the history first shows the current
+        // sale price. Without this the window ends now and the sale price is
+        // reported as its own lowest price.
+        $sale = $product->get_sale_price();
+
+        return $product->is_on_sale() && $sale !== ''
+            ? $this->repository->findSaleRunStart($product->get_id(), (float) $sale)
+            : null;
     }
 
     /**
@@ -327,13 +334,18 @@ final class OmnibusService implements Bootable, HasHooks
      *
      * @return array{text: string, label: string, value: string, lowest: ?OmnibusPrice, product: \WC_Product}|null
      */
-    private function buildNotice(int $productId): ?array
+    private function buildNotice(int $productId, string $context = 'shop'): ?array
     {
         $product = wc_get_product($productId);
 
         if (! $product instanceof \WC_Product) {
             return null;
         }
+
+        // Every caller passes what it has, often a variable product's parent id
+        // (block price, cross-sells); the history lives on the variations.
+        $product = $this->omnibusSubject($product);
+        $productId = $product->get_id();
 
         // Only show on sale products if configured.
         if ($this->saleOnly && ! $product->is_on_sale()) {
@@ -351,13 +363,13 @@ final class OmnibusService implements Bootable, HasHooks
 
             // Same conversion as the lowest-price path, or a shop entering
             // prices net would see a net figure here and a gross one there.
-            $amount = $this->priceForDisplay($product, (float) $product->get_price());
+            $amount = $this->priceForDisplay($product, (float) $product->get_price(), $context);
             $template = $this->noHistoryMode === 'custom' && trim($this->noHistoryText) !== ''
                 ? $this->noHistoryText
                 : $this->displayText;
             $currency = get_woocommerce_currency();
         } else {
-            $amount = $this->priceForDisplay($product, $lowest->effectivePrice());
+            $amount = $this->priceForDisplay($product, $lowest->effectivePrice(), $context);
             $template = $this->displayText;
             $currency = $lowest->currency;
         }
@@ -377,7 +389,7 @@ final class OmnibusService implements Bootable, HasHooks
             $suffix = ' ' . sprintf(
                 /* translators: %s: the product's regular price before the reduction */
                 __('Regular price: %s', 'polski'),
-                wp_strip_all_tags(wc_price($this->priceForDisplay($product, $lowest->price), ['currency' => $lowest->currency])),
+                wp_strip_all_tags(wc_price($this->priceForDisplay($product, $lowest->price, $context), ['currency' => $lowest->currency])),
             );
         }
 
@@ -392,6 +404,32 @@ final class OmnibusService implements Bootable, HasHooks
             'lowest' => $lowest,
             'product' => $product,
         ];
+    }
+
+    /**
+     * The product whose history backs the notice.
+     *
+     * A variable product records no history of its own, its variations do. On a
+     * listing the "from" price is the cheapest variation, so the notice speaks
+     * for the cheapest variation that is on sale.
+     */
+    private function omnibusSubject(\WC_Product $product): \WC_Product
+    {
+        if (! $product instanceof \WC_Product_Variable) {
+            return $product;
+        }
+
+        $prices = $product->get_variation_prices(true);
+
+        foreach ($prices['price'] as $variationId => $price) {
+            if ((float) $prices['sale_price'][$variationId] < (float) $prices['regular_price'][$variationId]) {
+                $variation = wc_get_product($variationId);
+
+                return $variation instanceof \WC_Product ? $variation : $product;
+            }
+        }
+
+        return $product;
     }
 
     /**
@@ -433,20 +471,16 @@ final class OmnibusService implements Bootable, HasHooks
     }
 
     /**
-     * Convert a stored price for display.
+     * Convert a stored price for display, gross or net exactly as WooCommerce
+     * shows the price next to it (Settings > Tax, shop or cart display).
      *
-     * History is recorded exactly as the merchant entered it, so a shop that
-     * enters prices excluding tax was showing a net figure in the notice next to
-     * a gross selling price. These two helpers normalise against
-     * `woocommerce_prices_include_tax`, so they are right whichever way prices
-     * are entered, and they are no-ops when tax is off or the product is not
-     * taxable.
+     * History is recorded as the merchant entered it; wc_get_price_to_display
+     * normalises against both `woocommerce_prices_include_tax` and the display
+     * setting, and is a no-op when tax is off or the product is not taxable.
      */
-    private function priceForDisplay(\WC_Product $product, float $amount): float
+    private function priceForDisplay(\WC_Product $product, float $amount, string $context): float
     {
-        return $this->includeTax
-            ? (float) wc_get_price_including_tax($product, ['price' => $amount])
-            : (float) wc_get_price_excluding_tax($product, ['price' => $amount]);
+        return (float) wc_get_price_to_display($product, ['price' => $amount, 'display_context' => $context]);
     }
 
     /**
@@ -483,7 +517,8 @@ final class OmnibusService implements Bootable, HasHooks
      */
     public function getLowestPriceParts(int $productId): ?array
     {
-        $notice = $this->buildNotice($productId);
+        // Cart line items follow the cart's tax display, not the shop's.
+        $notice = $this->buildNotice($productId, 'cart');
 
         if ($notice === null) {
             return null;

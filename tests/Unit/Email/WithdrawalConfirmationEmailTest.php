@@ -16,6 +16,14 @@ final class WithdrawalConfirmationEmailTest extends TestCase
         $GLOBALS['polski_test_options'] = [
             'date_format' => 'Y-m-d',
         ];
+
+        // The templates list the declared lines from the per-item rows.
+        $GLOBALS['wpdb'] = new \wpdb();
+        $items = (new \ReflectionClass(\Polski\Repository\WithdrawalItemsRepository::class))->newInstanceWithoutConstructor();
+        $wpdb = (new \ReflectionClass($items))->getProperty('wpdb');
+        $wpdb->setAccessible(true);
+        $wpdb->setValue($items, $GLOBALS['wpdb']);
+        \Polski\Plugin::instance()->container()->instance(\Polski\Repository\WithdrawalItemsRepository::class, $items);
     }
 
     public function testGetContentHtmlRendersWithoutErrors(): void

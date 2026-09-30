@@ -42,31 +42,30 @@ final class CheckoutHooks implements Bootable, HasHooks
         // Legal checkboxes and consent logging.
         if (\Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
             if (function_exists('woocommerce_register_additional_checkout_field')) {
-                // Modern WooCommerce: render + enforce the checkout legal checkboxes
-                // via the Additional Checkout Fields API, which works on BOTH classic
-                // and the block checkout (WC 8.3+ default) with no merchant placement.
-                // Register at init priority 21, after CheckboxService::initCheckboxes
-                // (init, 20) has populated the checkbox definitions, and still before
-                // any checkout request reads the additional-fields registry. Consent
-                // is logged from order meta for both classic and block flows.
+                // Block checkout: the Additional Checkout Fields API renders and
+                // enforces the boxes there. Register at init priority 21, after
+                // CheckboxService::initCheckboxes (init, 20) has populated the
+                // definitions. Consent is logged from the stored order meta.
                 add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
-                add_action('woocommerce_checkout_order_created', [$this, 'logBlockCheckoutConsents']);
                 add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
-            } else {
-                // Legacy classic-only checkout (WC without the Additional Checkout
-                // Fields API).
-                add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
-                add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
-                add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
-                add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
             }
+
+            // Classic (shortcode) checkout. WooCommerce does not render additional
+            // checkout fields there, at any version, so these are its only path.
+            // None of these actions fire on the block checkout, so the two never collide.
+            add_action('woocommerce_review_order_before_submit', [$this, 'renderCheckoutCheckboxes'], 10);
+            add_action('woocommerce_checkout_process', [$this, 'validateCheckoutCheckboxes']);
+            add_action('woocommerce_checkout_order_created', [$this, 'logCheckoutConsents']);
+            add_filter('woocommerce_update_order_review_fragments', [$this, 'refreshCheckboxFragments']);
 
             // Registration form checkboxes.
             add_action('woocommerce_register_form', [$this, 'renderRegistrationCheckboxes']);
             add_filter('woocommerce_process_registration_errors', [$this, 'validateRegistrationCheckboxes'], 10, 4);
+            add_action('woocommerce_created_customer', [$this, 'logRegistrationConsents']);
 
             // Pay-for-order page.
             add_action('woocommerce_pay_order_before_submit', [$this, 'renderPayForOrderCheckboxes']);
+            add_action('woocommerce_before_pay_action', [$this, 'validatePayForOrderCheckboxes']);
 
             // Remove default WC terms checkbox (we replace it).
             add_filter('woocommerce_checkout_show_terms', '__return_false');
@@ -78,9 +77,8 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     /**
      * Register each enabled checkout legal checkbox as an Additional Checkout
-     * Field, so it renders and enforces on BOTH classic and block checkout with
-     * no merchant placement. Labels are plain text (the API cannot render rich
-     * HTML); hidden/info-only checkboxes have no input field.
+     * Field for the block checkout. Labels are plain text (the API cannot render
+     * rich HTML); hidden/info-only and conditional checkboxes are skipped.
      */
     public function registerBlockCheckoutFields(): void
     {
@@ -93,7 +91,10 @@ final class CheckoutHooks implements Bootable, HasHooks
         }
 
         foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
-            if ($checkbox->hideInput) {
+            // The block field cannot follow cart conditions (a digital waiver
+            // would be required on a physical-only cart), so conditional boxes
+            // stay on the classic checkout, which evaluates them per cart.
+            if ($checkbox->hideInput || $checkbox->hasConditions()) {
                 continue;
             }
 
@@ -114,9 +115,8 @@ final class CheckoutHooks implements Bootable, HasHooks
     }
 
     /**
-     * Log checkbox consents from order meta. WC stores each Additional Checkout
-     * Field at `_wc_other/polski/<id>`, so this covers both classic and block
-     * checkout. Guarded against double-logging across the classic/block hooks.
+     * Log block checkout consents from order meta. WC stores each Additional
+     * Checkout Field at `_wc_other/polski/<id>`.
      */
     public function logBlockCheckoutConsents(\WC_Order $order): void
     {
@@ -127,7 +127,7 @@ final class CheckoutHooks implements Bootable, HasHooks
         $states = [];
 
         foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
-            if ($checkbox->hideInput || ! $checkbox->logConsent) {
+            if ($checkbox->hideInput || $checkbox->hasConditions() || ! $checkbox->logConsent) {
                 continue;
             }
 
@@ -291,12 +291,37 @@ final class CheckoutHooks implements Bootable, HasHooks
     }
 
     /**
+     * Enforce and log the pay-for-order boxes. An error notice here stops
+     * WooCommerce before it takes the payment.
+     */
+    public function validatePayForOrderCheckboxes(\WC_Order $order): void
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the pay-for-order nonce before this action.
+        $result = $this->checkboxes->validate(CheckboxContext::PayForOrder, $_POST);
+
+        if ($result instanceof \WP_Error) {
+            foreach ($result->get_error_messages() as $message) {
+                wc_add_notice($message, 'error');
+            }
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $states = $this->checkboxes->extractStates(CheckboxContext::PayForOrder, $_POST);
+
+        if ($states !== []) {
+            $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
+            $this->consentLog->logBatch($states, CheckboxContext::PayForOrder, $userId, 'order_' . $order->get_id());
+        }
+    }
+
+    /**
      * Validate checkout checkboxes.
      */
     public function validateCheckoutCheckboxes(): void
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
-        $result = $this->checkboxes->validate(CheckboxContext::Checkout, $_POST);
+        $result = $this->checkboxes->validate(CheckboxContext::Checkout, $_POST, $this->buildCartContext());
 
         if ($result instanceof \WP_Error) {
             foreach ($result->get_error_messages() as $message) {
@@ -335,11 +360,18 @@ final class CheckoutHooks implements Bootable, HasHooks
     public function logCheckoutConsents(\WC_Order $order): void
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        $states = $this->checkboxes->extractStates(CheckboxContext::Checkout, $_POST);
+        $states = $this->checkboxes->extractStates(CheckboxContext::Checkout, $_POST, $this->buildCartContext());
 
         if (empty($states)) {
             return;
         }
+
+        // Store the answers where the block checkout stores them, so code that
+        // reads a consent from the order (review requests) sees both checkouts alike.
+        foreach ($states as $id => $consented) {
+            $order->update_meta_data('_wc_other/polski/' . $id, $consented ? '1' : '0');
+        }
+        $order->save();
 
         $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
         $sessionId = 'order_' . $order->get_id();
@@ -353,6 +385,25 @@ final class CheckoutHooks implements Bootable, HasHooks
          * @param \WC_Order           $order   The order.
          */
         do_action('polski/checkout/consents_logged', $states, $order);
+    }
+
+    /**
+     * Log the consents given on the My Account registration form.
+     */
+    public function logRegistrationConsents(int $customerId): void
+    {
+        // Accounts created at checkout never saw the registration boxes.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified this nonce before creating the customer.
+        if (! isset($_POST['woocommerce-register-nonce'])) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $states = $this->checkboxes->extractStates(CheckboxContext::Registration, $_POST);
+
+        if ($states !== []) {
+            $this->consentLog->logBatch($states, CheckboxContext::Registration, $customerId, 'registration_' . $customerId);
+        }
     }
 
     /**
@@ -384,7 +435,7 @@ final class CheckoutHooks implements Bootable, HasHooks
      *
      * @return array<string, mixed>
      */
-    private function buildCartContext(): array
+    public static function buildCartContext(): array
     {
         $context = [
             'category_ids' => [],

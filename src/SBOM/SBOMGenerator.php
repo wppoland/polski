@@ -8,8 +8,9 @@ defined('ABSPATH') || exit;
 
 /**
  * Generate a Software Bill of Materials (SBOM) in CycloneDX 1.4 JSON
- * format for a given plugin directory. Reads `composer.lock` for PHP
- * dependencies and `package-lock.json` for JS dependencies, plus the
+ * format for a given plugin directory. Reads `vendor/composer/installed.json`
+ * (shipped in the package) and, in a development checkout, `composer.lock`
+ * for PHP dependencies and `package-lock.json` for JS dependencies, plus the
  * plugin's own header metadata.
  *
  * CycloneDX was chosen over SPDX because its JSON shape is simpler and
@@ -38,6 +39,7 @@ final class SBOMGenerator
         ];
 
         $components = array_merge(
+            $this->readInstalledJson($pluginDir),
             $this->readComposerLock($pluginDir),
             $this->readPackageLock($pluginDir),
         );
@@ -58,6 +60,51 @@ final class SBOMGenerator
             ],
             'components' => array_values($components),
         ];
+    }
+
+    /**
+     * The installed Composer packages. The lock files are not in the shipped
+     * package, but this file is. Dev packages are skipped.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    private function readInstalledJson(string $pluginDir): array
+    {
+        $path = rtrim($pluginDir, '/') . '/vendor/composer/installed.json';
+        $contents = is_readable($path) ? file_get_contents($path) : false;
+        $decoded = $contents !== false ? json_decode($contents, true) : null;
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        // Composer 2 wraps the list; Composer 1 wrote a bare list.
+        $packages = isset($decoded['packages']) ? (array) $decoded['packages'] : $decoded;
+        $devNames = (array) ($decoded['dev-package-names'] ?? []);
+        $components = [];
+
+        foreach ($packages as $package) {
+            if (! is_array($package) || ! isset($package['name']) || in_array($package['name'], $devNames, true)) {
+                continue;
+            }
+
+            $ref = 'composer:' . (string) $package['name'];
+            $components[$ref] = [
+                'type' => 'library',
+                'bom-ref' => $ref,
+                'name' => (string) $package['name'],
+                'version' => (string) ($package['version'] ?? ''),
+                'scope' => 'required',
+                'purl' => sprintf(
+                    'pkg:composer/%s@%s',
+                    (string) $package['name'],
+                    ltrim((string) ($package['version'] ?? ''), 'v'),
+                ),
+                'licenses' => $this->normalizeLicenses($package['license'] ?? []),
+            ];
+        }
+
+        return $components;
     }
 
     /**

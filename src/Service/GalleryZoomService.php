@@ -33,6 +33,33 @@ final class GalleryZoomService implements Bootable, HasHooks
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('wp_footer', [$this, 'renderLightboxShell']);
+        add_action('wp', [$this, 'replaceThemeGalleryFeatures']);
+    }
+
+    /**
+     * WooCommerce's own hover zoom stacked with ours and its zoom layer sat on
+     * top of the image, so a mouse click never reached the lightbox. While our
+     * zoom is on, the theme's zoom is switched off. WooCommerce's lightbox is
+     * kept: it shows the full-size file and browses the gallery.
+     */
+    public function replaceThemeGalleryFeatures(): void
+    {
+        if (! ModulesPage::isModuleEnabled('gallery_zoom') || ! is_product()) {
+            return;
+        }
+
+        if ($this->getSettings()['enable_zoom'] ?? true) {
+            remove_theme_support('wc-product-gallery-zoom');
+        }
+    }
+
+    /**
+     * Our lightbox is only a fallback for themes without WooCommerce's own.
+     */
+    private function ownLightbox(): bool
+    {
+        return (bool) ($this->getSettings()['enable_lightbox'] ?? true)
+            && ! current_theme_supports('wc-product-gallery-lightbox');
     }
 
     public function enqueueAssets(): void
@@ -59,7 +86,7 @@ final class GalleryZoomService implements Bootable, HasHooks
         wp_localize_script('polski-gallery-zoom', 'polskiGalleryZoom', [
             'zoomScale' => (float) ($this->getSettings()['zoom_scale'] ?? 1.45),
             'enableZoom' => (bool) ($this->getSettings()['enable_zoom'] ?? true),
-            'enableLightbox' => (bool) ($this->getSettings()['enable_lightbox'] ?? true),
+            'enableLightbox' => $this->ownLightbox(),
             'showBackdropClose' => (bool) ($this->getSettings()['show_backdrop_close'] ?? true),
             'triggerLabel' => (string) ($this->getSettings()['trigger_label'] ?? __('Zoom in on the product photo', 'polski')),
         ]);
@@ -67,7 +94,7 @@ final class GalleryZoomService implements Bootable, HasHooks
 
     public function renderLightboxShell(): void
     {
-        if (! ModulesPage::isModuleEnabled('gallery_zoom') || ! is_product() || ! ($this->getSettings()['enable_lightbox'] ?? true)) {
+        if (! ModulesPage::isModuleEnabled('gallery_zoom') || ! is_product() || ! $this->ownLightbox()) {
             return;
         }
 

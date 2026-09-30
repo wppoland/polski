@@ -38,6 +38,20 @@ final class BadgeService implements Bootable, HasHooks
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_before_single_product_summary', [$this, 'renderSingleBadges'], 6);
         add_action('woocommerce_before_shop_loop_item_title', [$this, 'renderLoopBadges'], 9);
+        add_filter('woocommerce_sale_flash', [$this, 'filterSaleFlash']);
+    }
+
+    /**
+     * Our Sale (or discount) badge replaces WooCommerce's own flash; showing
+     * both put two sale labels on the same product image.
+     */
+    public function filterSaleFlash(string $html): string
+    {
+        $settings = $this->getSettings();
+        $ours = (bool) ($settings['show_sale_badge'] ?? true) || (bool) ($settings['show_discount_percent_badge'] ?? false);
+        $shown = is_product() ? ($settings['show_on_single'] ?? true) : ($settings['show_on_loop'] ?? true);
+
+        return $ours && $shown ? '' : $html;
     }
 
     public function isEnabled(): bool

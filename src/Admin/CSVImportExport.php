@@ -59,6 +59,26 @@ final class CSVImportExport implements HasHooks
         'polski_withdrawal_exempt_reason_custom' => '_polski_withdrawal_exempt_reason_custom',
     ];
 
+    /**
+     * Multi-line fields: sanitize_text_field would fold their newlines, so a
+     * postal address or a list of warnings would import as one line.
+     *
+     * @var list<string>
+     */
+    private const TEXTAREA_KEYS = [
+        '_polski_gpsr_manufacturer_address',
+        '_polski_gpsr_importer_address',
+        '_polski_gpsr_responsible_address',
+        '_polski_gpsr_safety_warnings',
+        '_polski_gpsr_instructions',
+        '_polski_repair_info',
+        '_polski_power_supply',
+        '_polski_ingredients',
+        '_polski_green_claim_basis',
+        '_polski_safety_instructions',
+        '_polski_defect_description',
+    ];
+
     public function registerHooks(): void
     {
         // Export.
@@ -86,7 +106,11 @@ final class CSVImportExport implements HasHooks
         // Import.
         add_filter('woocommerce_csv_product_import_mapping_options', [$this, 'addImportMappingOptions']);
         add_filter('woocommerce_csv_product_import_mapping_default_columns', [$this, 'addImportMappingDefaults']);
-        add_filter('woocommerce_product_import_inserted_product_object', [$this, 'processImport'], 10, 2);
+        // The pre-insert filter runs before WooCommerce saves the product. The
+        // inserted_product_object action used to be hooked here, but it fires
+        // after the save, so every Polski column was set in memory and lost.
+        add_filter('woocommerce_product_import_pre_insert_product_object', [$this, 'processImport'], 10, 2);
+        add_filter('woocommerce_product_importer_formatting_callbacks', [$this, 'keepNewlines'], 10, 2);
     }
 
     /**
@@ -153,7 +177,33 @@ final class CSVImportExport implements HasHooks
             $columns[$label] = $csvKey;
         }
 
+        // The export writes the translated labels as headers, so they must
+        // map back too or a re-imported export leaves every column unmapped.
+        foreach ($this->addExportColumns([]) as $csvKey => $label) {
+            $columns[$label] = $csvKey;
+        }
+
         return $columns;
+    }
+
+    /**
+     * WooCommerce runs wc_clean() over every column it does not know, which
+     * folds newlines before processImport() sees the value.
+     *
+     * @param array<int, callable|string> $callbacks
+     * @return array<int, callable|string>
+     */
+    public function keepNewlines(array $callbacks, \WC_Product_CSV_Importer $importer): array
+    {
+        foreach ($importer->get_mapped_keys() as $index => $heading) {
+            $metaKey = self::COLUMN_MAP[$heading] ?? '';
+
+            if ($metaKey !== '' && in_array($metaKey, self::TEXTAREA_KEYS, true)) {
+                $callbacks[$index] = 'sanitize_textarea_field';
+            }
+        }
+
+        return $callbacks;
     }
 
     /**
@@ -169,7 +219,9 @@ final class CSVImportExport implements HasHooks
                 continue;
             }
 
-            $raw = sanitize_text_field((string) $data[$csvKey]);
+            $raw = in_array($metaKey, self::TEXTAREA_KEYS, true)
+                ? sanitize_textarea_field((string) $data[$csvKey])
+                : sanitize_text_field((string) $data[$csvKey]);
 
             $product->update_meta_data(
                 $metaKey,

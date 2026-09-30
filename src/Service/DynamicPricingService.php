@@ -86,7 +86,13 @@ final class DynamicPricingService implements Bootable, HasHooks
                 $regular = (float) $product->get_price();
             }
 
-            $product->set_price((string) round($regular * (1 - $percent / 100), wc_get_price_decimals()));
+            $bulk = round($regular * (1 - $percent / 100), wc_get_price_decimals());
+
+            // A bulk discount off the regular price can be dearer than a running
+            // sale; never raise the price the shopper already has.
+            if ($bulk < (float) $product->get_price()) {
+                $product->set_price((string) $bulk);
+            }
         }
     }
 
@@ -104,19 +110,27 @@ final class DynamicPricingService implements Bootable, HasHooks
             return;
         }
 
-        $subtotal = 0.0;
+        // Compare with the amounts the shopper sees: gross when the cart shows
+        // prices including tax, where line_total alone is net.
+        $withTax = $cart->display_prices_including_tax();
+        $net = 0.0;
+        $shown = 0.0;
 
         foreach ($cart->get_cart() as $item) {
-            $subtotal += (float) ($item['line_total'] ?? 0);
+            $net += (float) ($item['line_total'] ?? 0);
+            $shown += (float) ($item['line_total'] ?? 0) + ($withTax ? (float) ($item['line_tax'] ?? 0) : 0.0);
         }
 
-        if ($subtotal < $threshold) {
+        if ($shown < $threshold) {
             return;
         }
 
+        // The fee is taken off the net amount: WooCommerce always taxes a
+        // negative fee and adds that tax on top, so a gross base would take
+        // the percentage plus VAT.
         $cart->add_fee(
             __('Discount', 'polski'),
-            -1 * round($subtotal * $percent / 100, wc_get_price_decimals()),
+            -1 * round($net * $percent / 100, wc_get_price_decimals()),
             false,
         );
     }

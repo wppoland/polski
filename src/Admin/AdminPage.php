@@ -39,11 +39,13 @@ final class AdminPage implements Bootable, HasHooks
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
         $this->proUpsell()->registerHooks();
         add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
+        add_action('admin_init', [$this, 'fillHiddenPageTitle']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueMenuIconStyle']);
         add_action('admin_post_polski_generate_legal_pages', [$this, 'handleGenerateLegalPages']);
         add_action('admin_post_polski_complete_wizard', [$this, 'handleWizardCompletion']);
         add_action('admin_post_' . self::ADMIN_FEEDBACK_ACTION, [$this, 'handleAdminFeedbackSubmit']);
+        add_action('admin_init', [$this, 'setHiddenPageTitle']);
 
         // "Settings" link on plugins page.
         add_filter('plugin_action_links_' . plugin_basename(PLUGIN_FILE), [$this, 'addPluginActionLinks']);
@@ -53,6 +55,29 @@ final class AdminPage implements Bootable, HasHooks
         // "Plugin Name:" header in polski.php untouched, so the wordpress.org
         // listing stays clean. The filter only fires in wp-admin.
         add_filter('all_plugins', [$this, 'decoratePluginsListName']);
+    }
+
+    /**
+     * Our screens registered with an empty parent (reachable from Reports &
+     * Tools, not the menu) get no title from core: an empty <title> and a
+     * strip_tags(null) deprecation in admin-header.php. Take it from the
+     * registration instead.
+     */
+    public function setHiddenPageTitle(): void
+    {
+        global $title, $submenu, $plugin_page;
+
+        if (! empty($title) || ! is_string($plugin_page) || ! str_starts_with($plugin_page, 'polski')) {
+            return;
+        }
+
+        foreach ((array) ($submenu[''] ?? []) as $item) {
+            if (($item[2] ?? '') === $plugin_page && isset($item[3])) {
+                $title = (string) $item[3]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- core leaves it null for hidden pages.
+
+                return;
+            }
+        }
     }
 
     /**
@@ -155,7 +180,9 @@ final class AdminPage implements Bootable, HasHooks
         $legalPages = \Polski\Plugin::instance()->container()->get(\Polski\Service\LegalPageService::class);
         $legalPages->createDefaultPages();
 
-        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . '&polski_pages_generated=1'));
+        // No success message when the module is off: nothing was generated.
+        $done = ModulesPage::isModuleEnabled('legal_pages') ? '&polski_pages_generated=1' : '';
+        wp_safe_redirect(admin_url('admin.php?page=' . self::PAGE_SLUG . $done));
         exit;
     }
 
@@ -398,10 +425,13 @@ final class AdminPage implements Bootable, HasHooks
 
             echo '<div id="polski-module-' . esc_attr($moduleId) . '" class="polski-module-settings-section" style="background:#fff; border:1px solid #ccd0d4; padding:20px; margin-top:20px;">';
             echo '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px;">';
-            echo '<h2 style="margin:0;">' . esc_html($module['name']) . '</h2>';
+            echo '<h2 style="margin:0;">' . esc_html($module['name']) . ' ' . ModulesPage::betaBadge($module) . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in betaBadge().
             echo '<span style="font-size:12px;color:' . esc_attr($statusColor) . ';font-weight:600;">' . esc_html($statusLabel) . '</span>';
             echo '</div>';
             echo '<p>' . esc_html($module['description']) . '</p>';
+            if (! empty($module['beta'])) {
+                echo '<p class="polski-beta-note">' . esc_html((string) $module['beta']) . '</p>';
+            }
 
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('polski_save_module_' . $moduleId, '_polski_module_nonce_' . $moduleId);
@@ -476,7 +506,7 @@ final class AdminPage implements Bootable, HasHooks
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['polski_pages_generated'])) {
             echo '<div class="notice notice-success is-dismissible"><p>';
-            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Ready! We have generated draft legal pages for you. Please review, adjust, and publish them.', 'polski')));
+            echo esc_html((string) ($generalSettings['admin_pages_generated_notice'] ?? __('Ready! We have created empty draft legal pages for you. Fill in your own text, then publish them.', 'polski')));
             echo '</p></div>';
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -562,6 +592,29 @@ final class AdminPage implements Bootable, HasHooks
     }
 
     /**
+     * WordPress looks up a page title through the parent menu, so a hidden
+     * page (empty parent) gets none: an empty <title> and a strip_tags(null)
+     * deprecation in admin-header.php. Fill it from the page's own title.
+     */
+    public function fillHiddenPageTitle(): void
+    {
+        global $title, $submenu, $plugin_page;
+
+        if (! empty($title) || ! is_string($plugin_page) || ! str_starts_with($plugin_page, 'polski')) {
+            return;
+        }
+
+        foreach ((array) ($submenu[''] ?? []) as $item) {
+            if (($item[2] ?? '') === $plugin_page) {
+                // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- the admin page title WordPress could not resolve.
+                $title = (string) ($item[3] ?? $item[0]);
+
+                return;
+            }
+        }
+    }
+
+    /**
      * Reports & tools content inside the unified shell (no duplicate wrap/h1).
      */
     private function renderReportsHubInner(): void
@@ -585,6 +638,22 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '<div class="polski-reports-detail">';
         echo '<a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=reports')) . '" class="button" style="margin-bottom:20px;">&larr; ' . esc_html__('Back to reports', 'polski') . '</a>';
+
+        // Same gates as the overview cards: a switched-off module keeps its view closed by URL too.
+        $viewModules = [
+            'audit' => 'site_audit',
+            'dsa' => 'dsa_toolkit',
+            'incidents' => 'security_incidents',
+            'health' => 'store_health',
+            'dpa' => 'dpa_tracker',
+            'consent' => 'consent_manager',
+        ];
+
+        if (isset($viewModules[$view]) && ! ModulesPage::isModuleEnabled($viewModules[$view])) {
+            echo '<p class="description">' . esc_html__('This report needs its module enabled first (optional features are off by default).', 'polski') . '</p></div>';
+
+            return;
+        }
 
         switch ($view) {
             case 'audit':
@@ -748,7 +817,7 @@ final class AdminPage implements Bootable, HasHooks
                 'name' => __('Withdrawals', 'polski'),
                 'desc' => __('Withdrawal declarations and returns: the list, manual registration and the settings.', 'polski'),
                 'icon' => 'dashicons-undo',
-                'module' => null,
+                'module' => 'withdrawal',
                 'url' => admin_url('admin.php?page=polski-withdrawals'),
             ],
             [
@@ -917,8 +986,7 @@ final class AdminPage implements Bootable, HasHooks
         $generalSettings = $this->getGeneralSettings();
         $isSmallBusiness = (bool) ($generalSettings['small_business'] ?? false);
 
-        $doiSettings = get_option('polski_doi', []);
-        $doiEnabled = is_array($doiSettings) && ($doiSettings['enabled'] ?? false);
+        $doiEnabled = \Polski\Admin\ModulesPage::isModuleEnabled('double_opt_in');
 
         $isWizardComplete = (bool) get_option('polski_wizard_complete', false);
 
@@ -1187,6 +1255,10 @@ final class AdminPage implements Bootable, HasHooks
      */
     private function renderGenerateButton(): void
     {
+        if (! ModulesPage::isModuleEnabled('legal_pages')) {
+            return;
+        }
+
         $generalSettings = $this->getGeneralSettings();
         echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:10px;">';
         wp_nonce_field('polski_generate_pages', '_polski_nonce');

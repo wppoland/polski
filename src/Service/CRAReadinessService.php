@@ -25,8 +25,8 @@ final class CRAReadinessService implements HasHooks
             return;
         }
 
-        add_action('init', [$this, 'registerSecurityTxtRewrite']);
-        add_action('template_redirect', [$this, 'serveSecurityTxt']);
+        // Matched on the request path, so it works without a rewrite flush.
+        add_action('parse_request', [$this, 'serveSecurityTxt']);
     }
 
     public function isEnabled(): bool
@@ -35,30 +35,23 @@ final class CRAReadinessService implements HasHooks
     }
 
     /**
-     * Register rewrite rule for /.well-known/security.txt per RFC 9116.
-     */
-    public function registerSecurityTxtRewrite(): void
-    {
-        add_rewrite_rule(
-            '^\.well-known/security\.txt$',
-            'index.php?polski_security_txt=1',
-            'top',
-        );
-
-        add_filter('query_vars', static fn(array $vars): array => array_merge($vars, ['polski_security_txt']));
-    }
-
-    /**
      * Serve the security.txt file content when the rewrite matches.
      */
     public function serveSecurityTxt(): void
     {
-        if (! get_query_var('polski_security_txt')) {
+        $requestPath = (string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? esc_url_raw(wp_unslash((string) $_SERVER['REQUEST_URI'])) : '', PHP_URL_PATH);
+        $securityTxtPath = (string) wp_parse_url(home_url('/.well-known/security.txt'), PHP_URL_PATH);
+
+        if ($requestPath !== $securityTxtPath) {
             return;
         }
 
         $settings = $this->getSettings();
-        $contactEmail = $settings['security_contact'] ?? get_option('admin_email');
+        $contactEmail = sanitize_email((string) ($settings['security_contact'] ?? ''));
+
+        if ($contactEmail === '') {
+            $contactEmail = (string) get_option('admin_email');
+        }
         $policyUrl = $settings['security_policy_url'] ?? '';
         $expiresDate = $settings['security_txt_expires'] ?? '';
 

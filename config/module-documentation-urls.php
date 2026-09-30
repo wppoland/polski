@@ -44,7 +44,6 @@ return [
     'ksef_ready' => 'https://plogins.com/pl/polski/docs/compliance/ksef/',
     'security_incidents' => 'https://plogins.com/pl/polski/docs/tools/security-incidents/',
     'schema_org' => 'https://plogins.com/pl/polski/docs/developer/schema-org/',
-    'checkout_toolkit_integration' => 'https://plogins.com/pl/polski/docs/developer/hooks/',
     'site_audit' => 'https://plogins.com/pl/polski/docs/tools/site-audit/',
     'plugin_data' => 'https://plogins.com/pl/polski/docs/tools/compliance-dashboard/',
     'cra_readiness' => 'https://plogins.com/pl/polski/docs/compliance/ksef/',

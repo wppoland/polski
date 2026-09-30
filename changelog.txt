@@ -2,6 +2,28 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.40.0 =
+Every one of the 84 modules was switched on, configured and used in a live shop, then switched off again. This release fixes what that found, and marks as beta what does not fully work yet.
+* Fixed: the unit price dropped the base quantity, so a price per 1000 ml or per 100 g was labelled per ml or per g. It now shows the base ("15,00 zl / 100 g").
+* Fixed: the lowest-price (Omnibus) notice quoted the sale price itself for an ordinary unscheduled sale, missed same-day price changes, ignored the price still in force when the 30-day window opens, and never showed on variable products. A scheduled sale is no longer recorded before it starts. The notice now follows the WooCommerce tax display.
+* Fixed: the cart threshold discount added VAT on top of the discount, so 5% came out as 6.15% in shops that show prices including tax.
+* Fixed: the VAT notice said "incl. 23% VAT" next to net prices. It now shows only when prices are displayed including tax.
+* Fixed: the VAT margin scheme invoice still printed per-line VAT, and a merchant warning about mixed orders appeared on the customer's invoice.
+* Fixed: saving the billing address in My Account always failed with "NIP not valid" while the NIP module was on. The GUS autofill on the block checkout filled a hidden billing form.
+* Fixed: switching the withdrawal module off hid orders that already had a withdrawal status from Orders and from My Account.
+* Fixed: saving the withdrawal settings page switched the digital-content consent on at checkout although it was off, and physical-only orders showed a consent line.
+* Fixed: variable products were added to the cart twice by AJAX add to cart, and a failed add showed "Added to cart".
+* Fixed: custom checkout field values from block orders disappeared from the order screen and emails; select fields showed the option key instead of its label.
+* Fixed: switching a module off could silently delete its product data on the next product save (medical device and 18+ flags among others).
+* Fixed: product JSON-LD replaced WooCommerce's sale and list price with the Omnibus figure; it is now added next to them. No invalid nutrition on Product, no QAPage for several questions, no second Product node for expert reviews, and the manufacturer follows its setting.
+* Fixed: CSV import did not map Polski columns back from an export.
+* Fixed: AJAX filters, compare, infinite scroll, gallery zoom, product slider, social proof, featured video, badges and tabs misbehaved on Storefront (duplicated tables and pagination, lost lightbox, duplicate products).
+* Fixed: security incidents, store health, site audit, CRA, DPA, SBOM, data layer and exports: wrong dates, false audit results, reports reachable with the module off.
+* Changed: the dispute resolution texts no longer send consumers to the EU ODR platform, which closed on 20 July 2025.
+* Removed: two switches nothing read, the gross/net display mode (WooCommerce owns it) and the Checkout Toolkit integration.
+* Beta: VIES (non-Polish VAT numbers cannot be entered at checkout), cookie consent (only Polski's own tags wait for consent), double opt-in (accounts created at checkout stay logged in), custom checkout fields and legal checkboxes on the block checkout, waitlist on variable products, the price history chart on variable products, and the AI bridge. Each module card now says exactly what does not work yet.
+* Corrected: module descriptions that promised more than the code does (legal page drafts are empty, the complaint template has no REST route, the business block has no REGON, live search needs its shortcode or block).
+
 = 1.39.0 =
 * Fixed: nine settings on the modules screen changed nothing when edited. The withdrawal form drew its own headings and ignored the order items heading, the product and quantity column labels and the exemption notice; it never printed the legal notice at all. The two order notes the module writes ignored their wording settings. Editing any of them looked like it worked, saved, and did nothing.
 * Fixed: the dashboard status cards ignored all thirteen wording settings offered for them, and the VAT and double opt-in cards were missing entirely while the page still worked out what they would have said. Both cards are back, and every card now uses the wording from the screen.

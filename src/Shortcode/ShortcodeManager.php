@@ -266,8 +266,13 @@ final class ShortcodeManager implements HasHooks
     /** @param ShortcodeAtts $atts */
     public function complaints(array|string $atts = []): string
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('dispute_resolution')) {
+            return '';
+        }
+
         $settings = get_option('polski_general', []);
-        $text = is_array($settings) ? ($settings['dispute_resolution_text'] ?? '') : '';
+        $text = is_array($settings) ? (string) ($settings['dispute_resolution_text'] ?? '') : '';
+        $text = \Polski\Service\DisputeResolutionService::usableText($text);
 
         if ($text === '') {
             return '';

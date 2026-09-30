@@ -5,23 +5,24 @@
         return;
     }
 
-    const list = document.querySelector('ul.products');
+    let list = document.querySelector('ul.products');
     const button = root.querySelector('.polski-infinite-scroll__button');
     const status = root.querySelector('.polski-infinite-scroll__status');
-    const pagination = document.querySelector('.woocommerce-pagination');
-
     if (!list || !button) {
         return;
     }
 
-    if (pagination) {
-        pagination.hidden = true;
-    }
+    // Themes such as Storefront print the pagination above and below the list.
+    const hidePagination = () => {
+        document.querySelectorAll('.woocommerce-pagination').forEach((pagination) => {
+            pagination.hidden = true;
+        });
+    };
+    hidePagination();
 
-    if ((window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) === 'auto'
-        && !((window.polskiInfiniteScroll && window.polskiInfiniteScroll.showButtonInAutoMode))) {
-        button.hidden = true;
-    }
+    const buttonHiddenByMode = (window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) === 'auto'
+        && !((window.polskiInfiniteScroll && window.polskiInfiniteScroll.showButtonInAutoMode));
+    button.hidden = buttonHiddenByMode;
 
     let nextPageUrl = root.dataset.nextPage || '';
     let loading = false;
@@ -96,6 +97,18 @@
     };
 
     button.addEventListener('click', loadNextPage);
+
+    // AJAX filters swap in a new list and pagination: continue from those.
+    document.addEventListener('polski:products-replaced', () => {
+        list = document.querySelector('ul.products') || list;
+        const next = document.querySelector('.woocommerce-pagination .next');
+        nextPageUrl = next ? next.href : '';
+        autoLoaded = 0;
+        hidePagination();
+        button.hidden = buttonHiddenByMode;
+        setStatus('');
+        updateDoneState();
+    });
 
     if ((window.polskiInfiniteScroll && window.polskiInfiniteScroll.mode) !== 'auto') {
         return;

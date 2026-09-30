@@ -48,7 +48,7 @@ final class SBOMPage implements HasHooks
     public function render(): void
     {
         echo '<div class="wrap"><h1>' . esc_html__('Software Bill of Materials (SBOM)', 'polski') . '</h1>';
-        echo '<p>' . esc_html__('Generate a CycloneDX 1.4 JSON document listing PHP (composer) and JS (npm) dependencies. Useful for security audits, CRA compliance packages and vulnerability scanners.', 'polski') . '</p>';
+        echo '<p>' . esc_html__('Generate a CycloneDX 1.4 JSON document listing the PHP (Composer) packages shipped with the plugin. JavaScript libraries bundled into the plugin scripts are not listed yet. Useful for security audits, CRA compliance packages and vulnerability scanners.', 'polski') . '</p>';
 
         foreach ($this->targets() as $slug => $target) {
             printf(

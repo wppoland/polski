@@ -118,6 +118,10 @@ final class ReturnRequestService implements Bootable, HasHooks
             return;
         }
 
+        if (isset($_GET['polski_return_done'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only notice after our own redirect.
+            wc_print_notice(__('Your request has been submitted. We have emailed you a confirmation.', 'polski'), 'success');
+        }
+
         $existing = $this->returns->findByOrder($order->get_id());
 
         if ($existing !== []) {
@@ -196,7 +200,7 @@ final class ReturnRequestService implements Bootable, HasHooks
             wp_mail($customerEmail, $subject, $body);
         }
 
-        $adminEmail = (string) ($this->settings()['notify_email'] ?? get_option('admin_email'));
+        $adminEmail = trim((string) ($this->settings()['notify_email'] ?? '')) ?: (string) get_option('admin_email');
 
         if (is_email($adminEmail)) {
             wp_mail($adminEmail, $subject, $body);
@@ -252,7 +256,7 @@ final class ReturnRequestService implements Bootable, HasHooks
             echo '<select name="status">';
 
             foreach (ReturnRequestStatus::cases() as $case) {
-                echo '<option value="' . esc_attr($case->value) . '"' . selected($case, $request->status, false) . '>' . esc_html($case->label()) . '</option>';
+                echo '<option value="' . esc_attr($case->value) . '"' . selected($case->value, $request->status->value, false) . '>' . esc_html($case->label()) . '</option>';
             }
 
             echo '</select> <button type="submit" class="button button-small">' . esc_html__('Update', 'polski') . '</button>';

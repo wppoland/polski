@@ -25,7 +25,7 @@ final class ExpertReviewService implements HasHooks
     /**
      * Per-request memo for `getReviewsForProduct()`. The single product page
      * calls the query twice (once from `displayOnProduct` and once from
-     * `outputSchema`) so memoising on the productId saves a duplicate WP_Query.
+     * `addSchemaReviews`) so memoising on the productId saves a duplicate WP_Query.
      *
      * @var array<int, list<\WP_Post>>
      */
@@ -45,8 +45,8 @@ final class ExpertReviewService implements HasHooks
         // Display on product page.
         add_action('woocommerce_after_single_product_summary', [$this, 'displayOnProduct'], 15);
 
-        // Schema.org markup.
-        add_action('wp_footer', [$this, 'outputSchema']);
+        // Schema.org markup, merged into WooCommerce's own Product node.
+        add_filter('woocommerce_structured_data_product', [$this, 'addSchemaReviews'], 10, 2);
     }
 
     public function registerPostType(): void
@@ -233,24 +233,18 @@ final class ExpertReviewService implements HasHooks
     }
 
     /**
-     * Output Schema.org Review markup.
+     * Add expert reviews to WooCommerce's Product JSON-LD. A second standalone
+     * Product node (no @id, no offers) would be a duplicate product to Google.
+     *
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
      */
-    public function outputSchema(): void
+    public function addSchemaReviews(array $data, \WC_Product $product): array
     {
-        if (! is_product()) {
-            return;
-        }
-
-        global $product;
-
-        if (! $product instanceof \WC_Product) {
-            return;
-        }
-
         $reviews = $this->getReviewsForProduct($product->get_id());
 
         if (empty($reviews)) {
-            return;
+            return $data;
         }
 
         $schemaReviews = [];
@@ -279,17 +273,10 @@ final class ExpertReviewService implements HasHooks
             $schemaReviews[] = $schemaReview;
         }
 
-        $schema = [
-            '@context' => 'https://schema.org',
-            '@type' => 'Product',
-            'name' => $product->get_name(),
-            'review' => $schemaReviews,
-        ];
+        $existing = isset($data['review']) && is_array($data['review']) ? $data['review'] : [];
+        $data['review'] = array_merge($existing, $schemaReviews);
 
-        wp_print_inline_script_tag(
-            (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-            ['type' => 'application/ld+json'],
-        );
+        return $data;
     }
 
     /**

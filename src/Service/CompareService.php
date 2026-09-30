@@ -46,6 +46,7 @@ final class CompareService implements Bootable, HasHooks
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_archive_description', [$this, 'renderArchiveCompare'], 5);
         add_action('woocommerce_before_shop_loop', [$this, 'renderArchiveCompare'], 1);
+        add_action('woocommerce_product_query', [$this, 'limitCompareArchiveToItems']);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleButton'], 34);
         add_action('woocommerce_after_shop_loop_item', [$this, 'renderLoopButton'], 20);
         add_action('wp_ajax_polski_compare_toggle', [$this, 'handleToggle']);
@@ -303,18 +304,42 @@ final class CompareService implements Bootable, HasHooks
         echo '</div>';
     }
 
+    /**
+     * Both hooks are registered because a theme may skip one of them; a theme
+     * that fires both (Storefront) must still get one table.
+     */
     public function renderArchiveCompare(): void
     {
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only display toggle.
-        $showCompare = isset($_GET['polski_compare']);
-        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+        static $rendered = false;
 
-        if (! (is_shop() || is_post_type_archive('product')) || ! $showCompare) {
+        if ($rendered || ! $this->isArchiveCompareView()) {
             return;
         }
 
+        $rendered = true;
+
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
         echo $this->renderCompareTable();
+    }
+
+    /**
+     * The guest comparison view is a shop archive; below the table it lists
+     * only the compared products, not the whole catalogue.
+     */
+    public function limitCompareArchiveToItems(\WP_Query $query): void
+    {
+        if (! $this->isArchiveCompareView()) {
+            return;
+        }
+
+        $ids = array_map(static fn (\WC_Product $product): int => $product->get_id(), $this->getProducts());
+        $query->set('post__in', $ids !== [] ? $ids : [0]);
+    }
+
+    private function isArchiveCompareView(): bool
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only display toggle.
+        return isset($_GET['polski_compare']) && (is_shop() || is_post_type_archive('product'));
     }
 
     public function transferGuestCompareToUser(string $userLogin, \WP_User $user): void
@@ -330,6 +355,10 @@ final class CompareService implements Bootable, HasHooks
 
     public function renderCompareTable(): string
     {
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         $products = $this->getProducts();
         $rows = $this->buildRows($products);
         $differences = $this->calculateDifferences($rows);
@@ -726,6 +755,10 @@ final class CompareService implements Bootable, HasHooks
 
             case 'availability':
                 $html = wc_get_stock_html($product);
+                if ($html === '') {
+                    // WooCommerce prints nothing for an in-stock product that does not track stock.
+                    $html = '<p class="stock in-stock">' . esc_html__('In stock', 'polski') . '</p>';
+                }
                 return [$html !== '' ? $html : '-', $html !== '' ? wp_strip_all_tags($html) : '-'];
 
             case 'delivery_time':

@@ -29,6 +29,11 @@ final class SearchController extends RestController implements HasHooks
 
     public function register_routes(): void
     {
+        // Module off means no endpoint: the shortcode already renders nothing.
+        if (! $this->searchService->isEnabled()) {
+            return;
+        }
+
         register_rest_route($this->namespace, '/search', [
             [
                 'methods' => \WP_REST_Server::READABLE,

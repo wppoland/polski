@@ -5,20 +5,21 @@ namespace Polski\Service;
 
 defined('ABSPATH') || exit;
 
-use Polski\Enum\TaxDisplayMode;
+use Polski\Contract\HasHooks;
 use Polski\Util\Formatter;
 
 /**
- * Handles tax display logic: brutto/netto toggle, VAT notices, small business exemption.
+ * Handles tax display logic: VAT notices, small business exemption.
  */
-final class TaxDisplayService
+final class TaxDisplayService implements HasHooks
 {
-    public function getMode(): TaxDisplayMode
+    public function registerHooks(): void
     {
-        $settings = $this->getSettings();
-        $mode = $settings['tax_display_mode'] ?? 'brutto';
-
-        return TaxDisplayMode::tryFrom($mode) ?? TaxDisplayMode::Brutto;
+        // A seller exempt under Art. 113 charges no VAT. Saying so on the product
+        // page while the cart adds VAT is the contradiction this stops.
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('tax_display') && $this->isSmallBusiness()) {
+            add_filter('wc_tax_enabled', '__return_false');
+        }
     }
 
     public function isSmallBusiness(): bool
@@ -45,6 +46,12 @@ final class TaxDisplayService
             );
 
             return (string) apply_filters('polski/price/vat_notice', $html, $product);
+        }
+
+        // The notice says the price includes VAT. A shop showing net prices
+        // (WooCommerce > Settings > Tax) would print that next to a net figure.
+        if (get_option('woocommerce_tax_display_shop') === 'excl') {
+            return '';
         }
 
         $taxRates = \WC_Tax::get_rates($product->get_tax_class());
@@ -87,14 +94,16 @@ final class TaxDisplayService
             return '';
         }
 
-        $shippingPageId = wc_get_page_id('shop');
-        $shippingUrl = get_permalink($shippingPageId);
+        $shippingPageId = (int) ($priceSettings['shipping_costs_page_id'] ?? 0);
+        $shippingUrl = $shippingPageId > 0 && get_post_status($shippingPageId) === 'publish' ? get_permalink($shippingPageId) : false;
 
-        $html = sprintf(
-            '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
-            esc_url($shippingUrl ?: '#'),
-            esc_html($text),
-        );
+        $html = $shippingUrl
+            ? sprintf(
+                '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+                esc_url($shippingUrl),
+                esc_html($text),
+            )
+            : sprintf('<span class="polski-shipping-notice" style="margin-left:0.35em">%s</span>', esc_html($text));
 
         return (string) apply_filters('polski/price/shipping_notice', $html);
     }

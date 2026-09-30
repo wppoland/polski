@@ -44,6 +44,7 @@ final class DigitalConsentService implements HasHooks
         }
 
         add_filter('polski/withdrawal/eligible', [$this, 'filterEligibility'], 20, 2);
+        add_filter('polski/withdrawal/items', [$this, 'markConsentedDigitalItems'], 20, 2);
 
         // Modern WooCommerce: a single Additional Checkout Field renders and
         // validates on BOTH classic and block checkout, shown/required only when
@@ -62,6 +63,14 @@ final class DigitalConsentService implements HasHooks
         // Write the Art. 16(m) proof record on block orders (WC stores the field
         // value, not the wording/timestamp/IP snapshot the classic path records).
         add_action('woocommerce_store_api_checkout_order_processed', [$this, 'persistBlockConsent']);
+
+        // WooCommerce prints an unticked checkbox as "No", and the field stays
+        // registered for every cart, so a physical-only order carried a
+        // digital-content "No" on the thank-you page and in the emails.
+        add_filter('woocommerce_filter_fields_for_order_confirmation', [$this, 'hideOnNonDigitalOrders'], 10, 4);
+        // The same "No" on the admin order screen, plus a hidden input that
+        // wrote it back to the order on every save.
+        add_filter('woocommerce_admin_shipping_fields', [$this, 'hideAdminFieldOnNonDigitalOrders'], 20, 2);
 
         // Classic-checkout field. The additional field registered above covers
         // the block checkout only, so these are the only path on a shortcode
@@ -189,7 +198,7 @@ final class DigitalConsentService implements HasHooks
         // checkbox at all. This action fires on the classic checkout only, so
         // the two never collide.
 
-        if (! $this->hasDigitalContentInCart()) {
+        if (! $this->hasDigitalContentInCart() || $this->waiverBoxCoversCart()) {
             return;
         }
 
@@ -231,7 +240,7 @@ final class DigitalConsentService implements HasHooks
             return;
         }
 
-        if (! $this->hasDigitalContentInCart()) {
+        if (! $this->hasDigitalContentInCart() || $this->waiverBoxCoversCart()) {
             return;
         }
 
@@ -269,6 +278,13 @@ final class DigitalConsentService implements HasHooks
      */
     public function persistBlockConsent(\WC_Order $order): void
     {
+        // The field is hidden, and so empty, on a cart without digital content.
+        if (! $this->orderHasDigitalContent($order)) {
+            $order->delete_meta_data(self::BLOCK_FIELD_META);
+            $order->save();
+            return;
+        }
+
         if ($order->get_meta(self::ORDER_META, true) !== '') {
             return; // already recorded.
         }
@@ -281,6 +297,37 @@ final class DigitalConsentService implements HasHooks
 
         $order->update_meta_data(self::ORDER_META, $this->buildRecord());
         $order->save();
+    }
+
+    /**
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $fields
+     * @param array<string, mixed> $context
+     */
+    public function hideOnNonDigitalOrders(bool $show, array $field, array $fields, array $context): bool
+    {
+        unset($fields);
+
+        if (($field['id'] ?? '') !== self::BLOCK_FIELD_ID) {
+            return $show;
+        }
+
+        $order = $context['order'] ?? null;
+
+        return $show && (! $order instanceof \WC_Order || $this->orderHasDigitalContent($order));
+    }
+
+    /**
+     * @param array<string, mixed> $fields
+     * @return array<string, mixed>
+     */
+    public function hideAdminFieldOnNonDigitalOrders(array $fields, mixed $order = null): array
+    {
+        if ($order instanceof \WC_Order && ! $this->orderHasDigitalContent($order)) {
+            unset($fields[self::BLOCK_FIELD_ID]);
+        }
+
+        return $fields;
     }
 
     /**
@@ -313,19 +360,77 @@ final class DigitalConsentService implements HasHooks
             return $eligible;
         }
 
+        return ! $this->hasConsent($order);
+    }
+
+    /**
+     * In a mixed order the consent still covers its digital lines: show them as
+     * excluded in the withdrawal form, like a per-product exemption.
+     *
+     * @param array<int, array<string, mixed>> $rows
+     * @return array<int, array<string, mixed>>
+     */
+    public function markConsentedDigitalItems(array $rows, \WC_Order $order): array
+    {
+        if (! $this->hasConsent($order)) {
+            return $rows;
+        }
+
+        foreach ($rows as &$row) {
+            if (! empty($row['is_exempt'])) {
+                continue;
+            }
+            $product = wc_get_product((int) ($row['variation_id'] ?? 0) ?: (int) ($row['product_id'] ?? 0));
+            if ($product instanceof \WC_Product && $this->isDigitalProduct($product)) {
+                $row['is_exempt'] = true;
+                $row['exempt_reason'] = \Polski\Enum\WithdrawalExemptionReason::DigitalContent->label();
+            }
+        }
+        unset($row);
+
+        return $rows;
+    }
+
+    private function hasConsent(\WC_Order $order): bool
+    {
         $record = $order->get_meta(self::ORDER_META, true);
         if (is_array($record) && ! empty($record['accepted'])) {
-            return false;
+            return true;
         }
 
         // Block / Additional Checkout Fields path: WC stores the checkbox value
         // under the field meta key. A truthy value is an explicit consent.
         $blockValue = $order->get_meta(self::BLOCK_FIELD_META, true);
-        if (in_array($blockValue, ['1', 1, true, 'true', 'yes'], true)) {
+
+        // Classic checkout with "Digital content (waiver)" on: the legal
+        // checkboxes module asked for the consent and stored the answer here.
+        return in_array($blockValue, ['1', 1, true, 'true', 'yes'], true)
+            || $order->get_meta('_wc_other/polski/digital_waiver', true) === '1';
+    }
+
+    /**
+     * On the classic checkout the "Digital content (waiver)" legal checkbox
+     * already asks for this consent when it shows; a second box of our own
+     * would ask the same thing twice. Ask the checkbox service whether it
+     * shows for this cart, so a per-checkbox override or condition that hides
+     * it brings our box back.
+     */
+    private function waiverBoxCoversCart(): bool
+    {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
             return false;
         }
 
-        return $eligible;
+        $checkboxes = \Polski\Plugin::instance()->container()->get(CheckboxService::class);
+        $shown = $checkboxes->getForContext(\Polski\Enum\CheckboxContext::Checkout, \Polski\Hook\CheckoutHooks::buildCartContext());
+
+        foreach ($shown as $checkbox) {
+            if ($checkbox->id === 'digital_waiver') {
+                return ! $checkbox->hideInput;
+            }
+        }
+
+        return false;
     }
 
     public function mode(): string
@@ -352,18 +457,28 @@ final class DigitalConsentService implements HasHooks
         // and silently dropping it from a working checkout would be worse than
         // the noise being reported.
         if (! array_key_exists('digital_consent_mode', $settings)) {
-            $checkout = get_option('polski_checkout', []);
-            $checkout = is_array($checkout) ? $checkout : [];
-
-            return empty($checkout['digital_waiver_checkbox_enabled'])
-                ? self::MODE_HIDDEN
-                : self::MODE_OPTIONAL;
+            return self::unsavedMode();
         }
 
         $mode = (string) ($settings['digital_consent_mode'] ?? self::MODE_OPTIONAL);
 
         return in_array($mode, [self::MODE_REQUIRED, self::MODE_OPTIONAL, self::MODE_HIDDEN], true)
             ? $mode
+            : self::MODE_OPTIONAL;
+    }
+
+    /**
+     * The mode while none has been saved: the modules screen toggle decides.
+     * The withdrawal settings page shows and keeps this value, so saving that
+     * page for another reason does not turn it into an explicit choice.
+     */
+    public static function unsavedMode(): string
+    {
+        $checkout = get_option('polski_checkout', []);
+        $checkout = is_array($checkout) ? $checkout : [];
+
+        return empty($checkout['digital_waiver_checkbox_enabled'])
+            ? self::MODE_HIDDEN
             : self::MODE_OPTIONAL;
     }
 
@@ -397,6 +512,18 @@ final class DigitalConsentService implements HasHooks
             }
 
             if ($this->isDigitalProduct($item['data'])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function orderHasDigitalContent(\WC_Order $order): bool
+    {
+        foreach ($order->get_items() as $item) {
+            $product = $item instanceof \WC_Order_Item_Product ? $item->get_product() : null;
+            if ($product instanceof \WC_Product && $this->isDigitalProduct($product)) {
                 return true;
             }
         }

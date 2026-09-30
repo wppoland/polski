@@ -16,8 +16,8 @@ return [
         'remove_data_on_uninstall' => false,
         'bdo_number' => '',
         'dispute_resolution_enabled' => true,
-        'dispute_resolution_text' => __('ODR platform: https://ec.europa.eu/consumers/odr', 'polski'),
-        'admin_pages_generated_notice' => __('Done. We have generated draft legal pages for you. Review them, adjust them to your shop and publish them.', 'polski'),
+        'dispute_resolution_text' => __('If you are a consumer, you can use out-of-court complaint and redress procedures, for example help from your municipal or district consumer ombudsman (Rzecznik Konsumentów) or the Provincial Inspectorate of Trade Inspection (WIIH).', 'polski'),
+        'admin_pages_generated_notice' => __('Done. We have created empty draft legal pages for you. Fill in your own text, then publish them.', 'polski'),
         'admin_modules_saved_notice' => __('Modules saved.', 'polski'),
         'admin_setup_note_title' => __('Set up Polski for your shop', 'polski'),
         'admin_setup_note_content' => __('Your shop is nearly ready. Review the modules, set up the legal pages and finish the configuration in the Polski panel.', 'polski'),
@@ -54,17 +54,13 @@ return [
         'admin_omnibus_plugin_missing_text' => __('not installed', 'polski'),
         'admin_omnibus_no_external_text' => __('No external Omnibus plugin is installed. Polski uses its own price history.', 'polski'),
         'admin_omnibus_external_active_text' => __('An external plugin was detected. Polski uses its data instead of its own price history.', 'polski'),
-        'admin_integration_detected_text' => __('detected, integration active', 'polski'),
         'admin_integration_missing_text' => __('not detected', 'polski'),
-        'admin_checkout_toolkit_no_external_text' => __('No supported checkout or cookie extension was detected. Polski works on its own.', 'polski'),
-        'admin_checkout_toolkit_external_active_text' => __('A supported checkout, cookie or product data extension was detected. Polski can adapt to what is active.', 'polski'),
         'admin_payment_no_external_text' => __('No supported Polish payment gateway was detected. Polski uses its own checkout settings with no further integration.', 'polski'),
         'admin_payment_external_active_text' => __('Polish payment gateways were detected. Polski can adapt the checkout and the legal notices to the active methods.', 'polski'),
     ],
 
     // Price display.
     'polski_prices' => [
-        'tax_display_mode' => 'brutto',
         'unit_price_enabled' => true,
         'unit_price_text' => __('{price} / {unit}', 'polski'),
         // Seeded so a REST write does not drop it: Sanitizer::settingsArray()
@@ -172,7 +168,7 @@ return [
         'email_greeting' => __('Hi {name},', 'polski'),
         'email_intro_text' => __('Your withdrawal from the contract for order #{order_number} has been confirmed.', 'polski'),
         'email_reason_label' => __('Your reason', 'polski'),
-        'email_return_instruction' => __('Please return the goods to the address above within 14 days:', 'polski'),
+        'email_return_instruction' => __('Please return the products to the address below within 14 days:', 'polski'),
         'email_additional_content' => __('You will be refunded within 14 days of us receiving the returned goods.', 'polski'),
     ],
 
@@ -741,7 +737,7 @@ return [
         'display_interval' => 8,
         'display_duration' => 5,
         'position' => 'bottom-left',
-        'anonymize_name' => false,
+        'anonymize_name' => true,
         'hide_on_mobile' => false,
         /* translators: 1: customer first name (possibly anonymized), 2: product name */
         'message_template' => __('%1$s bought %2$s', 'polski'),

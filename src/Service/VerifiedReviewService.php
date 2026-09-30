@@ -61,9 +61,13 @@ final class VerifiedReviewService implements HasHooks
             return;
         }
 
+        // Own handle: Storefront dequeues woocommerce-general, which left
+        // the badge unstyled there.
+        wp_register_style('polski-verified-review', false, [], \Polski\VERSION);
+        wp_enqueue_style('polski-verified-review');
         wp_add_inline_style(
-            'woocommerce-general',
-            '.polski-verified-badge{display:inline-block;background:#46b450;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;margin-bottom:6px;}'
+            'polski-verified-review',
+            '.polski-verified-badge{display:inline-block;background:#46b450;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;margin:0 6px 6px 0;}'
         );
     }
 

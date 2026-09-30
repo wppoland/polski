@@ -21,10 +21,9 @@ defined('ABSPATH') || exit;
  *
  * The scheme is per line, but the annotation is a property of the document, and
  * an invoice cannot sensibly present margin lines and ordinary taxed lines under
- * one VAT summary. Where an order mixes the two this module annotates the
- * invoice and leaves the VAT summary alone rather than suppressing figures that
- * belong to the ordinary lines: a merchant issuing such an order needs to split
- * it, and quietly hiding the VAT would hide that from them.
+ * one VAT summary. Where an order mixes the two this module refuses to issue
+ * the invoice and tells the merchant why, rather than printing a document that
+ * is wrong either way: the merchant needs to split such an order.
  *
  * This module changes what an invoice says. It does not compute the margin or
  * decide whether goods qualify, which depends on how they were acquired and is
@@ -49,6 +48,7 @@ final class VatMarginService implements HasHooks
 
         add_filter('polski/invoice/data', [$this, 'annotateInvoice'], 10, 2);
         add_action('woocommerce_single_product_summary', [$this, 'renderProductNotice'], 12);
+        add_filter('polski/price/vat_notice', [$this, 'dropVatNotice'], 10, 2);
     }
 
     /**
@@ -154,15 +154,26 @@ final class VatMarginService implements HasHooks
         }
 
         if ($found['mixed']) {
-            $annotations[] = __('Warning: this order mixes margin-scheme goods with ordinary taxed goods. They cannot share one invoice; issue them separately.', 'polski');
-        } else {
-            // Every line is under the scheme, so no VAT may be shown.
-            $data['vat'] = [];
+            // A note for the merchant, not text for the buyer's legal document:
+            // refuse to issue, and the admin sees why.
+            throw new \RuntimeException(esc_html__('This order mixes margin-scheme goods with ordinary taxed goods. They cannot share one invoice; issue them separately.', 'polski'));
         }
+
+        // Every line is under the scheme, so no VAT may be shown. An empty
+        // summary also drops the per-line Net and VAT columns from the document.
+        $data['vat'] = [];
 
         $data['annotations'] = array_values(array_unique($annotations));
 
         return $data;
+    }
+
+    /**
+     * "incl. 23% VAT" next to "the invoice shows no VAT" contradicts itself.
+     */
+    public function dropVatNotice(string $html, \WC_Product $product): string
+    {
+        return $this->schemeFor($product) === '' ? $html : '';
     }
 
     public function renderProductNotice(): void

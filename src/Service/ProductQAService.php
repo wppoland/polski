@@ -14,7 +14,7 @@ use Polski\Contract\HasHooks;
  * Uses WordPress comments with type 'product_question' and 'product_answer'.
  * Questions displayed as an accordion on product pages below reviews.
  * Store owner gets email notification for new questions.
- * Schema.org QAPage markup for SEO.
+ * Schema.org QAPage markup when exactly one question has an answer.
  * Voting on answers (helpful/not helpful).
  */
 final class ProductQAService implements HasHooks
@@ -24,6 +24,12 @@ final class ProductQAService implements HasHooks
 
     public function registerHooks(): void
     {
+        // Questions and answers are comments on the product, so the reviews
+        // list would show them as reviews. Keep them out of every comment
+        // query that does not ask for a type, also with the module off, or
+        // the stored Q&A would turn into star-less reviews.
+        add_action('pre_get_comments', [$this, 'excludeFromReviews']);
+
         if (! ModulesPage::isModuleEnabled('product_qa')) {
             return;
         }
@@ -40,9 +46,6 @@ final class ProductQAService implements HasHooks
         // Handle vote.
         add_action('wp_ajax_polski_qa_vote', [$this, 'handleVote']);
         add_action('wp_ajax_nopriv_polski_qa_vote', [$this, 'handleVote']);
-
-        // Admin notification for new questions.
-        add_action('comment_post', [$this, 'notifyAdminOnQuestion'], 10, 3);
 
         // Schema.org markup.
         add_action('wp_footer', [$this, 'outputSchema']);
@@ -239,7 +242,13 @@ final class ProductQAService implements HasHooks
             $commentData['comment_author_email'] = sanitize_email((string) wp_unslash($_POST['question_email'] ?? ''));
         }
 
-        wp_insert_comment($commentData);
+        $commentId = wp_insert_comment($commentData);
+
+        // wp_insert_comment() does not fire comment_post, so the alert is sent
+        // from here rather than from a hook that never ran.
+        if ($commentId) {
+            $this->notifyAdminOnQuestion((int) $commentId, $commentData);
+        }
 
         wp_safe_redirect(get_permalink($productId) . '#tab-product_qa');
         exit;
@@ -301,28 +310,62 @@ final class ProductQAService implements HasHooks
         }
 
         $votes = (int) get_comment_meta($commentId, '_polski_qa_votes', true);
+
+        // One vote per account, or per IP address for guests. The address is
+        // stored hashed, never in the clear.
+        $voter = is_user_logged_in()
+            ? 'u' . get_current_user_id()
+            : 'ip' . wp_hash(sanitize_text_field((string) wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')));
+        $voters = get_comment_meta($commentId, '_polski_qa_voters', true);
+        $voters = is_array($voters) ? $voters : [];
+
+        if (in_array($voter, $voters, true)) {
+            wp_send_json_error(['votes' => $votes]);
+        }
+
+        $voters[] = $voter;
+        update_comment_meta($commentId, '_polski_qa_voters', $voters);
         update_comment_meta($commentId, '_polski_qa_votes', $votes + 1);
 
         wp_send_json_success(['votes' => $votes + 1]);
     }
 
     /**
-     * @param int            $commentId
-     * @param int|string     $approved
-     * @param array<string, mixed> $commentData
+     * Hide Q&A comments from untyped comment queries on products (the reviews
+     * list in classic and block themes). Admin screens keep seeing them.
      */
-    public function notifyAdminOnQuestion($commentId, $approved, $commentData): void
+    public function excludeFromReviews(\WP_Comment_Query $query): void
     {
-        if (($commentData['comment_type'] ?? '') !== self::COMMENT_TYPE_Q) {
+        $vars = &$query->query_vars;
+
+        if (is_admin() || ! empty($vars['type']) || ! empty($vars['type__in'])) {
             return;
         }
 
+        $postId = (int) ($vars['post_id'] ?? 0);
+
+        if ($postId <= 0 || get_post_type($postId) !== 'product') {
+            return;
+        }
+
+        $vars['type__not_in'] = array_merge(
+            (array) ($vars['type__not_in'] ?? []),
+            [self::COMMENT_TYPE_Q, self::COMMENT_TYPE_A],
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $commentData
+     */
+    private function notifyAdminOnQuestion(int $commentId, array $commentData): void
+    {
         $product = wc_get_product((int) $commentData['comment_post_ID']);
 
         if (! $product) {
             return;
         }
 
+        $pending = empty($commentData['comment_approved']);
         $adminEmail = get_option('admin_email');
         $subject = sprintf(
             /* translators: %s: product name */
@@ -337,8 +380,12 @@ final class ProductQAService implements HasHooks
                 __('Asked by: %s', 'polski'),
                 $commentData['comment_author'] ?? '',
             )),
-            esc_url(get_edit_post_link($product->get_id()) . '#tab-product_qa'),
-            esc_html__('Answer this question', 'polski'),
+            // Answers are written on the product page. A guest question waits
+            // for approval first, so that one links the comment screen.
+            esc_url($pending
+                ? admin_url('comment.php?action=editcomment&c=' . $commentId)
+                : get_permalink($product->get_id()) . '#tab-product_qa'),
+            $pending ? esc_html__('Approve this question', 'polski') : esc_html__('Answer this question', 'polski'),
         );
 
         wp_mail($adminEmail, $subject, $message, ['Content-Type: text/html; charset=UTF-8']);
@@ -375,7 +422,7 @@ final class ProductQAService implements HasHooks
                 $schemaAnswers[] = [
                     '@type' => 'Answer',
                     'text' => $answer->comment_content,
-                    'dateCreated' => $answer->comment_date,
+                    'dateCreated' => mysql2date('c', $answer->comment_date, false),
                     'upvoteCount' => $votes,
                     'author' => ['@type' => 'Person', 'name' => $answer->comment_author],
                 ];
@@ -389,7 +436,7 @@ final class ProductQAService implements HasHooks
                 '@type' => 'Question',
                 'name' => $question->comment_content,
                 'text' => $question->comment_content,
-                'dateCreated' => $question->comment_date,
+                'dateCreated' => mysql2date('c', $question->comment_date, false),
                 'author' => ['@type' => 'Person', 'name' => $question->comment_author],
                 'answerCount' => count($schemaAnswers),
                 'acceptedAnswer' => $schemaAnswers[0],
@@ -397,14 +444,16 @@ final class ProductQAService implements HasHooks
             ];
         }
 
-        if (empty($schemaQuestions)) {
+        // QAPage describes a page about a single question. A product with
+        // several answered questions is not one, so it gets no QAPage at all.
+        if (count($schemaQuestions) !== 1) {
             return;
         }
 
         $schema = [
             '@context' => 'https://schema.org',
             '@type' => 'QAPage',
-            'mainEntity' => $schemaQuestions,
+            'mainEntity' => $schemaQuestions[0],
         ];
 
         wp_print_inline_script_tag(

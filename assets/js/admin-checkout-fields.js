@@ -12,12 +12,17 @@
         }
         var fieldIndex = tbody.querySelectorAll('tr').length;
         var newRow = firstRow.cloneNode(true);
-        newRow.querySelectorAll('input, select').forEach(function (el) {
+        newRow.querySelectorAll('input, select, textarea').forEach(function (el) {
             el.name = el.name.replace(/fields\[\d+\]/, 'fields[' + fieldIndex + ']');
             if (el.type === 'checkbox') {
-                el.checked = false;
-            } else if (el.type === 'text' || el.type === 'number') {
-                el.value = el.type === 'number' ? '100' : '';
+                el.checked = el.hasAttribute('data-polski-cf-default-on');
+            } else if (el.type === 'number') {
+                el.value = '100';
+            } else if (el.name.indexOf('[css_class]') !== -1) {
+                el.value = 'form-row-wide';
+            } else if (el.tagName !== 'SELECT') {
+                // Text, textarea and hidden: a new row must not inherit the copied row's options or rules.
+                el.value = '';
             }
         });
         tbody.appendChild(newRow);

@@ -95,6 +95,14 @@ final class LegalCheckbox
     }
 
     /**
+     * Whether display depends on the cart, country or payment method.
+     */
+    public function hasConditions(): bool
+    {
+        return $this->categories !== [] || $this->countries !== [] || $this->paymentMethods !== [] || $this->productTypes !== [];
+    }
+
+    /**
      * Check if this checkbox passes conditional display rules.
      *
      * @param array<string, mixed> $cartContext {

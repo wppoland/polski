@@ -108,11 +108,11 @@ final class StoreHealthMonitorServiceTest extends TestCase
     {
         $hour = $this->currentHourKey();
         $GLOBALS['polski_test_options']['polski_store_health_counters'] = [
-            'ok' => [$hour => 10],
+            'ok' => [$hour => 15],
             'failed' => [$hour => 5],
         ];
 
-        // 5/15 = 33% which is >= the 30% default threshold but below 1.5x (45%).
+        // 15 checkouts, 5 of them failed: 33%, which is >= the 30% default threshold but below 1.5x (45%).
         $result = $this->invoke('evaluatePayments');
         $this->assertSame('degraded', $result['status']);
     }

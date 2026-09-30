@@ -45,8 +45,9 @@ final class ProductAuthorService implements HasHooks
         // Display on loop.
         add_action('woocommerce_after_shop_loop_item_title', [$this, 'displayOnLoop'], 3);
 
-        // Schema.org markup.
-        add_action('wp_footer', [$this, 'outputSchema']);
+        // Schema.org markup, on the WooCommerce Product node rather than a
+        // second standalone Product.
+        add_filter('woocommerce_structured_data_product', [$this, 'addSchemaAuthor'], 10, 2);
     }
 
     public function registerTaxonomy(): void
@@ -67,7 +68,9 @@ final class ProductAuthorService implements HasHooks
             'show_ui' => true,
             'show_admin_column' => true,
             'query_var' => true,
-            'rewrite' => ['slug' => 'author', 'with_front' => false],
+            // Not 'author': core author archives own /author/<name>/ and win,
+            // so every author link was a 404.
+            'rewrite' => ['slug' => 'product-author', 'with_front' => false],
             'show_in_rest' => true,
         ]);
     }
@@ -132,49 +135,29 @@ final class ProductAuthorService implements HasHooks
     }
 
     /**
-     * Output Schema.org Person markup for product authors.
+     * Add the product authors as Schema.org Person to the Product markup.
+     *
+     * @param array<string, mixed> $markup
+     * @return array<string, mixed>
      */
-    public function outputSchema(): void
+    public function addSchemaAuthor(array $markup, \WC_Product $product): array
     {
-        if (! is_product()) {
-            return;
-        }
-
-        global $product;
-
-        if (! $product instanceof \WC_Product) {
-            return;
-        }
-
-        $authors = $this->getProductAuthors($product->get_id());
-
-        if (empty($authors)) {
-            return;
-        }
-
         $persons = [];
 
-        foreach ($authors as $author) {
+        foreach ($this->getProductAuthors($product->get_id()) as $author) {
             $termLink = get_term_link($author);
-            $url = is_wp_error($termLink) ? '' : $termLink;
-            $persons[] = [
+            $persons[] = array_filter([
                 '@type' => 'Person',
                 'name' => $author->name,
-                'url' => $url,
-            ];
+                'url' => is_wp_error($termLink) ? '' : $termLink,
+            ]);
         }
 
-        $schema = [
-            '@context' => 'https://schema.org',
-            '@type' => 'Product',
-            'name' => $product->get_name(),
-            'author' => count($persons) === 1 ? $persons[0] : $persons,
-        ];
+        if ($persons !== []) {
+            $markup['author'] = count($persons) === 1 ? $persons[0] : $persons;
+        }
 
-        wp_print_inline_script_tag(
-            (string) wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-            ['type' => 'application/ld+json'],
-        );
+        return $markup;
     }
 
     /**

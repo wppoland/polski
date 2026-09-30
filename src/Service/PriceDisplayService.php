@@ -28,11 +28,20 @@ final class PriceDisplayService
         $productAmount = (float) $product->get_meta('_polski_unit_price_product_amount', true);
         $unitSlug = (string) $product->get_meta('_polski_unit_price_unit', true);
 
+        // Variations set their own quantity; unit and base come from the product
+        // when the variation leaves them empty.
+        $parent = $product->get_parent_id() > 0 ? wc_get_product($product->get_parent_id()) : null;
+        if ($parent instanceof \WC_Product) {
+            $unitSlug = $unitSlug !== '' ? $unitSlug : (string) $parent->get_meta('_polski_unit_price_unit', true);
+            $baseAmount = $baseAmount > 0 ? $baseAmount : (float) $parent->get_meta('_polski_unit_price_base', true);
+        }
+
         if ($baseAmount <= 0 || $productAmount <= 0 || $unitSlug === '') {
             return null;
         }
 
-        $price = (float) $product->get_price();
+        // Gross or net, as WooCommerce shows the price this sits next to.
+        $price = (float) wc_get_price_to_display($product);
 
         if ($price <= 0) {
             return null;
@@ -70,6 +79,11 @@ final class PriceDisplayService
 
         $priceFormatted = wc_price($unitPrice->pricePerUnit, ['currency' => $unitPrice->currency]);
         $unitLabel = $this->getUnitLabel($unitPrice->unit);
+
+        // A price per 1000 ml is not a price per ml: carry the base into the label.
+        if ((float) $unitPrice->baseAmount !== 1.0) {
+            $unitLabel = wc_format_localized_decimal((string) $unitPrice->baseAmount) . ' ' . $unitLabel;
+        }
 
         $template = $settings['unit_price_text'] ?? '{price} / {unit}';
 

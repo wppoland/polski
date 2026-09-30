@@ -47,6 +47,10 @@ $polski_text = static function (string $key) use ($polski_settings): ?string {
 // before any side-effect; here we only echo the raw input back (sanitised).
 // phpcs:disable WordPress.Security.NonceVerification.Missing -- Sticky echo only; side-effect path verifies the nonce.
 $polski_sticky_order = isset($_POST['polski_order_number']) ? sanitize_text_field(wp_unslash((string) $_POST['polski_order_number'])) : '';
+// The order-email CTA links here with ?polski_order_number=<n>; prefill it.
+if ($polski_sticky_order === '' && isset($_GET['polski_order_number'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Prefill only.
+    $polski_sticky_order = sanitize_text_field(wp_unslash((string) $_GET['polski_order_number'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Prefill only.
+}
 $polski_sticky_email = isset($_POST['polski_email']) ? sanitize_email(wp_unslash((string) $_POST['polski_email'])) : '';
 // phpcs:enable WordPress.Security.NonceVerification.Missing
 

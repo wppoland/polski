@@ -39,6 +39,12 @@ final class IncidentService implements HasHooks
 
     public function ensureCron(): void
     {
+        if (! \Polski\Admin\ModulesPage::isModuleEnabled('cra_readiness')) {
+            wp_clear_scheduled_hook(self::CRON_HOOK);
+
+            return;
+        }
+
         if (! wp_next_scheduled(self::CRON_HOOK)) {
             wp_schedule_event(time() + HOUR_IN_SECONDS, 'hourly', self::CRON_HOOK);
         }
@@ -200,9 +206,20 @@ final class IncidentService implements HasHooks
         }
     }
 
+    /**
+     * The CRA module settings field, falling back to the older standalone option.
+     */
+    private function setting(string $key, string $legacyOption): string
+    {
+        $settings = get_option('polski_cra', []);
+        $value = is_array($settings) ? trim((string) ($settings[$key] ?? '')) : '';
+
+        return $value !== '' ? $value : (string) get_option($legacyOption, '');
+    }
+
     private function sendWebhook(Incident $incident): bool
     {
-        $url = (string) get_option(self::OPTION_WEBHOOK, '');
+        $url = $this->setting('incident_webhook', self::OPTION_WEBHOOK);
 
         if ($url === '' || ! wp_http_validate_url($url)) {
             return false;
@@ -225,7 +242,7 @@ final class IncidentService implements HasHooks
 
     private function sendEmail(Incident $incident): bool
     {
-        $to = (string) get_option(self::OPTION_NOTIFY_EMAIL, '');
+        $to = $this->setting('incident_email', self::OPTION_NOTIFY_EMAIL);
 
         if ($to === '' || ! is_email($to)) {
             return false;

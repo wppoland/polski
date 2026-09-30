@@ -73,6 +73,8 @@ final class LiveCartService implements HasHooks
 
         wp_localize_script('polski-live-cart', 'polskiLiveCart', [
             'autoOpen' => (bool) $settings['auto_open'],
+            // A classic form post adds the product in this same request, before the page renders.
+            'openOnLoad' => did_action('woocommerce_add_to_cart') > 0,
             'cartUrl' => wc_get_cart_url(),
             'checkoutUrl' => wc_get_checkout_url(),
             'i18n' => [
@@ -206,7 +208,8 @@ final class LiveCartService implements HasHooks
 
         // Free shipping progress.
         if ($settings['show_shipping_notice'] && $settings['free_shipping_threshold'] > 0 && $cart) {
-            $total = (float) $cart->get_subtotal();
+            // Same base as WooCommerce free shipping and the subtotal shown below: gross or net per the tax display setting.
+            $total = (float) $cart->get_displayed_subtotal();
             $threshold = (float) $settings['free_shipping_threshold'];
 
             if ($total >= $threshold) {

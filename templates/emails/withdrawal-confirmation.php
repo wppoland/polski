@@ -106,10 +106,10 @@ do_action('woocommerce_email_header', $email_heading, $email);
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($order->get_items() as $item) :
-        if (! $item instanceof \WC_Order_Item_Product) {
-            continue;
-        }
+    <?php
+    $polski_lines = \Polski\Email\WithdrawalConfirmationEmail::declaredLines($order, $request);
+    foreach ($polski_lines as $polski_line) :
+        $item = $polski_line['item'];
         $product = $item->get_product();
         $attrs = '';
         if ($product instanceof \WC_Product && $product->is_type('variation')) {
@@ -123,15 +123,15 @@ do_action('woocommerce_email_header', $email_heading, $email);
                     <br /><small><?php echo esc_html($attrs); ?></small>
                 <?php endif; ?>
             </td>
-            <td align="right"><?php echo esc_html((string) $item->get_quantity()); ?></td>
-            <td align="right"><?php echo wp_kses_post(wc_price((float) $item->get_total(), ['currency' => $currency])); ?></td>
+            <td align="right"><?php echo esc_html((string) wc_stock_amount($polski_line['quantity'])); ?></td>
+            <td align="right"><?php echo wp_kses_post(wc_price($polski_line['total'], ['currency' => $currency])); ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>
     <tfoot>
         <tr>
-            <th align="right" colspan="2"><?php esc_html_e('Order total', 'polski'); ?></th>
-            <th align="right"><?php echo wp_kses_post(wc_price((float) $order->get_total(), ['currency' => $currency])); ?></th>
+            <th align="right" colspan="2"><?php esc_html_e('Total', 'polski'); ?></th>
+            <th align="right"><?php echo wp_kses_post(wc_price(array_sum(array_column($polski_lines, 'total')), ['currency' => $currency])); ?></th>
         </tr>
     </tfoot>
 </table>

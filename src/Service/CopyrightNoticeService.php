@@ -27,6 +27,10 @@ final class CopyrightNoticeService implements HasHooks
     public function registerHooks(): void
     {
         if (! ModulesPage::isModuleEnabled('copyright_notice')) {
+            // A page that still carries the shortcode must not print it raw.
+            add_shortcode('polski_copyright', '__return_empty_string');
+            add_shortcode('polski_image_credit', '__return_empty_string');
+
             return;
         }
 

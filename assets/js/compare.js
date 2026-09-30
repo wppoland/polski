@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const payload = await response.json();
 
       if (payload?.success) {
-        window.location.href = payload.data?.compare_url || window.location.href;
+        // Stay where the shopper cleared it; the page re-renders empty.
+        window.location.reload();
       }
 
       return;

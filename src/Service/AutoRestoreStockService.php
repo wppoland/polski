@@ -11,9 +11,10 @@ use Polski\Contract\HasHooks;
 /**
  * Automatically restore product stock when orders are cancelled or refunded.
  *
- * WooCommerce reduces stock on order placement but does not always restore it
- * when the order is subsequently cancelled or refunded. This service ensures
- * stock levels stay accurate by hooking into status transitions.
+ * WooCommerce restores stock itself on cancelled and failed orders, but not on
+ * a status change to refunded. Only line items still carrying WooCommerce's
+ * _reduced_stock meta are restored, so a transition WooCommerce already handled
+ * is never restocked twice.
  */
 final class AutoRestoreStockService implements HasHooks
 {
@@ -68,8 +69,8 @@ final class AutoRestoreStockService implements HasHooks
                 continue;
             }
 
-            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official WooCommerce order-item quantity hook.
-            $qty = apply_filters('woocommerce_order_item_quantity', $item->get_quantity(), $order, $item);
+            // WooCommerce records the reduced quantity per item and clears it when it restocks.
+            $qty = wc_stock_amount($item->get_meta('_reduced_stock', true));
 
             if ($qty <= 0) {
                 continue;
@@ -77,6 +78,13 @@ final class AutoRestoreStockService implements HasHooks
 
             $oldStock = $product->get_stock_quantity();
             $newStock = wc_update_product_stock($product, $qty, 'increase');
+
+            if (is_wp_error($newStock)) {
+                continue;
+            }
+
+            $item->delete_meta_data('_reduced_stock');
+            $item->save();
 
             $order->add_order_note(
                 sprintf(
@@ -102,6 +110,7 @@ final class AutoRestoreStockService implements HasHooks
 
         if ($restored) {
             $order->update_meta_data('_polski_stock_restored', '1');
+            $order->set_order_stock_reduced(false);
             $order->save();
         }
     }

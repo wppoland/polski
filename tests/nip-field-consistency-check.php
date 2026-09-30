@@ -91,13 +91,25 @@ foreach ($polski_cases as $polski_raw => $polski_should_reject) {
 $polski_service = Polski\Plugin::instance()->container()->get(Polski\Service\NipLookupService::class);
 $polski_user_id = username_exists('polski_nip_probe') ?: wp_create_user('polski_nip_probe', wp_generate_password(16), 'polski_nip_probe@example.test');
 
+// WooCommerce passes the field DEFINITIONS as the third argument; the typed
+// value is only in $_POST. Reading the array is what blocked every save.
+$polski_definitions = ['billing_nip' => ['type' => 'text', 'label' => 'NIP']];
+
 wc_clear_notices();
-$polski_service->validateSavedAddress((int) $polski_user_id, 'billing', ['billing_nip' => 'abcdef'], null);
+$_POST['billing_nip'] = 'abcdef';
+$polski_service->validateSavedAddress((int) $polski_user_id, 'billing', $polski_definitions, null);
 $polski_check('My Account refuses an invalid NIP', wc_notice_count('error') === 1);
 
 wc_clear_notices();
-$polski_service->validateSavedAddress((int) $polski_user_id, 'billing', ['billing_nip' => '1234563218'], null);
+$_POST['billing_nip'] = '1234563218';
+$polski_service->validateSavedAddress((int) $polski_user_id, 'billing', $polski_definitions, null);
 $polski_check('My Account accepts a valid NIP', wc_notice_count('error') === 0);
+
+wc_clear_notices();
+$_POST['billing_nip'] = '';
+$polski_service->validateSavedAddress((int) $polski_user_id, 'billing', $polski_definitions, null);
+$polski_check('My Account accepts an empty NIP', wc_notice_count('error') === 0);
+unset($_POST['billing_nip']);
 wc_clear_notices();
 
 $polski_customer = new WC_Customer((int) $polski_user_id);

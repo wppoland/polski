@@ -58,7 +58,10 @@ final class AjaxAddToCartService implements HasHooks
             ],
         ]);
 
-        wp_add_inline_style('polski-frontend', '
+        // polski-frontend is only enqueued on checkout and account pages, so the toast needs its own handle.
+        wp_register_style('polski-ajax-cart', false, [], \Polski\VERSION);
+        wp_enqueue_style('polski-ajax-cart');
+        wp_add_inline_style('polski-ajax-cart', '
             .polski-ajax-cart-notice {
                 position: fixed;
                 top: 32px;
@@ -135,7 +138,12 @@ final class AjaxAddToCartService implements HasHooks
         $addedKey = WC()->cart->add_to_cart($productId, $quantity, $variationId, $variation);
 
         if (! $addedKey) {
-            wp_send_json_error(['message' => __('Could not add to cart.', 'polski')]);
+            // WooCommerce says why (stock, sold individually) in a notice, which
+            // would otherwise wait for the next page load.
+            $notices = wc_get_notices('error');
+            $message = ! empty($notices) ? wp_strip_all_tags($notices[0]['notice'] ?? '') : __('Could not add to cart.', 'polski');
+            wc_clear_notices();
+            wp_send_json_error(['message' => $message]);
         }
 
         // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is the official WooCommerce post-add-to-cart hook.

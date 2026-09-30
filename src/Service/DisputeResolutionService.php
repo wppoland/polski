@@ -24,6 +24,16 @@ final class DisputeResolutionService implements HasHooks
         add_action('wp_footer', [$this, 'renderNotice']);
     }
 
+    /**
+     * The saved notice, or '' when it still points to the EU ODR platform,
+     * which closed on 20 July 2025 (Regulation (EU) 2024/3228): the old stock
+     * text would send customers to a dead service.
+     */
+    public static function usableText(string $text): string
+    {
+        return str_contains($text, 'ec.europa.eu/consumers/odr') ? '' : $text;
+    }
+
     public function renderNotice(): void
     {
         if (! is_checkout() && ! is_cart()) {
@@ -31,7 +41,7 @@ final class DisputeResolutionService implements HasHooks
         }
 
         $settings = get_option('polski_general', []);
-        $text = $settings['dispute_resolution_text'] ?? '';
+        $text = self::usableText((string) ($settings['dispute_resolution_text'] ?? ''));
 
         if ($text === '') {
             return;

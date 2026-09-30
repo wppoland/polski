@@ -203,6 +203,10 @@ final class WishlistService implements Bootable, HasHooks
 
     public function renderWishlist(): string
     {
+        if (! $this->isEnabled()) {
+            return '';
+        }
+
         $products = $this->getProducts();
 
         return $this->templateLoader->render('account/wishlist', [

@@ -7,3 +7,9 @@
     margin: 0.75rem 0 0;
     color: #6b7280;
 }
+
+/* Theme button and pagination styles set display, which beats [hidden]. */
+.polski-infinite-scroll__button[hidden],
+.woocommerce-pagination[hidden] {
+    display: none !important;
+}

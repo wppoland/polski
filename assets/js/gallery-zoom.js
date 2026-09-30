@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    lightboxImage.src = img.currentSrc || img.src;
+    // WooCommerce puts the full-size file on the image and its link.
+    const link = img.closest('a');
+    lightboxImage.src = img.dataset.large_image || (link && link.href) || img.currentSrc || img.src;
     lightboxImage.alt = img.alt || '';
     lightbox.hidden = false;
     document.body.classList.add('polski-gallery-lightbox-open');
@@ -62,7 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         img.setAttribute('aria-label', config.triggerLabel);
       }
 
-      img.addEventListener('click', () => openLightbox(img));
+      img.addEventListener('click', (event) => {
+        // The image sits inside a link to the full-size file.
+        event.preventDefault();
+        openLightbox(img);
+      });
       img.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
           event.preventDefault();

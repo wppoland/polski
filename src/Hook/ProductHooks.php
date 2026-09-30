@@ -46,12 +46,12 @@ final class ProductHooks implements Bootable, HasHooks
         // "From {price}" for variable products (replaces price range with "od XX PLN").
         add_filter('woocommerce_get_price_html', [$this, 'filterVariablePriceHtml'], 10, 2);
 
+        // A selected variation brings its own unit price, Omnibus notice and delivery time.
+        add_filter('woocommerce_available_variation', [$this, 'addVariationMarks'], 10, 3);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueVariationMarksScript'], 20);
+
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
-
-        // Clear structured data cache on product save
-        add_action('woocommerce_update_product', [$this, 'clearSchemaCache'], 10, 1);
-        add_action('woocommerce_new_product', [$this, 'clearSchemaCache'], 10, 1);
     }
 
     /**
@@ -60,6 +60,47 @@ final class ProductHooks implements Bootable, HasHooks
     public function filterVariablePriceHtml(string $priceHtml, \WC_Product $product): string
     {
         return $this->priceDisplay->getFromPriceHtml($priceHtml, $product);
+    }
+
+    /**
+     * Append the variation's own price marks to the price WooCommerce shows once
+     * the shopper picks a variation. The summary marks describe the parent, so
+     * the script below hides them while a variation is selected.
+     *
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    public function addVariationMarks(array $data, \WC_Product $product, \WC_Product $variation): array
+    {
+        $omnibus = \Polski\Util\OptionCache::get('polski_omnibus', []);
+        $showOmnibus = ! is_array($omnibus) || ($omnibus['show_on_single'] ?? true);
+
+        $marks = $this->priceDisplay->getUnitPriceHtml($variation)
+            . ($showOmnibus ? $this->priceDisplay->getOmnibusPriceHtml($variation) : '')
+            . $this->deliveryTime->getDeliveryTimeHtml($variation);
+
+        if ($marks !== '') {
+            $data['price_html'] = (string) ($data['price_html'] ?? '') . $marks;
+        }
+
+        return $data;
+    }
+
+    public function enqueueVariationMarksScript(): void
+    {
+        if (! is_product()) {
+            return;
+        }
+
+        wp_add_inline_script(
+            'wc-add-to-cart-variation',
+            'jQuery(function($){var m=".polski-unit-price,.polski-omnibus-price,.polski-delivery-time";'
+            // Only this product's marks: related and upsell items sit in their own
+            // .product inside it and keep theirs.
+            . 'function own(f){var p=f.closest(".product");return p.find(m).not(f.find(m)).filter(function(){return $(this).closest(".product").is(p);});}'
+            . '$(document.body).on("found_variation","form.variations_form",function(){own($(this)).hide();})'
+            . '.on("reset_data","form.variations_form",function(){own($(this)).show();});});',
+        );
     }
 
     /**
@@ -413,14 +454,10 @@ final class ProductHooks implements Bootable, HasHooks
             return $data;
         }
 
+        // Not cached: a 12-hour transient keyed on the product kept serving
+        // data after a settings or module change (a GTIN switched off stayed
+        // on the page). Every read below is already in the object cache.
         $productId = $product->get_id();
-        $cacheKey = 'polski_schema_' . $productId;
-        $cachedExtra = get_transient($cacheKey);
-
-        if ($cachedExtra !== false && is_array($cachedExtra)) {
-            return array_merge($data, $cachedExtra);
-        }
-
         $extraData = [];
 
         // Add Brand if available AND enabled
@@ -434,14 +471,34 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
-        // Add Manufacturer if available AND enabled
+        // Manufacturer: the name the page shows (manufacturer module) wins,
+        // the GPSR manufacturer is the fallback. Both obey the setting and
+        // their own module, so a switched-off source never reaches JSON-LD.
         if ($settings['schema_manufacturer'] ?? true) {
-            $manufacturer = $this->productInfo->getManufacturer($product);
+            $manufacturer = \Polski\Admin\ModulesPage::isModuleEnabled('manufacturer')
+                ? $this->productInfo->getManufacturer($product)
+                : '';
             if ($manufacturer !== '') {
                 $extraData['manufacturer'] = [
                     '@type' => 'Organization',
                     'name' => $manufacturer,
                 ];
+            } elseif (\Polski\Admin\ModulesPage::isModuleEnabled('gpsr')) {
+                $gpsrManufacturer = (string) get_post_meta($productId, '_polski_gpsr_manufacturer_name', true);
+                $gpsrContact = (string) get_post_meta($productId, '_polski_gpsr_manufacturer_contact', true);
+                if ($gpsrManufacturer !== '') {
+                    $extraData['manufacturer'] = [
+                        '@type' => 'Organization',
+                        'name' => $gpsrManufacturer,
+                    ];
+                    if ($gpsrContact !== '') {
+                        $extraData['manufacturer']['contactPoint'] = [
+                            '@type' => 'ContactPoint',
+                            'contactType' => 'product safety',
+                            'description' => $gpsrContact,
+                        ];
+                    }
+                }
             }
         }
 
@@ -481,8 +538,14 @@ final class ProductHooks implements Bootable, HasHooks
         // Add Delivery Time (OfferShippingDetails) if available.
         if ($settings['schema_delivery_time'] ?? true) {
             $deliveryTime = $this->deliveryTime->getDeliveryTimeText($product);
-            if ($deliveryTime !== '') {
-                $extraData['shippingDetails'] = [
+            // "2-3 dni robocze" is a range, not 23: take the first and last
+            // number. A single number keeps the old 1..n reading.
+            preg_match_all('/\d+/', $deliveryTime, $days);
+            $days = array_map('intval', $days[0]);
+
+            // shippingDetails belongs to the Offer, not the Product.
+            if ($days !== [] && isset($data['offers'][0]) && is_array($data['offers'][0])) {
+                $data['offers'][0]['shippingDetails'] = [
                     '@type' => 'OfferShippingDetails',
                     'deliveryTime' => [
                         '@type' => 'ShippingDeliveryTime',
@@ -494,8 +557,8 @@ final class ProductHooks implements Bootable, HasHooks
                         ],
                         'transitTime' => [
                             '@type' => 'QuantitativeValue',
-                            'minValue' => 1,
-                            'maxValue' => (int) preg_replace('/\D/', '', $deliveryTime) ?: 5,
+                            'minValue' => count($days) > 1 ? min($days[0], end($days)) : min(1, $days[0]),
+                            'maxValue' => max($days[0], end($days)),
                             'unitCode' => 'DAY',
                         ],
                     ],
@@ -507,70 +570,10 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
-        // Add GPSR (Product Safety) data if available.
-        $gpsrManufacturer = get_post_meta($productId, '_polski_gpsr_manufacturer_name', true);
-        $gpsrContact = get_post_meta($productId, '_polski_gpsr_manufacturer_contact', true);
-        if (! empty($gpsrManufacturer)) {
-            $manufacturerSchema = [
-                '@type' => 'Organization',
-                'name' => $gpsrManufacturer,
-            ];
-            if (! empty($gpsrContact)) {
-                $manufacturerSchema['contactPoint'] = [
-                    '@type' => 'ContactPoint',
-                    'contactType' => 'product safety',
-                    'description' => $gpsrContact,
-                ];
-            }
-            $extraData['manufacturer'] = $manufacturerSchema;
-        }
-
-        // Add Food/Nutrition data if available.
-        // Read through FoodService so schema and the storefront table agree on the
-        // stored shape; reading the meta raw here used to silently skip the JSON
-        // string that the product panel writes.
-        $nutrients = $this->foodService->getNutrients($product);
-        if ($nutrients !== []) {
-            $nutritionData = ['@type' => 'NutritionInformation'];
-            $nutrientMap = [
-                'energy_kcal' => 'calories',
-                'fat' => 'fatContent',
-                'saturated_fat' => 'saturatedFatContent',
-                'carbohydrates' => 'carbohydrateContent',
-                'sugars' => 'sugarContent',
-                'protein' => 'proteinContent',
-                'fibre' => 'fiberContent',
-            ];
-            foreach ($nutrientMap as $slug => $schemaKey) {
-                if (! isset($nutrients[$slug])) {
-                    continue;
-                }
-                $nutritionData[$schemaKey] = $nutrients[$slug]['value'] . ' ' . $nutrients[$slug]['unit'];
-            }
-
-            // Annex XV declares salt, Schema.org only offers sodiumContent, and
-            // the two are not the same number: salt = sodium x 2.5. Mapping the
-            // slugs straight across published every product as 2.5 times as
-            // salty as its own label says.
-            if (isset($nutrients['salt']['value']) && is_numeric($nutrients['salt']['value'])) {
-                $nutritionData['sodiumContent'] = round((float) $nutrients['salt']['value'] / 2.5, 3) . ' g';
-            }
-            if (count($nutritionData) > 1) {
-                $extraData['nutrition'] = $nutritionData;
-            }
-        }
-
-        // Cache the additional generated schema array for 12 hours (cache gets invalidated on product save)
-        set_transient($cacheKey, $extraData, 12 * HOUR_IN_SECONDS);
+        // No 'nutrition' here: NutritionInformation is not a Product property
+        // in Schema.org (it belongs to Recipe and MenuItem), so validators flag
+        // it. The nutrition table still renders on the product page.
 
         return array_merge($data, $extraData);
-    }
-
-    /**
-     * Clear the Schema.org object cache on product save.
-     */
-    public function clearSchemaCache(int $productId): void
-    {
-        delete_transient('polski_schema_' . $productId);
     }
 }

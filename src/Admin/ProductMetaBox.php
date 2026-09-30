@@ -113,25 +113,10 @@ final class ProductMetaBox implements HasHooks
         // --- Delivery Time Section ---
         echo '<div class="options_group">';
 
-        $deliveryTimes = get_terms([
-            'taxonomy' => 'polski_delivery_time',
-            'hide_empty' => false,
-        ]);
-
-        $dtOptions = ['' => __('- Use default -', 'polski')];
-
-        if (is_array($deliveryTimes)) {
-            foreach ($deliveryTimes as $term) {
-                if ($term instanceof \WP_Term) {
-                    $dtOptions[(string) $term->term_id] = $term->name;
-                }
-            }
-        }
-
         woocommerce_wp_select([
             'id' => '_polski_delivery_time_id',
             'label' => __('Delivery time', 'polski'),
-            'options' => $dtOptions,
+            'options' => $this->deliveryTimeOptions(__('- Use default -', 'polski')),
             'description' => __('Estimated delivery time displayed on the product page.', 'polski'),
             'desc_tip' => true,
         ]);
@@ -171,192 +156,205 @@ final class ProductMetaBox implements HasHooks
         echo '</div>';
 
         // --- Badge Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Badge Management', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('badge_management')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Badge Management', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_badge_text',
-            'label' => __('Main badge', 'polski'),
-            'description' => __('Manual badge displayed independently of automatic conditions.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_badge_text',
+                'label' => __('Main badge', 'polski'),
+                'description' => __('Manual badge displayed independently of automatic conditions.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_select([
-            'id' => '_polski_badge_style',
-            'label' => __('Badge style', 'polski'),
-            'options' => [
-                '' => __('Default', 'polski'),
-                'accent' => __('Accent', 'polski'),
-                'success' => __('Success', 'polski'),
-                'warning' => __('Warning', 'polski'),
-                'neutral' => __('Neutral', 'polski'),
-            ],
-            'description' => __('Manual badge style.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_select([
+                'id' => '_polski_badge_style',
+                'label' => __('Badge style', 'polski'),
+                'options' => [
+                    '' => __('Default', 'polski'),
+                    'accent' => __('Accent', 'polski'),
+                    'success' => __('Success', 'polski'),
+                    'warning' => __('Warning', 'polski'),
+                    'neutral' => __('Neutral', 'polski'),
+                ],
+                'description' => __('Manual badge style.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_badge_secondary_text',
-            'label' => __('Secondary badge', 'polski'),
-            'description' => __('Optional second badge, e.g. Polish brand, Eco, Sale hit.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_badge_secondary_text',
+                'label' => __('Secondary badge', 'polski'),
+                'description' => __('Optional second badge, e.g. Polish brand, Eco, Sale hit.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Tab Manager Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Tab Manager', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('tab_manager')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Tab Manager', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_tab_1_title',
-            'label' => __('Tab 1 title', 'polski'),
-            'description' => __('Optional additional tab for this product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_tab_1_title',
+                'label' => __('Tab 1 title', 'polski'),
+                'description' => __('Optional additional tab for this product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_tab_1_content',
-            'label' => __('Tab 1 content', 'polski'),
-            'description' => __('HTML/text content for the first additional tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_tab_1_content',
+                'label' => __('Tab 1 content', 'polski'),
+                'description' => __('HTML/text content for the first additional tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_tab_2_title',
-            'label' => __('Tab 2 title', 'polski'),
-            'description' => __('Second optional product tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_tab_2_title',
+                'label' => __('Tab 2 title', 'polski'),
+                'description' => __('Second optional product tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_tab_2_content',
-            'label' => __('Tab 2 content', 'polski'),
-            'description' => __('HTML/text content for the second additional tab.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_tab_2_content',
+                'label' => __('Tab 2 content', 'polski'),
+                'description' => __('HTML/text content for the second additional tab.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Featured Video Section ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Featured Video', 'polski') . '</h4>';
+        // Only while the module that reads these fields is on.
+        if (ModulesPage::isModuleEnabled('featured_video')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Featured Video', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_featured_video_url',
-            'label' => __('Video URL', 'polski'),
-            'description' => __('Supports YouTube, Vimeo, and direct MP4 file links.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_featured_video_url',
+                'label' => __('Video URL', 'polski'),
+                'description' => __('Supports YouTube, Vimeo, and direct MP4 file links.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_featured_video_title',
-            'label' => __('Video section heading', 'polski'),
-            'description' => __('Optional heading only for this product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_featured_video_title',
+                'label' => __('Video section heading', 'polski'),
+                'description' => __('Optional heading only for this product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
-        // --- Product responsibility -------------------------------------
-        // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
-        // economic operator, so every party here carries a contact field.
-        // Kept apart from the safety texts below: one block is about who is
-        // answerable for the product, the other about how to use it safely.
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Product responsibility', 'polski') . '</h4>';
+        // Both GPSR groups follow the gpsr module, with the matching skip in
+        // saveProductMeta so hidden fields keep their stored values.
+        if (ModulesPage::isModuleEnabled('gpsr')) {
+            // --- Product responsibility -------------------------------------
+            // GPSR art. 19(1)(a) wants a postal AND an electronic address for the
+            // economic operator, so every party here carries a contact field.
+            // Kept apart from the safety texts below: one block is about who is
+            // answerable for the product, the other about how to use it safely.
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Product responsibility', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_manufacturer_name',
-            'label' => __('Manufacturer name', 'polski'),
-            'description' => __('Full manufacturer name required by GPSR.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_manufacturer_name',
+                'label' => __('Manufacturer name', 'polski'),
+                'description' => __('Full manufacturer name required by GPSR.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_manufacturer_address',
-            'label' => __('Manufacturer address', 'polski'),
-            'description' => __('Full postal address of the manufacturer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_manufacturer_address',
+                'label' => __('Manufacturer address', 'polski'),
+                'description' => __('Full postal address of the manufacturer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_manufacturer_contact',
-            'label' => __('Manufacturer contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, that GPSR requires alongside the postal one.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_manufacturer_contact',
+                'label' => __('Manufacturer contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, that GPSR requires alongside the postal one.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_responsible_person',
-            'label' => __('Responsible person', 'polski'),
-            'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_responsible_person',
+                'label' => __('Responsible person', 'polski'),
+                'description' => __('Person responsible in the EU for product compliance with GPSR.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_responsible_address',
-            'label' => __('Responsible person address', 'polski'),
-            'description' => __('Full postal address of the EU responsible person.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_responsible_address',
+                'label' => __('Responsible person address', 'polski'),
+                'description' => __('Full postal address of the EU responsible person.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_responsible_contact',
-            'label' => __('Responsible person contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, for the EU responsible person.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_responsible_contact',
+                'label' => __('Responsible person contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, for the EU responsible person.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_importer_name',
-            'label' => __('Importer name', 'polski'),
-            'description' => __('Full importer name (if applicable).', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_importer_name',
+                'label' => __('Importer name', 'polski'),
+                'description' => __('Full importer name (if applicable).', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_importer_address',
-            'label' => __('Importer address', 'polski'),
-            'description' => __('Full postal address of the importer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_importer_address',
+                'label' => __('Importer address', 'polski'),
+                'description' => __('Full postal address of the importer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_importer_contact',
-            'label' => __('Importer contact', 'polski'),
-            'description' => __('Electronic address, an email or a web page, for the importer.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_importer_contact',
+                'label' => __('Importer contact', 'polski'),
+                'description' => __('Electronic address, an email or a web page, for the importer.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
 
-        // --- Product safety (GPSR) --------------------------------------
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Product safety (GPSR)', 'polski') . '</h4>';
+            // --- Product safety (GPSR) --------------------------------------
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Product safety (GPSR)', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_gpsr_product_identifier',
-            'label' => __('Product identifier', 'polski'),
-            'description' => __('Batch number, serial number, or other product identifier.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_gpsr_product_identifier',
+                'label' => __('Product identifier', 'polski'),
+                'description' => __('Batch number, serial number, or other product identifier.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_safety_warnings',
-            'label' => __('Safety warnings', 'polski'),
-            'description' => __('Safety warnings regarding the product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_safety_warnings',
+                'label' => __('Safety warnings', 'polski'),
+                'description' => __('Safety warnings regarding the product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_gpsr_instructions',
-            'label' => __('Safety instructions', 'polski'),
-            'description' => __('Instructions for safe use of the product.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_gpsr_instructions',
+                'label' => __('Safety instructions', 'polski'),
+                'description' => __('Instructions for safe use of the product.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
 
         // --- Product markings Section ---
         if (\Polski\Admin\ModulesPage::isModuleEnabled('product_markings')) {
@@ -378,36 +376,52 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
-        // --- Consumer information Section (Directive 2024/825) ---
-        echo '<div class="options_group">';
-        echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
+        if (ModulesPage::isModuleEnabled('consumer_information')) {
+            // --- Consumer information Section (Directive 2024/825) ---
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Consumer information (2024/825)', 'polski') . '</h4>';
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_durability_guarantee_months',
-            'label' => __('Guarantee of durability (months)', 'polski'),
-            'description' => __('Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings.', 'polski'),
-            'desc_tip' => true,
-            'type' => 'number',
-            'custom_attributes' => ['min' => '0', 'step' => '1'],
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_durability_guarantee_months',
+                'label' => __('Guarantee of durability (months)', 'polski'),
+                'description' => __('Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'number',
+                'custom_attributes' => ['min' => '0', 'step' => '1'],
+            ]);
 
-        woocommerce_wp_text_input([
-            'id' => '_polski_update_period_months',
-            'label' => __('Free software updates (months)', 'polski'),
-            'description' => __('For goods with digital elements: how long free updates are supplied.', 'polski'),
-            'desc_tip' => true,
-            'type' => 'number',
-            'custom_attributes' => ['min' => '0', 'step' => '1'],
-        ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_update_period_months',
+                'label' => __('Free software updates (months)', 'polski'),
+                'description' => __('For goods with digital elements: how long free updates are supplied.', 'polski'),
+                'desc_tip' => true,
+                'type' => 'number',
+                'custom_attributes' => ['min' => '0', 'step' => '1'],
+            ]);
 
-        woocommerce_wp_textarea_input([
-            'id' => '_polski_repair_info',
-            'label' => __('Repair information', 'polski'),
-            'description' => __('Repairability score where one is established, otherwise spare part availability and repair contact.', 'polski'),
-            'desc_tip' => true,
-        ]);
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_repair_info',
+                'label' => __('Repair information', 'polski'),
+                'description' => __('Repairability score where one is established, otherwise spare part availability and repair contact.', 'polski'),
+                'desc_tip' => true,
+            ]);
 
-        echo '</div>';
+            echo '</div>';
+        }
+
+        if (ModulesPage::isModuleEnabled('power_supply')) {
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Power supply', 'polski') . '</h4>';
+
+            woocommerce_wp_textarea_input([
+                'id' => '_polski_power_supply',
+                'label' => __('Power supply', 'polski'),
+                'description' => __('Power supply and energy data shown on the product page, e.g. 230 V, 2200 W, energy class A.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            echo '</div>';
+        }
 
         // --- Anti-greenwashing Section ---
         // Guarded together with the matching skip in saveProductMeta. Hiding
@@ -588,6 +602,33 @@ final class ProductMetaBox implements HasHooks
         '_polski_alcohol_content' => 'food_module',
         '_polski_place_of_origin' => 'food_module',
         '_polski_food_distributor' => 'food_module',
+        '_polski_gpsr_manufacturer_name' => 'gpsr',
+        '_polski_gpsr_manufacturer_address' => 'gpsr',
+        '_polski_gpsr_manufacturer_contact' => 'gpsr',
+        '_polski_gpsr_importer_name' => 'gpsr',
+        '_polski_gpsr_importer_address' => 'gpsr',
+        '_polski_gpsr_importer_contact' => 'gpsr',
+        '_polski_gpsr_responsible_person' => 'gpsr',
+        '_polski_gpsr_responsible_address' => 'gpsr',
+        '_polski_gpsr_responsible_contact' => 'gpsr',
+        '_polski_gpsr_product_identifier' => 'gpsr',
+        '_polski_gpsr_safety_warnings' => 'gpsr',
+        '_polski_gpsr_instructions' => 'gpsr',
+        '_polski_durability_guarantee_months' => 'consumer_information',
+        '_polski_update_period_months' => 'consumer_information',
+        '_polski_repair_info' => 'consumer_information',
+        '_polski_power_supply' => 'power_supply',
+        '_polski_badge_text' => 'badge_management',
+        '_polski_badge_style' => 'badge_management',
+        '_polski_badge_secondary_text' => 'badge_management',
+        '_polski_tab_1_title' => 'tab_manager',
+        '_polski_tab_1_content' => 'tab_manager',
+        '_polski_tab_2_title' => 'tab_manager',
+        '_polski_tab_2_content' => 'tab_manager',
+        '_polski_featured_video_url' => 'featured_video',
+        '_polski_featured_video_title' => 'featured_video',
+        '_polski_is_medical_device' => 'product_markings',
+        '_polski_is_adults_only' => 'product_markings',
     ];
 
     /**
@@ -634,6 +675,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_durability_guarantee_months' => 'int',
             '_polski_update_period_months' => 'int',
             '_polski_repair_info' => 'textarea',
+            '_polski_power_supply' => 'textarea',
             '_polski_green_claim_basis' => 'textarea',
             '_polski_green_claim_cert_url' => 'url',
             '_polski_green_claim_expiry' => 'string',
@@ -779,7 +821,43 @@ final class ProductMetaBox implements HasHooks
             'wrapper_class' => 'form-row form-row-last',
         ]);
 
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('delivery_time')) {
+            woocommerce_wp_select([
+                'id' => "_polski_delivery_time_id_{$loop}",
+                'name' => "_polski_variation_delivery_time_id[{$loop}]",
+                'label' => __('Delivery time', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_delivery_time_id', true),
+                'options' => $this->deliveryTimeOptions(__('- Same as product -', 'polski')),
+                'wrapper_class' => 'form-row form-row-full',
+            ]);
+        }
+
         echo '</div>';
+    }
+
+    /**
+     * Delivery time terms as select options, term id => name. PHP turns the
+     * numeric keys into ints, the empty option stays a string.
+     *
+     * @return array<int|string, string>
+     */
+    private function deliveryTimeOptions(string $emptyLabel): array
+    {
+        $options = ['' => $emptyLabel];
+        $terms = get_terms([
+            'taxonomy' => 'polski_delivery_time',
+            'hide_empty' => false,
+        ]);
+
+        if (is_array($terms)) {
+            foreach ($terms as $term) {
+                if ($term instanceof \WP_Term) {
+                    $options[(string) $term->term_id] = $term->name;
+                }
+            }
+        }
+
+        return $options;
     }
 
     /**
@@ -800,5 +878,12 @@ final class ProductMetaBox implements HasHooks
 
         update_post_meta($variationId, '_polski_unit_price_product_amount', (string) (float) $productAmount);
         update_post_meta($variationId, '_polski_unit_price_base', (string) (float) $baseAmount);
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_delivery_time_id'][$loop])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $deliveryTimeId = absint(wp_unslash($_POST['_polski_variation_delivery_time_id'][$loop]));
+            update_post_meta($variationId, '_polski_delivery_time_id', $deliveryTimeId > 0 ? (string) $deliveryTimeId : '');
+        }
     }
 }

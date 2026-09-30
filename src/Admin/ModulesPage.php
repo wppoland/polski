@@ -38,6 +38,17 @@ final class ModulesPage implements HasHooks
     {
         add_action('admin_post_polski_save_module_settings', [$this, 'handleSaveModuleSettings']);
         add_action('wp_ajax_polski_toggle_module', [$this, 'ajaxToggleModule']);
+
+        // Wishlist and Compare add My Account endpoints only while enabled, so
+        // a toggle changes the rewrite rules. Dropping the stored rules makes
+        // WordPress rebuild them on the next request, with the new endpoints.
+        add_action('add_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+        add_action('update_option_' . self::OPTION, [self::class, 'dropRewriteRules']);
+    }
+
+    public static function dropRewriteRules(): void
+    {
+        delete_option('rewrite_rules');
     }
 
     /**
@@ -94,27 +105,27 @@ final class ModulesPage implements HasHooks
             'dynamic_pricing' => __('Automatic cart discounts based on spending or quantity. When enabled, shoppers get a percentage off once the cart subtotal hits a threshold, and bulk discounts when a product\'s quantity hits a threshold; applied automatically in the cart. Off by default.', 'polski'),
             'unit_price' => __('Shows the price per unit, such as per 1 kg or per 100 ml. When enabled, a per-unit price appears next to product prices on shop and product pages, helping customers compare value, in line with Polish consumer law.', 'polski'),
             'omnibus' => __('Tracks price history and shows the lowest price from the last 30 days on discounted products. When enabled, sale products display their lowest 30-day price near the price, helping you meet the EU Omnibus Directive (2019/2161).', 'polski'),
-            'tax_display' => __('Controls how VAT is shown on prices. When enabled, you can set gross or net price display, show VAT rate info, and support the small business VAT exemption (Art. 113), affecting prices shown to shoppers across the store.', 'polski'),
-            'oss_observer' => __('Watches your cross-border EU B2C sales against the OSS threshold. When enabled, it installs the One Stop Shop plugin, which monitors intra-EU B2C sales and flags when you approach the 10,000 EUR threshold for the year.', 'polski'),
-            'delivery_time' => __('Shows an estimated delivery time on product pages. When enabled, each product page displays its delivery estimate; you can set it per product or variation, with a default used when none is specified. Off until enabled.', 'polski'),
-            'shipping_notice' => __('Adds a link to your shipping costs page near prices. When enabled, a shipping costs info link appears next to the product price, so customers can check delivery charges before buying. Off until enabled.', 'polski'),
+            'tax_display' => __('Adds a VAT rate notice next to prices. When enabled, shoppers see a line such as "including 23% VAT", and the small business VAT exemption (Art. 113) switches VAT off and shows the exemption text instead. Gross or net display stays a WooCommerce setting (Settings > Tax); a shop showing net prices gets no VAT notice.', 'polski'),
+            'oss_observer' => __('Offers a one-click install of the One Stop Shop plugin. That plugin does the watching: it monitors your intra-EU B2C sales and flags when you approach the 10,000 EUR threshold for the year. It keeps running until you deactivate it; switching this module off does not stop it.', 'polski'),
+            'delivery_time' => __('Shows an estimated delivery time on product pages. When enabled, each product page displays its delivery estimate; you can set it per product or variation, with a default used when none is specified.', 'polski'),
+            'shipping_notice' => __('Adds a link to your shipping costs page near prices. When enabled, a shipping costs info link appears next to the product price, so customers can check delivery charges before buying.', 'polski'),
             'checkout_button' => __('Changes the order button wording at checkout. When enabled, the place-order button reads "Order with obligation to pay", as required by Polish law, so it\'s clear the order creates a payment obligation.', 'polski'),
             'legal_checkboxes' => __('Adds built-in consent checkboxes to checkout. When enabled, you can show up to 7 checkboxes (terms, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing) for customers to accept during purchase.', 'polski'),
             'nip_lookup' => __('Adds a NIP (tax ID) field at checkout. When enabled, customers can enter a NIP that is checked for a valid checksum, and company data is fetched automatically from the GUS REGON database to fill in business details.', 'polski'),
             'invoices' => __('Issues numbered VAT invoices for orders. When enabled, an order screen gains an Issue invoice button, the customer gets an Invoice link in My Account, and the document shows both parties, the lines, and VAT grouped by rate. Numbering runs SERIES/N/YEAR and restarts each year.', 'polski'),
-            'consent_logging' => __('Keeps a record of customer consents. When enabled, every consent a customer gives is logged with IP address, browser (user agent), and timestamp, giving you an audit trail to support GDPR record-keeping. Off until enabled.', 'polski'),
-            'consent_manager' => __('A native cookie-consent banner. When enabled, visitors see a consent banner with categories, scripts and iframes are blocked until the matching category is granted, Google Consent Mode v2 signals are sent, and each decision is recorded. Provides tools, not legal advice.', 'polski'),
+            'consent_logging' => __('Keeps a record of customer consents. When enabled, every consent a customer gives at checkout or registration is stored in the database with IP address, browser (user agent), and timestamp, to support GDPR record-keeping. There is no admin screen for these records yet; cookie-banner decisions are listed under Reports.', 'polski'),
+            'consent_manager' => __('A native cookie-consent banner. When enabled, visitors see a consent banner with categories, Polski\'s own tracking tags and scripts you mark with data-polski-consent wait until the matching category is granted, Google Consent Mode v2 signals are sent, and each decision is recorded. Provides tools, not legal advice.', 'polski'),
             'returns_rma' => __('Lets customers request returns or complaints (RMA). When enabled, shoppers can open a complaint or return request from My Account on eligible orders; they get a confirmation email and you manage requests in an admin queue with statuses. Provides tools, not legal advice.', 'polski'),
-            'legal_pages' => __('Generates standard legal pages for you. When enabled, it can create Terms and Conditions, Privacy Policy, Right of Withdrawal, and Complaints pages, giving you a starting point for your store\'s required documents. Switching it off stops new pages being generated; pages you already have stay published and keep being used.', 'polski'),
-            'withdrawal' => __('Handles 14-day right-of-withdrawal requests. When enabled, customers get a withdrawal form and a My Account action with a confirmation step and email; you can exclude specific products that are not eligible for withdrawal. Off until enabled.', 'polski'),
-            'dispute_resolution' => __('Shows EU Online Dispute Resolution (ODR) info. When enabled, your store displays information about the European Commission\'s ODR platform, typically in the footer or legal area, helping with consumer dispute transparency. Off until enabled.', 'polski'),
+            'legal_pages' => __('Generates standard legal pages for you. When enabled, it can create empty draft pages for Terms and Conditions, Privacy Policy, Right of Withdrawal, and Complaints, which you fill in with your own text before publishing. Switching it off stops new pages being generated; pages you already have stay published and keep being used.', 'polski'),
+            'withdrawal' => __('Handles 14-day right-of-withdrawal requests. When enabled, customers get a withdrawal form and a My Account action with a confirmation step and email; you can exclude specific products that are not eligible for withdrawal.', 'polski'),
+            'dispute_resolution' => __('Shows information about out-of-court dispute resolution. When enabled, the cart and checkout pages show your notice about out-of-court complaint and redress options, such as the consumer ombudsman or the Trade Inspection (WIIH). The EU ODR platform closed on 20 July 2025, so a saved text that still links to it is not shown. Off until enabled.', 'polski'),
             'email_attachments' => __('Adds the text of your legal pages to WooCommerce customer emails, printed under the order table rather than attached as a file. Applies to the processing, completed, on-hold and invoice emails, never to admin emails. PDF files and a per-email-type document matrix are a PRO feature.', 'polski'),
-            'manufacturer' => __('Adds manufacturer and GPSR product safety details to your products. When enabled, you can enter manufacturer info, an EU responsible person, safety documents, and instructions per product, which then appear for shoppers on the product page.', 'polski'),
+            'manufacturer' => __('Adds a manufacturer taxonomy to your products. When enabled, you can assign a manufacturer to each product from the product edit screen, and its name appears for shoppers on the product page. GPSR details (responsible person, safety warnings and instructions) are entered with the GPSR module.', 'polski'),
             'food_module' => __('Adds food and supplement product details to your products. When enabled, you can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol content, country of origin, and distributor per product, which then show to shoppers on the product page.', 'polski'),
             'consumer_information' => __('Adds the pre-contractual information that Directive (EU) 2024/825 requires from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so this module renders plain labelled rows.', 'polski'),
             'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
-            'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email and cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
-            'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, your store\'s search box shows live product matches (including by SKU and category) without reloading the page, kept lightweight for fast page performance. Off until enabled.', 'polski'),
+            'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email, and accounts registered in My Account cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
+            'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, a search box you place with the [polski_ajax_search] shortcode or the Polski AJAX Search block shows live product matches (including by SKU and category) without reloading the page. The theme\'s own search box is not replaced, but its results page gains the same SKU and category matching. Off until enabled.', 'polski'),
             'brands' => __('Adds product brands as a separate feature from the manufacturer. When enabled, you can assign brands to products using a dedicated brand taxonomy, and brand info appears for shoppers on product pages and listings. Off until enabled.', 'polski'),
             'ajax_filters' => __('Lets shoppers filter product listings without reloading the page. When enabled, customers can narrow results by category, brand, price, stock status, sale, and attributes, with the listing updating instantly. Off until enabled.', 'polski'),
             'wishlist' => __('Lets shoppers save favorite products for later. When enabled, both guests and logged-in customers can add or remove items instantly, and logged-in customers see their saved list in My Account. Off until enabled.', 'polski'),
@@ -128,7 +139,7 @@ final class ModulesPage implements HasHooks
             'waitlist' => __('Captures interest in out-of-stock products. When enabled, shoppers can enter their email on sold-out products to join a waitlist and get an automatic notification when the item is back in stock. Off until enabled.', 'polski'),
             'infinite_scroll' => __('Loads more products as shoppers browse listings. When enabled, WooCommerce archive pages load further products automatically or via a load-more button instead of paging. Off until enabled.', 'polski'),
             'popup' => __('Shows a promotional or lead-capture popup to visitors. When enabled, a lightweight popup appears based on the delay, frequency, and page locations you set. Off until enabled.', 'polski'),
-            'gpsr' => __('Provides tools for displaying EU product safety (GPSR) details. When enabled, you can add manufacturer and importer data, responsible person, product identifiers, safety warnings, and instructions to products, with CSV bulk import or export. Off until enabled.', 'polski'),
+            'gpsr' => __('Provides tools for displaying EU product safety (GPSR) details. When enabled, you can add manufacturer and importer data, responsible person, product identifiers, safety warnings, and instructions to products, with CSV bulk import or export.', 'polski'),
             'bdo' => __('Displays your BDO registration number (Baza Danych o Odpadach). When enabled, enter your BDO number in the module settings and show it anywhere with the [polski_bdo] shortcode or the BDO number block, for example in the footer. It only displays the number you provide. Off until enabled.', 'polski'),
             'verified_review' => __('Shows a trust badge on reviews left by real buyers. When enabled, reviews from customers who actually bought the product display a verified purchase badge on the product page, so shoppers can tell genuine buyer feedback from the rest.', 'polski'),
             'green_claims' => __('Adds product fields for backing up environmental claims. When enabled, each product gains fields for the basis of an ecological claim, a certificate link, and an expiration date, helping you prepare for the anti-greenwashing directive (September 2026).', 'polski'),
@@ -142,7 +153,6 @@ final class ModulesPage implements HasHooks
             'safe_fonts' => __('Reduces and controls external Google Fonts requests on your store. When enabled, font-display and preconnect hints are added to your pages, and the Google Fonts stylesheet can be held back until a visitor grants the matching consent, helping with privacy and load speed.', 'polski'),
             'custom_integrations' => __('Lets you add your own scripts or snippets to the page head or footer. When enabled, each snippet you add is tied to a consent category and runs only after the visitor grants that consent through the Consent Manager, so your custom code respects shoppers\' choices.', 'polski'),
             'custom_triggers' => __('Lets you push your own dataLayer events based on simple page conditions. When enabled, events fire when a visitor lands on a chosen URL or clicks a chosen element, feeding into the GA4 DataLayer module for your analytics and tag setup.', 'polski'),
-            'checkout_toolkit_integration' => __('Keeps your settings and messages compatible with popular checkout field add-ons and product data. When enabled, the plugin detects supported checkout extensions, cookies, and product data, then adjusts its own behaviour so labels and consent prompts display correctly at checkout.', 'polski'),
             'site_audit' => __('Automatically checks your store for the most common store-setup issues. When enabled, it scans for things like missing legal pages, pre-ticked checkboxes, company data, GDPR, and Omnibus items, and shows you a report in the admin so you can fix gaps yourself.', 'polski'),
             'plugin_data' => __('Controls what happens to Polski\'s data if you remove the plugin. When enabled, you decide whether Polski deletes its database tables, settings, and stored logs on uninstall, so you can keep your data or wipe it cleanly when removing the plugin from WordPress.', 'polski'),
             'cra_readiness' => __('Provides tools to help with Cyber Resilience Act (CRA) readiness. When enabled, it can publish a security.txt file (RFC 9116) with your security contact and vulnerability reporting policy, making it easier for researchers to report security issues responsibly.', 'polski'),
@@ -154,12 +164,12 @@ final class ModulesPage implements HasHooks
             'ajax_add_to_cart' => __('Lets customers add items to the cart without reloading the page, including variable products. When enabled, products are added in the background on single product pages and a toast notification confirms success.', 'polski'),
             'datalayer' => __('Tracks ecommerce activity for Google Analytics 4 via dataLayer. When enabled, events like view_item, add_to_cart, begin_checkout and purchase are sent to your GA4 setup, working with a GTM container or gtag.js.', 'polski'),
             'stock_export' => __('Exports your WooCommerce product stock to a CSV file. When enabled, a Stock Export tool appears under Products where you can choose fields, filter by stock threshold and include variations.', 'polski'),
-            'social_login' => __('Lets customers register and sign in using Google or Facebook. When enabled, branded login buttons appear on My Account, checkout and the WordPress login form, and customer accounts are created automatically.', 'polski'),
+            'social_login' => __('Lets customers register and sign in using Google or Facebook. When enabled, branded login buttons appear on My Account, the classic (shortcode) checkout and the WordPress login form, and customer accounts are created automatically. The block checkout shows no buttons.', 'polski'),
             'product_authors' => __('Adds a custom taxonomy for product authors or creators. When enabled, you can assign authors to products and group them, useful for stores selling books or creator-made items.', 'polski'),
             'expert_reviews' => __('Lets you publish editorial, in-house reviews of products. When enabled, you get a new section to write expert reviews with ratings and verdicts, linked to products and shown on product pages with Schema.org markup that helps with SEO.', 'polski'),
             'social_proof' => __('Displays recent-purchase popups to build trust. When enabled, small floating notifications about recent orders appear to your shoppers in a position and timing you choose, loaded smoothly via AJAX and built to be privacy-aware.', 'polski'),
-            'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and anyone can answer, you get email alerts for new questions, answers can be voted on, and Schema.org QAPage markup helps with SEO.', 'polski'),
-            'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these configurable trust signals appear to shoppers on your product, cart, and checkout pages.', 'polski'),
+            'product_qa' => __('Adds a questions-and-answers section to product pages. When enabled, customers can ask questions and any logged-in user can answer, you get email alerts for new questions, answers can be voted on, and a product with exactly one answered question gets Schema.org QAPage markup.', 'polski'),
+            'trust_badges' => __('Shows reassurance icons like secure payment, fast delivery, returns, and quality guarantee. When enabled, these trust signals appear to shoppers on your product, cart, and checkout pages, and you choose which of those pages show them.', 'polski'),
             'live_cart' => __('Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper whenever they add a product, showing cart items, the subtotal, a free-shipping progress bar, and a quick link to checkout.', 'polski'),
             'price_history_chart' => __('Shows how a product\'s price has changed over time. When enabled, shoppers see a small SVG price-trend chart on product pages covering the last 30, 90, or 180 days, using your Omnibus price data.', 'polski'),
             'order_export' => __('Exports your WooCommerce orders to a spreadsheet file. When enabled, you get an admin tool to download orders as CSV, choosing which fields to include and filtering by date range and order status.', 'polski'),
@@ -223,6 +233,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'vies',
                 'name' => __('EU VAT ID check (VIES)', 'polski'),
                 'description' => __('Validates a customer\'s EU VAT number against the European Commission\'s VIES service, which is what an intra-EU B2B sale at 0% VAT turns on. The NIP module only covers Polish numbers, through the GUS register. Adds a check button to the order screen and records the answer on the order. Enter your own VAT number below to make it a qualified check: only then does VIES return a consultation number, which is the evidence that you checked. Off by default.', 'polski'),
+                'beta' => __('Checkout accepts only 10-digit Polish NIPs, so a VAT number from another EU country can only be checked when another plugin saves it on the order as _billing_vat_id.', 'polski'),
                 'group' => 'Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-yes-alt',
@@ -261,7 +272,6 @@ final class ModulesPage implements HasHooks
                     ['key' => '_omnibus_header_1', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;">' . __('Price tracking', 'polski') . '</strong>'],
                     ['key' => 'polski_omnibus|days', 'label' => __('Tracking period (days)', 'polski'), 'type' => 'number', 'default' => 30, 'hint' => __('Directive requires a minimum of 30 days', 'polski')],
                     ['key' => 'polski_omnibus|prune_after_days', 'label' => __('Keep history (days)', 'polski'), 'type' => 'number', 'default' => 90, 'hint' => __('Older data will be automatically deleted', 'polski')],
-                    ['key' => 'polski_omnibus|include_tax', 'label' => __('Prices with tax', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Track and display gross prices', 'polski')],
 
                     ['key' => '_omnibus_header_2', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Display', 'polski') . '</strong>'],
                     ['key' => 'polski_omnibus|display_on_sale_only', 'label' => __('Only products on sale', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Show info only when the product has a sale price', 'polski')],
@@ -281,13 +291,12 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'tax_display',
                 'name' => __('VAT Display', 'polski'),
-                'description' => __('Configuration for gross/net prices display, VAT rate info, and small business exemption support (Art. 113 of the VAT Act).', 'polski'),
+                'description' => __('VAT rate notice next to prices and small business exemption support (Art. 113 of the VAT Act). Whether prices show gross or net is set in WooCommerce > Settings > Tax; the notice shows only when prices are displayed including tax.', 'polski'),
                 'group' => 'Prices and Display',
                 'enabled' => true,
                 'icon' => 'dashicons-money-alt',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_taxes|tax_display_mode', 'label' => __('Price display mode', 'polski'), 'type' => 'select', 'default' => 'brutto', 'options' => ['brutto' => __('Gross (including VAT)', 'polski'), 'netto' => __('Net (excluding VAT)', 'polski')]],
                     ['key' => 'polski_taxes|vat_notice_text', 'label' => __('VAT notice text', 'polski'), 'type' => 'text', 'default' => 'including {rate}% VAT', 'hint' => __('Variables: {rate}', 'polski')],
                     ['key' => 'polski_general|small_business', 'label' => __('Small business exemption (Art. 113)', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_taxes|vat_exempt_notice', 'label' => __('Exemption text', 'polski'), 'type' => 'text', 'default' => 'Exempt from VAT based on Art. 113 par. 1 of the VAT Act'],
@@ -296,7 +305,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'oss_observer',
                 'name' => __('OSS observer', 'polski'),
-                'description' => __('Observe the OSS delivery threshold of the current year. Enabling this will install the One Stop Shop plugin, which monitors your intra-EU B2C sales and flags when you approach the €10,000 threshold.', 'polski'),
+                'description' => __('Offers a one-click install of the One Stop Shop plugin, which watches your intra-EU B2C sales against the 10,000 EUR yearly OSS threshold. That plugin does the watching and keeps running until you deactivate it.', 'polski'),
                 'group' => 'Prices and Display',
                 'enabled' => false,
                 'icon' => 'dashicons-chart-area',
@@ -331,6 +340,7 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_prices|shipping_costs_text', 'label' => __('Link text', 'polski'), 'type' => 'text', 'default' => 'plus shipping costs'],
+                    ['key' => 'polski_prices|shipping_costs_page_id', 'label' => __('Shipping costs page', 'polski'), 'type' => 'page_select', 'default' => 0, 'hint' => __('Without a page the text shows without a link.', 'polski')],
                 ],
             ],
 
@@ -351,6 +361,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'legal_checkboxes',
                 'name' => __('Legal checkboxes', 'polski'),
                 'description' => __('7 built-in checkboxes: terms and conditions, privacy policy, right of withdrawal, digital content, delivery notifications, review reminder, marketing.', 'polski'),
+                'beta' => __('On the block checkout the Terms and Privacy labels show as plain text without their links, and the conditional boxes (digital content waiver, category, country or payment rules) are not shown there.', 'polski'),
                 'group' => 'Checkout and Orders',
                 'enabled' => true,
                 'icon' => 'dashicons-yes-alt',
@@ -418,7 +429,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'consent_logging',
                 'name' => __('Consent Logging (GDPR)', 'polski'),
-                'description' => __('Recording all consents given by customers with IP address, user agent, and timestamp. GDPR compliant.', 'polski'),
+                'description' => __('Stores the consents customers give at checkout and registration in the database, with IP address, user agent, and timestamp. There is no admin screen for these records yet; cookie-banner decisions are listed under Reports.', 'polski'),
                 'group' => 'Checkout and Orders',
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
@@ -428,7 +439,8 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'consent_manager',
                 'name' => __('Consent Manager (cookie banner)', 'polski'),
-                'description' => __('A native cookie-consent banner with consent categories, Google Consent Mode v2 signalling, and blocking of scripts and iframes until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
+                'description' => __('A native cookie-consent banner with consent categories and Google Consent Mode v2 signalling. Polski\'s own tracking tags, and scripts you mark with data-polski-consent, wait until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
+                'beta' => __('Only Polski\'s own tags and scripts you mark with type="text/plain" data-polski-consent wait for consent; other third-party scripts and iframes still load before the visitor chooses.', 'polski'),
                 'group' => 'Legal & Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-privacy',
@@ -471,7 +483,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'legal_pages',
                 'name' => __('Legal Pages', 'polski'),
-                'description' => __('Automatic generation of pages: Terms and Conditions, Privacy Policy, Right of Withdrawal, Complaints.', 'polski'),
+                'description' => __('Creates empty draft pages for Terms and Conditions, Privacy Policy, Right of Withdrawal and Complaints. The drafts carry no legal text: you write or paste your own before publishing.', 'polski'),
                 'group' => 'Consumer Rights',
                 'enabled' => true,
                 'icon' => 'dashicons-media-document',
@@ -521,15 +533,15 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'dispute_resolution',
-                'name' => __('Dispute Resolution (ODR)', 'polski'),
-                'description' => __('Displaying information about the European Commission\'s Online Dispute Resolution (ODR) platform.', 'polski'),
+                'name' => __('Out-of-court dispute resolution', 'polski'),
+                'description' => __('A notice on the cart and checkout pages, and the [polski_complaints] shortcode, about out-of-court complaint and redress options (consumer ombudsman, Trade Inspection). The EU ODR platform closed on 20 July 2025, so a text that still links to it is not shown.', 'polski'),
                 'group' => 'Consumer Rights',
-                'enabled' => true,
+                'enabled' => false,
                 'icon' => 'dashicons-admin-site-alt3',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_general|dispute_resolution_text', 'label' => __('ODR info content', 'polski'), 'type' => 'textarea', 'default' => 'ODR Platform: https://ec.europa.eu/consumers/odr'],
-                    ['key' => 'polski_general|admin_pages_generated_notice', 'label' => __('Message after generating legal pages', 'polski'), 'type' => 'textarea', 'default' => 'Ready! We have generated initial drafts of legal pages for you. Review them, adjust to your needs, and feel free to publish.'],
+                    ['key' => 'polski_general|dispute_resolution_text', 'label' => __('Dispute resolution notice', 'polski'), 'type' => 'textarea', 'default' => __('If you are a consumer, you can use out-of-court complaint and redress procedures, for example help from your municipal or district consumer ombudsman (Rzecznik Konsumentów) or the Provincial Inspectorate of Trade Inspection (WIIH).', 'polski')],
+                    ['key' => 'polski_general|admin_pages_generated_notice', 'label' => __('Message after generating legal pages', 'polski'), 'type' => 'textarea', 'default' => 'Ready! We have created empty draft legal pages for you. Fill in your own text, then publish them.'],
                     ['key' => 'polski_general|admin_modules_saved_notice', 'label' => __('Message after saving modules', 'polski'), 'type' => 'text', 'default' => 'Modules saved.'],
                     ['key' => 'polski_general|admin_setup_note_title', 'label' => __('Onboarding note title', 'polski'), 'type' => 'text', 'default' => 'Configure Polski for your store'],
                     ['key' => 'polski_general|admin_setup_note_content', 'label' => __('Onboarding note content', 'polski'), 'type' => 'textarea', 'default' => 'Just a moment and the store will be ready. Review the modules, set up legal pages, and finish the configuration in the Polski panel.'],
@@ -582,8 +594,8 @@ final class ModulesPage implements HasHooks
             // === Product Information ===
             [
                 'id' => 'manufacturer',
-                'name' => __('Manufacturer and GPSR', 'polski'),
-                'description' => __('Manufacturer information, responsible person (GPSR), safety documents, safety instructions.', 'polski'),
+                'name' => __('Manufacturer', 'polski'),
+                'description' => __('Manufacturer taxonomy: assign a manufacturer to each product and show its name on the product page. GPSR details live in the GPSR module.', 'polski'),
                 'group' => 'Product Information',
                 'enabled' => true,
                 'icon' => 'dashicons-building',
@@ -650,6 +662,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'double_opt_in',
                 'name' => __('Double Opt-In (DOI)', 'polski'),
                 'description' => __('Email address verification during account registration. Activation link sent by email, login block for unactivated accounts.', 'polski'),
+                'beta' => __('Accounts created at checkout stay logged in for that session, because WooCommerce signs them in to finish the order; only their later logins wait for the activation link.', 'polski'),
                 'group' => 'Customer Account',
                 'enabled' => false,
                 'icon' => 'dashicons-lock',
@@ -674,7 +687,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'ajax_search',
                 'name' => __('AJAX Search', 'polski'),
-                'description' => __('Fast product suggestions while typing, with SKU support, categories, and a lightweight front-end friendly for web vitals.', 'polski'),
+                'description' => __('Fast product suggestions while typing in the [polski_ajax_search] shortcode or the Polski AJAX Search block, with SKU support and categories.', 'polski'),
                 'group' => 'Sales and B2B',
                 'enabled' => false,
                 'icon' => 'dashicons-search',
@@ -793,7 +806,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_wishlist|show_add_to_cart', 'label' => __('Show cart button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|show_remove_button', 'label' => __('Show remove button in list', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_wishlist|grid_columns', 'label' => __('Number of columns in list', 'polski'), 'type' => 'number', 'default' => 4, 'hint' => __('Number of product columns in grid layout. Recommended: 3-4', 'polski')],
-                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => 'Favorites'],
+                    ['key' => 'polski_wishlist|account_label', 'label' => __('Label in My Account', 'polski'), 'type' => 'text', 'default' => __('Wishlist', 'polski')],
                     ['key' => 'polski_wishlist|title', 'label' => __('List title', 'polski'), 'type' => 'text', 'default' => 'Your favorite products'],
                     ['key' => 'polski_wishlist|account_intro_text', 'label' => __('Section description', 'polski'), 'type' => 'textarea', 'default' => ''],
                     ['key' => 'polski_wishlist|button_add_text', 'label' => __('Add text', 'polski'), 'type' => 'text', 'default' => 'Add to favorites'],
@@ -971,7 +984,7 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_gallery_zoom|enable_zoom', 'label' => __('Enable zoom on hover', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_gallery_zoom|zoom_scale', 'label' => __('Zoom scale', 'polski'), 'type' => 'number', 'default' => 1.45, 'hint' => __('Magnification factor on hover. 1.0 = no zoom, 2.0 = double size', 'polski')],
-                    ['key' => 'polski_gallery_zoom|enable_lightbox', 'label' => __('Enable lightbox on click', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_gallery_zoom|enable_lightbox', 'label' => __('Enable lightbox on click', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Used only when the theme has no WooCommerce lightbox of its own; where it has one, that lightbox is kept.', 'polski')],
                     ['key' => 'polski_gallery_zoom|dialog_label', 'label' => __('Lightbox window label', 'polski'), 'type' => 'text', 'default' => 'Product gallery preview'],
                     ['key' => 'polski_gallery_zoom|close_label', 'label' => __('Close label', 'polski'), 'type' => 'text', 'default' => 'Close gallery preview'],
                     ['key' => 'polski_gallery_zoom|show_backdrop_close', 'label' => __('Close by clicking background', 'polski'), 'type' => 'checkbox', 'default' => true],
@@ -1008,6 +1021,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'waitlist',
                 'name' => __('Waitlist', 'polski'),
                 'description' => __('Waitlist for out-of-stock products, with email signup and automatic notifications upon restock.', 'polski'),
+                'beta' => __('Variable products do not show the signup form yet, because a waitlist per variation is not built.', 'polski'),
                 'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-email-alt',
@@ -1182,7 +1196,7 @@ final class ModulesPage implements HasHooks
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
                 'links' => [
-                    ['label' => __('Incident log', 'polski'), 'url' => admin_url('admin.php?page=polski-security-incidents')],
+                    ['label' => __('Incident log', 'polski'), 'url' => admin_url('admin.php?page=polski&tab=reports&view=incidents')],
                 ],
                 'settings' => [
                     ['key' => 'polski_security|incident_contact_email', 'label' => __('Security contact email', 'polski'), 'type' => 'email', 'default' => 'security@example.com'],
@@ -1212,6 +1226,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'ai_bridge',
                 'name' => __('AI Bridge', 'polski'),
                 'description' => __('Exposes read-only commerce data (price history, product safety data, store health, configured-page checks, product facts) to AI assistants and the Site Editor via the WordPress Abilities API. Off by default.', 'polski'),
+                'beta' => __('Tested only in part: product facts can come back empty, and the Site Editor commands and AI draft endpoints have not been verified against a live AI provider.', 'polski'),
                 'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-rest-api',
@@ -1247,6 +1262,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-chart-line',
                 'links' => [],
                 'settings' => [
+                    ['key' => '_tt_requires_consent', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Requires the Consent Manager module. Without it no tag is ever loaded, because every tag waits for a consent decision.', 'polski') . '</span>'],
                     ['key' => '_tt_header_marketing', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;display:block;">' . esc_html__('Marketing pixels', 'polski') . '</strong><span style="font-size:12px;color:#646970;">' . esc_html__('Gated under the Marketing consent category.', 'polski') . '</span>'],
                     ['key' => 'polski_tracking_tags|meta_pixel_enabled', 'label' => __('Meta Pixel', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_tracking_tags|meta_pixel_id', 'label' => __('Meta Pixel ID', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Pixel ID', 'polski')],
@@ -1291,7 +1307,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-editor-textcolor',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_safe_fonts|optimize', 'label' => __('Optimise Google Fonts', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts.', 'polski')],
+                    ['key' => 'polski_safe_fonts|optimize', 'label' => __('Optimise Google Fonts', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts. Preconnect is skipped while fonts wait for consent.', 'polski')],
                     ['key' => 'polski_safe_fonts|gate_until_consent', 'label' => __('Defer Google Fonts until consent', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Hold the Google Fonts stylesheet until the visitor grants the chosen consent category. A no-script fallback keeps fonts working when JavaScript is off.', 'polski')],
                     ['key' => 'polski_safe_fonts|consent_category', 'label' => __('Consent category', 'polski'), 'type' => 'select', 'default' => 'preferences', 'options' => [
                         'necessary' => __('Necessary', 'polski'),
@@ -1311,7 +1327,7 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-editor-code',
                 'links' => [],
                 'settings' => [
-                    ['key' => '_ci_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each snippet is emitted as a consent-gated placeholder and only executes once the matching category is granted. Necessary snippets always run. Requires the Consent Manager module to actually gate execution.', 'polski') . '</span>'],
+                    ['key' => '_ci_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Necessary snippets print as they are and run on every page load, so they may hold any markup, such as a meta tag. Snippets in other categories must be scripts: they wait as consent-gated placeholders and run only once the matching category is granted, which requires the Consent Manager module.', 'polski') . '</span>'],
                     ['key' => 'polski_custom_integrations|snippets', 'label' => __('Snippets', 'polski'), 'type' => 'integration_repeater', 'default' => ''],
                 ],
             ],
@@ -1327,22 +1343,6 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => '_ct_intro', 'label' => '', 'type' => 'html', 'html' => '<span style="font-size:12px;color:#646970;">' . esc_html__('Each trigger pushes an event into window.dataLayer. Assign a consent category to hold a trigger until that category is granted (necessary always fires).', 'polski') . '</span>'],
                     ['key' => 'polski_custom_triggers|triggers', 'label' => __('Triggers', 'polski'), 'type' => 'trigger_repeater', 'default' => ''],
-                ],
-            ],
-
-            // === Integrations ===
-            [
-                'id' => 'checkout_toolkit_integration',
-                'name' => __('Checkout and consent integration', 'polski'),
-                'description' => __('Detection of popular checkout field extensions, cookies, and product data to maintain compatibility of settings and messages.', 'polski'),
-                'group' => 'Integrations',
-                'enabled' => true,
-                'icon' => 'dashicons-admin-plugins',
-                'settings' => [
-                    ['key' => '_checkout_toolkit_status', 'type' => 'html', 'html' => $this->getCheckoutToolkitStatus()],
-                ],
-                'links' => [
-                    ['label' => 'Flexible Checkout Fields', 'url' => 'https://wordpress.org/plugins/flexible-checkout-fields/'],
                 ],
             ],
 
@@ -1382,6 +1382,8 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_cra|security_contact', 'label' => __('Security contact email', 'polski'), 'type' => 'email', 'default' => ''],
                     ['key' => 'polski_cra|security_policy_url', 'label' => __('Security policy URL', 'polski'), 'type' => 'text', 'default' => ''],
+                    ['key' => 'polski_cra|incident_webhook', 'label' => __('CRA incident webhook URL', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Dispatch notification sends the incident as JSON to this URL.', 'polski')],
+                    ['key' => 'polski_cra|incident_email', 'label' => __('CRA incident notification email', 'polski'), 'type' => 'email', 'default' => ''],
                 ],
             ],
             [
@@ -1491,7 +1493,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'social_login',
                 'name' => __('Social Login', 'polski'),
-                'description' => __('Let customers register and login via Google or Facebook. Displays branded buttons on My Account, checkout, and WordPress login forms. Auto-creates WooCommerce customer accounts.', 'polski'),
+                'description' => __('Let customers register and login via Google or Facebook. Displays branded buttons on My Account, the classic (shortcode) checkout and the WordPress login form, not on the block checkout. Auto-creates WooCommerce customer accounts.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-share',
@@ -1531,7 +1533,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'social_proof',
                 'name' => __('Social Proof Notifications', 'polski'),
-                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Proven to increase conversions by 10-15%. Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
+                'description' => __('Floating purchase notifications showing recent orders ("Jan from Warszawa just bought..."). Privacy-aware, AJAX-loaded, configurable position and timing.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-megaphone',
@@ -1540,14 +1542,14 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_social_proof|display_interval', 'label' => __('Interval between popups (seconds)', 'polski'), 'type' => 'number', 'default' => 8, 'hint' => __('Time between showing consecutive notifications. Recommended: 6-12', 'polski')],
                     ['key' => 'polski_social_proof|display_duration', 'label' => __('Display duration (seconds)', 'polski'), 'type' => 'number', 'default' => 5, 'hint' => __('How long each notification stays visible. Recommended: 4-6', 'polski')],
                     ['key' => 'polski_social_proof|position', 'label' => __('Position', 'polski'), 'type' => 'text', 'default' => 'bottom-left', 'hint' => 'bottom-left, bottom-right, top-left, top-right'],
-                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
+                    ['key' => 'polski_social_proof|anonymize_name', 'label' => __('Anonymize customer names', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Shows "J. from Warszawa" instead of full names. Recommended for GDPR', 'polski')],
                     ['key' => 'polski_social_proof|hide_on_mobile', 'label' => __('Hide on mobile devices', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Disable on small screens to avoid obstructing content', 'polski')],
                 ],
             ],
             [
                 'id' => 'product_qa',
                 'name' => __('Product Q&A', 'polski'),
-                'description' => __('Amazon-style questions and answers on product pages. Customers ask, anyone answers. Admin email notifications, answer voting, Schema.org QAPage markup for SEO.', 'polski'),
+                'description' => __('Amazon-style questions and answers on product pages. Customers ask, logged-in users answer. Admin email notifications, answer voting, and Schema.org QAPage markup when a product has exactly one answered question.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-format-chat',
@@ -1557,7 +1559,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'trust_badges',
                 'name' => __('Trust Badges', 'polski'),
-                'description' => __('Configurable trust signals on product, cart, and checkout pages: secure payment, fast delivery, returns, quality guarantee. Pure CSS + inline SVG for zero performance impact.', 'polski'),
+                'description' => __('Trust signals on product, cart, and checkout pages (classic and block): secure payment, fast delivery, returns, quality guarantee. You choose the pages they appear on. Pure CSS + inline SVG for zero performance impact.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-shield',
@@ -1588,6 +1590,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'price_history_chart',
                 'name' => __('Price History Chart', 'polski'),
+                'beta' => __('Variable products show no chart, because their price history is kept per variation.', 'polski'),
                 'description' => __('Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency.', 'polski'),
                 'group' => 'Prices and Omnibus',
                 'enabled' => false,
@@ -1627,6 +1630,7 @@ final class ModulesPage implements HasHooks
                 'id' => 'custom_checkout_fields',
                 'name' => __('Custom Checkout Fields', 'polski'),
                 'description' => __('Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account.', 'polski'),
+                'beta' => __('On the block checkout, number, email, date and phone fields show as plain text fields, and display conditions (set in code, there is no screen for them) apply on the classic checkout only.', 'polski'),
                 'group' => 'Checkout',
                 'enabled' => false,
                 'icon' => 'dashicons-forms',
@@ -1652,7 +1656,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'business_info',
                 'name' => __('Business identification block', 'polski'),
-                'description' => __('Publishes the seller details from the setup wizard (name, address, NIP, REGON, e-mail, phone) as the [polski_business_info] shortcode and a Gutenberg block, for the footer identification Polish consumer law expects. Off by default: it prints your company data wherever you place it.', 'polski'),
+                'description' => __('Publishes the seller details from the setup wizard (name, address, NIP, e-mail, phone) as the [polski_business_info] shortcode and a Gutenberg block, for the footer identification Polish consumer law expects. Off by default: it prints your company data wherever you place it.', 'polski'),
                 'group' => 'Legal & Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-building',
@@ -1662,7 +1666,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'complaint_template',
                 'name' => __('Complaint form template', 'polski'),
-                'description' => __('A printable complaint form (formularz reklamacyjny) following the usual UOKiK layout, with the seller section filled from the setup wizard. Available as the [polski_complaint_template] shortcode, as an admin preview with an HTML download, and over REST. A generic template, not legal advice. Off by default.', 'polski'),
+                'description' => __('A printable complaint form (formularz reklamacyjny) following the usual UOKiK layout, with the seller section filled from the setup wizard. Available as the [polski_complaint_template] shortcode, and as an admin preview with an HTML download. A generic template, not legal advice. Off by default.', 'polski'),
                 'group' => 'Consumer Rights',
                 'enabled' => false,
                 'icon' => 'dashicons-media-document',
@@ -1682,7 +1686,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'sbom',
                 'name' => __('SBOM (software bill of materials)', 'polski'),
-                'description' => __('Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (composer) and JS (npm) dependencies for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default.', 'polski'),
+                'description' => __('Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (Composer) packages shipped with the plugin (bundled JavaScript libraries are not listed yet) for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default.', 'polski'),
                 'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-media-code',
@@ -1721,6 +1725,8 @@ final class ModulesPage implements HasHooks
          *   'settings'    list of fields, each with a 'key' in the
          *                 "option_name|field_key" form; an empty list when the
          *                 module has no settings of its own.
+         *   'beta'        optional string, one sentence saying what does not
+         *                 work yet. Shows a Beta badge and the sentence.
          *
          * Entries that are not an array with a non-empty string id are dropped,
          * and an id that already exists keeps the definition declared here. The
@@ -1782,6 +1788,7 @@ final class ModulesPage implements HasHooks
                 'icon' => isset($module['icon']) && is_string($module['icon']) ? $module['icon'] : 'dashicons-admin-generic',
                 'links' => isset($module['links']) && is_array($module['links']) ? array_values($module['links']) : [],
                 'settings' => isset($module['settings']) && is_array($module['settings']) ? array_values($module['settings']) : [],
+                'beta' => isset($module['beta']) && is_string($module['beta']) ? $module['beta'] : '',
             ];
         }
 
@@ -1895,6 +1902,20 @@ final class ModulesPage implements HasHooks
     }
 
     /**
+     * "Beta" badge for a module that declares what does not work yet, or ''.
+     *
+     * @param array<string, mixed> $module
+     */
+    public static function betaBadge(array $module): string
+    {
+        if (empty($module['beta']) || ! is_string($module['beta'])) {
+            return '';
+        }
+
+        return '<span class="polski-beta-badge" title="' . esc_attr($module['beta']) . '">' . esc_html__('Beta', 'polski') . '</span>';
+    }
+
+    /**
      * Render a single module row in the list-table, plus an optional settings details row.
      *
      * @param array<string, mixed> $module
@@ -1928,6 +1949,7 @@ final class ModulesPage implements HasHooks
 
         echo '<span class="polski-modules-name-text">';
         echo '<strong>' . esc_html($module['name']) . '</strong>';
+        echo self::betaBadge($module); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in betaBadge().
 
         $helpTooltip = $this->getModuleHelpTooltip($module);
         if ($helpTooltip !== '') {
@@ -1962,6 +1984,10 @@ final class ModulesPage implements HasHooks
         // --- Description column.
         echo '<td class="polski-modules-col-desc">';
         echo '<span class="polski-modules-desc-text">' . esc_html($module['description']) . '</span>';
+
+        if (! empty($module['beta'])) {
+            echo '<span class="polski-beta-note">' . esc_html((string) $module['beta']) . '</span>';
+        }
 
         if (! empty($module['links'])) {
             echo '<span class="polski-modules-links">';
@@ -2178,6 +2204,14 @@ final class ModulesPage implements HasHooks
                     }
                 }
                 echo '</select>';
+            } elseif ($type === 'page_select') {
+                wp_dropdown_pages([
+                    'name' => $inputName,
+                    'selected' => (int) $currentValue,
+                    'show_option_none' => '-- ' . __('none', 'polski') . ' --',
+                    'option_none_value' => '0',
+                    'class' => 'polski-field__control',
+                ]);
             } elseif ($type === 'integration_repeater') {
                 $this->renderIntegrationRepeater($inputName, (string) $currentValue);
             } elseif ($type === 'trigger_repeater') {
@@ -2488,6 +2522,10 @@ final class ModulesPage implements HasHooks
         update_option(self::OPTION, $saved);
 
         CacheHelper::flush();
+        // Modules add and remove taxonomies and endpoints. This request booted
+        // with the old state, so drop the rules and let the next request
+        // rebuild them instead of flushing a stale set.
+        delete_option('rewrite_rules');
 
         wp_send_json_success(['enabled' => $enabled]);
     }
@@ -2520,6 +2558,7 @@ final class ModulesPage implements HasHooks
         if ($count > 0) {
             update_option(self::OPTION, $saved);
             CacheHelper::flush();
+            delete_option('rewrite_rules');
         }
 
         return $count;
@@ -2678,7 +2717,7 @@ final class ModulesPage implements HasHooks
             'consent_manager' => false,
             'legal_pages' => true,
             'withdrawal' => true,
-            'dispute_resolution' => true,
+            'dispute_resolution' => false,
             'email_attachments' => true,
             'manufacturer' => true,
             'food_module' => false,
@@ -2700,7 +2739,6 @@ final class ModulesPage implements HasHooks
             'infinite_scroll' => false,
             'popup' => false,
             'schema_org' => true,
-            'checkout_toolkit_integration' => true,
             'gpsr' => true,
             'verified_review' => false,
             'green_claims' => false,
@@ -3082,55 +3120,6 @@ final class ModulesPage implements HasHooks
         return null;
     }
 
-    private function getCheckoutToolkitStatus(): string
-    {
-        $generalSettings = get_option('polski_general', []);
-        $generalSettings = is_array($generalSettings) ? $generalSettings : [];
-
-        if (! function_exists('is_plugin_active')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        $plugins = [
-            ['file' => 'flexible-checkout-fields/flexible-checkout-fields.php', 'name' => 'Flexible Checkout Fields'],
-            ['file' => 'flexible-cookies/flexible-cookies.php', 'name' => 'Flexible Cookies'],
-            ['file' => 'gpsr-for-woocommerce/gpsr-for-woocommerce.php', 'name' => 'GPSR for WooCommerce'],
-        ];
-
-        $html = '<div style="font-size:12px;">';
-        $anyActive = false;
-
-        foreach ($plugins as $plugin) {
-            $active = is_plugin_active($plugin['file']);
-            $icon = $active ? '<span style="color:#46b450;">&#10003;</span>' : '<span style="color:#999;">, </span>';
-
-            if ($active) {
-                $anyActive = true;
-                $statusHtml = '<em>' . esc_html((string) ($generalSettings['admin_integration_detected_text'] ?? __('detected, integration active', 'polski'))) . '</em>';
-            } else {
-                $installUrl = admin_url('plugin-install.php?s=' . urlencode($plugin['name']) . '&tab=search&type=term');
-                $statusHtml = '<a href="' . esc_url($installUrl) . '">' . esc_html__('install', 'polski') . '</a>';
-            }
-
-            $html .= sprintf(
-                '<div style="margin-bottom:4px;">%s %s - %s</div>',
-                $icon,
-                esc_html($plugin['name']),
-                $statusHtml,
-            );
-        }
-
-        if (! $anyActive) {
-            $html .= '<div style="margin-top:6px;color:#666;">' . esc_html((string) ($generalSettings['admin_checkout_toolkit_no_external_text'] ?? __('No supported checkout and cookies extensions detected. Polski continues to work independently.', 'polski'))) . '</div>';
-        } else {
-            $html .= '<div style="margin-top:6px;color:#46b450;">' . esc_html((string) ($generalSettings['admin_checkout_toolkit_external_active_text'] ?? __('Supported checkout, cookies, or product data extensions detected. Polski can adjust integration to the active set.', 'polski'))) . '</div>';
-        }
-
-        $html .= '</div>';
-
-        return $html;
-    }
-
     /**
      * @param mixed                     $value
      * @param array<string, mixed>|null $field
@@ -3143,6 +3132,7 @@ final class ModulesPage implements HasHooks
         return match ($type) {
             'checkbox' => (bool) $value,
             'number' => is_numeric($value) ? $value + 0 : 0,
+            'page_select' => absint($value),
             'textarea' => sanitize_textarea_field((string) $value),
             'email' => sanitize_email((string) $value),
             'integration_repeater' => $this->sanitizeIntegrationRepeater((string) $value),

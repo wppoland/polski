@@ -194,6 +194,10 @@ final class StoreHealthMonitorService implements HasHooks
 
     public function registerRestRoutes(): void
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         register_rest_route('polski/v1', '/store-health', [
             'methods' => 'GET',
             'callback' => function () {
@@ -335,7 +339,9 @@ final class StoreHealthMonitorService implements HasHooks
         $counters = $this->readCounters();
         $ok = $this->sumRecent($counters['ok'] ?? []);
         $failed = $this->sumRecent($counters['failed'] ?? []);
-        $total = $ok + $failed;
+        // Every checkout lands in 'ok' when the order is created; a failed
+        // payment is the same order again, so it must not be added twice.
+        $total = max($ok, $failed);
         $minSample = $this->settingInt('payments_min_sample', 5);
 
         if ($total < $minSample) {
@@ -546,10 +552,19 @@ final class StoreHealthMonitorService implements HasHooks
 
         /** @var SecurityIncidentService $incidents */
         $incidents = $container->get(SecurityIncidentService::class);
+        $title = __('Store health check reported an outage', 'polski');
+
+        // One open outage entry is enough; the next one starts after it is resolved.
+        foreach ($incidents->getIncidents() as $incident) {
+            if (($incident['title'] ?? '') === $title && ($incident['status'] ?? 'open') !== 'resolved') {
+                return;
+            }
+        }
+
         $incidents->createIncident([
             'type' => 'availability',
             'severity' => 'critical',
-            'title' => __('Store health check reported an outage', 'polski'),
+            'title' => $title,
             'affected_area' => __('Storefront / checkout', 'polski'),
             'notes' => implode("\n", $lines),
             'status' => 'open',

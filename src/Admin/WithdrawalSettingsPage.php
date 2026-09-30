@@ -126,6 +126,15 @@ final class WithdrawalSettingsPage implements HasHooks
         $clean = get_option(self::OPTION, []);
         $clean = is_array($clean) ? $clean : [];
 
+        // The module card saves the customer-facing texts (button, form, email)
+        // into this same option. Keep them; the keys handled below overwrite
+        // their own entries with stricter rules.
+        foreach ($input as $key => $value) {
+            if (is_string($key) && is_string($value)) {
+                $clean[sanitize_key($key)] = sanitize_textarea_field($value);
+            }
+        }
+
         $clean['period_days'] = isset($input['period_days']) ? max(1, (int) $input['period_days']) : 14;
 
         $clean['trigger_statuses'] = [];
@@ -141,12 +150,23 @@ final class WithdrawalSettingsPage implements HasHooks
             $clean['trigger_statuses'] = ['completed'];
         }
 
-        $mode = isset($input['digital_consent_mode']) ? sanitize_key((string) $input['digital_consent_mode']) : DigitalConsentService::MODE_OPTIONAL;
-        $clean['digital_consent_mode'] = in_array(
+        // Store the mode only as an explicit choice. While it was never saved
+        // the modules screen toggle governs it, and a save that leaves the
+        // pre-selected value (or omits it, as the module card does) must not
+        // turn that default into a stored mode.
+        $mode = isset($input['digital_consent_mode']) ? sanitize_key((string) $input['digital_consent_mode']) : '';
+        $valid = in_array(
             $mode,
             [DigitalConsentService::MODE_REQUIRED, DigitalConsentService::MODE_OPTIONAL, DigitalConsentService::MODE_HIDDEN],
             true,
-        ) ? $mode : DigitalConsentService::MODE_OPTIONAL;
+        );
+        $saved = (array) get_option(self::OPTION, []);
+        unset($clean['digital_consent_mode']);
+        if ($valid && (array_key_exists('digital_consent_mode', $saved) || $mode !== DigitalConsentService::unsavedMode())) {
+            $clean['digital_consent_mode'] = $mode;
+        } elseif (isset($saved['digital_consent_mode'])) {
+            $clean['digital_consent_mode'] = $saved['digital_consent_mode'];
+        }
 
         $clean['digital_consent_label'] = isset($input['digital_consent_label'])
             ? sanitize_textarea_field((string) $input['digital_consent_label'])
@@ -315,7 +335,7 @@ final class WithdrawalSettingsPage implements HasHooks
                                 DigitalConsentService::MODE_OPTIONAL => __('Optional - show an unchecked consent box. Only ticked orders become exempt.', 'polski'),
                                 DigitalConsentService::MODE_HIDDEN => __('Hidden - do not collect consent. Digital orders retain the right of withdrawal.', 'polski'),
                             ];
-                            $currentMode = (string) ($settings['digital_consent_mode'] ?? DigitalConsentService::MODE_OPTIONAL);
+                            $currentMode = (string) ($settings['digital_consent_mode'] ?? DigitalConsentService::unsavedMode());
                             foreach ($modes as $value => $label) :
                             ?>
                                 <label class="polski-withdrawal-option">

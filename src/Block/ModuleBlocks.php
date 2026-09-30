@@ -23,6 +23,46 @@ final class ModuleBlocks implements HasHooks
     {
         add_action('init', [$this, 'registerBlocks']);
         add_filter('block_categories_all', [$this, 'registerCategory']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueueServerBlocksEditor']);
+    }
+
+    /**
+     * Make the PHP-only Polski blocks insertable: without an editor script the
+     * block editor does not list them at all.
+     */
+    public function enqueueServerBlocksEditor(): void
+    {
+        $blocks = [];
+
+        foreach (\WP_Block_Type_Registry::get_instance()->get_all_registered() as $name => $type) {
+            if (! str_starts_with($name, 'polski/') || $type->editor_script_handles !== [] || ! $type->is_dynamic()) {
+                continue;
+            }
+
+            $blocks[] = [
+                'name' => $name,
+                'title' => $type->title,
+                'description' => $type->description,
+                'icon' => $type->icon,
+                'category' => $type->category,
+                'attributes' => $type->attributes,
+                'supports' => $type->supports,
+            ];
+        }
+
+        if ($blocks === []) {
+            return;
+        }
+
+        $handle = 'polski-server-blocks-editor';
+        wp_enqueue_script(
+            $handle,
+            plugins_url('assets/js/server-blocks-editor.js', \Polski\PLUGIN_FILE),
+            ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render'],
+            \Polski\VERSION,
+            true,
+        );
+        wp_add_inline_script($handle, 'window.polskiServerBlocks = ' . wp_json_encode($blocks) . ';', 'before');
     }
 
     /**

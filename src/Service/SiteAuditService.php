@@ -595,30 +595,40 @@ final class SiteAuditService implements HasHooks
     private function checkPreCheckedBoxes(): array
     {
         $label = __('Pre-checked checkboxes (dark pattern)', 'polski');
-        $checkoutSettings = get_option('polski_checkout', []);
 
-        if (! is_array($checkoutSettings)) {
-            $checkoutSettings = [];
+        // Polski's own legal checkboxes always render unticked. The checkout
+        // boxes that can be pre-ticked are WooCommerce's, through these filters,
+        // which only the classic checkout templates read. The block checkout
+        // ignores them and never pre-ticks a box.
+        $preCheckedBoxes = [];
+        $classicCheckout = ! (
+            class_exists(\Automattic\WooCommerce\Blocks\Utils\CartCheckoutUtils::class)
+            && \Automattic\WooCommerce\Blocks\Utils\CartCheckoutUtils::is_checkout_block_default()
+        );
+
+        // Same conditions as WooCommerce's checkout/terms.php: the terms box only
+        // renders when shown (Legal checkboxes removes it) and a terms page is set.
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filters.
+        $termsRendered = $classicCheckout
+            && apply_filters('woocommerce_checkout_show_terms', true)
+            && function_exists('wc_terms_and_conditions_checkbox_enabled')
+            && wc_terms_and_conditions_checkbox_enabled();
+
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
+        if ($termsRendered && apply_filters('woocommerce_terms_is_checked_default', false) === true) {
+            $preCheckedBoxes[] = 'terms';
         }
 
-        $checkboxKeys = [
-            'terms_checkbox',
-            'privacy_checkbox',
-            'withdrawal_checkbox',
-            'digital_waiver_checkbox',
-            'parcel_delivery_checkbox',
-            'review_reminder_checkbox',
-            'marketing_checkbox',
-        ];
+        // Same conditions as WooCommerce's checkout/form-billing.php: the box only
+        // renders when checkout registration is on and guest checkout is allowed.
+        $checkout = $classicCheckout && function_exists('WC') ? WC()->checkout() : null;
+        $createAccountRendered = $checkout !== null
+            && $checkout->is_registration_enabled()
+            && ! $checkout->is_registration_required();
 
-        $preCheckedBoxes = [];
-
-        foreach ($checkboxKeys as $checkboxKey) {
-            $checkedKey = $checkboxKey . '_checked';
-
-            if (! empty($checkoutSettings[$checkedKey])) {
-                $preCheckedBoxes[] = $checkboxKey;
-            }
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
+        if ($createAccountRendered && apply_filters('woocommerce_create_account_default_checked', false) === true) {
+            $preCheckedBoxes[] = 'createaccount';
         }
 
         if (count($preCheckedBoxes) === 0) {

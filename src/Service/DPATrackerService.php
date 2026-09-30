@@ -197,6 +197,37 @@ final class DPATrackerService implements HasHooks
             }
         }
 
+        // Processors this plugin itself loads on the storefront.
+        $dataLayer = get_option('polski_datalayer', []);
+
+        if (ModulesPage::isModuleEnabled('datalayer') && is_array($dataLayer)
+            && (! empty($dataLayer['gtm_container_id']) || ! empty($dataLayer['ga4_measurement_id']))) {
+            $services[] = [
+                'key'  => 'polski_google_analytics',
+                'name' => 'Google Analytics / Tag Manager',
+                'type' => __('Analytics', 'polski'),
+            ];
+        }
+
+        $tags = get_option(TrackingTagsService::OPTION, []);
+
+        if (ModulesPage::isModuleEnabled('tracking_tags') && is_array($tags)) {
+            foreach (TrackingTagsService::providers() as $providerKey => $provider) {
+                // Same rule as TrackingTagsService::buildTag: no ID, no tag (Simple Analytics needs none).
+                $hasId = $providerKey === 'simple_analytics' || trim((string) ($tags[$provider['id_key']] ?? '')) !== '';
+
+                if (empty($tags[$provider['enable_key']]) || ! $hasId) {
+                    continue;
+                }
+
+                $services[] = [
+                    'key'  => 'polski_tag_' . sanitize_key($providerKey),
+                    'name' => $provider['label'],
+                    'type' => $provider['category'] === 'marketing' ? __('Advertising', 'polski') : __('Analytics', 'polski'),
+                ];
+            }
+        }
+
         return $services;
     }
 }

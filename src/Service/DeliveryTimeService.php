@@ -33,6 +33,12 @@ final class DeliveryTimeService
             return $terms[0]->name;
         }
 
+        // A variation without its own setting inherits the product's.
+        $parent = $product->get_parent_id() > 0 ? wc_get_product($product->get_parent_id()) : null;
+        if ($parent instanceof \WC_Product) {
+            return $this->getDeliveryTimeText($parent);
+        }
+
         // Default fallback.
         $settings = get_option('polski_delivery', []);
         $defaultTermId = is_array($settings) ? (int) ($settings['default_delivery_time'] ?? 0) : 0;
