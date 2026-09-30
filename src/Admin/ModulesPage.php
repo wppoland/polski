@@ -1020,8 +1020,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'waitlist',
                 'name' => __('Waitlist', 'polski'),
-                'description' => __('Waitlist for out-of-stock products, with email signup and automatic notifications upon restock.', 'polski'),
-                'beta' => __('Variable products do not show the signup form yet, because a waitlist per variation is not built.', 'polski'),
+                'description' => __('Waitlist for out-of-stock products and variations, with email signup and automatic notifications upon restock.', 'polski'),
                 'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-email-alt',

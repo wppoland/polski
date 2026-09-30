@@ -1,3 +1,39 @@
+// Variable products: the form is rendered hidden and follows the selected
+// variation. WooCommerce triggers these events through jQuery, so they are
+// bound here, before its variation form initialises on DOM ready.
+if (window.jQuery) {
+  const waitlistFor = (variationsForm) => {
+    const productId = variationsForm.getAttribute('data-product_id');
+    const input = document.querySelector(`.polski-waitlist input[name="product_id"][data-parent-id="${productId}"]`);
+
+    return input ? { box: input.closest('.polski-waitlist'), input } : null;
+  };
+
+  window.jQuery(document)
+    .on('found_variation', '.variations_form', (event, variation) => {
+      const target = waitlistFor(event.currentTarget);
+
+      if (!target) {
+        return;
+      }
+
+      const message = target.box.querySelector('[data-polski-waitlist-message]');
+      if (message) {
+        message.hidden = true;
+      }
+
+      target.input.value = String(variation.variation_id);
+      target.box.hidden = !variation.polski_waitlist;
+    })
+    .on('reset_data', '.variations_form', (event) => {
+      const target = waitlistFor(event.currentTarget);
+
+      if (target) {
+        target.box.hidden = true;
+      }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const config = window.polskiWaitlist;
 

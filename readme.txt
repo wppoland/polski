@@ -77,7 +77,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **Wishlist** - save products for later.
 * **Product comparison** - compare products side by side.
-* **Waitlist** (beta) - back-in-stock notifications for simple products; variable products do not show the form yet.
+* **Waitlist** - back-in-stock notifications for simple products and for each variation of a variable product.
 * **Quick view** - preview a product without opening the product page.
 * **Gallery zoom** - enhanced product image zoom.
 * **Product video** - add a video on the product page.

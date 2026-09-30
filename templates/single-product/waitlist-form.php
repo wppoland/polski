@@ -14,7 +14,7 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 
 ?>
-<div class="polski-waitlist" data-polski-waitlist>
+<div class="polski-waitlist" data-polski-waitlist<?php echo $polski_product->is_type('variable') ? ' hidden' : ''; ?>>
     <?php if (! empty($polski_settings['show_title'])) : ?>
         <h3><?php echo esc_html((string) ($polski_settings['title'] ?? '')); ?></h3>
     <?php endif; ?>
@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
         <p><?php echo esc_html((string) $polski_settings['intro_text']); ?></p>
     <?php endif; ?>
     <form class="polski-waitlist-form">
-        <input type="hidden" name="product_id" value="<?php echo esc_attr((string) $polski_product->get_id()); ?>" />
+        <input type="hidden" name="product_id" value="<?php echo esc_attr((string) $polski_product->get_id()); ?>" data-parent-id="<?php echo esc_attr((string) $polski_product->get_id()); ?>" />
         <label>
             <span class="screen-reader-text"><?php echo esc_html((string) ($polski_settings['email_label'] ?? __('Email address', 'polski'))); ?></span>
             <input type="email" name="email" value="<?php echo esc_attr($polski_email); ?>" placeholder="<?php echo esc_attr((string) ($polski_settings['email_placeholder'] ?? __('Your email address', 'polski'))); ?>" required />
