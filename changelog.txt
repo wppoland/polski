@@ -2,6 +2,14 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.41.0 =
+* Security (high): a logged-out visitor could open and submit the withdrawal form for any guest order, because a guest order's customer id and a logged-out visitor's user id are both 0. Guests now go through the existing order lookup and email link only.
+* Security (medium): Quick View, compare and wishlist returned or stored draft, private and password-protected products, including disabled variations. They now accept only products a visitor could open themselves.
+* Security (low): product Q&A accepted questions and answers on any post id. Questions now go only to published products, and an answer must reply to an approved question on the same product.
+* Added: the waitlist works on variable products. The form appears when an out-of-stock variation is selected, and the restock email goes out when that variation is back in stock, however the stock changed. No longer beta.
+* Added: the price history chart shows the selected variation's history on variable products. No longer beta.
+* Added: with the VIES module on, checkout and My Account accept an EU VAT number from another country (for example DE811569869). A plain 10-digit NIP keeps its checksum and GUS lookup. No longer beta.
+
 = 1.40.1 =
 * Security (medium): three read-only withdrawal abilities (eligibility, remaining items, deadline) let any logged-in customer read them for another customer's order by guessing its id. They now require the order's own customer or a shop manager.
 
