@@ -45,7 +45,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
-* **EU VAT ID check (VIES)** (beta) - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. Checkout accepts Polish NIPs only, so another EU country's number is checked only when another plugin saves it on the order.
+* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. With the NIP module on, checkout and My Account accept a VAT number from any EU country, entered with its country code.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
