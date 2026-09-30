@@ -583,8 +583,22 @@ final class AbilitiesService implements HasHooks
         return current_user_can('manage_options') || current_user_can('manage_woocommerce');
     }
 
-    public function canReadOrders(): bool
+    /**
+     * A shop manager may read any order; a customer only their own. Being
+     * logged in is not enough: it let any customer read another customer's
+     * order items by guessing an order id.
+     *
+     * @param mixed $input The ability input.
+     */
+    public function canReadOrders($input = null): bool
     {
-        return current_user_can('manage_woocommerce') || get_current_user_id() > 0;
+        if (current_user_can('manage_woocommerce')) {
+            return true;
+        }
+
+        $userId = get_current_user_id();
+        $order = is_array($input) ? wc_get_order((int) ($input['order_id'] ?? 0)) : null;
+
+        return $userId > 0 && $order instanceof \WC_Order && $order->get_customer_id() === $userId;
     }
 }

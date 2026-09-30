@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.40.0
+Stable tag: 1.40.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.40.1 =
+* Security (medium): three read-only withdrawal abilities (eligibility, remaining items, deadline) let any logged-in customer read them for another customer's order by guessing its id. They now require the order's own customer or a shop manager.
+
 = 1.40.0 =
 Every one of the 84 modules was switched on, configured and used in a live shop, then switched off again. This release fixes what that found, and marks as beta what does not fully work yet.
 * Fixed: the unit price dropped the base quantity, so a price per 1000 ml or per 100 g was labelled per ml or per g. It now shows the base ("15,00 zl / 100 g").
@@ -479,6 +482,9 @@ and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.40.1 =
+Security release. Withdrawal abilities no longer expose another customer's order items. Update recommended.
 
 = 1.37.1 =
 Security release. This is the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
