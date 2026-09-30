@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
+use Polski\Util\ProductVisibility;
 
 /**
  * Product Questions & Answers - Amazon-style Q&A on product pages.
@@ -220,7 +221,7 @@ final class ProductQAService implements HasHooks
         $productId = absint($_POST['product_id'] ?? 0);
         $text = sanitize_textarea_field((string) wp_unslash($_POST['question_text'] ?? ''));
 
-        if ($productId <= 0 || empty($text)) {
+        if ($productId <= 0 || empty($text) || ! $this->acceptsQuestions($productId)) {
             return;
         }
 
@@ -272,7 +273,18 @@ final class ProductQAService implements HasHooks
         $productId = absint($_POST['product_id'] ?? 0);
         $text = sanitize_textarea_field((string) wp_unslash($_POST['answer_text'] ?? ''));
 
-        if ($questionId <= 0 || $productId <= 0 || empty($text)) {
+        if ($questionId <= 0 || $productId <= 0 || empty($text) || ! $this->acceptsQuestions($productId)) {
+            return;
+        }
+
+        // The answer must hang off a published question on this same product.
+        $question = get_comment($questionId);
+        if (
+            ! $question instanceof \WP_Comment
+            || $question->comment_type !== self::COMMENT_TYPE_Q
+            || (int) $question->comment_post_ID !== $productId
+            || (string) $question->comment_approved !== '1'
+        ) {
             return;
         }
 
@@ -291,6 +303,15 @@ final class ProductQAService implements HasHooks
 
         wp_safe_redirect(get_permalink($productId) . '#tab-product_qa');
         exit;
+    }
+
+    /**
+     * The ids come from POST, so they must name a product this visitor can see.
+     * wp_insert_comment() checks nothing about the post it writes to.
+     */
+    private function acceptsQuestions(int $productId): bool
+    {
+        return get_post_type($productId) === 'product' && ProductVisibility::canView($productId);
     }
 
     public function handleVote(): void
