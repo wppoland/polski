@@ -232,8 +232,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'vies',
                 'name' => __('EU VAT ID check (VIES)', 'polski'),
-                'description' => __('Validates a customer\'s EU VAT number against the European Commission\'s VIES service, which is what an intra-EU B2B sale at 0% VAT turns on. The NIP module only covers Polish numbers, through the GUS register. Adds a check button to the order screen and records the answer on the order. Enter your own VAT number below to make it a qualified check: only then does VIES return a consultation number, which is the evidence that you checked. Off by default.', 'polski'),
-                'beta' => __('Checkout accepts only 10-digit Polish NIPs, so a VAT number from another EU country can only be checked when another plugin saves it on the order as _billing_vat_id.', 'polski'),
+                'description' => __('Validates a customer\'s EU VAT number against the European Commission\'s VIES service, which is what an intra-EU B2B sale at 0% VAT turns on. With the NIP module on, the tax ID field at checkout and in My Account also accepts a VAT number from any EU country, with its country code (for example DE811569869); a 10-digit Polish NIP is still checked and looked up in GUS as before. Adds a check button to the order screen and records the answer on the order. Enter your own VAT number below to make it a qualified check: only then does VIES return a consultation number, which is the evidence that you checked. Off by default.', 'polski'),
                 'group' => 'Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-yes-alt',
@@ -1020,8 +1019,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'waitlist',
                 'name' => __('Waitlist', 'polski'),
-                'description' => __('Waitlist for out-of-stock products, with email signup and automatic notifications upon restock.', 'polski'),
-                'beta' => __('Variable products do not show the signup form yet, because a waitlist per variation is not built.', 'polski'),
+                'description' => __('Waitlist for out-of-stock products and variations, with email signup and automatic notifications upon restock.', 'polski'),
                 'group' => 'Merchandising',
                 'enabled' => false,
                 'icon' => 'dashicons-email-alt',
@@ -1590,7 +1588,6 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'price_history_chart',
                 'name' => __('Price History Chart', 'polski'),
-                'beta' => __('Variable products show no chart, because their price history is kept per variation.', 'polski'),
                 'description' => __('Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency.', 'polski'),
                 'group' => 'Prices and Omnibus',
                 'enabled' => false,

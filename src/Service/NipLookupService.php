@@ -80,6 +80,66 @@ final class NipLookupService implements HasHooks
     }
 
     /**
+     * Whether the field also takes a VAT ID from another EU member state.
+     *
+     * Only with the VIES module on: that module is what can check such a
+     * number, and without it the field stays Polish only, as it always was.
+     */
+    private function acceptsEuVatId(): bool
+    {
+        return ModulesPage::isModuleEnabled('vies');
+    }
+
+    /**
+     * A 10-digit NIP with a valid checksum, or with the VIES module on, a
+     * PL-prefixed NIP or a well-formed VAT ID of another member state.
+     */
+    public function isAcceptedTaxId(string $value): bool
+    {
+        if (self::isValidNip($value)) {
+            return true;
+        }
+
+        if (! $this->acceptsEuVatId()) {
+            return false;
+        }
+
+        $clean = strtoupper((string) preg_replace('/[^A-Za-z0-9]/', '', $value));
+
+        if (str_starts_with($clean, 'PL')) {
+            return self::isValidNip(substr($clean, 2));
+        }
+
+        return ViesService::isWellFormed($clean);
+    }
+
+    /**
+     * The tax ID as stored: a Polish NIP as its bare digits, which is what the
+     * invoice, KSeF and GUS code expect, and another member state's VAT ID with
+     * its prefix, which is what the VIES check on the order screen reads.
+     */
+    public function normalizeTaxId(string $value): string
+    {
+        $clean = strtoupper((string) preg_replace('/[^A-Za-z0-9]/', '', $value));
+
+        if ($this->acceptsEuVatId() && preg_match('/^[A-Z]{2}/', $clean) === 1 && ! str_starts_with($clean, 'PL')) {
+            return $clean;
+        }
+
+        return (string) preg_replace('/[^0-9]/', '', $value);
+    }
+
+    /**
+     * The "not valid" notice, naming the EU format when the field takes it.
+     */
+    private function invalidTaxIdMessage(string $nipOnly): string
+    {
+        return $this->acceptsEuVatId()
+            ? __('That VAT ID is not valid. Enter a 10-digit NIP, or an EU VAT number starting with its country code, e.g. DE811569869.', 'polski')
+            : $nipOnly;
+    }
+
+    /**
      * Whether the NIP field is mandatory for this checkout.
      *
      * The shop-wide setting is the default. The filter lets an add-on answer
@@ -110,17 +170,18 @@ final class NipLookupService implements HasHooks
     public function addNipField(array $fields): array
     {
         $required = $this->nipRequired();
+        $eu = $this->acceptsEuVatId();
 
         $fields['billing_nip'] = [
             'type'        => 'text',
-            'label'       => __('NIP', 'polski'),
-            'placeholder' => __('e.g. 1234563218', 'polski'),
+            'label'       => $eu ? __('NIP or EU VAT ID', 'polski') : __('NIP', 'polski'),
+            'placeholder' => $eu ? __('e.g. 1234563218 or DE811569869', 'polski') : __('e.g. 1234563218', 'polski'),
             'required'    => $required,
             'class'       => ['form-row-wide'],
             'priority'    => 31, // After company name (priority 30).
-            'maxlength'   => 13, // 10 digits + optional dashes.
+            'maxlength'   => $eu ? 20 : 13, // 10 digits + optional dashes, or prefix + up to 12 characters + separators.
             'custom_attributes' => [
-                'pattern'                => '[0-9\-]{10,13}',
+                'pattern'                => $eu ? '[A-Za-z0-9\s\-]{8,20}' : '[0-9\-]{10,13}',
                 'data-polski-nip-field'  => '1',
             ],
         ];
@@ -150,9 +211,9 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        if (! self::isValidNip($nip)) {
+        if (! $this->isAcceptedTaxId($nip)) {
             wc_add_notice(
-                __('That VAT ID (NIP) is not valid. Check the number and try again.', 'polski'),
+                $this->invalidTaxIdMessage(__('That VAT ID (NIP) is not valid. Check the number and try again.', 'polski')),
                 'error',
             );
         }
@@ -206,7 +267,7 @@ final class NipLookupService implements HasHooks
             // form and another in the shipping form, so a customer could enter
             // two different numbers and nothing compared them.
             'location' => 'contact',
-            'label' => __('NIP', 'polski'),
+            'label' => $this->acceptsEuVatId() ? __('NIP or EU VAT ID', 'polski') : __('NIP', 'polski'),
             'type' => 'text',
             'required' => $required,
             // Strip formatting only. Stripping every non-digit here turned
@@ -214,14 +275,14 @@ final class NipLookupService implements HasHooks
             // reads as "left blank", so typing letters passed validation
             // silently and the shop got no NIP.
             'sanitize_callback' => static fn (string $value): string => (string) preg_replace('/[\s\-]/', '', sanitize_text_field($value)),
-            'validate_callback' => static function (string $value) {
+            'validate_callback' => function (string $value) {
                 if (trim($value) === '') {
                     return null;
                 }
-                if (! self::isValidNip($value)) {
+                if (! $this->isAcceptedTaxId($value)) {
                     return new \WP_Error(
                         'polski_invalid_nip',
-                        __('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski'),
+                        $this->invalidTaxIdMessage(__('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski')),
                     );
                 }
                 return null;
@@ -263,7 +324,7 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        $clean = is_scalar($value) ? (string) preg_replace('/[^0-9]/', '', (string) $value) : '';
+        $clean = is_scalar($value) ? $this->normalizeTaxId((string) $value) : '';
         if ($clean === '') {
             return;
         }
@@ -294,7 +355,7 @@ final class NipLookupService implements HasHooks
             $nip = $order->get_meta('_wc_other/polski/nip', true);
         }
         if ($nip !== '' && $nip !== false && is_scalar($nip)) {
-            $clean = (string) preg_replace('/[^0-9]/', '', (string) $nip);
+            $clean = $this->normalizeTaxId((string) $nip);
             if ($clean !== '') {
                 $order->update_meta_data('_billing_nip', $clean);
                 $order->update_meta_data('_polski_billing_nip', $clean);
@@ -313,7 +374,7 @@ final class NipLookupService implements HasHooks
         $nip = sanitize_text_field(wp_unslash($_POST['billing_nip'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
         if ($nip !== '') {
-            $clean = (string) preg_replace('/[^0-9]/', '', $nip);
+            $clean = $this->normalizeTaxId($nip);
             $order->update_meta_data('_billing_nip', $clean);
             $order->update_meta_data('_polski_billing_nip', $clean);
         }
@@ -343,9 +404,9 @@ final class NipLookupService implements HasHooks
             return;
         }
 
-        if (! self::isValidNip($nip)) {
+        if (! $this->isAcceptedTaxId($nip)) {
             wc_add_notice(
-                __('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski'),
+                $this->invalidTaxIdMessage(__('That VAT ID (NIP) is not valid. Enter 10 digits.', 'polski')),
                 'error',
             );
         }
@@ -366,9 +427,9 @@ final class NipLookupService implements HasHooks
         }
 
         $customer = new \WC_Customer($userId);
-        $clean = (string) preg_replace('/[^0-9]/', '', (string) $customer->get_meta('billing_nip', true));
+        $clean = $this->normalizeTaxId((string) $customer->get_meta('billing_nip', true));
 
-        if ($clean === '' || ! self::isValidNip($clean)) {
+        if ($clean === '' || ! $this->isAcceptedTaxId($clean)) {
             return;
         }
 
@@ -399,9 +460,9 @@ final class NipLookupService implements HasHooks
             ? sanitize_text_field((string) $data['billing_nip'])
             : sanitize_text_field(wp_unslash($_POST['billing_nip'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC verifies the checkout nonce.
 
-        $clean = (string) preg_replace('/[^0-9]/', '', $nip);
+        $clean = $this->normalizeTaxId($nip);
 
-        if ($clean === '' || ! self::isValidNip($clean)) {
+        if ($clean === '' || ! $this->isAcceptedTaxId($clean)) {
             return;
         }
 

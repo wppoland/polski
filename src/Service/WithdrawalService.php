@@ -756,8 +756,10 @@ final class WithdrawalService implements Bootable, HasHooks
             return;
         }
 
-        // Verify ownership.
-        if ($order->get_customer_id() !== get_current_user_id()) {
+        // Verify ownership. A guest order has customer id 0 and so does a
+        // logged-out visitor, so 0 === 0 must not count as owning it. Guests
+        // prove the order through the lookup page and its email link instead.
+        if (get_current_user_id() === 0 || $order->get_customer_id() !== get_current_user_id()) {
             wc_add_notice((string) ($this->getSettings()['permission_error_text'] ?? __('You do not have permission to withdraw from this order.', 'polski')), 'error');
             return;
         }
@@ -890,7 +892,7 @@ final class WithdrawalService implements Bootable, HasHooks
             exit;
         }
 
-        if ($order->get_customer_id() !== get_current_user_id()) {
+        if (get_current_user_id() === 0 || $order->get_customer_id() !== get_current_user_id()) {
             wc_add_notice(__('You do not have permission to withdraw from this order.', 'polski'), 'error');
             wp_safe_redirect(wc_get_account_endpoint_url('orders'));
             exit;

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.40.1
+Stable tag: 1.41.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,7 +45,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
-* **EU VAT ID check (VIES)** (beta) - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. Checkout accepts Polish NIPs only, so another EU country's number is checked only when another plugin saves it on the order.
+* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. With the NIP module on, checkout and My Account accept a VAT number from any EU country, entered with its country code.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
@@ -77,7 +77,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 * **Wishlist** - save products for later.
 * **Product comparison** - compare products side by side.
-* **Waitlist** (beta) - back-in-stock notifications for simple products; variable products do not show the form yet.
+* **Waitlist** - back-in-stock notifications for simple products and for each variation of a variable product.
 * **Quick view** - preview a product without opening the product page.
 * **Gallery zoom** - enhanced product image zoom.
 * **Product video** - add a video on the product page.
@@ -358,6 +358,14 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.41.0 =
+* Security (high): a logged-out visitor could open and submit the withdrawal form for any guest order, because a guest order's customer id and a logged-out visitor's user id are both 0. Guests now go through the existing order lookup and email link only.
+* Security (medium): Quick View, compare and wishlist returned or stored draft, private and password-protected products, including disabled variations. They now accept only products a visitor could open themselves.
+* Security (low): product Q&A accepted questions and answers on any post id. Questions now go only to published products, and an answer must reply to an approved question on the same product.
+* Added: the waitlist works on variable products. The form appears when an out-of-stock variation is selected, and the restock email goes out when that variation is back in stock, however the stock changed. No longer beta.
+* Added: the price history chart shows the selected variation's history on variable products. No longer beta.
+* Added: with the VIES module on, checkout and My Account accept an EU VAT number from another country (for example DE811569869). A plain 10-digit NIP keeps its checksum and GUS lookup. No longer beta.
+
 = 1.40.1 =
 * Security (medium): three read-only withdrawal abilities (eligibility, remaining items, deadline) let any logged-in customer read them for another customer's order by guessing its id. They now require the order's own customer or a shop manager.
 
@@ -467,21 +475,15 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Added: the Food and supplements module now has fields. The Modules screen has always said you can enter ingredients, nutrition, Nutri-Score, alcohol content, country of origin and the food business operator per product, and until now the only way to write any of them was a CSV import, so a shop without a spreadsheet could not use the module at all. The Polski tab on the product screen carries all of them, with one input per nutrient instead of the importer's `slug:value|slug:value` syntax. Values typed here and values imported from CSV end up identical, so an export still round-trips.
 * Fixed: every multi-line field on that tab lost its line breaks when saved. The save pass ran `sanitize_text_field` over each value before choosing a sanitiser, and that function folds newlines into spaces, so a GPSR manufacturer address, a list of safety warnings, repair information and the substantiation of an environmental claim were all stored as one long line.
 
-= 1.36.5 =
-* Fixed: Units, Allergens, Nutrients, Manufacturers, Delivery Times and a second "Brands" appeared under Products even when their modules were off. The six taxonomies registered on every request regardless of the Modules screen, so a shop that never turned on the food module or brands still got four admin screens it could not use, and the brands one sat next to WooCommerce core Brands under the same name. Each taxonomy now registers only when its module is enabled. Terms already saved are untouched and come back with the module.
-
-= 1.36.4 =
-* Fixed: the GPSR manufacturer never reached the product's structured data, the data layer or the product feed. All three read a meta key the plugin does not write, while the field on the product screen saves under the GPSR key, so the manufacturer was simply absent from everything downstream.
-* Added: the "Buying as a company" answer is now shown on the order screen. It was stored on every order and displayed nowhere, so a merchant could turn the toggle on and never see a reply.
-* Added: product safety instructions, safety documents, food distributor and the product-level right-of-withdrawal exemption reason can now be set through the product CSV import and export. Their shortcodes and Elementor widgets read them and nothing could fill them in, so those blocks were always empty.
-* Removed: two order and user meta keys that were written and never read back, a copy of the checkout consent states (the consent log already records them, with its own screen and CSV export) and a social login provider name (the provider is already part of the stored provider ID).
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.41.0 =
+Security release. Withdrawal forms for guest orders, and hidden products in Quick View, compare, wishlist and Q&A, are no longer reachable by other visitors. Update recommended.
 
 = 1.40.1 =
 Security release. Withdrawal abilities no longer expose another customer's order items. Update recommended.

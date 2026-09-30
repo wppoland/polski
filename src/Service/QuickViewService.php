@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Util\ProductVisibility;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
 
@@ -130,7 +131,7 @@ final class QuickViewService implements Bootable, HasHooks
         }
         $product = wc_get_product($productId);
 
-        if (! $product instanceof \WC_Product) {
+        if (! $product instanceof \WC_Product || ! ProductVisibility::canView($productId)) {
             wp_send_json_error(['message' => (string) ($this->getSettings()['product_not_found_text'] ?? __('Product not found.', 'polski'))], 404);
         }
 

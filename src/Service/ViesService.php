@@ -39,11 +39,40 @@ final class ViesService implements HasHooks
 
     public const META_RESULT = '_polski_vies_result';
 
-    /** Member state codes VIES accepts. EL is Greece; XI is Northern Ireland. */
-    private const MEMBER_STATES = [
-        'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'EL', 'ES', 'FI', 'FR',
-        'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO',
-        'SE', 'SI', 'SK', 'XI',
+    /**
+     * Member state codes VIES accepts, each with the shape of its national
+     * number (the European Commission's VIES FAQ). EL is Greece; XI is
+     * Northern Ireland.
+     */
+    private const FORMATS = [
+        'AT' => 'U\d{8}',
+        'BE' => '[01]\d{9}',
+        'BG' => '\d{9,10}',
+        'CY' => '\d{8}[A-Z]',
+        'CZ' => '\d{8,10}',
+        'DE' => '\d{9}',
+        'DK' => '\d{8}',
+        'EE' => '\d{9}',
+        'EL' => '\d{9}',
+        'ES' => '[A-Z0-9]\d{7}[A-Z0-9]',
+        'FI' => '\d{8}',
+        'FR' => '[A-Z0-9]{2}\d{9}',
+        'HR' => '\d{11}',
+        'HU' => '\d{8}',
+        'IE' => '\d[A-Z0-9]\d{5}[A-Z]{1,2}',
+        'IT' => '\d{11}',
+        'LT' => '\d{9}|\d{12}',
+        'LU' => '\d{8}',
+        'LV' => '\d{11}',
+        'MT' => '\d{8}',
+        'NL' => '\d{9}B\d{2}',
+        'PL' => '\d{10}',
+        'PT' => '\d{9}',
+        'RO' => '\d{2,10}',
+        'SE' => '\d{12}',
+        'SI' => '\d{8}',
+        'SK' => '\d{10}',
+        'XI' => '\d{9}|\d{12}|GD\d{3}|HA\d{3}',
     ];
 
     public function isEnabled(): bool
@@ -89,7 +118,7 @@ final class ViesService implements HasHooks
 
         $prefix = substr($clean, 0, 2);
 
-        if (in_array($prefix, self::MEMBER_STATES, true) && strlen($clean) > 2) {
+        if (isset(self::FORMATS[$prefix]) && strlen($clean) > 2) {
             return [$prefix, substr($clean, 2)];
         }
 
@@ -99,11 +128,24 @@ final class ViesService implements HasHooks
             $country = 'EL';
         }
 
-        if (! in_array($country, self::MEMBER_STATES, true)) {
+        if (! isset(self::FORMATS[$country])) {
             return null;
         }
 
         return [$country, $clean];
+    }
+
+    /**
+     * Whether a VAT ID carries a member state prefix and a number of that
+     * state's shape. Format only: whether it is registered is what check() asks.
+     */
+    public static function isWellFormed(string $vatId): bool
+    {
+        $clean = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $vatId) ?? '');
+        $prefix = substr($clean, 0, 2);
+
+        return isset(self::FORMATS[$prefix])
+            && preg_match('/^(?:' . self::FORMATS[$prefix] . ')$/', substr($clean, 2)) === 1;
     }
 
     /**
@@ -127,7 +169,7 @@ final class ViesService implements HasHooks
             'error' => $error,
         ];
 
-        if (! in_array($countryCode, self::MEMBER_STATES, true) || $number === '') {
+        if (! isset(self::FORMATS[$countryCode]) || $number === '') {
             return $failure('invalid_input');
         }
 

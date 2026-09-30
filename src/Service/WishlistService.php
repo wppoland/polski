@@ -9,6 +9,7 @@ use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
 use Polski\Repository\WishlistRepository;
+use Polski\Util\ProductVisibility;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
 
@@ -136,7 +137,7 @@ final class WishlistService implements Bootable, HasHooks
         $productId = isset($_POST['product_id']) ? absint(wp_unslash($_POST['product_id'])) : 0;
         $product = wc_get_product($productId);
 
-        if (! $product instanceof \WC_Product) {
+        if (! $product instanceof \WC_Product || ! ProductVisibility::canView($productId)) {
             wp_send_json_error(['message' => $this->getProductNotFoundText()], 404);
         }
 
@@ -246,7 +247,7 @@ final class WishlistService implements Bootable, HasHooks
         foreach ($items as $item) {
             $product = wc_get_product($item->productId);
 
-            if ($product instanceof \WC_Product) {
+            if ($product instanceof \WC_Product && ProductVisibility::canView($item->productId)) {
                 $products[] = $product;
             }
         }
