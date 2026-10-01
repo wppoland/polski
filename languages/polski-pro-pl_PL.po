@@ -12,7 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Domain: polski\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
@@ -33,8 +34,8 @@ msgid ""
 "Omnibus, GDPR, unit prices, withdrawal forms, and storefront tools."
 msgstr ""
 "Dostosowuje WooCommerce i WordPress do wymagań polskiego rynku: GPSR, "
-"Omnibus, RODO, ceny jednostkowe, formularze odstąpienia od umowy i narzędzia"
-" sklepowe."
+"Omnibus, RODO, ceny jednostkowe, formularze odstąpienia od umowy i narzędzia "
+"sklepowe."
 
 #. Author of the plugin
 #: polski.php
@@ -167,11 +168,11 @@ msgstr ""
 #: config/defaults.php:45
 #, php-format
 msgid ""
-"Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku,"
-" 23%%, 8%%, 5%% i 0%%."
+"Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku, "
+"23%%, 8%%, 5%% i 0%%."
 msgstr ""
-"Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku,"
-" 23%%, 8%%, 5%% i 0%%."
+"Skonfiguruj <a href=\"%s\">stawki VAT</a> w WooCommerce dla polskiego rynku, "
+"23%%, 8%%, 5%% i 0%%."
 
 #. translators: %s is the WooCommerce shipping zones URL.
 #: config/defaults.php:47
@@ -179,8 +180,7 @@ msgstr ""
 msgid "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 msgstr "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla dostaw w Polsce."
 
-#. translators: %s is the WooCommerce product edit URL for Polski product
-#. data.
+#. translators: %s is the WooCommerce product edit URL for Polski product data.
 #: config/defaults.php:49
 #, php-format
 msgid ""
@@ -218,11 +218,11 @@ msgstr ""
 
 #: config/defaults.php:55
 msgid ""
-"Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego"
-" systemu."
+"Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego "
+"systemu."
 msgstr ""
-"Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego"
-" systemu."
+"Zewnętrzna wtyczka wykryta. Polski korzysta z jej danych zamiast wbudowanego "
+"systemu."
 
 #: config/defaults.php:56
 msgid "wykryta, integracja aktywna"
@@ -410,11 +410,11 @@ msgstr "Opcjonalna zgoda na powiadomienia o dostawie."
 
 #: config/defaults.php:129
 msgid ""
-"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową"
-" po zakupie."
+"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową "
+"po zakupie."
 msgstr ""
-"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową"
-" po zakupie."
+"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową "
+"po zakupie."
 
 #: config/defaults.php:130
 msgid "Opcjonalna zgoda na przypomnienia o opinii."
@@ -422,8 +422,7 @@ msgstr "Opcjonalna zgoda na przypomnienia o opinii."
 
 #: config/defaults.php:132
 msgid "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
-msgstr ""
-"Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
+msgstr "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
 
 #: config/defaults.php:133
 msgid "Opcjonalna zgoda marketingowa."
@@ -602,11 +601,9 @@ msgstr "Potwierdź swój adres email"
 
 #: config/defaults.php:198 templates/emails/double-opt-in.php:28
 msgid ""
-"Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować "
-"konto:"
+"Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
 msgstr ""
-"Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować "
-"konto:"
+"Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby aktywować konto:"
 
 #: config/defaults.php:199 templates/emails/double-opt-in.php:32
 msgid "Aktywuj konto"
@@ -843,8 +840,8 @@ msgstr "Wyniki wyszukiwania produktów"
 
 #: config/defaults.php:307 config/defaults.php:404 config/defaults.php:428
 #: src/Service/CompareService.php:408 src/Service/SearchService.php:81
-#: src/Service/StockExportService.php:45
-#: src/Service/StockExportService.php:313 templates/quick-view/content.php:55
+#: src/Service/StockExportService.php:45 src/Service/StockExportService.php:313
+#: templates/quick-view/content.php:55
 msgid "SKU"
 msgstr "SKU"
 
@@ -1046,11 +1043,11 @@ msgstr "Często kupowane razem"
 
 #: config/defaults.php:453
 msgid ""
-"Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość"
-" do koszyka jednym kliknięciem."
+"Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość "
+"do koszyka jednym kliknięciem."
 msgstr ""
-"Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość"
-" do koszyka jednym kliknięciem."
+"Zaproponuj klientowi gotowy zestaw produktów komplementarnych i dodaj całość "
+"do koszyka jednym kliknięciem."
 
 #: config/defaults.php:454 config/defaults.php:620
 msgid "Dodaj zestaw do koszyka"
@@ -1420,8 +1417,7 @@ msgstr "Polski wymaga zainstalowania i aktywowania WooCommerce."
 #: polski.php:111
 #, php-format
 msgid ""
-"Polski requires WooCommerce %1$s or higher. You are running WooCommerce "
-"%2$s."
+"Polski requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
 msgstr ""
 "Polski wymaga WooCommerce %1$s lub wyższej. Masz zainstalowane WooCommerce "
 "%2$s."
@@ -1623,8 +1619,8 @@ msgstr "Dezaktywacja wtyczki zachowuje ustawienia i zapisane dane."
 
 #: src/Admin/AdminPage.php:532
 msgid ""
-"Uninstalling removes plugin files. Data is deleted only when the remove-data"
-" setting is enabled."
+"Uninstalling removes plugin files. Data is deleted only when the remove-data "
+"setting is enabled."
 msgstr ""
 "Odinstalowanie usuwa pliki wtyczki. Dane są usuwane tylko wtedy, gdy "
 "włączona jest opcja usuwania danych."
@@ -1675,11 +1671,9 @@ msgstr "Logi incydentów"
 
 #: src/Admin/AdminPage.php:568
 msgid ""
-"Rejestr problemów z bezpieczeństwem, wycieków danych i awarii "
-"infrastruktury."
+"Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 msgstr ""
-"Rejestr problemów z bezpieczeństwem, wycieków danych i awarii "
-"infrastruktury."
+"Rejestr problemów z bezpieczeństwem, wycieków danych i awarii infrastruktury."
 
 #: src/Admin/AdminPage.php:574
 msgid "Rejestr DPA (RODO)"
@@ -1698,8 +1692,7 @@ msgid "Feedback Logs"
 msgstr "Dziennik opinii"
 
 #: src/Admin/AdminPage.php:582
-msgid ""
-"Deactivation feedback and local admin feedback from the plugin sidebar."
+msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 "Opinie przy dezaktywacji oraz lokalne opinie administratora z panelu "
 "bocznego wtyczki."
@@ -1787,8 +1780,7 @@ msgstr "Nieaktywny"
 msgid "Legal Pages"
 msgstr "Strony prawne"
 
-#. translators: 1: number of configured legal pages, 2: total number of
-#. required legal pages.
+#. translators: 1: number of configured legal pages, 2: total number of required legal pages.
 #: src/Admin/AdminPage.php:741
 #, php-format
 msgid "%1$d of %2$d ready"
@@ -2360,8 +2352,8 @@ msgid ""
 "Change order button text to \"Order with obligation to pay\" according to "
 "Polish law."
 msgstr ""
-"Zmień tekst przycisku zamówienia na „Zamawiam z obowiązkiem zapłaty” zgodnie"
-" z polskim prawem."
+"Zmień tekst przycisku zamówienia na „Zamawiam z obowiązkiem zapłaty” zgodnie "
+"z polskim prawem."
 
 #: src/Admin/ModulesPage.php:128 src/Admin/ModulesPage.php:140
 #: src/Admin/ModulesPage.php:179 src/Admin/ModulesPage.php:194
@@ -2452,8 +2444,8 @@ msgstr "Etykieta - Prawo odstąpienia"
 #, php-format
 msgid "Use %s as a placeholder for the returns or withdrawal page link"
 msgstr ""
-"Użyj %s jako symbolu zastępczego dla linku do strony zwrotów lub odstąpienia"
-" od umowy"
+"Użyj %s jako symbolu zastępczego dla linku do strony zwrotów lub odstąpienia "
+"od umowy"
 
 #: src/Admin/ModulesPage.php:158
 msgid "Error - Right of withdrawal"
@@ -2521,8 +2513,8 @@ msgstr "NIP - Weryfikacja i autouzupełnianie"
 
 #: src/Admin/ModulesPage.php:178
 msgid ""
-"NIP field on the checkout page with checksum validation. Automatic retrieval"
-" of company data from the GUS REGON database after entering NIP."
+"NIP field on the checkout page with checksum validation. Automatic retrieval "
+"of company data from the GUS REGON database after entering NIP."
 msgstr ""
 "Pole NIP na stronie zamówienia z walidacją sumy kontrolnej. Automatyczne "
 "pobieranie danych firmy z bazy GUS REGON po wpisaniu NIP."
@@ -2593,8 +2585,8 @@ msgid ""
 "Withdrawal request form, My Account action with confirmation step, "
 "confirmation email, and per-product exclusions."
 msgstr ""
-"Formularz odstąpienia od umowy, akcja w Moim koncie z krokiem potwierdzenia,"
-" e-mail potwierdzający i wyłączenia dla poszczególnych produktów."
+"Formularz odstąpienia od umowy, akcja w Moim koncie z krokiem potwierdzenia, "
+"e-mail potwierdzający i wyłączenia dla poszczególnych produktów."
 
 #: src/Admin/ModulesPage.php:222
 msgid "Order action label"
@@ -2636,8 +2628,8 @@ msgstr "Informacja prawna"
 
 #: src/Admin/ModulesPage.php:225
 msgid ""
-"Under Polish consumer law, you may withdraw from the contract within 14 days"
-" without giving a reason."
+"Under Polish consumer law, you may withdraw from the contract within 14 days "
+"without giving a reason."
 msgstr ""
 "Zgodnie z polskim prawem konsumenckim możesz odstąpić od umowy w ciągu 14 "
 "dni bez podania przyczyny."
@@ -2735,8 +2727,8 @@ msgstr "Komunikat o powodzeniu"
 
 #: src/Admin/ModulesPage.php:236
 msgid ""
-"Your withdrawal request has been received. We will send a confirmation email"
-" shortly."
+"Your withdrawal request has been received. We will send a confirmation email "
+"shortly."
 msgstr ""
 "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z "
 "potwierdzeniem."
@@ -2855,8 +2847,8 @@ msgstr "Dodatkowa treść e-maila"
 
 #: src/Admin/ModulesPage.php:250
 msgid ""
-"Your refund will be processed within 14 days after the returned products are"
-" received."
+"Your refund will be processed within 14 days after the returned products are "
+"received."
 msgstr ""
 "Zwrot środków zostanie zrealizowany w ciągu 14 dni od otrzymania zwróconych "
 "produktów."
@@ -2870,8 +2862,8 @@ msgid ""
 "Displaying information about the European Commission's Online Dispute "
 "Resolution (ODR) platform."
 msgstr ""
-"Wyświetlanie informacji o platformie Online Dispute Resolution (ODR) Komisji"
-" Europejskiej."
+"Wyświetlanie informacji o platformie Online Dispute Resolution (ODR) Komisji "
+"Europejskiej."
 
 #: src/Admin/ModulesPage.php:262
 msgid "ODR info content"
@@ -3061,8 +3053,8 @@ msgstr "Żywność i suplementy"
 
 #: src/Admin/ModulesPage.php:327
 msgid ""
-"Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content,"
-" country of origin, distributor."
+"Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, "
+"country of origin, distributor."
 msgstr ""
 "Tabela wartości odżywczych, alergeny, składniki, Nutri-Score, zawartość "
 "alkoholu, kraj pochodzenia, dystrybutor."
@@ -3189,8 +3181,8 @@ msgstr "Podwójna weryfikacja (DOI)"
 
 #: src/Admin/ModulesPage.php:370
 msgid ""
-"Email address verification during account registration. Activation link sent"
-" by email, login block for unactivated accounts."
+"Email address verification during account registration. Activation link sent "
+"by email, login block for unactivated accounts."
 msgstr ""
 "Weryfikacja adresu e-mail podczas rejestracji konta. Link aktywacyjny "
 "wysyłany e-mailem, blokada logowania dla nieaktywowanych kont."
@@ -3229,8 +3221,7 @@ msgstr "Komunikat o udanej aktywacji"
 
 #: src/Admin/ModulesPage.php:379
 msgid "Excellent! Your account has been activated. You can now log in."
-msgstr ""
-"Wspaniale! Twoje konto zostało aktywowane. Możesz się teraz zalogować."
+msgstr "Wspaniale! Twoje konto zostało aktywowane. Możesz się teraz zalogować."
 
 #: src/Admin/ModulesPage.php:380 src/Admin/ModulesPage.php:729
 #: src/Admin/ModulesPage.php:962
@@ -3328,8 +3319,7 @@ msgstr "Minimalna liczba znaków"
 
 #: src/Admin/ModulesPage.php:401
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
-msgstr ""
-"Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
+msgstr "Minimalna liczba znaków przed rozpoczęciem wyszukiwania. Zalecane: 2-3"
 
 #: src/Admin/ModulesPage.php:402 build/blocks/ajax-search/index.js:226
 #: resources/js/blocks/ajax-search/index.js:52
@@ -3347,8 +3337,8 @@ msgstr "Opóźnienie zapytania (ms)"
 
 #: src/Admin/ModulesPage.php:403
 msgid ""
-"Delay in milliseconds before sending search request. Lower = faster but more"
-" server load"
+"Delay in milliseconds before sending search request. Lower = faster but more "
+"server load"
 msgstr ""
 "Opóźnienie w milisekundach przed wysłaniem zapytania. Niżej = szybciej, ale "
 "większe obciążenie serwera"
@@ -3805,8 +3795,8 @@ msgid ""
 "Lightweight product modal on listings, with support for variations, prices, "
 "gallery, and basic purchase information."
 msgstr ""
-"Lekkie okno modalne produktu na listach, z obsługą wariantów, cen, galerii i"
-" podstawowych informacji o zakupie."
+"Lekkie okno modalne produktu na listach, z obsługą wariantów, cen, galerii i "
+"podstawowych informacji o zakupie."
 
 #: src/Admin/ModulesPage.php:562
 msgid "Modal label"
@@ -4473,8 +4463,8 @@ msgid ""
 "Automatic detection of orders that may require KSeF invoicing based on NIP, "
 "plus integration hooks and an admin status indicator."
 msgstr ""
-"Automatyczne wykrywanie zamówień wymagających fakturowania KSeF na podstawie"
-" NIP, z hookami integracyjnymi i wskaźnikiem statusu w panelu "
+"Automatyczne wykrywanie zamówień wymagających fakturowania KSeF na podstawie "
+"NIP, z hookami integracyjnymi i wskaźnikiem statusu w panelu "
 "administracyjnym."
 
 #: src/Admin/ModulesPage.php:846
@@ -4488,8 +4478,7 @@ msgstr "Incydenty bezpieczeństwa"
 #: src/Admin/ModulesPage.php:852
 msgid ""
 "CRA-oriented incident log for vulnerabilities, breaches, third-party "
-"failures, and operational follow-up. Includes status tracking and CSV "
-"export."
+"failures, and operational follow-up. Includes status tracking and CSV export."
 msgstr ""
 "Dziennik incydentów zgodny z CRA dla podatności, naruszeń, awarii "
 "zewnętrznych dostawców i dalszych działań operacyjnych. Zawiera śledzenie "
@@ -4513,8 +4502,8 @@ msgstr "Dane strukturalne (Schema.org)"
 
 #: src/Admin/ModulesPage.php:869
 msgid ""
-"Automatic injection of advanced JSON-LD tags, supporting product indexing by"
-" Google with plugin-specific data preservation."
+"Automatic injection of advanced JSON-LD tags, supporting product indexing by "
+"Google with plugin-specific data preservation."
 msgstr ""
 "Automatyczne wstrzykiwanie zaawansowanych tagów JSON-LD, wspierające "
 "indeksowanie produktów przez Google z zachowaniem danych specyficznych dla "
@@ -4558,8 +4547,8 @@ msgstr "Integracja kasy i zgód"
 
 #: src/Admin/ModulesPage.php:888
 msgid ""
-"Detection of popular checkout field extensions, cookies, and product data to"
-" maintain compatibility of settings and messages."
+"Detection of popular checkout field extensions, cookies, and product data to "
+"maintain compatibility of settings and messages."
 msgstr ""
 "Wykrywanie popularnych rozszerzeń pól zamówienia, ciasteczek i danych "
 "produktowych w celu zachowania kompatybilności ustawień i komunikatów."
@@ -4632,11 +4621,11 @@ msgstr "Minimalna wartość zamówienia / liczba sztuk"
 
 #: src/Admin/ModulesPage.php:939
 msgid ""
-"Block checkout when cart does not meet minimum order value or minimum number"
-" of items. Displays a notice on cart and checkout pages."
+"Block checkout when cart does not meet minimum order value or minimum number "
+"of items. Displays a notice on cart and checkout pages."
 msgstr ""
-"Blokuj zamówienie, gdy koszyk nie spełnia minimalnej wartości lub minimalnej"
-" liczby pozycji. Wyświetla komunikat na koszyku i kasie."
+"Blokuj zamówienie, gdy koszyk nie spełnia minimalnej wartości lub minimalnej "
+"liczby pozycji. Wyświetla komunikat na koszyku i kasie."
 
 #: src/Admin/ModulesPage.php:945
 msgid "Minimum order value (0 = disabled)"
@@ -4989,8 +4978,8 @@ msgid ""
 "for zero performance impact."
 msgstr ""
 "Konfigurowalne sygnały zaufania na stronach produktu, koszyka i zamówienia: "
-"bezpieczna płatność, szybka dostawa, zwroty, gwarancja jakości. Czysty CSS +"
-" inline SVG bez wpływu na wydajność."
+"bezpieczna płatność, szybka dostawa, zwroty, gwarancja jakości. Czysty CSS + "
+"inline SVG bez wpływu na wydajność."
 
 #: src/Admin/ModulesPage.php:1106
 msgid "Show on cart"
@@ -5057,12 +5046,12 @@ msgstr "Wykres historii cen"
 #: src/Admin/ModulesPage.php:1130
 msgid ""
 "Visual SVG sparkline showing price trends over 30/90/180 days on product "
-"pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust"
-" and Omnibus transparency."
+"pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust "
+"and Omnibus transparency."
 msgstr ""
 "Wizualna krzywa SVG z trendem cen z ostatnich 30/90/180 dni na stronach "
-"produktów. Wykorzystuje dane cen Omnibus. Pokazuje najniższe/najwyższe ceny."
-" Buduje zaufanie i przejrzystość Omnibus."
+"produktów. Wykorzystuje dane cen Omnibus. Pokazuje najniższe/najwyższe ceny. "
+"Buduje zaufanie i przejrzystość Omnibus."
 
 #: src/Admin/ModulesPage.php:1136
 msgid "History period (days)"
@@ -5092,8 +5081,8 @@ msgstr "Eksport zamówień"
 #: src/Admin/ModulesPage.php:1144
 msgid ""
 "Export WooCommerce orders to CSV with configurable fields, date range and "
-"status filters. 30+ exportable fields including products, customer data, and"
-" coupons."
+"status filters. 30+ exportable fields including products, customer data, and "
+"coupons."
 msgstr ""
 "Eksport zamówień WooCommerce do CSV: pola, zakres dat, filtry statusów. "
 "Ponad 30 pól, m.in. produkty, dane klientów, kupony."
@@ -5161,8 +5150,8 @@ msgstr "Selektor daty dostawy"
 
 #: src/Admin/ModulesPage.php:1193
 msgid ""
-"Let customers choose preferred delivery date at checkout. Block weekends and"
-" holidays."
+"Let customers choose preferred delivery date at checkout. Block weekends and "
+"holidays."
 msgstr ""
 "Pozwól klientom wybrać preferowaną datę dostawy przy kasie. Blokuj weekendy "
 "i święta."
@@ -5185,8 +5174,8 @@ msgstr "Karty podarunkowe"
 
 #: src/Admin/ModulesPage.php:1215
 msgid ""
-"Sell digital gift cards with unique codes. Recipients redeem at checkout for"
-" store credit."
+"Sell digital gift cards with unique codes. Recipients redeem at checkout for "
+"store credit."
 msgstr ""
 "Sprzedawaj cyfrowe karty podarunkowe z unikalnymi kodami. Odbiorcy "
 "wymieniają przy kasie na kredyt sklepowy."
@@ -5216,11 +5205,11 @@ msgstr "Program partnerski"
 
 #: src/Admin/ModulesPage.php:1237
 msgid ""
-"Built-in affiliate system with referral tracking, commission management, and"
-" payout dashboard."
+"Built-in affiliate system with referral tracking, commission management, and "
+"payout dashboard."
 msgstr ""
-"Wbudowany system partnerski ze śledzeniem poleceń, zarządzaniem prowizjami i"
-" panelem wypłat."
+"Wbudowany system partnerski ze śledzeniem poleceń, zarządzaniem prowizjami i "
+"panelem wypłat."
 
 #: src/Admin/ModulesPage.php:1238
 msgid "PRO - Marketing"
@@ -5244,8 +5233,7 @@ msgstr "Pakiety produktów"
 
 #: src/Admin/ModulesPage.php:1259
 msgid ""
-"Create product bundles and kits with combined pricing and inventory "
-"tracking."
+"Create product bundles and kits with combined pricing and inventory tracking."
 msgstr ""
 "Twórz pakiety i zestawy produktów z połączonym śledzeniem cen i zapasów."
 
@@ -5255,8 +5243,8 @@ msgstr "Dodatki do produktów"
 
 #: src/Admin/ModulesPage.php:1270
 msgid ""
-"Extra options on product pages: engraving, gift wrapping, custom text. Fixed"
-" or percentage pricing."
+"Extra options on product pages: engraving, gift wrapping, custom text. Fixed "
+"or percentage pricing."
 msgstr ""
 "Dodatkowe opcje na stronach produktów: grawer, pakowanie prezentów, "
 "niestandardowy tekst. Ceny stałe lub procentowe."
@@ -5351,8 +5339,8 @@ msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
 msgstr ""
-"Wykryto zewnętrzną wtyczkę. Polski korzysta z jej danych zamiast wbudowanego"
-" systemu."
+"Wykryto zewnętrzną wtyczkę. Polski korzysta z jej danych zamiast wbudowanego "
+"systemu."
 
 #: src/Admin/ModulesPage.php:1860
 msgid "detected, integration active"
@@ -5372,8 +5360,8 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1877
 msgid ""
-"Supported checkout, cookies, or product data extensions detected. Polski can"
-" adjust integration to the active set."
+"Supported checkout, cookies, or product data extensions detected. Polski can "
+"adjust integration to the active set."
 msgstr ""
 "Wykryto obsługiwane rozszerzenia kasy, ciasteczek lub danych produktowych. "
 "Polski może dostosować integrację do aktywnego zestawu."
@@ -5499,7 +5487,8 @@ msgid "Base quantity"
 msgstr "Ilość bazowa"
 
 #: src/Admin/ProductMetaBox.php:81
-msgid "Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
+msgid ""
+"Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
 msgstr "Bazowa ilość odniesienia (np. 1 dla „za 1 kg”, 100 dla „za 100 ml”)."
 
 #: src/Admin/ProductMetaBox.php:93
@@ -5870,8 +5859,8 @@ msgstr "Identyfikator produktu"
 
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:48
 msgid ""
-"Optional: manually set ID for related/upsell sources outside product details"
-" page."
+"Optional: manually set ID for related/upsell sources outside product details "
+"page."
 msgstr ""
 "Opcjonalnie: ręcznie ustaw ID dla źródeł powiązanych/upsell poza stroną "
 "szczegółów produktu."
@@ -5917,8 +5906,7 @@ msgstr "Aktywacja konta (Double Opt-In)"
 #: src/Email/DoubleOptInEmail.php:20
 msgid ""
 "A warm welcome sent to your new customers to verify their email address."
-msgstr ""
-"Ciepłe powitanie dla nowych klientów w celu weryfikacji adresu e-mail."
+msgstr "Ciepłe powitanie dla nowych klientów w celu weryfikacji adresu e-mail."
 
 #: src/Email/DoubleOptInEmail.php:119 src/Email/DoubleOptInEmail.php:120
 msgid ""
@@ -6083,8 +6071,7 @@ msgstr "Kreator zakończony."
 #: src/Rest/WithdrawalController.php:125
 msgid "We could not prepare a withdrawal request for this order."
 msgstr ""
-"Nie udało się przygotować wniosku o odstąpienie od umowy dla tego "
-"zamówienia."
+"Nie udało się przygotować wniosku o odstąpienie od umowy dla tego zamówienia."
 
 #: src/Rest/WithdrawalController.php:161
 msgid "Invalid status."
@@ -6156,15 +6143,14 @@ msgstr "Proszę zaakceptować: %s"
 #: src/Service/CheckboxService.php:325
 msgid ""
 "Enable the Terms and Conditions checkbox - required by Polish consumer law."
-msgstr ""
-"Włącz checkbox regulaminu - wymagany przez polskie prawo konsumenckie."
+msgstr "Włącz checkbox regulaminu - wymagany przez polskie prawo konsumenckie."
 
 #: src/Service/CheckboxService.php:337
 msgid ""
 "Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7."
 msgstr ""
-"Włącz checkbox polityki prywatności - wymagany przez RODO art. 6 ust. 1 lit."
-" a i art. 7."
+"Włącz checkbox polityki prywatności - wymagany przez RODO art. 6 ust. 1 lit. "
+"a i art. 7."
 
 #: src/Service/CheckboxService.php:349
 msgid ""
@@ -6185,12 +6171,11 @@ msgid ""
 "Marketing consent must be optional under GDPR - change it from required to "
 "optional."
 msgstr ""
-"Zgoda marketingowa musi być opcjonalna zgodnie z RODO - zmień z wymaganej na"
-" opcjonalną."
+"Zgoda marketingowa musi być opcjonalna zgodnie z RODO - zmień z wymaganej na "
+"opcjonalną."
 
 #: src/Service/CheckboxService.php:379
-msgid ""
-"Consider adding an optional marketing consent checkbox for newsletters."
+msgid "Consider adding an optional marketing consent checkbox for newsletters."
 msgstr ""
 "Rozważ dodanie opcjonalnego checkboxa zgody marketingowej na newsletter."
 
@@ -6208,7 +6193,8 @@ msgstr ""
 msgid ""
 "I have read and accept the <a href=\"%s\" target=\"_blank\">Terms and "
 "Conditions</a>."
-msgstr "Przeczytałem/am i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin</a>."
+msgstr ""
+"Przeczytałem/am i akceptuję <a href=\"%s\" target=\"_blank\">Regulamin</a>."
 
 #: src/Service/CheckboxService.php:457
 msgid "You must accept the Terms and Conditions to place an order."
@@ -6222,8 +6208,8 @@ msgstr "Akceptacja regulaminu sklepu."
 #: src/Service/CheckboxService.php:469
 #, php-format
 msgid ""
-"I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy "
-"Policy</a>."
+"I have read and accept the <a href=\"%s\" target=\"_blank\">Privacy Policy</"
+"a>."
 msgstr ""
 "Przeczytałem/am i akceptuję <a href=\"%s\" target=\"_blank\">Politykę "
 "prywatności</a>."
@@ -6251,8 +6237,8 @@ msgid ""
 "You must confirm that you have read the information about the right of "
 "withdrawal."
 msgstr ""
-"Musisz potwierdzić, że zapoznałeś się z informacjami o prawie odstąpienia od"
-" umowy."
+"Musisz potwierdzić, że zapoznałeś się z informacjami o prawie odstąpienia od "
+"umowy."
 
 #: src/Service/CheckboxService.php:494
 msgid "14-day withdrawal right acknowledgment."
@@ -6290,8 +6276,8 @@ msgstr "Opcjonalna zgoda na powiadomienia o dostawie."
 msgid ""
 "I agree to receive an email reminder to leave a review after my purchase."
 msgstr ""
-"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową"
-" po zakupie."
+"Wyrażam zgodę na otrzymanie przypomnienia o wystawieniu opinii drogą mailową "
+"po zakupie."
 
 #: src/Service/CheckboxService.php:529
 msgid "Optional review reminder consent."
@@ -6688,8 +6674,8 @@ msgid ""
 "Please fill in your Return and Withdrawal Policy. Consumers have 14 days to "
 "withdraw."
 msgstr ""
-"Uzupełnij politykę zwrotów i odstąpienia od umowy. Konsumenci mają 14 dni na"
-" odstąpienie."
+"Uzupełnij politykę zwrotów i odstąpienia od umowy. Konsumenci mają 14 dni na "
+"odstąpienie."
 
 #: src/Service/LegalPageService.php:174
 msgid "Please complete the complaints procedure."
@@ -6884,8 +6870,7 @@ msgstr "do"
 msgid "Order statuses"
 msgstr "Stany zamówień"
 
-#: src/Service/OrderExportService.php:109
-#: src/Service/StockExportService.php:66
+#: src/Service/OrderExportService.php:109 src/Service/StockExportService.php:66
 msgid "Export fields"
 msgstr "Pola eksportu"
 
@@ -7064,8 +7049,8 @@ msgid ""
 "hosting or payment issues in one place. This helps with internal audit "
 "trails and CRA readiness work."
 msgstr ""
-"Śledź incydenty bezpieczeństwa, podatności produktów, naruszenia danych oraz"
-" problemy z hostingiem lub płatnościami w jednym miejscu. Ułatwia to "
+"Śledź incydenty bezpieczeństwa, podatności produktów, naruszenia danych oraz "
+"problemy z hostingiem lub płatnościami w jednym miejscu. Ułatwia to "
 "prowadzenie wewnętrznych ścieżek audytowych i przygotowanie do CRA."
 
 #: src/Service/SecurityIncidentService.php:96
@@ -7327,8 +7312,7 @@ msgstr "Żadne checkboxy nie są domyślnie zaznaczone."
 #: src/Service/SiteAuditService.php:318
 #, php-format
 msgid ""
-"Detected %d pre-checked checkboxes. Authorities consider this a dark "
-"pattern."
+"Detected %d pre-checked checkboxes. Authorities consider this a dark pattern."
 msgstr ""
 "Wykryto %d wstępnie zaznaczonych checkboxów. Organy nadzorcze uznają to za "
 "ciemny wzorzec."
@@ -7367,8 +7351,7 @@ msgstr "Moduł Omnibus (najniższa cena)"
 
 #: src/Service/SiteAuditService.php:389
 msgid ""
-"Omnibus module is enabled - lowest price from 30 days will be shown on "
-"sales."
+"Omnibus module is enabled - lowest price from 30 days will be shown on sales."
 msgstr ""
 "Moduł Omnibus jest włączony - najniższa cena z 30 dni będzie wyświetlana "
 "przy promocjach."
@@ -7471,8 +7454,8 @@ msgid ""
 "KSeF-ready module is enabled - orders with VAT ID can be marked for invoice "
 "integration."
 msgstr ""
-"Moduł KSeF jest włączony - zamówienia z NIP mogą być oznaczane do integracji"
-" z fakturami."
+"Moduł KSeF jest włączony - zamówienia z NIP mogą być oznaczane do integracji "
+"z fakturami."
 
 #: src/Service/SiteAuditService.php:540
 msgid ""
@@ -7511,8 +7494,8 @@ msgid ""
 "DPA registry module is disabled. It is good practice to monitor DPA status "
 "for hosting, payments, etc."
 msgstr ""
-"Moduł rejestru DPA jest wyłączony. Dobrą praktyką jest monitorowanie statusu"
-" DPA dla hostingu, płatności itp."
+"Moduł rejestru DPA jest wyłączony. Dobrą praktyką jest monitorowanie statusu "
+"DPA dla hostingu, płatności itp."
 
 #: src/Service/SiteAuditService.php:607
 msgid ""
@@ -7598,8 +7581,8 @@ msgid ""
 "The site does not use HTTPS. GDPR requires appropriate technical measures - "
 "SSL is the minimum."
 msgstr ""
-"Witryna nie używa HTTPS. GDPR wymaga odpowiednich środków technicznych - SSL"
-" to minimum."
+"Witryna nie używa HTTPS. GDPR wymaga odpowiednich środków technicznych - SSL "
+"to minimum."
 
 #: src/Service/SocialLoginService.php:77
 msgid "Continue with Google"
@@ -7624,11 +7607,10 @@ msgstr ""
 "Nie udało się uwierzytelnić u dostawcy społecznościowego. Spróbuj ponownie."
 
 #: src/Service/SocialLoginService.php:208
-msgid ""
-"Could not retrieve your profile. Please ensure email access is granted."
+msgid "Could not retrieve your profile. Please ensure email access is granted."
 msgstr ""
-"Nie udało się pobrać profilu. Upewnij się, że przyznano dostęp do adresu "
-"e-mail."
+"Nie udało się pobrać profilu. Upewnij się, że przyznano dostęp do adresu e-"
+"mail."
 
 #: src/Service/SocialLoginService.php:217
 msgid "Could not create your account. Please try again."
@@ -7678,13 +7660,11 @@ msgstr "Cena regularna"
 msgid "Sale price"
 msgstr "Cena promocyjna"
 
-#: src/Service/StockExportService.php:52
-#: src/Service/StockExportService.php:320
+#: src/Service/StockExportService.php:52 src/Service/StockExportService.php:320
 msgid "Categories"
 msgstr "Kategorie"
 
-#: src/Service/StockExportService.php:53
-#: src/Service/StockExportService.php:321
+#: src/Service/StockExportService.php:53 src/Service/StockExportService.php:321
 msgid "Weight"
 msgstr "Waga"
 
@@ -7829,8 +7809,8 @@ msgstr "Produkt {product_name} jest ponownie dostępny."
 msgid ""
 "If you no longer wish to receive these messages, simply ignore this email."
 msgstr ""
-"Jeśli nie chcesz już otrzymywać tych wiadomości, po prostu zignoruj ten "
-"e-mail."
+"Jeśli nie chcesz już otrzymywać tych wiadomości, po prostu zignoruj ten e-"
+"mail."
 
 #: src/Service/WishlistService.php:267
 msgid "Add to Wishlist"
@@ -7862,8 +7842,8 @@ msgstr "Niestety, nie udało nam się znaleźć takiego zamówienia."
 
 #: src/Service/WithdrawalService.php:293
 msgid ""
-"Your return request has been accepted. We will send you a confirmation email"
-" shortly!"
+"Your return request has been accepted. We will send you a confirmation email "
+"shortly!"
 msgstr ""
 "Twój wniosek o zwrot został zaakceptowany. Wkrótce wyślemy e-mail z "
 "potwierdzeniem!"
@@ -7926,8 +7906,7 @@ msgstr "Produkty w tym zamówieniu"
 #, php-format
 msgid "Are you sure you want to submit a withdrawal request for order #%s?"
 msgstr ""
-"Czy na pewno chcesz złożyć wniosek o odstąpienie od umowy dla zamówienia "
-"#%s?"
+"Czy na pewno chcesz złożyć wniosek o odstąpienie od umowy dla zamówienia #%s?"
 
 #: templates/account/withdrawal-confirm.php:99
 msgid "Confirm withdrawal request"
@@ -7989,11 +7968,11 @@ msgstr "Zgłoś nielegalne treści (DSA)"
 
 #: templates/forms/dsa-report.php:33
 msgid ""
-"Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne"
-" zgodnie z Aktem o usługach cyfrowych (DSA)."
+"Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne "
+"zgodnie z Aktem o usługach cyfrowych (DSA)."
 msgstr ""
-"Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne"
-" zgodnie z Aktem o usługach cyfrowych (DSA)."
+"Wypełnij poniższy formularz, aby zgłosić treści, które uważasz za nielegalne "
+"zgodnie z Aktem o usługach cyfrowych (DSA)."
 
 #: templates/forms/dsa-report.php:41 templates/forms/dsa-report.php:46
 #: templates/forms/dsa-report.php:51 templates/forms/dsa-report.php:56
