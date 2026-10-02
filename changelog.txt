@@ -5,7 +5,7 @@ Complete release history for Polski for WooCommerce. The plugin page on WordPres
 = 1.41.1 =
 * Fixed: the Elementor widgets (unit price, Omnibus price, tax, delivery time, GPSR, food, AJAX search, filters, product slider) never appeared in Elementor. The class that registers them was defined but had not been booted since April 2026. They now appear in the "Polski for WooCommerce" category and render through the same code as their shortcodes.
 * Fixed: with Google for WooCommerce active, Polski now adds the product's GTIN (when Google for WooCommerce has none), manufacturer as brand, and unit pricing to the Google product. This integration had also not been booted since April 2026, and when switched back on it would have stopped every product sync with a type error; it is corrected to the filter's real arguments and to the attribute names Google expects.
-* Fixed: on CartFlows checkout pages, the legal checkboxes are only added back when the Legal checkboxes module is on.
+* Changed: the CartFlows compatibility class is booted again and only acts when the Legal checkboxes module is on.
 * Fixed: the daily maintenance job (Omnibus history pruning, double opt-in cleanup, scheduled review requests) was scheduled only on activation, so an update that copied files without reactivating left it unscheduled. It is now restored on every load when missing.
 * Removed: an empty Dynamic Pricing compatibility class whose two callbacks did nothing.
 
