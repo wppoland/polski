@@ -89,7 +89,8 @@ install_release() {
     local slug="${plugin}-pcp-check"
     local container
 
-    container="$(find_container)"
+    # wp-env 10+ no longer prints "install path:" in `status`, so allow a pin.
+    container="${PCP_CONTAINER:-$(find_container)}"
 
     if [[ -z "${container}" ]]; then
         echo "Could not find running wp-env WordPress container." >&2
