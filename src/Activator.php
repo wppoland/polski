@@ -160,7 +160,11 @@ final class Activator
         $migrator->runPending();
     }
 
-    private static function scheduleEvents(): void
+    /**
+     * Also called on every boot: activation is skipped by updates that copy
+     * files, and a missing event silently stops the daily maintenance jobs.
+     */
+    public static function scheduleEvents(): void
     {
         if (! wp_next_scheduled('polski_daily_maintenance')) {
             wp_schedule_event(time(), 'daily', 'polski_daily_maintenance');
