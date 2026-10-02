@@ -17,7 +17,7 @@ final class CartFlowsCompat implements HasHooks
 {
     public function registerHooks(): void
     {
-        if (! class_exists('Cartflows_Loader')) {
+        if (! class_exists('Cartflows_Loader') || ! \Polski\Admin\ModulesPage::isModuleEnabled('legal_checkboxes')) {
             return;
         }
 

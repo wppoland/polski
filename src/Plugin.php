@@ -56,6 +56,7 @@ final class Plugin
         $this->registerHookSubscribers();
 
         $this->syncInstalledVersion();
+        Activator::scheduleEvents();
         /**
          * Fires after Polski is fully booted.
          *

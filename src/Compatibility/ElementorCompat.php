@@ -10,9 +10,8 @@ use Polski\Contract\HasHooks;
 /**
  * Elementor compatibility layer.
  *
- * Registers Polski widgets for the Elementor page builder.
- * This is a stub that will be expanded with full widget implementations
- * when the Elementor integration is prioritized.
+ * Registers the Polski widgets for the Elementor page builder. Each widget
+ * renders through the same service as its shortcode.
  */
 final class ElementorCompat implements HasHooks
 {
@@ -32,15 +31,13 @@ final class ElementorCompat implements HasHooks
     public function registerCategory(\Elementor\Elements_Manager $elements): void
     {
         $elements->add_category('polski', [
-            'title' => __('Polski', 'polski'),
+            'title' => __('Polski for WooCommerce', 'polski'),
             'icon' => 'eicon-woocommerce',
         ]);
     }
 
     /**
      * Register Polski Elementor widgets.
-     *
-     * Widget implementations will be added in src/Compatibility/Elementor/Widgets/.
      */
     public function registerWidgets(\Elementor\Widgets_Manager $widgets): void
     {

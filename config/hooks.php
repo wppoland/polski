@@ -8,7 +8,9 @@ use Polski\Admin\CSVImportExport;
 use Polski\Admin\ModulesPage;
 use Polski\Admin\PostTypes;
 use Polski\Admin\ProductMetaBox;
+use Polski\Compatibility\CartFlowsCompat;
 use Polski\Compatibility\ElementorCompat;
+use Polski\Compatibility\GoogleCompat;
 use Polski\Hook\AdminHooks;
 use Polski\Hook\AIFeedHooks;
 use Polski\Hook\AIFeedLlmsTxtHooks;
@@ -263,4 +265,9 @@ return [
 
     // Per-product DSA report widget.
     DSAProductReportHooks::class,
+
+    // Third-party compatibility. Each class returns early unless its plugin is active.
+    ElementorCompat::class,
+    CartFlowsCompat::class,
+    GoogleCompat::class,
 ];

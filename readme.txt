@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.0
+Stable tag: 1.41.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,13 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.41.1 =
+* Fixed: the Elementor widgets (unit price, Omnibus price, tax, delivery time, GPSR, food, AJAX search, filters, product slider) never appeared in Elementor. The class that registers them was defined but had not been booted since April 2026. They now appear in the "Polski for WooCommerce" category and render through the same code as their shortcodes.
+* Fixed: with Google for WooCommerce active, Polski now adds the product's GTIN (when Google for WooCommerce has none), manufacturer as brand, and unit pricing to the Google product. This integration had also not been booted since April 2026, and when switched back on it would have stopped every product sync with a type error; it is corrected to the filter's real arguments and to the attribute names Google expects.
+* Changed: the CartFlows compatibility class is booted again and only acts when the Legal checkboxes module is on.
+* Fixed: the daily maintenance job (Omnibus history pruning, double opt-in cleanup, scheduled review requests) was scheduled only on activation, so an update that copied files without reactivating left it unscheduled. It is now restored on every load when missing.
+* Removed: an empty Dynamic Pricing compatibility class whose two callbacks did nothing.
+
 = 1.41.0 =
 * Security (high): a logged-out visitor could open and submit the withdrawal form for any guest order, because a guest order's customer id and a logged-out visitor's user id are both 0. Guests now go through the existing order lookup and email link only.
 * Security (medium): Quick View, compare and wishlist returned or stored draft, private and password-protected products, including disabled variations. They now accept only products a visitor could open themselves.
@@ -471,16 +478,15 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: food products published two and a half times as much sodium as their own label. Annex XV declares salt, Schema.org only has `sodiumContent`, and salt is sodium multiplied by 2.5, but the two were mapped straight across, so a product labelled 2.5 g of salt told Google it contained 2.5 g of sodium. The figure is now converted before it is published.
 * Fixed: the unit price in structured data carried a hardcoded Polish label, printed as-is on every non-Polish shop, and a private `polski_unit_price` key nothing reads. The label is translated and the private key is gone.
 
-= 1.36.6 =
-* Added: the Food and supplements module now has fields. The Modules screen has always said you can enter ingredients, nutrition, Nutri-Score, alcohol content, country of origin and the food business operator per product, and until now the only way to write any of them was a CSV import, so a shop without a spreadsheet could not use the module at all. The Polski tab on the product screen carries all of them, with one input per nutrient instead of the importer's `slug:value|slug:value` syntax. Values typed here and values imported from CSV end up identical, so an export still round-trips.
-* Fixed: every multi-line field on that tab lost its line breaks when saved. The save pass ran `sanitize_text_field` over each value before choosing a sanitiser, and that function folds newlines into spaces, so a GPSR manufacturer address, a list of safety warnings, repair information and the substantiation of an environmental claim were all stored as one long line.
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.41.1 =
+The Elementor widgets and the Google for WooCommerce integration work again, and the daily maintenance job reschedules itself.
 
 = 1.41.0 =
 Security release. Withdrawal forms for guest orders, and hidden products in Quick View, compare, wishlist and Q&A, are no longer reachable by other visitors. Update recommended.

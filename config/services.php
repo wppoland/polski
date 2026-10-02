@@ -383,7 +383,6 @@ return static function (Container $c): void {
 
     // Compatibility.
     $c->singleton(\Polski\Compatibility\ElementorCompat::class, static fn () => new \Polski\Compatibility\ElementorCompat());
-    $c->singleton(\Polski\Compatibility\DynamicPricingCompat::class, static fn () => new \Polski\Compatibility\DynamicPricingCompat());
     $c->singleton(\Polski\Compatibility\CartFlowsCompat::class, static fn () => new \Polski\Compatibility\CartFlowsCompat());
     $c->singleton(\Polski\Compatibility\GoogleCompat::class, static fn () => new \Polski\Compatibility\GoogleCompat());
 
