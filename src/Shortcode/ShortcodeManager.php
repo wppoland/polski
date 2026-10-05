@@ -15,6 +15,7 @@ use Polski\Service\ProductInfoService;
 use Polski\Service\WithdrawalService;
 use Polski\Service\CompareService;
 use Polski\Service\WishlistService;
+use Polski\Util\ProductVisibility;
 use Polski\Util\TemplateLoader;
 
 /**
@@ -244,7 +245,11 @@ final class ShortcodeManager implements HasHooks
         }
 
         $order = wc_get_order($orderId);
-        if (! $order instanceof \WC_Order) {
+
+        // The order id comes from page content, so only the order's owner or a
+        // shop manager may see it. Anyone else gets the unknown-order answer,
+        // which tells them nothing about whether the order exists.
+        if (! $order instanceof \WC_Order || ! $this->canSeeOrder($order)) {
             return '<p>' . esc_html__('We could not find that order.', 'polski') . '</p>';
         }
 
@@ -424,11 +429,22 @@ final class ShortcodeManager implements HasHooks
 
         if ($productId > 0) {
             $product = wc_get_product($productId);
-            return $product instanceof \WC_Product ? $product : null;
+            return $product instanceof \WC_Product && ProductVisibility::canView($productId) ? $product : null;
         }
 
         global $product;
         return $product instanceof \WC_Product ? $product : null;
+    }
+
+    private function canSeeOrder(\WC_Order $order): bool
+    {
+        // A guest order has customer id 0 and so does a logged-out visitor.
+        $userId = get_current_user_id();
+        if ($userId > 0 && $order->get_customer_id() === $userId) {
+            return true;
+        }
+
+        return current_user_can('edit_shop_order', $order->get_id()) || current_user_can('manage_woocommerce');
     }
 
     private function container(): \Polski\Container

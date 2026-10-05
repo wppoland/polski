@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.2
+Stable tag: 1.41.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,9 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.41.3 =
+* Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
+
 = 1.41.2 =
 * Fixed: the withdrawal form lost its "Step 1. Choose the items to withdraw from" heading as soon as the settings were saved once. The settings default said "Order items", so saving wrote that over the template's heading; both defaults now match the form.
 * Fixed: the KSeF badge on the orders list stayed amber for an invoice KSeF had accepted. Polski PRO records an accepted invoice as "accepted", and the badge only turned green for "sent"; it is green for both now.
@@ -474,13 +477,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 = 1.36.9 =
 * Fixed: `[polski_wishlist]` and `[polski_compare]` rendered unstyled with dead buttons on an ordinary page. The assets loaded only on shop, product, product category and My Account pages, so a merchant who put either shortcode on a page of their own got markup with no stylesheet and no script behind it.
 * Fixed: three sentences on the withdrawal form were hardcoded Polish inside a JavaScript file, so every shop saw them in Polish whatever its language, while the form around them was translated. They now come from the server and are translated with the rest of the plugin.
-
-= 1.36.8 =
-* Fixed: deleting the plugin left the per-user "dismiss" flag from the PRO notice in the database. Uninstall now removes it for every user, not just the one who dismissed it.
-
-= 1.36.7 =
-* Fixed: food products published two and a half times as much sodium as their own label. Annex XV declares salt, Schema.org only has `sodiumContent`, and salt is sodium multiplied by 2.5, but the two were mapped straight across, so a product labelled 2.5 g of salt told Google it contained 2.5 g of sodium. The figure is now converted before it is published.
-* Fixed: the unit price in structured data carried a hardcoded Polish label, printed as-is on every non-Polish shop, and a private `polski_unit_price` key nothing reads. The label is translated and the private key is gone.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

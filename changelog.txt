@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.41.3 =
+* Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
+
 = 1.41.2 =
 * Fixed: the withdrawal form lost its "Step 1. Choose the items to withdraw from" heading as soon as the settings were saved once. The settings default said "Order items", so saving wrote that over the template's heading; both defaults now match the form.
 * Fixed: the KSeF badge on the orders list stayed amber for an invoice KSeF had accepted. Polski PRO records an accepted invoice as "accepted", and the badge only turned green for "sent"; it is green for both now.
