@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.1
+Stable tag: 1.41.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -357,6 +357,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.41.2 =
+* Fixed: the withdrawal form lost its "Step 1. Choose the items to withdraw from" heading as soon as the settings were saved once. The settings default said "Order items", so saving wrote that over the template's heading; both defaults now match the form.
+* Fixed: the KSeF badge on the orders list stayed amber for an invoice KSeF had accepted. Polski PRO records an accepted invoice as "accepted", and the badge only turned green for "sent"; it is green for both now.
 
 = 1.41.1 =
 * Fixed: the Elementor widgets (unit price, Omnibus price, tax, delivery time, GPSR, food, AJAX search, filters, product slider) never appeared in Elementor. The class that registers them was defined but had not been booted since April 2026. They now appear in the "Polski for WooCommerce" category and render through the same code as their shortcodes.
