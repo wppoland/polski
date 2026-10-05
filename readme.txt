@@ -485,6 +485,9 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
 
+= 1.41.3 =
+Security release. Not exposed to visitors: only a logged-in user who can write posts could read another customer's order number and date, or an unpublished product's details, through a shortcode in a post preview. Update, nothing else to do.
+
 = 1.41.1 =
 The Elementor widgets and the Google for WooCommerce integration work again, and the daily maintenance job reschedules itself.
 
