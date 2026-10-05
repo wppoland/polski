@@ -146,7 +146,7 @@ return [
         'form_title' => __('Withdrawal declaration', 'polski'),
         'form_intro_text' => __('This refers to order #{order_number} placed on {order_date}.', 'polski'),
         'legal_notice_text' => __('Under Polish consumer law you have the right to withdraw from the contract within 14 days without giving a reason.', 'polski'),
-        'items_heading' => __('Items in the order', 'polski'),
+        'items_heading' => __('Step 1. Choose the items to withdraw from', 'polski'),
         'column_product' => __('Product', 'polski'),
         'column_quantity' => __('Quantity', 'polski'),
         'exempt_notice_text' => __('(This product is excluded from the right of withdrawal)', 'polski'),

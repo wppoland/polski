@@ -504,7 +504,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_withdrawal|form_title', 'label' => __('Form title', 'polski'), 'type' => 'text', 'default' => __('Withdrawal request', 'polski')],
                     ['key' => 'polski_withdrawal|form_intro_text', 'label' => __('Form introduction', 'polski'), 'type' => 'textarea', 'default' => __('You are submitting a withdrawal request for order #{order_number} placed on {order_date}.', 'polski'), 'hint' => __('Variables: {order_number}, {order_date}', 'polski')],
                     ['key' => 'polski_withdrawal|legal_notice_text', 'label' => __('Legal notice', 'polski'), 'type' => 'textarea', 'default' => __('Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason.', 'polski')],
-                    ['key' => 'polski_withdrawal|items_heading', 'label' => __('Order items heading', 'polski'), 'type' => 'text', 'default' => __('Order items', 'polski')],
+                    ['key' => 'polski_withdrawal|items_heading', 'label' => __('Order items heading', 'polski'), 'type' => 'text', 'default' => __('Step 1. Choose the items to withdraw from', 'polski')],
                     ['key' => 'polski_withdrawal|column_product', 'label' => __('Product column', 'polski'), 'type' => 'text', 'default' => __('Product', 'polski')],
                     ['key' => 'polski_withdrawal|column_quantity', 'label' => __('Quantity column', 'polski'), 'type' => 'text', 'default' => __('Quantity', 'polski')],
                     ['key' => 'polski_withdrawal|exempt_notice_text', 'label' => __('Exemption notice', 'polski'), 'type' => 'text', 'default' => __('(This product is excluded from the right of withdrawal)', 'polski')],
