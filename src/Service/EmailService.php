@@ -88,6 +88,7 @@ final class EmailService implements HasHooks
     public function registerEmails(array $emails): array
     {
         $emails['polski_withdrawal_confirmation'] = new \Polski\Email\WithdrawalConfirmationEmail();
+        $emails['polski_withdrawal_admin_notification'] = new \Polski\Email\WithdrawalAdminNotificationEmail();
         $emails['polski_withdrawal_completed'] = new \Polski\Email\WithdrawalCompletedEmail();
         $emails['polski_withdrawal_rejected'] = new \Polski\Email\WithdrawalRejectedEmail();
         $emails['polski_double_opt_in'] = new \Polski\Email\DoubleOptInEmail();

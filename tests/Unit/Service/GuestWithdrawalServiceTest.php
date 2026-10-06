@@ -151,6 +151,27 @@ final class GuestWithdrawalServiceTest extends TestCase
         unset($_SERVER['HTTP_X_FORWARDED_FOR'], $_SERVER['HTTP_CF_CONNECTING_IP']);
     }
 
+    public function testLocateOrderStripsHash(): void
+    {
+        $service = $this->makeService();
+        $locate = (new \ReflectionClass(GuestWithdrawalService::class))->getMethod('locateOrder');
+        $locate->setAccessible(true);
+
+        // Empty string returns null
+        self::assertNull($locate->invoke($service, '   '));
+        self::assertNull($locate->invoke($service, '###'));
+    }
+
+    public function testGetLookupUrlFallsBackToHomeUrlWhenNoPageFound(): void
+    {
+        $service = $this->makeService();
+        $getUrl = (new \ReflectionClass(GuestWithdrawalService::class))->getMethod('getLookupUrl');
+        $getUrl->setAccessible(true);
+
+        $url = $getUrl->invoke($service);
+        self::assertSame(home_url('/'), $url);
+    }
+
     private function makeService(): GuestWithdrawalService
     {
         $repo = (new \ReflectionClass(WithdrawalRepository::class))->newInstanceWithoutConstructor();

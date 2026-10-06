@@ -371,6 +371,13 @@ if (! function_exists('delete_transient')) {
     }
 }
 
+if (! function_exists('wp_get_referer')) {
+    function wp_get_referer(): string|false
+    {
+        return false;
+    }
+}
+
 if (! function_exists('wp_mail')) {
     function wp_mail(string|array $to, string $subject, string $message, string|array $headers = '', string|array $attachments = []): bool
     {
@@ -909,6 +916,7 @@ if (! class_exists('wpdb')) {
     class wpdb
     {
         public string $prefix = 'wp_';
+        public string $posts = 'wp_posts';
         public int $insert_id = 0;
 
         /** @var array<int, array<string, mixed>> */
@@ -1153,6 +1161,14 @@ if (! class_exists('WC_Order')) {
         {
             return '0';
         }
+        public function get_billing_phone(): string
+        {
+            return '';
+        }
+        public function get_edit_order_url(): string
+        {
+            return '';
+        }
         public function get_date_created(): ?object
         {
             return null;
@@ -1219,6 +1235,11 @@ if (! class_exists('WC_Email')) {
         public function get_recipient(): string
         {
             return $this->recipient;
+        }
+
+        public function get_option(string $key, mixed $empty_value = null): mixed
+        {
+            return $empty_value;
         }
 
         public function get_heading(): string

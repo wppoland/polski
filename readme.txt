@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.3
+Stable tag: 1.41.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,11 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.41.4 =
+* Added: native administrator email notification ("New withdrawal declaration (Admin)") registered in WooCommerce > Settings > Emails, alerting the shop whenever a customer files a return.
+* Fixed: guest withdrawal lookup form now auto-detects pages with the [polski_withdrawal_lookup] shortcode even when unselected in settings, wraps magic link emails in WooCommerce HTML styling with proper From headers, and provides feedback if an order is not eligible.
+* Fixed: guest order lookup now supports sequential order number plugins and trims hash/whitespace prefixes.
+
 = 1.41.3 =
 * Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
 
@@ -474,16 +479,15 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 = 1.37.0 =
 * Security (high): social login signed a visitor in to an existing WordPress account whenever Google or Facebook reported a matching email address, without checking that the provider had actually verified that address. Anyone who could register with a provider claiming somebody else's address was handed that person's account, an administrator's included. The address must now be verified by the provider before any account is matched, and an account that can edit the site is never linked automatically: its owner signs in with a password as before. Social login is off unless you switched it on and entered provider credentials, so a default installation was never exposed.
 
-= 1.36.9 =
-* Fixed: `[polski_wishlist]` and `[polski_compare]` rendered unstyled with dead buttons on an ordinary page. The assets loaded only on shop, product, product category and My Account pages, so a merchant who put either shortcode on a page of their own got markup with no stylesheet and no script behind it.
-* Fixed: three sentences on the withdrawal form were hardcoded Polish inside a JavaScript file, so every shop saw them in Polish whatever its language, while the form around them was translated. They now come from the server and are translated with the rest of the plugin.
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.41.4 =
+Adds native administrator email notifications for customer returns and improves guest return lookup deliverability.
 
 = 1.41.3 =
 Security release. Not exposed to visitors: only a logged-in user who can write posts could read another customer's order number and date, or an unpublished product's details, through a shortcode in a post preview. Update, nothing else to do.

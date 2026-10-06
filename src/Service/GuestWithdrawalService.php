@@ -101,6 +101,7 @@ final class GuestWithdrawalService implements HasHooks
         }
 
         if (! $this->withdrawal->isEligible($order)) {
+            $this->sendIneligibleNotice($order, $email);
             $this->setNotice('success', $maskedNotice);
             return;
         }
@@ -242,6 +243,7 @@ final class GuestWithdrawalService implements HasHooks
         }
 
         if (! $this->withdrawal->isEligible($order)) {
+            $this->sendIneligibleNotice($order, $email);
             return;
         }
 
@@ -305,10 +307,14 @@ final class GuestWithdrawalService implements HasHooks
 
     private function locateOrder(string $orderNumber): ?\WC_Order
     {
-        $orderNumber = ltrim($orderNumber, '#');
-        $id = (int) $orderNumber;
+        $cleanOrderNumber = trim(ltrim(trim($orderNumber), '#'));
+        if ($cleanOrderNumber === '') {
+            return null;
+        }
 
-        if ($id > 0) {
+        $id = (int) $cleanOrderNumber;
+
+        if ($id > 0 && (string) $id === $cleanOrderNumber) {
             $order = wc_get_order($id);
             if ($order instanceof \WC_Order) {
                 return $order;
@@ -320,15 +326,35 @@ final class GuestWithdrawalService implements HasHooks
             'orderby' => 'date',
             'order' => 'DESC',
             'meta_query' => [
+                'relation' => 'OR',
                 [
                     'key' => '_order_number',
-                    'value' => $orderNumber,
+                    'value' => $cleanOrderNumber,
+                ],
+                [
+                    'key' => '_order_number_formatted',
+                    'value' => $cleanOrderNumber,
+                ],
+                [
+                    'key' => 'order_number',
+                    'value' => $cleanOrderNumber,
+                ],
+                [
+                    'key' => '_sequential_order_number',
+                    'value' => $cleanOrderNumber,
                 ],
             ],
         ]);
 
         if (is_array($orders) && isset($orders[0]) && $orders[0] instanceof \WC_Order) {
             return $orders[0];
+        }
+
+        if ($id > 0) {
+            $order = wc_get_order($id);
+            if ($order instanceof \WC_Order) {
+                return $order;
+            }
         }
 
         return null;
@@ -386,15 +412,52 @@ final class GuestWithdrawalService implements HasHooks
             $order->get_order_number(),
         );
 
-        $body = sprintf(
-            /* translators: 1: order number, 2: minutes until expiry, 3: magic link URL */
-            __("We received a request to file a withdrawal declaration for order #%1\$s.\n\nTo continue, click the link below within %2\$d minutes:\n\n%3\$s\n\nThe link can be used once. If you did not make this request, you can ignore this message.", 'polski'),
-            $order->get_order_number(),
-            (int) round(self::TOKEN_TTL_SECONDS / 60),
-            $link,
-        );
+        $minutes = (int) round(self::TOKEN_TTL_SECONDS / 60);
 
-        $sent = wp_mail($email, $subject, $body);
+        $mailer = function_exists('WC') ? WC()->mailer() : null;
+        $fromName = ($mailer instanceof \WC_Emails && method_exists($mailer, 'get_from_name'))
+            ? $mailer->get_from_name()
+            : get_bloginfo('name');
+        $fromAddress = ($mailer instanceof \WC_Emails && method_exists($mailer, 'get_from_address'))
+            ? $mailer->get_from_address()
+            : get_option('admin_email');
+
+        $headers = [];
+        if (! empty($fromAddress) && is_email((string) $fromAddress)) {
+            $headers[] = sprintf('From: %s <%s>', (string) $fromName, (string) $fromAddress);
+            $headers[] = sprintf('Reply-To: %s <%s>', (string) $fromName, (string) $fromAddress);
+        }
+
+        if ($mailer instanceof \WC_Emails && method_exists($mailer, 'wrap_message')) {
+            $headers[] = 'Content-Type: text/html; charset=UTF-8';
+            $buttonText = __('Open withdrawal form', 'polski');
+            $htmlContent = '<p>' . sprintf(
+                /* translators: %s = order number */
+                esc_html__('We received a request to file a withdrawal declaration for order #%s.', 'polski'),
+                esc_html((string) $order->get_order_number()),
+            ) . '</p>'
+            . '<p>' . sprintf(
+                /* translators: %d = minutes until expiry */
+                esc_html__('To continue, click the link below within %d minutes:', 'polski'),
+                $minutes,
+            ) . '</p>'
+            . '<p style="margin: 20px 0;"><a href="' . esc_url($link) . '" style="background-color: #0073aa; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">' . esc_html($buttonText) . '</a></p>'
+            . '<p style="font-size: 13px; color: #666666;">' . esc_html__('If the button does not work, copy and paste this link into your browser:', 'polski') . '<br /><a href="' . esc_url($link) . '" style="word-break: break-all;">' . esc_html($link) . '</a></p>'
+            . '<p style="font-size: 12px; color: #888888; margin-top: 20px;">' . esc_html__('The link can be used once. If you did not make this request, you can ignore this message.', 'polski') . '</p>';
+
+            $body = $mailer->wrap_message($subject, $htmlContent);
+        } else {
+            $headers[] = 'Content-Type: text/plain; charset=UTF-8';
+            $body = sprintf(
+                /* translators: 1: order number, 2: minutes until expiry, 3: magic link URL */
+                __("We received a request to file a withdrawal declaration for order #%1\$s.\n\nTo continue, click the link below within %2\$d minutes:\n\n%3\$s\n\nThe link can be used once. If you did not make this request, you can ignore this message.", 'polski'),
+                $order->get_order_number(),
+                $minutes,
+                $link,
+            );
+        }
+
+        $sent = wp_mail($email, $subject, $body, $headers);
 
         if (! $sent) {
             do_action(
@@ -404,6 +467,51 @@ final class GuestWithdrawalService implements HasHooks
                 ['order_id' => $order->get_id(), 'context' => 'magic_link'],
             );
         }
+    }
+
+    private function sendIneligibleNotice(\WC_Order $order, string $email): void
+    {
+        $subject = sprintf(
+            /* translators: %s = order number */
+            __('Information regarding return for order #%s', 'polski'),
+            $order->get_order_number(),
+        );
+
+        $mailer = function_exists('WC') ? WC()->mailer() : null;
+        $fromName = ($mailer instanceof \WC_Emails && method_exists($mailer, 'get_from_name'))
+            ? $mailer->get_from_name()
+            : get_bloginfo('name');
+        $fromAddress = ($mailer instanceof \WC_Emails && method_exists($mailer, 'get_from_address'))
+            ? $mailer->get_from_address()
+            : get_option('admin_email');
+
+        $headers = [];
+        if (! empty($fromAddress) && is_email((string) $fromAddress)) {
+            $headers[] = sprintf('From: %s <%s>', (string) $fromName, (string) $fromAddress);
+            $headers[] = sprintf('Reply-To: %s <%s>', (string) $fromName, (string) $fromAddress);
+        }
+
+        if ($mailer instanceof \WC_Emails && method_exists($mailer, 'wrap_message')) {
+            $headers[] = 'Content-Type: text/html; charset=UTF-8';
+            $htmlContent = '<p>' . sprintf(
+                /* translators: %s = order number */
+                esc_html__('We received a request regarding a return declaration for order #%s.', 'polski'),
+                esc_html((string) $order->get_order_number()),
+            ) . '</p>'
+            . '<p>' . esc_html__('Unfortunately, this order is not eligible for an online withdrawal declaration (for example, the statutory return period may have elapsed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).', 'polski') . '</p>'
+            . '<p>' . esc_html__('If you believe this is an error or have questions regarding your order, please reply directly to this email to contact the shop.', 'polski') . '</p>';
+
+            $body = $mailer->wrap_message($subject, $htmlContent);
+        } else {
+            $headers[] = 'Content-Type: text/plain; charset=UTF-8';
+            $body = sprintf(
+                /* translators: %s = order number */
+                __("We received a request regarding a return declaration for order #%s.\n\nUnfortunately, this order is not eligible for an online withdrawal declaration (for example, the statutory return period may have elapsed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).\n\nIf you believe this is an error or have questions regarding your order, please reply directly to this email to contact the shop.", 'polski'),
+                $order->get_order_number(),
+            );
+        }
+
+        wp_mail($email, $subject, $body, $headers);
     }
 
     private function getLookupUrl(): string
@@ -417,7 +525,48 @@ final class GuestWithdrawalService implements HasHooks
             }
         }
 
+        $detectedPageId = $this->detectLookupPageId();
+        if ($detectedPageId > 0) {
+            $url = get_permalink($detectedPageId);
+            if (is_string($url) && $url !== '') {
+                return $url;
+            }
+        }
+
+        if (function_exists('wp_get_referer') && wp_get_referer()) {
+            $referer = (string) wp_get_referer();
+            if ($referer !== '') {
+                $host = (string) wp_parse_url($referer, PHP_URL_HOST);
+                $homeHost = (string) wp_parse_url(home_url(), PHP_URL_HOST);
+                if ($host !== '' && strcasecmp($host, $homeHost) === 0) {
+                    $clean = strtok($referer, '?');
+                    if (is_string($clean) && $clean !== '') {
+                        return $clean;
+                    }
+                }
+            }
+        }
+
         return home_url('/');
+    }
+
+    private function detectLookupPageId(): int
+    {
+        global $wpdb;
+        if (! $wpdb instanceof \wpdb || empty($wpdb->posts)) {
+            return 0;
+        }
+
+        $pageId = (int) $wpdb->get_var(
+            "SELECT ID FROM {$wpdb->posts}
+             WHERE post_type = 'page'
+               AND post_status = 'publish'
+               AND post_content LIKE '%[polski_withdrawal_lookup%'
+             ORDER BY ID ASC
+             LIMIT 1"
+        );
+
+        return $pageId > 0 ? $pageId : 0;
     }
 
     /**

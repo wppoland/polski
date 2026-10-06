@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.41.4 =
+* Added: native administrator email notification ("New withdrawal declaration (Admin)") registered in WooCommerce > Settings > Emails, alerting the shop whenever a customer files a return.
+* Fixed: guest withdrawal lookup form now auto-detects pages with the [polski_withdrawal_lookup] shortcode even when unselected in settings, wraps magic link emails in WooCommerce HTML styling with proper From headers, and provides feedback if an order is not eligible.
+* Fixed: guest order lookup now supports sequential order number plugins and trims hash/whitespace prefixes.
+
 = 1.41.3 =
 * Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
 
