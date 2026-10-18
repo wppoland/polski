@@ -1306,6 +1306,13 @@ if (! function_exists('wp_date')) {
 
 
 
+if (! function_exists('is_admin')) {
+    function is_admin(): bool
+    {
+        return false;
+    }
+}
+
 if (! function_exists('wp_remote_get')) {
     /**
      * Test doubles for the HTTP layer. Each call shifts the next canned answer

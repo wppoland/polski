@@ -52,8 +52,12 @@ final class ConsentManagerService implements HasHooks
             return;
         }
 
-        // Consent Mode must initialise before DataLayerService (wp_head @1).
+        // Content Mode must initialise before DataLayerService (wp_head @1).
         add_action('wp_head', [$this, 'printConsentMode'], 0);
+
+        // Content Blocker: block third-party embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) until consent.
+        add_filter('the_content', [$this, 'filterContentEmbeds'], 20);
+        add_filter('woocommerce_short_description', [$this, 'filterContentEmbeds'], 20);
 
         // Banner script + styles, and the markup in the footer.
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
@@ -82,6 +86,7 @@ final class ConsentManagerService implements HasHooks
                 'save_label' => __('Save choices', 'polski'),
                 'position' => 'bottom',
                 'google_consent_mode' => true,
+                'block_embeds' => true,
             ],
         );
     }
@@ -247,6 +252,126 @@ final class ConsentManagerService implements HasHooks
         );
     }
 
+    // ── Content Blocker (third-party embeds) ─────────────────────────────
+
+    /**
+     * Map of known third-party embed hosts to provider names.
+     */
+    private const KNOWN_EMBED_PROVIDERS = [
+        'youtube.com' => 'YouTube',
+        'youtube-nocookie.com' => 'YouTube',
+        'youtu.be' => 'YouTube',
+        'vimeo.com' => 'Vimeo',
+        'google.com/maps' => 'Google Maps',
+        'maps.google.com' => 'Google Maps',
+        'openstreetmap.org' => 'OpenStreetMap',
+        'soundcloud.com' => 'SoundCloud',
+    ];
+
+    /**
+     * Borlabs-style Content Blocker: intercept external media iframes in content
+     * and replace them with an opt-in card before marketing consent is given.
+     */
+    public function filterContentEmbeds(string $content): string
+    {
+        if (is_admin() || ! (bool) ($this->getSettings()['block_embeds'] ?? true)) {
+            return $content;
+        }
+
+        if (! str_contains($content, '<iframe')) {
+            return $content;
+        }
+
+        return (string) preg_replace_callback(
+            '/<iframe\s+([^>]*?)src=["\']([^"\']+)["\']([^>]*?)>(?:<\/iframe>)?/is',
+            [$this, 'replaceEmbedWithBlocker'],
+            $content,
+        );
+    }
+
+    /**
+     * @param array<int, string> $matches
+     */
+    public function replaceEmbedWithBlocker(array $matches): string
+    {
+        $attrsBefore = (string) ($matches[1] ?? '');
+        $src = (string) ($matches[2] ?? '');
+        $attrsAfter = (string) ($matches[3] ?? '');
+
+        $provider = $this->detectEmbedProvider($src);
+        if ($provider === null) {
+            return $matches[0];
+        }
+
+        $attrs = $this->parseIframeAttrs($attrsBefore . ' ' . $attrsAfter);
+        $encodedAttrs = esc_attr((string) wp_json_encode($attrs));
+        $encodedSrc = esc_url($src);
+
+        $title = sprintf(
+            /* translators: %s: embed provider name, e.g. YouTube */
+            __('Content blocked (%s)', 'polski'),
+            $provider,
+        );
+        $text = sprintf(
+            /* translators: %s: embed provider name */
+            __('To view this %s content, please accept marketing cookies or unlock it once below.', 'polski'),
+            $provider,
+        );
+        $unblockOnce = __('Load once', 'polski');
+        $unblockAlways = __('Always allow', 'polski');
+
+        return sprintf(
+            '<div class="polski-content-blocker" data-polski-blocker="marketing" data-polski-src="%s" data-polski-attrs="%s" role="region" aria-label="%s">' .
+                '<div class="polski-content-blocker__inner">' .
+                    '<p class="polski-content-blocker__title"><strong>%s</strong></p>' .
+                    '<p class="polski-content-blocker__text">%s</p>' .
+                    '<div class="polski-content-blocker__actions">' .
+                        '<button type="button" class="polski-content-blocker__btn" data-polski-unblock="once">%s</button>' .
+                        '<button type="button" class="polski-content-blocker__btn polski-content-blocker__btn--allow" data-polski-unblock="always">%s</button>' .
+                    '</div>' .
+                '</div>' .
+            '</div>',
+            $encodedSrc,
+            $encodedAttrs,
+            esc_attr($title),
+            esc_html($title),
+            esc_html($text),
+            esc_html($unblockOnce),
+            esc_html($unblockAlways),
+        );
+    }
+
+    public function detectEmbedProvider(string $src): ?string
+    {
+        $lower = strtolower($src);
+        foreach (self::KNOWN_EMBED_PROVIDERS as $host => $name) {
+            if (str_contains($lower, $host)) {
+                return $name;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function parseIframeAttrs(string $attrString): array
+    {
+        $attrs = [];
+        if (preg_match_all('/([a-zA-Z0-9_-]+)(?:=["\']([^"\']*)["\'])?/i', $attrString, $m, PREG_SET_ORDER)) {
+            foreach ($m as $item) {
+                $name = strtolower($item[1]);
+                if (in_array($name, ['src', 'loading', 'data-polski-src', 'data-polski-attrs'], true)) {
+                    continue;
+                }
+                $attrs[$name] = $item[2] ?? '';
+            }
+        }
+
+        return $attrs;
+    }
+
     // ── Banner ───────────────────────────────────────────────────────────
 
     /**
@@ -329,26 +454,116 @@ final class ConsentManagerService implements HasHooks
         // Withdrawing consent has to be as easy as giving it (GDPR Art. 7(3)).
         // Once a choice is stored, the "Cookie settings" button (or any element
         // with data-polski-consent-open) reopens the banner with the choice ticked.
+        // Also unblocks third-party embeds (Borlabs-style) on demand or upon consent.
         wp_add_inline_script('polski-consent-banner', <<<'JS'
 (function () {
     var cfg = window.polskiConsent || {};
-    window.addEventListener(cfg.event, function () {
+
+    function unblockEmbeds(granted, single) {
+        var targets = single ? [single] : document.querySelectorAll('.polski-content-blocker');
+        for (var i = 0; i < targets.length; i++) {
+            var b = targets[i];
+            var req = b.getAttribute('data-polski-blocker') || 'marketing';
+            if (!single && req !== 'necessary' && granted.indexOf(req) === -1) {
+                continue;
+            }
+            var src = b.getAttribute('data-polski-src');
+            if (!src) { continue; }
+            var iframe = document.createElement('iframe');
+            iframe.src = src;
+            var rawAttrs = b.getAttribute('data-polski-attrs');
+            if (rawAttrs) {
+                try {
+                    var attrs = JSON.parse(rawAttrs);
+                    for (var k in attrs) {
+                        if (Object.prototype.hasOwnProperty.call(attrs, k)) {
+                            iframe.setAttribute(k, attrs[k]);
+                        }
+                    }
+                } catch (err) {}
+            }
+            if (b.parentNode) {
+                b.parentNode.replaceChild(iframe, b);
+            }
+        }
+    }
+
+    var m = document.cookie.match(new RegExp('(?:^|; )' + cfg.cookie + '=([^;]*)'));
+    var initialGranted = [];
+    try { initialGranted = JSON.parse(decodeURIComponent(m ? m[1] : '')).categories || []; } catch (x) {}
+    if (initialGranted.indexOf('marketing') !== -1) {
+        unblockEmbeds(initialGranted);
+    }
+
+    window.addEventListener(cfg.event, function (e) {
         var reopen = document.querySelector('[data-polski-consent-open]');
         if (reopen) { reopen.hidden = false; }
+        var cats = (e && e.detail && e.detail.categories) || [];
+        if (cats.indexOf('marketing') !== -1) {
+            unblockEmbeds(cats);
+        }
     });
+
     document.addEventListener('click', function (e) {
         var t = e.target && e.target.closest ? e.target.closest('[data-polski-consent-open]') : null;
-        var banner = document.getElementById('polski-consent-banner');
-        if (!t || !banner) { return; }
-        e.preventDefault();
-        var granted = [];
-        var m = document.cookie.match(new RegExp('(?:^|; )' + cfg.cookie + '=([^;]*)'));
-        try { granted = JSON.parse(decodeURIComponent(m ? m[1] : '')).categories || []; } catch (x) {}
-        banner.querySelectorAll('[data-polski-consent-category]').forEach(function (i) { i.checked = granted.indexOf(i.value) !== -1; });
-        banner.querySelector('.polski-consent-banner__categories').hidden = false;
-        banner.querySelector('[data-polski-consent-action="save"]').hidden = false;
-        banner.hidden = false;
-        (banner.querySelector('input:not([disabled])') || banner).focus();
+        if (t) {
+            var banner = document.getElementById('polski-consent-banner');
+            if (!banner) { return; }
+            e.preventDefault();
+            var granted = [];
+            var match = document.cookie.match(new RegExp('(?:^|; )' + cfg.cookie + '=([^;]*)'));
+            try { granted = JSON.parse(decodeURIComponent(match ? match[1] : '')).categories || []; } catch (x) {}
+            banner.querySelectorAll('[data-polski-consent-category]').forEach(function (i) { i.checked = granted.indexOf(i.value) !== -1; });
+            banner.querySelector('.polski-consent-banner__categories').hidden = false;
+            banner.querySelector('[data-polski-consent-action="save"]').hidden = false;
+            banner.hidden = false;
+            (banner.querySelector('input:not([disabled])') || banner).focus();
+            return;
+        }
+
+        var unblockBtn = e.target && e.target.closest ? e.target.closest('[data-polski-unblock]') : null;
+        if (unblockBtn) {
+            e.preventDefault();
+            var act = unblockBtn.getAttribute('data-polski-unblock');
+            var blocker = unblockBtn.closest('.polski-content-blocker');
+            if (!blocker) { return; }
+            if (act === 'once') {
+                unblockEmbeds([], blocker);
+            } else if (act === 'always') {
+                var cur = [];
+                var cMatch = document.cookie.match(new RegExp('(?:^|; )' + cfg.cookie + '=([^;]*)'));
+                try { cur = JSON.parse(decodeURIComponent(cMatch ? cMatch[1] : '')).categories || []; } catch (err) {}
+                if (cur.indexOf('necessary') === -1) { cur.unshift('necessary'); }
+                if (cur.indexOf('marketing') === -1) { cur.push('marketing'); }
+                var exp = new Date();
+                exp.setTime(exp.getTime() + 180 * 24 * 60 * 60 * 1000);
+                var sec = location.protocol === 'https:' ? '; Secure' : '';
+                document.cookie = cfg.cookie + '=' + encodeURIComponent(JSON.stringify({ categories: cur, version: cfg.version })) + '; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax' + sec;
+                if (cfg.consentMode && typeof window.gtag === 'function') {
+                    window.gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+                }
+                if (cfg.restUrl) {
+                    try {
+                        fetch(cfg.restUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': cfg.nonce },
+                            credentials: 'same-origin',
+                            keepalive: true,
+                            body: JSON.stringify({ categories: cur, version: cfg.version })
+                        }).catch(function () {});
+                    } catch (err) {}
+                }
+                try {
+                    window.dispatchEvent(new CustomEvent(cfg.event, { detail: { categories: cur } }));
+                } catch (err) {}
+                var bn = document.getElementById('polski-consent-banner');
+                if (bn) {
+                    var cb = bn.querySelector('[data-polski-consent-category="marketing"]');
+                    if (cb) { cb.checked = true; }
+                }
+                unblockEmbeds(cur);
+            }
+        }
     });
 })();
 JS);
