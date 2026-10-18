@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.4
+Stable tag: 1.41.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,11 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.41.5 =
+* Added: Borlabs-style Content Blocker for third-party media embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) with placeholder opt-in and dynamic runtime unblocking when marketing consent is granted.
+* Added: Swiss UID (CHE) VAT number format validation and SOAP integration for cross-border DACH trade.
+* Fixed: Omnibus archive price cache key alignment between windowed lookup and cache warmer invalidation.
+
 = 1.41.4 =
 * Added: native administrator email notification ("New withdrawal declaration (Admin)") registered in WooCommerce > Settings > Emails, alerting the shop whenever a customer files a return.
 * Fixed: guest withdrawal lookup form now auto-detects pages with the [polski_withdrawal_lookup] shortcode even when unselected in settings, wraps magic link emails in WooCommerce HTML styling with proper From headers, and provides feedback if an order is not eligible.
@@ -467,24 +472,15 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Changed: the stock export preview reports how many rows it is showing instead of the size of the whole catalogue, which is what made it load the catalogue.
 * Note: 1.37.4 through 1.37.7 were never released, so this is the first release after 1.37.3. 1.37.4 claimed a secondary sort made paging safe; it does not, paging over a table the store is still writing to repeats and skips rows whatever the sort is. 1.37.5 replaced the paging with hydration by ID, but asked the product query for `post__in`, which it does not accept: it overwrites that argument with its own empty `include` default and drops it, leaving the limit to hand back the newest products instead. On a catalogue of 450 products that export wrote 200 rows and lost 250. Products are now hydrated by `include`, two unit tests walk the export over a catalogue larger than one batch, and both of them run in the release preflight, next to a check that fails when a function in the source both queries products and mentions `post__in`. That check reads the source as PHP tokens, so it sees a call to `wc_get_products()` and a `new WC_Product_Query`, each written plain or with a leading backslash; it does not see a query reached through a variable function name, a callable string or a wrapper of our own, and it does not see arguments assembled in a different function than the call.
 
-= 1.37.3 =
-* Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.
-
-= 1.37.2 =
-* Fixed: the hourly CRA incident check was scheduled but cleared nowhere, so the event outlived the plugin. A WP-Cron event stays in the options table once created, waking on every request to fire a hook nothing listens to. The store health check was also cleared on deactivation but not on uninstall. The list of events now lives in one place that both paths read, because keeping two copies by hand is how they drifted.
-
-= 1.37.1 =
-* Security (high): the value social login used to tie a sign-in to the browser that started it was the same for every logged-out visitor for twelve hours, and the public address that begins the flow handed it out to anyone who asked. Someone could start a sign-in of their own, keep it unused, and send a customer a link that signed that customer in to the attacker's account instead of their own, where the address and order details they went on to enter would be the attacker's to read. Each sign-in now gets its own single-use value, held in a cookie, so a callback is only accepted from the browser that began it.
-
-= 1.37.0 =
-* Security (high): social login signed a visitor in to an existing WordPress account whenever Google or Facebook reported a matching email address, without checking that the provider had actually verified that address. Anyone who could register with a provider claiming somebody else's address was handed that person's account, an administrator's included. The address must now be verified by the provider before any account is matched, and an account that can edit the site is never linked automatically: its owner signs in with a password as before. Social login is off unless you switched it on and entered provider credentials, so a default installation was never exposed.
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.41.5 =
+Adds Borlabs-style media embed content blocking, Swiss UID validation, and improves Omnibus cache key alignment.
 
 = 1.41.4 =
 Adds native administrator email notifications for customer returns and improves guest return lookup deliverability.
