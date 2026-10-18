@@ -3,7 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
-"POT-Creation-Date: 2026-09-30T08:55:04+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
+"POT-Creation-Date: 2026-10-18T09:06:40+00:00\n"
 "PO-Revision-Date: 2026-06-10 16:16:29+0000\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
+#: src/Compatibility/ElementorCompat.php:34
 msgid "Polski for WooCommerce"
 msgstr "Polski pre WooCommerce"
 
@@ -432,14 +434,16 @@ msgstr ""
 "Podľa poľského spotrebiteľského práva máte právo odstúpiť od zmluvy do 14 "
 "dní bez uvedenia dôvodu."
 
-#: config/defaults.php:149
-msgid "Items in the order"
-msgstr "Produkty v objednávke"
+#: config/defaults.php:149 src/Admin/ModulesPage.php:507
+#: templates/forms/withdrawal-form.php:65
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "Krok 1. Vyberte položky na odstúpenie"
 
 #: config/defaults.php:150 config/defaults.php:255
 #: src/Admin/ModulesPage.php:508 src/Service/ExpertReviewService.php:115
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
+#: templates/emails/admin-withdrawal-notification.php:92
 #: templates/emails/withdrawal-confirmation.php:103
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
@@ -474,7 +478,7 @@ msgid "Something went wrong on our side. Please try again."
 msgstr "Na našej strane sa niečo pokazilo. Skúste to prosím znovu."
 
 #: config/defaults.php:156 src/Admin/ModulesPage.php:514
-#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:248
+#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:253
 msgid "We could not find that order."
 msgstr "Takúto objednávku sa nám bohužiaľ nepodarilo nájsť."
 
@@ -490,7 +494,7 @@ msgstr ""
 "Vaša žiadosť o odstúpenie bola prijatá. Čoskoro vám pošleme potvrdzovací e-"
 "mail."
 
-#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:254
+#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:259
 msgid "This order does not qualify for withdrawal."
 msgstr "Táto objednávka nespĺňa podmienky na odstúpenie."
 
@@ -1491,7 +1495,7 @@ msgstr ""
 "odmietnuť nepovinné alebo si sami spravovať svoje voľby."
 
 #: config/defaults.php:798 src/Admin/ModulesPage.php:456
-#: src/Service/ConsentManagerService.php:79
+#: src/Service/ConsentManagerService.php:83
 msgid "Accept all"
 msgstr "Prijať všetky"
 
@@ -1500,12 +1504,12 @@ msgid "Reject optional"
 msgstr "Odmietnuť nepovinné"
 
 #: config/defaults.php:800 src/Admin/ModulesPage.php:458
-#: src/Service/ConsentManagerService.php:81
+#: src/Service/ConsentManagerService.php:85
 msgid "Manage"
 msgstr "Spravovať"
 
 #: config/defaults.php:801 src/Admin/ModulesPage.php:459
-#: src/Service/ConsentManagerService.php:82
+#: src/Service/ConsentManagerService.php:86
 msgid "Save choices"
 msgstr "Uložiť voľby"
 
@@ -1604,7 +1608,7 @@ msgstr "Nemáte oprávnenie."
 
 #: src/Admin/AdminPage.php:233 src/Admin/AdminPage.php:234
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:802
-#: src/Block/ModuleBlocks.php:84 src/Compatibility/ElementorCompat.php:35
+#: src/Block/ModuleBlocks.php:84
 #: src/Service/WithdrawalSiteHealthService.php:183
 #: src/Service/WithdrawalSiteHealthService.php:197
 msgid "Polski"
@@ -2475,7 +2479,7 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:96
 #: src/Service/CustomCheckoutFieldsService.php:908
-#: src/Service/ViesService.php:360
+#: src/Service/ViesService.php:374
 msgid "Unauthorized"
 msgstr "Neoprávnený prístup"
 
@@ -3934,7 +3938,7 @@ msgstr "Nadpis banneru"
 msgid "Banner text"
 msgstr "Text banneru"
 
-#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:78
+#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:82
 msgid ""
 "We use cookies and similar technologies to run this site, measure traffic, "
 "and personalise content. You can accept all, reject non-essential ones, or "
@@ -3952,7 +3956,7 @@ msgstr "Označenie tlačidla Prijať všetky"
 msgid "Reject all label"
 msgstr "Označenie tlačidla Odmietnuť všetky"
 
-#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:80
+#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:84
 msgid "Reject all"
 msgstr "Odmietnuť všetky"
 
@@ -4078,10 +4082,6 @@ msgstr ""
 #: src/Admin/ModulesPage.php:507
 msgid "Order items heading"
 msgstr "Nadpis položiek objednávky"
-
-#: src/Admin/ModulesPage.php:507
-msgid "Order items"
-msgstr "Položky objednávky"
 
 #: src/Admin/ModulesPage.php:508
 msgid "Product column"
@@ -7845,7 +7845,7 @@ msgstr "Bezpečnostné varovania"
 msgid "Safety warnings regarding the product."
 msgstr "Bezpečnostné varovania týkajúce sa produktu."
 
-#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:143
+#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:144
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr "Bezpečnostné pokyny"
@@ -8183,6 +8183,8 @@ msgstr "ID"
 #: src/Service/ReturnRequestService.php:239
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
+#: templates/emails/admin-withdrawal-notification.php:59
+#: templates/emails/plain/admin-withdrawal-notification.php:46
 #: templates/emails/plain/withdrawal-completed.php:40
 #: templates/emails/plain/withdrawal-confirmation.php:60
 #: templates/emails/plain/withdrawal-rejected.php:42
@@ -8204,6 +8206,8 @@ msgstr "Kategória AI"
 
 #: src/Admin/WithdrawalsAdminPage.php:174
 #: src/Privacy/WithdrawalPrivacyService.php:212
+#: templates/emails/admin-withdrawal-notification.php:55
+#: templates/emails/plain/admin-withdrawal-notification.php:45
 #: templates/emails/plain/withdrawal-confirmation.php:59
 #: templates/emails/withdrawal-confirmation.php:67
 msgid "Filed at"
@@ -11101,7 +11105,7 @@ msgstr ""
 "doba a ďalšie."
 
 #. translators: %d: number of products in the compare list
-#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:311
+#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:316
 #, php-format
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
@@ -11258,11 +11262,33 @@ msgstr "Číslo účtu (IBAN):"
 msgid "Signature:"
 msgstr "Podpis:"
 
-#: src/Service/ConsentManagerService.php:376
+#. translators: %s: embed provider name, e.g. YouTube
+#: src/Service/ConsentManagerService.php:312
+#, php-format
+msgid "Content blocked (%s)"
+msgstr ""
+
+#. translators: %s: embed provider name
+#: src/Service/ConsentManagerService.php:317
+#, php-format
+msgid ""
+"To view this %s content, please accept marketing cookies or unlock it once "
+"below."
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:320
+msgid "Load once"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:321
+msgid "Always allow"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:591
 msgid "Consent settings"
 msgstr "Nastavenia súhlasu"
 
-#: src/Service/ConsentManagerService.php:420
+#: src/Service/ConsentManagerService.php:635
 msgid "Cookie settings"
 msgstr ""
 
@@ -11792,16 +11818,16 @@ msgstr ""
 "adresu uvedenú pri nákupe. Skontrolujte doručenú poštu (aj priečinok Spam) - "
 "správa by mala doraziť do niekoľkých minút."
 
-#: src/Service/GuestWithdrawalService.php:156
+#: src/Service/GuestWithdrawalService.php:157
 msgid "This link is no longer valid."
 msgstr "Tento odkaz už nie je platný."
 
-#: src/Service/GuestWithdrawalService.php:169
+#: src/Service/GuestWithdrawalService.php:170
 msgid "The security check failed. Reload the page and try again."
 msgstr ""
 "Bezpečnostná kontrola zlyhala. Načítajte stránku znova a skúste to ešte raz."
 
-#: src/Service/GuestWithdrawalService.php:179
+#: src/Service/GuestWithdrawalService.php:180
 msgid ""
 "The declaration could not be saved. Try again in a moment or contact the "
 "shop."
@@ -11809,12 +11835,12 @@ msgstr ""
 "Vyhlásenie sa nepodarilo uložiť. Skúste to znova o chvíľu alebo sa obráťte "
 "na obchod."
 
-#: src/Service/GuestWithdrawalService.php:188
+#: src/Service/GuestWithdrawalService.php:189
 msgid "Declaration filed"
 msgstr "Vyhlásenie podané"
 
 #. translators: %s = declaration id (POL-WD-XXXXXX)
-#: src/Service/GuestWithdrawalService.php:191
+#: src/Service/GuestWithdrawalService.php:192
 #, php-format
 msgid ""
 "Your declaration has been registered under number %s. We have sent a "
@@ -11824,18 +11850,45 @@ msgstr ""
 "Vaše vyhlásenie bolo zaregistrované pod číslom %s. Potvrdenie sme odoslali "
 "na adresu uvedenú pri nákupe - skontrolujte doručenú poštu aj priečinok Spam."
 
-#: src/Service/GuestWithdrawalService.php:194
+#: src/Service/GuestWithdrawalService.php:195
 msgid "Keep the declaration number in case you contact the shop."
 msgstr "Číslo vyhlásenia si uschovajte pre prípad kontaktu s obchodom."
 
 #. translators: %s = order number
-#: src/Service/GuestWithdrawalService.php:385
+#: src/Service/GuestWithdrawalService.php:411
 #, php-format
 msgid "Withdrawal link for order #%s"
 msgstr "Odkaz na odstúpenie od zmluvy - objednávka #%s"
 
+#: src/Service/GuestWithdrawalService.php:433
+msgid "Open withdrawal form"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:436
+#, php-format
+msgid "We received a request to file a withdrawal declaration for order #%s."
+msgstr ""
+
+#. translators: %d = minutes until expiry
+#: src/Service/GuestWithdrawalService.php:441
+#, php-format
+msgid "To continue, click the link below within %d minutes:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:445
+msgid ""
+"If the button does not work, copy and paste this link into your browser:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:446
+msgid ""
+"The link can be used once. If you did not make this request, you can ignore "
+"this message."
+msgstr ""
+
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
-#: src/Service/GuestWithdrawalService.php:391
+#: src/Service/GuestWithdrawalService.php:453
 #, php-format
 msgid ""
 "We received a request to file a withdrawal declaration for order #%1$s.\n"
@@ -11856,6 +11909,47 @@ msgstr ""
 "\n"
 "Odkaz je jednorazový. Ak ste žiadosť neposlali vy, môžete túto správu "
 "ignorovať."
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:476
+#, php-format
+msgid "Information regarding return for order #%s"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:498
+#, php-format
+msgid "We received a request regarding a return declaration for order #%s."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:501
+msgid ""
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law)."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:502
+msgid ""
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:509
+#, php-format
+msgid ""
+"We received a request regarding a return declaration for order #%s.\n"
+"\n"
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law).\n"
+"\n"
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
 
 #: src/Service/KSeFReadyService.php:100
 msgid "pending"
@@ -12009,6 +12103,8 @@ msgid "Order date"
 msgstr "Dátum objednávky"
 
 #: src/Service/OrderExportService.php:57
+#: templates/emails/admin-withdrawal-notification.php:122
+#: templates/emails/plain/admin-withdrawal-notification.php:81
 #: templates/emails/plain/withdrawal-confirmation.php:90
 #: templates/emails/withdrawal-confirmation.php:133
 msgid "Total"
@@ -13666,41 +13762,41 @@ msgid ""
 "amount, so the VAT cannot be deducted."
 msgstr ""
 
-#: src/Service/ViesService.php:308
+#: src/Service/ViesService.php:322
 msgid "EU VAT ID (VIES)"
 msgstr ""
 
-#: src/Service/ViesService.php:312
+#: src/Service/ViesService.php:326
 msgid "Not checked yet."
 msgstr ""
 
 #. translators: 1: company name from VIES, 2: date of the check
-#: src/Service/ViesService.php:316
+#: src/Service/ViesService.php:330
 #, php-format
 msgid "Valid: %1$s, checked %2$s"
 msgstr ""
 
-#: src/Service/ViesService.php:321
+#: src/Service/ViesService.php:335
 msgid "Consultation number:"
 msgstr ""
 
 #. translators: %s: reason reported by VIES
-#: src/Service/ViesService.php:327
+#: src/Service/ViesService.php:341
 #, php-format
 msgid "Not valid in VIES (%s)"
 msgstr ""
 
 #. translators: %s: technical reason, e.g. unreachable or MS_UNAVAILABLE
-#: src/Service/ViesService.php:335
+#: src/Service/ViesService.php:349
 #, php-format
 msgid "Could not check: VIES did not answer (%s). Try again later."
 msgstr ""
 
-#: src/Service/ViesService.php:347
+#: src/Service/ViesService.php:361
 msgid "Check in VIES"
 msgstr ""
 
-#: src/Service/ViesService.php:366
+#: src/Service/ViesService.php:380
 msgid "Order not found"
 msgstr ""
 
@@ -14036,11 +14132,11 @@ msgstr ""
 "Prílohy I(B). Buď vyberte explicitný jazyk v Polski › Nastavenia odstúpenia "
 "(PL, DE, AT, FR, NL, IT, ES), alebo akceptujte všeobecnú záložnú verziu EN."
 
-#: src/Shortcode/ShortcodeManager.php:243
+#: src/Shortcode/ShortcodeManager.php:244
 msgid "Please enter the order number."
 msgstr "Zadajte číslo objednávky."
 
-#: src/Shortcode/ShortcodeManager.php:351
+#: src/Shortcode/ShortcodeManager.php:356
 msgid "Available payment methods"
 msgstr "Dostupné platobné metódy"
 
@@ -14073,6 +14169,59 @@ msgstr "Potvrdiť žiadosť o odstúpenie"
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
 msgstr "Zrušiť"
+
+#. translators: %s = declaration id
+#: templates/emails/admin-withdrawal-notification.php:42
+#: templates/emails/plain/admin-withdrawal-notification.php:38
+#, php-format
+msgid "A new withdrawal declaration %s has been registered in your store."
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:51
+#: templates/emails/plain/admin-withdrawal-notification.php:44
+#: templates/emails/plain/withdrawal-confirmation.php:58
+#: templates/emails/withdrawal-confirmation.php:63
+msgid "Declaration ID"
+msgstr "Číslo vyhlásenia"
+
+#: templates/emails/admin-withdrawal-notification.php:63
+msgid "View order in admin"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:68
+#: templates/emails/plain/admin-withdrawal-notification.php:50
+#: templates/emails/plain/withdrawal-confirmation.php:62
+#: templates/emails/withdrawal-confirmation.php:82
+#: templates/invoice/document.php:86
+msgid "Buyer"
+msgstr "Kupujúci"
+
+#: templates/emails/admin-withdrawal-notification.php:82
+#: templates/emails/plain/admin-withdrawal-notification.php:58
+msgid "Reason provided by customer:"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:87
+#: templates/emails/plain/admin-withdrawal-notification.php:62
+#: templates/emails/plain/withdrawal-confirmation.php:71
+#: templates/emails/withdrawal-confirmation.php:98
+msgid "Items covered by this declaration"
+msgstr "Položky, na ktoré sa vzťahuje toto vyhlásenie"
+
+#: templates/emails/admin-withdrawal-notification.php:93
+#: templates/emails/withdrawal-confirmation.php:104
+#: templates/invoice/document.php:104
+msgid "Qty"
+msgstr "Počet"
+
+#: templates/emails/admin-withdrawal-notification.php:94
+#: templates/emails/withdrawal-confirmation.php:105
+msgid "Line total"
+msgstr "Hodnota položky"
+
+#: templates/emails/plain/admin-withdrawal-notification.php:48
+msgid "Order URL"
+msgstr ""
 
 #. translators: %s = customer first name
 #: templates/emails/plain/withdrawal-completed.php:23
@@ -14121,22 +14270,6 @@ msgid ""
 "Your withdrawal declaration for order #{order_number} has been registered."
 msgstr ""
 "Vaša žiadosť o odstúpenie pre objednávku #{order_number} bola zaregistrovaná."
-
-#: templates/emails/plain/withdrawal-confirmation.php:58
-#: templates/emails/withdrawal-confirmation.php:63
-msgid "Declaration ID"
-msgstr "Číslo vyhlásenia"
-
-#: templates/emails/plain/withdrawal-confirmation.php:62
-#: templates/emails/withdrawal-confirmation.php:82
-#: templates/invoice/document.php:86
-msgid "Buyer"
-msgstr "Kupujúci"
-
-#: templates/emails/plain/withdrawal-confirmation.php:71
-#: templates/emails/withdrawal-confirmation.php:98
-msgid "Items covered by this declaration"
-msgstr "Položky, na ktoré sa vzťahuje toto vyhlásenie"
 
 #: templates/emails/plain/withdrawal-confirmation.php:92
 #: templates/emails/withdrawal-confirmation.php:140
@@ -14200,15 +14333,6 @@ msgstr ""
 "Vrátenie sa vykoná pôvodnou platobnou metódou použitou pri nákupe. V "
 "závislosti od banky sa prostriedky môžu na účte objaviť do niekoľkých "
 "pracovných dní."
-
-#: templates/emails/withdrawal-confirmation.php:104
-#: templates/invoice/document.php:104
-msgid "Qty"
-msgstr "Počet"
-
-#: templates/emails/withdrawal-confirmation.php:105
-msgid "Line total"
-msgstr "Hodnota položky"
 
 #: templates/emails/withdrawal-rejected.php:74
 msgid ""
@@ -14277,10 +14401,6 @@ msgid ""
 msgstr ""
 "Všetky položky z tejto objednávky už boli zahrnuté do odstúpenia alebo sa "
 "nekvalifikujú na vrátenie."
-
-#: templates/forms/withdrawal-form.php:65
-msgid "Step 1. Choose the items to withdraw from"
-msgstr "Krok 1. Vyberte položky na odstúpenie"
 
 #: templates/forms/withdrawal-form.php:69
 msgid ""
@@ -15085,6 +15205,12 @@ msgid ""
 msgstr ""
 "Dynamický merchandisingový posuvník pre súvisiace, upsell, akciové a vybrané "
 "produkty."
+
+#~ msgid "Items in the order"
+#~ msgstr "Produkty v objednávke"
+
+#~ msgid "Order items"
+#~ msgstr "Položky objednávky"
 
 #~ msgid "ODR platform: https://ec.europa.eu/consumers/odr"
 #~ msgstr "Platforma RSO: https://ec.europa.eu/consumers/odr"

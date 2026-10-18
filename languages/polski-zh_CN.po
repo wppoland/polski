@@ -3,7 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
-"POT-Creation-Date: 2026-09-30T08:55:04+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
+"POT-Creation-Date: 2026-10-18T09:06:40+00:00\n"
 "PO-Revision-Date: 2026-06-10 16:16:31+0000\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +15,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
+#: src/Compatibility/ElementorCompat.php:34
 msgid "Polski for WooCommerce"
 msgstr "Polski WooCommerce 插件"
 
@@ -400,14 +402,16 @@ msgid ""
 "within 14 days without giving a reason."
 msgstr "根据波兰消费者法律，您有权在 14 天内无需说明理由撤回合同。"
 
-#: config/defaults.php:149
-msgid "Items in the order"
-msgstr "订单中的产品"
+#: config/defaults.php:149 src/Admin/ModulesPage.php:507
+#: templates/forms/withdrawal-form.php:65
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "第 1 步。选择要退订的项目"
 
 #: config/defaults.php:150 config/defaults.php:255
 #: src/Admin/ModulesPage.php:508 src/Service/ExpertReviewService.php:115
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
+#: templates/emails/admin-withdrawal-notification.php:92
 #: templates/emails/withdrawal-confirmation.php:103
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
@@ -442,7 +446,7 @@ msgid "Something went wrong on our side. Please try again."
 msgstr "我们这边出了点问题，请重试。"
 
 #: config/defaults.php:156 src/Admin/ModulesPage.php:514
-#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:248
+#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:253
 msgid "We could not find that order."
 msgstr "很遗憾，我们找不到该订单。"
 
@@ -456,7 +460,7 @@ msgid ""
 "email shortly."
 msgstr "您的撤回申请已受理。我们将很快发送确认电子邮件。"
 
-#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:254
+#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:259
 msgid "This order does not qualify for withdrawal."
 msgstr "此订单不符合撤回条件。"
 
@@ -1428,7 +1432,7 @@ msgstr ""
 "部、拒绝非必要项，或自行管理您的选择。"
 
 #: config/defaults.php:798 src/Admin/ModulesPage.php:456
-#: src/Service/ConsentManagerService.php:79
+#: src/Service/ConsentManagerService.php:83
 msgid "Accept all"
 msgstr "接受全部"
 
@@ -1437,12 +1441,12 @@ msgid "Reject optional"
 msgstr "拒绝非必要项"
 
 #: config/defaults.php:800 src/Admin/ModulesPage.php:458
-#: src/Service/ConsentManagerService.php:81
+#: src/Service/ConsentManagerService.php:85
 msgid "Manage"
 msgstr "管理"
 
 #: config/defaults.php:801 src/Admin/ModulesPage.php:459
-#: src/Service/ConsentManagerService.php:82
+#: src/Service/ConsentManagerService.php:86
 msgid "Save choices"
 msgstr "保存选择"
 
@@ -1538,7 +1542,7 @@ msgstr "您没有权限。"
 
 #: src/Admin/AdminPage.php:233 src/Admin/AdminPage.php:234
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:802
-#: src/Block/ModuleBlocks.php:84 src/Compatibility/ElementorCompat.php:35
+#: src/Block/ModuleBlocks.php:84
 #: src/Service/WithdrawalSiteHealthService.php:183
 #: src/Service/WithdrawalSiteHealthService.php:197
 msgid "Polski"
@@ -2380,7 +2384,7 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:96
 #: src/Service/CustomCheckoutFieldsService.php:908
-#: src/Service/ViesService.php:360
+#: src/Service/ViesService.php:374
 msgid "Unauthorized"
 msgstr "未授权"
 
@@ -3743,7 +3747,7 @@ msgstr "横幅标题"
 msgid "Banner text"
 msgstr "横幅文本"
 
-#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:78
+#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:82
 msgid ""
 "We use cookies and similar technologies to run this site, measure traffic, "
 "and personalise content. You can accept all, reject non-essential ones, or "
@@ -3760,7 +3764,7 @@ msgstr "接受全部按钮文字"
 msgid "Reject all label"
 msgstr "拒绝全部按钮文字"
 
-#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:80
+#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:84
 msgid "Reject all"
 msgstr "拒绝全部"
 
@@ -3879,10 +3883,6 @@ msgstr "根据波兰消费者法律，您可以在 14 天内无需说明理由�
 #: src/Admin/ModulesPage.php:507
 msgid "Order items heading"
 msgstr "订单项目标题"
-
-#: src/Admin/ModulesPage.php:507
-msgid "Order items"
-msgstr "订单项目"
 
 #: src/Admin/ModulesPage.php:508
 msgid "Product column"
@@ -7538,7 +7538,7 @@ msgstr "安全警告"
 msgid "Safety warnings regarding the product."
 msgstr "有关产品的安全警告。"
 
-#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:143
+#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:144
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr "安全说明"
@@ -7874,6 +7874,8 @@ msgstr "ID"
 #: src/Service/ReturnRequestService.php:239
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
+#: templates/emails/admin-withdrawal-notification.php:59
+#: templates/emails/plain/admin-withdrawal-notification.php:46
 #: templates/emails/plain/withdrawal-completed.php:40
 #: templates/emails/plain/withdrawal-confirmation.php:60
 #: templates/emails/plain/withdrawal-rejected.php:42
@@ -7895,6 +7897,8 @@ msgstr "AI 类别"
 
 #: src/Admin/WithdrawalsAdminPage.php:174
 #: src/Privacy/WithdrawalPrivacyService.php:212
+#: templates/emails/admin-withdrawal-notification.php:55
+#: templates/emails/plain/admin-withdrawal-notification.php:45
 #: templates/emails/plain/withdrawal-confirmation.php:59
 #: templates/emails/withdrawal-confirmation.php:67
 msgid "Filed at"
@@ -10591,7 +10595,7 @@ msgstr ""
 "类别、配送时间等。"
 
 #. translators: %d: number of products in the compare list
-#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:311
+#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:316
 #, php-format
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
@@ -10739,11 +10743,33 @@ msgstr "账号（IBAN）："
 msgid "Signature:"
 msgstr "签名："
 
-#: src/Service/ConsentManagerService.php:376
+#. translators: %s: embed provider name, e.g. YouTube
+#: src/Service/ConsentManagerService.php:312
+#, php-format
+msgid "Content blocked (%s)"
+msgstr ""
+
+#. translators: %s: embed provider name
+#: src/Service/ConsentManagerService.php:317
+#, php-format
+msgid ""
+"To view this %s content, please accept marketing cookies or unlock it once "
+"below."
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:320
+msgid "Load once"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:321
+msgid "Always allow"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:591
 msgid "Consent settings"
 msgstr "同意设置"
 
-#: src/Service/ConsentManagerService.php:420
+#: src/Service/ConsentManagerService.php:635
 msgid "Cookie settings"
 msgstr ""
 
@@ -11259,26 +11285,26 @@ msgstr ""
 "如果该订单存在，我们已将表单链接发送至购买时填写的电子邮件地址。请查看您的收"
 "件箱（以及垃圾邮件文件夹）--邮件应会在几分钟内送达。"
 
-#: src/Service/GuestWithdrawalService.php:156
+#: src/Service/GuestWithdrawalService.php:157
 msgid "This link is no longer valid."
 msgstr "此链接已失效。"
 
-#: src/Service/GuestWithdrawalService.php:169
+#: src/Service/GuestWithdrawalService.php:170
 msgid "The security check failed. Reload the page and try again."
 msgstr "安全检查失败。请重新加载页面后再试一次。"
 
-#: src/Service/GuestWithdrawalService.php:179
+#: src/Service/GuestWithdrawalService.php:180
 msgid ""
 "The declaration could not be saved. Try again in a moment or contact the "
 "shop."
 msgstr "无法保存声明。请稍后重试，或与店铺联系。"
 
-#: src/Service/GuestWithdrawalService.php:188
+#: src/Service/GuestWithdrawalService.php:189
 msgid "Declaration filed"
 msgstr "声明已提交"
 
 #. translators: %s = declaration id (POL-WD-XXXXXX)
-#: src/Service/GuestWithdrawalService.php:191
+#: src/Service/GuestWithdrawalService.php:192
 #, php-format
 msgid ""
 "Your declaration has been registered under number %s. We have sent a "
@@ -11288,18 +11314,45 @@ msgstr ""
 "您的声明已登记，编号为 %s。我们已将确认信息发送至购买时填写的地址--请查看您的"
 "收件箱以及垃圾邮件文件夹。"
 
-#: src/Service/GuestWithdrawalService.php:194
+#: src/Service/GuestWithdrawalService.php:195
 msgid "Keep the declaration number in case you contact the shop."
 msgstr "请保留声明编号，以备与店铺联系时使用。"
 
 #. translators: %s = order number
-#: src/Service/GuestWithdrawalService.php:385
+#: src/Service/GuestWithdrawalService.php:411
 #, php-format
 msgid "Withdrawal link for order #%s"
 msgstr "合同撤回链接--订单 #%s"
 
+#: src/Service/GuestWithdrawalService.php:433
+msgid "Open withdrawal form"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:436
+#, php-format
+msgid "We received a request to file a withdrawal declaration for order #%s."
+msgstr ""
+
+#. translators: %d = minutes until expiry
+#: src/Service/GuestWithdrawalService.php:441
+#, php-format
+msgid "To continue, click the link below within %d minutes:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:445
+msgid ""
+"If the button does not work, copy and paste this link into your browser:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:446
+msgid ""
+"The link can be used once. If you did not make this request, you can ignore "
+"this message."
+msgstr ""
+
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
-#: src/Service/GuestWithdrawalService.php:391
+#: src/Service/GuestWithdrawalService.php:453
 #, php-format
 msgid ""
 "We received a request to file a withdrawal declaration for order #%1$s.\n"
@@ -11318,6 +11371,47 @@ msgstr ""
 "%3$s\n"
 "\n"
 "该链接仅可使用一次。如果该请求并非由您发出，您可以忽略此邮件。"
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:476
+#, php-format
+msgid "Information regarding return for order #%s"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:498
+#, php-format
+msgid "We received a request regarding a return declaration for order #%s."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:501
+msgid ""
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law)."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:502
+msgid ""
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:509
+#, php-format
+msgid ""
+"We received a request regarding a return declaration for order #%s.\n"
+"\n"
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law).\n"
+"\n"
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
 
 #: src/Service/KSeFReadyService.php:100
 msgid "pending"
@@ -11464,6 +11558,8 @@ msgid "Order date"
 msgstr "订单日期"
 
 #: src/Service/OrderExportService.php:57
+#: templates/emails/admin-withdrawal-notification.php:122
+#: templates/emails/plain/admin-withdrawal-notification.php:81
 #: templates/emails/plain/withdrawal-confirmation.php:90
 #: templates/emails/withdrawal-confirmation.php:133
 msgid "Total"
@@ -13027,41 +13123,41 @@ msgid ""
 "amount, so the VAT cannot be deducted."
 msgstr ""
 
-#: src/Service/ViesService.php:308
+#: src/Service/ViesService.php:322
 msgid "EU VAT ID (VIES)"
 msgstr ""
 
-#: src/Service/ViesService.php:312
+#: src/Service/ViesService.php:326
 msgid "Not checked yet."
 msgstr ""
 
 #. translators: 1: company name from VIES, 2: date of the check
-#: src/Service/ViesService.php:316
+#: src/Service/ViesService.php:330
 #, php-format
 msgid "Valid: %1$s, checked %2$s"
 msgstr ""
 
-#: src/Service/ViesService.php:321
+#: src/Service/ViesService.php:335
 msgid "Consultation number:"
 msgstr ""
 
 #. translators: %s: reason reported by VIES
-#: src/Service/ViesService.php:327
+#: src/Service/ViesService.php:341
 #, php-format
 msgid "Not valid in VIES (%s)"
 msgstr ""
 
 #. translators: %s: technical reason, e.g. unreachable or MS_UNAVAILABLE
-#: src/Service/ViesService.php:335
+#: src/Service/ViesService.php:349
 #, php-format
 msgid "Could not check: VIES did not answer (%s). Try again later."
 msgstr ""
 
-#: src/Service/ViesService.php:347
+#: src/Service/ViesService.php:361
 msgid "Check in VIES"
 msgstr ""
 
-#: src/Service/ViesService.php:366
+#: src/Service/ViesService.php:380
 msgid "Order not found"
 msgstr ""
 
@@ -13378,11 +13474,11 @@ msgstr ""
 "站点语言为“%s”，但 Pro 插件未附带匹配的附件 I(B) 翻译。请在 Polski › 退订设置"
 "中选择明确的语言（PL、DE、AT、FR、NL、IT、ES），或接受通用的 EN 回退。"
 
-#: src/Shortcode/ShortcodeManager.php:243
+#: src/Shortcode/ShortcodeManager.php:244
 msgid "Please enter the order number."
 msgstr "请提供订单号。"
 
-#: src/Shortcode/ShortcodeManager.php:351
+#: src/Shortcode/ShortcodeManager.php:356
 msgid "Available payment methods"
 msgstr "可用的支付方式"
 
@@ -13415,6 +13511,59 @@ msgstr "确认退订申请"
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
 msgstr "取消"
+
+#. translators: %s = declaration id
+#: templates/emails/admin-withdrawal-notification.php:42
+#: templates/emails/plain/admin-withdrawal-notification.php:38
+#, php-format
+msgid "A new withdrawal declaration %s has been registered in your store."
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:51
+#: templates/emails/plain/admin-withdrawal-notification.php:44
+#: templates/emails/plain/withdrawal-confirmation.php:58
+#: templates/emails/withdrawal-confirmation.php:63
+msgid "Declaration ID"
+msgstr "声明编号"
+
+#: templates/emails/admin-withdrawal-notification.php:63
+msgid "View order in admin"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:68
+#: templates/emails/plain/admin-withdrawal-notification.php:50
+#: templates/emails/plain/withdrawal-confirmation.php:62
+#: templates/emails/withdrawal-confirmation.php:82
+#: templates/invoice/document.php:86
+msgid "Buyer"
+msgstr "买家"
+
+#: templates/emails/admin-withdrawal-notification.php:82
+#: templates/emails/plain/admin-withdrawal-notification.php:58
+msgid "Reason provided by customer:"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:87
+#: templates/emails/plain/admin-withdrawal-notification.php:62
+#: templates/emails/plain/withdrawal-confirmation.php:71
+#: templates/emails/withdrawal-confirmation.php:98
+msgid "Items covered by this declaration"
+msgstr "此声明涵盖的项目"
+
+#: templates/emails/admin-withdrawal-notification.php:93
+#: templates/emails/withdrawal-confirmation.php:104
+#: templates/invoice/document.php:104
+msgid "Qty"
+msgstr "数量"
+
+#: templates/emails/admin-withdrawal-notification.php:94
+#: templates/emails/withdrawal-confirmation.php:105
+msgid "Line total"
+msgstr "行总计"
+
+#: templates/emails/plain/admin-withdrawal-notification.php:48
+msgid "Order URL"
+msgstr ""
 
 #. translators: %s = customer first name
 #: templates/emails/plain/withdrawal-completed.php:23
@@ -13459,22 +13608,6 @@ msgstr "退款将退回购买时使用的原始支付方式。资金可能在几
 msgid ""
 "Your withdrawal declaration for order #{order_number} has been registered."
 msgstr "您针对订单 #{order_number} 的退订申请已登记。"
-
-#: templates/emails/plain/withdrawal-confirmation.php:58
-#: templates/emails/withdrawal-confirmation.php:63
-msgid "Declaration ID"
-msgstr "声明编号"
-
-#: templates/emails/plain/withdrawal-confirmation.php:62
-#: templates/emails/withdrawal-confirmation.php:82
-#: templates/invoice/document.php:86
-msgid "Buyer"
-msgstr "买家"
-
-#: templates/emails/plain/withdrawal-confirmation.php:71
-#: templates/emails/withdrawal-confirmation.php:98
-msgid "Items covered by this declaration"
-msgstr "此声明涵盖的项目"
 
 #: templates/emails/plain/withdrawal-confirmation.php:92
 #: templates/emails/withdrawal-confirmation.php:140
@@ -13529,15 +13662,6 @@ msgid ""
 "Depending on your bank it may take a few working days to appear."
 msgstr ""
 "退款将退回购买时使用的原始支付方式。视银行而定，资金可能在几个工作日内到账。"
-
-#: templates/emails/withdrawal-confirmation.php:104
-#: templates/invoice/document.php:104
-msgid "Qty"
-msgstr "数量"
-
-#: templates/emails/withdrawal-confirmation.php:105
-msgid "Line total"
-msgstr "行总计"
 
 #: templates/emails/withdrawal-rejected.php:74
 msgid ""
@@ -13600,10 +13724,6 @@ msgid ""
 "Every item in this order is already covered by a withdrawal or does not "
 "qualify for return."
 msgstr "此订单中的所有项目均已涵盖退订或不符合退货条件。"
-
-#: templates/forms/withdrawal-form.php:65
-msgid "Step 1. Choose the items to withdraw from"
-msgstr "第 1 步。选择要退订的项目"
 
 #: templates/forms/withdrawal-form.php:69
 msgid ""
@@ -14382,6 +14502,12 @@ msgid ""
 "Dynamic merchandising slider for related, upsell, sale, and featured "
 "products."
 msgstr "适用于相关、追加销售、促销和精选产品的动态营销滑块。"
+
+#~ msgid "Items in the order"
+#~ msgstr "订单中的产品"
+
+#~ msgid "Order items"
+#~ msgstr "订单项目"
 
 #~ msgid "ODR platform: https://ec.europa.eu/consumers/odr"
 #~ msgstr "ODR 平台：https://ec.europa.eu/consumers/odr"

@@ -3,7 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
-"POT-Creation-Date: 2026-09-30T08:55:04+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
+"POT-Creation-Date: 2026-10-18T09:06:40+00:00\n"
 "PO-Revision-Date: 2026-06-27 12:04:17+0000\n"
 "Language: be_BY\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: polski.php src/Admin/DeactivationHandler.php:58 src/Admin/SBOMPage.php:113
+#: src/Compatibility/ElementorCompat.php:34
 msgid "Polski for WooCommerce"
 msgstr "Polski для WooCommerce"
 
@@ -430,14 +432,16 @@ msgstr ""
 "Згодна з польскім спажывецкім правам вы маеце права адмовіцца ад дамовы на "
 "працягу 14 дзён без указання прычыны."
 
-#: config/defaults.php:149
-msgid "Items in the order"
-msgstr "Тавары ў замове"
+#: config/defaults.php:149 src/Admin/ModulesPage.php:507
+#: templates/forms/withdrawal-form.php:65
+msgid "Step 1. Choose the items to withdraw from"
+msgstr "Крок 1. Выберыце пазіцыі для адмовы"
 
 #: config/defaults.php:150 config/defaults.php:255
 #: src/Admin/ModulesPage.php:508 src/Service/ExpertReviewService.php:115
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
+#: templates/emails/admin-withdrawal-notification.php:92
 #: templates/emails/withdrawal-confirmation.php:103
 #: templates/forms/withdrawal-guest.php:61
 #: templates/forms/withdrawal-guest.php:78
@@ -472,7 +476,7 @@ msgid "Something went wrong on our side. Please try again."
 msgstr "Нешта пайшло не так з нашага боку. Паспрабуйце яшчэ раз."
 
 #: config/defaults.php:156 src/Admin/ModulesPage.php:514
-#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:248
+#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:253
 msgid "We could not find that order."
 msgstr "На жаль, нам не ўдалося знайсці такую замову."
 
@@ -487,7 +491,7 @@ msgid ""
 msgstr ""
 "Ваша заява пра адмову прынятая. Неўзабаве мы дашлем email з пацвярджэннем."
 
-#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:254
+#: config/defaults.php:159 src/Shortcode/ShortcodeManager.php:259
 msgid "This order does not qualify for withdrawal."
 msgstr "Гэтая замова не падыходзіць для адмовы."
 
@@ -1487,7 +1491,7 @@ msgstr ""
 "адхіліць неабавязковыя або самастойна кіраваць выбарам."
 
 #: config/defaults.php:798 src/Admin/ModulesPage.php:456
-#: src/Service/ConsentManagerService.php:79
+#: src/Service/ConsentManagerService.php:83
 msgid "Accept all"
 msgstr "Прыняць усе"
 
@@ -1496,12 +1500,12 @@ msgid "Reject optional"
 msgstr "Адхіліць неабавязковыя"
 
 #: config/defaults.php:800 src/Admin/ModulesPage.php:458
-#: src/Service/ConsentManagerService.php:81
+#: src/Service/ConsentManagerService.php:85
 msgid "Manage"
 msgstr "Кіраваць"
 
 #: config/defaults.php:801 src/Admin/ModulesPage.php:459
-#: src/Service/ConsentManagerService.php:82
+#: src/Service/ConsentManagerService.php:86
 msgid "Save choices"
 msgstr "Захаваць выбар"
 
@@ -1600,7 +1604,7 @@ msgstr "У вас няма дазволу."
 
 #: src/Admin/AdminPage.php:233 src/Admin/AdminPage.php:234
 #: src/Admin/ProductMetaBox.php:45 src/Admin/ProductMetaBox.php:802
-#: src/Block/ModuleBlocks.php:84 src/Compatibility/ElementorCompat.php:35
+#: src/Block/ModuleBlocks.php:84
 #: src/Service/WithdrawalSiteHealthService.php:183
 #: src/Service/WithdrawalSiteHealthService.php:197
 msgid "Polski"
@@ -2475,7 +2479,7 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:96
 #: src/Service/CustomCheckoutFieldsService.php:908
-#: src/Service/ViesService.php:360
+#: src/Service/ViesService.php:374
 msgid "Unauthorized"
 msgstr "Не аўтарызавана"
 
@@ -3942,7 +3946,7 @@ msgstr "Загаловак банера"
 msgid "Banner text"
 msgstr "Тэкст банера"
 
-#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:78
+#: src/Admin/ModulesPage.php:455 src/Service/ConsentManagerService.php:82
 msgid ""
 "We use cookies and similar technologies to run this site, measure traffic, "
 "and personalise content. You can accept all, reject non-essential ones, or "
@@ -3960,7 +3964,7 @@ msgstr "Подпіс кнопкі \"Прыняць усе\""
 msgid "Reject all label"
 msgstr "Подпіс кнопкі \"Адхіліць усе\""
 
-#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:80
+#: src/Admin/ModulesPage.php:457 src/Service/ConsentManagerService.php:84
 msgid "Reject all"
 msgstr "Адхіліць усе"
 
@@ -4086,10 +4090,6 @@ msgstr ""
 #: src/Admin/ModulesPage.php:507
 msgid "Order items heading"
 msgstr "Загаловак пазіцый заказу"
-
-#: src/Admin/ModulesPage.php:507
-msgid "Order items"
-msgstr "Пазіцыі заказу"
 
 #: src/Admin/ModulesPage.php:508
 msgid "Product column"
@@ -7862,7 +7862,7 @@ msgstr "Папярэджанні аб бяспецы"
 msgid "Safety warnings regarding the product."
 msgstr "Папярэджанні аб бяспецы тавару."
 
-#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:143
+#: src/Admin/ProductMetaBox.php:351 src/Shortcode/ShortcodeManager.php:144
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr "Інструкцыі па бяспецы"
@@ -8202,6 +8202,8 @@ msgstr "ID"
 #: src/Service/ReturnRequestService.php:239
 #: templates/account/withdrawal-confirm.php:36
 #: templates/account/withdrawal-confirm.php:43
+#: templates/emails/admin-withdrawal-notification.php:59
+#: templates/emails/plain/admin-withdrawal-notification.php:46
 #: templates/emails/plain/withdrawal-completed.php:40
 #: templates/emails/plain/withdrawal-confirmation.php:60
 #: templates/emails/plain/withdrawal-rejected.php:42
@@ -8223,6 +8225,8 @@ msgstr "Катэгорыя AI"
 
 #: src/Admin/WithdrawalsAdminPage.php:174
 #: src/Privacy/WithdrawalPrivacyService.php:212
+#: templates/emails/admin-withdrawal-notification.php:55
+#: templates/emails/plain/admin-withdrawal-notification.php:45
 #: templates/emails/plain/withdrawal-confirmation.php:59
 #: templates/emails/withdrawal-confirmation.php:67
 msgid "Filed at"
@@ -11120,7 +11124,7 @@ msgstr ""
 "іншае."
 
 #. translators: %d: number of products in the compare list
-#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:311
+#: src/Service/CompareService.php:298 src/Shortcode/ShortcodeManager.php:316
 #, php-format
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
@@ -11277,11 +11281,33 @@ msgstr "Нумар рахунку (IBAN):"
 msgid "Signature:"
 msgstr "Подпіс:"
 
-#: src/Service/ConsentManagerService.php:376
+#. translators: %s: embed provider name, e.g. YouTube
+#: src/Service/ConsentManagerService.php:312
+#, php-format
+msgid "Content blocked (%s)"
+msgstr ""
+
+#. translators: %s: embed provider name
+#: src/Service/ConsentManagerService.php:317
+#, php-format
+msgid ""
+"To view this %s content, please accept marketing cookies or unlock it once "
+"below."
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:320
+msgid "Load once"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:321
+msgid "Always allow"
+msgstr ""
+
+#: src/Service/ConsentManagerService.php:591
 msgid "Consent settings"
 msgstr "Налады згоды"
 
-#: src/Service/ConsentManagerService.php:420
+#: src/Service/ConsentManagerService.php:635
 msgid "Cookie settings"
 msgstr ""
 
@@ -11814,16 +11840,16 @@ msgstr ""
 "пошты, указаны пры пакупцы. Праверце паштовую скрыню (а таксама папку Спам) "
 "- паведамленне павінна прыйсці на працягу некалькіх хвілін."
 
-#: src/Service/GuestWithdrawalService.php:156
+#: src/Service/GuestWithdrawalService.php:157
 msgid "This link is no longer valid."
 msgstr "Гэтая спасылка больш несапраўдная."
 
-#: src/Service/GuestWithdrawalService.php:169
+#: src/Service/GuestWithdrawalService.php:170
 msgid "The security check failed. Reload the page and try again."
 msgstr ""
 "Праверка бяспекі не ўдалася. Загрузіце старонку зноў і паспрабуйце яшчэ раз."
 
-#: src/Service/GuestWithdrawalService.php:179
+#: src/Service/GuestWithdrawalService.php:180
 msgid ""
 "The declaration could not be saved. Try again in a moment or contact the "
 "shop."
@@ -11831,12 +11857,12 @@ msgstr ""
 "Не ўдалося захаваць заяву. Паспрабуйце зноў праз імгненне або звяжыцеся з "
 "крамай."
 
-#: src/Service/GuestWithdrawalService.php:188
+#: src/Service/GuestWithdrawalService.php:189
 msgid "Declaration filed"
 msgstr "Заява пададзена"
 
 #. translators: %s = declaration id (POL-WD-XXXXXX)
-#: src/Service/GuestWithdrawalService.php:191
+#: src/Service/GuestWithdrawalService.php:192
 #, php-format
 msgid ""
 "Your declaration has been registered under number %s. We have sent a "
@@ -11846,18 +11872,45 @@ msgstr ""
 "Ваша заява зарэгістравана пад нумарам %s. Мы даслалі пацвярджэнне на адрас, "
 "указаны пры пакупцы - праверце паштовую скрыню і папку Спам."
 
-#: src/Service/GuestWithdrawalService.php:194
+#: src/Service/GuestWithdrawalService.php:195
 msgid "Keep the declaration number in case you contact the shop."
 msgstr "Захавайце нумар заявы на выпадак звароту ў краму."
 
 #. translators: %s = order number
-#: src/Service/GuestWithdrawalService.php:385
+#: src/Service/GuestWithdrawalService.php:411
 #, php-format
 msgid "Withdrawal link for order #%s"
 msgstr "Спасылка на адмову ад дагавора - заказ #%s"
 
+#: src/Service/GuestWithdrawalService.php:433
+msgid "Open withdrawal form"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:436
+#, php-format
+msgid "We received a request to file a withdrawal declaration for order #%s."
+msgstr ""
+
+#. translators: %d = minutes until expiry
+#: src/Service/GuestWithdrawalService.php:441
+#, php-format
+msgid "To continue, click the link below within %d minutes:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:445
+msgid ""
+"If the button does not work, copy and paste this link into your browser:"
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:446
+msgid ""
+"The link can be used once. If you did not make this request, you can ignore "
+"this message."
+msgstr ""
+
 #. translators: 1: order number, 2: minutes until expiry, 3: magic link URL
-#: src/Service/GuestWithdrawalService.php:391
+#: src/Service/GuestWithdrawalService.php:453
 #, php-format
 msgid ""
 "We received a request to file a withdrawal declaration for order #%1$s.\n"
@@ -11877,6 +11930,47 @@ msgstr ""
 "\n"
 "Спасылка аднаразовая. Калі гэта не вы даслалі запыт, вы можаце праігнараваць "
 "гэтае паведамленне."
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:476
+#, php-format
+msgid "Information regarding return for order #%s"
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:498
+#, php-format
+msgid "We received a request regarding a return declaration for order #%s."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:501
+msgid ""
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law)."
+msgstr ""
+
+#: src/Service/GuestWithdrawalService.php:502
+msgid ""
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
+
+#. translators: %s = order number
+#: src/Service/GuestWithdrawalService.php:509
+#, php-format
+msgid ""
+"We received a request regarding a return declaration for order #%s.\n"
+"\n"
+"Unfortunately, this order is not eligible for an online withdrawal "
+"declaration (for example, the statutory return period may have elapsed, all "
+"products may have already been returned, or the purchased products may be "
+"exempt from the right of withdrawal under applicable consumer law).\n"
+"\n"
+"If you believe this is an error or have questions regarding your order, "
+"please reply directly to this email to contact the shop."
+msgstr ""
 
 #: src/Service/KSeFReadyService.php:100
 msgid "pending"
@@ -12029,6 +12123,8 @@ msgid "Order date"
 msgstr "Дата заказу"
 
 #: src/Service/OrderExportService.php:57
+#: templates/emails/admin-withdrawal-notification.php:122
+#: templates/emails/plain/admin-withdrawal-notification.php:81
 #: templates/emails/plain/withdrawal-confirmation.php:90
 #: templates/emails/withdrawal-confirmation.php:133
 msgid "Total"
@@ -13690,41 +13786,41 @@ msgid ""
 "amount, so the VAT cannot be deducted."
 msgstr ""
 
-#: src/Service/ViesService.php:308
+#: src/Service/ViesService.php:322
 msgid "EU VAT ID (VIES)"
 msgstr ""
 
-#: src/Service/ViesService.php:312
+#: src/Service/ViesService.php:326
 msgid "Not checked yet."
 msgstr ""
 
 #. translators: 1: company name from VIES, 2: date of the check
-#: src/Service/ViesService.php:316
+#: src/Service/ViesService.php:330
 #, php-format
 msgid "Valid: %1$s, checked %2$s"
 msgstr ""
 
-#: src/Service/ViesService.php:321
+#: src/Service/ViesService.php:335
 msgid "Consultation number:"
 msgstr ""
 
 #. translators: %s: reason reported by VIES
-#: src/Service/ViesService.php:327
+#: src/Service/ViesService.php:341
 #, php-format
 msgid "Not valid in VIES (%s)"
 msgstr ""
 
 #. translators: %s: technical reason, e.g. unreachable or MS_UNAVAILABLE
-#: src/Service/ViesService.php:335
+#: src/Service/ViesService.php:349
 #, php-format
 msgid "Could not check: VIES did not answer (%s). Try again later."
 msgstr ""
 
-#: src/Service/ViesService.php:347
+#: src/Service/ViesService.php:361
 msgid "Check in VIES"
 msgstr ""
 
-#: src/Service/ViesService.php:366
+#: src/Service/ViesService.php:380
 msgid "Order not found"
 msgstr ""
 
@@ -14058,11 +14154,11 @@ msgstr ""
 "I(B). Выберыце відавочную мову ў Polski › Налады адмовы (PL, DE, AT, FR, NL, "
 "IT, ES) або прыміце агульны варыянт EN."
 
-#: src/Shortcode/ShortcodeManager.php:243
+#: src/Shortcode/ShortcodeManager.php:244
 msgid "Please enter the order number."
 msgstr "Калі ласка, увядзіце нумар замовы."
 
-#: src/Shortcode/ShortcodeManager.php:351
+#: src/Shortcode/ShortcodeManager.php:356
 msgid "Available payment methods"
 msgstr "Даступныя спосабы аплаты"
 
@@ -14095,6 +14191,59 @@ msgstr "Пацвердзіць запыт на адмову"
 #: templates/account/withdrawal-confirm.php:102
 msgid "Cancel"
 msgstr "Скасаваць"
+
+#. translators: %s = declaration id
+#: templates/emails/admin-withdrawal-notification.php:42
+#: templates/emails/plain/admin-withdrawal-notification.php:38
+#, php-format
+msgid "A new withdrawal declaration %s has been registered in your store."
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:51
+#: templates/emails/plain/admin-withdrawal-notification.php:44
+#: templates/emails/plain/withdrawal-confirmation.php:58
+#: templates/emails/withdrawal-confirmation.php:63
+msgid "Declaration ID"
+msgstr "Нумар заявы"
+
+#: templates/emails/admin-withdrawal-notification.php:63
+msgid "View order in admin"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:68
+#: templates/emails/plain/admin-withdrawal-notification.php:50
+#: templates/emails/plain/withdrawal-confirmation.php:62
+#: templates/emails/withdrawal-confirmation.php:82
+#: templates/invoice/document.php:86
+msgid "Buyer"
+msgstr "Пакупнік"
+
+#: templates/emails/admin-withdrawal-notification.php:82
+#: templates/emails/plain/admin-withdrawal-notification.php:58
+msgid "Reason provided by customer:"
+msgstr ""
+
+#: templates/emails/admin-withdrawal-notification.php:87
+#: templates/emails/plain/admin-withdrawal-notification.php:62
+#: templates/emails/plain/withdrawal-confirmation.php:71
+#: templates/emails/withdrawal-confirmation.php:98
+msgid "Items covered by this declaration"
+msgstr "Пазіцыі, ахопленыя гэтай заявай"
+
+#: templates/emails/admin-withdrawal-notification.php:93
+#: templates/emails/withdrawal-confirmation.php:104
+#: templates/invoice/document.php:104
+msgid "Qty"
+msgstr "Колькасць"
+
+#: templates/emails/admin-withdrawal-notification.php:94
+#: templates/emails/withdrawal-confirmation.php:105
+msgid "Line total"
+msgstr "Усяго па пазіцыі"
+
+#: templates/emails/plain/admin-withdrawal-notification.php:48
+msgid "Order URL"
+msgstr ""
 
 #. translators: %s = customer first name
 #: templates/emails/plain/withdrawal-completed.php:23
@@ -14141,22 +14290,6 @@ msgstr ""
 msgid ""
 "Your withdrawal declaration for order #{order_number} has been registered."
 msgstr "Ваш запыт на адмову для замовы #{order_number} зарэгістраваны."
-
-#: templates/emails/plain/withdrawal-confirmation.php:58
-#: templates/emails/withdrawal-confirmation.php:63
-msgid "Declaration ID"
-msgstr "Нумар заявы"
-
-#: templates/emails/plain/withdrawal-confirmation.php:62
-#: templates/emails/withdrawal-confirmation.php:82
-#: templates/invoice/document.php:86
-msgid "Buyer"
-msgstr "Пакупнік"
-
-#: templates/emails/plain/withdrawal-confirmation.php:71
-#: templates/emails/withdrawal-confirmation.php:98
-msgid "Items covered by this declaration"
-msgstr "Пазіцыі, ахопленыя гэтай заявай"
 
 #: templates/emails/plain/withdrawal-confirmation.php:92
 #: templates/emails/withdrawal-confirmation.php:140
@@ -14219,15 +14352,6 @@ msgstr ""
 "Зварот будзе выкананы на першапачатковы спосаб аплаты, выкарыстаны пры "
 "пакупцы. У залежнасці ад банка сродкі могуць з'явіцца на рахунку цягам "
 "некалькіх працоўных дзён."
-
-#: templates/emails/withdrawal-confirmation.php:104
-#: templates/invoice/document.php:104
-msgid "Qty"
-msgstr "Колькасць"
-
-#: templates/emails/withdrawal-confirmation.php:105
-msgid "Line total"
-msgstr "Усяго па пазіцыі"
 
 #: templates/emails/withdrawal-rejected.php:74
 msgid ""
@@ -14293,10 +14417,6 @@ msgid ""
 "qualify for return."
 msgstr ""
 "Усе пазіцыі гэтай замовы ўжо ахоплены адмовай або не падыходзяць для звароту."
-
-#: templates/forms/withdrawal-form.php:65
-msgid "Step 1. Choose the items to withdraw from"
-msgstr "Крок 1. Выберыце пазіцыі для адмовы"
 
 #: templates/forms/withdrawal-form.php:69
 msgid ""
@@ -15106,6 +15226,12 @@ msgid ""
 msgstr ""
 "Дынамічны мерчандайзінгавы паўзунок для звязаных, upsell, акцыйных і "
 "вылучаных тавараў."
+
+#~ msgid "Items in the order"
+#~ msgstr "Тавары ў замове"
+
+#~ msgid "Order items"
+#~ msgstr "Пазіцыі заказу"
 
 #~ msgid "ODR platform: https://ec.europa.eu/consumers/odr"
 #~ msgstr "Платформа ODR: https://ec.europa.eu/consumers/odr"
