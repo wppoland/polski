@@ -292,7 +292,7 @@ final class OmnibusService implements Bootable, HasHooks
 
         foreach ($uncached as $id) {
             wp_cache_set(
-                (string) $id . ':' . $days,
+                (string) $id . ':' . $days . ':now',
                 $batch[$id] ?? null,
                 self::CACHE_GROUP,
                 self::CACHE_TTL,

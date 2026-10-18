@@ -95,8 +95,8 @@ final class OmnibusBatchLoaderTest extends TestCase
         self::assertSame([201, 202], $this->repo->lastBatchIds);
 
         // Cache is keyed as "<productId>:<days>" in group polski_omnibus.
-        $cached201 = wp_cache_get('201:30', 'polski_omnibus');
-        $cached202 = wp_cache_get('202:30', 'polski_omnibus');
+        $cached201 = wp_cache_get('201:30:now', 'polski_omnibus');
+        $cached202 = wp_cache_get('202:30:now', 'polski_omnibus');
 
         self::assertInstanceOf(OmnibusPrice::class, $cached201);
         self::assertSame(39.99, $cached201->effectivePrice());
@@ -112,8 +112,8 @@ final class OmnibusBatchLoaderTest extends TestCase
         ]);
 
         // Pre-warm 301 + 303.
-        wp_cache_set('301:30', null, 'polski_omnibus');
-        wp_cache_set('303:30', null, 'polski_omnibus');
+        wp_cache_set('301:30:now', null, 'polski_omnibus');
+        wp_cache_set('303:30:now', null, 'polski_omnibus');
 
         $this->repo->batchResult = [];
 
@@ -131,8 +131,8 @@ final class OmnibusBatchLoaderTest extends TestCase
             new \WP_Post(402, 'product'),
         ]);
 
-        wp_cache_set('401:30', null, 'polski_omnibus');
-        wp_cache_set('402:30', null, 'polski_omnibus');
+        wp_cache_set('401:30:now', null, 'polski_omnibus');
+        wp_cache_set('402:30:now', null, 'polski_omnibus');
 
         $service = $this->makeService();
         $service->warmCacheForArchive();
@@ -150,6 +150,8 @@ final class OmnibusBatchLoaderTest extends TestCase
 
         $daysProp = $reflection->getProperty('days');
         $daysProp->setValue($service, 30);
+        $countProp = $reflection->getProperty('countFrom');
+        $countProp->setValue($service, 'today');
 
         return $service;
     }
