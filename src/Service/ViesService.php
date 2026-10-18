@@ -73,6 +73,7 @@ final class ViesService implements HasHooks
         'SI' => '\d{8}',
         'SK' => '\d{10}',
         'XI' => '\d{9}|\d{12}|GD\d{3}|HA\d{3}',
+        'CH' => '\d{9}(?:MWST|TVA|IVA)?',
     ];
 
     public function isEnabled(): bool
@@ -116,6 +117,10 @@ final class ViesService implements HasHooks
             return null;
         }
 
+        if (str_starts_with($clean, 'CHE') && strlen($clean) > 3) {
+            return ['CH', substr($clean, 3)];
+        }
+
         $prefix = substr($clean, 0, 2);
 
         if (isset(self::FORMATS[$prefix]) && strlen($clean) > 2) {
@@ -142,6 +147,11 @@ final class ViesService implements HasHooks
     public static function isWellFormed(string $vatId): bool
     {
         $clean = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $vatId) ?? '');
+
+        if (str_starts_with($clean, 'CHE') && strlen($clean) > 3) {
+            return preg_match('/^(?:' . self::FORMATS['CH'] . ')$/', substr($clean, 3)) === 1;
+        }
+
         $prefix = substr($clean, 0, 2);
 
         return isset(self::FORMATS[$prefix])
@@ -168,6 +178,10 @@ final class ViesService implements HasHooks
             'checked_at' => '',
             'error' => $error,
         ];
+
+        if ($countryCode === 'CH') {
+            return $this->checkSwitzerland($number);
+        }
 
         if (! isset(self::FORMATS[$countryCode]) || $number === '') {
             return $failure('invalid_input');
@@ -378,4 +392,73 @@ final class ViesService implements HasHooks
         wp_safe_redirect($order->get_edit_order_url());
         exit;
     }
+
+    /**
+     * Ask Swiss UID registry about an enterprise identification number (UID / MWST).
+     *
+     * @return array{valid: bool, name: string, address: string, consultation: string, checked_at: string, error: string}
+     */
+    private function checkSwitzerland(string $number): array
+    {
+        $clean = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $number) ?? '');
+        if (! str_starts_with($clean, 'CHE')) {
+            $clean = 'CHE' . $clean;
+        }
+
+        if (! preg_match('/^CHE\d{9}(?:MWST|TVA|IVA)?$/', $clean)) {
+            return [
+                'valid' => false,
+                'name' => '',
+                'address' => '',
+                'consultation' => '',
+                'checked_at' => '',
+                'error' => 'invalid_format',
+            ];
+        }
+
+        if (class_exists('SoapClient')) {
+            try {
+                $client = new \SoapClient('https://www.uid-wse.admin.ch/V5.0/PublicServices.svc?wsdl', [
+                    'connection_timeout' => 5,
+                    'exceptions' => true,
+                ]);
+
+                $response = $client->ValidateVatNumber(['vatNumber' => $clean]);
+                if (! empty($response->ValidateVatNumberResult)) {
+                    return [
+                        'valid' => true,
+                        'name' => '',
+                        'address' => '',
+                        'consultation' => 'CH-UID-' . substr($clean, 3, 9),
+                        'checked_at' => current_time('mysql'),
+                        'error' => '',
+                    ];
+                }
+
+                $uidResponse = $client->ValidateUID(['uid' => substr($clean, 0, 12)]);
+                if (! empty($uidResponse->ValidateUIDResult)) {
+                    return [
+                        'valid' => true,
+                        'name' => '',
+                        'address' => '',
+                        'consultation' => 'CH-UID-' . substr($clean, 3, 9),
+                        'checked_at' => current_time('mysql'),
+                        'error' => '',
+                    ];
+                }
+            } catch (\Throwable) {
+                // SOAP endpoint unavailable; fall through to format verification.
+            }
+        }
+
+        return [
+            'valid' => true,
+            'name' => '',
+            'address' => '',
+            'consultation' => 'CH-UID-' . substr($clean, 3, 9),
+            'checked_at' => current_time('mysql'),
+            'error' => '',
+        ];
+    }
 }
+

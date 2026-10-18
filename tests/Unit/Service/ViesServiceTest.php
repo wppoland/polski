@@ -62,12 +62,20 @@ final class ViesServiceTest extends TestCase
 
     public function testWellFormedFollowsEachMemberStatesShape(): void
     {
-        foreach (['DE811569869', 'de 811 569 869', 'CZ12345678', 'FR40303265045', 'ATU12345678', 'NL123456789B01', 'ESX1234567X', 'PL5260250274'] as $ok) {
+        foreach (['DE811569869', 'de 811 569 869', 'CZ12345678', 'FR40303265045', 'ATU12345678', 'NL123456789B01', 'ESX1234567X', 'PL5260250274', 'CHE123456789', 'CHE-123.456.789 MWST'] as $ok) {
             self::assertTrue(ViesService::isWellFormed($ok), $ok);
         }
 
-        foreach (['DE81156986', 'CZ1234567', 'AT12345678', 'US123456789', '811569869', 'DE', ''] as $bad) {
+        foreach (['DE81156986', 'CZ1234567', 'AT12345678', 'US123456789', '811569869', 'DE', '', 'CHE12345'] as $bad) {
             self::assertFalse(ViesService::isWellFormed($bad), $bad);
         }
     }
+
+    public function testSwissUidParsing(): void
+    {
+        self::assertSame(['CH', '123456789'], ViesService::parse('CHE-123.456.789'));
+        self::assertSame(['CH', '123456789MWST'], ViesService::parse('CHE-123.456.789 MWST'));
+        self::assertSame(['CH', '123456789'], ViesService::parse('123456789', 'CH'));
+    }
 }
+
