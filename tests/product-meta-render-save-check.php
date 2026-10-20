@@ -33,6 +33,11 @@ $saved = array_values(array_unique(array_merge($saved, $m3[1])));
 $unsaved = array_diff($rendered, $saved);
 $unrendered = array_diff($saved, $rendered);
 
+if (! in_array('_polski_gtin', $rendered, true) || ! in_array('_polski_gtin', $saved, true)) {
+    fwrite(STDERR, "FAIL: _polski_gtin must be rendered and saved on the product screen.\n");
+    exit(1);
+}
+
 $fail = false;
 
 if ($unsaved !== []) {

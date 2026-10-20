@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.41.6 =
+* Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.
+
 = 1.41.5 =
 * Added: Borlabs-style Content Blocker for third-party media embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) with placeholder opt-in and dynamic runtime unblocking when marketing consent is granted.
 * Added: Swiss UID (CHE) VAT number format validation and SOAP integration for cross-border DACH trade.

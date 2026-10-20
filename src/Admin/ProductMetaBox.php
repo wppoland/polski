@@ -27,6 +27,7 @@ final class ProductMetaBox implements HasHooks
 
         // Save meta on product save.
         add_action('woocommerce_process_product_meta', [$this, 'saveProductMeta']);
+        add_action('admin_notices', [$this, 'renderGtinValidationNotice']);
 
         // Variable product fields.
         add_action('woocommerce_product_after_variable_attributes', [$this, 'renderVariationFields'], 10, 3);
@@ -61,6 +62,16 @@ final class ProductMetaBox implements HasHooks
         $productId = $post->ID ?? 0;
 
         echo '<div id="polski_product_data" class="panel woocommerce_options_panel">';
+
+        echo '<div class="options_group">';
+        woocommerce_wp_text_input([
+            'id' => '_polski_gtin',
+            'label' => __('GTIN / EAN (fallback)', 'polski'),
+            'description' => __('Used when WooCommerce\'s global unique ID field is empty.', 'polski'),
+            'desc_tip' => true,
+            'type' => 'text',
+        ]);
+        echo '</div>';
 
         // --- Unit Price Section ---
         echo '<div class="options_group">';
@@ -643,6 +654,7 @@ final class ProductMetaBox implements HasHooks
         }
 
         $fields = [
+            '_polski_gtin' => 'string',
             '_polski_unit_price_product_amount' => 'float',
             '_polski_unit_price_base' => 'float',
             '_polski_unit_price_unit' => 'string',
@@ -884,6 +896,55 @@ final class ProductMetaBox implements HasHooks
             // phpcs:ignore WordPress.Security.NonceVerification.Missing
             $deliveryTimeId = absint(wp_unslash($_POST['_polski_variation_delivery_time_id'][$loop]));
             update_post_meta($variationId, '_polski_delivery_time_id', $deliveryTimeId > 0 ? (string) $deliveryTimeId : '');
+        }
+    }
+
+    /**
+     * Show a non-blocking warning for invalid product identifiers.
+     */
+    public function renderGtinValidationNotice(): void
+    {
+        if (! function_exists('get_current_screen')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only product ID; capability check follows.
+        if (! $screen || $screen->id !== 'product' || ! isset($_GET['post'])) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only product ID; capability checked below.
+        $productId = absint(wp_unslash($_GET['post']));
+        if ($productId < 1 || ! current_user_can('edit_post', $productId)) {
+            return;
+        }
+
+        $product = wc_get_product($productId);
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
+
+        $invalid = [];
+        $nativeGtin = (string) $product->get_global_unique_id();
+        $fallbackGtin = (string) $product->get_meta('_polski_gtin', true);
+
+        if ($nativeGtin !== '' && ! \Polski\Util\GtinValidator::isValid($nativeGtin)) {
+            $invalid[] = __('WooCommerce global unique ID', 'polski');
+        }
+        if ($fallbackGtin !== '' && ! \Polski\Util\GtinValidator::isValid($fallbackGtin)) {
+            $invalid[] = __('Polski fallback GTIN / EAN', 'polski');
+        }
+
+        if ($invalid !== []) {
+            printf(
+                '<div class="notice notice-warning"><p>%s</p></div>',
+                esc_html(sprintf(
+                    /* translators: %s: one or more product identifier field names. */
+                    __('The check digit for this product identifier may be invalid: %s. Please verify it.', 'polski'),
+                    implode(', ', $invalid),
+                )),
+            );
         }
     }
 }

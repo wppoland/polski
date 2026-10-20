@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.5
+Stable tag: 1.41.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 = Product data and labelling =
 
 * **Unit prices** - price per kg, litre, metre, piece or a custom unit.
+* **GTIN and barcode validation** - automatic GS1 check-digit validation (GTIN-8, GTIN-12, GTIN-13, GTIN-14) in the product editor and during CSV import, alerting merchants to invalid barcodes without blocking saves.
 * **Delivery time** - estimated delivery time on product pages and product lists.
 * **Tax information** - the VAT rate notice and the small business exemption (Art. 113).
 * **Price display** - configuration of how prices are presented in the shop.
@@ -94,7 +95,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **React panel** - manage modules and settings.
 * **REST API** - an API for settings, checkboxes, legal pages, withdrawals and search.
 * **WP-CLI** - commands to manage selected features from the terminal.
-* **CSV import and export** - bulk management of product data, including GPSR.
+* **CSV import and export** - bulk management of product data, including GPSR and GTIN validation warnings.
 * **Shortcodes** - embed GPSR information, withdrawal forms, DSA reports and other elements.
 * **Database migrations** - versioned and safe updates of data structures.
 * **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
@@ -357,6 +358,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.41.6 =
+* Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.
 
 = 1.41.5 =
 * Added: Borlabs-style Content Blocker for third-party media embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) with placeholder opt-in and dynamic runtime unblocking when marketing consent is granted.

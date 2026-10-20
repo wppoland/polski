@@ -223,6 +223,17 @@ final class CSVImportExport implements HasHooks
                 ? sanitize_textarea_field((string) $data[$csvKey])
                 : sanitize_text_field((string) $data[$csvKey]);
 
+            if ($metaKey === '_polski_gtin' && $raw !== '' && ! \Polski\Util\GtinValidator::isValid($raw)) {
+                do_action('polski/gtin/csv_import_warning', $raw, $product);
+                wc_get_logger()->warning(
+                    sprintf('CSV import preserved a GTIN / EAN with an invalid check digit: %s', $raw),
+                    [
+                        'source' => 'polski-gtin',
+                        'product_id' => $product->get_id(),
+                    ],
+                );
+            }
+
             $product->update_meta_data(
                 $metaKey,
                 $metaKey === '_polski_nutrients' ? FoodService::parseNutrientsCsv($raw) : $raw,

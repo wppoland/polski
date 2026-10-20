@@ -2341,7 +2341,25 @@ msgid "Repair information"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:152
+#: src/Admin/ProductMetaBox.php:67
 msgid "GTIN / EAN (fallback)"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:69
+msgid "Used when WooCommerce's global unique ID field is empty."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:933
+msgid "WooCommerce global unique ID"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:936
+msgid "Polski fallback GTIN / EAN"
+msgstr ""
+
+#. translators: %s: one or more product identifier field names.
+#: src/Admin/ProductMetaBox.php:944
+msgid "The check digit for this product identifier may be invalid: %s. Please verify it."
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:153
