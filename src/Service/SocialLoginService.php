@@ -42,6 +42,8 @@ final class SocialLoginService implements HasHooks
         // Display login buttons.
         add_action('woocommerce_login_form_end', [$this, 'renderButtons']);
         add_action('woocommerce_after_checkout_billing_form', [$this, 'renderButtonsCheckout']);
+        // The Checkout block fires none of the classic checkout hooks.
+        add_filter('render_block_woocommerce/checkout', [$this, 'prependToCheckoutBlock']);
         add_action('login_form', [$this, 'renderButtons']);
 
         // Register REST endpoint for OAuth redirect.
@@ -129,6 +131,21 @@ final class SocialLoginService implements HasHooks
         }
 
         $this->renderButtons();
+    }
+
+    /**
+     * @param string|mixed $content
+     */
+    public function prependToCheckoutBlock(mixed $content): mixed
+    {
+        if (! is_string($content)) {
+            return $content;
+        }
+
+        ob_start();
+        $this->renderButtonsCheckout();
+
+        return (string) ob_get_clean() . $content;
     }
 
     public function enqueueStyles(): void

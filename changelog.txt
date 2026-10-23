@@ -2,6 +2,14 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.42.0 =
+* Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.
+* Fixed: With "Omnibus: Cart" on, a block-theme shop page and the product page price showed the Omnibus notice twice. Cart cross-sells now follow the "product lists" Omnibus setting like every other grid; cart items keep the "Cart" setting.
+* Fixed: Block themes: product badges and a featured video set to "before summary" landed above the breadcrumbs on the product page. Both now sit with the image gallery. Badges also show on Product Collection cards outside the shop archive, and replace the Product Sale Badge block where Polski shows its own sale badge.
+* Fixed: Wishlist, Compare and Quick View buttons were missing from Product Collection grids outside the shop archive, and their scripts did not load there. Each card gets one button per feature.
+* Fixed: Social login buttons now show above the Checkout block, which fires none of the classic checkout hooks.
+* Fixed: Product authors now show on Product Collection cards outside the shop archive.
+
 = 1.41.8 =
 * Fixed: The iworks Omnibus import read the raw WooCommerce sale field, so a sale that was only scheduled counted as a price the product sold at, and its sale rows were never closed. It now takes the selling price, imports only what lies before Polski's own history for a product, and on upgrade removes the rows 1.41.7 imported wrongly. On some products these made the lowest price equal the running sale price.
 

@@ -9,6 +9,7 @@ use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
 use Polski\Repository\WishlistRepository;
+use Polski\Util\BlockLoop;
 use Polski\Util\ProductVisibility;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
@@ -44,6 +45,7 @@ final class WishlistService implements Bootable, HasHooks
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleButton'], 33);
         add_action('woocommerce_after_shop_loop_item', [$this, 'renderLoopButton'], 19);
+        add_filter('render_block_woocommerce/product-button', [$this, 'appendToProductButtonBlock'], 19, 3);
         add_action('wp_ajax_polski_wishlist_toggle', [$this, 'handleToggle']);
         add_action('wp_ajax_nopriv_polski_wishlist_toggle', [$this, 'handleToggle']);
         add_filter('woocommerce_account_menu_items', [$this, 'addAccountMenuItem']);
@@ -64,6 +66,20 @@ final class WishlistService implements Bootable, HasHooks
     public function enqueueAssets(): void
     {
         if (! $this->isEnabled() || ! $this->shouldEnqueueAssets()) {
+            return;
+        }
+
+        $this->ensureAssets();
+    }
+
+    /**
+     * Enqueue once, wherever the request is. Also called while a block grid
+     * renders: a block theme renders its template before wp_head, so the
+     * style still lands in the head.
+     */
+    private function ensureAssets(): void
+    {
+        if (wp_script_is('polski-wishlist', 'enqueued')) {
             return;
         }
 
@@ -112,15 +128,48 @@ final class WishlistService implements Bootable, HasHooks
     {
         global $product;
 
-        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_loop'] ?? true)) {
-            return;
+        if ($product instanceof \WC_Product) {
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the template.
+            echo $this->loopButtonHtml($product);
+        }
+    }
+
+    /**
+     * The loop button after a Product Collection card's add-to-cart button,
+     * where WooCommerce does not fire the classic loop hook.
+     *
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function appendToProductButtonBlock(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || BlockLoop::classicHooksCover($block)) {
+            return $content;
         }
 
-        if (! $this->canUseWishlist()) {
-            return;
+        $product = BlockLoop::product($instance);
+        $button = $product instanceof \WC_Product ? $this->loopButtonHtml($product) : '';
+
+        if ($button === '') {
+            return $content;
         }
 
-        $this->templateLoader->include('loop/wishlist-button', [
+        $this->ensureAssets();
+
+        return $content . $button;
+    }
+
+    /**
+     * One button per product per request, from whichever path comes first.
+     */
+    private function loopButtonHtml(\WC_Product $product): string
+    {
+        if (! ($this->getSettings()['show_on_loop'] ?? true) || ! $this->canUseWishlist()
+            || ! BlockLoop::claim('wishlist', $product->get_id())) {
+            return '';
+        }
+
+        return $this->templateLoader->render('loop/wishlist-button', [
             'service' => $this,
             'product' => $product,
         ]);
@@ -314,7 +363,8 @@ final class WishlistService implements Bootable, HasHooks
         }
 
         return is_shop() || is_product() || is_product_taxonomy() || is_account_page()
-            || $this->currentPostHasShortcode(['polski_wishlist']);
+            || $this->currentPostHasShortcode(['polski_wishlist'])
+            || (is_singular() && has_block('woocommerce/product-collection'));
     }
 
     /**
