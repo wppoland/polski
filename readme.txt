@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.7
+Stable tag: 1.41.8
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.41.8 =
+* Fixed: The iworks Omnibus import read the raw WooCommerce sale field, so a sale that was only scheduled counted as a price the product sold at, and its sale rows were never closed. It now takes the selling price, imports only what lies before Polski's own history for a product, and on upgrade removes the rows 1.41.7 imported wrongly. On some products these made the lowest price equal the running sale price.
 
 = 1.41.7 =
 * Fixed: The Omnibus lowest price now shows on single product pages built with an Elementor Pro template, which replaces the WooCommerce summary hook the notice was attached to. It is placed under the price widget, once, also when the template carries the Polski Omnibus widget.

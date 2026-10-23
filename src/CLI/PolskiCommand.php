@@ -45,7 +45,7 @@ class PolskiCommand
     /**
      * Import the price history of the "Omnibus" plugin (iworks) into Polski.
      *
-     * Runs once on upgrade by itself; safe to repeat, rows already imported are skipped.
+     * Runs on upgrade by itself; safe to repeat, it only adds what is missing and removes what is wrong.
      *
      * ## EXAMPLES
      *
@@ -58,9 +58,9 @@ class PolskiCommand
      */
     public function importIworks(array $args, array $assocArgs): void
     {
-        $written = (new \Polski\Service\IworksOmnibusImport())->run();
+        $result = (new \Polski\Service\IworksOmnibusImport())->run();
 
-        \WP_CLI::success(sprintf('Imported %d price history rows.', $written));
+        \WP_CLI::success(sprintf('Imported %d price history rows, removed %d.', $result['imported'], $result['removed']));
     }
 
     /**
