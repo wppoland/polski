@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.6
+Stable tag: 1.41.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -358,6 +358,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.41.7 =
+* Fixed: The Omnibus lowest price now shows on single product pages built with an Elementor Pro template, which replaces the WooCommerce summary hook the notice was attached to. It is placed under the price widget, once, also when the template carries the Polski Omnibus widget.
+* Added: Import of the price history kept by the Omnibus plugin by iworks (v2 meta and v3 price log), run once on upgrade and on demand with `wp polski import-iworks`, so a shop switching to Polski keeps its 30-day window.
 
 = 1.41.6 =
 * Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.

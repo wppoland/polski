@@ -38,6 +38,8 @@ class Widgets_Manager
  */
 abstract class Widget_Base
 {
+    abstract public function get_name(): string;
+
     protected function start_controls_section(string $section_id, array $args = [], array $options = []): void
     {
     }
