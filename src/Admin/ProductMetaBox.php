@@ -446,7 +446,7 @@ final class ProductMetaBox implements HasHooks
             woocommerce_wp_textarea_input([
                 'id' => '_polski_green_claim_basis',
                 'label' => __('Environmental claim basis', 'polski'),
-                'description' => __('Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive).', 'polski'),
+                'description' => __('Evidence behind the environmental claim. Directive (EU) 2024/825 bans generic environmental claims and uncertified sustainability labels from 27 September 2026.', 'polski'),
                 'desc_tip' => true,
             ]);
 

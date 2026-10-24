@@ -25,6 +25,9 @@ final class WithdrawalService implements Bootable, HasHooks
     private const WITHDRAWAL_PERIOD_DAYS = 14;
     private const CLOCK_START_META = '_polski_withdrawal_clock_start';
 
+    /** Order statuses (without wc-) with no concluded or no surviving contract. */
+    private const NO_CONTRACT_STATUSES = ['pending', 'failed', 'cancelled', 'refunded', 'checkout-draft', 'trash'];
+
     public function __construct(
         private readonly WithdrawalRepository $repository,
         private readonly TemplateLoader $templateLoader,
@@ -131,18 +134,19 @@ final class WithdrawalService implements Bootable, HasHooks
      */
     public function isEligible(\WC_Order $order): bool
     {
-        // Check if order is within the withdrawal period.
-        $orderDate = $this->getClockStart($order);
-
-        if ($orderDate === null) {
+        // Art. 11a: the function is available for the whole withdrawal period,
+        // which opens when the contract is concluded, not when the order is
+        // completed. Orders that never became a contract (unpaid, failed) or
+        // were undone (cancelled, refunded) are not offered it.
+        if (in_array($order->get_status(), self::NO_CONTRACT_STATUSES, true)) {
             return false;
         }
 
-        $deadline = clone $orderDate;
-        $deadline->modify('+' . $this->getWithdrawalDays() . ' days');
-        $now = new \WC_DateTime('now', $orderDate->getTimezone());
+        // The countdown starts at a trigger status (by default "completed").
+        // Until then the window is open; after it, 14 days remain.
+        $deadline = $this->getDeadline($order);
 
-        if ($now > $deadline) {
+        if ($deadline !== null && new \WC_DateTime('now', $deadline->getTimezone()) > $deadline) {
             return false;
         }
 
@@ -1012,9 +1016,12 @@ final class WithdrawalService implements Bootable, HasHooks
     }
 
     /**
-     * Return the timestamp that starts the withdrawal countdown for the given order.
-     * Priority: explicit clock-start meta (set when entering a trigger status) ->
-     * date_completed -> date_created.
+     * Return the timestamp that starts the withdrawal countdown for the given order:
+     * the clock-start meta (set when entering a trigger status), else the
+     * completion date, else null (the countdown has not started).
+     *
+     * The creation date is not a fallback: counting from it closed the window
+     * on orders still in processing after 14 days.
      */
     public function getClockStart(\WC_Order $order): ?\WC_DateTime
     {
@@ -1031,11 +1038,8 @@ final class WithdrawalService implements Bootable, HasHooks
         }
 
         $completed = $order->get_date_completed();
-        if ($completed !== null) {
-            return $completed;
-        }
 
-        return $order->get_date_created();
+        return $completed instanceof \WC_DateTime ? $completed : null;
     }
 
     /**

@@ -102,7 +102,10 @@ return [
 
     // Checkout.
     'polski_checkout' => [
-        'order_button_text' => __('Order with an obligation to pay', 'polski'),
+        // Empty on purpose: CheckoutHooks prints the translated statutory
+        // wording at runtime. A resolved __() here was frozen into the option at
+        // activation, in English when the language pack was not there yet.
+        'order_button_text' => '',
         'terms_checkbox_enabled' => true,
         /* translators: %s is the terms and conditions page URL. */
         'terms_checkbox_label' => __('I have read and accept the <a href="%s" target="_blank">terms and conditions</a>.', 'polski'),

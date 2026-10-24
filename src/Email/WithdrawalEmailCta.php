@@ -73,7 +73,7 @@ final class WithdrawalEmailCta implements HasHooks
 
         $headline = __('Right of withdrawal', 'polski');
         $cta = __('Withdraw from this contract here', 'polski');
-        $intro = __('You have 14 days from delivery to exercise the right of withdrawal (EU Directive 2011/83/EU, as amended by 2023/2673, Article 11a).', 'polski');
+        $intro = __('You can withdraw from this contract online until 14 days from the date the order was completed (right of withdrawal, Directive 2011/83/EU art. 9).', 'polski');
 
         if ($plainText) {
             echo "\n" . esc_html($headline) . "\n";

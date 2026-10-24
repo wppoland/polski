@@ -243,7 +243,7 @@ final class SiteAuditService implements HasHooks
             return [
                 'status' => self::STATUS_FAIL,
                 'label' => $label,
-                'detail' => __('Guest checkout is disabled AND login is required - customers are forced to create an account. EU Directive 2023/2673 considers this a dark pattern unless justified (e.g. B2B). Enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
+                'detail' => __('Guest checkout is disabled AND login is required - customers are forced to create an account, which puts off buyers and collects more data than an order needs. Enable guest checkout under WooCommerce > Settings > Accounts.', 'polski'),
             ];
         }
 
@@ -664,10 +664,22 @@ final class SiteAuditService implements HasHooks
             $checkoutSettings = [];
         }
 
-        $buttonText = $checkoutSettings['order_button_text'] ?? '';
+        if (! ModulesPage::isModuleEnabled('checkout_button')) {
+            return [
+                'status' => self::STATUS_WARNING,
+                'label'  => $label,
+                'detail' => __('Button text is not configured. Default WooCommerce setting might lack required payment info.', 'polski'),
+            ];
+        }
+
+        // Empty means CheckoutHooks prints the translated statutory wording.
+        $buttonText = (string) ($checkoutSettings['order_button_text'] ?? '');
+        if ($buttonText === '') {
+            $buttonText = __('Order with an obligation to pay', 'polski');
+        }
         $buttonTextLower = mb_strtolower((string) $buttonText);
 
-        $requiredPhrases = ['pay', 'payment', 'oplacam', 'platnosc', 'zaplac', 'obowiazkiem zaplaty'];
+        $requiredPhrases = ['pay', 'payment', 'oplacam', 'platnosc', 'zaplac', 'obowiazkiem zaplaty', 'opłacam', 'płatność', 'zapłac', 'zapłaty'];
 
         foreach ($requiredPhrases as $phrase) {
             if (mb_strpos($buttonTextLower, $phrase) !== false) {
@@ -681,14 +693,6 @@ final class SiteAuditService implements HasHooks
                     ),
                 ];
             }
-        }
-
-        if (empty($buttonText)) {
-            return [
-                'status' => self::STATUS_WARNING,
-                'label'  => $label,
-                'detail' => __('Button text is not configured. Default WooCommerce setting might lack required payment info.', 'polski'),
-            ];
         }
 
         return [
@@ -744,9 +748,9 @@ final class SiteAuditService implements HasHooks
         }
 
         return [
-            'status' => self::STATUS_FAIL,
+            'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('Legal checkboxes module is disabled. The shop might not collect required GDPR consents.', 'polski'),
+            'detail' => __('Legal checkboxes module is disabled. Order data rests on GDPR art. 6(1)(b) and needs no consent; only optional processing such as marketing does, so check how you collect that.', 'polski'),
         ];
     }
 
@@ -842,7 +846,7 @@ final class SiteAuditService implements HasHooks
         return [
             'status' => self::STATUS_WARNING,
             'label'  => $label,
-            'detail' => __('DSA module is disabled. Marketplaces or shops with sponsored content should have a notice-and-action procedure.', 'polski'),
+            'detail' => __('DSA module is disabled. Relevant if your shop hosts third-party content (marketplace sellers, reviews): Article 16 of the DSA asks hosting providers for a notice-and-action procedure.', 'polski'),
         ];
     }
 

@@ -240,7 +240,7 @@ final class WithdrawalSettingsPage implements HasHooks
                                     <?php echo esc_html($label); ?>
                                 </label>
                             <?php endforeach; ?>
-                            <p class="description"><?php esc_html_e('The withdrawal 14-day clock starts when an order enters any of the selected statuses.', 'polski'); ?></p>
+                            <p class="description"><?php esc_html_e('Customers can withdraw from the moment the order is placed. The 14-day countdown starts when the order enters any of the selected statuses (by default, when it is completed).', 'polski'); ?></p>
                         </td>
                     </tr>
                 </table>

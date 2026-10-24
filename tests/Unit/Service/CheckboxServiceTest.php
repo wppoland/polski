@@ -189,7 +189,7 @@ final class CheckboxServiceTest extends TestCase
 
         $stats = $service->getComplianceStats();
 
-        // 25 + 25 + 20 + 10 + 10 + 5 + 5 (consent logging) = 100
+        // 35 + 35 + 10 + 10 + 5 + 5 (consent logging) = 100; privacy scores nothing
         $this->assertSame(100, $stats['compliance_score']);
         $this->assertSame('A', $stats['compliance_grade']);
         $this->assertEmpty($stats['suggestions']);
@@ -249,13 +249,13 @@ final class CheckboxServiceTest extends TestCase
     {
         $service = $this->createService();
 
-        // With terms (25) + privacy (25) + consent logging (5) = 55 -> D
+        // With terms (35) + privacy (0) + consent logging (5) = 40 -> D
         $service->register($this->makeCheckbox('terms', isCore: true, enabled: true));
         $service->register($this->makeCheckbox('privacy', isCore: true, enabled: true));
 
         $stats = $service->getComplianceStats();
 
-        $this->assertSame(55, $stats['compliance_score']);
+        $this->assertSame(40, $stats['compliance_score']);
         $this->assertSame('D', $stats['compliance_grade']);
     }
 

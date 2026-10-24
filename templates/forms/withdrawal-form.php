@@ -47,6 +47,23 @@ $polski_intro_text = str_replace(
 
     <p class="polski-withdrawal-form__info"><?php echo esc_html($polski_intro_text); ?></p>
 
+    <p class="polski-withdrawal-form__declarant">
+        <?php
+        // Art. 11a(2) Directive 2011/83/EU: the statement names the consumer and
+        // the e-mail address the acknowledgement goes to.
+        $polski_declarant = trim((string) $polski_order->get_formatted_billing_full_name());
+        if ($polski_declarant === '') {
+            $polski_declarant = (string) $polski_order->get_billing_company();
+        }
+        printf(
+            /* translators: 1: customer name, 2: email address */
+            esc_html__('Declaration filed by: %1$s. The confirmation will be sent to: %2$s', 'polski'),
+            '<strong>' . esc_html($polski_declarant) . '</strong>',
+            '<strong>' . esc_html((string) $polski_order->get_billing_email()) . '</strong>',
+        );
+        ?>
+    </p>
+
     <?php
     $polski_legal_notice = trim((string) ($polski_settings['legal_notice_text'] ?? ''));
     if ($polski_legal_notice !== '') :

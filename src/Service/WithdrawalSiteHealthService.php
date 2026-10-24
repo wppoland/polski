@@ -117,7 +117,7 @@ final class WithdrawalSiteHealthService implements HasHooks
             __('No trigger statuses configured for the withdrawal clock.', 'polski'),
             sprintf(
                 /* translators: %s = settings page URL */
-                __('Without a trigger status, the 14-day withdrawal countdown never starts and no order is eligible. Open <a href="%s">Polski › Withdrawal settings</a> and tick at least one status (commonly "Completed" or "Delivered").', 'polski'),
+                __('Without a trigger status, the 14-day withdrawal countdown never starts, so the withdrawal function stays open on completed orders without a deadline. Open <a href="%s">Polski › Withdrawal settings</a> and tick at least one status (commonly "Completed" or "Delivered").', 'polski'),
                 esc_url($settingsUrl),
             ),
         );
