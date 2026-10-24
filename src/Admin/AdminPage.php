@@ -823,7 +823,7 @@ final class AdminPage implements Bootable, HasHooks
             [
                 'id' => 'cra_incidents',
                 'name' => __('CRA incidents', 'polski'),
-                'desc' => __('A register of vulnerabilities, breaches and failures for the Cyber Resilience Act, with statuses and CSV export.', 'polski'),
+                'desc' => __('A log of vulnerabilities, breaches and failures, with statuses and CSV export. CRA duties bind manufacturers, not shops.', 'polski'),
                 'icon' => 'dashicons-shield-alt',
                 'module' => 'cra_readiness',
                 'url' => admin_url('admin.php?page=polski-cra-incidents'),
@@ -831,7 +831,7 @@ final class AdminPage implements Bootable, HasHooks
             [
                 'id' => 'sbom',
                 'name' => __('SBOM', 'polski'),
-                'desc' => __('A software bill of materials for the Cyber Resilience Act.', 'polski'),
+                'desc' => __('A software bill of materials. Manufacturers draw one up under the CRA; it is not a shop duty.', 'polski'),
                 'icon' => 'dashicons-media-code',
                 'module' => 'sbom',
                 'url' => admin_url('admin.php?page=polski-sbom'),

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.42.0
+Stable tag: 1.43.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -115,7 +115,7 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Polski PRO ==
 
-Polski for WooCommerce covers the essential Polish-market compliance for free. **Polski PRO** is the full store suite:
+Polski for WooCommerce gives you free tools for Polish-market rules; it does not on its own make a shop compliant. **Polski PRO** is the full store suite:
 
 * **Invoices and KSeF** - VAT invoices, corrections and receipts with PDF, plus e-invoicing to KSeF
 * **Shipping integrations** - InPost, DPD, DHL and Poczta Polska: labels, tracking and pickup points
@@ -293,6 +293,8 @@ Deactivating the plugin keeps your settings and stored data. Uninstalling remove
 
 == External Services ==
 
+The plugin makes no external calls except the ones listed below. Each one is off until you switch on the module and enter the account, ID or address it needs. The Compliance checklist fetches your own shop's pages only.
+
 = GUS REGON API =
 
 When the VAT ID (NIP) lookup module is enabled, the plugin can connect to the public GUS REGON registry to fetch company data based on the VAT ID entered by the user. The connection is made only after the lookup is deliberately triggered.
@@ -310,6 +312,14 @@ When the EU VAT ID check module is enabled, the plugin can connect to the Europe
 * Service address: [https://ec.europa.eu/taxation_customs/vies/](https://ec.europa.eu/taxation_customs/vies/)
 * Terms of use: [https://ec.europa.eu/taxation_customs/vies/#/help](https://ec.europa.eu/taxation_customs/vies/#/help)
 * Privacy policy: [https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en](https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en)
+
+= Swiss UID register (Federal Statistical Office) =
+
+When the EU VAT ID check module is enabled and the number is Swiss (CHE), the same check from the order screen asks the Swiss UID register instead of VIES.
+
+* Data sent: the customer's Swiss UID or VAT number.
+* Service address: [https://www.uid-wse.admin.ch/](https://www.uid-wse.admin.ch/)
+* Terms of use and data protection: [https://www.uid.admin.ch/Disclaimer.aspx](https://www.uid.admin.ch/Disclaimer.aspx)
 
 = Google OAuth =
 
@@ -340,6 +350,43 @@ When the DataLayer module is enabled and a GTM container ID or a GA4 measurement
 * Terms of service: [https://policies.google.com/terms](https://policies.google.com/terms)
 * Privacy policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
+= Tracking tags (advertising and analytics) =
+
+When the Tracking Tags module is enabled, each provider below loads only if you switch it on and enter your own ID, key or domain. Its script is placed in the page as an inert placeholder and runs in the visitor's browser only after the visitor grants the matching consent category in the cookie banner (marketing for advertising pixels, analytics for measurement tools). Nothing is sent from your server.
+
+* Data sent: the page address, referrer, browser and device data, the visitor's IP address and the provider's own cookie identifiers, plus a page-view event. The plugin sends no order or customer data through these tags.
+* Meta Pixel: [https://connect.facebook.net/](https://connect.facebook.net/), [terms](https://www.facebook.com/legal/terms/businesstools), [privacy policy](https://www.facebook.com/privacy/policy/)
+* TikTok Pixel: [https://analytics.tiktok.com/](https://analytics.tiktok.com/), [terms](https://ads.tiktok.com/i18n/official/policy/business-products-terms), [privacy policy](https://www.tiktok.com/legal/page/eea/privacy-policy/en)
+* Microsoft Advertising (Bing UET): [https://bat.bing.com/](https://bat.bing.com/), [terms](https://about.ads.microsoft.com/en/resources/policies/microsoft-advertising-agreement), [privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+* Microsoft Clarity: [https://www.clarity.ms/](https://www.clarity.ms/), [terms](https://clarity.microsoft.com/terms), [privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+* LinkedIn Insight Tag: [https://snap.licdn.com/](https://snap.licdn.com/), [terms](https://www.linkedin.com/legal/sas-terms), [privacy policy](https://www.linkedin.com/legal/privacy-policy)
+* Pinterest Tag: [https://s.pinimg.com/](https://s.pinimg.com/), [terms](https://policy.pinterest.com/en/terms-of-service), [privacy policy](https://policy.pinterest.com/en/privacy-policy)
+* X (Twitter) Ads: [https://static.ads-twitter.com/](https://static.ads-twitter.com/), [terms](https://x.com/en/tos), [privacy policy](https://x.com/en/privacy)
+* Google Ads: [https://www.googletagmanager.com/](https://www.googletagmanager.com/), [terms](https://policies.google.com/terms), [privacy policy](https://policies.google.com/privacy)
+* Matomo: the Matomo address you enter (your own server or Matomo Cloud), [terms](https://matomo.org/terms/), [privacy policy](https://matomo.org/privacy-policy/)
+* Plausible: [https://plausible.io/](https://plausible.io/), [terms](https://plausible.io/terms), [privacy policy](https://plausible.io/privacy)
+* PostHog: [https://app.posthog.com/](https://app.posthog.com/), [terms](https://posthog.com/terms), [privacy policy](https://posthog.com/privacy)
+* Hotjar: [https://static.hotjar.com/](https://static.hotjar.com/), [terms](https://www.hotjar.com/legal/policies/terms-of-service/), [privacy policy](https://www.hotjar.com/legal/policies/privacy/)
+* Inspectlet: [https://cdn.inspectlet.com/](https://cdn.inspectlet.com/), [terms and privacy policy](https://www.inspectlet.com/legal)
+* Crazy Egg: [https://script.crazyegg.com/](https://script.crazyegg.com/), [terms](https://www.crazyegg.com/terms), [privacy policy](https://www.crazyegg.com/privacy)
+* Simple Analytics: [https://scripts.simpleanalyticscdn.com/](https://scripts.simpleanalyticscdn.com/), [terms](https://simpleanalytics.com/terms), [privacy policy](https://simpleanalytics.com/privacy-policy)
+
+= Google Fonts preconnect =
+
+When the Safe Fonts module is enabled and Google Fonts are not held back until consent, the plugin adds preconnect hints for fonts.googleapis.com and fonts.gstatic.com, so the visitor's browser opens a connection to Google before your theme loads its Google Fonts. Data sent: the visitor's IP address and browser data. [Terms](https://policies.google.com/terms), [privacy policy](https://policies.google.com/privacy), [Google Fonts privacy FAQ](https://developers.google.com/fonts/faq/privacy).
+
+= Featured product video =
+
+When the Featured Video module is enabled and you enter a video address (for example YouTube or Vimeo), WordPress fetches the embed code from that provider through its oEmbed feature, and the visitor's browser loads the player from the provider. Data sent: the video address from your server; the visitor's IP address and browser data from the player. The provider's own terms and privacy policy apply.
+
+= Webhooks you configure =
+
+The Store health monitor and the CRA incident log (security.txt module settings) can post to a webhook address you enter. Nothing is sent unless you fill in that address.
+
+* Store health monitor: an alert text with the store status and the failed checks, sent as JSON to your webhook URL.
+* CRA incident log: the incident record you dispatch (reference, type, severity, status, title, summary, affected component and versions, dates, reporter and notes), sent as JSON to your webhook URL.
+* The receiving service is the one you choose; its terms and privacy policy apply.
+
 Admin-panel feedback and deactivation-form information are stored locally in WordPress and are not sent to an external service.
 
 == Screenshots ==
@@ -358,6 +405,15 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.43.0 =
+* Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before. Pending, failed, cancelled and refunded orders no longer offer it.
+* Fixed: The withdrawal statement (My Account form, one-click confirmation and guest form) now shows the customer's name and the e-mail address the confirmation goes to (art. 11a(2)).
+* Fixed: The order button text is no longer written into the settings at activation. The checkout prints the statutory wording in the shop language at runtime, so a shop installed before its language pack arrived no longer shows the English "Order with an obligation to pay". Shops that already have a stored text keep it.
+* Changed: The Privacy Policy checkbox is described as optional (order data rests on GDPR art. 6(1)(b)) and no longer counts towards the checkbox setup score; the Terms and Withdrawal checkboxes are "recommended" rather than "required". Checkbox behaviour and defaults are unchanged.
+* Changed: Omnibus settings warn when the lowest-price period is below 30 days, and the "Today" and "Show current price" options are labelled as not compliant with art. 6a(2) Directive 98/6/EC. Defaults are unchanged.
+* Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
+* Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
 
 = 1.42.0 =
 * Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.

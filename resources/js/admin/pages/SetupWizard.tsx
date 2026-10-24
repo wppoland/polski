@@ -56,7 +56,7 @@ const INITIAL_DATA: WizardData = {
     small_business: false,
     oss_observer_enabled: false,
 
-    order_button_text: __('Order with an obligation to pay', 'polski'),
+    order_button_text: '',
     digital_waiver_enabled: false,
 
     withdrawal_period_days: 14,
@@ -241,7 +241,7 @@ export default function SetupWizard() {
                         <WizardRow
                             label={__('Terms and Conditions', 'polski')}
                             description={__(
-                                'Required by Polish consumer law. Adds a mandatory checkbox at checkout referencing your Terms page.',
+                                'Recommended. The law requires your terms to be available before the order; this checkbox at checkout records that the customer accepted them.',
                                 'polski',
                             )}
                         >
@@ -255,7 +255,7 @@ export default function SetupWizard() {
                         <WizardRow
                             label={__('Privacy Policy', 'polski')}
                             description={__(
-                                'Required by GDPR Art. 6.1.a. Adds a mandatory checkbox at checkout referencing your Privacy Policy.',
+                                'Optional. Inform customers about processing; order data rests on GDPR art. 6(1)(b). Adds a checkbox at checkout referencing your Privacy Policy.',
                                 'polski',
                             )}
                         >
@@ -269,7 +269,7 @@ export default function SetupWizard() {
                         <WizardRow
                             label={__('14-day withdrawal', 'polski')}
                             description={__(
-                                'Customer confirms they have been informed about the 14-day right of withdrawal. Required under EU Directive 2011/83.',
+                                'Recommended. Customer confirms they have been informed about the 14-day right of withdrawal; Directive 2011/83/EU art. 6(1)(h) requires that information.',
                                 'polski',
                             )}
                         >
@@ -455,6 +455,8 @@ export default function SetupWizard() {
                             <TextControl
                                 label={__('Button label', 'polski')}
                                 value={data.order_button_text}
+                                placeholder={__('Order with an obligation to pay', 'polski')}
+                                help={__('Leave empty for the statutory wording in the shop language.', 'polski')}
                                 onChange={(v) => update('order_button_text', v)}
                             />
                         </WizardRow>

@@ -109,7 +109,7 @@ final class CRAIncidentsPage implements HasHooks
 
     private function renderList(): void
     {
-        echo '<p>' . esc_html__('Record actively-exploited vulnerabilities and security incidents. The checker tracks the CRA Article 14 24-hour early-warning deadline and exports a structured JSON submission.', 'polski') . '</p>';
+        echo '<p>' . esc_html__('Record actively-exploited vulnerabilities and security incidents. The checker tracks a 24-hour early-warning deadline modelled on CRA Article 14 and exports a structured JSON record. Article 14 binds manufacturers of products with digital elements, not shops.', 'polski') . '</p>';
         echo '<p class="description">' . esc_html__('Configure the webhook URL and notification email in the CRA module settings on the Modules screen.', 'polski') . '</p>';
 
         $incidents = $this->repository->all(200);

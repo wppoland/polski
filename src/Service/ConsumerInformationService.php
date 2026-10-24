@@ -8,23 +8,22 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 
 /**
- * Pre-contractual consumer information required by Directive (EU) 2024/825,
- * which applies from 27 September 2026.
+ * Pre-contractual consumer information from Directive (EU) 2024/825, which
+ * applies from 27 September 2026. The output is not the harmonised notice or
+ * the harmonised label of Implementing Regulation (EU) 2025/1960.
  *
  * The directive amends the Consumer Rights Directive with four product-page
  * duties that WooCommerce does not cover on its own:
  *  - a reminder that the legal guarantee of conformity exists (store-wide, so
  *    it is a setting, not a product field);
  *  - the length of a commercial guarantee of durability, where the producer
- *    offers one longer than the statutory period;
+ *    offers one free of charge, covering the whole good, for over two years;
  *  - how long free software updates are supplied, for goods with digital
  *    elements;
  *  - repair information.
  *
- * The exact harmonised label for the durability guarantee comes from an
- * implementing act. This module deliberately renders plain labelled rows rather
- * than guessing at that artwork, so a shop is informative today and can adopt
- * the official mark when it is published.
+ * This module renders plain labelled rows, not the artwork of the harmonised
+ * notice and label.
  */
 final class ConsumerInformationService
 {
