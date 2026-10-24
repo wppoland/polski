@@ -316,39 +316,38 @@ final class CheckboxService implements Bootable, HasHooks
         $maxScore = 100;
         $suggestions = [];
 
-        // Terms checkbox (25 points).
+        // Terms checkbox (35 points).
         $terms = $this->get('terms');
         if ($terms !== null && $terms->enabled) {
-            $score += 25;
+            $score += 35;
         } else {
             $suggestions[] = [
                 'id' => 'enable_terms',
-                'severity' => 'critical',
-                'message' => __('Enable the Terms and Conditions checkbox - required by Polish consumer law.', 'polski'),
+                'severity' => 'high',
+                'message' => __('Enable the Terms and Conditions checkbox (recommended): the law requires the terms to be available before the order, and the checkbox records that the customer accepted them.', 'polski'),
             ];
         }
 
-        // Privacy checkbox (25 points).
+        // Privacy checkbox: no points. No provision requires a privacy box;
+        // order data rests on GDPR art. 6(1)(b), not on consent.
         $privacy = $this->get('privacy');
-        if ($privacy !== null && $privacy->enabled) {
-            $score += 25;
-        } else {
+        if ($privacy === null || ! $privacy->enabled) {
             $suggestions[] = [
                 'id' => 'enable_privacy',
-                'severity' => 'critical',
-                'message' => __('Enable the Privacy Policy checkbox - required by GDPR Art. 6.1.a and Art. 7.', 'polski'),
+                'severity' => 'low',
+                'message' => __('Optional. Inform customers about processing; order data rests on GDPR art. 6(1)(b).', 'polski'),
             ];
         }
 
-        // Withdrawal checkbox (20 points).
+        // Withdrawal checkbox (35 points).
         $withdrawal = $this->get('withdrawal');
         if ($withdrawal !== null && $withdrawal->enabled) {
-            $score += 20;
+            $score += 35;
         } else {
             $suggestions[] = [
                 'id' => 'enable_withdrawal',
                 'severity' => 'high',
-                'message' => __('Enable the Withdrawal Rights checkbox - required by Polish Consumer Rights Act (Art. 12).', 'polski'),
+                'message' => __('Enable the Withdrawal Rights checkbox (recommended): art. 12 of the Polish Consumer Rights Act requires the buyer to be informed of the 14-day right.', 'polski'),
             ];
         }
 

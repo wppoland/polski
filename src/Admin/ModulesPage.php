@@ -122,7 +122,7 @@ final class ModulesPage implements HasHooks
             'email_attachments' => __('Adds the text of your legal pages to WooCommerce customer emails, printed under the order table rather than attached as a file. Applies to the processing, completed, on-hold and invoice emails, never to admin emails. PDF files and a per-email-type document matrix are a PRO feature.', 'polski'),
             'manufacturer' => __('Adds a manufacturer taxonomy to your products. When enabled, you can assign a manufacturer to each product from the product edit screen, and its name appears for shoppers on the product page. GPSR details (responsible person, safety warnings and instructions) are entered with the GPSR module.', 'polski'),
             'food_module' => __('Adds food and supplement product details to your products. When enabled, you can enter nutrition facts, allergens, ingredients, Nutri-Score, alcohol content, country of origin, and distributor per product, which then show to shoppers on the product page.', 'polski'),
-            'consumer_information' => __('Adds the pre-contractual information that Directive (EU) 2024/825 requires from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. The harmonised label artwork for the durability guarantee comes from a separate implementing act, so this module renders plain labelled rows.', 'polski'),
+            'consumer_information' => __('Adds pre-contractual information from Directive (EU) 2024/825, which applies from 27 September 2026. When enabled, the product page carries a reminder that the statutory guarantee of conformity applies, and each product gains fields for a commercial guarantee of durability, the period of free software updates for goods with digital elements, and repair information. This module renders plain labelled rows; it is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960.', 'polski'),
             'power_supply' => __('Adds energy consumption details for electrical devices. When enabled, you can enter energy label data per product, which is then displayed to shoppers on the product page for electrical items.', 'polski'),
             'double_opt_in' => __('Verifies a customer\'s email address when they register an account. When enabled, new sign-ups receive an activation link by email, and accounts registered in My Account cannot log in until they confirm it, helping confirm real email addresses. Off until enabled.', 'polski'),
             'ajax_search' => __('Speeds up product search with instant suggestions as shoppers type. When enabled, a search box you place with the [polski_ajax_search] shortcode or the Polski AJAX Search block shows live product matches (including by SKU and category) without reloading the page. The theme\'s own search box is not replaced, but its results page gains the same SKU and category matching. Off until enabled.', 'polski'),
@@ -145,7 +145,7 @@ final class ModulesPage implements HasHooks
             'green_claims' => __('Adds product fields for backing up environmental claims. When enabled, each product gains fields for the basis of an ecological claim, a certificate link, and an expiration date, helping you prepare for the anti-greenwashing directive (September 2026).', 'polski'),
             'dsa_toolkit' => __('Provides Digital Services Act tools for your store. When enabled, you get contact point settings, a public report form for illegal content or products via the [polski_dsa_report] shortcode, and an admin screen where staff review submitted reports.', 'polski'),
             'ksef_ready' => __('Helps you spot orders that may need KSeF invoicing. When enabled, orders are checked by NIP and flagged when KSeF invoicing may apply, with integration hooks and an admin status indicator shown to your team.', 'polski'),
-            'security_incidents' => __('A log for tracking security incidents, built with CRA in mind. When enabled, staff get an admin log to record vulnerabilities, breaches, and third-party failures, track their status and follow-up, and export everything to CSV.', 'polski'),
+            'security_incidents' => __('A log for tracking security incidents. CRA duties bind manufacturers of products with digital elements, not shops, so this is an internal record, not a legal register. When enabled, staff get an admin log to record vulnerabilities, breaches, and third-party failures, track their status and follow-up, and export everything to CSV.', 'polski'),
             'store_health' => __('Quietly watches your store for problems. When enabled, it passively monitors front-end fatal errors, checkout failure rate, and sales anomalies, checking every 5 minutes and sending email or webhook alerts. It never places test orders.', 'polski'),
             'ai_bridge' => __('Lets AI assistants safely read selected store data. When enabled, read-only data like price history, product safety info, store health, page checks, and product facts is exposed to AI assistants and the Site Editor via the WordPress Abilities API. Off by default.', 'polski'),
             'schema_org' => __('Adds structured data so search engines understand your products. When enabled, advanced JSON-LD tags are injected automatically into your pages to support product indexing by Google, while preserving the plugin\'s own data.', 'polski'),
@@ -155,7 +155,7 @@ final class ModulesPage implements HasHooks
             'custom_triggers' => __('Lets you push your own dataLayer events based on simple page conditions. When enabled, events fire when a visitor lands on a chosen URL or clicks a chosen element, feeding into the GA4 DataLayer module for your analytics and tag setup.', 'polski'),
             'site_audit' => __('Automatically checks your store for the most common store-setup issues. When enabled, it scans for things like missing legal pages, pre-ticked checkboxes, company data, GDPR, and Omnibus items, and shows you a report in the admin so you can fix gaps yourself.', 'polski'),
             'plugin_data' => __('Controls what happens to Polski\'s data if you remove the plugin. When enabled, you decide whether Polski deletes its database tables, settings, and stored logs on uninstall, so you can keep your data or wipe it cleanly when removing the plugin from WordPress.', 'polski'),
-            'cra_readiness' => __('Provides tools to help with Cyber Resilience Act (CRA) readiness. When enabled, it can publish a security.txt file (RFC 9116) with your security contact and vulnerability reporting policy, making it easier for researchers to report security issues responsibly.', 'polski'),
+            'cra_readiness' => __('Publishes an RFC 9116 security.txt file with your security contact and vulnerability reporting policy, making it easier for researchers to report security issues responsibly. Not a CRA requirement for shops: the Cyber Resilience Act binds manufacturers of products with digital elements.', 'polski'),
             'dpa_tracker' => __('Helps you keep a GDPR data-processing registry for your store. When enabled, it detects third-party services that process your customers\' personal data and lets you track the status of each data processing agreement (DPA) from the admin.', 'polski'),
             'minimum_order' => __('Sets a minimum order value or item count before customers can check out. When enabled, shoppers who haven\'t reached the minimum see a notice on the cart and checkout pages, and checkout stays blocked until they add enough.', 'polski'),
             'review_requests' => __('Sends automatic emails asking customers to review what they bought. When enabled, after an order is completed buyers get an email with product images and review links, plus an opt-out option.', 'polski'),
@@ -269,7 +269,8 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => '_omnibus_integration_status', 'label' => '', 'type' => 'html', 'html' => $this->getOmnibusIntegrationStatus()],
                     ['key' => '_omnibus_header_1', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;">' . __('Price tracking', 'polski') . '</strong>'],
-                    ['key' => 'polski_omnibus|days', 'label' => __('Tracking period (days)', 'polski'), 'type' => 'number', 'default' => 30, 'hint' => __('Directive requires a minimum of 30 days', 'polski')],
+                    ['key' => 'polski_omnibus|days', 'label' => __('Tracking period (days)', 'polski'), 'type' => 'number', 'default' => 30, 'hint' => __('Art. 6a(2) Directive 98/6/EC requires at least 30 days. A shorter period only where national law allows it (art. 6a(3) and (4)).', 'polski')],
+                    ['key' => '_omnibus_days_warning', 'label' => '', 'type' => 'html', 'html' => $this->getOmnibusDaysWarning()],
                     ['key' => 'polski_omnibus|prune_after_days', 'label' => __('Keep history (days)', 'polski'), 'type' => 'number', 'default' => 90, 'hint' => __('Older data will be automatically deleted', 'polski')],
 
                     ['key' => '_omnibus_header_2', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Display', 'polski') . '</strong>'],
@@ -281,9 +282,9 @@ final class ModulesPage implements HasHooks
 
                     ['key' => '_omnibus_header_3', 'label' => '', 'type' => 'html', 'html' => '<strong style="font-size:13px;margin-top:8px;display:block;">' . __('Message template', 'polski') . '</strong>'],
                     ['key' => 'polski_omnibus|display_text', 'label' => __('Message content', 'polski'), 'type' => 'text', 'default' => 'Lowest price in the last {days} days: {price}', 'hint' => __('Variables: {price}, {days}, {date}, {regular_price}', 'polski')],
-                    ['key' => 'polski_omnibus|no_history_text', 'label' => __('No price history', 'polski'), 'type' => 'select', 'default' => 'hide', 'options' => ['hide' => __('Hide message', 'polski'), 'current' => __('Show current price', 'polski'), 'custom' => __('Custom text', 'polski')]],
+                    ['key' => 'polski_omnibus|no_history_text', 'label' => __('No price history', 'polski'), 'type' => 'select', 'default' => 'hide', 'options' => ['hide' => __('Hide message', 'polski'), 'current' => __('Show current price (not compliant with art. 6a(2) Directive 98/6/EC)', 'polski'), 'custom' => __('Custom text', 'polski')]],
                     ['key' => 'polski_omnibus|no_history_custom_text', 'label' => __('Custom text (no history)', 'polski'), 'type' => 'text', 'default' => 'No recorded price reduction in the last {days} days'],
-                    ['key' => 'polski_omnibus|price_count_from', 'label' => __('Calculated from', 'polski'), 'type' => 'select', 'default' => 'sale_start', 'options' => ['sale_start' => __('Sale start date', 'polski'), 'today' => __('Today', 'polski')], 'hint' => __('Reference point for calculating the lowest price', 'polski')],
+                    ['key' => 'polski_omnibus|price_count_from', 'label' => __('Calculated from', 'polski'), 'type' => 'select', 'default' => 'sale_start', 'options' => ['sale_start' => __('Sale start date', 'polski'), 'today' => __('Today (not compliant with art. 6a(2) Directive 98/6/EC)', 'polski')], 'hint' => __('Reference point for calculating the lowest price', 'polski')],
 
                 ],
             ],
@@ -353,7 +354,11 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-cart',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_checkout|order_button_text', 'label' => __('Button text', 'polski'), 'type' => 'text', 'default' => 'Order with obligation to pay'],
+                    ['key' => 'polski_checkout|order_button_text', 'label' => __('Button text', 'polski'), 'type' => 'text', 'default' => '', 'hint' => sprintf(
+                        /* translators: %s: the statutory order button wording */
+                        __('Leave empty for the statutory wording: "%s"', 'polski'),
+                        __('Order with an obligation to pay', 'polski'),
+                    )],
                 ],
             ],
             [
@@ -635,7 +640,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'consumer_information',
                 'name' => __('Consumer information (2024/825)', 'polski'),
-                'description' => __('Legal guarantee reminder, guarantee of durability, free software update period and repair information on the product page. Required from 27 September 2026.', 'polski'),
+                'description' => __('Plain-text reminder of the legal guarantee of conformity, guarantee of durability, free software update period and repair information on the product page (Directive (EU) 2024/825, from 27 September 2026). Not the harmonised notice or label of Implementing Regulation (EU) 2025/1960.', 'polski'),
                 'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-shield-alt',
@@ -1151,7 +1156,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'green_claims',
                 'name' => __('Anti-greenwashing', 'polski'),
-                'description' => __('Fields for products: ecological claim basis, certificate link, expiration date. Compliance with anti-greenwashing directive (September 2026).', 'polski'),
+                'description' => __('Fields to document environmental claims: claim basis, certificate link, expiration date. Directive (EU) 2024/825 bans generic environmental claims and uncertified sustainability labels from 27 September 2026.', 'polski'),
                 'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-palmtree',
@@ -1189,7 +1194,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'security_incidents',
                 'name' => __('Security incidents', 'polski'),
-                'description' => __('CRA-oriented incident log for vulnerabilities, breaches, third-party failures, and operational follow-up. Includes status tracking and CSV export.', 'polski'),
+                'description' => __('Incident log for vulnerabilities, breaches, third-party failures, and operational follow-up, with status tracking and CSV export. CRA duties bind manufacturers, not shops.', 'polski'),
                 'group' => 'Consumer rights',
                 'enabled' => true,
                 'icon' => 'dashicons-shield',
@@ -1371,8 +1376,8 @@ final class ModulesPage implements HasHooks
             ],
             [
                 'id' => 'cra_readiness',
-                'name' => __('CRA - Cyber Resilience', 'polski'),
-                'description' => __('Cyber Resilience Act: security.txt file (RFC 9116), security contact, vulnerability reporting policy.', 'polski'),
+                'name' => __('security.txt (RFC 9116)', 'polski'),
+                'description' => __('RFC 9116 security.txt file, security contact and vulnerability reporting policy. Not a CRA requirement for shops; the CRA binds manufacturers.', 'polski'),
                 'group' => 'Tools',
                 'enabled' => false,
                 'icon' => 'dashicons-lock',
@@ -2977,6 +2982,27 @@ final class ModulesPage implements HasHooks
     /**
      * Get HTML showing Omnibus plugin integration status.
      */
+    /**
+     * Red warning under the Omnibus period when the stored value is below 30
+     * days. OmnibusService accepts any value of at least 1, so the screen has
+     * to say when that falls short of art. 6a(2).
+     */
+    private function getOmnibusDaysWarning(): string
+    {
+        $settings = get_option('polski_omnibus', []);
+        $days = is_array($settings) ? (int) ($settings['days'] ?? 30) : 30;
+
+        if ($days < 1 || $days >= 30) {
+            return '';
+        }
+
+        return '<p style="color:#b32d2e;margin:0;">' . esc_html(sprintf(
+            /* translators: %d: configured number of days */
+            __('The period is %d days. Art. 6a(2) Directive 98/6/EC requires a window of at least 30 days. Keep a shorter one only where national law allows it.', 'polski'),
+            $days,
+        )) . '</p>';
+    }
+
     private function getOmnibusIntegrationStatus(): string
     {
         $generalSettings = get_option('polski_general', []);

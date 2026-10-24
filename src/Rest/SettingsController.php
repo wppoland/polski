@@ -141,7 +141,8 @@ final class SettingsController extends RestController implements HasHooks
             $checkout = [];
         }
 
-        $checkout['order_button_text'] = sanitize_text_field($params['order_button_text'] ?? __('I order with an obligation to pay', 'polski'));
+        // Empty means the translated statutory wording (CheckoutHooks).
+        $checkout['order_button_text'] = sanitize_text_field((string) ($params['order_button_text'] ?? ''));
         $checkout['terms_checkbox_enabled'] = (bool) ($params['terms_enabled'] ?? true);
         $checkout['privacy_checkbox_enabled'] = (bool) ($params['privacy_enabled'] ?? true);
         $checkout['withdrawal_checkbox_enabled'] = (bool) ($params['withdrawal_enabled'] ?? true);
@@ -186,7 +187,9 @@ final class SettingsController extends RestController implements HasHooks
             $modules['legal_pages'] = true;
         }
 
-        if (! empty($params['order_button_text'])) {
+        // Empty text is the statutory default, so the field being present is
+        // what switches the module on.
+        if (isset($params['order_button_text'])) {
             $modules['checkout_button'] = true;
         }
 

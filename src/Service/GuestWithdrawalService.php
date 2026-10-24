@@ -498,7 +498,7 @@ final class GuestWithdrawalService implements HasHooks
                 esc_html__('We received a request regarding a return declaration for order #%s.', 'polski'),
                 esc_html((string) $order->get_order_number()),
             ) . '</p>'
-            . '<p>' . esc_html__('Unfortunately, this order is not eligible for an online withdrawal declaration (for example, the statutory return period may have elapsed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).', 'polski') . '</p>'
+            . '<p>' . esc_html__('Unfortunately, this order is not eligible for an online withdrawal declaration (for example, the withdrawal period, counted from the date the order was completed, may have passed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).', 'polski') . '</p>'
             . '<p>' . esc_html__('If you believe this is an error or have questions regarding your order, please reply directly to this email to contact the shop.', 'polski') . '</p>';
 
             $body = $mailer->wrap_message($subject, $htmlContent);
@@ -506,7 +506,7 @@ final class GuestWithdrawalService implements HasHooks
             $headers[] = 'Content-Type: text/plain; charset=UTF-8';
             $body = sprintf(
                 /* translators: %s = order number */
-                __("We received a request regarding a return declaration for order #%s.\n\nUnfortunately, this order is not eligible for an online withdrawal declaration (for example, the statutory return period may have elapsed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).\n\nIf you believe this is an error or have questions regarding your order, please reply directly to this email to contact the shop.", 'polski'),
+                __("We received a request regarding a return declaration for order #%s.\n\nUnfortunately, this order is not eligible for an online withdrawal declaration (for example, the withdrawal period, counted from the date the order was completed, may have passed, all products may have already been returned, or the purchased products may be exempt from the right of withdrawal under applicable consumer law).\n\nIf you believe this is an error or have questions regarding your order, please reply directly to this email to contact the shop.", 'polski'),
                 $order->get_order_number(),
             );
         }
