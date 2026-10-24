@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Util\BlockLoop;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
 
@@ -37,6 +38,30 @@ final class FeaturedVideoService implements Bootable, HasHooks
         // video out of sight. Below the gallery and summary, before the tabs.
         add_action('woocommerce_after_single_product_summary', [$this, 'renderAfterGallery'], 5);
         add_action('woocommerce_before_single_product_summary', [$this, 'renderBeforeSummary'], 19);
+        // A block theme fires the before-summary hook ahead of the first
+        // template block, above the breadcrumbs; there the video follows the
+        // gallery block instead (after it, not inside, where the slider
+        // viewport would clip it).
+        add_filter('render_block_woocommerce/product-image-gallery', [$this, 'appendAfterGalleryBlock'], 10, 3);
+    }
+
+    /**
+     * @param string|mixed $content
+     */
+    public function appendAfterGalleryBlock(mixed $content, mixed $block = null, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || ! wp_is_block_theme() || ! is_product()
+            || ($this->getSettings()['position'] ?? 'after_gallery') !== 'before_summary') {
+            return $content;
+        }
+
+        $product = BlockLoop::product($instance) ?? wc_get_product(get_queried_object_id());
+
+        if (! $product instanceof \WC_Product) {
+            return $content;
+        }
+
+        return $content . BlockLoop::render($product, fn () => $this->renderCurrentProductVideo());
     }
 
     public function enqueueAssets(): void
@@ -64,7 +89,7 @@ final class FeaturedVideoService implements Bootable, HasHooks
 
     public function renderBeforeSummary(): void
     {
-        if (($this->getSettings()['position'] ?? 'after_gallery') !== 'before_summary') {
+        if (($this->getSettings()['position'] ?? 'after_gallery') !== 'before_summary' || wp_is_block_theme()) {
             return;
         }
 

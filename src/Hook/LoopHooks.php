@@ -13,6 +13,7 @@ use Polski\Service\ProductInfoService;
 use Polski\Shopmark\Location;
 use Polski\Shopmark\Shopmark;
 use Polski\Shopmark\ShopmarkManager;
+use Polski\Util\BlockLoop;
 use Polski\Util\TemplateLoader;
 
 /**
@@ -37,6 +38,32 @@ final class LoopHooks implements Bootable, HasHooks
     public function registerHooks(): void
     {
         add_action('woocommerce_after_shop_loop_item_title', [$this, 'renderLoopShopmarks'], 15);
+        add_filter('render_block_woocommerce/product-price', [$this, 'appendToPriceBlock'], 10, 3);
+    }
+
+    /**
+     * The same loop shopmarks under the price of a Product Collection card
+     * the classic loop hook never reaches (homepage grids, related products,
+     * cart cross-sells). Skipped where WooCommerce fires the classic hook in
+     * the grid, and under the main price of a product page, where the summary
+     * hook prints the single-product marks.
+     *
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function appendToPriceBlock(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || $content === '' || BlockLoop::classicHooksCover($block)) {
+            return $content;
+        }
+
+        $product = BlockLoop::product($instance);
+
+        if (! $product instanceof \WC_Product || (is_product() && $product->get_id() === get_queried_object_id())) {
+            return $content;
+        }
+
+        return $content . BlockLoop::render($product, [$this, 'renderLoopShopmarks']);
     }
 
     private function registerShopmarks(): void

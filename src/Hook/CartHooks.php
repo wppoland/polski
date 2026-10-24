@@ -22,9 +22,9 @@ use Polski\Service\OmnibusService;
  * `item_data`, which the Cart Block renders. One filter, both carts, and no
  * JavaScript.
  *
- * Cross-sells under the cart are a different surface again: the Product
- * Collection block renders `woocommerce/product-price` and never fires the
- * classic loop hooks, so that one is handled by filtering the rendered block.
+ * Cross-sells under the cart are a product listing, not a cart item: they get
+ * the loop notice from {@see LoopHooks::appendToPriceBlock()}, which follows
+ * the "show in product lists" setting like every other grid.
  */
 final class CartHooks implements HasHooks
 {
@@ -36,7 +36,6 @@ final class CartHooks implements HasHooks
     public function registerHooks(): void
     {
         add_filter('woocommerce_get_item_data', [$this, 'addOmnibusToCartItem'], 10, 2);
-        add_filter('render_block', [$this, 'appendOmnibusToPriceBlock'], 10, 2);
     }
 
     private function enabled(): bool
@@ -86,46 +85,5 @@ final class CartHooks implements HasHooks
         ];
 
         return $itemData;
-    }
-
-    /**
-     * Append the notice to a Product Collection price block.
-     *
-     * Cross-sells under the block cart, and every other block product listing,
-     * render `woocommerce/product-price`. That block does not fire
-     * `woocommerce_after_shop_loop_item_title`, which is where the classic loop
-     * puts this, so the notice has to be appended to the rendered block instead.
-     *
-     * @param string|mixed              $content
-     * @param array<string, mixed>|mixed $block
-     */
-    public function appendOmnibusToPriceBlock(mixed $content, mixed $block): mixed
-    {
-        if (! is_string($content) || $content === '' || ! is_array($block)) {
-            return $content;
-        }
-
-        if (($block['blockName'] ?? '') !== 'woocommerce/product-price') {
-            return $content;
-        }
-
-        if (! $this->enabled()) {
-            return $content;
-        }
-
-        $productId = (int) ($block['attrs']['productId'] ?? 0);
-
-        if ($productId === 0) {
-            global $product;
-            $productId = $product instanceof \WC_Product ? $product->get_id() : 0;
-        }
-
-        if ($productId === 0) {
-            return $content;
-        }
-
-        $html = $this->omnibus->getLowestPriceHtml($productId);
-
-        return $html === '' ? $content : $content . $html;
     }
 }

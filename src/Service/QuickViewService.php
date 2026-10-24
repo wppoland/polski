@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Util\BlockLoop;
 use Polski\Util\ProductVisibility;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
@@ -20,6 +21,12 @@ final class QuickViewService implements Bootable, HasHooks
     use SettingsCacheable;
 
     private const OPTION = 'polski_quick_view';
+
+    /**
+     * A block grid printed a button on this request, so the modal shell and
+     * assets follow it there.
+     */
+    private bool $forced = false;
 
     public function __construct(
         private readonly TemplateLoader $templateLoader,
@@ -37,6 +44,7 @@ final class QuickViewService implements Bootable, HasHooks
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_after_shop_loop_item', [$this, 'renderLoopButton'], 21);
+        add_filter('render_block_woocommerce/product-button', [$this, 'appendToProductButtonBlock'], 21, 3);
         add_action('wp_footer', [$this, 'renderModalShell']);
         add_action('wp_ajax_polski_quick_view', [$this, 'handleModal']);
         add_action('wp_ajax_nopriv_polski_quick_view', [$this, 'handleModal']);
@@ -49,7 +57,11 @@ final class QuickViewService implements Bootable, HasHooks
 
     public function enqueueAssets(): void
     {
-        if (! $this->isEnabled() || ! $this->shouldRenderOnCurrentPage()) {
+        // A page with a Product Collection block in its content loads early, so
+        // the style is in the head on a classic theme too.
+        $collectionPage = is_singular() && has_block('woocommerce/product-collection');
+
+        if (! $this->isEnabled() || ! ($collectionPage || $this->shouldRenderOnCurrentPage()) || wp_script_is('polski-quick-view', 'enqueued')) {
             return;
         }
 
@@ -83,15 +95,53 @@ final class QuickViewService implements Bootable, HasHooks
     {
         global $product;
 
-        if (! $this->isEnabled() || ! $this->shouldRenderOnCurrentPage()) {
+        if (! $this->shouldRenderOnCurrentPage() || ! $product instanceof \WC_Product) {
             return;
         }
 
-        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_loop'] ?? true)) {
-            return;
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the template.
+        echo $this->loopButtonHtml($product);
+    }
+
+    /**
+     * The trigger after a Product Collection card's add-to-cart button, where
+     * WooCommerce does not fire the classic loop hook. Any such grid except a
+     * product page's own related and up-sell lists, which the classic loop
+     * never covered either.
+     *
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function appendToProductButtonBlock(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || is_product() || BlockLoop::classicHooksCover($block)) {
+            return $content;
         }
 
-        $this->templateLoader->include('loop/quick-view-button', [
+        $product = BlockLoop::product($instance);
+        $button = $product instanceof \WC_Product ? $this->loopButtonHtml($product) : '';
+
+        if ($button === '') {
+            return $content;
+        }
+
+        $this->forced = true;
+        $this->enqueueAssets();
+
+        return $content . $button;
+    }
+
+    /**
+     * One trigger per product per request, from whichever path comes first.
+     */
+    private function loopButtonHtml(\WC_Product $product): string
+    {
+        if (! $this->isEnabled() || ! ($this->getSettings()['show_on_loop'] ?? true)
+            || ! BlockLoop::claim('quick_view', $product->get_id())) {
+            return '';
+        }
+
+        return $this->templateLoader->render('loop/quick-view-button', [
             'service' => $this,
             'product' => $product,
         ]);
@@ -262,7 +312,7 @@ final class QuickViewService implements Bootable, HasHooks
 
     private function shouldRenderOnCurrentPage(): bool
     {
-        return is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag();
+        return $this->forced || is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag();
     }
 
     private function getAddToCartHtml(\WC_Product $product): string

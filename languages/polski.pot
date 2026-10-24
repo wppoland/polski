@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.41.5\n"
+"Project-Id-Version: Polski for WooCommerce 1.42.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-18T09:06:40+00:00\n"
+"POT-Creation-Date: 2026-10-23T19:44:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: polski.php
 #: src/Admin/DeactivationHandler.php:58
 #: src/Admin/SBOMPage.php:113
-#: src/Compatibility/ElementorCompat.php:34
+#: src/Compatibility/ElementorCompat.php:96
 msgid "Polski for WooCommerce"
 msgstr ""
 
@@ -799,7 +799,7 @@ msgstr ""
 #: config/defaults.php:423
 #: config/defaults.php:447
 #: src/AIFeed/ProductMarkdownBuilder.php:145
-#: src/Service/CompareService.php:511
+#: src/Service/CompareService.php:560
 #: src/Service/SearchService.php:85
 #: src/Service/StockExportService.php:51
 #: src/Service/StockExportService.php:414
@@ -829,7 +829,7 @@ msgstr ""
 #: config/defaults.php:426
 #: src/Admin/PostTypes.php:137
 #: src/AIFeed/ProductMarkdownBuilder.php:212
-#: src/Service/CompareService.php:514
+#: src/Service/CompareService.php:563
 #: src/Service/FilterService.php:573
 #: src/Service/ProductInfoService.php:134
 #: templates/forms/ajax-filters.php:171
@@ -858,7 +858,7 @@ msgstr ""
 #: config/defaults.php:356
 #: config/defaults.php:424
 #: src/AIFeed/ProductMarkdownBuilder.php:188
-#: src/Service/CompareService.php:512
+#: src/Service/CompareService.php:561
 #: src/Service/FilterService.php:606
 #: templates/forms/ajax-filters.php:206
 msgid "Availability"
@@ -871,7 +871,7 @@ msgstr ""
 
 #: config/defaults.php:358
 #: src/AIFeed/ProductMarkdownBuilder.php:189
-#: src/Service/CompareService.php:761
+#: src/Service/CompareService.php:814
 #: src/Service/FilterService.php:607
 #: templates/forms/ajax-filters.php:210
 msgid "In stock"
@@ -930,7 +930,7 @@ msgstr ""
 #: config/defaults.php:386
 #: src/Admin/ModulesPage.php:790
 #: src/Admin/ModulesPage.php:808
-#: src/Service/WishlistService.php:179
+#: src/Service/WishlistService.php:228
 msgid "Wishlist"
 msgstr ""
 
@@ -953,10 +953,10 @@ msgstr ""
 #: src/Rest/AiGpsrDraftController.php:159
 #: src/Rest/AiProductSummaryController.php:100
 #: src/Service/AjaxAddToCartService.php:114
-#: src/Service/CompareService.php:460
-#: src/Service/QuickViewService.php:135
+#: src/Service/CompareService.php:509
+#: src/Service/QuickViewService.php:185
 #: src/Service/WaitlistService.php:43
-#: src/Service/WishlistService.php:294
+#: src/Service/WishlistService.php:343
 msgid "Product not found."
 msgstr ""
 
@@ -969,7 +969,7 @@ msgid "Your wishlist"
 msgstr ""
 
 #: config/defaults.php:407
-#: src/Service/CompareService.php:232
+#: src/Service/CompareService.php:281
 msgid "Comparison"
 msgstr ""
 
@@ -982,7 +982,7 @@ msgid "Remove from comparison"
 msgstr ""
 
 #: config/defaults.php:410
-#: src/Service/CompareService.php:455
+#: src/Service/CompareService.php:504
 msgid "Log in to use product comparison."
 msgstr ""
 
@@ -991,7 +991,7 @@ msgid "You can compare up to {limit} products at a time. The oldest one was repl
 msgstr ""
 
 #: config/defaults.php:413
-#: src/Service/CompareService.php:465
+#: src/Service/CompareService.php:514
 msgid "You cannot clear the comparison."
 msgstr ""
 
@@ -1004,12 +1004,12 @@ msgid "Product comparison"
 msgstr ""
 
 #: config/defaults.php:417
-#: src/Service/CompareService.php:450
+#: src/Service/CompareService.php:499
 msgid "Compare products"
 msgstr ""
 
 #: config/defaults.php:418
-#: src/Service/CompareService.php:303
+#: src/Service/CompareService.php:352
 msgid "Clear the comparison"
 msgstr ""
 
@@ -1023,25 +1023,25 @@ msgstr ""
 
 #: config/defaults.php:421
 #: src/AIFeed/ProductMarkdownBuilder.php:155
-#: src/Service/CompareService.php:509
+#: src/Service/CompareService.php:558
 msgid "Price"
 msgstr ""
 
 #: config/defaults.php:422
 #: src/Admin/ModulesPage.php:211
-#: src/Admin/ProductMetaBox.php:67
+#: src/Admin/ProductMetaBox.php:78
 #: src/Hook/ProductHooks.php:532
-#: src/Service/CompareService.php:510
+#: src/Service/CompareService.php:559
 msgid "Unit price"
 msgstr ""
 
 #: config/defaults.php:425
 #: src/Admin/ModulesPage.php:320
-#: src/Admin/ProductMetaBox.php:118
-#: src/Admin/ProductMetaBox.php:828
+#: src/Admin/ProductMetaBox.php:129
+#: src/Admin/ProductMetaBox.php:840
 #: src/AIFeed/ProductMarkdownBuilder.php:180
 #: src/Block/StoreApi/ProductDataExtension.php:226
-#: src/Service/CompareService.php:513
+#: src/Service/CompareService.php:562
 msgid "Delivery time"
 msgstr ""
 
@@ -1052,19 +1052,19 @@ msgstr ""
 #: src/Block/ProductDataBlocks.php:65
 #: src/Block/StoreApi/ProductDataExtension.php:167
 #: src/Compatibility/Elementor/Widgets/ManufacturerWidget.php:16
-#: src/Service/CompareService.php:515
+#: src/Service/CompareService.php:564
 #: src/Service/ProductInfoService.php:69
 #: templates/single-product/gpsr-info.php:20
 msgid "Manufacturer"
 msgstr ""
 
 #: config/defaults.php:428
-#: src/Service/CompareService.php:516
+#: src/Service/CompareService.php:565
 msgid "GTIN / EAN"
 msgstr ""
 
 #: config/defaults.php:429
-#: src/Service/CompareService.php:520
+#: src/Service/CompareService.php:569
 msgid "Short description"
 msgstr ""
 
@@ -1118,7 +1118,7 @@ msgstr ""
 
 #: config/defaults.php:510
 #: src/Admin/ModulesPage.php:1002
-#: src/Service/BadgeService.php:119
+#: src/Service/BadgeService.php:174
 msgid "Sale"
 msgstr ""
 
@@ -1131,7 +1131,7 @@ msgid "Low stock"
 msgstr ""
 
 #: config/defaults.php:513
-#: src/Service/BadgeService.php:131
+#: src/Service/BadgeService.php:186
 msgid "Bestseller"
 msgstr ""
 
@@ -1365,7 +1365,7 @@ msgstr ""
 #: config/defaults.php:704
 #: src/Admin/CSVImportExport.php:130
 #: src/Admin/ModulesPage.php:621
-#: src/Admin/ProductMetaBox.php:502
+#: src/Admin/ProductMetaBox.php:513
 #: src/Block/ProductDataBlocks.php:107
 #: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
 #: src/Service/FoodService.php:72
@@ -1402,14 +1402,14 @@ msgid "Value"
 msgstr ""
 
 #: config/defaults.php:709
-#: src/Admin/ProductMetaBox.php:527
+#: src/Admin/ProductMetaBox.php:538
 #: src/Service/FoodService.php:301
 msgid "100 g"
 msgstr ""
 
 #: config/defaults.php:710
 #: src/Admin/CSVImportExport.php:133
-#: src/Admin/ProductMetaBox.php:509
+#: src/Admin/ProductMetaBox.php:520
 #: src/Block/ProductDataBlocks.php:113
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
 #: src/Service/FoodService.php:372
@@ -1428,7 +1428,7 @@ msgstr ""
 #: config/defaults.php:713
 #: src/Admin/CSVImportExport.php:135
 #: src/Admin/ModulesPage.php:630
-#: src/Admin/ProductMetaBox.php:564
+#: src/Admin/ProductMetaBox.php:575
 #: src/Service/FoodService.php:462
 msgid "Country of origin"
 msgstr ""
@@ -1441,7 +1441,7 @@ msgstr ""
 
 #: config/defaults.php:715
 #: src/Admin/CSVImportExport.php:136
-#: src/Admin/ProductMetaBox.php:550
+#: src/Admin/ProductMetaBox.php:561
 msgid "Net quantity"
 msgstr ""
 
@@ -1615,8 +1615,8 @@ msgstr ""
 
 #: src/Admin/AdminPage.php:233
 #: src/Admin/AdminPage.php:234
-#: src/Admin/ProductMetaBox.php:45
-#: src/Admin/ProductMetaBox.php:802
+#: src/Admin/ProductMetaBox.php:46
+#: src/Admin/ProductMetaBox.php:814
 #: src/Block/ModuleBlocks.php:84
 #: src/Service/WithdrawalSiteHealthService.php:183
 #: src/Service/WithdrawalSiteHealthService.php:197
@@ -2232,8 +2232,8 @@ msgid "Unit price unit"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:124
-#: src/Admin/ProductMetaBox.php:71
-#: src/Admin/ProductMetaBox.php:807
+#: src/Admin/ProductMetaBox.php:82
+#: src/Admin/ProductMetaBox.php:819
 msgid "Product quantity"
 msgstr ""
 
@@ -2248,8 +2248,8 @@ msgid "Responsible person (GPSR)"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:127
-#: src/Admin/ProductMetaBox.php:414
-#: src/Admin/ProductMetaBox.php:418
+#: src/Admin/ProductMetaBox.php:425
+#: src/Admin/ProductMetaBox.php:429
 msgid "Power supply"
 msgstr ""
 
@@ -2258,7 +2258,7 @@ msgid "Defect description"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:129
-#: src/Admin/ProductMetaBox.php:134
+#: src/Admin/ProductMetaBox.php:145
 msgid "Right of withdrawal exemption"
 msgstr ""
 
@@ -2325,45 +2325,28 @@ msgid "GPSR - Safety instructions"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:149
-#: src/Admin/ProductMetaBox.php:386
+#: src/Admin/ProductMetaBox.php:397
 msgid "Guarantee of durability (months)"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:150
-#: src/Admin/ProductMetaBox.php:395
+#: src/Admin/ProductMetaBox.php:406
 msgid "Free software updates (months)"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:151
-#: src/Admin/ProductMetaBox.php:404
+#: src/Admin/ProductMetaBox.php:415
 #: src/Service/ConsumerInformationService.php:120
 msgid "Repair information"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:152
-#: src/Admin/ProductMetaBox.php:67
+#: src/Admin/ProductMetaBox.php:69
 msgid "GTIN / EAN (fallback)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:69
-msgid "Used when WooCommerce's global unique ID field is empty."
-msgstr ""
-
-#: src/Admin/ProductMetaBox.php:933
-msgid "WooCommerce global unique ID"
-msgstr ""
-
-#: src/Admin/ProductMetaBox.php:936
-msgid "Polski fallback GTIN / EAN"
-msgstr ""
-
-#. translators: %s: one or more product identifier field names.
-#: src/Admin/ProductMetaBox.php:944
-msgid "The check digit for this product identifier may be invalid: %s. Please verify it."
-msgstr ""
-
 #: src/Admin/CSVImportExport.php:153
-#: src/Admin/ProductMetaBox.php:437
+#: src/Admin/ProductMetaBox.php:448
 msgid "Environmental claim basis"
 msgstr ""
 
@@ -2866,7 +2849,7 @@ msgid "A check recorded on an order always calls VIES fresh, cache or not."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:247
-#: src/Admin/ProductMetaBox.php:474
+#: src/Admin/ProductMetaBox.php:485
 msgid "Deposit scheme (system kaucyjny)"
 msgstr ""
 
@@ -3936,7 +3919,7 @@ msgid "Net content"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:637
-#: src/Admin/ProductMetaBox.php:382
+#: src/Admin/ProductMetaBox.php:393
 msgid "Consumer information (2024/825)"
 msgstr ""
 
@@ -4613,7 +4596,7 @@ msgid "Show product attributes"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:866
-#: src/Service/QuickViewService.php:155
+#: src/Service/QuickViewService.php:205
 msgid "Quick View"
 msgstr ""
 
@@ -4725,7 +4708,7 @@ msgid "Close by clicking background"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:904
-#: src/Admin/ProductMetaBox.php:162
+#: src/Admin/ProductMetaBox.php:173
 msgid "Badge Management"
 msgstr ""
 
@@ -4822,7 +4805,7 @@ msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:936
-#: src/Admin/ProductMetaBox.php:199
+#: src/Admin/ProductMetaBox.php:210
 msgid "Tab Manager"
 msgstr ""
 
@@ -4883,7 +4866,7 @@ msgid "Second product tab priority"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:959
-#: src/Admin/ProductMetaBox.php:236
+#: src/Admin/ProductMetaBox.php:247
 msgid "Featured Video"
 msgstr ""
 
@@ -6629,7 +6612,7 @@ msgid "Units"
 msgstr ""
 
 #: src/Admin/PostTypes.php:112
-#: src/Admin/ProductMetaBox.php:105
+#: src/Admin/ProductMetaBox.php:116
 msgid "Unit"
 msgstr ""
 
@@ -6689,394 +6672,412 @@ msgstr ""
 msgid "Search Nutrients"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:72
+#: src/Admin/ProductMetaBox.php:70
+msgid "Used when WooCommerce's global unique ID field is empty."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:83
 msgid "Product quantity in package (e.g. 500 for 500g)."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:80
-#: src/Admin/ProductMetaBox.php:817
+#: src/Admin/ProductMetaBox.php:91
+#: src/Admin/ProductMetaBox.php:829
 msgid "Base quantity"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:81
+#: src/Admin/ProductMetaBox.php:92
 msgid "Base reference quantity (e.g. 1 for \"per 1 kg\", 100 for \"per 100 ml\")."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:93
+#: src/Admin/ProductMetaBox.php:104
 msgid "- Select unit -"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:107
+#: src/Admin/ProductMetaBox.php:118
 msgid "Unit of measure for unit price display."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:119
+#: src/Admin/ProductMetaBox.php:130
 msgid "- Use default -"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:120
+#: src/Admin/ProductMetaBox.php:131
 msgid "Estimated delivery time displayed on the product page."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:135
+#: src/Admin/ProductMetaBox.php:146
 msgid "This product is exempt from the 14-day right of withdrawal (e.g. digital content, perishable goods)."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:146
+#: src/Admin/ProductMetaBox.php:157
 msgid "Invoicing"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:150
+#: src/Admin/ProductMetaBox.php:161
 msgid "GTU marking"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:152
+#: src/Admin/ProductMetaBox.php:163
 msgid "Goods and services group under JPK_V7. Set it only where the product really belongs to one of the thirteen groups; the marking is then printed against this line on the invoice."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:166
+#: src/Admin/ProductMetaBox.php:177
 msgid "Main badge"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:167
+#: src/Admin/ProductMetaBox.php:178
 msgid "Manual badge displayed independently of automatic conditions."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:173
+#: src/Admin/ProductMetaBox.php:184
 msgid "Badge style"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:175
+#: src/Admin/ProductMetaBox.php:186
 msgid "Default"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:176
+#: src/Admin/ProductMetaBox.php:187
 msgid "Accent"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:177
+#: src/Admin/ProductMetaBox.php:188
 msgid "Success"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:178
+#: src/Admin/ProductMetaBox.php:189
 msgid "Warning"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:179
+#: src/Admin/ProductMetaBox.php:190
 msgid "Neutral"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:181
+#: src/Admin/ProductMetaBox.php:192
 msgid "Manual badge style."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:187
+#: src/Admin/ProductMetaBox.php:198
 msgid "Secondary badge"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:188
+#: src/Admin/ProductMetaBox.php:199
 msgid "Optional second badge, e.g. Polish brand, Eco, Sale hit."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:203
+#: src/Admin/ProductMetaBox.php:214
 msgid "Tab 1 title"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:204
+#: src/Admin/ProductMetaBox.php:215
 msgid "Optional additional tab for this product."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:210
+#: src/Admin/ProductMetaBox.php:221
 msgid "Tab 1 content"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:211
+#: src/Admin/ProductMetaBox.php:222
 msgid "HTML/text content for the first additional tab."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:217
+#: src/Admin/ProductMetaBox.php:228
 msgid "Tab 2 title"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:218
+#: src/Admin/ProductMetaBox.php:229
 msgid "Second optional product tab."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:224
+#: src/Admin/ProductMetaBox.php:235
 msgid "Tab 2 content"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:225
+#: src/Admin/ProductMetaBox.php:236
 msgid "HTML/text content for the second additional tab."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:240
+#: src/Admin/ProductMetaBox.php:251
 msgid "Video URL"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:241
+#: src/Admin/ProductMetaBox.php:252
 msgid "Supports YouTube, Vimeo, and direct MP4 file links."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:247
+#: src/Admin/ProductMetaBox.php:258
 msgid "Video section heading"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:248
+#: src/Admin/ProductMetaBox.php:259
 msgid "Optional heading only for this product."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:264
+#: src/Admin/ProductMetaBox.php:275
 #: templates/single-product/gpsr-info.php:36
 msgid "Product responsibility"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:268
+#: src/Admin/ProductMetaBox.php:279
 msgid "Manufacturer name"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:269
+#: src/Admin/ProductMetaBox.php:280
 msgid "Full manufacturer name required by GPSR."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:275
+#: src/Admin/ProductMetaBox.php:286
 #: templates/single-product/gpsr-info.php:21
 msgid "Manufacturer address"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:276
+#: src/Admin/ProductMetaBox.php:287
 msgid "Full postal address of the manufacturer."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:282
+#: src/Admin/ProductMetaBox.php:293
 #: templates/single-product/gpsr-info.php:22
 msgid "Manufacturer contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:283
+#: src/Admin/ProductMetaBox.php:294
 msgid "Electronic address, an email or a web page, that GPSR requires alongside the postal one."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:289
+#: src/Admin/ProductMetaBox.php:300
 #: templates/single-product/gpsr-info.php:23
 msgid "Responsible person"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:290
+#: src/Admin/ProductMetaBox.php:301
 msgid "Person responsible in the EU for product compliance with GPSR."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:296
+#: src/Admin/ProductMetaBox.php:307
 #: templates/single-product/gpsr-info.php:24
 msgid "Responsible person address"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:297
+#: src/Admin/ProductMetaBox.php:308
 msgid "Full postal address of the EU responsible person."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:303
+#: src/Admin/ProductMetaBox.php:314
 #: templates/single-product/gpsr-info.php:25
 msgid "Responsible person contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:304
+#: src/Admin/ProductMetaBox.php:315
 msgid "Electronic address, an email or a web page, for the EU responsible person."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:310
+#: src/Admin/ProductMetaBox.php:321
 msgid "Importer name"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:311
+#: src/Admin/ProductMetaBox.php:322
 msgid "Full importer name (if applicable)."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:317
+#: src/Admin/ProductMetaBox.php:328
 #: templates/single-product/gpsr-info.php:27
 msgid "Importer address"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:318
+#: src/Admin/ProductMetaBox.php:329
 msgid "Full postal address of the importer."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:324
+#: src/Admin/ProductMetaBox.php:335
 #: templates/single-product/gpsr-info.php:28
 msgid "Importer contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:325
+#: src/Admin/ProductMetaBox.php:336
 msgid "Electronic address, an email or a web page, for the importer."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:333
+#: src/Admin/ProductMetaBox.php:344
 #: templates/single-product/gpsr-info.php:88
 msgid "Product safety (GPSR)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:337
+#: src/Admin/ProductMetaBox.php:348
 #: templates/single-product/gpsr-info.php:29
 msgid "Product identifier"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:338
+#: src/Admin/ProductMetaBox.php:349
 msgid "Batch number, serial number, or other product identifier."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:344
+#: src/Admin/ProductMetaBox.php:355
 #: templates/single-product/gpsr-info.php:30
 msgid "Safety warnings"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:345
+#: src/Admin/ProductMetaBox.php:356
 msgid "Safety warnings regarding the product."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:351
+#: src/Admin/ProductMetaBox.php:362
 #: src/Shortcode/ShortcodeManager.php:144
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:352
+#: src/Admin/ProductMetaBox.php:363
 msgid "Instructions for safe use of the product."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:362
+#: src/Admin/ProductMetaBox.php:373
 msgid "Product markings"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:366
+#: src/Admin/ProductMetaBox.php:377
 msgid "Medical device"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:367
+#: src/Admin/ProductMetaBox.php:378
 msgid "Prints the statutory medical device notice on the product page."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:372
+#: src/Admin/ProductMetaBox.php:383
 msgid "Adults only (18+)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:373
+#: src/Admin/ProductMetaBox.php:384
 msgid "For alcohol, tobacco and similar goods. Prints a notice that the product is sold to adults only."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:387
+#: src/Admin/ProductMetaBox.php:398
 msgid "Only where the producer offers a commercial guarantee of durability. Leave empty when there is none; the statutory guarantee is announced separately in the module settings."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:396
+#: src/Admin/ProductMetaBox.php:407
 msgid "For goods with digital elements: how long free updates are supplied."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:405
+#: src/Admin/ProductMetaBox.php:416
 msgid "Repairability score where one is established, otherwise spare part availability and repair contact."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:419
+#: src/Admin/ProductMetaBox.php:430
 msgid "Power supply and energy data shown on the product page, e.g. 230 V, 2200 W, energy class A."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:433
+#: src/Admin/ProductMetaBox.php:444
 msgid "Environmental claims (Anti-greenwashing)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:438
+#: src/Admin/ProductMetaBox.php:449
 msgid "Scientific or legal basis for the environmental claim (required by the anti-greenwashing directive)."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:444
+#: src/Admin/ProductMetaBox.php:455
 msgid "Certificate link"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:445
+#: src/Admin/ProductMetaBox.php:456
 msgid "URL to the official certificate supporting the environmental claim."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:452
+#: src/Admin/ProductMetaBox.php:463
 msgid "Certificate expiry date (YYYY-MM-DD)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:453
+#: src/Admin/ProductMetaBox.php:464
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:464
+#: src/Admin/ProductMetaBox.php:475
 msgid "VAT margin scheme"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:465
+#: src/Admin/ProductMetaBox.php:476
 msgid "Taxed on the margin under art. 120 ustawy o VAT. The invoice will name the scheme and show no VAT for these goods."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:478
+#: src/Admin/ProductMetaBox.php:489
 msgid "Packaging"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:479
+#: src/Admin/ProductMetaBox.php:490
 msgid "Packaging covered by the deposit return scheme. The deposit is added on top of the price at checkout and is refunded when the packaging is returned."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:486
+#: src/Admin/ProductMetaBox.php:497
 msgid "Units of packaging"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:487
+#: src/Admin/ProductMetaBox.php:498
 msgid "How many covered containers one item contains. A six-pack is 6. Leave at 1 for a single bottle or can."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:498
+#: src/Admin/ProductMetaBox.php:509
 msgid "Food and supplements"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:503
+#: src/Admin/ProductMetaBox.php:514
 msgid "Ingredient list in descending order by weight, with allergens emphasised, as Regulation (EU) 1169/2011 Annex VII requires. Allergens themselves are the separate Allergens taxonomy."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:510
+#: src/Admin/ProductMetaBox.php:521
 msgid "Voluntary front-of-pack grade. Leave unset unless you have calculated it."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:513
+#: src/Admin/ProductMetaBox.php:524
 msgid "Not set"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:524
+#: src/Admin/ProductMetaBox.php:535
 msgid "Nutrition reference"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:525
+#: src/Admin/ProductMetaBox.php:536
 msgid "What the values below are per. Empty uses the store default, normally 100 g."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:551
+#: src/Admin/ProductMetaBox.php:562
 msgid "Net quantity as it appears on the pack, for example 500 g or 0.75 l."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:557
+#: src/Admin/ProductMetaBox.php:568
 msgid "Alcohol by volume"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:558
+#: src/Admin/ProductMetaBox.php:569
 msgid "Required above 1.2% vol. Enter the number only, for example 12.5."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:565
+#: src/Admin/ProductMetaBox.php:576
 msgid "Country of origin or place of provenance, where it is required or where its absence could mislead."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:571
+#: src/Admin/ProductMetaBox.php:582
 msgid "Food business operator"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:572
+#: src/Admin/ProductMetaBox.php:583
 msgid "Name and address of the operator under whose name the food is marketed."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:830
+#: src/Admin/ProductMetaBox.php:842
 msgid "- Same as product -"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:933
+msgid "WooCommerce global unique ID"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:936
+msgid "Polski fallback GTIN / EAN"
+msgstr ""
+
+#. translators: %s: one or more product identifier field names.
+#: src/Admin/ProductMetaBox.php:944
+#, php-format
+msgid "The check digit for this product identifier may be invalid: %s. Please verify it."
 msgstr ""
 
 #. translators: 1: currency symbol, 2: yearly price
@@ -7684,7 +7685,7 @@ msgid "Stock quantity"
 msgstr ""
 
 #: src/AIFeed/ProductMarkdownBuilder.php:189
-#: src/Service/BadgeService.php:153
+#: src/Service/BadgeService.php:208
 msgid "Out of stock"
 msgstr ""
 
@@ -9435,16 +9436,16 @@ msgstr ""
 msgid "IBAN"
 msgstr ""
 
-#: src/Service/BadgeService.php:123
+#: src/Service/BadgeService.php:178
 #: src/Service/DSAService.php:213
 msgid "New"
 msgstr ""
 
-#: src/Service/BadgeService.php:127
+#: src/Service/BadgeService.php:182
 msgid "Last items"
 msgstr ""
 
-#: src/Service/BadgeService.php:147
+#: src/Service/BadgeService.php:202
 msgid "Free shipping"
 msgstr ""
 
@@ -9638,7 +9639,7 @@ msgid "Returns the structured product fact list (label/value pairs) that the AI 
 msgstr ""
 
 #. translators: %d: number of products in the compare list
-#: src/Service/CompareService.php:298
+#: src/Service/CompareService.php:347
 #: src/Shortcode/ShortcodeManager.php:316
 #, php-format
 msgid "Compare (%d)"
@@ -9646,27 +9647,27 @@ msgid_plural "Compare (%d)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Service/CompareService.php:435
+#: src/Service/CompareService.php:484
 msgid "Add to compare"
 msgstr ""
 
-#: src/Service/CompareService.php:440
+#: src/Service/CompareService.php:489
 msgid "Remove from compare"
 msgstr ""
 
-#: src/Service/CompareService.php:445
+#: src/Service/CompareService.php:494
 msgid "Clear comparison"
 msgstr ""
 
-#: src/Service/CompareService.php:470
+#: src/Service/CompareService.php:519
 msgid "Feature"
 msgstr ""
 
-#: src/Service/CompareService.php:475
+#: src/Service/CompareService.php:524
 msgid "Show only differences"
 msgstr ""
 
-#: src/Service/CompareService.php:480
+#: src/Service/CompareService.php:529
 msgid "You can compare up to {limit} products at once. The oldest entry was automatically replaced."
 msgstr ""
 
@@ -10207,7 +10208,7 @@ msgstr ""
 msgid "Search FAQ categories"
 msgstr ""
 
-#: src/Service/FeaturedVideoService.php:120
+#: src/Service/FeaturedVideoService.php:141
 msgid "Watch product in use"
 msgstr ""
 
@@ -10667,37 +10668,37 @@ msgstr ""
 msgid "Price history (%d days)"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:57
-#: src/Service/ProductAuthorService.php:65
+#: src/Service/ProductAuthorService.php:60
+#: src/Service/ProductAuthorService.php:68
 msgid "Authors"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:58
-#: src/Service/ProductAuthorService.php:109
+#: src/Service/ProductAuthorService.php:61
+#: src/Service/ProductAuthorService.php:112
 msgid "Author"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:59
+#: src/Service/ProductAuthorService.php:62
 msgid "Search authors"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:60
+#: src/Service/ProductAuthorService.php:63
 msgid "All authors"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:61
+#: src/Service/ProductAuthorService.php:64
 msgid "Edit author"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:62
+#: src/Service/ProductAuthorService.php:65
 msgid "Update author"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:63
+#: src/Service/ProductAuthorService.php:66
 msgid "Add new author"
 msgstr ""
 
-#: src/Service/ProductAuthorService.php:64
+#: src/Service/ProductAuthorService.php:67
 msgid "New author name"
 msgstr ""
 
@@ -10781,20 +10782,20 @@ msgstr ""
 msgid "Answer this question"
 msgstr ""
 
-#: src/Service/QuickViewService.php:76
-#: src/Service/QuickViewService.php:108
+#: src/Service/QuickViewService.php:88
+#: src/Service/QuickViewService.php:158
 msgid "Loading product..."
 msgstr ""
 
-#: src/Service/QuickViewService.php:77
+#: src/Service/QuickViewService.php:89
 msgid "Failed to load product preview."
 msgstr ""
 
-#: src/Service/QuickViewService.php:122
+#: src/Service/QuickViewService.php:172
 msgid "Quick View is disabled."
 msgstr ""
 
-#: src/Service/QuickViewService.php:160
+#: src/Service/QuickViewService.php:210
 msgid "Product Quick View"
 msgstr ""
 
@@ -11641,39 +11642,39 @@ msgstr ""
 msgid "The site does not use HTTPS. GDPR requires appropriate technical measures - SSL is the minimum."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:85
+#: src/Service/SocialLoginService.php:87
 msgid "Continue with Google"
 msgstr ""
 
-#: src/Service/SocialLoginService.php:95
+#: src/Service/SocialLoginService.php:97
 msgid "Continue with Facebook"
 msgstr ""
 
-#: src/Service/SocialLoginService.php:107
+#: src/Service/SocialLoginService.php:109
 msgid "Or sign in with"
 msgstr ""
 
-#: src/Service/SocialLoginService.php:203
+#: src/Service/SocialLoginService.php:220
 msgid "Social login verification failed. Please try again."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:212
+#: src/Service/SocialLoginService.php:229
 msgid "Could not authenticate with the social provider. Please try again."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:221
+#: src/Service/SocialLoginService.php:238
 msgid "Could not retrieve your profile. Please ensure email access is granted."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:230
+#: src/Service/SocialLoginService.php:247
 msgid "Could not create your account. Please try again."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:499
+#: src/Service/SocialLoginService.php:516
 msgid "Your social account does not have a confirmed email address, so it cannot be used to sign in here."
 msgstr ""
 
-#: src/Service/SocialLoginService.php:514
+#: src/Service/SocialLoginService.php:531
 msgid "This email belongs to a site account. Please sign in with your username and password."
 msgstr ""
 
@@ -12047,15 +12048,15 @@ msgstr ""
 msgid "If you no longer wish to receive these messages, simply ignore this email."
 msgstr ""
 
-#: src/Service/WishlistService.php:279
+#: src/Service/WishlistService.php:328
 msgid "Add to Wishlist"
 msgstr ""
 
-#: src/Service/WishlistService.php:284
+#: src/Service/WishlistService.php:333
 msgid "Remove from Wishlist"
 msgstr ""
 
-#: src/Service/WishlistService.php:289
+#: src/Service/WishlistService.php:338
 msgid "Please login to use the wishlist."
 msgstr ""
 

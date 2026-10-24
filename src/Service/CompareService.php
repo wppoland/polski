@@ -9,6 +9,7 @@ use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
 use Polski\Repository\CompareRepository;
+use Polski\Util\BlockLoop;
 use Polski\Util\ProductVisibility;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
@@ -50,6 +51,7 @@ final class CompareService implements Bootable, HasHooks
         add_action('woocommerce_product_query', [$this, 'limitCompareArchiveToItems']);
         add_action('woocommerce_single_product_summary', [$this, 'renderSingleButton'], 34);
         add_action('woocommerce_after_shop_loop_item', [$this, 'renderLoopButton'], 20);
+        add_filter('render_block_woocommerce/product-button', [$this, 'appendToProductButtonBlock'], 20, 3);
         add_action('wp_ajax_polski_compare_toggle', [$this, 'handleToggle']);
         add_action('wp_ajax_nopriv_polski_compare_toggle', [$this, 'handleToggle']);
         add_action('wp_ajax_polski_compare_clear', [$this, 'handleClear']);
@@ -82,6 +84,20 @@ final class CompareService implements Bootable, HasHooks
     public function enqueueAssets(): void
     {
         if (! $this->isEnabled() || ! $this->shouldEnqueueAssets()) {
+            return;
+        }
+
+        $this->ensureAssets();
+    }
+
+    /**
+     * Enqueue once, wherever the request is. Also called while a block grid
+     * renders: a block theme renders its template before wp_head, so the
+     * style still lands in the head.
+     */
+    private function ensureAssets(): void
+    {
+        if (wp_script_is('polski-compare', 'enqueued')) {
             return;
         }
 
@@ -132,15 +148,48 @@ final class CompareService implements Bootable, HasHooks
     {
         global $product;
 
-        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_loop'] ?? true)) {
-            return;
+        if ($product instanceof \WC_Product) {
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the template.
+            echo $this->loopButtonHtml($product);
+        }
+    }
+
+    /**
+     * The loop button after a Product Collection card's add-to-cart button,
+     * where WooCommerce does not fire the classic loop hook.
+     *
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function appendToProductButtonBlock(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || BlockLoop::classicHooksCover($block)) {
+            return $content;
         }
 
-        if (! $this->canUseCompare()) {
-            return;
+        $product = BlockLoop::product($instance);
+        $button = $product instanceof \WC_Product ? $this->loopButtonHtml($product) : '';
+
+        if ($button === '') {
+            return $content;
         }
 
-        $this->templateLoader->include('loop/compare-button', [
+        $this->ensureAssets();
+
+        return $content . $button;
+    }
+
+    /**
+     * One button per product per request, from whichever path comes first.
+     */
+    private function loopButtonHtml(\WC_Product $product): string
+    {
+        if (! ($this->getSettings()['show_on_loop'] ?? true) || ! $this->canUseCompare()
+            || ! BlockLoop::claim('compare', $product->get_id())) {
+            return '';
+        }
+
+        return $this->templateLoader->render('loop/compare-button', [
             'service' => $this,
             'product' => $product,
         ]);
@@ -597,6 +646,10 @@ final class CompareService implements Bootable, HasHooks
         }
 
         if ($this->currentPostHasShortcode(['polski_compare', 'polski_compare_count'])) {
+            return true;
+        }
+
+        if (is_singular() && has_block('woocommerce/product-collection')) {
             return true;
         }
 

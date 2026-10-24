@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
+use Polski\Util\BlockLoop;
 
 /**
  * Product Authors custom taxonomy.
@@ -44,6 +45,8 @@ final class ProductAuthorService implements HasHooks
 
         // Display on loop.
         add_action('woocommerce_after_shop_loop_item_title', [$this, 'displayOnLoop'], 3);
+        // Product Collection cards outside the shop archive fire no loop hook.
+        add_filter('render_block_woocommerce/product-price', [$this, 'prependToPriceBlock'], 10, 3);
 
         // Schema.org markup, on the WooCommerce Product node rather than a
         // second standalone Product.
@@ -132,6 +135,29 @@ final class ProductAuthorService implements HasHooks
             '<div class="polski-product-author-loop" style="font-size:12px;color:#94a3b8;margin-bottom:4px">%s</div>',
             esc_html(implode(', ', array_map(static fn ($a) => $a->name, $authors))),
         );
+    }
+
+    /**
+     * The loop author line above a Product Collection card's price, where
+     * WooCommerce does not fire the classic loop hook. Not on a product page's
+     * own price: the summary hook prints the author there.
+     *
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function prependToPriceBlock(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || $content === '' || BlockLoop::classicHooksCover($block)) {
+            return $content;
+        }
+
+        $product = BlockLoop::product($instance);
+
+        if (! $product instanceof \WC_Product || (is_product() && $product->get_id() === get_queried_object_id())) {
+            return $content;
+        }
+
+        return BlockLoop::render($product, [$this, 'displayOnLoop']) . $content;
     }
 
     /**

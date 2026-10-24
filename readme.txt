@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.41.8
+Stable tag: 1.42.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -359,6 +359,14 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 
 == Changelog ==
 
+= 1.42.0 =
+* Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.
+* Fixed: With "Omnibus: Cart" on, a block-theme shop page and the product page price showed the Omnibus notice twice. Cart cross-sells now follow the "product lists" Omnibus setting like every other grid; cart items keep the "Cart" setting.
+* Fixed: Block themes: product badges and a featured video set to "before summary" landed above the breadcrumbs on the product page. Both now sit with the image gallery. Badges also show on Product Collection cards outside the shop archive, and replace the Product Sale Badge block where Polski shows its own sale badge.
+* Fixed: Wishlist, Compare and Quick View buttons were missing from Product Collection grids outside the shop archive, and their scripts did not load there. Each card gets one button per feature.
+* Fixed: Social login buttons now show above the Checkout block, which fires none of the classic checkout hooks.
+* Fixed: Product authors now show on Product Collection cards outside the shop archive.
+
 = 1.41.8 =
 * Fixed: The iworks Omnibus import read the raw WooCommerce sale field, so a sale that was only scheduled counted as a price the product sold at, and its sale rows were never closed. It now takes the selling price, imports only what lies before Polski's own history for a product, and on upgrade removes the rows 1.41.7 imported wrongly. On some products these made the lowest price equal the running sale price.
 
@@ -473,15 +481,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 = 1.37.9 =
 * Fixed: turning the "Right of withdrawal (14 days)" module off left most of it running. The withdrawal call to action kept appearing in customer order emails, the "Polski withdrawal" box kept rendering on the order edit screen, the plugin's own withdrawal order statuses stayed registered, and the per-product withdrawal exemption field stayed on the product editor. Eighteen services belonging to the module now refuse to register their hooks while it is off. This matters to any shop using the WooCommerce 11.1 native Order Withdrawal feature, which until now ran alongside ours. Reported by strid3rr on the support forum.
 * Note: the privacy exporter and eraser for withdrawal data deliberately keep running with the module off, so a GDPR request still reaches data the shop already collected.
-
-= 1.37.8 =
-* Fixed: the order CSV export held every matching order in memory before writing a row, the stock CSV export held every product, and the daily double opt-in cleanup asked for every unverified account in one query. A store with a real backlog could exhaust the memory limit halfway through. Both exports now read their IDs in one query and hydrate 200 rows at a time, and the cleanup walks 200 accounts per query; the order export batch size is filterable via `polski/order_export/batch_size`, the cleanup batch via `polski/doi/cleanup_batch_size`.
-* Fixed: an export could repeat or lose a row. The list of IDs is fixed before the first row is written, so an order or product placed, saved or trashed while the export runs can no longer push a row into the file twice or out of it. A row whose order or product is gone by the time its batch is read is simply missing, and no other row moves. The values are read with the batch, not held from the snapshot, so an edit that lands before a row is read is in the file. An order keeps its row through a status change. A product does not: the stock export asks for published products, so one moved to draft after the snapshot has no row, the same as one that was trashed.
-* Fixed: both CSV exports sent their download headers before doing any work, so a fatal, an exhausted memory limit or a hit time limit reached the browser as HTTP 200 with a short file attached, which looks like a complete export. Each file is now built to a temporary file first, so a failure produces a visible error page again.
-* Fixed: the double opt-in cleanup advanced its position only past accounts it kept. If WordPress refused to delete an account, the loop re-read and re-attempted the same batch instead of finishing. Accounts it does not remove are now excluded from the next query, so every pass makes progress.
-* Changed: the expert review editor picks a product with WooCommerce's own search field instead of a dropdown that held every published product.
-* Changed: the stock export preview reports how many rows it is showing instead of the size of the whole catalogue, which is what made it load the catalogue.
-* Note: 1.37.4 through 1.37.7 were never released, so this is the first release after 1.37.3. 1.37.4 claimed a secondary sort made paging safe; it does not, paging over a table the store is still writing to repeats and skips rows whatever the sort is. 1.37.5 replaced the paging with hydration by ID, but asked the product query for `post__in`, which it does not accept: it overwrites that argument with its own empty `include` default and drops it, leaving the limit to hand back the newest products instead. On a catalogue of 450 products that export wrote 200 rows and lost 250. Products are now hydrated by `include`, two unit tests walk the export over a catalogue larger than one batch, and both of them run in the release preflight, next to a check that fails when a function in the source both queries products and mentions `post__in`. That check reads the source as PHP tokens, so it sees a call to `wc_get_products()` and a `new WC_Product_Query`, each written plain or with a leading backslash; it does not see a query reached through a variable function name, a callable string or a wrapper of our own, and it does not see arguments assembled in a different function than the call.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

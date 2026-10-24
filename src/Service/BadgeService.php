@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\Bootable;
 use Polski\Contract\HasHooks;
+use Polski\Util\BlockLoop;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
 
@@ -39,6 +40,59 @@ final class BadgeService implements Bootable, HasHooks
         add_action('woocommerce_before_single_product_summary', [$this, 'renderSingleBadges'], 6);
         add_action('woocommerce_before_shop_loop_item_title', [$this, 'renderLoopBadges'], 9);
         add_filter('woocommerce_sale_flash', [$this, 'filterSaleFlash']);
+
+        // Block themes: the summary hook fires before the first template block
+        // (above the breadcrumbs), and Product Collection cards outside the
+        // shop archive fire no loop hook. Both go on the image block instead.
+        add_filter('render_block_woocommerce/product-image-gallery', [$this, 'prependSingleBadgesToGallery'], 10, 3);
+        add_filter('render_block_woocommerce/product-image', [$this, 'prependLoopBadgesToImage'], 10, 3);
+        add_filter('render_block_woocommerce/product-sale-badge', [$this, 'filterSaleBadgeBlock']);
+    }
+
+    /**
+     * The Product Sale Badge block never passes through `woocommerce_sale_flash`,
+     * so on a block theme it stood next to our own Sale badge.
+     */
+    public function filterSaleBadgeBlock(mixed $html): mixed
+    {
+        return is_string($html) && $html !== '' && $this->filterSaleFlash($html) === '' ? '' : $html;
+    }
+
+    /**
+     * @param string|mixed $content
+     */
+    public function prependSingleBadgesToGallery(mixed $content, mixed $block = null, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || ! wp_is_block_theme() || ! is_product()) {
+            return $content;
+        }
+
+        $product = BlockLoop::product($instance) ?? wc_get_product(get_queried_object_id());
+
+        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_single'] ?? true)) {
+            return $content;
+        }
+
+        return BlockLoop::prependInside($content, BlockLoop::render($product, fn () => $this->render($product, 'single')));
+    }
+
+    /**
+     * @param string|mixed               $content
+     * @param array<string, mixed>|mixed $block
+     */
+    public function prependLoopBadgesToImage(mixed $content, mixed $block, mixed $instance = null): mixed
+    {
+        if (! is_string($content) || $content === '' || BlockLoop::classicHooksCover($block)) {
+            return $content;
+        }
+
+        $product = BlockLoop::product($instance);
+
+        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_loop'] ?? true)) {
+            return $content;
+        }
+
+        return BlockLoop::prependInside($content, BlockLoop::render($product, fn () => $this->render($product, 'loop')));
     }
 
     /**
@@ -77,7 +131,8 @@ final class BadgeService implements Bootable, HasHooks
     {
         global $product;
 
-        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_single'] ?? true)) {
+        // A block theme gets these inside the gallery block instead.
+        if (! $product instanceof \WC_Product || ! ($this->getSettings()['show_on_single'] ?? true) || wp_is_block_theme()) {
             return;
         }
 
@@ -98,7 +153,7 @@ final class BadgeService implements Bootable, HasHooks
     /**
      * @return list<array{text: string, style: string}>
      */
-    public function getBadges(\WC_Product $product): array
+    public function getBadges(\WC_Product $product, string $context = ''): array
     {
         $settings = $this->getSettings();
         $badges = [];
@@ -161,14 +216,14 @@ final class BadgeService implements Bootable, HasHooks
         }
 
         $badges = array_values($unique);
-        $limit = $this->getBadgeLimit();
+        $limit = $this->getBadgeLimit($context);
 
         return array_slice($badges, 0, $limit);
     }
 
     private function render(\WC_Product $product, string $context): void
     {
-        $badges = $this->getBadges($product);
+        $badges = $this->getBadges($product, $context);
 
         if ($badges === []) {
             return;
@@ -183,9 +238,9 @@ final class BadgeService implements Bootable, HasHooks
         ]);
     }
 
-    private function getBadgeLimit(): int
+    private function getBadgeLimit(string $context = ''): int
     {
-        if (is_product()) {
+        if ($context === 'single' || ($context === '' && is_product())) {
             return max(1, (int) ($this->getSettings()['max_badges_single'] ?? 4));
         }
 
