@@ -379,6 +379,14 @@ When the Safe Fonts module is enabled and Google Fonts are not held back until c
 
 When the Featured Video module is enabled and you enter a video address (for example YouTube or Vimeo), WordPress fetches the embed code from that provider through its oEmbed feature, and the visitor's browser loads the player from the provider. Data sent: the video address from your server; the visitor's IP address and browser data from the player. The provider's own terms and privacy policy apply.
 
+= AI features (WordPress AI Client) =
+
+The optional AI features do not call a provider themselves: they hand a prompt to the WordPress AI Client, and the AI provider plugin you install and configure (for example OpenAI, Anthropic or Google) sends it to that provider. Nothing is sent when no provider is configured.
+
+* Withdrawal reason classification (off by default, Withdrawal settings): after a declaration is filed, the customer's free-text reason is sent to classify it into a fixed category.
+* GPSR safety text draft and product summary (AI Bridge module, off by default): when an admin clicks generate, the product name, short description and description are sent.
+* The terms and privacy policy of the provider you configured apply.
+
 = Webhooks you configure =
 
 The Store health monitor and the CRA incident log (security.txt module settings) can post to a webhook address you enter. Nothing is sent unless you fill in that address.
@@ -407,13 +415,13 @@ Polski for WooCommerce is fully translatable and ships the `polski.pot` template
 == Changelog ==
 
 = 1.43.0 =
-* Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before. Pending, failed, cancelled and refunded orders no longer offer it.
+* Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before; an order that never reaches the countdown status keeps it open. Pending, failed, cancelled and refunded orders no longer offer it.
 * Fixed: The withdrawal statement (My Account form, one-click confirmation and guest form) now shows the customer's name and the e-mail address the confirmation goes to (art. 11a(2)).
 * Fixed: The order button text is no longer written into the settings at activation. The checkout prints the statutory wording in the shop language at runtime, so a shop installed before its language pack arrived no longer shows the English "Order with an obligation to pay". Shops that already have a stored text keep it.
 * Changed: The Privacy Policy checkbox is described as optional (order data rests on GDPR art. 6(1)(b)) and no longer counts towards the checkbox setup score; the Terms and Withdrawal checkboxes are "recommended" rather than "required". Checkbox behaviour and defaults are unchanged.
 * Changed: Omnibus settings warn when the lowest-price period is below 30 days, and the "Today" and "Show current price" options are labelled as not compliant with art. 6a(2) Directive 98/6/EC. Defaults are unchanged.
 * Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
-* Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
+* Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the optional AI features, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
 
 = 1.42.0 =
 * Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.
