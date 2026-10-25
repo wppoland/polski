@@ -115,40 +115,11 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Polski PRO ==
 
-Polski for WooCommerce gives you free tools for Polish-market rules; it does not on its own make a shop compliant. **Polski PRO** is the full store suite:
-
-* **Invoices and KSeF** - VAT invoices, corrections and receipts with PDF, plus e-invoicing to KSeF
-* **Shipping integrations** - InPost, DPD, DHL and Poczta Polska: labels, tracking and pickup points
-* **Order fulfilment** - Packed, Shipped and Delivered statuses, a tracking field and customer emails
-* **Subscriptions** - recurring payments with renewals and one-click cancellation
-* **Gift cards** - sell cards, generate codes and redeem balances in the cart
-* **Affiliate program** - referral links, commission tracking and an affiliate dashboard
-* **Multi-step checkout** - split checkout into address, delivery, payment and summary
-* **Pre-orders, bundles and add-ons** - sell before availability and bundle products
-* **Catalog mode and RFQ** - hide prices and collect quote requests
-
-= What stays free, and what PRO adds =
-
-The free edition is not a trial. Every module listed above works in full, with
-nothing time-limited, no feature switched off after a while and no account to
-create. PRO is a separate plugin that adds the parts a shop needs once it is
-actually trading:
-
-    Free                              PRO
-    -----------------------------------------------------------------
-    GPSR product data                 VAT invoices, corrections, PDF
-    Omnibus price history             KSeF e-invoicing and JPK export
-    GDPR consents and consent log     InPost, DPD, DHL, Poczta Polska
-    Right of withdrawal, RMA          labels, tracking, pickup points
-    VAT ID (NIP) validation           Fulfilment statuses and emails
-    Unit prices, food data            Subscriptions and renewals
-    Wishlist, compare, AJAX search    Gift cards and affiliate program
-    77 modules, all switchable        Multi-step checkout, pre-orders,
-                                      bundles, catalog mode and RFQ
-
-Everything in the free edition stays free and open, and keeps working whether
-or not you ever buy PRO. Polski PRO starts at 99 EUR per year, priced and
-charged in EUR.
+Polski for WooCommerce gives you free tools for Polish-market rules; it does not
+on its own make a shop compliant. Polski PRO is a separate plugin with invoices,
+KSeF, shipping integrations, fulfilment, subscriptions, gift cards, affiliates,
+multi-step checkout, pre-orders, bundles, catalog mode and RFQ. The free edition
+is not a trial and its modules remain available without a time limit.
 
 * **Polski PRO** - [plogins.com/polski-pro/](https://plogins.com/polski-pro/)
 * **Compare editions and pricing** - [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
