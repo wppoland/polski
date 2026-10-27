@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.1 =
+* Fixed: Omnibus: a product that was already on sale when price history began showed no lowest-price notice (or repeated the sale price). The notice now shows the regular price recorded on the row that opens the sale, which is the price it was reduced from. A product with no history at all still follows the "no history" setting.
+* Docs: The readme Description tab is back under the WordPress.org 2,500-word limit; Getting Started and Configuration moved to Installation, Translations to the FAQ.
+
 = 1.43.0 =
 * Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before; an order that never reaches the countdown status keeps it open. Pending, failed, cancelled and refunded orders no longer offer it.
 * Fixed: The withdrawal statement (My Account form, one-click confirmation and guest form) now shows the customer's name and the e-mail address the confirmation goes to (art. 11a(2)).

@@ -111,7 +111,7 @@ class OmnibusPriceRepository
                 ),
             );
 
-            return $row === null ? null : OmnibusPrice::fromRow($row);
+            return $row === null ? $this->priceReducedFrom($productId, $beforeGmt) : OmnibusPrice::fromRow($row);
         }
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
@@ -132,6 +132,42 @@ class OmnibusPriceRepository
         if ($row === null) {
             return null;
         }
+
+        return OmnibusPrice::fromRow($row);
+    }
+
+    /**
+     * The regular price the sale was taken off, read from the row that starts it.
+     *
+     * A product already on sale when history began has nothing recorded before
+     * the reduction. The row that opens the sale still carries the regular price
+     * in force at that moment, which is the price it was reduced from. Without
+     * this the notice either disappears or repeats the sale price.
+     */
+    private function priceReducedFrom(int $productId, string $saleStartGmt): ?OmnibusPrice
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM %i
+                 WHERE product_id = %d AND recorded_at >= %s AND currency = %s
+                 ORDER BY recorded_at ASC, id ASC
+                 LIMIT 1',
+                $this->tableName(),
+                $productId,
+                $saleStartGmt,
+                $this->currentCurrency(),
+            ),
+        );
+
+        if ($row === null) {
+            return null;
+        }
+
+        $row->sale_price = null;
+        $row->price_type = PriceType::Regular->value;
 
         return OmnibusPrice::fromRow($row);
     }
