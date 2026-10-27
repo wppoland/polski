@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.1
+Stable tag: 1.43.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -375,8 +375,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 6. The DSA illegal-content report form.
 7. AJAX search and product filters in the shop.
 8. Wishlist, comparison and quick view on the product list.
+9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.2 =
+* Readme only: new screenshot of the KSeF status column on the orders list.
 
 = 1.43.1 =
 * Fixed: Omnibus: a product that was already on sale when price history began showed no lowest-price notice (or repeated the sale price). The notice now shows the regular price recorded on the row that opens the sale, which is the price it was reduced from. A product with no history at all still follows the "no history" setting.

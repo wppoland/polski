@@ -20,6 +20,13 @@ require_once ABSPATH . 'wp-admin/includes/user.php';
 update_option('WPLANG', 'pl_PL');
 switch_to_locale('pl_PL');
 
+// The price history below is recorded in PLN; a USD shop shows "$99.00" next
+// to a zloty Omnibus line, which the plugin itself never renders.
+update_option('woocommerce_currency', 'PLN');
+update_option('woocommerce_currency_pos', 'right_space');
+update_option('woocommerce_price_decimal_sep', ',');
+update_option('woocommerce_price_thousand_sep', ' ');
+
 /**
  * Ensure a page exists and return its ID.
  */
@@ -238,10 +245,70 @@ function polski_wporg_ensure_completed_order(int $customerId, int $productId): i
     return $order->get_id();
 }
 
+/**
+ * Ensure an order for the KSeF column screenshot exists.
+ *
+ * The column reads _polski_ksef_required and _polski_ksef_status. Checkout
+ * hooks set the flag in a real shop; a seeded order never passes checkout,
+ * so the meta is written here. 'accepted' is what PRO mirrors once KSeF
+ * numbers the invoice. NIPs are checksum-valid test values, not real firms.
+ *
+ * @param array{key:string,company:string,first:string,last:string,nip:string,ksef:string,status:string,days:int} $row
+ */
+function polski_wporg_ensure_ksef_order(array $row, int $productId, int $qty): int
+{
+    $marker = 'ksef-' . $row['key'];
+    $orders = wc_get_orders([
+        'limit' => 1,
+        'meta_key' => '_polski_wporg_fixture',
+        'meta_value' => $marker,
+        'status' => 'any',
+    ]);
+
+    $order = ! empty($orders) && $orders[0] instanceof WC_Order ? $orders[0] : wc_create_order();
+
+    if (count($order->get_items()) === 0) {
+        $product = wc_get_product($productId);
+        if ($product instanceof WC_Product) {
+            $order->add_product($product, $qty);
+        }
+    }
+
+    $order->set_currency('PLN');
+    $order->set_billing_company($row['company']);
+    $order->set_billing_first_name($row['first']);
+    $order->set_billing_last_name($row['last']);
+    $order->set_billing_email($row['key'] . '@example.com');
+    $order->set_billing_address_1('ul. Przykładowa 10');
+    $order->set_billing_postcode('00-950');
+    $order->set_billing_city('Warszawa');
+    $order->set_billing_country('PL');
+    $order->set_payment_method('bacs');
+    $order->set_payment_method_title('Przelew bankowy');
+    $order->set_date_created(time() - $row['days'] * DAY_IN_SECONDS);
+
+    if ($row['nip'] !== '') {
+        $order->update_meta_data('_billing_nip', $row['nip']);
+        $order->update_meta_data('_polski_ksef_required', 'yes');
+        $order->update_meta_data('_polski_ksef_status', $row['ksef']);
+    } else {
+        $order->update_meta_data('_polski_ksef_required', 'no');
+    }
+
+    $order->update_meta_data('_polski_wporg_fixture', $marker);
+    $order->set_status($row['status']);
+    $order->calculate_totals();
+    $order->save();
+
+    return $order->get_id();
+}
+
 $adminId = polski_wporg_ensure_user('admin', 'admin@example.com', 'password', 'administrator', 'Admin Polski');
 $customerId = polski_wporg_ensure_user('wporg-customer', 'customer@example.com', 'password', 'customer', 'Jan Kowalski');
 
 wp_set_current_user($adminId);
+// Orders list for screenshot 9: WooCommerce defaults plus Origin hidden.
+update_user_meta($adminId, 'managewoocommerce_page_wc-orderscolumnshidden', ['billing_address', 'shipping_address', 'wc_actions', 'origin']);
 
 polski_wporg_ensure_wc_page('shop', 'sklep', 'Sklep', '');
 polski_wporg_ensure_wc_page('cart', 'koszyk', 'Koszyk', '[woocommerce_cart]');
@@ -280,6 +347,7 @@ $enabledModules = [
     'quick_view' => true,
     'badges' => true,
     'brands' => true,
+    'ksef_ready' => true,
 ];
 
 update_option('polski_modules', array_merge(ModulesPage::getDefaultModuleStates(), $savedModules, $enabledModules));
@@ -429,6 +497,17 @@ update_post_meta($saleProductId, '_polski_unit_price_unit', 'szt');
 
 polski_wporg_seed_omnibus_history($saleProductId);
 $orderId = polski_wporg_ensure_completed_order($customerId, $saleProductId);
+
+$ksefRows = [
+    ['key' => 'kwadrat', 'company' => 'Kwadrat Meble Sp. z o.o.', 'first' => '', 'last' => '', 'nip' => '1234561001', 'ksef' => 'accepted', 'status' => 'completed', 'days' => 3],
+    ['key' => 'lampa', 'company' => 'Zielona Lampa s.c.', 'first' => '', 'last' => '', 'nip' => '9876541004', 'ksef' => 'pending', 'status' => 'processing', 'days' => 2],
+    ['key' => 'nowak', 'company' => '', 'first' => 'Anna', 'last' => 'Nowak', 'nip' => '', 'ksef' => '', 'status' => 'processing', 'days' => 1],
+    ['key' => 'liczba', 'company' => 'Biuro Rachunkowe Liczba Sp. j.', 'first' => '', 'last' => '', 'nip' => '5551231005', 'ksef' => 'pending', 'status' => 'on-hold', 'days' => 0],
+];
+
+foreach ($ksefRows as $i => $ksefRow) {
+    polski_wporg_ensure_ksef_order($ksefRow, $i % 2 === 0 ? $saleProductId : $secondaryProductId, $i + 1);
+}
 
 wp_cache_flush();
 
