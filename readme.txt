@@ -108,11 +108,24 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Polski PRO ==
 
-Polski for WooCommerce gives you free tools for Polish-market rules; it does not
-on its own make a shop compliant. Polski PRO is a separate plugin with invoices,
-KSeF, shipping integrations, fulfilment, subscriptions, gift cards, affiliates,
-multi-step checkout, pre-orders, bundles, catalog mode and RFQ. The free edition
-is not a trial and its modules remain available without a time limit.
+Polski for WooCommerce gives you free tools for Polish-market rules; it does not on its own make a shop compliant. Polski PRO is a separate plugin that extends Polski with advanced commercial modules.
+
+| Module | Polski (Free) | Polski PRO |
+|:--- |:---:|:---:|
+| Legal pages, terms and privacy policy | Yes | Yes |
+| Omnibus 30-day lowest price display | Yes | Yes |
+| GPSR manufacturer & safety data | Yes | Yes |
+| Polish B2B checkout fields (NIP, REGON) | Yes | Yes |
+| Unit pricing (kg, l, m) | Yes | Yes |
+| Invoices & Corrective Invoices (PDF) | - | Yes |
+| KSeF 2.0 integration & auto-send | - | Yes |
+| Courier integrations (InPost, DPD, DHL, Pocztex) | - | Yes |
+| Multi-step streamlined checkout | - | Yes |
+| Subscriptions & recurring payments | - | Yes |
+| Gift cards & store credit vouchers | - | Yes |
+| B2B wholesale pricing & roles | - | Yes |
+
+The free edition is not a trial and its modules remain available without a time limit.
 
 * **Polski PRO** - [plogins.com/polski-pro/](https://plogins.com/polski-pro/)
 * **Compare editions and pricing** - [plogins.com/polski-pro/pricing/](https://plogins.com/polski-pro/pricing/)
