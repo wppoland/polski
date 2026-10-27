@@ -69,4 +69,20 @@ if (($readmeTop[1] ?? '') !== ($fullTop[1] ?? '')) {
     exit(1);
 }
 
-printf("OK: Changelog %d words (budget %d), changelog.txt current at %s.\n", $words, $budget, $fullTop[1]);
+// The Description tab is truncated at 2,500 words, and every section wp.org
+// does not know (External Services, Polski PRO...) is appended to it.
+$tabs = ['Installation', 'Frequently Asked Questions', 'Screenshots', 'Changelog', 'Upgrade Notice'];
+$parts = preg_split('/^== (.+?) ==\s*$/m', $text, -1, PREG_SPLIT_DELIM_CAPTURE) ?: [];
+$descWords = 0;
+for ($i = 1; $i < count($parts); $i += 2) {
+    if (! in_array(trim($parts[$i]), $tabs, true)) {
+        $descWords += count(preg_split('/\s+/', trim($parts[$i + 1] ?? ''), -1, PREG_SPLIT_NO_EMPTY) ?: []);
+    }
+}
+// ponytail: same headroom idea as the changelog, 2,350 of 2,500.
+if ($descWords > 2350) {
+    fwrite(STDERR, sprintf("FAIL: readme.txt Description tab is %d words; budget is 2350 (wp.org truncates at 2500).\n", $descWords));
+    exit(1);
+}
+
+printf("OK: Changelog %d words (budget %d), changelog.txt current at %s. Description tab %d words.\n", $words, $budget, $fullTop[1], $descWords);

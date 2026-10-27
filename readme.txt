@@ -29,23 +29,18 @@ Polski helps you configure the technical shop processes related to the Polish an
 
 = Why Polski for WooCommerce? =
 
-* **One plugin, many modules** - GPSR, Omnibus, GDPR, right of withdrawal, product data and storefront modules in one place.
-* **Built for Polish shops** - features designed for WooCommerce stores selling in Poland or to Polish customers.
-* **Free and open source** - the core product, checkout and storefront tools are available at no cost.
-* **Modern code** - PHP 8.1+, a React admin panel, REST API and WP-CLI support.
-* **WooCommerce blocks support** - compatible with both the classic and block-based cart and checkout.
-* **HPOS compatible** - supports WooCommerce High-Performance Order Storage.
+One free, open-source plugin with many modules, built for shops selling in Poland. PHP 8.1+, a React admin panel, REST API and WP-CLI, classic and block cart and checkout, HPOS compatible.
 
 = Key modules =
 
-* **GPSR product fields** - manufacturer, importer and EU responsible person, each with a postal address and the electronic contact art. 19 asks for, plus product identifiers, safety warnings and instructions, split into a responsibility group and a safety group, including CSV import and export.
+* **GPSR product fields** - manufacturer, importer and EU responsible person with the addresses and contact art. 19 asks for, product identifiers, safety warnings and instructions, with CSV import and export.
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
 * **Product markings** - per-product flags that print the statutory notice on the product page: medical device, and goods sold to adults only such as alcohol or tobacco.
 * **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
 * **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
 * **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
-* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order. With the NIP module on, checkout and My Account accept a VAT number from any EU country, entered with its country code.
+* **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
 * **DSA reports** - a point of contact, an illegal-content report form and an admin panel.
@@ -53,12 +48,11 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
-* **AI transparency (AI Act art. 50)** - a clear "classified by AI" marker on return reasons processed by the optional AI classifier, filterable in the admin withdrawals list. The storefront disclosure of AI-generated product copy is a Polski PRO feature, since it labels copy from the Pro AI description generator.
+* **AI transparency (AI Act art. 50)** - a clear "classified by AI" marker on return reasons processed by the optional AI classifier, filterable in the admin withdrawals list.
 
 = Checkout, consents and returns =
 
 * **Consent checkboxes** (beta on the block checkout) - consents at order, registration and reviews, with the option to enable only selected fields. On the block checkout the labels show without links and the conditional boxes are not shown.
-* **Omnibus price history** - automatic recording and display of the lowest price from 30 days.
 * **Right of withdrawal** - withdrawal/return forms and requests from the customer account.
 * **Double e-mail confirmation** (beta) - e-mail address confirmation during customer registration. An account created at checkout stays logged in for that session.
 * **Shop pages** - link the terms, privacy policy and withdrawal content into WooCommerce notices.
@@ -68,7 +62,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 = Product data and labelling =
 
 * **Unit prices** - price per kg, litre, metre, piece or a custom unit.
-* **GTIN and barcode validation** - automatic GS1 check-digit validation (GTIN-8, GTIN-12, GTIN-13, GTIN-14) in the product editor and during CSV import, alerting merchants to invalid barcodes without blocking saves.
+* **GTIN validation** - GS1 check-digit validation (GTIN-8/12/13/14) in the product editor and CSV import, warning without blocking saves.
 * **Delivery time** - estimated delivery time on product pages and product lists.
 * **Tax information** - the VAT rate notice and the small business exemption (Art. 113).
 * **Price display** - configuration of how prices are presented in the shop.
@@ -86,7 +80,7 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Infinite scroll** - automatic loading of more products.
 * **Product tab manager** - configure the tabs on the product page.
 * **AJAX filters** - filter products without reloading the page.
-* **AJAX search** - live product search in a search box placed with a shortcode or block, matching the title, the SKU, category names and the values of the global attributes you choose to index.
+* **AJAX search** - live product search by title, SKU, category and chosen attributes, placed with a shortcode or block.
 * **Product badges** - sale, new, featured and custom labels.
 * **Promotional popups** - popup campaigns in the shop.
 
@@ -99,7 +93,6 @@ Polski helps you configure the technical shop processes related to the Polish an
 * **Shortcodes** - embed GPSR information, withdrawal forms, DSA reports and other elements.
 * **Database migrations** - versioned and safe updates of data structures.
 * **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
-* **Audit scope** - DPA, DSA, KSeF readiness, environmental-claim control, verified reviews and security incidents.
 
 = You may also like these plugins =
 
@@ -141,7 +134,7 @@ is not a trial and its modules remain available without a time limit.
 3. Choose the ZIP file and click **Install Now**.
 4. Click **Activate Plugin**.
 
-== Getting Started ==
+= Getting started =
 
 1. **Check the legal pages**: go to **Polski > Modules** and make sure the legal pages module is active. In its settings choose your terms, privacy policy and withdrawal page.
 2. **Configure the checkboxes**: open the legal checkboxes module and enable the consents your shop requires.
@@ -150,7 +143,7 @@ is not a trial and its modules remain available without a time limit.
 5. **Enable Omnibus**: the module records price history and can display the lowest price from 30 days.
 6. **Fill in GPSR**: for physical products add the manufacturer, importer and responsible person data and safety information.
 
-== Configuration ==
+= Configuration =
 
 Polski works in a modular way. You can enable only the features you need:
 
@@ -161,6 +154,10 @@ Polski works in a modular way. You can enable only the features you need:
 Active modules with settings appear in the **Polski** menu or have a settings link on the modules page.
 
 == Frequently Asked Questions ==
+
+= Is Polski translated? =
+
+Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 = Is Polski for WooCommerce free? =
 
@@ -379,14 +376,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 7. AJAX search and product filters in the shop.
 8. Wishlist, comparison and quick view on the product list.
 
-== Translations ==
-
-Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
-
 == Changelog ==
 
 = 1.43.1 =
 * Fixed: Omnibus: a product that was already on sale when price history began showed no lowest-price notice (or repeated the sale price). The notice now shows the regular price recorded on the row that opens the sale, which is the price it was reduced from. A product with no history at all still follows the "no history" setting.
+* Docs: The readme Description tab is back under the WordPress.org 2,500-word limit; Getting Started and Configuration moved to Installation, Translations to the FAQ.
 
 = 1.43.0 =
 * Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before; an order that never reaches the countdown status keeps it open. Pending, failed, cancelled and refunded orders no longer offer it.
