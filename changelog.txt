@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.4 =
+* The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
+* Readme: the PRO section lists what the free plugin includes and what the paid edition adds as two lists, which WordPress.org can display (it does not display tables).
+
 = 1.43.3 =
 * Changed: the Polski PRO card on the settings screen no longer lists VAT invoices as a PRO feature, because the free plugin issues them; it now offers the invoice as a PDF file. The readme FAQ says the free plugin issues invoices.
 
