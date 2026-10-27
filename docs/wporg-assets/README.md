@@ -45,6 +45,10 @@ The release already includes the following screenshot set:
    - Shop archive cards
    - Show wishlist, compare, and quick view buttons
 
+9. `screenshot-9-ksef-orders-column.png`
+   - WooCommerce > Orders (HPOS list)
+   - Show the KSeF column: dash, amber dot, green dot
+
 ## Screenshot rules
 
 - Use PNG, not JPG
@@ -53,7 +57,11 @@ The release already includes the following screenshot set:
 - Keep the background clean and avoid browser chrome if possible
 - Do not show any non-public UI
 
-## Suggested SVN asset structure
+## SVN asset structure
+
+WordPress.org matches caption N to `assets/screenshot-N.png`, so each file is
+copied without its descriptive suffix (`screenshot-9-ksef-orders-column.png`
+becomes `assets/screenshot-9.png`).
 
 ```text
 assets/
@@ -61,14 +69,15 @@ assets/
   banner-1544x500.png
   icon-128x128.png
   icon-256x256.png
-  screenshot-1-modules-dashboard.png
-  screenshot-2-gpsr-product-editor.png
-  screenshot-3-checkout-checkboxes.png
-  screenshot-4-omnibus-lowest-price.png
-  screenshot-5-withdrawal-request.png
-  screenshot-6-dsa-report-form.png
-  screenshot-7-storefront-search-filters.png
-  screenshot-8-wishlist-compare-quick-view.png
+  screenshot-1.png
+  screenshot-2.png
+  screenshot-3.png
+  screenshot-4.png
+  screenshot-5.png
+  screenshot-6.png
+  screenshot-7.png
+  screenshot-8.png
+  screenshot-9.png
 ```
 
 ## Final publish check

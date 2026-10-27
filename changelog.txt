@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.3 =
+* Changed: the Polski PRO card on the settings screen no longer lists VAT invoices as a PRO feature, because the free plugin issues them; it now offers the invoice as a PDF file. The readme FAQ says the free plugin issues invoices.
+
+= 1.43.2 =
+* Readme only: new screenshot of the KSeF status column on the orders list.
+
 = 1.43.1 =
 * Fixed: Omnibus: a product that was already on sale when price history began showed no lowest-price notice (or repeated the sale price). The notice now shows the regular price recorded on the row that opens the sale, which is the price it was reduced from. A product with no history at all still follows the "no history" setting.
 * Docs: The readme Description tab is back under the WordPress.org 2,500-word limit; Getting Started and Configuration moved to Installation, Translations to the FAQ.
