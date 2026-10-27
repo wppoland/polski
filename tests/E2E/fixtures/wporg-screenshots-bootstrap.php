@@ -20,6 +20,13 @@ require_once ABSPATH . 'wp-admin/includes/user.php';
 update_option('WPLANG', 'pl_PL');
 switch_to_locale('pl_PL');
 
+// The price history below is recorded in PLN; a USD shop shows "$99.00" next
+// to a zloty Omnibus line, which the plugin itself never renders.
+update_option('woocommerce_currency', 'PLN');
+update_option('woocommerce_currency_pos', 'right_space');
+update_option('woocommerce_price_decimal_sep', ',');
+update_option('woocommerce_price_thousand_sep', ' ');
+
 /**
  * Ensure a page exists and return its ID.
  */
