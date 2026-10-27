@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.3 =
+* Changed: the Polski PRO card on the settings screen no longer lists VAT invoices as a PRO feature, because the free plugin issues them; it now offers the invoice as a PDF file. The readme FAQ says the free plugin issues invoices.
+
 = 1.43.2 =
 * Readme only: new screenshot of the KSeF status column on the orders list.
 

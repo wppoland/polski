@@ -25,8 +25,8 @@ return [
             'pl' => ['title' => 'Profile GPSR', 'desc' => 'Zapisz producenta, osobę odpowiedzialną i importera raz, a potem wybieraj ich z listy na produkcie. Produkt trzyma samo id profilu, więc poprawa adresu w jednym miejscu poprawia go na wszystkich produktach, które na niego wskazują. Dane wpisane na produkcie zawsze mają pierwszeństwo.'],
         ],
         [
-            'en' => ['title' => 'Invoices', 'desc' => 'VAT invoice, correction, receipt and release note with PDF generation.'],
-            'pl' => ['title' => 'Faktury', 'desc' => 'Faktura VAT, korygująca, paragon i dokument WZ z generowaniem PDF.'],
+            'en' => ['title' => 'PDF invoices', 'desc' => 'Each invoice as a PDF file to download. The free plugin already issues numbered VAT invoices that you print from the browser.'],
+            'pl' => ['title' => 'Faktury PDF', 'desc' => 'Każda faktura jako plik PDF do pobrania. Darmowa wtyczka już wystawia numerowane faktury VAT, które drukujesz z przeglądarki.'],
         ],
         [
             'en' => ['title' => 'Invoice XML export', 'desc' => 'Download any invoice as UBL/PEPPOL XML from the invoice screen.'],

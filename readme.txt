@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.2
+Stable tag: 1.43.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -201,7 +201,7 @@ Polski is not a complete system for sending invoices to KSeF, but it adds mechan
 
 = Does Polski issue invoices in WooCommerce? =
 
-Polski provides data, flags and hooks useful for invoicing and KSeF, but it does not replace a full invoicing plugin or accounting system. For automatic invoicing, use a dedicated invoicing integration.
+Yes. The Invoices module adds an Issue invoice button to the order screen and numbers VAT invoices per year (FV/1/2026). The customer opens the invoice from My Account and prints it from the browser. It does not send invoices to KSeF and does not replace an accounting system. Invoices as PDF files, UBL/PEPPOL XML and the JPK_FA report come with Polski PRO.
 
 = Does Polski work with the WooCommerce block checkout? =
 
@@ -378,6 +378,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.3 =
+* Changed: the Polski PRO card on the settings screen no longer lists VAT invoices as a PRO feature, because the free plugin issues them; it now offers the invoice as a PDF file. The readme FAQ says the free plugin issues invoices.
 
 = 1.43.2 =
 * Readme only: new screenshot of the KSeF status column on the orders list.
