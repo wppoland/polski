@@ -12,6 +12,8 @@ defined('ABSPATH') || exit;
 return [
     'name'       => 'Polski PRO',
     'url'        => 'https://plogins.com/polski-pro/pricing/',
+    'campaign'   => 'polski',
+    'locales'    => ['pl', 'de', 'es'],
     'sellable'   => true,
     'price_from' => 99,
     'currency'   => 'EUR',

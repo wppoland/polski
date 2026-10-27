@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.3
+Stable tag: 1.43.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -108,22 +108,21 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Polski PRO ==
 
-Polski for WooCommerce gives you free tools for Polish-market rules; it does not on its own make a shop compliant. Polski PRO is a separate plugin that extends Polski with advanced commercial modules.
+Polski PRO is a separate paid plugin.
 
-| Module | Polski (Free) | Polski PRO |
-|:--- |:---:|:---:|
-| Legal pages, terms and privacy policy | Yes | Yes |
-| Omnibus 30-day lowest price display | Yes | Yes |
-| GPSR manufacturer & safety data | Yes | Yes |
-| Polish B2B checkout fields (NIP, REGON) | Yes | Yes |
-| Unit pricing (kg, l, m) | Yes | Yes |
-| Invoices & Corrective Invoices (PDF) | - | Yes |
-| KSeF 2.0 integration & auto-send | - | Yes |
-| Courier integrations (InPost, DPD, DHL, Pocztex) | - | Yes |
-| Multi-step streamlined checkout | - | Yes |
-| Subscriptions & recurring payments | - | Yes |
-| Gift cards & store credit vouchers | - | Yes |
-| B2B wholesale pricing & roles | - | Yes |
+Included in Polski for WooCommerce:
+
+* Numbered VAT invoices
+* GPSR, Omnibus, consents, withdrawals and unit prices
+* NIP detection, VIES check, KSeF hooks
+
+Polski PRO adds:
+
+* PDF invoices, UBL/PEPPOL XML, JPK_FA report
+* KSeF 2.0 sending (FA(3), online mode)
+* Shipping integrations (InPost, DPD, DHL, Poczta Polska)
+* Multi-step checkout, subscriptions and gift cards
+* Fulfilment, affiliates, pre-orders, bundles, catalog mode and RFQ
 
 The free edition is not a trial and its modules remain available without a time limit.
 
@@ -391,6 +390,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.4 =
+* The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
+* Readme: the PRO section lists what the free plugin includes and what the paid edition adds as two lists, which WordPress.org can display (it does not display tables).
 
 = 1.43.3 =
 * Changed: the Polski PRO card on the settings screen no longer lists VAT invoices as a PRO feature, because the free plugin issues them; it now offers the invoice as a PDF file. The readme FAQ says the free plugin issues invoices.
