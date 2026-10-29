@@ -11,7 +11,7 @@ use Polski\Contract\HasHooks;
 use Polski\Repository\WaitlistRepository;
 use Polski\Util\SettingsCacheable;
 use Polski\Util\TemplateLoader;
-use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
+use Polski\Vendor\StorefrontKit\Waitlist\WaitlistEngine;
 
 /**
  * Waitlist signups and back-in-stock notifications.
