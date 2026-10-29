@@ -7,6 +7,7 @@ Complete release history for Polski for WooCommerce. The plugin page on WordPres
 * Security (low): the recent-purchase popups no longer name or link private, draft or password-protected products.
 * Security (low): guest product questions are limited to five per hour per visitor, so a script can no longer flood the moderation queue and the shop mailbox.
 * Security (low): the double opt-in activation link refuses an empty token, and the public withdrawal-exemption ability answers only for products the visitor can see.
+* Security (low): the VAT ID (NIP) lookup at checkout is limited to ten per hour per visitor, so the shop can no longer be used as an unlimited proxy to GUS on its own API key. The DSA notice limit now also holds on sites without a persistent object cache, where it never applied.
 
 = 1.43.4 =
 * The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
