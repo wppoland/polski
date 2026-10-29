@@ -48,7 +48,7 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
-* **AI transparency (AI Act art. 50)** - a clear "classified by AI" marker on return reasons processed by the optional AI classifier, filterable in the admin withdrawals list.
+* **AI-classified return reasons** - return reasons sorted by the optional AI classifier carry a "classified by AI" marker and can be filtered in the admin withdrawals list.
 
 = Checkout, consents and returns =
 
