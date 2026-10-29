@@ -335,7 +335,7 @@ final class WithdrawalsAdminPage implements HasHooks
             if ($request === null) {
                 continue;
             }
-            fputcsv($handle, [
+            fputcsv($handle, \Polski\Util\Csv::row([
                 (string) $request->id,
                 (string) $request->orderId,
                 (string) ($request->customerId ?? ''),
@@ -352,7 +352,7 @@ final class WithdrawalsAdminPage implements HasHooks
                 $request->languageCode,
                 (string) ($request->aiCategory ?? ''),
                 $request->aiConfidence !== null ? number_format($request->aiConfidence, 3, '.', '') : '',
-            ]);
+            ]));
         }
 
         fclose($handle); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- streaming CSV to php://output, WP_Filesystem does not apply

@@ -176,6 +176,19 @@ final class SocialProofService implements HasHooks
                     continue;
                 }
 
+                // The toast goes to every visitor and is cached for all of them,
+                // so a private, draft or password-protected product (or a
+                // variation of one) must never be named or linked here.
+                $parent = $product->get_parent_id() > 0 ? wc_get_product($product->get_parent_id()) : $product;
+                if (
+                    ! $parent instanceof \WC_Product
+                    || $product->get_status() !== 'publish'
+                    || $parent->get_status() !== 'publish'
+                    || $parent->get_post_password() !== ''
+                ) {
+                    continue;
+                }
+
                 // Deduplicate by product.
                 $productId = $product->get_id();
 

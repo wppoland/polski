@@ -148,7 +148,9 @@ final class DoubleOptInService implements Bootable, HasHooks
 
         $storedToken = get_user_meta($userId, '_polski_doi_token', true);
 
-        if (! hash_equals((string) $storedToken, $token)) {
+        // No stored token means nothing is pending: hash_equals('', '') would
+        // otherwise "activate" any user id sent with an empty token.
+        if (! is_string($storedToken) || $storedToken === '' || ! hash_equals($storedToken, $token)) {
             wc_add_notice((string) ($this->settings['invalid_link_text'] ?? __('Invalid activation link.', 'polski')), 'error');
             wp_safe_redirect(wc_get_page_permalink('myaccount'));
             exit;
