@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-10-24T12:34:19+00:00\n"
+"POT-Creation-Date: 2026-10-29T13:01:29+00:00\n"
 "PO-Revision-Date: 2026-06-27 12:04:17+0000\n"
 "Language: be_BY\n"
 "MIME-Version: 1.0\n"
@@ -567,7 +567,7 @@ msgstr ""
 "дасланую намі спасылку."
 
 #: config/defaults.php:196 src/Admin/ModulesPage.php:677
-#: src/Service/DoubleOptInService.php:152
+#: src/Service/DoubleOptInService.php:154
 msgid "Invalid activation link."
 msgstr "Няправільная спасылка актывацыі."
 
@@ -762,7 +762,7 @@ msgid "Date"
 msgstr "Дата"
 
 #: config/defaults.php:259 src/Service/ComplaintTemplateService.php:151
-#: src/Service/ProductQAService.php:242
+#: src/Service/ProductQAService.php:250
 msgid "Customer"
 msgstr "Кліент"
 
@@ -8058,45 +8058,45 @@ msgid ""
 msgstr ""
 
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:85
+#: src/Admin/ProUpsell.php:110
 #, php-format
 msgid "from %1$s%2$d/yr"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:117
+#: src/Admin/ProUpsell.php:142
 msgid "Permission denied."
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:147
+#: src/Admin/ProUpsell.php:172
 #, php-format
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:152 src/Admin/ProUpsell.php:191
+#: src/Admin/ProUpsell.php:177 src/Admin/ProUpsell.php:216
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:154
+#: src/Admin/ProUpsell.php:179
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:176
+#: src/Admin/ProUpsell.php:201
 msgid "Unlock every PRO feature"
 msgstr ""
 
 #. translators: %d: number of additional PRO features not listed above
-#: src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:213
 #, php-format
 msgid "+%d more in PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:194
+#: src/Admin/ProUpsell.php:219
 msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:213
+#: src/Admin/ProUpsell.php:238
 #, php-format
 msgid "What %s adds"
 msgstr ""
@@ -11537,7 +11537,7 @@ msgstr ""
 "Ваш уліковы запіс чакае актывацыі! Праверце сваю электронную пошту і "
 "націсніце на спасылку актывацыі."
 
-#: src/Service/DoubleOptInService.php:167
+#: src/Service/DoubleOptInService.php:169
 msgid "Great! Your account is now activated. You can now log in."
 msgstr "Выдатна! Ваш уліковы запіс цяпер актываваны. Цяпер вы можаце ўвайсці."
 
@@ -12108,10 +12108,16 @@ msgid "That VAT ID (NIP) is not valid. Enter 10 digits."
 msgstr ""
 
 #: src/Service/NipLookupService.php:509
+msgid ""
+"Too many VAT ID (NIP) lookups. Fill the details in by hand or try again in "
+"an hour."
+msgstr ""
+
+#: src/Service/NipLookupService.php:515
 msgid "Invalid VAT ID (NIP)."
 msgstr "Несапраўдны NIP."
 
-#: src/Service/NipLookupService.php:516
+#: src/Service/NipLookupService.php:522
 msgid ""
 "No data found for that VAT ID (NIP). Check the number or fill the details in "
 "by hand."
@@ -12374,22 +12380,22 @@ msgid "Ask"
 msgstr "Спытаць"
 
 #. translators: %s: product name
-#: src/Service/ProductQAService.php:393
+#: src/Service/ProductQAService.php:426
 #, php-format
 msgid "New question about: %s"
 msgstr "Новае пытанне пра: %s"
 
 #. translators: %s: name of the person who asked the question
-#: src/Service/ProductQAService.php:401
+#: src/Service/ProductQAService.php:434
 #, php-format
 msgid "Asked by: %s"
 msgstr "Запытана: %s"
 
-#: src/Service/ProductQAService.php:409
+#: src/Service/ProductQAService.php:442
 msgid "Approve this question"
 msgstr ""
 
-#: src/Service/ProductQAService.php:409
+#: src/Service/ProductQAService.php:442
 msgid "Answer this question"
 msgstr "Адказаць на гэтае пытанне"
 
@@ -13491,12 +13497,12 @@ msgstr ""
 msgid "%1$s from %2$s just bought"
 msgstr ""
 
-#: src/Service/SocialProofService.php:220
+#: src/Service/SocialProofService.php:233
 msgid "just now"
 msgstr "толькі што"
 
 #. translators: %d: number of minutes since purchase
-#: src/Service/SocialProofService.php:228
+#: src/Service/SocialProofService.php:241
 #, php-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
@@ -13505,7 +13511,7 @@ msgstr[1] "%d хвіліны таму"
 msgstr[2] "%d хвілін таму"
 
 #. translators: %d: number of hours since purchase
-#: src/Service/SocialProofService.php:237
+#: src/Service/SocialProofService.php:250
 #, php-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
