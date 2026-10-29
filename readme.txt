@@ -546,6 +546,9 @@ a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
 
+= 1.43.6 =
+Security release. Default installations are not exposed; it matters only when the free plugin is uninstalled with data removal on while Polski PRO stays installed. Update, nothing else to do.
+
 = 1.43.5 =
 Security release. Default installations are exposed only when a shop manager opens a CSV export in a spreadsheet; the other fixes apply to optional modules. Update, nothing else to do.
 
