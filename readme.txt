@@ -538,10 +538,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Added: two site audit checks. Gravatar (avatars send a hash of the commenter email to a US service, and it is on by default even when comments are closed), and a published accessibility statement, which the European Accessibility Act has required of online shops since 28 June 2025.
 * Fixed: an empty legal page scored 23% instead of zero, because it trivially passed every "must not contain" check. Nothing to check now counts as not checked.
 
-= 1.37.11 =
-* Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
-* Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
