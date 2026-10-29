@@ -2,6 +2,13 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.7 =
+* Fix: the site could fatal ("Unknown named parameter $sendNotification") when Plogins Waitlist or another Plogins plugin with a different copy of the shared library was active. Polski now bundles its own copy under its own namespace instead of the shared Composer package.
+
+= 1.43.6 =
+* Security (low): uninstalling the free plugin with data removal enabled no longer deletes the settings of Polski PRO.
+* Fix: on the block checkout, the "I need a VAT invoice" answer now reaches the order field the invoice and KSeF modules read, as it already did on the classic checkout.
+
 = 1.43.5 =
 * Security (medium): order, stock, withdrawal, consent and security-incident CSV exports now neutralise cells that a spreadsheet would run as a formula. Text a shopper typed (a name, address, order note, withdrawal reason or browser user agent) could otherwise execute in Excel or LibreOffice when a shop manager opened the export.
 * Security (low): the recent-purchase popups no longer name or link private, draft or password-protected products.

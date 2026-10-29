@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-// Prefer Composer's autoloader (covers Polski\, the wppoland/storefront-kit
-// package, and runtime deps like league/html-to-markdown). The hand-written
-// PSR-4 fallback below keeps Polski\ resolvable even if vendor/ is absent.
+// Prefer Composer's autoloader (covers Polski\, the storefront-kit copy bundled
+// in lib/ under Polski\Vendor\StorefrontKit, and runtime deps like
+// league/html-to-markdown). The hand-written PSR-4 fallback below keeps both
+// resolvable even if vendor/ is absent.
 $composerAutoload = __DIR__ . '/vendor/autoload.php';
 if (is_readable($composerAutoload)) {
     require_once $composerAutoload;
@@ -14,6 +15,7 @@ if (is_readable($composerAutoload)) {
 
 spl_autoload_register(static function (string $class): void {
     $prefixes = [
+        'Polski\\Vendor\\StorefrontKit\\' => __DIR__ . '/lib/storefront-kit/',
         'Polski\\' => __DIR__ . '/src/',
     ];
 

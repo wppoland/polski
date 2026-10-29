@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.6
+Stable tag: 1.43.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.7 =
+* Fix: the site could fatal ("Unknown named parameter $sendNotification") when Plogins Waitlist or another Plogins plugin with a different copy of the shared library was active. Polski now bundles its own copy under its own namespace instead of the shared Composer package.
 
 = 1.43.6 =
 * Security (low): uninstalling the free plugin with data removal enabled no longer deletes the settings of Polski PRO.
