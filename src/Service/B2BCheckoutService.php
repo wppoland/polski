@@ -337,7 +337,7 @@ final class B2BCheckoutService
      *
      * @param string $key      Field key, e.g. polski/nip.
      * @param mixed  $value    Sanitized value.
-     * @param string $group    Group, e.g. billing|shipping|other.
+     * @param string $group    Group: billing|shipping for address fields, other for order fields.
      * @param mixed  $document Either WC_Customer or WC_Order depending on context.
      */
     public function mirrorAdditionalFieldToLegacyMeta(string $key, mixed $value, string $group, mixed $document): void
@@ -346,7 +346,10 @@ final class B2BCheckoutService
             return;
         }
 
-        if ($group !== 'billing') {
+        // Order-location fields (needs_invoice) arrive as group 'other', address
+        // fields once per address group. Only the billing copy is mirrored.
+        $expectedGroup = $key === 'polski/needs_invoice' ? 'other' : 'billing';
+        if ($group !== $expectedGroup) {
             return;
         }
 

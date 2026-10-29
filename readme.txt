@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.5
+Stable tag: 1.43.6
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.6 =
+* Security (low): uninstalling the free plugin with data removal enabled no longer deletes the settings of Polski PRO.
+* Fix: on the block checkout, the "I need a VAT invoice" answer now reaches the order field the invoice and KSeF modules read, as it already did on the classic checkout.
 
 = 1.43.5 =
 * Security (medium): order, stock, withdrawal, consent and security-incident CSV exports now neutralise cells that a spreadsheet would run as a formula. Text a shopper typed (a name, address, order note, withdrawal reason or browser user agent) could otherwise execute in Excel or LibreOffice when a shop manager opened the export.
