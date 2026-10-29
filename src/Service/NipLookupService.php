@@ -503,6 +503,12 @@ final class NipLookupService implements HasHooks
     {
         check_ajax_referer('polski_nip_lookup', '_nonce');
 
+        // Every guest shares the checkout nonce, so without a budget the shop
+        // is an open proxy to GUS on the merchant's own API key.
+        if (! current_user_can('manage_woocommerce') && $this->lookupLimitReached()) {
+            wp_send_json_error(['message' => __('Too many VAT ID (NIP) lookups. Fill the details in by hand or try again in an hour.', 'polski')], 429);
+        }
+
         $nip = sanitize_text_field(wp_unslash($_POST['nip'] ?? ''));
 
         if (! self::isValidNip($nip)) {
@@ -517,6 +523,31 @@ final class NipLookupService implements HasHooks
         }
 
         wp_send_json_success($result);
+    }
+
+    /**
+     * Per-IP budget for lookups. Default: 10 per hour, filterable like the
+     * Q&A and DSA limits.
+     */
+    private function lookupLimitReached(): bool
+    {
+        $window = (int) apply_filters('polski/nip_lookup/rate_limit_window_seconds', HOUR_IN_SECONDS);
+        $max = (int) apply_filters('polski/nip_lookup/rate_limit_max_attempts', 10);
+
+        if ($window <= 0 || $max <= 0) {
+            return false;
+        }
+
+        $key = 'polski_nip_rl_' . md5(\Polski\Util\ClientIp::resolve());
+        $count = (int) get_transient($key);
+
+        if ($count >= $max) {
+            return true;
+        }
+
+        set_transient($key, $count + 1, $window);
+
+        return false;
     }
 
     /**

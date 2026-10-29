@@ -278,7 +278,9 @@ final class DSAService implements HasHooks
         $key = 'polski_dsa_rl_' . md5($ip);
 
         $current = get_transient($key);
-        $count = is_int($current) ? $current : 0;
+        // A transient stored without a persistent object cache reads back as a
+        // string, so is_int() never matched and the limit never applied.
+        $count = is_numeric($current) ? (int) $current : 0;
 
         if ($count >= $maxAttempts) {
             return true;
