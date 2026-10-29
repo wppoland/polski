@@ -535,6 +535,11 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
 * Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
 
+Only the most recent releases are listed here. The full history is on the plugin's changelog
+page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
+and in changelog.txt inside the plugin folder. WordPress.org silently truncates
+a changelog over 5000 words, which is why this one is kept short on purpose.
+
 == Upgrade Notice ==
 
 = 1.43.5 =
