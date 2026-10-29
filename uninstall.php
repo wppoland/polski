@@ -67,38 +67,64 @@ foreach ($polski_tables as $polski_table) {
     $wpdb->query($wpdb->prepare('DROP TABLE IF EXISTS %i', $polski_table));
 }
 
+// PRO keeps some data under the plain polski_ prefix (config/pro-owned-keys.php).
+// While PRO is installed, active or not, that data is PRO's to remove through
+// its own uninstall cleanup; with no PRO on disk it is ours, since six of those
+// options are seeded by config/defaults.php. Matched on the text domain, so a
+// renamed plugin folder still counts.
+if (! function_exists('get_plugins')) {
+    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
+$polski_pro_installed = in_array('polski-pro', array_column(get_plugins(), 'TextDomain'), true);
+$polski_pro_keys      = $polski_pro_installed
+    ? require __DIR__ . '/config/pro-owned-keys.php'
+    : ['options' => [], 'meta' => []];
+
+// Appended to a meta_key / option_name filter; an empty list adds nothing.
+$polski_not_in = static function (string $column, array $keys) use ($wpdb): string {
+    if ($keys === []) {
+        return '';
+    }
+
+    $polski_placeholders = implode(', ', array_fill(0, count($keys), '%s'));
+
+    // phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- placeholders built above, one per key.
+    return $wpdb->prepare(" AND {$column} NOT IN ({$polski_placeholders})", ...$keys);
+};
+
 // Remove plugin options. polski_pro_* belongs to the PRO add-on, which keeps
 // its settings when only FREE is uninstalled.
-// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of plugin options, prepared statement.
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; bulk delete of plugin options, prepared statement plus a prepared NOT IN.
 $wpdb->query(
     $wpdb->prepare(
         'DELETE FROM %i WHERE option_name LIKE %s AND option_name NOT LIKE %s',
         $wpdb->options,
         'polski\_%',
         'polski\_pro\_%',
-    ),
+    ) . $polski_not_in('option_name', $polski_pro_keys['options']),
 );
 
 // Remove product meta.
-// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of plugin post meta, prepared statement.
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; bulk delete of plugin post meta, prepared statement plus a prepared NOT IN.
 $wpdb->query(
     $wpdb->prepare(
         'DELETE FROM %i WHERE meta_key LIKE %s',
         $wpdb->postmeta,
         '\_polski\_%',
-    ),
+    ) . $polski_not_in('meta_key', $polski_pro_keys['meta']),
 );
 
 // Remove order meta (HPOS).
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; schema probe on HPOS table, prepared statement.
 if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->prefix . 'wc_orders_meta')) !== null) {
-    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of HPOS order meta, prepared statement.
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; bulk delete of HPOS order meta, prepared statement plus a prepared NOT IN.
     $wpdb->query(
         $wpdb->prepare(
             'DELETE FROM %i WHERE meta_key LIKE %s',
             $wpdb->prefix . 'wc_orders_meta',
             '\_polski\_%',
-        ),
+        ) . $polski_not_in('meta_key', $polski_pro_keys['meta']),
     );
 }
 
