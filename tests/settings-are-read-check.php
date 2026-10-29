@@ -66,7 +66,8 @@ $sources = [];
 // and its 'success_text' immediately cleared polski_dsa|success_text, which
 // nothing reads. A kit read counts only for the groups whose own service hands
 // its settings to the kit.
-$kitDir = $root . '/vendor/wppoland/storefront-kit/src';
+// Bundled in lib/ since 1.43.7 (own namespace, see scripts/prefix-kit.py).
+$kitDir = $root . '/lib/storefront-kit';
 $kitSources = [];
 
 if (is_dir($kitDir)) {
