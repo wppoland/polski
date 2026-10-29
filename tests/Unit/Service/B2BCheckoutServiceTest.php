@@ -46,4 +46,26 @@ final class B2BCheckoutServiceTest extends TestCase
 
         self::assertSame($expected, $method->invoke($service, $iban));
     }
+    public function testOrderFieldMirrorsFromOtherGroupAndAddressFieldOnlyFromBilling(): void
+    {
+        $service = new B2BCheckoutService();
+        $order = new class () {
+            /** @var array<string, string> */
+            public array $meta = [];
+
+            public function update_meta_data(string $key, string $value): void
+            {
+                $this->meta[$key] = $value;
+            }
+        };
+
+        // Block checkout reports order-location fields as group "other".
+        $service->mirrorAdditionalFieldToLegacyMeta('polski/needs_invoice', true, 'other', $order);
+        $service->mirrorAdditionalFieldToLegacyMeta('polski/regon', '123456785', 'shipping', $order);
+        $service->mirrorAdditionalFieldToLegacyMeta('polski/iban', 'PL61109010140000071219812874', 'billing', $order);
+
+        self::assertSame('yes', $order->meta['_polski_needs_invoice'] ?? null);
+        self::assertArrayNotHasKey('_billing_regon', $order->meta);
+        self::assertSame('PL61109010140000071219812874', $order->meta['_billing_iban'] ?? null);
+    }
 }

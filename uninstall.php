@@ -67,13 +67,15 @@ foreach ($polski_tables as $polski_table) {
     $wpdb->query($wpdb->prepare('DROP TABLE IF EXISTS %i', $polski_table));
 }
 
-// Remove plugin options.
+// Remove plugin options. polski_pro_* belongs to the PRO add-on, which keeps
+// its settings when only FREE is uninstalled.
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; bulk delete of plugin options, prepared statement.
 $wpdb->query(
     $wpdb->prepare(
-        'DELETE FROM %i WHERE option_name LIKE %s',
+        'DELETE FROM %i WHERE option_name LIKE %s AND option_name NOT LIKE %s',
         $wpdb->options,
         'polski\_%',
+        'polski\_pro\_%',
     ),
 );
 
