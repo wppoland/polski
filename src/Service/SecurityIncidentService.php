@@ -278,7 +278,7 @@ final class SecurityIncidentService implements HasHooks
         ]);
 
         foreach ($this->getIncidents() as $incident) {
-            fputcsv($output, [
+            fputcsv($output, \Polski\Util\Csv::row([
                 (string) ($incident['id'] ?? ''),
                 (string) ($incident['reported_at'] ?? ''),
                 (string) ($incident['type'] ?? ''),
@@ -294,7 +294,7 @@ final class SecurityIncidentService implements HasHooks
                 ((bool) ($incident['notified_authority'] ?? false)) ? 'yes' : 'no',
                 (string) ($incident['created_at'] ?? ''),
                 (string) ($incident['updated_at'] ?? ''),
-            ]);
+            ]));
         }
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- writing CSV to php://output stream

@@ -289,7 +289,7 @@ final class StockExportService implements HasHooks
 
         foreach ($products as $product) {
             $row = $this->buildRow($product, $fields);
-            fputcsv($output, $row, ';');
+            fputcsv($output, \Polski\Util\Csv::row($row), ';');
         }
 
         $filename = 'stock_export_' . wp_date('Y-m-d') . '.csv';

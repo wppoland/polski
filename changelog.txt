@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.43.5 =
+* Security (medium): order, stock, withdrawal, consent and security-incident CSV exports now neutralise cells that a spreadsheet would run as a formula. Text a shopper typed (a name, address, order note, withdrawal reason or browser user agent) could otherwise execute in Excel or LibreOffice when a shop manager opened the export.
+* Security (low): the recent-purchase popups no longer name or link private, draft or password-protected products.
+* Security (low): guest product questions are limited to five per hour per visitor, so a script can no longer flood the moderation queue and the shop mailbox.
+* Security (low): the double opt-in activation link refuses an empty token, and the public withdrawal-exemption ability answers only for products the visitor can see.
+
 = 1.43.4 =
 * The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
 * Readme: the PRO section lists what the free plugin includes and what the paid edition adds as two lists, which WordPress.org can display (it does not display tables).

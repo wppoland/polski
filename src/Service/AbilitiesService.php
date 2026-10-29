@@ -448,7 +448,7 @@ final class AbilitiesService implements HasHooks
             ],
             'execute_callback' => function (array $input): array {
                 $product = wc_get_product((int) ($input['product_id'] ?? 0));
-                if (! $product instanceof \WC_Product) {
+                if (! $product instanceof \WC_Product || ! \Polski\Util\ProductVisibility::canView($product->get_id())) {
                     return ['exempt' => false, 'reason' => ''];
                 }
                 return [

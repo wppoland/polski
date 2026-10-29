@@ -225,6 +225,14 @@ final class ProductQAService implements HasHooks
             return;
         }
 
+        // Each guest question is a stored comment and an email to the shop.
+        // The form nonce is the same for every logged-out visitor, so without
+        // a budget one script could fill the moderation queue and the mailbox.
+        if (! is_user_logged_in() && $this->guestQuestionLimitReached()) {
+            wp_safe_redirect(get_permalink($productId) . '#tab-product_qa');
+            exit;
+        }
+
         $commentData = [
             'comment_post_ID' => $productId,
             'comment_content' => $text,
@@ -309,6 +317,31 @@ final class ProductQAService implements HasHooks
      * The ids come from POST, so they must name a product this visitor can see.
      * wp_insert_comment() checks nothing about the post it writes to.
      */
+    /**
+     * Per-IP budget for guest questions. Default: 5 per hour, filterable like
+     * the DSA report limit.
+     */
+    private function guestQuestionLimitReached(): bool
+    {
+        $window = (int) apply_filters('polski/product_qa/rate_limit_window_seconds', HOUR_IN_SECONDS);
+        $max = (int) apply_filters('polski/product_qa/rate_limit_max_attempts', 5);
+
+        if ($window <= 0 || $max <= 0) {
+            return false;
+        }
+
+        $key = 'polski_qa_rl_' . md5(\Polski\Util\ClientIp::resolve());
+        $count = (int) get_transient($key);
+
+        if ($count >= $max) {
+            return true;
+        }
+
+        set_transient($key, $count + 1, $window);
+
+        return false;
+    }
+
     private function acceptsQuestions(int $productId): bool
     {
         return get_post_type($productId) === 'product' && ProductVisibility::canView($productId);

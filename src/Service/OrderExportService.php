@@ -296,7 +296,7 @@ final class OrderExportService implements HasHooks
                 }
 
                 $row = array_map(fn ($f) => $this->getFieldValue($byId[$orderId], $f), $fields);
-                fputcsv($output, $row, ';');
+                fputcsv($output, \Polski\Util\Csv::row($row), ';');
             }
         }
     }

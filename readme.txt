@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.4
+Stable tag: 1.43.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,6 +391,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.43.5 =
+* Security (medium): order, stock, withdrawal, consent and security-incident CSV exports now neutralise cells that a spreadsheet would run as a formula. Text a shopper typed (a name, address, order note, withdrawal reason or browser user agent) could otherwise execute in Excel or LibreOffice when a shop manager opened the export.
+* Security (low): the recent-purchase popups no longer name or link private, draft or password-protected products.
+* Security (low): guest product questions are limited to five per hour per visitor, so a script can no longer flood the moderation queue and the shop mailbox.
+* Security (low): the double opt-in activation link refuses an empty token, and the public withdrawal-exemption ability answers only for products the visitor can see.
+
 = 1.43.4 =
 * The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
 * Readme: the PRO section lists what the free plugin includes and what the paid edition adds as two lists, which WordPress.org can display (it does not display tables).
@@ -528,17 +534,10 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: from WooCommerce 8.6 on, three modules stopped registering their classic checkout fields, on the belief that WooCommerce renders additional checkout fields on the shortcode checkout as well. It does not: core renders those on the block checkout, the order confirmation and My Account only. On a shop using the classic (shortcode) checkout this silently removed the B2B company toggle, REGON and IBAN fields; every custom checkout field defined in the Custom Checkout Fields module, including its validation and its save; and the digital-content consent checkbox required before performance begins (Art. 16(m)). All three register both paths again.
 * Fixed: the duplicate-field guard is now one generic filter (`AddressFormFieldDedupe`) covering NIP, REGON and IBAN on My Account > Addresses, instead of the NIP-only one added in 1.37.10.
 
-= 1.37.10 =
-* Fixed: with the "NIP - Verification and Autocomplete" module on, My Account > Addresses > Billing address showed two NIP fields: the plugin's own one above "Country / region" and a second, inert one below the email field. The second came from the WooCommerce additional-checkout-fields copy of the field, which WooCommerce also renders on that form. Both registrations are still needed (the classic checkout renders only the first, the block checkout only the second), so the duplicate is now dropped from the edit-address form only. Reported by strid3rr on the support forum.
-* Fixed: the lowest-price notice in the cart, mini-cart and order review was prefixed with the technical label "Omnibus:", e.g. "Omnibus: Lowest price in the last 30 days: 20.00". WooCommerce renders cart item data as "label: value" and the whole sentence was being passed as the value. The notice is now split, so the customer sees only "Lowest price in the last 30 days: 20.00". Reported by strid3rr on the support forum.
-* Fixed (PRO): the PRO NIP validator registered a second `billing_nip` billing field on the same filter and priority as the FREE module, overwriting it. The field lost the attribute the GUS autocomplete binds to, and it appeared even with the NIP module switched off. PRO now leaves the checkout field to the FREE module and only adds the editable NIP row on the admin order screen, gated on that module.
-
-Only the most recent releases are listed here. The full history is on the plugin's changelog
-page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
-and in changelog.txt inside the plugin folder. WordPress.org silently truncates
-a changelog over 5000 words, which is why this one is kept short on purpose.
-
 == Upgrade Notice ==
+
+= 1.43.5 =
+Security release. Default installations are exposed only when a shop manager opens a CSV export in a spreadsheet; the other fixes apply to optional modules. Update, nothing else to do.
 
 = 1.41.5 =
 Adds Borlabs-style media embed content blocking, Swiss UID validation, and improves Omnibus cache key alignment.

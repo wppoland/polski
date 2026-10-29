@@ -300,7 +300,7 @@ class WithdrawalCommand
         ]);
 
         foreach ($rows as $r) {
-            fputcsv($out, [
+            fputcsv($out, \Polski\Util\Csv::row([
                 (string) $r->id,
                 (string) $r->orderId,
                 (string) ($r->customerId ?? ''),
@@ -315,7 +315,7 @@ class WithdrawalCommand
                 (string) ($r->refundId ?? ''),
                 (string) ($r->refundAmount ?? ''),
                 $r->languageCode,
-            ]);
+            ]));
         }
 
         fclose($out); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- streaming CSV to a CLI output stream, WP_Filesystem does not apply

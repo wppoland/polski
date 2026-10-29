@@ -139,7 +139,7 @@ final class ConsentRecordsPage implements HasHooks
             $records = $this->consentLog->findCookieConsents(self::PER_PAGE, $offset);
 
             foreach ($records as $record) {
-                fputcsv($handle, [
+                fputcsv($handle, \Polski\Util\Csv::row([
                     (string) $record->id,
                     $record->createdAt->format('c'),
                     $this->categoryKey($record),
@@ -148,7 +148,7 @@ final class ConsentRecordsPage implements HasHooks
                     (string) ($record->ipAddress ?? ''),
                     (string) ($record->userAgent ?? ''),
                     (string) ($record->consentVersion ?? ''),
-                ]);
+                ]));
             }
 
             $offset += self::PER_PAGE;
