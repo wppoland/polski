@@ -74,8 +74,13 @@ function wp_clear_scheduled_hook($hook)
 {
     return 0;
 }
-function flush_rewrite_rules()
+function is_multisite()
 {
+    return false;
+}
+function delete_option($name)
+{
+    return true;
 }
 
 final class FakeWpdb
