@@ -6,12 +6,17 @@ namespace Polski\Service;
 defined('ABSPATH') || exit;
 
 use Polski\Util\Formatter;
+use Polski\Util\SettingsCacheable;
 
 /**
  * Delivery time display: per-product, per-variation, default fallback.
  */
 final class DeliveryTimeService
 {
+    use SettingsCacheable;
+
+    private const OPTION = 'polski_delivery';
+
     /**
      * Get the delivery time text for a product.
      */
@@ -40,8 +45,7 @@ final class DeliveryTimeService
         }
 
         // Default fallback.
-        $settings = get_option('polski_delivery', []);
-        $defaultTermId = is_array($settings) ? (int) ($settings['default_delivery_time'] ?? 0) : 0;
+        $defaultTermId = (int) $this->getSetting('default_delivery_time', 0);
 
         if ($defaultTermId > 0) {
             $term = get_term($defaultTermId, 'polski_delivery_time');
@@ -68,8 +72,7 @@ final class DeliveryTimeService
             return '';
         }
 
-        $settings = get_option('polski_delivery', []);
-        $format = is_array($settings) ? ($settings['display_format'] ?? 'Czas dostawy: {time}') : 'Czas dostawy: {time}';
+        $format = (string) $this->getSetting('display_format', '');
 
         $text = Formatter::interpolate($format, ['time' => $timeText]);
 

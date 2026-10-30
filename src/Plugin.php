@@ -178,6 +178,14 @@ final class Plugin
         // plugin upgrade). `register_activation_hook` does not fire on the WP
         // auto-update path, so we run pending migrations here as well; the
         // Migrator tracks executed versions and is safe to call repeatedly.
+        // No version at all: this site never ran the activation hook (a network
+        // subsite, a site created later). Seed the defaults before migrating, in
+        // the same order as Activator::activate(). Boot runs on init, so the
+        // __() calls in config/defaults.php are not too early.
+        if ($installed === false) {
+            Activator::setDefaults();
+        }
+
         $migrator = new Migrator();
         $migrator->runPending();
 

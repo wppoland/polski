@@ -136,18 +136,25 @@ final class Activator
         }
     }
 
-    private static function setDefaults(): void
+    /**
+     * The shipped defaults, keyed by option name. Calls __(), so never before init.
+     *
+     * @return array<string, mixed>
+     */
+    public static function defaults(): array
     {
         $defaultsFile = PLUGIN_DIR . '/config/defaults.php';
+        $defaults = file_exists($defaultsFile) ? require $defaultsFile : [];
 
-        if (! file_exists($defaultsFile)) {
-            return;
-        }
+        return is_array($defaults) ? $defaults : [];
+    }
 
-        /** @var array<string, mixed> $defaults */
-        $defaults = require $defaultsFile;
-
-        foreach ($defaults as $key => $value) {
+    /**
+     * Add-only: an option that already exists, saved or seeded, is never touched.
+     */
+    public static function setDefaults(): void
+    {
+        foreach (self::defaults() as $key => $value) {
             if (get_option($key) === false) {
                 update_option($key, $value);
             }
