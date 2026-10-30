@@ -7,12 +7,17 @@ defined('ABSPATH') || exit;
 
 use Polski\Contract\HasHooks;
 use Polski\Util\Formatter;
+use Polski\Util\SettingsCacheable;
 
 /**
  * Handles tax display logic: VAT notices, small business exemption.
  */
 final class TaxDisplayService implements HasHooks
 {
+    use SettingsCacheable;
+
+    private const OPTION = 'polski_taxes';
+
     public function registerHooks(): void
     {
         // A seller exempt under Art. 113 charges no VAT. Saying so on the product
@@ -63,7 +68,7 @@ final class TaxDisplayService implements HasHooks
         $rate = reset($taxRates);
         $ratePercent = (float) ($rate['rate'] ?? 0);
 
-        $template = $this->getSettings()['vat_notice_text'] ?? 'w tym {rate}% VAT';
+        $template = $this->getSettings()['vat_notice_text'] ?? '';
 
         $text = Formatter::interpolate($template, [
             'rate' => Formatter::vatRate($ratePercent),
@@ -106,14 +111,5 @@ final class TaxDisplayService implements HasHooks
             : sprintf('<span class="polski-shipping-notice" style="margin-left:0.35em">%s</span>', esc_html($text));
 
         return (string) apply_filters('polski/price/shipping_notice', $html);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function getSettings(): array
-    {
-        $settings = get_option('polski_taxes', []);
-        return is_array($settings) ? $settings : [];
     }
 }

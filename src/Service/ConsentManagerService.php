@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 use Polski\Enum\ConsentCategory;
+use Polski\Util\SettingsCacheable;
 
 use const Polski\PLUGIN_DIR;
 use const Polski\PLUGIN_FILE;
@@ -33,6 +34,8 @@ use const Polski\VERSION;
  */
 final class ConsentManagerService implements HasHooks
 {
+    use SettingsCacheable;
+
     public const OPTION = 'polski_consent_manager';
     public const COOKIE = 'polski_consent';
     public const EVENT = 'polskiConsentChange';
@@ -64,32 +67,6 @@ final class ConsentManagerService implements HasHooks
         add_action('wp_footer', [$this, 'renderBanner'], 20);
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getSettings(): array
-    {
-        $saved = get_option(self::OPTION, []);
-        $saved = is_array($saved) ? $saved : [];
-
-        return wp_parse_args(
-            $saved,
-            [
-                'category_analytics' => true,
-                'category_marketing' => true,
-                'category_preferences' => true,
-                'heading' => '',
-                'banner_text' => __('We use cookies and similar technologies to run this site, measure traffic, and personalise content. You can accept all, reject non-essential ones, or manage your choices.', 'polski'),
-                'accept_label' => __('Accept all', 'polski'),
-                'reject_label' => __('Reject all', 'polski'),
-                'manage_label' => __('Manage', 'polski'),
-                'save_label' => __('Save choices', 'polski'),
-                'position' => 'bottom',
-                'google_consent_mode' => true,
-                'block_embeds' => true,
-            ],
-        );
-    }
 
     /**
      * Enabled optional categories, in display order. `necessary` is always on.

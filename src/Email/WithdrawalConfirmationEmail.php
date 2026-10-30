@@ -20,8 +20,9 @@ class WithdrawalConfirmationEmail extends \WC_Email
     private function getWithdrawalSettings(): array
     {
         $settings = get_option('polski_withdrawal', []);
+        $defaults = \Polski\Activator::defaults()['polski_withdrawal'] ?? [];
 
-        return is_array($settings) ? $settings : [];
+        return wp_parse_args(is_array($settings) ? $settings : [], is_array($defaults) ? $defaults : []);
     }
 
     public function __construct()
@@ -114,12 +115,12 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_subject(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_subject'] ?? 'Your withdrawal request for order #{order_number} has been confirmed.');
+        return (string) ($this->getWithdrawalSettings()['email_subject'] ?? '');
     }
 
     public function get_default_heading(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_heading'] ?? 'Withdrawal confirmed');
+        return (string) ($this->getWithdrawalSettings()['email_heading'] ?? '');
     }
 
     public function get_content_html(): string
@@ -210,6 +211,6 @@ class WithdrawalConfirmationEmail extends \WC_Email
 
     public function get_default_additional_content(): string
     {
-        return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? 'Your refund will be processed within 14 days after the returned products are received.');
+        return (string) ($this->getWithdrawalSettings()['email_additional_content'] ?? '');
     }
 }

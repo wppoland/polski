@@ -31,6 +31,7 @@ $dynamic = [
     'amount_pet' => 'DepositService::amountForType() builds "amount_" . $type',
     'amount_can' => 'DepositService::amountForType() builds "amount_" . $type',
     'amount_glass' => 'DepositService::amountForType() builds "amount_" . $type',
+    'category_preferences' => 'ConsentManagerService::enabledCategories() builds "category_" . $category->value',
 ];
 
 $screen = $root . '/src/Admin/ModulesPage.php';

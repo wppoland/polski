@@ -457,9 +457,9 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_consent_manager|category_marketing', 'label' => __('Marketing', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_consent_manager|category_preferences', 'label' => __('Preferences', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_consent_manager|heading', 'label' => __('Banner heading', 'polski'), 'type' => 'text', 'default' => ''],
-                    ['key' => 'polski_consent_manager|banner_text', 'label' => __('Banner text', 'polski'), 'type' => 'textarea', 'default' => __('We use cookies and similar technologies to run this site, measure traffic, and personalise content. You can accept all, reject non-essential ones, or manage your choices.', 'polski')],
+                    ['key' => 'polski_consent_manager|banner_text', 'label' => __('Banner text', 'polski'), 'type' => 'textarea', 'default' => __('We use cookies and similar technologies to run the site, measure traffic and personalise content. You can accept all of them, reject the optional ones, or manage your choices yourself.', 'polski')],
                     ['key' => 'polski_consent_manager|accept_label', 'label' => __('Accept all label', 'polski'), 'type' => 'text', 'default' => __('Accept all', 'polski')],
-                    ['key' => 'polski_consent_manager|reject_label', 'label' => __('Reject all label', 'polski'), 'type' => 'text', 'default' => __('Reject all', 'polski')],
+                    ['key' => 'polski_consent_manager|reject_label', 'label' => __('Reject all label', 'polski'), 'type' => 'text', 'default' => __('Reject optional', 'polski')],
                     ['key' => 'polski_consent_manager|manage_label', 'label' => __('Manage label', 'polski'), 'type' => 'text', 'default' => __('Manage', 'polski')],
                     ['key' => 'polski_consent_manager|save_label', 'label' => __('Save choices label', 'polski'), 'type' => 'text', 'default' => __('Save choices', 'polski')],
                     ['key' => 'polski_consent_manager|position', 'label' => __('Banner position', 'polski'), 'type' => 'select', 'default' => 'bottom', 'options' => [

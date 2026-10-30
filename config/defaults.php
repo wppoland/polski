@@ -804,6 +804,7 @@ return [
         'save_label' => __('Save choices', 'polski'),
         'position' => 'bottom',
         'google_consent_mode' => true,
+        'block_embeds' => true,
     ],
 
     // Tracking Tags: consent-gated client-side tags for marketing and analytics
