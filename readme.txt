@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.10
+Stable tag: 1.43.11
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.43.11 =
+* Fixed: deleting the plugin now clears its scheduled events on every site, even where data removal is off. Where data removal is on, it now cleans every site of a multisite network, not only the main one, resets that site's rewrite rules and also removes the delivery time, manufacturer, unit, brand, allergen and nutrient terms it used to leave behind.
 
 = 1.43.10 =
 * Fixed: deleting the free plugin together with an add-on that shares its data, in one bulk Delete, no longer leaves that shared data behind. The uninstall now reads the installed plugins fresh instead of the list cached earlier in the same request.

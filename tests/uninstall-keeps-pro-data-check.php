@@ -62,20 +62,17 @@ function delete_metadata(...$args)
 {
     return true;
 }
-function get_terms($args)
-{
-    return [];
-}
-function wp_delete_term($id, $tax)
-{
-    return true;
-}
 function wp_clear_scheduled_hook($hook)
 {
     return 0;
 }
-function flush_rewrite_rules()
+function is_multisite()
 {
+    return false;
+}
+function delete_option($name)
+{
+    return true;
 }
 
 final class FakeWpdb
@@ -83,6 +80,10 @@ final class FakeWpdb
     public string $prefix = 'wp_';
     public string $options = 'wp_options';
     public string $postmeta = 'wp_postmeta';
+    public string $terms = 'wp_terms';
+    public string $term_taxonomy = 'wp_term_taxonomy';
+    public string $term_relationships = 'wp_term_relationships';
+    public string $termmeta = 'wp_termmeta';
     /** @var list<string> */
     public array $queries = [];
 
