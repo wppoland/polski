@@ -102,14 +102,22 @@ function run_uninstall(bool $proInstalled): array
     $wpdb = new FakeWpdb();
     include dirname(__DIR__) . '/uninstall.php';
 
-    return array_values(array_filter($wpdb->queries, static fn (string $q): bool => str_starts_with($q, 'DELETE')));
+    return $wpdb->queries;
+}
+
+/** Tables the run dropped, without prefix. */
+function dropped(array $queries): array
+{
+    preg_match_all('/DROP TABLE IF EXISTS `wp_([a-z0-9_]+)`/', implode("\n", $queries), $m);
+
+    return $m[1];
 }
 
 /** Keys the statement on $table keeps out of its NOT IN list. */
 function excluded(array $queries, string $table): array
 {
     foreach ($queries as $q) {
-        if (str_contains($q, "`{$table}`")) {
+        if (str_starts_with($q, 'DELETE') && str_contains($q, "`{$table}`")) {
             if (! preg_match('/NOT IN \(([^)]*)\)/', $q, $m)) {
                 return [];
             }
@@ -136,6 +144,10 @@ foreach (['wp_options' => 'options', 'wp_postmeta' => 'meta', 'wp_wc_orders_meta
         $fail[] = "with PRO installed, {$table} delete still removes: " . implode(', ', $missing);
     }
 }
+$kept = array_intersect($owned['tables'], dropped($with));
+if ($kept !== []) {
+    $fail[] = 'with PRO installed, FREE uninstall drops a table PRO writes to: ' . implode(', ', $kept);
+}
 foreach (['polski_gift_cards', 'polski_affiliates', 'polski_subscriptions'] as $known) {
     if (! in_array($known, $owned['options'], true)) {
         $fail[] = "{$known} is a PRO option and is not on the list";
@@ -147,6 +159,10 @@ foreach (['wp_options', 'wp_postmeta', 'wp_wc_orders_meta'] as $table) {
     if (excluded($without, $table) !== []) {
         $fail[] = "with no PRO installed, {$table} delete still spares PRO keys, leaving FREE-seeded rows behind";
     }
+}
+$left = array_diff($owned['tables'], dropped($without));
+if ($left !== []) {
+    $fail[] = 'with no PRO installed, FREE uninstall leaves the shared table behind: ' . implode(', ', $left);
 }
 
 // Cross-check against a polski-pro checkout when one is available.
@@ -166,6 +182,20 @@ if (is_file($proDir . '/freemius-init.php')) {
             $declared = array_merge($declared, $m[1]);
         }
     }
+    // Every table a PRO migration creates has to be dropped by PRO's cleanup;
+    // six were not until 1.29.10. A table shared with FREE is dropped only
+    // while FREE is gone, so its name must appear there all the same.
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($proDir . '/src')) as $file) {
+        $code = $file->getExtension() === 'php' ? (string) file_get_contents((string) $file) : '';
+        if (str_contains($code, 'CREATE TABLE') && preg_match_all("/prefix\\s*\\.\\s*'(polski_[a-z0-9_]+)'/", $code, $m)) {
+            foreach (array_unique($m[1]) as $table) {
+                if (! str_contains($cleanup, "'{$table}'")) {
+                    $fail[] = "PRO creates the table {$table} and after_uninstall never drops it";
+                }
+            }
+        }
+    }
+
     $proDefaults = (string) file_get_contents($proDir . '/config/defaults.php');
     preg_match_all("/^    '(polski_[a-z0-9_]+)' =>/m", $proDefaults, $m);
     $declared = array_merge($declared, $m[1]);
