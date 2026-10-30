@@ -78,23 +78,15 @@ namespace {
     };
     $defaults = require __DIR__ . '/../config/defaults.php';
 
-    // 1. First boot on a site with no polski_version seeds the defaults, add-only.
+    // 1. First boot stores no translated defaults: texts resolve at read time in
+    // the request's language, so a subsite must not freeze whichever language
+    // its first visitor or cron run happened to use.
     $GLOBALS['opts'] = ['polski_taxes' => ['vat_notice_text' => 'saved {rate}']];
     $plugin = (new ReflectionClass(\Polski\Plugin::class))->newInstanceWithoutConstructor();
     $call($plugin, 'syncInstalledVersion');
-    $check('first boot seeds the consent banner', ($GLOBALS['opts']['polski_consent_manager']['reject_label'] ?? null) === 'Reject optional');
-    $check('first boot seeds the delivery label', ($GLOBALS['opts']['polski_delivery']['display_format'] ?? null) === 'Delivery time: {time}');
-    $check('seeding keeps a saved option', $GLOBALS['opts']['polski_taxes'] === ['vat_notice_text' => 'saved {rate}']);
+    $check('first boot stores no consent texts', ! isset($GLOBALS['opts']['polski_consent_manager']));
+    $check('first boot keeps a saved option', $GLOBALS['opts']['polski_taxes'] === ['vat_notice_text' => 'saved {rate}']);
     $check('first boot records the version', ($GLOBALS['opts']['polski_version'] ?? null) === \Polski\VERSION);
-
-    $boot = (string) file_get_contents(__DIR__ . '/../src/Plugin.php');
-    $seedAt = strpos($boot, 'Activator::setDefaults()');
-    $check('defaults are seeded before migrations run, as on activation', $seedAt !== false && $seedAt < (int) strpos($boot, '->runPending()'));
-
-    // 2. An upgrade (version already set) does not reseed an option the merchant deleted.
-    $GLOBALS['opts'] = ['polski_version' => '1.0.0'];
-    $call($plugin, 'syncInstalledVersion');
-    $check('an upgrade does not reseed', ! isset($GLOBALS['opts']['polski_consent_manager']));
 
     // 3. Unseeded reads fall back to defaults.php, the English source strings.
     $GLOBALS['opts'] = [];
