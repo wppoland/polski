@@ -44,6 +44,14 @@ require_once __DIR__ . '/src/Deactivator.php';
 // network uninstall visits every site and asks each one. A closure rather than
 // a named function, so the file can be included more than once in a request.
 $polski_uninstall_site = static function () use ($wpdb, $polski_pro_keys): void {
+    // Scheduled events go on every site, whatever it chose about its data: with the
+    // plugin gone they would fire into nothing forever. The list lives on
+    // Deactivator so the two paths cannot disagree; uninstall.php runs without the
+    // plugin booted, so the file is required directly rather than autoloaded.
+    foreach (\Polski\Deactivator::CRON_HOOKS as $polski_cron_hook) {
+        wp_clear_scheduled_hook($polski_cron_hook);
+    }
+
     // The plugin_data module governs whether uninstall may delete anything. There
     // is no autoloader in this context, so read the option directly.
     // array_key_exists, not isset or empty: a stored false is a real answer and
@@ -140,31 +148,41 @@ $polski_uninstall_site = static function () use ($wpdb, $polski_pro_keys): void 
         );
     }
 
-    // Remove custom taxonomy terms.
+    // Remove custom taxonomy terms. The taxonomies are not registered during
+    // uninstall, so get_terms() and wp_delete_term() only return WP_Error here;
+    // delete the rows directly. term_taxonomy goes last, the other three find
+    // their rows through it.
     $polski_taxonomies = [
         'polski_delivery_time',
         'polski_manufacturer',
         'polski_unit',
+        'polski_brand',
         'polski_allergen',
         'polski_nutrient',
     ];
+    // phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- one placeholder per taxonomy.
+    $polski_in = $wpdb->prepare(implode(', ', array_fill(0, count($polski_taxonomies), '%s')), ...$polski_taxonomies);
 
-    foreach ($polski_taxonomies as $taxonomy) {
-        $polski_terms = get_terms(['taxonomy' => $taxonomy, 'hide_empty' => false, 'fields' => 'ids']);
-
-        if (is_array($polski_terms)) {
-            foreach ($polski_terms as $polski_term_id) {
-                wp_delete_term((int) $polski_term_id, $taxonomy);
-            }
-        }
+    foreach (
+        [
+            [$wpdb->term_relationships, 'term_taxonomy_id'],
+            [$wpdb->termmeta, 'term_id'],
+            [$wpdb->terms, 'term_id'],
+        ] as [$polski_term_table, $polski_term_column]
+    ) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; prepared statement plus the prepared IN list above.
+        $wpdb->query(
+            $wpdb->prepare(
+                'DELETE x FROM %i x INNER JOIN %i tt ON x.%i = tt.%i WHERE tt.taxonomy IN (',
+                $polski_term_table,
+                $wpdb->term_taxonomy,
+                $polski_term_column,
+                $polski_term_column,
+            ) . $polski_in . ')',
+        );
     }
-
-    // Clear scheduled events. The list lives on Deactivator so the two paths cannot
-    // disagree; uninstall.php runs without the plugin booted, so the file is required
-    // directly rather than relying on the autoloader.
-    foreach (\Polski\Deactivator::CRON_HOOKS as $polski_cron_hook) {
-        wp_clear_scheduled_hook($polski_cron_hook);
-    }
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; prepared statement plus the prepared IN list above.
+    $wpdb->query($wpdb->prepare('DELETE FROM %i WHERE taxonomy IN (', $wpdb->term_taxonomy) . $polski_in . ')');
 
     // Rewrite rules are rebuilt on the next request without this plugin's. Not
     // flush_rewrite_rules(): after switch_to_blog() it would write the main site's

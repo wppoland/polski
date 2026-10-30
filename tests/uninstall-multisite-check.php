@@ -9,7 +9,10 @@ declare(strict_types=1);
  * Tables, options, meta and scheduled events live per site, and each site's
  * tables carry that site's prefix. The remove-data choice is a per-site
  * setting too: here sites 1 and 3 opted in and site 2 did not, so site 2 must
- * keep everything. Whether PRO is on disk is a network-wide fact and is read
+ * keep its data. Scheduled events are not data: they are cleared on every
+ * site. Terms of the plugin's taxonomies are deleted with direct queries, since
+ * the taxonomies are not registered during uninstall and get_terms() returns a
+ * WP_Error there. Whether PRO is on disk is a network-wide fact and is read
  * once.
  *
  *   php tests/uninstall-multisite-check.php
@@ -40,6 +43,9 @@ function switch_to_blog($id)
     $GLOBALS['wpdb']->prefix   = px((int) $id);
     $GLOBALS['wpdb']->options  = px((int) $id) . 'options';
     $GLOBALS['wpdb']->postmeta = px((int) $id) . 'postmeta';
+    foreach (['terms', 'term_taxonomy', 'term_relationships', 'termmeta'] as $t) {
+        $GLOBALS['wpdb']->{$t} = px((int) $id) . $t;
+    }
 }
 function restore_current_blog()
 {
@@ -75,13 +81,14 @@ function delete_option($name)
 
     return true;
 }
+// Not registered during uninstall, so this is what core returns.
 function get_terms($args)
 {
-    return [];
+    return new stdClass();
 }
 function wp_delete_term($id, $tax)
 {
-    return true;
+    return new stdClass();
 }
 function wp_clear_scheduled_hook($hook)
 {
@@ -99,6 +106,10 @@ final class FakeWpdb
     public string $prefix   = 'wp_';
     public string $options  = 'wp_options';
     public string $postmeta = 'wp_postmeta';
+    public string $terms = 'wp_terms';
+    public string $term_taxonomy = 'wp_term_taxonomy';
+    public string $term_relationships = 'wp_term_relationships';
+    public string $termmeta = 'wp_termmeta';
 
     public function prepare(string $sql, ...$args): string
     {
@@ -150,6 +161,18 @@ foreach ([1, 3] as $site) {
             $fail[] = "site {$site}: {$hook} still scheduled";
         }
     }
+    $taxonomies = "'polski_delivery_time', 'polski_manufacturer', 'polski_unit', 'polski_brand', 'polski_allergen', 'polski_nutrient'";
+    foreach (['term_relationships' => 'term_taxonomy_id', 'termmeta' => 'term_id', 'terms' => 'term_id'] as $table => $col) {
+        $want = "DELETE x FROM `{$p}{$table}` x INNER JOIN `{$p}term_taxonomy` tt ON x.`{$col}` = tt.`{$col}` WHERE tt.taxonomy IN ({$taxonomies})";
+        if (! in_array($want, $done, true)) {
+            $fail[] = "site {$site}: {$p}{$table} rows of the plugin's terms not deleted";
+        }
+    }
+    $last = "DELETE FROM `{$p}term_taxonomy` WHERE taxonomy IN ({$taxonomies})";
+    $at   = array_search($last, $done, true);
+    if ($at === false || preg_grep('/^DELETE x FROM .* INNER JOIN /', array_slice($done, $at + 1)) !== []) {
+        $fail[] = "site {$site}: {$p}term_taxonomy rows not deleted last";
+    }
     if (! in_array('option:rewrite_rules', $done, true)) {
         $fail[] = "site {$site}: rewrite rules not reset";
     }
@@ -157,8 +180,9 @@ foreach ([1, 3] as $site) {
         $fail[] = "site {$site}: flush_rewrite_rules() after switch_to_blog() writes the main site's rules into this site";
     }
 }
-if (($GLOBALS['log'][2] ?? []) !== []) {
-    $fail[] = 'site 2 did not opt in and still lost: ' . implode(' | ', $GLOBALS['log'][2]);
+$crons = array_map(static fn (string $h): string => 'cron:' . $h, \Polski\Deactivator::CRON_HOOKS);
+if (($GLOBALS['log'][2] ?? []) !== $crons) {
+    $fail[] = 'site 2 did not opt in, so only its scheduled events go; it got: ' . implode(' | ', $GLOBALS['log'][2] ?? []);
 }
 if ($GLOBALS['lists'] !== 1) {
     $fail[] = "the plugin list was read {$GLOBALS['lists']} times, expected once for the whole network";
@@ -174,4 +198,4 @@ if ($fail !== []) {
     exit(1);
 }
 
-echo "ok: uninstall cleans every site that opted in, with that site's table prefix\n";
+echo "ok: uninstall clears cron on every site and cleans every site that opted in, terms included, with that site's table prefix\n";

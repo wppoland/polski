@@ -3,7 +3,7 @@
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
 = 1.43.11 =
-* Fixed: deleting the plugin on a multisite network now removes its data from every site where data removal is turned on, not only the main one, and clears each of those sites' scheduled events and rewrite rules.
+* Fixed: deleting the plugin now clears its scheduled events on every site, even where data removal is off. Where data removal is on, it now cleans every site of a multisite network, not only the main one, resets that site's rewrite rules and also removes the delivery time, manufacturer, unit, brand, allergen and nutrient terms it used to leave behind.
 
 = 1.43.10 =
 * Fixed: deleting the free plugin together with an add-on that shares its data, in one bulk Delete, no longer leaves that shared data behind. The uninstall now reads the installed plugins fresh instead of the list cached earlier in the same request.
