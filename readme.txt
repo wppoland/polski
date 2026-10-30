@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.9
+Stable tag: 1.43.10
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,6 +391,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.43.10 =
+* Fixed: deleting the free plugin together with an add-on that shares its data, in one bulk Delete, no longer leaves that shared data behind. The uninstall now reads the installed plugins fresh instead of the list cached earlier in the same request.
+
 = 1.43.9 =
 * Fix: uninstalling the free plugin with data removal enabled no longer drops the invoices table while Polski PRO is installed. Both editions write invoices to it, so it stays until the last of the two is uninstalled; the invoice lines table now goes with it.
 
@@ -535,14 +538,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: "View all results" carried the phrase from the response that was on screen, not the phrase in the search box. Typing on and clicking it immediately led to the results for the previous keystroke. The link, and Enter on it, now always use the current contents of the box.
 * Fixed: a keystroke landing while a request was in flight could leave the dropdown a phrase behind the box; the search now re-runs for the current value.
 * Fixed: the AJAX dropdown listed products protected with a password, with their name, price and link. The storefront results page has always hidden them; the dropdown queried products without any notion of a password. Found while reproducing the report above.
-
-= 1.38.0 =
-* Added: Product markings module. Two per-product flags that print the statutory notice on the product page: medical device (Regulation 2017/745 and the Medical Devices Act) and goods sold to adults only, such as alcohol or tobacco. Both notices are editable in the module settings.
-* Added: five new privacy policy checks. The page is now also read for things that must NOT be there: the repealed 1997 data protection act, the invalidated Privacy Shield, GIODO instead of PUODO, unfilled template placeholders, and sentences left over from a chat with an AI assistant.
-* Added: four new terms and conditions checks: telephone number (required since the Omnibus implementation), the rights of a sole trader buying outside their profession, unfilled placeholders, and AI leftovers.
-* Added: both legal pages are now checked for links to somebody else's terms or privacy policy, which is what a copied template looks like.
-* Added: two site audit checks. Gravatar (avatars send a hash of the commenter email to a US service, and it is on by default even when comments are closed), and a published accessibility statement, which the European Accessibility Act has required of online shops since 28 June 2025.
-* Fixed: an empty legal page scored 23% instead of zero, because it trivially passed every "must not contain" check. Nothing to check now counts as not checked.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
