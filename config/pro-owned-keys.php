@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Options and post/order meta that Polski PRO owns under the plain polski_
  * prefix, so the FREE uninstall's polski_% and _polski_% wildcards would
- * otherwise catch them.
+ * otherwise catch them, and tables both editions write to (without prefix).
  *
  * uninstall.php leaves these alone while PRO is installed; PRO's own Freemius
  * after_uninstall cleanup removes them. polski_pro_* is skipped separately.
@@ -91,5 +91,9 @@ return [
         '_polski_tracking_url',
         '_polski_unpaid_reminded_at',
         '_polski_withdrawal_pdf',
+    ],
+    'tables' => [
+        'polski_invoices',
+        'polski_invoice_items',
     ],
 ];
