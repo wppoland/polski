@@ -11,7 +11,10 @@ declare(strict_types=1);
  * installed lost them. Until 1.43.8 only polski_pro_* was spared.
  *
  * Runs uninstall.php against a fake $wpdb twice, with and without PRO on disk,
- * and reads which keys the DELETE statements exclude. When a polski-pro
+ * and reads which keys the DELETE statements exclude. A third run does it the
+ * way a bulk Delete of both plugins does: core's delete_plugins() uninstalls
+ * them one after the other in one request, so the plugin list cached by the
+ * first uninstall still names PRO although its folder is gone. When a polski-pro
  * checkout sits next to this one (or POLSKI_PRO_DIR points at one), it also
  * checks that config/pro-owned-keys.php and PRO's after_uninstall cleanup
  * still list the same keys, and that every plain polski_* option PRO declares
@@ -24,6 +27,7 @@ define('ABSPATH', sys_get_temp_dir() . '/');
 define('WP_UNINSTALL_PLUGIN', 'polski/polski.php');
 
 $GLOBALS['pro_installed'] = false;
+$GLOBALS['plugins_cache'] = null;
 
 function get_option($name, $default = false)
 {
@@ -33,14 +37,26 @@ function apply_filters($hook, $value)
 {
     return $value;
 }
+// Like core: the list is cached for the request until wp_cache_delete('plugins', 'plugins').
 function get_plugins()
 {
+    if ($GLOBALS['plugins_cache'] !== null) {
+        return $GLOBALS['plugins_cache'];
+    }
     $plugins = ['polski/polski.php' => ['TextDomain' => 'polski']];
     if ($GLOBALS['pro_installed']) {
         $plugins['some-folder/polski-pro.php'] = ['TextDomain' => 'polski-pro'];
     }
 
-    return $plugins;
+    return $GLOBALS['plugins_cache'] = $plugins;
+}
+function wp_cache_delete($key, $group = '')
+{
+    if ($key === 'plugins' && $group === 'plugins') {
+        $GLOBALS['plugins_cache'] = null;
+    }
+
+    return true;
 }
 function delete_metadata(...$args)
 {
@@ -95,9 +111,15 @@ final class FakeWpdb
 }
 
 /** @return list<string> the DELETE statements uninstall.php issued */
-function run_uninstall(bool $proInstalled): array
+function run_uninstall(bool $proInstalled, bool $staleCache = false): array
 {
     global $wpdb;
+    $GLOBALS['plugins_cache'] = null;
+    if ($staleCache) {
+        // A bulk delete listed PRO, uninstalled and deleted it first.
+        $GLOBALS['pro_installed'] = true;
+        get_plugins();
+    }
     $GLOBALS['pro_installed'] = $proInstalled;
     $wpdb = new FakeWpdb();
     include dirname(__DIR__) . '/uninstall.php';
@@ -163,6 +185,17 @@ foreach (['wp_options', 'wp_postmeta', 'wp_wc_orders_meta'] as $table) {
 $left = array_diff($owned['tables'], dropped($without));
 if ($left !== []) {
     $fail[] = 'with no PRO installed, FREE uninstall leaves the shared table behind: ' . implode(', ', $left);
+}
+
+$bulk = run_uninstall(false, true);
+foreach (['wp_options', 'wp_postmeta', 'wp_wc_orders_meta'] as $table) {
+    if (excluded($bulk, $table) !== []) {
+        $fail[] = "after a bulk delete removed PRO first, {$table} delete still spares PRO keys: the cached plugin list still named PRO";
+    }
+}
+$left = array_diff($owned['tables'], dropped($bulk));
+if ($left !== []) {
+    $fail[] = 'after a bulk delete removed PRO first, FREE uninstall leaves the shared table behind: ' . implode(', ', $left);
 }
 
 // Cross-check against a polski-pro checkout when one is available.

@@ -50,10 +50,13 @@ if (! $polski_delete_data) {
 // While PRO is installed, active or not, that data is PRO's to remove through
 // its own uninstall cleanup; with no PRO on disk it is ours, since six of those
 // options are seeded by config/defaults.php. Matched on the text domain, so a
-// renamed plugin folder still counts.
+// renamed plugin folder still counts. A no-JS bulk Delete or WP-CLI uninstalls
+// both plugins in one request and core never clears its cached plugin list
+// between them, so read the folders fresh.
 if (! function_exists('get_plugins')) {
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
+wp_cache_delete('plugins', 'plugins');
 
 $polski_pro_installed = in_array('polski-pro', array_column(get_plugins(), 'TextDomain'), true);
 $polski_pro_keys      = $polski_pro_installed
