@@ -14,6 +14,7 @@ defined('ABSPATH') || exit;
 enum WithdrawalExemptionReason: string
 {
     case Custom = 'custom';
+    case Service = 'art38_1';           // Service fully performed after an express request (Art. 16(a)).
     case CustomMade = 'art38_3';        // Personalised / made to consumer specification.
     case Perishable = 'art38_4';        // Short shelf life / quickly perishable.
     case Sealed = 'art38_5';            // Sealed for health/hygiene reasons.
@@ -26,6 +27,7 @@ enum WithdrawalExemptionReason: string
     {
         return match ($this) {
             self::Custom => __('Other (custom reason)', 'polski'),
+            self::Service => __('Service fully performed at the consumer\'s express prior request, with acknowledgement of losing the right of withdrawal (Article 38(1))', 'polski'),
             self::CustomMade => __('Made to the consumer\'s specification or clearly personalised (Article 38(3))', 'polski'),
             self::Perishable => __('Liable to deteriorate or expire rapidly (Article 38(4))', 'polski'),
             self::Sealed => __('Sealed for health protection or hygiene reasons (Article 38(5))', 'polski'),
@@ -43,6 +45,7 @@ enum WithdrawalExemptionReason: string
     {
         return match ($this) {
             self::Custom => __('Other', 'polski'),
+            self::Service => __('Service performed', 'polski'),
             self::CustomMade => __('Made to order', 'polski'),
             self::Perishable => __('Perishable', 'polski'),
             self::Sealed => __('Sealed', 'polski'),

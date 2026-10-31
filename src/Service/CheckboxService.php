@@ -14,8 +14,9 @@ use Polski\Model\LegalCheckbox;
 /**
  * Manages legal checkboxes: registration, validation, and rendering.
  *
- * Supports 7 built-in checkboxes (terms, privacy, withdrawal, digital_waiver,
- * parcel_delivery, review_reminder, marketing) and allows registration of
+ * Supports 9 built-in checkboxes (terms, privacy, withdrawal, digital_waiver,
+ * service_waiver, age_verification, parcel_delivery, review_reminder,
+ * marketing) and allows registration of
  * custom checkboxes via filters or REST API.
  *
  * All built-in checkbox properties are customizable via stored overrides.
@@ -234,7 +235,7 @@ final class CheckboxService implements Bootable, HasHooks
      */
     public function getCoreIds(): array
     {
-        return ['terms', 'privacy', 'withdrawal', 'digital_waiver', 'parcel_delivery', 'review_reminder', 'marketing'];
+        return ['terms', 'privacy', 'withdrawal', 'digital_waiver', 'service_waiver', 'age_verification', 'parcel_delivery', 'review_reminder', 'marketing'];
     }
 
     /**
@@ -509,6 +510,39 @@ final class CheckboxService implements Bootable, HasHooks
             productTypes: ['downloadable'],
         ));
 
+        // Directive 2011/83/EU Art. 8(8) and Art. 16(a): a service started in
+        // the withdrawal period needs the consumer's express request, and the
+        // right ends on full performance only with the acknowledgement. Shown
+        // for products excluded with the Service reason (art38_1).
+        $this->register(new LegalCheckbox(
+            id: 'service_waiver',
+            label: (string) ($checkoutSettings['service_waiver_checkbox_label'] ?? __('I request that the service starts before the withdrawal period ends, and I acknowledge that I lose my right of withdrawal once the service has been fully performed.', 'polski')),
+            type: ConsentType::Required,
+            contexts: [CheckboxContext::Checkout],
+            priority: 5,
+            enabled: false,
+            errorMessage: (string) ($checkoutSettings['service_waiver_checkbox_error'] ?? __('To order this service now, request that it starts before the withdrawal period ends.', 'polski')),
+            description: (string) ($checkoutSettings['service_waiver_checkbox_description'] ?? __('Express request to start a service early.', 'polski')),
+            isCore: true,
+            productTypes: [\Polski\Hook\CheckoutHooks::TYPE_SERVICE],
+        ));
+
+        // Age gate for products flagged "Adults only (18+)". No act prescribes
+        // a checkbox; the alcohol act (art. 15 ust. 1 pkt 2) bans the sale to
+        // minors, and this records that the buyer was asked.
+        $this->register(new LegalCheckbox(
+            id: 'age_verification',
+            label: (string) ($checkoutSettings['age_verification_checkbox_label'] ?? __('I confirm that I am at least 18 years old.', 'polski')),
+            type: ConsentType::Required,
+            contexts: [CheckboxContext::Checkout],
+            priority: 6,
+            enabled: false,
+            errorMessage: (string) ($checkoutSettings['age_verification_checkbox_error'] ?? __('Products in your cart are sold to adults only. Confirm that you are at least 18 years old.', 'polski')),
+            description: (string) ($checkoutSettings['age_verification_checkbox_description'] ?? __('Age confirmation for adults-only products.', 'polski')),
+            isCore: true,
+            productTypes: [\Polski\Hook\CheckoutHooks::TYPE_ADULTS_ONLY],
+        ));
+
         $this->register(new LegalCheckbox(
             id: 'parcel_delivery',
             label: (string) ($checkoutSettings['parcel_delivery_checkbox_label'] ?? __('I agree to receive SMS/email notifications about the delivery status of my parcel.', 'polski')),
@@ -576,6 +610,8 @@ final class CheckboxService implements Bootable, HasHooks
             'privacy' => $checkout['privacy_checkbox_enabled'] ?? null,
             'withdrawal' => $checkout['withdrawal_checkbox_enabled'] ?? null,
             'digital_waiver' => $checkout['digital_waiver_checkbox_enabled'] ?? null,
+            'service_waiver' => $checkout['service_waiver_checkbox_enabled'] ?? null,
+            'age_verification' => $checkout['age_verification_checkbox_enabled'] ?? null,
             'parcel_delivery' => $checkout['parcel_delivery_checkbox_enabled'] ?? null,
             'review_reminder' => $checkout['review_reminder_checkbox_enabled'] ?? null,
             'marketing' => $checkout['marketing_checkbox_enabled'] ?? null,

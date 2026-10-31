@@ -10,6 +10,8 @@ use Polski\Contract\HasHooks;
 use Polski\Enum\CheckboxContext;
 use Polski\Repository\ConsentLogRepository;
 use Polski\Service\CheckboxService;
+use Polski\Service\ProductMarkingsService;
+use Polski\Service\WithdrawalExemptionService;
 use Polski\Util\TemplateLoader;
 
 use const Polski\PLUGIN_FILE;
@@ -20,6 +22,23 @@ use const Polski\VERSION;
  */
 final class CheckoutHooks implements Bootable, HasHooks
 {
+    /** Cart product_types token: a product excluded with the Service reason. */
+    public const TYPE_SERVICE = 'polski_service';
+
+    /** Cart product_types token: a product marked "Adults only (18+)". */
+    public const TYPE_ADULTS_ONLY = 'polski_adults_only';
+
+    /** Minimum age the age_verification checkbox confirms, stored on the order. */
+    public const MIN_AGE = 18;
+
+    /** Checkboxes the block checkout shows per cart, keyed to their product_types token. */
+    private const CART_FLAG_BOXES = [
+        'service_waiver' => self::TYPE_SERVICE,
+        'age_verification' => self::TYPE_ADULTS_ONLY,
+    ];
+
+    private const CART_EXTENSION = 'polski_checkboxes';
+
     public function __construct(
         private readonly CheckboxService $checkboxes,
         private readonly ConsentLogRepository $consentLog,
@@ -48,6 +67,16 @@ final class CheckoutHooks implements Bootable, HasHooks
                 // definitions. Consent is logged from the stored order meta.
                 add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
                 add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
+
+                // The service and age boxes follow the cart, so the block field
+                // needs a cart flag to key its hidden/required rule on.
+                if (did_action('woocommerce_blocks_loaded') > 0) {
+                    $this->registerCartFlags();
+                } else {
+                    add_action('woocommerce_blocks_loaded', [$this, 'registerCartFlags']);
+                }
+                add_filter('woocommerce_filter_fields_for_order_confirmation', [$this, 'hideCartFlagFieldsOnOtherOrders'], 10, 4);
+                add_filter('woocommerce_admin_shipping_fields', [$this, 'hideCartFlagAdminFields'], 20, 2);
             }
 
             // Classic (shortcode) checkout. WooCommerce does not render additional
@@ -94,7 +123,9 @@ final class CheckoutHooks implements Bootable, HasHooks
             // The block field cannot follow cart conditions (a digital waiver
             // would be required on a physical-only cart), so conditional boxes
             // stay on the classic checkout, which evaluates them per cart.
-            if ($checkbox->hideInput || $checkbox->hasConditions()) {
+            $flagged = $this->isCartFlagBox($checkbox);
+
+            if ($checkbox->hideInput || ($checkbox->hasConditions() && ! $flagged)) {
                 continue;
             }
 
@@ -105,6 +136,11 @@ final class CheckoutHooks implements Bootable, HasHooks
                 'type' => 'checkbox',
                 'required' => $checkbox->isRequired(),
             ];
+
+            if ($flagged) {
+                $field['hidden'] = self::cartFlagRule($checkbox->id, false);
+                $field['required'] = $checkbox->isRequired() ? self::cartFlagRule($checkbox->id, true) : false;
+            }
 
             if ($checkbox->errorMessage !== '') {
                 $field['error_message'] = $checkbox->errorMessage;
@@ -126,8 +162,19 @@ final class CheckoutHooks implements Bootable, HasHooks
 
         $states = [];
 
+        $orderTypes = self::orderProductTypes($order);
+
         foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
-            if ($checkbox->hideInput || $checkbox->hasConditions() || ! $checkbox->logConsent) {
+            if ($checkbox->hideInput || ! $checkbox->logConsent) {
+                continue;
+            }
+
+            if ($this->isCartFlagBox($checkbox)) {
+                // Hidden for this order's products: nothing was asked.
+                if (! in_array(self::CART_FLAG_BOXES[$checkbox->id], $orderTypes, true)) {
+                    continue;
+                }
+            } elseif ($checkbox->hasConditions()) {
                 continue;
             }
 
@@ -142,6 +189,7 @@ final class CheckoutHooks implements Bootable, HasHooks
         $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
         $this->consentLog->logBatch($states, CheckboxContext::Checkout, $userId, 'order_' . $order->get_id());
 
+        self::recordAgeConfirmation($order, $states);
         $order->update_meta_data('_polski_consents_logged', 'yes');
         $order->save();
     }
@@ -371,6 +419,7 @@ final class CheckoutHooks implements Bootable, HasHooks
         foreach ($states as $id => $consented) {
             $order->update_meta_data('_wc_other/polski/' . $id, $consented ? '1' : '0');
         }
+        self::recordAgeConfirmation($order, $states);
         $order->save();
 
         $userId = $order->get_customer_id() > 0 ? $order->get_customer_id() : null;
@@ -468,6 +517,7 @@ final class CheckoutHooks implements Bootable, HasHooks
                 $context['product_types'][] = 'virtual';
             }
             $context['product_types'][] = $product->get_type();
+            array_push($context['product_types'], ...self::flagTypes($product));
         }
 
         $context['product_types'] = array_unique($context['product_types']);
@@ -484,5 +534,184 @@ final class CheckoutHooks implements Bootable, HasHooks
         // phpcs:enable WordPress.Security.NonceVerification.Missing
 
         return $context;
+    }
+
+    /**
+     * The product_types tokens a product adds for the service and age boxes.
+     *
+     * @return list<string>
+     */
+    public static function flagTypes(\WC_Product $product): array
+    {
+        $types = [];
+
+        if ((new WithdrawalExemptionService())->isServiceProduct($product)) {
+            $types[] = self::TYPE_SERVICE;
+        }
+
+        if (ProductMarkingsService::isFlagged($product, ProductMarkingsService::META_ADULTS_ONLY)) {
+            $types[] = self::TYPE_ADULTS_ONLY;
+        }
+
+        return $types;
+    }
+
+    /**
+     * The flag tokens of an order's products, for the block checkout log.
+     *
+     * @return list<string>
+     */
+    public static function orderProductTypes(\WC_Order $order): array
+    {
+        $types = [];
+
+        foreach ($order->get_items() as $item) {
+            $product = $item instanceof \WC_Order_Item_Product ? $item->get_product() : null;
+
+            if ($product instanceof \WC_Product) {
+                $types = array_merge($types, self::flagTypes($product));
+            }
+        }
+
+        return array_values(array_unique($types));
+    }
+
+    /**
+     * Store the minimum age the buyer confirmed, plus a note, so the shop can
+     * show it asked. Only when the age box was shown and ticked.
+     *
+     * @param array<string, bool> $states
+     */
+    public static function recordAgeConfirmation(\WC_Order $order, array $states): void
+    {
+        if (empty($states['age_verification'])) {
+            return;
+        }
+
+        $order->update_meta_data('_polski_min_age', (string) self::MIN_AGE);
+        $order->add_order_note(sprintf(
+            /* translators: %d: minimum age */
+            __('The customer confirmed at checkout being at least %d years old.', 'polski'),
+            self::MIN_AGE,
+        ));
+    }
+
+    /**
+     * Block checkout: expose whether the cart holds a service or an adults-only
+     * product, so each box's hidden/required rule can key on it.
+     */
+    public function registerCartFlags(): void
+    {
+        if (! function_exists('woocommerce_store_api_register_endpoint_data')) {
+            return;
+        }
+
+        $schema = [];
+        foreach (array_keys(self::CART_FLAG_BOXES) as $id) {
+            $schema[$id] = [
+                'description' => 'Cart holds a product this checkbox applies to',
+                'type' => 'boolean',
+                'context' => ['view', 'edit'],
+                'readonly' => true,
+            ];
+        }
+
+        woocommerce_store_api_register_endpoint_data([
+            'endpoint' => 'cart',
+            'namespace' => self::CART_EXTENSION,
+            'data_callback' => static function (): array {
+                $types = (array) self::buildCartContext()['product_types'];
+                $flags = [];
+
+                foreach (self::CART_FLAG_BOXES as $id => $type) {
+                    $flags[$id] = in_array($type, $types, true);
+                }
+
+                return $flags;
+            },
+            'schema_callback' => static fn (): array => $schema,
+            'schema_type' => ARRAY_A,
+        ]);
+    }
+
+    /**
+     * A box the block checkout shows per cart: one of ours, and conditioned on
+     * nothing but its own product type.
+     */
+    private function isCartFlagBox(\Polski\Model\LegalCheckbox $checkbox): bool
+    {
+        return isset(self::CART_FLAG_BOXES[$checkbox->id])
+            && $checkbox->productTypes === [self::CART_FLAG_BOXES[$checkbox->id]]
+            && $checkbox->categories === []
+            && $checkbox->countries === []
+            && $checkbox->paymentMethods === [];
+    }
+
+    /**
+     * JSON-Schema rule on the checkout document, as in DigitalConsentService:
+     * matches when cart.extensions.polski_checkboxes.<id> === $expected.
+     *
+     * @return array<string, mixed>
+     */
+    public static function cartFlagRule(string $id, bool $expected): array
+    {
+        return [
+            'cart' => [
+                'properties' => [
+                    'extensions' => [
+                        'properties' => [
+                            self::CART_EXTENSION => [
+                                'properties' => [$id => ['const' => $expected]],
+                                'required' => [$id],
+                            ],
+                        ],
+                        'required' => [self::CART_EXTENSION],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * WooCommerce prints an unticked, hidden checkbox as "No"; keep the service
+     * and age answers off orders whose products never asked them.
+     *
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $fields
+     * @param array<string, mixed> $context
+     */
+    public function hideCartFlagFieldsOnOtherOrders(bool $show, array $field, array $fields, array $context): bool
+    {
+        unset($fields);
+
+        $id = substr((string) ($field['id'] ?? ''), strlen('polski/'));
+        $order = $context['order'] ?? null;
+
+        if (! isset(self::CART_FLAG_BOXES[$id]) || ! $order instanceof \WC_Order) {
+            return $show;
+        }
+
+        return $show && in_array(self::CART_FLAG_BOXES[$id], self::orderProductTypes($order), true);
+    }
+
+    /**
+     * @param array<string, mixed> $fields
+     * @return array<string, mixed>
+     */
+    public function hideCartFlagAdminFields(array $fields, mixed $order = null): array
+    {
+        if (! $order instanceof \WC_Order) {
+            return $fields;
+        }
+
+        $types = self::orderProductTypes($order);
+
+        foreach (self::CART_FLAG_BOXES as $id => $type) {
+            if (! in_array($type, $types, true)) {
+                unset($fields['polski/' . $id]);
+            }
+        }
+
+        return $fields;
     }
 }

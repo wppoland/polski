@@ -30,6 +30,9 @@ final class WithdrawalExemptionService implements HasHooks
     public const TERM_REASON_META = 'polski_withdrawal_exempt_reason';
     public const TERM_REASON_CUSTOM_META = 'polski_withdrawal_exempt_reason_custom';
 
+    /** Where both checkouts store the answer to the "service_waiver" legal checkbox. */
+    public const SERVICE_CONSENT_META = '_wc_other/polski/service_waiver';
+
     public function registerHooks(): void
     {
         // Polski boots every service unconditionally, so a module's service has
@@ -65,8 +68,6 @@ final class WithdrawalExemptionService implements HasHooks
      */
     public function decorateRowsWithExemption(array $rows, \WC_Order $order): array
     {
-        unset($order);
-
         foreach ($rows as &$row) {
             $productId = (int) ($row['product_id'] ?? 0);
             if ($productId <= 0) {
@@ -78,7 +79,7 @@ final class WithdrawalExemptionService implements HasHooks
                 continue;
             }
 
-            if ($this->isProductExempt($product)) {
+            if ($this->isExemptInOrder($product, $order)) {
                 $row['is_exempt'] = true;
                 $row['exempt_reason'] = $this->getProductExemptionReason($product);
             }
@@ -112,6 +113,72 @@ final class WithdrawalExemptionService implements HasHooks
         }
 
         return false;
+    }
+
+    /**
+     * Whether the product is a service under art. 38 ust. 1 pkt 1 of the
+     * Consumer Rights Act (Directive 2011/83/EU Art. 16(a)): excluded with the
+     * Service reason. Checkout asks for the express request on these.
+     */
+    public function isServiceProduct(\WC_Product $product): bool
+    {
+        return $this->isProductExempt($product)
+            && $this->reasonCode($product) === WithdrawalExemptionReason::Service->value;
+    }
+
+    /**
+     * A service loses the right of withdrawal only once fully performed after
+     * the consumer's express prior request and acknowledgement (art. 38 ust. 1
+     * pkt 1, Dz.U. 2026 poz. 1244). Without the stored request it stays
+     * withdrawable, whatever the product says.
+     * ponytail: "completed" order status stands in for "fully performed"; add a
+     * per-item performed date if shops need partial performance.
+     */
+    private function isExemptInOrder(\WC_Product $product, \WC_Order $order): bool
+    {
+        if (! $this->isProductExempt($product)) {
+            return false;
+        }
+
+        if (! $this->isServiceProduct($product)) {
+            return true;
+        }
+
+        return $order->get_meta(self::SERVICE_CONSENT_META, true) === '1'
+            && $order->get_status() === 'completed';
+    }
+
+    /**
+     * The stored reason code, product (or its parent) first, then the first
+     * excluding category that names one.
+     */
+    private function reasonCode(\WC_Product $product): string
+    {
+        $parentId = $product->is_type('variation') ? $product->get_parent_id() : $product->get_id();
+        $code = (string) $product->get_meta(self::PRODUCT_REASON_META, true);
+
+        if ($code === '' && $parentId !== $product->get_id()) {
+            $parent = wc_get_product($parentId);
+            $code = $parent instanceof \WC_Product ? (string) $parent->get_meta(self::PRODUCT_REASON_META, true) : '';
+        }
+
+        if ($code !== '') {
+            return $code;
+        }
+
+        $terms = wp_get_post_terms($parentId, 'product_cat', ['fields' => 'ids']);
+
+        foreach (is_array($terms) ? $terms : [] as $termId) {
+            if (get_term_meta((int) $termId, self::TERM_META, true) === 'yes') {
+                $code = (string) get_term_meta((int) $termId, self::TERM_REASON_META, true);
+
+                if ($code !== '') {
+                    return $code;
+                }
+            }
+        }
+
+        return '';
     }
 
     /**
@@ -169,7 +236,7 @@ final class WithdrawalExemptionService implements HasHooks
             if (! $product instanceof \WC_Product) {
                 continue;
             }
-            if (! $this->isProductExempt($product)) {
+            if (! $this->isExemptInOrder($product, $order)) {
                 $hasNonExempt = true;
                 break;
             }

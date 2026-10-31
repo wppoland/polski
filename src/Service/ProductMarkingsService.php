@@ -18,8 +18,8 @@ use Polski\Contract\HasHooks;
  * that never says "wyrob medyczny" leaves the buyer to guess.
  *
  * Adults only: alcohol, tobacco and similar goods may not be presented as if
- * anyone can buy them. The notice is the minimum; an age gate is a separate
- * decision for the shop.
+ * anyone can buy them. The notice is the minimum; the age_verification legal checkbox is the
+ * shop's opt-in age gate at checkout.
  *
  * Both are per-product flags because a shop rarely sells only one kind.
  */
@@ -54,7 +54,7 @@ final class ProductMarkingsService implements HasHooks
         $settings = get_option(self::OPTION, []);
         $settings = is_array($settings) ? $settings : [];
 
-        if ($this->isFlagged($product, self::META_MEDICAL_DEVICE)) {
+        if (self::isFlagged($product, self::META_MEDICAL_DEVICE)) {
             // Keys spelled out, not composed, so the release check that pairs a
             // declared setting with a reader can see them.
             $notices[] = [
@@ -66,7 +66,7 @@ final class ProductMarkingsService implements HasHooks
             ];
         }
 
-        if ($this->isFlagged($product, self::META_ADULTS_ONLY)) {
+        if (self::isFlagged($product, self::META_ADULTS_ONLY)) {
             $notices[] = [
                 'adults',
                 $this->text(
@@ -97,7 +97,7 @@ final class ProductMarkingsService implements HasHooks
      * A variation inherits the parent's marking: the medical purpose does not
      * change with the size of the box.
      */
-    private function isFlagged(\WC_Product $product, string $meta): bool
+    public static function isFlagged(\WC_Product $product, string $meta): bool
     {
         if ($product->get_meta($meta, true) === 'yes') {
             return true;
