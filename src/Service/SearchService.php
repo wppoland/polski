@@ -38,7 +38,10 @@ final class SearchService implements Bootable, HasHooks
         // Extend product search to include Polski meta.
         add_filter('posts_search', [$this, 'extendProductSearch'], 10, 2);
         add_action('pre_get_posts', [$this, 'applyStockRuleToResultsPage']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+        // Registered on every page, enqueued only by renderSearchForm(), so only
+        // pages that show the box pay for it. Elementor enqueues the registered
+        // handles itself through the widget's get_style_depends().
+        add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
         add_shortcode('polski_ajax_search', [$this, 'renderShortcode']);
     }
 
@@ -53,14 +56,28 @@ final class SearchService implements Bootable, HasHooks
             return;
         }
 
-        wp_enqueue_style(
+        if (! wp_script_is('polski-ajax-search', 'registered')) {
+            $this->registerAssets();
+        }
+
+        wp_enqueue_style('polski-ajax-search');
+        wp_enqueue_script('polski-ajax-search');
+    }
+
+    public function registerAssets(): void
+    {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
+        wp_register_style(
             'polski-ajax-search',
             \Polski\Plugin::instance()->url('assets/css/ajax-search.css'),
             [],
             \Polski\VERSION,
         );
 
-        wp_enqueue_script(
+        wp_register_script(
             'polski-ajax-search',
             \Polski\Plugin::instance()->url('assets/js/ajax-search.js'),
             [],

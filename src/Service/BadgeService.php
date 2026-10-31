@@ -119,12 +119,18 @@ final class BadgeService implements Bootable, HasHooks
             return;
         }
 
-        wp_enqueue_style(
+        wp_register_style(
             'polski-badges',
             \Polski\Plugin::instance()->url('assets/css/badges.css'),
             [],
             \Polski\VERSION,
         );
+
+        // Head load on shop screens; a badge rendered anywhere else (a product
+        // block on a plain page) enqueues the stylesheet from render().
+        if (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout())) {
+            wp_enqueue_style('polski-badges');
+        }
     }
 
     public function renderSingleBadges(): void
@@ -228,6 +234,8 @@ final class BadgeService implements Bootable, HasHooks
         if ($badges === []) {
             return;
         }
+
+        wp_enqueue_style('polski-badges');
 
         $this->templateLoader->include('shared/badges', [
             'badges' => $badges,

@@ -31,7 +31,10 @@ final class ProductSliderService implements Bootable, HasHooks
 
     public function registerHooks(): void
     {
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+        // Registered on every page, enqueued only from the render paths, so only
+        // pages that show a slider pay for it. Elementor enqueues the registered
+        // handle itself through the widget's get_style_depends().
+        add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
         add_action('woocommerce_after_single_product_summary', [$this, 'renderSingleSlider'], 19);
         add_shortcode('polski_product_slider', [$this, 'renderShortcode']);
     }
@@ -42,7 +45,13 @@ final class ProductSliderService implements Bootable, HasHooks
             return;
         }
 
-        wp_enqueue_style(
+        $this->registerAssets();
+        wp_enqueue_style('polski-product-slider');
+    }
+
+    public function registerAssets(): void
+    {
+        wp_register_style(
             'polski-product-slider',
             \Polski\Plugin::instance()->url('assets/css/product-slider.css'),
             [],
@@ -58,8 +67,13 @@ final class ProductSliderService implements Bootable, HasHooks
             return;
         }
 
+        $html = $this->renderForContext($product, $this->getSettings());
+        if ($html !== '') {
+            $this->enqueueAssets();
+        }
+
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped in render method
-        echo $this->renderForContext($product, $this->getSettings());
+        echo $html;
     }
 
     /**
@@ -89,8 +103,6 @@ final class ProductSliderService implements Bootable, HasHooks
             return '';
         }
 
-        $this->enqueueAssets();
-
         $productId = isset($config['product_id']) ? (int) $config['product_id'] : 0;
         $source = (string) ($config['source'] ?? $this->getSettings()['source'] ?? 'related');
         $product = $this->resolveContextProduct($productId);
@@ -99,7 +111,12 @@ final class ProductSliderService implements Bootable, HasHooks
             return '';
         }
 
-        return $this->renderForContext($product, $config);
+        $html = $this->renderForContext($product, $config);
+        if ($html !== '') {
+            $this->enqueueAssets();
+        }
+
+        return $html;
     }
 
     /**

@@ -11,6 +11,18 @@ final class SearchWidget extends BaseWidget
         return 'polski-ajax-search';
     }
 
+    /** @return list<string> */
+    public function get_style_depends(): array
+    {
+        return ['polski-ajax-search'];
+    }
+
+    /** @return list<string> */
+    public function get_script_depends(): array
+    {
+        return ['polski-ajax-search'];
+    }
+
     public function get_title(): string
     {
         return __('AJAX Search', 'polski');

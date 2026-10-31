@@ -11,6 +11,12 @@ final class ProductSliderWidget extends BaseWidget
         return 'polski-product-slider';
     }
 
+    /** @return list<string> */
+    public function get_style_depends(): array
+    {
+        return ['polski-product-slider'];
+    }
+
     public function get_title(): string
     {
         return __('Product Slider', 'polski');
