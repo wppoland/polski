@@ -34,6 +34,7 @@ return [
         'polski_subscriptions',
         'polski_tax_rules',
         'polski_unpaid_orders',
+        'polski_vies_vat_exemption',
     ],
     'meta' => [
         '_polski_addons_config',
