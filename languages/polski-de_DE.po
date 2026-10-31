@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Polski for WooCommerce 1.24.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-10-31T11:50:16+00:00\n"
+"POT-Creation-Date: 2026-10-31T16:50:00+00:00\n"
 "PO-Revision-Date: 2026-06-19T14:40:07+00:00\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
@@ -8254,6 +8254,7 @@ msgid "Do more with %s"
 msgstr "Mehr erreichen mit %s"
 
 #: src/Admin/ProUpsell.php:177 src/Admin/ProUpsell.php:216
+#: src/Admin/ProUpsell.php:253
 msgid "Upgrade to PRO"
 msgstr "Auf PRO upgraden"
 
@@ -8276,10 +8277,16 @@ msgid "one licence, every PRO feature"
 msgstr "eine Lizenz, alle PRO-Funktionen"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:238
+#: src/Admin/ProUpsell.php:239
 #, php-format
 msgid "What %s adds"
 msgstr "Was %s ergänzt"
+
+#. translators: %s: PRO feature title
+#: src/Admin/ProUpsell.php:252
+#, php-format
+msgid "Upgrade to PRO: %s"
+msgstr "Auf PRO upgraden: %s"
 
 #: src/Admin/SBOMPage.php:50
 msgid "Software Bill of Materials (SBOM)"

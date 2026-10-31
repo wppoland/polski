@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-10-31T11:50:16+00:00\n"
+"POT-Creation-Date: 2026-10-31T16:50:00+00:00\n"
 "PO-Revision-Date: 2026-06-10 16:16:29+0000\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -8114,6 +8114,7 @@ msgid "Do more with %s"
 msgstr ""
 
 #: src/Admin/ProUpsell.php:177 src/Admin/ProUpsell.php:216
+#: src/Admin/ProUpsell.php:253
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -8136,9 +8137,15 @@ msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:238
+#: src/Admin/ProUpsell.php:239
 #, php-format
 msgid "What %s adds"
+msgstr ""
+
+#. translators: %s: PRO feature title
+#: src/Admin/ProUpsell.php:252
+#, php-format
+msgid "Upgrade to PRO: %s"
 msgstr ""
 
 #: src/Admin/SBOMPage.php:50
