@@ -101,12 +101,12 @@ final class CheckboxServiceTest extends TestCase
         $this->assertFalse($service->isCore(''));
     }
 
-    public function testGetCoreIdsReturnsSevenBuiltInIds(): void
+    public function testGetCoreIdsReturnsNineBuiltInIds(): void
     {
         $service = $this->createService();
         $coreIds = $service->getCoreIds();
 
-        $this->assertCount(7, $coreIds);
+        $this->assertCount(9, $coreIds);
         $this->assertContains('terms', $coreIds);
         $this->assertContains('privacy', $coreIds);
         $this->assertContains('withdrawal', $coreIds);
@@ -272,6 +272,6 @@ final class CheckboxServiceTest extends TestCase
         $countAfterSecond = count($service->all());
 
         $this->assertSame($countAfterFirst, $countAfterSecond);
-        $this->assertSame(7, $countAfterFirst);
+        $this->assertSame(9, $countAfterFirst);
     }
 }

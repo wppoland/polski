@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.43.12
+Stable tag: 1.44.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,6 +391,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.44.0 =
+* New: a "Services (request to start early)" checkbox at checkout, classic and block. It shows when the cart holds a product whose category excludes it from withdrawal with the new Service reason (Article 38(1)), and the answer is saved on the order. Such a service only stops being withdrawable once the request is on the order and the order is completed.
+* New: an "Age confirmation (18+)" checkbox at checkout, classic and block. It shows when the cart holds a product marked "Adults only (18+)"; the confirmation, the minimum age and an order note are saved on the order.
+
 = 1.43.12 =
 * Fixed: the cookie banner, VAT and delivery time labels and the withdrawal confirmation subject fall back to the translatable English defaults instead of Polish or outdated text, also on a network subsite that never saved its settings.
 
@@ -538,12 +542,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: a NIP saved in My Account had to be typed again at checkout, and the address summary could show a different number than the edit form. The two screens wrote to two different customer meta keys and nothing bridged them. Every screen now reads and writes the same number.
 * Fixed: entering a NIP on the block checkout did not fill in the company details. The lookup wrote to the DOM ids the shortcode checkout uses, and block checkout renders its inputs from a data store, so anything written that way was discarded on the next render. It now goes through the store, which is what the block fields read.
 * Fixed: My Account > Addresses saved an invalid NIP without a word. WooCommerce checks a custom field's required flag and its type there and nothing else, so the checksum is now checked on that form too.
-
-= 1.38.1 =
-* Fixed: a product found by the AJAX search dropdown could be missing from the full results page. The dropdown and the results page share the same extra matching (SKU, GTIN, manufacturer, category, ingredients), but on the results page the extra product IDs were being attached to the wrong part of the SQL WHERE clause, the one WordPress adds for logged-out visitors to exclude password-protected posts. For a logged-out shopper, which is nearly every shopper, the results page therefore searched titles and descriptions only, and a password-protected product matching the term would have been listed. Reported by strid3rr on the support forum.
-* Fixed: "View all results" carried the phrase from the response that was on screen, not the phrase in the search box. Typing on and clicking it immediately led to the results for the previous keystroke. The link, and Enter on it, now always use the current contents of the box.
-* Fixed: a keystroke landing while a request was in flight could leave the dropdown a phrase behind the box; the search now re-runs for the current value.
-* Fixed: the AJAX dropdown listed products protected with a password, with their name, price and link. The storefront results page has always hidden them; the dropdown queried products without any notion of a password. Found while reproducing the report above.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
