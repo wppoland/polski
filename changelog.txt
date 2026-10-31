@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.44.2 =
+* Performance: Badges, AJAX Search and Product Slider load their stylesheet and script only on pages that show them. Before, an enabled module loaded them on every page, plain pages and posts included.
+
+= 1.44.1 =
+* Every card in the "What PRO adds" grid now has its own Upgrade to PRO button.
+
 = 1.44.0 =
 * New: a "Services (request to start early)" checkbox at checkout, classic and block. It shows when the cart holds a product whose category excludes it from withdrawal with the new Service reason (Article 38(1)), and the answer is saved on the order. Such a service only stops being withdrawable once the request is on the order and the order is completed.
 * New: an "Age confirmation (18+)" checkbox at checkout, classic and block. It shows when the cart holds a product marked "Adults only (18+)"; the confirmation, the minimum age and an order note are saved on the order.
