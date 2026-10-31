@@ -288,6 +288,9 @@
 }
 .polski-admin-shell .polski-pro-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 16px 16px 16px 18px;
     border: 1px solid var(--pl-line, #ccd0d4);
     border-radius: var(--pl-r-sm, 6px);
@@ -303,8 +306,9 @@
     border: 1px solid color-mix(in srgb, var(--pl-crimson) 40%, #fff);
 }
 .polski-admin-shell .polski-pro-card__lock { display: inline-block; margin-bottom: 6px; }
+.polski-admin-shell .polski-pro-card__cta { margin-top: auto; }
 .polski-admin-shell .polski-pro-card__title { margin: 0 0 6px; font-size: 14px; line-height: 1.3; color: var(--pl-ink, #1d2327); }
-.polski-admin-shell .polski-pro-card__desc { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--pl-slate, #646970); }
+.polski-admin-shell .polski-pro-card__desc { margin: 0 0 12px; font-size: 12.5px; line-height: 1.5; color: var(--pl-slate, #646970); }
 
 @media (prefers-reduced-motion: no-preference) {
     .polski-admin-shell .polski-pro-banner__cta,

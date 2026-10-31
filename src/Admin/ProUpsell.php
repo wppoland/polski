@@ -230,6 +230,7 @@ final class ProUpsell
         }
         $features = $this->features();
         $name     = (string) ($this->data()['name'] ?? 'Polski PRO');
+        $url      = $this->url();
         ?>
         <section class="polski-pro-cards" aria-labelledby="polski-pro-cards-h">
             <h2 id="polski-pro-cards-h" class="polski-pro-cards__title">
@@ -246,6 +247,11 @@ final class ProUpsell
                         <?php if ($f['desc'] !== '') : ?>
                             <p class="polski-pro-card__desc"><?php echo esc_html($f['desc']); ?></p>
                         <?php endif; ?>
+                        <a class="button polski-pro-card__cta" href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php
+                        /* translators: %s: PRO feature title */
+                        echo esc_attr(sprintf(__('Upgrade to PRO: %s', 'polski'), $f['title'])); ?>">
+                            <?php esc_html_e('Upgrade to PRO', 'polski'); ?>
+                        </a>
                     </article>
                 <?php endforeach; ?>
             </div>
