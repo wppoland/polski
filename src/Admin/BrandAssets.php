@@ -13,10 +13,10 @@ defined('ABSPATH') || exit;
  *
  * Core Web Vitals safe: self-hosted woff2 with font-display:swap, no @import in
  * shipped CSS, admin-only (never enqueued on the storefront). Registers
- * `polski-fonts` and `polski-brand` so every Polski admin stylesheet (menu icon,
- * modules, the React dashboard) can depend on `polski-brand` and resolve the
- * --pl-* tokens. Only the above-the-fold wordmark weight (Schibsted 900) is
- * preloaded, and only on Polski screens.
+ * `polski-fonts` and `polski-brand` so every Polski admin stylesheet (modules,
+ * the React dashboard) can depend on `polski-brand` and resolve the --pl-*
+ * tokens; other admin screens load neither. Only the above-the-fold wordmark
+ * weight (Schibsted 900) is preloaded, and only on Polski screens.
  */
 final class BrandAssets implements HasHooks
 {
@@ -27,12 +27,18 @@ final class BrandAssets implements HasHooks
         add_action('admin_head', [$this, 'preloadWordmark']);
     }
 
-    public function enqueueBase(): void
+    public function enqueueBase(string $hookSuffix = ''): void
     {
         $base = plugins_url('assets/css/', \Polski\PLUGIN_FILE);
 
-        wp_enqueue_style('polski-fonts', $base . 'polski-fonts.css', [], \Polski\VERSION);
-        wp_enqueue_style('polski-brand', $base . 'polski-brand.css', ['polski-fonts'], \Polski\VERSION);
+        // Registered on every screen so any sheet that depends on polski-brand
+        // pulls it in; enqueued outright only on Polski's own screens.
+        wp_register_style('polski-fonts', $base . 'polski-fonts.css', [], \Polski\VERSION);
+        wp_register_style('polski-brand', $base . 'polski-brand.css', ['polski-fonts'], \Polski\VERSION);
+
+        if (str_contains($hookSuffix, 'polski')) {
+            wp_enqueue_style('polski-brand');
+        }
     }
 
     public function preloadWordmark(): void

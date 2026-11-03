@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.44.2
+Stable tag: 1.44.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.44.3 =
+* Performance: the Polski admin fonts and design stylesheet now load only on Polski screens. Other wp-admin screens load just the 2 KB menu icon.
 
 = 1.44.2 =
 * Performance: Badges, AJAX Search and Product Slider load their stylesheet and script only on pages that show them. Before, an enabled module loaded them on every page, plain pages and posts included.
