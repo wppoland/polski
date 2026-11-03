@@ -716,7 +716,7 @@ final class ProductMetaBox implements HasHooks
             if (! isset($_POST[$key])) {
                 $sanitized = $type === 'checkbox' ? 'no' : '';
             } else {
-                // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- every branch of the match below sanitises $raw for its type.
                 $raw = (string) wp_unslash($_POST[$key]);
 
                 // Do NOT pre-sanitise with sanitize_text_field: it folds every
@@ -760,7 +760,7 @@ final class ProductMetaBox implements HasHooks
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce/capability before this hook fires.
         $posted = isset($_POST['polski_nutrient']) && is_array($_POST['polski_nutrient'])
             // phpcs:ignore WordPress.Security.NonceVerification.Missing
-            ? wp_unslash($_POST['polski_nutrient'])
+            ? map_deep(wp_unslash($_POST['polski_nutrient']), 'sanitize_text_field')
             : [];
 
         $pairs = [];
