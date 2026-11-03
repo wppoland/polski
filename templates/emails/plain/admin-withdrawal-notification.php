@@ -36,7 +36,7 @@ echo "= " . esc_html(wp_strip_all_tags($email_heading)) . " =\n\n";
 printf(
     /* translators: %s = declaration id */
     esc_html__('A new withdrawal declaration %s has been registered in your store.', 'polski'),
-    $declaration_id
+    esc_html($declaration_id)
 );
 echo "\n\n";
 
