@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.44.3
+Stable tag: 1.44.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.44.4 =
+* Fix: the guest withdrawal form now finds an order by its custom order number on shops that store orders as posts. Before, the lookup ignored the number there and could pick the newest order in the shop.
+* Fix: the "none" option in page dropdowns on the module settings screen is now escaped.
 
 = 1.44.3 =
 * Performance: the Polski admin fonts and design stylesheet now load only on Polski screens. Other wp-admin screens load just the 2 KB menu icon.

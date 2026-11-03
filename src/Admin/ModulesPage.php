@@ -2216,9 +2216,10 @@ final class ModulesPage implements HasHooks
                 echo '</select>';
             } elseif ($type === 'page_select') {
                 wp_dropdown_pages([
-                    'name' => $inputName,
+                    'name' => $inputName, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_dropdown_pages() runs the name through esc_attr() itself.
                     'selected' => (int) $currentValue,
-                    'show_option_none' => '-- ' . __('none', 'polski') . ' --',
+                    // wp_dropdown_pages() prints show_option_none raw.
+                    'show_option_none' => '-- ' . esc_html__('none', 'polski') . ' --',
                     'option_none_value' => '0',
                     'class' => 'polski-field__control',
                 ]);

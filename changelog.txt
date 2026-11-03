@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.44.4 =
+* Fix: the guest withdrawal form now finds an order by its custom order number on shops that store orders as posts. Before, the lookup ignored the number there and could pick the newest order in the shop.
+* Fix: the "none" option in page dropdowns on the module settings screen is now escaped.
+
 = 1.44.3 =
 * Performance: the Polski admin fonts and design stylesheet now load only on Polski screens. Other wp-admin screens load just the 2 KB menu icon.
 

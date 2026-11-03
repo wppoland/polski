@@ -321,33 +321,35 @@ final class GuestWithdrawalService implements HasHooks
             }
         }
 
-        $orders = wc_get_orders([
-            'limit' => 1,
-            'orderby' => 'date',
-            'order' => 'DESC',
-            'meta_query' => [
-                'relation' => 'OR',
-                [
-                    'key' => '_order_number',
-                    'value' => $cleanOrderNumber,
-                ],
-                [
-                    'key' => '_order_number_formatted',
-                    'value' => $cleanOrderNumber,
-                ],
-                [
-                    'key' => 'order_number',
-                    'value' => $cleanOrderNumber,
-                ],
-                [
-                    'key' => '_sequential_order_number',
-                    'value' => $cleanOrderNumber,
-                ],
-            ],
-        ]);
+        // One query per key with the top-level meta_key/meta_value args: both
+        // order datastores honour those, while the CPT datastore drops a
+        // meta_query and returns every order unfiltered.
+        $found = null;
 
-        if (is_array($orders) && isset($orders[0]) && $orders[0] instanceof \WC_Order) {
-            return $orders[0];
+        foreach (['_order_number', '_order_number_formatted', 'order_number', '_sequential_order_number'] as $metaKey) {
+            $orders = wc_get_orders([
+                'limit' => 1,
+                'orderby' => 'date',
+                'order' => 'DESC',
+                'meta_key' => $metaKey,
+                'meta_value' => $cleanOrderNumber,
+            ]);
+
+            $order = is_array($orders) ? ($orders[0] ?? null) : null;
+
+            if (! $order instanceof \WC_Order) {
+                continue;
+            }
+
+            // Keep the newest match across keys, as the single OR query did.
+            if (! $found instanceof \WC_Order
+                || (int) $order->get_date_created()?->getTimestamp() > (int) $found->get_date_created()?->getTimestamp()) {
+                $found = $order;
+            }
+        }
+
+        if ($found instanceof \WC_Order) {
+            return $found;
         }
 
         if ($id > 0) {

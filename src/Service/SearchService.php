@@ -370,7 +370,6 @@ final class SearchService implements Bootable, HasHooks
         // search clause. Move to a FULLTEXT index if a catalogue ever outgrows it.
         $cap = 500;
 
-        $metaPlaceholders = implode(',', array_fill(0, count($metaKeys), '%s'));
         // A variation's SKU lives on the variation post; the shopper needs the
         // product that sells it, so a variation hit counts as its parent.
         $metaIds = $wpdb->get_col(
@@ -378,21 +377,20 @@ final class SearchService implements Bootable, HasHooks
                 "SELECT DISTINCT IF(p.post_type = 'product_variation', p.post_parent, p.ID)
                  FROM {$wpdb->postmeta} pm
                  INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-                 WHERE pm.meta_key IN ({$metaPlaceholders}) AND pm.meta_value LIKE %s
+                 WHERE pm.meta_key IN (" . implode(',', array_fill(0, count($metaKeys), '%s')) . ") AND pm.meta_value LIKE %s
                  LIMIT %d",
-                [...$metaKeys, $like, $cap],
+                array_merge($metaKeys, [$like, $cap]),
             )
         );
 
-        $taxPlaceholders = implode(',', array_fill(0, count($taxonomies), '%s'));
         $taxIds = $wpdb->get_col(
             $wpdb->prepare(
                 "SELECT DISTINCT tr.object_id FROM {$wpdb->term_relationships} tr
                  INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
                  INNER JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
-                 WHERE tt.taxonomy IN ({$taxPlaceholders}) AND t.name LIKE %s
+                 WHERE tt.taxonomy IN (" . implode(',', array_fill(0, count($taxonomies), '%s')) . ") AND t.name LIKE %s
                  LIMIT %d",
-                [...$taxonomies, $like, $cap],
+                array_merge($taxonomies, [$like, $cap]),
             )
         );
 
