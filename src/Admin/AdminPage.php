@@ -479,7 +479,7 @@ final class AdminPage implements Bootable, HasHooks
         wp_enqueue_style(
             'polski-admin-menu-icon',
             plugins_url('assets/css/admin-menu-icon.css', PLUGIN_FILE),
-            ['polski-brand'],
+            [],
             \Polski\VERSION,
         );
     }

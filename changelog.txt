@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.44.3 =
+* Performance: the Polski admin fonts and design stylesheet now load only on Polski screens. Other wp-admin screens load just the 2 KB menu icon.
+
 = 1.44.2 =
 * Performance: Badges, AJAX Search and Product Slider load their stylesheet and script only on pages that show them. Before, an enabled module loaded them on every page, plain pages and posts included.
 
