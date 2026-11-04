@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.0 =
+* Added: Energy label module. An arrow in the colour of the energy efficiency class next to the price, opening the label, and a link to the product information sheet (Regulation (EU) 2017/1369 art. 5(1)(a)). Off until enabled.
+
 = 1.44.4 =
 * Fix: the guest withdrawal form now finds an order by its custom order number on shops that store orders as posts. Before, the lookup ignored the number there and could pick the newest order in the shop.
 * Fix: the "none" option in page dropdowns on the module settings screen is now escaped.

@@ -484,6 +484,7 @@ return static function (Container $c): void {
         $c->get(ConsumerInformationService::class),
         $c->get(ShopmarkManager::class),
         $c->get(TemplateLoader::class),
+        new \Polski\Service\EnergyLabelService(),
     ));
 
     $c->singleton(CheckoutHooks::class, static fn () => new CheckoutHooks(

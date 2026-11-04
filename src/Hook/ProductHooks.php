@@ -30,6 +30,7 @@ final class ProductHooks implements Bootable, HasHooks
         private readonly ConsumerInformationService $consumerInfo,
         private readonly ShopmarkManager $shopmarks,
         private readonly TemplateLoader $templateLoader,
+        private readonly \Polski\Service\EnergyLabelService $energyLabel,
     ) {
     }
 
@@ -59,7 +60,21 @@ final class ProductHooks implements Bootable, HasHooks
      */
     public function filterVariablePriceHtml(string $priceHtml, \WC_Product $product): string
     {
-        return $this->priceDisplay->getFromPriceHtml($priceHtml, $product);
+        $priceHtml = $this->priceDisplay->getFromPriceHtml($priceHtml, $product);
+
+        // Annex VIII wants the energy arrow next to the price, so it rides the price HTML.
+        if ($priceHtml === '' || is_admin()) {
+            return $priceHtml;
+        }
+
+        $arrow = $this->energyLabel->getArrowHtml($product);
+
+        if ($arrow !== '') {
+            // Own handle: polski-frontend only loads on checkout and account pages.
+            wp_enqueue_style('polski-energy-label', \Polski\Plugin::instance()->url('assets/css/energy-label.css'), [], \Polski\VERSION);
+        }
+
+        return $priceHtml . $arrow;
     }
 
     /**

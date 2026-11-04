@@ -48,6 +48,7 @@ namespace Polski\Service {
     }
     class FoodService { public array $nutrients = []; public function getNutrients($p): array { return $this->nutrients; } }
     class ConsumerInformationService {}
+    class EnergyLabelService {}
 }
 namespace Polski\Shopmark { class Location {} class Shopmark {} class ShopmarkManager {} }
 namespace Polski\Util { class TemplateLoader {} }
@@ -69,6 +70,7 @@ $hooks = new \Polski\Hook\ProductHooks(
     new \Polski\Service\ConsumerInformationService(),
     new \Polski\Shopmark\ShopmarkManager(),
     new \Polski\Util\TemplateLoader(),
+    new \Polski\Service\EnergyLabelService(),
 );
 
 $product = new \WC_Product();
