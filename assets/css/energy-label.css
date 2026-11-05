@@ -1,0 +1,51 @@
+/* Energy label arrow, Delegated Regulation (EU) 2019/2014 Annex VIII point 2:
+   class letter in white bold at the price's font size, range in black, black
+   border around the arrow. Sized in em so it follows the price it sits beside. */
+.polski-energy {
+	/* Block with inline children, so a centred product grid centres it too. */
+	display: block;
+	margin: 0.25em 0;
+}
+
+.polski-energy__arrow {
+	display: inline-flex;
+	align-items: stretch;
+	vertical-align: middle;
+	margin-right: 0.5em;
+	text-decoration: none;
+	line-height: 1;
+	filter: drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);
+}
+
+.polski-energy__range {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.1em 0.2em;
+	background: #fff;
+	color: #000;
+	/* The range must stay legible in a small catalogue price too. */
+	font-size: max(0.45em, 9px);
+	font-weight: 700;
+}
+
+.polski-energy__class {
+	min-width: 1.4em;
+	padding: 0.15em 0.9em 0.15em 0.35em;
+	background: var(--polski-energy-color, #000);
+	color: #fff;
+	font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+	font-weight: 700;
+	text-align: center;
+	clip-path: polygon(0 0, calc(100% - 0.6em) 0, 100% 50%, calc(100% - 0.6em) 100%, 0 100%);
+}
+
+.polski-energy__arrow:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+.polski-energy__sheet {
+	font-size: 0.875em;
+	vertical-align: middle;
+}

@@ -420,6 +420,43 @@ final class ProductMetaBox implements HasHooks
             echo '</div>';
         }
 
+        if (ModulesPage::isModuleEnabled('energy_label')) {
+            $classes = \Polski\Service\EnergyLabelService::CLASSES;
+            $scales = array_keys(\Polski\Service\EnergyLabelService::SCALES);
+
+            echo '<div class="options_group">';
+            echo '<h4 style="padding-left:12px;">' . esc_html__('Energy label', 'polski') . '</h4>';
+
+            woocommerce_wp_select([
+                'id' => '_polski_energy_class',
+                'label' => __('Energy efficiency class', 'polski'),
+                'options' => ['' => __('None', 'polski')] + array_combine($classes, $classes),
+            ]);
+            woocommerce_wp_select([
+                'id' => '_polski_energy_scale',
+                'label' => __('Scale', 'polski'),
+                'options' => array_combine($scales, array_map(static fn (string $s): string => str_replace('-', ' - ', $s), $scales)),
+                'description' => __('The range printed on the label. Rescaled product groups use A to G.', 'polski'),
+                'desc_tip' => true,
+            ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_energy_label_url',
+                'type' => 'url',
+                'label' => __('Energy label URL', 'polski'),
+                'description' => __('The label image or PDF from the supplier, for example the EPREL label link.', 'polski'),
+                'desc_tip' => true,
+            ]);
+            woocommerce_wp_text_input([
+                'id' => '_polski_energy_sheet_url',
+                'type' => 'url',
+                'label' => __('Product information sheet URL', 'polski'),
+                'description' => __('The sheet from the supplier, or the product page in the EPREL database.', 'polski'),
+                'desc_tip' => true,
+            ]);
+
+            echo '</div>';
+        }
+
         if (ModulesPage::isModuleEnabled('power_supply')) {
             echo '<div class="options_group">';
             echo '<h4 style="padding-left:12px;">' . esc_html__('Power supply', 'polski') . '</h4>';
@@ -629,6 +666,10 @@ final class ProductMetaBox implements HasHooks
         '_polski_update_period_months' => 'consumer_information',
         '_polski_repair_info' => 'consumer_information',
         '_polski_power_supply' => 'power_supply',
+        '_polski_energy_class' => 'energy_label',
+        '_polski_energy_scale' => 'energy_label',
+        '_polski_energy_label_url' => 'energy_label',
+        '_polski_energy_sheet_url' => 'energy_label',
         '_polski_badge_text' => 'badge_management',
         '_polski_badge_style' => 'badge_management',
         '_polski_badge_secondary_text' => 'badge_management',
@@ -688,6 +729,10 @@ final class ProductMetaBox implements HasHooks
             '_polski_update_period_months' => 'int',
             '_polski_repair_info' => 'textarea',
             '_polski_power_supply' => 'textarea',
+            '_polski_energy_class' => 'energy_class',
+            '_polski_energy_scale' => 'energy_scale',
+            '_polski_energy_label_url' => 'url',
+            '_polski_energy_sheet_url' => 'url',
             '_polski_green_claim_basis' => 'textarea',
             '_polski_green_claim_cert_url' => 'url',
             '_polski_green_claim_expiry' => 'string',
@@ -733,6 +778,8 @@ final class ProductMetaBox implements HasHooks
                     'url' => esc_url_raw(sanitize_text_field($raw)),
                     'string' => sanitize_text_field($raw),
                     'checkbox' => sanitize_text_field($raw) === 'yes' ? 'yes' : 'no',
+                    'energy_class' => in_array($raw, \Polski\Service\EnergyLabelService::CLASSES, true) ? $raw : '',
+                    'energy_scale' => isset(\Polski\Service\EnergyLabelService::SCALES[$raw]) ? $raw : 'A-G',
                 };
             }
 
