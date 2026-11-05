@@ -778,7 +778,7 @@ final class ProductMetaBox implements HasHooks
                     'url' => esc_url_raw(sanitize_text_field($raw)),
                     'string' => sanitize_text_field($raw),
                     'checkbox' => sanitize_text_field($raw) === 'yes' ? 'yes' : 'no',
-                    'energy_class' => in_array($raw, \Polski\Service\EnergyLabelService::CLASSES, true) ? $raw : '',
+                    'energy_class' => array_values(array_intersect([$raw], \Polski\Service\EnergyLabelService::CLASSES))[0] ?? '',
                     'energy_scale' => isset(\Polski\Service\EnergyLabelService::SCALES[$raw]) ? $raw : 'A-G',
                 };
             }
