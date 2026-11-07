@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.1 =
+* Fix: a variation now shows its own energy efficiency class when one is set on it, instead of always showing the parent product's class. Reported on GitHub (#135).
+
 = 1.45.0 =
 * Added: Energy label module. An arrow in the colour of the energy efficiency class next to the price, opening the label, and a link to the product information sheet (Regulation (EU) 2017/1369 art. 5(1)(a)). Off until enabled.
 

@@ -75,8 +75,13 @@ final class EnergyLabelService
      */
     public function getData(\WC_Product $product): array
     {
-        // shortcut: variations inherit the parent's label; per-variation fields when a shop sells sizes with different classes.
-        $source = $product->is_type('variation') ? (wc_get_product($product->get_parent_id()) ?: $product) : $product;
+        // A variation with its own class carries its own full label; otherwise
+        // it falls back to the parent's. Partial overrides are not supported:
+        // a model sold in sizes with different classes needs a class set on
+        // each size that differs, not a mix of inherited and own fields.
+        $source = $product->is_type('variation') && (string) $product->get_meta('_polski_energy_class', true) === ''
+            ? (wc_get_product($product->get_parent_id()) ?: $product)
+            : $product;
 
         return [
             'class' => (string) $source->get_meta('_polski_energy_class', true),

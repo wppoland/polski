@@ -59,7 +59,11 @@ namespace {
     $ok('a class outside the scale renders nothing', '' === $s->getArrowHtml(new WC_Product(array_merge($label, ['_polski_energy_class' => 'A+++']))));
 
     $GLOBALS['products'][7] = new WC_Product($label);
-    $ok('a variation shows its parent label', str_contains($s->getArrowHtml(new WC_Product([], 'variation', 7)), '>B<'));
+    $ok('a variation with no class of its own shows the parent label', str_contains($s->getArrowHtml(new WC_Product([], 'variation', 7)), '>B<'));
+
+    $ownClass = ['_polski_energy_class' => 'F', '_polski_energy_label_url' => 'https://eprel.example/variation-label.png'];
+    $ok('a variation with its own class shows its own label, not the parent\'s', str_contains($s->getArrowHtml(new WC_Product($ownClass, 'variation', 7)), '>F<'));
+    $ok('switching the variation class off again falls back to the parent', str_contains($s->getArrowHtml(new WC_Product(['_polski_energy_class' => ''], 'variation', 7)), '>B<'));
 
     $GLOBALS['opts']['polski_modules']['energy_label'] = false;
     $ok('module off renders nothing', '' === $s->getArrowHtml(new WC_Product($label)));
