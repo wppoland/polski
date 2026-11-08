@@ -554,6 +554,13 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 = 1.38.3 =
 * Fixed: a single timed-out call to an external register was reported to the customer as a definite answer. A GUS lookup that never got through said "no data found for that VAT ID", and a VIES check that timed out read as a failed check. Calls that are safe to repeat, the GUS lookup, the VIES check, the legal-page fetch and the social-login profile read, are now retried once after a timeout or a 5xx. Writes are not retried, so nothing is posted, charged or consumed twice.
 
+Only the most recent releases are listed here. The full history is on the plugin's changelog
+page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
+and in changelog.txt inside the plugin folder. WordPress.org silently truncates
+a changelog over 5000 words, which is why this one is kept short on purpose.
+
+== Upgrade Notice ==
+
 = 1.43.8 =
 Security release. Default installations are not exposed; it matters only when the free plugin is uninstalled with data removal on while Polski PRO stays installed. Update, nothing else to do.
 
@@ -580,3 +587,9 @@ Security release. Withdrawal forms for guest orders, and hidden products in Quic
 
 = 1.40.1 =
 Security release. Withdrawal abilities no longer expose another customer's order items. Update recommended.
+
+= 1.37.1 =
+Security release. This is the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
+
+= 1.37.0 =
+Security release. Default installations are not exposed: social login is off unless you enabled the module and entered Google or Facebook credentials. If you use it, update now; nothing else to do.
