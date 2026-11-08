@@ -554,21 +554,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 = 1.38.3 =
 * Fixed: a single timed-out call to an external register was reported to the customer as a definite answer. A GUS lookup that never got through said "no data found for that VAT ID", and a VIES check that timed out read as a failed check. Calls that are safe to repeat, the GUS lookup, the VIES check, the legal-page fetch and the social-login profile read, are now retried once after a timeout or a 5xx. Writes are not retried, so nothing is posted, charged or consumed twice.
 
-= 1.38.2 =
-* Fixed: the NIP field accepted anything that was not a number. Sanitising ran before validation and stripped every non-digit, so "abcdef" reached the check as an empty string, and an empty string means "left blank". The customer saw their text accepted, the shop received no NIP. Letters, a too-short number and a wrong checksum are now all rejected, on the checkout and in My Account. Reported by strid3rr on the support forum.
-* Fixed: the NIP field was registered as an address field, so WooCommerce rendered one copy in the billing address and a second in the shipping address, and nothing compared the two numbers. A VAT ID belongs to the buyer rather than to a place, so it is now a contact field and appears once. Values saved under the old address key are moved on first save.
-* Fixed: with both the NIP and the B2B checkout modules on, the NIP field was registered by nobody. The NIP module stepped aside "because B2B handles it" and B2B never had a NIP field, so it vanished from block checkout and from My Account.
-* Fixed: a NIP saved in My Account had to be typed again at checkout, and the address summary could show a different number than the edit form. The two screens wrote to two different customer meta keys and nothing bridged them. Every screen now reads and writes the same number.
-* Fixed: entering a NIP on the block checkout did not fill in the company details. The lookup wrote to the DOM ids the shortcode checkout uses, and block checkout renders its inputs from a data store, so anything written that way was discarded on the next render. It now goes through the store, which is what the block fields read.
-* Fixed: My Account > Addresses saved an invalid NIP without a word. WooCommerce checks a custom field's required flag and its type there and nothing else, so the checksum is now checked on that form too.
-
-Only the most recent releases are listed here. The full history is on the plugin's changelog
-page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
-and in changelog.txt inside the plugin folder. WordPress.org silently truncates
-a changelog over 5000 words, which is why this one is kept short on purpose.
-
-== Upgrade Notice ==
-
 = 1.43.8 =
 Security release. Default installations are not exposed; it matters only when the free plugin is uninstalled with data removal on while Polski PRO stays installed. Update, nothing else to do.
 
@@ -595,9 +580,3 @@ Security release. Withdrawal forms for guest orders, and hidden products in Quic
 
 = 1.40.1 =
 Security release. Withdrawal abilities no longer expose another customer's order items. Update recommended.
-
-= 1.37.1 =
-Security release. This is the second half of 1.37.0. Default installations are not exposed: social login is off unless you enabled it and entered provider credentials. If you use it, update now.
-
-= 1.37.0 =
-Security release. Default installations are not exposed: social login is off unless you enabled the module and entered Google or Facebook credentials. If you use it, update now; nothing else to do.
