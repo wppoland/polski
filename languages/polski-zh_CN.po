@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-11-04T18:00:54+00:00\n"
+"POT-Creation-Date: 2026-11-08T12:14:23+00:00\n"
 "PO-Revision-Date: 2026-06-10 16:16:31+0000\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -206,7 +206,7 @@ msgstr ""
 msgid "detected, data is being synchronised"
 msgstr "已检测到，数据同步中"
 
-#: config/defaults.php:54 src/Admin/ModulesPage.php:3050
+#: config/defaults.php:54 src/Admin/ModulesPage.php:3053
 msgid "not installed"
 msgstr "未安装"
 
@@ -264,7 +264,8 @@ msgid ""
 "for your review."
 msgstr "您好 {first_name}，感谢您最近的购物。我们将非常感谢您的评价。"
 
-#: config/defaults.php:89 src/Service/ReviewRequestService.php:308
+#: config/defaults.php:89 src/Admin/AdminNotes.php:58
+#: src/Service/ReviewRequestService.php:308
 msgid "Leave a review"
 msgstr "留下评价"
 
@@ -562,7 +563,7 @@ msgid ""
 "we sent you."
 msgstr "您的账户正在等待激活！请查看您的电子邮箱并点击我们发送的链接。"
 
-#: config/defaults.php:204 src/Admin/ModulesPage.php:696
+#: config/defaults.php:204 src/Admin/ModulesPage.php:699
 #: src/Service/DoubleOptInService.php:154
 msgid "Invalid activation link."
 msgstr "无效的激活链接。"
@@ -571,12 +572,12 @@ msgstr "无效的激活链接。"
 msgid "Your account is now active. You can log in."
 msgstr "太好了！您的账户已激活。您现在可以放心登录了。"
 
-#: config/defaults.php:206 src/Admin/ModulesPage.php:698
+#: config/defaults.php:206 src/Admin/ModulesPage.php:701
 #: src/Email/DoubleOptInEmail.php:65 src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
 msgstr "在 {site_title} 激活您的账户"
 
-#: config/defaults.php:207 src/Admin/ModulesPage.php:699
+#: config/defaults.php:207 src/Admin/ModulesPage.php:702
 #: src/Email/DoubleOptInEmail.php:74 src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
 msgstr "确认您的电子邮件地址"
@@ -627,7 +628,7 @@ msgstr "请登录以发送此产品的报价询问。"
 msgid "Full name"
 msgstr "姓名"
 
-#: config/defaults.php:231 src/Admin/ModulesPage.php:2899
+#: config/defaults.php:231 src/Admin/ModulesPage.php:2902
 #: src/Admin/WithdrawalsAdminPage.php:396
 #: src/Service/CustomCheckoutFieldsService.php:710
 msgid "Email"
@@ -761,7 +762,7 @@ msgid "Company / VAT ID"
 msgstr "公司 / NIP"
 
 #: config/defaults.php:271 src/Admin/CRAIncidentsPage.php:127
-#: src/Admin/ModulesPage.php:1888
+#: src/Admin/ModulesPage.php:1891
 msgid "Actions"
 msgstr "操作"
 
@@ -807,12 +808,12 @@ msgstr "此产品的价格已隐藏。"
 msgid "Online purchase is disabled for this product."
 msgstr "此产品的在线购买已禁用。"
 
-#: config/defaults.php:318 src/Admin/ModulesPage.php:733
+#: config/defaults.php:318 src/Admin/ModulesPage.php:736
 #: templates/forms/ajax-search.php:17
 msgid "Search products"
 msgstr "搜索商品"
 
-#: config/defaults.php:319 src/Admin/ModulesPage.php:734
+#: config/defaults.php:319 src/Admin/ModulesPage.php:737
 #: templates/forms/ajax-search.php:40
 msgid "Product search results"
 msgstr "商品搜索结果"
@@ -828,7 +829,7 @@ msgstr "SKU"
 msgid "Search products, SKUs or categories"
 msgstr "搜索产品、SKU 代码或类别"
 
-#: config/defaults.php:322 src/Admin/ModulesPage.php:737
+#: config/defaults.php:322 src/Admin/ModulesPage.php:740
 msgid "Search"
 msgstr "搜索"
 
@@ -919,8 +920,8 @@ msgstr "显示筛选器"
 msgid "Close"
 msgstr "关闭"
 
-#: config/defaults.php:397 src/Admin/ModulesPage.php:814
-#: src/Admin/ModulesPage.php:832 src/Service/WishlistService.php:228
+#: config/defaults.php:397 src/Admin/ModulesPage.php:817
+#: src/Admin/ModulesPage.php:835 src/Service/WishlistService.php:228
 msgid "Wishlist"
 msgstr "心愿单"
 
@@ -1087,7 +1088,7 @@ msgstr "合计："
 msgid "{count} products from the bundle were added to the cart."
 msgstr "已将套装中的 {count} 件产品加入购物车。"
 
-#: config/defaults.php:521 src/Admin/ModulesPage.php:1026
+#: config/defaults.php:521 src/Admin/ModulesPage.php:1029
 #: src/Service/BadgeService.php:180
 msgid "Sale"
 msgstr "促销"
@@ -1503,18 +1504,28 @@ msgid ""
 msgstr ""
 "Polski 需要 WooCommerce %1$s 或更高版本。您当前运行的是 WooCommerce %2$s。"
 
-#: src/Admin/AdminNotes.php:46 src/Admin/CRAIncidentsPage.php:279
-#: src/Admin/CRAIncidentsPage.php:312 src/Admin/SBOMPage.php:82
-#: src/Service/ComplaintTemplateService.php:82
+#: src/Admin/AdminNotes.php:57
+msgid ""
+"Polski has been running in your shop for two weeks. If it helps you, a short "
+"review on WordPress.org helps other shops find it."
+msgstr ""
+
+#: src/Admin/AdminNotes.php:59
+msgid "No, thanks"
+msgstr ""
+
+#: src/Admin/AdminNotes.php:72 src/Admin/AdminNotes.php:112
+#: src/Admin/CRAIncidentsPage.php:279 src/Admin/CRAIncidentsPage.php:312
+#: src/Admin/SBOMPage.php:82 src/Service/ComplaintTemplateService.php:82
 #: src/Service/RodoTrainingDocsService.php:77
 msgid "Insufficient permissions."
 msgstr "权限不足。"
 
-#: src/Admin/AdminNotes.php:81
+#: src/Admin/AdminNotes.php:147
 msgid "Configure Polski for your store"
 msgstr "为您的商店配置 Polski"
 
-#: src/Admin/AdminNotes.php:83
+#: src/Admin/AdminNotes.php:149
 msgid ""
 "A few clicks away from a fully prepared, professional WooCommerce store. "
 "Complete these steps quickly!"
@@ -1522,15 +1533,15 @@ msgstr ""
 "只需点击几下，即可拥有一个完全准备就绪的专业 WooCommerce 商店。快速完成这些步"
 "骤！"
 
-#: src/Admin/AdminNotes.php:90 src/Admin/AdminPage.php:1012
+#: src/Admin/AdminNotes.php:156 src/Admin/AdminPage.php:1012
 msgid "Launch setup wizard"
 msgstr "启动设置向导"
 
-#: src/Admin/AdminNotes.php:131
+#: src/Admin/AdminNotes.php:197
 msgid "OSS plugin is missing"
 msgstr "缺少 OSS 插件"
 
-#: src/Admin/AdminNotes.php:133
+#: src/Admin/AdminNotes.php:199
 msgid ""
 "You enabled the OSS observer, which requires the standalone One Stop Shop "
 "plugin. Install it to start monitoring the €10,000 intra-EU B2C delivery "
@@ -1539,7 +1550,7 @@ msgstr ""
 "您启用了 OSS 观察器，它需要独立的 One Stop Shop 插件。请安装它，以便自动监控 "
 "10,000 € 的欧盟内部 B2C 配送阈值。"
 
-#: src/Admin/AdminNotes.php:140
+#: src/Admin/AdminNotes.php:206
 msgid "Install now"
 msgstr "立即安装"
 
@@ -1595,7 +1606,7 @@ msgstr "设置已保存。"
 msgid "Back to modules"
 msgstr "返回模块"
 
-#: src/Admin/AdminPage.php:423 src/Admin/ModulesPage.php:1886
+#: src/Admin/AdminPage.php:423 src/Admin/ModulesPage.php:1889
 #: src/Service/CustomCheckoutFieldsService.php:735
 msgid "Enabled"
 msgstr "已启用"
@@ -1755,7 +1766,7 @@ msgstr "DSA 报告"
 msgid "Handling of content notices under the Digital Services Act."
 msgstr "管理数字内容侵权举报（数字服务法）。"
 
-#: src/Admin/AdminPage.php:789 src/Admin/ModulesPage.php:1221
+#: src/Admin/AdminPage.php:789 src/Admin/ModulesPage.php:1224
 #: src/Service/SecurityIncidentService.php:140
 msgid "Incident log"
 msgstr "事件日志"
@@ -3329,7 +3340,7 @@ msgstr "仅限促销产品"
 msgid "Show info only when the product has a sale price"
 msgstr "仅在产品有促销价时显示信息"
 
-#: src/Admin/ModulesPage.php:279 src/Admin/ModulesPage.php:1117
+#: src/Admin/ModulesPage.php:279 src/Admin/ModulesPage.php:1120
 msgid "Product page"
 msgstr "产品页面"
 
@@ -3337,7 +3348,7 @@ msgstr "产品页面"
 msgid "Product lists (shop, categories)"
 msgstr "产品列表（商店、分类）"
 
-#: src/Admin/ModulesPage.php:281 src/Admin/ModulesPage.php:1118
+#: src/Admin/ModulesPage.php:281 src/Admin/ModulesPage.php:1121
 #: src/Service/LiveCartService.php:81 src/Service/LiveCartService.php:128
 #: src/Service/LiveCartService.php:139
 msgid "Cart"
@@ -3456,7 +3467,7 @@ msgstr "变量：{time}"
 msgid "Default delivery time"
 msgstr "默认交付时间"
 
-#: src/Admin/ModulesPage.php:331 src/Admin/ModulesPage.php:754
+#: src/Admin/ModulesPage.php:331 src/Admin/ModulesPage.php:757
 msgid "Show on product listings"
 msgstr "在商品列表显示"
 
@@ -3494,9 +3505,9 @@ msgid ""
 "Polish law."
 msgstr "根据波兰法律，将下单按钮文本更改为“下单并承担付款义务”。"
 
-#: src/Admin/ModulesPage.php:358 src/Admin/ModulesPage.php:737
-#: src/Admin/ModulesPage.php:808 src/Admin/ModulesPage.php:898
-#: src/Admin/ModulesPage.php:1060 src/Admin/ModulesPage.php:1083
+#: src/Admin/ModulesPage.php:358 src/Admin/ModulesPage.php:740
+#: src/Admin/ModulesPage.php:811 src/Admin/ModulesPage.php:901
+#: src/Admin/ModulesPage.php:1063 src/Admin/ModulesPage.php:1086
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:50
 msgid "Button text"
 msgstr "按钮文本"
@@ -3808,21 +3819,21 @@ msgstr "已启用类别"
 msgid "Necessary cookies are always on and cannot be switched off."
 msgstr "必要 cookie 始终开启，无法关闭。"
 
-#: src/Admin/ModulesPage.php:465 src/Admin/ModulesPage.php:1337
-#: src/Admin/ModulesPage.php:2264 src/Admin/ModulesPage.php:2920
+#: src/Admin/ModulesPage.php:465 src/Admin/ModulesPage.php:1340
+#: src/Admin/ModulesPage.php:2267 src/Admin/ModulesPage.php:2923
 #: src/Enum/ConsentCategory.php:36 src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166 src/Service/DPATrackerService.php:178
 #: src/Service/DPATrackerService.php:208 src/Service/DPATrackerService.php:226
 msgid "Analytics"
 msgstr "分析"
 
-#: src/Admin/ModulesPage.php:466 src/Admin/ModulesPage.php:1338
-#: src/Admin/ModulesPage.php:2265 src/Enum/ConsentCategory.php:37
+#: src/Admin/ModulesPage.php:466 src/Admin/ModulesPage.php:1341
+#: src/Admin/ModulesPage.php:2268 src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr "营销"
 
-#: src/Admin/ModulesPage.php:467 src/Admin/ModulesPage.php:1336
-#: src/Admin/ModulesPage.php:2266 src/Enum/ConsentCategory.php:38
+#: src/Admin/ModulesPage.php:467 src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:2269 src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr "偏好"
 
@@ -3926,7 +3937,7 @@ msgstr "订单操作标签"
 msgid "Withdraw from contract"
 msgstr "撤回合同"
 
-#: src/Admin/ModulesPage.php:518 src/Admin/ModulesPage.php:1197
+#: src/Admin/ModulesPage.php:518 src/Admin/ModulesPage.php:1200
 msgid "Form title"
 msgstr "表单标题"
 
@@ -3999,8 +4010,8 @@ msgstr "权限错误提示"
 msgid "You do not have permission to withdraw from this order."
 msgstr "您无权撤回此订单。"
 
-#: src/Admin/ModulesPage.php:530 src/Admin/ModulesPage.php:1061
-#: src/Admin/ModulesPage.php:1198
+#: src/Admin/ModulesPage.php:530 src/Admin/ModulesPage.php:1064
+#: src/Admin/ModulesPage.php:1201
 msgid "Success message"
 msgstr "成功提示"
 
@@ -4071,11 +4082,11 @@ msgstr "变量：{order_number}、{order_date}、{withdrawal_date}"
 msgid "Confirmation email heading"
 msgstr "确认邮件标题"
 
-#: src/Admin/ModulesPage.php:540 src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:540 src/Admin/ModulesPage.php:703
 msgid "Email greeting"
 msgstr "邮件问候语"
 
-#: src/Admin/ModulesPage.php:540 src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:540 src/Admin/ModulesPage.php:703
 #: templates/emails/plain/withdrawal-confirmation.php:39
 #: templates/emails/withdrawal-confirmation.php:40
 msgid "Hello {name},"
@@ -4101,7 +4112,7 @@ msgstr "邮件中的原因标签"
 msgid "Return instruction in email"
 msgstr "邮件中的退货说明"
 
-#: src/Admin/ModulesPage.php:544 src/Admin/ModulesPage.php:705
+#: src/Admin/ModulesPage.php:544 src/Admin/ModulesPage.php:708
 msgid "Additional email content"
 msgstr "附加邮件内容"
 
@@ -4403,390 +4414,390 @@ msgid ""
 "harmonised notice or label of Implementing Regulation (EU) 2025/1960."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:658
+#: src/Admin/ModulesPage.php:661
 msgid "Show the legal guarantee reminder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:659
+#: src/Admin/ModulesPage.php:662
 msgid "Legal guarantee reminder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:664 src/Admin/ProductMetaBox.php:428
+#: src/Admin/ModulesPage.php:667 src/Admin/ProductMetaBox.php:428
 msgid "Energy label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:668
 msgid ""
 "Energy class arrow next to the price and the product information sheet link "
 "(Regulation (EU) 2017/1369 art. 5(1)(a); e.g. Delegated Regulation (EU) "
 "2019/2014 Annex VIII)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:677
 msgid "Power Supply Info"
 msgstr "电源信息"
 
-#: src/Admin/ModulesPage.php:675
+#: src/Admin/ModulesPage.php:678
 msgid "Energy consumption data for electrical devices (energy labels)."
 msgstr "电气设备的能耗数据（能效标签）。"
 
-#: src/Admin/ModulesPage.php:686
+#: src/Admin/ModulesPage.php:689
 msgid "Double Opt-In (DOI)"
 msgstr "双重确认（DOI）"
 
-#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:690
 msgid ""
 "Email address verification during account registration. Activation link sent "
 "by email, login block for unactivated accounts."
 msgstr ""
 "账户注册时的电子邮件地址验证。通过邮件发送激活链接，对未激活账户阻止登录。"
 
-#: src/Admin/ModulesPage.php:688
+#: src/Admin/ModulesPage.php:691
 msgid ""
 "Accounts created at checkout stay logged in for that session, because "
 "WooCommerce signs them in to finish the order; only their later logins wait "
 "for the activation link."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:694
+#: src/Admin/ModulesPage.php:697
 msgid "Delete inactive accounts after (days)"
 msgstr "在以下天数后删除未激活账户（天）"
 
-#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:698
 msgid "Login block message"
 msgstr "登录阻止提示"
 
-#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:698
 msgid ""
 "Your account is pending activation! Please check your email and click the "
 "activation link."
 msgstr "您的账户正在等待激活！请查收邮件并点击激活链接。"
 
-#: src/Admin/ModulesPage.php:696
+#: src/Admin/ModulesPage.php:699
 msgid "Invalid link message"
 msgstr "无效链接提示"
 
-#: src/Admin/ModulesPage.php:697
+#: src/Admin/ModulesPage.php:700
 msgid "Activation success message"
 msgstr "激活成功提示"
 
-#: src/Admin/ModulesPage.php:697
+#: src/Admin/ModulesPage.php:700
 msgid "Excellent! Your account has been activated. You can now log in."
 msgstr "太好了！您的账户已激活，现在可以登录了。"
 
-#: src/Admin/ModulesPage.php:698 src/Admin/ModulesPage.php:1068
-#: src/Admin/ModulesPage.php:1447
+#: src/Admin/ModulesPage.php:701 src/Admin/ModulesPage.php:1071
+#: src/Admin/ModulesPage.php:1450
 msgid "Email subject"
 msgstr "邮件主题"
 
-#: src/Admin/ModulesPage.php:698
+#: src/Admin/ModulesPage.php:701
 msgid "Variables: {site_title}"
 msgstr "变量：{site_title}"
 
-#: src/Admin/ModulesPage.php:699
+#: src/Admin/ModulesPage.php:702
 msgid "Email heading"
 msgstr "邮件标题"
 
-#: src/Admin/ModulesPage.php:700
+#: src/Admin/ModulesPage.php:703
 msgid "Variables: {name}"
 msgstr "变量：{name}"
 
-#: src/Admin/ModulesPage.php:701
+#: src/Admin/ModulesPage.php:704
 msgid "Email content HTML"
 msgstr "邮件内容 HTML"
 
-#: src/Admin/ModulesPage.php:701
+#: src/Admin/ModulesPage.php:704
 msgid ""
 "Thank you for creating an account. Click the button below to activate your "
 "account:"
 msgstr "感谢您创建账户。点击下方按钮以激活您的账户："
 
-#: src/Admin/ModulesPage.php:702
+#: src/Admin/ModulesPage.php:705
 msgid "Email button text"
 msgstr "邮件按钮文字"
 
-#: src/Admin/ModulesPage.php:702
+#: src/Admin/ModulesPage.php:705
 msgid "Activate account"
 msgstr "激活账户"
 
-#: src/Admin/ModulesPage.php:703
+#: src/Admin/ModulesPage.php:706
 msgid "Fallback link text"
 msgstr "备用链接文字"
 
-#: src/Admin/ModulesPage.php:703
+#: src/Admin/ModulesPage.php:706
 msgid "If you prefer, copy and paste this link into your browser:"
 msgstr "如果您愿意，可将此链接复制并粘贴到浏览器中："
 
-#: src/Admin/ModulesPage.php:704
+#: src/Admin/ModulesPage.php:707
 msgid "Email content plain text"
 msgstr "邮件纯文本内容"
 
-#: src/Admin/ModulesPage.php:704
+#: src/Admin/ModulesPage.php:707
 msgid ""
 "Thank you for creating an account. Visit the link below to activate your "
 "account:"
 msgstr "感谢您创建账户。访问下方链接以激活您的账户："
 
-#: src/Admin/ModulesPage.php:705
+#: src/Admin/ModulesPage.php:708
 msgid "If you did not create an account with us, please ignore this email."
 msgstr "如果您没有在我们这里创建账户，请忽略此邮件。"
 
-#: src/Admin/ModulesPage.php:712
+#: src/Admin/ModulesPage.php:715
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:28
 msgid "AJAX Search"
 msgstr "AJAX 搜索"
 
-#: src/Admin/ModulesPage.php:713
+#: src/Admin/ModulesPage.php:716
 msgid ""
 "Fast product suggestions while typing in the [polski_ajax_search] shortcode "
 "or the Polski AJAX Search block, with SKU support and categories."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:719 resources/js/blocks/ajax-search/index.js:45
+#: src/Admin/ModulesPage.php:722 resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
 msgstr "最少字符数"
 
-#: src/Admin/ModulesPage.php:719
+#: src/Admin/ModulesPage.php:722
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr "开始搜索前的最少字符数。建议：2-3"
 
-#: src/Admin/ModulesPage.php:720 resources/js/blocks/ajax-search/index.js:52
+#: src/Admin/ModulesPage.php:723 resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
 msgstr "结果数量上限"
 
-#: src/Admin/ModulesPage.php:720
+#: src/Admin/ModulesPage.php:723
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
 msgstr "下拉列表中显示的最多商品数。建议：4-8"
 
-#: src/Admin/ModulesPage.php:721
+#: src/Admin/ModulesPage.php:724
 msgid "Query debounce (ms)"
 msgstr "查询防抖（毫秒）"
 
-#: src/Admin/ModulesPage.php:721
+#: src/Admin/ModulesPage.php:724
 msgid ""
 "Delay in milliseconds before sending search request. Lower = faster but more "
 "server load"
 msgstr "发送搜索请求前的延迟（毫秒）。越低越快，但服务器负载越大"
 
-#: src/Admin/ModulesPage.php:722
+#: src/Admin/ModulesPage.php:725
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:44
 msgid "Show search button"
 msgstr "显示搜索按钮"
 
-#: src/Admin/ModulesPage.php:723
+#: src/Admin/ModulesPage.php:726
 msgid "Show thumbnails"
 msgstr "显示缩略图"
 
-#: src/Admin/ModulesPage.php:724 src/Admin/ModulesPage.php:1033
+#: src/Admin/ModulesPage.php:727 src/Admin/ModulesPage.php:1036
 msgid "Show prices"
 msgstr "显示价格"
 
-#: src/Admin/ModulesPage.php:725 src/Admin/ModulesPage.php:911
+#: src/Admin/ModulesPage.php:728 src/Admin/ModulesPage.php:914
 msgid "Show unit price"
 msgstr "显示单价"
 
-#: src/Admin/ModulesPage.php:726 src/Admin/ModulesPage.php:912
+#: src/Admin/ModulesPage.php:729 src/Admin/ModulesPage.php:915
 msgid "Show Omnibus lowest price"
 msgstr "显示 Omnibus 最低价格"
 
-#: src/Admin/ModulesPage.php:727 src/Admin/ModulesPage.php:913
+#: src/Admin/ModulesPage.php:730 src/Admin/ModulesPage.php:916
 msgid "Show SKU"
 msgstr "显示 SKU"
 
-#: src/Admin/ModulesPage.php:728
+#: src/Admin/ModulesPage.php:731
 msgid "Show view all results link"
 msgstr "显示查看全部结果链接"
 
-#: src/Admin/ModulesPage.php:729
+#: src/Admin/ModulesPage.php:732
 msgid "Search by SKU"
 msgstr "按 SKU 搜索"
 
-#: src/Admin/ModulesPage.php:730
+#: src/Admin/ModulesPage.php:733
 msgid "Search by categories"
 msgstr "按分类搜索"
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:734
 msgid "Search by attribute values"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:731
+#: src/Admin/ModulesPage.php:734
 msgid ""
 "Tick the global attributes whose values should be searchable, for example a "
 "colour or a material. Leave all unticked to skip attributes entirely."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:732
+#: src/Admin/ModulesPage.php:735
 msgid "Include out of stock products"
 msgstr "包含缺货商品"
 
-#: src/Admin/ModulesPage.php:733
+#: src/Admin/ModulesPage.php:736
 msgid "Search field label"
 msgstr "搜索字段标签"
 
-#: src/Admin/ModulesPage.php:734 resources/js/blocks/ajax-search/index.js:28
+#: src/Admin/ModulesPage.php:737 resources/js/blocks/ajax-search/index.js:28
 msgid "Results label"
 msgstr "结果标签"
 
-#: src/Admin/ModulesPage.php:735 src/Admin/ModulesPage.php:877
-#: src/Admin/ModulesPage.php:904
+#: src/Admin/ModulesPage.php:738 src/Admin/ModulesPage.php:880
+#: src/Admin/ModulesPage.php:907
 msgid "SKU label"
 msgstr "SKU 标签"
 
-#: src/Admin/ModulesPage.php:736
+#: src/Admin/ModulesPage.php:739
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
 #: src/Service/CustomCheckoutFieldsService.php:850
 #: resources/js/blocks/ajax-search/index.js:18
 msgid "Placeholder"
 msgstr "占位符"
 
-#: src/Admin/ModulesPage.php:736
+#: src/Admin/ModulesPage.php:739
 msgid "Search products, SKU codes or categories"
 msgstr "搜索商品、SKU 编码或分类"
 
-#: src/Admin/ModulesPage.php:738
+#: src/Admin/ModulesPage.php:741
 msgid "No results text"
 msgstr "无结果文字"
 
-#: src/Admin/ModulesPage.php:738
+#: src/Admin/ModulesPage.php:741
 msgid "No results found for your query."
 msgstr "未找到符合您查询的结果。"
 
-#: src/Admin/ModulesPage.php:739
+#: src/Admin/ModulesPage.php:742
 msgid "View all results text"
 msgstr "查看全部结果文字"
 
-#: src/Admin/ModulesPage.php:739
+#: src/Admin/ModulesPage.php:742
 msgid "View all results"
 msgstr "查看全部结果"
 
-#: src/Admin/ModulesPage.php:746 src/Admin/PostTypes.php:136
+#: src/Admin/ModulesPage.php:749 src/Admin/PostTypes.php:136
 msgid "Brands"
 msgstr "品牌"
 
-#: src/Admin/ModulesPage.php:747
+#: src/Admin/ModulesPage.php:750
 msgid ""
 "Support for product brands independent of the manufacturer, with views on "
 "product pages and listings, and its own taxonomy."
 msgstr ""
 "支持独立于制造商的商品品牌，可在商品页面和列表中展示，并拥有自己的分类法。"
 
-#: src/Admin/ModulesPage.php:753 src/Admin/ModulesPage.php:822
-#: src/Admin/ModulesPage.php:852 src/Admin/ModulesPage.php:935
-#: src/Admin/ModulesPage.php:990 src/Admin/ModulesPage.php:1025
-#: src/Admin/ModulesPage.php:1052 src/Admin/ModulesPage.php:1590
+#: src/Admin/ModulesPage.php:756 src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:855 src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:993 src/Admin/ModulesPage.php:1028
+#: src/Admin/ModulesPage.php:1055 src/Admin/ModulesPage.php:1593
 msgid "Show on product page"
 msgstr "在商品页面显示"
 
-#: src/Admin/ModulesPage.php:755 src/Admin/ModulesPage.php:2341
+#: src/Admin/ModulesPage.php:758 src/Admin/ModulesPage.php:2344
 #: src/Service/CustomCheckoutFieldsService.php:737
 msgid "Label"
 msgstr "标签"
 
-#: src/Admin/ModulesPage.php:756
+#: src/Admin/ModulesPage.php:759
 msgid "Show label"
 msgstr "显示标签"
 
-#: src/Admin/ModulesPage.php:757
+#: src/Admin/ModulesPage.php:760
 msgid "Brand separator"
 msgstr "品牌分隔符"
 
-#: src/Admin/ModulesPage.php:758
+#: src/Admin/ModulesPage.php:761
 msgid "Link to brand archive"
 msgstr "链接到品牌归档页"
 
-#: src/Admin/ModulesPage.php:763
+#: src/Admin/ModulesPage.php:766
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "AJAX Filters"
 msgstr "AJAX 筛选"
 
-#: src/Admin/ModulesPage.php:764
+#: src/Admin/ModulesPage.php:767
 msgid ""
 "Filtering product listings without page reload, including categories, "
 "brands, price, stock status, sale, and attributes."
 msgstr ""
 "无需刷新页面即可筛选商品列表，包括分类、品牌、价格、库存状态、促销和属性。"
 
-#: src/Admin/ModulesPage.php:770
+#: src/Admin/ModulesPage.php:773
 msgid "Show on shop archives"
 msgstr "在商店归档页显示"
 
-#: src/Admin/ModulesPage.php:771
+#: src/Admin/ModulesPage.php:774
 msgid "Show form header"
 msgstr "显示表单标题"
 
-#: src/Admin/ModulesPage.php:772
+#: src/Admin/ModulesPage.php:775
 msgid "Category filter"
 msgstr "分类筛选"
 
-#: src/Admin/ModulesPage.php:773
+#: src/Admin/ModulesPage.php:776
 msgid "Brand filter"
 msgstr "品牌筛选"
 
-#: src/Admin/ModulesPage.php:774
+#: src/Admin/ModulesPage.php:777
 msgid "Price filter"
 msgstr "价格筛选"
 
-#: src/Admin/ModulesPage.php:775
+#: src/Admin/ModulesPage.php:778
 msgid "Availability filter"
 msgstr "可用性筛选"
 
-#: src/Admin/ModulesPage.php:776
+#: src/Admin/ModulesPage.php:779
 msgid "Sale filter"
 msgstr "促销筛选"
 
-#: src/Admin/ModulesPage.php:777
+#: src/Admin/ModulesPage.php:780
 msgid "Attribute filters"
 msgstr "属性筛选"
 
-#: src/Admin/ModulesPage.php:778
+#: src/Admin/ModulesPage.php:781
 msgid "Active filters chips"
 msgstr "活动筛选标签"
 
-#: src/Admin/ModulesPage.php:779
+#: src/Admin/ModulesPage.php:782
 msgid "Show term counts"
 msgstr "显示词条数量"
 
-#: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:783
 msgid "Hierarchical categories"
 msgstr "层级分类"
 
-#: src/Admin/ModulesPage.php:781
+#: src/Admin/ModulesPage.php:784
 msgid "Enable taxonomy multi-select"
 msgstr "启用分类法多选"
 
-#: src/Admin/ModulesPage.php:782
+#: src/Admin/ModulesPage.php:785
 msgid "Multi-select relation"
 msgstr "多选关系"
 
-#: src/Admin/ModulesPage.php:782
+#: src/Admin/ModulesPage.php:785
 msgid "OR - match any selected term"
 msgstr "或 - 匹配任一所选词条"
 
-#: src/Admin/ModulesPage.php:782
+#: src/Admin/ModulesPage.php:785
 msgid "AND - match all selected terms"
 msgstr "且 - 匹配所有所选词条"
 
-#: src/Admin/ModulesPage.php:783
+#: src/Admin/ModulesPage.php:786
 msgid "Enable mobile filter panel"
 msgstr "启用移动端筛选面板"
 
-#: src/Admin/ModulesPage.php:784
+#: src/Admin/ModulesPage.php:787
 msgid "Enable instant filtering"
 msgstr "启用即时筛选"
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:788
 msgid "Instant filtering debounce (ms)"
 msgstr "即时筛选防抖延迟 (ms)"
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:788
 msgid "Delay before auto-submitting text and price fields"
 msgstr "自动提交文本和价格字段前的延迟"
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:789
 msgid "Named presets JSON"
 msgstr "命名预设 JSON"
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:789
 msgid ""
 "Optional JSON map for shortcode preset=\"...\". Example: {\"fashion\":"
 "{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\","
@@ -4796,11 +4807,11 @@ msgstr ""
 "\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\","
 "\"show_brands\":false}}"
 
-#: src/Admin/ModulesPage.php:787
+#: src/Admin/ModulesPage.php:790
 msgid "Archive preset mapping JSON"
 msgstr "归档预设映射 JSON"
 
-#: src/Admin/ModulesPage.php:787
+#: src/Admin/ModulesPage.php:790
 msgid ""
 "Optional JSON map from archive context to preset slug. Examples: {\"shop\":"
 "\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":"
@@ -4810,193 +4821,193 @@ msgstr ""
 "\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\","
 "\"post_type_archive:product\":\"catalog\"}"
 
-#: src/Admin/ModulesPage.php:788
+#: src/Admin/ModulesPage.php:791
 msgid "Specific attribute taxonomies"
 msgstr "特定的属性分类法"
 
-#: src/Admin/ModulesPage.php:788
+#: src/Admin/ModulesPage.php:791
 msgid ""
 "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N "
 "attributes are used."
 msgstr ""
 "可选的以逗号分隔的列表，例如 pa_color,pa_size。如果为空，则使用前 N 个属性。"
 
-#: src/Admin/ModulesPage.php:789
+#: src/Admin/ModulesPage.php:792
 msgid "Max number of attributes"
 msgstr "属性数量上限"
 
-#: src/Admin/ModulesPage.php:789
+#: src/Admin/ModulesPage.php:792
 msgid "How many product attributes to show as filter dropdowns"
 msgstr "作为筛选下拉菜单显示多少个产品属性"
 
-#: src/Admin/ModulesPage.php:790 src/Admin/ModulesPage.php:1054
-#: src/Admin/ModulesPage.php:1103
+#: src/Admin/ModulesPage.php:793 src/Admin/ModulesPage.php:1057
+#: src/Admin/ModulesPage.php:1106
 msgid "Header"
 msgstr "页眉"
 
-#: src/Admin/ModulesPage.php:791
+#: src/Admin/ModulesPage.php:794
 msgid "Active filters label"
 msgstr "已启用筛选标签"
 
-#: src/Admin/ModulesPage.php:792
+#: src/Admin/ModulesPage.php:795
 msgid "Mobile toggle button text"
 msgstr "移动端切换按钮文字"
 
-#: src/Admin/ModulesPage.php:793
+#: src/Admin/ModulesPage.php:796
 msgid "Mobile close button text"
 msgstr "移动端关闭按钮文字"
 
-#: src/Admin/ModulesPage.php:794
+#: src/Admin/ModulesPage.php:797
 msgid "Mobile panel title"
 msgstr "移动端面板标题"
 
-#: src/Admin/ModulesPage.php:795
+#: src/Admin/ModulesPage.php:798
 msgid "Category label"
 msgstr "分类标签"
 
-#: src/Admin/ModulesPage.php:796
+#: src/Admin/ModulesPage.php:799
 msgid "All categories text"
 msgstr "全部分类文本"
 
-#: src/Admin/ModulesPage.php:797 src/Admin/ModulesPage.php:880
+#: src/Admin/ModulesPage.php:800 src/Admin/ModulesPage.php:883
 msgid "Brand label"
 msgstr "品牌标签"
 
-#: src/Admin/ModulesPage.php:798
+#: src/Admin/ModulesPage.php:801
 msgid "All brands text"
 msgstr "全部品牌文本"
 
-#: src/Admin/ModulesPage.php:799
+#: src/Admin/ModulesPage.php:802
 msgid "Price from label"
 msgstr "价格从标签"
 
-#: src/Admin/ModulesPage.php:800
+#: src/Admin/ModulesPage.php:803
 msgid "Price to label"
 msgstr "价格至标签"
 
-#: src/Admin/ModulesPage.php:801 src/Admin/ModulesPage.php:878
+#: src/Admin/ModulesPage.php:804 src/Admin/ModulesPage.php:881
 msgid "Availability label"
 msgstr "可用性标签"
 
-#: src/Admin/ModulesPage.php:802
+#: src/Admin/ModulesPage.php:805
 msgid "Any availability text"
 msgstr "任意可用性文本"
 
-#: src/Admin/ModulesPage.php:803
+#: src/Admin/ModulesPage.php:806
 msgid "Instock product text"
 msgstr "有货产品文本"
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:807
 msgid "Sale label"
 msgstr "促销标签"
 
-#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:808
 msgid "Active sale filter text"
 msgstr "已启用促销筛选文本"
 
-#: src/Admin/ModulesPage.php:806
+#: src/Admin/ModulesPage.php:809
 msgid "Any attribute value text"
 msgstr "任意属性值文本"
 
-#: src/Admin/ModulesPage.php:807
+#: src/Admin/ModulesPage.php:810
 msgid "Show reset link"
 msgstr "显示重置链接"
 
-#: src/Admin/ModulesPage.php:809
+#: src/Admin/ModulesPage.php:812
 msgid "Reset text"
 msgstr "重置文本"
 
-#: src/Admin/ModulesPage.php:815
+#: src/Admin/ModulesPage.php:818
 msgid ""
 "Saving favorite products for guests and logged-in users, with a list in the "
 "customer account and AJAX add/remove."
 msgstr ""
 "为访客和已登录用户保存收藏产品，在客户账户中提供列表，并通过 AJAX 添加/移除。"
 
-#: src/Admin/ModulesPage.php:821
+#: src/Admin/ModulesPage.php:824
 msgid "Allow guests to save favorites"
 msgstr "允许访客保存收藏"
 
-#: src/Admin/ModulesPage.php:823 src/Admin/ModulesPage.php:853
-#: src/Admin/ModulesPage.php:897 src/Admin/ModulesPage.php:936
+#: src/Admin/ModulesPage.php:826 src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:900 src/Admin/ModulesPage.php:939
 msgid "Show on listings"
 msgstr "在列表页显示"
 
-#: src/Admin/ModulesPage.php:824 src/Admin/ModulesPage.php:854
+#: src/Admin/ModulesPage.php:827 src/Admin/ModulesPage.php:857
 msgid "Show in My Account"
 msgstr "在“我的账户”中显示"
 
-#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:828
 msgid "Show list title"
 msgstr "显示列表标题"
 
-#: src/Admin/ModulesPage.php:826 src/Admin/ModulesPage.php:855
-#: src/Admin/ModulesPage.php:1032
+#: src/Admin/ModulesPage.php:829 src/Admin/ModulesPage.php:858
+#: src/Admin/ModulesPage.php:1035
 msgid "Show product images"
 msgstr "显示产品图片"
 
-#: src/Admin/ModulesPage.php:827
+#: src/Admin/ModulesPage.php:830
 msgid "Show product names"
 msgstr "显示产品名称"
 
-#: src/Admin/ModulesPage.php:828
+#: src/Admin/ModulesPage.php:831
 msgid "Show price in list"
 msgstr "在列表中显示价格"
 
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:832
 msgid "Show cart button in list"
 msgstr "在列表中显示购物车按钮"
 
-#: src/Admin/ModulesPage.php:830
+#: src/Admin/ModulesPage.php:833
 msgid "Show remove button in list"
 msgstr "在列表中显示移除按钮"
 
-#: src/Admin/ModulesPage.php:831
+#: src/Admin/ModulesPage.php:834
 msgid "Number of columns in list"
 msgstr "列表中的列数"
 
-#: src/Admin/ModulesPage.php:831
+#: src/Admin/ModulesPage.php:834
 msgid "Number of product columns in grid layout. Recommended: 3-4"
 msgstr "网格布局中的产品列数。推荐：3-4"
 
-#: src/Admin/ModulesPage.php:832 src/Admin/ModulesPage.php:858
+#: src/Admin/ModulesPage.php:835 src/Admin/ModulesPage.php:861
 msgid "Label in My Account"
 msgstr "“我的账户”中的标签"
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:836
 msgid "List title"
 msgstr "列表标题"
 
-#: src/Admin/ModulesPage.php:834 src/Admin/ModulesPage.php:871
-#: src/Admin/ModulesPage.php:993 src/Admin/ModulesPage.php:1031
+#: src/Admin/ModulesPage.php:837 src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:996 src/Admin/ModulesPage.php:1034
 msgid "Section description"
 msgstr "板块描述"
 
-#: src/Admin/ModulesPage.php:835 src/Admin/ModulesPage.php:861
+#: src/Admin/ModulesPage.php:838 src/Admin/ModulesPage.php:864
 msgid "Add text"
 msgstr "添加文本"
 
-#: src/Admin/ModulesPage.php:836 src/Admin/ModulesPage.php:862
+#: src/Admin/ModulesPage.php:839 src/Admin/ModulesPage.php:865
 msgid "Remove text"
 msgstr "移除文本"
 
-#: src/Admin/ModulesPage.php:837 src/Admin/ModulesPage.php:867
+#: src/Admin/ModulesPage.php:840 src/Admin/ModulesPage.php:870
 msgid "Login message"
 msgstr "登录消息"
 
-#: src/Admin/ModulesPage.php:838 src/Admin/ModulesPage.php:868
+#: src/Admin/ModulesPage.php:841 src/Admin/ModulesPage.php:871
 msgid "Product not found message"
 msgstr "未找到产品消息"
 
-#: src/Admin/ModulesPage.php:839 src/Admin/ModulesPage.php:872
+#: src/Admin/ModulesPage.php:842 src/Admin/ModulesPage.php:875
 msgid "Empty state"
 msgstr "空状态"
 
-#: src/Admin/ModulesPage.php:844
+#: src/Admin/ModulesPage.php:847
 msgid "Product Comparison"
 msgstr "产品对比"
 
-#: src/Admin/ModulesPage.php:845
+#: src/Admin/ModulesPage.php:848
 msgid ""
 "Product comparison tool with features table, highlight differences, guest "
 "and customer support, and view in My Account."
@@ -5004,150 +5015,150 @@ msgstr ""
 "产品对比工具，含特性表格、突出显示差异、支持访客和客户，并可在“我的账户”中查"
 "看。"
 
-#: src/Admin/ModulesPage.php:851
+#: src/Admin/ModulesPage.php:854
 msgid "Allow guests to compare products"
 msgstr "允许访客对比产品"
 
-#: src/Admin/ModulesPage.php:856 src/Admin/ModulesPage.php:1035
+#: src/Admin/ModulesPage.php:859 src/Admin/ModulesPage.php:1038
 msgid "Show cart button"
 msgstr "显示购物车按钮"
 
-#: src/Admin/ModulesPage.php:857
+#: src/Admin/ModulesPage.php:860
 msgid "Show remove button"
 msgstr "显示移除按钮"
 
-#: src/Admin/ModulesPage.php:859
+#: src/Admin/ModulesPage.php:862
 msgid "Comparison title"
 msgstr "对比标题"
 
-#: src/Admin/ModulesPage.php:860
+#: src/Admin/ModulesPage.php:863
 msgid "Maximum number of products"
 msgstr "最大产品数量"
 
-#: src/Admin/ModulesPage.php:860
+#: src/Admin/ModulesPage.php:863
 msgid "Maximum products that can be compared side-by-side. Recommended: 3-5"
 msgstr "可并排对比的最大产品数。推荐：3-5"
 
-#: src/Admin/ModulesPage.php:863
+#: src/Admin/ModulesPage.php:866
 msgid "Comparison link text"
 msgstr "对比链接文本"
 
-#: src/Admin/ModulesPage.php:864
+#: src/Admin/ModulesPage.php:867
 msgid "Clear text"
 msgstr "清除文本"
 
-#: src/Admin/ModulesPage.php:865
+#: src/Admin/ModulesPage.php:868
 msgid "Feature column header"
 msgstr "特性列标题"
 
-#: src/Admin/ModulesPage.php:866
+#: src/Admin/ModulesPage.php:869
 msgid "Difference filter label"
 msgstr "差异筛选标签"
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:872
 msgid "Limit message"
 msgstr "限制消息"
 
-#: src/Admin/ModulesPage.php:869
+#: src/Admin/ModulesPage.php:872
 msgid "Variable: {limit}"
 msgstr "变量：{limit}"
 
-#: src/Admin/ModulesPage.php:870
+#: src/Admin/ModulesPage.php:873
 msgid "Clear error message"
 msgstr "清除错误消息"
 
-#: src/Admin/ModulesPage.php:873
+#: src/Admin/ModulesPage.php:876
 msgid "Highlight differences"
 msgstr "突出显示差异"
 
-#: src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:877
 msgid "Show only differences by default"
 msgstr "默认仅显示差异"
 
-#: src/Admin/ModulesPage.php:875
+#: src/Admin/ModulesPage.php:878
 msgid "Price label"
 msgstr "价格标签"
 
-#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:879
 msgid "Unit price label"
 msgstr "单价标签"
 
-#: src/Admin/ModulesPage.php:879
+#: src/Admin/ModulesPage.php:882
 msgid "Delivery time label"
 msgstr "配送时间标签"
 
-#: src/Admin/ModulesPage.php:881
+#: src/Admin/ModulesPage.php:884
 msgid "Manufacturer label"
 msgstr "制造商标签"
 
-#: src/Admin/ModulesPage.php:882
+#: src/Admin/ModulesPage.php:885
 msgid "GTIN / EAN label"
 msgstr "GTIN / EAN 标签"
 
-#: src/Admin/ModulesPage.php:883
+#: src/Admin/ModulesPage.php:886
 msgid "Short description label"
 msgstr "简短描述标签"
 
-#: src/Admin/ModulesPage.php:884 src/Admin/ModulesPage.php:918
+#: src/Admin/ModulesPage.php:887 src/Admin/ModulesPage.php:921
 msgid "Show short description"
 msgstr "显示简短描述"
 
-#: src/Admin/ModulesPage.php:885
+#: src/Admin/ModulesPage.php:888
 msgid "Show product attributes"
 msgstr "显示产品属性"
 
-#: src/Admin/ModulesPage.php:890 src/Service/QuickViewService.php:205
+#: src/Admin/ModulesPage.php:893 src/Service/QuickViewService.php:205
 msgid "Quick View"
 msgstr "快速查看"
 
-#: src/Admin/ModulesPage.php:891
+#: src/Admin/ModulesPage.php:894
 msgid ""
 "Lightweight product modal on listings, with support for variations, prices, "
 "gallery, and basic purchase information."
 msgstr "列表页上的轻量级产品弹窗，支持变体、价格、图库及基本购买信息。"
 
-#: src/Admin/ModulesPage.php:899
+#: src/Admin/ModulesPage.php:902
 msgid "Modal label"
 msgstr "弹窗标签"
 
-#: src/Admin/ModulesPage.php:900 src/Admin/ModulesPage.php:1012
-#: src/Admin/ModulesPage.php:1108
+#: src/Admin/ModulesPage.php:903 src/Admin/ModulesPage.php:1015
+#: src/Admin/ModulesPage.php:1111
 msgid "Close label"
 msgstr "关闭标签"
 
-#: src/Admin/ModulesPage.php:901 src/Admin/ModulesPage.php:1084
+#: src/Admin/ModulesPage.php:904 src/Admin/ModulesPage.php:1087
 msgid "Loading text"
 msgstr "加载文本"
 
-#: src/Admin/ModulesPage.php:902
+#: src/Admin/ModulesPage.php:905
 msgid "AJAX error text"
 msgstr "AJAX 错误文本"
 
-#: src/Admin/ModulesPage.php:903
+#: src/Admin/ModulesPage.php:906
 msgid "Product not found text"
 msgstr "未找到产品文本"
 
-#: src/Admin/ModulesPage.php:905
+#: src/Admin/ModulesPage.php:908
 msgid "Show modal title in content"
 msgstr "在内容中显示弹窗标题"
 
-#: src/Admin/ModulesPage.php:906 src/Admin/ModulesPage.php:1107
+#: src/Admin/ModulesPage.php:909 src/Admin/ModulesPage.php:1110
 msgid "Show close button"
 msgstr "显示关闭按钮"
 
-#: src/Admin/ModulesPage.php:907 src/Admin/ModulesPage.php:1034
+#: src/Admin/ModulesPage.php:910 src/Admin/ModulesPage.php:1037
 msgid "Show product name"
 msgstr "显示产品名称"
 
-#: src/Admin/ModulesPage.php:908
+#: src/Admin/ModulesPage.php:911
 msgid "Show main image"
 msgstr "显示主图"
 
-#: src/Admin/ModulesPage.php:909
+#: src/Admin/ModulesPage.php:912
 msgid "Show mini gallery"
 msgstr "显示迷你图库"
 
-#: src/Admin/ModulesPage.php:910
+#: src/Admin/ModulesPage.php:913
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:54
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:72
 #: resources/js/blocks/ajax-filters/index.js:38
@@ -5155,221 +5166,221 @@ msgstr "显示迷你图库"
 msgid "Show price"
 msgstr "显示价格"
 
-#: src/Admin/ModulesPage.php:914
+#: src/Admin/ModulesPage.php:917
 msgid "Show delivery time"
 msgstr "显示配送时间"
 
-#: src/Admin/ModulesPage.php:915
+#: src/Admin/ModulesPage.php:918
 msgid "Show product safety (GPSR)"
 msgstr "显示产品安全信息 (GPSR)"
 
-#: src/Admin/ModulesPage.php:916
+#: src/Admin/ModulesPage.php:919
 msgid "Show brand"
 msgstr "显示品牌"
 
-#: src/Admin/ModulesPage.php:917
+#: src/Admin/ModulesPage.php:920
 msgid "Show manufacturer"
 msgstr "显示制造商"
 
-#: src/Admin/ModulesPage.php:919
+#: src/Admin/ModulesPage.php:922
 msgid "Show purchase form"
 msgstr "显示购买表单"
 
-#: src/Admin/ModulesPage.php:920
+#: src/Admin/ModulesPage.php:923
 msgid "Show full product link"
 msgstr "显示完整产品链接"
 
-#: src/Admin/ModulesPage.php:921
+#: src/Admin/ModulesPage.php:924
 msgid "Link text to product"
 msgstr "产品链接文本"
 
-#: src/Admin/ModulesPage.php:922
+#: src/Admin/ModulesPage.php:925
 msgid "How to open full page"
 msgstr "如何打开完整页面"
 
-#: src/Admin/ModulesPage.php:922 src/Admin/ModulesPage.php:1040
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:925 src/Admin/ModulesPage.php:1043
+#: src/Admin/ModulesPage.php:1116
 msgid "In the same tab"
 msgstr "在同一标签页中"
 
-#: src/Admin/ModulesPage.php:922 src/Admin/ModulesPage.php:1040
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:925 src/Admin/ModulesPage.php:1043
+#: src/Admin/ModulesPage.php:1116
 msgid "In a new tab"
 msgstr "在新标签页中"
 
-#: src/Admin/ModulesPage.php:923 src/Admin/ModulesPage.php:1013
-#: src/Admin/ModulesPage.php:1114
+#: src/Admin/ModulesPage.php:926 src/Admin/ModulesPage.php:1016
+#: src/Admin/ModulesPage.php:1117
 msgid "Close by clicking background"
 msgstr "点击背景关闭"
 
-#: src/Admin/ModulesPage.php:928 src/Admin/ProductMetaBox.php:173
+#: src/Admin/ModulesPage.php:931 src/Admin/ProductMetaBox.php:173
 msgid "Badge Management"
 msgstr "徽章管理"
 
-#: src/Admin/ModulesPage.php:929
+#: src/Admin/ModulesPage.php:932
 msgid ""
 "Merchandising badges on product pages and listings, with automatic "
 "conditions and manual per-product highlights."
 msgstr "产品页和列表页上的营销徽章，支持自动条件和按产品手动突出显示。"
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:940
 msgid "Show manual badge"
 msgstr "显示手动徽章"
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:941
 msgid "Default manual badge style"
 msgstr "默认手动徽章样式"
 
-#: src/Admin/ModulesPage.php:939
+#: src/Admin/ModulesPage.php:942
 msgid "Show secondary badge"
 msgstr "显示次要徽章"
 
-#: src/Admin/ModulesPage.php:940
+#: src/Admin/ModulesPage.php:943
 msgid "Secondary badge style"
 msgstr "次要徽章样式"
 
-#: src/Admin/ModulesPage.php:941
+#: src/Admin/ModulesPage.php:944
 msgid "Badge shape"
 msgstr "徽章形状"
 
-#: src/Admin/ModulesPage.php:942
+#: src/Admin/ModulesPage.php:945
 msgid "Uppercase"
 msgstr "大写"
 
-#: src/Admin/ModulesPage.php:943
+#: src/Admin/ModulesPage.php:946
 msgid "Max badges on product page"
 msgstr "产品页上的最大徽章数"
 
-#: src/Admin/ModulesPage.php:944
+#: src/Admin/ModulesPage.php:947
 msgid "Max badges on listings"
 msgstr "列表页上的最大徽章数"
 
-#: src/Admin/ModulesPage.php:945
+#: src/Admin/ModulesPage.php:948
 msgid "Sale badge"
 msgstr "促销徽章"
 
-#: src/Admin/ModulesPage.php:946
+#: src/Admin/ModulesPage.php:949
 msgid "Sale badge text"
 msgstr "促销徽章文本"
 
-#: src/Admin/ModulesPage.php:947
+#: src/Admin/ModulesPage.php:950
 msgid "New badge"
 msgstr "新品徽章"
 
-#: src/Admin/ModulesPage.php:948
+#: src/Admin/ModulesPage.php:951
 msgid "New badge text"
 msgstr "新品徽章文本"
 
-#: src/Admin/ModulesPage.php:949
+#: src/Admin/ModulesPage.php:952
 msgid "New for how many days"
 msgstr "新品保持多少天"
 
-#: src/Admin/ModulesPage.php:949
+#: src/Admin/ModulesPage.php:952
 msgid "Products published within this many days will show the \"New\" badge"
 msgstr "在此天数内发布的产品将显示“新品”徽章"
 
-#: src/Admin/ModulesPage.php:950
+#: src/Admin/ModulesPage.php:953
 msgid "Low stock badge"
 msgstr "低库存徽章"
 
-#: src/Admin/ModulesPage.php:951
+#: src/Admin/ModulesPage.php:954
 msgid "Low stock badge text"
 msgstr "低库存徽章文本"
 
-#: src/Admin/ModulesPage.php:952
+#: src/Admin/ModulesPage.php:955
 msgid "Low stock threshold"
 msgstr "低库存阈值"
 
-#: src/Admin/ModulesPage.php:952
+#: src/Admin/ModulesPage.php:955
 msgid "Badge appears when stock quantity is at or below this number"
 msgstr "当库存数量等于或低于此数字时显示徽章"
 
-#: src/Admin/ModulesPage.php:953
+#: src/Admin/ModulesPage.php:956
 msgid "Bestseller badge"
 msgstr "畅销徽章"
 
-#: src/Admin/ModulesPage.php:954
+#: src/Admin/ModulesPage.php:957
 msgid "Bestseller badge text"
 msgstr "畅销徽章文本"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:958
 msgid "Bestseller threshold (sales)"
 msgstr "畅销阈值（销量）"
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:958
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr "显示“畅销”徽章所需的最低总销量"
 
-#: src/Admin/ModulesPage.php:960 src/Admin/ProductMetaBox.php:210
+#: src/Admin/ModulesPage.php:963 src/Admin/ProductMetaBox.php:210
 msgid "Tab Manager"
 msgstr "标签页管理器"
 
-#: src/Admin/ModulesPage.php:961
+#: src/Admin/ModulesPage.php:964
 msgid ""
 "Additional product tabs with content per product and global tabs for "
 "shipping, returns, and business information."
 msgstr ""
 "额外的产品标签页，可按产品设置内容，并为运输、退货和商家信息提供全局标签页。"
 
-#: src/Admin/ModulesPage.php:967
+#: src/Admin/ModulesPage.php:970
 msgid "Global shipping tab"
 msgstr "全局运输标签页"
 
-#: src/Admin/ModulesPage.php:968
+#: src/Admin/ModulesPage.php:971
 msgid "Shipping tab title"
 msgstr "运输标签页标题"
 
-#: src/Admin/ModulesPage.php:969
+#: src/Admin/ModulesPage.php:972
 msgid "Shipping tab content"
 msgstr "运输标签页内容"
 
-#: src/Admin/ModulesPage.php:970
+#: src/Admin/ModulesPage.php:973
 msgid "Shipping tab priority"
 msgstr "运输标签页优先级"
 
-#: src/Admin/ModulesPage.php:970
+#: src/Admin/ModulesPage.php:973
 msgid ""
 "Lower number = appears earlier. WooCommerce default: Description=10, "
 "Reviews=30"
 msgstr "数字越小 = 越靠前显示。WooCommerce 默认值：描述=10，评论=30"
 
-#: src/Admin/ModulesPage.php:971
+#: src/Admin/ModulesPage.php:974
 msgid "Global returns tab"
 msgstr "全局退货标签页"
 
-#: src/Admin/ModulesPage.php:972
+#: src/Admin/ModulesPage.php:975
 msgid "Returns tab title"
 msgstr "退货标签页标题"
 
-#: src/Admin/ModulesPage.php:973
+#: src/Admin/ModulesPage.php:976
 msgid "Returns tab content"
 msgstr "退货标签页内容"
 
-#: src/Admin/ModulesPage.php:974
+#: src/Admin/ModulesPage.php:977
 msgid "Returns tab priority"
 msgstr "退货标签页优先级"
 
-#: src/Admin/ModulesPage.php:975
+#: src/Admin/ModulesPage.php:978
 msgid "Enable first product tab"
 msgstr "启用第一个产品标签页"
 
-#: src/Admin/ModulesPage.php:976
+#: src/Admin/ModulesPage.php:979
 msgid "First product tab priority"
 msgstr "第一个产品标签页优先级"
 
-#: src/Admin/ModulesPage.php:977
+#: src/Admin/ModulesPage.php:980
 msgid "Enable second product tab"
 msgstr "启用第二个产品标签页"
 
-#: src/Admin/ModulesPage.php:978
+#: src/Admin/ModulesPage.php:981
 msgid "Second product tab priority"
 msgstr "第二个产品标签页优先级"
 
-#: src/Admin/ModulesPage.php:983 src/Admin/ProductMetaBox.php:247
+#: src/Admin/ModulesPage.php:986 src/Admin/ProductMetaBox.php:247
 msgid "Featured Video"
 msgstr "精选视频"
 
-#: src/Admin/ModulesPage.php:984
+#: src/Admin/ModulesPage.php:987
 msgid ""
 "Product video on the product page, embedded from YouTube, Vimeo, or as a "
 "local MP4 file in the media section."
@@ -5377,328 +5388,328 @@ msgstr ""
 "产品页上的产品视频，可从 YouTube、Vimeo 嵌入，或作为媒体板块中的本地 MP4 文"
 "件。"
 
-#: src/Admin/ModulesPage.php:991 src/Admin/ModulesPage.php:1566
+#: src/Admin/ModulesPage.php:994 src/Admin/ModulesPage.php:1569
 msgid "Position"
 msgstr "位置"
 
-#: src/Admin/ModulesPage.php:991
+#: src/Admin/ModulesPage.php:994
 msgid "Below gallery"
 msgstr "图库下方"
 
-#: src/Admin/ModulesPage.php:991
+#: src/Admin/ModulesPage.php:994
 msgid "Before product summary"
 msgstr "产品摘要前"
 
-#: src/Admin/ModulesPage.php:992 src/Admin/ModulesPage.php:1027
+#: src/Admin/ModulesPage.php:995 src/Admin/ModulesPage.php:1030
 msgid "Section header"
 msgstr "板块页眉"
 
-#: src/Admin/ModulesPage.php:994 src/Admin/ModulesPage.php:1029
+#: src/Admin/ModulesPage.php:997 src/Admin/ModulesPage.php:1032
 msgid "Show section header"
 msgstr "显示板块页眉"
 
-#: src/Admin/ModulesPage.php:995 src/Admin/ModulesPage.php:1030
+#: src/Admin/ModulesPage.php:998 src/Admin/ModulesPage.php:1033
 msgid "Show section description"
 msgstr "显示板块描述"
 
-#: src/Admin/ModulesPage.php:996
+#: src/Admin/ModulesPage.php:999
 msgid "Autoplay for supported embeds"
 msgstr "为支持的嵌入内容自动播放"
 
-#: src/Admin/ModulesPage.php:1001
+#: src/Admin/ModulesPage.php:1004
 msgid "Gallery & Zoom"
 msgstr "图库与缩放"
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1005
 msgid ""
 "Lightweight image zoom and simple gallery lightbox without external slider "
 "libraries."
 msgstr "轻量级图片缩放和简单的图库灯箱，无需外部滑块库。"
 
-#: src/Admin/ModulesPage.php:1008
+#: src/Admin/ModulesPage.php:1011
 msgid "Enable zoom on hover"
 msgstr "悬停时启用缩放"
 
-#: src/Admin/ModulesPage.php:1009
+#: src/Admin/ModulesPage.php:1012
 msgid "Zoom scale"
 msgstr "缩放比例"
 
-#: src/Admin/ModulesPage.php:1009
+#: src/Admin/ModulesPage.php:1012
 msgid "Magnification factor on hover. 1.0 = no zoom, 2.0 = double size"
 msgstr "悬停时的放大倍数。1.0 = 不缩放，2.0 = 双倍大小"
 
-#: src/Admin/ModulesPage.php:1010
+#: src/Admin/ModulesPage.php:1013
 msgid "Enable lightbox on click"
 msgstr "点击时启用灯箱"
 
-#: src/Admin/ModulesPage.php:1010
+#: src/Admin/ModulesPage.php:1013
 msgid ""
 "Used only when the theme has no WooCommerce lightbox of its own; where it "
 "has one, that lightbox is kept."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1011
+#: src/Admin/ModulesPage.php:1014
 msgid "Lightbox window label"
 msgstr "灯箱窗口标签"
 
-#: src/Admin/ModulesPage.php:1018
+#: src/Admin/ModulesPage.php:1021
 msgid "Product Slider Carousel"
 msgstr "产品滑块轮播"
 
-#: src/Admin/ModulesPage.php:1019
+#: src/Admin/ModulesPage.php:1022
 msgid ""
 "Lightweight product slider based on scroll-snap, with related, sale, or "
 "featured products."
 msgstr "基于 scroll-snap 的轻量级产品滑块，含相关、促销或精选产品。"
 
-#: src/Admin/ModulesPage.php:1026
+#: src/Admin/ModulesPage.php:1029
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:38
 msgid "Product source"
 msgstr "产品来源"
 
-#: src/Admin/ModulesPage.php:1026
+#: src/Admin/ModulesPage.php:1029
 msgid "Related"
 msgstr "相关"
 
-#: src/Admin/ModulesPage.php:1026
+#: src/Admin/ModulesPage.php:1029
 msgid "Upsell"
 msgstr "追加销售"
 
-#: src/Admin/ModulesPage.php:1026
+#: src/Admin/ModulesPage.php:1029
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:45
 msgid "Featured"
 msgstr "精选"
 
-#: src/Admin/ModulesPage.php:1028
+#: src/Admin/ModulesPage.php:1031
 msgid "Number of products"
 msgstr "产品数量"
 
-#: src/Admin/ModulesPage.php:1036
+#: src/Admin/ModulesPage.php:1039
 msgid "Show \"view all\" link"
 msgstr "显示“查看全部”链接"
 
-#: src/Admin/ModulesPage.php:1037
+#: src/Admin/ModulesPage.php:1040
 msgid "Show empty state without products"
 msgstr "在没有产品时显示空状态"
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1041
 msgid "Empty state text"
 msgstr "空状态文本"
 
-#: src/Admin/ModulesPage.php:1039
+#: src/Admin/ModulesPage.php:1042
 msgid "\"view all\" link text"
 msgstr "“查看全部”链接文本"
 
-#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1043
 msgid "How to open \"view all\" link"
 msgstr "如何打开“查看全部”链接"
 
-#: src/Admin/ModulesPage.php:1045
+#: src/Admin/ModulesPage.php:1048
 msgid "Waitlist"
 msgstr "等候名单"
 
-#: src/Admin/ModulesPage.php:1046
+#: src/Admin/ModulesPage.php:1049
 msgid ""
 "Waitlist for out-of-stock products and variations, with email signup and "
 "automatic notifications upon restock."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1053
+#: src/Admin/ModulesPage.php:1056
 msgid "Allow guests to sign up"
 msgstr "允许访客注册"
 
-#: src/Admin/ModulesPage.php:1055 src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1058 src/Admin/ModulesPage.php:1109
 msgid "Show header"
 msgstr "显示页眉"
 
-#: src/Admin/ModulesPage.php:1056 src/Admin/ModulesPage.php:1887
+#: src/Admin/ModulesPage.php:1059 src/Admin/ModulesPage.php:1890
 #: src/AIFeed/ProductMarkdownBuilder.php:127 src/Service/DSAService.php:200
 #: templates/forms/dsa-report.php:114 templates/invoice/document.php:103
 msgid "Description"
 msgstr "描述"
 
-#: src/Admin/ModulesPage.php:1057
+#: src/Admin/ModulesPage.php:1060
 msgid "Show description"
 msgstr "显示描述"
 
-#: src/Admin/ModulesPage.php:1058 src/Admin/WithdrawalSettingsPage.php:312
+#: src/Admin/ModulesPage.php:1061 src/Admin/WithdrawalSettingsPage.php:312
 msgid "Email field label"
 msgstr "电子邮件字段标签"
 
-#: src/Admin/ModulesPage.php:1059
+#: src/Admin/ModulesPage.php:1062
 msgid "Email field placeholder"
 msgstr "电子邮件字段占位符"
 
-#: src/Admin/ModulesPage.php:1062 src/Admin/WithdrawalSettingsPage.php:349
+#: src/Admin/ModulesPage.php:1065 src/Admin/WithdrawalSettingsPage.php:349
 msgid "Consent text"
 msgstr "同意文本"
 
-#: src/Admin/ModulesPage.php:1063
+#: src/Admin/ModulesPage.php:1066
 msgid "Product not found error"
 msgstr "未找到产品错误"
 
-#: src/Admin/ModulesPage.php:1064
+#: src/Admin/ModulesPage.php:1067
 msgid "Waitlist unavailable error"
 msgstr "等候名单不可用错误"
 
-#: src/Admin/ModulesPage.php:1065
+#: src/Admin/ModulesPage.php:1068
 msgid "Invalid email error"
 msgstr "无效电子邮件错误"
 
-#: src/Admin/ModulesPage.php:1066
+#: src/Admin/ModulesPage.php:1069
 msgid "Missing consent error"
 msgstr "缺少同意错误"
 
-#: src/Admin/ModulesPage.php:1067
+#: src/Admin/ModulesPage.php:1070
 msgid "Login required error"
 msgstr "需要登录错误"
 
-#: src/Admin/ModulesPage.php:1069 src/Admin/ModulesPage.php:1448
+#: src/Admin/ModulesPage.php:1072 src/Admin/ModulesPage.php:1451
 msgid "Email intro text"
 msgstr "电子邮件引言文本"
 
-#: src/Admin/ModulesPage.php:1070
+#: src/Admin/ModulesPage.php:1073
 msgid "Email footer text"
 msgstr "电子邮件页脚文本"
 
-#: src/Admin/ModulesPage.php:1075
+#: src/Admin/ModulesPage.php:1078
 msgid "Infinite Scrolling"
 msgstr "无限滚动"
 
-#: src/Admin/ModulesPage.php:1076
+#: src/Admin/ModulesPage.php:1079
 msgid ""
 "Lightweight loading of subsequent products on WooCommerce archives, with "
 "button mode or automatic loading."
 msgstr "在 WooCommerce 归档页上轻量级加载后续产品，支持按钮模式或自动加载。"
 
-#: src/Admin/ModulesPage.php:1082
+#: src/Admin/ModulesPage.php:1085
 msgid "Operation mode"
 msgstr "运行模式"
 
-#: src/Admin/ModulesPage.php:1082
+#: src/Admin/ModulesPage.php:1085
 msgid "Button"
 msgstr "按钮"
 
-#: src/Admin/ModulesPage.php:1082
+#: src/Admin/ModulesPage.php:1085
 msgid "Automatic scroll"
 msgstr "自动滚动"
 
-#: src/Admin/ModulesPage.php:1085
+#: src/Admin/ModulesPage.php:1088
 msgid "Loading error text"
 msgstr "加载错误文本"
 
-#: src/Admin/ModulesPage.php:1086
+#: src/Admin/ModulesPage.php:1089
 msgid "End of list text"
 msgstr "列表结束文本"
 
-#: src/Admin/ModulesPage.php:1087
+#: src/Admin/ModulesPage.php:1090
 msgid "Show status messages"
 msgstr "显示状态消息"
 
-#: src/Admin/ModulesPage.php:1088
+#: src/Admin/ModulesPage.php:1091
 msgid "Show button also in auto mode"
 msgstr "在自动模式下也显示按钮"
 
-#: src/Admin/ModulesPage.php:1089
+#: src/Admin/ModulesPage.php:1092
 msgid "Show on shop page"
 msgstr "在商店页显示"
 
-#: src/Admin/ModulesPage.php:1090
+#: src/Admin/ModulesPage.php:1093
 msgid "Show on categories and tags"
 msgstr "在分类和标签页显示"
 
-#: src/Admin/ModulesPage.php:1091
+#: src/Admin/ModulesPage.php:1094
 msgid "How many pages to auto-load"
 msgstr "自动加载多少页"
 
-#: src/Admin/ModulesPage.php:1091
+#: src/Admin/ModulesPage.php:1094
 msgid ""
 "0 = unlimited. After this many pages, auto-loading stops and shows a manual "
 "button"
 msgstr "0 = 无限制。超过此页数后，自动加载停止并显示手动按钮"
 
-#: src/Admin/ModulesPage.php:1096
+#: src/Admin/ModulesPage.php:1099
 msgid "WooCommerce Popup"
 msgstr "WooCommerce 弹窗"
 
-#: src/Admin/ModulesPage.php:1097
+#: src/Admin/ModulesPage.php:1100
 msgid ""
 "Lightweight promotional or lead popup with frequency, delay, and display "
 "location control."
 msgstr "轻量级促销或潜在客户弹窗，可控制频率、延迟和显示位置。"
 
-#: src/Admin/ModulesPage.php:1104
+#: src/Admin/ModulesPage.php:1107
 msgid "Content"
 msgstr "内容"
 
-#: src/Admin/ModulesPage.php:1105
+#: src/Admin/ModulesPage.php:1108
 msgid "CTA text"
 msgstr "CTA 文本"
 
-#: src/Admin/ModulesPage.php:1109
+#: src/Admin/ModulesPage.php:1112
 msgid "Dialog box label"
 msgstr "对话框标签"
 
-#: src/Admin/ModulesPage.php:1110
+#: src/Admin/ModulesPage.php:1113
 msgid "CTA URL"
 msgstr "CTA 网址"
 
-#: src/Admin/ModulesPage.php:1111
+#: src/Admin/ModulesPage.php:1114
 msgid "CTA Fallback URL"
 msgstr "CTA 备用 URL"
 
-#: src/Admin/ModulesPage.php:1111
+#: src/Admin/ModulesPage.php:1114
 msgid "My account"
 msgstr "我的账户"
 
-#: src/Admin/ModulesPage.php:1111 src/Admin/ModulesPage.php:1115
+#: src/Admin/ModulesPage.php:1114 src/Admin/ModulesPage.php:1118
 msgid "Home page"
 msgstr "首页"
 
-#: src/Admin/ModulesPage.php:1111 src/AIFeed/LlmsTxtService.php:99
+#: src/Admin/ModulesPage.php:1114 src/AIFeed/LlmsTxtService.php:99
 msgid "Shop"
 msgstr "商店"
 
-#: src/Admin/ModulesPage.php:1112
+#: src/Admin/ModulesPage.php:1115
 msgid "Show CTA button"
 msgstr "显示 CTA 按钮"
 
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:1116
 msgid "How to open CTA"
 msgstr "如何打开 CTA"
 
-#: src/Admin/ModulesPage.php:1116
+#: src/Admin/ModulesPage.php:1119
 msgid "Shop and archives"
 msgstr "商店和归档页"
 
-#: src/Admin/ModulesPage.php:1119 src/Admin/ModulesPage.php:2897
+#: src/Admin/ModulesPage.php:1122 src/Admin/ModulesPage.php:2900
 #: src/Service/LiveCartService.php:84 src/Service/LiveCartService.php:248
 msgid "Checkout"
 msgstr "结账"
 
-#: src/Admin/ModulesPage.php:1120
+#: src/Admin/ModulesPage.php:1123
 msgid "Delay in seconds"
 msgstr "延迟秒数"
 
-#: src/Admin/ModulesPage.php:1120
+#: src/Admin/ModulesPage.php:1123
 msgid "How long to wait after page load before showing the popup"
 msgstr "页面加载后等待多久再显示弹窗"
 
-#: src/Admin/ModulesPage.php:1121
+#: src/Admin/ModulesPage.php:1124
 msgid "Frequency of re-showing (days)"
 msgstr "重新显示的频率（天）"
 
-#: src/Admin/ModulesPage.php:1121
+#: src/Admin/ModulesPage.php:1124
 msgid ""
 "After closing, the popup will not appear again for this many days (uses "
 "cookie)"
 msgstr "关闭后，弹窗在这么多天内不会再次出现（使用 cookie）"
 
-#: src/Admin/ModulesPage.php:1127
+#: src/Admin/ModulesPage.php:1130
 msgid "GPSR - Product safety"
 msgstr "GPSR - 产品安全"
 
-#: src/Admin/ModulesPage.php:1128
+#: src/Admin/ModulesPage.php:1131
 msgid ""
 "GPSR product safety tools: manufacturer and importer data, responsible "
 "person, product identifiers, safety warnings, instructions, and CSV bulk "
@@ -5707,33 +5718,33 @@ msgstr ""
 "GPSR 产品安全工具：制造商和进口商数据、负责人、产品标识符、安全警告、说明，以"
 "及 CSV 批量导入或导出。"
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1137
 msgid "Display mode"
 msgstr "显示模式"
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1137
 msgid "Accordion"
 msgstr "手风琴"
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1137
 #: src/Service/CustomCheckoutFieldsService.php:739
 msgid "Section"
 msgstr "区块"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1138
 msgid "Section title"
 msgstr "区块标题"
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1138
 msgid "Product safety"
 msgstr "产品安全"
 
-#: src/Admin/ModulesPage.php:1140 src/Admin/ModulesPage.php:1147
+#: src/Admin/ModulesPage.php:1143 src/Admin/ModulesPage.php:1150
 #: src/Service/BdoService.php:60
 msgid "BDO number"
 msgstr "BDO 号码"
 
-#: src/Admin/ModulesPage.php:1141
+#: src/Admin/ModulesPage.php:1144
 msgid ""
 "Show your BDO registration number (Baza Danych o Odpadach) with the "
 "[polski_bdo] shortcode or block. Enter the number below; it is read from the "
@@ -5742,70 +5753,70 @@ msgstr ""
 "使用 [polski_bdo] 短代码或区块显示您的 BDO 登记号码（Baza Danych o Odpadach，"
 "废物数据库）。请在下方填写号码；该号码读取自商店设置。"
 
-#: src/Admin/ModulesPage.php:1147
+#: src/Admin/ModulesPage.php:1150
 msgid "Shown by the [polski_bdo] shortcode and the BDO number block."
 msgstr "通过 [polski_bdo] 短代码和 BDO 号码区块显示。"
 
-#: src/Admin/ModulesPage.php:1152
+#: src/Admin/ModulesPage.php:1155
 msgid "Verified purchase badge"
 msgstr "已验证购买徽章"
 
-#: src/Admin/ModulesPage.php:1153
+#: src/Admin/ModulesPage.php:1156
 msgid ""
 "Badge shown on reviews from customers who actually purchased the product."
 msgstr "显示在确实购买过该产品的客户评价上的徽章。"
 
-#: src/Admin/ModulesPage.php:1159
+#: src/Admin/ModulesPage.php:1162
 msgid "Badge text"
 msgstr "徽章文字"
 
-#: src/Admin/ModulesPage.php:1159 src/Service/VerifiedReviewService.php:46
+#: src/Admin/ModulesPage.php:1162 src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
 msgstr "已验证购买"
 
-#: src/Admin/ModulesPage.php:1164
+#: src/Admin/ModulesPage.php:1167
 msgid "Product markings (medical device, adults only)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1165
+#: src/Admin/ModulesPage.php:1168
 msgid ""
 "Per-product flags that print the statutory notice on the product page: "
 "medical device (Regulation 2017/745 and the Medical Devices Act) and goods "
 "sold to adults only, such as alcohol or tobacco."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1174
 msgid "Medical device notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1171
+#: src/Admin/ModulesPage.php:1174
 msgid "Leave empty to use the statutory wording shipped with the plugin."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1175
 msgid "Adults only notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1172
+#: src/Admin/ModulesPage.php:1175
 msgid "Leave empty to use the default wording."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1177
+#: src/Admin/ModulesPage.php:1180
 msgid "Anti-greenwashing"
 msgstr "反漂绿"
 
-#: src/Admin/ModulesPage.php:1178
+#: src/Admin/ModulesPage.php:1181
 msgid ""
 "Fields to document environmental claims: claim basis, certificate link, "
 "expiration date. Directive (EU) 2024/825 bans generic environmental claims "
 "and uncertified sustainability labels from 27 September 2026."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1187
+#: src/Admin/ModulesPage.php:1190
 msgid "DSA Toolkit"
 msgstr "DSA 工具包"
 
-#: src/Admin/ModulesPage.php:1188
+#: src/Admin/ModulesPage.php:1191
 msgid ""
 "Digital Services Act tools: contact point settings, report form for illegal "
 "content or products, and an admin reports screen. Shortcode: "
@@ -5814,57 +5825,57 @@ msgstr ""
 "数字服务法（Digital Services Act）工具：联系点设置、非法内容或产品的举报表"
 "单，以及管理员举报界面。短代码：[polski_dsa_report]。"
 
-#: src/Admin/ModulesPage.php:1194
+#: src/Admin/ModulesPage.php:1197
 msgid "DSA contact name"
 msgstr "DSA 联系人姓名"
 
-#: src/Admin/ModulesPage.php:1195
+#: src/Admin/ModulesPage.php:1198
 msgid "DSA contact email"
 msgstr "DSA 联系邮箱"
 
-#: src/Admin/ModulesPage.php:1196
+#: src/Admin/ModulesPage.php:1199
 msgid "DSA contact phone"
 msgstr "DSA 联系电话"
 
-#: src/Admin/ModulesPage.php:1203
+#: src/Admin/ModulesPage.php:1206
 msgid "KSeF readiness"
 msgstr "KSeF 就绪"
 
-#: src/Admin/ModulesPage.php:1204
+#: src/Admin/ModulesPage.php:1207
 msgid ""
 "Automatic detection of orders that may require KSeF invoicing based on NIP, "
 "plus integration hooks and an admin status indicator."
 msgstr ""
 "根据 NIP 自动检测可能需要 KSeF 开票的订单，并提供集成挂钩和管理员状态指示器。"
 
-#: src/Admin/ModulesPage.php:1210
+#: src/Admin/ModulesPage.php:1213
 msgid "Automatically detect based on NIP"
 msgstr "根据 NIP 自动检测"
 
-#: src/Admin/ModulesPage.php:1215 src/Service/SecurityIncidentService.php:99
+#: src/Admin/ModulesPage.php:1218 src/Service/SecurityIncidentService.php:99
 msgid "Security incidents"
 msgstr "安全事件"
 
-#: src/Admin/ModulesPage.php:1216
+#: src/Admin/ModulesPage.php:1219
 msgid ""
 "Incident log for vulnerabilities, breaches, third-party failures, and "
 "operational follow-up, with status tracking and CSV export. CRA duties bind "
 "manufacturers, not shops."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1224 src/Admin/ModulesPage.php:1405
+#: src/Admin/ModulesPage.php:1227 src/Admin/ModulesPage.php:1408
 msgid "Security contact email"
 msgstr "安全联系邮箱"
 
-#: src/Admin/ModulesPage.php:1225
+#: src/Admin/ModulesPage.php:1228
 msgid "Default reporter name"
 msgstr "默认报告人姓名"
 
-#: src/Admin/ModulesPage.php:1230
+#: src/Admin/ModulesPage.php:1233
 msgid "Store health monitor"
 msgstr "店铺健康监控"
 
-#: src/Admin/ModulesPage.php:1231
+#: src/Admin/ModulesPage.php:1234
 msgid ""
 "Continuous, passive monitoring of front-end fatal errors, the checkout "
 "failure rate, and sales anomalies (\"traffic but no orders\"). Sends email "
@@ -5874,66 +5885,66 @@ msgstr ""
 "持续、被动地监控前端致命错误、结账失败率和销售异常（“有流量但无订单”）。发送"
 "邮件或 webhook 警报。检查每 5 分钟运行一次，且绝不会创建虚拟订单。"
 
-#: src/Admin/ModulesPage.php:1236
+#: src/Admin/ModulesPage.php:1239
 msgid "Health dashboard"
 msgstr "健康仪表板"
 
-#: src/Admin/ModulesPage.php:1239
+#: src/Admin/ModulesPage.php:1242
 msgid "Alert email"
 msgstr "警报邮箱"
 
-#: src/Admin/ModulesPage.php:1239
+#: src/Admin/ModulesPage.php:1242
 msgid "Where to send health alerts. Defaults to the site admin email."
 msgstr "健康警报的发送地址。默认为站点管理员邮箱。"
 
-#: src/Admin/ModulesPage.php:1240
+#: src/Admin/ModulesPage.php:1243
 msgid "Alert webhook URL"
 msgstr "警报 webhook URL"
 
-#: src/Admin/ModulesPage.php:1240
+#: src/Admin/ModulesPage.php:1243
 msgid ""
 "Optional. Sends a JSON {\"text\": ...} payload (Slack/Discord-compatible)."
 msgstr "可选。发送 JSON {\"text\": ...} 负载（兼容 Slack/Discord）。"
 
-#: src/Admin/ModulesPage.php:1241
+#: src/Admin/ModulesPage.php:1244
 msgid "Checkout failure threshold (%)"
 msgstr "结账失败阈值（%）"
 
-#: src/Admin/ModulesPage.php:1241
+#: src/Admin/ModulesPage.php:1244
 msgid "Alert when this share of checkouts fails within the last 2 hours."
 msgstr "当最近 2 小时内有此比例的结账失败时发出警报。"
 
-#: src/Admin/ModulesPage.php:1242
+#: src/Admin/ModulesPage.php:1245
 msgid "Minimum checkout sample"
 msgstr "最小结账样本量"
 
-#: src/Admin/ModulesPage.php:1242
+#: src/Admin/ModulesPage.php:1245
 msgid ""
 "Ignore the failure rate until at least this many checkouts are observed."
 msgstr "在观察到至少这么多次结账之前忽略失败率。"
 
-#: src/Admin/ModulesPage.php:1243
+#: src/Admin/ModulesPage.php:1246
 msgid "Sales anomaly threshold"
 msgstr "销售异常阈值"
 
-#: src/Admin/ModulesPage.php:1243
+#: src/Admin/ModulesPage.php:1246
 msgid ""
 "Alert only when this many orders are typical for the hour but none arrive."
 msgstr "仅当某一小时通常有这么多订单但没有任何订单到达时才发出警报。"
 
-#: src/Admin/ModulesPage.php:1244
+#: src/Admin/ModulesPage.php:1247
 msgid "Alert cooldown (minutes)"
 msgstr "警报冷却时间（分钟）"
 
-#: src/Admin/ModulesPage.php:1244
+#: src/Admin/ModulesPage.php:1247
 msgid "Minimum time between repeat alerts for an ongoing problem."
 msgstr "针对持续存在的问题，重复警报之间的最短时间。"
 
-#: src/Admin/ModulesPage.php:1249
+#: src/Admin/ModulesPage.php:1252
 msgid "AI Bridge"
 msgstr "AI 桥接"
 
-#: src/Admin/ModulesPage.php:1250
+#: src/Admin/ModulesPage.php:1253
 msgid ""
 "Exposes read-only commerce data (price history, product safety data, store "
 "health, configured-page checks, product facts) to AI assistants and the Site "
@@ -5942,57 +5953,57 @@ msgstr ""
 "通过 WordPress Abilities API 向 AI 助手和站点编辑器公开只读的商务数据（价格历"
 "史、产品安全数据、商店健康状况、已配置页面检查、产品信息）。默认关闭。"
 
-#: src/Admin/ModulesPage.php:1251
+#: src/Admin/ModulesPage.php:1254
 msgid ""
 "Tested only in part: product facts can come back empty, and the Site Editor "
 "commands and AI draft endpoints have not been verified against a live AI "
 "provider."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1262
+#: src/Admin/ModulesPage.php:1265
 msgid "Structured Data (Schema.org)"
 msgstr "结构化数据（Schema.org）"
 
-#: src/Admin/ModulesPage.php:1263
+#: src/Admin/ModulesPage.php:1266
 msgid ""
 "Automatic injection of advanced JSON-LD tags, supporting product indexing by "
 "Google with plugin-specific data preservation."
 msgstr ""
 "自动注入高级 JSON-LD 标签，支持 Google 对产品的索引，同时保留插件特有的数据。"
 
-#: src/Admin/ModulesPage.php:1269
+#: src/Admin/ModulesPage.php:1272
 msgid "Enable structured data integration"
 msgstr "启用结构化数据集成"
 
-#: src/Admin/ModulesPage.php:1269
+#: src/Admin/ModulesPage.php:1272
 msgid "Main switch for Schema.org JSON-LD modifications."
 msgstr "Schema.org JSON-LD 修改的主开关。"
 
-#: src/Admin/ModulesPage.php:1270
+#: src/Admin/ModulesPage.php:1273
 msgid "Data to include"
 msgstr "要包含的数据"
 
-#: src/Admin/ModulesPage.php:1271
+#: src/Admin/ModulesPage.php:1274
 msgid "Include Brand"
 msgstr "包含品牌"
 
-#: src/Admin/ModulesPage.php:1272
+#: src/Admin/ModulesPage.php:1275
 msgid "Include Manufacturer"
 msgstr "包含制造商"
 
-#: src/Admin/ModulesPage.php:1273
+#: src/Admin/ModulesPage.php:1276
 msgid "Include barcodes (GTIN)"
 msgstr "包含条形码（GTIN）"
 
-#: src/Admin/ModulesPage.php:1274
+#: src/Admin/ModulesPage.php:1277
 msgid "Include Unit Price"
 msgstr "包含单位价格"
 
-#: src/Admin/ModulesPage.php:1280
+#: src/Admin/ModulesPage.php:1283
 msgid "Tracking Tags"
 msgstr "跟踪代码"
 
-#: src/Admin/ModulesPage.php:1281
+#: src/Admin/ModulesPage.php:1284
 msgid ""
 "Unified, consent-gated tag manager for marketing pixels and analytics tools. "
 "Enter your own tracking IDs; each tag fires only after the visitor grants "
@@ -6003,186 +6014,186 @@ msgstr ""
 "每个代码仅在访客授予相应的同意类别后才会触发。GA4 和 GTM 由 GA4 DataLayer 模"
 "块处理。"
 
-#: src/Admin/ModulesPage.php:1287
+#: src/Admin/ModulesPage.php:1290
 msgid ""
 "Requires the Consent Manager module. Without it no tag is ever loaded, "
 "because every tag waits for a consent decision."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1288
+#: src/Admin/ModulesPage.php:1291
 msgid "Marketing pixels"
 msgstr "营销像素"
 
-#: src/Admin/ModulesPage.php:1288
+#: src/Admin/ModulesPage.php:1291
 msgid "Gated under the Marketing consent category."
 msgstr "受营销同意类别控制。"
 
-#: src/Admin/ModulesPage.php:1289
+#: src/Admin/ModulesPage.php:1292
 msgid "Meta Pixel"
 msgstr "Meta Pixel"
 
-#: src/Admin/ModulesPage.php:1290
+#: src/Admin/ModulesPage.php:1293
 msgid "Meta Pixel ID"
 msgstr "Meta Pixel ID"
 
-#: src/Admin/ModulesPage.php:1290 src/Admin/ModulesPage.php:1292
-#: src/Admin/ModulesPage.php:1300
+#: src/Admin/ModulesPage.php:1293 src/Admin/ModulesPage.php:1295
+#: src/Admin/ModulesPage.php:1303
 msgid "Pixel ID"
 msgstr "像素 ID"
 
-#: src/Admin/ModulesPage.php:1291
+#: src/Admin/ModulesPage.php:1294
 msgid "TikTok Pixel"
 msgstr "TikTok Pixel"
 
-#: src/Admin/ModulesPage.php:1292
+#: src/Admin/ModulesPage.php:1295
 msgid "TikTok Pixel ID"
 msgstr "TikTok Pixel ID"
 
-#: src/Admin/ModulesPage.php:1293
+#: src/Admin/ModulesPage.php:1296
 msgid "Microsoft Advertising (Bing UET)"
 msgstr "Microsoft Advertising（Bing UET）"
 
-#: src/Admin/ModulesPage.php:1294
+#: src/Admin/ModulesPage.php:1297
 msgid "UET Tag ID"
 msgstr "UET 标签 ID"
 
-#: src/Admin/ModulesPage.php:1295
+#: src/Admin/ModulesPage.php:1298
 msgid "LinkedIn Insight"
 msgstr "LinkedIn Insight"
 
-#: src/Admin/ModulesPage.php:1296
+#: src/Admin/ModulesPage.php:1299
 msgid "LinkedIn Partner ID"
 msgstr "LinkedIn 合作伙伴 ID"
 
-#: src/Admin/ModulesPage.php:1296
+#: src/Admin/ModulesPage.php:1299
 msgid "Partner ID"
 msgstr "合作伙伴 ID"
 
-#: src/Admin/ModulesPage.php:1297
+#: src/Admin/ModulesPage.php:1300
 msgid "Pinterest Tag"
 msgstr "Pinterest Tag"
 
-#: src/Admin/ModulesPage.php:1298
+#: src/Admin/ModulesPage.php:1301
 msgid "Pinterest Tag ID"
 msgstr "Pinterest 标签 ID"
 
-#: src/Admin/ModulesPage.php:1298
+#: src/Admin/ModulesPage.php:1301
 msgid "Tag ID"
 msgstr "标签 ID"
 
-#: src/Admin/ModulesPage.php:1299
+#: src/Admin/ModulesPage.php:1302
 msgid "X / Twitter Ads"
 msgstr "X / Twitter Ads"
 
-#: src/Admin/ModulesPage.php:1300
+#: src/Admin/ModulesPage.php:1303
 msgid "X / Twitter Pixel ID"
 msgstr "X / Twitter Pixel ID"
 
-#: src/Admin/ModulesPage.php:1301
+#: src/Admin/ModulesPage.php:1304
 msgid "Google Ads"
 msgstr "Google Ads"
 
-#: src/Admin/ModulesPage.php:1302
+#: src/Admin/ModulesPage.php:1305
 msgid "Google Ads Conversion ID"
 msgstr "Google Ads 转化 ID"
 
-#: src/Admin/ModulesPage.php:1303
+#: src/Admin/ModulesPage.php:1306
 msgid "Analytics and heatmaps"
 msgstr "分析与热图"
 
-#: src/Admin/ModulesPage.php:1303
+#: src/Admin/ModulesPage.php:1306
 msgid "Gated under the Analytics consent category."
 msgstr "受分析同意类别控制。"
 
-#: src/Admin/ModulesPage.php:1304
+#: src/Admin/ModulesPage.php:1307
 msgid "Microsoft Clarity"
 msgstr "Microsoft Clarity"
 
-#: src/Admin/ModulesPage.php:1305
+#: src/Admin/ModulesPage.php:1308
 msgid "Clarity Project ID"
 msgstr "Clarity 项目 ID"
 
-#: src/Admin/ModulesPage.php:1305
+#: src/Admin/ModulesPage.php:1308
 msgid "Project ID"
 msgstr "项目 ID"
 
-#: src/Admin/ModulesPage.php:1306
+#: src/Admin/ModulesPage.php:1309
 msgid "Matomo"
 msgstr "Matomo"
 
-#: src/Admin/ModulesPage.php:1307
+#: src/Admin/ModulesPage.php:1310
 msgid "Matomo URL"
 msgstr "Matomo URL"
 
-#: src/Admin/ModulesPage.php:1308
+#: src/Admin/ModulesPage.php:1311
 msgid "Matomo Site ID"
 msgstr "Matomo 网站 ID"
 
-#: src/Admin/ModulesPage.php:1308 src/Admin/ModulesPage.php:1314
+#: src/Admin/ModulesPage.php:1311 src/Admin/ModulesPage.php:1317
 msgid "Site ID"
 msgstr "网站 ID"
 
-#: src/Admin/ModulesPage.php:1309
+#: src/Admin/ModulesPage.php:1312
 msgid "Plausible"
 msgstr "Plausible"
 
-#: src/Admin/ModulesPage.php:1310
+#: src/Admin/ModulesPage.php:1313
 msgid "Plausible domain"
 msgstr "Plausible 域名"
 
-#: src/Admin/ModulesPage.php:1311
+#: src/Admin/ModulesPage.php:1314
 msgid "PostHog"
 msgstr "PostHog"
 
-#: src/Admin/ModulesPage.php:1312
+#: src/Admin/ModulesPage.php:1315
 msgid "PostHog project API key"
 msgstr "PostHog 项目 API 密钥"
 
-#: src/Admin/ModulesPage.php:1312
+#: src/Admin/ModulesPage.php:1315
 msgid "Project API key"
 msgstr "项目 API 密钥"
 
-#: src/Admin/ModulesPage.php:1313
+#: src/Admin/ModulesPage.php:1316
 msgid "Hotjar"
 msgstr "Hotjar"
 
-#: src/Admin/ModulesPage.php:1314
+#: src/Admin/ModulesPage.php:1317
 msgid "Hotjar Site ID"
 msgstr "Hotjar 网站 ID"
 
-#: src/Admin/ModulesPage.php:1315
+#: src/Admin/ModulesPage.php:1318
 msgid "Inspectlet"
 msgstr "Inspectlet"
 
-#: src/Admin/ModulesPage.php:1316
+#: src/Admin/ModulesPage.php:1319
 msgid "Inspectlet WID"
 msgstr "Inspectlet WID"
 
-#: src/Admin/ModulesPage.php:1316
+#: src/Admin/ModulesPage.php:1319
 msgid "WID"
 msgstr "WID"
 
-#: src/Admin/ModulesPage.php:1317
+#: src/Admin/ModulesPage.php:1320
 msgid "Crazy Egg"
 msgstr "Crazy Egg"
 
-#: src/Admin/ModulesPage.php:1318
+#: src/Admin/ModulesPage.php:1321
 msgid "Crazy Egg Account ID"
 msgstr "Crazy Egg 账户 ID"
 
-#: src/Admin/ModulesPage.php:1318
+#: src/Admin/ModulesPage.php:1321
 msgid "Account ID"
 msgstr "账户 ID"
 
-#: src/Admin/ModulesPage.php:1319
+#: src/Admin/ModulesPage.php:1322
 msgid "Simple Analytics"
 msgstr "Simple Analytics"
 
-#: src/Admin/ModulesPage.php:1325
+#: src/Admin/ModulesPage.php:1328
 msgid "Safe Fonts"
 msgstr "安全字体"
 
-#: src/Admin/ModulesPage.php:1326
+#: src/Admin/ModulesPage.php:1329
 msgid ""
 "Reduce and gate external Google Fonts requests. Adds font-display and "
 "preconnect hints, and can defer the Google Fonts stylesheet until the "
@@ -6193,21 +6204,21 @@ msgstr ""
 "将 Google Fonts 样式表延迟到访客授予同意之后再加载。自托管字体文件不在范围"
 "内；本功能降低并控制外部调用。"
 
-#: src/Admin/ModulesPage.php:1332
+#: src/Admin/ModulesPage.php:1335
 msgid "Optimise Google Fonts"
 msgstr "优化 Google Fonts"
 
-#: src/Admin/ModulesPage.php:1332
+#: src/Admin/ModulesPage.php:1335
 msgid ""
 "Append display=swap to the font URL and emit preconnect hints for the Google "
 "Fonts hosts. Preconnect is skipped while fonts wait for consent."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1333
+#: src/Admin/ModulesPage.php:1336
 msgid "Defer Google Fonts until consent"
 msgstr "在同意前延迟加载 Google Fonts"
 
-#: src/Admin/ModulesPage.php:1333
+#: src/Admin/ModulesPage.php:1336
 msgid ""
 "Hold the Google Fonts stylesheet until the visitor grants the chosen consent "
 "category. A no-script fallback keeps fonts working when JavaScript is off."
@@ -6215,26 +6226,26 @@ msgstr ""
 "在访客授予所选同意类别之前保留 Google Fonts 样式表。无脚本回退可在 "
 "JavaScript 关闭时保持字体正常工作。"
 
-#: src/Admin/ModulesPage.php:1334
+#: src/Admin/ModulesPage.php:1337
 msgid "Consent category"
 msgstr "同意类别"
 
-#: src/Admin/ModulesPage.php:1335 src/Admin/ModulesPage.php:2263
+#: src/Admin/ModulesPage.php:1338 src/Admin/ModulesPage.php:2266
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr "必要"
 
-#: src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:1342
 msgid ""
 "Used only when deferring fonts until consent. Requires the Consent Manager "
 "module to be enabled."
 msgstr "仅在将字体延迟到同意之后时使用。需要启用同意管理器模块。"
 
-#: src/Admin/ModulesPage.php:1345
+#: src/Admin/ModulesPage.php:1348
 msgid "Custom Integrations"
 msgstr "自定义集成"
 
-#: src/Admin/ModulesPage.php:1346
+#: src/Admin/ModulesPage.php:1349
 msgid ""
 "Add your own scripts or snippets to the page head or footer. Each snippet is "
 "assigned a consent category and runs only after the visitor grants it, via "
@@ -6243,7 +6254,7 @@ msgstr ""
 "将您自己的脚本或代码片段添加到页面的 head 或 footer 中。每个代码片段都会被分"
 "配一个同意类别，并通过同意管理器仅在访客授予后才运行。"
 
-#: src/Admin/ModulesPage.php:1352
+#: src/Admin/ModulesPage.php:1355
 msgid ""
 "Necessary snippets print as they are and run on every page load, so they may "
 "hold any markup, such as a meta tag. Snippets in other categories must be "
@@ -6251,15 +6262,15 @@ msgid ""
 "matching category is granted, which requires the Consent Manager module."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1353
+#: src/Admin/ModulesPage.php:1356
 msgid "Snippets"
 msgstr "代码片段"
 
-#: src/Admin/ModulesPage.php:1359
+#: src/Admin/ModulesPage.php:1362
 msgid "Custom Triggers"
 msgstr "自定义触发器"
 
-#: src/Admin/ModulesPage.php:1360
+#: src/Admin/ModulesPage.php:1363
 msgid ""
 "Push your own dataLayer events on simple page conditions, such as visiting a "
 "URL or clicking an element. Integrates with the GA4 DataLayer module."
@@ -6267,7 +6278,7 @@ msgstr ""
 "在简单的页面条件下（例如访问某个 URL 或点击某个元素）推送您自己的 dataLayer "
 "事件。与 GA4 DataLayer 模块集成。"
 
-#: src/Admin/ModulesPage.php:1366
+#: src/Admin/ModulesPage.php:1369
 msgid ""
 "Each trigger pushes an event into window.dataLayer. Assign a consent "
 "category to hold a trigger until that category is granted (necessary always "
@@ -6276,15 +6287,15 @@ msgstr ""
 "每个触发器都会向 window.dataLayer 推送一个事件。为触发器分配一个同意类别，可"
 "将其保留到该类别获得授予后再触发（必要类别始终触发）。"
 
-#: src/Admin/ModulesPage.php:1367
+#: src/Admin/ModulesPage.php:1370
 msgid "Triggers"
 msgstr "触发器"
 
-#: src/Admin/ModulesPage.php:1374
+#: src/Admin/ModulesPage.php:1377
 msgid "Store Audit"
 msgstr "店铺审核"
 
-#: src/Admin/ModulesPage.php:1375
+#: src/Admin/ModulesPage.php:1378
 msgid ""
 "Automatic verification of the most common issues: missing legal pages, pre-"
 "selected checkboxes, company data, GDPR, Omnibus."
@@ -6292,15 +6303,15 @@ msgstr ""
 "自动检查最常见的问题：缺失的法律页面、预先勾选的复选框、公司数据、GDPR、"
 "Omnibus。"
 
-#: src/Admin/ModulesPage.php:1381
+#: src/Admin/ModulesPage.php:1384
 msgid "Open compliance audit report"
 msgstr "打开合规审核报告"
 
-#: src/Admin/ModulesPage.php:1386
+#: src/Admin/ModulesPage.php:1389
 msgid "Plugin data on uninstall"
 msgstr "卸载时的插件数据"
 
-#: src/Admin/ModulesPage.php:1387
+#: src/Admin/ModulesPage.php:1390
 msgid ""
 "Choose whether Polski deletes its database tables, settings, and stored logs "
 "when the plugin is removed from WordPress."
@@ -6308,57 +6319,57 @@ msgstr ""
 "选择当从 WordPress 中移除插件时，Polski 是否删除其数据库表、设置和存储的日"
 "志。"
 
-#: src/Admin/ModulesPage.php:1393
+#: src/Admin/ModulesPage.php:1396
 msgid "Delete plugin data on uninstall"
 msgstr "卸载时删除插件数据"
 
-#: src/Admin/ModulesPage.php:1393
+#: src/Admin/ModulesPage.php:1396
 msgid ""
 "If enabled, uninstall removes plugin tables, settings, and stored logs "
 "including deactivation feedback."
 msgstr "如果启用，卸载将移除插件表、设置和存储的日志，包括停用反馈。"
 
-#: src/Admin/ModulesPage.php:1398
+#: src/Admin/ModulesPage.php:1401
 msgid "security.txt (RFC 9116)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1399
+#: src/Admin/ModulesPage.php:1402
 msgid ""
 "RFC 9116 security.txt file, security contact and vulnerability reporting "
 "policy. Not a CRA requirement for shops; the CRA binds manufacturers."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1406
+#: src/Admin/ModulesPage.php:1409
 msgid "Security policy URL"
 msgstr "安全政策 URL"
 
-#: src/Admin/ModulesPage.php:1407
+#: src/Admin/ModulesPage.php:1410
 msgid "CRA incident webhook URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1407
+#: src/Admin/ModulesPage.php:1410
 msgid "Dispatch notification sends the incident as JSON to this URL."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1408
+#: src/Admin/ModulesPage.php:1411
 msgid "CRA incident notification email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1413
+#: src/Admin/ModulesPage.php:1416
 msgid "DPA Registry (GDPR)"
 msgstr "DPA 登记（GDPR）"
 
-#: src/Admin/ModulesPage.php:1414
+#: src/Admin/ModulesPage.php:1417
 msgid ""
 "Detection of third-party services processing customers' personal data. "
 "Tracking the status of data processing agreements."
 msgstr "检测处理客户个人数据的第三方服务。跟踪数据处理协议的状态。"
 
-#: src/Admin/ModulesPage.php:1423
+#: src/Admin/ModulesPage.php:1426
 msgid "Minimum Order Value / Quantity"
 msgstr "最小订单金额 / 数量"
 
-#: src/Admin/ModulesPage.php:1424
+#: src/Admin/ModulesPage.php:1427
 msgid ""
 "Block checkout when cart does not meet minimum order value or minimum number "
 "of items. Displays a notice on cart and checkout pages."
@@ -6366,112 +6377,112 @@ msgstr ""
 "当购物车未达到最小订单金额或最小商品数量时阻止结账。在购物车和结账页面显示提"
 "示。"
 
-#: src/Admin/ModulesPage.php:1430
+#: src/Admin/ModulesPage.php:1433
 msgid "Minimum order value (0 = disabled)"
 msgstr "最小订单金额（0 = 禁用）"
 
-#: src/Admin/ModulesPage.php:1430
+#: src/Admin/ModulesPage.php:1433
 msgid "Cart subtotal must reach this amount to proceed to checkout."
 msgstr "购物车小计必须达到此金额才能进入结账。"
 
-#: src/Admin/ModulesPage.php:1431
+#: src/Admin/ModulesPage.php:1434
 msgid "Minimum number of items (0 = disabled)"
 msgstr "最小商品数量（0 = 禁用）"
 
-#: src/Admin/ModulesPage.php:1431
+#: src/Admin/ModulesPage.php:1434
 msgid "Total number of items in cart must reach this count."
 msgstr "购物车中商品总数必须达到此数量。"
 
-#: src/Admin/ModulesPage.php:1432
+#: src/Admin/ModulesPage.php:1435
 msgid "Exclude sale items from minimum value"
 msgstr "从最小金额中排除促销商品"
 
-#: src/Admin/ModulesPage.php:1433
+#: src/Admin/ModulesPage.php:1436
 msgid "Message for minimum value"
 msgstr "最小金额提示消息"
 
-#: src/Admin/ModulesPage.php:1433
+#: src/Admin/ModulesPage.php:1436
 msgid "Tokens: {min_value}, {current_value}"
 msgstr "变量：{min_value}、{current_value}"
 
-#: src/Admin/ModulesPage.php:1434
+#: src/Admin/ModulesPage.php:1437
 msgid "Message for minimum quantity"
 msgstr "最小数量提示消息"
 
-#: src/Admin/ModulesPage.php:1434
+#: src/Admin/ModulesPage.php:1437
 msgid "Tokens: {min_quantity}, {current_quantity}"
 msgstr "变量：{min_quantity}、{current_quantity}"
 
-#: src/Admin/ModulesPage.php:1439
+#: src/Admin/ModulesPage.php:1442
 msgid "Review Request Emails"
 msgstr "评价请求邮件"
 
-#: src/Admin/ModulesPage.php:1440
+#: src/Admin/ModulesPage.php:1443
 msgid ""
 "Automatically send review request emails to customers after order "
 "completion. Includes product images, review links, and opt-out."
 msgstr ""
 "订单完成后自动向客户发送评价请求邮件。包含产品图片、评价链接和退订选项。"
 
-#: src/Admin/ModulesPage.php:1446
+#: src/Admin/ModulesPage.php:1449
 msgid "Send after (days)"
 msgstr "发送间隔（天）"
 
-#: src/Admin/ModulesPage.php:1446
+#: src/Admin/ModulesPage.php:1449
 msgid ""
 "Number of days after order completion before sending the review request."
 msgstr "订单完成后多少天发送评价请求。"
 
-#: src/Admin/ModulesPage.php:1447
+#: src/Admin/ModulesPage.php:1450
 msgid "Tokens: {first_name}, {order_number}"
 msgstr "变量：{first_name}、{order_number}"
 
-#: src/Admin/ModulesPage.php:1448
+#: src/Admin/ModulesPage.php:1451
 msgid "Tokens: {first_name}"
 msgstr "变量：{first_name}"
 
-#: src/Admin/ModulesPage.php:1449
+#: src/Admin/ModulesPage.php:1452
 msgid "Review button text"
 msgstr "评价按钮文字"
 
-#: src/Admin/ModulesPage.php:1454
+#: src/Admin/ModulesPage.php:1457
 msgid "From Price for Variable Products"
 msgstr "可变产品的“起价”"
 
-#: src/Admin/ModulesPage.php:1455
+#: src/Admin/ModulesPage.php:1458
 msgid ""
 "Display \"from {price}\" instead of a price range for variable products. "
 "Cleaner presentation on archives and product pages."
 msgstr "为可变产品显示“{price} 起”而非价格区间。在归档页和产品页上呈现更简洁。"
 
-#: src/Admin/ModulesPage.php:1461
+#: src/Admin/ModulesPage.php:1464
 msgid "Enable \"from\" price display"
 msgstr "启用“起价”显示"
 
-#: src/Admin/ModulesPage.php:1462
+#: src/Admin/ModulesPage.php:1465
 msgid "Price text template"
 msgstr "价格文字模板"
 
-#: src/Admin/ModulesPage.php:1462
+#: src/Admin/ModulesPage.php:1465
 msgid "Token: {price}"
 msgstr "变量：{price}"
 
-#: src/Admin/ModulesPage.php:1469
+#: src/Admin/ModulesPage.php:1472
 msgid "Auto Restore Stock"
 msgstr "自动恢复库存"
 
-#: src/Admin/ModulesPage.php:1470
+#: src/Admin/ModulesPage.php:1473
 msgid ""
 "Automatically restore product stock when orders are cancelled, refunded or "
 "failed. Keeps inventory accurate without manual intervention."
 msgstr ""
 "在订单取消、退款或失败时自动恢复产品库存。无需手动干预即可保持库存准确。"
 
-#: src/Admin/ModulesPage.php:1479
+#: src/Admin/ModulesPage.php:1482
 msgid "AJAX Add to Cart"
 msgstr "AJAX 加入购物车"
 
-#: src/Admin/ModulesPage.php:1480
+#: src/Admin/ModulesPage.php:1483
 msgid ""
 "Add products to cart without page reload, including variable products on "
 "single product pages. Shows a toast notification on success."
@@ -6479,11 +6490,11 @@ msgstr ""
 "无需刷新页面即可将产品加入购物车，包括单品页面上的可变产品。成功时显示 toast "
 "通知。"
 
-#: src/Admin/ModulesPage.php:1491
+#: src/Admin/ModulesPage.php:1494
 msgid "GA4 DataLayer / GTM"
 msgstr "GA4 DataLayer / GTM"
 
-#: src/Admin/ModulesPage.php:1492
+#: src/Admin/ModulesPage.php:1495
 msgid ""
 "Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, "
 "add_to_cart, begin_checkout, purchase events. Supports GTM container and "
@@ -6492,28 +6503,28 @@ msgstr ""
 "通过 dataLayer 进行 Google Analytics 4 电子商务跟踪。跟踪 view_item、"
 "add_to_cart、begin_checkout、purchase 事件。支持 GTM 容器和 gtag.js。"
 
-#: src/Admin/ModulesPage.php:1498
+#: src/Admin/ModulesPage.php:1501
 msgid "GTM Container ID"
 msgstr "GTM 容器 ID"
 
-#: src/Admin/ModulesPage.php:1499
+#: src/Admin/ModulesPage.php:1502
 msgid "GA4 Measurement ID"
 msgstr "GA4 衡量 ID"
 
-#: src/Admin/ModulesPage.php:1500
+#: src/Admin/ModulesPage.php:1503
 msgid "Use SKU as product ID"
 msgstr "使用 SKU 作为产品 ID"
 
-#: src/Admin/ModulesPage.php:1500
+#: src/Admin/ModulesPage.php:1503
 msgid "Send SKU instead of WooCommerce product ID in ecommerce events"
 msgstr "在电子商务事件中发送 SKU 而非 WooCommerce 产品 ID"
 
-#: src/Admin/ModulesPage.php:1505 src/Service/StockExportService.php:39
+#: src/Admin/ModulesPage.php:1508 src/Service/StockExportService.php:39
 #: src/Service/StockExportService.php:40 src/Service/StockExportService.php:64
 msgid "Stock Export"
 msgstr "库存导出"
 
-#: src/Admin/ModulesPage.php:1506
+#: src/Admin/ModulesPage.php:1509
 msgid ""
 "Export WooCommerce product stock data as CSV. Configurable fields, stock "
 "threshold filters, variation support. Available under Products > Stock "
@@ -6522,15 +6533,15 @@ msgstr ""
 "将 WooCommerce 产品库存数据导出为 CSV。可配置字段、库存阈值过滤、变体支持。可"
 "在“产品 > 库存导出”下使用。"
 
-#: src/Admin/ModulesPage.php:1511
+#: src/Admin/ModulesPage.php:1514
 msgid "Export stock"
 msgstr "导出库存"
 
-#: src/Admin/ModulesPage.php:1517
+#: src/Admin/ModulesPage.php:1520
 msgid "Social Login"
 msgstr "社交登录"
 
-#: src/Admin/ModulesPage.php:1518
+#: src/Admin/ModulesPage.php:1521
 msgid ""
 "Let customers register and login via Google or Facebook. Displays branded "
 "buttons on My Account, the classic (shortcode) checkout and the WordPress "
@@ -6538,59 +6549,59 @@ msgid ""
 "accounts."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1524
+#: src/Admin/ModulesPage.php:1527
 msgid "Enable Google login"
 msgstr "启用 Google 登录"
 
-#: src/Admin/ModulesPage.php:1525
+#: src/Admin/ModulesPage.php:1528
 msgid "Google Client ID"
 msgstr "Google 客户端 ID"
 
-#: src/Admin/ModulesPage.php:1525
+#: src/Admin/ModulesPage.php:1528
 msgid "From Google Cloud Console > APIs & Services > Credentials"
 msgstr "来自 Google Cloud Console > API 和服务 > 凭据"
 
-#: src/Admin/ModulesPage.php:1526
+#: src/Admin/ModulesPage.php:1529
 msgid "Google Client Secret"
 msgstr "Google 客户端密钥"
 
-#: src/Admin/ModulesPage.php:1526
+#: src/Admin/ModulesPage.php:1529
 msgid "OAuth 2.0 Client Secret from the same credential"
 msgstr "来自同一凭据的 OAuth 2.0 客户端密钥"
 
-#: src/Admin/ModulesPage.php:1527
+#: src/Admin/ModulesPage.php:1530
 msgid "Enable Facebook login"
 msgstr "启用 Facebook 登录"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1531
 msgid "Facebook App ID"
 msgstr "Facebook 应用 ID"
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1531
 msgid "From Meta for Developers > App Dashboard > Settings > Basic"
 msgstr "来自 Meta for Developers > 应用控制台 > 设置 > 基本"
 
-#: src/Admin/ModulesPage.php:1529
+#: src/Admin/ModulesPage.php:1532
 msgid "Facebook App Secret"
 msgstr "Facebook 应用密钥"
 
-#: src/Admin/ModulesPage.php:1529
+#: src/Admin/ModulesPage.php:1532
 msgid "App Secret from the same page"
 msgstr "来自同一页面的应用密钥"
 
-#: src/Admin/ModulesPage.php:1530
+#: src/Admin/ModulesPage.php:1533
 msgid "Auto-register new users"
 msgstr "自动注册新用户"
 
-#: src/Admin/ModulesPage.php:1530
+#: src/Admin/ModulesPage.php:1533
 msgid "Create WooCommerce accounts automatically on first social login"
 msgstr "首次社交登录时自动创建 WooCommerce 账户"
 
-#: src/Admin/ModulesPage.php:1535
+#: src/Admin/ModulesPage.php:1538
 msgid "Product Authors"
 msgstr "产品作者"
 
-#: src/Admin/ModulesPage.php:1536
+#: src/Admin/ModulesPage.php:1539
 msgid ""
 "Custom taxonomy for product authors/creators. Adds author names on product "
 "pages and archives with Schema.org Person markup. Ideal for bookstores and "
@@ -6599,12 +6610,12 @@ msgstr ""
 "用于产品作者/创作者的自定义分类法。在产品页和归档页上添加作者姓名，并带有 "
 "Schema.org Person 标记。适用于书店和出版商。"
 
-#: src/Admin/ModulesPage.php:1545 src/Service/ExpertReviewService.php:56
+#: src/Admin/ModulesPage.php:1548 src/Service/ExpertReviewService.php:56
 #: src/Service/ExpertReviewService.php:189
 msgid "Expert Reviews"
 msgstr "专家评测"
 
-#: src/Admin/ModulesPage.php:1546
+#: src/Admin/ModulesPage.php:1549
 msgid ""
 "Custom post type for editorial product reviews. Link expert reviews to "
 "products with ratings (1-10), verdicts, and Schema.org markup for SEO."
@@ -6612,88 +6623,88 @@ msgstr ""
 "用于编辑产品评测的自定义文章类型。将专家评测与产品关联，带有评分（1-10）、结"
 "论和用于 SEO 的 Schema.org 标记。"
 
-#: src/Admin/ModulesPage.php:1551
+#: src/Admin/ModulesPage.php:1554
 msgid "Manage reviews"
 msgstr "管理评测"
 
-#: src/Admin/ModulesPage.php:1557
+#: src/Admin/ModulesPage.php:1560
 msgid "Social Proof Notifications"
 msgstr "社会认同通知"
 
-#: src/Admin/ModulesPage.php:1558
+#: src/Admin/ModulesPage.php:1561
 msgid ""
 "Floating purchase notifications showing recent orders (\"Jan from Warszawa "
 "just bought...\"). Privacy-aware, AJAX-loaded, configurable position and "
 "timing."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1564
+#: src/Admin/ModulesPage.php:1567
 msgid "Interval between popups (seconds)"
 msgstr "弹窗间隔（秒）"
 
-#: src/Admin/ModulesPage.php:1564
+#: src/Admin/ModulesPage.php:1567
 msgid "Time between showing consecutive notifications. Recommended: 6-12"
 msgstr "连续显示通知之间的时间。建议：6-12"
 
-#: src/Admin/ModulesPage.php:1565
+#: src/Admin/ModulesPage.php:1568
 msgid "Display duration (seconds)"
 msgstr "显示时长（秒）"
 
-#: src/Admin/ModulesPage.php:1565
+#: src/Admin/ModulesPage.php:1568
 msgid "How long each notification stays visible. Recommended: 4-6"
 msgstr "每条通知保持可见的时长。建议：4-6"
 
-#: src/Admin/ModulesPage.php:1567
+#: src/Admin/ModulesPage.php:1570
 msgid "Anonymize customer names"
 msgstr "匿名化客户姓名"
 
-#: src/Admin/ModulesPage.php:1567
+#: src/Admin/ModulesPage.php:1570
 msgid "Shows \"J. from Warszawa\" instead of full names. Recommended for GDPR"
 msgstr "显示“来自华沙的 J.”而非完整姓名。建议用于 GDPR"
 
-#: src/Admin/ModulesPage.php:1568
+#: src/Admin/ModulesPage.php:1571
 msgid "Hide on mobile devices"
 msgstr "在移动设备上隐藏"
 
-#: src/Admin/ModulesPage.php:1568
+#: src/Admin/ModulesPage.php:1571
 msgid "Disable on small screens to avoid obstructing content"
 msgstr "在小屏幕上禁用，以避免遮挡内容"
 
-#: src/Admin/ModulesPage.php:1573
+#: src/Admin/ModulesPage.php:1576
 msgid "Product Q&A"
 msgstr "产品问答"
 
-#: src/Admin/ModulesPage.php:1574
+#: src/Admin/ModulesPage.php:1577
 msgid ""
 "Amazon-style questions and answers on product pages. Customers ask, logged-"
 "in users answer. Admin email notifications, answer voting, and Schema.org "
 "QAPage markup when a product has exactly one answered question."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1583
+#: src/Admin/ModulesPage.php:1586
 msgid "Trust Badges"
 msgstr "信任徽章"
 
-#: src/Admin/ModulesPage.php:1584
+#: src/Admin/ModulesPage.php:1587
 msgid ""
 "Trust signals on product, cart, and checkout pages (classic and block): "
 "secure payment, fast delivery, returns, quality guarantee. You choose the "
 "pages they appear on. Pure CSS + inline SVG for zero performance impact."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1591
+#: src/Admin/ModulesPage.php:1594
 msgid "Show on cart"
 msgstr "在购物车显示"
 
-#: src/Admin/ModulesPage.php:1592
+#: src/Admin/ModulesPage.php:1595
 msgid "Show on checkout"
 msgstr "在结账页显示"
 
-#: src/Admin/ModulesPage.php:1597
+#: src/Admin/ModulesPage.php:1600
 msgid "Live Cart Sidebar"
 msgstr "实时购物车侧边栏"
 
-#: src/Admin/ModulesPage.php:1598
+#: src/Admin/ModulesPage.php:1601
 msgid ""
 "Slide-in cart drawer that opens when a product is added to cart. Shows cart "
 "items, subtotal, free shipping progress bar, and quick checkout link. No "
@@ -6702,47 +6713,47 @@ msgstr ""
 "在产品加入购物车时打开的滑出式购物车抽屉。显示购物车商品、小计、免运费进度条"
 "和快速结账链接。无需刷新页面。"
 
-#: src/Admin/ModulesPage.php:1604
+#: src/Admin/ModulesPage.php:1607
 msgid "Auto-open on add to cart"
 msgstr "加入购物车时自动打开"
 
-#: src/Admin/ModulesPage.php:1605
+#: src/Admin/ModulesPage.php:1608
 msgid "Show subtotal"
 msgstr "显示小计"
 
-#: src/Admin/ModulesPage.php:1606
+#: src/Admin/ModulesPage.php:1609
 msgid "Show free shipping progress"
 msgstr "显示免运费进度"
 
-#: src/Admin/ModulesPage.php:1607
+#: src/Admin/ModulesPage.php:1610
 msgid "Free shipping threshold"
 msgstr "免运费阈值"
 
-#: src/Admin/ModulesPage.php:1607
+#: src/Admin/ModulesPage.php:1610
 msgid "Set to 0 to disable progress bar"
 msgstr "设为 0 可禁用进度条"
 
-#: src/Admin/ModulesPage.php:1608
+#: src/Admin/ModulesPage.php:1611
 msgid "Panel position"
 msgstr "面板位置"
 
-#: src/Admin/ModulesPage.php:1608
+#: src/Admin/ModulesPage.php:1611
 msgid "Right"
 msgstr "右侧"
 
-#: src/Admin/ModulesPage.php:1608
+#: src/Admin/ModulesPage.php:1611
 msgid "Left"
 msgstr "左侧"
 
-#: src/Admin/ModulesPage.php:1609
+#: src/Admin/ModulesPage.php:1612
 msgid "Show background overlay"
 msgstr "显示背景遮罩"
 
-#: src/Admin/ModulesPage.php:1614
+#: src/Admin/ModulesPage.php:1617
 msgid "Price History Chart"
 msgstr "价格历史图表"
 
-#: src/Admin/ModulesPage.php:1615
+#: src/Admin/ModulesPage.php:1618
 msgid ""
 "Visual SVG sparkline showing price trends over 30/90/180 days on product "
 "pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust "
@@ -6751,32 +6762,32 @@ msgstr ""
 "在产品页面上以可视化 SVG 迷你折线图显示 30/90/180 天的价格趋势。使用 Omnibus "
 "价格数据。显示最低/最高价格。提升信任度和 Omnibus 透明度。"
 
-#: src/Admin/ModulesPage.php:1621
+#: src/Admin/ModulesPage.php:1624
 msgid "History period (days)"
 msgstr "历史周期（天）"
 
-#: src/Admin/ModulesPage.php:1621
+#: src/Admin/ModulesPage.php:1624
 msgid "Show price data from the last N days. Options: 30, 90, or 180"
 msgstr "显示最近 N 天的价格数据。选项：30、90 或 180"
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1625
 msgid "Show min/max prices"
 msgstr "显示最低/最高价格"
 
-#: src/Admin/ModulesPage.php:1623
+#: src/Admin/ModulesPage.php:1626
 msgid "Line color"
 msgstr "线条颜色"
 
-#: src/Admin/ModulesPage.php:1623
+#: src/Admin/ModulesPage.php:1626
 msgid "CSS hex color for the chart line, e.g. #0369a1"
 msgstr "图表线条的 CSS 十六进制颜色，例如 #0369a1"
 
-#: src/Admin/ModulesPage.php:1628 src/Service/OrderExportService.php:38
+#: src/Admin/ModulesPage.php:1631 src/Service/OrderExportService.php:38
 #: src/Service/OrderExportService.php:39 src/Service/OrderExportService.php:92
 msgid "Order Export"
 msgstr "订单导出"
 
-#: src/Admin/ModulesPage.php:1629
+#: src/Admin/ModulesPage.php:1632
 msgid ""
 "Export WooCommerce orders to CSV with configurable fields, date range and "
 "status filters. 30+ exportable fields including products, customer data, and "
@@ -6785,16 +6796,16 @@ msgstr ""
 "将 WooCommerce 订单导出为 CSV，可配置字段、日期范围和状态过滤。30 多个可导出"
 "字段，包括产品、客户数据和优惠券。"
 
-#: src/Admin/ModulesPage.php:1634
+#: src/Admin/ModulesPage.php:1637
 msgid "Export orders"
 msgstr "导出订单"
 
-#: src/Admin/ModulesPage.php:1640 src/Service/FaqService.php:52
+#: src/Admin/ModulesPage.php:1643 src/Service/FaqService.php:52
 #: src/Service/FaqService.php:53 src/Service/FaqService.php:58
 msgid "FAQ"
 msgstr "常见问题"
 
-#: src/Admin/ModulesPage.php:1641
+#: src/Admin/ModulesPage.php:1644
 msgid ""
 "FAQ custom post type with categories and accordion shortcode [polski_faq]. "
 "Includes Schema.org FAQPage structured data for SEO rich snippets."
@@ -6802,16 +6813,16 @@ msgstr ""
 "带有分类和手风琴短代码 [polski_faq] 的 FAQ 自定义文章类型。包含用于 SEO 富摘"
 "要的 Schema.org FAQPage 结构化数据。"
 
-#: src/Admin/ModulesPage.php:1646
+#: src/Admin/ModulesPage.php:1649
 msgid "Manage FAQ"
 msgstr "管理 FAQ"
 
-#: src/Admin/ModulesPage.php:1652
+#: src/Admin/ModulesPage.php:1655
 #: src/Service/CustomCheckoutFieldsService.php:721
 msgid "Custom Checkout Fields"
 msgstr "自定义结账字段"
 
-#: src/Admin/ModulesPage.php:1653
+#: src/Admin/ModulesPage.php:1656
 msgid ""
 "Add, modify and reorder checkout fields. Supports text, textarea, select, "
 "checkbox, radio, number, email, date and phone types. Fields appear in "
@@ -6820,23 +6831,23 @@ msgstr ""
 "添加、修改和重新排序结账字段。支持文本、文本域、下拉、复选框、单选、数字、邮"
 "箱、日期和电话类型。字段会出现在后台、邮件和“我的账户”中。"
 
-#: src/Admin/ModulesPage.php:1654
+#: src/Admin/ModulesPage.php:1657
 msgid ""
 "On the block checkout, number, email, date and phone fields show as plain "
 "text fields, and display conditions (set in code, there is no screen for "
 "them) apply on the classic checkout only."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1659
+#: src/Admin/ModulesPage.php:1662
 msgid "Manage fields"
 msgstr "管理字段"
 
-#: src/Admin/ModulesPage.php:1669 src/Admin/PageCompliancePage.php:45
+#: src/Admin/ModulesPage.php:1672 src/Admin/PageCompliancePage.php:45
 #: src/Admin/PageCompliancePage.php:46 src/Admin/PageCompliancePage.php:56
 msgid "Compliance checklist"
 msgstr "合规检查清单"
 
-#: src/Admin/ModulesPage.php:1670
+#: src/Admin/ModulesPage.php:1673
 msgid ""
 "Adds a Compliance checklist screen under Polski that reads your Privacy "
 "Policy and Terms pages and reports which legally expected elements it can "
@@ -6844,11 +6855,11 @@ msgid ""
 "heuristic, not legal advice, and it changes nothing on the storefront."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1679
+#: src/Admin/ModulesPage.php:1682
 msgid "Business identification block"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1680
+#: src/Admin/ModulesPage.php:1683
 msgid ""
 "Publishes the seller details from the setup wizard (name, address, NIP, e-"
 "mail, phone) as the [polski_business_info] shortcode and a Gutenberg block, "
@@ -6856,11 +6867,11 @@ msgid ""
 "it prints your company data wherever you place it."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1689
+#: src/Admin/ModulesPage.php:1692
 msgid "Complaint form template"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1690
+#: src/Admin/ModulesPage.php:1693
 msgid ""
 "A printable complaint form (formularz reklamacyjny) following the usual "
 "UOKiK layout, with the seller section filled from the setup wizard. "
@@ -6869,22 +6880,22 @@ msgid ""
 "default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1699
+#: src/Admin/ModulesPage.php:1702
 msgid "Copyright and image credits"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1700
+#: src/Admin/ModulesPage.php:1703
 msgid ""
 "Adds the [polski_copyright] and [polski_image_credit] shortcodes and a "
 "Copyright notice block. The year defaults to the current one and the owner "
 "to your company name from the setup wizard. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1709
+#: src/Admin/ModulesPage.php:1712
 msgid "SBOM (software bill of materials)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1710
+#: src/Admin/ModulesPage.php:1713
 msgid ""
 "Adds an SBOM screen, reachable from Reports and tools, that generates a "
 "CycloneDX 1.4 JSON list of the PHP (Composer) packages shipped with the "
@@ -6893,11 +6904,11 @@ msgid ""
 "Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1719
+#: src/Admin/ModulesPage.php:1722
 msgid "RODO training documents"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1720
+#: src/Admin/ModulesPage.php:1723
 msgid ""
 "Adds a GDPR training screen, reachable from Reports and tools, with three "
 "printable documents pre-filled with your shop data: a training logbook, a "
@@ -6906,151 +6917,151 @@ msgid ""
 "Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1870
+#: src/Admin/ModulesPage.php:1873
 msgid "Search modules by name or description…"
 msgstr "按名称或描述搜索模块…"
 
-#: src/Admin/ModulesPage.php:1871
+#: src/Admin/ModulesPage.php:1874
 msgid "Search modules by name or description"
 msgstr "按名称或描述搜索模块"
 
-#: src/Admin/ModulesPage.php:1874
+#: src/Admin/ModulesPage.php:1877
 msgid "Sort"
 msgstr "排序"
 
-#: src/Admin/ModulesPage.php:1876
+#: src/Admin/ModulesPage.php:1879
 msgid "Grouped (default)"
 msgstr "分组（默认）"
 
-#: src/Admin/ModulesPage.php:1877
+#: src/Admin/ModulesPage.php:1880
 msgid "Name (A, Z)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1878
+#: src/Admin/ModulesPage.php:1881
 msgid "Enabled first"
 msgstr "已启用优先"
 
-#: src/Admin/ModulesPage.php:1885 src/Service/StockExportService.php:415
+#: src/Admin/ModulesPage.php:1888 src/Service/StockExportService.php:415
 msgid "Name"
 msgstr "名称"
 
-#: src/Admin/ModulesPage.php:1922
+#: src/Admin/ModulesPage.php:1925
 msgid "No modules match your search."
 msgstr "没有与搜索匹配的模块。"
 
-#: src/Admin/ModulesPage.php:1936
+#: src/Admin/ModulesPage.php:1939
 msgid "Beta"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1981
+#: src/Admin/ModulesPage.php:1984
 msgid "Help"
 msgstr "帮助"
 
-#: src/Admin/ModulesPage.php:2028
+#: src/Admin/ModulesPage.php:2031
 msgid "Enable this module to use this."
 msgstr "启用此模块以使用此功能。"
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:2051
+#: src/Admin/ModulesPage.php:2054
 #, php-format
 msgid "Edit %s settings"
 msgstr "编辑 %s 设置"
 
-#: src/Admin/ModulesPage.php:2054
+#: src/Admin/ModulesPage.php:2057
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: src/Admin/ModulesPage.php:2064 src/Admin/ModulesPage.php:2065
+#: src/Admin/ModulesPage.php:2067 src/Admin/ModulesPage.php:2068
 msgid "Open documentation"
 msgstr "打开文档"
 
-#: src/Admin/ModulesPage.php:2098
+#: src/Admin/ModulesPage.php:2101
 msgid "Save"
 msgstr "保存"
 
-#: src/Admin/ModulesPage.php:2195
+#: src/Admin/ModulesPage.php:2198
 msgid ""
 "No global product attributes exist yet. Create them under Products > "
 "Attributes."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2214 src/Admin/ModulesPage.php:2233
+#: src/Admin/ModulesPage.php:2217 src/Admin/ModulesPage.php:2236
 msgid "none"
 msgstr "无"
 
-#: src/Admin/ModulesPage.php:2319
+#: src/Admin/ModulesPage.php:2322
 msgid "Add snippet"
 msgstr "添加代码片段"
 
-#: src/Admin/ModulesPage.php:2348
+#: src/Admin/ModulesPage.php:2351
 msgid "Head"
 msgstr "头部"
 
-#: src/Admin/ModulesPage.php:2349
+#: src/Admin/ModulesPage.php:2352
 msgid "Footer"
 msgstr "页脚"
 
-#: src/Admin/ModulesPage.php:2362
+#: src/Admin/ModulesPage.php:2365
 msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> 或内联 JS"
 
-#: src/Admin/ModulesPage.php:2368 src/Admin/ModulesPage.php:2453
+#: src/Admin/ModulesPage.php:2371 src/Admin/ModulesPage.php:2456
 msgid "Remove"
 msgstr "移除"
 
-#: src/Admin/ModulesPage.php:2398
+#: src/Admin/ModulesPage.php:2401
 msgid "Add trigger"
 msgstr "添加触发器"
 
-#: src/Admin/ModulesPage.php:2421
+#: src/Admin/ModulesPage.php:2424
 msgid "Event name (e.g. cta_click)"
 msgstr "事件名称（例如 cta_click）"
 
-#: src/Admin/ModulesPage.php:2428
+#: src/Admin/ModulesPage.php:2431
 msgid "URL contains"
 msgstr "URL 包含"
 
-#: src/Admin/ModulesPage.php:2429
+#: src/Admin/ModulesPage.php:2432
 msgid "Click on selector"
 msgstr "点击选择器"
 
-#: src/Admin/ModulesPage.php:2442
+#: src/Admin/ModulesPage.php:2445
 msgid "URL fragment (for URL contains)"
 msgstr "URL 片段（用于 URL 包含）"
 
-#: src/Admin/ModulesPage.php:2447
+#: src/Admin/ModulesPage.php:2450
 msgid "CSS selector (for click)"
 msgstr "CSS 选择器（用于点击）"
 
-#: src/Admin/ModulesPage.php:2595
+#: src/Admin/ModulesPage.php:2598
 msgid "Sorry, you are not allowed to access this page."
 msgstr "抱歉，您无权访问此页面。"
 
-#: src/Admin/ModulesPage.php:2602 src/Admin/ModulesPage.php:2618
+#: src/Admin/ModulesPage.php:2605 src/Admin/ModulesPage.php:2621
 msgid "Invalid request."
 msgstr "无效请求。"
 
-#: src/Admin/ModulesPage.php:2868 src/Admin/ModulesPage.php:2916
+#: src/Admin/ModulesPage.php:2871 src/Admin/ModulesPage.php:2919
 msgid "Legal & Compliance"
 msgstr "法律与合规"
 
-#: src/Admin/ModulesPage.php:2870
+#: src/Admin/ModulesPage.php:2873
 msgid "Tax & Pricing"
 msgstr "税费与定价"
 
-#: src/Admin/ModulesPage.php:2872
+#: src/Admin/ModulesPage.php:2875
 msgid "Checkout & Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:2874
+#: src/Admin/ModulesPage.php:2877
 msgid "Content & Trust"
 msgstr "内容与信任"
 
-#: src/Admin/ModulesPage.php:2876 src/Admin/ModulesPage.php:2926
+#: src/Admin/ModulesPage.php:2879 src/Admin/ModulesPage.php:2929
 msgid "Advanced & Tools"
 msgstr "高级与工具"
 
-#: src/Admin/ModulesPage.php:2878 src/Admin/WithdrawalsAdminPage.php:399
+#: src/Admin/ModulesPage.php:2881 src/Admin/WithdrawalsAdminPage.php:399
 #: src/Enum/WithdrawalExemptionReason.php:47 src/Service/DSAService.php:210
 #: src/Service/SecurityIncidentService.php:117
 #: src/Service/SecurityIncidentService.php:404
@@ -7058,99 +7069,99 @@ msgstr "高级与工具"
 msgid "Other"
 msgstr "其他"
 
-#: src/Admin/ModulesPage.php:2891
+#: src/Admin/ModulesPage.php:2894
 msgid "Prices and Display"
 msgstr "价格与显示"
 
-#: src/Admin/ModulesPage.php:2893
+#: src/Admin/ModulesPage.php:2896
 msgid "Prices and Omnibus"
 msgstr "价格与 Omnibus"
 
-#: src/Admin/ModulesPage.php:2895
+#: src/Admin/ModulesPage.php:2898
 msgid "Checkout and Orders"
 msgstr "结账与订单"
 
-#: src/Admin/ModulesPage.php:2901
+#: src/Admin/ModulesPage.php:2904
 msgid "Stock & Cart"
 msgstr "库存与购物车"
 
-#: src/Admin/ModulesPage.php:2903
+#: src/Admin/ModulesPage.php:2906
 msgid "Merchandising"
 msgstr "商品陈列"
 
-#: src/Admin/ModulesPage.php:2905 src/AIFeed/LlmsTxtService.php:209
+#: src/Admin/ModulesPage.php:2908 src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr "店面"
 
-#: src/Admin/ModulesPage.php:2907
+#: src/Admin/ModulesPage.php:2910
 msgid "Product Information"
 msgstr "商品信息"
 
-#: src/Admin/ModulesPage.php:2909
+#: src/Admin/ModulesPage.php:2912
 msgid "Customer Account"
 msgstr "客户账户"
 
-#: src/Admin/ModulesPage.php:2911
+#: src/Admin/ModulesPage.php:2914
 msgid "Sales and B2B"
 msgstr "销售与 B2B"
 
-#: src/Admin/ModulesPage.php:2914
+#: src/Admin/ModulesPage.php:2917
 msgid "Consumer Rights"
 msgstr "消费者权利"
 
-#: src/Admin/ModulesPage.php:2918
+#: src/Admin/ModulesPage.php:2921
 msgid "Tools"
 msgstr "工具"
 
-#: src/Admin/ModulesPage.php:2922
+#: src/Admin/ModulesPage.php:2925
 msgid "SEO & Optimization"
 msgstr "SEO 与优化"
 
-#: src/Admin/ModulesPage.php:2924
+#: src/Admin/ModulesPage.php:2927
 msgid "Integrations"
 msgstr "集成"
 
-#: src/Admin/ModulesPage.php:2999
+#: src/Admin/ModulesPage.php:3002
 msgid "Could not save module state. Please try again."
 msgstr "无法保存模块状态。请重试。"
 
 #. translators: %d: configured number of days
-#: src/Admin/ModulesPage.php:3022
+#: src/Admin/ModulesPage.php:3025
 #, php-format
 msgid ""
 "The period is %d days. Art. 6a(2) Directive 98/6/EC requires a window of at "
 "least 30 days. Keep a shorter one only where national law allows it."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3037
+#: src/Admin/ModulesPage.php:3040
 msgid "Compatible Omnibus Extension A"
 msgstr "兼容的 Omnibus 扩展 A"
 
-#: src/Admin/ModulesPage.php:3038
+#: src/Admin/ModulesPage.php:3041
 msgid "Compatible Omnibus Extension B"
 msgstr "兼容的 Omnibus 扩展 B"
 
-#: src/Admin/ModulesPage.php:3049
+#: src/Admin/ModulesPage.php:3052
 msgid "detected, data synchronized"
 msgstr "已检测到，数据已同步"
 
-#: src/Admin/ModulesPage.php:3065
+#: src/Admin/ModulesPage.php:3068
 msgid ""
 "No external Omnibus plugin is installed. Polski uses the built-in price "
 "tracking system."
 msgstr "未安装外部 Omnibus 插件。Polski 使用内置的价格跟踪系统。"
 
-#: src/Admin/ModulesPage.php:3067
+#: src/Admin/ModulesPage.php:3070
 msgid ""
 "External plugin detected. Polski uses its data instead of the built-in "
 "system."
 msgstr "检测到外部插件。Polski 使用其数据而非内置系统。"
 
-#: src/Admin/ModulesPage.php:3087
+#: src/Admin/ModulesPage.php:3090
 msgid "OSS observer service is unavailable."
 msgstr "OSS 观察器服务不可用。"
 
-#: src/Admin/ModulesPage.php:3094
+#: src/Admin/ModulesPage.php:3097
 msgid ""
 "The One Stop Shop plugin is not installed. Install it to start observing the "
 "€10,000 intra-EU B2C threshold automatically."
@@ -7158,43 +7169,43 @@ msgstr ""
 "未安装 One Stop Shop 插件。安装它即可自动开始观察 10,000 € 的欧盟内 B2C 阈"
 "值。"
 
-#: src/Admin/ModulesPage.php:3100
+#: src/Admin/ModulesPage.php:3103
 msgid "Install One Stop Shop"
 msgstr "安装 One Stop Shop"
 
-#: src/Admin/ModulesPage.php:3105
+#: src/Admin/ModulesPage.php:3108
 msgid "You need the install_plugins capability to install it from here."
 msgstr "您需要 install_plugins 权限才能从此处安装它。"
 
-#: src/Admin/ModulesPage.php:3114
+#: src/Admin/ModulesPage.php:3117
 msgid "One Stop Shop plugin detected."
 msgstr "已检测到 One Stop Shop 插件。"
 
-#: src/Admin/ModulesPage.php:3118
+#: src/Admin/ModulesPage.php:3121
 msgid "OSS procedure"
 msgstr "OSS 程序"
 
-#: src/Admin/ModulesPage.php:3120
+#: src/Admin/ModulesPage.php:3123
 msgid "enabled"
 msgstr "已启用"
 
-#: src/Admin/ModulesPage.php:3121
+#: src/Admin/ModulesPage.php:3124
 msgid "disabled"
 msgstr "已禁用"
 
-#: src/Admin/ModulesPage.php:3125
+#: src/Admin/ModulesPage.php:3128
 msgid "Auto observer"
 msgstr "自动观察器"
 
-#: src/Admin/ModulesPage.php:3127
+#: src/Admin/ModulesPage.php:3130
 msgid "watching threshold"
 msgstr "监控阈值"
 
-#: src/Admin/ModulesPage.php:3128
+#: src/Admin/ModulesPage.php:3131
 msgid "off"
 msgstr "关闭"
 
-#: src/Admin/ModulesPage.php:3133
+#: src/Admin/ModulesPage.php:3136
 msgid "Open OSS settings"
 msgstr "打开 OSS 设置"
 
@@ -10910,32 +10921,32 @@ msgid "Signature:"
 msgstr "签名："
 
 #. translators: %s: embed provider name, e.g. YouTube
-#: src/Service/ConsentManagerService.php:289
+#: src/Service/ConsentManagerService.php:292
 #, php-format
 msgid "Content blocked (%s)"
 msgstr ""
 
 #. translators: %s: embed provider name
-#: src/Service/ConsentManagerService.php:294
+#: src/Service/ConsentManagerService.php:297
 #, php-format
 msgid ""
 "To view this %s content, please accept marketing cookies or unlock it once "
 "below."
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:297
+#: src/Service/ConsentManagerService.php:300
 msgid "Load once"
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:298
+#: src/Service/ConsentManagerService.php:301
 msgid "Always allow"
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:568
+#: src/Service/ConsentManagerService.php:575
 msgid "Consent settings"
 msgstr "同意设置"
 
-#: src/Service/ConsentManagerService.php:612
+#: src/Service/ConsentManagerService.php:619
 msgid "Cookie settings"
 msgstr ""
 

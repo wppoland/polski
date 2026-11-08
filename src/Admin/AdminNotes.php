@@ -17,6 +17,72 @@ final class AdminNotes implements HasHooks
         add_action('admin_init', [$this, 'maybeAddSetupNote']);
         add_action('admin_init', [$this, 'maybeShowDisclaimerNotice']);
         add_action('admin_init', [$this, 'maybeAddOssInstallNote']);
+        add_action('admin_init', [$this, 'maybeShowReviewNotice']);
+    }
+
+    /** Days after activation before the one-time review request. */
+    public const REVIEW_AFTER_DAYS = 14;
+
+    public const REVIEW_URL = 'https://wordpress.org/support/plugin/polski/reviews/#new-post';
+
+    /**
+     * Ask for a WordPress.org review once: 14 days after activation, on Polski screens only,
+     * never before the disclaimer is dismissed, and never again after either button.
+     */
+    public function maybeShowReviewNotice(): void
+    {
+        add_action('admin_post_polski_review_notice', [$this, 'handleReviewNotice']);
+
+        if (! self::reviewNoticeDue(
+            (bool) get_option('polski_review_notice_done', false),
+            (bool) get_option('polski_disclaimer_dismissed', false),
+            (int) get_option('polski_activated_at', 0),
+            time(),
+        ) || ! current_user_can('manage_woocommerce')) {
+            return;
+        }
+
+        add_action('admin_notices', static function (): void {
+            $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+            if (! $screen instanceof \WP_Screen || ! str_contains($screen->id, 'polski')) {
+                return;
+            }
+
+            $url = static fn (string $choice): string => wp_nonce_url(
+                admin_url('admin-post.php?action=polski_review_notice&choice=' . $choice),
+                'polski_review_notice',
+            );
+
+            echo '<div class="notice notice-info polski-review-notice">';
+            echo '<p>' . esc_html__('Polski has been running in your shop for two weeks. If it helps you, a short review on WordPress.org helps other shops find it.', 'polski') . '</p>';
+            echo '<p><a href="' . esc_url($url('review')) . '" class="button button-primary" target="_blank" rel="noopener">' . esc_html__('Leave a review', 'polski') . '</a> ';
+            echo '<a href="' . esc_url($url('no')) . '" class="button">' . esc_html__('No, thanks', 'polski') . '</a></p>';
+            echo '</div>';
+        });
+    }
+
+    public static function reviewNoticeDue(bool $done, bool $disclaimerDismissed, int $activatedAt, int $now): bool
+    {
+        return ! $done && $disclaimerDismissed && $activatedAt > 0 && $now - $activatedAt >= self::REVIEW_AFTER_DAYS * DAY_IN_SECONDS;
+    }
+
+    public function handleReviewNotice(): void
+    {
+        if (! current_user_can('manage_woocommerce')) {
+            wp_die(esc_html__('Insufficient permissions.', 'polski'));
+        }
+        check_admin_referer('polski_review_notice');
+        update_option('polski_review_notice_done', true, false);
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- verified by check_admin_referer() above.
+        if (sanitize_key(wp_unslash($_GET['choice'] ?? '')) === 'review') {
+            // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- fixed WordPress.org URL.
+            wp_redirect(self::REVIEW_URL);
+            exit;
+        }
+
+        wp_safe_redirect(wp_get_referer() ?: admin_url());
+        exit;
     }
 
     /**

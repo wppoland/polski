@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.3 =
+* Added: a one-time request for a WordPress.org review, 14 days after activation and only on Polski screens. Either button removes it for good.
+
 = 1.45.2 =
 * Security (medium): stored cross-site scripting in the cookie consent content blocker. A post author or contributor could write blocker markup that, once a visitor unblocked it, loaded a javascript: address or an iframe with srcdoc or event handlers. The restore script now accepts only http and https addresses and a fixed list of iframe attributes.
 
