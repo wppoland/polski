@@ -653,7 +653,10 @@ final class ModulesPage implements HasHooks
                 'group' => 'Product Information',
                 'enabled' => false,
                 'icon' => 'dashicons-shield-alt',
-                'links' => [],
+                // Durabix ships the harmonised notice and the GARAN label; plugin names stay untranslated.
+                'links' => [
+                    ['label' => 'Durabix', 'url' => admin_url('plugin-install.php?s=durabix&tab=search&type=term')],
+                ],
                 'settings' => [
                     ['key' => 'polski_consumer_info|show_legal_guarantee', 'label' => __('Show the legal guarantee reminder', 'polski'), 'type' => 'checkbox', 'default' => true],
                     ['key' => 'polski_consumer_info|legal_guarantee_text', 'label' => __('Legal guarantee reminder', 'polski'), 'type' => 'textarea', 'default' => \Polski\Service\ConsumerInformationService::defaultLegalGuaranteeText()],
