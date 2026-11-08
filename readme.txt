@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.45.2
+Stable tag: 1.45.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.45.3 =
+* Added: a one-time request for a WordPress.org review, 14 days after activation and only on Polski screens. Either button removes it for good.
 
 = 1.45.2 =
 * Security (medium): stored cross-site scripting in the cookie consent content blocker. A post author or contributor could write blocker markup that, once a visitor unblocked it, loaded a javascript: address or an iframe with srcdoc or event handlers. The restore script now accepts only http and https addresses and a fixed list of iframe attributes.
