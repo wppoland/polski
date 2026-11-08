@@ -34,6 +34,9 @@ use const Polski\VERSION;
  */
 final class ConsentManagerService implements HasHooks
 {
+    /** Iframe attributes carried over when a blocked embed is restored. */
+    private const EMBED_ATTRS = ['width', 'height', 'title', 'allow', 'allowfullscreen', 'frameborder', 'referrerpolicy', 'name', 'class', 'id', 'style'];
+
     use SettingsCacheable;
 
     public const OPTION = 'polski_consent_manager';
@@ -339,7 +342,8 @@ final class ConsentManagerService implements HasHooks
         if (preg_match_all('/([a-zA-Z0-9_-]+)(?:=["\']([^"\']*)["\'])?/i', $attrString, $m, PREG_SET_ORDER)) {
             foreach ($m as $item) {
                 $name = strtolower($item[1]);
-                if (in_array($name, ['src', 'loading', 'data-polski-src', 'data-polski-attrs'], true)) {
+                // Only what an embed needs: event handlers or srcdoc would run script on unblock.
+                if (! in_array($name, self::EMBED_ATTRS, true)) {
                     continue;
                 }
                 $attrs[$name] = $item[2] ?? '';
@@ -436,6 +440,8 @@ final class ConsentManagerService implements HasHooks
 (function () {
     var cfg = window.polskiConsent || {};
 
+    var embedAttrs = ['width', 'height', 'title', 'allow', 'allowfullscreen', 'frameborder', 'referrerpolicy', 'name', 'class', 'id', 'style'];
+
     function unblockEmbeds(granted, single) {
         var targets = single ? [single] : document.querySelectorAll('.polski-content-blocker');
         for (var i = 0; i < targets.length; i++) {
@@ -445,7 +451,8 @@ final class ConsentManagerService implements HasHooks
                 continue;
             }
             var src = b.getAttribute('data-polski-src');
-            if (!src) { continue; }
+            // The blocker markup can be written by any post author (class and data-* pass kses), so trust nothing in it.
+            if (!src || !/^https?:\/\//i.test(src)) { continue; }
             var iframe = document.createElement('iframe');
             iframe.src = src;
             var rawAttrs = b.getAttribute('data-polski-attrs');
@@ -453,8 +460,8 @@ final class ConsentManagerService implements HasHooks
                 try {
                     var attrs = JSON.parse(rawAttrs);
                     for (var k in attrs) {
-                        if (Object.prototype.hasOwnProperty.call(attrs, k)) {
-                            iframe.setAttribute(k, attrs[k]);
+                        if (Object.prototype.hasOwnProperty.call(attrs, k) && embedAttrs.indexOf(String(k).toLowerCase()) !== -1) {
+                            iframe.setAttribute(k, String(attrs[k]));
                         }
                     }
                 } catch (err) {}

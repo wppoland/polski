@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.45.1
+Stable tag: 1.45.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,6 +391,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.45.2 =
+* Security (medium): stored cross-site scripting in the cookie consent content blocker. A post author or contributor could write blocker markup that, once a visitor unblocked it, loaded a javascript: address or an iframe with srcdoc or event handlers. The restore script now accepts only http and https addresses and a fixed list of iframe attributes.
+
 = 1.45.1 =
 * Changed: The consumer information module links to Durabix, which adds the harmonised notice on the legal guarantee and the GARAN label (Implementing Regulation (EU) 2025/1960). This module still prints its own plain-text reminder.
 
@@ -560,6 +563,9 @@ and in changelog.txt inside the plugin folder. WordPress.org silently truncates
 a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
+
+= 1.45.2 =
+Security release. Default installations are not exposed: it matters only when the cookie consent module is on and someone you do not fully trust can publish posts. Update, nothing else to do.
 
 = 1.43.8 =
 Security release. Default installations are not exposed; it matters only when the free plugin is uninstalled with data removal on while Polski PRO stays installed. Update, nothing else to do.

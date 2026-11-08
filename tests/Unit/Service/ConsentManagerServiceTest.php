@@ -35,6 +35,13 @@ final class ConsentManagerServiceTest extends TestCase
         self::assertNull($this->service->detectEmbedProvider('/relative-path/frame.html'));
     }
 
+    public function testParseIframeAttrsKeepsOnlyEmbedAttributes(): void
+    {
+        $attrs = $this->service->parseIframeAttrs('width="560" title="Demo" onload="alert(1)" srcdoc="<script>x</script>" allowfullscreen');
+
+        self::assertSame(['width' => '560', 'title' => 'Demo', 'allowfullscreen' => ''], $attrs);
+    }
+
     public function testFilterContentEmbedsTransformsMatchingIframes(): void
     {
         $html = '<p>Check our video:</p><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe><p>Footer</p>';
