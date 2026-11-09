@@ -75,11 +75,17 @@ final class EnergyLabelService
      */
     public function getData(\WC_Product $product): array
     {
-        // shortcut: variations inherit the parent's label; per-variation fields when a shop sells sizes with different classes.
-        $source = $product->is_type('variation') ? (wc_get_product($product->get_parent_id()) ?: $product) : $product;
+        $ownClass = (string) $product->get_meta('_polski_energy_class', true);
+
+        // A variation with its own class set (different from the parent, e.g.
+        // a size with a different energy rating) uses its own fields. A
+        // variation with none set falls back to the parent's label.
+        $source = ($product->is_type('variation') && $ownClass === '')
+            ? (wc_get_product($product->get_parent_id()) ?: $product)
+            : $product;
 
         return [
-            'class' => (string) $source->get_meta('_polski_energy_class', true),
+            'class' => $source === $product ? $ownClass : (string) $source->get_meta('_polski_energy_class', true),
             'scale' => (string) $source->get_meta('_polski_energy_scale', true) ?: 'A-G',
             'label_url' => (string) $source->get_meta('_polski_energy_label_url', true),
             'sheet_url' => (string) $source->get_meta('_polski_energy_sheet_url', true),
