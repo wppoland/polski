@@ -891,6 +891,45 @@ final class ProductMetaBox implements HasHooks
             ]);
         }
 
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('energy_label')) {
+            $classes = \Polski\Service\EnergyLabelService::CLASSES;
+            $scales = array_keys(\Polski\Service\EnergyLabelService::SCALES);
+            $same = __('- Same as product -', 'polski');
+
+            woocommerce_wp_select([
+                'id' => "_polski_energy_class_{$loop}",
+                'name' => "_polski_variation_energy_class[{$loop}]",
+                'label' => __('Energy efficiency class', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_energy_class', true),
+                'options' => ['' => $same] + array_combine($classes, $classes),
+                'wrapper_class' => 'form-row form-row-first',
+            ]);
+            woocommerce_wp_select([
+                'id' => "_polski_energy_scale_{$loop}",
+                'name' => "_polski_variation_energy_scale[{$loop}]",
+                'label' => __('Scale', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_energy_scale', true),
+                'options' => ['' => $same] + array_combine($scales, array_map(static fn (string $s): string => str_replace('-', ' - ', $s), $scales)),
+                'wrapper_class' => 'form-row form-row-last',
+            ]);
+            woocommerce_wp_text_input([
+                'id' => "_polski_energy_label_url_{$loop}",
+                'name' => "_polski_variation_energy_label_url[{$loop}]",
+                'type' => 'url',
+                'label' => __('Energy label URL', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_energy_label_url', true),
+                'wrapper_class' => 'form-row form-row-first',
+            ]);
+            woocommerce_wp_text_input([
+                'id' => "_polski_energy_sheet_url_{$loop}",
+                'name' => "_polski_variation_energy_sheet_url[{$loop}]",
+                'type' => 'url',
+                'label' => __('Product information sheet URL', 'polski'),
+                'value' => get_post_meta($variationId, '_polski_energy_sheet_url', true),
+                'wrapper_class' => 'form-row form-row-last',
+            ]);
+        }
+
         echo '</div>';
     }
 
@@ -943,6 +982,48 @@ final class ProductMetaBox implements HasHooks
             // phpcs:ignore WordPress.Security.NonceVerification.Missing
             $deliveryTimeId = absint(wp_unslash($_POST['_polski_variation_delivery_time_id'][$loop]));
             update_post_meta($variationId, '_polski_delivery_time_id', $deliveryTimeId > 0 ? (string) $deliveryTimeId : '');
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_energy_class'][$loop])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $rawClass = sanitize_text_field((string) wp_unslash($_POST['_polski_variation_energy_class'][$loop]));
+            update_post_meta(
+                $variationId,
+                '_polski_energy_class',
+                array_values(array_intersect([$rawClass], \Polski\Service\EnergyLabelService::CLASSES))[0] ?? '',
+            );
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_energy_scale'][$loop])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $rawScale = sanitize_text_field((string) wp_unslash($_POST['_polski_variation_energy_scale'][$loop]));
+            update_post_meta(
+                $variationId,
+                '_polski_energy_scale',
+                isset(\Polski\Service\EnergyLabelService::SCALES[$rawScale]) ? $rawScale : '',
+            );
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_energy_label_url'][$loop])) {
+            update_post_meta(
+                $variationId,
+                '_polski_energy_label_url',
+                // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized by esc_url_raw below.
+                esc_url_raw(sanitize_text_field((string) wp_unslash($_POST['_polski_variation_energy_label_url'][$loop]))),
+            );
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_energy_sheet_url'][$loop])) {
+            update_post_meta(
+                $variationId,
+                '_polski_energy_sheet_url',
+                // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized by esc_url_raw below.
+                esc_url_raw(sanitize_text_field((string) wp_unslash($_POST['_polski_variation_energy_sheet_url'][$loop]))),
+            );
         }
     }
 
