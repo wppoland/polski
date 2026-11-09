@@ -179,7 +179,7 @@ final class ExpertReviewService implements HasHooks
             return;
         }
 
-        $reviews = $this->getReviewsForProduct($product->get_id());
+        $reviews = $this->getReviewsForProduct($product);
 
         if (empty($reviews)) {
             return;
@@ -193,7 +193,9 @@ final class ExpertReviewService implements HasHooks
             $verdict = get_post_meta($review->ID, self::META_VERDICT, true);
             $author = get_the_author_meta('display_name', (int) $review->post_author);
             $date = get_the_date('', $review);
-            $thumbnail = get_the_post_thumbnail($review->ID, 'thumbnail');
+            $thumbnailId = (int) get_post_thumbnail_id($review);
+            $alt = $thumbnailId > 0 ? trim((string) get_post_meta($thumbnailId, '_wp_attachment_image_alt', true)) : '';
+            $thumbnail = $thumbnailId > 0 ? get_the_post_thumbnail($review->ID, 'thumbnail', ['alt' => $alt !== '' ? $alt : $review->post_title]) : '';
 
             echo '<div class="polski-expert-review" style="border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin-bottom:16px">';
 
@@ -211,6 +213,10 @@ final class ExpertReviewService implements HasHooks
             }
 
             echo '</div>';
+
+            if ($thumbnail !== '') {
+                echo '<div class="polski-expert-review-image" style="margin-bottom:12px">' . wp_kses_post($thumbnail) . '</div>';
+            }
 
             // Content.
             echo '<div class="polski-expert-review-content">' . wp_kses_post(wpautop($review->post_content)) . '</div>';
@@ -241,7 +247,7 @@ final class ExpertReviewService implements HasHooks
      */
     public function addSchemaReviews(array $data, \WC_Product $product): array
     {
-        $reviews = $this->getReviewsForProduct($product->get_id());
+        $reviews = $this->getReviewsForProduct($product);
 
         if (empty($reviews)) {
             return $data;
@@ -282,8 +288,10 @@ final class ExpertReviewService implements HasHooks
     /**
      * @return list<\WP_Post>
      */
-    private function getReviewsForProduct(int $productId): array
+    private function getReviewsForProduct(\WC_Product $product): array
     {
+        $productId = $product->get_id();
+
         if (isset($this->reviewsCache[$productId])) {
             return $this->reviewsCache[$productId];
         }
@@ -291,10 +299,13 @@ final class ExpertReviewService implements HasHooks
         $query = new \WP_Query([
             'post_type' => self::CPT,
             'post_status' => 'publish',
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Filtering reviews by plugin's product meta key; acceptable scope (per-product list).
-            'meta_key' => self::META_PRODUCT,
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Filtering reviews by plugin's product meta value; acceptable scope (per-product list).
-            'meta_value' => $productId,
+            // The picker also offers variations, so a variable product shows the reviews linked to any of its variations.
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Filtering reviews by plugin's product meta; acceptable scope (per-product list).
+            'meta_query' => [[
+                'key' => self::META_PRODUCT,
+                'value' => $product->is_type('variable') ? array_merge([$productId], array_map('intval', $product->get_children())) : [$productId],
+                'compare' => 'IN',
+            ]],
             'posts_per_page' => 10,
             'orderby' => 'date',
             'order' => 'DESC',
