@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-11-08T12:14:23+00:00\n"
+"POT-Creation-Date: 2026-11-09T15:38:56+00:00\n"
 "PO-Revision-Date: 2026-07-29 07:19:50+0000\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -7987,7 +7987,7 @@ msgstr ""
 "Hodnocení opravitelnosti, pokud je stanoveno; v opačném případě dostupnost "
 "náhradních dílů a kontaktní údaje pro opravy."
 
-#: src/Admin/ProductMetaBox.php:432
+#: src/Admin/ProductMetaBox.php:432 src/Admin/ProductMetaBox.php:902
 msgid "Energy efficiency class"
 msgstr ""
 
@@ -7995,7 +7995,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:437
+#: src/Admin/ProductMetaBox.php:437 src/Admin/ProductMetaBox.php:910
 msgid "Scale"
 msgstr ""
 
@@ -8003,7 +8003,7 @@ msgstr ""
 msgid "The range printed on the label. Rescaled product groups use A to G."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:445
+#: src/Admin/ProductMetaBox.php:445 src/Admin/ProductMetaBox.php:919
 msgid "Energy label URL"
 msgstr ""
 
@@ -8012,7 +8012,7 @@ msgid ""
 "The label image or PDF from the supplier, for example the EPREL label link."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:452
+#: src/Admin/ProductMetaBox.php:452 src/Admin/ProductMetaBox.php:927
 msgid "Product information sheet URL"
 msgstr ""
 
@@ -8138,20 +8138,20 @@ msgstr ""
 msgid "Name and address of the operator under whose name the food is marketed."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:889
+#: src/Admin/ProductMetaBox.php:889 src/Admin/ProductMetaBox.php:897
 msgid "- Same as product -"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:980
+#: src/Admin/ProductMetaBox.php:1061
 msgid "WooCommerce global unique ID"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:983
+#: src/Admin/ProductMetaBox.php:1064
 msgid "Polski fallback GTIN / EAN"
 msgstr ""
 
 #. translators: %s: one or more product identifier field names.
-#: src/Admin/ProductMetaBox.php:991
+#: src/Admin/ProductMetaBox.php:1072
 #, php-format
 msgid ""
 "The check digit for this product identifier may be invalid: %s. Please "
