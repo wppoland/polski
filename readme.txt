@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.45.4
+Stable tag: 1.45.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -390,6 +390,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.45.5 =
+* Fixed: an expert review linked to a product variation now shows on the variable product's page.
+* Fixed: the expert review's featured image is now shown, with alt text.
 
 = 1.45.4 =
 * Fixed: the energy label of a variation. A variation can now have its own energy class, scale, label and product information sheet; a variation without its own class still shows the parent's label.
