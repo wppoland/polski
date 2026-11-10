@@ -46,7 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
     lastFocused = null;
   };
 
-  document.querySelectorAll('.woocommerce-product-gallery__image img').forEach((img) => {
+  // WooCommerce 11.1+ swaps the gallery markup when a variation has its own
+  // gallery, so new images are enhanced again after core re-inits it.
+  const enhance = (root) => root.querySelectorAll('.woocommerce-product-gallery__image img').forEach((img) => {
+    if (img.dataset.polskiGalleryEnhanced) {
+      return;
+    }
+    img.dataset.polskiGalleryEnhanced = '1';
+
     if (config.enableZoom) {
       img.style.setProperty('--polski-gallery-zoom-scale', String(config.zoomScale || 1.45));
       img.classList.add('polski-gallery-zoomable');
@@ -77,6 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  enhance(document);
+
+  if (window.jQuery) {
+    window.jQuery(document.body).on('wc-product-gallery-after-init', (event, el) => enhance(el || document));
+  }
 
   document.addEventListener('click', (event) => {
     const close = event.target.closest('[data-polski-gallery-lightbox-close]');
