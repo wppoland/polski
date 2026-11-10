@@ -368,6 +368,17 @@ final class CheckboxService implements Bootable, HasHooks
         $marketing = $this->get('marketing');
         if ($marketing !== null && $marketing->enabled && ! $marketing->isRequired()) {
             $score += 10;
+
+            // Consent is informed only when the person knows who will market
+            // to them; "partners" without names is not enough (CJEU Advocate
+            // General, C-317/25 Groupe Canal+, 17 September 2026).
+            if (preg_match('/partner|socio/i', $marketing->label) === 1) {
+                $suggestions[] = [
+                    'id' => 'marketing_unnamed_partners',
+                    'severity' => 'medium',
+                    'message' => __('Your marketing consent mentions partners. Name every company that will send marketing, or limit the consent to your shop: consent to unnamed partners may not count as informed.', 'polski'),
+                ];
+            }
         } elseif ($marketing !== null && $marketing->enabled && $marketing->isRequired()) {
             $suggestions[] = [
                 'id' => 'marketing_not_required',
@@ -567,7 +578,11 @@ final class CheckboxService implements Bootable, HasHooks
 
         $this->register(new LegalCheckbox(
             id: 'marketing',
-            label: (string) ($checkoutSettings['marketing_checkbox_label'] ?? __('I agree to receive marketing communications and the newsletter.', 'polski')),
+            label: (string) ($checkoutSettings['marketing_checkbox_label'] ?? sprintf(
+            /* translators: %s: shop name */
+            __('I consent to receiving marketing communication and the newsletter from %s.', 'polski'),
+            html_entity_decode((string) get_bloginfo('name'), ENT_QUOTES),
+        )),
             type: ConsentType::Optional,
             contexts: [CheckboxContext::Checkout, CheckboxContext::Registration],
             priority: 12,

@@ -406,7 +406,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_checkout|review_reminder_checkbox_label', 'label' => __('Label - Review reminder', 'polski'), 'type' => 'textarea', 'default' => 'I agree to receive a reminder to leave a review via email after the purchase.'],
                     ['key' => 'polski_checkout|review_reminder_checkbox_description', 'label' => __('Description - Review reminder', 'polski'), 'type' => 'text', 'default' => 'Optional consent for review reminders.'],
                     ['key' => 'polski_checkout|marketing_checkbox_enabled', 'label' => __('Marketing consent', 'polski'), 'type' => 'checkbox', 'default' => false],
-                    ['key' => 'polski_checkout|marketing_checkbox_label', 'label' => __('Label - Marketing', 'polski'), 'type' => 'textarea', 'default' => 'I agree to receive marketing communication and newsletter.'],
+                    ['key' => 'polski_checkout|marketing_checkbox_label', 'label' => __('Label - Marketing', 'polski'), 'type' => 'textarea', 'default' => sprintf( /* translators: %s: shop name */ __('I consent to receiving marketing communication and the newsletter from %s.', 'polski'), html_entity_decode((string) get_bloginfo('name'), ENT_QUOTES), )],
                     ['key' => 'polski_checkout|marketing_checkbox_description', 'label' => __('Description - Marketing', 'polski'), 'type' => 'text', 'default' => 'Optional marketing consent.'],
                 ],
             ],
