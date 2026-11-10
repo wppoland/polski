@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.7 =
+* Fixed: after choosing a variation with its own WooCommerce gallery, image zoom and the lightbox stopped working on the product page.
+
 = 1.45.6 =
 * Changed: tested with WooCommerce 11.2.
 
