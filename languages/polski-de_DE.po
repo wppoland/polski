@@ -16444,3 +16444,11 @@ msgstr ""
 #~ msgstr ""
 #~ "Zeigt deine Informationen zur Streitbeilegung/Online-Streitbeilegung "
 #~ "(ODR) an."
+
+#, php-format
+msgid "I consent to receiving marketing communication and the newsletter from %s."
+msgstr "Ich willige ein, Marketingmitteilungen und den Newsletter von %s zu erhalten."
+
+
+msgid "Your marketing consent mentions partners. Name every company that will send marketing, or limit the consent to your shop: consent to unnamed partners may not count as informed."
+msgstr "Ihre Marketing-Einwilligung erwähnt Partner. Nennen Sie jedes Unternehmen, das Werbung senden wird, oder beschränken Sie die Einwilligung auf Ihren Shop: Eine Einwilligung für ungenannte Partner gilt möglicherweise nicht als informiert."

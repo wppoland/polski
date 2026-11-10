@@ -16269,3 +16269,11 @@ msgstr ""
 #~ msgstr ""
 #~ "Możesz użyć %1$s dla nazwy firmy i %2$s dla liczby dni na odstąpienie. "
 #~ "Jeśli ich nie użyjesz, tekst zostanie wypisany dosłownie."
+
+#, php-format
+msgid "I consent to receiving marketing communication and the newsletter from %s."
+msgstr "Wyrażam zgodę na otrzymywanie informacji marketingowych i newslettera od %s."
+
+
+msgid "Your marketing consent mentions partners. Name every company that will send marketing, or limit the consent to your shop: consent to unnamed partners may not count as informed."
+msgstr "Zgoda marketingowa wspomina o partnerach. Wymień z nazwy każdą firmę, która będzie wysyłać marketing, albo ogranicz zgodę do swojego sklepu: zgoda na nienazwanych partnerów może nie być świadoma."

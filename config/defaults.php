@@ -140,7 +140,11 @@ return [
         'review_reminder_checkbox_label' => __('I consent to receiving an email reminder to leave a review after my purchase.', 'polski'),
         'review_reminder_checkbox_description' => __('Optional consent to review reminders.', 'polski'),
         'marketing_checkbox_enabled' => false,
-        'marketing_checkbox_label' => __('I consent to receiving marketing communication and the newsletter.', 'polski'),
+        'marketing_checkbox_label' => sprintf(
+            /* translators: %s: shop name */
+            __('I consent to receiving marketing communication and the newsletter from %s.', 'polski'),
+            html_entity_decode((string) get_bloginfo('name'), ENT_QUOTES),
+        ),
         'marketing_checkbox_description' => __('Optional marketing consent.', 'polski'),
     ],
 
