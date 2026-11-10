@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.6 =
+* Changed: tested with WooCommerce 11.2.
+
 = 1.45.5 =
 * Fixed: an expert review linked to a product variation now shows on the variable product's page.
 * Fixed: the expert review's featured image is now shown, with alt text.
