@@ -48,6 +48,10 @@ namespace {
         $GLOBALS['opts'][$name] = $value;
         return true;
     }
+    function get_bloginfo($show = '')
+    {
+        return 'Test Shop';
+    }
     function wp_parse_args($args, $defaults = [])
     {
         return array_merge($defaults, $args);
