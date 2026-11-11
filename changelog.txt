@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.45.8 =
+* Fixed: on shop and category pages the Omnibus "lowest price in the last 30 days" ignored a price that was already in force when the 30 days began and changed later, so a listing could show a higher prior price than the product page. Listings now open the window at the price in force, as the product page does.
+* Changed: the default marketing consent label names the shop ("...the newsletter from <shop name>"). Labels you already saved are not changed. The checkout compliance check now flags a marketing label that mentions partners without naming them.
+
 = 1.45.7 =
 * Fixed: after choosing a variation with its own WooCommerce gallery, image zoom and the lightbox stopped working on the product page.
 

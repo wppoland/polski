@@ -69,6 +69,29 @@ $polski_check(
     array_map('floatval', $polski_left) === [20.0, 20.0],
 );
 
+// Archive pre-warm reads the same window in one query for many products.
+$wpdb->query($wpdb->prepare('DELETE FROM %i WHERE product_id = %d', $polski_table, $polski_id));
+foreach ([[20.00, 40], [30.00, 10]] as [$polski_price, $polski_days]) {
+    $wpdb->insert($polski_table, [
+        'product_id' => $polski_id,
+        'price' => $polski_price,
+        'sale_price' => null,
+        'price_type' => 'regular',
+        'currency' => $polski_currency,
+        'recorded_at' => gmdate('Y-m-d H:i:s', time() - $polski_days * DAY_IN_SECONDS),
+    ]);
+}
+$polski_batch = $polski_repo->findLowestEffectiveBatch([$polski_id], 30);
+$polski_single = $polski_repo->findLowestEffective($polski_id, 30);
+$polski_check(
+    'the archive batch carries forward the 20 in force when the window opened, not only the later 30',
+    isset($polski_batch[$polski_id]) && abs($polski_batch[$polski_id]->effectivePrice() - 20.00) < 0.001,
+);
+$polski_check(
+    'the archive batch and the single-product read agree',
+    $polski_single !== null && isset($polski_batch[$polski_id]) && abs($polski_single->effectivePrice() - $polski_batch[$polski_id]->effectivePrice()) < 0.001,
+);
+
 $wpdb->query($wpdb->prepare('DELETE FROM %i WHERE product_id = %d', $polski_table, $polski_id));
 wp_delete_post($polski_id, true);
 
