@@ -2,6 +2,12 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.46.0 =
+* Fixed: on the guest withdrawal form, an order number that also matched the internal ID of a different order found that other order on shops with their own order numbers. The ID now counts only when it is the number the shop shows.
+* Fixed: items the shop already refunded by hand could still be selected for withdrawal. They now count as gone, and a refund booked for a withdrawal is not counted twice.
+* Fixed: completing a withdrawal on an unpaid order (a bank transfer on hold) now puts the withdrawn items back in stock, the way a WooCommerce refund does. Paid orders are restocked by the refund, as before.
+* Changed: WooCommerce's own review request email (WooCommerce 11) now respects the review reminder consent box and the opt-out link, like Polski's reminder.
+
 = 1.45.9 =
 * Fixed: the default marketing consent label is no longer saved on activation, so it now follows the site title when you rename the shop. A label you saved yourself is kept.
 

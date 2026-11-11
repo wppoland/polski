@@ -314,9 +314,12 @@ final class GuestWithdrawalService implements HasHooks
 
         $id = (int) $cleanOrderNumber;
 
+        // An ID only wins when it is also the number the shop shows: with a
+        // sequential-numbers plugin, "1234" typed by one customer can be the
+        // post ID of someone else's order.
         if ($id > 0 && (string) $id === $cleanOrderNumber) {
             $order = wc_get_order($id);
-            if ($order instanceof \WC_Order) {
+            if ($order instanceof \WC_Order && (string) $order->get_order_number() === $cleanOrderNumber) {
                 return $order;
             }
         }

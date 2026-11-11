@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.45.9
+Stable tag: 1.46.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,6 +391,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.46.0 =
+* Fixed: on the guest withdrawal form, an order number that also matched the internal ID of a different order found that other order on shops with their own order numbers. The ID now counts only when it is the number the shop shows.
+* Fixed: items the shop already refunded by hand could still be selected for withdrawal. They now count as gone, and a refund booked for a withdrawal is not counted twice.
+* Fixed: completing a withdrawal on an unpaid order (a bank transfer on hold) now puts the withdrawn items back in stock, the way a WooCommerce refund does. Paid orders are restocked by the refund, as before.
+* Changed: WooCommerce's own review request email (WooCommerce 11) now respects the review reminder consent box and the opt-out link, like Polski's reminder.
+
 = 1.45.9 =
 * Fixed: the default marketing consent label is no longer saved on activation, so it now follows the site title when you rename the shop. A label you saved yourself is kept.
 
@@ -573,12 +579,6 @@ Every one of the 84 modules was switched on, configured and used in a live shop,
 * Fixed: the DSA report form ignored its success message setting.
 * Removed: the withdrawal "Price column" setting named a column the form does not have.
 * Note for anyone who edited those fields before this release: your wording was stored the whole time and takes effect now, so check it says what you want.
-
-= 1.38.4 =
-* Fixed: the lowest-price notice could quote a figure in a currency the shop no longer uses. The price history records the currency of every snapshot, but the lookups ignored that column, so a shop that switched currency, or a multi-currency plugin that switches it per request, would show "lowest price in the last 30 days" in one currency beside a selling price in another. Two amounts in different currencies do not compare, and that notice is a comparison, so the window, the archive lookup and the price history chart now all read one currency: the shop's current one. A shop that switches starts a fresh 30-day window.
-
-= 1.38.3 =
-* Fixed: a single timed-out call to an external register was reported to the customer as a definite answer. A GUS lookup that never got through said "no data found for that VAT ID", and a VIES check that timed out read as a failed check. Calls that are safe to repeat, the GUS lookup, the VIES check, the legal-page fetch and the social-login profile read, are now retried once after a timeout or a 5xx. Writes are not retried, so nothing is posted, charged or consumed twice.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

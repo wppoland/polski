@@ -192,6 +192,21 @@ final class WithdrawalService implements Bootable, HasHooks
     public function getRemainingItems(\WC_Order $order): array
     {
         $withdrawn = $this->itemsRepository->withdrawnQuantitiesForOrder($order->get_id());
+
+        // Items the shop already refunded by hand are gone too. Refunds booked
+        // for a withdrawal are skipped: the withdrawal itself already counts them.
+        $refunds = $order->get_refunds();
+        $booked = $refunds !== [] ? $this->repository->refundIdsForOrder($order->get_id()) : [];
+        foreach ($refunds as $refund) {
+            if (in_array($refund->get_id(), $booked, true)) {
+                continue;
+            }
+            foreach ($refund->get_items() as $refundItem) {
+                $itemId = (int) $refundItem->get_meta('_refunded_item_id');
+                $withdrawn[$itemId] = ($withdrawn[$itemId] ?? 0) + abs((float) $refundItem->get_quantity());
+            }
+        }
+
         $rows = [];
 
         foreach ($order->get_items() as $itemId => $item) {
@@ -426,6 +441,17 @@ final class WithdrawalService implements Bootable, HasHooks
 
             $order = wc_get_order($request->orderId);
             if ($order instanceof \WC_Order) {
+                // An unpaid order (a bank transfer on hold) has no payment to
+                // refund, so no refund ever puts its stock back. Do it here, the
+                // way a WooCommerce refund would (only what was reduced).
+                if (! $order->is_paid()) {
+                    $lines = [];
+                    foreach ($this->itemsRepository->findByWithdrawal($request->id) as $row) {
+                        $lines[(int) $row->order_item_id]['qty'] = ($lines[(int) $row->order_item_id]['qty'] ?? 0) + (float) $row->quantity;
+                    }
+                    wc_restock_refunded_items($order, $lines);
+                }
+
                 // If anything still remains to be withdrawn on this order, prefer the
                 // "partial" status so the operator knows the lifecycle is not closed.
                 $stillRemaining = $this->getRemainingItems($order) !== [];

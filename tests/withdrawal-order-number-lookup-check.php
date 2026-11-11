@@ -53,6 +53,26 @@ $polski_check(
 $polski_found = $polski_locate->invoke($polski_service, 'PLK-no-such-order-' . wp_generate_password(8, false));
 $polski_check('unknown order number finds nothing', $polski_found === null);
 
+// A shop with its own numbers: the number one customer types can be the
+// post ID of another order, whose shown number is something else.
+$polski_numbers = static fn ($number, $order) => $order->get_meta('_sequential_order_number') ?: $number;
+add_filter('woocommerce_order_number', $polski_numbers, 10, 2);
+$polski_other = wc_create_order();
+$polski_other->update_meta_data('_sequential_order_number', 'OTHER-' . wp_generate_password(6, false));
+$polski_other->save();
+$polski_owner = wc_create_order();
+$polski_owner->update_meta_data('_sequential_order_number', (string) $polski_other->get_id());
+$polski_owner->save();
+
+$polski_found = $polski_locate->invoke($polski_service, (string) $polski_other->get_id());
+$polski_check(
+    'a custom number equal to another order\'s ID finds the order showing that number',
+    $polski_found instanceof WC_Order && $polski_found->get_id() === $polski_owner->get_id()
+);
+remove_filter('woocommerce_order_number', $polski_numbers, 10);
+$polski_other->delete(true);
+$polski_owner->delete(true);
+
 $polski_match->delete(true);
 $polski_newer->delete(true);
 
