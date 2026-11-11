@@ -29,6 +29,10 @@ final class ReviewRequestService implements HasHooks
 
     public function registerHooks(): void
     {
+        // WooCommerce's own review request email (11.x) knows nothing of the
+        // consent box or the opt-out link; hold it to the same answer.
+        add_filter('woocommerce_should_send_review_request', [$this, 'filterCoreReviewRequest'], 10, 2);
+
         if (! $this->isEnabled()) {
             return;
         }
@@ -41,6 +45,34 @@ final class ReviewRequestService implements HasHooks
 
         // Opt-out handler.
         add_action('template_redirect', [$this, 'handleOptOut']);
+    }
+
+    /**
+     * Why this customer must not get a review request: 'optout', 'no_consent', or null.
+     */
+    private function refusal(\WC_Order $order): ?string
+    {
+        $userId = $order->get_customer_id();
+        if (($userId > 0 && get_user_meta($userId, self::OPTOUT_META, true) === 'yes') || $this->isEmailOptedOut($order->get_billing_email())) {
+            return 'optout';
+        }
+
+        // The review reminder checkbox was shown and left unticked: '0'.
+        // No meta means the box was not on the checkout, so nothing was refused.
+        if ($order->get_meta('_wc_other/polski/review_reminder', true) === '0') {
+            return 'no_consent';
+        }
+
+        return null;
+    }
+
+    /**
+     * @param mixed $send
+     * @param mixed $order
+     */
+    public function filterCoreReviewRequest($send, $order): bool
+    {
+        return (bool) $send && ! ($order instanceof \WC_Order && $this->refusal($order) !== null);
     }
 
     public function isEnabled(): bool
@@ -108,18 +140,9 @@ final class ReviewRequestService implements HasHooks
                 continue;
             }
 
-            // Check opt-out.
-            $userId = $order->get_customer_id();
-            if (($userId > 0 && get_user_meta($userId, self::OPTOUT_META, true) === 'yes') || $this->isEmailOptedOut($email)) {
-                $order->update_meta_data(self::META_KEY, 'skipped:optout');
-                $order->save();
-                continue;
-            }
-
-            // The review reminder checkbox was shown and left unticked: '0'.
-            // No meta means the box was not on the checkout, so nothing was refused.
-            if ($order->get_meta('_wc_other/polski/review_reminder', true) === '0') {
-                $order->update_meta_data(self::META_KEY, 'skipped:no_consent');
+            $refused = $this->refusal($order);
+            if ($refused !== null) {
+                $order->update_meta_data(self::META_KEY, 'skipped:' . $refused);
                 $order->save();
                 continue;
             }

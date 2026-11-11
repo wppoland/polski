@@ -1125,6 +1125,10 @@ if (! class_exists('WC_Order')) {
         {
             return 0;
         }
+        public function get_refunds(): array
+        {
+            return [];
+        }
         public function get_items(string $type = 'line_item'): array
         {
             return [];

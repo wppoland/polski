@@ -205,6 +205,20 @@ final class WithdrawalRepository
     }
 
     /**
+     * WooCommerce refund ids already booked against withdrawals of an order.
+     *
+     * @return int[]
+     */
+    public function refundIdsForOrder(int $orderId): array
+    {
+        $sql = $this->wpdb->prepare('SELECT refund_id FROM %i WHERE order_id = %d AND refund_id IS NOT NULL', $this->tableName(), $orderId);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Custom table, prepared above.
+        $ids = $this->wpdb->get_col($sql);
+
+        return array_map('intval', is_array($ids) ? $ids : []);
+    }
+
+    /**
      * Persist refund metadata onto a withdrawal request (called by Pro after a
      * refund has been processed against the order).
      */
