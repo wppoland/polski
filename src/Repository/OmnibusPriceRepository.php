@@ -204,30 +204,40 @@ class OmnibusPriceRepository
 
         // The subquery picks the lowest effective price per product within the window;
         // the outer join recovers full row data for currency / sale_price / recorded_at.
+        // Each product's window opens at its last row before the cutoff, as in
+        // windowStart(): rows are written only on a price change, so that row is
+        // the price still in force when the window opened.
         // Table names use %i identifier placeholders; the product-id IN list uses %d
         // placeholders bound from the intval-filtered $cleanIds.
         // $idPlaceholders is a list of %d tokens only (built from intval-filtered ids); the
         // placeholder count is dynamic and args are spread via array_merge, so the static
         // sniffs miscount and misread the interpolation, but the query is fully prepared.
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
+        $currency = $this->currentCurrency();
         $sql = $wpdb->prepare(
             "SELECT t1.*
              FROM %i t1
              INNER JOIN (
-                 SELECT product_id, MIN(COALESCE(sale_price, price)) AS lowest
-                 FROM %i
-                 WHERE product_id IN ({$idPlaceholders}) AND recorded_at >= %s
-                   AND currency = %s
-                 GROUP BY product_id
+                 SELECT h.product_id, MIN(COALESCE(h.sale_price, h.price)) AS lowest, w.opens
+                 FROM %i h
+                 INNER JOIN (
+                     SELECT ids.product_id, COALESCE(MAX(p.recorded_at), %s) AS opens
+                     FROM (SELECT DISTINCT product_id FROM %i WHERE product_id IN ({$idPlaceholders}) AND currency = %s) ids
+                     LEFT JOIN %i p
+                         ON p.product_id = ids.product_id AND p.currency = %s AND p.recorded_at < %s
+                     GROUP BY ids.product_id
+                 ) w ON w.product_id = h.product_id
+                 WHERE h.currency = %s AND h.recorded_at >= w.opens
+                 GROUP BY h.product_id, w.opens
              ) t2
                  ON t1.product_id = t2.product_id
                  AND COALESCE(t1.sale_price, t1.price) = t2.lowest
-             WHERE t1.recorded_at >= %s AND t1.currency = %s
+             WHERE t1.recorded_at >= t2.opens AND t1.currency = %s
              ORDER BY t1.recorded_at DESC",
             ...array_merge(
-                [$table, $table],
+                [$table, $table, $cutoff, $table],
                 $cleanIds,
-                [$cutoff, $this->currentCurrency(), $cutoff, $this->currentCurrency()],
+                [$currency, $table, $currency, $cutoff, $currency, $currency],
             ),
         );
         // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
