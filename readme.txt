@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.45.8
+Stable tag: 1.45.9
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -391,9 +391,12 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.45.9 =
+* Fixed: the default marketing consent label is no longer saved on activation, so it now follows the site title when you rename the shop. A label you saved yourself is kept.
+
 = 1.45.8 =
 * Fixed: on shop and category pages the Omnibus "lowest price in the last 30 days" ignored a price that was already in force when the 30 days began and changed later, so a listing could show a higher prior price than the product page. Listings now open the window at the price in force, as the product page does.
-* Changed: the default marketing consent label names the shop ("...the newsletter from [shop name]"). Labels you already saved are not changed. The checkout compliance check now flags a marketing label that mentions partners without naming them.
+* Changed: the default marketing consent label names the shop ("...the newsletter from [shop name]"). Labels you already saved are not changed. The checkout compliance check now flags a marketing label that mentions partners and asks you to name every company.
 
 = 1.45.7 =
 * Fixed: after choosing a variation with its own WooCommerce gallery, image zoom and the lightbox stopped working on the product page.
