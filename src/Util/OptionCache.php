@@ -28,16 +28,22 @@ final class OptionCache
 
     public static function get(string $option, mixed $default = false): mixed
     {
-        if (! array_key_exists($option, self::$cache)) {
-            self::$cache[$option] = get_option($option, $default);
+        // Keyed by locale: WPML and Polylang return the option texts in the current language.
+        $key = get_locale() . '|' . $option;
+        if (! array_key_exists($key, self::$cache)) {
+            self::$cache[$key] = get_option($option, $default);
         }
 
-        return self::$cache[$option];
+        return self::$cache[$key];
     }
 
     public static function forget(string $option): void
     {
-        unset(self::$cache[$option]);
+        foreach (array_keys(self::$cache) as $key) {
+            if (str_ends_with($key, '|' . $option)) {
+                unset(self::$cache[$key]);
+            }
+        }
     }
 
     public static function clear(): void

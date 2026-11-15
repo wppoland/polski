@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.47.0 =
+* New: WPML and Polylang can translate the texts you type into Polski's settings (checkout labels, checkbox texts, withdrawal and email texts, notices). Polski ships a `wpml-config.xml` for them, and reads those texts in the visitor's language. IDs, keys, URLs and email addresses are not offered for translation.
+
 = 1.46.0 =
 * Fixed: on the guest withdrawal form, an order number that also matched the internal ID of a different order found that other order on shops with their own order numbers. The ID now counts only when it is the number the shop shows.
 * Fixed: items the shop already refunded by hand could still be selected for withdrawal. They now count as gone, and a refund booked for a withdrawal is not counted twice.

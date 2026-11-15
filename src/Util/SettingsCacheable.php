@@ -25,6 +25,9 @@ trait SettingsCacheable
     /** @var array<string, mixed>|null */
     private ?array $settings = null;
 
+    /** Locale the cached settings were read in: WPML and Polylang translate option texts per language. */
+    private string $settingsLocale = '';
+
     /**
      * Get merged settings (saved values over defaults).
      *
@@ -32,9 +35,11 @@ trait SettingsCacheable
      */
     public function getSettings(): array
     {
-        if ($this->settings !== null) {
+        $locale = get_locale();
+        if ($this->settings !== null && $this->settingsLocale === $locale) {
             return $this->settings;
         }
+        $this->settingsLocale = $locale;
 
         $defaults = require PLUGIN_DIR . '/config/defaults.php';
         $defaultSettings = is_array($defaults[static::OPTION] ?? null) ? $defaults[static::OPTION] : [];
