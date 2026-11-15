@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.46.0
+Stable tag: 1.47.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -170,6 +170,10 @@ Active modules with settings appear in the **Polski** menu or have a settings li
 = Is Polski translated? =
 
 Polski for WooCommerce is fully translatable and ships the `polski.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
+
+= Does Polski work with WPML or Polylang? =
+
+Yes for the texts you type into Polski's settings: checkout labels and checkbox texts, withdrawal and email texts, notices and button texts. Polski ships a `wpml-config.xml`, so WPML and Polylang list them for translation (in WPML under String Translation, in Polylang under Languages > Translations) and the shop shows them in the visitor's language. IDs, API keys, URLs and email addresses are left out of that list. Tested with Polylang.
 
 = Is Polski for WooCommerce free? =
 
@@ -390,6 +394,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.47.0 =
+* New: WPML and Polylang can translate the texts you type into Polski's settings (checkout labels, checkbox texts, withdrawal and email texts, notices). Polski ships a `wpml-config.xml` for them, and reads those texts in the visitor's language. IDs, keys, URLs and email addresses are not offered for translation.
 
 = 1.46.0 =
 * Fixed: on the guest withdrawal form, an order number that also matched the internal ID of a different order found that other order on shops with their own order numbers. The ID now counts only when it is the number the shop shows.

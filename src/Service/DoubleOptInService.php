@@ -106,7 +106,7 @@ final class DoubleOptInService implements Bootable, HasHooks
             return (bool) $auth;
         }
 
-        wc_add_notice((string) ($this->settings['login_blocked_text'] ?? __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')), 'notice');
+        wc_add_notice($this->text('login_blocked_text', __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')), 'notice');
 
         return false;
     }
@@ -125,7 +125,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         if ($activated === 'no') {
             return new \WP_Error(
                 'polski_doi_not_activated',
-                (string) ($this->settings['login_blocked_text'] ?? __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')),
+                $this->text('login_blocked_text', __('Your account is awaiting activation! Please check your email and click the activation link.', 'polski')),
             );
         }
 
@@ -151,7 +151,7 @@ final class DoubleOptInService implements Bootable, HasHooks
         // No stored token means nothing is pending: hash_equals('', '') would
         // otherwise "activate" any user id sent with an empty token.
         if (! is_string($storedToken) || $storedToken === '' || ! hash_equals($storedToken, $token)) {
-            wc_add_notice((string) ($this->settings['invalid_link_text'] ?? __('Invalid activation link.', 'polski')), 'error');
+            wc_add_notice($this->text('invalid_link_text', __('Invalid activation link.', 'polski')), 'error');
             wp_safe_redirect(wc_get_page_permalink('myaccount'));
             exit;
         }
@@ -166,7 +166,7 @@ final class DoubleOptInService implements Bootable, HasHooks
          */
         do_action('polski/doi/confirmed', $userId);
 
-        wc_add_notice((string) ($this->settings['activation_success_text'] ?? __('Great! Your account is now activated. You can now log in.', 'polski')), 'success');
+        wc_add_notice($this->text('activation_success_text', __('Great! Your account is now activated. You can now log in.', 'polski')), 'success');
         wp_safe_redirect(wc_get_page_permalink('myaccount'));
         exit;
     }
@@ -243,5 +243,16 @@ final class DoubleOptInService implements Bootable, HasHooks
                 $keep[] = (int) $userId;
             }
         } while (count($users) === $batchSize);
+    }
+
+    /**
+     * A message text read when it is shown, not at boot: WPML and Polylang
+     * return the option in the visitor's language only once it is known.
+     */
+    private function text(string $key, string $default): string
+    {
+        $settings = get_option('polski_doi', []);
+
+        return is_array($settings) && isset($settings[$key]) && is_string($settings[$key]) ? $settings[$key] : $default;
     }
 }

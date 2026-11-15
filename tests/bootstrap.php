@@ -37,6 +37,10 @@ if (! defined('WEEK_IN_SECONDS')) {
 // They return sensible defaults and are intentionally simple.
 
 if (! function_exists('get_option')) {
+    function get_locale(): string
+    {
+        return 'en_US';
+    }
     function get_option(string $option, mixed $default = false): mixed
     {
         if (isset($GLOBALS['polski_test_options']) && is_array($GLOBALS['polski_test_options'])

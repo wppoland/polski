@@ -1,0 +1,307 @@
+<wpml-config>
+  <admin-texts>
+    <key name="polski_badges">
+      <key name="bestseller_badge_text" />
+      <key name="low_stock_badge_text" />
+      <key name="new_badge_text" />
+      <key name="sale_badge_text" />
+    </key>
+    <key name="polski_brand">
+      <key name="label" />
+    </key>
+    <key name="polski_checkout">
+      <key name="age_verification_checkbox_description" />
+      <key name="age_verification_checkbox_error" />
+      <key name="age_verification_checkbox_label" />
+      <key name="digital_waiver_checkbox_description" />
+      <key name="digital_waiver_checkbox_error" />
+      <key name="digital_waiver_checkbox_label" />
+      <key name="marketing_checkbox_description" />
+      <key name="marketing_checkbox_label" />
+      <key name="order_button_text" />
+      <key name="parcel_delivery_checkbox_description" />
+      <key name="parcel_delivery_checkbox_label" />
+      <key name="privacy_checkbox_description" />
+      <key name="privacy_checkbox_error" />
+      <key name="privacy_checkbox_label" />
+      <key name="review_reminder_checkbox_description" />
+      <key name="review_reminder_checkbox_label" />
+      <key name="service_waiver_checkbox_description" />
+      <key name="service_waiver_checkbox_error" />
+      <key name="service_waiver_checkbox_label" />
+      <key name="terms_checkbox_description" />
+      <key name="terms_checkbox_error" />
+      <key name="terms_checkbox_label" />
+      <key name="withdrawal_checkbox_description" />
+      <key name="withdrawal_checkbox_error" />
+      <key name="withdrawal_checkbox_label" />
+    </key>
+    <key name="polski_compare">
+      <key name="account_label" />
+      <key name="availability_label" />
+      <key name="brand_label" />
+      <key name="button_add_text" />
+      <key name="button_remove_text" />
+      <key name="clear_error_text" />
+      <key name="clear_text" />
+      <key name="compare_link_text" />
+      <key name="delivery_time_label" />
+      <key name="description_label" />
+      <key name="differences_toggle_text" />
+      <key name="empty_text" />
+      <key name="feature_label" />
+      <key name="gtin_label" />
+      <key name="intro_text" />
+      <key name="limit_notice_text" />
+      <key name="login_required_text" />
+      <key name="manufacturer_label" />
+      <key name="price_label" />
+      <key name="product_not_found_text" />
+      <key name="sku_label" />
+      <key name="title" />
+      <key name="unit_price_label" />
+    </key>
+    <key name="polski_consent_manager">
+      <key name="accept_label" />
+      <key name="banner_text" />
+      <key name="heading" />
+      <key name="manage_label" />
+      <key name="reject_label" />
+      <key name="save_label" />
+    </key>
+    <key name="polski_consumer_info">
+      <key name="legal_guarantee_text" />
+    </key>
+    <key name="polski_deposit">
+      <key name="fee_label" />
+      <key name="product_notice" />
+    </key>
+    <key name="polski_doi">
+      <key name="activation_success_text" />
+      <key name="additional_content" />
+      <key name="email_button_text" />
+      <key name="email_greeting" />
+      <key name="email_heading" />
+      <key name="email_intro_html" />
+      <key name="email_intro_plain" />
+      <key name="email_link_intro" />
+      <key name="email_subject" />
+      <key name="invalid_link_text" />
+      <key name="login_blocked_text" />
+    </key>
+    <key name="polski_dsa">
+      <key name="form_title" />
+      <key name="success_text" />
+    </key>
+    <key name="polski_featured_video">
+      <key name="intro_text" />
+      <key name="title" />
+    </key>
+    <key name="polski_filters">
+      <key name="active_filters_label" />
+      <key name="attribute_any_text" />
+      <key name="brand_all_text" />
+      <key name="brand_label" />
+      <key name="category_all_text" />
+      <key name="category_label" />
+      <key name="max_price_label" />
+      <key name="min_price_label" />
+      <key name="mobile_close_text" />
+      <key name="mobile_panel_title" />
+      <key name="mobile_toggle_text" />
+      <key name="reset_text" />
+      <key name="sale_active_text" />
+      <key name="sale_label" />
+      <key name="stock_any_text" />
+      <key name="stock_instock_text" />
+      <key name="stock_label" />
+      <key name="submit_text" />
+      <key name="title" />
+    </key>
+    <key name="polski_food">
+      <key name="alcohol_label" />
+      <key name="alcohol_suffix" />
+      <key name="allergens_label" />
+      <key name="distributor_label" />
+      <key name="ingredients_label" />
+      <key name="net_filling_label" />
+      <key name="nutri_score_label" />
+      <key name="nutrients_caption_prefix" />
+      <key name="nutrients_column_name" />
+      <key name="nutrients_column_value" />
+      <key name="origin_label" />
+    </key>
+    <key name="polski_gallery_zoom">
+      <key name="close_label" />
+      <key name="dialog_label" />
+    </key>
+    <key name="polski_general">
+      <key name="admin_doi_card_title" />
+      <key name="admin_edit_button_text" />
+      <key name="admin_generate_pages_button_text" />
+      <key name="admin_generate_pages_empty_text" />
+      <key name="admin_legal_pages_card_progress" />
+      <key name="admin_legal_pages_card_title" />
+      <key name="admin_legal_pages_draft" />
+      <key name="admin_legal_pages_missing" />
+      <key name="admin_legal_pages_published" />
+      <key name="admin_legal_pages_section_title" />
+      <key name="admin_legal_pages_table_page" />
+      <key name="admin_legal_pages_table_status" />
+      <key name="admin_modules_saved_notice" />
+      <key name="admin_next_steps_checkout" />
+      <key name="admin_next_steps_products" />
+      <key name="admin_next_steps_publish_pages" />
+      <key name="admin_next_steps_shipping" />
+      <key name="admin_next_steps_tax" />
+      <key name="admin_next_steps_title" />
+      <key name="admin_omnibus_external_active_text" />
+      <key name="admin_omnibus_no_external_text" />
+      <key name="admin_omnibus_plugin_detected_text" />
+      <key name="admin_omnibus_plugin_missing_text" />
+      <key name="admin_pages_generated_notice" />
+      <key name="admin_setup_note_button" />
+      <key name="admin_setup_note_content" />
+      <key name="admin_setup_note_title" />
+      <key name="admin_status_active" />
+      <key name="admin_status_inactive" />
+      <key name="admin_status_unconfigured" />
+      <key name="admin_vat_card_title" />
+      <key name="admin_vat_small_business_text" />
+      <key name="admin_vat_standard_text" />
+      <key name="dispute_resolution_text" />
+    </key>
+    <key name="polski_gpsr">
+      <key name="section_title" />
+    </key>
+    <key name="polski_infinite_scroll">
+      <key name="button_text" />
+      <key name="end_text" />
+      <key name="error_text" />
+      <key name="loading_text" />
+    </key>
+    <key name="polski_minimum_order">
+      <key name="min_quantity_message" />
+      <key name="min_value_message" />
+    </key>
+    <key name="polski_omnibus">
+      <key name="display_text" />
+      <key name="no_history_custom_text" />
+    </key>
+    <key name="polski_popup">
+      <key name="close_label" />
+      <key name="content" />
+      <key name="cta_text" />
+      <key name="dialog_label" />
+      <key name="title" />
+    </key>
+    <key name="polski_prices">
+      <key name="from_price_text" />
+      <key name="shipping_costs_text" />
+      <key name="unit_price_text" />
+    </key>
+    <key name="polski_product_markings">
+      <key name="adults_only_notice" />
+      <key name="medical_device_notice" />
+    </key>
+    <key name="polski_quick_view">
+      <key name="button_text" />
+      <key name="close_label" />
+      <key name="error_text" />
+      <key name="loading_text" />
+      <key name="modal_title" />
+      <key name="product_not_found_text" />
+      <key name="sku_label" />
+      <key name="view_product_text" />
+    </key>
+    <key name="polski_review_requests">
+      <key name="email_intro" />
+      <key name="email_subject" />
+      <key name="review_cta_text" />
+    </key>
+    <key name="polski_search">
+      <key name="no_results_text" />
+      <key name="placeholder" />
+      <key name="results_label" />
+      <key name="search_label" />
+      <key name="sku_label" />
+      <key name="submit_button_text" />
+      <key name="view_all_text" />
+    </key>
+    <key name="polski_slider">
+      <key name="empty_text" />
+      <key name="intro_text" />
+      <key name="title" />
+      <key name="view_all_text" />
+    </key>
+    <key name="polski_tabs">
+      <key name="returns_tab_content" />
+      <key name="returns_tab_title" />
+      <key name="shipping_tab_content" />
+      <key name="shipping_tab_title" />
+    </key>
+    <key name="polski_taxes">
+      <key name="vat_exempt_notice" />
+      <key name="vat_notice_text" />
+    </key>
+    <key name="polski_verified_review">
+      <key name="badge_text" />
+    </key>
+    <key name="polski_waitlist">
+      <key name="button_text" />
+      <key name="disabled_text" />
+      <key name="email_label" />
+      <key name="email_placeholder" />
+      <key name="intro_text" />
+      <key name="invalid_email_text" />
+      <key name="login_required_text" />
+      <key name="notify_intro_text" />
+      <key name="notify_outro_text" />
+      <key name="notify_subject" />
+      <key name="privacy_error_text" />
+      <key name="privacy_label" />
+      <key name="product_not_found_text" />
+      <key name="success_text" />
+      <key name="title" />
+    </key>
+    <key name="polski_wishlist">
+      <key name="account_intro_text" />
+      <key name="account_label" />
+      <key name="button_add_text" />
+      <key name="button_remove_text" />
+      <key name="empty_text" />
+      <key name="login_required_text" />
+      <key name="product_not_found_text" />
+      <key name="title" />
+    </key>
+    <key name="polski_withdrawal">
+      <key name="button_text" />
+      <key name="column_product" />
+      <key name="column_quantity" />
+      <key name="confirmed_order_note" />
+      <key name="email_additional_content" />
+      <key name="email_greeting" />
+      <key name="email_heading" />
+      <key name="email_intro_text" />
+      <key name="email_reason_label" />
+      <key name="email_return_instruction" />
+      <key name="email_subject" />
+      <key name="exempt_notice_text" />
+      <key name="form_intro_text" />
+      <key name="form_title" />
+      <key name="invalid_nonce_text" />
+      <key name="items_heading" />
+      <key name="legal_notice_text" />
+      <key name="not_eligible_text" />
+      <key name="order_not_found_text" />
+      <key name="permission_error_text" />
+      <key name="reason_label" />
+      <key name="requested_order_note" />
+      <key name="status_heading" />
+      <key name="status_label" />
+      <key name="submit_button_text" />
+      <key name="submitted_label" />
+      <key name="success_text" />
+    </key>
+  </admin-texts>
+</wpml-config>
