@@ -39,6 +39,10 @@ namespace {
     {
         return $text;
     }
+    function get_locale()
+    {
+        return 'en_US';
+    }
     function get_option($name, $default = false)
     {
         return array_key_exists($name, $GLOBALS['opts']) ? $GLOBALS['opts'][$name] : $default;
