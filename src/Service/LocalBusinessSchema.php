@@ -122,8 +122,9 @@ final class LocalBusinessSchema
             'address' => $address,
         ];
 
+        // The setting is a free text field: only an http(s) URL is published.
         $image = (string) (($s['image'] ?? '') ?: $image);
-        if ($image !== '') {
+        if (preg_match('#^https?://\S+$#i', $image)) {
             $node['image'] = $image;
         }
 
@@ -199,6 +200,11 @@ final class LocalBusinessSchema
                 for ($i = $start; $i <= ($end < $start ? $end + 7 : $end); $i++) {
                     $days[] = $order[$i % 7];
                 }
+            }
+
+            // Closing at 24:00 is written the way Google reads it: 23:59.
+            if ((int) $m[4] === 24 && $m[5] === '00') {
+                [$m[4], $m[5]] = ['23', '59'];
             }
 
             $opens = sprintf('%02d:%s', (int) $m[2], $m[3]);

@@ -308,7 +308,7 @@ final class MerchantPolicySchema
         foreach ($zone->get_shipping_methods(true) as $method) {
             if ($method->id === 'free_shipping' && (string) $method->get_option('requires', '') === '') {
                 $rates[] = 0.0;
-            } elseif ($method->id === 'flat_rate' && (! wc_tax_enabled() || (string) $method->get_option('tax_status', 'taxable') === 'none')) {
+            } elseif ($method->id === 'flat_rate' && (! wc_tax_enabled() || (string) $method->get_option('tax_status', 'taxable') === 'none') && ! self::hasClassCosts($method->instance_settings)) {
                 $cost = self::parseAmount((string) $method->get_option('cost', ''));
                 if ($cost !== null) {
                     $rates[] = $cost;
@@ -319,6 +319,23 @@ final class MerchantPolicySchema
         $this->wooRate = $rates === [] ? null : min($rates);
 
         return $this->wooRate;
+    }
+
+    /**
+     * Whether a flat rate adds shipping class costs: then its base cost is
+     * below what many shoppers pay, so it is no rate to publish.
+     *
+     * @param array<string, mixed> $settings Instance settings of the method.
+     */
+    public static function hasClassCosts(array $settings): bool
+    {
+        foreach ($settings as $key => $value) {
+            if ((str_starts_with((string) $key, 'class_cost_') || $key === 'no_class_cost') && trim((string) $value) !== '') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function baseCountry(): string

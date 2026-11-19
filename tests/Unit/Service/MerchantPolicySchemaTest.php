@@ -19,6 +19,13 @@ final class MerchantPolicySchemaTest extends TestCase
         unset($GLOBALS['polski_test_options']['polski_seo'], $GLOBALS['polski_test_options']['woocommerce_default_country']);
     }
 
+    public function testFlatRateWithClassCostsIsNoPublishableRate(): void
+    {
+        $this->assertFalse(MerchantPolicySchema::hasClassCosts(['cost' => '15', 'class_cost_12' => '', 'no_class_cost' => '']));
+        $this->assertTrue(MerchantPolicySchema::hasClassCosts(['cost' => '15', 'class_cost_12' => '30']));
+        $this->assertTrue(MerchantPolicySchema::hasClassCosts(['cost' => '15', 'no_class_cost' => '5']));
+    }
+
     public function testDefaultReturnPolicyIsFourteenDaysByMailPaidByCustomer(): void
     {
         $this->assertSame([

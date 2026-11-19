@@ -71,6 +71,11 @@ final class LocalBusinessSchemaTest extends TestCase
         ], LocalBusinessSchema::parseOpeningHours("Mo-Fr 08:00-16:00\nSo 9:00 - 13:00\nPn, Śr 10:00-12:00\nSa-Mo 07:00-09:00\nXx 10:00-11:00\nMo 25:00-26:00\nclosed"));
     }
 
+    public function testClosingAtMidnightIsWrittenAs2359(): void
+    {
+        $this->assertSame('23:59', LocalBusinessSchema::parseOpeningHours('Mo-Fr 08:00-24:00')[0]['closes'] ?? null);
+    }
+
     public function testMergeIntoYoastOrganizationKeepsOneOrganization(): void
     {
         $merged = LocalBusinessSchema::mergeInto(
