@@ -563,6 +563,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Added: the price history chart shows the selected variation's history on variable products. No longer beta.
 * Added: with the VIES module on, checkout and My Account accept an EU VAT number from another country (for example DE811569869). A plain 10-digit NIP keeps its checksum and GUS lookup. No longer beta.
 
+Only the most recent releases are listed here. The full history is on the plugin's changelog
+page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
+and in changelog.txt inside the plugin folder. WordPress.org silently truncates
+a changelog over 5000 words, which is why this one is kept short on purpose.
+
 == Upgrade Notice ==
 
 = 1.45.2 =
