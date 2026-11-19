@@ -162,6 +162,8 @@ return [
     \Polski\Service\NipLookupService::class,
     ProductHooks::class,
     \Polski\Hook\StructuredDataHooks::class,
+    \Polski\Hook\LocalBusinessHooks::class,
+    \Polski\Hook\DeliveryEstimateHooks::class,
     LoopHooks::class,
     CartHooks::class,
     \Polski\Hook\AddressFormFieldDedupe::class,

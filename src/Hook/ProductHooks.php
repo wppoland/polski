@@ -53,6 +53,7 @@ final class ProductHooks implements Bootable, HasHooks
 
         // Extend structured data for SEO.
         add_filter('woocommerce_structured_data_product', [$this, 'enrichStructuredData'], 10, 2);
+        add_filter('polski/structured_data/variant', [$this, 'enrichStructuredData'], 10, 2);
     }
 
     /**
@@ -550,40 +551,8 @@ final class ProductHooks implements Bootable, HasHooks
             }
         }
 
-        // Add Delivery Time (OfferShippingDetails) if available.
-        if ($settings['schema_delivery_time'] ?? true) {
-            $deliveryTime = $this->deliveryTime->getDeliveryTimeText($product);
-            // "2-3 dni robocze" is a range, not 23: take the first and last
-            // number. A single number keeps the old 1..n reading.
-            preg_match_all('/\d+/', $deliveryTime, $days);
-            $days = array_map('intval', $days[0]);
-
-            // shippingDetails belongs to the Offer, not the Product.
-            if ($days !== [] && isset($data['offers'][0]) && is_array($data['offers'][0])) {
-                $data['offers'][0]['shippingDetails'] = [
-                    '@type' => 'OfferShippingDetails',
-                    'deliveryTime' => [
-                        '@type' => 'ShippingDeliveryTime',
-                        'handlingTime' => [
-                            '@type' => 'QuantitativeValue',
-                            'minValue' => 0,
-                            'maxValue' => 1,
-                            'unitCode' => 'DAY',
-                        ],
-                        'transitTime' => [
-                            '@type' => 'QuantitativeValue',
-                            'minValue' => count($days) > 1 ? min($days[0], end($days)) : min(1, $days[0]),
-                            'maxValue' => max($days[0], end($days)),
-                            'unitCode' => 'DAY',
-                        ],
-                    ],
-                    'shippingDestination' => [
-                        '@type' => 'DefinedRegion',
-                        'addressCountry' => 'PL',
-                    ],
-                ];
-            }
-        }
+        // Shipping details (rate, handling and transit time) are added with the
+        // return policy by StructuredDataHooks through MerchantPolicySchema.
 
         // No 'nutrition' here: NutritionInformation is not a Product property
         // in Schema.org (it belongs to Recipe and MenuItem), so validators flag

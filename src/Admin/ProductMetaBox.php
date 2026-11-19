@@ -132,6 +132,17 @@ final class ProductMetaBox implements HasHooks
             'desc_tip' => true,
         ]);
 
+        if (ModulesPage::isModuleEnabled('delivery_estimate')) {
+            woocommerce_wp_text_input([
+                'id' => \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS,
+                'label' => __('Lead time (working days)', 'polski'),
+                'type' => 'number',
+                'custom_attributes' => ['step' => '1', 'min' => '0'],
+                'description' => __('Working days from dispatch to delivery for the delivery date estimate. Empty: the shipping class or default lead time.', 'polski'),
+                'desc_tip' => true,
+            ]);
+        }
+
         echo '</div>';
 
         // --- Withdrawal Section ---
@@ -643,6 +654,7 @@ final class ProductMetaBox implements HasHooks
         \Polski\Service\DepositService::META_TYPE => 'deposit',
         \Polski\Service\DepositService::META_UNITS => 'deposit',
         \Polski\Service\VatMarginService::META_SCHEME => 'vat_margin',
+        \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS => 'delivery_estimate',
         '_polski_ingredients' => 'food_module',
         '_polski_nutri_score' => 'food_module',
         '_polski_nutrient_reference_unit' => 'food_module',
@@ -700,6 +712,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_unit_price_base' => 'float',
             '_polski_unit_price_unit' => 'string',
             '_polski_delivery_time_id' => 'string',
+            \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS => 'string',
             '_polski_withdrawal_exempt' => 'checkbox',
             '_polski_gtu_code' => 'string',
             '_polski_badge_text' => 'string',
@@ -891,6 +904,19 @@ final class ProductMetaBox implements HasHooks
             ]);
         }
 
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('delivery_estimate')) {
+            woocommerce_wp_text_input([
+                'id' => "_polski_delivery_lead_days_{$loop}",
+                'name' => "_polski_variation_delivery_lead_days[{$loop}]",
+                'label' => __('Lead time (working days)', 'polski'),
+                'type' => 'number',
+                'custom_attributes' => ['step' => '1', 'min' => '0'],
+                'placeholder' => __('Same as product', 'polski'),
+                'value' => get_post_meta($variationId, \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS, true),
+                'wrapper_class' => 'form-row form-row-full',
+            ]);
+        }
+
         if (\Polski\Admin\ModulesPage::isModuleEnabled('energy_label')) {
             $classes = \Polski\Service\EnergyLabelService::CLASSES;
             $scales = array_keys(\Polski\Service\EnergyLabelService::SCALES);
@@ -982,6 +1008,13 @@ final class ProductMetaBox implements HasHooks
             // phpcs:ignore WordPress.Security.NonceVerification.Missing
             $deliveryTimeId = absint(wp_unslash($_POST['_polski_variation_delivery_time_id'][$loop]));
             update_post_meta($variationId, '_polski_delivery_time_id', $deliveryTimeId > 0 ? (string) $deliveryTimeId : '');
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (isset($_POST['_polski_variation_delivery_lead_days'][$loop])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $leadDays = sanitize_text_field((string) wp_unslash($_POST['_polski_variation_delivery_lead_days'][$loop]));
+            update_post_meta($variationId, \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS, is_numeric($leadDays) ? (string) max(0, (int) $leadDays) : '');
         }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing

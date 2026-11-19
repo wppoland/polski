@@ -831,7 +831,8 @@ if (! function_exists('get_woocommerce_currency')) {
 if (! function_exists('wc_get_product')) {
     function wc_get_product(int $productId): ?object
     {
-        return null;
+        // Tests register products by ID in this global; anything else is unknown.
+        return $GLOBALS['polski_test_products'][$productId] ?? null;
     }
 }
 
@@ -843,7 +844,7 @@ if (! function_exists('wc_get_attribute_taxonomy_names')) {
 }
 
 if (! function_exists('wc_attribute_label')) {
-    function wc_attribute_label(string $name, string $product = ''): string
+    function wc_attribute_label(string $name, mixed $product = ''): string
     {
         return match ($name) {
             'pa_color' => 'Kolor',
@@ -1084,6 +1085,19 @@ if (! class_exists('WC_Product')) {
     }
 }
 
+if (! class_exists('WC_Product_Variable')) {
+    // Tests subclass these with the methods they need.
+    class WC_Product_Variable extends WC_Product
+    {
+    }
+}
+
+if (! class_exists('WC_Product_Variation')) {
+    class WC_Product_Variation extends WC_Product
+    {
+    }
+}
+
 if (! class_exists('WC_Order_Item_Product')) {
     class WC_Order_Item_Product
     {
@@ -1298,6 +1312,74 @@ if (! function_exists('wc_get_template_html')) {
         ob_start();
         include $path;
         return ob_get_clean() ?: '';
+    }
+}
+
+if (! defined('YEAR_IN_SECONDS')) {
+    define('YEAR_IN_SECONDS', 365 * 24 * 60 * 60);
+}
+
+if (! function_exists('remove_accents')) {
+    function remove_accents(string $text): string
+    {
+        return strtr($text, ['ą' => 'a', 'ć' => 'c', 'ę' => 'e', 'ł' => 'l', 'ń' => 'n', 'ó' => 'o', 'ś' => 's', 'ź' => 'z', 'ż' => 'z', 'Ś' => 'S', 'Ł' => 'L', 'Ż' => 'Z']);
+    }
+}
+
+if (! function_exists('sanitize_title')) {
+    function sanitize_title(string $title): string
+    {
+        return trim((string) preg_replace('/[^a-z0-9]+/', '-', strtolower(remove_accents($title))), '-');
+    }
+}
+
+if (! function_exists('is_front_page')) {
+    function is_front_page(): bool
+    {
+        return (bool) ($GLOBALS['polski_test_front_page'] ?? false);
+    }
+}
+
+if (! function_exists('get_theme_mod')) {
+    function get_theme_mod(string $name, mixed $default = false): mixed
+    {
+        return $default;
+    }
+}
+
+if (! function_exists('get_site_icon_url')) {
+    function get_site_icon_url(int $size = 512, string $url = ''): string
+    {
+        return $url;
+    }
+}
+
+if (! function_exists('wc_get_price_decimals')) {
+    function wc_get_price_decimals(): int
+    {
+        return 2;
+    }
+}
+
+if (! function_exists('wc_format_decimal')) {
+    function wc_format_decimal(float|string $number, int|bool $dp = false): string
+    {
+        return is_int($dp) ? number_format((float) $number, $dp, '.', '') : (string) $number;
+    }
+}
+
+if (! function_exists('wc_get_price_to_display')) {
+    /** @param array<string, mixed> $args */
+    function wc_get_price_to_display(object $product, array $args = []): float
+    {
+        return (float) ($args['price'] ?? $product->get_price());
+    }
+}
+
+if (! function_exists('wp_get_attachment_url')) {
+    function wp_get_attachment_url(int $attachmentId = 0): string|false
+    {
+        return $attachmentId > 0 ? 'https://example.test/img-' . $attachmentId . '.jpg' : false;
     }
 }
 

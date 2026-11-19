@@ -198,6 +198,11 @@ return [
         'show_in_loop' => false,
     ],
 
+    // Delivery date estimate.
+    'polski_delivery_estimate' => [
+        'display_format' => __('Delivery by {date}', 'polski'),
+    ],
+
     // Double opt-in.
     'polski_doi' => [
         'enabled' => false,
