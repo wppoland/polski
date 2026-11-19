@@ -15963,13 +15963,11 @@ msgstr ""
 "Dynamiczny suwak merchandisingowy dla produktów powiązanych, sprzedaży "
 "dodatkowej, promocyjnych i wyróżnionych."
 
-#~ msgid "I consent to receiving marketing communication and the newsletter."
-#~ msgstr ""
-#~ "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
+msgid "I consent to receiving marketing communication and the newsletter."
+msgstr "Wyrażam zgodę na otrzymywanie komunikacji marketingowej i newslettera."
 
-#~ msgid "I agree to receive marketing communications and the newsletter."
-#~ msgstr ""
-#~ "Zgadzam się na otrzymywanie komunikatów marketingowych i newslettera."
+msgid "I agree to receive marketing communications and the newsletter."
+msgstr "Zgadzam się na otrzymywanie komunikatów marketingowych i newslettera."
 
 #~ msgid ""
 #~ "We use cookies and similar technologies to run this site, measure "
