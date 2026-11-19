@@ -63,7 +63,7 @@ final class ProductGroupSchemaTest extends TestCase
         $GLOBALS['polski_test_products'] = [
             11 => new VariationTestProduct(11, 'GD-300', '300 cm', '189.00', true),
             12 => new VariationTestProduct(12, 'GD-400', '400 cm', '249.00', true, sale: '229.00'),
-            13 => new VariationTestProduct(13, 'GD-500', '500 cm', '299.00', false),
+            13 => new VariationTestProduct(13, '', '500 cm', '299.00', false),
         ];
 
         $group = (new ProductGroupSchema())->convert([
@@ -103,6 +103,8 @@ final class ProductGroupSchemaTest extends TestCase
         $this->assertSame('249.00', $onSale['offers'][0]['priceSpecification'][0]['price']);
 
         $this->assertSame('https://schema.org/OutOfStock', $soldOut['offers'][0]['availability']);
+        // A variant without its own SKU gets its ID, not the parent SKU the group uses.
+        $this->assertSame('13', $soldOut['sku']);
 
         // Exactly one product entity: the group itself, no stray Product beside it.
         $this->assertArrayNotHasKey('offers', $group);
@@ -142,6 +144,12 @@ final class ProductGroupSchemaTest extends TestCase
 
         $this->assertSame('5901234123457', $out['gtin13'] ?? null);
         $this->assertSame(['Profil', 'Unit price'], array_column($out['additionalProperty'], 'name'));
+    }
+
+    public function testEmptiedMarkupStaysEmpty(): void
+    {
+        // Yoast WooCommerce SEO returns [] to print the product itself.
+        $this->assertSame([], (new ProductGroupSchema())->convert([], new VariableTestProduct()));
     }
 
     public function testSimpleProductPassesThrough(): void
@@ -212,7 +220,8 @@ class VariationTestProduct extends \WC_Product_Variation
 
     public function get_sku(string $context = 'view'): string
     {
-        return $this->sku;
+        // Like WooCommerce: the view context inherits the parent SKU.
+        return $this->sku === '' && $context === 'view' ? 'GD' : $this->sku;
     }
 
     public function get_name(string $context = 'view'): string

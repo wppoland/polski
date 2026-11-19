@@ -82,7 +82,9 @@ final class StructuredDataHooks implements HasHooks
      */
     public function ensureProductData(): void
     {
-        if (! function_exists('is_product') || ! is_product() || MerchantPolicySchema::schemaSettings() === null) {
+        // The summary ran: whatever product data it left (none, when an SEO
+        // plugin took the node over) is deliberate, so nothing is added.
+        if (did_action('woocommerce_single_product_summary') || ! function_exists('is_product') || ! is_product() || MerchantPolicySchema::schemaSettings() === null) {
             return;
         }
 

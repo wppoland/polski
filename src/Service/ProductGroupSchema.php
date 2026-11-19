@@ -49,7 +49,9 @@ final class ProductGroupSchema
      */
     public function convert(array $markup, \WC_Product $product): array
     {
-        if (! $product instanceof \WC_Product_Variable) {
+        // An SEO plugin that took the product node over (Yoast WooCommerce SEO)
+        // leaves an empty array: a group built from it would be a second product.
+        if (! $product instanceof \WC_Product_Variable || ! isset($markup['@type'])) {
             return $markup;
         }
 
@@ -205,13 +207,17 @@ final class ProductGroupSchema
         $currency = get_woocommerce_currency();
         $decimals = wc_get_price_decimals();
         $url = $variation->get_permalink();
+        // The view context inherits the parent SKU, which every SKU-less variant
+        // would then share with the group.
+        $sku = $variation->get_sku('edit');
 
         $node = [
             '@type' => 'Product',
-            '@id' => $url . '#product',
+            // Per variation: with "any" attributes the permalink is the parent's.
+            '@id' => $url . '#product-' . $variation->get_id(),
             'name' => $variation->get_name(),
             'url' => $url,
-            'sku' => $variation->get_sku() !== '' ? $variation->get_sku() : (string) $variation->get_id(),
+            'sku' => $sku !== '' ? $sku : (string) $variation->get_id(),
         ];
 
         $description = wp_strip_all_tags($variation->get_description());

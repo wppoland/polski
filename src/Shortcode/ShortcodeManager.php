@@ -94,6 +94,9 @@ final class ShortcodeManager implements HasHooks
             return '';
         }
 
+        // The script empties the line in a cached page once its cutoff passed.
+        wp_enqueue_script('polski-delivery-estimate');
+
         return $this->container()->get(\Polski\Service\DeliveryEstimateService::class)->getHtml($product);
     }
 

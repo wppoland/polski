@@ -90,12 +90,11 @@ final class DeliveryEstimateHooks implements HasHooks
      */
     public function enqueueScript(): void
     {
-        if (! is_product()) {
-            return;
-        }
-
+        // Registered everywhere so the shortcode can enqueue it on any page.
         wp_register_script('polski-delivery-estimate', false, ['jquery'], \Polski\VERSION, ['in_footer' => true]);
-        wp_enqueue_script('polski-delivery-estimate');
+        if (is_product()) {
+            wp_enqueue_script('polski-delivery-estimate');
+        }
         wp_add_inline_script(
             'polski-delivery-estimate',
             'jQuery(function($){var now=Date.now()/1000;'
