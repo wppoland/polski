@@ -109,6 +109,41 @@ final class ProductGroupSchemaTest extends TestCase
         $this->assertSame([3], [count(array_unique(array_column($group['hasVariant'], '@id')))]);
     }
 
+    /**
+     * Polski's own enrichment runs on each variant (the variant filter): the
+     * variation's GTIN goes on the variant, and a unit price is added next to
+     * the unmapped attributes instead of replacing them.
+     */
+    public function testVariantEnrichmentKeepsAttributesAndUsesOwnGtin(): void
+    {
+        $GLOBALS['polski_test_options']['polski_seo'] = ['schema_brand' => false, 'schema_manufacturer' => false];
+        $variation = new VariationTestProduct(21, 'GD-300', '300 cm', '189.00', true, gtin: '5901234123457', unitMeta: true);
+        $node = [
+            '@type' => 'Product',
+            'sku' => 'GD-300',
+            'additionalProperty' => [['@type' => 'PropertyValue', 'name' => 'Profil', 'value' => 'ryflowany']],
+            'offers' => [['@type' => 'Offer', 'price' => '189.00']],
+        ];
+
+        $hooks = new \Polski\Hook\ProductHooks(...array_map(
+            static fn (string $class): object => (new \ReflectionClass($class))->newInstanceWithoutConstructor(),
+            [
+                \Polski\Service\PriceDisplayService::class,
+                \Polski\Service\DeliveryTimeService::class,
+                \Polski\Service\ProductInfoService::class,
+                \Polski\Service\FoodService::class,
+                \Polski\Service\ConsumerInformationService::class,
+                \Polski\Shopmark\ShopmarkManager::class,
+                \Polski\Util\TemplateLoader::class,
+                \Polski\Service\EnergyLabelService::class,
+            ],
+        ));
+        $out = $hooks->enrichStructuredData($node, $variation);
+
+        $this->assertSame('5901234123457', $out['gtin13'] ?? null);
+        $this->assertSame(['Profil', 'Unit price'], array_column($out['additionalProperty'], 'name'));
+    }
+
     public function testSimpleProductPassesThrough(): void
     {
         $markup = ['@type' => 'Product', 'offers' => [['@type' => 'Offer']]];
@@ -151,7 +186,23 @@ class VariationTestProduct extends \WC_Product_Variation
         private readonly string $regular,
         private readonly bool $inStock,
         private readonly string $sale = '',
+        private readonly string $gtin = '',
+        private readonly bool $unitMeta = false,
     ) {
+    }
+
+    public function get_global_unique_id(string $context = 'view'): string
+    {
+        return $this->gtin;
+    }
+
+    public function get_meta(string $key, bool $single = true): mixed
+    {
+        if (! $this->unitMeta) {
+            return '';
+        }
+
+        return ['_polski_unit_price_base' => '1', '_polski_unit_price_product_amount' => '0.42', '_polski_unit_price_unit' => 'm2'][$key] ?? '';
     }
 
     public function get_id(): int

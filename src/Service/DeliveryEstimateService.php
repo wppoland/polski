@@ -313,7 +313,10 @@ final class DeliveryEstimateService
      */
     private function rules(int $year): array
     {
-        $pro = ModulesPage::isModuleEnabled('delivery_date') ? get_option('polski_delivery_date', []) : null;
+        // The module flag outlives a deactivated PRO, so PRO must be loaded too.
+        $pro = defined('Polski\\Pro\\VERSION') && ModulesPage::isModuleEnabled('delivery_date')
+            ? get_option('polski_delivery_date', [])
+            : null;
 
         if (is_array($pro)) {
             $weekdays = self::parseWeekdays($pro['blocked_weekdays'] ?? [0]);

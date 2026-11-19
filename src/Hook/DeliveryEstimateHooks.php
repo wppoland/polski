@@ -10,8 +10,9 @@ use Polski\Contract\HasHooks;
 use Polski\Service\DeliveryEstimateService;
 
 /**
- * Prints the "Delivery by <date>" line under the price on the product page,
- * swaps it for the selected variation, and offers it as a shortcode.
+ * Prints the "Delivery by <date>" line under the price on the product page
+ * and swaps it for the selected variation. The [polski_delivery_estimate]
+ * shortcode lives in ShortcodeManager.
  *
  * existing-checked: ProductHooks shopmarks - they render at
  * woocommerce_single_product_summary 25, below the add-to-cart form; this line
@@ -30,10 +31,6 @@ final class DeliveryEstimateHooks implements HasHooks
 
     public function registerHooks(): void
     {
-        add_action('init', function (): void {
-            add_shortcode('polski_delivery_estimate', [$this, 'renderShortcode']);
-        });
-
         if (! $this->estimates->isEnabled()) {
             return;
         }
@@ -74,17 +71,6 @@ final class DeliveryEstimateHooks implements HasHooks
         $this->shown = true;
 
         return $content . wp_kses_post($this->estimates->getHtml($product));
-    }
-
-    /**
-     * @param array<string, mixed>|string $atts
-     */
-    public function renderShortcode(array|string $atts = []): string
-    {
-        $atts = shortcode_atts(['product' => 0], is_array($atts) ? $atts : [], 'polski_delivery_estimate');
-        $product = wc_get_product(absint($atts['product']) ?: get_the_ID());
-
-        return $product instanceof \WC_Product ? $this->estimates->getHtml($product) : '';
     }
 
     /**

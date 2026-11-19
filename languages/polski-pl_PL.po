@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-11-19T12:53:19+00:00\n"
+"POT-Creation-Date: 2026-11-19T13:00:41+00:00\n"
 "PO-Revision-Date: 2026-08-14 09:02:35+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -503,7 +503,7 @@ msgid "Something went wrong on our side. Please try again."
 msgstr "Coś poszło nie tak po naszej stronie. Spróbuj ponownie."
 
 #: config/defaults.php:169 src/Admin/ModulesPage.php:549
-#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:253
+#: src/Rest/WithdrawalController.php:139 src/Shortcode/ShortcodeManager.php:265
 msgid "We could not find that order."
 msgstr "Niestety, nie udało nam się znaleźć takiego zamówienia."
 
@@ -519,7 +519,7 @@ msgstr ""
 "Twój wniosek o odstąpienie został przyjęty. Wkrótce wyślemy e-mail z "
 "potwierdzeniem."
 
-#: config/defaults.php:172 src/Shortcode/ShortcodeManager.php:259
+#: config/defaults.php:172 src/Shortcode/ShortcodeManager.php:271
 msgid "This order does not qualify for withdrawal."
 msgstr "To zamówienie nie kwalifikuje się do odstąpienia."
 
@@ -2040,8 +2040,7 @@ msgstr "Nieaktywny"
 msgid "Legal Pages"
 msgstr "Strony prawne"
 
-#. translators: 1: number of configured legal pages, 2: total number of
-#. required legal pages.
+#. translators: 1: number of configured legal pages, 2: total number of required legal pages.
 #: src/Admin/AdminPage.php:1052
 #, php-format
 msgid "%1$d of %2$d ready"
@@ -6438,7 +6437,7 @@ msgstr ""
 
 #: src/Admin/ModulesPage.php:1302
 msgid "Shipping in Google merchant listings"
-msgstr "Wysyłka w informacjach o produktach dla Google"
+msgstr "Wysyłka w wynikach produktowych Google"
 
 #: src/Admin/ModulesPage.php:1303
 msgid "Publish shipping details on offers"
@@ -8399,7 +8398,7 @@ msgstr "Ostrzeżenia dotyczące bezpieczeństwa"
 msgid "Safety warnings regarding the product."
 msgstr "Ostrzeżenia dotyczące bezpieczeństwa produktu."
 
-#: src/Admin/ProductMetaBox.php:373 src/Shortcode/ShortcodeManager.php:144
+#: src/Admin/ProductMetaBox.php:373 src/Shortcode/ShortcodeManager.php:156
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr "Instrukcje bezpieczeństwa"
@@ -11436,8 +11435,7 @@ msgstr "Data:"
 msgid "(*) Delete as appropriate."
 msgstr "(*) Niepotrzebne skreślić."
 
-#. translators: %s: lookup page URL where the consumer can file an online
-#. withdrawal declaration
+#. translators: %s: lookup page URL where the consumer can file an online withdrawal declaration
 #: src/Service/AnnexGeneratorService.php:146
 #, php-format
 msgid ""
@@ -11786,7 +11784,7 @@ msgstr ""
 "czas dostawy i inne."
 
 #. translators: %d: number of products in the compare list
-#: src/Service/CompareService.php:347 src/Shortcode/ShortcodeManager.php:316
+#: src/Service/CompareService.php:347 src/Shortcode/ShortcodeManager.php:328
 #, php-format
 msgid "Compare (%d)"
 msgid_plural "Compare (%d)"
@@ -12321,8 +12319,7 @@ msgstr "Oznacz jako rozwiązane"
 msgid "Discount"
 msgstr "Rabat"
 
-#. translators: 1: energy efficiency class, e.g. B. 2: best class of the scale.
-#. 3: worst class of the scale.
+#. translators: 1: energy efficiency class, e.g. B. 2: best class of the scale. 3: worst class of the scale.
 #: src/Service/EnergyLabelService.php:55
 #, php-format
 msgid ""
@@ -14699,8 +14696,7 @@ msgstr "[Polski] Wniosek o odstąpienie #%d zakończony."
 msgid "[Polski] Withdrawal request #%1$d rejected by %2$s."
 msgstr "[Polski] Wniosek o odstąpienie #%1$d odrzucony przez %2$s."
 
-#. translators: %s: free-text reason (customer-supplied for filing, operator-
-#. supplied for rejection)
+#. translators: %s: free-text reason (customer-supplied for filing, operator-supplied for rejection)
 #: src/Service/WithdrawalService.php:514 src/Service/WithdrawalService.php:575
 #, php-format
 msgid "Reason: %s"
@@ -14853,11 +14849,11 @@ msgstr ""
 "odstąpienia (PL, DE, AT, FR, NL, IT, ES) lub zaakceptuj domyślne tłumaczenie "
 "EN."
 
-#: src/Shortcode/ShortcodeManager.php:244
+#: src/Shortcode/ShortcodeManager.php:256
 msgid "Please enter the order number."
 msgstr "Proszę podać numer zamówienia."
 
-#: src/Shortcode/ShortcodeManager.php:356
+#: src/Shortcode/ShortcodeManager.php:368
 msgid "Available payment methods"
 msgstr "Dostępne metody płatności"
 

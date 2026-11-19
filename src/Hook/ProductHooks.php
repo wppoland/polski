@@ -558,6 +558,12 @@ final class ProductHooks implements Bootable, HasHooks
         // in Schema.org (it belongs to Recipe and MenuItem), so validators flag
         // it. The nutrition table still renders on the product page.
 
+        // A variant node already lists its unmapped attributes here; add to
+        // that list instead of replacing it.
+        if (isset($extraData['additionalProperty'], $data['additionalProperty']) && is_array($data['additionalProperty'])) {
+            $extraData['additionalProperty'] = array_merge($data['additionalProperty'], $extraData['additionalProperty']);
+        }
+
         return array_merge($data, $extraData);
     }
 }

@@ -275,7 +275,8 @@ final class MerchantPolicySchema
      * Cheapest fixed rate the WooCommerce zone for the country offers: a free
      * shipping method without conditions is 0, a flat rate with a plain number
      * is its cost. Formulas and conditional methods say nothing certain about
-     * the rate, so they are skipped.
+     * the rate, so they are skipped, and so is a taxed flat rate: its cost is
+     * entered net, while the offer price shoppers see is gross.
      */
     private function wooCommerceRate(string $country): ?float
     {
@@ -298,7 +299,7 @@ final class MerchantPolicySchema
         foreach ($zone->get_shipping_methods(true) as $method) {
             if ($method->id === 'free_shipping' && (string) $method->get_option('requires', '') === '') {
                 $rates[] = 0.0;
-            } elseif ($method->id === 'flat_rate') {
+            } elseif ($method->id === 'flat_rate' && (! wc_tax_enabled() || (string) $method->get_option('tax_status', 'taxable') === 'none')) {
                 $cost = self::parseAmount((string) $method->get_option('cost', ''));
                 if ($cost !== null) {
                     $rates[] = $cost;
