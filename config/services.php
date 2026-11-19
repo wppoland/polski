@@ -472,8 +472,27 @@ return static function (Container $c): void {
 
     $c->singleton(\Polski\Admin\BrandAssets::class, static fn () => new \Polski\Admin\BrandAssets());
 
+    $c->singleton(\Polski\Service\MerchantPolicySchema::class, static fn () => new \Polski\Service\MerchantPolicySchema(
+        $c->get(DeliveryTimeService::class),
+    ));
+    $c->singleton(\Polski\Service\ProductGroupSchema::class, static fn () => new \Polski\Service\ProductGroupSchema());
     $c->singleton(\Polski\Hook\StructuredDataHooks::class, static fn () => new \Polski\Hook\StructuredDataHooks(
         $c->get(OmnibusService::class),
+        $c->get(\Polski\Service\MerchantPolicySchema::class),
+        $c->get(\Polski\Service\ProductGroupSchema::class),
+    ));
+
+    // LocalBusiness and the organization-level return policy.
+    $c->singleton(\Polski\Service\LocalBusinessSchema::class, static fn () => new \Polski\Service\LocalBusinessSchema());
+    $c->singleton(\Polski\Hook\LocalBusinessHooks::class, static fn () => new \Polski\Hook\LocalBusinessHooks(
+        $c->get(\Polski\Service\LocalBusinessSchema::class),
+        $c->get(\Polski\Service\MerchantPolicySchema::class),
+    ));
+
+    // "Delivery by <date>" under the product price.
+    $c->singleton(\Polski\Service\DeliveryEstimateService::class, static fn () => new \Polski\Service\DeliveryEstimateService());
+    $c->singleton(\Polski\Hook\DeliveryEstimateHooks::class, static fn () => new \Polski\Hook\DeliveryEstimateHooks(
+        $c->get(\Polski\Service\DeliveryEstimateService::class),
     ));
 
     $c->singleton(ProductHooks::class, static fn () => new ProductHooks(

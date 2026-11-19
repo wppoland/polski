@@ -37,6 +37,7 @@ final class ShortcodeManager implements HasHooks
     {
         add_shortcode('polski_unit_price', [$this, 'unitPrice']);
         add_shortcode('polski_delivery_time', [$this, 'deliveryTime']);
+        add_shortcode('polski_delivery_estimate', [$this, 'deliveryEstimate']);
         add_shortcode('polski_omnibus_price', [$this, 'omnibusPrice']);
         add_shortcode('polski_tax_notice', [$this, 'taxNotice']);
         add_shortcode('polski_shipping_notice', [$this, 'shippingNotice']);
@@ -83,6 +84,20 @@ final class ShortcodeManager implements HasHooks
         }
 
         return $this->container()->get(DeliveryTimeService::class)->getDeliveryTimeHtml($product);
+    }
+
+    /** @param ShortcodeAtts $atts */
+    public function deliveryEstimate(array|string $atts = []): string
+    {
+        $product = $this->resolveProduct($atts);
+        if ($product === null) {
+            return '';
+        }
+
+        // The script empties the line in a cached page once its cutoff passed.
+        wp_enqueue_script('polski-delivery-estimate');
+
+        return $this->container()->get(\Polski\Service\DeliveryEstimateService::class)->getHtml($product);
     }
 
     /** @param ShortcodeAtts $atts */

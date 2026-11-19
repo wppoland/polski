@@ -75,6 +75,7 @@ Polski for WooCommerce helps adapt a WooCommerce shop to Polish market requireme
 
 ### Product Information
 - **Delivery times** - per-product and per-variation delivery time display with default fallback
+- **Delivery date estimate** - "Delivery by <date>" under the price, swapped for the selected variation; working days from a cutoff hour, lead time per product, variation or shipping class, blocked weekdays, extra days off and Polish public holidays (the PRO delivery date picker's rules win when it is on). The line keeps its space while empty, and a cached page hides it once the cutoff has passed
 - **Manufacturer information** - manufacturer name and details (GPSR compliance)
 - **Brands** - separate merchandising taxonomy for brands, independent from manufacturer/GPSR data, with configurable label visibility, separators and brand archive links
 - **Safety documents** - product safety instructions and attachments
@@ -122,6 +123,7 @@ Polski for WooCommerce helps adapt a WooCommerce shop to Polish market requireme
 - Gutenberg blocks for AJAX search, AJAX filters, and product sliders
 - Elementor widgets for search, filters, and product sliders
 - `[polski_delivery_time]` - product delivery time
+- `[polski_delivery_estimate]` - expected delivery date (`product` attribute optional)
 - `[polski_tax_notice]` - VAT information
 - `[polski_shipping_notice]` - shipping cost notice
 - `[polski_omnibus_price]` - lowest 30-day price
@@ -145,6 +147,14 @@ Polski for WooCommerce helps adapt a WooCommerce shop to Polish market requireme
 - **Checkout and consent** - compatible with common checkout and cookie consent plugins
 - **Page builders** - Elementor widgets for storefront search, filters, slider and product-info output
 - **Caching** - compatible with common WordPress cache plugins
+
+### Structured data (Schema.org)
+- **Product enrichment** - brand, manufacturer, GTIN, unit price, Omnibus strikethrough price and priceValidUntil added to WooCommerce's own Product node, never a second one
+- **Variable products as ProductGroup** - `productGroupID`, `variesBy` and one Product per variation in `hasVariant`, each with its own offer, URL, SKU and GTIN. Attributes map to Google's variant properties by name (length and width count as `size`) or by an explicit mapping
+- **Merchant listing data** - opt-in `shippingDetails` (rate, destination, handling and transit days; rate from the settings or a plain WooCommerce flat rate or free shipping method) and `hasMerchantReturnPolicy` on every offer, plus the return policy on the organization
+- **Missing Product data** - page builder templates that skip `woocommerce_single_product_summary` (Elementor Pro and others) still get WooCommerce's Product node (filter `polski/structured_data/ensure_product`)
+- **Local business** - LocalBusiness subtype with address, coordinates, opening hours, area served, price range and profiles on the front page (filter `polski/local_business/output`). With Yoast SEO it merges into Yoast's `#organization` node instead of adding a second organization
+- **Filters** - `polski/structured_data/variant`, `polski/structured_data/shipping_details`, `polski/structured_data/return_policy`, `polski/structured_data/max_variants`, `polski/local_business/node`, `polski/delivery_estimate/date`
 
 ### Technical
 - **WooCommerce HPOS** - native Custom Order Tables support

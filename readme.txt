@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.47.0
+Stable tag: 1.48.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -395,6 +395,14 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.48.0 =
+* New: variable products are described as a ProductGroup with one Product per variation (own offer, SKU, GTIN, image), as Google recommends for variants. On by default under SEO; switch "Describe variable products as a product group with variants" off to keep the price range.
+* New, opt-in: shipping details (rate, destination, handling and transit days) and the return policy on product offers; the return policy is also added to the Yoast SEO organization or to the Local business node.
+* New: Local business module (off by default) adds a LocalBusiness node, merged into the Yoast SEO organization when Yoast is active.
+* New: Delivery date estimate module (off by default) shows "Delivery by [date]" under the price, swapped for the selected variation, from a cutoff hour, lead time per product, variation or shipping class, days off and Polish public holidays. Shortcode `[polski_delivery_estimate]`.
+* Fixed: product pages built with Elementor Pro or other builder templates that skip the WooCommerce summary hook had no Product structured data; Polski now adds it.
+* Changed: the "Tested up to" line lives only in readme.txt, as Plugin Check now requires.
+
 = 1.47.0 =
 * New: WPML and Polylang can translate the texts you type into Polski's settings (checkout labels, checkbox texts, withdrawal and email texts, notices). Polski ships a `wpml-config.xml` for them, and reads those texts in the visitor's language. IDs, keys, URLs and email addresses are not offered for translation.
 
@@ -554,14 +562,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Added: the waitlist works on variable products. The form appears when an out-of-stock variation is selected, and the restock email goes out when that variation is back in stock, however the stock changed. No longer beta.
 * Added: the price history chart shows the selected variation's history on variable products. No longer beta.
 * Added: with the VIES module on, checkout and My Account accept an EU VAT number from another country (for example DE811569869). A plain 10-digit NIP keeps its checksum and GUS lookup. No longer beta.
-
-= 1.40.1 =
-* Security (medium): three read-only withdrawal abilities (eligibility, remaining items, deadline) let any logged-in customer read them for another customer's order by guessing its id. They now require the order's own customer or a shop manager.
-
-Only the most recent releases are listed here. The full history is on the plugin's changelog
-page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
-and in changelog.txt inside the plugin folder. WordPress.org silently truncates
-a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
 
