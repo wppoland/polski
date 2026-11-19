@@ -84,7 +84,8 @@ final class StructuredDataHooks implements HasHooks
     {
         // The summary ran: whatever product data it left (none, when an SEO
         // plugin took the node over) is deliberate, so nothing is added.
-        if (did_action('woocommerce_single_product_summary') || ! function_exists('is_product') || ! is_product() || MerchantPolicySchema::schemaSettings() === null) {
+        // A password-protected product skips the summary on purpose.
+        if (did_action('woocommerce_single_product_summary') || ! function_exists('is_product') || ! is_product() || post_password_required() || MerchantPolicySchema::schemaSettings() === null) {
             return;
         }
 

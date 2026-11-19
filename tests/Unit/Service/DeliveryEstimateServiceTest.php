@@ -75,6 +75,16 @@ final class DeliveryEstimateServiceTest extends TestCase
         $this->assertSame('2026-11-17 00:00', DeliveryEstimateService::expiresAt(self::at('2026-11-16 15:00'), '')->format('Y-m-d H:i'));
     }
 
+    public function testEarliestCalendarDayExpiresAtMidnight(): void
+    {
+        // PRO picker, earliest date tomorrow: Thursday 15:00 promises Friday,
+        // Friday 00:30 already Monday, so the line must not outlive midnight.
+        $this->assertSame('2026-11-20', DeliveryEstimateService::estimate(self::at('2026-11-19 15:00'), '14:00', 0, [0, 6], [], 1)?->format('Y-m-d'));
+        $this->assertSame('2026-11-23', DeliveryEstimateService::estimate(self::at('2026-11-20 00:30'), '14:00', 0, [0, 6], [], 1)?->format('Y-m-d'));
+        $this->assertSame('2026-11-20 00:00', DeliveryEstimateService::expiresAt(self::at('2026-11-19 15:00'), '14:00', 1)->format('Y-m-d H:i'));
+        $this->assertSame('2026-11-19 14:00', DeliveryEstimateService::expiresAt(self::at('2026-11-19 09:00'), '14:00', 1)->format('Y-m-d H:i'));
+    }
+
     public function testPolishHolidays2026(): void
     {
         $holidays = DeliveryEstimateService::polishHolidays(2026);

@@ -108,17 +108,21 @@ final class DeliveryEstimateService
 
     /**
      * When the estimate shown at $now stops being true: the next cutoff, or
-     * midnight when there is no cutoff.
+     * midnight when there is no cutoff or an earliest calendar day (it moves
+     * at midnight) comes first.
      */
-    public static function expiresAt(\DateTimeImmutable $now, string $cutoff): \DateTimeImmutable
+    public static function expiresAt(\DateTimeImmutable $now, string $cutoff, int $minCalendarDays = 0): \DateTimeImmutable
     {
+        $midnight = $now->setTime(0, 0)->modify('+1 day');
         $cutoffAt = self::cutoffAt($now->setTime(0, 0), $cutoff);
 
         if ($cutoffAt === null) {
-            return $now->setTime(0, 0)->modify('+1 day');
+            return $midnight;
         }
 
-        return $now < $cutoffAt ? $cutoffAt : $cutoffAt->modify('+1 day');
+        $next = $now < $cutoffAt ? $cutoffAt : $cutoffAt->modify('+1 day');
+
+        return $minCalendarDays > 0 && $midnight < $next ? $midnight : $next;
     }
 
     /**
@@ -291,7 +295,8 @@ final class DeliveryEstimateService
 
         // The expiry is printed even without an estimate: a cached page still
         // carries variation estimates that go stale at the same cutoff.
-        $expires = self::expiresAt(($this->clock)(), (string) $this->getSetting('cutoff_time', '14:00'));
+        $now = ($this->clock)();
+        $expires = self::expiresAt($now, (string) $this->getSetting('cutoff_time', '14:00'), $this->rules((int) $now->format('Y'))['min_days']);
 
         return sprintf(
             '<p class="polski-delivery-estimate" data-polski-estimate="%d" data-expires="%d" aria-live="polite" style="min-height:1.5em">%s</p>',
