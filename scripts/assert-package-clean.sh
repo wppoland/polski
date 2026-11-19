@@ -85,7 +85,6 @@ fi
 
 # 6. The plugin header and the readme must agree with each other.
 header_version="$(grep -m1 -E '^ \* Version:' "${PKG}/polski.php" | sed -E 's/.*Version:[[:space:]]*//')"
-header_tested="$(grep -m1 -E '^ \* Tested up to:' "${PKG}/polski.php" | sed -E 's/.*Tested up to:[[:space:]]*//')"
 readme_stable="$(grep -m1 -E '^Stable tag:' "${PKG}/readme.txt" | sed -E 's/^Stable tag:[[:space:]]*//')"
 readme_tested="$(grep -m1 -E '^Tested up to:' "${PKG}/readme.txt" | sed -E 's/^Tested up to:[[:space:]]*//')"
 
@@ -107,8 +106,9 @@ if [[ -f "${PKG}/changelog.txt" ]]; then
     grep -qF "= ${header_version} =" "${PKG}/changelog.txt" || \
         fail "changelog.txt has no entry for ${header_version}"
 fi
-[[ "${header_tested}" == "${readme_tested}" ]] || \
-    fail "header Tested up to (${header_tested}) does not match readme (${readme_tested})"
+# Plugin Check 2.2 rejects "Tested up to" in the plugin header: it lives in readme.txt only.
+grep -qE '^ \* Tested up to:' "${PKG}/polski.php" && \
+    fail "polski.php declares Tested up to; keep it in readme.txt only (Plugin Check error)"
 
 # 7. "Tested up to" must be the current WordPress release, or wordpress.org
 #    hides the plugin from search. This is the value that silently rots.
@@ -117,8 +117,8 @@ if command -v curl >/dev/null 2>&1; then
         | php -r '$d = json_decode(stream_get_contents(STDIN), true); echo $d["offers"][0]["current"] ?? "";' 2>/dev/null)"
     if [[ -n "${current_wp}" ]]; then
         # Compare on major.minor only; wordpress.org accepts 7.1 for 7.1.2.
-        if [[ "${current_wp%.*}" != "${header_tested}" && "${current_wp}" != "${header_tested}" ]]; then
-            fail "Tested up to (${header_tested}) is behind the current WordPress release (${current_wp})"
+        if [[ "${current_wp%.*}" != "${readme_tested}" && "${current_wp}" != "${readme_tested}" ]]; then
+            fail "Tested up to (${readme_tested}) is behind the current WordPress release (${current_wp})"
         fi
     else
         echo "note: could not reach api.wordpress.org, skipped the Tested up to freshness check" >&2
@@ -136,4 +136,4 @@ if [[ "${FAIL}" -ne 0 ]]; then
     exit 1
 fi
 
-echo "Package clean: ${PKG} (${header_version}, tested up to ${header_tested})"
+echo "Package clean: ${PKG} (${header_version}, tested up to ${readme_tested})"
