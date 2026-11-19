@@ -23,8 +23,12 @@ defined('ABSPATH') || exit;
  */
 final class ProductGroupSchema
 {
-    /** Variant properties Google accepts in variesBy. */
-    public const PROPERTIES = ['color', 'size', 'material', 'pattern', 'suggestedAge', 'suggestedGender'];
+    /**
+     * Variant properties written as plain values on the variant. Google's
+     * suggestedAge and suggestedGender belong in a PeopleAudience node, so
+     * they are not offered.
+     */
+    public const PROPERTIES = ['color', 'size', 'material', 'pattern'];
 
     /**
      * Attribute name fragments that say which Schema.org property an attribute
