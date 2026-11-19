@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Polski\Hook;
 
-use Polski\Admin\ModulesPage;
 use Polski\Contract\HasHooks;
 use Polski\Service\MerchantPolicySchema;
 use Polski\Service\OmnibusService;
@@ -53,7 +52,7 @@ final class StructuredDataHooks implements HasHooks
      */
     public function convertVariableProduct(array $markup, \WC_Product $product): array
     {
-        $settings = $this->schemaSettings();
+        $settings = MerchantPolicySchema::schemaSettings();
 
         if ($settings === null || ! ($settings['schema_product_group'] ?? true)) {
             return $markup;
@@ -83,7 +82,7 @@ final class StructuredDataHooks implements HasHooks
      */
     public function ensureProductData(): void
     {
-        if (! function_exists('is_product') || ! is_product() || $this->schemaSettings() === null) {
+        if (! function_exists('is_product') || ! is_product() || MerchantPolicySchema::schemaSettings() === null) {
             return;
         }
 
@@ -110,23 +109,6 @@ final class StructuredDataHooks implements HasHooks
         if ($product instanceof \WC_Product) {
             $structured->generate_product_data($product);
         }
-    }
-
-    /**
-     * Module and main switch of the Structured Data settings.
-     *
-     * @return array<string,mixed>|null The settings, or null when switched off.
-     */
-    private function schemaSettings(): ?array
-    {
-        if (! ModulesPage::isModuleEnabled('schema_org')) {
-            return null;
-        }
-
-        $settings = get_option('polski_seo', []);
-        $settings = is_array($settings) ? $settings : [];
-
-        return ($settings['schema_enabled'] ?? true) ? $settings : null;
     }
 
     /**
@@ -169,16 +151,15 @@ final class StructuredDataHooks implements HasHooks
             }
         }
 
-        if ($this->schemaSettings() !== null) {
-            $shipping = $this->merchant->shippingDetails($product);
-            if ($shipping !== null) {
-                $markup['offers'][0]['shippingDetails'] = $shipping;
-            }
+        // Both are null while the Structured Data module or its switch is off.
+        $shipping = $this->merchant->shippingDetails($product);
+        if ($shipping !== null) {
+            $markup['offers'][0]['shippingDetails'] = $shipping;
+        }
 
-            $returns = $this->merchant->returnPolicy();
-            if ($returns !== null) {
-                $markup['offers'][0]['hasMerchantReturnPolicy'] = $returns;
-            }
+        $returns = $this->merchant->returnPolicy();
+        if ($returns !== null) {
+            $markup['offers'][0]['hasMerchantReturnPolicy'] = $returns;
         }
 
         return $markup;

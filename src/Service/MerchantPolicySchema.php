@@ -6,6 +6,8 @@ namespace Polski\Service;
 
 defined('ABSPATH') || exit;
 
+use Polski\Admin\ModulesPage;
+
 /**
  * Shipping and return policy nodes for Google merchant listings.
  *
@@ -320,12 +322,27 @@ final class MerchantPolicySchema
     }
 
     /**
+     * Structured Data settings, or null when the module or its main switch is off.
+     *
+     * @return array<string, mixed>|null
+     */
+    public static function schemaSettings(): ?array
+    {
+        if (! ModulesPage::isModuleEnabled('schema_org')) {
+            return null;
+        }
+
+        $settings = get_option(self::OPTION, []);
+        $settings = is_array($settings) ? $settings : [];
+
+        return ($settings['schema_enabled'] ?? true) ? $settings : null;
+    }
+
+    /**
      * @return array<string, mixed>
      */
     private function settings(): array
     {
-        $settings = get_option(self::OPTION, []);
-
-        return is_array($settings) ? $settings : [];
+        return self::schemaSettings() ?? [];
     }
 }

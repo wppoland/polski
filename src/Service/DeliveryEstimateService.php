@@ -37,6 +37,9 @@ final class DeliveryEstimateService
     /** @var \Closure(): \DateTimeImmutable */
     private \Closure $clock;
 
+    /** @var array<int, array{weekdays: list<int>, holidays: list<string>, min_days: int}> Rules per year, built once per request. */
+    private array $rules = [];
+
     /**
      * @param (\Closure(): \DateTimeImmutable)|null $clock Current time in the shop's timezone.
      */
@@ -225,10 +228,7 @@ final class DeliveryEstimateService
         return max(0, (int) $this->getSetting('default_lead_days', 2));
     }
 
-    /**
-     * @return array{date: \DateTimeImmutable}|null
-     */
-    public function getEstimate(\WC_Product $product): ?array
+    public function getEstimate(\WC_Product $product): ?\DateTimeImmutable
     {
         if (! $this->isEnabled() || ! $product->is_purchasable() || $product->get_stock_status() !== 'instock') {
             return null;
@@ -248,11 +248,7 @@ final class DeliveryEstimateService
          */
         $date = apply_filters('polski/delivery_estimate/date', $date, $product);
 
-        if (! $date instanceof \DateTimeImmutable) {
-            return null;
-        }
-
-        return ['date' => $date];
+        return $date instanceof \DateTimeImmutable ? $date : null;
     }
 
     /**
@@ -260,16 +256,15 @@ final class DeliveryEstimateService
      */
     public function getInnerHtml(\WC_Product $product): string
     {
-        $estimate = $this->getEstimate($product);
+        $date = $this->getEstimate($product);
 
-        if ($estimate === null) {
+        if ($date === null) {
             return '';
         }
 
         $format = (string) $this->getSetting('display_format', '');
         $format = str_contains($format, '{date}') ? $format : __('Delivery by {date}', 'polski');
         [$before, $after] = explode('{date}', $format, 2);
-        $date = $estimate['date'];
         $label = wp_date((string) $this->getSetting('date_format', 'l, j F'), $date->getTimestamp(), $date->getTimezone());
 
         if (! is_string($label)) {
@@ -313,6 +308,10 @@ final class DeliveryEstimateService
      */
     private function rules(int $year): array
     {
+        if (isset($this->rules[$year])) {
+            return $this->rules[$year];
+        }
+
         // The module flag outlives a deactivated PRO, so PRO must be loaded too.
         $pro = defined('Polski\\Pro\\VERSION') && ModulesPage::isModuleEnabled('delivery_date')
             ? get_option('polski_delivery_date', [])
@@ -332,7 +331,7 @@ final class DeliveryEstimateService
             $holidays = array_merge($holidays, self::polishHolidays($year), self::polishHolidays($year + 1));
         }
 
-        return ['weekdays' => $weekdays, 'holidays' => $holidays, 'min_days' => $minDays];
+        return $this->rules[$year] = ['weekdays' => $weekdays, 'holidays' => $holidays, 'min_days' => $minDays];
     }
 
     private static function cutoffAt(\DateTimeImmutable $day, string $cutoff): ?\DateTimeImmutable

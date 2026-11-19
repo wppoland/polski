@@ -54,7 +54,7 @@ final class LocalBusinessHooks implements HasHooks
         }
 
         $business = $this->shouldOutput() ? $this->business->build() : null;
-        $policy = $this->organizationPolicy();
+        $policy = $this->merchant->returnPolicy();
         $organizationId = home_url('/') . '#organization';
 
         foreach ($graph as $i => $node) {
@@ -102,7 +102,7 @@ final class LocalBusinessHooks implements HasHooks
             return;
         }
 
-        $policy = $this->organizationPolicy();
+        $policy = $this->merchant->returnPolicy();
         if ($policy !== null) {
             $node['hasMerchantReturnPolicy'] = $policy;
         }
@@ -125,24 +125,5 @@ final class LocalBusinessHooks implements HasHooks
          * @param bool $output
          */
         return (bool) apply_filters('polski/local_business/output', is_front_page());
-    }
-
-    /**
-     * @return array<string, mixed>|null
-     */
-    private function organizationPolicy(): ?array
-    {
-        if (! ModulesPage::isModuleEnabled('schema_org')) {
-            return null;
-        }
-
-        $settings = get_option('polski_seo', []);
-        $settings = is_array($settings) ? $settings : [];
-
-        if (! ($settings['schema_enabled'] ?? true)) {
-            return null;
-        }
-
-        return $this->merchant->returnPolicy();
     }
 }
