@@ -122,8 +122,9 @@ final class LocalBusinessSchema
             'address' => $address,
         ];
 
-        if ($image !== '' || ! empty($s['image'])) {
-            $node['image'] = (string) (($s['image'] ?? '') ?: $image);
+        $image = (string) (($s['image'] ?? '') ?: $image);
+        if ($image !== '') {
+            $node['image'] = $image;
         }
 
         foreach (['telephone' => 'telephone', 'email' => 'email', 'price_range' => 'priceRange'] as $key => $property) {

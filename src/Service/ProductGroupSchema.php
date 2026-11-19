@@ -55,8 +55,7 @@ final class ProductGroupSchema
             return $markup;
         }
 
-        $settings = get_option('polski_seo', []);
-        $map = self::parseMap(is_array($settings) ? (string) ($settings['variant_attribute_map'] ?? '') : '');
+        $map = self::parseMap((string) (MerchantPolicySchema::schemaSettings()['variant_attribute_map'] ?? ''));
         $attributes = array_keys($product->get_variation_attributes());
 
         /** Maximum number of variants described in hasVariant. */

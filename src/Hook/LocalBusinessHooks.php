@@ -53,7 +53,7 @@ final class LocalBusinessHooks implements HasHooks
             return $graph;
         }
 
-        $business = $this->shouldOutput() ? $this->business->build() : null;
+        $business = $this->shouldOutput() ? $this->withPolicy($this->business->build()) : null;
         $policy = $this->merchant->returnPolicy();
         $organizationId = home_url('/') . '#organization';
 
@@ -65,9 +65,7 @@ final class LocalBusinessHooks implements HasHooks
             if ($business !== null) {
                 $node = LocalBusinessSchema::mergeInto($node, $business);
                 $this->printed = true;
-            }
-
-            if ($policy !== null && ! isset($node['hasMerchantReturnPolicy'])) {
+            } elseif ($policy !== null && ! isset($node['hasMerchantReturnPolicy'])) {
                 $node['hasMerchantReturnPolicy'] = $policy;
             }
 
@@ -76,10 +74,6 @@ final class LocalBusinessHooks implements HasHooks
 
         // Yoast set to describe a person: the business is a node of its own.
         if ($business !== null && ! $this->printed) {
-            if ($policy !== null) {
-                $business['hasMerchantReturnPolicy'] = $policy;
-            }
-
             $graph[] = $business;
             $this->printed = true;
         }
@@ -96,21 +90,33 @@ final class LocalBusinessHooks implements HasHooks
             return;
         }
 
-        $node = $this->business->build();
+        $node = $this->withPolicy($this->business->build());
 
         if ($node === null) {
             return;
-        }
-
-        $policy = $this->merchant->returnPolicy();
-        if ($policy !== null) {
-            $node['hasMerchantReturnPolicy'] = $policy;
         }
 
         $this->printed = true;
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON encoded with JSON_HEX_TAG, so no markup can break out of the script element.
         echo '<script type="application/ld+json">' . wp_json_encode(['@context' => 'https://schema.org'] + $node, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) . '</script>' . "\n";
+    }
+
+    /**
+     * The business node with the shop's return policy, which Google reads from the organization.
+     *
+     * @param array<string, mixed>|null $node
+     * @return array<string, mixed>|null
+     */
+    private function withPolicy(?array $node): ?array
+    {
+        $policy = $this->merchant->returnPolicy();
+
+        if ($node !== null && $policy !== null) {
+            $node['hasMerchantReturnPolicy'] = $policy;
+        }
+
+        return $node;
     }
 
     private function shouldOutput(): bool

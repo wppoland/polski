@@ -51,6 +51,9 @@ final class MerchantPolicySchema
     private ?float $wooRate = null;
     private bool $wooRateLoaded = false;
 
+    /** @var array<string, mixed>|null|false The return policy, false until built: it is the same on every offer. */
+    private array|null|false $policy = false;
+
     public function __construct(
         private readonly DeliveryTimeService $deliveryTime,
     ) {
@@ -63,10 +66,14 @@ final class MerchantPolicySchema
      */
     public function returnPolicy(): ?array
     {
+        if ($this->policy !== false) {
+            return $this->policy;
+        }
+
         $settings = $this->settings();
 
         if (! ($settings['schema_return_policy'] ?? false)) {
-            return null;
+            return $this->policy = null;
         }
 
         $policy = self::buildReturnPolicy($settings, $this->baseCountry(), get_woocommerce_currency());
@@ -82,7 +89,7 @@ final class MerchantPolicySchema
          */
         $policy = apply_filters('polski/structured_data/return_policy', $policy);
 
-        return is_array($policy) ? $policy : null;
+        return $this->policy = is_array($policy) ? $policy : null;
     }
 
     /**
