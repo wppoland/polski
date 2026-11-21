@@ -474,7 +474,7 @@ final class InPostShippingService implements HasHooks
         return class_exists($class) && in_array('is_conditional_field', get_class_methods($class), true);
     }
 
-    public function validateBlockValue(mixed $value): true|\WP_Error
+    public function validateBlockValue(mixed $value): bool|\WP_Error
     {
         $code = self::normalizeCode((string) $value);
 
