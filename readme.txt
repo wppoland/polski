@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.49.0
+Stable tag: 1.49.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.49.1 =
+* Changed: the InPost parcel locker list is a native radio group: arrow keys move between lockers and screen readers announce the position in the list. The postcode field no longer autocorrects, and the phone keyboard's Enter key reads Search.
 
 = 1.49.0 =
 * New: InPost shipping module (off by default) adds InPost Paczkomat and InPost Courier shipping methods for Polish addresses, each with cost, tax status, free shipping threshold and weight limit. The shopper picks a parcel locker from a list of the nearest lockers to their postcode on the classic or block checkout; the locker is checked with InPost when the order is placed and shows on the order, in emails and in My Account. No InPost account is needed.
