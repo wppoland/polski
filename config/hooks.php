@@ -160,6 +160,7 @@ return [
     \Polski\Service\CRAReadinessService::class,
     \Polski\Service\DPATrackerService::class,
     \Polski\Service\NipLookupService::class,
+    \Polski\Service\InPostShippingService::class,
     ProductHooks::class,
     \Polski\Hook\StructuredDataHooks::class,
     \Polski\Hook\LocalBusinessHooks::class,

@@ -20,6 +20,7 @@ return [
     'checkout_button' => 'https://plogins.com/pl/polski/docs/checkout/checkout-button/',
     'legal_checkboxes' => 'https://plogins.com/pl/polski/docs/checkout/legal-checkboxes/',
     'nip_lookup' => 'https://plogins.com/pl/polski/docs/checkout/nip-lookup/',
+    'inpost_shipping' => 'https://plogins.com/pl/polski/docs/shipping/inpost/',
     'consent_logging' => 'https://plogins.com/pl/polski/docs/compliance/gdpr/',
     'legal_pages' => 'https://plogins.com/pl/polski/docs/compliance/legal-pages/',
     'withdrawal' => 'https://plogins.com/pl/polski/docs/compliance/withdrawal/',

@@ -51,8 +51,8 @@ return [
             'pl' => ['title' => 'Realizacja zamówień', 'desc' => 'Statusy Spakowane, Wysłane, Dostarczone, pole śledzenia i wiadomości e-mail do klienta.'],
         ],
         [
-            'en' => ['title' => 'Shipping integrations', 'desc' => 'InPost, DPD, DHL and Poczta Polska: labels, tracking and pickup points.'],
-            'pl' => ['title' => 'Integracje wysyłki', 'desc' => 'InPost, DPD, DHL i Poczta Polska: etykiety, śledzenie i punkty odbioru.'],
+            'en' => ['title' => 'Parcel tracking', 'desc' => 'InPost, DPD, DHL and Poczta Polska: live shipment status on the order screen and in customer emails.'],
+            'pl' => ['title' => 'Śledzenie przesyłek', 'desc' => 'InPost, DPD, DHL i Poczta Polska: aktualny status przesyłki na ekranie zamówienia i w mailach do klienta.'],
         ],
         [
             'en' => ['title' => 'Gift cards', 'desc' => 'Sell cards, generate codes and redeem balances in the cart.'],

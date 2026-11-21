@@ -1437,4 +1437,12 @@ if (! function_exists('wp_remote_get')) {
     {
         return is_array($response) ? (int) ($response['response']['code'] ?? 0) : 0;
     }
+
+    /**
+     * @param array<string, mixed>|WP_Error $response
+     */
+    function wp_remote_retrieve_body(array|WP_Error $response): string
+    {
+        return is_array($response) ? (string) ($response['body'] ?? '') : '';
+    }
 }
