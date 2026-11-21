@@ -305,6 +305,16 @@ When the EU VAT ID check module is enabled and the number is Swiss (CHE), the sa
 * Service address: [https://www.uid-wse.admin.ch/](https://www.uid-wse.admin.ch/)
 * Terms of use and data protection: [https://www.uid.admin.ch/Disclaimer.aspx](https://www.uid.admin.ch/Disclaimer.aspx)
 
+= InPost Points API =
+
+With the InPost shipping module on, the store server (not the shopper's browser) asks InPost for the parcel lockers near a postcode a shopper searches, and checks the chosen locker when the order is placed.
+
+* Data sent: a postcode or a locker code, nothing personal.
+* Service address: [https://api-pl-points.easypack24.net/](https://api-pl-points.easypack24.net/)
+* Privacy policy: [https://inpost.pl/polityka-prywatnosci](https://inpost.pl/polityka-prywatnosci)
+
+InPost and Paczkomat are trademarks of InPost sp. z o.o., used to describe the service.
+
 = Google OAuth =
 
 When the social login module is enabled and Google login is configured, a customer clicking the continue-with-Google button is redirected to Google for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
