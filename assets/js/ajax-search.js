@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             window.clearTimeout(timer);
             results.hidden = true;
-            results.innerHTML = '';
+            results.replaceChildren();
             results.removeAttribute('aria-busy');
             input.setAttribute('aria-expanded', 'false');
             clearActive();
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function renderResults(payload) {
             var items = Array.isArray(payload.results) ? payload.results : [];
 
-            results.innerHTML = '';
+            results.replaceChildren();
             clearActive();
 
             if (items.length === 0) {
