@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.49.2 =
+* Changed: pressing Enter to confirm a word in a Japanese, Chinese or Korean keyboard no longer starts the parcel locker search early. The AJAX search clears its results with the DOM API instead of an HTML string.
+
 = 1.49.1 =
 * Changed: the InPost parcel locker list is a native radio group: arrow keys move between lockers and screen readers announce the position in the list. The postcode field no longer autocorrects, and the phone keyboard's Enter key reads Search.
 
