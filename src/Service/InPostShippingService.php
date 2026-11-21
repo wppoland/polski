@@ -172,32 +172,33 @@ final class InPostShippingService implements HasHooks
     public function findNearby(string $postcode): ?array
     {
         $key = 'polski_inpost_pc_' . str_replace('-', '', $postcode);
-        $cached = get_transient($key);
+        // The raw items are cached and mapped on every read, so a cached entry
+        // goes through the same whitelist as a fresh one.
+        $items = get_transient($key);
 
-        if (is_array($cached)) {
-            return $cached;
-        }
-
-        $data = $this->request(self::API . '?' . http_build_query([
+        if (! is_array($items)) {
+            $data = $this->request(self::API . '?' . http_build_query([
             'relative_post_code' => $postcode,
             'type' => 'parcel_locker',
             'per_page' => 10,
-            'fields' => self::API_FIELDS,
-        ]));
+                'fields' => self::API_FIELDS,
+            ]));
 
-        if (! is_array($data) || ! isset($data['items']) || ! is_array($data['items'])) {
-            return null;
+            if (! is_array($data) || ! isset($data['items']) || ! is_array($data['items'])) {
+                return null;
+            }
+
+            $items = $data['items'];
+            set_transient($key, $items, 12 * HOUR_IN_SECONDS);
         }
 
         $points = [];
-        foreach ($data['items'] as $item) {
+        foreach ($items as $item) {
             $point = is_array($item) ? self::mapPoint($item) : null;
             if ($point !== null) {
                 $points[] = $point;
             }
         }
-
-        set_transient($key, $points, 12 * HOUR_IN_SECONDS);
 
         return $points;
     }
@@ -215,16 +216,15 @@ final class InPostShippingService implements HasHooks
         }
 
         $key = 'polski_inpost_pt_' . strtolower($code);
-        $cached = get_transient($key);
+        $data = get_transient($key);
+        $fresh = ! is_array($data);
 
-        if (is_array($cached)) {
-            return $cached;
-        }
+        if ($fresh) {
+            $data = $this->request(self::API . '/' . rawurlencode($code) . '?fields=' . self::API_FIELDS);
 
-        $data = $this->request(self::API . '/' . rawurlencode($code) . '?fields=' . self::API_FIELDS);
-
-        if ($data === null) {
-            return null;
+            if ($data === null) {
+                return null;
+            }
         }
 
         // An unknown point comes back as HTTP 200 with key point_not_found.
@@ -234,7 +234,9 @@ final class InPostShippingService implements HasHooks
             return false;
         }
 
-        set_transient($key, $point, 12 * HOUR_IN_SECONDS);
+        if ($fresh) {
+            set_transient($key, $data, 12 * HOUR_IN_SECONDS);
+        }
 
         return $point;
     }
@@ -430,8 +432,11 @@ final class InPostShippingService implements HasHooks
 
     private static function supportsConditionalFields(): bool
     {
-        // Named as a string: the class ships with WooCommerce.
-        return method_exists('Automattic\\WooCommerce\\Blocks\\Domain\\Services\\CheckoutFields', 'is_conditional_field');
+        // The stubs know only a WooCommerce that has the method, so the check
+        // goes through reflection of a runtime class name.
+        $class = 'Automattic\\WooCommerce\\Blocks\\Domain\\Services\\CheckoutFields';
+
+        return class_exists($class) && in_array('is_conditional_field', get_class_methods($class), true);
     }
 
     public function validateBlockValue(mixed $value): true|\WP_Error

@@ -68,7 +68,9 @@ abstract class InPostShippingMethod extends \WC_Shipping_Method
         $this->title = (string) $this->get_option('title', $this->defaultTitle());
         $this->tax_status = (string) $this->get_option('tax_status', 'taxable');
 
-        add_action('woocommerce_update_options_shipping_' . $this->id, [$this, 'process_admin_options']);
+        add_action('woocommerce_update_options_shipping_' . $this->id, function (): void {
+            $this->process_admin_options();
+        });
     }
 
     /**
@@ -87,6 +89,7 @@ abstract class InPostShippingMethod extends \WC_Shipping_Method
 
     /**
      * @param array<string, mixed> $package
+     * @return void
      */
     public function calculate_shipping($package = [])
     {
