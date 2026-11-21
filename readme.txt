@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.49.2
+Stable tag: 1.49.3
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.49.3 =
+* Changed: dark styling follows the theme's color scheme instead of the visitor's operating system, so widgets stay light on light themes; older browsers keep the previous behaviour.
+* Fixed: on Safari, confirming a word with a Japanese, Chinese or Korean keyboard no longer starts the parcel locker search early.
 
 = 1.49.2 =
 * Changed: pressing Enter to confirm a word in a Japanese, Chinese or Korean keyboard no longer starts the parcel locker search early. The AJAX search clears its results with the DOM API instead of an HTML string.

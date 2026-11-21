@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.49.3 =
+* Changed: dark styling follows the theme's color scheme instead of the visitor's operating system, so widgets stay light on light themes; older browsers keep the previous behaviour.
+* Fixed: on Safari, confirming a word with a Japanese, Chinese or Korean keyboard no longer starts the parcel locker search early.
+
 = 1.49.2 =
 * Changed: pressing Enter to confirm a word in a Japanese, Chinese or Korean keyboard no longer starts the parcel locker search early. The AJAX search clears its results with the DOM API instead of an HTML string.
 
