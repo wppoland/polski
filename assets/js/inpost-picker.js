@@ -48,8 +48,10 @@
 		return select('wc/store/cart') && select('wc/store/checkout') ? window.wp.data : null;
 	}
 
-	function shopperPostcode() {
-		var data = blockStores();
+	function shopperPostcode(kind) {
+		// The classic page can load the block stores too (mini cart), so the
+		// picker's own checkout decides where the postcode comes from.
+		var data = kind === 'block' ? blockStores() : null;
 		if (data) {
 			var customer = data.select('wc/store/cart').getCustomerData();
 			return (customer && customer.shippingAddress && customer.shippingAddress.postcode) || '';
@@ -190,7 +192,7 @@
 		ui.input.inputMode = 'numeric';
 		ui.input.autocomplete = 'postal-code';
 		ui.input.maxLength = 6;
-		ui.input.value = normalizePostcode(shopperPostcode());
+		ui.input.value = normalizePostcode(shopperPostcode(root.getAttribute('data-polski-inpost')));
 		var go = node('button', 'button', t.search || '');
 		go.type = 'button';
 		row.appendChild(label);
@@ -232,6 +234,7 @@
 		});
 
 		storeChoice(root);
+		root.polskiInpostUi = ui;
 
 		// Nothing chosen yet: open straight away with the nearest lockers.
 		render(ui, !chosen.code);
@@ -301,6 +304,22 @@
 		}
 	}
 
+	// The picker can mount before the shopper types a postcode: fill it in
+	// once the address has one, unless the shopper is editing the field.
+	function prefill() {
+		document.querySelectorAll('[data-polski-inpost-ready]').forEach(function (root) {
+			var ui = root.polskiInpostUi;
+			var postcode = ui ? normalizePostcode(shopperPostcode(root.getAttribute('data-polski-inpost'))) : '';
+			if (!ui || ui.input.value || !postcode || document.activeElement === ui.input) {
+				return;
+			}
+			ui.input.value = postcode;
+			if (!ui.panel.hidden && !ui.list.children.length) {
+				search(ui);
+			}
+		});
+	}
+
 	function sync() {
 		queued = false;
 		// Picking another rate on the block checkout changes the store, not
@@ -311,6 +330,7 @@
 		}
 		syncClassic();
 		syncBlock();
+		prefill();
 	}
 
 	new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });

@@ -482,9 +482,36 @@
     gap: 0.5em;
 }
 
+.polski-inpost-picker__search label {
+    font-size: var(--polski-fs-meta);
+    font-weight: 600;
+}
+
 .polski-inpost-picker__search input {
     inline-size: 8em;
     max-inline-size: 100%;
+    padding: 0.5em 0.6em;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font: inherit;
+}
+
+/* Themes style .button only inside their own forms; give the picker's
+   buttons a visible shape everywhere without overriding a theme that does. */
+.polski-inpost-picker__ui button.button {
+    padding: 0.5em 1em;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--polski-fs-meta);
+    cursor: pointer;
+}
+
+.polski-inpost-picker__ui button.button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 
 .polski-inpost-picker__status {
