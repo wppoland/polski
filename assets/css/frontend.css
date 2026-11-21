@@ -456,3 +456,79 @@
     background-size: 16px 16px;
 }
 
+
+/* === InPost parcel locker picker (classic and block checkout) === */
+
+.polski-inpost-picker {
+    margin-block: 0.5em 1em;
+}
+
+.polski-inpost-picker [hidden] {
+    display: none !important;
+}
+
+.polski-inpost-picker__chosen {
+    margin-block: 0 0.5em;
+}
+
+.polski-inpost-picker__panel {
+    margin-block-start: 0.75em;
+}
+
+.polski-inpost-picker__search {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.polski-inpost-picker__search input {
+    inline-size: 8em;
+    max-inline-size: 100%;
+}
+
+.polski-inpost-picker__status {
+    min-block-size: 1.5em;
+    margin-block: 0.5em;
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta-strong);
+}
+
+.polski-inpost-picker__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-block-size: 22em;
+    overflow-y: auto;
+}
+
+.polski-inpost-picker__point {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15em;
+    inline-size: 100%;
+    margin-block-end: 0.4em;
+    padding: 0.6em 0.75em;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
+.polski-inpost-picker__point[aria-pressed="true"] {
+    border-width: 2px;
+}
+
+.polski-inpost-picker__point:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.polski-inpost-picker__meta {
+    font-size: var(--polski-fs-meta);
+    color: var(--polski-color-meta);
+}
