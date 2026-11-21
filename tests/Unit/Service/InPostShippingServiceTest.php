@@ -113,9 +113,15 @@ final class InPostShippingServiceTest extends TestCase
 
         $down = new \WP_Error('http_request_failed', 'timeout');
         $GLOBALS['polski_http_queue'] = [$down, $down];
+        $calls = count($GLOBALS['polski_http_calls']);
         self::assertNull($service->lookupPoint('ABC123M'));
+        // One checkout asks again; the outage is not waited out twice.
+        self::assertNull($service->lookupPoint('ABC123M'));
+        self::assertCount($calls + 2, $GLOBALS['polski_http_calls'], 'one lookup, one retry, then memoised');
+
+        // The next request (a new instance) asks again: an outage is not cached.
         $GLOBALS['polski_http_queue'] = [$ok('{"name":"ABC123M","address":{"line1":"A 1","line2":"00-001 Warszawa"}}')];
-        self::assertIsArray($service->lookupPoint('ABC123M'), 'an outage must not be remembered');
+        self::assertIsArray((new S())->lookupPoint('ABC123M'), 'an outage must not be remembered');
 
         self::assertFalse($service->lookupPoint('not a code'));
     }

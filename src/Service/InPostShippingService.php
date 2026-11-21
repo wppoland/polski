@@ -38,6 +38,15 @@ final class InPostShippingService implements HasHooks
 
     private const RATE_LIMIT = 30;
 
+    /**
+     * Lookups made in this request, outages included: one checkout asks for
+     * the same code up to three times, and each miss while InPost is down
+     * costs two 5 s attempts.
+     *
+     * @var array<string, array{code: string, address: string, description: string, hours: string}|false|null>
+     */
+    private array $lookups = [];
+
     public function registerHooks(): void
     {
         // Polski boots every service unconditionally; a module's service has to
@@ -171,7 +180,7 @@ final class InPostShippingService implements HasHooks
      */
     public function findNearby(string $postcode): ?array
     {
-        $key = 'polski_inpost_pc_' . str_replace('-', '', $postcode);
+        $key = self::nearbyKey($postcode);
         // The raw items are cached and mapped on every read, so a cached entry
         // goes through the same whitelist as a fresh one.
         $items = get_transient($key);
@@ -215,7 +224,19 @@ final class InPostShippingService implements HasHooks
             return false;
         }
 
-        $key = 'polski_inpost_pt_' . strtolower($code);
+        if (! array_key_exists($code, $this->lookups)) {
+            $this->lookups[$code] = $this->fetchPoint($code);
+        }
+
+        return $this->lookups[$code];
+    }
+
+    /**
+     * @return array{code: string, address: string, description: string, hours: string}|false|null
+     */
+    private function fetchPoint(string $code): array|false|null
+    {
+        $key = self::pointKey($code);
         $data = get_transient($key);
         $fresh = ! is_array($data);
 
@@ -239,6 +260,16 @@ final class InPostShippingService implements HasHooks
         }
 
         return $point;
+    }
+
+    private static function nearbyKey(string $postcode): string
+    {
+        return 'polski_inpost_pc_' . str_replace('-', '', $postcode);
+    }
+
+    private static function pointKey(string $code): string
+    {
+        return 'polski_inpost_pt_' . strtolower($code);
     }
 
     /**
@@ -315,7 +346,11 @@ final class InPostShippingService implements HasHooks
             return new \WP_Error('polski_inpost_invalid', __('Enter a Polish postcode, for example 81-001.', 'polski'), ['status' => 400]);
         }
 
-        if ($this->rateLimited()) {
+        // Only searches that reach InPost count: the picker searches on its
+        // own when it opens, and shoppers behind one proxy share an address.
+        $cached = get_transient($postcode !== null ? self::nearbyKey($postcode) : self::pointKey($code)) !== false;
+
+        if (! $cached && $this->rateLimited()) {
             return new \WP_Error('polski_inpost_rate_limited', __('Too many searches. Wait a minute and try again.', 'polski'), ['status' => 429]);
         }
 
@@ -379,7 +414,7 @@ final class InPostShippingService implements HasHooks
                 'invalidPostcode' => __('Enter a Polish postcode, for example 81-001.', 'polski'),
                 'none' => __('No parcel lockers found near this postcode.', 'polski'),
                 /* translators: %d: number of parcel lockers found */
-                'found' => __('%d parcel lockers found.', 'polski'),
+                'found' => __('Parcel lockers found: %d', 'polski'),
                 'error' => __('The parcel locker search is not available right now. Try again in a moment.', 'polski'),
                 'chosen' => __('Chosen parcel locker:', 'polski'),
                 'hours' => __('Opening hours:', 'polski'),

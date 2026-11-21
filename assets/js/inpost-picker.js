@@ -127,7 +127,10 @@
 		ui.list.textContent = '';
 
 		window
-			.fetch(params.restUrl + '?postcode=' + encodeURIComponent(postcode), { credentials: 'omit' })
+			// Plain permalinks give index.php?rest_route=..., which already has a query.
+			.fetch(params.restUrl + (params.restUrl.indexOf('?') === -1 ? '?' : '&') + 'postcode=' + encodeURIComponent(postcode), {
+				credentials: 'same-origin',
+			})
 			.then(function (response) {
 				return response.json().then(function (body) {
 					return { ok: response.ok, body: body };
