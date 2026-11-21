@@ -289,30 +289,28 @@
 	}
 
 	var queued = false;
+	var subscribed = false;
 
-	function sync() {
-		queued = false;
-		syncClassic();
-		syncBlock();
-	}
-
-	new MutationObserver(function () {
+	function schedule() {
 		if (!queued) {
 			queued = true;
 			window.requestAnimationFrame(sync);
 		}
-	}).observe(document.body, { childList: true, subtree: true });
-
-	// Picking another rate on the block checkout changes the store before,
-	// and sometimes without, a DOM change worth observing.
-	if (blockStores()) {
-		window.wp.data.subscribe(function () {
-			if (!queued) {
-				queued = true;
-				window.requestAnimationFrame(sync);
-			}
-		});
 	}
+
+	function sync() {
+		queued = false;
+		// Picking another rate on the block checkout changes the store, not
+		// always the DOM. The stores may register after this script runs.
+		if (!subscribed && blockStores()) {
+			subscribed = true;
+			window.wp.data.subscribe(schedule);
+		}
+		syncClassic();
+		syncBlock();
+	}
+
+	new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
 
 	sync();
 })();
