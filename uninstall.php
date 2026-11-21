@@ -125,6 +125,17 @@ $polski_uninstall_site = static function () use ($wpdb, $polski_pro_keys): void 
         ) . $polski_not_in('option_name', $polski_pro_keys['options']),
     );
 
+    // InPost shipping: the methods' instance settings live under WooCommerce's
+    // own option prefix, the locker lookup cache under the transient prefix, and
+    // the methods' rows in the zone table would point at a class that is gone.
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup, prepared statement.
+    $wpdb->query($wpdb->prepare('DELETE FROM %i WHERE option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s', $wpdb->options, 'woocommerce\_polski\_inpost\_%', '\_transient\_polski\_inpost\_%', '\_transient\_timeout\_polski\_inpost\_%'));
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup; schema probe, prepared statement.
+    if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->prefix . 'woocommerce_shipping_zone_methods')) !== null) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall cleanup, prepared statement.
+        $wpdb->query($wpdb->prepare('DELETE FROM %i WHERE method_id IN (%s, %s)', $wpdb->prefix . 'woocommerce_shipping_zone_methods', 'polski_inpost_locker', 'polski_inpost_courier'));
+    }
+
     // Remove product meta.
     // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Uninstall cleanup; bulk delete of plugin post meta, prepared statement plus a prepared NOT IN.
     $wpdb->query(
