@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.49.0 =
+* New: InPost shipping module (off by default) adds InPost Paczkomat and InPost Courier shipping methods for Polish addresses, each with cost, tax status, free shipping threshold and weight limit. The shopper picks a parcel locker from a list of the nearest lockers to their postcode on the classic or block checkout; the locker is checked with InPost when the order is placed and shows on the order, in emails and in My Account. No InPost account is needed.
+* Changed: the PRO shipping upsell now names what Polski PRO does for carriers: live parcel tracking.
+
 = 1.48.0 =
 * New: variable products are described as a ProductGroup with one Product per variation (own offer, SKU, GTIN, image), as Google recommends for variants. On by default under SEO; switch "Describe variable products as a product group with variants" off to keep the price range.
 * New, opt-in: shipping details (rate, destination, handling and transit days) and the return policy on product offers; the return policy is also added to the Yoast SEO organization or to the Local business node.

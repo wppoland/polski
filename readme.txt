@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.48.0
+Stable tag: 1.49.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.49.0 =
+* New: InPost shipping module (off by default) adds InPost Paczkomat and InPost Courier shipping methods for Polish addresses, each with cost, tax status, free shipping threshold and weight limit. The shopper picks a parcel locker from a list of the nearest lockers to their postcode on the classic or block checkout; the locker is checked with InPost when the order is placed and shows on the order, in emails and in My Account. No InPost account is needed.
+* Changed: the PRO shipping upsell now names what Polski PRO does for carriers: live parcel tracking.
 
 = 1.48.0 =
 * New: variable products are described as a ProductGroup with one Product per variation (own offer, SKU, GTIN, image), as Google recommends for variants. On by default under SEO; switch "Describe variable products as a product group with variants" off to keep the price range.
