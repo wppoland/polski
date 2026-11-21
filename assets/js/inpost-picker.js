@@ -191,6 +191,11 @@
 		ui.input.type = 'text';
 		ui.input.inputMode = 'numeric';
 		ui.input.autocomplete = 'postal-code';
+		// A postcode is an identifier: no autocorrect, and Enter runs the search.
+		ui.input.enterKeyHint = 'search';
+		ui.input.spellcheck = false;
+		ui.input.setAttribute('autocorrect', 'off');
+		ui.input.setAttribute('autocapitalize', 'none');
 		ui.input.maxLength = 6;
 		ui.input.value = normalizePostcode(shopperPostcode(root.getAttribute('data-polski-inpost')));
 		var go = node('button', 'button', t.search || '');
