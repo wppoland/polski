@@ -362,6 +362,7 @@ return static function (Container $c): void {
     $c->singleton(\Polski\Service\CRAReadinessService::class, static fn () => new \Polski\Service\CRAReadinessService());
     $c->singleton(\Polski\Service\DPATrackerService::class, static fn () => new \Polski\Service\DPATrackerService());
     $c->singleton(\Polski\Service\NipLookupService::class, static fn () => new \Polski\Service\NipLookupService());
+    $c->singleton(\Polski\Service\InPostShippingService::class, static fn () => new \Polski\Service\InPostShippingService());
 
     // Shopmarks.
     $c->singleton(ShopmarkManager::class, static fn () => new ShopmarkManager());
