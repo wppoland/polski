@@ -73,6 +73,7 @@
 .polski-ajax-search__price,
 .polski-ajax-search__empty {
     color: #666;
+    color: light-dark(#666, #a8abb4);
 }
 
 .polski-ajax-search__all {
@@ -84,8 +85,17 @@
     text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+/* The dark value holds var(), so it sits behind @supports. */
+@supports (color: light-dark(white, black)) {
     .polski-ajax-search__all.polski-ajax-search__item--active {
-        background: var(--polski-surface-muted);
+        background: light-dark(#f0f0f0, var(--polski-surface-muted));
+    }
+}
+
+@supports not (color: light-dark(white, black)) {
+    @media (prefers-color-scheme: dark) {
+        .polski-ajax-search__all.polski-ajax-search__item--active {
+            background: var(--polski-surface-muted);
+        }
     }
 }

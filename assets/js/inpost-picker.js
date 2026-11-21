@@ -233,7 +233,7 @@
 		});
 		// Inside the checkout form Enter would place the order.
 		ui.input.addEventListener('keydown', function (event) {
-			if (event.key === 'Enter' && !event.isComposing) {
+			if (event.key === 'Enter' && !event.isComposing && event.keyCode !== 229) {
 				event.preventDefault();
 				search(ui);
 			}

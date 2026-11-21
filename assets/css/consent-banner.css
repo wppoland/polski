@@ -178,17 +178,37 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark values follow the page's color-scheme (set by the theme), not the OS.
+   Custom properties accept any value, so the light-dark() tokens sit behind
+   @supports: older browsers keep the plain light tokens above. */
+@supports (color: light-dark(white, black)) {
 	.polski-consent-banner {
-		--polski-cc-bg: #1e293b;
-		--polski-cc-fg: #e2e8f0;
-		--polski-cc-muted: #94a3b8;
-		--polski-cc-border: #334155;
-		--polski-cc-accent: #38bdf8;
-		--polski-cc-accent-fg: #0b1220;
-		--polski-cc-btn-bg: #334155;
-		--polski-cc-btn-fg: #e2e8f0;
-		--polski-cc-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+		--polski-cc-bg: light-dark(#ffffff, #1e293b);
+		--polski-cc-fg: light-dark(#1e293b, #e2e8f0);
+		--polski-cc-muted: light-dark(#64748b, #94a3b8);
+		--polski-cc-border: light-dark(#e2e8f0, #334155);
+		--polski-cc-accent: light-dark(#0369a1, #38bdf8);
+		--polski-cc-accent-fg: light-dark(#ffffff, #0b1220);
+		--polski-cc-btn-bg: light-dark(#f1f5f9, #334155);
+		--polski-cc-btn-fg: light-dark(#1e293b, #e2e8f0);
+		--polski-cc-shadow: 0 6px 28px light-dark(rgba(15, 23, 42, 0.18), rgba(0, 0, 0, 0.5));
+	}
+}
+
+/* Fallback for browsers without light-dark(): the previous OS-based dark mode. */
+@supports not (color: light-dark(white, black)) {
+	@media (prefers-color-scheme: dark) {
+		.polski-consent-banner {
+			--polski-cc-bg: #1e293b;
+			--polski-cc-fg: #e2e8f0;
+			--polski-cc-muted: #94a3b8;
+			--polski-cc-border: #334155;
+			--polski-cc-accent: #38bdf8;
+			--polski-cc-accent-fg: #0b1220;
+			--polski-cc-btn-bg: #334155;
+			--polski-cc-btn-fg: #e2e8f0;
+			--polski-cc-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+		}
 	}
 }
 

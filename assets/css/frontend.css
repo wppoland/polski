@@ -25,17 +25,37 @@
     --polski-radius-sm: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark values follow the page's color-scheme (set by the theme), not the OS.
+   Custom properties accept any value, so the light-dark() tokens sit behind
+   @supports: older browsers keep the plain light tokens above. */
+@supports (color: light-dark(white, black)) {
     :root {
-        --polski-color-meta: #b8bbc4;
-        --polski-color-meta-soft: #9aa0aa;
-        --polski-color-meta-strong: #c4c8d0;
-        --polski-color-exempt: #e0a040;
-        --polski-color-link: #b8bbc4;
-        --polski-color-link-hover: #eceae7;
-        --polski-surface-soft: #26282e;
-        --polski-surface-card: #1e1f24;
-        --polski-line-soft: #3a3d45;
+        --polski-color-meta: light-dark(#666, #b8bbc4);
+        --polski-color-meta-soft: light-dark(#888, #9aa0aa);
+        --polski-color-meta-strong: light-dark(#555, #c4c8d0);
+        --polski-color-exempt: light-dark(#b36b00, #e0a040);
+        --polski-color-link: light-dark(#666, #b8bbc4);
+        --polski-color-link-hover: light-dark(#333, #eceae7);
+        --polski-surface-soft: light-dark(#f8f8f8, #26282e);
+        --polski-surface-card: light-dark(#fafafa, #1e1f24);
+        --polski-line-soft: light-dark(#eee, #3a3d45);
+    }
+}
+
+/* Fallback for browsers without light-dark(): the previous OS-based dark mode. */
+@supports not (color: light-dark(white, black)) {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --polski-color-meta: #b8bbc4;
+            --polski-color-meta-soft: #9aa0aa;
+            --polski-color-meta-strong: #c4c8d0;
+            --polski-color-exempt: #e0a040;
+            --polski-color-link: #b8bbc4;
+            --polski-color-link-hover: #eceae7;
+            --polski-surface-soft: #26282e;
+            --polski-surface-card: #1e1f24;
+            --polski-line-soft: #3a3d45;
+        }
     }
 }
 

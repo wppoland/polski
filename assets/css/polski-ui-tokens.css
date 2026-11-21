@@ -14,6 +14,30 @@
     --polski-focus-ring: 0 0 0 3px rgba(212, 33, 61, 0.35);
 }
 
+/* Dark values follow the page's color-scheme (set by the theme), not the OS.
+   Custom properties accept any value, so the light-dark() tokens sit behind
+   @supports: older browsers keep the plain light tokens above. */
+@supports (color: light-dark(white, black)) {
+    :root {
+        --polski-overlay-bg: light-dark(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72));
+        --polski-surface-bg: light-dark(#fff, #1e1f24);
+        --polski-surface-border: light-dark(#dcdcdc, #3a3d45);
+        --polski-surface-muted: light-dark(#f7f7f7, #2a2c32);
+        --polski-surface-shadow: 0 20px 60px light-dark(rgba(15, 23, 42, 0.18), rgba(0, 0, 0, 0.45));
+    }
+}
+
+.polski-quick-view-dialog,
+.polski-popup__dialog,
+.polski-ajax-search__results,
+.polski-cart-drawer__panel,
+.polski-ajax-filters.is-mobile-open .polski-ajax-filters__panel {
+    color: inherit;
+    color: light-dark(currentColor, #eceae7);
+}
+
+/* Fallback for browsers without light-dark(): the previous OS-based dark mode. */
+@supports not (color: light-dark(white, black)) {
 @media (prefers-color-scheme: dark) {
     :root {
         --polski-overlay-bg: rgba(0, 0, 0, 0.72);
@@ -64,6 +88,7 @@
     .polski-cart-drawer__btn--secondary:hover {
         background: #3a3d45;
     }
+}
 }
 
 @media (prefers-reduced-motion: reduce) {

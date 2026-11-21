@@ -47,21 +47,46 @@
 	color: var(--pl-warn, #985E15);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark values follow the page's color-scheme, not the OS. The light values hold
+   var(), so the light-dark() rules sit behind @supports: a browser without
+   light-dark() would otherwise drop the base colour too. */
+@supports (color: light-dark(white, black)) {
 	.polski-withdrawal-card {
-		background: #1e1f24;
-		border-color: #3a3d45;
+		background: light-dark(var(--pl-white, #fff), #1e1f24);
+		border-color: light-dark(var(--pl-line, #d9d7d4), #3a3d45);
 	}
 
 	.polski-withdrawal-card > h2 {
-		color: #eceae7;
+		color: light-dark(var(--pl-ink, #18191c), #eceae7);
 	}
 
 	.polski-status--ok {
-		color: #4cc38a;
+		color: light-dark(var(--pl-ok, #1f7a4d), #4cc38a);
 	}
 
 	.polski-status--warn {
-		color: #e0a040;
+		color: light-dark(var(--pl-warn, #985E15), #e0a040);
+	}
+}
+
+/* Fallback for browsers without light-dark(): the previous OS-based dark mode. */
+@supports not (color: light-dark(white, black)) {
+	@media (prefers-color-scheme: dark) {
+		.polski-withdrawal-card {
+			background: #1e1f24;
+			border-color: #3a3d45;
+		}
+
+		.polski-withdrawal-card > h2 {
+			color: #eceae7;
+		}
+
+		.polski-status--ok {
+			color: #4cc38a;
+		}
+
+		.polski-status--warn {
+			color: #e0a040;
+		}
 	}
 }

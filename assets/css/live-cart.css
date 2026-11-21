@@ -62,6 +62,7 @@
     justify-content: space-between;
     padding: 16px 20px;
     border-bottom: 1px solid #e2e8f0;
+    border-bottom-color: light-dark(#e2e8f0, #3a3d45);
     flex-shrink: 0;
 }
 
@@ -70,11 +71,13 @@
     font-size: 16px;
     font-weight: 600;
     color: #1e293b;
+    color: light-dark(#1e293b, #eceae7);
 }
 
 .polski-cart-drawer__count {
     font-weight: 400;
     color: #64748b;
+    color: light-dark(#64748b, #a8abb4);
 }
 
 .polski-cart-drawer__close {
@@ -90,7 +93,9 @@
 
 .polski-cart-drawer__close:hover {
     color: #1e293b;
+    color: light-dark(#1e293b, #eceae7);
     background: #f1f5f9;
+    background: light-dark(#f1f5f9, #2a2c32);
 }
 
 /* Items */
@@ -104,6 +109,7 @@
 .polski-cart-drawer__empty {
     text-align: center;
     color: #94a3b8;
+    color: light-dark(#94a3b8, #a8abb4);
     padding: 40px 0;
     font-size: 14px;
 }
@@ -113,6 +119,7 @@
     gap: 12px;
     padding: 12px 0;
     border-bottom: 1px solid #f1f5f9;
+    border-bottom-color: light-dark(#f1f5f9, #3a3d45);
 }
 
 .polski-cart-drawer__item:last-child {
@@ -137,6 +144,7 @@
     font-size: 13px;
     font-weight: 500;
     color: #1e293b;
+    color: light-dark(#1e293b, #eceae7);
     text-decoration: none;
     line-height: 1.4;
     overflow: hidden;
@@ -152,16 +160,19 @@
     margin-top: 4px;
     font-size: 12px;
     color: #64748b;
+    color: light-dark(#64748b, #a8abb4);
 }
 
 .polski-cart-drawer__item-price {
     color: #1e293b;
+    color: light-dark(#1e293b, #eceae7);
     font-weight: 500;
 }
 
 /* Footer */
 .polski-cart-drawer__footer {
     border-top: 1px solid #e2e8f0;
+    border-top-color: light-dark(#e2e8f0, #3a3d45);
     padding: 16px 20px;
     flex-shrink: 0;
 }
@@ -170,6 +181,7 @@
 .polski-cart-drawer__shipping {
     font-size: 12px;
     color: #64748b;
+    color: light-dark(#64748b, #a8abb4);
     margin-bottom: 12px;
     display: flex;
     flex-direction: column;
@@ -206,10 +218,12 @@
     padding: 8px 0;
     font-size: 14px;
     color: #475569;
+    color: light-dark(#475569, #a8abb4);
 }
 
 .polski-cart-drawer__subtotal strong {
     color: #1e293b;
+    color: light-dark(#1e293b, #eceae7);
     font-size: 16px;
 }
 
@@ -237,11 +251,14 @@
 
 .polski-cart-drawer__btn--secondary {
     background: #f1f5f9;
+    background: light-dark(#f1f5f9, #2a2c32);
     color: #475569;
+    color: light-dark(#475569, #eceae7);
 }
 
 .polski-cart-drawer__btn--secondary:hover {
     background: #e2e8f0;
+    background: light-dark(#e2e8f0, #3a3d45);
     color: #1e293b;
 }
 
