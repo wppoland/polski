@@ -89,31 +89,41 @@
 
 	// ----- the picker -----
 
+	// One exclusive choice from up to ten lockers: a native radio group, so
+	// arrow keys move between lockers and screen readers announce "n of m".
 	function renderList(ui, points) {
 		ui.list.textContent = '';
+		if (!points.length) {
+			return;
+		}
+		ui.list.appendChild(node('legend', 'polski-inpost-picker__legend', t.choose || ''));
 		points.forEach(function (point) {
-			var item = node('li');
-			var button = node('button', 'polski-inpost-picker__point');
-			button.type = 'button';
-			button.setAttribute('aria-pressed', point.code === chosen.code ? 'true' : 'false');
-			button.appendChild(node('strong', '', point.code));
+			var label = node('label', 'polski-inpost-picker__point');
+			var radio = node('input');
+			var text = node('span', 'polski-inpost-picker__point-text');
+			radio.type = 'radio';
+			radio.name = ui.list.id;
+			radio.value = point.code;
+			radio.checked = point.code === chosen.code;
+			text.appendChild(node('strong', '', point.code));
 			if (point.address) {
-				button.appendChild(node('span', '', point.address));
+				text.appendChild(node('span', '', point.address));
 			}
 			if (point.description) {
-				button.appendChild(node('span', 'polski-inpost-picker__meta', point.description));
+				text.appendChild(node('span', 'polski-inpost-picker__meta', point.description));
 			}
 			if (point.hours) {
-				button.appendChild(node('span', 'polski-inpost-picker__meta', (t.hours || '') + ' ' + point.hours));
+				text.appendChild(node('span', 'polski-inpost-picker__meta', (t.hours || '') + ' ' + point.hours));
 			}
-			button.addEventListener('click', function () {
+			// The panel stays open: arrow keys fire change on every step.
+			radio.addEventListener('change', function () {
 				chosen = { code: point.code, point: point };
 				storeChoice(ui.root);
-				render(ui, false);
-				ui.toggle.focus();
+				render(ui, true);
 			});
-			item.appendChild(button);
-			ui.list.appendChild(item);
+			label.appendChild(radio);
+			label.appendChild(text);
+			ui.list.appendChild(label);
 		});
 	}
 
@@ -207,7 +217,8 @@
 		ui.status = node('p', 'polski-inpost-picker__status');
 		ui.status.setAttribute('role', 'status');
 		ui.status.setAttribute('aria-live', 'polite');
-		ui.list = node('ul', 'polski-inpost-picker__list');
+		ui.list = node('fieldset', 'polski-inpost-picker__list');
+		ui.list.id = 'polski-inpost-points-' + uid;
 
 		ui.panel.appendChild(row);
 		ui.panel.appendChild(ui.status);
