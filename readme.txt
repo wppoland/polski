@@ -37,8 +37,6 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
 * **Product markings** - per-product flags that print the statutory notice on the product page: medical device, and goods sold to adults only such as alcohol or tobacco.
 * **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
-* **GDPR consents and checkboxes** - configurable consents at checkout, registration and reviews, with a consent log.
-* **Right of withdrawal and returns** - requests from the customer account, e-mail confirmations and a request log.
 * **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
 * **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
@@ -48,7 +46,7 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **Security incident log** - an internal log of incidents, outages, vulnerabilities and follow-up actions.
 * **Product environmental fields** - a basis for green claims, certificates and expiry dates.
 * **Verified purchase badge** - a badge on reviews from customers who bought the product.
-* **AI-classified return reasons** - return reasons sorted by the optional AI classifier carry a "classified by AI" marker and can be filtered in the admin withdrawals list.
+* **AI-classified return reasons** - marked and filterable in the admin withdrawals list.
 
 = Checkout, consents and returns =
 
@@ -56,8 +54,9 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **Right of withdrawal** - withdrawal/return forms and requests from the customer account.
 * **Double e-mail confirmation** (beta) - e-mail address confirmation during customer registration. An account created at checkout stays logged in for that session.
 * **Shop pages** - link the terms, privacy policy and withdrawal content into WooCommerce notices.
-* **Dispute resolution** - a notice about out-of-court complaint and redress options (consumer ombudsman, Trade Inspection) on the cart and checkout pages and as a shortcode.
+* **Dispute resolution** - a notice about out-of-court complaint and redress options on the cart and checkout pages and as a shortcode.
 * **Consent log** - logging of consents with date, context, IP address and content version.
+* **InPost parcel lockers** - InPost Paczkomat and Courier shipping methods; the shopper picks a locker from a list by postcode on the classic or block checkout.
 
 = Product data and labelling =
 
@@ -72,17 +71,17 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 
 * **Wishlist** - save products for later.
 * **Product comparison** - compare products side by side.
-* **Waitlist** - back-in-stock notifications for simple products and for each variation of a variable product.
+* **Waitlist** - back-in-stock notifications, also per variation.
 * **Quick view** - preview a product without opening the product page.
-* **Gallery zoom** - enhanced product image zoom.
+* **Gallery zoom** - product image zoom.
 * **Product video** - add a video on the product page.
 * **Product slider** - a carousel of products and collections.
 * **Infinite scroll** - automatic loading of more products.
 * **Product tab manager** - configure the tabs on the product page.
 * **AJAX filters** - filter products without reloading the page.
-* **AJAX search** - live product search by title, SKU, category and chosen attributes, placed with a shortcode or block.
+* **AJAX search** - live product search by title, SKU, category and attributes, via shortcode or block.
 * **Product badges** - sale, new, featured and custom labels.
-* **Promotional popups** - popup campaigns in the shop.
+* **Promotional popups** - popup campaigns.
 
 = Admin and developer tools =
 
@@ -91,16 +90,15 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **WP-CLI** - commands to manage selected features from the terminal.
 * **CSV import and export** - bulk management of product data, including GPSR and GTIN validation warnings.
 * **Shortcodes** - embed GPSR information, withdrawal forms, DSA reports and other elements.
-* **Database migrations** - versioned and safe updates of data structures.
-* **Integration hooks** - filters and actions for KSeF, invoicing and integrations with other plugins.
+* **Integration hooks** - filters and actions for KSeF, invoicing and other plugins.
 
 = You may also like these plugins =
 
 More free WooCommerce plugins from WPPoland:
 
-* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
-* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
-* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity pricing tiers with a price table.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - emails shoppers when a product is back in stock.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering.
 
 Browse the full catalogue at [plogins.com/](https://plogins.com/) .
 
@@ -120,7 +118,7 @@ Polski PRO adds:
 
 * PDF invoices, UBL/PEPPOL XML, JPK_FA report
 * KSeF 2.0 sending (FA(3), online mode)
-* Shipping integrations (InPost, DPD, DHL, Poczta Polska)
+* Live parcel tracking (InPost, DPD, DHL, Poczta Polska)
 * Multi-step checkout, subscriptions and gift cards
 * Fulfilment, affiliates, pre-orders, bundles, catalog mode and RFQ
 
@@ -307,7 +305,7 @@ When the EU VAT ID check module is enabled and the number is Swiss (CHE), the sa
 
 = InPost Points API =
 
-With the InPost shipping module on, the store server (not the shopper's browser) asks InPost for the parcel lockers near a postcode a shopper searches, and checks the chosen locker when the order is placed.
+With the InPost shipping module on, the store server asks InPost for parcel lockers near the postcode a shopper searches and checks the chosen locker at checkout.
 
 * Data sent: a postcode or a locker code, nothing personal.
 * Service address: [https://api-pl-points.easypack24.net/](https://api-pl-points.easypack24.net/)
