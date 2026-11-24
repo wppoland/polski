@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.49.4
+Stable tag: 1.49.5
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.49.5 =
+* Fixed: polski shortcodes and Elementor widgets are styled on any page, not only on WooCommerce pages. The stylesheet loads only on pages where one of them renders.
+* Fixed: the FAQ accordion hover and open-icon styles are printed. Before, they were attached to the stylesheet before it existed and were dropped.
+* Fixed: the social login button hover style is printed on the account and checkout pages for the same reason.
 
 = 1.49.4 =
 * Fixed: unit price, VAT and shipping notes, GPSR details and the food blocks (Nutri-Score, nutrition table) are styled on product and shop pages, not only at checkout. The VAT and shipping notes no longer run into each other.

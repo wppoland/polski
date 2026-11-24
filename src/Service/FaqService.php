@@ -41,8 +41,8 @@ final class FaqService implements HasHooks
         add_action('init', [$this, 'registerTaxonomy']);
         add_action('wp_footer', [$this, 'printSchema']);
 
-        // Enqueue accordion styles/JS.
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+        // After CheckoutHooks registers polski-frontend (priority 10), or the inline CSS is dropped.
+        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets'], 20);
     }
 
     public function registerPostType(): void

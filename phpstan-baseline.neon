@@ -185,3 +185,81 @@ parameters:
 			identifier: arrayValues.list
 			count: 1
 			path: src/Service/StockExportService.php
+
+		-
+			message: '#^Parameter \#2 \$src of function wp_register_script expects non\-empty\-string\|false, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Block/ModuleBlocks.php
+
+		-
+			message: '#^Parameter \#2 \$src of function wp_register_script expects non\-empty\-string\|false, '''' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Hook/B2BCheckoutHooks.php
+
+		-
+			message: '#^Parameter \#2 \$stock_quantity of function wc_update_product_stock expects int\|null, float\|int\<1, max\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/AutoRestoreStockService.php
+
+		-
+			message: '#^Parameter \#3 \$deps of function wp_enqueue_script expects array\<non\-empty\-string\>, list\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/ConsentManagerService.php
+
+		-
+			message: '#^Parameter \#3 \$deps of function wp_enqueue_script expects array\<non\-empty\-string\>, list\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/CustomTriggersService.php
+
+		-
+			message: '#^Call to function method_exists\(\) with WC_Emails and ''get_from_address'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/Service/GuestWithdrawalService.php
+
+		-
+			message: '#^Call to function method_exists\(\) with WC_Emails and ''get_from_name'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/Service/GuestWithdrawalService.php
+
+		-
+			message: '#^Call to function method_exists\(\) with WC_Emails and ''wrap_message'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/Service/GuestWithdrawalService.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-empty\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Service/GuestWithdrawalService.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Service/GuestWithdrawalService.php
+
+		-
+			message: '#^Parameter \#2 \$src of function wp_register_script expects non\-empty\-string\|false, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/SafeFontsService.php
+
+		-
+			message: '#^Parameter \#3 \$deps of function wp_register_script expects array\<non\-empty\-string\>, list\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/SafeFontsService.php
+
+		-
+			message: '#^Parameter \#2 \$src of function wp_register_script expects non\-empty\-string\|false, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/SearchService.php
