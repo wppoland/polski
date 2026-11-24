@@ -39,6 +39,22 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     private const CART_EXTENSION = 'polski_checkboxes';
 
+    /** Modules whose product and archive output is styled by frontend.css. */
+    private const PRODUCT_MARK_MODULES = [
+        'unit_price',
+        'omnibus',
+        'delivery_time',
+        'tax_display',
+        'shipping_notice',
+        'manufacturer',
+        'gpsr',
+        'power_supply',
+        'green_claims',
+        'food_module',
+        'consumer_information',
+        'product_markings',
+    ];
+
     public function __construct(
         private readonly CheckboxService $checkboxes,
         private readonly ConsentLogRepository $consentLog,
@@ -199,7 +215,13 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function enqueueCheckoutAssets(): void
     {
-        if (! function_exists('is_checkout') || (! is_checkout() && ! is_account_page())) {
+        if (! function_exists('is_checkout')) {
+            return;
+        }
+
+        $checkout = is_checkout() || is_account_page();
+
+        if (! $checkout && ! $this->showsProductMarks()) {
             return;
         }
 
@@ -209,6 +231,10 @@ final class CheckoutHooks implements Bootable, HasHooks
             [],
             VERSION,
         );
+
+        if (! $checkout) {
+            return;
+        }
 
         wp_enqueue_script(
             'polski-checkout',
@@ -222,6 +248,25 @@ final class CheckoutHooks implements Bootable, HasHooks
             'ajaxUrl'  => admin_url('admin-ajax.php'),
             'nipNonce' => wp_create_nonce('polski_nip_lookup'),
         ]);
+    }
+
+    /**
+     * Product and archive pages carry the price marks, GPSR and food blocks
+     * styled by frontend.css, so it loads there when a module that prints them is on.
+     */
+    private function showsProductMarks(): bool
+    {
+        if (! is_woocommerce()) {
+            return false;
+        }
+
+        foreach (self::PRODUCT_MARK_MODULES as $moduleId) {
+            if (\Polski\Admin\ModulesPage::isModuleEnabled($moduleId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

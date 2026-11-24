@@ -38,7 +38,6 @@ $polski_intro_text = str_replace(
 <section
     class="polski-withdrawal-form"
     aria-labelledby="polski-withdrawal-form-title"
-    lang="pl"
     style="max-width: 80ch;"
 >
     <h2 id="polski-withdrawal-form-title">

@@ -71,7 +71,7 @@ final class ProductHooks implements Bootable, HasHooks
         $arrow = $this->energyLabel->getArrowHtml($product);
 
         if ($arrow !== '') {
-            // Own handle: polski-frontend only loads on checkout and account pages.
+            // Own handle: polski-frontend loads only on WooCommerce pages, not wherever this price HTML renders.
             wp_enqueue_style('polski-energy-label', \Polski\Plugin::instance()->url('assets/css/energy-label.css'), [], \Polski\VERSION);
         }
 

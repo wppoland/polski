@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.49.3\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
+"Project-Id-Version: Polski for WooCommerce 1.49.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski-fix\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-21T12:43:02+00:00\n"
+"POT-Creation-Date: 2026-11-24T10:47:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -385,7 +385,7 @@ msgid "Withdraw from the contract"
 msgstr ""
 
 #: config/defaults.php:159
-#: templates/forms/withdrawal-form.php:45
+#: templates/forms/withdrawal-form.php:44
 msgid "Withdrawal declaration"
 msgstr ""
 
@@ -399,7 +399,7 @@ msgstr ""
 
 #: config/defaults.php:162
 #: src/Admin/ModulesPage.php:556
-#: templates/forms/withdrawal-form.php:82
+#: templates/forms/withdrawal-form.php:81
 msgid "Step 1. Choose the items to withdraw from"
 msgstr ""
 
@@ -411,8 +411,8 @@ msgstr ""
 #: templates/account/withdrawal-confirm.php:70
 #: templates/emails/admin-withdrawal-notification.php:92
 #: templates/emails/withdrawal-confirmation.php:103
-#: templates/forms/withdrawal-guest.php:68
-#: templates/forms/withdrawal-guest.php:85
+#: templates/forms/withdrawal-guest.php:67
+#: templates/forms/withdrawal-guest.php:84
 msgid "Product"
 msgstr ""
 
@@ -422,8 +422,8 @@ msgstr ""
 #: src/Admin/ModulesPage.php:558
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
-#: templates/forms/withdrawal-guest.php:69
-#: templates/forms/withdrawal-guest.php:91
+#: templates/forms/withdrawal-guest.php:68
+#: templates/forms/withdrawal-guest.php:90
 msgid "Quantity"
 msgstr ""
 
@@ -435,8 +435,8 @@ msgstr ""
 #: config/defaults.php:166
 #: src/Admin/ModulesPage.php:560
 #: src/Service/WithdrawalService.php:1014
-#: templates/forms/withdrawal-form.php:183
-#: templates/forms/withdrawal-guest.php:127
+#: templates/forms/withdrawal-form.php:182
+#: templates/forms/withdrawal-guest.php:126
 msgid "Reason for withdrawal (optional)"
 msgstr ""
 
@@ -1417,17 +1417,17 @@ msgstr ""
 
 #: config/defaults.php:725
 #: src/Admin/ModulesPage.php:674
-#: src/Admin/PostTypes.php:187
-#: src/Service/FoodService.php:325
+#: src/Admin/PostTypes.php:234
+#: src/Service/FoodService.php:326
 msgid "Nutrient"
 msgstr ""
 
 #: config/defaults.php:726
 #: src/Admin/ModulesPage.php:675
-#: src/Service/FoodService.php:326
+#: src/Service/FoodService.php:327
 #: src/Service/RodoTrainingDocsService.php:255
-#: templates/forms/withdrawal-guest.php:70
-#: templates/forms/withdrawal-guest.php:94
+#: templates/forms/withdrawal-guest.php:69
+#: templates/forms/withdrawal-guest.php:93
 msgid "Value"
 msgstr ""
 
@@ -1442,7 +1442,7 @@ msgstr ""
 #: src/Admin/ProductMetaBox.php:568
 #: src/Block/ProductDataBlocks.php:113
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
-#: src/Service/FoodService.php:372
+#: src/Service/FoodService.php:373
 msgid "Nutri-Score"
 msgstr ""
 
@@ -1451,7 +1451,7 @@ msgid "Alcoholic strength"
 msgstr ""
 
 #: config/defaults.php:730
-#: src/Service/FoodService.php:418
+#: src/Service/FoodService.php:419
 msgid "% vol."
 msgstr ""
 
@@ -1459,13 +1459,13 @@ msgstr ""
 #: src/Admin/CSVImportExport.php:135
 #: src/Admin/ModulesPage.php:679
 #: src/Admin/ProductMetaBox.php:623
-#: src/Service/FoodService.php:462
+#: src/Service/FoodService.php:463
 msgid "Country of origin"
 msgstr ""
 
 #: config/defaults.php:732
 #: src/Admin/ModulesPage.php:680
-#: src/Service/FoodService.php:470
+#: src/Service/FoodService.php:471
 msgid "Distributor"
 msgstr ""
 
@@ -2310,7 +2310,7 @@ msgstr ""
 
 #: src/Admin/CSVImportExport.php:134
 #: src/Admin/ModulesPage.php:677
-#: src/Service/FoodService.php:416
+#: src/Service/FoodService.php:417
 msgid "Alcohol content"
 msgstr ""
 
@@ -2481,7 +2481,7 @@ msgstr ""
 
 #: src/Admin/DeactivationHandler.php:96
 #: src/Service/CustomCheckoutFieldsService.php:908
-#: src/Service/ViesService.php:374
+#: src/Service/ViesService.php:385
 msgid "Unauthorized"
 msgstr ""
 
@@ -3232,7 +3232,7 @@ msgid "Leave empty for the statutory wording: \"%s\""
 msgstr ""
 
 #: src/Admin/ModulesPage.php:383
-#: src/Hook/CheckoutHooks.php:298
+#: src/Hook/CheckoutHooks.php:343
 #: src/Service/SiteAuditService.php:678
 msgid "Order with an obligation to pay"
 msgstr ""
@@ -4054,7 +4054,7 @@ msgid "Nutrition facts table header prefix"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:672
-#: src/Service/FoodService.php:323
+#: src/Service/FoodService.php:324
 msgid "Nutrition facts per"
 msgstr ""
 
@@ -4095,7 +4095,7 @@ msgid "Net content label"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:681
-#: src/Service/FoodService.php:478
+#: src/Service/FoodService.php:479
 msgid "Net content"
 msgstr ""
 
@@ -7109,19 +7109,75 @@ msgstr ""
 msgid "Search Allergens"
 msgstr ""
 
-#: src/Admin/PostTypes.php:186
+#: src/Admin/PostTypes.php:208
+msgid "Cereals containing gluten"
+msgstr ""
+
+#: src/Admin/PostTypes.php:209
+msgid "Crustaceans"
+msgstr ""
+
+#: src/Admin/PostTypes.php:210
+msgid "Eggs"
+msgstr ""
+
+#: src/Admin/PostTypes.php:211
+msgid "Fish"
+msgstr ""
+
+#: src/Admin/PostTypes.php:212
+msgid "Peanuts"
+msgstr ""
+
+#: src/Admin/PostTypes.php:213
+msgid "Soybeans"
+msgstr ""
+
+#: src/Admin/PostTypes.php:214
+msgid "Milk"
+msgstr ""
+
+#: src/Admin/PostTypes.php:215
+msgid "Nuts"
+msgstr ""
+
+#: src/Admin/PostTypes.php:216
+msgid "Celery"
+msgstr ""
+
+#: src/Admin/PostTypes.php:217
+msgid "Mustard"
+msgstr ""
+
+#: src/Admin/PostTypes.php:218
+msgid "Sesame seeds"
+msgstr ""
+
+#: src/Admin/PostTypes.php:219
+msgid "Sulphur dioxide and sulphites"
+msgstr ""
+
+#: src/Admin/PostTypes.php:220
+msgid "Lupin"
+msgstr ""
+
+#: src/Admin/PostTypes.php:221
+msgid "Molluscs"
+msgstr ""
+
+#: src/Admin/PostTypes.php:233
 msgid "Nutrients"
 msgstr ""
 
-#: src/Admin/PostTypes.php:188
+#: src/Admin/PostTypes.php:235
 msgid "Add Nutrient"
 msgstr ""
 
-#: src/Admin/PostTypes.php:189
+#: src/Admin/PostTypes.php:236
 msgid "Edit Nutrient"
 msgstr ""
 
-#: src/Admin/PostTypes.php:190
+#: src/Admin/PostTypes.php:237
 msgid "Search Nutrients"
 msgstr ""
 
@@ -7949,7 +8005,7 @@ msgid "Heading"
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:286
-#: templates/forms/withdrawal-lookup.php:70
+#: templates/forms/withdrawal-lookup.php:69
 msgid "Withdrawal from the contract, online form"
 msgstr ""
 
@@ -7969,12 +8025,12 @@ msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:308
 #: src/Service/OrderExportService.php:54
-#: templates/forms/withdrawal-lookup.php:141
+#: templates/forms/withdrawal-lookup.php:140
 msgid "Order number"
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:314
-#: templates/forms/withdrawal-lookup.php:163
+#: templates/forms/withdrawal-lookup.php:162
 msgid "Email address used for the purchase"
 msgstr ""
 
@@ -7983,7 +8039,7 @@ msgid "Submit button"
 msgstr ""
 
 #: src/Admin/WithdrawalSettingsPage.php:320
-#: templates/forms/withdrawal-lookup.php:195
+#: templates/forms/withdrawal-lookup.php:194
 msgid "Email me the link to the form"
 msgstr ""
 
@@ -8745,7 +8801,7 @@ msgid "View AI Version"
 msgstr ""
 
 #. translators: %d: minimum age
-#: src/Hook/CheckoutHooks.php:594
+#: src/Hook/CheckoutHooks.php:639
 #, php-format
 msgid "The customer confirmed at checkout being at least %d years old."
 msgstr ""
@@ -8895,62 +8951,6 @@ msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:47
 msgid "m³"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:33
-msgid "Cereals containing gluten"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:34
-msgid "Crustaceans"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:35
-msgid "Eggs"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:36
-msgid "Fish"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:37
-msgid "Peanuts"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:38
-msgid "Soybeans"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:39
-msgid "Milk"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:40
-msgid "Nuts"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:41
-msgid "Celery"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:42
-msgid "Mustard"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:43
-msgid "Sesame seeds"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:44
-msgid "Sulphur dioxide and sulphites"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:45
-msgid "Lupin"
-msgstr ""
-
-#: src/Migration/Migration_2_6_0.php:46
-msgid "Molluscs"
 msgstr ""
 
 #: src/PageCompliance/Enum/Severity.php:19
@@ -12587,33 +12587,39 @@ msgstr ""
 msgid "Not checked yet."
 msgstr ""
 
+#. translators: %s: date of the check
+#: src/Service/ViesService.php:334
+#, php-format
+msgid "Valid, checked %s (VIES did not return a company name)"
+msgstr ""
+
 #. translators: 1: company name from VIES, 2: date of the check
-#: src/Service/ViesService.php:330
+#: src/Service/ViesService.php:340
 #, php-format
 msgid "Valid: %1$s, checked %2$s"
 msgstr ""
 
-#: src/Service/ViesService.php:335
+#: src/Service/ViesService.php:346
 msgid "Consultation number:"
 msgstr ""
 
 #. translators: %s: reason reported by VIES
-#: src/Service/ViesService.php:341
+#: src/Service/ViesService.php:352
 #, php-format
 msgid "Not valid in VIES (%s)"
 msgstr ""
 
 #. translators: %s: technical reason, e.g. unreachable or MS_UNAVAILABLE
-#: src/Service/ViesService.php:349
+#: src/Service/ViesService.php:360
 #, php-format
 msgid "Could not check: VIES did not answer (%s). Try again later."
 msgstr ""
 
-#: src/Service/ViesService.php:361
+#: src/Service/ViesService.php:372
 msgid "Check in VIES"
 msgstr ""
 
-#: src/Service/ViesService.php:380
+#: src/Service/ViesService.php:391
 msgid "Order not found"
 msgstr ""
 
@@ -12965,8 +12971,8 @@ msgstr ""
 
 #. translators: 1: customer name, 2: email address
 #: templates/account/withdrawal-confirm.php:92
-#: templates/forms/withdrawal-form.php:60
-#: templates/forms/withdrawal-guest.php:50
+#: templates/forms/withdrawal-form.php:59
+#: templates/forms/withdrawal-guest.php:49
 #, php-format
 msgid "Declaration filed by: %1$s. The confirmation will be sent to: %2$s"
 msgstr ""
@@ -13172,94 +13178,94 @@ msgstr ""
 msgid "Excluded from return"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:76
+#: templates/forms/withdrawal-form.php:75
 msgid "Every item in this order is already covered by a withdrawal or does not qualify for return."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:86
+#: templates/forms/withdrawal-form.php:85
 msgid "Enter how many units you want to withdraw. The \"Remaining\" field shows the most you can still withdraw for that item."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:91
+#: templates/forms/withdrawal-form.php:90
 msgid "Select all items"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:94
+#: templates/forms/withdrawal-form.php:93
 msgid "Clear the selection"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:100
+#: templates/forms/withdrawal-form.php:99
 msgid "Order items available for withdrawal."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:105
-#: templates/forms/withdrawal-form.php:134
+#: templates/forms/withdrawal-form.php:104
+#: templates/forms/withdrawal-form.php:133
 msgid "Remaining"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:125
+#: templates/forms/withdrawal-form.php:124
 msgid "SKU:"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:135
+#: templates/forms/withdrawal-form.php:134
 msgid "Remaining to return"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:143
+#: templates/forms/withdrawal-form.php:142
 msgid "This item is excluded from return and cannot be selected."
 msgstr ""
 
 #. translators: 1: product name, 2: max qty
-#: templates/forms/withdrawal-form.php:162
+#: templates/forms/withdrawal-form.php:161
 #, php-format
 msgid "You can return at most %2$s units of \"%1$s\"."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:178
+#: templates/forms/withdrawal-form.php:177
 msgid "Step 2. Reason and confirmation"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:193
-#: templates/forms/withdrawal-guest.php:137
+#: templates/forms/withdrawal-form.php:192
+#: templates/forms/withdrawal-guest.php:136
 msgid "A reason is not required; withdrawal needs no justification."
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:205
-#: templates/forms/withdrawal-guest.php:149
+#: templates/forms/withdrawal-form.php:204
+#: templates/forms/withdrawal-guest.php:148
 msgid "File the declaration and email me the confirmation"
 msgstr ""
 
-#: templates/forms/withdrawal-form.php:208
+#: templates/forms/withdrawal-form.php:207
 msgid "Cancel and go back to the order list"
 msgstr ""
 
 #. translators: %s = order number
-#: templates/forms/withdrawal-guest.php:34
+#: templates/forms/withdrawal-guest.php:33
 #, php-format
 msgid "Withdrawal from the contract, order #%s"
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:57
+#: templates/forms/withdrawal-guest.php:56
 msgid "Items covered by the withdrawal"
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:59
+#: templates/forms/withdrawal-guest.php:58
 msgid "Filing this declaration covers the whole order below. If you want to withdraw from only some of the items, contact the shop or log in to your account and file a separate declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:64
+#: templates/forms/withdrawal-guest.php:63
 msgid "Order items covered by the declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:103
+#: templates/forms/withdrawal-guest.php:102
 msgid "Order value:"
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:112
+#: templates/forms/withdrawal-guest.php:111
 msgid "Order date:"
 msgstr ""
 
-#: templates/forms/withdrawal-guest.php:121
+#: templates/forms/withdrawal-guest.php:120
 msgid "Once you send the form you will get a confirmation email with the declaration number and a summary of the order."
 msgstr ""
 
@@ -13268,127 +13274,127 @@ msgid "Go to the withdrawal form"
 msgstr ""
 
 #. translators: 1: merchant name, 2: number of days
-#: templates/forms/withdrawal-lookup.php:91
+#: templates/forms/withdrawal-lookup.php:90
 #, php-format
 msgid "Bought from %1$s as a consumer? You have the right to withdraw from a distance contract without giving a reason within %2$d days of receiving your order. You do not need to log in to file the declaration: just enter below the email address used for the purchase and the order number."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:106
+#: templates/forms/withdrawal-lookup.php:105
 msgid "How does it work? (expand)"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:110
+#: templates/forms/withdrawal-lookup.php:109
 msgid "Once we have checked the details we will email a single-use link that opens the withdrawal form. The link is valid for 30 minutes and works only once."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:113
+#: templates/forms/withdrawal-lookup.php:112
 msgid "In the next step you choose whether to return the whole order or only some items; you can also withdraw from individual units."
 msgstr ""
 
 #. translators: %s = directive reference
-#: templates/forms/withdrawal-lookup.php:119
+#: templates/forms/withdrawal-lookup.php:118
 #, php-format
 msgid "After you submit the declaration you will get an email with the declaration number, the date it was filed and a summary of the order. The right comes from Article 27 of the Polish Consumer Rights Act, which implements Directive %s."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:120
+#: templates/forms/withdrawal-lookup.php:119
 msgid "2011/83/EU (as amended by 2023/2673)"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:157
+#: templates/forms/withdrawal-lookup.php:156
 msgid "The number is in your purchase confirmation email, on the \"Your order #...\" line."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:179
+#: templates/forms/withdrawal-lookup.php:178
 msgid "We will email a secure link to this address that opens the withdrawal form."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:184
+#: templates/forms/withdrawal-lookup.php:183
 msgid "All fields are required."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:200
+#: templates/forms/withdrawal-lookup.php:199
 msgid "The link is valid for 30 minutes and works only once. If the message does not arrive, check your spam folder and enter the address again."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:207
-#: templates/forms/withdrawal-lookup.php:262
+#: templates/forms/withdrawal-lookup.php:206
+#: templates/forms/withdrawal-lookup.php:261
 msgid "How long do I have to withdraw from the contract?"
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:207
+#: templates/forms/withdrawal-lookup.php:206
 #, php-format
 msgid "By default you have %d days from the day you received the order. The period runs from the day the goods came into your possession, or into the possession of a third party other than the carrier."
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:208
+#: templates/forms/withdrawal-lookup.php:207
 msgid "Can I return only some of the products?"
 msgstr ""
 
 #. translators: %d = days
-#: templates/forms/withdrawal-lookup.php:208
+#: templates/forms/withdrawal-lookup.php:207
 msgid "Yes. Once the form is open you choose which items the withdrawal covers. You can withdraw from any number of units and the rest stay in the order."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:209
-#: templates/forms/withdrawal-lookup.php:270
+#: templates/forms/withdrawal-lookup.php:208
+#: templates/forms/withdrawal-lookup.php:269
 msgid "What happens after I send the form?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:209
+#: templates/forms/withdrawal-lookup.php:208
 msgid "You will get a confirmation email with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:210
-#: templates/forms/withdrawal-lookup.php:274
+#: templates/forms/withdrawal-lookup.php:209
+#: templates/forms/withdrawal-lookup.php:273
 msgid "Are there products that cannot be returned?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:210
+#: templates/forms/withdrawal-lookup.php:209
 msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, and goods sealed for hygiene reasons once the seal is broken."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:214
+#: templates/forms/withdrawal-lookup.php:213
 msgid "Common questions"
 msgstr ""
 
 #. translators: %s = support email link
-#: templates/forms/withdrawal-lookup.php:236
+#: templates/forms/withdrawal-lookup.php:235
 #, php-format
 msgid "Having trouble with the form? Write to %s and we will help you file the declaration by hand."
 msgstr ""
 
 #. translators: %s: merchant / shop name
-#: templates/forms/withdrawal-lookup.php:252
+#: templates/forms/withdrawal-lookup.php:251
 #, php-format
 msgid "Who can withdraw from a contract at %s?"
 msgstr ""
 
 #. translators: %d: withdrawal period in days (typically 14)
-#: templates/forms/withdrawal-lookup.php:254
+#: templates/forms/withdrawal-lookup.php:253
 #, php-format
 msgid "By default you have %d days from the day you received the order to file the declaration. The period runs from the day the goods came into your possession, or into the possession of a third party indicated by you other than the carrier."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:259
+#: templates/forms/withdrawal-lookup.php:258
 msgid "Any consumer, meaning a natural person buying for purposes outside their trade or business. When you buy as a company, the right to withdraw without giving a reason applies only in a limited form."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:266
+#: templates/forms/withdrawal-lookup.php:265
 msgid "Can I return only some of the products in the order?"
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:267
+#: templates/forms/withdrawal-lookup.php:266
 msgid "Yes. Once the form is open you choose which items the withdrawal covers: every product, a single product, or just some of the units. The rest stay in the order."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:271
+#: templates/forms/withdrawal-lookup.php:270
 msgid "You will get an email confirming that the declaration was accepted, with a unique declaration number and a full summary of the order. Then send the goods back to the shop's address within 14 days of filing the declaration."
 msgstr ""
 
-#: templates/forms/withdrawal-lookup.php:275
+#: templates/forms/withdrawal-lookup.php:274
 msgid "Yes. Under Article 38 of the Polish Consumer Rights Act the right of withdrawal does not cover, among others, goods made to the consumer's specification, goods that deteriorate rapidly, goods sealed for hygiene reasons once the seal is broken, and digital content supplied with the consumer's express consent before the withdrawal period ended."
 msgstr ""
 

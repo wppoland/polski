@@ -177,6 +177,53 @@ final class PostTypes implements Bootable, HasHooks
                 'assign_terms' => 'assign_product_terms',
             ],
         ]);
+
+        $this->seedAllergens();
+    }
+
+    /**
+     * Seeds the fourteen allergens of Annex II to Regulation (EU) 1169/2011 the
+     * first time the taxonomy registers. Seeding has to wait for registration:
+     * wp_insert_term() refuses a taxonomy that does not exist yet, which is why
+     * the old activation migration never created a single term. Runs once per
+     * site, so terms a merchant deletes stay deleted, and a shop that already
+     * typed its own list is left alone rather than given near-duplicates.
+     */
+    private function seedAllergens(): void
+    {
+        if (get_option('polski_allergens_seeded') !== false) {
+            return;
+        }
+
+        update_option('polski_allergens_seeded', '1');
+
+        $existing = wp_count_terms(['taxonomy' => 'polski_allergen', 'hide_empty' => false]);
+
+        if (! is_wp_error($existing) && (int) $existing > 0) {
+            return;
+        }
+
+        // Slug => name. The order follows Annex II itself.
+        $defaults = [
+            'zboza-zawierajace-gluten' => __('Cereals containing gluten', 'polski'),
+            'skorupiaki' => __('Crustaceans', 'polski'),
+            'jaja' => __('Eggs', 'polski'),
+            'ryby' => __('Fish', 'polski'),
+            'orzeszki-ziemne' => __('Peanuts', 'polski'),
+            'soja' => __('Soybeans', 'polski'),
+            'mleko' => __('Milk', 'polski'),
+            'orzechy' => __('Nuts', 'polski'),
+            'seler' => __('Celery', 'polski'),
+            'gorczyca' => __('Mustard', 'polski'),
+            'nasiona-sezamu' => __('Sesame seeds', 'polski'),
+            'dwutlenek-siarki-i-siarczyny' => __('Sulphur dioxide and sulphites', 'polski'),
+            'lubin' => __('Lupin', 'polski'),
+            'mieczaki' => __('Molluscs', 'polski'),
+        ];
+
+        foreach ($defaults as $slug => $name) {
+            wp_insert_term($name, 'polski_allergen', ['slug' => $slug]);
+        }
     }
 
     private function registerNutrientTaxonomy(): void

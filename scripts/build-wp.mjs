@@ -48,6 +48,8 @@ const VANILLA = new Set([
 
 const GLOBALS = {
     react: 'React',
+    // WordPress ships the runtime since 6.6; inlining it breaks under React 19.
+    'react/jsx-runtime': 'ReactJSXRuntime',
     'react-dom': 'ReactDOM',
     wp: 'wp',
     '@wordpress/element': 'wp.element',
@@ -57,7 +59,7 @@ const GLOBALS = {
     '@wordpress/api-fetch': 'wp.apiFetch',
 };
 
-const DEPENDENCIES = ['wp-element', 'wp-components', 'wp-data', 'wp-i18n', 'wp-api-fetch'];
+const DEPENDENCIES = ['react-jsx-runtime', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n', 'wp-api-fetch'];
 
 const version = Date.now().toString(16);
 

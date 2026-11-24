@@ -104,11 +104,11 @@ final class TaxDisplayService implements HasHooks
 
         $html = $shippingUrl
             ? sprintf(
-                '<span class="polski-shipping-notice" style="margin-left:0.35em"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
+                '<span class="polski-shipping-notice"><a href="%s" target="_blank" rel="noopener">%s</a></span>',
                 esc_url($shippingUrl),
                 esc_html($text),
             )
-            : sprintf('<span class="polski-shipping-notice" style="margin-left:0.35em">%s</span>', esc_html($text));
+            : sprintf('<span class="polski-shipping-notice">%s</span>', esc_html($text));
 
         return (string) apply_filters('polski/price/shipping_notice', $html);
     }
