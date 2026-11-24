@@ -50,7 +50,8 @@ final class SocialLoginService implements HasHooks
         add_action('rest_api_init', [$this, 'registerRoutes']);
 
         // Enqueue minimal CSS.
-        add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
+        // After CheckoutHooks registers polski-frontend (priority 10), or the inline CSS is dropped.
+        add_action('wp_enqueue_scripts', [$this, 'enqueueStyles'], 20);
     }
 
     /**

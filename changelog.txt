@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.49.5 =
+* Fixed: polski shortcodes and Elementor widgets are styled on any page, not only on WooCommerce pages. The stylesheet loads only on pages where one of them renders.
+* Fixed: the FAQ accordion hover and open-icon styles are printed. Before, they were attached to the stylesheet before it existed and were dropped.
+* Fixed: the social login button hover style is printed on the account and checkout pages for the same reason.
+
 = 1.49.4 =
 * Fixed: unit price, VAT and shipping notes, GPSR details and the food blocks (Nutri-Score, nutrition table) are styled on product and shop pages, not only at checkout. The VAT and shipping notes no longer run into each other.
 * Fixed: the 14 allergens of Annex II are created when the food module is switched on. Before, they were never created: the seeding ran before the allergen list was registered.

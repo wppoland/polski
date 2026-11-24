@@ -15,6 +15,8 @@ declare(strict_types=1);
  */
 
 namespace {
+    // wordpress-stubs 7.0+ declares the AI Client itself; redeclaring it is a fatal error.
+    if (! function_exists('wp_ai_client_prompt')) {
     /**
      * Fluent prompt builder returned by wp_ai_client_prompt().
      */
@@ -63,5 +65,6 @@ namespace {
     function wp_ai_client_prompt(string $prompt = ''): WP_AI_Client_Prompt_Builder
     {
         return new WP_AI_Client_Prompt_Builder();
+    }
     }
 }

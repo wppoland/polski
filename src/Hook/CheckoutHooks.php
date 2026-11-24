@@ -118,6 +118,7 @@ final class CheckoutHooks implements Bootable, HasHooks
 
         // Enqueue frontend checkout JS.
         add_action('wp_enqueue_scripts', [$this, 'enqueueCheckoutAssets']);
+        add_filter('do_shortcode_tag', [$this, 'enqueueForShortcode'], 10, 2);
     }
 
     /**
@@ -215,6 +216,15 @@ final class CheckoutHooks implements Bootable, HasHooks
      */
     public function enqueueCheckoutAssets(): void
     {
+        // Registered everywhere: shortcodes, Elementor widgets and inline CSS
+        // from other services attach to it on pages that do not enqueue it here.
+        wp_register_style(
+            'polski-frontend',
+            plugins_url('assets/css/frontend.css', PLUGIN_FILE),
+            [],
+            VERSION,
+        );
+
         if (! function_exists('is_checkout')) {
             return;
         }
@@ -225,12 +235,7 @@ final class CheckoutHooks implements Bootable, HasHooks
             return;
         }
 
-        wp_enqueue_style(
-            'polski-frontend',
-            plugins_url('assets/css/frontend.css', PLUGIN_FILE),
-            [],
-            VERSION,
-        );
+        wp_enqueue_style('polski-frontend');
 
         if (! $checkout) {
             return;
@@ -248,6 +253,18 @@ final class CheckoutHooks implements Bootable, HasHooks
             'ajaxUrl'  => admin_url('admin-ajax.php'),
             'nipNonce' => wp_create_nonce('polski_nip_lookup'),
         ]);
+    }
+
+    /**
+     * A polski shortcode on any page needs frontend.css; enqueued late, it prints in the footer.
+     */
+    public function enqueueForShortcode(mixed $output, string $tag): mixed
+    {
+        if (str_starts_with($tag, 'polski_')) {
+            wp_enqueue_style('polski-frontend');
+        }
+
+        return $output;
     }
 
     /**

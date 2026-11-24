@@ -17,6 +17,16 @@ abstract class BaseWidget extends Widget_Base
         return ['polski'];
     }
 
+    /**
+     * Elementor enqueues these when the widget renders, so frontend.css follows the widget to any page.
+     *
+     * @return list<string>
+     */
+    public function get_style_depends(): array
+    {
+        return ['polski-frontend'];
+    }
+
     public function get_icon(): string
     {
         return 'eicon-woocommerce';
