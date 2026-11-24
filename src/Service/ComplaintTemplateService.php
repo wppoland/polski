@@ -106,7 +106,7 @@ final class ComplaintTemplateService implements HasHooks
         $title = esc_html__('Complaint form', 'polski');
 
         return '<!doctype html>'
-            . '<html lang="pl"><head><meta charset="utf-8">'
+            . '<html lang="' . esc_attr(get_bloginfo('language')) . '"><head><meta charset="utf-8">'
             . '<title>' . $title . '</title>'
             . '<style>'
             . 'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:780px;margin:40px auto;padding:0 20px;color:#111;line-height:1.5}'

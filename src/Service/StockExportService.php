@@ -304,7 +304,7 @@ final class StockExportService implements HasHooks
 
         rewind($output);
         fpassthru($output);
-        fclose($output);
+        fclose($output); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- tmpfile() stream for a CSV download, WP_Filesystem does not apply
 
         exit;
     }

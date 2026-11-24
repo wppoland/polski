@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.49.3
+Stable tag: 1.49.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,14 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.49.4 =
+* Fixed: unit price, VAT and shipping notes, GPSR details and the food blocks (Nutri-Score, nutrition table) are styled on product and shop pages, not only at checkout. The VAT and shipping notes no longer run into each other.
+* Fixed: the 14 allergens of Annex II are created when the food module is switched on. Before, they were never created: the seeding ran before the allergen list was registered.
+* Fixed: the VIES panel on the order screen no longer prints an empty company name when VIES does not return one.
+* Fixed: nutrition values use the shop's decimal separator, like the prices next to them.
+* Fixed: the withdrawal forms and the complaint and GDPR training documents no longer declare Polish as their language when they show translated text.
+* Changed: the admin screens load React's JSX runtime from WordPress instead of bundling their own copy, ready for React 19.
 
 = 1.49.3 =
 * Changed: dark styling follows the theme's color scheme instead of the visitor's operating system, so widgets stay light on light themes; older browsers keep the previous behaviour.

@@ -325,12 +325,23 @@ final class ViesService implements HasHooks
         if ($stored === null) {
             echo esc_html__('Not checked yet.', 'polski');
         } elseif (! empty($stored['valid'])) {
-            printf(
-                /* translators: 1: company name from VIES, 2: date of the check */
-                esc_html__('Valid: %1$s, checked %2$s', 'polski'),
-                esc_html((string) ($stored['name'] ?? '')),
-                esc_html((string) ($stored['checked_at'] ?? '')),
-            );
+            $name = (string) ($stored['name'] ?? '');
+
+            if ($name === '') {
+                // Several member states (Germany among them) never return the name.
+                printf(
+                    /* translators: %s: date of the check */
+                    esc_html__('Valid, checked %s (VIES did not return a company name)', 'polski'),
+                    esc_html((string) ($stored['checked_at'] ?? '')),
+                );
+            } else {
+                printf(
+                    /* translators: 1: company name from VIES, 2: date of the check */
+                    esc_html__('Valid: %1$s, checked %2$s', 'polski'),
+                    esc_html($name),
+                    esc_html((string) ($stored['checked_at'] ?? '')),
+                );
+            }
             if (! empty($stored['consultation'])) {
                 echo '<br>' . esc_html__('Consultation number:', 'polski') . ' <code>'
                     . esc_html((string) $stored['consultation']) . '</code>';

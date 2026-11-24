@@ -24,7 +24,6 @@ $polski_order_date = $polski_order->get_date_created();
 <section
     class="polski-withdrawal-guest-form"
     aria-labelledby="polski-withdrawal-guest-title"
-    lang="pl"
     style="max-width: 65ch;"
 >
     <h2 id="polski-withdrawal-guest-title">

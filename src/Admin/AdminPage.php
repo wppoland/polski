@@ -1337,7 +1337,7 @@ final class AdminPage implements Bootable, HasHooks
             $asset = require $assetFile;
         } else {
             $asset = [
-                'dependencies' => ['wp-element', 'wp-components', 'wp-i18n', 'wp-api-fetch', 'wp-data'],
+                'dependencies' => ['react-jsx-runtime', 'wp-element', 'wp-components', 'wp-i18n', 'wp-api-fetch', 'wp-data'],
                 'version' => \Polski\VERSION,
             ];
         }

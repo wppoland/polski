@@ -307,7 +307,8 @@ final class FoodService
             $rows .= sprintf(
                 '<tr><td>%s</td><td>%s %s</td></tr>',
                 esc_html($data['label']),
-                esc_html((string) $data['value']),
+                // Same decimal separator as the prices next to it; the merchant's precision stays as typed.
+                esc_html(wc_format_localized_decimal((string) $data['value'])),
                 esc_html($data['unit']),
             );
         }

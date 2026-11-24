@@ -63,7 +63,6 @@ $polski_has_error = $polski_notice !== null && ($polski_notice['type'] ?? '') ==
 <section
     class="polski-withdrawal-lookup"
     aria-labelledby="polski-withdrawal-lookup-title"
-    lang="pl"
     style="max-width: 65ch;"
 >
     <h2 id="polski-withdrawal-lookup-title">

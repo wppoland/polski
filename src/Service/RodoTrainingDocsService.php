@@ -122,7 +122,7 @@ final class RodoTrainingDocsService implements HasHooks
     private function wrapStandalone(string $title, string $body): string
     {
         return '<!doctype html>'
-            . '<html lang="pl"><head><meta charset="utf-8"><title>' . esc_html($title) . '</title>'
+            . '<html lang="' . esc_attr(get_bloginfo('language')) . '"><head><meta charset="utf-8"><title>' . esc_html($title) . '</title>'
             . '<style>'
             . 'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:820px;margin:40px auto;padding:0 20px;color:#111;line-height:1.55}'
             . 'h1{font-size:24px;margin-bottom:8px}h2{font-size:18px;margin-top:24px}h3{font-size:14px;margin-top:16px}'

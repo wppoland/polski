@@ -185,7 +185,7 @@ final class GuestWithdrawalService implements HasHooks
             do_action('polski/withdrawal/guest_requested', $created, $order, $payload['email']);
 
             $declarationId = sprintf('POL-WD-%06d', $created);
-            return '<div class="polski-withdrawal-success" role="status" aria-live="polite" lang="pl">'
+            return '<div class="polski-withdrawal-success" role="status" aria-live="polite">'
                 . '<h2>' . esc_html__('Declaration filed', 'polski') . '</h2>'
                 . '<p>' . sprintf(
                     /* translators: %s = declaration id (POL-WD-XXXXXX) */
