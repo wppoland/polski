@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.50.2 =
+* Plugins list shows shortcuts to the main Polski screens: modules, settings, reports, and withdrawals, returns and checkout fields when their module is on.
+
 = 1.50.1 =
 * Fixed: with "Accept all" on, the block checkout could show "Please fix the following error before continuing" a moment after loading, with no click. The box now reacts only to the shopper's clicks, and a required box it unticks keeps its error, so an unticked consent is never sent before the order is placed.
 
