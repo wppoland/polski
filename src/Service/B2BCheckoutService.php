@@ -80,29 +80,45 @@ final class B2BCheckoutService
 
     /**
      * Rule on the block checkout document for the fields only a company fills
-     * in: required when the buyer chose Company, hidden otherwise, also before
-     * any choice is made.
+     * in. Required: the buyer chose Company. Hidden: a choice is in the
+     * document and it is not Company, which on the checkout includes "not
+     * chosen yet" (defaultBuyerType() puts an empty value there).
+     *
+     * My Account builds its document without any field values, so there
+     * nothing is hidden and nothing is required: the form shows the stored
+     * company name and NIP and saves them unchanged.
      *
      * @return array<string, mixed>
      */
     public static function companyOnlyRule(bool $forHidden): array
     {
-        $isCompany = [
+        return [
             'customer' => [
                 'properties' => [
                     'additional_fields' => [
                         // An empty list arrives as a JSON array, which the
                         // object keywords below would wave through.
                         'type' => 'object',
-                        'properties' => [self::BUYER_TYPE_FIELD => ['const' => 'company']],
+                        'properties' => [
+                            self::BUYER_TYPE_FIELD => $forHidden ? ['not' => ['const' => 'company']] : ['const' => 'company'],
+                        ],
                         'required' => [self::BUYER_TYPE_FIELD],
                     ],
                 ],
                 'required' => ['additional_fields'],
             ],
         ];
+    }
 
-        return $forHidden ? ['not' => ['properties' => $isCompany]] : $isCompany;
+    /**
+     * The checkout starts with an empty "Buying as" rather than none, so the
+     * company fields are hidden until the buyer picks Company.
+     *
+     * Hook: woocommerce_get_default_value_for_polski/buyer_type.
+     */
+    public function defaultBuyerType(mixed $value): mixed
+    {
+        return $value ?? '';
     }
 
     /**

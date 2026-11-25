@@ -261,7 +261,16 @@ final class CheckoutHooks implements Bootable, HasHooks
             return;
         }
 
-        $ids = array_map(static fn ($checkbox): string => 'polski/' . $checkbox->id, $this->blockCheckoutBoxes());
+        $ids = [];
+        $required = [];
+
+        foreach ($this->blockCheckoutBoxes() as $checkbox) {
+            $ids[] = 'polski/' . $checkbox->id;
+
+            if ($checkbox->isRequired()) {
+                $required['polski/' . $checkbox->id] = $checkbox->errorMessage;
+            }
+        }
 
         if ($ids === []) {
             return;
@@ -278,6 +287,9 @@ final class CheckoutHooks implements Bootable, HasHooks
         wp_localize_script('polski-block-accept-all', 'polskiAcceptAll', [
             'field' => self::ACCEPT_ALL_FIELD,
             'boxes' => $ids,
+            // Error text per required box, for the error a box gets when
+            // "Accept all" unticks it, as it would when clicked.
+            'required' => (object) $required,
         ]);
     }
 

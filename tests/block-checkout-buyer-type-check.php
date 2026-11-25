@@ -12,7 +12,7 @@
  * and NIP with a JSON-schema rule. WooCommerce evaluates it against a document
  * built from the request, so a rule that reads well can still never match:
  * an empty field list arrives as a JSON array, not an object, and a missed
- * case there showed the company fields as required with no choice made.
+ * case there required a company name on My Account that the form never showed.
  *
  * Run: wp eval-file tests/block-checkout-buyer-type-check.php
  */
@@ -38,7 +38,12 @@ $polski_cases = [
     'Company' => [[B2BCheckoutService::BUYER_TYPE_FIELD => 'company'], false],
     'Personal' => [[B2BCheckoutService::BUYER_TYPE_FIELD => 'personal'], true],
     'no choice yet' => [[B2BCheckoutService::BUYER_TYPE_FIELD => ''], true],
-    'no contact fields at all' => [[], true],
+];
+
+// My Account builds its document with no field values: show and keep what is
+// stored, require nothing.
+$polski_none = [
+    'no contact fields at all' => [],
 ];
 
 foreach ($polski_cases as $polski_label => [$polski_fields, $polski_hidden]) {
@@ -47,6 +52,12 @@ foreach ($polski_cases as $polski_label => [$polski_fields, $polski_hidden]) {
     }
     if ($polski_matches($polski_fields, false) === $polski_hidden) {
         $polski_failures[] = "{$polski_label}: company fields should " . ($polski_hidden ? 'not ' : '') . 'be required';
+    }
+}
+
+foreach ($polski_none as $polski_label => $polski_fields) {
+    if ($polski_matches($polski_fields, true) || $polski_matches($polski_fields, false)) {
+        $polski_failures[] = "{$polski_label}: company fields should be shown and optional";
     }
 }
 

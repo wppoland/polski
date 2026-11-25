@@ -16,23 +16,27 @@
 	}
 
 	var STORE = 'wc/store/checkout';
+	var required = config.required || {};
 	var busy = false;
 	var last = null;
 
+	// The rendered input of a box: WooCommerce ids it <location>-polski-<id>.
+	function input( id ) {
+		var domId = id.replace( '/', '-' );
+
+		return document.getElementById( 'order-' + domId ) || document.getElementById( 'contact-' + domId );
+	}
+
 	// A box hidden for this cart (service, age) is not rendered, so not ticked.
 	function shownBoxes() {
-		return config.boxes.filter( function ( id ) {
-			var domId = id.replace( '/', '-' );
-
-			return document.getElementById( 'order-' + domId ) || document.getElementById( 'contact-' + domId );
-		} );
+		return config.boxes.filter( input );
 	}
 
 	// WooCommerce keys a field's error as <location>_<id>.
 	function errorKey( id ) {
-		var domId = id.replace( '/', '-' );
+		var el = input( id );
 
-		return ( document.getElementById( 'contact-' + domId ) ? 'contact_' : 'order_' ) + id;
+		return ( el && el.id.indexOf( 'contact-' ) === 0 ? 'contact_' : 'order_' ) + id;
 	}
 
 	function set( patch ) {
@@ -41,12 +45,31 @@
 		busy = true;
 		wp.data.dispatch( STORE ).setAdditionalFields( patch );
 
-		// The box clears its "required" error when clicked, not when its value
-		// is set from here, so a box ticked by "Accept all" would still block
-		// the order with the error from when it was empty.
+		// A box sets and clears its "required" error when clicked, not when its
+		// value is set from here. Without this, a box ticked by "Accept all"
+		// keeps the error from when it was empty, and a required box it
+		// unticks has none, so WooCommerce sends the empty value to the server
+		// and announces the rejection to screen readers. The error stays hidden
+		// until the shopper places the order, as for a box they unticked.
 		Object.keys( patch ).forEach( function ( id ) {
-			if ( patch[ id ] && validation && typeof validation.clearValidationError === 'function' ) {
+			if ( ! validation || id === config.field ) {
+				return;
+			}
+
+			if ( patch[ id ] ) {
 				validation.clearValidationError( errorKey( id ) );
+				return;
+			}
+
+			if ( required.hasOwnProperty( id ) ) {
+				var errors = {};
+				var label = input( id ) && input( id ).closest( 'label, div' );
+
+				errors[ errorKey( id ) ] = {
+					message: required[ id ] || ( label ? label.textContent.trim() : id ),
+					hidden: true,
+				};
+				validation.setValidationErrors( errors );
 			}
 		} );
 		busy = false;

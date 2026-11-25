@@ -4114,8 +4114,8 @@ msgstr "Etykieta pola NIP"
 #: src/Admin/ModulesPage.php:449
 msgid "Leave empty for \"NIP\" (\"NIP or EU VAT ID\" with the VIES module on)."
 msgstr ""
-"Puste pole zostawia \"NIP\" (\"NIP or EU VAT ID\" przy włączonym module "
-"VIES)."
+"Zostaw puste, by etykieta brzmiała \"NIP\" (przy włączonym module VIES: "
+"\"NIP or EU VAT ID\")."
 
 #: src/Admin/ModulesPage.php:450
 msgid "Ask \"Buying as: Personal / Company\" on the block checkout"
@@ -4128,9 +4128,10 @@ msgid ""
 "Company field to Hidden in the checkout block, or the form asks for the "
 "company twice."
 msgstr ""
-"Wymagany wybór pod adresem e-mail. Firma pokazuje pola nazwy firmy i NIP, "
-"osoba prywatna je ukrywa i ich nie wymaga. Ustaw pole Firma z WooCommerce "
-"jako ukryte w bloku zamówienia, inaczej formularz zapyta o firmę dwa razy."
+"Wymagany wybór pod adresem e-mail. Wybór Firma pokazuje pola nazwy firmy i "
+"NIP, wybór Osoba prywatna je ukrywa i nie wymaga ich wypełnienia. Ustaw pole "
+"Firma z WooCommerce jako ukryte w bloku zamówienia, inaczej formularz zapyta "
+"o firmę dwa razy."
 
 #: src/Admin/ModulesPage.php:451
 msgid "GUS API environment"

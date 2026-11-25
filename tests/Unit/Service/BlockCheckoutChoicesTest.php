@@ -59,8 +59,13 @@ final class BlockCheckoutChoicesTest extends TestCase
         self::assertSame(['const' => 'company'], $choice['properties'][B2BCheckoutService::BUYER_TYPE_FIELD]);
         self::assertSame([B2BCheckoutService::BUYER_TYPE_FIELD], $choice['required']);
 
-        // Hidden is the exact negation, so a missing choice hides the fields.
-        self::assertSame(['not' => ['properties' => $required]], B2BCheckoutService::companyOnlyRule(true));
+        $hidden = B2BCheckoutService::companyOnlyRule(true)['customer']['properties']['additional_fields'];
+        self::assertSame(['not' => ['const' => 'company']], $hidden['properties'][B2BCheckoutService::BUYER_TYPE_FIELD]);
+        self::assertSame([B2BCheckoutService::BUYER_TYPE_FIELD], $hidden['required']);
+
+        // The checkout starts with an empty choice, so the rule hides the fields.
+        self::assertSame('', (new B2BCheckoutService())->defaultBuyerType(null));
+        self::assertSame('company', (new B2BCheckoutService())->defaultBuyerType('company'));
     }
 
     public function testNipLabelSetting(): void
