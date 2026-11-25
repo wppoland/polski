@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.49.5
+Stable tag: 1.50.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -403,6 +403,13 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.50.0 =
+* New, off by default: the block checkout can ask "Buying as: Personal / Company" under the e-mail address. Company shows a company name field and the NIP, both required where set; Personal hides them. The answer is saved in the same order meta as the classic "Buying as a company" box, and the company name goes to the order's billing company, so invoices and KSeF read it as before. Switch it on under NIP, and set WooCommerce's own Company field to Hidden in the checkout block.
+* New, off by default: an "Accept all" box above the consent boxes on the block checkout. It ticks or unticks every Polski box shown and unticks itself when one box is unticked. Each consent stays its own box, checked and logged separately; "Accept all" itself is not stored.
+* New, off by default: the marketing consent box can sit right under the e-mail address on the block checkout. It stays optional and unticked, is stored and logged as before, and is not filled in again from the customer's last order.
+* New: a label setting for the NIP field. Empty keeps "NIP" or "NIP or EU VAT ID".
+* Changed: the NIP field on the block checkout is registered after the other contact fields, so new fields can go above it.
+
 = 1.49.5 =
 * Fixed: polski shortcodes and Elementor widgets are styled on any page, not only on WooCommerce pages. The stylesheet loads only on pages where one of them renders.
 * Fixed: the FAQ accordion hover and open-icon styles are printed. Before, they were attached to the stylesheet before it existed and were dropped.
@@ -589,14 +596,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Changed: the CartFlows compatibility class is booted again and only acts when the Legal checkboxes module is on.
 * Fixed: the daily maintenance job (Omnibus history pruning, double opt-in cleanup, scheduled review requests) was scheduled only on activation, so an update that copied files without reactivating left it unscheduled. It is now restored on every load when missing.
 * Removed: an empty Dynamic Pricing compatibility class whose two callbacks did nothing.
-
-= 1.41.0 =
-* Security (high): a logged-out visitor could open and submit the withdrawal form for any guest order, because a guest order's customer id and a logged-out visitor's user id are both 0. Guests now go through the existing order lookup and email link only.
-* Security (medium): Quick View, compare and wishlist returned or stored draft, private and password-protected products, including disabled variations. They now accept only products a visitor could open themselves.
-* Security (low): product Q&A accepted questions and answers on any post id. Questions now go only to published products, and an answer must reply to an approved question on the same product.
-* Added: the waitlist works on variable products. The form appears when an out-of-stock variation is selected, and the restock email goes out when that variation is back in stock, however the stock changed. No longer beta.
-* Added: the price history chart shows the selected variation's history on variable products. No longer beta.
-* Added: with the VIES module on, checkout and My Account accept an EU VAT number from another country (for example DE811569869). A plain 10-digit NIP keeps its checksum and GUS lookup. No longer beta.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

@@ -2,6 +2,13 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.50.0 =
+* New, off by default: the block checkout can ask "Buying as: Personal / Company" under the e-mail address. Company shows a company name field and the NIP, both required where set; Personal hides them. The answer is saved in the same order meta as the classic "Buying as a company" box, and the company name goes to the order's billing company, so invoices and KSeF read it as before. Switch it on under NIP, and set WooCommerce's own Company field to Hidden in the checkout block.
+* New, off by default: an "Accept all" box above the consent boxes on the block checkout. It ticks or unticks every Polski box shown and unticks itself when one box is unticked. Each consent stays its own box, checked and logged separately; "Accept all" itself is not stored.
+* New, off by default: the marketing consent box can sit right under the e-mail address on the block checkout. It stays optional and unticked, is stored and logged as before, and is not filled in again from the customer's last order.
+* New: a label setting for the NIP field. Empty keeps "NIP" or "NIP or EU VAT ID".
+* Changed: the NIP field on the block checkout is registered after the other contact fields, so new fields can go above it.
+
 = 1.49.5 =
 * Fixed: polski shortcodes and Elementor widgets are styled on any page, not only on WooCommerce pages. The stylesheet loads only on pages where one of them renders.
 * Fixed: the FAQ accordion hover and open-icon styles are printed. Before, they were attached to the stylesheet before it existed and were dropped.

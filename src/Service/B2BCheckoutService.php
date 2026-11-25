@@ -32,6 +32,10 @@ final class B2BCheckoutService
     private const META_REGON = '_billing_regon';
     private const META_IBAN = '_billing_iban';
 
+    /** Block checkout: the "Buying as" choice and the company name it reveals. */
+    public const BUYER_TYPE_FIELD = 'polski/buyer_type';
+    public const COMPANY_NAME_FIELD = 'polski/company_name';
+
     /**
      * @return array<string, bool>
      */
@@ -45,6 +49,7 @@ final class B2BCheckoutService
             'nip' => true,
             'regon' => false,
             'iban' => false,
+            'block_buyer_type' => false,
         ];
 
         if (! is_array($settings)) {
@@ -57,6 +62,47 @@ final class B2BCheckoutService
     public function isEnabled(): bool
     {
         return (bool) ($this->fieldSettings()['enabled'] ?? true);
+    }
+
+    /**
+     * Whether the block checkout asks "Buying as: Personal / Company".
+     *
+     * Its own switch, off by default: show_company_toggle has always been on
+     * for the classic checkout, so keying the block field on it alone would add
+     * a required question to every block checkout on update.
+     */
+    public function buyerTypeChoiceEnabled(): bool
+    {
+        $settings = $this->fieldSettings();
+
+        return $settings['enabled'] && $settings['show_company_toggle'] && $settings['block_buyer_type'];
+    }
+
+    /**
+     * Rule on the block checkout document for the fields only a company fills
+     * in: required when the buyer chose Company, hidden otherwise, also before
+     * any choice is made.
+     *
+     * @return array<string, mixed>
+     */
+    public static function companyOnlyRule(bool $forHidden): array
+    {
+        $isCompany = [
+            'customer' => [
+                'properties' => [
+                    'additional_fields' => [
+                        // An empty list arrives as a JSON array, which the
+                        // object keywords below would wave through.
+                        'type' => 'object',
+                        'properties' => [self::BUYER_TYPE_FIELD => ['const' => 'company']],
+                        'required' => [self::BUYER_TYPE_FIELD],
+                    ],
+                ],
+                'required' => ['additional_fields'],
+            ],
+        ];
+
+        return $forHidden ? ['not' => ['properties' => $isCompany]] : $isCompany;
     }
 
     /**
@@ -326,6 +372,80 @@ final class B2BCheckoutService
                 },
             ]);
         }
+    }
+
+    /**
+     * Block checkout: "Buying as" right under the e-mail, then the company
+     * name, shown and required only for Company. Registered after the contact
+     * fields of CheckoutHooks (init 21) and before the NIP field (init 23), as
+     * WooCommerce lists contact fields in the order they were registered.
+     *
+     * The company name is a field of its own because WooCommerce's Company
+     * field is shown, hidden or required by one store-wide option, and no rule
+     * can switch it per order. applyBuyerTypeToOrder() copies it to the
+     * order's billing company, which invoices and KSeF read.
+     */
+    public function registerBuyerTypeFields(): void
+    {
+        if (! $this->buyerTypeChoiceEnabled() || ! self::hasAdditionalFieldsApi()) {
+            return;
+        }
+
+        woocommerce_register_additional_checkout_field([
+            'id' => self::BUYER_TYPE_FIELD,
+            'label' => __('Buying as', 'polski'),
+            'location' => 'contact',
+            'type' => 'select',
+            'required' => true,
+            // WooCommerce's own placeholder reads "Select a buying as".
+            'placeholder' => __('Personal or company', 'polski'),
+            'options' => [
+                ['value' => 'personal', 'label' => __('Personal', 'polski')],
+                ['value' => 'company', 'label' => __('Company', 'polski')],
+            ],
+        ]);
+
+        woocommerce_register_additional_checkout_field([
+            'id' => self::COMPANY_NAME_FIELD,
+            'label' => __('Company name', 'polski'),
+            'location' => 'contact',
+            'type' => 'text',
+            'attributes' => ['autocomplete' => 'organization'],
+            'hidden' => self::companyOnlyRule(true),
+            'required' => self::companyOnlyRule(false),
+        ]);
+    }
+
+    /**
+     * After a block checkout order is saved: record the buyer type in the same
+     * meta as the classic toggle, put a company's name in billing_company, and
+     * drop the company data of a personal buyer. WooCommerce stores every
+     * posted field, including one the buyer filled in and then hid by
+     * switching to Personal, so a NIP typed by mistake would otherwise reach
+     * the invoice.
+     *
+     * Hook: woocommerce_store_api_checkout_order_processed, after the NIP
+     * module copied the number (priority 10).
+     */
+    public function applyBuyerTypeToOrder(WC_Order $order): void
+    {
+        if (! $this->buyerTypeChoiceEnabled()) {
+            return;
+        }
+
+        $isCompany = $order->get_meta('_wc_other/' . self::BUYER_TYPE_FIELD, true) === 'company';
+        $order->update_meta_data(self::META_COMPANY_FLAG, $isCompany ? 'yes' : 'no');
+
+        if ($isCompany) {
+            $order->set_billing_company((string) $order->get_meta('_wc_other/' . self::COMPANY_NAME_FIELD, true));
+        } else {
+            $order->set_billing_company('');
+            foreach (['_wc_other/' . self::COMPANY_NAME_FIELD, '_wc_other/polski/nip', '_billing_nip', '_polski_billing_nip'] as $key) {
+                $order->delete_meta_data($key);
+            }
+        }
+
+        $order->save();
     }
 
     /**

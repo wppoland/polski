@@ -37,7 +37,13 @@ final class NipLookupService implements HasHooks
             // time we get here. Hooking it registers a callback that can never run,
             // which is why the NIP field never appeared on block checkout. Call it
             // directly when the action is already spent.
-            if (did_action('woocommerce_init')) {
+            //
+            // Inside `init` it waits for priority 23: WooCommerce lists contact
+            // fields in registration order, and the marketing box (init 21) and
+            // the "Buying as" choice (init 22) go above the NIP.
+            if (doing_action('init')) {
+                add_action('init', [$this, 'registerAdditionalCheckoutFields'], 23);
+            } elseif (did_action('woocommerce_init')) {
                 $this->registerAdditionalCheckoutFields();
             } else {
                 add_action('woocommerce_init', [$this, 'registerAdditionalCheckoutFields']);
@@ -88,6 +94,21 @@ final class NipLookupService implements HasHooks
     private function acceptsEuVatId(): bool
     {
         return ModulesPage::isModuleEnabled('vies');
+    }
+
+    /**
+     * The NIP field's label: the merchant's own text, or "NIP", or with the
+     * VIES module on "NIP or EU VAT ID".
+     */
+    public function fieldLabel(): string
+    {
+        $custom = trim((string) ($this->getSettings()['field_label'] ?? ''));
+
+        if ($custom !== '') {
+            return $custom;
+        }
+
+        return $this->acceptsEuVatId() ? __('NIP or EU VAT ID', 'polski') : __('NIP', 'polski');
     }
 
     /**
@@ -174,7 +195,7 @@ final class NipLookupService implements HasHooks
 
         $fields['billing_nip'] = [
             'type'        => 'text',
-            'label'       => $eu ? __('NIP or EU VAT ID', 'polski') : __('NIP', 'polski'),
+            'label'       => $this->fieldLabel(),
             'placeholder' => $eu ? __('e.g. 1234563218 or DE811569869', 'polski') : __('e.g. 1234563218', 'polski'),
             'required'    => $required,
             'class'       => ['form-row-wide'],
@@ -259,6 +280,15 @@ final class NipLookupService implements HasHooks
         // My Account entirely.
 
         $required = $this->nipRequired(true);
+        $hidden = false;
+
+        // With the block checkout's "Buying as" choice on, the NIP is a
+        // company's field: hidden for Personal, and required (when the setting
+        // asks for it) only for Company.
+        if ((new B2BCheckoutService())->buyerTypeChoiceEnabled()) {
+            $hidden = B2BCheckoutService::companyOnlyRule(true);
+            $required = $required ? B2BCheckoutService::companyOnlyRule(false) : false;
+        }
 
         woocommerce_register_additional_checkout_field([
             'id' => 'polski/nip',
@@ -267,9 +297,10 @@ final class NipLookupService implements HasHooks
             // form and another in the shipping form, so a customer could enter
             // two different numbers and nothing compared them.
             'location' => 'contact',
-            'label' => $this->acceptsEuVatId() ? __('NIP or EU VAT ID', 'polski') : __('NIP', 'polski'),
+            'label' => $this->fieldLabel(),
             'type' => 'text',
             'required' => $required,
+            'hidden' => $hidden,
             // Strip formatting only. Stripping every non-digit here turned
             // "not a number at all" into an empty string, and an empty string
             // reads as "left blank", so typing letters passed validation
@@ -720,6 +751,7 @@ final class NipLookupService implements HasHooks
         wp_localize_script('polski-nip-block-lookup', 'polskiNipBlockParams', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => $params['nipNonce'],
+            'companyField' => (new B2BCheckoutService())->buyerTypeChoiceEnabled() ? B2BCheckoutService::COMPANY_NAME_FIELD : '',
         ]);
     }
 
