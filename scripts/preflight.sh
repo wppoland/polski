@@ -89,6 +89,9 @@ npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file test
 echo "==> 17/20  the NIP field registers once and means one number"
 npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/nip-field-consistency-check.php
 
+echo "==> 17c/20 Accept all acts on clicks only and never sends an unticked consent"
+node tests/accept-all-sync-check.mjs
+
 echo "==> 17b/20 Buying as hides and requires the company fields"
 npx @wordpress/env run cli --env-cwd=wp-content/plugins/polski wp eval-file tests/block-checkout-buyer-type-check.php
 

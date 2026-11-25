@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.1
-Stable tag: 1.50.0
+Stable tag: 1.50.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.50.1 =
+* Fixed: with "Accept all" on, the block checkout could show "Please fix the following error before continuing" a moment after loading, with no click. The box now reacts only to the shopper's clicks, and a required box it unticks keeps its error, so an unticked consent is never sent before the order is placed.
 
 = 1.50.0 =
 * New, off by default: the block checkout can ask "Buying as: Personal / Company" under the e-mail address. Company shows a company name field and the NIP, both required where set; Personal hides them. The answer is saved in the same order meta as the classic "Buying as a company" box, and the company name goes to the order's billing company, so invoices and KSeF read it as before. Switch it on under NIP, and set WooCommerce's own Company field to Hidden in the checkout block.
