@@ -108,13 +108,28 @@ final class AdminPage implements Bootable, HasHooks
      */
     public function addPluginActionLinks(array $links): array
     {
-        $settingsLink = sprintf(
-            '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')),
-            esc_html__('Settings', 'polski'),
-        );
+        // Each module screen exists only while its module is on, so each link
+        // repeats the check the screen's own registerHooks() makes.
+        $screens = ['admin.php?page=' . self::PAGE_SLUG . '&tab=modules' => __('Modules', 'polski')];
+        if ($this->hasModuleSettings()) {
+            $screens['admin.php?page=polski-settings'] = __('Settings', 'polski');
+        }
+        $screens['admin.php?page=' . self::PAGE_SLUG . '-reports'] = __('Reports & Tools', 'polski');
+        if (ModulesPage::isModuleEnabled('withdrawal')) {
+            $screens['admin.php?page=polski-withdrawals'] = __('Withdrawals', 'polski');
+        }
+        if (ModulesPage::isModuleEnabled('returns_rma')) {
+            $screens['admin.php?page=polski-returns'] = __('Returns & complaints', 'polski');
+        }
+        if (ModulesPage::isModuleEnabled('custom_checkout_fields')) {
+            $screens['admin.php?page=polski-checkout-fields'] = __('Checkout Fields', 'polski');
+        }
 
-        array_unshift($links, $settingsLink);
+        $ours = [];
+        foreach ($screens as $path => $label) {
+            $ours[] = sprintf('<a href="%s">%s</a>', esc_url(admin_url($path)), esc_html($label));
+        }
+        array_unshift($links, ...$ours);
 
         return $links;
     }
@@ -270,19 +285,7 @@ final class AdminPage implements Bootable, HasHooks
         // Single "Settings" page with one tab per MoSCoW bucket, instead of a
         // flat submenu item per bucket. Pencil links from the modules table point
         // to ?page=polski-settings&bucket=<key> so they always resolve.
-        $modulesPage = \Polski\Plugin::instance()->container()->get(\Polski\Admin\ModulesPage::class);
-
-        $hasAnySettings = false;
-        foreach ($modulesPage->getBucketedModules() as $bucket) {
-            foreach ($bucket['modules'] as $module) {
-                if (! empty($module['settings'])) {
-                    $hasAnySettings = true;
-                    break 2;
-                }
-            }
-        }
-
-        if ($hasAnySettings) {
+        if ($this->hasModuleSettings()) {
             add_submenu_page(
                 self::PAGE_SLUG,
                 __('Settings', 'polski'),
@@ -292,6 +295,24 @@ final class AdminPage implements Bootable, HasHooks
                 [$this, 'renderSettingsHubPage'],
             );
         }
+    }
+
+    /**
+     * Whether any module has a settings section, so the Settings hub exists.
+     */
+    private function hasModuleSettings(): bool
+    {
+        $modulesPage = \Polski\Plugin::instance()->container()->get(ModulesPage::class);
+
+        foreach ($modulesPage->getBucketedModules() as $bucket) {
+            foreach ($bucket['modules'] as $module) {
+                if (! empty($module['settings'])) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
