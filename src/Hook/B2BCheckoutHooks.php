@@ -31,6 +31,11 @@ final class B2BCheckoutHooks implements HasHooks
         } else {
             add_action('woocommerce_init', [$this->service, 'registerAdditionalCheckoutFields']);
         }
+        // Contact fields are listed in registration order: after the marketing
+        // box CheckoutHooks may put there (init 21), before the NIP (init 23).
+        add_action('init', [$this->service, 'registerBuyerTypeFields'], 22);
+        add_filter('woocommerce_get_default_value_for_' . B2BCheckoutService::BUYER_TYPE_FIELD, [$this->service, 'defaultBuyerType']);
+        add_action('woocommerce_store_api_checkout_order_processed', [$this->service, 'applyBuyerTypeToOrder'], 20);
         add_action(
             'woocommerce_set_additional_field_value',
             [$this->service, 'mirrorAdditionalFieldToLegacyMeta'],

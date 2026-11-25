@@ -39,6 +39,9 @@ final class CheckoutHooks implements Bootable, HasHooks
 
     private const CART_EXTENSION = 'polski_checkboxes';
 
+    /** Block checkout "Accept all" box: ticks the boxes, is never a consent itself. */
+    public const ACCEPT_ALL_FIELD = 'polski/accept_all';
+
     /** Modules whose product and archive output is styled by frontend.css. */
     private const PRODUCT_MARK_MODULES = [
         'unit_price',
@@ -83,6 +86,8 @@ final class CheckoutHooks implements Bootable, HasHooks
                 // definitions. Consent is logged from the stored order meta.
                 add_action('init', [$this, 'registerBlockCheckoutFields'], 21);
                 add_action('woocommerce_store_api_checkout_order_processed', [$this, 'logBlockCheckoutConsents']);
+                add_action('woocommerce_store_api_checkout_order_processed', [$this, 'tidyBlockCheckoutFields'], 30);
+                add_action('wp_enqueue_scripts', [$this, 'enqueueBlockAcceptAllScript']);
 
                 // The service and age boxes follow the cart, so the block field
                 // needs a cart flag to key its hidden/required rule on.
@@ -136,20 +141,29 @@ final class CheckoutHooks implements Bootable, HasHooks
             return;
         }
 
-        foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
-            // The block field cannot follow cart conditions (a digital waiver
-            // would be required on a physical-only cart), so conditional boxes
-            // stay on the classic checkout, which evaluates them per cart.
-            $flagged = $this->isCartFlagBox($checkbox);
+        $boxes = $this->blockCheckoutBoxes();
 
-            if ($checkbox->hideInput || ($checkbox->hasConditions() && ! $flagged)) {
-                continue;
-            }
+        // Registered first so it sits above the boxes it ticks.
+        if ($boxes !== [] && self::acceptAllEnabled()) {
+            woocommerce_register_additional_checkout_field([
+                'id' => self::ACCEPT_ALL_FIELD,
+                'label' => self::acceptAllLabel(),
+                // Not "(optional)": it is a shortcut, not a question.
+                'optionalLabel' => self::acceptAllLabel(),
+                'location' => 'order',
+                'type' => 'checkbox',
+                'required' => false,
+                'show_in_order_confirmation' => false,
+            ]);
+        }
+
+        foreach ($boxes as $checkbox) {
+            $flagged = $this->isCartFlagBox($checkbox);
 
             $field = [
                 'id' => 'polski/' . $checkbox->id,
                 'label' => wp_strip_all_tags($checkbox->label),
-                'location' => 'order',
+                'location' => $this->blockLocation($checkbox),
                 'type' => 'checkbox',
                 'required' => $checkbox->isRequired(),
             ];
@@ -164,6 +178,158 @@ final class CheckoutHooks implements Bootable, HasHooks
             }
 
             woocommerce_register_additional_checkout_field($field);
+        }
+    }
+
+    /**
+     * The checkout boxes the block checkout can show.
+     *
+     * The block field cannot follow cart conditions (a digital waiver would be
+     * required on a physical-only cart), so conditional boxes stay on the
+     * classic checkout, which evaluates them per cart. The service and age
+     * boxes are the exception: their rule keys on a cart flag.
+     *
+     * @return list<\Polski\Model\LegalCheckbox>
+     */
+    private function blockCheckoutBoxes(): array
+    {
+        $boxes = [];
+
+        foreach ($this->checkboxes->getForContext(CheckboxContext::Checkout) as $checkbox) {
+            if ($checkbox->hideInput || ($checkbox->hasConditions() && ! $this->isCartFlagBox($checkbox))) {
+                continue;
+            }
+
+            $boxes[] = $checkbox;
+        }
+
+        return $boxes;
+    }
+
+    /**
+     * Where a box goes on the block checkout: the order section, or for the
+     * marketing box, when the merchant asks for it, right under the e-mail.
+     * Both locations store the answer in the same order meta,
+     * _wc_other/polski/<id>, so logging and review requests read it as before.
+     */
+    private function blockLocation(\Polski\Model\LegalCheckbox $checkbox): string
+    {
+        return $checkbox->id === 'marketing' && self::marketingNextToEmail() ? 'contact' : 'order';
+    }
+
+    public static function marketingNextToEmail(): bool
+    {
+        return ! empty(self::checkoutSettings()['marketing_checkbox_next_to_email']);
+    }
+
+    public static function acceptAllEnabled(): bool
+    {
+        return ! empty(self::checkoutSettings()['accept_all_checkbox_enabled']);
+    }
+
+    public static function acceptAllLabel(): string
+    {
+        $label = trim((string) (self::checkoutSettings()['accept_all_checkbox_label'] ?? ''));
+
+        return $label !== '' ? $label : __('Accept all', 'polski');
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function checkoutSettings(): array
+    {
+        $settings = get_option('polski_checkout', []);
+
+        return is_array($settings) ? $settings : [];
+    }
+
+    /**
+     * Block checkout: the "Accept all" box ticks and unticks the Polski boxes
+     * through the checkout data store, so each box keeps its own value,
+     * validation and log entry.
+     */
+    public function enqueueBlockAcceptAllScript(): void
+    {
+        if (! self::acceptAllEnabled() || ! function_exists('is_checkout') || ! is_checkout()) {
+            return;
+        }
+
+        // Registered by the block checkout only; the classic checkout has no
+        // "Accept all" box.
+        if (! wp_script_is('wc-blocks-checkout', 'registered')) {
+            return;
+        }
+
+        $ids = [];
+        $required = [];
+
+        foreach ($this->blockCheckoutBoxes() as $checkbox) {
+            $ids[] = 'polski/' . $checkbox->id;
+
+            if ($checkbox->isRequired()) {
+                $required['polski/' . $checkbox->id] = $checkbox->errorMessage;
+            }
+        }
+
+        if ($ids === []) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'polski-block-accept-all',
+            plugins_url('assets/js/block-checkout-accept-all.js', PLUGIN_FILE),
+            ['wc-blocks-checkout', 'wp-data'],
+            VERSION,
+            true,
+        );
+
+        wp_localize_script('polski-block-accept-all', 'polskiAcceptAll', [
+            'field' => self::ACCEPT_ALL_FIELD,
+            'boxes' => $ids,
+            // Error text per required box, for the error a box gets when
+            // "Accept all" unticks it, as it would when clicked.
+            'required' => (object) $required,
+        ]);
+    }
+
+    /**
+     * After a block checkout order: keep only real answers.
+     *
+     * - "Accept all" is not a consent, only a shortcut to the boxes, whose own
+     *   values are the record. WooCommerce stores it like any field, on the
+     *   order and in the shopper's session; drop it from both.
+     * - A box next to the e-mail is a contact field, which WooCommerce also
+     *   saves on the customer and fills in again at their next checkout. A
+     *   marketing consent must start unticked every time, so it is removed
+     *   from the customer. The order keeps it.
+     */
+    public function tidyBlockCheckoutFields(\WC_Order $order): void
+    {
+        if ($order->get_meta('_wc_other/' . self::ACCEPT_ALL_FIELD, true) !== '') {
+            $order->delete_meta_data('_wc_other/' . self::ACCEPT_ALL_FIELD);
+            $order->save();
+        }
+
+        $keys = ['_wc_other/' . self::ACCEPT_ALL_FIELD];
+
+        if (self::marketingNextToEmail()) {
+            $keys[] = '_wc_other/polski/marketing';
+        }
+
+        $customer = function_exists('WC') ? WC()->customer : null;
+
+        if ($customer instanceof \WC_Customer) {
+            foreach ($keys as $key) {
+                $customer->delete_meta_data($key);
+            }
+            $customer->save();
+        }
+
+        if ($order->get_customer_id() > 0) {
+            foreach ($keys as $key) {
+                delete_user_meta($order->get_customer_id(), $key);
+            }
         }
     }
 

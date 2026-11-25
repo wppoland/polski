@@ -144,6 +144,8 @@ return [
         // on every request, so renaming the shop updates it until the merchant
         // saves a label of their own.
         'marketing_checkbox_description' => __('Optional marketing consent.', 'polski'),
+        'marketing_checkbox_next_to_email' => false,
+        'accept_all_checkbox_enabled' => false,
     ],
 
     // Emails.
@@ -804,6 +806,7 @@ return [
         'nip' => true,
         'regon' => false,
         'iban' => false,
+        'block_buyer_type' => false,
     ],
 
     // Consent Manager: cookie banner, categories, Google Consent Mode v2.

@@ -430,6 +430,9 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_checkout|marketing_checkbox_enabled', 'label' => __('Marketing consent', 'polski'), 'type' => 'checkbox', 'default' => false],
                     ['key' => 'polski_checkout|marketing_checkbox_label', 'label' => __('Label - Marketing', 'polski'), 'type' => 'textarea', 'default' => sprintf( /* translators: %s: shop name */ __('I consent to receiving marketing communication and the newsletter from %s.', 'polski'), html_entity_decode((string) get_bloginfo('name'), ENT_QUOTES), )],
                     ['key' => 'polski_checkout|marketing_checkbox_description', 'label' => __('Description - Marketing', 'polski'), 'type' => 'text', 'default' => 'Optional marketing consent.'],
+                    ['key' => 'polski_checkout|marketing_checkbox_next_to_email', 'label' => __('Marketing consent next to the e-mail', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Block checkout: shows the marketing box right under the e-mail address instead of in the order section. It stays optional and unticked, and is stored as before.', 'polski')],
+                    ['key' => 'polski_checkout|accept_all_checkbox_enabled', 'label' => __('"Accept all" box', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('Block checkout: one box above the consent boxes that ticks or unticks all of them. Each consent is still its own box, checked and logged separately.', 'polski')],
+                    ['key' => 'polski_checkout|accept_all_checkbox_label', 'label' => __('Label - Accept all', 'polski'), 'type' => 'text', 'default' => __('Accept all', 'polski')],
                 ],
             ],
             [
@@ -443,6 +446,8 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_nip|nip_required', 'label' => __('NIP required on checkout', 'polski'), 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'polski_nip|field_label', 'label' => __('NIP field label', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Leave empty for "NIP" ("NIP or EU VAT ID" with the VIES module on).', 'polski')],
+                    ['key' => 'polski_b2b|block_buyer_type', 'label' => __('Ask "Buying as: Personal / Company" on the block checkout', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('A required choice under the e-mail. Company shows the company name and NIP fields, Personal hides them and does not require them. Set WooCommerce\'s own Company field to Hidden in the checkout block, or the form asks for the company twice.', 'polski')],
                     ['key' => 'polski_nip|gus_environment', 'label' => __('GUS API environment', 'polski'), 'type' => 'select', 'default' => 'test', 'options' => ['test' => __('Testing', 'polski'), 'production' => __('Production', 'polski')]],
                     ['key' => 'polski_nip|gus_api_key', 'label' => __('GUS API Key (production)', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('Request a key on the stat.gov.pl website. In test mode, a test key will be used.', 'polski')],
                 ],

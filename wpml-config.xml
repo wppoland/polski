@@ -10,6 +10,7 @@
       <key name="label" />
     </key>
     <key name="polski_checkout">
+      <key name="accept_all_checkbox_label" />
       <key name="age_verification_checkbox_description" />
       <key name="age_verification_checkbox_error" />
       <key name="age_verification_checkbox_label" />
@@ -183,6 +184,9 @@
     <key name="polski_minimum_order">
       <key name="min_quantity_message" />
       <key name="min_value_message" />
+    </key>
+    <key name="polski_nip">
+      <key name="field_label" />
     </key>
     <key name="polski_omnibus">
       <key name="display_text" />

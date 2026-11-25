@@ -56,6 +56,19 @@
 		if (data.city) {
 			next.city = data.city;
 		}
+		// With the "Buying as" choice on, the company name is its own field
+		// next to the NIP. Filled only while empty.
+		if (data.name && params.companyField) {
+			var fields = window.wp.data.select('wc/store/checkout');
+			var current = fields && typeof fields.getAdditionalFields === 'function' ? fields.getAdditionalFields() : {};
+
+			if (!current[params.companyField]) {
+				var patch = {};
+				patch[params.companyField] = data.name;
+				window.wp.data.dispatch('wc/store/checkout').setAdditionalFields(patch);
+			}
+		}
+
 		if (Object.keys(next).length === 0) {
 			return;
 		}
