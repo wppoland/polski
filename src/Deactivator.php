@@ -24,12 +24,17 @@ final class Deactivator
         'polski_daily_maintenance',
         'polski_store_health_check',
         'polski_cra_incident_deadline_check',
+        'polski_pro_ksef_offline_digest',
     ];
 
     public static function deactivate(): void
     {
         foreach (self::CRON_HOOKS as $hook) {
             wp_clear_scheduled_hook($hook);
+        }
+        // KSeF submissions and status checks run through Action Scheduler, not WP-Cron.
+        if (function_exists('as_unschedule_all_actions')) {
+            as_unschedule_all_actions('', [], 'polski-pro-ksef');
         }
         flush_rewrite_rules();
     }
