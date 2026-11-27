@@ -37,6 +37,9 @@ final class AdminPage implements Bootable, HasHooks
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
+        add_action('admin_menu', [$this, 'tuckMenuItems'], 9999);
+        add_action('admin_head', [$this, 'hideTuckedMenuItems']);
+        add_filter('submenu_file', [$this, 'highlightTucked']);
         $this->proUpsell()->registerHooks();
         add_filter('submenu_file', [$this, 'highlightPolskiShellSubmenu'], 10, 2);
         add_action('admin_init', [$this, 'fillHiddenPageTitle']);
@@ -438,6 +441,30 @@ final class AdminPage implements Bootable, HasHooks
      */
     private function renderModuleSettingsFormsList(ModulesPage $modulesPage, array $modules, string $groupSlug): void
     {
+        // Enabled modules first; switched-off ones fold away under one line, unless a link points at one of them.
+        $enabled = array_values(array_filter($modules, static fn (array $m): bool => ModulesPage::isModuleEnabled((string) $m['id'])));
+        $disabled = array_values(array_filter($modules, static fn (array $m): bool => ! ModulesPage::isModuleEnabled((string) $m['id'])));
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only anchor target.
+        $target = isset($_GET['module']) ? sanitize_key((string) wp_unslash($_GET['module'])) : '';
+
+        $this->renderModuleSettingsCards($modulesPage, $enabled, $groupSlug);
+        if ($disabled !== []) {
+            printf(
+                '<details class="polski-disabled-modules" style="margin-top:20px;"%s><summary style="cursor:pointer;font-size:14px;padding:12px 0;">%s</summary>',
+                in_array($target, array_column($disabled, 'id'), true) ? ' open' : '',
+                /* translators: %d: number of switched-off modules */
+                esc_html(sprintf(_n('%d switched-off module', '%d switched-off modules', count($disabled), 'polski'), count($disabled))),
+            );
+            $this->renderModuleSettingsCards($modulesPage, $disabled, $groupSlug);
+            echo '</details>';
+        }
+    }
+
+    /**
+     * @param array<int, array<string, mixed>> $modules
+     */
+    private function renderModuleSettingsCards(ModulesPage $modulesPage, array $modules, string $groupSlug): void
+    {
         foreach ($modules as $module) {
             $moduleId = (string) $module['id'];
             $isEnabled = ModulesPage::isModuleEnabled($moduleId);
@@ -662,6 +689,7 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;">';
             echo '<div>';
             $this->renderReportsOverview();
+            $this->renderTuckedTools();
             echo '</div>';
             $this->renderHelpSidebar('reports');
             $this->proUpsell()->aside();
@@ -1009,6 +1037,12 @@ final class AdminPage implements Bootable, HasHooks
         $pageStatus = $legalPages->getConfigurationStatus();
         $allPagesConfigured = ! in_array(false, $pageStatus, true);
         $configuredCount = count(array_filter($pageStatus));
+        // Legal texts hosted on another site (e.g. the main domain) count as published.
+        $externalLegal = (string) ($this->getGeneralSettings()['legal_pages_external_url'] ?? '');
+        $externalHost = $externalLegal !== '' ? (string) wp_parse_url($externalLegal, PHP_URL_HOST) : '';
+        if ($externalHost !== '') {
+            $allPagesConfigured = true;
+        }
         $anyPageExists = $configuredCount > 0 || $this->anyLegalPageDraftExists($legalPages);
 
         $omnibusSettings = get_option('polski_omnibus', []);
@@ -1076,7 +1110,10 @@ final class AdminPage implements Bootable, HasHooks
 
         $this->renderStatusCard(
             (string) ($generalSettings['admin_legal_pages_card_title'] ?? __('Legal Pages', 'polski')),
-            $configuredCount === 0
+            $externalHost !== ''
+                /* translators: %s: host name of the site with the legal pages */
+                ? sprintf(__('Published on %s', 'polski'), $externalHost)
+                : ($configuredCount === 0
                 ? (string) ($generalSettings['admin_status_unconfigured'] ?? __('Not configured', 'polski'))
                 : str_replace(
                     ['{done}', '{total}'],
@@ -1084,7 +1121,7 @@ final class AdminPage implements Bootable, HasHooks
                     (string) ($generalSettings['admin_legal_pages_card_progress'] ?? '')
                         /* translators: 1: number of configured legal pages, 2: total number of required legal pages. */
                         ?: sprintf(__('%1$d of %2$d ready', 'polski'), $configuredCount, count($pageStatus)),
-                ),
+                )),
             $allPagesConfigured,
         );
 
@@ -1249,15 +1286,19 @@ final class AdminPage implements Bootable, HasHooks
 
         // 3. Shipping zones.
         $shippingZones = function_exists('WC') ? \WC_Shipping_Zones::get_zones() : [];
-        /* translators: %s: shipping settings URL */
-        $shippingText = __('Configure <a href="%s">shipping zones</a> for deliveries in Poland.', 'polski');
-        $steps[] = [
-            'html' => sprintf(
-                (string) ($generalSettings['admin_next_steps_shipping'] ?? $shippingText),
-                esc_url(admin_url('admin.php?page=wc-settings&tab=shipping')),
-            ),
-            'done' => count($shippingZones) > 0,
-        ];
+        // A shop of only virtual products (tickets, downloads) ships nothing.
+        $shipsGoods = function_exists('wc_get_products') && wc_get_products(['status' => 'publish', 'virtual' => false, 'limit' => 1, 'return' => 'ids']) !== [];
+        if ($shipsGoods) {
+            /* translators: %s: shipping settings URL */
+            $shippingText = __('Configure <a href="%s">shipping zones</a> for the countries you ship to.', 'polski');
+            $steps[] = [
+                'html' => sprintf(
+                    (string) ($generalSettings['admin_next_steps_shipping'] ?? $shippingText),
+                    esc_url(admin_url('admin.php?page=wc-settings&tab=shipping')),
+                ),
+                'done' => count($shippingZones) > 0,
+            ];
+        }
 
         // 4. Product data.
         /* translators: %s: product list URL */
@@ -1400,5 +1441,61 @@ final class AdminPage implements Bootable, HasHooks
         ]);
 
         wp_set_script_translations('polski-admin', 'polski', \Polski\PLUGIN_DIR . '/languages');
+    }
+
+    /** Menu items that stay in the Polski menu; every other screen is listed under Reports & Tools. */
+    private const MENU_KEEP = [self::PAGE_SLUG, self::PAGE_SLUG . '-modules', self::PAGE_SLUG . '-reports', 'polski-settings', 'polski-quotes', 'polski-gpsr-profiles', 'polski-pro'];
+
+    /** @var list<array{title: string, slug: string}> Screens taken out of the menu, kept reachable. */
+    private array $tucked = [];
+
+    /**
+     * Keeps the Polski menu to Dashboard, Modules, Reports & Tools and Settings (plus the quote and GPSR lists, PRO activation, post type lists
+     * and the account screen). Module screens register under the menu; they stay registered, so their
+     * URLs and hooks work, and are only hidden from the menu and linked from Reports & Tools.
+     */
+    public function tuckMenuItems(): void
+    {
+        global $submenu;
+
+        foreach ((array) ($submenu[self::PAGE_SLUG] ?? []) as $item) {
+            $slug = (string) ($item[2] ?? '');
+            if (in_array($slug, self::MENU_KEEP, true) || str_contains($slug, '.php') || str_contains($slug, 'account') || str_contains($slug, 'pricing')) {
+                continue;
+            }
+            $this->tucked[] = ['title' => trim(wp_strip_all_tags((string) $item[0])), 'slug' => $slug];
+        }
+    }
+
+    public function hideTuckedMenuItems(): void
+    {
+        if ($this->tucked === []) {
+            return;
+        }
+        $selectors = array_map(
+            static fn (array $t): string => '#adminmenu .wp-submenu li:has(> a[href="admin.php?page=' . esc_attr($t['slug']) . '"])',
+            $this->tucked,
+        );
+        echo '<style>' . implode(',', $selectors) . '{display:none}</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- slugs escaped above.
+    }
+
+    /** A tucked screen highlights Reports & Tools in the menu. */
+    public function highlightTucked(?string $file): ?string
+    {
+        global $plugin_page;
+
+        return is_string($plugin_page) && in_array($plugin_page, array_column($this->tucked, 'slug'), true) ? self::PAGE_SLUG . '-reports' : $file;
+    }
+
+    private function renderTuckedTools(): void
+    {
+        if ($this->tucked === []) {
+            return;
+        }
+        echo '<h2 style="margin-top:28px;">' . esc_html__('More screens', 'polski') . '</h2><ul style="columns:2;max-width:640px;">';
+        foreach ($this->tucked as $item) {
+            echo '<li><a href="' . esc_url(admin_url('admin.php?page=' . $item['slug'])) . '">' . esc_html($item['title']) . '</a></li>';
+        }
+        echo '</ul>';
     }
 }

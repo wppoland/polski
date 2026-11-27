@@ -13,6 +13,11 @@ PO_PATH = ROOT / "languages" / "polski-pl_PL.po"
 # Singular: msgid -> msgstr (Polish). msgid already in Polish uses identical msgstr.
 SINGULAR: dict[str, str] = {
     "od {price}": "od {price}",
+    "Legal pages on another site": "Strony prawne w innej witrynie",
+    "When your terms and privacy policy live on another site (for example your main domain), enter where. The dashboard then counts the legal pages as published.": "Jeśli regulamin i polityka prywatności są w innej witrynie (na przykład w domenie głównej), wpisz adres. Pulpit uzna wtedy strony prawne za opublikowane.",
+    "Published on %s": "Opublikowane na %s",
+    "Configure <a href=\"%s\">shipping zones</a> for the countries you ship to.": "Skonfiguruj <a href=\"%s\">strefy wysyłki</a> dla krajów, do których wysyłasz.",
+    "More screens": "Pozostałe ekrany",
     "EU VAT ID check (VIES)": "Weryfikacja numeru VAT UE (VIES)",
     "Your own VAT number": "Twój numer VAT",
     "Cache answers for (hours)": "Pamiętaj odpowiedzi przez (godziny)",

@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.50.4
+Stable tag: 1.51.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,13 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.51.0 =
+* Improved: the Polski menu keeps Dashboard, Modules, Reports & Tools and Settings (plus the quote and GPSR lists). The other screens (compliance checklist, withdrawal and JPK reports) are listed under Reports & Tools > More screens and keep their addresses.
+* Improved: on the Settings tabs, switched-off modules fold under one line; a link to one of them opens it.
+* Improved: wider text areas in module settings.
+* Added: "Legal pages on another site" (Legal pages module). With it, the dashboard counts the legal pages as published.
+* Changed: the dashboard asks for shipping zones only when the shop sells physical products, and no longer says "in Poland".
 
 = 1.50.4 =
 * Improved: module settings cards. Each field's label sits once, beside the field; the description shows its first sentence with the rest under "How it works"; the module can be switched on or off in its own card.
