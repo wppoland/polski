@@ -286,13 +286,12 @@ With the VAT ID (NIP) lookup module on, typing a valid NIP into the NIP field fe
 * Terms of service: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
 * Privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
 
-= NBP exchange rates (Narodowy Bank Polski) =
+= NBP exchange rates =
 
-With the KSeF readiness module on, the dashboard cards for the 10 000 zł KSeF and 20 000 zł cash register limits convert orders in another currency to PLN at the current NBP table A rate, fetched at most once a day per currency.
+With the KSeF readiness module on, the limit cards convert other currencies at the NBP table A rate, fetched at most daily.
 
-* Data sent: the currency code only.
-* Service address: [https://api.nbp.pl/](https://api.nbp.pl/)
-* Terms of use: [https://api.nbp.pl/en.html](https://api.nbp.pl/en.html)
+* Data sent: the currency code.
+* Service address, terms: [https://api.nbp.pl/](https://api.nbp.pl/)
 * Privacy policy: [https://nbp.pl/en/privacy-policy/](https://nbp.pl/en/privacy-policy/)
 
 = VIES (European Commission) =
@@ -353,7 +352,7 @@ When the DataLayer module is enabled and a GTM container ID or a GA4 measurement
 
 = Tracking tags (advertising and analytics) =
 
-When the Tracking Tags module is enabled, each provider below loads only if you switch it on and enter your own ID, key or domain. Its script is placed in the page as an inert placeholder and runs in the visitor's browser only after the visitor grants the matching consent category in the cookie banner (marketing for advertising pixels, analytics for measurement tools). Nothing is sent from your server.
+When the Tracking Tags module is enabled, each provider below loads only if you switch it on and enter your own ID, key or domain. Its script runs in the visitor's browser only after the matching consent in the cookie banner (marketing for pixels, analytics for measurement). Nothing is sent from your server.
 
 * Data sent: the page address, referrer, browser and device data, the visitor's IP address and the provider's own cookie identifiers, plus a page-view event. The plugin sends no order or customer data through these tags.
 * Meta Pixel: [https://connect.facebook.net/](https://connect.facebook.net/), [terms](https://www.facebook.com/legal/terms/businesstools), [privacy policy](https://www.facebook.com/privacy/policy/)
@@ -393,10 +392,10 @@ The optional AI features do not call a provider themselves: they hand a prompt t
 The Store health monitor and the CRA incident log (security.txt module settings) can post to a webhook address you enter. Nothing is sent unless you fill in that address.
 
 * Store health monitor: an alert text with the store status and the failed checks, sent as JSON to your webhook URL.
-* CRA incident log: the incident record you dispatch (reference, type, severity, status, title, summary, affected component and versions, dates, reporter and notes), sent as JSON to your webhook URL.
+* CRA incident log: the incident record you dispatch, sent as JSON to your webhook URL.
 * The receiving service is the one you choose; its terms and privacy policy apply.
 
-Admin-panel feedback and deactivation-form information are stored locally in WordPress and are not sent to an external service.
+Admin feedback and deactivation answers stay in WordPress.
 
 == Screenshots ==
 
@@ -606,24 +605,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Changed: Omnibus settings warn when the lowest-price period is below 30 days, and the "Today" and "Show current price" options are labelled as not compliant with art. 6a(2) Directive 98/6/EC. Defaults are unchanged.
 * Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
 * Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the optional AI features, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
-
-= 1.42.0 =
-* Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.
-* Fixed: With "Omnibus: Cart" on, a block-theme shop page and the product page price showed the Omnibus notice twice. Cart cross-sells now follow the "product lists" Omnibus setting like every other grid; cart items keep the "Cart" setting.
-* Fixed: Block themes: product badges and a featured video set to "before summary" landed above the breadcrumbs on the product page. Both now sit with the image gallery. Badges also show on Product Collection cards outside the shop archive, and replace the Product Sale Badge block where Polski shows its own sale badge.
-* Fixed: Wishlist, Compare and Quick View buttons were missing from Product Collection grids outside the shop archive, and their scripts did not load there. Each card gets one button per feature.
-* Fixed: Social login buttons now show above the Checkout block, which fires none of the classic checkout hooks.
-* Fixed: Product authors now show on Product Collection cards outside the shop archive.
-
-= 1.41.8 =
-* Fixed: The iworks Omnibus import read the raw WooCommerce sale field, so a sale that was only scheduled counted as a price the product sold at, and its sale rows were never closed. It now takes the selling price, imports only what lies before Polski's own history for a product, and on upgrade removes the rows 1.41.7 imported wrongly. On some products these made the lowest price equal the running sale price.
-
-= 1.41.7 =
-* Fixed: The Omnibus lowest price now shows on single product pages built with an Elementor Pro template, which replaces the WooCommerce summary hook the notice was attached to. It is placed under the price widget, once, also when the template carries the Polski Omnibus widget.
-* Added: Import of the price history kept by the Omnibus plugin by iworks (v2 meta and v3 price log), run once on upgrade and on demand with `wp polski import-iworks`, so a shop switching to Polski keeps its 30-day window.
-
-= 1.41.6 =
-* Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
