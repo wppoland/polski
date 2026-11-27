@@ -546,6 +546,7 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => '_legal_pages_link', 'label' => '', 'type' => 'html', 'html' => '<a href="' . admin_url('admin.php?page=polski&tab=dashboard') . '">' . __('Manage legal pages on Dashboard &rarr;', 'polski') . '</a>'],
+                    ['key' => 'polski_general|legal_pages_external_url', 'label' => __('Legal pages on another site', 'polski'), 'type' => 'text', 'default' => '', 'placeholder' => 'https://example.com/legal/', 'hint' => __('When your terms and privacy policy live on another site (for example your main domain), enter where. The dashboard then counts the legal pages as published.', 'polski')],
                 ],
             ],
             [
@@ -623,7 +624,7 @@ final class ModulesPage implements HasHooks
                     ['key' => 'polski_general|admin_next_steps_title', 'label' => __('Next steps title', 'polski'), 'type' => 'text', 'default' => 'Next steps'],
                     ['key' => 'polski_general|admin_next_steps_publish_pages', 'label' => __('Step - publish pages', 'polski'), 'type' => 'text', 'default' => 'Publish your legal pages: Terms and Conditions, Privacy Policy, Right of Withdrawal and Complaints.'],
                     ['key' => 'polski_general|admin_next_steps_tax', 'label' => __('Step - VAT rates', 'polski'), 'type' => 'textarea', 'default' => 'Configure <a href="%s">VAT rates</a> in WooCommerce for the Polish market: 23%%, 8%%, 5%% and 0%%.'],
-                    ['key' => 'polski_general|admin_next_steps_shipping', 'label' => __('Step - shipping zones', 'polski'), 'type' => 'textarea', 'default' => 'Configure <a href="%s">shipping zones</a> for deliveries in Poland.'],
+                    ['key' => 'polski_general|admin_next_steps_shipping', 'label' => __('Step - shipping zones', 'polski'), 'type' => 'textarea', 'default' => 'Configure <a href="%s">shipping zones</a> for the countries you ship to.'],
                     ['key' => 'polski_general|admin_next_steps_products', 'label' => __('Step - product data', 'polski'), 'type' => 'textarea', 'default' => 'Complete product data, add unit prices and delivery times in the <a href="%s">Polski tab</a> for each product.'],
                     ['key' => 'polski_general|admin_next_steps_checkout', 'label' => __('Step - checkout test', 'polski'), 'type' => 'textarea', 'default' => 'Test the checkout, add a product to the cart and check the legal checkboxes and button text on the <a href="%s">order page</a>.'],
                     ['key' => 'polski_general|admin_omnibus_plugin_detected_text', 'label' => __('Omnibus plugin detected status', 'polski'), 'type' => 'text', 'default' => 'detected, data synchronized'],
@@ -2278,7 +2279,7 @@ final class ModulesPage implements HasHooks
                 );
             } elseif ($type === 'textarea') {
                 printf(
-                    '<textarea id="%s" name="%s" rows="3" class="polski-field__control polski-field__control--textarea">%s</textarea>',
+                    '<textarea id="%s" name="%s" rows="' . ($tableRow ? '4' : '3') . '" class="' . ($tableRow ? 'large-text ' : '') . 'polski-field__control polski-field__control--textarea">%s</textarea>',
                     esc_attr($inputId),
                     esc_attr($inputName),
                     esc_textarea((string) $currentValue),

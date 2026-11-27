@@ -2,6 +2,13 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.51.0 =
+* Improved: the Polski menu keeps Dashboard, Modules, Reports & Tools and Settings (plus the quote and GPSR lists). The other screens (compliance checklist, withdrawal and JPK reports) are listed under Reports & Tools > More screens and keep their addresses.
+* Improved: on the Settings tabs, switched-off modules fold under one line; a link to one of them opens it.
+* Improved: wider text areas in module settings.
+* Added: "Legal pages on another site" (Legal pages module). With it, the dashboard counts the legal pages as published.
+* Changed: the dashboard asks for shipping zones only when the shop sells physical products, and no longer says "in Poland".
+
 = 1.50.4 =
 * Improved: module settings cards. Each field's label sits once, beside the field; the description shows its first sentence with the rest under "How it works"; the module can be switched on or off in its own card.
 * Improved: EU VAT ID check (VIES) uses your company NIP from the general settings as your own VAT number when that field is empty, so checks return a consultation number without extra setup.
