@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.50.4 =
+* Improved: module settings cards. Each field's label sits once, beside the field; the description shows its first sentence with the rest under "How it works"; the module can be switched on or off in its own card.
+* Improved: EU VAT ID check (VIES) uses your company NIP from the general settings as your own VAT number when that field is empty, so checks return a consultation number without extra setup.
+* Translations: Polish texts for the VIES module.
+
 = 1.50.3 =
 * Readme: consent checkboxes on the block checkout, the early-service and age (18+) consents, and when the VAT ID (NIP) lookup connects to GUS REGON are described as the plugin does them. No code change.
 
