@@ -607,28 +607,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
 * Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the optional AI features, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
 
-= 1.42.0 =
-* Fixed: On block themes, Product Collection grids outside the shop archive (a homepage grid, related products, cart cross-sells) showed no unit price, no Omnibus 30-day lowest price, no delivery time and no brand. WooCommerce fires the classic loop hooks there only for the shop grid, so these now follow the price block of every other grid, once per card.
-* Fixed: With "Omnibus: Cart" on, a block-theme shop page and the product page price showed the Omnibus notice twice. Cart cross-sells now follow the "product lists" Omnibus setting like every other grid; cart items keep the "Cart" setting.
-* Fixed: Block themes: product badges and a featured video set to "before summary" landed above the breadcrumbs on the product page. Both now sit with the image gallery. Badges also show on Product Collection cards outside the shop archive, and replace the Product Sale Badge block where Polski shows its own sale badge.
-* Fixed: Wishlist, Compare and Quick View buttons were missing from Product Collection grids outside the shop archive, and their scripts did not load there. Each card gets one button per feature.
-* Fixed: Social login buttons now show above the Checkout block, which fires none of the classic checkout hooks.
-* Fixed: Product authors now show on Product Collection cards outside the shop archive.
-
-= 1.41.8 =
-* Fixed: The iworks Omnibus import read the raw WooCommerce sale field, so a sale that was only scheduled counted as a price the product sold at, and its sale rows were never closed. It now takes the selling price, imports only what lies before Polski's own history for a product, and on upgrade removes the rows 1.41.7 imported wrongly. On some products these made the lowest price equal the running sale price.
-
-= 1.41.7 =
-* Fixed: The Omnibus lowest price now shows on single product pages built with an Elementor Pro template, which replaces the WooCommerce summary hook the notice was attached to. It is placed under the price widget, once, also when the template carries the Polski Omnibus widget.
-* Added: Import of the price history kept by the Omnibus plugin by iworks (v2 meta and v3 price log), run once on upgrade and on demand with `wp polski import-iworks`, so a shop switching to Polski keeps its 30-day window.
-
-= 1.41.6 =
-* Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.
-
-Only the most recent releases are listed here. The full history is on the plugin's changelog
-page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
-and in changelog.txt inside the plugin folder. WordPress.org silently truncates
-a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
 
