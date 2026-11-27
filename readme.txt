@@ -604,13 +604,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Fixed: the withdrawal form lost its "Step 1. Choose the items to withdraw from" heading as soon as the settings were saved once. The settings default said "Order items", so saving wrote that over the template's heading; both defaults now match the form.
 * Fixed: the KSeF badge on the orders list stayed amber for an invoice KSeF had accepted. Polski PRO records an accepted invoice as "accepted", and the badge only turned green for "sent"; it is green for both now.
 
-= 1.41.1 =
-* Fixed: the Elementor widgets (unit price, Omnibus price, tax, delivery time, GPSR, food, AJAX search, filters, product slider) never appeared in Elementor. The class that registers them was defined but had not been booted since April 2026. They now appear in the "Polski for WooCommerce" category and render through the same code as their shortcodes.
-* Fixed: with Google for WooCommerce active, Polski now adds the product's GTIN (when Google for WooCommerce has none), manufacturer as brand, and unit pricing to the Google product. This integration had also not been booted since April 2026, and when switched back on it would have stopped every product sync with a type error; it is corrected to the filter's real arguments and to the attribute names Google expects.
-* Changed: the CartFlows compatibility class is booted again and only acts when the Legal checkboxes module is on.
-* Fixed: the daily maintenance job (Omnibus history pruning, double opt-in cleanup, scheduled review requests) was scheduled only on activation, so an update that copied files without reactivating left it unscheduled. It is now restored on every load when missing.
-* Removed: an empty Dynamic Pricing compatibility class whose two callbacks did nothing.
-
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
 and in changelog.txt inside the plugin folder. WordPress.org silently truncates
