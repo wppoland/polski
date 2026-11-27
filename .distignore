@@ -80,3 +80,4 @@ glotpress-import/
 
 # Release gate marker, never part of the plugin
 RELEASE-BLOCKED
+tools

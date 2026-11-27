@@ -82,6 +82,8 @@ final class InvoiceService
             $dueAt,
         );
 
+        $this->repository->mirrorForKSeF($invoice->id, $order, $snapshot, $totals);
+
         $order->add_order_note(sprintf(
             /* translators: %s: invoice number */
             __('Invoice %s issued.', 'polski'),

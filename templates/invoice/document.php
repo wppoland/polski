@@ -24,6 +24,13 @@ $polski_currency = (string) ($polski_payment['currency'] ?? 'PLN');
 // An empty VAT summary means the margin scheme: no net or VAT figures anywhere.
 $polski_show_vat = $polski_vat !== [];
 
+// KSeF number and QR codes once the invoice went to KSeF (or was issued offline).
+$polski_ksef = null;
+if (class_exists(\Polski\KSeF\Repository\InvoiceRepository::class) && \Polski\Plugin::instance()->container()->has(\Polski\KSeF\Repository\InvoiceRepository::class)) {
+    $polski_ksef = \Polski\Plugin::instance()->container()->get(\Polski\KSeF\Repository\InvoiceRepository::class)->findById($invoice->id);
+}
+$polski_ksef_codes = $polski_ksef !== null ? \Polski\KSeF\V2\VerificationLink::codes($polski_ksef) : [];
+
 $polski_money = static function (float $amount) use ($polski_currency): string {
     return number_format_i18n($amount, 2) . ' ' . $polski_currency;
 };
@@ -173,6 +180,19 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
                 )))); ?></strong>
 			</div>
 		</div>
+
+		<?php if ($polski_ksef_codes !== []) : ?>
+			<div class="polski-invoice__ksef">
+				<?php foreach ($polski_ksef_codes as $polski_code) : ?>
+					<figure style="display:inline-block;margin:0 16px 0 0;text-align:center;">
+						<div style="width:<?php echo esc_attr((string) $polski_code['size']); ?>mm;height:<?php echo esc_attr((string) $polski_code['size']); ?>mm;">
+							<?php echo wp_kses(\Polski\KSeF\V2\VerificationLink::svg($polski_code['url']), ['svg' => ['xmlns' => true, 'class' => true, 'viewbox' => true, 'preserveaspectratio' => true], 'path' => ['class' => true, 'fill' => true, 'd' => true]]); ?>
+						</div>
+						<figcaption style="font-size:9px;"><?php echo esc_html($polski_code['label']); ?></figcaption>
+					</figure>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
 		<footer class="polski-invoice__meta">
 			<?php if ('' !== (string) ($polski_payment['method'] ?? '')) : ?>

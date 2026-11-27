@@ -168,6 +168,8 @@ final class InvoiceDataBuilder
             $tax = (float) $item->get_total_tax();
             $lines[] = [
                 'name'     => $item->get_name(),
+                // The variation when there is one: KSeF reads the product's GTU, exemption and service flag from it or its parent.
+                'product_id' => (int) ($item->get_variation_id() ?: $item->get_product_id()),
                 'gtu'      => Gtu::forProduct((int) $item->get_product_id()),
                 'quantity' => (float) $item->get_quantity(),
                 'net'      => $net,

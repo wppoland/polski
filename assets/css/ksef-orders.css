@@ -1,0 +1,225 @@
+/* KSeF status on the order screen and the orders list. */
+
+.polski-ksef-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: #f0f0f1;
+    color: #50575e;
+    cursor: help;
+}
+
+.polski-ksef-badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+}
+
+.polski-ksef-badge.is-info { background: #e5f0fa; color: #135e96; }
+.polski-ksef-badge.is-success { background: #e7f5ea; color: #1a6b32; }
+.polski-ksef-badge.is-warning { background: #fcf3e0; color: #8a5a00; }
+.polski-ksef-badge.is-error { background: #fbeaea; color: #a1231b; }
+
+.polski-ksef-badge.is-info::before {
+    animation: polski-ksef-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes polski-ksef-pulse {
+    50% { opacity: .35; }
+}
+
+.polski-ksef-env {
+    display: inline-block;
+    padding: 0 6px;
+    border: 1px solid #dba617;
+    border-radius: 4px;
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: #8a5a00;
+    vertical-align: middle;
+    cursor: help;
+}
+
+.polski-ksef-env.is-production {
+    border-color: #c3c4c7;
+    color: #50575e;
+}
+
+.column-polski_ksef {
+    width: 11ch;
+}
+
+/* Metabox */
+
+.polski-ksef-box p {
+    margin: 0 0 6px;
+}
+
+.polski-ksef-hint,
+.polski-ksef-empty {
+    color: #646970;
+    font-size: 12px;
+}
+
+.polski-ksef-invoice,
+.polski-ksef-refunds {
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f1;
+}
+
+.polski-ksef-invoice:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.polski-ksef-type {
+    color: #646970;
+    font-size: 12px;
+}
+
+.polski-ksef-number {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
+    color: #646970;
+}
+
+.polski-ksef-number code {
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    word-break: break-all;
+    user-select: all;
+}
+
+.polski-ksef-error {
+    padding: 6px 8px;
+    border-left: 3px solid #d63638;
+    background: #fcf0f1;
+    font-size: 12px;
+}
+
+.polski-ksef-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.polski-ksef-refund {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polski-ksef-badge.is-info::before {
+        animation: none;
+    }
+}
+
+/* KSeF settings, offline mode. Only opacity and transform move (UX.md 2). */
+
+.polski-ksef-offline-modes {
+    --polski-ksef-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --polski-ksef-dur-small: 180ms;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+    transition: opacity var(--polski-ksef-dur-small) ease;
+}
+
+.polski-ksef-offline-modes:disabled {
+    opacity: .55;
+}
+
+/* The outage fields stay in place and usable; they only recede while the switch is off. */
+.polski-ksef-outage-fields {
+    transition: opacity var(--polski-ksef-dur-small) ease, transform var(--polski-ksef-dur-small) var(--polski-ksef-ease-out);
+}
+
+.polski-ksef-outage:not(:has(.polski-ksef-outage-toggle:checked)) .polski-ksef-outage-fields {
+    opacity: .6;
+    transform: translateY(-2px);
+}
+
+.polski-ksef-offline {
+    margin: 4px 0;
+    color: #135e96;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polski-ksef-outage-fields {
+        transition: opacity var(--polski-ksef-dur-small) ease;
+    }
+
+    .polski-ksef-outage:not(:has(.polski-ksef-outage-toggle:checked)) .polski-ksef-outage-fields {
+        transform: none;
+    }
+}
+
+.polski-ksef-filter {
+    margin: 0 8px;
+}
+
+/* KSeF settings: one picker for the certificate and key, a two-line status, and a fold for pasting text. */
+
+.polski-ksef-file-row {
+    margin: 8px 0 6px;
+}
+
+.polski-ksef-file-list {
+    margin: 0 0 8px;
+}
+
+.polski-ksef-file-list li {
+    margin: 0 0 2px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.polski-ksef-file-list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+}
+
+.polski-ksef-file-list .is-ok {
+    color: #00a32a;
+}
+
+.polski-ksef-file-list .is-ok::before {
+    content: "\2713";
+}
+
+.polski-ksef-file-list .is-missing {
+    color: #646970;
+}
+
+.polski-ksef-file-list .is-missing::before {
+    content: "\2022";
+}
+
+.polski-ksef-paste summary {
+    cursor: pointer;
+    color: #2271b1;
+    margin: 6px 0;
+}
+
+/* The file input is visually hidden behind its button label; show keyboard focus on the button. */
+.polski-ksef-file-row:has(.polski-ksef-files:focus-visible) .button {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2271b1;
+}

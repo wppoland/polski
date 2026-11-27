@@ -563,6 +563,28 @@ return static function (Container $c): void {
         $c->get(\Polski\Service\DSAService::class),
         $c->get(TemplateLoader::class),
     ));
+    // KSeF 2.0. The client is built per job from the stored certificate, so a
+    // credential change takes effect without a request-scoped singleton going stale.
+    $c->singleton(\Polski\KSeF\Repository\InvoiceRepository::class, static function () {
+        global $wpdb;
+        return new \Polski\KSeF\Repository\InvoiceRepository($wpdb);
+    });
+    $c->singleton(\Polski\KSeF\KSeFSyncService::class, static fn () => new \Polski\KSeF\KSeFSyncService(
+        $c->get(\Polski\KSeF\Repository\InvoiceRepository::class),
+        new \Polski\KSeF\V2\FaMapper(),
+        new \Polski\KSeF\V2\FaValidator(),
+        static fn (string $nip): ?\Polski\KSeF\V2\ApiClient => \Polski\KSeF\V2\ApiClient::fromSettings($nip),
+    ));
+    $c->singleton(\Polski\KSeF\KSeFSettingsPage::class, static fn () => new \Polski\KSeF\KSeFSettingsPage($c->get(\Polski\KSeF\KSeFSyncService::class)));
+    $c->singleton(\Polski\KSeF\KSeFSiteHealth::class, static fn () => new \Polski\KSeF\KSeFSiteHealth());
+    $c->singleton(\Polski\KSeF\Admin\KSeFOrderBox::class, static fn () => new \Polski\KSeF\Admin\KSeFOrderBox(
+        $c->get(\Polski\KSeF\KSeFSyncService::class),
+        $c->get(\Polski\KSeF\Repository\InvoiceRepository::class),
+    ));
+    $c->singleton(\Polski\KSeF\Admin\KSeFOrderColumn::class, static fn () => new \Polski\KSeF\Admin\KSeFOrderColumn(
+        $c->get(\Polski\KSeF\Repository\InvoiceRepository::class),
+        $c->get(\Polski\Service\KSeFReadyService::class),
+    ));
     $c->singleton(DSAProductReportHooks::class, static fn () => new DSAProductReportHooks(
         $c->get(DSAProductReportService::class),
     ));

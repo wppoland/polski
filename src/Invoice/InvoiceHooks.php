@@ -34,7 +34,8 @@ final class InvoiceHooks implements HasHooks
         }
 
         add_action('admin_post_' . self::ISSUE_ACTION, [$this, 'handleIssue']);
-        add_action('template_redirect', [$this, 'maybeRenderInvoice']);
+        // Early: a theme or plugin that redirects the front page (one-page checkout) would swallow the link.
+        add_action('template_redirect', [$this, 'maybeRenderInvoice'], 1);
 
         // Order screen: HPOS and the classic post table use different hooks.
         add_action('woocommerce_admin_order_data_after_order_details', [$this, 'renderOrderPanel']);

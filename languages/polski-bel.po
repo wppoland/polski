@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-11-27T19:44:12+00:00\n"
+"POT-Creation-Date: 2026-11-27T21:37:51+00:00\n"
 "PO-Revision-Date: 2026-06-27 12:04:17+0000\n"
 "Language: be_BY\n"
 "MIME-Version: 1.0\n"
@@ -139,6 +139,7 @@ msgid "Page published"
 msgstr "Апублікаваная"
 
 #: config/defaults.php:39 src/Admin/AdminPage.php:1203
+#: src/KSeF/Model/InvoiceStatus.php:18
 msgid "Draft"
 msgstr "Чарнавік"
 
@@ -1629,6 +1630,7 @@ msgstr "Модулі"
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:28
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:34
+#: src/KSeF/KSeFSettingsPage.php:233
 msgid "Settings"
 msgstr "Налады"
 
@@ -2082,8 +2084,8 @@ msgstr "%1$d з %2$d гатова"
 msgid "Omnibus Directive"
 msgstr "Дырэктыва Omnibus"
 
-#: src/Admin/AdminPage.php:1146 templates/invoice/document.php:107
-#: templates/invoice/document.php:143
+#: src/Admin/AdminPage.php:1146 templates/invoice/document.php:114
+#: templates/invoice/document.php:150
 msgid "VAT"
 msgstr ""
 
@@ -2386,7 +2388,7 @@ msgstr "Заяўнік"
 msgid "External reference ID"
 msgstr "Знешні ідэнтыфікатар спасылкі"
 
-#: src/Admin/CRAIncidentsPage.php:251
+#: src/Admin/CRAIncidentsPage.php:251 src/KSeF/KSeFSettingsPage.php:455
 msgid "Kind"
 msgstr "Від"
 
@@ -4201,7 +4203,7 @@ msgstr "Асяроддзе API GUS"
 msgid "Testing"
 msgstr "Тэставае"
 
-#: src/Admin/ModulesPage.php:455
+#: src/Admin/ModulesPage.php:455 src/KSeF/Admin/KSeFOrderBox.php:235
 msgid "Production"
 msgstr "Прадукцыйнае"
 
@@ -6104,7 +6106,7 @@ msgstr "Паказваць загаловак"
 
 #: src/Admin/ModulesPage.php:1107 src/Admin/ModulesPage.php:1990
 #: src/AIFeed/ProductMarkdownBuilder.php:127 src/Service/DSAService.php:200
-#: templates/forms/dsa-report.php:114 templates/invoice/document.php:103
+#: templates/forms/dsa-report.php:114 templates/invoice/document.php:110
 msgid "Description"
 msgstr "Апісанне"
 
@@ -7944,6 +7946,7 @@ msgid "<script>...</script> or inline JS"
 msgstr "<script>...</script> або ўбудаваны JS"
 
 #: src/Admin/ModulesPage.php:2496 src/Admin/ModulesPage.php:2581
+#: src/KSeF/KSeFSettingsPage.php:351 src/KSeF/KSeFSettingsPage.php:417
 msgid "Remove"
 msgstr "Выдаліць"
 
@@ -7976,6 +7979,7 @@ msgid "Sorry, you are not allowed to access this page."
 msgstr "Прабачце, у вас няма доступу да гэтай старонкі."
 
 #: src/Admin/ModulesPage.php:2730 src/Admin/ModulesPage.php:2746
+#: src/KSeF/KSeFSettingsPage.php:478 src/KSeF/KSeFSettingsPage.php:615
 msgid "Invalid request."
 msgstr "Несапраўдны запыт."
 
@@ -9197,7 +9201,7 @@ msgstr "У краме / асабіста"
 msgid "Reason / notes"
 msgstr "Прычына / нататкі"
 
-#: src/Admin/WithdrawalsAdminPage.php:440 src/Invoice/InvoiceHooks.php:116
+#: src/Admin/WithdrawalsAdminPage.php:440 src/Invoice/InvoiceHooks.php:117
 #: src/Service/WithdrawalService.php:920
 msgid "Order not found."
 msgstr "Замова не знойдзена."
@@ -10098,6 +10102,7 @@ msgid "In progress"
 msgstr "У працэсе"
 
 #: src/Enum/ReturnRequestStatus.php:22 src/Enum/WithdrawalStatus.php:20
+#: src/KSeF/Admin/KSeFOrderColumn.php:217
 msgid "Rejected"
 msgstr "Адхілена"
 
@@ -10262,19 +10267,19 @@ msgstr ""
 msgid "VAT exemption: %s"
 msgstr ""
 
-#: src/Invoice/InvoiceHooks.php:60 src/Invoice/InvoiceHooks.php:96
+#: src/Invoice/InvoiceHooks.php:61 src/Invoice/InvoiceHooks.php:97
 msgid "Invoice"
 msgstr ""
 
-#: src/Invoice/InvoiceHooks.php:74
+#: src/Invoice/InvoiceHooks.php:75
 msgid "Issue invoice"
 msgstr ""
 
-#: src/Invoice/InvoiceHooks.php:108
+#: src/Invoice/InvoiceHooks.php:109
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: src/Invoice/InvoiceHooks.php:147
+#: src/Invoice/InvoiceHooks.php:148
 msgid "This invoice is not available."
 msgstr ""
 
@@ -10283,9 +10288,1115 @@ msgid "Could not allocate an invoice number. Try again."
 msgstr ""
 
 #. translators: %s: invoice number
-#: src/Invoice/InvoiceService.php:87
+#: src/Invoice/InvoiceService.php:89
 #, php-format
 msgid "Invoice %s issued."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:146 src/KSeF/Admin/KSeFOrderColumn.php:83
+#: src/KSeF/Admin/KSeFOrderColumn.php:87 src/KSeF/KSeFSettingsPage.php:50
+#: src/KSeF/KSeFSettingsPage.php:213 src/KSeF/KSeFSettingsPage.php:214
+#: src/Service/KSeFReadyService.php:252 src/Service/KSeFReadyService.php:265
+msgid "KSeF"
+msgstr "KSeF"
+
+#: src/KSeF/Admin/KSeFOrderBox.php:191
+msgid ""
+"KSeF sending is switched off. Turn it on in the KSeF settings to send "
+"invoices from here."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:196
+msgid ""
+"The store sends to the KSeF TEST environment. Invoices sent there have no "
+"legal effect."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:201
+msgid "No VAT invoice for this order yet. Issue one in the Invoices box first."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:242
+msgid "KSeF number"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:242
+#: src/Service/MyAccountWithdrawalsService.php:101
+msgid "Reference"
+msgstr "Нумар"
+
+#: src/KSeF/Admin/KSeFOrderBox.php:243
+msgid "Select to copy"
+msgstr ""
+
+#. translators: 1: offline mode (offline24, offline, awaryjny), 2: deadline date and time, or "not known yet".
+#: src/KSeF/Admin/KSeFOrderBox.php:257
+#, php-format
+msgid "Issued offline (%1$s). Send to KSeF by: %2$s."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:261
+msgid "not known until the outage ends"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:269
+msgid "Send to KSeF"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:269
+msgid ""
+"Queue this invoice for KSeF. It is sent in the background and the status "
+"updates here."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:273
+msgid "Refresh status"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:273
+msgid ""
+"Ask KSeF now instead of waiting for the next automatic check, and fetch the "
+"UPO if it is ready."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:277
+msgid "Technical correction"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:277
+msgid ""
+"Send this offline invoice again with the same content, rebuilt, and a "
+"reference to the rejected file (KSeF technical correction). Only for "
+"technical reasons such as schema or size, not for missing permissions or a "
+"change of content."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:277
+msgid ""
+"Send a technical correction? The invoice is rebuilt with the same content "
+"and sent again with a reference to the rejected file. Its QR codes on the "
+"PDF are recomputed; KSeF links the old KOD I to the corrected invoice."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:281
+msgid "Download UPO"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:281
+msgid ""
+"The official receipt (UPO) KSeF issued for this invoice, as XML. Keep it "
+"with your records."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:290
+msgid ""
+"Correct a VAT rate, the buyer, a line name, the date of supply or an amount "
+"without a refund."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:291
+msgid "Correct"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:334
+msgid "Refunds without a correction invoice"
+msgstr ""
+
+#. translators: 1: refund ID, 2: refunded amount with currency.
+#: src/KSeF/Admin/KSeFOrderBox.php:340
+#, php-format
+msgid "Refund #%1$d (%2$s)"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:346
+msgid "Issue the VAT invoice first; the correction refers to it."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:349
+msgid ""
+"This refund is an amount only, with no items, so no correction can be built "
+"from it. Refund by item quantities instead."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:354
+msgid "Create correction"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:355
+msgid ""
+"Issue a correction invoice for this refund. With automatic sending on, it "
+"goes to KSeF right after its invoice."
+msgstr ""
+
+#. translators: %s: KSeF status label, for example Accepted.
+#: src/KSeF/Admin/KSeFOrderBox.php:434
+#, php-format
+msgid "KSeF status refreshed: %s."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:445
+msgid "KSeF has not issued a UPO for this invoice yet."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:465
+msgid "No refund was chosen."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:469
+msgid ""
+"This invoice was already corrected without a refund (rate, buyer, lines or "
+"date), so a refund correction built from the order would start from the "
+"wrong lines. Issue this refund as a correction in KSeF by hand."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:477
+msgid ""
+"The correction invoice could not be created. Check that the refund belongs "
+"to this order and lists refunded items, not an amount only."
+msgstr ""
+
+#. translators: %s: correction invoice number.
+#: src/KSeF/Admin/KSeFOrderBox.php:482
+#, php-format
+msgid "Correction invoice %s created."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:504
+msgid ""
+"You are not allowed to do this, or the link has expired. Go back to the "
+"order and try again."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:510 src/KSeF/KSeFSyncService.php:141
+#: src/KSeF/KSeFSyncService.php:227 src/KSeF/KSeFSyncService.php:436
+msgid "Invoice not found."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderBox.php:542
+msgid "KSeF:"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:144
+msgid "No invoice"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:211
+msgid "Not sent"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:211
+msgid "This invoice has not been sent to KSeF yet."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:212
+msgid "Queued"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:212
+msgid ""
+"Waiting to be sent. It goes out with the next background run, usually within "
+"a minute."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:213
+msgid "Processing"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:213
+msgid ""
+"KSeF received the invoice and is still checking it. The status updates by "
+"itself."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:214
+msgid "Accepted"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:214
+msgid "KSeF accepted the invoice and gave it a KSeF number."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:215
+msgid "Offline"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:215
+msgid ""
+"Issued in KSeF offline mode with both QR codes. It is sent in the background "
+"before its deadline."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:216
+msgid "Offline, overdue"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:216
+msgid ""
+"An offline invoice past its deadline to reach KSeF. The shop keeps sending "
+"it; open the order to see why it has not gone yet."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:217
+msgid "KSeF refused the invoice. Open the order to see why."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:218
+msgid "Failed"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:218
+msgid ""
+"The invoice could not be sent. Open the order to see why and send it again."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:219
+msgid "No seller NIP"
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:219
+msgid "Set a ten-digit seller NIP in the invoice settings, then send again."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:220
+msgid "Status reported by KSeF."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:245
+msgid "Sent to the KSeF TEST environment. It has no legal effect."
+msgstr ""
+
+#: src/KSeF/Admin/KSeFOrderColumn.php:246
+msgid "TEST"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:83
+msgid "Choose the files"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:86
+msgid "Not a certificate or key in PEM or DER format:"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:88 src/KSeF/KSeFSettingsPage.php:91
+msgid ""
+"Certificate (.crt): not loaded yet. Download it in Aplikacja Podatnika KSeF, "
+"Certificates, Download."
+msgstr ""
+
+#. translators: %s: file name.
+#: src/KSeF/KSeFSettingsPage.php:90
+#, php-format
+msgid "Certificate: %s"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:91
+msgid "Certificate: stored"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:93 src/KSeF/KSeFSettingsPage.php:96
+msgid "Private key (.key): not loaded yet."
+msgstr ""
+
+#. translators: %s: file name.
+#: src/KSeF/KSeFSettingsPage.php:95
+#, php-format
+msgid "Private key: %s"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:96
+msgid "Private key: stored (encrypted)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:123 src/KSeF/KSeFSyncService.php:416
+msgid "KSeF: offline invoices to send"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:124
+msgid ""
+"KSeF has not numbered these offline invoices and their deadline is within a "
+"day or past. Queued ones are sent again every hour; a rejected or failed one "
+"waits for you. Open the order to see the cause."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:131
+msgid "overdue since"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:131
+msgid "due by"
+msgstr ""
+
+#. translators: %s: expiry date of the KSeF login certificate.
+#: src/KSeF/KSeFSettingsPage.php:146
+#, php-format
+msgid ""
+"The KSeF certificate used to log in expires on %s. After that no invoice "
+"reaches KSeF; request a new one in Aplikacja Podatnika KSeF and load it in "
+"the KSeF settings."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:150 src/KSeF/KSeFSettingsPage.php:165
+#: src/KSeF/KSeFSettingsPage.php:205 src/KSeF/KSeFSiteHealth.php:104
+msgid "Open the KSeF settings"
+msgstr ""
+
+#. translators: %s: expiry date of the KSeF Offline certificate.
+#: src/KSeF/KSeFSettingsPage.php:161
+#, php-format
+msgid ""
+"The KSeF Offline certificate expires on %s. Without it no invoice can be "
+"issued offline; request a new one of type Offline and paste it in the KSeF "
+"settings."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:175
+msgid ""
+"KSeF did not answer several sends in a row. If the Ministry of Finance "
+"announced that KSeF is unavailable or failing, switch on the outage mode: "
+"new invoices are then issued offline with both QR codes and get the "
+"statutory deadline."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:177
+msgid "Switch on the outage mode"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:195
+msgid "KSeF 2.0: a certificate is needed"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:196
+msgid ""
+"Polski PRO now sends invoices to KSeF 2.0, which does not accept the KSeF "
+"1.0 API token. The old token was removed and is not used. Request and "
+"download a KSeF certificate in the KSeF 2.0 Taxpayer Application (Aplikacja "
+"Podatnika KSeF 2.0) and add it with its private key."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:199
+msgid ""
+"Automatic sending to the production environment was switched off, so nothing "
+"is filed before you have checked the setup. Turn it back on once an invoice "
+"went through."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:239
+msgid "Settings saved."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:251
+msgid "Connected: KSeF accepted the certificate and issued an access token."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:255
+msgid ""
+"The stored private key can no longer be decrypted, usually because the "
+"WordPress security salts changed. Paste the key and its passphrase again; "
+"nothing is sent to KSeF until then."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:259
+msgid ""
+"SECURE_AUTH_KEY or SECURE_AUTH_SALT is not set in wp-config.php, so "
+"WordPress keeps that salt in the database, next to the encrypted private "
+"key. A database backup then contains everything needed to decrypt the key. "
+"Define both constants with unique values in wp-config.php, then paste the "
+"key again."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:262
+msgid ""
+"Invoices are sent to KSeF 2.0 with a KSeF certificate. Request and download "
+"one in the KSeF 2.0 Taxpayer Application (Aplikacja Podatnika KSeF 2.0), "
+"then paste the certificate and its private key here. The seller NIP from the "
+"invoice settings is the identity the shop authenticates as."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:269
+msgid "Sending"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:273
+msgid "Send invoices to KSeF"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:278
+msgid ""
+"Send each new invoice automatically, without a click on the order screen"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:283
+msgid "Keep invoices to consumers outside KSeF"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:284
+msgid ""
+"An invoice without a buyer tax ID is then issued as a PDF only and not sent "
+"automatically (art. 106ga ust. 2 pkt 4 of the VAT Act). It can still be sent "
+"from the order screen."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:288
+msgid "Environment"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:290
+msgid "Test (no legal effect)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:291
+msgid "Production (legally binding invoices)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:295
+msgid "Invoices are sent to"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:301
+msgid "Seller NIP"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:304
+msgid ""
+"Not set or not a valid NIP. Invoices cannot be sent to KSeF until it is."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:307
+msgid "The shop authenticates to KSeF as this NIP."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:309
+msgid "Change it in the company details"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:313
+msgid "Certificate and private key"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:314
+msgid ""
+"Aplikacja Podatnika KSeF gives two files: the certificate (.crt) and its "
+"private key (.key). Choose both at once; they stay in the browser until you "
+"save, then the key is stored encrypted."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:317 src/KSeF/KSeFSettingsPage.php:396
+msgid "Paste the text instead"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:318
+msgid "Certificate (PEM)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:323
+msgid "Private key (PEM)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:327 src/KSeF/KSeFSettingsPage.php:406
+msgid ""
+"A private key is stored. Leave empty to keep it, or paste a new one to "
+"replace it."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:333
+msgid "Private key passphrase"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:335
+msgid ""
+"The password set for the key when the certificate was requested. Only read "
+"together with a new private key."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:339
+msgid "Connection"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:344
+msgid "Test the connection to KSeF"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:346
+msgid ""
+"Logs in to KSeF with the stored certificate. Nothing is sent and nothing is "
+"saved from the form."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:353
+msgid "Delete the stored certificate and private key"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:376
+msgid "Offline mode"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:377
+msgid ""
+"An invoice issued offline gets its PDF with two QR codes at once: KOD I, to "
+"check the invoice in KSeF, and KOD II, signed with a KSeF certificate of "
+"type Offline, to confirm who issued it. It must reach KSeF by a statutory "
+"deadline; the shop sends it in the background straight away."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:380
+msgid "Offline certificate and key"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:381
+msgid ""
+"A second certificate, of type Offline, with its own .crt and .key files (one "
+"KSeF certificate cannot do both). The person or entity in it needs the "
+"InvoiceWrite permission for the shop NIP."
+msgstr ""
+
+#. translators: 1: certificate serial number, 2: expiry date.
+#: src/KSeF/KSeFSettingsPage.php:389
+#, php-format
+msgid "Type Offline, serial number %1$s, valid until %2$s."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:397
+msgid "Offline certificate (PEM)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:402
+msgid "Offline private key (PEM)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:412
+msgid "Offline key passphrase"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:419
+msgid "Delete the stored Offline certificate and private key"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:427
+msgid "Offline issuing"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:432
+msgid "Add the Offline certificate first; offline issuing needs it for KOD II."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:433
+msgid "Go to the Offline certificate"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:439
+msgid "Issuing mode"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:441
+msgid "Online: the invoice gets its KSeF number first"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:442
+msgid "offline24: PDF with both QR codes at once, sent by the next working day"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:444
+msgid ""
+"In offline24 every new invoice is issued offline and sent right away; the "
+"deadline is the safety net. Offline invoices are sent even when automatic "
+"sending is off."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:448
+msgid "KSeF outage announced by the Ministry"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:452
+msgid "Issue new invoices offline because KSeF is unavailable or failing"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:456
+msgid "Unavailability (send by the next working day after it ends)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:457
+msgid "Failure (send within 7 working days after it ends)"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:461
+msgid "Start"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:463
+msgid "End"
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:466
+msgid ""
+"Polish time, as in the announcement in BIP or the KSeF interface. KSeF "
+"offers no way to check this, so the shop never switches it on by itself. "
+"Leave the end empty until it is announced; changing it moves the deadlines "
+"of offline invoices not yet sent."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:515
+msgid ""
+"Paste the certificate together with its private key. Nothing was stored."
+msgstr ""
+
+#: src/KSeF/KSeFSettingsPage.php:623
+msgid "No usable certificate and key are stored."
+msgstr ""
+
+#. translators: %s: error from KSeF or the connection
+#: src/KSeF/KSeFSettingsPage.php:628
+#, php-format
+msgid "The connection test failed: %s"
+msgstr ""
+
+#. translators: 1: certificate common name, 2: expiry date.
+#: src/KSeF/KSeFSettingsPage.php:674
+#, php-format
+msgid "Issued to %1$s, valid until %2$s."
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:41
+msgid "KSeF seller NIP"
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:42
+msgid "KSeF certificate"
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:43
+msgid "KSeF API connection"
+msgstr ""
+
+#. translators: %s: seller NIP
+#: src/KSeF/KSeFSiteHealth.php:55
+#, php-format
+msgid "Invoices are sent to KSeF as NIP %s"
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:56
+msgid "The seller NIP for KSeF is missing or invalid"
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:56
+msgid ""
+"Set a valid NIP in the invoice settings; until then no invoice can be sent "
+"to KSeF."
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:64
+msgid "No usable KSeF certificate"
+msgstr ""
+
+#: src/KSeF/KSeFSiteHealth.php:64
+msgid ""
+"Load the certificate (.crt) and private key (.key) from Aplikacja Podatnika "
+"KSeF in Polski > Settings > KSeF."
+msgstr ""
+
+#. translators: %s: expiry date
+#: src/KSeF/KSeFSiteHealth.php:69
+#, php-format
+msgid "The KSeF certificate expires on %s"
+msgstr ""
+
+#. translators: %s: expiry date
+#: src/KSeF/KSeFSiteHealth.php:69
+msgid ""
+"Request a new one in Aplikacja Podatnika KSeF before then, or invoices stop "
+"reaching KSeF."
+msgstr ""
+
+#. translators: %s: expiry date
+#: src/KSeF/KSeFSiteHealth.php:73
+#, php-format
+msgid "The KSeF certificate is valid until %s"
+msgstr ""
+
+#. translators: %s: KSeF API address
+#: src/KSeF/KSeFSiteHealth.php:87
+msgid "The server reaches the KSeF API"
+msgstr ""
+
+#. translators: %s: KSeF API address
+#: src/KSeF/KSeFSiteHealth.php:87
+#, php-format
+msgid "Checked %s."
+msgstr ""
+
+#. translators: 1: KSeF API address, 2: error
+#: src/KSeF/KSeFSiteHealth.php:93
+msgid "The server cannot reach the KSeF API"
+msgstr ""
+
+#. translators: 1: KSeF API address, 2: error
+#: src/KSeF/KSeFSiteHealth.php:93
+#, php-format
+msgid ""
+"%1$s answered: %2$s. Ask the hosting provider to allow outgoing HTTPS to it."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:149
+msgid "This document cannot be issued in KSeF offline mode."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:153 src/KSeF/KSeFSyncService.php:450
+msgid "KSeF sending is switched off in the KSeF settings."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:157 src/KSeF/KSeFSyncService.php:456
+#: src/KSeF/KSeFSyncService.php:591
+msgid ""
+"The seller NIP is missing or not ten digits. Set it in the invoice settings."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:163
+msgid "This invoice has already been issued for KSeF."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:167 src/KSeF/KSeFSyncService.php:472
+msgid "Action Scheduler is unavailable, so the invoice cannot be queued."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:176
+msgid ""
+"The corrected invoice has no KSeF number yet, so this correction waits for "
+"it."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:201
+msgid "The invoice XML could not be stored, so it was not issued offline."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:208
+msgid "Invoice issued in KSeF offline mode and queued for sending."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:231
+msgid ""
+"A technical correction is only for an offline invoice that KSeF rejected."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:241
+msgid ""
+"The invoice can no longer be rebuilt: its seller NIP or the corrected "
+"invoice is missing."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:245 src/KSeF/KSeFSyncService.php:477
+msgid "This invoice is already queued for KSeF."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:257
+msgid ""
+"Rebuilt today the invoice would differ from the rejected one (seller, buyer, "
+"lines or amounts changed since it was issued), and a technical correction "
+"may not change the content. Restore the old data or clarify the invoice in "
+"the KSeF Taxpayer Application."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:268
+msgid "The rebuilt invoice XML could not be stored, so nothing was queued."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:274
+msgid ""
+"Technical correction queued: the invoice is sent again with the same content "
+"and a reference to the rejected file."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:290
+msgid ""
+"No usable KSeF Offline certificate is stored, or it has expired. Add a valid "
+"one under WooCommerce, KSeF, Offline mode."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:304
+msgid "The invoice XML has no seller NIP or issue date."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:310
+msgid "KOD II could not be signed with the Offline certificate key."
+msgstr ""
+
+#. translators: 1: invoice number, 2: deadline date and time, 3: KSeF status, 4: link to the order or invoice list.
+#: src/KSeF/KSeFSyncService.php:407
+#, php-format
+msgid "%1$s, deadline %2$s, status %3$s: %4$s"
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:417
+msgid ""
+"These invoices were issued in KSeF offline mode and KSeF has not numbered "
+"them yet. The deadline is statutory. Queued ones are sent again every hour; "
+"a rejected or failed one waits for you: open the order to see the cause."
+msgstr ""
+
+#. translators: %s: invoice type label, for example Paragon.
+#: src/KSeF/KSeFSyncService.php:442
+#, php-format
+msgid "%s documents are not eligible for KSeF submission."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:462 src/KSeF/KSeFSyncService.php:598
+msgid "No KSeF certificate is configured. Add it under WooCommerce, KSeF."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:467
+msgid "This invoice has already been submitted to KSeF."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:484
+msgid "Invoice queued for KSeF submission."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:607
+msgid ""
+"The stored offline XML no longer matches the KOD I on the invoice, so it was "
+"not sent. Check the database column ksef_xml."
+msgstr ""
+
+#. translators: 1: KSeF environment the offline invoice was issued for, 2: the one the job was for.
+#: src/KSeF/KSeFSyncService.php:617
+#, php-format
+msgid ""
+"This offline invoice was issued for KSeF %1$s and its QR codes point there, "
+"so it is not sent to %2$s. Switch the store back to %1$s to send it."
+msgstr ""
+
+#. translators: 1: KSeF environment the invoice was queued for, 2: the one the store is set to now.
+#: src/KSeF/KSeFSyncService.php:630
+#, php-format
+msgid ""
+"This invoice was queued for KSeF %1$s, but the store is now set to %2$s. "
+"Nothing was sent; send it again."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:646
+msgid "The invoice this one corrects no longer exists."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:703 src/KSeF/KSeFSyncService.php:922
+msgid ""
+"KSeF does not allow a technical correction of this invoice (21166). It "
+"cannot be fixed technically; clarify it in the KSeF Taxpayer Application "
+"(Aplikacja Podatnika KSeF)."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:780
+msgid "No KSeF certificate is configured, so the status cannot be checked."
+msgstr ""
+
+#. translators: 1: KSeF environment the invoice was sent to, 2: the one the store is set to now.
+#: src/KSeF/KSeFSyncService.php:792
+#, php-format
+msgid ""
+"This invoice was sent to KSeF %1$s, but the store is now set to %2$s, so its "
+"status cannot be checked."
+msgstr ""
+
+#. translators: %s: KSeF number of the invoice already in KSeF.
+#: src/KSeF/KSeFSyncService.php:869
+#, php-format
+msgid ""
+"KSeF already holds another invoice from this seller with the same type and "
+"number (KSeF number %s). This invoice was not filed; give it a new number, "
+"or check that invoice in the KSeF application."
+msgstr ""
+
+#. translators: 1: KSeF status code, 2: the reason in KSeF's words.
+#: src/KSeF/KSeFSyncService.php:916
+#, php-format
+msgid "KSeF refused the invoice (%1$d): %2$s"
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:924
+msgid ""
+"If the reason is technical (schema, size, duplicate), send a technical "
+"correction from the order. If it is missing permissions, have the person in "
+"the Offline certificate granted InvoiceWrite for the shop NIP and send the "
+"invoice again."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:951
+msgid ""
+"The invoice is in KSeF, but its UPO could not be fetched. Download it in the "
+"KSeF application."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:952
+msgid ""
+"KSeF gave no final answer after an hour of checks. Look the invoice up in "
+"the KSeF application before sending it again."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:974
+msgid ""
+"KSeF looks unavailable, so this offline invoice is sent again every hour "
+"until KSeF takes it."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:983
+msgid ""
+"KSeF looks unavailable, so the invoice stays queued and is sent again every "
+"hour for up to two days."
+msgstr ""
+
+#. translators: 1: KSeF environment the corrected invoice went to, 2: the one this correction is for.
+#: src/KSeF/KSeFSyncService.php:1079
+#, php-format
+msgid ""
+"The corrected invoice was sent to KSeF %1$s only. Send it to KSeF %2$s "
+"first, then send this correction again."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:1095
+msgid ""
+"The corrected invoice is not in KSeF: it was refused or could not be sent. "
+"File it first, then send this correction again."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:1108
+msgid ""
+"Waiting for the corrected invoice to get its KSeF number; this correction "
+"goes right after."
+msgstr ""
+
+#: src/KSeF/KSeFSyncService.php:1114
+msgid ""
+"The corrected invoice still had no KSeF number after an hour. Send this "
+"correction again once it has one."
+msgstr ""
+
+#. translators: %d: seconds KSeF asked to wait.
+#: src/KSeF/KSeFSyncService.php:1201
+#, php-format
+msgid ""
+"KSeF limits how often it may be asked and asked to wait %d seconds. Trying "
+"again then."
+msgstr ""
+
+#: src/KSeF/Model/InvoiceStatus.php:19 templates/invoice/document.php:60
+msgid "Issued"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceStatus.php:20
+msgid "Sent"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceStatus.php:21
+msgid "Paid"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceStatus.php:22
+msgid "Cancelled"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceType.php:18 templates/invoice/document.php:55
+msgid "VAT invoice"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceType.php:19
+msgid "Proforma invoice"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceType.php:20
+msgid "Corrective invoice"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceType.php:21
+msgid "Paragon"
+msgstr ""
+
+#: src/KSeF/Model/InvoiceType.php:22
+msgid "Packing Slip"
+msgstr ""
+
+#: src/KSeF/V2/ApiClient.php:170
+msgid "KSeF did not open a session."
+msgstr ""
+
+#: src/KSeF/V2/ApiClient.php:188
+msgid "KSeF did not accept the invoice into the session."
+msgstr ""
+
+#: src/KSeF/V2/ApiClient.php:301
+msgid "KSeF did not start the authentication."
+msgstr ""
+
+#. translators: %s: the reason KSeF gives, in its own words.
+#: src/KSeF/V2/ApiClient.php:315
+#, php-format
+msgid "KSeF refused the certificate: %s"
+msgstr ""
+
+#: src/KSeF/V2/ApiClient.php:322
+msgid "KSeF did not finish the authentication in time."
+msgstr ""
+
+#: src/KSeF/V2/ApiClient.php:335
+msgid "KSeF did not issue an access token."
+msgstr ""
+
+#. translators: %s: certificate usage name from the KSeF API.
+#: src/KSeF/V2/ApiClient.php:391
+#, php-format
+msgid "KSeF offered no current %s certificate."
+msgstr ""
+
+#. translators: 1: API path, 2: seconds to wait, 3: the error KSeF returned.
+#: src/KSeF/V2/ApiClient.php:485
+#, php-format
+msgid "KSeF rate limit hit on %1$s, retry after %2$d s: %3$s"
+msgstr ""
+
+#. translators: 1: HTTP status code, 2: API path, 3: the error KSeF returned.
+#: src/KSeF/V2/ApiClient.php:528
+#, php-format
+msgid "KSeF answered HTTP %1$d on %2$s: %3$s"
+msgstr ""
+
+#. translators: %s: the transport error message.
+#: src/KSeF/V2/ApiClient.php:655
+#, php-format
+msgid "KSeF could not be reached: %s"
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:58
+msgid ""
+"The certificate could not be read. Paste the PEM text from KSeF, including "
+"the BEGIN and END lines."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:70
+msgid "Paste the private key that belongs to this certificate."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:81
+msgid "The private key could not be opened. Check the key and its passphrase."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:86
+msgid "The private key does not belong to this certificate."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:144
+msgid ""
+"This is not an Offline certificate (keyUsage Non-Repudiation). Paste the "
+"certificate of type Offline here; the Authentication certificate belongs in "
+"the field above."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:148
+msgid ""
+"This is an Offline certificate, which cannot log in to KSeF. Paste the "
+"certificate of type Authentication here, and the Offline one under Offline "
+"mode."
+msgstr ""
+
+#: src/KSeF/V2/KSeFCredentials.php:165
+msgid ""
+"KSeF certificates use an RSA key of at least 2048 bits or an EC P-256 key. "
+"This key is neither."
 msgstr ""
 
 #: src/Migration/Migration_1_0_0.php:25
@@ -12067,7 +13178,7 @@ msgstr ""
 "абавязаны адказаць на працягу 14 дзён."
 
 #: src/Service/ComplaintTemplateService.php:148
-#: templates/invoice/document.php:73
+#: templates/invoice/document.php:80
 msgid "Seller"
 msgstr "Прадавец"
 
@@ -12919,13 +14030,9 @@ msgstr ""
 msgid "Parcel locker:"
 msgstr ""
 
-#: src/Service/KSeFReadyService.php:239
+#: src/Service/KSeFReadyService.php:248
 msgid "pending"
 msgstr "у чаканні"
-
-#: src/Service/KSeFReadyService.php:243 src/Service/KSeFReadyService.php:256
-msgid "KSeF"
-msgstr "KSeF"
 
 #: src/Service/LegalPageService.php:189
 msgid "Right of Withdrawal"
@@ -13000,10 +14107,6 @@ msgstr "Каб убачыць свае адмовы, вы павінны быц�
 #: src/Service/MyAccountWithdrawalsService.php:96
 msgid "You have not filed any withdrawal declarations yet."
 msgstr "Вы яшчэ не падавалі ніводнай заявы аб адмове ад дагавора."
-
-#: src/Service/MyAccountWithdrawalsService.php:101
-msgid "Reference"
-msgstr "Нумар"
 
 #: src/Service/NipLookupService.php:115
 msgid "NIP or EU VAT ID"
@@ -15167,7 +16270,7 @@ msgstr "Запыт на адмову для замовы #%s"
 
 #: templates/account/withdrawal-confirm.php:38
 #: templates/account/withdrawal-confirm.php:49
-#: templates/invoice/document.php:110
+#: templates/invoice/document.php:117
 msgid "Amount"
 msgstr "Сума"
 
@@ -15219,7 +16322,7 @@ msgstr ""
 #: templates/emails/plain/admin-withdrawal-notification.php:50
 #: templates/emails/plain/withdrawal-confirmation.php:62
 #: templates/emails/withdrawal-confirmation.php:82
-#: templates/invoice/document.php:86
+#: templates/invoice/document.php:93
 msgid "Buyer"
 msgstr "Пакупнік"
 
@@ -15237,7 +16340,7 @@ msgstr "Пазіцыі, ахопленыя гэтай заявай"
 
 #: templates/emails/admin-withdrawal-notification.php:93
 #: templates/emails/withdrawal-confirmation.php:104
-#: templates/invoice/document.php:104
+#: templates/invoice/document.php:111
 msgid "Qty"
 msgstr "Колькасць"
 
@@ -15753,72 +16856,64 @@ msgstr ""
 "тэрміну."
 
 #. translators: %s: invoice number
-#: templates/invoice/document.php:39
+#: templates/invoice/document.php:46
 #, php-format
 msgid "Invoice %s"
 msgstr ""
 
-#: templates/invoice/document.php:48
-msgid "VAT invoice"
-msgstr ""
-
-#: templates/invoice/document.php:53
-msgid "Issued"
-msgstr ""
-
-#: templates/invoice/document.php:58
+#: templates/invoice/document.php:65
 msgid "Date of sale"
 msgstr ""
 
-#: templates/invoice/document.php:64
+#: templates/invoice/document.php:71
 msgid "Payment due"
 msgstr ""
 
 #. translators: %s: VAT identification number
-#: templates/invoice/document.php:79 templates/invoice/document.php:92
+#: templates/invoice/document.php:86 templates/invoice/document.php:99
 #, php-format
 msgid "VAT ID: %s"
 msgstr ""
 
-#: templates/invoice/document.php:106 templates/invoice/document.php:142
+#: templates/invoice/document.php:113 templates/invoice/document.php:149
 msgid "Net"
 msgstr ""
 
-#: templates/invoice/document.php:108 templates/invoice/document.php:144
+#: templates/invoice/document.php:115 templates/invoice/document.php:151
 msgid "Gross"
 msgstr ""
 
-#: templates/invoice/document.php:138
+#: templates/invoice/document.php:145
 msgid "VAT summary"
 msgstr ""
 
-#: templates/invoice/document.php:141
+#: templates/invoice/document.php:148
 msgid "Rate"
 msgstr ""
 
-#: templates/invoice/document.php:165
+#: templates/invoice/document.php:172
 msgid "Total due"
 msgstr ""
 
 #. translators: %s: payment method name
-#: templates/invoice/document.php:181
+#: templates/invoice/document.php:201
 #, php-format
 msgid "Payment method: %s"
 msgstr ""
 
 #. translators: %s: bank account number
-#: templates/invoice/document.php:188
+#: templates/invoice/document.php:208
 #, php-format
 msgid "Bank account: %s"
 msgstr ""
 
 #. translators: %s: order number
-#: templates/invoice/document.php:194
+#: templates/invoice/document.php:214
 #, php-format
 msgid "Order: %s"
 msgstr ""
 
-#: templates/invoice/document.php:201
+#: templates/invoice/document.php:221
 msgid "Print or save as PDF"
 msgstr ""
 

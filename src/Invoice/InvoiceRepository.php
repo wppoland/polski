@@ -77,6 +77,63 @@ final class InvoiceRepository
     }
 
     /**
+     * Writes the columns and lines the KSeF engine reads (the same ones Polski
+     * PRO writes for its own invoices), so an invoice issued here can be sent
+     * to KSeF. The snapshot stays the document; these are a copy of it.
+     *
+     * @param array<string, mixed> $snapshot
+     */
+    public function mirrorForKSeF(int $id, \WC_Order $order, array $snapshot, InvoiceTotals $totals): void
+    {
+        global $wpdb;
+
+        $seller = is_array($snapshot['seller'] ?? null) ? $snapshot['seller'] : [];
+        $buyer = is_array($snapshot['buyer'] ?? null) ? $snapshot['buyer'] : [];
+        $address = trim($order->get_billing_address_1() . ' ' . $order->get_billing_address_2());
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table; $wpdb->update prepares.
+        $wpdb->update(
+            $this->table(),
+            [
+                'type'           => 'faktura_vat',
+                'status'         => 'issued',
+                'nip_seller'     => substr((string) preg_replace('/\D/', '', (string) ($seller['nip'] ?? '')), 0, 20) ?: null,
+                'nip_buyer'      => substr(trim((string) ($buyer['nip'] ?? '')), 0, 20) ?: null,
+                'net_total'      => $totals->net,
+                'vat_total'      => $totals->tax,
+                'gross_total'    => $totals->gross,
+                'buyer_name'     => substr((string) ($buyer['name'] ?? ''), 0, 255),
+                'buyer_address'  => substr($address, 0, 255),
+                'buyer_city'     => substr($order->get_billing_city(), 0, 120),
+                'buyer_postcode' => substr($order->get_billing_postcode(), 0, 20),
+            ],
+            ['id' => $id],
+        );
+
+        foreach (array_values(is_array($snapshot['lines'] ?? null) ? $snapshot['lines'] : []) as $i => $line) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table; $wpdb->insert prepares.
+            $wpdb->insert($wpdb->prefix . 'polski_invoice_items', [
+                'invoice_id'  => $id,
+                'product_id'  => (int) ($line['product_id'] ?? 0) ?: null,
+                'name'        => substr((string) ($line['name'] ?? ''), 0, 255),
+                'quantity'    => (float) ($line['quantity'] ?? 1),
+                'net_price'   => (float) ($line['net'] ?? 0),
+                'vat_rate'    => (float) ($line['rate'] ?? 0),
+                'vat_amount'  => (float) ($line['tax'] ?? 0),
+                'gross_price' => (float) ($line['gross'] ?? 0),
+                'sort_order'  => $i,
+            ]);
+        }
+
+        /**
+         * Fires once an invoice can be sent to KSeF; the KSeF engine queues it when automatic sending is on.
+         *
+         * @param int $id Invoice id in wp_polski_invoices.
+         */
+        do_action('polski/ksef/invoice_ready_to_send', $id);
+    }
+
+    /**
      * The next free sequence number in a series for a year.
      *
      * MAX()+1 rather than a stored counter: a counter drifts the moment a row is
