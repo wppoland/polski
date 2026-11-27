@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.50.3
+Stable tag: 1.50.4
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -402,6 +402,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.50.4 =
+* Improved: module settings cards. Each field's label sits once, beside the field; the description shows its first sentence with the rest under "How it works"; the module can be switched on or off in its own card.
+* Improved: EU VAT ID check (VIES) uses your company NIP from the general settings as your own VAT number when that field is empty, so checks return a consultation number without extra setup.
+* Translations: Polish texts for the VIES module.
 
 = 1.50.3 =
 * Readme: consent checkboxes on the block checkout, the early-service and age (18+) consents, and when the VAT ID (NIP) lookup connects to GUS REGON are described as the plugin does them. No code change.

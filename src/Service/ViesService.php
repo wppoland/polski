@@ -259,12 +259,23 @@ final class ViesService implements HasHooks
     private function requester(): ?array
     {
         $own = trim((string) ($this->settings()['requester_vat'] ?? ''));
+        // Empty: the shop's own NIP from the general settings, so checks are qualified without extra setup.
+        $own = $own !== '' ? $own : self::companyVat();
 
         if ($own === '') {
             return null;
         }
 
         return self::parse($own, 'PL');
+    }
+
+    /** "PL" and the company NIP from the general settings, or '' when it is not a valid NIP. */
+    public static function companyVat(): string
+    {
+        $general = get_option('polski_general', []);
+        $nip = preg_replace('/\D/', '', is_array($general) ? (string) ($general['company_nip'] ?? '') : '');
+
+        return \Polski\Util\NipValidator::isValid((string) $nip) ? 'PL' . $nip : '';
     }
 
     private function cacheSeconds(): int

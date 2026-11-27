@@ -13,6 +13,14 @@ PO_PATH = ROOT / "languages" / "polski-pl_PL.po"
 # Singular: msgid -> msgstr (Polish). msgid already in Polish uses identical msgstr.
 SINGULAR: dict[str, str] = {
     "od {price}": "od {price}",
+    "EU VAT ID check (VIES)": "Weryfikacja numeru VAT UE (VIES)",
+    "Your own VAT number": "Twój numer VAT",
+    "Cache answers for (hours)": "Pamiętaj odpowiedzi przez (godziny)",
+    "A check recorded on an order always calls VIES fresh, cache or not.": "Sprawdzenie zapisywane w zamówieniu zawsze pyta VIES na nowo, niezależnie od pamięci podręcznej.",
+    "Leave empty to use %s, built from the company NIP in the general settings. Every check then returns a consultation number.": "Zostaw puste, a użyjemy %s, czyli NIP-u firmy z ustawień ogólnych. Każde sprawdzenie zwróci wtedy numer konsultacji.",
+    "For example PL5260250274. With it, every check returns a consultation number; without it, VIES answers only valid or invalid.": "Na przykład PL5260250274. Z nim każde sprawdzenie zwraca numer konsultacji; bez niego VIES odpowiada tylko: ważny albo nieważny.",
+    "How it works": "Jak to działa",
+    "Module enabled": "Moduł włączony",
     "Jak oceniasz swoje zakupy? Zostaw opinię": "Jak oceniasz swoje zakupy? Zostaw opinię",
     "Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za Twoją opinię.": (
         "Cześć {first_name}, dziękujemy za ostatnie zakupy. Będziemy wdzięczni za Twoją opinię."

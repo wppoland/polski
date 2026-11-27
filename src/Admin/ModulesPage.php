@@ -242,7 +242,10 @@ final class ModulesPage implements HasHooks
                 'icon' => 'dashicons-yes-alt',
                 'links' => [],
                 'settings' => [
-                    ['key' => 'polski_vies|requester_vat', 'label' => __('Your own VAT number', 'polski'), 'type' => 'text', 'default' => '', 'hint' => __('For example PL5260250274. Leave empty to check without a consultation number.', 'polski')],
+                    ['key' => 'polski_vies|requester_vat', 'label' => __('Your own VAT number', 'polski'), 'type' => 'text', 'default' => '', 'placeholder' => \Polski\Service\ViesService::companyVat(), 'hint' => \Polski\Service\ViesService::companyVat() !== ''
+                        /* translators: %s: the shop's VAT number built from its company NIP, e.g. PL5260250274 */
+                        ? sprintf(__('Leave empty to use %s, built from the company NIP in the general settings. Every check then returns a consultation number.', 'polski'), \Polski\Service\ViesService::companyVat())
+                        : __('For example PL5260250274. With it, every check returns a consultation number; without it, VIES answers only valid or invalid.', 'polski')],
                     ['key' => 'polski_vies|cache_hours', 'label' => __('Cache answers for (hours)', 'polski'), 'type' => 'number', 'default' => 24, 'hint' => __('A check recorded on an order always calls VIES fresh, cache or not.', 'polski')],
                 ],
             ],
@@ -2218,16 +2221,26 @@ final class ModulesPage implements HasHooks
         $options = is_array($options) ? $options : [];
         $currentValue = $options[$fieldKey] ?? ($field['default'] ?? '');
         $inputName = "polski_setting[{$optionName}][{$fieldKey}]";
+        $inputId = 'polski-field-' . sanitize_html_class($optionName . '-' . $fieldKey);
+        $placeholder = (string) ($field['placeholder'] ?? '');
 
         if ($tableRow) {
+            // The row heading is the field's label, so the control below does not repeat it.
             echo '<tr>';
-            echo '<th scope="row">' . esc_html($label) . '</th>';
+            echo '<th scope="row"><label for="' . esc_attr($inputId) . '">' . esc_html($label) . '</label></th>';
             echo '<td>';
         } else {
             echo '<div class="polski-field">';
         }
 
-        if ($type === 'checkbox') {
+        if ($type === 'checkbox' && $tableRow) {
+            printf(
+                '<input type="checkbox" id="%s" name="%s" value="1" %s>',
+                esc_attr($inputId),
+                esc_attr($inputName),
+                checked($currentValue, true, false),
+            );
+        } elseif ($type === 'checkbox') {
             echo '<label class="polski-field__label--checkbox">';
             printf(
                 '<input type="checkbox" name="%s" value="1" %s>',
@@ -2237,36 +2250,41 @@ final class ModulesPage implements HasHooks
             echo esc_html($label);
             echo '</label>';
         } else {
-            if ($label !== '') {
+            if ($label !== '' && ! $tableRow) {
                 echo '<label class="polski-field__label">' . esc_html($label) . '</label>';
             }
 
             if ($type === 'text') {
                 printf(
-                    '<input type="text" name="%s" value="%s" class="regular-text polski-field__control polski-field__control--text">',
+                    '<input type="text" id="%s" name="%s" value="%s" placeholder="%s" class="regular-text polski-field__control polski-field__control--text">',
+                    esc_attr($inputId),
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
+                    esc_attr($placeholder),
                 );
             } elseif ($type === 'email') {
                 printf(
-                    '<input type="email" name="%s" value="%s" class="regular-text polski-field__control polski-field__control--text">',
+                    '<input type="email" id="%s" name="%s" value="%s" class="regular-text polski-field__control polski-field__control--text">',
+                    esc_attr($inputId),
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
             } elseif ($type === 'number') {
                 printf(
-                    '<input type="number" name="%s" value="%s" class="small-text">',
+                    '<input type="number" id="%s" name="%s" value="%s" class="small-text">',
+                    esc_attr($inputId),
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
                 );
             } elseif ($type === 'textarea') {
                 printf(
-                    '<textarea name="%s" rows="3" class="polski-field__control polski-field__control--textarea">%s</textarea>',
+                    '<textarea id="%s" name="%s" rows="3" class="polski-field__control polski-field__control--textarea">%s</textarea>',
+                    esc_attr($inputId),
                     esc_attr($inputName),
                     esc_textarea((string) $currentValue),
                 );
             } elseif ($type === 'select') {
-                echo '<select name="' . esc_attr($inputName) . '" class="polski-field__control">';
+                echo '<select id="' . esc_attr($inputId) . '" name="' . esc_attr($inputName) . '" class="polski-field__control">';
                 foreach (($field['options'] ?? []) as $val => $optLabel) {
                     printf(
                         '<option value="%s" %s>%s</option>',
@@ -2748,6 +2766,21 @@ final class ModulesPage implements HasHooks
             }
 
             update_option($optionName, $existing);
+        }
+
+        // The settings card carries the module's on/off switch too.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified above.
+        if (isset($_POST['module_enabled_present'])) {
+            $states = get_option(self::OPTION, []);
+            $states = is_array($states) ? $states : [];
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified above.
+            $enabled = ! empty($_POST['module_enabled']);
+            if (self::isModuleEnabled($moduleId) !== $enabled) {
+                $states[$moduleId] = $enabled;
+                update_option(self::OPTION, $states);
+                // Same as the toggle on the modules table: modules add taxonomies and endpoints.
+                delete_option('rewrite_rules');
+            }
         }
 
         CacheHelper::flush();
