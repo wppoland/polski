@@ -270,6 +270,17 @@ return [
     // Per-product DSA report widget.
     DSAProductReportHooks::class,
 
+    // KSeF 2.0: sending invoices to KSeF is a legal minimum, so it lives here. A Polski PRO
+    // that still carries its own copy (before PRO 2.0) keeps sending; this one stays off
+    // so no invoice goes to KSeF twice.
+    ...(class_exists('Polski\\Pro\\Invoice\\KSeF\\KSeFSyncService') ? [] : [
+        \Polski\KSeF\KSeFSyncService::class,
+        \Polski\KSeF\KSeFSettingsPage::class,
+        \Polski\KSeF\KSeFSiteHealth::class,
+        \Polski\KSeF\Admin\KSeFOrderBox::class,
+        \Polski\KSeF\Admin\KSeFOrderColumn::class,
+    ]),
+
     // Third-party compatibility. Each class returns early unless its plugin is active.
     ElementorCompat::class,
     CartFlowsCompat::class,

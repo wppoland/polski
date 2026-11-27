@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.55.0
+Stable tag: 1.56.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -37,7 +37,7 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 * **Omnibus price history** - records and displays the lowest price from the last 30 days on discounted products.
 * **Product markings** - per-product flags that print the statutory notice on the product page: medical device, and goods sold to adults only such as alcohol or tobacco.
 * **Deposit scheme (system kaucyjny)** - adds the statutory deposit to beverages in covered packaging, untaxed and on its own checkout line.
-* **VAT ID (NIP) and KSeF hooks** - detection of orders with a VAT ID, a KSeF flag and hooks for invoicing integrations.
+* **KSeF 2.0** - invoices sent to KSeF as FA(3) with your certificate, with status, KSeF number, UPO, QR codes and offline mode.
 * **EU VAT ID check (VIES)** - confirms a customer's EU VAT number against the European Commission's register and records the consultation number on the order.
 * **VAT margin scheme** - the art. 120 annotation on invoices for second-hand goods, works of art, collectors' items and antiques.
 * **GTU markings** - one of the thirteen JPK_V7 goods and services groups per product, printed against its own line on the invoice.
@@ -112,12 +112,11 @@ Included in Polski for WooCommerce:
 
 * Numbered VAT invoices
 * GPSR, Omnibus, consents, withdrawals and unit prices
-* NIP detection, VIES check, KSeF hooks
+* NIP detection, VIES check, KSeF 2.0 sending
 
 Polski PRO adds:
 
 * PDF invoices, UBL/PEPPOL XML, JPK_FA report
-* KSeF 2.0 sending (FA(3), online mode)
 * Live parcel tracking (InPost, DPD, DHL, Poczta Polska)
 * Multi-step checkout, subscriptions and gift cards
 * Fulfilment, affiliates, pre-orders, bundles, catalog mode and RFQ
@@ -211,11 +210,11 @@ Yes. Polski includes features and hooks related to the Polish VAT ID (NIP), incl
 
 = Does Polski support KSeF in WooCommerce? =
 
-Polski is not a complete system for sending invoices to KSeF, but it adds mechanisms ready for integrations: flagging orders by VAT ID, a KSeF status column and hooks for invoicing plugins and custom integrations.
+Yes. Polski sends invoices to KSeF 2.0 as FA(3) documents, signed in with your KSeF certificate: by hand from the order screen or automatically, with the status, the KSeF number, the UPO and the QR codes. Offline24 and outage mode work with an Offline certificate. Set it up under Polski > Settings > KSeF; start in the test environment.
 
 = Does Polski issue invoices in WooCommerce? =
 
-Yes. The Invoices module adds an Issue invoice button to the order screen and numbers VAT invoices per year (FV/1/2026). The customer opens the invoice from My Account and prints it from the browser. It does not send invoices to KSeF and does not replace an accounting system. Invoices as PDF files, UBL/PEPPOL XML and the JPK_FA report come with Polski PRO.
+Yes. The Invoices module adds an Issue invoice button to the order screen and numbers VAT invoices per year (FV/1/2026). The customer opens the invoice from My Account and prints it from the browser. It can go to KSeF; it does not replace an accounting system. Invoices as PDF files, UBL/PEPPOL XML and the JPK_FA report come with Polski PRO.
 
 = Does Polski work with the WooCommerce block checkout? =
 
@@ -294,11 +293,19 @@ With the KSeF readiness module on, the limit cards convert other currencies at t
 * Service address, terms: [https://api.nbp.pl/](https://api.nbp.pl/)
 * Privacy policy: [https://nbp.pl/en/privacy-policy/](https://nbp.pl/en/privacy-policy/)
 
+= KSeF (Ministry of Finance) =
+
+With KSeF sending switched on under Polski > Settings > KSeF, invoices go to the National e-Invoice System with your KSeF certificate. The QR codes on the invoice link to the Ministry's verification page.
+
+* Data sent: the FA(3) invoice (seller, buyer, lines, amounts), signed with your certificate; the seller NIP for the session.
+* Service address: [https://api.ksef.mf.gov.pl/](https://api.ksef.mf.gov.pl/) (test: api-test.ksef.mf.gov.pl), QR links: qr.ksef.mf.gov.pl
+* Terms and privacy policy: [https://ksef.podatki.gov.pl/](https://ksef.podatki.gov.pl/)
+
 = VIES (European Commission) =
 
-When the EU VAT ID check module is enabled, the plugin can connect to the European Commission's VIES service to confirm that a customer's EU VAT number is registered. The connection is made only when the check is deliberately triggered from the order screen.
+With the EU VAT ID check module on, a check started from the order screen asks the European Commission's VIES service whether a customer's EU VAT number is registered.
 
-* Data sent: the customer's EU VAT number and, if you configure one, your own VAT number, which is what makes it a qualified check and returns a consultation number.
+* Data sent: the customer's EU VAT number and, if set, your own VAT number (a qualified check with a consultation number).
 * Service address: [https://ec.europa.eu/taxation_customs/vies/](https://ec.europa.eu/taxation_customs/vies/)
 * Terms of use: [https://ec.europa.eu/taxation_customs/vies/#/help](https://ec.europa.eu/taxation_customs/vies/#/help)
 * Privacy policy: [https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en](https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en)
@@ -323,7 +330,7 @@ InPost and Paczkomat are trademarks of InPost sp. z o.o., used to describe the s
 
 = Google OAuth =
 
-When the social login module is enabled and Google login is configured, a customer clicking the continue-with-Google button is redirected to Google for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
+With social login on and Google configured, the continue-with-Google button signs the customer in through Google; the plugin then fetches the profile.
 
 * Data sent: the redirect address, client ID, authorization code and access token used to fetch the profile.
 * Data received: the Google account ID, e-mail address and name.
@@ -333,7 +340,7 @@ When the social login module is enabled and Google login is configured, a custom
 
 = Facebook OAuth =
 
-When the social login module is enabled and Facebook login is configured, a customer clicking the continue-with-Facebook button is redirected to Facebook for authentication. The plugin exchanges the authorization code for an access token and fetches the profile data needed to sign in or create an account.
+With social login on and Facebook configured, the continue-with-Facebook button signs the customer in through Facebook; the plugin then fetches the profile.
 
 * Data sent: the redirect address, application ID, authorization code and access token used to fetch the profile.
 * Data received: the Facebook account ID, e-mail address and name.
@@ -410,6 +417,12 @@ Admin feedback and deactivation answers stay in WordPress.
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.56.0 =
+* Added: KSeF 2.0 sending, moved here from Polski PRO because it is a legal duty. Under Polski > Settings > KSeF: your KSeF certificate and key, test or production, sending by hand or automatically, consumer invoices outside KSeF if you choose. Invoices go as FA(3), validated against the official schema first; the order screen shows the status, the KSeF number and the UPO; Tools > Site Health checks the NIP, the certificate and the connection. Offline24 and outage mode with an Offline certificate, technical correction, and the KSeF QR codes on the invoice.
+* Added: invoices from the free Invoices module can go to KSeF.
+* Fixed: the invoice link opened the checkout on sites that redirect the front page there (one-page checkout).
+* Note: with a Polski PRO older than 2.0, PRO keeps sending to KSeF as before and this module stays off, so no invoice is sent twice.
 
 = 1.55.0 =
 * Added: dashboard cards for two limits (KSeF readiness module). KSeF: gross orders with a VAT ID this month against the 10 000 zł relief of art. 145m, which allows invoices outside KSeF until 31 December 2026; once exceeded it says so for good. Cash register: net consumer sales this year against 20 000 zł. Other currencies are converted at the NBP rate (see External Services).
