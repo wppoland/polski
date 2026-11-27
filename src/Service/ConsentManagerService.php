@@ -265,8 +265,10 @@ final class ConsentManagerService implements HasHooks
     public function printCategoryScripts(): void
     {
         $settings = $this->getSettings();
+        // Category => setting key, spelled out so the keys can be found where they are read.
+        $keys = ['analytics' => 'scripts_analytics', 'marketing' => 'scripts_marketing', 'preferences' => 'scripts_preferences'];
         foreach ($this->enabledCategories() as $category) {
-            $code = (string) ($settings['scripts_' . $category] ?? '');
+            $code = isset($keys[$category]) ? (string) ($settings[$keys[$category]] ?? '') : '';
             if ($code !== '') {
                 echo self::gateCode($category, $code); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- gateScript/gateSrc escape; the code itself is admin (unfiltered_html) input.
             }
