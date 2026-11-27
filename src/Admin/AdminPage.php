@@ -449,7 +449,13 @@ final class AdminPage implements Bootable, HasHooks
             echo '<h2 style="margin:0;">' . esc_html($module['name']) . ' ' . ModulesPage::betaBadge($module) . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in betaBadge().
             echo '<span style="font-size:12px;color:' . esc_attr($statusColor) . ';font-weight:600;">' . esc_html($statusLabel) . '</span>';
             echo '</div>';
-            echo '<p>' . esc_html($module['description']) . '</p>';
+            // The first sentence says what the module does; the details fold away.
+            $description = (string) $module['description'];
+            $split = preg_match('/^(.+?[.!?])\s+(.+)$/s', $description, $parts) === 1;
+            echo '<p style="font-size:14px;">' . esc_html($split ? $parts[1] : $description) . '</p>';
+            if ($split) {
+                echo '<details style="margin:-4px 0 12px;"><summary style="cursor:pointer;color:#2271b1;">' . esc_html__('How it works', 'polski') . '</summary><p>' . esc_html($parts[2]) . '</p></details>';
+            }
             if (! empty($module['beta'])) {
                 echo '<p class="polski-beta-note">' . esc_html((string) $module['beta']) . '</p>';
             }
@@ -460,7 +466,14 @@ final class AdminPage implements Bootable, HasHooks
             echo '<input type="hidden" name="module_id" value="' . esc_attr($moduleId) . '" />';
             echo '<input type="hidden" name="group_slug" value="' . esc_attr($groupSlug) . '" />';
 
+            echo '<input type="hidden" name="module_enabled_present" value="1" />';
             echo '<table class="form-table" role="presentation"><tbody>';
+            printf(
+                '<tr><th scope="row"><label for="polski-module-enabled-%1$s">%2$s</label></th><td><input type="checkbox" id="polski-module-enabled-%1$s" name="module_enabled" value="1"%3$s /></td></tr>',
+                esc_attr($moduleId),
+                esc_html__('Module enabled', 'polski'),
+                checked($isEnabled, true, false),
+            );
 
             foreach ($module['settings'] as $field) {
                 $modulesPage->renderSettingsField($field, true);
