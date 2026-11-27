@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.52.0
+Stable tag: 1.53.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -403,6 +403,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.53.0 =
+* Changed: Consent Manager is out of beta. Code pasted per category (analytics, marketing, preferences) runs only after that consent, as in Cookie Notice; <noscript> pixels are left out.
+* Improved: accessibility of the admin screens (axe, WCAG 2 A and AA): module switches have names, the enabled and disabled labels and the report cards meet contrast, and reports of switched-off modules fold away.
+* Added: "Block known trackers" (on by default): Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity and Google Ads scripts enqueued by other plugins or the theme wait for consent; Google Analytics and Tag Manager too when Consent Mode is off.
+
 = 1.52.0 =
 * Improved: Polski > Settings has one tab bar for module settings and extension settings screens (filter `polski/admin/settings_tabs`); Polski PRO adds Invoices and KSeF there. Extension screens can stay in the menu through `polski/admin/menu_keep`.
 * Changed: Custom checkout fields and Order export moved from the WooCommerce menu to Polski (listed under Reports & Tools > More screens). Their addresses do not change.
@@ -607,9 +612,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Added: native administrator email notification ("New withdrawal declaration (Admin)") registered in WooCommerce > Settings > Emails, alerting the shop whenever a customer files a return.
 * Fixed: guest withdrawal lookup form now auto-detects pages with the [polski_withdrawal_lookup] shortcode even when unselected in settings, wraps magic link emails in WooCommerce HTML styling with proper From headers, and provides feedback if an order is not eligible.
 * Fixed: guest order lookup now supports sequential order number plugins and trims hash/whitespace prefixes.
-
-= 1.41.3 =
-* Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

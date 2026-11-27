@@ -822,6 +822,10 @@ return [
         'save_label' => __('Save choices', 'polski'),
         'position' => 'bottom',
         'google_consent_mode' => true,
+        'block_known_trackers' => true,
+        'scripts_analytics' => '',
+        'scripts_marketing' => '',
+        'scripts_preferences' => '',
         'block_embeds' => true,
     ],
 

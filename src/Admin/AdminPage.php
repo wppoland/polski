@@ -463,7 +463,7 @@ final class AdminPage implements Bootable, HasHooks
             $moduleId = (string) $module['id'];
             $isEnabled = ModulesPage::isModuleEnabled($moduleId);
             $statusLabel = $isEnabled ? __('Enabled', 'polski') : __('Disabled', 'polski');
-            $statusColor = $isEnabled ? '#46b450' : '#d63638';
+            $statusColor = $isEnabled ? '#007017' : '#b32d2e';
 
             echo '<div id="polski-module-' . esc_attr($moduleId) . '" class="polski-module-settings-section" style="background:#fff; border:1px solid #ccd0d4; padding:20px; margin-top:20px;">';
             echo '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px;">';
@@ -919,11 +919,28 @@ final class AdminPage implements Bootable, HasHooks
 
         echo '<p>' . esc_html__('Select a report or tool to review your store setup status.', 'polski') . '</p>';
 
+        // Reports of switched-on modules first; the others fold away, as on the Settings tabs.
+        $on = array_values(array_filter($reports, static fn (array $r): bool => $r['module'] === null || ModulesPage::isModuleEnabled($r['module'])));
+        $off = array_values(array_filter($reports, static fn (array $r): bool => $r['module'] !== null && ! ModulesPage::isModuleEnabled($r['module'])));
+        $this->renderReportCards($on);
+        if ($off !== []) {
+            printf(
+                '<details style="margin-top:20px;"><summary style="cursor:pointer;font-size:14px;padding:12px 0;">%s</summary>',
+                /* translators: %d: number of reports whose module is switched off */
+                esc_html(sprintf(_n('%d report of a switched-off module', '%d reports of switched-off modules', count($off), 'polski'), count($off))),
+            );
+            $this->renderReportCards($off);
+            echo '</details>';
+        }
+    }
+
+    /** @param list<array<string, mixed>> $reports */
+    private function renderReportCards(array $reports): void
+    {
         echo '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:20px;margin-top:20px;">';
 
         foreach ($reports as $report) {
             $isEnabled = $report['module'] ? ModulesPage::isModuleEnabled($report['module']) : true;
-            $opacity = $isEnabled ? '1' : '0.5';
             $url = ! $isEnabled
                 ? '#'
                 : (isset($report['url'])
@@ -950,10 +967,10 @@ final class AdminPage implements Bootable, HasHooks
                 ) . '#polski-module-' . sanitize_key($report['module']);
             }
 
-            echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:24px;opacity:' . esc_attr($opacity) . ';position:relative;">';
+            echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:24px;position:relative;' . ($isEnabled ? '' : 'background:#f6f7f7;') . '">';
             echo '<div class="dashicons ' . esc_attr($report['icon']) . '" style="font-size:32px;width:32px;height:32px;margin-bottom:12px;color:#0071a1;"></div>';
             echo '<h3 style="margin:0 0 10px;">' . esc_html($report['name']) . '</h3>';
-            echo '<p style="margin:0 0 20px;color:#666;font-size:13px;">' . esc_html($report['desc']) . '</p>';
+            echo '<p style="margin:0 0 20px;color:#50575e;font-size:13px;">' . esc_html($report['desc']) . '</p>';
 
             if ($isEnabled) {
                 echo '<a href="' . esc_url($url) . '" class="button button-primary">' . esc_html__('Open Report', 'polski') . '</a>';
@@ -962,7 +979,7 @@ final class AdminPage implements Bootable, HasHooks
                 if ($moduleToggleUrl !== '') {
                     echo '<a href="' . esc_url($moduleToggleUrl) . '" class="button button-primary">' . esc_html__('Enable module', 'polski') . '</a>';
                 } else {
-                    echo '<span class="description" style="color:#dc3232;">' . esc_html__('Module disabled', 'polski') . '</span>';
+                    echo '<span class="description" style="color:#b32d2e;">' . esc_html__('Module disabled', 'polski') . '</span>';
                 }
             }
             echo '</div>';

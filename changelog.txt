@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.53.0 =
+* Changed: Consent Manager is out of beta. Code pasted per category (analytics, marketing, preferences) runs only after that consent, as in Cookie Notice; <noscript> pixels are left out.
+* Improved: accessibility of the admin screens (axe, WCAG 2 A and AA): module switches have names, the enabled and disabled labels and the report cards meet contrast, and reports of switched-off modules fold away.
+* Added: "Block known trackers" (on by default): Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity and Google Ads scripts enqueued by other plugins or the theme wait for consent; Google Analytics and Tag Manager too when Consent Mode is off.
+
 = 1.52.0 =
 * Improved: Polski > Settings has one tab bar for module settings and extension settings screens (filter `polski/admin/settings_tabs`); Polski PRO adds Invoices and KSeF there. Extension screens can stay in the menu through `polski/admin/menu_keep`.
 * Changed: Custom checkout fields and Order export moved from the WooCommerce menu to Polski (listed under Reports & Tools > More screens). Their addresses do not change.

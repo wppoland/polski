@@ -65,6 +65,13 @@ final class ConsentManagerService implements HasHooks
         add_filter('the_content', [$this, 'filterContentEmbeds'], 20);
         add_filter('woocommerce_short_description', [$this, 'filterContentEmbeds'], 20);
 
+        // Pasted code per category (Cookie Notice-style script blocking), gated in the head.
+        add_action('wp_head', [$this, 'printCategoryScripts'], 20);
+        $settings = $this->getSettings();
+        if ($settings['block_known_trackers'] ?? true) {
+            add_filter('script_loader_tag', [$this, 'gateKnownTracker'], 20, 3);
+        }
+
         // Banner script + styles, and the markup in the footer.
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('wp_footer', [$this, 'renderBanner'], 20);
@@ -230,6 +237,79 @@ final class ConsentManagerService implements HasHooks
             esc_attr($category),
             esc_url($src),
         );
+    }
+
+    /**
+     * Script hosts of common trackers and the category they wait for. Google's
+     * hosts are only gated without Consent Mode, which is built to load them
+     * early and send consent signals instead.
+     */
+    private const KNOWN_TRACKERS = [
+        'connect.facebook.net' => 'marketing',
+        'analytics.tiktok.com' => 'marketing',
+        'snap.licdn.com' => 'marketing',
+        's.pinimg.com' => 'marketing',
+        'googleadservices.com' => 'marketing',
+        'googlesyndication.com' => 'marketing',
+        'doubleclick.net' => 'marketing',
+        'static.hotjar.com' => 'analytics',
+        'clarity.ms' => 'analytics',
+    ];
+
+    private const GOOGLE_TRACKERS = [
+        'googletagmanager.com' => 'analytics',
+        'google-analytics.com' => 'analytics',
+    ];
+
+    /** Prints the code pasted for each enabled category, gated until that category is granted. */
+    public function printCategoryScripts(): void
+    {
+        $settings = $this->getSettings();
+        foreach ($this->enabledCategories() as $category) {
+            $code = (string) ($settings['scripts_' . $category] ?? '');
+            if ($code !== '') {
+                echo self::gateCode($category, $code); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- gateScript/gateSrc escape; the code itself is admin (unfiltered_html) input.
+            }
+        }
+    }
+
+    /**
+     * Each <script> of pasted code as a consent-gated tag: src scripts keep only
+     * their URL, inline scripts their body. Anything outside <script> is dropped,
+     * since a <noscript> pixel would track before consent.
+     */
+    public static function gateCode(string $category, string $code): string
+    {
+        $out = '';
+        if (preg_match_all('#<script\b([^>]*)>(.*?)</script>#is', $code, $scripts, PREG_SET_ORDER)) {
+            foreach ($scripts as $script) {
+                if (preg_match('#\bsrc\s*=\s*["\']([^"\']+)["\']#i', $script[1], $src)) {
+                    $out .= self::gateSrc($category, html_entity_decode($src[1])) . "\n";
+                } elseif (trim($script[2]) !== '') {
+                    $out .= self::gateScript($category, $script[2]) . "\n";
+                }
+            }
+        }
+
+        return $out;
+    }
+
+    /** script_loader_tag: an enqueued script from a known tracker host waits for its category. */
+    public function gateKnownTracker(string $tag, string $handle, string $src): string
+    {
+        $host = (string) wp_parse_url($src, PHP_URL_HOST);
+        if ($host === '' || str_contains($tag, 'data-polski-consent')) {
+            return $tag;
+        }
+        $settings = $this->getSettings();
+        $map = self::KNOWN_TRACKERS + (empty($settings['google_consent_mode']) ? self::GOOGLE_TRACKERS : []);
+        foreach ($map as $tracker => $category) {
+            if (($host === $tracker || str_ends_with($host, '.' . $tracker)) && in_array($category, $this->enabledCategories(), true)) {
+                return self::gateSrc($category, $src);
+            }
+        }
+
+        return $tag;
     }
 
     // ── Content Blocker (third-party embeds) ─────────────────────────────
