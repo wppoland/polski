@@ -52,6 +52,19 @@ $polski_uninstall_site = static function () use ($wpdb, $polski_pro_keys): void 
         wp_clear_scheduled_hook($polski_cron_hook);
     }
 
+    // KSeF (moved here from Polski PRO in 1.56): queued submissions would wake
+    // Action Scheduler for nothing, and the certificates, sealed keys and
+    // session tokens are secrets, not shop data, so they go whatever is chosen below.
+    if (function_exists('as_unschedule_all_actions')) {
+        as_unschedule_all_actions('', [], 'polski-pro-ksef');
+    }
+    foreach (['polski_pro_ksef_credentials', 'polski_pro_ksef_offline_credentials', 'polski_pro_ksef_tokens'] as $polski_ksef_secret) {
+        delete_option($polski_ksef_secret);
+    }
+    foreach (['test', 'production'] as $polski_ksef_env) {
+        delete_transient('polski_pro_ksef_public_keys_' . $polski_ksef_env);
+    }
+
     // The plugin_data module governs whether uninstall may delete anything. There
     // is no autoloader in this context, so read the option directly.
     // array_key_exists, not isset or empty: a stored false is a real answer and
