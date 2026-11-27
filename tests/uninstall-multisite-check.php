@@ -75,6 +75,10 @@ function delete_metadata(...$args)
 
     return true;
 }
+function delete_transient($name)
+{
+    return true;
+}
 function delete_option($name)
 {
     $GLOBALS['log'][$GLOBALS['blog']][] = 'option:' . $name;
@@ -180,9 +184,15 @@ foreach ([1, 3] as $site) {
         $fail[] = "site {$site}: flush_rewrite_rules() after switch_to_blog() writes the main site's rules into this site";
     }
 }
-$crons = array_map(static fn (string $h): string => 'cron:' . $h, \Polski\Deactivator::CRON_HOOKS);
+// Scheduled events and the KSeF secrets (certificates, sealed keys, tokens) go whatever the site chose.
+$crons = [
+    ...array_map(static fn (string $h): string => 'cron:' . $h, \Polski\Deactivator::CRON_HOOKS),
+    'option:polski_pro_ksef_credentials',
+    'option:polski_pro_ksef_offline_credentials',
+    'option:polski_pro_ksef_tokens',
+];
 if (($GLOBALS['log'][2] ?? []) !== $crons) {
-    $fail[] = 'site 2 did not opt in, so only its scheduled events go; it got: ' . implode(' | ', $GLOBALS['log'][2] ?? []);
+    $fail[] = 'site 2 did not opt in, so only its scheduled events and KSeF secrets go; it got: ' . implode(' | ', $GLOBALS['log'][2] ?? []);
 }
 if ($GLOBALS['lists'] !== 1) {
     $fail[] = "the plugin list was read {$GLOBALS['lists']} times, expected once for the whole network";

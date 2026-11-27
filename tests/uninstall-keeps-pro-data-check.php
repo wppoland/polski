@@ -74,6 +74,10 @@ function delete_option($name)
 {
     return true;
 }
+function delete_transient($name)
+{
+    return true;
+}
 
 final class FakeWpdb
 {
