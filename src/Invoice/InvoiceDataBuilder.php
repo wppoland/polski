@@ -47,6 +47,16 @@ final class InvoiceDataBuilder
             'annotations' => [],
         ];
 
+        $general = get_option('polski_general', []);
+        if (is_array($general) && ! empty($general['cash_accounting'])) {
+            $data['annotations'][] = 'metoda kasowa';
+        }
+        $bases = array_unique(array_filter(array_column($data['lines'], 'exemption')));
+        if ($bases !== []) {
+            /* translators: %s: legal basis of the VAT exemption */
+            $data['annotations'][] = sprintf(__('VAT exemption: %s', 'polski'), implode('; ', $bases));
+        }
+
         /**
          * Filters the invoice payload before it is snapshotted.
          *
@@ -164,6 +174,8 @@ final class InvoiceDataBuilder
                 'tax'      => $tax,
                 'gross'    => $net + $tax,
                 'rate'     => $this->rate($net, $tax),
+                // An exempt line prints "zw" and its basis, not 0% (art. 106e ust. 1 pkt 19).
+                'exemption' => 0.0 === round($tax, 6) ? self::exemptionBasis($item) : '',
             ];
         }
 
@@ -220,10 +232,11 @@ final class InvoiceDataBuilder
         $byRate = [];
 
         foreach ($this->lines($order) as $line) {
-            $rate = (string) $line['rate'];
+            $exempt = '' !== (string) ($line['exemption'] ?? '');
+            $rate = (string) $line['rate'] . ($exempt ? 'zw' : '');
 
             if (! isset($byRate[$rate])) {
-                $byRate[$rate] = ['rate' => $line['rate'], 'net' => 0.0, 'tax' => 0.0, 'gross' => 0.0];
+                $byRate[$rate] = ['rate' => $line['rate'], 'exempt' => $exempt, 'net' => 0.0, 'tax' => 0.0, 'gross' => 0.0];
             }
 
             $byRate[$rate]['net']   += (float) $line['net'];
@@ -234,6 +247,19 @@ final class InvoiceDataBuilder
         krsort($byRate, SORT_NUMERIC);
 
         return array_values($byRate);
+    }
+
+    /** The exemption basis entered on the product (or its parent for a variation), '' when none. */
+    private static function exemptionBasis(\WC_Order_Item_Product $item): string
+    {
+        foreach ([$item->get_variation_id(), $item->get_product_id()] as $id) {
+            $basis = $id > 0 ? trim((string) get_post_meta($id, '_polski_vat_exemption', true)) : '';
+            if ('' !== $basis) {
+                return $basis;
+            }
+        }
+
+        return '';
     }
 
     /**

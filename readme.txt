@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.54.1
+Stable tag: 1.55.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -286,6 +286,15 @@ With the VAT ID (NIP) lookup module on, typing a valid NIP into the NIP field fe
 * Terms of service: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
 * Privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
 
+= NBP exchange rates (Narodowy Bank Polski) =
+
+With the KSeF readiness module on, the dashboard cards for the 10 000 zł KSeF and 20 000 zł cash register limits convert orders in another currency to PLN at the current NBP table A rate, fetched at most once a day per currency.
+
+* Data sent: the currency code only.
+* Service address: [https://api.nbp.pl/](https://api.nbp.pl/)
+* Terms of use: [https://api.nbp.pl/en.html](https://api.nbp.pl/en.html)
+* Privacy policy: [https://nbp.pl/en/privacy-policy/](https://nbp.pl/en/privacy-policy/)
+
 = VIES (European Commission) =
 
 When the EU VAT ID check module is enabled, the plugin can connect to the European Commission's VIES service to confirm that a customer's EU VAT number is registered. The connection is made only when the check is deliberately triggered from the order screen.
@@ -402,6 +411,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.55.0 =
+* Added: dashboard cards for two limits (KSeF readiness module). KSeF: gross orders with a VAT ID this month against the 10 000 zł relief of art. 145m, which allows invoices outside KSeF until 31 December 2026; once exceeded it says so for good. Cash register: net consumer sales this year against 20 000 zł. Other currencies are converted at the NBP rate (see External Services).
+* Added: VAT exemption basis per product (Polski > Invoicing). An exempt line at 0% prints "zw" and the basis on the invoice, and Polski PRO 1.42 files it to KSeF as "zw" instead of "0 KR".
+* Added: cash accounting setting (VAT display module). Invoices then say "metoda kasowa", and Polski PRO 1.42 sets P_16 in KSeF.
 
 = 1.54.1 =
 * Tweak: the order screen reads the split payment flag stored with the order and works it out only for older orders; the Belarusian, Czech, German, Spanish, Slovak and Chinese catalogues list the 1.54 strings (untranslated until translated).

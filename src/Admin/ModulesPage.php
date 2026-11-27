@@ -306,6 +306,7 @@ final class ModulesPage implements HasHooks
                 'settings' => [
                     ['key' => 'polski_taxes|vat_notice_text', 'label' => __('VAT notice text', 'polski'), 'type' => 'text', 'default' => 'including {rate}% VAT', 'hint' => __('Variables: {rate}', 'polski')],
                     ['key' => 'polski_general|small_business', 'label' => __('Small business exemption (Art. 113)', 'polski'), 'type' => 'checkbox', 'default' => false],
+                    ['key' => 'polski_general|cash_accounting', 'label' => __('Cash accounting (metoda kasowa)', 'polski'), 'type' => 'checkbox', 'default' => false, 'hint' => __('For a small taxpayer settling VAT on payment (art. 21 of the VAT Act). Invoices then say "metoda kasowa" (art. 106e ust. 1 pkt 16).', 'polski')],
                     ['key' => 'polski_taxes|vat_exempt_notice', 'label' => __('Exemption text', 'polski'), 'type' => 'text', 'default' => 'Exempt from VAT based on Art. 113 par. 1 of the VAT Act'],
                 ],
             ],
@@ -1251,7 +1252,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'ksef_ready',
                 'name' => __('KSeF readiness', 'polski'),
-                'description' => __('Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator.', 'polski'),
+                'description' => __('Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks, an admin status indicator, and dashboard cards for the 10 000 zł KSeF and 20 000 zł cash register limits.', 'polski'),
                 'group' => 'Consumer rights',
                 'enabled' => false,
                 'icon' => 'dashicons-media-spreadsheet',

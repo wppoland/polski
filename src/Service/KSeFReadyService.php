@@ -114,6 +114,117 @@ final class KSeFReadyService implements HasHooks
         return (bool) $settings['auto_detect_nip'];
     }
 
+    /** KSeF relief (art. 145m ustawy o VAT): invoices outside KSeF while the month stays at or under this gross amount, until the end of 2026. */
+    public const KSEF_MONTHLY_LIMIT = 10000.0;
+
+    /** Cash register exemption (§ 3 rozporządzenia MF, Dz.U. 2024 poz. 1902): yearly net sales to consumers. */
+    public const REGISTER_YEARLY_LIMIT = 20000.0;
+
+    private const LIMIT_STATUSES = ['processing', 'completed', 'on-hold'];
+
+    /**
+     * Running totals for the two limits, in PLN: gross business sales this
+     * month (orders with a VAT ID, which are the invoices KSeF counts;
+     * consumer invoices do not count, MF FAQ q. 11) and net consumer sales
+     * this year. Orders in another currency use today's NBP table A rate, so
+     * those sums are an estimate. Cached for an hour.
+     *
+     * @return array{ksef_month: float, ksef_exceeded: string, register_year: float, estimated: bool}
+     */
+    public static function limits(): array
+    {
+        $cached = get_transient('polski_ksef_limits');
+        if (is_array($cached) && isset($cached['ksef_month'], $cached['register_year'])) {
+            return [
+                'ksef_month' => (float) $cached['ksef_month'],
+                'ksef_exceeded' => (string) ($cached['ksef_exceeded'] ?? ''),
+                'register_year' => (float) $cached['register_year'],
+                'estimated' => ! empty($cached['estimated']),
+            ];
+        }
+
+        $now = current_datetime();
+        $result = ['ksef_month' => 0.0, 'ksef_exceeded' => (string) get_option('polski_ksef_limit_exceeded', ''), 'register_year' => 0.0, 'estimated' => false];
+
+        $orders = function_exists('wc_get_orders') ? wc_get_orders([
+            'status' => self::LIMIT_STATUSES,
+            'date_created' => $now->format('Y') . '-01-01...' . $now->format('Y-m-d'),
+            'type' => 'shop_order',
+            'limit' => -1,
+        ]) : [];
+
+        $month = $now->format('Y-m');
+        foreach (is_array($orders) ? $orders : [] as $order) {
+            if (! $order instanceof \WC_Order) {
+                continue;
+            }
+            $rate = self::plnRate($order->get_currency());
+            if ($rate === null) {
+                continue;
+            }
+            $result['estimated'] = $result['estimated'] || $rate !== 1.0;
+            $gross = ((float) $order->get_total() - (float) $order->get_total_refunded()) * $rate;
+            $net = $gross - ((float) $order->get_total_tax() - (float) $order->get_total_tax_refunded()) * $rate;
+            $created = $order->get_date_created();
+
+            if (self::orderNip($order) !== '') {
+                if ($created !== null && $created->date('Y-m') === $month) {
+                    $result['ksef_month'] += $gross;
+                }
+            } else {
+                $result['register_year'] += $net;
+            }
+        }
+
+        // Once over the limit, KSeF stays mandatory from that invoice on, even in a later quieter month (MF FAQ q. 13).
+        if ($result['ksef_exceeded'] === '' && $result['ksef_month'] > self::KSEF_MONTHLY_LIMIT) {
+            $result['ksef_exceeded'] = $now->format('Y-m-d');
+            update_option('polski_ksef_limit_exceeded', $result['ksef_exceeded'], false);
+        }
+
+        set_transient('polski_ksef_limits', $result, HOUR_IN_SECONDS);
+
+        return $result;
+    }
+
+    /** PLN per unit of $currency from NBP table A (cached a day); null when it cannot be fetched. */
+    private static function plnRate(string $currency): ?float
+    {
+        $currency = strtoupper($currency);
+        if ($currency === 'PLN' || $currency === '') {
+            return 1.0;
+        }
+
+        $key = 'polski_nbp_' . strtolower($currency);
+        $cached = get_transient($key);
+        if (is_numeric($cached)) {
+            return (float) $cached;
+        }
+
+        $response = wp_remote_get('https://api.nbp.pl/api/exchangerates/rates/a/' . rawurlencode(strtolower($currency)) . '/?format=json', ['timeout' => 5]);
+        $body = is_wp_error($response) ? null : json_decode((string) wp_remote_retrieve_body($response), true);
+        $mid = is_array($body) ? ($body['rates'][0]['mid'] ?? null) : null;
+        if (! is_numeric($mid)) {
+            return null;
+        }
+
+        set_transient($key, (float) $mid, DAY_IN_SECONDS);
+
+        return (float) $mid;
+    }
+
+    private static function orderNip(\WC_Order $order): string
+    {
+        foreach (['_billing_nip', '_polski_billing_nip', '_wc_other/polski/nip', '_wc_billing/polski/nip'] as $key) {
+            $nip = trim((string) $order->get_meta($key, true));
+            if ($nip !== '') {
+                return $nip;
+            }
+        }
+
+        return '';
+    }
+
     /**
      * Render KSeF status in the admin order billing section.
      */

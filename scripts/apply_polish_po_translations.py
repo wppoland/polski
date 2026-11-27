@@ -12,6 +12,20 @@ PO_PATH = ROOT / "languages" / "polski-pl_PL.po"
 
 # Singular: msgid -> msgstr (Polish). msgid already in Polish uses identical msgstr.
 SINGULAR: dict[str, str] = {
+    "Other currencies at the current NBP rate, so this is an estimate.": "Kwoty w innych walutach przeliczono po bieżącym kursie NBP, więc są szacunkowe.",
+    "KSeF limit 10 000 zł": "Limit KSeF 10 000 zł",
+    "Exceeded on %s: invoices to businesses go to KSeF from then on, even in a quieter month.": "Limit przekroczony %s: od tamtej faktury wszystkie faktury dla firm trafiają do KSeF, także w miesiącu poniżej limitu.",
+    "This month %1$s of %2$s gross in orders with a VAT ID. Up to the limit you may invoice outside KSeF until 31 December 2026 (art. 145m).": "W tym miesiącu %1$s z %2$s brutto w zamówieniach z NIP. Do limitu możesz wystawiać faktury poza KSeF do 31 grudnia 2026 r. (art. 145m).",
+    "Cash register limit 20 000 zł": "Limit kasy fiskalnej 20 000 zł",
+    "Exceeded: a cash register is needed from two months after the month of exceeding, unless another exemption applies.": "Limit przekroczony: kasa fiskalna jest potrzebna po upływie dwóch miesięcy od końca miesiąca przekroczenia, chyba że masz inne zwolnienie.",
+    "This year %1$s of %2$s net in sales to consumers.": "W tym roku %1$s z %2$s netto w sprzedaży dla konsumentów.",
+    "Services paid in full through a bank, with records showing what each payment was for, can be exempt above it (item 42 of the annex to the regulation).": "Usługi opłacone w całości przez bank, gdy z ewidencji wynika, za co była każda wpłata, mogą być zwolnione także powyżej limitu (poz. 42 załącznika do rozporządzenia).",
+    "Cash accounting (metoda kasowa)": "Metoda kasowa",
+    "For a small taxpayer settling VAT on payment (art. 21 of the VAT Act). Invoices then say \"metoda kasowa\" (art. 106e ust. 1 pkt 16).": "Dla małego podatnika rozliczającego VAT po zapłacie (art. 21 ustawy o VAT). Faktury mają wtedy dopisek \"metoda kasowa\" (art. 106e ust. 1 pkt 16).",
+    "Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks, an admin status indicator, and dashboard cards for the 10 000 zł KSeF and 20 000 zł cash register limits.": "Automatyczne wykrywanie na podstawie NIP zamówień, które mogą wymagać faktury w KSeF, haki integracyjne, wskaźnik stanu w panelu oraz karty na kokpicie z limitami: 10 000 zł dla KSeF i 20 000 zł dla kasy fiskalnej.",
+    "VAT exemption basis": "Podstawa zwolnienia z VAT",
+    "Only for a product exempt from VAT and sold with a 0% tax class. The invoice then shows \"zw\" with this basis (art. 106e ust. 1 pkt 19) instead of a 0% rate.": "Tylko dla produktu zwolnionego z VAT i sprzedawanego z klasą podatkową 0%. Faktura pokazuje wtedy \"zw\" z tą podstawą (art. 106e ust. 1 pkt 19) zamiast stawki 0%.",
+    "VAT exemption: %s": "Zwolnienie z VAT: %s",
     "od {price}": "od {price}",
     "Split payment (MPP):": "Podzielona płatność (MPP):",
     "the invoice carries \"mechanizm podzielonej płatności\" (annex 15 goods, over 15 000 zł, business buyer).": "faktura ma adnotację \"mechanizm podzielonej płatności\" (towary z załącznika 15, ponad 15 000 zł, nabywca firma).",
