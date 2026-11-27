@@ -50,7 +50,7 @@ One free, open-source plugin with many modules, built for shops selling in Polan
 
 = Checkout, consents and returns =
 
-* **Consent checkboxes** (beta on the block checkout) - consents at order, registration and reviews, with the option to enable only selected fields. On the block checkout the labels show without links, and boxes limited by category, country or payment method are not shown; the service and age boxes show there when the cart needs them.
+* **Consent checkboxes** (beta on the block checkout) - consents at order, registration and reviews, with the option to enable only selected fields. On the block checkout labels show without links and boxes limited by category, country or payment method are hidden; service and age boxes show when the cart needs them.
 * **Right of withdrawal** - withdrawal/return forms and requests from the customer account.
 * **Double e-mail confirmation** (beta) - e-mail address confirmation during customer registration. An account created at checkout stays logged in for that session.
 * **Shop pages** - link the terms, privacy policy and withdrawal content into WooCommerce notices.
@@ -279,7 +279,7 @@ The plugin makes no external calls except the ones listed below. Each one is off
 
 = GUS REGON API =
 
-When the VAT ID (NIP) lookup module is enabled, the plugin can connect to the public GUS REGON registry to fetch company data based on the VAT ID entered by the user. The connection is made when a valid VAT ID (NIP) is typed into the NIP field.
+With the VAT ID (NIP) lookup module on, typing a valid NIP into the NIP field fetches that company's data from the public GUS REGON registry.
 
 * Data sent: the VAT ID (NIP).
 * Service address: [https://wyszukiwarkaregon.stat.gov.pl/](https://wyszukiwarkaregon.stat.gov.pl/)
