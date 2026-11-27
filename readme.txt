@@ -286,13 +286,12 @@ With the VAT ID (NIP) lookup module on, typing a valid NIP into the NIP field fe
 * Terms of service: [https://api.stat.gov.pl/Home/RegulaminBIR](https://api.stat.gov.pl/Home/RegulaminBIR)
 * Privacy policy: [https://bip.stat.gov.pl/](https://bip.stat.gov.pl/)
 
-= NBP exchange rates (Narodowy Bank Polski) =
+= NBP exchange rates =
 
-With the KSeF readiness module on, the dashboard cards for the 10 000 zł KSeF and 20 000 zł cash register limits convert orders in another currency to PLN at the current NBP table A rate, fetched at most once a day per currency.
+With the KSeF readiness module on, the limit cards convert other currencies at the NBP table A rate, fetched at most daily.
 
-* Data sent: the currency code only.
-* Service address: [https://api.nbp.pl/](https://api.nbp.pl/)
-* Terms of use: [https://api.nbp.pl/en.html](https://api.nbp.pl/en.html)
+* Data sent: the currency code.
+* Service address, terms: [https://api.nbp.pl/](https://api.nbp.pl/)
 * Privacy policy: [https://nbp.pl/en/privacy-policy/](https://nbp.pl/en/privacy-policy/)
 
 = VIES (European Commission) =
@@ -353,7 +352,7 @@ When the DataLayer module is enabled and a GTM container ID or a GA4 measurement
 
 = Tracking tags (advertising and analytics) =
 
-When the Tracking Tags module is enabled, each provider below loads only if you switch it on and enter your own ID, key or domain. Its script is placed in the page as an inert placeholder and runs in the visitor's browser only after the visitor grants the matching consent category in the cookie banner (marketing for advertising pixels, analytics for measurement tools). Nothing is sent from your server.
+When the Tracking Tags module is enabled, each provider below loads only if you switch it on and enter your own ID, key or domain. Its script runs in the visitor's browser only after the matching consent in the cookie banner (marketing for pixels, analytics for measurement). Nothing is sent from your server.
 
 * Data sent: the page address, referrer, browser and device data, the visitor's IP address and the provider's own cookie identifiers, plus a page-view event. The plugin sends no order or customer data through these tags.
 * Meta Pixel: [https://connect.facebook.net/](https://connect.facebook.net/), [terms](https://www.facebook.com/legal/terms/businesstools), [privacy policy](https://www.facebook.com/privacy/policy/)
@@ -393,10 +392,10 @@ The optional AI features do not call a provider themselves: they hand a prompt t
 The Store health monitor and the CRA incident log (security.txt module settings) can post to a webhook address you enter. Nothing is sent unless you fill in that address.
 
 * Store health monitor: an alert text with the store status and the failed checks, sent as JSON to your webhook URL.
-* CRA incident log: the incident record you dispatch (reference, type, severity, status, title, summary, affected component and versions, dates, reporter and notes), sent as JSON to your webhook URL.
+* CRA incident log: the incident record you dispatch, sent as JSON to your webhook URL.
 * The receiving service is the one you choose; its terms and privacy policy apply.
 
-Admin-panel feedback and deactivation-form information are stored locally in WordPress and are not sent to an external service.
+Admin feedback and deactivation answers stay in WordPress.
 
 == Screenshots ==
 
@@ -607,6 +606,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
 * Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the optional AI features, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
 
+Only the most recent releases are listed here. The full history is on the plugin's changelog
+page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
+and in changelog.txt inside the plugin folder. WordPress.org silently truncates
+a changelog over 5000 words, which is why this one is kept short on purpose.
 
 == Upgrade Notice ==
 
