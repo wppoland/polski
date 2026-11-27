@@ -104,7 +104,9 @@ final class SplitPaymentService implements HasHooks
 
     public function renderAdmin(\WC_Order $order): void
     {
-        if (self::applies($order)) {
+        // The flag stored at checkout (or after a NIP change); orders from before it are worked out now.
+        $stored = (string) $order->get_meta(self::ORDER_META, true);
+        if ($stored === 'yes' || ($stored === '' && self::applies($order))) {
             echo '<p><strong>' . esc_html__('Split payment (MPP):', 'polski') . '</strong> '
                 . esc_html__('the invoice carries "mechanizm podzielonej płatności" (annex 15 goods, over 15 000 zł, business buyer).', 'polski') . '</p>';
         }

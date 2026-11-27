@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.54.0
+Stable tag: 1.54.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -403,6 +403,9 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.54.1 =
+* Tweak: the order screen reads the split payment flag stored with the order and works it out only for older orders; the Belarusian, Czech, German, Spanish, Slovak and Chinese catalogues list the 1.54 strings (untranslated until translated).
+
 = 1.54.0 =
 * Added: split payment (MPP). Mark annex 15 products under Polski > Invoicing on the product; a business invoice over 15 000 zł in PLN with such a product carries "mechanizm podzielonej płatności", the order screen says so, and Polski PRO 1.40 files it to KSeF (P_18A). Filter `polski/mpp/applies`.
 * Added: the buyer's NIP can be corrected on the order screen (phone orders, typos). It is normalised, checked, kept in step in every place it is stored, and the KSeF and split payment flags are worked out again (action `polski/order/tax_id_changed`).
@@ -607,11 +610,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 = 1.41.6 =
 * Added: GS1 modulo-10 check-digit validation for GTIN-8, GTIN-12, GTIN-13, and GTIN-14 barcodes in product editor and CSV importer, warning merchants of invalid barcodes without blocking saves.
-
-= 1.41.5 =
-* Added: Borlabs-style Content Blocker for third-party media embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) with placeholder opt-in and dynamic runtime unblocking when marketing consent is granted.
-* Added: Swiss UID (CHE) VAT number format validation and SOAP integration for cross-border DACH trade.
-* Fixed: Omnibus archive price cache key alignment between windowed lookup and cache warmer invalidation.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

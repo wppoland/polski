@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.54.1 =
+* Tweak: the order screen reads the split payment flag stored with the order and works it out only for older orders; the Belarusian, Czech, German, Spanish, Slovak and Chinese catalogues list the 1.54 strings (untranslated until translated).
+
 = 1.54.0 =
 * Added: split payment (MPP). Mark annex 15 products under Polski > Invoicing on the product; a business invoice over 15 000 zł in PLN with such a product carries "mechanizm podzielonej płatności", the order screen says so, and Polski PRO 1.40 files it to KSeF (P_18A). Filter `polski/mpp/applies`.
 * Added: the buyer's NIP can be corrected on the order screen (phone orders, typos). It is normalised, checked, kept in step in every place it is stored, and the KSeF and split payment flags are worked out again (action `polski/order/tax_id_changed`).
