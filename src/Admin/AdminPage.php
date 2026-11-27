@@ -38,6 +38,8 @@ final class AdminPage implements Bootable, HasHooks
     {
         add_action('admin_menu', [$this, 'addMenuPage'], 1);
         add_action('admin_menu', [$this, 'tuckMenuItems'], 9999);
+        // Extension settings screens print the shared tab bar with do_action('polski/admin/settings_nav', $slug).
+        add_action('polski/admin/settings_nav', [self::class, 'settingsNav']);
         add_action('admin_head', [$this, 'hideTuckedMenuItems']);
         add_filter('submenu_file', [$this, 'highlightTucked']);
         $this->proUpsell()->registerHooks();
