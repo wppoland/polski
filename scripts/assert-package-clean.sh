@@ -116,8 +116,10 @@ if command -v curl >/dev/null 2>&1; then
     current_wp="$(curl -fsS --max-time 10 https://api.wordpress.org/core/version-check/1.7/ 2>/dev/null \
         | php -r '$d = json_decode(stream_get_contents(STDIN), true); echo $d["offers"][0]["current"] ?? "";' 2>/dev/null)"
     if [[ -n "${current_wp}" ]]; then
-        # Compare on major.minor only; wordpress.org accepts 7.1 for 7.1.2.
-        if [[ "${current_wp%.*}" != "${readme_tested}" && "${current_wp}" != "${readme_tested}" ]]; then
+        # Compare on major.minor only; wordpress.org accepts 7.1 for 7.1.2. Ahead of the
+        # current release (a release candidate, e.g. 7.2 while 7.1.5 is current) is fine.
+        cur_mm="$(echo "${current_wp}" | cut -d. -f1-2)"
+        if php -r 'exit(version_compare($argv[1], $argv[2], "<") ? 0 : 1);' "${readme_tested}" "${cur_mm}"; then
             fail "Tested up to (${readme_tested}) is behind the current WordPress release (${current_wp})"
         fi
     else
