@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.55.0 =
+* Added: dashboard cards for two limits (KSeF readiness module). KSeF: gross orders with a VAT ID this month against the 10 000 zł relief of art. 145m, which allows invoices outside KSeF until 31 December 2026; once exceeded it says so for good. Cash register: net consumer sales this year against 20 000 zł. Other currencies are converted at the NBP rate (see External Services).
+* Added: VAT exemption basis per product (Polski > Invoicing). An exempt line at 0% prints "zw" and the basis on the invoice, and Polski PRO 1.42 files it to KSeF as "zw" instead of "0 KR".
+* Added: cash accounting setting (VAT display module). Invoices then say "metoda kasowa", and Polski PRO 1.42 sets P_16 in KSeF.
+
 = 1.54.1 =
 * Tweak: the order screen reads the split payment flag stored with the order and works it out only for older orders; the Belarusian, Czech, German, Spanish, Slovak and Chinese catalogues list the 1.54 strings (untranslated until translated).
 

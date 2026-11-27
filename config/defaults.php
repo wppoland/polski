@@ -13,6 +13,7 @@ return [
     // General.
     'polski_general' => [
         'small_business' => false,
+        'cash_accounting' => false,
         'remove_data_on_uninstall' => false,
         'bdo_number' => '',
         'dispute_resolution_enabled' => true,

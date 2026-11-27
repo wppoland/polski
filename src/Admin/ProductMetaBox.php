@@ -181,6 +181,14 @@ final class ProductMetaBox implements HasHooks
             'description' => __('Goods or services from annex 15 to the VAT Act. A business invoice over 15 000 zł with this product then says "mechanizm podzielonej płatności".', 'polski'),
         ]);
 
+        woocommerce_wp_text_input([
+            'id' => '_polski_vat_exemption',
+            'label' => __('VAT exemption basis', 'polski'),
+            'placeholder' => 'art. 43 ust. 1 pkt 29 lit. c ustawy o VAT',
+            'description' => __('Only for a product exempt from VAT and sold with a 0% tax class. The invoice then shows "zw" with this basis (art. 106e ust. 1 pkt 19) instead of a 0% rate.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
         echo '</div>';
 
         // --- Badge Section ---
@@ -722,6 +730,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_withdrawal_exempt' => 'checkbox',
             '_polski_gtu_code' => 'string',
             '_polski_mpp' => 'checkbox',
+            '_polski_vat_exemption' => 'string',
             '_polski_badge_text' => 'string',
             '_polski_badge_style' => 'string',
             '_polski_badge_secondary_text' => 'string',

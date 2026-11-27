@@ -124,7 +124,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['quantity'], 0)); ?></td>
 						<?php if ($polski_show_vat) : ?>
 							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['net'])); ?></td>
-							<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>
+							<td class="is-num"><?php echo esc_html('' !== (string) ($polski_line['exemption'] ?? '') ? 'zw' : number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>
 						<?php endif; ?>
 						<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['gross'])); ?></td>
 					</tr>
@@ -147,7 +147,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 				<tbody>
 					<?php foreach ($polski_vat as $polski_row) : ?>
 						<tr>
-							<td><?php echo esc_html(number_format_i18n((float) $polski_row['rate'], 0) . '%'); ?></td>
+							<td><?php echo esc_html(! empty($polski_row['exempt']) ? 'zw' : number_format_i18n((float) $polski_row['rate'], 0) . '%'); ?></td>
 							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_row['net'])); ?></td>
 							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_row['tax'])); ?></td>
 							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_row['gross'])); ?></td>

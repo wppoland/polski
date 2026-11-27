@@ -1150,6 +1150,10 @@ final class AdminPage implements Bootable, HasHooks
             null,
         );
 
+        if (\Polski\Admin\ModulesPage::isModuleEnabled('ksef_ready')) {
+            $this->renderLimitCards();
+        }
+
         $this->renderStatusCard(
             (string) ($generalSettings['admin_doi_card_title'] ?? __('Double opt-in', 'polski')),
             $doiEnabled ? $statusActive : $statusInactive,
@@ -1374,6 +1378,40 @@ final class AdminPage implements Bootable, HasHooks
      * @param bool|null $ok True = green, false = red, null = neutral.
      * @param string    $link Optional link for the card.
      */
+    /** The KSeF 10 000 zł monthly relief (art. 145m, until the end of 2026) and the 20 000 zł cash register limit. */
+    private function renderLimitCards(): void
+    {
+        $limits = \Polski\Service\KSeFReadyService::limits();
+        $zl = static fn (float $v): string => number_format_i18n($v, 0) . ' zł';
+        $estimate = $limits['estimated'] ? ' ' . __('Other currencies at the current NBP rate, so this is an estimate.', 'polski') : '';
+
+        if ((int) current_datetime()->format('Y') <= 2026) {
+            $month = $limits['ksef_month'];
+            $limit = \Polski\Service\KSeFReadyService::KSEF_MONTHLY_LIMIT;
+            $this->renderStatusCard(
+                __('KSeF limit 10 000 zł', 'polski'),
+                $limits['ksef_exceeded'] !== ''
+                    /* translators: %s: date the limit was exceeded */
+                    ? sprintf(__('Exceeded on %s: invoices to businesses go to KSeF from then on, even in a quieter month.', 'polski'), $limits['ksef_exceeded'])
+                    /* translators: 1: gross amount this month, 2: the limit */
+                    : sprintf(__('This month %1$s of %2$s gross in orders with a VAT ID. Up to the limit you may invoice outside KSeF until 31 December 2026 (art. 145m).', 'polski'), $zl($month), $zl($limit)) . $estimate,
+                $limits['ksef_exceeded'] === '' && $month <= $limit * 0.8,
+            );
+        }
+
+        $year = $limits['register_year'];
+        $limit = \Polski\Service\KSeFReadyService::REGISTER_YEARLY_LIMIT;
+        $this->renderStatusCard(
+            __('Cash register limit 20 000 zł', 'polski'),
+            ($year > $limit
+                ? __('Exceeded: a cash register is needed from two months after the month of exceeding, unless another exemption applies.', 'polski')
+                /* translators: 1: net amount this year, 2: the limit */
+                : sprintf(__('This year %1$s of %2$s net in sales to consumers.', 'polski'), $zl($year), $zl($limit)))
+                . ' ' . __('Services paid in full through a bank, with records showing what each payment was for, can be exempt above it (item 42 of the annex to the regulation).', 'polski') . $estimate,
+            $year <= $limit * 0.8,
+        );
+    }
+
     private function renderStatusCard(string $title, string $value, ?bool $ok, string $link = ''): void
     {
         $color = match ($ok) {
