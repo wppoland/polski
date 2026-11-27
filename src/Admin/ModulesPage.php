@@ -495,8 +495,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'consent_manager',
                 'name' => __('Consent Manager (cookie banner)', 'polski'),
-                'description' => __('A native cookie-consent banner with consent categories and Google Consent Mode v2 signalling. Polski\'s own tracking tags, and scripts you mark with data-polski-consent, wait until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
-                'beta' => __('Only Polski\'s own tags and scripts you mark with type="text/plain" data-polski-consent wait for consent; other third-party scripts and iframes still load before the visitor chooses.', 'polski'),
+                'description' => __('A cookie-consent banner with consent categories and Google Consent Mode v2. Scripts wait for the matching category: Polski\'s own tags, the code you paste below for each category, known trackers loaded by other plugins (Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Clarity and, without Consent Mode, Google Analytics and Ads), and scripts you mark with data-polski-consent. YouTube, Vimeo, Maps and SoundCloud embeds in content show a placeholder until consent. Visitors can change their choice with the Cookie settings button. Records each decision for your audit trail. Provides tools, not legal advice.', 'polski'),
                 'group' => 'Legal & Compliance',
                 'enabled' => false,
                 'icon' => 'dashicons-privacy',
@@ -520,6 +519,10 @@ final class ModulesPage implements HasHooks
                         'center' => __('Center', 'polski'),
                     ]],
                     ['key' => 'polski_consent_manager|google_consent_mode', 'label' => __('Google Consent Mode v2', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Sends consent signals to Google tags (gtag / GTM) before they run.', 'polski')],
+                    ['key' => 'polski_consent_manager|block_known_trackers', 'label' => __('Block known trackers', 'polski'), 'type' => 'checkbox', 'default' => true, 'hint' => __('Scripts from Meta, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity and Google Ads that other plugins or the theme enqueue wait for consent. Google Analytics and Tag Manager wait too when Consent Mode is off.', 'polski')],
+                    ['key' => 'polski_consent_manager|scripts_analytics', 'label' => __('Scripts after analytics consent', 'polski'), 'type' => 'code', 'default' => '', 'hint' => __('Paste the tracking code (with its <script> tags). It runs only once the visitor accepts Analytics. Code outside <script> tags, such as <noscript> pixels, is left out.', 'polski')],
+                    ['key' => 'polski_consent_manager|scripts_marketing', 'label' => __('Scripts after marketing consent', 'polski'), 'type' => 'code', 'default' => '', 'hint' => __('For example the Meta Pixel or a remarketing tag. Runs only once the visitor accepts Marketing.', 'polski')],
+                    ['key' => 'polski_consent_manager|scripts_preferences', 'label' => __('Scripts after preferences consent', 'polski'), 'type' => 'code', 'default' => '', 'hint' => __('Runs only once the visitor accepts Preferences (for example a chat widget).', 'polski')],
                 ],
             ],
             // === Consumer Rights ===
@@ -2087,9 +2090,11 @@ final class ModulesPage implements HasHooks
         echo '<td class="polski-modules-col-toggle">';
         echo '<label class="sp-toggle">';
         printf(
-            '<input type="checkbox" data-polski-module-id="%s" value="1" %s>',
+            '<input type="checkbox" data-polski-module-id="%s" value="1" %s aria-label="%s">',
             esc_attr($id),
             checked($enabled, true, false),
+            /* translators: %s: module name */
+            esc_attr(sprintf(__('Enable %s', 'polski'), (string) ($module['name'] ?? $id))),
         );
         echo '<span class="sp-toggle__track"></span>';
         echo '<span class="sp-toggle__knob"></span>';
@@ -2109,7 +2114,7 @@ final class ModulesPage implements HasHooks
             foreach ($module['links'] as $link) {
                 if ($enabled) {
                     printf(
-                        ' &middot; <a href="%s" target="_blank" rel="noopener">%s &rarr;</a>',
+                        ' &middot; <a href="%s" target="_blank" rel="noopener" style="text-decoration:underline;">%s &rarr;</a>',
                         esc_url($link['url']),
                         esc_html($link['label']),
                     );
@@ -2276,6 +2281,14 @@ final class ModulesPage implements HasHooks
                     esc_attr($inputId),
                     esc_attr($inputName),
                     esc_attr((string) $currentValue),
+                );
+            } elseif ($type === 'code') {
+                printf(
+                    '<textarea id="%s" name="%s" rows="5" class="large-text code" spellcheck="false"%s>%s</textarea>',
+                    esc_attr($inputId),
+                    esc_attr($inputName),
+                    current_user_can('unfiltered_html') ? '' : ' readonly',
+                    esc_textarea((string) $currentValue),
                 );
             } elseif ($type === 'textarea') {
                 printf(
@@ -2756,6 +2769,10 @@ final class ModulesPage implements HasHooks
                 $field = $item['field'];
                 $fKey = $item['fieldKey'];
 
+                if (($field['type'] ?? '') === 'code' && ! current_user_can('unfiltered_html')) {
+                    // The field is read-only for this user; keep the stored code.
+                    continue;
+                }
                 if (isset($settingsData[$optionName][$fKey])) {
                     $existing[$fKey] = $this->sanitizeFieldValue($settingsData[$optionName][$fKey], $field);
                 } elseif (($field['type'] ?? '') === 'checkbox') {
@@ -3305,6 +3322,8 @@ final class ModulesPage implements HasHooks
             'number' => is_numeric($value) ? $value + 0 : 0,
             'page_select' => absint($value),
             'textarea' => sanitize_textarea_field((string) $value),
+            // Script code: kept as typed, only for users allowed to post unfiltered HTML (admins on single sites).
+            'code' => trim(str_replace("\0", '', (string) $value)),
             'email' => sanitize_email((string) $value),
             'integration_repeater' => $this->sanitizeIntegrationRepeater((string) $value),
             'trigger_repeater' => $this->sanitizeTriggerRepeater((string) $value),

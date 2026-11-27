@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Polski for WooCommerce 1.50.4\n"
+"Project-Id-Version: Polski for WooCommerce 1.53.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-27T17:13:20+00:00\n"
+"POT-Creation-Date: 2026-11-27T17:58:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: polski\n"
@@ -43,7 +43,7 @@ msgid "https://wppoland.com"
 msgstr ""
 
 #: config/defaults.php:19
-#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:603
 msgid "If you are a consumer, you can use out-of-court complaint and redress procedures, for example help from your municipal or district consumer ombudsman (Rzecznik Konsumentów) or the Provincial Inspectorate of Trade Inspection (WIIH)."
 msgstr ""
 
@@ -52,7 +52,7 @@ msgid "Done. We have created empty draft legal pages for you. Fill in your own t
 msgstr ""
 
 #: config/defaults.php:21
-#: src/Admin/AdminPage.php:576
+#: src/Admin/AdminPage.php:570
 msgid "Modules saved."
 msgstr ""
 
@@ -77,7 +77,7 @@ msgid "Switched off"
 msgstr ""
 
 #: config/defaults.php:27
-#: src/Admin/AdminPage.php:1117
+#: src/Admin/AdminPage.php:1128
 msgid "Not configured"
 msgstr ""
 
@@ -99,26 +99,26 @@ msgid "Small business exemption (Article 113)"
 msgstr ""
 
 #: config/defaults.php:32
-#: src/Admin/AdminPage.php:1138
+#: src/Admin/AdminPage.php:1149
 msgid "Standard VAT"
 msgstr ""
 
 #: config/defaults.php:33
-#: src/Admin/AdminPage.php:1143
+#: src/Admin/AdminPage.php:1154
 msgid "Double opt-in"
 msgstr ""
 
 #: config/defaults.php:35
-#: src/Admin/AdminPage.php:1170
+#: src/Admin/AdminPage.php:1181
 msgid "Page"
 msgstr ""
 
 #: config/defaults.php:36
 #: config/defaults.php:176
 #: config/defaults.php:279
-#: src/Admin/AdminPage.php:1170
+#: src/Admin/AdminPage.php:1181
 #: src/Admin/CRAIncidentsPage.php:125
-#: src/Admin/ModulesPage.php:577
+#: src/Admin/ModulesPage.php:580
 #: src/Admin/PageCompliancePage.php:107
 #: src/Admin/PageCompliancePage.php:152
 #: src/Admin/PageCompliancePage.php:201
@@ -143,22 +143,22 @@ msgid "Page published"
 msgstr ""
 
 #: config/defaults.php:38
-#: src/Admin/AdminPage.php:1188
+#: src/Admin/AdminPage.php:1199
 msgid "Draft"
 msgstr ""
 
 #: config/defaults.php:39
-#: src/Admin/AdminPage.php:1195
+#: src/Admin/AdminPage.php:1206
 msgid "Not created"
 msgstr ""
 
 #: config/defaults.php:40
-#: src/Admin/AdminPage.php:1193
+#: src/Admin/AdminPage.php:1204
 msgid "Edit"
 msgstr ""
 
 #: config/defaults.php:41
-#: src/Admin/AdminPage.php:1210
+#: src/Admin/AdminPage.php:1221
 msgid "No legal pages have been created yet. Generate them to get started."
 msgstr ""
 
@@ -167,7 +167,7 @@ msgid "Generate the legal pages"
 msgstr ""
 
 #: config/defaults.php:43
-#: src/Admin/AdminPage.php:1218
+#: src/Admin/AdminPage.php:1229
 msgid "Next steps"
 msgstr ""
 
@@ -204,7 +204,7 @@ msgid "detected, data is being synchronised"
 msgstr ""
 
 #: config/defaults.php:54
-#: src/Admin/ModulesPage.php:3177
+#: src/Admin/ModulesPage.php:3194
 msgid "not installed"
 msgstr ""
 
@@ -398,14 +398,14 @@ msgid "Under Polish consumer law you have the right to withdraw from the contrac
 msgstr ""
 
 #: config/defaults.php:164
-#: src/Admin/ModulesPage.php:565
+#: src/Admin/ModulesPage.php:568
 #: templates/forms/withdrawal-form.php:81
 msgid "Step 1. Choose the items to withdraw from"
 msgstr ""
 
 #: config/defaults.php:165
 #: config/defaults.php:275
-#: src/Admin/ModulesPage.php:566
+#: src/Admin/ModulesPage.php:569
 #: src/Service/ExpertReviewService.php:115
 #: templates/account/withdrawal-confirm.php:62
 #: templates/account/withdrawal-confirm.php:70
@@ -419,7 +419,7 @@ msgstr ""
 #: config/defaults.php:166
 #: config/defaults.php:245
 #: config/defaults.php:278
-#: src/Admin/ModulesPage.php:567
+#: src/Admin/ModulesPage.php:570
 #: templates/account/withdrawal-confirm.php:63
 #: templates/account/withdrawal-confirm.php:73
 #: templates/forms/withdrawal-guest.php:68
@@ -428,12 +428,12 @@ msgid "Quantity"
 msgstr ""
 
 #: config/defaults.php:167
-#: src/Admin/ModulesPage.php:568
+#: src/Admin/ModulesPage.php:571
 msgid "(This product is excluded from the right of withdrawal)"
 msgstr ""
 
 #: config/defaults.php:168
-#: src/Admin/ModulesPage.php:569
+#: src/Admin/ModulesPage.php:572
 #: src/Service/WithdrawalService.php:1014
 #: templates/forms/withdrawal-form.php:182
 #: templates/forms/withdrawal-guest.php:126
@@ -445,12 +445,12 @@ msgid "Send the withdrawal declaration"
 msgstr ""
 
 #: config/defaults.php:170
-#: src/Admin/ModulesPage.php:571
+#: src/Admin/ModulesPage.php:574
 msgid "Something went wrong on our side. Please try again."
 msgstr ""
 
 #: config/defaults.php:171
-#: src/Admin/ModulesPage.php:572
+#: src/Admin/ModulesPage.php:575
 #: src/Rest/WithdrawalController.php:139
 #: src/Shortcode/ShortcodeManager.php:268
 msgid "We could not find that order."
@@ -470,14 +470,14 @@ msgid "This order does not qualify for withdrawal."
 msgstr ""
 
 #: config/defaults.php:175
-#: src/Admin/ModulesPage.php:562
-#: src/Admin/ModulesPage.php:576
+#: src/Admin/ModulesPage.php:565
+#: src/Admin/ModulesPage.php:579
 #: src/Service/WithdrawalService.php:996
 msgid "Withdrawal request"
 msgstr ""
 
 #: config/defaults.php:177
-#: src/Admin/ModulesPage.php:578
+#: src/Admin/ModulesPage.php:581
 #: src/Enum/ReturnRequestStatus.php:19
 #: src/Enum/WithdrawalStatus.php:17
 #: src/Service/WithdrawalService.php:999
@@ -497,7 +497,7 @@ msgid "Confirmation of the withdrawal declaration for order #{order_number}"
 msgstr ""
 
 #: config/defaults.php:182
-#: src/Admin/ModulesPage.php:583
+#: src/Admin/ModulesPage.php:586
 msgid "Withdrawal confirmed"
 msgstr ""
 
@@ -513,14 +513,14 @@ msgid "Your withdrawal from the contract for order #{order_number} has been conf
 msgstr ""
 
 #: config/defaults.php:185
-#: src/Admin/ModulesPage.php:586
+#: src/Admin/ModulesPage.php:589
 #: templates/emails/plain/withdrawal-confirmation.php:67
 #: templates/emails/withdrawal-confirmation.php:93
 msgid "Your reason"
 msgstr ""
 
 #: config/defaults.php:186
-#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:590
 msgid "Please return the products to the address below within 14 days:"
 msgstr ""
 
@@ -550,7 +550,7 @@ msgid "Your account is waiting to be activated. Check your inbox and click the l
 msgstr ""
 
 #: config/defaults.php:213
-#: src/Admin/ModulesPage.php:743
+#: src/Admin/ModulesPage.php:746
 #: src/Service/DoubleOptInService.php:154
 msgid "Invalid activation link."
 msgstr ""
@@ -560,14 +560,14 @@ msgid "Your account is now active. You can log in."
 msgstr ""
 
 #: config/defaults.php:215
-#: src/Admin/ModulesPage.php:745
+#: src/Admin/ModulesPage.php:748
 #: src/Email/DoubleOptInEmail.php:65
 #: src/Email/DoubleOptInEmail.php:66
 msgid "Activate your account at {site_title}"
 msgstr ""
 
 #: config/defaults.php:216
-#: src/Admin/ModulesPage.php:746
+#: src/Admin/ModulesPage.php:749
 #: src/Email/DoubleOptInEmail.php:74
 #: src/Email/DoubleOptInEmail.php:75
 msgid "Confirm your email address"
@@ -623,14 +623,14 @@ msgid "Full name"
 msgstr ""
 
 #: config/defaults.php:240
-#: src/Admin/ModulesPage.php:3026
+#: src/Admin/ModulesPage.php:3043
 #: src/Admin/WithdrawalsAdminPage.php:396
 #: src/Service/CustomCheckoutFieldsService.php:710
 msgid "Email"
 msgstr ""
 
 #: config/defaults.php:241
-#: src/Admin/ModulesPage.php:1360
+#: src/Admin/ModulesPage.php:1363
 #: src/Admin/WithdrawalsAdminPage.php:395
 #: src/Service/CustomCheckoutFieldsService.php:712
 msgid "Phone"
@@ -743,7 +743,7 @@ msgid "All"
 msgstr ""
 
 #: config/defaults.php:274
-#: src/Admin/AdminPage.php:998
+#: src/Admin/AdminPage.php:1009
 #: src/Admin/ConsentRecordsPage.php:68
 #: src/Admin/DeactivationHandler.php:150
 #: src/Service/CustomCheckoutFieldsService.php:711
@@ -768,7 +768,7 @@ msgstr ""
 
 #: config/defaults.php:280
 #: src/Admin/CRAIncidentsPage.php:127
-#: src/Admin/ModulesPage.php:1982
+#: src/Admin/ModulesPage.php:1985
 msgid "Actions"
 msgstr ""
 
@@ -813,13 +813,13 @@ msgid "Online purchase is disabled for this product."
 msgstr ""
 
 #: config/defaults.php:327
-#: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:783
 #: templates/forms/ajax-search.php:17
 msgid "Search products"
 msgstr ""
 
 #: config/defaults.php:328
-#: src/Admin/ModulesPage.php:781
+#: src/Admin/ModulesPage.php:784
 #: templates/forms/ajax-search.php:40
 msgid "Product search results"
 msgstr ""
@@ -841,7 +841,7 @@ msgid "Search products, SKUs or categories"
 msgstr ""
 
 #: config/defaults.php:331
-#: src/Admin/ModulesPage.php:784
+#: src/Admin/ModulesPage.php:787
 #: src/Service/InPostShippingService.php:412
 msgid "Search"
 msgstr ""
@@ -958,8 +958,8 @@ msgid "Close"
 msgstr ""
 
 #: config/defaults.php:406
-#: src/Admin/ModulesPage.php:861
-#: src/Admin/ModulesPage.php:879
+#: src/Admin/ModulesPage.php:864
+#: src/Admin/ModulesPage.php:882
 #: src/Service/WishlistService.php:228
 msgid "Wishlist"
 msgstr ""
@@ -1076,7 +1076,7 @@ msgid "Delivery time"
 msgstr ""
 
 #: config/defaults.php:447
-#: src/Admin/ModulesPage.php:654
+#: src/Admin/ModulesPage.php:657
 #: src/Admin/PostTypes.php:87
 #: src/AIFeed/ProductMarkdownBuilder.php:217
 #: src/Block/ProductDataBlocks.php:65
@@ -1147,7 +1147,7 @@ msgid "{count} products from the bundle were added to the cart."
 msgstr ""
 
 #: config/defaults.php:530
-#: src/Admin/ModulesPage.php:1073
+#: src/Admin/ModulesPage.php:1076
 #: src/Service/BadgeService.php:180
 msgid "Sale"
 msgstr ""
@@ -1394,7 +1394,7 @@ msgstr ""
 
 #: config/defaults.php:724
 #: src/Admin/CSVImportExport.php:130
-#: src/Admin/ModulesPage.php:679
+#: src/Admin/ModulesPage.php:682
 #: src/Admin/ProductMetaBox.php:561
 #: src/Block/ProductDataBlocks.php:107
 #: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
@@ -1403,7 +1403,7 @@ msgid "Ingredients"
 msgstr ""
 
 #: config/defaults.php:725
-#: src/Admin/ModulesPage.php:680
+#: src/Admin/ModulesPage.php:683
 #: src/Admin/PostTypes.php:161
 #: src/Block/ProductDataBlocks.php:101
 #: src/Compatibility/Elementor/Widgets/AllergensWidget.php:16
@@ -1416,14 +1416,14 @@ msgid "Nutrition per"
 msgstr ""
 
 #: config/defaults.php:727
-#: src/Admin/ModulesPage.php:683
+#: src/Admin/ModulesPage.php:686
 #: src/Admin/PostTypes.php:234
 #: src/Service/FoodService.php:326
 msgid "Nutrient"
 msgstr ""
 
 #: config/defaults.php:728
-#: src/Admin/ModulesPage.php:684
+#: src/Admin/ModulesPage.php:687
 #: src/Service/FoodService.php:327
 #: src/Service/RodoTrainingDocsService.php:255
 #: templates/forms/withdrawal-guest.php:69
@@ -1457,14 +1457,14 @@ msgstr ""
 
 #: config/defaults.php:733
 #: src/Admin/CSVImportExport.php:135
-#: src/Admin/ModulesPage.php:688
+#: src/Admin/ModulesPage.php:691
 #: src/Admin/ProductMetaBox.php:623
 #: src/Service/FoodService.php:463
 msgid "Country of origin"
 msgstr ""
 
 #: config/defaults.php:734
-#: src/Admin/ModulesPage.php:689
+#: src/Admin/ModulesPage.php:692
 #: src/Service/FoodService.php:471
 msgid "Distributor"
 msgstr ""
@@ -1533,39 +1533,39 @@ msgid "Frequently asked questions"
 msgstr ""
 
 #: config/defaults.php:818
-#: src/Admin/ModulesPage.php:512
+#: src/Admin/ModulesPage.php:511
 msgid "We use cookies and similar technologies to run the site, measure traffic and personalise content. You can accept all of them, reject the optional ones, or manage your choices yourself."
 msgstr ""
 
 #: config/defaults.php:819
 #: src/Admin/ModulesPage.php:438
-#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:512
 #: src/Hook/CheckoutHooks.php:234
 msgid "Accept all"
 msgstr ""
 
 #: config/defaults.php:820
-#: src/Admin/ModulesPage.php:514
+#: src/Admin/ModulesPage.php:513
 msgid "Reject optional"
 msgstr ""
 
 #: config/defaults.php:821
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:514
 msgid "Manage"
 msgstr ""
 
 #: config/defaults.php:822
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:515
 msgid "Save choices"
 msgstr ""
 
-#: config/defaults.php:896
+#: config/defaults.php:900
 #: src/Service/DSAProductReportService.php:100
 #: templates/forms/dsa-report.php:37
 msgid "Report illegal content (DSA)"
 msgstr ""
 
-#: config/defaults.php:897
+#: config/defaults.php:901
 #: templates/forms/dsa-report.php:40
 msgid "Use the form below to report content you consider illegal under the Digital Services Act."
 msgstr ""
@@ -1613,7 +1613,7 @@ msgid "A few clicks away from a fully prepared, professional WooCommerce store. 
 msgstr ""
 
 #: src/Admin/AdminNotes.php:156
-#: src/Admin/AdminPage.php:1080
+#: src/Admin/AdminPage.php:1091
 msgid "Launch setup wizard"
 msgstr ""
 
@@ -1629,67 +1629,67 @@ msgstr ""
 msgid "Install now"
 msgstr ""
 
-#: src/Admin/AdminPage.php:116
-#: src/Admin/AdminPage.php:272
-#: src/Admin/AdminPage.php:273
-#: src/Admin/AdminPage.php:361
+#: src/Admin/AdminPage.php:118
+#: src/Admin/AdminPage.php:274
+#: src/Admin/AdminPage.php:275
+#: src/Admin/AdminPage.php:363
 msgid "Modules"
 msgstr ""
 
-#: src/Admin/AdminPage.php:118
-#: src/Admin/AdminPage.php:294
-#: src/Admin/AdminPage.php:295
-#: src/Admin/AdminPage.php:405
+#: src/Admin/AdminPage.php:120
+#: src/Admin/AdminPage.php:296
+#: src/Admin/AdminPage.php:297
+#: src/Admin/AdminPage.php:407
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:22
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:28
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:34
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/AdminPage.php:120
-#: src/Admin/AdminPage.php:281
-#: src/Admin/AdminPage.php:282
-#: src/Admin/AdminPage.php:362
+#: src/Admin/AdminPage.php:122
+#: src/Admin/AdminPage.php:283
+#: src/Admin/AdminPage.php:284
+#: src/Admin/AdminPage.php:364
 msgid "Reports & Tools"
 msgstr ""
 
-#: src/Admin/AdminPage.php:122
-#: src/Admin/AdminPage.php:879
+#: src/Admin/AdminPage.php:124
+#: src/Admin/AdminPage.php:873
 #: src/Admin/WithdrawalsAdminPage.php:71
 #: src/Admin/WithdrawalsAdminPage.php:72
 #: src/Admin/WithdrawalsAdminPage.php:101
 msgid "Withdrawals"
 msgstr ""
 
-#: src/Admin/AdminPage.php:125
+#: src/Admin/AdminPage.php:127
 #: src/Service/ReturnRequestService.php:214
 #: src/Service/ReturnRequestService.php:215
 #: src/Service/ReturnRequestService.php:228
 msgid "Returns & complaints"
 msgstr ""
 
-#: src/Admin/AdminPage.php:128
+#: src/Admin/AdminPage.php:130
 #: src/Service/CustomCheckoutFieldsService.php:692
 #: src/Service/CustomCheckoutFieldsService.php:693
 msgid "Checkout Fields"
 msgstr ""
 
-#: src/Admin/AdminPage.php:145
+#: src/Admin/AdminPage.php:147
 msgid "You do not have permission to send feedback."
 msgstr ""
 
-#: src/Admin/AdminPage.php:193
+#: src/Admin/AdminPage.php:195
 msgid "Sorry, but you do not have permission to access this page."
 msgstr ""
 
-#: src/Admin/AdminPage.php:210
+#: src/Admin/AdminPage.php:212
 #: src/Admin/WithdrawalOrderMetaBox.php:143
 #: src/Service/ReturnRequestService.php:278
 msgid "You do not have permission."
 msgstr ""
 
-#: src/Admin/AdminPage.php:251
-#: src/Admin/AdminPage.php:252
+#: src/Admin/AdminPage.php:253
+#: src/Admin/AdminPage.php:254
 #: src/Admin/ProductMetaBox.php:46
 #: src/Admin/ProductMetaBox.php:874
 #: src/Block/ModuleBlocks.php:84
@@ -1698,427 +1698,435 @@ msgstr ""
 msgid "Polski"
 msgstr ""
 
-#: src/Admin/AdminPage.php:263
-#: src/Admin/AdminPage.php:264
-#: src/Admin/AdminPage.php:360
+#: src/Admin/AdminPage.php:265
+#: src/Admin/AdminPage.php:266
+#: src/Admin/AdminPage.php:362
 msgid "Dashboard"
 msgstr ""
 
-#: src/Admin/AdminPage.php:410
+#: src/Admin/AdminPage.php:412
 msgid "Settings have been saved."
 msgstr ""
 
-#: src/Admin/AdminPage.php:427
+#: src/Admin/AdminPage.php:421
 msgid "Back to modules"
 msgstr ""
 
 #. translators: %d: number of switched-off modules
-#: src/Admin/AdminPage.php:456
+#: src/Admin/AdminPage.php:450
 #, php-format
 msgid "%d switched-off module"
 msgid_plural "%d switched-off modules"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/AdminPage.php:471
-#: src/Admin/ModulesPage.php:1980
+#: src/Admin/AdminPage.php:465
+#: src/Admin/ModulesPage.php:1983
 #: src/Service/CustomCheckoutFieldsService.php:735
 msgid "Enabled"
 msgstr ""
 
-#: src/Admin/AdminPage.php:471
+#: src/Admin/AdminPage.php:465
 msgid "Disabled"
 msgstr ""
 
-#: src/Admin/AdminPage.php:484
+#: src/Admin/AdminPage.php:478
 msgid "How it works"
 msgstr ""
 
-#: src/Admin/AdminPage.php:501
+#: src/Admin/AdminPage.php:495
 msgid "Module enabled"
 msgstr ""
 
-#: src/Admin/AdminPage.php:510
+#: src/Admin/AdminPage.php:504
 msgid "Save Settings"
 msgstr ""
 
-#: src/Admin/AdminPage.php:570
+#: src/Admin/AdminPage.php:564
 msgid "Ready! We have created empty draft legal pages for you. Fill in your own text, then publish them."
 msgstr ""
 
-#: src/Admin/AdminPage.php:688
+#: src/Admin/AdminPage.php:682
 msgid "Reports, audits, and store setup tools for your shop."
 msgstr ""
 
-#: src/Admin/AdminPage.php:702
+#: src/Admin/AdminPage.php:696
 msgid "Back to reports"
 msgstr ""
 
-#: src/Admin/AdminPage.php:715
-#: src/Admin/AdminPage.php:967
+#: src/Admin/AdminPage.php:709
+#: src/Admin/AdminPage.php:978
 msgid "This report needs its module enabled first (optional features are off by default)."
 msgstr ""
 
-#: src/Admin/AdminPage.php:765
+#: src/Admin/AdminPage.php:759
 msgid "Help and feedback"
 msgstr ""
 
-#: src/Admin/AdminPage.php:768
+#: src/Admin/AdminPage.php:762
 msgid "Need help?"
 msgstr ""
 
-#: src/Admin/AdminPage.php:769
+#: src/Admin/AdminPage.php:763
 msgid "Use the feedback form below for questions, ideas, or workflow problems. Messages stay in WordPress and are not sent to any external service."
 msgstr ""
 
-#: src/Admin/AdminPage.php:776
+#: src/Admin/AdminPage.php:770
 msgid "Share feedback"
 msgstr ""
 
-#: src/Admin/AdminPage.php:777
+#: src/Admin/AdminPage.php:771
 msgid "Not technical? Send a quick note straight from the plugin. Tell us what feels unclear, what should be easier, or what we should add next."
 msgstr ""
 
-#: src/Admin/AdminPage.php:779
+#: src/Admin/AdminPage.php:773
 msgid "Thanks, your feedback has been saved."
 msgstr ""
 
-#: src/Admin/AdminPage.php:781
+#: src/Admin/AdminPage.php:775
 msgid "Please enter your message before sending feedback."
 msgstr ""
 
-#: src/Admin/AdminPage.php:785
+#: src/Admin/AdminPage.php:779
 msgid "Your name"
 msgstr ""
 
-#: src/Admin/AdminPage.php:787
+#: src/Admin/AdminPage.php:781
 #: src/Service/ProductQAService.php:186
 msgid "Your email"
 msgstr ""
 
-#: src/Admin/AdminPage.php:789
-#: src/Admin/AdminPage.php:1000
+#: src/Admin/AdminPage.php:783
+#: src/Admin/AdminPage.php:1011
 msgid "Topic"
 msgstr ""
 
-#: src/Admin/AdminPage.php:791
-#: src/Admin/AdminPage.php:1021
+#: src/Admin/AdminPage.php:785
+#: src/Admin/AdminPage.php:1032
 msgid "General feedback"
 msgstr ""
 
-#: src/Admin/AdminPage.php:792
-#: src/Admin/AdminPage.php:1022
+#: src/Admin/AdminPage.php:786
+#: src/Admin/AdminPage.php:1033
 msgid "Feature idea"
 msgstr ""
 
-#: src/Admin/AdminPage.php:793
-#: src/Admin/AdminPage.php:1023
+#: src/Admin/AdminPage.php:787
+#: src/Admin/AdminPage.php:1034
 msgid "Workflow problem"
 msgstr ""
 
-#: src/Admin/AdminPage.php:794
-#: src/Admin/AdminPage.php:1024
+#: src/Admin/AdminPage.php:788
+#: src/Admin/AdminPage.php:1035
 msgid "Support question"
 msgstr ""
 
-#: src/Admin/AdminPage.php:796
-#: src/Admin/AdminPage.php:1002
+#: src/Admin/AdminPage.php:790
+#: src/Admin/AdminPage.php:1013
 msgid "Message"
 msgstr ""
 
-#: src/Admin/AdminPage.php:805
+#: src/Admin/AdminPage.php:799
 msgid "This form stores your feedback locally in WordPress. It is not sent to any external service."
 msgstr ""
 
-#: src/Admin/AdminPage.php:806
+#: src/Admin/AdminPage.php:800
 msgid "Do not include passwords, licence keys, or customer personal data."
 msgstr ""
 
-#: src/Admin/AdminPage.php:807
+#: src/Admin/AdminPage.php:801
 msgid "Send feedback"
 msgstr ""
 
-#: src/Admin/AdminPage.php:813
+#: src/Admin/AdminPage.php:807
 msgid "Deactivate vs uninstall"
 msgstr ""
 
-#: src/Admin/AdminPage.php:815
+#: src/Admin/AdminPage.php:809
 msgid "Deactivating the plugin keeps your settings and stored data."
 msgstr ""
 
-#: src/Admin/AdminPage.php:816
+#: src/Admin/AdminPage.php:810
 msgid "Uninstalling removes plugin files. Data is deleted only when the remove-data setting is enabled."
 msgstr ""
 
-#: src/Admin/AdminPage.php:817
+#: src/Admin/AdminPage.php:811
 msgid "Your deactivation feedback stays in the local admin log unless data removal on uninstall is enabled."
 msgstr ""
 
-#: src/Admin/AdminPage.php:821
+#: src/Admin/AdminPage.php:815
 msgid "Current setting: plugin data will be removed on uninstall."
 msgstr ""
 
-#: src/Admin/AdminPage.php:822
+#: src/Admin/AdminPage.php:816
 msgid "Current setting: plugin data will be kept on uninstall."
 msgstr ""
 
-#: src/Admin/AdminPage.php:837
+#: src/Admin/AdminPage.php:831
 msgid "Compliance audit"
 msgstr ""
 
-#: src/Admin/AdminPage.php:838
+#: src/Admin/AdminPage.php:832
 msgid "An automatic check of the most common legal problems in Polish ecommerce."
 msgstr ""
 
-#: src/Admin/AdminPage.php:844
+#: src/Admin/AdminPage.php:838
 msgid "DSA reports"
 msgstr ""
 
-#: src/Admin/AdminPage.php:845
+#: src/Admin/AdminPage.php:839
 msgid "Handling of content notices under the Digital Services Act."
 msgstr ""
 
-#: src/Admin/AdminPage.php:851
-#: src/Admin/ModulesPage.php:1268
+#: src/Admin/AdminPage.php:845
+#: src/Admin/ModulesPage.php:1271
 #: src/Service/SecurityIncidentService.php:140
 msgid "Incident log"
 msgstr ""
 
-#: src/Admin/AdminPage.php:852
+#: src/Admin/AdminPage.php:846
 msgid "A record of security problems, data breaches and infrastructure failures."
 msgstr ""
 
-#: src/Admin/AdminPage.php:858
+#: src/Admin/AdminPage.php:852
 msgid "Shop health"
 msgstr ""
 
-#: src/Admin/AdminPage.php:859
+#: src/Admin/AdminPage.php:853
 msgid "Continuous monitoring of fatal errors, failed payments and sales anomalies, with alerts."
 msgstr ""
 
-#: src/Admin/AdminPage.php:865
+#: src/Admin/AdminPage.php:859
 msgid "DPA registry (GDPR)"
 msgstr ""
 
-#: src/Admin/AdminPage.php:866
+#: src/Admin/AdminPage.php:860
 msgid "A register of data processing agreements with third parties."
 msgstr ""
 
-#: src/Admin/AdminPage.php:872
+#: src/Admin/AdminPage.php:866
 #: src/Admin/ConsentRecordsPage.php:53
-#: src/Admin/ModulesPage.php:504
+#: src/Admin/ModulesPage.php:503
 msgid "Consent records"
 msgstr ""
 
-#: src/Admin/AdminPage.php:873
+#: src/Admin/AdminPage.php:867
 msgid "Stored visitor decisions from the consent banner, with CSV export."
 msgstr ""
 
-#: src/Admin/AdminPage.php:880
+#: src/Admin/AdminPage.php:874
 msgid "Withdrawal declarations and returns: the list, manual registration and the settings."
 msgstr ""
 
-#: src/Admin/AdminPage.php:887
+#: src/Admin/AdminPage.php:881
 #: src/Admin/CRAIncidentsPage.php:51
 #: src/Admin/CRAIncidentsPage.php:52
 #: src/Admin/CRAIncidentsPage.php:65
 msgid "CRA incidents"
 msgstr ""
 
-#: src/Admin/AdminPage.php:888
+#: src/Admin/AdminPage.php:882
 msgid "A log of vulnerabilities, breaches and failures, with statuses and CSV export. CRA duties bind manufacturers, not shops."
 msgstr ""
 
-#: src/Admin/AdminPage.php:895
+#: src/Admin/AdminPage.php:889
 #: src/Admin/SBOMPage.php:40
 #: src/Admin/SBOMPage.php:41
 msgid "SBOM"
 msgstr ""
 
-#: src/Admin/AdminPage.php:896
+#: src/Admin/AdminPage.php:890
 msgid "A software bill of materials. Manufacturers draw one up under the CRA; it is not a shop duty."
 msgstr ""
 
-#: src/Admin/AdminPage.php:903
+#: src/Admin/AdminPage.php:897
 #: src/Service/ComplaintTemplateService.php:49
 #: src/Service/ComplaintTemplateService.php:50
 #: src/Service/ComplaintTemplateService.php:59
 msgid "Complaint template"
 msgstr ""
 
-#: src/Admin/AdminPage.php:904
+#: src/Admin/AdminPage.php:898
 msgid "The complaint form template for customers, with its generator and settings."
 msgstr ""
 
-#: src/Admin/AdminPage.php:911
+#: src/Admin/AdminPage.php:905
 msgid "GDPR training"
 msgstr ""
 
-#: src/Admin/AdminPage.php:912
+#: src/Admin/AdminPage.php:906
 msgid "GDPR training material for the shop team."
 msgstr ""
 
-#: src/Admin/AdminPage.php:919
+#: src/Admin/AdminPage.php:913
 msgid "Feedback Logs"
 msgstr ""
 
-#: src/Admin/AdminPage.php:920
+#: src/Admin/AdminPage.php:914
 msgid "Deactivation feedback and local admin feedback from the plugin sidebar."
 msgstr ""
 
-#: src/Admin/AdminPage.php:926
+#: src/Admin/AdminPage.php:920
 msgid "Select a report or tool to review your store setup status."
 msgstr ""
 
-#: src/Admin/AdminPage.php:965
+#. translators: %d: number of reports whose module is switched off
+#: src/Admin/AdminPage.php:930
+#, php-format
+msgid "%d report of a switched-off module"
+msgid_plural "%d reports of switched-off modules"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/AdminPage.php:976
 msgid "Open Report"
 msgstr ""
 
-#: src/Admin/AdminPage.php:969
+#: src/Admin/AdminPage.php:980
 msgid "Enable module"
 msgstr ""
 
-#: src/Admin/AdminPage.php:971
+#: src/Admin/AdminPage.php:982
 msgid "Module disabled"
 msgstr ""
 
-#: src/Admin/AdminPage.php:990
+#: src/Admin/AdminPage.php:1001
 msgid "Admin Feedback Logs"
 msgstr ""
 
-#: src/Admin/AdminPage.php:993
+#: src/Admin/AdminPage.php:1004
 msgid "No internal feedback to display."
 msgstr ""
 
-#: src/Admin/AdminPage.php:999
+#: src/Admin/AdminPage.php:1010
 msgid "Person"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1001
+#: src/Admin/AdminPage.php:1012
 msgid "Screen"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1063
+#: src/Admin/AdminPage.php:1074
 msgid "Hello!"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1064
+#: src/Admin/AdminPage.php:1075
 msgid "Tools that help bring the shop in line with Polish requirements."
 msgstr ""
 
-#: src/Admin/AdminPage.php:1070
+#: src/Admin/AdminPage.php:1081
 msgid "Finish configuration"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1071
+#: src/Admin/AdminPage.php:1082
 msgid "Some key elements of your store still require attention."
 msgstr ""
 
-#: src/Admin/AdminPage.php:1074
+#: src/Admin/AdminPage.php:1085
 msgid "Publish legal pages (Terms, Privacy Policy, Right of Withdrawal)"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1077
+#: src/Admin/AdminPage.php:1088
 msgid "Go through the checklist below"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1081
+#: src/Admin/AdminPage.php:1092
 msgid "Manage modules"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1089
+#: src/Admin/AdminPage.php:1100
 msgid "Relaunch setup wizard"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1102
+#: src/Admin/AdminPage.php:1113
 msgid "Active"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1103
+#: src/Admin/AdminPage.php:1114
 msgid "Inactive"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1112
-#: src/Admin/AdminPage.php:1165
-#: src/Admin/ModulesPage.php:541
+#: src/Admin/AdminPage.php:1123
+#: src/Admin/AdminPage.php:1176
+#: src/Admin/ModulesPage.php:544
 msgid "Legal Pages"
 msgstr ""
 
 #. translators: %s: host name of the site with the legal pages
-#: src/Admin/AdminPage.php:1115
+#: src/Admin/AdminPage.php:1126
 #, php-format
 msgid "Published on %s"
 msgstr ""
 
 #. translators: 1: number of configured legal pages, 2: total number of required legal pages.
-#: src/Admin/AdminPage.php:1123
+#: src/Admin/AdminPage.php:1134
 #, php-format
 msgid "%1$d of %2$d ready"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1129
+#: src/Admin/AdminPage.php:1140
 msgid "Omnibus Directive"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1135
+#: src/Admin/AdminPage.php:1146
 #: templates/invoice/document.php:107
 #: templates/invoice/document.php:143
 msgid "VAT"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1137
+#: src/Admin/AdminPage.php:1148
 msgid "Small business scheme, no VAT charged"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1149
+#: src/Admin/AdminPage.php:1160
 msgid "Store Analysis"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1150
+#: src/Admin/AdminPage.php:1161
 msgid "Check reports"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1187
+#: src/Admin/AdminPage.php:1198
 msgid "Published"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1270
+#: src/Admin/AdminPage.php:1281
 msgid "Publish your legal pages (Terms, Privacy Policy, Right of Withdrawal, Complaints)."
 msgstr ""
 
 #. translators: %s: tax settings URL
-#: src/Admin/AdminPage.php:1278
+#: src/Admin/AdminPage.php:1289
 #, php-format
 msgid "Configure <a href=\"%s\">tax rates</a> in WooCommerce for Polish VAT (23%%, 8%%, 5%%, 0%%)."
 msgstr ""
 
 #. translators: %s: shipping settings URL
-#: src/Admin/AdminPage.php:1293
+#: src/Admin/AdminPage.php:1304
 #, php-format
 msgid "Configure <a href=\"%s\">shipping zones</a> for the countries you ship to."
 msgstr ""
 
 #. translators: %s: product list URL
-#: src/Admin/AdminPage.php:1305
+#: src/Admin/AdminPage.php:1316
 #, php-format
 msgid "Complete product data - add unit prices and delivery time in the <a href=\"%s\">Polski tab</a> for each product."
 msgstr ""
 
 #. translators: %s: checkout URL
-#: src/Admin/AdminPage.php:1316
+#: src/Admin/AdminPage.php:1327
 #, php-format
 msgid "Test the order process - add a product to the cart and check the checkboxes and button text in <a href=\"%s\">checkout</a>."
 msgstr ""
 
-#: src/Admin/AdminPage.php:1343
+#: src/Admin/AdminPage.php:1354
 msgid "Generate legal pages"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1390
+#: src/Admin/AdminPage.php:1401
 msgid "Open &rarr;"
 msgstr ""
 
-#: src/Admin/AdminPage.php:1495
+#: src/Admin/AdminPage.php:1557
 msgid "More screens"
 msgstr ""
 
@@ -2353,7 +2361,7 @@ msgid "Nutrition reference quantity"
 msgstr ""
 
 #: src/Admin/CSVImportExport.php:134
-#: src/Admin/ModulesPage.php:686
+#: src/Admin/ModulesPage.php:689
 #: src/Service/FoodService.php:417
 msgid "Alcohol content"
 msgstr ""
@@ -3044,7 +3052,7 @@ msgid "Show info only when the product has a sale price"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:285
-#: src/Admin/ModulesPage.php:1164
+#: src/Admin/ModulesPage.php:1167
 msgid "Product page"
 msgstr ""
 
@@ -3053,7 +3061,7 @@ msgid "Product lists (shop, categories)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:287
-#: src/Admin/ModulesPage.php:1165
+#: src/Admin/ModulesPage.php:1168
 #: src/Service/LiveCartService.php:81
 #: src/Service/LiveCartService.php:128
 #: src/Service/LiveCartService.php:139
@@ -3165,7 +3173,7 @@ msgid "Default delivery time"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:337
-#: src/Admin/ModulesPage.php:801
+#: src/Admin/ModulesPage.php:804
 msgid "Show on product listings"
 msgstr ""
 
@@ -3266,11 +3274,11 @@ msgid "Change order button text to \"Order with obligation to pay\" according to
 msgstr ""
 
 #: src/Admin/ModulesPage.php:383
-#: src/Admin/ModulesPage.php:784
-#: src/Admin/ModulesPage.php:855
-#: src/Admin/ModulesPage.php:945
-#: src/Admin/ModulesPage.php:1107
-#: src/Admin/ModulesPage.php:1130
+#: src/Admin/ModulesPage.php:787
+#: src/Admin/ModulesPage.php:858
+#: src/Admin/ModulesPage.php:948
+#: src/Admin/ModulesPage.php:1110
+#: src/Admin/ModulesPage.php:1133
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:50
 msgid "Button text"
 msgstr ""
@@ -3594,25 +3602,21 @@ msgid "Consent Manager (cookie banner)"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:498
-msgid "A native cookie-consent banner with consent categories and Google Consent Mode v2 signalling. Polski's own tracking tags, and scripts you mark with data-polski-consent, wait until the matching category is granted. Records each decision for your audit trail. Provides tools, not legal advice."
+msgid "A cookie-consent banner with consent categories and Google Consent Mode v2. Scripts wait for the matching category: Polski's own tags, the code you paste below for each category, known trackers loaded by other plugins (Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Clarity and, without Consent Mode, Google Analytics and Ads), and scripts you mark with data-polski-consent. YouTube, Vimeo, Maps and SoundCloud embeds in content show a placeholder until consent. Visitors can change their choice with the Cookie settings button. Records each decision for your audit trail. Provides tools, not legal advice."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:499
-msgid "Only Polski's own tags and scripts you mark with type=\"text/plain\" data-polski-consent wait for consent; other third-party scripts and iframes still load before the visitor chooses."
-msgstr ""
-
-#: src/Admin/ModulesPage.php:507
+#: src/Admin/ModulesPage.php:506
 msgid "Enabled categories"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:507
+#: src/Admin/ModulesPage.php:506
 msgid "Necessary cookies are always on and cannot be switched off."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:508
-#: src/Admin/ModulesPage.php:1431
-#: src/Admin/ModulesPage.php:2373
-#: src/Admin/ModulesPage.php:3047
+#: src/Admin/ModulesPage.php:507
+#: src/Admin/ModulesPage.php:1434
+#: src/Admin/ModulesPage.php:2386
+#: src/Admin/ModulesPage.php:3064
 #: src/Enum/ConsentCategory.php:36
 #: src/Service/DPATrackerService.php:162
 #: src/Service/DPATrackerService.php:166
@@ -3622,1318 +3626,1350 @@ msgstr ""
 msgid "Analytics"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:509
-#: src/Admin/ModulesPage.php:1432
-#: src/Admin/ModulesPage.php:2374
+#: src/Admin/ModulesPage.php:508
+#: src/Admin/ModulesPage.php:1435
+#: src/Admin/ModulesPage.php:2387
 #: src/Enum/ConsentCategory.php:37
 msgid "Marketing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:510
-#: src/Admin/ModulesPage.php:1430
-#: src/Admin/ModulesPage.php:2375
+#: src/Admin/ModulesPage.php:509
+#: src/Admin/ModulesPage.php:1433
+#: src/Admin/ModulesPage.php:2388
 #: src/Enum/ConsentCategory.php:38
 msgid "Preferences"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:511
+#: src/Admin/ModulesPage.php:510
 msgid "Banner heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:512
+#: src/Admin/ModulesPage.php:511
 msgid "Banner text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:513
+#: src/Admin/ModulesPage.php:512
 msgid "Accept all label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:514
+#: src/Admin/ModulesPage.php:513
 msgid "Reject all label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:515
+#: src/Admin/ModulesPage.php:514
 msgid "Manage label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:516
+#: src/Admin/ModulesPage.php:515
 msgid "Save choices label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:517
+#: src/Admin/ModulesPage.php:516
 msgid "Banner position"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:518
+#: src/Admin/ModulesPage.php:517
 msgid "Bottom"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:519
+#: src/Admin/ModulesPage.php:518
 msgid "Top"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:520
+#: src/Admin/ModulesPage.php:519
 msgid "Center"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:522
+#: src/Admin/ModulesPage.php:521
 msgid "Google Consent Mode v2"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:522
+#: src/Admin/ModulesPage.php:521
 msgid "Sends consent signals to Google tags (gtag / GTM) before they run."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:528
+#: src/Admin/ModulesPage.php:522
+msgid "Block known trackers"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:522
+msgid "Scripts from Meta, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity and Google Ads that other plugins or the theme enqueue wait for consent. Google Analytics and Tag Manager wait too when Consent Mode is off."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:523
+msgid "Scripts after analytics consent"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:523
+msgid "Paste the tracking code (with its <script> tags). It runs only once the visitor accepts Analytics. Code outside <script> tags, such as <noscript> pixels, is left out."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:524
+msgid "Scripts after marketing consent"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:524
+msgid "For example the Meta Pixel or a remarketing tag. Runs only once the visitor accepts Marketing."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:525
+msgid "Scripts after preferences consent"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:525
+msgid "Runs only once the visitor accepts Preferences (for example a chat widget)."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:531
 msgid "Returns & complaints (RMA)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:529
+#: src/Admin/ModulesPage.php:532
 msgid "Let customers open a complaint (reklamacja) or return (zwrot) request from My Account for eligible orders, with a confirmation email and an admin queue with statuses. Provides tools, not legal advice."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:535
+#: src/Admin/ModulesPage.php:538
 msgid "Eligibility window (days from order date)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:536
+#: src/Admin/ModulesPage.php:539
 msgid "Notification email (admin)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:542
+#: src/Admin/ModulesPage.php:545
 msgid "Creates empty draft pages for Terms and Conditions, Privacy Policy, Right of Withdrawal and Complaints. The drafts carry no legal text: you write or paste your own before publishing."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:548
+#: src/Admin/ModulesPage.php:551
 msgid "Manage legal pages on Dashboard &rarr;"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:549
+#: src/Admin/ModulesPage.php:552
 msgid "Legal pages on another site"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:549
+#: src/Admin/ModulesPage.php:552
 msgid "When your terms and privacy policy live on another site (for example your main domain), enter where. The dashboard then counts the legal pages as published."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:554
+#: src/Admin/ModulesPage.php:557
 msgid "Right of withdrawal (14 days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:555
+#: src/Admin/ModulesPage.php:558
 msgid "Withdrawal request form, My Account action with confirmation step, confirmation email, and per-product exclusions."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:561
+#: src/Admin/ModulesPage.php:564
 msgid "Order action label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:561
+#: src/Admin/ModulesPage.php:564
 #: src/Service/WithdrawalService.php:738
 #: src/Service/WithdrawalService.php:748
 msgid "Withdraw from contract"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:562
-#: src/Admin/ModulesPage.php:1244
+#: src/Admin/ModulesPage.php:565
+#: src/Admin/ModulesPage.php:1247
 msgid "Form title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:563
+#: src/Admin/ModulesPage.php:566
 msgid "Form introduction"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:563
+#: src/Admin/ModulesPage.php:566
 msgid "You are submitting a withdrawal request for order #{order_number} placed on {order_date}."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:563
+#: src/Admin/ModulesPage.php:566
 msgid "Variables: {order_number}, {order_date}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:564
+#: src/Admin/ModulesPage.php:567
 msgid "Legal notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:564
+#: src/Admin/ModulesPage.php:567
 msgid "Under Polish consumer law, you may withdraw from the contract within 14 days without giving a reason."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:565
+#: src/Admin/ModulesPage.php:568
 msgid "Order items heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:566
+#: src/Admin/ModulesPage.php:569
 msgid "Product column"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:567
+#: src/Admin/ModulesPage.php:570
 msgid "Quantity column"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:568
+#: src/Admin/ModulesPage.php:571
 msgid "Exemption notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:569
+#: src/Admin/ModulesPage.php:572
 msgid "Reason field label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:570
+#: src/Admin/ModulesPage.php:573
 #: resources/js/blocks/ajax-search/index.js:39
 msgid "Submit button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:570
+#: src/Admin/ModulesPage.php:573
 msgid "Submit withdrawal request"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:571
+#: src/Admin/ModulesPage.php:574
 msgid "Invalid nonce message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:572
+#: src/Admin/ModulesPage.php:575
 msgid "Order not found message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:573
+#: src/Admin/ModulesPage.php:576
 msgid "Permission error message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:573
+#: src/Admin/ModulesPage.php:576
 #: src/Service/WithdrawalService.php:793
 #: src/Service/WithdrawalService.php:926
 msgid "You do not have permission to withdraw from this order."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:574
-#: src/Admin/ModulesPage.php:1108
-#: src/Admin/ModulesPage.php:1245
+#: src/Admin/ModulesPage.php:577
+#: src/Admin/ModulesPage.php:1111
+#: src/Admin/ModulesPage.php:1248
 msgid "Success message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:574
+#: src/Admin/ModulesPage.php:577
 msgid "Your withdrawal request has been received. We will send a confirmation email shortly."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:575
+#: src/Admin/ModulesPage.php:578
 msgid "Not eligible message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:575
+#: src/Admin/ModulesPage.php:578
 #: src/Rest/WithdrawalController.php:151
 #: src/Service/WithdrawalService.php:835
 #: src/Service/WithdrawalService.php:932
 msgid "This order is not eligible for withdrawal."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:576
+#: src/Admin/ModulesPage.php:579
 msgid "Status section heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:577
+#: src/Admin/ModulesPage.php:580
 msgid "Status label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:578
+#: src/Admin/ModulesPage.php:581
 msgid "Submitted label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:579
+#: src/Admin/ModulesPage.php:582
 msgid "Order note after request"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:579
+#: src/Admin/ModulesPage.php:582
 msgid "The customer submitted a withdrawal request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:580
+#: src/Admin/ModulesPage.php:583
 msgid "Order note after confirmation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:580
+#: src/Admin/ModulesPage.php:583
 msgid "The withdrawal request has been confirmed."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:584
 msgid "Status date format"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:581
+#: src/Admin/ModulesPage.php:584
 msgid "Y-m-d H:i"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:582
+#: src/Admin/ModulesPage.php:585
 msgid "Confirmation email subject"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:582
 #: src/Admin/ModulesPage.php:585
+#: src/Admin/ModulesPage.php:588
 msgid "Your withdrawal request for order #{order_number} has been confirmed."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:582
+#: src/Admin/ModulesPage.php:585
 msgid "Variables: {order_number}, {order_date}, {withdrawal_date}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:583
+#: src/Admin/ModulesPage.php:586
 msgid "Confirmation email heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:584
-#: src/Admin/ModulesPage.php:747
+#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:750
 msgid "Email greeting"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:584
-#: src/Admin/ModulesPage.php:747
+#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:750
 #: templates/emails/plain/withdrawal-confirmation.php:39
 #: templates/emails/withdrawal-confirmation.php:40
 msgid "Hello {name},"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:584
+#: src/Admin/ModulesPage.php:587
 msgid "Variable: {name}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:585
+#: src/Admin/ModulesPage.php:588
 msgid "Confirmation email body"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:585
+#: src/Admin/ModulesPage.php:588
 msgid "Variable: {order_number}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:586
+#: src/Admin/ModulesPage.php:589
 msgid "Reason label in email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:587
+#: src/Admin/ModulesPage.php:590
 msgid "Return instruction in email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:588
-#: src/Admin/ModulesPage.php:752
+#: src/Admin/ModulesPage.php:591
+#: src/Admin/ModulesPage.php:755
 msgid "Additional email content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:588
+#: src/Admin/ModulesPage.php:591
 msgid "Your refund will be processed within 14 days after the returned products are received."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:593
+#: src/Admin/ModulesPage.php:596
 #: src/PageCompliance/Rules/RegulaminRules.php:204
 msgid "Out-of-court dispute resolution"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:594
+#: src/Admin/ModulesPage.php:597
 msgid "A notice on the cart and checkout pages, and the [polski_complaints] shortcode, about out-of-court complaint and redress options (consumer ombudsman, Trade Inspection). The EU ODR platform closed on 20 July 2025, so a text that still links to it is not shown."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:600
+#: src/Admin/ModulesPage.php:603
 #: src/Block/LegalPageBlocks.php:42
 msgid "Dispute resolution notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:601
+#: src/Admin/ModulesPage.php:604
 msgid "Message after generating legal pages"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:602
+#: src/Admin/ModulesPage.php:605
 msgid "Message after saving modules"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:603
+#: src/Admin/ModulesPage.php:606
 msgid "Onboarding note title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:604
+#: src/Admin/ModulesPage.php:607
 msgid "Onboarding note content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:605
+#: src/Admin/ModulesPage.php:608
 msgid "Onboarding note button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:606
+#: src/Admin/ModulesPage.php:609
 msgid "Active status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:607
+#: src/Admin/ModulesPage.php:610
 msgid "Inactive status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:608
+#: src/Admin/ModulesPage.php:611
 msgid "Unconfigured status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:609
+#: src/Admin/ModulesPage.php:612
 msgid "Legal pages card title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:610
+#: src/Admin/ModulesPage.php:613
 msgid "Legal pages configuration progress"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:610
+#: src/Admin/ModulesPage.php:613
 msgid "Variables: {done}, {total}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:611
+#: src/Admin/ModulesPage.php:614
 msgid "VAT card title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:612
+#: src/Admin/ModulesPage.php:615
 msgid "Small business exemption text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:613
+#: src/Admin/ModulesPage.php:616
 msgid "Standard VAT text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:614
+#: src/Admin/ModulesPage.php:617
 msgid "DOI card title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:615
+#: src/Admin/ModulesPage.php:618
 msgid "Legal pages section title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:616
+#: src/Admin/ModulesPage.php:619
 msgid "Page column header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:617
+#: src/Admin/ModulesPage.php:620
 msgid "Status column header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:618
+#: src/Admin/ModulesPage.php:621
 msgid "Published status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:619
+#: src/Admin/ModulesPage.php:622
 msgid "Draft status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:620
+#: src/Admin/ModulesPage.php:623
 msgid "Missing status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:621
+#: src/Admin/ModulesPage.php:624
 msgid "Edit button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:622
+#: src/Admin/ModulesPage.php:625
 msgid "Legal pages empty state"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:623
+#: src/Admin/ModulesPage.php:626
 msgid "Generate pages button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:624
+#: src/Admin/ModulesPage.php:627
 msgid "Next steps title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:625
+#: src/Admin/ModulesPage.php:628
 msgid "Step - publish pages"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:626
+#: src/Admin/ModulesPage.php:629
 msgid "Step - VAT rates"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:627
+#: src/Admin/ModulesPage.php:630
 msgid "Step - shipping zones"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:628
+#: src/Admin/ModulesPage.php:631
 msgid "Step - product data"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:629
+#: src/Admin/ModulesPage.php:632
 msgid "Step - checkout test"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:630
+#: src/Admin/ModulesPage.php:633
 msgid "Omnibus plugin detected status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:631
+#: src/Admin/ModulesPage.php:634
 msgid "Omnibus plugin missing status"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:632
+#: src/Admin/ModulesPage.php:635
 msgid "Communication without external Omnibus plugin"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:633
+#: src/Admin/ModulesPage.php:636
 msgid "Communication after external Omnibus plugin detection"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:638
+#: src/Admin/ModulesPage.php:641
 msgid "Legal texts in emails"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:639
+#: src/Admin/ModulesPage.php:642
 msgid "Appends the text of your legal pages (terms, privacy policy, right of withdrawal) to the bottom of WooCommerce customer emails. The text is part of the message body; no file is attached."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:645
+#: src/Admin/ModulesPage.php:648
 msgid "Include Terms and Conditions"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:646
+#: src/Admin/ModulesPage.php:649
 msgid "Include Privacy Policy"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:647
+#: src/Admin/ModulesPage.php:650
 msgid "Include Right of Withdrawal"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:655
+#: src/Admin/ModulesPage.php:658
 msgid "Manufacturer taxonomy: assign a manufacturer to each product and show its name on the product page. GPSR details live in the GPSR module."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:664
+#: src/Admin/ModulesPage.php:667
 msgid "Food and Supplements"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:665
+#: src/Admin/ModulesPage.php:668
 msgid "Nutrition facts table, allergens, ingredients, Nutri-Score, alcohol content, country of origin, distributor."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:671
+#: src/Admin/ModulesPage.php:674
 msgid "Show ingredients"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:672
+#: src/Admin/ModulesPage.php:675
 msgid "Show allergens"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:673
+#: src/Admin/ModulesPage.php:676
 msgid "Show nutrition facts table"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:674
+#: src/Admin/ModulesPage.php:677
 msgid "Show Nutri-Score"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:675
+#: src/Admin/ModulesPage.php:678
 msgid "Show alcohol content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:676
+#: src/Admin/ModulesPage.php:679
 msgid "Show country of origin"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:677
+#: src/Admin/ModulesPage.php:680
 msgid "Show distributor"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:678
+#: src/Admin/ModulesPage.php:681
 msgid "Show net content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:679
+#: src/Admin/ModulesPage.php:682
 msgid "Ingredients label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:680
+#: src/Admin/ModulesPage.php:683
 msgid "Allergens label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:681
+#: src/Admin/ModulesPage.php:684
 msgid "Nutrition facts table header prefix"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:681
+#: src/Admin/ModulesPage.php:684
 #: src/Service/FoodService.php:324
 msgid "Nutrition facts per"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:682
+#: src/Admin/ModulesPage.php:685
 msgid "Default reference unit"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:683
+#: src/Admin/ModulesPage.php:686
 msgid "Nutrient column name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:684
+#: src/Admin/ModulesPage.php:687
 msgid "Value column name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:685
+#: src/Admin/ModulesPage.php:688
 msgid "Nutri-Score label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:686
+#: src/Admin/ModulesPage.php:689
 msgid "Alcohol content label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:687
+#: src/Admin/ModulesPage.php:690
 msgid "Alcohol suffix"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:688
+#: src/Admin/ModulesPage.php:691
 msgid "Country of origin label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:689
+#: src/Admin/ModulesPage.php:692
 msgid "Distributor label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:690
+#: src/Admin/ModulesPage.php:693
 msgid "Net content label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:690
+#: src/Admin/ModulesPage.php:693
 #: src/Service/FoodService.php:479
 msgid "Net content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:695
+#: src/Admin/ModulesPage.php:698
 #: src/Admin/ProductMetaBox.php:404
 msgid "Consumer information (2024/825)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:696
+#: src/Admin/ModulesPage.php:699
 msgid "Plain-text reminder of the legal guarantee of conformity, guarantee of durability, free software update period and repair information on the product page (Directive (EU) 2024/825, from 27 September 2026). Not the harmonised notice or label of Implementing Regulation (EU) 2025/1960."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:705
+#: src/Admin/ModulesPage.php:708
 msgid "Show the legal guarantee reminder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:706
+#: src/Admin/ModulesPage.php:709
 msgid "Legal guarantee reminder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:711
+#: src/Admin/ModulesPage.php:714
 #: src/Admin/ProductMetaBox.php:439
 msgid "Energy label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:712
+#: src/Admin/ModulesPage.php:715
 msgid "Energy class arrow next to the price and the product information sheet link (Regulation (EU) 2017/1369 art. 5(1)(a); e.g. Delegated Regulation (EU) 2019/2014 Annex VIII)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:721
+#: src/Admin/ModulesPage.php:724
 msgid "Power Supply Info"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:722
+#: src/Admin/ModulesPage.php:725
 msgid "Energy consumption data for electrical devices (energy labels)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:733
+#: src/Admin/ModulesPage.php:736
 msgid "Double Opt-In (DOI)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:734
+#: src/Admin/ModulesPage.php:737
 msgid "Email address verification during account registration. Activation link sent by email, login block for unactivated accounts."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:735
+#: src/Admin/ModulesPage.php:738
 msgid "Accounts created at checkout stay logged in for that session, because WooCommerce signs them in to finish the order; only their later logins wait for the activation link."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:741
+#: src/Admin/ModulesPage.php:744
 msgid "Delete inactive accounts after (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:742
+#: src/Admin/ModulesPage.php:745
 msgid "Login block message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:742
+#: src/Admin/ModulesPage.php:745
 msgid "Your account is pending activation! Please check your email and click the activation link."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:743
+#: src/Admin/ModulesPage.php:746
 msgid "Invalid link message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:744
+#: src/Admin/ModulesPage.php:747
 msgid "Activation success message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:744
+#: src/Admin/ModulesPage.php:747
 msgid "Excellent! Your account has been activated. You can now log in."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:745
-#: src/Admin/ModulesPage.php:1115
-#: src/Admin/ModulesPage.php:1541
+#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:1118
+#: src/Admin/ModulesPage.php:1544
 msgid "Email subject"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:745
+#: src/Admin/ModulesPage.php:748
 msgid "Variables: {site_title}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:746
+#: src/Admin/ModulesPage.php:749
 msgid "Email heading"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:747
+#: src/Admin/ModulesPage.php:750
 msgid "Variables: {name}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:751
 msgid "Email content HTML"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:748
+#: src/Admin/ModulesPage.php:751
 msgid "Thank you for creating an account. Click the button below to activate your account:"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:749
+#: src/Admin/ModulesPage.php:752
 msgid "Email button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:749
+#: src/Admin/ModulesPage.php:752
 msgid "Activate account"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:753
 msgid "Fallback link text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:750
+#: src/Admin/ModulesPage.php:753
 msgid "If you prefer, copy and paste this link into your browser:"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:751
+#: src/Admin/ModulesPage.php:754
 msgid "Email content plain text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:751
+#: src/Admin/ModulesPage.php:754
 msgid "Thank you for creating an account. Visit the link below to activate your account:"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:752
+#: src/Admin/ModulesPage.php:755
 msgid "If you did not create an account with us, please ignore this email."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:759
+#: src/Admin/ModulesPage.php:762
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:28
 msgid "AJAX Search"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:760
+#: src/Admin/ModulesPage.php:763
 msgid "Fast product suggestions while typing in the [polski_ajax_search] shortcode or the Polski AJAX Search block, with SKU support and categories."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:766
+#: src/Admin/ModulesPage.php:769
 #: resources/js/blocks/ajax-search/index.js:45
 msgid "Minimum characters"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:766
+#: src/Admin/ModulesPage.php:769
 msgid "Minimum number of characters before search starts. Recommended: 2-3"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:767
+#: src/Admin/ModulesPage.php:770
 #: resources/js/blocks/ajax-search/index.js:52
 msgid "Results limit"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:767
+#: src/Admin/ModulesPage.php:770
 msgid "Maximum number of products shown in dropdown. Recommended: 4-8"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:771
 msgid "Query debounce (ms)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:768
+#: src/Admin/ModulesPage.php:771
 msgid "Delay in milliseconds before sending search request. Lower = faster but more server load"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:769
+#: src/Admin/ModulesPage.php:772
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:44
 msgid "Show search button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:770
+#: src/Admin/ModulesPage.php:773
 msgid "Show thumbnails"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:771
-#: src/Admin/ModulesPage.php:1080
+#: src/Admin/ModulesPage.php:774
+#: src/Admin/ModulesPage.php:1083
 msgid "Show prices"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:772
-#: src/Admin/ModulesPage.php:958
+#: src/Admin/ModulesPage.php:775
+#: src/Admin/ModulesPage.php:961
 msgid "Show unit price"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:773
-#: src/Admin/ModulesPage.php:959
+#: src/Admin/ModulesPage.php:776
+#: src/Admin/ModulesPage.php:962
 msgid "Show Omnibus lowest price"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:774
-#: src/Admin/ModulesPage.php:960
+#: src/Admin/ModulesPage.php:777
+#: src/Admin/ModulesPage.php:963
 msgid "Show SKU"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:775
+#: src/Admin/ModulesPage.php:778
 msgid "Show view all results link"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:776
+#: src/Admin/ModulesPage.php:779
 msgid "Search by SKU"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:777
+#: src/Admin/ModulesPage.php:780
 msgid "Search by categories"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:778
+#: src/Admin/ModulesPage.php:781
 msgid "Search by attribute values"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:778
+#: src/Admin/ModulesPage.php:781
 msgid "Tick the global attributes whose values should be searchable, for example a colour or a material. Leave all unticked to skip attributes entirely."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:779
+#: src/Admin/ModulesPage.php:782
 msgid "Include out of stock products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:780
+#: src/Admin/ModulesPage.php:783
 msgid "Search field label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:781
+#: src/Admin/ModulesPage.php:784
 #: resources/js/blocks/ajax-search/index.js:28
 msgid "Results label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:782
-#: src/Admin/ModulesPage.php:924
-#: src/Admin/ModulesPage.php:951
+#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:927
+#: src/Admin/ModulesPage.php:954
 msgid "SKU label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:783
+#: src/Admin/ModulesPage.php:786
 #: src/Compatibility/Elementor/Widgets/SearchWidget.php:38
 #: src/Service/CustomCheckoutFieldsService.php:850
 #: resources/js/blocks/ajax-search/index.js:18
 msgid "Placeholder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:783
+#: src/Admin/ModulesPage.php:786
 msgid "Search products, SKU codes or categories"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:788
 msgid "No results text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:785
+#: src/Admin/ModulesPage.php:788
 msgid "No results found for your query."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:789
 msgid "View all results text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:786
+#: src/Admin/ModulesPage.php:789
 msgid "View all results"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:793
+#: src/Admin/ModulesPage.php:796
 #: src/Admin/PostTypes.php:136
 msgid "Brands"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:794
+#: src/Admin/ModulesPage.php:797
 msgid "Support for product brands independent of the manufacturer, with views on product pages and listings, and its own taxonomy."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:800
-#: src/Admin/ModulesPage.php:869
-#: src/Admin/ModulesPage.php:899
-#: src/Admin/ModulesPage.php:982
-#: src/Admin/ModulesPage.php:1037
-#: src/Admin/ModulesPage.php:1072
-#: src/Admin/ModulesPage.php:1099
-#: src/Admin/ModulesPage.php:1684
+#: src/Admin/ModulesPage.php:803
+#: src/Admin/ModulesPage.php:872
+#: src/Admin/ModulesPage.php:902
+#: src/Admin/ModulesPage.php:985
+#: src/Admin/ModulesPage.php:1040
+#: src/Admin/ModulesPage.php:1075
+#: src/Admin/ModulesPage.php:1102
+#: src/Admin/ModulesPage.php:1687
 msgid "Show on product page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:802
-#: src/Admin/ModulesPage.php:2450
+#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:2463
 #: src/Service/CustomCheckoutFieldsService.php:737
 msgid "Label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:803
+#: src/Admin/ModulesPage.php:806
 msgid "Show label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:804
+#: src/Admin/ModulesPage.php:807
 msgid "Brand separator"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:805
+#: src/Admin/ModulesPage.php:808
 msgid "Link to brand archive"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:810
+#: src/Admin/ModulesPage.php:813
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:16
 msgid "AJAX Filters"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:811
+#: src/Admin/ModulesPage.php:814
 msgid "Filtering product listings without page reload, including categories, brands, price, stock status, sale, and attributes."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:817
+#: src/Admin/ModulesPage.php:820
 msgid "Show on shop archives"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:818
+#: src/Admin/ModulesPage.php:821
 msgid "Show form header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:819
+#: src/Admin/ModulesPage.php:822
 msgid "Category filter"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:820
+#: src/Admin/ModulesPage.php:823
 msgid "Brand filter"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:821
+#: src/Admin/ModulesPage.php:824
 msgid "Price filter"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:822
+#: src/Admin/ModulesPage.php:825
 msgid "Availability filter"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:823
+#: src/Admin/ModulesPage.php:826
 msgid "Sale filter"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:824
+#: src/Admin/ModulesPage.php:827
 msgid "Attribute filters"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:825
+#: src/Admin/ModulesPage.php:828
 msgid "Active filters chips"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:826
+#: src/Admin/ModulesPage.php:829
 msgid "Show term counts"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:827
+#: src/Admin/ModulesPage.php:830
 msgid "Hierarchical categories"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:828
+#: src/Admin/ModulesPage.php:831
 msgid "Enable taxonomy multi-select"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:832
 msgid "Multi-select relation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:832
 msgid "OR - match any selected term"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:829
+#: src/Admin/ModulesPage.php:832
 msgid "AND - match all selected terms"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:830
+#: src/Admin/ModulesPage.php:833
 msgid "Enable mobile filter panel"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:831
+#: src/Admin/ModulesPage.php:834
 msgid "Enable instant filtering"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:832
+#: src/Admin/ModulesPage.php:835
 msgid "Instant filtering debounce (ms)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:832
+#: src/Admin/ModulesPage.php:835
 msgid "Delay before auto-submitting text and price fields"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:836
 msgid "Named presets JSON"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:833
+#: src/Admin/ModulesPage.php:836
 msgid "Optional JSON map for shortcode preset=\"...\". Example: {\"fashion\":{\"title\":\"Fashion filters\",\"attribute_taxonomies\":\"pa_color,pa_size\",\"show_brands\":false}}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:837
 msgid "Archive preset mapping JSON"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:834
+#: src/Admin/ModulesPage.php:837
 msgid "Optional JSON map from archive context to preset slug. Examples: {\"shop\":\"default\",\"product_cat:hoodies\":\"fashion\",\"taxonomy:pa_color:red\":\"color_red\",\"post_type_archive:product\":\"catalog\"}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:838
 msgid "Specific attribute taxonomies"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:835
+#: src/Admin/ModulesPage.php:838
 msgid "Optional comma-separated list, e.g. pa_color,pa_size. If empty, the first N attributes are used."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:836
+#: src/Admin/ModulesPage.php:839
 msgid "Max number of attributes"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:836
+#: src/Admin/ModulesPage.php:839
 msgid "How many product attributes to show as filter dropdowns"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:837
-#: src/Admin/ModulesPage.php:1101
-#: src/Admin/ModulesPage.php:1150
+#: src/Admin/ModulesPage.php:840
+#: src/Admin/ModulesPage.php:1104
+#: src/Admin/ModulesPage.php:1153
 msgid "Header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:838
+#: src/Admin/ModulesPage.php:841
 msgid "Active filters label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:839
+#: src/Admin/ModulesPage.php:842
 msgid "Mobile toggle button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:840
+#: src/Admin/ModulesPage.php:843
 msgid "Mobile close button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:841
+#: src/Admin/ModulesPage.php:844
 msgid "Mobile panel title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:842
+#: src/Admin/ModulesPage.php:845
 msgid "Category label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:843
+#: src/Admin/ModulesPage.php:846
 msgid "All categories text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:844
-#: src/Admin/ModulesPage.php:927
+#: src/Admin/ModulesPage.php:847
+#: src/Admin/ModulesPage.php:930
 msgid "Brand label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:845
+#: src/Admin/ModulesPage.php:848
 msgid "All brands text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:846
+#: src/Admin/ModulesPage.php:849
 msgid "Price from label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:847
+#: src/Admin/ModulesPage.php:850
 msgid "Price to label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:848
-#: src/Admin/ModulesPage.php:925
+#: src/Admin/ModulesPage.php:851
+#: src/Admin/ModulesPage.php:928
 msgid "Availability label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:849
+#: src/Admin/ModulesPage.php:852
 msgid "Any availability text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:850
+#: src/Admin/ModulesPage.php:853
 msgid "Instock product text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:851
+#: src/Admin/ModulesPage.php:854
 msgid "Sale label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:852
+#: src/Admin/ModulesPage.php:855
 msgid "Active sale filter text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:853
+#: src/Admin/ModulesPage.php:856
 msgid "Any attribute value text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:854
+#: src/Admin/ModulesPage.php:857
 msgid "Show reset link"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:856
+#: src/Admin/ModulesPage.php:859
 msgid "Reset text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:862
+#: src/Admin/ModulesPage.php:865
 msgid "Saving favorite products for guests and logged-in users, with a list in the customer account and AJAX add/remove."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:868
+#: src/Admin/ModulesPage.php:871
 msgid "Allow guests to save favorites"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:870
-#: src/Admin/ModulesPage.php:900
-#: src/Admin/ModulesPage.php:944
-#: src/Admin/ModulesPage.php:983
+#: src/Admin/ModulesPage.php:873
+#: src/Admin/ModulesPage.php:903
+#: src/Admin/ModulesPage.php:947
+#: src/Admin/ModulesPage.php:986
 msgid "Show on listings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:871
-#: src/Admin/ModulesPage.php:901
+#: src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:904
 msgid "Show in My Account"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:872
+#: src/Admin/ModulesPage.php:875
 msgid "Show list title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:873
-#: src/Admin/ModulesPage.php:902
-#: src/Admin/ModulesPage.php:1079
+#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:905
+#: src/Admin/ModulesPage.php:1082
 msgid "Show product images"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:874
+#: src/Admin/ModulesPage.php:877
 msgid "Show product names"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:875
+#: src/Admin/ModulesPage.php:878
 msgid "Show price in list"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:876
+#: src/Admin/ModulesPage.php:879
 msgid "Show cart button in list"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:877
+#: src/Admin/ModulesPage.php:880
 msgid "Show remove button in list"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:878
+#: src/Admin/ModulesPage.php:881
 msgid "Number of columns in list"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:878
-msgid "Number of product columns in grid layout. Recommended: 3-4"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:879
-#: src/Admin/ModulesPage.php:905
-msgid "Label in My Account"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:880
-msgid "List title"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:881
-#: src/Admin/ModulesPage.php:918
-#: src/Admin/ModulesPage.php:1040
-#: src/Admin/ModulesPage.php:1078
-msgid "Section description"
+msgid "Number of product columns in grid layout. Recommended: 3-4"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:882
 #: src/Admin/ModulesPage.php:908
-msgid "Add text"
+msgid "Label in My Account"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:883
-#: src/Admin/ModulesPage.php:909
-msgid "Remove text"
+msgid "List title"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:884
-#: src/Admin/ModulesPage.php:914
-msgid "Login message"
+#: src/Admin/ModulesPage.php:921
+#: src/Admin/ModulesPage.php:1043
+#: src/Admin/ModulesPage.php:1081
+msgid "Section description"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:885
-#: src/Admin/ModulesPage.php:915
-msgid "Product not found message"
+#: src/Admin/ModulesPage.php:911
+msgid "Add text"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:886
-#: src/Admin/ModulesPage.php:919
+#: src/Admin/ModulesPage.php:912
+msgid "Remove text"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:887
+#: src/Admin/ModulesPage.php:917
+msgid "Login message"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:888
+#: src/Admin/ModulesPage.php:918
+msgid "Product not found message"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:889
+#: src/Admin/ModulesPage.php:922
 msgid "Empty state"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:891
+#: src/Admin/ModulesPage.php:894
 msgid "Product Comparison"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:892
+#: src/Admin/ModulesPage.php:895
 msgid "Product comparison tool with features table, highlight differences, guest and customer support, and view in My Account."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:898
+#: src/Admin/ModulesPage.php:901
 msgid "Allow guests to compare products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:903
-#: src/Admin/ModulesPage.php:1082
+#: src/Admin/ModulesPage.php:906
+#: src/Admin/ModulesPage.php:1085
 msgid "Show cart button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:904
+#: src/Admin/ModulesPage.php:907
 msgid "Show remove button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:906
+#: src/Admin/ModulesPage.php:909
 msgid "Comparison title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:910
 msgid "Maximum number of products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:907
+#: src/Admin/ModulesPage.php:910
 msgid "Maximum products that can be compared side-by-side. Recommended: 3-5"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:910
+#: src/Admin/ModulesPage.php:913
 msgid "Comparison link text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:911
+#: src/Admin/ModulesPage.php:914
 msgid "Clear text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:912
+#: src/Admin/ModulesPage.php:915
 msgid "Feature column header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:913
+#: src/Admin/ModulesPage.php:916
 msgid "Difference filter label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:916
+#: src/Admin/ModulesPage.php:919
 msgid "Limit message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:916
+#: src/Admin/ModulesPage.php:919
 msgid "Variable: {limit}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:917
+#: src/Admin/ModulesPage.php:920
 msgid "Clear error message"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:920
+#: src/Admin/ModulesPage.php:923
 msgid "Highlight differences"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:921
+#: src/Admin/ModulesPage.php:924
 msgid "Show only differences by default"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:922
+#: src/Admin/ModulesPage.php:925
 msgid "Price label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:923
+#: src/Admin/ModulesPage.php:926
 msgid "Unit price label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:926
+#: src/Admin/ModulesPage.php:929
 msgid "Delivery time label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:928
+#: src/Admin/ModulesPage.php:931
 msgid "Manufacturer label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:929
+#: src/Admin/ModulesPage.php:932
 msgid "GTIN / EAN label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:930
+#: src/Admin/ModulesPage.php:933
 msgid "Short description label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:931
-#: src/Admin/ModulesPage.php:965
+#: src/Admin/ModulesPage.php:934
+#: src/Admin/ModulesPage.php:968
 msgid "Show short description"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:932
+#: src/Admin/ModulesPage.php:935
 msgid "Show product attributes"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:937
+#: src/Admin/ModulesPage.php:940
 #: src/Service/QuickViewService.php:205
 msgid "Quick View"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:938
+#: src/Admin/ModulesPage.php:941
 msgid "Lightweight product modal on listings, with support for variations, prices, gallery, and basic purchase information."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:946
+#: src/Admin/ModulesPage.php:949
 msgid "Modal label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:947
-#: src/Admin/ModulesPage.php:1059
-#: src/Admin/ModulesPage.php:1155
+#: src/Admin/ModulesPage.php:950
+#: src/Admin/ModulesPage.php:1062
+#: src/Admin/ModulesPage.php:1158
 msgid "Close label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:948
-#: src/Admin/ModulesPage.php:1131
+#: src/Admin/ModulesPage.php:951
+#: src/Admin/ModulesPage.php:1134
 msgid "Loading text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:949
+#: src/Admin/ModulesPage.php:952
 msgid "AJAX error text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:950
+#: src/Admin/ModulesPage.php:953
 msgid "Product not found text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:952
+#: src/Admin/ModulesPage.php:955
 msgid "Show modal title in content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:953
-#: src/Admin/ModulesPage.php:1154
+#: src/Admin/ModulesPage.php:956
+#: src/Admin/ModulesPage.php:1157
 msgid "Show close button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:954
-#: src/Admin/ModulesPage.php:1081
+#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:1084
 msgid "Show product name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:955
+#: src/Admin/ModulesPage.php:958
 msgid "Show main image"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:956
+#: src/Admin/ModulesPage.php:959
 msgid "Show mini gallery"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:957
+#: src/Admin/ModulesPage.php:960
 #: src/Compatibility/Elementor/Widgets/FiltersWidget.php:54
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:72
 #: resources/js/blocks/ajax-filters/index.js:38
@@ -4941,356 +4977,356 @@ msgstr ""
 msgid "Show price"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:961
+#: src/Admin/ModulesPage.php:964
 msgid "Show delivery time"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:962
+#: src/Admin/ModulesPage.php:965
 msgid "Show product safety (GPSR)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:963
+#: src/Admin/ModulesPage.php:966
 msgid "Show brand"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:964
+#: src/Admin/ModulesPage.php:967
 msgid "Show manufacturer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:966
+#: src/Admin/ModulesPage.php:969
 msgid "Show purchase form"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:967
+#: src/Admin/ModulesPage.php:970
 msgid "Show full product link"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:968
+#: src/Admin/ModulesPage.php:971
 msgid "Link text to product"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:969
+#: src/Admin/ModulesPage.php:972
 msgid "How to open full page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:969
-#: src/Admin/ModulesPage.php:1087
-#: src/Admin/ModulesPage.php:1160
+#: src/Admin/ModulesPage.php:972
+#: src/Admin/ModulesPage.php:1090
+#: src/Admin/ModulesPage.php:1163
 msgid "In the same tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:969
-#: src/Admin/ModulesPage.php:1087
-#: src/Admin/ModulesPage.php:1160
+#: src/Admin/ModulesPage.php:972
+#: src/Admin/ModulesPage.php:1090
+#: src/Admin/ModulesPage.php:1163
 msgid "In a new tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:970
-#: src/Admin/ModulesPage.php:1060
-#: src/Admin/ModulesPage.php:1161
+#: src/Admin/ModulesPage.php:973
+#: src/Admin/ModulesPage.php:1063
+#: src/Admin/ModulesPage.php:1164
 msgid "Close by clicking background"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:975
+#: src/Admin/ModulesPage.php:978
 #: src/Admin/ProductMetaBox.php:184
 msgid "Badge Management"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:976
+#: src/Admin/ModulesPage.php:979
 msgid "Merchandising badges on product pages and listings, with automatic conditions and manual per-product highlights."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:984
+#: src/Admin/ModulesPage.php:987
 msgid "Show manual badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:985
+#: src/Admin/ModulesPage.php:988
 msgid "Default manual badge style"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:986
+#: src/Admin/ModulesPage.php:989
 msgid "Show secondary badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:987
+#: src/Admin/ModulesPage.php:990
 msgid "Secondary badge style"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:988
+#: src/Admin/ModulesPage.php:991
 msgid "Badge shape"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:989
+#: src/Admin/ModulesPage.php:992
 msgid "Uppercase"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:990
+#: src/Admin/ModulesPage.php:993
 msgid "Max badges on product page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:991
+#: src/Admin/ModulesPage.php:994
 msgid "Max badges on listings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:992
+#: src/Admin/ModulesPage.php:995
 msgid "Sale badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:993
+#: src/Admin/ModulesPage.php:996
 msgid "Sale badge text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:994
+#: src/Admin/ModulesPage.php:997
 msgid "New badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:995
+#: src/Admin/ModulesPage.php:998
 msgid "New badge text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:996
+#: src/Admin/ModulesPage.php:999
 msgid "New for how many days"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:996
+#: src/Admin/ModulesPage.php:999
 msgid "Products published within this many days will show the \"New\" badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:997
+#: src/Admin/ModulesPage.php:1000
 msgid "Low stock badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:998
+#: src/Admin/ModulesPage.php:1001
 msgid "Low stock badge text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:999
+#: src/Admin/ModulesPage.php:1002
 msgid "Low stock threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:999
+#: src/Admin/ModulesPage.php:1002
 msgid "Badge appears when stock quantity is at or below this number"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1000
+#: src/Admin/ModulesPage.php:1003
 msgid "Bestseller badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1001
+#: src/Admin/ModulesPage.php:1004
 msgid "Bestseller badge text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1005
 msgid "Bestseller threshold (sales)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1002
+#: src/Admin/ModulesPage.php:1005
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1007
+#: src/Admin/ModulesPage.php:1010
 #: src/Admin/ProductMetaBox.php:221
 msgid "Tab Manager"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1008
+#: src/Admin/ModulesPage.php:1011
 msgid "Additional product tabs with content per product and global tabs for shipping, returns, and business information."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1014
+#: src/Admin/ModulesPage.php:1017
 msgid "Global shipping tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1015
+#: src/Admin/ModulesPage.php:1018
 msgid "Shipping tab title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1016
+#: src/Admin/ModulesPage.php:1019
 msgid "Shipping tab content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1017
+#: src/Admin/ModulesPage.php:1020
 msgid "Shipping tab priority"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1017
+#: src/Admin/ModulesPage.php:1020
 msgid "Lower number = appears earlier. WooCommerce default: Description=10, Reviews=30"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1018
+#: src/Admin/ModulesPage.php:1021
 msgid "Global returns tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1019
+#: src/Admin/ModulesPage.php:1022
 msgid "Returns tab title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1020
+#: src/Admin/ModulesPage.php:1023
 msgid "Returns tab content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1021
+#: src/Admin/ModulesPage.php:1024
 msgid "Returns tab priority"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1022
+#: src/Admin/ModulesPage.php:1025
 msgid "Enable first product tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1023
+#: src/Admin/ModulesPage.php:1026
 msgid "First product tab priority"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1024
+#: src/Admin/ModulesPage.php:1027
 msgid "Enable second product tab"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1025
+#: src/Admin/ModulesPage.php:1028
 msgid "Second product tab priority"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1030
+#: src/Admin/ModulesPage.php:1033
 #: src/Admin/ProductMetaBox.php:258
 msgid "Featured Video"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1031
+#: src/Admin/ModulesPage.php:1034
 msgid "Product video on the product page, embedded from YouTube, Vimeo, or as a local MP4 file in the media section."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1038
-#: src/Admin/ModulesPage.php:1660
+#: src/Admin/ModulesPage.php:1041
+#: src/Admin/ModulesPage.php:1663
 msgid "Position"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1038
+#: src/Admin/ModulesPage.php:1041
 msgid "Below gallery"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1038
-msgid "Before product summary"
-msgstr ""
-
-#: src/Admin/ModulesPage.php:1039
-#: src/Admin/ModulesPage.php:1074
-msgid "Section header"
-msgstr ""
-
 #: src/Admin/ModulesPage.php:1041
-#: src/Admin/ModulesPage.php:1076
-msgid "Show section header"
+msgid "Before product summary"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1042
 #: src/Admin/ModulesPage.php:1077
+msgid "Section header"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1044
+#: src/Admin/ModulesPage.php:1079
+msgid "Show section header"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:1045
+#: src/Admin/ModulesPage.php:1080
 msgid "Show section description"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1043
+#: src/Admin/ModulesPage.php:1046
 msgid "Autoplay for supported embeds"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1048
+#: src/Admin/ModulesPage.php:1051
 msgid "Gallery & Zoom"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1049
+#: src/Admin/ModulesPage.php:1052
 msgid "Lightweight image zoom and simple gallery lightbox without external slider libraries."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1055
+#: src/Admin/ModulesPage.php:1058
 msgid "Enable zoom on hover"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1056
+#: src/Admin/ModulesPage.php:1059
 msgid "Zoom scale"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1056
+#: src/Admin/ModulesPage.php:1059
 msgid "Magnification factor on hover. 1.0 = no zoom, 2.0 = double size"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1057
+#: src/Admin/ModulesPage.php:1060
 msgid "Enable lightbox on click"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1057
+#: src/Admin/ModulesPage.php:1060
 msgid "Used only when the theme has no WooCommerce lightbox of its own; where it has one, that lightbox is kept."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1058
+#: src/Admin/ModulesPage.php:1061
 msgid "Lightbox window label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1065
+#: src/Admin/ModulesPage.php:1068
 msgid "Product Slider Carousel"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1066
+#: src/Admin/ModulesPage.php:1069
 msgid "Lightweight product slider based on scroll-snap, with related, sale, or featured products."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1073
+#: src/Admin/ModulesPage.php:1076
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:38
 msgid "Product source"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1073
+#: src/Admin/ModulesPage.php:1076
 msgid "Related"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1073
+#: src/Admin/ModulesPage.php:1076
 msgid "Upsell"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1073
+#: src/Admin/ModulesPage.php:1076
 #: src/Compatibility/Elementor/Widgets/ProductSliderWidget.php:45
 msgid "Featured"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1075
+#: src/Admin/ModulesPage.php:1078
 msgid "Number of products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1083
+#: src/Admin/ModulesPage.php:1086
 msgid "Show \"view all\" link"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1084
+#: src/Admin/ModulesPage.php:1087
 msgid "Show empty state without products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1085
+#: src/Admin/ModulesPage.php:1088
 msgid "Empty state text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1086
+#: src/Admin/ModulesPage.php:1089
 msgid "\"view all\" link text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1087
+#: src/Admin/ModulesPage.php:1090
 msgid "How to open \"view all\" link"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1092
+#: src/Admin/ModulesPage.php:1095
 msgid "Waitlist"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1093
+#: src/Admin/ModulesPage.php:1096
 msgid "Waitlist for out-of-stock products and variations, with email signup and automatic notifications upon restock."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1100
+#: src/Admin/ModulesPage.php:1103
 msgid "Allow guests to sign up"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1102
-#: src/Admin/ModulesPage.php:1153
+#: src/Admin/ModulesPage.php:1105
+#: src/Admin/ModulesPage.php:1156
 msgid "Show header"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1103
-#: src/Admin/ModulesPage.php:1981
+#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1984
 #: src/AIFeed/ProductMarkdownBuilder.php:127
 #: src/Service/DSAService.php:200
 #: templates/forms/dsa-report.php:114
@@ -5298,1611 +5334,1617 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1104
+#: src/Admin/ModulesPage.php:1107
 msgid "Show description"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1105
+#: src/Admin/ModulesPage.php:1108
 #: src/Admin/WithdrawalSettingsPage.php:312
 msgid "Email field label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1106
+#: src/Admin/ModulesPage.php:1109
 msgid "Email field placeholder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1109
+#: src/Admin/ModulesPage.php:1112
 #: src/Admin/WithdrawalSettingsPage.php:349
 msgid "Consent text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1110
+#: src/Admin/ModulesPage.php:1113
 msgid "Product not found error"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1111
+#: src/Admin/ModulesPage.php:1114
 msgid "Waitlist unavailable error"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1112
+#: src/Admin/ModulesPage.php:1115
 msgid "Invalid email error"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1113
+#: src/Admin/ModulesPage.php:1116
 msgid "Missing consent error"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1114
+#: src/Admin/ModulesPage.php:1117
 msgid "Login required error"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1116
-#: src/Admin/ModulesPage.php:1542
+#: src/Admin/ModulesPage.php:1119
+#: src/Admin/ModulesPage.php:1545
 msgid "Email intro text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1117
+#: src/Admin/ModulesPage.php:1120
 msgid "Email footer text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1122
+#: src/Admin/ModulesPage.php:1125
 msgid "Infinite Scrolling"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1123
+#: src/Admin/ModulesPage.php:1126
 msgid "Lightweight loading of subsequent products on WooCommerce archives, with button mode or automatic loading."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1129
+#: src/Admin/ModulesPage.php:1132
 msgid "Operation mode"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1129
+#: src/Admin/ModulesPage.php:1132
 msgid "Button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1129
+#: src/Admin/ModulesPage.php:1132
 msgid "Automatic scroll"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1132
+#: src/Admin/ModulesPage.php:1135
 msgid "Loading error text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1133
+#: src/Admin/ModulesPage.php:1136
 msgid "End of list text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1134
+#: src/Admin/ModulesPage.php:1137
 msgid "Show status messages"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1135
+#: src/Admin/ModulesPage.php:1138
 msgid "Show button also in auto mode"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1136
+#: src/Admin/ModulesPage.php:1139
 msgid "Show on shop page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1137
+#: src/Admin/ModulesPage.php:1140
 msgid "Show on categories and tags"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1138
+#: src/Admin/ModulesPage.php:1141
 msgid "How many pages to auto-load"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1138
+#: src/Admin/ModulesPage.php:1141
 msgid "0 = unlimited. After this many pages, auto-loading stops and shows a manual button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1143
+#: src/Admin/ModulesPage.php:1146
 msgid "WooCommerce Popup"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1144
+#: src/Admin/ModulesPage.php:1147
 msgid "Lightweight promotional or lead popup with frequency, delay, and display location control."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1151
+#: src/Admin/ModulesPage.php:1154
 msgid "Content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1152
+#: src/Admin/ModulesPage.php:1155
 msgid "CTA text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1156
+#: src/Admin/ModulesPage.php:1159
 msgid "Dialog box label"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1157
+#: src/Admin/ModulesPage.php:1160
 msgid "CTA URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1158
+#: src/Admin/ModulesPage.php:1161
 msgid "CTA Fallback URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1158
+#: src/Admin/ModulesPage.php:1161
 msgid "My account"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1158
-#: src/Admin/ModulesPage.php:1162
+#: src/Admin/ModulesPage.php:1161
+#: src/Admin/ModulesPage.php:1165
 msgid "Home page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1158
+#: src/Admin/ModulesPage.php:1161
 #: src/AIFeed/LlmsTxtService.php:99
 msgid "Shop"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1159
+#: src/Admin/ModulesPage.php:1162
 msgid "Show CTA button"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1160
+#: src/Admin/ModulesPage.php:1163
 msgid "How to open CTA"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1163
+#: src/Admin/ModulesPage.php:1166
 msgid "Shop and archives"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1166
-#: src/Admin/ModulesPage.php:3024
+#: src/Admin/ModulesPage.php:1169
+#: src/Admin/ModulesPage.php:3041
 #: src/Service/LiveCartService.php:84
 #: src/Service/LiveCartService.php:248
 msgid "Checkout"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1167
+#: src/Admin/ModulesPage.php:1170
 msgid "Delay in seconds"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1167
+#: src/Admin/ModulesPage.php:1170
 msgid "How long to wait after page load before showing the popup"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1168
+#: src/Admin/ModulesPage.php:1171
 msgid "Frequency of re-showing (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1168
+#: src/Admin/ModulesPage.php:1171
 msgid "After closing, the popup will not appear again for this many days (uses cookie)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1174
+#: src/Admin/ModulesPage.php:1177
 msgid "GPSR - Product safety"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1175
+#: src/Admin/ModulesPage.php:1178
 msgid "GPSR product safety tools: manufacturer and importer data, responsible person, product identifiers, safety warnings, instructions, and CSV bulk import or export."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1181
+#: src/Admin/ModulesPage.php:1184
 msgid "Display mode"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1181
+#: src/Admin/ModulesPage.php:1184
 msgid "Accordion"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1181
+#: src/Admin/ModulesPage.php:1184
 #: src/Service/CustomCheckoutFieldsService.php:739
 msgid "Section"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1182
+#: src/Admin/ModulesPage.php:1185
 msgid "Section title"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1182
+#: src/Admin/ModulesPage.php:1185
 msgid "Product safety"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1187
-#: src/Admin/ModulesPage.php:1194
+#: src/Admin/ModulesPage.php:1190
+#: src/Admin/ModulesPage.php:1197
 #: src/Service/BdoService.php:60
 msgid "BDO number"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1188
+#: src/Admin/ModulesPage.php:1191
 msgid "Show your BDO registration number (Baza Danych o Odpadach) with the [polski_bdo] shortcode or block. Enter the number below; it is read from the store settings."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1194
+#: src/Admin/ModulesPage.php:1197
 msgid "Shown by the [polski_bdo] shortcode and the BDO number block."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1199
+#: src/Admin/ModulesPage.php:1202
 msgid "Verified purchase badge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1200
+#: src/Admin/ModulesPage.php:1203
 msgid "Badge shown on reviews from customers who actually purchased the product."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1206
+#: src/Admin/ModulesPage.php:1209
 msgid "Badge text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1206
+#: src/Admin/ModulesPage.php:1209
 #: src/Service/VerifiedReviewService.php:46
 msgid "Verified purchase"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1211
+#: src/Admin/ModulesPage.php:1214
 msgid "Product markings (medical device, adults only)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1212
+#: src/Admin/ModulesPage.php:1215
 msgid "Per-product flags that print the statutory notice on the product page: medical device (Regulation 2017/745 and the Medical Devices Act) and goods sold to adults only, such as alcohol or tobacco."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1218
+#: src/Admin/ModulesPage.php:1221
 msgid "Medical device notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1218
+#: src/Admin/ModulesPage.php:1221
 msgid "Leave empty to use the statutory wording shipped with the plugin."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1219
+#: src/Admin/ModulesPage.php:1222
 msgid "Adults only notice"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1219
+#: src/Admin/ModulesPage.php:1222
 msgid "Leave empty to use the default wording."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1224
+#: src/Admin/ModulesPage.php:1227
 msgid "Anti-greenwashing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1225
+#: src/Admin/ModulesPage.php:1228
 msgid "Fields to document environmental claims: claim basis, certificate link, expiration date. Directive (EU) 2024/825 bans generic environmental claims and uncertified sustainability labels from 27 September 2026."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1234
+#: src/Admin/ModulesPage.php:1237
 msgid "DSA Toolkit"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1235
+#: src/Admin/ModulesPage.php:1238
 msgid "Digital Services Act tools: contact point settings, report form for illegal content or products, and an admin reports screen. Shortcode: [polski_dsa_report]."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1241
+#: src/Admin/ModulesPage.php:1244
 msgid "DSA contact name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1242
+#: src/Admin/ModulesPage.php:1245
 msgid "DSA contact email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1243
+#: src/Admin/ModulesPage.php:1246
 msgid "DSA contact phone"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1250
+#: src/Admin/ModulesPage.php:1253
 msgid "KSeF readiness"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1251
+#: src/Admin/ModulesPage.php:1254
 msgid "Automatic detection of orders that may require KSeF invoicing based on NIP, plus integration hooks and an admin status indicator."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1257
+#: src/Admin/ModulesPage.php:1260
 msgid "Automatically detect based on NIP"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1262
+#: src/Admin/ModulesPage.php:1265
 #: src/Service/SecurityIncidentService.php:99
 msgid "Security incidents"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1263
+#: src/Admin/ModulesPage.php:1266
 msgid "Incident log for vulnerabilities, breaches, third-party failures, and operational follow-up, with status tracking and CSV export. CRA duties bind manufacturers, not shops."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1271
-#: src/Admin/ModulesPage.php:1499
+#: src/Admin/ModulesPage.php:1274
+#: src/Admin/ModulesPage.php:1502
 msgid "Security contact email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1272
+#: src/Admin/ModulesPage.php:1275
 msgid "Default reporter name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1277
+#: src/Admin/ModulesPage.php:1280
 msgid "Store health monitor"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1278
+#: src/Admin/ModulesPage.php:1281
 msgid "Continuous, passive monitoring of front-end fatal errors, the checkout failure rate, and sales anomalies (\"traffic but no orders\"). Sends email or webhook alerts. Checks run every 5 minutes and never place synthetic orders."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1283
+#: src/Admin/ModulesPage.php:1286
 msgid "Health dashboard"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1286
+#: src/Admin/ModulesPage.php:1289
 msgid "Alert email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1286
+#: src/Admin/ModulesPage.php:1289
 msgid "Where to send health alerts. Defaults to the site admin email."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1287
+#: src/Admin/ModulesPage.php:1290
 msgid "Alert webhook URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1287
+#: src/Admin/ModulesPage.php:1290
 msgid "Optional. Sends a JSON {\"text\": ...} payload (Slack/Discord-compatible)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1288
+#: src/Admin/ModulesPage.php:1291
 msgid "Checkout failure threshold (%)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1288
+#: src/Admin/ModulesPage.php:1291
 msgid "Alert when this share of checkouts fails within the last 2 hours."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1289
+#: src/Admin/ModulesPage.php:1292
 msgid "Minimum checkout sample"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1289
+#: src/Admin/ModulesPage.php:1292
 msgid "Ignore the failure rate until at least this many checkouts are observed."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1290
+#: src/Admin/ModulesPage.php:1293
 msgid "Sales anomaly threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1290
+#: src/Admin/ModulesPage.php:1293
 msgid "Alert only when this many orders are typical for the hour but none arrive."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1291
+#: src/Admin/ModulesPage.php:1294
 msgid "Alert cooldown (minutes)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1291
+#: src/Admin/ModulesPage.php:1294
 msgid "Minimum time between repeat alerts for an ongoing problem."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1296
+#: src/Admin/ModulesPage.php:1299
 msgid "AI Bridge"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1297
+#: src/Admin/ModulesPage.php:1300
 msgid "Exposes read-only commerce data (price history, product safety data, store health, configured-page checks, product facts) to AI assistants and the Site Editor via the WordPress Abilities API. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1298
+#: src/Admin/ModulesPage.php:1301
 msgid "Tested only in part: product facts can come back empty, and the Site Editor commands and AI draft endpoints have not been verified against a live AI provider."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1309
+#: src/Admin/ModulesPage.php:1312
 msgid "Structured Data (Schema.org)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1310
+#: src/Admin/ModulesPage.php:1313
 msgid "Automatic injection of advanced JSON-LD tags, supporting product indexing by Google with plugin-specific data preservation."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1316
+#: src/Admin/ModulesPage.php:1319
 msgid "Enable structured data integration"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1316
+#: src/Admin/ModulesPage.php:1319
 msgid "Main switch for Schema.org JSON-LD modifications."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1317
+#: src/Admin/ModulesPage.php:1320
 msgid "Data to include"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1318
+#: src/Admin/ModulesPage.php:1321
 msgid "Include Brand"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1319
+#: src/Admin/ModulesPage.php:1322
 msgid "Include Manufacturer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1320
+#: src/Admin/ModulesPage.php:1323
 msgid "Include barcodes (GTIN)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1321
+#: src/Admin/ModulesPage.php:1324
 msgid "Include Unit Price"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1322
+#: src/Admin/ModulesPage.php:1325
 msgid "Variable products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1323
+#: src/Admin/ModulesPage.php:1326
 msgid "Describe variable products as a product group with variants"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1323
+#: src/Admin/ModulesPage.php:1326
 msgid "Each variation gets its own offer, SKU and GTIN instead of one price range."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1324
+#: src/Admin/ModulesPage.php:1327
 msgid "Variant attribute mapping"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1324
+#: src/Admin/ModulesPage.php:1327
 msgid "One per line: attribute = color, size, material or pattern (none to skip). Without a line the name decides: length, width and size mean size, colour means color. Google has no length property, so a length is published as size."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1325
+#: src/Admin/ModulesPage.php:1328
 msgid "Shipping in Google merchant listings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1326
+#: src/Admin/ModulesPage.php:1329
 msgid "Publish shipping details on offers"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1327
+#: src/Admin/ModulesPage.php:1330
 #: src/Service/OrderExportService.php:78
 msgid "Shipping country"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1327
+#: src/Admin/ModulesPage.php:1330
 msgid "Two-letter code, e.g. PL. Empty: the shop's base country."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1328
+#: src/Admin/ModulesPage.php:1331
 msgid "Standard shipping rate"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1328
+#: src/Admin/ModulesPage.php:1331
 msgid "Gross amount in the shop currency, 0 for free shipping. Empty: taken from a free shipping or plain flat rate method of the WooCommerce zone; without one no shipping details are published."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1329
+#: src/Admin/ModulesPage.php:1332
 msgid "Handling time from (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1329
+#: src/Admin/ModulesPage.php:1332
 msgid "Working days before dispatch. Empty: 0 to 1."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1330
+#: src/Admin/ModulesPage.php:1333
 msgid "Handling time to (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1331
+#: src/Admin/ModulesPage.php:1334
 msgid "Transit time from (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1331
+#: src/Admin/ModulesPage.php:1334
 msgid "Days in transit. Empty: read from the product delivery time, otherwise 1 to 3."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1332
+#: src/Admin/ModulesPage.php:1335
 msgid "Transit time to (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1333
+#: src/Admin/ModulesPage.php:1336
 msgid "Return policy"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1334
+#: src/Admin/ModulesPage.php:1337
 msgid "Publish the return policy"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1334
+#: src/Admin/ModulesPage.php:1337
 msgid "On every product offer and on the organization (Yoast SEO graph or Local business module)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1335
+#: src/Admin/ModulesPage.php:1338
 msgid "Countries the policy applies to"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1335
+#: src/Admin/ModulesPage.php:1338
 msgid "Comma separated two-letter codes. Empty: the shop's base country."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1336
+#: src/Admin/ModulesPage.php:1339
 msgid "Return window"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1336
+#: src/Admin/ModulesPage.php:1339
 msgid "Limited number of days"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1336
+#: src/Admin/ModulesPage.php:1339
 msgid "Unlimited"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1336
+#: src/Admin/ModulesPage.php:1339
 msgid "Returns not accepted"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1337
+#: src/Admin/ModulesPage.php:1340
 msgid "Days to return"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1338
+#: src/Admin/ModulesPage.php:1341
 msgid "Return method"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1338
+#: src/Admin/ModulesPage.php:1341
 msgid "By mail"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1338
+#: src/Admin/ModulesPage.php:1341
 msgid "In store"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1338
+#: src/Admin/ModulesPage.php:1341
 msgid "At a kiosk"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:1342
 msgid "Return costs"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:1342
 msgid "Paid by the customer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:1342
 msgid "Free return"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1339
+#: src/Admin/ModulesPage.php:1342
 msgid "Fixed return shipping fee"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1340
+#: src/Admin/ModulesPage.php:1343
 msgid "Return shipping fee"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1340
+#: src/Admin/ModulesPage.php:1343
 msgid "Used with a fixed return shipping fee only."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1346
+#: src/Admin/ModulesPage.php:1349
 msgid "Local business (Schema.org)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1347
+#: src/Admin/ModulesPage.php:1350
 msgid "Publishes your shop or showroom as a LocalBusiness on the front page: address, opening hours, map coordinates, service area and profiles. With Yoast SEO it extends the Yoast organization instead of adding a second one."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1353
+#: src/Admin/ModulesPage.php:1356
 msgid "Business type"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1354
+#: src/Admin/ModulesPage.php:1357
 msgid "Business name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1354
+#: src/Admin/ModulesPage.php:1357
 msgid "Empty: the company name from the setup wizard."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1355
+#: src/Admin/ModulesPage.php:1358
 msgid "Street and number"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1355
+#: src/Admin/ModulesPage.php:1358
 msgid "Empty fields of the address use the WooCommerce store address."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1356
+#: src/Admin/ModulesPage.php:1359
 msgid "Postal code"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1357
+#: src/Admin/ModulesPage.php:1360
 msgid "City"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1358
+#: src/Admin/ModulesPage.php:1361
 msgid "Region"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1359
+#: src/Admin/ModulesPage.php:1362
 msgid "Country code"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1360
+#: src/Admin/ModulesPage.php:1363
 msgid "With the country code, e.g. +48 12 345 67 89. Empty: the phone from the setup wizard."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1361
+#: src/Admin/ModulesPage.php:1364
 msgid "E-mail"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1362
+#: src/Admin/ModulesPage.php:1365
 msgid "Latitude"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1362
+#: src/Admin/ModulesPage.php:1365
 msgid "At least five decimal places, e.g. 50.06143."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1363
+#: src/Admin/ModulesPage.php:1366
 msgid "Longitude"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1363
+#: src/Admin/ModulesPage.php:1366
 msgid "At least five decimal places, e.g. 19.93658."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1364
+#: src/Admin/ModulesPage.php:1367
 msgid "Opening hours"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1364
+#: src/Admin/ModulesPage.php:1367
 msgid "One rule per line, e.g. Mo-Fr 08:00-16:00 or Pn-Pt 08:00-16:00, Sa 09:00-13:00."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1365
+#: src/Admin/ModulesPage.php:1368
 msgid "Area served"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1365
+#: src/Admin/ModulesPage.php:1368
 msgid "Comma separated places, e.g. Krakow, Wieliczka, Niepolomice."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1366
+#: src/Admin/ModulesPage.php:1369
 msgid "Price range"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1366
+#: src/Admin/ModulesPage.php:1369
 msgid "E.g. $$ or 100-5000 PLN."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1367
+#: src/Admin/ModulesPage.php:1370
 msgid "Profiles (sameAs)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1367
+#: src/Admin/ModulesPage.php:1370
 msgid "One URL per line: Google Business Profile, Facebook, Instagram and similar."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1368
+#: src/Admin/ModulesPage.php:1371
 msgid "Image URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1368
+#: src/Admin/ModulesPage.php:1371
 msgid "Empty: the site logo or icon."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1374
+#: src/Admin/ModulesPage.php:1377
 msgid "Tracking Tags"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1375
+#: src/Admin/ModulesPage.php:1378
 msgid "Unified, consent-gated tag manager for marketing pixels and analytics tools. Enter your own tracking IDs; each tag fires only after the visitor grants the matching consent category. GA4 and GTM are handled by the GA4 DataLayer module."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1381
+#: src/Admin/ModulesPage.php:1384
 msgid "Requires the Consent Manager module. Without it no tag is ever loaded, because every tag waits for a consent decision."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1382
+#: src/Admin/ModulesPage.php:1385
 msgid "Marketing pixels"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1382
+#: src/Admin/ModulesPage.php:1385
 msgid "Gated under the Marketing consent category."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1383
+#: src/Admin/ModulesPage.php:1386
 msgid "Meta Pixel"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1384
+#: src/Admin/ModulesPage.php:1387
 msgid "Meta Pixel ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1384
-#: src/Admin/ModulesPage.php:1386
-#: src/Admin/ModulesPage.php:1394
+#: src/Admin/ModulesPage.php:1387
+#: src/Admin/ModulesPage.php:1389
+#: src/Admin/ModulesPage.php:1397
 msgid "Pixel ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1385
+#: src/Admin/ModulesPage.php:1388
 msgid "TikTok Pixel"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1386
+#: src/Admin/ModulesPage.php:1389
 msgid "TikTok Pixel ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1387
+#: src/Admin/ModulesPage.php:1390
 msgid "Microsoft Advertising (Bing UET)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1388
+#: src/Admin/ModulesPage.php:1391
 msgid "UET Tag ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1389
+#: src/Admin/ModulesPage.php:1392
 msgid "LinkedIn Insight"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1390
+#: src/Admin/ModulesPage.php:1393
 msgid "LinkedIn Partner ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1390
+#: src/Admin/ModulesPage.php:1393
 msgid "Partner ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1391
+#: src/Admin/ModulesPage.php:1394
 msgid "Pinterest Tag"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1392
+#: src/Admin/ModulesPage.php:1395
 msgid "Pinterest Tag ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1392
+#: src/Admin/ModulesPage.php:1395
 msgid "Tag ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1393
+#: src/Admin/ModulesPage.php:1396
 msgid "X / Twitter Ads"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1394
+#: src/Admin/ModulesPage.php:1397
 msgid "X / Twitter Pixel ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1395
+#: src/Admin/ModulesPage.php:1398
 msgid "Google Ads"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1396
+#: src/Admin/ModulesPage.php:1399
 msgid "Google Ads Conversion ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1397
+#: src/Admin/ModulesPage.php:1400
 msgid "Analytics and heatmaps"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1397
+#: src/Admin/ModulesPage.php:1400
 msgid "Gated under the Analytics consent category."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1398
+#: src/Admin/ModulesPage.php:1401
 msgid "Microsoft Clarity"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1399
+#: src/Admin/ModulesPage.php:1402
 msgid "Clarity Project ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1399
+#: src/Admin/ModulesPage.php:1402
 msgid "Project ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1400
+#: src/Admin/ModulesPage.php:1403
 msgid "Matomo"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1401
+#: src/Admin/ModulesPage.php:1404
 msgid "Matomo URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1402
+#: src/Admin/ModulesPage.php:1405
 msgid "Matomo Site ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1402
-#: src/Admin/ModulesPage.php:1408
+#: src/Admin/ModulesPage.php:1405
+#: src/Admin/ModulesPage.php:1411
 msgid "Site ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1403
+#: src/Admin/ModulesPage.php:1406
 msgid "Plausible"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1404
+#: src/Admin/ModulesPage.php:1407
 msgid "Plausible domain"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1405
+#: src/Admin/ModulesPage.php:1408
 msgid "PostHog"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1406
+#: src/Admin/ModulesPage.php:1409
 msgid "PostHog project API key"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1406
+#: src/Admin/ModulesPage.php:1409
 msgid "Project API key"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1407
+#: src/Admin/ModulesPage.php:1410
 msgid "Hotjar"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1408
+#: src/Admin/ModulesPage.php:1411
 msgid "Hotjar Site ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1409
+#: src/Admin/ModulesPage.php:1412
 msgid "Inspectlet"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1410
+#: src/Admin/ModulesPage.php:1413
 msgid "Inspectlet WID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1410
+#: src/Admin/ModulesPage.php:1413
 msgid "WID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1411
+#: src/Admin/ModulesPage.php:1414
 msgid "Crazy Egg"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1412
+#: src/Admin/ModulesPage.php:1415
 msgid "Crazy Egg Account ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1412
+#: src/Admin/ModulesPage.php:1415
 msgid "Account ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1413
+#: src/Admin/ModulesPage.php:1416
 msgid "Simple Analytics"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1419
+#: src/Admin/ModulesPage.php:1422
 msgid "Safe Fonts"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1420
+#: src/Admin/ModulesPage.php:1423
 msgid "Reduce and gate external Google Fonts requests. Adds font-display and preconnect hints, and can defer the Google Fonts stylesheet until the visitor grants consent. Self-hosting font files is out of scope; this lowers and gates the external calls."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1429
 msgid "Optimise Google Fonts"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1426
+#: src/Admin/ModulesPage.php:1429
 msgid "Append display=swap to the font URL and emit preconnect hints for the Google Fonts hosts. Preconnect is skipped while fonts wait for consent."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1427
+#: src/Admin/ModulesPage.php:1430
 msgid "Defer Google Fonts until consent"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1427
+#: src/Admin/ModulesPage.php:1430
 msgid "Hold the Google Fonts stylesheet until the visitor grants the chosen consent category. A no-script fallback keeps fonts working when JavaScript is off."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1428
+#: src/Admin/ModulesPage.php:1431
 msgid "Consent category"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1429
-#: src/Admin/ModulesPage.php:2372
+#: src/Admin/ModulesPage.php:1432
+#: src/Admin/ModulesPage.php:2385
 #: src/Enum/ConsentCategory.php:35
 msgid "Necessary"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1433
+#: src/Admin/ModulesPage.php:1436
 msgid "Used only when deferring fonts until consent. Requires the Consent Manager module to be enabled."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1439
+#: src/Admin/ModulesPage.php:1442
 msgid "Custom Integrations"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1440
+#: src/Admin/ModulesPage.php:1443
 msgid "Add your own scripts or snippets to the page head or footer. Each snippet is assigned a consent category and runs only after the visitor grants it, via the Consent Manager."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1446
+#: src/Admin/ModulesPage.php:1449
 msgid "Necessary snippets print as they are and run on every page load, so they may hold any markup, such as a meta tag. Snippets in other categories must be scripts: they wait as consent-gated placeholders and run only once the matching category is granted, which requires the Consent Manager module."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1447
+#: src/Admin/ModulesPage.php:1450
 msgid "Snippets"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1453
+#: src/Admin/ModulesPage.php:1456
 msgid "Custom Triggers"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1454
+#: src/Admin/ModulesPage.php:1457
 msgid "Push your own dataLayer events on simple page conditions, such as visiting a URL or clicking an element. Integrates with the GA4 DataLayer module."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1460
+#: src/Admin/ModulesPage.php:1463
 msgid "Each trigger pushes an event into window.dataLayer. Assign a consent category to hold a trigger until that category is granted (necessary always fires)."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1461
+#: src/Admin/ModulesPage.php:1464
 msgid "Triggers"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1468
+#: src/Admin/ModulesPage.php:1471
 msgid "Store Audit"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1469
+#: src/Admin/ModulesPage.php:1472
 msgid "Automatic verification of the most common issues: missing legal pages, pre-selected checkboxes, company data, GDPR, Omnibus."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1475
+#: src/Admin/ModulesPage.php:1478
 msgid "Open compliance audit report"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1480
+#: src/Admin/ModulesPage.php:1483
 msgid "Plugin data on uninstall"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1481
+#: src/Admin/ModulesPage.php:1484
 msgid "Choose whether Polski deletes its database tables, settings, and stored logs when the plugin is removed from WordPress."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1487
+#: src/Admin/ModulesPage.php:1490
 msgid "Delete plugin data on uninstall"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1487
+#: src/Admin/ModulesPage.php:1490
 msgid "If enabled, uninstall removes plugin tables, settings, and stored logs including deactivation feedback."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1492
+#: src/Admin/ModulesPage.php:1495
 msgid "security.txt (RFC 9116)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1493
+#: src/Admin/ModulesPage.php:1496
 msgid "RFC 9116 security.txt file, security contact and vulnerability reporting policy. Not a CRA requirement for shops; the CRA binds manufacturers."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1500
+#: src/Admin/ModulesPage.php:1503
 msgid "Security policy URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1501
+#: src/Admin/ModulesPage.php:1504
 msgid "CRA incident webhook URL"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1501
+#: src/Admin/ModulesPage.php:1504
 msgid "Dispatch notification sends the incident as JSON to this URL."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1502
+#: src/Admin/ModulesPage.php:1505
 msgid "CRA incident notification email"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1507
+#: src/Admin/ModulesPage.php:1510
 msgid "DPA Registry (GDPR)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1508
+#: src/Admin/ModulesPage.php:1511
 msgid "Detection of third-party services processing customers' personal data. Tracking the status of data processing agreements."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1517
+#: src/Admin/ModulesPage.php:1520
 msgid "Minimum Order Value / Quantity"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1518
+#: src/Admin/ModulesPage.php:1521
 msgid "Block checkout when cart does not meet minimum order value or minimum number of items. Displays a notice on cart and checkout pages."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1524
+#: src/Admin/ModulesPage.php:1527
 msgid "Minimum order value (0 = disabled)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1524
+#: src/Admin/ModulesPage.php:1527
 msgid "Cart subtotal must reach this amount to proceed to checkout."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1525
+#: src/Admin/ModulesPage.php:1528
 msgid "Minimum number of items (0 = disabled)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1525
+#: src/Admin/ModulesPage.php:1528
 msgid "Total number of items in cart must reach this count."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1526
+#: src/Admin/ModulesPage.php:1529
 msgid "Exclude sale items from minimum value"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1527
+#: src/Admin/ModulesPage.php:1530
 msgid "Message for minimum value"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1527
+#: src/Admin/ModulesPage.php:1530
 msgid "Tokens: {min_value}, {current_value}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1531
 msgid "Message for minimum quantity"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1528
+#: src/Admin/ModulesPage.php:1531
 msgid "Tokens: {min_quantity}, {current_quantity}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1533
+#: src/Admin/ModulesPage.php:1536
 msgid "Review Request Emails"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1534
+#: src/Admin/ModulesPage.php:1537
 msgid "Automatically send review request emails to customers after order completion. Includes product images, review links, and opt-out."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1540
+#: src/Admin/ModulesPage.php:1543
 msgid "Send after (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1540
+#: src/Admin/ModulesPage.php:1543
 msgid "Number of days after order completion before sending the review request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1541
+#: src/Admin/ModulesPage.php:1544
 msgid "Tokens: {first_name}, {order_number}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1542
+#: src/Admin/ModulesPage.php:1545
 msgid "Tokens: {first_name}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1543
+#: src/Admin/ModulesPage.php:1546
 msgid "Review button text"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1548
+#: src/Admin/ModulesPage.php:1551
 msgid "From Price for Variable Products"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1549
+#: src/Admin/ModulesPage.php:1552
 msgid "Display \"from {price}\" instead of a price range for variable products. Cleaner presentation on archives and product pages."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1555
+#: src/Admin/ModulesPage.php:1558
 msgid "Enable \"from\" price display"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1556
+#: src/Admin/ModulesPage.php:1559
 msgid "Price text template"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1556
+#: src/Admin/ModulesPage.php:1559
 msgid "Token: {price}"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1563
+#: src/Admin/ModulesPage.php:1566
 msgid "Auto Restore Stock"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1564
+#: src/Admin/ModulesPage.php:1567
 msgid "Automatically restore product stock when orders are cancelled, refunded or failed. Keeps inventory accurate without manual intervention."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1573
+#: src/Admin/ModulesPage.php:1576
 msgid "AJAX Add to Cart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1574
+#: src/Admin/ModulesPage.php:1577
 msgid "Add products to cart without page reload, including variable products on single product pages. Shows a toast notification on success."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1585
+#: src/Admin/ModulesPage.php:1588
 msgid "GA4 DataLayer / GTM"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1586
+#: src/Admin/ModulesPage.php:1589
 msgid "Google Analytics 4 ecommerce tracking via dataLayer. Tracks view_item, add_to_cart, begin_checkout, purchase events. Supports GTM container and gtag.js."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1592
+#: src/Admin/ModulesPage.php:1595
 msgid "GTM Container ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1593
+#: src/Admin/ModulesPage.php:1596
 msgid "GA4 Measurement ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1594
+#: src/Admin/ModulesPage.php:1597
 msgid "Use SKU as product ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1594
+#: src/Admin/ModulesPage.php:1597
 msgid "Send SKU instead of WooCommerce product ID in ecommerce events"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1599
+#: src/Admin/ModulesPage.php:1602
 #: src/Service/StockExportService.php:39
 #: src/Service/StockExportService.php:40
 #: src/Service/StockExportService.php:64
 msgid "Stock Export"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1600
+#: src/Admin/ModulesPage.php:1603
 msgid "Export WooCommerce product stock data as CSV. Configurable fields, stock threshold filters, variation support. Available under Products > Stock Export."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1605
+#: src/Admin/ModulesPage.php:1608
 msgid "Export stock"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1611
+#: src/Admin/ModulesPage.php:1614
 msgid "Social Login"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1612
+#: src/Admin/ModulesPage.php:1615
 msgid "Let customers register and login via Google or Facebook. Displays branded buttons on My Account, the classic (shortcode) checkout and the WordPress login form, not on the block checkout. Auto-creates WooCommerce customer accounts."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1618
+#: src/Admin/ModulesPage.php:1621
 msgid "Enable Google login"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1619
+#: src/Admin/ModulesPage.php:1622
 msgid "Google Client ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1619
+#: src/Admin/ModulesPage.php:1622
 msgid "From Google Cloud Console > APIs & Services > Credentials"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1620
+#: src/Admin/ModulesPage.php:1623
 msgid "Google Client Secret"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1620
+#: src/Admin/ModulesPage.php:1623
 msgid "OAuth 2.0 Client Secret from the same credential"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1621
+#: src/Admin/ModulesPage.php:1624
 msgid "Enable Facebook login"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1625
 msgid "Facebook App ID"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1622
+#: src/Admin/ModulesPage.php:1625
 msgid "From Meta for Developers > App Dashboard > Settings > Basic"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1623
+#: src/Admin/ModulesPage.php:1626
 msgid "Facebook App Secret"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1623
+#: src/Admin/ModulesPage.php:1626
 msgid "App Secret from the same page"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1624
+#: src/Admin/ModulesPage.php:1627
 msgid "Auto-register new users"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1624
+#: src/Admin/ModulesPage.php:1627
 msgid "Create WooCommerce accounts automatically on first social login"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1629
+#: src/Admin/ModulesPage.php:1632
 msgid "Product Authors"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1630
+#: src/Admin/ModulesPage.php:1633
 msgid "Custom taxonomy for product authors/creators. Adds author names on product pages and archives with Schema.org Person markup. Ideal for bookstores and publishers."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1639
+#: src/Admin/ModulesPage.php:1642
 #: src/Service/ExpertReviewService.php:56
 #: src/Service/ExpertReviewService.php:189
 msgid "Expert Reviews"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1640
+#: src/Admin/ModulesPage.php:1643
 msgid "Custom post type for editorial product reviews. Link expert reviews to products with ratings (1-10), verdicts, and Schema.org markup for SEO."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1645
+#: src/Admin/ModulesPage.php:1648
 msgid "Manage reviews"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1651
+#: src/Admin/ModulesPage.php:1654
 msgid "Social Proof Notifications"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1652
+#: src/Admin/ModulesPage.php:1655
 msgid "Floating purchase notifications showing recent orders (\"Jan from Warszawa just bought...\"). Privacy-aware, AJAX-loaded, configurable position and timing."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1658
+#: src/Admin/ModulesPage.php:1661
 msgid "Interval between popups (seconds)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1658
+#: src/Admin/ModulesPage.php:1661
 msgid "Time between showing consecutive notifications. Recommended: 6-12"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1659
+#: src/Admin/ModulesPage.php:1662
 msgid "Display duration (seconds)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1659
+#: src/Admin/ModulesPage.php:1662
 msgid "How long each notification stays visible. Recommended: 4-6"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1661
+#: src/Admin/ModulesPage.php:1664
 msgid "Anonymize customer names"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1661
+#: src/Admin/ModulesPage.php:1664
 msgid "Shows \"J. from Warszawa\" instead of full names. Recommended for GDPR"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1662
+#: src/Admin/ModulesPage.php:1665
 msgid "Hide on mobile devices"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1662
+#: src/Admin/ModulesPage.php:1665
 msgid "Disable on small screens to avoid obstructing content"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1667
+#: src/Admin/ModulesPage.php:1670
 msgid "Product Q&A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1668
+#: src/Admin/ModulesPage.php:1671
 msgid "Amazon-style questions and answers on product pages. Customers ask, logged-in users answer. Admin email notifications, answer voting, and Schema.org QAPage markup when a product has exactly one answered question."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1677
+#: src/Admin/ModulesPage.php:1680
 msgid "Trust Badges"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1678
+#: src/Admin/ModulesPage.php:1681
 msgid "Trust signals on product, cart, and checkout pages (classic and block): secure payment, fast delivery, returns, quality guarantee. You choose the pages they appear on. Pure CSS + inline SVG for zero performance impact."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1685
+#: src/Admin/ModulesPage.php:1688
 msgid "Show on cart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1686
+#: src/Admin/ModulesPage.php:1689
 msgid "Show on checkout"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1691
+#: src/Admin/ModulesPage.php:1694
 msgid "Live Cart Sidebar"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1692
+#: src/Admin/ModulesPage.php:1695
 msgid "Slide-in cart drawer that opens when a product is added to cart. Shows cart items, subtotal, free shipping progress bar, and quick checkout link. No page reload needed."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1698
+#: src/Admin/ModulesPage.php:1701
 msgid "Auto-open on add to cart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1699
+#: src/Admin/ModulesPage.php:1702
 msgid "Show subtotal"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1700
+#: src/Admin/ModulesPage.php:1703
 msgid "Show free shipping progress"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1701
+#: src/Admin/ModulesPage.php:1704
 msgid "Free shipping threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1701
+#: src/Admin/ModulesPage.php:1704
 msgid "Set to 0 to disable progress bar"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1702
+#: src/Admin/ModulesPage.php:1705
 msgid "Panel position"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1702
+#: src/Admin/ModulesPage.php:1705
 msgid "Right"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1702
+#: src/Admin/ModulesPage.php:1705
 msgid "Left"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1703
+#: src/Admin/ModulesPage.php:1706
 msgid "Show background overlay"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1708
+#: src/Admin/ModulesPage.php:1711
 msgid "Price History Chart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1709
+#: src/Admin/ModulesPage.php:1712
 msgid "Visual SVG sparkline showing price trends over 30/90/180 days on product pages. Uses Omnibus price data. Shows lowest/highest prices. Increases trust and Omnibus transparency."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1718
 msgid "History period (days)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1715
+#: src/Admin/ModulesPage.php:1718
 msgid "Show price data from the last N days. Options: 30, 90, or 180"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1716
+#: src/Admin/ModulesPage.php:1719
 msgid "Show min/max prices"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1717
+#: src/Admin/ModulesPage.php:1720
 msgid "Line color"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1717
+#: src/Admin/ModulesPage.php:1720
 msgid "CSS hex color for the chart line, e.g. #0369a1"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1722
+#: src/Admin/ModulesPage.php:1725
 #: src/Service/OrderExportService.php:38
 #: src/Service/OrderExportService.php:39
 #: src/Service/OrderExportService.php:92
 msgid "Order Export"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1723
+#: src/Admin/ModulesPage.php:1726
 msgid "Export WooCommerce orders to CSV with configurable fields, date range and status filters. 30+ exportable fields including products, customer data, and coupons."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1728
+#: src/Admin/ModulesPage.php:1731
 msgid "Export orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1734
+#: src/Admin/ModulesPage.php:1737
 #: src/Service/FaqService.php:52
 #: src/Service/FaqService.php:53
 #: src/Service/FaqService.php:58
 msgid "FAQ"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1735
+#: src/Admin/ModulesPage.php:1738
 msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1740
+#: src/Admin/ModulesPage.php:1743
 msgid "Manage FAQ"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1746
+#: src/Admin/ModulesPage.php:1749
 #: src/Service/CustomCheckoutFieldsService.php:721
 msgid "Custom Checkout Fields"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1747
+#: src/Admin/ModulesPage.php:1750
 msgid "Add, modify and reorder checkout fields. Supports text, textarea, select, checkbox, radio, number, email, date and phone types. Fields appear in admin, emails and My Account."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1748
+#: src/Admin/ModulesPage.php:1751
 msgid "On the block checkout, number, email, date and phone fields show as plain text fields, and display conditions (set in code, there is no screen for them) apply on the classic checkout only."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1753
+#: src/Admin/ModulesPage.php:1756
 msgid "Manage fields"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1763
+#: src/Admin/ModulesPage.php:1766
 #: src/Admin/PageCompliancePage.php:45
 #: src/Admin/PageCompliancePage.php:46
 #: src/Admin/PageCompliancePage.php:56
 msgid "Compliance checklist"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1764
+#: src/Admin/ModulesPage.php:1767
 msgid "Adds a Compliance checklist screen under Polski that reads your Privacy Policy and Terms pages and reports which legally expected elements it can find, plus a look at the cookie banner and accessibility. It is a keyword heuristic, not legal advice, and it changes nothing on the storefront."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1773
+#: src/Admin/ModulesPage.php:1776
 msgid "Business identification block"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1774
+#: src/Admin/ModulesPage.php:1777
 msgid "Publishes the seller details from the setup wizard (name, address, NIP, e-mail, phone) as the [polski_business_info] shortcode and a Gutenberg block, for the footer identification Polish consumer law expects. Off by default: it prints your company data wherever you place it."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1783
+#: src/Admin/ModulesPage.php:1786
 msgid "Complaint form template"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1784
+#: src/Admin/ModulesPage.php:1787
 msgid "A printable complaint form (formularz reklamacyjny) following the usual UOKiK layout, with the seller section filled from the setup wizard. Available as the [polski_complaint_template] shortcode, and as an admin preview with an HTML download. A generic template, not legal advice. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1793
+#: src/Admin/ModulesPage.php:1796
 msgid "Copyright and image credits"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1794
+#: src/Admin/ModulesPage.php:1797
 msgid "Adds the [polski_copyright] and [polski_image_credit] shortcodes and a Copyright notice block. The year defaults to the current one and the owner to your company name from the setup wizard. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1803
+#: src/Admin/ModulesPage.php:1806
 msgid "SBOM (software bill of materials)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1804
+#: src/Admin/ModulesPage.php:1807
 msgid "Adds an SBOM screen, reachable from Reports and tools, that generates a CycloneDX 1.4 JSON list of the PHP (Composer) packages shipped with the plugin (bundled JavaScript libraries are not listed yet) for a security audit or a Cyber Resilience Act file. Admin only, nothing is sent anywhere. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1813
+#: src/Admin/ModulesPage.php:1816
 msgid "RODO training documents"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1814
+#: src/Admin/ModulesPage.php:1817
 msgid "Adds a GDPR training screen, reachable from Reports and tools, with three printable documents pre-filled with your shop data: a training logbook, a summary of the RODO principles, and a data breach playbook with the 24 hour internal and 72 hour UODO deadlines. Starter templates, not legal advice. Off by default."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1964
+#: src/Admin/ModulesPage.php:1967
 msgid "Search modules by name or description…"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1965
+#: src/Admin/ModulesPage.php:1968
 msgid "Search modules by name or description"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1968
+#: src/Admin/ModulesPage.php:1971
 msgid "Sort"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1970
+#: src/Admin/ModulesPage.php:1973
 msgid "Grouped (default)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1971
+#: src/Admin/ModulesPage.php:1974
 msgid "Name (A, Z)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1972
+#: src/Admin/ModulesPage.php:1975
 msgid "Enabled first"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:1979
+#: src/Admin/ModulesPage.php:1982
 #: src/Service/StockExportService.php:415
 msgid "Name"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2016
+#: src/Admin/ModulesPage.php:2019
 msgid "No modules match your search."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2030
+#: src/Admin/ModulesPage.php:2033
 msgid "Beta"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2075
+#: src/Admin/ModulesPage.php:2078
 msgid "Help"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2122
+#. translators: %s: module name
+#: src/Admin/ModulesPage.php:2097
+#, php-format
+msgid "Enable %s"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:2127
 msgid "Enable this module to use this."
 msgstr ""
 
 #. translators: %s: module name
-#: src/Admin/ModulesPage.php:2145
+#: src/Admin/ModulesPage.php:2150
 #, php-format
 msgid "Edit %s settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2148
+#: src/Admin/ModulesPage.php:2153
 msgid "Edit settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2158
-#: src/Admin/ModulesPage.php:2159
+#: src/Admin/ModulesPage.php:2163
+#: src/Admin/ModulesPage.php:2164
 msgid "Open documentation"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2192
+#: src/Admin/ModulesPage.php:2197
 msgid "Save"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2304
+#: src/Admin/ModulesPage.php:2317
 msgid "No global product attributes exist yet. Create them under Products > Attributes."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2323
-#: src/Admin/ModulesPage.php:2342
+#: src/Admin/ModulesPage.php:2336
+#: src/Admin/ModulesPage.php:2355
 msgid "none"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2428
+#: src/Admin/ModulesPage.php:2441
 msgid "Add snippet"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2457
+#: src/Admin/ModulesPage.php:2470
 msgid "Head"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2458
+#: src/Admin/ModulesPage.php:2471
 msgid "Footer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2471
+#: src/Admin/ModulesPage.php:2484
 msgid "<script>...</script> or inline JS"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2477
-#: src/Admin/ModulesPage.php:2562
+#: src/Admin/ModulesPage.php:2490
+#: src/Admin/ModulesPage.php:2575
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2507
+#: src/Admin/ModulesPage.php:2520
 msgid "Add trigger"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2530
+#: src/Admin/ModulesPage.php:2543
 msgid "Event name (e.g. cta_click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2537
+#: src/Admin/ModulesPage.php:2550
 msgid "URL contains"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2538
+#: src/Admin/ModulesPage.php:2551
 msgid "Click on selector"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2551
+#: src/Admin/ModulesPage.php:2564
 msgid "URL fragment (for URL contains)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2556
+#: src/Admin/ModulesPage.php:2569
 msgid "CSS selector (for click)"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2704
+#: src/Admin/ModulesPage.php:2717
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2711
-#: src/Admin/ModulesPage.php:2727
+#: src/Admin/ModulesPage.php:2724
+#: src/Admin/ModulesPage.php:2740
 msgid "Invalid request."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2995
-#: src/Admin/ModulesPage.php:3043
+#: src/Admin/ModulesPage.php:3012
+#: src/Admin/ModulesPage.php:3060
 msgid "Legal & Compliance"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2997
+#: src/Admin/ModulesPage.php:3014
 msgid "Tax & Pricing"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:2999
+#: src/Admin/ModulesPage.php:3016
 msgid "Checkout & Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3001
+#: src/Admin/ModulesPage.php:3018
 msgid "Content & Trust"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3003
-#: src/Admin/ModulesPage.php:3053
+#: src/Admin/ModulesPage.php:3020
+#: src/Admin/ModulesPage.php:3070
 msgid "Advanced & Tools"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3005
+#: src/Admin/ModulesPage.php:3022
 #: src/Admin/WithdrawalsAdminPage.php:399
 #: src/Enum/WithdrawalExemptionReason.php:47
 #: src/Service/DSAService.php:210
@@ -6912,134 +6954,134 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3018
+#: src/Admin/ModulesPage.php:3035
 msgid "Prices and Display"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3020
+#: src/Admin/ModulesPage.php:3037
 msgid "Prices and Omnibus"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3022
+#: src/Admin/ModulesPage.php:3039
 msgid "Checkout and Orders"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3028
+#: src/Admin/ModulesPage.php:3045
 msgid "Stock & Cart"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3030
+#: src/Admin/ModulesPage.php:3047
 msgid "Merchandising"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3032
+#: src/Admin/ModulesPage.php:3049
 #: src/AIFeed/LlmsTxtService.php:209
 msgid "Storefront"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3034
+#: src/Admin/ModulesPage.php:3051
 msgid "Product Information"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3036
+#: src/Admin/ModulesPage.php:3053
 msgid "Customer Account"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3038
+#: src/Admin/ModulesPage.php:3055
 msgid "Sales and B2B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3041
+#: src/Admin/ModulesPage.php:3058
 msgid "Consumer Rights"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3045
+#: src/Admin/ModulesPage.php:3062
 msgid "Tools"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3049
+#: src/Admin/ModulesPage.php:3066
 msgid "SEO & Optimization"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3051
+#: src/Admin/ModulesPage.php:3068
 msgid "Integrations"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3126
+#: src/Admin/ModulesPage.php:3143
 msgid "Could not save module state. Please try again."
 msgstr ""
 
 #. translators: %d: configured number of days
-#: src/Admin/ModulesPage.php:3149
+#: src/Admin/ModulesPage.php:3166
 #, php-format
 msgid "The period is %d days. Art. 6a(2) Directive 98/6/EC requires a window of at least 30 days. Keep a shorter one only where national law allows it."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3164
+#: src/Admin/ModulesPage.php:3181
 msgid "Compatible Omnibus Extension A"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3165
+#: src/Admin/ModulesPage.php:3182
 msgid "Compatible Omnibus Extension B"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3176
+#: src/Admin/ModulesPage.php:3193
 msgid "detected, data synchronized"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3192
+#: src/Admin/ModulesPage.php:3209
 msgid "No external Omnibus plugin is installed. Polski uses the built-in price tracking system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3194
+#: src/Admin/ModulesPage.php:3211
 msgid "External plugin detected. Polski uses its data instead of the built-in system."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3214
+#: src/Admin/ModulesPage.php:3231
 msgid "OSS observer service is unavailable."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3221
+#: src/Admin/ModulesPage.php:3238
 msgid "The One Stop Shop plugin is not installed. Install it to start observing the €10,000 intra-EU B2C threshold automatically."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3227
+#: src/Admin/ModulesPage.php:3244
 msgid "Install One Stop Shop"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3232
+#: src/Admin/ModulesPage.php:3249
 msgid "You need the install_plugins capability to install it from here."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3241
+#: src/Admin/ModulesPage.php:3258
 msgid "One Stop Shop plugin detected."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3245
+#: src/Admin/ModulesPage.php:3262
 msgid "OSS procedure"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3247
+#: src/Admin/ModulesPage.php:3264
 msgid "enabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3248
+#: src/Admin/ModulesPage.php:3265
 msgid "disabled"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3252
+#: src/Admin/ModulesPage.php:3269
 msgid "Auto observer"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3254
+#: src/Admin/ModulesPage.php:3271
 msgid "watching threshold"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3255
+#: src/Admin/ModulesPage.php:3272
 msgid "off"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:3260
+#: src/Admin/ModulesPage.php:3277
 msgid "Open OSS settings"
 msgstr ""
 
@@ -10411,30 +10453,30 @@ msgid "Signature:"
 msgstr ""
 
 #. translators: %s: embed provider name, e.g. YouTube
-#: src/Service/ConsentManagerService.php:292
+#: src/Service/ConsentManagerService.php:372
 #, php-format
 msgid "Content blocked (%s)"
 msgstr ""
 
 #. translators: %s: embed provider name
-#: src/Service/ConsentManagerService.php:297
+#: src/Service/ConsentManagerService.php:377
 #, php-format
 msgid "To view this %s content, please accept marketing cookies or unlock it once below."
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:300
+#: src/Service/ConsentManagerService.php:380
 msgid "Load once"
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:301
+#: src/Service/ConsentManagerService.php:381
 msgid "Always allow"
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:575
+#: src/Service/ConsentManagerService.php:655
 msgid "Consent settings"
 msgstr ""
 
-#: src/Service/ConsentManagerService.php:619
+#: src/Service/ConsentManagerService.php:699
 msgid "Cookie settings"
 msgstr ""
 
