@@ -20,6 +20,7 @@ final class KSeFReadyService implements HasHooks
         // Block checkout (the WooCommerce default) never fires the classic hook.
         add_action('woocommerce_store_api_checkout_order_processed', [$this, 'detectKSeFRequired'], 20, 1);
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'renderKSeFStatus']);
+        add_action('polski/order/tax_id_changed', [$this, 'detectKSeFRequired']);
         add_filter('manage_edit-shop_order_columns', [$this, 'addOrderColumn'], 20);
         add_action('manage_shop_order_posts_custom_column', [$this, 'renderOrderColumn'], 10, 2);
         // HPOS support.
@@ -50,7 +51,13 @@ final class KSeFReadyService implements HasHooks
             $nip = $order->get_meta('_polski_billing_nip', true);
         }
 
-        $required = $this->autoDetectNip() && ! empty($nip);
+        $required = match ($this->invoiceTrigger()) {
+            // Every order gets an invoice in KSeF, consumers included.
+            'all' => true,
+            // A VAT ID, or the customer ticked "I need a VAT invoice".
+            'request' => ! empty($nip) || $this->invoiceRequested($order),
+            default => $this->autoDetectNip() && ! empty($nip),
+        };
 
         /** @var bool $required Filterable KSeF requirement. */
         $required = (bool) apply_filters('polski/ksef/is_required', $required, $order);
@@ -62,6 +69,27 @@ final class KSeFReadyService implements HasHooks
             /** Fires when an order is ready for KSeF invoicing. */
             do_action('polski/ksef/invoice_ready', $order);
         }
+    }
+
+    /** Which orders need a KSeF invoice: 'nip' (a VAT ID, default), 'request' or 'all'. */
+    private function invoiceTrigger(): string
+    {
+        $settings = get_option('polski_ksef', []);
+        $trigger = is_array($settings) ? (string) ($settings['invoice_trigger'] ?? 'nip') : 'nip';
+
+        return in_array($trigger, ['nip', 'request', 'all'], true) ? $trigger : 'nip';
+    }
+
+    private function invoiceRequested(\WC_Order $order): bool
+    {
+        foreach (['_polski_needs_invoice', '_wc_other/polski/needs_invoice'] as $key) {
+            $value = $order->get_meta($key, true);
+            if ($value === 'yes' || $value === '1' || $value === true || $value === 1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

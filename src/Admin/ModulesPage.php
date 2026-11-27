@@ -1258,6 +1258,11 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_ksef|auto_detect_nip', 'label' => __('Automatically detect based on NIP', 'polski'), 'type' => 'checkbox', 'default' => true],
+                    ['key' => 'polski_ksef|invoice_trigger', 'label' => __('Orders that need a KSeF invoice', 'polski'), 'type' => 'select', 'default' => 'nip', 'options' => [
+                        'nip' => __('With a VAT ID (NIP)', 'polski'),
+                        'request' => __('With a VAT ID, or when the customer asks for an invoice', 'polski'),
+                        'all' => __('Every order, consumers included', 'polski'),
+                    ], 'hint' => __('"When the customer asks" reads the "I need a VAT invoice" box of the B2B checkout module.', 'polski')],
                 ],
             ],
             [

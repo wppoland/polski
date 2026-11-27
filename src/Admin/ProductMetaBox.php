@@ -175,6 +175,12 @@ final class ProductMetaBox implements HasHooks
             'desc_tip' => true,
         ]);
 
+        woocommerce_wp_checkbox([
+            'id' => '_polski_mpp',
+            'label' => __('Split payment (MPP)', 'polski'),
+            'description' => __('Goods or services from annex 15 to the VAT Act. A business invoice over 15 000 zł with this product then says "mechanizm podzielonej płatności".', 'polski'),
+        ]);
+
         echo '</div>';
 
         // --- Badge Section ---
@@ -715,6 +721,7 @@ final class ProductMetaBox implements HasHooks
             \Polski\Service\DeliveryEstimateService::META_LEAD_DAYS => 'string',
             '_polski_withdrawal_exempt' => 'checkbox',
             '_polski_gtu_code' => 'string',
+            '_polski_mpp' => 'checkbox',
             '_polski_badge_text' => 'string',
             '_polski_badge_style' => 'string',
             '_polski_badge_secondary_text' => 'string',

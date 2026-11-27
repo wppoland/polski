@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.53.0
+Stable tag: 1.54.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -403,6 +403,11 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.54.0 =
+* Added: split payment (MPP). Mark annex 15 products under Polski > Invoicing on the product; a business invoice over 15 000 zł in PLN with such a product carries "mechanizm podzielonej płatności", the order screen says so, and Polski PRO 1.40 files it to KSeF (P_18A). Filter `polski/mpp/applies`.
+* Added: the buyer's NIP can be corrected on the order screen (phone orders, typos). It is normalised, checked, kept in step in every place it is stored, and the KSeF and split payment flags are worked out again (action `polski/order/tax_id_changed`).
+* Added: KSeF module setting "Orders that need a KSeF invoice": with a VAT ID (as before), with a VAT ID or when the customer asks for an invoice, or every order.
+
 = 1.53.0 =
 * Changed: Consent Manager is out of beta. Code pasted per category (analytics, marketing, preferences) runs only after that consent, as in Cookie Notice; <noscript> pixels are left out.
 * Improved: accessibility of the admin screens (axe, WCAG 2 A and AA): module switches have names, the enabled and disabled labels and the report cards meet contrast, and reports of switched-off modules fold away.
@@ -607,11 +612,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 * Added: Borlabs-style Content Blocker for third-party media embeds (YouTube, Vimeo, Google Maps, OpenStreetMap, SoundCloud) with placeholder opt-in and dynamic runtime unblocking when marketing consent is granted.
 * Added: Swiss UID (CHE) VAT number format validation and SOAP integration for cross-border DACH trade.
 * Fixed: Omnibus archive price cache key alignment between windowed lookup and cache warmer invalidation.
-
-= 1.41.4 =
-* Added: native administrator email notification ("New withdrawal declaration (Admin)") registered in WooCommerce > Settings > Emails, alerting the shop whenever a customer files a return.
-* Fixed: guest withdrawal lookup form now auto-detects pages with the [polski_withdrawal_lookup] shortcode even when unselected in settings, wraps magic link emails in WooCommerce HTML styling with proper From headers, and provides feedback if an order is not eligible.
-* Fixed: guest order lookup now supports sequential order number plugins and trims hash/whitespace prefixes.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),

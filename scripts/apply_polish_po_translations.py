@@ -13,6 +13,16 @@ PO_PATH = ROOT / "languages" / "polski-pl_PL.po"
 # Singular: msgid -> msgstr (Polish). msgid already in Polish uses identical msgstr.
 SINGULAR: dict[str, str] = {
     "od {price}": "od {price}",
+    "Split payment (MPP):": "Podzielona płatność (MPP):",
+    "the invoice carries \"mechanizm podzielonej płatności\" (annex 15 goods, over 15 000 zł, business buyer).": "faktura ma adnotację \"mechanizm podzielonej płatności\" (towary z załącznika 15, ponad 15 000 zł, nabywca firma).",
+    "Split payment (MPP)": "Podzielona płatność (MPP)",
+    "Goods or services from annex 15 to the VAT Act. A business invoice over 15 000 zł with this product then says \"mechanizm podzielonej płatności\".": "Towar lub usługa z załącznika 15 do ustawy o VAT. Faktura dla firmy powyżej 15 000 zł z tym produktem dostaje adnotację \"mechanizm podzielonej płatności\".",
+    "The tax ID %s is not a valid Polish NIP or EU VAT number. It was saved as entered; check it before issuing an invoice.": "Numer %s nie jest poprawnym NIP-em ani numerem VAT UE. Zapisano go tak, jak wpisano; sprawdź go przed wystawieniem faktury.",
+    "Orders that need a KSeF invoice": "Zamówienia wymagające faktury w KSeF",
+    "With a VAT ID (NIP)": "Z NIP-em",
+    "With a VAT ID, or when the customer asks for an invoice": "Z NIP-em albo gdy klient prosi o fakturę",
+    "Every order, consumers included": "Każde zamówienie, także konsumentów",
+    "\"When the customer asks\" reads the \"I need a VAT invoice\" box of the B2B checkout module.": "\"Gdy klient prosi\" odczytuje pole \"Potrzebuję faktury VAT\" z modułu zamówień B2B.",
     "A cookie-consent banner with consent categories and Google Consent Mode v2. Scripts wait for the matching category: Polski's own tags, the code you paste below for each category, known trackers loaded by other plugins (Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Clarity and, without Consent Mode, Google Analytics and Ads), and scripts you mark with data-polski-consent. YouTube, Vimeo, Maps and SoundCloud embeds in content show a placeholder until consent. Visitors can change their choice with the Cookie settings button. Records each decision for your audit trail. Provides tools, not legal advice.": "Baner zgód na cookies z kategoriami zgód i Google Consent Mode v2. Skrypty czekają na zgodę w swojej kategorii: tagi Polskiego, kod wklejony niżej dla każdej kategorii, znane trackery ładowane przez inne wtyczki (Meta Pixel, TikTok, LinkedIn, Pinterest, Hotjar, Clarity, a bez Consent Mode także Google Analytics i Ads) oraz skrypty oznaczone data-polski-consent. Filmy YouTube i Vimeo, mapy i SoundCloud w treści pokazują zaślepkę do czasu zgody. Odwiedzający zmienia decyzję przyciskiem Ustawienia cookies. Każda decyzja trafia do rejestru zgód. To narzędzie, nie porada prawna.",
     "Block known trackers": "Blokuj znane trackery",
     "Scripts from Meta, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity and Google Ads that other plugins or the theme enqueue wait for consent. Google Analytics and Tag Manager wait too when Consent Mode is off.": "Skrypty Meta, TikTok, LinkedIn, Pinterest, Hotjar, Microsoft Clarity i Google Ads dodawane przez inne wtyczki lub motyw czekają na zgodę. Google Analytics i Tag Manager też czekają, gdy Consent Mode jest wyłączony.",
