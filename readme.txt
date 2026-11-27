@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.51.0
+Stable tag: 1.52.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -403,6 +403,10 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 == Changelog ==
 
+= 1.52.0 =
+* Improved: Polski > Settings has one tab bar for module settings and extension settings screens (filter `polski/admin/settings_tabs`); Polski PRO adds Invoices and KSeF there. Extension screens can stay in the menu through `polski/admin/menu_keep`.
+* Changed: Custom checkout fields and Order export moved from the WooCommerce menu to Polski (listed under Reports & Tools > More screens). Their addresses do not change.
+
 = 1.51.0 =
 * Improved: the Polski menu keeps Dashboard, Modules, Reports & Tools and Settings (plus the quote and GPSR lists). The other screens (compliance checklist, withdrawal and JPK reports) are listed under Reports & Tools > More screens and keep their addresses.
 * Improved: on the Settings tabs, switched-off modules fold under one line; a link to one of them opens it.
@@ -606,10 +610,6 @@ Admin-panel feedback and deactivation-form information are stored locally in Wor
 
 = 1.41.3 =
 * Security (low): the [polski_withdrawal_form order_id=N] shortcode showed any order's number, date and withdrawal eligibility to whoever opened the page, so anyone able to place a shortcode (a contributor, or a comment or form that renders shortcodes) could read other customers' orders by number. It now shows the order only to its owner or a shop manager, and everyone else gets the same answer as for an order that does not exist. The product shortcodes (unit price, GPSR, Omnibus price and the rest) also rendered draft, private and password-protected products when given product=N; they now render only what the visitor could already see.
-
-= 1.41.2 =
-* Fixed: the withdrawal form lost its "Step 1. Choose the items to withdraw from" heading as soon as the settings were saved once. The settings default said "Order items", so saving wrote that over the template's heading; both defaults now match the form.
-* Fixed: the KSeF badge on the orders list stayed amber for an invoice KSeF had accepted. Polski PRO records an accepted invoice as "accepted", and the badge only turned green for "sent"; it is green for both now.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
