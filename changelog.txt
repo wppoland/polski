@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.50.3 =
+* Readme: consent checkboxes on the block checkout, the early-service and age (18+) consents, and when the VAT ID (NIP) lookup connects to GUS REGON are described as the plugin does them. No code change.
+
 = 1.50.2 =
 * Plugins list shows shortcuts to the main Polski screens: modules, settings, reports, and withdrawals, returns and checkout fields when their module is on.
 
