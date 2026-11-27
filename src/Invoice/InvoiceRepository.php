@@ -130,7 +130,10 @@ final class InvoiceRepository
          *
          * @param int $id Invoice id in wp_polski_invoices.
          */
-        do_action('polski/ksef/invoice_ready_to_send', $id);
+        // With Polski PRO active, PRO issues the invoices that go to KSeF; two binding invoices for one sale must not be filed.
+        if (! class_exists('Polski\\Pro\\ProPlugin')) {
+            do_action('polski/ksef/invoice_ready_to_send', $id);
+        }
     }
 
     /**

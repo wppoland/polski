@@ -68,7 +68,6 @@ return [
         '_polski_gpsr_preset',
         '_polski_gpsr_profile',
         '_polski_invoice_request',
-        '_polski_ksef_status',
         '_polski_loyalty_points',
         '_polski_loyalty_user',
         '_polski_points_awarded',

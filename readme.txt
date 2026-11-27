@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.56.0
+Stable tag: 1.56.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -417,6 +417,10 @@ Admin feedback and deactivation answers stay in WordPress.
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.56.1 =
+* Fixed: deactivating Polski clears the KSeF queue and the daily offline digest like its other scheduled jobs; uninstalling Polski PRO no longer removes the KSeF status stored on orders (Polski owns it since 1.56).
+* Fixed: with Polski PRO active, invoices from the free Invoices module are not sent to KSeF automatically, so one sale cannot end up with two invoices in KSeF.
 
 = 1.56.0 =
 * Added: KSeF 2.0 sending, moved here from Polski PRO because it is a legal duty. Under Polski > Settings > KSeF: your KSeF certificate and key, test or production, sending by hand or automatically, consumer invoices outside KSeF if you choose. Invoices go as FA(3), validated against the official schema first; the order screen shows the status, the KSeF number and the UPO; Tools > Site Health checks the NIP, the certificate and the connection. Offline24 and outage mode with an Offline certificate, technical correction, and the KSeF QR codes on the invoice.
