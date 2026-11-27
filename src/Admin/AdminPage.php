@@ -410,19 +410,11 @@ final class AdminPage implements Bootable, HasHooks
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings have been saved.', 'polski') . '</p></div>';
         }
 
-        echo '<nav class="nav-tab-wrapper" style="margin-top:12px;">';
+        $links = [];
         foreach ($tabs as $bucketKey => $tab) {
-            printf(
-                '<a href="%s" class="nav-tab%s">%s</a>',
-                esc_url(add_query_arg(
-                    ['page' => 'polski-settings', 'bucket' => $bucketKey],
-                    admin_url('admin.php'),
-                )),
-                $bucketKey === $active ? ' nav-tab-active' : '',
-                esc_html($tab['label']),
-            );
+            $links[$bucketKey] = ['label' => (string) $tab['label'], 'url' => add_query_arg(['page' => 'polski-settings', 'bucket' => $bucketKey], admin_url('admin.php'))];
         }
-        echo '</nav>';
+        self::settingsNav($active, $links);
 
         echo '<p style="margin:12px 0;"><a href="' . esc_url(admin_url('admin.php?page=' . self::PAGE_SLUG . '&tab=modules')) . '">&larr; ' . esc_html__('Back to modules', 'polski') . '</a></p>';
 
@@ -1443,10 +1435,50 @@ final class AdminPage implements Bootable, HasHooks
         wp_set_script_translations('polski-admin', 'polski', \Polski\PLUGIN_DIR . '/languages');
     }
 
+    /**
+     * Settings screens of extensions (Polski PRO invoices, KSeF) shown as tabs next to the module
+     * settings: slug => label. Their pages call settingsNav() to show the same tabs.
+     *
+     * @return array<string, string>
+     */
+    public static function extraSettingsTabs(): array
+    {
+        /** @var array<string, string> $tabs */
+        $tabs = apply_filters('polski/admin/settings_tabs', []);
+
+        return is_array($tabs) ? $tabs : [];
+    }
+
+    /**
+     * The Settings tab bar: module buckets, then extension settings screens.
+     *
+     * @param array<string, array{label: string, url: string}> $buckets Empty: read from the modules.
+     */
+    public static function settingsNav(string $active, array $buckets = []): void
+    {
+        if ($buckets === []) {
+            $modulesPage = \Polski\Plugin::instance()->container()->get(ModulesPage::class);
+            foreach ($modulesPage->getBucketedModules() as $key => $bucket) {
+                if (array_filter($bucket['modules'], static fn (array $m): bool => ! empty($m['settings'])) !== []) {
+                    $buckets[$key] = ['label' => (string) $bucket['label'], 'url' => add_query_arg(['page' => 'polski-settings', 'bucket' => $key], admin_url('admin.php'))];
+                }
+            }
+        }
+        foreach (self::extraSettingsTabs() as $slug => $label) {
+            $buckets[$slug] = ['label' => $label, 'url' => admin_url('admin.php?page=' . $slug)];
+        }
+
+        echo '<nav class="nav-tab-wrapper" style="margin-top:12px;">';
+        foreach ($buckets as $key => $tab) {
+            printf('<a href="%s" class="nav-tab%s">%s</a>', esc_url($tab['url']), $key === $active ? ' nav-tab-active' : '', esc_html($tab['label']));
+        }
+        echo '</nav>';
+    }
+
     /** Menu items that stay in the Polski menu; every other screen is listed under Reports & Tools. */
     private const MENU_KEEP = [self::PAGE_SLUG, self::PAGE_SLUG . '-modules', self::PAGE_SLUG . '-reports', 'polski-settings', 'polski-quotes', 'polski-gpsr-profiles', 'polski-pro'];
 
-    /** @var list<array{title: string, slug: string}> Screens taken out of the menu, kept reachable. */
+    /** @var list<array{title: string, slug: string, settings: bool}> Screens taken out of the menu, kept reachable. */
     private array $tucked = [];
 
     /**
@@ -1458,12 +1490,16 @@ final class AdminPage implements Bootable, HasHooks
     {
         global $submenu;
 
+        /** @var list<string> $keep Extensions add their main screens (e.g. the invoice list). */
+        $keep = (array) apply_filters('polski/admin/menu_keep', self::MENU_KEEP);
+        $settingsTabs = array_keys(self::extraSettingsTabs());
+
         foreach ((array) ($submenu[self::PAGE_SLUG] ?? []) as $item) {
             $slug = (string) ($item[2] ?? '');
-            if (in_array($slug, self::MENU_KEEP, true) || str_contains($slug, '.php') || str_contains($slug, 'account') || str_contains($slug, 'pricing')) {
+            if (in_array($slug, $keep, true) || str_contains($slug, '.php') || str_contains($slug, 'account') || str_contains($slug, 'pricing')) {
                 continue;
             }
-            $this->tucked[] = ['title' => trim(wp_strip_all_tags((string) $item[0])), 'slug' => $slug];
+            $this->tucked[] = ['title' => trim(wp_strip_all_tags((string) $item[0])), 'slug' => $slug, 'settings' => in_array($slug, $settingsTabs, true)];
         }
     }
 
@@ -1479,21 +1515,28 @@ final class AdminPage implements Bootable, HasHooks
         echo '<style>' . implode(',', $selectors) . '{display:none}</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- slugs escaped above.
     }
 
-    /** A tucked screen highlights Reports & Tools in the menu. */
+    /** A tucked screen highlights Settings (settings tabs) or Reports & Tools in the menu. */
     public function highlightTucked(?string $file): ?string
     {
         global $plugin_page;
 
-        return is_string($plugin_page) && in_array($plugin_page, array_column($this->tucked, 'slug'), true) ? self::PAGE_SLUG . '-reports' : $file;
+        foreach ($this->tucked as $item) {
+            if ($item['slug'] === $plugin_page) {
+                return $item['settings'] ? 'polski-settings' : self::PAGE_SLUG . '-reports';
+            }
+        }
+
+        return $file;
     }
 
     private function renderTuckedTools(): void
     {
-        if ($this->tucked === []) {
+        $screens = array_filter($this->tucked, static fn (array $item): bool => ! $item['settings']);
+        if ($screens === []) {
             return;
         }
         echo '<h2 style="margin-top:28px;">' . esc_html__('More screens', 'polski') . '</h2><ul style="columns:2;max-width:640px;">';
-        foreach ($this->tucked as $item) {
+        foreach ($screens as $item) {
             echo '<li><a href="' . esc_url(admin_url('admin.php?page=' . $item['slug'])) . '">' . esc_html($item['title']) . '</a></li>';
         }
         echo '</ul>';

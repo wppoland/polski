@@ -688,7 +688,7 @@ final class CustomCheckoutFieldsService implements HasHooks
     public function addAdminPage(): void
     {
         add_submenu_page(
-            'woocommerce',
+            'polski',
             __('Checkout Fields', 'polski'),
             __('Checkout Fields', 'polski'),
             'manage_woocommerce',

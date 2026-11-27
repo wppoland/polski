@@ -34,7 +34,7 @@ final class OrderExportService implements HasHooks
     public function addAdminPage(): void
     {
         add_submenu_page(
-            'woocommerce',
+            'polski',
             __('Order Export', 'polski'),
             __('Order Export', 'polski'),
             'view_woocommerce_reports',

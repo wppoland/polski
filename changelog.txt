@@ -2,6 +2,10 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.52.0 =
+* Improved: Polski > Settings has one tab bar for module settings and extension settings screens (filter `polski/admin/settings_tabs`); Polski PRO adds Invoices and KSeF there. Extension screens can stay in the menu through `polski/admin/menu_keep`.
+* Changed: Custom checkout fields and Order export moved from the WooCommerce menu to Polski (listed under Reports & Tools > More screens). Their addresses do not change.
+
 = 1.51.0 =
 * Improved: the Polski menu keeps Dashboard, Modules, Reports & Tools and Settings (plus the quote and GPSR lists). The other screens (compliance checklist, withdrawal and JPK reports) are listed under Reports & Tools > More screens and keep their addresses.
 * Improved: on the Settings tabs, switched-off modules fold under one line; a link to one of them opens it.
