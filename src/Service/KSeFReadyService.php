@@ -146,33 +146,42 @@ final class KSeFReadyService implements HasHooks
         $now = current_datetime();
         $result = ['ksef_month' => 0.0, 'ksef_exceeded' => (string) get_option('polski_ksef_limit_exceeded', ''), 'register_year' => 0.0, 'estimated' => false];
 
-        $orders = function_exists('wc_get_orders') ? wc_get_orders([
-            'status' => self::LIMIT_STATUSES,
-            'date_created' => $now->format('Y') . '-01-01...' . $now->format('Y-m-d'),
-            'type' => 'shop_order',
-            'limit' => -1,
-        ]) : [];
-
         $month = $now->format('Y-m');
-        foreach (is_array($orders) ? $orders : [] as $order) {
-            if (! $order instanceof \WC_Order) {
-                continue;
+        // Batches of 200, so a shop with a year of history does not load every order at once.
+        for ($page = 1; function_exists('wc_get_orders'); $page++) {
+            $orders = wc_get_orders([
+                'status' => self::LIMIT_STATUSES,
+                'date_created' => $now->format('Y') . '-01-01...' . $now->format('Y-m-d'),
+                'type' => 'shop_order',
+                'limit' => 200,
+                'paged' => $page,
+            ]);
+            if (! is_array($orders) || $orders === []) {
+                break;
             }
-            $rate = self::plnRate($order->get_currency());
-            if ($rate === null) {
-                continue;
-            }
-            $result['estimated'] = $result['estimated'] || $rate !== 1.0;
-            $gross = ((float) $order->get_total() - (float) $order->get_total_refunded()) * $rate;
-            $net = $gross - ((float) $order->get_total_tax() - (float) $order->get_total_tax_refunded()) * $rate;
-            $created = $order->get_date_created();
-
-            if (self::orderNip($order) !== '') {
-                if ($created !== null && $created->date('Y-m') === $month) {
-                    $result['ksef_month'] += $gross;
+            foreach ($orders as $order) {
+                if (! $order instanceof \WC_Order) {
+                    continue;
                 }
-            } else {
-                $result['register_year'] += $net;
+                $rate = self::plnRate($order->get_currency());
+                if ($rate === null) {
+                    continue;
+                }
+                $result['estimated'] = $result['estimated'] || $rate !== 1.0;
+                $gross = ((float) $order->get_total() - (float) $order->get_total_refunded()) * $rate;
+                $net = $gross - ((float) $order->get_total_tax() - (float) $order->get_total_tax_refunded()) * $rate;
+                $created = $order->get_date_created();
+
+                if (self::orderNip($order) !== '') {
+                    if ($created !== null && $created->date('Y-m') === $month) {
+                        $result['ksef_month'] += $gross;
+                    }
+                } else {
+                    $result['register_year'] += $net;
+                }
+            }
+            if (count($orders) < 200) {
+                break;
             }
         }
 
