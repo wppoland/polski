@@ -69,8 +69,12 @@ final class NipLookupService implements HasHooks
         add_action('woocommerce_after_save_address_validation', [$this, 'validateSavedAddress'], 10, 4);
         add_action('woocommerce_customer_save_address', [$this, 'syncCustomerAfterAddressSave'], 20, 2);
 
-        // Display NIP in admin order billing section.
+        // Display NIP in admin order billing section, and let the merchant correct it there
+        // (phone orders, typos); a change re-runs whatever depends on the tax ID.
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'displayNipInAdmin']);
+        add_filter('woocommerce_admin_billing_fields', [$this, 'addAdminNipField'], 10, 2);
+        add_action('woocommerce_process_shop_order_meta', [$this, 'saveAdminNip'], 60, 1);
+        add_action('admin_notices', [$this, 'adminNipNotice']);
 
         // AJAX lookup endpoint.
         add_action('wp_ajax_polski_nip_lookup', [$this, 'handleNipLookup']);
@@ -499,6 +503,69 @@ final class NipLookupService implements HasHooks
 
         foreach (['billing_nip', '_billing_nip', '_polski_billing_nip', '_wc_other/polski/nip'] as $key) {
             $customer->update_meta_data($key, $clean);
+        }
+    }
+
+    /**
+     * The NIP as an editable billing field on the order screen. Orders from the
+     * block checkout already show WooCommerce's own field for it, so they get no
+     * second one.
+     *
+     * @param array<string, array<string, mixed>> $fields
+     * @return array<string, array<string, mixed>>
+     */
+    public function addAdminNipField(array $fields, mixed $order = null): array
+    {
+        if ($order instanceof \WC_Order && (string) $order->get_meta('_wc_other/polski/nip', true) !== '') {
+            return $fields;
+        }
+        $fields['nip'] = ['label' => $this->fieldLabel(), 'show' => false];
+
+        return $fields;
+    }
+
+    /** After the order screen is saved: normalise the NIP, keep every copy in step, re-run what depends on it. */
+    public function saveAdminNip(int $orderId): void
+    {
+        $order = wc_get_order($orderId);
+        if (! $order instanceof \WC_Order) {
+            return;
+        }
+        $block = (string) $order->get_meta('_wc_other/polski/nip', true);
+        $raw = $block !== '' ? $block : (string) $order->get_meta('_billing_nip', true);
+        $clean = $this->normalizeTaxId($raw);
+        $before = (string) $order->get_meta('_polski_billing_nip', true);
+
+        if ($clean !== '' && ! $this->isAcceptedTaxId($clean)) {
+            set_transient('polski_admin_nip_invalid_' . get_current_user_id(), $clean, 60);
+        }
+
+        foreach (['_billing_nip', '_polski_billing_nip'] as $key) {
+            $order->update_meta_data($key, $clean);
+        }
+        if ($block !== '') {
+            $order->update_meta_data('_wc_other/polski/nip', $clean);
+        }
+        $order->save();
+
+        if ($clean !== $before) {
+            /**
+             * Fires when the buyer's tax ID changed on the order screen.
+             *
+             * @param \WC_Order $order
+             */
+            do_action('polski/order/tax_id_changed', $order);
+        }
+    }
+
+    public function adminNipNotice(): void
+    {
+        $key = 'polski_admin_nip_invalid_' . get_current_user_id();
+        $nip = get_transient($key);
+        if (is_string($nip) && $nip !== '') {
+            delete_transient($key);
+            /* translators: %s: the tax ID as entered */
+            echo '<div class="notice notice-warning"><p>' . esc_html(sprintf(__('The tax ID %s is not a valid Polish NIP or EU VAT number. It was saved as entered; check it before issuing an invoice.', 'polski'), $nip)) . '</p></div>';
         }
     }
 

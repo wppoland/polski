@@ -2,6 +2,11 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.54.0 =
+* Added: split payment (MPP). Mark annex 15 products under Polski > Invoicing on the product; a business invoice over 15 000 zł in PLN with such a product carries "mechanizm podzielonej płatności", the order screen says so, and Polski PRO 1.40 files it to KSeF (P_18A). Filter `polski/mpp/applies`.
+* Added: the buyer's NIP can be corrected on the order screen (phone orders, typos). It is normalised, checked, kept in step in every place it is stored, and the KSeF and split payment flags are worked out again (action `polski/order/tax_id_changed`).
+* Added: KSeF module setting "Orders that need a KSeF invoice": with a VAT ID (as before), with a VAT ID or when the customer asks for an invoice, or every order.
+
 = 1.53.0 =
 * Changed: Consent Manager is out of beta. Code pasted per category (analytics, marketing, preferences) runs only after that consent, as in Cookie Notice; <noscript> pixels are left out.
 * Improved: accessibility of the admin screens (axe, WCAG 2 A and AA): module switches have names, the enabled and disabled labels and the report cards meet contrast, and reports of switched-off modules fold away.
