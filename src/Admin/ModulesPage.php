@@ -177,7 +177,7 @@ final class ModulesPage implements HasHooks
             'live_cart' => __('Adds a slide-in cart drawer. When enabled, a sidebar opens for the shopper whenever they add a product, showing cart items, the subtotal, a free-shipping progress bar, and a quick link to checkout.', 'polski'),
             'price_history_chart' => __('Shows how a product\'s price has changed over time. When enabled, shoppers see a small SVG price-trend chart on product pages covering the last 30, 90, or 180 days, using your Omnibus price data.', 'polski'),
             'order_export' => __('Exports your WooCommerce orders to a spreadsheet file. When enabled, you get an admin tool to download orders as CSV, choosing which fields to include and filtering by date range and order status.', 'polski'),
-            'faq' => __('Lets you create a frequently-asked-questions section. When enabled, you can add FAQs with categories and place them on any page as an accordion shortcode, with Schema.org FAQPage data that helps with SEO rich snippets.', 'polski'),
+            'faq' => __('Lets you create a frequently-asked-questions section. When enabled, you can add FAQs with categories and place them on any page as an accordion shortcode, with Schema.org FAQPage structured data that matches the visible questions.', 'polski'),
             'custom_checkout_fields' => __('Lets you customise your checkout form. When enabled, you can add, edit, reorder, and choose types for checkout fields, and the collected values appear in the admin order, customer emails, and My Account.', 'polski'),
         ];
     }
@@ -1743,7 +1743,7 @@ final class ModulesPage implements HasHooks
             [
                 'id' => 'faq',
                 'name' => __('FAQ', 'polski'),
-                'description' => __('FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets.', 'polski'),
+                'description' => __('FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data that matches the visible questions.', 'polski'),
                 'group' => 'Storefront',
                 'enabled' => false,
                 'icon' => 'dashicons-editor-help',

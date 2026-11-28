@@ -2907,7 +2907,11 @@ msgid "Exports your WooCommerce orders to a spreadsheet file. When enabled, you 
 msgstr ""
 
 #: src/Admin/ModulesPage.php:180
-msgid "Lets you create a frequently-asked-questions section. When enabled, you can add FAQs with categories and place them on any page as an accordion shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
+msgid ""
+"Lets you create a frequently-asked-questions section. When enabled, you can "
+"add FAQs with categories and place them on any page as an accordion "
+"shortcode, with Schema.org FAQPage structured data that matches the visible "
+"questions."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:181
@@ -6800,7 +6804,10 @@ msgid "FAQ"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1746
-msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
+msgid ""
+"FAQ custom post type with categories and accordion shortcode [polski_faq]. "
+"Includes Schema.org FAQPage structured data that matches the visible "
+"questions."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1751

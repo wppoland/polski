@@ -3021,7 +3021,8 @@ msgstr ""
 msgid ""
 "Lets you create a frequently-asked-questions section. When enabled, you can "
 "add FAQs with categories and place them on any page as an accordion "
-"shortcode, with Schema.org FAQPage data that helps with SEO rich snippets."
+"shortcode, with Schema.org FAQPage structured data that matches the visible "
+"questions."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:178
@@ -6786,12 +6787,12 @@ msgstr "Preguntas frecuentes"
 #: src/Admin/ModulesPage.php:1644
 msgid ""
 "FAQ custom post type with categories and accordion shortcode [polski_faq]. "
-"Includes Schema.org FAQPage structured data for SEO rich snippets."
+"Includes Schema.org FAQPage structured data that matches the visible "
+"questions."
 msgstr ""
 "Tipo de publicación personalizada de preguntas frecuentes con categorías y "
-"código abreviado de acordeón [polski_faq]. Incluye datos estructurados de la "
-"página de preguntas frecuentes de Schema.org para fragmentos enriquecidos de "
-"SEO."
+"código abreviado de acordeón [polski_faq]. Incluye datos estructurados de "
+"Schema.org FAQPage que coinciden con las preguntas visibles."
 
 #: src/Admin/ModulesPage.php:1649
 msgid "Manage FAQ"

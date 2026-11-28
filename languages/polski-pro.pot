@@ -4769,7 +4769,10 @@ msgid "FAQ"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1156
-msgid "FAQ custom post type with categories and accordion shortcode [polski_faq]. Includes Schema.org FAQPage structured data for SEO rich snippets."
+msgid ""
+"FAQ custom post type with categories and accordion shortcode [polski_faq]. "
+"Includes Schema.org FAQPage structured data that matches the visible "
+"questions."
 msgstr ""
 
 #: src/Admin/ModulesPage.php:1161
