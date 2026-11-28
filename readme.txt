@@ -216,6 +216,10 @@ Yes. Polski sends invoices to KSeF 2.0 as FA(3) documents, signed in with your K
 
 Yes. The Invoices module adds an Issue invoice button to the order screen and numbers VAT invoices per year (FV/1/2026). The customer opens the invoice from My Account and prints it from the browser. It can go to KSeF; it does not replace an accounting system. Invoices as PDF files, UBL/PEPPOL XML and the JPK_FA report come with Polski PRO.
 
+= Where is the chosen InPost locker stored? =
+
+On the order, as order meta: `_polski_inpost_locker` (the locker code, e.g. KRA01M) and `_polski_inpost_locker_address`. Order tools such as BaseLinker or Apilo can map their pickup-point field to these keys. Run only one InPost locker plugin at a time: two would each add a locker field and store the choice under different keys.
+
 = Does Polski work with the WooCommerce block checkout? =
 
 Yes. Polski supports the classic checkout as well as the block-based WooCommerce cart and checkout.
