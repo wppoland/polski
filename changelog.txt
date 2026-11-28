@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.57.0 =
+* Added: corrective invoices in the free Invoices module. A refund of invoiced items gets a corrective invoice (its own series, KOR by default) with the parties of the corrected invoice, the refunded lines as negative amounts, the reason and the corrected invoice's number and KSeF number. With KSeF sending on, it goes to KSeF after that invoice. An amount-only refund is noted on the order instead.
+
 = 1.56.1 =
 * Fixed: deactivating Polski clears the KSeF queue and the daily offline digest like its other scheduled jobs; uninstalling Polski PRO no longer removes the KSeF status stored on orders (Polski owns it since 1.56).
 * Fixed: with Polski PRO active, invoices from the free Invoices module are not sent to KSeF automatically, so one sale cannot end up with two invoices in KSeF.

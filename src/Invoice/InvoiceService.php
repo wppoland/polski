@@ -34,6 +34,12 @@ final class InvoiceService
         return $this->repository->findByOrder($orderId);
     }
 
+    /** @return list<Invoice> */
+    public function corrections(int $orderId): array
+    {
+        return $this->repository->correctionsByOrder($orderId);
+    }
+
     public function findById(int $id): ?Invoice
     {
         return $this->repository->find($id);
@@ -98,6 +104,74 @@ final class InvoiceService
          * @param WC_Order $order   The order it was issued for.
          */
         do_action('polski/invoice/issued', $invoice, $order);
+
+        return $invoice;
+    }
+
+    /**
+     * Issue the corrective invoice for a refund (art. 106j), or return the one
+     * already issued for it. Null when the order has no invoice from this
+     * module, or the refund lists no items (an amount-only refund cannot be
+     * split into lines), which is noted on the order.
+     */
+    public function issueCorrection(WC_Order $order, \WC_Order_Refund $refund): ?Invoice
+    {
+        $existing = $this->repository->findByRefund($refund->get_id());
+        if (null !== $existing) {
+            return $existing;
+        }
+
+        $original = $this->repository->findByOrder($order->get_id());
+        if (null === $original) {
+            return null;
+        }
+
+        $snapshot = $this->builder->buildCorrection($order, $refund, $original->snapshot, $original->number, $original->issuedAt);
+        $lines    = is_array($snapshot['lines'] ?? null) ? $snapshot['lines'] : [];
+        if ([] === $lines) {
+            $order->add_order_note(__('No corrective invoice was issued: the refund is an amount only, with no items. Refund by item quantities, or correct the invoice by hand.', 'polski'));
+            $order->save();
+
+            return null;
+        }
+
+        $settings = get_option(self::SETTINGS, []);
+        $settings = is_array($settings) ? $settings : [];
+        $net      = array_sum(array_map(static fn (array $l): float => (float) $l['net'], $lines));
+        $tax      = array_sum(array_map(static fn (array $l): float => (float) $l['tax'], $lines));
+        $totals   = new InvoiceTotals($order->get_currency(), $net, $tax, $net + $tax);
+
+        $invoice = $this->repository->issue(
+            $order->get_id(),
+            InvoiceNumber::sanitiseSeries((string) ($settings['correction_series'] ?? 'KOR')),
+            $snapshot,
+            $totals,
+            gmdate('Y-m-d'),
+            null,
+        );
+
+        $this->repository->mirrorForKSeF($invoice->id, $order, $snapshot, $totals, [
+            'original_invoice_id' => $original->id,
+            'source_refund_id'    => $refund->get_id(),
+            'correction_reason'   => (string) ($snapshot['correction']['reason'] ?? ''),
+        ]);
+
+        $order->add_order_note(sprintf(
+            /* translators: 1: corrective invoice number, 2: corrected invoice number */
+            __('Corrective invoice %1$s issued for invoice %2$s.', 'polski'),
+            $invoice->number,
+            $original->number,
+        ));
+        $order->save();
+
+        /**
+         * Fires once a corrective invoice has been issued for a refund.
+         *
+         * @param Invoice          $invoice  The corrective invoice.
+         * @param Invoice          $original The invoice it corrects.
+         * @param \WC_Order_Refund $refund   The refund it documents.
+         */
+        do_action('polski/invoice/corrected', $invoice, $original, $refund);
 
         return $invoice;
     }

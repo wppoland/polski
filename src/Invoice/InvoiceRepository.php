@@ -82,8 +82,9 @@ final class InvoiceRepository
      * to KSeF. The snapshot stays the document; these are a copy of it.
      *
      * @param array<string, mixed> $snapshot
+     * @param array{original_invoice_id?: int, source_refund_id?: int, correction_reason?: string} $correction Set for a corrective invoice.
      */
-    public function mirrorForKSeF(int $id, \WC_Order $order, array $snapshot, InvoiceTotals $totals): void
+    public function mirrorForKSeF(int $id, \WC_Order $order, array $snapshot, InvoiceTotals $totals, array $correction = []): void
     {
         global $wpdb;
 
@@ -95,7 +96,7 @@ final class InvoiceRepository
         $wpdb->update(
             $this->table(),
             [
-                'type'           => 'faktura_vat',
+                'type'           => [] === $correction ? 'faktura_vat' : 'korygujaca',
                 'status'         => 'issued',
                 'nip_seller'     => substr((string) preg_replace('/\D/', '', (string) ($seller['nip'] ?? '')), 0, 20) ?: null,
                 'nip_buyer'      => substr(trim((string) ($buyer['nip'] ?? '')), 0, 20) ?: null,
@@ -106,7 +107,12 @@ final class InvoiceRepository
                 'buyer_address'  => substr($address, 0, 255),
                 'buyer_city'     => substr($order->get_billing_city(), 0, 120),
                 'buyer_postcode' => substr($order->get_billing_postcode(), 0, 20),
-            ],
+            ] + ([] === $correction ? [] : [
+                'original_invoice_id' => (int) ($correction['original_invoice_id'] ?? 0) ?: null,
+                'source_refund_id'    => (int) ($correction['source_refund_id'] ?? 0) ?: null,
+                'correction_reason'   => (string) ($correction['correction_reason'] ?? ''),
+                'correction_kind'     => 'refund',
+            ]),
             ['id' => $id],
         );
 
@@ -173,6 +179,40 @@ final class InvoiceRepository
     }
 
     /**
+     * Corrective invoices of an order, oldest first.
+     *
+     * @return list<Invoice>
+     */
+    public function correctionsByOrder(int $orderId): array
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $rows = $wpdb->get_results($wpdb->prepare(
+            'SELECT * FROM %i WHERE order_id = %d AND source_refund_id > 0 ORDER BY id ASC',
+            $this->table(),
+            $orderId,
+        ), ARRAY_A);
+
+        return array_values(array_map(static fn (array $row): Invoice => Invoice::fromRow($row), is_array($rows) ? $rows : []));
+    }
+
+    /** The corrective invoice already issued for a refund, or null. */
+    public function findByRefund(int $refundId): ?Invoice
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
+        $row = $wpdb->get_row($wpdb->prepare(
+            'SELECT * FROM %i WHERE source_refund_id = %d LIMIT 1',
+            $this->table(),
+            $refundId,
+        ), ARRAY_A);
+
+        return is_array($row) ? Invoice::fromRow($row) : null;
+    }
+
+    /**
      * The invoice issued for an order, or null if there is none.
      */
     public function findByOrder(int $orderId): ?Invoice
@@ -181,7 +221,8 @@ final class InvoiceRepository
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin table, prepared statement below.
         $row = $wpdb->get_row($wpdb->prepare(
-            'SELECT * FROM %i WHERE order_id = %d ORDER BY id ASC LIMIT 1',
+            // The VAT invoice, never one of its corrections (issued later, on the same order).
+            "SELECT * FROM %i WHERE order_id = %d AND (source_refund_id IS NULL OR source_refund_id = 0) ORDER BY id ASC LIMIT 1",
             $this->table(),
             $orderId,
         ), ARRAY_A);

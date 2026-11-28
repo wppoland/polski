@@ -31,11 +31,12 @@ final class InvoiceDataBuilder
      */
     public function build(WC_Order $order): array
     {
+        $lines = $this->lines($order);
         $data = [
             'seller'  => $this->seller(),
             'buyer'   => $this->buyer($order),
-            'lines'   => $this->lines($order),
-            'vat'     => $this->vatBreakdown($order),
+            'lines'   => $lines,
+            'vat'     => $this->vatBreakdown($lines),
             'payment' => [
                 'method'   => $order->get_payment_method_title(),
                 'order'    => $order->get_order_number(),
@@ -44,18 +45,8 @@ final class InvoiceDataBuilder
             // Statutory annotations required on the face of the invoice, e.g. the
             // margin scheme wording from art. 106e ust. 3 ustawy o VAT. Filled by
             // listeners; the template prints whatever it is given.
-            'annotations' => [],
+            'annotations' => $this->annotations($lines),
         ];
-
-        $general = get_option('polski_general', []);
-        if (is_array($general) && ! empty($general['cash_accounting'])) {
-            $data['annotations'][] = 'metoda kasowa';
-        }
-        $bases = array_unique(array_filter(array_column($data['lines'], 'exemption')));
-        if ($bases !== []) {
-            /* translators: %s: legal basis of the VAT exemption */
-            $data['annotations'][] = sprintf(__('VAT exemption: %s', 'polski'), implode('; ', $bases));
-        }
 
         /**
          * Filters the invoice payload before it is snapshotted.
@@ -67,6 +58,67 @@ final class InvoiceDataBuilder
          * @param WC_Order             $order The order being invoiced.
          */
         return (array) apply_filters('polski/invoice/data', $data, $order);
+    }
+
+    /**
+     * The corrective invoice for a refund (art. 106j): the parties as the
+     * corrected invoice froze them, and the refunded lines as negative amounts.
+     * Empty lines when the refund carries no items (an amount-only refund),
+     * which cannot be turned into correction lines.
+     *
+     * @param array<string, mixed> $original Snapshot of the corrected invoice.
+     * @return array<string, mixed>
+     */
+    public function buildCorrection(WC_Order $order, \WC_Order_Refund $refund, array $original, string $originalNumber, string $originalIssued): array
+    {
+        // A refund that only restocked an item leaves a line of zeros; it corrects nothing.
+        $lines = array_values(array_filter(
+            $this->lines($refund),
+            static fn (array $l): bool => 0.0 !== round((float) $l['net'], 2) || 0.0 !== round((float) $l['tax'], 2),
+        ));
+        $reason = trim($refund->get_reason());
+        $data = [
+            'seller'      => is_array($original['seller'] ?? null) ? $original['seller'] : $this->seller(),
+            'buyer'       => is_array($original['buyer'] ?? null) ? $original['buyer'] : $this->buyer($order),
+            'lines'       => $lines,
+            'vat'         => $this->vatBreakdown($lines),
+            'payment'     => [
+                'method'   => $order->get_payment_method_title(),
+                'order'    => $order->get_order_number(),
+                'currency' => $order->get_currency(),
+            ],
+            'annotations' => $this->annotations($lines),
+            'correction'  => [
+                'of'     => $originalNumber,
+                'issued' => substr($originalIssued, 0, 10),
+                'reason' => '' !== $reason ? $reason : __('Return of goods or services', 'polski'),
+            ],
+        ];
+
+        /** This filter is documented in build(). */
+        return (array) apply_filters('polski/invoice/data', $data, $order);
+    }
+
+    /**
+     * Statutory wording on the face of the invoice: cash accounting and the exemption basis of exempt lines.
+     *
+     * @param list<array<string, mixed>> $lines
+     * @return list<string>
+     */
+    private function annotations(array $lines): array
+    {
+        $annotations = [];
+        $general = get_option('polski_general', []);
+        if (is_array($general) && ! empty($general['cash_accounting'])) {
+            $annotations[] = 'metoda kasowa';
+        }
+        $bases = array_unique(array_filter(array_column($lines, 'exemption')));
+        if ($bases !== []) {
+            /* translators: %s: legal basis of the VAT exemption */
+            $annotations[] = sprintf(__('VAT exemption: %s', 'polski'), implode('; ', $bases));
+        }
+
+        return $annotations;
     }
 
     /**
@@ -155,7 +207,7 @@ final class InvoiceDataBuilder
      *
      * @return list<array<string, mixed>>
      */
-    private function lines(WC_Order $order): array
+    private function lines(\WC_Abstract_Order $order): array
     {
         $lines = [];
 
@@ -227,13 +279,14 @@ final class InvoiceDataBuilder
     /**
      * Net and VAT summed per rate, which is the part an accountant reads first.
      *
+     * @param list<array<string, mixed>> $lines
      * @return list<array<string, mixed>>
      */
-    private function vatBreakdown(WC_Order $order): array
+    private function vatBreakdown(array $lines): array
     {
         $byRate = [];
 
-        foreach ($this->lines($order) as $line) {
+        foreach ($lines as $line) {
             $exempt = '' !== (string) ($line['exemption'] ?? '');
             $rate = (string) $line['rate'] . ($exempt ? 'zw' : '');
 
