@@ -78,6 +78,7 @@ final class InvoiceRepository
             && str_contains((string) $this->wpdb->last_error, 'uniq_series_seq_year')
         ) {
             $wpdb = $this->wpdb;
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- one-off: drops the free numbering key that blocks a PRO-numbered row, see above.
             $wpdb->query($wpdb->prepare('ALTER TABLE %i DROP INDEX uniq_series_seq_year', $this->invoiceTable()));
             $this->wpdb->insert($this->invoiceTable(), $row);
         }

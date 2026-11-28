@@ -224,6 +224,7 @@ final class InvoiceDataBuilder
                 'product_id' => (int) ($item->get_variation_id() ?: $item->get_product_id()),
                 'gtu'      => Gtu::forProduct((int) $item->get_product_id()),
                 'quantity' => (float) $item->get_quantity(),
+                'unit'     => self::unitFor((int) ($item->get_variation_id() ?: $item->get_product_id())),
                 'net'      => $net,
                 'tax'      => $tax,
                 'gross'    => $net + $tax,
@@ -302,6 +303,30 @@ final class InvoiceDataBuilder
         krsort($byRate, SORT_NUMERIC);
 
         return array_values($byRate);
+    }
+
+    /**
+     * The measure a product's quantity is invoiced in (art. 106e ust. 1 pkt 8):
+     * the product's field, else its parent's, else "szt.". Also read by Polski PRO.
+     */
+    public static function unitFor(int $productId): string
+    {
+        $unit = '';
+        if ($productId > 0) {
+            $unit = trim((string) get_post_meta($productId, '_polski_invoice_unit', true));
+            $parent = '' === $unit ? (int) wp_get_post_parent_id($productId) : 0;
+            if ($parent > 0) {
+                $unit = trim((string) get_post_meta($parent, '_polski_invoice_unit', true));
+            }
+        }
+
+        /**
+         * Filters the unit a product is invoiced in.
+         *
+         * @param string $unit      The unit, "szt." when none is set.
+         * @param int    $productId Product or variation id.
+         */
+        return (string) apply_filters('polski/invoice/unit', '' !== $unit ? mb_substr($unit, 0, 20) : 'szt.', $productId);
     }
 
     /** The exemption basis entered on the product (or its parent for a variation), '' when none. */

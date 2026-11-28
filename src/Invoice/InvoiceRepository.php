@@ -123,6 +123,7 @@ final class InvoiceRepository
                 'product_id'  => (int) ($line['product_id'] ?? 0) ?: null,
                 'name'        => substr((string) ($line['name'] ?? ''), 0, 255),
                 'quantity'    => (float) ($line['quantity'] ?? 1),
+                'unit'        => (string) ($line['unit'] ?? 'szt.'),
                 'net_price'   => (float) ($line['net'] ?? 0),
                 'vat_rate'    => (float) ($line['rate'] ?? 0),
                 'vat_amount'  => (float) ($line['tax'] ?? 0),

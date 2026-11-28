@@ -2,6 +2,9 @@
 
 Complete release history for Polski for WooCommerce. The plugin page on WordPress.org lists only the most recent releases; this file keeps the full record.
 
+= 1.58.0 =
+* Added: the unit a product is invoiced in (Polski > Invoicing: kg, m, l, usł. and so on, szt. when empty), as art. 106e ust. 1 pkt 8 asks. It is printed next to the quantity on the invoice and sent to KSeF (P_8A); Polski PRO 2.0.2 uses it on its PDF too. Filter `polski/invoice/unit`.
+
 = 1.57.0 =
 * Added: corrective invoices in the free Invoices module. A refund of invoiced items gets a corrective invoice (its own series, KOR by default) with the parties of the corrected invoice, the refunded lines as negative amounts, the reason and the corrected invoice's number and KSeF number. With KSeF sending on, it goes to KSeF after that invoice. An amount-only refund is noted on the order instead.
 
