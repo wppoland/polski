@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.58.0
+Stable tag: 1.59.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -417,6 +417,12 @@ Admin feedback and deactivation answers stay in WordPress.
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.59.0 =
+* Added: "Send invoices to KSeF" bulk action on the orders list, for a backlog after an outage or after adding a certificate.
+* Added: "Download XML" in the order's KSeF box: the FA(3) document as sent, or as it would be sent.
+* Added: the KSeF document carries the product SKU (Indeks) and GTIN per line, and the seller's REGON and BDO from the company details in its footer (KRS through the `polski/ksef/registers` filter).
+* Added: "Continue numbering from" (e.g. 120/2026) in the Invoices module, for a shop moving from another invoicing system mid-year.
 
 = 1.58.0 =
 * Added: the unit a product is invoiced in (Polski > Invoicing: kg, m, l, usł. and so on, szt. when empty), as art. 106e ust. 1 pkt 8 asks. It is printed next to the quantity on the invoice and sent to KSeF (P_8A); Polski PRO 2.0.2 uses it on its PDF too. Filter `polski/invoice/unit`.

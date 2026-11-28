@@ -28,7 +28,7 @@ use Polski\KSeF\Repository\InvoiceRepository;
 final class KSeFOrderBox implements HasHooks
 {
     /** @var list<string> admin-post actions, without the polski_pro_ksef_ prefix. */
-    public const ACTIONS = ['send', 'refresh', 'upo', 'correction', 'technical'];
+    public const ACTIONS = ['send', 'refresh', 'upo', 'correction', 'technical', 'xml'];
 
     public function __construct(
         private readonly KSeFSyncService $sync,
@@ -48,6 +48,67 @@ final class KSeFOrderBox implements HasHooks
         foreach (self::ACTIONS as $action) {
             add_action('admin_post_polski_pro_ksef_' . $action, [$this, 'handle' . ucfirst($action)]);
         }
+
+        // Bulk "Send invoices to KSeF" on the orders list (HPOS and the post table), e.g. a backlog after an outage.
+        foreach (['woocommerce_page_wc-orders', 'edit-shop_order'] as $screen) {
+            add_filter('bulk_actions-' . $screen, [$this, 'addBulkAction']);
+            add_filter('handle_bulk_actions-' . $screen, [$this, 'handleBulkAction'], 10, 3);
+        }
+        add_action('admin_notices', [$this, 'renderBulkNotice']);
+    }
+
+    /**
+     * @param array<string, string> $actions
+     * @return array<string, string>
+     */
+    public function addBulkAction(array $actions): array
+    {
+        $settings = get_option('polski_pro_ksef', []);
+        if (is_array($settings) && ! empty($settings['enabled'])) {
+            $actions['polski_ksef_send'] = __('Send invoices to KSeF', 'polski');
+        }
+
+        return $actions;
+    }
+
+    /**
+     * Queues every invoice of the chosen orders that KSeF has not taken yet.
+     *
+     * @param array<int|string> $ids
+     */
+    public function handleBulkAction(string $redirect, string $action, array $ids): string
+    {
+        if ($action !== 'polski_ksef_send' || ! current_user_can('manage_woocommerce')) {
+            return $redirect;
+        }
+
+        $queued = 0;
+        foreach (array_map('intval', $ids) as $orderId) {
+            foreach ($this->repository->findByOrder($orderId) as $invoice) {
+                if ($invoice->type->isAccountingDocument() && ! in_array((string) $invoice->ksefStatus, ['accepted', 'sent', 'submitted', 'queued'], true)
+                    && ($this->sync->queueForSending($invoice->id)['code'] ?? 0) === 202) {
+                    $queued++;
+                }
+            }
+        }
+
+        return add_query_arg('polski_ksef_bulk', $queued, $redirect);
+    }
+
+    public function renderBulkNotice(): void
+    {
+        if (! isset($_GET['polski_ksef_bulk']) || ! current_user_can('manage_woocommerce')) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- a count shown back after the bulk action, nothing is changed.
+            return;
+        }
+        $count = absint($_GET['polski_ksef_bulk']); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- as above.
+        printf(
+            '<div class="notice notice-info is-dismissible"><p>%s</p></div>',
+            esc_html(sprintf(
+                /* translators: %d: number of invoices queued */
+                _n('%d invoice queued for KSeF.', '%d invoices queued for KSeF.', $count, 'polski'),
+                $count,
+            )),
+        );
     }
 
     // --- auto_send ---------------------------------------------------------
@@ -277,6 +338,8 @@ final class KSeFOrderBox implements HasHooks
             $buttons[] = $this->button('technical', $invoice->id, __('Technical correction', 'polski'), __('Send this offline invoice again with the same content, rebuilt, and a reference to the rejected file (KSeF technical correction). Only for technical reasons such as schema or size, not for missing permissions or a change of content.', 'polski'), false, 0, __('Send a technical correction? The invoice is rebuilt with the same content and sent again with a reference to the rejected file. Its QR codes on the PDF are recomputed; KSeF links the old KOD I to the corrected invoice.', 'polski'));
         }
 
+        $buttons[] = $this->button('xml', $invoice->id, __('Download XML', 'polski'), __('The FA(3) document as it goes, or went, to KSeF. For checking the data or sending it to an accountant.', 'polski'));
+
         if ($hasUpo) {
             $buttons[] = $this->button('upo', $invoice->id, __('Download UPO', 'polski'), __('The official receipt (UPO) KSeF issued for this invoice, as XML. Keep it with your records.', 'polski'));
         }
@@ -292,9 +355,8 @@ final class KSeFOrderBox implements HasHooks
             );
         }
 
-        if ($buttons !== []) {
-            echo '<p class="polski-ksef-actions">' . implode(' ', $buttons) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in button().
-        }
+        // Download XML is always there, so the row always shows.
+        echo '<p class="polski-ksef-actions">' . implode(' ', $buttons) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in button().
 
         echo '</div>';
     }
@@ -453,6 +515,30 @@ final class KSeFOrderBox implements HasHooks
         header('Content-Disposition: attachment; filename="' . self::upoFilename($invoice) . '"');
         header('X-Content-Type-Options: nosniff');
         echo $upo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the stored XML, streamed verbatim as a download.
+        exit;
+    }
+
+    public function handleXml(): void
+    {
+        $invoice = $this->authorize('xml');
+        // The file sent (or frozen for an offline invoice) when there is one, else built now.
+        $xml = $this->repository->frozenXml($invoice->id)['xml'] ?? null;
+        if ($xml === null) {
+            try {
+                $xml = $this->sync->documentXml($invoice, $invoice->originalInvoiceId !== null ? $this->repository->findById($invoice->originalInvoiceId) : null);
+            } catch (\InvalidArgumentException $e) {
+                $this->back($invoice, 'error', $e->getMessage());
+            }
+        }
+
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
+        nocache_headers();
+        header('Content-Type: application/xml; charset=utf-8');
+        header('Content-Disposition: attachment; filename="' . sanitize_file_name('FA3-' . $invoice->number . '.xml') . '"');
+        header('X-Content-Type-Options: nosniff');
+        echo $xml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the FA(3) XML, streamed verbatim as a download.
         exit;
     }
 

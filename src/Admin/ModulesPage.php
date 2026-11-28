@@ -480,6 +480,7 @@ final class ModulesPage implements HasHooks
                 'links' => [],
                 'settings' => [
                     ['key' => 'polski_invoices|series', 'label' => __('Number series', 'polski'), 'type' => 'text', 'default' => 'FV', 'hint' => __('Invoices are numbered SERIES/N/YEAR, restarting at 1 each year.', 'polski')],
+                    ['key' => 'polski_invoices|start_number', 'label' => __('Continue numbering from', 'polski'), 'type' => 'text', 'default' => '', 'placeholder' => '120/2026', 'hint' => __('Moving from another invoicing system mid-year: the next number and the year, e.g. 120/2026. Numbering never goes below a number already issued, and starts at 1 again the next year.', 'polski')],
                     ['key' => 'polski_invoices|correction_series', 'label' => __('Correction series', 'polski'), 'type' => 'text', 'default' => 'KOR', 'hint' => __('A refund of invoiced items gets a corrective invoice numbered in this series. With KSeF sending on, it goes to KSeF after the invoice it corrects.', 'polski')],
                     ['key' => 'polski_invoices|due_days', 'label' => __('Payment terms (days)', 'polski'), 'type' => 'number', 'default' => 0, 'hint' => __('0 leaves the due date off the invoice, which suits a shop that is paid before dispatch.', 'polski')],
                 ],

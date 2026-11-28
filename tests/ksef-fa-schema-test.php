@@ -181,6 +181,17 @@ $otherXml = (new FaMapper('Polski Pro 1.2.3', paymentTerms: $terms(['paid' => '2
 check('another gateway validates as PlatnoscInna with its title', $validator->isValid($otherXml) && str_contains($otherXml, '<OpisPlatnosci>PayU (BLIK)</OpisPlatnosci>'), implode("\n", $validator->errors($otherXml)));
 check('without an order there is no Platnosc or WarunkiTransakcji', ! str_contains($plain, '<Platnosc>') && ! str_contains($plain, 'WarunkiTransakcji'));
 
+// 1c. Line identifiers and the seller registers in Stopka.
+$idsXml = (new FaMapper(
+    'Polski Pro 1.2.3',
+    lineIds: static fn (?int $id): array => $id === 5 ? ['sku' => 'BILET-BB', 'gtin' => '5901234123457'] : ['sku' => '', 'gtin' => 'not-a-gtin'],
+    registers: static fn (): array => ['krs' => '0000123456', 'regon' => '541606270', 'bdo' => '000012345'],
+))->toXml(invoice(InvoiceType::FakturaVAT, 'FV/2026/08/1E', [item(1, 'Bilet', 1.0, 150.00, 23.0, 5), item(2, 'Inne', 1.0, 10.00, 23.0, 6)]), $seller, $company);
+check('SKU, GTIN and registers validate', $validator->isValid($idsXml), implode("\n", $validator->errors($idsXml)));
+check('the line carries Indeks and GTIN, a bad GTIN is left out', str_contains($idsXml, '<Indeks>BILET-BB</Indeks>') && str_contains($idsXml, '<GTIN>5901234123457</GTIN>') && substr_count($idsXml, '<GTIN>') === 1);
+check('Stopka lists KRS, REGON and BDO', str_contains($idsXml, '<KRS>0000123456</KRS>') && str_contains($idsXml, '<REGON>541606270</REGON>') && str_contains($idsXml, '<BDO>000012345</BDO>'));
+check('no registers, no Stopka', ! str_contains($plain, '<Stopka>'));
+
 // 2. The same sale to a consumer, who has no tax id at all.
 $toConsumer = $mapper->toXml(
     invoice(InvoiceType::FakturaVAT, 'FV/2026/08/2', [item(1, 'Kubek', 1.0, 40.00, 23.0)]),

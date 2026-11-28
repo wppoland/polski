@@ -102,6 +102,12 @@ final class FaMapper
     /** @var \Closure(Invoice): array{paid: ?string, due: ?string, method: string, title: string, account: string, order: string, ordered: ?string} */
     private readonly \Closure $paymentTerms;
 
+    /** @var \Closure(?int): array{sku: string, gtin: string} */
+    private readonly \Closure $lineIds;
+
+    /** @var \Closure(): array{krs: string, regon: string, bdo: string} */
+    private readonly \Closure $registers;
+
     /** Bases of the exempt lines (art. 43 and the like) of the document being built, when the seller itself charges VAT. */
     private string $lineBases = '';
 
@@ -132,7 +138,11 @@ final class FaMapper
         ?\Closure $lineExemption = null,
         ?\Closure $cashAccounting = null,
         ?\Closure $paymentTerms = null,
+        ?\Closure $lineIds = null,
+        ?\Closure $registers = null,
     ) {
+        $this->lineIds = $lineIds ?? self::productIds(...);
+        $this->registers = $registers ?? self::sellerRegisters(...);
         $this->paymentTerms = $paymentTerms ?? self::orderTerms(...);
         $this->lineExemption = $lineExemption ?? self::productExemption(...);
         $this->cashAccounting = $cashAccounting ?? self::cashAccounting(...);
@@ -326,7 +336,74 @@ final class FaMapper
             $this->child($dom, $zamowienia, 'NrZamowienia', $this->truncate($terms['order'], 256));
         }
 
+        $this->appendStopka($dom, $root);
+
         return $dom->saveXML() ?: '';
+    }
+
+    /** The seller's registers (KRS, REGON, BDO) in Stopka, when any is valid. */
+    private function appendStopka(\DOMDocument $dom, \DOMElement $root): void
+    {
+        $r = ($this->registers)();
+        $krs = preg_match('/^\d{10}$/', $r['krs']) ? $r['krs'] : '';
+        $regon = preg_match('/^(\d{9}|\d{14})$/', $r['regon']) ? $r['regon'] : '';
+        $bdo = preg_match('/^\d{1,9}$/', $r['bdo']) ? $r['bdo'] : '';
+        if ($krs === '' && $regon === '' && $bdo === '') {
+            return;
+        }
+
+        $rejestry = $this->child($dom, $this->child($dom, $root, 'Stopka'), 'Rejestry');
+        foreach (['KRS' => $krs, 'REGON' => $regon, 'BDO' => $bdo] as $name => $value) {
+            if ($value !== '') {
+                $this->child($dom, $rejestry, $name, $value);
+            }
+        }
+    }
+
+    /**
+     * SKU and GTIN of a product (a variation falls back to its parent's): the
+     * WooCommerce GTIN field, else the one Polski stores.
+     *
+     * @return array{sku: string, gtin: string}
+     */
+    public static function productIds(?int $productId): array
+    {
+        $product = $productId !== null && $productId > 0 && function_exists('wc_get_product') ? wc_get_product($productId) : null;
+        if (! $product instanceof \WC_Product) {
+            return ['sku' => '', 'gtin' => ''];
+        }
+        // WooCommerce's own GTIN field (stored as _global_unique_id since 9.2; Polski supports 8.0), else Polski's.
+        $gtin = trim((string) get_post_meta($product->get_id(), '_global_unique_id', true));
+        if ($gtin === '') {
+            $gtin = trim((string) $product->get_meta('_polski_gtin', true));
+        }
+
+        return ['sku' => trim((string) $product->get_sku()), 'gtin' => preg_replace('/\D/', '', $gtin) ?? ''];
+    }
+
+    /**
+     * KRS, REGON and BDO from the company details (KRS through the polski/ksef/registers filter only).
+     *
+     * @return array{krs: string, regon: string, bdo: string}
+     */
+    public static function sellerRegisters(): array
+    {
+        $general = function_exists('get_option') ? get_option('polski_general', []) : [];
+        $general = is_array($general) ? $general : [];
+        $registers = [
+            'krs' => '',
+            'regon' => preg_replace('/\D/', '', (string) ($general['company_regon'] ?? '')) ?? '',
+            'bdo' => preg_replace('/\D/', '', (string) ($general['bdo_number'] ?? '')) ?? '',
+        ];
+
+        /**
+         * Filters the seller registers printed in the KSeF document footer.
+         *
+         * @param array{krs: string, regon: string, bdo: string} $registers
+         */
+        $filtered = function_exists('apply_filters') ? apply_filters('polski/ksef/registers', $registers) : $registers;
+
+        return is_array($filtered) ? array_map('strval', $filtered + $registers) : $registers;
     }
 
     /** TFormaPlatnosci by gateway id prefix; anything else goes as PlatnoscInna with the method title. */
@@ -695,6 +772,15 @@ final class FaMapper
             $this->child($dom, $wiersz, 'P_6A', $supplyDate);
         }
         $this->child($dom, $wiersz, 'P_7', $this->truncate($item->name, 512));
+
+        // The shop's own product code and the barcode, so the buyer's software can match the line.
+        $ids = ($this->lineIds)($item->productId);
+        if ($ids['sku'] !== '') {
+            $this->child($dom, $wiersz, 'Indeks', $this->truncate($ids['sku'], 50));
+        }
+        if (preg_match('/^\d{8,14}$/', $ids['gtin'])) {
+            $this->child($dom, $wiersz, 'GTIN', $ids['gtin']);
+        }
 
         if (trim($item->unit) !== '') {
             $this->child($dom, $wiersz, 'P_8A', $this->truncate($item->unit, 256));
