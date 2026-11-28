@@ -40,6 +40,36 @@ final class InvoiceHooks implements HasHooks
         // Order screen: HPOS and the classic post table use different hooks.
         add_action('woocommerce_admin_order_data_after_order_details', [$this, 'renderOrderPanel']);
         add_filter('woocommerce_my_account_my_orders_actions', [$this, 'addMyAccountAction'], 10, 2);
+
+        // Corrective invoices for refunds. With Polski PRO active, PRO issues the invoices and their corrections.
+        if (! class_exists('Polski\\Pro\\ProPlugin')) {
+            add_action('woocommerce_order_refunded', [$this, 'correctRefund'], 10, 2);
+            // The KSeF box's "Create correction" button for a refund that has none yet.
+            add_filter('polski/ksef/create_correction', [$this, 'correctionForKSeF'], 20, 4);
+        }
+    }
+
+    public function correctRefund(int $orderId, int $refundId): void
+    {
+        $order = wc_get_order($orderId);
+        $refund = wc_get_order($refundId);
+        if ($order instanceof WC_Order && $refund instanceof \WC_Order_Refund) {
+            $this->invoices->issueCorrection($order, $refund);
+        }
+    }
+
+    /** @return \Polski\KSeF\Model\Invoice|null The correction as the KSeF engine reads it. */
+    public function correctionForKSeF(mixed $done, int $originalId, int $orderId, int $refundId): mixed
+    {
+        if (null !== $done) {
+            return $done;
+        }
+        $this->correctRefund($orderId, $refundId);
+        $correction = (new InvoiceRepository())->findByRefund($refundId);
+
+        return null !== $correction
+            ? \Polski\Plugin::instance()->container()->get(\Polski\KSeF\Repository\InvoiceRepository::class)->findById($correction->id)
+            : null;
     }
 
     /**
@@ -62,6 +92,14 @@ final class InvoiceHooks implements HasHooks
                 esc_url($this->viewUrl($invoice)),
                 esc_html($invoice->number),
             );
+            foreach ($this->invoices->corrections($order->get_id()) as $polski_correction) {
+                printf(
+                    '<br>%s <a href="%s" target="_blank" rel="noopener">%s</a>',
+                    esc_html__('Correction:', 'polski'),
+                    esc_url($this->viewUrl($polski_correction)),
+                    esc_html($polski_correction->number),
+                );
+            }
         } else {
             printf(
                 '<a href="%s" class="button">%s</a>',

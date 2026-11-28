@@ -23,6 +23,8 @@ $polski_payment  = is_array($polski_doc['payment'] ?? null) ? $polski_doc['payme
 $polski_currency = (string) ($polski_payment['currency'] ?? 'PLN');
 // An empty VAT summary means the margin scheme: no net or VAT figures anywhere.
 $polski_show_vat = $polski_vat !== [];
+// A corrective invoice (art. 106j) names the invoice it corrects and why.
+$polski_correction = is_array($polski_doc['correction'] ?? null) ? $polski_doc['correction'] : null;
 
 // KSeF number and QR codes once the invoice went to KSeF (or was issued offline).
 $polski_ksef = null;
@@ -30,6 +32,10 @@ if (class_exists(\Polski\KSeF\Repository\InvoiceRepository::class) && \Polski\Pl
     $polski_ksef = \Polski\Plugin::instance()->container()->get(\Polski\KSeF\Repository\InvoiceRepository::class)->findById($invoice->id);
 }
 $polski_ksef_codes = $polski_ksef !== null ? \Polski\KSeF\V2\VerificationLink::codes($polski_ksef) : [];
+$polski_corrected_ksef = '';
+if ($polski_ksef !== null && $polski_ksef->originalInvoiceId !== null) {
+    $polski_corrected_ksef = (string) (\Polski\Plugin::instance()->container()->get(\Polski\KSeF\Repository\InvoiceRepository::class)->findById($polski_ksef->originalInvoiceId)?->ksefReference ?? '');
+}
 
 $polski_money = static function (float $amount) use ($polski_currency): string {
     return number_format_i18n($amount, 2) . ' ' . $polski_currency;
@@ -52,8 +58,24 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 	<div class="polski-invoice__sheet">
 		<header class="polski-invoice__head">
 			<div>
-				<h1 class="polski-invoice__title"><?php esc_html_e('VAT invoice', 'polski'); ?></h1>
+				<h1 class="polski-invoice__title"><?php echo null !== $polski_correction ? esc_html__('Corrective invoice', 'polski') : esc_html__('VAT invoice', 'polski'); ?></h1>
 				<p class="polski-invoice__number"><?php echo esc_html($invoice->number); ?></p>
+				<?php if (null !== $polski_correction) : ?>
+					<p class="polski-invoice__corrects"><?php echo esc_html(sprintf(
+                        /* translators: 1: corrected invoice number, 2: its issue date */
+                        __('Corrects invoice %1$s of %2$s', 'polski'),
+                        (string) ($polski_correction['of'] ?? ''),
+                        (string) ($polski_correction['issued'] ?? ''),
+                    )); ?><?php if (\Polski\KSeF\V2\VerificationLink::isKsefNumber($polski_corrected_ksef)) : ?><br><?php echo esc_html(sprintf(
+                        /* translators: %s: KSeF number of the corrected invoice */
+                        __('KSeF number of the corrected invoice: %s', 'polski'),
+                        $polski_corrected_ksef,
+                    )); ?><?php endif; ?><br><?php echo esc_html(sprintf(
+                        /* translators: %s: reason for the correction */
+                        __('Reason: %s', 'polski'),
+                        (string) ($polski_correction['reason'] ?? ''),
+                    )); ?></p>
+				<?php endif; ?>
 			</div>
 			<dl class="polski-invoice__dates">
 				<div>
@@ -169,7 +191,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 			<?php endforeach; ?>
 
 			<div class="polski-invoice__total">
-				<span><?php esc_html_e('Total due', 'polski'); ?></span>
+				<span><?php echo null !== $polski_correction ? esc_html__('Correction amount', 'polski') : esc_html__('Total due', 'polski'); ?></span>
 				<strong><?php
                 // Sum the lines, not the VAT breakdown. Under the margin scheme
                 // the breakdown is empty by law, and summing it would print a

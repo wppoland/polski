@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.56.1
+Stable tag: 1.57.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -418,6 +418,9 @@ Admin feedback and deactivation answers stay in WordPress.
 
 == Changelog ==
 
+= 1.57.0 =
+* Added: corrective invoices in the free Invoices module. A refund of invoiced items gets a corrective invoice (its own series, KOR by default) with the parties of the corrected invoice, the refunded lines as negative amounts, the reason and the corrected invoice's number and KSeF number. With KSeF sending on, it goes to KSeF after that invoice. An amount-only refund is noted on the order instead.
+
 = 1.56.1 =
 * Fixed: deactivating Polski clears the KSeF queue and the daily offline digest like its other scheduled jobs; uninstalling Polski PRO no longer removes the KSeF status stored on orders (Polski owns it since 1.56).
 * Fixed: with Polski PRO active, invoices from the free Invoices module are not sent to KSeF automatically, so one sale cannot end up with two invoices in KSeF.
@@ -613,15 +616,6 @@ Admin feedback and deactivation answers stay in WordPress.
 = 1.43.1 =
 * Fixed: Omnibus: a product that was already on sale when price history began showed no lowest-price notice (or repeated the sale price). The notice now shows the regular price recorded on the row that opens the sale, which is the price it was reduced from. A product with no history at all still follows the "no history" setting.
 * Docs: The readme Description tab is back under the WordPress.org 2,500-word limit; Getting Started and Configuration moved to Installation, Translations to the FAQ.
-
-= 1.43.0 =
-* Fixed: Withdrawal from the contract (art. 11a Directive 2011/83/EU) is now available for the whole withdrawal period. It used to count 14 days from the order date until the order was completed, so a paid order still in processing after 14 days (slow shipping, a preorder) lost the withdrawal button before the goods arrived. It is now offered from the moment the contract is concluded (order processing or on hold), stays open until the order is completed, and closes 14 days from the date the order was completed, as before; an order that never reaches the countdown status keeps it open. Pending, failed, cancelled and refunded orders no longer offer it.
-* Fixed: The withdrawal statement (My Account form, one-click confirmation and guest form) now shows the customer's name and the e-mail address the confirmation goes to (art. 11a(2)).
-* Fixed: The order button text is no longer written into the settings at activation. The checkout prints the statutory wording in the shop language at runtime, so a shop installed before its language pack arrived no longer shows the English "Order with an obligation to pay". Shops that already have a stored text keep it.
-* Changed: The Privacy Policy checkbox is described as optional (order data rests on GDPR art. 6(1)(b)) and no longer counts towards the checkbox setup score; the Terms and Withdrawal checkboxes are "recommended" rather than "required". Checkbox behaviour and defaults are unchanged.
-* Changed: Omnibus settings warn when the lowest-price period is below 30 days, and the "Today" and "Show current price" options are labelled as not compliant with art. 6a(2) Directive 98/6/EC. Defaults are unchanged.
-* Changed: Legal wording corrected in the site audit, module descriptions and order e-mails: the withdrawal reminder cites art. 9 of Directive 2011/83/EU; the forced-account check no longer cites Directive 2023/2673; security.txt, the incident log and the SBOM are not described as CRA duties for shops; the 2024/825 consumer information is not the harmonised notice or label of Implementing Regulation (EU) 2025/1960; the environmental claim fields and the DSA check say when they apply.
-* Docs: The readme lists every external service the plugin can contact, including the Swiss UID register, all tracking tag providers, the optional AI features, the Google Fonts preconnect, featured video embeds and the webhooks you configure.
 
 Only the most recent releases are listed here. The full history is on the plugin's changelog
 page, [plogins.com/polski/changelog/](https://plogins.com/polski/changelog/),
