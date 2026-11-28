@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Polski for WooCommerce - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/polski\n"
-"POT-Creation-Date: 2026-11-28T08:05:29+00:00\n"
+"POT-Creation-Date: 2026-11-28T08:34:24+00:00\n"
 "PO-Revision-Date: 2026-06-10 16:16:29+0000\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -1071,7 +1071,7 @@ msgid "Unit price"
 msgstr "Jednotková cena"
 
 #: config/defaults.php:446 src/Admin/ModulesPage.php:329
-#: src/Admin/ProductMetaBox.php:129 src/Admin/ProductMetaBox.php:916
+#: src/Admin/ProductMetaBox.php:129 src/Admin/ProductMetaBox.php:925
 #: src/AIFeed/ProductMarkdownBuilder.php:180
 #: src/Block/StoreApi/ProductDataExtension.php:226
 #: src/Service/CompareService.php:562
@@ -1395,7 +1395,7 @@ msgid "Promotional popup"
 msgstr "Promo popup"
 
 #: config/defaults.php:725 src/Admin/CSVImportExport.php:130
-#: src/Admin/ModulesPage.php:684 src/Admin/ProductMetaBox.php:575
+#: src/Admin/ModulesPage.php:684 src/Admin/ProductMetaBox.php:583
 #: src/Block/ProductDataBlocks.php:107
 #: src/Compatibility/Elementor/Widgets/IngredientsWidget.php:16
 #: src/Service/FoodService.php:72
@@ -1425,13 +1425,13 @@ msgstr "Živina"
 msgid "Value"
 msgstr "Hodnota"
 
-#: config/defaults.php:730 src/Admin/ProductMetaBox.php:600
+#: config/defaults.php:730 src/Admin/ProductMetaBox.php:608
 #: src/Service/FoodService.php:301
 msgid "100 g"
 msgstr "100 g"
 
 #: config/defaults.php:731 src/Admin/CSVImportExport.php:133
-#: src/Admin/ProductMetaBox.php:582 src/Block/ProductDataBlocks.php:113
+#: src/Admin/ProductMetaBox.php:590 src/Block/ProductDataBlocks.php:113
 #: src/Compatibility/Elementor/Widgets/NutriScoreWidget.php:16
 #: src/Service/FoodService.php:373
 msgid "Nutri-Score"
@@ -1446,7 +1446,7 @@ msgid "% vol."
 msgstr "% obj."
 
 #: config/defaults.php:734 src/Admin/CSVImportExport.php:135
-#: src/Admin/ModulesPage.php:693 src/Admin/ProductMetaBox.php:637
+#: src/Admin/ModulesPage.php:693 src/Admin/ProductMetaBox.php:645
 #: src/Service/FoodService.php:463
 msgid "Country of origin"
 msgstr "Krajina pôvodu"
@@ -1457,7 +1457,7 @@ msgid "Distributor"
 msgstr "Distribútor"
 
 #: config/defaults.php:736 src/Admin/CSVImportExport.php:136
-#: src/Admin/ProductMetaBox.php:623
+#: src/Admin/ProductMetaBox.php:631
 msgid "Net quantity"
 msgstr "Čistá hmotnosť"
 
@@ -1674,7 +1674,7 @@ msgid "You do not have permission."
 msgstr "Nemáte oprávnenie."
 
 #: src/Admin/AdminPage.php:253 src/Admin/AdminPage.php:254
-#: src/Admin/ProductMetaBox.php:46 src/Admin/ProductMetaBox.php:890
+#: src/Admin/ProductMetaBox.php:46 src/Admin/ProductMetaBox.php:899
 #: src/Block/ModuleBlocks.php:84
 #: src/Service/WithdrawalSiteHealthService.php:183
 #: src/Service/WithdrawalSiteHealthService.php:197
@@ -2406,7 +2406,7 @@ msgid "Unit price unit"
 msgstr "Jednotka jednotkovej ceny"
 
 #: src/Admin/CSVImportExport.php:124 src/Admin/ProductMetaBox.php:82
-#: src/Admin/ProductMetaBox.php:895
+#: src/Admin/ProductMetaBox.php:904
 msgid "Product quantity"
 msgstr "Množstvo produktu"
 
@@ -2419,8 +2419,8 @@ msgstr "ID dodacej lehoty"
 msgid "Responsible person (GPSR)"
 msgstr "Zodpovedná osoba (GPSR)"
 
-#: src/Admin/CSVImportExport.php:127 src/Admin/ProductMetaBox.php:487
-#: src/Admin/ProductMetaBox.php:491
+#: src/Admin/CSVImportExport.php:127 src/Admin/ProductMetaBox.php:495
+#: src/Admin/ProductMetaBox.php:499
 msgid "Power supply"
 msgstr "Napájanie"
 
@@ -2493,15 +2493,15 @@ msgstr "GPSR - Bezpečnostné varovania"
 msgid "GPSR - Safety instructions"
 msgstr "GPSR - Bezpečnostné pokyny"
 
-#: src/Admin/CSVImportExport.php:149 src/Admin/ProductMetaBox.php:422
+#: src/Admin/CSVImportExport.php:149 src/Admin/ProductMetaBox.php:430
 msgid "Guarantee of durability (months)"
 msgstr ""
 
-#: src/Admin/CSVImportExport.php:150 src/Admin/ProductMetaBox.php:431
+#: src/Admin/CSVImportExport.php:150 src/Admin/ProductMetaBox.php:439
 msgid "Free software updates (months)"
 msgstr ""
 
-#: src/Admin/CSVImportExport.php:151 src/Admin/ProductMetaBox.php:440
+#: src/Admin/CSVImportExport.php:151 src/Admin/ProductMetaBox.php:448
 #: src/Service/ConsumerInformationService.php:119
 msgid "Repair information"
 msgstr ""
@@ -2510,7 +2510,7 @@ msgstr ""
 msgid "GTIN / EAN (fallback)"
 msgstr ""
 
-#: src/Admin/CSVImportExport.php:153 src/Admin/ProductMetaBox.php:510
+#: src/Admin/CSVImportExport.php:153 src/Admin/ProductMetaBox.php:518
 msgid "Environmental claim basis"
 msgstr "Základ ekologického tvrdenia"
 
@@ -3556,7 +3556,7 @@ msgstr ""
 msgid "A check recorded on an order always calls VIES fresh, cache or not."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:254 src/Admin/ProductMetaBox.php:547
+#: src/Admin/ModulesPage.php:254 src/Admin/ProductMetaBox.php:555
 msgid "Deposit scheme (system kaucyjny)"
 msgstr ""
 
@@ -4950,7 +4950,7 @@ msgstr "Popis čistého obsahu"
 msgid "Net content"
 msgstr "Čistý obsah"
 
-#: src/Admin/ModulesPage.php:700 src/Admin/ProductMetaBox.php:418
+#: src/Admin/ModulesPage.php:700 src/Admin/ProductMetaBox.php:426
 msgid "Consumer information (2024/825)"
 msgstr ""
 
@@ -4970,7 +4970,7 @@ msgstr ""
 msgid "Legal guarantee reminder"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:716 src/Admin/ProductMetaBox.php:453
+#: src/Admin/ModulesPage.php:716 src/Admin/ProductMetaBox.php:461
 msgid "Energy label"
 msgstr ""
 
@@ -5779,7 +5779,7 @@ msgstr "V novej karte"
 msgid "Close by clicking background"
 msgstr "Zavrieť kliknutím na pozadie"
 
-#: src/Admin/ModulesPage.php:980 src/Admin/ProductMetaBox.php:198
+#: src/Admin/ModulesPage.php:980 src/Admin/ProductMetaBox.php:206
 msgid "Badge Management"
 msgstr "Správa badge"
 
@@ -5880,7 +5880,7 @@ msgstr "Prah bestselleru (predaje)"
 msgid "Minimum total sales count for the \"Bestseller\" badge to appear"
 msgstr "Minimálny celkový počet predajov, aby sa zobrazil odznak „Bestseller“"
 
-#: src/Admin/ModulesPage.php:1012 src/Admin/ProductMetaBox.php:235
+#: src/Admin/ModulesPage.php:1012 src/Admin/ProductMetaBox.php:243
 msgid "Tab Manager"
 msgstr "Správa záložiek"
 
@@ -5948,7 +5948,7 @@ msgstr "Povoliť druhú záložku produktu"
 msgid "Second product tab priority"
 msgstr "Priorita druhej záložky produktu"
 
-#: src/Admin/ModulesPage.php:1035 src/Admin/ProductMetaBox.php:272
+#: src/Admin/ModulesPage.php:1035 src/Admin/ProductMetaBox.php:280
 msgid "Featured Video"
 msgstr "Produktové video"
 
@@ -8411,7 +8411,7 @@ msgstr ""
 msgid "Product quantity in package (e.g. 500 for 500g)."
 msgstr "Množstvo produktu v balení (napr. 500 pre 500g)."
 
-#: src/Admin/ProductMetaBox.php:91 src/Admin/ProductMetaBox.php:905
+#: src/Admin/ProductMetaBox.php:91 src/Admin/ProductMetaBox.php:914
 msgid "Base quantity"
 msgstr "Základné množstvo"
 
@@ -8438,7 +8438,7 @@ msgstr "- Použiť predvolenú -"
 msgid "Estimated delivery time displayed on the product page."
 msgstr "Odhadovaná dodacia lehota zobrazená na stránke produktu."
 
-#: src/Admin/ProductMetaBox.php:138 src/Admin/ProductMetaBox.php:927
+#: src/Admin/ProductMetaBox.php:138 src/Admin/ProductMetaBox.php:936
 msgid "Lead time (working days)"
 msgstr ""
 
@@ -8482,424 +8482,434 @@ msgid ""
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:186
-msgid "VAT exemption basis"
+msgid "Unit on the invoice"
 msgstr ""
 
 #: src/Admin/ProductMetaBox.php:188
+msgid ""
+"The measure the quantity is in, e.g. kg, m, l, usł. (art. 106e ust. 1 pkt 8 "
+"of the VAT Act). Empty means szt."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:194
+msgid "VAT exemption basis"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:196
 msgid ""
 "Only for a product exempt from VAT and sold with a 0% tax class. The invoice "
 "then shows \"zw\" with this basis (art. 106e ust. 1 pkt 19) instead of a 0% "
 "rate."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:202
+#: src/Admin/ProductMetaBox.php:210
 msgid "Main badge"
 msgstr "Hlavný odznak"
 
-#: src/Admin/ProductMetaBox.php:203
+#: src/Admin/ProductMetaBox.php:211
 msgid "Manual badge displayed independently of automatic conditions."
 msgstr "Manuálny odznak zobrazený nezávisle od automatických podmienok."
 
-#: src/Admin/ProductMetaBox.php:209
+#: src/Admin/ProductMetaBox.php:217
 msgid "Badge style"
 msgstr "Štýl odznaku"
 
-#: src/Admin/ProductMetaBox.php:211
+#: src/Admin/ProductMetaBox.php:219
 msgid "Default"
 msgstr "Predvolený"
 
-#: src/Admin/ProductMetaBox.php:212
+#: src/Admin/ProductMetaBox.php:220
 msgid "Accent"
 msgstr "Akcent"
 
-#: src/Admin/ProductMetaBox.php:213
+#: src/Admin/ProductMetaBox.php:221
 msgid "Success"
 msgstr "Úspech"
 
-#: src/Admin/ProductMetaBox.php:214
+#: src/Admin/ProductMetaBox.php:222
 msgid "Warning"
 msgstr "Upozornenie"
 
-#: src/Admin/ProductMetaBox.php:215
+#: src/Admin/ProductMetaBox.php:223
 msgid "Neutral"
 msgstr "Neutrálna"
 
-#: src/Admin/ProductMetaBox.php:217
+#: src/Admin/ProductMetaBox.php:225
 msgid "Manual badge style."
 msgstr "Štýl manuálneho odznaku."
 
-#: src/Admin/ProductMetaBox.php:223
+#: src/Admin/ProductMetaBox.php:231
 msgid "Secondary badge"
 msgstr "Sekundárny odznak"
 
-#: src/Admin/ProductMetaBox.php:224
+#: src/Admin/ProductMetaBox.php:232
 msgid "Optional second badge, e.g. Polish brand, Eco, Sale hit."
 msgstr "Voliteľný druhý odznak, napr. poľská značka, Eko, Akčný hit."
 
-#: src/Admin/ProductMetaBox.php:239
+#: src/Admin/ProductMetaBox.php:247
 msgid "Tab 1 title"
 msgstr "Názov záložky 1"
 
-#: src/Admin/ProductMetaBox.php:240
+#: src/Admin/ProductMetaBox.php:248
 msgid "Optional additional tab for this product."
 msgstr "Voliteľná ďalšia záložka pre tento produkt."
 
-#: src/Admin/ProductMetaBox.php:246
+#: src/Admin/ProductMetaBox.php:254
 msgid "Tab 1 content"
 msgstr "Obsah záložky 1"
 
-#: src/Admin/ProductMetaBox.php:247
+#: src/Admin/ProductMetaBox.php:255
 msgid "HTML/text content for the first additional tab."
 msgstr "HTML/textový obsah pre prvú ďalšiu záložku."
 
-#: src/Admin/ProductMetaBox.php:253
+#: src/Admin/ProductMetaBox.php:261
 msgid "Tab 2 title"
 msgstr "Názov záložky 2"
 
-#: src/Admin/ProductMetaBox.php:254
+#: src/Admin/ProductMetaBox.php:262
 msgid "Second optional product tab."
 msgstr "Druhá voliteľná záložka produktu."
 
-#: src/Admin/ProductMetaBox.php:260
+#: src/Admin/ProductMetaBox.php:268
 msgid "Tab 2 content"
 msgstr "Obsah záložky 2"
 
-#: src/Admin/ProductMetaBox.php:261
+#: src/Admin/ProductMetaBox.php:269
 msgid "HTML/text content for the second additional tab."
 msgstr "HTML/textový obsah pre druhú ďalšiu záložku."
 
-#: src/Admin/ProductMetaBox.php:276
+#: src/Admin/ProductMetaBox.php:284
 msgid "Video URL"
 msgstr "URL videa"
 
-#: src/Admin/ProductMetaBox.php:277
+#: src/Admin/ProductMetaBox.php:285
 msgid "Supports YouTube, Vimeo, and direct MP4 file links."
 msgstr "Podporuje YouTube, Vimeo a priame odkazy na MP4 súbory."
 
-#: src/Admin/ProductMetaBox.php:283
+#: src/Admin/ProductMetaBox.php:291
 msgid "Video section heading"
 msgstr "Nadpis sekcie videa"
 
-#: src/Admin/ProductMetaBox.php:284
+#: src/Admin/ProductMetaBox.php:292
 msgid "Optional heading only for this product."
 msgstr "Voliteľný nadpis iba pre tento produkt."
 
-#: src/Admin/ProductMetaBox.php:300 templates/single-product/gpsr-info.php:36
+#: src/Admin/ProductMetaBox.php:308 templates/single-product/gpsr-info.php:36
 msgid "Product responsibility"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:304
+#: src/Admin/ProductMetaBox.php:312
 msgid "Manufacturer name"
 msgstr "Názov výrobcu"
 
-#: src/Admin/ProductMetaBox.php:305
+#: src/Admin/ProductMetaBox.php:313
 msgid "Full manufacturer name required by GPSR."
 msgstr "Úplný názov výrobcu požadovaný GPSR."
 
-#: src/Admin/ProductMetaBox.php:311 templates/single-product/gpsr-info.php:21
+#: src/Admin/ProductMetaBox.php:319 templates/single-product/gpsr-info.php:21
 msgid "Manufacturer address"
 msgstr "Adresa výrobcu"
 
-#: src/Admin/ProductMetaBox.php:312
+#: src/Admin/ProductMetaBox.php:320
 msgid "Full postal address of the manufacturer."
 msgstr "Úplná poštová adresa výrobcu."
 
-#: src/Admin/ProductMetaBox.php:318 templates/single-product/gpsr-info.php:22
+#: src/Admin/ProductMetaBox.php:326 templates/single-product/gpsr-info.php:22
 msgid "Manufacturer contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:319
+#: src/Admin/ProductMetaBox.php:327
 msgid ""
 "Electronic address, an email or a web page, that GPSR requires alongside the "
 "postal one."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:325 templates/single-product/gpsr-info.php:23
+#: src/Admin/ProductMetaBox.php:333 templates/single-product/gpsr-info.php:23
 msgid "Responsible person"
 msgstr "Zodpovedná osoba"
 
-#: src/Admin/ProductMetaBox.php:326
+#: src/Admin/ProductMetaBox.php:334
 msgid "Person responsible in the EU for product compliance with GPSR."
 msgstr "Osoba zodpovedná v EÚ za súlad produktu s GPSR."
 
-#: src/Admin/ProductMetaBox.php:332 templates/single-product/gpsr-info.php:24
+#: src/Admin/ProductMetaBox.php:340 templates/single-product/gpsr-info.php:24
 msgid "Responsible person address"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:333
+#: src/Admin/ProductMetaBox.php:341
 msgid "Full postal address of the EU responsible person."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:339 templates/single-product/gpsr-info.php:25
+#: src/Admin/ProductMetaBox.php:347 templates/single-product/gpsr-info.php:25
 msgid "Responsible person contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:340
+#: src/Admin/ProductMetaBox.php:348
 msgid ""
 "Electronic address, an email or a web page, for the EU responsible person."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:346
+#: src/Admin/ProductMetaBox.php:354
 msgid "Importer name"
 msgstr "Meno dovozcu"
 
-#: src/Admin/ProductMetaBox.php:347
+#: src/Admin/ProductMetaBox.php:355
 msgid "Full importer name (if applicable)."
 msgstr "Úplný názov dovozcu (ak je relevantné)."
 
-#: src/Admin/ProductMetaBox.php:353 templates/single-product/gpsr-info.php:27
+#: src/Admin/ProductMetaBox.php:361 templates/single-product/gpsr-info.php:27
 msgid "Importer address"
 msgstr "Adresa dovozcu"
 
-#: src/Admin/ProductMetaBox.php:354
+#: src/Admin/ProductMetaBox.php:362
 msgid "Full postal address of the importer."
 msgstr "Úplná poštová adresa dovozcu."
 
-#: src/Admin/ProductMetaBox.php:360 templates/single-product/gpsr-info.php:28
+#: src/Admin/ProductMetaBox.php:368 templates/single-product/gpsr-info.php:28
 msgid "Importer contact"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:361
+#: src/Admin/ProductMetaBox.php:369
 msgid "Electronic address, an email or a web page, for the importer."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:369 templates/single-product/gpsr-info.php:88
+#: src/Admin/ProductMetaBox.php:377 templates/single-product/gpsr-info.php:88
 msgid "Product safety (GPSR)"
 msgstr "Bezpečnosť produktu (GPSR)"
 
-#: src/Admin/ProductMetaBox.php:373 templates/single-product/gpsr-info.php:29
+#: src/Admin/ProductMetaBox.php:381 templates/single-product/gpsr-info.php:29
 msgid "Product identifier"
 msgstr "Identifikátor produktu"
 
-#: src/Admin/ProductMetaBox.php:374
+#: src/Admin/ProductMetaBox.php:382
 msgid "Batch number, serial number, or other product identifier."
 msgstr "Číslo šarže, sériové číslo alebo iný identifikátor produktu."
 
-#: src/Admin/ProductMetaBox.php:380 templates/single-product/gpsr-info.php:30
+#: src/Admin/ProductMetaBox.php:388 templates/single-product/gpsr-info.php:30
 msgid "Safety warnings"
 msgstr "Bezpečnostné varovania"
 
-#: src/Admin/ProductMetaBox.php:381
+#: src/Admin/ProductMetaBox.php:389
 msgid "Safety warnings regarding the product."
 msgstr "Bezpečnostné varovania týkajúce sa produktu."
 
-#: src/Admin/ProductMetaBox.php:387 src/Shortcode/ShortcodeManager.php:159
+#: src/Admin/ProductMetaBox.php:395 src/Shortcode/ShortcodeManager.php:159
 #: templates/single-product/gpsr-info.php:31
 msgid "Safety instructions"
 msgstr "Bezpečnostné pokyny"
 
-#: src/Admin/ProductMetaBox.php:388
+#: src/Admin/ProductMetaBox.php:396
 msgid "Instructions for safe use of the product."
 msgstr "Pokyny na bezpečné používanie produktu."
 
-#: src/Admin/ProductMetaBox.php:398
+#: src/Admin/ProductMetaBox.php:406
 msgid "Product markings"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:402
+#: src/Admin/ProductMetaBox.php:410
 msgid "Medical device"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:403
+#: src/Admin/ProductMetaBox.php:411
 msgid "Prints the statutory medical device notice on the product page."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:408
+#: src/Admin/ProductMetaBox.php:416
 msgid "Adults only (18+)"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:409
+#: src/Admin/ProductMetaBox.php:417
 msgid ""
 "For alcohol, tobacco and similar goods. Prints a notice that the product is "
 "sold to adults only."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:423
+#: src/Admin/ProductMetaBox.php:431
 msgid ""
 "Only where the producer offers a commercial guarantee of durability. Leave "
 "empty when there is none; the statutory guarantee is announced separately in "
 "the module settings."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:432
+#: src/Admin/ProductMetaBox.php:440
 msgid "For goods with digital elements: how long free updates are supplied."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:441
+#: src/Admin/ProductMetaBox.php:449
 msgid ""
 "Repairability score where one is established, otherwise spare part "
 "availability and repair contact."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:457 src/Admin/ProductMetaBox.php:944
+#: src/Admin/ProductMetaBox.php:465 src/Admin/ProductMetaBox.php:953
 msgid "Energy efficiency class"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:458 src/Shipping/InPostShippingMethod.php:49
+#: src/Admin/ProductMetaBox.php:466 src/Shipping/InPostShippingMethod.php:49
 msgid "None"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:462 src/Admin/ProductMetaBox.php:952
+#: src/Admin/ProductMetaBox.php:470 src/Admin/ProductMetaBox.php:961
 msgid "Scale"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:464
+#: src/Admin/ProductMetaBox.php:472
 msgid "The range printed on the label. Rescaled product groups use A to G."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:470 src/Admin/ProductMetaBox.php:961
+#: src/Admin/ProductMetaBox.php:478 src/Admin/ProductMetaBox.php:970
 msgid "Energy label URL"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:471
+#: src/Admin/ProductMetaBox.php:479
 msgid ""
 "The label image or PDF from the supplier, for example the EPREL label link."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:477 src/Admin/ProductMetaBox.php:969
+#: src/Admin/ProductMetaBox.php:485 src/Admin/ProductMetaBox.php:978
 msgid "Product information sheet URL"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:478
+#: src/Admin/ProductMetaBox.php:486
 msgid "The sheet from the supplier, or the product page in the EPREL database."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:492
+#: src/Admin/ProductMetaBox.php:500
 msgid ""
 "Power supply and energy data shown on the product page, e.g. 230 V, 2200 W, "
 "energy class A."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:506
+#: src/Admin/ProductMetaBox.php:514
 msgid "Environmental claims (Anti-greenwashing)"
 msgstr "Ekologické tvrdenia (Anti-greenwashing)"
 
-#: src/Admin/ProductMetaBox.php:511
+#: src/Admin/ProductMetaBox.php:519
 msgid ""
 "Evidence behind the environmental claim. Directive (EU) 2024/825 bans "
 "generic environmental claims and uncertified sustainability labels from 27 "
 "September 2026."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:517
+#: src/Admin/ProductMetaBox.php:525
 msgid "Certificate link"
 msgstr "Odkaz na certifikát"
 
-#: src/Admin/ProductMetaBox.php:518
+#: src/Admin/ProductMetaBox.php:526
 msgid "URL to the official certificate supporting the environmental claim."
 msgstr "URL na oficiálny certifikát podporujúci ekologické tvrdenie."
 
-#: src/Admin/ProductMetaBox.php:525
+#: src/Admin/ProductMetaBox.php:533
 msgid "Certificate expiry date (YYYY-MM-DD)"
 msgstr "Dátum platnosti certifikátu (RRRR-MM-DD)"
 
-#: src/Admin/ProductMetaBox.php:526
+#: src/Admin/ProductMetaBox.php:534
 msgid "Environmental certificate expiry date in YYYY-MM-DD format."
 msgstr "Dátum platnosti ekologického certifikátu vo formáte RRRR-MM-DD."
 
-#: src/Admin/ProductMetaBox.php:537
+#: src/Admin/ProductMetaBox.php:545
 msgid "VAT margin scheme"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:538
+#: src/Admin/ProductMetaBox.php:546
 msgid ""
 "Taxed on the margin under art. 120 ustawy o VAT. The invoice will name the "
 "scheme and show no VAT for these goods."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:551
+#: src/Admin/ProductMetaBox.php:559
 msgid "Packaging"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:552
+#: src/Admin/ProductMetaBox.php:560
 msgid ""
 "Packaging covered by the deposit return scheme. The deposit is added on top "
 "of the price at checkout and is refunded when the packaging is returned."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:559
+#: src/Admin/ProductMetaBox.php:567
 msgid "Units of packaging"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:560
+#: src/Admin/ProductMetaBox.php:568
 msgid ""
 "How many covered containers one item contains. A six-pack is 6. Leave at 1 "
 "for a single bottle or can."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:571
+#: src/Admin/ProductMetaBox.php:579
 msgid "Food and supplements"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:576
+#: src/Admin/ProductMetaBox.php:584
 msgid ""
 "Ingredient list in descending order by weight, with allergens emphasised, as "
 "Regulation (EU) 1169/2011 Annex VII requires. Allergens themselves are the "
 "separate Allergens taxonomy."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:583
+#: src/Admin/ProductMetaBox.php:591
 msgid ""
 "Voluntary front-of-pack grade. Leave unset unless you have calculated it."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:586
+#: src/Admin/ProductMetaBox.php:594
 msgid "Not set"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:597
+#: src/Admin/ProductMetaBox.php:605
 msgid "Nutrition reference"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:598
+#: src/Admin/ProductMetaBox.php:606
 msgid ""
 "What the values below are per. Empty uses the store default, normally 100 g."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:624
+#: src/Admin/ProductMetaBox.php:632
 msgid "Net quantity as it appears on the pack, for example 500 g or 0.75 l."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:630
+#: src/Admin/ProductMetaBox.php:638
 msgid "Alcohol by volume"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:631
+#: src/Admin/ProductMetaBox.php:639
 msgid "Required above 1.2% vol. Enter the number only, for example 12.5."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:638
+#: src/Admin/ProductMetaBox.php:646
 msgid ""
 "Country of origin or place of provenance, where it is required or where its "
 "absence could mislead."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:644
+#: src/Admin/ProductMetaBox.php:652
 msgid "Food business operator"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:645
+#: src/Admin/ProductMetaBox.php:653
 msgid "Name and address of the operator under whose name the food is marketed."
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:918 src/Admin/ProductMetaBox.php:939
+#: src/Admin/ProductMetaBox.php:927 src/Admin/ProductMetaBox.php:948
 msgid "- Same as product -"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:930
+#: src/Admin/ProductMetaBox.php:939
 msgid "Same as product"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:1110
+#: src/Admin/ProductMetaBox.php:1119
 msgid "WooCommerce global unique ID"
 msgstr ""
 
-#: src/Admin/ProductMetaBox.php:1113
+#: src/Admin/ProductMetaBox.php:1122
 msgid "Polski fallback GTIN / EAN"
 msgstr ""
 
 #. translators: %s: one or more product identifier field names.
-#: src/Admin/ProductMetaBox.php:1121
+#: src/Admin/ProductMetaBox.php:1130
 #, php-format
 msgid ""
 "The check digit for this product identifier may be invalid: %s. Please "

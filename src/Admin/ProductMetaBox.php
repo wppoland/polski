@@ -182,6 +182,14 @@ final class ProductMetaBox implements HasHooks
         ]);
 
         woocommerce_wp_text_input([
+            'id' => '_polski_invoice_unit',
+            'label' => __('Unit on the invoice', 'polski'),
+            'placeholder' => 'szt.',
+            'description' => __('The measure the quantity is in, e.g. kg, m, l, usł. (art. 106e ust. 1 pkt 8 of the VAT Act). Empty means szt.', 'polski'),
+            'desc_tip' => true,
+        ]);
+
+        woocommerce_wp_text_input([
             'id' => '_polski_vat_exemption',
             'label' => __('VAT exemption basis', 'polski'),
             'placeholder' => 'art. 43 ust. 1 pkt 29 lit. c ustawy o VAT',
@@ -731,6 +739,7 @@ final class ProductMetaBox implements HasHooks
             '_polski_gtu_code' => 'string',
             '_polski_mpp' => 'checkbox',
             '_polski_vat_exemption' => 'string',
+            '_polski_invoice_unit' => 'string',
             '_polski_badge_text' => 'string',
             '_polski_badge_style' => 'string',
             '_polski_badge_secondary_text' => 'string',

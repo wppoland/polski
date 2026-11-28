@@ -150,7 +150,7 @@ $polski_money = static function (float $amount) use ($polski_currency): string {
 								<span class="polski-invoice__gtu"><?php echo esc_html((string) $polski_line['gtu']); ?></span>
 							<?php endif; ?>
 						</td>
-						<td class="is-num"><?php echo esc_html(number_format_i18n((float) $polski_line['quantity'], 0)); ?></td>
+						<td class="is-num"><?php echo esc_html(rtrim(rtrim(number_format_i18n((float) $polski_line['quantity'], 3), '0'), ',.') . ' ' . (string) ($polski_line['unit'] ?? 'szt.')); ?></td>
 						<?php if ($polski_show_vat) : ?>
 							<td class="is-num"><?php echo esc_html($polski_money((float) $polski_line['net'])); ?></td>
 							<td class="is-num"><?php echo esc_html('' !== (string) ($polski_line['exemption'] ?? '') ? 'zw' : number_format_i18n((float) $polski_line['rate'], 0) . '%'); ?></td>

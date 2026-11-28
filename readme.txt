@@ -3,7 +3,7 @@ Contributors: motylanogha
 Tags: faktury, jpk, ksef, gpsr, zwroty
 Requires at least: 6.9
 Tested up to: 7.2
-Stable tag: 1.57.0
+Stable tag: 1.58.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -417,6 +417,9 @@ Admin feedback and deactivation answers stay in WordPress.
 9. The KSeF column on the WooCommerce orders list: a dash for orders not flagged for KSeF, an amber dot for a flagged order awaiting an invoice, a green dot once an integration records the invoice as accepted.
 
 == Changelog ==
+
+= 1.58.0 =
+* Added: the unit a product is invoiced in (Polski > Invoicing: kg, m, l, usł. and so on, szt. when empty), as art. 106e ust. 1 pkt 8 asks. It is printed next to the quantity on the invoice and sent to KSeF (P_8A); Polski PRO 2.0.2 uses it on its PDF too. Filter `polski/invoice/unit`.
 
 = 1.57.0 =
 * Added: corrective invoices in the free Invoices module. A refund of invoiced items gets a corrective invoice (its own series, KOR by default) with the parties of the corrected invoice, the refunded lines as negative amounts, the reason and the corrected invoice's number and KSeF number. With KSeF sending on, it goes to KSeF after that invoice. An amount-only refund is noted on the order instead.
