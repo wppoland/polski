@@ -162,7 +162,25 @@ final class InvoiceRepository
             $year,
         ));
 
-        return (int) $max + 1;
+        return max((int) $max + 1, self::startNumber($year, $series));
+    }
+
+    /**
+     * "Continue from" for a shop moving from another system mid-year: the
+     * setting reads N/YEAR (120/2026) and applies to that year only, so the
+     * next January starts at 1 again. 0 when unset or for another year.
+     */
+    public static function startNumber(int $year, string $series): int
+    {
+        $settings = get_option(InvoiceService::SETTINGS, []);
+        $settings = is_array($settings) ? $settings : [];
+        // The VAT invoice series only; corrections number on their own.
+        if (InvoiceNumber::sanitiseSeries((string) ($settings['series'] ?? InvoiceNumber::DEFAULT_SERIES)) !== $series) {
+            return 0;
+        }
+        $start = trim((string) ($settings['start_number'] ?? ''));
+
+        return preg_match('#^(\d{1,9})\s*/\s*(\d{4})$#', $start, $m) && (int) $m[2] === $year ? (int) $m[1] : 0;
     }
 
     public function find(int $id): ?Invoice
